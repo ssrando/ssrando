@@ -1,7 +1,7 @@
 from io import BufferedIOBase, BytesIO
 from utils import read_u8, read_u24, read_u32, read_null_term_string, write_u8, write_u24, write_u32
 from collections import OrderedDict
-from typing import Tuple, List
+from typing import Tuple, List, Optional
 import struct
 
 MAGIC_HEADER=b'U\xaa8-'
@@ -206,7 +206,7 @@ class U8File:
                     currnode = self.nodes[foundindex]
         return self.nodes[foundindex]
     
-    def get_file_data(self, path: str):
+    def get_file_data(self, path: str) -> Optional[bytes]:
         file = self.get_file(path)
         if not file:
             return None
@@ -250,7 +250,11 @@ class U8File:
                     node.new_next_parent_index += 1
         self.nodes.insert(foundindex, new_node)
     
-    def get_all_paths(self, start=0):
+    def get_all_paths(self, start=0) -> List[str]:
+        """
+        Returns a list of all paths in the ARC,
+        paths are strings and start with a '/'
+        """
         all_paths=[]
         next_out = self.nodes[start].new_next_parent_index
         dirname = self.nodes[start].name
