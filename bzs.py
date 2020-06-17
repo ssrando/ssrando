@@ -79,7 +79,7 @@ objectstructs = {'FILE':('unk', '>4s', 4),
                 'BPNT':('pos1x pos1y pos1z pos2x pos2y pos2z pos3x pos3y pos3z unk','>3f3f3f4s',40),
                 'SPTH':('unk', '>12s', 12),
                 'AREA':('posx posy posz sizex sizey sizez angle area_link unk3 dummy','>3f3fHhb3s',32),
-                'EVNT':('unk1 story_flag1 story_flag2 unk2 exit_id unk3 name','>2shh3sb14s32s',56),
+                'EVNT':('unk1 story_flag1 story_flag2 unk2 exit_id unk3 skipevent unk4 sceneflag1 sceneflag2 skipflag dummy1 item dummy2 name','>2shh3sb3sb1sBBBhhh32s',56),
                 'PLY ':('byte1 byte2 play_cutscene byte4 posx posy posz unk2 entrance_id','>bbbb3f6sh',24),
                 'OBJS':('unk1 unk2 posx posy posz                   unk3 angle unk4 unk5 name','>4s4s3fHHHH8s',36),
                 'OBJ ':('unk1 unk2 posx posy posz                   unk3 angle unk4 unk5 name','>4s4s3fHHHH8s',36),
@@ -98,6 +98,7 @@ def buildBzs(root: OrderedDict) -> bytes:
     count, odata = buildObj('V001', root)
     data=struct.pack(nodestruct, b'V001', count, -1, 12) + odata
     data+=(16-(len(data)%16))*b'\xff'
+    data+=b'\xFF'*16 # more padding
     return data
 
 def buildObj(objtype, objdata) -> (int, bytes): # number of elements, bytes of body
@@ -108,8 +109,12 @@ def buildObj(objtype, objdata) -> (int, bytes): # number of elements, bytes of b
         headerbytes=b''
         for typ, obj in objdata.items():
             count, data = buildObj(typ, obj)
+            # pad to 4
+            pad = (4-(len(data)%4)) * b'\xFF'
+            if len(pad) == 4:
+                pad = b''
             headerbytes+=struct.pack(nodestruct, typ.encode('ASCII'), count, -1, len(body)-len(headerbytes)+offset)
-            body+=data
+            body+=data+pad
             # body+=(16-(len(body)%16))*b'\xFF'
         return (len(objdata), headerbytes+body)
     elif objtype == 'LAY ':
@@ -123,8 +128,13 @@ def buildObj(objtype, objdata) -> (int, bytes): # number of elements, bytes of b
                 headerbytes+=struct.pack('>hhi', 0, -1, 0)
             else:
                 count, data = buildObj('V001',layer)
-                headerbytes+=struct.pack('>hhi', count, -1, len(body)-len(headerbytes)+offset)
-                body+=data
+                dataoffset = len(body)-len(headerbytes)+offset
+                # pad to 4
+                pad = (4-(len(data)%4)) * b'\xFF'
+                if len(pad) == 4:
+                    pad = b''
+                headerbytes+=struct.pack('>hhi', count, -1, dataoffset)
+                body+=data+pad
         return (29, headerbytes+body)
             
     elif objtype in ('OBJN','ARCN'):
