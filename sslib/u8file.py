@@ -144,8 +144,8 @@ class U8File:
             buffer.write(b'\x00')
         self.all_node_size=buffer.tell()-self.first_node_offset
         # padding before data section to 16
-        pad=(16-(buffer.tell()%16))
-        if pad == 16:
+        pad=(32-(buffer.tell()%32))
+        if pad == 32:
             pad = 0
         buffer.write(b'\x00'*pad)
         self.data_offset=buffer.tell()

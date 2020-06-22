@@ -5,7 +5,7 @@ from io import BytesIO
 import nlzss11
 
 @pytest.mark.parametrize("stage", ALL_STAGES)
-# @pytest.mark.parametrize("stage", 'F000')
+# @pytest.mark.parametrize("stage", ['F000'])
 def test_roundtrip(stage):
     with open(f'../actual-extract/DATA/files/Stage/{stage}/{stage}_stg_l0.arc.LZ','rb') as f:
         extracted_data = nlzss11.decompress(f.read())
