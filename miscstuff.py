@@ -7,8 +7,8 @@ from bzs import parseBzs, buildBzs
 import nlzss11
 from u8file import U8File
 
-EXTRACT_ROOT_PATH='../../ss-extract/actual-extract'
-MODIFIED_ROOT_PATH='../../ss-extract/modified-extract'
+EXTRACT_ROOT_PATH='actual-extract'
+MODIFIED_ROOT_PATH='modified-extract'
 
 extracts={
     'F202/F202_stg_l1.arc.LZ': [
@@ -197,7 +197,7 @@ def patch_faron():
         f.write(nlzss11.compress(stagedat.getbuffer()))
     
 # extract_objects()
-testpatch2()
+# testpatch2()
 # patch_faron()
 # stage, rooms = extract_stage_rooms('F100')
 # assert stage == parseBzs(buildBzs(stage))

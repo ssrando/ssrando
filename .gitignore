@@ -1,3 +1,6 @@
+# ide
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -156,3 +159,7 @@ temp
 
 # wiimms szs and iso tools
 tools
+
+# more game files
+actual-extract
+modified-extract

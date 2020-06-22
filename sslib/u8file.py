@@ -1,5 +1,5 @@
 from io import BufferedIOBase, BytesIO
-from utils import read_u8, read_u24, read_u32, read_null_term_string, write_u8, write_u24, write_u32
+from .utils import read_u8, read_u24, read_u32, read_null_term_string, write_u8, write_u24, write_u32
 from collections import OrderedDict
 from typing import Tuple, List, Optional
 import struct
@@ -93,8 +93,8 @@ class U8File:
         first_node_offset=struct.unpack(">I", data.read(4))[0]
         if first_node_offset != U8File.FIRST_NODE_OFFSET:
             raise InvalidU8File('Invalid first node offset')
-        all_node_size=struct.unpack(">I", data.read(4))[0]
-        start_data_offset=struct.unpack(">I", data.read(4))[0]
+        _all_node_size=struct.unpack(">I", data.read(4))[0]
+        _start_data_offset=struct.unpack(">I", data.read(4))[0]
         # read the first node, to figure out where the filenames start
         # should be a directory
         data.seek(first_node_offset)

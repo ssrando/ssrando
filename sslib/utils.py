@@ -1,5 +1,6 @@
 import struct
 import collections
+import json
 
 def write_u8(data, value, pos=None):
     if pos != None:
@@ -47,10 +48,18 @@ def read_null_term_string(data, pos=None):
 def unpack(fields, formatstr, item):
     return collections.namedtuple('_',fields)._make(struct.unpack(formatstr,item))._asdict()
 
+def encodeBytes(bytestr):
+    return ' '.join(['%02X'%x for x in bytestr])
+    
+def objToJson(parsed):
+    return json.dumps(parsed,indent=4,ensure_ascii=True,allow_nan=False,default=encodeBytes)
+
 def toStr(bytestr):
+    """Converts a bytestring, which is shift-jis encoded to a string"""
     return bytestr.split(b'\x00',1)[0].decode('shift-jis')
 
 def toBytes(string, length):
+    """Converts a string into shift-jis encoding and padding it with zeroes to the specified length"""
     encoded = string.encode('shift-jis')
     return encoded+(b'\x00' * (length - len(encoded)))
 

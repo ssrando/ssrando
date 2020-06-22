@@ -4,7 +4,7 @@
 from collections import OrderedDict
 import struct
 
-from utils import unpack, toStr
+from .utils import unpack, toStr, toBytes
 
 nodestruct='>4shhi'
 nodestructnames="name count ff offset"
@@ -66,7 +66,10 @@ def parseObj(objtype, quantity, data):
         structnames, structdef, size = objectstructs[objtype]
         for i in range(quantity):
             item = data[size*i:size*(i+1)]
-            parsed.append(unpack(structnames, structdef, item))
+            unpacked = unpack(structnames, structdef, item)
+            if 'name' in unpacked.keys():
+                unpacked['name'] = toStr(unpacked['name'])
+            parsed.append(unpacked)
 
         return parsed
 
@@ -94,11 +97,29 @@ objectstructs = {'FILE':('unk', '>4s', 4),
                 'PCAM':('pos1x pos1y pos1z pos2x pos2y pos2z angle wtf unk','>3f3fff4s',36),
                 'LYLT':('layer demo_high demo_low dummy','>bbbb',4)}
 
+namelengths = {
+    'SCEN': 32,
+    'CAM ': 16,
+    'EVNT': 32,
+    'OBJS': 8,
+    'OBJ ': 8,
+    'SOBS': 8,
+    'SOBJ': 8,
+    'STAS': 8,
+    'STAG': 8,
+    'SNDT': 8,
+    'DOOR': 8,
+}
+
 def buildBzs(root: OrderedDict) -> bytes:
     count, odata = buildObj('V001', root)
     data=struct.pack(nodestruct, b'V001', count, -1, 12) + odata
-    data+=(16-(len(data)%16))*b'\xff'
-    data+=b'\xFF'*16 # more padding
+
+    # padding
+    pad=(32-(len(data)%32))
+    if pad == 32:
+        pad = 0
+    data+=b'\xFF'*pad
     return data
 
 def buildObj(objtype, objdata) -> (int, bytes): # number of elements, bytes of body
@@ -152,12 +173,15 @@ def buildObj(objtype, objdata) -> (int, bytes): # number of elements, bytes of b
         body=b''
         headerbytes=b''
         for i, s in objdata.items():
-            headerbytes+=struct.pack('>BBH', i, len(s), len(body)+offset)
-            body+=b'\x00'.join(s)
+            headerbytes+=struct.pack('>BBH', i, len(s), len(body)+offset-len(headerbytes))
+            body+=b''.join(s)
         return (len(objdata), headerbytes+body)
 
     else:
         assert type(objdata) == list
+        for obj in objdata:
+            if 'name' in obj:
+                obj['name'] = toBytes(obj['name'], namelengths[objtype])
         _, structdef, _ = objectstructs[objtype]
         mapped = (struct.pack(structdef, *obj.values()) for obj in objdata)
         return (len(objdata), b''.join(mapped))
