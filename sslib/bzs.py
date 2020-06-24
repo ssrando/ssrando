@@ -36,7 +36,7 @@ def parseObj(objtype, quantity, data):
             addr = i*8
             count,ff,offset = struct.unpack('>hhi',data[addr:addr+8])
             if count == 0:
-                parsed['l%d'%i] = None
+                parsed['l%d'%i] = OrderedDict()
             else:
                 parsed['l%d'%i] = parseObj('V001',count,data[addr+offset:])
         return parsed
@@ -73,7 +73,7 @@ def parseObj(objtype, quantity, data):
 
         return parsed
 
-objectstructs = {'FILE':('unk', '>4s', 4),
+objectstructs = {'FILE':('unk dummy', '>hh', 4),
                 'SCEN':('name room layer entrance byte4 byte5 flag6 zero flag8','>32sbbbbbbbb',40),
                 'CAM ':('unk1 posx posy posz angle unk2 name','>4s3ff8s16s',44),
                 'PATH':('unk', '>12s', 12),
@@ -84,14 +84,14 @@ objectstructs = {'FILE':('unk', '>4s', 4),
                 'AREA':('posx posy posz sizex sizey sizez angle area_link unk3 dummy','>3f3fHhb3s',32),
                 'EVNT':('unk1 story_flag1 story_flag2 unk2 exit_id unk3 skipevent unk4 sceneflag1 sceneflag2 skipflag dummy1 item dummy2 name','>2shh3sb3sb1sBBBhhh32s',56),
                 'PLY ':('byte1 byte2 play_cutscene byte4 posx posy posz unk2 entrance_id','>bbbb3f6sh',24),
-                'OBJS':('unk1 unk2 posx posy posz                   unk3 angle unk4 unk5 name','>4s4s3fHHHH8s',36),
-                'OBJ ':('unk1 unk2 posx posy posz                   unk3 angle unk4 unk5 name','>4s4s3fHHHH8s',36),
-                'SOBS':('unk1 unk2 posx posy posz sizex sizey sizez unk3 angle unk4 unk5 name','>4s4s3f3fHHHH8s',48),
-                'SOBJ':('unk1 unk2 posx posy posz sizex sizey sizez unk3 angle unk4 unk5 name','>4s4s3f3fHHHH8s',48),
-                'STAS':('unk1 unk2 posx posy posz sizex sizey sizez unk3 angle unk4 unk5 name','>4s4s3f3fHHHH8s',48),
-                'STAG':('unk1 unk2 posx posy posz sizex sizey sizez unk3 angle unk4 unk5 name','>4s4s3f3fHHHH8s',48),
-                'SNDT':('unk1 unk2 posx posy posz sizex sizey sizez unk3 angle unk4 unk5 name','>4s4s3f3fHHHH8s',48),
-                'DOOR':('unk1 unk2 posx posy posz                   unk3 angle unk4 unk5 name','>4s4s3fHHHH8s',36),
+                'OBJS':('params1 params2 posx posy posz                   anglex angley anglez id name','>4s4s3fHHHH8s',36),
+                'OBJ ':('params1 params2 posx posy posz                   anglex angley anglez id name','>4s4s3fHHHH8s',36),
+                'SOBS':('params1 params2 posx posy posz sizex sizey sizez anglex angley anglez id name','>4s4s3f3fHHHH8s',48),
+                'SOBJ':('params1 params2 posx posy posz sizex sizey sizez anglex angley anglez id name','>4s4s3f3fHHHH8s',48),
+                'STAS':('params1 params2 posx posy posz sizex sizey sizez anglex angley anglez id name','>4s4s3f3fHHHH8s',48),
+                'STAG':('params1 params2 posx posy posz sizex sizey sizez anglex angley anglez id name','>4s4s3f3fHHHH8s',48),
+                'SNDT':('params1 params2 posx posy posz sizex sizey sizez anglex angley anglez id name','>4s4s3f3fHHHH8s',48),
+                'DOOR':('params1 params2 posx posy posz                   anglex angley anglez id name','>4s4s3fHHHH8s',36),
                 'LYSE':('story_flag night layer','>hbb',4),
                 'STIF':('wtf1 wtf2 wtf3 byte1 flagindex byte3 byte4 unk1 map_name_id unk2','>3fbbbb2sb1s',20),
                 'PCAM':('pos1x pos1y pos1z pos2x pos2y pos2z angle wtf unk','>3f3fff4s',36),

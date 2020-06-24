@@ -1,16 +1,17 @@
 from context import sslib
-from util import get_bzs_data, get_arc_data, ALL_STAGES
+from util import get_bzs_data, get_arc_data, ALL_STAGES, STAGEPATH
 import pytest
 from io import BytesIO
 import nlzss11
+from pathlib import Path
 
 @pytest.mark.parametrize("stage", ALL_STAGES)
 # @pytest.mark.parametrize("stage", ['F000'])
 def test_roundtrip(stage):
-    with open(f'../actual-extract/DATA/files/Stage/{stage}/{stage}_stg_l0.arc.LZ','rb') as f:
+    with open(STAGEPATH/f'{stage}'/f'{stage}_stg_l0.arc.LZ','rb') as f:
         extracted_data = nlzss11.decompress(f.read())
     stagearc = sslib.U8File.parse_u8(BytesIO(extracted_data))
-    assert bytes(extracted_data) == bytes(stagearc.to_buffer())
+    assert extracted_data == stagearc.to_buffer()
     data = stagearc.get_file_data('dat/stage.bzs')
     parsed = sslib.parseBzs(data)
     roomcount = len(parsed.get('RMPL',[]))
@@ -19,10 +20,10 @@ def test_roundtrip(stage):
         if not roomdata:
             continue
         roomarc = sslib.U8File.parse_u8(BytesIO(roomdata))
-        assert bytes(roomdata) == bytes(roomarc.to_buffer())
+        assert roomdata == roomarc.to_buffer()
 
 def test_change_content():
-    with open(f'../actual-extract/DATA/files/Stage/F000/F000_stg_l0.arc.LZ','rb') as f:
+    with open(STAGEPATH/'F000'/'F000_stg_l0.arc.LZ','rb') as f:
         extracted_data = nlzss11.decompress(f.read())
     stagearc = sslib.U8File.parse_u8(BytesIO(extracted_data))
     orig_bzs = stagearc.get_file_data('dat/stage.bzs')

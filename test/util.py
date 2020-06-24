@@ -5,12 +5,14 @@ import glob
 from pathlib import Path
 bzscache={}
 
-ALL_STAGES = list(map(lambda x: Path(x).parts[-1], glob.glob('../actual-extract/DATA/files/Stage/*')))
+STAGEPATH = Path(__file__).parent/'..'/'actual-extract'/'DATA'/'files'/'Stage'
+ALL_STAGES = list(map(lambda x: Path(x).parts[-1], STAGEPATH.glob('*')))
+
 
 def get_bzs_data(stage, room=None):
     if (stage, room) in bzscache:
         return bzscache[(stage, room)]
-    with open(f'../actual-extract/DATA/files/Stage/{stage}/{stage}_stg_l0.arc.LZ','rb') as f:
+    with open(STAGEPATH / f'/{stage}/{stage}_stg_l0.arc.LZ','rb') as f:
         extracted_data=nlzss11.decompress(f.read())
     stagearc=U8File.parse_u8(BytesIO(extracted_data))
     if room==None:
@@ -25,5 +27,5 @@ def get_bzs_data(stage, room=None):
 
 def get_arc_data(stage, layer=0):
     # caching arcs might be a bad idea since they can be like 6MB...
-    with open(f'../actual-extract/DATA/files/Stage/{stage}/{stage}_stg_l{layer}.arc.LZ','rb') as f:
+    with open(STAGEPATH / f'{stage}/{stage}_stg_l{layer}.arc.LZ','rb') as f:
         return nlzss11.decompress(f.read())
