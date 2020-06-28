@@ -1,6 +1,7 @@
 # initial parsing from mrcheezes skyward-sword-tools
 # parsing of stage and room files
 
+from typing import NewType
 from collections import OrderedDict
 import struct
 
@@ -9,7 +10,9 @@ from .utils import unpack, toStr, toBytes
 nodestruct='>4shhi'
 nodestructnames="name count ff offset"
 
-def parseBzs(data):
+ParsedBzs = NewType('ParsedBzs', OrderedDict)
+
+def parseBzs(data: bytes) -> ParsedBzs:
     name,count,ff,offset = struct.unpack('>4shhi',data[:12])
     assert ff == -1
     name = name.decode('ascii')
@@ -111,7 +114,7 @@ namelengths = {
     'DOOR': 8,
 }
 
-def buildBzs(root: OrderedDict) -> bytes:
+def buildBzs(root: ParsedBzs) -> bytes:
     count, odata = buildObj('V001', root)
     data=struct.pack(nodestruct, b'V001', count, -1, 12) + odata
 

@@ -1,5 +1,6 @@
 from collections import OrderedDict
 import struct
+from typing import NewType
 
 from .utils import unpack, toStr, toBytes
 
@@ -8,7 +9,9 @@ FLOWTYPES = {'type1': 1,
     'type3':3,
     'start':4}
 
-def parseMSB(data):
+ParsedMsb = NewType('ParsedMsb', OrderedDict)
+
+def parseMSB(data: bytes) -> ParsedMsb:
     parsed = OrderedDict()
     if data[:10] == b'MsgFlwBn\xFE\xFF':
         parsed['type'] = 'MsgFlwBn'
@@ -81,7 +84,7 @@ def parseMSB(data):
             raise Exception(f'unsupported seg_id: {seg_id}')
     return parsed
 
-def buildMSB(msb: OrderedDict) -> bytes:
+def buildMSB(msb: ParsedMsb) -> bytes:
     if msb['type'] == 'MsgFlwBn':
         header = b'MsgFlwBn\xFE\xFF'
         header += b'\x00\x00\x00\x03\x00\x02'
