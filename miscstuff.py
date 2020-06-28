@@ -2,47 +2,79 @@ from io import BytesIO
 import os
 from collections import OrderedDict
 from typing import List
+from pathlib import Path
 
-from bzs import parseBzs, buildBzs
+from sslib.bzs import parseBzs, buildBzs
 import nlzss11
-from u8file import U8File
+from sslib.u8file import U8File
+from sslib import parseMSB, buildMSB, Patcher
 
 EXTRACT_ROOT_PATH='actual-extract'
 MODIFIED_ROOT_PATH='modified-extract'
 
 extracts={
-    'F202/F202_stg_l1.arc.LZ': [
+    ('D003_0', 0): ['oarc/GetTriForceSingle.arc'], # Triforce part
+    ('D301', 0): ['oarc/GetBowA.arc'], # Bow
+    ('F001r', 3):[
+        'oarc/GetKobunALetter.arc',  # Cawlin's Letter
+        'oarc/GetPouchA.arc'        # Adventure Pouch
+    ],
+    ('F002r', 1):[
+        'oarc/GetPouchB.arc',  # Extra Pouch Slot
+        'oarc/GetMedal.arc',        # all Medals
+        'oarc/GetNetA.arc'        # Bug Net
+        ],
+    ('F004r', 0):[
+        'oarc/GetPachinkoB.arc',  # Scatershot
+        'oarc/GetBowB.arc',        # Iron Bow
+        'oarc/GetBowC.arc',        # Sacred Bow
+        'oarc/GetBeetleC.arc',  # Quick beetle
+        'oarc/GetBeetleD.arc',        # Though Beetle
+        'oarc/GetNetB.arc'        # Big Bug Net
+        # a bunch more bottles and other stuff is also here
+        ],
+    ('F202', 1): [
       'oarc/GetPachinkoA.arc', # slingshot
       'oarc/GetHookShot.arc', # clawshots
       'oarc/GetMoleGloveB.arc', # mogma mitts
       'oarc/GetVacuum.arc', # gust bellows
       'oarc/GetWhip.arc', # whip
-      'oarc/GetBombBag.arc', # bomb bag
+      'oarc/GetBombBag.arc' # bomb bag
     ],
-    'F210/F210_stg_l0.arc.LZ':['oarc/GetMoleGloveA.arc'], # digging mitts
-    'S100/S100_stg_l2.arc.LZ':['oarc/GetSizuku.arc'], # water dragon scale
-    'S200/S200_stg_l2.arc.LZ':['oarc/GetEarring.arc'], # fireshield earrings
-    'D100/D100_stg_l1.arc.LZ':['oarc/GetBeetleA.arc'], # beetle
-    'F300/F300_stg_l0.arc.LZ':['oarc/GetBeetleB.arc'], # hook beetle
-    'F000/F000_stg_l0.arc.LZ':['oarc/MoldoGut_Baby.arc'], # babies rattle?
-    'F000/F000_stg_l4.arc.LZ':[
+    ('F210', 0):['oarc/GetMoleGloveA.arc'], # digging mitts
+    ('S100', 2):['oarc/GetSizuku.arc'], # water dragon scale
+    ('S200', 2):['oarc/GetEarring.arc'], # fireshield earrings
+    ('D100', 1):['oarc/GetBeetleA.arc'], # beetle
+    ('F300', 0):['oarc/GetBeetleB.arc'], # hook beetle
+    ('F301_5', 0):['oarc/GetMapSea.arc'], # Sand Sea Map
+    ('F402', 2):['oarc/GetHarp.arc'], # all Songs & Harp
+    ('F000', 0):[
+        'oarc/MoldoGut_Baby.arc', # babies rattle
+        'oarc/GetSeedLife.arc' # LTS
+    ],
+    ('F000', 4):[
         'oarc/GetShieldWood.arc', # wooden shield
         'oarc/GetShieldHylia.arc' # hylian shield
     ],
-    'F100/F100_stg_l3.arc.LZ':[ # stuff for silent realms
+    ('F100', 3):[ # stuff for silent realms
         'oarc/PLHarpPlay.arc',
         'oarc/SirenEntrance.arc',
         'oarc/PLSwordStick.arc'
-    ]
+    ],
+    ('F020', 1):['oarc/GetBirdStatue.arc'], # Bird statuette
+    ('F023', 0):['oarc/GetTerryCage.arc'], # Beedle's Beetle
 }
+
+def get_stagepath(stage: str, layer: int=0, rootpath: str=EXTRACT_ROOT_PATH) -> Path:
+    return Path(__file__).parent / rootpath / 'DATA' / 'files' / 'Stage' / stage / f'{stage}_stg_l{layer}.arc.LZ'
 
 def extract_objects():
     try:
         os.mkdir('oarc')
     except:
         pass
-    for file, objs in extracts.items():
-        with open(EXTRACT_ROOT_PATH+'/DATA/files/Stage/'+file,'rb') as f:
+    for (file, layer), objs in extracts.items():
+        with get_stagepath(file, layer).open('rb') as f:
             data=nlzss11.decompress(f.read())
             data=BytesIO(data)
             data=U8File.parse_u8(data)
@@ -144,9 +176,76 @@ def extract_stage_rooms(name: str) -> OrderedDict:
         rooms[f'r{i:02}'] = parseBzs(roomarc.get_file_data('dat/room.bzs'))
     return stage, rooms
     
+def upgrade_test():
+    # patch stage
+    with get_stagepath('D000',0).open('rb') as f:
+        extracted_data=nlzss11.decompress(f.read())
+    stagearc=U8File.parse_u8(BytesIO(extracted_data))
+    stagedef=parseBzs(stagearc.get_file_data('dat/stage.bzs'))
+    room0arc=U8File.parse_u8(BytesIO(stagearc.get_file_data('rarc/D000_r00.arc')))
+    roomdef=parseBzs(room0arc.get_file_data('dat/room.bzs'))
+    # get chest
+    chest=next(filter(lambda x: x['name']=='TBox', roomdef['LAY ']['l0']['OBJS']))
+    chest['anglez']=(chest['anglez']&~0x1FF) | 53 # Beetle
+    room0arc.set_file_data('dat/room.bzs',buildBzs(roomdef))
+    # add both beetle models
+    with open('oarc/GetBeetleA.arc','rb') as h:
+        stagearc.add_file_data('oarc/GetBeetleA.arc', h.read())
+    with open('oarc/GetBeetleB.arc','rb') as h:
+        stagearc.add_file_data('oarc/GetBeetleB.arc', h.read())
+    stagearc.set_file_data('rarc/D000_r00.arc',room0arc.to_buffer())
+    # write back
+    with get_stagepath('D000',0,rootpath=MODIFIED_ROOT_PATH).open('wb') as f:
+        f.write(nlzss11.compress(stagearc.to_buffer()))
+    # patch get item event
+    with open(Path(__file__).parent / EXTRACT_ROOT_PATH / 'DATA' / 'files' / 'EU' / 'Object' / 'en_GB' / '0-Common.arc', 'rb') as f:
+        evntarc=U8File.parse_u8(BytesIO(f.read()))
+    itemmsbf=parseMSB(evntarc.get_file_data('0-Common/003-ItemGet.msbf'))
+    evnt=itemmsbf['FLW3']['flow'][422] # event triggered after beetle text box
+    evnt['type']='type3'
+    evnt['subType']=0
+    evnt['param1']=0
+    evnt['param3']=9
+    evnt['param2']=75 # Hook Beetle
+    evntarc.set_file_data('0-Common/003-ItemGet.msbf',buildMSB(itemmsbf))
+    with open(Path(__file__).parent / MODIFIED_ROOT_PATH / 'DATA' / 'files' / 'EU' / 'Object' / 'en_GB' / '0-Common.arc', 'wb') as f:
+        f.write(evntarc.to_buffer())
+
+def upgrade_with_patch():
+    # config for repacking as ISO
+    # patcher = Patcher(
+    #     actual_extract_path=Path(__file__).parent / EXTRACT_ROOT_PATH,
+    #     modified_extract_path=Path(__file__).parent / MODIFIED_ROOT_PATH,
+    #     oarc_cache_path=Path(__file__).parent / 'oarc',
+    #     keep_path=True,
+    #     copy_unmodified=False) # set to true during dev to overwrite maybe bad experiments
+    # for use with riivolution
+    patcher = Patcher(
+        actual_extract_path=Path(__file__).parent / EXTRACT_ROOT_PATH,
+        modified_extract_path=Path(__file__).parent / 'temp',
+        oarc_cache_path=Path(__file__).parent / 'oarc',
+        keep_path=False,
+        copy_unmodified=False)
+    
+    def patch_D000_r0(roomdef):
+        chest=next(filter(lambda x: x['name']=='TBox', roomdef['LAY ']['l0']['OBJS']))
+        chest['anglez']=(chest['anglez']&~0x1FF) | 53 # Beetle
+        return roomdef
+    patcher.set_room_patch('D000',0,patch_D000_r0)
+    def patch_item_get(itemmsbf):
+        evnt=itemmsbf['FLW3']['flow'][422] # event triggered after beetle text box
+        evnt['type']='type3'
+        evnt['subType']=0
+        evnt['param1']=0
+        evnt['param3']=9
+        evnt['param2']=75 # Hook Beetle
+        return itemmsbf
+    patcher.set_event_patch('003-ItemGet.msbf', patch_item_get)
+    patcher.add_stage_oarc('D000',0,['GetBeetleA','GetBeetleB'])
+    patcher.do_patch()
 
 def patch_faron():
-    with open(EXTRACT_ROOT_PATH+'/DATA/files/Stage/F100/F100_stg_l0.arc.LZ','rb') as f:
+    with get_stagepath('F100',0).open('rb') as f:
         extracted_data=nlzss11.decompress(f.read())
     stagearc=U8File.parse_u8(BytesIO(extracted_data))
     # patch layers, force layer 1
@@ -158,12 +257,12 @@ def patch_faron():
     room0arc=U8File.parse_u8(BytesIO(stagearc.get_file_data('rarc/F100_r00.arc')))
     roomdef=parseBzs(room0arc.get_file_data('dat/room.bzs'))
     # grab the trial from layer 3 and put in on layer 0
-    trial=next(filter(lambda x: x['name']==b'WarpObj\x00', roomdef['LAY ']['l3']['OBJ ']))
-    trial_butterflies=next(filter(lambda x: x['name']==b'InsctTg\x00', roomdef['LAY ']['l3']['STAG']))
+    trial=next(filter(lambda x: x['name']=='WarpObj', roomdef['LAY ']['l3']['OBJ ']))
+    trial_butterflies=next(filter(lambda x: x['name']=='InsctTg', roomdef['LAY ']['l3']['STAG']))
     # trial['posy'] += 100
     # fix object ID of trial
-    trial['unk5']=0x02F2
-    trial_butterflies['unk5']=0xFEF3
+    trial['id']=0x02F2
+    trial_butterflies['id']=0xFEF3
     roomdef['LAY ']['l3']['OBJ '].remove(trial)
     roomdef['LAY ']['l0']['OBJ '].append(trial)
     roomdef['LAY ']['l3']['STAG'].remove(trial_butterflies)
@@ -191,11 +290,9 @@ def patch_faron():
     
     stagedat=BytesIO()
     stagearc.writeto(stagedat)
-    with open('patch.arc','wb') as f:
-        f.write(stagedat.getbuffer())
-    with open(MODIFIED_ROOT_PATH+'/DATA/files/Stage/F100/F100_stg_l0.arc.LZ','wb') as f:
+    with get_stagepath('F100',0, rootpath=MODIFIED_ROOT_PATH).open('wb') as f:
         f.write(nlzss11.compress(stagedat.getbuffer()))
-    
+
 # extract_objects()
 # testpatch2()
 # patch_faron()
@@ -205,3 +302,7 @@ def patch_faron():
 #     built = buildBzs(room)
 #     assert type(built) == bytes
 #     assert room == parseBzs(built)
+# extract_objects()
+# patch_faron()
+# upgrade_test()
+upgrade_with_patch()
