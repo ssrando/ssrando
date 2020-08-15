@@ -244,6 +244,117 @@ def upgrade_with_patch():
     patcher.add_stage_oarc('D000',0,['GetBeetleA','GetBeetleB'])
     patcher.do_patch()
 
+def bingo_patch():
+    # open all light pillars as part of the zelda event before the save prompt
+    # make eldin layer 1 by default, move trial to layer 0, move lava draining to layer 0
+    # make eldin caves layer 1 only
+    # 
+    # config for repacking as ISO
+    patcher = Patcher(
+        actual_extract_path=Path(__file__).parent / EXTRACT_ROOT_PATH,
+        modified_extract_path=Path(__file__).parent / MODIFIED_ROOT_PATH,
+        oarc_cache_path=Path(__file__).parent / 'oarc',
+        keep_path=True,
+        copy_unmodified=False) # set to true during dev to overwrite maybe bad experiments
+    # for use with riivolution
+    # patcher = Patcher(
+    #     actual_extract_path=Path(__file__).parent / EXTRACT_ROOT_PATH,
+    #     modified_extract_path=Path(__file__).parent / 'temp',
+    #     oarc_cache_path=Path(__file__).parent / 'oarc',
+    #     keep_path=False,
+    #     copy_unmodified=False)
+
+    # skyloft: move trial to layer 0
+    def patch_F000_r0(roomdef):
+        trial=next(filter(lambda x: x['name']=='WarpObj', roomdef['LAY ']['l4']['OBJ ']))
+        # trial_butterflies=next(filter(lambda x: x['name']=='InsctTg', roomdef['LAY ']['l4']['STAG']))
+        # trial['posy'] += 100
+        # fix object ID of trial
+        trial['id']=0x02F2
+        # trial_butterflies['id']=0xFEF3
+        roomdef['LAY ']['l4']['OBJ '].remove(trial)
+        roomdef['LAY ']['l0']['OBJ '].append(trial)
+        # roomdef['LAY ']['l4']['STAG'].remove(trial_butterflies)
+        # roomdef['LAY ']['l0']['STAG'].append(trial_butterflies)
+        roomdef['LAY ']['l0']['ARCN'].append('SirenEntrance')
+        roomdef['LAY ']['l0']['ARCN'].append('PLSwordStick')
+        roomdef['LAY ']['l0']['ARCN'].append('PLHarpPlay')
+        roomdef['LAY ']['l0']['OBJN'].append('WarpObj')
+    patcher.set_room_patch('F000', 0, patch_F000_r0)
+    patcher.add_stage_oarc('F000', 0, ('SirenEntrance','PLSwordStick','PLHarpPlay'))
+    # faron: force layer 1 always, add trial to layer 0
+    def patch_F100(stagedef):
+        stagedef['LYSE'] = [OrderedDict((('story_flag', -1), ('night', 0), ('layer', 1)))]
+        return stagedef
+    patcher.set_stage_patch('F100', patch_F100)
+    def patch_F100_r0(roomdef):
+        trial=next(filter(lambda x: x['name']=='WarpObj', roomdef['LAY ']['l3']['OBJ ']))
+        trial_butterflies=next(filter(lambda x: x['name']=='InsctTg', roomdef['LAY ']['l3']['STAG']))
+        # trial['posy'] += 100
+        # fix object ID of trial
+        trial['id']=0x02F2
+        trial_butterflies['id']=0xFEF3
+        roomdef['LAY ']['l3']['OBJ '].remove(trial)
+        roomdef['LAY ']['l0']['OBJ '].append(trial)
+        roomdef['LAY ']['l3']['STAG'].remove(trial_butterflies)
+        roomdef['LAY ']['l0']['STAG'].append(trial_butterflies)
+        roomdef['LAY ']['l0']['ARCN'].append('SirenEntrance')
+        roomdef['LAY ']['l0']['ARCN'].append('PLSwordStick')
+        roomdef['LAY ']['l0']['ARCN'].append('PLHarpPlay')
+        roomdef['LAY ']['l0']['OBJN'].append('WarpObj')
+    patcher.set_room_patch('F100', 0, patch_F100_r0)
+    patcher.add_stage_oarc('F100', 0, ('SirenEntrance','PLSwordStick','PLHarpPlay'))
+
+    # deep woods: remove layer 3+ 
+    def patch_F101(stagedef):
+        stagedef['LYSE']=[layer for layer in stagedef['LYSE'] if layer['layer'] < 3]
+    patcher.set_stage_patch('F101',patch_F101)
+
+def fill_skyloft():
+    # config for repacking as ISO
+    patcher = Patcher(
+        actual_extract_path=Path(__file__).parent / EXTRACT_ROOT_PATH,
+        modified_extract_path=Path(__file__).parent / MODIFIED_ROOT_PATH,
+        oarc_cache_path=Path(__file__).parent / 'oarc',
+        keep_path=True,
+        copy_unmodified=False) # set to true during dev to overwrite maybe bad experiments
+    # for use with riivolution
+    # patcher = Patcher(
+    #     actual_extract_path=Path(__file__).parent / EXTRACT_ROOT_PATH,
+    #     modified_extract_path=Path(__file__).parent / 'temp',
+    #     oarc_cache_path=Path(__file__).parent / 'oarc',
+    #     keep_path=False,
+    #     copy_unmodified=False)
+    
+    def patch_F000_r0(roomdef):
+        roomdef['LAY ']['l0']['ARCN'].append('BLastBoss')
+        roomdef['LAY ']['l0']['ARCN'].append('PLLastBoss')
+        roomdef['LAY ']['l0']['OBJN'].append('BLasBos')
+        roomdef['LAY ']['l0']['OBJ '].append(
+            {
+                "params1": bytes.fromhex('FFFFFFC0'),
+                "params2": bytes.fromhex('FFFFFFFF'),
+                "posx": -4698.884765625,
+                "posy": 1237.6900634765625,
+                "posz": -6364.4482421875,
+                "anglex": 0,
+                "angley": 0,
+                "anglez": 0,
+                "id": 0xFDC5,
+                "name": "BLasBos"
+            })
+        # save_obj=next(filter(lambda x: x['name']=='saveObj', roomdef['LAY ']['l0']['OBJS']))
+        # 0x1C3
+        # for i in range(400):
+        #     cloned = save_obj.copy()
+        #     cloned['id'] = 0xFC00 | (0x1C5 + i)
+        #     cloned['posy'] += (i + 1) * 200
+        #     roomdef['LAY ']['l0']['OBJS'].append(cloned)
+        return roomdef
+    patcher.set_room_patch('F000',0,patch_F000_r0)
+    patcher.add_stage_oarc('F000',0,['BLastBoss','PLLastBoss'])
+    patcher.do_patch()
+
 def patch_faron():
     with get_stagepath('F100',0).open('rb') as f:
         extracted_data=nlzss11.decompress(f.read())
@@ -293,6 +404,35 @@ def patch_faron():
     with get_stagepath('F100',0, rootpath=MODIFIED_ROOT_PATH).open('wb') as f:
         f.write(nlzss11.compress(stagedat.getbuffer()))
 
+def demise():
+    patcher = Patcher(
+        actual_extract_path=Path(__file__).parent / EXTRACT_ROOT_PATH,
+        modified_extract_path=Path(__file__).parent / 'temp',
+        oarc_cache_path=Path(__file__).parent / 'oarc',
+        keep_path=False,
+        copy_unmodified=False)
+    def patch_B400_r0(roomdef):
+        orig_last_boss = next(filter(lambda x: x['name']=='BLasBos', roomdef['LAY ']['l1']['OBJ ']))
+        las_bos = orig_last_boss.copy()
+        las_bos['id'] = 0xFC06
+        las_bos['posx'] += 1000
+        roomdef['LAY ']['l1']['OBJ '].append(las_bos)
+        las_bos = orig_last_boss.copy()
+        las_bos['id'] = 0xFC07
+        las_bos['posx'] -= 1000
+        roomdef['LAY ']['l1']['OBJ '].append(las_bos)
+        return roomdef
+    patcher.set_room_patch('B400', 0, patch_B400_r0)
+    patcher.do_patch()
+    
+
+def extract_obj_pack():
+    data = (Path(__file__).parent / EXTRACT_ROOT_PATH / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ').read_bytes()
+    data = U8File.parse_u8(BytesIO(nlzss11.decompress(data)))
+    oarc_cache_path = Path(__file__).parent / 'oarc'
+    for oarc in filter(lambda x: x.endswith('.arc'), data.get_all_paths()):
+        oarc_data = data.get_file_data(oarc)
+        (oarc_cache_path / oarc.split('/')[-1]).write_bytes(oarc_data)
 # extract_objects()
 # testpatch2()
 # patch_faron()
@@ -305,4 +445,7 @@ def patch_faron():
 # extract_objects()
 # patch_faron()
 # upgrade_test()
-upgrade_with_patch()
+# upgrade_with_patch()
+# extract_obj_pack()
+# fill_skyloft()
+demise()

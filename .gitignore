@@ -153,6 +153,7 @@ temp
 *.arc.LZ
 *.u8
 *.bzs
+*.iso
 
 # extracted
 *.d
