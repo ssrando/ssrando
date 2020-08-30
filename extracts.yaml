@@ -1,0 +1,93 @@
+- layer: 0
+  oarcs:
+  - GetTriForceSingle
+  stage: D003_0
+- layer: 0
+  oarcs:
+  - GetBowA
+  stage: D301
+- layer: 1
+  oarcs:
+  - SwitchEye
+  stage: D100
+- layer: 3
+  oarcs:
+  - GetKobunALetter
+  - GetPouchA
+  stage: F001r
+- layer: 1
+  oarcs:
+  - GetPouchB
+  - GetMedal
+  - GetNetA
+  stage: F002r
+- layer: 0
+  oarcs:
+  - GetPachinkoB
+  - GetBowB
+  - GetBowC
+  - GetBeetleC
+  - GetBeetleD
+  - GetNetB
+  stage: F004r
+- layer: 1
+  oarcs:
+  - GetPachinkoA
+  - GetHookShot
+  - GetMoleGloveB
+  - GetVacuum
+  - GetWhip
+  - GetBombBag
+  stage: F202
+- layer: 0
+  oarcs:
+  - GetMoleGloveA
+  stage: F210
+- layer: 2
+  oarcs:
+  - GetSizuku
+  stage: S100
+- layer: 2
+  oarcs:
+  - GetEarring
+  stage: S200
+- layer: 1
+  oarcs:
+  - GetBeetleA
+  stage: D100
+- layer: 0
+  oarcs:
+  - GetBeetleB
+  stage: F300
+- layer: 0
+  oarcs:
+  - GetMapSea
+  stage: F301_5
+- layer: 2
+  oarcs:
+  - GetHarp
+  stage: F402
+- layer: 0
+  oarcs:
+  - MoldoGut_Baby
+  - GetSeedLife
+  stage: F000
+- layer: 4
+  oarcs:
+  - GetShieldWood
+  - GetShieldHylia
+  stage: F000
+- layer: 3
+  oarcs:
+  - PLHarpPlay
+  - SirenEntrance
+  - PLSwordStick
+  stage: F100
+- layer: 1
+  oarcs:
+  - GetBirdStatue
+  stage: F020
+- layer: 0
+  oarcs:
+  - GetTerryCage
+  stage: F023

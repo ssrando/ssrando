@@ -1,0 +1,32 @@
+D100: # Skyview
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: -1
+        night: 0
+        layer: 2
+  - name: Eyes
+    type: oarcadd
+    oarc: SwitchEye
+    destlayer: 0
+  - name: First Eye
+    type: objmove
+    id: FC17
+    srclayer: 1
+    destlayer: 0
+    srcroom: 1
+    srcobjtype: OBJ
+  - name: First Eye
+    type: objmove
+    id: FC1A
+    srclayer: 1
+    destlayer: 0
+    srcroom: 1
+    srcobjtype: STAG
+  - name: delete statue
+    type: objdelete
+    id: FC1D
+    srclayer: 0
+    srcroom: 0
+    srcobjtype: OBJS
+  
