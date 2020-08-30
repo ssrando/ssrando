@@ -1,6 +1,7 @@
 import struct
 import collections
 import json
+from pathlib import Path
 
 def write_u8(data, value, pos=None):
     if pos != None:
@@ -62,6 +63,10 @@ def toBytes(string, length):
     """Converts a string into shift-jis encoding and padding it with zeroes to the specified length"""
     encoded = string.encode('shift-jis')
     return encoded+(b'\x00' * (length - len(encoded)))
+
+def write_bytes_create_dirs(path: Path, data: bytes):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
 
 stagenames = {
     "F000": "Skyloft: Skyloft",
