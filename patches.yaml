@@ -1,32 +1,195 @@
-D100: # Skyview
+F000: # Skyloft
+  - name: Trial
+    type: oarcadd
+    oarc: PLHarpPlay
+    destlayer: 1
+  - name: Trial
+    type: oarcadd
+    oarc: SirenEntrance
+    destlayer: 1
+  - name: Trial
+    type: oarcadd
+    oarc: PLSwordStick
+    destlayer: 1
+  - name: Trial # trial object
+    type: objmove
+    id: 0xFDD8
+    layer: 5
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Trial # butterflies
+    type: objmove
+    id: 0xFE16
+    layer: 5
+    destlayer: 0
+    room: 0
+    objtype: STAG
+  - name: Trial # trial object
+    type: objdelete
+    id: 0xFDD6
+    layer: 4
+    room: 0
+    objtype: OBJ
+  - name: Trial # butterflies
+    type: objdelete
+    id: 0xFDFF
+    layer: 4
+    room: 0
+    objtype: STAG
+  - name: Batreaux unlock
+    type: objpatch
+    id: 0xFC4A
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00 # sets the flag to -1 (meaning open)
+  # - name: more save statues
+  #   type: objadd
+  #   layer: 0
+  #   room: 0
+  #   objtype: OBJS
+  #   object:
+  #     params1: 0xFFFF002F
+  #     params2: 0xFF5FFFFF
+  #     posx: 2186.927734375
+  #     posy: 393.760009765625
+  #     posz: 2804.235107421875
+  #     anglex: 65535
+  #     angley: 728
+  #     anglez: 65535
+  #     id: 0xFC32
+  #     name: saveObj
+  # - name: delete statue
+  #   type: objdelete
+  #   id: 0xFC32
+  #   layer: 0
+  #   room: 0
+  #   objtype: OBJS
+F012r: # Batreaux home
+  - name: Batreaux unlock
+    type: objpatch
+    id: 0xFC00
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00 # sets the flag to -1 (meaning open)
+F100: # Faron main area
   - name: Layer override
     type: layeroverride
     override:
       - story_flag: -1
         night: 0
+        layer: 1
+  - name: Trial
+    type: oarcadd
+    oarc: PLHarpPlay
+    destlayer: 1
+  - name: Trial
+    type: oarcadd
+    oarc: SirenEntrance
+    destlayer: 1
+  - name: Trial
+    type: oarcadd
+    oarc: PLSwordStick
+    destlayer: 1
+  - name: Trial # trial object
+    type: objmove
+    id: 0x02B0
+    layer: 3
+    destlayer: 1
+    room: 0
+    objtype: OBJ
+  - name: Trial # butterflies
+    type: objmove
+    id: 0xFEE3
+    layer: 3
+    destlayer: 1
+    room: 0
+    objtype: STAG
+D100: # Skyview
+  - name: Layer override
+    type: layeroverride
+    override: # keep layers normal but remove layer 3+
+      - story_flag: 206 # storyflag after water dragons scale
+        night: 0
         layer: 2
+      - story_flag: 4 # skyview entrance CS
+        night: 0
+        layer: 1
   - name: Eyes
     type: oarcadd
     oarc: SwitchEye
     destlayer: 0
   - name: First Eye
     type: objmove
-    id: FC17
-    srclayer: 1
+    id: 0xFC17
+    layer: 1
     destlayer: 0
-    srcroom: 1
-    srcobjtype: OBJ
+    room: 1
+    objtype: OBJ
   - name: First Eye
     type: objmove
-    id: FC1A
-    srclayer: 1
+    id: 0xFC1A
+    layer: 1
     destlayer: 0
-    srcroom: 1
-    srcobjtype: STAG
-  - name: delete statue
-    type: objdelete
-    id: FC1D
-    srclayer: 0
-    srcroom: 0
-    srcobjtype: OBJS
+    room: 1
+    objtype: STAG
+  - name: Right Room Eyes
+    type: objmove
+    id: 0xFC48
+    layer: 1
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Right Room Eyes
+    type: objmove
+    id: 0xFC49
+    layer: 1
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Right Room Eyes
+    type: objmove
+    id: 0xFC4A
+    layer: 1
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Left Room Eyes
+    type: objmove
+    id: 0xFC31
+    layer: 1
+    destlayer: 0
+    room: 7
+    objtype: OBJ
+  - name: Left Room Eyes
+    type: objmove
+    id: 0xFC32
+    layer: 1
+    destlayer: 0
+    room: 7
+    objtype: OBJ
+  - name: Left Room Eyes
+    type: objmove
+    id: 0xFC33
+    layer: 1
+    destlayer: 0
+    room: 7
+    objtype: OBJ
+  - name: Left Room Eyes
+    type: objmove
+    id: 0xFC34
+    layer: 1
+    destlayer: 0
+    room: 7
+    objtype: OBJ
+  # - name: delete statue
+  #   type: objdelete
+  #   id: 0xFC1D
+  #   layer: 0
+  #   room: 0
+  #   objtype: OBJS
   
