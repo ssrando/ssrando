@@ -82,6 +82,8 @@ def fix_layers():
     stageoarcs = defaultdict(set)
 
     for stage, stagepatches in patches.items():
+        if stage == 'global':
+            continue
         for patch in stagepatches:
             if patch['type'] == 'oarcadd':
                 stageoarcs[(stage, patch['destlayer'])].add(patch['oarc'])
@@ -196,6 +198,35 @@ def fix_layers():
             modified = True
             print(f'added object {obj["name"]} to {layer} in room {room}')
             # print(obj)
+        if stage == 'F405' and room == 0:
+            # patch hero's tunic, sailcloth and goddess sword in opening CS
+            bzs['EVNT'][0]['story_flag2'] = 36
+            bzs['EVNT'][0]['item'] = 15
+            modified = True
+        elif stage == 'F001r' and room == 1:
+            # put all storyflags in links room at the start
+            if not 'STAG' in bzs['LAY ']['l0']:
+                bzs['LAY ']['l0']['STAG'] = []
+            for storyflag in patches['global'].get('startstoryflags',[]):
+                new_obj = OrderedDict(
+                    params1 = 0xFFFFFFFF,
+                    params2 = 0xFF5FFFFF,
+                    posx = 761,
+                    posy = -22,
+                    posz = -2260,
+                    sizex = 1000,
+                    sizey = 1000,
+                    sizez = 1000,
+                    anglex = storyflag,
+                    angley = 0,
+                    anglez = 65535,
+                    id = (0xFD84 & ~0x3FF) | next_id,
+                    name = "SwAreaT",
+                )
+                bzs['LAY ']['l0']['STAG'].append(new_obj)
+                next_id += 1
+            bzs['EVNT'][0]['item'] = 11
+            modified = True
         if modified:
             # print(json.dumps(bzs))
             return bzs

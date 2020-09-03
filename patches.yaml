@@ -1,3 +1,13 @@
+global:
+  startstoryflags:
+    - 27 # Loftwing
+    - 46 # Faron light pillar
+    - 47 # Eldin light pillar
+    - 48 # Lanayru light pillar
+    - 194 # open thunderhead
+    - 58 # b-wheel
+    - 724 # Prevent first time light pillar CS sending player always to faron
+    - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
 F000: # Skyloft
   - name: Trial
     type: oarcadd
@@ -45,6 +55,38 @@ F000: # Skyloft
     objtype: OBJS
     patch:
       anglex: 0xFF00 # sets the flag to -1 (meaning open)
+  - name: Sparring Hall Door Left
+    type: objpatch
+    id: 0xFC38
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00
+  - name: Sparring Hall Door right
+    type: objpatch
+    id: 0xFC37
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00
+  - name: UA Door right
+    type: objpatch
+    id: 0xFC30
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00
+  - name: UA Door left
+    type: objpatch
+    id: 0xFC2F
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00
   # - name: more save statues
   #   type: objadd
   #   layer: 0
@@ -67,121 +109,6 @@ F000: # Skyloft
   #   layer: 0
   #   room: 0
   #   objtype: OBJS
-F001r: # Knight Academy
-  - name: Start storyflags
-    type: objadd
-    layer: 0
-    room: 1
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFFF
-      params2: 0xFFFFFFFF
-      posx: 761
-      posy: -22
-      posz: -2260
-      sizex: 1000 # this might be overkill
-      sizey: 1000
-      sizez: 1000
-      anglex: 63524 # heros tunic
-      angley: 0
-      anglez: 65535
-      id: 0xFD84
-      name: SwAreaT
-  - name: Start storyflags
-    type: objadd
-    layer: 0
-    room: 1
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: 761
-      posy: -22
-      posz: -2260
-      sizex: 1000 # this might be overkill
-      sizey: 1000
-      sizez: 1000
-      anglex: 63515 # loftwing
-      angley: 0
-      anglez: 65535
-      id: 0xFD84
-      name: SwAreaT
-  - name: Start storyflags
-    type: objadd
-    layer: 0
-    room: 1
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: 761
-      posy: -22
-      posz: -2260
-      sizex: 1000 # this might be overkill
-      sizey: 1000
-      sizez: 1000
-      anglex: 63534 # faron pillar
-      angley: 0
-      anglez: 65535
-      id: 0xFD84
-      name: SwAreaT
-  - name: Start storyflags
-    type: objadd
-    layer: 0
-    room: 1
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: 761
-      posy: -22
-      posz: -2260
-      sizex: 1000 # this might be overkill
-      sizey: 1000
-      sizez: 1000
-      anglex: 63535 # eldin pillar
-      angley: 0
-      anglez: 65535
-      id: 0xFD84
-      name: SwAreaT
-  - name: Start storyflags
-    type: objadd
-    layer: 0
-    room: 1
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: 761
-      posy: -22
-      posz: -2260
-      sizex: 1000 # this might be overkill
-      sizey: 1000
-      sizez: 1000
-      anglex: 63536 # lanayru pillar
-      angley: 0
-      anglez: 65535
-      id: 0xFD84
-      name: SwAreaT
-  - name: Start storyflags
-    type: objadd
-    layer: 0
-    room: 1
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: 761
-      posy: -22
-      posz: -2260
-      sizex: 1000 # this might be overkill
-      sizey: 1000
-      sizez: 1000
-      anglex: 63682 # lanayru pillar
-      angley: 0
-      anglez: 65535
-      id: 0xFD84
-      name: SwAreaT
 F012r: # Batreaux home
   - name: Batreaux unlock
     type: objpatch
@@ -618,7 +545,7 @@ F401: # Sealed grounds Whirlpool
     room: 1
     objtype: STAG
     patch:
-      trigstoryfid: 2047 # always trigger
+      trigstoryfid: 36 # always trigger
   - name: Door cs to Layer 0
     type: objmove
     id: 0xFCA2
