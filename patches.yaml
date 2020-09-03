@@ -519,6 +519,22 @@ F402: # Sealed Temple
     layer: 4
     room: 2
     objtype: OBJ
+  - name: to BtT unlock
+    type: objpatch
+    id: 0xFC00
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00 # sets the flag to -1 (meaning open)
+  - name: to BtT unlock
+    type: objpatch
+    id: 0xFC01
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00 # sets the flag to -1 (meaning open)
 F401: # Sealed grounds Whirlpool
   - name: Nightmare Cs 1
     type: objdelete
