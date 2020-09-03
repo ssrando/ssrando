@@ -67,6 +67,121 @@ F000: # Skyloft
   #   layer: 0
   #   room: 0
   #   objtype: OBJS
+F001r: # Knight Academy
+  - name: Start storyflags
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFFF
+      params2: 0xFFFFFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000 # this might be overkill
+      sizey: 1000
+      sizez: 1000
+      anglex: 63524 # heros tunic
+      angley: 0
+      anglez: 65535
+      id: 0xFD84
+      name: SwAreaT
+  - name: Start storyflags
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000 # this might be overkill
+      sizey: 1000
+      sizez: 1000
+      anglex: 63515 # loftwing
+      angley: 0
+      anglez: 65535
+      id: 0xFD84
+      name: SwAreaT
+  - name: Start storyflags
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000 # this might be overkill
+      sizey: 1000
+      sizez: 1000
+      anglex: 63534 # faron pillar
+      angley: 0
+      anglez: 65535
+      id: 0xFD84
+      name: SwAreaT
+  - name: Start storyflags
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000 # this might be overkill
+      sizey: 1000
+      sizez: 1000
+      anglex: 63535 # eldin pillar
+      angley: 0
+      anglez: 65535
+      id: 0xFD84
+      name: SwAreaT
+  - name: Start storyflags
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000 # this might be overkill
+      sizey: 1000
+      sizez: 1000
+      anglex: 63536 # lanayru pillar
+      angley: 0
+      anglez: 65535
+      id: 0xFD84
+      name: SwAreaT
+  - name: Start storyflags
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000 # this might be overkill
+      sizey: 1000
+      sizez: 1000
+      anglex: 63682 # lanayru pillar
+      angley: 0
+      anglez: 65535
+      id: 0xFD84
+      name: SwAreaT
 F012r: # Batreaux home
   - name: Batreaux unlock
     type: objpatch
@@ -95,9 +210,9 @@ F100: # Faron main area
     id: 0x52B6
     layer: 4
     room: 0
-    objtype: OBJS
+    objtype: OBJ
     patch:
-      - trigstoryfid: 206 # scale
+      trigstoryfid: 206 # scale
   - name: Trial
     type: oarcadd
     oarc: PLHarpPlay
@@ -157,14 +272,14 @@ D100: # Skyview
     layer: 1
     room: 4
     objtype: OBJ
-  - name: Barr inside Beetle Room
-    type: objpatch
-    id: 0xFFFF
-    layer: 0
-    room: null
-    objtype: OBJ
-    patch:
-      - side2scenefid: FF #always open
+  # - name: Barr inside Beetle Room
+  #   type: objpatch
+  #   id: 0xFFFF
+  #   layer: 0
+  #   room: null
+  #   objtype: OBJ
+  #   patch:
+  #     side2scenefid: FF #always open
   - name: Eyes
     type: oarcadd
     oarc: SwitchEye
@@ -232,6 +347,22 @@ D100: # Skyview
     destlayer: 0
     room: 7
     objtype: OBJ
+  - name: Bar conected to chest
+    type: objpatch
+    id: 0x1018
+    layer: 2
+    room: 10
+    objtype: OBJS
+    patch:
+      setscenefid: 13 # 0x0 20 (0xD)
+  - name: Bar conected to chest
+    type: objpatch
+    id: 0x1018
+    layer: 1
+    room: 10
+    objtype: OBJS
+    patch:
+      setscenefid: 13 # 0x0 20 (0xD)
   # - name: delete statue
   #   type: objdelete
   #   id: 0xFC1D
