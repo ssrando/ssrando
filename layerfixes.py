@@ -19,6 +19,53 @@ def highest_objid(bzs):
                     max_id = max(max_id, id)
     return max_id
 
+def mask_shift_set(value, mask, shift, new_value):
+    """
+    Replace new_value in value, by applying the mask after the shift
+    """
+    value = value & mask
+    return (value & ~(mask << shift)) | (new_value << shift)
+
+def try_patch_obj(obj, key, value):
+    if obj['name'].startswith('Npc'):
+        if key == 'trigstoryfid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0x7FF, 10, value)
+        elif key == 'untrigstoryfid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0x7FF, 21, value)
+        elif key == 'talk_behaviour':
+            obj['anglez'] = value
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj['name'] == 'TBox':
+        if key == 'spawnscenefid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 20, value)
+        elif key == 'setscenefid':
+            obj['anglex'] = mask_shift_set(obj['anglex'], 0xFF, 0, value)
+        elif key == 'itemid':
+            obj['anglez'] = mask_shift_set(obj['anglez'], 0x1FF, 0, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj['name'] == 'EvntTag':
+        if key == 'trigscenefid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 16, value)
+        elif key == 'setscenefid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 8, value)
+        elif key == 'event':
+            obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj['name'] == 'EvfTag':
+        if key == 'trigstoryfid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0x7FF, 19, value)
+        elif key == 'setstoryfid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0x7FF, 8, value)
+        elif key == 'event':
+            obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    else:
+        print(f'ERROR: unsupported object to patch {obj}')
+
 def fix_layers():
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
@@ -54,6 +101,23 @@ def fix_layers():
                 bzs['LYSE'] = layer_override
                 modified = True
         next_id = highest_objid(bzs) + 1
+        for objpatch in filter(lambda x: x['type']=='objpatch' and x.get('room',None)==room, stagepatches):
+            id = objpatch['id']
+            layer = objpatch['layer']
+            objtype = objpatch['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
+            objs = [x for x in bzs['LAY '][f'l{layer}'][objtype] if x['id'] == id]
+            if len(objs) != 1:
+                print(f'Error finding object: {json.dumps(objpatch)}')
+            else:
+                obj = objs[0]
+                for key, val in objpatch['patch'].items():
+                    if key in obj:
+                        obj[key] = val
+                    else:
+                        try_patch_obj(obj, key, val)
+                modified = True
+                print(f'modified object from {layer} in room {room} with id {objpatch["id"]:04X}')
+                # print(obj)
         for objmove in filter(lambda x: x['type']=='objmove' and x.get('room',None)==room, stagepatches):
             id = objmove['id']
             layer = objmove['layer']
@@ -67,12 +131,14 @@ def fix_layers():
                 bzs['LAY '][f'l{layer}'][objtype].remove(obj)
                 obj['id'] = (obj['id'] & ~0x3FF) | next_id
                 next_id += 1
+                if not objtype in bzs['LAY '][f'l{destlayer}']:
+                    bzs['LAY '][f'l{destlayer}'][objtype] = []
                 bzs['LAY '][f'l{destlayer}'][objtype].append(obj)
                 objn = bzs['LAY '][f'l{destlayer}']['OBJN']
                 if not obj['name'] in objn:
                     objn.append(obj['name'])
                 modified = True
-                print(f'moved object from {layer} to {destlayer} in room {room} with id {objmove["id"]}')
+                print(f'moved object from {layer} to {destlayer} in room {room} with id {objmove["id"]:04X}')
                 # print(obj)
         for objdelete in filter(lambda x: x['type']=='objdelete' and x.get('room',None)==room, stagepatches):
             id = objdelete['id']
@@ -85,21 +151,7 @@ def fix_layers():
                 obj = objs[0]
                 bzs['LAY '][f'l{layer}'][objtype].remove(obj)
                 modified = True
-                print(f'removed object from {layer} in room {room} with id {objdelete["id"]}')
-                # print(obj)
-        for objpatch in filter(lambda x: x['type']=='objpatch' and x.get('room',None)==room, stagepatches):
-            id = objpatch['id']
-            layer = objpatch['layer']
-            objtype = objpatch['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
-            objs = [x for x in bzs['LAY '][f'l{layer}'][objtype] if x['id'] == id]
-            if len(objs) != 1:
-                print(f'Error finding object: {json.dumps(objpatch)}')
-            else:
-                obj = objs[0]
-                for key, val in objpatch['patch'].items():
-                    obj[key] = val
-                modified = True
-                print(f'modified object from {layer} in room {room} with id {objpatch["id"]}')
+                print(f'removed object from {layer} in room {room} with id {objdelete["id"]:04X}')
                 # print(obj)
         for objadd in filter(lambda x: x['type']=='objadd' and x.get('room',None)==room, stagepatches):
             layer = objadd['layer']
@@ -138,6 +190,8 @@ def fix_layers():
                 print(f'Error: unknown objtype: {objtype}')
                 continue
             next_id += 1
+            if not objtype in bzs['LAY '][f'l{layer}']:
+                bzs['LAY '][f'l{layer}'][objtype] = []
             bzs['LAY '][f'l{layer}'][objtype].append(new_obj)
             modified = True
             print(f'added object {obj["name"]} to {layer} in room {room}')

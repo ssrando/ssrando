@@ -2,15 +2,15 @@ F000: # Skyloft
   - name: Trial
     type: oarcadd
     oarc: PLHarpPlay
-    destlayer: 1
+    destlayer: 0
   - name: Trial
     type: oarcadd
     oarc: SirenEntrance
-    destlayer: 1
+    destlayer: 0
   - name: Trial
     type: oarcadd
     oarc: PLSwordStick
-    destlayer: 1
+    destlayer: 0
   - name: Trial # trial object
     type: objmove
     id: 0xFDD8
@@ -83,6 +83,21 @@ F100: # Faron main area
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Yerbal
+    type: objmove
+    id: 0x52B6
+    layer: 4
+    destlayer: 1
+    room: 0
+    objtype: OBJ
+#  - name: Yerbal Spawn
+#    type: objpatch
+#    id: 0x52B6
+#    layer: 4
+#    room: 0
+#    objtype: OBJS
+#    patch:
+#      - trigstoryfid: 206 # scale
   - name: Trial
     type: oarcadd
     oarc: PLHarpPlay
@@ -192,4 +207,264 @@ D100: # Skyview
   #   layer: 0
   #   room: 0
   #   objtype: OBJS
-  
+F200: # Eldin main area
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 19
+        night: 0
+        layer: 4
+      - story_flag: 677
+        night: 0
+        layer: 3
+      - story_flag: 48
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
+  - name: Mogma Turf Rock
+    type: objmove
+    id: 0x0CAE
+    layer: 1
+    destlayer: 0
+    room: 2
+    objtype: OBJS
+  - name: First Mogma cs Fi
+    type: objdelete
+    id: 0xFC22
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: First Mogma cs left mogma
+    type: objdelete
+    id: 0x001F
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: First Mogma cs right mogma
+    type: objdelete
+    id: 0x0020
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: Mogma near Mogma Turf cs
+    type: objdelete
+    id: 0x0CB9
+    layer: 1
+    room: 2
+    objtype: OBJ
+  - name: Just saying cs
+    type: objdelete
+    id: 0x248C
+    layer: 1
+    room: 4
+    objtype: OBJ
+  - name: Trial
+    type: oarcadd
+    oarc: PLHarpPlay
+    destlayer: 0
+  - name: Trial
+    type: oarcadd
+    oarc: SirenEntrance
+    destlayer: 0
+  - name: Trial
+    type: oarcadd
+    oarc: PLSwordStick
+    destlayer: 0
+  - name: Trial # trial object
+    type: objmove
+    id: 0x14AE
+    layer: 2
+    destlayer: 0
+    room: 2
+    objtype: OBJ
+  - name: Trial # butterflies
+    type: objmove
+    id: 0x14C0
+    layer: 2
+    destlayer: 0
+    room: 2
+    objtype: STAG
+D200: # ET
+  - name: Bomb Bag from Ledd
+    type: objdelete
+    id: 0xFC52
+    layer: 0
+    room: 1
+    objtype: OBJ
+  - name: Fi after Bridge
+    type: objdelete
+    id: 0xFC5E
+    layer: 0
+    room: 1
+    objtype: OBJ
+B200: # Boss Room
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 7 # Beat ET
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
+F300: # lanayru Main Area
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: -1
+        night: 0
+        layer: 1
+  - name: Chest Spawns after LMF
+    type: objpatch
+    id: 0xFE12
+    layer: 2
+    room: 0
+    objtype: OBJS
+    patch:
+      spawnscenefid: 30 # 0x1E
+  - name: Chest on LMF
+    type: objmove
+    id: 0xFE12
+    layer: 2
+    destlayer: 1
+    room: 0
+    objtype: OBJS
+F301_1: # Sand Sea Main Area
+  - name: Skipper's Text at first time in Sand  # gets rid of 2x40 so also of the Evnttags
+    type: objdelete
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Area Block to Pirate Stronghold
+    type: objdelete
+    id: 0xFC65
+    layer: 0
+    room: 0
+    objtype: STAG
+F402: # Sealed Temple
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 342
+        night: 0
+        layer: 7
+      - story_flag: 133
+        night: 0
+        layer: 6
+      - story_flag: 175
+        night: 0
+        layer: 6
+      - story_flag: 200
+        night: 0
+        layer: 5
+      - story_flag: 132
+        night: 0
+        layer: 4
+      - story_flag: 140
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
+  - name: Imp 2 trigger
+    type: objmove
+    id: 0xFC4C
+    layer: 3
+    destlayer: 2
+    room: 2
+    objtype: OBJ
+  - name: Imp 2 Groose
+    type: objmove
+    id: 0xFC4A
+    layer: 3
+    destlayer: 2
+    room: 2
+    objtype: OBJ
+  - name: Imp 2 trigger aswell?
+    type: objmove
+    id: 0xFC52
+    layer: 3
+    destlayer: 2
+    room: 2
+    objtype: OBJ
+  - name: Imp 2 trigger aswell??
+    type: objmove
+    id: 0xFC4B
+    layer: 3
+    destlayer: 2
+    room: 2
+    objtype: OBJ
+  - name: NpcInv
+    type: objmove
+    id: 0xFC51
+    layer: 3
+    destlayer: 2
+    room: 2
+    objtype: OBJ
+  - name: SotH start cs
+    type: objdelete
+    id: 0xFC4F
+    layer: 4
+    room: 2
+    objtype: OBJ
+  - name: Groose Tree cs
+    type: objdelete
+    id: 0xFC4E
+    layer: 4
+    room: 2
+    objtype: OBJ
+F401: # Sealed grounds Whirlpool
+  - name: Nightmare Cs 1
+    type: objdelete
+    id: 0xFC9C
+    layer: 1
+    room: 1
+    objtype: STAG
+  - name: Nightmare Cs 2
+    type: objdelete
+    id: 0xFCAB
+    layer: 1
+    room: 1
+    objtype: STAG
+  - name: Nightmare Cs 3
+    type: objdelete
+    id: 0xFC9D
+    layer: 1
+    room: 1
+    objtype: STAG
+  - name: Door Cs requirement
+    type: objpatch
+    id: 0xFCA2
+    layer: 1
+    room: 1
+    objtype: STAG
+    patch:
+      trigstoryfid: 2047 # 0x7FF
+F400: # Behind the Temple
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 342
+        night: 0
+        layer: 8
+      - story_flag: 16
+        night: 0
+        layer: 7
+      - story_flag: 133
+        night: 0
+        layer: 6
+      - story_flag: 200
+        night: 0
+        layer: 5
+      - story_flag: 9
+        night: 0
+        layer: 3
+      - story_flag: 36
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 0
