@@ -109,6 +109,23 @@ F000: # Skyloft
   #   layer: 0
   #   room: 0
   #   objtype: OBJS
+F001r: # Knight Academy
+  - name: UA Door right
+    type: objpatch
+    id: 0xFC40
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00
+  - name: UA Door left
+    type: objpatch
+    id: 0xFC3F
+    layer: 0
+    room: 0
+    objtype: OBJS
+    patch:
+      anglex: 0xFF00
 F012r: # Batreaux home
   - name: Batreaux unlock
     type: objpatch
@@ -412,6 +429,23 @@ B200: # Boss Room
       - story_flag: -1
         night: 0
         layer: 1
+D201_1: # FS B
+   - name: Clawshot Traget for 2nd small Key
+     type: objadd
+     layer: 0
+     room: 5
+     objtype: OBJ
+     object:
+       params1: 0xFFFFFC24
+       params2: 0xFFFFFFFF
+       posx: -5743
+       posy: 650
+       posz: -8514
+       anglex: 0
+       angley: 36894
+       anglez: 0
+       id: 0xFC20
+       name: ClawSTg
 F300: # lanayru Main Area
   - name: Layer override
     type: layeroverride
@@ -447,6 +481,13 @@ F301_1: # Sand Sea Main Area
     layer: 0
     room: 0
     objtype: STAG
+D300: # LMF A
+  - name: Dust in Gust Bellow room Blocking Door
+    type: objdelete
+    id: 0xFC35
+    layer: 0
+    room: 4
+    objtype: SOBJ
 F402: # Sealed Temple
   - name: Layer override
     type: layeroverride
