@@ -90,14 +90,14 @@ F100: # Faron main area
     destlayer: 1
     room: 0
     objtype: OBJ
-#  - name: Yerbal Spawn
-#    type: objpatch
-#    id: 0x52B6
-#    layer: 4
-#    room: 0
-#    objtype: OBJS
-#    patch:
-#      - trigstoryfid: 206 # scale
+  - name: Yerbal Spawn
+    type: objpatch
+    id: 0x52B6
+    layer: 4
+    room: 0
+    objtype: OBJS
+    patch:
+      - trigstoryfid: 206 # scale
   - name: Trial
     type: oarcadd
     oarc: PLHarpPlay
@@ -124,6 +124,16 @@ F100: # Faron main area
     destlayer: 1
     room: 0
     objtype: STAG
+F101: # Deep Woods
+  - name: Layer override
+    type: layeroverride
+    override: # default layer 1, remove layer 3+
+      - story_flag: 5 # beat Skyview
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
 D100: # Skyview
   - name: Layer override
     type: layeroverride
@@ -134,6 +144,27 @@ D100: # Skyview
       - story_flag: 4 # skyview entrance CS
         night: 0
         layer: 1
+  - name: Small Key Soil
+    type: objmove
+    id: 0xFC4B
+    layer: 2
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Empty Soil
+    type: objdelete
+    id: 0xFC50
+    layer: 1
+    room: 4
+    objtype: OBJ
+  - name: Barr inside Beetle Room
+    type: objpatch
+    id: 0xFFFF
+    layer: 0
+    room: null
+    objtype: OBJ
+    patch:
+      - side2scenefid: FF #always open
   - name: Eyes
     type: oarcadd
     oarc: SwitchEye
@@ -286,6 +317,20 @@ F200: # Eldin main area
     destlayer: 0
     room: 2
     objtype: STAG
+F210: # Mogma Turf
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: -1
+        night: 0
+        layer: 1
+  - name: Cobal
+    type: objmove
+    id: 0xFC70
+    layer: 2
+    destlayer: 1
+    room: 0
+    objtype: OBJ
 D200: # ET
   - name: Bomb Bag from Ledd
     type: objdelete
@@ -442,7 +487,14 @@ F401: # Sealed grounds Whirlpool
     room: 1
     objtype: STAG
     patch:
-      trigstoryfid: 2047 # 0x7FF
+      trigstoryfid: 2047 # always trigger
+  - name: Door cs to Layer 0
+    type: objmove
+    id: 0xFCA2
+    layer: 1
+    destlayer: 0
+    room: 1
+    objtype: STAG
 F400: # Behind the Temple
   - name: Layer override
     type: layeroverride
