@@ -24,7 +24,7 @@ def mask_shift_set(value, mask, shift, new_value):
     """
     Replace new_value in value, by applying the mask after the shift
     """
-    value = value & mask
+    new_value = new_value & mask
     return (value & ~(mask << shift)) | (new_value << shift)
 
 def try_patch_obj(obj, key, value):
