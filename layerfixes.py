@@ -3,9 +3,10 @@ import random
 from collections import OrderedDict, defaultdict
 import yaml
 import json
+from io import BytesIO
 
-from sslib import AllPatcher
-from sslib.utils import write_bytes_create_dirs
+from sslib import AllPatcher, U8File
+from sslib.utils import write_bytes_create_dirs, encodeBytes
 
 def highest_objid(bzs):
     max_id = 0
@@ -227,6 +228,22 @@ def fix_layers():
                 next_id += 1
             bzs['EVNT'][0]['item'] = 11
             modified = True
+        # elif stage == 'F300_5' and room == 0:
+        #     OrderedDict(
+        #             params1 = 0xFFFFFFFF,
+        #             params2 = 0xFF5FFFFF,
+        #             posx = 761,
+        #             posy = -22,
+        #             posz = -2260,
+        #             sizex = 1000,
+        #             sizey = 1000,
+        #             sizez = 1000,
+        #             anglex = storyflag,
+        #             angley = 0,
+        #             anglez = 65535,
+        #             id = (0xFD84 & ~0x3FF) | next_id,
+        #             name = "saveObj",
+        #         )
         if modified:
             # print(json.dumps(bzs))
             return bzs
@@ -235,6 +252,44 @@ def fix_layers():
 
     patcher.set_bzs_patch(bzs_patch_func)
     patcher.do_patch()
+
+    # patch main.dol
+    orig_dol = bytearray((patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
+    for dolpatch in patches['global'].get('asm',{}).get('main',[]):
+        actual_code = bytes.fromhex(dolpatch['original'])
+        patched_code = bytes.fromhex(dolpatch['patched'])
+        assert len(actual_code) == len(patched_code), "code length has to remain the same!"
+        code_pos = orig_dol.find(actual_code)
+        
+        assert code_pos != -1, f"code {dolpatch['original']} not found in main.dol!"
+        assert orig_dol.find(actual_code, code_pos+1) == -1, f"code {dolpatch['original']} found multiple times in main.dol!"
+        orig_dol[code_pos:code_pos+len(actual_code)] = patched_code
+    write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', orig_dol)
+
+    rel_arc = U8File.parse_u8(BytesIO((patcher.actual_extract_path / 'DATA' / 'files' / 'rels.arc').read_bytes()))
+    rel_modified = False
+    for file, codepatches in patches['global'].get('asm',{}).items():
+        if file == 'main': # main.dol
+            continue
+        rel = rel_arc.get_file_data(f'rels/{file}NP.rel')
+        if rel is None:
+            print(f'ERROR: rel {file} not found!')
+            continue
+        rel = bytearray(rel)
+        for codepatch in codepatches:
+            actual_code = bytes.fromhex(codepatch['original'])
+            patched_code = bytes.fromhex(codepatch['patched'])
+            assert len(actual_code) == len(patched_code), "code length has to remain the same!"
+            code_pos = rel.find(actual_code)
+            
+            assert code_pos != -1, f"code {codepatch['original']} not found in {file}!"
+            assert rel.find(actual_code, code_pos+1) == -1, f"code {codepatch['original']} found multiple times in {file}!"
+            rel[code_pos:code_pos+len(actual_code)] = patched_code
+        rel_arc.set_file_data(f'rels/{file}NP.rel',rel)
+        rel_modified = True
+    if rel_modified:
+        rel_data = rel_arc.to_buffer()
+        write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'files' / 'rels.arc', rel_data)
 
 if __name__ == '__main__':
     fix_layers()

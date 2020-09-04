@@ -8,6 +8,17 @@ global:
     - 58 # b-wheel
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
+  asm:
+    main:
+      # sets the chesttype based on the item, change so that chesttype is determined by 00 00 00 30 in the params1
+      - original: 38 7f 0e 08 7c 03 20 ae 98 1c 12 09 28 00 00 03 40 82 00 14 20 04 01 ff 7f 83 e3 78 54 04 04 3e
+        patched:  80 1c 00 04 54 00 e7 be 98 1c 12 09 28 00 00 03 48 00 00 14 20 04 01 ff 7f 83 e3 78 54 04 04 3e
+    d_a_obj_door_boss: # function that checks for the dungeons storyflag, prevents putting in the boss key
+      - original: 94 21 FF F0 7C 08 02 A6 90 01 00 14 4B FF E2 45 # start of function
+        patched:  38 60 00 00 4e 80 00 20 90 01 00 14 4B FF E2 45 # just return 0
+    d_a_obj_time_door_before: # this bit checks for the current sword, replace equals check with greater equals
+      - original: 2c 00 00 04 40 82 00 a0
+        patched:  2c 00 00 04 41 80 00 a0
 F000: # Skyloft
   - name: Trial
     type: oarcadd
