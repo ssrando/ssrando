@@ -228,22 +228,38 @@ def fix_layers():
                 next_id += 1
             bzs['EVNT'][0]['item'] = 11
             modified = True
-        # elif stage == 'F300_5' and room == 0:
-        #     OrderedDict(
-        #             params1 = 0xFFFFFFFF,
-        #             params2 = 0xFF5FFFFF,
-        #             posx = 761,
-        #             posy = -22,
-        #             posz = -2260,
-        #             sizex = 1000,
-        #             sizey = 1000,
-        #             sizez = 1000,
-        #             anglex = storyflag,
-        #             angley = 0,
-        #             anglez = 65535,
-        #             id = (0xFD84 & ~0x3FF) | next_id,
-        #             name = "saveObj",
-        #         )
+        elif stage == 'F300_5' and room == 0:
+            new_obj = OrderedDict(
+                params1 = 0xFF0302FF,
+                params2 = 0xFF5FFFFF,
+                posx = 836,
+                posy = 0,
+                posz = 305,
+                anglex = 0xFFFF,
+                angley = 0xBC30,
+                anglez = 0xFFFF,
+                id = (0xFD84 & ~0x3FF) | next_id,
+                name = "saveObj",
+            )
+            next_id += 1
+            if not 'OBJS' in bzs['LAY ']['l0']:
+                bzs['LAY ']['l0']['OBJS'] = []
+            bzs['LAY ']['l0']['OBJS'].append(new_obj)
+            bzs['LAY ']['l0']['OBJN'].append('saveObj')
+            assert len(bzs['SCEN']) == 3, "F300_5 room 0 should have 3 SCEN"
+            new_scen = OrderedDict(
+                name = "F300",
+                room = 0,
+                layer = 0,
+                entrance = 5,
+                byte4 = 2,
+                byte5 = 2,
+                flag6 = 0,
+                zero = 0,
+                flag8 = 0
+            )
+            bzs['SCEN'].append(new_scen)
+            modified = True
         if modified:
             # print(json.dumps(bzs))
             return bzs
