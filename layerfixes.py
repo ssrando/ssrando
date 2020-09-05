@@ -73,12 +73,13 @@ def fix_layers():
         modified_extract_path=Path(__file__).parent / 'modified-extract',
         oarc_cache_path=Path(__file__).parent / 'oarc',
         copy_unmodified=False)
-    with open("extracts.yaml") as f:
-        extracts = yaml.safe_load(f)
     with open("patches.yaml") as f:
         patches = yaml.safe_load(f)
     
-    # patcher.create_oarc_cache(extracts)
+    if not patcher.oarc_cache_path.exists():
+        with open("extracts.yaml") as f:
+            extracts = yaml.safe_load(f)
+        patcher.create_oarc_cache(extracts)
 
     stageoarcs = defaultdict(set)
 
