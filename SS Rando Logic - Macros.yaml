@@ -1,0 +1,153 @@
+Goddess Longsword:
+    Sword x1
+
+Goddess White Sword:
+    Sword x2
+
+Master Sword:
+    Sword x3
+
+True Master Sword:
+    Sword x4
+
+Hook Beetle:
+    Beetle x2
+
+Digging Mitts:
+    Mitts
+
+Mogma Mitts:
+    Mitts x2
+
+Can Save Kukiel
+    Nothing
+#Add sword requirement for swordless modes
+
+Can Access Thunderhead:
+    Nothing
+# May be options in the future
+
+Can Access Beedle's Shop:
+    Slingshot | Beetle | Bow | Clawshots | Bomb Bag
+    
+Can Access Sealed Temple:
+    Emerald Tablet
+#Make this equal Nothing if starting with everything opened
+
+Can Access Eldin:
+    Ruby Tablet
+#Make this equal Nothing if starting with everything opened
+
+Can Access Second Part of Eldin:
+    Can Access Eldin & (Bomb Bag | Hook Beetle | Digging Mitts)
+
+Can Access Volcano Summit:
+    Can Access Second Part of Eldin & Fireshield Earrings
+
+Can Access Lanayru:
+    Amber Tablet
+#Make this equal Nothing if starting with everything opened
+
+Can Access Second Part of Lanayru:
+    Can Access Lanayru & (Clawshots | Hook Beetle)
+
+Can Retrieve Party Wheel:
+    Can Access Lanayru & Bomb Bag
+
+Can Access Sand Sea:
+    Can Access Lanayru & Clawshots & Gorge Small Key x2
+
+Can Access Goddess Walls:
+    Can Access Sykview 2 & Ballad of the Goddess & Harp
+
+Can Talk to Yerbal:
+    (Slingshot | Beetle) & ((Gust Bellows & Water Scale) | Clawshots)
+# Bow and Clawshots don't work to hit Yerbal
+
+Can Access Lake Floria:
+    Water Scale & Can Talk to Yerbal
+
+Can Access Deep Woods:
+    Can Access Sealed Temple & (Slingshot | Clawshots | Beetle | Bow | Bomb Bag)
+
+Can Access Skyview:
+    Can Access Deep Woods
+
+Can Get Past the First Skyview Room:
+    Slingshot | Clawshots | Beetle | Bow | Bomb Bag
+#With bombs break the barricade early. With clawshots you can hit the crystal from afar without stunning the boko baba (stand far away on the side).
+
+Can Beat Skyview:
+    Can Access Skyview & Skyview Small Key x2 & Skyview BK & (Bomb Bag | Beetle | Bow)
+
+Can Access ET:
+    Can Access Second Part of Eldin & Key Piece x5
+
+Can Beat ET:
+    Can Access ET & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET BK
+
+Can Access LMF:
+    Can Access Lanayru & Bomb Bag & Hook Beetle
+
+Can Beat LMF:
+    Can Access LMF & Hook Beetle & Gust Bellows & LMF BK
+# You need to be able to shoot the timeshift stone in the last room
+
+Can Access Skyview 2:
+    Water Scale & Can Access Skyview???
+
+Can Beat Skyview 2:
+    Can Access Skyview 2 & Can Beat Skyview???
+																																
+Can Get Sacred Water:
+    Can Beat Skyview 2 & Adventure Pouch & Bottle
+
+Can Access AC:
+    Can Get Sacred Water & Can Access Lake Floria
+
+Can Beat AC:
+    Can Access AC & Whip & AC BK & (AC Small Key x2 | Clawshots)
+
+Can Access Sandship:
+    Can Access Sand Sea & Gust Bellows
+#Gust Bellows needed to beat 2 Armoses in the Pirate Stronghold. Sea Chart not implemented yet
+
+Can Beat Sandship:
+    Can Access Sandship & Bow & Sandship BK
+
+Water Basin:
+    Can Access AC???
+#Might want to remove this
+
+Can Access FS:
+    Can Access Volcano Summit & Adventure Pouch & Bottle & Clawshots & Water Basin
+
+Can Hit First Water Pods in FS:
+    Bow | Beetle | Clawshots | Slingshot | Bomb Bag
+
+Can Beat FS:
+    Can Access FS & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS BK
+
+Can Access Past:
+    Master Sword & Can Beat FS & Can Beat AC
+
+Can Access Levias:
+    Can Access Past
+
+Can Access/Beat Flooded Faron:
+    Can Access Levias & Water Scale
+
+Can Access/(Beat) Boko Base:
+    Can Access Levias
+
+Can Access Lanayru Gorge:
+    Can Access Lanayru & Can Access Levias & Clawshots
+
+Can Heal Thunder Dragon:
+    Can Access Lanayru Gorge & Life Tree Seedling & Bomb Bag & Clawshots & Hook Beetle & Whip & Can Access Past?
+
+Can Access Skykeep:
+    Stone of Trials & Clawshots
+
+Can Beat Skykeep:
+    Can Access Skykeep & Clawshots & Skykeep Small Key x1 & Bow & Gust Bellows & Whip
