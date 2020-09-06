@@ -20,11 +20,16 @@ Make sure to have the extracted game prepared as stated in Installing, otherwise
 11 & 13: Imp2 Requirements reached (should be set at once)
 902: Beat Required dungeon 1
 903: Beat Required dungeon 2
+
 904: Progressive Mitts1
 905: Progressive Mitts2
+
 906: Progressive Sword1 (Practice Sword)
 907: Progressive Sword2 (Goddess Sword)
 908: Progressive Sword3 (Goddess Long Sword)
 909: Progressive Sword4 (Goddess White Sword)
 910: Progressive Sword5 (Master Sword)
 911: Progressive Sword6 (True Master Sword)
+
+912: Progressive Beetle1
+913: Progressive Beetle2 (Hook Beetle)

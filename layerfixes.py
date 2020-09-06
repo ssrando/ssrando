@@ -388,19 +388,50 @@ def fix_layers():
                 flowobj[key] = val
             print(f'patched flow {command["index"]}, {filename}')
             modified = True
+        for command in filter(lambda x: x['type'] == 'flowadd', flowpatches):
+            assert len(msbf['FLW3']['flow']) == command['index'], f'index has to be the next value in the flow, expected {len(msbf["FLW3"]["flow"])} got {command["index"]}'
+            flowobj = OrderedDict(
+                type='type1',
+                subType=-1,
+                param1=0,
+                param2=0,
+                next=-1,
+                param3=0,
+                param4=0,
+                param5=0,
+            )
+            for key, val in command['flow'].items():
+                flowobj[key] = val
+            msbf['FLW3']['flow'].append(flowobj)
+            print(f'added flow {command["index"]}, {filename}')
+            modified = True
         if filename == '003-ItemGet':
             # make progressive mitts
             make_progressive_item(msbf, 93, [35, 231], [56, 99], [904, 905])
             # make progressive swords
             # TODO fix empty textboxes
             # TODO trainings and goddess sword both set storyflags on their own, could reuse those
-            make_progressive_item(msbf, 136, [77, 608, 472, 472, 472, 472], [10, 11, 12, 9, 13, 14], [906, 907, 908, 909, 910, 911])
+            make_progressive_item(msbf, 136, [77, 608, 75, 78, 74, 73], [10, 11, 12, 9, 13, 14], [906, 907, 908, 909, 910, 911])
+            # make progressive beetle
+            make_progressive_item(msbf, 96, [38, 178], [53, 75], [912, 913])
             modified = True
         if modified:
             return msbf
         else:
             return None
+    def text_patch(msbt, filename):
+        modified = False
+        textpatches = eventpatches.get(filename, [])
+        for command in filter(lambda x: x['type'] == 'textpatch', textpatches):
+            msbt['TXT2'][command['index']] = command['text'].encode('utf-16be')
+            print(f'patched text {command["index"]}, {filename}')
+            modified = True
+        if modified:
+            return msbt
+        else:
+            return None
     patcher.set_event_patch(flow_patch)
+    patcher.set_event_text_patch(text_patch)
     patcher.do_patch()
 
     # patch main.dol

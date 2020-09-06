@@ -4,3 +4,19 @@
     index: 462 # skip scene change after getting goddess sword
     patch:
       next: -1
+  - name: Goddess Longsword Text
+    type: textpatch
+    index: 16
+    text: "You got the \x0E\x00\x03\x02\x05Goddess Longsword\x0E\x00\x03\x02\uFFFF!"
+  - name: Goddess Whitesword Text
+    type: textpatch
+    index: 12
+    text: "You got the \x0E\x00\x03\x02\x05Goddess Whitesword\x0E\x00\x03\x02\uFFFF!"
+  - name: Master Sword Text
+    type: textpatch
+    index: 17
+    text: "You got the \x0E\x00\x03\x02\x05Master Sword\x0E\x00\x03\x02\uFFFF!"
+  - name: True Master Sword Text
+    type: textpatch
+    index: 19
+    text: "You got the \x0E\x00\x03\x02\x05True Master Sword\x0E\x00\x03\x02\uFFFF!"
