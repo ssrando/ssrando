@@ -1,0 +1,6 @@
+003-ItemGet:
+  - name: Goddess Sword Scene change
+    type: flowpatch
+    index: 462 # skip scene change after getting goddess sword
+    patch:
+      next: -1

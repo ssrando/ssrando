@@ -176,6 +176,8 @@ def fix_layers():
         copy_unmodified=False)
     with open("patches.yaml") as f:
         patches = yaml.safe_load(f)
+    with open("eventpatches.yaml") as f:
+        eventpatches = yaml.safe_load(f)
     
     if not patcher.oarc_cache_path.exists():
         with open("extracts.yaml") as f:
@@ -377,16 +379,28 @@ def fix_layers():
             return None
 
     patcher.set_bzs_patch(bzs_patch_func)
-    def progressive_items(msbf, filename):
-        if filename != '003-ItemGet':
+    def flow_patch(msbf, filename):
+        modified = False
+        flowpatches = eventpatches.get(filename, [])
+        for command in filter(lambda x: x['type'] == 'flowpatch', flowpatches):
+            flowobj = msbf['FLW3']['flow'][command['index']]
+            for key, val in command['patch'].items():
+                flowobj[key] = val
+            print(f'patched flow {command["index"]}, {filename}')
+            modified = True
+        if filename == '003-ItemGet':
+            # make progressive mitts
+            make_progressive_item(msbf, 93, [35, 231], [56, 99], [904, 905])
+            # make progressive swords
+            # TODO fix empty textboxes
+            # TODO trainings and goddess sword both set storyflags on their own, could reuse those
+            make_progressive_item(msbf, 136, [77, 608, 472, 472, 472, 472], [10, 11, 12, 9, 13, 14], [906, 907, 908, 909, 910, 911])
+            modified = True
+        if modified:
+            return msbf
+        else:
             return None
-        # make progressive mitts
-        make_progressive_item(msbf, 93, [35, 231], [56, 99], [904, 905])
-        # make progressive swords
-        # TODO fix empty textboxes
-        make_progressive_item(msbf, 136, [77, 608, 472, 472, 472, 472], [10, 11, 12, 9, 13, 14], [906, 907, 908, 909, 910, 911])
-        return msbf
-    patcher.set_event_patch(progressive_items)
+    patcher.set_event_patch(flow_patch)
     patcher.do_patch()
 
     # patch main.dol
