@@ -12,3 +12,19 @@ TODO
 ### Tests
 `python3 -mpytest test`  
 Make sure to have the extracted game prepared as stated in Installing, otherwise they won't work
+
+### Changes
+#### Storyflag
+900: Beat Ancient Cistern
+901: Beat Fire Sanctuary
+11 & 13: Imp2 Requirements reached (should be set at once)
+902: Beat Required dungeon 1
+903: Beat Required dungeon 2
+904: Progressive Mitts1
+905: Progressive Mitts2
+906: Progressive Sword1 (Practice Sword)
+907: Progressive Sword2 (Goddess Sword)
+908: Progressive Sword3 (Goddess Long Sword)
+909: Progressive Sword4 (Goddess White Sword)
+910: Progressive Sword5 (Master Sword)
+911: Progressive Sword6 (True Master Sword)

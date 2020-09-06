@@ -13,7 +13,7 @@ from .utils import write_bytes_create_dirs
 
 STAGE_REGEX = re.compile('(.+)_stg_l([0-9]+).arc.LZ')
 EVENT_REGEX = re.compile('([0-9])-[A-Za-z]+.arc')
-LANGUAGES = {'EU': 'en_GB', 'US': 'en_US'} # no idea for JP
+LANGUAGES = {'EU': 'en_GB', 'US': 'en_US', 'JP': 'ja_JP'}
 
 class AllPatcher:
 
@@ -31,6 +31,7 @@ class AllPatcher:
         self.stage_oarc_add={}
         self.bzs_patch=None
         self.event_patch=None
+        self.event_text_patch=None
         if not (self.actual_extract_path / 'DATA').exists():
             raise Exception('actual extract path should have a DATA subdir, make sure the directory structure is properly set up!')
     
@@ -46,13 +47,23 @@ class AllPatcher:
         """
         self.bzs_patch = patchfunc
     
-    def set_event_patch(self, event: str, patchfunc: Callable[[ParsedMsb], ParsedMsb]):
+    def set_event_patch(self, patchfunc: Callable[[ParsedMsb, str], ParsedMsb]):
         """
-        The function gets called for every event file (msbt, msbf)
+        The function gets called for every event file, which stores the logic of events (msbf)
+        it passes the parsed msbf file and the filename (for example `110-DivingGame`)
         if the return value of the function is not None, it will override the game files,
         otherwise nothing will change
         """
-        self.event_patche = patchfunc
+        self.event_patch = patchfunc
+    
+    def set_event_text_patch(self, patchfunc: Callable[[ParsedMsb, str], ParsedMsb]):
+        """
+        The function gets called for every event file, which stores the text for textboxes etc. (msbt)
+        it passes the parsed msbt file and the filename (for example `110-DivingGame`)
+        if the return value of the function is not None, it will override the game files,
+        otherwise nothing will change
+        """
+        self.event_text_patch = patchfunc
     
     def create_oarc_cache(self, extracts):
         self.oarc_cache_path.mkdir(parents=True, exist_ok=True)
@@ -93,18 +104,18 @@ class AllPatcher:
                     if newstagebzs is not None:
                         stageu8.set_file_data('dat/stage.bzs', buildBzs(newstagebzs))
                         modified = True
-                # patch rooms
-                for roomid in range(len(stagebzs.get('RMPL',[0]))):
-                    roomdata = stageu8.get_file_data(f'rarc/{stage}_r{roomid:02}.arc')
-                    if roomdata is None:
-                        continue
-                    roomarc = U8File.parse_u8(BytesIO(roomdata))
-                    roombzs = parseBzs(roomarc.get_file_data('dat/room.bzs'))
-                    roombzs = self.bzs_patch(roombzs, stage, roomid)
-                    if roombzs is not None:
-                        roomarc.set_file_data('dat/room.bzs', buildBzs(roombzs))
-                        stageu8.set_file_data(f'rarc/{stage}_r{roomid:02}.arc', roomarc.to_buffer())
-                        modified = True
+                    # patch rooms
+                    for roomid in range(len(stagebzs.get('RMPL',[0]))):
+                        roomdata = stageu8.get_file_data(f'rarc/{stage}_r{roomid:02}.arc')
+                        if roomdata is None:
+                            continue
+                        roomarc = U8File.parse_u8(BytesIO(roomdata))
+                        roombzs = parseBzs(roomarc.get_file_data('dat/room.bzs'))
+                        roombzs = self.bzs_patch(roombzs, stage, roomid)
+                        if roombzs is not None:
+                            roomarc.set_file_data('dat/room.bzs', buildBzs(roombzs))
+                            stageu8.set_file_data(f'rarc/{stage}_r{roomid:02}.arc', roomarc.to_buffer())
+                            modified = True
             # repack u8 and compress it if modified
             if modified:
                 stagedata = stageu8.to_buffer()
@@ -114,33 +125,39 @@ class AllPatcher:
                 shutil.copy(stagepath, modified_stagepath)
                 print(f'copied {stage} l{layer}')
 
-        # events
-        # eventrootpath = None
-        # modified_eventrootpath = None
+        # events and text
+        eventrootpath = None
+        modified_eventrootpath = None
 
-        # # check target language
-        # for path, lang in LANGUAGES.items():
-        #     if (self.actual_extract_path/'DATA'/'files'/path).exists():
-        #         eventrootpath = self.actual_extract_path/'DATA'/'files'/path/'Object'/lang
-        #         if self.keep_path:
-        #             modified_eventrootpath = self.modified_extract_path/'DATA'/'files'/path/'Object'/lang
-        #         else:
-        #             modified_eventrootpath = self.modified_extract_path
-        #         break
-        # TODO
-        # if eventrootpath == None:
-        #     raise Exception('Event files not found')
-        # for eventpath in eventrootpath.glob('*.arc'):
-        #     filename = eventpath.parts[-1]
-        #     match = EVENT_REGEX.match(filename)
-        #     eventfilenum = match[1]
-        #     modified_eventpath = modified_eventrootpath / filename
-        #     eventarc = U8File.parse_u8(BytesIO(eventpath.read_bytes()))
-        #     for file, patchfunc in self.event_patches.items():
-        #         if not str(eventfilenum) == file[0]: # first letter determines which file to use
-        #             continue
-        #         parsedMsb = parseMSB(eventarc.get_file_data(f'{filename[:-4]}/{file}'))
-        #         parsedMsb = patchfunc(parsedMsb)
-        #         eventarc.set_file_data(f'{filename[:-4]}/{file}', buildMSB(parsedMsb))
-        #     modified_eventpath.write_bytes(eventarc.to_buffer())
-        #     print(f'patched {filename}')
+        # check target language
+        for path, lang in LANGUAGES.items():
+            if (self.actual_extract_path/'DATA'/'files'/path).exists():
+                eventrootpath = self.actual_extract_path/'DATA'/'files'/path/'Object'/lang
+                modified_eventrootpath = self.modified_extract_path/'DATA'/'files'/path/'Object'/lang
+
+        if eventrootpath == None:
+            raise Exception('Event files not found')
+        for eventpath in eventrootpath.glob('*.arc'):
+            modified = False
+            filename = eventpath.parts[-1]
+            modified_eventpath = modified_eventrootpath / filename
+            eventarc = U8File.parse_u8(BytesIO(eventpath.read_bytes()))
+            for eventfilepath in eventarc.get_all_paths():
+                eventfilename = eventfilepath.split("/")[-1]
+                if eventfilename.endswith('.msbf'):
+                    parsedMsb = parseMSB(eventarc.get_file_data(eventfilepath))
+                    if self.event_patch:
+                        patchedMsb = self.event_patch(parsedMsb, eventfilename[:-5])
+                        if patchedMsb:
+                            eventarc.set_file_data(eventfilepath, buildMSB(patchedMsb))
+                            modified = True
+                elif eventfilename.endswith('.msbt'):
+                    parsedMsb = parseMSB(eventarc.get_file_data(eventfilepath))
+                    if self.event_text_patch:
+                        patchedMsb = self.event_text_patch(parsedMsb, eventfilename[:-5])
+                        if patchedMsb:
+                            eventarc.set_file_data(eventfilepath, buildMSB(patchedMsb))
+                            modified = True
+            if modified:
+                write_bytes_create_dirs(modified_eventpath, eventarc.to_buffer())
+                print(f'patched {filename}')

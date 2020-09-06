@@ -4,9 +4,110 @@ from collections import OrderedDict, defaultdict
 import yaml
 import json
 from io import BytesIO
+from enum import IntEnum
 
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
+
+class FlagEventTypes(IntEnum):
+    SET_STORYFLAG = 0,
+    UNSET_STORYFLAG = 1,
+    SET_SCENEFLAG = 2,
+    UNSET_SCENEFLAG = 3,
+    SET_ZONEFLAG = 4,
+    UNSET_ZONEFLAG = 5,
+    SET_TEMPFLAG = 28,
+    UNSET_TEMPFLAG = 29,
+
+class FlagSwitchTypes(IntEnum):
+    CHOICE = 0,
+    STORYFLAG = 3,
+    ZONEFLAG = 5,
+    SCENEFLAG = 6,
+    TEMPFLAG = 9,
+
+def make_switch(subtype: FlagSwitchTypes, arg: int):
+    if subtype == FlagSwitchTypes.CHOICE:
+        p2 = 0
+        p3 = arg # number of choices
+    else:
+        p2 = arg
+        p3 = subtype.value
+    return OrderedDict(
+        type = "switch",
+        subType = 6,
+        param1 = 0,
+        param2 = p2,
+        next = -1,
+        param3 = p3,
+        param4 = -1,
+        param5 = -1,
+    )
+
+def make_give_item_event(item):
+    return OrderedDict(
+        type = "type3",
+        subType = 0,
+        param1 = 0,
+        param2 = item,
+        next = -1,
+        param3 = 9,
+        param4 = 0,
+        param5 = 0,
+    )
+
+def make_flag_event(subtype: FlagEventTypes, flag):
+    if subtype == FlagEventTypes.SET_STORYFLAG or subtype == FlagEventTypes.UNSET_STORYFLAG:
+        st = 0
+        p1 = 0
+        p2 = flag
+    else:
+        st = 1
+        p1 = flag
+        p2 = 0
+    return OrderedDict(
+        type = "type3",
+        subType = st,
+        param1 = p1,
+        param2 = p2,
+        next = -1,
+        param3 = subtype.value,
+        param4 = 0,
+        param5 = 0,
+    )
+
+def add_msbf_branch(msbf, switch, branchpoints):
+    branch_index = len(msbf['FLW3']['branch_points'])
+    msbf['FLW3']['branch_points'].extend(branchpoints)
+    switch['param4'] = len(branchpoints)
+    switch['param5'] = branch_index
+    msbf['FLW3']['flow'].append(switch)
+
+def make_progressive_item(msbf, base_item_start, item_text_indexes, item_ids, storyflags):
+    if len(item_text_indexes) != len(storyflags) or len(item_text_indexes) != len(item_ids):
+        raise Exception("item_text_indexes should be the same length as storyflags!")
+    flow_idx = len(msbf['FLW3']['flow'])
+    msbf['FLW3']['flow'][base_item_start]['next'] = flow_idx
+    index = len(item_text_indexes) - 1 # start from the highest upgrade
+    # first, check if the storyflag of the previous upgrade is set
+    # if yes, set the storyflag for this upgrade, give the upgrade and jump to that upgrade's text
+    # otherwise check the next upgrade storyflag. If no storyflag is set, set the lowest upgrades storyflag
+    # but no need to give that item since it's that items event that is hijacked
+    for index in range(len(item_text_indexes)-1, 0, -1):
+        branch = make_switch(FlagSwitchTypes.STORYFLAG, storyflags[index-1])
+        add_msbf_branch(msbf, branch, [flow_idx+1, flow_idx+3])
+        event = make_give_item_event(item_ids[index])
+        event['next'] = flow_idx + 2
+        msbf['FLW3']['flow'].append(event)
+        event = make_flag_event(FlagEventTypes.SET_STORYFLAG, storyflags[index])
+        event['next'] = item_text_indexes[index]
+        msbf['FLW3']['flow'].append(event)
+        flow_idx += 3 
+    event = make_flag_event(FlagEventTypes.SET_STORYFLAG, storyflags[0])
+    event['next'] = item_text_indexes[0]
+    msbf['FLW3']['flow'].append(event)
+
+    # check highest
 
 def highest_objid(bzs):
     max_id = 0
@@ -89,6 +190,8 @@ def fix_layers():
         for patch in stagepatches:
             if patch['type'] == 'oarcadd':
                 stageoarcs[(stage, patch['destlayer'])].add(patch['oarc'])
+    
+    stageoarcs[('D000',0)].add('GetSwordA')
     
     for (stage, layer), oarcs in stageoarcs.items():
         patcher.add_stage_oarc(stage, layer, oarcs)
@@ -261,6 +364,12 @@ def fix_layers():
             )
             bzs['SCEN'].append(new_scen)
             modified = True
+        elif stage == 'D000' and room == 0:
+            for obj in bzs['LAY ']['l0']['OBJS']:
+                if obj['name'] == 'TBox':
+                    obj['params1'] = (obj['params1'] & ~0x30) | 0x10 
+                    obj['anglez'] = (obj['anglez'] & ~0x1FF) | 10 # progressive sword
+            modified = True
         if modified:
             # print(json.dumps(bzs))
             return bzs
@@ -268,6 +377,16 @@ def fix_layers():
             return None
 
     patcher.set_bzs_patch(bzs_patch_func)
+    def progressive_items(msbf, filename):
+        if filename != '003-ItemGet':
+            return None
+        # make progressive mitts
+        make_progressive_item(msbf, 93, [35, 231], [56, 99], [904, 905])
+        # make progressive swords
+        # TODO fix empty textboxes
+        make_progressive_item(msbf, 136, [77, 608, 472, 472, 472, 472], [10, 11, 12, 9, 13, 14], [906, 907, 908, 909, 910, 911])
+        return msbf
+    patcher.set_event_patch(progressive_items)
     patcher.do_patch()
 
     # patch main.dol
