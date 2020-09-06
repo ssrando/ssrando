@@ -1,0 +1,245 @@
+- id: 1
+  name: Small Key
+  oarc: null
+  shuffle: Dungeon
+- id: 2
+  name: Green Rupee
+  oarc: null
+- id: 3
+  name: Blue Rupee
+  oarc: null
+- id: 4
+  name: Red Rupee
+  oarc: null
+- id: 6
+  name: Heart
+  oarc: null
+- id: 9
+  name: Goddess Whitesword
+  oarc: null
+- id: 10
+  name: Practice Sword
+  oarc: GetSwordA
+- id: 11
+  name: Goddess Sword
+  oarc: null
+- id: 12
+  name: Goddess Longsword
+  oarc: null
+- id: 13
+  name: Master Sword
+  oarc: null
+- id: 14
+  name: True Master Sword
+  oarc: null
+- id: 15
+  name: Sailcloth
+  oarc: null
+- id: 16
+  name: Goddess Harp
+  oarc: GetHarp
+- id: 19
+  name: Bow
+  oarc: GetBowA
+- id: 20
+  name: Clawshots
+  oarc: GetHookShot
+- id: 21
+  name: Bird statuette
+  oarc: GetBirdStatue
+- id: 25
+  name: AC BK
+  oarc: GetKeyBoss2A
+  shuffle: Dungeon
+- id: 26
+  name: FS BK
+  oarc: GetKeyBoss2B
+  shuffle: Dungeon
+- id: 27
+  name: Sandship BK
+  oarc: GetKeyBoss2C
+  shuffle: Dungeon
+- id: 29
+  name: Skyview BK
+  oarc: GetKeyBossA
+  shuffle: Dungeon
+- id: 30
+  name: ET BK
+  oarc: GetKeyBoss2B
+  shuffle: Dungeon
+- id: 31
+  name: LMF BK
+  oarc: GetKeyBossC
+  shuffle: Dungeon
+- id: 32
+  name: Silver rupee
+  oarc: null
+- id: 33
+  name: Gold rupee
+  oarc: null
+- id: 34
+  name: Rupoor
+  oarc: null
+- id: 40
+  name: 5 Bombs
+  oarc: null
+- id: 41
+  name: 10 Bombs
+  oarc: null
+- id: 49
+  name: Gust Bellows
+  oarc: GetVacuum
+- id: 50
+  name: Dungeon Map
+  oarc: null
+  shuffle: Dungeon
+- id: 52
+  name: Slingshot
+  oarc: GetPachinkoA
+- id: 53
+  name: Beetle
+  oarc: GetBeetleA
+- id: 56
+  name: Digging Mitts
+  oarc: GetMoleGloveA
+- id: 60
+  name: 10 Deku Seeds
+  oarc: null
+- id: 68
+  name: Water Scale
+  oarc: GetUroko
+- id: 71
+  name: Bug Net
+  oarc: GetNetA
+- id: 75
+  name: Hook Beetle
+  oarc: GetBeetleB
+- id: 76
+  name: Quick Beetle
+  oarc: GetBeetleC
+- id: 77
+  name: Though Beetle
+  oarc: GetBeetleD
+- id: 90
+  name: Iron Bow
+  oarc: GetBowB
+- id: 91
+  name: Sacred Bow
+  oarc: GetBowC
+- id: 92
+  name: Bomb Bag
+  oarc: GetBombBag
+- id: 93
+  name: Heart Container
+  oarc: GetHeartUtuwa
+- id: 94
+  name: Heart Piece
+  oarc: null
+- id: 98
+  name: Sea Chart
+  oarc: GetMapSea
+- id: 99
+  name: Mogma Mitts
+  oarc: GetMoleGloveB
+- id: 100
+  name: Heart Medal
+  oarc: GetMedal
+- id: 101
+  name: Rupee Medal
+  oarc: GetMedal
+- id: 102
+  name: Treasure Medal
+  oarc: GetMedal
+- id: 103
+  name: Potion Medal
+  oarc: GetMedal
+- id: 104
+  name: Cursed Medal
+  oarc: GetMedal
+- id: 105
+  name: Scatershot
+  oarc: GetPachinkoB
+- id: 108
+  name: Medium Wallet
+  oarc: GetPurseB
+- id: 109
+  name: Big Wallet
+  oarc: GetPurseC
+- id: 110
+  name: Giant Wallet
+  oarc: GetPurseD
+- id: 111
+  name: Tycoon Wallet
+  oarc: GetPurseE
+- id: 112
+  name: Adveture Pouch
+  oarc: GetPouchA
+- id: 113
+  name: Pouch Expansion
+  oarc: GetPouchB
+- id: 114
+  name: Life Medal
+  oarc: GetMedal
+- id: 116
+  name: Wooden Shield
+  oarc: GetShieldWood
+- id: 125
+  name: Hylian Shield
+  oarc: GetShieldHylia
+- id: 126
+  name: Revitalizing Potion
+  oarc: GetBottleRepair
+- id: 137
+  name: Whip
+  oarc: GetWhip
+- id: 138
+  name: Fire Shield Earrings
+  oarc: GetEarring
+- id: 140
+  name: Big Bug Net
+  oarc: GetNetB
+- id: 153
+  name: Bottle
+  oarc: null
+- id: 154
+  name: Rupee Medal
+  oarc: GetMedal
+- id: 155
+  name: Heart Medal
+  oarc: GetMedal
+- id: 158
+  name: Cawlin's Letter
+  oarc: GetKobunALetter
+- id: 159
+  name: Hornet Colossus Beetle
+  oarc: GetTerryCage
+- id: 160
+  name: Baby's Rattle
+  oarc: GetGaragara
+- id: 180
+  name: Stone of Trials
+  oarc: GetSirenKey
+- id: 186
+  name: Ballad of the Goddess
+  oarc: GetHarp
+- id: 187
+  name: Farore's Corage
+  oarc: GetHarp
+- id: 188
+  name: Nayru's Wisdom
+  oarc: GetHarp
+- id: 189
+  name: Din's Power
+  oarc: GetHarp
+- id: 190
+  name: Faron Soth Part
+  oarc: GetHarp
+- id: 191
+  name: Eldin Soth Part
+  oarc: GetHarp
+- id: 192
+  name: Lanayru Soth Part
+  oarc: GetHarp
+- id: 193
+  name: Song of the Hero
+  oarc: GetHarp
