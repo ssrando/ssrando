@@ -333,6 +333,8 @@ def fix_layers():
                 bzs['LAY ']['l0']['STAG'].append(new_obj)
                 next_id += 1
             bzs['EVNT'][0]['item'] = 11
+            bzs['EVNT'][0]['sceneflag1'] = 67
+            bzs['EVNT'][0]['sceneflag2'] = 0
             modified = True
         elif stage == 'F300_5' and room == 0:
             new_obj = OrderedDict(

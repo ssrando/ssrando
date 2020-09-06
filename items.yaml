@@ -48,34 +48,34 @@
   name: Bird statuette
   oarc: GetBirdStatue
 - id: 25
-  name: AC BK
+  name: AC Boss Key
   oarc: GetKeyBoss2A
   shuffle: Dungeon
 - id: 26
-  name: FS BK
+  name: FS Boss Key
   oarc: GetKeyBoss2B
   shuffle: Dungeon
 - id: 27
-  name: Sandship BK
+  name: Sandship Boss Key
   oarc: GetKeyBoss2C
   shuffle: Dungeon
 - id: 29
-  name: Skyview BK
+  name: Skyview Boss Key
   oarc: GetKeyBossA
   shuffle: Dungeon
 - id: 30
-  name: ET BK
+  name: ET Boss Key
   oarc: GetKeyBoss2B
   shuffle: Dungeon
 - id: 31
-  name: LMF BK
+  name: LMF Boss Key
   oarc: GetKeyBossC
   shuffle: Dungeon
 - id: 32
-  name: Silver rupee
+  name: Silver Rupee
   oarc: null
 - id: 33
-  name: Gold rupee
+  name: Gold Rupee
   oarc: null
 - id: 34
   name: Rupoor
@@ -90,7 +90,31 @@
   name: Gust Bellows
   oarc: GetVacuum
 - id: 50
-  name: Dungeon Map
+  name: Skyview Map
+  oarc: null
+  shuffle: Dungeon
+- id: 50
+  name: ET Map
+  oarc: null
+  shuffle: Dungeon
+- id: 50
+  name: LMF Map
+  oarc: null
+  shuffle: Dungeon
+- id: 50
+  name: AC Map
+  oarc: null
+  shuffle: Dungeon
+- id: 50
+  name: Sandship Map
+  oarc: null
+  shuffle: Dungeon
+- id: 50
+  name: FS Map
+  oarc: null
+  shuffle: Dungeon
+- id: 50
+  name: Skykeep Map
   oarc: null
   shuffle: Dungeon
 - id: 52
@@ -105,6 +129,15 @@
 - id: 60
   name: 10 Deku Seeds
   oarc: null
+- id: 62
+  name: Dusk Relic
+  oarc: null # TODO
+- id: 63
+  name: Evil Crystal # actually semi rare treasure
+  oarc: null # TODO put in object pack
+- id: 64
+  name: Golden Skull # actually rare treasure
+  oarc: null # TODO put in object pack
 - id: 68
   name: Water Scale
   oarc: GetUroko
@@ -189,6 +222,15 @@
 - id: 126
   name: Revitalizing Potion
   oarc: GetBottleRepair
+- id: 128
+  name: Small Seed Satchel
+  oarc: GetSpareSeedA
+- id: 131
+  name: Small Quiver
+  oarc: null # TODO
+- id: 134
+  name: Small Bomb Bag
+  oarc: null # TODO
 - id: 137
   name: Whip
   oarc: GetWhip
@@ -201,12 +243,6 @@
 - id: 153
   name: Bottle
   oarc: null
-- id: 154
-  name: Rupee Medal
-  oarc: GetMedal
-- id: 155
-  name: Heart Medal
-  oarc: GetMedal
 - id: 158
   name: Cawlin's Letter
   oarc: GetKobunALetter
@@ -216,6 +252,18 @@
 - id: 160
   name: Baby's Rattle
   oarc: GetGaragara
+- id: 163
+  name: Tumbleweed
+  oarc: null # TODO
+- id: 165
+  name: Eldin Ore
+  oarc: null # TODO
+- id: 178
+  name: Ruby Tablet
+  oarc: null # TODO check, irrelevant for now
+- id: 179
+  name: Amber Tablet
+  oarc: null # TODO check, irrelevant for now
 - id: 180
   name: Stone of Trials
   oarc: GetSirenKey
@@ -223,7 +271,7 @@
   name: Ballad of the Goddess
   oarc: GetHarp
 - id: 187
-  name: Farore's Corage
+  name: Farore's Courage
   oarc: GetHarp
 - id: 188
   name: Nayru's Wisdom
