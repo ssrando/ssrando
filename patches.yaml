@@ -66,60 +66,6 @@ F000: # Skyloft
     objtype: OBJS
     patch:
       anglex: 0xFF00 # sets the flag to -1 (meaning open)
-  - name: Sparring Hall Door Left
-    type: objpatch
-    id: 0xFC38
-    layer: 0
-    room: 0
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00
-  - name: Sparring Hall Door right
-    type: objpatch
-    id: 0xFC37
-    layer: 0
-    room: 0
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00
-  - name: UA Door right
-    type: objpatch
-    id: 0xFC30
-    layer: 0
-    room: 0
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00
-  - name: UA Door left
-    type: objpatch
-    id: 0xFC2F
-    layer: 0
-    room: 0
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00
-  # - name: more save statues
-  #   type: objadd
-  #   layer: 0
-  #   room: 0
-  #   objtype: OBJS
-  #   object:
-  #     params1: 0xFFFF002F
-  #     params2: 0xFF5FFFFF
-  #     posx: 2186.927734375
-  #     posy: 393.760009765625
-  #     posz: 2804.235107421875
-  #     anglex: 65535
-  #     angley: 728
-  #     anglez: 65535
-  #     id: 0xFC32
-  #     name: saveObj
-  # - name: delete statue
-  #   type: objdelete
-  #   id: 0xFC32
-  #   layer: 0
-  #   room: 0
-  #   objtype: OBJS
 F001r: # Knight Academy
   - name: UA Door right
     type: objpatch
@@ -282,14 +228,6 @@ D100: # Skyview
     layer: 1
     room: 4
     objtype: OBJ
-  # - name: Barr inside Beetle Room
-  #   type: objpatch
-  #   id: 0xFFFF
-  #   layer: 0
-  #   room: null
-  #   objtype: OBJ
-  #   patch:
-  #     side2scenefid: FF #always open
   - name: Eyes
     type: oarcadd
     oarc: SwitchEye
@@ -373,12 +311,6 @@ D100: # Skyview
     objtype: OBJS
     patch:
       setscenefid: 13 # 0x0 20 (0xD)
-  # - name: delete statue
-  #   type: objdelete
-  #   id: 0xFC1D
-  #   layer: 0
-  #   room: 0
-  #   objtype: OBJS
 F200: # Eldin main area
   - name: Layer override
     type: layeroverride
@@ -555,30 +487,6 @@ D300: # LMF A
     room: 4
     objtype: SOBJ
 F402: # Sealed Temple
-  - name: Layer override
-    type: layeroverride
-    override:
-      - story_flag: 342
-        night: 0
-        layer: 7
-      - story_flag: 133
-        night: 0
-        layer: 6
-      - story_flag: 175
-        night: 0
-        layer: 6
-      - story_flag: 200
-        night: 0
-        layer: 5
-      - story_flag: 132
-        night: 0
-        layer: 4
-      - story_flag: 140
-        night: 0
-        layer: 2
-      - story_flag: -1
-        night: 0
-        layer: 1
   - name: Imp 2 trigger
     type: objmove
     id: 0xFC4C
@@ -692,6 +600,9 @@ F400: # Behind the Temple
       - story_flag: 200
         night: 0
         layer: 5
+      - story_flag: 13
+        night: 0
+        layer: 4
       - story_flag: 9
         night: 0
         layer: 3
