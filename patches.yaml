@@ -72,6 +72,24 @@ F000: # Skyloft
     objtype: OBJS
     patch:
       anglex: 0xFF00 # sets the flag to -1 (meaning open)
+  - name: Wyrna cs
+    type: objdelete
+    id: 0xFDCE
+    layer: 4
+    room: 0
+    objtype: OBJ
+  - name: Wyrna cs
+    type: objdelete
+    id: 0xFDD2
+    layer: 6
+    room: 0
+    objtype: OBJ
+  - name: Wyrna cs
+    type: objdelete
+    id: 0xFDD7
+    layer: 8
+    room: 0
+    objtype: OBJ
 F001r: # Knight Academy
   - name: UA Door right
     type: objpatch
