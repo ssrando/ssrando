@@ -6,6 +6,7 @@ import json
 from io import BytesIO
 from enum import IntEnum
 
+import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
 
@@ -337,6 +338,8 @@ def fix_layers():
             bzs['EVNT'][0]['sceneflag2'] = 0
             modified = True
         elif stage == 'F300_5' and room == 0:
+            # Add save statue to leave dungeon after boss room to prevent softlock
+            # TODO: move to patches.yaml
             new_obj = OrderedDict(
                 params1 = 0xFF0302FF,
                 params2 = 0xFF5FFFFF,
@@ -368,11 +371,11 @@ def fix_layers():
             )
             bzs['SCEN'].append(new_scen)
             modified = True
-        elif stage == 'D000' and room == 0:
-            for obj in bzs['LAY ']['l0']['OBJS']:
-                if obj['name'] == 'TBox':
-                    obj['params1'] = (obj['params1'] & ~0x30) | 0x10 
-                    obj['anglez'] = (obj['anglez'] & ~0x1FF) | 10 # progressive sword
+        elif stage == 'F300_4' and room == 0:
+            # make harp CS not give an item and change storyflag
+            # TODO move to patches.yaml
+            bzs['EVNT'][20]['item'] = -1
+            bzs['EVNT'][20]['story_flag1'] = 914
             modified = True
         if modified:
             # print(json.dumps(bzs))
@@ -473,6 +476,18 @@ def fix_layers():
     if rel_modified:
         rel_data = rel_arc.to_buffer()
         write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'files' / 'rels.arc', rel_data)
+
+    # patch object pack
+    objpack_data = nlzss11.decompress((patcher.actual_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ').read_bytes())
+    object_arc = U8File.parse_u8(BytesIO(objpack_data))
+    objpack_modified = False
+    for oarc in patches['global'].get('objpackoarcadd',[]):
+        oarc_data = (patcher.oarc_cache_path / f'{oarc}.arc').read_bytes()
+        object_arc.add_file_data(f'oarc/{oarc}.arc', oarc_data)
+        objpack_modified = True
+    if objpack_modified:
+        objpack_data = object_arc.to_buffer()
+        write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ', nlzss11.compress(objpack_data))
 
 if __name__ == '__main__':
     fix_layers()
