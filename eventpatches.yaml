@@ -20,3 +20,15 @@
     type: textpatch
     index: 19
     text: "You got the \x0E\x00\x03\x02\x05True Master Sword\x0E\x00\x03\x02\uFFFF!"
+  - name: Faroure's Courage Text
+    type: textpatch
+    index: 463
+    text: "You learned \x0E\x00\x03\x02\x05Farore's Courage\x0E\x00\x03\x02\uFFFF!"
+  - name: Nayru's Wisdom Text
+    type: textpatch
+    index: 468
+    text: "You learned \x0E\x00\x03\x02\x05Nayru's Wisdom\x0E\x00\x03\x02\uFFFF!"
+  - name: Din's Power Text
+    type: textpatch
+    index: 467
+    text: "You learned \x0E\x00\x03\x02\x05Din's Power\x0E\x00\x03\x02\uFFFF!"
