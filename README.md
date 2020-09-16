@@ -33,3 +33,5 @@ Make sure to have the extracted game prepared as stated in Installing, otherwise
 
 912: Progressive Beetle1
 913: Progressive Beetle2 (Hook Beetle)
+
+914: Beat LMF (more precisely, watch harp CS), storyflag 9 is associated with harp
