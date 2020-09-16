@@ -8,6 +8,12 @@ global:
     - 58 # b-wheel
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
+  objpackoarcadd:
+    - GetSozaiL # Monster Horn (part of treasure)
+    # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
+    - GetSozaiN # Blue Bird Feather (part of rare treasure)
+    - GetSozaiO # Golden Skull (part of rare treasure)
+    - GetSozaiP # Goddess Plume (part of rare treasure)
   asm:
     main:
       # sets the chesttype based on the item, change so that chesttype is determined by 00 00 00 30 in the params1
@@ -310,30 +316,21 @@ D100: # Skyview
     room: 10
     objtype: OBJS
     patch:
-      setscenefid: 13 # 0x0 20 (0xD)
+      setscenefid: 13 # 0x0 20
 F200: # Eldin main area
   - name: Layer override
     type: layeroverride
     override:
-      - story_flag: 19
-        night: 0
-        layer: 4
-      - story_flag: 677
-        night: 0
-        layer: 3
-      - story_flag: 48
-        night: 0
-        layer: 2
       - story_flag: -1
         night: 0
         layer: 1
-  - name: Mogma Turf Rock
+  - name: intro cs
     type: objmove
-    id: 0x0CAE
+    id: 0xFC26
     layer: 1
     destlayer: 0
-    room: 2
-    objtype: OBJS
+    room: 0
+    objtype: STAG
   - name: First Mogma cs Fi
     type: objdelete
     id: 0xFC22
@@ -466,6 +463,16 @@ F300: # lanayru Main Area
     destlayer: 1
     room: 0
     objtype: OBJS
+F300_4: # Temple of Time
+  - name: Layer override
+    type: layeroverride
+    override: # harp CS storyflag changed
+      - story_flag: 914
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
 F301_1: # Sand Sea Main Area
   - name: Skipper's Text at first time in Sand  # gets rid of 2x40 so also of the Evnttags
     type: objdelete
@@ -486,42 +493,21 @@ D300: # LMF A
     layer: 0
     room: 4
     objtype: SOBJ
+  - name: Wall in Gust Bellow room Blocking Door
+    type: objdelete
+    id: 0xFC4E
+    layer: 0
+    room: 4
+    objtype: SOBJ
+  - name: Door in Gust Bellow room Blocking Door
+    type: objpatch
+    id: 0xFC12
+    layer: 0
+    room: 4
+    objtype: OBJS
+    patch:
+      params1: 0xF7FFFC20
 F402: # Sealed Temple
-  - name: Imp 2 trigger
-    type: objmove
-    id: 0xFC4C
-    layer: 3
-    destlayer: 2
-    room: 2
-    objtype: OBJ
-  - name: Imp 2 Groose
-    type: objmove
-    id: 0xFC4A
-    layer: 3
-    destlayer: 2
-    room: 2
-    objtype: OBJ
-  - name: Imp 2 trigger aswell?
-    type: objmove
-    id: 0xFC52
-    layer: 3
-    destlayer: 2
-    room: 2
-    objtype: OBJ
-  - name: Imp 2 trigger aswell??
-    type: objmove
-    id: 0xFC4B
-    layer: 3
-    destlayer: 2
-    room: 2
-    objtype: OBJ
-  - name: NpcInv
-    type: objmove
-    id: 0xFC51
-    layer: 3
-    destlayer: 2
-    room: 2
-    objtype: OBJ
   - name: SotH start cs
     type: objdelete
     id: 0xFC4F
