@@ -25,6 +25,11 @@ global:
     d_a_obj_time_door_before: # this bit checks for the current sword, replace equals check with greater equals
       - original: 2c 00 00 04 40 82 00 a0
         patched:  2c 00 00 04 41 80 00 a0
+    d_a_obj_item_heart_container:
+      # normally, the heart container spawns an item, which is hardcoded to the heart container item.
+      # this uses forbidden knowledge, that params1 is still in r0 from the called function to extract the item from that
+      - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 4b ff f1 85 7c 66 1b 78 38 60 00 5d
+        patched:  94 21 ff f0 7c 08 02 a6 90 01 00 14 4b ff f1 85 7c 66 1b 78 54 03 86 3e
 F000: # Skyloft
   - name: Trial
     type: oarcadd

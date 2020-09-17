@@ -9,6 +9,7 @@ from enum import IntEnum
 import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
+from tboxSubtypes import tboxSubtypes
 
 class FlagEventTypes(IntEnum):
     SET_STORYFLAG = 0,
@@ -169,6 +170,24 @@ def try_patch_obj(obj, key, value):
     else:
         print(f'ERROR: unsupported object to patch {obj}')
 
+def patch_tbox_item(tbox: OrderedDict, itemid: int):
+    origitemid = tbox['anglez'] & 0x1FF
+    boxtype = tboxSubtypes[origitemid]
+    tbox['anglez'] = mask_shift_set(tbox['anglez'], 0x1FF, 0, itemid)
+    # code has been patched, to interpret this part of params1 as boxtype
+    tbox['params1'] = mask_shift_set(tbox['params1'], 0x3, 4, boxtype)
+
+def patch_item_item(itemobj: OrderedDict, itemid: int):
+    itemobj['params1'] = mask_shift_set(itemobj['params1'], 0xFF, 0, itemid)
+
+# these are not treasure chests, but instead only used for the hp in zeldas room
+def patch_chest_item(chest: OrderedDict, itemid: int):
+    chest['params1'] = mask_shift_set(chest['params1'], 0xFF, 8, itemid)
+
+# code has been patched to use this part of params1 as itemid
+def patch_heart_co(heart_co: OrderedDict, itemid: int):
+    heart_co['params1'] = mask_shift_set(heart_co['params1'], 0xFF, 16, itemid)
+
 def fix_layers():
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
@@ -302,6 +321,10 @@ def fix_layers():
             next_id += 1
             if not objtype in bzs['LAY '][f'l{layer}']:
                 bzs['LAY '][f'l{layer}'][objtype] = []
+            # add object name to objn
+            objn = bzs['LAY '][f'l{layer}']['OBJN']
+            if not obj['name'] in objn:
+                objn.append(obj['name'])
             bzs['LAY '][f'l{layer}'][objtype].append(new_obj)
             modified = True
             print(f'added object {obj["name"]} to {layer} in room {room}')
