@@ -30,6 +30,10 @@ global:
       # this uses forbidden knowledge, that params1 is still in r0 from the called function to extract the item from that
       - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 4b ff f1 85 7c 66 1b 78 38 60 00 5d
         patched:  94 21 ff f0 7c 08 02 a6 90 01 00 14 4b ff f1 85 7c 66 1b 78 54 03 86 3e
+    d_a_obj_chandelier:
+      # normall, the heart piece is hardcoded, change it so that it instead uses 0000FF00 from params1
+      - original: 94 21 ff f0 7c 08 02 a6 38 a0 00 00 38 e0 00 01 90 01 00 14 39 00 00 ff 93 e1 00 0c 7c 9f 23 78 38 80 00 00 93 c1 00 08 7c 7e 1b 78 80 03 00 04 38 60 00 5e 54 06 46 3e
+        patched:  94 21 ff f0 7c 08 02 a6 38 a0 00 00 38 e0 00 01 90 01 00 14 39 00 00 ff 93 e1 00 0c 7c 9f 23 78 38 80 00 00 93 c1 00 08 7c 7e 1b 78 80 03 00 04 54 03 c6 3e 54 06 46 3e
 F000: # Skyloft
   - name: Trial
     type: oarcadd

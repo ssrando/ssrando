@@ -188,6 +188,10 @@ def patch_chest_item(chest: OrderedDict, itemid: int):
 def patch_heart_co(heart_co: OrderedDict, itemid: int):
     heart_co['params1'] = mask_shift_set(heart_co['params1'], 0xFF, 16, itemid)
 
+# code has been patched to use this part of params1 as itemid
+def patch_chandelier_item(chandel: OrderedDict, itemid: int):
+    chandel['params1'] = mask_shift_set(chandel['params1'], 0xFF, 8, itemid)
+
 def fix_layers():
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
