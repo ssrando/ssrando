@@ -199,6 +199,9 @@ def patch_soil_item(soil: OrderedDict, itemid: int):
     # if it would have been a key piece otherwise
     soil['params2'] = mask_shift_set(soil['params2'], 0xFF, 0x18, itemid)
 
+def patch_trial_item(trial: OrderedDict, itemid: int):
+    trial['params1'] = mask_shift_set(trial['params1'], 0xFF, 0x18, itemid)
+
 def fix_layers():
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
@@ -410,10 +413,6 @@ def fix_layers():
             # TODO move to patches.yaml
             bzs['EVNT'][20]['item'] = -1
             bzs['EVNT'][20]['story_flag1'] = 914
-            modified = True
-        elif stage == 'F000' and room == 0:
-            soil = next(filter(lambda x: x['name'] == 'Soil', bzs['LAY ']['l0']['OBJ ']))
-            patch_soil_item(soil, 160)# babies rattle
             modified = True
         if modified:
             # print(json.dumps(bzs))
