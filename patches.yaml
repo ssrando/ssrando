@@ -34,6 +34,13 @@ global:
       # normall, the heart piece is hardcoded, change it so that it instead uses 0000FF00 from params1
       - original: 94 21 ff f0 7c 08 02 a6 38 a0 00 00 38 e0 00 01 90 01 00 14 39 00 00 ff 93 e1 00 0c 7c 9f 23 78 38 80 00 00 93 c1 00 08 7c 7e 1b 78 80 03 00 04 38 60 00 5e 54 06 46 3e
         patched:  94 21 ff f0 7c 08 02 a6 38 a0 00 00 38 e0 00 01 90 01 00 14 39 00 00 ff 93 e1 00 0c 7c 9f 23 78 38 80 00 00 93 c1 00 08 7c 7e 1b 78 80 03 00 04 54 03 c6 3e 54 06 46 3e
+    d_a_obj_soil:
+      # item id for the key pieces is hardcoded, change it to read from first byte of params2
+      # the code occurs twice, identical besides registers
+      - original: 88 1f 07 8c 2c 00 00 00 40 82 00 18 38 60 00 1c 38 80 ff ff 38 a0 00 00
+        patched:  88 1f 07 8c 2c 00 00 00 40 82 00 18 88 7f 00 a8 38 80 ff ff 38 a0 00 00
+      - original: 88 03 07 8c 2c 00 00 00 40 82 00 18 38 60 00 1c 38 80 ff ff 38 a0 00 00
+        patched:  88 03 07 8c 2c 00 00 00 40 82 00 18 88 63 00 a8 38 80 ff ff 38 a0 00 00
 F000: # Skyloft
   - name: Trial
     type: oarcadd

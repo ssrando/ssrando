@@ -192,6 +192,13 @@ def patch_heart_co(heart_co: OrderedDict, itemid: int):
 def patch_chandelier_item(chandel: OrderedDict, itemid: int):
     chandel['params1'] = mask_shift_set(chandel['params1'], 0xFF, 8, itemid)
 
+def patch_soil_item(soil: OrderedDict, itemid: int):
+    # match key piece soils in all ways but keep sceneflag
+    soil['params1'] = (soil['params1'] & 0xFF0) | 0xFF0B1004
+    # code has been patched to use the first byte of params2 as itemid, but only
+    # if it would have been a key piece otherwise
+    soil['params2'] = mask_shift_set(soil['params2'], 0xFF, 0x18, itemid)
+
 def fix_layers():
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
@@ -403,6 +410,10 @@ def fix_layers():
             # TODO move to patches.yaml
             bzs['EVNT'][20]['item'] = -1
             bzs['EVNT'][20]['story_flag1'] = 914
+            modified = True
+        elif stage == 'F000' and room == 0:
+            soil = next(filter(lambda x: x['name'] == 'Soil', bzs['LAY ']['l0']['OBJ ']))
+            patch_soil_item(soil, 160)# babies rattle
             modified = True
         if modified:
             # print(json.dumps(bzs))
