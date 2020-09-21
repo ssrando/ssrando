@@ -32,3 +32,55 @@
     type: textpatch
     index: 467
     text: "You learned \x0E\x00\x03\x02\x05Din's Power\x0E\x00\x03\x02\uFFFF!"
+200-Forest:
+  - name: give slingshot directly
+    type: flowpatch
+    index: 108
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      next: 143 # elder talks after gotten sligshot
+      param3: 9
+      param4: 0
+      param5: 0
+201-ForestD1:
+  - name: give item after beating skyview
+    type: flowpatch
+    index: 6
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      next: 79 # jump to zone flag that triggers go out
+      param3: 9
+      param4: 0
+      param5: 0
+301-MountainD1:
+  - name: give item after beating earth temple
+    type: flowpatch
+    index: 22
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      next: 21 # jump to zone flag that triggers go out
+      param3: 9
+      param4: 0
+      param5: 0
+400-Desert:
+  - name: give item after harp CS
+    type: flowpatch
+    index: 286
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      next: -1 # end
+      param3: 9
+      param4: 0
+      param5: 0

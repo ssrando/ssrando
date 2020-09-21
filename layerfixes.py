@@ -109,8 +109,7 @@ def make_progressive_item(msbf, base_item_start, item_text_indexes, item_ids, st
     event['next'] = item_text_indexes[0]
     msbf['FLW3']['flow'].append(event)
 
-    # check highest
-
+# check highest
 def highest_objid(bzs):
     max_id = 0
     for layer in bzs.get('LAY ',{}).values():
@@ -202,6 +201,9 @@ def patch_soil_item(soil: OrderedDict, itemid: int):
 def patch_trial_item(trial: OrderedDict, itemid: int):
     trial['params1'] = mask_shift_set(trial['params1'], 0xFF, 0x18, itemid)
 
+def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
+    boko['params2'] = mask_shift_set(boko['params2'], 0xFF, 0x0, itemid)
+
 def fix_layers():
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
@@ -227,7 +229,7 @@ def fix_layers():
             if patch['type'] == 'oarcadd':
                 stageoarcs[(stage, patch['destlayer'])].add(patch['oarc'])
     
-    stageoarcs[('D000',0)].add('GetSwordA')
+    # stageoarcs[('D000',0)].add('GetSwordA')
     
     for (stage, layer), oarcs in stageoarcs.items():
         patcher.add_stage_oarc(stage, layer, oarcs)
@@ -246,7 +248,7 @@ def fix_layers():
         next_id = highest_objid(bzs) + 1
         for objpatch in filter(lambda x: x['type']=='objpatch' and x.get('room',None)==room, stagepatches):
             id = objpatch['id']
-            layer = objpatch['layer']
+            layer = objpatch.get('layer', None)
             objtype = objpatch['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
             objs = [x for x in bzs['LAY '][f'l{layer}'][objtype] if x['id'] == id]
             if len(objs) != 1:
@@ -263,7 +265,7 @@ def fix_layers():
                 # print(obj)
         for objmove in filter(lambda x: x['type']=='objmove' and x.get('room',None)==room, stagepatches):
             id = objmove['id']
-            layer = objmove['layer']
+            layer = objmove.get('layer', None)
             destlayer = objmove['destlayer']
             objtype = objmove['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
             objs = [x for x in bzs['LAY '][f'l{layer}'][objtype] if x['id'] == id]
@@ -285,7 +287,7 @@ def fix_layers():
                 # print(obj)
         for objdelete in filter(lambda x: x['type']=='objdelete' and x.get('room',None)==room, stagepatches):
             id = objdelete['id']
-            layer = objdelete['layer']
+            layer = objdelete.get('layer', None)
             objtype = objdelete['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
             objs = [x for x in bzs['LAY '][f'l{layer}'][objtype] if x['id'] == id]
             if len(objs) != 1:
@@ -297,7 +299,7 @@ def fix_layers():
                 print(f'removed object from {layer} in room {room} with id {objdelete["id"]:04X}')
                 # print(obj)
         for objadd in filter(lambda x: x['type']=='objadd' and x.get('room',None)==room, stagepatches):
-            layer = objadd['layer']
+            layer = objadd.get('layer', None)
             objtype = objadd['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
             obj = objadd['object']
             if objtype in ['SOBS','SOBJ','STAS','STAG','SNDT']:

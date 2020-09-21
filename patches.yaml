@@ -45,6 +45,37 @@ global:
       # items are hardcoded for the trial, just grab them from params1, FF000000 instead and skip most of the switch statement
       - original: 88 03 0c 7c 2c 00 00 00
         patched:  88 03 00 04 48 00 00 4c
+    d_a_e_bc:
+      # the bokoblin holding a key in AC, if he dies (possible with bow), but the key isn't picked up it can't be obtained again
+      # first, patch that the sceneflag (shared between bokoblin and key) isn't set if the boko dies and still has the key
+      # this replaces a non null check for field 0x130f, which seems useless?
+      - original: 88 1f 13 0f 2c 00 00 00 41 82 00 44 88 1f 13 43 28 00 00 ff
+        patched:  88 1f 12 54 2c 00 00 00 40 82 00 44 88 1f 13 43 28 00 00 ff
+      # prevent the key from dropping, the called drop function can't be easily changed and doesn't allow a
+      # sceneflag to be passed as a param
+      - original: 2c 00 00 00 41 82 00 18 38 a1 00 80 38 c1 00 18
+        patched:  2c 00 00 00 42 80 00 18 38 a1 00 80 38 c1 00 18
+      # read the item to give after whipping based on 000000FF from params2
+      - original: 8b df 00 ec 38 00 00 00 98 1f 12 54 38 60 00 01
+        patched:  8b df 00 ec 38 00 00 00 98 1f 12 54 88 7f 00 ab
+      # that code occurs another time
+      - original: 8b 9f 00 ec 38 00 00 00 98 1f 12 54 38 60 00 01
+        patched:  8b 9f 00 ec 38 00 00 00 98 1f 12 54 88 7f 00 ab
+B100_1: # skyview spring
+  - name: Fi text after skyview CS
+    type: objmove
+    id: 0xFC73
+    layer: 2
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: loadzone to outside
+    type: objmove
+    id: 0xFC74
+    layer: 2
+    destlayer: 0
+    room: 0
+    objtype: STAG
 F000: # Skyloft
   - name: Trial
     type: oarcadd

@@ -14,24 +14,24 @@
 - id: 6
   name: Heart
   oarc: null
-- id: 9
-  name: Goddess Whitesword
-  oarc: null
+# - id: 9
+#   name: Goddess Whitesword
+#   oarc: null
 - id: 10
-  name: Practice Sword
+  name: Progressive Sword
   oarc: GetSwordA
-- id: 11
-  name: Goddess Sword
-  oarc: null
-- id: 12
-  name: Goddess Longsword
-  oarc: null
-- id: 13
-  name: Master Sword
-  oarc: null
-- id: 14
-  name: True Master Sword
-  oarc: null
+# - id: 11
+#   name: Goddess Sword
+#   oarc: null
+# - id: 12
+#   name: Goddess Longsword
+#   oarc: null
+# - id: 13
+#   name: Master Sword
+#   oarc: null
+# - id: 14
+#   name: True Master Sword
+#   oarc: null
 - id: 15
   name: Sailcloth
   oarc: null
@@ -59,6 +59,9 @@
   name: Sandship Boss Key
   oarc: GetKeyBoss2C
   shuffle: Dungeon
+- id: 28
+  name: Key Piece
+  oarc: null # TODO
 - id: 29
   name: Skyview Boss Key
   oarc: GetKeyBossA
@@ -121,10 +124,10 @@
   name: Slingshot
   oarc: GetPachinkoA
 - id: 53
-  name: Beetle
+  name: Progressive Beetle
   oarc: GetBeetleA
 - id: 56
-  name: Digging Mitts
+  name: Progressive Mitts
   oarc: GetMoleGloveA
 - id: 60
   name: 10 Deku Seeds
@@ -134,25 +137,25 @@
   oarc: null # TODO
 - id: 63
   name: Evil Crystal # actually semi rare treasure
-  oarc: null # TODO put in object pack
+  oarc: null
 - id: 64
   name: Golden Skull # actually rare treasure
-  oarc: null # TODO put in object pack
+  oarc: null
 - id: 68
   name: Water Scale
   oarc: GetUroko
 - id: 71
   name: Bug Net
   oarc: GetNetA
-- id: 75
-  name: Hook Beetle
-  oarc: GetBeetleB
-- id: 76
-  name: Quick Beetle
-  oarc: GetBeetleC
-- id: 77
-  name: Though Beetle
-  oarc: GetBeetleD
+# - id: 75
+#   name: Hook Beetle
+#   oarc: GetBeetleB
+# - id: 76
+#   name: Quick Beetle
+#   oarc: GetBeetleC
+# - id: 77
+#   name: Though Beetle
+#   oarc: GetBeetleD
 - id: 90
   name: Iron Bow
   oarc: GetBowB
@@ -171,9 +174,9 @@
 - id: 98
   name: Sea Chart
   oarc: GetMapSea
-- id: 99
-  name: Mogma Mitts
-  oarc: GetMoleGloveB
+# - id: 99
+#   name: Mogma Mitts
+#   oarc: GetMoleGloveB
 - id: 100
   name: Heart Medal
   oarc: GetMedal
