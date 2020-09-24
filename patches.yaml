@@ -43,8 +43,15 @@ global:
         patched:  88 03 07 8c 2c 00 00 00 40 82 00 18 88 63 00 a8 38 80 ff ff 38 a0 00 00
     d_a_obj_warp:
       # items are hardcoded for the trial, just grab them from params1, FF000000 instead and skip most of the switch statement
-      - original: 88 03 0c 7c 2c 00 00 00
-        patched:  88 03 00 04 48 00 00 4c
+      # turns out the trial takes priority over the item, which causes link to warp out before recieving the item
+      # the original devs patched that by waiting until the item flag for the item, that was in the trial was set
+      # which is something rando can't rely on. So this just increments a counter, and only allows the next event to happen
+      # if the counter has been incremented and isn't 0
+      - original: 88 03 0c 7c 2C 00 00 00 41 82 00 20 28 00 00 01 41 82 00 24 28 00 00 02 41 82 00 28 28 00 00 03
+        patched:  88 63 00 04 48 00 00 54 88 63 0c 7d 28 03 00 01 41 81 00 84 38 63 00 01 98 7f 0c 7d 48 00 00 c8
+      # function that start the walking and warping CS, jump to the code injected above
+      - original: 94 21 ff b0 7c 08 02 a6 90 01 00 54 93 e1 00 4c 7c 7f 1b 78 88 63 0c 7d
+        patched:  94 21 ff b0 7c 08 02 a6 90 01 00 54 93 e1 00 4c 7c 7f 1b 78 4b ff ff 84
     d_a_e_bc:
       # the bokoblin holding a key in AC, if he dies (possible with bow), but the key isn't picked up it can't be obtained again
       # first, patch that the sceneflag (shared between bokoblin and key) isn't set if the boko dies and still has the key
@@ -61,6 +68,19 @@ global:
       # that code occurs another time
       - original: 8b 9f 00 ec 38 00 00 00 98 1f 12 54 38 60 00 01
         patched:  8b 9f 00 ec 38 00 00 00 98 1f 12 54 88 7f 00 ab
+# S100:
+#   - name: Test Trial
+#     type: objpatch
+#     id: 0xFC94
+#     layer: 2
+#     room: 0
+#     objtype: OBJ
+#     patch:
+#       params1: 0x3801FFFF
+#   - name: Trialitem
+#     type: oarcadd
+#     oarc: GetMoleGloveA
+#     destlayer: 2
 B100_1: # skyview spring
   - name: Fi text after skyview CS
     type: objmove
