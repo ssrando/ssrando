@@ -61,7 +61,7 @@
   shuffle: Dungeon
 - id: 28
   name: Key Piece
-  oarc: null # TODO
+  oarc: GetKeyKakera
 - id: 29
   name: Skyview Boss Key
   oarc: GetKeyBossA
@@ -134,7 +134,7 @@
   oarc: null
 - id: 62
   name: Dusk Relic
-  oarc: null # TODO
+  oarc: GetSozaiH
 - id: 63
   name: Evil Crystal # actually semi rare treasure
   oarc: null
@@ -227,13 +227,13 @@
   oarc: GetBottleRepair
 - id: 128
   name: Small Seed Satchel
-  oarc: GetSpareSeedA
+  oarc: GetSpareSeedA # TODO upgrades?
 - id: 131
   name: Small Quiver
-  oarc: null # TODO
+  oarc: GetSpareQuiverA # TODO upgrades?
 - id: 134
   name: Small Bomb Bag
-  oarc: null # TODO
+  oarc: GetSpareBombBagA # TODO upgrades?
 - id: 137
   name: Whip
   oarc: GetWhip
@@ -257,16 +257,19 @@
   oarc: GetGaragara
 - id: 163
   name: Tumbleweed
-  oarc: null # TODO
+  oarc: GetSozaiC
 - id: 165
   name: Eldin Ore
-  oarc: null # TODO
+  oarc: null # Is in objectPack
+- id: 177
+  name: Emerald Tablet
+  oarc: GetSekibanMapA # TODO check, irrelevant for now
 - id: 178
   name: Ruby Tablet
-  oarc: null # TODO check, irrelevant for now
+  oarc: GetSekibanMapB # TODO check, irrelevant for now
 - id: 179
   name: Amber Tablet
-  oarc: null # TODO check, irrelevant for now
+  oarc: GetSekibanMapC # TODO check, irrelevant for now
 - id: 180
   name: Stone of Trials
   oarc: GetSirenKey
