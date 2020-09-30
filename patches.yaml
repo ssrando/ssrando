@@ -883,3 +883,32 @@ F400: # Behind the Temple
       - story_flag: -1
         night: 0
         layer: 0
+F404: # Hylia's Temple
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: -1
+        night: 0
+        layer: 1
+F403: # Hylia's Realm
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 726
+        night: 0
+        layer: 4
+      - story_flag: 530
+        night: 0
+        layer: 1
+      - story_flag: 486
+        night: 0
+        layer: 3
+      - story_flag: 134
+        night: 0
+        layer: 7
+      - story_flag: 347
+        night: 0
+        layer: 1
+      - story_flag: -1
+        night: 0
+        layer: 13
