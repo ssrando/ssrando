@@ -32,6 +32,55 @@
     type: textpatch
     index: 467
     text: "You learned \x0E\x00\x03\x02\x05Din's Power\x0E\x00\x03\x02\uFFFF!"
+  - name: get rid of Skyloft layer 8&9
+    type: flowpatch
+    index: 82 # before storyflag
+    patch:
+      next: 583 # after Storyflag
+108-ShinkanA:
+  - name: Owlans Shield
+    type: flowpatch
+    index: 169
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      next: 173 # end of owlans text
+      param3: 9
+      param4: 0
+      param5: 0
+115-Town2:
+  - name: Parrow's Empty Bottle
+    type: flowpatch
+    index: 734
+    patch:
+      next: 735 # jump to give item
+  - name: Parrow's Spores Bottle
+    type: flowpatch
+    index: 231
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      next: 232 # end of parrows text
+      param3: 9
+      param4: 0
+      param5: 0
+106-DrugStore:
+  - name: Potion Lady Bottle
+    type: flowpatch
+    index: 59
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      next: 41 # end of parrows text
+      param3: 9
+      param4: 0
+      param5: 0
 200-Forest:
   - name: give slingshot directly
     type: flowpatch
@@ -84,3 +133,44 @@
       param3: 9
       param4: 0
       param5: 0
+117-Pumpkin:
+  - name: kina Crystal Quest
+    type: flowpatch
+    index: 93
+    patch:
+      type: switch
+      subType: 6
+      param2: 901 # new FS flag
+      param3: 3
+      param4: 2
+      param5: 60
+  - name: playing Harp with Kina 1
+    type: flowpatch
+    index: 434
+    patch:
+      type: switch
+      subType: 6
+      param2: 340 # raised GoT
+      param3: 3
+      param4: 2
+      param5: 180
+  - name: playing Harp with Kina 2
+    type: flowpatch
+    index: 80
+    patch:
+      type: switch
+      subType: 6
+      param2: 340 # raised GoT
+      param3: 3
+      param4: 2
+      param5: 52
+  - name: playing Harp with Kina 3
+    type: flowpatch
+    index: 579
+    patch:
+      type: switch
+      subType: 6
+      param2: 340 # raised GoT
+      param3: 3
+      param4: 2
+      param5: 250
