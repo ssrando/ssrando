@@ -8,6 +8,8 @@ global:
     - 58 # b-wheel
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
+    - 323 # Scrapper repaired
+    - 661 # Windmill Repaired
   objpackoarcadd:
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -155,12 +157,6 @@ F000: # Skyloft
     layer: 6
     room: 0
     objtype: OBJ
-  - name: Wyrna cs
-    type: objdelete
-    id: 0xFDD7
-    layer: 8
-    room: 0
-    objtype: OBJ
 F001r: # Knight Academy
   - name: UA Door right
     type: objpatch
@@ -178,6 +174,29 @@ F001r: # Knight Academy
     objtype: OBJS
     patch:
       anglex: 0xFF00
+F008r: # Goddess Statue
+  - name: Goddess Sword chest
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJS
+    object:
+      params1: 0xFFFFFFF3
+      params2: 0xFF5FFFFF # goddess sword upgrade storyflag
+      posx: 0
+      posy: 42.820003509521484
+      posz: 75
+      anglex: 0xFFFF
+      angley: 0
+      anglez: 0xBE02 # chest flag 95, item 0, will be filled in later
+      id: 0xFC10
+      name: TBox
+  - name: Delete SwrdSt
+    type: objdelete
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
 F010r: # Isle of songs tower
   - name: First song chest
     type: objadd
@@ -328,6 +347,12 @@ F102_1: # Outside AC
     objtype: OBJ
     patch:
       trigstoryfid: 900 # new AC beat flag
+  - name: Waterfall
+    type: objdelete
+    id: 0xFC5B
+    layer: 1
+    room: 0
+    objtype: OBJ
 F102: # lake Floria
   - name: Layer override
     type: layeroverride
@@ -550,6 +575,30 @@ F210: # Mogma Turf
     destlayer: 1
     room: 0
     objtype: OBJ
+  - name: mogma 1
+    type: objpatch
+    id: 0xFC3E
+    layer: 0
+    room: 0
+    objtype: OBJ
+    patch:
+      trigstoryfid: 901
+  - name: Guld
+    type: objpatch
+    id: 0xFC3C
+    layer: 0
+    room: 0
+    objtype: OBJ
+    patch:
+      trigstoryfid: 901
+  - name: mogma 2
+    type: objpatch
+    id: 0xFC3D
+    layer: 0
+    room: 0
+    objtype: OBJ
+    patch:
+      trigstoryfid: 901
 F201_3: # FS entrance
   - name: Layer override
     type: layeroverride
@@ -569,6 +618,12 @@ F201_3: # FS entrance
       - story_flag: -1
         night: 0
         layer: 0
+  - name: Big Flames
+    type: objdelete
+    id: 0xFC15
+    layer: 0
+    room: 0
+    objtype: OBJ
 D200: # ET
   - name: Bomb Bag from Ledd
     type: objdelete
@@ -592,6 +647,13 @@ B200: # Boss Room
       - story_flag: -1
         night: 0
         layer: 1
+D201: # FS A
+  - name: Mogma 1
+    type: objdelete
+    id: 0xFC07
+    layer: 0
+    room: 0
+    objtype: OBJ
 D201_1: # FS B
    - name: Clawshot Traget for 2nd small Key
      type: objadd
@@ -609,7 +671,7 @@ D201_1: # FS B
        anglez: 0
        id: 0xFC20
        name: ClawSTg
-B201:
+B201: # G2 fight
   - name: Layer override
     type: layeroverride
     override:
@@ -625,6 +687,15 @@ B201:
       - story_flag: -1
         night: 0
         layer: 0
+B201_1: # Din's Flame
+  - name: Teleport after hitting crest
+    type: objpatch
+    id: 0xFC0A
+    layer: 0
+    room: 0
+    objtype: STAG
+    patch:
+      anglez: 0xFB85
 F300: # lanayru Main Area
   - name: Layer override
     type: layeroverride
@@ -721,6 +792,36 @@ F402: # Sealed Temple
     patch:
       anglex: 0xFF00 # sets the flag to -1 (meaning open)
 F401: # Sealed grounds Whirlpool
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 705
+        night: 0
+        layer: 4
+      - story_flag: 704
+        night: 0
+        layer: 3
+      - story_flag: 703
+        night: 0
+        layer: 2
+      - story_flag: 134
+        night: 0
+        layer: 6
+      - story_flag: 133
+        night: 0
+        layer: 5
+      - story_flag: 175
+        night: 0
+        layer: 3
+      - story_flag: 200
+        night: 0
+        layer: 4
+      - story_flag: 13
+        night: 0
+        layer: 3
+      - story_flag: -1
+        night: 0
+        layer: 1
   - name: Nightmare Cs 1
     type: objdelete
     id: 0xFC9C
