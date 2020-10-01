@@ -695,7 +695,8 @@ B201_1: # Din's Flame
     room: 0
     objtype: STAG
     patch:
-      anglez: 0xFB85
+      trigstoryfid: 901
+      untrigstoryfid: 2047
 F300: # lanayru Main Area
   - name: Layer override
     type: layeroverride
@@ -728,6 +729,23 @@ F300_4: # Temple of Time
       - story_flag: -1
         night: 0
         layer: 1
+F300_5: # LMF to ToT
+  - name: harp CS loadzone
+    type: objpatch
+    id: 0xFC03
+    layer: 0
+    room: 0
+    objtype: STAG
+    patch:
+      untrigstoryfid: 914 # 0x1E
+  - name: harp CS loadzone
+    type: objpatch
+    id: 0xFC04
+    layer: 0
+    room: 0
+    objtype: STAG
+    patch:
+      trigstoryfid: 914 # 0x1E
 F301_1: # Sand Sea Main Area
   - name: Skipper's Text at first time in Sand  # gets rid of 2x40 so also of the Evnttags
     type: objdelete
