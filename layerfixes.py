@@ -5,11 +5,41 @@ import yaml
 import json
 from io import BytesIO
 from enum import IntEnum
+from typing import Optional
 
 import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
 from tboxSubtypes import tboxSubtypes
+
+DEFAULT_SOBJ = OrderedDict(
+    params1 = 0,
+    params2 = 0,
+    posx = 0,
+    posy = 0,
+    posz = 0,
+    sizex = 0,
+    sizey = 0,
+    sizez = 0,
+    anglex = 0,
+    angley = 0,
+    anglez = 0,
+    id = 0,
+    name = "",
+)
+
+DEFAULT_OBJ = OrderedDict(
+    params1 = 0,
+    params2 = 0,
+    posx = 0,
+    posy = 0,
+    posz = 0,
+    anglex = 0,
+    angley = 0,
+    anglez = 0,
+    id = 0,
+    name = "",
+)
 
 class FlagEventTypes(IntEnum):
     SET_STORYFLAG = 0,
@@ -166,6 +196,28 @@ def try_patch_obj(obj, key, value):
             obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0, value)
         else:
             print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj['name'] == 'ScChang':
+        if key == 'trigstoryfid':
+            obj['anglex'] = mask_shift_set(obj['anglex'], 0x7FF, 0, value)
+        elif key == 'untrigstoryfid':
+            obj['anglez'] = mask_shift_set(obj['anglez'], 0x7FF, 0, value)
+        elif key == 'scen_link':
+            obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0, value)
+        elif key == 'trigscenefid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 24, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj['name'] == 'SwAreaT':
+        if key == 'setstoryfid':
+            obj['anglex'] = mask_shift_set(obj['anglex'], 0x7FF, 0, value)
+        elif key == 'unsetstoryfid':
+            obj['anglez'] = mask_shift_set(obj['anglez'], 0x7FF, 0, value)
+        elif key == 'setscenefid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0, value)
+        elif key == 'unsetscenefid':
+            obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 8, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
     else:
         print(f'ERROR: unsupported object to patch {obj}')
 
@@ -204,6 +256,36 @@ def patch_trial_item(trial: OrderedDict, itemid: int):
 def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
     boko['params2'] = mask_shift_set(boko['params2'], 0xFF, 0x0, itemid)
 
+def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Optional[OrderedDict]:
+    id = objdef.get('id',None)
+    index = objdef.get('index',None)
+    layer = objdef.get('layer', None)
+    objtype = objdef['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
+    if layer is None:
+        objlist = bzs[objtype]
+    else:
+        objlist = bzs['LAY '][f'l{layer}'][objtype]
+    if not id is None:
+        objs = [x for x in objlist if x['id'] == id]
+        if len(objs) != 1:
+            print(f'Error finding object: {json.dumps(objdef)}')
+            return None
+        obj = objs[0]
+        if remove:
+            objlist.remove(obj)
+    elif not index is None:
+        if index >= len(objlist):
+            print(f'Error list index out of range: {json.dumps(objdef)}')
+            return None
+        if remove:
+            obj = objlist.pop(index)
+        else:
+            obj = objlist[index]
+    else:
+        print(f'ERROR: neither id nor index given for object {json.dumps(objdef)}')
+        return None
+    return obj
+        
 def fix_layers():
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
@@ -247,33 +329,22 @@ def fix_layers():
                 modified = True
         next_id = highest_objid(bzs) + 1
         for objpatch in filter(lambda x: x['type']=='objpatch' and x.get('room',None)==room, stagepatches):
-            id = objpatch['id']
-            layer = objpatch.get('layer', None)
-            objtype = objpatch['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
-            objs = [x for x in bzs['LAY '][f'l{layer}'][objtype] if x['id'] == id]
-            if len(objs) != 1:
-                print(f'Error finding object: {json.dumps(objpatch)}')
-            else:
-                obj = objs[0]
+            obj = get_entry_from_bzs(bzs, objpatch)
+            if not obj is None:
                 for key, val in objpatch['patch'].items():
                     if key in obj:
                         obj[key] = val
                     else:
                         try_patch_obj(obj, key, val)
                 modified = True
-                print(f'modified object from {layer} in room {room} with id {objpatch["id"]:04X}')
+                # print(f'modified object from {layer} in room {room} with id {objpatch["id"]:04X}')
                 # print(obj)
         for objmove in filter(lambda x: x['type']=='objmove' and x.get('room',None)==room, stagepatches):
-            id = objmove['id']
-            layer = objmove.get('layer', None)
+            obj = get_entry_from_bzs(bzs, objmove, remove=True)
             destlayer = objmove['destlayer']
-            objtype = objmove['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
-            objs = [x for x in bzs['LAY '][f'l{layer}'][objtype] if x['id'] == id]
-            if len(objs) != 1:
-                print(f'Error finding object: {json.dumps(objmove)}')
-            else:
-                obj = objs[0]
-                bzs['LAY '][f'l{layer}'][objtype].remove(obj)
+            if not obj is None:
+                layer = objmove['layer']
+                objtype = objmove['objtype'].ljust(4)
                 obj['id'] = (obj['id'] & ~0x3FF) | next_id
                 next_id += 1
                 if not objtype in bzs['LAY '][f'l{destlayer}']:
@@ -283,57 +354,28 @@ def fix_layers():
                 if not obj['name'] in objn:
                     objn.append(obj['name'])
                 modified = True
-                print(f'moved object from {layer} to {destlayer} in room {room} with id {objmove["id"]:04X}')
+                # print(f'moved object from {layer} to {destlayer} in room {room} with id {objmove["id"]:04X}')
                 # print(obj)
         for objdelete in filter(lambda x: x['type']=='objdelete' and x.get('room',None)==room, stagepatches):
-            id = objdelete['id']
-            layer = objdelete.get('layer', None)
-            objtype = objdelete['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
-            objs = [x for x in bzs['LAY '][f'l{layer}'][objtype] if x['id'] == id]
-            if len(objs) != 1:
-                print(f'Error finding object: {json.dumps(objdelete)}')
-            else:
-                obj = objs[0]
-                bzs['LAY '][f'l{layer}'][objtype].remove(obj)
+            obj = get_entry_from_bzs(bzs, objdelete, remove=True)
+            if not obj is None:
                 modified = True
-                print(f'removed object from {layer} in room {room} with id {objdelete["id"]:04X}')
+                # print(f'removed object from {layer} in room {room} with id {objdelete["id"]:04X}')
                 # print(obj)
         for objadd in filter(lambda x: x['type']=='objadd' and x.get('room',None)==room, stagepatches):
             layer = objadd.get('layer', None)
             objtype = objadd['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
             obj = objadd['object']
             if objtype in ['SOBS','SOBJ','STAS','STAG','SNDT']:
-                new_obj = OrderedDict(
-                    params1 = obj['params1'],
-                    params2 = obj['params2'],
-                    posx = obj['posx'],
-                    posy = obj['posy'],
-                    posz = obj['posz'],
-                    sizex = obj['sizex'],
-                    sizey = obj['sizey'],
-                    sizez = obj['sizez'],
-                    anglex = obj['anglex'],
-                    angley = obj['angley'],
-                    anglez = obj['anglez'],
-                    id = (obj['id'] & ~0x3FF) | next_id,
-                    name = obj['name'],
-                )
+                new_obj = DEFAULT_SOBJ.copy()
             elif objtype in ['OBJS','OBJ ','DOOR']:
-                new_obj = OrderedDict(
-                    params1 = obj['params1'],
-                    params2 = obj['params2'],
-                    posx = obj['posx'],
-                    posy = obj['posy'],
-                    posz = obj['posz'],
-                    anglex = obj['anglex'],
-                    angley = obj['angley'],
-                    anglez = obj['anglez'],
-                    id = (obj['id'] & ~0x3FF) | next_id,
-                    name = obj['name'],
-                )
+                new_obj = DEFAULT_OBJ.copy()
             else:
                 print(f'Error: unknown objtype: {objtype}')
                 continue
+            for key, val in obj.items():
+                new_obj[key] = val
+            new_obj['id'] = (new_obj['id'] & ~0x3FF) | next_id
             next_id += 1
             if not objtype in bzs['LAY '][f'l{layer}']:
                 bzs['LAY '][f'l{layer}'][objtype] = []
@@ -448,6 +490,14 @@ def fix_layers():
                 flowobj[key] = val
             msbf['FLW3']['flow'].append(flowobj)
             print(f'added flow {command["index"]}, {filename}')
+            modified = True
+        for command in filter(lambda x: x['type'] == 'entryadd', flowpatches):
+            new_entry = OrderedDict(
+                name = command['entry']['name'],
+                value = command['entry']['value'],
+            )
+            msbf['FEN1'][0].append(new_entry)
+            print(f'added flow entry {command["entry"]["name"]}, {filename}')
             modified = True
         if filename == '003-ItemGet':
             # make progressive mitts
