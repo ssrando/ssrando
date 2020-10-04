@@ -900,6 +900,17 @@ Sandship - Sandship Boss Key Chest:
   original item: Sandship Boss Key
   Paths:
    - stage/D301/r14/l3/TBox/73
+Sandship - Sandship Heart Container:
+  Need: Can Access Sandship & Bow & Sandship Boss Key
+  original item: Heart Container
+  Paths:
+   - stage/D301/r0/l9/HeartCo
+   - stage/D301/r0/l10/HeartCo
+# Sandship - Goddess White Sword Event:
+#   Need: Can Access Sandship & Bow & Sandship Boss Key
+#   original item: Progressive Sword
+#   Paths:
+#    - event
 
 
 FS - First Small Key chest:
