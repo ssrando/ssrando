@@ -37,6 +37,74 @@
     index: 82 # before storyflag
     patch:
       next: 583 # after Storyflag
+008-Hint:
+  # check for 3 storyflags: required dungeon 1 and 2, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
+  - name: Rando Dungeon check
+    type: entryadd
+    entry:
+      name: "008_007"
+      value: 27
+  - name: Rando Dungeon check
+    type: switchadd
+    index: 22
+    flow:
+      subType: 6
+      param2: 902 # Beat Required Dungeon 1
+      param3: 3
+    cases:
+      - 23
+      - -1
+  - name: Rando Dungeon check
+    type: switchadd
+    index: 23
+    flow:
+      subType: 6
+      param2: 903 # Beat Required Dungeon 2
+      param3: 3
+    cases:
+      - 24
+      - -1
+  - name: Rando Dungeon check
+    type: switchadd
+    index: 24
+    flow:
+      subType: 6
+      param2: 343 # Before Raising GoT
+      param3: 3
+    cases:
+      - 25
+      - -1
+  # checks were successfull, imp2 can be fought now!
+  - name: Rando Dungeon Check
+    type: flowadd
+    index: 25
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 11 # make rails appear, originally AC
+      next: 26
+      param3: 0
+  - name: Rando Dungeon Check
+    type: flowadd
+    index: 26
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 13 # originally fire sanctuary
+      next: -1
+      param3: 0
+  - name: Zone Temp CS flag # activates the CS after dungeons, or does nothing, zone temp flag 3
+    type: flowadd
+    index: 27
+    flow:
+      type: type3
+      subType: 1
+      param1: 3
+      param2: 11
+      next: 22
+      param3: 4
 108-ShinkanA:
   - name: Owlans Shield
     type: flowpatch
@@ -102,11 +170,73 @@
       type: type3
       subType: 0
       param1: 0
-      param2: 0 # item
-      next: 79 # jump to zone flag that triggers go out
+      param2: 3 # item
+      next: 87
       param3: 9
       param4: 0
       param5: 0
+  - name: rando required dungeon storyflag
+    type: flowpatch
+    index: 87
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: -1 # will be filled in later if this is a required dungeon
+      next: 81
+      param3: 0
+  - name: to rando dungeons completed check
+    type: flowpatch
+    index: 81
+    patch:
+      type: type3
+      subType: 1
+      param1: 8 # entrypoint 008_007
+      param2: 7
+      next: -1
+      param3: 7
+202-ForestD2:
+  - name: Give item after AC
+    type: entryadd
+    entry:
+      name: "202_31"
+      value: 49
+  - name: After AC event start
+    type: flowadd
+    index: 49
+    flow:
+      type: start
+      next: 50
+  - name: give item after beating ancient cistern
+    type: flowadd
+    index: 50
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: 51
+      param3: 9
+  - name: rando required dungeon storyflag
+    type: flowadd
+    index: 51
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: -1 # will be filled in later if this is a required dungeon
+      next: 52
+      param3: 0
+  - name: to rando dungeons completed check
+    type: flowadd
+    index: 52
+    flow:
+      type: type3
+      subType: 1
+      param1: 8 # entrypoint 008_007
+      param2: 7
+      next: -1
+      param3: 7
 301-MountainD1:
   - name: give item after beating earth temple
     type: flowpatch
@@ -115,11 +245,64 @@
       type: type3
       subType: 0
       param1: 0
-      param2: 0 # item
-      next: 21 # jump to zone flag that triggers go out
+      param2: 3 # item
+      next: 20 # goes to beat ET story flag
       param3: 9
       param4: 0
       param5: 0
+  - name: rando required dungeon storyflag
+    type: flowpatch
+    index: 21
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: -1 # will be filled in later if this is a required dungeon
+      next: 59
+      param3: 0
+  - name: to rando dungeons completed check
+    type: flowpatch
+    index: 59
+    patch:
+      type: type3
+      subType: 1
+      param1: 8 # entrypoint 008_007
+      param2: 7
+      next: -1
+      param3: 7
+304-MountainD2:
+  - name: Give item before CS
+    type: flowpatch
+    index: 5
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: 6
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: rando required dungeon storyflag
+    type: flowpatch
+    index: 6
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: -1 # will be filled in later if this is a required dungeon
+      next: 94
+      param3: 0
+  - name: to rando dungeons completed check
+    type: flowpatch
+    index: 94
+    patch:
+      type: type3
+      subType: 1
+      param1: 8 # entrypoint 008_007
+      param2: 7
+      next: -1
+      param3: 7
 400-Desert:
   - name: give item after harp CS
     type: flowpatch
@@ -129,10 +312,63 @@
       subType: 0
       param1: 0
       param2: 0 # item
-      next: -1 # end
+      next: 287 # end
       param3: 9
       param4: 0
       param5: 0
+  - name: rando required dungeon storyflag
+    type: flowpatch
+    index: 287
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: -1 # will be filled in later if this is a required dungeon
+      next: 288
+      param3: 0
+  - name: to rando dungeons completed check
+    type: flowpatch
+    index: 288
+    patch:
+      type: type3
+      subType: 1
+      param1: 8 # entrypoint 008_007
+      param2: 7
+      next: -1
+      param3: 7
+401-DesertD2:
+  - name: give item after beating sandship
+    type: flowpatch
+    index: 45
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: 46
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: rando required dungeon storyflag
+    type: flowpatch
+    index: 46
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: -1 # will be filled in later if this is a required dungeon
+      next: 165
+      param3: 0
+  - name: to rando dungeons completed check
+    type: flowadd
+    index: 165
+    flow:
+      type: type3
+      subType: 1
+      param1: 8 # entrypoint 008_007
+      param2: 7
+      next: -1
+      param3: 7
 117-Pumpkin:
   - name: kina Crystal Quest
     type: flowpatch
@@ -174,3 +410,26 @@
       param3: 3
       param4: 2
       param5: 250
+502-CenterFieldBack:
+  - name: Zelda's Cutscene, give item from impa # this is overriding a set sceneflag, which is not needed anymore
+    type: flowpatch
+    index: 17
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: 16
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Zelda's Cutscene, trigger CS # auto trigger CS, so above mentioned sceneflag is useless
+    type: flowpatch
+    index: 16
+    patch:
+      type: type3
+      subType: 1
+      param1: 2 # trigger exit 2
+      param2: 2 # room 2
+      next: -1
+      param3: 10

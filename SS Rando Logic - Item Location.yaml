@@ -272,11 +272,12 @@ Sealed Grounds - Behind the Temple Triforce on goddess wall:
   Paths:
    - event/503-Goron/418
    - oarc/F400/l0
-# Sealed Grounds - Hylia's Temple event: # didn't find Event
-#   Need: Can Access Sealed Temple & Can Access Past
-#   original item: True Master Sword
-#   Paths:
-#    - event/[Zelda.json]
+Sealed Grounds - Hylia's Temple event:
+  Need: Can Access Sealed Temple & Can Access Past
+  original item: True Master Sword
+  Paths:
+   - event/502-CenterFieldBack/17
+   - oarc/F404/l0
 
 
 Faron Woods - Faron Woods Treasure:
@@ -551,6 +552,7 @@ Lanayru - Harp Event:
   original item: Goddess Harp
   Paths:
    - event/400-Desert/286
+   - oarc/300_4/l2
 
 Lanayru Sand Sea - Skydive Chest at Skippers Retreat:
   Need: Can Access Sand Sea & (Bomb Bag | Hook Beetle) & Whip & (Bow | Beetle | Slingshot)
@@ -659,6 +661,7 @@ Skyview Spring - Ruby Tablet:
   original item: Ruby Tablet
   Paths:
    - event/201-ForestD1/6
+   - oarc/B100_1/l0
 
 
 ET - First Chest:
@@ -718,6 +721,7 @@ ET Spring - Amber Tablet:
   original item: Heart Container
   Paths:
    - event/301-MountainD1/22
+   - oarc/B210/l0
 
 
 LMF - First Chest behind bars:
@@ -837,11 +841,12 @@ AC Boss Room - AC Heart Container:
   - stage/B101/r0/l1/HeartCo
   - stage/B101/r0/l3/HeartCo
 
-# AC Boss Room - Goddess Longsword: # didn't find Event
-#   Need: Can Access AC & Whip & AC BK & (AC Small Key x2 | Clawshots)
-#   original item: Goddess Longsword
-#   Paths:
-#    - event
+AC Boss Room - Goddess Longsword:
+  Need: Can Access AC & Whip & AC BK & (AC Small Key x2 | Clawshots)
+  original item: Goddess Longsword
+  Paths:
+   - event/202-ForestD2/50
+   - oarc/B101_1/l0
 
 Sandship - Heart Piece chest at deck:
   Need: Can Access Sandship & Bow & Clawshots
@@ -906,11 +911,12 @@ Sandship - Sandship Heart Container:
   Paths:
    - stage/D301/r0/l9/HeartCo
    - stage/D301/r0/l10/HeartCo
-# Sandship - Goddess White Sword Event:
-#   Need: Can Access Sandship & Bow & Sandship Boss Key
-#   original item: Progressive Sword
-#   Paths:
-#    - event
+Sandship - Goddess White Sword Event:
+  Need: Can Access Sandship & Bow & Sandship Boss Key
+  original item: Progressive Sword
+  Paths:
+   - event/401-DesertD2/45
+   - oarc/B301/l1
 
 
 FS - First Small Key chest:
@@ -983,11 +989,12 @@ FS - FS Heart container:
   - stage/B201/r0/l1/HeartCo
   - stage/B201/r0/l2/HeartCo
 
-# FS - Master sword event: # didn't find Event
-#   Need: Can Access FS & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS BK
-#   original item: Master sword
-#   Paths:
-#    - event
+FS - Master sword event: # didn't find Event
+  Need: Can Access FS & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS BK
+  original item: Master sword
+  Paths:
+   - event/304-MountainD2/5
+   - oarc/B201_1/l0
 
 
 #Lanayru Gorge - Boss rush heart piece

@@ -85,6 +85,14 @@ global:
 #     destlayer: 2
 B100_1: # skyview spring
   - name: Fi text after skyview CS
+    type: objpatch
+    id: 0xFC73
+    layer: 2
+    room: 0
+    objtype: OBJ
+    patch:
+      params1: 0xFFE017F1 # last 1 is subtype (not talk to fi)
+  - name: Fi text after skyview CS
     type: objmove
     id: 0xFC73
     layer: 2
@@ -98,6 +106,142 @@ B100_1: # skyview spring
     destlayer: 0
     room: 0
     objtype: STAG
+  - name: Skyview CS remove item
+    type: objpatch
+    room: 0
+    index: 1
+    objtype: EVNT
+    patch:
+      item: -1
+B101_1: # after AC boss
+  - name: AC CS remove item and flags
+    type: objpatch
+    room: 0
+    index: 1
+    objtype: EVNT
+    patch:
+      item: -1
+      story_flag1: -1
+      story_flag2: 900 # new ancient cistern flag
+  - name: Fi text before AC CS
+    type: objadd
+    room: 0
+    layer: 0
+    id: 0xFC00
+    objtype: OBJ
+    object:
+      params1: 0x709FFF01 # untriggered by 900, storyflag for beating AC
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      anglex: 0xFF56 # triggered by sceneflag 86, which is goddess crest hit
+      angley: 0xFFFF
+      anglez: 20231 # entrypoint 202_31
+      id: 0xFC00
+      name: NpcTke
+  - name: Loadzone to outside
+    type: objpatch
+    room: 0
+    layer: 0
+    id: 0xFC0B
+    objtype: STAG
+    patch:
+      params1: 0xC303FF02 # change to zone temp flag 3
+      anglez: 0xFFFF # don't set any storyflag here
+B210: # after ET boss
+  - name: ET CS remove item
+    type: objpatch
+    room: 0
+    index: 2
+    objtype: EVNT
+    patch:
+      item: -1
+  - name: Fi text after ET CS
+    type: objpatch
+    room: 0
+    layer: 0
+    id: 0xFC09
+    objtype: OBJ
+    patch:
+      params1: 0xFFFFFFF1
+  - name: Loadzone to outside
+    type: objpatch
+    room: 0
+    layer: 0
+    id: 0xFC0E
+    objtype: STAG
+    patch:
+      params1: 0xC303FF00 # change to zone temp flag 3
+B201_1: # after FS boss
+  - name: FS CS remove item and flags
+    type: objpatch
+    room: 0
+    index: 0
+    objtype: EVNT
+    patch:
+      item: -1
+      story_flag1: 901 # new FS beaten flag
+  - name: Fi text before FS CS
+    type: objadd
+    room: 0
+    layer: 0
+    id: 0xFC00
+    objtype: OBJ
+    object:
+      params1: 0x70BFFF01 # untriggered by 901, storyflag for beating fire sanctuary
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      anglex: 0xFF5F # triggered by sceneflag 94, which is goddess crest hit
+      angley: 0xFFFF
+      anglez: 30407 # entrypoint 304_07
+      id: 0xFC00
+      name: NpcTke
+  - name: Loadzone to outside
+    type: objpatch
+    room: 0
+    layer: 0
+    id: 0xFC0E
+    objtype: STAG
+    patch:
+      params1: 0xC3030001 # change to zone temp flag 3
+      anglez: 0xFFFF # don't set any storyflag here
+B301: # after Sandship boss
+  - name: Sandship CS remove item
+    type: objpatch
+    room: 0
+    index: 1
+    objtype: EVNT
+    patch:
+      item: -1
+  - name: Fi text before FS CS
+    type: objadd
+    room: 0
+    layer: 0
+    id: 0xFC00
+    objtype: OBJ
+    object:
+      params1: 0x01FFFF01 # untriggered by 15, storyflag for beating sandship
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      anglex: 0xFF54 # triggered by sceneflag 84, which is goddess crest hit
+      angley: 0xFFFF
+      anglez: 40108 # entrypoint 401_08
+      id: 0xFC00
+      name: NpcTke
+  - name: Loadzone to outside
+    type: objpatch
+    room: 0
+    layer: 1
+    id: 0xFC12
+    objtype: STAG
+    patch:
+      params1: 0xC303FF03 # change to zone temp flag 3
+      anglez: 0xFFFF # don't set any storyflag here
 F000: # Skyloft
   - name: Trial
     type: oarcadd
@@ -174,6 +318,15 @@ F001r: # Knight Academy
     objtype: OBJS
     patch:
       anglex: 0xFF00
+  - name: Startitems
+    type: objpatch
+    room: 1
+    index: 0
+    objtype: EVNT
+    patch:
+      item: 11 # Goddess Sword
+      sceneflag1: 67 # open doors
+      sceneflag2: 0
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
@@ -729,6 +882,22 @@ F300_4: # Temple of Time
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Harp CS
+    type: objpatch
+    index: 20
+    room: 0
+    objtype: EVNT
+    patch:
+      item: -1
+      story_flag1: 914
+  - name: Fi text after Harp
+    type: objpatch
+    room: 0
+    layer: 0
+    id: 0xFC0D
+    objtype: OBJ
+    patch:
+      params1: 0xFFFFFFF2
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch
@@ -737,7 +906,7 @@ F300_5: # LMF to ToT
     room: 0
     objtype: STAG
     patch:
-      untrigstoryfid: 914 # 0x1E
+      untrigstoryfid: 914
   - name: harp CS loadzone
     type: objpatch
     id: 0xFC04
@@ -745,7 +914,38 @@ F300_5: # LMF to ToT
     room: 0
     objtype: STAG
     patch:
-      trigstoryfid: 914 # 0x1E
+      trigstoryfid: 914
+  - name: Extra Bird Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJS
+    object:
+      params1: 0xFF0302FF # no sceneflag, exit=3
+      params2: 0xFF5FFFFF
+      posx: 836
+      posy: 0
+      posz: 305
+      anglex: 0xFFFF
+      angley: 0xBC30
+      anglez: 0xFFFF
+      id: 0xFD84
+      name: saveObj
+  - name: Extra Dungeon Exit
+    type: objadd
+    room: 0
+    index: 3
+    objtype: SCEN
+    object:
+      name: F300
+      room: 0
+      layer: 0
+      entrance: 5
+      byte4: 2
+      byte5: 2
+      flag6: 0
+      zero: 0
+      flag8: 0
 F301_1: # Sand Sea Main Area
   - name: Skipper's Text at first time in Sand  # gets rid of 2x40 so also of the Evnttags
     type: objdelete
@@ -809,6 +1009,25 @@ F402: # Sealed Temple
     objtype: OBJS
     patch:
       anglex: 0xFF00 # sets the flag to -1 (meaning open)
+  - name: Raise GoT CS trigger
+    type: objadd
+    layer: 2
+    room: 2
+    objtype: STAG
+    object:
+      params1: 0xFF03FF02 # scenlink: 2
+      params2: 0xFF5FFFFF
+      posx: 0
+      posy: 7650
+      posz: 10971.697265625
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 63831 # triggered by storyflag 343 (BotG obtained)
+      angley: 0
+      anglez: 63828 # untriggered by storyflag 340 (GoT raised)
+      id: 0xFC00
+      name: ScChang
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
@@ -930,3 +1149,12 @@ F403: # Hylia's Realm
       - story_flag: -1
         night: 0
         layer: 13
+F405: # Sealed Grounds CS map (Opening CS)
+  - name: Startitems
+    type: objpatch
+    room: 0
+    index: 0
+    objtype: EVNT
+    patch:
+      story_flag2: 36 # Hero's tunic
+      item: 15 # Sailcloth

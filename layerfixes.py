@@ -41,6 +41,18 @@ DEFAULT_OBJ = OrderedDict(
     name = "",
 )
 
+DEFAULT_SCEN = OrderedDict(
+    name = "",
+    room = 0,
+    layer = 0,
+    entrance = 0,
+    byte4 = 0,
+    byte5 = 0,
+    flag6 = 0,
+    zero = 0,
+    flag8 = 0
+)
+
 class FlagEventTypes(IntEnum):
     SET_STORYFLAG = 0,
     UNSET_STORYFLAG = 1,
@@ -57,6 +69,12 @@ class FlagSwitchTypes(IntEnum):
     ZONEFLAG = 5,
     SCENEFLAG = 6,
     TEMPFLAG = 9,
+
+def entrypoint_hash(name: str, entries: int) -> int:
+    hash = 0
+    for char in name:
+        hash = (hash * 0x492 + ord(char)) & 0xFFFFFFFF
+    return hash % entries
 
 def make_switch(subtype: FlagSwitchTypes, arg: int):
     if subtype == FlagSwitchTypes.CHOICE:
@@ -370,29 +388,43 @@ def fix_layers():
                 new_obj = DEFAULT_SOBJ.copy()
             elif objtype in ['OBJS','OBJ ','DOOR']:
                 new_obj = DEFAULT_OBJ.copy()
+            elif objtype == 'SCEN':
+                new_obj = DEFAULT_SCEN.copy()
             else:
                 print(f'Error: unknown objtype: {objtype}')
                 continue
+            if 'index' in obj:
+                # check index, just to verify index based lists don't have a mistake in them
+                if layer is None:
+                    objlist = bzs.get(objtype, [])
+                else:
+                    objlist = bzs['LAY '][f'l{layer}'].get(objtype, [])
+                if len(objlist) != obj['index']:
+                    print(f'ERROR: wrong index adding object: {json.dumps(objadd)}')
+                    continue
             for key, val in obj.items():
                 new_obj[key] = val
-            new_obj['id'] = (new_obj['id'] & ~0x3FF) | next_id
-            next_id += 1
-            if not objtype in bzs['LAY '][f'l{layer}']:
-                bzs['LAY '][f'l{layer}'][objtype] = []
-            # add object name to objn
-            objn = bzs['LAY '][f'l{layer}']['OBJN']
-            if not obj['name'] in objn:
-                objn.append(obj['name'])
-            bzs['LAY '][f'l{layer}'][objtype].append(new_obj)
+            if 'id' in new_obj:
+                new_obj['id'] = (new_obj['id'] & ~0x3FF) | next_id
+                next_id += 1
+            if layer is None:
+                if not objtype in bzs:
+                    bzs[objtype] = []
+                objlist = bzs[objtype]
+            else:
+                if not objtype in bzs['LAY '][f'l{layer}']:
+                    bzs['LAY '][f'l{layer}'][objtype] = []
+                objlist = bzs['LAY '][f'l{layer}'][objtype]
+            # add object name to objn if it's some kind of actor
+            if objtype in ['SOBS','SOBJ','STAS','STAG','SNDT','OBJS','OBJ ','DOOR']:
+                # TODO: this only works if the layer is set
+                objn = bzs['LAY '][f'l{layer}']['OBJN']
+                if not obj['name'] in objn:
+                    objn.append(obj['name'])
+            objlist.append(new_obj)
             modified = True
-            print(f'added object {obj["name"]} to {layer} in room {room}')
             # print(obj)
-        if stage == 'F405' and room == 0:
-            # patch hero's tunic, sailcloth and goddess sword in opening CS
-            bzs['EVNT'][0]['story_flag2'] = 36
-            bzs['EVNT'][0]['item'] = 15
-            modified = True
-        elif stage == 'F001r' and room == 1:
+        if stage == 'F001r' and room == 1:
             # put all storyflags in links room at the start
             if not 'STAG' in bzs['LAY ']['l0']:
                 bzs['LAY ']['l0']['STAG'] = []
@@ -414,49 +446,6 @@ def fix_layers():
                 )
                 bzs['LAY ']['l0']['STAG'].append(new_obj)
                 next_id += 1
-            bzs['EVNT'][0]['item'] = 11
-            bzs['EVNT'][0]['sceneflag1'] = 67
-            bzs['EVNT'][0]['sceneflag2'] = 0
-            modified = True
-        elif stage == 'F300_5' and room == 0:
-            # Add save statue to leave dungeon after boss room to prevent softlock
-            # TODO: move to patches.yaml
-            new_obj = OrderedDict(
-                params1 = 0xFF0302FF,
-                params2 = 0xFF5FFFFF,
-                posx = 836,
-                posy = 0,
-                posz = 305,
-                anglex = 0xFFFF,
-                angley = 0xBC30,
-                anglez = 0xFFFF,
-                id = (0xFD84 & ~0x3FF) | next_id,
-                name = "saveObj",
-            )
-            next_id += 1
-            if not 'OBJS' in bzs['LAY ']['l0']:
-                bzs['LAY ']['l0']['OBJS'] = []
-            bzs['LAY ']['l0']['OBJS'].append(new_obj)
-            bzs['LAY ']['l0']['OBJN'].append('saveObj')
-            assert len(bzs['SCEN']) == 3, "F300_5 room 0 should have 3 SCEN"
-            new_scen = OrderedDict(
-                name = "F300",
-                room = 0,
-                layer = 0,
-                entrance = 5,
-                byte4 = 2,
-                byte5 = 2,
-                flag6 = 0,
-                zero = 0,
-                flag8 = 0
-            )
-            bzs['SCEN'].append(new_scen)
-            modified = True
-        elif stage == 'F300_4' and room == 0:
-            # make harp CS not give an item and change storyflag
-            # TODO move to patches.yaml
-            bzs['EVNT'][20]['item'] = -1
-            bzs['EVNT'][20]['story_flag1'] = 914
             modified = True
         if modified:
             # print(json.dumps(bzs))
@@ -474,7 +463,7 @@ def fix_layers():
                 flowobj[key] = val
             print(f'patched flow {command["index"]}, {filename}')
             modified = True
-        for command in filter(lambda x: x['type'] == 'flowadd', flowpatches):
+        for command in filter(lambda x: x['type'] in ['flowadd', 'switchadd'], flowpatches):
             assert len(msbf['FLW3']['flow']) == command['index'], f'index has to be the next value in the flow, expected {len(msbf["FLW3"]["flow"])} got {command["index"]}'
             flowobj = OrderedDict(
                 type='type1',
@@ -488,22 +477,28 @@ def fix_layers():
             )
             for key, val in command['flow'].items():
                 flowobj[key] = val
-            msbf['FLW3']['flow'].append(flowobj)
-            print(f'added flow {command["index"]}, {filename}')
+            if command['type'] == 'flowadd':
+                msbf['FLW3']['flow'].append(flowobj)
+                print(f'added flow {command["index"]}, {filename}')
+            else:
+                flowobj['type']='switch'
+                cases = command['cases']
+                add_msbf_branch(msbf, flowobj, cases)
+                print(f'added switch {command["index"]}, {filename}')
             modified = True
         for command in filter(lambda x: x['type'] == 'entryadd', flowpatches):
             new_entry = OrderedDict(
                 name = command['entry']['name'],
                 value = command['entry']['value'],
             )
-            msbf['FEN1'][0].append(new_entry)
+            bucket = entrypoint_hash(command["entry"]["name"], len(msbf['FEN1']))
+            msbf['FEN1'][bucket].append(new_entry)
             print(f'added flow entry {command["entry"]["name"]}, {filename}')
             modified = True
         if filename == '003-ItemGet':
             # make progressive mitts
             make_progressive_item(msbf, 93, [35, 231], [56, 99], [904, 905])
             # make progressive swords
-            # TODO fix empty textboxes
             # TODO trainings and goddess sword both set storyflags on their own, could reuse those
             make_progressive_item(msbf, 136, [77, 608, 75, 78, 74, 73], [10, 11, 12, 9, 13, 14], [906, 907, 908, 909, 910, 911])
             # make progressive beetle
