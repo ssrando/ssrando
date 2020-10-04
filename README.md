@@ -21,8 +21,8 @@ Make sure to have the extracted game prepared as stated in Installing, otherwise
 902: Beat Required dungeon 1
 903: Beat Required dungeon 2
 
-904: Progressive Mitts1
-905: Progressive Mitts2
+904: Progressive Mitts1 (Digging Mitts)
+905: Progressive Mitts2 (Mogma Mitts)
 
 906: Progressive Sword1 (Practice Sword)
 907: Progressive Sword2 (Goddess Sword)
@@ -35,3 +35,8 @@ Make sure to have the extracted game prepared as stated in Installing, otherwise
 913: Progressive Beetle2 (Hook Beetle)
 
 914: Beat LMF (more precisely, watch harp CS), storyflag 9 is associated with harp
+
+### Shoutouts
+- Peppernicus2000: Logic, fixes
+- Azer67: Logic
+- MrCheeze: Reverse engineering file formats
