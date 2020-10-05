@@ -70,6 +70,10 @@ global:
       # that code occurs another time
       - original: 8b 9f 00 ec 38 00 00 00 98 1f 12 54 38 60 00 01
         patched:  8b 9f 00 ec 38 00 00 00 98 1f 12 54 88 7f 00 ab
+    d_a_obj_goddess_cube:
+      # Goddess cubes can always be hit, even if the one in deep woods hasn't been hit
+      - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 93 e1 00 0c 3b e0 00 01 a0 03 08 ac 28 00 00 e3 41 82 00 2c
+        patched:  38 60 00 01 4e 80 00 20 90 01 00 14 93 e1 00 0c 3b e0 00 01 a0 03 08 ac 28 00 00 e3 41 82 00 2c
 # S100:
 #   - name: Test Trial
 #     type: objpatch
