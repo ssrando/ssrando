@@ -1158,3 +1158,11 @@ F405: # Sealed Grounds CS map (Opening CS)
     patch:
       story_flag2: 36 # Hero's tunic
       item: 15 # Sailcloth
+F407: # Skykeep beaten cs
+  - name: Skykeep CS remove Storyflag
+    type: objpatch
+    room: 0
+    index: 2
+    objtype: EVNT
+    patch:
+      story_flag2: -1
