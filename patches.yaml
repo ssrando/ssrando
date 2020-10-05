@@ -321,7 +321,7 @@ F001r: # Knight Academy
   - name: Startitems
     type: objpatch
     room: 1
-    index: 0
+    index: 2
     objtype: EVNT
     patch:
       item: 11 # Goddess Sword
