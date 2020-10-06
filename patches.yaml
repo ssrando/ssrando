@@ -10,7 +10,7 @@ global:
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - 323 # Scrapper repaired
     - 661 # Windmill Repaired
-    - 906 # Pratice Sword (needs to get changed when no goddess sword start)
+    - 906 # pratice sword (needs to get changed when no goddess sword start)
     - 907 # Goddess Sword (needs to get changed when no goddess sword start)
   objpackoarcadd:
     - GetSozaiL # Monster Horn (part of treasure)
@@ -115,6 +115,12 @@ B100_1: # skyview spring
     objtype: EVNT
     patch:
       item: -1
+  - name: Loadzone to outside layer 3
+    type: objdelete
+    room: 0
+    layer: 3
+    id: 0xFC75
+    objtype: STAG
 B101_1: # after AC boss
   - name: AC CS remove item and flags
     type: objpatch
@@ -151,12 +157,6 @@ B101_1: # after AC boss
     patch:
       params1: 0xC303FF02 # change to zone temp flag 3
       anglez: 0xFFFF # don't set any storyflag here
-  - name: Loadzone to outside layer 3
-    type: objdelete
-    room: 0
-    layer: 3
-    id: 0xFC75
-    objtype: STAG
 B210: # after ET boss
   - name: ET CS remove item
     type: objpatch
@@ -289,14 +289,6 @@ F000: # Skyloft
     layer: 4
     room: 0
     objtype: STAG
-  - name: Batreaux unlock
-    type: objpatch
-    id: 0xFC4A
-    layer: 0
-    room: 0
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00 # sets the flag to -1 (meaning open)
   - name: Wyrna cs
     type: objdelete
     id: 0xFDCE
@@ -309,23 +301,31 @@ F000: # Skyloft
     layer: 6
     room: 0
     objtype: OBJ
+#  - name: Batreaux unlock
+#    type: objpatch
+#    id: 0xFC4A
+#    layer: 0
+#    room: 0
+#    objtype: OBJS
+#    patch:
+#      anglex: 0xFF00 # sets the flag to -1 (meaning open)
+  - name: Startsceneflags 1
+    type: objpatch
+    room: 0
+    index: 22
+    objtype: EVNT
+    patch:
+      sceneflag1: 95 # Fi Text for Ruby Tablet
+      sceneflag2: 96 # Fi Text for Amber Tablet
+  - name: Startsceneflags 2
+    type: objpatch
+    room: 0
+    index: 23
+    objtype: EVNT
+    patch:
+      sceneflag1: 66 # Batreaux Doors outside open
+      sceneflag2: 78 # Batreaux Doors inside open
 F001r: # Knight Academy
-  - name: UA Door right
-    type: objpatch
-    id: 0xFC40
-    layer: 0
-    room: 0
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00
-  - name: UA Door left
-    type: objpatch
-    id: 0xFC3F
-    layer: 0
-    room: 0
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00
   - name: Startitems
     type: objpatch
     room: 1
@@ -333,8 +333,8 @@ F001r: # Knight Academy
     objtype: EVNT
     patch:
       item: 11 # Goddess Sword
-      sceneflag1: 67 # open doors
-      sceneflag2: 0
+      sceneflag1: 67 # Inside Doors open
+      sceneflag2: 1 # UA Doors open
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
@@ -413,15 +413,6 @@ F010r: # Isle of songs tower
     layer: 0
     room: 0
     objtype: OBJ
-F012r: # Batreaux home
-  - name: Batreaux unlock
-    type: objpatch
-    id: 0xFC00
-    layer: 0
-    room: 0
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00 # sets the flag to -1 (meaning open)
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
