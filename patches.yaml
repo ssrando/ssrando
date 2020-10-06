@@ -10,6 +10,8 @@ global:
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - 323 # Scrapper repaired
     - 661 # Windmill Repaired
+    - 906 # Pratice Sword (needs to get changed when no goddess sword start)
+    - 907 # Goddess Sword (needs to get changed when no goddess sword start)
   objpackoarcadd:
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -70,10 +72,6 @@ global:
       # that code occurs another time
       - original: 8b 9f 00 ec 38 00 00 00 98 1f 12 54 38 60 00 01
         patched:  8b 9f 00 ec 38 00 00 00 98 1f 12 54 88 7f 00 ab
-    d_a_obj_goddess_cube:
-      # Goddess cubes can always be hit, even if the one in deep woods hasn't been hit
-      - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 93 e1 00 0c 3b e0 00 01 a0 03 08 ac 28 00 00 e3 41 82 00 2c
-        patched:  38 60 00 01 4e 80 00 20 90 01 00 14 93 e1 00 0c 3b e0 00 01 a0 03 08 ac 28 00 00 e3 41 82 00 2c
 # S100:
 #   - name: Test Trial
 #     type: objpatch
@@ -153,6 +151,12 @@ B101_1: # after AC boss
     patch:
       params1: 0xC303FF02 # change to zone temp flag 3
       anglez: 0xFFFF # don't set any storyflag here
+  - name: Loadzone to outside layer 3
+    type: objdelete
+    room: 0
+    layer: 3
+    id: 0xFC75
+    objtype: STAG
 B210: # after ET boss
   - name: ET CS remove item
     type: objpatch
@@ -198,7 +202,7 @@ B201_1: # after FS boss
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF5F # triggered by sceneflag 94, which is goddess crest hit
+      anglex: 0xFF5F # triggered by sceneflag 95, which is goddess crest hit
       angley: 0xFFFF
       anglez: 30407 # entrypoint 304_07
       id: 0xFC00
@@ -207,7 +211,7 @@ B201_1: # after FS boss
     type: objpatch
     room: 0
     layer: 0
-    id: 0xFC0E
+    id: 0xFC0A
     objtype: STAG
     patch:
       params1: 0xC3030001 # change to zone temp flag 3
@@ -844,16 +848,6 @@ B201: # G2 fight
       - story_flag: -1
         night: 0
         layer: 0
-B201_1: # Din's Flame
-  - name: Teleport after hitting crest
-    type: objpatch
-    id: 0xFC0A
-    layer: 0
-    room: 0
-    objtype: STAG
-    patch:
-      trigstoryfid: 901
-      untrigstoryfid: 2047
 F300: # lanayru Main Area
   - name: Layer override
     type: layeroverride
@@ -1167,6 +1161,13 @@ F407: # Skykeep beaten cs
     type: objpatch
     room: 0
     index: 2
+    objtype: EVNT
+    patch:
+      story_flag2: -1
+  - name: Skykeep CS remove Storyflag
+    type: objpatch
+    room: 0
+    index: 3
     objtype: EVNT
     patch:
       story_flag2: -1
