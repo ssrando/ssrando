@@ -36,6 +36,17 @@ Make sure to have the extracted game prepared as stated in Installing, otherwise
 
 914: Beat LMF (more precisely, watch harp CS), storyflag 9 is associated with harp
 
+915: Medium Wallet
+916: Big Wallet
+917: Giant Wallet
+918: Tycoon Wallet
+
+New Trial Completed Storyflags:
+919: Faron
+920: Eldin
+921: Lanayru
+922: Skyloft
+
 ### Shoutouts
 - Peppernicus2000: Logic, fixes
 - Azer67: Logic

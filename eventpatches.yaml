@@ -37,6 +37,66 @@
     index: 82 # before storyflag
     patch:
       next: 583 # after Storyflag
+  - name: to set faron trial storyflag
+    type: flowpatch
+    index: 401
+    patch:
+      next: 680
+  - name: set faron trial storyflag
+    type: flowadd
+    index: 680
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 919
+      next: -1
+      param3: 0
+  - name: to set eldin trial storyflag
+    type: flowpatch
+    index: 441
+    patch:
+      next: 681
+  - name: set eldin trial storyflag
+    type: flowadd
+    index: 681
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 920
+      next: -1
+      param3: 0
+  - name: to set lanayru trial storyflag
+    type: flowpatch
+    index: 451
+    patch:
+      next: 682
+  - name: set lanayru trial storyflag
+    type: flowadd
+    index: 682
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 921
+      next: -1
+      param3: 0
+  - name: to set skyloft trial storyflag
+    type: flowpatch
+    index: 446
+    patch:
+      next: 683
+  - name: set skyloft trial storyflag
+    type: flowadd
+    index: 683
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 922
+      next: -1
+      param3: 0
 008-Hint:
   # check for 3 storyflags: required dungeon 1 and 2, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check
@@ -149,6 +209,22 @@
       param3: 9
       param4: 0
       param5: 0
+150-Siren:
+  - name: to unset trial storyflag
+    type: flowpatch
+    index: 38
+    patch:
+      next: 81
+  - name: unset trial storyflag on failure
+    type: flowadd
+    index: 81
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 922
+      next: -1
+      param3: 1 # unset storyflag
 200-Forest:
   - name: give slingshot directly
     type: flowpatch
@@ -237,6 +313,28 @@
       param2: 7
       next: -1
       param3: 7
+250-ForestSiren:
+  - name: shorten fi text
+    type: flowpatch
+    index: 1
+    patch:
+      next: 78
+  # unset trial storyflag on fail
+  - name: to unset Trial storyflag
+    type: flowpatch
+    index: 37
+    patch:
+      next: 98
+  - name: unset Trial storyflag
+    type: flowadd
+    index: 98
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 919
+      next: -1
+      param3: 1 # unset storyflag
 301-MountainD1:
   - name: give item after beating earth temple
     type: flowpatch
@@ -303,6 +401,22 @@
       param2: 7
       next: -1
       param3: 7
+350-MountainSairen:
+  - name: to unset trial storyflag
+    type: flowpatch
+    index: 30
+    patch:
+      next: 79
+  - name: unset trial storyflag on failure
+    type: flowadd
+    index: 79
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 920
+      next: -1
+      param3: 1 # unset storyflag
 400-Desert:
   - name: give item after harp CS
     type: flowpatch
@@ -369,6 +483,22 @@
       param2: 7
       next: -1
       param3: 7
+450-DesertSiren:
+  - name: to unset trial storyflag
+    type: flowpatch
+    index: 30
+    patch:
+      next: 79
+  - name: unset trial storyflag on failure
+    type: flowadd
+    index: 79
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 921
+      next: -1
+      param3: 1 # unset storyflag
 117-Pumpkin:
   - name: kina Crystal Quest
     type: flowpatch

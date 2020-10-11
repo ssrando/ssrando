@@ -80,6 +80,23 @@ global:
       # new AC storyflag is 900
       - original: 38 80 00 0b 90 01 00 14
         patched:  38 80 03 84 90 01 00 14
+    d_a_obj_warp:
+      # change faron trial completed storyflag
+      - original: 38 80 00 CE 80 63
+        patched:  38 80 03 97 80 63
+        multiple: true
+      # Eldin
+      - original: 38 80 00 CF 80 63
+        patched:  38 80 03 98 80 63
+        multiple: true
+      # Lanayru
+      - original: 38 80 00 D0 80 63
+        patched:  38 80 03 99 80 63
+        multiple: true
+      # Skyloft
+      - original: 38 80 00 D1 80 63
+        patched:  38 80 03 9A 80 63
+        multiple: true
 # S100:
 #   - name: Test Trial
 #     type: objpatch

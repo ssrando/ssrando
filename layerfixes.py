@@ -503,6 +503,8 @@ def fix_layers():
             make_progressive_item(msbf, 136, [77, 608, 75, 78, 74, 73], [10, 11, 12, 9, 13, 14], [906, 907, 908, 909, 910, 911])
             # make progressive beetle
             make_progressive_item(msbf, 96, [38, 178], [53, 75], [912, 913])
+            # make progressive wallets
+            make_progressive_item(msbf, 250, [246, 245, 244, 255], [108, 109, 110, 111], [915, 916, 917, 918])
             modified = True
         if modified:
             return msbf
@@ -553,8 +555,13 @@ def fix_layers():
             code_pos = rel.find(actual_code)
             
             assert code_pos != -1, f"code {codepatch['original']} not found in {file}!"
-            assert rel.find(actual_code, code_pos+1) == -1, f"code {codepatch['original']} found multiple times in {file}!"
-            rel[code_pos:code_pos+len(actual_code)] = patched_code
+            if codepatch.get('multiple',False):
+                while code_pos != -1:
+                    rel[code_pos:code_pos+len(actual_code)] = patched_code
+                    code_pos = rel.find(actual_code, code_pos+1)
+            else:
+                assert rel.find(actual_code, code_pos+1) == -1, f"code {codepatch['original']} found multiple times in {file}!"
+                rel[code_pos:code_pos+len(actual_code)] = patched_code
         rel_arc.set_file_data(f'rels/{file}NP.rel',rel)
         rel_modified = True
     if rel_modified:
