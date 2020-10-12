@@ -355,7 +355,7 @@ Sealed Grounds - Behind the Temple Triforce on goddess wall:
    - oarc/F400/l0
 Sealed Grounds - Hylia's Temple event:
   Need: Can Access Sealed Temple & Can Access Past
-  original item: True Master Sword
+  original item: Progressive Sword
   Paths:
    - event/502-CenterFieldBack/17
    - oarc/F404/l0
@@ -630,14 +630,14 @@ Lanayru - Right chest at end of Fire Node room:
   Paths:
    - stage/F300_3/r0/l0/TBox/82
 
-Lanayru caves - Cave Chest:
+Lanayru Caves - Cave Chest:
   Need: Can Access Lanayru & Clawshots
   original item: Golden Skull # TODO check again
   Paths:
    - stage/F303/r0/l0/TBox/127
-Lanayru caves - Small Key Event:
+Lanayru Caves - Small Key Event:
   Need: Can Access Lanayru & Clawshots
-  original item: Small Key
+  original item: Lanayru Caves Small Key
   Paths:
    - event/404-DesertF3/127
    - oarc/F303/l0
@@ -703,12 +703,12 @@ Skyview - Map Chest:
 Skyview - Small key underground:
  Need: Can Access Skyview & Can Get Past the First Skyview Room & Digging Mitts & Water Scale
  #It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
- original item: Small Key
+ original item: Skyview Small Key
  Paths:
   - stage/D100/r4/l0/Soil/15
 Skyview - Small Key Chest behind 2 Eyes:
   Need: Can Access Skyview & Can Get Past the First Skyview Room
-  original item: Small Key
+  original item: Skyview Small Key
   Paths:
    - stage/D100/r7/l0/TBox/67
 Skyview - Beetle Chest:
@@ -724,7 +724,7 @@ Skyview - Free Heart Piece:
    - stage/D100/r5/l0/Item/103
 Skyview - Small Key Chest behind 3 Eyes:
   Need: Can Access Skyview & Beetle & Skyview Small Key x1
-  original item: Small Key
+  original item: Skyview Small Key
   Paths:
    - stage/D100/r7/l0/TBox/68
 Skyview - Chest near Boss Door:
@@ -828,7 +828,7 @@ LMF - Chest before shortcut to gust bellows:
   Need: Can Access LMF & Hook Beetle
   #You can whip the lever in the first room, but it is not in logic
   #The path that requires a small key also need hook Beetle or bombs
-  original item: Small Key
+  original item: LMF Small Key
   Paths:
    - stage/D300/r5/l0/TBox/70
 LMF - Small Chest in room behind locked door:
@@ -893,7 +893,7 @@ LMF boss room - LMF Heart Container:
 
 AC - First Small Key chest:
   Need: Can Access AC & Water Scale
-  original item: Small Key
+  original item: AC Small Key
   Paths:
    - stage/D101/r1/l0/TBox/67
 AC - Map chest:
@@ -913,7 +913,7 @@ AC - Small Chest behind Waterfall:
    - stage/D101/r3/l0/TBox/84
 AC - Small Key on Bokoblin:
  Need: Can Access AC & Water Scale & Whip & (Bow | Beetle)
- original item: Small Key
+ original item: AC Small Key
  Paths:
   - stage/D101/r4/l0/EBc/FC00
 AC - Whip Chest:
@@ -938,7 +938,7 @@ AC Boss Room - AC Heart Container:
 
 AC Boss Room - Goddess Longsword:
   Need: Can Access AC & Whip & AC BK & (AC Small Key x2 | Clawshots)
-  original item: Goddess Longsword
+  original item: Progressive Sword
   Paths:
    - event/202-ForestD2/50
    - oarc/B101_1/l0
@@ -951,7 +951,7 @@ Sandship - Heart Piece chest at deck:
    - stage/D301/r0/l0/TBox/127
 Sandship - First Small Key chest:
   Need: Can Access Sandship
-  original item: Small Key
+  original item: Sandship Small Key
   Paths:
    - stage/D301/r10/l0/TBox/69
 Sandship - Bow chest:
@@ -991,7 +991,7 @@ Sandship - 5th treasure chest in Big treasure room:
    - stage/D301/r9/l0/TBox/68
 Sandship - Small Key from Robot:
   Need: Can Access Sandship & Bow & Whip
-  original item: Small Key
+  original item: Sandship Small Key
   Paths:
    - event/401-DesertD2/14
    - oarc/D301/l4
@@ -1016,7 +1016,7 @@ Sandship - Goddess White Sword Event:
 
 FS - First Small Key chest:
   Need: Can Access FS & Can Hit First Water Pods
-  original item: Small Key
+  original item: FS Small Key
   Paths:
    - stage/D201/r0/l0/TBox/64
 FS - First Small chest:
@@ -1027,7 +1027,7 @@ FS - First Small chest:
 FS - 2nd Small Key chest:
   Need: Can Access FS & Hook Beetle & (Gust Bellows | Clawshots) & FS Small Key x1
   #If you don't have gust bellows you can get the chest but you are stuck inside
-  original item: Small Key
+  original item: FS Small Key
   Paths:
    - stage/D201_1/r5/l0/TBox/69
 FS - Small chest in water pod room:
@@ -1058,7 +1058,7 @@ FS - FS Map Chest:
    - stage/D201_1/r2/l0/TBox/65
 FS - 3rd Small Key chest:
   Need: Can Access FS & Hook Beetle & Clawshots & FS Small Key x2 & Mogma Mitts & Gust Bellows & Bomb Bag
-  original item: Small Key
+  original item: FS Small Key
   Paths:
    - stage/D201_1/r11/l0/TBox/71
 FS - Plats Heart Piece Chest:
@@ -1086,7 +1086,7 @@ FS - FS Heart container:
 
 FS - Master sword event: # didn't find Event
   Need: Can Access FS & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS BK
-  original item: Master sword
+  original item: Progressive Sword
   Paths:
    - event/304-MountainD2/5
    - oarc/B201_1/l0
@@ -1166,7 +1166,7 @@ Skykeep - Skykeep Map Chest:
    - stage/D003_7/r0/l0/TBox/64
 Skykeep - Small Key Chest:
   Need: Can Access Skykeep & Gust Bellows & Whip & Bow & Clawshots
-  original item: Small Key
+  original item: Skykeep Small Key
   Paths:
    - stage/D003_6/r0/l0/TBox/65
 #Skykeep - Triforce of Wisdom Event
