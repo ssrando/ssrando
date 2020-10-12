@@ -73,7 +73,71 @@ Skyloft - Zelda Heartpiece:
   original item: Heart Piece
   Paths:
    - stage/F001r/r6/l0/chest/0xFC07
+Skyloft - Red rupee Chest near goddess statue:
+  Need: Nothing
+  original item: Red rupee
+  Paths: # alot because it is on every layer except layer 3
+   - stage/F000/r0/l4/TBox/71
+Skyloft - Goddess Sword Chest:
+  Need: Nothing
+  original item: Progressive Sword
+  Paths:
+    - stage/F008r/r0/l0/TBox/95
 
+#  Batreaux Rewards
+Skyloft - Batreaux Reward 1:
+  Need: Nothing # 5 gratitude Crystals
+  original item: progressive Wallet
+  Paths:
+    - event/121-AkumaKun/21
+    - oarc/F012r/l0
+Skyloft - Batreaux Reward 2:
+  Need: Nothing # 10 gratitude Crystals
+  original item: Heart Piece
+  Paths:
+    - event/121-AkumaKun/42
+    - oarc/F012r/l0
+Skyloft - Batreaux Reward 3:
+  Need: Nothing # 30 gratitude Crystals
+  original item: progressive Wallet
+  Paths:
+    - event/121-AkumaKun/24
+    - oarc/F012r/l0
+Skyloft - Batreaux Reward 4:
+  Need: Nothing # 40 gratitude Crystals
+  original item: Gold Rupee
+  Paths:
+    - event/121-AkumaKun/49
+    - oarc/F012r/l0
+Skyloft - Batreaux Reward 5:
+  Need: Nothing # 50 gratitude Crystals
+  original item: progressive Wallet
+  Paths:
+    - event/121-AkumaKun/27
+    - oarc/F012r/l0
+Skyloft - Batreaux Reward 6:
+        Need: Nothing # 70 gratitude Crystals
+        original item: Gold rupees
+        Paths:
+          - event/121-AkumaKun/161
+          - oarc/F012r/l0
+Skyloft - Batreaux Reward 6.5:
+  Need: Nothing # 70 gratitude Crystals
+  original item: Gold rupees
+  Paths:
+    - event/121-AkumaKun/163
+    - oarc/F012r/l0
+Skyloft - Batreaux Reward 7:
+  Need: Nothing # 80 gratitude Crystals
+  original item: progressive Wallet
+  Paths:
+    - event/121-AkumaKun/37
+    - oarc/F012r/l0
+Skyloft - Batreaux Chest:
+  Need: Nothing # 30 gratitude Crystals
+  original item: Cursed Medal
+  Paths:
+    - stage/F012r/r0/l0/TBox/69
 
 Sky - on Lumpy Pumpkin:
   Need: Nothing
@@ -87,7 +151,7 @@ Sky - outside Lumpy Pumpkin:
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/64
-Sky - next to Bamboo island chest 1:
+Sky - next to Beedle's island chest 1:
   Need: Nothing
   original item: Silver Rupee
   type: goddess
@@ -123,7 +187,7 @@ Sky - volcanic island outside:
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/67
-Sky - a Island: # TODO fix name
+Sky - chest closest to Faron Pillar:
   Need: Nothing
   original item: Heart Piece
   type: goddess
@@ -184,6 +248,17 @@ Sky - Lumpy Pumpkin harp minigame:
    - event/117-Pumpkin/305
    - oarc/F011r/l0
 
+#These checks need Spiral Charge
+#Sky - Breakable Boulder near Fun Fun island:
+#  Need: Can Access Levias
+#  original item: Silver Rupee
+#  Paths:
+#    - stage/F020/r0/l0/TBox/70
+#Sky - Breakable Boulder near Lumpy Pumpkin:
+#  Need: Can Access Levias
+#  original item: Silver Rupee
+#  Paths:
+#    - stage/F020/r0/l0/TBox/69
 
 Thunderhead - outside isle of songs Rupee:
   Need: Can Access Thunderhead
@@ -306,23 +381,37 @@ Faron Woods - Chest inside Great Tree:
   original item: Gold Rupee
   Paths:
    - stage/F100_1/r0/l0/TBox/84
+Faron Woods - HP on Tree:
+  Need: Can Access Sealed Temple & ((Gust Bellows & Water Scale) | Clawshots)
+  original item: Heart Piece
+  Paths:
+    - stage/F100/r0/l0/Item/68
 
-
-Lake Floria - Outside AC:
+Lake Floria - Outside AC: # not sure if this one works for other items
   Need: Can Acess Sealed Temple & Can Access Lake Floria & Beetle
   original item: Gold Rupee
   Paths:
    - stage/F102_1/r0/l0/Item/64
-Lake Floria - Dragon Lair chest:
+Lake Floria - Dragon Lair chest 1:
   Need: Can Access Sealed Temple & Can Access Lake Floria
   original item: Silver Rupee
   Paths:
    - stage/F102_2/r0/l0/TBox/84
-Lake Floria - Lake Floria chest:
+Lake Floria - Dragon Lair chest 2:
   Need: Can Access Sealed Temple & Can Access Lake Floria
   original item: Evil Crystal
   Paths:
+   - stage/F102_2/r0/l0/TBox/85
+Lake Floria - Lake Floria chest:
+  Need: Can Access Sealed Temple & Can Access Lake Floria
+  original item: Goddess Plume
+  Paths:
    - stage/F102/r3/l0/TBox/64
+Lake Floria - Lake Floria Silver Rupee: # not sure if we want to randomize this
+  Need: Can Access Sealed Temple & Can Access Lake Floria
+  original item: Silver Rupee
+  Paths:
+   - stage/F102/r2/l0/Item/60
 
 
 Eldin Volcano - chest behind Hidden Wall in Room 1:
@@ -444,7 +533,7 @@ Lanayru Mines - behind Statue:
    - stage/F300_1/r2/l0/TBox/67
 Lanayru Mines - Chest at end of mines:
   Need: Bomb Bag
-  original item: Evil Crystal # TODO check again
+  original item: Rare Treasure
   Paths:
    - stage/F300_1/r2/l0/TBox/66
 
@@ -478,7 +567,7 @@ Lanayru - Hook Beetle event:
    - oarc/F300/l0
 Lanayru - Chest after getting Harp on top of LMF:
   Need: Can Beat LMF
-  original item: Golden Skull # TODO check
+  original item: Rare Treasure # TODO check
   Paths:
    - stage/F300/r0/l0/TBox/83
 Lanayru - Chest near Sand Oasis:
@@ -506,12 +595,12 @@ Lanayru - Small chest at beginning of Lightning Node room:
 Lanayru - Chest at end of Lightning Node room:
   Need: Can Access Second Part of Lanayru & Bomb Bag & Beetle
   #The Slingshot can hit the timeshift stone thanks to its seed having a curved path. Then you can deathwarp to the beginning or use the bow to get out. Not in logic.
-  original item: Golden Skull # TODO check again
+  original item: Rare Treasure # TODO check again
   Paths:
    - stage/F300_2/r0/l0/TBox/77
 Lanayru - Chest in present in Fire Node room:
   Need: Can Access Second Part of Lanayru
-  original item: Golden Skull # TODO check again
+  original item: Rare Treasure # TODO check again
   Paths:
    - stage/F300_3/r0/l0/TBox/79
 Lanayru - Chest in past at beginning of Fire Node room:
