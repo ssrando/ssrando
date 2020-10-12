@@ -12,6 +12,9 @@ global:
     - 661 # Windmill Repaired
     - 906 # pratice sword (needs to get changed when no goddess sword start)
     - 907 # Goddess Sword (needs to get changed when no goddess sword start)
+    - 198 # Can jump off Loftwing
+    - 679 # Stairs Fi Text related
+    - 358 # Interface choice unlocked
   objpackoarcadd:
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -56,6 +59,22 @@ global:
       # function that start the walking and warping CS, jump to the code injected above
       - original: 94 21 ff b0 7c 08 02 a6 90 01 00 54 93 e1 00 4c 7c 7f 1b 78 88 63 0c 7d
         patched:  94 21 ff b0 7c 08 02 a6 90 01 00 54 93 e1 00 4c 7c 7f 1b 78 4b ff ff 84
+      # change faron trial completed storyflag
+      - original: 38 80 00 CE 80 63
+        patched:  38 80 03 97 80 63
+        multiple: true
+      # Eldin
+      - original: 38 80 00 CF 80 63
+        patched:  38 80 03 98 80 63
+        multiple: true
+      # Lanayru
+      - original: 38 80 00 D0 80 63
+        patched:  38 80 03 99 80 63
+        multiple: true
+      # Skyloft
+      - original: 38 80 00 D1 80 63
+        patched:  38 80 03 9A 80 63
+        multiple: true
     d_a_e_bc:
       # the bokoblin holding a key in AC, if he dies (possible with bow), but the key isn't picked up it can't be obtained again
       # first, patch that the sceneflag (shared between bokoblin and key) isn't set if the boko dies and still has the key
@@ -80,23 +99,7 @@ global:
       # new AC storyflag is 900
       - original: 38 80 00 0b 90 01 00 14
         patched:  38 80 03 84 90 01 00 14
-    d_a_obj_warp:
-      # change faron trial completed storyflag
-      - original: 38 80 00 CE 80 63
-        patched:  38 80 03 97 80 63
-        multiple: true
-      # Eldin
-      - original: 38 80 00 CF 80 63
-        patched:  38 80 03 98 80 63
-        multiple: true
-      # Lanayru
-      - original: 38 80 00 D0 80 63
-        patched:  38 80 03 99 80 63
-        multiple: true
-      # Skyloft
-      - original: 38 80 00 D1 80 63
-        patched:  38 80 03 9A 80 63
-        multiple: true
+
 # S100:
 #   - name: Test Trial
 #     type: objpatch
@@ -326,6 +329,24 @@ F000: # Skyloft
     layer: 6
     room: 0
     objtype: OBJ
+  - name: Fi Text after trial
+    type: objdelete
+    id: 0xFDF4
+    layer: 4
+    room: 0
+    objtype: OBJ
+  - name: Fi Text after trial
+    type: objdelete
+    id: 0xFDFF
+    layer: 5
+    room: 0
+    objtype: OBJ
+  - name: Fi Text on Stairs
+    type: objdelete
+    id: 0xFDCB
+    layer: 4
+    room: 0
+    objtype: OBJ
 #  - name: Batreaux unlock
 #    type: objpatch
 #    id: 0xFC4A
@@ -348,6 +369,7 @@ F000: # Skyloft
     index: 23
     objtype: EVNT
     patch:
+      item: 112 # Adventure Pouch
       sceneflag1: 66 # Batreaux Doors outside open
       sceneflag2: 78 # Batreaux Doors inside open
 F001r: # Knight Academy
