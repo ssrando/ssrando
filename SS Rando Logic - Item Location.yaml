@@ -93,7 +93,7 @@ Skyloft - Fledge's Pouch:
 #  Batreaux Rewards
 Skyloft - Batreaux Reward 1:
   Need: Nothing # 5 gratitude Crystals
-  original item: progressive Wallet
+  original item: Progressive Wallet
   Paths:
     - event/121-AkumaKun/21
     - oarc/F012r/l0
@@ -105,7 +105,7 @@ Skyloft - Batreaux Reward 2:
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 3:
   Need: Nothing # 30 gratitude Crystals
-  original item: progressive Wallet
+  original item: Progressive Wallet
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
@@ -117,7 +117,7 @@ Skyloft - Batreaux Reward 4:
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 5:
   Need: Nothing # 50 gratitude Crystals
-  original item: progressive Wallet
+  original item: Progressive Wallet
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
@@ -135,7 +135,7 @@ Skyloft - Batreaux Reward 6.5:
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 7:
   Need: Nothing # 80 gratitude Crystals
-  original item: progressive Wallet
+  original item: Progressive Wallet
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
