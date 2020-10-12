@@ -83,6 +83,12 @@ Skyloft - Goddess Sword Chest:
   original item: Progressive Sword
   Paths:
     - stage/F008r/r0/l0/TBox/95
+Skyloft - Fledge's Pouch:
+  Need: Nothing
+  original item: Pouch A
+  Paths:
+    - event/114-Friend/16
+    - oarc/F001r/l4
 
 #  Batreaux Rewards
 Skyloft - Batreaux Reward 1:
