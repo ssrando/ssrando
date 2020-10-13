@@ -16,6 +16,9 @@ def get_randomized_checks():
     empty_checks = set()
     dungeonchecks = defaultdict(list)
 
+    seed = random.randint(0, 1000000-1)
+    random.seed(seed)
+
     all_checks = []
     item_pool = []
     for i, (name, check) in enumerate(checks.items()):
@@ -55,6 +58,7 @@ def get_randomized_checks():
         filled_checks[check] = item
 
     with open('spoiler.txt','w') as f:
+        f.write(f'Seed: {seed}\n')
         for name in checks.keys():
             f.write(f'{name}: {filled_checks[name]}\n')
     # (stage, room) -> (object name, layer, id?, itemid)

@@ -2,7 +2,7 @@ Skyloft - Skyloft Owlan's Shield:
   Need: Nothing
   original item: Wooden Shield
   Paths:
-   - event/108-ShinkanA/164
+   - event/108-ShinkanA/169
    - oarc/F000/l4
    - oarc/F000/l6
 Skyloft - Training Hall chest:
@@ -14,7 +14,7 @@ Skyloft - Bazaar Potion lady:
   Need: Nothing
   original item: Bottle
   Paths:
-   - event/106-DrugStore/44
+   - event/106-DrugStore/59
    - oarc/F004r/l0
 Skyloft - Bazaar chest:
   Need: Nothing
@@ -88,6 +88,7 @@ Skyloft - Fledge's Pouch:
   original item: Adventure Pouch
   Paths:
     - event/114-Friend/16
+    - oarc/F001r/l3
     - oarc/F001r/l4
 
 #  Batreaux Rewards
