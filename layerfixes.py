@@ -11,6 +11,7 @@ import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
 from tboxSubtypes import tboxSubtypes
+from logic import get_randomized_checks
 
 DEFAULT_SOBJ = OrderedDict(
     params1 = 0,
@@ -274,6 +275,62 @@ def patch_trial_item(trial: OrderedDict, itemid: int):
 def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
     boko['params2'] = mask_shift_set(boko['params2'], 0xFF, 0x0, itemid)
 
+
+
+# not treasure chest, wardrobes you can open, used for zelda room HP
+def rando_patch_chest(bzs: OrderedDict, itemid: int, id: str):
+    id = int(id)
+    chest = next(filter(lambda x: x['name'] == 'chest' and (x['params1'] & 0xFF) == id, bzs['OBJ ']))
+    patch_chest_item(chest, itemid)
+
+def rando_patch_heartco(bzs: OrderedDict, itemid: int, id: str):
+    obj = next(filter(lambda x: x['name'] == 'HeartCo', bzs['OBJ '])) # there is only one heart container at a time
+    patch_heart_co(obj, itemid)
+
+def rando_patch_warpobj(bzs: OrderedDict, itemid: int, id: str):
+    obj = next(filter(lambda x: x['name'] == 'WarpObj', bzs['OBJ '])) # there is only one trial exit at a time
+    patch_trial_item(obj, itemid)
+
+def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str):
+    id = int(id)
+    tboxs = list(filter(lambda x: x['name'] == 'TBox' and (x['anglez']>>9) == id, bzs['OBJS']))
+    if len(tboxs) == 0:
+        print(tboxs)
+    obj = tboxs[0] # anglez >> 9 is chest id
+    patch_tbox_item(obj, itemid)
+
+def rando_patch_item(bzs: OrderedDict, itemid: int, id: str):
+    id = int(id)
+    obj = next(filter(lambda x: x['name'] == 'Item' and ((x['params1'] >> 10) & 0xFF) == id, bzs['OBJ '])) # (params1 >> 10) & 0xFF is sceneflag
+    patch_item_item(obj, itemid)
+
+def rando_patch_chandelier(bzs: OrderedDict, itemid: int, id: str):
+    obj = next(filter(lambda x: x['name'] == 'Chandel', bzs['OBJ ']))
+    patch_chandelier_item(obj, itemid)
+
+def rando_patch_soil(bzs: OrderedDict, itemid: int, id: str):
+    id = int(id)
+    obj = next(filter(lambda x: x['name'] == 'Soil' and ((x['params1'] >> 4) & 0xFF) == id, bzs['OBJ '])) # (params1 >> 4) & 0xFF is sceneflag
+    patch_item_item(obj, itemid)
+
+def rando_patch_bokoblin(bzs: OrderedDict, itemid: int, id: str):
+    id = int(id, 0)
+    obj = next(filter(lambda x: x['name'] == 'EBc' and x['id']== id, bzs['OBJ ']))
+    patch_item_item(obj, itemid)
+
+# functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
+RANDO_PATCH_FUNCS = {
+    'chest': rando_patch_chest,
+    'HeartCo': rando_patch_heartco,
+    'WarpObj': rando_patch_warpobj,
+    'TBox': rando_patch_tbox,
+    'Item': rando_patch_item,
+    'Chandel': rando_patch_chandelier,
+    'Soil': rando_patch_soil,
+    'EBc': rando_patch_bokoblin,
+    'Tbox': rando_patch_tbox,
+}
+
 def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Optional[OrderedDict]:
     id = objdef.get('id',None)
     index = objdef.get('index',None)
@@ -319,8 +376,10 @@ def fix_layers():
         with open("extracts.yaml") as f:
             extracts = yaml.safe_load(f)
         patcher.create_oarc_cache(extracts)
+    
+    rando_stagepatches, stageoarcs, rando_eventpatches = get_randomized_checks()
 
-    stageoarcs = defaultdict(set)
+    # stageoarcs = defaultdict(set)
 
     for stage, stagepatches in patches.items():
         if stage == 'global':
@@ -424,6 +483,15 @@ def fix_layers():
             objlist.append(new_obj)
             modified = True
             # print(obj)
+        
+        # patch randomized items on stages
+        for objname, layer, objid, itemid in rando_stagepatches.get((stage, room),[]):
+            modified = True
+            try:
+                RANDO_PATCH_FUNCS[objname](bzs['LAY '][f'l{layer}'], itemid, objid)
+            except StopIteration:
+                print(f'ERROR: {stage}, {room}, {layer}, {objname}, {objid}')
+
         if stage == 'F001r' and room == 1:
             # put all storyflags in links room at the start
             if not 'STAG' in bzs['LAY ']['l0']:
@@ -506,6 +574,12 @@ def fix_layers():
             # make progressive wallets
             make_progressive_item(msbf, 250, [246, 245, 244, 255], [108, 109, 110, 111], [915, 916, 917, 918])
             modified = True
+        
+        # patch randomized items
+        for evntline, itemid in rando_eventpatches.get(filename, []):
+            modified = True
+            msbf['FLW3']['flow'][evntline]['param2'] = itemid
+
         if modified:
             return msbf
         else:

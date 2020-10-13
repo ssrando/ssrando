@@ -136,10 +136,10 @@
   name: Dusk Relic
   oarc: GetSozaiH
 - id: 63
-  name: Evil Crystal # actually semi rare treasure
+  name: Semi Rare Treasure # actually semi rare treasure
   oarc: null
 - id: 64
-  name: Golden Skull # actually rare treasure
+  name: Rare Treasure # actually rare treasure
   oarc: null
 - id: 68
   name: Water Scale
@@ -196,19 +196,19 @@
   name: Scatershot
   oarc: GetPachinkoB
 - id: 108
-  name: Medium Wallet
+  name: Progressive Wallet # Medium Wallet
   oarc: GetPurseB
-- id: 109
-  name: Big Wallet
-  oarc: GetPurseC
-- id: 110
-  name: Giant Wallet
-  oarc: GetPurseD
-- id: 111
-  name: Tycoon Wallet
-  oarc: GetPurseE
+# - id: 109
+#   name: Big Wallet
+#   oarc: GetPurseC
+# - id: 110
+#   name: Giant Wallet
+#   oarc: GetPurseD
+# - id: 111
+#   name: Tycoon Wallet
+#   oarc: GetPurseE
 - id: 112
-  name: Adveture Pouch
+  name: Adventure Pouch
   oarc: GetPouchA
 - id: 113
   name: Pouch Expansion
@@ -261,6 +261,18 @@
 - id: 165
   name: Eldin Ore
   oarc: null # Is in objectPack
+- id: 171
+  name: Monster Horn
+  oarc: null
+- id: 173
+  name: Evil Crystal
+  oarc: null
+- id: 175
+  name: Golden Skull
+  oarc: null
+- id: 176
+  name: Goddess Plume
+  oarc: null
 - id: 177
   name: Emerald Tablet
   oarc: GetSekibanMapA # TODO check, irrelevant for now

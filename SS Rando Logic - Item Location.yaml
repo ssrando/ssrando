@@ -60,7 +60,7 @@ Skyloft - Skyloft above waterfall:
   original item: Heart Piece
   type: goddess
   Paths:
-   - stage/F000/r0/l0/TBox/94
+   - stage/F000/r0/l0/TBox/80
 Skyloft - Skyloft Archer minigame:
   Need: Can Beat LMF & Adventure Pouch & Bottle & Can Save Kukiel???
   original item: Heart Piece
@@ -72,10 +72,10 @@ Skyloft - Zelda Heartpiece:
   Need: Clawshots
   original item: Heart Piece
   Paths:
-   - stage/F001r/r6/l0/chest/0xFC07
+   - stage/F001r/r6/l0/chest/32 #sceneflag
 Skyloft - Red rupee Chest near goddess statue:
   Need: Nothing
-  original item: Red rupee
+  original item: Red Rupee
   Paths: # alot because it is on every layer except layer 3
    - stage/F000/r0/l4/TBox/71
 Skyloft - Goddess Sword Chest:
@@ -85,7 +85,7 @@ Skyloft - Goddess Sword Chest:
     - stage/F008r/r0/l0/TBox/95
 Skyloft - Fledge's Pouch:
   Need: Nothing
-  original item: Pouch A
+  original item: Adventure Pouch
   Paths:
     - event/114-Friend/16
     - oarc/F001r/l4
@@ -122,14 +122,14 @@ Skyloft - Batreaux Reward 5:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 6:
-        Need: Nothing # 70 gratitude Crystals
-        original item: Gold rupees
-        Paths:
-          - event/121-AkumaKun/161
-          - oarc/F012r/l0
+  Need: Nothing # 70 gratitude Crystals
+  original item: Gold Rupee
+  Paths:
+    - event/121-AkumaKun/161
+    - oarc/F012r/l0
 Skyloft - Batreaux Reward 6.5:
   Need: Nothing # 70 gratitude Crystals
-  original item: Gold rupees
+  original item: Gold Rupee
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
@@ -363,7 +363,7 @@ Sealed Grounds - Hylia's Temple event:
 
 Faron Woods - Faron Woods Treasure:
   Need: Can Access Sealed Temple & Bomb Bag
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/F100/r0/l0/TBox/64
 Faron Woods - Slingshot event:
@@ -393,11 +393,11 @@ Faron Woods - HP on Tree:
   Paths:
     - stage/F100/r0/l0/Item/68
 
-Lake Floria - Outside AC: # not sure if this one works for other items
-  Need: Can Acess Sealed Temple & Can Access Lake Floria & Beetle
-  original item: Gold Rupee
-  Paths:
-   - stage/F102_1/r0/l0/Item/64
+# Lake Floria - Outside AC: # not sure if this one works for other items
+#   Need: Can Acess Sealed Temple & Can Access Lake Floria & Beetle
+#   original item: Gold Rupee
+#   Paths:
+#    - stage/F102_1/r0/l0/Item/64
 Lake Floria - Dragon Lair chest 1:
   Need: Can Access Sealed Temple & Can Access Lake Floria
   original item: Silver Rupee
@@ -405,7 +405,7 @@ Lake Floria - Dragon Lair chest 1:
    - stage/F102_2/r0/l0/TBox/84
 Lake Floria - Dragon Lair chest 2:
   Need: Can Access Sealed Temple & Can Access Lake Floria
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/F102_2/r0/l0/TBox/85
 Lake Floria - Lake Floria chest:
@@ -451,27 +451,27 @@ Eldin Volcano - Key Piece below Tower:
  Need: Can Access Eldin & Digging Mitts
  original item: Key Piece
  Paths:
-  - stage/F200/r4/l0/Soil/9
+  - stage/F200/r4/l1/Soil/9
 Eldin Volcano - Key Piece behind Thunderhead Boulder:
  Need: Can Access Eldin & Digging Mitts
  original item: Key Piece
  Paths:
-  - stage/F200/r4/l0/Soil/12
+  - stage/F200/r4/l1/Soil/12
 Eldin Volcano - Key Piece after vents:
  Need: Can Access Eldin & Digging Mitts
  original item: Key Piece
  Paths:
-  - stage/F200/r6/l0/Soil/10
+  - stage/F200/r6/l1/Soil/10
 Eldin Volcano - Key Piece after draining Lava:
  Need: Can Access Eldin & Digging Mitts
  original item: Key Piece
  Paths:
-  - stage/F200/r2/l0/Soil/64
+  - stage/F200/r2/l1/Soil/64
 Eldin Volcano - Key Piece in front of ET:
  Need: Can Access Eldin & Digging Mitts
  original item: Key Piece
  Paths:
-  - stage/F200/r4/l0/Soil/8
+  - stage/F200/r4/l1/Soil/8
 
 Mogma Turf - Sand Slide chest:
   Need: Can Access Eldin & Digging Mitts
@@ -575,7 +575,7 @@ Lanayru - Chest after getting Harp on top of LMF:
   Need: Can Beat LMF
   original item: Rare Treasure # TODO check
   Paths:
-   - stage/F300/r0/l0/TBox/83
+   - stage/F300/r0/l1/TBox/83
 Lanayru - Chest near Sand Oasis:
   Need: Can Access Lanayru & Clawshots
   original item: Red Rupee
@@ -661,7 +661,7 @@ Lanayru Sand Sea - Chest after Moblin Bridge at Skippers Retreat:
    - stage/F301_3/r0/l0/TBox/78
 Lanayru Sand Sea - Chest close to Shack:
   Need: Can Access Sand Sea & (Bomb Bag | Hook Beetle) & Whip & (Bow | Beetle | Slingshot)
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/F301_3/r0/l0/TBox/76
 Lanayru Sand Sea - Chest in Skippers Shack:
@@ -684,12 +684,12 @@ Lanayru Sand Sea - First Chest in Pirate Stronghold:
    - stage/F301_2/r4/l0/TBox/75
 Lanayru Sand Sea - Second Chest in Pirate Stronghold:
   Need: Can Access Sand Sea
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/F301_2/r5/l0/TBox/73
 Lanayru Sand Sea - 3rd Chest in Pirate Stronghold:
   Need: Can Access Sand Sea
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/F301_2/r6/l0/TBox/74
 
@@ -710,7 +710,7 @@ Skyview - Small Key Chest behind 2 Eyes:
   Need: Can Access Skyview & Can Get Past the First Skyview Room
   original item: Skyview Small Key
   Paths:
-   - stage/D100/r7/l0/TBox/67
+   - stage/D100/r4/l0/TBox/67
 Skyview - Beetle Chest:
   Need: Can Access Skyview & (Slingshot | Clawshots | Beetle | Bow) & Skyview Small Key x1
   #Bombs don't work
@@ -823,7 +823,7 @@ LMF - First Chest behind bars:
   Need: Can Access LMF
   original item: Red Rupee
   Paths:
-   - stage/D300/r0/l0/Tbox/64
+   - stage/D300/r0/l0/TBox/64
 LMF - Chest before shortcut to gust bellows:
   Need: Can Access LMF & Hook Beetle
   #You can whip the lever in the first room, but it is not in logic
@@ -848,7 +848,7 @@ LMF - Chest inside Gust Bellows room:
   Need: Can Access LMF & LMF Small Key x1 & Hook Beetle
   original item: Golden Skull # TODO check again
   Paths:
-   - stage/D300/r4/l0/TBox/64
+   - stage/D300/r4/l0/TBox/76
 LMF - Chest inside of first West Room:
   Need: Can Access LMF & Hook Beetle & Gust Bellows
   original item: Golden Skull # TODO check again
@@ -915,7 +915,7 @@ AC - Small Key on Bokoblin:
  Need: Can Access AC & Water Scale & Whip & (Bow | Beetle)
  original item: AC Small Key
  Paths:
-  - stage/D101/r4/l0/EBc/FC00
+  - stage/D101/r4/l0/EBc/0xFC00
 AC - Whip Chest:
   Need: Can Access AC & AC Small Key x2
   original item: Whip
@@ -966,7 +966,7 @@ Sandship - Sandship Map Chest:
    - stage/D301/r3/l0/TBox/71
 Sandship - First treasure chest in Big treasure room:
   Need: Can Access Sandship & Bow & Whip
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/D301/r9/l0/TBox/64
 Sandship - 2nd treasure chest in Big treasure room:
@@ -976,7 +976,7 @@ Sandship - 2nd treasure chest in Big treasure room:
    - stage/D301/r9/l0/TBox/65
 Sandship - 3rd treasure chest in Big treasure room:
   Need: Can Access Sandship & Bow & Whip
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/D301/r9/l0/TBox/66
 Sandship - 4th treasure chest in Big treasure room:
@@ -986,7 +986,7 @@ Sandship - 4th treasure chest in Big treasure room:
    - stage/D301/r9/l0/TBox/67
 Sandship - 5th treasure chest in Big treasure room:
   Need: Can Access Sandship & Bow & Whip
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/D301/r9/l0/TBox/68
 Sandship - Small Key from Robot:
@@ -1037,7 +1037,7 @@ FS - Small chest in water pod room:
    - stage/D201_1/r7/l0/TBox/73
 FS - chest on left side in water pod room:
   Need: Can Access FS & Hook Beetle & FS Small Key x2
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/D201_1/r7/l0/TBox/72
 FS - Mogma Mitts chest:
@@ -1068,7 +1068,7 @@ FS - Plats Heart Piece Chest:
    - stage/D201_1/r3/l0/TBox/66
 FS - Chest in Staircase room:
   Need: Can Access FS & Hook Beetle & Clawshots & FS Small Key x3 & Mogma Mitts
-  original item: Evil Crystal
+  original item: Semi Rare Treasure
   Paths:
    - stage/D201_1/r9/l0/TBox/75
 FS - FS BK chest:
