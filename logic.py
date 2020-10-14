@@ -87,7 +87,11 @@ def get_randomized_checks():
                 objid = stage_match.group('objid')
                 oarc = item['oarc']
                 if oarc:
-                    stageoarcs[(stage, layer)].add(oarc)
+                    if isinstance(oarc, list):
+                        for o in oarc:
+                            stageoarcs[(stage, layer)].add(o)
+                    else:
+                        stageoarcs[(stage, layer)].add(oarc)
                 stagepatchv2[(stage, room)].append((objname, layer, objid, item['id']))
             elif event_match:
                 eventfile = event_match.group('eventfile')
@@ -98,7 +102,11 @@ def get_randomized_checks():
                 layer = int(oarc_match.group('layer'))
                 oarc = item['oarc']
                 if oarc:
-                    stageoarcs[(stage, layer)].add(oarc)
+                    if isinstance(oarc, list):
+                        for o in oarc:
+                            stageoarcs[(stage, layer)].add(o)
+                    else:
+                        stageoarcs[(stage, layer)].add(oarc)
             else:
                 print(f'ERROR: {path} didn\'t match any regex!')
     return stagepatchv2, stageoarcs, eventpatches

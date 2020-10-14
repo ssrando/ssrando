@@ -167,7 +167,9 @@
   oarc: GetBombBag
 - id: 93
   name: Heart Container
-  oarc: GetHeartUtuwa
+  oarc:
+  - GetHeartUtuwa
+  - PutHeartUtuwa
 - id: 94
   name: Heart Piece
   oarc: null
@@ -254,7 +256,9 @@
   oarc: GetTerryCage
 - id: 160
   name: Baby's Rattle
-  oarc: GetGaragara
+  oarc:
+  - GetGaragara
+  - PutGaragara
 - id: 163
   name: Tumbleweed
   oarc: GetSozaiC
