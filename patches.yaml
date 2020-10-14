@@ -81,9 +81,9 @@ global:
     d_a_e_bc:
       # the bokoblin holding a key in AC, if he dies (possible with bow), but the key isn't picked up it can't be obtained again
       # first, patch that the sceneflag (shared between bokoblin and key) isn't set if the boko dies and still has the key
-      # this replaces a non null check for field 0x130f, which seems useless?
+      # this replaces the check for sceneflag 0xFF, I don't think it hurts if we try to set that
       - original: 88 1f 13 0f 2c 00 00 00 41 82 00 44 88 1f 13 43 28 00 00 ff
-        patched:  88 1f 12 54 2c 00 00 00 40 82 00 44 88 1f 13 43 28 00 00 ff
+        patched:  88 1f 13 0f 2c 00 00 00 41 82 00 44 88 1f 12 54 28 00 00 01
       # prevent the key from dropping, the called drop function can't be easily changed and doesn't allow a
       # sceneflag to be passed as a param
       - original: 2c 00 00 00 41 82 00 18 38 a1 00 80 38 c1 00 18
