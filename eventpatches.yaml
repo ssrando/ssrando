@@ -228,13 +228,13 @@
 200-Forest:
   - name: give slingshot directly
     type: flowpatch
-    index: 108
+    index: 595
     patch:
       type: type3
       subType: 0
       param1: 0
       param2: 0 # item
-      next: 143 # elder talks after gotten sligshot
+      next: -1 # elder talks after gotten sligshot
       param3: 9
       param4: 0
       param5: 0

@@ -15,6 +15,7 @@ global:
     - 198 # Can jump off Loftwing
     - 679 # Stairs Fi Text related
     - 358 # Interface choice unlocked
+    - 494 # open gate to faron
   objpackoarcadd:
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -99,6 +100,17 @@ global:
       # new AC storyflag is 900
       - original: 38 80 00 0b 90 01 00 14
         patched:  38 80 03 84 90 01 00 14
+    d_a_npc_kyui_elder:
+      # prevent slingshot from spawning, just immediately return from the function that should spawn it
+      - original: 94 21 ff a0 7c 08 02 a6 90 01 00 64 db e1 00 50 f3 e1 00 58 db c1 00 40 f3 c1 00 48 93 e1 00 3c
+        patched:  4e 80 00 20 7c 08 02 a6 90 01 00 64 db e1 00 50 f3 e1 00 58 db c1 00 40 f3 c1 00 48 93 e1 00 3c
+        # let the function that checks for the slinshot appears storyflag always return false
+      - original: 38 80 00 39 90 01 00 14
+        patched:  38 60 00 00 48 00 00 2c
+        # let the function that checks for erla's storyflag always return false, this is used in instead of the checkAllKikwisLocated function
+        # cause that one is copy and pasted twice and the individual kikwis are also checked in a seperate location
+      - original: 38 80 00 37 90 01 00 14
+        patched:  38 60 00 00 48 00 00 2c
 
 # S100:
 #   - name: Test Trial
@@ -1119,6 +1131,12 @@ F401: # Sealed grounds Whirlpool
     destlayer: 0
     room: 1
     objtype: STAG
+  - name: Ruined save
+    type: objdelete
+    id: 0xFC8E
+    layer: 1
+    room: 1
+    objtype: OBJ
 F400: # Behind the Temple
   - name: Layer override
     type: layeroverride
