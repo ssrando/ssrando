@@ -186,6 +186,13 @@ def try_patch_obj(obj, key, value):
             obj['params1'] = mask_shift_set(obj['params1'], 0x7FF, 21, value)
         elif key == 'talk_behaviour':
             obj['anglez'] = value
+        elif obj['name'] == 'NpcTke':
+            if key == 'trigscenefid':
+                obj['anglex'] = mask_shift_set(obj['anglex'], 0xFF, 0, value)
+            elif key == 'untrigscenefid':
+                obj['anglex'] = mask_shift_set(obj['anglex'], 0xFF, 8, value)
+            else:
+                print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
         else:
             print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
     elif obj['name'] == 'TBox':

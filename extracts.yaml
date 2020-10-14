@@ -6,10 +6,6 @@
   oarcs:
   - GetBowA
   stage: D301
-- layer: 1
-  oarcs:
-  - SwitchEye
-  stage: D100
 - layer: 3
   oarcs:
   - GetKobunALetter
@@ -29,6 +25,10 @@
   - GetBeetleC
   - GetBeetleD
   - GetNetB
+  - GetSpareSeedA
+  - GetBottleRepair
+  - GetSpareQuiverA
+  - GetSpareBombBagA
   stage: F004r
 - layer: 1
   oarcs:
@@ -39,6 +39,18 @@
   - GetWhip
   - GetBombBag
   stage: F202
+- layer: 1
+  oarcs:
+  - GetKeyKakera
+  stage: F200
+- layer: 0
+  oarcs:
+  - GetSwordA
+  stage: F009r
+- layer: 0
+  oarcs:
+  - GetPurseB
+  stage: F012r
 - layer: 0
   oarcs:
   - GetMoleGloveA
@@ -46,18 +58,50 @@
 - layer: 2
   oarcs:
   - GetSizuku
+  - GetUroko
   stage: S100
 - layer: 2
   oarcs:
   - GetEarring
   stage: S200
+- layer: 2
+  oarcs:
+  - GetSirenKey
+  stage: S000
+- layer: 0
+  oarcs:
+  - GetKeyBossA
+  stage: D100
 - layer: 1
   oarcs:
   - GetBeetleA
+  - SwitchEye
   stage: D100
 - layer: 0
   oarcs:
+  - GetKeyBossB
+  stage: D200
+- layer: 0
+  oarcs:
+  - GetKeyBossC
+  stage: D300
+- layer: 0
+  oarcs:
+  - GetKeyBoss2A
+  stage: D101
+- layer: 0
+  oarcs:
+  - GetKeyBoss2B
+  stage: D201
+- layer: 11
+  oarcs:
+  - GetKeyBoss2C
+  stage: D301
+- layer: 0
+  oarcs:
   - GetBeetleB
+  - GetSozaiH
+  - GetSozaiC
   stage: F300
 - layer: 0
   oarcs:
@@ -69,7 +113,7 @@
   stage: F402
 - layer: 0
   oarcs:
-  - MoldoGut_Baby
+  - GetGaragara
   - GetSeedLife
   stage: F000
 - layer: 4
@@ -91,3 +135,19 @@
   oarcs:
   - GetTerryCage
   stage: F023
+- layer: 1
+  oarcs:
+  - GetSekibanMapA
+  stage: F008r
+- layer: 0
+  oarcs:
+  - GetSekibanMapB
+  stage: B100_1
+- layer: 0
+  oarcs:
+  - GetSekibanMapC
+  stage: B210
+- layer: 1
+  oarcs:
+  - GetHeartUtuwa
+  stage: B100

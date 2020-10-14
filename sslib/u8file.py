@@ -229,14 +229,14 @@ class U8File:
                 while part != currnode.name:
                     foundindex = currnode.new_next_parent_index
                     if foundindex >= total_nodes:
-                        return None
+                        break
                     currnode = self.nodes[foundindex]
                 foundindex += 1
             else:
                 while part < currnode.name:
                     foundindex += 1
                     if foundindex >= total_nodes:
-                        return None
+                        break
                     currnode = self.nodes[foundindex]
                 new_node.set_name(part)
         # found place to insert the new node in

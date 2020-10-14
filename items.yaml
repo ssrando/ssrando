@@ -68,7 +68,7 @@
   shuffle: Dungeon
 - id: 30
   name: ET Boss Key
-  oarc: GetKeyBoss2B
+  oarc: GetKeyBossB
   shuffle: Dungeon
 - id: 31
   name: LMF Boss Key
