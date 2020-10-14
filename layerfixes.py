@@ -318,12 +318,12 @@ def rando_patch_chandelier(bzs: OrderedDict, itemid: int, id: str):
 def rando_patch_soil(bzs: OrderedDict, itemid: int, id: str):
     id = int(id)
     obj = next(filter(lambda x: x['name'] == 'Soil' and ((x['params1'] >> 4) & 0xFF) == id, bzs['OBJ '])) # (params1 >> 4) & 0xFF is sceneflag
-    patch_item_item(obj, itemid)
+    patch_soil_item(obj, itemid)
 
 def rando_patch_bokoblin(bzs: OrderedDict, itemid: int, id: str):
     id = int(id, 0)
     obj = next(filter(lambda x: x['name'] == 'EBc' and x['id']== id, bzs['OBJ ']))
-    patch_item_item(obj, itemid)
+    patch_key_bokoblin_item(obj, itemid)
 
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
 RANDO_PATCH_FUNCS = {
