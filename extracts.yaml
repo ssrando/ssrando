@@ -116,11 +116,15 @@
   - GetGaragara
   - PutGaragara
   - GetSeedLife
+  - GetSozaiP
   stage: F000
 - layer: 4
   oarcs:
   - GetShieldWood
   - GetShieldHylia
+  - GetSozaiN
+  - GetSozaiO
+  # - GetSozaiP
   stage: F000
 - layer: 3
   oarcs:
@@ -131,6 +135,7 @@
 - layer: 4
   oarcs:
   - ForestManWiz
+  - GetSozaiL
   stage: F100
 - layer: 1
   oarcs:
