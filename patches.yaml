@@ -16,6 +16,7 @@ global:
     - 679 # Stairs Fi Text related
     - 358 # Interface choice unlocked
     - 494 # open gate to faron
+    - 138 # Sealed Temple layer 1
   objpackoarcadd:
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -833,6 +834,14 @@ D200: # ET
     layer: 0
     room: 1
     objtype: OBJ
+  - name: Bombs from Ledd
+    type: objpatch
+    id: 0xFC53
+    layer: 0
+    room: 1
+    objtype: OBJ
+    patch:
+      trigscenefid: 9
   - name: Fi after Bridge
     type: objdelete
     id: 0xFC5E
@@ -845,10 +854,10 @@ B200: # Boss Room
     override:
       - story_flag: 7 # Beat ET
         night: 0
-        layer: 2
+        layer: 1
       - story_flag: -1
         night: 0
-        layer: 1
+        layer: 2
 D201: # FS A
   - name: Mogma 1
     type: objdelete
