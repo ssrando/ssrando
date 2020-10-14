@@ -13,10 +13,11 @@ global:
     - 906 # pratice sword (needs to get changed when no goddess sword start)
     - 907 # Goddess Sword (needs to get changed when no goddess sword start)
     - 198 # Can jump off Loftwing
-    - 679 # Stairs Fi Text related
+    - 202 # gets rid of some Fi triggers
     - 358 # Interface choice unlocked
     - 494 # open gate to faron
     - 138 # Sealed Temple layer 1
+    - 24 # no Fi sky text
   objpackoarcadd:
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -354,12 +355,6 @@ F000: # Skyloft
     layer: 5
     room: 0
     objtype: OBJ
-  - name: Fi Text on Stairs
-    type: objdelete
-    id: 0xFDCB
-    layer: 4
-    room: 0
-    objtype: OBJ
 #  - name: Batreaux unlock
 #    type: objpatch
 #    id: 0xFC4A
@@ -471,6 +466,13 @@ F010r: # Isle of songs tower
     type: objdelete
     id: 0xFC00
     layer: 0
+    room: 0
+    objtype: OBJ
+F020: # Sky
+  - name: Fi text about goddess cubes
+    type: objdelete
+    id: 0xFD0F
+    layer: 2
     room: 0
     objtype: OBJ
 F100: # Faron main area
