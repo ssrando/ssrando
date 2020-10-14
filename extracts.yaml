@@ -114,6 +114,7 @@
 - layer: 0
   oarcs:
   - GetGaragara
+  - PutGaragara
   - GetSeedLife
   stage: F000
 - layer: 4
@@ -126,6 +127,10 @@
   - PLHarpPlay
   - SirenEntrance
   - PLSwordStick
+  stage: F100
+- layer: 4
+  oarcs:
+  - ForestManWiz
   stage: F100
 - layer: 1
   oarcs:
@@ -150,4 +155,5 @@
 - layer: 1
   oarcs:
   - GetHeartUtuwa
+  - PutHeartUtuwa
   stage: B100
