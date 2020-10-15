@@ -165,6 +165,31 @@
       param2: 11
       next: 22
       param3: 4
+105-Terry:
+  - name: Beedle's Crystal # Can't reach that right now
+    type: flowpatch
+    index: 115
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+106-DrugStore:
+  - name: Potion Lady Bottle
+    type: flowpatch
+    index: 59
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      next: 41 # end of Potion lady text
+      param3: 9
+      param4: 0
+      param5: 0
 108-ShinkanA:
   - name: Owlans Shield
     type: flowpatch
@@ -175,6 +200,35 @@
       param1: 0
       param2: 0 # item
       next: 173 # end of owlans text
+      param3: 9
+      param4: 0
+      param5: 0
+109-TakeGoron:
+  - name: Peater's Crystal 1
+    type: flowpatch
+    index: 79
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Peater's Crystal 2
+    type: flowpatch
+    index: 92
+    patch:
+      next: 79
+110-DivingGame:
+  - name: Fun Fun Owner's Crystal
+    type: flowpatch
+    index: 60
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
       param3: 9
       param4: 0
       param5: 0
@@ -189,16 +243,183 @@
     index: 199
     patch:
       next: 747 # to item
-106-DrugStore:
-  - name: Potion Lady Bottle
+  - name: Parrow's Crystal 1
     type: flowpatch
-    index: 59
+    index: 814
     patch:
       type: type3
       subType: 0
       param1: 0
       param2: 0 # item
-      next: 41 # end of parrows text
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Parrow's Crystal 2
+    type: flowpatch
+    index: 732
+    patch:
+      next: 814
+  - name: Feldge's Crystal
+    type: flowpatch
+    index: 325
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Baby's Crystal
+    type: flowpatch
+    index: 125
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Orrielle's Crystal
+    type: flowpatch
+    index: 225
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Ghost's Crystal
+    type: flowpatch
+    index: 522
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Pipit's Crystal
+    type: flowpatch
+    index: 641
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+117-Pumpkin:
+  - name: Kina Crystal Quest
+    type: flowpatch
+    index: 93
+    patch:
+      type: switch
+      subType: 6
+      param2: 901 # new FS flag
+      param3: 3
+      param4: 2
+      param5: 60
+  - name: Kina's Crystal
+    type: flowpatch
+    index: 386
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: playing Harp with Kina 1
+    type: flowpatch
+    index: 434
+    patch:
+      type: switch
+      subType: 6
+      param2: 340 # raised GoT
+      param3: 3
+      param4: 2
+      param5: 180
+  - name: playing Harp with Kina 2
+    type: flowpatch
+    index: 80
+    patch:
+      type: switch
+      subType: 6
+      param2: 340 # raised GoT
+      param3: 3
+      param4: 2
+      param5: 52
+  - name: playing Harp with Kina 3
+    type: flowpatch
+    index: 579
+    patch:
+      type: switch
+      subType: 6
+      param2: 340 # raised GoT
+      param3: 3
+      param4: 2
+      param5: 250
+118-Town3:
+  - name: Wryna's Crystal
+    type: flowpatch
+    index: 144
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Sparrot's Crystal
+    type: flowpatch
+    index: 141
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Owlan's Crystal # can't be reached right now
+    type: flowpatch
+    index: 157
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+123-Town5:
+  - name: Peatrice's Crystal
+    type: flowpatch
+    index: 316
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
+      param3: 9
+      param4: 0
+      param5: 0
+  - name: Pipit's Mom's Crystal
+    type: flowpatch
+    index: 185
+    patch:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 0 # item
       param3: 9
       param4: 0
       param5: 0
@@ -492,47 +713,6 @@
       param2: 921
       next: -1
       param3: 1 # unset storyflag
-117-Pumpkin:
-  - name: kina Crystal Quest
-    type: flowpatch
-    index: 93
-    patch:
-      type: switch
-      subType: 6
-      param2: 901 # new FS flag
-      param3: 3
-      param4: 2
-      param5: 60
-  - name: playing Harp with Kina 1
-    type: flowpatch
-    index: 434
-    patch:
-      type: switch
-      subType: 6
-      param2: 340 # raised GoT
-      param3: 3
-      param4: 2
-      param5: 180
-  - name: playing Harp with Kina 2
-    type: flowpatch
-    index: 80
-    patch:
-      type: switch
-      subType: 6
-      param2: 340 # raised GoT
-      param3: 3
-      param4: 2
-      param5: 52
-  - name: playing Harp with Kina 3
-    type: flowpatch
-    index: 579
-    patch:
-      type: switch
-      subType: 6
-      param2: 340 # raised GoT
-      param3: 3
-      param4: 2
-      param5: 250
 502-CenterFieldBack:
   - name: Zelda's Cutscene, give item from impa # this is overriding a set sceneflag, which is not needed anymore
     type: flowpatch
