@@ -1,14 +1,49 @@
 This is still under heavy development, be careful to use it!
 
 ## Installing
-You need:
-- python3
-- install the requirements.txt with `python3 -m pip install -r requirements.txt`, note that binaries for nlzss11 are only available for windows and linux (for now)
-- The extracted Skyward Sword ISO, dumped from disc, any official version will work. It has to be extracted using tools like `wimms ISO tools` and has to be placed be in a directory named `actual-extract`, so that it contains the directories `DATA` and `UPDATE`
-- Then, create a folder `modified-extract` and copy all contents (`DATA` and `UPDATE`) into it
+1) Download [https://github.com/lepelog/sslib](https://github.com/lepelog/sslib) either via Github directly or via git
+2) Install Python 3.8(!) (3.9 won't work on Windows) and pip (comes with most python installers)
+3) Download and Install wit from [here](https://wit.wiimm.de/download.html) (there's a simple installer.exe for Windows, you will probably have to reboot your system)
+4) Open a terminal of your choice and use the `cd` command to navigate to the directory where you have sslib saved
+5)
+On Linux:
 
-## Running
-Run `layerfixes.py` using python3
+    python3 -mpip install -r requirements.txt
+
+On Windows:
+
+    pip install -r requirements.txt
+
+6) Take your SS iso (every version will work, make sure it's unmodified by comparing hashes, see [here](https://pastebin.com/VSUwdz2e) and put it in the sslib directory (in the following steps it will be simply called disc.iso)
+7)
+
+    wit extract disc.iso actual-extract
+
+8) Copy the actual-extract folder and name it modified-extract
+9)
+On Linux:
+
+    python3 layerfixes.py
+
+On Windows:
+
+    python layerfixes.py
+
+#### FOR EMULATOR
+10a) Depending on your setup, on how you wanna use the game this step might differ, if you want an iso ready to be played on emu
+
+    wit copy modified-extract disc.iso
+
+11a) Open disc.iso in Dolphin
+12a) Profit
+#### FOR CONSOLE
+10b) The exact steps may differ from what i write down, but this worked for me using Configurable USB Loader, loading from a SD card:
+The name of the output wbfs file depends on the initial region of the disc. For PAL use SOUP01, for NTSC-U use SOUE01, for NTSC-J use SOUJ01
+
+    wit copy -s modified-extract SOUJ01.wbfs
+
+11b) Take the 2! files (SOUJ01.wbfs & SOUJ01.wbf1), copy them to your SD card in this folder: /wbfs/The Legend of Zelda Skyward Sword [SOUJ01]/ and put the SD into your Wii, make sure to adjust those names depending on your region
+12b) Power up your Wii, HBC, CFG USB Loader, Profit
 
 ### Tests
 `python3 -mpytest test`  
