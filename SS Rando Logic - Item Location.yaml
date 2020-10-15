@@ -98,6 +98,64 @@ Skyloft - Parrow Bottle:
     - event/115-Town2/733 # Bottle
     - oarc/F000/l0
     - oarc/F005r/l0
+Skyloft - Peater/Peatrice Crystal:
+  Need: Nothing
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/109-TakeGoron/79
+    - event/123-Town5/316
+    - oarc/F018r/l0
+    - oarc/F019r/l0
+Skyloft - Parrow Crystal:
+  Need: Nothing
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/115-Town2/814
+    - oarc/F000/l0
+    - oarc/F005r/l0
+Skyloft - Fledge Crystals:
+  Need: Can Beat LMF & Bottle
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/115-Town2/325
+    - oarc/F001r/l0
+Skyloft - Baby Crystals:
+  Need: Baby Rattle
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/115-Town2/125
+    - oarc/F014r/l0
+Skyloft - Ghost/Pipit Crystals:
+  Need: Cawlin's Letter
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/115-Town2/522
+    - event/115-Town2/641
+    - oarc/F001r/l0
+Skyloft - Wyrna Crystals:
+  Need: Nothing
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/118-Town3/144
+    - oarc/F006r/l0
+Skyloft - Sparrot Crystals:
+  Need: Can Access Past & Clawshots
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/118-Town3/157
+    - oarc/F001r/l0
+Skyloft - Cleaning Crystal:
+  Need: Gust Bellow's
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/118-Town5/185
+    - oarc/F016r/l0
+#Skyloft - Owlan Crystals:  # Can't be reached right now
+#  Need: Can Access past
+#  original item: 5 Gratitude Crystals
+#  Paths:
+#    - event/118-Town3/141
+#    - oarc/F013r/l0
 
 #  Batreaux Rewards
 Skyloft - Batreaux Reward 1:
@@ -262,6 +320,30 @@ Sky - Lumpy Pumpkin harp minigame:
   Paths:
    - event/117-Pumpkin/305
    - oarc/F011r/l0
+Sky - Fun Fun Crystals:
+  Need: Can Access Second Part of Lanayru
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/110-DivingGame/60
+    - oarc/F020/l0
+Sky - Orrielle Crystals:
+  Need: Bottle
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/115-Town2/225
+    - oarc/F020/l0
+Sky - Kina Crystals:
+  Need: Can Beat FS & Harp
+  original item: 5 Gratitude Crystals
+  Paths:
+    - event/117-Pumpkin/386
+    - oarc/F020/l0
+#Sky - Beedle's Crystals: # no reachable yet
+#  Need: Can Access Past
+#  original item: Heart Piece
+#  Paths:
+#   - event/117-Pumpkin/305
+#   - oarc/F011r/l0
 
 #These checks need Spiral Charge
 #Sky - Breakable Boulder near Fun Fun island:
