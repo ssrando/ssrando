@@ -335,6 +335,14 @@ F000: # Skyloft
     type: oarcdelete
     oarc: GetSozaiP
     layer: 4
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetShieldHylia
+    layer: 4
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetShieldWood
+    layer: 4
   - name: Trial # trial object
     type: objmove
     id: 0xFDD8
