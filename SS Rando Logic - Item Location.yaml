@@ -150,6 +150,11 @@ Skyloft - Cleaning Crystal:
   Paths:
     - event/118-Town5/185
     - oarc/F016r/l0
+Skyloft - Baby Rattle:
+  Need: Gust Bellow's & Clawshots #needs work
+  original item: Baby's Rattle
+  Paths:
+    - stage/F000/r0/l0/Item/13
 #Skyloft - Owlan Crystals:  # Can't be reached right now
 #  Need: Can Access past
 #  original item: 5 Gratitude Crystals
@@ -290,6 +295,12 @@ Sky - Beedle's Island Medal:
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/81
+Sky - Beedle's Island HP:
+  Need: Nothing
+  original item: Heart Piece
+  type: goddess
+  Paths:
+   - stage/F020/r0/l0/TBox/89
 Sky - Volcanic Island inside:
   Need: Nothing
   original item: Heart Piece
@@ -392,12 +403,12 @@ Thunderhead - Mogma Mitts Island Quiver:
   type: goddess
   Paths:
    - stage/F023/r0/l0/TBox/76
-Thunderhead - Bug Island minigame:
-  Need: Can Access Thunderhead & Bug Net & Can Access Levias & Can Enter Beedle's Shop
-  original item: Hornet Colossus Beetle
-  Paths:
-   - event/116-InsectGame/69
-   - oarc/F023/l0
+#Thunderhead - Bug Island minigame:
+#  Need: Can Access Thunderhead & Bug Net & Can Access Levias & Can Enter Beedle's Shop
+#  original item: Hornet Colossus Beetle
+#  Paths:
+#   - event/116-InsectGame/69
+#   - oarc/F023/l0
 Thunderhead - Farore's Song:
   Need: Can Access Thunderhead & Goddess Sword
   original item: Farore's Courage
@@ -434,16 +445,16 @@ Sealed Grounds - Behind the Temple first goddess Wall reward:
   Paths:
    - event/503-Goron/630
    - oarc/F400/l0
-Sealed Grounds - Behind the Temple Triforce on goddess wall:
-  Need: Can Access Sealed Temple
-        & Can Access Goddess Walls
-        & Bow
-        & Bomb Bag
-        & Can Access Levias
-  original item: Gold Rupee
-  Paths:
-   - event/503-Goron/418
-   - oarc/F400/l0
+#Sealed Grounds - Behind the Temple Triforce on goddess wall:
+#  Need: Can Access Sealed Temple
+#        & Can Access Goddess Walls
+#        & Bow
+#        & Bomb Bag
+#        & Can Access Levias
+#  original item: Gold Rupee
+#  Paths:
+#   - event/503-Goron/418
+#   - oarc/F400/l0
 Sealed Grounds - Hylia's Temple event:
   Need: Can Access Sealed Temple & Can Access Past
   original item: Progressive Sword
