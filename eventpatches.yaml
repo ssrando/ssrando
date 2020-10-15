@@ -32,6 +32,11 @@
     type: textpatch
     index: 467
     text: "You learned \x0E\x00\x03\x02\x05Din's Power\x0E\x00\x03\x02\uFFFF!"
+  - name: BotG Scene Change
+    type: flowpatch
+    index: 464
+    patch:
+      next: -1
   - name: get rid of Skyloft layer 8&9
     type: flowpatch
     index: 82 # before storyflag
