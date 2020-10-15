@@ -68,14 +68,20 @@ class AllPatcher:
     def create_oarc_cache(self, extracts):
         self.oarc_cache_path.mkdir(parents=True, exist_ok=True)
         for extract in extracts:
+            # check if it already exists first
+            objs = extract['oarcs']
             stage = extract['stage']
             layer = extract['layer']
-            objs = extract['oarcs']
+            all_exits = all(((self.oarc_cache_path / f'{objname}.arc').exists() for objname in objs))
+            if all_exits:
+                # print(f'already in cache for {stage}, l{layer}')
+                continue
             data = (self.actual_extract_path/'DATA'/'files'/'Stage'/f'{stage}'/f'{stage}_stg_l{layer}.arc.LZ').read_bytes()
             data = nlzss11.decompress(data)
             data = U8File.parse_u8(BytesIO(data))
 
             for objname in objs:
+                # print(f'loading {objname} from {stage}, l{layer}')
                 outdata=data.get_file_data(f'oarc/{objname}.arc')
                 (self.oarc_cache_path / f'{objname}.arc').write_bytes(outdata)
     

@@ -379,10 +379,9 @@ def fix_layers():
     with open("eventpatches.yaml") as f:
         eventpatches = yaml.safe_load(f)
     
-    if not patcher.oarc_cache_path.exists():
-        with open("extracts.yaml") as f:
-            extracts = yaml.safe_load(f)
-        patcher.create_oarc_cache(extracts)
+    with open("extracts.yaml") as f:
+        extracts = yaml.safe_load(f)
+    patcher.create_oarc_cache(extracts)
     
     rando_stagepatches, stageoarcs, rando_eventpatches = get_randomized_checks()
 
