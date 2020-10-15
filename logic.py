@@ -6,22 +6,22 @@ import re
 
 DUNGEONS = ['Skyview', 'ET', 'LMF', 'AC', 'Sandship', 'FS', 'Skykeep', 'Lanayru Caves'] # caves has a key
 
-def get_randomized_checks():
+def get_randomized_checks(seed: Optional[int] = None):
     with open('SS Rando Logic - Item Location.yaml') as f:
         checks = yaml.safe_load(f)
     with open('items.yaml') as f:
         items = yaml.safe_load(f)
 
     filled_checks = dict()
-    empty_checks = set()
     dungeonchecks = defaultdict(list)
 
-    seed = random.randint(0, 1000000-1)
+    if seed is None:
+        seed = random.randint(0, 1000000-1)
     random.seed(seed)
 
     all_checks = []
     item_pool = []
-    for i, (name, check) in enumerate(checks.items()):
+    for name, check in checks.items():
         area = name.split(' - ')[0]
         item = check.get('original item',None)
         if item is None:
@@ -56,6 +56,9 @@ def get_randomized_checks():
     random.shuffle(item_pool)
     for check, item in zip(all_checks, item_pool):
         filled_checks[check] = item
+    
+    # filled_checks['Skyloft - Fledge\'s Pouch'] = 'Progressive Mitts'
+    # filled_checks['Skyloft - Skyloft Owlan\'s Shield'] = 'Progressive Mitts'
 
     with open('spoiler.txt','w') as f:
         f.write(f'Seed: {seed}\n')

@@ -368,7 +368,7 @@ def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Op
         return None
     return obj
         
-def fix_layers():
+def fix_layers(seed=None):
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
         modified_extract_path=Path(__file__).parent / 'modified-extract',
@@ -383,7 +383,7 @@ def fix_layers():
         extracts = yaml.safe_load(f)
     patcher.create_oarc_cache(extracts)
     
-    rando_stagepatches, stageoarcs, rando_eventpatches = get_randomized_checks()
+    rando_stagepatches, stageoarcs, rando_eventpatches = get_randomized_checks(seed)
 
     # stageoarcs = defaultdict(set)
 
@@ -585,6 +585,7 @@ def fix_layers():
         for evntline, itemid in rando_eventpatches.get(filename, []):
             modified = True
             msbf['FLW3']['flow'][evntline]['param2'] = itemid
+            msbf['FLW3']['flow'][evntline]['param3'] = 9 # give item command
 
         if modified:
             return msbf
@@ -661,4 +662,8 @@ def fix_layers():
         write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ', nlzss11.compress(objpack_data))
 
 if __name__ == '__main__':
-    fix_layers()
+    import sys
+    seed = None
+    if len(sys.argv) > 1:
+        seed = int(sys.argv[1])
+    fix_layers(seed)
