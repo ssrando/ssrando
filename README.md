@@ -40,7 +40,7 @@ On Windows:
 10b) The exact steps may differ from what i write down, but this worked for me using Configurable USB Loader, loading from a SD card:
 The name of the output wbfs file depends on the initial region of the disc. For PAL use SOUP01, for NTSC-U use SOUE01, for NTSC-J use SOUJ01
 
-    wit copy -s modified-extract SOUJ01.wbfs
+    wit copy -z modified-extract SOUJ01.wbfs
 
 11b) Take the 2! files (SOUJ01.wbfs & SOUJ01.wbf1), copy them to your SD card in this folder: /wbfs/The Legend of Zelda Skyward Sword [SOUJ01]/ and put the SD into your Wii, make sure to adjust those names depending on your region
 12b) Power up your Wii, HBC, CFG USB Loader, Profit
