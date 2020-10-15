@@ -385,7 +385,7 @@ def fix_layers(seed=None):
     
     rando_stagepatches, stageoarcs, rando_eventpatches = get_randomized_checks(seed)
 
-    # stageoarcs = defaultdict(set)
+    remove_stageoarcs = defaultdict(set)
 
     for stage, stagepatches in patches.items():
         if stage == 'global':
@@ -393,11 +393,15 @@ def fix_layers(seed=None):
         for patch in stagepatches:
             if patch['type'] == 'oarcadd':
                 stageoarcs[(stage, patch['destlayer'])].add(patch['oarc'])
+            elif patch['type'] == 'oarcdelete':
+                remove_stageoarcs[(stage, patch['layer'])].add(patch['oarc'])
     
     # stageoarcs[('D000',0)].add('GetSwordA')
     
     for (stage, layer), oarcs in stageoarcs.items():
         patcher.add_stage_oarc(stage, layer, oarcs)
+    for (stage, layer), oarcs in remove_stageoarcs.items():
+        patcher.delete_stage_oarc(stage, layer, oarcs)
 
     def bzs_patch_func(bzs, stage, room):
         stagepatches = patches.get(stage, [])

@@ -154,6 +154,7 @@ temp
 *.u8
 *.bzs
 *.iso
+*.wbfs
 
 # extracted
 *.d

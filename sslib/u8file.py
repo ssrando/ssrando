@@ -184,8 +184,19 @@ class U8File:
         out=BytesIO()
         self.writeto(out)
         return out.getbuffer()
-    
+
     def get_file(self, path: str):
+        index = self._get_file_index(path)
+        if index is None:
+            return None
+        else:
+            return self.nodes[index]
+
+    def _get_file_index(self, path: str) -> int:
+        """
+        Returns the index of the file, if found
+        If the file isn't found, None is returned
+        """
         total_nodes = self.nodes[0].new_next_parent_index
         foundindex=1
         path=path.lstrip('/')
@@ -204,7 +215,7 @@ class U8File:
                     if foundindex >= total_nodes:
                         return None
                     currnode = self.nodes[foundindex]
-        return self.nodes[foundindex]
+        return foundindex
     
     def get_file_data(self, path: str) -> Optional[bytes]:
         file = self.get_file(path)
@@ -249,6 +260,18 @@ class U8File:
                 if node.new_next_parent_index >= foundindex:
                     node.new_next_parent_index += 1
         self.nodes.insert(foundindex, new_node)
+    
+    def delete_file(self, path: str):
+        fileindex = self._get_file_index(path)
+        if fileindex is None:
+            return None
+        for node in self.nodes:
+            if isinstance(node, DirNode):
+                if node.new_parent_index >= fileindex:
+                    node.new_parent_index -= 1
+                if node.new_next_parent_index >= fileindex:
+                    node.new_next_parent_index -= 1
+        return self.nodes.pop(fileindex)
     
     def get_all_paths(self, start=0) -> List[str]:
         """

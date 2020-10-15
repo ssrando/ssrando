@@ -18,12 +18,18 @@ global:
     - 138 # Sealed Temple layer 1
     - 24 # no Fi sky text
     - 304 # Crystal Quest activated
-  objpackoarcadd:
+  objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
     - GetSozaiN # Blue Bird Feather (part of rare treasure)
     - GetSozaiO # Golden Skull (part of rare treasure)
     - GetSozaiP # Goddess Plume (part of rare treasure)
+  # oarcdelete: # models, that should be deleted from every stage
+  #   - GetSozaiL
+  #   - GetSozaiN
+  #   - GetSozaiO
+  #   - GetSozaiP
+
   asm:
     main:
       # sets the chesttype based on the item, change so that chesttype is determined by 00 00 00 30 in the params1
@@ -305,6 +311,30 @@ F000: # Skyloft
     type: oarcadd
     oarc: PLSwordStick
     destlayer: 0
+  - name: Trialarcremove
+    type: oarcdelete
+    oarc: PLHarpPlay
+    layer: 4
+  - name: Trialarcremove
+    type: oarcdelete
+    oarc: SirenEntrance
+    layer: 4
+  - name: Trialarcremove
+    type: oarcdelete
+    oarc: PLSwordStick
+    layer: 4
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSozaiN
+    layer: 4
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSozaiO
+    layer: 4
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSozaiP
+    layer: 4
   - name: Trial # trial object
     type: objmove
     id: 0xFDD8

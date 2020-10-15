@@ -29,6 +29,7 @@ class AllPatcher:
         self.oarc_cache_path = oarc_cache_path
         self.copy_unmodified = copy_unmodified
         self.stage_oarc_add={}
+        self.stage_oarc_delete={}
         self.bzs_patch=None
         self.event_patch=None
         self.event_text_patch=None
@@ -37,6 +38,9 @@ class AllPatcher:
     
     def add_stage_oarc(self, stage: str, layer: int, oarcs: Iterable[str]):
         self.stage_oarc_add[(stage, layer)] = oarcs
+    
+    def delete_stage_oarc(self, stage: str, layer: int, oarcs: Iterable[str]):
+        self.stage_oarc_delete[(stage, layer)] = oarcs
     
     def set_bzs_patch(self, patchfunc: Callable[[ParsedBzs, str, Optional[int]], Optional[ParsedBzs]]):
         """
@@ -97,8 +101,15 @@ class AllPatcher:
             modified = False
             stagedata = nlzss11.decompress(stagepath.read_bytes())
             stageu8 = U8File.parse_u8(BytesIO(stagedata))
+            # remove some arcs if necessary
+            remove_arcs = set(self.stage_oarc_delete.get((stage, layer), []))
             # add additional arcs if needed
-            for arc in self.stage_oarc_add.get((stage, layer), []):
+            additional_arcs = set(self.stage_oarc_add.get((stage, layer), []))
+            remove_arcs = remove_arcs - additional_arcs
+            for arc in remove_arcs:
+                stageu8.delete_file(f'oarc/{arc}.arc')
+                modified = True
+            for arc in additional_arcs:
                 oarc_bytes = (self.oarc_cache_path / f'{arc}.arc').read_bytes()
                 stageu8.add_file_data(f'oarc/{arc}.arc', oarc_bytes)
                 modified = True

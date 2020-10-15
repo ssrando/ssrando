@@ -33,3 +33,17 @@ def test_change_content():
     stagearc = sslib.U8File.parse_u8(BytesIO(new_data))
     stagearc.set_file_data('dat/stage.bzs',orig_bzs)
     assert extracted_data == stagearc.to_buffer()
+
+def test_add_delete():
+    with open(STAGEPATH/'F000'/'F000_stg_l0.arc.LZ','rb') as f:
+        extracted_data = nlzss11.decompress(f.read())
+    stagearc = sslib.U8File.parse_u8(BytesIO(extracted_data))
+    stagearc.delete_file('oarc/GetGaragara.arc')
+    stagearc.add_file_data('oarc/NewModel.arc',b'look at this new cool model')
+    paths = list(stagearc.get_all_paths())
+    stagedata = stagearc.to_buffer()
+    stagearc = sslib.U8File.parse_u8(BytesIO(stagedata))
+    assert stagearc.get_file_data('oarc/GetGaragara.arc') is None
+    new_paths = list(stagearc.get_all_paths())
+    assert len(paths) == len(new_paths)
+    assert all([a == b for a, b in zip(paths, new_paths)])
