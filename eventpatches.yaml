@@ -186,16 +186,9 @@
       next: 735 # jump to give item
   - name: Parrow's Spores Bottle
     type: flowpatch
-    index: 231
+    index: 199
     patch:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 0 # item
-      next: 232 # end of parrows text
-      param3: 9
-      param4: 0
-      param5: 0
+      next: 747 # to item
 106-DrugStore:
   - name: Potion Lady Bottle
     type: flowpatch
