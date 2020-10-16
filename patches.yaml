@@ -430,6 +430,34 @@ F000: # Skyloft
       item: 112 # Adventure Pouch
       sceneflag1: 66 # Batreaux Doors outside open
       sceneflag2: 78 # Batreaux Doors inside open
+  - name: Fix Owlan disappearing after Harp
+    type: objpatch
+    room: 0
+    id: 0xFDDD
+    layer: 4
+    objtype: OBJ
+    patch:
+      untrigstoryfid: -1
+  - name: Owlan on layer 6 Model
+    type: oarcadd
+    destlayer: 6
+    oarc: ShinkanA
+  - name: Owlan on layer 6
+    type: objadd
+    layer: 6
+    room: 0
+    objtype: OBJ
+    object: # copied from the layer 4 version
+      params1: 0xFFFFFF31
+      params2: 0xFF5FFFFF
+      posx: -5296.68310546875
+      posy: 1237.6900634765625
+      posz: -6928.24267578125
+      anglex: 65535
+      angley: 0
+      anglez: 10811
+      id: 0xFDDD
+      name: NpcSkn
 F001r: # Knight Academy
   - name: Startitems
     type: objpatch
