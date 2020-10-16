@@ -377,14 +377,20 @@ Thunderhead - outside isle of songs Rupee:
 Thunderhead - West side Rupee Medal:
   Need: Can Access Thunderhead
   original item: Rupee Medal
+  type: goddess
   Paths:
    - stage/F023/r0/l0/TBox/73
+Thunderhead - West side normal chest:
+  Need: Can Access Thunderhead
+  original item: Evil Crystal
+  Paths:
+   - stage/F023/r0/l0/TBox/94
 Thunderhead - Bug Island Goddess chest:
   Need: Can Access Thunderhead
   original item: Heart Piece
   type: goddess
   Paths:
-   - stage/F023/r0/l0/TBox/94
+   - stage/F023/r0/l0/TBox/88
 Thunderhead - outside Isle of songs small Bomb Bag:
   Need: Can Access Thunderhead
   original item: Small Bomb Bag
