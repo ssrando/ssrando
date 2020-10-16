@@ -525,6 +525,18 @@ F020: # Sky
     layer: 2
     room: 0
     objtype: OBJ
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetMedal
+    layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetPouchB
+    layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSpareSeedA
+    layer: 0
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -997,7 +1009,7 @@ F300_4: # Temple of Time
     id: 0xFC0D
     objtype: OBJ
     patch:
-      params1: 0xFFFFFFF2
+      params1: 0xFFFFFFF1
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch
