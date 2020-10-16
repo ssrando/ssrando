@@ -507,12 +507,12 @@ Faron Woods - HP on Tree:
 #   original item: Gold Rupee
 #   Paths:
 #    - stage/F102_1/r0/l0/Item/64
-Lake Floria - Dragon Lair chest 1:
-  Need: Can Access Sealed Temple & Can Access Lake Floria
+Lake Floria - Dragon Lair chest with scale requried:
+  Need: Can Access Sealed Temple & Can Access Lake Floria & Scale
   original item: Silver Rupee
   Paths:
    - stage/F102_2/r0/l0/TBox/84
-Lake Floria - Dragon Lair chest 2:
+Lake Floria - Dragon Lair chest:
   Need: Can Access Sealed Temple & Can Access Lake Floria
   original item: Semi Rare Treasure
   Paths:
@@ -940,7 +940,7 @@ LMF - Chest before shortcut to gust bellows:
   #The path that requires a small key also need hook Beetle or bombs
   original item: LMF Small Key
   Paths:
-   - stage/D300/r5/l0/TBox/70
+   - stage/D300_1/r5/l0/TBox/70
 LMF - Small Chest in room behind locked door:
   Need: Can Access LMF & LMF Small Key x1 & Hook Beetle
   #You need to blow up a crate on top of a ladder: you need hook Beetle or bombs
@@ -974,24 +974,24 @@ LMF - Chest behind first Crawlspace:
   Need: Can Access LMF & Hook Beetle & Gust Bellows
   original item: Golden Skull # TODO check again
   Paths:
-   - stage/D300/r9/l0/TBox/72
+   - stage/D300_1/r9/l0/TBox/72
 LMF - Small Chest behind second Crawlspace:
   Need: Can Access LMF & Hook Beetle & Gust Bellows
   original item: Red Rupee
   Paths:
-   - stage/D300/r7/l0/TBox/73
+   - stage/D300_1/r7/l0/TBox/73
 LMF - Chest after BK room:
   Need: Can Access LMF & Hook Beetle & Gust Bellows & Bomb Bag
   #You can hit the crystals with your sword
   original item: Red Rupee
   Paths:
-   - stage/D300/r5/l0/TBox/74
+   - stage/D300_1/r5/l0/TBox/74
 LMF - BK Chest:
   Need: Can Access LMF & Hook Beetle & Gust Bellows & Bomb Bag
   #You can hit the crystals with your sword
   original item: LMF Boss Key
   Paths:
-   - stage/D300/r8/l0/TBox/71
+   - stage/D300_1/r8/l0/TBox/71
 
 LMF boss room - LMF Heart Container:
   Need: Can Access LMF & Hook Beetle & Gust Bellows & LMF BK
