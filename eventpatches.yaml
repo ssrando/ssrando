@@ -20,6 +20,10 @@
     type: textpatch
     index: 19
     text: "You got the \x0E\x00\x03\x02\x05True Master Sword\x0E\x00\x03\x02\uFFFF!"
+  - name: Harp Text
+    type: textpatch
+    index: 21
+    text: "You got the \x0E\x00\x03\x02\x05Goddess Harp\x0E\x00\x03\x02\uFFFF!"
   - name: Faroure's Courage Text
     type: textpatch
     index: 463
