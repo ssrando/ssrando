@@ -1320,6 +1320,13 @@ F404: # Hylia's Temple
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Remove TMS from CS
+    type: objpatch
+    room: 2
+    index: 0
+    objtype: EVNT
+    patch:
+      item: -1 # no TMS anymore
 F403: # Hylia's Realm
   - name: Layer override
     type: layeroverride
