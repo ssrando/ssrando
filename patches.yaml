@@ -652,6 +652,22 @@ F100_1: # Great Tree
       - story_flag: -1
         night: 0
         layer: 0
+  - name: extra Bomb flower
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 1317
+      posy: 93
+      posz: -522
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC50
+      name: Bombf
 D100: # Skyview
   - name: Layer override
     type: layeroverride
@@ -891,6 +907,23 @@ F201_3: # FS entrance
     layer: 0
     room: 0
     objtype: OBJ
+F201_4: # Volcano Waterfall
+  - name: extra Bomb flower
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 2809
+      posy: -4036
+      posz: 4700
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC30
+      name: Bombf
 D200: # ET
   - name: Bomb Bag from Ledd
     type: objdelete
@@ -1065,6 +1098,30 @@ F301_1: # Sand Sea Main Area
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Area Block to Shipyard 1
+    type: objdelete
+    id: 0xFC63
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Area Block to Shipyard 2
+    type: objdelete
+    id: 0xFC61
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Area Block to Shipyard 3
+    type: objdelete
+    id: 0xFC60
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Area Block to Shipyard 4
+    type: objdelete
+    id: 0xFC62
+    layer: 0
+    room: 0
+    objtype: STAG
   - name: Area Block to Pirate Stronghold
     type: objdelete
     id: 0xFC65
