@@ -102,6 +102,21 @@
       param2: 922
       next: -1
       param3: 0
+  - name: Go to Harp Storyflag
+    type: flowpatch
+    index: 71
+    patch:
+      next: 684
+  - name: Goddess Harp Storyflag
+    type: flowadd
+    index: 684
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 9
+      next: -1
+      param3: 0
 008-Hint:
   # check for 3 storyflags: required dungeon 1 and 2, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check
