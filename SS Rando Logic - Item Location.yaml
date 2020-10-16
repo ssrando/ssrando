@@ -1160,6 +1160,7 @@ FS - FS Bottle Chest:
   original item: Bottle
   Paths:
    - stage/D201_1/r6/l0/TBox/70
+   - stage/D201/r6/l0/TBox/70
 FS - FS Map Chest:
   Need: Can Access FS & Hook Beetle & Clawshots & FS Small Key x2 & Mogma Mitts & Gust Bellows
   #Pillar Jump is not in logic. Note that if you fall without clawshots you're stuck, need to think of a fix
