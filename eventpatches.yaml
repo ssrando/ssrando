@@ -43,9 +43,9 @@
       next: -1
   - name: get rid of Skyloft layer 8&9
     type: flowpatch
-    index: 82 # before storyflag
+    index: 540 # before storyflag
     patch:
-      next: 583 # after Storyflag
+      next: -1 # after Storyflag
     # after the last tear is picked up, patch it so that the flag for the trial is set
   - name: to set faron trial storyflag
     type: flowpatch
