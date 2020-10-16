@@ -535,14 +535,29 @@ def fix_layers(seed=None):
     def flow_patch(msbf, filename):
         modified = False
         flowpatches = eventpatches.get(filename, [])
+
+        # dictionary to map flow labels to ids for new flows
+        label_to_index = OrderedDict()
+        next_index = len(msbf['FLW3']['flow'])
+        # fist, fill in all the flow name to index mappings
+        for command in filter(lambda x: x['type'] in ['flowadd', 'switchadd'], flowpatches):
+            label_to_index[command['name']] = next_index
+            next_index += 1
         for command in filter(lambda x: x['type'] == 'flowpatch', flowpatches):
             flowobj = msbf['FLW3']['flow'][command['index']]
             for key, val in command['patch'].items():
+                # special case: next points to a label
+                if key == 'next' and not isinstance(val, int):
+                    index = label_to_index.get(val, None)
+                    if index is None:
+                        print(f'ERROR: label {val} not found in patch: {command["patch"]}')
+                        continue
+                    val = index
                 flowobj[key] = val
-            print(f'patched flow {command["index"]}, {filename}')
+            # print(f'patched flow {command["index"]}, {filename}')
             modified = True
         for command in filter(lambda x: x['type'] in ['flowadd', 'switchadd'], flowpatches):
-            assert len(msbf['FLW3']['flow']) == command['index'], f'index has to be the next value in the flow, expected {len(msbf["FLW3"]["flow"])} got {command["index"]}'
+            assert len(msbf['FLW3']['flow']) == label_to_index[command['name']], f'index has to be the next value in the flow, expected {len(msbf["FLW3"]["flow"])} got {label_to_index[command["name"]]}'
             flowobj = OrderedDict(
                 type='type1',
                 subType=-1,
@@ -554,24 +569,46 @@ def fix_layers(seed=None):
                 param5=0,
             )
             for key, val in command['flow'].items():
+                # special case: next points to a label
+                if key == 'next' and not isinstance(val, int):
+                    index = label_to_index.get(val, None)
+                    if index is None:
+                        print(f'ERROR: label {val} not found in new flow: {command["flow"]}')
+                        continue
+                    val = index
                 flowobj[key] = val
             if command['type'] == 'flowadd':
                 msbf['FLW3']['flow'].append(flowobj)
-                print(f'added flow {command["index"]}, {filename}')
+                # print(f'added flow {command["name"]}, {filename}')
             else:
                 flowobj['type']='switch'
                 cases = command['cases']
+                for i, _ in enumerate(cases):
+                    value = cases[i]
+                    if not isinstance(value, int):
+                        index = label_to_index.get(value, None)
+                        if index is None:
+                            print(f'ERROR: label {value} not found in switch: {command}')
+                            continue
+                        cases[i] = index
                 add_msbf_branch(msbf, flowobj, cases)
-                print(f'added switch {command["index"]}, {filename}')
+                # print(f'added switch {command["name"]}, {filename}')
             modified = True
         for command in filter(lambda x: x['type'] == 'entryadd', flowpatches):
+            value = command['entry']['value']
+            if not isinstance(value, int):
+                index = label_to_index.get(value, None)
+                if index is None:
+                    print(f'ERROR: label {value} not found in new entry: {command["entry"]}')
+                    continue
+                value = index
             new_entry = OrderedDict(
                 name = command['entry']['name'],
-                value = command['entry']['value'],
+                value = value,
             )
             bucket = entrypoint_hash(command["entry"]["name"], len(msbf['FEN1']))
             msbf['FEN1'][bucket].append(new_entry)
-            print(f'added flow entry {command["entry"]["name"]}, {filename}')
+            # print(f'added flow entry {command["entry"]["name"]}, {filename}')
             modified = True
         if filename == '003-ItemGet':
             # make progressive mitts

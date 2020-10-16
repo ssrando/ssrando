@@ -1,5 +1,5 @@
 003-ItemGet:
-  - name: Goddess Sword Scene change
+  - name: Remove Goddess Sword Scene change
     type: flowpatch
     index: 462 # skip scene change after getting goddess sword
     patch:
@@ -32,7 +32,7 @@
     type: textpatch
     index: 467
     text: "You learned \x0E\x00\x03\x02\x05Din's Power\x0E\x00\x03\x02\uFFFF!"
-  - name: BotG Scene Change
+  - name: remove BotG Scene Change
     type: flowpatch
     index: 464
     patch:
@@ -42,14 +42,14 @@
     index: 82 # before storyflag
     patch:
       next: 583 # after Storyflag
+    # after the last tear is picked up, patch it so that the flag for the trial is set
   - name: to set faron trial storyflag
     type: flowpatch
     index: 401
     patch:
-      next: 680
+      next: set faron trial storyflag
   - name: set faron trial storyflag
     type: flowadd
-    index: 680
     flow:
       type: type3
       subType: 0
@@ -61,10 +61,9 @@
     type: flowpatch
     index: 441
     patch:
-      next: 681
+      next: set eldin trial storyflag
   - name: set eldin trial storyflag
     type: flowadd
-    index: 681
     flow:
       type: type3
       subType: 0
@@ -76,10 +75,9 @@
     type: flowpatch
     index: 451
     patch:
-      next: 682
+      next: set lanayru trial storyflag
   - name: set lanayru trial storyflag
     type: flowadd
-    index: 682
     flow:
       type: type3
       subType: 0
@@ -91,10 +89,9 @@
     type: flowpatch
     index: 446
     patch:
-      next: 683
+      next: set skyloft trial storyflag
   - name: set skyloft trial storyflag
     type: flowadd
-    index: 683
     flow:
       type: type3
       subType: 0
@@ -106,10 +103,9 @@
     type: flowpatch
     index: 71
     patch:
-      next: 684
+      next: Goddess Harp Storyflag
   - name: Goddess Harp Storyflag
     type: flowadd
-    index: 684
     flow:
       type: type3
       subType: 0
@@ -123,51 +119,46 @@
     type: entryadd
     entry:
       name: "008_007"
-      value: 27
-  - name: Rando Dungeon check
+      value: Rando Set Zone CS Flag
+  - name: Rando Dungeon 1 check
     type: switchadd
-    index: 22
     flow:
       subType: 6
       param2: 902 # Beat Required Dungeon 1
       param3: 3
     cases:
-      - 23
+      - Rando Dungeon 2 check
       - -1
-  - name: Rando Dungeon check
+  - name: Rando Dungeon 2 check
     type: switchadd
-    index: 23
     flow:
       subType: 6
       param2: 903 # Beat Required Dungeon 2
       param3: 3
     cases:
-      - 24
+      - Rando GoT check
       - -1
-  - name: Rando Dungeon check
+  - name: Rando GoT check
     type: switchadd
-    index: 24
     flow:
       subType: 6
       param2: 343 # Before Raising GoT
       param3: 3
     cases:
-      - 25
+      - Rando Set Rails Storyflag
       - -1
   # checks were successfull, imp2 can be fought now!
-  - name: Rando Dungeon Check
+  - name: Rando Set Rails Storyflag
     type: flowadd
-    index: 25
     flow:
       type: type3
       subType: 0
       param1: 0
       param2: 11 # make rails appear, originally AC
-      next: 26
+      next: Rando Set Dungeons Completed Storyflag
       param3: 0
-  - name: Rando Dungeon Check
+  - name: Rando Set Dungeons Completed Storyflag
     type: flowadd
-    index: 26
     flow:
       type: type3
       subType: 0
@@ -175,15 +166,14 @@
       param2: 13 # originally fire sanctuary
       next: -1
       param3: 0
-  - name: Zone Temp CS flag # activates the CS after dungeons, or does nothing, zone temp flag 3
+  - name: Rando Set Zone CS Flag # activates the CS after dungeons, or does nothing, zone temp flag 3
     type: flowadd
-    index: 27
     flow:
       type: type3
       subType: 1
       param1: 3
       param2: 11
-      next: 22
+      next: Rando Dungeon 1 check
       param3: 4
 105-Terry:
   - name: Beedle's Crystal # Can't reach that right now
@@ -510,36 +500,32 @@
     type: entryadd
     entry:
       name: "202_31"
-      value: 49
+      value: After AC event start
   - name: After AC event start
     type: flowadd
-    index: 49
     flow:
       type: start
-      next: 50
+      next: give item after beating ancient cistern
   - name: give item after beating ancient cistern
     type: flowadd
-    index: 50
     flow:
       type: type3
       subType: 0
       param1: 0
       param2: 3 # item
-      next: 51
+      next: rando required dungeon storyflag
       param3: 9
   - name: rando required dungeon storyflag
     type: flowadd
-    index: 51
     flow:
       type: type3
       subType: 0
       param1: 0
       param2: -1 # will be filled in later if this is a required dungeon
-      next: 52
+      next: to rando dungeons completed check
       param3: 0
   - name: to rando dungeons completed check
     type: flowadd
-    index: 52
     flow:
       type: type3
       subType: 1
@@ -558,10 +544,9 @@
     type: flowpatch
     index: 37
     patch:
-      next: 98
+      next: unset Trial storyflag
   - name: unset Trial storyflag
     type: flowadd
-    index: 98
     flow:
       type: type3
       subType: 0
@@ -640,10 +625,9 @@
     type: flowpatch
     index: 30
     patch:
-      next: 79
+      next: unset trial storyflag on failure
   - name: unset trial storyflag on failure
     type: flowadd
-    index: 79
     flow:
       type: type3
       subType: 0
@@ -705,11 +689,10 @@
       subType: 0
       param1: 0
       param2: -1 # will be filled in later if this is a required dungeon
-      next: 165
+      next: to rando dungeons completed check
       param3: 0
   - name: to rando dungeons completed check
     type: flowadd
-    index: 165
     flow:
       type: type3
       subType: 1
@@ -722,10 +705,9 @@
     type: flowpatch
     index: 30
     patch:
-      next: 79
+      next: unset trial storyflag on failure
   - name: unset trial storyflag on failure
     type: flowadd
-    index: 79
     flow:
       type: type3
       subType: 0
