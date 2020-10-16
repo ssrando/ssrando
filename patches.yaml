@@ -1162,22 +1162,6 @@ F402: # Sealed Temple
     layer: 4
     room: 2
     objtype: OBJ
-  - name: to BtT unlock
-    type: objpatch
-    id: 0xFC00
-    layer: 0
-    room: 2
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00 # sets the flag to -1 (meaning open)
-  - name: to BtT unlock
-    type: objpatch
-    id: 0xFC01
-    layer: 0
-    room: 2
-    objtype: OBJS
-    patch:
-      anglex: 0xFF00 # sets the flag to -1 (meaning open)
   - name: Raise GoT CS trigger
     type: objadd
     layer: 2
@@ -1331,6 +1315,8 @@ F405: # Sealed Grounds CS map (Opening CS)
     index: 0
     objtype: EVNT
     patch:
+      sceneflag1: 7 # vents active
+      sceneflag2: 23 # Door to BtT unlocked
       story_flag2: 36 # Hero's tunic
       item: 15 # Sailcloth
 F407: # Skykeep beaten cs
