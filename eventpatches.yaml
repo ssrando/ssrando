@@ -328,6 +328,11 @@
       param3: 9
       param4: 0
       param5: 0
+  - name: Skip Clawshot Requirement for Rattle Delivery
+    type: flowpatch
+    index: 7
+    patch:
+      next: 8
 117-Pumpkin:
   - name: Kina Crystal Quest
     type: flowpatch
