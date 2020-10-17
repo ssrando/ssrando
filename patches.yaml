@@ -1058,6 +1058,23 @@ F300_1:
       - story_flag: -1
         night: 0
         layer: 1
+F300_2: # Thunder node
+  - name: extra Bomb flower
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 604
+      posy: 245
+      posz: -6672
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC50
+      name: Bombf
 F300_4: # Temple of Time
   - name: Layer override
     type: layeroverride
@@ -1190,6 +1207,23 @@ D300: # LMF A
     objtype: OBJS
     patch:
       params1: 0xF7FFFC20
+D301: # Sandship A
+  - name: extra Bomb flower
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 6397
+      posy: -1600
+      posz: 67
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC50
+      name: Bombf
 F402: # Sealed Temple
   - name: SotH start cs
     type: objdelete
