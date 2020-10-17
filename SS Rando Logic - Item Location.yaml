@@ -647,7 +647,7 @@ Lanayru Mines - behind Statue:
   Paths:
    - stage/F300_1/r2/l0/TBox/67
 Lanayru Mines - Chest at end of mines:
-  Need: Bomb Bag
+  Need: Can Access Lanayru & (Bomb Bag | Hook Beetle)
   original item: Rare Treasure
   Paths:
    - stage/F300_1/r2/l0/TBox/66
