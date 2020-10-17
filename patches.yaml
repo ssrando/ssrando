@@ -1051,6 +1051,13 @@ F300: # lanayru Main Area
     destlayer: 1
     room: 0
     objtype: OBJS
+F300_1:
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: -1
+        night: 0
+        layer: 1
 F300_4: # Temple of Time
   - name: Layer override
     type: layeroverride
