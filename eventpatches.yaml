@@ -26,15 +26,15 @@
     text: "You got the \x0E\x00\x03\x02\x05Goddess Harp\x0E\x00\x03\x02\uFFFF!"
   - name: Faroure's Courage Text
     type: textpatch
-    index: 463
+    index: 237
     text: "You learned \x0E\x00\x03\x02\x05Farore's Courage\x0E\x00\x03\x02\uFFFF!"
   - name: Nayru's Wisdom Text
     type: textpatch
-    index: 468
+    index: 238
     text: "You learned \x0E\x00\x03\x02\x05Nayru's Wisdom\x0E\x00\x03\x02\uFFFF!"
   - name: Din's Power Text
     type: textpatch
-    index: 467
+    index: 239
     text: "You learned \x0E\x00\x03\x02\x05Din's Power\x0E\x00\x03\x02\uFFFF!"
   - name: remove BotG Scene Change
     type: flowpatch
