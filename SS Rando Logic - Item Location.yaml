@@ -17,7 +17,7 @@ Skyloft - Bazaar Potion lady:
    - event/106-DrugStore/59
    - oarc/F004r/l0
 Skyloft - Bazaar chest:
-  Need: Nothing
+  Need: Goddess Cube in Ancient Harbour
   original item: Gold Rupee
   type: goddess
   Paths:
@@ -38,25 +38,25 @@ Skyloft - Shed normal chest:
   Paths:
    - stage/F000/r0/l0/TBox/70
 Skyloft - Shed Goddess chest:
-  Need: Water Scale
+  Need: Water Scale & Goddess Cube in Eldin Slide
   original item: Heart Piece
   type: goddess
   Paths:
    - stage/F000/r0/l0/TBox/79
 Skyloft - next to Academy:
-  Need: Nothing
+  Need: Goddess Cube on West Great Tree near exit
   original item: Silver Rupee
   type: goddess
   Paths:
    - stage/F000/r0/l0/TBox/78
 Skyloft - Skyloft floating island:
-  Need: Clawshots
+  Need: Clawshots & Goddess Cube in Lake Floria
   original item: Gold Rupee
   type: goddess
   Paths:
    - stage/F000/r0/l0/TBox/91
 Skyloft - Skyloft above waterfall:
-  Need: Clawshots
+  Need: Clawshots & Goddess Cube in Pirate Stronghold
   original item: Heart Piece
   type: goddess
   Paths:
@@ -107,7 +107,7 @@ Skyloft - Peater/Peatrice Crystal:
     - oarc/F018r/l0
     - oarc/F019r/l0
 Skyloft - Parrow Crystal:
-  Need: Adventure Pouch & Bottle & Can Access Sealed Temple
+  Need: Bottle & Can Access Sealed Temple
     # Need access to Faron to be able to get mushroom spores as many times as you want
   original item: 5 Gratitude Crystals
   Paths:
@@ -140,7 +140,7 @@ Skyloft - Wyrna Crystals:
     - event/118-Town3/144
     - oarc/F006r/l0
 Skyloft - Sparrot Crystals:
-  Need: Can Access Past & Clawshots
+  Need: Can Access Past & Can Access Second Part of Eldin & Clawshots
   original item: 5 Gratitude Crystals
   Paths:
     - event/118-Town3/157
@@ -157,7 +157,7 @@ Skyloft - Baby Rattle:
   Paths:
     - stage/F000/r0/l0/Item/13
 #Skyloft - Owlan Crystals:  # Can't be reached right now
-#  Need: Can Access past
+#  Need: Can Access Past
 #  original item: 5 Gratitude Crystals
 #  Paths:
 #    - event/118-Town3/141
@@ -253,7 +253,7 @@ Skyloft - Crystal on Beedles Ship:
   Need: Can Get Gratitude Crystals & Beetle
   original item: Gratitude Crystal
 Skyloft - Crystal on Skyloft floating Island:
-  Need: Can Get Gratitude Crystals & Clawshots
+  Need: Can Get Gratitude Crystals & Clawshots #tough beetle works too
   original item: Gratitude Crystal
 Skyloft - Crystal in Zelda's Room:
   Need: Can Get Gratitude Crystals & Clawshots
@@ -266,103 +266,105 @@ Sky - Crystal inside Lumpy Pumpkin:
   original item: Gratitude Crystal
 
 Sky - on Lumpy Pumpkin:
-  Need: Nothing
+  Need: Goddess Cube in Skyview Spring
   original item: Gold Rupee
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/87
 Sky - outside Lumpy Pumpkin:
-  Need: Nothing
+  Need: Initial Goddess Cube
   original item: Pouch Expansion
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/64
 Sky - next to Beedle's island chest 1:
-  Need: Nothing
+  Need: Goddess Cube near Mogma Turf Entrance
   original item: Silver Rupee
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/71
 Sky - SW Sky Satchel:
-  Need: Nothing
+  Need: Goddess Cube at Eldin Entrance
   original item: Small Seed Satchel
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/66
 Sky - Bamboo Island:
-  Need: Nothing
+  Need: Goddess Cube West of Temple Entrance
   original item: Gold Rupee
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/82
 Sky - NE Sky Treasure Medal:
-  Need: Nothing
+  Need: Goddess Cube East of Temple Entrance
   original item: Treasure Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/74
 Sky - NE Sky Silver Rupee:
-  Need: Bomb Bag
+  Need: Bomb Bag & Goddess Cube at Lanayru Mine Entrance
   original item: Silver Rupee
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/72
 Sky - volcanic island outside:
-  Need: Nothing
+  Need: Goddess Cube in Sand Oasis
   original item: Heart Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/67
 Sky - chest closest to Faron Pillar:
-  Need: Nothing
+  Need: Goddess Cube in Deep Woods
   original item: Heart Piece
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/65
 Sky - next to Bamboo island chest 2:
-  Need: Water Scale
+  Need: Water Scale & Goddess Cube in secret passageway in Desert
   original item: Heart Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/83
-Sky - NE Sky Life Medal:
-  Need: Nothing
+Sky - SW Sky Life Medal:
+  Need: Goddess Cube near Hook Beetle Fight
   original item: Life Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/84
-Sky - NE Sky Potion medal:
-  Need: Clawshots
+Sky - SW Sky Potion medal:
+  Need: Clawshots & Goddess Cube in Skipper's Retreat
   original item: Potion Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/75
 Sky - Beedle's Island Medal:
-  Need: Nothing
+  Need: Can Access Beedle's Shop & Goddess Cube on top of Skyview
+  #Getting this chest during the day is possible but rather difficult, shouldn't be in logic
   original item: Rupee Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/81
 Sky - Beedle's Island HP:
-  Need: Nothing
+  Need: Goddess Cube at ride in ToT area
   original item: Heart Piece
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/89
 Sky - Volcanic Island inside:
-  Need: Nothing
+  Need: Goddess Cube on East Great Tree with Clawshot Target
+  #Normally you would need clawshots, but you can skip them with a good dive
   original item: Heart Piece
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/68
 Sky - under Fun Fun Island:
-  Need: Nothing
+  Need: Goddess Cube in Floria Waterfall
   original item: Gold Rupee
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/86
 Sky - Fun Fun Island minigame:
-  Need: Can Get Gratitude Crystals & Can Retrieve Party Wheel
+  Need: Can Retrieve Party Wheel
   original item: Heart Piece
   Paths:
    - event/110-DivingGame/19
@@ -379,7 +381,7 @@ Sky - Lumpy Pumpkin harp minigame:
    - event/117-Pumpkin/305
    - oarc/F011r/l0
 Sky - Fun Fun Crystals:
-  Need: Can Access Second Part of Lanayru
+  Need: Can Retrieve Party Wheel
   original item: 5 Gratitude Crystals
   Paths:
     - event/110-DivingGame/60
@@ -392,13 +394,13 @@ Sky - Orrielle Crystals:
     - event/115-Town2/225
     - oarc/F020/l0
 Sky - Kina Crystals:
-  Need: Can Beat Fire Sanctuary & Goddess Harp
+  Need: Can Beat Fire Sanctuary & Bottle & Goddess Harp & Can Access Eldin
   original item: 5 Gratitude Crystals
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
 #Sky - Beedle's Crystals: # no reachable yet
-#  Need: Can Access Past
+#  Need: Can Access Past & Can Access Beedle's Shop & Horned Colossus Beetle
 #  original item: Heart Piece
 #  Paths:
 #   - event/117-Pumpkin/305
@@ -417,13 +419,13 @@ Sky - Kina Crystals:
 #    - stage/F020/r0/l0/TBox/69
 
 Thunderhead - outside isle of songs Rupee:
-  Need: Can Access Thunderhead
+  Need: Can Access Thunderhead & Goddess Cube in Mogma Turf
   original item: Gold Rupee
   type: goddess
   Paths:
    - stage/F023/r0/l0/TBox/92
 Thunderhead - West side Rupee Medal:
-  Need: Can Access Thunderhead
+  Need: Can Access Thunderhead & Goddess Cube on East Great Tree with Rope
   original item: Rupee Medal
   type: goddess
   Paths:
@@ -434,29 +436,29 @@ Thunderhead - West side normal chest:
   Paths:
    - stage/F023/r0/l0/TBox/94
 Thunderhead - Bug Island Goddess chest:
-  Need: Can Access Thunderhead
+  Need: Can Access Thunderhead & Goddess Cube in Summit Waterfall
   original item: Heart Piece
   type: goddess
   Paths:
    - stage/F023/r0/l0/TBox/88
 Thunderhead - outside Isle of songs small Bomb Bag:
-  Need: Can Access Thunderhead
+  Need: Can Access Thunderhead & Goddess Cube near FS Entrance
   original item: Small Bomb Bag
   type: goddess
   Paths:
    - stage/F023/r0/l0/TBox/85
 Thunderhead - Mogma Mitts Island Bottle:
-  Need: Can Access Thunderhead & Mogma Mitts
+  Need: Can Access Thunderhead & Mogma Mitts & Goddess Cube inside Volcano Summit
   original item: Bottle
   type: goddess
   Paths:
    - stage/F023/r0/l0/TBox/77
-Thunderhead - Mogma Mitts Island Quiver:
-  Need: Can Access Thunderhead & Mogma Mitts
-  original item: Small Quiver
-  type: goddess
-  Paths:
-   - stage/F023/r0/l0/TBox/76
+#Thunderhead - Mogma Mitts Island Quiver:
+#  Need: Can Access Thunderhead & Mogma Mitts & Goddess Cube in Lanayru Gorge
+#  original item: Small Quiver
+#  type: goddess
+#  Paths:
+#   - stage/F023/r0/l0/TBox/76
 #Thunderhead - Bug Island minigame:
 #  Need: Can Access Thunderhead & Bug Net & Can Access Levias & Can Enter Beedle's Shop
 #  original item: Hornet Colossus Beetle
@@ -636,7 +638,7 @@ Mogma Turf - Sand Slide chest:
   Paths:
    - stage/F210/r0/l0/TBox/68
 Mogma Turf - Behind wall at Entrance chest:
-  Need: Can Access Eldin & Digging Mitts
+  Need: Can Access Eldin
   original item: Golden Skull
   Paths:
    - stage/F210/r0/l0/TBox/65
@@ -659,7 +661,7 @@ Mogma Turf - free fall chest:
    - stage/F210/r0/l0/TBox/64
 
 Volcano Summit - Heart Piece behind digging:
-  Need: Can Access Volcano Summit & Adventure Pouch & Bottle & Mogma Mitts
+  Need: Can Access Volcano Summit & Bottle & Mogma Mitts
   original item: Heart Piece
   Paths:
    - stage/F201_3/r0/l0/Item/104 #sceneflagID
@@ -758,6 +760,7 @@ Lanayru - Small chest at beginning of Lightning Node room:
 Lanayru - Chest at end of Lightning Node room:
   Need: Can Access Second Part of Lanayru & Bomb Bag & Beetle
   #The Slingshot can hit the timeshift stone thanks to its seed having a curved path. Then you can deathwarp to the beginning or use the bow to get out. Not in logic.
+  #You can also place down a bomb near the timeshift stone and run to the end. Not currently in logic but maybe?
   original item: Rare Treasure # TODO check again
   Paths:
    - stage/F300_2/r0/l0/TBox/77
