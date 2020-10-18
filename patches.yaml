@@ -1482,7 +1482,7 @@ F400: # Behind the Temple
     room: 0
     objtype: OBJ
     patch:
-      untrigscenefid: 2047
+      untrigstoryfid: 2047
   - name: Goron doesn't Disapear after Sandship 2
     type: objpatch
     id: 0xFC94
@@ -1490,7 +1490,7 @@ F400: # Behind the Temple
     room: 0
     objtype: OBJ
     patch:
-      untrigscenefid: 2047
+      untrigstoryfid: 2047
 F404: # Hylia's Temple
   - name: Layer override
     type: layeroverride
