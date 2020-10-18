@@ -62,7 +62,7 @@ Skyloft - Skyloft above waterfall:
   Paths:
    - stage/F000/r0/l0/TBox/80
 Skyloft - Skyloft Archer minigame:
-  Need: Can Beat LMF & Adventure Pouch & Bottle & Can Save Kukiel???
+  Need: Can Beat Lanayru Mining Facility & Adventure Pouch & Bottle & Can Get Gratitude Crystals
   original item: Heart Piece
   Paths:
    - event/114-Friend/99
@@ -114,7 +114,7 @@ Skyloft - Parrow Crystal:
     - oarc/F000/l0
     - oarc/F005r/l0
 Skyloft - Fledge Crystals:
-  Need: Can Beat LMF & Bottle
+  Need: Can Beat Lanayru Mining Facility & Bottle
   original item: 5 Gratitude Crystals
   Paths:
     - event/115-Town2/325
@@ -145,13 +145,13 @@ Skyloft - Sparrot Crystals:
     - event/118-Town3/157
     - oarc/F001r/l0
 Skyloft - Cleaning Crystal:
-  Need: Gust Bellow's
+  Need: Gust Bellows
   original item: 5 Gratitude Crystals
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
 Skyloft - Baby Rattle:
-  Need: Gust Bellow's & Clawshots #needs work
+  Need: Gust Bellows & Clawshots #needs work
   original item: Baby's Rattle
   Paths:
     - stage/F000/r0/l0/Item/13
@@ -164,58 +164,105 @@ Skyloft - Baby Rattle:
 
 #  Batreaux Rewards
 Skyloft - Batreaux Reward 1:
-  Need: Nothing # 5 gratitude Crystals
+  Need: Can Get Gratitude Crystals & Gratitude Crystal x5 # since 5 packs are randomized, it's possible to get crystals without being able to meet batreaux
   original item: Progressive Wallet
   Paths:
     - event/121-AkumaKun/21
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 2:
-  Need: Nothing # 10 gratitude Crystals
+  Need: Can Get Gratitude Crystals & Gratitude Crystal x10
   original item: Heart Piece
   Paths:
     - event/121-AkumaKun/42
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 3:
-  Need: Nothing # 30 gratitude Crystals
+  Need: Can Get Gratitude Crystals & Gratitude Crystal x30 # 30 gratitude Crystals
   original item: Progressive Wallet
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 4:
-  Need: Nothing # 40 gratitude Crystals
+  Need: Can Get Gratitude Crystals & Gratitude Crystal x40 # 40 gratitude Crystals
   original item: Gold Rupee
   Paths:
     - event/121-AkumaKun/49
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 5:
-  Need: Nothing # 50 gratitude Crystals
+  Need: Can Get Gratitude Crystals & Gratitude Crystal x50 # 50 gratitude Crystals
   original item: Progressive Wallet
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 6:
-  Need: Nothing # 70 gratitude Crystals
+  Need: Can Get Gratitude Crystals & Gratitude Crystal x70 # 70 gratitude Crystals
   original item: Gold Rupee
   Paths:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 6.5:
-  Need: Nothing # 70 gratitude Crystals
+  Need: Can Get Gratitude Crystals & Gratitude Crystal x70 # 70 gratitude Crystals
   original item: Gold Rupee
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
 Skyloft - Batreaux Reward 7:
-  Need: Nothing # 80 gratitude Crystals
+  Need: Can Get Gratitude Crystals & Gratitude Crystal x80 # 80 gratitude Crystals
   original item: Progressive Wallet
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
 Skyloft - Batreaux Chest:
-  Need: Nothing # 30 gratitude Crystals
+  Need: Gratitude Crystal x30 # 30 gratitude Crystals
   original item: Cursed Medal
   Paths:
     - stage/F012r/r0/l0/TBox/69
+
+# Single Gratitude crystals aren't randomized, but still need logic, because some of them need items
+Skyloft - Crystal in Link's Room:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Skyloft - Crystal on Light Tower:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Skyloft - Crystal near Pumpkin Patch:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Skyloft - Crystal in Parrow and Orielle's House:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Skyloft - Crystal inbetween wooden Planks:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Skyloft - Crystal in Knight Academy Plant:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Skyloft - Crystal next to West Windmill:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Skyloft - Crystal after Waterfall Cave:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Skyloft - Crystal in Loftwing Prison:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Skyloft - Crystal in Sparring Hall:
+  Need: Can Get Gratitude Crystals & Beetle
+  original item: Gratitude Crystal
+Skyloft - Crystal on Beedles Ship:
+  Need: Can Get Gratitude Crystals & Beetle
+  original item: Gratitude Crystal
+Skyloft - Crystal on Skyloft floating Island:
+  Need: Can Get Gratitude Crystals & Clawshots
+  original item: Gratitude Crystal
+Skyloft - Crystal in Zelda's Room:
+  Need: Can Get Gratitude Crystals & Clawshots
+  original item: Gratitude Crystal
+Sky - Crystal outside Lumpy Pumpkin:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+Sky - Crystal inside Lumpy Pumpkin:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
 
 Sky - on Lumpy Pumpkin:
   Need: Nothing
@@ -260,7 +307,7 @@ Sky - NE Sky Silver Rupee:
   Paths:
    - stage/F020/r0/l0/TBox/72
 Sky - volcanic island outside:
-  Need: nothing
+  Need: Nothing
   original item: Heart Medal
   type: goddess
   Paths:
@@ -314,7 +361,7 @@ Sky - under Fun Fun Island:
   Paths:
    - stage/F020/r0/l0/TBox/86
 Sky - Fun Fun Island minigame:
-  Need: Can Save Kukiel & Can Retrieve Party Wheel
+  Need: Can Get Gratitude Crystals & Can Retrieve Party Wheel
   original item: Heart Piece
   Paths:
    - event/110-DivingGame/19
@@ -325,8 +372,7 @@ Sky - Lumpy Pumpkin on Chandellier:
   Paths:
    - stage/F011r/r0/l0/Chandel
 Sky - Lumpy Pumpkin harp minigame:
-  Need: Harp & Adventure Pouch & Bottle &
-        Storyflag 64x02 [imp 1 defeated]
+  Need: Goddess Harp & Adventure Pouch & Bottle
   original item: Heart Piece
   Paths:
    - event/117-Pumpkin/305
@@ -344,7 +390,7 @@ Sky - Orrielle Crystals:
     - event/115-Town2/225
     - oarc/F020/l0
 Sky - Kina Crystals:
-  Need: Can Beat FS & Harp
+  Need: Can Beat Fire Sanctuary & Goddess Harp
   original item: 5 Gratitude Crystals
   Paths:
     - event/117-Pumpkin/386
@@ -438,7 +484,7 @@ Sealed Grounds - Sealed Temple chest:
   Paths:
    - stage/F402/r2/l0/TBox/64
 Sealed Grounds - Sealed Temple BotG event:
-  Need: Can Access Sealed Temple & Harp
+  Need: Can Access Sealed Temple & Goddess Harp
   original item: Ballad of the Goddess
   Paths:
    - event/501-Inpa/267
@@ -446,7 +492,6 @@ Sealed Grounds - Sealed Temple BotG event:
 Sealed Grounds - Behind the Temple first goddess Wall reward:
   Need: Can Access Sealed Temple
         & Can Access Goddess Walls
-        & ...
   original item: Heart Piece
   Paths:
    - event/503-Goron/630
@@ -508,7 +553,7 @@ Faron Woods - HP on Tree:
 #   Paths:
 #    - stage/F102_1/r0/l0/Item/64
 Lake Floria - Dragon Lair chest with scale requried:
-  Need: Can Access Sealed Temple & Can Access Lake Floria & Scale
+  Need: Can Access Sealed Temple & Can Access Lake Floria & Water Scale
   original item: Silver Rupee
   Paths:
    - stage/F102_2/r0/l0/TBox/84
@@ -647,7 +692,7 @@ Lanayru Mines - behind Statue:
   Paths:
    - stage/F300_1/r2/l0/TBox/67
 Lanayru Mines - Chest at end of mines:
-  Need: Can Access Lanayru & (Bomb Bag | Hook Beetle)
+  Need: Bomb Bag
   original item: Rare Treasure
   Paths:
    - stage/F300_1/r2/l0/TBox/66
@@ -681,7 +726,7 @@ Lanayru - Hook Beetle event:
    - event/400-Desert/8
    - oarc/F300/l0
 Lanayru - Chest after getting Harp on top of LMF:
-  Need: Can Beat LMF
+  Need: Can Beat Lanayru Mining Facility
   original item: Rare Treasure # TODO check
   Paths:
    - stage/F300/r0/l1/TBox/83
@@ -746,13 +791,13 @@ Lanayru Caves - Cave Chest:
    - stage/F303/r0/l0/TBox/127
 Lanayru Caves - Small Key Event:
   Need: Can Access Lanayru & Clawshots
-  original item: Lanayru Caves Small Key
+  original item: LanayruCaves Small Key
   Paths:
    - event/404-DesertF3/127
    - oarc/F303/l0
 
 Lanayru - Harp Event:
-  Need: Can Beat LMF
+  Need: Can Beat Lanayru Mining Facility
   original item: Goddess Harp
   Paths:
    - event/400-Desert/286
@@ -812,48 +857,48 @@ Skyview - Map Chest:
 Skyview - Small key underground:
  Need: Can Access Skyview & Can Get Past the First Skyview Room & Digging Mitts & Water Scale
  #It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
- original item: Skyview Small Key
+ original item: SW Small Key
  Paths:
   - stage/D100/r4/l0/Soil/15
 Skyview - Small Key Chest behind 2 Eyes:
   Need: Can Access Skyview & Can Get Past the First Skyview Room
-  original item: Skyview Small Key
+  original item: SW Small Key
   Paths:
    - stage/D100/r4/l0/TBox/67
 Skyview - Beetle Chest:
-  Need: Can Access Skyview & (Slingshot | Clawshots | Beetle | Bow) & Skyview Small Key x1
+  Need: Can Access Skyview & (Slingshot | Clawshots | Beetle | Bow) & SW Small Key x1
   #Bombs don't work
   original item: Progressive Beetle
   Paths:
    - stage/D100/r10/l1/TBox/65
    - stage/D100/r10/l2/TBox/65
 Skyview - Free Heart Piece:
-  Need: Can Access Skyview & Beetle & Skyview Small Key x1
+  Need: Can Access Skyview & Beetle & SW Small Key x1
   original item: Heart Piece
   Paths:
    - stage/D100/r5/l0/Item/103
 Skyview - Small Key Chest behind 3 Eyes:
-  Need: Can Access Skyview & Beetle & Skyview Small Key x1
-  original item: Skyview Small Key
+  Need: Can Access Skyview & Beetle & SW Small Key x1
+  original item: SW Small Key
   Paths:
    - stage/D100/r7/l0/TBox/68
 Skyview - Chest near Boss Door:
-  Need: Can Access Skyview & Skyview Small Key x2 & (Bomb Bag | Beetle | Bow)
+  Need: Can Access Skyview & SW Small Key x2 & (Bomb Bag | Beetle | Bow)
   # To get accross the rope with boko babas, hang down on the rope and go accross that way. The last boko baba may be annoying but nothing too bad if you time it
   # The Skulltula jump is not in logic. A bomb knocks it away. Both the Beetle and the bow can cut it down.
   original item: Red Rupee
   Paths:
    - stage/D100/r9/l0/TBox/70
-Skyview - Skyview BK: # what?
+Skyview - SW Boss Key: # what?
   #If you had bombs for the Skulltula, you can't hit the 2nd vine, thus you need Beetle, bow, clawshots or slingshot
   #Note: You can also hit this vine with a Skyward Strike, but only on Hero Mode
-  Need: Can Access Skyview & Skyview Small Key x2 & (Bomb Bag | Beetle | Bow) # Hero mode changed this
+  Need: Can Access Skyview & SW Small Key x2 & (Bomb Bag | Beetle | Bow) # Hero mode changed this
   original item: Skyview Boss Key
   Paths:
    - stage/D100/r9/l0/TBox/66
 
 Skyview Boss Room - Heart Container:
- Need: Can Access Skyview & Skyview Small Key x2 & Skyview BK & (Bomb Bag | Beetle | Bow)
+ Need: Can Access Skyview & SW Small Key x2 & SW Boss Key & (Bomb Bag | Beetle | Bow)
  original item: Heart Container
  Paths:
   - stage/B100/r0/l1/HeartCo
@@ -862,59 +907,59 @@ Skyview Boss Room - Heart Container:
   - stage/B100/r0/l4/HeartCo
 
 Skyview Spring - Ruby Tablet:
-  Need: Can Access Skyview & Skyview Small Key x2 & Skyview BK & (Bomb Bag | Beetle | Bow)
+  Need: Can Access Skyview & SW Small Key x2 & SW Boss Key & (Bomb Bag | Beetle | Bow)
   original item: Ruby Tablet
   Paths:
    - event/201-ForestD1/6
    - oarc/B100_1/l0
 
 
-ET - First Chest:
-  Need: Can Access ET & Digging Mitts
+Earth Temple - First Chest:
+  Need: Can Access Earth Temple & Digging Mitts
   original item: Red Rupee
   Paths:
    - stage/D200/r1/l0/TBox/66
-ET - Treasure Chest Behind Boulder:
-  Need: Can Access ET & (Bow | Beetle)
+Earth Temple - Treasure Chest Behind Boulder:
+  Need: Can Access Earth Temple & (Bow | Beetle)
   original item: Golden Skull
   Paths:
    - stage/D200/r1/l0/TBox/69
-ET - Free standing Treasure Chest at Boulder Section:
-  Need: Can Access ET & (Bow | Beetle)
+Earth Temple - Free standing Treasure Chest at Boulder Section:
+  Need: Can Access Earth Temple & (Bow | Beetle)
   original item: Golden Skull # TODO check again
   Paths:
    - stage/D200/r1/l0/TBox/70
-ET - Map Chest:
-  Need: Can Access ET & (Bow | Beetle) & (Bomb Bag | Hook Beetle)
+Earth Temple - Map Chest:
+  Need: Can Access Earth Temple & (Bow | Beetle) & (Bomb Bag | Hook Beetle)
   original item: ET Map
   Paths:
    - stage/D200/r0/l0/TBox/64
-ET - Bomb Bag chest:
-  Need: Can Access ET & (Bow | Beetle)
+Earth Temple - Bomb Bag chest:
+  Need: Can Access Earth Temple & (Bow | Beetle)
   original item: Bomb Bag
   Paths:
    - stage/D200/r3/l0/TBox/65
-ET - 5 Bombs from Ledd:
-  Need: Can Access ET & (Bow | Beetle)
+Earth Temple - 5 Bombs from Ledd:
+  Need: Can Access Earth Temple & (Bow | Beetle)
   original item: 5 Bombs
   Paths:
    - event/301-MountainD1/16
    - oarc/D200/l0
-ET - Chest at Lezalfos:
-  Need: Can Access ET & (Hook Beetle | (Bomb Bag & Beetle))
+Earth Temple - Chest at Lezalfos:
+  Need: Can Access Earth Temple & (Hook Beetle | (Bomb Bag & Beetle))
   #In this dungeon, the hook Beetle can replace the bombs everywhere. You absolutely need a Beetle to cut a rope in the boulder section
   original item: Red Rupee
   Paths:
    - stage/D200/r1/l0/TBox/67
-ET - ET Boss Key chest:
-  Need: Can Access ET & (Hook Beetle | (Bomb Bag & Beetle & Digging Mitts))
+Earth Temple - ET Boss Key chest:
+  Need: Can Access Earth Temple & (Hook Beetle | (Bomb Bag & Beetle & Digging Mitts))
   #Stutter Sprint not in logic, you need to dig up an air vent to blow up the boulder
   original item: ET Boss Key
   Paths:
    - stage/D200/r4/l0/TBox/68
 
 ET Boss Room - ET Heart Container:
- Need: Can Access ET & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET BK
+ Need: Can Access Earth Temple & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET Boss Key
  #Scaldera can be beaten without bombs but the logic does not require it
  original item: Heart Container
  Paths:
@@ -922,124 +967,124 @@ ET Boss Room - ET Heart Container:
   - stage/B200/r0/l2/HeartCo
 
 ET Spring - Amber Tablet:
-  Need: Can Access ET & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET BK
-  original item: Heart Container
+  Need: Can Access Earth Temple & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET Boss Key
+  original item: Amber Tablet
   Paths:
    - event/301-MountainD1/22
    - oarc/B210/l0
 
 
-LMF - First Chest behind bars:
-  Need: Can Access LMF
+Lanayru Mining Facility - First Chest behind bars:
+  Need: Can Access Lanayru Mining Facility
   original item: Red Rupee
   Paths:
    - stage/D300/r0/l0/TBox/64
-LMF - Chest before shortcut to gust bellows:
-  Need: Can Access LMF & Hook Beetle
+Lanayru Mining Facility - Chest before shortcut to gust bellows:
+  Need: Can Access Lanayru Mining Facility & Hook Beetle
   #You can whip the lever in the first room, but it is not in logic
   #The path that requires a small key also need hook Beetle or bombs
   original item: LMF Small Key
   Paths:
    - stage/D300_1/r5/l0/TBox/70
-LMF - Small Chest in room behind locked door:
-  Need: Can Access LMF & LMF Small Key x1 & Hook Beetle
+Lanayru Mining Facility - Small Chest in room behind locked door:
+  Need: Can Access Lanayru Mining Facility & LMF Small Key x1 & Hook Beetle
   #You need to blow up a crate on top of a ladder: you need hook Beetle or bombs
   #To shoot the timeshift stone you need Beetle or bow or slingshot, but the slingshot snipe is difficult?
   original item: Red Rupee
   Paths:
    - stage/D300/r2/l0/TBox/65
-LMF - Gust Bellows chest:
-  Need: Can Access LMF & LMF Small Key x1 & Hook Beetle
+Lanayru Mining Facility - Gust Bellows chest:
+  Need: Can Access Lanayru Mining Facility & LMF Small Key x1 & Hook Beetle
   #You need to blow up at least one rock in the maze but the Spumes can take care of that
   original item: Gust Bellows
   Paths:
    - stage/D300/r4/l0/TBox/68
-LMF - Chest inside Gust Bellows room:
-  Need: Can Access LMF & LMF Small Key x1 & Hook Beetle
+Lanayru Mining Facility - Chest inside Gust Bellows room:
+  Need: Can Access Lanayru Mining Facility & LMF Small Key x1 & Hook Beetle
   original item: Golden Skull # TODO check again
   Paths:
    - stage/D300/r4/l0/TBox/76
-LMF - Chest inside of first West Room:
-  Need: Can Access LMF & Hook Beetle & Gust Bellows
+Lanayru Mining Facility - Chest inside of first West Room:
+  Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows
   original item: Golden Skull # TODO check again
   Paths:
    - stage/D300/r3/l0/TBox/66
-LMF - LMF Map chest:
-  Need: Can Access LMF & Hook Beetle & Gust Bellows
+Lanayru Mining Facility - LMF Map chest:
+  Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows
   #You can skyward strike the timeshift stone through the gate. For reference, bow, slingshot and whip also work
   original item: LMF Map
   Paths:
    - stage/D300/r6/l0/TBox/69
-LMF - Chest behind first Crawlspace:
-  Need: Can Access LMF & Hook Beetle & Gust Bellows
+Lanayru Mining Facility - Chest behind first Crawlspace:
+  Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows
   original item: Golden Skull # TODO check again
   Paths:
    - stage/D300_1/r9/l0/TBox/72
-LMF - Small Chest behind second Crawlspace:
-  Need: Can Access LMF & Hook Beetle & Gust Bellows
+Lanayru Mining Facility - Small Chest behind second Crawlspace:
+  Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows
   original item: Red Rupee
   Paths:
    - stage/D300_1/r7/l0/TBox/73
-LMF - Chest after BK room:
-  Need: Can Access LMF & Hook Beetle & Gust Bellows & Bomb Bag
+Lanayru Mining Facility - Chest after BK room:
+  Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows & Bomb Bag
   #You can hit the crystals with your sword
   original item: Red Rupee
   Paths:
    - stage/D300_1/r5/l0/TBox/74
-LMF - BK Chest:
-  Need: Can Access LMF & Hook Beetle & Gust Bellows & Bomb Bag
+Lanayru Mining Facility - BK Chest:
+  Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows & Bomb Bag
   #You can hit the crystals with your sword
   original item: LMF Boss Key
   Paths:
    - stage/D300_1/r8/l0/TBox/71
 
 LMF boss room - LMF Heart Container:
-  Need: Can Access LMF & Hook Beetle & Gust Bellows & LMF BK
+  Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows & LMF Boss Key
   original item: Heart Container
   Paths:
   - stage/B300/r0/l1/HeartCo
   - stage/B300/r0/l3/HeartCo
 
 
-AC - First Small Key chest:
-  Need: Can Access AC & Water Scale
+Ancient Cistern - First Small Key chest:
+  Need: Can Access Ancient Cistern & Water Scale
   original item: AC Small Key
   Paths:
    - stage/D101/r1/l0/TBox/67
-AC - Map chest:
-  Need: Can Access AC & Whip
+Ancient Cistern - Map chest:
+  Need: Can Access Ancient Cistern & Whip
   original item: AC Map
   Paths:
    - stage/D101/r0/l0/TBox/65
-AC - Small Chest at vines:
-  Need: Can Access AC & Whip & (Clawshots | (Water Scale & (Bow | Beetle) & AC Small Key x2))
+Ancient Cistern - Small Chest at vines:
+  Need: Can Access Ancient Cistern & Whip & (Clawshots | (Water Scale & (Bow | Beetle) & AC Small Key x2))
   original item: Red Rupee
   Paths:
    - stage/D101/r0/l0/TBox/66
-AC - Small Chest behind Waterfall:
-  Need: Can Access AC & Water Scale & Whip
+Ancient Cistern - Small Chest behind Waterfall:
+  Need: Can Access Ancient Cistern & Water Scale & Whip
   original item: Red Rupee
   Paths:
    - stage/D101/r3/l0/TBox/84
-AC - Small Key on Bokoblin:
- Need: Can Access AC & Water Scale & Whip & (Bow | Beetle)
+Ancient Cistern - Small Key on Bokoblin:
+ Need: Can Access Ancient Cistern & Water Scale & Whip & (Bow | Beetle)
  original item: AC Small Key
  Paths:
   - stage/D101/r4/l0/EBc/0xFC00
-AC - Whip Chest:
-  Need: Can Access AC & AC Small Key x2
+Ancient Cistern - Whip Chest:
+  Need: Can Access Ancient Cistern & AC Small Key x2
   original item: Whip
   Paths:
    - stage/D101/r7/l0/TBox/69
-AC - AC Boss Key Chest:
-  Need: Can Access AC & Whip & (Clawshots | (Water Scale & (Bow | Beetle) & AC Small Key x2 & Hook Beetle))
+Ancient Cistern - AC Boss Key Chest:
+  Need: Can Access Ancient Cistern & Whip & (Clawshots | (Water Scale & (Bow | Beetle) & AC Small Key x2 & Hook Beetle))
   # In the Basement you can either clawshot around the boulder, or use hook Beetle to blow it up. A very precise bomb throw also works (not in logic).
   original item: AC Boss Key
   Paths:
    - stage/D101/r4/l0/TBox/68
 
 AC Boss Room - AC Heart Container:
- Need: Can Access AC & Whip & AC BK & (AC Small Key x2 | Clawshots)
+ Need: Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots)
  #To reach the boss door, either you unlock the door, or you lower the statue
  original item: Heart Container
  Paths:
@@ -1047,7 +1092,7 @@ AC Boss Room - AC Heart Container:
   - stage/B101/r0/l3/HeartCo
 
 AC Boss Room - Goddess Longsword:
-  Need: Can Access AC & Whip & AC BK & (AC Small Key x2 | Clawshots)
+  Need: Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots)
   original item: Progressive Sword
   Paths:
    - event/202-ForestD2/50
@@ -1061,11 +1106,11 @@ Sandship - Heart Piece chest at deck:
    - stage/D301/r0/l0/TBox/127
 Sandship - First Small Key chest:
   Need: Can Access Sandship
-  original item: Sandship Small Key
+  original item: SS Small Key
   Paths:
    - stage/D301/r10/l0/TBox/69
 Sandship - Bow chest:
-  Need: Can Access Sandship & Sandship Small Key x2
+  Need: Can Access Sandship & SS Small Key x2
   original item: Bow
   Paths:
    - stage/D301/r15/l0/TBox/72
@@ -1101,102 +1146,102 @@ Sandship - 5th treasure chest in Big treasure room:
    - stage/D301/r9/l0/TBox/68
 Sandship - Small Key from Robot:
   Need: Can Access Sandship & Bow & Whip
-  original item: Sandship Small Key
+  original item: SS Small Key
   Paths:
    - event/401-DesertD2/14
    - oarc/D301/l4
-Sandship - Sandship Boss Key Chest:
-  Need: Can Access Sandship & Bow & Sandship Small Key x2
-  original item: Sandship Boss Key
+Sandship - SS Boss Key Chest:
+  Need: Can Access Sandship & Bow & SS Small Key x2
+  original item: SS Boss Key
   Paths:
    - stage/D301/r14/l3/TBox/73
 Sandship - Sandship Heart Container:
-  Need: Can Access Sandship & Bow & Sandship Boss Key
+  Need: Can Access Sandship & Bow & SS Boss Key
   original item: Heart Container
   Paths:
    - stage/D301/r0/l9/HeartCo
    - stage/D301/r0/l10/HeartCo
 Sandship - Goddess White Sword Event:
-  Need: Can Access Sandship & Bow & Sandship Boss Key
+  Need: Can Access Sandship & Bow & SS Boss Key
   original item: Progressive Sword
   Paths:
    - event/401-DesertD2/45
    - oarc/B301/l1
 
 
-FS - First Small Key chest:
-  Need: Can Access FS & Can Hit First Water Pods
+Fire Sanctuary - First Small Key chest:
+  Need: Can Access Fire Sanctuary & Can Hit First Water Pods
   original item: FS Small Key
   Paths:
    - stage/D201/r0/l0/TBox/64
-FS - First Small chest:
-  Need: Can Access FS & Can Hit First Water Pods & FS Small Key x1
+Fire Sanctuary - First Small chest:
+  Need: Can Access Fire Sanctuary & Can Hit First Water Pods & FS Small Key x1
   original item: Red Rupee
   Paths:
    - stage/D201_1/r1/l0/TBox/74
-FS - 2nd Small Key chest:
-  Need: Can Access FS & Hook Beetle & (Gust Bellows | Clawshots) & FS Small Key x1
+Fire Sanctuary - 2nd Small Key chest:
+  Need: Can Access Fire Sanctuary & Hook Beetle & (Gust Bellows | Clawshots) & FS Small Key x1
   #If you don't have gust bellows you can get the chest but you are stuck inside
   original item: FS Small Key
   Paths:
    - stage/D201_1/r5/l0/TBox/69
-FS - Small chest in water pod room:
-  Need: Can Access FS & Hook Beetle & FS Small Key x2
+Fire Sanctuary - Small chest in water pod room:
+  Need: Can Access Fire Sanctuary & Hook Beetle & FS Small Key x2
   original item: Red Rupee
   Paths:
    - stage/D201_1/r7/l0/TBox/73
-FS - chest on left side in water pod room:
-  Need: Can Access FS & Hook Beetle & FS Small Key x2
+Fire Sanctuary - chest on left side in water pod room:
+  Need: Can Access Fire Sanctuary & Hook Beetle & FS Small Key x2
   original item: Semi Rare Treasure
   Paths:
    - stage/D201_1/r7/l0/TBox/72
-FS - Mogma Mitts chest:
-  Need: Can Access FS & Hook Beetle & FS Small Key x2
+Fire Sanctuary - Mogma Mitts chest:
+  Need: Can Access Fire Sanctuary & Hook Beetle & FS Small Key x2
   original item: Progressive Mitts
   Paths:
    - stage/D201_1/r5/l0/TBox/68
-FS - FS Bottle Chest:
-  Need: Can Access FS & Hook Beetle & FS Small Key x1 & Mogma Mitts
+Fire Sanctuary - FS Bottle Chest:
+  Need: Can Access Fire Sanctuary & Hook Beetle & FS Small Key x1 & Mogma Mitts
   original item: Bottle
   Paths:
    - stage/D201_1/r6/l0/TBox/70
    - stage/D201/r6/l0/TBox/70
-FS - FS Map Chest:
-  Need: Can Access FS & Hook Beetle & Clawshots & FS Small Key x2 & Mogma Mitts & Gust Bellows
+Fire Sanctuary - FS Map Chest:
+  Need: Can Access Fire Sanctuary & Hook Beetle & Clawshots & FS Small Key x2 & Mogma Mitts & Gust Bellows
   #Pillar Jump is not in logic. Note that if you fall without clawshots you're stuck, need to think of a fix
   original item: FS Map
   Paths:
    - stage/D201_1/r2/l0/TBox/65
-FS - 3rd Small Key chest:
-  Need: Can Access FS & Hook Beetle & Clawshots & FS Small Key x2 & Mogma Mitts & Gust Bellows & Bomb Bag
+Fire Sanctuary - 3rd Small Key chest:
+  Need: Can Access Fire Sanctuary & Hook Beetle & Clawshots & FS Small Key x2 & Mogma Mitts & Gust Bellows & Bomb Bag
   original item: FS Small Key
   Paths:
    - stage/D201_1/r11/l0/TBox/71
-FS - Plats Heart Piece Chest:
-  Need: Can Access FS & Hook Beetle & FS Small Key x3 & Mogma Mitts
+Fire Sanctuary - Plats Heart Piece Chest:
+  Need: Can Access Fire Sanctuary & Hook Beetle & FS Small Key x3 & Mogma Mitts
   original item: Heart Piece
   Paths:
    - stage/D201_1/r3/l0/TBox/66
-FS - Chest in Staircase room:
-  Need: Can Access FS & Hook Beetle & Clawshots & FS Small Key x3 & Mogma Mitts
+Fire Sanctuary - Chest in Staircase room:
+  Need: Can Access Fire Sanctuary & Hook Beetle & Clawshots & FS Small Key x3 & Mogma Mitts
   original item: Semi Rare Treasure
   Paths:
    - stage/D201_1/r9/l0/TBox/75
-FS - FS BK chest:
-  Need: Can Access FS & Hook Beetle & Clawshots & FS Small Key x3 & Mogma Mitts
+Fire Sanctuary - FS Boss Key chest:
+  Need: Can Access Fire Sanctuary & Hook Beetle & Clawshots & FS Small Key x3 & Mogma Mitts
   original item: FS Boss Key
   Paths:
    - stage/D201/r4/l0/TBox/67
 
-FS - FS Heart container:
- Need: Can Access FS & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS BK
+Fire Sanctuary - FS Heart container:
+ Need: Can Access Fire Sanctuary & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS Boss Key
  original item: Heart Container
  Paths:
   - stage/B201/r0/l1/HeartCo
   - stage/B201/r0/l2/HeartCo
 
-FS - Master sword event: # didn't find Event
-  Need: Can Access FS & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS BK
+Fire Sanctuary - Master sword event: # didn't find Event
+  Need: Can Access Fire Sanctuary & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS Boss Key
   original item: Progressive Sword
   Paths:
    - event/304-MountainD2/5
@@ -1226,7 +1271,7 @@ FS - Master sword event: # didn't find Event
 
 
 #Flooded Faron Woods - Faron Soth Part event
-#   Need: Can Access Flooded Faron Woods & Water Scale?
+#   Need: Can Access Flooded Faron Woods & Water Scale
 #   original item: Faron Soth Part
 #   Paths:
 #    - event/
@@ -1298,25 +1343,25 @@ Skykeep - Small Key Chest:
 
 
 Skyloft Silent Realm - Stone of Trials Event:
-  Need: Song of the Hero & Harp
+  Need: Song of the Hero & Goddess Harp
   original item: Stone of Trials
   Paths:
    - stage/S000/r0/l2/WarpObj
 
 Faron Silent Realm - Water Scale Event:
-  Need: Can Access Sealed Temple & Farore's Courage & Harp
+  Need: Can Access Sealed Temple & Farore's Courage & Goddess Harp
   original item: Water Scale
   Paths:
    - stage/S100/r0/l2/WarpObj
 
 Lanyru Silent Realm - Clawshots Event:
-  Need: Can Access Second Part of Lanayru & Nayru's Wisdom & Harp
+  Need: Can Access Second Part of Lanayru & Nayru's Wisdom & Goddess Harp
   original item: Clawshots
   Paths:
    - stage/S300/r0/l2/WarpObj
 
-Eldin Silent Realm - Fire shield earrings Event:
-  Need: Can Access Second Part of Eldin & Din's Power & Harp
-  original item: Fire Shield Earrings
+Eldin Silent Realm - Fireshield earrings Event:
+  Need: Can Access Second Part of Eldin & Din's Power & Goddess Harp
+  original item: Fireshield Earrings
   Paths:
    - stage/S200/r2/l2/WarpObj

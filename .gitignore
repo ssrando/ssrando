@@ -154,7 +154,7 @@ temp
 *.u8
 *.bzs
 *.iso
-*.wbfs
+*.wbf*
 
 # extracted
 *.d
@@ -168,3 +168,4 @@ modified-extract
 
 # rando generated
 spoiler.txt
+*Spoiler Log.txt

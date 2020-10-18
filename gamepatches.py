@@ -6,12 +6,12 @@ import json
 from io import BytesIO
 from enum import IntEnum
 from typing import Optional
+import re
 
 import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
 from tboxSubtypes import tboxSubtypes
-from logic import get_randomized_checks
 
 DEFAULT_SOBJ = OrderedDict(
     params1 = 0,
@@ -338,6 +338,69 @@ RANDO_PATCH_FUNCS = {
     'Tbox': rando_patch_tbox,
 }
 
+def get_patches_from_location_item_list(all_checks, filled_checks):
+    with open('items.yaml') as f:
+        items = yaml.safe_load(f)
+    by_item_name=dict((x['name'],x) for x in items)
+
+    # make sure dungeon items exist
+    DUNGEONS = ['SW', 'ET', 'LMF', 'AC', 'SS', 'FS', 'SK', 'LanayruCaves'] # caves has a key, no spaces because the randomizer splits by spaces
+    for dungeon in DUNGEONS:
+        by_item_name[f'{dungeon} Small Key'] = by_item_name['Small Key']
+        by_item_name[f'{dungeon} Map'] = by_item_name['Map']
+    # (stage, room) -> (object name, layer, id?, itemid)
+    stagepatchv2 = defaultdict(list)
+    # (stage, layer) -> oarc
+    stageoarcs = defaultdict(set)
+    # # eventfile: (line, itemid)
+    eventpatches = defaultdict(list)
+
+    stage_re = re.compile(r'stage/(?P<stage>[^/]+)/r(?P<room>[0-9]+)/l(?P<layer>[0-9]+)/(?P<objname>[a-zA-Z]+)(/(?P<objid>[^/]+))?')
+    event_re = re.compile(r'event/(?P<eventfile>[^/]+)/(?P<eventid>[^/]+)')
+    oarc_re = re.compile(r'oarc/(?P<stage>[^/]+)/l(?P<layer>[^/]+)')
+
+    for checkname, itemname in filled_checks.items():
+        # single gratitude crystals aren't randomized
+        if itemname == 'Gratitude Crystal':
+            continue
+        check = all_checks[checkname]
+        item = by_item_name[itemname]
+        for path in check['Paths']:
+            stage_match = stage_re.match(path)
+            event_match = event_re.match(path)
+            oarc_match = oarc_re.match(path)
+            if stage_match:
+                stage = stage_match.group('stage')
+                room = int(stage_match.group('room'))
+                layer = int(stage_match.group('layer'))
+                objname = stage_match.group('objname')
+                objid = stage_match.group('objid')
+                oarc = item['oarc']
+                if oarc:
+                    if isinstance(oarc, list):
+                        for o in oarc:
+                            stageoarcs[(stage, layer)].add(o)
+                    else:
+                        stageoarcs[(stage, layer)].add(oarc)
+                stagepatchv2[(stage, room)].append((objname, layer, objid, item['id']))
+            elif event_match:
+                eventfile = event_match.group('eventfile')
+                eventid = int(event_match.group('eventid'))
+                eventpatches[eventfile].append((eventid, item['id']))
+            elif oarc_match:
+                stage = oarc_match.group('stage')
+                layer = int(oarc_match.group('layer'))
+                oarc = item['oarc']
+                if oarc:
+                    if isinstance(oarc, list):
+                        for o in oarc:
+                            stageoarcs[(stage, layer)].add(o)
+                    else:
+                        stageoarcs[(stage, layer)].add(oarc)
+            else:
+                print(f'ERROR: {path} didn\'t match any regex!')
+    return stagepatchv2, stageoarcs, eventpatches
+
 def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Optional[OrderedDict]:
     id = objdef.get('id',None)
     index = objdef.get('index',None)
@@ -368,7 +431,7 @@ def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Op
         return None
     return obj
         
-def fix_layers(seed=None):
+def do_gamepatches(all_itemlocations, filled_checks):
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
         modified_extract_path=Path(__file__).parent / 'modified-extract',
@@ -383,7 +446,7 @@ def fix_layers(seed=None):
         extracts = yaml.safe_load(f)
     patcher.create_oarc_cache(extracts)
     
-    rando_stagepatches, stageoarcs, rando_eventpatches = get_randomized_checks(seed)
+    rando_stagepatches, stageoarcs, rando_eventpatches = get_patches_from_location_item_list(all_itemlocations, filled_checks)
 
     remove_stageoarcs = defaultdict(set)
 
@@ -701,10 +764,3 @@ def fix_layers(seed=None):
     if objpack_modified:
         objpack_data = object_arc.to_buffer()
         write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ', nlzss11.compress(objpack_data))
-
-if __name__ == '__main__':
-    import sys
-    seed = None
-    if len(sys.argv) > 1:
-        seed = int(sys.argv[1])
-    fix_layers(seed)

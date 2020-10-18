@@ -56,14 +56,14 @@
   oarc: GetKeyBoss2B
   shuffle: Dungeon
 - id: 27
-  name: Sandship Boss Key
+  name: SS Boss Key
   oarc: GetKeyBoss2C
   shuffle: Dungeon
 - id: 28
   name: Key Piece
   oarc: GetKeyKakera
 - id: 29
-  name: Skyview Boss Key
+  name: SW Boss Key
   oarc: GetKeyBossA
   shuffle: Dungeon
 - id: 30
@@ -96,31 +96,7 @@
   name: Gust Bellows
   oarc: GetVacuum
 - id: 50
-  name: Skyview Map
-  oarc: null
-  shuffle: Dungeon
-- id: 50
-  name: ET Map
-  oarc: null
-  shuffle: Dungeon
-- id: 50
-  name: LMF Map
-  oarc: null
-  shuffle: Dungeon
-- id: 50
-  name: AC Map
-  oarc: null
-  shuffle: Dungeon
-- id: 50
-  name: Sandship Map
-  oarc: null
-  shuffle: Dungeon
-- id: 50
-  name: FS Map
-  oarc: null
-  shuffle: Dungeon
-- id: 50
-  name: Skykeep Map
+  name: Map
   oarc: null
   shuffle: Dungeon
 - id: 52
@@ -243,13 +219,13 @@
   name: Whip
   oarc: GetWhip
 - id: 138
-  name: Fire Shield Earrings
+  name: Fireshield Earrings
   oarc: GetEarring
 - id: 140
   name: Big Bug Net
   oarc: GetNetB
 - id: 153
-  name: Bottle
+  name: Empty Bottle
   oarc: null
 - id: 158
   name: Cawlin's Letter
@@ -258,7 +234,7 @@
   name: Hornet Colossus Beetle
   oarc: GetTerryCage
 - id: 160
-  name: Baby's Rattle
+  name: Baby Rattle
   oarc:
   - GetGaragara
   - PutGaragara
@@ -305,14 +281,14 @@
   name: Din's Power
   oarc: GetHarp
 - id: 190
-  name: Faron Soth Part
+  name: Faron Song of the Hero Part
   oarc: GetHarp
 - id: 191
-  name: Eldin Soth Part
+  name: Eldin Song of the Hero Part
   oarc: GetHarp
 - id: 192
-  name: Lanayru Soth Part
+  name: Lanayru Song of the Hero Part
   oarc: GetHarp
 - id: 193
-  name: Song of the Hero
+  name: Levias Song of the Hero Part
   oarc: GetHarp
