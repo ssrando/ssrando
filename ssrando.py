@@ -14,7 +14,7 @@ for arg in sys.argv[1:]:
   option_name = arg_parts[0]
   assert option_name.startswith('--')
   if len(arg_parts) == 1:
-    cmd_line_args[option_name[2:]] = None
+    cmd_line_args[option_name[2:]] = True
   else:
     cmd_line_args[option_name[2:]] = arg_parts[1]
 
@@ -45,12 +45,14 @@ class Randomizer:
         self.starting_items.append('Amber Tablet')
         self.starting_items.append('Emerald Tablet')
         self.starting_items.append('Ruby Tablet')
+        self.starting_items.append('Progressive Sword')
+        self.starting_items.append('Progressive Sword')
     self.logic = Logic(self)
 
   def randomize(self):
     self.logic.randomize_items()
     self.write_spoiler_log()
-    do_gamepatches(self.logic.item_locations, self.logic.done_item_locations)
+    do_gamepatches(rando)
     
   def write_spoiler_log(self):
     if self.no_logs:

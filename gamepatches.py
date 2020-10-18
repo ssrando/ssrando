@@ -13,6 +13,8 @@ from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
 from tboxSubtypes import tboxSubtypes
 
+from logic.logic import Logic
+
 DEFAULT_SOBJ = OrderedDict(
     params1 = 0,
     params2 = 0,
@@ -430,8 +432,8 @@ def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Op
         print(f'ERROR: neither id nor index given for object {json.dumps(objdef)}')
         return None
     return obj
-        
-def do_gamepatches(all_itemlocations, filled_checks):
+
+def do_gamepatches(rando):
     patcher = AllPatcher(
         actual_extract_path=Path(__file__).parent / 'actual-extract',
         modified_extract_path=Path(__file__).parent / 'modified-extract',
@@ -445,8 +447,12 @@ def do_gamepatches(all_itemlocations, filled_checks):
     with open("extracts.yaml") as f:
         extracts = yaml.safe_load(f)
     patcher.create_oarc_cache(extracts)
+
+    def filter_option_requirement(entry):
+        return not (isinstance(entry, dict) and 'onlyif' in entry \
+            and not rando.logic.check_logical_expression_string_req(entry['onlyif']))
     
-    rando_stagepatches, stageoarcs, rando_eventpatches = get_patches_from_location_item_list(all_itemlocations, filled_checks)
+    rando_stagepatches, stageoarcs, rando_eventpatches = get_patches_from_location_item_list(rando.logic.item_locations, rando.logic.done_item_locations)
 
     remove_stageoarcs = defaultdict(set)
 
@@ -468,6 +474,7 @@ def do_gamepatches(all_itemlocations, filled_checks):
 
     def bzs_patch_func(bzs, stage, room):
         stagepatches = patches.get(stage, [])
+        stagepatches = list(filter(filter_option_requirement, stagepatches))
         modified = False
         if room == None:
             layer_patches = list(filter(lambda x: x['type']=='layeroverride', stagepatches))
@@ -562,14 +569,14 @@ def do_gamepatches(all_itemlocations, filled_checks):
             modified = True
             try:
                 RANDO_PATCH_FUNCS[objname](bzs['LAY '][f'l{layer}'], itemid, objid)
-            except StopIteration:
+            except:
                 print(f'ERROR: {stage}, {room}, {layer}, {objname}, {objid}')
 
         if stage == 'F001r' and room == 1:
             # put all storyflags in links room at the start
             if not 'STAG' in bzs['LAY ']['l0']:
                 bzs['LAY ']['l0']['STAG'] = []
-            for storyflag in patches['global'].get('startstoryflags',[]):
+            for storyflag in patches['global'].get('startstoryflags',[]): # TODO: conditional
                 new_obj = OrderedDict(
                     params1 = 0xFFFFFFFF,
                     params2 = 0xFF5FFFFF,
@@ -598,6 +605,7 @@ def do_gamepatches(all_itemlocations, filled_checks):
     def flow_patch(msbf, filename):
         modified = False
         flowpatches = eventpatches.get(filename, [])
+        flowpatches = list(filter(filter_option_requirement, flowpatches))
 
         # dictionary to map flow labels to ids for new flows
         label_to_index = OrderedDict()
@@ -698,6 +706,7 @@ def do_gamepatches(all_itemlocations, filled_checks):
     def text_patch(msbt, filename):
         modified = False
         textpatches = eventpatches.get(filename, [])
+        textpatches = list(filter(filter_option_requirement, textpatches))
         for command in filter(lambda x: x['type'] == 'textpatch', textpatches):
             msbt['TXT2'][command['index']] = command['text'].encode('utf-16be')
             print(f'patched text {command["index"]}, {filename}')
@@ -712,7 +721,7 @@ def do_gamepatches(all_itemlocations, filled_checks):
 
     # patch main.dol
     orig_dol = bytearray((patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
-    for dolpatch in patches['global'].get('asm',{}).get('main',[]):
+    for dolpatch in filter(filter_option_requirement, patches['global'].get('asm',{}).get('main',[])):
         actual_code = bytes.fromhex(dolpatch['original'])
         patched_code = bytes.fromhex(dolpatch['patched'])
         assert len(actual_code) == len(patched_code), "code length has to remain the same!"
@@ -733,7 +742,7 @@ def do_gamepatches(all_itemlocations, filled_checks):
             print(f'ERROR: rel {file} not found!')
             continue
         rel = bytearray(rel)
-        for codepatch in codepatches:
+        for codepatch in filter(filter_option_requirement, codepatches):
             actual_code = bytes.fromhex(codepatch['original'])
             patched_code = bytes.fromhex(codepatch['patched'])
             assert len(actual_code) == len(patched_code), "code length has to remain the same!"

@@ -678,6 +678,9 @@ class Logic:
       # print("Unknown requirement name: " + req_name)
       # return True
   
+  def check_logical_expression_string_req(self, logical_expression_str):
+    return self.check_logical_expression_req(Logic.parse_logic_expression(logical_expression_str))
+
   def check_logical_expression_req(self, logical_expression):
     expression_type = None
     subexpression_results = []
