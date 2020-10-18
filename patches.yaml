@@ -457,6 +457,10 @@ F000: # Skyloft
     type: oarcadd
     destlayer: 6
     oarc: ShinkanA
+  - name: Owlan on layer 6 Model 2
+    type: oarcadd
+    destlayer: 6
+    oarc: Shinkan_motion
   - name: Owlan on layer 6
     type: objadd
     layer: 6

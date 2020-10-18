@@ -125,6 +125,7 @@
   - GetSozaiN
   - GetSozaiO
   - ShinkanA
+  - Shinkan_motion
   # - GetSozaiP
   stage: F000
 - layer: 3
