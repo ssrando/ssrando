@@ -1261,7 +1261,7 @@ D301: # Sandship A
       params1: 0xFFFFFFF0
       params2: 0xFFFFFFFF
       posx: 6397
-      posy: -1600
+      posy: 0
       posz: 67
       anglex: 0
       angley: 0
@@ -1421,6 +1421,22 @@ F400: # Behind the Temple
       - story_flag: -1
         night: 0
         layer: 0
+  - name: Goron doesn't Disapear after Sandship 1
+    type: objpatch
+    id: 0xFC95
+    layer: 3
+    room: 0
+    objtype: OBJ
+    patch:
+      untrigscenefid: 2047
+  - name: Goron doesn't Disapear after Sandship 2
+    type: objpatch
+    id: 0xFC94
+    layer: 3
+    room: 0
+    objtype: OBJ
+    patch:
+      untrigscenefid: 2047
 F404: # Hylia's Temple
   - name: Layer override
     type: layeroverride
