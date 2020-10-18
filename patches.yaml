@@ -1240,6 +1240,20 @@ F301: # Ancient Harbour
     objtype: SCEN
     patch:
       layer: 1
+F301_4: # Shipyard
+  - name: Text after intro
+    type: objdelete
+    id: 0xFC6E
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: Shipyard Intro
+    type: objpatch
+    room: 0
+    index: 0
+    objtype: EVNT
+    patch:
+      sceneflag2: 87
 D300: # LMF A
   - name: Dust in Gust Bellow room Blocking Door
     type: objdelete
