@@ -100,6 +100,8 @@ New Trial Completed Storyflags:
 921: Lanayru
 922: Skyloft
 
+923: Obtained Item from Fledge at start
+
 ### Shoutouts
 - Peppernicus2000: Logic, fixes
 - Azer67: Logic

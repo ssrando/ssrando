@@ -489,6 +489,22 @@ F001r: # Knight Academy
     layer: 4
     room: 0
     objtype: OBJ
+  - name: Fledge Pouch Check Storyflag at night
+    type: objpatch
+    id: 0xFC7E
+    layer: 4
+    room: 0
+    objtype: OBJ
+    patch:
+      untrigstoryfid: 923
+  - name: Fledge Pouch Check Storyflag at day
+    type: objpatch
+    id: 0xFC78
+    layer: 3
+    room: 0
+    objtype: OBJ
+    patch:
+      untrigstoryfid: 923
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
