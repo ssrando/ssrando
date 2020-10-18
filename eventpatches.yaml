@@ -361,7 +361,7 @@
     patch:
       type: switch
       subType: 6
-      param2: 340 # raised GoT
+      param2: 9 # Harp
       param3: 3
       param4: 2
       param5: 180
@@ -371,7 +371,7 @@
     patch:
       type: switch
       subType: 6
-      param2: 340 # raised GoT
+      param2: 9 # Harp
       param3: 3
       param4: 2
       param5: 52
@@ -381,10 +381,9 @@
     patch:
       type: switch
       subType: 6
-      param2: 340 # raised GoT
+      param2: 9 # Harp
       param3: 3
       param4: 2
-      param5: 250
 118-Town3:
   - name: Wryna's Crystal
     type: flowpatch

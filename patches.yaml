@@ -18,6 +18,7 @@ global:
     - 138 # Sealed Temple layer 1
     - 24 # no Fi sky text
     - 304 # Crystal Quest activated
+    - 329 # No sleeping for Wyrna
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -695,7 +696,7 @@ F100_1: # Great Tree
       params1: 0xFFFFFFF0
       params2: 0xFFFFFFFF
       posx: 1317
-      posy: 93
+      posy: 60
       posz: -522
       anglex: 0
       angley: 0
@@ -951,7 +952,7 @@ F201_4: # Volcano Waterfall
       params1: 0xFFFFFFF0
       params2: 0xFFFFFFFF
       posx: 2809
-      posy: -4036
+      posy: -4055.5771484375
       posz: 4700
       anglex: 0
       angley: 0

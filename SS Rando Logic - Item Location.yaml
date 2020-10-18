@@ -62,7 +62,7 @@ Skyloft - Skyloft above waterfall:
   Paths:
    - stage/F000/r0/l0/TBox/80
 Skyloft - Skyloft Archer minigame:
-  Need: Can Beat Lanayru Mining Facility & Adventure Pouch & Bottle & Can Get Gratitude Crystals
+  Need: Can Beat Lanayru Mining Facility & Bottle & Bow
   original item: Heart Piece
   Paths:
    - event/114-Friend/99
@@ -107,7 +107,8 @@ Skyloft - Peater/Peatrice Crystal:
     - oarc/F018r/l0
     - oarc/F019r/l0
 Skyloft - Parrow Crystal:
-  Need: Nothing
+  Need: Adventure Pouch & Bottle & Can Access Sealed Temple
+    # Need access to Faron to be able to get mushroom spores as many times as you want
   original item: 5 Gratitude Crystals
   Paths:
     - event/115-Town2/814
@@ -151,7 +152,7 @@ Skyloft - Cleaning Crystal:
     - event/123-Town5/186
     - oarc/F016r/l0
 Skyloft - Baby Rattle:
-  Need: Gust Bellows & Clawshots #needs work
+  Need: Gust Bellows & Clawshots #needs work, note that it's possible to get there from Beetle's airship
   original item: Baby's Rattle
   Paths:
     - stage/F000/r0/l0/Item/13
@@ -372,7 +373,7 @@ Sky - Lumpy Pumpkin on Chandellier:
   Paths:
    - stage/F011r/r0/l0/Chandel
 Sky - Lumpy Pumpkin harp minigame:
-  Need: Goddess Harp & Adventure Pouch & Bottle
+  Need: Goddess Harp & Bottle
   original item: Heart Piece
   Paths:
    - event/117-Pumpkin/305
@@ -384,7 +385,8 @@ Sky - Fun Fun Crystals:
     - event/110-DivingGame/60
     - oarc/F020/l0
 Sky - Orrielle Crystals:
-  Need: Bottle
+  Need: Bottle & Can Access Sealed Temple
+  # Need access to Faron to be able to get mushroom spores as many times as you want
   original item: 5 Gratitude Crystals
   Paths:
     - event/115-Town2/225
@@ -492,6 +494,7 @@ Sealed Grounds - Sealed Temple BotG event:
 Sealed Grounds - Behind the Temple first goddess Wall reward:
   Need: Can Access Sealed Temple
         & Can Access Goddess Walls
+        # TODO: check if bow is needed
   original item: Heart Piece
   Paths:
    - event/503-Goron/630
@@ -553,7 +556,7 @@ Faron Woods - HP on Tree:
 #   Paths:
 #    - stage/F102_1/r0/l0/Item/64
 Lake Floria - Dragon Lair chest with scale requried:
-  Need: Can Access Sealed Temple & Can Access Lake Floria & Water Scale
+  Need: Can Access Sealed Temple & Can Access Lake Floria
   original item: Silver Rupee
   Paths:
    - stage/F102_2/r0/l0/TBox/84
@@ -692,7 +695,7 @@ Lanayru Mines - behind Statue:
   Paths:
    - stage/F300_1/r2/l0/TBox/67
 Lanayru Mines - Chest at end of mines:
-  Need: Bomb Bag
+  Need: Can Access Lanayru & (Bomb Bag | Hook Beetle)
   original item: Rare Treasure
   Paths:
    - stage/F300_1/r2/l0/TBox/66
