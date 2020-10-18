@@ -29,7 +29,6 @@ PROGRESS_ITEMS = [
   "Faron Song of the Hero Part",
   "Eldin Song of the Hero Part",
   "Lanayru Song of the Hero Part",
-  "Levias Song of the Hero Part",
 
   "Revitalizing Potion"
 ] + \

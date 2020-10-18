@@ -289,6 +289,6 @@
 - id: 192
   name: Lanayru Song of the Hero Part
   oarc: GetHarp
-- id: 193
-  name: Levias Song of the Hero Part
-  oarc: GetHarp
+# - id: 193
+#   name: Song of the Hero
+#   oarc: GetHarp

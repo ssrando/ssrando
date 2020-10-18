@@ -49,6 +49,9 @@ class Randomizer:
         self.starting_items.append('Progressive Sword')
         self.starting_items.append('Progressive Sword')
     self.logic = Logic(self)
+    # self.logic.set_prerandomization_item_location("Skyloft - Fledge's Pouch", "Faron Song of the Hero Part")
+    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Eldin Song of the Hero Part")
+    # self.logic.set_prerandomization_item_location("Skyloft - Training Hall chest", "Lanayru Song of the Hero Part")
 
   def randomize(self):
     self.logic.randomize_items()

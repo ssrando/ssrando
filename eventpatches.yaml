@@ -36,6 +36,22 @@
     type: textpatch
     index: 239
     text: "You learned \x0E\x00\x03\x02\x05Din's Power\x0E\x00\x03\x02\uFFFF!"
+  - name: Faron SotH text
+    type: textpatch
+    index: 240
+    text: "You learned \x0E\x00\x03\x02\x05Faron SotH Part\x0E\x00\x03\x02\uFFFF!"
+  - name: Eldin SotH text
+    type: textpatch
+    index: 241
+    text: "You learned \x0E\x00\x03\x02\x05Eldin SotH Part\x0E\x00\x03\x02\uFFFF!"
+  - name: Lanayru SotH text
+    type: textpatch
+    index: 242
+    text: "You learned \x0E\x00\x03\x02\x05Lanayru SotH Part\x0E\x00\x03\x02\uFFFF!"
+  - name: Full SotH text
+    type: textpatch
+    index: 243
+    text: "You learned the \x0E\x00\x03\x02\x05Full SotH\x0E\x00\x03\x02\uFFFF!"
   - name: remove BotG Scene Change
     type: flowpatch
     index: 464
@@ -117,6 +133,85 @@
       param2: 9
       next: -1
       param3: 0
+  # full SotH will be given once all 3 Parts are collected
+  - name: For Faron To Check Full SotH
+    type: flowpatch
+    index: 472
+    patch:
+      next: Check Faron SotH 1
+  - name: For Eldin To Check Full SotH
+    type: flowpatch
+    index: 471
+    patch:
+      next: Check Faron SotH 1
+  - name: For Lanayru To Check Full SotH
+    type: flowpatch
+    index: 475
+    patch:
+      next: Check Faron SotH 1
+  - name: Check Faron SotH 1
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 190 # item id
+      param2: 1 # seems to be some count, always 1 for items
+      next: Check Faron SotH 2
+      param3: 23 # check_item_flag command, result is carried to next switch
+  - name: Check Faron SotH 2
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # use result from previous chck
+    cases:
+      - Check Eldin SotH 1 # true
+      - -1                 # false
+  - name: Check Eldin SotH 1
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 191 # item id
+      param2: 1 # seems to be some count, always 1 for items
+      next: Check Eldin SotH 2
+      param3: 23 # check_item_flag command, result is carried to next switch
+  - name: Check Eldin SotH 2
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # use result from previous chck
+    cases:
+      - Check Lanayru SotH 1 # true
+      - -1                   # false
+  - name: Check Lanayru SotH 1
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 192 # item id
+      param2: 1 # seems to be some count, always 1 for items
+      next: Check Lanayru SotH 2
+      param3: 23 # check_item_flag command, result is carried to next switch
+  - name: Check Lanayru SotH 2
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # use result from previous chck
+    cases:
+      - Give full SotH # true
+      - -1             # false
+  - name: Give full SotH
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 193 # item
+      param3: 9
+      next: 477 # to full SotH text
 008-Hint:
   # check for 3 storyflags: required dungeon 1 and 2, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check
