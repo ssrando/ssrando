@@ -873,6 +873,21 @@
       param2: 921
       next: -1
       param3: 1 # unset storyflag
+500-CenterField:
+  - name: to SG intro cs storyflag
+    type: flowpatch
+    index: 114
+    patch:
+      next: Set SG intro in Groose cs
+  - name: Set SG intro in Groose cs
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 137
+      next: -1
+      param3: 0
 502-CenterFieldBack:
   - name: Zelda's Cutscene, give item from impa # this is overriding a set sceneflag, which is not needed anymore
     type: flowpatch
