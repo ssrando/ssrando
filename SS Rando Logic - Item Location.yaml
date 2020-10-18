@@ -90,7 +90,7 @@ Skyloft - Fledge's Pouch:
     - event/114-Friend/16
     - oarc/F001r/l3
     - oarc/F001r/l4
-Skyloft - Parrow Bottle:
+Skyloft - i guess Bottle:
   Need: Nothing
   original item: Bottle
   Paths:
@@ -735,8 +735,8 @@ Lanayru - Hook Beetle event:
   Paths:
    - event/400-Desert/8
    - oarc/F300/l0
-Lanayru - Chest after getting Harp on top of LMF:
-  Need: Can Beat Lanayru Mining Facility
+Lanayru - Chest after getting Harp on top of LMF: # actually spawns on raising LMF
+  Need: Can Access Dungeon Entrance In Lanayru Desert
   original item: Rare Treasure # TODO check
   Paths:
    - stage/F300/r0/l1/TBox/83
