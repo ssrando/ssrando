@@ -23,11 +23,11 @@ On Windows:
 9)
 On Linux:
 
-    python3 layerfixes.py
+    python3 ssrando.py
 
 On Windows:
 
-    python layerfixes.py
+    python ssrando.py
 
 #### FOR EMULATOR
 10a) Depending on your setup, on how you wanna use the game this step might differ, if you want an iso ready to be played on emu
