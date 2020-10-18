@@ -98,6 +98,12 @@ Skyloft - Parrow Bottle:
     - event/115-Town2/733 # Bottle
     - oarc/F000/l0
     - oarc/F005r/l0
+Skyloft - Cawlin's Letter:
+  Need: Goddess Harp & Can Access Sealed Temple
+  original item: Cawlin's Letter
+  Paths:
+    - event/115-Town2/166
+    - oarc/F001r/l0
 Skyloft - Peater/Peatrice Crystal:
   Need: Nothing
   original item: 5 Gratitude Crystals
