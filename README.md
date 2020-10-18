@@ -29,6 +29,15 @@ On Windows:
 
     python ssrando.py
 
+To use a predefined seed, use the seed command line argument:
+On Linux:
+
+    python3 ssrando.py --seed=123456
+
+On Windows:
+
+    python ssrando.py --seed=123456
+
 #### FOR EMULATOR
 10a) Depending on your setup, on how you wanna use the game this step might differ, if you want an iso ready to be played on emu
 
