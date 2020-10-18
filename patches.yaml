@@ -1333,6 +1333,20 @@ F402: # Sealed Temple
     objtype: OBJS
     patch:
       anglex: 0xFF00 # sets the flag to -1 (meaning open)
+  - name: Impa text near Door after GoT
+    type: objdelete
+    id: 0xFC49
+    layer: 2
+    room: 2
+    objtype: OBJ
+  - name: Remove Music and shaking
+    type: objpatch
+    room: 2
+    index: 5
+    objtype: EVNT
+    patch:
+      story_flag2: -1 # no Imp trigger stuff
+      sceneflag1: 7 # no shaking into vents active
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
