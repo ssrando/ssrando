@@ -968,8 +968,8 @@ ET Boss Room - ET Heart Container:
  #Scaldera can be beaten without bombs but the logic does not require it
  original item: Heart Container
  Paths:
-  - stage/B200/r0/l1/HeartCo
-  - stage/B200/r0/l2/HeartCo
+  - stage/B200/r10/l1/HeartCo
+  - stage/B200/r10/l2/HeartCo
 
 ET Spring - Amber Tablet:
   Need: Can Access Earth Temple & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET Boss Key
