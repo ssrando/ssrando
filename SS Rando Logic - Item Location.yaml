@@ -541,7 +541,7 @@ Faron Woods - Deep Woods chest:
   Paths:
    - stage/F101/r0/l0/TBox/74
 Faron Woods - heart piece behind Boulder:
-  Need: Can Access Sealed Temple & bombs
+  Need: Can Access Sealed Temple & Bomb Bag
   original item: Heart Piece
   Paths:
    - stage/F100/r0/l0/Item/33 #last thing is SceneflagID
