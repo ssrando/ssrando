@@ -410,6 +410,16 @@ F000: # Skyloft
     layer: 4
     room: 0
     objtype: OBJ
+  - name: Sand Size fix
+    type: objpatch
+    id: 0xFD03
+    layer: 0
+    room: 0
+    objtype: SOBJ
+    patch:
+      sizex: 3.2
+      sizey: 4.5
+      sizez: 3.2
 #  - name: Batreaux unlock
 #    type: objpatch
 #    id: 0xFC4A
