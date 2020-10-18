@@ -22,6 +22,7 @@ class Randomizer:
   def __init__(self, options):
     self.options = options
     self.no_logs = False
+    self.dry_run = bool(options.get('dry-run',False))
     self.seed = int(options.get('seed','-1'))
     if self.seed == -1:
         self.seed = random.randint(0,1000000)
@@ -52,7 +53,8 @@ class Randomizer:
   def randomize(self):
     self.logic.randomize_items()
     self.write_spoiler_log()
-    do_gamepatches(rando)
+    if not self.dry_run:
+      do_gamepatches(rando)
     
   def write_spoiler_log(self):
     if self.no_logs:
@@ -75,6 +77,9 @@ class Randomizer:
     zones, max_location_name_length = self.get_zones_and_max_location_name_len(all_progression_sphere_locations)
     format_string = "      %-" + str(max_location_name_length+1) + "s %s\n"
     for i, progression_sphere in enumerate(progression_spheres):
+      # skip single gratitude crystals
+      progression_sphere = [loc for loc in progression_sphere
+        if loc == 'Past - Demise' or self.logic.done_item_locations[loc] != 'Gratitude Crystal']
       spoiler_log += "%d:\n" % (i+1)
       
       for zone_name, locations_in_zone in zones.items():

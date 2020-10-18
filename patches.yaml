@@ -39,7 +39,7 @@ global:
       # skip drawing link's sword
       - original: 4b ff fd 69 7f 63 db 78 4b f8 3b 51 2c 03 00 00 41 82 00 14 7f 63 db 78 7f e5 fb 78 38 9b 06 54 4b ff fd 49
         patched:  60 00 00 00 7f 63 db 78 4b f8 3b 51 2c 03 00 00 41 82 00 14 7f 63 db 78 7f e5 fb 78 38 9b 06 54 60 00 00 00
-        onlyif: Option "invisible_sword" Enabled
+        onlyif: Option "invisible-sword" Enabled
     d_a_obj_door_boss: # function that checks for the dungeons storyflag, prevents putting in the boss key
       - original: 94 21 FF F0 7C 08 02 A6 90 01 00 14 4B FF E2 45 # start of function
         patched:  38 60 00 00 4e 80 00 20 90 01 00 14 4B FF E2 45 # just return 0

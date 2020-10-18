@@ -38,8 +38,13 @@ On Windows:
 
     python ssrando.py --seed=123456
 
-There is a bug currently where recieving sword upgrades result in a crash, to avoid that, there is an option `--invisible_sword` which turns
+
+#### MORE OPTIONS
+There is a bug currently where recieving sword upgrades result in a crash, to avoid that, there is an option `--invisible-sword` which turns
 the sword invisible and avoids the crash
+
+To only generate a spoiler log, use the `--dry-run` option as a command line argument
+
 
 #### FOR EMULATOR
 10a) Depending on your setup, on how you wanna use the game this step might differ, if you want an iso ready to be played on emu
