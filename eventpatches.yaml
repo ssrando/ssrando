@@ -636,6 +636,56 @@
       param2: 7
       next: -1
       param3: 7
+  # make sure central statue can be moved down again, for that allow the player to
+  # talk to the tablet and then lower the statue and reload
+  - name: Statue Lower Question
+    type: textpatch
+    index: 4
+    text: "Leave?\n\x0E\x01\x00\x02\uFFFFYes\x0E\x01\x01\x02\x00No"
+  - name: Replace Stone Tablet Event
+    type: flowpatch
+    index: 4
+    patch:
+      next: Statue Lower Switch
+  - name: Statue Lower Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Unset Raise Statue Sceneflag
+      - -1
+  - name: Unset Raise Statue Sceneflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 12
+      param2: 126
+      next: Unset Valve on Top Sceneflag
+      param3: 3
+  - name: Unset Valve on Top Sceneflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 12
+      param2: 121
+      next: Trigger Exit
+      param3: 3
+  - name: Trigger Exit
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 0
+      param2: 0
+      next: -1
+      param3: 10
+
+
 250-ForestSiren:
   - name: shorten fi text
     type: flowpatch

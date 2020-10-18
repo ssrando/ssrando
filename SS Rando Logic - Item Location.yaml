@@ -1165,8 +1165,7 @@ Sandship - Sandship Heart Container:
   original item: Heart Container
   Paths:
    - stage/B301/r0/l1/HeartCo
-   - stage/D301/r0/l9/HeartCo
-   - stage/D301/r0/l10/HeartCo
+   - stage/D301/r0/l1/HeartCo
 Sandship - Goddess White Sword Event:
   Need: Can Access Sandship & Bow & SS Boss Key
   original item: Progressive Sword

@@ -813,6 +813,30 @@ D100: # Skyview
     objtype: OBJS
     patch:
       setscenefid: 13 # 0x0 20
+D101:
+  - name: Remove stone tablet flag # to get rid of fi text
+    type: objpatch
+    id: 0xFC11
+    layer: 0
+    room: 10
+    objtype: OBJ
+    patch:
+      params1: 0xFFFF4EEB
+  - name: Reload Exit
+    type: objadd
+    room: 10
+    index: 0
+    objtype: SCEN
+    object:
+      name: D101
+      room: 0
+      layer: 0
+      entrance: 0
+      byte4: 2
+      byte5: 2
+      flag6: 0
+      zero: 0
+      flag8: 0
 F200: # Eldin main area
   - name: Layer override
     type: layeroverride
@@ -1191,6 +1215,21 @@ F301_1: # Sand Sea Main Area
     layer: 0
     room: 0
     objtype: STAG
+  - name: No Sandship beaten layer in sandship
+    type: objpatch
+    index: 5
+    room: 0
+    objtype: SCEN
+    patch:
+      layer: 1
+F301: # Ancient Harbour
+  - name: No Sandship beaten layer in sandship
+    type: objpatch
+    index: 4
+    room: 0
+    objtype: SCEN
+    patch:
+      layer: 1
 D300: # LMF A
   - name: Dust in Gust Bellow room Blocking Door
     type: objdelete
@@ -1229,6 +1268,13 @@ D301: # Sandship A
       anglez: 0
       id: 0xFC50
       name: Bombf
+  - name: Heart Container on normal layer
+    type: objmove
+    layer: 9
+    destlayer: 1
+    room: 0
+    objtype: OBJ
+    id: 0xFC53
 F402: # Sealed Temple
   - name: SotH start cs
     type: objdelete
