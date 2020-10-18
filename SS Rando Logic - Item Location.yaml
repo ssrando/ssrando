@@ -375,7 +375,7 @@ Sky - Lumpy Pumpkin on Chandellier:
   Paths:
    - stage/F011r/r0/l0/Chandel
 Sky - Lumpy Pumpkin harp minigame:
-  Need: Goddess Harp & Bottle
+  Need: Goddess Harp & Bottle & Can Beat Earth Temple
   original item: Heart Piece
   Paths:
    - event/117-Pumpkin/305
@@ -394,7 +394,7 @@ Sky - Orrielle Crystals:
     - event/115-Town2/225
     - oarc/F020/l0
 Sky - Kina Crystals:
-  Need: Can Beat Fire Sanctuary & Bottle & Goddess Harp & Can Access Eldin
+  Need: Can Beat Fire Sanctuary & Bottle & Goddess Harp & Can Access Eldin & Can Beat Earth Temple
   original item: 5 Gratitude Crystals
   Paths:
     - event/117-Pumpkin/386
@@ -496,7 +496,6 @@ Sealed Grounds - Sealed Temple BotG event:
 Sealed Grounds - Behind the Temple first goddess Wall reward:
   Need: Can Access Sealed Temple
         & Can Access Goddess Walls
-        # TODO: check if bow is needed
   original item: Heart Piece
   Paths:
    - event/503-Goron/630
