@@ -552,7 +552,7 @@ Faron Woods - Chest inside Great Tree:
   Paths:
    - stage/F100_1/r0/l0/TBox/84
 Faron Woods - HP on Tree:
-  Need: Can Access Sealed Temple & ((Gust Bellows & Water Scale) | Clawshots)
+  Need: Can Access Sealed Temple
   original item: Heart Piece
   Paths:
     - stage/F100/r0/l0/Item/68
