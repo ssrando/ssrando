@@ -2,7 +2,7 @@
   - name: Remove Goddess Sword Scene change
     type: flowpatch
     index: 462 # skip scene change after getting goddess sword
-    patch:
+    flow:
       next: -1
   - name: Goddess Longsword Text
     type: textpatch
@@ -55,18 +55,18 @@
   - name: remove BotG Scene Change
     type: flowpatch
     index: 464
-    patch:
+    flow:
       next: -1
   - name: get rid of Skyloft layer 8&9
     type: flowpatch
     index: 540 # before storyflag
-    patch:
+    flow:
       next: -1 # after Storyflag
     # after the last tear is picked up, patch it so that the flag for the trial is set
   - name: to set faron trial storyflag
     type: flowpatch
     index: 401
-    patch:
+    flow:
       next: set faron trial storyflag
   - name: set faron trial storyflag
     type: flowadd
@@ -80,7 +80,7 @@
   - name: to set eldin trial storyflag
     type: flowpatch
     index: 441
-    patch:
+    flow:
       next: set eldin trial storyflag
   - name: set eldin trial storyflag
     type: flowadd
@@ -94,7 +94,7 @@
   - name: to set lanayru trial storyflag
     type: flowpatch
     index: 451
-    patch:
+    flow:
       next: set lanayru trial storyflag
   - name: set lanayru trial storyflag
     type: flowadd
@@ -108,7 +108,7 @@
   - name: to set skyloft trial storyflag
     type: flowpatch
     index: 446
-    patch:
+    flow:
       next: set skyloft trial storyflag
   - name: set skyloft trial storyflag
     type: flowadd
@@ -122,7 +122,7 @@
   - name: Go to Harp Storyflag
     type: flowpatch
     index: 71
-    patch:
+    flow:
       next: Goddess Harp Storyflag
   - name: Goddess Harp Storyflag
     type: flowadd
@@ -137,17 +137,17 @@
   - name: For Faron To Check Full SotH
     type: flowpatch
     index: 472
-    patch:
+    flow:
       next: Check Faron SotH 1
   - name: For Eldin To Check Full SotH
     type: flowpatch
     index: 471
-    patch:
+    flow:
       next: Check Faron SotH 1
   - name: For Lanayru To Check Full SotH
     type: flowpatch
     index: 475
-    patch:
+    flow:
       next: Check Faron SotH 1
   - name: Check Faron SotH 1
     type: flowadd
@@ -215,7 +215,7 @@
   - name: To Set Adventure Pouch Storyflag
     type: flowpatch
     index: 603
-    patch:
+    flow:
       next: Set Adventure Pouch Storyflag
   - name: Set Adventure Pouch Storyflag
     type: flowadd
@@ -292,7 +292,7 @@
   - name: Beedle's Crystal # Can't reach that right now
     type: flowpatch
     index: 115
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -304,7 +304,7 @@
   - name: Potion Lady Bottle
     type: flowpatch
     index: 59
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -317,7 +317,7 @@
   - name: Owlans Shield
     type: flowpatch
     index: 169
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -330,7 +330,7 @@
   - name: Peater's Crystal 1
     type: flowpatch
     index: 79
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -341,13 +341,13 @@
   - name: Peater's Crystal 2
     type: flowpatch
     index: 92
-    patch:
+    flow:
       next: 79
 110-DivingGame:
   - name: Fun Fun Owner's Crystal
     type: flowpatch
     index: 60
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -359,17 +359,17 @@
   - name: Parrow's Empty Bottle
     type: flowpatch
     index: 734
-    patch:
+    flow:
       next: 735 # jump to give item
   - name: Parrow's Spores Bottle
     type: flowpatch
     index: 199
-    patch:
+    flow:
       next: 747 # to item
   - name: Parrow's Crystal 1
     type: flowpatch
     index: 814
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -380,12 +380,12 @@
   - name: Parrow's Crystal 2
     type: flowpatch
     index: 732
-    patch:
+    flow:
       next: 814
   - name: Feldge's Crystal
     type: flowpatch
     index: 325
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -396,7 +396,7 @@
   - name: Baby's Crystal
     type: flowpatch
     index: 125
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -407,7 +407,7 @@
   - name: Orrielle's Crystal
     type: flowpatch
     index: 225
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -418,7 +418,7 @@
   - name: Ghost's Crystal
     type: flowpatch
     index: 522
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -429,7 +429,7 @@
   - name: Pipit's Crystal
     type: flowpatch
     index: 641
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -440,13 +440,13 @@
   - name: Skip Clawshot Requirement for Rattle Delivery
     type: flowpatch
     index: 7
-    patch:
+    flow:
       next: 8
 117-Pumpkin:
   - name: Kina Crystal Quest
     type: flowpatch
     index: 93
-    patch:
+    flow:
       type: switch
       subType: 6
       param2: 901 # new FS flag
@@ -456,7 +456,7 @@
   - name: Kina's Crystal
     type: flowpatch
     index: 386
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -467,7 +467,7 @@
   - name: playing Harp with Kina 1
     type: flowpatch
     index: 434
-    patch:
+    flow:
       type: switch
       subType: 6
       param2: 9 # Harp
@@ -477,7 +477,7 @@
   - name: playing Harp with Kina 2
     type: flowpatch
     index: 80
-    patch:
+    flow:
       type: switch
       subType: 6
       param2: 9 # Harp
@@ -487,7 +487,7 @@
   - name: playing Harp with Kina 3
     type: flowpatch
     index: 579
-    patch:
+    flow:
       type: switch
       subType: 6
       param2: 9 # Harp
@@ -497,7 +497,7 @@
   - name: Wryna's Crystal
     type: flowpatch
     index: 144
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -508,7 +508,7 @@
   - name: Sparrot's Crystal
     type: flowpatch
     index: 141
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -519,7 +519,7 @@
   - name: Owlan's Crystal # can't be reached right now
     type: flowpatch
     index: 157
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -531,7 +531,7 @@
   - name: Peatrice's Crystal
     type: flowpatch
     index: 316
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -542,7 +542,7 @@
   - name: Pipit's Mom's Crystal
     type: flowpatch
     index: 186
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -554,7 +554,7 @@
   - name: to unset trial storyflag
     type: flowpatch
     index: 38
-    patch:
+    flow:
       next: 81
   - name: unset trial storyflag on failure
     type: flowadd
@@ -570,7 +570,7 @@
   - name: give slingshot directly
     type: flowpatch
     index: 595
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -583,7 +583,7 @@
   - name: give item after beating skyview
     type: flowpatch
     index: 6
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -595,7 +595,7 @@
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 87
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -605,7 +605,7 @@
   - name: to rando dungeons completed check
     type: flowpatch
     index: 81
-    patch:
+    flow:
       type: type3
       subType: 1
       param1: 8 # entrypoint 008_007
@@ -659,7 +659,7 @@
   - name: Replace Stone Tablet Event
     type: flowpatch
     index: 4
-    patch:
+    flow:
       next: Statue Lower Switch
   - name: Statue Lower Switch
     type: switchadd
@@ -704,13 +704,13 @@
   - name: shorten fi text
     type: flowpatch
     index: 1
-    patch:
+    flow:
       next: 78
   # unset trial storyflag on fail
   - name: to unset Trial storyflag
     type: flowpatch
     index: 37
-    patch:
+    flow:
       next: unset Trial storyflag
   - name: unset Trial storyflag
     type: flowadd
@@ -725,7 +725,7 @@
   - name: give item after beating earth temple
     type: flowpatch
     index: 22
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -737,7 +737,7 @@
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 21
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -747,7 +747,7 @@
   - name: to rando dungeons completed check
     type: flowpatch
     index: 59
-    patch:
+    flow:
       type: type3
       subType: 1
       param1: 8 # entrypoint 008_007
@@ -758,7 +758,7 @@
   - name: Give item before CS
     type: flowpatch
     index: 5
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -770,7 +770,7 @@
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 6
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -780,7 +780,7 @@
   - name: to rando dungeons completed check
     type: flowpatch
     index: 94
-    patch:
+    flow:
       type: type3
       subType: 1
       param1: 8 # entrypoint 008_007
@@ -791,7 +791,7 @@
   - name: to unset trial storyflag
     type: flowpatch
     index: 30
-    patch:
+    flow:
       next: unset trial storyflag on failure
   - name: unset trial storyflag on failure
     type: flowadd
@@ -806,7 +806,7 @@
   - name: give item after harp CS
     type: flowpatch
     index: 286
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -818,7 +818,7 @@
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 287
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -828,7 +828,7 @@
   - name: to rando dungeons completed check
     type: flowpatch
     index: 288
-    patch:
+    flow:
       type: type3
       subType: 1
       param1: 8 # entrypoint 008_007
@@ -838,13 +838,13 @@
   - name: Fix Hook Beetle check # the robot doesn't give the item after harp
     type: flowpatch
     index: 39
-    patch:
+    flow:
       next: 5
 401-DesertD2:
   - name: give item after beating sandship
     type: flowpatch
     index: 45
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -856,7 +856,7 @@
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 46
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -876,7 +876,7 @@
   - name: to unset trial storyflag
     type: flowpatch
     index: 30
-    patch:
+    flow:
       next: unset trial storyflag on failure
   - name: unset trial storyflag on failure
     type: flowadd
@@ -891,7 +891,7 @@
   - name: to SG intro cs storyflag
     type: flowpatch
     index: 114
-    patch:
+    flow:
       next: Set SG intro in Groose cs
   - name: Set SG intro in Groose cs
     type: flowadd
@@ -906,7 +906,7 @@
   - name: Zelda's Cutscene, give item from impa # this is overriding a set sceneflag, which is not needed anymore
     type: flowpatch
     index: 17
-    patch:
+    flow:
       type: type3
       subType: 0
       param1: 0
@@ -918,7 +918,7 @@
   - name: Zelda's Cutscene, trigger CS # auto trigger CS, so above mentioned sceneflag is useless
     type: flowpatch
     index: 16
-    patch:
+    flow:
       type: type3
       subType: 1
       param1: 2 # trigger exit 2

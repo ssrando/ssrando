@@ -454,6 +454,23 @@ def do_gamepatches(rando):
     
     rando_stagepatches, stageoarcs, rando_eventpatches = get_patches_from_location_item_list(rando.logic.item_locations, rando.logic.done_item_locations)
 
+    # Add required dungeon patches to eventpatches
+    DUNGEON_TO_EVENTFILE = {
+        'Skyview': '201-ForestD1',
+        'Earth Temple': '301-MountainD1',
+        'Lanayru Mining Facility': '400-Desert',
+        'Ancient Cistern': '202-ForestD2',
+        'Sandship': '401-DesertD2',
+        'Fire Sanctuary': '304-MountainD2',
+    }
+
+    REQUIRED_DUNGEON_STORYFLAGS = [902, 903]
+
+    for i, dungeon in enumerate(rando.required_dungeons):
+        dungeon_events = eventpatches[DUNGEON_TO_EVENTFILE[dungeon]]
+        required_dungeon_storyflag_event = next(filter(lambda x: x['name'] == 'rando required dungeon storyflag', dungeon_events))
+        required_dungeon_storyflag_event['flow']['param2'] = REQUIRED_DUNGEON_STORYFLAGS[i] # param2 is storyflag of event
+
     remove_stageoarcs = defaultdict(set)
 
     for stage, stagepatches in patches.items():
@@ -616,12 +633,12 @@ def do_gamepatches(rando):
             next_index += 1
         for command in filter(lambda x: x['type'] == 'flowpatch', flowpatches):
             flowobj = msbf['FLW3']['flow'][command['index']]
-            for key, val in command['patch'].items():
+            for key, val in command['flow'].items():
                 # special case: next points to a label
                 if key == 'next' and not isinstance(val, int):
                     index = label_to_index.get(val, None)
                     if index is None:
-                        print(f'ERROR: label {val} not found in patch: {command["patch"]}')
+                        print(f'ERROR: label {val} not found in patch: {command["flow"]}')
                         continue
                     val = index
                 flowobj[key] = val
