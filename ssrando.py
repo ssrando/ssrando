@@ -18,11 +18,30 @@ for arg in sys.argv[1:]:
   else:
     cmd_line_args[option_name[2:]] = arg_parts[1]
 
+class StartupException(Exception):
+  pass
+
 class Randomizer:
   def __init__(self, options):
+    self.dry_run = bool(options.get('dry-run',False))
+    # TODO: maybe make paths configurable?
+    if not self.dry_run:
+      self.actual_extract_path=Path(__file__).parent / 'actual-extract'
+      self.modified_extract_path=Path(__file__).parent / 'modified-extract'
+      self.oarc_cache_path=Path(__file__).parent / 'oarc'
+      # catch common errors with directory setup
+      if not self.actual_extract_path.is_dir():
+        raise StartupException("ERROR: directory actual-extract doesn't exist! Make sure you have the ISO extracted into that directory")
+      if not self.modified_extract_path.is_dir():
+        raise StartupException("ERROR: directory modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
+      if not (self.actual_extract_path / 'DATA').is_dir():
+        raise StartupException("ERROR: directory actual-extract doesn't contain a DATA directory! Make sure you have the ISO properly extracted into actual-extract")
+      if not (self.modified_extract_path / 'DATA').is_dir():
+        raise StartupException("ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
+      if not (self.modified_extract_path / 'DATA' / 'files' / 'COPYDATE_CODE_2011-09-28_153155').exists():
+        raise StartupException("ERROR: the randomizer only supports E1.00")
     self.options = options
     self.no_logs = False
-    self.dry_run = bool(options.get('dry-run',False))
     self.seed = int(options.get('seed','-1'))
     if self.seed == -1:
         self.seed = random.randint(0,1000000)
@@ -59,7 +78,7 @@ class Randomizer:
     if not self.dry_run:
       do_gamepatches(rando)
       print('Required dungeons: '+(', '.join(self.required_dungeons)))
-    
+
   def write_spoiler_log(self):
     if self.no_logs:
       # We still calculate progression spheres even if we're not going to write them anywhere to catch more errors in testing.

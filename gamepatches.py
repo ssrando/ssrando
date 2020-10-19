@@ -435,9 +435,9 @@ def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Op
 
 def do_gamepatches(rando):
     patcher = AllPatcher(
-        actual_extract_path=Path(__file__).parent / 'actual-extract',
-        modified_extract_path=Path(__file__).parent / 'modified-extract',
-        oarc_cache_path=Path(__file__).parent / 'oarc',
+        actual_extract_path=rando.actual_extract_path,
+        modified_extract_path=rando.modified_extract_path,
+        oarc_cache_path=rando.oarc_cache_path,
         copy_unmodified=False)
     with open("patches.yaml") as f:
         patches = yaml.safe_load(f)

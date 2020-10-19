@@ -14,7 +14,7 @@ On Windows:
 
     pip install -r requirements.txt
 
-6) Take your SS iso (every version will work, make sure it's unmodified by comparing hashes, see [here](https://pastebin.com/VSUwdz2e) and put it in the sslib directory (in the following steps it will be simply called disc.iso)
+6) Take a clean E 1.00 ISO (make sure to verify the hashes in dolphin: crc="2b48d050" md5="e7c39bb46cf938a5a030a01a677ef7d1" sha1="9cf9a4a7ed2a6a4abb4582e3304af1327c160640") and put it in the sslib directory (in the following steps it will be simply called disc.iso)
 7)
 
     wit extract disc.iso actual-extract
