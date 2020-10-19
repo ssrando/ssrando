@@ -313,6 +313,11 @@
       param3: 9
       param4: 0
       param5: 0
+  - name: Requirement for Stamina Potion
+    type: flowpatch
+    index: 103
+    flow:
+      param2: 914
 107-Kanban:
   - name: Knight Academy Billboard skip condition
     type: flowpatch
