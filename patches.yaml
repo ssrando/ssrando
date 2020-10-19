@@ -765,20 +765,20 @@ D100: # Skyview
     type: oarcadd
     oarc: SwitchEye
     destlayer: 0
-  - name: First Eye
-    type: objmove
-    id: 0xFC17
-    layer: 1
-    destlayer: 0
-    room: 1
-    objtype: OBJ
-  - name: First Eye
-    type: objmove
-    id: 0xFC1A
-    layer: 1
-    destlayer: 0
-    room: 1
-    objtype: STAG
+  # - name: First Eye
+  #   type: objmove
+  #   id: 0xFC17
+  #   layer: 1
+  #   destlayer: 0
+  #   room: 1
+  #   objtype: OBJ
+  # - name: First Eye
+  #   type: objmove
+  #   id: 0xFC1A
+  #   layer: 1
+  #   destlayer: 0
+  #   room: 1
+  #   objtype: STAG
   - name: Right Room Eyes
     type: objmove
     id: 0xFC48
