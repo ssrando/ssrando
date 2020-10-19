@@ -313,6 +313,17 @@
       param3: 9
       param4: 0
       param5: 0
+107-Kanban:
+  - name: Knight Academy Billboard skip condition
+    type: flowpatch
+    index: 37
+    flow:
+      next: 38
+  # added during generation with correct text
+  # - name: Knight Academy Billboard text
+  #   type: textpatch
+  #   index: 18
+  #   text: "Required dungeons:\nA\nB"
 108-ShinkanA:
   - name: Owlans Shield
     type: flowpatch

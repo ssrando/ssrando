@@ -470,6 +470,15 @@ def do_gamepatches(rando):
         dungeon_events = eventpatches[DUNGEON_TO_EVENTFILE[dungeon]]
         required_dungeon_storyflag_event = next(filter(lambda x: x['name'] == 'rando required dungeon storyflag', dungeon_events))
         required_dungeon_storyflag_event['flow']['param2'] = REQUIRED_DUNGEON_STORYFLAGS[i] # param2 is storyflag of event
+    
+    # patch required dungeon text in
+    required_dungeons_text = 'Required dungeons:\n'+('\n'.join(rando.required_dungeons))
+    eventpatches['107-Kanban'].append({
+        "name": "Knight Academy Billboard text",
+        "type": "textpatch",
+        "index": 18,
+        "text": required_dungeons_text,
+    })
 
     remove_stageoarcs = defaultdict(set)
 
