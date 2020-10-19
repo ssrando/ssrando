@@ -42,6 +42,7 @@ PROGRESS_ITEMS = [
 
 NONPROGRESS_ITEMS = [
   "Wooden Shield",
+  "Hylian Shield",
 
   "Cursed Medal",
   "Treasure Medal",
