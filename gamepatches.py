@@ -505,7 +505,7 @@ def do_gamepatches(rando):
         for objpatch in filter(lambda x: x['type']=='objpatch' and x.get('room',None)==room, stagepatches):
             obj = get_entry_from_bzs(bzs, objpatch)
             if not obj is None:
-                for key, val in objpatch['patch'].items():
+                for key, val in objpatch['object'].items():
                     if key in obj:
                         obj[key] = val
                     else:
