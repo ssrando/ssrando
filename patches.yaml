@@ -937,6 +937,12 @@ F200: # Eldin main area
     destlayer: 0
     room: 2
     objtype: STAG
+  - name: Propeller delete # undo this when starting without scrapper repaired
+    type: objdelete
+    id: 0xFC2E
+    layer: 0
+    room: 4
+    objtype: OBJ
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
