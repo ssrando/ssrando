@@ -1311,7 +1311,7 @@ D301: # Sandship A
       params1: 0xFFFFFFF0
       params2: 0xFFFFFFFF
       posx: 6397
-      posy: 0
+      posy: -1243.4300537109375
       posz: 67
       anglex: 0
       angley: 0
