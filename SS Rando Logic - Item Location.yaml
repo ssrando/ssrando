@@ -714,7 +714,7 @@ Lanayru - Desert chest next to trial:
   Paths:
    - stage/F300/r0/l0/TBox/72
 Lanayru - Chest Near Party Wheel:
-  Need: Can Access Second Part of Lanayru & Bomb Bag
+  Need: Can Access Lanayru & Bomb Bag
   original item: Golden Skull
   Paths:
    - stage/F300/r0/l0/TBox/70
@@ -896,22 +896,22 @@ Skyview - Small Key Chest behind 3 Eyes:
   Paths:
    - stage/D100/r7/l0/TBox/68
 Skyview - Chest near Boss Door:
-  Need: Can Access Skyview & SW Small Key x2 & (Bomb Bag | Beetle | Bow)
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & SW Small Key x2 & (Bomb Bag | Beetle | Bow | Water Scale)
   # To get accross the rope with boko babas, hang down on the rope and go accross that way. The last boko baba may be annoying but nothing too bad if you time it
-  # The Skulltula jump is not in logic. A bomb knocks it away. Both the Beetle and the bow can cut it down.
+  # The Skulltula jump is not in logic. A bomb knocks it away. Both the Beetle and the bow can cut it down. The water scale makes it Skyview 2 where there is no spider anymore.
   original item: Red Rupee
   Paths:
    - stage/D100/r9/l0/TBox/70
 Skyview - SW Boss Key: # what?
   #If you had bombs for the Skulltula, you can't hit the 2nd vine, thus you need Beetle, bow, clawshots or slingshot
   #Note: You can also hit this vine with a Skyward Strike, but only on Hero Mode
-  Need: Can Access Skyview & SW Small Key x2 & (Bomb Bag | Beetle | Bow) # Hero mode changed this
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & SW Small Key x2 & (Bomb Bag | Beetle | Bow | Water Scale) # Hero mode changed this
   original item: Skyview Boss Key
   Paths:
    - stage/D100/r9/l0/TBox/66
 
 Skyview Boss Room - Heart Container:
- Need: Can Access Skyview & SW Small Key x2 & SW Boss Key & (Bomb Bag | Beetle | Bow)
+ Need: Can Access Skyview & Can Get Past the First Skyview Room & SW Small Key x2 & (Bomb Bag | Beetle | Bow | Water Scale) & SW Boss Key
  original item: Heart Container
  Paths:
   - stage/B100/r0/l1/HeartCo
@@ -920,7 +920,7 @@ Skyview Boss Room - Heart Container:
   - stage/B100/r0/l4/HeartCo
 
 Skyview Spring - Ruby Tablet:
-  Need: Can Access Skyview & SW Small Key x2 & SW Boss Key & (Bomb Bag | Beetle | Bow)
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & SW Small Key x2 & (Bomb Bag | Beetle | Bow | Water Scale) & SW Boss Key
   original item: Ruby Tablet
   Paths:
    - event/201-ForestD1/6
