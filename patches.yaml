@@ -1,6 +1,5 @@
 global:
   startstoryflags:
-    - 27 # Loftwing
     - 46 # Faron light pillar
     - 47 # Eldin light pillar
     - 48 # Lanayru light pillar
@@ -17,8 +16,8 @@ global:
     - 494 # open gate to faron
     - 138 # Sealed Temple layer 1
     - 24 # no Fi sky text
-    - 304 # Crystal Quest activated
     - 329 # No sleeping for Wyrna
+    - 32 # Sailcoth
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -487,6 +486,8 @@ F001r: # Knight Academy
       item: 11 # Goddess Sword
       sceneflag1: 67 # Inside Doors open
       sceneflag2: 1 # UA Doors open
+      story_flag1: 27 # Loftwing
+      story_flag2: 304 # Crystal Quest activated
   - name: Fi Text in Academy at night
     type: objdelete
     id: 0xFC80
