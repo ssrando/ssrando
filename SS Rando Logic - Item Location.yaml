@@ -815,22 +815,24 @@ Lanayru - Harp Event:
    - oarc/F300_4/l0
 
 Lanayru Sand Sea - Skydive Chest at Skippers Retreat:
-  Need: Can Access Sand Sea & (Bomb Bag | Hook Beetle) & Whip & (Bow | Beetle | Slingshot)
+  Need: Can Access Sand Sea & Whip & (Bow | Beetle | Slingshot)
+  # You can whip the bomb on the cactus by first slashing it to make it swing
   original item: Silver Rupee
   Paths:
    - stage/F301_3/r0/l0/TBox/77
 Lanayru Sand Sea - Chest after Moblin Bridge at Skippers Retreat:
-  Need: Can Access Sand Sea & (Bomb Bag | Hook Beetle)
+  Need: Can Access Sand Sea & (Bomb Bag | Hook Beetle | Whip)
+  #If you don't have the whip, you can still get past the yellow chu cave with bombs or by using the hook beetle
   original item: Red Rupee
   Paths:
    - stage/F301_3/r0/l0/TBox/78
 Lanayru Sand Sea - Chest close to Shack:
-  Need: Can Access Sand Sea & (Bomb Bag | Hook Beetle) & Whip & (Bow | Beetle | Slingshot)
+  Need: Can Access Sand Sea & Whip & (Bow | Beetle | Slingshot)
   original item: Semi Rare Treasure
   Paths:
    - stage/F301_3/r0/l0/TBox/76
 Lanayru Sand Sea - Chest in Skippers Shack:
-  Need: Can Access Sand Sea & (Bomb Bag | Hook Beetle) & Whip & (Bow | Beetle | Slingshot) & Gust Bellows
+  Need: Can Access Sand Sea & Whip & (Bow | Beetle | Slingshot) & Gust Bellows
   # The Boko Baba can be bypassed without killing or stunning him, but it's not in logic
   original item: Sea Chart
   Paths:
