@@ -92,7 +92,7 @@ DUPLICATABLE_CONSUMABLE_ITEMS = [
 DUNGEON_PROGRESS_ITEMS = \
   ["SW Boss Key"]  *1 + ["SW Small Key"]  *2 + \
   ["ET Boss Key"]  *1 + ["ET Small Key"]  *0 + \
-  ["LMF Boss Key"] *1 + ["LMF Small Key"] *2 + \
+  ["LMF Boss Key"] *1 + ["LMF Small Key"] *1 + \
   ["AC Boss Key"]  *1 + ["AC Small Key"]  *2 + \
   ["LanayruCaves Small Key"]  *1 + \
   ["SS Boss Key"]  *1 + ["SS Small Key"]  *2 + \
