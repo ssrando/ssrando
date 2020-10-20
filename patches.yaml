@@ -3,9 +3,6 @@ global:
     - 36  # Hero's tunic
     - 27  # Loftwing
     - 198 # Can jump off Loftwing
-    - 46  # Faron light pillar
-    - 47  # Eldin light pillar
-    - 48  # Lanayru light pillar
     - 194 # open thunderhead
     - 58  # b-wheel
     - 724 # Prevent first time light pillar CS sending player always to faron

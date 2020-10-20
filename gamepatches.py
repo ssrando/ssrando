@@ -65,6 +65,12 @@ START_CUTSCENES = [
     ('F405',0,0),
 ]
 
+START_ITEM_STORYFLAGS = {
+    "Emerald Tablet": 46,
+    "Ruby Tablet": 47,
+    "Amber Tablet": 48,
+}
+
 class FlagEventTypes(IntEnum):
     SET_STORYFLAG = 0,
     UNSET_STORYFLAG = 1,
@@ -488,6 +494,12 @@ def do_gamepatches(rando):
         "index": 18,
         "text": required_dungeons_text,
     })
+
+    # Add storyflags for startitems (only tablets for now)
+    for item in rando.starting_items:
+        if item in START_ITEM_STORYFLAGS:
+            patches['global']['startstoryflags'].append(START_ITEM_STORYFLAGS[item])
+
 
     # add startflags to eventpatches
     startstoryflags = patches['global'].get('startstoryflags',None)

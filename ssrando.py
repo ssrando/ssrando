@@ -60,16 +60,17 @@ class Randomizer:
     self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
 
     self.required_dungeons = self.rng.sample(constants.POTENTIALLY_REQUIRED_DUNGEONS, k=2)
-    self.settings_preset = self.options.get('settings_preset','open')
-    if self.settings_preset == 'open':
-        self.starting_items.append('Amber Tablet')
-        self.starting_items.append('Emerald Tablet')
-        self.starting_items.append('Ruby Tablet')
-        self.starting_items.append('Progressive Sword')
-        self.starting_items.append('Progressive Sword')
+
+    if not self.options.get('randomize-tablets',False):
+      self.starting_items.append('Emerald Tablet')
+      self.starting_items.append('Ruby Tablet')
+      self.starting_items.append('Amber Tablet')
+    self.starting_items.append('Progressive Sword')
+    self.starting_items.append('Progressive Sword')
+    self.race_mode_banned_locations = []
     self.logic = Logic(self)
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge's Pouch", "Faron Song of the Hero Part")
-    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Eldin Song of the Hero Part")
+    # self.logic.set_prerandomization_item_location("Skyloft - Fledge's Pouch", "Emerald Tablet")
+    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")
     # self.logic.set_prerandomization_item_location("Skyloft - Training Hall chest", "Lanayru Song of the Hero Part")
 
   def randomize(self):

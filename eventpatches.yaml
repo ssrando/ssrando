@@ -24,6 +24,18 @@
     type: textpatch
     index: 21
     text: "You got the \x0E\x00\x03\x02\x05Goddess Harp\x0E\x00\x03\x02\uFFFF!"
+  - name: Emerald Tablet text
+    type: textpatch
+    index: 227
+    text: "You got the \x0E\x00\x03\x02\x05Emerald Tablet\x0E\x00\x03\x02\uFFFF!"
+  - name: Ruby Tablet text
+    type: textpatch
+    index: 228
+    text: "You got the \x0E\x00\x03\x02\x05Ruby Tablet\x0E\x00\x03\x02\uFFFF!"
+  - name: Amber Tablet text
+    type: textpatch
+    index: 229
+    text: "You got the \x0E\x00\x03\x02\x05Amber Tablet\x0E\x00\x03\x02\uFFFF!"
   - name: Faroure's Courage Text
     type: textpatch
     index: 237
@@ -131,6 +143,15 @@
       subType: 0
       param1: 0
       param2: 9
+      next: Groose lands in Faron Storyflag
+      param3: 0
+  - name: Groose lands in Faron Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 140
       next: -1
       param3: 0
   # full SotH will be given once all 3 Parts are collected
@@ -224,6 +245,48 @@
       subType: 0
       param1: 0
       param2: 30 # adventure pouch unlocked
+      next: -1
+      param3: 0
+  - name: To Set Faron Pillar Storyflag
+    type: flowpatch
+    index: 385
+    flow:
+      next: Set Faron Pillar Storyflag
+  - name: Set Faron Pillar Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 46 # Faron Pillar
+      next: -1
+      param3: 0
+  - name: To Set Eldin Pillar Storyflag
+    type: flowpatch
+    index: 384
+    flow:
+      next: Set Eldin Pillar Storyflag
+  - name: Set Eldin Pillar Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 47 # Eldin Pillar
+      next: -1
+      param3: 0
+  - name: To Set Lanayru Pillar Storyflag
+    type: flowpatch
+    index: 389
+    flow:
+      next: Set Lanayru Pillar Storyflag
+  - name: Set Lanayru Pillar Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 48 # Lanayru Pillar
       next: -1
       param3: 0
 008-Hint:
