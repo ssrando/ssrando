@@ -111,9 +111,6 @@
 - id: 60
   name: 10 Deku Seeds
   oarc: null
-- id: 62
-  name: Dusk Relic
-  oarc: GetSozaiH
 - id: 63
   name: Semi Rare Treasure # actually semi rare treasure
   oarc: null
@@ -244,6 +241,9 @@
 - id: 165
   name: Eldin Ore
   oarc: null # Is in objectPack
+- id: 168
+  name: Dusk Relic
+  oarc: GetSozaiH
 - id: 171
   name: Monster Horn
   oarc: null
