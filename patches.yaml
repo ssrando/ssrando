@@ -1341,7 +1341,7 @@ F301_1: # Sand Sea Main Area
     objtype: SCEN
     object:
       layer: 1
-  - name: open sandship with sea chart
+  - name: open sandship with sea chart 1
     type: objpatch
     id: 0xFC6B
     layer: 1
@@ -1350,6 +1350,37 @@ F301_1: # Sand Sea Main Area
     object:
       trigscenefid: 255
       trigstoryfid: 269 # Sea Chart
+  - name: Move sandship load to layer 0
+    type: objmove
+    layer: 1
+    destlayer: 0
+    room: 0
+    objtype: STAG
+    id: 0xFCB7
+  - name: open sandship with sea chart 2
+    type: objdelete
+    id: 0xFC98
+    layer: 2
+    room: 0
+    objtype: STAG
+  - name: open sandship with sea chart 3
+    type: objdelete
+    id: 0xFCB7
+    layer: 3
+    room: 0
+    objtype: STAG
+  - name: open sandship with sea chart 4
+    type: objdelete
+    id: 0xFCB7
+    layer: 4
+    room: 0
+    objtype: STAG
+  - name: open sandship with sea chart 5
+    type: objdelete
+    id: 0xFCB7
+    layer: 5
+    room: 0
+    objtype: STAG
 F301: # Ancient Harbour
   - name: No Sandship beaten layer in sandship
     type: objpatch
