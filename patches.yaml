@@ -18,6 +18,8 @@ global:
     - 304 # Crystal Quest activated
     - 329 # No sleeping for Wyrna
     - 32  # Sailcoth
+    - 390 # Fledge Sidequest
+    - 393 # Fledge Sidequest
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 11 # Goddess Sword
     - 15 # sailcloth
@@ -437,6 +439,14 @@ F000: # Skyloft
       sizex: 3.2
       sizey: 4.5
       sizez: 3.2
+  - name: Fledge for Arrow minigame
+    type: objpatch
+    id: 0xFDD9
+    layer: 4
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryf: 1114 # bow
 #  - name: Batreaux unlock
 #    type: objpatch
 #    id: 0xFC4A
