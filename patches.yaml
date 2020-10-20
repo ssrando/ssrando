@@ -446,7 +446,7 @@ F000: # Skyloft
     room: 0
     objtype: OBJ
     object:
-      trigstoryf: 1114 # bow
+      trigstoryfid: 1114 # bow
 #  - name: Batreaux unlock
 #    type: objpatch
 #    id: 0xFC4A
