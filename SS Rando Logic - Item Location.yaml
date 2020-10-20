@@ -76,8 +76,8 @@ Skyloft - Zelda Heartpiece:
 Skyloft - Red rupee Chest near goddess statue:
   Need: Nothing
   original item: Red Rupee
-  Paths: # alot because it is on every layer except layer 3
-   - stage/F000/r0/l4/TBox/71
+  Paths:
+   - stage/F000/r0/l0/TBox/71
 Skyloft - Goddess Sword Chest:
   Need: Nothing
   original item: Progressive Sword

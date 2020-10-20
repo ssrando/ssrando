@@ -363,6 +363,14 @@ F000: # Skyloft
     type: oarcdelete
     oarc: GetShieldWood
     layer: 4
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetGaragara
+    layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: PutGaragara
+    layer: 0
   - name: Trial # trial object
     type: objmove
     id: 0xFDD8
@@ -469,6 +477,48 @@ F000: # Skyloft
       anglez: 10811
       id: 0xFDDD
       name: NpcSkn
+  - name: Move Chest on goddess statue
+    type: objpatch
+    id: 0xFDE9
+    layer: 1
+    room: 0
+    objtype: OBJS
+    object:
+      posx: 666.327332
+      posy: 2893.23999
+      posz: -13083.1475
+      angley: 59591
+  - name: Move Chest on goddess statue to layer 0
+    type: objmove
+    id: 0xFDE9
+    layer: 1
+    destlayer: 0
+    room: 0
+    objtype: OBJS
+  - name: Goddess Statue chests
+    type: objdelete
+    id: 0xFDEB
+    layer: 2
+    room: 0
+    objtype: OBJS
+  - name: Goddess Statue chests
+    type: objdelete
+    id: 0xFDF7
+    layer: 4
+    room: 0
+    objtype: OBJS
+  - name: Goddess Statue chests
+    type: objdelete
+    id: 0xFE00
+    layer: 5
+    room: 0
+    objtype: OBJS
+  - name: Goddess Statue chests
+    type: objdelete
+    id: 0xFDE6
+    layer: 10
+    room: 0
+    objtype: OBJS
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete

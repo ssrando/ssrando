@@ -105,6 +105,9 @@ class AllPatcher:
             remove_arcs = set(self.stage_oarc_delete.get((stage, layer), []))
             # add additional arcs if needed
             additional_arcs = set(self.stage_oarc_add.get((stage, layer), []))
+            # remove arcs that are already added on layer 0
+            if layer != 0:
+                additional_arcs = additional_arcs - set(self.stage_oarc_add.get((stage, 0), []))
             remove_arcs = remove_arcs - additional_arcs
             for arc in remove_arcs:
                 stageu8.delete_file(f'oarc/{arc}.arc')

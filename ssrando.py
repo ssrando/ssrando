@@ -71,6 +71,10 @@ class Randomizer:
     self.logic = Logic(self)
     # self.logic.set_prerandomization_item_location("Skyloft - Fledge's Pouch", "Emerald Tablet")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")
+    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
+    # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
+    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
+    # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
     # self.logic.set_prerandomization_item_location("Skyloft - Training Hall chest", "Lanayru Song of the Hero Part")
 
   def randomize(self):
