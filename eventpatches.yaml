@@ -388,7 +388,7 @@
       param5: 0
   - name: Parrow's Crystal 2
     type: flowpatch
-    index: 732
+    index: 788
     flow:
       next: 814
   - name: Feldge's Crystal
