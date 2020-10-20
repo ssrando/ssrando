@@ -492,6 +492,14 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 923
+  - name: Keep cawlin with Letter check
+    type: objpatch
+    id: 0xFC7A
+    layer: 3
+    room: 0
+    objtype: OBJ
+    object:
+      untrigstoryfid: 2047
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
