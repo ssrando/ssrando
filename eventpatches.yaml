@@ -154,6 +154,20 @@
       param2: 140
       next: -1
       param3: 0
+  - name: Go to Letter Storyflag
+    type: flowpatch
+    index: 377
+    flow:
+      next: Letter Storyflag
+  - name: Letter Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 547
+      next: -1
+      param3: 0
   # full SotH will be given once all 3 Parts are collected
   - name: For Faron To Check Full SotH
     type: flowpatch
@@ -514,6 +528,11 @@
     index: 7
     flow:
       next: 8
+  - name: Skip Cawlin letter storyflag
+    type: flowpatch
+    index: 710
+    flow:
+      next: 166
 117-Pumpkin:
   - name: Kina Crystal Quest
     type: flowpatch
