@@ -138,6 +138,7 @@
   oarcs:
   - ForestManWiz
   - GetSozaiL
+  - SwrdPrj
   stage: F100
 - layer: 1
   oarcs:
