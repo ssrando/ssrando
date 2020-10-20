@@ -1,23 +1,36 @@
 global:
-  startstoryflags:
-    - 46 # Faron light pillar
-    - 47 # Eldin light pillar
-    - 48 # Lanayru light pillar
+  startstoryflags: # first 8 flags are set during opening cutscenes
+    - 36  # Hero's tunic
+    - 27  # Loftwing
+    - 198 # Can jump off Loftwing
+    - 46  # Faron light pillar
+    - 47  # Eldin light pillar
+    - 48  # Lanayru light pillar
     - 194 # open thunderhead
-    - 58 # b-wheel
+    - 58  # b-wheel
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - 323 # Scrapper repaired
     - 661 # Windmill Repaired
     - 906 # pratice sword (needs to get changed when no goddess sword start)
     - 907 # Goddess Sword (needs to get changed when no goddess sword start)
-    - 198 # Can jump off Loftwing
     - 358 # Interface choice unlocked
     - 494 # open gate to faron
     - 138 # Sealed Temple layer 1
-    - 24 # no Fi sky text
+    - 24  # no Fi sky text
+    - 304 # Crystal Quest activated
     - 329 # No sleeping for Wyrna
-    - 32 # Sailcoth
+    - 32  # Sailcoth
+  startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
+    - 11 # Goddess Sword
+    - 15 # sailcloth
+  startsceneflags: # currently only for skyloft
+    - 95 # Fi Text for Ruby Tablet
+    - 96 # Fi Text for Amber Tablet
+    - 66 # Batreaux Doors outside open
+    - 78 # Batreaux Doors inside open
+    - 67 # Inside Doors open
+    - 1 # UA Doors open
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -427,23 +440,6 @@ F000: # Skyloft
 #    objtype: OBJS
 #    object:
 #      anglex: 0xFF00 # sets the flag to -1 (meaning open)
-  - name: Startsceneflags 1
-    type: objpatch
-    room: 0
-    index: 22
-    objtype: EVNT
-    object:
-      sceneflag1: 95 # Fi Text for Ruby Tablet
-      sceneflag2: 96 # Fi Text for Amber Tablet
-  - name: Startsceneflags 2
-    type: objpatch
-    room: 0
-    index: 23
-    objtype: EVNT
-    object:
-      item: -1
-      sceneflag1: 66 # Batreaux Doors outside open
-      sceneflag2: 78 # Batreaux Doors inside open
   - name: Fix Owlan disappearing after Harp
     type: objpatch
     room: 0
@@ -477,17 +473,6 @@ F000: # Skyloft
       id: 0xFDDD
       name: NpcSkn
 F001r: # Knight Academy
-  - name: Startitems
-    type: objpatch
-    room: 1
-    index: 2
-    objtype: EVNT
-    object:
-      item: 11 # Goddess Sword
-      sceneflag1: 67 # Inside Doors open
-      sceneflag2: 1 # UA Doors open
-      story_flag1: 27 # Loftwing
-      story_flag2: 304 # Crystal Quest activated
   - name: Fi Text in Academy at night
     type: objdelete
     id: 0xFC80
@@ -1557,15 +1542,6 @@ F403: # Hylia's Realm
       - story_flag: -1
         night: 0
         layer: 13
-F405: # Sealed Grounds CS map (Opening CS)
-  - name: Startitems
-    type: objpatch
-    room: 0
-    index: 0
-    objtype: EVNT
-    object:
-      story_flag2: 36 # Hero's tunic
-      item: 15 # Sailcloth
 F407: # Skykeep beaten cs
   - name: Skykeep CS remove Storyflag
     type: objpatch

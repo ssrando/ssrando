@@ -56,6 +56,15 @@ DEFAULT_SCEN = OrderedDict(
     flag8 = 0
 )
 
+# cutscenes to use to set storyflags, sceneflags and itemflags
+START_CUTSCENES = [
+    # stage, room, eventindex
+    ('F000',0,22),
+    ('F000',0,23),
+    ('F001r',1,2),
+    ('F405',0,0),
+]
+
 class FlagEventTypes(IntEnum):
     SET_STORYFLAG = 0,
     UNSET_STORYFLAG = 1,
@@ -479,6 +488,73 @@ def do_gamepatches(rando):
         "index": 18,
         "text": required_dungeons_text,
     })
+
+    # add startflags to eventpatches
+    startstoryflags = patches['global'].get('startstoryflags',None)
+    startsceneflags = patches['global'].get('startsceneflags',None)
+    startitems = patches['global'].get('startitems',None)
+    def pop_or_default(lst, default=-1):
+        if len(lst) == 0:
+            return default
+        else:
+            return lst.pop(0)
+    for cs_stage, cs_room, cs_index in START_CUTSCENES:
+        if not cs_stage in patches:
+            patches[cs_stage] = []
+        if cs_stage.startswith('F0'):
+            # make sure to only set sceneflags on skyloft
+            patches[cs_stage].append({
+                'name': 'Startflags',
+                'type': 'objpatch',
+                'room': cs_room,
+                'index': cs_index,
+                'objtype': 'EVNT',
+                'object': {
+                    'item': pop_or_default(startitems),
+                    'story_flag1': pop_or_default(startstoryflags),
+                    'story_flag2': pop_or_default(startstoryflags),
+                    'sceneflag1': pop_or_default(startsceneflags),
+                    'sceneflag2': pop_or_default(startsceneflags),
+                },
+            })
+        else:
+            patches[cs_stage].append({
+                'name': 'Startflags',
+                'type': 'objpatch',
+                'room': cs_room,
+                'index': cs_index,
+                'objtype': 'EVNT',
+                'object': {
+                    'item': pop_or_default(startitems),
+                    'story_flag1': pop_or_default(startstoryflags),
+                    'story_flag2': pop_or_default(startstoryflags),
+                },
+            })
+    # for now, we can only set scene and storyflags here, so make sure all items were handled in the event
+    assert len(startitems) == 0, "Not all items were handled in events!"
+
+    while startsceneflags or startstoryflags:
+        patches['F001r'].append({
+            'name': 'Startflags',
+            'type':'objadd',
+            'room': 1, # Link's room
+            'layer': 0,
+            'objtype': 'STAG',
+            'object': {
+                "params1": 0xFFFFFF00 | (pop_or_default(startsceneflags) & 0xFF),
+                "params2": 0xFF5FFFFF,
+                "posx": 761,
+                "posy": -22,
+                "posz": -2260,
+                "sizex": 1000,
+                "sizey": 1000,
+                "sizez": 1000,
+                "anglex": pop_or_default(startstoryflags) & 0xFFFF,
+                "angley": 0,
+                "anglez": 65535,
+                "name": "SwAreaT",
+            }
+        })
 
     remove_stageoarcs = defaultdict(set)
 
