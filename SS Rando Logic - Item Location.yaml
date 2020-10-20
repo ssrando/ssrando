@@ -62,7 +62,7 @@ Skyloft - Skyloft above waterfall:
   Paths:
    - stage/F000/r0/l0/TBox/80
 Skyloft - Skyloft Archer minigame:
-  Need: Can Beat Lanayru Mining Facility & Bottle & Bow
+  Need: Bow
   original item: Heart Piece
   Paths:
    - event/114-Friend/99
@@ -121,7 +121,7 @@ Skyloft - Parrow Crystal:
     - oarc/F000/l0
     - oarc/F005r/l0
 Skyloft - Fledge Crystals:
-  Need: Can Beat Lanayru Mining Facility & Bottle
+  Need: Can Beat Lanayru Mining Facility & Bottle # LMF only for Potion right now
   original item: 5 Gratitude Crystals
   Paths:
     - event/115-Town2/325
