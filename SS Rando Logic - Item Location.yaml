@@ -99,7 +99,7 @@ Skyloft - i guess Bottle:
     - oarc/F000/l0
     - oarc/F005r/l0
 Skyloft - Cawlin's Letter:
-  Need: Goddess Harp & Can Access Sealed Temple
+  Need: Goddess Harp
   original item: Cawlin's Letter
   Paths:
     - event/115-Town2/166
@@ -133,7 +133,7 @@ Skyloft - Baby Crystals:
     - event/115-Town2/125
     - oarc/F014r/l0
 Skyloft - Ghost/Pipit Crystals:
-  Need: Cawlin's Letter & Goddess Harp & Can Access Sealed Temple
+  Need: Cawlin's Letter
   original item: 5 Gratitude Crystals
   Paths:
     - event/115-Town2/522
