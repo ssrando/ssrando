@@ -113,7 +113,7 @@ Skyloft - Peater/Peatrice Crystal:
     - oarc/F018r/l0
     - oarc/F019r/l0
 Skyloft - Parrow Crystal:
-  Need: Bottle & Can Access Sealed Temple
+  Need: Bottle
     # Need access to Faron to be able to get mushroom spores as many times as you want
   original item: 5 Gratitude Crystals
   Paths:
@@ -393,7 +393,7 @@ Sky - Fun Fun Crystals:
     - event/110-DivingGame/60
     - oarc/F020/l0
 Sky - Orrielle Crystals:
-  Need: Bottle & Can Access Sealed Temple
+  Need: Bottle
   # Need access to Faron to be able to get mushroom spores as many times as you want
   original item: 5 Gratitude Crystals
   Paths:
