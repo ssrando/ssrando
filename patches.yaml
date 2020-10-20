@@ -851,6 +851,18 @@ D100: # Skyview
     objtype: DOOR
     object:
       anglex: 0xFF06 # sceneflag 6
+  - name: Remove boards in layer 2 # they break by hitting the switch
+    type: objdelete
+    id: 0xFCA0
+    layer: 2
+    room: 2
+    objtype: OBJ
+  - name: Remove boards in layer 2 # they break by hitting the switch
+    type: objdelete
+    id: 0xFCA1
+    layer: 2
+    room: 2
+    objtype: OBJ
 D101:
   - name: Remove stone tablet flag # to get rid of fi text
     type: objpatch
