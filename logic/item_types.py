@@ -10,6 +10,8 @@ PROGRESS_ITEMS = [
   "Fireshield Earrings",
   "Clawshots",
   "Stone of Trials",
+  
+  "Sea Chart",
 
   # currently, all pillars are open at the start
   "Emerald Tablet",
@@ -53,9 +55,7 @@ NONPROGRESS_ITEMS = [
   "Small Seed Satchel",
   "Small Bomb Bag",
   "Small Quiver",
-
-  # currently, all of sand sea is unlocked at the start
-  "Sea Chart",
+  
 ] + \
   ["Heart Medal"]*2 + \
   ["Rupee Medal"]*2 + \
