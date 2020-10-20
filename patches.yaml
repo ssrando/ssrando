@@ -1176,6 +1176,14 @@ F300_1:
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Connect intro event to entrance statue # make sure the statue is always checked
+    type: objpatch
+    id: 0xFC8C
+    layer: 1
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF4403 # sceneflag 68
 F300_2: # Thunder node
   - name: extra Bomb flower
     type: objadd
