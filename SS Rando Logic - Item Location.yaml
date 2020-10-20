@@ -863,18 +863,22 @@ Lanayru Sand Sea - 3rd Chest in Pirate Stronghold:
 
 Skyview - Map Chest:
   Need: Can Access Skyview & Can Get Past the First Skyview Room
-  #Left Room: Bombs still work for the vines. Use the rope to jump to the crystal alcove and simply hit it with your sword
+  #Left Room: You can skyward strike the vine on Hero Mode. Use the rope to jump to the crystal alcove and simply hit it with your sword
   original item: Skyview Map
   Paths:
    - stage/D100/r2/l0/TBox/64
 Skyview - Small key underground:
- Need: Can Access Skyview & Can Get Past the First Skyview Room & Digging Mitts & Water Scale
- #It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
+ Need: Can Access Skyview & Can Hit High Vines and Switches in Beginning Skyview & Digging Mitts & Water Scale
+ # It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
+ # It is not possible to jump to the vines early in the main room with scale with only one switch for the water level hit
+ # You can hit both switches with good bomb throws
+ # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Spume and kill it near the switch, not in logic
+ # You can hit the switch to enter that room with an upwards skyward strike using a boko or a spume, not in logic
  original item: SW Small Key
  Paths:
   - stage/D100/r4/l0/Soil/15
 Skyview - Small Key Chest behind 2 Eyes:
-  Need: Can Access Skyview & Can Get Past the First Skyview Room
+  Need: Can Access Skyview & Can Hit High Vines and Switches in Beginning Skyview
   original item: SW Small Key
   Paths:
    - stage/D100/r4/l0/TBox/67
@@ -887,6 +891,7 @@ Skyview - Beetle Chest:
    - stage/D100/r10/l2/TBox/65
 Skyview - Free Heart Piece:
   Need: Can Access Skyview & Beetle & SW Small Key x1
+  #add whip when all items are fixed
   original item: Heart Piece
   Paths:
    - stage/D100/r5/l0/Item/103
@@ -896,22 +901,23 @@ Skyview - Small Key Chest behind 3 Eyes:
   Paths:
    - stage/D100/r7/l0/TBox/68
 Skyview - Chest near Boss Door:
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & SW Small Key x2 & (Bomb Bag | Beetle | Bow | Water Scale)
+  Need: Can Access Skyview & (Bomb Bag | Beetle | Bow | Water Scale) & SW Small Key x2
   # To get accross the rope with boko babas, hang down on the rope and go accross that way. The last boko baba may be annoying but nothing too bad if you time it
   # The Skulltula jump is not in logic. A bomb knocks it away. Both the Beetle and the bow can cut it down. The water scale makes it Skyview 2 where there is no spider anymore.
+  # The archer bokoblin can be killed with a skyward strike on Hero Mode
   original item: Red Rupee
   Paths:
    - stage/D100/r9/l0/TBox/70
 Skyview - SW Boss Key: # what?
   #If you had bombs for the Skulltula, you can't hit the 2nd vine, thus you need Beetle, bow, clawshots or slingshot
   #Note: You can also hit this vine with a Skyward Strike, but only on Hero Mode
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & SW Small Key x2 & (Bomb Bag | Beetle | Bow | Water Scale) # Hero mode changed this
+  Need: Can Access Skyview & (Bomb Bag | Beetle | Bow | Water Scale) & SW Small Key x2 # Hero mode changed this
   original item: Skyview Boss Key
   Paths:
    - stage/D100/r9/l0/TBox/66
 
 Skyview Boss Room - Heart Container:
- Need: Can Access Skyview & Can Get Past the First Skyview Room & SW Small Key x2 & (Bomb Bag | Beetle | Bow | Water Scale) & SW Boss Key
+ Need: Can Access Skyview & (Bomb Bag | Beetle | Bow | Water Scale) & SW Small Key x2 & SW Boss Key
  original item: Heart Container
  Paths:
   - stage/B100/r0/l1/HeartCo
@@ -920,7 +926,7 @@ Skyview Boss Room - Heart Container:
   - stage/B100/r0/l4/HeartCo
 
 Skyview Spring - Ruby Tablet:
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & SW Small Key x2 & (Bomb Bag | Beetle | Bow | Water Scale) & SW Boss Key
+  Need: Can Access Skyview & (Bomb Bag | Beetle | Bow | Water Scale) & SW Small Key x2 & SW Boss Key
   original item: Ruby Tablet
   Paths:
    - event/201-ForestD1/6
