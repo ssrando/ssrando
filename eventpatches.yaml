@@ -301,18 +301,11 @@
       param4: 0
       param5: 0
 106-DrugStore:
-  - name: Potion Lady Bottle
+  - name: Potion Lady Bottle # skip pouch requirements
     type: flowpatch
-    index: 59
+    index: 42
     flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 0 # item
-      next: 41 # end of Potion lady text
-      param3: 9
-      param4: 0
-      param5: 0
+      next: 44 # give item
   - name: Requirement for Stamina Potion
     type: flowpatch
     index: 103

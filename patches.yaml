@@ -441,7 +441,7 @@ F000: # Skyloft
     index: 23
     objtype: EVNT
     object:
-      item: 112 # Adventure Pouch
+      item: -1
       sceneflag1: 66 # Batreaux Doors outside open
       sceneflag2: 78 # Batreaux Doors inside open
   - name: Fix Owlan disappearing after Harp
