@@ -1410,6 +1410,15 @@ F301_6: # outside Pirate stronghold
     layer: 0
     room: 0
     objtype: OBJ
+F301_7: # inside Shipyard
+  - name: Door to outside
+    type: objpatch
+    id: 0xFC02
+    layer: 0
+    room: 0
+    objtype: OBJS
+    object:
+      params1: 0xF7FFFC20
 D300: # LMF A
   - name: Dust in Gust Bellow room Blocking Door
     type: objdelete
