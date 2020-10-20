@@ -1356,7 +1356,7 @@ F301_1: # Sand Sea Main Area
     destlayer: 0
     room: 0
     objtype: STAG
-    id: 0xFCB7
+    id: 0xFC6B
   - name: open sandship with sea chart 2
     type: objdelete
     id: 0xFC98
