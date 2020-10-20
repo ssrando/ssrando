@@ -670,6 +670,11 @@
       param3: 9
       param4: 0
       param5: 0
+  - name: Skip over Zelda Dowsing
+    type: flowpatch
+    index: 410
+    flow:
+      next: 128
 201-ForestD1:
   - name: give item after beating skyview
     type: flowpatch
