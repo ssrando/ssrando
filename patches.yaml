@@ -1341,6 +1341,15 @@ F301_1: # Sand Sea Main Area
     objtype: SCEN
     object:
       layer: 1
+  - name: open sandship with sea chart
+    type: objpatch
+    id: 0xFC6B
+    layer: 1
+    room: 0
+    objtype: STAG
+    object:
+      trigscenefid: 255
+      trigstoryfid: 269 # Sea Chart
 F301: # Ancient Harbour
   - name: No Sandship beaten layer in sandship
     type: objpatch
@@ -1363,6 +1372,13 @@ F301_4: # Shipyard
     objtype: EVNT
     object:
       sceneflag2: 87
+F301_6: # outside Pirate stronghold
+  - name: Ship dowsing
+    type: objdelete
+    id: 0xFC08
+    layer: 0
+    room: 0
+    objtype: OBJ
 D300: # LMF A
   - name: Dust in Gust Bellow room Blocking Door
     type: objdelete
