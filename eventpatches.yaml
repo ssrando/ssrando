@@ -168,7 +168,7 @@
       param2: 547
       next: -1
       param3: 0
-    - name: Go to Horned Colossus Beetle Storyflag
+  - name: Go to Horned Colossus Beetle Storyflag
     type: flowpatch
     index: 380
     flow:
