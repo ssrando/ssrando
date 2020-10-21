@@ -273,6 +273,8 @@ def patch_tbox_item(tbox: OrderedDict, itemid: int):
 
 def patch_item_item(itemobj: OrderedDict, itemid: int):
     itemobj['params1'] = mask_shift_set(itemobj['params1'], 0xFF, 0, itemid)
+    # subtype 9, this acts like hearpieces and force being collected with a textbox
+    itemobj['params1'] = mask_shift_set(itemobj['params1'], 0xF, 0x14, 9)
 
 # these are not treasure chests, but instead only used for the hp in zeldas room
 def patch_chest_item(chest: OrderedDict, itemid: int):

@@ -53,6 +53,9 @@ global:
       # instant text
       - original: 88 03 08 15 2c 00 00 00 40 82 00 60 88 03 08 16 2c 00 00 00 40 82 00 54 80 63 07 20 38 80 00 00 38 a0 00 01
         patched:  88 03 08 15 2c 00 00 00 40 82 00 60 88 03 08 16 2c 00 00 00 40 82 00 54 80 63 07 20 38 80 00 01 38 a0 00 01
+      # patch every item with item subtype 9 acting like babies rattle (forces textbox)
+      - original: a0 63 03 30 4b ff 0a ac
+        patched:  80 63 00 04 4b ff 35 8c
     d_a_obj_door_boss: # function that checks for the dungeons storyflag, prevents putting in the boss key
       - original: 94 21 FF F0 7C 08 02 A6 90 01 00 14 4B FF E2 45 # start of function
         patched:  38 60 00 00 4e 80 00 20 90 01 00 14 4B FF E2 45 # just return 0
@@ -62,8 +65,9 @@ global:
     d_a_obj_item_heart_container:
       # normally, the heart container spawns an item, which is hardcoded to the heart container item.
       # this uses forbidden knowledge, that params1 is still in r0 from the called function to extract the item from that
-      - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 4b ff f1 85 7c 66 1b 78 38 60 00 5d
-        patched:  94 21 ff f0 7c 08 02 a6 90 01 00 14 4b ff f1 85 7c 66 1b 78 54 03 86 3e
+      # also change the item subtype to 7 so it is always forced to play the textbox
+      - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 4b ff f1 85 7c 66 1b 78 38 60 00 5d 38 80 00 05
+        patched:  94 21 ff f0 7c 08 02 a6 90 01 00 14 4b ff f1 85 7c 66 1b 78 54 03 86 3e 38 80 00 07
     d_a_obj_chandelier:
       # normall, the heart piece is hardcoded, change it so that it instead uses 0000FF00 from params1
       - original: 94 21 ff f0 7c 08 02 a6 38 a0 00 00 38 e0 00 01 90 01 00 14 39 00 00 ff 93 e1 00 0c 7c 9f 23 78 38 80 00 00 93 c1 00 08 7c 7e 1b 78 80 03 00 04 38 60 00 5e 54 06 46 3e
