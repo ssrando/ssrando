@@ -402,6 +402,11 @@
       param3: 9
       param4: 0
       param5: 0
+  - name: Buying Bug Net Switch
+    type: flowpatch
+    index: 82
+    flow:
+      param2: 36 # always trigger
 106-DrugStore:
   - name: Potion Lady Bottle # skip pouch requirements
     type: flowpatch
