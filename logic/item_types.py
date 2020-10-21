@@ -32,7 +32,7 @@ PROGRESS_ITEMS = [
   "Eldin Song of the Hero Part",
   "Lanayru Song of the Hero Part",
 
-  "Revitalizing Potion"
+  # "Revitalizing Potion" # causes problems in events, as it's treated like you buy a potion
 ] + \
   ["5 Gratitude Crystals"]*13 + \
   ["Gratitude Crystal"]*15 + \
@@ -40,7 +40,7 @@ PROGRESS_ITEMS = [
   ["Progressive Mitts"]*2 + \
   ["Progressive Beetle"]*2 + \
   ["Key Piece"]*5 + \
-  ["Empty Bottle"]*4
+  ["Empty Bottle"]*5
 
 NONPROGRESS_ITEMS = [
   "Wooden Shield",
