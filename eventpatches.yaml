@@ -11,7 +11,7 @@
   - name: Goddess Whitesword Text
     type: textpatch
     index: 12
-    text: "You got the \x0E\x00\x03\x02\x05Goddess White Sword\x0E\x00\x03\x02\uFFFF!\nThe flames of Nayru have transformed\nyour blade, expanding Fi's powers.\n\n\nShe can now help you use your dowsing\nability to search for more objects!"
+    text: "You got the \x0E\x00\x03\x02\x05Goddess White Sword\x0E\x00\x03\x02\uFFFF!\nThe flames of Nayru have transformed\nyour blade, expanding Fi's powers.\n\n\nShe can now help you use your \x0E\x00\x03\x02\x00dowsing\x0E\x00\x03\x02\uFFFF\nability to search for more objects!"
   - name: Master Sword Text
     type: textpatch
     index: 17
