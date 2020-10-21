@@ -1433,6 +1433,18 @@ F301_1: # Sand Sea Main Area
     layer: 0
     room: 0
     objtype: STAG
+  - name: Area Block to Pirate Stronghold
+    type: objdelete
+    id: 0xFC66
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Area Block to Pirate Stronghold
+    type: objdelete
+    id: 0xFC67
+    layer: 0
+    room: 0
+    objtype: STAG
   - name: No Sandship beaten layer in sandship
     type: objpatch
     index: 5
