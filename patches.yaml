@@ -1008,6 +1008,22 @@ D101:
       flag6: 0
       zero: 0
       flag8: 0
+  - name: extra Bomb flower
+    type: objadd
+    layer: 0
+    room: 7
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 371
+      posy: -2410
+      posz: 2592
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFD01
+      name: Bombf
 F200: # Eldin main area
   - name: Layer override
     type: layeroverride
