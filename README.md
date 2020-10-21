@@ -102,6 +102,7 @@ New Trial Completed Storyflags:
 922: Skyloft
 
 923: Obtained Item from Fledge at start
+924: Obtained Item from Cawlin
 
 ### Shoutouts
 - Peppernicus2000: Logic, fixes
