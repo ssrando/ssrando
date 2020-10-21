@@ -664,6 +664,10 @@ F023: # Thunderhead
     destlayer: 0
     room: 0
     objtype: OBJ
+  - name: Stritch
+    type: oarcadd
+    oarc: KobunB
+    destlayer: 0
 F100: # Faron main area
   - name: Layer override
     type: layeroverride

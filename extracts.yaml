@@ -148,6 +148,10 @@
   oarcs:
   - GetTerryCage
   stage: F023
+- layer: 2
+  oarcs:
+  - KobunB
+  stage: F023
 - layer: 1
   oarcs:
   - GetSekibanMapA
