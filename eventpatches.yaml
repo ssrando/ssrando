@@ -7,35 +7,35 @@
   - name: Goddess Longsword Text
     type: textpatch
     index: 16
-    text: "You got the \x0E\x00\x03\x02\x05Goddess Longsword\x0E\x00\x03\x02\uFFFF!"
+    text: "You got the \x0E\x00\x03\x02\x05Goddess Longsword\x0E\x00\x03\x02\uFFFF!\nThe flames of Farore have improved your\nsword, making it longer and sharp enough\nto do twice as much damage!"
   - name: Goddess Whitesword Text
     type: textpatch
     index: 12
-    text: "You got the \x0E\x00\x03\x02\x05Goddess Whitesword\x0E\x00\x03\x02\uFFFF!"
+    text: "You got the \x0E\x00\x03\x02\x05Goddess White Sword\x0E\x00\x03\x02\uFFFF!\nThe flames of Nayru have transformed\nyour blade, expanding Fi's powers.\n\n\nShe can now help you use your dowsing\nability to search for more objects!"
   - name: Master Sword Text
     type: textpatch
     index: 17
-    text: "You got the \x0E\x00\x03\x02\x05Master Sword\x0E\x00\x03\x02\uFFFF!"
+    text: "You got the \x0E\x00\x03\x02\x05Master Sword\x0E\x00\x03\x02\uFFFF!\nThe flames of Din have imbued your\nblade with a sacred white light that\ndemons revile."
   - name: True Master Sword Text
     type: textpatch
     index: 19
-    text: "You got the \x0E\x00\x03\x02\x05True Master Sword\x0E\x00\x03\x02\uFFFF!"
+    text: "You got the \x0E\x00\x03\x02\x05True Master Sword\x0E\x00\x03\x02\uFFFF!\nThe goddess has blessed your blade, and\nthe Master Sword has at last achieved its\nultimate form!"
   - name: Harp Text
     type: textpatch
     index: 21
-    text: "You got the \x0E\x00\x03\x02\x05Goddess Harp\x0E\x00\x03\x02\uFFFF!"
+    text: "You got the \x0E\x00\x03\x02\x05Goddess's Harp\x0E\x00\x03\x02\uFFFF!\nBut there's no time to admire it!"
   - name: Emerald Tablet text
     type: textpatch
     index: 227
-    text: "You got the \x0E\x00\x03\x02\x05Emerald Tablet\x0E\x00\x03\x02\uFFFF!"
+    text: "You got the \x0E\x00\x03\x02\x05Emerald Tablet\x0E\x00\x03\x02\uFFFF!\nThe weathered surface of this heavy stone\ntablet feels very old."
   - name: Ruby Tablet text
     type: textpatch
     index: 228
-    text: "You got the \x0E\x00\x03\x02\x05Ruby Tablet\x0E\x00\x03\x02\uFFFF!"
+    text: "You got the \x0E\x00\x03\x02\x05Ruby Tablet\x0E\x00\x03\x02\uFFFF!\nThe weathered surface of this heavy stone\ntablet feels very old."
   - name: Amber Tablet text
     type: textpatch
     index: 229
-    text: "You got the \x0E\x00\x03\x02\x05Amber Tablet\x0E\x00\x03\x02\uFFFF!"
+    text: "You got the \x0E\x00\x03\x02\x05Amber Tablet\x0E\x00\x03\x02\uFFFF!\nThe weathered surface of this heavy stone\ntablet feels very old."
   - name: Faroure's Courage Text
     type: textpatch
     index: 237
@@ -51,19 +51,19 @@
   - name: Faron SotH text
     type: textpatch
     index: 240
-    text: "You learned \x0E\x00\x03\x02\x05Faron SotH Part\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned the \x0E\x00\x03\x02\x05Water Dragon's Song\x0E\x00\x03\x02\uFFFF!\nThis is a part of the \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF!"
   - name: Eldin SotH text
     type: textpatch
     index: 241
-    text: "You learned \x0E\x00\x03\x02\x05Eldin SotH Part\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned the \x0E\x00\x03\x02\x05Fire Dragon's Song\x0E\x00\x03\x02\uFFFF!\nThis is a part of the \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF!"
   - name: Lanayru SotH text
     type: textpatch
     index: 242
-    text: "You learned \x0E\x00\x03\x02\x05Lanayru SotH Part\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned the \x0E\x00\x03\x02\x05Thunder Dragon's Song\x0E\x00\x03\x02\uFFFF!\nThis is a part of the \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF!"
   - name: Full SotH text
     type: textpatch
     index: 243
-    text: "You learned the \x0E\x00\x03\x02\x05Full SotH\x0E\x00\x03\x02\uFFFF!"
+    text: "The \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF is now complete!"
   - name: remove BotG Scene Change
     type: flowpatch
     index: 464
