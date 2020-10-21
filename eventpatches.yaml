@@ -883,6 +883,12 @@
       param2: 919
       next: -1
       param3: 1 # unset storyflag
+299-Demo:
+  - name: Skip setting sword itemflag
+    type: flowpatch
+    index: 2
+    flow:
+      next: 3
 301-MountainD1:
   - name: give item after beating earth temple
     type: flowpatch
@@ -964,6 +970,12 @@
       param2: 920
       next: -1
       param3: 1 # unset storyflag
+399-Demo:
+  - name: Skip setting sword itemflag
+    type: flowpatch
+    index: 0
+    flow:
+      next: 1
 400-Desert:
   - name: give item after harp CS
     type: flowpatch
@@ -1049,6 +1061,12 @@
       param2: 921
       next: -1
       param3: 1 # unset storyflag
+499-Demo:
+  - name: Skip setting sword itemflag
+    type: flowpatch
+    index: 6
+    flow:
+      next: 7
 500-CenterField:
   - name: to SG intro cs storyflag
     type: flowpatch
@@ -1087,3 +1105,9 @@
       param2: 2 # room 2
       next: -1
       param3: 10
+599-Demo:
+  - name: Skip setting sword itemflag
+    type: flowpatch
+    index: 6
+    flow:
+      next: 7
