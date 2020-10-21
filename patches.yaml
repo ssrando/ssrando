@@ -656,6 +656,14 @@ F020: # Sky
     type: oarcdelete
     oarc: GetSpareSeedA
     layer: 0
+F023: # Thunderhead
+  - name: Strich
+    type: objmove
+    id: 0xFCEF
+    layer: 2
+    destlayer: 0
+    room: 0
+    objtype: OBJ
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
