@@ -405,12 +405,12 @@ Sky - Kina Crystals:
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
-#Sky - Beedle's Crystals: # no reachable yet
-#  Need: Can Access Past & Can Access Beedle's Shop & Horned Colossus Beetle
-#  original item: Heart Piece
-#  Paths:
-#   - event/117-Pumpkin/305
-#   - oarc/F011r/l0
+Sky - Beedle's Crystals:
+  Need: Can Access Beedle's Shop & Horned Colossus Beetle
+  original item: 5 Gratitude Crystals
+  Paths:
+   - event/105-Terry/115
+   - oarc/F020/l0
 
 #These checks need Spiral Charge
 #Sky - Breakable Boulder near Fun Fun island:
@@ -465,12 +465,12 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
 #  type: goddess
 #  Paths:
 #   - stage/F023/r0/l0/TBox/76
-#Thunderhead - Bug Island minigame:
-#  Need: Can Access Thunderhead & Bug Net & Can Access Levias & Can Enter Beedle's Shop
-#  original item: Hornet Colossus Beetle
-#  Paths:
-#   - event/116-InsectGame/69
-#   - oarc/F023/l0
+Thunderhead - Bug Island minigame:
+  Need: Can Access Thunderhead & Bug Net & Can Enter Beedle's Shop
+  original item: Hornet Colossus Beetle
+  Paths:
+   - event/116-InsectGame/69
+   - oarc/F023/l0
 Thunderhead - Farore's Courage:
   Need: Can Access Thunderhead & Goddess Sword
   original item: Farore's Courage
