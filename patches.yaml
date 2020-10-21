@@ -18,8 +18,6 @@ global:
     - 304 # Crystal Quest activated
     - 329 # No sleeping for Wyrna
     - 32  # Sailcoth
-    - 390 # Fledge Sidequest
-    - 393 # Fledge Sidequest
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 11 # Goddess Sword
     - 15 # sailcloth
