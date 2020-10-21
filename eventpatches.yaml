@@ -365,6 +365,17 @@
       param2: 11
       next: Rando Dungeon 1 check
       param3: 4
+102-Zelda:
+  - name: Fledge Quest Switch 1
+    type: flowpatch
+    index: 230
+    flow:
+      param2: 36 # always trigger
+  - name: Fledge Quest Switch 2
+    type: flowpatch
+    index: 229
+    flow:
+      param2: 36 # always trigger
 105-Terry:
   - name: Beedle's Crystal # Can't reach that right now
     type: flowpatch
@@ -430,6 +441,11 @@
     flow:
       next: 79
 110-DivingGame:
+  - name: Fun Fun Owner's Quest requirement
+    type: flowpatch
+    index: 38
+    flow:
+      param2: 36 # always trigger
   - name: Fun Fun Owner's Crystal
     type: flowpatch
     index: 60
