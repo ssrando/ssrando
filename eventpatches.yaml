@@ -573,6 +573,11 @@
     index: 33
     flow:
       param2: 924
+  - name: Fix switch
+    type: flowpatch
+    index: 504
+    flow:
+      param2: 924
 116-InsectGame:
   - name: Fix switch 1
     type: flowpatch
