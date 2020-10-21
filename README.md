@@ -103,6 +103,7 @@ New Trial Completed Storyflags:
 
 923: Obtained Item from Fledge at start
 924: Obtained Item from Cawlin
+925: Obtained Item from Strich
 
 ### Shoutouts
 - Peppernicus2000: Logic, fixes
