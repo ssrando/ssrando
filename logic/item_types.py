@@ -21,7 +21,7 @@ PROGRESS_ITEMS = [
   "Adventure Pouch",
   "Baby Rattle",
   "Cawlin's Letter",
-  "Hornet Colossus Beetle",
+  "Horned Colossus Beetle",
 
   "Goddess Harp",
   "Ballad of the Goddess",
