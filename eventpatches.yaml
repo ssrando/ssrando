@@ -528,11 +528,16 @@
     index: 7
     flow:
       next: 8
-  - name: Skip Cawlin letter storyflag
+  - name: Change Cawlin storyflag
     type: flowpatch
-    index: 710
+    index: 165
     flow:
-      next: 166
+      param2: 924
+  - name: Fix switch
+    type: flowpatch
+    index: 33
+    flow:
+      param2: 924
 117-Pumpkin:
   - name: Kina Crystal Quest
     type: flowpatch
