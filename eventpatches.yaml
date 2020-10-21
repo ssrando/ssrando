@@ -168,6 +168,20 @@
       param2: 547
       next: -1
       param3: 0
+    - name: Go to Hornet Colossus Beetle Storyflag
+    type: flowpatch
+    index: 380
+    flow:
+      next: Hornet Colossus Beetle Storyflag
+  - name: Hornet Colossus Beetle Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 476
+      next: -1
+      param3: 0
   # full SotH will be given once all 3 Parts are collected
   - name: For Faron To Check Full SotH
     type: flowpatch
@@ -554,6 +568,27 @@
     index: 33
     flow:
       param2: 924
+116-InsectGame:
+  - name: Fix switch 1
+    type: flowpatch
+    index: 25
+    flow:
+      param2: 925
+  - name: Fix switch 2
+    type: flowpatch
+    index: 61
+    flow:
+      param2: 925
+  - name: Fix switch 3
+    type: flowpatch
+    index: 24
+    flow:
+      param2: 36 # always trigger
+  - name: getting item from Strich flag
+    type: flowpatch
+    index: 68
+    flow:
+      param2: 925
 117-Pumpkin:
   - name: Kina Crystal Quest
     type: flowpatch
