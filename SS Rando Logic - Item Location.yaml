@@ -466,8 +466,8 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
 #  Paths:
 #   - stage/F023/r0/l0/TBox/76
 Thunderhead - Bug Island minigame:
-  Need: Can Access Thunderhead & Bug Net & Can Enter Beedle's Shop
-  original item: Hornet Colossus Beetle
+  Need: Can Access Thunderhead & Bug Net
+  original item: Horned Colossus Beetle
   Paths:
    - event/116-InsectGame/69
    - oarc/F023/l0
