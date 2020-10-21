@@ -559,7 +559,7 @@ F001r: # Knight Academy
     room: 0
     objtype: OBJ
     object:
-      untrigstoryfid: 2047
+      untrigstoryfid: 924
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
