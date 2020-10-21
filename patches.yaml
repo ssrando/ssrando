@@ -1790,3 +1790,11 @@ F407: # Skykeep beaten cs
     objtype: EVNT
     object:
       story_flag2: -1
+S200:
+  - name: Unforce layer
+    type: objpatch
+    room: 2
+    index: 1
+    objtype: SCEN
+    object:
+      layer: 0
