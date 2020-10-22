@@ -1,4 +1,4 @@
 rm disc.iso
 py ssrando.py
-wit copy modified-extract disc.iso
+wit -P copy modified-extract disc.iso
 pause

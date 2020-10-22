@@ -51,14 +51,14 @@ To only generate a spoiler log, use the `--dry-run` option as a command line arg
 #### FOR EMULATOR
 10a) Depending on your setup, on how you wanna use the game this step might differ, if you want an iso ready to be played on emu
 
-    wit copy modified-extract disc.iso
+    wit -P copy modified-extract disc.iso
 
 11a) Open disc.iso in Dolphin
 12a) Profit
 #### FOR CONSOLE
 10b) The exact steps may differ from what i write down, but this worked for me using Configurable USB Loader, loading from a SD card:
 
-    wit copy -z modified-extract SOUE01.wbfs
+    wit -P copy -z modified-extract SOUE01.wbfs
 
 11b) Take the 2! files (SOUE01.wbfs & SOUE01.wbf1), copy them to your SD card in this folder: /wbfs/The Legend of Zelda Skyward Sword [SOUE01]/ and put the SD into your Wii
 12b) Power up your Wii, HBC, CFG USB Loader, Profit
