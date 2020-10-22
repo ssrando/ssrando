@@ -61,7 +61,7 @@ class Randomizer:
     self.starting_items.append('Progressive Sword')
     self.race_mode_banned_locations = []
     self.logic = Logic(self)
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge's Pouch", "Emerald Tablet")
+    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Bomb Bag")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")

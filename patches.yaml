@@ -1218,6 +1218,12 @@ D200: # ET
     layer: 0
     room: 1
     objtype: OBJ
+  - name: CS before Boulder to bombs
+    type: objdelete
+    id: 0xFC6D
+    layer: 0
+    room: 1
+    objtype: STAG
 B200: # Boss Room
   - name: Layer override
     type: layeroverride
