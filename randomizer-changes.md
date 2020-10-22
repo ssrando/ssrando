@@ -16,8 +16,13 @@
 - Owlan gives you his item even if you already have a shield
 - The size of the Dust pile covering babies rattle has been increased to prevent it being obtained without gust bellows
 - The trial is accessible on any layer, even after opening Skykeep
+- To access the Archer minigame you just need Bow
+- To access Fledge 5 crystal reward you only need to have access to stamina potions (right now locked behind Beating LMF)
+- To access Cawlin's Letter check you need to talk to the toilet hand first (which requires Harp)
+- To access Pipit/Toilet hand 5 crystals you only need to deliver the Letter to either karane or toilet hand
 ### Sky
 - The songs at Isle of Songs have been transformed into Chests, which can be obtained with the corresponding sword upgrade
+- You can start Party Wheel Crytsal Quest from the start by talking to the owner
 ### Skykeep
 - Beating Skykeep doesn't let the goddess statue fall back to the surface
 - (not implemented yet) Beating Skykeep spawns you back at Skyloft to prevent out of logic Faron access for tablet randomizer
