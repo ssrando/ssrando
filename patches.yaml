@@ -54,6 +54,8 @@ global:
       # patch every item with item subtype 9 acting like babies rattle (forces textbox)
       - original: a0 63 03 30 4b ff 0a ac
         patched:  80 63 00 04 4b ff 35 8c
+      - original: 48 00 2a e5 2c 03 00 00 40 82 00 14 7f c3 f3 78
+        patched:  48 00 2a e5 2c 03 00 09 41 82 00 14 7f c3 f3 78
     d_a_obj_door_boss: # function that checks for the dungeons storyflag, prevents putting in the boss key
       - original: 94 21 FF F0 7C 08 02 A6 90 01 00 14 4B FF E2 45 # start of function
         patched:  38 60 00 00 4e 80 00 20 90 01 00 14 4B FF E2 45 # just return 0
