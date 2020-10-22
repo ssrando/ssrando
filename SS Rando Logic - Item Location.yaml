@@ -577,11 +577,11 @@ Lake Floria - Lake Floria Chest:
   original item: Goddess Plume
   Paths:
    - stage/F102/r3/l0/TBox/64
-Lake Floria - Lake Floria Silver Rupee: # not sure if we want to randomize this
-  Need: Can Access Sealed Temple & Can Access Lake Floria
-  original item: Silver Rupee
-  Paths:
-   - stage/F102/r2/l0/Item/60
+#Lake Floria - Lake Floria Silver Rupee: # not sure if we want to randomize this
+#  Need: Can Access Sealed Temple & Can Access Lake Floria
+#  original item: Silver Rupee
+#  Paths:
+#   - stage/F102/r2/l0/Item/60
 
 
 Eldin Volcano - Behind Bombable Wall in First Room:
