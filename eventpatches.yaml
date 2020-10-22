@@ -64,11 +64,20 @@
     type: textpatch
     index: 243
     text: "The \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF is now complete!"
-  - name: remove BotG Scene Change
+  - name: remove BotG Scene Change # also goes to open thunderhead
     type: flowpatch
     index: 464
     flow:
+      next: BotG opens Thunderhead
+  - name: BotG opens Thunderhead
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 194
       next: -1
+      param3: 0
   - name: get rid of Skyloft layer 8&9
     type: flowpatch
     index: 540 # before storyflag

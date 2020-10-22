@@ -18,14 +18,21 @@ OPTIONS = [
         'command': 'closed-thunderhead',
         'type': 'boolean',
         'default': False,
-        'help': '(not implemented yet) Thunderhead is closed by default, obtain Ballad of the Goddess to immediately open it',
+        'help': 'Thunderhead is closed by default, obtain Ballad of the Goddess to immediately open it',
     },
     {
         'name': 'Swordless',
         'command': 'swordless',
         'type': 'boolean',
         'default': False,
-        'help': '(not implemented yet) Instead of starting with the goddess sword, in this mode all sword upgrades, including the pracice sword, have to be found',
+        'help': '(logic isn\'t adjusted yet) Instead of starting with the goddess sword, in this mode all sword upgrades, including the pracice sword, have to be found',
+    },
+    {
+        'name': 'Randomize Sailcloth',
+        'command': 'randomize-sailcloth',
+        'type': 'boolean',
+        'default': False,
+        'help': '(not implemented yet) Instead of starting with the Sailcloth, it\'s added to the item pool',
     },
     {
         'name': 'Invisible Sword',

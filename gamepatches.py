@@ -71,6 +71,9 @@ START_ITEM_STORYFLAGS = {
     "Amber Tablet": 48,
 }
 
+PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
+PROGRESSIVE_SWORD_ITEMIDS = [10, 11, 12, 9, 13, 14]
+
 class FlagEventTypes(IntEnum):
     SET_STORYFLAG = 0,
     UNSET_STORYFLAG = 1,
@@ -469,6 +472,31 @@ def do_gamepatches(rando):
         return not (isinstance(entry, dict) and 'onlyif' in entry \
             and not rando.logic.check_logical_expression_string_req(entry['onlyif']))
     
+    filtered_storyflags = []
+    for storyflag in patches['global']['startstoryflags']:
+        # conditionals are an object
+        if not isinstance(storyflag, int):
+            if filter_option_requirement(storyflag):
+                storyflag = storyflag['storyflag']
+            else:
+                continue
+        filtered_storyflags.append(storyflag)
+
+    # filter startstoryflags
+    patches['global']['startstoryflags'] = filtered_storyflags
+
+    # Add sword story/itemflags if required
+    start_sword_count = rando.starting_items.count('Progressive Sword')
+    for i in range(start_sword_count):
+        patches['global']['startstoryflags'].append(PROGRESSIVE_SWORD_STORYFLAGS[i])
+    if start_sword_count > 0:
+        patches['global']['startitems'].append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count-1])
+    
+    # if 'Sailcloth' in rando.starting_items:
+    #     patches['global']['startstoryflags'].append(32)
+    #     patches['global']['startitems'].append(15)
+
+    
     rando_stagepatches, stageoarcs, rando_eventpatches = get_patches_from_location_item_list(rando.logic.item_locations, rando.logic.done_item_locations)
 
     # Add required dungeon patches to eventpatches
@@ -692,7 +720,7 @@ def do_gamepatches(rando):
             # put all storyflags in links room at the start
             if not 'STAG' in bzs['LAY ']['l0']:
                 bzs['LAY ']['l0']['STAG'] = []
-            for storyflag in patches['global'].get('startstoryflags',[]): # TODO: conditional
+            for storyflag in patches['global'].get('startstoryflags',[]):
                 new_obj = OrderedDict(
                     params1 = 0xFFFFFFFF,
                     params2 = 0xFF5FFFFF,
@@ -802,7 +830,7 @@ def do_gamepatches(rando):
             make_progressive_item(msbf, 93, [35, 231], [56, 99], [904, 905])
             # make progressive swords
             # TODO trainings and goddess sword both set storyflags on their own, could reuse those
-            make_progressive_item(msbf, 136, [77, 608, 75, 78, 74, 73], [10, 11, 12, 9, 13, 14], [906, 907, 908, 909, 910, 911])
+            make_progressive_item(msbf, 136, [77, 608, 75, 78, 74, 73], PROGRESSIVE_SWORD_ITEMIDS, PROGRESSIVE_SWORD_STORYFLAGS)
             # make progressive beetle
             make_progressive_item(msbf, 96, [38, 178], [53, 75], [912, 913])
             # make progressive wallets

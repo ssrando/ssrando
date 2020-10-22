@@ -57,8 +57,11 @@ class Randomizer:
       self.starting_items.append('Emerald Tablet')
       self.starting_items.append('Ruby Tablet')
       self.starting_items.append('Amber Tablet')
-    self.starting_items.append('Progressive Sword')
-    self.starting_items.append('Progressive Sword')
+    if not self.options.get('swordless',False):
+      self.starting_items.append('Progressive Sword')
+      self.starting_items.append('Progressive Sword')
+    # if not self.options.get('randomize-sailcloth',False):
+    #   self.starting_items.append('Sailcloth')
     self.race_mode_banned_locations = []
     self.logic = Logic(self)
     # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Bomb Bag")
@@ -157,21 +160,21 @@ class Randomizer:
     
     header += "Seed: %s\n" % self.seed
     
-    # header += "Options selected:\n  "
-    # non_disabled_options = [
-    #   name for name in self.options
-    #   if self.options[name] not in [False, [], {}, OrderedDict()]
-    #   and name != "randomized_gear" # Just takes up space
-    # ]
-    # option_strings = []
-    # for option_name in non_disabled_options:
-    #   if isinstance(self.options[option_name], bool):
-    #     option_strings.append(option_name)
-    #   else:
-    #     value = self.options[option_name]
-    #     option_strings.append("%s: %s" % (option_name, value))
-    # header += ", ".join(option_strings)
-    # header += "\n\n\n"
+    header += "Options selected:\n  "
+    non_disabled_options = [
+      name for name in self.options
+      if self.options[name] not in [False, [], {}, OrderedDict()]
+      and not name in ["dry-run", "invisible-sword", "seed"]
+    ]
+    option_strings = []
+    for option_name in non_disabled_options:
+      if isinstance(self.options[option_name], bool):
+        option_strings.append(option_name)
+      else:
+        value = self.options[option_name]
+        option_strings.append("%s: %s" % (option_name, value))
+    header += ", ".join(option_strings)
+    header += "\n\n\n"
     
     return header
 

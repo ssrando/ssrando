@@ -41,7 +41,7 @@ Can Get Gratitude Crystals:
 #Add sword requirement for swordless modes
 
 Can Access Thunderhead:
-    Nothing
+    Option "closed-thunderhead" Disabled | Ballad of the Goddess
 # May be options in the future
 
 Can Access Beedle's Shop:
