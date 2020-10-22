@@ -568,16 +568,16 @@
     index: 165
     flow:
       param2: 924
-  - name: Fix switch
+  - name: Fix switch (Cawlin)
     type: flowpatch
     index: 33
     flow:
       param2: 924
-  - name: Fix switch
+  - name: add Cawlin storyflag to other text options
     type: flowpatch
-    index: 504
+    index: 507
     flow:
-      param2: 924
+      next: 503
 116-InsectGame:
   - name: Fix switch 1
     type: flowpatch
