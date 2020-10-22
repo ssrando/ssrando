@@ -487,7 +487,7 @@ class Logic:
     # there will be more settings in the future, allowing for something different than
     # 2 dungeons, skykeep and GoT
     required_dungeon_macro = ' & '.join(f'Can Beat {dungeon}' for dungeon in self.rando.required_dungeons)
-    self.set_macro('Can Access Past','Master Sword & '+required_dungeon_macro)
+    self.set_macro('Can Access Past','Can Access Sealed Temple & Master Sword & '+required_dungeon_macro)
 
   def update_entrance_connection_macros(self):
     # Update all the macros to take randomized entrances into account.

@@ -148,8 +148,8 @@ Can Hit First Water Pods:
 Can Beat Fire Sanctuary:
     Can Access Fire Sanctuary & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS Boss Key
 
-Can Access Past:
-    Master Sword & Can Beat Fire Sanctuary & Can Beat Ancient Cistern
+# Can Access Past:
+#     this is filled in at runtime with the required dungeons
 
 Can Access Levias:
     Can Access Past
