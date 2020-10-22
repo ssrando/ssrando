@@ -665,7 +665,7 @@ F023: # Thunderhead
     type: objmove
     id: 0xFCEF
     layer: 2
-    destlayer: 0
+    destlayer: 1
     room: 0
     objtype: OBJ
   - name: Stritch
