@@ -5,6 +5,8 @@
 - Skyloft can be left immediately
 - By default, all pillars and the thunderhead are accessible from the start
 - All Goddess Cubes can be hit
+- Obtaining a Tablet in Tablet Randomizer automatically opens the corresponding light pillar
+- Obtaining Ballad of the Goddess in Closed Thunderhead mode will immediately open it
 ## Goal
 - The Billboard in the Academy displays the 2 required dungeons
 - Both of them have to be beaten and the Master Sword has to be obtained to fight the imprisonded to access the past

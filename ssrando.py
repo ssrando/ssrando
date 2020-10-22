@@ -5,24 +5,16 @@ from pathlib import Path
 from logic.logic import Logic
 import logic.constants as constants
 from gamepatches import do_gamepatches
+from options import OPTIONS
 
 from typing import List
-
-cmd_line_args = OrderedDict()
-for arg in sys.argv[1:]:
-  arg_parts = arg.split("=", 1)
-  option_name = arg_parts[0]
-  assert option_name.startswith('--')
-  if len(arg_parts) == 1:
-    cmd_line_args[option_name[2:]] = True
-  else:
-    cmd_line_args[option_name[2:]] = arg_parts[1]
 
 class StartupException(Exception):
   pass
 
 class Randomizer:
   def __init__(self, options):
+    self.options = options
     self.dry_run = bool(options.get('dry-run',False))
     # TODO: maybe make paths configurable?
     if not self.dry_run:
@@ -82,7 +74,7 @@ class Randomizer:
     self.write_spoiler_log()
     if not self.dry_run:
       do_gamepatches(rando)
-      print('Required dungeons: '+(', '.join(self.required_dungeons)))
+      # print('Required dungeons: '+(', '.join(self.required_dungeons)))
 
   def write_spoiler_log(self):
     if self.no_logs:
@@ -268,6 +260,41 @@ class Randomizer:
     return (zones, max_location_name_length)
 
 if __name__ == '__main__':
-    rando = Randomizer(cmd_line_args)
-    print(rando.seed)
+  def process_options(options):
+    if 'help' in options:
+      print('Skyward Sword Randomizer')
+      print('Available command line options:\n')
+      longest_option = max(len(option['command']) for option in OPTIONS)
+      for option in OPTIONS:
+        print(' --'+option["command"].ljust(longest_option) + ' ' + option['help'])
+      return None
+    else:
+      cleaned_options = {}
+      for option in OPTIONS:
+        if option['command'] in options:
+          value = options.pop(option['command'])
+          if option['type'] == 'boolean':
+            value = value.lower() == 'true'
+          elif option['type'] == 'int':
+            value = int(value)
+          cleaned_options[option['command']] = value
+        else:
+          cleaned_options[option['command']] = option['default']
+      for option_name in options.keys():
+        print(f'unknown option {option_name}!')
+      return cleaned_options
+  
+  cmd_line_args = OrderedDict()
+  for arg in sys.argv[1:]:
+    arg_parts = arg.split("=", 1)
+    option_name = arg_parts[0]
+    assert option_name.startswith('--')
+    if len(arg_parts) == 1:
+      cmd_line_args[option_name[2:]] = 'true'
+    else:
+      cmd_line_args[option_name[2:]] = arg_parts[1]
+  options = process_options(cmd_line_args)
+  if options is not None:
+    rando = Randomizer(options)
     rando.randomize()
+    print(rando.seed)
