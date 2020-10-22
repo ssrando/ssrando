@@ -34,6 +34,8 @@
 - Gorko's Bokoblin fight is skipped
 - When finishing the Kikwi Quest and talking to the elder, the item is given directly instead of appearing on the elders back
 - The layer of faron always stays at 1
+- To raise the gate of time, the harp is required
+- The cutscene where groose lands in faron is skipped, he is directly in sealed temple now
 - Kikwi Eremit Yerbal spawns after obtaining Water Dragon Scale
 - The sacred water quest is skipped, the waterfall in front of Ancient Cistern is removed
 ### Skyview Temple
