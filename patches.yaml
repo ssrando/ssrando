@@ -658,6 +658,14 @@ F020: # Sky
     type: oarcdelete
     oarc: GetSpareSeedA
     layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSpareQuiverA
+    layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSpareBombBagA
+    layer: 0
 F023: # Thunderhead
   - name: Strich
     type: objmove
