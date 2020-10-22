@@ -1806,6 +1806,16 @@ F407: # Skykeep beaten cs
     objtype: EVNT
     object:
       story_flag2: -1
+  - name: Send player to Skyloft after Skykeep
+    type: objpatch
+    room: 0
+    index: 1
+    objtype: SCEN
+    object:
+      name: F000
+      room: 0
+      layer: 0
+      entrance: 52
 S200:
   - name: Unforce layer
     type: objpatch
