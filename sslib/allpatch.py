@@ -13,6 +13,7 @@ from .utils import write_bytes_create_dirs
 
 STAGE_REGEX = re.compile('(.+)_stg_l([0-9]+).arc.LZ')
 EVENT_REGEX = re.compile('([0-9])-[A-Za-z]+.arc')
+ROOM_REGEX = re.compile(r'/rarc/(?P<stage>.+)_r(?P<roomid>[0-9]+).arc')
 LANGUAGES = {'EU': 'en_GB', 'US': 'en_US', 'JP': 'ja_JP'}
 
 class AllPatcher:
@@ -125,16 +126,17 @@ class AllPatcher:
                         stageu8.set_file_data('dat/stage.bzs', buildBzs(newstagebzs))
                         modified = True
                     # patch rooms
-                    for roomid in range(len(stagebzs.get('RMPL',[0]))):
-                        roomdata = stageu8.get_file_data(f'rarc/{stage}_r{roomid:02}.arc')
-                        if roomdata is None:
-                            continue
+                    room_path_matches = (ROOM_REGEX.match(x) for x in stageu8.get_all_paths())
+                    room_path_matches = (x for x in room_path_matches if not x is None)
+                    for room_path_match in room_path_matches:
+                        roomid = int(room_path_match.group('roomid'))
+                        roomdata = stageu8.get_file_data(room_path_match.group(0))
                         roomarc = U8File.parse_u8(BytesIO(roomdata))
                         roombzs = parseBzs(roomarc.get_file_data('dat/room.bzs'))
                         roombzs = self.bzs_patch(roombzs, stage, roomid)
                         if roombzs is not None:
                             roomarc.set_file_data('dat/room.bzs', buildBzs(roombzs))
-                            stageu8.set_file_data(f'rarc/{stage}_r{roomid:02}.arc', roomarc.to_buffer())
+                            stageu8.set_file_data(room_path_match.group(0), roomarc.to_buffer())
                             modified = True
             # repack u8 and compress it if modified
             if modified:
