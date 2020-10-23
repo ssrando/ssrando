@@ -56,9 +56,9 @@ global:
         patched:  80 63 00 04 4b ff 35 8c
       - original: 48 00 2a e5 2c 03 00 00 40 82 00 14 7f c3 f3 78
         patched:  48 00 2a e5 2c 03 00 09 41 82 00 14 7f c3 f3 78
-    d_a_obj_door_boss: # function that checks for the dungeons storyflag, prevents putting in the boss key
-      - original: 94 21 FF F0 7C 08 02 A6 90 01 00 14 4B FF E2 45 # start of function
-        patched:  38 60 00 00 4e 80 00 20 90 01 00 14 4B FF E2 45 # just return 0
+    d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
+      - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
+        patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 0d 00 00 00 54
     d_a_obj_time_door_before: # this bit checks for the current sword, replace equals check with greater equals
       - original: 2c 00 00 04 40 82 00 a0
         patched:  2c 00 00 04 41 80 00 a0
