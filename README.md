@@ -45,6 +45,8 @@ the sword invisible and avoids the crash
 
 To start with all light pillars closed and needing to find the tablets to unlock them, use `--randomize-tablets`
 
+To start with the thunderhead closed, use `closed-thunderhead`. It is automatically opened after obtaining Ballad of the Goddess
+
 To only generate a spoiler log, use the `--dry-run` option as a command line argument
 
 
