@@ -1105,6 +1105,21 @@
       param2: 137
       next: -1
       param3: 0
+501-Inpa:
+  - name: got to rando dungeons completed check
+    type: flowpatch
+    index: 348
+    flow:
+      next: to rando dungeons completed check
+  - name: to rando dungeons completed check
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 8 # entrypoint 008_007
+      param2: 7
+      next: -1
+      param3: 7
 502-CenterFieldBack:
   - name: Zelda's Cutscene, give item from impa # this is overriding a set sceneflag, which is not needed anymore
     type: flowpatch
