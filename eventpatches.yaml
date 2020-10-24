@@ -369,7 +369,7 @@
     type: switchadd
     flow:
       subType: 6
-      param2: 343 # Before Raising GoT
+      param2: 141 # Ballad of the Goddess played with impa
       param3: 3
     cases:
       - Rando Set Rails Storyflag
@@ -1108,7 +1108,7 @@
 501-Inpa:
   - name: got to rando dungeons completed check
     type: flowpatch
-    index: 348
+    index: 267
     flow:
       next: to rando dungeons completed check
   - name: to rando dungeons completed check

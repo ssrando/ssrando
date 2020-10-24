@@ -70,8 +70,9 @@ global:
         patched:  94 21 ff f0 7c 08 02 a6 90 01 00 14 4b ff f1 85 7c 66 1b 78 54 03 86 3e 38 80 00 07
     d_a_obj_chandelier:
       # normall, the heart piece is hardcoded, change it so that it instead uses 0000FF00 from params1
+      # additionally, change the item subtype to 9, to force collection with a textbox
       - original: 94 21 ff f0 7c 08 02 a6 38 a0 00 00 38 e0 00 01 90 01 00 14 39 00 00 ff 93 e1 00 0c 7c 9f 23 78 38 80 00 00 93 c1 00 08 7c 7e 1b 78 80 03 00 04 38 60 00 5e 54 06 46 3e
-        patched:  94 21 ff f0 7c 08 02 a6 38 a0 00 00 38 e0 00 01 90 01 00 14 39 00 00 ff 93 e1 00 0c 7c 9f 23 78 38 80 00 00 93 c1 00 08 7c 7e 1b 78 80 03 00 04 54 03 c6 3e 54 06 46 3e
+        patched:  94 21 ff f0 7c 08 02 a6 38 a0 00 00 38 e0 00 01 90 01 00 14 39 00 00 ff 93 e1 00 0c 7c 9f 23 78 38 80 00 09 93 c1 00 08 7c 7e 1b 78 80 03 00 04 54 03 c6 3e 54 06 46 3e
     d_a_obj_soil:
       # item id for the key pieces is hardcoded, change it to read from first byte of params2
       # the code occurs twice, identical besides registers
@@ -1620,7 +1621,7 @@ F402: # Sealed Temple
     room: 2
     objtype: STAG
     object:
-      params1: 0xFF03FF02 # scenlink: 2
+      params1: 0xC303FF02 # scenlink: 2
       params2: 0xFF5FFFFF
       posx: 0
       posy: 7650
@@ -1628,7 +1629,7 @@ F402: # Sealed Temple
       sizex: 200
       sizey: 200
       sizez: 200
-      anglex: 63831 # triggered by storyflag 343 (BotG obtained)
+      anglex: 65535 # no trigger storyflag
       angley: 0
       anglez: 63828 # untriggered by storyflag 340 (GoT raised)
       id: 0xFC00
@@ -1663,6 +1664,13 @@ F402: # Sealed Temple
     object:
       story_flag2: -1 # no Imp trigger stuff
       sceneflag1: 7 # no shaking into vents active
+  - name: Unforce layer after Raise GoT CS
+    type: objpatch
+    room: 2
+    index: 3
+    objtype: SCEN
+    object:
+      layer: 0
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
