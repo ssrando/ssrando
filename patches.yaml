@@ -769,6 +769,12 @@ F101: # Deep Woods
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Remove goddess cube force hit trigger
+    type: objdelete
+    id: 0xFD05
+    layer: 1
+    room: 0
+    objtype: OBJ
 F102_1: # Outside AC
   - name: Layer override
     type: layeroverride
