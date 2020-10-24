@@ -58,7 +58,7 @@ global:
         patched:  48 00 2a e5 2c 03 00 09 41 82 00 14 7f c3 f3 78
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
-        patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 0d 00 00 00 54
+        patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0d
     d_a_obj_time_door_before: # this bit checks for the current sword, replace equals check with greater equals
       - original: 2c 00 00 04 40 82 00 a0
         patched:  2c 00 00 04 41 80 00 a0
