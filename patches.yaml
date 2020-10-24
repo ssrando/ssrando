@@ -18,13 +18,14 @@ global:
     - 329 # No sleeping for Wyrna
     - 32  # Sailcoth
     - 96  # Fi's text after obtaining first map
+    - 28 # Pratice Sword storyflag
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
     - 95 # Fi Text for Ruby Tablet
     - 96 # Fi Text for Amber Tablet
     - 66 # Batreaux Doors outside open
-    - 78 # Batreaux Doors inside open
+    - 99 # Sheikah Stone cs played
     - 67 # Inside Doors open
     - 1 # UA Doors open
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
@@ -643,6 +644,15 @@ F010r: # Isle of songs tower
     layer: 0
     room: 0
     objtype: OBJ
+F012r: # Batreaux House
+  - name: Batreaux unlock
+    type: objpatch
+    id: 0xFC00
+    layer: 0
+    room: 0
+    objtype: OBJS
+    object:
+      anglex: 0xFF00 # sets the flag to -1 (meaning open)
 F020: # Sky
   - name: Fi text about goddess cubes
     type: objdelete
