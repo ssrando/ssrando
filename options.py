@@ -25,7 +25,7 @@ OPTIONS = [
         'command': 'swordless',
         'type': 'boolean',
         'default': False,
-        'help': '(logic isn\'t adjusted yet) Instead of starting with the goddess sword, in this mode all sword upgrades, including the pracice sword, have to be found',
+        'help': 'Instead of starting with the goddess sword, in this mode all sword upgrades, including the pracice sword, have to be found',
     },
     {
         'name': 'Randomize Sailcloth',

@@ -36,9 +36,11 @@ Song of the Hero:
 Bottle:
     Adventure Pouch & Empty Bottle
 
+Can Open Batreaux Shed:
+    Practice Sword
+
 Can Get Gratitude Crystals:
     Nothing
-#Add sword requirement for swordless modes
 
 Can Access Thunderhead:
     Option "closed-thunderhead" Disabled | Ballad of the Goddess
@@ -53,6 +55,37 @@ Bug Net:
 Can Access Sealed Temple:
     Emerald Tablet
 
+Can Access Most of Faron Woods:
+    Can Access Sealed Temple & (Clawshots | Practice Sword | Bomb Bag)
+# Either you need to cut a row of trees with sword or bombs, or you can clawshot to the vines to skip them
+
+Can Defeat Bokoblins:
+    Practice Sword | Bow | Bomb Bag
+
+Can Defeat Moblins:
+    Practice Sword | Bow | Bomb Bag
+
+Can Defeat Keeses:
+    Practice Sword | Slingshot | Beetle | Whip | Clashots | Bow | Bomb Bag
+
+Can Defeat Lezalfos:
+    Practice Sword | Bomb Bag
+# With bombs, let them attack you while you have a bomb in your hands. Takes one bomb for normal lezalfos, two for dark lezalfos
+
+Can Defeat Ampilus:
+    Practice Sword | Bow | Bomb Bag
+
+Can Defeat Molderach:
+    Gust Bellows & Practice Sword
+# Bow also works instead of sword but you need a LOT of arrows
+
+Can Defeat Armos:
+    Gust Bellows & Practice Sword
+# Only a sword seems to be able to destroy their crystals, even the bow phases through
+
+Can Defeat Beamos:
+    Practice Sword | Bow
+
 Can Access Eldin:
     Ruby Tablet
 
@@ -64,59 +97,82 @@ Can Access Volcano Summit:
 
 Can Access Lanayru:
     Amber Tablet
-#Make this equal Nothing if starting with everything opened
 
 Can Access Second Part of Lanayru:
     Can Access Lanayru & (Clawshots | Hook Beetle)
+# Defeat the bokoblins in the ToT area with the hook beetle by grabbing bomb flowers
 
 Can Retrieve Party Wheel:
     Can Access Lanayru & Bomb Bag
 
 Can Access Sand Sea:
     Can Access Lanayru & Clawshots & LanayruCaves Small Key x1
+#With clawshots you can activate Skipper's boat
 
-Can Access Goddess Walls:
-    Can Access Skyview 2 & Ballad of the Goddess & Goddess Harp
+Can Unlock Goddess Walls:
+    Can Access Skyview 2 & Ballad of the Goddess & Goddess Harp & (Practice Sword | Bomb Bag)
+# Sword or bombs needed to cut trees inside Skyview
 
 Can Talk to Yerbal:
-    (Slingshot | Beetle) & ((Gust Bellows & Water Scale) | Clawshots)
+    Can Access Most of Faron Woods & (Slingshot | Beetle) & ((Gust Bellows & Water Scale) | Clawshots)
 # Bow and Clawshots don't work to hit Yerbal
 
 Can Access Lake Floria:
-    Can Access Sealed Temple & Water Scale & Can Talk to Yerbal
+    Can Access Most of Faron Woods & Water Scale & Can Talk to Yerbal & Goddess Sword
+# You need to charge a skyward strike to open the door to Lake Floria
 
 Can Access Deep Woods:
-    Can Access Sealed Temple & (Slingshot | Clawshots | Beetle | Bow | Bomb Bag)
+    Can Access Most of Faron Woods & (Slingshot | Clawshots | Beetle | Bow | Bomb Bag)
 
 Can Access Dungeon Entrance In Deep Woods:
     Can Access Deep Woods
 
-Can Hit High Vines and Switches in Beginning Skyview:
+Can Hit High Skyview Switches:
     Slingshot | Clawshots | Beetle | Bow | Bomb Bag
 
+Can Hit Vines in Skyview Left Room:
+   Can Hit High Skyview Switches | Goddess Sword | Whip
+# You can skyward strike the vine on Hero Mode. Use the rope to jump to the crystal alcove and simply hit it with your sword.
+# You can also get the vines down with whip but the positioning for the first vine is a bit weird
+
 Can Get Past the First Skyview Room:
-    Can Hit High Vines and Switches in Beginning Skyview | Water Scale
-#With bombs break the barricade early. With clawshots you can hit the crystal from afar without stunning the boko baba (stand far away on the side).
+    (Practice Sword & (Can Hit High Skyview Switches | Water Scale)) | Bomb Bag
+#With clawshots you can hit the crystal from afar without stunning the boko baba (stand far away on the side).
+#You need a sword to defeat the first eye + something to stun the boko baba or hit the switch from afar
+#The only way you can get around the sword requirement here is by having bombs to blow up both the trees and the barricade
 #Water Scale make it Skyview 2 were the boko baba isn't there, and the baricade disappears anyway.
 
 Can Beat Skyview:
-    Can Access Skyview & (Bomb Bag | Beetle | Bow | Water Scale) & SW Small Key x2 & SW Boss Key
+    Can Access Skyview & (Bomb Bag | Beetle | Bow | Water Scale) & SW Small Key x2 & SW Boss Key & Goddess Sword
+# Goddess Sword to activate the crest
 
 Can Access Dungeon Entrance In Eldin Volcano:
     Can Access Second Part of Eldin & Key Piece x5
 
+Can Get Past First ET Drawbridge:
+    Bow | (Beetle & (Can Defeat Lezalfos | Slingshot | Clawshots))
+  # For some reason the beetle dies really fast if you stand far away from it, and if you go closer you have to fight the lezalfos
+  # Hitting the boulder with the beetle alone is very luck based when it's not upgraded
+  # Thus either you have the bow to cut the drawbridge and activate the boulder...
+  # Or you have beetle and in this case you need to defeat the lezalfos and have another item to activate the boulder other than the bow
+
 Can Beat Earth Temple:
-    Can Access Earth Temple & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET Boss Key
+    Can Access Earth Temple & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET Boss Key & Goddess Sword
 
 Can Access Dungeon Entrance In Lanayru Desert:
-    Can Access Lanayru & Bomb Bag & Hook Beetle
+    Can Access Lanayru & Bomb Bag & Hook Beetle & Practice Sword
+# Sword needed to activate nodes
+
+Can Hit Crystal in LMF Map Room:
+    Goddess Sword | Whip | Slingshot | Bow
+#You can skyward strike the timeshift stone through the gate. The bow, slingshot and whip also work
 
 Can Beat Lanayru Mining Facility:
-    Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows & LMF Boss Key
+      Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows & Practice Sword & Can Hit Crystal in LMF Map Room & LMF Boss Key
 # You need to be able to shoot the timeshift stone in the last room
 
 Can Raise Gate of Time:
-    Ballad of the Goddess & Goddess Harp & Can Access Sealed Temple
+    Goddess Harp & Can Access Sealed Temple
 
 Can Access Skyview 2:
     Water Scale & Can Access Skyview
@@ -130,14 +186,20 @@ Can Beat Skyview 2:
 Can Access Dungeon Entrance In Lake Floria: #if requiring Sacred Water, make sure the randomizer places the skyview boss key before
     Can Access Lake Floria
 
+Can Lower Ancient Cistern Statue:
+    Whip & (Clawshots | (Water Scale & (Bow | Beetle) & AC Small Key x2))
+
+Can Defeat Koloktos:
+    Whip & (Practice Sword | Bomb Bag | Bow)
+
 Can Beat Ancient Cistern:
-    Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots)
+    Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots) & Goddess Sword
 
 Can Access Dungeon Entrance In Sand Sea:
     Can Access Sand Sea & Sea Chart
 
 Can Beat Sandship:
-    Can Access Sandship & Bow & SS Boss Key
+    Can Access Sandship & Bow & SS Boss Key & Goddess Sword
 
 Can Access Dungeon Entrance In Volcano Summit:
     Can Access Volcano Summit & Bottle & Clawshots
@@ -146,7 +208,7 @@ Can Hit First Water Pods:
     Bow | Beetle | Clawshots | Slingshot | Bomb Bag
 
 Can Beat Fire Sanctuary:
-    Can Access Fire Sanctuary & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS Boss Key
+    Can Access Fire Sanctuary & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS Boss Key & Goddess Sword
 
 # Can Access Past:
 #     this is filled in at runtime with the required dungeons
@@ -170,91 +232,92 @@ Can Access Dungeon Entrance On Skyloft:
     Stone of Trials & Clawshots
 
 Can Beat Skykeep:
-    Can Access Skykeep & Clawshots & SK Small Key x1 & Bow & Gust Bellows & Whip
+    Can Access Skykeep & Clawshots & SK Small Key x1 & Bow & Gust Bellows & Whip & Practice Sword
 
 Can Reach and Defeat Demise:
     Can Access Past & Can Beat Skykeep
  
 Initial Goddess Cube:
-    Can Access Deep Woods
+    Can Access Deep Woods & Goddess Sword
  
 Goddess Cube on West Great Tree near exit:
-    Can Access Sealed Temple & (Clawshots | (Gust Bellows & Water Scale))
+    Can Access Most of Faron Woods & (Clawshots | (Gust Bellows & Water Scale)) & Goddess Sword
     #bokoblin luring not in logic
  
 Goddess Cube on East Great Tree with Rope:
-    Can Access Sealed Temple & (Clawshots | (Gust Bellows & Water Scale))
+    Can Access Most of Faron Woods & (Clawshots | (Gust Bellows & Water Scale)) & Goddess Sword
  
 Goddess Cube on East Great Tree with Clawshot Target:
-    Can Access Sealed Temple & (Clawshots | (Gust Bellows & Water Scale))
+    Can Access Most of Faron Woods & (Clawshots | (Gust Bellows & Water Scale)) & Goddess Sword
  
 Goddess Cube in Deep Woods:
-    Can Access Deep Woods
+    Can Access Deep Woods & Goddess Sword
  
 Goddess Cube on top of Skyview:
-    Can Access Deep Woods & Clawshots
+    Can Access Deep Woods & Clawshots & Goddess Sword
  
 Goddess Cube in Skyview Spring:
-    Can Beat Skyview
+    Can Beat Skyview & Goddess Sword
  
 Goddess Cube in Lake Floria:
-    Can Access Lake Floria
+    Can Access Lake Floria & Goddess Sword
  
 Goddess Cube in Floria Waterfall:
-    Can Access Lake Floria & Clawshots
+    Can Access Lake Floria & Clawshots & Goddess Sword
  
 Goddess Cube at Eldin Entrance:
-    Can Access Eldin
+    Can Access Eldin & Goddess Sword
  
 Goddess Cube near Mogma Turf Entrance:
-    Can Access Eldin
+    Can Access Eldin & Goddess Sword
  
 Goddess Cube in Mogma Turf:
-    Can Access Eldin
+    Can Access Eldin & Goddess Sword
  
 Goddess Cube West of Temple Entrance:
-    Can Access Second Part of Eldin & Digging Mitts
+    Can Access Second Part of Eldin & Digging Mitts & Goddess Sword
  
 Goddess Cube East of Temple Entrance:
-    Can Access Second Part of Eldin
+    Can Access Second Part of Eldin & Goddess Sword
  
 Goddess Cube in Eldin Slide:
-    Can Access Second Part of Eldin
+    Can Access Second Part of Eldin & Goddess Sword
  
 Goddess Cube inside Volcano Summit:
-    Can Access Volcano Summit #hero mode allows getting this early
+    Can Access Volcano Summit & Goddess Sword #hero mode allows getting this early
  
 Goddess Cube in Summit Waterfall:
-    Can Access Volcano Summit
+    Can Access Volcano Summit & Goddess Sword
  
 Goddess Cube near FS Entrance:
-    Can Access Volcano Summit & Bottle & Clawshots
+    Can Access Volcano Summit & Bottle & Clawshots & Goddess Sword
  
 Goddess Cube at Lanayru Mine Entrance:
-    Can Access Lanayru
+    Can Access Lanayru & Goddess Sword
  
 Goddess Cube in Sand Oasis:
-    Can Access Second Part of Lanayru
+    Can Access Second Part of Lanayru & Goddess Sword
  
 Goddess Cube at ride in ToT area:
-    Can Access Second Part of Lanayru & Hook Beetle
+    Can Access Second Part of Lanayru & Hook Beetle & Goddess Sword
  
 Goddess Cube in secret passageway in Desert:
-    Can Access Second Part of Lanayru & Bomb Bag & Clawshots
+    Can Access Second Part of Lanayru & Bomb Bag & Clawshots & Goddess Sword
     #the tough beetle can be used instead of bombs
  
 Goddess Cube near Hook Beetle Fight:
-    Can Access Lanayru & (Clawshots | Bomb Bag | Hook Beetle)
+    Can Access Lanayru & (Clawshots | Bomb Bag | Hook Beetle) & Goddess Sword
     #On hero mode you can skyward strike this one early
  
 Goddess Cube in Ancient Harbour:
-    Can Access Sand Sea
+    Can Access Sand Sea & Goddess Sword
  
 Goddess Cube in Skipper's Retreat:
-    Can Access Sand Sea & (Bomb Bag | Hook Beetle | Whip)
+    Can Access Sand Sea & (Bomb Bag | Hook Beetle | Whip) & Goddess Sword
  
 Goddess Cube in Pirate Stronghold:
-    Can Access Sand Sea & Gust Bellows
+    Can Access Sand Sea & Can Defeat Armos & Can Defeat Beamos & Goddess Sword
+#Technically this is possible without beating a Beamos but it's hard
  
 #Goddess Cube in Lanayru Gorge:
-#    Can Access Lanayru Gorge & Clawshots & Hook Beetle & Whip
+#    Can Access Lanayru Gorge & Clawshots & Hook Beetle & Whip & Goddess Sword
