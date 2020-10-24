@@ -671,17 +671,26 @@ F020: # Sky
     oarc: GetSpareBombBagA
     layer: 0
 F023: # Thunderhead
-  - name: Strich
-    type: objmove
-    id: 0xFCEF
-    layer: 2
-    destlayer: 1
+  - name: Strich layer 1
+    type: objadd
+    layer: 1
     room: 0
     objtype: OBJ
-  - name: Stritch
+    object:
+      params1: 0xFFFFFCFF
+      params2: 0xFF5FFFFF
+      posx: -170960.21875
+      posy: 18262
+      posz: -51642.58984375
+      anglex: 65535
+      angley: 56434
+      anglez: 11601
+      id: 0xFCEF
+      name: NpcIcgK
+  - name: Stritch model
     type: oarcadd
     oarc: KobunB
-    destlayer: 0
+    destlayer: 1
 F100: # Faron main area
   - name: Layer override
     type: layeroverride

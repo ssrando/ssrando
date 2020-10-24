@@ -34,6 +34,7 @@
 - Gorko's Bokoblin fight is skipped
 - When finishing the Kikwi Quest and talking to the elder, the item is given directly instead of appearing on the elders back
 - The layer of faron always stays at 1
+- You can go past the Goron in Deep Woods without hitting the Goddess Cube
 - To raise the gate of time, the harp is required
 - The cutscene where groose lands in faron is skipped, he is directly in sealed temple now
 - Kikwi Eremit Yerbal spawns after obtaining Water Dragon Scale
@@ -44,7 +45,7 @@
 - The key door to the main area of the dungeon needs only one key on both layers, thus removing one small key in the dungeon, to a total of 2
 - After opening the Beetle chest, the door out of the miniboss room automatically opens, preventing a softlock without beetle
 ### Ancient Cistern
-- (not implemented yet) after raising the statue all the way up, it's possible to leave the dungeon by talking to the stone tablet next to the boss key hole
+- after raising the statue all the way up, it's possible to leave the dungeon by talking to the stone tablet next to the boss key hole
 ## Eldin
 - Various Mogma cutscenes are skipped
 - The trial is accessible on layer 1
