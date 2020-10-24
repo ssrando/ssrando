@@ -1538,7 +1538,7 @@ F301_6: # outside Pirate stronghold
 F301_7: # inside Shipyard
   - name: Door to outside
     type: objpatch
-    id: 0xFC02
+    id: 0xFC01
     layer: 0
     room: 0
     objtype: OBJS
@@ -1589,6 +1589,18 @@ D301: # Sandship A
     room: 0
     objtype: OBJ
     id: 0xFC53
+  - name: Heart Container on normal layer
+    type: oarcadd
+    destlayer: 1
+    oarc: PutHeartUtuwa
+  - name: Remove Boss Door loadzone after beating dungeon
+    type: objpatch
+    id: 0xFC45
+    layer: 4
+    room: 9
+    objtype: STAG
+    object:
+      anglez: 15 # untriggerstoryflag, beat sandship
 F402: # Sealed Temple
   - name: SotH start cs
     type: objdelete
