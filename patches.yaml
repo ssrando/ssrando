@@ -1018,14 +1018,22 @@ D100: # Skyview
       id: 0xFD03
       name: Tubo
 D101:
-  - name: Remove stone tablet flag # to get rid of fi text
+  - name: remove stone tablet text
     type: objpatch
     id: 0xFC11
     layer: 0
     room: 10
     objtype: OBJ
     object:
-      params1: 0xFFFF4EEB
+      params1: 0xFF3C0000
+  - name: Change Fi Trigger flag
+    type: objpatch
+    id: 0xFC12
+    layer: 0
+    room: 10
+    objtype: OBJ
+    object:
+      anglex: 0xFF3C # remove untrigger, flag 60 will be unset in event
   - name: Reload Exit
     type: objadd
     room: 10

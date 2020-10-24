@@ -839,11 +839,11 @@
   # talk to the tablet and then lower the statue and reload
   - name: Statue Lower Question
     type: textpatch
-    index: 4
-    text: "Leave?\n\x0E\x01\x00\x02\uFFFFYes\x0E\x01\x01\x02\x00No"
-  - name: Replace Stone Tablet Event
+    index: 9
+    text: "Do you want to lower the Statue?\n\x0E\x01\x00\x02\uFFFFYes\x0E\x01\x01\x02\x00No"
+  - name: Replace Stone Tablet Fi Event
     type: flowpatch
-    index: 4
+    index: 7
     flow:
       next: Statue Lower Switch
   - name: Statue Lower Switch
@@ -854,15 +854,42 @@
       param2: 0
       param3: 2
     cases:
-      - Unset Raise Statue Sceneflag
-      - -1
+      - Unset Question Trigger then lower Statue # yes
+      - Unset Question Trigger # no
+  - name: Unset Question Trigger
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 60 # 60 triggers fi
+      param2: 12
+      next: -1
+      param3: 3
+  - name: Unset Question Trigger then lower Statue
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 60 # 60 triggers fi
+      param2: 12
+      next: Unset Raise Statue Sceneflag
+      param3: 3
   - name: Unset Raise Statue Sceneflag
     type: flowadd
     flow:
       type: type3
       subType: 1
-      param1: 12
-      param2: 126
+      param1: 126
+      param2: 12
+      next: Unset Lower Statue Sceneflag
+      param3: 3
+  - name: Unset Lower Statue Sceneflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 100
+      param2: 12
       next: Unset Valve on Top Sceneflag
       param3: 3
   - name: Unset Valve on Top Sceneflag
@@ -870,8 +897,8 @@
     flow:
       type: type3
       subType: 1
-      param1: 12
-      param2: 121
+      param1: 121
+      param2: 12
       next: Trigger Exit
       param3: 3
   - name: Trigger Exit
