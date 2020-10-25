@@ -151,7 +151,7 @@ Skyloft - Ghost/Pipit Crystals:
     - event/115-Town2/641
     - oarc/F001r/l0
 Skyloft - Sparrot Crystals:
-  Need: Can Access Past & Can Access Second Part of Eldin & Clawshots
+  Need: Can Access Second Part of Eldin & Clawshots
   original item: 5 Gratitude Crystals
   Paths:
     - event/118-Town3/157
@@ -289,7 +289,7 @@ Sky - Lumpy Pumpkin Chandellier:
   Paths:
    - stage/F011r/r0/l0/Chandel
 Sky - Lumpy Pumpkin Harp Minigame:
-  Need: Goddess Harp & Bottle & Can Beat Earth Temple
+  Need: Goddess Harp & Bottle
   original item: Heart Piece
   Paths:
    - event/117-Pumpkin/305
@@ -400,7 +400,7 @@ Sky - Orrielle Crystals:
     - event/115-Town2/225
     - oarc/F020/l0
 Sky - Kina Crystals:
-  Need: Can Beat Fire Sanctuary & Bottle & Goddess Harp & Can Access Eldin & Can Beat Earth Temple
+  Need: Bottle & Goddess Harp
   original item: 5 Gratitude Crystals
   Paths:
     - event/117-Pumpkin/386
