@@ -648,31 +648,27 @@
     type: flowpatch
     index: 434
     flow:
-      type: switch
-      subType: 6
       param2: 9 # Harp
-      param3: 3
-      param4: 2
-      param5: 180
   - name: playing Harp with Kina 2
     type: flowpatch
     index: 80
     flow:
-      type: switch
-      subType: 6
       param2: 9 # Harp
-      param3: 3
-      param4: 2
-      param5: 52
   - name: playing Harp with Kina 3
     type: flowpatch
     index: 579
     flow:
-      type: switch
-      subType: 6
       param2: 9 # Harp
-      param3: 3
-      param4: 2
+  - name: Fs requirement for Kina Quest
+    type: flowpatch
+    index: 93
+    flow:
+      param2: 36 # always trigger
+  - name: ET requirement for Pumpkin Quest
+    type: flowpatch
+    index: 78
+    flow:
+      param2: 36 # always trigger
 118-Town3:
   - name: Wryna's Crystal
     type: flowpatch
