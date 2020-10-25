@@ -119,12 +119,12 @@ global:
       - original: 2c 00 00 00 41 82 00 18 38 a1 00 80 38 c1 00 18
         patched:  2c 00 00 00 42 80 00 18 38 a1 00 80 38 c1 00 18
       # read the item to give after whipping based on 000000FF from params2
-      # also change item subtype to 7 to always force displaying the textbox
+      # also change item subtype to 9 to always force displaying the textbox
       - original: 8b df 00 ec 38 00 00 00 98 1f 12 54 38 60 00 01 88 df 13 43 7f de 07 74 38 80 00 01
-        patched:  8b df 00 ec 38 00 00 00 98 1f 12 54 88 7f 00 ab 88 df 13 43 7f de 07 74 38 80 00 07
+        patched:  8b df 00 ec 38 00 00 00 98 1f 12 54 88 7f 00 ab 88 df 13 43 7f de 07 74 38 80 00 09
       # that code occurs another time
       - original: 8b 9f 00 ec 38 00 00 00 98 1f 12 54 38 60 00 01 88 df 13 43 7f 9c 07 74 38 80 00 01
-        patched:  8b 9f 00 ec 38 00 00 00 98 1f 12 54 88 7f 00 ab 88 df 13 43 7f 9c 07 74 38 80 00 07
+        patched:  8b 9f 00 ec 38 00 00 00 98 1f 12 54 88 7f 00 ab 88 df 13 43 7f 9c 07 74 38 80 00 09
     d_a_obj_goddess_cube:
       # Goddess cubes can always be hit, even if the one in deep woods hasn't been hit
       - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 93 e1 00 0c 3b e0 00 01 a0 03 08 ac 28 00 00 e3 41 82 00 2c
