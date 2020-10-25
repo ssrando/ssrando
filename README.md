@@ -40,7 +40,7 @@ On Windows:
 
 
 #### MORE OPTIONS
-There is a bug currently where recieving sword upgrades result in a crash, to avoid that, there is an option `--invisible-sword` which turns
+There is a bug currently where receiving sword upgrades result in a crash, to avoid that, there is an option `--invisible-sword` which turns
 the sword invisible and avoids the crash
 
 To start with all light pillars closed and needing to find the tablets to unlock them, use `--randomize-tablets`
@@ -50,6 +50,18 @@ To start with the thunderhead closed, use `--closed-thunderhead`. It is automati
 To start without a sword, use `--swordless`. Otherwise, you start with the goddess sword
 
 To only generate a spoiler log, use the `--dry-run` option as a command line argument
+
+#### INTERACTIVE SCRIPT
+If you prefer an interactive script, that prompts all possible options, instead of appending all options to the original file, you can use
+On Linux:
+
+    python3 randoscript.py
+    
+On Windows:
+    
+    py -3.8 randoscript.py
+    
+This script includes all options that can be given the original randomizer as parameters. 
 
 
 #### FOR EMULATOR

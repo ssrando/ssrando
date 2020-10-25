@@ -76,7 +76,7 @@ class Randomizer:
     self.logic.randomize_items()
     self.write_spoiler_log()
     if not self.dry_run:
-      do_gamepatches(rando)
+      do_gamepatches(self)
       # print('Required dungeons: '+(', '.join(self.required_dungeons)))
 
   def write_spoiler_log(self):
