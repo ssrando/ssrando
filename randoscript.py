@@ -55,7 +55,7 @@ print("Now generating a seed with the following options:\n"
       "\nSwordless: ", options["swordless"],
       "\nClosed Thunderhead: ", options["closed-thunderhead"],
       "\nSeed: ", options["seed"])
-                                                                                         ""
+
 print("If these options are not correct, please type n, otherwise the seed will be generated")
 confirm = input()
 
