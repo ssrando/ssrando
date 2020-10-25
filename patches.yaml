@@ -661,6 +661,15 @@ F012r: # Batreaux House
     objtype: OBJS
     object:
       anglex: 0xFF00 # sets the flag to -1 (meaning open)
+F013r: # Sparrot's House
+  - name: Sparrot spawn
+    type: objpatch
+    id: 0xFC0F
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: 36 # always there
 F020: # Sky
   - name: Fi text about goddess cubes
     type: objdelete
