@@ -23,28 +23,45 @@ On Windows:
 9)
 On Linux:
 
-    python3 randoscript.py
+    python3 ssrando.py
 
 On Windows:
 
-    python randoscript.py
+    python ssrando.py
+
+To use a predefined seed, use the seed command line argument:
+On Linux:
+
+    python3 ssrando.py --seed=123456
+
+On Windows:
+
+    python ssrando.py --seed=123456
 
 
 #### MORE OPTIONS
-Upon starting `randoscript.py`, you will be prompted to answer several questions. These questions impact several options.
+There is a bug currently where receiving sword upgrades result in a crash, to avoid that, there is an option `--invisible-sword` which turns
+the sword invisible and avoids the crash
 
-You can use a predefined seed, please make sure that currently all valid seeds have 6 digits. 
+To start with all light pillars closed and needing to find the tablets to unlock them, use `--randomize-tablets`
 
-There is a bug currently where receiving sword upgrades result in a crash, to avoid that, there is an option which turns
-the sword invisible and avoids the crash.
+To start with the thunderhead closed, use `--closed-thunderhead`. It is automatically opened after obtaining Ballad of the Goddess
 
-You can start with all light pillars closed and needing to find the tablets to unlock them.
+To start without a sword, use `--swordless`. Otherwise, you start with the goddess sword
 
-You can start with the thunderhead closed. It is automatically opened after obtaining Ballad of the Goddess
+To only generate a spoiler log, use the `--dry-run` option as a command line argument
 
-You can start without a sword. Otherwise, you start with the goddess sword
+#### INTERACTIVE SCRIPT
+If you prefer an interactive script, that prompts all possible options, instead of appending all options to the original file, you can use
+On Linux:
 
-You can only generate a spoiler log, using the Dry Run option.
+    python3 randoscript.py
+    
+On Windows:
+    
+    py -3.8 randoscript.py
+    
+This script includes all options that can be given the original randomizer as parameters. 
 
 
 #### FOR EMULATOR
