@@ -49,7 +49,8 @@ while confirm:
     else:
         options["closed-thunderhead"] = False
 
-    # Seed parsing is done by the actual rando
+    seed = seed.strip() or '-1'
+    seed = int(seed)
     options["seed"] = seed
 
     print("Now generating a seed with the following options:\n"

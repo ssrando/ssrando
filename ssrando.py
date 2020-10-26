@@ -1,6 +1,7 @@
 from collections import OrderedDict
 import sys
 import os
+import re
 import random
 from pathlib import Path
 from logic.logic import Logic
@@ -62,10 +63,7 @@ class Randomizer:
         raise StartupException("ERROR: the randomizer only supports E1.00")
     self.options = options
     self.no_logs = False
-    seed = options.get('seed','-1').strip()
-    if seed == '':
-      seed = '-1'
-    self.seed = int(seed)
+    self.seed = options.get('seed',-1)
     if self.seed == -1:
         self.seed = random.randint(0,1000000)
     self.rng = random.Random()
