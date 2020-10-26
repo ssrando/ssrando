@@ -158,6 +158,7 @@ Skyloft - Fledge Crystals:
 Skyloft - Baby Crystals:
   Need: Baby Rattle
   original item: 5 Gratitude Crystals
+  type: sidequest
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
@@ -911,14 +912,6 @@ Lanayru - Fire Node Right Chest:
   Paths:
    - stage/F300_3/r0/l0/TBox/82
 
-Lanayru - Harp:
-  Need: Can Beat Lanayru Mining Facility
-  original item: Goddess Harp
-  type: dungeon
-  Paths:
-   - event/400-Desert/286
-   - oarc/F300_4/l0
-
 Lanayru Caves - Chest:
   Need: Can Access Lanayru & Clawshots
   original item: Golden Skull # TODO check again
@@ -998,16 +991,16 @@ Skyview - Map Chest:
   Paths:
    - stage/D100/r2/l0/TBox/64
 Skyview - Small Key Digging Spot:
- Need: Can Access Skyview & Can Get Past the First Skyview Room & Can Hit High Skyview Switches & Digging Mitts & Water Scale
- # It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
- # It is not possible to jump to the vines early in the main room with scale with only one switch for the water level hit
- # You can hit both switches with good bomb throws
- # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Spume and kill it near the switch, not in logic
- # You can hit the switch to enter that room with an upwards skyward strike using a boko or a spume, not in logic
- original item: SW Small Key
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & Can Hit High Skyview Switches & Digging Mitts & Water Scale
+  # It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
+  # It is not possible to jump to the vines early in the main room with scale with only one switch for the water level hit
+  # You can hit both switches with good bomb throws
+  # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Spume and kill it near the switch, not in logic
+  # You can hit the switch to enter that room with an upwards skyward strike using a boko or a spume, not in logic
+  original item: SW Small Key
   type: dungeon
- Paths:
-  - stage/D100/r4/l0/Soil/15
+  Paths:
+    - stage/D100/r4/l0/Soil/15
 Skyview - Behind Two Eyes:
   Need: Can Access Skyview & Can Get Past the First Skyview Room & Can Hit High Skyview Switches & Practice Sword
   # Sword required to defeat the eyes
@@ -1057,7 +1050,7 @@ Skyview - Boss Key:
   Paths:
    - stage/D100/r9/l0/TBox/66
 
-Skyview Boss Room - Heart Container:
+Skyview - Ghirahim Heart Container:
  Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & (Goddess Sword | Hook Beetle | Bow) & Practice Sword & SW Small Key x2 & SW Boss Key
  original item: Heart Container
  type: dungeon
@@ -1067,7 +1060,7 @@ Skyview Boss Room - Heart Container:
   - stage/B100/r0/l3/HeartCo
   - stage/B100/r0/l4/HeartCo
 
-Skyview Spring - Ruby Tablet:
+Skyview - Ruby Tablet:
   Need: Can Access Skyview & Can Get Past the First Skyview Room & Goddess Sword & SW Small Key x2 & SW Boss Key
   original item: Ruby Tablet
   type: dungeon
@@ -1128,7 +1121,7 @@ Earth Temple - Boss Key:
   Paths:
    - stage/D200/r4/l0/TBox/68
 
-ET Boss Room - ET Heart Container:
+Earth Temple - Scaldera Heart Container:
  Need: Can Access Earth Temple & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET Boss Key & Practice Sword
  #Scaldera can be beaten without bombs but the logic does not require it
  original item: Heart Container
@@ -1137,7 +1130,7 @@ ET Boss Room - ET Heart Container:
   - stage/B200/r10/l1/HeartCo
   - stage/B200/r10/l2/HeartCo
 
-ET Spring - Amber Tablet:
+Earth Temple - Amber Tablet:
   Need: Can Access Earth Temple & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET Boss Key & Goddess Sword
   original item: Amber Tablet
   type: dungeon
@@ -1222,7 +1215,7 @@ Lanayru Mining Facility - Chest After Boss Key Room:
   Paths:
    - stage/D300_1/r5/l0/TBox/74
 
-LMF boss room - LMF Heart Container:
+Lanayru Mining Facility - LMF Heart Container:
   Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows & Practice Sword & Can Hit Crystal in LMF Map Room & LMF Boss Key
   original item: Heart Container
   type: dungeon
@@ -1230,6 +1223,13 @@ LMF boss room - LMF Heart Container:
   - stage/B300/r0/l1/HeartCo
   - stage/B300/r0/l3/HeartCo
 
+Lanayru Mining Facility - Harp:
+  Need: Can Beat Lanayru Mining Facility
+  original item: Goddess Harp
+  type: dungeon
+  Paths:
+   - event/400-Desert/286
+   - oarc/F300_4/l0
 
 Ancient Cistern - Small Key Chest:
   Need: Can Access Ancient Cistern & Water Scale & Practice Sword
@@ -1264,11 +1264,11 @@ Ancient Cistern - Behind Waterfall:
   Paths:
    - stage/D101/r3/l0/TBox/84
 Ancient Cistern - Bokoblin:
- Need: Can Access Ancient Cistern & Water Scale & Whip & (Bow | Beetle)
- original item: AC Small Key
+  Need: Can Access Ancient Cistern & Water Scale & Whip & (Bow | Beetle)
+  original item: AC Small Key
   type: dungeon
- Paths:
-  - stage/D101/r4/l0/EBc/0xFC00
+  Paths:
+    - stage/D101/r4/l0/EBc/0xFC00
 Ancient Cistern - Boss Key:
   Need: Can Access Ancient Cistern & Can Lower Ancient Cistern Statue & (Clawshots | Hook Beetle)
   # In the Basement you can either clawshot around the boulder, or use hook Beetle to blow it up. A very precise bomb throw also works (not in logic).
@@ -1277,7 +1277,7 @@ Ancient Cistern - Boss Key:
   Paths:
    - stage/D101/r4/l0/TBox/68
 
-AC Boss Room - AC Heart Container:
+Ancient Cistern - Koloktos Heart Container:
  Need: Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots) & Can Defeat Koloktos
  #To reach the boss door, either you unlock the door, or you lower the statue
  original item: Heart Container
@@ -1286,7 +1286,7 @@ AC Boss Room - AC Heart Container:
   - stage/B101/r0/l1/HeartCo
   - stage/B101/r0/l3/HeartCo
 
-AC Boss Room - Goddess Longsword:
+Ancient Cistern - Goddess Longsword:
   Need: Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots) & Goddess Sword
   original item: Progressive Sword
   type: dungeon
@@ -1300,6 +1300,7 @@ Sandship - Behind Combination Lock:
   # You need a sword to get rid of the lock
   # The combination is always the same, but getting the hint requires gust bellows or turning the room into the past with bow. For newcomers, require the hint
   original item: SS Small Key
+  type: dungeon
   Paths:
    - stage/D301/r10/l0/TBox/69
 Sandship - Bow chest:
@@ -1472,7 +1473,7 @@ Fire Sanctuary - Ghirahim Heart Container:
   - stage/B201/r0/l1/HeartCo
   - stage/B201/r0/l2/HeartCo
 
-Fire Sanctuary - Din's Flame: # didn't find Event
+Fire Sanctuary - Din's Flame:
   Need: Can Access Fire Sanctuary & Hook Beetle & Goddess Sword & FS Small Key x3 & Mogma Mitts & FS Boss Key
   original item: Progressive Sword
   type: dungeon
