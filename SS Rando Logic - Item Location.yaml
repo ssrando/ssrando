@@ -1130,9 +1130,10 @@ AC Boss Room - Goddess Longsword:
    - oarc/B101_1/l0
 
 Sandship - Behind Combination Lock:
-  Need: Can Access Sandship & Practice Sword & (Goddess Sword | Bow | Bomb Bag | Slingshot)
+  Need: Can Access Sandship & Practice Sword & (Goddess Sword | Bow | Bomb Bag | Slingshot) & (Gust Bellows | Bow)
   # Skipping the Spume not in logic
   # You need a sword to get rid of the lock
+  # The combination is always the same, but getting the hint requires gust bellows or turning the room into the past with bow. For newcomers, require the hint
   original item: SS Small Key
   Paths:
    - stage/D301/r10/l0/TBox/69
