@@ -1206,7 +1206,7 @@ F210: # Mogma Turf
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 901
+      trigstoryfid: 470
   - name: mogma 2
     type: objpatch
     id: 0xFC3D
