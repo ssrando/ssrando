@@ -1053,7 +1053,7 @@ D100: # Skyview
       anglez: 0
       id: 0xFD03
       name: Tubo
-D101:
+D101: # Ancient Cistern
   - name: remove stone tablet text
     type: objpatch
     id: 0xFC11
@@ -1069,6 +1069,7 @@ D101:
     room: 10
     objtype: OBJ
     object:
+      params1: 0xFFFFFF01 # change subtype to 1, so it doesn't despawn after first use
       anglex: 0xFF3C # remove untrigger, flag 60 will be unset in event
   - name: Reload Exit
     type: objadd
