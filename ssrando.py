@@ -1,5 +1,6 @@
 from collections import OrderedDict
 import sys
+import os
 import random
 from pathlib import Path
 from logic.logic import Logic
@@ -11,6 +12,33 @@ from typing import List
 
 class StartupException(Exception):
   pass
+
+with open("version.txt", "r") as f:
+  VERSION = f.read().strip()
+
+VERSION_WITHOUT_COMMIT = VERSION
+
+# Try to add the git commit hash to the version number if running from source.
+if os.path.isdir(".git"):
+  version_suffix = "_NOGIT"
+  
+  git_commit_head_file = os.path.join(".git", "HEAD")
+  if os.path.isfile(git_commit_head_file):
+    with open(git_commit_head_file, "r") as f:
+      head_file_contents = f.read().strip()
+    if head_file_contents.startswith("ref: "):
+      # Normal head, HEAD file has a reference to a branch which contains the commit hash
+      relative_path_to_hash_file = head_file_contents[len("ref: "):]
+      path_to_hash_file = os.path.join(".git", relative_path_to_hash_file)
+      if os.path.isfile(path_to_hash_file):
+        with open(path_to_hash_file, "r") as f:
+          hash_file_contents = f.read()
+        version_suffix = "_" + hash_file_contents[:7]
+    elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
+      # Detached head, commit hash directly in the HEAD file
+      version_suffix = "_" + head_file_contents[:7]
+  
+  VERSION += version_suffix
 
 class Randomizer:
   def __init__(self, options):
@@ -34,7 +62,10 @@ class Randomizer:
         raise StartupException("ERROR: the randomizer only supports E1.00")
     self.options = options
     self.no_logs = False
-    self.seed = int(options.get('seed','-1'))
+    seed = options.get('seed','-1').strip()
+    if seed == '':
+      seed = '-1'
+    self.seed = int(seed)
     if self.seed == -1:
         self.seed = random.randint(0,1000000)
     self.rng = random.Random()
@@ -153,7 +184,7 @@ class Randomizer:
   def get_log_header(self):
     header = ""
     
-    header += "Skyward Sword Randomizer Version %s\n" % 'beta something'
+    header += "Skyward Sword Randomizer Version %s\n" % VERSION
     
     # if self.permalink:
     #   header += "Permalink: %s\n" % self.permalink
