@@ -28,6 +28,9 @@ On Linux:
 On Windows:
 
     py ssrando.py
+Or:
+
+    python ssrando.py
 
 To use a predefined seed, use the seed command line argument:
 On Linux:
@@ -37,7 +40,9 @@ On Linux:
 On Windows:
 
     py ssrando.py --seed=123456
+Or:
 
+    python ssrando.py --seed=123456
 
 #### MORE OPTIONS
 There is a bug currently where receiving sword upgrades result in a crash, to avoid that, there is an option `--invisible-sword` which turns
