@@ -567,7 +567,8 @@ class Logic:
       # Reset the dungeon/secret cave access macros if we changed them earlier.
       self.update_entrance_connection_macros()
   
-  def split_location_name_by_zone(self, location_name):
+  @staticmethod
+  def split_location_name_by_zone(location_name):
     if " - " in location_name:
       zone_name, specific_location_name = location_name.split(" - ", 1)
     else:
@@ -923,8 +924,17 @@ class Logic:
       else:
         item_name = self.rando.rng.choice(possible_items_when_not_placing_useful)
       
+      locations_filtered = [
+        loc for loc in accessible_undone_locations
+        if loc not in self.rando.race_mode_banned_locations
+      ]
+      if len(locations_filtered) >= 1:
+        accessible_undone_locations = locations_filtered
+      else:
+        raise Exception("Failed to prevent progress items from appearing in banned locations!")
       
       possible_locations = self.filter_locations_valid_for_item(accessible_undone_locations, item_name)
+
       
       # We weight it so newly accessible locations are more likely to be chosen.
       # This way there is still a good chance it will not choose a new location.

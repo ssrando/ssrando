@@ -98,6 +98,13 @@ class Randomizer:
       print(f"ERROR: unknown banned type(s): {unknown_types}")
     self.race_mode_banned_locations = []
     self.logic = Logic(self)
+    self.non_required_dungeons = [dungeon for dungeon in
+      constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
+    if self.options.get('empty-unrequired-dungeons',False):
+      for location_name in self.logic.item_locations:
+        zone, _ = Logic.split_location_name_by_zone(location_name)
+        if zone in self.non_required_dungeons:
+          self.race_mode_banned_locations.append(location_name)
     # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Bomb Bag")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")

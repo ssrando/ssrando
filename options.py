@@ -44,6 +44,13 @@ OPTIONS = [
         'help': 'Dumb hack that makes the sword always invisible so it doesn\'t crash on console if obtaining an upgraded sword',
     },
     {
+        'name': 'Empty unrequired Dungeons',
+        'command': 'empty-unrequired-dungeons',
+        'type': 'boolean',
+        'default': False,
+        'help': 'If activated, only the required dungeons will contain progression items',
+    },
+    {
         'name': 'Banned Types',
         'command': 'banned-types',
         'type': 'list',
