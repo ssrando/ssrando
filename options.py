@@ -29,13 +29,13 @@ OPTIONS = [
         'default': False,
         'help': 'Instead of starting with the goddess sword, in this mode all sword upgrades, including the pracice sword, have to be found',
     },
-    {
-        'name': 'Randomize Sailcloth',
-        'command': 'randomize-sailcloth',
-        'type': 'boolean',
-        'default': False,
-        'help': '(not implemented yet) Instead of starting with the Sailcloth, it\'s added to the item pool',
-    },
+    # {
+    #     'name': 'Randomize Sailcloth',
+    #     'command': 'randomize-sailcloth',
+    #     'type': 'boolean',
+    #     'default': False,
+    #     'help': '(not implemented yet) Instead of starting with the Sailcloth, it\'s added to the item pool',
+    # },
     {
         'name': 'Invisible Sword',
         'command': 'invisible-sword',

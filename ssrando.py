@@ -213,8 +213,8 @@ class Randomizer:
         option_strings.append(option_name)
       else:
         value = self.options[option_name]
-        option_strings.append("%s: %s" % (option_name, value))
-    header += ", ".join(option_strings)
+        option_strings.append("  %s: %s" % (option_name, value))
+    header += "\n".join(option_strings)
     header += "\n\n\n"
     
     return header
