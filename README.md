@@ -27,7 +27,7 @@ On Linux:
 
 On Windows:
 
-    python ssrando.py
+    py ssrando.py
 
 To use a predefined seed, use the seed command line argument:
 On Linux:
@@ -36,7 +36,7 @@ On Linux:
 
 On Windows:
 
-    python ssrando.py --seed=123456
+    py ssrando.py --seed=123456
 
 
 #### MORE OPTIONS
