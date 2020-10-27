@@ -9,7 +9,7 @@ from pathlib import Path
 import os
 
 from .item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS
-from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, POTENTIALLY_REQUIRED_DUNGEONS
+from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
 
 # TODO, path for logic files will probably be params
 ROOT_DIR = Path(__file__).parent.parent
@@ -146,14 +146,14 @@ class Logic:
     return len(self.unplaced_progress_items)
   
   def get_num_progression_locations(self):
-    return Logic.get_num_progression_locations_static(self.item_locations, self.rando.options)
+    return Logic.get_num_progression_locations_static(self.item_locations, self.rando.banned_types)
   
   @staticmethod
-  def get_num_progression_locations_static(item_locations, options):
+  def get_num_progression_locations_static(item_locations, banned_types):
     progress_locations = Logic.filter_locations_for_progression_static(
       item_locations.keys(),
       item_locations,
-      options,
+      banned_types,
     )
     
     return len(progress_locations)
@@ -367,67 +367,18 @@ class Logic:
     return Logic.filter_locations_for_progression_static(
       locations_to_filter,
       self.item_locations,
-      self.rando.options,
+      self.rando.banned_types,
     )
   
   @staticmethod
-  def filter_locations_for_progression_static(locations_to_filter, item_locations, options):
-    # TODO: types
-    # filtered_locations = []
-    # for location_name in locations_to_filter:
-    #   types = item_locations[location_name]["Types"]
-    #   if "No progression" in types:
-    #     continue
-    #   if "Dungeon" in types and not options.get("progression_dungeons"):
-    #     continue
-    #   if "Tingle Chest" in types and not options.get("progression_tingle_chests"):
-    #     continue
-    #   if "Great Fairy" in types and not options.get("progression_great_fairies"):
-    #     continue
-    #   if "Puzzle Secret Cave" in types and not options.get("progression_puzzle_secret_caves"):
-    #     continue
-    #   if "Combat Secret Cave" in types and not options.get("progression_combat_secret_caves"):
-    #     continue
-    #   if "Savage Labyrinth" in types and not options.get("progression_savage_labyrinth"):
-    #     continue
-    #   if "Short Sidequest" in types and not options.get("progression_short_sidequests"):
-    #     continue
-    #   if "Long Sidequest" in types and not options.get("progression_long_sidequests"):
-    #     continue
-    #   if "Spoils Trading" in types and not options.get("progression_spoils_trading"):
-    #     continue
-    #   if "Minigame" in types and not options.get("progression_minigames"):
-    #     continue
-    #   if "Battlesquid" in types and not options.get("progression_battlesquid"):
-    #     continue
-    #   if "Free Gift" in types and not options.get("progression_free_gifts"):
-    #     continue
-    #   if "Mail" in types and not options.get("progression_mail"):
-    #     continue
-    #   if ("Platform" in types or "Raft" in types) and not options.get("progression_platforms_rafts"):
-    #     continue
-    #   if "Submarine" in types and not options.get("progression_submarines"):
-    #     continue
-    #   if "Eye Reef Chest" in types and not options.get("progression_eye_reef_chests"):
-    #     continue
-    #   if ("Big Octo" in types or "Gunboat" in types) and not options.get("progression_big_octos_gunboats"):
-    #     continue
-    #   if "Expensive Purchase" in types and not options.get("progression_expensive_purchases"):
-    #     continue
-    #   if "Island Puzzle" in types and not options.get("progression_island_puzzles"):
-    #     continue
-    #   if ("Other Chest" in types or "Misc" in types) and not options.get("progression_misc"):
-    #     continue
-    #   if "Sunken Treasure" in types and filter_sunken_treasure:
-    #     continue
-    #   # Note: The Triforce/Treasure Chart sunken treasures are handled differently from other types.
-    #   # During randomization they are handled by not considering the charts themselves to be progress items.
-    #   # That results in the item randomizer considering these locations inaccessible until after all progress items are placed.
-    #   # But when calculating the total number of progression locations, sunken treasures are filtered out entirely here so they can be specially counted elsewhere.
-      
-    #   filtered_locations.append(location_name)
+  def filter_locations_for_progression_static(locations_to_filter, item_locations, banned_types):
+    filtered_locations = []
+    for location_name in locations_to_filter:
+      types: set = item_locations[location_name]["type"]
+      if types.isdisjoint(banned_types):
+        filtered_locations.append(location_name)
     
-    return [x for x in locations_to_filter]
+    return filtered_locations
   
   def check_item_valid_in_location(self, item_name, location_name):
     # Don't allow dungeon items to appear outside their proper dungeon when Key-Lunacy is off.
@@ -479,11 +430,15 @@ class Logic:
       else:
         item_locations[location_name]["Need"] = Logic.parse_logic_expression(req_string)
       
-      # TODO: types
-      # types_string = item_locations[location_name]["Types"]
-      # types = types_string.split(",")
-      # types = [type.strip() for type in types]
-      # item_locations[location_name]["Types"] = types
+      if not "type" in item_locations[location_name]:
+        print("ERROR, "+location_name+" doesn't have types!")
+      types_string = item_locations[location_name]["type"]
+      types = types_string.split(",")
+      types = set((type.strip() for type in types))
+      unknown_types = [x for x in types if not x in ALL_TYPES]
+      if len(unknown_types) != 0:
+        raise Exception(f"unknown types: {unknown_types}")
+      item_locations[location_name]["type"] = types
     
     return item_locations
     
@@ -573,7 +528,7 @@ class Logic:
     progress_locations = Logic.filter_locations_for_progression_static(
       self.item_locations.keys(),
       self.item_locations,
-      self.rando.options,
+      self.rando.banned_types,
     )
     
     useful_items = []

@@ -13,3 +13,5 @@ DUNGEON_NAMES = OrderedDict([
     ('LanayruCaves', 'Lanayru Caves'), # "short name" doesn't allow space
 ])
 DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict([v, k] for k, v in DUNGEON_NAMES.items())
+
+ALL_TYPES = ['batreaux', 'crystal', 'dungeon', 'goddess', 'minigame', 'overworld', 'quest', 'sidequest', 'silent realm']

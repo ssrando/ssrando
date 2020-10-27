@@ -91,6 +91,11 @@ class Randomizer:
       self.starting_items.append('Progressive Sword')
     # if not self.options.get('randomize-sailcloth',False):
     #   self.starting_items.append('Sailcloth')
+    self.banned_types = self.options.get('banned-types','').split(',')
+    self.banned_types = [x.strip() for x in self.banned_types if x.strip() != '']
+    unknown_types = [x for x in self.banned_types if not x in constants.ALL_TYPES]
+    if len(unknown_types) > 0:
+      print(f"ERROR: unknown banned type(s): {unknown_types}")
     self.race_mode_banned_locations = []
     self.logic = Logic(self)
     # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Bomb Bag")

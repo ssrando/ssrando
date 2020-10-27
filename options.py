@@ -1,3 +1,5 @@
+from logic.constants import ALL_TYPES
+
 OPTIONS = [
     {
         'name': 'Dry Run',
@@ -40,6 +42,13 @@ OPTIONS = [
         'type': 'boolean',
         'default': False,
         'help': 'Dumb hack that makes the sword always invisible so it doesn\'t crash on console if obtaining an upgraded sword',
+    },
+    {
+        'name': 'Banned Types',
+        'command': 'banned-types',
+        'type': 'list',
+        'default': '',
+        'help': "Choose subtypes that can't contain progression items, as a comma seperated list, available types are: " + ", ".join(ALL_TYPES),
     },
     {
         'name': 'Seed',
