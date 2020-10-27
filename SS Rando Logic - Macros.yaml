@@ -141,10 +141,9 @@ Can Get Past the First Skyview Room:
 #You need a sword to defeat the first eye + something to stun the boko baba or hit the switch from afar
 #The only way you can get around the sword requirement here is by having bombs to blow up both the trees and the barricade
 #Water Scale make it Skyview 2 were the boko baba isn't there, and the baricade disappears anyway.
-
 Can Beat Skyview:
-    Can Access Skyview & (Bomb Bag | Beetle | Bow | Water Scale) & SW Small Key x2 & SW Boss Key & Goddess Sword
-# Goddess Sword to activate the crest
+    Can Access Skyview & Can Get Past the First Skyview Room & Goddess Sword & SW Small Key x2 & SW Boss Key
+# Goddess Sword to activate the crest, killing or avoiding Spider with Goddess Sword in logic
 
 Can Access Dungeon Entrance In Eldin Volcano:
     Can Access Second Part of Eldin & Key Piece x5
