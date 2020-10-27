@@ -125,3 +125,4 @@ New Trial Completed Storyflags:
 - Peppernicus2000: Logic, fixes
 - Azer67: Logic
 - MrCheeze: Reverse engineering file formats
+- LagoLunatic: For implementing the logic for [TWWR](https://github.com/LagoLunatic/wwrando), which is also used here
