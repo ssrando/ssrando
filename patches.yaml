@@ -1306,22 +1306,29 @@ D201: # FS A
     room: 0
     objtype: OBJ
 D201_1: # FS B
-   - name: Clawshot Traget for 2nd small Key
-     type: objadd
-     layer: 0
-     room: 5
-     objtype: OBJ
-     object:
-       params1: 0xFFFFFC24
-       params2: 0xFFFFFFFF
-       posx: -5743
-       posy: 650
-       posz: -8514
-       anglex: 0
-       angley: 36894
-       anglez: 0
-       id: 0xFC20
-       name: ClawSTg
+  - name: Clawshot Traget for 2nd small Key
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFC24
+      params2: 0xFFFFFFFF
+      posx: -5743
+      posy: 650
+      posz: -8514
+      anglex: 0
+      angley: 36894
+      anglez: 0
+      id: 0xFC20
+      name: ClawSTg
+  - name: Fist Trapped Mogma CS delete
+    type: objdelete
+    layer: 0
+    room: 5
+    objtype: OBJ
+    id: 0xFC11
+  
 B201: # G2 fight
   - name: Layer override
     type: layeroverride
