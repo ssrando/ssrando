@@ -81,6 +81,9 @@ global:
         patched:  88 1f 07 8c 2c 00 00 00 40 82 00 18 88 7f 00 a8 38 80 ff ff 38 a0 00 00
       - original: 88 03 07 8c 2c 00 00 00 40 82 00 18 38 60 00 1c 38 80 ff ff 38 a0 00 00
         patched:  88 03 07 8c 2c 00 00 00 40 82 00 18 88 63 00 a8 38 80 ff ff 38 a0 00 00
+      # nop out the branch that only sets the sceneflag, if the item was a key piece
+      - original: 2c 03 00 00 41 82 00 58 88 9f 00 ec 38 00 00 00 98 1f 07 98
+        patched:  2c 03 00 00 60 00 00 00 88 9f 00 ec 38 00 00 00 98 1f 07 98
     d_a_obj_warp:
       # items are hardcoded for the trial, just grab them from params1, FF000000 instead and skip most of the switch statement
       # turns out the trial takes priority over the item, which causes link to warp out before recieving the item
