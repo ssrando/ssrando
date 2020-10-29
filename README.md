@@ -23,26 +23,26 @@ On Windows:
 9)
 On Linux:
 
-    python3 ssrando.py
+    python3 randoscript.py
 
 On Windows:
 
-    py ssrando.py
+    py randoscript.py
 Or:
 
-    python ssrando.py
+    python randoscript.py
 
 To use a predefined seed, use the seed command line argument:
 On Linux:
 
-    python3 ssrando.py --seed=123456
+    python3 randoscript.py --seed=123456
 
 On Windows:
 
-    py ssrando.py --seed=123456
+    py randoscript.py --seed=123456
 Or:
 
-    python ssrando.py --seed=123456
+    python randoscript.py --seed=123456
 
 #### MORE OPTIONS
 There is a bug currently where receiving sword upgrades result in a crash, to avoid that, there is an option `--invisible-sword` which turns
@@ -87,6 +87,15 @@ This script includes all options that can be given the original randomizer as pa
 ### Tests
 `python3 -mpytest test`  
 Make sure to have the extracted game prepared as stated in Installing, otherwise they won't work
+
+### Executable
+To build the executable, you need PyInstaller installed:
+
+    python3 -mpip install pyinstaller
+
+Then, build the executable using
+
+    pyinstaller ssrando.spec
 
 ### Changes
 #### Storyflag
