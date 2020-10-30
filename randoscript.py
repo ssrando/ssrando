@@ -1,16 +1,19 @@
 from collections import OrderedDict
 import sys
 
-from ssrando import Randomizer
+from ssrando import Randomizer, VERSION
 from options import OPTIONS
 
 def process_command_line_options(options):
     if 'help' in options:
-        print('Skyward Sword Randomizer')
+        print('Skyward Sword Randomizer Version '+VERSION)
         print('Available command line options:\n')
         longest_option = max(len(option['command']) for option in OPTIONS)
         for option in OPTIONS:
             print(' --'+option["command"].ljust(longest_option) + ' ' + option['help'])
+        return None
+    elif 'version' in options:
+        print(VERSION)
         return None
     else:
         cleaned_options = {}
@@ -51,7 +54,8 @@ else:
 
     while confirm:
         chosen_options = OrderedDict()
-        print("Welcome to the Skyward Sword Randomizer\nIn the following i will ask you some questions about your Rando experience\n")
+        print("Welcome to the Skyward Sword Randomizer Version " + VERSION)
+        print("In the following i will ask you some questions about your Rando experience\n")
         for option in OPTIONS:
             print(option["name"] + ': ' + option["help"])
             if option["type"] == "boolean":
