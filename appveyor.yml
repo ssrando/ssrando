@@ -6,7 +6,7 @@ install:
   - py -3.8 -Wignore -m pip install -r requirements.txt
   - py -3.8 -Wignore -m pip install -r requirements_build.txt
 
-build:
+build_script:
   - py -3.8 -Wignore -m PyInstaller ssrando.spec
   - ps: cp README.md dist
   - ps: cp randomize.bat dist
