@@ -1,6 +1,6 @@
 image:
-  - Visual Studio 2019
-  - Ubuntu
+- Visual Studio 2019
+- Ubuntu
 
 stack: python 3.8
 
@@ -13,15 +13,17 @@ init:
 install:
 - python -m pip install -r requirements.txt
 - python -m pip install -r requirements_build.txt
+- sh: sudo apt -yq update > /dev/null
+- sh: sudo apt install -yq --no-install-suggests --no-install-recommends python3.8-dev > /dev/null
 
 build_script:
-  - python -m PyInstaller ssrando.spec
-  - cp README.md dist
-  - cp randomize.bat dist
-  - cp setup.bat dist
+- python -m PyInstaller ssrando.spec
+- cp README.md dist
+- cp randomize.bat dist
+- cp setup.bat dist
 
 artifacts:
-  # pyinstaller puts the build exe here
-  - path: dist
-    name: dist
-    type: zip
+# pyinstaller puts the build exe here
+- path: dist
+  name: dist
+  type: zip
