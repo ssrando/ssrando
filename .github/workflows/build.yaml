@@ -21,6 +21,7 @@ jobs:
         run: pyinstaller ssrando.spec
       - name: Copy windows run script
         run: copy ssrando.bat dist
+        if: ${{ matrix.os == 'windows-latest' }}
       - uses: actions/upload-artifact@v2
         with:
           name: dist ${{ matrix.os }}
