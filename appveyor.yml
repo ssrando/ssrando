@@ -6,7 +6,9 @@ install:
   - py -3.8 -Wignore -m pip install -r requirements.txt
   - py -3.8 -Wignore -m pip install -r requirements_build.txt
   - py -3.8 -Wignore -m PyInstaller ssrando.spec
-  - ps: cp README.md setup.bat randomize.bat dist
+  - ps: cp README.md dist
+  - ps: cp randomize.bat dist
+  - ps: cp setup.bat dist
 
 artifacts:
   # pyinstaller puts the build exe here
