@@ -15,11 +15,11 @@ from typing import List
 class StartupException(Exception):
   pass
 
-VERSION = (RANDO_ROOT_PATH / "version.txt").read_text().strip()
-VERSION_WITHOUT_COMMIT = VERSION
 
 # Try to add the git commit hash to the version number if running from source.
 if IS_RUNNING_FROM_SOURCE:
+  VERSION = (RANDO_ROOT_PATH / "version.txt").read_text().strip()
+  VERSION_WITHOUT_COMMIT = VERSION
   if os.path.isdir(".git"):
     version_suffix = "_NOGIT"
     
@@ -40,6 +40,9 @@ if IS_RUNNING_FROM_SOURCE:
         version_suffix = "_" + head_file_contents[:7]
     
     VERSION += version_suffix
+else:
+  VERSION = (RANDO_ROOT_PATH / "version-with-git.txt").read_text().strip()
+  VERSION_WITHOUT_COMMIT = VERSION
 
 class Randomizer:
   def __init__(self, options):
