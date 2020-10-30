@@ -3,7 +3,7 @@ This is still under heavy development, be careful to use it!
 ## Running the compiled binary (Windows)
 1. Grab the compiled program [from the github release section](https://github.com/lepelog/sslib/releases) or from github actions
 2. Download and Install wit from [here](https://wit.wiimm.de/download.html) (there's a simple installer.exe for Windows, you will probably have to reboot your system)
-3. Take a clean E 1.00 ISO (make sure to verify the hashes in dolphin: crc="2b48d050" md5="e7c39bb46cf938a5a030a01a677ef7d1" sha1="9cf9a4a7ed2a6a4abb4582e3304af1327c160640") and put it in the sslib directory (in the following steps it will be simply called disc.iso)
+3. Take a clean E 1.00 ISO (make sure to verify the hashes in dolphin: crc="2b48d050" md5="e7c39bb46cf938a5a030a01a677ef7d1" sha1="9cf9a4a7ed2a6a4abb4582e3304af1327c160640") and put it in the sslib directory as disc.iso (make sure it isn't called disc.iso.iso)
 4. Run `setup.bat`
 5. Double click on `ssrando.bat` to execute it and follow the steps displayed there
 ## Installing from source
