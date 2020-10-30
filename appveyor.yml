@@ -3,9 +3,9 @@ image:
   # - Ubuntu
 
 install:
-  - ps: python -m pip install -r requirements.txt
-  - ps: python -m pip install -r requirements_build.txt
-  - pyinstaller ssrando.spec
+  - ps: py -3.8 -m pip install -r requirements.txt
+  - ps: py -3.8 -m pip install -r requirements_build.txt
+  - ps: py -3.8 PyInstaller ssrando.spec
   - ps: cp README.md setup.bat randomize.bat dist
 
 artifacts:
