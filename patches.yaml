@@ -376,6 +376,18 @@ F000: # Skyloft
     layer: 4
   - name: unnecessary oarcs
     type: oarcdelete
+    oarc: GetSozaiN
+    layer: 6
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSozaiO
+    layer: 6
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSozaiP
+    layer: 6
+  - name: unnecessary oarcs
+    type: oarcdelete
     oarc: GetGaragara
     layer: 0
   - name: unnecessary oarcs
