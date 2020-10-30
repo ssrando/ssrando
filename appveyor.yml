@@ -1,0 +1,13 @@
+image:
+  - Visual Studio 2019
+  # - Ubuntu
+
+install:
+  - ps: python -m pip install -r requirements.txt
+  - ps: python -m pip install -r requirements_build.txt
+  - pyinstaller ssrando.spec
+  - ps: cp README.md setup.bat randomize.bat dist
+
+artifacts:
+  # pyinstaller puts the build exe here
+  - path: dist/*
