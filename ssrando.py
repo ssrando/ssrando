@@ -212,7 +212,7 @@ class Randomizer:
     
     header += "Seed: %s\n" % self.seed
     
-    header += "Options selected:\n  "
+    header += "Options selected:\n"
     non_disabled_options = [
       name for name in self.options
       if self.options[name] not in [False, [], {}, OrderedDict()]
@@ -221,7 +221,7 @@ class Randomizer:
     option_strings = []
     for option_name in non_disabled_options:
       if isinstance(self.options[option_name], bool):
-        option_strings.append(option_name)
+        option_strings.append("  %s" % option_name)
       else:
         value = self.options[option_name]
         option_strings.append("  %s: %s" % (option_name, value))
