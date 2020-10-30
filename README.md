@@ -1,7 +1,14 @@
 This is still under heavy development, be careful to use it!
 
-## Installing
-1) Download [https://github.com/lepelog/sslib](https://github.com/lepelog/sslib) either via Github directly or via git
+## Running the compiled binary (Windows)
+1. For stable releases, grab the compiled program from the [github release section](https://github.com/lepelog/sslib/releases), for the newest, although potentially untested build get them from [appveyor](https://ci.appveyor.com/project/lepelog/sslib).
+2. Download and Install wit from [here](https://wit.wiimm.de/download.html) (there's a simple installer.exe for Windows, you will probably have to reboot your system)
+3. Take a clean E 1.00 ISO (make sure to verify the hashes in dolphin: crc="2b48d050" md5="e7c39bb46cf938a5a030a01a677ef7d1" sha1="9cf9a4a7ed2a6a4abb4582e3304af1327c160640") and put it in the sslib directory as disc.iso (make sure it isn't called disc.iso.iso)
+4. Run `setup.bat`
+5. Double click on `randomize.bat` to execute it and follow the steps displayed there
+6. For subsequent seeds, only run `randomize.bat` again
+## Installing from source
+1) Clone [https://github.com/lepelog/sslib](https://github.com/lepelog/sslib)
 2) Install Python 3.8(!) (3.9 won't work on Windows) and pip (comes with most python installers)
 3) Download and Install wit from [here](https://wit.wiimm.de/download.html) (there's a simple installer.exe for Windows, you will probably have to reboot your system)
 4) Open a terminal of your choice and use the `cd` command to navigate to the directory where you have sslib saved
@@ -23,26 +30,26 @@ On Windows:
 9)
 On Linux:
 
-    python3 ssrando.py
+    python3 randoscript.py
 
 On Windows:
 
-    py ssrando.py
+    py randoscript.py
 Or:
 
-    python ssrando.py
+    python randoscript.py
 
 To use a predefined seed, use the seed command line argument:
 On Linux:
 
-    python3 ssrando.py --seed=123456
+    python3 randoscript.py --seed=123456
 
 On Windows:
 
-    py ssrando.py --seed=123456
+    py randoscript.py --seed=123456
 Or:
 
-    python ssrando.py --seed=123456
+    python randoscript.py --seed=123456
 
 #### MORE OPTIONS
 There is a bug currently where receiving sword upgrades result in a crash, to avoid that, there is an option `--invisible-sword` which turns
@@ -87,6 +94,15 @@ This script includes all options that can be given the original randomizer as pa
 ### Tests
 `python3 -mpytest test`  
 Make sure to have the extracted game prepared as stated in Installing, otherwise they won't work
+
+### Executable
+To build the executable, you need PyInstaller installed:
+
+    python3 -mpip install pyinstaller
+
+Then, build the executable using
+
+    pyinstaller ssrando.spec
 
 ### Changes
 #### Storyflag

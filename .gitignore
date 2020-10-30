@@ -169,3 +169,6 @@ modified-extract
 # rando generated
 spoiler.txt
 *Spoiler Log.txt
+
+# files generated for build
+version-with-git.txt

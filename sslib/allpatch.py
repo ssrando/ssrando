@@ -98,6 +98,7 @@ class AllPatcher:
             match = STAGE_REGEX.match(stagepath.parts[-1])
             stage = match[1]
             layer = int(match[2])
+            # TODO: skip if nothing is modified at all
             modified_stagepath = self.modified_extract_path/'DATA'/'files'/'Stage'/f'{stage}'/f'{stage}_stg_l{layer}.arc.LZ'
             modified = False
             stagedata = nlzss11.decompress(stagepath.read_bytes())
