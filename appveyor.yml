@@ -15,3 +15,5 @@ build_script:
 artifacts:
   # pyinstaller puts the build exe here
   - path: dist/*
+    name: dist
+    type: zip
