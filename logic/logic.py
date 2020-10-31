@@ -175,9 +175,6 @@ class Logic:
     if cleaned_item_name not in self.all_item_names:
       raise Exception("Unknown item name: " + item_name)
     
-    if item_name == '5 Gratitude Crystals':
-      for _ in range(5):
-        self.currently_owned_items.append('Gratitude Crystal')
     else:
       self.currently_owned_items.append(cleaned_item_name)
     
@@ -193,9 +190,6 @@ class Logic:
     if cleaned_item_name not in self.all_item_names:
       raise Exception("Unknown item name: " + item_name)
     
-    if item_name == '5 Gratitude Crystals':
-      for _ in range(5):
-        self.currently_owned_items.remove('Gratitude Crystal')
     else:
       self.currently_owned_items.remove(cleaned_item_name)
     
