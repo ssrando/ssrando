@@ -733,6 +733,25 @@ F023: # Thunderhead
     type: oarcadd
     oarc: KobunB
     destlayer: 1
+  - name: void out during bug heaven minigame
+    type: objadd
+    layer: 13
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFCFFF06
+      params2: 0xFFDFFFFF
+      posx: -165885
+      posy: 16506
+      posz: -52597
+      sizex: 50463
+      sizey: 1000
+      sizez: 50463
+      anglex: 0
+      angley: 0
+      anglez: 0xFFFF
+      id: 0xFC00
+      name: PlRsTag
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
