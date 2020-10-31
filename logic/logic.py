@@ -175,9 +175,6 @@ class Logic:
     if cleaned_item_name not in self.all_item_names:
       raise Exception("Unknown item name: " + item_name)
     
-    if item_name == '5 Gratitude Crystals':
-      for _ in range(5):
-        self.currently_owned_items.append('Gratitude Crystal')
     else:
       self.currently_owned_items.append(cleaned_item_name)
     
@@ -193,9 +190,6 @@ class Logic:
     if cleaned_item_name not in self.all_item_names:
       raise Exception("Unknown item name: " + item_name)
     
-    if item_name == '5 Gratitude Crystals':
-      for _ in range(5):
-        self.currently_owned_items.remove('Gratitude Crystal')
     else:
       self.currently_owned_items.remove(cleaned_item_name)
     
@@ -874,9 +868,16 @@ class Logic:
         raise Exception("No valid locations left for any of the unplaced progress items!")
       
       # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
+      # Don't do this with Eldin Key Pieces or Earth Temple will always be really late in logic. Same with crystals
       unique_possible_items = []
       for item_name in possible_items:
         if item_name not in unique_possible_items:
+          unique_possible_items.append(item_name)
+        elif item_name == 'Key Piece':
+          unique_possible_items.append(item_name)
+        elif item_name == '5 Gratitude Crystals':
+          unique_possible_items.append(item_name)
+        elif item_name == 'Gratitude Crystal':
           unique_possible_items.append(item_name)
       possible_items = unique_possible_items
       

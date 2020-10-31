@@ -184,7 +184,7 @@ class Randomizer:
       for (location_name, specific_location_name) in locations_in_zone:
         item_name = self.logic.done_item_locations[location_name]
         # skip single gratitude crystals, since they are forced vanilla
-        if item_name == 'Gratitude Crystals':
+        if item_name == 'Gratitude Crystal':
           continue
         spoiler_log += format_string % (specific_location_name + ":", item_name)
     
