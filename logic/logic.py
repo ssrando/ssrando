@@ -879,11 +879,11 @@ class Logic:
       for item_name in possible_items:
         if item_name not in unique_possible_items:
           unique_possible_items.append(item_name)
-        if item_name == 'Key Piece':
+        elif item_name == 'Key Piece':
           unique_possible_items.append(item_name)
-        if item_name == '5 Gratitude Crystals':
+        elif item_name == '5 Gratitude Crystals':
           unique_possible_items.append(item_name)
-        if item_name == 'Gratitude Crystal':
+        elif item_name == 'Gratitude Crystal':
           unique_possible_items.append(item_name)
       possible_items = unique_possible_items
       
