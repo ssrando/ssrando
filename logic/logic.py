@@ -874,9 +874,16 @@ class Logic:
         raise Exception("No valid locations left for any of the unplaced progress items!")
       
       # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
+      # Don't do this with Eldin Key Pieces or Earth Temple will always be really late in logic. Same with crystals
       unique_possible_items = []
       for item_name in possible_items:
         if item_name not in unique_possible_items:
+          unique_possible_items.append(item_name)
+        if item_name == 'Key Piece':
+          unique_possible_items.append(item_name)
+        if item_name == '5 Gratitude Crystals':
+          unique_possible_items.append(item_name)
+        if item_name == 'Gratitude Crystal':
           unique_possible_items.append(item_name)
       possible_items = unique_possible_items
       
