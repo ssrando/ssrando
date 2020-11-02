@@ -95,6 +95,9 @@ global:
       # function that start the walking and warping CS, jump to the code injected above
       - original: 94 21 ff b0 7c 08 02 a6 90 01 00 54 93 e1 00 4c 7c 7f 1b 78 88 63 0c 7d
         patched:  94 21 ff b0 7c 08 02 a6 90 01 00 54 93 e1 00 4c 7c 7f 1b 78 4b ff ff 84
+      # change second param or giveItem function to -1, otherwise first pouch slot could get overwritten with bottle
+      - original: 88 63 0c 7d 38 80 00 00 38 a0 00 00
+        patched:  88 63 0c 7d 38 80 FF FF 38 a0 00 00
       # change faron trial completed storyflag
       - original: 38 80 00 CE 80 63
         patched:  38 80 03 97 80 63
@@ -150,6 +153,10 @@ global:
         # let the function that checks for the slingshot item flag always return false (includes the end of the previous function for needed context)
       - original: 4e 80 00 20 94 21 ff f0 7c 08 02 a6 3c 60 00 00 38 80 00 34 90 01 00 14
         patched:  4e 80 00 20 38 60 00 00 4E 80 00 20 3c 60 00 00 38 80 00 34 90 01 00 14
+    d_a_obj_chest:
+      # change second param or giveItem function to -1, otherwise first pouch slot could get overwritten with bottle
+      - original: 80 1f 00 04 38 80 00 00 38 a0 00 00 54 03 c6 3e
+        patched:  80 1f 00 04 38 80 FF FF 38 a0 00 00 54 03 c6 3e
 
 # S100:
 #   - name: Test Trial
@@ -374,6 +381,18 @@ F000: # Skyloft
     type: oarcdelete
     oarc: GetShieldWood
     layer: 4
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSozaiN
+    layer: 6
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSozaiO
+    layer: 6
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: GetSozaiP
+    layer: 6
   - name: unnecessary oarcs
     type: oarcdelete
     oarc: GetGaragara
@@ -721,6 +740,25 @@ F023: # Thunderhead
     type: oarcadd
     oarc: KobunB
     destlayer: 1
+  - name: void out during bug heaven minigame
+    type: objadd
+    layer: 13
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFCFFF06
+      params2: 0xFFDFFFFF
+      posx: -165885
+      posy: 16506
+      posz: -52597
+      sizex: 50463
+      sizey: 1000
+      sizez: 50463
+      anglex: 0
+      angley: 0
+      anglez: 0xFFFF
+      id: 0xFC00
+      name: PlRsTag
 F100: # Faron main area
   - name: Layer override
     type: layeroverride

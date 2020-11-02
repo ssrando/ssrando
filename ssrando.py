@@ -7,6 +7,7 @@ from pathlib import Path
 from logic.logic import Logic
 import logic.constants as constants
 from gamepatches import do_gamepatches
+from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS
 
 from typing import List
@@ -14,32 +15,34 @@ from typing import List
 class StartupException(Exception):
   pass
 
-with open("version.txt", "r") as f:
-  VERSION = f.read().strip()
-
-VERSION_WITHOUT_COMMIT = VERSION
 
 # Try to add the git commit hash to the version number if running from source.
-if os.path.isdir(".git"):
-  version_suffix = "_NOGIT"
-  
-  git_commit_head_file = os.path.join(".git", "HEAD")
-  if os.path.isfile(git_commit_head_file):
-    with open(git_commit_head_file, "r") as f:
-      head_file_contents = f.read().strip()
-    if head_file_contents.startswith("ref: "):
-      # Normal head, HEAD file has a reference to a branch which contains the commit hash
-      relative_path_to_hash_file = head_file_contents[len("ref: "):]
-      path_to_hash_file = os.path.join(".git", relative_path_to_hash_file)
-      if os.path.isfile(path_to_hash_file):
-        with open(path_to_hash_file, "r") as f:
-          hash_file_contents = f.read()
-        version_suffix = "_" + hash_file_contents[:7]
-    elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
-      # Detached head, commit hash directly in the HEAD file
-      version_suffix = "_" + head_file_contents[:7]
-  
-  VERSION += version_suffix
+if IS_RUNNING_FROM_SOURCE:
+  VERSION = (RANDO_ROOT_PATH / "version.txt").read_text().strip()
+  VERSION_WITHOUT_COMMIT = VERSION
+  if os.path.isdir(".git"):
+    version_suffix = "_NOGIT"
+    
+    git_commit_head_file = os.path.join(".git", "HEAD")
+    if os.path.isfile(git_commit_head_file):
+      with open(git_commit_head_file, "r") as f:
+        head_file_contents = f.read().strip()
+      if head_file_contents.startswith("ref: "):
+        # Normal head, HEAD file has a reference to a branch which contains the commit hash
+        relative_path_to_hash_file = head_file_contents[len("ref: "):]
+        path_to_hash_file = os.path.join(".git", relative_path_to_hash_file)
+        if os.path.isfile(path_to_hash_file):
+          with open(path_to_hash_file, "r") as f:
+            hash_file_contents = f.read()
+          version_suffix = "_" + hash_file_contents[:7]
+      elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
+        # Detached head, commit hash directly in the HEAD file
+        version_suffix = "_" + head_file_contents[:7]
+    
+    VERSION += version_suffix
+else:
+  VERSION = (RANDO_ROOT_PATH / "version-with-git.txt").read_text().strip()
+  VERSION_WITHOUT_COMMIT = VERSION
 
 class Randomizer:
   def __init__(self, options):
@@ -47,9 +50,9 @@ class Randomizer:
     self.dry_run = bool(options.get('dry-run',False))
     # TODO: maybe make paths configurable?
     if not self.dry_run:
-      self.actual_extract_path=Path(__file__).parent / 'actual-extract'
-      self.modified_extract_path=Path(__file__).parent / 'modified-extract'
-      self.oarc_cache_path=Path(__file__).parent / 'oarc'
+      self.actual_extract_path=Path('.') / 'actual-extract'
+      self.modified_extract_path=Path('.') / 'modified-extract'
+      self.oarc_cache_path=Path('.') / 'oarc'
       # catch common errors with directory setup
       if not self.actual_extract_path.is_dir():
         raise StartupException("ERROR: directory actual-extract doesn't exist! Make sure you have the ISO extracted into that directory")
@@ -181,7 +184,7 @@ class Randomizer:
       for (location_name, specific_location_name) in locations_in_zone:
         item_name = self.logic.done_item_locations[location_name]
         # skip single gratitude crystals, since they are forced vanilla
-        if item_name == 'Gratitude Crystals':
+        if item_name == 'Gratitude Crystal':
           continue
         spoiler_log += format_string % (specific_location_name + ":", item_name)
     
@@ -209,7 +212,7 @@ class Randomizer:
     
     header += "Seed: %s\n" % self.seed
     
-    header += "Options selected:\n  "
+    header += "Options selected:\n"
     non_disabled_options = [
       name for name in self.options
       if self.options[name] not in [False, [], {}, OrderedDict()]
@@ -218,7 +221,7 @@ class Randomizer:
     option_strings = []
     for option_name in non_disabled_options:
       if isinstance(self.options[option_name], bool):
-        option_strings.append(option_name)
+        option_strings.append("  %s" % option_name)
       else:
         value = self.options[option_name]
         option_strings.append("  %s: %s" % (option_name, value))
@@ -310,43 +313,3 @@ class Randomizer:
         max_location_name_length = len(specific_location_name)
     
     return (zones, max_location_name_length)
-
-if __name__ == '__main__':
-  def process_options(options):
-    if 'help' in options:
-      print('Skyward Sword Randomizer')
-      print('Available command line options:\n')
-      longest_option = max(len(option['command']) for option in OPTIONS)
-      for option in OPTIONS:
-        print(' --'+option["command"].ljust(longest_option) + ' ' + option['help'])
-      return None
-    else:
-      cleaned_options = {}
-      for option in OPTIONS:
-        if option['command'] in options:
-          value = options.pop(option['command'])
-          if option['type'] == 'boolean':
-            value = value.lower() == 'true'
-          elif option['type'] == 'int':
-            value = int(value)
-          cleaned_options[option['command']] = value
-        else:
-          cleaned_options[option['command']] = option['default']
-      for option_name in options.keys():
-        print(f'unknown option {option_name}!')
-      return cleaned_options
-  
-  cmd_line_args = OrderedDict()
-  for arg in sys.argv[1:]:
-    arg_parts = arg.split("=", 1)
-    option_name = arg_parts[0]
-    assert option_name.startswith('--')
-    if len(arg_parts) == 1:
-      cmd_line_args[option_name[2:]] = 'true'
-    else:
-      cmd_line_args[option_name[2:]] = arg_parts[1]
-  options = process_options(cmd_line_args)
-  if options is not None:
-    rando = Randomizer(options)
-    rando.randomize()
-    print(rando.seed)

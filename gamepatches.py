@@ -11,6 +11,7 @@ import re
 import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
+from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 
 from logic.logic import Logic
@@ -361,7 +362,7 @@ RANDO_PATCH_FUNCS = {
 }
 
 def get_patches_from_location_item_list(all_checks, filled_checks):
-    with open('items.yaml') as f:
+    with (RANDO_ROOT_PATH / 'items.yaml').open() as f:
         items = yaml.safe_load(f)
     by_item_name=dict((x['name'],x) for x in items)
 
@@ -459,12 +460,12 @@ def do_gamepatches(rando):
         modified_extract_path=rando.modified_extract_path,
         oarc_cache_path=rando.oarc_cache_path,
         copy_unmodified=False)
-    with open("patches.yaml") as f:
+    with (RANDO_ROOT_PATH / "patches.yaml").open() as f:
         patches = yaml.safe_load(f)
-    with open("eventpatches.yaml") as f:
+    with (RANDO_ROOT_PATH / "eventpatches.yaml").open() as f:
         eventpatches = yaml.safe_load(f)
     
-    with open("extracts.yaml") as f:
+    with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
         extracts = yaml.safe_load(f)
     patcher.create_oarc_cache(extracts)
 
