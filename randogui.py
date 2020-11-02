@@ -34,11 +34,11 @@ class RandoGUI(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.settings = {}
-
-        self.settings["clean_iso_path"] = ""
-        self.settings["output_dir"] = ""
-        self.settings["seed"] = ""
+        self.settings = {
+            "clean_iso_path": "",
+            "output_folder": "",
+            "seed": ""
+        }
 
         for option in OPTIONS:
             if option["name"] != "Banned Types" and option["name"] != "Seed":
@@ -104,7 +104,16 @@ class RandoGUI(QMainWindow):
         self.update_settings()
 
     def browse_for_output_dir(self):
-        pass
+        if self.settings["output_folder"] and os.path.isfile(self.settings["output_folder"]):
+            default_dir = os.path.dirname(self.settings["output_folder"])
+        else:
+            default_dir = None
+
+        output_folder = QFileDialog.getExistingDirectory(self, "Select output folder", default_dir)
+        if not output_folder:
+            return
+        self.ui.output_folder.setText(output_folder)
+        self.update_settings()
 
     def update_settings(self):
         self.settings["clean_iso_path"] = self.ui.clean_iso_path.text()
