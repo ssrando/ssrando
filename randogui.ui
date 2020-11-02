@@ -124,21 +124,21 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="1">
-       <widget class="QCheckBox" name="grogression_goddess">
+       <widget class="QCheckBox" name="progression_goddess">
         <property name="text">
          <string>Goddess Cubes/Chests</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QCheckBox" name="progression_crystals">
+       <widget class="QCheckBox" name="progression_crystal">
         <property name="text">
          <string>Loose Crystals</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QCheckBox" name="progression_dungeons">
+       <widget class="QCheckBox" name="progression_dungeon">
         <property name="text">
          <string>Dungeon</string>
         </property>
@@ -173,14 +173,14 @@
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QCheckBox" name="progression_silent_realms">
+       <widget class="QCheckBox" name="progression_silent_realm">
         <property name="text">
          <string>Silent Realms</string>
         </property>
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QCheckBox" name="progression_sidequests">
+       <widget class="QCheckBox" name="progression_sidequest">
         <property name="text">
          <string>Sidequests</string>
         </property>

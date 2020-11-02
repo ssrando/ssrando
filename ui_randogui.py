@@ -86,20 +86,20 @@ class Ui_MainWindow(object):
         self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.grogression_goddess = QCheckBox(self.gridLayoutWidget_3)
-        self.grogression_goddess.setObjectName(u"grogression_goddess")
+        self.progression_goddess = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_goddess.setObjectName(u"progression_goddess")
 
-        self.gridLayout_3.addWidget(self.grogression_goddess, 0, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_goddess, 0, 1, 1, 1)
 
-        self.progression_crystals = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_crystals.setObjectName(u"progression_crystals")
+        self.progression_crystal = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_crystal.setObjectName(u"progression_crystal")
 
-        self.gridLayout_3.addWidget(self.progression_crystals, 1, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_crystal, 1, 0, 1, 1)
 
-        self.progression_dungeons = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_dungeons.setObjectName(u"progression_dungeons")
+        self.progression_dungeon = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_dungeon.setObjectName(u"progression_dungeon")
 
-        self.gridLayout_3.addWidget(self.progression_dungeons, 2, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_dungeon, 2, 0, 1, 1)
 
         self.progression_batreaux = QCheckBox(self.gridLayoutWidget_3)
         self.progression_batreaux.setObjectName(u"progression_batreaux")
@@ -121,15 +121,15 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.progression_overworld, 2, 1, 1, 1)
 
-        self.progression_silent_realms = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_silent_realms.setObjectName(u"progression_silent_realms")
+        self.progression_silent_realm = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_silent_realm.setObjectName(u"progression_silent_realm")
 
-        self.gridLayout_3.addWidget(self.progression_silent_realms, 2, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_silent_realm, 2, 2, 1, 1)
 
-        self.progression_sidequests = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_sidequests.setObjectName(u"progression_sidequests")
+        self.progression_sidequest = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_sidequest.setObjectName(u"progression_sidequest")
 
-        self.gridLayout_3.addWidget(self.progression_sidequests, 1, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_sidequest, 1, 2, 1, 1)
 
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
@@ -211,15 +211,15 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(statustip)
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Seed", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Where should progress items appear?", None))
-        self.grogression_goddess.setText(QCoreApplication.translate("MainWindow", u"Goddess Cubes/Chests", None))
-        self.progression_crystals.setText(QCoreApplication.translate("MainWindow", u"Loose Crystals", None))
-        self.progression_dungeons.setText(QCoreApplication.translate("MainWindow", u"Dungeon", None))
+        self.progression_goddess.setText(QCoreApplication.translate("MainWindow", u"Goddess Cubes/Chests", None))
+        self.progression_crystal.setText(QCoreApplication.translate("MainWindow", u"Loose Crystals", None))
+        self.progression_dungeon.setText(QCoreApplication.translate("MainWindow", u"Dungeon", None))
         self.progression_batreaux.setText(QCoreApplication.translate("MainWindow", u"Batreaux", None))
         self.progression_quest.setText(QCoreApplication.translate("MainWindow", u"Main Quest", None))
         self.progression_minigame.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
         self.progression_overworld.setText(QCoreApplication.translate("MainWindow", u"Overworld", None))
-        self.progression_silent_realms.setText(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
-        self.progression_sidequests.setText(QCoreApplication.translate("MainWindow", u"Sidequests", None))
+        self.progression_silent_realm.setText(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
+        self.progression_sidequest.setText(QCoreApplication.translate("MainWindow", u"Sidequests", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
         self.option_randomize_tablets.setText(QCoreApplication.translate("MainWindow", u"Tablet Randomizer", None))

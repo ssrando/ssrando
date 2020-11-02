@@ -20,6 +20,7 @@ from PySide2.QtWidgets import QApplication, QMainWindow, QAbstractButton, QCombo
 from PySide2.QtCore import QFile
 
 from options import *
+from logic.constants import ALL_TYPES
 
 
 class RandoGUI(QMainWindow):
@@ -45,6 +46,10 @@ class RandoGUI(QMainWindow):
                     pass
                 elif isinstance(widget, QSpinBox):
                     widget.valueChanged.connect(self.update_settings)
+
+        for check_type in ALL_TYPES:
+            widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
+            widget.clicked.connect(self.update_settings)
 
         self.ui.randomize_button.clicked.connect(self.randomize)
 
@@ -88,6 +93,8 @@ class RandoGUI(QMainWindow):
         for option in OPTIONS:
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 self.settings[option["command"]] = self.get_option_value(option["ui"])
+
+        self.settings["banned-types"] = self.get_banned_types()
         print(self.settings)
 
     def get_option_value(self, option_name):
@@ -102,6 +109,14 @@ class RandoGUI(QMainWindow):
             pass
         else:
             print("Option widget is invalid: %s" % option_name)
+
+    def get_banned_types(self):
+        banned_types = []
+        for check_type in ALL_TYPES:
+            widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
+            if not widget.isChecked():
+                banned_types.append(check_type)
+        return banned_types
 
 
 if __name__ == "__main__":
