@@ -11,21 +11,25 @@ from urllib import request
 import subprocess
 import zipfile
 
+import sys
+import random
+from PySide2 import QtCore, QtWidgets, QtGui
+from ui_randogui import Ui_MainWindow
+from PySide2.QtWidgets import QApplication, QMainWindow
+from PySide2.QtCore import QFile
 
-class RandoGUI:
-    def __init__(self, root=None):
+
+class RandoGUI(QMainWindow):
+    def __init__(self):
+        super().__init__()
 
         self.wit_url = "https://wit.wiimm.de/download/wit-v3.03a-r8245-cygwin.zip"
         self.wit_folder = "wit-v3.03a-r8245-cygwin"
 
-        frame = ttk.Frame(root, padding="3 3 12 12", width=800, height=600)
-        frame.grid(column=0, row=0, sticky=(N, W, E, S))
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
 
-        ttk.Button(frame, text="Randomize", command=self.randomize).grid(column=2, row=2, sticky=(W, E))
-        ttk.Label(frame, text="Clean SS NTSC-U 1.0 ISO").grid(column=0, row=0)
-        self.iso_location = ttk.Entry(frame)
-        self.iso_location.grid(column=1, row=0, columnspan=10)
-        ttk.Button(frame, text="Browse", command=self.set_iso_location).grid(column=11, row=0)
+        self.ui.randomize_button.clicked.connect(self.randomize)
 
     def randomize(self):
         Thread(target=self.offthread_randomize).start()
@@ -39,11 +43,12 @@ class RandoGUI:
     def offthread_randomize(self):
         if not (Path(".") / self.wit_folder).is_dir():
             # fetch and unzip wit dependency
+            print("wit not found, installing")
             with zipfile.ZipFile(BytesIO(request.urlopen(self.wit_url).read())) as wit_zip:
                 wit_zip.extractall(Path(".") / self.wit_folder)
 
         if not (Path(".") / "actual-extract").is_dir():
-            subprocess.run([(Path(".") / self.wit_folder / "bin" / "wit"), "-P", "extract", "disc.iso", "actual-extract"])
+            subprocess.run([(Path(".") / self.wit_folder / self.wit_folder / "bin" / "wit"), "-P", "extract", "disc.iso", "actual-extract"])
         if not (Path(".") / "modified-extract").is_dir():
             subprocess.run(["xcopy", "/E", "/I", "actual-extract", "modified-extract"])
         rando = Randomizer(OrderedDict([('dry-run', False), ('randomize-tablets', False), ('closed-thunderhead', True), ('swordless', False), ('invisible-sword', False), ('empty-unrequired-dungeons', True), ('banned-types', ''), ('seed', -1)]))
@@ -53,13 +58,10 @@ class RandoGUI:
         subprocess.run([(Path(".") / self.wit_folder / "bin" / "wit").name, "-P", "copy", "modified-extract", iso_name])
 
 
-window_root = Tk()
-window_root.title("Skyward Sword Randomizer")
+if __name__ == "__main__":
+    app = QtWidgets.QApplication([])
 
-gui = RandoGUI(window_root)
+    widget = RandoGUI()
+    widget.show()
 
-# root.mainloop()
-while True:
-    window_root.update()
-    window_root.update_idletasks()
-    print(Path(gui.iso_location.get()).name)
+    sys.exit(app.exec_())
