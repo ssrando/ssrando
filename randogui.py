@@ -15,8 +15,11 @@ import sys
 import random
 from PySide2 import QtCore, QtWidgets, QtGui
 from ui_randogui import Ui_MainWindow
-from PySide2.QtWidgets import QApplication, QMainWindow
+from PySide2.QtWidgets import QApplication, QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
+    QRadioButton
 from PySide2.QtCore import QFile
+
+from options import *
 
 
 class RandoGUI(QMainWindow):
@@ -28,6 +31,20 @@ class RandoGUI(QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.settings = {}
+
+        for option in OPTIONS:
+            if option["name"] != "Banned Types" and option["name"] != "Seed":
+                widget = getattr(self.ui, option["ui"])
+                if isinstance(widget, QAbstractButton):
+                    widget.clicked.connect(self.update_settings)
+                elif isinstance(widget, QComboBox):
+                    widget.clicked.connect(self.update_settings)
+                elif isinstance(widget, QListView):
+                    pass
+                elif isinstance(widget, QSpinBox):
+                    widget.valueChanged.connect(self.update_settings)
 
         self.ui.randomize_button.clicked.connect(self.randomize)
 
@@ -56,6 +73,35 @@ class RandoGUI(QMainWindow):
         rando.randomize()
         iso_name = "SS Randomizer " + str(rando.seed) + ".iso"
         subprocess.run([(Path(".") / self.wit_folder / "bin" / "wit").name, "-P", "copy", "modified-extract", iso_name])
+
+    def browse_for_iso(self):
+        pass
+
+    def browse_for_output_dir(self):
+        pass
+
+    def update_settings(self):
+        self.settings["clean_iso_path"] = self.ui.clean_iso_path.text()
+        self.settings["output_folder"] = self.ui.output_folder.text()
+        self.settings["seed"] = self.ui.seed.text()
+
+        for option in OPTIONS:
+            if option["name"] != "Banned Types" and option["name"] != "Seed":
+                self.settings[option["command"]] = self.get_option_value(option["ui"])
+        print(self.settings)
+
+    def get_option_value(self, option_name):
+        widget = getattr(self.ui, option_name)
+        if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
+            return widget.isChecked()
+        elif isinstance(widget, QComboBox):
+            return widget.itemText(widget.currentIndex())
+        elif isinstance(widget, QSpinBox):
+            return widget.value()
+        elif isinstance(widget, QListView):
+            pass
+        else:
+            print("Option widget is invalid: %s" % option_name)
 
 
 if __name__ == "__main__":

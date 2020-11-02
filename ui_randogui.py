@@ -145,10 +145,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.option_swordless, 0, 0, 1, 1)
 
-        self.option_tablet_rando = QCheckBox(self.gridLayoutWidget_2)
-        self.option_tablet_rando.setObjectName(u"option_tablet_rando")
+        self.option_randomize_tablets = QCheckBox(self.gridLayoutWidget_2)
+        self.option_randomize_tablets.setObjectName(u"option_randomize_tablets")
 
-        self.gridLayout_2.addWidget(self.option_tablet_rando, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.option_randomize_tablets, 0, 1, 1, 1)
 
         self.option_closed_thunderhead = QCheckBox(self.gridLayoutWidget_2)
         self.option_closed_thunderhead.setObjectName(u"option_closed_thunderhead")
@@ -171,10 +171,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.option_dry_run)
 
-        self.option_invisible_Sword = QCheckBox(self.horizontalLayoutWidget)
-        self.option_invisible_Sword.setObjectName(u"option_invisible_Sword")
+        self.option_invisible_sword = QCheckBox(self.horizontalLayoutWidget)
+        self.option_invisible_sword.setObjectName(u"option_invisible_sword")
 
-        self.horizontalLayout.addWidget(self.option_invisible_Sword)
+        self.horizontalLayout.addWidget(self.option_invisible_sword)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -222,11 +222,11 @@ class Ui_MainWindow(object):
         self.progression_sidequests.setText(QCoreApplication.translate("MainWindow", u"Sidequests", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
-        self.option_tablet_rando.setText(QCoreApplication.translate("MainWindow", u"Tablet Randomizer", None))
+        self.option_randomize_tablets.setText(QCoreApplication.translate("MainWindow", u"Tablet Randomizer", None))
         self.option_closed_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Closed Thunderhead", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Race Mode", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
-        self.option_invisible_Sword.setText(QCoreApplication.translate("MainWindow", u"Invisible Sword", None))
+        self.option_invisible_sword.setText(QCoreApplication.translate("MainWindow", u"Invisible Sword", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
         self.label_4.setText("")
     # retranslateUi

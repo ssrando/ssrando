@@ -219,7 +219,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QCheckBox" name="option_tablet_rando">
+       <widget class="QCheckBox" name="option_randomize_tablets">
         <property name="text">
          <string>Tablet Randomizer</string>
         </property>
@@ -260,7 +260,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="option_invisible_Sword">
+      <widget class="QCheckBox" name="option_invisible_sword">
        <property name="text">
         <string>Invisible Sword</string>
        </property>
