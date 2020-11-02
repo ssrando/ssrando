@@ -7,6 +7,7 @@ from tkinter import filedialog
 from threading import Thread
 from ssrando import Randomizer
 from urllib import request
+import os
 
 import subprocess
 import zipfile
@@ -16,7 +17,7 @@ import random
 from PySide2 import QtCore, QtWidgets, QtGui
 from ui_randogui import Ui_MainWindow
 from PySide2.QtWidgets import QApplication, QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
-    QRadioButton
+    QRadioButton, QFileDialog
 from PySide2.QtCore import QFile
 
 from options import *
@@ -35,6 +36,10 @@ class RandoGUI(QMainWindow):
 
         self.settings = {}
 
+        self.settings["clean_iso_path"] = ""
+        self.settings["output_dir"] = ""
+        self.settings["seed"] = ""
+
         for option in OPTIONS:
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 widget = getattr(self.ui, option["ui"])
@@ -51,6 +56,8 @@ class RandoGUI(QMainWindow):
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.clicked.connect(self.update_settings)
 
+        self.ui.clean_iso_browse_button.clicked.connect(self.browse_for_iso)
+        self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)
 
     def randomize(self):
@@ -70,17 +77,31 @@ class RandoGUI(QMainWindow):
                 wit_zip.extractall(Path(".") / self.wit_folder)
 
         if not (Path(".") / "actual-extract").is_dir():
-            subprocess.run([(Path(".") / self.wit_folder / self.wit_folder / "bin" / "wit"), "-P", "extract", "disc.iso", "actual-extract"])
+            subprocess.run(
+                [(Path(".") / self.wit_folder / self.wit_folder / "bin" / "wit"), "-P", "extract", "disc.iso",
+                 "actual-extract"])
         if not (Path(".") / "modified-extract").is_dir():
             subprocess.run(["xcopy", "/E", "/I", "actual-extract", "modified-extract"])
-        rando = Randomizer(OrderedDict([('dry-run', False), ('randomize-tablets', False), ('closed-thunderhead', True), ('swordless', False), ('invisible-sword', False), ('empty-unrequired-dungeons', True), ('banned-types', ''), ('seed', -1)]))
+        rando = Randomizer(OrderedDict(
+            [('dry-run', False), ('randomize-tablets', False), ('closed-thunderhead', True), ('swordless', False),
+             ('invisible-sword', False), ('empty-unrequired-dungeons', True), ('banned-types', ''), ('seed', -1)]))
         print(rando.seed)
         rando.randomize()
         iso_name = "SS Randomizer " + str(rando.seed) + ".iso"
         subprocess.run([(Path(".") / self.wit_folder / "bin" / "wit").name, "-P", "copy", "modified-extract", iso_name])
 
     def browse_for_iso(self):
-        pass
+        if self.settings["clean_iso_path"] and os.path.isfile(self.settings["clean_iso_path"]):
+            default_dir = os.path.dirname(self.settings["clean_iso_path"])
+        else:
+            default_dir = None
+
+        clean_iso_path, selected_filter = QFileDialog.getOpenFileName(self, "Select Clean Skyward Sword NTSC-U 1.0 ISO",
+                                                                      default_dir, "Wii ISO Files (*.iso)")
+        if not clean_iso_path:
+            return
+        self.ui.clean_iso_path.setText(clean_iso_path)
+        self.update_settings()
 
     def browse_for_output_dir(self):
         pass
