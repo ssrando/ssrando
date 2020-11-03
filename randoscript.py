@@ -46,7 +46,7 @@ else:
     confirm = True
 
     while confirm:
-        chosen_options = OrderedDict()
+        options = Options()
         print("Welcome to the Skyward Sword Randomizer Version " + VERSION)
         print("In the following i will ask you some questions about your Rando experience\n")
         for option in OPTIONS:
@@ -54,19 +54,24 @@ else:
             if option["type"] == "boolean":
                 print("Type y for yes and n for no")
                 chosen = input()
-                chosen_options[option["command"]] = (chosen.strip() == 'y')
+                options.set_option(option["command"], (chosen.strip() == 'y'))
             elif option["type"] == 'int':
                 number = input()
                 number = number.strip()
                 if number == '':
                     number = option["default"]
-                chosen_options[option["command"]] = int(number)
+                options.set_option(option["command"], int(number))
+            elif option["type"] == 'multichoice':
+                value = input()
+                value = [v.strip() for v in value.split(',')]
+                value = [v for v in value if v]
+                options.set_option(option["command"], value)
             else:
-                chosen_options[option["command"]] = input()
+                options.set_option(option["command"], input())
                 
         print("Now generating a seed with the following options:")
         for option in OPTIONS:
-            print(f'{option["name"]}:  {chosen_options[option["command"]]}')
+            print(f'{option["name"]}:  {options[option["command"]]}')
 
         print("If these options are not correct, please type n, otherwise the seed will be generated")
         confirm_input = input()
@@ -74,7 +79,7 @@ else:
         if not confirm_input =="n":
             confirm = False
 
-    rando = Randomizer(chosen_options)
+    rando = Randomizer(options)
     print(rando.seed)
     rando.randomize()
 

@@ -109,6 +109,8 @@ class Options():
                 validation_errors.append(f'{value} is smaller than the minimum of {option["min"]} for {option["command"]}')
         elif option['type'] == 'multichoice':
             value = [v.strip() for v in value.split(',')]
+            # skip out empty string
+            value = [v for v in value if v]
             unknown_values = [v for v in value if not v in option['choices']]
             if len(unknown_values) > 0:
                 validation_errors.append(f'Unknown choice(s) for {option["command"]}: {unknown_values}')
