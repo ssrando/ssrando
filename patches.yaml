@@ -57,6 +57,9 @@ global:
         patched:  80 63 00 04 4b ff 35 8c
       - original: 48 00 2a e5 2c 03 00 00 40 82 00 14 7f c3 f3 78
         patched:  48 00 2a e5 2c 03 00 09 41 82 00 14 7f c3 f3 78
+      # skip over fi talking after obtaining first map
+      - original: a0 1f 03 30 28 00 00 32 40 82 00 6c
+        patched:  a0 1f 03 30 28 00 00 32 48 00 00 6c
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
         patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
