@@ -76,19 +76,27 @@ class RandoGUI(QMainWindow):
             with zipfile.ZipFile(BytesIO(request.urlopen(self.wit_url).read())) as wit_zip:
                 wit_zip.extractall(Path(".") / self.wit_folder)
 
+        clean_iso_path = self.settings.pop("clean_iso_path")
+
         if not (Path(".") / "actual-extract").is_dir():
             subprocess.run(
-                [(Path(".") / self.wit_folder / self.wit_folder / "bin" / "wit"), "-P", "extract", "disc.iso",
-                 "actual-extract"])
+                [(Path(".") / self.wit_folder / self.wit_folder / "bin" / "wit"), "-P", "extract",
+                 (Path(clean_iso_path)), "actual-extract"])
         if not (Path(".") / "modified-extract").is_dir():
             subprocess.run(["xcopy", "/E", "/I", "actual-extract", "modified-extract"])
-        rando = Randomizer(OrderedDict(
-            [('dry-run', False), ('randomize-tablets', False), ('closed-thunderhead', True), ('swordless', False),
-             ('invisible-sword', False), ('empty-unrequired-dungeons', True), ('banned-types', ''), ('seed', -1)]))
+
+        output_folder = self.settings.pop("output_folder")
+        if self.settings["seed"] == "":
+            self.settings["seed"] = -1
+        rando = Randomizer(self.settings)
         print(rando.seed)
         rando.randomize()
-        iso_name = "SS Randomizer " + str(rando.seed) + ".iso"
-        subprocess.run([(Path(".") / self.wit_folder / "bin" / "wit").name, "-P", "copy", "modified-extract", iso_name])
+        if (not self.settings["dry-run"]):
+            iso_name = "SS Randomizer " + str(rando.seed) + ".iso"
+            subprocess.run([(Path(".") / self.wit_folder / "bin" / "wit").name, "-P", "copy", "modified-extract",
+                            (Path(output_folder) / iso_name)])
+
+        self.update_settings()
 
     def browse_for_iso(self):
         if self.settings["clean_iso_path"] and os.path.isfile(self.settings["clean_iso_path"]):
@@ -146,7 +154,7 @@ class RandoGUI(QMainWindow):
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             if not widget.isChecked():
                 banned_types.append(check_type)
-        return banned_types
+        return ",".join(banned_types)
 
 
 if __name__ == "__main__":
