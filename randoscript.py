@@ -49,29 +49,29 @@ else:
         options = Options()
         print("Welcome to the Skyward Sword Randomizer Version " + VERSION)
         print("In the following i will ask you some questions about your Rando experience\n")
-        for option in OPTIONS:
+        for option_name, option in OPTIONS.items():
             print(option["name"] + ': ' + option["help"])
             if option["type"] == "boolean":
                 print("Type y for yes and n for no")
                 chosen = input()
-                options.set_option(option["command"], (chosen.strip() == 'y'))
+                options.set_option(option_name, (chosen.strip() == 'y'))
             elif option["type"] == 'int':
                 number = input()
                 number = number.strip()
                 if number == '':
                     number = option["default"]
-                options.set_option(option["command"], int(number))
+                options.set_option(option_name, int(number))
             elif option["type"] == 'multichoice':
                 value = input()
                 value = [v.strip() for v in value.split(',')]
                 value = [v for v in value if v]
-                options.set_option(option["command"], value)
+                options.set_option(option_name, value)
             else:
-                options.set_option(option["command"], input())
+                options.set_option(option_name, input())
                 
         print("Now generating a seed with the following options:")
-        for option in OPTIONS:
-            print(f'{option["name"]}:  {options[option["command"]]}')
+        for option_name, option in OPTIONS.items():
+            print(f'{option["name"]}:  {options[option_name]}')
 
         print("If these options are not correct, please type n, otherwise the seed will be generated")
         confirm_input = input()

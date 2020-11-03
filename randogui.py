@@ -20,7 +20,7 @@ from PySide2.QtWidgets import QApplication, QMainWindow, QAbstractButton, QCombo
     QRadioButton, QFileDialog
 from PySide2.QtCore import QFile
 
-from options import *
+from options import OPTIONS, Options
 from logic.constants import ALL_TYPES
 
 
@@ -37,10 +37,12 @@ class RandoGUI(QMainWindow):
         self.settings = {
             "clean_iso_path": "",
             "output_folder": "",
-            "seed": ""
+            "seed": "",
         }
 
-        for option in OPTIONS:
+        self.options = Options()
+
+        for option in OPTIONS.values():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 widget = getattr(self.ui, option["ui"])
                 if isinstance(widget, QAbstractButton):
@@ -88,10 +90,11 @@ class RandoGUI(QMainWindow):
         output_folder = self.settings.pop("output_folder")
         if self.settings["seed"] == "":
             self.settings["seed"] = -1
-        rando = Randomizer(self.settings)
+        self.options.set_option("seed",int(self.settings["seed"]))
+        rando = Randomizer(self.options)
         print(rando.seed)
         rando.randomize()
-        if (not self.settings["dry-run"]):
+        if (not self.options["dry-run"]):
             iso_name = "SS Randomizer " + str(rando.seed) + ".iso"
             subprocess.run([(Path(".") / self.wit_folder / "bin" / "wit").name, "-P", "copy", "modified-extract",
                             (Path(output_folder) / iso_name)])
@@ -128,12 +131,13 @@ class RandoGUI(QMainWindow):
         self.settings["output_folder"] = self.ui.output_folder.text()
         self.settings["seed"] = self.ui.seed.text()
 
-        for option in OPTIONS:
+        for option_command, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
-                self.settings[option["command"]] = self.get_option_value(option["ui"])
+                self.options.set_option(option_command, self.get_option_value(option["ui"]))
 
-        self.settings["banned-types"] = self.get_banned_types()
+        self.options.set_option("banned-types", self.get_banned_types())
         print(self.settings)
+        print(self.options.get_permalink())
 
     def get_option_value(self, option_name):
         widget = getattr(self.ui, option_name)
@@ -154,7 +158,7 @@ class RandoGUI(QMainWindow):
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             if not widget.isChecked():
                 banned_types.append(check_type)
-        return ",".join(banned_types)
+        return banned_types
 
 
 if __name__ == "__main__":

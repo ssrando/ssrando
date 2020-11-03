@@ -4,7 +4,7 @@ from packedbits import PackedBitsReader, PackedBitsWriter
 from collections import OrderedDict
 
 
-OPTIONS = [
+OPTIONS_LIST = [
     {
         'name': 'Dry Run',
         'command': 'dry-run',
@@ -91,6 +91,8 @@ OPTIONS = [
     },
 ]
 
+OPTIONS = OrderedDict((option['command'], option) for option in OPTIONS_LIST)
+
 class Options():
     def __init__(self):
         self.options = OrderedDict()
@@ -98,8 +100,8 @@ class Options():
 
     def reset_to_default(self):
         self.options.clear()
-        for option in OPTIONS:
-            self.options[option['command']]=option['default']
+        for option_name, option in OPTIONS.items():
+            self.options[option_name]=option['default']
     
     @staticmethod
     def parse_and_validate_option(value: str, option: dict):
@@ -131,24 +133,24 @@ class Options():
 
     def update_from_cmd_args(self, raw_options):
         problems = []
-        for option in OPTIONS:
-            if option['command'] in raw_options:
-                value = raw_options.pop(option['command'])
+        for option_name, option in OPTIONS.items():
+            if option_name in raw_options:
+                value = raw_options.pop(option_name)
                 value, validation_errors = Options.parse_and_validate_option(value, option)
                 if len(validation_errors) > 0:
                     problems.extend(validation_errors)
                     continue
-                self.options[option['command']] = value
+                self.options[option_name] = value
         for option_name in raw_options.keys():
             problems.append(f'unknown option {option_name}!')
         return problems
     
     def get_permalink(self):
         writer = PackedBitsWriter()
-        for option in OPTIONS:
+        for option_name, option in OPTIONS.items():
             if not option.get('permalink',True):
                 continue
-            value = self.options.get(option['command'],option['default'])
+            value = self.options.get(option_name,option['default'])
             if option['type'] == 'boolean':
                 # one bit
                 writer.write(int(value), 1)
@@ -171,10 +173,9 @@ class Options():
         """
         Sets the option to a value, this function checks if the value is valid, and throws an exception if it isn't
         """
-        option_dict = dict((op['command'], op) for op in OPTIONS)
-        if not option_name in option_dict:
+        if not option_name in OPTIONS:
             raise ValueError(f'not a valid option: {option_name}!')
-        option = option_dict[option_name]
+        option = OPTIONS[option_name]
         if option['type'] == 'boolean':
             if not isinstance(option_value, bool):
                 raise TypeError(f'value for option {option_name} has to be a boolean, got {type(option_value)}!')
@@ -192,13 +193,22 @@ class Options():
                 raise ValueError(f'Unknown choice for {option_name}: {unknown_values}')
         self.options[option_name] = option_value
 
+    def set_option_str(self, option_name, option_value):
+        if not option_name in OPTIONS:
+            raise ValueError(f'not a valid option: {option_name}!')
+        value, vaidation_errors = Options.parse_and_validate_option(option_value, OPTIONS[option_name])
+        if vaidation_errors:
+            raise ValueError(f'validation errors: {vaidation_errors}')
+        self.options[option_name] = value
+
+
     def validate_options(self):
         for option_name in self.options:
             self.set_option(option_name, self[option_name])
 
     def update_from_permalink(self, permalink):
         reader = PackedBitsReader.from_base64(permalink)
-        for option in OPTIONS:
+        for option_name, option in OPTIONS.items():
             if not option.get('permalink',True):
                 continue
             if option['type'] == 'boolean':
@@ -215,7 +225,7 @@ class Options():
                 value = option['choices'][reader.read(option['bits'])]
             else:
                 raise Exception(f'unknown type: {option["type"]}')
-            self.options[option['command']] = value
+            self.options[option_name] = value
     
     def __getitem__(self, item):
         return self.options[item]
