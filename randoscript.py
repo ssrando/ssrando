@@ -2,7 +2,7 @@ from collections import OrderedDict
 import sys
 
 from ssrando import Randomizer, VERSION
-from options import OPTIONS
+from options import OPTIONS, Options
 
 def process_command_line_options(options):
     if 'help' in options:
@@ -16,19 +16,12 @@ def process_command_line_options(options):
         print(VERSION)
         return None
     else:
-        cleaned_options = {}
-        for option in OPTIONS:
-            if option['command'] in options:
-                value = options.pop(option['command'])
-                if option['type'] == 'boolean':
-                    value = value.lower() == 'true'
-                elif option['type'] == 'int':
-                    value = int(value)
-                cleaned_options[option['command']] = value
-            else:
-                cleaned_options[option['command']] = option['default']
-        for option_name in options.keys():
-            print(f'unknown option {option_name}!')
+        cleaned_options = Options()
+        problems = cleaned_options.update_from_cmd_args(options)
+        if problems:
+            print('ERROR: invalid options:')
+            for problem in problems:
+                print(problem)
         return cleaned_options
 
 # check if interactive script should be run, or if there were command line parameters
