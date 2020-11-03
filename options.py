@@ -12,6 +12,7 @@ OPTIONS = [
         'default': False,
         'permalink': False,
         'help': 'Only generate a spoiler log, doesn\'t attempt to patch any game files',
+        'ui': 'option_dry_run',
     },
     {
         'name': 'Randomize Tablets',
@@ -19,6 +20,7 @@ OPTIONS = [
         'type': 'boolean',
         'default': False,
         'help': 'Randomize the 3 Stone Tablets, blocking the access to the surface',
+        'ui': 'option_randomize_tablets',
     },
     {
         'name': 'Closed Thunderhead',
@@ -26,6 +28,7 @@ OPTIONS = [
         'type': 'boolean',
         'default': False,
         'help': 'Thunderhead is closed by default, obtain Ballad of the Goddess to immediately open it',
+        'ui': 'option_closed_thunderhead',
     },
     {
         'name': 'Swordless',
@@ -33,6 +36,7 @@ OPTIONS = [
         'type': 'boolean',
         'default': False,
         'help': 'Instead of starting with the goddess sword, in this mode all sword upgrades, including the pracice sword, have to be found',
+        'ui': 'option_swordless',
     },
     # {
     #     'name': 'Required Dungeons',
@@ -57,6 +61,7 @@ OPTIONS = [
         'type': 'boolean',
         'default': False,
         'help': 'Dumb hack that makes the sword always invisible so it doesn\'t crash on console if obtaining an upgraded sword',
+        'ui': 'option_invisible_sword',
     },
     {
         'name': 'Empty unrequired Dungeons',
@@ -64,6 +69,7 @@ OPTIONS = [
         'type': 'boolean',
         'default': False,
         'help': 'If activated, only the required dungeons will contain progression items',
+        'ui': 'option_empty_unrequired_dungeons',
     },
     {
         'name': 'Banned Types',
@@ -72,6 +78,7 @@ OPTIONS = [
         'default': [],
         'choices': ALL_TYPES,
         'help': "Choose subtypes that can't contain progression items, as a comma seperated list, available types are: " + ", ".join(ALL_TYPES),
+        'ui': 'option_banned_types'
     },
     {
         'name': 'Seed',
@@ -80,6 +87,7 @@ OPTIONS = [
         'default': -1,
         'permalink': False, # seed is seperate
         'help': 'Specify a seed to use for randomization, leave empty for random seed',
+        'ui': 'seed',
     },
 ]
 
