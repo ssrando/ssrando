@@ -1,27 +1,20 @@
-from collections import OrderedDict
+import os
+import subprocess
+import sys
+import zipfile
 from io import BytesIO
 from pathlib import Path
-from tkinter import *
-from tkinter import ttk
-from tkinter import filedialog
 from threading import Thread
-from ssrando import Randomizer
+from tkinter import filedialog
 from urllib import request
-import os
 
-import subprocess
-import zipfile
-
-import sys
-import random
-from PySide2 import QtCore, QtWidgets, QtGui
-from ui_randogui import Ui_MainWindow
-from PySide2.QtWidgets import QApplication, QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
+from PySide2 import QtWidgets
+from PySide2.QtWidgets import QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
     QRadioButton, QFileDialog
-from PySide2.QtCore import QFile
 
 from options import *
-from logic.constants import ALL_TYPES
+from ssrando import Randomizer
+from ui_randogui import Ui_MainWindow
 
 
 class RandoGUI(QMainWindow):
@@ -70,20 +63,21 @@ class RandoGUI(QMainWindow):
             self.iso_location.insert(0, iso_path.name)
 
     def offthread_randomize(self):
-        if not (Path(".") / self.wit_folder).is_dir():
-            # fetch and unzip wit dependency
-            print("wit not found, installing")
-            with zipfile.ZipFile(BytesIO(request.urlopen(self.wit_url).read())) as wit_zip:
-                wit_zip.extractall(Path(".") / self.wit_folder)
+        if not self.settings["dry-run"]:
+            if not (Path(".") / self.wit_folder).is_dir():
+                # fetch and unzip wit dependency
+                print("wit not found, installing")
+                with zipfile.ZipFile(BytesIO(request.urlopen(self.wit_url).read())) as wit_zip:
+                    wit_zip.extractall(Path(".") / self.wit_folder)
 
-        clean_iso_path = self.settings.pop("clean_iso_path")
+            clean_iso_path = self.settings.pop("clean_iso_path")
 
-        if not (Path(".") / "actual-extract").is_dir():
-            subprocess.run(
-                [(Path(".") / self.wit_folder / self.wit_folder / "bin" / "wit"), "-P", "extract",
-                 (Path(clean_iso_path)), "actual-extract"])
-        if not (Path(".") / "modified-extract").is_dir():
-            subprocess.run(["xcopy", "/E", "/I", "actual-extract", "modified-extract"])
+            if not (Path(".") / "actual-extract").is_dir():
+                subprocess.run(
+                    [(Path(".") / self.wit_folder / self.wit_folder / "bin" / "wit"), "-P", "extract",
+                     (Path(clean_iso_path)), "actual-extract"])
+            if not (Path(".") / "modified-extract").is_dir():
+                subprocess.run(["xcopy", "/E", "/I", "actual-extract", "modified-extract"])
 
         output_folder = self.settings.pop("output_folder")
         if self.settings["seed"] == "":
@@ -91,7 +85,7 @@ class RandoGUI(QMainWindow):
         rando = Randomizer(self.settings)
         print(rando.seed)
         rando.randomize()
-        if (not self.settings["dry-run"]):
+        if not self.settings["dry-run"]:
             iso_name = "SS Randomizer " + str(rando.seed) + ".iso"
             subprocess.run([(Path(".") / self.wit_folder / "bin" / "wit").name, "-P", "copy", "modified-extract",
                             (Path(output_folder) / iso_name)])
