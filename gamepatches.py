@@ -16,6 +16,12 @@ from tboxSubtypes import tboxSubtypes
 
 from logic.logic import Logic
 
+TOTAL_STAGE_FILES = 369
+TOTAL_EVENT_FILES = 6
+
+# arc cache, main.dol, rels, objectpack
+GAMEPATCH_TOTAL_STEP_COUNT = TOTAL_EVENT_FILES + TOTAL_STAGE_FILES + 4
+
 DEFAULT_SOBJ = OrderedDict(
     params1 = 0,
     params2 = 0,
@@ -464,6 +470,8 @@ def do_gamepatches(rando):
         patches = yaml.safe_load(f)
     with (RANDO_ROOT_PATH / "eventpatches.yaml").open() as f:
         eventpatches = yaml.safe_load(f)
+
+    rando.progress_callback('building arc cache...')
     
     with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
         extracts = yaml.safe_load(f)
@@ -624,7 +632,7 @@ def do_gamepatches(rando):
         if room == None:
             layer_patches = list(filter(lambda x: x['type']=='layeroverride', stagepatches))
             if len(layer_patches) > 1:
-                print(f"warning, multiple layer overrides for stage {stage}!")
+                print(f"ERROR: multiple layer overrides for stage {stage}!")
             elif len(layer_patches) == 1:
                 layer_override = [OrderedDict(story_flag=x['story_flag'], night=x['night'], layer=x['layer']) for x in layer_patches[0]['override']]
                 bzs['LYSE'] = layer_override
@@ -854,7 +862,7 @@ def do_gamepatches(rando):
         textpatches = list(filter(filter_option_requirement, textpatches))
         for command in filter(lambda x: x['type'] == 'textpatch', textpatches):
             msbt['TXT2'][command['index']] = command['text'].encode('utf-16be')
-            print(f'patched text {command["index"]}, {filename}')
+            # print(f'patched text {command["index"]}, {filename}')
             modified = True
         if modified:
             return msbt
@@ -862,7 +870,10 @@ def do_gamepatches(rando):
             return None
     patcher.set_event_patch(flow_patch)
     patcher.set_event_text_patch(text_patch)
+    patcher.progress_callback = rando.progress_callback
     patcher.do_patch()
+
+    rando.progress_callback('patching main.dol...')
 
     # patch main.dol
     orig_dol = bytearray((patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
@@ -876,6 +887,8 @@ def do_gamepatches(rando):
         assert orig_dol.find(actual_code, code_pos+1) == -1, f"code {dolpatch['original']} found multiple times in main.dol!"
         orig_dol[code_pos:code_pos+len(actual_code)] = patched_code
     write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', orig_dol)
+
+    rando.progress_callback('patching rels...')
 
     rel_arc = U8File.parse_u8(BytesIO((patcher.actual_extract_path / 'DATA' / 'files' / 'rels.arc').read_bytes()))
     rel_modified = False
@@ -907,6 +920,7 @@ def do_gamepatches(rando):
         rel_data = rel_arc.to_buffer()
         write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'files' / 'rels.arc', rel_data)
 
+    rando.progress_callback('patching ObjectPack...')
     # patch object pack
     objpack_data = nlzss11.decompress((patcher.actual_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ').read_bytes())
     object_arc = U8File.parse_u8(BytesIO(objpack_data))

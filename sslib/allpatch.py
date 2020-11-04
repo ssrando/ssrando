@@ -34,6 +34,9 @@ class AllPatcher:
         self.bzs_patch=None
         self.event_patch=None
         self.event_text_patch=None
+        def dummy_progress_callback(action):
+            pass
+        self.progress_callback = dummy_progress_callback
         if not (self.actual_extract_path / 'DATA').exists():
             raise Exception('actual extract path should have a DATA subdir, make sure the directory structure is properly set up!')
     
@@ -98,6 +101,7 @@ class AllPatcher:
             match = STAGE_REGEX.match(stagepath.parts[-1])
             stage = match[1]
             layer = int(match[2])
+            self.progress_callback(f'patching {stage} l{layer}')
             # TODO: skip if nothing is modified at all
             modified_stagepath = self.modified_extract_path/'DATA'/'files'/'Stage'/f'{stage}'/f'{stage}_stg_l{layer}.arc.LZ'
             modified = False
@@ -143,10 +147,10 @@ class AllPatcher:
             if modified:
                 stagedata = stageu8.to_buffer()
                 write_bytes_create_dirs(modified_stagepath, nlzss11.compress(stagedata))
-                print(f'patched {stage} l{layer}')
+                # print(f'patched {stage} l{layer}')
             elif self.copy_unmodified:
                 shutil.copy(stagepath, modified_stagepath)
-                print(f'copied {stage} l{layer}')
+                # print(f'copied {stage} l{layer}')
 
         # events and text
         eventrootpath = None
@@ -163,6 +167,7 @@ class AllPatcher:
         for eventpath in eventrootpath.glob('*.arc'):
             modified = False
             filename = eventpath.parts[-1]
+            self.progress_callback(f'patching {filename}')
             modified_eventpath = modified_eventrootpath / filename
             eventarc = U8File.parse_u8(BytesIO(eventpath.read_bytes()))
             for eventfilepath in eventarc.get_all_paths():
@@ -183,4 +188,4 @@ class AllPatcher:
                             modified = True
             if modified:
                 write_bytes_create_dirs(modified_eventpath, eventarc.to_buffer())
-                print(f'patched {filename}')
+                # print(f'patched {filename}')

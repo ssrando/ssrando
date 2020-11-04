@@ -6,11 +6,11 @@ import random
 from pathlib import Path
 from logic.logic import Logic
 import logic.constants as constants
-from gamepatches import do_gamepatches
+from gamepatches import do_gamepatches, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
 
-from typing import List
+from typing import List, Callable
 
 class StartupException(Exception):
   pass
@@ -44,9 +44,13 @@ else:
   VERSION = (RANDO_ROOT_PATH / "version-with-git.txt").read_text().strip()
   VERSION_WITHOUT_COMMIT = VERSION
 
+def dummy_progress_callback(current_action_name):
+  pass
+
 class Randomizer:
-  def __init__(self, options: Options):
+  def __init__(self, options: Options, progress_callback=dummy_progress_callback):
     self.options = options
+    self.progress_callback = progress_callback
     self.dry_run = bool(self.options['dry-run'])
     # TODO: maybe make paths configurable?
     if not self.dry_run:
@@ -120,12 +124,23 @@ class Randomizer:
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
     # self.logic.set_prerandomization_item_location("Skyloft - Training Hall chest", "Lanayru Song of the Hero Part")
 
+  def get_total_progress_steps(self):
+    if self.dry_run:
+      return 2
+    else:
+      return 2 + GAMEPATCH_TOTAL_STEP_COUNT
+  
+  def set_progress_callback(self, progress_callback: Callable[[str],None]):
+    self.progress_callback = progress_callback
+
   def randomize(self):
+    self.progress_callback('randomizing items...')
     self.logic.randomize_items()
+    self.progress_callback('writing spoiler log...')
     self.write_spoiler_log()
     if not self.dry_run:
       do_gamepatches(self)
-      # print('Required dungeons: '+(', '.join(self.required_dungeons)))
+    self.progress_callback('done')
 
   def write_spoiler_log(self):
     if self.no_logs:

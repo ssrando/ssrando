@@ -39,6 +39,13 @@ if len(sys.argv) > 1:
     options = process_command_line_options(cmd_line_args)
     if options is not None:
         rando = Randomizer(options)
+        total_progress_steps = rando.get_total_progress_steps()
+        progress_steps=0
+        def progress_callback(action):
+            global progress_steps
+            print(f'{action} {progress_steps}/{total_progress_steps}')
+            progress_steps+=1
+        rando.progress_callback = progress_callback
         rando.randomize()
         print(rando.seed)
 else:
