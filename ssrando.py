@@ -8,7 +8,7 @@ from logic.logic import Logic
 import logic.constants as constants
 from gamepatches import do_gamepatches
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
-from options import OPTIONS
+from options import OPTIONS, Options
 
 from typing import List
 
@@ -45,9 +45,9 @@ else:
   VERSION_WITHOUT_COMMIT = VERSION
 
 class Randomizer:
-  def __init__(self, options):
+  def __init__(self, options: Options):
     self.options = options
-    self.dry_run = bool(options.get('dry-run',False))
+    self.dry_run = bool(self.options['dry-run'])
     # TODO: maybe make paths configurable?
     if not self.dry_run:
       self.actual_extract_path=Path('.') / 'actual-extract'
@@ -64,9 +64,8 @@ class Randomizer:
         raise StartupException("ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
       if not (self.modified_extract_path / 'DATA' / 'files' / 'COPYDATE_CODE_2011-09-28_153155').exists():
         raise StartupException("ERROR: the randomizer only supports E1.00")
-    self.options = options
     self.no_logs = False
-    self.seed = options.get('seed',-1)
+    self.seed = self.options['seed']
     if self.seed == -1:
         self.seed = random.randint(0,1000000)
     self.rng = random.Random()
@@ -80,30 +79,27 @@ class Randomizer:
       ("Dungeon Entrance In Volcano Summit", "Fire Sanctuary"),
       ("Dungeon Entrance On Skyloft", "Skykeep"),
     ])
-    self.starting_items = (x.strip() for x in self.options.get('starting_items','').split(','))
-    self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
+    # self.starting_items = (x.strip() for x in self.options['starting_items']
+    # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
+    self.starting_items = []
 
     self.required_dungeons = self.rng.sample(constants.POTENTIALLY_REQUIRED_DUNGEONS, k=2)
 
-    if not self.options.get('randomize-tablets',False):
+    if not self.options['randomize-tablets']:
       self.starting_items.append('Emerald Tablet')
       self.starting_items.append('Ruby Tablet')
       self.starting_items.append('Amber Tablet')
-    if not self.options.get('swordless',False):
+    if not self.options['swordless']:
       self.starting_items.append('Progressive Sword')
       self.starting_items.append('Progressive Sword')
     # if not self.options.get('randomize-sailcloth',False):
     #   self.starting_items.append('Sailcloth')
-    self.banned_types = self.options.get('banned-types','').split(',')
-    self.banned_types = [x.strip() for x in self.banned_types if x.strip() != '']
-    unknown_types = [x for x in self.banned_types if not x in constants.ALL_TYPES]
-    if len(unknown_types) > 0:
-      print(f"ERROR: unknown banned type(s): {unknown_types}")
+    self.banned_types = self.options['banned-types']
     self.race_mode_banned_locations = []
     self.logic = Logic(self)
     self.non_required_dungeons = [dungeon for dungeon in
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
-    if self.options.get('empty-unrequired-dungeons',False):
+    if self.options['empty-unrequired-dungeons']:
       for location_name in self.logic.item_locations:
         zone, _ = Logic.split_location_name_by_zone(location_name)
         if zone in self.non_required_dungeons:
@@ -207,14 +203,13 @@ class Randomizer:
     
     header += "Skyward Sword Randomizer Version %s\n" % VERSION
     
-    # if self.permalink:
-    #   header += "Permalink: %s\n" % self.permalink
+    header += "Permalink: %s\n" % self.options.get_permalink()
     
     header += "Seed: %s\n" % self.seed
     
     header += "Options selected:\n"
     non_disabled_options = [
-      name for name in self.options
+      name for name in self.options.options
       if self.options[name] not in [False, [], {}, OrderedDict()]
       and not name in ["dry-run", "invisible-sword", "seed"]
     ]

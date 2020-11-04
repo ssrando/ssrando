@@ -45,9 +45,14 @@ global:
       # sets the chesttype based on the item, change so that chesttype is determined by 00 00 00 30 in the params1
       - original: 38 7f 0e 08 7c 03 20 ae 98 1c 12 09 28 00 00 03 40 82 00 14 20 04 01 ff 7f 83 e3 78 54 04 04 3e
         patched:  80 1c 00 04 54 00 e7 be 98 1c 12 09 28 00 00 03 48 00 00 14 20 04 01 ff 7f 83 e3 78 54 04 04 3e
-      # skip drawing link's sword
-      - original: 4b ff fd 69 7f 63 db 78 4b f8 3b 51 2c 03 00 00 41 82 00 14 7f 63 db 78 7f e5 fb 78 38 9b 06 54 4b ff fd 49
-        patched:  60 00 00 00 7f 63 db 78 4b f8 3b 51 2c 03 00 00 41 82 00 14 7f 63 db 78 7f e5 fb 78 38 9b 06 54 60 00 00 00
+      # skip updating sword models if it's updated during an update. Call updateCurrentSword, then skip straight to unsetting the updateSword flag
+      # this changes the function header to match the initSwordModel function, so we can branch there later and use the return from that function
+      - original: 94 21 ff 90 7c 08 02 a6 90 01 00 74 38 81 00 38 93 e1 00 6c 7c 7f 1b 78 38 63 06 54 48 28 da 95
+        patched:  94 21 ff d0 7c 08 02 a6 90 01 00 34 93 e1 00 2c 7c 7f 1b 78 93 c1 00 28 4b ff de 09 48 00 00 6c
+        onlyif: Option "invisible-sword" Enabled
+      # after unsetting the "updateSword" flag, branch to code, that does something with skyward strikes at the end of the initModels function
+      - original: 48 00 1c ed 80 1f 03 4c 54 00 06 f2 90 1f 03 4c 83 e1 00 6c
+        patched:  48 00 1c ed 80 1f 03 4c 54 00 06 f2 90 1f 03 4c 4b ff fe cc
         onlyif: Option "invisible-sword" Enabled
       # instant text
       - original: 88 03 08 15 2c 00 00 00 40 82 00 60 88 03 08 16 2c 00 00 00 40 82 00 54 80 63 07 20 38 80 00 00 38 a0 00 01
@@ -57,6 +62,9 @@ global:
         patched:  80 63 00 04 4b ff 35 8c
       - original: 48 00 2a e5 2c 03 00 00 40 82 00 14 7f c3 f3 78
         patched:  48 00 2a e5 2c 03 00 09 41 82 00 14 7f c3 f3 78
+      # skip over fi talking after obtaining first map
+      - original: a0 1f 03 30 28 00 00 32 40 82 00 6c
+        patched:  a0 1f 03 30 28 00 00 32 48 00 00 6c
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
         patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
