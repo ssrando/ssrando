@@ -918,3 +918,10 @@ def do_gamepatches(rando):
     if objpack_modified:
         objpack_data = object_arc.to_buffer()
         write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ', nlzss11.compress(objpack_data))
+
+    # patch title screen logo
+    actual_data = (rando.actual_extract_path / 'DATA' / 'files' / 'US' / 'Layout' / 'Title2D.arc').read_bytes()
+    actual_arc = U8File.parse_u8(BytesIO(actual_data))
+    logodata = (rando.rando_root_path / 'assets' / 'logo.tpl').read_bytes()
+    actual_arc.set_file_data('timg/tr_wiiKing2Logo_00.tpl', logodata)
+    (rando.modified_extract_path / 'DATA' / 'files' / 'US' / 'Layout' / 'Title2D.arc').write_bytes(actual_arc.to_buffer())

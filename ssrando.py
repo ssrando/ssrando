@@ -49,10 +49,14 @@ class Randomizer:
     self.options = options
     self.dry_run = bool(options.get('dry-run',False))
     # TODO: maybe make paths configurable?
+    # exe root path is where the executable is
+    self.exe_root_path = Path('.').resolve()
+    # this is where all assets/read only files are
+    self.rando_root_path = RANDO_ROOT_PATH
     if not self.dry_run:
-      self.actual_extract_path=Path('.') / 'actual-extract'
-      self.modified_extract_path=Path('.') / 'modified-extract'
-      self.oarc_cache_path=Path('.') / 'oarc'
+      self.actual_extract_path = self.exe_root_path / 'actual-extract'
+      self.modified_extract_path = self.exe_root_path / 'modified-extract'
+      self.oarc_cache_path = self.exe_root_path / 'oarc'
       # catch common errors with directory setup
       if not self.actual_extract_path.is_dir():
         raise StartupException("ERROR: directory actual-extract doesn't exist! Make sure you have the ISO extracted into that directory")
