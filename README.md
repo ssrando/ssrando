@@ -147,3 +147,4 @@ New Trial Completed Storyflags:
 - Azer67: Logic
 - MrCheeze: Reverse engineering file formats
 - LagoLunatic: For implementing the logic for [TWWR](https://github.com/LagoLunatic/wwrando), which is also used here
+- DGod63: title screen logo

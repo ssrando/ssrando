@@ -55,6 +55,7 @@ a = Analysis(['randoscript.py'],
              datas=build_datas_recursive([
              	'version-with-git.txt',
              	'*.yaml',
+             	'assets/logo.tpl',
              ]),
              hiddenimports=[],
              hookspath=[],

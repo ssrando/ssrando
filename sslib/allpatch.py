@@ -102,47 +102,48 @@ class AllPatcher:
             stage = match[1]
             layer = int(match[2])
             self.progress_callback(f'patching {stage} l{layer}')
-            # TODO: skip if nothing is modified at all
             modified_stagepath = self.modified_extract_path/'DATA'/'files'/'Stage'/f'{stage}'/f'{stage}_stg_l{layer}.arc.LZ'
             modified = False
-            stagedata = nlzss11.decompress(stagepath.read_bytes())
-            stageu8 = U8File.parse_u8(BytesIO(stagedata))
             # remove some arcs if necessary
             remove_arcs = set(self.stage_oarc_delete.get((stage, layer), []))
             # add additional arcs if needed
             additional_arcs = set(self.stage_oarc_add.get((stage, layer), []))
-            # remove arcs that are already added on layer 0
-            if layer != 0:
-                additional_arcs = additional_arcs - set(self.stage_oarc_add.get((stage, 0), []))
-            remove_arcs = remove_arcs - additional_arcs
-            for arc in remove_arcs:
-                stageu8.delete_file(f'oarc/{arc}.arc')
-                modified = True
-            for arc in additional_arcs:
-                oarc_bytes = (self.oarc_cache_path / f'{arc}.arc').read_bytes()
-                stageu8.add_file_data(f'oarc/{arc}.arc', oarc_bytes)
-                modified = True
-            if layer == 0:
-                stagebzs = parseBzs(stageu8.get_file_data('dat/stage.bzs'))
-                # patch stage
-                if self.bzs_patch:
-                    newstagebzs = self.bzs_patch(stagebzs,stage,None)
-                    if newstagebzs is not None:
-                        stageu8.set_file_data('dat/stage.bzs', buildBzs(newstagebzs))
-                        modified = True
-                    # patch rooms
-                    room_path_matches = (ROOM_REGEX.match(x) for x in stageu8.get_all_paths())
-                    room_path_matches = (x for x in room_path_matches if not x is None)
-                    for room_path_match in room_path_matches:
-                        roomid = int(room_path_match.group('roomid'))
-                        roomdata = stageu8.get_file_data(room_path_match.group(0))
-                        roomarc = U8File.parse_u8(BytesIO(roomdata))
-                        roombzs = parseBzs(roomarc.get_file_data('dat/room.bzs'))
-                        roombzs = self.bzs_patch(roombzs, stage, roomid)
-                        if roombzs is not None:
-                            roomarc.set_file_data('dat/room.bzs', buildBzs(roombzs))
-                            stageu8.set_file_data(room_path_match.group(0), roomarc.to_buffer())
+            if remove_arcs or additional_arcs or layer == 0:
+                # only decompress and extract files, if needed
+                stagedata = nlzss11.decompress(stagepath.read_bytes())
+                stageu8 = U8File.parse_u8(BytesIO(stagedata))
+                # remove arcs that are already added on layer 0
+                if layer != 0:
+                    additional_arcs = additional_arcs - set(self.stage_oarc_add.get((stage, 0), []))
+                remove_arcs = remove_arcs - additional_arcs
+                for arc in remove_arcs:
+                    stageu8.delete_file(f'oarc/{arc}.arc')
+                    modified = True
+                for arc in additional_arcs:
+                    oarc_bytes = (self.oarc_cache_path / f'{arc}.arc').read_bytes()
+                    stageu8.add_file_data(f'oarc/{arc}.arc', oarc_bytes)
+                    modified = True
+                if layer == 0:
+                    stagebzs = parseBzs(stageu8.get_file_data('dat/stage.bzs'))
+                    # patch stage
+                    if self.bzs_patch:
+                        newstagebzs = self.bzs_patch(stagebzs,stage,None)
+                        if newstagebzs is not None:
+                            stageu8.set_file_data('dat/stage.bzs', buildBzs(newstagebzs))
                             modified = True
+                        # patch rooms
+                        room_path_matches = (ROOM_REGEX.match(x) for x in stageu8.get_all_paths())
+                        room_path_matches = (x for x in room_path_matches if not x is None)
+                        for room_path_match in room_path_matches:
+                            roomid = int(room_path_match.group('roomid'))
+                            roomdata = stageu8.get_file_data(room_path_match.group(0))
+                            roomarc = U8File.parse_u8(BytesIO(roomdata))
+                            roombzs = parseBzs(roomarc.get_file_data('dat/room.bzs'))
+                            roombzs = self.bzs_patch(roombzs, stage, roomid)
+                            if roombzs is not None:
+                                roomarc.set_file_data('dat/room.bzs', buildBzs(roombzs))
+                                stageu8.set_file_data(room_path_match.group(0), roomarc.to_buffer())
+                                modified = True
             # repack u8 and compress it if modified
             if modified:
                 stagedata = stageu8.to_buffer()
