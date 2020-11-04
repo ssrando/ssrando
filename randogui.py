@@ -5,7 +5,6 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
 from threading import Thread
-from ssrando import Randomizer
 from urllib import request
 import os
 
@@ -20,6 +19,8 @@ from PySide2.QtWidgets import QApplication, QMainWindow, QAbstractButton, QCombo
     QRadioButton, QFileDialog
 from PySide2.QtCore import QFile
 
+from ssrando import Randomizer
+from witmanager import WitManager
 from options import OPTIONS, Options
 from logic.constants import ALL_TYPES
 
@@ -27,9 +28,8 @@ from logic.constants import ALL_TYPES
 class RandoGUI(QMainWindow):
     def __init__(self):
         super().__init__()
-
-        self.wit_url = "https://wit.wiimm.de/download/wit-v3.03a-r8245-cygwin.zip"
-        self.wit_folder = "wit-v3.03a-r8245-cygwin"
+        
+        self.wit_manager = WitManager(Path('.').resolve())
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -72,32 +72,29 @@ class RandoGUI(QMainWindow):
             self.iso_location.insert(0, iso_path.name)
 
     def offthread_randomize(self):
-        if not (Path(".") / self.wit_folder).is_dir():
-            # fetch and unzip wit dependency
-            print("wit not found, installing")
-            with zipfile.ZipFile(BytesIO(request.urlopen(self.wit_url).read())) as wit_zip:
-                wit_zip.extractall(Path(".") / self.wit_folder)
+        dry_run = self.options['dry-run']
+        if not dry_run:
+            self.wit_manager.ensure_wit_installed()
 
-        clean_iso_path = self.settings.pop("clean_iso_path")
+            clean_iso_path = self.settings.pop("clean_iso_path")
 
-        if not (Path(".") / "actual-extract").is_dir():
-            subprocess.run(
-                [(Path(".") / self.wit_folder / self.wit_folder / "bin" / "wit"), "-P", "extract",
-                 (Path(clean_iso_path)), "actual-extract"])
-        if not (Path(".") / "modified-extract").is_dir():
-            subprocess.run(["xcopy", "/E", "/I", "actual-extract", "modified-extract"])
+            if not self.wit_manager.actual_extract_already_exists():
+                print('extracting game...')
+                self.wit_manager.extract_game(clean_iso_path)
 
-        output_folder = self.settings.pop("output_folder")
+            if not self.wit_manager.modified_extract_already_exists():
+                print('copying extract...')
+                self.wit_manager.copy_to_modified()
+
+            output_folder = self.settings.pop("output_folder")
         if self.settings["seed"] == "":
             self.settings["seed"] = -1
         self.options.set_option("seed",int(self.settings["seed"]))
         rando = Randomizer(self.options)
         print(rando.seed)
         rando.randomize()
-        if (not self.options["dry-run"]):
-            iso_name = "SS Randomizer " + str(rando.seed) + ".iso"
-            subprocess.run([(Path(".") / self.wit_folder / "bin" / "wit").name, "-P", "copy", "modified-extract",
-                            (Path(output_folder) / iso_name)])
+        if not dry_run:
+            self.wit_manager.reapack_game(Path(output_folder), rando.seed, use_wbfs=True)
 
         self.update_settings()
 
