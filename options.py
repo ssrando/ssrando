@@ -249,3 +249,8 @@ class Options():
     
     def get(self, item, default=None):
         return self.options.get(item, default)
+    
+    def copy(self):
+        o = Options()
+        o.options = self.options.copy()
+        return o

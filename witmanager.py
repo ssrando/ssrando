@@ -42,8 +42,8 @@ class WitManager:
             return_code = subprocess.call([self.get_wit_path(), "-P", "extract",
                 iso_path, self.rootpath / "actual-extract"])
             assert return_code == 0
-            # delete hint videos, they take up way too much space
-            for hint_vid in (datapath / 'files' / 'THP').glob('HINT_*.thp'):
+            # delete all videos, they take up way too much space
+            for hint_vid in (datapath / 'files' / 'THP').glob('*.thp'):
                 os.remove(hint_vid)
     
     def modified_extract_already_exists(self):
