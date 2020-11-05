@@ -142,8 +142,15 @@ New Trial Completed Storyflags:
 924: Obtained Item from Cawlin
 925: Obtained Item from Strich
 
+926: Required Dungeon 3  
+927: Required Dungeon 4  
+928: Required Dungeon 5  
+929: Required Dungeon 6  
+
 ### Shoutouts
 - Peppernicus2000: Logic, fixes
 - Azer67: Logic
 - MrCheeze: Reverse engineering file formats
 - LagoLunatic: For implementing the logic for [TWWR](https://github.com/LagoLunatic/wwrando), which is also used here
+- DGod63: title screen logo
+- cjs07: GUI

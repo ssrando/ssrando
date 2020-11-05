@@ -19,8 +19,6 @@ install:
 build_script:
 - python -m PyInstaller ssrando.spec
 - cp README.md dist
-- cp randomize_executable.bat dist/randomize.bat
-- cp setup_executable.bat dist/setup.bat
 
 artifacts:
 # pyinstaller puts the build exe here

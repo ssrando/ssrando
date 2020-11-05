@@ -15,6 +15,14 @@ OPTIONS_LIST = [
         'ui': 'option_dry_run',
     },
     {
+        'name': 'No GUI',
+        'command': 'noui',
+        'type': 'boolean',
+        'default': False,
+        'permalink': False,
+        'help': "Don't launch the randomizer UI, just read command line params",
+    },
+    {
         'name': 'Randomize Tablets',
         'command': 'randomize-tablets',
         'type': 'boolean',
@@ -38,16 +46,17 @@ OPTIONS_LIST = [
         'help': 'Instead of starting with the goddess sword, in this mode all sword upgrades, including the pracice sword, have to be found',
         'ui': 'option_swordless',
     },
-    # {
-    #     'name': 'Required Dungeons',
-    #     'command': 'required-dungeons',
-    #     'type': 'int',
-    #     'default': 2,
-    #     'min': 0,
-    #     'max': 6,
-    #     'bits': 3,
-    #     'help': '(not implemented yet) the number of dungeons that are required, to beat the seed',
-    # },
+    {
+        'name': 'Required Dungeon Count',
+        'command': 'required-dungeon-count',
+        'type': 'int',
+        'default': 2,
+        'min': 0,
+        'max': 6,
+        'bits': 3,
+        'help': '(not implemented yet) the number of dungeons that are required, to beat the seed',
+        'ui': 'option_required_dungeon_count',
+    },
     # {
     #     'name': 'Randomize Sailcloth',
     #     'command': 'randomize-sailcloth',
@@ -79,6 +88,14 @@ OPTIONS_LIST = [
         'choices': ALL_TYPES,
         'help': "Choose subtypes that can't contain progression items, as a comma seperated list, available types are: " + ", ".join(ALL_TYPES),
         'ui': 'option_banned_types'
+    },
+    {
+        'name': 'Skip Skykeep',
+        'command': 'skip-skykeep',
+        'type': 'boolean',
+        'default': False,
+        'help': 'If activated, skips the requirement to beat skykeep in order to access the horde in the past',
+        'ui': 'option_skip_skykeep',
     },
     {
         'name': 'Seed',
@@ -232,3 +249,8 @@ class Options():
     
     def get(self, item, default=None):
         return self.options.get(item, default)
+    
+    def copy(self):
+        o = Options()
+        o.options = self.options.copy()
+        return o

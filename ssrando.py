@@ -6,11 +6,11 @@ import random
 from pathlib import Path
 from logic.logic import Logic
 import logic.constants as constants
-from gamepatches import do_gamepatches
+from gamepatches import do_gamepatches, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
 
-from typing import List
+from typing import List, Callable
 
 class StartupException(Exception):
   pass
@@ -44,26 +44,23 @@ else:
   VERSION = (RANDO_ROOT_PATH / "version-with-git.txt").read_text().strip()
   VERSION_WITHOUT_COMMIT = VERSION
 
+def dummy_progress_callback(current_action_name):
+  pass
+
 class Randomizer:
-  def __init__(self, options: Options):
+  def __init__(self, options: Options, progress_callback=dummy_progress_callback):
     self.options = options
+    self.progress_callback = progress_callback
     self.dry_run = bool(self.options['dry-run'])
     # TODO: maybe make paths configurable?
+    # exe root path is where the executable is
+    self.exe_root_path = Path('.').resolve()
+    # this is where all assets/read only files are
+    self.rando_root_path = RANDO_ROOT_PATH
     if not self.dry_run:
-      self.actual_extract_path=Path('.') / 'actual-extract'
-      self.modified_extract_path=Path('.') / 'modified-extract'
-      self.oarc_cache_path=Path('.') / 'oarc'
-      # catch common errors with directory setup
-      if not self.actual_extract_path.is_dir():
-        raise StartupException("ERROR: directory actual-extract doesn't exist! Make sure you have the ISO extracted into that directory")
-      if not self.modified_extract_path.is_dir():
-        raise StartupException("ERROR: directory modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
-      if not (self.actual_extract_path / 'DATA').is_dir():
-        raise StartupException("ERROR: directory actual-extract doesn't contain a DATA directory! Make sure you have the ISO properly extracted into actual-extract")
-      if not (self.modified_extract_path / 'DATA').is_dir():
-        raise StartupException("ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
-      if not (self.modified_extract_path / 'DATA' / 'files' / 'COPYDATE_CODE_2011-09-28_153155').exists():
-        raise StartupException("ERROR: the randomizer only supports E1.00")
+      self.actual_extract_path = self.exe_root_path / 'actual-extract'
+      self.modified_extract_path = self.exe_root_path / 'modified-extract'
+      self.oarc_cache_path = self.exe_root_path / 'oarc'
     self.no_logs = False
     self.seed = self.options['seed']
     if self.seed == -1:
@@ -83,7 +80,7 @@ class Randomizer:
     # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
     self.starting_items = []
 
-    self.required_dungeons = self.rng.sample(constants.POTENTIALLY_REQUIRED_DUNGEONS, k=2)
+    self.required_dungeons = self.rng.sample(constants.POTENTIALLY_REQUIRED_DUNGEONS, k=self.options['required-dungeon-count'])
 
     if not self.options['randomize-tablets']:
       self.starting_items.append('Emerald Tablet')
@@ -112,20 +109,44 @@ class Randomizer:
         # TODO: check again with entrance rando
         self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
         self.race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Bomb Bag")
-    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")
-    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
+    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
+    # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Goddess Harp")
+    # self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
-    # self.logic.set_prerandomization_item_location("Skyloft - Training Hall chest", "Lanayru Song of the Hero Part")
+    # self.logic.set_prerandomization_item_location("Skyloft - Practice Sword", "Progressive Sword")
+
+  def check_valid_directory_setup(self):
+    # catch common errors with directory setup
+    if not self.actual_extract_path.is_dir():
+      raise StartupException("ERROR: directory actual-extract doesn't exist! Make sure you have the ISO extracted into that directory")
+    if not self.modified_extract_path.is_dir():
+      raise StartupException("ERROR: directory modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
+    if not (self.actual_extract_path / 'DATA').is_dir():
+      raise StartupException("ERROR: directory actual-extract doesn't contain a DATA directory! Make sure you have the ISO properly extracted into actual-extract")
+    if not (self.modified_extract_path / 'DATA').is_dir():
+      raise StartupException("ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
+    if not (self.modified_extract_path / 'DATA' / 'files' / 'COPYDATE_CODE_2011-09-28_153155').exists():
+      raise StartupException("ERROR: the randomizer only supports E1.00")
+
+  def get_total_progress_steps(self):
+    if self.dry_run:
+      return 2
+    else:
+      return 2 + GAMEPATCH_TOTAL_STEP_COUNT
+  
+  def set_progress_callback(self, progress_callback: Callable[[str],None]):
+    self.progress_callback = progress_callback
 
   def randomize(self):
+    self.progress_callback('randomizing items...')
     self.logic.randomize_items()
+    self.progress_callback('writing spoiler log...')
     self.write_spoiler_log()
     if not self.dry_run:
       do_gamepatches(self)
-      # print('Required dungeons: '+(', '.join(self.required_dungeons)))
+    self.progress_callback('done')
 
   def write_spoiler_log(self):
     if self.no_logs:
@@ -136,10 +157,10 @@ class Randomizer:
     spoiler_log = self.get_log_header()
 
     # Write required dungeons
-    spoiler_log += "Required Dungeon 1: " + self.required_dungeons[0] + '\n'
-    spoiler_log += "Required Dungeon 2: " + self.required_dungeons[1]
+    for i, dungeon in enumerate(self.required_dungeons):
+      spoiler_log += f"Required Dungeon {i+1}: " + dungeon + '\n'
 
-    spoiler_log += "\n\n\n"
+    spoiler_log += "\n\n"
     
     # Write progression spheres.
     spoiler_log += "Playthrough:\n"
@@ -210,7 +231,7 @@ class Randomizer:
     header += "Options selected:\n"
     non_disabled_options = [
       name for name in self.options.options
-      if self.options[name] not in [False, [], {}, OrderedDict()]
+      if (self.options[name] not in [False, [], {}, OrderedDict()] or OPTIONS[name]['type'] == 'int')
       and not name in ["dry-run", "invisible-sword", "seed"]
     ]
     option_strings = []

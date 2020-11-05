@@ -31,20 +31,36 @@ class WitManager:
                 with tarfile.open(mode='r:gz', fileobj=BytesIO(request.urlopen('https://wit.wiimm.de/download/wit-v3.03a-r8245-x86_64.tar.gz').read())) as wit_zip:
                     wit_zip.extractall(self.rootpath)
     
+    def actual_extract_already_exists(self):
+        return (self.rootpath / 'actual-extract' / 'DATA' / 'sys' / 'main.dol').is_file()
+
     def extract_game(self, iso_path):
         # check if game is already extracted
         # TODO: there seemed to be issues with wit sometimes, that it doesn't properly extract the first time?
         datapath = self.rootpath / 'actual-extract' / 'DATA'
-        if not (datapath / 'sys' / 'main.dol').is_file():
-            subprocess.call([self.get_wit_path(), "-P", "extract",
-                 iso_path, self.rootpath / "actual-extract"])
-            # delete hint videos, they take up way too much space
-            for hint_vid in (datapath / 'files' / 'THP').glob('HINT_*.thp'):
+        if not self.actual_extract_already_exists():
+            return_code = subprocess.call([self.get_wit_path(), "-P", "extract",
+                iso_path, self.rootpath / "actual-extract"])
+            assert return_code == 0
+            # delete all videos, they take up way too much space
+            for hint_vid in (datapath / 'files' / 'THP').glob('*.thp'):
                 os.remove(hint_vid)
+    
+    def modified_extract_already_exists(self):
+        return (self.rootpath / 'modified-extract' / 'DATA' / 'sys' / 'main.dol').is_file()
 
     def copy_to_modified(self):
         # check if it already exists
-        if not (self.rootpath / 'modified-extract' / 'DATA' / 'sys' / 'main.dol').is_file():
-            shutil.copy(self.rootpath / 'actual-extract', self.rootpath / 'modified-extract')
-
+        if not self.modified_extract_already_exists():
+            shutil.copytree(self.rootpath / 'actual-extract', self.rootpath / 'modified-extract')
+    
+    def reapack_game(self, modified_iso_dir: Path, seed, use_wbfs=False):
+        filename = f'SOUE01-{seed}.wbfs' if use_wbfs else f'SS Randomizer {seed}.iso'
+        modified_iso_path = modified_iso_dir / filename
+        if modified_iso_path.is_file():
+            os.remove(modified_iso_path)
+        return_code = subprocess.call([self.get_wit_path(), "-P", "copy", "--split",
+                self.rootpath / "modified-extract", modified_iso_path])
+        assert return_code == 0
+    
 

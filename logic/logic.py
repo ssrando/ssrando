@@ -447,10 +447,12 @@ class Logic:
     self.macros[macro_name] = Logic.parse_logic_expression(req_string)
   
   def update_beat_game_macro(self):
-    # there will be more settings in the future, allowing for something different than
-    # 2 dungeons, skykeep and GoT
-    required_dungeon_macro = ' & '.join(f'Can Beat {dungeon}' for dungeon in self.rando.required_dungeons)
-    self.set_macro('Can Access Past','Can Access Sealed Temple & Master Sword & '+required_dungeon_macro)
+    # needs to be able to open GoT and open it, requires required dungeons
+    access_past_requirements = ['Can Access Sealed Temple', 'Master Sword','Can Raise Gate of Time']
+    for dungeon in self.rando.required_dungeons:
+      access_past_requirements.append(f'Can Beat {dungeon}')
+    ' & '.join(f'Can Beat {dungeon}' for dungeon in self.rando.required_dungeons)
+    self.set_macro('Can Access Past',' & '.join(access_past_requirements))
 
   def update_entrance_connection_macros(self):
     # Update all the macros to take randomized entrances into account.

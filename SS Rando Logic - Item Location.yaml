@@ -130,7 +130,7 @@ Skyloft - Wyrna Crystals:
   Paths:
     - event/118-Town3/144
     - oarc/F006r/l0
-Skyloft - Peater/Peatrice Crystal:
+Skyloft - Peater/Peatrice Crystals:
   Need: Nothing
   original item: 5 Gratitude Crystals
   type: sidequest
@@ -177,7 +177,7 @@ Skyloft - Sparrot Crystals:
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
-Skyloft - Cleaning Crystal:
+Skyloft - Cleaning Crystals:
   Need: Gust Bellows
   original item: 5 Gratitude Crystals
   type: sidequest
@@ -214,7 +214,7 @@ Skyloft - Batreaux 30 Crystals:
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
-Skyloft - Batreaux 30 Crystal Chest:
+Skyloft - Batreaux 30 Crystals Chest:
   Need: Can Open Batreaux Shed & 30 Gratitude Crystals # 30 gratitude Crystals
   original item: Cursed Medal
   type: batreaux
@@ -1595,7 +1595,7 @@ Faron Silent Realm - Water Scale:
   Paths:
    - stage/S100/r0/l2/WarpObj
 
-Lanyru Silent Realm - Clawshots:
+Lanayru Silent Realm - Clawshots:
   Need: Can Access Second Part of Lanayru & Nayru's Wisdom & Goddess Harp
   original item: Clawshots
   type: silent realm
