@@ -15,6 +15,14 @@ OPTIONS_LIST = [
         'ui': 'option_dry_run',
     },
     {
+        'name': 'No GUI',
+        'command': 'noui',
+        'type': 'boolean',
+        'default': False,
+        'permalink': False,
+        'help': "Don't launch the randomizer UI, just read command line params",
+    },
+    {
         'name': 'Randomize Tablets',
         'command': 'randomize-tablets',
         'type': 'boolean',

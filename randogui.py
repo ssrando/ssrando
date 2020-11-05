@@ -46,7 +46,6 @@ class RandoGUI(QMainWindow):
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui',None)
                 if not ui_name:
-                    print(f'WARNING: no ui for {option["name"]}')
                     continue
                 widget = getattr(self.ui, ui_name)
                 if isinstance(widget, QAbstractButton):
@@ -74,6 +73,7 @@ class RandoGUI(QMainWindow):
         self.ui.clean_iso_browse_button.clicked.connect(self.browse_for_iso)
         self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)
+        self.update_ui_for_settings()
 
     def randomize(self):
         Thread(target=self.offthread_randomize).start()
@@ -137,6 +137,9 @@ class RandoGUI(QMainWindow):
         self.update_settings()
 
     def update_ui_for_settings(self):
+        self.ui.clean_iso_path.setText(self.settings["clean_iso_path"])
+        self.ui.output_folder.setText(self.settings["output_folder"])
+        self.ui.seed.setText(self.settings["seed"])
         for option_key, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui',None)
@@ -190,11 +193,14 @@ class RandoGUI(QMainWindow):
                 banned_types.append(check_type)
         return banned_types
 
-
-if __name__ == "__main__":
+def run_main_gui():
     app = QtWidgets.QApplication([])
 
     widget = RandoGUI()
     widget.show()
 
     sys.exit(app.exec_())
+
+
+if __name__ == "__main__":
+    run_main_gui()
