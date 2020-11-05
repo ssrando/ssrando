@@ -52,7 +52,7 @@ class WitManager:
     def copy_to_modified(self):
         # check if it already exists
         if not self.modified_extract_already_exists():
-            shutil.copy(self.rootpath / 'actual-extract', self.rootpath / 'modified-extract')
+            shutil.copytree(self.rootpath / 'actual-extract', self.rootpath / 'modified-extract')
     
     def reapack_game(self, modified_iso_dir: Path, seed, use_wbfs=False):
         filename = f'SOUE01-{seed}.wbfs' if use_wbfs else f'SS Randomizer {seed}.iso'

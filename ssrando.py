@@ -61,17 +61,6 @@ class Randomizer:
       self.actual_extract_path = self.exe_root_path / 'actual-extract'
       self.modified_extract_path = self.exe_root_path / 'modified-extract'
       self.oarc_cache_path = self.exe_root_path / 'oarc'
-      # catch common errors with directory setup
-      if not self.actual_extract_path.is_dir():
-        raise StartupException("ERROR: directory actual-extract doesn't exist! Make sure you have the ISO extracted into that directory")
-      if not self.modified_extract_path.is_dir():
-        raise StartupException("ERROR: directory modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
-      if not (self.actual_extract_path / 'DATA').is_dir():
-        raise StartupException("ERROR: directory actual-extract doesn't contain a DATA directory! Make sure you have the ISO properly extracted into actual-extract")
-      if not (self.modified_extract_path / 'DATA').is_dir():
-        raise StartupException("ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
-      if not (self.modified_extract_path / 'DATA' / 'files' / 'COPYDATE_CODE_2011-09-28_153155').exists():
-        raise StartupException("ERROR: the randomizer only supports E1.00")
     self.no_logs = False
     self.seed = self.options['seed']
     if self.seed == -1:
@@ -120,13 +109,26 @@ class Randomizer:
         # TODO: check again with entrance rando
         self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
         self.race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
-    self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
-    self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Goddess Harp")
-    self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")
+    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
+    # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Goddess Harp")
+    # self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
-    self.logic.set_prerandomization_item_location("Skyloft - Practice Sword", "Progressive Sword")
+    # self.logic.set_prerandomization_item_location("Skyloft - Practice Sword", "Progressive Sword")
+
+  def check_valid_directory_setup(self):
+    # catch common errors with directory setup
+    if not self.actual_extract_path.is_dir():
+      raise StartupException("ERROR: directory actual-extract doesn't exist! Make sure you have the ISO extracted into that directory")
+    if not self.modified_extract_path.is_dir():
+      raise StartupException("ERROR: directory modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
+    if not (self.actual_extract_path / 'DATA').is_dir():
+      raise StartupException("ERROR: directory actual-extract doesn't contain a DATA directory! Make sure you have the ISO properly extracted into actual-extract")
+    if not (self.modified_extract_path / 'DATA').is_dir():
+      raise StartupException("ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
+    if not (self.modified_extract_path / 'DATA' / 'files' / 'COPYDATE_CODE_2011-09-28_153155').exists():
+      raise StartupException("ERROR: the randomizer only supports E1.00")
 
   def get_total_progress_steps(self):
     if self.dry_run:

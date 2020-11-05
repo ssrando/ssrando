@@ -16,10 +16,10 @@ import random
 from PySide2 import QtCore, QtWidgets, QtGui
 from ui_randogui import Ui_MainWindow
 from PySide2.QtWidgets import QApplication, QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
-    QRadioButton, QFileDialog, QProgressDialog
+    QRadioButton, QFileDialog, QProgressDialog, QErrorMessage
 from PySide2.QtCore import QFile, QThread, Signal
 
-from ssrando import Randomizer
+from ssrando import Randomizer, StartupException
 from witmanager import WitManager
 from options import OPTIONS, Options
 from logic.constants import ALL_TYPES
@@ -31,6 +31,7 @@ class RandoGUI(QMainWindow):
         
         self.wit_manager = WitManager(Path('.').resolve())
         self.randothread = None
+        self.error_msg = None
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -86,6 +87,10 @@ class RandoGUI(QMainWindow):
         if not self.randothread is None:
             print('ERROR: tried to randomize multiple times at once!')
             return
+        if not self.wit_manager.actual_extract_already_exists() and not self.settings['clean_iso_path']:
+            self.error_msg = QErrorMessage(self)
+            self.error_msg.showMessage('please enter a valid clean iso path!')
+            return
         if self.settings["seed"] == "":
             self.settings["seed"] = -1
         self.options.set_option("seed",int(self.settings["seed"]))
@@ -105,8 +110,12 @@ class RandoGUI(QMainWindow):
         def ui_progress_callback(current_action, completed_steps):
             self.progress_dialog.setValue(completed_steps)
             self.progress_dialog.setLabelText(current_action)
+        def on_error(message):
+            self.error_msg = QErrorMessage(self)
+            self.error_msg.showMessage(message)
         self.randothread = RandomizerThread(rando, self.wit_manager, self.settings)
         self.randothread.update_progress.connect(ui_progress_callback)
+        self.randothread.error_abort.connect(on_error)
         self.randothread.randomization_complete.connect(self.wait_for_randothread)
         self.randothread.start()
 
@@ -202,6 +211,7 @@ class RandoGUI(QMainWindow):
 
 class RandomizerThread(QThread):
     update_progress = Signal(str, int)
+    error_abort = Signal(str)
     randomization_complete = Signal()
 
     def __init__(self, randomizer: Randomizer, wit_manager: WitManager, settings):
@@ -234,8 +244,17 @@ class RandomizerThread(QThread):
 
             output_folder = self.settings["output_folder"]
         print(self.randomizer.seed)
+        try:
+            self.randomizer.check_valid_directory_setup()
+        except StartupException as e:
+            self.error_abort.emit(str(e))
+            return
         self.randomizer.set_progress_callback(self.ui_progress_callback)
-        self.randomizer.randomize()
+        try:
+            self.randomizer.randomize()
+        except Exception as e:
+            self.error_abort.emit(str(e))
+            return
         if not dry_run:
             self.ui_progress_callback('repacking game...')
             self.wit_manager.reapack_game(Path(output_folder), self.randomizer.seed, use_wbfs=True)
