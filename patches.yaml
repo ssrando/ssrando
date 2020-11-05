@@ -1745,6 +1745,12 @@ D301: # Sandship A
     objtype: STAG
     object:
       anglez: 15 # untriggerstoryflag, beat sandship
+  - name: Fi text infront of Boss Door
+    type: objdelete
+    id: 0xFC43
+    layer: 4
+    room: 9
+    objtype: OBJ
 F402: # Sealed Temple
   - name: SotH start cs
     type: objdelete
