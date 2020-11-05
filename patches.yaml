@@ -844,6 +844,12 @@ F100: # Faron main area
     destlayer: 1
     room: 0
     objtype: OBJ
+  - name: Remove Fi text infront of Viewing Platform
+    type: objdelete
+    id: 0x46BD
+    layer: 1
+    room: 0
+    objtype: OBJ
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
@@ -857,6 +863,12 @@ F101: # Deep Woods
   - name: Remove goddess cube force hit trigger
     type: objdelete
     id: 0xFD05
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: Remove Fi text infront of Skyview
+    type: objdelete
+    id: 0xFCFA
     layer: 1
     room: 0
     objtype: OBJ
@@ -1413,6 +1425,12 @@ F300: # lanayru Main Area
     destlayer: 1
     room: 0
     objtype: OBJS
+  - name: Remove Fi text after Tumbleweed Chest
+    type: objdelete
+    id: 0xFCC6
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_1:
   - name: Layer override
     type: layeroverride
