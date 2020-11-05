@@ -38,7 +38,8 @@ options = process_command_line_options(cmd_line_args)
 if options is not None:
     if options['noui']:
         rando = Randomizer(options)
-        rando.check_valid_directory_setup()
+        if not options['dry-run']:
+            rando.check_valid_directory_setup()
         total_progress_steps = rando.get_total_progress_steps()
         progress_steps=0
         def progress_callback(action):
