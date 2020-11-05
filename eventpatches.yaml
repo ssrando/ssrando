@@ -341,7 +341,7 @@
       next: 414
       param3: 25 # add to counter command
 008-Hint:
-  # check for 3 storyflags: required dungeon 1 and 2, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
+  # check for 7 storyflags: required dungeon 1 to 6, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check
     type: entryadd
     entry:
@@ -361,6 +361,42 @@
     flow:
       subType: 6
       param2: 903 # Beat Required Dungeon 2
+      param3: 3
+    cases:
+      - Rando Dungeon 3 check
+      - -1
+  - name: Rando Dungeon 3 check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 926 # Beat Required Dungeon 3
+      param3: 3
+    cases:
+      - Rando Dungeon 4 check
+      - -1
+  - name: Rando Dungeon 4 check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 927 # Beat Required Dungeon 4
+      param3: 3
+    cases:
+      - Rando Dungeon 5 check
+      - -1
+  - name: Rando Dungeon 5 check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 928 # Beat Required Dungeon 5
+      param3: 3
+    cases:
+      - Rando Dungeon 6 check
+      - -1
+  - name: Rando Dungeon 6 check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 929 # Beat Required Dungeon 6
       param3: 3
     cases:
       - Rando GoT check

@@ -49,11 +49,11 @@ global:
       # this changes the function header to match the initSwordModel function, so we can branch there later and use the return from that function
       - original: 94 21 ff 90 7c 08 02 a6 90 01 00 74 38 81 00 38 93 e1 00 6c 7c 7f 1b 78 38 63 06 54 48 28 da 95
         patched:  94 21 ff d0 7c 08 02 a6 90 01 00 34 93 e1 00 2c 7c 7f 1b 78 93 c1 00 28 4b ff de 09 48 00 00 6c
-        onlyif: Option "invisible-sword" Enabled
+        # onlyif: Option "invisible-sword" Enabled
       # after unsetting the "updateSword" flag, branch to code, that does something with skyward strikes at the end of the initModels function
       - original: 48 00 1c ed 80 1f 03 4c 54 00 06 f2 90 1f 03 4c 83 e1 00 6c
         patched:  48 00 1c ed 80 1f 03 4c 54 00 06 f2 90 1f 03 4c 4b ff fe cc
-        onlyif: Option "invisible-sword" Enabled
+        # onlyif: Option "invisible-sword" Enabled
       # instant text
       - original: 88 03 08 15 2c 00 00 00 40 82 00 60 88 03 08 16 2c 00 00 00 40 82 00 54 80 63 07 20 38 80 00 00 38 a0 00 01
         patched:  88 03 08 15 2c 00 00 00 40 82 00 60 88 03 08 16 2c 00 00 00 40 82 00 54 80 63 07 20 38 80 00 01 38 a0 00 01
@@ -1879,6 +1879,21 @@ F401: # Sealed grounds Whirlpool
     layer: 1
     room: 1
     objtype: OBJ
+  - name: Set vents in Intro CS
+    type: objpatch
+    room: 1
+    index: 7
+    objtype: EVNT
+    object:
+      sceneflag1: 7 # vents active
+  - name: Set vents in Intro CS
+    type: objpatch
+    room: 1
+    index: 7
+    objtype: EVNT
+    onlyif: Option "skip-skykeep" Enabled
+    object:
+      sceneflag2: 50 # door to horde open
 F400: # Behind the Temple
   - name: Layer override
     type: layeroverride

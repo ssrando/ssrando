@@ -160,7 +160,7 @@ temp
 *.d
 
 # wiimms szs and iso tools
-tools
+wit-v3.03a-r8245-*
 
 # more game files
 actual-extract
