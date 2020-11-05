@@ -47,7 +47,7 @@ OPTIONS_LIST = [
         'max': 6,
         'bits': 3,
         'help': '(not implemented yet) the number of dungeons that are required, to beat the seed',
-        # 'ui': 'option_required_dungeons',
+        'ui': 'option_required_dungeon_count',
     },
     # {
     #     'name': 'Randomize Sailcloth',
@@ -87,7 +87,7 @@ OPTIONS_LIST = [
         'type': 'boolean',
         'default': False,
         'help': 'If activated, skips the requirement to beat skykeep in order to access the horde in the past',
-        # 'ui': 'option_skip_skykeep',
+        'ui': 'option_skip_skykeep',
     },
     {
         'name': 'Seed',

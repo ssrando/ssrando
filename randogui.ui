@@ -10,6 +10,12 @@
     <height>421</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>Skyward Sword Randomizer</string>
   </property>
@@ -20,7 +26,7 @@
       <x>10</x>
       <y>10</y>
       <width>931</width>
-      <height>83</height>
+      <height>89</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -195,7 +201,7 @@
       <x>10</x>
       <y>240</y>
       <width>931</width>
-      <height>91</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="title">
@@ -207,14 +213,35 @@
        <x>10</x>
        <y>20</y>
        <width>911</width>
-       <height>61</height>
+       <height>97</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="option_closed_thunderhead">
+        <property name="text">
+         <string>Closed Thunderhead</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QCheckBox" name="option_swordless">
         <property name="text">
          <string>Swordless</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="option_skip_skykeep">
+        <property name="text">
+         <string>Skip Skykeep</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="option_empty_unrequired_dungeons">
+        <property name="text">
+         <string>Race Mode</string>
         </property>
        </widget>
       </item>
@@ -225,19 +252,41 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QCheckBox" name="option_closed_thunderhead">
-        <property name="text">
-         <string>Closed Thunderhead</string>
+      <item row="2" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="spacing">
+         <number>6</number>
         </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="option_empty_unrequired_dungeons">
-        <property name="text">
-         <string>Race Mode</string>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
         </property>
-       </widget>
+        <item>
+         <widget class="QSpinBox" name="option_required_dungeon_count">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>41</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Required Dungeon Count</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -295,7 +344,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>340</y>
+      <y>360</y>
       <width>931</width>
       <height>20</height>
      </rect>

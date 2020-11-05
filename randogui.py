@@ -42,7 +42,7 @@ class RandoGUI(QMainWindow):
 
         self.options = Options()
 
-        for option in OPTIONS.values():
+        for option_key, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui',None)
                 if not ui_name:
@@ -50,16 +50,25 @@ class RandoGUI(QMainWindow):
                     continue
                 widget = getattr(self.ui, ui_name)
                 if isinstance(widget, QAbstractButton):
+                    widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QComboBox):
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):
+                    if 'min' in option:
+                        widget.setMinimum(option['min'])
+                    if 'max' in option:
+                        widget.setMaximum(option['max'])
+                    widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
 
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
+            widget.setChecked(not check_type in self.options['banned-types'])
+            if check_type == 'crystal':
+                widget.setEnabled(False)
             widget.clicked.connect(self.update_settings)
 
         self.ui.clean_iso_browse_button.clicked.connect(self.browse_for_iso)
@@ -126,6 +135,26 @@ class RandoGUI(QMainWindow):
             return
         self.ui.output_folder.setText(output_folder)
         self.update_settings()
+
+    def update_ui_for_settings(self):
+        for option_key, option in OPTIONS.items():
+            if option["name"] != "Banned Types" and option["name"] != "Seed":
+                ui_name = option.get('ui',None)
+                if not ui_name:
+                    continue
+                widget = getattr(self.ui, ui_name)
+                if isinstance(widget, QAbstractButton):
+                    widget.setChecked(self.options[option_key])
+                elif isinstance(widget, QComboBox):
+                    pass
+                elif isinstance(widget, QListView):
+                    pass
+                elif isinstance(widget, QSpinBox):
+                    widget.setValue(self.options[option_key])
+
+        for check_type in ALL_TYPES:
+            widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
+            widget.setChecked(not check_type in self.options['banned-types'])
 
     def update_settings(self):
         self.settings["clean_iso_path"] = self.ui.clean_iso_path.text()
