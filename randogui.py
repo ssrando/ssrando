@@ -44,7 +44,11 @@ class RandoGUI(QMainWindow):
 
         for option in OPTIONS.values():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
-                widget = getattr(self.ui, option["ui"])
+                ui_name = option.get('ui',None)
+                if not ui_name:
+                    print(f'WARNING: no ui for {option["name"]}')
+                    continue
+                widget = getattr(self.ui, ui_name)
                 if isinstance(widget, QAbstractButton):
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QComboBox):

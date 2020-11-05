@@ -518,15 +518,25 @@ def do_gamepatches(rando):
         'Fire Sanctuary': '304-MountainD2',
     }
 
-    REQUIRED_DUNGEON_STORYFLAGS = [902, 903]
+    REQUIRED_DUNGEON_STORYFLAGS = [902, 903, 926, 927, 928, 929]
 
     for i, dungeon in enumerate(rando.required_dungeons):
         dungeon_events = eventpatches[DUNGEON_TO_EVENTFILE[dungeon]]
         required_dungeon_storyflag_event = next(filter(lambda x: x['name'] == 'rando required dungeon storyflag', dungeon_events))
         required_dungeon_storyflag_event['flow']['param2'] = REQUIRED_DUNGEON_STORYFLAGS[i] # param2 is storyflag of event
     
+    required_dungeon_count = len(rando.required_dungeons)
+    # set flags for unrequired dungeons beforehand
+    for required_dungeon_storyflag in REQUIRED_DUNGEON_STORYFLAGS[required_dungeon_count:]:
+        patches['global']['startstoryflags'].append(required_dungeon_storyflag)
+    
     # patch required dungeon text in
-    required_dungeons_text = 'Required dungeons:\n'+('\n'.join(rando.required_dungeons))
+    if required_dungeon_count == 0:
+        required_dungeons_text = 'No dungeons'
+    elif required_dungeon_count == 6:
+        required_dungeons_text = 'All dungeons'
+    else:
+        required_dungeons_text = 'Required dungeons:\n'+('\n'.join(rando.required_dungeons))
     eventpatches['107-Kanban'].append({
         "name": "Knight Academy Billboard text",
         "type": "textpatch",

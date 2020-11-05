@@ -91,7 +91,7 @@ class Randomizer:
     # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
     self.starting_items = []
 
-    self.required_dungeons = self.rng.sample(constants.POTENTIALLY_REQUIRED_DUNGEONS, k=2)
+    self.required_dungeons = self.rng.sample(constants.POTENTIALLY_REQUIRED_DUNGEONS, k=self.options['required-dungeon-count'])
 
     if not self.options['randomize-tablets']:
       self.starting_items.append('Emerald Tablet')
@@ -120,13 +120,13 @@ class Randomizer:
         # TODO: check again with entrance rando
         self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
         self.race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Bomb Bag")
-    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")
-    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
+    self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
+    self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Goddess Harp")
+    self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
-    # self.logic.set_prerandomization_item_location("Skyloft - Training Hall chest", "Lanayru Song of the Hero Part")
+    self.logic.set_prerandomization_item_location("Skyloft - Practice Sword", "Progressive Sword")
 
   def get_total_progress_steps(self):
     if self.dry_run:
@@ -155,10 +155,10 @@ class Randomizer:
     spoiler_log = self.get_log_header()
 
     # Write required dungeons
-    spoiler_log += "Required Dungeon 1: " + self.required_dungeons[0] + '\n'
-    spoiler_log += "Required Dungeon 2: " + self.required_dungeons[1]
+    for i, dungeon in enumerate(self.required_dungeons):
+      spoiler_log += f"Required Dungeon {i+1}: " + dungeon + '\n'
 
-    spoiler_log += "\n\n\n"
+    spoiler_log += "\n\n"
     
     # Write progression spheres.
     spoiler_log += "Playthrough:\n"
@@ -229,7 +229,7 @@ class Randomizer:
     header += "Options selected:\n"
     non_disabled_options = [
       name for name in self.options.options
-      if self.options[name] not in [False, [], {}, OrderedDict()]
+      if (self.options[name] not in [False, [], {}, OrderedDict()] or OPTIONS[name]['type'] == 'int')
       and not name in ["dry-run", "invisible-sword", "seed"]
     ]
     option_strings = []
