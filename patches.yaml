@@ -732,6 +732,18 @@ F020: # Sky
     type: oarcdelete
     oarc: GetSpareBombBagA
     layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: WaterPotWater
+    layer: 2
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: Waterpot
+    layer: 2
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: Pinwheel
+    layer: 2
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
