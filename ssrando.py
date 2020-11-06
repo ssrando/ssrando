@@ -146,7 +146,7 @@ class Randomizer:
     self.write_spoiler_log()
     if not self.dry_run:
       do_gamepatches(self)
-    self.progress_callback('done')
+    self.progress_callback('patching done')
 
   def write_spoiler_log(self):
     if self.no_logs:
