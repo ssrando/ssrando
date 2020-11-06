@@ -632,6 +632,12 @@
     index: 33
     flow:
       param2: 924
+  - name: Fix switch (Cawlin)
+    type: flowpatch
+    index: 141
+    flow:
+      param2: 36 # always trigger
+      param3: 3 # check Storyflag
   - name: add Cawlin storyflag to other text options
     type: flowpatch
     index: 507
