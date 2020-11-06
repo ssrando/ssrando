@@ -105,7 +105,7 @@ class Randomizer:
       # checks outside dungeons that require dungeons:
       if 'Lanayru Mining Facility' in self.non_required_dungeons:
         self.race_mode_banned_locations.append('Skyloft - Fledge Crystals')
-      elif 'Skyview' in self.non_required_dungeons:
+      if 'Skyview' in self.non_required_dungeons:
         # TODO: check again with entrance rando
         self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
         self.race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
