@@ -14,15 +14,31 @@ IS_WINDOWS = sys.platform == 'win32'
 class WitManager:
     def __init__(self, rootpath: Path):
         self.rootpath = rootpath
+        self.witcommand = None
     
-    def get_wit_path(self) -> Path:
+    def update_wit_command(self):
+        # check globally installed wit
+        try:
+            completed = subprocess.run(['wit','--version'])
+            if completed.returncode == 0:
+                self.witcommand = 'wit'
+                return self.witcommand
+        except FileNotFoundError:
+            pass
+        if self.get_local_wit_path().is_file():
+            self.witcommand = str(self.get_local_wit_path().resolve())
+            return self.witcommand
+        return None
+
+    def get_local_wit_path(self) -> Path:
         if IS_WINDOWS:
-            return self.rootpath / 'wit-v3.03a-r8245-cygwin' / 'bin' / 'wit'
+            return self.rootpath / 'wit-v3.03a-r8245-cygwin' / 'bin' / 'wit.exe'
         else:
             return self.rootpath / 'wit-v3.03a-r8245-x86_64' / 'bin' / 'wit'
 
     def ensure_wit_installed(self):
-        if not self.get_wit_path().is_file():
+        self.update_wit_command()
+        if self.witcommand is None:
             print('wit not installed, installing')
             if IS_WINDOWS:
                 with zipfile.ZipFile(BytesIO(request.urlopen('https://wit.wiimm.de/download/wit-v3.03a-r8245-cygwin.zip').read())) as wit_zip:
@@ -30,6 +46,7 @@ class WitManager:
             else:
                 with tarfile.open(mode='r:gz', fileobj=BytesIO(request.urlopen('https://wit.wiimm.de/download/wit-v3.03a-r8245-x86_64.tar.gz').read())) as wit_zip:
                     wit_zip.extractall(self.rootpath)
+            self.update_wit_command()
     
     def actual_extract_already_exists(self):
         return (self.rootpath / 'actual-extract' / 'DATA' / 'sys' / 'main.dol').is_file()
@@ -40,7 +57,7 @@ class WitManager:
         # TODO: there seemed to be issues with wit sometimes, that it doesn't properly extract the first time?
         datapath = self.rootpath / 'actual-extract' / 'DATA'
         if not self.actual_extract_already_exists():
-            return_code = subprocess.call([str(self.get_wit_path()), "-P", "extract",
+            return_code = subprocess.call([self.witcommand, "-P", "extract",
                 iso_path, str(self.rootpath / "actual-extract")])
             assert return_code == 0
             # delete all videos, they take up way too much space
@@ -60,7 +77,7 @@ class WitManager:
         modified_iso_path = modified_iso_dir / filename
         if modified_iso_path.is_file():
             os.remove(str(modified_iso_path))
-        return_code = subprocess.call([str(self.get_wit_path()), "-P", "copy", "--split",
+        return_code = subprocess.call([self.witcommand, "-P", "copy", "--split",
                 str(self.rootpath / "modified-extract"), str(modified_iso_path)])
         assert return_code == 0
     
