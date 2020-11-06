@@ -19,6 +19,7 @@ global:
     - 32  # Sailcoth
     - 96  # Fi's text after obtaining first map
     - 28 # Pratice Sword storyflag
+    - 130 # Start with Beacon
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
