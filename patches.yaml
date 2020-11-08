@@ -1387,6 +1387,12 @@ D201: # FS A
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Guld cs trigger
+    type: objdelete
+    id: 0xFC08
+    layer: 0
+    room: 0
+    objtype: OBJ
 D201_1: # FS B
   - name: Clawshot Traget for 2nd small Key
     type: objadd
@@ -1470,6 +1476,12 @@ F300_1:
     objtype: STAG
     object:
       params1: 0xFFFF4403 # sceneflag 68
+  - name: Remove First timeshift stone cs
+    type: objdelete
+    id: 0xFC47
+    layer: 0
+    room: 0
+    objtype: STAG
 F300_2: # Thunder node
   - name: extra Bomb flower
     type: objadd
@@ -1665,6 +1677,12 @@ F301: # Ancient Harbour
     objtype: SCEN
     object:
       layer: 1
+  - name: Remove Skipper Text with Whitesword
+    type: objdelete
+    id: 0xFC0F
+    layer: 0
+    room: 0
+    objtype: OBJ
 F301_4: # Shipyard
   - name: Text after intro
     type: objdelete
