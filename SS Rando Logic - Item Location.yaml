@@ -184,13 +184,13 @@ Skyloft - Cleaning Crystals:
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
-#Skyloft - Owlan Crystals:  # Can't be reached right now
-#  Need: Can Access Past & Can Access Most of Faron Woods & Bomb Bag
+#Skyloft - Owlan Crystals:
+#  Need: Can Access Most of Faron Woods & Bomb Bag
 #  original item: 5 Gratitude Crystals
 #  type: sidequest
 #  Paths:
 #    - event/118-Town3/141
-#    - oarc/F013r/l0
+#    - oarc/F001r/l0
 
 #  Batreaux Rewards
 Skyloft - Batreaux 5 Crystals:
