@@ -1132,6 +1132,31 @@ D100: # Skyview
       anglez: 0
       id: 0xFD03
       name: Tubo
+  - name: Remove forced talk to mogma in right room
+    type: objdelete
+    id: 0xFC51
+    layer: 2
+    room: 4
+    objtype: STAG
+  - name: Remove forced talk to mogma in left room
+    type: objdelete
+    id: 0xFC46
+    layer: 2
+    room: 3
+    objtype: STAG
+  - name: Remove forced talk to mogma in front of boss door
+    type: objdelete
+    id: 0xFC7B
+    layer: 2
+    room: 9
+    objtype: STAG
+  - name: Remove soil in three eye room #this one makes pushing the block difficult
+    type: objdelete
+    id: 0xFC34
+    layer: 2
+    room: 7
+    objtype: OBJ
+      
 D101: # Ancient Cistern
   - name: remove stone tablet text
     type: objpatch
