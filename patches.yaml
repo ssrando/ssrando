@@ -1708,6 +1708,13 @@ D300: # LMF A
     objtype: OBJS
     object:
       params1: 0xF7FFFC20
+D300_1: # LMF B
+  - name: Fi Text in front of boss door
+    type: objdelete
+    id: 0xFC71
+    layer: 0
+    room: 5
+    objtype: OBJ
 D301: # Sandship A
   - name: extra Bomb flower
     type: objadd
