@@ -81,6 +81,9 @@ class Randomizer:
     self.starting_items = []
 
     self.required_dungeons = self.rng.sample(constants.POTENTIALLY_REQUIRED_DUNGEONS, k=self.options['required-dungeon-count'])
+    # make the order always consistent
+    self.required_dungeons = [dungeon for dungeon in constants.POTENTIALLY_REQUIRED_DUNGEONS
+      if dungeon in self.required_dungeons]
 
     if not self.options['randomize-tablets']:
       self.starting_items.append('Emerald Tablet')
