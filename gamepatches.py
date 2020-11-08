@@ -535,8 +535,14 @@ def do_gamepatches(rando):
         required_dungeons_text = 'No Dungeons'
     elif required_dungeon_count == 6:
         required_dungeons_text = 'All Dungeons'
-    else:
+    elif required_dungeon_count > 0 and required_dungeon_count < 4:
         required_dungeons_text = 'Required Dungeons:\n'+('\n'.join(rando.required_dungeons))
+    else:
+        sorted_required_dungeons = sorted(rando.required_dungeons,key = len)
+        if required_dungeon_count == 4:
+            required_dungeons_text = 'Required Dungeons:\n'+sorted_required_dungeons[-3]+', '+sorted_required_dungeons[-4]+'\n'+sorted_required_dungeons[-1]+'\n'+sorted_required_dungeons[-2]
+        else:
+            required_dungeons_text = 'Required Dungeons:\n'+sorted_required_dungeons[-4]+', '+sorted_required_dungeons[-3]+'\n'+sorted_required_dungeons[-5]+', '+sorted_required_dungeons[-2]+'\n'+sorted_required_dungeons[-1]
     eventpatches['107-Kanban'].append({
         "name": "Knight Academy Billboard text",
         "type": "textpatch",
