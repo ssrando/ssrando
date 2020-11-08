@@ -1776,6 +1776,18 @@ D301: # Sandship A
     layer: 4
     room: 9
     objtype: OBJ
+  - name: Fi text at generator
+    type: objdelete
+    id: 0xFC0F
+    layer: 1
+    room: 7
+    objtype: OBJ
+  - name: Fi text at generator
+    type: objdelete
+    id: 0xFC12
+    layer: 1
+    room: 5
+    objtype: OBJ
 F402: # Sealed Temple
   - name: SotH start cs
     type: objdelete
