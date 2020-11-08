@@ -633,7 +633,7 @@ F008r: # Goddess Statue
     layer: 0
     room: 0
     objtype: OBJ
-  - name: Delete SndStn
+  - name: Delete Crest
     type: objdelete
     id: 0xFC02
     layer: 0
