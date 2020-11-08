@@ -535,8 +535,24 @@ def do_gamepatches(rando):
         required_dungeons_text = 'No Dungeons'
     elif required_dungeon_count == 6:
         required_dungeons_text = 'All Dungeons'
-    else:
+    elif required_dungeon_count < 4:
         required_dungeons_text = 'Required Dungeons:\n'+('\n'.join(rando.required_dungeons))
+    else:
+        required_dungeons_text = 'Required: ' + ', '.join(rando.required_dungeons)
+
+        # try to fit the text in as few lines as possible, breaking up at spaces if necessary
+        cur_line = ''
+        combined = ''
+
+        for part in required_dungeons_text.split(' '):
+            if len(cur_line + part) > 27: # limit of one line
+                combined += cur_line + '\n'
+                cur_line = part + ' '
+            else:
+                cur_line += part + ' '
+        combined += cur_line
+        required_dungeons_text = combined.strip()
+    
     eventpatches['107-Kanban'].append({
         "name": "Knight Academy Billboard text",
         "type": "textpatch",

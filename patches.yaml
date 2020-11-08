@@ -610,6 +610,22 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 2047
+  - name: Olwan Npc after Kikwis
+    type: objpatch
+    id: 0xFC0A
+    layer: 3
+    room: 5
+    objtype: OBJ
+    object:
+      trigstoryfid: 57 # talk to Elder after locating every Kikwi
+  - name: untrigger other owlan
+    type: objpatch
+    id: 0xFC0B
+    layer: 3
+    room: 5
+    objtype: OBJ
+    object:
+      untrigstoryfid: 57 # talk to Elder after locating every Kikwi
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
@@ -801,6 +817,9 @@ F100: # Faron main area
   - name: Layer override
     type: layeroverride
     override:
+      - story_flag: 479 #owlan quest started
+        night: 0
+        layer: 5
       - story_flag: -1
         night: 0
         layer: 1
@@ -826,52 +845,52 @@ F100: # Faron main area
   - name: Trial
     type: oarcadd
     oarc: PLHarpPlay
-    destlayer: 1
+    destlayer: 0
   - name: Trial
     type: oarcadd
     oarc: SirenEntrance
-    destlayer: 1
+    destlayer: 0
   - name: Trial
     type: oarcadd
     oarc: PLSwordStick
-    destlayer: 1
+    destlayer: 0
   - name: Trial # trial object
     type: objmove
     id: 0x02B0
     layer: 3
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: OBJ
   - name: Trial # butterflies
     type: objmove
     id: 0xFEE3
     layer: 3
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: STAG
   - name: Lake floria door
     type: oarcadd
     oarc: SwrdPrj
-    destlayer: 1
+    destlayer: 0
   - name: Lake floria door
     type: objmove
     id: 0xFEFB
     layer: 4
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: STAG
   - name: Lake floria door
     type: objmove
     id: 0xFEE8
     layer: 4
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: OBJ
   - name: Lake floria door
     type: objmove
     id: 0xFEF0
     layer: 4
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: OBJ
   - name: Remove Fi text infront of Viewing Platform
@@ -1144,6 +1163,31 @@ D100: # Skyview
       anglez: 0
       id: 0xFD03
       name: Tubo
+  - name: Remove forced talk to mogma in right room
+    type: objdelete
+    id: 0xFC51
+    layer: 2
+    room: 4
+    objtype: STAG
+  - name: Remove forced talk to mogma in left room
+    type: objdelete
+    id: 0xFC46
+    layer: 2
+    room: 3
+    objtype: STAG
+  - name: Remove forced talk to mogma in front of boss door
+    type: objdelete
+    id: 0xFC7B
+    layer: 2
+    room: 9
+    objtype: STAG
+  - name: Remove soil in three eye room #this one makes pushing the block difficult
+    type: objdelete
+    id: 0xFC34
+    layer: 2
+    room: 7
+    objtype: OBJ
+      
 D101: # Ancient Cistern
   - name: remove stone tablet text
     type: objpatch
@@ -1635,15 +1679,6 @@ F301_1: # Sand Sea Main Area
     objtype: SCEN
     object:
       layer: 1
-  - name: open sandship with sea chart 1
-    type: objpatch
-    id: 0xFC6B
-    layer: 1
-    room: 0
-    objtype: STAG
-    object:
-      trigscenefid: 255
-      trigstoryfid: 269 # Sea Chart
   - name: Move sandship load to layer 0
     type: objmove
     layer: 1
@@ -1651,30 +1686,6 @@ F301_1: # Sand Sea Main Area
     room: 0
     objtype: STAG
     id: 0xFC6B
-  - name: open sandship with sea chart 2
-    type: objdelete
-    id: 0xFC98
-    layer: 2
-    room: 0
-    objtype: STAG
-  - name: open sandship with sea chart 3
-    type: objdelete
-    id: 0xFCB7
-    layer: 3
-    room: 0
-    objtype: STAG
-  - name: open sandship with sea chart 4
-    type: objdelete
-    id: 0xFCB7
-    layer: 4
-    room: 0
-    objtype: STAG
-  - name: open sandship with sea chart 5
-    type: objdelete
-    id: 0xFCB7
-    layer: 5
-    room: 0
-    objtype: STAG
 F301: # Ancient Harbour
   - name: No Sandship beaten layer in sandship
     type: objpatch
@@ -1740,6 +1751,13 @@ D300: # LMF A
     objtype: OBJS
     object:
       params1: 0xF7FFFC20
+D300_1: # LMF B
+  - name: Fi Text in front of boss door
+    type: objdelete
+    id: 0xFC71
+    layer: 0
+    room: 5
+    objtype: OBJ
 D301: # Sandship A
   - name: extra Bomb flower
     type: objadd

@@ -340,6 +340,20 @@
       param2: 10 # count
       next: 414
       param3: 25 # add to counter command
+  - name: Sea Chart unlocks Ship Dowsing
+    type: flowpatch
+    index: 528
+    flow:
+      next: Sea Chart dowsing
+  - name: Sea Chart dowsing
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 271 # Ship Dowsing
+      next: -1
+      param3: 0
 008-Hint:
   # check for 7 storyflags: required dungeon 1 to 6, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check

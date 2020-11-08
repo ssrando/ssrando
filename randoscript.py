@@ -8,9 +8,9 @@ def process_command_line_options(options):
     if 'help' in options:
         print('Skyward Sword Randomizer Version '+VERSION)
         print('Available command line options:\n')
-        longest_option = max(len(option['command']) for option in OPTIONS)
-        for option in OPTIONS:
-            print(' --'+option["command"].ljust(longest_option) + ' ' + option['help'])
+        longest_option = max(len(option_name) for option_name in OPTIONS.keys())
+        for option_name, option in OPTIONS.items():
+            print(' --'+option_name.ljust(longest_option) + ' ' + option['help'])
         return None
     elif 'version' in options:
         print(VERSION)
