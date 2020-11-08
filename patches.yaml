@@ -629,7 +629,13 @@ F008r: # Goddess Statue
       name: TBox
   - name: Delete SwrdSt
     type: objdelete
-    id: 0xFC34
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Delete SndStn
+    type: objdelete
+    id: 0xFC02
     layer: 0
     room: 0
     objtype: OBJ
