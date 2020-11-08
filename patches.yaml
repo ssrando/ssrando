@@ -22,7 +22,6 @@ global:
     - 130 # Start with Beacon
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
-    - 197 # visible life tree fuit/life tree seedling and readable thunder dragon's song text
   startsceneflags: # currently only for skyloft
     - 95 # Fi Text for Ruby Tablet
     - 96 # Fi Text for Amber Tablet
