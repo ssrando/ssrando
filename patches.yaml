@@ -610,6 +610,22 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 2047
+  - name: Olwan Npc after Kikwis
+    type: objpatch
+    id: 0xFC0A
+    layer: 3
+    room: 5
+    objtype: OBJ
+    object:
+      trigstoryfid: 57 # talk to Elder after locating every Kikwi
+  - name: untrigger other owlan
+    type: objpatch
+    id: 0xFC0B
+    layer: 3
+    room: 5
+    objtype: OBJ
+    object:
+      untrigstoryfid: 57 # talk to Elder after locating every Kikwi
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
@@ -795,6 +811,9 @@ F100: # Faron main area
   - name: Layer override
     type: layeroverride
     override:
+      - story_flag: 479 #owlan quest started
+        night: 0
+        layer: 5
       - story_flag: -1
         night: 0
         layer: 1
@@ -820,52 +839,52 @@ F100: # Faron main area
   - name: Trial
     type: oarcadd
     oarc: PLHarpPlay
-    destlayer: 1
+    destlayer: 0
   - name: Trial
     type: oarcadd
     oarc: SirenEntrance
-    destlayer: 1
+    destlayer: 0
   - name: Trial
     type: oarcadd
     oarc: PLSwordStick
-    destlayer: 1
+    destlayer: 0
   - name: Trial # trial object
     type: objmove
     id: 0x02B0
     layer: 3
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: OBJ
   - name: Trial # butterflies
     type: objmove
     id: 0xFEE3
     layer: 3
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: STAG
   - name: Lake floria door
     type: oarcadd
     oarc: SwrdPrj
-    destlayer: 1
+    destlayer: 0
   - name: Lake floria door
     type: objmove
     id: 0xFEFB
     layer: 4
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: STAG
   - name: Lake floria door
     type: objmove
     id: 0xFEE8
     layer: 4
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: OBJ
   - name: Lake floria door
     type: objmove
     id: 0xFEF0
     layer: 4
-    destlayer: 1
+    destlayer: 0
     room: 0
     objtype: OBJ
   - name: Remove Fi text infront of Viewing Platform
