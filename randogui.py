@@ -209,6 +209,7 @@ class RandoGUI(QMainWindow):
                     pass
                 elif isinstance(widget, QSpinBox):
                     widget.setValue(self.options[option_key])
+                    getattr(self.ui, f"label_for_{ui_name}").installEventFilter(self)
 
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
