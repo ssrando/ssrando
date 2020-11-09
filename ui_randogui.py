@@ -31,47 +31,16 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.label = QLabel(self.gridLayoutWidget)
-        self.label.setObjectName(u"label")
-        self.label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.seed_button = QPushButton(self.gridLayoutWidget)
+        self.seed_button.setObjectName(u"seed_button")
 
-        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.seed_button, 1, 7, 1, 1)
 
         self.label_2 = QLabel(self.gridLayoutWidget)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
-
-        self.ouput_folder_browse_button = QPushButton(self.gridLayoutWidget)
-        self.ouput_folder_browse_button.setObjectName(u"ouput_folder_browse_button")
-
-        self.gridLayout.addWidget(self.ouput_folder_browse_button, 1, 7, 1, 1)
-
-        self.clean_iso_path = QLineEdit(self.gridLayoutWidget)
-        self.clean_iso_path.setObjectName(u"clean_iso_path")
-
-        self.gridLayout.addWidget(self.clean_iso_path, 0, 1, 1, 1)
-
-        self.output_folder = QLineEdit(self.gridLayoutWidget)
-        self.output_folder.setObjectName(u"output_folder")
-
-        self.gridLayout.addWidget(self.output_folder, 1, 1, 1, 1)
-
-        self.clean_iso_browse_button = QPushButton(self.gridLayoutWidget)
-        self.clean_iso_browse_button.setObjectName(u"clean_iso_browse_button")
-
-        self.gridLayout.addWidget(self.clean_iso_browse_button, 0, 7, 1, 1)
-
-        self.seed_button = QPushButton(self.gridLayoutWidget)
-        self.seed_button.setObjectName(u"seed_button")
-
-        self.gridLayout.addWidget(self.seed_button, 2, 7, 1, 1)
-
-        self.seed = QLineEdit(self.gridLayoutWidget)
-        self.seed.setObjectName(u"seed")
-
-        self.gridLayout.addWidget(self.seed, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.label_2, 0, 0, 1, 1)
 
         self.label_3 = QLabel(self.gridLayoutWidget)
         self.label_3.setObjectName(u"label_3")
@@ -80,7 +49,22 @@ class Ui_MainWindow(object):
         self.label_3.setAutoFillBackground(False)
         self.label_3.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1)
+
+        self.ouput_folder_browse_button = QPushButton(self.gridLayoutWidget)
+        self.ouput_folder_browse_button.setObjectName(u"ouput_folder_browse_button")
+
+        self.gridLayout.addWidget(self.ouput_folder_browse_button, 0, 7, 1, 1)
+
+        self.seed = QLineEdit(self.gridLayoutWidget)
+        self.seed.setObjectName(u"seed")
+
+        self.gridLayout.addWidget(self.seed, 1, 1, 1, 1)
+
+        self.output_folder = QLineEdit(self.gridLayoutWidget)
+        self.output_folder.setObjectName(u"output_folder")
+
+        self.gridLayout.addWidget(self.output_folder, 0, 1, 1, 1)
 
         self.groupBox = QGroupBox(self.centralwidget)
         self.groupBox.setObjectName(u"groupBox")
@@ -232,11 +216,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Skyward Sword Randomizer", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Path to Clean NTSC-U 1.0 ISO", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Output Folder", None))
-        self.ouput_folder_browse_button.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
-        self.clean_iso_browse_button.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.seed_button.setText(QCoreApplication.translate("MainWindow", u"New Seed", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Output Folder", None))
 #if QT_CONFIG(tooltip)
         self.label_3.setToolTip("")
 #endif // QT_CONFIG(tooltip)
@@ -244,6 +225,7 @@ class Ui_MainWindow(object):
         self.label_3.setStatusTip("")
 #endif // QT_CONFIG(statustip)
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Seed", None))
+        self.ouput_folder_browse_button.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Where should progress items appear?", None))
         self.progression_goddess.setText(QCoreApplication.translate("MainWindow", u"Goddess Cubes/Chests", None))
         self.progression_crystal.setText(QCoreApplication.translate("MainWindow", u"Loose Crystals", None))

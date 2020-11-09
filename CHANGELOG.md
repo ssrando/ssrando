@@ -1,5 +1,14 @@
 # Changelog
 
+## WIP
+### Improvements
+- GUI only asks for ISO once
+- progress bars for WIT and copy commands in GUI
+### Gameplay
+- remove even more unnecessary text triggers
+### Bugfixes
+- fix required dungeon text not being readable with 4+ dungeons
+
 ## 1.0.2-rc1
 ### Options
 - checks can be filtered by types

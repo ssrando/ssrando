@@ -30,17 +30,14 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
+     <item row="1" column="7">
+      <widget class="QPushButton" name="seed_button">
        <property name="text">
-        <string>Path to Clean NTSC-U 1.0 ISO</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <string>New Seed</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="0" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Output Folder</string>
@@ -50,37 +47,7 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="7">
-      <widget class="QPushButton" name="ouput_folder_browse_button">
-       <property name="text">
-        <string>Browse</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="clean_iso_path"/>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="output_folder"/>
-     </item>
-     <item row="0" column="7">
-      <widget class="QPushButton" name="clean_iso_browse_button">
-       <property name="text">
-        <string>Browse</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="7">
-      <widget class="QPushButton" name="seed_button">
-       <property name="text">
-        <string>New Seed</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="seed"/>
-     </item>
-     <item row="2" column="0">
+     <item row="1" column="0">
       <widget class="QLabel" name="label_3">
        <property name="toolTip">
         <string/>
@@ -104,6 +71,19 @@
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
+     </item>
+     <item row="0" column="7">
+      <widget class="QPushButton" name="ouput_folder_browse_button">
+       <property name="text">
+        <string>Browse</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="seed"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="output_folder"/>
      </item>
     </layout>
    </widget>

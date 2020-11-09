@@ -9,18 +9,21 @@ from tkinter import filedialog
 from urllib import request
 
 from PySide2 import QtWidgets
-from PySide2.QtCore import Qt
+from PySide2.QtCore import Qt, QTimer
 from PySide2.QtWidgets import QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
     QRadioButton, QFileDialog, QMessageBox, QErrorMessage
 
 from logic.constants import ALL_TYPES
 from options import OPTIONS, Options
 from progressdialog import ProgressDialog
-from randomizerthread import RandomizerThread
+from guithreads import RandomizerThread, ExtractSetupThread
 from ssrando import Randomizer
 from ui_randogui import Ui_MainWindow
 from witmanager import WitManager
 
+# Allow keyboard interrupts on the command line to instantly close the program.
+import signal
+signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 class RandoGUI(QMainWindow):
     def __init__(self):
@@ -29,11 +32,12 @@ class RandoGUI(QMainWindow):
         self.wit_manager = WitManager(Path('.').resolve())
         self.randothread = None
         self.error_msg = None
+        self.progress_dialog = None
+        self.randomize_after_iso_extract = False
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.clean_iso_path = ""
         self.output_folder = ""
 
         self.options = Options()
@@ -66,38 +70,50 @@ class RandoGUI(QMainWindow):
                 widget.setEnabled(False)
             widget.clicked.connect(self.update_settings)
 
-        self.ui.clean_iso_browse_button.clicked.connect(self.browse_for_iso)
         self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)
         self.update_ui_for_settings()
+
+        if not self.wit_manager.actual_extract_already_exists():
+            self.ask_for_clean_iso()
+
+    def ask_for_clean_iso(self):
+        selected = QMessageBox.question(self,'Extract now?', 'For randomizing purposes, a clean NTSC-U 1.00 ISO is needed, browse for it now? This is only needed once',
+            defaultButton=QMessageBox.Yes)
+        if selected == QMessageBox.Yes:
+            self.browse_for_iso()
+        else:
+            self.randomize_after_iso_extract = False
 
     def randomize(self):
         if not self.randothread is None:
             print('ERROR: tried to randomize multiple times at once!')
             return
-        if not self.wit_manager.actual_extract_already_exists() and not self.clean_iso_path:
-            self.error_msg = QErrorMessage(self)
-            self.error_msg.showMessage('please enter a valid clean iso path!')
-            return
         dry_run = self.options['dry-run']
+        if not (dry_run or self.wit_manager.actual_extract_already_exists()):
+            self.randomize_after_iso_extract = True
+            self.ask_for_clean_iso()
+            return
         # make sure user can't mess with the options now
         rando = Randomizer(self.options.copy())
 
         if dry_run:
-            extra_steps = 1
+            extra_steps = 1 # done
         else:
-            extra_steps = 5  # wit setup, extract, copy, wit copy
+            extra_steps = 101 # wit create wbfs + done
 
         self.progress_dialog = ProgressDialog("Randomizing", "Initializing...", rando.get_total_progress_steps() + extra_steps)
-        self.randomizer_thread = RandomizerThread(rando, self.wit_manager, self.clean_iso_path, self.output_folder)
+        self.randomizer_thread = RandomizerThread(rando, self.wit_manager, self.output_folder)
         self.randomizer_thread.update_progress.connect(self.ui_progress_callback)
         self.randomizer_thread.randomization_complete.connect(self.randomization_complete)
         self.randomizer_thread.error_abort.connect(self.on_error)
         self.randomizer_thread.start()
 
-    def ui_progress_callback(self, current_action, completed_steps):
+    def ui_progress_callback(self, current_action, completed_steps, total_steps=None):
         self.progress_dialog.setValue(completed_steps)
         self.progress_dialog.setLabelText(current_action)
+        if not total_steps is None:
+            self.progress_dialog.setMaximum(total_steps)
 
     def on_error(self, message):
         self.error_msg = QErrorMessage(self)
@@ -118,17 +134,25 @@ class RandoGUI(QMainWindow):
         self.randomizer_thread = None
 
     def browse_for_iso(self):
-        if self.clean_iso_path and os.path.isfile(self.clean_iso_path):
-            default_dir = os.path.dirname(self.clean_iso_path)
-        else:
-            default_dir = None
-
         clean_iso_path, selected_filter = QFileDialog.getOpenFileName(self, "Select Clean Skyward Sword NTSC-U 1.0 ISO",
-                                                                      default_dir, "Wii ISO Files (*.iso)")
+                                                                      None, "Wii ISO Files (*.iso)")
         if not clean_iso_path:
             return
-        self.ui.clean_iso_path.setText(clean_iso_path)
-        self.update_settings()
+        self.progress_dialog = ProgressDialog("Extracting Game Files", "Initializing...", 100)
+        self.progress_dialog.setAutoClose(True)
+        self.extract_thread = ExtractSetupThread(self.wit_manager, clean_iso_path, None)
+        self.extract_thread.update_total_steps.connect(lambda total_steps: self.progress_dialog.setMaximum(total_steps))
+        self.extract_thread.update_progress.connect(self.ui_progress_callback)
+        def on_complete():
+            self.progress_dialog.reset()
+            if self.randomize_after_iso_extract:
+                self.randomize()
+        self.extract_thread.extract_complete.connect(on_complete)
+        def on_error(msg):
+            self.progress_dialog.reset()
+            self.error_msg = QMessageBox.critical(self, "Error", msg)
+        self.extract_thread.error_abort.connect(on_error)
+        self.extract_thread.start()
 
     def browse_for_output_dir(self):
         if self.output_folder and os.path.isfile(self.output_folder):
@@ -143,7 +167,6 @@ class RandoGUI(QMainWindow):
         self.update_settings()
 
     def update_ui_for_settings(self):
-        self.ui.clean_iso_path.setText(self.clean_iso_path)
         self.ui.output_folder.setText(self.output_folder)
         self.ui.seed.setText(str(self.options["seed"]))
         for option_key, option in OPTIONS.items():
@@ -166,7 +189,6 @@ class RandoGUI(QMainWindow):
             widget.setChecked(not check_type in self.options['banned-types'])
 
     def update_settings(self):
-        self.clean_iso_path = self.ui.clean_iso_path.text()
         self.output_folder = self.ui.output_folder.text()
         try:
             self.options.set_option("seed", int(self.ui.seed.text()))
