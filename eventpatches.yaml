@@ -1,4 +1,16 @@
 003-ItemGet:
+  - name: Spiral Charge Text
+    type: textpatch
+    index: 27
+    text: "You learned the \x0E\x00\x03\x02\x05Spiral Charge\x0E\x00\x03\x02\uFFFF!\n"
+  - name: Change Spiral Charge Scene change
+    type: flowpatch
+    index: 584 # change it to give Spiral Charge Storyflag
+    flow:
+      subType: 0
+      param1: 0
+      param2: 364
+      param3: 0
   - name: Remove Goddess Sword Scene change
     type: flowpatch
     index: 462 # skip scene change after getting goddess sword
