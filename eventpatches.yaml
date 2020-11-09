@@ -742,6 +742,16 @@
     index: 118
     flow:
       param2: 368 # never trigger
+  - name: Spiral Charge switch 1
+    type: flowpatch
+    index: 490
+    flow:
+      param2: 368 # never trigger
+  - name: Spiral Charge switch 2
+    type: flowpatch
+    index: 487
+    flow:
+      param2: 368 # never trigger
 118-Town3:
   - name: Wryna's Crystal
     type: flowpatch
