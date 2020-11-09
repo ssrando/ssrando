@@ -23,6 +23,7 @@ from witmanager import WitManager
 
 # Allow keyboard interrupts on the command line to instantly close the program.
 import signal
+
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 
@@ -67,12 +68,26 @@ class RandoGUI(QMainWindow):
                     widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
 
+        self.location_descriptions = {
+            "batreaux": "Enables progression items to appear as rewards from giving Gratitude Crystals to Batreaux",
+            "crystal": "Enables progression items to appear as loose crystals (currently not randomized and must "
+                       "always be enabled)",
+            "dungeon": "Enables progression items to appear in dungeons",
+            "goddess": "Enables progression items to appear as items in Goddess Chests",
+            "minigame": "Enables progression items to appear as rewards from winning minigames",
+            "overworld": "Enables progression items to appear in the overworld",
+            "quest": "Enables progression items to appear as rewards from the main quest events (i.e. in place of the "
+                     "shield from Professor Owlan)",
+            "sidequest": "Enables progression items to appear as rewards from completing gratitude crystal quests",
+            "silent_realm": "Enables progression items to appear as rewards for completing Silent Realm trials"
+        }
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in self.options['banned-types'])
             if check_type == 'crystal':
                 widget.setEnabled(False)
             widget.clicked.connect(self.update_settings)
+            widget.installEventFilter(self)
 
         self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)
@@ -83,8 +98,9 @@ class RandoGUI(QMainWindow):
             self.ask_for_clean_iso()
 
     def ask_for_clean_iso(self):
-        selected = QMessageBox.question(self,'Extract now?', 'For randomizing purposes, a clean NTSC-U 1.00 ISO is needed, browse for it now? This is only needed once',
-            defaultButton=QMessageBox.Yes)
+        selected = QMessageBox.question(self, 'Extract now?',
+                                        'For randomizing purposes, a clean NTSC-U 1.00 ISO is needed, browse for it now? This is only needed once',
+                                        defaultButton=QMessageBox.Yes)
         if selected == QMessageBox.Yes:
             self.browse_for_iso()
         else:
@@ -103,11 +119,12 @@ class RandoGUI(QMainWindow):
         rando = Randomizer(self.options.copy())
 
         if dry_run:
-            extra_steps = 1 # done
+            extra_steps = 1  # done
         else:
-            extra_steps = 101 # wit create wbfs + done
+            extra_steps = 101  # wit create wbfs + done
 
-        self.progress_dialog = ProgressDialog("Randomizing", "Initializing...", rando.get_total_progress_steps() + extra_steps)
+        self.progress_dialog = ProgressDialog("Randomizing", "Initializing...",
+                                              rando.get_total_progress_steps() + extra_steps)
         self.randomizer_thread = RandomizerThread(rando, self.wit_manager, self.output_folder)
         self.randomizer_thread.update_progress.connect(self.ui_progress_callback)
         self.randomizer_thread.randomization_complete.connect(self.randomization_complete)
@@ -148,14 +165,18 @@ class RandoGUI(QMainWindow):
         self.extract_thread = ExtractSetupThread(self.wit_manager, clean_iso_path, None)
         self.extract_thread.update_total_steps.connect(lambda total_steps: self.progress_dialog.setMaximum(total_steps))
         self.extract_thread.update_progress.connect(self.ui_progress_callback)
+
         def on_complete():
             self.progress_dialog.reset()
             if self.randomize_after_iso_extract:
                 self.randomize()
+
         self.extract_thread.extract_complete.connect(on_complete)
+
         def on_error(msg):
             self.progress_dialog.reset()
             self.error_msg = QMessageBox.critical(self, "Error", msg)
+
         self.extract_thread.error_abort.connect(on_error)
         self.extract_thread.start()
 
@@ -239,12 +260,17 @@ class RandoGUI(QMainWindow):
         if event.type() == QEvent.Enter:
             ui_name = target.objectName()
 
-            if ui_name.startswith("label_for_"):
-                ui_name = ui_name[len("label_for_"):]
+            if ui_name.startswith("progression_"):
+                ui_name = ui_name[len("progression_"):]
+                self.set_option_description(self.location_descriptions[ui_name])
 
-            option = self.option_map[ui_name]
-            print(option)
-            self.set_option_description(option["help"])
+            else:
+                if ui_name.startswith("label_for_"):
+                    ui_name = ui_name[len("label_for_"):]
+
+                option = self.option_map[ui_name]
+                print(option)
+                self.set_option_description(option["help"])
 
             return True
         elif event.type() == QEvent.Leave:
