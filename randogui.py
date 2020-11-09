@@ -9,7 +9,7 @@ from tkinter import filedialog
 from urllib import request
 
 from PySide2 import QtWidgets
-from PySide2.QtCore import Qt, QTimer
+from PySide2.QtCore import Qt, QTimer, QEvent
 from PySide2.QtWidgets import QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
     QRadioButton, QFileDialog, QMessageBox, QErrorMessage
 
@@ -24,6 +24,7 @@ from witmanager import WitManager
 # Allow keyboard interrupts on the command line to instantly close the program.
 import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
+
 
 class RandoGUI(QMainWindow):
     def __init__(self):
@@ -42,12 +43,15 @@ class RandoGUI(QMainWindow):
 
         self.options = Options()
 
+        self.option_map = {}
         for option_key, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui', None)
+                self.option_map[ui_name] = option
                 if not ui_name:
                     continue
                 widget = getattr(self.ui, ui_name)
+                widget.installEventFilter(self)
                 if isinstance(widget, QAbstractButton):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
@@ -73,6 +77,7 @@ class RandoGUI(QMainWindow):
         self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)
         self.update_ui_for_settings()
+        self.set_option_description(None)
 
         if not self.wit_manager.actual_extract_already_exists():
             self.ask_for_clean_iso()
@@ -229,6 +234,32 @@ class RandoGUI(QMainWindow):
             if not widget.isChecked():
                 banned_types.append(check_type)
         return banned_types
+
+    def eventFilter(self, target, event):
+        if event.type() == QEvent.Enter:
+            ui_name = target.objectName()
+
+            if ui_name.startswith("label_for_"):
+                ui_name = ui_name[len("label_for_"):]
+
+            option = self.option_map[ui_name]
+            print(option)
+            self.set_option_description(option["help"])
+
+            return True
+        elif event.type() == QEvent.Leave:
+            self.set_option_description(None)
+            return True
+
+        return QMainWindow.eventFilter(self, target, event)
+
+    def set_option_description(self, new_description):
+        if new_description is None:
+            self.ui.option_description.setText("(Hover over an option to see a description of what it does.)")
+            self.ui.option_description.setStyleSheet("color: grey;")
+        else:
+            self.ui.option_description.setText(new_description)
+            self.ui.option_description.setStyleSheet("")
 
 
 def run_main_gui():

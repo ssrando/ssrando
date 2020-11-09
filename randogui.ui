@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>956</width>
-    <height>421</height>
+    <height>441</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -260,7 +260,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_5">
+         <widget class="QLabel" name="label_for_option_required_dungeon_count">
           <property name="text">
            <string>Required Dungeon Count</string>
           </property>
@@ -275,7 +275,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>380</y>
+      <y>400</y>
       <width>931</width>
       <height>31</height>
      </rect>
@@ -317,14 +317,14 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="option_description">
     <property name="enabled">
      <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>360</y>
+      <y>370</y>
       <width>931</width>
       <height>20</height>
      </rect>
