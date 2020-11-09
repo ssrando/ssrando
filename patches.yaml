@@ -66,6 +66,9 @@ global:
       # skip over fi talking after obtaining first map
       - original: a0 1f 03 30 28 00 00 32 40 82 00 6c
         patched:  a0 1f 03 30 28 00 00 32 48 00 00 6c
+      # Fix BirdStatuette animation, with setting isItemBirdStatuette to always give false back
+      - original: 38 03 ff eb 7c 00 00 34 54 03 d9 7e 4e 80 00 20
+        patched:  38 60 00 00 4e 80 00 20 54 03 d9 7e 4e 80 00 20
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
         patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
