@@ -467,18 +467,18 @@ Sky - Beedle's Crystals:
    - oarc/F020/l0
 
 #These checks need Spiral Charge
-#Sky - Breakable Boulder near Fun Fun island:
-#  Need: Can Access Levias
-#  original item: Silver Rupee
-#  type: overworld
-#  Paths:
-#    - stage/F020/r0/l0/TBox/70
-#Sky - Breakable Boulder near Lumpy Pumpkin:
-#  Need: Can Access Levias
-#  original item: Silver Rupee
-#  type: overworld
-#  Paths:
-#    - stage/F020/r0/l0/TBox/69
+Sky - Breakable Boulder near Fun Fun island:
+  Need: Spiral Charge
+  original item: Silver Rupee
+  type: overworld
+  Paths:
+    - stage/F020/r0/l0/TBox/70
+Sky - Breakable Boulder near Lumpy Pumpkin:
+  Need: Spiral Charge
+  original item: Silver Rupee
+  type: overworld
+  Paths:
+    - stage/F020/r0/l0/TBox/69
 
 Thunderhead - Goddess Chest Outside Isle of Song:
   Need: Can Access Thunderhead & Goddess Cube in Mogma Turf
