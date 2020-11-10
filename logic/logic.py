@@ -244,6 +244,7 @@ class Logic:
     # Location X requires items A and B while location Y requires items A B and C.
     # This function would return {A: 2, B: 2, C: 3} because A requires 1 other item (B) to help access anything, B also requires one other item (A) to help access anything, but C requires 2 other items (both A and B) before it becomes useful.
     # In other words, items A and B have 1/2 usefulness, while item C has 1/3 usefulness.
+    # We also multiply the usefulness by the number of locations where that item can appear at
     
     accessible_undone_locations = self.get_accessible_remaining_locations(for_progression=True)
     inaccessible_undone_item_locations = []
@@ -272,8 +273,10 @@ class Logic:
     
     # Now calculate the best case scenario usefulness fraction for all items given.
     item_by_usefulness_fraction = OrderedDict()
+    location_count_unlocked_by_items = OrderedDict()
     for item_name in item_names_to_check:
       item_by_usefulness_fraction[item_name] = 9999
+      location_count_unlocked_by_items[item_name] = 0
     
     for item_names_for_loc in item_names_for_all_locations:
       item_names_for_loc_without_owned = item_names_for_loc.copy()
@@ -285,10 +288,10 @@ class Logic:
         if item_name not in item_by_usefulness_fraction:
           continue
         usefulness_fraction_for_item = len(item_names_for_loc_without_owned)
+        location_count_unlocked_by_items[item_name] += 1
         if usefulness_fraction_for_item < item_by_usefulness_fraction[item_name]:
           item_by_usefulness_fraction[item_name] = usefulness_fraction_for_item
-    
-    return item_by_usefulness_fraction
+    return item_by_usefulness_fraction, location_count_unlocked_by_items
   
   def get_all_useless_items(self, items_to_check):
     # Searches through a given list of items and returns which of them do not open up even 1 new location.
@@ -886,7 +889,7 @@ class Logic:
         # If we're on the last accessible location but not the last item we HAVE to place an item that unlocks new locations.
         # (Otherwise we will still try to place a useful item, but failing will not result in an error.)
         must_place_useful_item = True
-      elif len(accessible_undone_locations) >= 6:
+      elif len(accessible_undone_locations) >= 8:
         # If we have a lot of locations open, we don't need to be so strict with prioritizing currently useful items.
         # This can give the randomizer a chance to place things like Delivery Bag or small keys for dungeons that need x2 to do anything.
         should_place_useful_item = False
@@ -910,11 +913,11 @@ class Logic:
             # In other words, which item has the smallest number of other items needed before it becomes useful?
             # We'd prefer to place an item which is 1/2 of what you need to access a new location over one which is 1/5 for example.
           
-            item_by_usefulness_fraction = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
+            item_by_usefulness_fraction, locations_unlocked_by_item = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
           
             # We want to limit it to choosing items at the maximum usefulness fraction.
             # Since the values we have are the denominator of the fraction, we actually call min() instead of max().
-            max_usefulness = min(item_by_usefulness_fraction.values())
+            max_usefulness = min(item_by_usefulness_fraction.values()/locations_unlocked_by_item.values())
             items_at_max_usefulness = [
               item_name for item_name, usefulness in item_by_usefulness_fraction.items()
               if usefulness == max_usefulness
