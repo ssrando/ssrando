@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(956, 421)
+        MainWindow.resize(956, 441)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayoutWidget = QWidget(self.centralwidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(10, 10, 931, 89))
+        self.gridLayoutWidget.setGeometry(QRect(10, 10, 931, 51))
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -68,7 +68,7 @@ class Ui_MainWindow(object):
 
         self.groupBox = QGroupBox(self.centralwidget)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(10, 100, 931, 131))
+        self.groupBox.setGeometry(QRect(10, 70, 931, 131))
         self.gridLayoutWidget_3 = QWidget(self.groupBox)
         self.gridLayoutWidget_3.setObjectName(u"gridLayoutWidget_3")
         self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 911, 101))
@@ -122,7 +122,7 @@ class Ui_MainWindow(object):
 
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setGeometry(QRect(10, 240, 931, 121))
+        self.groupBox_2.setGeometry(QRect(10, 210, 931, 121))
         self.gridLayoutWidget_2 = QWidget(self.groupBox_2)
         self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
         self.gridLayoutWidget_2.setGeometry(QRect(10, 20, 911, 97))
@@ -170,17 +170,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addWidget(self.option_required_dungeon_count)
 
-        self.label_5 = QLabel(self.gridLayoutWidget_2)
-        self.label_5.setObjectName(u"label_5")
+        self.label_for_option_required_dungeon_count = QLabel(self.gridLayoutWidget_2)
+        self.label_for_option_required_dungeon_count.setObjectName(u"label_for_option_required_dungeon_count")
 
-        self.horizontalLayout_2.addWidget(self.label_5)
+        self.horizontalLayout_2.addWidget(self.label_for_option_required_dungeon_count)
 
 
         self.gridLayout_2.addLayout(self.horizontalLayout_2, 2, 1, 1, 1)
 
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(10, 380, 931, 31))
+        self.horizontalLayoutWidget.setGeometry(QRect(10, 400, 931, 31))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -203,10 +203,26 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.randomize_button)
 
-        self.label_4 = QLabel(self.centralwidget)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setEnabled(True)
-        self.label_4.setGeometry(QRect(10, 360, 931, 20))
+        self.option_description = QLabel(self.centralwidget)
+        self.option_description.setObjectName(u"option_description")
+        self.option_description.setEnabled(True)
+        self.option_description.setGeometry(QRect(10, 340, 931, 20))
+        self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
+        self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
+        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 370, 931, 22))
+        self.horizontalLayout_3 = QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.permalink_label = QLabel(self.horizontalLayoutWidget_2)
+        self.permalink_label.setObjectName(u"permalink_label")
+
+        self.horizontalLayout_3.addWidget(self.permalink_label)
+
+        self.permalink = QLineEdit(self.horizontalLayoutWidget_2)
+        self.permalink.setObjectName(u"permalink")
+
+        self.horizontalLayout_3.addWidget(self.permalink)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -242,10 +258,11 @@ class Ui_MainWindow(object):
         self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Skykeep", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Race Mode", None))
         self.option_randomize_tablets.setText(QCoreApplication.translate("MainWindow", u"Tablet Randomizer", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
+        self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.option_invisible_sword.setText(QCoreApplication.translate("MainWindow", u"Invisible Sword", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
-        self.label_4.setText("")
+        self.option_description.setText("")
+        self.permalink_label.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings)", None))
     # retranslateUi
 

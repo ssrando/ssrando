@@ -9,7 +9,7 @@ from tkinter import filedialog
 from urllib import request
 
 from PySide2 import QtWidgets
-from PySide2.QtCore import Qt, QTimer
+from PySide2.QtCore import Qt, QTimer, QEvent
 from PySide2.QtWidgets import QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
     QRadioButton, QFileDialog, QMessageBox, QErrorMessage
 
@@ -23,7 +23,9 @@ from witmanager import WitManager
 
 # Allow keyboard interrupts on the command line to instantly close the program.
 import signal
+
 signal.signal(signal.SIGINT, signal.SIG_DFL)
+
 
 class RandoGUI(QMainWindow):
     def __init__(self):
@@ -42,12 +44,15 @@ class RandoGUI(QMainWindow):
 
         self.options = Options()
 
+        self.option_map = {}
         for option_key, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui', None)
+                self.option_map[ui_name] = option
                 if not ui_name:
                     continue
                 widget = getattr(self.ui, ui_name)
+                widget.installEventFilter(self)
                 if isinstance(widget, QAbstractButton):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
@@ -63,23 +68,40 @@ class RandoGUI(QMainWindow):
                     widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
 
+        self.location_descriptions = {
+            "batreaux": "Enables progression items to appear as rewards from giving Gratitude Crystals to Batreaux",
+            "crystal": "Enables progression items to appear as loose crystals (currently not randomized and must "
+                       "always be enabled)",
+            "dungeon": "Enables progression items to appear in dungeons",
+            "goddess": "Enables progression items to appear as items in Goddess Chests",
+            "minigame": "Enables progression items to appear as rewards from winning minigames",
+            "overworld": "Enables progression items to appear in the overworld",
+            "quest": "Enables progression items to appear as rewards from the main quest events (i.e. in place of the "
+                     "shield from Professor Owlan)",
+            "sidequest": "Enables progression items to appear as rewards from completing gratitude crystal quests",
+            "silent_realm": "Enables progression items to appear as rewards for completing Silent Realm trials"
+        }
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in self.options['banned-types'])
             if check_type == 'crystal':
                 widget.setEnabled(False)
             widget.clicked.connect(self.update_settings)
+            widget.installEventFilter(self)
 
         self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)
+        self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.update_ui_for_settings()
+        self.set_option_description(None)
 
         if not self.wit_manager.actual_extract_already_exists():
             self.ask_for_clean_iso()
 
     def ask_for_clean_iso(self):
-        selected = QMessageBox.question(self,'Extract now?', 'For randomizing purposes, a clean NTSC-U 1.00 ISO is needed, browse for it now? This is only needed once',
-            defaultButton=QMessageBox.Yes)
+        selected = QMessageBox.question(self, 'Extract now?',
+                                        'For randomizing purposes, a clean NTSC-U 1.00 ISO is needed, browse for it now? This is only needed once',
+                                        defaultButton=QMessageBox.Yes)
         if selected == QMessageBox.Yes:
             self.browse_for_iso()
         else:
@@ -98,11 +120,12 @@ class RandoGUI(QMainWindow):
         rando = Randomizer(self.options.copy())
 
         if dry_run:
-            extra_steps = 1 # done
+            extra_steps = 1  # done
         else:
-            extra_steps = 101 # wit create wbfs + done
+            extra_steps = 101  # wit create wbfs + done
 
-        self.progress_dialog = ProgressDialog("Randomizing", "Initializing...", rando.get_total_progress_steps() + extra_steps)
+        self.progress_dialog = ProgressDialog("Randomizing", "Initializing...",
+                                              rando.get_total_progress_steps() + extra_steps)
         self.randomizer_thread = RandomizerThread(rando, self.wit_manager, self.output_folder)
         self.randomizer_thread.update_progress.connect(self.ui_progress_callback)
         self.randomizer_thread.randomization_complete.connect(self.randomization_complete)
@@ -143,14 +166,18 @@ class RandoGUI(QMainWindow):
         self.extract_thread = ExtractSetupThread(self.wit_manager, clean_iso_path, None)
         self.extract_thread.update_total_steps.connect(lambda total_steps: self.progress_dialog.setMaximum(total_steps))
         self.extract_thread.update_progress.connect(self.ui_progress_callback)
+
         def on_complete():
             self.progress_dialog.reset()
             if self.randomize_after_iso_extract:
                 self.randomize()
+
         self.extract_thread.extract_complete.connect(on_complete)
+
         def on_error(msg):
             self.progress_dialog.reset()
             self.error_msg = QMessageBox.critical(self, "Error", msg)
+
         self.extract_thread.error_abort.connect(on_error)
         self.extract_thread.start()
 
@@ -169,6 +196,7 @@ class RandoGUI(QMainWindow):
     def update_ui_for_settings(self):
         self.ui.output_folder.setText(self.output_folder)
         self.ui.seed.setText(str(self.options["seed"]))
+        self.ui.permalink.setText(self.options.get_permalink())
         for option_key, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui', None)
@@ -183,6 +211,7 @@ class RandoGUI(QMainWindow):
                     pass
                 elif isinstance(widget, QSpinBox):
                     widget.setValue(self.options[option_key])
+                    getattr(self.ui, f"label_for_{ui_name}").installEventFilter(self)
 
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
@@ -207,7 +236,7 @@ class RandoGUI(QMainWindow):
                 self.options.set_option(option_command, self.get_option_value(ui_name))
 
         self.options.set_option("banned-types", self.get_banned_types())
-        print(self.options.get_permalink())
+        self.ui.permalink.setText(self.options.get_permalink())
 
     def get_option_value(self, option_name):
         widget = getattr(self.ui, option_name)
@@ -229,6 +258,40 @@ class RandoGUI(QMainWindow):
             if not widget.isChecked():
                 banned_types.append(check_type)
         return banned_types
+
+    def eventFilter(self, target, event):
+        if event.type() == QEvent.Enter:
+            ui_name = target.objectName()
+
+            if ui_name.startswith("progression_"):
+                ui_name = ui_name[len("progression_"):]
+                self.set_option_description(self.location_descriptions[ui_name])
+
+            else:
+                if ui_name.startswith("label_for_"):
+                    ui_name = ui_name[len("label_for_"):]
+
+                option = self.option_map[ui_name]
+                self.set_option_description(option["help"])
+
+            return True
+        elif event.type() == QEvent.Leave:
+            self.set_option_description(None)
+            return True
+
+        return QMainWindow.eventFilter(self, target, event)
+
+    def set_option_description(self, new_description):
+        if new_description is None:
+            self.ui.option_description.setText("(Hover over an option to see a description of what it does.)")
+            self.ui.option_description.setStyleSheet("color: grey;")
+        else:
+            self.ui.option_description.setText(new_description)
+            self.ui.option_description.setStyleSheet("")
+
+    def permalink_updated(self):
+        self.options.update_from_permalink(self.ui.permalink.text())
+        self.update_ui_for_settings()
 
 
 def run_main_gui():
