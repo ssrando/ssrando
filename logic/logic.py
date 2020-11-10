@@ -244,7 +244,9 @@ class Logic:
     # Location X requires items A and B while location Y requires items A B and C.
     # This function would return {A: 2, B: 2, C: 3} because A requires 1 other item (B) to help access anything, B also requires one other item (A) to help access anything, but C requires 2 other items (both A and B) before it becomes useful.
     # In other words, items A and B have 1/2 usefulness, while item C has 1/3 usefulness.
-    # We also multiply the usefulness by the number of locations where that item can appear at
+    # In addition to the usefulness, we also return the number of locations that this item can potentially unlock (not necessarely immediately)
+    # We will multiply that number to the usefulness fraction. This is to make sure the game choses to place items that unlock a lot of locations even if we're far from unlocking those yet
+    # Doing this fixes some randomization failures (for exemple we often want the rando to place key pieces rather than song of the hero parts even if we're far from having all key pieces)
     
     accessible_undone_locations = self.get_accessible_remaining_locations(for_progression=True)
     inaccessible_undone_item_locations = []
@@ -908,13 +910,15 @@ class Logic:
         self.rando.rng.shuffle(shuffled_list)
         item_name = self.get_first_useful_item(shuffled_list)
         if item_name is None:
+          # This means that no item can unlock a new location
           if must_place_useful_item:
             raise Exception("No useful progress items to place!")
           else:
-            # We'd like to be placing a useful item, but there are no useful items to place.
+            # We'd like to be placing a useful item, but there are no immediately useful items to place.
             # Instead we choose an item that isn't useful yet by itself, but has a high usefulness fraction.
             # In other words, which item has the smallest number of other items needed before it becomes useful?
             # We'd prefer to place an item which is 1/2 of what you need to access a new location over one which is 1/5 for example.
+            # The number of locations an item can potentially unlock also matters (think key pieces)
           
             item_by_usefulness_fraction, locations_unlocked_by_item = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
           
@@ -949,6 +953,7 @@ class Logic:
       
       # We weight it so newly accessible locations are more likely to be chosen.
       # This way there is still a good chance it will not choose a new location.
+      # Dungeons are prefered
       possible_locations_with_weighting = []
       for location_name in possible_locations:
         if self.is_dungeon_location(location_name):
