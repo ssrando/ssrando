@@ -850,7 +850,7 @@ class Logic:
           location_weights[location] -= 1
       current_weight += 1
       
-      possible_items = [items for items in self.unplaced_progress_items if items != "Gratitude Crystal"]
+      possible_items = self.unplaced_progress_items
       
       # Don't randomly place items that already had their location predetermined.
       unfound_prerand_locs = [
@@ -859,6 +859,9 @@ class Logic:
       ]
       for location_name in unfound_prerand_locs:
         prerand_item = self.prerandomization_item_locations[location_name]
+        if prerand_item not in possible_items:
+          continue
+        possible_items.remove(prerand_item)
       
       if len(possible_items) == 0:
         raise Exception("Only items left to place are predetermined items at inaccessible locations!")
@@ -917,7 +920,12 @@ class Logic:
           
             # We want to limit it to choosing items at the maximum usefulness fraction.
             # Since the values we have are the denominator of the fraction, we actually call min() instead of max().
-            max_usefulness = min(item_by_usefulness_fraction.values()/locations_unlocked_by_item.values())
+            max_usefulness_num, = item_by_usefulness_fraction.values()
+            max_usefulness_denom = locations_unlocked_by_item.values()
+            max_usefulness_frac = []
+            for i in range(len(max_usefulness_num)):
+              max_usefulness_frac.append(max_usefulness_num[i]/max_usefulness_denom[i])
+            max_usefulness = min(max_usefulness_frac)
             items_at_max_usefulness = [
               item_name for item_name, usefulness in item_by_usefulness_fraction.items()
               if usefulness == max_usefulness
