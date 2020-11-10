@@ -847,7 +847,7 @@ class Logic:
           location_weights[location] -= 1
       current_weight += 1
       
-      possible_items = [items for items in self.unplaced_progress_items.copy() if items != "Gratitude Crystal"]
+      possible_items = [items for items in self.unplaced_progress_items if items != "Gratitude Crystal"]
       
       # Don't randomly place items that already had their location predetermined.
       unfound_prerand_locs = [
@@ -856,9 +856,6 @@ class Logic:
       ]
       for location_name in unfound_prerand_locs:
         prerand_item = self.prerandomization_item_locations[location_name]
-        if prerand_item not in self.all_progress_items:
-          continue
-        possible_items.remove(prerand_item)
       
       if len(possible_items) == 0:
         raise Exception("Only items left to place are predetermined items at inaccessible locations!")
@@ -889,7 +886,7 @@ class Logic:
         # If we're on the last accessible location but not the last item we HAVE to place an item that unlocks new locations.
         # (Otherwise we will still try to place a useful item, but failing will not result in an error.)
         must_place_useful_item = True
-      elif len(accessible_undone_locations) >= 17:
+      elif len(accessible_undone_locations) >= 6:
         # If we have a lot of locations open, we don't need to be so strict with prioritizing currently useful items.
         # This can give the randomizer a chance to place things like Delivery Bag or small keys for dungeons that need x2 to do anything.
         should_place_useful_item = False
@@ -907,23 +904,23 @@ class Logic:
         if item_name is None:
           if must_place_useful_item:
             raise Exception("No useful progress items to place!")
-        else:
-          # We'd like to be placing a useful item, but there are no useful items to place.
-          # Instead we choose an item that isn't useful yet by itself, but has a high usefulness fraction.
-          # In other words, which item has the smallest number of other items needed before it becomes useful?
-          # We'd prefer to place an item which is 1/2 of what you need to access a new location over one which is 1/5 for example.
+          else:
+            # We'd like to be placing a useful item, but there are no useful items to place.
+            # Instead we choose an item that isn't useful yet by itself, but has a high usefulness fraction.
+            # In other words, which item has the smallest number of other items needed before it becomes useful?
+            # We'd prefer to place an item which is 1/2 of what you need to access a new location over one which is 1/5 for example.
           
-          item_by_usefulness_fraction = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
+            item_by_usefulness_fraction = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
           
-          # We want to limit it to choosing items at the maximum usefulness fraction.
-          # Since the values we have are the denominator of the fraction, we actually call min() instead of max().
-          max_usefulness = min(item_by_usefulness_fraction.values())
-          items_at_max_usefulness = [
-            item_name for item_name, usefulness in item_by_usefulness_fraction.items()
-            if usefulness == max_usefulness
-          ]
+            # We want to limit it to choosing items at the maximum usefulness fraction.
+            # Since the values we have are the denominator of the fraction, we actually call min() instead of max().
+            max_usefulness = min(item_by_usefulness_fraction.values())
+            items_at_max_usefulness = [
+              item_name for item_name, usefulness in item_by_usefulness_fraction.items()
+              if usefulness == max_usefulness
+            ]
             
-          item_name = self.rando.rng.choice(items_at_max_usefulness)
+            item_name = self.rando.rng.choice(items_at_max_usefulness)
       else:
         item_name = self.rando.rng.choice(possible_items_when_not_placing_useful)
       
