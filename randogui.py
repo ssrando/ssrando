@@ -17,7 +17,7 @@ from logic.constants import ALL_TYPES
 from options import OPTIONS, Options
 from progressdialog import ProgressDialog
 from guithreads import RandomizerThread, ExtractSetupThread
-from ssrando import Randomizer
+from ssrando import Randomizer, VERSION
 from ui_randogui import Ui_MainWindow
 from witmanager import WitManager
 
@@ -39,6 +39,8 @@ class RandoGUI(QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.setWindowTitle("Skyward Sword Randomizer v"+VERSION)
 
         self.output_folder = ""
 
@@ -290,7 +292,13 @@ class RandoGUI(QMainWindow):
             self.ui.option_description.setStyleSheet("")
 
     def permalink_updated(self):
-        self.options.update_from_permalink(self.ui.permalink.text())
+        try:
+            self.options.update_from_permalink(self.ui.permalink.text())
+        except ValueError as e:
+            # Ignore errors from faultly permalinks, with updating ui it gets reset anyways
+            print(e)
+        except IndexError as e:
+            print(e)
         self.update_ui_for_settings()
 
 

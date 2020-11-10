@@ -54,7 +54,7 @@ OPTIONS_LIST = [
         'min': 0,
         'max': 6,
         'bits': 3,
-        'help': '(not implemented yet) the number of dungeons that are required, to beat the seed',
+        'help': 'The number of dungeons that are required, to beat the seed',
         'ui': 'option_required_dungeon_count',
     },
     # {
@@ -64,14 +64,6 @@ OPTIONS_LIST = [
     #     'default': False,
     #     'help': '(not implemented yet) Instead of starting with the Sailcloth, it\'s added to the item pool',
     # },
-    {
-        'name': 'Invisible Sword',
-        'command': 'invisible-sword',
-        'type': 'boolean',
-        'default': False,
-        'help': 'Dumb hack that makes the sword always invisible so it doesn\'t crash on console if obtaining an upgraded sword',
-        'ui': 'option_invisible_sword',
-    },
     {
         'name': 'Empty unrequired Dungeons',
         'command': 'empty-unrequired-dungeons',
@@ -199,6 +191,10 @@ class Options():
         elif option['type'] == 'int':
             if not isinstance(option_value, int):
                 raise TypeError(f'value for option {option_name} has to be a number, got {type(option_value)}!')
+            if 'max' in option and option_value > option['max']:
+                raise ValueError(f'{option_value} is greater than the maximum of {option["max"]} for {option["command"]}')
+            if 'min' in option and option_value < option['min']:
+                raise ValueError(f'{option_value} is smaller than the minimum of {option["min"]} for {option["command"]}')
         elif option['type'] == 'multichoice':
             if not isinstance(option_value, list):
                 raise TypeError(f'value for option {option_name} has to be a list, got {type(option_value)}!')
@@ -242,7 +238,7 @@ class Options():
                 value = option['choices'][reader.read(option['bits'])]
             else:
                 raise Exception(f'unknown type: {option["type"]}')
-            self.options[option_name] = value
+            self.set_option(option_name, value)
     
     def __getitem__(self, item):
         return self.options[item]
