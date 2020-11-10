@@ -850,7 +850,7 @@ class Logic:
           location_weights[location] -= 1
       current_weight += 1
       
-      possible_items = self.unplaced_progress_items
+      possible_items = self.unplaced_progress_items.copy()
       
       # Don't randomly place items that already had their location predetermined.
       unfound_prerand_locs = [
