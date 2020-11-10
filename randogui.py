@@ -91,6 +91,7 @@ class RandoGUI(QMainWindow):
 
         self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)
+        self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.update_ui_for_settings()
         self.set_option_description(None)
 
@@ -195,6 +196,7 @@ class RandoGUI(QMainWindow):
     def update_ui_for_settings(self):
         self.ui.output_folder.setText(self.output_folder)
         self.ui.seed.setText(str(self.options["seed"]))
+        self.ui.permalink.setText(self.options.get_permalink())
         for option_key, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui', None)
@@ -234,7 +236,7 @@ class RandoGUI(QMainWindow):
                 self.options.set_option(option_command, self.get_option_value(ui_name))
 
         self.options.set_option("banned-types", self.get_banned_types())
-        print(self.options.get_permalink())
+        self.ui.permalink.setText(self.options.get_permalink())
 
     def get_option_value(self, option_name):
         widget = getattr(self.ui, option_name)
@@ -270,7 +272,6 @@ class RandoGUI(QMainWindow):
                     ui_name = ui_name[len("label_for_"):]
 
                 option = self.option_map[ui_name]
-                print(option)
                 self.set_option_description(option["help"])
 
             return True
@@ -287,6 +288,10 @@ class RandoGUI(QMainWindow):
         else:
             self.ui.option_description.setText(new_description)
             self.ui.option_description.setStyleSheet("")
+
+    def permalink_updated(self):
+        self.options.update_from_permalink(self.ui.permalink.text())
+        self.update_ui_for_settings()
 
 
 def run_main_gui():

@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(956, 441)
+        MainWindow.resize(956, 480)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -180,7 +180,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(10, 400, 931, 31))
+        self.horizontalLayoutWidget.setGeometry(QRect(10, 440, 931, 31))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -207,6 +207,22 @@ class Ui_MainWindow(object):
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
         self.option_description.setGeometry(QRect(10, 370, 931, 20))
+        self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
+        self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
+        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 410, 931, 22))
+        self.horizontalLayout_3 = QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.permalink_label = QLabel(self.horizontalLayoutWidget_2)
+        self.permalink_label.setObjectName(u"permalink_label")
+
+        self.horizontalLayout_3.addWidget(self.permalink_label)
+
+        self.permalink = QLineEdit(self.horizontalLayoutWidget_2)
+        self.permalink.setObjectName(u"permalink")
+
+        self.horizontalLayout_3.addWidget(self.permalink)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -247,5 +263,6 @@ class Ui_MainWindow(object):
         self.option_invisible_sword.setText(QCoreApplication.translate("MainWindow", u"Invisible Sword", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
         self.option_description.setText("")
+        self.permalink_label.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings)", None))
     # retranslateUi
 
