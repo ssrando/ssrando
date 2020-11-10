@@ -929,9 +929,12 @@ class Logic:
             items_at_max_usefulness = []
             for i in range(len(max_usefulness_num)):
               usefulness = max_usefulness_num[i]/max_usefulness_denom[i]
-              if usefulness >= current_max_usefulness:
+              if usefulness == current_max_usefulness:
                 items_at_max_usefulness.append(item_computed[i])
+              if usefulness > current_max_usefulness:
                 current_max_usefulness = usefulness
+                items_at_max_usefulness = []
+                items_at_max_usefulness.append(item_computed[i])
             item_name = self.rando.rng.choice([items[0] for items in items_at_max_usefulness])
       else:
         item_name = self.rando.rng.choice(possible_items_when_not_placing_useful)
