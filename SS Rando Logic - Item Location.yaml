@@ -343,13 +343,13 @@ Sky - Lumpy Pumpkin Harp Minigame:
   Paths:
    - event/117-Pumpkin/305
    - oarc/F011r/l0
-Sky - next to Beedle's island chest 1:
+Sky - Goddess Chest on Island next to Bamboo Island:
   Need: Goddess Cube near Mogma Turf Entrance
   original item: Silver Rupee
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/71
-Sky - SW Sky Satchel:
+Sky - Southwest Triple Island Upper Goddes Chest:
   Need: Goddess Cube at Eldin Entrance
   original item: Small Seed Satchel
   type: goddess
@@ -361,13 +361,13 @@ Sky - Bamboo Island Goddess Chest:
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/82
-Sky - NE Sky Treasure Medal:
+Sky - Northeast Island Cage Goddess Cube:
   Need: Goddess Cube East of Temple Entrance
   original item: Treasure Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/74
-Sky - NE Sky Silver Rupee:
+Sky - Northeast Island Goddess Cube Behind Bombable Rocks:
   Need: Bomb Bag & Goddess Cube at Lanayru Mine Entrance
   original item: Silver Rupee
   type: goddess
@@ -392,19 +392,19 @@ Sky - Goddess Chest on Island Closest to Faron Pillar:
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/65
-Sky - next to Bamboo island chest 2:
+Sky - Goddess Chest in Cave on Island Next to Bamboo Island:
   Need: Water Scale & Goddess Cube in secret passageway in Desert
   original item: Heart Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/83
-Sky - SW Sky Life Medal:
+Sky - Southwest Triple Island Lower Goddess Chest:
   Need: Goddess Cube near Hook Beetle Fight
   original item: Life Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/84
-Sky - SW Sky Potion medal:
+Sky - Southwest Triple Island Cage Goddess Cube:
   Need: Clawshots & Goddess Cube in Skipper's Retreat
   original item: Potion Medal
   type: goddess
@@ -616,7 +616,7 @@ Faron Woods - Heart Piece Behind Boulder:
   type: overworld
   Paths:
    - stage/F100/r0/l0/Item/33 #last thing is SceneflagID
-Faron Woods - Faron Woods Treasure:
+Faron Woods - Behind Bombable Rocks near Erla:
   Need: Can Access Most of Faron Woods & Bomb Bag
   original item: Semi Rare Treasure
   type: overworld
