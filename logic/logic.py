@@ -847,7 +847,7 @@ class Logic:
           location_weights[location] -= 1
       current_weight += 1
       
-      possible_items = self.unplaced_progress_items.copy()
+      possible_items = [items for items in self.unplaced_progress_items.copy() if items != "Gratitude Crystal"]
       
       # Don't randomly place items that already had their location predetermined.
       unfound_prerand_locs = [
@@ -907,23 +907,23 @@ class Logic:
         if item_name is None:
           if must_place_useful_item:
             raise Exception("No useful progress items to place!")
-          else:
-            # We'd like to be placing a useful item, but there are no useful items to place.
-            # Instead we choose an item that isn't useful yet by itself, but has a high usefulness fraction.
-            # In other words, which item has the smallest number of other items needed before it becomes useful?
-            # We'd prefer to place an item which is 1/2 of what you need to access a new location over one which is 1/5 for example.
+        else:
+          # We'd like to be placing a useful item, but there are no useful items to place.
+          # Instead we choose an item that isn't useful yet by itself, but has a high usefulness fraction.
+          # In other words, which item has the smallest number of other items needed before it becomes useful?
+          # We'd prefer to place an item which is 1/2 of what you need to access a new location over one which is 1/5 for example.
+          
+          item_by_usefulness_fraction = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
+          
+          # We want to limit it to choosing items at the maximum usefulness fraction.
+          # Since the values we have are the denominator of the fraction, we actually call min() instead of max().
+          max_usefulness = min(item_by_usefulness_fraction.values())
+          items_at_max_usefulness = [
+            item_name for item_name, usefulness in item_by_usefulness_fraction.items()
+            if usefulness == max_usefulness
+          ]
             
-            item_by_usefulness_fraction = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
-            
-            # We want to limit it to choosing items at the maximum usefulness fraction.
-            # Since the values we have are the denominator of the fraction, we actually call min() instead of max().
-            max_usefulness = min(item_by_usefulness_fraction.values())
-            items_at_max_usefulness = [
-              item_name for item_name, usefulness in item_by_usefulness_fraction.items()
-              if usefulness == max_usefulness
-            ]
-            
-            item_name = self.rando.rng.choice(items_at_max_usefulness)
+          item_name = self.rando.rng.choice(items_at_max_usefulness)
       else:
         item_name = self.rando.rng.choice(possible_items_when_not_placing_useful)
       
@@ -943,14 +943,17 @@ class Logic:
       # This way there is still a good chance it will not choose a new location.
       possible_locations_with_weighting = []
       for location_name in possible_locations:
-        weight = location_weights[location_name]
+        if self.is_dungeon_location(location_name):
+          weight = location_weights[location_name]*2
+        else:
+          weight = location_weights[location_name]
         possible_locations_with_weighting += [location_name]*weight
-      
+
       location_name = self.rando.rng.choice(possible_locations_with_weighting)
       self.set_location_to_item(location_name, item_name)
 
       # continue loop if items are remaining
-    
+
     # Make sure locations that should have predetermined items in them have them properly placed, even if the above logic missed them for some reason.
     for location_name in self.prerandomization_item_locations:
       if location_name in self.remaining_item_locations:
