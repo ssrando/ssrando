@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayoutWidget = QWidget(self.centralwidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(10, 10, 931, 51))
+        self.gridLayoutWidget.setGeometry(QRect(10, 10, 931, 58))
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -189,11 +189,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.option_dry_run)
 
-        self.option_invisible_sword = QCheckBox(self.horizontalLayoutWidget)
-        self.option_invisible_sword.setObjectName(u"option_invisible_sword")
-
-        self.horizontalLayout.addWidget(self.option_invisible_sword)
-
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
@@ -209,7 +204,7 @@ class Ui_MainWindow(object):
         self.option_description.setGeometry(QRect(10, 340, 931, 20))
         self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
-        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 370, 931, 22))
+        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 370, 931, 27))
         self.horizontalLayout_3 = QHBoxLayout(self.horizontalLayoutWidget_2)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -260,7 +255,6 @@ class Ui_MainWindow(object):
         self.option_randomize_tablets.setText(QCoreApplication.translate("MainWindow", u"Tablet Randomizer", None))
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
-        self.option_invisible_sword.setText(QCoreApplication.translate("MainWindow", u"Invisible Sword", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
         self.option_description.setText("")
         self.permalink_label.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings)", None))
