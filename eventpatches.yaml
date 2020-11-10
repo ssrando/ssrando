@@ -1,4 +1,16 @@
 003-ItemGet:
+  - name: Spiral Charge Text
+    type: textpatch
+    index: 27
+    text: "You learned the \x0E\x00\x03\x02\x05Spiral Charge\x0E\x00\x03\x02\uFFFF!"
+  - name: Change Spiral Charge Scene change
+    type: flowpatch
+    index: 584 # change it to give Spiral Charge Storyflag
+    flow:
+      subType: 0
+      param1: 0
+      param2: 364
+      param3: 0
   - name: Remove Goddess Sword Scene change
     type: flowpatch
     index: 462 # skip scene change after getting goddess sword
@@ -725,6 +737,21 @@
     index: 78
     flow:
       param2: 36 # always trigger
+  - name: Never give Levias Soup
+    type: flowpatch
+    index: 118
+    flow:
+      param2: 368 # never trigger
+  - name: Spiral Charge switch 1
+    type: flowpatch
+    index: 490
+    flow:
+      param2: 368 # never trigger
+  - name: Spiral Charge switch 2
+    type: flowpatch
+    index: 487
+    flow:
+      param2: 368 # never trigger
 118-Town3:
   - name: Wryna's Crystal
     type: flowpatch
