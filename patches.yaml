@@ -1753,6 +1753,25 @@ F301: # Ancient Harbour
     layer: 0
     room: 0
     objtype: OBJ
+F301_2: # inside Pirate Stronghold
+  - name: Fi Text at beginning
+    type: objdelete
+    id: 0xFC0A
+    layer: 0
+    room: 1
+    objtype: OBJ
+  - name: Fi Text near timeshift orb
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 3
+    objtype: OBJ
+  - name: Fi Text after placing orb
+    type: objdelete
+    id: 0xFC0B
+    layer: 0
+    room: 1
+    objtype: OBJ
 F301_4: # Shipyard
   - name: Text after intro
     type: objdelete
