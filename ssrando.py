@@ -96,9 +96,9 @@ class Randomizer:
     #   self.starting_items.append('Sailcloth')
     self.banned_types = self.options['banned-types']
     self.race_mode_banned_locations = []
-    self.logic = Logic(self)
     self.non_required_dungeons = [dungeon for dungeon in
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
+    self.logic = Logic(self)
     if self.options['empty-unrequired-dungeons']:
       for location_name in self.logic.item_locations:
         zone, _ = Logic.split_location_name_by_zone(location_name)
