@@ -8,6 +8,7 @@ global:
     - 58  # b-wheel
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
+    - 226 # Hero Mode
     - 323 # Scrapper repaired
     - 661 # Windmill Repaired
     - 358 # Interface choice unlocked
