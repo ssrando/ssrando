@@ -244,6 +244,9 @@ class Logic:
     # Location X requires items A and B while location Y requires items A B and C.
     # This function would return {A: 2, B: 2, C: 3} because A requires 1 other item (B) to help access anything, B also requires one other item (A) to help access anything, but C requires 2 other items (both A and B) before it becomes useful.
     # In other words, items A and B have 1/2 usefulness, while item C has 1/3 usefulness.
+    # In addition to the usefulness, we also return the number of locations that this item can potentially unlock (not necessarely immediately)
+    # We will multiply that number to the usefulness fraction. This is to make sure the game choses to place items that unlock a lot of locations even if we're far from unlocking those yet
+    # Doing this fixes some randomization failures (for exemple we often want the rando to place key pieces rather than song of the hero parts even if we're far from having all key pieces)
     
     accessible_undone_locations = self.get_accessible_remaining_locations(for_progression=True)
     inaccessible_undone_item_locations = []
@@ -272,8 +275,10 @@ class Logic:
     
     # Now calculate the best case scenario usefulness fraction for all items given.
     item_by_usefulness_fraction = OrderedDict()
+    location_count_unlocked_by_items = OrderedDict()
     for item_name in item_names_to_check:
       item_by_usefulness_fraction[item_name] = 9999
+      location_count_unlocked_by_items[item_name] = 0
     
     for item_names_for_loc in item_names_for_all_locations:
       item_names_for_loc_without_owned = item_names_for_loc.copy()
@@ -285,10 +290,10 @@ class Logic:
         if item_name not in item_by_usefulness_fraction:
           continue
         usefulness_fraction_for_item = len(item_names_for_loc_without_owned)
+        location_count_unlocked_by_items[item_name] += 1
         if usefulness_fraction_for_item < item_by_usefulness_fraction[item_name]:
           item_by_usefulness_fraction[item_name] = usefulness_fraction_for_item
-    
-    return item_by_usefulness_fraction
+    return item_by_usefulness_fraction, location_count_unlocked_by_items
   
   def get_all_useless_items(self, items_to_check):
     # Searches through a given list of items and returns which of them do not open up even 1 new location.
@@ -847,8 +852,6 @@ class Logic:
           location_weights[location] -= 1
       current_weight += 1
       
-      possible_items = self.unplaced_progress_items.copy()
-      
       # Don't randomly place items that already had their location predetermined.
       unfound_prerand_locs = [
         loc for loc in self.prerandomization_item_locations
@@ -856,9 +859,10 @@ class Logic:
       ]
       for location_name in unfound_prerand_locs:
         prerand_item = self.prerandomization_item_locations[location_name]
-        if prerand_item not in self.all_progress_items:
-          continue
-        possible_items.remove(prerand_item)
+        if prerand_item in self.unplaced_progress_items:
+          self.unplaced_progress_items.remove(prerand_item)
+
+      possible_items = self.unplaced_progress_items.copy()
       
       if len(possible_items) == 0:
         raise Exception("Only items left to place are predetermined items at inaccessible locations!")
@@ -889,7 +893,7 @@ class Logic:
         # If we're on the last accessible location but not the last item we HAVE to place an item that unlocks new locations.
         # (Otherwise we will still try to place a useful item, but failing will not result in an error.)
         must_place_useful_item = True
-      elif len(accessible_undone_locations) >= 17:
+      elif len(accessible_undone_locations) >= 10:
         # If we have a lot of locations open, we don't need to be so strict with prioritizing currently useful items.
         # This can give the randomizer a chance to place things like Delivery Bag or small keys for dungeons that need x2 to do anything.
         should_place_useful_item = False
@@ -905,28 +909,35 @@ class Logic:
         self.rando.rng.shuffle(shuffled_list)
         item_name = self.get_first_useful_item(shuffled_list)
         if item_name is None:
+          # This means that no item can unlock a new location
           if must_place_useful_item:
             raise Exception("No useful progress items to place!")
           else:
-            # We'd like to be placing a useful item, but there are no useful items to place.
+            # We'd like to be placing a useful item, but there are no immediately useful items to place.
             # Instead we choose an item that isn't useful yet by itself, but has a high usefulness fraction.
             # In other words, which item has the smallest number of other items needed before it becomes useful?
             # We'd prefer to place an item which is 1/2 of what you need to access a new location over one which is 1/5 for example.
-            
-            item_by_usefulness_fraction = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
-            
+            # The number of locations an item can potentially unlock also matters (think key pieces)
+          
+            item_by_usefulness_fraction, locations_unlocked_by_item = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful)
+          
             # We want to limit it to choosing items at the maximum usefulness fraction.
-            # Since the values we have are the denominator of the fraction, we actually call min() instead of max().
-            max_usefulness = min(item_by_usefulness_fraction.values())
-            items_at_max_usefulness = [
-              item_name for item_name, usefulness in item_by_usefulness_fraction.items()
-              if usefulness == max_usefulness
-            ]
-            
-            item_name = self.rando.rng.choice(items_at_max_usefulness)
+            max_usefulness_denom = list(item_by_usefulness_fraction.values())
+            max_usefulness_num = list(locations_unlocked_by_item.values())
+            item_computed = list(locations_unlocked_by_item.items())
+            current_max_usefulness = 0
+            items_at_max_usefulness = []
+            for i in range(len(max_usefulness_num)):
+              usefulness = max_usefulness_num[i]/max_usefulness_denom[i]
+              if usefulness == current_max_usefulness:
+                items_at_max_usefulness.append(item_computed[i])
+              if usefulness > current_max_usefulness:
+                current_max_usefulness = usefulness
+                items_at_max_usefulness = []
+                items_at_max_usefulness.append(item_computed[i])
+            item_name = self.rando.rng.choice([items[0] for items in items_at_max_usefulness])
       else:
         item_name = self.rando.rng.choice(possible_items_when_not_placing_useful)
-      
       locations_filtered = [
         loc for loc in accessible_undone_locations
         if loc not in self.rando.race_mode_banned_locations
@@ -941,16 +952,20 @@ class Logic:
       
       # We weight it so newly accessible locations are more likely to be chosen.
       # This way there is still a good chance it will not choose a new location.
+      # Dungeons are prefered
       possible_locations_with_weighting = []
       for location_name in possible_locations:
-        weight = location_weights[location_name]
+        if self.is_dungeon_location(location_name):
+          weight = location_weights[location_name]*2
+        else:
+          weight = location_weights[location_name]
         possible_locations_with_weighting += [location_name]*weight
-      
+
       location_name = self.rando.rng.choice(possible_locations_with_weighting)
       self.set_location_to_item(location_name, item_name)
 
       # continue loop if items are remaining
-    
+
     # Make sure locations that should have predetermined items in them have them properly placed, even if the above logic missed them for some reason.
     for location_name in self.prerandomization_item_locations:
       if location_name in self.remaining_item_locations:
