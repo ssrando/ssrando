@@ -146,7 +146,7 @@ class Logic:
     return len(self.unplaced_progress_items)
   
   def get_num_progression_locations(self):
-    return Logic.get_num_progression_locations_static(self.item_locations, self.rando.banned_types)
+    return Logic.get_num_progression_locations_static(self.item_locations, self.rando.banned_types, self.get_race_mode_banned_locations)
   
   @staticmethod
   def get_num_progression_locations_static(item_locations, banned_types):
@@ -154,6 +154,7 @@ class Logic:
       item_locations.keys(),
       item_locations,
       banned_types,
+      race_mode_banned_locations
     )
     
     return len(progress_locations)
