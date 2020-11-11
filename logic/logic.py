@@ -56,10 +56,24 @@ class Logic:
   def __init__(self, rando):
     self.rando = rando
     
-    
     # Initialize location related attributes.
     self.item_locations = Logic.load_and_parse_item_locations()
     self.load_and_parse_macros()
+
+    self.race_mode_banned_locations = []
+    if self.rando.options['empty-unrequired-dungeons']:
+      for location_name in self.item_locations:
+        zone, _ = Logic.split_location_name_by_zone(location_name)
+        if zone in self.rando.non_required_dungeons:
+          self.race_mode_banned_locations.append(location_name)
+      
+      # checks outside dungeons that require dungeons:
+      if 'Lanayru Mining Facility' in self.rando.non_required_dungeons:
+        self.race_mode_banned_locations.append('Skyloft - Fledge Crystals')
+      if 'Skyview' in self.rando.non_required_dungeons:
+        # TODO: check again with entrance rando
+        self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
+        self.race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
     
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
@@ -254,7 +268,7 @@ class Logic:
     locations_to_check = self.filter_locations_for_progression(locations_to_check)
     for location_name in locations_to_check:
       if location_name not in accessible_undone_locations:
-        if location_name in self.rando.race_mode_banned_locations:
+        if location_name in self.race_mode_banned_locations:
           # Don't consider locations inside unchosen dungeons in race mode when calculating usefulness.
           continue
         if location_name in self.prerandomization_item_locations:
@@ -330,7 +344,7 @@ class Logic:
     self.add_owned_item(item_name)
     
     for location_name in inaccessible_undone_item_locations:
-      if location_name in self.rando.race_mode_banned_locations:
+      if location_name in self.race_mode_banned_locations:
         # Don't consider locations inside unchosen dungeons in race mode when calculating usefulness.
         continue
       
@@ -363,6 +377,7 @@ class Logic:
     return False
   
   def filter_locations_for_progression(self, locations_to_filter):
+    locations_to_filter = [loc for loc in locations_to_filter if not loc in self.race_mode_banned_locations]
     return Logic.filter_locations_for_progression_static(
       locations_to_filter,
       self.item_locations,
@@ -527,11 +542,12 @@ class Logic:
       self.temporarily_make_entrance_macros_worst_case_scenario()
   
     progress_locations = Logic.filter_locations_for_progression_static(
-      self.item_locations.keys(),
+      (loc for loc in self.item_locations.keys() if not loc in self.race_mode_banned_locations),
       self.item_locations,
       self.rando.banned_types,
     )
     
+    # print(progress_locations)
     useful_items = []
     for location_name in progress_locations:
       requirement_expression = self.item_locations[location_name]["Need"]
@@ -551,14 +567,14 @@ class Logic:
         # Avoid duplicates
         continue
       all_progress_items_filtered.append(item_name)
-    
+
     items_to_make_nonprogress = [
       item_name for item_name in self.all_progress_items
       if item_name not in all_progress_items_filtered
       and item_name not in self.currently_owned_items
     ]
     for item_name in items_to_make_nonprogress:
-      #print(item_name)
+      # print(item_name)
       self.all_progress_items.remove(item_name)
       self.all_nonprogress_items.append(item_name)
       self.unplaced_progress_items.remove(item_name)
@@ -940,7 +956,7 @@ class Logic:
         item_name = self.rando.rng.choice(possible_items_when_not_placing_useful)
       locations_filtered = [
         loc for loc in accessible_undone_locations
-        if loc not in self.rando.race_mode_banned_locations
+        if loc not in self.race_mode_banned_locations
       ]
       if len(locations_filtered) >= 1:
         accessible_undone_locations = locations_filtered

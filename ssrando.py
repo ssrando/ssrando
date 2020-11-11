@@ -96,22 +96,9 @@ class Randomizer:
     #   self.starting_items.append('Sailcloth')
     self.banned_types = self.options['banned-types']
     self.race_mode_banned_locations = []
-    self.logic = Logic(self)
     self.non_required_dungeons = [dungeon for dungeon in
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
-    if self.options['empty-unrequired-dungeons']:
-      for location_name in self.logic.item_locations:
-        zone, _ = Logic.split_location_name_by_zone(location_name)
-        if zone in self.non_required_dungeons:
-          self.race_mode_banned_locations.append(location_name)
-      
-      # checks outside dungeons that require dungeons:
-      if 'Lanayru Mining Facility' in self.non_required_dungeons:
-        self.race_mode_banned_locations.append('Skyloft - Fledge Crystals')
-      if 'Skyview' in self.non_required_dungeons:
-        # TODO: check again with entrance rando
-        self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
-        self.race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
+    self.logic = Logic(self)
     # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
     # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Goddess Harp")
     # self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")
