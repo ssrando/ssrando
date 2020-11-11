@@ -1,6 +1,6 @@
 This is still under heavy development, be careful to use it!
 
-**You need to play on Hero Mode, because some cutscenes are glitched, so you're stuck otherwise and the logic assumes the upgraded skyward strike**
+**Starting on Normal Mode is the same as starting on Hero mode, possible normal Normal Mode & Normal mode logic comeing soon**
 
 ## Running the compiled binary (Windows)(recommended)
 1. For stable releases, grab the compiled program from the [github release section](https://github.com/lepelog/sslib/releases), for the newest, although potentially untested build get them from [appveyor](https://ci.appveyor.com/project/lepelog/sslib).
