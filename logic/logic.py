@@ -356,21 +356,40 @@ class Logic:
     self.remove_owned_item(item_name)
     self.cached_items_are_useful[item_name] = False
     return False
+
+  def get_race_mode_banned_locations(self):
+    non_required_dungeons = self.rando.non_required_dungeons
+    race_mode_banned_locations = []
+    for location_name in self.item_locations:
+      zone, _ = self.split_location_name_by_zone(location_name)
+      if zone in non_required_dungeons:
+         race_mode_banned_locations.append(location_name)
+    
+    # checks outside dungeons that require dungeons:
+    if 'Lanayru Mining Facility' in non_required_dungeons:
+      race_mode_banned_locations.append('Skyloft - Fledge Crystals')
+    if 'Skyview' in non_required_dungeons:
+      # TODO: check again with entrance rando
+      race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
+      race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
+    return race_mode_banned_locations
   
   def filter_locations_for_progression(self, locations_to_filter):
     return Logic.filter_locations_for_progression_static(
       locations_to_filter,
       self.item_locations,
       self.rando.banned_types,
+      self.get_race_mode_banned_locations()
     )
   
   @staticmethod
-  def filter_locations_for_progression_static(locations_to_filter, item_locations, banned_types):
+  def filter_locations_for_progression_static(locations_to_filter, item_locations, banned_types, race_mode_banned_locations):
     filtered_locations = []
     for location_name in locations_to_filter:
       types: set = item_locations[location_name]["type"]
       if types.isdisjoint(banned_types):
-        filtered_locations.append(location_name)
+        if location_name not in race_mode_banned_locations:
+          filtered_locations.append(location_name)
     
     return filtered_locations
   
@@ -525,6 +544,7 @@ class Logic:
       self.item_locations.keys(),
       self.item_locations,
       self.rando.banned_types,
+      self.get_race_mode_banned_locations()
     )
     
     useful_items = []
