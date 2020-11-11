@@ -971,11 +971,7 @@ class Logic:
       # Dungeons are prefered
       possible_locations_with_weighting = []
       for location_name in possible_locations:
-        if self.is_dungeon_location(location_name):
-          weight = location_weights[location_name]*2
-        else:
-          weight = location_weights[location_name]
-        possible_locations_with_weighting += [location_name]*weight
+        possible_locations_with_weighting += [location_name]*location_weights[location_name]
 
       location_name = self.rando.rng.choice(possible_locations_with_weighting)
       self.set_location_to_item(location_name, item_name)
