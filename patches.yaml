@@ -823,6 +823,12 @@ F023: # Thunderhead
       anglez: 0xFFFF
       id: 0xFC00
       name: PlRsTag
+  - name: Delete Isle of Songs intro cutscene
+    type: objdelete
+    id: 0xFC89
+    layer: 0
+    room: 0
+    objtype: OBJ
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -1265,6 +1271,12 @@ D101: # Ancient Cistern
       anglez: 0
       id: 0xFD01
       name: Bombf
+  - name: Delete cutscene inside statue
+    type: objdelete
+    id: 0xFC21
+    layer: 0
+    room: 10
+    objtype: STAG
 F200: # Eldin main area
   - name: Layer override
     type: layeroverride
@@ -1577,6 +1589,19 @@ F300_2: # Thunder node
       anglez: 0
       id: 0xFC50
       name: Bombf
+  - name: Fi text for generator
+    type: objdelete
+    id: 0xFC24
+    layer: 0
+    room: 0
+    objtype: OBJ
+F300_3: # Fire node
+  - name: Fi text for generator
+    type: objdelete
+    id: 0xFC28
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_4: # Temple of Time
   - name: Layer override
     type: layeroverride
@@ -1845,6 +1870,13 @@ D301: # Sandship A
     id: 0xFC1D
     layer: 3
     room: 14
+    objtype: OBJ
+F303: # Lanayru Caves
+  - name: Fi text after chest
+    type: objdelete
+    id: 0xFC25
+    layer: 0
+    room: 0
     objtype: OBJ
 F402: # Sealed Temple
   - name: SotH start cs
