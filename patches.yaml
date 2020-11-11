@@ -1761,6 +1761,22 @@ D300: # LMF A
     objtype: OBJS
     object:
       params1: 0xF7FFFC20
+  - name: extra Bomb flower
+    type: objadd
+    layer: 0
+    room: 6
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: -6150
+      posy: 1050
+      posz: -10108
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC50
+      name: Bombf
 D300_1: # LMF B
   - name: Fi Text in front of boss door
     type: objdelete
