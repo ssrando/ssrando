@@ -909,6 +909,12 @@ F100: # Faron main area
     layer: 1
     room: 0
     objtype: OBJ
+  - name: Remove Fi text after shooting down vine to deep woods
+    type: objdelete
+    id: 0x46BE
+    layer: 1
+    room: 0
+    objtype: OBJ
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
@@ -928,6 +934,12 @@ F101: # Deep Woods
   - name: Remove Fi text infront of Skyview
     type: objdelete
     id: 0xFCFA
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: Remove first Fi text in deep woods
+    type: objdelete
+    id: 0xFD09
     layer: 1
     room: 0
     objtype: OBJ
@@ -1196,6 +1208,12 @@ D100: # Skyview
     id: 0xFC34
     layer: 2
     room: 7
+    objtype: OBJ
+  - name: Remove initial Fi text in Skyview 2
+    type: objdelete
+    id: 0xFC4A
+    layer: 2
+    room: 0
     objtype: OBJ
       
 D101: # Ancient Cistern
@@ -1821,6 +1839,12 @@ D301: # Sandship A
     id: 0xFC12
     layer: 1
     room: 5
+    objtype: OBJ
+  - name: Fi text after boss key chest
+    type: objdelete
+    id: 0xFC1D
+    layer: 3
+    room: 14
     objtype: OBJ
 F402: # Sealed Temple
   - name: SotH start cs
