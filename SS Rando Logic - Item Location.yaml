@@ -309,15 +309,13 @@ Skyloft - Crystal in Zelda's Room:
   Need: Can Get Gratitude Crystals & Clawshots
   original item: Gratitude Crystal
   type: crystal
-Sky - Crystal outside Lumpy Pumpkin:
-  Need: Can Get Gratitude Crystals
-  original item: Gratitude Crystal
-  type: crystal
-Sky - Crystal inside Lumpy Pumpkin:
-  Need: Can Get Gratitude Crystals
-  original item: Gratitude Crystal
-  type: crystal
 
+Sky - Lumpy Pumpkin Chandellier:
+  Need: Nothing
+  original item: Heart Piece
+  type: overworld
+  Paths:
+   - stage/F011r/r0/l0/Chandel
 Sky - Lumpy Pumpkin Roof Goddess Chest:
   Need: Goddess Cube in Skyview Spring
   original item: Gold Rupee
@@ -330,12 +328,6 @@ Sky - Lumpy Pumpkin Goddess Chest:
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/64
-Sky - Lumpy Pumpkin Chandellier:
-  Need: Nothing
-  original item: Heart Piece
-  type: overworld
-  Paths:
-   - stage/F011r/r0/l0/Chandel
 Sky - Lumpy Pumpkin Harp Minigame:
   Need: Goddess Harp & Bottle
   original item: Heart Piece
@@ -343,73 +335,31 @@ Sky - Lumpy Pumpkin Harp Minigame:
   Paths:
    - event/117-Pumpkin/305
    - oarc/F011r/l0
-Sky - next to Beedle's island chest 1:
-  Need: Goddess Cube near Mogma Turf Entrance
-  original item: Silver Rupee
-  type: goddess
-  Paths:
-   - stage/F020/r0/l0/TBox/71
-Sky - SW Sky Satchel:
-  Need: Goddess Cube at Eldin Entrance
-  original item: Small Seed Satchel
-  type: goddess
-  Paths:
-   - stage/F020/r0/l0/TBox/66
+
 Sky - Bamboo Island Goddess Chest:
   Need: Goddess Cube West of Temple Entrance
   original item: Gold Rupee
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/82
-Sky - NE Sky Treasure Medal:
-  Need: Goddess Cube East of Temple Entrance
-  original item: Treasure Medal
-  type: goddess
-  Paths:
-   - stage/F020/r0/l0/TBox/74
-Sky - NE Sky Silver Rupee:
-  Need: Bomb Bag & Goddess Cube at Lanayru Mine Entrance
+Sky - Goddess Chest on Island next to Bamboo Island:
+  Need: Goddess Cube near Mogma Turf Entrance
   original item: Silver Rupee
   type: goddess
   Paths:
-   - stage/F020/r0/l0/TBox/72
-Sky - Goddess Chest Inside Volcanic Island:
-  Need: Goddess Cube on East Great Tree with Clawshot Target
-  #Normally you would need clawshots, but you can skip them with a good dive
-  original item: Heart Piece
-  type: goddess
-  Paths:
-   - stage/F020/r0/l0/TBox/68
-Sky - Goddess Chest Outside Volcanic Island:
-  Need: Goddess Cube in Sand Oasis
-  original item: Heart Medal
-  type: goddess
-  Paths:
-   - stage/F020/r0/l0/TBox/67
-Sky - Goddess Chest on Island Closest to Faron Pillar:
-  Need: Goddess Cube in Deep Woods
-  original item: Heart Piece
-  type: goddess
-  Paths:
-   - stage/F020/r0/l0/TBox/65
-Sky - next to Bamboo island chest 2:
+   - stage/F020/r0/l0/TBox/71
+Sky - Goddess Chest in Cave on Island Next to Bamboo Island:
   Need: Water Scale & Goddess Cube in secret passageway in Desert
   original item: Heart Medal
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/83
-Sky - SW Sky Life Medal:
-  Need: Goddess Cube near Hook Beetle Fight
-  original item: Life Medal
+Sky - Beedle's Island Goddess Chest:
+  Need: Goddess Cube at ride in ToT area
+  original item: Heart Piece
   type: goddess
   Paths:
-   - stage/F020/r0/l0/TBox/84
-Sky - SW Sky Potion medal:
-  Need: Clawshots & Goddess Cube in Skipper's Retreat
-  original item: Potion Medal
-  type: goddess
-  Paths:
-   - stage/F020/r0/l0/TBox/75
+   - stage/F020/r0/l0/TBox/89
 Sky - Beedle's Island Cage Goddess Chest:
   Need: Can Access Beedle's Shop & Goddess Cube on top of Skyview
   #Getting this chest during the day is possible but rather difficult, shouldn't be in logic
@@ -417,18 +367,61 @@ Sky - Beedle's Island Cage Goddess Chest:
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/81
-Sky - Beedle's Island Goddess Chest:
-  Need: Goddess Cube at ride in ToT area
+Sky - Northeast Island Goddess Cube Behind Bombable Rocks:
+  Need: Bomb Bag & Goddess Cube at Lanayru Mine Entrance
+  original item: Silver Rupee
+  type: goddess
+  Paths:
+   - stage/F020/r0/l0/TBox/72
+Sky - Northeast Island Cage Goddess Cube:
+  Need: Goddess Cube East of Temple Entrance
+  original item: Treasure Medal
+  type: goddess
+  Paths:
+   - stage/F020/r0/l0/TBox/74
+Sky - Goddess Chest on Island Closest to Faron Pillar:
+  Need: Goddess Cube in Deep Woods
   original item: Heart Piece
   type: goddess
   Paths:
-   - stage/F020/r0/l0/TBox/89
+   - stage/F020/r0/l0/TBox/65
+Sky - Goddess Chest Outside Volcanic Island:
+  Need: Goddess Cube in Sand Oasis
+  original item: Heart Medal
+  type: goddess
+  Paths:
+   - stage/F020/r0/l0/TBox/67
+Sky - Goddess Chest Inside Volcanic Island:
+  Need: Goddess Cube on East Great Tree with Clawshot Target
+  #Normally you would need clawshots, but you can skip them with a good dive
+  original item: Heart Piece
+  type: goddess
+  Paths:
+   - stage/F020/r0/l0/TBox/68
 Sky - Goddess Chest Under Fun Fun Island:
   Need: Goddess Cube in Floria Waterfall
   original item: Gold Rupee
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/86
+Sky - Southwest Triple Island Upper Goddes Chest:
+  Need: Goddess Cube at Eldin Entrance
+  original item: Small Seed Satchel
+  type: goddess
+  Paths:
+   - stage/F020/r0/l0/TBox/66
+Sky - Southwest Triple Island Lower Goddess Chest:
+  Need: Goddess Cube near Hook Beetle Fight
+  original item: Life Medal
+  type: goddess
+  Paths:
+   - stage/F020/r0/l0/TBox/84
+Sky - Southwest Triple Island Cage Goddess Cube:
+  Need: Clawshots & Goddess Cube in Skipper's Retreat
+  original item: Potion Medal
+  type: goddess
+  Paths:
+   - stage/F020/r0/l0/TBox/75
 Sky - Fun Fun Island Minigame:
   Need: Can Retrieve Party Wheel
   original item: Heart Piece
@@ -479,6 +472,15 @@ Sky - Breakable Boulder near Lumpy Pumpkin:
   type: overworld
   Paths:
     - stage/F020/r0/l0/TBox/69
+
+Sky - Crystal outside Lumpy Pumpkin:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+  type: crystal
+Sky - Crystal inside Lumpy Pumpkin:
+  Need: Can Get Gratitude Crystals
+  original item: Gratitude Crystal
+  type: crystal
 
 Thunderhead - Goddess Chest Outside Isle of Song:
   Need: Can Access Thunderhead & Goddess Cube in Mogma Turf
@@ -616,7 +618,7 @@ Faron Woods - Heart Piece Behind Boulder:
   type: overworld
   Paths:
    - stage/F100/r0/l0/Item/33 #last thing is SceneflagID
-Faron Woods - Faron Woods Treasure:
+Faron Woods - Behind Bombable Rocks near Erla:
   Need: Can Access Most of Faron Woods & Bomb Bag
   original item: Semi Rare Treasure
   type: overworld
@@ -630,24 +632,6 @@ Faron Woods - Chest Inside Great Tree:
   Paths:
    - stage/F100_1/r0/l0/TBox/84
 
-# Lake Floria - Outside AC: # not sure if this one works for other items
-#   Need: Can Access Lake Floria & Beetle
-#   original item: Gold Rupee
-#   type: overworld
-#   Paths:
-#    - stage/F102_1/r0/l0/Item/64
-Lake Floria - Dragon Lair First Chest:
-  Need: Can Access Lake Floria
-  original item: Semi Rare Treasure
-  type: overworld
-  Paths:
-   - stage/F102_2/r0/l0/TBox/85
-Lake Floria - Dragon Lair Second Chest (Scale):
-  Need: Can Access Lake Floria
-  original item: Silver Rupee
-  type: overworld
-  Paths:
-   - stage/F102_2/r0/l0/TBox/84
 Lake Floria - Lake Floria Chest:
   Need: Can Access Lake Floria
   original item: Goddess Plume
@@ -660,6 +644,24 @@ Lake Floria - Lake Floria Chest:
 #  type: overworld
 #  Paths:
 #   - stage/F102/r2/l0/Item/60
+Lake Floria - Dragon Lair First Chest:
+  Need: Can Access Lake Floria
+  original item: Semi Rare Treasure
+  type: overworld
+  Paths:
+   - stage/F102_2/r0/l0/TBox/85
+Lake Floria - Dragon Lair Second Chest (Scale):
+  Need: Can Access Lake Floria
+  original item: Silver Rupee
+  type: overworld
+  Paths:
+   - stage/F102_2/r0/l0/TBox/84
+# Lake Floria - Outside AC: # not sure if this one works for other items
+#   Need: Can Access Lake Floria & Beetle
+#   original item: Gold Rupee
+#   type: overworld
+#   Paths:
+#    - stage/F102_1/r0/l0/Item/64
 
 
 Eldin Volcano - Behind Bombable Wall in First Room:
