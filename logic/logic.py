@@ -361,18 +361,19 @@ class Logic:
   def get_race_mode_banned_locations(self):
     non_required_dungeons = self.rando.non_required_dungeons
     race_mode_banned_locations = []
-    for location_name in self.item_locations:
-      zone, _ = self.split_location_name_by_zone(location_name)
-      if zone in non_required_dungeons:
-         race_mode_banned_locations.append(location_name)
+    if self.rando.options['empty-unrequired-dungeons']:
+      for location_name in self.item_locations:
+        zone, _ = self.split_location_name_by_zone(location_name)
+        if zone in non_required_dungeons:
+           race_mode_banned_locations.append(location_name)
     
-    # checks outside dungeons that require dungeons:
-    if 'Lanayru Mining Facility' in non_required_dungeons:
-      race_mode_banned_locations.append('Skyloft - Fledge Crystals')
-    if 'Skyview' in non_required_dungeons:
-      # TODO: check again with entrance rando
-      race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
-      race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
+      # checks outside dungeons that require dungeons:
+      if 'Lanayru Mining Facility' in non_required_dungeons:
+        race_mode_banned_locations.append('Skyloft - Fledge Crystals')
+      if 'Skyview' in non_required_dungeons:
+        # TODO: check again with entrance rando
+        race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
+        race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
     return race_mode_banned_locations
   
   def filter_locations_for_progression(self, locations_to_filter):
