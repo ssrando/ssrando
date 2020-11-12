@@ -720,6 +720,24 @@ F010r: # Isle of songs tower
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Delete Faron Trial Dowsing
+    type: objdelete
+    id: 0xFC02
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Delete Lanayru Trial Dowsing
+    type: objdelete
+    id: 0xFC03
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Delete Eldin Trial Dowsing
+    type: objdelete
+    id: 0xFC04
+    layer: 0
+    room: 0
+    objtype: OBJ
 F012r: # Batreaux House
   - name: Batreaux unlock
     type: objpatch
