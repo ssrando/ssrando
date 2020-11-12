@@ -575,6 +575,17 @@
       param3: 9
       param4: 0
       param5: 0
+111-FortuneTeller:
+  - name: Skip over Water Basin dowsing
+    type: flowpatch
+    index: 99
+    flow:
+      param2: 668
+  - name: Skip over Wheel opening
+    type: flowpatch
+    index: 104
+    flow:
+      param2: 96
 115-Town2:
   - name: Parrow's Empty Bottle
     type: flowpatch
@@ -1018,7 +1029,12 @@
       param2: 0
       next: -1
       param3: 10
-
+203-ForestF2:
+  - name: Skip over Scared Water dowsing
+    type: flowpatch
+    index: 62
+    flow:
+      next: 468
 
 250-ForestSiren:
   - name: shorten fi text
@@ -1086,6 +1102,17 @@
       param2: 7
       next: -1
       param3: 7
+303-MountainF2:
+  - name: skip over Water Basin dowsing
+    type: flowpatch
+    index: 128
+    flow:
+      param2: 668
+  - name: skip over Water Basin dowsing
+    type: flowpatch
+    index: 289
+    flow:
+      param2: 134
 304-MountainD2:
   - name: Give item before CS
     type: flowpatch
@@ -1178,7 +1205,7 @@
     index: 39
     flow:
       next: 5
-  - name: Zelda dowsing in Key Piece
+  - name: skip over Zelda dowsing
     type: flowpatch
     index: 133
     flow:
