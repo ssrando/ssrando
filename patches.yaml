@@ -1391,6 +1391,12 @@ F210: # Mogma Turf
     objtype: OBJ
     object:
       trigstoryfid: 901
+  - name: Mogma Holding you back in caves
+    type: objdelete
+    id: 0x007B
+    layer: 1
+    room: 0
+    objtype: OBJ
 F201_3: # FS entrance
   - name: Layer override
     type: layeroverride
