@@ -76,6 +76,11 @@
     type: textpatch
     index: 243
     text: "The \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF is now complete!"
+  - name: Zelda dowsing in Key Piece
+    type: flowpatch
+    index: 677
+    flow:
+      next: -1
   - name: remove BotG Scene Change # also goes to open thunderhead
     type: flowpatch
     index: 464
@@ -843,6 +848,21 @@
     index: 410
     flow:
       next: 128
+  - name: Skip over Zelda Dowsing 2
+    type: flowpatch
+    index: 440
+    flow:
+      next: -1
+  - name: Skip over Zelda Dowsing 3
+    type: flowpatch
+    index: 343
+    flow:
+      next: -1
+  - name: Skip over Zelda Dowsing 3
+    type: flowpatch
+    index: 635
+    flow:
+      next: -1
 201-ForestD1:
   - name: give item after beating skyview
     type: flowpatch
@@ -1018,6 +1038,12 @@
     index: 2
     flow:
       next: 3
+300-Mountain:
+  - name: Skip over Zelda Dowsing
+    type: flowpatch
+    index: 281
+    flow:
+      next: -1
 301-MountainD1:
   - name: give item after beating earth temple
     type: flowpatch
@@ -1143,6 +1169,11 @@
     index: 39
     flow:
       next: 5
+  - name: Zelda dowsing in Key Piece
+    type: flowpatch
+    index: 133
+    flow:
+      next: -1
 401-DesertD2:
   - name: give item after beating sandship
     type: flowpatch
@@ -1211,6 +1242,11 @@
       param2: 137
       next: -1
       param3: 0
+  - name: Zelda dowsing in Key Piece
+    type: flowpatch
+    index: 495
+    flow:
+      next: 492
 501-Inpa:
   - name: got to rando dungeons completed check
     type: flowpatch
