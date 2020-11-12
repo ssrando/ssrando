@@ -369,8 +369,17 @@
       subType: 0
       param1: 0
       param2: 271 # Ship Dowsing
-      next: -1
+      next: Open Dowsing wheel
       param3: 0
+  - name: Open Dowsing wheel
+    type: flowadd
+    flow:
+      type: type3
+      subType: 6
+      param1: 0
+      param2: 7
+      next: -1
+      param3: 56
 008-Hint:
   # check for 7 storyflags: required dungeon 1 to 6, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check
