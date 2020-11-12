@@ -927,6 +927,18 @@ F100: # Faron main area
     layer: 1
     room: 0
     objtype: OBJ
+  - name: Remove Fi text Not letting you leave machi 1
+    type: objdelete
+    id: 0x0EBB
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: Remove Fi text Not letting you leave machi 2
+    type: objdelete
+    id: 0x0EBA
+    layer: 1
+    room: 0
+    objtype: OBJ
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
