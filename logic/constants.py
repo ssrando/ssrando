@@ -14,4 +14,4 @@ DUNGEON_NAMES = OrderedDict([
 ])
 DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict([v, k] for k, v in DUNGEON_NAMES.items())
 
-ALL_TYPES = ['batreaux', 'crystal', 'dungeon', 'goddess', 'minigame', 'overworld', 'quest', 'sidequest', 'silent realm']
+ALL_TYPES = ['batreaux', 'crystal', 'dungeon', 'goddess', 'minigame', 'overworld', 'quest', 'sidequest', 'silent realm','peatrice','scrapper']
