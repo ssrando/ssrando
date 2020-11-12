@@ -146,7 +146,7 @@ Can Hit High Skyview Switches:
 
 Can Hit Vines in Skyview Left Room:
    Can Hit High Skyview Switches | Goddess Sword | Whip
-# You can skyward strike the vine on Hero Mode. Use the rope to jump to the crystal alcove and simply hit it with your sword.
+# You can skyward strike the vine even on Normal Mode. Use the rope to jump to the crystal alcove and simply hit it with your sword.
 # You can also get the vines down with whip but the positioning for the first vine is a bit weird
 
 Can Get Past the First Skyview Room:
@@ -155,9 +155,10 @@ Can Get Past the First Skyview Room:
 #You need a sword to defeat the first eye + something to stun the boko baba or hit the switch from afar
 #The only way you can get around the sword requirement here is by having bombs to blow up both the trees and the barricade
 #Water Scale make it Skyview 2 were the boko baba isn't there, and the baricade disappears anyway.
+
 Can Beat Skyview:
-    Can Access Skyview & Can Get Past the First Skyview Room & Goddess Sword & SW Small Key x2 & SW Boss Key
-# Goddess Sword to activate the crest, killing or avoiding Spider with Goddess Sword in logic
+    Can Access Skyview & Can Get Past the First Skyview Room & Goddess Sword & (Option "hero-mode" Enabled | Hook Beetle | Bow | True Master Sword) & SW Small Key x2 & SW Boss Key
+# Goddess Sword to activate the crest
 
 Can Access Dungeon Entrance In Eldin Volcano:
     Can Access Second Part of Eldin & Key Piece x5
@@ -178,7 +179,7 @@ Can Access Dungeon Entrance In Lanayru Desert:
 
 Can Hit Crystal in LMF Map Room:
     Goddess Sword | Whip | Slingshot | Bow
-#You can skyward strike the timeshift stone through the gate. The bow, slingshot and whip also work
+#You can skyward strike the timeshift stone through the gate (even on normal mode). The bow, slingshot and whip also work
 
 Can Beat Lanayru Mining Facility:
       Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows & Practice Sword & Can Hit Crystal in LMF Map Room & LMF Boss Key
@@ -227,20 +228,20 @@ Can Beat Fire Sanctuary:
 # Can Access Past:
 #     this is filled in at runtime with the required dungeons
 
-Can Access Levias:
-    Can Access Past
+#Can Access Levias:
+#    Can Access Past
 
-Can Access/Beat Flooded Faron:
-    Can Access Levias & Water Scale
+#Can Access/Beat Flooded Faron:
+#    Can Access Levias & Water Scale
 
-Can Access/(Beat) Boko Base:
-    Can Access Levias
+#Can Access/(Beat) Boko Base:
+#    Can Access Levias
 
-Can Access Lanayru Gorge:
-    Can Access Lanayru & Can Access Levias & Clawshots
+#Can Access Lanayru Gorge:
+#    Can Access Lanayru & Can Access Levias & Clawshots
 
-Can Heal Thunder Dragon:
-    Can Access Lanayru Gorge & Life Tree Seedling & Bomb Bag & Clawshots & Hook Beetle & Whip & Can Access Past?
+#Can Heal Thunder Dragon:
+#    Can Access Lanayru Gorge & Life Tree Seedling & Bomb Bag & Clawshots & Hook Beetle & Whip & Can Access Past?
 
 Can Access Dungeon Entrance On Skyloft:
     Stone of Trials & Clawshots
@@ -298,7 +299,7 @@ Goddess Cube in Eldin Slide:
     Can Access Second Part of Eldin & Goddess Sword
  
 Goddess Cube inside Volcano Summit:
-    Can Access Volcano Summit & Goddess Sword #hero mode allows getting this early
+    Can Access Volcano Summit & ((Goddess Sword & Option "hero-mode" Enabled) | True Master Sword) #hero mode allows getting this early
  
 Goddess Cube in Summit Waterfall:
     Can Access Volcano Summit & Goddess Sword
@@ -320,7 +321,7 @@ Goddess Cube in secret passageway in Desert:
     #the tough beetle can be used instead of bombs
  
 Goddess Cube near Hook Beetle Fight:
-    Can Access Lanayru & (Clawshots | Bomb Bag | Hook Beetle) & Goddess Sword
+    Can Access Lanayru & (Clawshots | Bomb Bag | Hook Beetle) & ((Goddess Sword & Option "hero-mode" Enabled) | Clawshots | True Master Sword)
     #On hero mode you can skyward strike this one early
  
 Goddess Cube in Ancient Harbour:
