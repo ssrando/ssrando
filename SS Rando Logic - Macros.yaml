@@ -321,7 +321,7 @@ Goddess Cube in secret passageway in Desert:
     #the tough beetle can be used instead of bombs
  
 Goddess Cube near Hook Beetle Fight:
-    Can Access Lanayru & (Clawshots | Bomb Bag | Hook Beetle) & ((Goddess Sword & Option "hero-mode" Enabled) | Clawshots | True Master Sword)
+    Can Access Lanayru & (Clawshots | Bomb Bag | Hook Beetle) & ((Goddess Sword & (Option "hero-mode" Enabled | Clawshots)) | True Master Sword)
     #On hero mode you can skyward strike this one early
  
 Goddess Cube in Ancient Harbour:
