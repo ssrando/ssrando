@@ -81,7 +81,9 @@ class RandoGUI(QMainWindow):
             "quest": "Enables progression items to appear as rewards from the main quest events (i.e. in place of the "
                      "shield from Professor Owlan)",
             "sidequest": "Enables progression items to appear as rewards from completing gratitude crystal quests",
-            "silent_realm": "Enables progression items to appear as rewards for completing Silent Realm trials"
+            "silent_realm": "Enables progression items to appear as rewards for completing Silent Realm trials",
+            "peatrice": "Enables progression items to appear as rewards for Peatrice's sidequest",
+            "scrapper": "Enables progression items to appear as rewards for Scrapper Quests"
         }
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))

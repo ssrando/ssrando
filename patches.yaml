@@ -8,7 +8,8 @@ global:
     - 58  # b-wheel
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
-    - 226 # Hero Mode
+    - storyflag: 226 # Hero Mode
+      onlyif: Option "hero-mode" Enabled
     - 323 # Scrapper repaired
     - 661 # Windmill Repaired
     - 358 # Interface choice unlocked
@@ -841,6 +842,12 @@ F023: # Thunderhead
       anglez: 0xFFFF
       id: 0xFC00
       name: PlRsTag
+  - name: Delete Isle of Songs intro cutscene
+    type: objdelete
+    id: 0xFC89
+    layer: 0
+    room: 0
+    objtype: OBJ
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -927,6 +934,12 @@ F100: # Faron main area
     layer: 1
     room: 0
     objtype: OBJ
+  - name: Remove Fi text after shooting down vine to deep woods
+    type: objdelete
+    id: 0x46BE
+    layer: 1
+    room: 0
+    objtype: OBJ
   - name: Remove Fi text Not letting you leave machi 1
     type: objdelete
     id: 0x0EBB
@@ -958,6 +971,12 @@ F101: # Deep Woods
   - name: Remove Fi text infront of Skyview
     type: objdelete
     id: 0xFCFA
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: Remove first Fi text in deep woods
+    type: objdelete
+    id: 0xFD09
     layer: 1
     room: 0
     objtype: OBJ
@@ -1227,6 +1246,12 @@ D100: # Skyview
     layer: 2
     room: 7
     objtype: OBJ
+  - name: Remove initial Fi text in Skyview 2
+    type: objdelete
+    id: 0xFC4A
+    layer: 2
+    room: 0
+    objtype: OBJ
       
 D101: # Ancient Cistern
   - name: remove stone tablet text
@@ -1277,6 +1302,12 @@ D101: # Ancient Cistern
       anglez: 0
       id: 0xFD01
       name: Bombf
+  - name: Delete cutscene inside statue
+    type: objdelete
+    id: 0xFC21
+    layer: 0
+    room: 10
+    objtype: STAG
 F200: # Eldin main area
   - name: Layer override
     type: layeroverride
@@ -1595,6 +1626,19 @@ F300_2: # Thunder node
       anglez: 0
       id: 0xFC50
       name: Bombf
+  - name: Fi text for generator
+    type: objdelete
+    id: 0xFC24
+    layer: 0
+    room: 0
+    objtype: OBJ
+F300_3: # Fire node
+  - name: Fi text for generator
+    type: objdelete
+    id: 0xFC28
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_4: # Temple of Time
   - name: Layer override
     type: layeroverride
@@ -1746,6 +1790,25 @@ F301: # Ancient Harbour
     layer: 0
     room: 0
     objtype: OBJ
+F301_2: # inside Pirate Stronghold
+  - name: Fi Text at beginning
+    type: objdelete
+    id: 0xFC0A
+    layer: 0
+    room: 1
+    objtype: OBJ
+  - name: Fi Text near timeshift orb
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 3
+    objtype: OBJ
+  - name: Fi Text after placing orb
+    type: objdelete
+    id: 0xFC0B
+    layer: 0
+    room: 1
+    objtype: OBJ
 F301_4: # Shipyard
   - name: Text after intro
     type: objdelete
@@ -1873,6 +1936,19 @@ D301: # Sandship A
     id: 0xFC12
     layer: 1
     room: 5
+    objtype: OBJ
+  - name: Fi text after boss key chest
+    type: objdelete
+    id: 0xFC1D
+    layer: 3
+    room: 14
+    objtype: OBJ
+F303: # Lanayru Caves
+  - name: Fi text after chest
+    type: objdelete
+    id: 0xFC25
+    layer: 0
+    room: 0
     objtype: OBJ
 F402: # Sealed Temple
   - name: SotH start cs

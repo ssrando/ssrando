@@ -120,6 +120,16 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.progression_sidequest, 1, 2, 1, 1)
 
+        self.progression_peatrice = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_peatrice.setObjectName(u"progression_peatrice")
+
+        self.gridLayout_3.addWidget(self.progression_peatrice, 1, 3, 1, 1)
+
+        self.progression_scrapper = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_scrapper.setObjectName(u"progression_scrapper")
+
+        self.gridLayout_3.addWidget(self.progression_scrapper, 0, 3, 1, 1)
+
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
         self.groupBox_2.setGeometry(QRect(10, 210, 931, 121))
@@ -189,6 +199,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.option_dry_run)
 
+        self.option_hero_mode = QCheckBox(self.horizontalLayoutWidget)
+        self.option_hero_mode.setObjectName(u"option_hero_mode")
+        
+        self.horizontalLayout.addWidget(self.option_hero_mode)
+
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
@@ -246,7 +261,9 @@ class Ui_MainWindow(object):
         self.progression_minigame.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
         self.progression_overworld.setText(QCoreApplication.translate("MainWindow", u"Overworld", None))
         self.progression_silent_realm.setText(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
-        self.progression_sidequest.setText(QCoreApplication.translate("MainWindow", u"Sidequests", None))
+        self.progression_sidequest.setText(QCoreApplication.translate("MainWindow", u"Short Sidequests", None))
+        self.progression_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
+        self.progression_scrapper.setText(QCoreApplication.translate("MainWindow", u"Scrapper Quests", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.option_closed_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Closed Thunderhead", None))
         self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
@@ -255,6 +272,7 @@ class Ui_MainWindow(object):
         self.option_randomize_tablets.setText(QCoreApplication.translate("MainWindow", u"Tablet Randomizer", None))
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
+        self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
         self.option_description.setText("")
         self.permalink_label.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings)", None))

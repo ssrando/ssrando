@@ -98,6 +98,14 @@ OPTIONS_LIST = [
         'help': 'Specify a seed to use for randomization, leave empty for random seed',
         'ui': 'seed',
     },
+    {
+        'name': 'Hero Mode',
+        'command': 'hero-mode',
+        'type': 'boolean',
+        'default': True,
+        'help': 'If activated, play the game on Hero Mode',
+        'ui': 'option_hero_mode',
+    },
 ]
 
 OPTIONS = OrderedDict((option['command'], option) for option in OPTIONS_LIST)

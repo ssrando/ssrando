@@ -133,7 +133,7 @@ Skyloft - Wyrna Crystals:
 Skyloft - Peater/Peatrice Crystals:
   Need: Nothing
   original item: 5 Gratitude Crystals
-  type: sidequest
+  type: peatrice
   Paths:
     - event/109-TakeGoron/79
     - event/123-Town5/316
@@ -173,7 +173,7 @@ Skyloft - Ghost/Pipit Crystals:
 Skyloft - Sparrot Crystals:
   Need: Can Access Second Part of Eldin & Clawshots
   original item: 5 Gratitude Crystals
-  type: sidequest
+  type: scrapper
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
@@ -187,7 +187,7 @@ Skyloft - Cleaning Crystals:
 Skyloft - Owlan Crystals:
   Need: Can Access Most of Faron Woods & Bomb Bag
   original item: 5 Gratitude Crystals
-  type: sidequest
+  type: scrapper
   Paths:
     - event/118-Town3/157
     - oarc/F001r/l0
@@ -331,7 +331,7 @@ Sky - Lumpy Pumpkin Goddess Chest:
 Sky - Lumpy Pumpkin Harp Minigame:
   Need: Goddess Harp & Bottle
   original item: Heart Piece
-  type: sidequest, minigame
+  type: minigame
   Paths:
    - event/117-Pumpkin/305
    - oarc/F011r/l0
@@ -425,14 +425,14 @@ Sky - Southwest Triple Island Cage Goddess Cube:
 Sky - Fun Fun Island Minigame:
   Need: Can Retrieve Party Wheel
   original item: Heart Piece
-  type: minigame
+  type: minigame, scrapper
   Paths:
    - event/110-DivingGame/19
    - oarc/F020/l2
 Sky - Dohdoh Crystals:
   Need: Can Retrieve Party Wheel
   original item: 5 Gratitude Crystals
-  type: sidequest
+  type: scrapper
   Paths:
     - event/110-DivingGame/60
     - oarc/F020/l0
@@ -447,7 +447,7 @@ Sky - Orrielle Crystals:
 Sky - Kina Crystals:
   Need: Bottle & Goddess Harp & Can Access Eldin
   original item: 5 Gratitude Crystals
-  type: sidequest, minigame
+  type: scrapper, minigame
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
@@ -1034,7 +1034,7 @@ Skyview - Behind Three Eyes:
   Paths:
    - stage/D100/r7/l0/TBox/68
 Skyview - Near Boss Door:
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & (Goddess Sword | Hook Beetle | Bow) & SW Small Key x2
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & SW Small Key x2
   # The Staldra can be defeated with either sword or bombs, which we must already have
   # To get accross the rope with boko babas, hang down on the rope and go accross that way. The last boko baba may be annoying but nothing too bad if you time it
   # The Skulltula jump is not in logic. A bomb knocks it away. Both the Beetle and the bow can cut it down. The water scale makes it Skyview 2 where there is no spider anymore. A skyward strike can knock it away too
@@ -1046,14 +1046,14 @@ Skyview - Near Boss Door:
 Skyview - Boss Key:
   #If you had bombs for the Skulltula, you can't hit the 2nd vine, thus you need Beetle, bow, clawshots or slingshot
   #Note: You can also hit this vine with a Skyward Strike, but only on Hero Mode
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & (Goddess Sword | Hook Beetle | Bow) & SW Small Key x2
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & SW Small Key x2
   original item: Skyview Boss Key
   type: dungeon
   Paths:
    - stage/D100/r9/l0/TBox/66
 
 Skyview - Ghirahim Heart Container:
- Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & (Goddess Sword | Hook Beetle | Bow) & Practice Sword & SW Small Key x2 & SW Boss Key
+ Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & Practice Sword & SW Small Key x2 & SW Boss Key
  original item: Heart Container
  type: dungeon
  Paths:
@@ -1063,7 +1063,7 @@ Skyview - Ghirahim Heart Container:
   - stage/B100/r0/l4/HeartCo
 
 Skyview - Ruby Tablet:
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & Goddess Sword & SW Small Key x2 & SW Boss Key
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & Goddess Sword & (Option "hero-mode" Enabled | Hook Beetle | Bow | True Master Sword) & SW Small Key x2 & SW Boss Key
   original item: Ruby Tablet
   type: dungeon
   Paths:

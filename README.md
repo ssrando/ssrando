@@ -1,7 +1,5 @@
 This is still under heavy development, be careful to use it!
 
-**Starting on Normal Mode is the same as starting on Hero mode, possible normal Normal Mode & Normal mode logic comeing soon**
-
 ## Running the compiled binary (Windows)(recommended)
 1. For stable releases, grab the compiled program from the [github release section](https://github.com/lepelog/sslib/releases), for the newest, although potentially untested build get them from [appveyor](https://ci.appveyor.com/project/lepelog/sslib).
 2. Download the zipfile, extract it somewhere (if you already have an older version installed, install it over and replace the existing files)
