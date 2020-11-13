@@ -1270,6 +1270,12 @@ D100: # Skyview
     layer: 2
     room: 7
     objtype: OBJ
+  - name: Remove initial Fi text in Skyview 1
+    type: objdelete
+    id: 0xFC4C
+    layer: 1
+    room: 0
+    objtype: OBJ
   - name: Remove initial Fi text in Skyview 2
     type: objdelete
     id: 0xFC4A
@@ -1543,6 +1549,12 @@ B200: # Boss Room
       - story_flag: -1
         night: 0
         layer: 2
+  - name: delete fi text
+    type: objdelete
+    id: 0xFC30
+    layer: 2
+    room: 10
+    objtype: OBJ  
 D201: # FS A
   - name: Mogma 1
     type: objdelete
