@@ -1588,6 +1588,13 @@ F300: # lanayru Main Area
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove Zelda Dowsing from LMF raising cs
+    type: objpatch
+    room: 0
+    index: 28
+    objtype: EVNT
+    object:
+      story_flag2: -1 # no Zelda Dowsing
 F300_1:
   - name: Layer override
     type: layeroverride
