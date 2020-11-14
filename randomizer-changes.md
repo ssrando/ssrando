@@ -26,11 +26,11 @@
 - To access Cawlin's Letter check you need to talk to the toilet hand first (which requires Harp)
 - To access Pipit/Toilet hand 5 crystals you only need to deliver the Letter to either Karane or toilet hand
 - You can talk to Sparrot in his house right away to start the Crystal Ball retrieving quest
-- Owlan's Kikwi quest will start after obtaining the reward from the Kikwi Eldin in Faron for having found all the Kikwis
+- Owlan's Kikwi quest can be started after obtaining the reward from the Kikwi Elder in Faron for having found all the Kikwis
 ### Sky
 - The songs at Isle of Songs have been transformed into Chests, which can be obtained with the corresponding sword upgrade
 - The Isle of Songs intro cutscene has been removed
-- You can start Party Wheel Crytsal Quest from the start by talking to the owner
+- You can start Party Wheel Crystal Quest from the start by talking to the owner
 - The Bug Heaven minigame is accessible from the start (granted that you have the bug net)
 - The Lumpy Pumpkin Chandelier can now be bonked down even with Spiral Charge
 - All of Kina's sidequest chain can now be done from the start
@@ -46,7 +46,7 @@
 - You can go past the Goron in Deep Woods without hitting the Goddess Cube
 - To raise the gate of time, the harp is required
 - The cutscene where groose lands in faron is skipped, he is directly in sealed temple now
-- Kikwi Ermit Yerbal spawns after obtaining Water Dragon Scale
+- Kikwi Hermit Yerbal spawns after obtaining Water Dragon Scale
 - The sacred water quest is skipped, the waterfall in front of Ancient Cistern is removed
 - Many Fi Texts are removed
 ### Skyview Temple
