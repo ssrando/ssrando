@@ -22,6 +22,8 @@ global:
     - 96  # Fi's text after obtaining first map
     - 28 # Pratice Sword storyflag
     - 130 # Start with Beacon
+    - 496 # Skipper's cutscene after Sea Chart
+    - 519 # Updated Sand Sea map
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
@@ -591,6 +593,28 @@ F000: # Skyloft
     layer: 10
     room: 0
     objtype: OBJS
+  - name: untrigger fledge on academy after bow layer 4
+    type: objpatch
+    id: 0xFDCF
+    layer: 4
+    room: 0
+    objtype: OBJ
+    object:
+      untrigstoryfid: 1114 # bow
+  - name: untrigger fledge on academy after bow layer 6
+    type: objpatch
+    id: 0xFDD3
+    layer: 6
+    room: 0
+    objtype: OBJ
+    object:
+      untrigstoryfid: 1114 # bow
+  - name: delete Wryna outside
+    type: objdelete
+    id: 0xFDF1
+    layer: 4
+    room: 0
+    objtype: OBJ
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -1247,6 +1271,12 @@ D100: # Skyview
     layer: 2
     room: 7
     objtype: OBJ
+  - name: Remove initial Fi text in Skyview 1
+    type: objdelete
+    id: 0xFC4C
+    layer: 1
+    room: 0
+    objtype: OBJ
   - name: Remove initial Fi text in Skyview 2
     type: objdelete
     id: 0xFC4A
@@ -1350,6 +1380,18 @@ F200: # Eldin main area
   - name: Just saying cs
     type: objdelete
     id: 0x248C
+    layer: 1
+    room: 4
+    objtype: OBJ
+  - name: delete Just saying cs mogma
+    type: objdelete
+    id: 0x248A
+    layer: 1
+    room: 4
+    objtype: OBJ
+  - name: delete Just saying cs mogma
+    type: objdelete
+    id: 0x248B
     layer: 1
     room: 4
     objtype: OBJ
@@ -1508,6 +1550,12 @@ B200: # Boss Room
       - story_flag: -1
         night: 0
         layer: 2
+  - name: delete fi text
+    type: objdelete
+    id: 0xFC30
+    layer: 2
+    room: 10
+    objtype: OBJ  
 D201: # FS A
   - name: Mogma 1
     type: objdelete
@@ -1950,6 +1998,24 @@ D301: # Sandship A
     id: 0xFC1D
     layer: 3
     room: 14
+    objtype: OBJ
+  - name: Fi text after Scervo
+    type: objdelete
+    id: 0xFC07
+    layer: 2
+    room: 15
+    objtype: OBJ
+  - name: Fi text after bow chest
+    type: objdelete
+    id: 0xFC08
+    layer: 2
+    room: 15
+    objtype: OBJ
+  - name: Fi text for revealing timeshift stone
+    type: objdelete
+    id: 0xFC4C
+    layer: 1
+    room: 0
     objtype: OBJ
 F303: # Lanayru Caves
   - name: Fi text after chest
