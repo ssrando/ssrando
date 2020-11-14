@@ -334,6 +334,7 @@ B301: # after Sandship boss
     index: 1
     objtype: EVNT
     object:
+      story_flag1: -1 # remove more dowsing options
       item: -1
   - name: Fi text before FS CS
     type: objadd
