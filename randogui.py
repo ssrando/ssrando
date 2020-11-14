@@ -96,6 +96,7 @@ class RandoGUI(QMainWindow):
         self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)
         self.ui.permalink.textChanged.connect(self.permalink_updated)
+        self.ui.seed.textChanged.connect(self.update_settings)
         self.update_ui_for_settings()
         self.set_option_description(None)
 
