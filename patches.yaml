@@ -2064,6 +2064,14 @@ F303: # Lanayru Caves
     layer: 0
     room: 0
     objtype: OBJ
+  - name: never untrigger goron
+    type: objpatch
+    id: 0xFC5C
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      untrigstoryfid: 2047 # never untrigger
 F402: # Sealed Temple
   - name: Layer override
     type: layeroverride
