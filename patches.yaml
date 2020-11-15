@@ -662,6 +662,13 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 57 # talk to Elder after locating every Kikwi
+F004r: # Bazaar
+  - name: Delete goddess chest fi text
+    type: objdelete
+    id: 0xFC7D
+    layer: 0
+    room: 0
+    objtype: OBJ
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
@@ -2018,6 +2025,15 @@ D301: # Sandship A
     room: 0
     objtype: OBJ
 F303: # Lanayru Caves
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 208 #clawshots
+        night: 0
+        layer: 1
+      - story_flag: -1
+        night: 0
+        layer: 0
   - name: Fi text after chest
     type: objdelete
     id: 0xFC25
@@ -2025,6 +2041,24 @@ F303: # Lanayru Caves
     room: 0
     objtype: OBJ
 F402: # Sealed Temple
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 133
+        night: 0
+        layer: 6
+      - story_flag: 132
+        night: 0
+        layer: 4
+      - story_flag: 13
+        night: 0
+        layer: 3
+      - story_flag: 140
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
   - name: SotH start cs
     type: objdelete
     id: 0xFC4F
@@ -2100,6 +2134,12 @@ F402: # Sealed Temple
     objtype: EVNT
     object:
       story_flag2: -1
+  - name: Delete post levias impa
+    type: objdelete
+    id: 0xFC17
+    layer: 0
+    room: 2
+    objtype: OBJ
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
@@ -2119,12 +2159,6 @@ F401: # Sealed grounds Whirlpool
       - story_flag: 133
         night: 0
         layer: 5
-      - story_flag: 175
-        night: 0
-        layer: 3
-      - story_flag: 200
-        night: 0
-        layer: 4
       - story_flag: 13
         night: 0
         layer: 3
@@ -2198,9 +2232,6 @@ F400: # Behind the Temple
       - story_flag: 133
         night: 0
         layer: 6
-      - story_flag: 200
-        night: 0
-        layer: 5
       - story_flag: 13
         night: 0
         layer: 4
@@ -2243,6 +2274,12 @@ F404: # Hylia's Temple
     objtype: EVNT
     object:
       item: -1 # no TMS anymore
+  - name: Delete post-ghirahim 3 impa
+    type: objdelete
+    id: 0xFC05
+    layer: 0
+    room: 2
+    objtype: OBJ
 F403: # Hylia's Realm
   - name: Layer override
     type: layeroverride
