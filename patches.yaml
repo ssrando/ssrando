@@ -1651,6 +1651,12 @@ F300: # lanayru Main Area
     objtype: EVNT
     object:
       story_flag2: -1 # no Zelda Dowsing
+  - name: Remove Fi text for Trial Gate
+    type: objdelete
+    id: 0xFC87
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_1:
   - name: Layer override
     type: layeroverride
@@ -1672,6 +1678,12 @@ F300_1:
     layer: 0
     room: 0
     objtype: STAG
+  - name: Remove Fi text for Trial Gate
+    type: objdelete
+    id: 0xFC2D
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_2: # Thunder node
   - name: extra Bomb flower
     type: objadd
@@ -1728,6 +1740,12 @@ F300_4: # Temple of Time
     objtype: OBJ
     object:
       params1: 0xFFFFFFF1
+  - name: Remove Fi text for Trial Gate
+    type: objdelete
+    id: 0xFC17
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch
