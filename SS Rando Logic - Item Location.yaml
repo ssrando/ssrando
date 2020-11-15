@@ -531,6 +531,13 @@ Thunderhead - Bug Island minigame:
   Paths:
    - event/116-InsectGame/69
    - oarc/F023/l0
+Thunderhead - Levias:
+  Need: Can Access Thunderhead & Spiral Charge & Practice Sword
+  original item: Song of the Hero
+  type: scrapper
+  Paths:
+   - event/120-Nushi/14
+   - oarc/F023/l0
 Thunderhead - Farore's Courage:
   Need: Can Access Thunderhead & Goddess Sword
   original item: Farore's Courage
