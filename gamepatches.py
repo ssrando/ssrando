@@ -883,7 +883,7 @@ def do_gamepatches(rando):
                     print(f'ERROR: label {evntline} not found!')
                     continue
                 evntline = index
-                print(f'dynamic label: {evntline}')
+                # print(f'dynamic label: {evntline}')
             modified = True
             msbf['FLW3']['flow'][evntline]['param2'] = itemid
             msbf['FLW3']['flow'][evntline]['param3'] = 9 # give item command
