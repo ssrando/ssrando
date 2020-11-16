@@ -868,6 +868,8 @@ def do_gamepatches(rando):
             make_progressive_item(msbf, 136, [77, 608, 75, 78, 74, 73], PROGRESSIVE_SWORD_ITEMIDS, PROGRESSIVE_SWORD_STORYFLAGS)
             # make progressive beetle
             make_progressive_item(msbf, 96, [38, 178], [53, 75], [912, 913])
+            # make progressive pouch
+            make_progressive_item(msbf, 258, [254, 253], [112, 113], [931, 932])
             # make progressive wallets
             make_progressive_item(msbf, 250, [246, 245, 244, 255], [108, 109, 110, 111], [915, 916, 917, 918])
             modified = True
