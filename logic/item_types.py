@@ -18,7 +18,6 @@ PROGRESS_ITEMS = [
   "Ruby Tablet",
   "Amber Tablet",
 
-  "Adventure Pouch",
   "Baby Rattle",
   "Cawlin's Letter",
   "Horned Colossus Beetle",
@@ -41,6 +40,7 @@ PROGRESS_ITEMS = [
   ["Progressive Sword"]*6 + \
   ["Progressive Mitts"]*2 + \
   ["Progressive Beetle"]*2 + \
+  ["Progressive Pouch"]*5 + \
   ["Key Piece"]*5 + \
   ["Empty Bottle"]*5
 
@@ -53,7 +53,6 @@ NONPROGRESS_ITEMS = [
   "Life Medal",
   "Potion Medal",
 
-  "Pouch Expansion",
   "Small Seed Satchel",
   "Small Bomb Bag",
   "Small Quiver",
