@@ -924,6 +924,10 @@ def do_gamepatches(rando):
         else:
             return None
     def text_patch(msbt, filename):
+        # for bucket, lbl_list in enumerate(msbt['LBL1']):
+        #     for lbl in lbl_list:
+        #         hash_b = entrypoint_hash(lbl['name'], len(msbt['LBL1']))
+        #         print(f'smile: {bucket} {hash_b}')
         assert len(msbt['TXT2']) == len(msbt['ATR1'])
         modified = False
         textpatches = eventpatches.get(filename, [])
@@ -933,10 +937,18 @@ def do_gamepatches(rando):
             # print(f'patched text {command["index"]}, {filename}')
             modified = True
         for command in filter(lambda x: x['type'] == 'textadd', textpatches):
+            assert filename == '105-Terry', filename
             index = len(msbt['TXT2'])
             text_labels[command['name']] = index
             msbt['TXT2'].append(command['text'].encode('utf-16be'))
             msbt['ATR1'].append({'unk1':command.get('unk1',1), 'unk2':command.get('unk2',0)})
+            entry_name="TERY_50_%02d" % index
+            new_entry = OrderedDict(
+                name = entry_name,
+                value = index,
+            )
+            bucket = entrypoint_hash(entry_name, len(msbt['LBL1']))
+            msbt['LBL1'][bucket].append(new_entry)
             # print(f'added text {index}, {filename}')
             modified = True
         if modified:
