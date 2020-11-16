@@ -171,7 +171,8 @@ class AllPatcher:
             self.progress_callback(f'patching {filename}')
             modified_eventpath = modified_eventrootpath / filename
             eventarc = U8File.parse_u8(BytesIO(eventpath.read_bytes()))
-            for eventfilepath in eventarc.get_all_paths():
+            # make sure to handle text files first for labels
+            for eventfilepath in sorted(eventarc.get_all_paths(), key=lambda x: x[-1], reverse=True):
                 eventfilename = eventfilepath.split("/")[-1]
                 if eventfilename.endswith('.msbf'):
                     parsedMsb = parseMSB(eventarc.get_file_data(eventfilepath))

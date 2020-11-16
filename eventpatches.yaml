@@ -520,25 +520,21 @@
     index: 82
     flow:
       param2: 36 # always trigger
-  - name: Make one Textline free
-    type: flowpatch
-    index: 90
-    flow:
-      next: 8
-  - name: Fix free Textline
-    type: flowpatch
-    index: 9
-    flow:
-      next: -1
   - name: Can't buy Pouch text
-    type: textpatch
-    index: 14
+    type: textadd
     text: "You need a \x0E\x00\x03\x02\x05Adventure Pouch\x0E\x00\x03\x02\uFFFF to buy this!"
   - name: go to Check for Pouch
     type: flowpatch
     index: 16
     flow:
       next: Check for Pouch
+  - name: Show can't buy Pouch text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 87
+      param4: Can't buy Pouch text
   - name: Check for Pouch
     type: switchadd
     flow:
@@ -547,7 +543,7 @@
       param3: 3
     cases:
       - 43 # do event as normal
-      - 9 # a Textline that is free now
+      - Show can't buy Pouch text
 106-DrugStore:
   - name: Potion Lady Bottle # skip pouch requirements
     type: flowpatch

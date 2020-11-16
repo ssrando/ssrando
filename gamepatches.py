@@ -698,6 +698,18 @@ def do_gamepatches(rando):
                 modified = True
                 # print(f'removed object from {layer} in room {room} with id {objdelete["id"]:04X}')
                 # print(obj)
+        for command in filter(lambda x: x['type']=='objnadd' and x.get('room',None)==room, stagepatches):
+            layer = command.get('layer', None)
+            name_to_add = command['objn']
+            if layer is None:
+                if not 'OBJN' in bzs:
+                    bzs['OBJN'] = []
+                objlist = bzs['OBJN']
+            else:
+                if not 'OBJN' in bzs['LAY '][f'l{layer}']:
+                    bzs['LAY '][f'l{layer}']['OBJN'] = []
+                objlist = bzs['LAY '][f'l{layer}']['OBJN']
+            objlist.append(name_to_add)
         for objadd in filter(lambda x: x['type']=='objadd' and x.get('room',None)==room, stagepatches):
             layer = objadd.get('layer', None)
             objtype = objadd['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
@@ -781,6 +793,9 @@ def do_gamepatches(rando):
             return None
 
     patcher.set_bzs_patch(bzs_patch_func)
+
+    text_labels = {}
+
     def flow_patch(msbf, filename):
         modified = False
         flowpatches = eventpatches.get(filename, [])
@@ -801,6 +816,13 @@ def do_gamepatches(rando):
                     index = label_to_index.get(val, None)
                     if index is None:
                         print(f'ERROR: label {val} not found in patch: {command["flow"]}')
+                        continue
+                    val = index
+                # special case: text points to a label, textindex is param4
+                if key == 'param4' and not isinstance(val, int):
+                    index = text_labels.get(val, None)
+                    if index is None:
+                        print(f'ERROR: text label {val} not found in patch: {command["flow"]}')
                         continue
                     val = index
                 flowobj[key] = val
@@ -824,6 +846,13 @@ def do_gamepatches(rando):
                     index = label_to_index.get(val, None)
                     if index is None:
                         print(f'ERROR: label {val} not found in new flow: {command["flow"]}')
+                        continue
+                    val = index
+                # special case: text points to a label, textindex is param4
+                if key == 'param4' and not isinstance(val, int):
+                    index = text_labels.get(val, None)
+                    if index is None:
+                        print(f'ERROR: text label {val} not found in new flow: {command["flow"]}')
                         continue
                     val = index
                 flowobj[key] = val
@@ -895,12 +924,20 @@ def do_gamepatches(rando):
         else:
             return None
     def text_patch(msbt, filename):
+        assert len(msbt['TXT2']) == len(msbt['ATR1'])
         modified = False
         textpatches = eventpatches.get(filename, [])
         textpatches = list(filter(filter_option_requirement, textpatches))
         for command in filter(lambda x: x['type'] == 'textpatch', textpatches):
             msbt['TXT2'][command['index']] = command['text'].encode('utf-16be')
             # print(f'patched text {command["index"]}, {filename}')
+            modified = True
+        for command in filter(lambda x: x['type'] == 'textadd', textpatches):
+            index = len(msbt['TXT2'])
+            text_labels[command['name']] = index
+            msbt['TXT2'].append(command['text'].encode('utf-16be'))
+            msbt['ATR1'].append({'unk1':command.get('unk1',1), 'unk2':command.get('unk2',0)})
+            # print(f'added text {index}, {filename}')
             modified = True
         if modified:
             return msbt
