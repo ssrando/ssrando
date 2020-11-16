@@ -937,12 +937,13 @@ def do_gamepatches(rando):
             # print(f'patched text {command["index"]}, {filename}')
             modified = True
         for command in filter(lambda x: x['type'] == 'textadd', textpatches):
-            assert filename == '105-Terry', filename
             index = len(msbt['TXT2'])
             text_labels[command['name']] = index
             msbt['TXT2'].append(command['text'].encode('utf-16be'))
             msbt['ATR1'].append({'unk1':command.get('unk1',1), 'unk2':command.get('unk2',0)})
-            entry_name="TERY_50_%02d" % index
+            # the game doesn't care about the name, but it has to exist and be unique
+            # only unique within a file but whatever
+            entry_name="%s:%d" % (filename[-3:], index)
             new_entry = OrderedDict(
                 name = entry_name,
                 value = index,
