@@ -144,6 +144,8 @@ New Trial Completed Storyflags:
 928: Required Dungeon 5  
 929: Required Dungeon 6  
 
+931: Adventure Pouch 932 Pouch Expansion
+
 ### Shoutouts
 - Peppernicus2000: Logic, fixes
 - Azer67: Logic
