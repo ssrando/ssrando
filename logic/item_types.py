@@ -40,7 +40,7 @@ PROGRESS_ITEMS = [
   ["Progressive Sword"]*6 + \
   ["Progressive Mitts"]*2 + \
   ["Progressive Beetle"]*2 + \
-  ["Progressive Pouch"]*5 + \
+  ["Progressive Pouch"]*2 + \
   ["Key Piece"]*5 + \
   ["Empty Bottle"]*5
 
