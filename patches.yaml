@@ -76,6 +76,12 @@ global:
       # always return true when checking for skipflag
       - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 93 e1 00 0c 7c 9f 23 78 93 c1 00 08 7c 7e 1b 78 80 6d bb bc 4b f4 ac f1
         patched:  38 60 00 01 4e 80 00 20 90 01 00 14 93 e1 00 0c 7c 9f 23 78 93 c1 00 08 7c 7e 1b 78 80 6d bb bc 4b f4 ac f1
+      # always skip over treating faron statues differently after levias
+      - original: 2c 00 00 00 3b a0 00 00 3b c0 00 00 40 82 00 60
+        patched:  2c 00 00 00 3b a0 00 00 3b c0 00 00 48 00 00 60
+      # don't force show map when entering pillars after meeting levias
+      - original: 48 00 00 30 7f a3 eb 78 38 80 00 c8 4b ff f8 51
+        patched:  48 00 00 30 48 00 00 2c 38 80 00 c8 4b ff f8 51
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
         patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
@@ -662,6 +668,13 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 57 # talk to Elder after locating every Kikwi
+F004r: # Bazaar
+  - name: Delete goddess chest fi text
+    type: objdelete
+    id: 0xFC7D
+    layer: 0
+    room: 0
+    objtype: OBJ
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
@@ -873,6 +886,23 @@ F023: # Thunderhead
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Fi text after levias
+    type: objadd
+    room: 0
+    layer: 0
+    id: 0xFC13
+    objtype: OBJ
+    object:
+      params1: 0x61A32301 # triggered by story flag 200, untriggered by story flag 781
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      anglex: 0xFFFF
+      angley: 0xFFFF
+      anglez: 12003 # entrypoint 120_03
+      id: 0xFC13
+      name: NpcTke
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -1644,6 +1674,12 @@ F300: # lanayru Main Area
     objtype: EVNT
     object:
       story_flag2: -1 # no Zelda Dowsing
+  - name: Remove Fi text for Trial Gate
+    type: objdelete
+    id: 0xFC87
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_1:
   - name: Layer override
     type: layeroverride
@@ -1665,6 +1701,12 @@ F300_1:
     layer: 0
     room: 0
     objtype: STAG
+  - name: Remove Fi text for Trial Gate
+    type: objdelete
+    id: 0xFC2D
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_2: # Thunder node
   - name: extra Bomb flower
     type: objadd
@@ -1721,6 +1763,12 @@ F300_4: # Temple of Time
     objtype: OBJ
     object:
       params1: 0xFFFFFFF1
+  - name: Remove Fi text for Trial Gate
+    type: objdelete
+    id: 0xFC17
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch
@@ -2018,13 +2066,48 @@ D301: # Sandship A
     room: 0
     objtype: OBJ
 F303: # Lanayru Caves
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 208 #clawshots
+        night: 0
+        layer: 1
+      - story_flag: -1
+        night: 0
+        layer: 0
   - name: Fi text after chest
     type: objdelete
     id: 0xFC25
     layer: 0
     room: 0
     objtype: OBJ
+  - name: never untrigger goron
+    type: objpatch
+    id: 0xFC5C
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      untrigstoryfid: 2047 # never untrigger
 F402: # Sealed Temple
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 133
+        night: 0
+        layer: 6
+      - story_flag: 132
+        night: 0
+        layer: 4
+      - story_flag: 13
+        night: 0
+        layer: 3
+      - story_flag: 140
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
   - name: SotH start cs
     type: objdelete
     id: 0xFC4F
@@ -2100,6 +2183,12 @@ F402: # Sealed Temple
     objtype: EVNT
     object:
       story_flag2: -1
+  - name: Delete post levias impa
+    type: objdelete
+    id: 0xFC17
+    layer: 0
+    room: 2
+    objtype: OBJ
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
@@ -2119,12 +2208,6 @@ F401: # Sealed grounds Whirlpool
       - story_flag: 133
         night: 0
         layer: 5
-      - story_flag: 175
-        night: 0
-        layer: 3
-      - story_flag: 200
-        night: 0
-        layer: 4
       - story_flag: 13
         night: 0
         layer: 3
@@ -2198,9 +2281,6 @@ F400: # Behind the Temple
       - story_flag: 133
         night: 0
         layer: 6
-      - story_flag: 200
-        night: 0
-        layer: 5
       - story_flag: 13
         night: 0
         layer: 4
@@ -2243,6 +2323,12 @@ F404: # Hylia's Temple
     objtype: EVNT
     object:
       item: -1 # no TMS anymore
+  - name: Delete post-ghirahim 3 impa
+    type: objdelete
+    id: 0xFC05
+    layer: 0
+    room: 2
+    objtype: OBJ
 F403: # Hylia's Realm
   - name: Layer override
     type: layeroverride

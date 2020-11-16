@@ -762,21 +762,11 @@
     index: 78
     flow:
       param2: 36 # always trigger
-  - name: Never give Levias Soup
+  - name: Fix Bartender
     type: flowpatch
-    index: 118
+    index: 212 # collected pumpkin soup
     flow:
-      param2: 368 # never trigger
-  - name: Spiral Charge switch 1
-    type: flowpatch
-    index: 490
-    flow:
-      param2: 368 # never trigger
-  - name: Spiral Charge switch 2
-    type: flowpatch
-    index: 487
-    flow:
-      param2: 368 # never trigger
+      next: 520 # normal conversation past pumpkin soup
 118-Town3:
   - name: Wryna's Crystal
     type: flowpatch
@@ -811,19 +801,36 @@
       param3: 9
       param4: 0
       param5: 0
-200-Nushi:
-  - name: Levias Reward # can't be reached right now
+120-Nushi:
+  - name: Fix Levias
     type: flowpatch
-    index: 14
+    index: 7
+    flow:
+      next: 21 # never talk about triforce or song of the hero
+  - name: Skip bokobase story flag
+    type: flowpatch
+    index: 22
+    flow:
+      next: -1 # don't set bokobase
+  - name: Give item after levias
+    type: entryadd
+    entry:
+      name: "120_03"
+      value: After levias event start
+  - name: After levias event start
+    type: flowadd
+    flow:
+      type: start
+      next: give item after levias
+  - name: give item after levias
+    type: flowadd
     flow:
       type: type3
       subType: 0
       param1: 0
-      param2: 0 # item
-      next: -1
+      param2: 3 # item
+      next: 37 # set unset story flag
       param3: 9
-      param4: 0
-      param5: 0
 123-Town5:
   - name: Peatrice's Crystal
     type: flowpatch
