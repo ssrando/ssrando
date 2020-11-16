@@ -190,6 +190,10 @@ global:
       # change second param or giveItem function to -1, otherwise first pouch slot could get overwritten with bottle
       - original: 80 1f 00 04 38 80 00 00 38 a0 00 00 54 03 c6 3e
         patched:  80 1f 00 04 38 80 FF FF 38 a0 00 00 54 03 c6 3e
+    d_a_bird:
+      # change speed constant from 80 to 240
+      - original: 3e 4c cc cd 42 a0 00 00 45 74 10 00
+        patched:  3e 4c cc cd 43 70 00 00 45 74 10 00
 
 # S100:
 #   - name: Test Trial
