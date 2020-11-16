@@ -301,6 +301,20 @@
       param2: 30 # adventure pouch unlocked
       next: -1
       param3: 0
+  - name: To Set Adventure Pouch counter
+    type: flowpatch
+    index: 604
+    flow:
+      next: Add pouch slot
+  - name: Add pouch slot
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 490 # counterindex
+      param2: 1 # count
+      next: -1
+      param3: 25 # add to counter command
   - name: To Set Faron Pillar Storyflag
     type: flowpatch
     index: 385
@@ -506,6 +520,34 @@
     index: 82
     flow:
       param2: 36 # always trigger
+ - name: Make one Textline free
+    type: flowpatch
+    index: 90
+    flow:
+      next: 8
+  - name: Fix free Textline
+    type: flowpatch
+    index: 9
+    flow:
+      next: -1
+  - name: Can't buy Pouch text
+    type: textpatch
+    index: 14
+    text: "You need a \x0E\x00\x03\x02\x05Adventure Pouch\x0E\x00\x03\x02\uFFFF to buy this!"
+  - name: go to Check for Pouch
+    type: flowpatch
+    index: 16
+    flow:
+      next: Check for Pouch
+  - name: Check for Pouch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 30 # Adventure pouch unlocked
+      param3: 3
+    cases:
+      - 43 # do event as normal
+      - 9 # a Textline that is free now
 106-DrugStore:
   - name: Potion Lady Bottle # skip pouch requirements
     type: flowpatch
