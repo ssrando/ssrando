@@ -1,6 +1,6 @@
 Skyloft - Fledge:
   Need: Nothing
-  original item: Adventure Pouch
+  original item: Progressive Pouch
   type: quest
   Paths:
     - event/114-Friend/16
@@ -324,7 +324,7 @@ Sky - Lumpy Pumpkin Roof Goddess Chest:
    - stage/F020/r0/l0/TBox/87
 Sky - Lumpy Pumpkin Goddess Chest:
   Need: Initial Goddess Cube
-  original item: Pouch Expansion
+  original item: Progressive Pouch
   type: goddess
   Paths:
    - stage/F020/r0/l0/TBox/64
