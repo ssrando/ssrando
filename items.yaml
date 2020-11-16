@@ -186,11 +186,11 @@
 #   name: Tycoon Wallet
 #   oarc: GetPurseE
 - id: 112
-  name: Adventure Pouch
+  name: Progressive Pouch
   oarc: GetPouchA
-- id: 113
-  name: Pouch Expansion
-  oarc: GetPouchB
+#- id: 113
+#  name: Pouch Expansion
+#  oarc: GetPouchB
 - id: 114
   name: Life Medal
   oarc: GetMedal
