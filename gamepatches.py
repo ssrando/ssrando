@@ -414,7 +414,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
                 stagepatchv2[(stage, room)].append((objname, layer, objid, item['id']))
             elif event_match:
                 eventfile = event_match.group('eventfile')
-                eventid = int(event_match.group('eventid'))
+                eventid = event_match.group('eventid')
                 eventpatches[eventfile].append((eventid, item['id']))
             elif oarc_match:
                 stage = oarc_match.group('stage')
@@ -874,6 +874,16 @@ def do_gamepatches(rando):
         
         # patch randomized items
         for evntline, itemid in rando_eventpatches.get(filename, []):
+            try:
+                # can either be a label or a number
+                evntline = int(evntline)
+            except ValueError:
+                index = label_to_index.get(evntline, None)
+                if index is None:
+                    print(f'ERROR: label {evntline} not found!')
+                    continue
+                evntline = index
+                print(f'dynamic label: {evntline}')
             modified = True
             msbf['FLW3']['flow'][evntline]['param2'] = itemid
             msbf['FLW3']['flow'][evntline]['param3'] = 9 # give item command

@@ -1293,7 +1293,7 @@ Ancient Cistern - Goddess Longsword:
   original item: Progressive Sword
   type: dungeon
   Paths:
-   - event/202-ForestD2/50
+   - event/202-ForestD2/give item after beating ancient cistern
    - oarc/B101_1/l0
 
 Sandship - Behind Combination Lock:
