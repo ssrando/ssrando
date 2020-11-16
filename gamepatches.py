@@ -698,6 +698,18 @@ def do_gamepatches(rando):
                 modified = True
                 # print(f'removed object from {layer} in room {room} with id {objdelete["id"]:04X}')
                 # print(obj)
+        for command in filter(lambda x: x['type']=='objnadd' and x.get('room',None)==room, stagepatches):
+            layer = command.get('layer', None)
+            name_to_add = command['objn']
+            if layer is None:
+                if not 'OBJN' in bzs:
+                    bzs['OBJN'] = []
+                objlist = bzs['OBJN']
+            else:
+                if not 'OBJN' in bzs['LAY '][f'l{layer}']:
+                    bzs['LAY '][f'l{layer}']['OBJN'] = []
+                objlist = bzs['LAY '][f'l{layer}']['OBJN']
+            objlist.append(name_to_add)
         for objadd in filter(lambda x: x['type']=='objadd' and x.get('room',None)==room, stagepatches):
             layer = objadd.get('layer', None)
             objtype = objadd['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
@@ -781,6 +793,9 @@ def do_gamepatches(rando):
             return None
 
     patcher.set_bzs_patch(bzs_patch_func)
+
+    text_labels = {}
+
     def flow_patch(msbf, filename):
         modified = False
         flowpatches = eventpatches.get(filename, [])
@@ -801,6 +816,13 @@ def do_gamepatches(rando):
                     index = label_to_index.get(val, None)
                     if index is None:
                         print(f'ERROR: label {val} not found in patch: {command["flow"]}')
+                        continue
+                    val = index
+                # special case: text points to a label, textindex is param4
+                if key == 'param4' and not isinstance(val, int):
+                    index = text_labels.get(val, None)
+                    if index is None:
+                        print(f'ERROR: text label {val} not found in patch: {command["flow"]}')
                         continue
                     val = index
                 flowobj[key] = val
@@ -824,6 +846,13 @@ def do_gamepatches(rando):
                     index = label_to_index.get(val, None)
                     if index is None:
                         print(f'ERROR: label {val} not found in new flow: {command["flow"]}')
+                        continue
+                    val = index
+                # special case: text points to a label, textindex is param4
+                if key == 'param4' and not isinstance(val, int):
+                    index = text_labels.get(val, None)
+                    if index is None:
+                        print(f'ERROR: text label {val} not found in new flow: {command["flow"]}')
                         continue
                     val = index
                 flowobj[key] = val
@@ -868,6 +897,8 @@ def do_gamepatches(rando):
             make_progressive_item(msbf, 136, [77, 608, 75, 78, 74, 73], PROGRESSIVE_SWORD_ITEMIDS, PROGRESSIVE_SWORD_STORYFLAGS)
             # make progressive beetle
             make_progressive_item(msbf, 96, [38, 178], [53, 75], [912, 913])
+            # make progressive pouch
+            make_progressive_item(msbf, 258, [254, 253], [112, 113], [931, 932])
             # make progressive wallets
             make_progressive_item(msbf, 250, [246, 245, 244, 255], [108, 109, 110, 111], [915, 916, 917, 918])
             modified = True
@@ -893,12 +924,32 @@ def do_gamepatches(rando):
         else:
             return None
     def text_patch(msbt, filename):
+        # for bucket, lbl_list in enumerate(msbt['LBL1']):
+        #     for lbl in lbl_list:
+        #         hash_b = entrypoint_hash(lbl['name'], len(msbt['LBL1']))
+        #         print(f'smile: {bucket} {hash_b}')
+        assert len(msbt['TXT2']) == len(msbt['ATR1'])
         modified = False
         textpatches = eventpatches.get(filename, [])
         textpatches = list(filter(filter_option_requirement, textpatches))
         for command in filter(lambda x: x['type'] == 'textpatch', textpatches):
             msbt['TXT2'][command['index']] = command['text'].encode('utf-16be')
             # print(f'patched text {command["index"]}, {filename}')
+            modified = True
+        for command in filter(lambda x: x['type'] == 'textadd', textpatches):
+            assert filename == '105-Terry', filename
+            index = len(msbt['TXT2'])
+            text_labels[command['name']] = index
+            msbt['TXT2'].append(command['text'].encode('utf-16be'))
+            msbt['ATR1'].append({'unk1':command.get('unk1',1), 'unk2':command.get('unk2',0)})
+            entry_name="TERY_50_%02d" % index
+            new_entry = OrderedDict(
+                name = entry_name,
+                value = index,
+            )
+            bucket = entrypoint_hash(entry_name, len(msbt['LBL1']))
+            msbt['LBL1'][bucket].append(new_entry)
+            # print(f'added text {index}, {filename}')
             modified = True
         if modified:
             return msbt
