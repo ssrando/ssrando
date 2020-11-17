@@ -244,6 +244,23 @@ B100_1: # skyview spring
     layer: 3
     id: 0xFC75
     objtype: STAG
+B101: # Koloktos Boss Room
+  - name: Open door after boss
+    type: objpatch
+    room: 0
+    layer: 1
+    id: 0xFC13
+    objtype: OBJS
+    object:
+      params1: 0xFFFD4C00
+  - name: Open door after boss
+    type: objpatch
+    room: 0
+    layer: 3
+    id: 0xFC15
+    objtype: OBJS
+    object:
+      params1: 0xFFFD4C00
 B101_1: # after AC boss
   - name: AC CS remove item and flags
     type: objpatch
