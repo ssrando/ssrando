@@ -191,9 +191,12 @@ global:
       - original: 80 1f 00 04 38 80 00 00 38 a0 00 00 54 03 c6 3e
         patched:  80 1f 00 04 38 80 FF FF 38 a0 00 00 54 03 c6 3e
     d_a_bird:
-      # change speed constant from 80 to 240
-      - original: 3e 4c cc cd 42 a0 00 00 45 74 10 00
-        patched:  3e 4c cc cd 43 70 00 00 45 74 10 00
+      # change max speed constant from 80 to 350
+      - original: c0 1e 01 d4 fc 01 00 40 40 81 00 08 d0 1f 01 44
+        patched:  c0 1e 01 8c fc 01 00 40 40 81 00 08 d0 1f 01 44
+      # change max speed constant from 80 to 350
+      - original: c0 04 01 d4 ec 22 08 2a d0 23 01 44
+        patched:  c0 04 01 8c ec 22 08 2a d0 23 01 44
 
 # S100:
 #   - name: Test Trial
