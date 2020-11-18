@@ -201,6 +201,10 @@ global:
       # change flag, that makes him loose his party wheel, to batreaux quest start storyflag
       - original: 94 21 ff f0 7c 08 02 a6 38 80 00 5c
         patched:  94 21 ff f0 7c 08 02 a6 38 80 01 30
+    d_a_npc_desertrobot:
+      # always make robot think you have hook beetle, so he puts it out of his hands
+      - original: 54 60 04 3f 41 82 00 2c c0 3d 00 d4
+        patched:  54 60 04 3f 60 00 00 00 c0 3d 00 d4
 
 # S100:
 #   - name: Test Trial
