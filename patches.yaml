@@ -1646,7 +1646,13 @@ D201_1: # FS B
     room: 5
     objtype: OBJ
     id: 0xFC11
-  
+  - name: Remove Sealed Grounds intro CS flag
+    type: objpatch
+    room: 6
+    objtype: EVNT
+    index: 1
+    object:
+      story_flag1: -1
 B201: # G2 fight
   - name: Layer override
     type: layeroverride
