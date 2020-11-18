@@ -205,6 +205,10 @@ global:
       # always make robot think you have hook beetle, so he puts it out of his hands
       - original: 54 60 04 3f 41 82 00 2c c0 3d 00 d4
         patched:  54 60 04 3f 60 00 00 00 c0 3d 00 d4
+    d_a_npc_terry:
+      # always remove cage from beedles hands
+      - original: 4e 80 04 21 54 60 04 3e 28 00 00 01 40 82 00 34
+        patched:  4e 80 04 21 54 60 04 3e 28 00 00 01 60 00 00 00
 
 # S100:
 #   - name: Test Trial
