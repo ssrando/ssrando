@@ -197,6 +197,10 @@ global:
       # change max speed constant from 80 to 350
       - original: c0 04 01 d4 ec 22 08 2a d0 23 01 44
         patched:  c0 04 01 8c ec 22 08 2a d0 23 01 44
+    d_a_npc_dive_game_judge:
+      # change flag, that makes him loose his party wheel, to batreaux quest start storyflag
+      - original: 94 21 ff f0 7c 08 02 a6 38 80 00 5c
+        patched:  94 21 ff f0 7c 08 02 a6 38 80 01 30
 
 # S100:
 #   - name: Test Trial
