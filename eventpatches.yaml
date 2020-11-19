@@ -1017,7 +1017,7 @@
   - name: Statue Lower Question
     type: textpatch
     index: 9
-    text: "Do you want to lower the Statue?\n\x0E\x01\x00\x02\uFFFFYes\x0E\x01\x01\x02\x00No"
+    text: "Do you want to reset the statue?\n\x0E\x01\x00\x02\uFFFFYes\x0E\x01\x01\x02\x00No"
   - name: Replace Stone Tablet Fi Event
     type: flowpatch
     index: 7
@@ -1300,6 +1300,12 @@
       param2: 7
       next: -1
       param3: 7
+402-DesertF2:
+  - name: Never ask player to go inside shark mouth for ship dowsing
+    type: flowpatch
+    index: 17
+    flow:
+      next: 276
 450-DesertSiren:
   - name: to unset trial storyflag
     type: flowpatch
