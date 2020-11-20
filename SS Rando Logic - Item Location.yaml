@@ -1203,6 +1203,7 @@ Lanayru Mining Facility - Behind First Crawlspace:
   type: dungeon
   Paths:
    - stage/D300_1/r9/l0/TBox/72
+   - stage/D300/r9/l0/TBox/72
 Lanayru Mining Facility - Behind Second Crawlspace:
   Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows & Practice Sword & Can Hit Crystal in LMF Map Room
   original item: Red Rupee
