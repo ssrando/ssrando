@@ -210,8 +210,8 @@ Can Beat Ancient Cistern:
     Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots) & Goddess Sword
 
 Can Access Dungeon Entrance In Sand Sea:
-    Can Access Sand Sea & Sea Chart & Goddess Sword
-    # Goddess Sword needed to dowse
+    Can Access Sand Sea & Sea Chart & Practice Sword
+    # You need any sword to be able to dowse
 
 Can Beat Sandship:
     Can Access Sandship & Bow & SS Boss Key & Goddess Sword
@@ -228,9 +228,6 @@ Can Beat Fire Sanctuary:
 # Can Access Past:
 #     this is filled in at runtime with the required dungeons
 
-#Can Access Levias:
-#    Can Access Past
-
 #Can Access/Beat Flooded Faron:
 #    Can Access Levias & Water Scale
 
@@ -241,7 +238,8 @@ Can Beat Fire Sanctuary:
 #    Can Access Lanayru & Can Access Levias & Clawshots
 
 #Can Heal Thunder Dragon:
-#    Can Access Lanayru Gorge & Life Tree Seedling & Bomb Bag & Clawshots & Hook Beetle & Whip & Can Access Past?
+#    Can Access Lanayru Gorge & Life Tree Fruit & Clawshots & Hook Beetle & Whip & Can Defeat Beamos
+# # Note that the minecart escort is a softlock if done without a way to defeat the beamos or without whip (although maybe dying is always possible? not sure)
 
 Can Access Dungeon Entrance On Skyloft:
     Stone of Trials & Clawshots

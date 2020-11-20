@@ -414,6 +414,58 @@ B301: # after Sandship boss
     object:
       params1: 0xC303FF03 # change to zone temp flag 3
       anglez: 0xFFFF # don't set any storyflag here
+D003_0: # Skykeep Courage Room
+  - name: Fi text
+    type: objdelete
+    id: 0xFC0F
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Fi text reach the mark
+    type: objdelete
+    id: 0xFC11
+    layer: 0
+    room: 0
+    objtype: OBJ
+D003_2: # Skykeep Power Room
+  - name: Fi text
+    type: objdelete
+    id: 0xFC33
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Fi text reach the mark
+    type: objdelete
+    id: 0xFC3C
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Fi text wrong side
+    type: objdelete
+    id: 0xFC32
+    layer: 0
+    room: 0
+    objtype: OBJ
+D003_3: # Skykeep Wisdom Room
+  - name: Fi text
+    type: objdelete
+    id: 0xFC1B
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Fi text reach the mark
+    type: objdelete
+    id: 0xFC1D
+    layer: 0
+    room: 0
+    objtype: OBJ
+D003_7: # Skykeep Entrance Room
+  - name: Fi text
+    type: objdelete
+    id: 0xFC0B
+    layer: 0
+    room: 0
+    objtype: OBJ
 F000: # Skyloft
   - name: Trial
     type: oarcadd
@@ -712,6 +764,19 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 57 # talk to Elder after locating every Kikwi
+F002r: # Beedle's Airshop
+  - name: Delete cutscene
+    type: objdelete
+    id: 0xFC11
+    layer: 1
+    room: 0
+    objtype: STAG
+  - name: Delete cutscene
+    type: objdelete
+    id: 0xFC13
+    layer: 1
+    room: 0
+    objtype: STAG
 F004r: # Bazaar
   - name: Delete goddess chest fi text
     type: objdelete
@@ -818,6 +883,19 @@ F010r: # Isle of songs tower
   - name: Delete Eldin Trial Dowsing
     type: objdelete
     id: 0xFC04
+    layer: 0
+    room: 0
+    objtype: OBJ
+F011r: # Lumpy Pumpkin
+  - name: Delete Lumpy Pumpkin Cutscene 1
+    type: objdelete
+    id: 0xFC42
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Delete Lumpy Pumpkin Cutscene 2
+    type: objdelete
+    id: 0xFC43
     layer: 0
     room: 0
     objtype: OBJ
@@ -1348,7 +1426,12 @@ D100: # Skyview
     layer: 2
     room: 0
     objtype: OBJ
-      
+  - name: Remove cutscene in hub room
+    type: objdelete
+    id: 0xFC85
+    layer: 1
+    room: 5
+    objtype: STAG
 D101: # Ancient Cistern
   - name: remove stone tablet text
     type: objpatch
@@ -1403,6 +1486,12 @@ D101: # Ancient Cistern
     id: 0xFC21
     layer: 0
     room: 10
+    objtype: STAG
+  - name: Delete cutscene in basement showing bk chest
+    type: objdelete
+    id: 0xFC7E
+    layer: 0
+    room: 4
     objtype: STAG
 F200: # Eldin main area
   - name: Layer override
@@ -1561,6 +1650,24 @@ F201_3: # FS entrance
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Goron Text after first frog
+    type: objdelete
+    id: 0xFC5A
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Goron Text after second frog
+    type: objdelete
+    id: 0xFC5B
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Goron Text near big frog
+    type: objdelete
+    id: 0xFC5C
+    layer: 2
+    room: 0
+    objtype: OBJ
 F201_4: # Volcano Waterfall
   - name: extra Bomb flower
     type: objadd
@@ -1635,7 +1742,7 @@ D201: # FS A
     room: 0
     objtype: OBJ
 D201_1: # FS B
-  - name: Clawshot Traget for 2nd small Key
+  - name: Clawshot Target for 2nd small Key
     type: objadd
     layer: 0
     room: 5
@@ -1664,6 +1771,18 @@ D201_1: # FS B
     index: 1
     object:
       story_flag1: -1
+  - name: Delete Camera Pan in first magmanos room
+    type: objdelete
+    id: 0xFC1B
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: Underground tutorial text for mogma mitts
+    type: objdelete
+    id: 0xFC66
+    layer: 0
+    room: 5
+    objtype: OBJ
 B201: # G2 fight
   - name: Layer override
     type: layeroverride
@@ -1721,7 +1840,13 @@ F300: # lanayru Main Area
     layer: 0
     room: 0
     objtype: OBJ
-F300_1:
+  - name: Remove Fi text for all nodes
+    type: objdelete
+    id: 0x0CC4
+    layer: 0
+    room: 0
+    objtype: OBJ
+F300_1: # Lanayru Mines
   - name: Layer override
     type: layeroverride
     override:
@@ -1771,10 +1896,22 @@ F300_2: # Thunder node
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove Fi text for all nodes
+    type: objdelete
+    id: 0xFC23
+    layer: 0
+    room: 0
+    objtype: OBJ
 F300_3: # Fire node
   - name: Fi text for generator
     type: objdelete
     id: 0xFC28
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Remove Fi text for all nodes
+    type: objdelete
+    id: 0xFC27
     layer: 0
     room: 0
     objtype: OBJ
@@ -1921,6 +2058,12 @@ F301_1: # Sand Sea Main Area
     room: 0
     objtype: STAG
     id: 0xFC6B
+  - name: Cutscene after shipyard
+    type: objdelete
+    id: 0xFC07
+    layer: 0
+    room: 0
+    objtype: OBJ
 F301: # Ancient Harbour
   - name: No Sandship beaten layer in sandship
     type: objpatch
@@ -1954,6 +2097,13 @@ F301_2: # inside Pirate Stronghold
     layer: 0
     room: 1
     objtype: OBJ
+F301_3: # Skipper's Retreat
+  - name: Text after intro
+    type: objdelete
+    id: 0xFC30
+    layer: 0
+    room: 0
+    objtype: OBJ
 F301_4: # Shipyard
   - name: Text after intro
     type: objdelete
@@ -1968,7 +2118,20 @@ F301_4: # Shipyard
     objtype: EVNT
     object:
       sceneflag2: 87
+F301_5: # Skipper's Shack
+  - name: Text after chest
+    type: objdelete
+    id: 0xFC1B
+    layer: 0
+    room: 0
+    objtype: OBJ
 F301_6: # outside Pirate stronghold
+  - name: Text after intro
+    type: objdelete
+    id: 0xFC07
+    layer: 0
+    room: 0
+    objtype: OBJ
   - name: Ship dowsing
     type: objdelete
     id: 0xFC08
@@ -1976,6 +2139,12 @@ F301_6: # outside Pirate stronghold
     room: 0
     objtype: OBJ
 F301_7: # inside Shipyard
+  - name: Text near minecart door
+    type: objdelete
+    id: 0xFC04
+    layer: 0
+    room: 0
+    objtype: OBJ
   - name: Door to outside
     type: objpatch
     id: 0xFC01
@@ -2106,6 +2275,19 @@ D301: # Sandship A
     layer: 1
     room: 0
     objtype: OBJ
+D301_1: # Sandship B
+  - name: Fi text before tentacles
+    type: objdelete
+    id: 0xFC1D
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Fi text before tentalus
+    type: objdelete
+    id: 0xFC1E
+    layer: 0
+    room: 0
+    objtype: OBJ
 F303: # Lanayru Caves
   - name: Layer override
     type: layeroverride
@@ -2122,6 +2304,12 @@ F303: # Lanayru Caves
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Delete cutscene
+    type: objdelete
+    id: 0xFC41
+    layer: 0
+    room: 0
+    objtype: STAG
   - name: never untrigger goron
     type: objpatch
     id: 0xFC5C
@@ -2309,6 +2497,12 @@ F401: # Sealed grounds Whirlpool
     onlyif: Option "skip-skykeep" Enabled
     object:
       sceneflag2: 50 # door to horde open
+  - name: Fi text for Trial
+    type: objdelete
+    id: 0xFC09
+    layer: 0
+    room: 1
+    objtype: OBJ
 F400: # Behind the Temple
   - name: Layer override
     type: layeroverride
@@ -2350,6 +2544,26 @@ F400: # Behind the Temple
     objtype: OBJ
     object:
       untrigstoryfid: 2047
+  - name: Goron after Skyview
+    type: objdelete
+    id: 0xFC2E
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Untrigger Goron with Goddess Walls unlocked
+    type: objpatch
+    id: 0xFC2F
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      untrigstoryfid: 493 #godess walls unlocked
+  - name: Fi text for Trial
+    type: objdelete
+    id: 0xFC5B
+    layer: 0
+    room: 0
+    objtype: OBJ
 F404: # Hylia's Temple
   - name: Layer override
     type: layeroverride
