@@ -1191,6 +1191,72 @@ F102: # lake Floria
     layer: 0
     room: 4
     objtype: OBJ
+#  - name: evntTag 1
+#    type: objdelete
+#    id: 0xFC27
+#    layer: 0
+#    room: 1
+#    objtype: STAG
+  - name: evntTag 2
+    type: objdelete
+    id: 0xFc1D
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: evntTag 3
+    type: objdelete
+    id: 0xFC1E
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: evntTag 4
+    type: objdelete
+    id: 0xFC2F
+    layer: 0
+    room: 3
+    objtype: STAG
+  - name: evntTag 5
+    type: objdelete
+    id: 0xFC13
+    layer: 0
+    room: 4
+    objtype: STAG
+#  - name: evntTag 6
+#    type: objdelete
+#    id: 0xFC13
+#    layer: 0
+#    room: 4
+#    objtype: STAG
+  - name: evntTag 7
+    type: objdelete
+    id: 0xFC12
+    layer: 0
+    room: 4
+    objtype: STAG
+  - name: evntTag 8
+    type: objdelete
+    id: 0xFC26
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: evntTag 9
+    type: objdelete
+    id: 0xFC1F
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: evntTag 10
+    type: objdelete
+    id: 0xFC1C
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: Delete Parella
+    type: objdelete
+    id: 0xFC2A
+    layer: 1
+    room: 1
+    objtype: OBJS
 F100_1: # Great Tree
   - name: Layer override
     type: layeroverride
