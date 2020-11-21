@@ -40,7 +40,7 @@ class RandoGUI(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.setWindowTitle("Skyward Sword Randomizer v"+VERSION)
+        self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
 
         self.output_folder = ""
 
@@ -71,19 +71,52 @@ class RandoGUI(QMainWindow):
                     widget.valueChanged.connect(self.update_settings)
 
         self.location_descriptions = {
+            "sky": "Enables progression items to appear in The Sky",
+            "thunderhead": "Enables progression items to appear in The Thunderhead",
+            "faron": "Enables progression items to appear in the Faron Province",
+            "eldin": "Enables progression items to appear in the Eldin Province",
+            "lanayru": "Enables progression items to appear in the Lanayru Province",
+            "dungeon": "Enables progression items to appear in dungeons",
+            "mini_dungeon": "Enables progression items to appear inside Mini Dungeons (i.e. the nodes in "
+                            "Lanayru Desert)",
+            "free_gift": "Enables progression items to appear as free gifts from NPCs (i.e. the shield from "
+                         "Professor Owlan)",
+            "freestanding": "Enables progression items to appear as freestanding items in the world "
+                            "(does not include the freestanding gratitude crystals)",
+            "miscellaneous": "Enables progression items to appear in miscellaneous locations that don't fit into "
+                             "any other category (i.e. overworld chests) ",
+            "silent_realm": "Enables progression items to appear as rewards for completing Silent Realm trials",
+            "digging": "Enables progression items to appear in digging spots in the world",
+            "bombable": "Enables progression items to appear behind bombable walls",
+            "combat": "Enables progression items to appear as rewards for combat or completing a quest involving "
+                      "combat (i.e. Digging Mitts fight, Kikwi rescue)",
+            "song": "Enables progression items to appear in place of learning songs (from Isle of Song, Ballad of the "
+                    "Goddess in Sealed Temple, Song of the Hero from Levias)",
+            "spiral_charge": "Enables progression items to appear in the chests in the sky requiring Spiral Charge to"
+                             " access",
+            "minigame": "Enables progression items to appear as rewards from winning minigames",
             "batreaux": "Enables progression items to appear as rewards from giving Gratitude Crystals to Batreaux",
             "crystal": "Enables progression items to appear as loose crystals (currently not randomized and must "
                        "always be enabled)",
-            "dungeon": "Enables progression items to appear in dungeons",
+            "short": "Enables progression items to appear as rewards for completing short quests (i.e. rescuing"
+                     " Orielle)",
+            "long": "Enables progression items to appear as rewards for completing long quests (i.e. Peatrice)",
+            "crystal_quest": "Enables progression items to appear as rewards for completing Gratitude Crystal quests",
+            "scrapper": "Enables progression items to appear as rewards for Scrapper Quests",
+
             "goddess": "Enables progression items to appear as items in Goddess Chests",
-            "minigame": "Enables progression items to appear as rewards from winning minigames",
-            "overworld": "Enables progression items to appear in the overworld",
-            "quest": "Enables progression items to appear as rewards from the main quest events (i.e. in place of the "
-                     "shield from Professor Owlan)",
-            "sidequest": "Enables progression items to appear as rewards from completing gratitude crystal quests",
-            "silent_realm": "Enables progression items to appear as rewards for completing Silent Realm trials",
-            "peatrice": "Enables progression items to appear as rewards for Peatrice's sidequest",
-            "scrapper": "Enables progression items to appear as rewards for Scrapper Quests"
+            "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
+                             "Faron Woods and Deep Woods",
+            "eldin_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
+                             "the main part of Eldin Volcano and Mogma Turf",
+            "lanayru_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
+                               "in the main part of Lanayru Desert, Temple of Time and Lanayru Mines",
+            "floria_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
+                              "in Lake Floria",
+            "summit_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
+                              "in Volcano Summit",
+            "sand_sea_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
+                                "in Sand Sea",
         }
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
