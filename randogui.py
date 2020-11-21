@@ -101,6 +101,7 @@ class RandoGUI(QMainWindow):
             "short": "Enables progression items to appear as rewards for completing short quests (i.e. rescuing"
                      " Orielle)",
             "long": "Enables progression items to appear as rewards for completing long quests (i.e. Peatrice)",
+            "fetch": "Enables progression items to appear as rewards for returning items to NPCs ",
             "crystal_quest": "Enables progression items to appear as rewards for completing Gratitude Crystal quests",
             "scrapper": "Enables progression items to appear as rewards for Scrapper Quests",
 
