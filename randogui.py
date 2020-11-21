@@ -86,10 +86,11 @@ class RandoGUI(QMainWindow):
             "miscellaneous": "Enables progression items to appear in miscellaneous locations that don't fit into "
                              "any other category (i.e. overworld chests) ",
             "silent_realm": "Enables progression items to appear as rewards for completing Silent Realm trials",
-            "digging": "Enables progression items to appear in digging spots in the world",
-            "bombable": "Enables progression items to appear behind bombable walls",
+            "digging": "Enables progression items to appear in digging spots in the world (does not include Mogma "
+                       "Mitts checks, such as the one in Volcano Summit or in Fire Sanctuary)",
+            "bombable": "Enables progression items to appear behind bombable walls or other bombable structures",
             "combat": "Enables progression items to appear as rewards for combat or completing a quest involving "
-                      "combat (i.e. Digging Mitts fight, Kikwi rescue)",
+                      "combat (i.e. Digging Mitts fight, Kikwi rescue). Does not impact combat within dungeons",
             "song": "Enables progression items to appear in place of learning songs (from Isle of Song, Ballad of the "
                     "Goddess in Sealed Temple, Song of the Hero from Levias)",
             "spiral_charge": "Enables progression items to appear in the chests in the sky requiring Spiral Charge to"
