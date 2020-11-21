@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>956</width>
-    <height>441</height>
+    <width>952</width>
+    <height>621</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -93,7 +93,7 @@
       <x>10</x>
       <y>70</y>
       <width>931</width>
-      <height>131</height>
+      <height>191</height>
      </rect>
     </property>
     <property name="title">
@@ -105,46 +105,123 @@
        <x>10</x>
        <y>20</y>
        <width>911</width>
-       <height>101</height>
+       <height>161</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="1">
-       <widget class="QCheckBox" name="progression_goddess">
-        <property name="text">
-         <string>Goddess Cubes/Chests</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="progression_crystal">
-        <property name="text">
-         <string>Loose Crystals</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QCheckBox" name="progression_dungeon">
-        <property name="text">
-         <string>Dungeon</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
-       <widget class="QCheckBox" name="progression_batreaux">
+       <widget class="QCheckBox" name="checkBox_13">
         <property name="text">
-         <string>Batreaux</string>
+         <string>The Sky</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <widget class="QCheckBox" name="progression_quest">
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="checkBox_7">
         <property name="text">
-         <string>Main Quest</string>
+         <string>Short Quests</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QCheckBox" name="checkBox_18">
+        <property name="text">
+         <string>Miscellaneous</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QCheckBox" name="checkBox_11">
+        <property name="text">
+         <string>Free Gifts</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QCheckBox" name="checkBox_22">
+        <property name="text">
+         <string>Songs</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
+       <widget class="QCheckBox" name="checkBox_20">
+        <property name="text">
+         <string>Mini Dungeons</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="progression_silent_realm">
+        <property name="text">
+         <string>Silent Realms</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QCheckBox" name="checkBox_12">
+        <property name="text">
+         <string>Freestanding Items</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QCheckBox" name="checkBox_8">
+        <property name="text">
+         <string>Long Quests</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QCheckBox" name="checkBox_15">
+        <property name="text">
+         <string>Faron</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QCheckBox" name="checkBox_16">
+        <property name="text">
+         <string>Eldin</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QCheckBox" name="checkBox_17">
+        <property name="text">
+         <string>Lanayru</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="checkBox_14">
+        <property name="text">
+         <string>Thunderhead</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QCheckBox" name="checkBox_9">
+        <property name="text">
+         <string>Crystal Quests</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QCheckBox" name="checkBox_10">
+        <property name="text">
+         <string>Scrapper Quests</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="progression_dungeon">
+        <property name="text">
+         <string>Dungeons</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
        <widget class="QCheckBox" name="progression_minigame">
         <property name="text">
          <string>Minigames</string>
@@ -152,23 +229,44 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QCheckBox" name="progression_overworld">
+       <widget class="QCheckBox" name="checkBox_19">
         <property name="text">
-         <string>Overworld</string>
+         <string>Digging Spots</string>
         </property>
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QCheckBox" name="progression_silent_realm">
+       <widget class="QCheckBox" name="checkBox_21">
         <property name="text">
-         <string>Silent Realms</string>
+         <string>Bombable Walls</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QCheckBox" name="progression_sidequest">
+      <item row="2" column="3">
+       <widget class="QCheckBox" name="checkBox_23">
         <property name="text">
-         <string>Sidequests</string>
+         <string>Combat Rewards</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="checkBox_24">
+        <property name="text">
+         <string>Spiral Charge Chests</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QCheckBox" name="progression_batreaux">
+        <property name="text">
+         <string>Batreaux</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QCheckBox" name="progression_crystal">
+        <property name="text">
+         <string>Loose Crystals</string>
         </property>
        </widget>
       </item>
@@ -179,7 +277,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>210</y>
+      <y>390</y>
       <width>931</width>
       <height>121</height>
      </rect>
@@ -275,7 +373,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>400</y>
+      <y>580</y>
       <width>931</width>
       <height>31</height>
      </rect>
@@ -285,6 +383,13 @@
       <widget class="QCheckBox" name="option_dry_run">
        <property name="text">
         <string>Dry Run</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="option_hero_mode">
+       <property name="text">
+        <string>Hero Mode</string>
        </property>
       </widget>
      </item>
@@ -317,7 +422,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>340</y>
+      <y>520</y>
       <width>931</width>
       <height>20</height>
      </rect>
@@ -330,7 +435,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>370</y>
+      <y>550</y>
       <width>931</width>
       <height>27</height>
      </rect>
@@ -347,6 +452,80 @@
       <widget class="QLineEdit" name="permalink"/>
      </item>
     </layout>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>931</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Goddess Cube Options</string>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>911</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="checkBox">
+        <property name="text">
+         <string>Faron Woods</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="progression_goddess">
+        <property name="text">
+         <string>Enabled</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="checkBox_2">
+        <property name="text">
+         <string>Eldin Volcano</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QCheckBox" name="checkBox_3">
+        <property name="text">
+         <string>Lanayru Desert</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="checkBox_4">
+        <property name="text">
+         <string>Lake Floria</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="checkBox_5">
+        <property name="text">
+         <string>Volcano Summit</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QCheckBox" name="checkBox_6">
+        <property name="text">
+         <string>Sand Sea</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
  </widget>
