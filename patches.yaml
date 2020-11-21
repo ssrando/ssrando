@@ -1185,6 +1185,12 @@ F102: # lake Floria
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Door to Dragon Lair
+    type: objdelete
+    id: 0x1000
+    layer: 0
+    room: 4
+    objtype: OBJ
 F100_1: # Great Tree
   - name: Layer override
     type: layeroverride
