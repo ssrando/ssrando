@@ -75,80 +75,80 @@ class Ui_MainWindow(object):
         self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.checkBox_13 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_13.setObjectName(u"checkBox_13")
+        self.progression_sky = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_sky.setObjectName(u"progression_sky")
 
-        self.gridLayout_3.addWidget(self.checkBox_13, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_sky, 0, 0, 1, 1)
 
-        self.checkBox_7 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_7.setObjectName(u"checkBox_7")
+        self.progression_short = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_short.setObjectName(u"progression_short")
 
-        self.gridLayout_3.addWidget(self.checkBox_7, 4, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_short, 4, 0, 1, 1)
 
-        self.checkBox_18 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_18.setObjectName(u"checkBox_18")
+        self.progression_miscellaneous = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_miscellaneous.setObjectName(u"progression_miscellaneous")
 
-        self.gridLayout_3.addWidget(self.checkBox_18, 1, 4, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_miscellaneous, 1, 4, 1, 1)
 
-        self.checkBox_11 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_11.setObjectName(u"checkBox_11")
+        self.progression_free_gift = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_free_gift.setObjectName(u"progression_free_gift")
 
-        self.gridLayout_3.addWidget(self.checkBox_11, 1, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_free_gift, 1, 2, 1, 1)
 
-        self.checkBox_22 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_22.setObjectName(u"checkBox_22")
+        self.progression_song = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_song.setObjectName(u"progression_song")
 
-        self.gridLayout_3.addWidget(self.checkBox_22, 2, 4, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_song, 2, 4, 1, 1)
 
-        self.checkBox_20 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_20.setObjectName(u"checkBox_20")
+        self.progression_mini_dungeon = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_mini_dungeon.setObjectName(u"progression_mini_dungeon")
 
-        self.gridLayout_3.addWidget(self.checkBox_20, 1, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_mini_dungeon, 1, 1, 1, 1)
 
         self.progression_silent_realm = QCheckBox(self.gridLayoutWidget_3)
         self.progression_silent_realm.setObjectName(u"progression_silent_realm")
 
         self.gridLayout_3.addWidget(self.progression_silent_realm, 2, 0, 1, 1)
 
-        self.checkBox_12 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_12.setObjectName(u"checkBox_12")
+        self.progression_freestanding = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_freestanding.setObjectName(u"progression_freestanding")
 
-        self.gridLayout_3.addWidget(self.checkBox_12, 1, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_freestanding, 1, 3, 1, 1)
 
-        self.checkBox_8 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_8.setObjectName(u"checkBox_8")
+        self.progression_long = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_long.setObjectName(u"progression_long")
 
-        self.gridLayout_3.addWidget(self.checkBox_8, 4, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_long, 4, 1, 1, 1)
 
-        self.checkBox_15 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_15.setObjectName(u"checkBox_15")
+        self.progression_faron = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_faron.setObjectName(u"progression_faron")
 
-        self.gridLayout_3.addWidget(self.checkBox_15, 0, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_faron, 0, 2, 1, 1)
 
-        self.checkBox_16 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_16.setObjectName(u"checkBox_16")
+        self.progression_eldin = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_eldin.setObjectName(u"progression_eldin")
 
-        self.gridLayout_3.addWidget(self.checkBox_16, 0, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_eldin, 0, 3, 1, 1)
 
-        self.checkBox_17 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_17.setObjectName(u"checkBox_17")
+        self.progression_lanayru = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_lanayru.setObjectName(u"progression_lanayru")
 
-        self.gridLayout_3.addWidget(self.checkBox_17, 0, 4, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_lanayru, 0, 4, 1, 1)
 
-        self.checkBox_14 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_14.setObjectName(u"checkBox_14")
+        self.progression_thunderhead = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_thunderhead.setObjectName(u"progression_thunderhead")
 
-        self.gridLayout_3.addWidget(self.checkBox_14, 0, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_thunderhead, 0, 1, 1, 1)
 
-        self.checkBox_9 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_9.setObjectName(u"checkBox_9")
+        self.progression_crystal_quest = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_crystal_quest.setObjectName(u"progression_crystal_quest")
 
-        self.gridLayout_3.addWidget(self.checkBox_9, 4, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_crystal_quest, 4, 2, 1, 1)
 
-        self.checkBox_10 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_10.setObjectName(u"checkBox_10")
+        self.progression_scrapper = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_scrapper.setObjectName(u"progression_scrapper")
 
-        self.gridLayout_3.addWidget(self.checkBox_10, 4, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_scrapper, 4, 3, 1, 1)
 
         self.progression_dungeon = QCheckBox(self.gridLayoutWidget_3)
         self.progression_dungeon.setObjectName(u"progression_dungeon")
@@ -160,25 +160,25 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.progression_minigame, 3, 1, 1, 1)
 
-        self.checkBox_19 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_19.setObjectName(u"checkBox_19")
+        self.progression_digging = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_digging.setObjectName(u"progression_digging")
 
-        self.gridLayout_3.addWidget(self.checkBox_19, 2, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_digging, 2, 1, 1, 1)
 
-        self.checkBox_21 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_21.setObjectName(u"checkBox_21")
+        self.progression_bombable = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_bombable.setObjectName(u"progression_bombable")
 
-        self.gridLayout_3.addWidget(self.checkBox_21, 2, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_bombable, 2, 2, 1, 1)
 
-        self.checkBox_23 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_23.setObjectName(u"checkBox_23")
+        self.progression_combat = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_combat.setObjectName(u"progression_combat")
 
-        self.gridLayout_3.addWidget(self.checkBox_23, 2, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_combat, 2, 3, 1, 1)
 
-        self.checkBox_24 = QCheckBox(self.gridLayoutWidget_3)
-        self.checkBox_24.setObjectName(u"checkBox_24")
+        self.progression_spiral_charge = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_spiral_charge.setObjectName(u"progression_spiral_charge")
 
-        self.gridLayout_3.addWidget(self.checkBox_24, 3, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_spiral_charge, 3, 0, 1, 1)
 
         self.progression_batreaux = QCheckBox(self.gridLayoutWidget_3)
         self.progression_batreaux.setObjectName(u"progression_batreaux")
@@ -302,40 +302,40 @@ class Ui_MainWindow(object):
         self.gridLayout_4 = QGridLayout(self.gridLayoutWidget_4)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.checkBox = QCheckBox(self.gridLayoutWidget_4)
-        self.checkBox.setObjectName(u"checkBox")
+        self.progression_faron_goddess = QCheckBox(self.gridLayoutWidget_4)
+        self.progression_faron_goddess.setObjectName(u"progression_faron_goddess")
 
-        self.gridLayout_4.addWidget(self.checkBox, 1, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.progression_faron_goddess, 1, 0, 1, 1)
 
         self.progression_goddess = QCheckBox(self.gridLayoutWidget_4)
         self.progression_goddess.setObjectName(u"progression_goddess")
 
         self.gridLayout_4.addWidget(self.progression_goddess, 0, 0, 1, 1)
 
-        self.checkBox_2 = QCheckBox(self.gridLayoutWidget_4)
-        self.checkBox_2.setObjectName(u"checkBox_2")
+        self.progression_eldin_goddess = QCheckBox(self.gridLayoutWidget_4)
+        self.progression_eldin_goddess.setObjectName(u"progression_eldin_goddess")
 
-        self.gridLayout_4.addWidget(self.checkBox_2, 1, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.progression_eldin_goddess, 1, 1, 1, 1)
 
-        self.checkBox_3 = QCheckBox(self.gridLayoutWidget_4)
-        self.checkBox_3.setObjectName(u"checkBox_3")
+        self.progression_lanayru_goddess = QCheckBox(self.gridLayoutWidget_4)
+        self.progression_lanayru_goddess.setObjectName(u"progression_lanayru_goddess")
 
-        self.gridLayout_4.addWidget(self.checkBox_3, 1, 2, 1, 1)
+        self.gridLayout_4.addWidget(self.progression_lanayru_goddess, 1, 2, 1, 1)
 
-        self.checkBox_4 = QCheckBox(self.gridLayoutWidget_4)
-        self.checkBox_4.setObjectName(u"checkBox_4")
+        self.progression_floria_goddess = QCheckBox(self.gridLayoutWidget_4)
+        self.progression_floria_goddess.setObjectName(u"progression_floria_goddess")
 
-        self.gridLayout_4.addWidget(self.checkBox_4, 2, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.progression_floria_goddess, 2, 0, 1, 1)
 
-        self.checkBox_5 = QCheckBox(self.gridLayoutWidget_4)
-        self.checkBox_5.setObjectName(u"checkBox_5")
+        self.progression_summit_goddess = QCheckBox(self.gridLayoutWidget_4)
+        self.progression_summit_goddess.setObjectName(u"progression_summit_goddess")
 
-        self.gridLayout_4.addWidget(self.checkBox_5, 2, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.progression_summit_goddess, 2, 1, 1, 1)
 
-        self.checkBox_6 = QCheckBox(self.gridLayoutWidget_4)
-        self.checkBox_6.setObjectName(u"checkBox_6")
+        self.progression_sand_sea_goddess = QCheckBox(self.gridLayoutWidget_4)
+        self.progression_sand_sea_goddess.setObjectName(u"progression_sand_sea_goddess")
 
-        self.gridLayout_4.addWidget(self.checkBox_6, 2, 2, 1, 1)
+        self.gridLayout_4.addWidget(self.progression_sand_sea_goddess, 2, 2, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -357,27 +357,27 @@ class Ui_MainWindow(object):
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Seed", None))
         self.ouput_folder_browse_button.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Where should progress items appear?", None))
-        self.checkBox_13.setText(QCoreApplication.translate("MainWindow", u"The Sky", None))
-        self.checkBox_7.setText(QCoreApplication.translate("MainWindow", u"Short Quests", None))
-        self.checkBox_18.setText(QCoreApplication.translate("MainWindow", u"Miscellaneous", None))
-        self.checkBox_11.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
-        self.checkBox_22.setText(QCoreApplication.translate("MainWindow", u"Songs", None))
-        self.checkBox_20.setText(QCoreApplication.translate("MainWindow", u"Mini Dungeons", None))
+        self.progression_sky.setText(QCoreApplication.translate("MainWindow", u"The Sky", None))
+        self.progression_short.setText(QCoreApplication.translate("MainWindow", u"Short Quests", None))
+        self.progression_miscellaneous.setText(QCoreApplication.translate("MainWindow", u"Miscellaneous", None))
+        self.progression_free_gift.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
+        self.progression_song.setText(QCoreApplication.translate("MainWindow", u"Songs", None))
+        self.progression_mini_dungeon.setText(QCoreApplication.translate("MainWindow", u"Mini Dungeons", None))
         self.progression_silent_realm.setText(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
-        self.checkBox_12.setText(QCoreApplication.translate("MainWindow", u"Freestanding Items", None))
-        self.checkBox_8.setText(QCoreApplication.translate("MainWindow", u"Long Quests", None))
-        self.checkBox_15.setText(QCoreApplication.translate("MainWindow", u"Faron", None))
-        self.checkBox_16.setText(QCoreApplication.translate("MainWindow", u"Eldin", None))
-        self.checkBox_17.setText(QCoreApplication.translate("MainWindow", u"Lanayru", None))
-        self.checkBox_14.setText(QCoreApplication.translate("MainWindow", u"Thunderhead", None))
-        self.checkBox_9.setText(QCoreApplication.translate("MainWindow", u"Crystal Quests", None))
-        self.checkBox_10.setText(QCoreApplication.translate("MainWindow", u"Scrapper Quests", None))
+        self.progression_freestanding.setText(QCoreApplication.translate("MainWindow", u"Freestanding Items", None))
+        self.progression_long.setText(QCoreApplication.translate("MainWindow", u"Long Quests", None))
+        self.progression_faron.setText(QCoreApplication.translate("MainWindow", u"Faron", None))
+        self.progression_eldin.setText(QCoreApplication.translate("MainWindow", u"Eldin", None))
+        self.progression_lanayru.setText(QCoreApplication.translate("MainWindow", u"Lanayru", None))
+        self.progression_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Thunderhead", None))
+        self.progression_crystal_quest.setText(QCoreApplication.translate("MainWindow", u"Crystal Quests", None))
+        self.progression_scrapper.setText(QCoreApplication.translate("MainWindow", u"Scrapper Quests", None))
         self.progression_dungeon.setText(QCoreApplication.translate("MainWindow", u"Dungeons", None))
         self.progression_minigame.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
-        self.checkBox_19.setText(QCoreApplication.translate("MainWindow", u"Digging Spots", None))
-        self.checkBox_21.setText(QCoreApplication.translate("MainWindow", u"Bombable Walls", None))
-        self.checkBox_23.setText(QCoreApplication.translate("MainWindow", u"Combat Rewards", None))
-        self.checkBox_24.setText(QCoreApplication.translate("MainWindow", u"Spiral Charge Chests", None))
+        self.progression_digging.setText(QCoreApplication.translate("MainWindow", u"Digging Spots", None))
+        self.progression_bombable.setText(QCoreApplication.translate("MainWindow", u"Bombable Walls", None))
+        self.progression_combat.setText(QCoreApplication.translate("MainWindow", u"Combat Rewards", None))
+        self.progression_spiral_charge.setText(QCoreApplication.translate("MainWindow", u"Spiral Charge Chests", None))
         self.progression_batreaux.setText(QCoreApplication.translate("MainWindow", u"Batreaux", None))
         self.progression_crystal.setText(QCoreApplication.translate("MainWindow", u"Loose Crystals", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
@@ -393,12 +393,12 @@ class Ui_MainWindow(object):
         self.option_description.setText("")
         self.permalink_label.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings)", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Goddess Cube Options", None))
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"Faron Woods", None))
+        self.progression_faron_goddess.setText(QCoreApplication.translate("MainWindow", u"Faron Woods", None))
         self.progression_goddess.setText(QCoreApplication.translate("MainWindow", u"Enabled", None))
-        self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"Eldin Volcano", None))
-        self.checkBox_3.setText(QCoreApplication.translate("MainWindow", u"Lanayru Desert", None))
-        self.checkBox_4.setText(QCoreApplication.translate("MainWindow", u"Lake Floria", None))
-        self.checkBox_5.setText(QCoreApplication.translate("MainWindow", u"Volcano Summit", None))
-        self.checkBox_6.setText(QCoreApplication.translate("MainWindow", u"Sand Sea", None))
+        self.progression_eldin_goddess.setText(QCoreApplication.translate("MainWindow", u"Eldin Volcano", None))
+        self.progression_lanayru_goddess.setText(QCoreApplication.translate("MainWindow", u"Lanayru Desert", None))
+        self.progression_floria_goddess.setText(QCoreApplication.translate("MainWindow", u"Lake Floria", None))
+        self.progression_summit_goddess.setText(QCoreApplication.translate("MainWindow", u"Volcano Summit", None))
+        self.progression_sand_sea_goddess.setText(QCoreApplication.translate("MainWindow", u"Sand Sea", None))
     # retranslateUi
 

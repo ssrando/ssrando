@@ -110,42 +110,42 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <widget class="QCheckBox" name="checkBox_13">
+       <widget class="QCheckBox" name="progression_sky">
         <property name="text">
          <string>The Sky</string>
         </property>
        </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QCheckBox" name="checkBox_7">
+       <widget class="QCheckBox" name="progression_short">
         <property name="text">
          <string>Short Quests</string>
         </property>
        </widget>
       </item>
       <item row="1" column="4">
-       <widget class="QCheckBox" name="checkBox_18">
+       <widget class="QCheckBox" name="progression_miscellaneous">
         <property name="text">
          <string>Miscellaneous</string>
         </property>
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QCheckBox" name="checkBox_11">
+       <widget class="QCheckBox" name="progression_free_gift">
         <property name="text">
          <string>Free Gifts</string>
         </property>
        </widget>
       </item>
       <item row="2" column="4">
-       <widget class="QCheckBox" name="checkBox_22">
+       <widget class="QCheckBox" name="progression_song">
         <property name="text">
          <string>Songs</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="checkBox_20">
+       <widget class="QCheckBox" name="progression_mini_dungeon">
         <property name="text">
          <string>Mini Dungeons</string>
         </property>
@@ -159,56 +159,56 @@
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QCheckBox" name="checkBox_12">
+       <widget class="QCheckBox" name="progression_freestanding">
         <property name="text">
          <string>Freestanding Items</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QCheckBox" name="checkBox_8">
+       <widget class="QCheckBox" name="progression_long">
         <property name="text">
          <string>Long Quests</string>
         </property>
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QCheckBox" name="checkBox_15">
+       <widget class="QCheckBox" name="progression_faron">
         <property name="text">
          <string>Faron</string>
         </property>
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QCheckBox" name="checkBox_16">
+       <widget class="QCheckBox" name="progression_eldin">
         <property name="text">
          <string>Eldin</string>
         </property>
        </widget>
       </item>
       <item row="0" column="4">
-       <widget class="QCheckBox" name="checkBox_17">
+       <widget class="QCheckBox" name="progression_lanayru">
         <property name="text">
          <string>Lanayru</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QCheckBox" name="checkBox_14">
+       <widget class="QCheckBox" name="progression_thunderhead">
         <property name="text">
          <string>Thunderhead</string>
         </property>
        </widget>
       </item>
       <item row="4" column="2">
-       <widget class="QCheckBox" name="checkBox_9">
+       <widget class="QCheckBox" name="progression_crystal_quest">
         <property name="text">
          <string>Crystal Quests</string>
         </property>
        </widget>
       </item>
       <item row="4" column="3">
-       <widget class="QCheckBox" name="checkBox_10">
+       <widget class="QCheckBox" name="progression_scrapper">
         <property name="text">
          <string>Scrapper Quests</string>
         </property>
@@ -229,28 +229,28 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QCheckBox" name="checkBox_19">
+       <widget class="QCheckBox" name="progression_digging">
         <property name="text">
          <string>Digging Spots</string>
         </property>
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QCheckBox" name="checkBox_21">
+       <widget class="QCheckBox" name="progression_bombable">
         <property name="text">
          <string>Bombable Walls</string>
         </property>
        </widget>
       </item>
       <item row="2" column="3">
-       <widget class="QCheckBox" name="checkBox_23">
+       <widget class="QCheckBox" name="progression_combat">
         <property name="text">
          <string>Combat Rewards</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QCheckBox" name="checkBox_24">
+       <widget class="QCheckBox" name="progression_spiral_charge">
         <property name="text">
          <string>Spiral Charge Chests</string>
         </property>
@@ -476,7 +476,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="1" column="0">
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="progression_faron_goddess">
         <property name="text">
          <string>Faron Woods</string>
         </property>
@@ -490,35 +490,35 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="checkBox_2">
+       <widget class="QCheckBox" name="progression_eldin_goddess">
         <property name="text">
          <string>Eldin Volcano</string>
         </property>
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QCheckBox" name="checkBox_3">
+       <widget class="QCheckBox" name="progression_lanayru_goddess">
         <property name="text">
          <string>Lanayru Desert</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QCheckBox" name="checkBox_4">
+       <widget class="QCheckBox" name="progression_floria_goddess">
         <property name="text">
          <string>Lake Floria</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QCheckBox" name="checkBox_5">
+       <widget class="QCheckBox" name="progression_summit_goddess">
         <property name="text">
          <string>Volcano Summit</string>
         </property>
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QCheckBox" name="checkBox_6">
+       <widget class="QCheckBox" name="progression_sand_sea_goddess">
         <property name="text">
          <string>Sand Sea</string>
         </property>
