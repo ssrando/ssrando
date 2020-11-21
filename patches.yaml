@@ -85,6 +85,9 @@ global:
       # don't force show map when entering pillars after meeting levias
       - original: 48 00 00 30 7f a3 eb 78 38 80 00 c8 4b ff f8 51
         patched:  48 00 00 30 48 00 00 2c 38 80 00 c8 4b ff f8 51
+      # immediately return from the function that opens up the collection screen after a treasure
+      - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 93 e1 00 0c 7c 7f 1b 78 48 00 02 2d
+        patched:  4e 80 00 20 7c 08 02 a6 90 01 00 14 93 e1 00 0c 7c 7f 1b 78 48 00 02 2d
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
         patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
