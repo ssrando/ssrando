@@ -24,6 +24,8 @@ global:
     - 130 # Start with Beacon
     - 496 # Skipper's cutscene after Sea Chart
     - 519 # Updated Sand Sea map
+    - 264 # Talked to Skipper first time
+    - 273 # Talked to Skipper first time after saying no (prevents weird first text)
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
@@ -218,7 +220,13 @@ global:
       - original: d0 1c 01 4c 54 60 86 3e
         patched:  d0 1c 01 4c 38 00 00 ff
 
-# S100:
+S100: # Faron Silent Realm
+  - name: Fi text near waking water
+    type: objdelete
+    id: 0xFCDB
+    layer: 2
+    room: 0
+    objtype: OBJ
 #   - name: Test Trial
 #     type: objpatch
 #     id: 0xFC94
@@ -1565,6 +1573,12 @@ D101: # Ancient Cistern
     layer: 0
     room: 4
     objtype: STAG
+  - name: Delete bottom Water Spout cutscene inside statue
+    type: objdelete
+    id: 0xFC1C
+    layer: 0
+    room: 10
+    objtype: STAG
 F200: # Eldin main area
   - name: Layer override
     type: layeroverride
@@ -1855,6 +1869,12 @@ D201_1: # FS B
     layer: 0
     room: 5
     objtype: OBJ
+  - name: Delete camera pan cutscene after mogma mitts
+    type: objdelete
+    id: 0xFC2C
+    layer: 0
+    room: 5
+    objtype: STAG
 B201: # G2 fight
   - name: Layer override
     type: layeroverride
