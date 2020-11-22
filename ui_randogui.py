@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(952, 621)
+        MainWindow.resize(952, 654)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -68,18 +68,13 @@ class Ui_MainWindow(object):
 
         self.groupBox = QGroupBox(self.centralwidget)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(10, 70, 931, 191))
+        self.groupBox.setGeometry(QRect(10, 140, 931, 151))
         self.gridLayoutWidget_3 = QWidget(self.groupBox)
         self.gridLayoutWidget_3.setObjectName(u"gridLayoutWidget_3")
-        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 911, 161))
+        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 911, 121))
         self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.progression_sky = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_sky.setObjectName(u"progression_sky")
-
-        self.gridLayout_3.addWidget(self.progression_sky, 0, 0, 1, 1)
-
         self.progression_short = QCheckBox(self.gridLayoutWidget_3)
         self.progression_short.setObjectName(u"progression_short")
 
@@ -119,26 +114,6 @@ class Ui_MainWindow(object):
         self.progression_long.setObjectName(u"progression_long")
 
         self.gridLayout_3.addWidget(self.progression_long, 4, 1, 1, 1)
-
-        self.progression_faron = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_faron.setObjectName(u"progression_faron")
-
-        self.gridLayout_3.addWidget(self.progression_faron, 0, 2, 1, 1)
-
-        self.progression_eldin = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_eldin.setObjectName(u"progression_eldin")
-
-        self.gridLayout_3.addWidget(self.progression_eldin, 0, 3, 1, 1)
-
-        self.progression_lanayru = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_lanayru.setObjectName(u"progression_lanayru")
-
-        self.gridLayout_3.addWidget(self.progression_lanayru, 0, 4, 1, 1)
-
-        self.progression_thunderhead = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_thunderhead.setObjectName(u"progression_thunderhead")
-
-        self.gridLayout_3.addWidget(self.progression_thunderhead, 0, 1, 1, 1)
 
         self.progression_dungeon = QCheckBox(self.gridLayoutWidget_3)
         self.progression_dungeon.setObjectName(u"progression_dungeon")
@@ -202,7 +177,7 @@ class Ui_MainWindow(object):
 
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setGeometry(QRect(10, 390, 931, 121))
+        self.groupBox_2.setGeometry(QRect(10, 420, 931, 121))
         self.gridLayoutWidget_2 = QWidget(self.groupBox_2)
         self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
         self.gridLayoutWidget_2.setGeometry(QRect(10, 20, 911, 97))
@@ -260,7 +235,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(10, 580, 931, 31))
+        self.horizontalLayoutWidget.setGeometry(QRect(10, 610, 931, 31))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -286,10 +261,10 @@ class Ui_MainWindow(object):
         self.option_description = QLabel(self.centralwidget)
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
-        self.option_description.setGeometry(QRect(10, 520, 931, 20))
+        self.option_description.setGeometry(QRect(10, 550, 931, 20))
         self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
-        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 550, 931, 27))
+        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 580, 931, 27))
         self.horizontalLayout_3 = QHBoxLayout(self.horizontalLayoutWidget_2)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -305,7 +280,7 @@ class Ui_MainWindow(object):
 
         self.groupBox_3 = QGroupBox(self.centralwidget)
         self.groupBox_3.setObjectName(u"groupBox_3")
-        self.groupBox_3.setGeometry(QRect(10, 270, 931, 111))
+        self.groupBox_3.setGeometry(QRect(10, 300, 931, 111))
         self.gridLayoutWidget_4 = QWidget(self.groupBox_3)
         self.gridLayoutWidget_4.setObjectName(u"gridLayoutWidget_4")
         self.gridLayoutWidget_4.setGeometry(QRect(10, 20, 911, 80))
@@ -347,6 +322,45 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.progression_sand_sea_goddess, 2, 2, 1, 1)
 
+        self.groupBox_4 = QGroupBox(self.centralwidget)
+        self.groupBox_4.setObjectName(u"groupBox_4")
+        self.groupBox_4.setGeometry(QRect(10, 80, 931, 51))
+        self.horizontalLayoutWidget_3 = QWidget(self.groupBox_4)
+        self.horizontalLayoutWidget_3.setObjectName(u"horizontalLayoutWidget_3")
+        self.horizontalLayoutWidget_3.setGeometry(QRect(10, 20, 911, 21))
+        self.horizontalLayout_4 = QHBoxLayout(self.horizontalLayoutWidget_3)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.progression_skyloft = QCheckBox(self.horizontalLayoutWidget_3)
+        self.progression_skyloft.setObjectName(u"progression_skyloft")
+
+        self.horizontalLayout_4.addWidget(self.progression_skyloft)
+
+        self.progression_sky = QCheckBox(self.horizontalLayoutWidget_3)
+        self.progression_sky.setObjectName(u"progression_sky")
+
+        self.horizontalLayout_4.addWidget(self.progression_sky)
+
+        self.progression_thunderhead = QCheckBox(self.horizontalLayoutWidget_3)
+        self.progression_thunderhead.setObjectName(u"progression_thunderhead")
+
+        self.horizontalLayout_4.addWidget(self.progression_thunderhead)
+
+        self.progression_lanayru = QCheckBox(self.horizontalLayoutWidget_3)
+        self.progression_lanayru.setObjectName(u"progression_lanayru")
+
+        self.horizontalLayout_4.addWidget(self.progression_lanayru)
+
+        self.progression_eldin = QCheckBox(self.horizontalLayoutWidget_3)
+        self.progression_eldin.setObjectName(u"progression_eldin")
+
+        self.horizontalLayout_4.addWidget(self.progression_eldin)
+
+        self.progression_faron = QCheckBox(self.horizontalLayoutWidget_3)
+        self.progression_faron.setObjectName(u"progression_faron")
+
+        self.horizontalLayout_4.addWidget(self.progression_faron)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -367,7 +381,6 @@ class Ui_MainWindow(object):
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Seed", None))
         self.ouput_folder_browse_button.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Where should progress items appear?", None))
-        self.progression_sky.setText(QCoreApplication.translate("MainWindow", u"The Sky", None))
         self.progression_short.setText(QCoreApplication.translate("MainWindow", u"Short Quests", None))
         self.progression_miscellaneous.setText(QCoreApplication.translate("MainWindow", u"Miscellaneous", None))
         self.progression_free_gift.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
@@ -376,10 +389,6 @@ class Ui_MainWindow(object):
         self.progression_silent_realm.setText(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
         self.progression_freestanding.setText(QCoreApplication.translate("MainWindow", u"Freestanding Items", None))
         self.progression_long.setText(QCoreApplication.translate("MainWindow", u"Long Quests", None))
-        self.progression_faron.setText(QCoreApplication.translate("MainWindow", u"Faron", None))
-        self.progression_eldin.setText(QCoreApplication.translate("MainWindow", u"Eldin", None))
-        self.progression_lanayru.setText(QCoreApplication.translate("MainWindow", u"Lanayru", None))
-        self.progression_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Thunderhead", None))
         self.progression_dungeon.setText(QCoreApplication.translate("MainWindow", u"Dungeons", None))
         self.progression_minigame.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
         self.progression_digging.setText(QCoreApplication.translate("MainWindow", u"Digging Spots", None))
@@ -412,5 +421,12 @@ class Ui_MainWindow(object):
         self.progression_floria_goddess.setText(QCoreApplication.translate("MainWindow", u"Lake Floria", None))
         self.progression_summit_goddess.setText(QCoreApplication.translate("MainWindow", u"Volcano Summit", None))
         self.progression_sand_sea_goddess.setText(QCoreApplication.translate("MainWindow", u"Sand Sea", None))
+        self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"What areas of the world should progress items appear?", None))
+        self.progression_skyloft.setText(QCoreApplication.translate("MainWindow", u"Skyloft", None))
+        self.progression_sky.setText(QCoreApplication.translate("MainWindow", u"The Sky", None))
+        self.progression_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Thunderhead", None))
+        self.progression_lanayru.setText(QCoreApplication.translate("MainWindow", u"Lanayru", None))
+        self.progression_eldin.setText(QCoreApplication.translate("MainWindow", u"Eldin", None))
+        self.progression_faron.setText(QCoreApplication.translate("MainWindow", u"Faron", None))
     # retranslateUi
 

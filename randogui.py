@@ -71,6 +71,7 @@ class RandoGUI(QMainWindow):
                     widget.valueChanged.connect(self.update_settings)
 
         self.location_descriptions = {
+            "skyloft": "Enables progression items to appear on Skyloft",
             "sky": "Enables progression items to appear in The Sky",
             "thunderhead": "Enables progression items to appear in The Thunderhead",
             "faron": "Enables progression items to appear in the Faron Province",
@@ -133,6 +134,7 @@ class RandoGUI(QMainWindow):
         self.ui.randomize_button.clicked.connect(self.randomize)
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
+        self.ui.progression_goddess.clicked.connect(self.goddess_cubes_toggled)
         self.update_ui_for_settings()
         self.set_option_description(None)
 
@@ -340,6 +342,14 @@ class RandoGUI(QMainWindow):
             print(e)
         self.update_ui_for_settings()
 
+    def goddess_cubes_toggled(self):
+        enabled = self.ui.progression_goddess.isChecked()
+        self.ui.progression_faron_goddess.setEnabled(enabled)
+        self.ui.progression_eldin_goddess.setEnabled(enabled)
+        self.ui.progression_lanayru_goddess.setEnabled(enabled)
+        self.ui.progression_floria_goddess.setEnabled(enabled)
+        self.ui.progression_summit_goddess.setEnabled(enabled)
+        self.ui.progression_sand_sea_goddess.setEnabled(enabled)
 
 def run_main_gui():
     app = QtWidgets.QApplication([])

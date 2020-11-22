@@ -1,7 +1,7 @@
 Skyloft - Fledge:
   Need: Nothing
   original item: Progressive Pouch
-  type: sky, free gift
+  type: skyloft, free gift
   Paths:
     - event/114-Friend/16
     - oarc/F001r/l3
@@ -9,7 +9,7 @@ Skyloft - Fledge:
 Skyloft - Owlan's Shield:
   Need: Nothing
   original item: Wooden Shield
-  type: sky, free gift
+  type: skyloft, free gift
   Paths:
    - event/108-ShinkanA/169
    - oarc/F000/l4
@@ -17,80 +17,80 @@ Skyloft - Owlan's Shield:
 Skyloft - Practice Sword:
   Need: Nothing
   original item: Progressive Sword
-  type: sky, miscellaneous
+  type: skyloft, miscellaneous
   Paths:
    - stage/F009r/r0/l0/TBox/66
 Skyloft - Bazaar Potion Lady:
   Need: Nothing
   original item: Bottle
-  type: sky, free gift
+  type: skyloft, free gift
   Paths:
    - event/106-DrugStore/44
    - oarc/F004r/l0
 Skyloft - Waterfall Cave First Chest:
   Need: (Practice Sword | Bomb Bag)
   original item: Red Rupee
-  type: sky, miscellaneous
+  type: skyloft, miscellaneous
   Paths:
    - stage/D000/r0/l0/TBox/67
 Skyloft - Waterfall Cave Second Chest:
   Need: (Practice Sword | Bomb Bag)
   original item: Red Rupee
-  type: sky, miscellaneous
+  type: skyloft, miscellaneous
   Paths:
    - stage/D000/r0/l0/TBox/68
 Skyloft - Small Chest on Cliffs Near Goddess Statue:
   Need: Nothing
   original item: Red Rupee
-  type: sky, miscellaneous
+  type: skyloft, miscellaneous
   Paths:
    - stage/F000/r0/l0/TBox/71
 Skyloft - Goddess Sword:
   Need: Nothing
   original item: Progressive Sword
-  type: sky, miscellaneous
+  type: skyloft, miscellaneous
   Paths:
     - stage/F008r/r0/l0/TBox/95
 Skyloft - Bazaar Goddess Chest:
   Need: Goddess Cube in Ancient Harbour
   original item: Gold Rupee
-  type: sky, goddess, sand sea goddess
+  type: skyloft, goddess, sand sea goddess
   Paths:
    - stage/F004r/r0/l0/TBox/93
 Skyloft - Shed Chest:
   Need: Water Scale
   original item: Silver Rupee
-  type: sky, miscellaneous
+  type: skyloft, miscellaneous
   Paths:
    - stage/F000/r0/l0/TBox/70
 Skyloft - Shed Goddess Chest:
   Need: Water Scale & Goddess Cube in Eldin Slide
   original item: Heart Piece
-  type: sky, goddess, eldin goddess
+  type: skyloft, goddess, eldin goddess
   Paths:
    - stage/F000/r0/l0/TBox/79
 Skyloft - West Cliff Goddess Chest:
   Need: Goddess Cube on West Great Tree near exit
   original item: Silver Rupee
-  type: sky, goddess, faron goddess
+  type: skyloft, goddess, faron goddess
   Paths:
    - stage/F000/r0/l0/TBox/78
 Skyloft - Floating Island Goddess Chest:
   Need: Clawshots & Goddess Cube in Lake Floria
   original item: Gold Rupee
-  type: sky, goddess, floria goddess
+  type: skyloft, goddess, floria goddess
   Paths:
    - stage/F000/r0/l0/TBox/91
 Skyloft - Waterfall Goddess Chest:
   Need: Clawshots & Goddess Cube in Pirate Stronghold
   original item: Heart Piece
-  type: sky, goddess, sand sea goddess
+  type: skyloft, goddess, sand sea goddess
   Paths:
    - stage/F000/r0/l0/TBox/80
 Skyloft - Pumpkin Archery - 600 Points:
   Need: Bow
   original item: Heart Piece
-  type: sky, minigame
+  type: skyloft, minigame
   Paths:
    - event/114-Friend/99
    - oarc/F000/l4
@@ -98,19 +98,19 @@ Skyloft - Pumpkin Archery - 600 Points:
 Skyloft - Zelda Heartpiece:
   Need: Clawshots
   original item: Heart Piece
-  type: sky, miscellaneous
+  type: skyloft, miscellaneous
   Paths:
    - stage/F001r/r6/l0/chest/32 #sceneflag
 Skyloft - Baby Rattle:
   Need: Gust Bellows & Clawshots #needs work, note that it's possible to get there from Beetle's airship
   original item: Baby's Rattle
-  type: sky, freestanding
+  type: skyloft, freestanding
   Paths:
     - stage/F000/r0/l0/Item/13
 Skyloft - Parrow's Bottle:
   Need: Nothing
   original item: Bottle
-  type: sky, free gift, short
+  type: skyloft, free gift, short
   Paths:
     - event/115-Town2/230 # mushroom spores
     - event/115-Town2/733 # Bottle
@@ -119,21 +119,21 @@ Skyloft - Parrow's Bottle:
 Skyloft - Cawlin's Letter:
   Need: Goddess Harp
   original item: Cawlin's Letter
-  type: sky, short
+  type: skyloft, short
   Paths:
     - event/115-Town2/166
     - oarc/F001r/l0
 Skyloft - Wyrna Crystals:
   Need: Nothing
   original item: 5 Gratitude Crystals
-  type: sky, free gift, crystal quest
+  type: skyloft, free gift, crystal quest
   Paths:
     - event/118-Town3/144
     - oarc/F006r/l0
 Skyloft - Peater/Peatrice Crystals:
   Need: Nothing
   original item: 5 Gratitude Crystals
-  type: sky, long, crystal quest, peatrice
+  type: skyloft, long, crystal quest, peatrice
   Paths:
     - event/109-TakeGoron/79
     - event/123-Town5/316
@@ -143,7 +143,7 @@ Skyloft - Parrow Crystals:
   Need: Bottle
     # There are mushrooms in the Sky inside the Volcanic Island
   original item: 5 Gratitude Crystals
-  type: sky, short, crystal quest
+  type: skyloft, short, crystal quest
   Paths:
     - event/115-Town2/814
     - oarc/F000/l0
@@ -151,21 +151,21 @@ Skyloft - Parrow Crystals:
 Skyloft - Fledge Crystals:
   Need: Can Beat Lanayru Mining Facility & Bottle # LMF only for Potion right now
   original item: 5 Gratitude Crystals
-  type: sky, short, crystal quest, dungeon
+  type: skyloft, short, crystal quest, dungeon
   Paths:
     - event/115-Town2/325
     - oarc/F001r/l0
 Skyloft - Baby Crystals:
   Need: Baby Rattle
   original item: 5 Gratitude Crystals
-  type: sky, fetch, crystal quest
+  type: skyloft, fetch, crystal quest
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
 Skyloft - Ghost/Pipit Crystals:
   Need: Cawlin's Letter
   original item: 5 Gratitude Crystals
-  type: sky, fetch, crystal quest
+  type: skyloft, fetch, crystal quest
   Paths:
     - event/115-Town2/522
     - event/115-Town2/641
@@ -173,21 +173,21 @@ Skyloft - Ghost/Pipit Crystals:
 Skyloft - Sparrot Crystals:
   Need: Can Access Second Part of Eldin & Clawshots
   original item: 5 Gratitude Crystals
-  type: sky, long, scrapper, crystal quest
+  type: skyloft, long, scrapper, crystal quest
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
 Skyloft - Cleaning Crystals:
   Need: Gust Bellows
   original item: 5 Gratitude Crystals
-  type: sky, short, crystal quest
+  type: skyloft, short, crystal quest
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
 Skyloft - Owlan Crystals:
   Need: Can Access Most of Faron Woods & Bomb Bag
   original item: 5 Gratitude Crystals
-  type: sky, long, scrapper, crystal quest
+  type: skyloft, long, scrapper, crystal quest
   Paths:
     - event/118-Town3/157
     - oarc/F001r/l0
@@ -196,62 +196,62 @@ Skyloft - Owlan Crystals:
 Skyloft - Batreaux 5 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & (5 Gratitude Crystals | Gratitude Crystal x5) # since 5 packs are randomized, it's possible to get crystals without being able to meet batreaux
   original item: Progressive Wallet
-  type: sky, batreaux
+  type: skyloft, batreaux
   Paths:
     - event/121-AkumaKun/21
     - oarc/F012r/l0
 Skyloft - Batreaux 10 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 10 Gratitude Crystals
   original item: Heart Piece
-  type: sky, batreaux
+  type: skyloft, batreaux
   Paths:
     - event/121-AkumaKun/42
     - oarc/F012r/l0
 Skyloft - Batreaux 30 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 30 Gratitude Crystals # 30 gratitude Crystals
   original item: Progressive Wallet
-  type: sky, batreaux
+  type: skyloft, batreaux
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
 Skyloft - Batreaux 30 Crystals Chest:
   Need: Can Open Batreaux Shed & 30 Gratitude Crystals # 30 gratitude Crystals
   original item: Cursed Medal
-  type: sky, batreaux
+  type: skyloft, batreaux
   Paths:
     - stage/F012r/r0/l0/TBox/69
 Skyloft - Batreaux 40 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 40 Gratitude Crystals # 40 gratitude Crystals
   original item: Gold Rupee
-  type: sky, batreaux
+  type: skyloft, batreaux
   Paths:
     - event/121-AkumaKun/49
     - oarc/F012r/l0
 Skyloft - Batreaux 50 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 50 Gratitude Crystals # 50 gratitude Crystals
   original item: Progressive Wallet
-  type: sky, batreaux
+  type: skyloft, batreaux
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
 Skyloft - Batreaux 70 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 70 Gratitude Crystals # 70 gratitude Crystals
   original item: Gold Rupee
-  type: sky, batreaux
+  type: skyloft, batreaux
   Paths:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
 Skyloft - Batreaux 70 Crystals Second Reward:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 70 Gratitude Crystals # 70 gratitude Crystals
   original item: Gold Rupee
-  type: sky, batreaux
+  type: skyloft, batreaux
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
 Skyloft - Batreaux 80 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 80 Gratitude Crystals # 80 gratitude Crystals
   original item: Progressive Wallet
-  type: sky, batreaux
+  type: skyloft, batreaux
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
