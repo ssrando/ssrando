@@ -105,6 +105,7 @@ class RandoGUI(QMainWindow):
             "fetch": "Enables progression items to appear as rewards for returning items to NPCs ",
             "crystal_quest": "Enables progression items to appear as rewards for completing Gratitude Crystal quests",
             "scrapper": "Enables progression items to appear as rewards for Scrapper Quests",
+            "peatrice": "Enables a progression item to appear as the reward for completing the Peatrice side quest",
 
             "goddess": "Enables progression items to appear as items in Goddess Chests",
             "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "

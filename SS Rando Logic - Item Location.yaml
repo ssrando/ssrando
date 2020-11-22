@@ -133,7 +133,7 @@ Skyloft - Wyrna Crystals:
 Skyloft - Peater/Peatrice Crystals:
   Need: Nothing
   original item: 5 Gratitude Crystals
-  type: sky, long, crystal quest
+  type: sky, long, crystal quest, peatrice
   Paths:
     - event/109-TakeGoron/79
     - event/123-Town5/316

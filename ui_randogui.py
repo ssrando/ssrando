@@ -195,6 +195,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.progression_fetch, 4, 2, 1, 1)
 
+        self.progression_peatrice = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_peatrice.setObjectName(u"progression_peatrice")
+
+        self.gridLayout_3.addWidget(self.progression_peatrice, 3, 4, 1, 1)
+
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
         self.groupBox_2.setGeometry(QRect(10, 390, 931, 121))
@@ -386,6 +391,7 @@ class Ui_MainWindow(object):
         self.progression_scrapper.setText(QCoreApplication.translate("MainWindow", u"Scrapper Quests", None))
         self.progression_crystal_quest.setText(QCoreApplication.translate("MainWindow", u"Crystal Quests", None))
         self.progression_fetch.setText(QCoreApplication.translate("MainWindow", u"Fetch Quests", None))
+        self.progression_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.option_closed_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Closed Thunderhead", None))
         self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
