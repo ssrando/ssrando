@@ -417,6 +417,23 @@ B301: # after Sandship boss
       anglez: 40108 # entrypoint 401_08
       id: 0xFC00
       name: NpcTke
+  - name: Fi text to force leave boss room
+    type: objadd
+    room: 0
+    layer: 1
+    id: 0xFC00
+    objtype: OBJ
+    object:
+      params1: 0x717FFF0B # untriggered by 907, storyflag for having goddess sword
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      anglex: 0xFF55 # triggered by sceneflag 85, which is heart container
+      angley: 0xFFFF
+      anglez: 40118 # entrypoint 401_18
+      id: 0xFC00
+      name: NpcTke
   - name: Loadzone to outside
     type: objpatch
     room: 0
@@ -2321,6 +2338,77 @@ D301: # Sandship A
     type: oarcadd
     destlayer: 1
     oarc: PutHeartUtuwa
+  - name: Candle on layer 1
+    type: objmove
+    layer: 9
+    destlayer: 1
+    room: 0
+    objtype: OBJ
+    id: 0xFC54
+  - name: load goddess crest rel
+    type: objnadd
+    layer: 1
+    room: 0
+    objn: SwSB
+  - name: candle arcs
+    type: oarcadd
+    destlayer: 1
+    oarc: GoddessSymbolSc
+  - name: candle arcs
+    type: oarcadd
+    destlayer: 1
+    oarc: SwordCandle
+  - name: Fi text after hitting Sandship Crest
+    type: objadd
+    room: 0
+    layer: 1
+    id: 0xFC00
+    objtype: OBJ
+    object:
+      params1: 0x01FFFF01 # untriggered by 15, storyflag for beating sandship
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      anglex: 0xFF54 # triggered by sceneflag 84, which is goddess crest hit
+      angley: 0xFFFF
+      anglez: 40108 # entrypoint 401_08
+      id: 0xFC00
+      name: NpcTke
+  - name: Trigger Flame CS
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xC303FF07 # scenlink: 7, triggered by zone temp flag 3
+      params2: 0xFF5FFFFF
+      posx: -4118
+      posy: 500
+      posz: 1914
+      sizex: 50000
+      sizey: 500
+      sizez: 50000
+      anglex: 0xFFFF # no trigger storyflag
+      angley: 0
+      anglez: 0xFFFF # no untrigger cause zone temp flag is unset after load
+      id: 0xFC00
+      name: ScChang
+  - name: Flame CS Exit
+    type: objadd
+    room: 0
+    index: 7
+    objtype: SCEN
+    object:
+      name: B301
+      room: 0
+      layer: 13
+      entrance: 4
+      byte4: 2
+      byte5: 0
+      flag6: 0
+      zero: 0
+      flag8: 0
   - name: Remove Boss Door loadzone after beating dungeon
     type: objpatch
     id: 0xFC45

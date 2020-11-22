@@ -1300,6 +1300,31 @@
       param2: 7
       next: -1
       param3: 7
+  - name: Fi text text to leave dungeon
+    type: textadd
+    index: 57
+    text: "You can't beat this\ndungeon at the present\ntime, I would suggest\ncoming back later"
+  - name: Rando Dungeon check
+    type: entryadd
+    entry:
+      name: "401_18"
+      value: Fi text to leave
+  - name: Fi text to leave
+    type: flowadd
+    flow:
+      type: type1
+      next: Leave dungeon trigger
+      param3: 171
+      param4: 57
+  - name: Leave dungeon trigger
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 1 # exit
+      param2: 0 # current room
+      next: -1
+      param3: 10
 402-DesertF2:
   - name: Never ask player to go inside shark mouth for ship dowsing
     type: flowpatch

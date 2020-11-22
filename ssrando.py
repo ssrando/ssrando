@@ -80,7 +80,8 @@ class Randomizer:
     # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
     self.starting_items = []
 
-    self.required_dungeons = self.rng.sample(constants.POTENTIALLY_REQUIRED_DUNGEONS, k=self.options['required-dungeon-count'])
+    # self.required_dungeons = self.rng.sample(constants.POTENTIALLY_REQUIRED_DUNGEONS, k=self.options['required-dungeon-count'])
+    self.required_dungeons = ['Sandship']
     # make the order always consistent
     self.required_dungeons = [dungeon for dungeon in constants.POTENTIALLY_REQUIRED_DUNGEONS
       if dungeon in self.required_dungeons]
@@ -99,8 +100,8 @@ class Randomizer:
     self.non_required_dungeons = [dungeon for dungeon in
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
     self.logic = Logic(self)
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
-    # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Goddess Harp")
+    self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
+    self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Bow")
     # self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
