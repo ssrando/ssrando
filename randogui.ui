@@ -550,9 +550,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="progression_lanayru">
+       <widget class="QCheckBox" name="progression_faron">
         <property name="text">
-         <string>Lanayru</string>
+         <string>Faron</string>
         </property>
        </widget>
       </item>
@@ -564,9 +564,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="progression_faron">
+       <widget class="QCheckBox" name="progression_lanayru">
         <property name="text">
-         <string>Faron</string>
+         <string>Lanayru</string>
         </property>
        </widget>
       </item>
