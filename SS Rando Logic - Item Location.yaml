@@ -151,7 +151,7 @@ Skyloft - Parrow Crystals:
 Skyloft - Fledge Crystals:
   Need: Can Beat Lanayru Mining Facility & Bottle # LMF only for Potion right now
   original item: 5 Gratitude Crystals
-  type: skyloft, short, crystal quest, dungeon
+  type: skyloft, lanayru, short, crystal quest, dungeon
   Paths:
     - event/115-Town2/325
     - oarc/F001r/l0
@@ -173,7 +173,7 @@ Skyloft - Ghost/Pipit Crystals:
 Skyloft - Sparrot Crystals:
   Need: Can Access Second Part of Eldin & Clawshots
   original item: 5 Gratitude Crystals
-  type: skyloft, long, scrapper, crystal quest
+  type: skyloft, eldin, long, scrapper, crystal quest
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
@@ -187,7 +187,7 @@ Skyloft - Cleaning Crystals:
 Skyloft - Owlan Crystals:
   Need: Can Access Most of Faron Woods & Bomb Bag
   original item: 5 Gratitude Crystals
-  type: skyloft, long, scrapper, crystal quest
+  type: skyloft, faron, long, scrapper, crystal quest
   Paths:
     - event/118-Town3/157
     - oarc/F001r/l0
@@ -421,14 +421,14 @@ Sky - Southwest Triple Island Cage Goddess Cube:
 Sky - Fun Fun Island Minigame:
   Need: Can Retrieve Party Wheel
   original item: Heart Piece
-  type: sky, minigame, long, scrapper
+  type: sky, lanayru, minigame, long, scrapper
   Paths:
    - event/110-DivingGame/19
    - oarc/F020/l2
 Sky - Dohdoh Crystals:
   Need: Can Retrieve Party Wheel
   original item: 5 Gratitude Crystals
-  type: sky, long, scrapper
+  type: sky, lanayru, long, scrapper
   Paths:
     - event/110-DivingGame/60
     - oarc/F020/l0
@@ -436,14 +436,14 @@ Sky - Orrielle Crystals:
   Need: Bottle
   # Need access to Faron to be able to get mushroom spores as many times as you want
   original item: 5 Gratitude Crystals
-  type: short, crystal quest
+  type: sky, short, crystal quest
   Paths:
     - event/115-Town2/225
     - oarc/F020/l0
 Sky - Kina Crystals:
   Need: Bottle & Goddess Harp & Can Access Eldin
   original item: 5 Gratitude Crystals
-  type: sky, scrapper, minigame, long, crystal quest
+  type: sky, eldin, scrapper, minigame, long, crystal quest
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
@@ -491,7 +491,7 @@ Thunderhead - Goddess Chest Outside Isle of Song:
 Thunderhead - Goddess Chest on top of Isle of Song:
   Need: Can Access Thunderhead & Goddess Cube near FS Entrance
   original item: Small Bomb Bag
-  type: goddess, summit goddess
+  type: thunderhead, goddess, summit goddess
   Paths:
    - stage/F023/r0/l0/TBox/85
 Thunderhead - East Island Goddess Chest:
@@ -534,7 +534,7 @@ Thunderhead - Bug Island minigame:
 Thunderhead - Levias:
   Need: Can Access Thunderhead & Spiral Charge & Practice Sword
   original item: Song of the Hero
-  type: thunderhead, scrapper, combat, song
+  type: thunderhead, sky, scrapper, combat, song
   Paths:
    - event/120-Nushi/give item after levias
    - oarc/F023/l0

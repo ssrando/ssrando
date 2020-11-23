@@ -346,20 +346,20 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.progression_thunderhead)
 
-        self.progression_lanayru = QCheckBox(self.horizontalLayoutWidget_3)
-        self.progression_lanayru.setObjectName(u"progression_lanayru")
+        self.progression_faron = QCheckBox(self.horizontalLayoutWidget_3)
+        self.progression_faron.setObjectName(u"progression_faron")
 
-        self.horizontalLayout_4.addWidget(self.progression_lanayru)
+        self.horizontalLayout_4.addWidget(self.progression_faron)
 
         self.progression_eldin = QCheckBox(self.horizontalLayoutWidget_3)
         self.progression_eldin.setObjectName(u"progression_eldin")
 
         self.horizontalLayout_4.addWidget(self.progression_eldin)
 
-        self.progression_faron = QCheckBox(self.horizontalLayoutWidget_3)
-        self.progression_faron.setObjectName(u"progression_faron")
+        self.progression_lanayru = QCheckBox(self.horizontalLayoutWidget_3)
+        self.progression_lanayru.setObjectName(u"progression_lanayru")
 
-        self.horizontalLayout_4.addWidget(self.progression_faron)
+        self.horizontalLayout_4.addWidget(self.progression_lanayru)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -425,8 +425,8 @@ class Ui_MainWindow(object):
         self.progression_skyloft.setText(QCoreApplication.translate("MainWindow", u"Skyloft", None))
         self.progression_sky.setText(QCoreApplication.translate("MainWindow", u"The Sky", None))
         self.progression_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Thunderhead", None))
-        self.progression_lanayru.setText(QCoreApplication.translate("MainWindow", u"Lanayru", None))
-        self.progression_eldin.setText(QCoreApplication.translate("MainWindow", u"Eldin", None))
         self.progression_faron.setText(QCoreApplication.translate("MainWindow", u"Faron", None))
+        self.progression_eldin.setText(QCoreApplication.translate("MainWindow", u"Eldin", None))
+        self.progression_lanayru.setText(QCoreApplication.translate("MainWindow", u"Lanayru", None))
     # retranslateUi
 
