@@ -1137,6 +1137,12 @@ F100: # Faron main area
     layer: 1
     room: 0
     objtype: OBJ
+  - name: Remove Fi text Not letting you leave machi 3
+    type: objdelete
+    id: 0x66B9
+    layer: 1
+    room: 0
+    objtype: OBJ
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
@@ -2510,6 +2516,14 @@ F402: # Sealed Temple
     layer: 0
     room: 2
     objtype: OBJ
+  - name: Impa triggers after raising GoT instead of Farores Courage
+    type: objpatch
+    id: 0xFC04
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      trigstoryfid: 340 # gate of time raised
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
