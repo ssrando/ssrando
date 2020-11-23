@@ -522,7 +522,7 @@
       param2: 36 # always trigger
   - name: Can't buy Pouch text
     type: textadd
-    text: "You need a \x0E\x00\x03\x02\x05Adventure Pouch\x0E\x00\x03\x02\uFFFF to buy this!"
+    text: "You need an \x0E\x00\x03\x02\x05Adventure Pouch\x0E\x00\x03\x02\uFFFF to buy\nthis!"
   - name: go to Check for Pouch
     type: flowpatch
     index: 16
