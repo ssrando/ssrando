@@ -2538,6 +2538,18 @@ F402: # Sealed Temple
     objtype: OBJ
     object:
       trigstoryfid: 340 # gate of time raised
+  - name: Delete Imp 2 beaten cs inside
+    type: objdelete
+    id: 0xFC4D
+    layer: 4
+    room: 2
+    objtype: OBJ
+  - name: Delete Imp 2 beaten cs inside
+    type: objdelete
+    id: 0xFC4C
+    layer: 4
+    room: 2
+    objtype: OBJ
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
