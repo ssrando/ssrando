@@ -187,7 +187,7 @@ Skyloft - Cleaning Crystals:
 Skyloft - Owlan Crystals:
   Need: Can Access Most of Faron Woods & Bomb Bag
   original item: 5 Gratitude Crystals
-  type: skyloft, faron, long, scrapper, crystal quest
+  type: skyloft, faron, long, scrapper, crystal quest, combat
   Paths:
     - event/118-Town3/157
     - oarc/F001r/l0
