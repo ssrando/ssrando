@@ -84,7 +84,7 @@ Skyloft - Floating Island Goddess Chest:
 Skyloft - Waterfall Goddess Chest:
   Need: Clawshots & Goddess Cube in Pirate Stronghold
   original item: Heart Piece
-  type: skyloft, goddess, sand sea goddess
+  type: skyloft, goddess, sand sea goddess, mini dungeon
   Paths:
    - stage/F000/r0/l0/TBox/80
 Skyloft - Pumpkin Archery - 600 Points:
@@ -143,7 +143,7 @@ Skyloft - Parrow Crystals:
   Need: Bottle
     # There are mushrooms in the Sky inside the Volcanic Island
   original item: 5 Gratitude Crystals
-  type: skyloft, short, crystal quest
+  type: skyloft, sky, short, crystal quest
   Paths:
     - event/115-Town2/814
     - oarc/F000/l0
