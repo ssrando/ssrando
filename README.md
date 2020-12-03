@@ -18,13 +18,8 @@ On Windows:
 
     pip install -r requirements.txt
 
-6) Take a clean E 1.00 ISO (make sure to verify the hashes in dolphin: crc="2b48d050" md5="e7c39bb46cf938a5a030a01a677ef7d1" sha1="9cf9a4a7ed2a6a4abb4582e3304af1327c160640") and put it in the sslib directory (in the following steps it will be simply called disc.iso)
-7)
-
-    wit extract disc.iso actual-extract
-
-8) Copy the actual-extract folder and name it modified-extract
-9)
+6) Take a clean E 1.00 ISO (make sure to verify the hashes in dolphin: crc="2b48d050" md5="e7c39bb46cf938a5a030a01a677ef7d1" sha1="9cf9a4a7ed2a6a4abb4582e3304af1327c160640") and put it somewere you can find it again(in the following steps it will be simply called disc.iso)
+7)Start the GUI/Setup by writeing this into your terminal:
 On Linux:
 
     python3 randoscript.py
@@ -36,21 +31,16 @@ Or:
 
     python randoscript.py
 
-To use a predefined seed, use the seed command line argument:
-On Linux:
+It will ask you to choose a iso and will extract it for you into the sslib directory (you should see 2 new foulders in the directory afterwards).
+The GUI will also Test your ISO version if you haven't checked yourself before and wont extract unless you have the right version.
+After it is complete it should show up the GUI you can use to modify your game.
+The ranodmized game will then show up in the foulder you choose in the GUI.
 
-    python3 randoscript.py --seed=123456
-
-On Windows:
-
-    py randoscript.py --seed=123456
-Or:
-
-    python randoscript.py --seed=123456
 
 #### MORE OPTIONS
-There is a bug currently where receiving sword upgrades result in a crash, to avoid that, there is an option `--invisible-sword` which turns
-the sword invisible and avoids the crash
+To access more options you can start the GUI by starting the randoscript.py (see obove).
+I you don't want to use the GUI you can do `--noui`, otherwise this extra information is not important for you
+If you write `--noui` it will read extra instrucions you send with it like this:
 
 To start with all light pillars closed and needing to find the tablets to unlock them, use `--randomize-tablets`
 
@@ -60,25 +50,11 @@ To start without a sword, use `--swordless`. Otherwise, you start with the godde
 
 To only generate a spoiler log, use the `--dry-run` option as a command line argument
 
-#### INTERACTIVE SCRIPT
-If you prefer an interactive script, that prompts all possible options, instead of appending all options to the original file, you can use
-On Linux:
-
-    python3 randoscript.py
-    
-On Windows:
-    
-    py -3.8 randoscript.py
-    
-This script includes all options that can be given the original randomizer as parameters. 
+There are more optons to call, check out the options.py to see them all.
 
 
 #### FOR EMULATOR
-10a) Depending on your setup, on how you wanna use the game this step might differ, if you want an iso ready to be played on emu
-
-    wit -P copy modified-extract disc.iso
-
-11a) Open disc.iso in Dolphin
+11a) Open disc.wbfs in Dolphin
 12a) Profit
 #### FOR CONSOLE
 10b) The exact steps may differ from what i write down, but this worked for me using Configurable USB Loader, loading from a SD card:
