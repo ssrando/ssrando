@@ -1731,6 +1731,22 @@ F210: # Mogma Turf
     layer: 1
     room: 0
     objtype: OBJ
+F201_1: # Inside Volcano
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 19
+        night: 0
+        layer: 4
+      - story_flag: 677
+        night: 0
+        layer: 3
+      - story_flag: 207
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
 F201_3: # FS entrance
   - name: Layer override
     type: layeroverride
@@ -1741,15 +1757,12 @@ F201_3: # FS entrance
       - story_flag: 677
         night: 0
         layer: 3
-      - story_flag: 48
+      - story_flag: 207
         night: 0
         layer: 2
-      - story_flag: 5
-        night: 0
-        layer: 1
       - story_flag: -1
         night: 0
-        layer: 0
+        layer: 1
   - name: Big Flames
     type: objdelete
     id: 0xFC15
@@ -1775,6 +1788,21 @@ F201_3: # FS entrance
     room: 0
     objtype: OBJ
 F201_4: # Volcano Waterfall
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 19
+        night: 0
+        layer: 4
+      - story_flag: 677
+        night: 0
+        layer: 3
+      - story_flag: 207
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
   - name: extra Bomb flower
     type: objadd
     layer: 0
