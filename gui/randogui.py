@@ -1,12 +1,6 @@
 import os
-import subprocess
 import sys
-import zipfile
-from io import BytesIO
 from pathlib import Path
-from threading import Thread
-from tkinter import filedialog
-from urllib import request
 
 from PySide2 import QtWidgets
 from PySide2.QtCore import Qt, QTimer, QEvent
@@ -15,10 +9,10 @@ from PySide2.QtWidgets import QMainWindow, QAbstractButton, QComboBox, QSpinBox,
 
 from logic.constants import ALL_TYPES
 from options import OPTIONS, Options
-from progressdialog import ProgressDialog
-from guithreads import RandomizerThread, ExtractSetupThread
+from gui.progressdialog import ProgressDialog
+from gui.guithreads import RandomizerThread, ExtractSetupThread
 from ssrando import Randomizer, VERSION
-from ui_randogui import Ui_MainWindow
+from gui.ui_randogui import Ui_MainWindow
 from witmanager import WitManager
 
 # Allow keyboard interrupts on the command line to instantly close the program.
