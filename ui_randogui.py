@@ -180,19 +180,19 @@ class Ui_MainWindow(object):
         self.groupBox_2.setGeometry(QRect(10, 420, 931, 121))
         self.gridLayoutWidget_2 = QWidget(self.groupBox_2)
         self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
-        self.gridLayoutWidget_2.setGeometry(QRect(10, 20, 911, 97))
+        self.gridLayoutWidget_2.setGeometry(QRect(10, 20, 911, 98))
         self.gridLayout_2 = QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.option_closed_thunderhead = QCheckBox(self.gridLayoutWidget_2)
-        self.option_closed_thunderhead.setObjectName(u"option_closed_thunderhead")
-
-        self.gridLayout_2.addWidget(self.option_closed_thunderhead, 1, 1, 1, 1)
-
         self.option_swordless = QCheckBox(self.gridLayoutWidget_2)
         self.option_swordless.setObjectName(u"option_swordless")
 
         self.gridLayout_2.addWidget(self.option_swordless, 0, 0, 1, 1)
+
+        self.option_closed_thunderhead = QCheckBox(self.gridLayoutWidget_2)
+        self.option_closed_thunderhead.setObjectName(u"option_closed_thunderhead")
+
+        self.gridLayout_2.addWidget(self.option_closed_thunderhead, 1, 1, 1, 1)
 
         self.option_skip_skykeep = QCheckBox(self.gridLayoutWidget_2)
         self.option_skip_skykeep.setObjectName(u"option_skip_skykeep")
@@ -203,11 +203,6 @@ class Ui_MainWindow(object):
         self.option_empty_unrequired_dungeons.setObjectName(u"option_empty_unrequired_dungeons")
 
         self.gridLayout_2.addWidget(self.option_empty_unrequired_dungeons, 1, 0, 1, 1)
-
-        self.option_randomize_tablets = QCheckBox(self.gridLayoutWidget_2)
-        self.option_randomize_tablets.setObjectName(u"option_randomize_tablets")
-
-        self.gridLayout_2.addWidget(self.option_randomize_tablets, 0, 1, 1, 1)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setSpacing(6)
@@ -232,6 +227,22 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout_2.addLayout(self.horizontalLayout_2, 2, 1, 1, 1)
+
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.option_starting_tablet_count = QSpinBox(self.gridLayoutWidget_2)
+        self.option_starting_tablet_count.setObjectName(u"option_starting_tablet_count")
+        self.option_starting_tablet_count.setMaximumSize(QSize(41, 16777215))
+
+        self.horizontalLayout_5.addWidget(self.option_starting_tablet_count)
+
+        self.label_for_starting_tablet_count = QLabel(self.gridLayoutWidget_2)
+        self.label_for_starting_tablet_count.setObjectName(u"label_for_starting_tablet_count")
+
+        self.horizontalLayout_5.addWidget(self.label_for_starting_tablet_count)
+
+
+        self.gridLayout_2.addLayout(self.horizontalLayout_5, 0, 1, 1, 1)
 
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
@@ -287,35 +298,35 @@ class Ui_MainWindow(object):
         self.gridLayout_4 = QGridLayout(self.gridLayoutWidget_4)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.progression_faron_goddess = QCheckBox(self.gridLayoutWidget_4)
-        self.progression_faron_goddess.setObjectName(u"progression_faron_goddess")
+        self.progression_eldin_goddess = QCheckBox(self.gridLayoutWidget_4)
+        self.progression_eldin_goddess.setObjectName(u"progression_eldin_goddess")
 
-        self.gridLayout_4.addWidget(self.progression_faron_goddess, 1, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.progression_eldin_goddess, 1, 1, 1, 1)
 
         self.progression_goddess = QCheckBox(self.gridLayoutWidget_4)
         self.progression_goddess.setObjectName(u"progression_goddess")
 
         self.gridLayout_4.addWidget(self.progression_goddess, 0, 0, 1, 1)
 
-        self.progression_eldin_goddess = QCheckBox(self.gridLayoutWidget_4)
-        self.progression_eldin_goddess.setObjectName(u"progression_eldin_goddess")
+        self.progression_faron_goddess = QCheckBox(self.gridLayoutWidget_4)
+        self.progression_faron_goddess.setObjectName(u"progression_faron_goddess")
 
-        self.gridLayout_4.addWidget(self.progression_eldin_goddess, 1, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.progression_faron_goddess, 1, 0, 1, 1)
 
         self.progression_lanayru_goddess = QCheckBox(self.gridLayoutWidget_4)
         self.progression_lanayru_goddess.setObjectName(u"progression_lanayru_goddess")
 
         self.gridLayout_4.addWidget(self.progression_lanayru_goddess, 1, 2, 1, 1)
 
-        self.progression_floria_goddess = QCheckBox(self.gridLayoutWidget_4)
-        self.progression_floria_goddess.setObjectName(u"progression_floria_goddess")
-
-        self.gridLayout_4.addWidget(self.progression_floria_goddess, 2, 0, 1, 1)
-
         self.progression_summit_goddess = QCheckBox(self.gridLayoutWidget_4)
         self.progression_summit_goddess.setObjectName(u"progression_summit_goddess")
 
         self.gridLayout_4.addWidget(self.progression_summit_goddess, 2, 1, 1, 1)
+
+        self.progression_floria_goddess = QCheckBox(self.gridLayoutWidget_4)
+        self.progression_floria_goddess.setObjectName(u"progression_floria_goddess")
+
+        self.gridLayout_4.addWidget(self.progression_floria_goddess, 2, 0, 1, 1)
 
         self.progression_sand_sea_goddess = QCheckBox(self.gridLayoutWidget_4)
         self.progression_sand_sea_goddess.setObjectName(u"progression_sand_sea_goddess")
@@ -402,24 +413,24 @@ class Ui_MainWindow(object):
         self.progression_fetch.setText(QCoreApplication.translate("MainWindow", u"Fetch Quests", None))
         self.progression_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
-        self.option_closed_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Closed Thunderhead", None))
         self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
+        self.option_closed_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Closed Thunderhead", None))
         self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Skykeep", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Race Mode", None))
-        self.option_randomize_tablets.setText(QCoreApplication.translate("MainWindow", u"Tablet Randomizer", None))
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
+        self.label_for_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
         self.option_description.setText("")
         self.permalink_label.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings)", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Goddess Cube Options", None))
-        self.progression_faron_goddess.setText(QCoreApplication.translate("MainWindow", u"Faron Woods", None))
-        self.progression_goddess.setText(QCoreApplication.translate("MainWindow", u"Enabled", None))
         self.progression_eldin_goddess.setText(QCoreApplication.translate("MainWindow", u"Eldin Volcano", None))
+        self.progression_goddess.setText(QCoreApplication.translate("MainWindow", u"Enabled", None))
+        self.progression_faron_goddess.setText(QCoreApplication.translate("MainWindow", u"Faron Woods", None))
         self.progression_lanayru_goddess.setText(QCoreApplication.translate("MainWindow", u"Lanayru Desert", None))
-        self.progression_floria_goddess.setText(QCoreApplication.translate("MainWindow", u"Lake Floria", None))
         self.progression_summit_goddess.setText(QCoreApplication.translate("MainWindow", u"Volcano Summit", None))
+        self.progression_floria_goddess.setText(QCoreApplication.translate("MainWindow", u"Lake Floria", None))
         self.progression_sand_sea_goddess.setText(QCoreApplication.translate("MainWindow", u"Sand Sea", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"What areas of the world should progress items appear?", None))
         self.progression_skyloft.setText(QCoreApplication.translate("MainWindow", u"Skyloft", None))
