@@ -31,7 +31,7 @@ class RandoGUI(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.wit_manager = WitManager(Path('.').resolve())
+        self.wit_manager = WitManager(Path('..').resolve())
         self.randothread = None
         self.error_msg = None
         self.progress_dialog = None
