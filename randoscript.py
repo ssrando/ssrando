@@ -50,7 +50,7 @@ if options is not None:
         rando.randomize()
         print(rando.seed)
     else:
-        from randogui import run_main_gui
+        from gui.randogui import run_main_gui
 
         run_main_gui()
 
