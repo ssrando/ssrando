@@ -236,10 +236,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5.addWidget(self.option_starting_tablet_count)
 
-        self.label_for_starting_tablet_count = QLabel(self.gridLayoutWidget_2)
-        self.label_for_starting_tablet_count.setObjectName(u"label_for_starting_tablet_count")
+        self.label_for_option_starting_tablet_count = QLabel(self.gridLayoutWidget_2)
+        self.label_for_option_starting_tablet_count.setObjectName(u"label_for_option_starting_tablet_count")
 
-        self.horizontalLayout_5.addWidget(self.label_for_starting_tablet_count)
+        self.horizontalLayout_5.addWidget(self.label_for_option_starting_tablet_count)
 
 
         self.gridLayout_2.addLayout(self.horizontalLayout_5, 0, 1, 1, 1)
@@ -418,7 +418,7 @@ class Ui_MainWindow(object):
         self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Skykeep", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Race Mode", None))
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
-        self.label_for_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
+        self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))

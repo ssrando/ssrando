@@ -351,7 +351,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_for_starting_tablet_count">
+         <widget class="QLabel" name="label_for_option_starting_tablet_count">
           <property name="text">
            <string>Starting Tablets</string>
           </property>
