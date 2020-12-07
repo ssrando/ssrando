@@ -848,7 +848,7 @@ Lanayru - NE Desert Chest:
 Lanayru - On Top of Lanayru Mining Facility: # actually spawns on raising LMF
   Need: Can Access Dungeon Entrance In Lanayru Desert
   original item: Rare Treasure # TODO check
-  type: lanayru, miscellaneous
+  type: lanayru, miscellaneous, mini dungeon
   Paths:
    - stage/F300/r0/l1/TBox/83
 Lanayru - Chest Next to Trial:
