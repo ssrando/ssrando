@@ -123,6 +123,8 @@ New Trial Completed Storyflags:
 
 931: Adventure Pouch 932 Pouch Expansion
 
+933: Defeat Tentalus
+
 ### Shoutouts
 - Peppernicus2000: Logic, fixes
 - Azer67: Logic

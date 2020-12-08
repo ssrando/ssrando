@@ -394,7 +394,7 @@ B301: # after Sandship boss
     index: 1
     objtype: EVNT
     object:
-      story_flag1: -1 # remove more dowsing options
+      story_flag1: 933 # remove more dowsing options, change to defeat tentalus storyflag
       item: -1
   - name: Fi text before FS CS
     type: objadd
@@ -2409,14 +2409,14 @@ D301: # Sandship A
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x01FFFF01 # untriggered by 15, storyflag for beating sandship
+      params1: 0x01FFFF0B # untriggered by 15, storyflag for beating sandship
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
       anglex: 0xFF54 # triggered by sceneflag 84, which is goddess crest hit
       angley: 0xFFFF
-      anglez: 40108 # entrypoint 401_08
+      anglez: 40119 # entrypoint 401_19
       id: 0xFC00
       name: NpcTke
   - name: Trigger Flame CS
@@ -2460,7 +2460,7 @@ D301: # Sandship A
     room: 9
     objtype: STAG
     object:
-      anglez: 15 # untriggerstoryflag, beat sandship
+      anglez: 933 # untriggerstoryflag, defeat tentalus
   - name: Fi text infront of Boss Door
     type: objdelete
     id: 0xFC43
