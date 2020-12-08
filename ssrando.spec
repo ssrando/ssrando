@@ -49,7 +49,7 @@ else:
 with open('version-with-git.txt','w') as f:
   f.write(VERSION)
 
-a = Analysis(['randogui.py'],
+a = Analysis(['gui/randogui.py'],
              pathex=[],
              binaries=[],
              datas=build_datas_recursive([

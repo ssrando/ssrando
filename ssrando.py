@@ -86,10 +86,10 @@ class Randomizer:
     self.required_dungeons = [dungeon for dungeon in constants.POTENTIALLY_REQUIRED_DUNGEONS
       if dungeon in self.required_dungeons]
 
-    if not self.options['randomize-tablets']:
-      self.starting_items.append('Emerald Tablet')
-      self.starting_items.append('Ruby Tablet')
-      self.starting_items.append('Amber Tablet')
+    tablets = ['Emerald Tablet',  'Ruby Tablet', 'Amber Tablet']
+    for i in range(self.options['starting-tablet-count']):
+      self.starting_items.append(tablets.pop(random.randrange(0, len(tablets))))
+
     if not self.options['swordless']:
       self.starting_items.append('Progressive Sword')
       self.starting_items.append('Progressive Sword')
