@@ -85,9 +85,8 @@ class Randomizer:
     self.required_dungeons = [dungeon for dungeon in constants.POTENTIALLY_REQUIRED_DUNGEONS
       if dungeon in self.required_dungeons]
 
-    tablets = ['Emerald Tablet',  'Ruby Tablet', 'Amber Tablet']
-    for i in range(self.options['starting-tablet-count']):
-      self.starting_items.append(tablets.pop(random.randrange(0, len(tablets))))
+    tablets = ['Emerald Tablet', 'Ruby Tablet', 'Amber Tablet']
+    self.starting_items.extend(self.rng.sample(tablets, k=self.options['starting-tablet-count']))
 
     if not self.options['swordless']:
       self.starting_items.append('Progressive Sword')
@@ -222,7 +221,7 @@ class Randomizer:
     non_disabled_options = [
       name for name in self.options.options
       if (self.options[name] not in [False, [], {}, OrderedDict()] or OPTIONS[name]['type'] == 'int')
-      and not name in ["dry-run", "invisible-sword", "seed"]
+      and not name in ["dry-run", "seed", "noui"]
     ]
     option_strings = []
     for option_name in non_disabled_options:
@@ -232,6 +231,10 @@ class Randomizer:
         value = self.options[option_name]
         option_strings.append("  %s: %s" % (option_name, value))
     header += "\n".join(option_strings)
+  
+    if len(self.starting_items) > 0:
+      header += "\n\nStarting items:\n  "
+      header += "\n  ".join(self.starting_items)
     header += "\n\n\n"
     
     return header
