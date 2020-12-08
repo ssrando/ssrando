@@ -1037,7 +1037,7 @@ F023: # Thunderhead
     id: 0xFC13
     objtype: OBJ
     object:
-      params1: 0x61A32301 # triggered by story flag 200, untriggered by story flag 781
+      params1: 0x74C32301 # triggered by story flag 200, untriggered by story flag 934
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
