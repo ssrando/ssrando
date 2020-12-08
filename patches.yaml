@@ -88,6 +88,9 @@ global:
       # immediately return from the function that opens up the collection screen after a treasure
       - original: 94 21 ff f0 7c 08 02 a6 90 01 00 14 93 e1 00 0c 7c 7f 1b 78 48 00 02 2d
         patched:  4e 80 00 20 7c 08 02 a6 90 01 00 14 93 e1 00 0c 7c 7f 1b 78 48 00 02 2d
+      # don't increase the pouch counter, that is done in the event now
+      - original: 40 82 00 10 38 60 00 01 4b ff e7 5d 48 00 01 10
+        patched:  40 82 00 10 38 60 00 01 60 00 00 00 48 00 01 10
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
         patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
