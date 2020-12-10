@@ -4,11 +4,14 @@ import os
 import re
 import random
 from pathlib import Path
+import hashlib
+
 from logic.logic import Logic
 import logic.constants as constants
 from gamepatches import do_gamepatches, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
+from sslib.utils import encodeBytes
 
 from typing import List, Callable
 
@@ -64,7 +67,15 @@ class Randomizer:
     self.no_logs = False
     self.seed = self.options['seed']
     if self.seed == -1:
-        self.seed = random.randint(0,1000000)
+      self.seed = random.randint(0,1000000)
+    
+    # hash of seed, options, version
+    current_hash = hashlib.md5()
+    current_hash.update(str(self.seed).encode('ASCII'))
+    current_hash.update(self.options.get_permalink().encode('ASCII'))
+    current_hash.update(VERSION.encode('ASCII'))
+    # TODO: make the hash more readable (icons, names, etc)
+    self.randomizer_hash = encodeBytes(current_hash.digest()[:9])
     self.rng = random.Random()
     self.rng.seed(self.seed)
     self.entrance_connections = OrderedDict([
@@ -216,6 +227,8 @@ class Randomizer:
     header += "Permalink: %s\n" % self.options.get_permalink()
     
     header += "Seed: %s\n" % self.seed
+
+    header += "Hash : %s\n" % self.randomizer_hash
     
     header += "Options selected:\n"
     non_disabled_options = [
