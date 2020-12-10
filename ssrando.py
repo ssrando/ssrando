@@ -69,13 +69,7 @@ class Randomizer:
     if self.seed == -1:
       self.seed = random.randint(0,1000000)
     
-    # hash of seed, options, version
-    current_hash = hashlib.md5()
-    current_hash.update(str(self.seed).encode('ASCII'))
-    current_hash.update(self.options.get_permalink().encode('ASCII'))
-    current_hash.update(VERSION.encode('ASCII'))
-    # TODO: make the hash more readable (icons, names, etc)
-    self.randomizer_hash = encodeBytes(current_hash.digest()[:9])
+    self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
     self.rng.seed(self.seed)
     self.entrance_connections = OrderedDict([
@@ -116,6 +110,18 @@ class Randomizer:
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
     # self.logic.set_prerandomization_item_location("Skyloft - Practice Sword", "Progressive Sword")
+
+  def _get_rando_hash(self):
+    # hash of seed, options, version
+    current_hash = hashlib.md5()
+    current_hash.update(str(self.seed).encode('ASCII'))
+    current_hash.update(self.options.get_permalink().encode('ASCII'))
+    current_hash.update(VERSION.encode('ASCII'))
+    with open(RANDO_ROOT_PATH / 'names.txt') as f:
+      names=[s.strip() for s in f.readlines()]
+    hash_random = random.Random()
+    hash_random.seed(current_hash.digest())
+    return ' '.join(hash_random.choice(names) for _ in range(4))
 
   def check_valid_directory_setup(self):
     # catch common errors with directory setup
