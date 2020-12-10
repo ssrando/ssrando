@@ -655,9 +655,16 @@ def do_gamepatches(rando):
         eventpatches['002-System'] = []
     
     eventpatches['002-System'].append({
-        "name": "Rando hash on title screen",
+        "name": "Rando hash on file select",
         "type": "textpatch",
         "index": 73,
+        "text": rando.randomizer_hash,
+    })
+
+    eventpatches['002-System'].append({
+        "name": "Rando hash on new file",
+        "type": "textpatch",
+        "index": 75,
         "text": rando.randomizer_hash,
     })
 
