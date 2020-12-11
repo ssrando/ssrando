@@ -1790,6 +1790,18 @@ F201_3: # FS entrance
     layer: 2
     room: 0
     objtype: OBJ
+  - name: Goron Text near first frog
+    type: objdelete
+    id: 0xFC5D
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Goron Text near first frog
+    type: objdelete
+    id: 0xFC5E
+    layer: 2
+    room: 0
+    objtype: OBJ
 F201_4: # Volcano Waterfall
   - name: Layer override
     type: layeroverride
@@ -2643,6 +2655,12 @@ F401: # Sealed grounds Whirlpool
     type: objdelete
     id: 0xFC8E
     layer: 1
+    room: 1
+    objtype: OBJ
+  - name: Groosenator before imp 2
+    type: objdelete
+    id: 0xFC9D
+    layer: 3
     room: 1
     objtype: OBJ
   - name: Set vents in Intro CS
