@@ -353,7 +353,7 @@ Sky - Goddess Chest in Cave on Island Next to Bamboo Island:
 Sky - Beedle's Island Goddess Chest:
   Need: Goddess Cube at ride in ToT area
   original item: Heart Piece
-  type: sky, goddess, lanayru goddess
+  type: sky, goddess, lanayru goddess, combat
   Paths:
    - stage/F020/r0/l0/TBox/89
 Sky - Beedle's Island Cage Goddess Chest:
@@ -363,13 +363,13 @@ Sky - Beedle's Island Cage Goddess Chest:
   type: sky, goddess, faron goddess
   Paths:
    - stage/F020/r0/l0/TBox/81
-Sky - Northeast Island Goddess Cube Behind Bombable Rocks:
+Sky - Northeast Island Goddess Chest Behind Bombable Rocks:
   Need: Bomb Bag & Goddess Cube at Lanayru Mine Entrance
   original item: Silver Rupee
   type: sky, goddess, lanayru goddess
   Paths:
    - stage/F020/r0/l0/TBox/72
-Sky - Northeast Island Cage Goddess Cube:
+Sky - Northeast Island Cage Goddess Chest:
   Need: Goddess Cube East of Temple Entrance
   original item: Treasure Medal
   type: sky, goddess, eldin goddess
@@ -400,7 +400,7 @@ Sky - Goddess Chest Under Fun Fun Island:
   type: sky, goddess, floria goddess
   Paths:
    - stage/F020/r0/l0/TBox/86
-Sky - Southwest Triple Island Upper Goddes Chest:
+Sky - Southwest Triple Island Upper Goddess Chest:
   Need: Goddess Cube at Eldin Entrance
   original item: Small Seed Satchel
   type: sky, goddess, eldin goddess
@@ -412,7 +412,7 @@ Sky - Southwest Triple Island Lower Goddess Chest:
   type: sky, goddess, lanayru goddess
   Paths:
    - stage/F020/r0/l0/TBox/84
-Sky - Southwest Triple Island Cage Goddess Cube:
+Sky - Southwest Triple Island Cage Goddess Chest:
   Need: Clawshots & Goddess Cube in Skipper's Retreat
   original item: Potion Medal
   type: sky, goddess, sand sea goddess
@@ -518,10 +518,10 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
   type: thunderhead, goddess, summit goddess
   Paths:
    - stage/F023/r0/l0/TBox/77
-#Thunderhead - Mogma Mitts Island Quiver:
+#Thunderhead - Second Goddess Chest on Mogma Mitts Island:
 #  Need: Can Access Thunderhead & Mogma Mitts & Goddess Cube in Lanayru Gorge
 #  original item: Small Quiver
-#  type: thunderhead, goddess, goddess lanayru TODO: decide if this is a Lanyru or Sand Sea cube
+#  type: thunderhead, goddess, lanayru goddess TODO: decide if this is a Lanyru or Sand Sea cube
 #  Paths:
 #   - stage/F023/r0/l0/TBox/76
 Thunderhead - Bug Island minigame:
@@ -848,7 +848,7 @@ Lanayru - NE Desert Chest:
 Lanayru - On Top of Lanayru Mining Facility: # actually spawns on raising LMF
   Need: Can Access Dungeon Entrance In Lanayru Desert
   original item: Rare Treasure # TODO check
-  type: lanayru, miscellaneous
+  type: lanayru, miscellaneous, mini dungeon
   Paths:
    - stage/F300/r0/l1/TBox/83
 Lanayru - Chest Next to Trial:
@@ -1594,7 +1594,7 @@ Skykeep - Small Key Chest:
 Skyloft Silent Realm - Stone of Trials:
   Need: Song of the Hero & Goddess Harp
   original item: Stone of Trials
-  type: sky, silent realm
+  type: skyloft, silent realm
   Paths:
    - stage/S000/r0/l2/WarpObj
 

@@ -4,11 +4,14 @@ import os
 import re
 import random
 from pathlib import Path
+import hashlib
+
 from logic.logic import Logic
 import logic.constants as constants
 from gamepatches import do_gamepatches, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
+from sslib.utils import encodeBytes
 
 from typing import List, Callable
 
@@ -64,7 +67,9 @@ class Randomizer:
     self.no_logs = False
     self.seed = self.options['seed']
     if self.seed == -1:
-        self.seed = random.randint(0,1000000)
+      self.seed = random.randint(0,1000000)
+    
+    self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
     self.rng.seed(self.seed)
     self.entrance_connections = OrderedDict([
@@ -85,9 +90,8 @@ class Randomizer:
     self.required_dungeons = [dungeon for dungeon in constants.POTENTIALLY_REQUIRED_DUNGEONS
       if dungeon in self.required_dungeons]
 
-    tablets = ['Emerald Tablet',  'Ruby Tablet', 'Amber Tablet']
-    for i in range(self.options['starting-tablet-count']):
-      self.starting_items.append(tablets.pop(random.randrange(0, len(tablets))))
+    tablets = ['Emerald Tablet', 'Ruby Tablet', 'Amber Tablet']
+    self.starting_items.extend(self.rng.sample(tablets, k=self.options['starting-tablet-count']))
 
     if not self.options['swordless']:
       self.starting_items.append('Progressive Sword')
@@ -106,6 +110,18 @@ class Randomizer:
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
     # self.logic.set_prerandomization_item_location("Skyloft - Practice Sword", "Progressive Sword")
+
+  def _get_rando_hash(self):
+    # hash of seed, options, version
+    current_hash = hashlib.md5()
+    current_hash.update(str(self.seed).encode('ASCII'))
+    current_hash.update(self.options.get_permalink().encode('ASCII'))
+    current_hash.update(VERSION.encode('ASCII'))
+    with open(RANDO_ROOT_PATH / 'names.txt') as f:
+      names=[s.strip() for s in f.readlines()]
+    hash_random = random.Random()
+    hash_random.seed(current_hash.digest())
+    return ' '.join(hash_random.choice(names) for _ in range(4))
 
   def check_valid_directory_setup(self):
     # catch common errors with directory setup
@@ -217,12 +233,14 @@ class Randomizer:
     header += "Permalink: %s\n" % self.options.get_permalink()
     
     header += "Seed: %s\n" % self.seed
+
+    header += "Hash : %s\n" % self.randomizer_hash
     
     header += "Options selected:\n"
     non_disabled_options = [
       name for name in self.options.options
       if (self.options[name] not in [False, [], {}, OrderedDict()] or OPTIONS[name]['type'] == 'int')
-      and not name in ["dry-run", "invisible-sword", "seed"]
+      and not name in ["dry-run", "seed", "noui"]
     ]
     option_strings = []
     for option_name in non_disabled_options:
@@ -232,6 +250,10 @@ class Randomizer:
         value = self.options[option_name]
         option_strings.append("  %s: %s" % (option_name, value))
     header += "\n".join(option_strings)
+  
+    if len(self.starting_items) > 0:
+      header += "\n\nStarting items:\n  "
+      header += "\n  ".join(self.starting_items)
     header += "\n\n\n"
     
     return header

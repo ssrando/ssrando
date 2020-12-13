@@ -54,6 +54,7 @@ a = Analysis(['gui/randogui.py'],
              binaries=[],
              datas=build_datas_recursive([
              	'version-with-git.txt',
+             	'names.txt',
              	'*.yaml',
              	'assets/logo.tpl',
              ]),

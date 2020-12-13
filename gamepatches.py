@@ -665,6 +665,23 @@ def do_gamepatches(rando):
     for (stage, layer), oarcs in remove_stageoarcs.items():
         patcher.delete_stage_oarc(stage, layer, oarcs)
 
+    if not '002-System' in eventpatches:
+        eventpatches['002-System'] = []
+    
+    eventpatches['002-System'].append({
+        "name": "Rando hash on file select",
+        "type": "textpatch",
+        "index": 73,
+        "text": rando.randomizer_hash,
+    })
+
+    eventpatches['002-System'].append({
+        "name": "Rando hash on new file",
+        "type": "textpatch",
+        "index": 75,
+        "text": rando.randomizer_hash,
+    })
+
     def bzs_patch_func(bzs, stage, room):
         stagepatches = patches.get(stage, [])
         stagepatches = list(filter(filter_option_requirement, stagepatches))
