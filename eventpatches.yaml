@@ -1289,15 +1289,6 @@
       subType: 0
       param1: 0
       param2: -1 # will be filled in later if this is a required dungeon
-      next: set tentalus defeated storyflag
-      param3: 0
-  - name: set tentalus defeated storyflag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 933 # tentalus defeated
       next: set sandship storyflag
       param3: 0
   - name: set sandship storyflag
@@ -1345,9 +1336,18 @@
     type: flowadd
     flow:
       type: type1
-      next: Leave dungeon trigger
+      next: set tentalus defeated storyflag
       param3: 171
       param4: 57
+  - name: set tentalus defeated storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 933 # tentalus defeated
+      next: Leave dungeon trigger
+      param3: 0
   - name: Leave dungeon trigger
     type: flowadd
     flow:

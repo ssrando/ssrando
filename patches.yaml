@@ -2424,7 +2424,7 @@ D301: # Sandship A
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x01FFFF0B # untriggered by 15, storyflag for beating sandship
+      params1: 0x01FFFF01 # untriggered by 15, storyflag for beating sandship
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
