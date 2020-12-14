@@ -80,6 +80,72 @@ START_ITEM_STORYFLAGS = {
     "Amber Tablet": 48,
 }
 
+# The stage name of each dungeon
+DUNGEON_STAGES = {
+    'Skyview': 'D100',
+    'Ancient Cistern': 'D101',
+    'Earth Temple': 'D200',
+    'Fire Sanctuary': 'D201',
+    'Lanayru Mining Facility': 'D300',
+    'Sandship': 'D301',
+    'Skykeep': 'D003_7'
+}
+
+# The stage for each map where there are dungeon entrances
+DUNGEON_ENTRANCE_STAGES = {
+    "Dungeon Entrance In Deep Woods": "F101",
+    "Dungeon Entrance In Lake Floria": 'F102_1',
+    "Dungeon Entrance In Eldin Volcano": "F200",
+    "Dungeon Entrance In Volcano Summit": 'F201_3',
+    "Dungeon Entrance In Lanayru Desert": 'F300',
+    "Dungeon Entrance In Sand Sea": 'F301_1',
+    "Dungeon Entrance On Skyloft": 'F000',
+}
+
+# The index of the SCEN inside of the stage
+ENTRANCE_MAP_SCEN_INDEX = {
+    'F101': 1,
+    'F102_1': 1,
+    'F200': 0,
+    'F201_3': 1,
+    'F300': 5,
+    'F301_1': 1,
+    'F000': 48
+}
+
+# The entrance into the dungeon
+ENTRANCE_MAP_ENTRANCE_INDEX = {
+    'F101': 0,
+    'F102_1': 1,
+    'F200': 0,
+    'F201_3': 1,
+    'F300': 0,
+    'F301_1': 1,
+    'F000': 4
+}
+
+# The room on the map the entrance is on where the SCEN is located
+ENTRANCE_MAP_ROOM = {
+    'F101': 0,
+    'F102_1': 1,
+    'F200': 4,
+    'F201_3': 0,
+    'F300': 0,
+    'F301_1': 1,
+    'F000': 4
+}
+
+# The room of the dungeon tto enter into
+ENTRANCE_DUNGEON_ROOM = {
+    'D100': 0,
+    'D101': 0,
+    'D200': 1,
+    'D201': 0,
+    'D300': 0,
+    'D301': 0,
+    'D003_7': 0
+}
+
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
 PROGRESSIVE_SWORD_ITEMIDS = [10, 11, 12, 9, 13, 14]
 
@@ -451,7 +517,7 @@ def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Op
             objlist.remove(obj)
     elif not index is None:
         if index >= len(objlist):
-            print(f'Error list index out of range: {json.dumps(objdef)}')
+            print(f'Error lisError list index out of range: {json.dumps(objdef)}')
             return None
         if remove:
             obj = objlist.pop(index)
@@ -474,16 +540,21 @@ def do_gamepatches(rando):
         eventpatches = yaml.safe_load(f)
     pprint(patches)
 
-    patches.get('F101').append({
-        'name': 'Dungeon entrance patch',
-        'type': 'objpatch',
-        'index': 1,
-        'room': 0,
-        'objtype': 'SCEN',
-        'object': {
-            'name': 'D101'
-        }
-    })
+    for entrance, dungeon in rando.entrance_connections.items():
+        entrance_stage = DUNGEON_ENTRANCE_STAGES[entrance]
+        dungeon_stage = DUNGEON_STAGES[dungeon]
+        patches.get(entrance_stage).append({
+            'name': 'Dungeon entrance patch - ' + entrance + " to " + dungeon,
+            'type': 'objpatch',
+            'index': ENTRANCE_MAP_SCEN_INDEX[entrance_stage],
+            'room': ENTRANCE_MAP_ROOM[entrance_stage],
+            'objtype': 'SCEN',
+            'object': {
+                'name': dungeon_stage,
+                'entrance': ENTRANCE_MAP_ENTRANCE_INDEX[entrance_stage],
+                'room': ENTRANCE_DUNGEON_ROOM[dungeon_stage]
+            }
+        })
 
     rando.progress_callback('building arc cache...')
 

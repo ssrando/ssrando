@@ -73,12 +73,12 @@ class Randomizer:
     self.rng = random.Random()
     self.rng.seed(self.seed)
     self.entrance_connections = OrderedDict([
-      ("Dungeon Entrance In Deep Woods", "Skyview"),
-      ("Dungeon Entrance In Eldin Volcano", "Earth Temple"),
-      ("Dungeon Entrance In Lanayru Desert", "Lanayru Mining Facility"),
+      ("Dungeon Entrance In Deep Woods", "Earth Temple"),
+      ("Dungeon Entrance In Eldin Volcano", "Lanayru Mining Facility"),
+      ("Dungeon Entrance In Lanayru Desert", "Fire Sanctuary"),
       ("Dungeon Entrance In Lake Floria", "Ancient Cistern"),
       ("Dungeon Entrance In Sand Sea", "Sandship"),
-      ("Dungeon Entrance In Volcano Summit", "Fire Sanctuary"),
+      ("Dungeon Entrance In Volcano Summit", "Skyview"),
       ("Dungeon Entrance On Skyloft", "Skykeep"),
     ])
     # self.starting_items = (x.strip() for x in self.options['starting_items']
