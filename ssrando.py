@@ -104,7 +104,7 @@ class Randomizer:
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
     self.logic = Logic(self)
     # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
-    # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Goddess Harp")
+    # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Bow")
     # self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")

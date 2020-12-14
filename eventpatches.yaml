@@ -1289,6 +1289,24 @@
       subType: 0
       param1: 0
       param2: -1 # will be filled in later if this is a required dungeon
+      next: set tentalus defeated storyflag
+      param3: 0
+  - name: set tentalus defeated storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 933 # tentalus defeated
+      next: set sandship storyflag
+      param3: 0
+  - name: set sandship storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 15 # sandship beaten
       next: to rando dungeons completed check
       param3: 0
   - name: to rando dungeons completed check
@@ -1300,6 +1318,45 @@
       param2: 7
       next: -1
       param3: 7
+  - name: Main Deck dungeon beaten entry
+    type: entryadd
+    entry:
+      name: "401_19"
+      value: Check Tentalus defeated Switch
+  - name: Check Tentalus defeated Switch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 933 # tentalus defeated
+      param3: 3
+    cases:
+      - 54 # continue if storyflag set
+      - -1 # do nothing if not set
+  - name: Fi text text to leave dungeon
+    type: textadd
+    index: 57
+    text: "You can't beat this\ndungeon at the present\ntime, I would suggest\ncoming back later"
+  - name: Fi trigger to leave
+    type: entryadd
+    entry:
+      name: "401_18"
+      value: Fi text to leave
+  - name: Fi text to leave
+    type: flowadd
+    flow:
+      type: type1
+      next: Leave dungeon trigger
+      param3: 171
+      param4: 57
+  - name: Leave dungeon trigger
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 1 # exit
+      param2: 0 # current room
+      next: -1
+      param3: 10
 402-DesertF2:
   - name: Never ask player to go inside shark mouth for ship dowsing
     type: flowpatch

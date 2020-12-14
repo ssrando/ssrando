@@ -85,6 +85,11 @@
   oarcs:
   - GetKeyBossC
   stage: D300
+- layer: 9
+  oarcs:
+  - GoddessSymbolSc
+  - SwordCandle
+  stage: D301
 - layer: 0
   oarcs:
   - GetKeyBoss2A
