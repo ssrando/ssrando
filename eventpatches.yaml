@@ -1330,7 +1330,7 @@
       param2: 933 # tentalus defeated
       param3: 3
     cases:
-      - 54 # continue if storyflag set
+      - 45 # continue if storyflag set
       - -1 # do nothing if not set
   - name: Fi text text to leave dungeon
     type: textadd
