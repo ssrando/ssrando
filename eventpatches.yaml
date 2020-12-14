@@ -1325,7 +1325,7 @@
       - -1 # do nothing if not set
   - name: Fi text text to leave dungeon
     type: textadd
-    index: 57
+    unk1: 2
     text: "You can't beat this\ndungeon at the present\ntime, I would suggest\ncoming back later"
   - name: Fi trigger to leave
     type: entryadd
