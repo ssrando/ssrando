@@ -1,6 +1,8 @@
 from pathlib import Path
 import random
 from collections import OrderedDict, defaultdict
+from pprint import pprint
+
 import yaml
 import json
 from io import BytesIO
@@ -180,7 +182,7 @@ def make_progressive_item(msbf, base_item_start, item_text_indexes, item_ids, st
         event = make_flag_event(FlagEventTypes.SET_STORYFLAG, storyflags[index])
         event['next'] = item_text_indexes[index]
         msbf['FLW3']['flow'].append(event)
-        flow_idx += 3 
+        flow_idx += 3
     event = make_flag_event(FlagEventTypes.SET_STORYFLAG, storyflags[0])
     event['next'] = item_text_indexes[0]
     msbf['FLW3']['flow'].append(event)
@@ -194,7 +196,7 @@ def highest_objid(bzs):
         for objtype in ['OBJS','OBJ ','SOBS','SOBJ','STAS','STAG','SNDT','DOOR']:
             if objtype in layer:
                 id = layer[objtype][-1]['id'] & 0x3FF
-                if id != 0x3FF: # aparently some objects have the max id? 
+                if id != 0x3FF: # aparently some objects have the max id?
                     max_id = max(max_id, id)
     return max_id
 
@@ -470,9 +472,21 @@ def do_gamepatches(rando):
         patches = yaml.safe_load(f)
     with (RANDO_ROOT_PATH / "eventpatches.yaml").open() as f:
         eventpatches = yaml.safe_load(f)
+    pprint(patches)
+
+    patches.get('F101').append({
+        'name': 'Dungeon entrance patch',
+        'type': 'objpatch',
+        'index': 1,
+        'room': 0,
+        'objtype': 'SCEN',
+        'object': {
+            'name': 'D101'
+        }
+    })
 
     rando.progress_callback('building arc cache...')
-    
+
     with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
         extracts = yaml.safe_load(f)
     patcher.create_oarc_cache(extracts)
@@ -480,7 +494,7 @@ def do_gamepatches(rando):
     def filter_option_requirement(entry):
         return not (isinstance(entry, dict) and 'onlyif' in entry \
             and not rando.logic.check_logical_expression_string_req(entry['onlyif']))
-    
+
     filtered_storyflags = []
     for storyflag in patches['global']['startstoryflags']:
         # conditionals are an object
@@ -500,12 +514,12 @@ def do_gamepatches(rando):
         patches['global']['startstoryflags'].append(PROGRESSIVE_SWORD_STORYFLAGS[i])
     if start_sword_count > 0:
         patches['global']['startitems'].append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count-1])
-    
+
     # if 'Sailcloth' in rando.starting_items:
     #     patches['global']['startstoryflags'].append(32)
     #     patches['global']['startitems'].append(15)
 
-    
+
     rando_stagepatches, stageoarcs, rando_eventpatches = get_patches_from_location_item_list(rando.logic.item_locations, rando.logic.done_item_locations)
 
     # Add required dungeon patches to eventpatches
@@ -524,12 +538,12 @@ def do_gamepatches(rando):
         dungeon_events = eventpatches[DUNGEON_TO_EVENTFILE[dungeon]]
         required_dungeon_storyflag_event = next(filter(lambda x: x['name'] == 'rando required dungeon storyflag', dungeon_events))
         required_dungeon_storyflag_event['flow']['param2'] = REQUIRED_DUNGEON_STORYFLAGS[i] # param2 is storyflag of event
-    
+
     required_dungeon_count = len(rando.required_dungeons)
     # set flags for unrequired dungeons beforehand
     for required_dungeon_storyflag in REQUIRED_DUNGEON_STORYFLAGS[required_dungeon_count:]:
         patches['global']['startstoryflags'].append(required_dungeon_storyflag)
-    
+
     # patch required dungeon text in
     if required_dungeon_count == 0:
         required_dungeons_text = 'No Dungeons'
@@ -552,7 +566,7 @@ def do_gamepatches(rando):
                 cur_line += part + ' '
         combined += cur_line
         required_dungeons_text = combined.strip()
-    
+
     eventpatches['107-Kanban'].append({
         "name": "Knight Academy Billboard text",
         "type": "textpatch",
@@ -643,9 +657,9 @@ def do_gamepatches(rando):
                 stageoarcs[(stage, patch['destlayer'])].add(patch['oarc'])
             elif patch['type'] == 'oarcdelete':
                 remove_stageoarcs[(stage, patch['layer'])].add(patch['oarc'])
-    
+
     # stageoarcs[('D000',0)].add('GetSwordA')
-    
+
     for (stage, layer), oarcs in stageoarcs.items():
         patcher.add_stage_oarc(stage, layer, oarcs)
     for (stage, layer), oarcs in remove_stageoarcs.items():
@@ -771,7 +785,7 @@ def do_gamepatches(rando):
             objlist.append(new_obj)
             modified = True
             # print(obj)
-        
+
         # patch randomized items on stages
         for objname, layer, objid, itemid in rando_stagepatches.get((stage, room),[]):
             modified = True
@@ -919,7 +933,7 @@ def do_gamepatches(rando):
             # make progressive wallets
             make_progressive_item(msbf, 250, [246, 245, 244, 255], [108, 109, 110, 111], [915, 916, 917, 918])
             modified = True
-        
+
         # patch randomized items
         for evntline, itemid in rando_eventpatches.get(filename, []):
             try:
@@ -987,7 +1001,7 @@ def do_gamepatches(rando):
         patched_code = bytes.fromhex(dolpatch['patched'])
         assert len(actual_code) == len(patched_code), "code length has to remain the same!"
         code_pos = orig_dol.find(actual_code)
-        
+
         assert code_pos != -1, f"code {dolpatch['original']} not found in main.dol!"
         assert orig_dol.find(actual_code, code_pos+1) == -1, f"code {dolpatch['original']} found multiple times in main.dol!"
         orig_dol[code_pos:code_pos+len(actual_code)] = patched_code
@@ -1010,7 +1024,7 @@ def do_gamepatches(rando):
             patched_code = bytes.fromhex(codepatch['patched'])
             assert len(actual_code) == len(patched_code), "code length has to remain the same!"
             code_pos = rel.find(actual_code)
-            
+
             assert code_pos != -1, f"code {codepatch['original']} not found in {file}!"
             if codepatch.get('multiple',False):
                 while code_pos != -1:
