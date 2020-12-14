@@ -1,5 +1,20 @@
 # Changelog
 
+## WIP
+### Options
+- Change tablet rando option to select
+- More types and Area types
+### Changes
+- Removed more text triggers and cutscenes
+- Show a hash on the file select screen to make it easier to verify that everyone has the same seed
+- Make Fun Fun island quest be startable immediately
+- Always skip opening the inventory screen after treasures/bug/crystals
+### Bugfixes
+- Fix double increasing pouch counter
+- Fixed a shared storyflag, causing levias to sometimes not give an item
+- Fixed layers in Volcano Summit
+- Fix some NPCs holding items in their hands
+
 ## 1.0.2
 ### Options
 - add hero mode option
