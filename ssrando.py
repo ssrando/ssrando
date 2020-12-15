@@ -75,11 +75,11 @@ class Randomizer:
     self.entrance_connections = OrderedDict([
       ("Dungeon Entrance In Deep Woods", "Earth Temple"),
       ("Dungeon Entrance In Eldin Volcano", "Lanayru Mining Facility"),
-      ("Dungeon Entrance In Lanayru Desert", "Fire Sanctuary"),
-      ("Dungeon Entrance In Lake Floria", "Ancient Cistern"),
-      ("Dungeon Entrance In Sand Sea", "Sandship"),
+      ("Dungeon Entrance In Lanayru Desert", "Sandship"),
+      ("Dungeon Entrance In Lake Floria", "Skykeep"),
+      ("Dungeon Entrance In Sand Sea", "Ancient Cistern"),
       ("Dungeon Entrance In Volcano Summit", "Skyview"),
-      ("Dungeon Entrance On Skyloft", "Skykeep"),
+      ("Dungeon Entrance On Skyloft", "Fire Sanctuary"),
     ])
     # self.starting_items = (x.strip() for x in self.options['starting_items']
     # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))

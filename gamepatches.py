@@ -127,15 +127,15 @@ ENTRANCE_MAP_ENTRANCE_INDEX = {
 # The room on the map the entrance is on where the SCEN is located
 ENTRANCE_MAP_ROOM = {
     'F101': 0,
-    'F102_1': 1,
+    'F102_1': 0,
     'F200': 4,
     'F201_3': 0,
     'F300': 0,
-    'F301_1': 1,
-    'F000': 4
+    'F301_1': 0,
+    'F000': 0
 }
 
-# The room of the dungeon tto enter into
+# The room of the dungeon to enter into
 ENTRANCE_DUNGEON_ROOM = {
     'D100': 0,
     'D101': 0,
@@ -144,6 +144,17 @@ ENTRANCE_DUNGEON_ROOM = {
     'D300': 0,
     'D301': 0,
     'D003_7': 0
+}
+
+DUNGEON_ENTRANCES = {
+    # stage, layer, room, entrance
+    'Skyview': ('D100', 0, 0, 0),
+    'Earth Temple': ('D200', 0, 1, 0),
+    'Lanayru Mining Facility': ('D300', 0, 0, 0),
+    'Ancient Cistern': ('D101', 0, 0, 0),
+    'Sandship': ('D301', 1, 0, 0),
+    'Fire Sanctuary': ('D201', 0, 0, 0),
+    'Skykeep': ('D003_7', 0, 0, 4),
 }
 
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
@@ -538,11 +549,10 @@ def do_gamepatches(rando):
         patches = yaml.safe_load(f)
     with (RANDO_ROOT_PATH / "eventpatches.yaml").open() as f:
         eventpatches = yaml.safe_load(f)
-    pprint(patches)
 
     for entrance, dungeon in rando.entrance_connections.items():
         entrance_stage = DUNGEON_ENTRANCE_STAGES[entrance]
-        dungeon_stage = DUNGEON_STAGES[dungeon]
+        dungeon_stage, layer, room, entrance_index = DUNGEON_ENTRANCES[dungeon]
         patches.get(entrance_stage).append({
             'name': 'Dungeon entrance patch - ' + entrance + " to " + dungeon,
             'type': 'objpatch',
@@ -551,8 +561,9 @@ def do_gamepatches(rando):
             'objtype': 'SCEN',
             'object': {
                 'name': dungeon_stage,
-                'entrance': ENTRANCE_MAP_ENTRANCE_INDEX[entrance_stage],
-                'room': ENTRANCE_DUNGEON_ROOM[dungeon_stage]
+                'layer': layer,
+                'room': room,
+                'entrance': entrance_index,
             }
         })
 
