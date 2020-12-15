@@ -72,7 +72,7 @@ class Randomizer:
     self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
     self.rng.seed(self.seed)
-    self.entrance_connections = OrderedDict([
+    VANILLA_ENTRANCE_CONNECTIONS = OrderedDict([
       ("Dungeon Entrance In Deep Woods", "Earth Temple"),
       ("Dungeon Entrance In Eldin Volcano", "Lanayru Mining Facility"),
       ("Dungeon Entrance In Lanayru Desert", "Sandship"),
@@ -81,6 +81,13 @@ class Randomizer:
       ("Dungeon Entrance In Volcano Summit", "Skyview"),
       ("Dungeon Entrance On Skyloft", "Fire Sanctuary"),
     ])
+    if False:
+      self.entrance_connections = VANILLA_ENTRANCE_CONNECTIONS
+    else:
+      random_entrances = VANILLA_ENTRANCE_CONNECTIONS.keys()
+      random_exits = list(VANILLA_ENTRANCE_CONNECTIONS.values())
+      self.rng.shuffle(random_exits)
+      self.entrance_connections = OrderedDict(zip(random_entrances, random_exits))
     # self.starting_items = (x.strip() for x in self.options['starting_items']
     # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
     self.starting_items = []
