@@ -2127,6 +2127,12 @@ F300_4: # Temple of Time
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove backwards loadingzone to LMF
+    type: objdelete
+    id: 0xFC3D
+    layer: 0
+    room: 0
+    onjtype: SCEN
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch
