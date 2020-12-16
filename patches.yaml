@@ -1340,11 +1340,11 @@ F100_1: # Great Tree
 D100: # Skyview
   - name: Layer override
     type: layeroverride
-    override: # keep layers normal but remove layer 3+
+    override: # only layer change is to layer 2 after water dragons scale
       - story_flag: 206 # storyflag after water dragons scale
         night: 0
         layer: 2
-      - story_flag: 4 # skyview entrance CS
+      - story_flag: -1
         night: 0
         layer: 1
   - name: Small Key Soil
