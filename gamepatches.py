@@ -113,17 +113,6 @@ ENTRANCE_MAP_SCEN_INDEX = {
     'F000': 48
 }
 
-# The entrance into the dungeon
-ENTRANCE_MAP_ENTRANCE_INDEX = {
-    'F101': 0,
-    'F102_1': 1,
-    'F200': 0,
-    'F201_3': 1,
-    'F300': 0,
-    'F301_1': 1,
-    'F000': 4
-}
-
 # The room on the map the entrance is on where the SCEN is located
 ENTRANCE_MAP_ROOM = {
     'F101': 0,
@@ -135,17 +124,6 @@ ENTRANCE_MAP_ROOM = {
     'F000': 0
 }
 
-# The room of the dungeon to enter into
-ENTRANCE_DUNGEON_ROOM = {
-    'D100': 0,
-    'D101': 0,
-    'D200': 1,
-    'D201': 0,
-    'D300': 0,
-    'D301': 0,
-    'D003_7': 0
-}
-
 DUNGEON_ENTRANCES = {
     # stage, layer, room, entrance
     'Skyview': ('D100', 0, 0, 0),
@@ -155,6 +133,45 @@ DUNGEON_ENTRANCES = {
     'Sandship': ('D301', 1, 0, 0),
     'Fire Sanctuary': ('D201', 0, 0, 0),
     'Skykeep': ('D003_7', 0, 0, 4),
+}
+
+DUNGEON_EXIT_SCENS = {
+    # stage, room, index
+    'Skyview': [('D100', 0, 0), ('D100', 0, 2), ('D100', 2, 0), ('D100', 5, 0), ('D100', 9, 0),
+                ('B100_1', 0, 1), ('B100_1', 0, 4)],
+    'Earth Temple': [('D200', 1, 0), ('D200', 1, 1), ('D200', 2, 0), ('D200', 4, 2),
+                     ('B210', 0, 0)],
+    'Lanayru Mining Facility': [('D300', 0, 0), ('D300', 0, 1), ('D300', 5, 4),
+                                ('D300_1', 0, 0), ('D300', 0, 1), ('D300', 5, 4),
+                                ('B300', 0, 0), ('B300', 0, 1)],
+    'Ancient Cistern': [('D101', 0, 2), ('D101', 0, 3), ('D101', 3, 2), ('D101', 4, 2), ('D101', 5, 0),
+                        ('B101_1', 0, 1), ('B101_1', 0, 3)],
+    'Sandship': [('D301', 0, 0), ('D301', 0, 1), ('D301', 1, 2), ('D301', 2, 0), ('D301', 6, 0), ('D301', 9, 1),
+                 ('D301', 12, 0), ('D301', 13, 0),
+                 ('B301', 0, 1), ('B301', 0, 4)],
+    'Fire Sanctuary': [('D201', 0, 1), ('D201', 3, 2), ('D201', 10, 2),
+                       ('D201_1', 1, 0),
+                       ('B201_1', 0, 2)],
+    'Skykeep': [('D003_0', 0, 0), ('D003_0', 0, 1), ('D003_0', 0, 3),
+                ('D003_1', 0, 0), ('D003_1', 0, 1), ('D003_1', 0, 2),
+                ('D003_2', 0, 0), ('D003_2', 0, 1), ('D003_2', 0, 3),
+                ('D00_3', 0, 0), ('D00_3', 0, 1), ('D00_3', 0, 3),
+                ('D00_4', 0, 0), ('D00_4', 0, 1), ('D00_4', 0, 2),
+                ('D00_5', 0, 0), ('D00_5', 0, 1), ('D00_5', 0, 2),
+                ('D00_6', 0, 0), ('D00_6', 0, 1), ('D00_6', 0, 2),
+                ('D00_7', 0, 0), ('D00_7', 0, 1), ('D00_7', 0, 2),
+                ('D00_8', 0, 0)],
+}
+
+DUNGEON_EXITS = {
+    # layer, room, entrance
+    'F101': (0, 0, 1),
+    'F102_1': (0, 0, 6),
+    'F200': (0, 4, 1),
+    'F201_3': (0, 0, 1),
+    'F300': (0, 0, 5),
+    'F301_1': (0, 0, 4),
+    'F000': (0, 0, 53)
 }
 
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
@@ -553,6 +570,7 @@ def do_gamepatches(rando):
     for entrance, dungeon in rando.entrance_connections.items():
         entrance_stage = DUNGEON_ENTRANCE_STAGES[entrance]
         dungeon_stage, layer, room, entrance_index = DUNGEON_ENTRANCES[dungeon]
+        # patch dungeon entrance
         patches.get(entrance_stage).append({
             'name': 'Dungeon entrance patch - ' + entrance + " to " + dungeon,
             'type': 'objpatch',
@@ -563,9 +581,28 @@ def do_gamepatches(rando):
                 'name': dungeon_stage,
                 'layer': layer,
                 'room': room,
-                'entrance': entrance_index,
+                'entrance': entrance_index
             }
         })
+
+        # patch all the exists for the dungeon
+        for scen_stage, scen_room, scen_index in DUNGEON_EXIT_SCENS[dungeon]:
+            exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance_stage]
+            if scen_stage not in patches:
+                patches[scen_stage] = []
+            patches.get(scen_stage).append({
+                'name': 'Dungeon exit patch - ' + entrance + " to " + dungeon,
+                'type': 'objpatch',
+                'index': scen_index,
+                'room': scen_room,
+                'objtype': 'SCEN',
+                'object': {
+                    'name': entrance_stage,
+                    'layer': 0,
+                    'room': exit_room,
+                    'entrance': exit_entrance
+                }
+            })
 
     rando.progress_callback('building arc cache...')
 
@@ -749,7 +786,7 @@ def do_gamepatches(rando):
 
     if not '002-System' in eventpatches:
         eventpatches['002-System'] = []
-    
+
     eventpatches['002-System'].append({
         "name": "Rando hash on file select",
         "type": "textpatch",
