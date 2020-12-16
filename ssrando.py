@@ -72,8 +72,18 @@ class Randomizer:
     self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
     self.rng.seed(self.seed)
-    dungeons = ["Skyview", "Earth Temple", "Lanayru Mining Facility", "Ancient Cistern", "Sandship", "Fire Sanctuary", "Skykeep"]
-    self.rng.shuffle(dungeons)
+    dungeons = ["Skyview", "Earth Temple", "Lanayru Mining Facility", "Ancient Cistern", "Sandship", "Fire Sanctuary"]
+    if self.options['randomize-entrances'] == 'None':
+      dungeons.append('Skykeep')
+      dungeons.reverse()
+    else:
+      if self.options['randomize-entrances'] == 'Dungeons':
+        self.rng.shuffle(dungeons)
+        dungeons.append('Skykeep')
+        dungeons.reverse()
+      else:
+        dungeons.append('Skykeep')
+        self.rng.shuffle(dungeons)
     self.entrance_connections = OrderedDict([
       ("Dungeon Entrance In Deep Woods", dungeons.pop()),
       ("Dungeon Entrance In Eldin Volcano", dungeons.pop()),

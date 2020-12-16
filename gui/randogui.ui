@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>952</width>
-    <height>654</height>
+    <height>667</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -258,7 +258,7 @@
       <x>10</x>
       <y>420</y>
       <width>931</width>
-      <height>121</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="title">
@@ -270,39 +270,11 @@
        <x>10</x>
        <y>20</y>
        <width>911</width>
-       <height>98</height>
+       <height>124</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <widget class="QCheckBox" name="option_swordless">
-        <property name="text">
-         <string>Swordless</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QCheckBox" name="option_closed_thunderhead">
-        <property name="text">
-         <string>Closed Thunderhead</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QCheckBox" name="option_skip_skykeep">
-        <property name="text">
-         <string>Skip Skykeep</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="option_empty_unrequired_dungeons">
-        <property name="text">
-         <string>Race Mode</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
+      <item row="3" column="4">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="spacing">
          <number>6</number>
@@ -310,54 +282,113 @@
         <property name="sizeConstraint">
          <enum>QLayout::SetDefaultConstraint</enum>
         </property>
-        <item>
-         <widget class="QSpinBox" name="option_required_dungeon_count">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_for_option_required_dungeon_count">
-          <property name="text">
-           <string>Required Dungeon Count</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_for_option_randomize_entrances">
+        <property name="text">
+         <string>Randomize Entrances</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QCheckBox" name="option_swordless">
+        <property name="text">
+         <string>Swordless</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QCheckBox" name="option_empty_unrequired_dungeons">
+        <property name="text">
+         <string>Race Mode</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QCheckBox" name="option_skip_skykeep">
+        <property name="text">
+         <string>Skip Skykeep</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" colspan="3">
+       <widget class="QCheckBox" name="option_closed_thunderhead">
+        <property name="text">
+         <string>Closed Thunderhead</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QSpinBox" name="option_starting_tablet_count">
+        <property name="maximumSize">
+         <size>
+          <width>41</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QSpinBox" name="option_required_dungeon_count">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>41</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <layout class="QHBoxLayout" name="horizontalLayout_5"/>
+      </item>
       <item row="0" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <widget class="QComboBox" name="option_randomize_entrances">
+        <property name="currentText">
+         <string>None</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
         <item>
-         <widget class="QSpinBox" name="option_starting_tablet_count">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
+         <property name="text">
+          <string>None</string>
+         </property>
         </item>
         <item>
-         <widget class="QLabel" name="label_for_option_starting_tablet_count">
-          <property name="text">
-           <string>Starting Tablets</string>
-          </property>
-         </widget>
+         <property name="text">
+          <string>Dungeons</string>
+         </property>
         </item>
-       </layout>
+        <item>
+         <property name="text">
+          <string>Dungeons + Sky Keep</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLabel" name="label_for_option_required_dungeon_count">
+        <property name="text">
+         <string>Required Dungeon Count</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_for_option_starting_tablet_count">
+        <property name="text">
+         <string>Starting Tablets</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -366,7 +397,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>610</y>
+      <y>630</y>
       <width>931</width>
       <height>31</height>
      </rect>
@@ -415,7 +446,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>550</y>
+      <y>570</y>
       <width>931</width>
       <height>20</height>
      </rect>
@@ -428,7 +459,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>580</y>
+      <y>600</y>
       <width>931</width>
       <height>27</height>
      </rect>

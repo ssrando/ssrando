@@ -53,7 +53,7 @@ class RandoGUI(QMainWindow):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QComboBox):
-                    widget.clicked.connect(self.update_settings)
+                    widget.currentIndexChanged.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):

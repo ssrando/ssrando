@@ -109,6 +109,16 @@ OPTIONS_LIST = [
         'help': 'If activated, play the game on Hero Mode',
         'ui': 'option_hero_mode',
     },
+    {
+        'name': 'Randomize Entrances',
+        'command': 'randomize-entrances',
+        'type': 'singlechoice',
+        'bits': 2,
+        'choices': ['None', 'Dungeons', 'Dungeons + Sky Keep'],
+        'default': 'None',
+        'help': 'Shuffles entrances with one another',
+        'ui': 'option_randomize_entrances',
+    },
 ]
 
 OPTIONS = OrderedDict((option['command'], option) for option in OPTIONS_LIST)
