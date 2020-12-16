@@ -72,15 +72,18 @@ class Randomizer:
     self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
     self.rng.seed(self.seed)
+    dungeons = ["Skyview", "Earth Temple", "Lanayru Mining Facility", "Ancient Cistern", "Sandship", "Fire Sanctuary", "Skykeep"]
+    self.rng.shuffle(dungeons)
     self.entrance_connections = OrderedDict([
-      ("Dungeon Entrance In Deep Woods", "Earth Temple"),
-      ("Dungeon Entrance In Eldin Volcano", "Lanayru Mining Facility"),
-      ("Dungeon Entrance In Lanayru Desert", "Sandship"),
-      ("Dungeon Entrance In Lake Floria", "Skykeep"),
-      ("Dungeon Entrance In Sand Sea", "Ancient Cistern"),
-      ("Dungeon Entrance In Volcano Summit", "Skyview"),
-      ("Dungeon Entrance On Skyloft", "Fire Sanctuary"),
+      ("Dungeon Entrance In Deep Woods", dungeons.pop()),
+      ("Dungeon Entrance In Eldin Volcano", dungeons.pop()),
+      ("Dungeon Entrance In Lanayru Desert", dungeons.pop()),
+      ("Dungeon Entrance In Lake Floria", dungeons.pop()),
+      ("Dungeon Entrance In Sand Sea", dungeons.pop()),
+      ("Dungeon Entrance In Volcano Summit", dungeons.pop()),
+      ("Dungeon Entrance On Skyloft", dungeons.pop()),
     ])
+    assert len(dungeons) == 0, 'Not all dungeons linked to an entrance'
     # self.starting_items = (x.strip() for x in self.options['starting_items']
     # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
     self.starting_items = []
