@@ -1,8 +1,8 @@
 # Changelog
 
-## WIP
+## 1.0.3
 ### Options
-- Change tablet rando option to select
+- Change tablet rando option to select amount of tablets to randomize
 - More types and Area types
 ### Changes
 - Removed more text triggers and cutscenes
