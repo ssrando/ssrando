@@ -586,6 +586,36 @@ def do_gamepatches(rando):
             }
         })
 
+        # handle the extra loading zone to the dungeon in Sand Sea from Ancient Harbor
+        # yes I know there was probably a better way to do this but it's a one off special case
+        if entrance == 'Dungeon Entrance In Sand Sea':
+            patches.get('F301').append({
+                'name': 'Dungeon entrance patch - Ancient Harbor to ' + dungeon,
+                'type': 'objpatch',
+                'index': 0,
+                'room': 0,
+                'objtype': 'SCEN',
+                'object': {
+                    'name': dungeon_stage,
+                    'layer': layer,
+                    'room': room,
+                    'entrance': entrance_index
+                }
+            })
+            patches.get('F301').append({
+                'name': 'Dungeon entrance patch - Ancient Harbor to ' + dungeon,
+                'type': 'objpatch',
+                'index': 4,
+                'room': 0,
+                'objtype': 'SCEN',
+                'object': {
+                    'name': dungeon_stage,
+                    'layer': layer,
+                    'room': room,
+                    'entrance': entrance_index
+                }
+            })
+
         # patch all the exists for the dungeon
         for scen_stage, scen_room, scen_index in DUNGEON_EXIT_SCENS[dungeon]:
             exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance_stage]
