@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(952, 654)
+        MainWindow.resize(952, 690)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -177,37 +177,61 @@ class Ui_MainWindow(object):
 
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setGeometry(QRect(10, 420, 931, 121))
+        self.groupBox_2.setGeometry(QRect(10, 420, 931, 161))
         self.gridLayoutWidget_2 = QWidget(self.groupBox_2)
         self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
-        self.gridLayoutWidget_2.setGeometry(QRect(10, 20, 911, 98))
+        self.gridLayoutWidget_2.setGeometry(QRect(10, 20, 911, 141))
         self.gridLayout_2 = QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.option_swordless = QCheckBox(self.gridLayoutWidget_2)
-        self.option_swordless.setObjectName(u"option_swordless")
-
-        self.gridLayout_2.addWidget(self.option_swordless, 0, 0, 1, 1)
-
-        self.option_closed_thunderhead = QCheckBox(self.gridLayoutWidget_2)
-        self.option_closed_thunderhead.setObjectName(u"option_closed_thunderhead")
-
-        self.gridLayout_2.addWidget(self.option_closed_thunderhead, 1, 1, 1, 1)
-
-        self.option_skip_skykeep = QCheckBox(self.gridLayoutWidget_2)
-        self.option_skip_skykeep.setObjectName(u"option_skip_skykeep")
-
-        self.gridLayout_2.addWidget(self.option_skip_skykeep, 2, 0, 1, 1)
-
-        self.option_empty_unrequired_dungeons = QCheckBox(self.gridLayoutWidget_2)
-        self.option_empty_unrequired_dungeons.setObjectName(u"option_empty_unrequired_dungeons")
-
-        self.gridLayout_2.addWidget(self.option_empty_unrequired_dungeons, 1, 0, 1, 1)
-
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setSpacing(6)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setSizeConstraint(QLayout.SetDefaultConstraint)
+
+        self.gridLayout_2.addLayout(self.horizontalLayout_2, 3, 4, 1, 1)
+
+        self.label_for_option_randomize_entrances = QLabel(self.gridLayoutWidget_2)
+        self.label_for_option_randomize_entrances.setObjectName(u"label_for_option_randomize_entrances")
+
+        self.gridLayout_2.addWidget(self.label_for_option_randomize_entrances, 0, 0, 1, 1)
+
+        self.option_swordless = QCheckBox(self.gridLayoutWidget_2)
+        self.option_swordless.setObjectName(u"option_swordless")
+
+        self.gridLayout_2.addWidget(self.option_swordless, 1, 0, 1, 2)
+
+        self.option_empty_unrequired_dungeons = QCheckBox(self.gridLayoutWidget_2)
+        self.option_empty_unrequired_dungeons.setObjectName(u"option_empty_unrequired_dungeons")
+
+        self.gridLayout_2.addWidget(self.option_empty_unrequired_dungeons, 2, 0, 1, 2)
+
+        self.label_for_option_starting_tablet_count = QLabel(self.gridLayoutWidget_2)
+        self.label_for_option_starting_tablet_count.setObjectName(u"label_for_option_starting_tablet_count")
+
+        self.gridLayout_2.addWidget(self.label_for_option_starting_tablet_count, 1, 3, 1, 1)
+
+        self.option_skip_skykeep = QCheckBox(self.gridLayoutWidget_2)
+        self.option_skip_skykeep.setObjectName(u"option_skip_skykeep")
+
+        self.gridLayout_2.addWidget(self.option_skip_skykeep, 3, 0, 1, 2)
+
+        self.option_closed_thunderhead = QCheckBox(self.gridLayoutWidget_2)
+        self.option_closed_thunderhead.setObjectName(u"option_closed_thunderhead")
+
+        self.gridLayout_2.addWidget(self.option_closed_thunderhead, 2, 2, 1, 3)
+
+        self.option_starting_tablet_count = QSpinBox(self.gridLayoutWidget_2)
+        self.option_starting_tablet_count.setObjectName(u"option_starting_tablet_count")
+        self.option_starting_tablet_count.setMaximumSize(QSize(41, 16777215))
+
+        self.gridLayout_2.addWidget(self.option_starting_tablet_count, 1, 2, 1, 1)
+
+        self.label_for_option_required_dungeon_count = QLabel(self.gridLayoutWidget_2)
+        self.label_for_option_required_dungeon_count.setObjectName(u"label_for_option_required_dungeon_count")
+
+        self.gridLayout_2.addWidget(self.label_for_option_required_dungeon_count, 3, 3, 1, 1)
+
         self.option_required_dungeon_count = QSpinBox(self.gridLayoutWidget_2)
         self.option_required_dungeon_count.setObjectName(u"option_required_dungeon_count")
         self.option_required_dungeon_count.setEnabled(True)
@@ -218,35 +242,29 @@ class Ui_MainWindow(object):
         self.option_required_dungeon_count.setSizePolicy(sizePolicy1)
         self.option_required_dungeon_count.setMaximumSize(QSize(41, 16777215))
 
-        self.horizontalLayout_2.addWidget(self.option_required_dungeon_count)
-
-        self.label_for_option_required_dungeon_count = QLabel(self.gridLayoutWidget_2)
-        self.label_for_option_required_dungeon_count.setObjectName(u"label_for_option_required_dungeon_count")
-
-        self.horizontalLayout_2.addWidget(self.label_for_option_required_dungeon_count)
-
-
-        self.gridLayout_2.addLayout(self.horizontalLayout_2, 2, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.option_required_dungeon_count, 3, 2, 1, 1)
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.option_starting_tablet_count = QSpinBox(self.gridLayoutWidget_2)
-        self.option_starting_tablet_count.setObjectName(u"option_starting_tablet_count")
-        self.option_starting_tablet_count.setMaximumSize(QSize(41, 16777215))
 
-        self.horizontalLayout_5.addWidget(self.option_starting_tablet_count)
+        self.gridLayout_2.addLayout(self.horizontalLayout_5, 1, 4, 1, 1)
 
-        self.label_for_option_starting_tablet_count = QLabel(self.gridLayoutWidget_2)
-        self.label_for_option_starting_tablet_count.setObjectName(u"label_for_option_starting_tablet_count")
+        self.option_randomize_entrances = QComboBox(self.gridLayoutWidget_2)
+        self.option_randomize_entrances.addItem("")
+        self.option_randomize_entrances.addItem("")
+        self.option_randomize_entrances.addItem("")
+        self.option_randomize_entrances.setObjectName(u"option_randomize_entrances")
 
-        self.horizontalLayout_5.addWidget(self.label_for_option_starting_tablet_count)
+        self.gridLayout_2.addWidget(self.option_randomize_entrances, 0, 1, 1, 1)
 
+        self.option_start_pouch = QCheckBox(self.gridLayoutWidget_2)
+        self.option_start_pouch.setObjectName(u"option_start_pouch")
 
-        self.gridLayout_2.addLayout(self.horizontalLayout_5, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.option_start_pouch, 4, 0, 1, 2)
 
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(10, 610, 931, 31))
+        self.horizontalLayoutWidget.setGeometry(QRect(10, 650, 931, 31))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -272,10 +290,10 @@ class Ui_MainWindow(object):
         self.option_description = QLabel(self.centralwidget)
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
-        self.option_description.setGeometry(QRect(10, 550, 931, 20))
+        self.option_description.setGeometry(QRect(10, 590, 931, 20))
         self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
-        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 580, 931, 27))
+        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 620, 931, 27))
         self.horizontalLayout_3 = QHBoxLayout(self.horizontalLayoutWidget_2)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -376,6 +394,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
+        self.option_randomize_entrances.setCurrentIndex(0)
+
+
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
@@ -413,12 +434,19 @@ class Ui_MainWindow(object):
         self.progression_fetch.setText(QCoreApplication.translate("MainWindow", u"Fetch Quests", None))
         self.progression_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
+        self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
-        self.option_closed_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Closed Thunderhead", None))
-        self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Skykeep", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Race Mode", None))
-        self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
+        self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Skykeep", None))
+        self.option_closed_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Closed Thunderhead", None))
+        self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
+        self.option_randomize_entrances.setItemText(0, QCoreApplication.translate("MainWindow", u"None", None))
+        self.option_randomize_entrances.setItemText(1, QCoreApplication.translate("MainWindow", u"Dungeons", None))
+        self.option_randomize_entrances.setItemText(2, QCoreApplication.translate("MainWindow", u"Dungeons + Sky Keep", None))
+
+        self.option_randomize_entrances.setCurrentText(QCoreApplication.translate("MainWindow", u"None", None))
+        self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))

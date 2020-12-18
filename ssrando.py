@@ -98,6 +98,8 @@ class Randomizer:
       self.starting_items.append('Progressive Sword')
     # if not self.options.get('randomize-sailcloth',False):
     #   self.starting_items.append('Sailcloth')
+    if self.options['start-with-pouch']:
+      self.starting_items.append('Progressive Pouch')
     self.banned_types = self.options['banned-types']
     self.race_mode_banned_locations = []
     self.non_required_dungeons = [dungeon for dungeon in

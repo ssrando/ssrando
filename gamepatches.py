@@ -505,6 +505,11 @@ def do_gamepatches(rando):
     #     patches['global']['startstoryflags'].append(32)
     #     patches['global']['startitems'].append(15)
 
+    if 'Progressive Pouch' in rando.starting_items:
+        patches['global']['startstoryflags'].append(30) # storyflag for pouch
+        patches['global']['startstoryflags'].append(931) # rando storyflag for progressive pouch 1
+        patches['global']['startitems'].append(112) # itemflag for pouch
+
     
     rando_stagepatches, stageoarcs, rando_eventpatches = get_patches_from_location_item_list(rando.logic.item_locations, rando.logic.done_item_locations)
 

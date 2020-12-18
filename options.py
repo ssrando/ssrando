@@ -109,6 +109,14 @@ OPTIONS_LIST = [
         'help': 'If activated, play the game on Hero Mode',
         'ui': 'option_hero_mode',
     },
+    {
+        'name': 'Start with Adventure Pouch',
+        'command': 'start-with-pouch',
+        'type': 'boolean',
+        'default': False,
+        'help': 'If activated, you will start with the adventure pouch unlocked. One progressive pouch will still be randomized',
+        'ui': 'option_start_pouch'
+    },
 ]
 
 OPTIONS = OrderedDict((option['command'], option) for option in OPTIONS_LIST)
@@ -122,7 +130,7 @@ class Options():
         self.options.clear()
         for option_name, option in OPTIONS.items():
             self.options[option_name]=option['default']
-    
+
     @staticmethod
     def parse_and_validate_option(value: str, option: dict):
         validation_errors = []
@@ -164,7 +172,7 @@ class Options():
         for option_name in raw_options.keys():
             problems.append(f'unknown option {option_name}!')
         return problems
-    
+
     def get_permalink(self):
         writer = PackedBitsWriter()
         for option_name, option in OPTIONS.items():
@@ -188,7 +196,7 @@ class Options():
                 raise Exception(f'unknown type: {option["type"]}')
         writer.flush()
         return writer.to_base64()
-    
+
     def set_option(self, option_name, option_value):
         """
         Sets the option to a value, this function checks if the value is valid, and throws an exception if it isn't
@@ -250,13 +258,13 @@ class Options():
             else:
                 raise Exception(f'unknown type: {option["type"]}')
             self.set_option(option_name, value)
-    
+
     def __getitem__(self, item):
         return self.options[item]
-    
+
     def get(self, item, default=None):
         return self.options.get(item, default)
-    
+
     def copy(self):
         o = Options()
         o.options = self.options.copy()
