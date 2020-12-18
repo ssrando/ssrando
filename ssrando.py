@@ -134,7 +134,7 @@ class Randomizer:
     if not (self.modified_extract_path / 'DATA').is_dir():
       raise StartupException("ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
     if not (self.modified_extract_path / 'DATA' / 'files' / 'COPYDATE_CODE_2011-09-28_153155').exists():
-      raise StartupException("ERROR: the randomizer only supports E1.00")
+      raise StartupException("ERROR: the randomizer only supports NTSC-U 1.00")
 
   def get_total_progress_steps(self):
     if self.dry_run:
