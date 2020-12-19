@@ -20,6 +20,12 @@
    <string>Skyward Sword Randomizer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
@@ -274,7 +280,7 @@
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="3" column="4">
+      <item row="2" column="4">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="spacing">
          <number>6</number>
@@ -284,49 +290,42 @@
         </property>
        </layout>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_for_option_randomize_entrances">
-        <property name="text">
-         <string>Randomize Entrances</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="2">
+      <item row="0" column="0" colspan="2">
        <widget class="QCheckBox" name="option_swordless">
         <property name="text">
          <string>Swordless</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="2">
+      <item row="1" column="0" colspan="2">
        <widget class="QCheckBox" name="option_empty_unrequired_dungeons">
         <property name="text">
          <string>Race Mode</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
+      <item row="0" column="3">
        <widget class="QLabel" name="label_for_option_starting_tablet_count">
         <property name="text">
          <string>Starting Tablets</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0" colspan="2">
+      <item row="2" column="0" colspan="2">
        <widget class="QCheckBox" name="option_skip_skykeep">
         <property name="text">
          <string>Skip Skykeep</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="2" colspan="3">
+      <item row="1" column="2" colspan="3">
        <widget class="QCheckBox" name="option_closed_thunderhead">
         <property name="text">
          <string>Closed Thunderhead</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
+      <item row="0" column="2">
        <widget class="QSpinBox" name="option_starting_tablet_count">
         <property name="maximumSize">
          <size>
@@ -336,14 +335,14 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
+      <item row="2" column="3">
        <widget class="QLabel" name="label_for_option_required_dungeon_count">
         <property name="text">
          <string>Required Dungeon Count</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
+      <item row="2" column="2">
        <widget class="QSpinBox" name="option_required_dungeon_count">
         <property name="enabled">
          <bool>true</bool>
@@ -362,35 +361,10 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="4">
+      <item row="0" column="4">
        <layout class="QHBoxLayout" name="horizontalLayout_5"/>
       </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="option_randomize_entrances">
-        <property name="currentText">
-         <string>None</string>
-        </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <item>
-         <property name="text">
-          <string>None</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Dungeons</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Dungeons + Sky Keep</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="4" column="0" colspan="2">
+      <item row="3" column="0" colspan="2">
        <widget class="QCheckBox" name="option_start_pouch">
         <property name="text">
          <string>Start with Adventure Pouch</string>
