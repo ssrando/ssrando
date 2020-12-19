@@ -91,6 +91,9 @@ global:
       # don't increase the pouch counter, that is done in the event now
       - original: 40 82 00 10 38 60 00 01 4b ff e7 5d 48 00 01 10
         patched:  40 82 00 10 38 60 00 01 60 00 00 00 48 00 01 10
+      # change the storyflag that is checked to disable sandship dowsing from enter sandship CS to Sandship made visible
+      - original: 38 80 00 0e 81 83 00 00 81 8c 00 2c 7d 89 03 a6
+        patched:  38 80 01 10 81 83 00 00 81 8c 00 2c 7d 89 03 a6
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
         patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
