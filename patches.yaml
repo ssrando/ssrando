@@ -2136,6 +2136,22 @@ F300_4: # Temple of Time
     layer: 0
     room: 0
     objtype: STAG
+  - name: Loadzone to dungeon entrance
+    type: objadd
+    room: 0
+    layer: 0
+    objtype: STAG
+    object:
+      params1: 0xC303FF05 # change to zone temp flag 3
+      params2: 0xFF5FFFFF
+      posx: -38000
+      posy: 50
+      posz: -4750
+      sizex: 500
+      sizey: 500
+      sizez: 500
+      anglez: 0xFFFF # don't set any storyflag here
+      name: ScChang
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch

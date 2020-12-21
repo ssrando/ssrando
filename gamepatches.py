@@ -144,7 +144,8 @@ DUNGEON_EXIT_SCENS = {
     'Lanayru Mining Facility': [('D300', 0, 0), ('D300', 0, 1), ('D300', 5, 4),
                                 ('D300_1', 0, 0), ('D300', 0, 1), ('D300', 5, 4),
                                 ('B300', 0, 1),
-                                ('F300_5', 0, 0), ('F300_5', 0, 1)],
+                                ('F300_5', 0, 1)],
+                                # ('F300_4', 0, 5)],  # ToT exit patch after harp CS
     'Ancient Cistern': [('D101', 0, 2), ('D101', 0, 3), ('D101', 3, 1), ('D101', 4, 2), ('D101', 5, 0),
                         ('B101_1', 0, 1), ('B101_1', 0, 3)],
     'Sandship': [('D301', 0, 0), ('D301', 0, 1), ('D301', 1, 2), ('D301', 2, 0), ('D301', 6, 0), ('D301', 9, 1),
@@ -615,8 +616,34 @@ def do_gamepatches(rando):
                     'entrance': entrance_index
                 }
             })
-
-        # patch all the exists for the dungeon
+        # LMF needs to stay tied to ToT inorder for dungeon completion to work
+        # To accomplish this, the exit into the Harp CS from LMF remains unpatched, but after the Harp CS
+        # An exit is triggered back to the correct dungeon entrance
+        if dungeon == 'Lanayru Mining Facility':
+            # First patch the existing event patch to continue the flow to the new patch
+            # cs_patch = next(filter(lambda x: x['name'] == 'to rando dungeons completed check', eventpatches['400-Desert']))
+            # cs_patch['flow']['next'] = 'Return to Dungeon Entrance after Harp CS'
+            # Add the new SCEN so it does not also have to be patched to avoid index error
+            exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance_stage]
+            patches.get('F300_4').append({
+                'name': 'Extra SCEN change for after Harp CS',
+                'type': 'objadd',
+                'room': 0,
+                'index': 5,
+                'objtype': 'SCEN',
+                'object': {
+                    'name': entrance_stage,
+                    'room': exit_room,
+                    'layer': exit_layer,
+                    'entrance': exit_entrance,
+                    'byte4': 2,
+                    'byte5': 0,
+                    'flag6': 0,
+                    'zero': 0,
+                    'flag8': 0
+                }
+            })
+        # patch all the exits for the dungeon
         for scen_stage, scen_room, scen_index in DUNGEON_EXIT_SCENS[dungeon]:
             exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance_stage]
             if scen_stage not in patches:
