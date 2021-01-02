@@ -132,7 +132,11 @@ class RandoGUI(QMainWindow):
         self.update_ui_for_settings()
         self.set_option_description(None)
 
-        if not self.wit_manager.actual_extract_already_exists():
+        if 'NOGIT' in VERSION:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage('Running from source without git is not supported!')
+
+        elif not self.wit_manager.actual_extract_already_exists():
             self.ask_for_clean_iso()
 
     def ask_for_clean_iso(self):

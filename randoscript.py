@@ -24,6 +24,9 @@ def process_command_line_options(options):
                 print(problem)
         return cleaned_options
 
+if 'NOGIT' in VERSION:
+    print('WARNING: Running from source, but without git, this is highly discouraged')
+
 # use command line parameters
 cmd_line_args = OrderedDict()
 for arg in sys.argv[1:]:
