@@ -357,6 +357,11 @@
       param2: 48 # Lanayru Pillar
       next: -1
       param3: 0
+  - name: Always same Bomb text
+    type: flowpatch
+    index: 180
+    flow:
+      next: 161
   - name: To Fill Bombs
     type: flowpatch
     index: 161
