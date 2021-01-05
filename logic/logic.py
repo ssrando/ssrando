@@ -75,6 +75,16 @@ class Logic:
         self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
         self.race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
     
+    batreaux_location_re = re.compile(r'.*Batreaux ([0-9]+) .*')
+
+    for location_name in self.item_locations:
+      # ban batreaux locations in necessary
+      bat_loc_match = batreaux_location_re.match(location_name)
+      if bat_loc_match:
+        if self.rando.options['max-batreaux-reward'] < int(bat_loc_match.group(1)):
+          self.race_mode_banned_locations.append(location_name)
+          print(f'banned {location_name}')
+    
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
       zone_name, specific_location_name = self.split_location_name_by_zone(location_name)

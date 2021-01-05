@@ -125,6 +125,16 @@ OPTIONS_LIST = [
         'help': 'If activated, no spoiler log will be generated. This is highly discouraged to activate, as it makes debugging issues much harder.',
         'ui': 'option_no_spoiler_log'
     },
+    {
+        'name': 'Max Batreaux Reward',
+        'command': 'max-batreaux-reward',
+        'type': 'singlechoice',
+        'default': 80,
+        'choices': [0, 5, 10, 30, 40, 50, 70, 80],
+        'bits': 3,
+        'help': 'Choose the Maximum amount of crystals that can be required to give a useful reward from batreaux.',
+        'ui': 'option_max_batreaux_reward'
+    },
 ]
 
 OPTIONS = OrderedDict((option['command'], option) for option in OPTIONS_LIST)
@@ -161,6 +171,11 @@ class Options():
             if len(unknown_values) > 0:
                 validation_errors.append(f'Unknown choice(s) for {option["command"]}: {unknown_values}')
         elif option['type'] == 'singlechoice':
+            if isinstance(option['default'], int):
+                try:
+                    value = int(value)
+                except ValueError:
+                    validation_errors.append(f'{value} is not a number, which is required for {option["command"]}')
             if not value in option['choices']:
                 validation_errors.append(f'value {value} is not valid for {option["command"]}')
         else:
