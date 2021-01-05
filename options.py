@@ -133,7 +133,7 @@ OPTIONS_LIST = [
         'choices': [0, 5, 10, 30, 40, 50, 70, 80],
         'bits': 3,
         'help': 'Choose the Maximum amount of crystals that can be required to give a useful reward from batreaux.',
-        'ui': 'option_max_batreaux_reward'
+        # 'ui': 'option_max_batreaux_reward'
     },
 ]
 
