@@ -124,7 +124,7 @@ class Randomizer:
       names=[s.strip() for s in f.readlines()]
     hash_random = random.Random()
     hash_random.seed(current_hash.digest())
-    return ' '.join(hash_random.choice(names) for _ in range(4))
+    return ' '.join(hash_random.choice(names) for _ in range(3))
 
   def check_valid_directory_setup(self):
     # catch common errors with directory setup
