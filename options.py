@@ -117,6 +117,14 @@ OPTIONS_LIST = [
         'help': 'If activated, you will start with the adventure pouch unlocked. One progressive pouch will still be randomized',
         'ui': 'option_start_pouch'
     },
+    {
+        'name': 'No Spoiler Log',
+        'command': 'no-spoiler-log',
+        'type': 'boolean',
+        'default': False,
+        'help': 'If activated, no spoiler log will be generated. This is highly discouraged to activate, as it makes debugging issues much harder.',
+        'ui': 'option_no_spoiler_log'
+    },
 ]
 
 OPTIONS = OrderedDict((option['command'], option) for option in OPTIONS_LIST)

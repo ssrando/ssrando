@@ -186,8 +186,11 @@ class RandoGUI(QMainWindow):
     def randomization_complete(self):
         self.progress_dialog.reset()
 
-        text = """Randomization complete.<br><br>
-                 If you get stuck, check the progression spoiler log in the output folder."""
+        if self.options['no-spoiler-log']:
+            text = """Randomization complete."""
+        else:
+            text = """Randomization complete.<br><br>
+                    If you get stuck, check the progression spoiler log in the output folder."""
 
         self.complete_dialog = QMessageBox()
         self.complete_dialog.setTextFormat(Qt.TextFormat.RichText)

@@ -270,6 +270,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.option_hero_mode)
 
+        self.option_no_spoiler_log = QCheckBox(self.horizontalLayoutWidget)
+        self.option_no_spoiler_log.setObjectName(u"option_no_spoiler_log")
+
+        self.horizontalLayout.addWidget(self.option_no_spoiler_log)
+
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
@@ -304,7 +309,7 @@ class Ui_MainWindow(object):
         self.groupBox_3.setGeometry(QRect(10, 300, 931, 111))
         self.gridLayoutWidget_4 = QWidget(self.groupBox_3)
         self.gridLayoutWidget_4.setObjectName(u"gridLayoutWidget_4")
-        self.gridLayoutWidget_4.setGeometry(QRect(10, 20, 911, 80))
+        self.gridLayoutWidget_4.setGeometry(QRect(10, 20, 911, 83))
         self.gridLayout_4 = QGridLayout(self.gridLayoutWidget_4)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -348,7 +353,7 @@ class Ui_MainWindow(object):
         self.groupBox_4.setGeometry(QRect(10, 80, 931, 51))
         self.horizontalLayoutWidget_3 = QWidget(self.groupBox_4)
         self.horizontalLayoutWidget_3.setObjectName(u"horizontalLayoutWidget_3")
-        self.horizontalLayoutWidget_3.setGeometry(QRect(10, 20, 911, 21))
+        self.horizontalLayoutWidget_3.setGeometry(QRect(10, 20, 911, 25))
         self.horizontalLayout_4 = QHBoxLayout(self.horizontalLayoutWidget_3)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -432,6 +437,7 @@ class Ui_MainWindow(object):
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
+        self.option_no_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"No Spoiler Log", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
         self.option_description.setText("")
         self.permalink_label.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings)", None))

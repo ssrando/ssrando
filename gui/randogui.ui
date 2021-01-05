@@ -399,6 +399,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="option_no_spoiler_log">
+       <property name="text">
+        <string>No Spoiler Log</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -476,7 +483,7 @@
        <x>10</x>
        <y>20</y>
        <width>911</width>
-       <height>80</height>
+       <height>83</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
@@ -550,7 +557,7 @@
        <x>10</x>
        <y>20</y>
        <width>911</width>
-       <height>21</height>
+       <height>25</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_4">

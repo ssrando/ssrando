@@ -63,7 +63,7 @@ class Randomizer:
       self.actual_extract_path = self.exe_root_path / 'actual-extract'
       self.modified_extract_path = self.exe_root_path / 'modified-extract'
       self.oarc_cache_path = self.exe_root_path / 'oarc'
-    self.no_logs = False
+    self.no_logs = self.options['no-spoiler-log']
     self.seed = self.options['seed']
     if self.seed == -1:
       self.seed = random.randint(0,1000000)
@@ -71,6 +71,8 @@ class Randomizer:
     self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
     self.rng.seed(self.seed)
+    if self.no_logs:
+      self.rng.randint(0,100)
     self.entrance_connections = OrderedDict([
       ("Dungeon Entrance In Deep Woods", "Skyview"),
       ("Dungeon Entrance In Eldin Volcano", "Earth Temple"),
@@ -149,8 +151,11 @@ class Randomizer:
   def randomize(self):
     self.progress_callback('randomizing items...')
     self.logic.randomize_items()
-    self.progress_callback('writing spoiler log...')
-    self.write_spoiler_log()
+    if self.no_logs:
+      self.progress_callback('skipping spoiler log...')
+    else:
+      self.progress_callback('writing spoiler log...')
+      self.write_spoiler_log()
     if not self.dry_run:
       do_gamepatches(self)
     self.progress_callback('patching done')

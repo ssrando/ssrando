@@ -51,7 +51,6 @@ if options is not None:
             progress_steps+=1
         rando.progress_callback = progress_callback
         rando.randomize()
-        print(rando.seed)
     else:
         from gui.randogui import run_main_gui
 
