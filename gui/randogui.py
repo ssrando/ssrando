@@ -22,7 +22,7 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 
 class RandoGUI(QMainWindow):
-    def __init__(self):
+    def __init__(self, options: Options):
         super().__init__()
 
         self.wit_manager = WitManager(Path('.').resolve())
@@ -38,7 +38,7 @@ class RandoGUI(QMainWindow):
 
         self.output_folder = ""
 
-        self.options = Options()
+        self.options = options
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
@@ -349,10 +349,10 @@ class RandoGUI(QMainWindow):
         self.ui.progression_summit_goddess.setEnabled(enabled)
         self.ui.progression_sand_sea_goddess.setEnabled(enabled)
 
-def run_main_gui():
+def run_main_gui(options: Options):
     app = QtWidgets.QApplication([])
 
-    widget = RandoGUI()
+    widget = RandoGUI(options)
     widget.show()
 
     sys.exit(app.exec_())

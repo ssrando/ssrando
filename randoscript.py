@@ -55,5 +55,5 @@ if options is not None:
     else:
         from gui.randogui import run_main_gui
 
-        run_main_gui()
+        run_main_gui(options)
 
