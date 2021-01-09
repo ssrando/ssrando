@@ -133,7 +133,7 @@ OPTIONS_LIST = [
         'choices': [0, 5, 10, 30, 40, 50, 70, 80],
         'bits': 3,
         'help': 'Choose the Maximum amount of crystals that can be required to give a useful reward from batreaux.',
-        # 'ui': 'option_max_batreaux_reward'
+        'ui': 'option_max_batreaux_reward'
     },
 ]
 
@@ -244,8 +244,10 @@ class Options():
             if unknown_values:
                 raise ValueError(f'Unknown choice(s) for {option_name}: {unknown_values}')
         elif option['type'] == 'singlechoice':
+            if isinstance(option['default'], int) and not isinstance(option_value, int):
+                option_value = int(option_value)
             if not option_value in option['choices']:
-                raise ValueError(f'Unknown choice for {option_name}: {unknown_values}')
+                raise ValueError(f'Unknown choice for {option_name}: {option_value}')
         self.options[option_name] = option_value
 
     def set_option_str(self, option_name, option_value):

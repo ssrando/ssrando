@@ -53,7 +53,10 @@ class RandoGUI(QMainWindow):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QComboBox):
-                    widget.clicked.connect(self.update_settings)
+                    for option_val in option['choices']:
+                        widget.addItem(str(option_val))
+                    widget.currentIndexChanged.connect(self.update_settings)
+                    widget.setCurrentIndex(option['choices'].index(self.options[option_key]))
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):
@@ -250,7 +253,7 @@ class RandoGUI(QMainWindow):
                 if isinstance(widget, QAbstractButton):
                     widget.setChecked(self.options[option_key])
                 elif isinstance(widget, QComboBox):
-                    pass
+                    widget.setCurrentIndex(option['choices'].index(self.options[option_key]))
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):

@@ -254,6 +254,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.option_start_pouch, 3, 0, 1, 2)
 
+        self.option_max_batreaux_reward = QComboBox(self.gridLayoutWidget_2)
+        self.option_max_batreaux_reward.setObjectName(u"option_max_batreaux_reward")
+
+        self.gridLayout_2.addWidget(self.option_max_batreaux_reward, 3, 3, 1, 1)
+
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
         self.horizontalLayoutWidget.setGeometry(QRect(10, 650, 931, 31))
