@@ -94,7 +94,6 @@ class RandoGUI(QMainWindow):
             "spiral_charge": "Enables progression items to appear in the chests in the sky requiring Spiral Charge to"
                              " access",
             "minigame": "Enables progression items to appear as rewards from winning minigames",
-            "batreaux": "Enables progression items to appear as rewards from giving Gratitude Crystals to Batreaux",
             "crystal": "Enables progression items to appear as loose crystals (currently not randomized and must "
                        "always be enabled)",
             "short": "Enables progression items to appear as rewards for completing short quests (i.e. rescuing"

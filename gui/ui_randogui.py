@@ -150,20 +150,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.progression_spiral_charge, 3, 0, 1, 1)
 
-        self.progression_batreaux = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_batreaux.setObjectName(u"progression_batreaux")
-
-        self.gridLayout_3.addWidget(self.progression_batreaux, 3, 2, 1, 1)
-
         self.progression_crystal = QCheckBox(self.gridLayoutWidget_3)
         self.progression_crystal.setObjectName(u"progression_crystal")
 
         self.gridLayout_3.addWidget(self.progression_crystal, 3, 3, 1, 1)
-
-        self.progression_scrapper = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_scrapper.setObjectName(u"progression_scrapper")
-
-        self.gridLayout_3.addWidget(self.progression_scrapper, 4, 4, 1, 1)
 
         self.progression_crystal_quest = QCheckBox(self.gridLayoutWidget_3)
         self.progression_crystal_quest.setObjectName(u"progression_crystal_quest")
@@ -179,6 +169,11 @@ class Ui_MainWindow(object):
         self.progression_peatrice.setObjectName(u"progression_peatrice")
 
         self.gridLayout_3.addWidget(self.progression_peatrice, 3, 4, 1, 1)
+
+        self.progression_scrapper = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_scrapper.setObjectName(u"progression_scrapper")
+
+        self.gridLayout_3.addWidget(self.progression_scrapper, 3, 2, 1, 1)
 
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
@@ -426,12 +421,11 @@ class Ui_MainWindow(object):
         self.progression_bombable.setText(QCoreApplication.translate("MainWindow", u"Bombable Walls", None))
         self.progression_combat.setText(QCoreApplication.translate("MainWindow", u"Combat Rewards", None))
         self.progression_spiral_charge.setText(QCoreApplication.translate("MainWindow", u"Spiral Charge Chests", None))
-        self.progression_batreaux.setText(QCoreApplication.translate("MainWindow", u"Batreaux", None))
         self.progression_crystal.setText(QCoreApplication.translate("MainWindow", u"Loose Crystals", None))
-        self.progression_scrapper.setText(QCoreApplication.translate("MainWindow", u"Scrapper Quests", None))
         self.progression_crystal_quest.setText(QCoreApplication.translate("MainWindow", u"Crystal Quests", None))
         self.progression_fetch.setText(QCoreApplication.translate("MainWindow", u"Fetch Quests", None))
         self.progression_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
+        self.progression_scrapper.setText(QCoreApplication.translate("MainWindow", u"Scrapper Quests", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Race Mode", None))
