@@ -55,8 +55,8 @@ class RandoGUI(QMainWindow):
                 elif isinstance(widget, QComboBox):
                     for option_val in option['choices']:
                         widget.addItem(str(option_val))
-                    widget.currentIndexChanged.connect(self.update_settings)
                     widget.setCurrentIndex(option['choices'].index(self.options[option_key]))
+                    widget.currentIndexChanged.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):
@@ -242,7 +242,7 @@ class RandoGUI(QMainWindow):
     def update_ui_for_settings(self):
         self.ui.output_folder.setText(self.output_folder)
         self.ui.seed.setText(str(self.options["seed"]))
-        self.ui.permalink.setText(self.options.get_permalink())
+        current_settings = self.options.copy()
         for option_key, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui', None)
@@ -250,18 +250,19 @@ class RandoGUI(QMainWindow):
                     continue
                 widget = getattr(self.ui, ui_name)
                 if isinstance(widget, QAbstractButton):
-                    widget.setChecked(self.options[option_key])
+                    widget.setChecked(current_settings[option_key])
                 elif isinstance(widget, QComboBox):
-                    widget.setCurrentIndex(option['choices'].index(self.options[option_key]))
+                    widget.setCurrentIndex(option['choices'].index(current_settings[option_key]))
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):
-                    widget.setValue(self.options[option_key])
+                    widget.setValue(current_settings[option_key])
                     getattr(self.ui, f"label_for_{ui_name}").installEventFilter(self)
 
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
-            widget.setChecked(not check_type in self.options['banned-types'])
+            widget.setChecked(not check_type in current_settings['banned-types'])
+        self.ui.permalink.setText(current_settings.get_permalink())
 
     def update_settings(self):
         self.output_folder = self.ui.output_folder.text()
