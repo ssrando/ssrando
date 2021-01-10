@@ -241,12 +241,26 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
+      <item row="4" column="4">
        <widget class="QCheckBox" name="progression_scrapper">
         <property name="text">
          <string>Scrapper Quests</string>
         </property>
        </widget>
+      </item>
+      <item row="3" column="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QComboBox" name="option_max_batreaux_reward"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_for_option_max_batreaux_reward">
+          <property name="text">
+           <string>Batreaux</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -363,9 +377,6 @@
          <string>Start with Adventure Pouch</string>
         </property>
        </widget>
-      </item>
-      <item row="3" column="3">
-       <widget class="QComboBox" name="option_max_batreaux_reward"/>
       </item>
      </layout>
     </widget>

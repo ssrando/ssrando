@@ -132,7 +132,7 @@ OPTIONS_LIST = [
         'default': 80,
         'choices': [0, 5, 10, 30, 40, 50, 70, 80],
         'bits': 3,
-        'help': 'Choose the Maximum amount of crystals that can be required to give a useful reward from batreaux.',
+        'help': 'Enables progression items to appear in all Batreaux rewards up to an including the specified amount.',
         'ui': 'option_max_batreaux_reward'
     },
 ]
