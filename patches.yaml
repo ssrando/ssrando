@@ -1714,6 +1714,12 @@ F200: # Eldin main area
     layer: 0
     room: 4
     objtype: OBJ
+  - name: Forced camera when draining lava before digging mitts
+    type: objdelete
+    id: 0xFCD6
+    layer: 1
+    room: 2
+    objtype: STAG
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
