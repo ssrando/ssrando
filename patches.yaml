@@ -1937,6 +1937,12 @@ D201_1: # FS B
     room: 5
     objtype: OBJ
     id: 0xFC11
+  - name: Double Magmanos fight cs (can softblock)
+    type: objdelete
+    layer: 0
+    room: 5
+    objtype: STAG
+    id: 0xFC2B
   - name: Remove Sealed Grounds intro CS flag
     type: objpatch
     room: 6
