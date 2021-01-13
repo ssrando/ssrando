@@ -83,7 +83,7 @@ class Logic:
       if bat_loc_match:
         if self.rando.options['max-batreaux-reward'] < int(bat_loc_match.group(1)):
           self.race_mode_banned_locations.append(location_name)
-          print(f'banned {location_name}')
+          # print(f'banned {location_name}')
     
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
