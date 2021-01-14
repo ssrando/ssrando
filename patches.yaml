@@ -1633,6 +1633,13 @@ F200: # Eldin main area
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Eldin Entrance Statue always checked
+    type: objpatch
+    room: 0
+    index: 0
+    objtype: EVNT
+    object:
+      story_flag2: 804
   - name: intro cs
     type: objmove
     id: 0xFC26
