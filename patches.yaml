@@ -222,6 +222,11 @@ global:
       # always store FF for eventid for blowing up rock (so it doesn't play)
       - original: d0 1c 01 4c 54 60 86 3e
         patched:  d0 1c 01 4c 38 00 00 ff
+    d_a_obj_pot_sal:
+      # make it always spawn in the lumpy pumpkin, even without spiral charge, to fix
+      # when getting spiral charge in there
+      - original: 4e 80 04 21 54 60 04 3f 41 82 00 08 3b c0 00 00
+        patched:  4e 80 04 21 54 60 04 3f 60 00 00 00 3b c0 00 00
 
 S100: # Faron Silent Realm
   - name: Fi text near waking water
