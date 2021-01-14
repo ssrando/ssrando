@@ -60,6 +60,14 @@ OPTIONS_LIST = [
         'help': 'The number of dungeons that are required, to beat the seed',
         'ui': 'option_required_dungeon_count',
     },
+    {
+        'name': 'Imp 2 Skip',
+        'command': 'imp2-skip',
+        'type': 'boolean',
+        'default': False,
+        'help': 'Skips the requirement to beat Imp 2 in oder to beat the seed',
+        'ui': 'option_skip_imp_2',
+    },
     # {
     #     'name': 'Randomize Sailcloth',
     #     'command': 'randomize-sailcloth',
