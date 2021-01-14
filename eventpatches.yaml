@@ -874,6 +874,12 @@
       param2: 3 # item
       next: 37 # set unset story flag
       param3: 9
+121-AkumaKun:
+  - name: Never say cursed medal chest text
+    type: flowpatch
+    index: 9 # start
+    flow:
+      next: 120 # normal text
 123-Town5:
   - name: Peatrice's Crystal
     type: flowpatch
