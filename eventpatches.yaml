@@ -486,6 +486,26 @@
       subType: 0
       param1: 0
       param2: 13 # originally fire sanctuary
+      next: Rando imp 2 skip Storyflag
+      param3: 0
+  - name: Rando imp 2 skip Storyflag
+    type: flowadd
+    onlyif: Option "imp2-skip" Disabled
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: -1 # nothing
+      next: -1
+      param3: 0
+  - name: Rando imp 2 skip Storyflag
+    type: flowadd
+    onlyif: Option "imp2-skip" Enabled
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 132 # Imp 2 Defeated
       next: -1
       param3: 0
   - name: Rando Set Zone CS Flag # activates the CS after dungeons, or does nothing, zone temp flag 3
