@@ -2664,6 +2664,12 @@ F402: # Sealed Temple
     layer: 2
     room: 2
     objtype: OBJ
+  - name: Impa text before imp 2 trigger
+    type: objdelete
+    id: 0xFC4C
+    layer: 3
+    room: 2
+    objtype: OBJ
   - name: Remove Music and shaking
     type: objpatch
     room: 2
