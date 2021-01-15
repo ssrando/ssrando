@@ -5,6 +5,7 @@
 - Add option to not generate a spoiler log
 - Add option to start with Adventure pouch
 - Changed Batreaux type to a specific max count
+- Add option to skip imp 2
 ### Bugfixes
 - Fix Bomb Bag having a wrong text sometimes
 - Fix potential softlock in the Skyview Beetle room
