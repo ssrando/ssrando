@@ -17,6 +17,8 @@ def process_command_line_options(options):
         return None
     else:
         cleaned_options = Options()
+        if 'permalink' in options:
+            cleaned_options.update_from_permalink(options.pop('permalink'))
         problems = cleaned_options.update_from_cmd_args(options)
         if problems:
             print('ERROR: invalid options:')
