@@ -225,6 +225,11 @@ global:
       # always store FF for eventid for blowing up rock (so it doesn't play)
       - original: d0 1c 01 4c 54 60 86 3e
         patched:  d0 1c 01 4c 38 00 00 ff
+    d_a_obj_pot_sal:
+      # make it always spawn in the lumpy pumpkin, even without spiral charge, to fix
+      # when getting spiral charge in there
+      - original: 4e 80 04 21 54 60 04 3f 41 82 00 08 3b c0 00 00
+        patched:  4e 80 04 21 54 60 04 3f 60 00 00 00 3b c0 00 00
 
 S100: # Faron Silent Realm
   - name: Fi text near waking water
@@ -1446,6 +1451,13 @@ D100: # Skyview
     objtype: OBJS
     object:
       setscenefid: 13 # 0x0 20
+  - name: Always open Bar from inside Beetle Room
+    type: objpatch
+    index: 6
+    layer: 0
+    objtype: DOOR
+    object:
+      anglex: 0xFF09 # remove inside sceneflag
   - name: Remove Skyview 2 Key door # it's now the same as layer 1
     type: objpatch
     index: 2 # all have id FFFF :(
@@ -1629,6 +1641,13 @@ F200: # Eldin main area
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Eldin Entrance Statue always checked
+    type: objpatch
+    room: 0
+    index: 0
+    objtype: EVNT
+    object:
+      story_flag2: 804
   - name: intro cs
     type: objmove
     id: 0xFC26
@@ -1710,6 +1729,12 @@ F200: # Eldin main area
     layer: 0
     room: 4
     objtype: OBJ
+  - name: Forced camera when draining lava before digging mitts
+    type: objdelete
+    id: 0xFCD6
+    layer: 1
+    room: 2
+    objtype: STAG
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
@@ -1933,6 +1958,12 @@ D201_1: # FS B
     room: 5
     objtype: OBJ
     id: 0xFC11
+  - name: Double Magmanos fight cs (can softblock)
+    type: objdelete
+    layer: 0
+    room: 5
+    objtype: STAG
+    id: 0xFC2B
   - name: Remove Sealed Grounds intro CS flag
     type: objpatch
     room: 6

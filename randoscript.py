@@ -17,12 +17,17 @@ def process_command_line_options(options):
         return None
     else:
         cleaned_options = Options()
+        if 'permalink' in options:
+            cleaned_options.update_from_permalink(options.pop('permalink'))
         problems = cleaned_options.update_from_cmd_args(options)
         if problems:
             print('ERROR: invalid options:')
             for problem in problems:
                 print(problem)
         return cleaned_options
+
+if 'NOGIT' in VERSION:
+    print('WARNING: Running from source, but without git, this is highly discouraged')
 
 # use command line parameters
 cmd_line_args = OrderedDict()
@@ -48,9 +53,8 @@ if options is not None:
             progress_steps+=1
         rando.progress_callback = progress_callback
         rando.randomize()
-        print(rando.seed)
     else:
         from gui.randogui import run_main_gui
 
-        run_main_gui()
+        run_main_gui(options)
 

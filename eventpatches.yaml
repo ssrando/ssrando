@@ -357,6 +357,11 @@
       param2: 48 # Lanayru Pillar
       next: -1
       param3: 0
+  - name: Always same Bomb text
+    type: flowpatch
+    index: 180
+    flow:
+      next: 161
   - name: To Fill Bombs
     type: flowpatch
     index: 161
@@ -481,6 +486,26 @@
       subType: 0
       param1: 0
       param2: 13 # originally fire sanctuary
+      next: Rando imp 2 skip Storyflag
+      param3: 0
+  - name: Rando imp 2 skip Storyflag
+    type: flowadd
+    onlyif: Option "imp2-skip" Disabled
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: -1 # nothing
+      next: -1
+      param3: 0
+  - name: Rando imp 2 skip Storyflag
+    type: flowadd
+    onlyif: Option "imp2-skip" Enabled
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 132 # Imp 2 Defeated
       next: -1
       param3: 0
   - name: Rando Set Zone CS Flag # activates the CS after dungeons, or does nothing, zone temp flag 3
@@ -869,6 +894,12 @@
       param2: 3 # item
       next: 37 # set unset story flag
       param3: 9
+121-AkumaKun:
+  - name: Never say cursed medal chest text
+    type: flowpatch
+    index: 9 # start
+    flow:
+      next: 120 # normal text
 123-Town5:
   - name: Peatrice's Crystal
     type: flowpatch

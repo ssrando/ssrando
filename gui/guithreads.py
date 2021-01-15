@@ -33,7 +33,6 @@ class RandomizerThread(QThread):
     def run(self):
         dry_run = self.randomizer.options['dry-run']
         default_ui_progress_callback = self.create_ui_progress_callback(0)
-        print(self.randomizer.seed)
         if not dry_run:
             try:
                 self.randomizer.check_valid_directory_setup()

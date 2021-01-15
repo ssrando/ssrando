@@ -3,7 +3,7 @@ This is still under heavy development, be careful to use it!
 ## Running the compiled binary (Windows)(recommended)
 1. For stable releases, grab the compiled program from the [github release section](https://github.com/lepelog/sslib/releases), for the newest, although potentially untested build get them from [appveyor](https://ci.appveyor.com/project/lepelog/sslib).
 2. Download the zipfile, extract it somewhere (if you already have an older version installed, install it over and replace the existing files)
-3. Take a clean E 1.00 ISO (make sure to verify the hashes in dolphin: crc="2b48d050" md5="e7c39bb46cf938a5a030a01a677ef7d1" sha1="9cf9a4a7ed2a6a4abb4582e3304af1327c160640") and put it in the sslib directory as disc.iso (make sure it isn't called disc.iso.iso)
+3. Take a clean NTSC-U 1.00 ISO (make sure to verify the hashes in dolphin: crc="2b48d050" md5="e7c39bb46cf938a5a030a01a677ef7d1" sha1="9cf9a4a7ed2a6a4abb4582e3304af1327c160640") and put it in the sslib directory as disc.iso (make sure it isn't called disc.iso.iso)
 ## Installing from source
 1) Clone [https://github.com/lepelog/sslib](https://github.com/lepelog/sslib)
 2) Install Python 3.8(!) (3.9 won't work on Windows) and pip (comes with most python installers)

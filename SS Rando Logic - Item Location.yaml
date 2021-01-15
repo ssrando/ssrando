@@ -196,62 +196,62 @@ Skyloft - Owlan Crystals:
 Skyloft - Batreaux 5 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & (5 Gratitude Crystals | Gratitude Crystal x5) # since 5 packs are randomized, it's possible to get crystals without being able to meet batreaux
   original item: Progressive Wallet
-  type: skyloft, batreaux
+  type: skyloft
   Paths:
     - event/121-AkumaKun/21
     - oarc/F012r/l0
 Skyloft - Batreaux 10 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 10 Gratitude Crystals
   original item: Heart Piece
-  type: skyloft, batreaux
+  type: skyloft
   Paths:
     - event/121-AkumaKun/42
     - oarc/F012r/l0
 Skyloft - Batreaux 30 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 30 Gratitude Crystals # 30 gratitude Crystals
   original item: Progressive Wallet
-  type: skyloft, batreaux
+  type: skyloft
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
 Skyloft - Batreaux 30 Crystals Chest:
   Need: Can Open Batreaux Shed & 30 Gratitude Crystals # 30 gratitude Crystals
   original item: Cursed Medal
-  type: skyloft, batreaux
+  type: skyloft
   Paths:
     - stage/F012r/r0/l0/TBox/69
 Skyloft - Batreaux 40 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 40 Gratitude Crystals # 40 gratitude Crystals
   original item: Gold Rupee
-  type: skyloft, batreaux
+  type: skyloft
   Paths:
     - event/121-AkumaKun/49
     - oarc/F012r/l0
 Skyloft - Batreaux 50 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 50 Gratitude Crystals # 50 gratitude Crystals
   original item: Progressive Wallet
-  type: skyloft, batreaux
+  type: skyloft
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
 Skyloft - Batreaux 70 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 70 Gratitude Crystals # 70 gratitude Crystals
   original item: Gold Rupee
-  type: skyloft, batreaux
+  type: skyloft
   Paths:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
 Skyloft - Batreaux 70 Crystals Second Reward:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 70 Gratitude Crystals # 70 gratitude Crystals
   original item: Gold Rupee
-  type: skyloft, batreaux
+  type: skyloft
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
 Skyloft - Batreaux 80 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 80 Gratitude Crystals # 80 gratitude Crystals
   original item: Progressive Wallet
-  type: skyloft, batreaux
+  type: skyloft
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0

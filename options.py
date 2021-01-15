@@ -60,6 +60,14 @@ OPTIONS_LIST = [
         'help': 'The number of dungeons that are required, to beat the seed',
         'ui': 'option_required_dungeon_count',
     },
+    {
+        'name': 'Imp 2 Skip',
+        'command': 'imp2-skip',
+        'type': 'boolean',
+        'default': False,
+        'help': 'Skips the requirement to beat Imp 2 in oder to beat the seed',
+        'ui': 'option_skip_imp_2',
+    },
     # {
     #     'name': 'Randomize Sailcloth',
     #     'command': 'randomize-sailcloth',
@@ -119,6 +127,32 @@ OPTIONS_LIST = [
         'help': 'Shuffles entrances with one another',
         'ui': 'option_randomize_entrances',
     },
+    {
+        'name': 'Start with Adventure Pouch',
+        'command': 'start-with-pouch',
+        'type': 'boolean',
+        'default': False,
+        'help': 'If activated, you will start with the adventure pouch unlocked. One progressive pouch will still be randomized',
+        'ui': 'option_start_pouch'
+    },
+    {
+        'name': 'No Spoiler Log',
+        'command': 'no-spoiler-log',
+        'type': 'boolean',
+        'default': False,
+        'help': 'If activated, no spoiler log will be generated. This is highly discouraged to activate, as it makes debugging issues much harder.',
+        'ui': 'option_no_spoiler_log'
+    },
+    {
+        'name': 'Max Batreaux Reward',
+        'command': 'max-batreaux-reward',
+        'type': 'singlechoice',
+        'default': 80,
+        'choices': [0, 5, 10, 30, 40, 50, 70, 80],
+        'bits': 3,
+        'help': 'Enables progression items to appear in all Batreaux rewards up to an including the specified amount.',
+        'ui': 'option_max_batreaux_reward'
+    },
 ]
 
 OPTIONS = OrderedDict((option['command'], option) for option in OPTIONS_LIST)
@@ -132,7 +166,7 @@ class Options():
         self.options.clear()
         for option_name, option in OPTIONS.items():
             self.options[option_name]=option['default']
-    
+
     @staticmethod
     def parse_and_validate_option(value: str, option: dict):
         validation_errors = []
@@ -155,6 +189,11 @@ class Options():
             if len(unknown_values) > 0:
                 validation_errors.append(f'Unknown choice(s) for {option["command"]}: {unknown_values}')
         elif option['type'] == 'singlechoice':
+            if isinstance(option['default'], int):
+                try:
+                    value = int(value)
+                except ValueError:
+                    validation_errors.append(f'{value} is not a number, which is required for {option["command"]}')
             if not value in option['choices']:
                 validation_errors.append(f'value {value} is not valid for {option["command"]}')
         else:
@@ -174,7 +213,7 @@ class Options():
         for option_name in raw_options.keys():
             problems.append(f'unknown option {option_name}!')
         return problems
-    
+
     def get_permalink(self):
         writer = PackedBitsWriter()
         for option_name, option in OPTIONS.items():
@@ -198,7 +237,7 @@ class Options():
                 raise Exception(f'unknown type: {option["type"]}')
         writer.flush()
         return writer.to_base64()
-    
+
     def set_option(self, option_name, option_value):
         """
         Sets the option to a value, this function checks if the value is valid, and throws an exception if it isn't
@@ -223,8 +262,10 @@ class Options():
             if unknown_values:
                 raise ValueError(f'Unknown choice(s) for {option_name}: {unknown_values}')
         elif option['type'] == 'singlechoice':
+            if isinstance(option['default'], int) and not isinstance(option_value, int):
+                option_value = int(option_value)
             if not option_value in option['choices']:
-                raise ValueError(f'Unknown choice for {option_name}: {unknown_values}')
+                raise ValueError(f'Unknown choice for {option_name}: {option_value}')
         self.options[option_name] = option_value
 
     def set_option_str(self, option_name, option_value):
@@ -260,13 +301,13 @@ class Options():
             else:
                 raise Exception(f'unknown type: {option["type"]}')
             self.set_option(option_name, value)
-    
+
     def __getitem__(self, item):
         return self.options[item]
-    
+
     def get(self, item, default=None):
         return self.options.get(item, default)
-    
+
     def copy(self):
         o = Options()
         o.options = self.options.copy()

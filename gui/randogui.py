@@ -22,7 +22,7 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 
 class RandoGUI(QMainWindow):
-    def __init__(self):
+    def __init__(self, options: Options):
         super().__init__()
 
         self.wit_manager = WitManager(Path('.').resolve())
@@ -38,7 +38,7 @@ class RandoGUI(QMainWindow):
 
         self.output_folder = ""
 
-        self.options = Options()
+        self.options = options
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
@@ -53,6 +53,9 @@ class RandoGUI(QMainWindow):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QComboBox):
+                    for option_val in option['choices']:
+                        widget.addItem(str(option_val))
+                    widget.setCurrentIndex(option['choices'].index(self.options[option_key]))
                     widget.currentIndexChanged.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
@@ -91,7 +94,6 @@ class RandoGUI(QMainWindow):
             "spiral_charge": "Enables progression items to appear in the chests in the sky requiring Spiral Charge to"
                              " access",
             "minigame": "Enables progression items to appear as rewards from winning minigames",
-            "batreaux": "Enables progression items to appear as rewards from giving Gratitude Crystals to Batreaux",
             "crystal": "Enables progression items to appear as loose crystals (currently not randomized and must "
                        "always be enabled)",
             "short": "Enables progression items to appear as rewards for completing short quests (i.e. rescuing"
@@ -132,7 +134,11 @@ class RandoGUI(QMainWindow):
         self.update_ui_for_settings()
         self.set_option_description(None)
 
-        if not self.wit_manager.actual_extract_already_exists():
+        if 'NOGIT' in VERSION:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage('Running from source without git is not supported!')
+
+        elif not self.wit_manager.actual_extract_already_exists():
             self.ask_for_clean_iso()
 
     def ask_for_clean_iso(self):
@@ -182,8 +188,11 @@ class RandoGUI(QMainWindow):
     def randomization_complete(self):
         self.progress_dialog.reset()
 
-        text = """Randomization complete.<br><br>
-                 If you get stuck, check the progression spoiler log in the output folder."""
+        if self.options['no-spoiler-log']:
+            text = """Randomization complete."""
+        else:
+            text = """Randomization complete.<br><br>
+                    If you get stuck, check the progression spoiler log in the output folder."""
 
         self.complete_dialog = QMessageBox()
         self.complete_dialog.setTextFormat(Qt.TextFormat.RichText)
@@ -233,7 +242,7 @@ class RandoGUI(QMainWindow):
     def update_ui_for_settings(self):
         self.ui.output_folder.setText(self.output_folder)
         self.ui.seed.setText(str(self.options["seed"]))
-        self.ui.permalink.setText(self.options.get_permalink())
+        current_settings = self.options.copy()
         for option_key, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui', None)
@@ -241,18 +250,19 @@ class RandoGUI(QMainWindow):
                     continue
                 widget = getattr(self.ui, ui_name)
                 if isinstance(widget, QAbstractButton):
-                    widget.setChecked(self.options[option_key])
+                    widget.setChecked(current_settings[option_key])
                 elif isinstance(widget, QComboBox):
-                    pass
+                    widget.setCurrentIndex(option['choices'].index(current_settings[option_key]))
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):
-                    widget.setValue(self.options[option_key])
+                    widget.setValue(current_settings[option_key])
                     getattr(self.ui, f"label_for_{ui_name}").installEventFilter(self)
 
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
-            widget.setChecked(not check_type in self.options['banned-types'])
+            widget.setChecked(not check_type in current_settings['banned-types'])
+        self.ui.permalink.setText(current_settings.get_permalink())
 
     def update_settings(self):
         self.output_folder = self.ui.output_folder.text()
@@ -345,10 +355,10 @@ class RandoGUI(QMainWindow):
         self.ui.progression_summit_goddess.setEnabled(enabled)
         self.ui.progression_sand_sea_goddess.setEnabled(enabled)
 
-def run_main_gui():
+def run_main_gui(options: Options):
     app = QtWidgets.QApplication([])
 
-    widget = RandoGUI()
+    widget = RandoGUI(options)
     widget.show()
 
     sys.exit(app.exec_())

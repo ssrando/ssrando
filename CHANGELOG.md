@@ -1,8 +1,18 @@
 # Changelog
 
-## WIP
+## Dev
 ### Options
-- Change tablet rando option to select
+- Add option to not generate a spoiler log
+- Add option to start with Adventure pouch
+- Changed Batreaux type to a specific max count
+### Bugfixes
+- Fix Bomb Bag having a wrong text sometimes
+- Fix potential softlock in the Skyview Beetle room
+- Fix potential softlock when getting Spiral Charge in the Lumpy Pumpkin
+
+## 1.0.3
+### Options
+- Change tablet rando option to select amount of tablets to randomize
 - More types and Area types
 ### Changes
 - Removed more text triggers and cutscenes

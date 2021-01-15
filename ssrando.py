@@ -23,26 +23,25 @@ class StartupException(Exception):
 if IS_RUNNING_FROM_SOURCE:
   VERSION = (RANDO_ROOT_PATH / "version.txt").read_text().strip()
   VERSION_WITHOUT_COMMIT = VERSION
-  if os.path.isdir(".git"):
-    version_suffix = "_NOGIT"
-    
-    git_commit_head_file = os.path.join(".git", "HEAD")
-    if os.path.isfile(git_commit_head_file):
-      with open(git_commit_head_file, "r") as f:
-        head_file_contents = f.read().strip()
-      if head_file_contents.startswith("ref: "):
-        # Normal head, HEAD file has a reference to a branch which contains the commit hash
-        relative_path_to_hash_file = head_file_contents[len("ref: "):]
-        path_to_hash_file = os.path.join(".git", relative_path_to_hash_file)
-        if os.path.isfile(path_to_hash_file):
-          with open(path_to_hash_file, "r") as f:
-            hash_file_contents = f.read()
-          version_suffix = "_" + hash_file_contents[:7]
-      elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
-        # Detached head, commit hash directly in the HEAD file
-        version_suffix = "_" + head_file_contents[:7]
-    
-    VERSION += version_suffix
+  version_suffix = "_NOGIT"
+  
+  git_commit_head_file = os.path.join(".git", "HEAD")
+  if os.path.isfile(git_commit_head_file):
+    with open(git_commit_head_file, "r") as f:
+      head_file_contents = f.read().strip()
+    if head_file_contents.startswith("ref: "):
+      # Normal head, HEAD file has a reference to a branch which contains the commit hash
+      relative_path_to_hash_file = head_file_contents[len("ref: "):]
+      path_to_hash_file = os.path.join(".git", relative_path_to_hash_file)
+      if os.path.isfile(path_to_hash_file):
+        with open(path_to_hash_file, "r") as f:
+          hash_file_contents = f.read()
+        version_suffix = "_" + hash_file_contents[:7]
+    elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
+      # Detached head, commit hash directly in the HEAD file
+      version_suffix = "_" + head_file_contents[:7]
+  
+  VERSION += version_suffix
 else:
   VERSION = (RANDO_ROOT_PATH / "version-with-git.txt").read_text().strip()
   VERSION_WITHOUT_COMMIT = VERSION
@@ -64,7 +63,7 @@ class Randomizer:
       self.actual_extract_path = self.exe_root_path / 'actual-extract'
       self.modified_extract_path = self.exe_root_path / 'modified-extract'
       self.oarc_cache_path = self.exe_root_path / 'oarc'
-    self.no_logs = False
+    self.no_logs = self.options['no-spoiler-log']
     self.seed = self.options['seed']
     if self.seed == -1:
       self.seed = random.randint(0,1000000)
@@ -72,6 +71,8 @@ class Randomizer:
     self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
     self.rng.seed(self.seed)
+    if self.no_logs:
+      self.rng.randint(0,100)
     dungeons = ["Skyview", "Earth Temple", "Lanayru Mining Facility", "Ancient Cistern", "Sandship", "Fire Sanctuary"]
     if self.options['randomize-entrances'] == 'None':
       dungeons.append('Skykeep')
@@ -111,6 +112,8 @@ class Randomizer:
       self.starting_items.append('Progressive Sword')
     # if not self.options.get('randomize-sailcloth',False):
     #   self.starting_items.append('Sailcloth')
+    if self.options['start-with-pouch']:
+      self.starting_items.append('Progressive Pouch')
     self.banned_types = self.options['banned-types']
     self.race_mode_banned_locations = []
     self.non_required_dungeons = [dungeon for dungeon in
@@ -134,7 +137,7 @@ class Randomizer:
       names=[s.strip() for s in f.readlines()]
     hash_random = random.Random()
     hash_random.seed(current_hash.digest())
-    return ' '.join(hash_random.choice(names) for _ in range(4))
+    return ' '.join(hash_random.choice(names) for _ in range(3))
 
   def check_valid_directory_setup(self):
     # catch common errors with directory setup
@@ -147,7 +150,7 @@ class Randomizer:
     if not (self.modified_extract_path / 'DATA').is_dir():
       raise StartupException("ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract")
     if not (self.modified_extract_path / 'DATA' / 'files' / 'COPYDATE_CODE_2011-09-28_153155').exists():
-      raise StartupException("ERROR: the randomizer only supports E1.00")
+      raise StartupException("ERROR: the randomizer only supports NTSC-U 1.00")
 
   def get_total_progress_steps(self):
     if self.dry_run:
@@ -161,8 +164,11 @@ class Randomizer:
   def randomize(self):
     self.progress_callback('randomizing items...')
     self.logic.randomize_items()
-    self.progress_callback('writing spoiler log...')
-    self.write_spoiler_log()
+    if self.no_logs:
+      self.progress_callback('skipping spoiler log...')
+    else:
+      self.progress_callback('writing spoiler log...')
+      self.write_spoiler_log()
     if not self.dry_run:
       do_gamepatches(self)
     self.progress_callback('patching done')
