@@ -84,6 +84,10 @@ class Logic:
         if self.rando.options['max-batreaux-reward'] < int(bat_loc_match.group(1)):
           self.race_mode_banned_locations.append(location_name)
           # print(f'banned {location_name}')
+
+    if self.rando.options['skip-skykeep']:
+      self.race_mode_banned_locations.append('Skykeep - Map Chest')
+      self.race_mode_banned_locations.append('Skykeep - Small Key Chest')
     
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
