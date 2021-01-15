@@ -122,13 +122,6 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="4">
-       <widget class="QCheckBox" name="progression_miscellaneous">
-        <property name="text">
-         <string>Miscellaneous</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="2">
        <widget class="QCheckBox" name="progression_free_gift">
         <property name="text">
@@ -136,31 +129,17 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="4">
-       <widget class="QCheckBox" name="progression_song">
+      <item row="1" column="4">
+       <widget class="QCheckBox" name="progression_miscellaneous">
         <property name="text">
-         <string>Songs</string>
+         <string>Miscellaneous</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QCheckBox" name="progression_mini_dungeon">
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="progression_digging">
         <property name="text">
-         <string>Mini Dungeons</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QCheckBox" name="progression_silent_realm">
-        <property name="text">
-         <string>Silent Realms</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QCheckBox" name="progression_freestanding">
-        <property name="text">
-         <string>Freestanding Items</string>
+         <string>Digging Spots</string>
         </property>
        </widget>
       </item>
@@ -185,13 +164,6 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QCheckBox" name="progression_digging">
-        <property name="text">
-         <string>Digging Spots</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="2">
        <widget class="QCheckBox" name="progression_bombable">
         <property name="text">
@@ -199,10 +171,10 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
-       <widget class="QCheckBox" name="progression_combat">
+      <item row="3" column="3">
+       <widget class="QCheckBox" name="progression_crystal">
         <property name="text">
-         <string>Combat Rewards</string>
+         <string>Loose Crystals</string>
         </property>
        </widget>
       </item>
@@ -213,10 +185,59 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
-       <widget class="QCheckBox" name="progression_crystal">
+      <item row="2" column="3">
+       <widget class="QCheckBox" name="progression_combat">
         <property name="text">
-         <string>Loose Crystals</string>
+         <string>Combat Rewards</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QComboBox" name="option_max_batreaux_reward"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_for_option_max_batreaux_reward">
+          <property name="text">
+           <string>Batreaux</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="4">
+       <widget class="QCheckBox" name="progression_scrapper">
+        <property name="text">
+         <string>Scrapper Quests</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="progression_silent_realm">
+        <property name="text">
+         <string>Silent Realms</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QCheckBox" name="progression_freestanding">
+        <property name="text">
+         <string>Freestanding Items</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QCheckBox" name="progression_song">
+        <property name="text">
+         <string>Songs</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="progression_mini_dungeon">
+        <property name="text">
+         <string>Mini Dungeons</string>
         </property>
        </widget>
       </item>
@@ -240,27 +261,6 @@
          <string>Peatrice</string>
         </property>
        </widget>
-      </item>
-      <item row="4" column="4">
-       <widget class="QCheckBox" name="progression_scrapper">
-        <property name="text">
-         <string>Scrapper Quests</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QComboBox" name="option_max_batreaux_reward"/>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_for_option_max_batreaux_reward">
-          <property name="text">
-           <string>Batreaux</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
       </item>
      </layout>
     </widget>
@@ -375,6 +375,13 @@
        <widget class="QCheckBox" name="option_start_pouch">
         <property name="text">
          <string>Start with Adventure Pouch</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2" colspan="3">
+       <widget class="QCheckBox" name="option_skip_imp_2">
+        <property name="text">
+         <string>Skip Imprisoned 2</string>
         </property>
        </widget>
       </item>
