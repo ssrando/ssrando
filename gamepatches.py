@@ -638,6 +638,34 @@ def do_gamepatches(rando):
             }
         })
 
+    def find_event(filename, name):
+        return next((patch for patch in eventpatches[filename] if patch['name'] == name), None)
+
+    # Trial Hints
+    trial_checks = {
+        # (getting it text patch, inventory text line)
+        'Skyloft Silent Realm - Stone of Trials': ('Full SotH text',659, "The song that leads you to the final trial."),
+        'Faron Silent Realm - Water Scale': ("Farore's Courage Text",653, "This song opens the trial located in Faron\nWoods."),
+        'Lanayru Silent Realm - Clawshots': ("Nayru's Wisdom Text",654, "This song opens the trial located in\nLanayru Desert."),
+        'Eldin Silent Realm - Fireshield Earrings': ("Din's Power Text",655, "This song opens the trial located on\nEldin Volcano."),
+    }
+    for trial_check_name, (obtain_text_name, inventory_text_idx, inventory_text) in trial_checks.items():
+        item = rando.logic.done_item_locations[trial_check_name]
+        if item in rando.logic.all_progress_items:
+            useful_text = '\nYou might need what it reveals...'
+            # print(f'{item} in {trial_check} is useful')
+        else:
+            useful_text = '\nIt\'s probably not too important...'
+            # print(f'{item} in {trial_check} is not useful')
+        find_event('003-ItemGet', obtain_text_name)["text"] += useful_text
+        eventpatches['003-ItemGet'].append({
+            'name': "Harp Text",
+            'type': "textpatch",
+            'index': inventory_text_idx,
+            'text': inventory_text + useful_text
+        })
+        
+
     remove_stageoarcs = defaultdict(set)
 
     for stage, stagepatches in patches.items():

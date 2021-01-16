@@ -48,7 +48,7 @@
     type: textpatch
     index: 229
     text: "You got the \x0E\x00\x03\x02\x05Amber Tablet\x0E\x00\x03\x02\uFFFF!\nThe weathered surface of this heavy stone\ntablet feels very old."
-  - name: Faroure's Courage Text
+  - name: Farore's Courage Text
     type: textpatch
     index: 237
     text: "You learned \x0E\x00\x03\x02\x05Farore's Courage\x0E\x00\x03\x02\uFFFF!"
