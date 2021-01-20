@@ -126,6 +126,9 @@ New Trial Completed Storyflags:
 933: Defeat Tentalus
 934: Obtained Item from Levias
 
+935: Exit out of back of LMF for first time
+936: Obtained Item at end of LMF
+
 ### Shoutouts
 - Peppernicus2000: Logic, fixes
 - Azer67: Logic

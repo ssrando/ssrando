@@ -2146,15 +2146,13 @@ F300_4: # Temple of Time
     objtype: EVNT
     object:
       item: -1
-      story_flag1: 914
+      story_flag1: 935
   - name: Fi text after Harp
-    type: objpatch
+    type: objdelete
     room: 0
     layer: 0
     id: 0xFC0D
     objtype: OBJ
-    object:
-      params1: 0xFFFFFFF1
   - name: Remove Fi text for Trial Gate
     type: objdelete
     id: 0xFC17
@@ -2167,22 +2165,41 @@ F300_4: # Temple of Time
     layer: 0
     room: 0
     objtype: STAG
-  - name: Loadzone to dungeon entrance
+  - name: ToT Layer 2 Storyflag
     type: objadd
     room: 0
-    layer: 0
+    layer: 2 # layer is forced by exit after dungeon inside LMF
     objtype: STAG
     object:
-      params1: 0xC303FF05 # change to zone temp flag 3
+      params1: 0xFFFFFFFF
       params2: 0xFF5FFFFF
       posx: -38000
       posy: 50
       posz: -4750
-      sizex: 500
-      sizey: 500
-      sizez: 500
-      anglez: 0xFFFF # don't set any storyflag here
-      name: ScChang
+      sizex: 1500
+      sizey: 1500
+      sizez: 1500
+      anglex: 914 # storyflag, that changes ToT layer
+      angley: 0
+      anglez: 0xFFFF
+      id: 0xFD84
+      name: SwAreaT
+  # - name: Loadzone to dungeon entrance
+  #   type: objadd
+  #   room: 0
+  #   layer: 0
+  #   objtype: STAG
+  #   object:
+  #     params1: 0xC303FF05 # change to zone temp flag 3
+  #     params2: 0xFF5FFFFF
+  #     posx: -38000
+  #     posy: 50
+  #     posz: -4750
+  #     sizex: 500
+  #     sizey: 500
+  #     sizez: 500
+  #     anglez: 0xFFFF # don't set any storyflag here
+  #     name: ScChang
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch
@@ -2191,7 +2208,11 @@ F300_5: # LMF to ToT
     room: 0
     objtype: STAG
     object:
-      untrigstoryfid: 914
+      # increase size to make it unmissable
+      sizex: 1700
+      sizez: 500
+      trigscenefid: 0xC3
+      untrigstoryfid: 935
   - name: harp CS loadzone
     type: objpatch
     id: 0xFC04
@@ -2199,7 +2220,36 @@ F300_5: # LMF to ToT
     room: 0
     objtype: STAG
     object:
-      trigstoryfid: 914
+      trigstoryfid: 935
+  - name: Area to give Reward after dungeon
+    type: objadd
+    index: 0
+    room: 0
+    objtype: AREA
+    object:
+      posx: -11810.81640625
+      posy: -103.16357421875
+      posz: -4.131864070892334
+      sizex: 700
+      sizey: 1000
+      sizez: 500
+      angle: 0
+  - name: Trigger to give Reward after dungeon
+    type: objadd
+    room: 0
+    layer: 0
+    objtype: OBJ
+    object:
+      params1: 0x751FFFF1 # sets own storyflag (936) to untrigger
+      params2: 0xFF1FFFFF
+      posx: -11810
+      posy: -103 # doesn't matter, triggered by area
+      posz: -4
+      anglex: 0xFFFF
+      angley: 0xFF00 # AREA 0
+      anglez: 40055 # entrypoint 400_55
+      id: 0xFC00
+      name: NpcTke
   - name: Extra Bird Statue
     type: objadd
     layer: 0
@@ -2954,16 +3004,16 @@ F407: # Skykeep beaten cs
     objtype: EVNT
     object:
       story_flag2: -1
-  - name: Send player to Skyloft after Skykeep
-    type: objpatch
-    room: 0
-    index: 1
-    objtype: SCEN
-    object:
-      name: F000
-      room: 0
-      layer: 0
-      entrance: 52 # where you spawn after opening sky keep
+  # - name: Send player to Skyloft after Skykeep
+  #   type: objpatch
+  #   room: 0
+  #   index: 1
+  #   objtype: SCEN
+  #   object:
+  #     name: F000
+  #     room: 0
+  #     layer: 0
+  #     entrance: 52 # where you spawn after opening sky keep
 S200:
   - name: Unforce layer
     type: objpatch

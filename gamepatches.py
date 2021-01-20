@@ -65,6 +65,19 @@ DEFAULT_SCEN = OrderedDict(
     flag8 = 0
 )
 
+DEFAULT_AREA = OrderedDict(
+    posx = 0,
+    posy  = 0,
+    posz = 0,
+    sizex = 0,
+    sizey = 0,
+    sizez = 0,
+    angle = 0,
+    area_link = -1,
+    unk3 = 0,
+    dummy = b'\xFF\xFF\xFF',
+)
+
 # cutscenes to use to set storyflags, sceneflags and itemflags
 START_CUTSCENES = [
     # stage, room, eventindex
@@ -93,35 +106,36 @@ DUNGEON_STAGES = {
 
 # The stage for each map where there are dungeon entrances
 DUNGEON_ENTRANCE_STAGES = {
-    "Dungeon Entrance In Deep Woods": "F101",
-    "Dungeon Entrance In Lake Floria": 'F102_1',
-    "Dungeon Entrance In Eldin Volcano": "F200",
-    "Dungeon Entrance In Volcano Summit": 'F201_3',
-    "Dungeon Entrance In Lanayru Desert": 'F300',
-    "Dungeon Entrance In Sand Sea": 'F301_1',
-    "Dungeon Entrance On Skyloft": 'F000',
+    # stage, room, scen
+    "Dungeon Entrance In Deep Woods": ("F101", 0, 1),
+    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 1),
+    "Dungeon Entrance In Eldin Volcano": ("F200", 4, 0),
+    "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 1),
+    "Dungeon Entrance In Lanayru Desert": ('F300', 0, 5),
+    "Dungeon Entrance In Sand Sea": ('F301_1', 0, 1),
+    "Dungeon Entrance On Skyloft": ('F000', 0, 48),
 }
 
-# The index of the SCEN inside of the stage
-ENTRANCE_MAP_SCEN_INDEX = {
-    'F101': 1,
-    'F102_1': 1,
-    'F200': 0,
-    'F201_3': 1,
-    'F300': 5,
-    'F301_1': 1,
-    'F000': 48
+DUNGEON_EXITS = {
+    # stage, layer, room, entrance
+    "Dungeon Entrance In Deep Woods": ('F101', 0, 0, 1),
+    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 0, 6),
+    "Dungeon Entrance In Eldin Volcano": ('F200', 0, 4, 1),
+    "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 0, 1),
+    "Dungeon Entrance In Lanayru Desert": ('F300', 0, 0, 5),
+    "Dungeon Entrance In Sand Sea": ('F301_1', 0, 0, 4),
+    "Dungeon Entrance On Skyloft": ('F000', 0, 0, 53),
 }
 
-# The room on the map the entrance is on where the SCEN is located
-ENTRANCE_MAP_ROOM = {
-    'F101': 0,
-    'F102_1': 0,
-    'F200': 4,
-    'F201_3': 0,
-    'F300': 0,
-    'F301_1': 0,
-    'F000': 0
+DUNGEON_FINISH_EXITS = {
+    # stage, layer, room, entrance
+    "Dungeon Entrance In Deep Woods": ('F101', 0, 0, 1),
+    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 0, 6),
+    "Dungeon Entrance In Eldin Volcano": ('F200', 0, 4, 1),
+    "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 0, 1),
+    "Dungeon Entrance In Lanayru Desert": ('F300_4', 2, 0, 2),
+    "Dungeon Entrance In Sand Sea": ('F301_1', 0, 0, 4),
+    "Dungeon Entrance On Skyloft": ('F000', 0, 0, 52),
 }
 
 DUNGEON_ENTRANCES = {
@@ -135,45 +149,47 @@ DUNGEON_ENTRANCES = {
     'Skykeep': ('D003_7', 0, 0, 4),
 }
 
+DUNGEON_FINISH_EXIT_SCEN = {
+    # stage, room, index
+    'Skyview': ('B100_1', 0, 1),
+    'Earth Temple': ('B210', 0, 0),
+    'Lanayru Mining Facility': ('F300_4', 0, 3),
+    'Ancient Cistern': ('B101_1', 0, 3),
+    'Sandship': ('B301', 0, 4),
+    'Fire Sanctuary': ('B201_1', 0, 2),
+    'Skykeep': ('F407', 0, 1),
+}
+
 DUNGEON_EXIT_SCENS = {
     # stage, room, index
     'Skyview': [('D100', 0, 0), ('D100', 0, 2), ('D100', 2, 0), ('D100', 5, 0), ('D100', 9, 0),
-                ('B100_1', 0, 1), ('B100_1', 0, 4)],
-    'Earth Temple': [('D200', 1, 0), ('D200', 1, 1), ('D200', 2, 0), ('D200', 4, 2),
-                     ('B210', 0, 0)],
+                ('B100_1', 0, 4)],
+    'Earth Temple': [('D200', 1, 0), ('D200', 1, 1), ('D200', 2, 0), ('D200', 4, 2)],
     'Lanayru Mining Facility': [('D300', 0, 0), ('D300', 0, 1), ('D300', 5, 4),
                                 ('D300_1', 0, 0), ('D300', 0, 1), ('D300', 5, 4),
                                 ('B300', 0, 1),
-                                ('F300_5', 0, 1)],
+                                ('F300_5', 0, 3), # needs special handling if LMF is vanilla
+                                # ('F300_5', 0, 1) # needs special handling if LMF is vanilla
                                 # ('F300_4', 0, 5)],  # ToT exit patch after harp CS
+                                ],
     'Ancient Cistern': [('D101', 0, 2), ('D101', 0, 3), ('D101', 3, 1), ('D101', 4, 2), ('D101', 5, 0),
-                        ('B101_1', 0, 1), ('B101_1', 0, 3)],
+                        # ('B101_1', 0, 1)
+                        ],
     'Sandship': [('D301', 0, 0), ('D301', 0, 1), ('D301', 1, 2), ('D301', 2, 0), ('D301', 6, 0), ('D301', 9, 1),
                  ('D301', 12, 0), ('D301', 13, 0),
-                 ('B301', 0, 1), ('B301', 0, 4)],
+                 ('B301', 0, 1)],
     'Fire Sanctuary': [('D201', 0, 1), ('D201', 3, 2), ('D201', 10, 2),
-                       ('D201_1', 1, 0),
-                       ('B201_1', 0, 2)],
-    'Skykeep': [('D003_0', 0, 0), ('D003_0', 0, 1), ('D003_0', 0, 3),
-                ('D003_1', 0, 0), ('D003_1', 0, 1), ('D003_1', 0, 2),
-                ('D003_2', 0, 0), ('D003_2', 0, 1), ('D003_2', 0, 3),
-                ('D00_3', 0, 0), ('D00_3', 0, 1), ('D00_3', 0, 3),
-                ('D00_4', 0, 0), ('D00_4', 0, 1), ('D00_4', 0, 2),
-                ('D00_5', 0, 0), ('D00_5', 0, 1), ('D00_5', 0, 2),
-                ('D00_6', 0, 0), ('D00_6', 0, 1), ('D00_6', 0, 2),
-                ('D00_7', 0, 0), ('D00_7', 0, 1), ('D00_7', 0, 2),
-                ('D00_8', 0, 0)],
-}
-
-DUNGEON_EXITS = {
-    # layer, room, entrance
-    'F101': (0, 0, 1),
-    'F102_1': (0, 0, 6),
-    'F200': (0, 4, 1),
-    'F201_3': (0, 0, 1),
-    'F300': (0, 0, 5),
-    'F301_1': (0, 0, 4),
-    'F000': (0, 0, 53)
+                       ('D201_1', 1, 0)],
+    'Skykeep': [('D003_0', 0, 2), # most of them not needed
+                ('D003_1', 0, 2),
+                ('D003_2', 0, 2),
+                ('D003_3', 0, 2),
+                ('D003_4', 0, 2),
+                ('D003_5', 0, 2),
+                ('D003_6', 0, 2),
+                ('D003_7', 0, 2),
+                ('D003_8', 0, 2),
+                ],
 }
 
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
@@ -570,14 +586,14 @@ def do_gamepatches(rando):
         eventpatches = yaml.safe_load(f)
 
     for entrance, dungeon in rando.entrance_connections.items():
-        entrance_stage = DUNGEON_ENTRANCE_STAGES[entrance]
+        entrance_stage, entrance_room, entrance_scen = DUNGEON_ENTRANCE_STAGES[entrance]
         dungeon_stage, layer, room, entrance_index = DUNGEON_ENTRANCES[dungeon]
         # patch dungeon entrance
         patches.get(entrance_stage).append({
             'name': 'Dungeon entrance patch - ' + entrance + " to " + dungeon,
             'type': 'objpatch',
-            'index': ENTRANCE_MAP_SCEN_INDEX[entrance_stage],
-            'room': ENTRANCE_MAP_ROOM[entrance_stage],
+            'index': entrance_scen,
+            'room': entrance_room,
             'objtype': 'SCEN',
             'object': {
                 'name': dungeon_stage,
@@ -616,53 +632,68 @@ def do_gamepatches(rando):
                     'entrance': entrance_index
                 }
             })
-        # LMF needs to stay tied to ToT inorder for dungeon completion to work
-        # To accomplish this, the exit into the Harp CS from LMF remains unpatched, but after the Harp CS
-        # An exit is triggered back to the correct dungeon entrance
-        if dungeon == 'Lanayru Mining Facility':
-            # First patch the existing event patch to continue the flow to the new patch
-            # cs_patch = next(filter(lambda x: x['name'] == 'to rando dungeons completed check', eventpatches['400-Desert']))
-            # cs_patch['flow']['next'] = 'Return to Dungeon Entrance after Harp CS'
-            # Add the new SCEN so it does not also have to be patched to avoid index error
-            exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance_stage]
-            patches.get('F300_4').append({
-                'name': 'Extra SCEN change for after Harp CS',
-                'type': 'objadd',
+        
+        # most dungeons only have a single exit, exception being LMF, which is handled seperately
+        exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance]
+        # the exit out of the back of LMF is special, because it's the only dungeon finish that can be
+        # taken multiple times. The first time it should show a save prompt and subsequent times
+        # it should not and they don't need to be touched if the LMF entrance is vanilla#
+        # the first time exit is taken care of by the DUNGEON_FINISH_EXIT_SCEN stuff
+        # patch the secondary exit if it's not vanilla
+        if dungeon == 'Lanayru Mining Facility' and not entrance == 'Dungeon Entrance In Lanayru Desert':
+            patches.get('F300_5').append({
+                'name': 'Dungeon exit patch - second LMF finish to ' + entrance,
+                'type': 'objpatch',
+                'index': 1,
                 'room': 0,
-                'index': 5,
                 'objtype': 'SCEN',
                 'object': {
-                    'name': entrance_stage,
-                    'room': exit_room,
+                    'name': exit_stage,
                     'layer': exit_layer,
-                    'entrance': exit_entrance,
-                    'byte4': 2,
-                    'byte5': 0,
-                    'flag6': 0,
-                    'zero': 0,
-                    'flag8': 0
+                    'room': exit_room,
+                    'entrance': exit_entrance
                 }
             })
         # patch all the exits for the dungeon
         for scen_stage, scen_room, scen_index in DUNGEON_EXIT_SCENS[dungeon]:
-            exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance_stage]
             if scen_stage not in patches:
                 patches[scen_stage] = []
             patches.get(scen_stage).append({
-                'name': 'Dungeon exit patch - ' + entrance + " to " + dungeon,
+                'name': 'Dungeon exit patch - ' + dungeon + " to " + entrance,
                 'type': 'objpatch',
                 'index': scen_index,
                 'room': scen_room,
                 'objtype': 'SCEN',
                 'object': {
-                    'name': entrance_stage,
-                    'layer': 0,
+                    'name': exit_stage,
+                    'layer': exit_layer,
                     'room': exit_room,
                     'entrance': exit_entrance
                 }
             })
+        
+        scen_stage, scen_room, scen_index = DUNGEON_FINISH_EXIT_SCEN[dungeon]
+        exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_FINISH_EXITS[entrance]
+        patches.get(scen_stage).append({
+            'name': 'Dungeon finish exit patch - ' + dungeon + " to " + entrance,
+            'type': 'objpatch',
+            'index': scen_index,
+            'room': scen_room,
+            'objtype': 'SCEN',
+            'object': {
+                'name': exit_stage,
+                'layer': exit_layer,
+                'room': exit_room,
+                'entrance': exit_entrance,
+                'flag8': 1, # save prompt
+            }
+        })
 
-    rando.progress_callback('building arc cache...')
+
+    # with open('test.yaml','w') as f:
+    #     yaml.safe_dump(patches, f)
+    # raise Exception('stop right here')
+    # rando.progress_callback('building arc cache...')
 
     with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
         extracts = yaml.safe_load(f)
@@ -877,6 +908,54 @@ def do_gamepatches(rando):
                 bzs['LYSE'] = layer_override
                 modified = True
         next_id = highest_objid(bzs) + 1
+        for objadd in filter(lambda x: x['type']=='objadd' and x.get('room',None)==room, stagepatches):
+            layer = objadd.get('layer', None)
+            objtype = objadd['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
+            obj = objadd['object']
+            if objtype in ['SOBS','SOBJ','STAS','STAG','SNDT']:
+                new_obj = DEFAULT_SOBJ.copy()
+            elif objtype in ['OBJS','OBJ ','DOOR']:
+                new_obj = DEFAULT_OBJ.copy()
+            elif objtype == 'SCEN':
+                new_obj = DEFAULT_SCEN.copy()
+            elif objtype == 'AREA':
+                new_obj = DEFAULT_AREA.copy()
+            else:
+                print(f'Error: unknown objtype: {objtype}')
+                continue
+            if 'index' in obj:
+                # check index, just to verify index based lists don't have a mistake in them
+                if layer is None:
+                    objlist = bzs.get(objtype, [])
+                else:
+                    objlist = bzs['LAY '][f'l{layer}'].get(objtype, [])
+                if len(objlist) != obj['index']:
+                    print(f'ERROR: wrong index adding object: {json.dumps(objadd)}')
+                    continue
+            for key, val in obj.items():
+                new_obj[key] = val
+            if 'id' in new_obj:
+                new_obj['id'] = (new_obj['id'] & ~0x3FF) | next_id
+                next_id += 1
+            if layer is None:
+                if not objtype in bzs:
+                    bzs[objtype] = []
+                objlist = bzs[objtype]
+            else:
+                if not objtype in bzs['LAY '][f'l{layer}']:
+                    bzs['LAY '][f'l{layer}'][objtype] = []
+                objlist = bzs['LAY '][f'l{layer}'][objtype]
+            # add object name to objn if it's some kind of actor
+            if objtype in ['SOBS','SOBJ','STAS','STAG','SNDT','OBJS','OBJ ','DOOR']:
+                # TODO: this only works if the layer is set
+                if not 'OBJN' in bzs['LAY '][f'l{layer}']:
+                    bzs['LAY '][f'l{layer}']['OBJN'] = []
+                objn = bzs['LAY '][f'l{layer}']['OBJN']
+                if not obj['name'] in objn:
+                    objn.append(obj['name'])
+            objlist.append(new_obj)
+            modified = True
+            # print(obj)
         for objpatch in filter(lambda x: x['type']=='objpatch' and x.get('room',None)==room, stagepatches):
             obj = get_entry_from_bzs(bzs, objpatch)
             if not obj is None:
@@ -923,50 +1002,6 @@ def do_gamepatches(rando):
                     bzs['LAY '][f'l{layer}']['OBJN'] = []
                 objlist = bzs['LAY '][f'l{layer}']['OBJN']
             objlist.append(name_to_add)
-        for objadd in filter(lambda x: x['type']=='objadd' and x.get('room',None)==room, stagepatches):
-            layer = objadd.get('layer', None)
-            objtype = objadd['objtype'].ljust(4) # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
-            obj = objadd['object']
-            if objtype in ['SOBS','SOBJ','STAS','STAG','SNDT']:
-                new_obj = DEFAULT_SOBJ.copy()
-            elif objtype in ['OBJS','OBJ ','DOOR']:
-                new_obj = DEFAULT_OBJ.copy()
-            elif objtype == 'SCEN':
-                new_obj = DEFAULT_SCEN.copy()
-            else:
-                print(f'Error: unknown objtype: {objtype}')
-                continue
-            if 'index' in obj:
-                # check index, just to verify index based lists don't have a mistake in them
-                if layer is None:
-                    objlist = bzs.get(objtype, [])
-                else:
-                    objlist = bzs['LAY '][f'l{layer}'].get(objtype, [])
-                if len(objlist) != obj['index']:
-                    print(f'ERROR: wrong index adding object: {json.dumps(objadd)}')
-                    continue
-            for key, val in obj.items():
-                new_obj[key] = val
-            if 'id' in new_obj:
-                new_obj['id'] = (new_obj['id'] & ~0x3FF) | next_id
-                next_id += 1
-            if layer is None:
-                if not objtype in bzs:
-                    bzs[objtype] = []
-                objlist = bzs[objtype]
-            else:
-                if not objtype in bzs['LAY '][f'l{layer}']:
-                    bzs['LAY '][f'l{layer}'][objtype] = []
-                objlist = bzs['LAY '][f'l{layer}'][objtype]
-            # add object name to objn if it's some kind of actor
-            if objtype in ['SOBS','SOBJ','STAS','STAG','SNDT','OBJS','OBJ ','DOOR']:
-                # TODO: this only works if the layer is set
-                objn = bzs['LAY '][f'l{layer}']['OBJN']
-                if not obj['name'] in objn:
-                    objn.append(obj['name'])
-            objlist.append(new_obj)
-            modified = True
-            # print(obj)
 
         # patch randomized items on stages
         for objname, layer, objid, itemid in rando_stagepatches.get((stage, room),[]):
