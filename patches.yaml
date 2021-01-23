@@ -230,6 +230,10 @@ global:
       # when getting spiral charge in there
       - original: 4e 80 04 21 54 60 04 3f 41 82 00 08 3b c0 00 00
         patched:  4e 80 04 21 54 60 04 3f 60 00 00 00 3b c0 00 00
+    d_t_D3_scene_change:
+      # change exit to one that doesn't softlock without skykeep
+      - original: 40 82 00 18 38 00 00 35 98 1b 00 00
+        patched:  40 82 00 18 38 00 00 34 98 1b 00 00
 
 S100: # Faron Silent Realm
   - name: Fi text near waking water
