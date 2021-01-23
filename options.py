@@ -124,7 +124,7 @@ OPTIONS_LIST = [
         'bits': 2,
         'choices': ['None', 'Dungeons', 'Dungeons + Sky Keep'],
         'default': 'None',
-        'help': 'Shuffles entrances with one another',
+        'help': 'Shuffles entrances with one another. Options: None, Dungeons, Dungeons + Sky Keep',
         'ui': 'option_randomize_entrances',
     },
     {

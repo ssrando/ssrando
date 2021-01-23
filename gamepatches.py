@@ -168,9 +168,7 @@ DUNGEON_EXIT_SCENS = {
     'Lanayru Mining Facility': [('D300', 0, 0), ('D300', 0, 1), ('D300', 5, 4),
                                 ('D300_1', 0, 0), ('D300', 0, 1), ('D300', 5, 4),
                                 ('B300', 0, 1),
-                                ('F300_5', 0, 3), # needs special handling if LMF is vanilla
-                                # ('F300_5', 0, 1) # needs special handling if LMF is vanilla
-                                # ('F300_4', 0, 5)],  # ToT exit patch after harp CS
+                                ('F300_5', 0, 3), # extra bird statue
                                 ],
     'Ancient Cistern': [('D101', 0, 2), ('D101', 0, 3), ('D101', 3, 1), ('D101', 4, 2), ('D101', 5, 0),
                         # ('B101_1', 0, 1)
@@ -190,6 +188,29 @@ DUNGEON_EXIT_SCENS = {
                 ('D003_7', 0, 2),
                 ('D003_8', 0, 2),
                 ],
+}
+
+#fixes for entrance rando, ET, SSH and SK don't need to set storyflags at all
+#for LMF it's the ToT layer change
+POST_DUNGEON_STORYFLAGS = {
+    "Dungeon Entrance In Deep Woods":  5,
+    "Dungeon Entrance In Lake Floria": 900,
+    "Dungeon Entrance In Eldin Volcano": -1,
+    "Dungeon Entrance In Volcano Summit": 901,
+    "Dungeon Entrance In Lanayru Desert": 914,
+    "Dungeon Entrance In Sand Sea": -1,
+    "Dungeon Entrance On Skyloft": -1,
+}
+
+POST_DUNGEON_CUTSCENE = {
+    # (stage, room, EVNT)
+    'Skyview': ('B100_1', 0, 1),
+    'Earth Temple': ('B210',   0, 2),
+    'Lanayru Mining Facility': ('F300_4', 0, 20),
+    'Ancient Cistern': ('B101_1', 0, 1),
+    'Sandship': ('B301', 0, 1),
+    'Fire Sanctuary': ('B201_1', 0, 0),
+    'Skykeep': ('F407', 0, 2),
 }
 
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
@@ -590,7 +611,7 @@ def do_gamepatches(rando):
         dungeon_stage, layer, room, entrance_index = DUNGEON_ENTRANCES[dungeon]
         # patch dungeon entrance
         patches.get(entrance_stage).append({
-            'name': 'Dungeon entrance patch - ' + entrance + " to " + dungeon,
+            'name': f'Dungeon entrance patch - {entrance} to {dungeon}',
             'type': 'objpatch',
             'index': entrance_scen,
             'room': entrance_room,
@@ -607,7 +628,7 @@ def do_gamepatches(rando):
         # yes I know there was probably a better way to do this but it's a one off special case
         if entrance == 'Dungeon Entrance In Sand Sea':
             patches.get('F301').append({
-                'name': 'Dungeon entrance patch - Ancient Harbor to ' + dungeon,
+                'name': f'Dungeon entrance patch - Ancient Harbor to {dungeon}',
                 'type': 'objpatch',
                 'index': 0,
                 'room': 0,
@@ -620,7 +641,7 @@ def do_gamepatches(rando):
                 }
             })
             patches.get('F301').append({
-                'name': 'Dungeon entrance patch - Ancient Harbor to ' + dungeon,
+                'name': f'Dungeon entrance patch - Ancient Harbor to {dungeon}',
                 'type': 'objpatch',
                 'index': 4,
                 'room': 0,
@@ -642,7 +663,7 @@ def do_gamepatches(rando):
         # patch the secondary exit if it's not vanilla
         if dungeon == 'Lanayru Mining Facility' and not entrance == 'Dungeon Entrance In Lanayru Desert':
             patches.get('F300_5').append({
-                'name': 'Dungeon exit patch - second LMF finish to ' + entrance,
+                'name': f'Dungeon exit patch - second LMF finish to {entrance}',
                 'type': 'objpatch',
                 'index': 1,
                 'room': 0,
@@ -659,7 +680,7 @@ def do_gamepatches(rando):
             if scen_stage not in patches:
                 patches[scen_stage] = []
             patches.get(scen_stage).append({
-                'name': 'Dungeon exit patch - ' + dungeon + " to " + entrance,
+                'name': f'Dungeon exit patch - {dungeon} to {entrance}',
                 'type': 'objpatch',
                 'index': scen_index,
                 'room': scen_room,
@@ -675,7 +696,7 @@ def do_gamepatches(rando):
         scen_stage, scen_room, scen_index = DUNGEON_FINISH_EXIT_SCEN[dungeon]
         exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_FINISH_EXITS[entrance]
         patches.get(scen_stage).append({
-            'name': 'Dungeon finish exit patch - ' + dungeon + " to " + entrance,
+            'name': f'Dungeon finish exit patch - {dungeon} to {entrance}',
             'type': 'objpatch',
             'index': scen_index,
             'room': scen_room,
@@ -689,11 +710,26 @@ def do_gamepatches(rando):
             }
         })
 
+        # fix post dungeon storyflags
+        inner_stage, inner_room, inner_evnt = POST_DUNGEON_CUTSCENE[dungeon]
+        storyflag = POST_DUNGEON_STORYFLAGS[entrance]
+        patches.get(inner_stage).append({
+            'name': f'Post Dungeon Storyflag fix: {entrance} - {dungeon}',
+            'type': 'objpatch',
+            'index': inner_evnt,
+            'room': inner_room,
+            'objtype': 'EVNT',
+            'object': {
+                'story_flag1': storyflag
+            }
+        })
+
 
     # with open('test.yaml','w') as f:
     #     yaml.safe_dump(patches, f)
     # raise Exception('stop right here')
-    # rando.progress_callback('building arc cache...')
+
+    rando.progress_callback('building arc cache...')
 
     with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
         extracts = yaml.safe_load(f)

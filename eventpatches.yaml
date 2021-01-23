@@ -579,7 +579,7 @@
     type: flowpatch
     index: 103
     flow:
-      param2: 914
+      param2: 935
 107-Kanban:
   - name: Knight Academy Billboard skip condition
     type: flowpatch

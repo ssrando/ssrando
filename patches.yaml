@@ -250,6 +250,25 @@ S100: # Faron Silent Realm
 #     type: oarcadd
 #     oarc: GetMoleGloveA
 #     destlayer: 2
+B100:
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 530
+        night: 0
+        layer: 5
+      - story_flag: 67
+        night: 0
+        layer: 4
+      - story_flag: 206
+        night: 0
+        layer: 3
+      - story_flag: 83
+        night: 0
+        layer: 1
+      - story_flag: -1
+        night: 0
+        layer: 13
 B100_1: # skyview spring
   - name: Fi text after skyview CS
     type: objpatch
@@ -279,7 +298,7 @@ B100_1: # skyview spring
     index: 1
     objtype: EVNT
     object:
-      item: -1
+      item: -1 # first storyflag handled by entrance rando patches
   - name: Loadzone to outside layer 3
     type: objdelete
     room: 0
@@ -310,9 +329,8 @@ B101_1: # after AC boss
     index: 1
     objtype: EVNT
     object:
-      item: -1
-      story_flag1: -1
-      story_flag2: 900 # new ancient cistern flag
+      item: -1 # first storyflag handled by entrance rando patches
+      story_flag2: -1
   - name: Fi text before AC CS
     type: objadd
     room: 0
@@ -370,8 +388,7 @@ B201_1: # after FS boss
     index: 0
     objtype: EVNT
     object:
-      item: -1
-      story_flag1: 901 # new FS beaten flag
+      item: -1 # first storyflag handled by entrance rando patches
   - name: Fi text before FS CS
     type: objadd
     room: 0
@@ -404,8 +421,8 @@ B301: # after Sandship boss
     room: 0
     index: 1
     objtype: EVNT
-    object:
-      story_flag1: 933 # remove more dowsing options, change to defeat tentalus storyflag
+    object: # first storyflag handled by entrance rando patches
+      story_flag2: 933 # set defeat tentalus storyflag
       item: -1
   - name: Fi text before FS CS
     type: objadd
@@ -2145,8 +2162,8 @@ F300_4: # Temple of Time
     room: 0
     objtype: EVNT
     object:
-      item: -1
-      story_flag1: 935
+      item: -1 # storyflag handled in entrance rando patches
+      story_flag2: 935 # changes loadzone out of LMF
   - name: Fi text after Harp
     type: objdelete
     room: 0
@@ -2165,25 +2182,6 @@ F300_4: # Temple of Time
     layer: 0
     room: 0
     objtype: STAG
-  - name: ToT Layer 2 Storyflag
-    type: objadd
-    room: 0
-    layer: 2 # layer is forced by exit after dungeon inside LMF
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: -38000
-      posy: 50
-      posz: -4750
-      sizex: 1500
-      sizey: 1500
-      sizez: 1500
-      anglex: 914 # storyflag, that changes ToT layer
-      angley: 0
-      anglez: 0xFFFF
-      id: 0xFD84
-      name: SwAreaT
   # - name: Loadzone to dungeon entrance
   #   type: objadd
   #   room: 0
@@ -2996,7 +2994,7 @@ F407: # Skykeep beaten cs
     index: 2
     objtype: EVNT
     object:
-      story_flag2: -1
+      story_flag2: -1 # first storyflag is handled by entrance rando patches
   - name: Skykeep CS remove Storyflag
     type: objpatch
     room: 0

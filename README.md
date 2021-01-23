@@ -99,7 +99,7 @@ Then, build the executable using
 912: Progressive Beetle1
 913: Progressive Beetle2 (Hook Beetle)
 
-914: Beat LMF (more precisely, watch harp CS), storyflag 9 is associated with harp
+914: Change Temple of Time Layer, storyflag 9 is associated with harp
 
 915: Medium Wallet
 916: Big Wallet
