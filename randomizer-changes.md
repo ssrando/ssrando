@@ -60,6 +60,7 @@
 - After raising the statue all the way up, it's possible to reset the statues position by talking to the stone tablet next to the boss key hole. This is important in order to be able to reach the whip chest and the basement chest
 - The cutscene inside the statue has been removed
 ## Eldin
+- The first Statue is automatically checked
 - Various Mogma cutscenes are skipped
 - The trial is accessible on layer 1
 - The layer will always stay at 1, meaning the key piece spots will still be there, same with the rocks to drain the lava in front of digging mitts cave and the key piece
