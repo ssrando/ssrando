@@ -1,11 +1,15 @@
 # Changelog
 
-## Dev
+## 1.0.4
 ### Options
 - Add option to not generate a spoiler log
 - Add option to start with Adventure pouch
 - Changed Batreaux type to a specific max count
 - Add option to skip imp 2
+- Add permalink to options that can be specified on the command line
+### Changes
+- Songs give a hint if the item their trial has is potentially useful
+- Eldin Entrance statue is always checked, prevents softlocks if BiTsaving out of an area without checking a statue first
 ### Bugfixes
 - Fix Bomb Bag having a wrong text sometimes
 - Fix potential softlock in the Skyview Beetle room
