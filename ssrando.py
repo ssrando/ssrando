@@ -174,6 +174,12 @@ class Randomizer:
 
       return
 
+  
+    if len(self.starting_items) > 0:
+      spoiler_log += "\n\nStarting items:\n  "
+      spoiler_log += "\n  ".join(self.starting_items)
+    spoiler_log += "\n\n\n"
+
     # Write required dungeons
     for i, dungeon in enumerate(self.required_dungeons):
       spoiler_log += f"Required Dungeon {i+1}: " + dungeon + '\n'
@@ -262,11 +268,6 @@ class Randomizer:
         value = self.options[option_name]
         option_strings.append("  %s: %s" % (option_name, value))
     header += "\n".join(option_strings)
-  
-    if len(self.starting_items) > 0:
-      header += "\n\nStarting items:\n  "
-      header += "\n  ".join(self.starting_items)
-    header += "\n\n\n"
     
     return header
 
