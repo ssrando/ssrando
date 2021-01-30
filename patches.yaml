@@ -91,6 +91,24 @@ global:
       # don't increase the pouch counter, that is done in the event now
       - original: 40 82 00 10 38 60 00 01 4b ff e7 5d 48 00 01 10
         patched:  40 82 00 10 38 60 00 01 60 00 00 00 48 00 01 10
+      # BEGIN crystal counter patch
+      # .org 0x802539dc
+      # b store_grat_count
+      # .org 0x802da0c0
+      # store_grat_count:
+      # bl getGratitudeCrystalCount: 80252710
+      # lwz r3, -0x4040(r13) ;ITEMFLAG_MANAGER
+      # li r4, 0x1F6 ;gratitude crystals
+      # bl 800bf5f0 FlagManager::getUncommittedFlags
+      # lwz r0, -0x3fb8(r13) ;LYT_MSG_MANAGER
+      # lwz r0, 0x724(r0)
+      # stw r3, 0x8A0(r0)
+      # 80 01 00 24 lwz r0, loc_res4(r1)
+      # b 0x802539e0
+      - original: 94 21 ff f0 7c 08 02 a6 38 60 00 68 90 01 00 14 93 e1 00 0c 48 00 82 dd 2c 03 00 00 7c 7f 1b 78 41 82 00 14
+        patched:  80 6d bf c0 38 80 01 f6 4b de 55 29 80 8d c0 48 80 84 07 24 90 64 08 a0 80 01 00 24 4b f7 99 04 41 82 00 14
+      - original: 48 12 a4 f9 80 01 00 24 83 e1 00 1c
+        patched:  48 12 a4 f9 48 08 66 e4 83 e1 00 1c
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
         patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
