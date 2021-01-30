@@ -980,6 +980,31 @@
     index: 635
     flow:
       next: -1
+  - name: Skip over Fi text after locateing machi
+    type: flowpatch
+    index: 91
+    flow:
+      next: -1
+  - name: Skip over Fi text after locateing Elder
+    type: flowpatch
+    index: 180
+    flow:
+      next: -1
+  - name: Skip over Fi text after locateing Oolo
+    type: flowpatch
+    index: 32
+    flow:
+      next: -1
+  - name: Skip over Fi text after locateing Oolo
+    type: flowpatch
+    index: 32
+    flow:
+      next: -1
+  - name: Skip over Fi text after locateing Lopsa
+    type: flowpatch
+    index: 165
+    flow:
+      next: -1
 201-ForestD1:
   - name: give item after beating skyview
     type: flowpatch
