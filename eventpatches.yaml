@@ -984,6 +984,16 @@
     type: flowpatch
     index: 91
     flow:
+      next: 335
+  - name: From storyflag after machi to sceneflag
+    type: flowpatch
+    index: 335
+    flow:
+      next: 618
+  - name: End after machi sceneflag
+    type: flowpatch
+    index: 618
+    flow:
       next: -1
   - name: Skip over Fi text after locateing Elder
     type: flowpatch
