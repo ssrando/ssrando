@@ -1200,6 +1200,12 @@ F100: # Faron main area
     layer: 1
     room: 0
     objtype: OBJ
+  - name: Remove Fi text after machi 1
+    type: objdelete
+    id: 0x66B8
+    layer: 1
+    room: 0
+    objtype: OBJ
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
