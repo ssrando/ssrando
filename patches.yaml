@@ -2285,6 +2285,14 @@ F301_1: # Sand Sea Main Area
     layer: 0
     room: 0
     objtype: OBJ
+  - name: remove entrance cutscene
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F301: # Ancient Harbour
   - name: No Sandship beaten layer in sandship
     type: objpatch
@@ -2325,6 +2333,14 @@ F301_3: # Skipper's Retreat
     layer: 0
     room: 0
     objtype: OBJ
+  - name: remove entrance cutscene
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F301_4: # Shipyard
   - name: Text after intro
     type: objdelete
@@ -2332,13 +2348,22 @@ F301_4: # Shipyard
     layer: 1
     room: 0
     objtype: OBJ
-  - name: Shipyard Intro
+  - name: Door to Construction always open
     type: objpatch
     room: 0
-    index: 0
-    objtype: EVNT
+    layer: 0
+    id: 0xFC05
+    objtype: OBJS
     object:
-      sceneflag2: 87
+      params1: 0xF7FFFC20
+  - name: remove entrance cutscene
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F301_5: # Skipper's Shack
   - name: Text after chest
     type: objdelete
@@ -2359,6 +2384,14 @@ F301_6: # outside Pirate stronghold
     layer: 0
     room: 0
     objtype: OBJ
+  - name: remove entrance cutscene
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F301_7: # inside Shipyard
   - name: Text near minecart door
     type: objdelete
