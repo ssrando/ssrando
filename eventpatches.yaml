@@ -995,19 +995,14 @@
     index: 618
     flow:
       next: -1
-  - name: Skip over Fi text after locateing Elder
-    type: flowpatch
-    index: 180
-    flow:
-      next: -1
   - name: Skip over Fi text after locateing Oolo
     type: flowpatch
     index: 32
     flow:
       next: -1
-  - name: Skip over Fi text after locateing Oolo
+  - name: Skip over Fi text after locateing Erla
     type: flowpatch
-    index: 32
+    index: 676
     flow:
       next: -1
   - name: Skip over Fi text after locateing Lopsa
