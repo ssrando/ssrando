@@ -134,7 +134,7 @@ DUNGEON_FINISH_EXITS = {
     "Dungeon Entrance In Eldin Volcano": ('F200', 0, 4, 1),
     "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 0, 1),
     "Dungeon Entrance In Lanayru Desert": ('F300_4', 2, 0, 2),
-    "Dungeon Entrance In Sand Sea": ('F301_1', 0, 0, 4),
+    "Dungeon Entrance In Sand Sea": ('F301', 0, 0, 3),
     "Dungeon Entrance On Skyloft": ('F000', 0, 0, 52),
 }
 
