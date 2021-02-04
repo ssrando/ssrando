@@ -160,7 +160,7 @@ class RandoGUI(QMainWindow):
             self.ask_for_clean_iso()
             return
         # make sure user can't mess with the options now
-        rando = Randomizer(self.options.copy())
+        self.rando = Randomizer(self.options.copy())
 
         if dry_run:
             extra_steps = 1  # done
@@ -168,8 +168,8 @@ class RandoGUI(QMainWindow):
             extra_steps = 101  # wit create wbfs + done
 
         self.progress_dialog = ProgressDialog("Randomizing", "Initializing...",
-                                              rando.get_total_progress_steps() + extra_steps)
-        self.randomizer_thread = RandomizerThread(rando, self.wit_manager, self.output_folder)
+                                              self.rando.get_total_progress_steps() + extra_steps)
+        self.randomizer_thread = RandomizerThread(self.rando, self.wit_manager, self.output_folder)
         self.randomizer_thread.update_progress.connect(self.ui_progress_callback)
         self.randomizer_thread.randomization_complete.connect(self.randomization_complete)
         self.randomizer_thread.error_abort.connect(self.on_error)
@@ -189,9 +189,9 @@ class RandoGUI(QMainWindow):
         self.progress_dialog.reset()
 
         if self.options['no-spoiler-log']:
-            text = """Randomization complete."""
+            text = f"""Randomization complete.<br>RANDO HASH: {self.rando.randomizer_hash}"""
         else:
-            text = """Randomization complete.<br><br>
+            text = f"""Randomization complete.<br>RANDO HASH: {self.rando.randomizer_hash}<br>
                     If you get stuck, check the progression spoiler log in the output folder."""
 
         self.complete_dialog = QMessageBox()

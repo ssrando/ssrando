@@ -1,4 +1,6 @@
-This is still under heavy development, be careful to use it!
+This is still under heavy development, be careful to use it!  
+This only works if the game language is set to ENGLISH, other languages will NOT WORK and will break  
+There is also the [Skyward Sword Randomizer Discord](https://discord.gg/evpNKkaaw6)
 
 ## Running the compiled binary (Windows)(recommended)
 1. For stable releases, grab the compiled program from the [github release section](https://github.com/lepelog/sslib/releases), for the newest, although potentially untested build get them from [appveyor](https://ci.appveyor.com/project/lepelog/sslib).

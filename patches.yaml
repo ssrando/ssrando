@@ -91,6 +91,24 @@ global:
       # don't increase the pouch counter, that is done in the event now
       - original: 40 82 00 10 38 60 00 01 4b ff e7 5d 48 00 01 10
         patched:  40 82 00 10 38 60 00 01 60 00 00 00 48 00 01 10
+      # BEGIN crystal counter patch
+      # .org 0x802539dc
+      # b store_grat_count
+      # .org 0x802da0c0
+      # store_grat_count:
+      # bl getGratitudeCrystalCount: 80252710
+      # lwz r3, -0x4040(r13) ;ITEMFLAG_MANAGER
+      # li r4, 0x1F6 ;gratitude crystals
+      # bl 800bf5f0 FlagManager::getUncommittedFlags
+      # lwz r0, -0x3fb8(r13) ;LYT_MSG_MANAGER
+      # lwz r0, 0x724(r0)
+      # stw r3, 0x8A0(r0)
+      # 80 01 00 24 lwz r0, loc_res4(r1)
+      # b 0x802539e0
+      - original: 94 21 ff f0 7c 08 02 a6 38 60 00 68 90 01 00 14 93 e1 00 0c 48 00 82 dd 2c 03 00 00 7c 7f 1b 78 41 82 00 14
+        patched:  80 6d bf c0 38 80 01 f6 4b de 55 29 80 8d c0 48 80 84 07 24 90 64 08 a0 80 01 00 24 4b f7 99 04 41 82 00 14
+      - original: 48 12 a4 f9 80 01 00 24 83 e1 00 1c
+        patched:  48 12 a4 f9 48 08 66 e4 83 e1 00 1c
       # change the storyflag that is checked to disable sandship dowsing from enter sandship CS to Sandship made visible
       - original: 38 80 00 0e 81 83 00 00 81 8c 00 2c 7d 89 03 a6
         patched:  38 80 01 10 81 83 00 00 81 8c 00 2c 7d 89 03 a6
@@ -1203,6 +1221,12 @@ F100: # Faron main area
   - name: Remove Fi text Not letting you leave machi 3
     type: objdelete
     id: 0x66B9
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: Remove Fi text after machi 1
+    type: objdelete
+    id: 0x66B8
     layer: 1
     room: 0
     objtype: OBJ
@@ -2352,6 +2376,14 @@ F301_1: # Sand Sea Main Area
     layer: 0
     room: 0
     objtype: OBJ
+  - name: remove entrance cutscene
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F301: # Ancient Harbour
   - name: No Sandship beaten layer in sandship
     type: objpatch
@@ -2392,6 +2424,14 @@ F301_3: # Skipper's Retreat
     layer: 0
     room: 0
     objtype: OBJ
+  - name: remove entrance cutscene
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F301_4: # Shipyard
   - name: Text after intro
     type: objdelete
@@ -2399,13 +2439,22 @@ F301_4: # Shipyard
     layer: 1
     room: 0
     objtype: OBJ
-  - name: Shipyard Intro
+  - name: Door to Construction always open
     type: objpatch
     room: 0
-    index: 0
-    objtype: EVNT
+    layer: 0
+    id: 0xFC05
+    objtype: OBJS
     object:
-      sceneflag2: 87
+      params1: 0xF7FFFC20
+  - name: remove entrance cutscene
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F301_5: # Skipper's Shack
   - name: Text after chest
     type: objdelete
@@ -2426,6 +2475,14 @@ F301_6: # outside Pirate stronghold
     layer: 0
     room: 0
     objtype: OBJ
+  - name: remove entrance cutscene
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F301_7: # inside Shipyard
   - name: Text near minecart door
     type: objdelete
@@ -2747,6 +2804,12 @@ F402: # Sealed Temple
     type: objdelete
     id: 0xFC49
     layer: 2
+    room: 2
+    objtype: OBJ
+  - name: Impa text before imp 2 trigger
+    type: objdelete
+    id: 0xFC4C
+    layer: 3
     room: 2
     objtype: OBJ
   - name: Remove Music and shaking

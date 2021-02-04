@@ -123,14 +123,14 @@ Skyloft - Cawlin's Letter:
   Paths:
     - event/115-Town2/166
     - oarc/F001r/l0
-Skyloft - Wyrna Crystals:
+Skyloft - Wryna's Crystals:
   Need: Nothing
   original item: 5 Gratitude Crystals
   type: skyloft, free gift, crystal quest
   Paths:
     - event/118-Town3/144
     - oarc/F006r/l0
-Skyloft - Peater/Peatrice Crystals:
+Skyloft - Peater/Peatrice's Crystals:
   Need: Nothing
   original item: 5 Gratitude Crystals
   type: skyloft, long, crystal quest, peatrice
@@ -139,7 +139,7 @@ Skyloft - Peater/Peatrice Crystals:
     - event/123-Town5/316
     - oarc/F018r/l0
     - oarc/F019r/l0
-Skyloft - Parrow Crystals:
+Skyloft - Parrow's Crystals:
   Need: Bottle
     # There are mushrooms in the Sky inside the Volcanic Island
   original item: 5 Gratitude Crystals
@@ -148,7 +148,7 @@ Skyloft - Parrow Crystals:
     - event/115-Town2/814
     - oarc/F000/l0
     - oarc/F005r/l0
-Skyloft - Fledge Crystals:
+Skyloft - Fledge's Crystals:
   Need: Can Beat Lanayru Mining Facility & Bottle # LMF only for Potion right now
   original item: 5 Gratitude Crystals
   type: skyloft, lanayru, short, crystal quest, dungeon
@@ -162,7 +162,7 @@ Skyloft - Baby Crystals:
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
-Skyloft - Ghost/Pipit Crystals:
+Skyloft - Ghost/Pipit's Crystals:
   Need: Cawlin's Letter
   original item: 5 Gratitude Crystals
   type: skyloft, fetch, crystal quest
@@ -170,7 +170,7 @@ Skyloft - Ghost/Pipit Crystals:
     - event/115-Town2/522
     - event/115-Town2/641
     - oarc/F001r/l0
-Skyloft - Sparrot Crystals:
+Skyloft - Sparrot's Crystals:
   Need: Can Access Second Part of Eldin & Clawshots
   original item: 5 Gratitude Crystals
   type: skyloft, eldin, long, scrapper, crystal quest
@@ -184,7 +184,7 @@ Skyloft - Cleaning Crystals:
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
-Skyloft - Owlan Crystals:
+Skyloft - Owlan's Crystals:
   Need: Can Access Most of Faron Woods & Bomb Bag
   original item: 5 Gratitude Crystals
   type: skyloft, faron, long, scrapper, crystal quest, combat
@@ -425,14 +425,14 @@ Sky - Fun Fun Island Minigame:
   Paths:
    - event/110-DivingGame/19
    - oarc/F020/l2
-Sky - Dohdoh Crystals:
+Sky - Dodoh Crystals:
   Need: Can Retrieve Party Wheel
   original item: 5 Gratitude Crystals
   type: sky, lanayru, long, scrapper
   Paths:
     - event/110-DivingGame/60
     - oarc/F020/l0
-Sky - Orrielle Crystals:
+Sky - Orielle's Crystals:
   Need: Bottle
   # Need access to Faron to be able to get mushroom spores as many times as you want
   original item: 5 Gratitude Crystals
@@ -440,7 +440,7 @@ Sky - Orrielle Crystals:
   Paths:
     - event/115-Town2/225
     - oarc/F020/l0
-Sky - Kina Crystals:
+Sky - Kina's Crystals:
   Need: Bottle & Goddess Harp & Can Access Eldin
   original item: 5 Gratitude Crystals
   type: sky, eldin, scrapper, minigame, long, crystal quest

@@ -1,0 +1,164 @@
+- name: Dry Run
+  command: dry-run
+  type: boolean
+  default: false
+  permalink: false
+  help: Only generate a spoiler log, doesn't attempt to patch any game files
+  ui: option_dry_run
+- name: No GUI
+  command: noui
+  type: boolean
+  default: false
+  permalink: false
+  help: Don't launch the randomizer UI, just read command line params
+- name: Starting Tablet Count
+  command: starting-tablet-count
+  type: int
+  default: 3
+  min: 0
+  max: 3
+  bits: 2
+  help: Number of tablets to start with. Tablets are selected randomly, and the remainder
+    are randomized
+  ui: option_starting_tablet_count
+- name: Closed Thunderhead
+  command: closed-thunderhead
+  type: boolean
+  default: false
+  help: Thunderhead is closed by default, obtain Ballad of the Goddess to immediately
+    open it
+  ui: option_closed_thunderhead
+- name: Swordless
+  command: swordless
+  type: boolean
+  default: false
+  help: Instead of starting with the goddess sword, in this mode all sword upgrades,
+    including the pracice sword, have to be found
+  ui: option_swordless
+- name: Required Dungeon Count
+  command: required-dungeon-count
+  type: int
+  default: 2
+  min: 0
+  max: 6
+  bits: 3
+  help: The number of dungeons that are required, to beat the seed
+  ui: option_required_dungeon_count
+- name: Imp 2 Skip
+  command: imp2-skip
+  type: boolean
+  default: false
+  help: Skips the requirement to beat Imp 2 in oder to beat the seed
+  ui: option_skip_imp_2
+- name: Empty unrequired Dungeons
+  command: empty-unrequired-dungeons
+  type: boolean
+  default: false
+  help: If activated, only the required dungeons will contain progression items
+  ui: option_empty_unrequired_dungeons
+- name: Banned Types
+  command: banned-types
+  type: multichoice
+  default: []
+  choices:
+  - skyloft
+  - sky
+  - thunderhead
+  - faron
+  - eldin
+  - lanayru
+  - dungeon
+  - mini dungeon
+  - free gift
+  - freestanding
+  - miscellaneous
+  - silent realm
+  - digging
+  - bombable
+  - combat
+  - song
+  - spiral charge
+  - minigame
+  - crystal
+  - short
+  - long
+  - fetch
+  - crystal quest
+  - scrapper
+  - peatrice
+  - goddess
+  - faron goddess
+  - eldin goddess
+  - lanayru goddess
+  - floria goddess
+  - summit goddess
+  - sand sea goddess
+  help: 'Choose subtypes that can''t contain progression items, as a comma seperated
+    list, available types are: skyloft, sky, thunderhead, faron, eldin, lanayru, dungeon,
+    mini dungeon, free gift, freestanding, miscellaneous, silent realm, digging, bombable,
+    combat, song, spiral charge, minigame, crystal, short, long, fetch, crystal quest,
+    scrapper, peatrice, goddess, faron goddess, eldin goddess, lanayru goddess, floria
+    goddess, summit goddess, sand sea goddess'
+  ui: option_banned_types
+- name: Skip Skykeep
+  command: skip-skykeep
+  type: boolean
+  default: false
+  help: If activated, skips the requirement to beat skykeep in order to access the
+    horde in the past
+  ui: option_skip_skykeep
+- name: Seed
+  command: seed
+  type: int
+  default: -1
+  permalink: false
+  help: Specify a seed to use for randomization, leave empty for random seed
+  ui: seed
+- name: Hero Mode
+  command: hero-mode
+  type: boolean
+  default: true
+  help: If activated, play the game on Hero Mode
+  ui: option_hero_mode
+- name: Randomize Entrances
+  command: randomize-entrances
+  type: singlechoice
+  bits: 2
+  choices:
+  - None
+  - Dungeons
+  - Dungeons + Sky Keep
+  default: None
+  help: "Shuffles entrances with one another. Options: None, Dungeons, Dungeons + Sky Keep"
+  ui: option_randomize_entrances
+- name: Start with Adventure Pouch
+  command: start-with-pouch
+  type: boolean
+  default: false
+  help: If activated, you will start with the adventure pouch unlocked. One progressive
+    pouch will still be randomized
+  ui: option_start_pouch
+- name: No Spoiler Log
+  command: no-spoiler-log
+  type: boolean
+  default: false
+  help: If activated, no spoiler log will be generated. This is highly discouraged
+    to activate, as it makes debugging issues much harder.
+  ui: option_no_spoiler_log
+- name: Max Batreaux Reward
+  command: max-batreaux-reward
+  type: singlechoice
+  default: 80
+  choices:
+  - 0
+  - 5
+  - 10
+  - 30
+  - 40
+  - 50
+  - 70
+  - 80
+  bits: 3
+  help: Enables progression items to appear in all Batreaux rewards up to an including
+    the specified amount.
+  ui: option_max_batreaux_reward

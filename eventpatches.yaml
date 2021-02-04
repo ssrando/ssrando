@@ -48,7 +48,7 @@
     type: textpatch
     index: 229
     text: "You got the \x0E\x00\x03\x02\x05Amber Tablet\x0E\x00\x03\x02\uFFFF!\nThe weathered surface of this heavy stone\ntablet feels very old."
-  - name: Faroure's Courage Text
+  - name: Farore's Courage Text
     type: textpatch
     index: 237
     text: "You learned \x0E\x00\x03\x02\x05Farore's Courage\x0E\x00\x03\x02\uFFFF!"
@@ -76,6 +76,14 @@
     type: textpatch
     index: 243
     text: "The \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF is now complete!"
+  - name: Single Gratitude crystal counter
+    type: textpatch
+    index: 45 # \x0e\x02\x03\x06\x00\x00\xcd is for showing numeric arg0
+    text: "You got \x0e\x00\x03\x02\x00five\x0e\x00\x03\x02\uFFFF \x0e\x00\x03\x02\x05Gratitude Crystals\x0e\x00\x03\x02\uFFFF!\nThat is \x0e\x00\x03\x02\x00\x0e\x02\x03\x06\x00\x01\xcd\x0e\x00\x03\x02\uFFFF in Total!"
+  - name: Single Gratitude crystal counter
+    type: textpatch
+    index: 62 # \x0e\x02\x03\x06\x00\x00\xcd is for showing numeric arg0
+    text: "You got \x0e\x00\x03\x02\x00one\x0e\x00\x03\x02\uFFFF \x0e\x00\x03\x02\x05Gratitude Crystal\x0e\x00\x03\x02\uFFFF!\nThat is \x0e\x00\x03\x02\x00\x0e\x02\x03\x06\x00\x01\xcd\x0e\x00\x03\x02\uFFFF in Total!"
   - name: Zelda dowsing in Key Piece
     type: flowpatch
     index: 677
@@ -970,6 +978,36 @@
   - name: Skip over Zelda Dowsing 3
     type: flowpatch
     index: 635
+    flow:
+      next: -1
+  - name: Skip over Fi text after locateing machi
+    type: flowpatch
+    index: 91
+    flow:
+      next: 335
+  - name: From storyflag after machi to sceneflag
+    type: flowpatch
+    index: 335
+    flow:
+      next: 618
+  - name: End after machi sceneflag
+    type: flowpatch
+    index: 618
+    flow:
+      next: -1
+  - name: Skip over Fi text after locateing Oolo
+    type: flowpatch
+    index: 32
+    flow:
+      next: -1
+  - name: Skip over Fi text after locateing Erla
+    type: flowpatch
+    index: 676
+    flow:
+      next: -1
+  - name: Skip over Fi text after locateing Lopsa
+    type: flowpatch
+    index: 165
     flow:
       next: -1
 201-ForestD1:

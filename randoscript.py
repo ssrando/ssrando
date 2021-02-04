@@ -53,6 +53,7 @@ if options is not None:
             progress_steps+=1
         rando.progress_callback = progress_callback
         rando.randomize()
+        print(f'SEED HASH: {rando.randomizer_hash}')
     else:
         from gui.randogui import run_main_gui
 

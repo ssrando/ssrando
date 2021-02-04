@@ -165,7 +165,8 @@ class Randomizer:
     self.progress_callback('randomizing items...')
     self.logic.randomize_items()
     if self.no_logs:
-      self.progress_callback('skipping spoiler log...')
+      self.progress_callback('writing anti spoiler log...')
+      self.write_spoiler_log()
     else:
       self.progress_callback('writing spoiler log...')
       self.write_spoiler_log()
@@ -174,12 +175,23 @@ class Randomizer:
     self.progress_callback('patching done')
 
   def write_spoiler_log(self):
+    spoiler_log = self.get_log_header()
+
     if self.no_logs:
       # We still calculate progression spheres even if we're not going to write them anywhere to catch more errors in testing.
       self.calculate_playthrough_progression_spheres()
+
+      spoiler_log_output_path = Path('.') / ("SS Random %s - Anti Spoiler Log.txt" % self.seed)
+      with spoiler_log_output_path.open('w') as f:
+        f.write(spoiler_log)
+
       return
-    
-    spoiler_log = self.get_log_header()
+
+  
+    if len(self.starting_items) > 0:
+      spoiler_log += "\n\nStarting items:\n  "
+      spoiler_log += "\n  ".join(self.starting_items)
+    spoiler_log += "\n\n\n"
 
     # Write required dungeons
     for i, dungeon in enumerate(self.required_dungeons):
@@ -269,11 +281,6 @@ class Randomizer:
         value = self.options[option_name]
         option_strings.append("  %s: %s" % (option_name, value))
     header += "\n".join(option_strings)
-  
-    if len(self.starting_items) > 0:
-      header += "\n\nStarting items:\n  "
-      header += "\n  ".join(self.starting_items)
-    header += "\n\n\n"
     
     return header
 
