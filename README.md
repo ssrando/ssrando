@@ -131,6 +131,12 @@ New Trial Completed Storyflags:
 935: Exit out of back of LMF for first time
 936: Obtained Item at end of LMF
 
+#### Sceneflags
+Ancient Cistern:
+- 85, after recieving item from flame CS
+Sandship:
+- 87, after recieving item from flame CS
+
 ### Shoutouts
 - Peppernicus2000: Logic, fixes
 - Azer67: Logic

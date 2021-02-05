@@ -353,6 +353,8 @@ def try_patch_obj(obj, key, value):
                 obj['anglex'] = mask_shift_set(obj['anglex'], 0xFF, 0, value)
             elif key == 'untrigscenefid':
                 obj['anglex'] = mask_shift_set(obj['anglex'], 0xFF, 8, value)
+            elif key == 'subtype':
+                obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0, value)
             else:
                 print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
         else:
@@ -997,7 +999,10 @@ def do_gamepatches(rando):
                     print(f'ERROR: wrong index adding object: {json.dumps(objadd)}')
                     continue
             for key, val in obj.items():
-                new_obj[key] = val
+                if key in new_obj:
+                    new_obj[key] = val
+                else:
+                    try_patch_obj(new_obj, key, val)
             if 'id' in new_obj:
                 new_obj['id'] = (new_obj['id'] & ~0x3FF) | next_id
                 next_id += 1

@@ -299,7 +299,8 @@ B100_1: # skyview spring
     room: 0
     objtype: OBJ
     object:
-      params1: 0xFFE017F1 # last 1 is subtype (not talk to fi)
+      params1: 0xFFFFFFF1 # last 1 is subtype (not talk to fi)
+      trigscenefid: 104
   - name: Fi text after skyview CS
     type: objmove
     id: 0xFC73
@@ -320,12 +321,19 @@ B100_1: # skyview spring
     index: 1
     objtype: EVNT
     object:
+      sceneflag1: 104
       item: -1 # first storyflag handled by entrance rando patches
   - name: Loadzone to outside layer 3
     type: objdelete
     room: 0
     layer: 3
     id: 0xFC75
+    objtype: STAG
+  - name: Remove small cutscene
+    type: objdelete
+    room: 0
+    layer: 1
+    id: 0xFC73
     objtype: STAG
 B101: # Koloktos Boss Room
   - name: Open door after boss
@@ -360,16 +368,17 @@ B101_1: # after AC boss
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x709FFF01 # untriggered by 900, storyflag for beating AC
+      params1: 0xFFFFFF01 # type 1, no fi, flag sets automatically
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF56 # triggered by sceneflag 86, which is goddess crest hit
       angley: 0xFFFF
       anglez: 20231 # entrypoint 202_31
       id: 0xFC00
       name: NpcTke
+      trigscenefid: 86 # goddess crest hit
+      untrigscenefid: 85 # unused flag
   - name: Loadzone to outside
     type: objpatch
     room: 0
@@ -418,16 +427,17 @@ B201_1: # after FS boss
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x70BFFF01 # untriggered by 901, storyflag for beating fire sanctuary
+      params1: 0xFFFFFF01 # untriggered by 901, storyflag for beating fire sanctuary
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF5F # triggered by sceneflag 95, which is goddess crest hit
       angley: 0xFFFF
       anglez: 30407 # entrypoint 304_07
       id: 0xFC00
       name: NpcTke
+      trigscenefid: 95 # goddess crest hit
+      untrigscenefid: 121 # sets in flame CS normally
   - name: Loadzone to outside
     type: objpatch
     room: 0
@@ -453,16 +463,17 @@ B301: # after Sandship boss
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x01FFFF01 # untriggered by 15, storyflag for beating sandship
+      params1: 0xFFFFFF01 # subtype for not talking to Fi, but setting the untriggerflag
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF54 # triggered by sceneflag 84, which is goddess crest hit
       angley: 0xFFFF
       anglez: 40108 # entrypoint 401_08
       id: 0xFC00
       name: NpcTke
+      trigscenefid: 84
+      untrigscenefid: 87
   - name: Fi text to force leave boss room
     type: objadd
     room: 0
@@ -470,16 +481,18 @@ B301: # after Sandship boss
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x717FFF0B # untriggered by 907, storyflag for having goddess sword
+      params1: 0xFFFFFF0B # subtype 0xB for Fi and no storyflag set
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF55 # triggered by sceneflag 85, which is heart container
       angley: 0xFFFF
       anglez: 40118 # entrypoint 401_18
       id: 0xFC00
       name: NpcTke
+      trigscenefid: 85
+      untrigscenefid: 0xFF
+      untrigstoryfid: 907 # untriggered by 907, storyflag for having goddess sword
   - name: Loadzone to outside
     type: objpatch
     room: 0
@@ -2597,16 +2610,18 @@ D301: # Sandship A
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x01FFFF01 # untriggered by 15, storyflag for beating sandship
+      params1: 0xFFFFFF01 # subtype to not trigger fi, but set flag
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF54 # triggered by sceneflag 84, which is goddess crest hit
+      anglex: 0xFF54
       angley: 0xFFFF
       anglez: 40119 # entrypoint 401_19
       id: 0xFC00
       name: NpcTke
+      trigscenefid: 84 # triggered by sceneflag 84, which is goddess crest hit
+      untrigscenefid: 87 # unused flag to untrigger
   - name: Trigger Flame CS
     type: objadd
     layer: 0
