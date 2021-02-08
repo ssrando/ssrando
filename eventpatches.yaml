@@ -657,6 +657,12 @@
     index: 104
     flow:
       param2: 96
+113-RemodelStore:
+  - name: Change switch for getting Treasure Dowsing
+    type: flowpatch
+    index: 143
+    flow:
+      param2: 909 # Whitesword
 115-Town2:
   - name: Parrow's Empty Bottle
     type: flowpatch
