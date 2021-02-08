@@ -295,6 +295,13 @@ B100:
       - story_flag: -1
         night: 0
         layer: 13
+  - name: only play CS when ghirahim hasn't been defeated
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: 83 # ghirahim defeated
 B100_1: # skyview spring
   - name: Fi text after skyview CS
     type: objpatch
