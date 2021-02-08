@@ -109,9 +109,13 @@ global:
         patched:  80 6d bf c0 38 80 01 f6 4b de 55 29 80 8d c0 48 80 84 07 24 90 64 08 a0 80 01 00 24 4b f7 99 04 41 82 00 14
       - original: 48 12 a4 f9 80 01 00 24 83 e1 00 1c
         patched:  48 12 a4 f9 48 08 66 e4 83 e1 00 1c
+      # in NpcTke, instead of ignoring the triggersceneflag if the triggerstoryflag is given, only trigger if both are set
+      # this is a safe change, because they are never set both in the original game
+      - original: 4e 80 04 21 54 63 04 3e 7c 03 00 d0 7c 00 1b 78 54 03 0f fe 48 00 00 3c 88 bf 07 38
+        patched:  4e 80 04 21 28 03 00 00 40 82 00 10 38 60 00 00 7c 00 03 78 48 00 00 3c 88 bf 07 38
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
-        patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
+        patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 03 A5
     d_a_obj_time_door_before: # this bit checks for the current sword, replace equals check with greater equals
       - original: 2c 00 00 04 40 82 00 a0
         patched:  2c 00 00 04 41 80 00 a0
@@ -2512,16 +2516,18 @@ D301: # Sandship A
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x01FFFF01 # untriggered by 15, storyflag for beating sandship
+      params1: 0xFFFFFF01 # subtype to not trigger fi, but set flag
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF54 # triggered by sceneflag 84, which is goddess crest hit
       angley: 0xFFFF
-      anglez: 40119 # entrypoint 401_19
+      anglez: 40118 # entrypoint 401_18
       id: 0xFC00
       name: NpcTke
+      trigstoryfid: 933 # triggered by storyflag for leaving tentalus room
+      trigscenefid: 84 # and triggered by sceneflag 84, which is goddess crest hit
+      untrigstoryfid: 15 # sandship beaten flag
   - name: Trigger Flame CS
     type: objadd
     layer: 0
@@ -2607,7 +2613,7 @@ D301: # Sandship A
     room: 0
     objtype: OBJ
 D301_1: # Sandship B
-  - name: Fi text before tentacles
+  - name: Fi text before tentalus
     type: objdelete
     id: 0xFC1D
     layer: 0
