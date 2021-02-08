@@ -112,9 +112,13 @@ global:
       # change the storyflag that is checked to disable sandship dowsing from enter sandship CS to Sandship made visible
       - original: 38 80 00 0e 81 83 00 00 81 8c 00 2c 7d 89 03 a6
         patched:  38 80 01 10 81 83 00 00 81 8c 00 2c 7d 89 03 a6
+      # in NpcTke, instead of ignoring the triggersceneflag if the triggerstoryflag is given, only trigger if both are set
+      # this is a safe change, because they are never set both in the original game
+      - original: 4e 80 04 21 54 63 04 3e 7c 03 00 d0 7c 00 1b 78 54 03 0f fe 48 00 00 3c 88 bf 07 38
+        patched:  4e 80 04 21 28 03 00 00 40 82 00 10 38 60 00 00 7c 00 03 78 48 00 00 3c 88 bf 07 38
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
-        patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
+        patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 03 A5
     d_a_obj_time_door_before: # this bit checks for the current sword, replace equals check with greater equals
       - original: 2c 00 00 04 40 82 00 a0
         patched:  2c 00 00 04 41 80 00 a0
@@ -2615,12 +2619,12 @@ D301: # Sandship A
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF54
       angley: 0xFFFF
-      anglez: 40119 # entrypoint 401_19
+      anglez: 40118 # entrypoint 401_18
       id: 0xFC00
       name: NpcTke
-      trigscenefid: 84 # triggered by sceneflag 84, which is goddess crest hit
+      trigstoryfid: 933 # triggered by storyflag for leaving tentalus room
+      trigscenefid: 84 # and triggered by sceneflag 84, which is goddess crest hit
       untrigscenefid: 87 # unused flag to untrigger
   - name: Trigger Flame CS
     type: objadd
@@ -2707,7 +2711,7 @@ D301: # Sandship A
     room: 0
     objtype: OBJ
 D301_1: # Sandship B
-  - name: Fi text before tentacles
+  - name: Fi text before tentalus
     type: objdelete
     id: 0xFC1D
     layer: 0
