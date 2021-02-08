@@ -1763,6 +1763,15 @@ F210: # Mogma Turf
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Cobal Trigger
+    type: objpatch
+    id: 0xFC70
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: 909 # Whitesword
+    objtype: OBJ     
   - name: Cobal
     type: objmove
     id: 0xFC70
