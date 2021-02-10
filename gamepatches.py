@@ -119,7 +119,7 @@ DUNGEON_ENTRANCE_STAGES = {
 DUNGEON_EXITS = {
     # stage, layer, room, entrance
     "Dungeon Entrance In Deep Woods": ('F101', 0, 0, 1),
-    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 0, 6),
+    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 0, 1),
     "Dungeon Entrance In Eldin Volcano": ('F200', 0, 4, 1),
     "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 0, 1),
     "Dungeon Entrance In Lanayru Desert": ('F300', 0, 0, 5),
