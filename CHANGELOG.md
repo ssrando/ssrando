@@ -1,5 +1,12 @@
 # Changelog
 
+## Dev
+### Options
+- Added option to randomize dungeon entrances
+### Changes
+- Item after LMF is given before exiting out of the back
+- Treasure and Rupee dowsing are now obtainable after getting the Goddess Whitesword
+
 ## 1.0.4
 ### Options
 - Add option to not generate a spoiler log
