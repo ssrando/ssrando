@@ -10,6 +10,7 @@ import os
 
 from .item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS
 from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
+from .logic_expression import LogicExpression, parse_logic_expression
 
 # TODO, path for logic files will probably be params
 ROOT_DIR = Path(__file__).parent.parent
@@ -622,36 +623,7 @@ class Logic:
   
   @staticmethod
   def parse_logic_expression(string):
-    tokens = [str.strip() for str in re.split("([&|()])", string)]
-    tokens = [token for token in tokens if token != ""]
-    
-    stack = []
-    for token in tokens:
-      if token == "(":
-        stack.append("(")
-      elif token == ")":
-        nested_tokens = []
-        
-        nested_parentheses_level = 0
-        while len(stack) != 0:
-          exp = stack.pop()
-          if exp == "(":
-            if nested_parentheses_level == 0:
-              break
-            else:
-              nested_parentheses_level -= 1
-          if exp == ")":
-            nested_parentheses_level += 1
-          nested_tokens.append(exp)
-        
-        nested_tokens.reverse()
-        stack.append("(")
-        stack.append(nested_tokens)
-        stack.append(")")
-      else:
-        stack.append(token)
-    
-    return stack
+    return parse_logic_expression(string)
   
   def check_requirement_met(self, req_name):
     match = ITEM_WITH_COUNT_REGEX.match(req_name)
@@ -682,38 +654,8 @@ class Logic:
   def check_logical_expression_string_req(self, logical_expression_str):
     return self.check_logical_expression_req(Logic.parse_logic_expression(logical_expression_str))
 
-  def check_logical_expression_req(self, logical_expression):
-    expression_type = None
-    subexpression_results = []
-    tokens = logical_expression.copy()
-    tokens.reverse()
-    while tokens:
-      token = tokens.pop()
-      if token == "|":
-        if expression_type == "AND":
-          raise Exception("Error parsing progression requirements: & and | must not be within the same nesting level.")
-        expression_type = "OR"
-      elif token == "&":
-        if expression_type == "OR":
-          raise Exception("Error parsing progression requirements: & and | must not be within the same nesting level.")
-        expression_type = "AND"
-      elif token == "(":
-        nested_expression = tokens.pop()
-        if nested_expression == "(":
-          # Nested parentheses
-          nested_expression = ["("] + tokens.pop()
-        result = self.check_logical_expression_req(nested_expression)
-        subexpression_results.append(result)
-        assert tokens.pop() == ")"
-      else:
-        # Subexpression.
-        result = self.check_requirement_met(token)
-        subexpression_results.append(result)
-    
-    if expression_type == "OR":
-      return any(subexpression_results)
-    else:
-      return all(subexpression_results)
+  def check_logical_expression_req(self, logical_expression: LogicExpression):
+    return logical_expression.is_true(self)
   
   def get_item_names_by_req_name(self, req_name):
     items_needed = self.get_items_needed_by_req_name(req_name)
@@ -723,7 +665,7 @@ class Logic:
     items_needed = self.get_items_needed_from_logical_expression_req(logical_expression)
     return self.flatten_items_needed_to_item_names(items_needed)
   
-  def flatten_items_needed_to_item_names(self, items_needed):
+  def flatten_items_needed_to_item_names(self, items_needed: OrderedDict):
     item_names = []
     for item_name, num_required in items_needed.items():
       item_names += [item_name]*num_required
@@ -731,13 +673,7 @@ class Logic:
   
   def get_items_needed_by_req_name(self, req_name):
     items_needed = OrderedDict()
-    match = ITEM_WITH_COUNT_REGEX.match(req_name)
-    if match:
-      item_name = match.group(1)
-      num_required = int(match.group(2))
-      
-      items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
-    elif req_name.startswith("Can Access Other Location \""):
+    if req_name.startswith("Can Access Other Location \""):
       match = re.search(r"^Can Access Other Location \"([^\"]+)\"$", req_name)
       other_location_name = match.group(1)
       requirement_expression = self.item_locations[other_location_name]["Need"]
@@ -763,52 +699,8 @@ class Logic:
     
     return items_needed
   
-  def get_items_needed_from_logical_expression_req(self, logical_expression):
-    if self.check_logical_expression_req(logical_expression):
-      # If this expression is already satisfied, we don't want to include any other items in the OR statement.
-      return OrderedDict()
-    
-    items_needed = OrderedDict()
-    tokens = logical_expression.copy()
-    tokens.reverse()
-    while tokens:
-      token = tokens.pop()
-      if token == "|":
-        pass
-      elif token == "&":
-        pass
-      elif token == "(":
-        nested_expression = tokens.pop()
-        if nested_expression == "(":
-          # Nested parentheses
-          nested_expression = ["("] + tokens.pop()
-        sub_items_needed = self.get_items_needed_from_logical_expression_req(nested_expression)
-        for item_name, num_required in sub_items_needed.items():
-          items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
-        assert tokens.pop() == ")"
-      else:
-        # Subexpression.
-        sub_items_needed = self.get_items_needed_by_req_name(token)
-        for item_name, num_required in sub_items_needed.items():
-          items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
-    
-    return items_needed
-  
-  # def check_progressive_item_req(self, req_name):
-  #   match = re.search(r"^(Progressive .+) x(\d+)$", req_name)
-  #   item_name = match.group(1)
-  #   num_required = int(match.group(2))
-    
-  #   num_owned = self.currently_owned_items.count(item_name)
-  #   return num_owned >= num_required
-  
-  # def check_small_key_req(self, req_name):
-  #   match = re.search(r"^(.+ Small Key) x(\d+)$", req_name)
-  #   small_key_name = match.group(1)
-  #   num_keys_required = int(match.group(2))
-    
-  #   num_small_keys_owned = self.currently_owned_items.count(small_key_name)
-  #   return num_small_keys_owned >= num_keys_required
+  def get_items_needed_from_logical_expression_req(self, logical_expression: LogicExpression):
+    return logical_expression.get_items_needed(self)
   
   def check_other_location_requirement(self, req_name):
     match = re.search(r"^Can Access Other Location \"([^\"]+)\"$", req_name)
