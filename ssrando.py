@@ -8,7 +8,7 @@ import hashlib
 
 from logic.logic import Logic
 import logic.constants as constants
-from gamepatches import do_gamepatches, GAMEPATCH_TOTAL_STEP_COUNT
+from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
 from sslib.utils import encodeBytes
@@ -171,7 +171,7 @@ class Randomizer:
       self.progress_callback('writing spoiler log...')
       self.write_spoiler_log()
     if not self.dry_run:
-      do_gamepatches(self)
+      GamePatcher(self).do_all_gamepatches()
     self.progress_callback('patching done')
 
   def write_spoiler_log(self):

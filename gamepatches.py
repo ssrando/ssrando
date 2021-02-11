@@ -596,93 +596,157 @@ def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Op
         print(f'ERROR: neither id nor index given for object {json.dumps(objdef)}')
         return None
     return obj
+class GamePatcher:
+    def __init__(self, rando):
+        self.rando = rando
+        self.patcher = AllPatcher(
+            actual_extract_path=rando.actual_extract_path,
+            modified_extract_path=rando.modified_extract_path,
+            oarc_cache_path=rando.oarc_cache_path,
+            copy_unmodified=False)
+        self.text_labels = {}
+    
+    def do_all_gamepatches(self):
+        self.load_base_patches()
+        self.add_entrance_rando_patches()
+        self.do_build_arc_cache()
+        self.add_startitem_patches()
+        self.add_required_dungeon_patches()
+        self.add_startstoryflags_to_patches()
+        self.add_trial_hint_patches()
+        self.handle_oarc_add_remove()
+        self.add_rando_hash()
 
-def do_gamepatches(rando):
-    patcher = AllPatcher(
-        actual_extract_path=rando.actual_extract_path,
-        modified_extract_path=rando.modified_extract_path,
-        oarc_cache_path=rando.oarc_cache_path,
-        copy_unmodified=False)
-    with (RANDO_ROOT_PATH / "patches.yaml").open() as f:
-        patches = yaml.safe_load(f)
-    with (RANDO_ROOT_PATH / "eventpatches.yaml").open() as f:
-        eventpatches = yaml.safe_load(f)
+        self.patcher.set_bzs_patch(self.bzs_patch_func)
+        self.patcher.set_event_patch(self.flow_patch)
+        self.patcher.set_event_text_patch(self.text_patch)
+        self.patcher.progress_callback = self.rando.progress_callback
+        self.patcher.do_patch()
 
-    for entrance, dungeon in rando.entrance_connections.items():
-        entrance_stage, entrance_room, entrance_scen = DUNGEON_ENTRANCE_STAGES[entrance]
-        dungeon_stage, layer, room, entrance_index = DUNGEON_ENTRANCES[dungeon]
-        # patch dungeon entrance
-        patches.get(entrance_stage).append({
-            'name': f'Dungeon entrance patch - {entrance} to {dungeon}',
-            'type': 'objpatch',
-            'index': entrance_scen,
-            'room': entrance_room,
-            'objtype': 'SCEN',
-            'object': {
-                'name': dungeon_stage,
-                'layer': layer,
-                'room': room,
-                'entrance': entrance_index
-            }
-        })
+        self.do_dol_patch()
+        self.do_rel_patch()
+        self.do_patch_title_screen_logo()
 
-        # handle the extra loading zone to the dungeon in Sand Sea from Ancient Harbor
-        # yes I know there was probably a better way to do this but it's a one off special case
-        if entrance == 'Dungeon Entrance In Sand Sea':
-            patches.get('F301').append({
-                'name': f'Dungeon entrance patch - Ancient Harbor to {dungeon}',
-                'type': 'objpatch',
-                'index': 0,
-                'room': 0,
-                'objtype': 'SCEN',
-                'object': {
-                    'name': dungeon_stage,
-                    'layer': layer,
-                    'room': room,
-                    'entrance': entrance_index
-                }
-            })
-            patches.get('F301').append({
-                'name': f'Dungeon entrance patch - Ancient Harbor to {dungeon}',
-                'type': 'objpatch',
-                'index': 4,
-                'room': 0,
-                'objtype': 'SCEN',
-                'object': {
-                    'name': dungeon_stage,
-                    'layer': layer,
-                    'room': room,
-                    'entrance': entrance_index
-                }
-            })
+    def filter_option_requirement(self, entry):
+        return not (isinstance(entry, dict) and 'onlyif' in entry \
+            and not self.rando.logic.check_logical_expression_string_req(entry['onlyif']))
+    
+    def add_patch_to_stage(self, stage, stagepatch):
+        if stage not in self.patches:
+            self.patches[stage] = []
+        self.patches[stage].append(stagepatch)
+
+    def load_base_patches(self):
+        with (RANDO_ROOT_PATH / "patches.yaml").open() as f:
+            self.patches = yaml.safe_load(f)
+        with (RANDO_ROOT_PATH / "eventpatches.yaml").open() as f:
+            self.eventpatches = yaml.safe_load(f)
         
-        # most dungeons only have a single exit, exception being LMF, which is handled seperately
-        exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance]
-        # the exit out of the back of LMF is special, because it's the only dungeon finish that can be
-        # taken multiple times. The first time it should show a save prompt and subsequent times
-        # it should not and they don't need to be touched if the LMF entrance is vanilla#
-        # the first time exit is taken care of by the DUNGEON_FINISH_EXIT_SCEN stuff
-        # patch the secondary exit if it's not vanilla
-        if dungeon == 'Lanayru Mining Facility' and not entrance == 'Dungeon Entrance In Lanayru Desert':
-            patches.get('F300_5').append({
-                'name': f'Dungeon exit patch - second LMF finish to {entrance}',
+        filtered_storyflags = []
+        for storyflag in self.patches['global']['startstoryflags']:
+            # conditionals are an object
+            if not isinstance(storyflag, int):
+                if self.filter_option_requirement(storyflag):
+                    storyflag = storyflag['storyflag']
+                else:
+                    continue
+            filtered_storyflags.append(storyflag)
+        self.patches['global']['startstoryflags'] = filtered_storyflags
+
+        # patches from randomizing items
+        self.rando_stagepatches, self.stageoarcs, self.rando_eventpatches = \
+            get_patches_from_location_item_list(self.rando.logic.item_locations, self.rando.logic.done_item_locations)
+    
+    def add_entrance_rando_patches(self):
+        for entrance, dungeon in self.rando.entrance_connections.items():
+            entrance_stage, entrance_room, entrance_scen = DUNGEON_ENTRANCE_STAGES[entrance]
+            dungeon_stage, layer, room, entrance_index = DUNGEON_ENTRANCES[dungeon]
+            # patch dungeon entrance
+            self.add_patch_to_stage(entrance_stage, {
+                'name': f'Dungeon entrance patch - {entrance} to {dungeon}',
                 'type': 'objpatch',
-                'index': 1,
-                'room': 0,
+                'index': entrance_scen,
+                'room': entrance_room,
                 'objtype': 'SCEN',
                 'object': {
-                    'name': exit_stage,
-                    'layer': exit_layer,
-                    'room': exit_room,
-                    'entrance': exit_entrance
+                    'name': dungeon_stage,
+                    'layer': layer,
+                    'room': room,
+                    'entrance': entrance_index
                 }
             })
-        # patch all the exits for the dungeon
-        for scen_stage, scen_room, scen_index in DUNGEON_EXIT_SCENS[dungeon]:
-            if scen_stage not in patches:
-                patches[scen_stage] = []
-            patches.get(scen_stage).append({
-                'name': f'Dungeon exit patch - {dungeon} to {entrance}',
+
+            # handle the extra loading zone to the dungeon in Sand Sea from Ancient Harbor
+            # yes I know there was probably a better way to do this but it's a one off special case
+            if entrance == 'Dungeon Entrance In Sand Sea':
+                self.add_patch_to_stage('F301', {
+                    'name': f'Dungeon entrance patch - Ancient Harbor to {dungeon}',
+                    'type': 'objpatch',
+                    'index': 0,
+                    'room': 0,
+                    'objtype': 'SCEN',
+                    'object': {
+                        'name': dungeon_stage,
+                        'layer': layer,
+                        'room': room,
+                        'entrance': entrance_index
+                    }
+                })
+                self.add_patch_to_stage('F301', {
+                    'name': f'Dungeon entrance patch - Ancient Harbor to {dungeon}',
+                    'type': 'objpatch',
+                    'index': 4,
+                    'room': 0,
+                    'objtype': 'SCEN',
+                    'object': {
+                        'name': dungeon_stage,
+                        'layer': layer,
+                        'room': room,
+                        'entrance': entrance_index
+                    }
+                })
+            
+            # most dungeons only have a single exit, exception being LMF, which is handled seperately
+            exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance]
+            # the exit out of the back of LMF is special, because it's the only dungeon finish that can be
+            # taken multiple times. The first time it should show a save prompt and subsequent times
+            # it should not and they don't need to be touched if the LMF entrance is vanilla
+            # the first time exit is taken care of by the DUNGEON_FINISH_EXIT_SCEN stuff
+            # patch the secondary exit if it's not vanilla
+            if dungeon == 'Lanayru Mining Facility' and not entrance == 'Dungeon Entrance In Lanayru Desert':
+                self.add_patch_to_stage('F300_5', {
+                    'name': f'Dungeon exit patch - second LMF finish to {entrance}',
+                    'type': 'objpatch',
+                    'index': 1,
+                    'room': 0,
+                    'objtype': 'SCEN',
+                    'object': {
+                        'name': exit_stage,
+                        'layer': exit_layer,
+                        'room': exit_room,
+                        'entrance': exit_entrance
+                    }
+                })
+            # patch all the exits for the dungeon
+            for scen_stage, scen_room, scen_index in DUNGEON_EXIT_SCENS[dungeon]:
+                self.add_patch_to_stage(scen_stage, {
+                    'name': f'Dungeon exit patch - {dungeon} to {entrance}',
+                    'type': 'objpatch',
+                    'index': scen_index,
+                    'room': scen_room,
+                    'objtype': 'SCEN',
+                    'object': {
+                        'name': exit_stage,
+                        'layer': exit_layer,
+                        'room': exit_room,
+                        'entrance': exit_entrance
+                    }
+                })
+            
+            scen_stage, scen_room, scen_index = DUNGEON_FINISH_EXIT_SCEN[dungeon]
+            exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_FINISH_EXITS[entrance]
+            self.add_patch_to_stage(scen_stage, {
+                'name': f'Dungeon finish exit patch - {dungeon} to {entrance}',
                 'type': 'objpatch',
                 'index': scen_index,
                 'room': scen_room,
@@ -691,279 +755,239 @@ def do_gamepatches(rando):
                     'name': exit_stage,
                     'layer': exit_layer,
                     'room': exit_room,
-                    'entrance': exit_entrance
+                    'entrance': exit_entrance,
+                    'flag8': 1, # save prompt
                 }
             })
+
+            # fix post dungeon storyflags
+            inner_stage, inner_room, inner_evnt = POST_DUNGEON_CUTSCENE[dungeon]
+            storyflag = POST_DUNGEON_STORYFLAGS[entrance]
+            self.add_patch_to_stage(inner_stage, {
+                'name': f'Post Dungeon Storyflag fix: {entrance} - {dungeon}',
+                'type': 'objpatch',
+                'index': inner_evnt,
+                'room': inner_room,
+                'objtype': 'EVNT',
+                'object': {
+                    'story_flag1': storyflag
+                }
+            })
+
+    def do_build_arc_cache(self):
+        self.rando.progress_callback('building arc cache...')
+
+        with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
+            extracts = yaml.safe_load(f)
+        self.patcher.create_oarc_cache(extracts)
+    
+    def add_startitem_patches(self):
+        # Add sword story/itemflags if required
+        start_sword_count = self.rando.starting_items.count('Progressive Sword')
+        for i in range(start_sword_count):
+            self.patches['global']['startstoryflags'].append(PROGRESSIVE_SWORD_STORYFLAGS[i])
+        if start_sword_count > 0:
+            self.patches['global']['startitems'].append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count-1])
+
+        # if 'Sailcloth' in self.rando.starting_items:
+        #     self.patches['global']['startstoryflags'].append(32)
+        #     self.patches['global']['startitems'].append(15)
+
+        if 'Progressive Pouch' in self.rando.starting_items:
+            self.patches['global']['startstoryflags'].append(30) # storyflag for pouch
+            self.patches['global']['startstoryflags'].append(931) # rando storyflag for progressive pouch 1
+            self.patches['global']['startitems'].append(112) # itemflag for pouch
         
-        scen_stage, scen_room, scen_index = DUNGEON_FINISH_EXIT_SCEN[dungeon]
-        exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_FINISH_EXITS[entrance]
-        patches.get(scen_stage).append({
-            'name': f'Dungeon finish exit patch - {dungeon} to {entrance}',
-            'type': 'objpatch',
-            'index': scen_index,
-            'room': scen_room,
-            'objtype': 'SCEN',
-            'object': {
-                'name': exit_stage,
-                'layer': exit_layer,
-                'room': exit_room,
-                'entrance': exit_entrance,
-                'flag8': 1, # save prompt
-            }
+
+        # Add storyflags for tablets
+        for item in self.rando.starting_items:
+            if item in START_ITEM_STORYFLAGS:
+                self.patches['global']['startstoryflags'].append(START_ITEM_STORYFLAGS[item])
+    
+    def add_required_dungeon_patches(self):
+        # Add required dungeon patches to eventpatches
+        DUNGEON_TO_EVENTFILE = {
+            'Skyview': '201-ForestD1',
+            'Earth Temple': '301-MountainD1',
+            'Lanayru Mining Facility': '400-Desert',
+            'Ancient Cistern': '202-ForestD2',
+            'Sandship': '401-DesertD2',
+            'Fire Sanctuary': '304-MountainD2',
+        }
+
+        REQUIRED_DUNGEON_STORYFLAGS = [902, 903, 926, 927, 928, 929]
+
+        for i, dungeon in enumerate(self.rando.required_dungeons):
+            dungeon_events = self.eventpatches[DUNGEON_TO_EVENTFILE[dungeon]]
+            required_dungeon_storyflag_event = next(filter(lambda x: x['name'] == 'rando required dungeon storyflag', dungeon_events))
+            required_dungeon_storyflag_event['flow']['param2'] = REQUIRED_DUNGEON_STORYFLAGS[i] # param2 is storyflag of event
+
+        required_dungeon_count = len(self.rando.required_dungeons)
+        # set flags for unrequired dungeons beforehand
+        for required_dungeon_storyflag in REQUIRED_DUNGEON_STORYFLAGS[required_dungeon_count:]:
+            self.patches['global']['startstoryflags'].append(required_dungeon_storyflag)
+
+        # patch required dungeon text in
+        if required_dungeon_count == 0:
+            required_dungeons_text = 'No Dungeons'
+        elif required_dungeon_count == 6:
+            required_dungeons_text = 'All Dungeons'
+        elif required_dungeon_count < 4:
+            required_dungeons_text = 'Required Dungeons:\n'+('\n'.join(self.rando.required_dungeons))
+        else:
+            required_dungeons_text = 'Required: ' + ', '.join(self.rando.required_dungeons)
+
+            # try to fit the text in as few lines as possible, breaking up at spaces if necessary
+            cur_line = ''
+            combined = ''
+
+            for part in required_dungeons_text.split(' '):
+                if len(cur_line + part) > 27: # limit of one line
+                    combined += cur_line + '\n'
+                    cur_line = part + ' '
+                else:
+                    cur_line += part + ' '
+            combined += cur_line
+            required_dungeons_text = combined.strip()
+
+        self.eventpatches['107-Kanban'].append({
+            "name": "Knight Academy Billboard text",
+            "type": "textpatch",
+            "index": 18,
+            "text": required_dungeons_text,
         })
 
-        # fix post dungeon storyflags
-        inner_stage, inner_room, inner_evnt = POST_DUNGEON_CUTSCENE[dungeon]
-        storyflag = POST_DUNGEON_STORYFLAGS[entrance]
-        patches.get(inner_stage).append({
-            'name': f'Post Dungeon Storyflag fix: {entrance} - {dungeon}',
-            'type': 'objpatch',
-            'index': inner_evnt,
-            'room': inner_room,
-            'objtype': 'EVNT',
-            'object': {
-                'story_flag1': storyflag
-            }
-        })
-
-
-    # with open('test.yaml','w') as f:
-    #     yaml.safe_dump(patches, f)
-    # raise Exception('stop right here')
-
-    rando.progress_callback('building arc cache...')
-
-    with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
-        extracts = yaml.safe_load(f)
-    patcher.create_oarc_cache(extracts)
-
-    def filter_option_requirement(entry):
-        return not (isinstance(entry, dict) and 'onlyif' in entry \
-            and not rando.logic.check_logical_expression_string_req(entry['onlyif']))
-
-    filtered_storyflags = []
-    for storyflag in patches['global']['startstoryflags']:
-        # conditionals are an object
-        if not isinstance(storyflag, int):
-            if filter_option_requirement(storyflag):
-                storyflag = storyflag['storyflag']
+    def add_startstoryflags_to_patches(self):
+        # add startflags to eventpatches
+        startstoryflags = self.patches['global'].get('startstoryflags',None)
+        startsceneflags = self.patches['global'].get('startsceneflags',None)
+        startitems = self.patches['global'].get('startitems',None)
+        def pop_or_default(lst, default=-1):
+            if len(lst) == 0:
+                return default
             else:
+                return lst.pop(0)
+        for cs_stage, cs_room, cs_index in START_CUTSCENES:
+            if cs_stage.startswith('F0'):
+                # make sure to only set sceneflags on skyloft
+                self.add_patch_to_stage(cs_stage, {
+                    'name': 'Startflags',
+                    'type': 'objpatch',
+                    'room': cs_room,
+                    'index': cs_index,
+                    'objtype': 'EVNT',
+                    'object': {
+                        'item': pop_or_default(startitems),
+                        'story_flag1': pop_or_default(startstoryflags),
+                        'story_flag2': pop_or_default(startstoryflags),
+                        'sceneflag1': pop_or_default(startsceneflags),
+                        'sceneflag2': pop_or_default(startsceneflags),
+                    },
+                })
+            else:
+                self.add_patch_to_stage(cs_stage, {
+                    'name': 'Startflags',
+                    'type': 'objpatch',
+                    'room': cs_room,
+                    'index': cs_index,
+                    'objtype': 'EVNT',
+                    'object': {
+                        'item': pop_or_default(startitems),
+                        'story_flag1': pop_or_default(startstoryflags),
+                        'story_flag2': pop_or_default(startstoryflags),
+                    },
+                })
+        # for now, we can only set scene and storyflags here, so make sure all items were handled in the event
+        assert len(startitems) == 0, "Not all items were handled in events!"
+
+        while startsceneflags or startstoryflags:
+            self.add_patch_to_stage('F001r', {
+                'name': 'Startflags',
+                'type':'objadd',
+                'room': 1, # Link's room
+                'layer': 0,
+                'objtype': 'STAG',
+                'object': {
+                    "params1": 0xFFFFFF00 | (pop_or_default(startsceneflags) & 0xFF),
+                    "params2": 0xFF5FFFFF,
+                    "posx": 761,
+                    "posy": -22,
+                    "posz": -2260,
+                    "sizex": 1000,
+                    "sizey": 1000,
+                    "sizez": 1000,
+                    "anglex": pop_or_default(startstoryflags) & 0xFFFF,
+                    "angley": 0,
+                    "anglez": 65535,
+                    "name": "SwAreaT",
+                }
+            })
+
+    def add_trial_hint_patches(self):
+        def find_event(filename, name):
+            return next((patch for patch in self.eventpatches[filename] if patch['name'] == name), None)
+        # Trial Hints
+        trial_checks = {
+            # (getting it text patch, inventory text line)
+            'Skyloft Silent Realm - Stone of Trials': ('Full SotH text',659, "The song that leads you to the final trial."),
+            'Faron Silent Realm - Water Scale': ("Farore's Courage Text",653, "This song opens the trial located in Faron\nWoods."),
+            'Lanayru Silent Realm - Clawshots': ("Nayru's Wisdom Text",654, "This song opens the trial located in\nLanayru Desert."),
+            'Eldin Silent Realm - Fireshield Earrings': ("Din's Power Text",655, "This song opens the trial located on\nEldin Volcano."),
+        }
+        for trial_check_name, (obtain_text_name, inventory_text_idx, inventory_text) in trial_checks.items():
+            item = self.rando.logic.done_item_locations[trial_check_name]
+            if item in self.rando.logic.all_progress_items:
+                useful_text = '\nYou might need what it reveals...'
+                # print(f'{item} in {trial_check} is useful')
+            else:
+                useful_text = '\nIt\'s probably not too important...'
+                # print(f'{item} in {trial_check} is not useful')
+            find_event('003-ItemGet', obtain_text_name)["text"] += useful_text
+            self.eventpatches['003-ItemGet'].append({
+                'name': "Harp Text",
+                'type': "textpatch",
+                'index': inventory_text_idx,
+                'text': inventory_text + useful_text
+            })
+    
+    def handle_oarc_add_remove(self):
+        remove_stageoarcs = defaultdict(set)
+
+        for stage, stagepatches in self.patches.items():
+            if stage == 'global':
                 continue
-        filtered_storyflags.append(storyflag)
+            for patch in stagepatches:
+                if patch['type'] == 'oarcadd':
+                    self.stageoarcs[(stage, patch['destlayer'])].add(patch['oarc'])
+                elif patch['type'] == 'oarcdelete':
+                    remove_stageoarcs[(stage, patch['layer'])].add(patch['oarc'])
 
-    # filter startstoryflags
-    patches['global']['startstoryflags'] = filtered_storyflags
+        for (stage, layer), oarcs in self.stageoarcs.items():
+            self.patcher.add_stage_oarc(stage, layer, oarcs)
+        for (stage, layer), oarcs in remove_stageoarcs.items():
+            self.patcher.delete_stage_oarc(stage, layer, oarcs)
+    
+    def add_rando_hash(self):
+        if not '002-System' in self.eventpatches:
+            self.eventpatches['002-System'] = []
 
-    # Add sword story/itemflags if required
-    start_sword_count = rando.starting_items.count('Progressive Sword')
-    for i in range(start_sword_count):
-        patches['global']['startstoryflags'].append(PROGRESSIVE_SWORD_STORYFLAGS[i])
-    if start_sword_count > 0:
-        patches['global']['startitems'].append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count-1])
-
-    # if 'Sailcloth' in rando.starting_items:
-    #     patches['global']['startstoryflags'].append(32)
-    #     patches['global']['startitems'].append(15)
-
-    if 'Progressive Pouch' in rando.starting_items:
-        patches['global']['startstoryflags'].append(30) # storyflag for pouch
-        patches['global']['startstoryflags'].append(931) # rando storyflag for progressive pouch 1
-        patches['global']['startitems'].append(112) # itemflag for pouch
-
-
-    rando_stagepatches, stageoarcs, rando_eventpatches = get_patches_from_location_item_list(rando.logic.item_locations, rando.logic.done_item_locations)
-
-    # Add required dungeon patches to eventpatches
-    DUNGEON_TO_EVENTFILE = {
-        'Skyview': '201-ForestD1',
-        'Earth Temple': '301-MountainD1',
-        'Lanayru Mining Facility': '400-Desert',
-        'Ancient Cistern': '202-ForestD2',
-        'Sandship': '401-DesertD2',
-        'Fire Sanctuary': '304-MountainD2',
-    }
-
-    REQUIRED_DUNGEON_STORYFLAGS = [902, 903, 926, 927, 928, 929]
-
-    for i, dungeon in enumerate(rando.required_dungeons):
-        dungeon_events = eventpatches[DUNGEON_TO_EVENTFILE[dungeon]]
-        required_dungeon_storyflag_event = next(filter(lambda x: x['name'] == 'rando required dungeon storyflag', dungeon_events))
-        required_dungeon_storyflag_event['flow']['param2'] = REQUIRED_DUNGEON_STORYFLAGS[i] # param2 is storyflag of event
-
-    required_dungeon_count = len(rando.required_dungeons)
-    # set flags for unrequired dungeons beforehand
-    for required_dungeon_storyflag in REQUIRED_DUNGEON_STORYFLAGS[required_dungeon_count:]:
-        patches['global']['startstoryflags'].append(required_dungeon_storyflag)
-
-    # patch required dungeon text in
-    if required_dungeon_count == 0:
-        required_dungeons_text = 'No Dungeons'
-    elif required_dungeon_count == 6:
-        required_dungeons_text = 'All Dungeons'
-    elif required_dungeon_count < 4:
-        required_dungeons_text = 'Required Dungeons:\n'+('\n'.join(rando.required_dungeons))
-    else:
-        required_dungeons_text = 'Required: ' + ', '.join(rando.required_dungeons)
-
-        # try to fit the text in as few lines as possible, breaking up at spaces if necessary
-        cur_line = ''
-        combined = ''
-
-        for part in required_dungeons_text.split(' '):
-            if len(cur_line + part) > 27: # limit of one line
-                combined += cur_line + '\n'
-                cur_line = part + ' '
-            else:
-                cur_line += part + ' '
-        combined += cur_line
-        required_dungeons_text = combined.strip()
-
-    eventpatches['107-Kanban'].append({
-        "name": "Knight Academy Billboard text",
-        "type": "textpatch",
-        "index": 18,
-        "text": required_dungeons_text,
-    })
-
-    # Add storyflags for startitems (only tablets for now)
-    for item in rando.starting_items:
-        if item in START_ITEM_STORYFLAGS:
-            patches['global']['startstoryflags'].append(START_ITEM_STORYFLAGS[item])
-
-
-    # add startflags to eventpatches
-    startstoryflags = patches['global'].get('startstoryflags',None)
-    startsceneflags = patches['global'].get('startsceneflags',None)
-    startitems = patches['global'].get('startitems',None)
-    def pop_or_default(lst, default=-1):
-        if len(lst) == 0:
-            return default
-        else:
-            return lst.pop(0)
-    for cs_stage, cs_room, cs_index in START_CUTSCENES:
-        if not cs_stage in patches:
-            patches[cs_stage] = []
-        if cs_stage.startswith('F0'):
-            # make sure to only set sceneflags on skyloft
-            patches[cs_stage].append({
-                'name': 'Startflags',
-                'type': 'objpatch',
-                'room': cs_room,
-                'index': cs_index,
-                'objtype': 'EVNT',
-                'object': {
-                    'item': pop_or_default(startitems),
-                    'story_flag1': pop_or_default(startstoryflags),
-                    'story_flag2': pop_or_default(startstoryflags),
-                    'sceneflag1': pop_or_default(startsceneflags),
-                    'sceneflag2': pop_or_default(startsceneflags),
-                },
-            })
-        else:
-            patches[cs_stage].append({
-                'name': 'Startflags',
-                'type': 'objpatch',
-                'room': cs_room,
-                'index': cs_index,
-                'objtype': 'EVNT',
-                'object': {
-                    'item': pop_or_default(startitems),
-                    'story_flag1': pop_or_default(startstoryflags),
-                    'story_flag2': pop_or_default(startstoryflags),
-                },
-            })
-    # for now, we can only set scene and storyflags here, so make sure all items were handled in the event
-    assert len(startitems) == 0, "Not all items were handled in events!"
-
-    while startsceneflags or startstoryflags:
-        patches['F001r'].append({
-            'name': 'Startflags',
-            'type':'objadd',
-            'room': 1, # Link's room
-            'layer': 0,
-            'objtype': 'STAG',
-            'object': {
-                "params1": 0xFFFFFF00 | (pop_or_default(startsceneflags) & 0xFF),
-                "params2": 0xFF5FFFFF,
-                "posx": 761,
-                "posy": -22,
-                "posz": -2260,
-                "sizex": 1000,
-                "sizey": 1000,
-                "sizez": 1000,
-                "anglex": pop_or_default(startstoryflags) & 0xFFFF,
-                "angley": 0,
-                "anglez": 65535,
-                "name": "SwAreaT",
-            }
+        self.eventpatches['002-System'].append({
+            "name": "Rando hash on file select",
+            "type": "textpatch",
+            "index": 73,
+            "text": self.rando.randomizer_hash,
         })
 
-    def find_event(filename, name):
-        return next((patch for patch in eventpatches[filename] if patch['name'] == name), None)
-
-    # Trial Hints
-    trial_checks = {
-        # (getting it text patch, inventory text line)
-        'Skyloft Silent Realm - Stone of Trials': ('Full SotH text',659, "The song that leads you to the final trial."),
-        'Faron Silent Realm - Water Scale': ("Farore's Courage Text",653, "This song opens the trial located in Faron\nWoods."),
-        'Lanayru Silent Realm - Clawshots': ("Nayru's Wisdom Text",654, "This song opens the trial located in\nLanayru Desert."),
-        'Eldin Silent Realm - Fireshield Earrings': ("Din's Power Text",655, "This song opens the trial located on\nEldin Volcano."),
-    }
-    for trial_check_name, (obtain_text_name, inventory_text_idx, inventory_text) in trial_checks.items():
-        item = rando.logic.done_item_locations[trial_check_name]
-        if item in rando.logic.all_progress_items:
-            useful_text = '\nYou might need what it reveals...'
-            # print(f'{item} in {trial_check} is useful')
-        else:
-            useful_text = '\nIt\'s probably not too important...'
-            # print(f'{item} in {trial_check} is not useful')
-        find_event('003-ItemGet', obtain_text_name)["text"] += useful_text
-        eventpatches['003-ItemGet'].append({
-            'name': "Harp Text",
-            'type': "textpatch",
-            'index': inventory_text_idx,
-            'text': inventory_text + useful_text
+        self.eventpatches['002-System'].append({
+            "name": "Rando hash on new file",
+            "type": "textpatch",
+            "index": 75,
+            "text": self.rando.randomizer_hash,
         })
-        
 
-    remove_stageoarcs = defaultdict(set)
-
-    for stage, stagepatches in patches.items():
-        if stage == 'global':
-            continue
-        for patch in stagepatches:
-            if patch['type'] == 'oarcadd':
-                stageoarcs[(stage, patch['destlayer'])].add(patch['oarc'])
-            elif patch['type'] == 'oarcdelete':
-                remove_stageoarcs[(stage, patch['layer'])].add(patch['oarc'])
-
-    # stageoarcs[('D000',0)].add('GetSwordA')
-
-    for (stage, layer), oarcs in stageoarcs.items():
-        patcher.add_stage_oarc(stage, layer, oarcs)
-    for (stage, layer), oarcs in remove_stageoarcs.items():
-        patcher.delete_stage_oarc(stage, layer, oarcs)
-
-    if not '002-System' in eventpatches:
-        eventpatches['002-System'] = []
-
-    eventpatches['002-System'].append({
-        "name": "Rando hash on file select",
-        "type": "textpatch",
-        "index": 73,
-        "text": rando.randomizer_hash,
-    })
-
-    eventpatches['002-System'].append({
-        "name": "Rando hash on new file",
-        "type": "textpatch",
-        "index": 75,
-        "text": rando.randomizer_hash,
-    })
-
-    def bzs_patch_func(bzs, stage, room):
-        stagepatches = patches.get(stage, [])
-        stagepatches = list(filter(filter_option_requirement, stagepatches))
+    def bzs_patch_func(self, bzs, stage, room):
+        stagepatches = self.patches.get(stage, [])
+        stagepatches = list(filter(self.filter_option_requirement, stagepatches))
         modified = False
         if room == None:
             layer_patches = list(filter(lambda x: x['type']=='layeroverride', stagepatches))
@@ -1073,7 +1097,7 @@ def do_gamepatches(rando):
             objlist.append(name_to_add)
 
         # patch randomized items on stages
-        for objname, layer, objid, itemid in rando_stagepatches.get((stage, room),[]):
+        for objname, layer, objid, itemid in self.rando_stagepatches.get((stage, room),[]):
             modified = True
             try:
                 RANDO_PATCH_FUNCS[objname](bzs['LAY '][f'l{layer}'], itemid, objid)
@@ -1084,7 +1108,7 @@ def do_gamepatches(rando):
             # put all storyflags in links room at the start
             if not 'STAG' in bzs['LAY ']['l0']:
                 bzs['LAY ']['l0']['STAG'] = []
-            for storyflag in patches['global'].get('startstoryflags',[]):
+            for storyflag in self.patches['global'].get('startstoryflags',[]):
                 new_obj = OrderedDict(
                     params1 = 0xFFFFFFFF,
                     params2 = 0xFF5FFFFF,
@@ -1109,14 +1133,10 @@ def do_gamepatches(rando):
         else:
             return None
 
-    patcher.set_bzs_patch(bzs_patch_func)
-
-    text_labels = {}
-
-    def flow_patch(msbf, filename):
+    def flow_patch(self, msbf, filename):
         modified = False
-        flowpatches = eventpatches.get(filename, [])
-        flowpatches = list(filter(filter_option_requirement, flowpatches))
+        flowpatches = self.eventpatches.get(filename, [])
+        flowpatches = list(filter(self.filter_option_requirement, flowpatches))
 
         # dictionary to map flow labels to ids for new flows
         label_to_index = OrderedDict()
@@ -1137,7 +1157,7 @@ def do_gamepatches(rando):
                     val = index
                 # special case: text points to a label, textindex is param4
                 if key == 'param4' and not isinstance(val, int):
-                    index = text_labels.get(val, None)
+                    index = self.text_labels.get(val, None)
                     if index is None:
                         print(f'ERROR: text label {val} not found in patch: {command["flow"]}')
                         continue
@@ -1167,7 +1187,7 @@ def do_gamepatches(rando):
                     val = index
                 # special case: text points to a label, textindex is param4
                 if key == 'param4' and not isinstance(val, int):
-                    index = text_labels.get(val, None)
+                    index = self.text_labels.get(val, None)
                     if index is None:
                         print(f'ERROR: text label {val} not found in new flow: {command["flow"]}')
                         continue
@@ -1221,7 +1241,7 @@ def do_gamepatches(rando):
             modified = True
 
         # patch randomized items
-        for evntline, itemid in rando_eventpatches.get(filename, []):
+        for evntline, itemid in self.rando_eventpatches.get(filename, []):
             try:
                 # can either be a label or a number
                 evntline = int(evntline)
@@ -1240,22 +1260,23 @@ def do_gamepatches(rando):
             return msbf
         else:
             return None
-    def text_patch(msbt, filename):
+
+    def text_patch(self, msbt, filename):
         # for bucket, lbl_list in enumerate(msbt['LBL1']):
         #     for lbl in lbl_list:
         #         hash_b = entrypoint_hash(lbl['name'], len(msbt['LBL1']))
         #         print(f'smile: {bucket} {hash_b}')
         assert len(msbt['TXT2']) == len(msbt['ATR1'])
         modified = False
-        textpatches = eventpatches.get(filename, [])
-        textpatches = list(filter(filter_option_requirement, textpatches))
+        textpatches = self.eventpatches.get(filename, [])
+        textpatches = list(filter(self.filter_option_requirement, textpatches))
         for command in filter(lambda x: x['type'] == 'textpatch', textpatches):
             msbt['TXT2'][command['index']] = command['text'].encode('utf-16be')
             # print(f'patched text {command["index"]}, {filename}')
             modified = True
         for command in filter(lambda x: x['type'] == 'textadd', textpatches):
             index = len(msbt['TXT2'])
-            text_labels[command['name']] = index
+            self.text_labels[command['name']] = index
             msbt['TXT2'].append(command['text'].encode('utf-16be'))
             msbt['ATR1'].append({'unk1':command.get('unk1',1), 'unk2':command.get('unk2',0)})
             # the game doesn't care about the name, but it has to exist and be unique
@@ -1273,74 +1294,72 @@ def do_gamepatches(rando):
             return msbt
         else:
             return None
-    patcher.set_event_patch(flow_patch)
-    patcher.set_event_text_patch(text_patch)
-    patcher.progress_callback = rando.progress_callback
-    patcher.do_patch()
 
-    rando.progress_callback('patching main.dol...')
-
-    # patch main.dol
-    orig_dol = bytearray((patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
-    for dolpatch in filter(filter_option_requirement, patches['global'].get('asm',{}).get('main',[])):
-        actual_code = bytes.fromhex(dolpatch['original'])
-        patched_code = bytes.fromhex(dolpatch['patched'])
-        assert len(actual_code) == len(patched_code), "code length has to remain the same!"
-        code_pos = orig_dol.find(actual_code)
-
-        assert code_pos != -1, f"code {dolpatch['original']} not found in main.dol!"
-        assert orig_dol.find(actual_code, code_pos+1) == -1, f"code {dolpatch['original']} found multiple times in main.dol!"
-        orig_dol[code_pos:code_pos+len(actual_code)] = patched_code
-    write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', orig_dol)
-
-    rando.progress_callback('patching rels...')
-
-    rel_arc = U8File.parse_u8(BytesIO((patcher.actual_extract_path / 'DATA' / 'files' / 'rels.arc').read_bytes()))
-    rel_modified = False
-    for file, codepatches in patches['global'].get('asm',{}).items():
-        if file == 'main': # main.dol
-            continue
-        rel = rel_arc.get_file_data(f'rels/{file}NP.rel')
-        if rel is None:
-            print(f'ERROR: rel {file} not found!')
-            continue
-        rel = bytearray(rel)
-        for codepatch in filter(filter_option_requirement, codepatches):
-            actual_code = bytes.fromhex(codepatch['original'])
-            patched_code = bytes.fromhex(codepatch['patched'])
+    def do_dol_patch(self):
+        self.rando.progress_callback('patching main.dol...')
+        # patch main.dol
+        orig_dol = bytearray((self.patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
+        for dolpatch in filter(self.filter_option_requirement, self.patches['global'].get('asm',{}).get('main',[])):
+            actual_code = bytes.fromhex(dolpatch['original'])
+            patched_code = bytes.fromhex(dolpatch['patched'])
             assert len(actual_code) == len(patched_code), "code length has to remain the same!"
-            code_pos = rel.find(actual_code)
+            code_pos = orig_dol.find(actual_code)
 
-            assert code_pos != -1, f"code {codepatch['original']} not found in {file}!"
-            if codepatch.get('multiple',False):
-                while code_pos != -1:
+            assert code_pos != -1, f"code {dolpatch['original']} not found in main.dol!"
+            assert orig_dol.find(actual_code, code_pos+1) == -1, f"code {dolpatch['original']} found multiple times in main.dol!"
+            orig_dol[code_pos:code_pos+len(actual_code)] = patched_code
+        write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', orig_dol)
+
+    def do_rel_patch(self):
+        self.rando.progress_callback('patching rels...')
+        rel_arc = U8File.parse_u8(BytesIO((self.patcher.actual_extract_path / 'DATA' / 'files' / 'rels.arc').read_bytes()))
+        rel_modified = False
+        for file, codepatches in self.patches['global'].get('asm',{}).items():
+            if file == 'main': # main.dol
+                continue
+            rel = rel_arc.get_file_data(f'rels/{file}NP.rel')
+            if rel is None:
+                print(f'ERROR: rel {file} not found!')
+                continue
+            rel = bytearray(rel)
+            for codepatch in filter(self.filter_option_requirement, codepatches):
+                actual_code = bytes.fromhex(codepatch['original'])
+                patched_code = bytes.fromhex(codepatch['patched'])
+                assert len(actual_code) == len(patched_code), "code length has to remain the same!"
+                code_pos = rel.find(actual_code)
+
+                assert code_pos != -1, f"code {codepatch['original']} not found in {file}!"
+                if codepatch.get('multiple',False):
+                    while code_pos != -1:
+                        rel[code_pos:code_pos+len(actual_code)] = patched_code
+                        code_pos = rel.find(actual_code, code_pos+1)
+                else:
+                    assert rel.find(actual_code, code_pos+1) == -1, f"code {codepatch['original']} found multiple times in {file}!"
                     rel[code_pos:code_pos+len(actual_code)] = patched_code
-                    code_pos = rel.find(actual_code, code_pos+1)
-            else:
-                assert rel.find(actual_code, code_pos+1) == -1, f"code {codepatch['original']} found multiple times in {file}!"
-                rel[code_pos:code_pos+len(actual_code)] = patched_code
-        rel_arc.set_file_data(f'rels/{file}NP.rel',rel)
-        rel_modified = True
-    if rel_modified:
-        rel_data = rel_arc.to_buffer()
-        write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'files' / 'rels.arc', rel_data)
+            rel_arc.set_file_data(f'rels/{file}NP.rel',rel)
+            rel_modified = True
+        if rel_modified:
+            rel_data = rel_arc.to_buffer()
+            write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'files' / 'rels.arc', rel_data)
 
-    rando.progress_callback('patching ObjectPack...')
-    # patch object pack
-    objpack_data = nlzss11.decompress((patcher.actual_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ').read_bytes())
-    object_arc = U8File.parse_u8(BytesIO(objpack_data))
-    objpack_modified = False
-    for oarc in patches['global'].get('objpackoarcadd',[]):
-        oarc_data = (patcher.oarc_cache_path / f'{oarc}.arc').read_bytes()
-        object_arc.add_file_data(f'oarc/{oarc}.arc', oarc_data)
-        objpack_modified = True
-    if objpack_modified:
-        objpack_data = object_arc.to_buffer()
-        write_bytes_create_dirs(patcher.modified_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ', nlzss11.compress(objpack_data))
+    def do_patch_object_pack(self):
+        self.rando.progress_callback('patching ObjectPack...')
+        # patch object pack
+        objpack_data = nlzss11.decompress((self.patcher.actual_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ').read_bytes())
+        object_arc = U8File.parse_u8(BytesIO(objpack_data))
+        objpack_modified = False
+        for oarc in self.patches['global'].get('objpackoarcadd',[]):
+            oarc_data = (self.patcher.oarc_cache_path / f'{oarc}.arc').read_bytes()
+            object_arc.add_file_data(f'oarc/{oarc}.arc', oarc_data)
+            objpack_modified = True
+        if objpack_modified:
+            objpack_data = object_arc.to_buffer()
+            write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'files' / 'Object' / 'ObjectPack.arc.LZ', nlzss11.compress(objpack_data))
 
-    # patch title screen logo
-    actual_data = (rando.actual_extract_path / 'DATA' / 'files' / 'US' / 'Layout' / 'Title2D.arc').read_bytes()
-    actual_arc = U8File.parse_u8(BytesIO(actual_data))
-    logodata = (rando.rando_root_path / 'assets' / 'logo.tpl').read_bytes()
-    actual_arc.set_file_data('timg/tr_wiiKing2Logo_00.tpl', logodata)
-    (rando.modified_extract_path / 'DATA' / 'files' / 'US' / 'Layout' / 'Title2D.arc').write_bytes(actual_arc.to_buffer())
+    def do_patch_title_screen_logo(self):
+        # patch title screen logo
+        actual_data = (self.rando.actual_extract_path / 'DATA' / 'files' / 'US' / 'Layout' / 'Title2D.arc').read_bytes()
+        actual_arc = U8File.parse_u8(BytesIO(actual_data))
+        logodata = (self.rando.rando_root_path / 'assets' / 'logo.tpl').read_bytes()
+        actual_arc.set_file_data('timg/tr_wiiKing2Logo_00.tpl', logodata)
+        (self.rando.modified_extract_path / 'DATA' / 'files' / 'US' / 'Layout' / 'Title2D.arc').write_bytes(actual_arc.to_buffer())
