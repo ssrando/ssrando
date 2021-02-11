@@ -1104,29 +1104,6 @@ class GamePatcher:
             except:
                 print(f'ERROR: {stage}, {room}, {layer}, {objname}, {objid}')
 
-        if stage == 'F001r' and room == 1:
-            # put all storyflags in links room at the start
-            if not 'STAG' in bzs['LAY ']['l0']:
-                bzs['LAY ']['l0']['STAG'] = []
-            for storyflag in self.patches['global'].get('startstoryflags',[]):
-                new_obj = OrderedDict(
-                    params1 = 0xFFFFFFFF,
-                    params2 = 0xFF5FFFFF,
-                    posx = 761,
-                    posy = -22,
-                    posz = -2260,
-                    sizex = 1000,
-                    sizey = 1000,
-                    sizez = 1000,
-                    anglex = storyflag,
-                    angley = 0,
-                    anglez = 65535,
-                    id = (0xFD84 & ~0x3FF) | next_id,
-                    name = "SwAreaT",
-                )
-                bzs['LAY ']['l0']['STAG'].append(new_obj)
-                next_id += 1
-            modified = True
         if modified:
             # print(json.dumps(bzs))
             return bzs
