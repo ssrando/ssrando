@@ -101,7 +101,7 @@ Then, build the executable using
 912: Progressive Beetle1
 913: Progressive Beetle2 (Hook Beetle)
 
-914: Beat LMF (more precisely, watch harp CS), storyflag 9 is associated with harp
+914: Change Temple of Time Layer, storyflag 9 is associated with harp
 
 915: Medium Wallet
 916: Big Wallet
@@ -127,6 +127,15 @@ New Trial Completed Storyflags:
 
 933: Defeat Tentalus
 934: Obtained Item from Levias
+
+935: Exit out of back of LMF for first time
+936: Obtained Item at end of LMF
+
+#### Sceneflags
+Ancient Cistern:
+- 85, after recieving item from flame CS
+Sandship:
+- 87, after recieving item from flame CS
 
 ### Shoutouts
 - Peppernicus2000: Logic, fixes

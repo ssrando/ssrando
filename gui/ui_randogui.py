@@ -256,6 +256,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.option_skip_imp_2 = QCheckBox(self.gridLayoutWidget_2)
+        self.option_skip_imp_2.setObjectName(u"option_skip_imp_2")
+
+        self.horizontalLayout_5.addWidget(self.option_skip_imp_2)
+
 
         self.gridLayout_2.addLayout(self.horizontalLayout_5, 0, 4, 1, 1)
 
@@ -264,10 +269,15 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.option_start_pouch, 3, 0, 1, 2)
 
-        self.option_skip_imp_2 = QCheckBox(self.gridLayoutWidget_2)
-        self.option_skip_imp_2.setObjectName(u"option_skip_imp_2")
+        self.option_randomize_entrances = QComboBox(self.gridLayoutWidget_2)
+        self.option_randomize_entrances.setObjectName(u"option_randomize_entrances")
 
-        self.gridLayout_2.addWidget(self.option_skip_imp_2, 3, 2, 1, 3)
+        self.gridLayout_2.addWidget(self.option_randomize_entrances, 3, 4, 1, 1)
+
+        self.label = QLabel(self.gridLayoutWidget_2)
+        self.label.setObjectName(u"label")
+
+        self.gridLayout_2.addWidget(self.label, 3, 3, 1, 1)
 
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
@@ -406,6 +416,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
+        self.option_randomize_entrances.setCurrentIndex(-1)
+
+
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
@@ -449,8 +462,10 @@ class Ui_MainWindow(object):
         self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Skykeep", None))
         self.option_closed_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Closed Thunderhead", None))
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
-        self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.option_skip_imp_2.setText(QCoreApplication.translate("MainWindow", u"Skip Imprisoned 2", None))
+        self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
+        self.option_randomize_entrances.setCurrentText("")
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.option_no_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"No Spoiler Log", None))

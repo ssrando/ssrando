@@ -109,9 +109,16 @@ global:
         patched:  80 6d bf c0 38 80 01 f6 4b de 55 29 80 8d c0 48 80 84 07 24 90 64 08 a0 80 01 00 24 4b f7 99 04 41 82 00 14
       - original: 48 12 a4 f9 80 01 00 24 83 e1 00 1c
         patched:  48 12 a4 f9 48 08 66 e4 83 e1 00 1c
+      # change the storyflag that is checked to disable sandship dowsing from enter sandship CS to Sandship made visible
+      - original: 38 80 00 0e 81 83 00 00 81 8c 00 2c 7d 89 03 a6
+        patched:  38 80 01 10 81 83 00 00 81 8c 00 2c 7d 89 03 a6
+      # in NpcTke, instead of ignoring the triggersceneflag if the triggerstoryflag is given, only trigger if both are set
+      # this is a safe change, because they are never set both in the original game
+      - original: 4e 80 04 21 54 63 04 3e 7c 03 00 d0 7c 00 1b 78 54 03 0f fe 48 00 00 3c 88 bf 07 38
+        patched:  4e 80 04 21 28 03 00 00 40 82 00 10 38 60 00 00 7c 00 03 78 48 00 00 3c 88 bf 07 38
     d_a_obj_door_boss: # change storyflags the boss door checks for, so that the doors can be opened in swordless mode, when the crest can't be hit
       - original: 00 00 00 05 00 00 00 07 00 00 00 09 00 00 00 0b 00 00 00 0d 00 00 00 0f
-        patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 00 0f
+        patched:  00 00 00 53 00 00 00 07 00 00 03 2C 00 00 02 88 00 00 00 54 00 00 03 A5
     d_a_obj_time_door_before: # this bit checks for the current sword, replace equals check with greater equals
       - original: 2c 00 00 04 40 82 00 a0
         patched:  2c 00 00 04 41 80 00 a0
@@ -245,6 +252,10 @@ global:
       # when getting spiral charge in there
       - original: 4e 80 04 21 54 60 04 3f 41 82 00 08 3b c0 00 00
         patched:  4e 80 04 21 54 60 04 3f 60 00 00 00 3b c0 00 00
+    d_t_D3_scene_change:
+      # change exit to one that doesn't softlock without skykeep
+      - original: 40 82 00 18 38 00 00 35 98 1b 00 00
+        patched:  40 82 00 18 38 00 00 34 98 1b 00 00
 
 S100: # Faron Silent Realm
   - name: Fi text near waking water
@@ -265,6 +276,32 @@ S100: # Faron Silent Realm
 #     type: oarcadd
 #     oarc: GetMoleGloveA
 #     destlayer: 2
+B100:
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 530
+        night: 0
+        layer: 5
+      - story_flag: 67
+        night: 0
+        layer: 4
+      - story_flag: 206
+        night: 0
+        layer: 3
+      - story_flag: 83
+        night: 0
+        layer: 1
+      - story_flag: -1
+        night: 0
+        layer: 13
+  - name: only play CS when ghirahim hasn't been defeated
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: 83 # ghirahim defeated
 B100_1: # skyview spring
   - name: Fi text after skyview CS
     type: objpatch
@@ -273,7 +310,8 @@ B100_1: # skyview spring
     room: 0
     objtype: OBJ
     object:
-      params1: 0xFFE017F1 # last 1 is subtype (not talk to fi)
+      params1: 0xFFFFFFF1 # last 1 is subtype (not talk to fi)
+      trigscenefid: 104
   - name: Fi text after skyview CS
     type: objmove
     id: 0xFC73
@@ -294,12 +332,19 @@ B100_1: # skyview spring
     index: 1
     objtype: EVNT
     object:
-      item: -1
+      sceneflag1: 104
+      item: -1 # first storyflag handled by entrance rando patches
   - name: Loadzone to outside layer 3
     type: objdelete
     room: 0
     layer: 3
     id: 0xFC75
+    objtype: STAG
+  - name: Remove small cutscene
+    type: objdelete
+    room: 0
+    layer: 1
+    id: 0xFC73
     objtype: STAG
 B101: # Koloktos Boss Room
   - name: Open door after boss
@@ -325,9 +370,8 @@ B101_1: # after AC boss
     index: 1
     objtype: EVNT
     object:
-      item: -1
-      story_flag1: -1
-      story_flag2: 900 # new ancient cistern flag
+      item: -1 # first storyflag handled by entrance rando patches
+      story_flag2: -1
   - name: Fi text before AC CS
     type: objadd
     room: 0
@@ -335,16 +379,17 @@ B101_1: # after AC boss
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x709FFF01 # untriggered by 900, storyflag for beating AC
+      params1: 0xFFFFFF01 # type 1, no fi, flag sets automatically
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF56 # triggered by sceneflag 86, which is goddess crest hit
       angley: 0xFFFF
       anglez: 20231 # entrypoint 202_31
       id: 0xFC00
       name: NpcTke
+      trigscenefid: 86 # goddess crest hit
+      untrigscenefid: 85 # unused flag
   - name: Loadzone to outside
     type: objpatch
     room: 0
@@ -385,8 +430,7 @@ B201_1: # after FS boss
     index: 0
     objtype: EVNT
     object:
-      item: -1
-      story_flag1: 901 # new FS beaten flag
+      item: -1 # first storyflag handled by entrance rando patches
   - name: Fi text before FS CS
     type: objadd
     room: 0
@@ -394,16 +438,17 @@ B201_1: # after FS boss
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x70BFFF01 # untriggered by 901, storyflag for beating fire sanctuary
+      params1: 0xFFFFFF01 # untriggered by 901, storyflag for beating fire sanctuary
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF5F # triggered by sceneflag 95, which is goddess crest hit
       angley: 0xFFFF
       anglez: 30407 # entrypoint 304_07
       id: 0xFC00
       name: NpcTke
+      trigscenefid: 95 # goddess crest hit
+      untrigscenefid: 121 # sets in flame CS normally
   - name: Loadzone to outside
     type: objpatch
     room: 0
@@ -419,8 +464,8 @@ B301: # after Sandship boss
     room: 0
     index: 1
     objtype: EVNT
-    object:
-      story_flag1: 933 # remove more dowsing options, change to defeat tentalus storyflag
+    object: # first storyflag handled by entrance rando patches
+      story_flag2: 933 # set defeat tentalus storyflag
       item: -1
   - name: Fi text before FS CS
     type: objadd
@@ -429,16 +474,17 @@ B301: # after Sandship boss
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x01FFFF01 # untriggered by 15, storyflag for beating sandship
+      params1: 0xFFFFFF01 # subtype for not talking to Fi, but setting the untriggerflag
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF54 # triggered by sceneflag 84, which is goddess crest hit
       angley: 0xFFFF
       anglez: 40108 # entrypoint 401_08
       id: 0xFC00
       name: NpcTke
+      trigscenefid: 84
+      untrigscenefid: 87
   - name: Fi text to force leave boss room
     type: objadd
     room: 0
@@ -446,16 +492,18 @@ B301: # after Sandship boss
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x717FFF0B # untriggered by 907, storyflag for having goddess sword
+      params1: 0xFFFFFF0B # subtype 0xB for Fi and no storyflag set
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF55 # triggered by sceneflag 85, which is heart container
       angley: 0xFFFF
       anglez: 40118 # entrypoint 401_18
       id: 0xFC00
       name: NpcTke
+      trigscenefid: 85
+      untrigscenefid: 0xFF
+      untrigstoryfid: 907 # untriggered by 907, storyflag for having goddess sword
   - name: Loadzone to outside
     type: objpatch
     room: 0
@@ -1369,11 +1417,11 @@ F100_1: # Great Tree
 D100: # Skyview
   - name: Layer override
     type: layeroverride
-    override: # keep layers normal but remove layer 3+
+    override: # only layer change is to layer 2 after water dragons scale
       - story_flag: 206 # storyflag after water dragons scale
         night: 0
         layer: 2
-      - story_flag: 4 # skyview entrance CS
+      - story_flag: -1
         night: 0
         layer: 1
   - name: Small Key Soil
@@ -2082,6 +2130,14 @@ F300: # lanayru Main Area
     layer: 0
     room: 0
     objtype: OBJ
+  - name: LMF entrance loadzone
+    type: objpatch
+    id: 0xFCEB
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      trigstoryfid: 8 # LMF raised
 F300_1: # Lanayru Mines
   - name: Layer override
     type: layeroverride
@@ -2167,22 +2223,42 @@ F300_4: # Temple of Time
     room: 0
     objtype: EVNT
     object:
-      item: -1
-      story_flag1: 914
+      item: -1 # storyflag handled in entrance rando patches
+      story_flag2: 935 # changes loadzone out of LMF
   - name: Fi text after Harp
-    type: objpatch
+    type: objdelete
     room: 0
     layer: 0
     id: 0xFC0D
     objtype: OBJ
-    object:
-      params1: 0xFFFFFFF1
   - name: Remove Fi text for Trial Gate
     type: objdelete
     id: 0xFC17
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove backwards loadingzone to LMF
+    type: objdelete
+    id: 0xFC3D
+    layer: 0
+    room: 0
+    objtype: STAG
+  # - name: Loadzone to dungeon entrance
+  #   type: objadd
+  #   room: 0
+  #   layer: 0
+  #   objtype: STAG
+  #   object:
+  #     params1: 0xC303FF05 # change to zone temp flag 3
+  #     params2: 0xFF5FFFFF
+  #     posx: -38000
+  #     posy: 50
+  #     posz: -4750
+  #     sizex: 500
+  #     sizey: 500
+  #     sizez: 500
+  #     anglez: 0xFFFF # don't set any storyflag here
+  #     name: ScChang
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch
@@ -2191,7 +2267,11 @@ F300_5: # LMF to ToT
     room: 0
     objtype: STAG
     object:
-      untrigstoryfid: 914
+      # increase size to make it unmissable
+      sizex: 1700
+      sizez: 500
+      trigscenefid: 0xC3
+      untrigstoryfid: 935
   - name: harp CS loadzone
     type: objpatch
     id: 0xFC04
@@ -2199,7 +2279,36 @@ F300_5: # LMF to ToT
     room: 0
     objtype: STAG
     object:
-      trigstoryfid: 914
+      trigstoryfid: 935
+  - name: Area to give Reward after dungeon
+    type: objadd
+    index: 0
+    room: 0
+    objtype: AREA
+    object:
+      posx: -11810.81640625
+      posy: -103.16357421875
+      posz: -4.131864070892334
+      sizex: 700
+      sizey: 1000
+      sizez: 500
+      angle: 0
+  - name: Trigger to give Reward after dungeon
+    type: objadd
+    room: 0
+    layer: 0
+    objtype: OBJ
+    object:
+      params1: 0x751FFFF1 # sets own storyflag (936) to untrigger
+      params2: 0xFF1FFFFF
+      posx: -11810
+      posy: -103 # doesn't matter, triggered by area
+      posz: -4
+      anglex: 0xFFFF
+      angley: 0xFF00 # AREA 0
+      anglez: 40055 # entrypoint 400_55
+      id: 0xFC00
+      name: NpcTke
   - name: Extra Bird Statue
     type: objadd
     layer: 0
@@ -2521,16 +2630,18 @@ D301: # Sandship A
     id: 0xFC00
     objtype: OBJ
     object:
-      params1: 0x01FFFF01 # untriggered by 15, storyflag for beating sandship
+      params1: 0xFFFFFF01 # subtype to not trigger fi, but set flag
       params2: 0xFF1FFFFF
       posx: 0
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
-      anglex: 0xFF54 # triggered by sceneflag 84, which is goddess crest hit
       angley: 0xFFFF
-      anglez: 40119 # entrypoint 401_19
+      anglez: 40118 # entrypoint 401_18
       id: 0xFC00
       name: NpcTke
+      trigstoryfid: 933 # triggered by storyflag for leaving tentalus room
+      trigscenefid: 84 # and triggered by sceneflag 84, which is goddess crest hit
+      untrigscenefid: 87 # unused flag to untrigger
   - name: Trigger Flame CS
     type: objadd
     layer: 0
@@ -2616,7 +2727,7 @@ D301: # Sandship A
     room: 0
     objtype: OBJ
 D301_1: # Sandship B
-  - name: Fi text before tentacles
+  - name: Fi text before tentalus
     type: objdelete
     id: 0xFC1D
     layer: 0
@@ -2985,7 +3096,7 @@ F407: # Skykeep beaten cs
     index: 2
     objtype: EVNT
     object:
-      story_flag2: -1
+      story_flag2: -1 # first storyflag is handled by entrance rando patches
   - name: Skykeep CS remove Storyflag
     type: objpatch
     room: 0
@@ -2993,16 +3104,16 @@ F407: # Skykeep beaten cs
     objtype: EVNT
     object:
       story_flag2: -1
-  - name: Send player to Skyloft after Skykeep
-    type: objpatch
-    room: 0
-    index: 1
-    objtype: SCEN
-    object:
-      name: F000
-      room: 0
-      layer: 0
-      entrance: 52 # where you spawn after opening sky keep
+  # - name: Send player to Skyloft after Skykeep
+  #   type: objpatch
+  #   room: 0
+  #   index: 1
+  #   objtype: SCEN
+  #   object:
+  #     name: F000
+  #     room: 0
+  #     layer: 0
+  #     entrance: 52 # where you spawn after opening sky keep
 S200:
   - name: Unforce layer
     type: objpatch

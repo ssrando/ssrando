@@ -120,6 +120,17 @@
   default: true
   help: If activated, play the game on Hero Mode
   ui: option_hero_mode
+- name: Randomize Entrances
+  command: randomize-entrances
+  type: singlechoice
+  bits: 2
+  choices:
+  - None
+  - Dungeons
+  - Dungeons + Sky Keep
+  default: None
+  help: "Shuffles entrances with one another. Options: None, Dungeons, Dungeons + Sky Keep"
+  ui: option_randomize_entrances
 - name: Start with Adventure Pouch
   command: start-with-pouch
   type: boolean
