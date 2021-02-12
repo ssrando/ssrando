@@ -11,6 +11,12 @@ def process_command_line_options(options):
         longest_option = max(len(option_name) for option_name in OPTIONS.keys())
         for option_name, option in OPTIONS.items():
             print(' --'+option_name.ljust(longest_option) + ' ' + option['help'])
+        # bulk options
+        print()
+        print('--' + 'bulk'.ljust(longest_option) + ' ' + 'Runs the randomizer in bulk mode, to generate lots of spoiler logs. Implies --dry-run')
+        print('--' + 'low'.ljust(longest_option) + ' ' + '(bulk mode only) specify the lower end of seeds to generate (inclusive, default: 1)')
+        print('--' + 'high'.ljust(longest_option) + ' ' + '(bulk mode only) specify the higher end of seeds to generate (inclusive, default: 100)')
+        print('--' + 'threads'.ljust(longest_option) + ' ' + '(bulk mode only) specify the number of threads to use (default: 1)')
         return None
     elif 'version' in options:
         print(VERSION)
@@ -26,6 +32,11 @@ def process_command_line_options(options):
                 print(problem)
         return cleaned_options
 
+def get_ranges(start, end, parts):
+    step = (end+1-start) / parts
+    for i in range(parts):
+        yield (int(start + step * i), int(start + step * (i+1)))
+
 if 'NOGIT' in VERSION:
     print('WARNING: Running from source, but without git, this is highly discouraged')
 
@@ -39,9 +50,33 @@ for arg in sys.argv[1:]:
         cmd_line_args[option_name[2:]] = 'true'
     else:
         cmd_line_args[option_name[2:]] = arg_parts[1]
+bulk_mode = False
+if cmd_line_args.pop('bulk', False):
+    bulk_mode = True
+    bulk_low = int(cmd_line_args.pop('low', '1'))
+    bulk_high = int(cmd_line_args.pop('high', '100'))
+    if bulk_high < bulk_low:
+        print('high has to be higher than low!')
+        exit(1)
+    bulk_threads = int(cmd_line_args.pop('threads', '1'))
 options = process_command_line_options(cmd_line_args)
 if options is not None:
-    if options['noui']:
+    if bulk_mode:
+        from multiprocessing import Process
+        options.set_option('dry-run', True)
+        def randothread(start, end, local_opts):
+            for i in range(start, end):
+                local_opts.set_option('seed', i)
+                rando = Randomizer(local_opts)
+                rando.randomize()
+        threads = []
+        for (start, end) in get_ranges(bulk_low, bulk_high, bulk_threads):
+            thread = Process(target=randothread, args=(start, end, options.copy()))
+            thread.start()
+            threads.append(thread)
+        for thread in threads:
+            thread.join()
+    elif options['noui']:
         rando = Randomizer(options)
         if not options['dry-run']:
             rando.check_valid_directory_setup()
