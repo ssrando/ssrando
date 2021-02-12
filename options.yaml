@@ -11,6 +11,12 @@
   default: "."
   permalink: false
   help: Path to folder, where to write the patched wbfs and the spoiler log
+- name: JSON spoiler log
+  command: json
+  type: boolean
+  default: false
+  permalink: false
+  help: If set, outputs the spoiler log in json format
 - name: No GUI
   command: noui
   type: boolean

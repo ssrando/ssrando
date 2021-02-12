@@ -5,6 +5,7 @@ import re
 import random
 from pathlib import Path
 import hashlib
+import json
 
 from logic.logic import Logic
 import logic.constants as constants
@@ -166,9 +167,11 @@ class Randomizer:
     self.logic.randomize_items()
     if self.no_logs:
       self.progress_callback('writing anti spoiler log...')
-      self.write_spoiler_log()
     else:
       self.progress_callback('writing spoiler log...')
+    if self.options['json']:
+      self.write_spoiler_log_json()
+    else:
       self.write_spoiler_log()
     if not self.dry_run:
       GamePatcher(self).do_all_gamepatches()
@@ -256,6 +259,43 @@ class Randomizer:
     with spoiler_log_output_path.open('w') as f:
       f.write(spoiler_log)
 
+  def write_spoiler_log_json(self):
+    spoiler_log = self.get_log_header_json()
+    if self.no_logs:
+      # We still calculate progression spheres even if we're not going to write them anywhere to catch more errors in testing.
+      self.calculate_playthrough_progression_spheres()
+
+      spoiler_log_output_path = self.options['output-folder'] / ("SS Random %s - Anti Spoiler Log.json" % self.seed)
+      with spoiler_log_output_path.open('w') as f:
+        json.dump(spoiler_log, f, indent=2)
+
+      return
+    spoiler_log['starting-items'] = self.starting_items
+    spoiler_log['required-dungeons'] = self.required_dungeons
+    spoiler_log['playthrough'] = self.calculate_playthrough_progression_spheres()
+    spoiler_log['item-locations'] = self.logic.done_item_locations
+    spoiler_log['entrances'] = self.entrance_connections
+    
+    spoiler_log_output_path = self.options['output-folder'] / ("SS Random %s - Spoiler Log.json" % self.seed)
+    with spoiler_log_output_path.open('w') as f:
+      json.dump(spoiler_log, f, indent=2)
+
+  def get_log_header_json(self):
+    header_dict = OrderedDict()
+    header_dict['version'] = VERSION
+    header_dict['permalink'] = self.options.get_permalink()
+    header_dict['seed'] = self.seed
+    header_dict['hash'] = self.randomizer_hash
+    non_disabled_options = [
+      name for name in self.options.options
+      if (self.options[name] not in [False, [], {}, OrderedDict()] or OPTIONS[name]['type'] == 'int')
+      and OPTIONS[name].get('permalink', True) == True
+    ]
+    header_dict['options'] = OrderedDict()
+    for option_name in non_disabled_options:
+      header_dict['options'][option_name] = self.options[option_name]
+    return header_dict
+
   def get_log_header(self):
     header = ""
     
@@ -271,7 +311,7 @@ class Randomizer:
     non_disabled_options = [
       name for name in self.options.options
       if (self.options[name] not in [False, [], {}, OrderedDict()] or OPTIONS[name]['type'] == 'int')
-      and not name in ["dry-run", "seed", "noui"]
+      and OPTIONS[name].get('permalink', True) == True
     ]
     option_strings = []
     for option_name in non_disabled_options:
