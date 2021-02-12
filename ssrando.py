@@ -181,7 +181,7 @@ class Randomizer:
       # We still calculate progression spheres even if we're not going to write them anywhere to catch more errors in testing.
       self.calculate_playthrough_progression_spheres()
 
-      spoiler_log_output_path = Path('.') / ("SS Random %s - Anti Spoiler Log.txt" % self.seed)
+      spoiler_log_output_path = self.options['output-folder'] / ("SS Random %s - Anti Spoiler Log.txt" % self.seed)
       with spoiler_log_output_path.open('w') as f:
         f.write(spoiler_log)
 
@@ -252,7 +252,7 @@ class Randomizer:
     
     spoiler_log += "\n\n\n"
     
-    spoiler_log_output_path = Path('.') / ("SS Random %s - Spoiler Log.txt" % self.seed)
+    spoiler_log_output_path = self.options['output-folder'] / ("SS Random %s - Spoiler Log.txt" % self.seed)
     with spoiler_log_output_path.open('w') as f:
       f.write(spoiler_log)
 

@@ -5,6 +5,12 @@
   permalink: false
   help: Only generate a spoiler log, doesn't attempt to patch any game files
   ui: option_dry_run
+- name: Output Path
+  command: output-folder
+  type: dirpath
+  default: "."
+  permalink: false
+  help: Path to folder, where to write the patched wbfs and the spoiler log
 - name: No GUI
   command: noui
   type: boolean

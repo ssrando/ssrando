@@ -1,6 +1,7 @@
 from logic.constants import ALL_TYPES
 from packedbits import PackedBitsReader, PackedBitsWriter
 from paths import RANDO_ROOT_PATH
+from pathlib import Path
 
 import yaml
 from collections import OrderedDict
@@ -18,7 +19,10 @@ class Options():
     def reset_to_default(self):
         self.options.clear()
         for option_name, option in OPTIONS.items():
-            self.options[option_name]=option['default']
+            if option['type'] == 'dirpath':
+                self.options[option_name] = Path(option['default']).resolve()
+            else:
+                self.options[option_name]=option['default']
 
     @staticmethod
     def parse_and_validate_option(value: str, option: dict):
@@ -49,6 +53,11 @@ class Options():
                     validation_errors.append(f'{value} is not a number, which is required for {option["command"]}')
             if not value in option['choices']:
                 validation_errors.append(f'value {value} is not valid for {option["command"]}')
+        elif option['type'] == 'dirpath':
+            path = Path(value).expanduser()
+            if not path.is_dir():
+                validation_errors.append(f'path {value} is not a directory!')
+            value = path
         else:
             raise Exception(f'unknown type: {option["type"]}')
         return value, validation_errors
@@ -119,6 +128,11 @@ class Options():
                 option_value = int(option_value)
             if not option_value in option['choices']:
                 raise ValueError(f'Unknown choice for {option_name}: {option_value}')
+        elif option['type'] == 'dirpath':
+            path = Path(option_value).expanduser()
+            if not path.is_dir():
+                raise ValueError(f'path {option_value} is not a directory!')
+            option_value = path
         self.options[option_name] = option_value
 
     def set_option_str(self, option_name, option_value):

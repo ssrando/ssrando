@@ -36,8 +36,6 @@ class RandoGUI(QMainWindow):
 
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
 
-        self.output_folder = ""
-
         self.options = options
 
         self.option_map = {}
@@ -169,7 +167,7 @@ class RandoGUI(QMainWindow):
 
         self.progress_dialog = ProgressDialog("Randomizing", "Initializing...",
                                               self.rando.get_total_progress_steps() + extra_steps)
-        self.randomizer_thread = RandomizerThread(self.rando, self.wit_manager, self.output_folder)
+        self.randomizer_thread = RandomizerThread(self.rando, self.wit_manager, self.options['output-folder'])
         self.randomizer_thread.update_progress.connect(self.ui_progress_callback)
         self.randomizer_thread.randomization_complete.connect(self.randomization_complete)
         self.randomizer_thread.error_abort.connect(self.on_error)
@@ -228,8 +226,8 @@ class RandoGUI(QMainWindow):
         self.extract_thread.start()
 
     def browse_for_output_dir(self):
-        if self.output_folder and os.path.isfile(self.output_folder):
-            default_dir = os.path.dirname(self.output_folder)
+        if self.options['output-folder'] and os.path.isfile(self.options['output-folder']):
+            default_dir = os.path.dirname(self.options['output-folder'])
         else:
             default_dir = None
 
@@ -240,7 +238,7 @@ class RandoGUI(QMainWindow):
         self.update_settings()
 
     def update_ui_for_settings(self):
-        self.ui.output_folder.setText(self.output_folder)
+        self.ui.output_folder.setText(str(self.options['output-folder']))
         self.ui.seed.setText(str(self.options["seed"]))
         current_settings = self.options.copy()
         for option_key, option in OPTIONS.items():
@@ -265,7 +263,7 @@ class RandoGUI(QMainWindow):
         self.ui.permalink.setText(current_settings.get_permalink())
 
     def update_settings(self):
-        self.output_folder = self.ui.output_folder.text()
+        self.options.set_option('output-folder', self.ui.output_folder.text())
         try:
             self.options.set_option("seed", int(self.ui.seed.text()))
         except ValueError:
