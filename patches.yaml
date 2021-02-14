@@ -1964,6 +1964,14 @@ D200: # ET
     layer: 0
     room: 1
     objtype: OBJ
+  - name: Keep Ledd after Beating ET
+    type: objpatch
+    id: 0xFC50
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      untrigstoryfid: 2047
   - name: Bombs from Ledd
     type: objpatch
     id: 0xFC53
