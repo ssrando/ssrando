@@ -8,8 +8,19 @@ from urllib import request
 from pathlib import Path
 import subprocess
 import shutil
+from hashlib import md5
 
 WIT_PROGRESS_REGEX = re.compile(rb' +([0-9]+)%.*')
+CLEAN_NTSC_U_1_00_ISO_HASH = 'e7c39bb46cf938a5a030a01a677ef7d1'
+
+WRONG_VERSION_HASHES = {
+    'ca34457eb03dd6de35383f8439f4bf70': 'JP 1.00',
+    '9c802c4c92f7425339c0515c0bb3d455': 'US 1.01',
+    '89387d670395b2a2c32f77f167763115': 'US 1.02',
+    'f32bd185cb71ec9d87d2a65c9385d3d8': 'PAL 1.00',
+    'ea5745a17a1a4e999b5443be839a5c6f': 'PAL 1.01',
+    'd2df2574a51fc31472b291402295686d': 'PAL 1.02',
+}
 
 NOP = lambda *args, **kwargs: None
 
@@ -17,6 +28,9 @@ NOP = lambda *args, **kwargs: None
 IS_WINDOWS = sys.platform == 'win32'
 
 class WitException(Exception):
+    pass
+
+class WrongChecksumException(Exception):
     pass
 
 class WitManager:
@@ -59,6 +73,27 @@ class WitManager:
                     wit_zip.extractall(self.rootpath)
             self.update_wit_command()
     
+    def iso_integrity_check(self, iso_path, progress_cb=NOP):
+        hsh = md5()
+        with open(str(iso_path),'rb') as f:
+            f.seek(0, 2) # seek to end
+            total_bytes = f.tell()
+            hashed_bytes = 0
+            f.seek(0)
+            while True:
+                data = f.read(128 * 64)
+                if not data:
+                    break
+                hsh.update(data)
+                hashed_bytes += len(data)
+                progress_cb('Verifying ISO...', hashed_bytes/total_bytes*100)
+            digest = hsh.hexdigest()
+            progress_cb('Verified ISO...', 100)
+            if not digest == CLEAN_NTSC_U_1_00_ISO_HASH:
+                if digest in WRONG_VERSION_HASHES:
+                    raise WrongChecksumException(f'This ISO is {WRONG_VERSION_HASHES[digest]}, but the rando only support NTSC-U 1.00 (North American)')
+                raise WrongChecksumException(f'Unrecognized wrong hash {digest}, make sure you got a clean dump of NTSC-U 1.00 (North American)')
+            
     def actual_extract_already_exists(self):
         return (self.rootpath / 'actual-extract' / 'DATA' / 'sys' / 'main.dol').is_file()
 
@@ -67,7 +102,7 @@ class WitManager:
         # check if game is already extracted
         # TODO: there seemed to be issues with wit sometimes, that it doesn't properly extract the first time?
         datapath = self.rootpath / 'actual-extract' / 'DATA'
-        if True or not self.actual_extract_already_exists():
+        if not self.actual_extract_already_exists():
             extract_process = subprocess.Popen([self.witcommand, "-P", "extract",
                 iso_path, str(self.rootpath / "actual-extract")], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             while True:

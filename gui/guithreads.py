@@ -5,7 +5,7 @@ from typing import Optional
 from PySide2.QtCore import QThread, Signal
 
 from ssrando import Randomizer, StartupException
-from witmanager import WitManager, WitException
+from witmanager import WitManager, WitException, WrongChecksumException
 
 
 class RandomizerThread(QThread):
@@ -77,7 +77,7 @@ class ExtractSetupThread(QThread):
         return progress_cb
     
     def run(self):
-        total_steps = 2  + 100 + 100 # wit + done, extract, copy
+        total_steps = 2  + 100 + 100 + 100 # wit + done, verify, extract, copy
         self.update_total_steps.emit(total_steps)
         default_ui_progress_callback = self.create_ui_progress_callback(0)
         default_ui_progress_callback('setting up wiimms ISO tools...')
@@ -86,17 +86,18 @@ class ExtractSetupThread(QThread):
         default_ui_progress_callback('extracting game...')
         if not self.wit_manager.actual_extract_already_exists():
             try:
-                self.wit_manager.extract_game(self.clean_iso_path, self.create_ui_progress_callback(1))
-            except WitException as e:
+                self.wit_manager.iso_integrity_check(self.clean_iso_path, self.create_ui_progress_callback(1))
+                self.wit_manager.extract_game(self.clean_iso_path, self.create_ui_progress_callback(101))
+            except (WitException, WrongChecksumException) as e:
                 print(e)
                 self.error_abort.emit(str(e))
                 return
         else:
-            default_ui_progress_callback('already extracted', 101)
+            default_ui_progress_callback('already extracted', 201)
 
         default_ui_progress_callback('copying extract...')
         if not self.wit_manager.modified_extract_already_exists():
-            self.wit_manager.copy_to_modified(self.create_ui_progress_callback(101))
+            self.wit_manager.copy_to_modified(self.create_ui_progress_callback(201))
         else:
-            default_ui_progress_callback('already copied', 201)
+            default_ui_progress_callback('already copied', 301)
         self.extract_complete.emit()
