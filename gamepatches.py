@@ -625,6 +625,7 @@ class GamePatcher:
 
         self.do_dol_patch()
         self.do_rel_patch()
+        self.do_patch_object_pack()
         self.do_patch_title_screen_logo()
 
     def filter_option_requirement(self, entry):
