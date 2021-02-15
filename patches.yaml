@@ -302,6 +302,13 @@ B100:
     objtype: PLY
     object:
       storyflag: 83 # ghirahim defeated
+  - name: move first time loadzone to layer 0
+    type: objmove
+    id: 0xFC18
+    layer: 1
+    destlayer: 0
+    room: 0
+    objtype: STAG
 B100_1: # skyview spring
   - name: Fi text after skyview CS
     type: objpatch
