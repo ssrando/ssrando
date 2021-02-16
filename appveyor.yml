@@ -17,7 +17,8 @@ install:
 - sh: sudo apt install -yq --no-install-suggests --no-install-recommends python3.8-dev > /dev/null
 
 build_script:
-- python -m PyInstaller ssrando.spec
+- python secret/prepare_build.py
+- python -m PyInstaller ssrando.spec --log-level=WARN
 - cp README.md dist
 
 artifacts:
