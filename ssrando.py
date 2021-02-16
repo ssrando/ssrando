@@ -72,7 +72,9 @@ class Randomizer:
     self.rng = random.Random()
     self.rng.seed(self.seed)
     if self.no_logs:
-      self.rng.randint(0,100)
+      self.rng.seed(self.seed+0x123456)
+    else:
+      self.rng.seed(self.seed)
     self.entrance_connections = OrderedDict([
       ("Dungeon Entrance In Deep Woods", "Skyview"),
       ("Dungeon Entrance In Eldin Volcano", "Earth Temple"),

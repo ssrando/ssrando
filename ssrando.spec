@@ -1,10 +1,14 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-block_cipher = None
-
 import os
 import re
 import glob
+import secrets
+
+cipher_key = secrets.token_hex(20)
+
+block_cipher = pyi_crypto.PyiBlockCipher(key=cipher_key)
+
 def build_datas_recursive(paths):
   datas = []
   

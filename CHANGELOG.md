@@ -1,4 +1,8 @@
 # Changelog
+## Dev
+### Changes
+- Encrypt binary
+- Add secret key for spoiler log off
 
 ## 1.0.4
 ### Options
