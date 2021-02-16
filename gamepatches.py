@@ -783,7 +783,10 @@ def do_gamepatches(rando):
                     print(f'ERROR: wrong index adding object: {json.dumps(objadd)}')
                     continue
             for key, val in obj.items():
-                new_obj[key] = val
+                if key in new_obj:
+                    new_obj[key] = val
+                else:
+                    try_patch_obj(new_obj, key, val)
             if 'id' in new_obj:
                 new_obj['id'] = (new_obj['id'] & ~0x3FF) | next_id
                 next_id += 1

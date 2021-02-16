@@ -151,6 +151,8 @@ class Options():
     def __init__(self):
         self.options = OrderedDict()
         self.reset_to_default()
+        # tourney permalink
+        self.update_from_permalink('JQEABAS+AA==')
 
     def reset_to_default(self):
         self.options.clear()
