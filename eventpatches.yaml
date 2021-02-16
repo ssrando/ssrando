@@ -407,6 +407,12 @@
       param2: 7
       next: -1
       param3: 56
+004-Object:
+  - name: Remove Heart piece hint from gossip stone
+    type: flowpatch
+    index: 76
+    flow:
+      next: -1
 008-Hint:
   # check for 7 storyflags: required dungeon 1 to 6, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check

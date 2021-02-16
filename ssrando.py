@@ -8,6 +8,7 @@ import hashlib
 import json
 
 from logic.logic import Logic
+from logic.hints import Hints
 import logic.constants as constants
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
@@ -120,9 +121,10 @@ class Randomizer:
     self.non_required_dungeons = [dungeon for dungeon in
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
     self.logic = Logic(self)
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
-    # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Bow")
-    # self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")
+    self.hints = Hints(self.logic)
+    # self.logic.set_prerandomization_item_location("Skyloft - Fledge's Pouch", "Emerald Tablet")
+    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")
+    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
@@ -165,6 +167,7 @@ class Randomizer:
   def randomize(self):
     self.progress_callback('randomizing items...')
     self.logic.randomize_items()
+    self.hints.do_normal_hints()
     if self.no_logs:
       self.progress_callback('writing anti spoiler log...')
     else:
@@ -252,6 +255,13 @@ class Randomizer:
     spoiler_log += "Entrances:\n"
     for entrance_name, dungeon_or_cave_name in self.entrance_connections.items():
       spoiler_log += "  %-48s %s\n" % (entrance_name+":", dungeon_or_cave_name)
+    
+    spoiler_log += "\n\n\n"
+
+    # Write hints
+    spoiler_log += "Hints:\n"
+    for hintlocation, hint in self.hints.hints.items():
+      spoiler_log += "  %-53s %s\n" % (hintlocation+":", hint.replace('\n', ' '))
     
     spoiler_log += "\n\n\n"
     

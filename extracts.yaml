@@ -122,6 +122,7 @@
   - PutGaragara
   - GetSeedLife
   - GetSozaiP
+  - GossipStone
   stage: F000
 - layer: 4
   oarcs:

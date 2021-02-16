@@ -261,6 +261,10 @@ global:
       # change exit to one that doesn't softlock without skykeep
       - original: 40 82 00 18 38 00 00 35 98 1b 00 00
         patched:  40 82 00 18 38 00 00 34 98 1b 00 00
+    d_a_obj_harp_hint:
+      # always reveal all gossip stones
+      - original: 40 82 00 88 88 bc 0c ba 28 05 00 ff 40 80 00 30
+        patched:  40 82 00 88 88 bc 0c ba 28 05 00 ff 42 80 00 3c
 
 S100: # Faron Silent Realm
   - name: Fi text near waking water
@@ -1150,6 +1154,17 @@ F023: # Thunderhead
       anglez: 12003 # entrypoint 120_03
       id: 0xFC13
       name: NpcTke
+  - name: Gossip Stone
+    type: objmove
+    id: 0xFCEE
+    layer: 2
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Gossip Stone
+    type: oarcadd
+    oarc: GossipStone
+    destlayer: 0
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -1816,6 +1831,17 @@ F200: # Eldin main area
     layer: 1
     room: 2
     objtype: STAG
+  - name: Gossip Stone
+    type: objmove
+    id: 0xFC97
+    layer: 2
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Gossip Stone
+    type: oarcadd
+    oarc: GossipStone
+    destlayer: 0
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
@@ -1868,6 +1894,15 @@ F210: # Mogma Turf
     layer: 1
     room: 0
     objtype: OBJ
+F211:
+  - name: Remove thrill digger entry CS
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F201_1: # Inside Volcano
   - name: Layer override
     type: layeroverride
@@ -2507,6 +2542,17 @@ F301_4: # Shipyard
     object:
       storyflag: -1
       play_cutscene: -1
+  - name: Gossip Stone
+    type: objmove
+    id: 0xFC5E
+    layer: 5
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Gossip Stone
+    type: oarcadd
+    oarc: GossipStone
+    destlayer: 0
 F301_5: # Skipper's Shack
   - name: Text after chest
     type: objdelete
