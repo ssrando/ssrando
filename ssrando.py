@@ -25,9 +25,13 @@ if IS_RUNNING_FROM_SOURCE:
   VERSION_WITHOUT_COMMIT = VERSION
   version_suffix = "_NOGIT"
   
-  git_commit_head_file = os.path.join(".git", "HEAD")
-  if os.path.isfile(git_commit_head_file):
-    with open(git_commit_head_file, "r") as f:
+  git_dir = Path(".git")
+  if git_dir.is_file(): # submodule
+    rel_git_dir = Path(".git").read_text().lstrip('gitdir:').strip()
+    git_dir = Path(rel_git_dir)
+  git_commit_head_file = git_dir / "HEAD"
+  if git_commit_head_file.is_file():
+    with git_commit_head_file.open("r") as f:
       head_file_contents = f.read().strip()
     if head_file_contents.startswith("ref: "):
       # Normal head, HEAD file has a reference to a branch which contains the commit hash
