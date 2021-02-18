@@ -36,9 +36,9 @@ if IS_RUNNING_FROM_SOURCE:
     if head_file_contents.startswith("ref: "):
       # Normal head, HEAD file has a reference to a branch which contains the commit hash
       relative_path_to_hash_file = head_file_contents[len("ref: "):]
-      path_to_hash_file = os.path.join(".git", relative_path_to_hash_file)
-      if os.path.isfile(path_to_hash_file):
-        with open(path_to_hash_file, "r") as f:
+      path_to_hash_file = git_dir / relative_path_to_hash_file
+      if path_to_hash_file.is_file():
+        with path_to_hash_file.open("r") as f:
           hash_file_contents = f.read()
         version_suffix = "_" + hash_file_contents[:7]
     elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
