@@ -25,25 +25,11 @@ if IS_RUNNING_FROM_SOURCE:
   VERSION_WITHOUT_COMMIT = VERSION
   version_suffix = "_NOGIT"
   
-  git_dir = Path(".git")
-  if git_dir.is_file(): # submodule
-    rel_git_dir = Path(".git").read_text().lstrip('gitdir:').strip()
-    git_dir = Path(rel_git_dir)
-  git_commit_head_file = git_dir / "HEAD"
-  if git_commit_head_file.is_file():
-    with git_commit_head_file.open("r") as f:
-      head_file_contents = f.read().strip()
-    if head_file_contents.startswith("ref: "):
-      # Normal head, HEAD file has a reference to a branch which contains the commit hash
-      relative_path_to_hash_file = head_file_contents[len("ref: "):]
-      path_to_hash_file = git_dir / relative_path_to_hash_file
-      if path_to_hash_file.is_file():
-        with path_to_hash_file.open("r") as f:
-          hash_file_contents = f.read()
-        version_suffix = "_" + hash_file_contents[:7]
-    elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
-      # Detached head, commit hash directly in the HEAD file
-      version_suffix = "_" + head_file_contents[:7]
+  import subprocess
+  try:
+    version_suffix = '_' + subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd=Path(__file__).parent).decode('ASCII').strip()
+  except Exception:
+    pass # probably not git installed
   
   VERSION += version_suffix
 else:
