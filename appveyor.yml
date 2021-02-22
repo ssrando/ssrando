@@ -19,6 +19,7 @@ install:
 build_script:
 - python -m PyInstaller ssrando.spec
 - cp README.md dist
+- mkdir dist/arc-replacements
 
 artifacts:
 # pyinstaller puts the build exe here

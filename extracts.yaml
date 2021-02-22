@@ -174,3 +174,6 @@
   - GetHeartUtuwa
   - PutHeartUtuwa
   stage: B100
+- objectpack:
+  - Alink
+  - Bird_Link
