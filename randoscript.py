@@ -11,12 +11,15 @@ def process_command_line_options(options):
         longest_option = max(len(option_name) for option_name in OPTIONS.keys())
         for option_name, option in OPTIONS.items():
             print(' --'+option_name.ljust(longest_option) + ' ' + option['help'])
+        # permalink
+        print()
+        print(' --' + 'permalink'.ljust(longest_option) + ' ' + 'Specify a permlink, which includes the settings. This is set first, other options may override these settings')
         # bulk options
         print()
-        print('--' + 'bulk'.ljust(longest_option) + ' ' + 'Runs the randomizer in bulk mode, to generate lots of spoiler logs. Implies --dry-run')
-        print('--' + 'low'.ljust(longest_option) + ' ' + '(bulk mode only) specify the lower end of seeds to generate (inclusive, default: 1)')
-        print('--' + 'high'.ljust(longest_option) + ' ' + '(bulk mode only) specify the higher end of seeds to generate (inclusive, default: 100)')
-        print('--' + 'threads'.ljust(longest_option) + ' ' + '(bulk mode only) specify the number of threads to use (default: 1)')
+        print(' --' + 'bulk'.ljust(longest_option) + ' ' + 'Runs the randomizer in bulk mode, to generate lots of spoiler logs. Implies --dry-run')
+        print(' --' + 'low'.ljust(longest_option) + ' ' + '(bulk mode only) specify the lower end of seeds to generate (inclusive, default: 1)')
+        print(' --' + 'high'.ljust(longest_option) + ' ' + '(bulk mode only) specify the higher end of seeds to generate (inclusive, default: 100)')
+        print(' --' + 'threads'.ljust(longest_option) + ' ' + '(bulk mode only) specify the number of threads to use (default: 1)')
         return None
     elif 'version' in options:
         print(VERSION)
