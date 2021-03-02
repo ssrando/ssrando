@@ -866,7 +866,7 @@
       next: 520
   - name: New text Option
     type: textadd
-    text: "Do you have any Questions?\n\x0E\x01\x00\x02\uFFFFSoup\x0E\x01\x01\x02\x00Chandellier..."
+    text: "Hey, you look like you have a Questions?\n\x0E\x01\x00\x02\uFFFFLevias\x0E\x01\x01\x02\x00Other Things"
   - name: Show new Text Option
     type: flowadd
     flow:
