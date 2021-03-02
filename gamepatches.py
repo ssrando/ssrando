@@ -1141,6 +1141,19 @@ class GamePatcher:
                         continue
                     val = index
                 flowobj[key] = val
+            if flowobj['type'] == 'switch':
+                # patch cases if given
+                cases = command.get('cases', None)
+                if cases:
+                    assert len(cases) == flowobj['param4'] # param4 is number of cases
+                    branch_start = flowobj['param5']
+                    for i, case in enumerate(cases):
+                        if not isinstance(case, int):
+                            case = label_to_index.get(case, None)
+                            assert not case is None, f'ERROR: text label {val} not found in patch: {command["flow"]}'
+                        msbf['FLW3']['branch_points'][branch_start+i] = case
+                        # print(f'set {branch_start+i} to {case}')
+                    # print(flowobj)
             # print(f'patched flow {command["index"]}, {filename}')
             modified = True
         for command in filter(lambda x: x['type'] in ['flowadd', 'switchadd'], flowpatches):
