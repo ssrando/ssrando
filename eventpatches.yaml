@@ -839,11 +839,62 @@
     index: 78
     flow:
       param2: 36 # always trigger
-  - name: Fix Bartender
-    type: flowpatch
-    index: 212 # collected pumpkin soup
+  - name: Switch for chandellier just fell
+    type: switchadd
     flow:
-      next: 520 # normal conversation past pumpkin soup
+      subeType: 6
+      param2: 3
+      param3: 5
+      param4: 2
+      param5: 285
+    cases:
+      - 520 # jump over soup
+      - 118 # normal event
+  - name: Go to Switch for Chandellier
+    type: flowpatch
+    index: 6
+    flow:
+      next: Switch for chandellier just fell
+  - name: Fix Soup textboxes
+    type: textpatch
+    index: 143
+    text: "What's the matter? You look like\nyou've got something mighty\nserious on your mind.\n\x0E\x01\x00\x02\uFFFFSoup\x0E\x01\x01\x02\x00No Soup"
+  - name: Go back to chandellier quest
+    type: flowpatch
+    index: 347
+    flow:
+      next: 520
+  - name: New text Option
+    type: textadd
+    text: "Do you have any Questions?\n\x0E\x01\x00\x02\uFFFFSoup\x0E\x01\x01\x02\x00Chandellier..."
+  - name: Show new Text Option
+    type: flowadd
+    flow:
+      type: type1
+      next: Text option Switch
+      param3: 111
+      param4: New text Option
+  - name: Text option Switch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 0
+      param4: 2
+      param5: 96
+    cases:
+      - 208
+      - 216
+  - name: Go to new text option
+    type: flowpatch
+    index: 213
+    flow:
+      next: Show new Text Option
+#  - name: Fix Bartender
+#    type: flowpatch
+#    index: 212 # collected pumpkin soup
+#    flow:
+#      next: 520 # normal conversation past pumpkin soup
 118-Town3:
   - name: Wryna's Crystal
     type: flowpatch
