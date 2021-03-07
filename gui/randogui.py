@@ -181,6 +181,7 @@ class RandoGUI(QMainWindow):
 
     def on_error(self, message):
         self.error_msg = QErrorMessage(self)
+        self.progress_dialog.reset()
         self.error_msg.showMessage(message)
 
     def randomization_complete(self):
