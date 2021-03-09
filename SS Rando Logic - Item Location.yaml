@@ -256,6 +256,47 @@ Skyloft - Batreaux 80 Crystals:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
 
+Skyloft - Beedle 50 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 50 Rupees
+  original item: Bug Net
+  type: skyloft, shop, beedle, cheap
+Skyloft - Beedle First 100 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 100 Rupees
+  original item: Extra Wallet
+  type: skyloft, shop, beedle, cheap
+Skyloft - Beedle Second 100 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 100 Rupees
+  original item: Extra Wallet
+  type: skyloft, shop, beedle, cheap
+Skyloft - Beedle Third 100 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 100 Rupees
+  original item: Extra Wallet
+  type: skyloft, shop, beedle, cheap
+Skyloft - Beedle 300 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 300 Rupees
+  original item: Progressive Pouch
+  type: skyloft, shop, beedle, cheap
+Skyloft - Beedle 600 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 600 Rupees
+  original item: Progressive Pouch
+  type: skyloft, shop, beedle, medium
+Skyloft - Beedle 800 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 800 Rupees
+  original item: Life Medal
+  type: skyloft, shop, beedle, medium
+Skyloft - Beedle 1000 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 1000 Rupees
+  original item: Bug Medal
+  type: skyloft, shop, beedle, medium
+Skyloft - Beedle 1200 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 1200 Rupees
+  original item: Progressive Pouch
+  type: skyloft, shop, beedle, expensive
+Skyloft - Beedle 1600 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 1600 Rupees
+  original item: Piece of Heart
+  type: skyloft, shop, beedle, expensive
+
 # Single Gratitude crystals aren't randomized, but still need logic, because some of them need items
 Skyloft - Crystal in Link's Room:
   Need: Can Get Gratitude Crystals
