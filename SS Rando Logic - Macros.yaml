@@ -28,6 +28,18 @@ Digging Mitts:
 Mogma Mitts:
     Progressive Mitts x2
 
+Medium Wallet:
+  Progressive Wallet x1
+
+Big Wallet:
+  Progressive Wallet x2
+
+Giant Wallet:
+  Progressive Wallet x3
+
+Tycoon Wallet:
+  Progressive Wallet x4
+
 Song of the Hero:
     Faron Song of the Hero Part
     & Eldin Song of the Hero Part
@@ -334,3 +346,31 @@ Goddess Cube in Pirate Stronghold:
  
 #Goddess Cube in Lanayru Gorge:
 #    Can Access Lanayru Gorge & Clawshots & Hook Beetle & Whip & Goddess Sword
+
+#Shopsanity Macros
+Can Afford 50 Rupees:
+  Nothing
+
+Can Afford 100 Rupees:
+  Nothing
+
+Can Afford 300 Rupees:
+  Nothing
+
+Can Afford 600 Rupees:
+  Can Farm Rupees & (Extra Wallet x1 | Big Wallet)
+
+Can Afford 800 Rupees:
+  Can Farm Rupees & (Extra Wallet x2 | (Medium Wallet & Extra Wallet x1) | Big Wallet)
+
+Can Afford 1000 Rupees:
+  Can Farm Rupees & (Extra Wallet x3 | (Medium Wallet & Extra Wallet x2 ) | Big Wallet)
+
+Can Afford 1200 Rupees:
+  Can Farm Rupees & (Extra Wallet x3 | (Medium Wallet & Extra Wallet x3) | (Big Wallet & Extra Wallet x1) | Giant Wallet)
+
+Can Afford 1600 Rupees:
+  Can Farm Rupees & ((Big Wallet & Extra Wallet x2) | Giant Wallet)
+
+Can Farm Rupees:
+  Can Retrieve Party Wheel
