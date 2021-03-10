@@ -5,6 +5,7 @@ PROGRESS_ITEMS = [
   "Gust Bellows",
   "Whip",
   "Bow",
+  "Bug Net",
 
   "Water Scale",
   "Fireshield Earrings",
@@ -40,9 +41,11 @@ PROGRESS_ITEMS = [
   ["Progressive Sword"]*6 + \
   ["Progressive Mitts"]*2 + \
   ["Progressive Beetle"]*2 + \
-  ["Progressive Pouch"]*2 + \
+  ["Progressive Pouch"]*5 + \
   ["Key Piece"]*5 + \
-  ["Empty Bottle"]*5
+  ["Empty Bottle"]*5 + \
+  ["Progressive Wallet"] * 4 + \
+  ["Extra Wallet"] * 3
 
 NONPROGRESS_ITEMS = [
   "Wooden Shield",
@@ -56,13 +59,15 @@ NONPROGRESS_ITEMS = [
   "Small Seed Satchel",
   "Small Bomb Bag",
   "Small Quiver",
+
+  "Bug Medal",
   
 ] + \
   ["Heart Medal"]*2 + \
   ["Rupee Medal"]*2 + \
   ["Heart Piece"]*24 + \
-  ["Heart Container"]*6 + \
-  ["Progressive Wallet"]*4
+  ["Heart Container"]*6
+
 
   # not: Wallets are currently not considered progress items since they don't lock anything
 
