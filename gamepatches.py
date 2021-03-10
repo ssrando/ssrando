@@ -1330,6 +1330,7 @@ class GamePatcher:
             rel_arc.set_file_data(f'rels/{file}NP.rel',rel)
             rel_modified = True
         # shopsanity patches
+        # 0x6D8C is shop table offset and each entry is 0x54 bytes long
         if 'shop' not in self.rando.banned_types:
             rel = rel_arc.get_file_data(f'rels/d_a_shop_sampleNP.rel')
             rel = bytearray(rel)
