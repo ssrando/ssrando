@@ -48,7 +48,7 @@ class RandomizerThread(QThread):
         if not dry_run:
             default_ui_progress_callback('repacking game...')
             repack_progress_cb = self.create_ui_progress_callback(self.randomizer.get_total_progress_steps())
-            self.wit_manager.reapack_game(Path(self.output_folder), self.randomizer.seed, use_wbfs=True, progress_cb=repack_progress_cb)
+            # self.wit_manager.reapack_game(Path(self.output_folder), self.randomizer.seed, use_wbfs=True, progress_cb=repack_progress_cb)
 
         default_ui_progress_callback('done')
         self.randomization_complete.emit()

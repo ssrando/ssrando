@@ -120,6 +120,9 @@
 - id: 68
   name: Water Scale
   oarc: GetUroko
+- id: 70
+  name: Bug Medal
+  orac: GetMedal
 - id: 71
   name: Bug Net
   oarc: GetNetA
@@ -292,3 +295,6 @@
 # - id: 193
 #   name: Song of the Hero
 #   oarc: GetHarp
+- id: 199
+  name: Extra Wallet
+  oarc: GetSparePurse

@@ -60,7 +60,7 @@ NONPROGRESS_ITEMS = [
   "Small Bomb Bag",
   "Small Quiver",
 
-  "Bug Medal",
+  "Bug Medal"
   
 ] + \
   ["Heart Medal"]*2 + \
