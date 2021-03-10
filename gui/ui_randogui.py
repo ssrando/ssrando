@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(952, 690)
+        MainWindow.resize(952, 704)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -190,11 +190,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.progression_fetch, 4, 2, 1, 1)
 
-        self.progression_shop = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_shop.setObjectName(u"progression_shop")
-
-        self.gridLayout_3.addWidget(self.progression_shop, 5, 0, 1, 1)
-
         self.progression_beedle = QCheckBox(self.gridLayoutWidget_3)
         self.progression_beedle.setObjectName(u"progression_beedle")
 
@@ -214,6 +209,11 @@ class Ui_MainWindow(object):
         self.progression_expensive.setObjectName(u"progression_expensive")
 
         self.gridLayout_3.addWidget(self.progression_expensive, 5, 4, 1, 1)
+
+        self.option_shopsanity = QComboBox(self.gridLayoutWidget_3)
+        self.option_shopsanity.setObjectName(u"option_shopsanity")
+
+        self.gridLayout_3.addWidget(self.option_shopsanity, 5, 0, 1, 1)
 
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
@@ -306,7 +306,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(10, 650, 931, 31))
+        self.horizontalLayoutWidget.setGeometry(QRect(10, 660, 931, 31))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -337,10 +337,10 @@ class Ui_MainWindow(object):
         self.option_description = QLabel(self.centralwidget)
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
-        self.option_description.setGeometry(QRect(10, 590, 931, 20))
+        self.option_description.setGeometry(QRect(10, 590, 931, 31))
         self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
-        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 620, 931, 27))
+        self.horizontalLayoutWidget_2.setGeometry(QRect(10, 630, 931, 27))
         self.horizontalLayout_3 = QHBoxLayout(self.horizontalLayoutWidget_2)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -480,7 +480,6 @@ class Ui_MainWindow(object):
         self.progression_silent_realm.setText(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
         self.progression_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
         self.progression_fetch.setText(QCoreApplication.translate("MainWindow", u"Fetch Quests", None))
-        self.progression_shop.setText(QCoreApplication.translate("MainWindow", u"Shops", None))
         self.progression_beedle.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
         self.progression_cheap.setText(QCoreApplication.translate("MainWindow", u"Cheap Purchases", None))
         self.progression_medium.setText(QCoreApplication.translate("MainWindow", u"Medium Cost Purchases", None))

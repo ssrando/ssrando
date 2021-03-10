@@ -102,7 +102,6 @@ class RandoGUI(QMainWindow):
             "scrapper": "Enables progression items to appear as rewards for Scrapper Quests",
             "peatrice": "Enables a progression item to appear as the reward for completing the Peatrice side quest",
 
-            "shop": "Enables progression items to be sold in shops",
             "beedle": "Enables progression items to be sold in Beedle's shop",
             "cheap": "Enables progression items to be sold for 300 rupees or less. Applies to all shops where "
                      "progression items can appear.",

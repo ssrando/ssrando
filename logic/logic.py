@@ -9,7 +9,7 @@ from pathlib import Path
 import os
 
 from .item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS
-from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
+from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, SHOP_CHECKS, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
 from .logic_expression import LogicExpression, parse_logic_expression
 
 # TODO, path for logic files will probably be params
@@ -147,6 +147,11 @@ class Logic:
       item_name = item['original item']
       if item_name == 'Gratitude Crystal':
         self.set_prerandomization_item_location(location_name, item_name)
+    if self.rando.options['shop-mode'] != 'Randomized':
+      for shop_check in SHOP_CHECKS:
+        if self.rando.options['shop-mode'] == 'Vanilla':
+          self.set_prerandomization_item_location(shop_check, self.item_locations[shop_check]['original item'])
+        self.race_mode_banned_locations.append(shop_check)
     self.randomize_dungeon_items()
     self.randomize_progression_items()
     self.randomize_nonprogress_items()
@@ -576,7 +581,10 @@ class Logic:
       # if self.is_dungeon_item(item_name) and not self.rando.options.get("progression_dungeons"):
       #   continue
       if item_name not in self.all_progress_items:
-        if not (item_name.startswith("Triforce Chart ") or item_name.startswith("Treasure Chart")):
+        # we can always assume that if wallets are not progress items than they are not needed
+        # since they are only added to the progress pool if shops are not vanilla
+        # Progressive Wallets should always be progress items
+        if not (item_name.startswith("Extra Wallet")):
           raise Exception("Item %s opens up progress locations but is not in the list of all progress items." % item_name)
       if item_name in all_progress_items_filtered:
         # Avoid duplicates

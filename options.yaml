@@ -99,9 +99,8 @@
   - scrapper
   - peatrice
   - goddess
-  - shop
   - beedle
-  - cheam
+  - cheap
   - medium
   - expensive
   - faron goddess
@@ -179,3 +178,16 @@
   help: Enables progression items to appear in all Batreaux rewards up to an including
     the specified amount.
   ui: option_max_batreaux_reward
+- name: Shop Mode
+  command: shop-mode
+  type: singlechoice
+  default: Randomized
+  choices:
+    - Vanilla
+    - Always Junk
+    - Randomized
+  bits: 2
+  help: Controls how shops are randomized. If vanilla, shops will always contain their vanilla
+    items. Always Junk will randomize the shops, but will not place progression items in shops.
+    Randmomized will apply standard randomization to shops.
+  ui: option_shopsanity

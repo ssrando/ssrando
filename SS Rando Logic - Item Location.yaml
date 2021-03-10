@@ -259,61 +259,61 @@ Skyloft - Batreaux 80 Crystals:
 Skyloft - Beedle 50 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 50 Rupees
   original item: Bug Net
-  type: skyloft, shop, beedle, cheap
+  type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/2525
 Skyloft - Beedle First 100 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 100 Rupees
   original item: Extra Wallet
-  type: skyloft, shop, beedle, cheap
+  type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/24
 Skyloft - Beedle Second 100 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 100 Rupees
   original item: Extra Wallet
-  type: skyloft, shop, beedle, cheap
+  type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/17
 Skyloft - Beedle Third 100 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 100 Rupees
   original item: Extra Wallet
-  type: skyloft, shop, beedle, cheap
+  type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/18
 Skyloft - Beedle 300 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 300 Rupees
   original item: Progressive Pouch
-  type: skyloft, shop, beedle, cheap
+  type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/20
 Skyloft - Beedle 600 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 600 Rupees
   original item: Progressive Pouch
-  type: skyloft, shop, beedle, medium
+  type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/21
 Skyloft - Beedle 800 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 800 Rupees
   original item: Life Medal
-  type: skyloft, shop, beedle, medium
+  type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/25
 Skyloft - Beedle 1000 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 1000 Rupees
   original item: Bug Medal
-  type: skyloft, shop, beedle, medium
+  type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/26
 Skyloft - Beedle 1200 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 1200 Rupees
   original item: Progressive Pouch
-  type: skyloft, shop, beedle, expensive
+  type: skyloft, beedle, expensive
   Paths:
     - ShpSmpl/22
 Skyloft - Beedle 1600 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 1600 Rupees
-  original item: Piece of Heart
-  type: skyloft, shop, beedle, expensive
+  original item: Heart Piece
+  type: skyloft, beedle, expensive
   Paths:
     - ShpSmpl/23
 

@@ -44,8 +44,8 @@ PROGRESS_ITEMS = [
   ["Progressive Pouch"]*5 + \
   ["Key Piece"]*5 + \
   ["Empty Bottle"]*5 + \
-  ["Progressive Wallet"] * 4 + \
-  ["Extra Wallet"] * 3
+  ["Progressive Wallet"]*4 + \
+  ["Extra Wallet"]*3
 
 NONPROGRESS_ITEMS = [
   "Wooden Shield",
@@ -53,7 +53,6 @@ NONPROGRESS_ITEMS = [
 
   "Cursed Medal",
   "Treasure Medal",
-  "Life Medal",
   "Potion Medal",
 
   "Small Seed Satchel",
@@ -61,15 +60,12 @@ NONPROGRESS_ITEMS = [
   "Small Quiver",
 
   "Bug Medal"
-  
 ] + \
   ["Heart Medal"]*2 + \
   ["Rupee Medal"]*2 + \
   ["Heart Piece"]*24 + \
-  ["Heart Container"]*6
-
-
-  # not: Wallets are currently not considered progress items since they don't lock anything
+  ["Heart Container"]*6 + \
+  ["Life Medal"]*2
 
 CONSUMABLE_ITEMS = \
    4 * ["Blue Rupee"] + \

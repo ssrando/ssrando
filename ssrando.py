@@ -9,6 +9,7 @@ import json
 
 from logic.logic import Logic
 import logic.constants as constants
+import logic.item_types as item_types
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
