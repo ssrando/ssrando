@@ -102,6 +102,15 @@ class RandoGUI(QMainWindow):
             "scrapper": "Enables progression items to appear as rewards for Scrapper Quests",
             "peatrice": "Enables a progression item to appear as the reward for completing the Peatrice side quest",
 
+            "shop": "Enables progression items to be sold in shops",
+            "beedle": "Enables progression items to be sold in Beedle's shop",
+            "cheap": "Enables progression items to be sold for 300 rupees or less. Applies to all shops where "
+                     "progression items can appear.",
+            "medium": "Enables progression items to be sold for between 300 and 1000 rupees. Applies to all "
+                      "shops where progression items can appear",
+            "expensive": "Enables progression items to be sold for more than 1000 rupees. Appleis to all shops"
+                         "where progression items can appear",
+
             "goddess": "Enables progression items to appear as items in Goddess Chests",
             "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
                              "Faron Woods and Deep Woods",

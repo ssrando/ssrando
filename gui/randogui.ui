@@ -115,6 +115,20 @@
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="4">
+       <widget class="QCheckBox" name="progression_miscellaneous">
+        <property name="text">
+         <string>Miscellaneous</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QCheckBox" name="progression_long">
+        <property name="text">
+         <string>Long Quests</string>
+        </property>
+       </widget>
+      </item>
       <item row="4" column="0">
        <widget class="QCheckBox" name="progression_short">
         <property name="text">
@@ -129,24 +143,10 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="4">
-       <widget class="QCheckBox" name="progression_miscellaneous">
-        <property name="text">
-         <string>Miscellaneous</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="1">
        <widget class="QCheckBox" name="progression_digging">
         <property name="text">
          <string>Digging Spots</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QCheckBox" name="progression_long">
-        <property name="text">
-         <string>Long Quests</string>
         </property>
        </widget>
       </item>
@@ -157,17 +157,10 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QCheckBox" name="progression_minigame">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="progression_spiral_charge">
         <property name="text">
-         <string>Minigames</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QCheckBox" name="progression_bombable">
-        <property name="text">
-         <string>Bombable Walls</string>
+         <string>Spiral Charge Chests</string>
         </property>
        </widget>
       </item>
@@ -178,17 +171,17 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QCheckBox" name="progression_spiral_charge">
+      <item row="2" column="2">
+       <widget class="QCheckBox" name="progression_bombable">
         <property name="text">
-         <string>Spiral Charge Chests</string>
+         <string>Bombable Walls</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
-       <widget class="QCheckBox" name="progression_combat">
+      <item row="3" column="1">
+       <widget class="QCheckBox" name="progression_minigame">
         <property name="text">
-         <string>Combat Rewards</string>
+         <string>Minigames</string>
         </property>
        </widget>
       </item>
@@ -206,6 +199,41 @@
         </item>
        </layout>
       </item>
+      <item row="2" column="3">
+       <widget class="QCheckBox" name="progression_combat">
+        <property name="text">
+         <string>Combat Rewards</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="progression_mini_dungeon">
+        <property name="text">
+         <string>Mini Dungeons</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QCheckBox" name="progression_freestanding">
+        <property name="text">
+         <string>Freestanding Items</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QCheckBox" name="progression_crystal_quest">
+        <property name="text">
+         <string>Crystal Quests</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QCheckBox" name="progression_song">
+        <property name="text">
+         <string>Songs</string>
+        </property>
+       </widget>
+      </item>
       <item row="4" column="4">
        <widget class="QCheckBox" name="progression_scrapper">
         <property name="text">
@@ -220,31 +248,10 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
-       <widget class="QCheckBox" name="progression_freestanding">
+      <item row="3" column="4">
+       <widget class="QCheckBox" name="progression_peatrice">
         <property name="text">
-         <string>Freestanding Items</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="4">
-       <widget class="QCheckBox" name="progression_song">
-        <property name="text">
-         <string>Songs</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QCheckBox" name="progression_mini_dungeon">
-        <property name="text">
-         <string>Mini Dungeons</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="3">
-       <widget class="QCheckBox" name="progression_crystal_quest">
-        <property name="text">
-         <string>Crystal Quests</string>
+         <string>Peatrice</string>
         </property>
        </widget>
       </item>
@@ -255,10 +262,38 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="4">
-       <widget class="QCheckBox" name="progression_peatrice">
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="progression_shop">
         <property name="text">
-         <string>Peatrice</string>
+         <string>Shops</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QCheckBox" name="progression_beedle">
+        <property name="text">
+         <string>Beedle's Shop</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QCheckBox" name="progression_cheap">
+        <property name="text">
+         <string>Cheap Purchases</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QCheckBox" name="progression_medium">
+        <property name="text">
+         <string>Medium Cost Purchases</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="4">
+       <widget class="QCheckBox" name="progression_expensive">
+        <property name="text">
+         <string>Expensive Purchases</string>
         </property>
        </widget>
       </item>

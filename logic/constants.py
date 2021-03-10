@@ -16,6 +16,7 @@ DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict([v, k] for k, v in DUNGEON_NAME
 
 ALL_TYPES = ['skyloft', 'sky', 'thunderhead', 'faron', 'eldin', 'lanayru', 'dungeon', 'mini dungeon',  'free gift',
              'freestanding', 'miscellaneous', 'silent realm', 'digging', 'bombable', 'combat', 'song', 'spiral charge',
-             'minigame', 'crystal', 'short', 'long', 'fetch', 'crystal quest', 'scrapper', 'peatrice',
+             'minigame', 'crystal', 'short', 'long', 'fetch', 'crystal quest', 'scrapper', 'peatrice', 'shop', 'beedle',
+             'cheap', 'medium', 'expensive',
              'goddess', 'faron goddess', 'eldin goddess', 'lanayru goddess', 'floria goddess', 'summit goddess',
              'sand sea goddess']
