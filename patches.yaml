@@ -1831,7 +1831,6 @@ F210: # Mogma Turf
     objtype: OBJ
     object:
       trigstoryfid: 909 # Whitesword
-    objtype: OBJ     
   - name: Cobal
     type: objmove
     id: 0xFC70
