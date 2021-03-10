@@ -1329,6 +1329,13 @@ class GamePatcher:
                     rel[code_pos:code_pos+len(actual_code)] = patched_code
             rel_arc.set_file_data(f'rels/{file}NP.rel',rel)
             rel_modified = True
+        # shopsanity patches
+        if 'shop' not in self.rando.banned_types:
+            rel = rel_arc.get_file_data(f'rels/d_a_shop_sampleNP.rel')
+            rel = bytearray(rel)
+            print(rel[0])
+            rel_arc.set_file_data(f'rels/d_a_shop_sampleNP.rel', rel)
+            rel_modified = True
         if rel_modified:
             rel_data = rel_arc.to_buffer()
             write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'files' / 'rels.arc', rel_data)
