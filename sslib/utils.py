@@ -8,6 +8,11 @@ def write_u8(data, value, pos=None):
         data.seek(pos)
     data.write(struct.pack('>B', value))
 
+def write_u16(data, value, pos=None):
+    if pos != None:
+        data.seek(pos)
+    data.write(struct.pack('>H', value))
+
 def write_u24(data, value, pos=None):
     if pos != None:
         data.seek(pos)
@@ -19,6 +24,22 @@ def write_u32(data, value, pos=None):
     if pos != None:
         data.seek(pos)
     data.write(struct.pack('>I', value))
+
+def write_str(data, new_string, max_length, pos=None):
+    # Writes a fixed-length string.
+    # Although it is fixed-length, it still must have a null character terminating it, so the real max length is one less than the passed max_length argument.
+    
+    str_len = len(new_string)
+    if str_len >= max_length:
+        raise Exception("String \"%s\" is too long (max length including null byte: 0x%X)" % (new_string, max_length))
+    
+    padding_length = max_length - str_len
+    null_padding = b"\x00"*padding_length
+    new_value = new_string.encode("shift_jis") + null_padding
+    
+    if not pos is None:
+        data.seek(pos)
+    data.write(new_value)
 
 def read_u8(data, pos=None):
     if pos != None:

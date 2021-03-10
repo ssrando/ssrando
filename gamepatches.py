@@ -12,7 +12,7 @@ import re
 
 import nlzss11
 from sslib import AllPatcher, U8File
-from sslib.utils import write_bytes_create_dirs, encodeBytes
+from sslib.utils import write_bytes_create_dirs, encodeBytes, write_str, write_u16
 from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 
@@ -520,10 +520,13 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
     stageoarcs = defaultdict(set)
     # # eventfile: (line, itemid)
     eventpatches = defaultdict(list)
+    # shopindex: (itemid, arcname, modelname)
+    shoppatches = {}
 
     stage_re = re.compile(r'stage/(?P<stage>[^/]+)/r(?P<room>[0-9]+)/l(?P<layer>[0-9]+)/(?P<objname>[a-zA-Z]+)(/(?P<objid>[^/]+))?')
     event_re = re.compile(r'event/(?P<eventfile>[^/]+)/(?P<eventid>[^/]+)')
     oarc_re = re.compile(r'oarc/(?P<stage>[^/]+)/l(?P<layer>[^/]+)')
+    shop_smpl_re = re.compile(r'ShpSmpl/(?P<index>[0-9]+)')
 
     for checkname, itemname in filled_checks.items():
         # single gratitude crystals aren't randomized
@@ -535,6 +538,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
             stage_match = stage_re.match(path)
             event_match = event_re.match(path)
             oarc_match = oarc_re.match(path)
+            shop_smpl_match = shop_smpl_re.match(path)
             if stage_match:
                 stage = stage_match.group('stage')
                 room = int(stage_match.group('room'))
@@ -563,9 +567,34 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
                             stageoarcs[(stage, layer)].add(o)
                     else:
                         stageoarcs[(stage, layer)].add(oarc)
+            elif shop_smpl_match:
+                index = int(shop_smpl_match.group('index'))
+                # TODO: super fix this, add all models/arcs to items.yaml
+                arcname = item.get('getarcname', None)
+                modelname = item.get('getmodelname', None)
+                oarc = item['oarc']
+                if oarc:
+                    if isinstance(oarc, list):
+                        for o in oarc:
+                            stageoarcs[("F002r", 1)].add(o)
+                            # TODO fix
+                            if o.startswith('Get'):
+                                arcname = o
+                    elif not oarc is None:
+                        stageoarcs[("F002r", 1)].add(oarc)
+                        arcname = oarc
+                if arcname is None and not modelname is None:
+                    arcname = modelname
+                if modelname is None and not arcname is None:
+                    modelname = arcname
+                if modelname is None and arcname is None:
+                    # I'm just not caring at this point
+                    modelname = "GetRupee"
+                    arcname = "GetRupee"
+                shoppatches[index] = (item['id'], modelname, arcname)
             else:
                 print(f'ERROR: {path} didn\'t match any regex!')
-    return stagepatchv2, stageoarcs, eventpatches
+    return stagepatchv2, stageoarcs, eventpatches, shoppatches
 
 def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Optional[OrderedDict]:
     id = objdef.get('id',None)
@@ -621,7 +650,7 @@ class GamePatcher:
         self.patcher.set_event_patch(self.flow_patch)
         self.patcher.set_event_text_patch(self.text_patch)
         self.patcher.progress_callback = self.rando.progress_callback
-        self.patcher.do_patch()
+        # self.patcher.do_patch()
 
         self.do_dol_patch()
         self.do_rel_patch()
@@ -655,7 +684,7 @@ class GamePatcher:
         self.patches['global']['startstoryflags'] = filtered_storyflags
 
         # patches from randomizing items
-        self.rando_stagepatches, self.stageoarcs, self.rando_eventpatches = \
+        self.rando_stagepatches, self.stageoarcs, self.rando_eventpatches, self.shoppatches = \
             get_patches_from_location_item_list(self.rando.logic.item_locations, self.rando.logic.done_item_locations)
     
     def add_entrance_rando_patches(self):
@@ -1330,12 +1359,21 @@ class GamePatcher:
             rel_arc.set_file_data(f'rels/{file}NP.rel',rel)
             rel_modified = True
         # shopsanity patches
+        # TODO: only do this if shops aren't vanilla
         # 0x6D8C is shop table offset and each entry is 0x54 bytes long
-        if 'shop' not in self.rando.banned_types:
+        if True:
             rel = rel_arc.get_file_data(f'rels/d_a_shop_sampleNP.rel')
-            rel = bytearray(rel)
-            print(rel[0])
-            rel_arc.set_file_data(f'rels/d_a_shop_sampleNP.rel', rel)
+            rel_bio = BytesIO(rel)
+            SHOP_LIST_OFFSET = 0x6D8C
+            ENTRY_SIZE = 0x54
+            for shopindex, (itemid, arcname, modelname) in self.shoppatches.items():
+                # item id
+                current_shop_entry_offset = SHOP_LIST_OFFSET + ENTRY_SIZE * shopindex
+                write_u16(rel_bio, itemid, current_shop_entry_offset + 0xC)
+                write_str(rel_bio, arcname, 30, current_shop_entry_offset + 0x16)
+                # extra 2 bytes are probably padding
+                write_str(rel_bio, modelname, 32, current_shop_entry_offset + 0x34)
+            rel_arc.set_file_data(f'rels/d_a_shop_sampleNP.rel', rel_bio.getbuffer())
             rel_modified = True
         if rel_modified:
             rel_data = rel_arc.to_buffer()

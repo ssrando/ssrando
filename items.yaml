@@ -5,12 +5,18 @@
 - id: 2
   name: Green Rupee
   oarc: null
+  getarcname: GetRupee
+  getmodelname: GetRupee
 - id: 3
   name: Blue Rupee
   oarc: null
+  getarcname: GetRupee
+  getmodelname: GetRupee
 - id: 4
   name: Red Rupee
   oarc: null
+  getarcname: GetRupee
+  getmodelname: GetRupee
 - id: 6
   name: Heart
   oarc: null
@@ -62,6 +68,8 @@
 - id: 28
   name: Key Piece
   oarc: GetKeyKakera
+  getarcname: GetKeyKakera
+  getmodelname: GetKeyKakera
 - id: 29
   name: SW Boss Key
   oarc: GetKeyBossA
@@ -77,15 +85,23 @@
 - id: 32
   name: Silver Rupee
   oarc: null
+  getarcname: GetRupee
+  getmodelname: GetRupee
 - id: 33
   name: Gold Rupee
   oarc: null
+  getarcname: GetRupee
+  getmodelname: GetRupee
 - id: 34
   name: Rupoor
   oarc: null
+  getarcname: GetRupee
+  getmodelname: GetRupee
 - id: 35
   name: 5 Gratitude Crystals
   oarc: null
+  getarcname: GetRupee
+  getmodelname: GetRupee
 - id: 40
   name: 5 Bombs
   oarc: null
@@ -112,17 +128,19 @@
   name: 10 Deku Seeds
   oarc: null
 - id: 63
-  name: Semi Rare Treasure # actually semi rare treasure
+  name: Semi Rare Treasure
   oarc: null
+  getarcname: GetSozaiL
 - id: 64
-  name: Rare Treasure # actually rare treasure
+  name: Rare Treasure
   oarc: null
+  getarcname: GetSozaiP
 - id: 68
   name: Water Scale
   oarc: GetUroko
 - id: 70
   name: Bug Medal
-  orac: GetMedal
+  oarc: GetMedal
 - id: 71
   name: Bug Net
   oarc: GetNetA
@@ -152,6 +170,7 @@
 - id: 94
   name: Heart Piece
   oarc: null
+  getarcname: GetHeatKakera
 - id: 98
   name: Sea Chart
   oarc: GetMapSea
@@ -250,24 +269,31 @@
 - id: 171
   name: Monster Horn
   oarc: null
+  getarcname: GetSozaiL
 - id: 173
   name: Evil Crystal
   oarc: null
+  getarcname: GetSozaiM
 - id: 175
   name: Golden Skull
   oarc: null
+  getarcname: GetSozaiO
 - id: 176
   name: Goddess Plume
   oarc: null
+  getarcname: GetSozaiP
 - id: 177
   name: Emerald Tablet
-  oarc: GetSekibanMapA # TODO check, irrelevant for now
+  oarc: GetSekibanMapA
+  getmodelname: SekibanMapA
 - id: 178
   name: Ruby Tablet
-  oarc: GetSekibanMapB # TODO check, irrelevant for now
+  oarc: GetSekibanMapB
+  getmodelname: SekibanMapB
 - id: 179
   name: Amber Tablet
-  oarc: GetSekibanMapC # TODO check, irrelevant for now
+  oarc: GetSekibanMapC
+  getmodelname: SekibanMapC
 - id: 180
   name: Stone of Trials
   oarc: GetSirenKey
