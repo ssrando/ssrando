@@ -556,11 +556,6 @@
   - name: Can't buy Pouch text
     type: textadd
     text: "You need an \x0E\x00\x03\x02\x05Adventure Pouch\x0E\x00\x03\x02\uFFFF to buy\nthis!"
-  - name: go to Check for Pouch
-    type: flowpatch
-    index: 16
-    flow:
-      next: Check for Pouch
   - name: Show can't buy Pouch text
     type: flowadd
     flow:

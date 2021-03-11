@@ -628,6 +628,7 @@ class GamePatcher:
     def do_all_gamepatches(self):
         self.load_base_patches()
         self.add_entrance_rando_patches()
+        self.shopsanity_patches()
         self.do_build_arc_cache()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
@@ -793,6 +794,16 @@ class GamePatcher:
                     'story_flag1': storyflag
                 }
             })
+
+    def shopsanity_patches(self):
+        self.eventpatches['105-Terry'].append({
+            'name': 'go to Check for Pouch',
+            'type': 'flowpatch',
+            'index': 16,
+            'flow': {
+                'next': 'Check for Pouch' if self.rando.options['shop-mode'] == 'Vanilla' else 43
+            }
+        })
 
     def do_build_arc_cache(self):
         self.rando.progress_callback('building arc cache...')

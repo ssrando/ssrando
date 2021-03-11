@@ -61,6 +61,8 @@
 - id: 21
   name: Spiral Charge
   oarc: GetBirdStatue
+  getarcname: GetBirdStatue
+  getmodelname: GetBirdStatue
 - id: 25
   name: AC Boss Key
   oarc: GetKeyBoss2A
@@ -196,8 +198,8 @@
 - id: 94
   name: Heart Piece
   oarc: null
-  getarcname: GetHeatKakera
-  getmodelname: GetHeatKakera
+  getarcname: GetHeartKakera
+  getmodelname: GetHeartKakera
 - id: 98
   name: Sea Chart
   oarc: GetMapSea
@@ -257,21 +259,31 @@
 - id: 114
   name: Life Medal
   oarc: GetMedal
+  getarcname: GetMedal
+  getmodelname: GetMedalLife
 - id: 116
   name: Wooden Shield
   oarc: GetShieldWood
+  getarcname: GetShieldWood
+  getmodelname: GetShieldWood
 - id: 125
   name: Hylian Shield
   oarc: GetShieldHylia
+  getarcname: GetShieldHylia
+  getmodelname: GetShieldHylia
 - id: 126
   name: Revitalizing Potion
   oarc: GetBottleRepair
 - id: 128
   name: Small Seed Satchel
   oarc: GetSpareSeedA # TODO upgrades?
+  getarcname: GetSpareSeedA
+  getmodelname: GetSpareSeedA
 - id: 131
   name: Small Quiver
   oarc: GetSpareQuiverA # TODO upgrades?
+  getarcname: GetSpareQuiverA
+  getmodelname: GetSpareQuiverA
 - id: 134
   name: Small Bomb Bag
   oarc: GetSpareBombBagA # TODO upgrades?
@@ -287,6 +299,8 @@
 - id: 153
   name: Empty Bottle
   oarc: null
+  getarcname: GetBottleEmpty
+  getmodelname: GetBottleEmpty
 - id: 158
   name: Cawlin's Letter
   oarc: GetKobunALetter
@@ -312,6 +326,8 @@
 - id: 165
   name: Eldin Ore
   oarc: null # Is in objectPack
+  getarcname: GetSozaiE
+  getmodelname: GetSozaiE
 - id: 168
   name: Dusk Relic
   oarc: GetSozaiH
