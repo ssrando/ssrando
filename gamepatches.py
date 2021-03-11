@@ -577,21 +577,11 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
                     if isinstance(oarc, list):
                         for o in oarc:
                             stageoarcs[("F002r", 1)].add(o)
-                            # TODO fix
-                            if o.startswith('Get'):
-                                arcname = o
-                    elif not oarc is None:
+                    else:
                         stageoarcs[("F002r", 1)].add(oarc)
-                        arcname = oarc
-                if arcname is None and not modelname is None:
-                    arcname = modelname
-                if modelname is None and not arcname is None:
-                    modelname = arcname
-                if modelname is None and arcname is None:
-                    # I'm just not caring at this point
-                    modelname = "GetRupee"
-                    arcname = "GetRupee"
-                shoppatches[index] = (item['id'], modelname, arcname)
+                if modelname is None or arcname is None:
+                    raise Exception(f'no modelnames for {item}')
+                shoppatches[index] = (item['id'], arcname, modelname)
             else:
                 print(f'ERROR: {path} didn\'t match any regex!')
     return stagepatchv2, stageoarcs, eventpatches, shoppatches
@@ -650,7 +640,7 @@ class GamePatcher:
         self.patcher.set_event_patch(self.flow_patch)
         self.patcher.set_event_text_patch(self.text_patch)
         self.patcher.progress_callback = self.rando.progress_callback
-        # self.patcher.do_patch()
+        self.patcher.do_patch()
 
         self.do_dol_patch()
         self.do_rel_patch()
@@ -1371,7 +1361,7 @@ class GamePatcher:
                 current_shop_entry_offset = SHOP_LIST_OFFSET + ENTRY_SIZE * shopindex
                 write_u16(rel_bio, itemid, current_shop_entry_offset + 0xC)
                 write_str(rel_bio, arcname, 30, current_shop_entry_offset + 0x16)
-                # extra 2 bytes are probably padding
+                # extra 2 bytes are probably padding, zero them anyways
                 write_str(rel_bio, modelname, 32, current_shop_entry_offset + 0x34)
             rel_arc.set_file_data(f'rels/d_a_shop_sampleNP.rel', rel_bio.getbuffer())
             rel_modified = True

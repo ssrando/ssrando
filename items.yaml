@@ -26,6 +26,8 @@
 - id: 10
   name: Progressive Sword
   oarc: GetSwordA
+  getarcname: GetSwordA
+  getmodelname: GetSwordA
 # - id: 11
 #   name: Goddess Sword
 #   oarc: null
@@ -44,12 +46,18 @@
 - id: 16
   name: Goddess Harp
   oarc: GetHarp
+  getarcname: GetHarp
+  getmodelname: GetHarp
 - id: 19
   name: Bow
   oarc: GetBowA
+  getarcname: GetBowA
+  getmodelname: GetBowA
 - id: 20
   name: Clawshots
   oarc: GetHookShot
+  getarcname: GetHookShot
+  getmodelname: GetHookShot
 - id: 21
   name: Spiral Charge
   oarc: GetBirdStatue
@@ -69,7 +77,7 @@
   name: Key Piece
   oarc: GetKeyKakera
   getarcname: GetKeyKakera
-  getmodelname: GetKeyKakera
+  getmodelname: GetKeyKakeraA
 - id: 29
   name: SW Boss Key
   oarc: GetKeyBossA
@@ -100,8 +108,8 @@
 - id: 35
   name: 5 Gratitude Crystals
   oarc: null
-  getarcname: GetRupee
-  getmodelname: GetRupee
+  getarcname: GetGenki
+  getmodelname: GetGenki
 - id: 40
   name: 5 Bombs
   oarc: null
@@ -111,6 +119,8 @@
 - id: 49
   name: Gust Bellows
   oarc: GetVacuum
+  getarcname: GetVacuum
+  getmodelname: GetVacuum
 - id: 50
   name: Map
   oarc: null
@@ -118,12 +128,18 @@
 - id: 52
   name: Slingshot
   oarc: GetPachinkoA
+  getarcname: GetPachinkoA
+  getmodelname: GetPachinkoA
 - id: 53
   name: Progressive Beetle
   oarc: GetBeetleA
+  getarcname: GetBeetleA
+  getmodelname: GetBeetleA
 - id: 56
   name: Progressive Mitts
   oarc: GetMoleGloveA
+  getarcname: GetMoleGloveA
+  getmodelname: GetMoleGloveA
 - id: 60
   name: 10 Deku Seeds
   oarc: null
@@ -131,19 +147,27 @@
   name: Semi Rare Treasure
   oarc: null
   getarcname: GetSozaiL
+  getmodelname: GetSozaiL
 - id: 64
   name: Rare Treasure
   oarc: null
   getarcname: GetSozaiP
+  getmodelname: GetSozaiP
 - id: 68
   name: Water Scale
   oarc: GetUroko
+  getarcname: GetUroko
+  getmodelname: GetUroko
 - id: 70
   name: Bug Medal
   oarc: GetMedal
+  getarcname: GetMedal
+  getmodelname: GetMedalReturn
 - id: 71
   name: Bug Net
   oarc: GetNetA
+  getarcname: GetNetA
+  getmodelname: GetNetA
 # - id: 75
 #   name: Hook Beetle
 #   oarc: GetBeetleB
@@ -167,10 +191,13 @@
   oarc:
   - GetHeartUtuwa
   - PutHeartUtuwa
+  getarcname: GetHeartUtuwa
+  getmodelname: GetHeartUtuwa
 - id: 94
   name: Heart Piece
   oarc: null
   getarcname: GetHeatKakera
+  getmodelname: GetHeatKakera
 - id: 98
   name: Sea Chart
   oarc: GetMapSea
@@ -180,24 +207,36 @@
 - id: 100
   name: Heart Medal
   oarc: GetMedal
+  getarcname: GetMedal
+  getmodelname: GetMedalHeart
 - id: 101
   name: Rupee Medal
   oarc: GetMedal
+  getarcname: GetMedal
+  getmodelname: GetMedalLucky
 - id: 102
   name: Treasure Medal
   oarc: GetMedal
+  getarcname: GetMedal
+  getmodelname: GetMedalHunter # TODO double check
 - id: 103
   name: Potion Medal
   oarc: GetMedal
+  getarcname: GetMedal
+  getmodelname: GetMedalDurable
 - id: 104
   name: Cursed Medal
   oarc: GetMedal
+  getarcname: GetMedal
+  getmodelname: GetMedalDemon
 - id: 105
   name: Scatershot
   oarc: GetPachinkoB
 - id: 108
   name: Progressive Wallet # Medium Wallet
   oarc: GetPurseB
+  getarcname: GetPurseB
+  getmodelname: GetPurseB
 # - id: 109
 #   name: Big Wallet
 #   oarc: GetPurseC
@@ -210,6 +249,8 @@
 - id: 112
   name: Progressive Pouch
   oarc: GetPouchA
+  getarcname: GetPouchA
+  getmodelname: GetPorchA # yea, that's a typo in the game
 #- id: 113
 #  name: Pouch Expansion
 #  oarc: GetPouchB
@@ -249,39 +290,53 @@
 - id: 158
   name: Cawlin's Letter
   oarc: GetKobunALetter
+  getarcname: GetKobunALetter
+  getmodelname: GetKobunALetter
 - id: 159
   name: Horned Colossus Beetle
   oarc: GetTerryCage
+  getarcname: GetTerryCage
+  getmodelname: GetTerryCage
 - id: 160
   name: Baby Rattle
   oarc:
   - GetGaragara
   - PutGaragara
+  getarcname: GetGaragara
+  getmodelname: GetGaragara
 - id: 163
   name: Tumbleweed
   oarc: GetSozaiC
+  getarcname: GetSozaiC
+  getmodelname: GetSozaiC
 - id: 165
   name: Eldin Ore
   oarc: null # Is in objectPack
 - id: 168
   name: Dusk Relic
   oarc: GetSozaiH
+  getarcname: GetSozaiH
+  getmodelname: GetSozaiH
 - id: 171
   name: Monster Horn
   oarc: null
   getarcname: GetSozaiL
+  getmodelname: GetSozaiL
 - id: 173
   name: Evil Crystal
   oarc: null
   getarcname: GetSozaiM
+  getmodelname: GetSozaiM
 - id: 175
   name: Golden Skull
   oarc: null
   getarcname: GetSozaiO
+  getmodelname: GetSozaiO
 - id: 176
   name: Goddess Plume
   oarc: null
   getarcname: GetSozaiP
+  getmodelname: GetSozaiP
 - id: 177
   name: Emerald Tablet
   oarc: GetSekibanMapA
@@ -297,30 +352,48 @@
 - id: 180
   name: Stone of Trials
   oarc: GetSirenKey
+  getarcname: GetSirenKey
+  getmodelname: GetSirenKey
 - id: 186
   name: Ballad of the Goddess
   oarc: GetHarp
+  getarcname: GetHarp
+  getmodelname: GetHarp
 - id: 187
   name: Farore's Courage
   oarc: GetHarp
+  getarcname: GetHarp
+  getmodelname: GetHarp
 - id: 188
   name: Nayru's Wisdom
   oarc: GetHarp
+  getarcname: GetHarp
+  getmodelname: GetHarp
 - id: 189
   name: Din's Power
   oarc: GetHarp
+  getarcname: GetHarp
+  getmodelname: GetHarp
 - id: 190
   name: Faron Song of the Hero Part
   oarc: GetHarp
+  getarcname: GetHarp
+  getmodelname: GetHarp
 - id: 191
   name: Eldin Song of the Hero Part
   oarc: GetHarp
+  getarcname: GetHarp
+  getmodelname: GetHarp
 - id: 192
   name: Lanayru Song of the Hero Part
   oarc: GetHarp
+  getarcname: GetHarp
+  getmodelname: GetHarp
 # - id: 193
 #   name: Song of the Hero
 #   oarc: GetHarp
 - id: 199
   name: Extra Wallet
   oarc: GetSparePurse
+  getarcname: GetSparePurse
+  getmodelname: GetSparePurse
