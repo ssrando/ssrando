@@ -261,7 +261,7 @@ Skyloft - Beedle 50 Rupee Item:
   original item: Bug Net
   type: skyloft, beedle, cheap
   Paths:
-    - ShpSmpl/2525
+    - ShpSmpl/25
 Skyloft - Beedle First 100 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 100 Rupees
   original item: Extra Wallet
@@ -297,13 +297,13 @@ Skyloft - Beedle 800 Rupee Item:
   original item: Life Medal
   type: skyloft, beedle, medium
   Paths:
-    - ShpSmpl/25
+    - ShpSmpl/26
 Skyloft - Beedle 1000 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 1000 Rupees
   original item: Bug Medal
   type: skyloft, beedle, medium
   Paths:
-    - ShpSmpl/26
+    - ShpSmpl/27
 Skyloft - Beedle 1200 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 1200 Rupees
   original item: Progressive Pouch
