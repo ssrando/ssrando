@@ -118,6 +118,8 @@
 - id: 41
   name: 10 Bombs
   oarc: null
+  getarcname: GetBombSet
+  getmodelname: GetBombSet
 - id: 49
   name: Gust Bellows
   oarc: GetVacuum
@@ -145,6 +147,8 @@
 - id: 60
   name: 10 Deku Seeds
   oarc: null
+  getarcname: GetSeedSet
+  getmodelname: GetSeedSet
 - id: 63
   name: Semi Rare Treasure
   oarc: null
@@ -203,6 +207,8 @@
 - id: 98
   name: Sea Chart
   oarc: GetMapSea
+  getarcname: GetMapSea
+  getmodelname: GetMapSea
 # - id: 99
 #   name: Mogma Mitts
 #   oarc: GetMoleGloveB
@@ -287,12 +293,18 @@
 - id: 134
   name: Small Bomb Bag
   oarc: GetSpareBombBagA # TODO upgrades?
+  getarcname: GetSpareBombBagA
+  getmodelname: GetSpareBombBagA
 - id: 137
   name: Whip
   oarc: GetWhip
+  getarcname: GetWhip
+  getmodelname: GetWhip
 - id: 138
   name: Fireshield Earrings
   oarc: GetEarring
+  getarcname: GetEarring
+  getmodelname: GetEarring
 - id: 140
   name: Big Bug Net
   oarc: GetNetB
