@@ -1125,7 +1125,7 @@ class GamePatcher:
             next_index += 1
         for command in filter(lambda x: x['type'] == 'flowpatch', flowpatches):
             flowobj = msbf['FLW3']['flow'][command['index']]
-            for key, val in command['flow'].items():
+            for key, val in command.get('flow', {}).items():
                 # special case: next points to a label
                 if key == 'next' and not isinstance(val, int):
                     index = label_to_index.get(val, None)

@@ -844,12 +844,19 @@
     flow:
       subeType: 6
       param2: 3
-      param3: 5
-      param4: 2
-      param5: 285
+      param3: 5 # zone temp flag 3, set after crashing chandelier
     cases:
       - 520 # jump over soup
       - 118 # normal event
+  - name: Show Levias or other text before going down Quest
+    # this switch checks if the soup has been delivered to levias
+    # if no, it would normally only allow levias stuff, which locks the normal lumpy pumpkin quest
+    type: flowpatch
+    index: 211
+    flow: {}
+    cases:
+      - 216 # soup has been delivered, normal event
+      - Show new Text Option # soup has not been delivered, ask which quest to do
   - name: Go to Switch for Chandellier
     type: flowpatch
     index: 6
@@ -880,21 +887,9 @@
       subType: 6
       param2: 0
       param3: 0
-      param4: 2
-      param5: 96
     cases:
       - 208
       - 216
-  - name: Go to new text option
-    type: flowpatch
-    index: 213
-    flow:
-      next: Show new Text Option
-#  - name: Fix Bartender
-#    type: flowpatch
-#    index: 212 # collected pumpkin soup
-#    flow:
-#      next: 520 # normal conversation past pumpkin soup
 118-Town3:
   - name: Wryna's Crystal
     type: flowpatch
