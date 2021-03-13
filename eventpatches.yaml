@@ -793,16 +793,6 @@
     flow:
       param2: 925
 117-Pumpkin:
-  - name: Kina Crystal Quest
-    type: flowpatch
-    index: 93
-    flow:
-      type: switch
-      subType: 6
-      param2: 901 # new FS flag
-      param3: 3
-      param4: 2
-      param5: 60
   - name: Kina's Crystal
     type: flowpatch
     index: 386
