@@ -1,5 +1,5 @@
 from io import BufferedIOBase, BytesIO
-from .utils import read_u8, read_u24, read_u32, read_null_term_string, write_u8, write_u24, write_u32
+from .fs_helpers import read_u8, read_u24, read_u32, read_str_until_null_character, write_u24, write_u32
 from collections import OrderedDict
 from typing import Tuple, List, Optional
 import struct
@@ -33,9 +33,9 @@ class DirNode(Node):
     
     def write_header_to(self, buffer):
         buffer.write(b'\x01')
-        write_u24(buffer, self.string_offset)
-        write_u32(buffer, self.new_parent_index)
-        write_u32(buffer, self.new_next_parent_index)
+        write_u24(buffer, None, self.string_offset)
+        write_u32(buffer, None, self.new_parent_index)
+        write_u32(buffer, None, self.new_next_parent_index)
 
 class FileNode(Node):
     def __init__(self, string_offset, data_offset, data_length):
@@ -47,9 +47,9 @@ class FileNode(Node):
     
     def write_header_to(self, buffer):
         buffer.write(b'\x00')
-        write_u24(buffer, self.string_offset)
-        write_u32(buffer, self.new_data_offset)
-        write_u32(buffer, self.get_length())
+        write_u24(buffer, None, self.string_offset)
+        write_u32(buffer, None, self.new_data_offset)
+        write_u32(buffer, None, self.get_length())
     
     def write_data_to(self, u8file, buffer):
         buffer.seek(self.new_data_offset)
@@ -101,14 +101,14 @@ class U8File:
         if data.read(1) != b'\x01':
             raise InvalidU8File
         # the root node always starts at string offset 0
-        if read_u24(data) != 0:
+        if read_u24(data, None) != 0:
             raise InvalidU8File
         # it has no parent directory
-        if read_u32(data) != 0:
+        if read_u32(data, None) != 0:
             raise InvalidU8File
         # total count of nodes with 12 bytes each, after that the string
         # section starts
-        total_node_count=read_u32(data)
+        total_node_count=read_u32(data, None)
         node = DirNode(0, 0, total_node_count)
         node.set_name('')
         nodes.append(node)
@@ -116,18 +116,18 @@ class U8File:
         for i in range(1, total_node_count):
             data.seek(first_node_offset+i*12)
             nodetype = data.read(1)
-            string_offset = read_u24(data)
+            string_offset = read_u24(data, None)
             if nodetype == b'\x00':
-                data_offset = read_u32(data)
-                data_length = read_u32(data)
+                data_offset = read_u32(data, None)
+                data_length = read_u32(data, None)
                 node = FileNode(string_offset, data_offset, data_length)
-                node.set_name(read_null_term_string(data, string_pool_base_offset+string_offset))
+                node.set_name(read_str_until_null_character(data, string_pool_base_offset+string_offset))
                 nodes.append(node)
             elif nodetype == b'\x01':
-                parent_index = read_u32(data)
-                next_parent_index = read_u32(data)
+                parent_index = read_u32(data, None)
+                next_parent_index = read_u32(data, None)
                 node = DirNode(string_offset, parent_index, next_parent_index)
-                node.set_name(read_null_term_string(data, string_pool_base_offset+string_offset))
+                node.set_name(read_str_until_null_character(data, string_pool_base_offset+string_offset))
                 nodes.append(node)
             else:
                 raise InvalidU8File(f'Unknown nodetype {nodetype}')
