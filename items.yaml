@@ -372,10 +372,12 @@
 - id: 178
   name: Ruby Tablet
   oarc: GetSekibanMapB
+  getarcname: GetSekibanMapB
   getmodelname: SekibanMapB
 - id: 179
   name: Amber Tablet
   oarc: GetSekibanMapC
+  getarcname: GetSekibanMapC
   getmodelname: SekibanMapC
 - id: 180
   name: Stone of Trials
