@@ -178,15 +178,14 @@ DUNGEON_EXIT_SCENS = {
                  ('B301', 0, 1)],
     'Fire Sanctuary': [('D201', 0, 1), ('D201', 3, 2), ('D201', 10, 2),
                        ('D201_1', 1, 0) , ('D201_1', 7, 0), ('D201_1', 5, 3), ('D201_1', 6, 2)],
-    'Skykeep': [('D003_0', 0, 2), # most of them not needed
+    'Skykeep': [('D003_0', 0, 3), # most of them not needed
                 ('D003_1', 0, 2),
-                ('D003_2', 0, 2),
-                ('D003_3', 0, 2),
+                ('D003_2', 0, 3),
+                ('D003_3', 0, 3),
                 ('D003_4', 0, 2),
                 ('D003_5', 0, 2),
                 ('D003_6', 0, 2),
                 ('D003_7', 0, 2),
-                ('D003_8', 0, 2),
                 ],
 }
 
@@ -1155,7 +1154,7 @@ class GamePatcher:
             next_index += 1
         for command in filter(lambda x: x['type'] == 'flowpatch', flowpatches):
             flowobj = msbf['FLW3']['flow'][command['index']]
-            for key, val in command['flow'].items():
+            for key, val in command.get('flow', {}).items():
                 # special case: next points to a label
                 if key == 'next' and not isinstance(val, int):
                     index = label_to_index.get(val, None)
