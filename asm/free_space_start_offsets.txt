@@ -1,0 +1,3 @@
+main.dol: 0x806782C0
+
+d_a_obj_door_boss.rel: 0x1660

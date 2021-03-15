@@ -1288,17 +1288,21 @@ class GamePatcher:
     def do_dol_patch(self):
         self.rando.progress_callback('patching main.dol...')
         # patch main.dol
-        orig_dol = bytearray((self.patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
-        for dolpatch in filter(self.filter_option_requirement, self.patches['global'].get('asm',{}).get('main',[])):
-            actual_code = bytes.fromhex(dolpatch['original'])
-            patched_code = bytes.fromhex(dolpatch['patched'])
-            assert len(actual_code) == len(patched_code), "code length has to remain the same!"
-            code_pos = orig_dol.find(actual_code)
-
-            assert code_pos != -1, f"code {dolpatch['original']} not found in main.dol!"
-            assert orig_dol.find(actual_code, code_pos+1) == -1, f"code {dolpatch['original']} found multiple times in main.dol!"
-            orig_dol[code_pos:code_pos+len(actual_code)] = patched_code
-        write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', orig_dol)
+        dol_bytes = BytesIO((self.patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
+        from sslib.dol import DOL
+        dol = DOL()
+        dol.read(dol_bytes)
+        all_asm_patches = defaultdict(OrderedDict)
+        for asm_patch_file in (RANDO_ROOT_PATH / 'asm' / 'patch_diffs').glob('ss_*_diff.txt'):
+            with asm_patch_file.open('r') as f:
+                asm_patch_file_data = yaml.safe_load(f)
+            for exec_file, patches in asm_patch_file_data.items():
+                all_asm_patches[exec_file].update(patches)
+        for org_address, patchlet in all_asm_patches['main.dol'].items():
+            dol.write_data_bytes(org_address, bytes(patchlet['Data']))
+            print(f'wrote to main dol {org_address:08X}')
+        dol.save_changes()
+        write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', dol_bytes.getbuffer())
 
     def do_rel_patch(self):
         self.rando.progress_callback('patching rels...')
