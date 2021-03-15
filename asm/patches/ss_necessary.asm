@@ -279,11 +279,21 @@ li r4, -1 ; -1 for bottle slot, or pouch items break
 ; TODO: bird speed patch
 
 .open "d_a_birdNP.rel"
-.org 0xA158
-lfs f1, 0x18c(r30)
+.org 0xA154 ; 809b72e4 in ghidra
+mr r3, r30
+bl loftwing_speed_limit
+nop
+nop
+nop
 
-.org 0x9F9C
-lfs f0, 0x18c(r4)
+.org 0x9FB4 ; 809b712c in ghidra
+nop ; don't cap speed here
+
+.org 0x9FC4
+ble skip_store_max
+stfs f0,0xfb8(r3)
+skip_store_max:
+b loftwing_speed_limit
 .close
 
 .open "d_a_npc_dive_game_judgeNP.rel"

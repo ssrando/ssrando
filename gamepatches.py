@@ -673,6 +673,9 @@ class GamePatcher:
         with (RANDO_ROOT_PATH / 'asm' / 'custom_symbols.txt').open('r') as f:
             self.custom_symbols = yaml.safe_load(f)
         self.main_custom_symbols = self.custom_symbols.get('main.dol',{}) 
+        with (RANDO_ROOT_PATH / 'asm' / 'original_symbols.txt').open('r') as f:
+            self.original_symbols = yaml.safe_load(f)
+        self.main_original_symbols = self.original_symbols.get('main.dol',{}) 
         
         # for asm, free space start offset
         with (RANDO_ROOT_PATH / 'asm' / 'free_space_start_offsets.txt').open('r') as f:

@@ -108,7 +108,7 @@ def apply_free_space_patchlet_to_rel(self, rel, file_path, offset, new_bytes, re
   write_and_pack_bytes(rel_section.data, section_relative_offset, new_bytes, "B"*len(new_bytes))
   
   if relocations:
-    add_relocations_to_rel(self, rel, file_path, rel_section_index, patchlet_offset_into_curr_section, relocations)
+    add_relocations_to_rel(self, rel, file_path, rel_section_index, section_relative_offset, relocations)
 
 def add_free_space_section_to_rel(self, rel, file_path):
   rel_section_index = 7
@@ -138,19 +138,18 @@ def add_relocations_to_rel(self, rel, file_path, rel_section_index, offset_into_
     rel_relocation.relocation_type = RELRelocationType[relocation_type]
     
     branch_label_match = re.search(r"^branch_label_([0-9A-F]+)$", symbol_name, re.IGNORECASE)
-    if symbol_name in self.main_custom_symbols:
+    if symbol_name in self.main_custom_symbols or symbol_name in self.main_original_symbols:
       # Custom symbol located in main.dol.
       module_num = 0
       
-      rel_relocation.symbol_address = self.main_custom_symbols[symbol_name]
+      rel_relocation.symbol_address = self.main_custom_symbols.get(symbol_name, None) or self.main_original_symbols[symbol_name]
       
       # I don't think this value is used for dol relocations.
       # In vanilla, this was written as 4 for some reason?
       rel_relocation.section_num_to_relocate_against = 0
-    elif symbol_name in self.custom_symbols.get(file_path, {}):
+    elif symbol_name in self.custom_symbols.get(file_path, {}) or symbol_name in self.original_symbols.get(file_path, {}):
       # Custom symbol located in the current REL.
-      custom_symbol_offset = self.custom_symbols[file_path][symbol_name]
-      
+      custom_symbol_offset = self.custom_symbols.get(file_path, {}).get(symbol_name, None) or self.original_symbols[file_path][symbol_name]
       module_num = rel.id
       
       if custom_symbol_offset >= free_space_start:
