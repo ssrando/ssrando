@@ -5,7 +5,6 @@
 lwz r0, 0x4(r28) ; load params1
 rlwinm r0,r0,28,30,31 ; r0 = (r0 >> 4) & 3
 stb r0, 0x1209(r28) ; store subtype
-cmplwi r0, 3 ; TODO: remove this
 b 0x80269554
 
 .org 0x80115A04 ; in some function that is text advancing related
@@ -26,6 +25,13 @@ b 0x8005e250
 
 ; to make sure that all items randomized to freestanding locations
 ; force a textbox, make them subtype 9 and have them act like baby rattle
+; TODO: this fix can probably replaced with this:
+;.org 0x80256c30
+;lwz r3, 0x4(r3) ; load params1
+;rlwinm r3,r3,0xc,0x1c,0x1f ; extract subtype
+;b 0x802476e0 ; branch to rest of function, that returns if it's 9
+;.org 0x802476e0
+;subi r0, r3, 9 ; subtype 9, normally checks for rattle itemid
 .org 0x80256c30
 lwz r3, 0x4(r3) ; load params1
 b 0x8024a1c0 ; get subtype out of params1
@@ -43,7 +49,7 @@ b 0x80252bb4
 li r3, 0
 blr
 
-; this function checks if a checkflag is set, always return true
+; this function checks if a skipflag is set, always return true
 .org 0x800bfd20
 li r3, 1
 blr
@@ -90,7 +96,7 @@ li r4, 0x110
 cmplwi r3, 0
 bne 0x8027ce78
 li r3, 0
-mr r0, r0 ; nice nop idiot
+nop
 
 ; special text when entering faron pillar during SotH, skip over it
 .org 0x80141f00
