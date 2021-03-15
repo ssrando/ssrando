@@ -279,6 +279,21 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.option_skip_imp_2, 4, 2, 1, 2)
 
+        self.horizontalLayout_7 = QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.label_4 = QLabel(self.gridLayoutWidget_2)
+        self.label_4.setObjectName(u"label_4")
+
+        self.horizontalLayout_7.addWidget(self.label_4)
+
+        self.option_rupoor_mode = QComboBox(self.gridLayoutWidget_2)
+        self.option_rupoor_mode.setObjectName(u"option_rupoor_mode")
+
+        self.horizontalLayout_7.addWidget(self.option_rupoor_mode)
+
+
+        self.gridLayout_2.addLayout(self.horizontalLayout_7, 0, 2, 1, 2)
+
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
         self.horizontalLayoutWidget.setGeometry(QRect(10, 650, 931, 31))
@@ -466,6 +481,7 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
         self.option_skip_imp_2.setText(QCoreApplication.translate("MainWindow", u"Skip Imprisoned 2", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.option_no_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"No Spoiler Log", None))

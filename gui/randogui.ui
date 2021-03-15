@@ -402,6 +402,20 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="2" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Rupoor Mode</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="option_rupoor_mode"/>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
    </widget>
