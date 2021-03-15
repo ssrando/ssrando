@@ -44,3 +44,17 @@ li r6, 2 ; idk
 li r7, 2 ; idk
 b Reloader__triggerExit
 .close
+
+.open "d_a_obj_warpNP.rel"
+.org @NextFreeSpace
+.global check_should_delay_walk_out_event
+check_should_delay_walk_out_event:
+mr r4, r3
+lbz r3, 0xc7d(r4) ; counter, in the original actor this was the itemid to wait on (all code that uses it is skipped)
+cmpwi r3, 5 ; only increment it to an arbitrary amoung
+bgelr
+addi r3, r3, 1 ; increment
+stb r3, 0xc7d(r4) ; store counter back
+
+blr
+.close

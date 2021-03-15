@@ -161,15 +161,11 @@ lbz r3, 0x4(r3) ; first byte of params1 is itemid
 li r4, -1 ; set pouch slot param to -1, otherwise pouch items break
 b 0x231C ; go directly to give item function call
 
-lbz r0, 0xc7d(r3) ; inject code here to delay the warp out of the trial by one frame, load counter (was itemid originally, not needed anymore)
-cmplwi r0, 0
-bne 0x2354 ; if the frame passed, go trigger the event
-addi r0, r0, 1 ; otherwise increment
-stb r0, 0xc7d(r3) ; story counter back
-b 0x23A4; jump to end of function that branched here
-
-.org 0x2344 ; branch function, that triggers the walk out event to the code injected above
-b 0x22D0
+.org 0x2344 ; function, that runs after giving the item, if the event is triggered immediately, the item won't be given
+bl check_should_delay_walk_out_event ; check current counter after giving item
+cmpwi r3, 2 ; only trigger item after a few frames
+ble 0x23A4
+nop
 
 ; the trial storyflags got changed, cause they used the same one as the items associated with it
 .org 0x2F48

@@ -6,3 +6,5 @@ d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
   function_end: 0x344
+d_a_obj_warpNP.rel:
+  check_should_delay_walk_out_event: 0x6100
