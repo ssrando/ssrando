@@ -2,3 +2,7 @@ main.dol:
   super_epic_test_func: 0x806782C0
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
+d_t_D3_scene_changeNP.rel:
+  trigger_exit_one: 0x804
+  trigger_exit_one_lbl: 0x340
+  function_end: 0x344

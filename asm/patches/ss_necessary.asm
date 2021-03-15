@@ -289,7 +289,7 @@ nop
 .org 0x9FB4 ; 809b712c in ghidra
 nop ; don't cap speed here
 
-.org 0x9FC4
+.org 0x9FC4 ; belongs to function above, instead of blr, branch to loftwing_speed_limit function at the end
 ble skip_store_max
 stfs f0,0xfb8(r3)
 skip_store_max:
@@ -327,6 +327,29 @@ nop ; do not need spiral charge to spawn
 .close
 
 .open "d_t_D3_scene_changeNP.rel"
-.org 0x45C ; function, that loads the exit for skyloft
-li r0, 0x34 ; use different entrance, to not softlock
+.org 0x458
+li r3, 0 ; load a null pointer for the skyloft exit, so the other custom code can take care of it
+
+; this patch branches to the custom trigger_exit_one function, when a scenechange is needed to outside of skykeep
+.org 0x2EC ; branch, if link doesn't touch the trigger
+beq function_end
+
+.org 0x300 ; branch, if the returned next stage name is null, meaning use exit 1
+beq trigger_exit_one_lbl
+
+.org 0x33C
+b function_end ; after triggering the normal skykeep entrance mechanic, do not trigger the exit to skyloft
+.global trigger_exit_one_lbl
+trigger_exit_one_lbl:
+bl trigger_exit_one ; if the returned ptr from getNextStageAndEntrance was null, it branches here
+
+.global function_end
+function_end:
+lwz 31, 0x1C(r1)
+li r3, 1
+lwz r0, 0x24(r1)
+mtlr r0
+addi r1, r1, 0x20
+blr
+
 .close
