@@ -1,2 +1,2 @@
 main.dol:
-  set_storyflag: 0x806782C0
+  super_epic_test_func: 0x806782C0

@@ -13,6 +13,7 @@ import re
 import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
+from sslib.dol import DOL
 from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 
@@ -656,6 +657,23 @@ class GamePatcher:
         # patches from randomizing items
         self.rando_stagepatches, self.stageoarcs, self.rando_eventpatches = \
             get_patches_from_location_item_list(self.rando.logic.item_locations, self.rando.logic.done_item_locations)
+        
+        # assembly patches
+        self.all_asm_patches = defaultdict(OrderedDict)
+        for asm_patch_file in (RANDO_ROOT_PATH / 'asm' / 'patch_diffs').glob('*_diff.txt'):
+            with asm_patch_file.open('r') as f:
+                asm_patch_file_data = yaml.safe_load(f)
+            for exec_file, patches in asm_patch_file_data.items():
+                self.all_asm_patches[exec_file].update(patches)
+        
+        # for asm, custom symbols
+        with (RANDO_ROOT_PATH / 'asm' / 'custom_symbols.txt').open('r') as f:
+            self.custom_symbols = yaml.safe_load(f)
+        self.main_custom_symbols = self.custom_symbols.get('main.dol',{}) 
+        
+        # for asm, free space start offset
+        with (RANDO_ROOT_PATH / 'asm' / 'free_space_start_offsets.txt').open('r') as f:
+            self.free_space_start_offsets = yaml.safe_load(f)
     
     def add_entrance_rando_patches(self):
         for entrance, dungeon in self.rando.entrance_connections.items():
@@ -1289,18 +1307,10 @@ class GamePatcher:
         self.rando.progress_callback('patching main.dol...')
         # patch main.dol
         dol_bytes = BytesIO((self.patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
-        from sslib.dol import DOL
         dol = DOL()
         dol.read(dol_bytes)
-        all_asm_patches = defaultdict(OrderedDict)
-        for asm_patch_file in (RANDO_ROOT_PATH / 'asm' / 'patch_diffs').glob('ss_*_diff.txt'):
-            with asm_patch_file.open('r') as f:
-                asm_patch_file_data = yaml.safe_load(f)
-            for exec_file, patches in asm_patch_file_data.items():
-                all_asm_patches[exec_file].update(patches)
-        for org_address, patchlet in all_asm_patches['main.dol'].items():
-            dol.write_data_bytes(org_address, bytes(patchlet['Data']))
-            print(f'wrote to main dol {org_address:08X}')
+        from asm.patcher import apply_dol_patch
+        apply_dol_patch(self, dol, self.all_asm_patches['main.dol'])
         dol.save_changes()
         write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', dol_bytes.getbuffer())
 

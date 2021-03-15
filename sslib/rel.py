@@ -1,5 +1,5 @@
 
-from fs_helpers import *
+from sslib.fs_helpers import *
 
 from io import BytesIO
 from collections import OrderedDict
