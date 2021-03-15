@@ -14,10 +14,13 @@ import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
 from sslib.dol import DOL
+from sslib.rel import REL
 from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 
 from logic.logic import Logic
+
+from asm.patcher import apply_dol_patch, apply_rel_patch
 
 TOTAL_STAGE_FILES = 369
 TOTAL_EVENT_FILES = 6
@@ -1309,7 +1312,6 @@ class GamePatcher:
         dol_bytes = BytesIO((self.patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
         dol = DOL()
         dol.read(dol_bytes)
-        from asm.patcher import apply_dol_patch
         apply_dol_patch(self, dol, self.all_asm_patches['main.dol'])
         dol.save_changes()
         write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', dol_bytes.getbuffer())
@@ -1318,29 +1320,18 @@ class GamePatcher:
         self.rando.progress_callback('patching rels...')
         rel_arc = U8File.parse_u8(BytesIO((self.patcher.actual_extract_path / 'DATA' / 'files' / 'rels.arc').read_bytes()))
         rel_modified = False
-        for file, codepatches in self.patches['global'].get('asm',{}).items():
-            if file == 'main': # main.dol
+        for file, codepatches in self.all_asm_patches.items():
+            if file == 'main.dol': # main.dol
                 continue
-            rel = rel_arc.get_file_data(f'rels/{file}NP.rel')
-            if rel is None:
+            rel_data = BytesIO(rel_arc.get_file_data(f'rels/{file}'))
+            if rel_data is None:
                 print(f'ERROR: rel {file} not found!')
                 continue
-            rel = bytearray(rel)
-            for codepatch in filter(self.filter_option_requirement, codepatches):
-                actual_code = bytes.fromhex(codepatch['original'])
-                patched_code = bytes.fromhex(codepatch['patched'])
-                assert len(actual_code) == len(patched_code), "code length has to remain the same!"
-                code_pos = rel.find(actual_code)
-
-                assert code_pos != -1, f"code {codepatch['original']} not found in {file}!"
-                if codepatch.get('multiple',False):
-                    while code_pos != -1:
-                        rel[code_pos:code_pos+len(actual_code)] = patched_code
-                        code_pos = rel.find(actual_code, code_pos+1)
-                else:
-                    assert rel.find(actual_code, code_pos+1) == -1, f"code {codepatch['original']} found multiple times in {file}!"
-                    rel[code_pos:code_pos+len(actual_code)] = patched_code
-            rel_arc.set_file_data(f'rels/{file}NP.rel',rel)
+            rel = REL()
+            rel.read(rel_data)
+            apply_rel_patch(self, rel, file, codepatches)
+            rel.save_changes()
+            rel_arc.set_file_data(f'rels/{file}', rel_data.getbuffer())
             rel_modified = True
         if rel_modified:
             rel_data = rel_arc.to_buffer()
