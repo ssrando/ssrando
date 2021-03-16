@@ -63,3 +63,15 @@ stb r3, 0xc7d(r4) ; store counter back
 
 blr
 .close
+
+.open "d_a_obj_time_stoneNP.rel"
+.org @NextFreeSpace
+.global set_first_time_cs_already_watched
+set_first_time_cs_already_watched: ; r27 is AcOTimeShiftStone actor
+li r0, 0
+stb r0, 0x147e(r27) ; store false so first time longer CS doesn't play
+stb r0, 0x1485(r27) ; store false so first time longer CS doesn't play
+lfs f3,0xb4(r30) ; instruction that got replaced
+blr
+
+.close

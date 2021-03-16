@@ -175,3 +175,7 @@ d_t_D3_scene_changeNP.rel:
       0x21, 0x00, 0x20, 0x4E, 0x80, 0x00, 0x20]
     Relocations: [{SymbolName: function_end, Offset: 0x00, Type: R_PPC_REL24}, {SymbolName: trigger_exit_one,
         Offset: 0x04, Type: R_PPC_REL24}]
+d_a_obj_time_stoneNP.rel:
+  0x15B0:
+    Data: [0x48, 0x00, 0x00, 0x01]
+    Relocations: [{SymbolName: set_first_time_cs_already_watched, Offset: 0x00, Type: R_PPC_REL24}]

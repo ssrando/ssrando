@@ -359,3 +359,8 @@ addi r1, r1, 0x20
 blr
 
 .close
+
+.open "d_a_obj_time_stoneNP.rel"
+.org 0x15B0
+bl set_first_time_cs_already_watched ; in a branch that is not taken for the time shift stone on sandship
+.close
