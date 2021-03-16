@@ -230,6 +230,11 @@ class U8File:
         file.set_data(data)
     
     def add_file_data(self, path: str, data: bytes):
+        # if the file already exists, just overwrite it
+        already_exists_file = self.get_file(path)
+        if already_exists_file:
+            already_exists_file.set_data(data)
+            return
         # can't add directories for now
         new_node=FileNode(-1, -1, -1,)
         total_nodes = self.nodes[0].new_next_parent_index
