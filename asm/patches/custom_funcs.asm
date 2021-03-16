@@ -1,15 +1,20 @@
 .open "main.dol"
 .org @NextFreeSpace
-
-; global shortcut to just simply set a storyflag
-.global super_epic_test_func
-super_epic_test_func:
-nop
-nop
-nop
-nop
+.global fix_freestanding_item_y_offset
+fix_freestanding_item_y_offset:
+; r29 is the item ptr, r3 needs to NOT be modified
+lwz r0, 0x4(r29) ; params1
+rlwinm r4,r0,12,28,31 ; extract subtype: (r0 >> 0x14) & 0xF
+cmpwi r4, 9
+bne func_end
+rlwinm r4,r0,0,0xff ; r0 & 0xFF
+cmpwi r4, 0x5E ; heartpieces are already high enough, don't push them up
+beq func_end
+lfs f0,-0x7ce8(r2) ; 10.0
+stfs f0, 0xd14(r29) ; store freestandingYOffset
+func_end:
+addi r11, r1, 0x50 ; replaced instruction
 blr
-
 .close
 
 

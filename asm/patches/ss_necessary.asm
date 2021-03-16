@@ -47,6 +47,23 @@ blr
 li r3, 1
 blr
 
+; always use the freestanding Y offset for the model, it's 0 most of the time anyway
+.org 0x8024d818
+b 0x8024d82c
+
+; let all freestanding randomized items use the slingshot item scaling
+.org 0x8024aea0
+bl AcItem__isBabyRattle ; function, that orignally checked for baby rattle, it now checks for subtype 9 (randomized freestanding items)
+
+; orignally used for the slingshot for freestanding item scaling, make them bigger
+.org 0x80251450
+lfs f1,-0x7c68(r2) ; 2.0
+blr
+
+; at the end of the item init func, branch to a custom function which fixes the Y offsets
+.org 0x8024d438
+bl fix_freestanding_item_y_offset
+
 ; don't treat faron statues differently after levias
 .org 0x80142078
 b 0x801420d8
