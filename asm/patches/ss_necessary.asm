@@ -12,7 +12,7 @@ li r4, 1 ; enables instant text
 
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
-stwu r1, -0x30(r1)
+stwu r1, -0x30(r1) ; change function prologue to match the function it branches to at the end
 mflr r0
 stw r0, 0x34(r1)
 stw r31, 0x2C(r1)
@@ -25,19 +25,12 @@ b 0x8005e250
 
 ; to make sure that all items randomized to freestanding locations
 ; force a textbox, make them subtype 9 and have them act like baby rattle
-; TODO: this fix can probably replaced with this:
-;.org 0x80256c30
-;lwz r3, 0x4(r3) ; load params1
-;rlwinm r3,r3,0xc,0x1c,0x1f ; extract subtype
-;b 0x802476e0 ; branch to rest of function, that returns if it's 9
-;.org 0x802476e0
-;subi r0, r3, 9 ; subtype 9, normally checks for rattle itemid
 .org 0x80256c30
 lwz r3, 0x4(r3) ; load params1
-b 0x8024a1c0 ; get subtype out of params1
-.org 0x80254150
-cmpwi r3, 9
-beq 0x80254168
+rlwinm r3,r3,0xc,0x1c,0x1f ; extract subtype
+b 0x802476e0 ; branch to rest of function, that returns if it's 9
+.org 0x802476e0
+subi r0, r3, 9 ; subtype 9, normally checks for rattle itemid
 
 ; don't show fi text after map
 .org 0x80252b48
