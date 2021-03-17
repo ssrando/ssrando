@@ -55,6 +55,10 @@ To only generate a spoiler log, use the `--dry-run` option as a command line arg
 
 There are more optons to call, check out the options.py to see them all.
 
+#### Model Customization
+After running the randomizer once, a folder `oarc` will be created, which has Link's model (Alink.arc) and his bird (Bird_Link.arc)
+
+To modify them, you need an external program. To include make sure the models get actually replaced when running the randomizer, save the modified arcs (the name **has** to stay the same) in the `arc-replacements` folder, which needs to be located next to the randomizer executable
 
 #### FOR EMULATOR
 11a) Open disc.wbfs in Dolphin

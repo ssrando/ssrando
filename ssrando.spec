@@ -57,6 +57,8 @@ a = Analysis(['randoscript.py'],
              	'names.txt',
              	'*.yaml',
              	'assets/logo.tpl',
+              'asm/*.txt',
+              'asm/patch_diffs/*.txt'
              ]),
              hiddenimports=[],
              hookspath=[],
