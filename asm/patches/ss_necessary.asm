@@ -286,7 +286,7 @@ li r4, -1 ; -1 for bottle slot, or pouch items break
 
 .open "d_a_birdNP.rel"
 .org 0xA154 ; 809b72e4 in ghidra
-mr r3, r30
+mr r3, r31
 bl loftwing_speed_limit
 nop
 nop

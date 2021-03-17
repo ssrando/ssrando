@@ -5,3 +5,4 @@ main.dol:
     INPUT_BUFFER: 0x80599d0c
     Reloader__triggerExit: 0x801bb080
     AcItem__isBabyRattle: 0x80256c30
+    Math__approachF: 0x802decd0

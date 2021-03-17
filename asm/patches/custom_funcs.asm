@@ -24,7 +24,7 @@ blr
 loftwing_speed_limit:
 lis r6, INPUT_BUFFER@ha ; input buffer
 lwz r6, INPUT_BUFFER@l(r6)
-andis. r0, r6, 0x4000 ; check for c up pressed
+andis. r0, r6, 0x0400 ; check for B pressed
 bne c_up_pressed
 lfs f1,-0x3948(r2) ; 350.0f constant
 b past_if_else
