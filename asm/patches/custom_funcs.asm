@@ -15,6 +15,21 @@ stfs f0, 0xd14(r29) ; store freestandingYOffset
 func_end:
 addi r11, r1, 0x50 ; replaced instruction
 blr
+
+.global should_increase_freestanding_model_size
+should_increase_freestanding_model_size:
+lwz r0, 0x4(r3) ; params1
+rlwinm r3,r0,12,28,31 ; extract subtype: (r0 >> 0x14) & 0xF
+cmpwi r3, 9 ; check if subtype is 9
+li r3, 0
+bnelr ; if not, return false
+rlwinm r0,r0, 0,24,31 ; r0 & 0xFF, itemid
+cmpwi r0, 0x5D ; return false for HC
+beqlr
+cmpwi r0, 0x5E ; return false for HP
+beqlr
+li r3, 1 ; otherwise, return true
+blr
 .close
 
 

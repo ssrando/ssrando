@@ -53,7 +53,7 @@ b 0x8024d82c
 
 ; let all freestanding randomized items use the slingshot item scaling
 .org 0x8024aea0
-bl AcItem__isBabyRattle ; function, that orignally checked for baby rattle, it now checks for subtype 9 (randomized freestanding items)
+bl should_increase_freestanding_model_size ; custom function that checks ifthe freestanding item scale should be applied
 
 ; orignally used for the slingshot for freestanding item scaling, make them bigger
 .org 0x80251450
