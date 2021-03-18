@@ -70,11 +70,11 @@ class Logic:
       
       # checks outside dungeons that require dungeons:
       if 'Lanayru Mining Facility' in self.rando.non_required_dungeons:
-        self.race_mode_banned_locations.append('Skyloft - Fledge Crystals')
+        self.racemode_ban_location('Skyloft - Fledge Crystals')
       if 'Skyview' in self.rando.non_required_dungeons:
         # TODO: check again with entrance rando
-        self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
-        self.race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
+        self.racemode_ban_location('Sky - Lumpy Pumpkin Roof Goddess Chest')
+        self.racemode_ban_location('Sealed Grounds - Gorko Goddess Wall Reward')
     
     batreaux_location_re = re.compile(r'.*Batreaux ([0-9]+) .*')
 
@@ -83,12 +83,12 @@ class Logic:
       bat_loc_match = batreaux_location_re.match(location_name)
       if bat_loc_match:
         if self.rando.options['max-batreaux-reward'] < int(bat_loc_match.group(1)):
-          self.race_mode_banned_locations.append(location_name)
+          self.racemode_ban_location(location_name)
           # print(f'banned {location_name}')
 
     if self.rando.options['skip-skykeep']:
-      self.race_mode_banned_locations.append('Skykeep - Map Chest')
-      self.race_mode_banned_locations.append('Skykeep - Small Key Chest')
+      self.racemode_ban_location('Skykeep - Map Chest')
+      self.racemode_ban_location('Skykeep - Small Key Chest')
     
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
@@ -151,11 +151,17 @@ class Logic:
       for shop_check in SHOP_CHECKS:
         if self.rando.options['shop-mode'] == 'Vanilla':
           self.set_prerandomization_item_location(shop_check, self.item_locations[shop_check]['original item'])
-        self.race_mode_banned_locations.append(shop_check)
+        else:
+          self.racemode_ban_location(shop_check)
     self.randomize_dungeon_items()
     self.randomize_progression_items()
     self.randomize_nonprogress_items()
     self.randomize_consumable_items()
+
+  def racemode_ban_location(self, location_name):
+    if not location_name in self.item_locations:
+      raise Exception(f'location {location_name} does not exist!')
+    self.race_mode_banned_locations.append(location_name)
 
   def set_location_to_item(self, location_name, item_name):
     #print("Setting %s to %s" % (location_name, item_name))
@@ -771,6 +777,7 @@ class Logic:
       if newly_accessible_predetermined_item_locations:
         for predetermined_item_location_name in newly_accessible_predetermined_item_locations:
           predetermined_item_name = self.prerandomization_item_locations[predetermined_item_location_name]
+          print(f'placing {predetermined_item_name} at {predetermined_item_location_name}')
           self.set_location_to_item(predetermined_item_location_name, predetermined_item_name)
         
         continue # Redo this loop iteration with the predetermined item locations no longer being considered 'remaining'.
@@ -782,6 +789,8 @@ class Logic:
           location_weights[location] -= 1
       current_weight += 1
       
+      possible_items = self.unplaced_progress_items.copy()
+
       # Don't randomly place items that already had their location predetermined.
       unfound_prerand_locs = [
         loc for loc in self.prerandomization_item_locations
@@ -789,19 +798,17 @@ class Logic:
       ]
       for location_name in unfound_prerand_locs:
         prerand_item = self.prerandomization_item_locations[location_name]
-        if prerand_item in self.unplaced_progress_items:
-          self.unplaced_progress_items.remove(prerand_item)
+        if prerand_item in possible_items:
+          possible_items.remove(prerand_item)
 
-      possible_items = self.unplaced_progress_items.copy()
-      
       if len(possible_items) == 0:
+        print(self.check_requirement_met("Can Access Lanayru Mining Facility"))
+        print(accessible_undone_locations)
+        print('\n\n')
+        print('LMF Small Key' in self.currently_owned_items)
+        print('\n\n')
+        print(self.unplaced_progress_items)
         raise Exception("Only items left to place are predetermined items at inaccessible locations!")
-      
-      # Filter out items that are not valid in any of the locations we might use.
-      possible_items = self.filter_items_by_any_valid_location(possible_items, accessible_undone_locations)
-      
-      if len(possible_items) == 0:
-        raise Exception("No valid locations left for any of the unplaced progress items!")
       
       # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
       # Don't do this with Eldin Key Pieces or Earth Temple will always be really late in logic. Same with crystals
