@@ -30,6 +30,18 @@ cmpwi r0, 0x5E ; return false for HP
 beqlr
 li r3, 1 ; otherwise, return true
 blr
+
+; helper function, to be able to just call one function to modify a storyflag
+; r3 is storyflag, r4 is value
+.global setStoryflagToValue
+setStoryflagToValue:
+mr r5, r4
+mr r4, r3
+lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+lwz r12, 0x0(r3)
+lwz r12, 0x28(r12)
+mtctr r12
+bctr
 .close
 
 
@@ -87,6 +99,38 @@ li r0, 0
 stb r0, 0x147e(r27) ; store false so first time longer CS doesn't play
 stb r0, 0x1485(r27) ; store false so first time longer CS doesn't play
 lfs f3,0xb4(r30) ; instruction that got replaced
+blr
+
+.close
+
+.open "d_a_shop_sampleNP.rel"
+.org @NextFreeSpace
+; checks if this is one of the shop items that need the modified shopsample class
+.global check_needs_custom_storyflag_subtype
+check_needs_custom_storyflag_subtype:
+; r3 cannot be modified, r4 is the shopitemid and can't be modified
+; the result is in the condition register, equal flag has to be set if the shopitemid is one we care about
+; bool test(int i) {
+;    return i == 24
+;           || i == 17
+;           || i == 18
+;           || i == 25
+;           || i == 27;
+;}
+addi r9,r4,-24
+cmplwi r9,1
+ble lbl_21
+addi r9,r4,-17
+cmplwi r9,1
+ble lbl_21
+xori r5,r4,27
+cntlzw r5,r5
+srwi r5,r5,5
+b lbl_end
+lbl_21:
+li r5,1
+lbl_end:
+cmpwi r5, 1
 blr
 
 .close

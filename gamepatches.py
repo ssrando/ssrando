@@ -13,7 +13,7 @@ import re
 import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
-from sslib.fs_helpers import write_str, write_u16
+from sslib.fs_helpers import write_str, write_u16, write_float
 from sslib.dol import DOL
 from sslib.rel import REL
 from paths import RANDO_ROOT_PATH
@@ -692,11 +692,9 @@ class GamePatcher:
         
         # assembly patches
         self.all_asm_patches = defaultdict(OrderedDict)
-        for asm_patch_file in (RANDO_ROOT_PATH / 'asm' / 'patch_diffs').glob('*_diff.txt'):
-            with asm_patch_file.open('r') as f:
-                asm_patch_file_data = yaml.safe_load(f)
-            for exec_file, patches in asm_patch_file_data.items():
-                self.all_asm_patches[exec_file].update(patches)
+        self.add_asm_patch('custom_funcs')
+        self.add_asm_patch('ss_necessary')
+        self.add_asm_patch('shopsanity') # TODO: only if shopsanity enabled
         
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / 'asm' / 'custom_symbols.txt').open('r') as f:
@@ -710,6 +708,12 @@ class GamePatcher:
         with (RANDO_ROOT_PATH / 'asm' / 'free_space_start_offsets.txt').open('r') as f:
             self.free_space_start_offsets = yaml.safe_load(f)
     
+    def add_asm_patch(self, name):
+        with (RANDO_ROOT_PATH / 'asm' / 'patch_diffs' / f'{name}_diff.txt').open('r') as f:
+            asm_patch_file_data = yaml.safe_load(f)
+        for exec_file, patches in asm_patch_file_data.items():
+            self.all_asm_patches[exec_file].update(patches)
+
     def add_entrance_rando_patches(self):
         for entrance, dungeon in self.rando.entrance_connections.items():
             entrance_stage, entrance_room, entrance_scen = DUNGEON_ENTRANCE_STAGES[entrance]
@@ -1372,29 +1376,79 @@ class GamePatcher:
             rel = REL()
             rel.read(rel_data)
             apply_rel_patch(self, rel, file, codepatches)
+            if file == 'd_a_shop_sampleNP.rel':
+                self.do_shoptable_rel_patch(rel)
             rel.save_changes()
             rel_arc.set_file_data(f'rels/{file}', rel_data.getbuffer())
-            rel_modified = True
-        # shopsanity patches
-        # TODO: only do this if shops aren't vanilla
-        # 0x6D8C is shop table offset and each entry is 0x54 bytes long
-        if True:
-            rel = rel_arc.get_file_data(f'rels/d_a_shop_sampleNP.rel')
-            rel_bio = BytesIO(rel)
-            SHOP_LIST_OFFSET = 0x6D8C
-            ENTRY_SIZE = 0x54
-            for shopindex, (itemid, arcname, modelname) in self.shoppatches.items():
-                # item id
-                current_shop_entry_offset = SHOP_LIST_OFFSET + ENTRY_SIZE * shopindex
-                write_u16(rel_bio, current_shop_entry_offset + 0xC, itemid)
-                write_str(rel_bio, current_shop_entry_offset + 0x16, arcname, 30)
-                # extra 2 bytes are probably padding, zero them anyways
-                write_str(rel_bio, current_shop_entry_offset + 0x34, modelname, 32)
-            rel_arc.set_file_data(f'rels/d_a_shop_sampleNP.rel', rel_bio.getbuffer())
             rel_modified = True
         if rel_modified:
             rel_data = rel_arc.to_buffer()
             write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'files' / 'rels.arc', rel_data)
+
+    def do_shoptable_rel_patch(self, rel):
+        # shopsanity patches
+        # TODO: only do this if shops aren't vanilla
+        # 24, 17, 18 is patched extra wallet chain
+        # patches the next value in the shop item chain
+        shop_item_next_patches = {
+            24: 17,
+            17: 18,
+        }
+        shop_price_patches = {
+            17: 100,
+            18: 100,
+        }
+        shop_entrypoint_patches = {
+            17: 10533, # TODO: unique entrypoint for second extra wallet
+            18: 10533, # TODO: unique entrypoint for third extra wallet
+        }
+        shop_present_scale_patches = {
+            17: 1.2,
+            18: 1.2,
+        }
+        shop_target_height_patches = {
+            17: 100,
+            18: 100,
+        }
+        sold_out_storyflag_patches = {
+            24: 937,
+            17: 938,
+            18: 939,
+            25: 940, # bug net
+            27: 941, # bug medal
+        }
+        SHOP_LIST_OFFSET = 0x6D8C
+        ENTRY_SIZE = 0x54
+        for shopindex, (itemid, arcname, modelname) in self.shoppatches.items():
+            data_bytes, shop_list_offset = rel.convert_rel_offset_to_section_data_and_relative_offset(SHOP_LIST_OFFSET)
+            current_shop_entry_offset = shop_list_offset + ENTRY_SIZE * shopindex
+            present_scale = shop_present_scale_patches.get(shopindex, None)
+            if not present_scale is None:
+                write_float(data_bytes, current_shop_entry_offset + 0x0, present_scale)
+            target_height = shop_target_height_patches.get(shopindex, None)
+            if not target_height is None:
+                write_float(data_bytes, current_shop_entry_offset + 0x8, target_height)
+            # item id
+            write_u16(data_bytes, current_shop_entry_offset + 0xC, itemid)
+
+            shop_price = shop_price_patches.get(shopindex, None)
+            if not shop_price is None:
+                write_u16(data_bytes, current_shop_entry_offset + 0xE, shop_price)
+
+            shop_entrypoint = shop_entrypoint_patches.get(shopindex, None)
+            if not shop_entrypoint is None:
+                write_u16(data_bytes, current_shop_entry_offset + 0x10, shop_entrypoint)
+
+            shop_item_next = shop_item_next_patches.get(shopindex, None)
+            if not shop_item_next is None:
+                write_u16(data_bytes, current_shop_entry_offset + 0x12, shop_item_next)
+
+            write_str(data_bytes, current_shop_entry_offset + 0x16, arcname, 30)
+            write_str(data_bytes, current_shop_entry_offset + 0x34, modelname, 30)
+            sold_out_storyflag = sold_out_storyflag_patches.get(shopindex, None)
+            if not sold_out_storyflag is None:
+                # normally not part of the struct, but the last 2 bytes of the modelname aren't used, so use them for storyflags
+                write_u16(data_bytes, current_shop_entry_offset + 0x52, sold_out_storyflag)
 
     def do_patch_object_pack(self):
         self.rando.progress_callback('patching ObjectPack...')

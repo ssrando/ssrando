@@ -6,3 +6,9 @@ main.dol:
     Reloader__triggerExit: 0x801bb080
     AcItem__isBabyRattle: 0x80256c30
     Math__approachF: 0x802decd0
+    # storyflag in r4
+    checkStoryflagIsSet: 0x80141e90
+    # r3 itemid, r4 pouch slot index or -1, r5 always 0
+    giveItem: 0x80249210
+d_a_shop_sampleNP.rel:
+    SHOP_ITEMS: 0x6D8C

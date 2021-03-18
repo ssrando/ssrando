@@ -139,9 +139,9 @@ class Randomizer:
           logic.item_types.CONSUMABLE_ITEMS[i] = 'Rupoor'
 
     self.logic = Logic(self)
-    self.logic.set_prerandomization_item_location("Skyloft - Beedle Second 100 Rupee Item", "Rare Treasure")
-    self.logic.set_prerandomization_item_location("Skyloft - Beedle Third 100 Rupee Item", "Rare Treasure")
-    self.logic.set_prerandomization_item_location("Skyloft - Beedle 1000 Rupee Item", "Rare Treasure")
+    # self.logic.set_prerandomization_item_location("Skyloft - Beedle Second 100 Rupee Item", "Rare Treasure")
+    # self.logic.set_prerandomization_item_location("Skyloft - Beedle Third 100 Rupee Item", "Rare Treasure")
+    # self.logic.set_prerandomization_item_location("Skyloft - Beedle 1000 Rupee Item", "Rare Treasure")
     # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
     # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Bow")
     # self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")

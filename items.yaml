@@ -115,6 +115,8 @@
 - id: 40
   name: 5 Bombs
   oarc: null
+  getarcname: GetBombSet
+  getmodelname: GetBombSet
 - id: 41
   name: 10 Bombs
   oarc: null
@@ -192,6 +194,8 @@
 - id: 92
   name: Bomb Bag
   oarc: GetBombBag
+  getarcname: GetBombBag
+  getmodelname: GetBombBag
 - id: 93
   name: Heart Container
   oarc:
@@ -368,6 +372,7 @@
 - id: 177
   name: Emerald Tablet
   oarc: GetSekibanMapA
+  getarcname: GetSekibanMapA
   getmodelname: SekibanMapA
 - id: 178
   name: Ruby Tablet

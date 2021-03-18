@@ -135,6 +135,12 @@ New Trial Completed Storyflags:
 935: Exit out of back of LMF for first time
 936: Obtained Item at end of LMF
 
+937: bought Beetles first 100R item
+938: bought Beetles second 100R item
+939: bought Beetles third 100R item
+940: bought Beetles Bug Net item
+941: bought Beetles Bug Medal item
+
 #### Sceneflags
 Ancient Cistern:
 - 85, after recieving item from flame CS
