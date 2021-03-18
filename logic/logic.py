@@ -777,7 +777,6 @@ class Logic:
       if newly_accessible_predetermined_item_locations:
         for predetermined_item_location_name in newly_accessible_predetermined_item_locations:
           predetermined_item_name = self.prerandomization_item_locations[predetermined_item_location_name]
-          print(f'placing {predetermined_item_name} at {predetermined_item_location_name}')
           self.set_location_to_item(predetermined_item_location_name, predetermined_item_name)
         
         continue # Redo this loop iteration with the predetermined item locations no longer being considered 'remaining'.
@@ -802,12 +801,6 @@ class Logic:
           possible_items.remove(prerand_item)
 
       if len(possible_items) == 0:
-        print(self.check_requirement_met("Can Access Lanayru Mining Facility"))
-        print(accessible_undone_locations)
-        print('\n\n')
-        print('LMF Small Key' in self.currently_owned_items)
-        print('\n\n')
-        print(self.unplaced_progress_items)
         raise Exception("Only items left to place are predetermined items at inaccessible locations!")
       
       # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
