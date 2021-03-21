@@ -872,8 +872,8 @@ class GamePatcher:
             if location in beedle_texts:
                 if sold_item in beedle_texts[location]:
                     # item has custom text for Beedle's shop
-                    normal_text = beedle_texts[location][sold_item]['normal']
-                    discount_text = beedle_texts[location][sold_item]['discount']
+                    normal_text = f'{beedle_texts[location][sold_item]["normal"]}{BEEDLE_BUY_SWTICH}'
+                    discount_text = f'{beedle_texts[location][sold_item]["discount"]}{BEEDLE_BUY_SWTICH}'
 
             self.eventpatches['105-Terry'].append({
                 'name': f'{location} Text',
