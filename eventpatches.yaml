@@ -548,11 +548,6 @@
       param3: 9
       param4: 0
       param5: 0
-  - name: Buying Bug Net Switch
-    type: flowpatch
-    index: 82
-    flow:
-      param2: 36 # always trigger
   - name: Can't buy Pouch text
     type: textadd
     text: "You need an \x0E\x00\x03\x02\x05Adventure Pouch\x0E\x00\x03\x02\uFFFF to buy\nthis!"
