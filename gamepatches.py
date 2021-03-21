@@ -225,6 +225,17 @@ POST_DUNGEON_CUTSCENE = {
     'Skykeep': ('F407', 0, 2),
 }
 
+BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
+    'Skyloft - Beedle 50 Rupee Item': (25, 26, 50, 25),
+    'Skyloft - Beedle First 100 Rupee Item': (23, 24, 100, 50),
+    'Skyloft - Beedle 300 Rupee Item': (19, 20, 300, 150),
+    'Skyloft - Beedle 600 Rupee Item': (29, 30, 600, 300),
+    'Skyloft - Beedle 800 Rupee Item': (27, 28, 800, 400),
+    'Skyloft - Beedle 1000 Rupee Item': (33, 34, 1000, 500),
+    'Skyloft - Beedle 1200 Rupee Item': (31, 32, 1200, 600),
+    'Skyloft - Beedle 1600 Rupee Item': (21, 22, 1600, 800),
+}
+
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
 PROGRESSIVE_SWORD_ITEMIDS = [10, 11, 12, 9, 13, 14]
 
@@ -840,6 +851,31 @@ class GamePatcher:
                 'next': 'Check for Pouch' if self.rando.options['shop-mode'] == 'Vanilla' else 43
             }
         })
+        for location in BEEDLE_TEXT_PATCHES:
+            normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[location]
+            sold_item = self.rando.logic.done_item_locations[location]
+            default_normal_text =\
+                f'That there is a {sold_item}.\n' \
+                f'I\'m selling it for only {normal_price} rupees!\n' \
+                f'Want to buy it?\n' \
+                f'\x0E\x01\x00\x02\uFFFFI\'ll buy it!\x0E\x01\x01\x02\x00No, thanks.'
+            default_discount_text =\
+                f'That there is a {sold_item}. Just this once\n' \
+                f'it\'s half off! It can be yours for just{discount_price} rupees!\n' \
+                f'Want to buy it?\n' \
+                f'\x0E\x01\x00\x02\uFFFFI\'ll buy it!\x0E\x01\x01\x02\x00No, thanks.'
+            self.eventpatches['105-Terry'].append({
+                'name': f'{location} Text',
+                'type': 'textpatch',
+                'index': normal,
+                'text': default_normal_text
+            })
+            self.eventpatches['105-Terry'].append({
+                'name': f'{location} Discount Text',
+                'type': 'textpatch',
+                'index': discounted,
+                'text': default_discount_text
+            })
 
     def do_build_arc_cache(self):
         self.rando.progress_callback('building arc cache...')
