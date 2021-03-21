@@ -236,6 +236,8 @@ BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted p
     'Skyloft - Beedle 1600 Rupee Item': (21, 22, 1600, 800),
 }
 
+BEEDLE_BUY_SWTICH = '\x0E\x01\x00\x02\uFFFFI\'ll buy it!\x0E\x01\x01\x02\x00No, thanks.'
+
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
 PROGRESSIVE_SWORD_ITEMIDS = [10, 11, 12, 9, 13, 14]
 
@@ -851,30 +853,39 @@ class GamePatcher:
                 'next': 'Check for Pouch' if self.rando.options['shop-mode'] == 'Vanilla' else 43
             }
         })
+        with (Path(__file__).parent / "beedle_texts.yaml").open('r') as f:
+            beedle_texts = yaml.safe_load(f)
+        print(beedle_texts)
         for location in BEEDLE_TEXT_PATCHES:
             normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[location]
             sold_item = self.rando.logic.done_item_locations[location]
-            default_normal_text =\
+            normal_text =\
                 f'That there is a {sold_item}.\n' \
                 f'I\'m selling it for only {normal_price} rupees!\n' \
                 f'Want to buy it?\n' \
-                f'\x0E\x01\x00\x02\uFFFFI\'ll buy it!\x0E\x01\x01\x02\x00No, thanks.'
-            default_discount_text =\
+                f'{BEEDLE_BUY_SWTICH}'
+            discount_text =\
                 f'That there is a {sold_item}. Just this once\n' \
                 f'it\'s half off! It can be yours for just{discount_price} rupees!\n' \
                 f'Want to buy it?\n' \
-                f'\x0E\x01\x00\x02\uFFFFI\'ll buy it!\x0E\x01\x01\x02\x00No, thanks.'
+                f'{BEEDLE_BUY_SWTICH}'
+            if location in beedle_texts:
+                if sold_item in beedle_texts[location]:
+                    # item has custom text for Beedle's shop
+                    normal_text = beedle_texts[location][sold_item]['normal']
+                    discount_text = beedle_texts[location][sold_item]['discount']
+
             self.eventpatches['105-Terry'].append({
                 'name': f'{location} Text',
                 'type': 'textpatch',
                 'index': normal,
-                'text': default_normal_text
+                'text': normal_text
             })
             self.eventpatches['105-Terry'].append({
                 'name': f'{location} Discount Text',
                 'type': 'textpatch',
                 'index': discounted,
-                'text': default_discount_text
+                'text': discount_text
             })
 
     def do_build_arc_cache(self):
