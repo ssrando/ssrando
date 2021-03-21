@@ -3,7 +3,7 @@ This only works if the game language is set to ENGLISH, other languages will NOT
 There is also the [Skyward Sword Randomizer Discord](https://discord.gg/evpNKkaaw6)
 
 ## Running the compiled binary (Windows)(recommended)
-1. For stable releases, grab the compiled program from the [github release section](https://github.com/lepelog/sslib/releases), for the newest, although potentially untested build get them from [appveyor](https://ci.appveyor.com/project/lepelog/sslib).
+1. For stable releases, grab the compiled program from the [github release section](https://github.com/lepelog/sslib/releases), for the newest, although potentially untested build get them from [github actions](https://nightly.link/lepelog/sslib/workflows/build.yaml/master).
 2. Download the zipfile, extract it somewhere (if you already have an older version installed, install it over and replace the existing files)
 3. run `ssrando.exe`
 4. Select a clean NTSC-U 1.00 ISO
