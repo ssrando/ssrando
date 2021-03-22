@@ -11,6 +11,42 @@ FLOWTYPES = {'type1': 1,
 
 ParsedMsb = NewType('ParsedMsb', OrderedDict)
 
+# both in utf-8
+CONTROL_REPLACEMENTS = {
+    '<r<':  '\x0e\x00\x03\x02\x00',   # red
+    '<rd<': '\x0e\x00\x03\x02\x01',   # also red
+    '<y+<': '\x0e\x00\x03\x02\x02',   # yellow-white
+    '<b<':  '\x0e\x00\x03\x02\x03',   # blue
+    '<g<':  '\x0e\x00\x03\x02\x04',   # green
+    '<y<':  '\x0e\x00\x03\x02\x05',   # yellow
+    '<g+<': '\x0e\x00\x03\x02\x07',   # green rupee green
+    '<b+<': '\x0e\x00\x03\x02\x08',   # blue rupee blue
+    '<r+<': '\x0e\x00\x03\x02\x09',   # red-white
+    '<s<':  '\x0e\x00\x03\x02\x0A',   # silver
+    '<y+<': '\x0e\x00\x03\x02\x0B',   # gold rupee gold
+    '<blk<':'\x0e\x00\x03\x02\x0C',   # rupoor
+    '>>':   '\x0e\x00\x03\x02\uFFFF', # end color
+
+    # start of option token, '-' means cancel (B) option
+    '[1]':  '\x0e\x01\x00\x02\uFFFF',
+    '[2-]': '\x0e\x01\x01\x02\x00',
+    '[2]':  '\x0e\x01\x01\x02\uFFFF',
+    '[3-]': '\x0e\x01\x02\x02\x00',
+    '[3]':  '\x0e\x01\x02\x02\uFFFF',
+    '[4-]': '\x0e\x01\x03\x02\x00',
+    '[4]':  '\x0e\x01\x03\x02\uFFFF',
+
+    '<numeric arg0>': '\x0e\x02\x03\x06\x00\x00\xcd',
+    '<numeric arg1>': '\x0e\x02\x03\x06\x00\x01\xcd',
+    '<numeric arg2>': '\x0e\x02\x03\x06\x00\x02\xcd',
+    '<numeric arg3>': '\x0e\x02\x03\x06\x00\x03\xcd',
+    '<numeric arg4>': '\x0e\x02\x03\x06\x00\x04\xcd',
+}
+def process_control_sequences(data: str) -> str:
+    for orig, replaced in CONTROL_REPLACEMENTS.items():
+        data = data.replace(orig, replaced)
+    return data
+
 def parseMSB(data: bytes) -> ParsedMsb:
     parsed = OrderedDict()
     if data[:10] == b'MsgFlwBn\xFE\xFF':

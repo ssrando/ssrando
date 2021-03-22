@@ -2,7 +2,7 @@
   - name: Spiral Charge Text
     type: textpatch
     index: 27
-    text: "You learned the \x0E\x00\x03\x02\x05Spiral Charge\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned the <y<Spiral Charge>>!"
   - name: Change Spiral Charge Scene change
     type: flowpatch
     index: 584 # change it to give Spiral Charge Storyflag
@@ -19,71 +19,71 @@
   - name: Goddess Longsword Text
     type: textpatch
     index: 16
-    text: "You got the \x0E\x00\x03\x02\x05Goddess Longsword\x0E\x00\x03\x02\uFFFF!\nThe flames of Farore have improved your\nsword, making it longer and sharp enough\nto do twice as much damage!"
+    text: "You got the <y<Goddess Longsword>>!\nThe flames of Farore have improved your\nsword, making it longer and sharp enough\nto do twice as much damage!"
   - name: Goddess Whitesword Text
     type: textpatch
     index: 12
-    text: "You got the \x0E\x00\x03\x02\x05Goddess White Sword\x0E\x00\x03\x02\uFFFF!\nThe flames of Nayru have transformed\nyour blade, expanding Fi's powers.\n\nShe can now help you use your \x0E\x00\x03\x02\x00dowsing\x0E\x00\x03\x02\uFFFF\nability to search for more objects!"
+    text: "You got the <y<Goddess White Sword>>!\nThe flames of Nayru have transformed\nyour blade, expanding Fi's powers.\n\nShe can now help you use your <r<dowsing>>\nability to search for more objects!"
   - name: Master Sword Text
     type: textpatch
     index: 17
-    text: "You got the \x0E\x00\x03\x02\x05Master Sword\x0E\x00\x03\x02\uFFFF!\nThe flames of Din have imbued your\nblade with a sacred white light that\ndemons revile."
+    text: "You got the <y<Master Sword>>!\nThe flames of Din have imbued your\nblade with a sacred white light that\ndemons revile."
   - name: True Master Sword Text
     type: textpatch
     index: 19
-    text: "You got the \x0E\x00\x03\x02\x05True Master Sword\x0E\x00\x03\x02\uFFFF!\nThe goddess has blessed your blade, and\nthe Master Sword has at last achieved its\nultimate form!"
+    text: "You got the <y<True Master Sword>>!\nThe goddess has blessed your blade, and\nthe Master Sword has at last achieved its\nultimate form!"
   - name: Harp Text
     type: textpatch
     index: 21
-    text: "You got the \x0E\x00\x03\x02\x05Goddess's Harp\x0E\x00\x03\x02\uFFFF!\nBut there's no time to admire it!"
+    text: "You got the <y<Goddess's Harp>>!\nBut there's no time to admire it!"
   - name: Emerald Tablet text
     type: textpatch
     index: 227
-    text: "You got the \x0E\x00\x03\x02\x05Emerald Tablet\x0E\x00\x03\x02\uFFFF!\nThe weathered surface of this heavy stone\ntablet feels very old."
+    text: "You got the <y<Emerald Tablet>>!\nThe weathered surface of this heavy stone\ntablet feels very old."
   - name: Ruby Tablet text
     type: textpatch
     index: 228
-    text: "You got the \x0E\x00\x03\x02\x05Ruby Tablet\x0E\x00\x03\x02\uFFFF!\nThe weathered surface of this heavy stone\ntablet feels very old."
+    text: "You got the <y<Ruby Tablet>>!\nThe weathered surface of this heavy stone\ntablet feels very old."
   - name: Amber Tablet text
     type: textpatch
     index: 229
-    text: "You got the \x0E\x00\x03\x02\x05Amber Tablet\x0E\x00\x03\x02\uFFFF!\nThe weathered surface of this heavy stone\ntablet feels very old."
+    text: "You got the <y<Amber Tablet>>!\nThe weathered surface of this heavy stone\ntablet feels very old."
   - name: Farore's Courage Text
     type: textpatch
     index: 237
-    text: "You learned \x0E\x00\x03\x02\x05Farore's Courage\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned <y<Farore's Courage>>!"
   - name: Nayru's Wisdom Text
     type: textpatch
     index: 238
-    text: "You learned \x0E\x00\x03\x02\x05Nayru's Wisdom\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned <y<Nayru's Wisdom>>!"
   - name: Din's Power Text
     type: textpatch
     index: 239
-    text: "You learned \x0E\x00\x03\x02\x05Din's Power\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned <y<Din's Power>>!"
   - name: Faron SotH text
     type: textpatch
     index: 240
-    text: "You learned the \x0E\x00\x03\x02\x05Water Dragon's Song\x0E\x00\x03\x02\uFFFF!\nThis is a part of the \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned the <y<Water Dragon's Song>>!\nThis is a part of the <y<Song of the Hero>>!"
   - name: Eldin SotH text
     type: textpatch
     index: 241
-    text: "You learned the \x0E\x00\x03\x02\x05Fire Dragon's Song\x0E\x00\x03\x02\uFFFF!\nThis is a part of the \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned the <y<Fire Dragon's Song>>!\nThis is a part of the <y<Song of the Hero>>!"
   - name: Lanayru SotH text
     type: textpatch
     index: 242
-    text: "You learned the \x0E\x00\x03\x02\x05Thunder Dragon's Song\x0E\x00\x03\x02\uFFFF!\nThis is a part of the \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF!"
+    text: "You learned the <y<Thunder Dragon's Song>>!\nThis is a part of the <y<Song of the Hero>>!"
   - name: Full SotH text
     type: textpatch
     index: 243
-    text: "The \x0E\x00\x03\x02\x05Song of the Hero\x0E\x00\x03\x02\uFFFF is now complete!"
+    text: "The <y<Song of the Hero>> is now complete!"
   - name: Single Gratitude crystal counter
     type: textpatch
     index: 45 # \x0e\x02\x03\x06\x00\x00\xcd is for showing numeric arg0
-    text: "You got \x0e\x00\x03\x02\x00five\x0e\x00\x03\x02\uFFFF \x0e\x00\x03\x02\x05Gratitude Crystals\x0e\x00\x03\x02\uFFFF!\nThat is \x0e\x00\x03\x02\x00\x0e\x02\x03\x06\x00\x01\xcd\x0e\x00\x03\x02\uFFFF in Total!"
+    text: "You got <r<five>> <y<Gratitude Crystals>>!\nThat is <r<<numeric arg1> >>in Total!"
   - name: Single Gratitude crystal counter
     type: textpatch
     index: 62 # \x0e\x02\x03\x06\x00\x00\xcd is for showing numeric arg0
-    text: "You got \x0e\x00\x03\x02\x00one\x0e\x00\x03\x02\uFFFF \x0e\x00\x03\x02\x05Gratitude Crystal\x0e\x00\x03\x02\uFFFF!\nThat is \x0e\x00\x03\x02\x00\x0e\x02\x03\x06\x00\x01\xcd\x0e\x00\x03\x02\uFFFF in Total!"
+    text: "You got <r<one>> <y<Gratitude Crystal>>!\nThat is <r<<numeric arg1> >>in Total!"
   - name: Zelda dowsing in Key Piece
     type: flowpatch
     index: 677
@@ -550,7 +550,7 @@
       param5: 0
   - name: Can't buy Pouch text
     type: textadd
-    text: "You need an \x0E\x00\x03\x02\x05Adventure Pouch\x0E\x00\x03\x02\uFFFF to buy\nthis!"
+    text: "You need an <y<Adventure Pouch>> to buy\nthis!"
   - name: Show can't buy Pouch text
     type: flowadd
     flow:
@@ -845,7 +845,7 @@
   - name: Fix Soup textboxes
     type: textpatch
     index: 143
-    text: "What's the matter? You look like\nyou've got something mighty\nserious on your mind.\n\x0E\x01\x00\x02\uFFFFSoup\x0E\x01\x01\x02\x00No Soup"
+    text: "What's the matter? You look like\nyou've got something mighty\nserious on your mind.\n[1]Soup[2-]No Soup"
   - name: Go back to chandellier quest
     type: flowpatch
     index: 347
@@ -853,7 +853,7 @@
       next: 520
   - name: New text Option
     type: textadd
-    text: "Hey, you look like you have a Questions?\n\x0E\x01\x00\x02\uFFFFLevias\x0E\x01\x01\x02\x00Other Things"
+    text: "Hey, you look like you have a Questions?\n[1]Levias[2-]Other Things"
   - name: Show new Text Option
     type: flowadd
     flow:
@@ -1118,7 +1118,7 @@
   - name: Statue Lower Question
     type: textpatch
     index: 9
-    text: "Do you want to reset the statue?\n\x0E\x01\x00\x02\uFFFFYes\x0E\x01\x01\x02\x00No"
+    text: "Do you want to reset the statue?\n[1]Yes[2-]No"
   - name: Replace Stone Tablet Fi Event
     type: flowpatch
     index: 7

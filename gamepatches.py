@@ -12,6 +12,7 @@ import re
 
 import nlzss11
 from sslib import AllPatcher, U8File
+from sslib.msb import process_control_sequences
 from sslib.utils import write_bytes_create_dirs, encodeBytes
 from sslib.fs_helpers import write_str, write_u16, write_float
 from sslib.dol import DOL
@@ -236,7 +237,7 @@ BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted p
     'Skyloft - Beedle 1600 Rupee Item': (21, 22, 1600, 800),
 }
 
-BEEDLE_BUY_SWTICH = '\x0E\x01\x00\x02\uFFFFI\'ll buy it!\x0E\x01\x01\x02\x00No, thanks.'
+BEEDLE_BUY_SWTICH = '[1]I\'ll buy it![2-]No, thanks.'
 
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
 PROGRESSIVE_SWORD_ITEMIDS = [10, 11, 12, 9, 13, 14]
@@ -1375,13 +1376,13 @@ class GamePatcher:
         textpatches = self.eventpatches.get(filename, [])
         textpatches = list(filter(self.filter_option_requirement, textpatches))
         for command in filter(lambda x: x['type'] == 'textpatch', textpatches):
-            msbt['TXT2'][command['index']] = command['text'].encode('utf-16be')
+            msbt['TXT2'][command['index']] = process_control_sequences(command['text']).encode('utf-16be')
             # print(f'patched text {command["index"]}, {filename}')
             modified = True
         for command in filter(lambda x: x['type'] == 'textadd', textpatches):
             index = len(msbt['TXT2'])
             self.text_labels[command['name']] = index
-            msbt['TXT2'].append(command['text'].encode('utf-16be'))
+            msbt['TXT2'].append(process_control_sequences(command['text']).encode('utf-16be'))
             msbt['ATR1'].append({'unk1':command.get('unk1',1), 'unk2':command.get('unk2',0)})
             # the game doesn't care about the name, but it has to exist and be unique
             # only unique within a file but whatever
