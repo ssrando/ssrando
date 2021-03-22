@@ -856,7 +856,7 @@ class GamePatcher:
         })
         with (Path(__file__).parent / "beedle_texts.yaml").open('r') as f:
             beedle_texts = yaml.safe_load(f)
-        print(beedle_texts)
+        # print(beedle_texts)
         for location in BEEDLE_TEXT_PATCHES:
             normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[location]
             sold_item = self.rando.logic.done_item_locations[location]

@@ -281,13 +281,13 @@ Skyloft - Beedle Third 100 Rupee Item:
   Paths:
     - ShpSmpl/18
 Skyloft - Beedle 300 Rupee Item:
-  Need: Can Access Beedle's Shop & Can Afford 300 Rupees
+  Need: Can Access Beedle's Shop & Can Afford 300 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
   original item: Progressive Pouch
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/20
 Skyloft - Beedle 600 Rupee Item:
-  Need: Can Access Beedle's Shop & Can Afford 600 Rupees
+  Need: Can Access Beedle's Shop & Can Afford 600 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
   original item: Progressive Pouch
   type: skyloft, beedle, medium
   Paths:
@@ -305,7 +305,7 @@ Skyloft - Beedle 1000 Rupee Item:
   Paths:
     - ShpSmpl/27
 Skyloft - Beedle 1200 Rupee Item:
-  Need: Can Access Beedle's Shop & Can Afford 1200 Rupees
+  Need: Can Access Beedle's Shop & Can Afford 1200 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
   original item: Progressive Pouch
   type: skyloft, beedle, expensive
   Paths:

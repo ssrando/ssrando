@@ -136,12 +136,6 @@ class Logic:
     for item_name in self.rando.starting_items:
       self.add_owned_item(item_name)
     
-    self.make_useless_progress_items_nonprogress()
-    
-    self.cached_enemies_tested_for_req_string = OrderedDict()
-  
-  # main randomization method
-  def randomize_items(self):
     # collect all items that aren't supposed to be randomized
     for location_name, item in self.item_locations.items():
       item_name = item['original item']
@@ -150,9 +144,24 @@ class Logic:
     if self.rando.options['shop-mode'] != 'Randomized':
       for shop_check in SHOP_CHECKS:
         if self.rando.options['shop-mode'] == 'Vanilla':
-          self.set_prerandomization_item_location(shop_check, self.item_locations[shop_check]['original item'])
+          orig_item = self.item_locations[shop_check]['original item']
+          self.set_prerandomization_item_location(shop_check, orig_item)
         else:
           self.racemode_ban_location(shop_check)
+
+    self.make_useless_progress_items_nonprogress()
+
+    if self.rando.options['shop-mode'] == 'Vanilla':
+      # if shops are vanilla, make wallets and the extra pouch upgrades non progress
+      for wallet_item in (["Progressive Wallet"]*4 + ["Extra Wallet"]*3 + ["Progressive Pouch"]*3):
+        self.unplaced_progress_items.remove(wallet_item)
+        self.unplaced_nonprogress_items.append(wallet_item)
+        self.all_progress_items.remove(wallet_item)
+        self.all_nonprogress_items.append(wallet_item)
+
+  
+  # main randomization method
+  def randomize_items(self):
     self.randomize_dungeon_items()
     self.randomize_progression_items()
     self.randomize_nonprogress_items()
