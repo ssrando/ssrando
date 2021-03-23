@@ -24,14 +24,13 @@ class BaseLogicExpression(LogicExpression):
             item_name = match.group(1)
             num_required = int(match.group(2))
             
-            num_owned = logic.currently_owned_items.count(item_name)
-            return num_owned >= num_required
+            return logic.current_inventory.has_countable_item(item_name, num_required)
         elif self.req_name.startswith("Can Access Other Location \""):
             return logic.check_other_location_requirement(self.req_name)
         elif self.req_name.startswith("Option \""):
             return logic.check_option_enabled_requirement(self.req_name)
         elif self.req_name in logic.all_item_names:
-            return self.req_name in logic.currently_owned_items
+            return logic.current_inventory.has_item(self.req_name)
         elif self.req_name in logic.macros:
             logical_expression = logic.macros[self.req_name]
             return logic.check_logical_expression_req(logical_expression)

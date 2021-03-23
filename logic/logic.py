@@ -2,9 +2,10 @@
 
 import yaml
 import re
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 import copy
 from pathlib import Path
+from typing import DefaultDict
 
 import os
 
@@ -27,6 +28,32 @@ MAP_BANNED_LOCATIONS = [
   "Sandship - Nayru's Flame",
   "Fire Sanctuary - Din's Flame"
 ]
+
+class Inventory:
+  def __init__(self):
+    self.owned_items: DefaultDict[str, int] = defaultdict(int)
+  
+  def has_item(self, item):
+    return self.owned_items.get(item, 0) >= 1
+  
+  def has_countable_item(self, item, count):
+    return self.owned_items.get(item, 0) >= count
+  
+  def collect_item(self, item):
+    # TODO: progress item groups
+    self.owned_items[item] += 1
+  
+  def remove_item(self, item):
+    # TODO: progress item groups
+    if self.owned_items[item] >= 1:
+      self.owned_items[item] -= 1
+
+  def all_owned_unique_items(self):
+    return set((item for item, count in self.owned_items.items() if count >= 1))
+  
+  def __str__(self):
+    return str(self.owned_items)
+
 
 class Logic:
   # PROGRESS_ITEM_GROUPS = OrderedDict([
@@ -131,7 +158,7 @@ class Logic:
     self.unplaced_nonprogress_items = self.all_nonprogress_items.copy()
     self.unplaced_fixed_consumable_items = self.all_fixed_consumable_items.copy()
     
-    self.currently_owned_items = []
+    self.current_inventory = Inventory()
     
     for item_name in self.rando.starting_items:
       self.add_owned_item(item_name)
@@ -205,7 +232,7 @@ class Logic:
       raise Exception("Unknown item name: " + item_name)
     
     else:
-      self.currently_owned_items.append(cleaned_item_name)
+      self.current_inventory.collect_item(cleaned_item_name)
     
     if item_name in self.unplaced_progress_items:
       self.unplaced_progress_items.remove(item_name)
@@ -220,7 +247,7 @@ class Logic:
       raise Exception("Unknown item name: " + item_name)
     
     else:
-      self.currently_owned_items.remove(cleaned_item_name)
+      self.current_inventory.remove_item(cleaned_item_name)
     
     if item_name in self.all_progress_items:
       self.unplaced_progress_items.append(item_name)
@@ -311,7 +338,7 @@ class Logic:
     
     for item_names_for_loc in item_names_for_all_locations:
       item_names_for_loc_without_owned = item_names_for_loc.copy()
-      for item_name in self.currently_owned_items:
+      for item_name in self.current_inventory.all_owned_unique_items():
         if item_name in item_names_for_loc_without_owned:
           item_names_for_loc_without_owned.remove(item_name)
       
@@ -586,7 +613,7 @@ class Logic:
     items_to_make_nonprogress = [
       item_name for item_name in self.all_progress_items
       if item_name not in all_progress_items_filtered
-      and item_name not in self.currently_owned_items
+      and item_name not in self.current_inventory.all_owned_unique_items()
     ]
     for item_name in items_to_make_nonprogress:
       # print(item_name)
@@ -631,14 +658,13 @@ class Logic:
       item_name = match.group(1)
       num_required = int(match.group(2))
       
-      num_owned = self.currently_owned_items.count(item_name)
-      return num_owned >= num_required
+      return self.current_inventory.has_countable_item(item_name, num_required)
     elif req_name.startswith("Can Access Other Location \""):
       return self.check_other_location_requirement(req_name)
     elif req_name.startswith("Option \""):
       return self.check_option_enabled_requirement(req_name)
     elif req_name in self.all_item_names:
-      return req_name in self.currently_owned_items
+      return req_name in self.current_inventory.has_item(req_name)
     elif req_name in self.macros:
       logical_expression = self.macros[req_name]
       return self.check_logical_expression_req(logical_expression)
@@ -969,6 +995,7 @@ class Logic:
     #   ]
     
     if not possible_locations:
+      print(self.current_inventory)
       raise Exception(f"No valid locations left to place dungeon item {item_name}!")
     
     location_name = self.rando.rng.choice(possible_locations)
