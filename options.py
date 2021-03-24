@@ -98,7 +98,10 @@ class Options():
             else:
                 raise Exception(f'unknown type: {option["type"]}')
         writer.flush()
-        return writer.to_base64()
+        permalink = writer.to_base64()
+        if self['seed'] != -1:
+            permalink += "#" + str(self['seed'])
+        return permalink
 
     def set_option(self, option_name, option_value):
         """
@@ -148,7 +151,11 @@ class Options():
         for option_name in self.options:
             self.set_option(option_name, self[option_name])
 
-    def update_from_permalink(self, permalink):
+    def update_from_permalink(self, permalink: str):
+        if "#" in permalink:
+            # includes the seed as well
+            permalink, seed_str = permalink.split('#',1)
+            self.set_option('seed', int(seed_str))
         reader = PackedBitsReader.from_base64(permalink)
         for option_name, option in OPTIONS.items():
             if not option.get('permalink',True):
