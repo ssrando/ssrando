@@ -1359,7 +1359,7 @@ class GamePatcher:
             object_arc.add_file_data(f'oarc/{oarc}.arc', oarc_data)
             objpack_modified = True
         # arc replacements
-        ARC_REPLACEMENTS_PATH = RANDO_ROOT_PATH / 'arc-replacements'
+        ARC_REPLACEMENTS_PATH = self.rando.exe_root_path / 'arc-replacements'
         ARC_REPLACEMENTS_PATH.mkdir(exist_ok=True)
         for file in ARC_REPLACEMENTS_PATH.glob('*.arc'):
             arcname = file.parts[-1] # includes the .arc extension
