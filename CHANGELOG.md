@@ -1,6 +1,10 @@
 # Changelog
 
 ## Dev
+### Changes
+- Optionally added seed to permalink
+
+## 1.0.5
 ### Options
 - Added option to randomize dungeon entrances
 - Added option to add rupoors into the junk item pool
