@@ -173,3 +173,6 @@ spoiler.txt
 
 # files generated for build
 version-with-git.txt
+
+#settings save file
+settings.txt
