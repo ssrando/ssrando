@@ -997,7 +997,6 @@ class GamePatcher:
                 'index': hintdef['textindex'],
                 'text': self.rando.hints.hints[hintname]
             })
-        print(self.eventpatches['004-Object'])
     
     def handle_oarc_add_remove(self):
         remove_stageoarcs = defaultdict(set)
