@@ -364,9 +364,3 @@ blr
 .org 0x15B0
 bl set_first_time_cs_already_watched ; in a branch that is not taken for the time shift stone on sandship
 .close
-
-.open "d_a_obj_harp_hintNP.rel"
-; reveal all gossip stones
-.org 0xD80
-b 0xDBC
-.close
