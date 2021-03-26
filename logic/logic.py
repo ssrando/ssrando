@@ -957,12 +957,15 @@ class Logic:
       item_name = self.rando.rng.choice(possible_items)
       self.set_location_to_item(location_name, item_name)
   
-  def can_finish_without_locations(self, locations):
+  def can_finish_without_locations(self, banned_locations):
+    return self.can_reach_restricted(banned_locations, self.macros["Can Reach and Defeat Demise"])
+
+  def can_reach_restricted(self, banned_locations, requirement: LogicExpression):
     inventory = Inventory()
     for item_name in self.rando.starting_items:
       inventory.collect_item(item_name)
     remaining_locations = set(self.item_locations.keys())
-    for loc in locations:
+    for loc in banned_locations:
       remaining_locations.remove(loc)
     while True:
       new_location_checked = False
@@ -973,7 +976,7 @@ class Logic:
           item = self.done_item_locations[loc]
           if item in self.all_progress_items:
             inventory.collect_item(item)
-            if self.macros["Can Reach and Defeat Demise"].is_true(self.rando.options, inventory, self.macros):
+            if requirement.is_true(self.rando.options, inventory, self.macros):
               return True
       if not new_location_checked:
         return False

@@ -1,7 +1,7 @@
 from .logic import Logic
 from paths import RANDO_ROOT_PATH
 import yaml
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 
 ALWAYS_REQUIRED_LOCATIONS = [
     'Thunderhead - Levias',
@@ -32,6 +32,8 @@ class Hints:
     def __init__(self, logic: Logic):
         with (RANDO_ROOT_PATH / "hints.yaml").open() as f:
             self.stonehint_definitions: dict = yaml.safe_load(f)
+        for hintdef in self.stonehint_definitions.values():
+            hintdef["Need"] = Logic.parse_logic_expression(hintdef["Need"])
         self.logic = logic
         self.hints = OrderedDict()
     
@@ -44,8 +46,6 @@ class Hints:
         total_stonehints = len(self.stonehint_definitions)
         needed_always_hints = self.logic.filter_locations_for_progression(ALWAYS_REQUIRED_LOCATIONS)
         needed_sometimes_hints = self.logic.filter_locations_for_progression(SOMETIMES_LOCATIONS)
-        # needed_always_hints = [location for location in ALWAYS_REQUIRED_LOCATIONS if not location in self.logic.race_mode_banned_locations]
-        # needed_sometimes_hints = [location for location in SOMETIMES_LOCATIONS if not location in self.logic.race_mode_banned_locations]
         hints_left = total_stonehints
         for location in needed_always_hints:
             hint_locations.append(location)
@@ -53,9 +53,46 @@ class Hints:
         for location in self.logic.rando.rng.sample(needed_sometimes_hints, k=min(hints_left, len(needed_sometimes_hints))):
             hint_locations.append(location)
             hints_left -= 1
-        hints = [f'{location}\nhas\n{self.logic.done_item_locations[location]}.' for location in hint_locations]
-        while len(hints) < total_stonehints:
-            hints.append('--PLACEHOLDER--')
-        self.logic.rando.rng.shuffle(hints)
-        for i, hint_def in enumerate(self.stonehint_definitions):
-            self.hints[hint_def] = hints[i]
+        
+        # make sure hint locations aren't locked by the item they hint
+        hint_banned_stones = defaultdict(set)
+        for hint_location in hint_locations:
+            hinted_item = self.logic.done_item_locations[hint_location]
+            if hinted_item in self.logic.all_progress_items:
+                for gossipstone_name, gossipstone_def in self.stonehint_definitions.items():
+                    if not self.logic.can_reach_restricted([hint_location], gossipstone_def["Need"]):
+                        hint_banned_stones[gossipstone_name].add(hint_location)
+        stones_to_banned_locs_sorted = sorted(hint_banned_stones.items(), key=lambda x: len(x[1]), reverse=True)
+
+        if len(hint_locations) < len(self.stonehint_definitions):
+            hint_locations.extend([None]*(len(self.stonehint_definitions) - len(hint_locations)))
+        unhinted_locations = hint_locations.copy()
+
+        hint_to_location = {}
+        # place locations that are restricted in locations
+        for gossipstone_name, banned_locations in stones_to_banned_locs_sorted:
+            valid_locations = [loc for loc in unhinted_locations if not loc in banned_locations]
+            if len(valid_locations) == 0:
+                print(f"no valid location for {gossipstone_name} in seed {self.logic.rando.seed}")
+                loc_to_hint = unhinted_locations[0]
+                # raise Exception('no valid location to place hint!')
+            else:
+                loc_to_hint = self.logic.rando.rng.choice(valid_locations)
+            hint_to_location[gossipstone_name] = loc_to_hint
+            unhinted_locations.remove(loc_to_hint)
+        # place locations that aren't restricted and also fill rest of locations
+        for gossipstone_name in [name for name in self.stonehint_definitions if not name in hint_to_location]:
+            if len(unhinted_locations) == 0:
+                # placeholder
+                hint_to_location[gossipstone_name] = None
+                continue
+            loc_to_hint = self.logic.rando.rng.choice(unhinted_locations)
+            unhinted_locations.remove(loc_to_hint)
+            hint_to_location[gossipstone_name] = loc_to_hint
+        for gossipstone_name in self.stonehint_definitions:
+            loc_to_hint = hint_to_location[gossipstone_name]
+            if loc_to_hint is None:
+                self.hints[gossipstone_name] = '--PLACEHOLDER--'
+            else:
+                zone_name, specific_name = Logic.split_location_name_by_zone(loc_to_hint)
+                self.hints[gossipstone_name] = f'{zone_name}\n{specific_name}\nhas {self.logic.done_item_locations[loc_to_hint]}'
