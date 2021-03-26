@@ -1,7 +1,9 @@
 import os
 import sys
 from pathlib import Path
+import random
 
+import yaml
 from PySide2 import QtWidgets
 from PySide2.QtCore import Qt, QTimer, QEvent
 from PySide2.QtWidgets import QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
@@ -37,6 +39,10 @@ class RandoGUI(QMainWindow):
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
 
         self.options = options
+        self.settings_path = "settings.txt"
+        if os.path.isfile(self.settings_path):
+            with open(self.settings_path) as f:
+                self.options.update_from_permalink(f.readline())
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
@@ -129,6 +135,7 @@ class RandoGUI(QMainWindow):
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.progression_goddess.clicked.connect(self.goddess_cubes_toggled)
+        self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.update_ui_for_settings()
         self.set_option_description(None)
 
@@ -263,6 +270,10 @@ class RandoGUI(QMainWindow):
             widget.setChecked(not check_type in current_settings['banned-types'])
         self.ui.permalink.setText(current_settings.get_permalink())
 
+    def save_settings(self):
+        with open(self.settings_path, "w") as f:
+            f.write(self.options.get_permalink())
+
     def update_settings(self):
         self.options.set_option('output-folder', self.ui.output_folder.text())
         try:
@@ -282,6 +293,7 @@ class RandoGUI(QMainWindow):
                 self.options.set_option(option_command, self.get_option_value(ui_name))
 
         self.options.set_option("banned-types", self.get_banned_types())
+        self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
 
     def get_option_value(self, option_name):
@@ -353,6 +365,10 @@ class RandoGUI(QMainWindow):
         self.ui.progression_floria_goddess.setEnabled(enabled)
         self.ui.progression_summit_goddess.setEnabled(enabled)
         self.ui.progression_sand_sea_goddess.setEnabled(enabled)
+    
+    def gen_new_seed(self):
+        self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
+
 
 def run_main_gui(options: Options):
     app = QtWidgets.QApplication([])

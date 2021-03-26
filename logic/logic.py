@@ -71,7 +71,7 @@ class Logic:
       
       # checks outside dungeons that require dungeons:
       if 'Lanayru Mining Facility' in self.rando.non_required_dungeons:
-        self.race_mode_banned_locations.append('Skyloft - Fledge Crystals')
+        self.race_mode_banned_locations.append('Skyloft - Fledge\'s Crystals')
       if 'Skyview' in self.rando.non_required_dungeons:
         # TODO: check again with entrance rando
         self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')

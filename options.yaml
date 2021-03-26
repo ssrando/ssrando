@@ -174,3 +174,18 @@
   help: Enables progression items to appear in all Batreaux rewards up to an including
     the specified amount.
   ui: option_max_batreaux_reward
+- name: Rupoor Mode
+  command: rupoor-mode
+  type: singlechoice
+  default: "Off"
+  choices:
+    - "Off"
+    - Added
+    - Rupoor Mayhem
+    - Rupoor Insanity
+  bits: 2
+  help: Adds or replaces items in the junk item pool with Rupoors. Added adds 15 rupoors to the pool
+    (not replacing existing items), Mayhem replaces half of the junk pool and Insanity replaces the entire
+    pool. All modes also add ruppors to the backup, duplicatable pool for when all other items have been
+    placed
+  ui: option_rupoor_mode

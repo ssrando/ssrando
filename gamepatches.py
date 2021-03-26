@@ -13,10 +13,14 @@ import re
 import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.utils import write_bytes_create_dirs, encodeBytes
+from sslib.dol import DOL
+from sslib.rel import REL
 from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 
 from logic.logic import Logic
+
+from asm.patcher import apply_dol_patch, apply_rel_patch
 
 TOTAL_STAGE_FILES = 369
 TOTAL_EVENT_FILES = 6
@@ -178,15 +182,22 @@ DUNGEON_EXIT_SCENS = {
                  ('B301', 0, 1)],
     'Fire Sanctuary': [('D201', 0, 1), ('D201', 3, 2), ('D201', 10, 2),
                        ('D201_1', 1, 0) , ('D201_1', 7, 0), ('D201_1', 5, 3), ('D201_1', 6, 2)],
-    'Skykeep': [('D003_0', 0, 2), # most of them not needed
+    'Skykeep': [('D003_0', 0, 3), # most of them not needed
                 ('D003_1', 0, 2),
-                ('D003_2', 0, 2),
-                ('D003_3', 0, 2),
+                ('D003_2', 0, 3),
+                ('D003_3', 0, 3),
                 ('D003_4', 0, 2),
                 ('D003_5', 0, 2),
                 ('D003_6', 0, 2),
                 ('D003_7', 0, 2),
-                ('D003_8', 0, 2),
+                ('D003_0', 0, 1), # most of them not needed
+                ('D003_1', 0, 1),
+                ('D003_2', 0, 1),
+                ('D003_3', 0, 1),
+                ('D003_4', 0, 1),
+                ('D003_5', 0, 1),
+                ('D003_6', 0, 1),
+                ('D003_7', 0, 1),
                 ],
 }
 
@@ -664,6 +675,26 @@ class GamePatcher:
         # patches from randomizing items
         self.rando_stagepatches, self.stageoarcs, self.rando_eventpatches = \
             get_patches_from_location_item_list(self.rando.logic.item_locations, self.rando.logic.done_item_locations)
+        
+        # assembly patches
+        self.all_asm_patches = defaultdict(OrderedDict)
+        for asm_patch_file in (RANDO_ROOT_PATH / 'asm' / 'patch_diffs').glob('*_diff.txt'):
+            with asm_patch_file.open('r') as f:
+                asm_patch_file_data = yaml.safe_load(f)
+            for exec_file, patches in asm_patch_file_data.items():
+                self.all_asm_patches[exec_file].update(patches)
+        
+        # for asm, custom symbols
+        with (RANDO_ROOT_PATH / 'asm' / 'custom_symbols.txt').open('r') as f:
+            self.custom_symbols = yaml.safe_load(f)
+        self.main_custom_symbols = self.custom_symbols.get('main.dol',{}) 
+        with (RANDO_ROOT_PATH / 'asm' / 'original_symbols.txt').open('r') as f:
+            self.original_symbols = yaml.safe_load(f)
+        self.main_original_symbols = self.original_symbols.get('main.dol',{}) 
+        
+        # for asm, free space start offset
+        with (RANDO_ROOT_PATH / 'asm' / 'free_space_start_offsets.txt').open('r') as f:
+            self.free_space_start_offsets = yaml.safe_load(f)
     
     def add_entrance_rando_patches(self):
         for entrance, dungeon in self.rando.entrance_connections.items():
@@ -1306,45 +1337,29 @@ class GamePatcher:
     def do_dol_patch(self):
         self.rando.progress_callback('patching main.dol...')
         # patch main.dol
-        orig_dol = bytearray((self.patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
-        for dolpatch in filter(self.filter_option_requirement, self.patches['global'].get('asm',{}).get('main',[])):
-            actual_code = bytes.fromhex(dolpatch['original'])
-            patched_code = bytes.fromhex(dolpatch['patched'])
-            assert len(actual_code) == len(patched_code), "code length has to remain the same!"
-            code_pos = orig_dol.find(actual_code)
-
-            assert code_pos != -1, f"code {dolpatch['original']} not found in main.dol!"
-            assert orig_dol.find(actual_code, code_pos+1) == -1, f"code {dolpatch['original']} found multiple times in main.dol!"
-            orig_dol[code_pos:code_pos+len(actual_code)] = patched_code
-        write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', orig_dol)
+        dol_bytes = BytesIO((self.patcher.actual_extract_path / 'DATA' / 'sys' / 'main.dol').read_bytes())
+        dol = DOL()
+        dol.read(dol_bytes)
+        apply_dol_patch(self, dol, self.all_asm_patches['main.dol'])
+        dol.save_changes()
+        write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', dol_bytes.getbuffer())
 
     def do_rel_patch(self):
         self.rando.progress_callback('patching rels...')
         rel_arc = U8File.parse_u8(BytesIO((self.patcher.actual_extract_path / 'DATA' / 'files' / 'rels.arc').read_bytes()))
         rel_modified = False
-        for file, codepatches in self.patches['global'].get('asm',{}).items():
-            if file == 'main': # main.dol
+        for file, codepatches in self.all_asm_patches.items():
+            if file == 'main.dol': # main.dol
                 continue
-            rel = rel_arc.get_file_data(f'rels/{file}NP.rel')
-            if rel is None:
+            rel_data = BytesIO(rel_arc.get_file_data(f'rels/{file}'))
+            if rel_data is None:
                 print(f'ERROR: rel {file} not found!')
                 continue
-            rel = bytearray(rel)
-            for codepatch in filter(self.filter_option_requirement, codepatches):
-                actual_code = bytes.fromhex(codepatch['original'])
-                patched_code = bytes.fromhex(codepatch['patched'])
-                assert len(actual_code) == len(patched_code), "code length has to remain the same!"
-                code_pos = rel.find(actual_code)
-
-                assert code_pos != -1, f"code {codepatch['original']} not found in {file}!"
-                if codepatch.get('multiple',False):
-                    while code_pos != -1:
-                        rel[code_pos:code_pos+len(actual_code)] = patched_code
-                        code_pos = rel.find(actual_code, code_pos+1)
-                else:
-                    assert rel.find(actual_code, code_pos+1) == -1, f"code {codepatch['original']} found multiple times in {file}!"
-                    rel[code_pos:code_pos+len(actual_code)] = patched_code
-            rel_arc.set_file_data(f'rels/{file}NP.rel',rel)
+            rel = REL()
+            rel.read(rel_data)
+            apply_rel_patch(self, rel, file, codepatches)
+            rel.save_changes()
+            rel_arc.set_file_data(f'rels/{file}', rel_data.getbuffer())
             rel_modified = True
         if rel_modified:
             rel_data = rel_arc.to_buffer()
@@ -1359,6 +1374,14 @@ class GamePatcher:
         for oarc in self.patches['global'].get('objpackoarcadd',[]):
             oarc_data = (self.patcher.oarc_cache_path / f'{oarc}.arc').read_bytes()
             object_arc.add_file_data(f'oarc/{oarc}.arc', oarc_data)
+            objpack_modified = True
+        # arc replacements
+        ARC_REPLACEMENTS_PATH = self.rando.exe_root_path / 'arc-replacements'
+        ARC_REPLACEMENTS_PATH.mkdir(exist_ok=True)
+        for file in ARC_REPLACEMENTS_PATH.glob('*.arc'):
+            arcname = file.parts[-1] # includes the .arc extension
+            arcdata = file.read_bytes()
+            object_arc.set_file_data(f'oarc/{arcname}', arcdata)
             objpack_modified = True
         if objpack_modified:
             objpack_data = object_arc.to_buffer()
