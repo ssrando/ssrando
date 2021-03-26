@@ -167,6 +167,7 @@ class Randomizer:
   def randomize(self):
     self.progress_callback('randomizing items...')
     self.logic.randomize_items()
+    self.woth_locations = self.logic.get_woth_locations()
     self.hints.do_normal_hints()
     if self.no_logs:
       self.progress_callback('writing anti spoiler log...')
@@ -202,6 +203,13 @@ class Randomizer:
     # Write required dungeons
     for i, dungeon in enumerate(self.required_dungeons):
       spoiler_log += f"Required Dungeon {i+1}: " + dungeon + '\n'
+
+    spoiler_log += "\n\n"
+
+    # Write way of the hero (100% required) locations
+    spoiler_log += "WotH:\n"
+    for wothloc, item in self.woth_locations.items():
+      spoiler_log += "  %-53s %s\n" % (wothloc+":", item)
 
     spoiler_log += "\n\n"
     
@@ -282,6 +290,7 @@ class Randomizer:
       return
     spoiler_log['starting-items'] = self.starting_items
     spoiler_log['required-dungeons'] = self.required_dungeons
+    spoiler_log['woth-locations'] = self.woth_locations
     spoiler_log['playthrough'] = self.calculate_playthrough_progression_spheres()
     spoiler_log['item-locations'] = self.logic.done_item_locations
     spoiler_log['entrances'] = self.entrance_connections
