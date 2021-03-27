@@ -149,7 +149,7 @@ Skyloft - Parrow's Crystals:
     - oarc/F000/l0
     - oarc/F005r/l0
 Skyloft - Fledge's Crystals:
-  Need: Can Beat Lanayru Mining Facility & Bottle # LMF only for Potion right now
+  Need: Can Beat Dungeon Entrance In Lanayru Desert & Bottle # LMF only for Potion right now, in entrance rando this means beating the dungeon that is inside LMF
   original item: 5 Gratitude Crystals
   type: skyloft, lanayru, short, crystal quest, dungeon
   Paths:
@@ -1297,7 +1297,7 @@ Ancient Cistern - Koloktos Heart Container:
   - stage/B101/r0/l3/HeartCo
 
 Ancient Cistern - Goddess Longsword:
-  Need: Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots) & Goddess Sword
+  Need: Can Beat Ancient Cistern
   original item: Progressive Sword
   type: faron, dungeon
   Paths:
