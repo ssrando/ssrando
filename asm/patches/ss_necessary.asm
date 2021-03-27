@@ -158,7 +158,7 @@ nop ; branches over activating the chanderlier event after spiral charge, never 
 .org 0x1A10 ; function that gives the key piece
 lbz r3, 0xa8(r31) ; grab itemid from first params2 byte
 
-.org 0x1944 ; also function that gives the key piece
+.org 0x1950 ; also function that gives the key piece
 lbz r3, 0xa8(r3) ; grab itemid from first param2 byte
 
 .org 0xE54 ; function that sets the sceneflag
