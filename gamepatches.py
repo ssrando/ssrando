@@ -459,8 +459,6 @@ def patch_trial_item(trial: OrderedDict, itemid: int):
 def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
     boko['params2'] = mask_shift_set(boko['params2'], 0xFF, 0x0, itemid)
 
-
-
 # not treasure chest, wardrobes you can open, used for zelda room HP
 def rando_patch_chest(bzs: OrderedDict, itemid: int, id: str):
     id = int(id)
@@ -502,6 +500,19 @@ def rando_patch_bokoblin(bzs: OrderedDict, itemid: int, id: str):
     obj = next(filter(lambda x: x['name'] == 'EBc' and x['id']== id, bzs['OBJ ']))
     patch_key_bokoblin_item(obj, itemid)
 
+def rando_patch_goddess_crest(bzs: OrderedDict, itemid: int, index: str):
+    obj = next(filter(lambda x: x['name'] == 'SwSB', bzs['OBJ ']))
+    # we need to patch 3 item ids into this object:
+    # 1 is params1 FF 00 00 00, 2 is params1 00 FF 00 00
+    # 3 is params2 FF 00 00 00
+    if index == "0":
+        obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0x18, itemid)
+    elif index == "1":
+        obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0x10, itemid)
+    elif index == "2":
+        obj['params2'] = mask_shift_set(obj['params2'], 0xFF, 0x18, itemid)
+        
+
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
 RANDO_PATCH_FUNCS = {
     'chest': rando_patch_chest,
@@ -513,6 +524,7 @@ RANDO_PATCH_FUNCS = {
     'Soil': rando_patch_soil,
     'EBc': rando_patch_bokoblin,
     'Tbox': rando_patch_tbox,
+    'SwSB': rando_patch_goddess_crest,
 }
 
 def get_patches_from_location_item_list(all_checks, filled_checks):
@@ -1131,10 +1143,7 @@ class GamePatcher:
         # patch randomized items on stages
         for objname, layer, objid, itemid in self.rando_stagepatches.get((stage, room),[]):
             modified = True
-            try:
-                RANDO_PATCH_FUNCS[objname](bzs['LAY '][f'l{layer}'], itemid, objid)
-            except:
-                print(f'ERROR: {stage}, {room}, {layer}, {objname}, {objid}')
+            RANDO_PATCH_FUNCS[objname](bzs['LAY '][f'l{layer}'], itemid, objid)
 
         if modified:
             # print(json.dumps(bzs))

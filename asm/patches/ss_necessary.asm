@@ -364,3 +364,18 @@ blr
 .org 0x15B0
 bl set_first_time_cs_already_watched ; in a branch that is not taken for the time shift stone on sandship
 .close
+
+.open "d_a_obj_sw_sword_beamNP.rel"
+; function that checks for your current sword, so that you can't activate the crest
+.org 0x25B0
+bge 0x2650 ; instead of only checking for whitesword for the last reward, check for at least that
+
+.org 0xD5C ; should handle the isle of songs CS starting, overwrite it with a jump to the custom function, that gives the items
+mr r3, r31
+bl handle_crest_hit_item_give
+b 0xD88 ; this probably cancels the crest event?
+
+.org 0x1710 ; don't set the sceneflag normally, that's handled in the custom function now
+b 0x17C8
+
+.close

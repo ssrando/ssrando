@@ -543,19 +543,19 @@ Thunderhead - Farore's Courage:
   original item: Farore's Courage
   type: thunderhead, song
   Paths:
-   - stage/F010r/r0/l0/TBox/78
+   - stage/F010r/r0/l0/SwSB/0
 Thunderhead - Nayru's Wisdom:
   Need: Can Access Thunderhead & Goddess Longsword
   original item: Nayru's Wisdom
   type: thunderhead, song
   Paths:
-   - stage/F010r/r0/l0/TBox/79
+   - stage/F010r/r0/l0/SwSB/1
 Thunderhead - Din's Power:
   Need: Can Access Thunderhead & Goddess White Sword
   original item: Din's Power
   type: thunderhead, song
   Paths:
-   - stage/F010r/r0/l0/TBox/80
+   - stage/F010r/r0/l0/SwSB/2
 
 
 Sealed Grounds - Inside Sealed Temple:
