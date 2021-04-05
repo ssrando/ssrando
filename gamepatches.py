@@ -229,6 +229,8 @@ POST_DUNGEON_CUTSCENE = {
 BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
     'Skyloft - Beedle 50 Rupee Item': (25, 26, 50, 25),
     'Skyloft - Beedle First 100 Rupee Item': (23, 24, 100, 50),
+    'Skyloft - Beedle Second 100 Rupee Item': ("Second 100R undiscounted Text", "Second 100R discounted Text", 100, 50),
+    'Skyloft - Beedle Third 100 Rupee Item': ("Third 100R undiscounted Text", "Third 100R discounted Text", 100, 50),
     'Skyloft - Beedle 300 Rupee Item': (19, 20, 300, 150),
     'Skyloft - Beedle 600 Rupee Item': (29, 30, 600, 300),
     'Skyloft - Beedle 800 Rupee Item': (27, 28, 800, 400),
@@ -861,13 +863,14 @@ class GamePatcher:
             normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[location]
             sold_item = self.rando.logic.done_item_locations[location]
             normal_text =\
-                f'That there is a {sold_item}.\n' \
-                f'I\'m selling it for only {normal_price} rupees!\n' \
+                f'That there is a <y<{sold_item}>>.\n' \
+                f'I\'m selling it for only <r<{normal_price}>> rupees!\n' \
                 f'Want to buy it?\n' \
                 f'{BEEDLE_BUY_SWTICH}'
             discount_text =\
-                f'That there is a {sold_item}. Just this once\n' \
-                f'it\'s half off! It can be yours for just{discount_price} rupees!\n' \
+                f'That there is a <y<{sold_item}>>.\n' \
+                f'Just this once it\'s half off!\n' \
+                f'It can be yours for just <r<{discount_price}>> rupees!\n' \
                 f'Want to buy it?\n' \
                 f'{BEEDLE_BUY_SWTICH}'
             if location in beedle_texts:
@@ -876,18 +879,32 @@ class GamePatcher:
                     normal_text = f'{beedle_texts[location][sold_item]["normal"]}{BEEDLE_BUY_SWTICH}'
                     discount_text = f'{beedle_texts[location][sold_item]["discount"]}{BEEDLE_BUY_SWTICH}'
 
-            self.eventpatches['105-Terry'].append({
-                'name': f'{location} Text',
-                'type': 'textpatch',
-                'index': normal,
-                'text': normal_text
-            })
-            self.eventpatches['105-Terry'].append({
-                'name': f'{location} Discount Text',
-                'type': 'textpatch',
-                'index': discounted,
-                'text': discount_text
-            })
+            if isinstance(normal, int): # string index is new text
+                self.eventpatches['105-Terry'].append({
+                    'name': f'{location} Text',
+                    'type': 'textpatch',
+                    'index': normal,
+                    'text': normal_text
+                })
+            else:
+                self.eventpatches['105-Terry'].append({
+                    'name': normal,
+                    'type': 'textadd',
+                    'text': normal_text
+                })
+            if isinstance(discounted, int):
+                self.eventpatches['105-Terry'].append({
+                    'name': f'{location} Discount Text',
+                    'type': 'textpatch',
+                    'index': discounted,
+                    'text': discount_text
+                })
+            else:
+                self.eventpatches['105-Terry'].append({
+                    'name': discounted,
+                    'type': 'textadd',
+                    'text': discount_text
+                })
 
     def do_build_arc_cache(self):
         self.rando.progress_callback('building arc cache...')
@@ -1447,8 +1464,8 @@ class GamePatcher:
             18: 100,
         }
         shop_entrypoint_patches = {
-            17: 10533, # TODO: unique entrypoint for second extra wallet
-            18: 10533, # TODO: unique entrypoint for third extra wallet
+            17: 10539,
+            18: 10540,
         }
         shop_present_scale_patches = {
             17: 1.2,

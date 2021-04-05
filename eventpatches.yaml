@@ -567,6 +567,116 @@
     cases:
       - 43 # do event as normal
       - Show can't buy Pouch text
+  - name: Second 100 Rupee Item
+    type: entryadd
+    entry:
+      name: "105_39"
+      value: Second 100R first event
+  - name: Second 100R first event
+    type: flowadd
+    flow:
+      type: type3
+      subType: 6
+      param1: 0
+      param2: 1
+      next: Second 100R second event
+      param3: 12
+  - name: Second 100R second event
+    type: flowadd
+    flow:
+      type: type3
+      subType: 4
+      param1: 0
+      param2: 21
+      next: Second 100R discount switch 1
+      param3: 13
+  - name: Second 100R discount switch 1
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 478 # Already used discount
+      param3: 3
+    cases:
+      - Show Second 100R undiscounted Text
+      - Second 100R discount switch 2
+  - name: Second 100R discount switch 2
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 477 # Gave Beedles Beetle, has discount
+      param3: 3
+    cases:
+      - Show Second 100R discounted Text
+      - Show Second 100R undiscounted Text
+  - name: Show Second 100R undiscounted Text
+    type: flowadd
+    flow:
+      type: type1
+      next: 13 # buying switch
+      param3: 87
+      param4: Second 100R undiscounted Text
+  - name: Show Second 100R discounted Text
+    type: flowadd
+    flow:
+      type: type1
+      next: 13 # buying switch
+      param3: 87
+      param4: Second 100R discounted Text
+  - name: Third 100 Rupee Item
+    type: entryadd
+    entry:
+      name: "105_40"
+      value: Third 100R first event
+  - name: Third 100R first event
+    type: flowadd
+    flow:
+      type: type3
+      subType: 6
+      param1: 0
+      param2: 1
+      next: Third 100R second event
+      param3: 12
+  - name: Third 100R second event
+    type: flowadd
+    flow:
+      type: type3
+      subType: 4
+      param1: 0
+      param2: 21
+      next: Third 100R discount switch 1
+      param3: 13
+  - name: Third 100R discount switch 1
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 478 # Already used discount
+      param3: 3
+    cases:
+      - Show Third 100R undiscounted Text
+      - Third 100R discount switch 2
+  - name: Third 100R discount switch 2
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 477 # Gave Beedles Beetle, has discount
+      param3: 3
+    cases:
+      - Show Third 100R discounted Text
+      - Show Third 100R undiscounted Text
+  - name: Show Third 100R undiscounted Text
+    type: flowadd
+    flow:
+      type: type1
+      next: 13 # buying switch
+      param3: 87
+      param4: Third 100R undiscounted Text
+  - name: Show Third 100R discounted Text
+    type: flowadd
+    flow:
+      type: type1
+      next: 13 # buying switch
+      param3: 87
+      param4: Third 100R discounted Text
 106-DrugStore:
   - name: Potion Lady Bottle # skip pouch requirements
     type: flowpatch
