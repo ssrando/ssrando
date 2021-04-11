@@ -112,6 +112,13 @@ nop
 .org 0x80141f00
 b 0x80141f44
 
+; in the item actor init function, always check if this is a random treasure and apply the final determined item id if necessary
+.org 0x8024ac68
+nop
+nop
+nop
+nop
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
