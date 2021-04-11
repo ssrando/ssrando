@@ -12,5 +12,7 @@ d_a_obj_warpNP.rel:
   check_should_delay_walk_out_event: 0x6100
 d_a_obj_time_stoneNP.rel:
   set_first_time_cs_already_watched: 0x6548
+d_a_obj_sw_sword_beamNP.rel:
+  handle_crest_hit_item_give: 0x3780
 d_a_shop_sampleNP.rel:
   check_needs_custom_storyflag_subtype: 0x8450

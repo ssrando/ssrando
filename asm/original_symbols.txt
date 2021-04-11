@@ -6,6 +6,19 @@ main.dol:
     Reloader__triggerExit: 0x801bb080
     AcItem__isBabyRattle: 0x80256c30
     Math__approachF: 0x802decd0
+    # SceneflagManager: r3,-0x4060(r13)
+    # this, roomid, flag
+    SceneflagManager__checkFlag: 0x800bdeb0
+    # this, flag
+    SceneflagManager__checkTempOrSceneflag: 0x800bdfc0
+    # this, roomid, flag
+    SceneflagManager__setFlag: 0x800be180
+    # this, flag
+    SceneflagManager__setTempOrSceneflag: 0x800be2d0
+    # itemid, bottle slot (-1 for no slot), always 0
+    giveItem: 0x80249210
+    # ActorLink, Vec3f* pos, Vec3s* rot, zero1, one, zero2
+    ActorLink__setPosRot: 0x802416d0
     # storyflag in r4
     checkStoryflagIsSet: 0x80141e90
     # r3 itemid, r4 pouch slot index or -1, r5 always 0
