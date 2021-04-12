@@ -11,6 +11,10 @@
   - GetKobunALetter
   - GetPouchA
   stage: F001r
+- layer: 0
+  oarcs:
+    - GetSparePurse
+  stage: F002r
 - layer: 1
   oarcs:
   - GetPouchB

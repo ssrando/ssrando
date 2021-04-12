@@ -22,7 +22,7 @@
 - The size of the Dust pile covering babies rattle has been increased to prevent it being obtained without gust bellows
 - The trial is accessible on any layer, even after opening Skykeep
 - To access the Archer minigame you just need Bow
-- To access Fledge 5 crystal reward you only need to have access to stamina potions (right now locked behind Beating LMF)
+- To access Fledge 5 crystal reward you only need to have access to stamina potions (right now locked behind Beating LMF or the dungeon inside LMF in entrance rando)
 - To access Cawlin's Letter check you need to talk to the toilet hand first (which requires Harp)
 - To access Pipit/Toilet hand 5 crystals you only need to deliver the Letter to either Karane or toilet hand
 - You can talk to Sparrot in his house right away to start the Crystal Ball retrieving quest

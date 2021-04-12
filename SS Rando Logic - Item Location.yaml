@@ -149,7 +149,7 @@ Skyloft - Parrow's Crystals:
     - oarc/F000/l0
     - oarc/F005r/l0
 Skyloft - Fledge's Crystals:
-  Need: Can Beat Lanayru Mining Facility & Bottle # LMF only for Potion right now
+  Need: Can Beat Dungeon Entrance In Lanayru Desert & Bottle # LMF only for Potion right now, in entrance rando this means beating the dungeon that is inside LMF
   original item: 5 Gratitude Crystals
   type: skyloft, lanayru, short, crystal quest, dungeon
   Paths:
@@ -255,6 +255,67 @@ Skyloft - Batreaux 80 Crystals:
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
+
+Skyloft - Beedle 50 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 50 Rupees
+  original item: Bug Net
+  type: skyloft, beedle, cheap
+  Paths:
+    - ShpSmpl/25
+Skyloft - Beedle First 100 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 100 Rupees
+  original item: Extra Wallet
+  type: skyloft, beedle, cheap
+  Paths:
+    - ShpSmpl/24
+Skyloft - Beedle Second 100 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 100 Rupees
+  original item: Extra Wallet
+  type: skyloft, beedle, cheap
+  Paths:
+    - ShpSmpl/17
+Skyloft - Beedle Third 100 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 100 Rupees
+  original item: Extra Wallet
+  type: skyloft, beedle, cheap
+  Paths:
+    - ShpSmpl/18
+Skyloft - Beedle 300 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 300 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
+  original item: Progressive Pouch
+  type: skyloft, beedle, cheap
+  Paths:
+    - ShpSmpl/20
+Skyloft - Beedle 600 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 600 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
+  original item: Progressive Pouch
+  type: skyloft, beedle, medium
+  Paths:
+    - ShpSmpl/21
+Skyloft - Beedle 800 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 800 Rupees
+  original item: Life Medal
+  type: skyloft, beedle, medium
+  Paths:
+    - ShpSmpl/26
+Skyloft - Beedle 1000 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 1000 Rupees
+  original item: Bug Medal
+  type: skyloft, beedle, medium
+  Paths:
+    - ShpSmpl/27
+Skyloft - Beedle 1200 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 1200 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
+  original item: Progressive Pouch
+  type: skyloft, beedle, expensive
+  Paths:
+    - ShpSmpl/22
+Skyloft - Beedle 1600 Rupee Item:
+  Need: Can Access Beedle's Shop & Can Afford 1600 Rupees
+  original item: Heart Piece
+  type: skyloft, beedle, expensive
+  Paths:
+    - ShpSmpl/23
 
 # Single Gratitude crystals aren't randomized, but still need logic, because some of them need items
 Skyloft - Crystal in Link's Room:
@@ -543,19 +604,19 @@ Thunderhead - Farore's Courage:
   original item: Farore's Courage
   type: thunderhead, song
   Paths:
-   - stage/F010r/r0/l0/TBox/78
+   - stage/F010r/r0/l0/SwSB/0
 Thunderhead - Nayru's Wisdom:
   Need: Can Access Thunderhead & Goddess Longsword
   original item: Nayru's Wisdom
   type: thunderhead, song
   Paths:
-   - stage/F010r/r0/l0/TBox/79
+   - stage/F010r/r0/l0/SwSB/1
 Thunderhead - Din's Power:
   Need: Can Access Thunderhead & Goddess White Sword
   original item: Din's Power
   type: thunderhead, song
   Paths:
-   - stage/F010r/r0/l0/TBox/80
+   - stage/F010r/r0/l0/SwSB/2
 
 
 Sealed Grounds - Inside Sealed Temple:
@@ -1297,7 +1358,7 @@ Ancient Cistern - Koloktos Heart Container:
   - stage/B101/r0/l3/HeartCo
 
 Ancient Cistern - Goddess Longsword:
-  Need: Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots) & Goddess Sword
+  Need: Can Beat Ancient Cistern
   original item: Progressive Sword
   type: faron, dungeon
   Paths:

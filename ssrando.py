@@ -10,6 +10,7 @@ import json
 from logic.logic import Logic
 from logic.hints import Hints
 import logic.constants as constants
+import logic.item_types as item_types
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
@@ -139,6 +140,9 @@ class Randomizer:
           logic.item_types.CONSUMABLE_ITEMS[i] = 'Rupoor'
 
     self.logic = Logic(self)
+    # self.logic.set_prerandomization_item_location("Skyloft - Beedle Second 100 Rupee Item", "Rare Treasure")
+    # self.logic.set_prerandomization_item_location("Skyloft - Beedle Third 100 Rupee Item", "Rare Treasure")
+    # self.logic.set_prerandomization_item_location("Skyloft - Beedle 1000 Rupee Item", "Rare Treasure")
     self.hints = Hints(self.logic)
     # self.logic.set_prerandomization_item_location("Skyloft - Fledge's Pouch", "Emerald Tablet")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")

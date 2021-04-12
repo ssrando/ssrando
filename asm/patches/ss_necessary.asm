@@ -112,6 +112,13 @@ nop
 .org 0x80141f00
 b 0x80141f44
 
+; in the item actor init function, always check if this is a random treasure and apply the final determined item id if necessary
+.org 0x8024ac68
+nop
+nop
+nop
+nop
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
@@ -158,7 +165,7 @@ nop ; branches over activating the chanderlier event after spiral charge, never 
 .org 0x1A10 ; function that gives the key piece
 lbz r3, 0xa8(r31) ; grab itemid from first params2 byte
 
-.org 0x1944 ; also function that gives the key piece
+.org 0x1950 ; also function that gives the key piece
 lbz r3, 0xa8(r3) ; grab itemid from first param2 byte
 
 .org 0xE54 ; function that sets the sceneflag
@@ -363,4 +370,19 @@ blr
 .open "d_a_obj_time_stoneNP.rel"
 .org 0x15B0
 bl set_first_time_cs_already_watched ; in a branch that is not taken for the time shift stone on sandship
+.close
+
+.open "d_a_obj_sw_sword_beamNP.rel"
+; function that checks for your current sword, so that you can't activate the crest
+.org 0x25B0
+bge 0x2650 ; instead of only checking for whitesword for the last reward, check for at least that
+
+.org 0xD5C ; should handle the isle of songs CS starting, overwrite it with a jump to the custom function, that gives the items
+mr r3, r31
+bl handle_crest_hit_item_give
+b 0xD88 ; this probably cancels the crest event?
+
+.org 0x1710 ; don't set the sceneflag normally, that's handled in the custom function now
+b 0x17C8
+
 .close

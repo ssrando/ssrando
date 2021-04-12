@@ -10,7 +10,7 @@ from typing import DefaultDict
 import os
 
 from .item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS
-from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
+from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, SHOP_CHECKS, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
 # TODO, path for logic files will probably be params
@@ -71,11 +71,11 @@ class Logic:
       
       # checks outside dungeons that require dungeons:
       if 'Lanayru Mining Facility' in self.rando.non_required_dungeons:
-        self.race_mode_banned_locations.append('Skyloft - Fledge\'s Crystals')
+        self.racemode_ban_location('Skyloft - Fledge\'s Crystals')
       if 'Skyview' in self.rando.non_required_dungeons:
         # TODO: check again with entrance rando
-        self.race_mode_banned_locations.append('Sky - Lumpy Pumpkin Roof Goddess Chest')
-        self.race_mode_banned_locations.append('Sealed Grounds - Gorko Goddess Wall Reward')
+        self.racemode_ban_location('Sky - Lumpy Pumpkin Roof Goddess Chest')
+        self.racemode_ban_location('Sealed Grounds - Gorko Goddess Wall Reward')
     
     batreaux_location_re = re.compile(r'.*Batreaux ([0-9]+) .*')
 
@@ -84,12 +84,12 @@ class Logic:
       bat_loc_match = batreaux_location_re.match(location_name)
       if bat_loc_match:
         if self.rando.options['max-batreaux-reward'] < int(bat_loc_match.group(1)):
-          self.race_mode_banned_locations.append(location_name)
+          self.racemode_ban_location(location_name)
           # print(f'banned {location_name}')
 
     if self.rando.options['skip-skykeep']:
-      self.race_mode_banned_locations.append('Skykeep - Map Chest')
-      self.race_mode_banned_locations.append('Skykeep - Small Key Chest')
+      self.racemode_ban_location('Skykeep - Map Chest')
+      self.racemode_ban_location('Skykeep - Small Key Chest')
     
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
@@ -137,21 +137,41 @@ class Logic:
     for item_name in self.rando.starting_items:
       self.add_owned_item(item_name)
     
-    self.make_useless_progress_items_nonprogress()
-    
-    self.cached_enemies_tested_for_req_string = OrderedDict()
-  
-  # main randomization method
-  def randomize_items(self):
     # collect all items that aren't supposed to be randomized
     for location_name, item in self.item_locations.items():
       item_name = item['original item']
       if item_name == 'Gratitude Crystal':
         self.set_prerandomization_item_location(location_name, item_name)
+    if self.rando.options['shop-mode'] != 'Randomized':
+      for shop_check in SHOP_CHECKS:
+        if self.rando.options['shop-mode'] == 'Vanilla':
+          orig_item = self.item_locations[shop_check]['original item']
+          self.set_prerandomization_item_location(shop_check, orig_item)
+        else:
+          self.racemode_ban_location(shop_check)
+
+    self.make_useless_progress_items_nonprogress()
+
+    if self.rando.options['shop-mode'] == 'Vanilla':
+      # if shops are vanilla, make wallets and the extra pouch upgrades non progress
+      for wallet_item in (["Progressive Wallet"]*4 + ["Extra Wallet"]*3 + ["Progressive Pouch"]*3):
+        self.unplaced_progress_items.remove(wallet_item)
+        self.unplaced_nonprogress_items.append(wallet_item)
+        self.all_progress_items.remove(wallet_item)
+        self.all_nonprogress_items.append(wallet_item)
+
+  
+  # main randomization method
+  def randomize_items(self):
     self.randomize_dungeon_items()
     self.randomize_progression_items()
     self.randomize_nonprogress_items()
     self.randomize_consumable_items()
+
+  def racemode_ban_location(self, location_name):
+    if not location_name in self.item_locations:
+      raise Exception(f'location {location_name} does not exist!')
+    self.race_mode_banned_locations.append(location_name)
 
   def set_location_to_item(self, location_name, item_name):
     #print("Setting %s to %s" % (location_name, item_name))
@@ -497,6 +517,10 @@ class Logic:
       zone_access_macro_name = "Can Access " + zone_name
       entrance_access_macro_name = "Can Access " + entrance_name
       self.set_macro(zone_access_macro_name, entrance_access_macro_name)
+      # dungeon finishes
+      zone_beat_macro_name = "Can Beat " + zone_name
+      entrance_beat_macro_name = "Can Beat " + entrance_name
+      self.set_macro(entrance_beat_macro_name, zone_beat_macro_name)
   
   def make_useless_progress_items_nonprogress(self):
     # Detect which progress items don't actually help access any locations with the user's current settings, and move those over to the nonprogress item list instead.
@@ -522,7 +546,10 @@ class Logic:
       # if self.is_dungeon_item(item_name) and not self.rando.options.get("progression_dungeons"):
       #   continue
       if item_name not in self.all_progress_items:
-        if not (item_name.startswith("Triforce Chart ") or item_name.startswith("Treasure Chart")):
+        # we can always assume that if wallets are not progress items than they are not needed
+        # since they are only added to the progress pool if shops are not vanilla
+        # Progressive Wallets should always be progress items
+        if not (item_name.startswith("Extra Wallet")):
           raise Exception("Item %s opens up progress locations but is not in the list of all progress items." % item_name)
       if item_name in all_progress_items_filtered:
         # Avoid duplicates
@@ -719,6 +746,8 @@ class Logic:
           location_weights[location] -= 1
       current_weight += 1
       
+      possible_items = self.unplaced_progress_items.copy()
+
       # Don't randomly place items that already had their location predetermined.
       unfound_prerand_locs = [
         loc for loc in self.prerandomization_item_locations
@@ -726,16 +755,11 @@ class Logic:
       ]
       for location_name in unfound_prerand_locs:
         prerand_item = self.prerandomization_item_locations[location_name]
-        if prerand_item in self.unplaced_progress_items:
-          self.unplaced_progress_items.remove(prerand_item)
+        if prerand_item in possible_items:
+          possible_items.remove(prerand_item)
 
-      possible_items = self.unplaced_progress_items.copy()
-      
       if len(possible_items) == 0:
         raise Exception("Only items left to place are predetermined items at inaccessible locations!")
-      
-      if len(possible_items) == 0:
-        raise Exception("No valid locations left for any of the unplaced progress items!")
       
       # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
       # Don't do this with Eldin Key Pieces or Earth Temple will always be really late in logic. Same with crystals

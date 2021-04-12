@@ -42,7 +42,10 @@ class RandoGUI(QMainWindow):
         self.settings_path = "settings.txt"
         if os.path.isfile(self.settings_path):
             with open(self.settings_path) as f:
-                self.options.update_from_permalink(f.readline())
+                try:
+                    self.options.update_from_permalink(f.readline())
+                except Exception as e:
+                    print("couldn't update from saved settings!", e)
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
@@ -107,6 +110,14 @@ class RandoGUI(QMainWindow):
             "crystal_quest": "Enables progression items to appear as rewards for completing Gratitude Crystal quests",
             "scrapper": "Enables progression items to appear as rewards for Scrapper Quests",
             "peatrice": "Enables a progression item to appear as the reward for completing the Peatrice side quest",
+
+            "beedle": "Enables progression items to be sold in Beedle's shop",
+            "cheap": "Enables progression items to be sold for 300 rupees or less. Applies to all shops where "
+                     "progression items can appear.",
+            "medium": "Enables progression items to be sold for between 300 and 1000 rupees. Applies to all "
+                      "shops where progression items can appear",
+            "expensive": "Enables progression items to be sold for more than 1000 rupees. Appleis to all shops"
+                         "where progression items can appear",
 
             "goddess": "Enables progression items to appear as items in Goddess Chests",
             "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "

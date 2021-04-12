@@ -12,7 +12,9 @@ import re
 
 import nlzss11
 from sslib import AllPatcher, U8File
+from sslib.msb import process_control_sequences
 from sslib.utils import write_bytes_create_dirs, encodeBytes
+from sslib.fs_helpers import write_str, write_u16, write_float
 from sslib.dol import DOL
 from sslib.rel import REL
 from paths import RANDO_ROOT_PATH
@@ -223,6 +225,21 @@ POST_DUNGEON_CUTSCENE = {
     'Fire Sanctuary': ('B201_1', 0, 0),
     'Skykeep': ('F407', 0, 2),
 }
+
+BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
+    'Skyloft - Beedle 50 Rupee Item': (25, 26, 50, 25),
+    'Skyloft - Beedle First 100 Rupee Item': (23, 24, 100, 50),
+    'Skyloft - Beedle Second 100 Rupee Item': ("Second 100R undiscounted Text", "Second 100R discounted Text", 100, 50),
+    'Skyloft - Beedle Third 100 Rupee Item': ("Third 100R undiscounted Text", "Third 100R discounted Text", 100, 50),
+    'Skyloft - Beedle 300 Rupee Item': (19, 20, 300, 150),
+    'Skyloft - Beedle 600 Rupee Item': (29, 30, 600, 300),
+    'Skyloft - Beedle 800 Rupee Item': (27, 28, 800, 400),
+    'Skyloft - Beedle 1000 Rupee Item': (33, 34, 1000, 500),
+    'Skyloft - Beedle 1200 Rupee Item': (31, 32, 1200, 600),
+    'Skyloft - Beedle 1600 Rupee Item': (21, 22, 1600, 800),
+}
+
+BEEDLE_BUY_SWTICH = '[1]I\'ll buy it![2-]No, thanks.'
 
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
 PROGRESSIVE_SWORD_ITEMIDS = [10, 11, 12, 9, 13, 14]
@@ -459,8 +476,6 @@ def patch_trial_item(trial: OrderedDict, itemid: int):
 def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
     boko['params2'] = mask_shift_set(boko['params2'], 0xFF, 0x0, itemid)
 
-
-
 # not treasure chest, wardrobes you can open, used for zelda room HP
 def rando_patch_chest(bzs: OrderedDict, itemid: int, id: str):
     id = int(id)
@@ -502,6 +517,19 @@ def rando_patch_bokoblin(bzs: OrderedDict, itemid: int, id: str):
     obj = next(filter(lambda x: x['name'] == 'EBc' and x['id']== id, bzs['OBJ ']))
     patch_key_bokoblin_item(obj, itemid)
 
+def rando_patch_goddess_crest(bzs: OrderedDict, itemid: int, index: str):
+    obj = next(filter(lambda x: x['name'] == 'SwSB', bzs['OBJ ']))
+    # we need to patch 3 item ids into this object:
+    # 1 is params1 FF 00 00 00, 2 is params1 00 FF 00 00
+    # 3 is params2 FF 00 00 00
+    if index == "0":
+        obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0x18, itemid)
+    elif index == "1":
+        obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0x10, itemid)
+    elif index == "2":
+        obj['params2'] = mask_shift_set(obj['params2'], 0xFF, 0x18, itemid)
+        
+
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
 RANDO_PATCH_FUNCS = {
     'chest': rando_patch_chest,
@@ -513,6 +541,7 @@ RANDO_PATCH_FUNCS = {
     'Soil': rando_patch_soil,
     'EBc': rando_patch_bokoblin,
     'Tbox': rando_patch_tbox,
+    'SwSB': rando_patch_goddess_crest,
 }
 
 def get_patches_from_location_item_list(all_checks, filled_checks):
@@ -531,10 +560,13 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
     stageoarcs = defaultdict(set)
     # # eventfile: (line, itemid)
     eventpatches = defaultdict(list)
+    # shopindex: (itemid, arcname, modelname)
+    shoppatches = {}
 
     stage_re = re.compile(r'stage/(?P<stage>[^/]+)/r(?P<room>[0-9]+)/l(?P<layer>[0-9]+)/(?P<objname>[a-zA-Z]+)(/(?P<objid>[^/]+))?')
     event_re = re.compile(r'event/(?P<eventfile>[^/]+)/(?P<eventid>[^/]+)')
     oarc_re = re.compile(r'oarc/(?P<stage>[^/]+)/l(?P<layer>[^/]+)')
+    shop_smpl_re = re.compile(r'ShpSmpl/(?P<index>[0-9]+)')
 
     for checkname, itemname in filled_checks.items():
         # single gratitude crystals aren't randomized
@@ -546,6 +578,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
             stage_match = stage_re.match(path)
             event_match = event_re.match(path)
             oarc_match = oarc_re.match(path)
+            shop_smpl_match = shop_smpl_re.match(path)
             if stage_match:
                 stage = stage_match.group('stage')
                 room = int(stage_match.group('room'))
@@ -574,9 +607,24 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
                             stageoarcs[(stage, layer)].add(o)
                     else:
                         stageoarcs[(stage, layer)].add(oarc)
+            elif shop_smpl_match:
+                index = int(shop_smpl_match.group('index'))
+                # TODO: super fix this, add all models/arcs to items.yaml
+                arcname = item.get('getarcname', None)
+                modelname = item.get('getmodelname', None)
+                oarc = item['oarc']
+                if oarc:
+                    if isinstance(oarc, list):
+                        for o in oarc:
+                            stageoarcs[("F002r", 1)].add(o)
+                    else:
+                        stageoarcs[("F002r", 1)].add(oarc)
+                if modelname is None or arcname is None:
+                    raise Exception(f'no modelnames for {item}')
+                shoppatches[index] = (item['id'], arcname, modelname)
             else:
                 print(f'ERROR: {path} didn\'t match any regex!')
-    return stagepatchv2, stageoarcs, eventpatches
+    return stagepatchv2, stageoarcs, eventpatches, shoppatches
 
 def get_entry_from_bzs(bzs: OrderedDict, objdef: dict, remove: bool=False) -> Optional[OrderedDict]:
     id = objdef.get('id',None)
@@ -620,6 +668,7 @@ class GamePatcher:
     def do_all_gamepatches(self):
         self.load_base_patches()
         self.add_entrance_rando_patches()
+        self.shopsanity_patches()
         self.do_build_arc_cache()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
@@ -673,16 +722,15 @@ class GamePatcher:
         self.patches['global']['startstoryflags'] = filtered_storyflags
 
         # patches from randomizing items
-        self.rando_stagepatches, self.stageoarcs, self.rando_eventpatches = \
+        self.rando_stagepatches, self.stageoarcs, self.rando_eventpatches, self.shoppatches = \
             get_patches_from_location_item_list(self.rando.logic.item_locations, self.rando.logic.done_item_locations)
         
         # assembly patches
         self.all_asm_patches = defaultdict(OrderedDict)
-        for asm_patch_file in (RANDO_ROOT_PATH / 'asm' / 'patch_diffs').glob('*_diff.txt'):
-            with asm_patch_file.open('r') as f:
-                asm_patch_file_data = yaml.safe_load(f)
-            for exec_file, patches in asm_patch_file_data.items():
-                self.all_asm_patches[exec_file].update(patches)
+        self.add_asm_patch('custom_funcs')
+        self.add_asm_patch('ss_necessary')
+        self.add_asm_patch('shopsanity') # TODO: only if shopsanity enabled
+        self.add_asm_patch('gossip_stone_hints')
         
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / 'asm' / 'custom_symbols.txt').open('r') as f:
@@ -696,6 +744,12 @@ class GamePatcher:
         with (RANDO_ROOT_PATH / 'asm' / 'free_space_start_offsets.txt').open('r') as f:
             self.free_space_start_offsets = yaml.safe_load(f)
     
+    def add_asm_patch(self, name):
+        with (RANDO_ROOT_PATH / 'asm' / 'patch_diffs' / f'{name}_diff.txt').open('r') as f:
+            asm_patch_file_data = yaml.safe_load(f)
+        for exec_file, patches in asm_patch_file_data.items():
+            self.all_asm_patches[exec_file].update(patches)
+
     def add_entrance_rando_patches(self):
         for entrance, dungeon in self.rando.entrance_connections.items():
             entrance_stage, entrance_room, entrance_scen = DUNGEON_ENTRANCE_STAGES[entrance]
@@ -812,6 +866,65 @@ class GamePatcher:
                     'story_flag1': storyflag
                 }
             })
+
+    def shopsanity_patches(self):
+        self.eventpatches['105-Terry'].append({
+            'name': 'go to Check for Pouch',
+            'type': 'flowpatch',
+            'index': 16,
+            'flow': {
+                'next': 'Check for Pouch' if self.rando.options['shop-mode'] == 'Vanilla' else 43
+            }
+        })
+        with (Path(__file__).parent / "beedle_texts.yaml").open('r') as f:
+            beedle_texts = yaml.safe_load(f)
+        # print(beedle_texts)
+        for location in BEEDLE_TEXT_PATCHES:
+            normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[location]
+            sold_item = self.rando.logic.done_item_locations[location]
+            normal_text =\
+                f'That there is a <y<{sold_item}>>.\n' \
+                f'I\'m selling it for only <r<{normal_price}>> rupees!\n' \
+                f'Want to buy it?\n' \
+                f'{BEEDLE_BUY_SWTICH}'
+            discount_text =\
+                f'That there is a <y<{sold_item}>>.\n' \
+                f'Just this once it\'s half off!\n' \
+                f'It can be yours for just <r<{discount_price}>> rupees!\n' \
+                f'Want to buy it?\n' \
+                f'{BEEDLE_BUY_SWTICH}'
+            if location in beedle_texts:
+                if sold_item in beedle_texts[location]:
+                    # item has custom text for Beedle's shop
+                    normal_text = f'{beedle_texts[location][sold_item]["normal"]}{BEEDLE_BUY_SWTICH}'
+                    discount_text = f'{beedle_texts[location][sold_item]["discount"]}{BEEDLE_BUY_SWTICH}'
+
+            if isinstance(normal, int): # string index is new text
+                self.eventpatches['105-Terry'].append({
+                    'name': f'{location} Text',
+                    'type': 'textpatch',
+                    'index': normal,
+                    'text': normal_text
+                })
+            else:
+                self.eventpatches['105-Terry'].append({
+                    'name': normal,
+                    'type': 'textadd',
+                    'text': normal_text
+                })
+            if isinstance(discounted, int):
+                self.eventpatches['105-Terry'].append({
+                    'name': f'{location} Discount Text',
+                    'type': 'textpatch',
+                    'index': discounted,
+                    'text': discount_text
+                })
+            else:
+                self.eventpatches['105-Terry'].append({
+                    'name': discounted,
+                    'type': 'textadd',
+                    'text': discount_text
+                })
 
     def do_build_arc_cache(self):
         self.rando.progress_callback('building arc cache...')
@@ -1147,10 +1260,7 @@ class GamePatcher:
         # patch randomized items on stages
         for objname, layer, objid, itemid in self.rando_stagepatches.get((stage, room),[]):
             modified = True
-            try:
-                RANDO_PATCH_FUNCS[objname](bzs['LAY '][f'l{layer}'], itemid, objid)
-            except:
-                print(f'ERROR: {stage}, {room}, {layer}, {objname}, {objid}')
+            RANDO_PATCH_FUNCS[objname](bzs['LAY '][f'l{layer}'], itemid, objid)
 
         if modified:
             # print(json.dumps(bzs))
@@ -1309,13 +1419,13 @@ class GamePatcher:
         textpatches = self.eventpatches.get(filename, [])
         textpatches = list(filter(self.filter_option_requirement, textpatches))
         for command in filter(lambda x: x['type'] == 'textpatch', textpatches):
-            msbt['TXT2'][command['index']] = command['text'].encode('utf-16be')
+            msbt['TXT2'][command['index']] = process_control_sequences(command['text']).encode('utf-16be')
             # print(f'patched text {command["index"]}, {filename}')
             modified = True
         for command in filter(lambda x: x['type'] == 'textadd', textpatches):
             index = len(msbt['TXT2'])
             self.text_labels[command['name']] = index
-            msbt['TXT2'].append(command['text'].encode('utf-16be'))
+            msbt['TXT2'].append(process_control_sequences(command['text']).encode('utf-16be'))
             msbt['ATR1'].append({'unk1':command.get('unk1',1), 'unk2':command.get('unk2',0)})
             # the game doesn't care about the name, but it has to exist and be unique
             # only unique within a file but whatever
@@ -1357,12 +1467,79 @@ class GamePatcher:
             rel = REL()
             rel.read(rel_data)
             apply_rel_patch(self, rel, file, codepatches)
+            if file == 'd_a_shop_sampleNP.rel':
+                self.do_shoptable_rel_patch(rel)
             rel.save_changes()
             rel_arc.set_file_data(f'rels/{file}', rel_data.getbuffer())
             rel_modified = True
         if rel_modified:
             rel_data = rel_arc.to_buffer()
             write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'files' / 'rels.arc', rel_data)
+
+    def do_shoptable_rel_patch(self, rel):
+        # shopsanity patches
+        # TODO: only do this if shops aren't vanilla
+        # 24, 17, 18 is patched extra wallet chain
+        # patches the next value in the shop item chain
+        shop_item_next_patches = {
+            24: 17,
+            17: 18,
+        }
+        shop_price_patches = {
+            17: 100,
+            18: 100,
+        }
+        shop_entrypoint_patches = {
+            17: 10539,
+            18: 10540,
+        }
+        shop_present_scale_patches = {
+            17: 1.2,
+            18: 1.2,
+        }
+        shop_target_height_patches = {
+            17: 100,
+            18: 100,
+        }
+        sold_out_storyflag_patches = {
+            24: 937,
+            17: 938,
+            18: 939,
+            25: 940, # bug net
+            27: 941, # bug medal
+        }
+        SHOP_LIST_OFFSET = 0x6D8C
+        ENTRY_SIZE = 0x54
+        for shopindex, (itemid, arcname, modelname) in self.shoppatches.items():
+            data_bytes, shop_list_offset = rel.convert_rel_offset_to_section_data_and_relative_offset(SHOP_LIST_OFFSET)
+            current_shop_entry_offset = shop_list_offset + ENTRY_SIZE * shopindex
+            present_scale = shop_present_scale_patches.get(shopindex, None)
+            if not present_scale is None:
+                write_float(data_bytes, current_shop_entry_offset + 0x0, present_scale)
+            target_height = shop_target_height_patches.get(shopindex, None)
+            if not target_height is None:
+                write_float(data_bytes, current_shop_entry_offset + 0x8, target_height)
+            # item id
+            write_u16(data_bytes, current_shop_entry_offset + 0xC, itemid)
+
+            shop_price = shop_price_patches.get(shopindex, None)
+            if not shop_price is None:
+                write_u16(data_bytes, current_shop_entry_offset + 0xE, shop_price)
+
+            shop_entrypoint = shop_entrypoint_patches.get(shopindex, None)
+            if not shop_entrypoint is None:
+                write_u16(data_bytes, current_shop_entry_offset + 0x10, shop_entrypoint)
+
+            shop_item_next = shop_item_next_patches.get(shopindex, None)
+            if not shop_item_next is None:
+                write_u16(data_bytes, current_shop_entry_offset + 0x12, shop_item_next)
+
+            write_str(data_bytes, current_shop_entry_offset + 0x16, arcname, 30)
+            write_str(data_bytes, current_shop_entry_offset + 0x34, modelname, 30)
+            sold_out_storyflag = sold_out_storyflag_patches.get(shopindex, None)
+            if not sold_out_storyflag is None:
+                # normally not part of the struct, but the last 2 bytes of the modelname aren't used, so use them for storyflags
+                write_u16(data_bytes, current_shop_entry_offset + 0x52, sold_out_storyflag)
 
     def do_patch_object_pack(self):
         self.rando.progress_callback('patching ObjectPack...')
