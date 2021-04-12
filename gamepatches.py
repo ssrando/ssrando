@@ -668,7 +668,8 @@ class GamePatcher:
     def do_all_gamepatches(self):
         self.load_base_patches()
         self.add_entrance_rando_patches()
-        self.shopsanity_patches()
+        if self.rando.options['shop-mode'] != 'Vanilla':
+            self.shopsanity_patches()
         self.do_build_arc_cache()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
@@ -722,7 +723,8 @@ class GamePatcher:
         self.all_asm_patches = defaultdict(OrderedDict)
         self.add_asm_patch('custom_funcs')
         self.add_asm_patch('ss_necessary')
-        self.add_asm_patch('shopsanity') # TODO: only if shopsanity enabled
+        if self.rando.options['shop-mode'] != 'Vanilla':
+            self.add_asm_patch('shopsanity')
         
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / 'asm' / 'custom_symbols.txt').open('r') as f:
@@ -860,14 +862,14 @@ class GamePatcher:
             })
 
     def shopsanity_patches(self):
-        self.eventpatches['105-Terry'].append({
-            'name': 'go to Check for Pouch',
-            'type': 'flowpatch',
-            'index': 16,
-            'flow': {
-                'next': 'Check for Pouch' if self.rando.options['shop-mode'] == 'Vanilla' else 43
-            }
-        })
+        # self.eventpatches['105-Terry'].append({
+        #     'name': 'go to Check for Pouch',
+        #     'type': 'flowpatch',
+        #     'index': 16,
+        #     'flow': {
+        #         'next': 'Check for Pouch' if self.rando.options['shop-mode'] == 'Vanilla' else 43
+        #     }
+        # })
         with (Path(__file__).parent / "beedle_texts.yaml").open('r') as f:
             beedle_texts = yaml.safe_load(f)
         # print(beedle_texts)
@@ -1450,7 +1452,7 @@ class GamePatcher:
             rel = REL()
             rel.read(rel_data)
             apply_rel_patch(self, rel, file, codepatches)
-            if file == 'd_a_shop_sampleNP.rel':
+            if file == 'd_a_shop_sampleNP.rel' and self.rando.options['shop-mode'] != 'Vanilla':
                 self.do_shoptable_rel_patch(rel)
             rel.save_changes()
             rel_arc.set_file_data(f'rels/{file}', rel_data.getbuffer())
@@ -1461,7 +1463,6 @@ class GamePatcher:
 
     def do_shoptable_rel_patch(self, rel):
         # shopsanity patches
-        # TODO: only do this if shops aren't vanilla
         # 24, 17, 18 is patched extra wallet chain
         # patches the next value in the shop item chain
         shop_item_next_patches = {
