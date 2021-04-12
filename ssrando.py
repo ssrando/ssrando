@@ -122,19 +122,14 @@ class Randomizer:
     self.non_required_dungeons = [dungeon for dungeon in
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
     rupoor_mode = self.options['rupoor-mode']
-    print(rupoor_mode)
     if rupoor_mode != 'Off':
-      print('adding rupoors to the pool')
       if rupoor_mode == 'Added':
-        print('Adding rupoors to item pool')
         logic.item_types.CONSUMABLE_ITEMS += ['Rupoor'] * 15
-        print(logic.item_types.CONSUMABLE_ITEMS)
       else:
         self.rng.shuffle(logic.item_types.CONSUMABLE_ITEMS)
         replace_end_index = len(logic.item_types.CONSUMABLE_ITEMS)
         if rupoor_mode == 'Rupoor Mayhem':
           replace_end_index /= 2
-        print(f'Replacing %d items with rupoods', replace_end_index)
         for i in range(int(replace_end_index)):
           logic.item_types.CONSUMABLE_ITEMS[i] = 'Rupoor'
 
