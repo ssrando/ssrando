@@ -62,14 +62,16 @@ class Logic:
     self.load_and_parse_macros()
 
     self.race_mode_banned_locations = []
+    if self.rando.options['skip-skykeep'] and self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"] == 'Skykeep':
+      self.racemode_ban_location('Skyloft - Fledge\'s Crystals')
     if self.rando.options['empty-unrequired-dungeons']:
       for location_name in self.item_locations:
         zone, _ = Logic.split_location_name_by_zone(location_name)
         if zone in self.rando.non_required_dungeons:
           self.race_mode_banned_locations.append(location_name)
       
-      # checks outside dungeons that require dungeons:
-      if 'Lanayru Mining Facility' in self.rando.non_required_dungeons:
+      # checks outside locations that require dungeons:
+      if self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"] in self.rando.non_required_dungeons:
         self.racemode_ban_location('Skyloft - Fledge\'s Crystals')
       if 'Skyview' in self.rando.non_required_dungeons:
         # TODO: check again with entrance rando
@@ -814,6 +816,9 @@ class Logic:
           possible_items.remove(prerand_item)
 
       if len(possible_items) == 0:
+        print(self.rando.required_dungeons)
+        print(self.unplaced_progress_items)
+        print(self.rando.entrance_connections)
         raise Exception("Only items left to place are predetermined items at inaccessible locations!")
       
       # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
