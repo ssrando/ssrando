@@ -286,7 +286,7 @@ class Randomizer:
     # Write hints
     spoiler_log += "Hints:\n"
     for hintlocation, hint in self.hints.hints.items():
-      spoiler_log += "  %-53s %s\n" % (hintlocation+":", hint.replace('\n', ' '))
+      spoiler_log += "  %-53s %s\n" % (hintlocation+":", hint.to_spoiler_log_text())
     
     spoiler_log += "\n\n\n"
     
@@ -310,6 +310,7 @@ class Randomizer:
     spoiler_log['woth-locations'] = self.woth_locations
     spoiler_log['playthrough'] = self.calculate_playthrough_progression_spheres()
     spoiler_log['item-locations'] = self.logic.done_item_locations
+    spoiler_log['hints'] = dict(map(lambda kv: (kv[0], kv[1].to_spoiler_log_text()), self.hints.hints.items()))
     spoiler_log['entrances'] = self.entrance_connections
     
     spoiler_log_output_path = self.options['output-folder'] / ("SS Random %s - Spoiler Log.json" % self.seed)

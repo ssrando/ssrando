@@ -1110,7 +1110,7 @@ class GamePatcher:
                 'name': f"Hint {hintname}",
                 'type': "textpatch",
                 'index': hintdef['textindex'],
-                'text': self.rando.hints.hints[hintname]
+                'text': self.rando.hints.hints[hintname].to_gossip_stone_text()
             })
     
     def handle_oarc_add_remove(self):

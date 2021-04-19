@@ -2,6 +2,7 @@ from .logic import Logic
 from paths import RANDO_ROOT_PATH
 import yaml
 from collections import OrderedDict, defaultdict
+from dataclasses import dataclass
 
 ALWAYS_REQUIRED_LOCATIONS = [
     'Thunderhead - Levias',
@@ -28,6 +29,35 @@ SOMETIMES_LOCATIONS = [
     "Lanayru - On Top of Lanayru Mining Facility",
 ]
 
+class GossipStoneHint:
+    def to_gossip_stone_text(self) -> str:
+        raise NotImplementedError("abstract")
+    
+    def to_spoiler_log_text(self) -> str:
+        raise NotImplementedError("abstract")
+
+@dataclass
+class LocationGossipStoneHint(GossipStoneHint):
+    location_name: str
+    item: str
+
+    def to_gossip_stone_text(self) -> str:
+        zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
+        return f"{zone}\n{specific_loc}\nhas {self.item}"
+    
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.location_name} has {self.item}"
+
+@dataclass
+class EmptyGossipStoneHint(GossipStoneHint):
+    text: str
+
+    def to_gossip_stone_text(self) -> str:
+        return self.text
+    
+    def to_spoiler_log_text(self) -> str:
+        return self.text
+
 class Hints:
     def __init__(self, logic: Logic):
         with (RANDO_ROOT_PATH / "hints.yaml").open() as f:
@@ -39,12 +69,17 @@ class Hints:
     
     def do_junk_hints(self):
         for hintname in self.stonehint_definitions.keys():
-            self.hints[hintname] = 'Useless hint'
+            self.hints[hintname] = EmptyGossipStoneHint(text='Useless hint')
     
     def do_normal_hints(self):
         hint_locations = []
         total_stonehints = len(self.stonehint_definitions)
         needed_always_hints = self.logic.filter_locations_for_progression(ALWAYS_REQUIRED_LOCATIONS)
+        # in shopsanity, we need to hint some beetle shop items
+        # add them manually, cause they need to be kinda weirdly implemented because of bug net
+        if self.logic.rando.options['shop-mode'] == 'Randomized':
+            needed_always_hints.append('Skyloft - Beedle 1200 Rupee Item')
+            needed_always_hints.append('Skyloft - Beedle 1600 Rupee Item')
         needed_sometimes_hints = self.logic.filter_locations_for_progression(SOMETIMES_LOCATIONS)
         hints_left = total_stonehints
         for location in needed_always_hints:
@@ -92,7 +127,6 @@ class Hints:
         for gossipstone_name in self.stonehint_definitions:
             loc_to_hint = hint_to_location[gossipstone_name]
             if loc_to_hint is None:
-                self.hints[gossipstone_name] = '--PLACEHOLDER--'
+                self.hints[gossipstone_name] = EmptyGossipStoneHint(text='--PLACEHOLDER--')
             else:
-                zone_name, specific_name = Logic.split_location_name_by_zone(loc_to_hint)
-                self.hints[gossipstone_name] = f'{zone_name}\n{specific_name}\nhas {self.logic.done_item_locations[loc_to_hint]}'
+                self.hints[gossipstone_name] = LocationGossipStoneHint(location_name=loc_to_hint, item=self.logic.done_item_locations[loc_to_hint])
