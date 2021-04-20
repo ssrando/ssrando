@@ -13,7 +13,7 @@ There is also the [Skyward Sword Randomizer Discord](https://discord.gg/evpNKkaa
 ### For dolphin
 Just open the generated `SOUE01.wbfs` in dolphin and enjoy!
 ### For console
-1. Make sure to have homebrew and an USB loader installed (for example Configurable USB Loader)
+1. Make sure to have homebrew and a USB loader installed (for example Configurable USB Loader)
 2. copy the generated `SOUE01.wbfs` to your SD card in this folder: /wbfs/The Legend of Zelda Skyward Sword [SOUE01]/ and put the SD into your Wii
 3. Power up your Wii, homebrew channel, configurable USB Loader, Profit
 ## Installing from source (for development)
@@ -44,15 +44,15 @@ Or:
 
     python randoscript.py
 
-It will ask you to choose a iso and will extract it for you into the sslib directory (you should see 2 new foulders in the directory afterwards).
-The GUI will also Test your ISO version if you haven't checked yourself before and wont extract unless you have the right version.
+It will ask you to choose an iso and will extract it for you into the sslib directory (you should see 2 new folders in the directory afterwards).
+The GUI will also Test your ISO version if you haven't checked yourself before and won't extract unless you have the right version.
 After it is complete it should show up the GUI you can use to modify your game.
-The ranodmized game will then show up in the foulder you choose in the GUI.
+The randomized game will then show up in the folder you choose in the GUI.
 
 
 #### MORE OPTIONS
-To access more options you can start the GUI by starting the randoscript.py (see obove).
-I you don't want to use the GUI you can do `--noui`, otherwise this extra information is not important for you
+To access more options you can start the GUI by starting the randoscript.py (see above).
+If you don't want to use the GUI you can do `--noui`, otherwise this extra information is not important for you
 To see all options, use `--help` or see options.yaml
 
 #### Model Customization
