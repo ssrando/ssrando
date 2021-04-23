@@ -117,7 +117,18 @@ class Logic:
     self.all_nonprogress_items = NONPROGRESS_ITEMS.copy()
     self.all_fixed_consumable_items = CONSUMABLE_ITEMS.copy()
     self.duplicatable_consumable_items = DUPLICATABLE_CONSUMABLE_ITEMS.copy()
-  
+
+    rupoor_mode = self.rando.options['rupoor-mode']
+    if rupoor_mode != 'Off':
+      if rupoor_mode == 'Added':
+        self.all_fixed_consumable_items += ['Rupoor'] * 15
+      else:
+        self.rando.rng.shuffle(self.all_fixed_consumable_items)
+        replace_end_index = len(self.all_fixed_consumable_items)
+        if rupoor_mode == 'Rupoor Mayhem':
+          replace_end_index /= 2
+        for i in range(int(replace_end_index)):
+          self.all_fixed_consumable_items[i] = 'Rupoor'
     
     self.all_progress_items += DUNGEON_PROGRESS_ITEMS
     self.all_nonprogress_items += DUNGEON_NONPROGRESS_ITEMS

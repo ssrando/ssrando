@@ -9,7 +9,6 @@ import json
 
 from logic.logic import Logic
 import logic.constants as constants
-import logic.item_types as item_types
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
@@ -121,17 +120,6 @@ class Randomizer:
     self.race_mode_banned_locations = []
     self.non_required_dungeons = [dungeon for dungeon in
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
-    rupoor_mode = self.options['rupoor-mode']
-    if rupoor_mode != 'Off':
-      if rupoor_mode == 'Added':
-        logic.item_types.CONSUMABLE_ITEMS += ['Rupoor'] * 15
-      else:
-        self.rng.shuffle(logic.item_types.CONSUMABLE_ITEMS)
-        replace_end_index = len(logic.item_types.CONSUMABLE_ITEMS)
-        if rupoor_mode == 'Rupoor Mayhem':
-          replace_end_index /= 2
-        for i in range(int(replace_end_index)):
-          logic.item_types.CONSUMABLE_ITEMS[i] = 'Rupoor'
 
     self.logic = Logic(self)
     # self.logic.set_prerandomization_item_location("Skyloft - Beedle Second 100 Rupee Item", "Rare Treasure")
