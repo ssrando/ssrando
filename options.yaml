@@ -288,8 +288,8 @@
     - Any Dungeon
     - Anywhere
   default: Own Dungeon - Unrestricted
-  help: Controls the placement of maps. Restricted sets mean they cannot be placed on the
-    Boss HC of the dungeon
+  help: Controls the placement of maps. Restricted means that maps cannot be placed on the
+    Boss Heart Container of the dungeon
   ui: option_map_mode
 - name: Small Key Mode
   command: small-key-mode
@@ -302,10 +302,11 @@
     - Overworld Only
     - Any Dungeon
     - Anywhere (Keysanity)
-  default: Own Dungeon - Unrestricted
-  help: Controls the placement of small keys. Restricted sets mean they cannot be placed on the
-    Boss HC or the ending check of the dungeon. Restricted may also alter key logic depending on
-    the chosen logic mode
+  default: Own Dungeon - Restricted
+  help: Controls the placement of small keys. Vanilla means they will always be in their vanilla locations.
+    In Skyview, the Digging Spot will not contain a key. Own Dungeon means the keys can only appear
+    within their own dungeons. Restricted decreases the number of locations keys can appear in some
+    dungeons, depending on logic settings.
   ui: option_small_key_mode
 - name: Boss Key Mode
   command: boss-key-mode
@@ -318,5 +319,48 @@
     - Any Dungeon
     - Anywhere
   default: Own Dungeon
-  help: Controls the placement of boss keys.
+  help: Controls the placement of boss keys. Vanilla means they will always be in their vanilla locations.
+    Own Dungeon means the boss key can only appear within its own dungeon.
   ui: option_boss_key_mode
+- name: Logic Mode
+  command: logic-mode
+  type: singlechoice
+  bits: 3
+  choices:
+    - Glitchless - Basic
+    - Glitchless - Standard
+    - BiTless
+    - Glitched
+    - No Logic
+  default: Glitchless - Standard
+  help: Sets the logic mode to use when placing items. Glitchless requires no major tricks to complete, but
+    Standard may require minor tricks, such as whipping bombflowers. BiTless may require basic non-BiT tricks
+    such as Fence Hop. Glitched may require BiT. No logic may be unbeatable
+  ui: option_logic_mode
+- name: Enabled Tricks
+  command: enabled-tricks
+  type: multichoice
+  choices:
+    - Early Lake Floria - Fence Hop
+    - Early Lake Floria - Moblin
+    - Early Lafe Floria - Rope Floria
+    - Early Faron Woods
+    - Temple of Time Skip - BiTwarp
+    - Temple of Time Skip - Brakeslide
+    - Early Lanayru Caves
+    - Lanayru Mines without Bombs
+    - Owlan Crystals without Bombs
+    - Skyview Digging Spot without Scale
+    - Fire Sanctuary - Map Chest RBM
+    - Fire Sanctuary - Plats Chest RBM
+    - Fire Sanctuary - Boss Key without Mitts
+    - Fire Sanctuary - Overworld Statue RBM
+    - Tentalus Skip
+    - Skyloft Trial RBW
+    - Faron Trial RBM
+    - Eldin Trial RBM
+    - Upper Eldin RBM
+    - Earth Temple Door RBM
+    - Sand Sea Skip
+  default: []
+  ui: enabled_tricks

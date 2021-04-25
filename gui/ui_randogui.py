@@ -105,7 +105,7 @@ class Ui_MainWindow(object):
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
         self.option_description.setGeometry(QRect(10, 590, 931, 31))
-        self.option_description.setWordWrap(False)
+        self.option_description.setWordWrap(True)
         self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
         self.horizontalLayoutWidget_2.setGeometry(QRect(10, 630, 931, 27))
@@ -700,10 +700,19 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.verticalLayout_19 = QVBoxLayout()
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.label = QLabel(self.verticalLayoutWidget_8)
+        self.label.setObjectName(u"label")
+
+        self.verticalLayout_19.addWidget(self.label)
+
+        self.horizontalLayout_17 = QHBoxLayout()
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
         self.listView_2 = QListView(self.verticalLayoutWidget_8)
         self.listView_2.setObjectName(u"listView_2")
 
-        self.horizontalLayout_2.addWidget(self.listView_2)
+        self.horizontalLayout_17.addWidget(self.listView_2)
 
         self.verticalLayout_20 = QVBoxLayout()
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
@@ -718,37 +727,58 @@ class Ui_MainWindow(object):
         self.verticalLayout_20.addWidget(self.pushButton_2)
 
 
-        self.horizontalLayout_2.addLayout(self.verticalLayout_20)
+        self.horizontalLayout_17.addLayout(self.verticalLayout_20)
 
         self.listWidget = QListWidget(self.verticalLayoutWidget_8)
         self.listWidget.setObjectName(u"listWidget")
 
-        self.horizontalLayout_2.addWidget(self.listWidget)
+        self.horizontalLayout_17.addWidget(self.listWidget)
 
-        self.listView = QListView(self.verticalLayoutWidget_8)
-        self.listView.setObjectName(u"listView")
 
-        self.horizontalLayout_2.addWidget(self.listView)
+        self.verticalLayout_19.addLayout(self.horizontalLayout_17)
+
+
+        self.horizontalLayout_2.addLayout(self.verticalLayout_19)
+
+        self.verticalLayout_25 = QVBoxLayout()
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.label_5 = QLabel(self.verticalLayoutWidget_8)
+        self.label_5.setObjectName(u"label_5")
+
+        self.verticalLayout_25.addWidget(self.label_5)
+
+        self.horizontalLayout_18 = QHBoxLayout()
+        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
+        self.enabled_tricks = QListView(self.verticalLayoutWidget_8)
+        self.enabled_tricks.setObjectName(u"enabled_tricks")
+
+        self.horizontalLayout_18.addWidget(self.enabled_tricks)
 
         self.verticalLayout_21 = QVBoxLayout()
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.pushButton_3 = QPushButton(self.verticalLayoutWidget_8)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.enable_trick = QPushButton(self.verticalLayoutWidget_8)
+        self.enable_trick.setObjectName(u"enable_trick")
 
-        self.verticalLayout_21.addWidget(self.pushButton_3)
+        self.verticalLayout_21.addWidget(self.enable_trick)
 
-        self.pushButton_4 = QPushButton(self.verticalLayoutWidget_8)
-        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.disable_trick = QPushButton(self.verticalLayoutWidget_8)
+        self.disable_trick.setObjectName(u"disable_trick")
 
-        self.verticalLayout_21.addWidget(self.pushButton_4)
+        self.verticalLayout_21.addWidget(self.disable_trick)
 
 
-        self.horizontalLayout_2.addLayout(self.verticalLayout_21)
+        self.horizontalLayout_18.addLayout(self.verticalLayout_21)
 
-        self.listView_3 = QListView(self.verticalLayoutWidget_8)
-        self.listView_3.setObjectName(u"listView_3")
+        self.disabled_tricks = QListView(self.verticalLayoutWidget_8)
+        self.disabled_tricks.setObjectName(u"disabled_tricks")
 
-        self.horizontalLayout_2.addWidget(self.listView_3)
+        self.horizontalLayout_18.addWidget(self.disabled_tricks)
+
+
+        self.verticalLayout_25.addLayout(self.horizontalLayout_18)
+
+
+        self.horizontalLayout_2.addLayout(self.verticalLayout_25)
 
 
         self.verticalLayout_18.addLayout(self.horizontalLayout_2)
@@ -762,9 +792,9 @@ class Ui_MainWindow(object):
         self.groupBox_10 = QGroupBox(self.tab_7)
         self.groupBox_10.setObjectName(u"groupBox_10")
         self.groupBox_10.setGeometry(QRect(10, 10, 181, 201))
-        self.verticalLayoutWidget_12 = QWidget(self.tab_7)
+        self.verticalLayoutWidget_12 = QWidget(self.groupBox_10)
         self.verticalLayoutWidget_12.setObjectName(u"verticalLayoutWidget_12")
-        self.verticalLayoutWidget_12.setGeometry(QRect(20, 30, 161, 183))
+        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 161, 171))
         self.verticalLayout_22 = QVBoxLayout(self.verticalLayoutWidget_12)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
@@ -908,7 +938,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(3)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1010,10 +1040,12 @@ class Ui_MainWindow(object):
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"<---", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"--->", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"<---", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"--->", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Enable Tricks", None))
+        self.enable_trick.setText(QCoreApplication.translate("MainWindow", u"<---", None))
+        self.disable_trick.setText(QCoreApplication.translate("MainWindow", u"--->", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Logic Settings", None))
         self.groupBox_10.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
         self.label_for_option_hint_distribution.setText(QCoreApplication.translate("MainWindow", u"Hint Distribution", None))

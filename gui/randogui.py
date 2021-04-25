@@ -5,7 +5,7 @@ import random
 
 import yaml
 from PySide2 import QtWidgets
-from PySide2.QtCore import Qt, QTimer, QEvent
+from PySide2.QtCore import Qt, QTimer, QEvent, QStringListModel
 from PySide2.QtWidgets import QMainWindow, QAbstractButton, QComboBox, QSpinBox, QListView, QCheckBox, \
     QRadioButton, QFileDialog, QMessageBox, QErrorMessage
 
@@ -73,6 +73,15 @@ class RandoGUI(QMainWindow):
                         widget.setMaximum(option['max'])
                     widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
+
+        self.enabled_tricks_model = QStringListModel()
+        self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks']['default'])
+        self.disabled_tricks_model = QStringListModel()
+        self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks']['choices'])
+        self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
+        self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
+        self.ui.enable_trick.clicked.connect(self.enable_trick)
+        self.ui.disable_trick.clicked.connect(self.disable_trick)
 
         self.location_descriptions = {
             "skyloft": "Enables progression items to appear on Skyloft",
@@ -279,6 +288,15 @@ class RandoGUI(QMainWindow):
         for check_type in ALL_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in current_settings['banned-types'])
+        self.enabled_tricks_model = QStringListModel()
+        self.enabled_tricks_model.setStringList(current_settings['enabled-tricks'])
+        self.disabled_tricks_model = QStringListModel()
+        self.disabled_tricks_model.setStringList([
+            choice for choice in OPTIONS['enabled-tricks']['choices']
+            if choice not in current_settings['enabled-tricks']
+        ])
+        self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
+        self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
         self.ui.permalink.setText(current_settings.get_permalink())
 
     def save_settings(self):
@@ -316,7 +334,7 @@ class RandoGUI(QMainWindow):
         elif isinstance(widget, QSpinBox):
             return widget.value()
         elif isinstance(widget, QListView):
-            pass
+            return widget.model().stringList()
         else:
             print("Option widget is invalid: %s" % option_name)
 
@@ -327,6 +345,31 @@ class RandoGUI(QMainWindow):
             if not widget.isChecked():
                 banned_types.append(check_type)
         return banned_types
+
+    @staticmethod
+    def append_row(model, value):
+        model.insertRow(model.rowCount())
+        new_row = model.index(model.rowCount() - 1, 0)
+        model.setData(new_row, value)
+
+    def move_selected_rows(self, source, dest):
+        selection = source.selectionModel().selectedIndexes()
+        # Remove starting from the last so the previous indices remain valid
+        selection.sort(reverse=True, key=lambda x: x.row())
+        for item in selection:
+            value = item.data()
+            source.model().removeRow(item.row())
+            self.append_row(dest.model(), value)
+
+    def enable_trick(self):
+        self.move_selected_rows(self.ui.disabled_tricks, self.ui.enabled_tricks)
+        self.ui.enabled_tricks.model().sort(0)
+        self.update_settings()
+
+    def disable_trick(self):
+        self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
+        self.ui.disabled_tricks.model().sort(0)
+        self.update_settings()
 
     def eventFilter(self, target, event):
         if event.type() == QEvent.Enter:
