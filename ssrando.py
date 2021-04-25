@@ -69,6 +69,7 @@ class Randomizer:
     self.seed = self.options['seed']
     if self.seed == -1:
       self.seed = random.randint(0,1000000)
+    self.options.set_option('seed', self.seed)
     
     self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
