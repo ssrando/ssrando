@@ -161,6 +161,9 @@
     <property name="text">
      <string/>
     </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
@@ -197,7 +200,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -591,42 +594,42 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QLabel" name="label_7">
+           <widget class="QLabel" name="label_for_option_got_starting_state">
             <property name="text">
              <string>Starting State</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox"/>
+           <widget class="QComboBox" name="option_got_starting_state"/>
           </item>
          </layout>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QLabel" name="label_6">
+           <widget class="QLabel" name="label_for_option_got_sword_requirement">
             <property name="text">
              <string>Sword Requirement</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_2"/>
+           <widget class="QComboBox" name="option_got_sword_requirement"/>
           </item>
          </layout>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QLabel" name="label_5">
+           <widget class="QLabel" name="label_for_option_got_dungeon_requirement">
             <property name="text">
              <string>Dungeon Requirement</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_3"/>
+           <widget class="QComboBox" name="option_got_dungeon_requirement"/>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -708,42 +711,42 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <item>
-           <widget class="QLabel" name="label_11">
+           <widget class="QLabel" name="label_for_option_map_mode">
             <property name="text">
              <string>Map Mode</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_4"/>
+           <widget class="QComboBox" name="option_map_mode"/>
           </item>
          </layout>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_12">
           <item>
-           <widget class="QLabel" name="label_12">
+           <widget class="QLabel" name="label_for_option_small_key_mode">
             <property name="text">
              <string>Small Keys</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_7"/>
+           <widget class="QComboBox" name="option_small_key_mode"/>
           </item>
          </layout>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_13">
           <item>
-           <widget class="QLabel" name="label_13">
+           <widget class="QLabel" name="label_for_option_boss_key_mode">
             <property name="text">
              <string>Boss Keys</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_6"/>
+           <widget class="QComboBox" name="option_boss_key_mode"/>
           </item>
          </layout>
         </item>
@@ -793,28 +796,28 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_14">
         <item>
-         <widget class="QCheckBox" name="option_skip_imp_2">
+         <widget class="QCheckBox" name="option_imp_2">
           <property name="text">
            <string>Imprisoned 2</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="option_horde">
           <property name="text">
            <string>Horde</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_2">
+         <widget class="QCheckBox" name="option_g3">
           <property name="text">
            <string>Ghirahim 3</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_3">
+         <widget class="QCheckBox" name="option_demise">
           <property name="text">
            <string>Demise</string>
           </property>
@@ -861,28 +864,28 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
-           <widget class="QLabel" name="label_8">
+           <widget class="QLabel" name="label_for_option_open_thunderhead">
             <property name="text">
              <string>Open Thunderhead</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="option_closed_thunderhead"/>
+           <widget class="QComboBox" name="option_open_thunderhead"/>
           </item>
          </layout>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <item>
-           <widget class="QLabel" name="label_9">
+           <widget class="QLabel" name="label_for_option_open_lmf">
             <property name="text">
              <string>Open Lanayru Mining Facility</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_5"/>
+           <widget class="QComboBox" name="option_open_lmf"/>
           </item>
          </layout>
         </item>
@@ -948,7 +951,7 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_9">
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="label_for_option_randomize_entrances">
             <property name="text">
              <string>Randomize Entrances</string>
             </property>
@@ -1069,14 +1072,14 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_18">
          <item>
-          <widget class="QLabel" name="label_14">
+          <widget class="QLabel" name="label_for_option_logic_mode">
            <property name="text">
             <string>Logic Mode</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox_8"/>
+          <widget class="QComboBox" name="option_logic_mode"/>
          </item>
          <item>
           <spacer name="verticalSpacer_7">
@@ -1178,84 +1181,84 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_24">
          <item>
-          <widget class="QLabel" name="label_15">
+          <widget class="QLabel" name="label_for_option_hint_distribution">
            <property name="text">
             <string>Hint Distribution</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox_9"/>
+          <widget class="QComboBox" name="option_hint_distribution"/>
          </item>
         </layout>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_9">
          <item>
-          <widget class="QLabel" name="label_16">
+          <widget class="QLabel" name="label_for_option_woth_hints">
            <property name="text">
             <string>Way of the Hero Hints</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_5"/>
+          <widget class="QSpinBox" name="option_woth_hints"/>
          </item>
         </layout>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
          <item>
-          <widget class="QLabel" name="label_17">
+          <widget class="QLabel" name="label_for_option_barren_hints">
            <property name="text">
             <string>Barren Hints</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_4"/>
+          <widget class="QSpinBox" name="option_barren_hints"/>
          </item>
         </layout>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_13">
          <item>
-          <widget class="QLabel" name="label_18">
+          <widget class="QLabel" name="label_for_option_sometimes_hints">
            <property name="text">
             <string>Sometimes Hints</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_3"/>
+          <widget class="QSpinBox" name="option_sometimes_hints"/>
          </item>
         </layout>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_14">
          <item>
-          <widget class="QLabel" name="label_20">
+          <widget class="QLabel" name="label_for_option_location_hints">
            <property name="text">
             <string>Location Hints</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_2"/>
+          <widget class="QSpinBox" name="option_location_hints"/>
          </item>
         </layout>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_15">
          <item>
-          <widget class="QLabel" name="label_19">
+          <widget class="QLabel" name="label_for_option_item_hints">
            <property name="text">
             <string>Item Hints</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox"/>
+          <widget class="QSpinBox" name="option_item_hints"/>
          </item>
         </layout>
        </item>

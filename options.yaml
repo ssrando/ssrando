@@ -33,13 +33,17 @@
   help: Number of tablets to start with. Tablets are selected randomly, and the remainder
     are randomized
   ui: option_starting_tablet_count
-- name: Closed Thunderhead
-  command: closed-thunderhead
-  type: boolean
-  default: false
-  help: Thunderhead is closed by default, obtain Ballad of the Goddess to immediately
-    open it
-  ui: option_closed_thunderhead
+- name: Open Thunderhead
+  command: open-thunderhead
+  type: singlechoice
+  bits: 2
+  choices:
+    - Ballad
+    - Harp and Ballad
+    - Open
+  default: Ballad
+  help: Controls the starting state of the Thunderhead.
+  ui: option_open_thunderhead
 - name: Swordless
   command: swordless
   type: boolean
@@ -56,12 +60,12 @@
   bits: 3
   help: The number of dungeons that are required, to beat the seed
   ui: option_required_dungeon_count
-- name: Imp 2 Skip
+- name: Imp 2
   command: imp2-skip
   type: boolean
-  default: false
+  default: true
   help: Skips the requirement to beat Imp 2 in oder to beat the seed
-  ui: option_skip_imp_2
+  ui: option_imp_2
 - name: Empty unrequired Dungeons
   command: empty-unrequired-dungeons
   type: boolean
@@ -206,3 +210,113 @@
     pool. All modes also add ruppors to the backup, duplicatable pool for when all other items have been
     placed
   ui: option_rupoor_mode
+- name: Gate of Time Starting State
+  command: got-start
+  type: singlechoice
+  bits: 1
+  choices:
+    - Lowered
+    - Raised
+  default: Lowered
+  help: Sets the starting state of the Gate of Time
+  ui: option_got_starting_state
+- name: Gate of Time Sword Requirement
+  command: got-sword-requirement
+  type: singlechoice
+  bits: 2
+  choices:
+    - Open
+    - Any
+    - Master Sword
+    - True Master Sword
+  default: Master Sword
+  help: Sets the sword requirement for opening the Gate of Time
+  ui: option_got_sword_requirement
+- name: Gate of Time Dungeon Requirements
+  command: got-dungeon-requirement
+  type: singlechoice
+  bits: 1
+  choices:
+    - Required
+    - Unrequired
+  default: Required
+  help: Enables dungeon requirements for opening the Gate of Time. When disabled, dungeons will
+    open the horde door instead.
+  ui: option_got_dungeon_requirement
+- name: Open LMF
+  command: open-lmf
+  type: singlechoice
+  bits: 2
+  choices:
+    - Nodes
+    - Hook Beetle
+    - Open
+  default: Nodes
+  help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
+    Hook Beetle will raise LMF once the Hook Beetle is obtained.
+  ui: option_open_lmf
+- name: Horde
+  command: horde
+  type: boolean
+  default: true
+  help: When disabled, the horde fight will be skipped
+  ui: option_horde
+- name: Ghirahim 3
+  command: g3
+  type: boolean
+  default: true
+  help: When disabled, the Ghiriahim 3 fight will be skipped
+  ui: option_g3
+- name: Demise
+  command: demise
+  type: boolean
+  default: true
+  help: When disabled, the Demise fight will be skipped. Entering the portal in the
+    spiral will play the credits
+  ui: option_demise
+- name: Map Mode
+  command: map-mode
+  type: singlechoice
+  bits: 3
+  choices:
+    - Removed
+    - Start With
+    - Vanilla
+    - Own Dungeon - Restricted
+    - Own Dungeon - Unrestricted
+    - Overworld Only
+    - Any Dungeon
+    - Anywhere
+  default: Own Dungeon - Unrestricted
+  help: Controls the placement of maps. Restricted sets mean they cannot be placed on the
+    Boss HC of the dungeon
+  ui: option_map_mode
+- name: Small Key Mode
+  command: small-key-mode
+  type: singlechoice
+  bits: 3
+  choices:
+    - Vanilla
+    - Own Dungeon - Restricted
+    - Own Dungeon - Unrestricted
+    - Overworld Only
+    - Any Dungeon
+    - Anywhere (Keysanity)
+  default: Own Dungeon - Unrestricted
+  help: Controls the placement of small keys. Restricted sets mean they cannot be placed on the
+    Boss HC or the ending check of the dungeon. Restricted may also alter key logic depending on
+    the chosen logic mode
+  ui: option_small_key_mode
+- name: Boss Key Mode
+  command: boss-key-mode
+  type: singlechoice
+  bits: 3
+  choices:
+    - Vanilla
+    - Own Dungeon
+    - Overworld Only
+    - Any Dungeon
+    - Anywhere
+  default: Own Dungeon
+  help: Controls the placement of boss keys.
+  ui: option_boss_key_mode
