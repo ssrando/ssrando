@@ -368,10 +368,10 @@ class Ui_MainWindow(object):
         self.tab_4.setObjectName(u"tab_4")
         self.groupBox_5 = QGroupBox(self.tab_4)
         self.groupBox_5.setObjectName(u"groupBox_5")
-        self.groupBox_5.setGeometry(QRect(10, 10, 211, 231))
+        self.groupBox_5.setGeometry(QRect(10, 10, 181, 231))
         self.verticalLayoutWidget = QWidget(self.groupBox_5)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 191, 201))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 170, 213))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -451,139 +451,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_3)
 
-        self.gridLayoutWidget_2 = QWidget(self.tab_4)
-        self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
-        self.gridLayoutWidget_2.setGeometry(QRect(20, 290, 891, 131))
-        self.gridLayout_2 = QGridLayout(self.gridLayoutWidget_2)
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.option_skip_imp_2 = QCheckBox(self.gridLayoutWidget_2)
-        self.option_skip_imp_2.setObjectName(u"option_skip_imp_2")
-
-        self.gridLayout_2.addWidget(self.option_skip_imp_2, 3, 3, 1, 1)
-
-        self.option_swordless = QCheckBox(self.gridLayoutWidget_2)
-        self.option_swordless.setObjectName(u"option_swordless")
-
-        self.gridLayout_2.addWidget(self.option_swordless, 1, 0, 1, 1)
-
-        self.horizontalLayout_7 = QHBoxLayout()
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.label_4 = QLabel(self.gridLayoutWidget_2)
-        self.label_4.setObjectName(u"label_4")
-
-        self.horizontalLayout_7.addWidget(self.label_4)
-
-        self.option_rupoor_mode = QComboBox(self.gridLayoutWidget_2)
-        self.option_rupoor_mode.setObjectName(u"option_rupoor_mode")
-
-        self.horizontalLayout_7.addWidget(self.option_rupoor_mode)
-
-
-        self.gridLayout_2.addLayout(self.horizontalLayout_7, 0, 3, 1, 1)
-
-        self.option_start_pouch = QCheckBox(self.gridLayoutWidget_2)
-        self.option_start_pouch.setObjectName(u"option_start_pouch")
-
-        self.gridLayout_2.addWidget(self.option_start_pouch, 3, 0, 1, 1)
-
-        self.horizontalLayout_9 = QHBoxLayout()
-        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-
-        self.gridLayout_2.addLayout(self.horizontalLayout_9, 0, 0, 1, 1)
-
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-
-        self.gridLayout_2.addLayout(self.horizontalLayout_2, 1, 1, 1, 1)
-
-        self.groupBox_2 = QGroupBox(self.tab_4)
-        self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setGeometry(QRect(230, 10, 161, 231))
-        self.verticalLayoutWidget_2 = QWidget(self.groupBox_2)
-        self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 141, 201))
-        self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_6 = QVBoxLayout()
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.label_8 = QLabel(self.verticalLayoutWidget_2)
-        self.label_8.setObjectName(u"label_8")
-
-        self.verticalLayout_6.addWidget(self.label_8)
-
-        self.option_closed_thunderhead = QComboBox(self.verticalLayoutWidget_2)
-        self.option_closed_thunderhead.setObjectName(u"option_closed_thunderhead")
-
-        self.verticalLayout_6.addWidget(self.option_closed_thunderhead)
-
-
-        self.verticalLayout_2.addLayout(self.verticalLayout_6)
-
-        self.verticalLayout_8 = QVBoxLayout()
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.label_9 = QLabel(self.verticalLayoutWidget_2)
-        self.label_9.setObjectName(u"label_9")
-
-        self.verticalLayout_8.addWidget(self.label_9)
-
-        self.comboBox_5 = QComboBox(self.verticalLayoutWidget_2)
-        self.comboBox_5.setObjectName(u"comboBox_5")
-
-        self.verticalLayout_8.addWidget(self.comboBox_5)
-
-
-        self.verticalLayout_2.addLayout(self.verticalLayout_8)
-
-        self.horizontalLayout_10 = QHBoxLayout()
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.label_for_option_starting_tablet_count = QLabel(self.verticalLayoutWidget_2)
-        self.label_for_option_starting_tablet_count.setObjectName(u"label_for_option_starting_tablet_count")
-
-        self.horizontalLayout_10.addWidget(self.label_for_option_starting_tablet_count)
-
-        self.option_starting_tablet_count = QSpinBox(self.verticalLayoutWidget_2)
-        self.option_starting_tablet_count.setObjectName(u"option_starting_tablet_count")
-        self.option_starting_tablet_count.setMaximumSize(QSize(41, 16777215))
-
-        self.horizontalLayout_10.addWidget(self.option_starting_tablet_count)
-
-
-        self.verticalLayout_2.addLayout(self.horizontalLayout_10)
-
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_2.addItem(self.verticalSpacer_2)
-
-        self.groupBox_6 = QGroupBox(self.tab_4)
-        self.groupBox_6.setObjectName(u"groupBox_6")
-        self.groupBox_6.setGeometry(QRect(400, 10, 141, 231))
-        self.verticalLayoutWidget_4 = QWidget(self.groupBox_6)
-        self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
-        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 121, 191))
-        self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_4)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_9 = QVBoxLayout()
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.label = QLabel(self.verticalLayoutWidget_4)
-        self.label.setObjectName(u"label")
-
-        self.verticalLayout_9.addWidget(self.label)
-
-        self.option_randomize_entrances = QComboBox(self.verticalLayoutWidget_4)
-        self.option_randomize_entrances.setObjectName(u"option_randomize_entrances")
-
-        self.verticalLayout_9.addWidget(self.option_randomize_entrances)
-
-        self.verticalSpacer = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
-
-        self.verticalLayout_9.addItem(self.verticalSpacer)
-
-
-        self.verticalLayout_7.addLayout(self.verticalLayout_9)
-
         self.groupBox_7 = QGroupBox(self.tab_4)
         self.groupBox_7.setObjectName(u"groupBox_7")
         self.groupBox_7.setGeometry(QRect(560, 10, 181, 231))
@@ -647,21 +514,400 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_10.addItem(self.verticalSpacer_4)
 
+        self.groupBox_8 = QGroupBox(self.tab_4)
+        self.groupBox_8.setObjectName(u"groupBox_8")
+        self.groupBox_8.setGeometry(QRect(750, 20, 161, 221))
+        self.verticalLayoutWidget_3 = QWidget(self.groupBox_8)
+        self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
+        self.verticalLayoutWidget_3.setGeometry(QRect(10, 20, 141, 191))
+        self.verticalLayout_14 = QVBoxLayout(self.verticalLayoutWidget_3)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.option_skip_imp_2 = QCheckBox(self.verticalLayoutWidget_3)
+        self.option_skip_imp_2.setObjectName(u"option_skip_imp_2")
+
+        self.verticalLayout_14.addWidget(self.option_skip_imp_2)
+
+        self.checkBox = QCheckBox(self.verticalLayoutWidget_3)
+        self.checkBox.setObjectName(u"checkBox")
+
+        self.verticalLayout_14.addWidget(self.checkBox)
+
+        self.checkBox_2 = QCheckBox(self.verticalLayoutWidget_3)
+        self.checkBox_2.setObjectName(u"checkBox_2")
+
+        self.verticalLayout_14.addWidget(self.checkBox_2)
+
+        self.checkBox_3 = QCheckBox(self.verticalLayoutWidget_3)
+        self.checkBox_3.setObjectName(u"checkBox_3")
+
+        self.verticalLayout_14.addWidget(self.checkBox_3)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_14.addItem(self.verticalSpacer_5)
+
+        self.groupBox_2 = QGroupBox(self.tab_4)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.groupBox_2.setGeometry(QRect(200, 10, 171, 231))
+        self.verticalLayoutWidget_2 = QWidget(self.groupBox_2)
+        self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 151, 201))
+        self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_6 = QVBoxLayout()
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.label_8 = QLabel(self.verticalLayoutWidget_2)
+        self.label_8.setObjectName(u"label_8")
+
+        self.verticalLayout_6.addWidget(self.label_8)
+
+        self.option_closed_thunderhead = QComboBox(self.verticalLayoutWidget_2)
+        self.option_closed_thunderhead.setObjectName(u"option_closed_thunderhead")
+
+        self.verticalLayout_6.addWidget(self.option_closed_thunderhead)
+
+
+        self.verticalLayout_2.addLayout(self.verticalLayout_6)
+
+        self.verticalLayout_8 = QVBoxLayout()
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.label_9 = QLabel(self.verticalLayoutWidget_2)
+        self.label_9.setObjectName(u"label_9")
+
+        self.verticalLayout_8.addWidget(self.label_9)
+
+        self.comboBox_5 = QComboBox(self.verticalLayoutWidget_2)
+        self.comboBox_5.setObjectName(u"comboBox_5")
+
+        self.verticalLayout_8.addWidget(self.comboBox_5)
+
+
+        self.verticalLayout_2.addLayout(self.verticalLayout_8)
+
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.label_for_option_starting_tablet_count = QLabel(self.verticalLayoutWidget_2)
+        self.label_for_option_starting_tablet_count.setObjectName(u"label_for_option_starting_tablet_count")
+
+        self.horizontalLayout_10.addWidget(self.label_for_option_starting_tablet_count)
+
+        self.option_starting_tablet_count = QSpinBox(self.verticalLayoutWidget_2)
+        self.option_starting_tablet_count.setObjectName(u"option_starting_tablet_count")
+        self.option_starting_tablet_count.setMaximumSize(QSize(41, 16777215))
+
+        self.horizontalLayout_10.addWidget(self.option_starting_tablet_count)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_10)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_2.addItem(self.verticalSpacer_2)
+
+        self.groupBox_6 = QGroupBox(self.tab_4)
+        self.groupBox_6.setObjectName(u"groupBox_6")
+        self.groupBox_6.setGeometry(QRect(380, 10, 171, 231))
+        self.verticalLayoutWidget_4 = QWidget(self.groupBox_6)
+        self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
+        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 151, 201))
+        self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_4)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_9 = QVBoxLayout()
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.label = QLabel(self.verticalLayoutWidget_4)
+        self.label.setObjectName(u"label")
+
+        self.verticalLayout_9.addWidget(self.label)
+
+        self.option_randomize_entrances = QComboBox(self.verticalLayoutWidget_4)
+        self.option_randomize_entrances.setObjectName(u"option_randomize_entrances")
+
+        self.verticalLayout_9.addWidget(self.option_randomize_entrances)
+
+        self.verticalSpacer = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+
+        self.verticalLayout_9.addItem(self.verticalSpacer)
+
+
+        self.verticalLayout_7.addLayout(self.verticalLayout_9)
+
+        self.groupBox_9 = QGroupBox(self.tab_4)
+        self.groupBox_9.setObjectName(u"groupBox_9")
+        self.groupBox_9.setGeometry(QRect(10, 250, 181, 221))
+        self.verticalLayoutWidget_5 = QWidget(self.groupBox_9)
+        self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
+        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 161, 191))
+        self.verticalLayout_15 = QVBoxLayout(self.verticalLayoutWidget_5)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.option_swordless = QCheckBox(self.verticalLayoutWidget_5)
+        self.option_swordless.setObjectName(u"option_swordless")
+
+        self.verticalLayout_15.addWidget(self.option_swordless)
+
+        self.option_start_pouch = QCheckBox(self.verticalLayoutWidget_5)
+        self.option_start_pouch.setObjectName(u"option_start_pouch")
+
+        self.verticalLayout_15.addWidget(self.option_start_pouch)
+
+        self.verticalLayout_16 = QVBoxLayout()
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.label_4 = QLabel(self.verticalLayoutWidget_5)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout_16.addWidget(self.label_4)
+
+        self.option_rupoor_mode = QComboBox(self.verticalLayoutWidget_5)
+        self.option_rupoor_mode.setObjectName(u"option_rupoor_mode")
+
+        self.verticalLayout_16.addWidget(self.option_rupoor_mode)
+
+
+        self.verticalLayout_15.addLayout(self.verticalLayout_16)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_15.addItem(self.verticalSpacer_6)
+
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
         self.tab_5.setObjectName(u"tab_5")
+        self.verticalLayoutWidget_8 = QWidget(self.tab_5)
+        self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
+        self.verticalLayoutWidget_8.setGeometry(QRect(9, 9, 911, 461))
+        self.verticalLayout_17 = QVBoxLayout(self.verticalLayoutWidget_8)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.verticalLayout_17.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_18 = QVBoxLayout()
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.label_14 = QLabel(self.verticalLayoutWidget_8)
+        self.label_14.setObjectName(u"label_14")
+
+        self.verticalLayout_18.addWidget(self.label_14)
+
+        self.comboBox_8 = QComboBox(self.verticalLayoutWidget_8)
+        self.comboBox_8.setObjectName(u"comboBox_8")
+
+        self.verticalLayout_18.addWidget(self.comboBox_8)
+
+        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_18.addItem(self.verticalSpacer_7)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.listView_2 = QListView(self.verticalLayoutWidget_8)
+        self.listView_2.setObjectName(u"listView_2")
+
+        self.horizontalLayout_2.addWidget(self.listView_2)
+
+        self.verticalLayout_20 = QVBoxLayout()
+        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.pushButton = QPushButton(self.verticalLayoutWidget_8)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.verticalLayout_20.addWidget(self.pushButton)
+
+        self.pushButton_2 = QPushButton(self.verticalLayoutWidget_8)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+
+        self.verticalLayout_20.addWidget(self.pushButton_2)
+
+
+        self.horizontalLayout_2.addLayout(self.verticalLayout_20)
+
+        self.listWidget = QListWidget(self.verticalLayoutWidget_8)
+        self.listWidget.setObjectName(u"listWidget")
+
+        self.horizontalLayout_2.addWidget(self.listWidget)
+
+        self.listView = QListView(self.verticalLayoutWidget_8)
+        self.listView.setObjectName(u"listView")
+
+        self.horizontalLayout_2.addWidget(self.listView)
+
+        self.verticalLayout_21 = QVBoxLayout()
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.pushButton_3 = QPushButton(self.verticalLayoutWidget_8)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+
+        self.verticalLayout_21.addWidget(self.pushButton_3)
+
+        self.pushButton_4 = QPushButton(self.verticalLayoutWidget_8)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+
+        self.verticalLayout_21.addWidget(self.pushButton_4)
+
+
+        self.horizontalLayout_2.addLayout(self.verticalLayout_21)
+
+        self.listView_3 = QListView(self.verticalLayoutWidget_8)
+        self.listView_3.setObjectName(u"listView_3")
+
+        self.horizontalLayout_2.addWidget(self.listView_3)
+
+
+        self.verticalLayout_18.addLayout(self.horizontalLayout_2)
+
+
+        self.verticalLayout_17.addLayout(self.verticalLayout_18)
+
         self.tabWidget.addTab(self.tab_5, "")
         self.tab_7 = QWidget()
         self.tab_7.setObjectName(u"tab_7")
+        self.groupBox_10 = QGroupBox(self.tab_7)
+        self.groupBox_10.setObjectName(u"groupBox_10")
+        self.groupBox_10.setGeometry(QRect(10, 10, 181, 201))
+        self.verticalLayoutWidget_12 = QWidget(self.tab_7)
+        self.verticalLayoutWidget_12.setObjectName(u"verticalLayoutWidget_12")
+        self.verticalLayoutWidget_12.setGeometry(QRect(20, 30, 161, 183))
+        self.verticalLayout_22 = QVBoxLayout(self.verticalLayoutWidget_12)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_24 = QVBoxLayout()
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.label_15 = QLabel(self.verticalLayoutWidget_12)
+        self.label_15.setObjectName(u"label_15")
+
+        self.verticalLayout_24.addWidget(self.label_15)
+
+        self.comboBox_9 = QComboBox(self.verticalLayoutWidget_12)
+        self.comboBox_9.setObjectName(u"comboBox_9")
+
+        self.verticalLayout_24.addWidget(self.comboBox_9)
+
+
+        self.verticalLayout_22.addLayout(self.verticalLayout_24)
+
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.label_16 = QLabel(self.verticalLayoutWidget_12)
+        self.label_16.setObjectName(u"label_16")
+
+        self.horizontalLayout_9.addWidget(self.label_16)
+
+        self.spinBox_5 = QSpinBox(self.verticalLayoutWidget_12)
+        self.spinBox_5.setObjectName(u"spinBox_5")
+
+        self.horizontalLayout_9.addWidget(self.spinBox_5)
+
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_9)
+
+        self.horizontalLayout_12 = QHBoxLayout()
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.label_17 = QLabel(self.verticalLayoutWidget_12)
+        self.label_17.setObjectName(u"label_17")
+
+        self.horizontalLayout_12.addWidget(self.label_17)
+
+        self.spinBox_4 = QSpinBox(self.verticalLayoutWidget_12)
+        self.spinBox_4.setObjectName(u"spinBox_4")
+
+        self.horizontalLayout_12.addWidget(self.spinBox_4)
+
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_12)
+
+        self.horizontalLayout_13 = QHBoxLayout()
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.label_18 = QLabel(self.verticalLayoutWidget_12)
+        self.label_18.setObjectName(u"label_18")
+
+        self.horizontalLayout_13.addWidget(self.label_18)
+
+        self.spinBox_3 = QSpinBox(self.verticalLayoutWidget_12)
+        self.spinBox_3.setObjectName(u"spinBox_3")
+
+        self.horizontalLayout_13.addWidget(self.spinBox_3)
+
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_13)
+
+        self.horizontalLayout_14 = QHBoxLayout()
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.label_20 = QLabel(self.verticalLayoutWidget_12)
+        self.label_20.setObjectName(u"label_20")
+
+        self.horizontalLayout_14.addWidget(self.label_20)
+
+        self.spinBox_2 = QSpinBox(self.verticalLayoutWidget_12)
+        self.spinBox_2.setObjectName(u"spinBox_2")
+
+        self.horizontalLayout_14.addWidget(self.spinBox_2)
+
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_14)
+
+        self.horizontalLayout_15 = QHBoxLayout()
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.label_19 = QLabel(self.verticalLayoutWidget_12)
+        self.label_19.setObjectName(u"label_19")
+
+        self.horizontalLayout_15.addWidget(self.label_19)
+
+        self.spinBox = QSpinBox(self.verticalLayoutWidget_12)
+        self.spinBox.setObjectName(u"spinBox")
+
+        self.horizontalLayout_15.addWidget(self.spinBox)
+
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_15)
+
+        self.groupBox_11 = QGroupBox(self.tab_7)
+        self.groupBox_11.setObjectName(u"groupBox_11")
+        self.groupBox_11.setGeometry(QRect(200, 10, 181, 201))
         self.tabWidget.addTab(self.tab_7, "")
         self.tab_6 = QWidget()
         self.tab_6.setObjectName(u"tab_6")
+        self.horizontalLayoutWidget_5 = QWidget(self.tab_6)
+        self.horizontalLayoutWidget_5.setObjectName(u"horizontalLayoutWidget_5")
+        self.horizontalLayoutWidget_5.setGeometry(QRect(10, 10, 911, 451))
+        self.horizontalLayout_5 = QHBoxLayout(self.horizontalLayoutWidget_5)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.listView_4 = QListView(self.horizontalLayoutWidget_5)
+        self.listView_4.setObjectName(u"listView_4")
+
+        self.horizontalLayout_5.addWidget(self.listView_4)
+
+        self.verticalLayout_23 = QVBoxLayout()
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_23.addItem(self.verticalSpacer_9)
+
+        self.pushButton_5 = QPushButton(self.horizontalLayoutWidget_5)
+        self.pushButton_5.setObjectName(u"pushButton_5")
+
+        self.verticalLayout_23.addWidget(self.pushButton_5)
+
+        self.pushButton_6 = QPushButton(self.horizontalLayoutWidget_5)
+        self.pushButton_6.setObjectName(u"pushButton_6")
+
+        self.verticalLayout_23.addWidget(self.pushButton_6)
+
+        self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_23.addItem(self.verticalSpacer_8)
+
+
+        self.horizontalLayout_5.addLayout(self.verticalLayout_23)
+
+        self.listView_5 = QListView(self.horizontalLayoutWidget_5)
+        self.listView_5.setObjectName(u"listView_5")
+
+        self.horizontalLayout_5.addWidget(self.listView_5)
+
         self.tabWidget.addTab(self.tab_6, "")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -740,10 +986,16 @@ class Ui_MainWindow(object):
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Dungeon Requirement", None))
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
         self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Skykeep", None))
-        self.option_skip_imp_2.setText(QCoreApplication.translate("MainWindow", u"Skip Imprisoned 2", None))
-        self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
-        self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
+        self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"Dungeons", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Map Mode", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Boss Keys", None))
+        self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Empty Unrequired Dungeons", None))
+        self.groupBox_8.setTitle(QCoreApplication.translate("MainWindow", u"Endgame Bosses", None))
+        self.option_skip_imp_2.setText(QCoreApplication.translate("MainWindow", u"Imprisoned 2", None))
+        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"Horde", None))
+        self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"Ghirahim 3", None))
+        self.checkBox_3.setText(QCoreApplication.translate("MainWindow", u"Demise", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Open Settings", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Open Thunderhead", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
@@ -751,14 +1003,28 @@ class Ui_MainWindow(object):
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Overworld", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
-        self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"Dungeons", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Map Mode", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Boss Keys", None))
-        self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Empty Unrequired Dungeons", None))
+        self.groupBox_9.setTitle(QCoreApplication.translate("MainWindow", u"GroupBox", None))
+        self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
+        self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"<---", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"--->", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"<---", None))
+        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"--->", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Logic Settings", None))
+        self.groupBox_10.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Hint Distribution", None))
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Way of the Hero Hints", None))
+        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Barren Hints", None))
+        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Sometimes Hints", None))
+        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Location Hints", None))
+        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Item Hints", None))
+        self.groupBox_11.setTitle(QCoreApplication.translate("MainWindow", u"GroupBox", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"Hints", None))
+        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"<--", None))
+        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"-->", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_6), QCoreApplication.translate("MainWindow", u"Starting Inventory", None))
     # retranslateUi
 
