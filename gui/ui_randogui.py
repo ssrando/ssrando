@@ -356,6 +356,7 @@ class Ui_MainWindow(object):
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
         self.option_description.setGeometry(QRect(10, 590, 931, 31))
+        self.option_description.setWordWrap(True)
         self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
         self.horizontalLayoutWidget_2.setGeometry(QRect(10, 630, 931, 27))
