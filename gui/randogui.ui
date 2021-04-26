@@ -200,7 +200,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -1108,19 +1108,19 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_17">
                <item>
-                <widget class="QListView" name="listView_2"/>
+                <widget class="QListView" name="enabled_locations"/>
                </item>
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_20">
                  <item>
-                  <widget class="QPushButton" name="pushButton">
+                  <widget class="QPushButton" name="enable_location">
                    <property name="text">
                     <string>&lt;---</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_2">
+                  <widget class="QPushButton" name="disable_location">
                    <property name="text">
                     <string>---&gt;</string>
                    </property>
@@ -1129,7 +1129,7 @@
                 </layout>
                </item>
                <item>
-                <widget class="QListWidget" name="listWidget"/>
+                <widget class="QListWidget" name="disabled_locations"/>
                </item>
               </layout>
              </item>
@@ -1323,7 +1323,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QListView" name="listView_4"/>
+        <widget class="QListView" name="randomized_items"/>
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_23">
@@ -1341,14 +1341,14 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_5">
+          <widget class="QPushButton" name="randomize_item">
            <property name="text">
             <string>&lt;--</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QPushButton" name="start_with_item">
            <property name="text">
             <string>--&gt;</string>
            </property>
@@ -1370,7 +1370,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QListView" name="listView_5"/>
+        <widget class="QListView" name="starting_items"/>
        </item>
       </layout>
      </widget>

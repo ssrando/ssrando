@@ -709,30 +709,30 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_17 = QHBoxLayout()
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
-        self.listView_2 = QListView(self.verticalLayoutWidget_8)
-        self.listView_2.setObjectName(u"listView_2")
+        self.enabled_locations = QListView(self.verticalLayoutWidget_8)
+        self.enabled_locations.setObjectName(u"enabled_locations")
 
-        self.horizontalLayout_17.addWidget(self.listView_2)
+        self.horizontalLayout_17.addWidget(self.enabled_locations)
 
         self.verticalLayout_20 = QVBoxLayout()
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.pushButton = QPushButton(self.verticalLayoutWidget_8)
-        self.pushButton.setObjectName(u"pushButton")
+        self.enable_location = QPushButton(self.verticalLayoutWidget_8)
+        self.enable_location.setObjectName(u"enable_location")
 
-        self.verticalLayout_20.addWidget(self.pushButton)
+        self.verticalLayout_20.addWidget(self.enable_location)
 
-        self.pushButton_2 = QPushButton(self.verticalLayoutWidget_8)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.disable_location = QPushButton(self.verticalLayoutWidget_8)
+        self.disable_location.setObjectName(u"disable_location")
 
-        self.verticalLayout_20.addWidget(self.pushButton_2)
+        self.verticalLayout_20.addWidget(self.disable_location)
 
 
         self.horizontalLayout_17.addLayout(self.verticalLayout_20)
 
-        self.listWidget = QListWidget(self.verticalLayoutWidget_8)
-        self.listWidget.setObjectName(u"listWidget")
+        self.disabled_locations = QListWidget(self.verticalLayoutWidget_8)
+        self.disabled_locations.setObjectName(u"disabled_locations")
 
-        self.horizontalLayout_17.addWidget(self.listWidget)
+        self.horizontalLayout_17.addWidget(self.disabled_locations)
 
 
         self.verticalLayout_19.addLayout(self.horizontalLayout_17)
@@ -900,10 +900,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5 = QHBoxLayout(self.horizontalLayoutWidget_5)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.listView_4 = QListView(self.horizontalLayoutWidget_5)
-        self.listView_4.setObjectName(u"listView_4")
+        self.randomized_items = QListView(self.horizontalLayoutWidget_5)
+        self.randomized_items.setObjectName(u"randomized_items")
 
-        self.horizontalLayout_5.addWidget(self.listView_4)
+        self.horizontalLayout_5.addWidget(self.randomized_items)
 
         self.verticalLayout_23 = QVBoxLayout()
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
@@ -911,15 +911,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_23.addItem(self.verticalSpacer_9)
 
-        self.pushButton_5 = QPushButton(self.horizontalLayoutWidget_5)
-        self.pushButton_5.setObjectName(u"pushButton_5")
+        self.randomize_item = QPushButton(self.horizontalLayoutWidget_5)
+        self.randomize_item.setObjectName(u"randomize_item")
 
-        self.verticalLayout_23.addWidget(self.pushButton_5)
+        self.verticalLayout_23.addWidget(self.randomize_item)
 
-        self.pushButton_6 = QPushButton(self.horizontalLayoutWidget_5)
-        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.start_with_item = QPushButton(self.horizontalLayoutWidget_5)
+        self.start_with_item.setObjectName(u"start_with_item")
 
-        self.verticalLayout_23.addWidget(self.pushButton_6)
+        self.verticalLayout_23.addWidget(self.start_with_item)
 
         self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -928,17 +928,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5.addLayout(self.verticalLayout_23)
 
-        self.listView_5 = QListView(self.horizontalLayoutWidget_5)
-        self.listView_5.setObjectName(u"listView_5")
+        self.starting_items = QListView(self.horizontalLayoutWidget_5)
+        self.starting_items.setObjectName(u"starting_items")
 
-        self.horizontalLayout_5.addWidget(self.listView_5)
+        self.horizontalLayout_5.addWidget(self.starting_items)
 
         self.tabWidget.addTab(self.tab_6, "")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(4)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1041,8 +1041,8 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"<---", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"--->", None))
+        self.enable_location.setText(QCoreApplication.translate("MainWindow", u"<---", None))
+        self.disable_location.setText(QCoreApplication.translate("MainWindow", u"--->", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Enable Tricks", None))
         self.enable_trick.setText(QCoreApplication.translate("MainWindow", u"<---", None))
         self.disable_trick.setText(QCoreApplication.translate("MainWindow", u"--->", None))
@@ -1056,8 +1056,8 @@ class Ui_MainWindow(object):
         self.label_for_option_item_hints.setText(QCoreApplication.translate("MainWindow", u"Item Hints", None))
         self.groupBox_11.setTitle(QCoreApplication.translate("MainWindow", u"GroupBox", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"Hints", None))
-        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"<--", None))
-        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"-->", None))
+        self.randomize_item.setText(QCoreApplication.translate("MainWindow", u"<--", None))
+        self.start_with_item.setText(QCoreApplication.translate("MainWindow", u"-->", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_6), QCoreApplication.translate("MainWindow", u"Starting Inventory", None))
     # retranslateUi
 

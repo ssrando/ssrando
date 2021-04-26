@@ -376,3 +376,63 @@
   default: []
   help: Enable specific tricks to be considered in logic
   ui: enabled_tricks
+- name: Hint Distribution
+  command: hint-distribution
+  type: singlechoice
+  bits: 3
+  choices:
+    - Weak
+    - Balanced
+    - Strong
+    - Very Strong
+    - Locations Only
+    - Items Only
+  default: Balanced
+  help: Sets the distribution of hints. Select a distribution to automatically apply a preset, or custom to select
+    your own distribution. Hover each hint type to see details on the hint
+  ui: option_hint_distribution
+- name: Way of the Hero Hints
+  command: woth-hints
+  type: int
+  min: 0
+  max: 15
+  bits: 4
+  default: 0
+  help: Way of the Hero areas contain item(s) required to beat the game
+  ui: option_woth_hints
+- name: Sometimes Hints
+  command: sometimes-hints
+  type: int
+  min: 0
+  max: 15
+  bits: 4
+  default: 0
+  help: Sometimes areas contain item(s) that may be required for the seed.
+  ui: option_sometimes_hints
+- name: Barren
+  command: barren-hints
+  type: int
+  min: 0
+  max: 15
+  bits: 4
+  default: 0
+  help: Barren areas contain no items required to beat the game
+  ui: option_barren_hints
+- name: Item Hints
+  command: item-hints
+  type: int
+  min: 0
+  max: 15
+  bits: 4
+  default: 0
+  help: Location hints give the item at a specific check
+  ui: option_location_hints
+- name: Location Hints
+  command: location-hints
+  type: int
+  min: 0
+  max: 15
+  bits: 4
+  default: 0
+  help: Item hints give the location of a specific item
+  ui: option_item_hints
