@@ -362,5 +362,17 @@
     - Upper Eldin RBM
     - Earth Temple Door RBM
     - Sand Sea Skip
+    - Early Thunderhead
+    - Skyview - BiTwarp
+    - Earth Temple - Boulder Skip RBM
+    - Earth Temple - Slope Stuttersprint
+    - Earth Temple - Bomb Flower Scaldera
+    - LMF - West Wing Skip BiTwarp
+    - LMF - Gust Bellows Room Box RBM
+    - LMF - Boss Door Shortcut RBM
+    - LMF - Pinwheel Gate RBM
+    - Ancient Cistern - Cistern Clip
+    - Ancient Cistern - Lever Jump
   default: []
+  help: Enable specific tricks to be considered in logic
   ui: enabled_tricks
