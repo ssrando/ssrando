@@ -171,6 +171,11 @@ class Logic:
         self.unplaced_nonprogress_items.append(wallet_item)
         self.all_progress_items.remove(wallet_item)
         self.all_nonprogress_items.append(wallet_item)
+    if self.rando.options['no-logic']:
+      for location in self.item_locations:
+        self.item_locations[location]['Need'] = Logic.parse_logic_expression('Nothing')
+      # for macro in self.macros:
+        # self.macros[macro]['Need'] = Logic.parse_logic_expression('Nothing')
 
   
   # main randomization method

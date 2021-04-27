@@ -343,6 +343,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.option_no_spoiler_log)
 
+        self.option_no_logic = QCheckBox(self.horizontalLayoutWidget)
+        self.option_no_logic.setObjectName(u"option_no_logic")
+
+        self.horizontalLayout.addWidget(self.option_no_logic)
+
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
@@ -518,6 +523,7 @@ class Ui_MainWindow(object):
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.option_no_spoiler_log.setText(QCoreApplication.translate("MainWindow", u"No Spoiler Log", None))
+        self.option_no_logic.setText(QCoreApplication.translate("MainWindow", u"No Logic (may be unbeatable)", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
         self.option_description.setText("")
         self.permalink_label.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings)", None))
