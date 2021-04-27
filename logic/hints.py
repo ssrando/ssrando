@@ -92,6 +92,15 @@ class Hints:
             hint_locations.append(location)
             hints_left -= 1
         
+        
+        all_locations_without_hint = self.logic.filter_locations_for_progression((loc for loc in self.logic.done_item_locations if not loc in hint_locations and not loc in self.logic.prerandomization_item_locations))
+        while hints_left > 0 and all_locations_without_hint:
+            # add completely random locations if there are otherwise empty stones
+            location_to_hint = self.logic.rando.rng.choice(all_locations_without_hint)
+            all_locations_without_hint.remove(location_to_hint)
+            hint_locations.append(location_to_hint)
+            hints_left -= 1
+        
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)
         for hint_location in hint_locations:
