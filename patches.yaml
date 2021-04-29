@@ -614,6 +614,36 @@ F000: # Skyloft
     layer: 4
     room: 0
     objtype: OBJ
+  - name: delete people on bridge 1
+    type: objdelete
+    id: 0x05D7
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: delete people on bridge 2
+    type: objdelete
+    id: 0x05D8
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: delete people on bridge 3
+    type: objdelete
+    id: 0x05D9
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: delete people on bridge 1
+    type: oarcdelete
+    oarc: SenpaiAMotherLOD
+    layer: 1
+  - name: delete people on bridge 2
+    type: oarcdelete
+    oarc: DouguyaMotherLOD
+    layer: 1
+  - name: delete people on bridge 3
+    type: oarcdelete
+    oarc: JunkMotherLOD
+    layer: 1
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete

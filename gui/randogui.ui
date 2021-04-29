@@ -481,6 +481,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="option_no_logic">
+       <property name="text">
+        <string>No Logic (may be unbeatable)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -516,6 +523,9 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_2">

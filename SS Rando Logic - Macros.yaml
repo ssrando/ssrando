@@ -352,22 +352,31 @@ Can Afford 100 Rupees:
   Nothing
 
 Can Afford 300 Rupees:
-  Nothing
+  Can Medium Rupee Farm
 
 Can Afford 600 Rupees:
-  Can Farm Rupees & (Extra Wallet x1 | Big Wallet)
+  Can High Rupee Farm & (Extra Wallet x1 | Big Wallet)
 
 Can Afford 800 Rupees:
-  Can Farm Rupees & (Extra Wallet x2 | (Medium Wallet & Extra Wallet x1) | Big Wallet)
+  Can High Rupee Farm & (Extra Wallet x2 | (Medium Wallet & Extra Wallet x1) | Big Wallet)
 
 Can Afford 1000 Rupees:
-  Can Farm Rupees & (Extra Wallet x3 | (Medium Wallet & Extra Wallet x2 ) | Big Wallet)
+  Can High Rupee Farm & (Extra Wallet x3 | (Medium Wallet & Extra Wallet x2 ) | Big Wallet)
 
 Can Afford 1200 Rupees:
-  Can Farm Rupees & (Extra Wallet x3 | (Medium Wallet & Extra Wallet x3) | (Big Wallet & Extra Wallet x1) | Giant Wallet)
+  Can High Rupee Farm & (Extra Wallet x3 | (Medium Wallet & Extra Wallet x3) | (Big Wallet & Extra Wallet x1) | Giant Wallet)
 
 Can Afford 1600 Rupees:
-  Can Farm Rupees & ((Big Wallet & Extra Wallet x2) | Giant Wallet)
+  Can High Rupee Farm & ((Big Wallet & Extra Wallet x2) | Giant Wallet)
 
-Can Farm Rupees:
-  Can Retrieve Party Wheel
+Can Play Thrill Digger:
+  Can Access Eldin & Digging Mitts
+
+Can Play Bamboo Cutting:
+  Practice Sword
+
+Can Medium Rupee Farm:
+  Can Play Bamboo Cutting | Can High Rupee Farm
+
+Can High Rupee Farm:
+  Can Retrieve Party Wheel | Can Play Thrill Digger
