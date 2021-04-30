@@ -1,31 +1,31 @@
 global:
   startstoryflags: # first 8 flags are set during opening cutscenes
     - 36  # Hero's tunic
+    - 724 # Prevent first time light pillar CS sending player always to faron
+    - 96  # Fi's text after obtaining first map
+    - 496 # Skipper's cutscene after Sea Chart
+    - 264 # Talked to Skipper first time
+    - 273 # Talked to Skipper first time after saying no (prevents weird first text)
+    - 130 # Start with Beacon
+    - 358 # Interface choice unlocked
+    - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - 27  # Loftwing
     - 198 # Can jump off Loftwing
     - storyflag: 194 # open thunderhead
       onlyif: Option "closed-thunderhead" Disabled
     - 58  # b-wheel
-    - 724 # Prevent first time light pillar CS sending player always to faron
-    - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - storyflag: 226 # Hero Mode
       onlyif: Option "hero-mode" Enabled
     - 323 # Scrapper repaired
     - 661 # Windmill Repaired
-    - 358 # Interface choice unlocked
     - 494 # open gate to faron
     - 138 # Sealed Temple layer 1
     - 24  # no Fi sky text
     - 304 # Crystal Quest activated
     - 329 # No sleeping for Wyrna
     - 32  # Sailcoth
-    - 96  # Fi's text after obtaining first map
     - 28 # Pratice Sword storyflag
-    - 130 # Start with Beacon
-    - 496 # Skipper's cutscene after Sea Chart
     - 519 # Updated Sand Sea map
-    - 264 # Talked to Skipper first time
-    - 273 # Talked to Skipper first time after saying no (prevents weird first text)
     - 115 # Full Lake Floria map
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
