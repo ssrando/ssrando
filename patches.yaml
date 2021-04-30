@@ -1,6 +1,8 @@
 global:
   startstoryflags: # first 8 flags are set during opening cutscenes
     - 36  # Hero's tunic
+    - storyflag: 226 # Hero Mode
+      onlyif: Option "hero-mode" Enabled
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 96  # Fi's text after obtaining first map
     - 496 # Skipper's cutscene after Sea Chart
@@ -14,8 +16,6 @@ global:
     - storyflag: 194 # open thunderhead
       onlyif: Option "closed-thunderhead" Disabled
     - 58  # b-wheel
-    - storyflag: 226 # Hero Mode
-      onlyif: Option "hero-mode" Enabled
     - 323 # Scrapper repaired
     - 661 # Windmill Repaired
     - 494 # open gate to faron
