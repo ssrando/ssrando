@@ -73,10 +73,10 @@ class Ui_MainWindow(object):
 
         self.groupBox = QGroupBox(self.centralwidget)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(10, 140, 931, 151))
+        self.groupBox.setGeometry(QRect(10, 140, 931, 171))
         self.gridLayoutWidget_3 = QWidget(self.groupBox)
         self.gridLayoutWidget_3.setObjectName(u"gridLayoutWidget_3")
-        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 911, 121))
+        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 911, 147))
         self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -217,10 +217,10 @@ class Ui_MainWindow(object):
 
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setGeometry(QRect(10, 420, 931, 161))
+        self.groupBox_2.setGeometry(QRect(10, 420, 931, 181))
         self.gridLayoutWidget_2 = QWidget(self.groupBox_2)
         self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
-        self.gridLayoutWidget_2.setGeometry(QRect(10, 20, 911, 131))
+        self.gridLayoutWidget_2.setGeometry(QRect(10, 20, 911, 155))
         self.gridLayout_2 = QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -360,7 +360,7 @@ class Ui_MainWindow(object):
         self.option_description = QLabel(self.centralwidget)
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
-        self.option_description.setGeometry(QRect(10, 590, 931, 31))
+        self.option_description.setGeometry(QRect(10, 600, 931, 31))
         self.option_description.setWordWrap(True)
         self.horizontalLayoutWidget_2 = QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
@@ -380,7 +380,7 @@ class Ui_MainWindow(object):
 
         self.groupBox_3 = QGroupBox(self.centralwidget)
         self.groupBox_3.setObjectName(u"groupBox_3")
-        self.groupBox_3.setGeometry(QRect(10, 300, 931, 111))
+        self.groupBox_3.setGeometry(QRect(10, 310, 931, 111))
         self.gridLayoutWidget_4 = QWidget(self.groupBox_3)
         self.gridLayoutWidget_4.setObjectName(u"gridLayoutWidget_4")
         self.gridLayoutWidget_4.setGeometry(QRect(10, 20, 911, 83))
@@ -461,6 +461,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.progression_lanayru)
 
+        self.label_5 = QLabel(self.centralwidget)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setGeometry(QRect(690, 570, 121, 21))
+        self.option_hints = QComboBox(self.centralwidget)
+        self.option_hints.setObjectName(u"option_hints")
+        self.option_hints.setGeometry(QRect(830, 570, 101, 25))
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -542,5 +548,6 @@ class Ui_MainWindow(object):
         self.progression_faron.setText(QCoreApplication.translate("MainWindow", u"Faron", None))
         self.progression_eldin.setText(QCoreApplication.translate("MainWindow", u"Eldin", None))
         self.progression_lanayru.setText(QCoreApplication.translate("MainWindow", u"Lanayru", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Hint Setting", None))
     # retranslateUi
 

@@ -99,7 +99,7 @@
       <x>10</x>
       <y>140</y>
       <width>931</width>
-      <height>151</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="title">
@@ -111,7 +111,7 @@
        <x>10</x>
        <y>20</y>
        <width>911</width>
-       <height>121</height>
+       <height>147</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
@@ -302,7 +302,7 @@
       <x>10</x>
       <y>420</y>
       <width>931</width>
-      <height>161</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="title">
@@ -314,7 +314,7 @@
        <x>10</x>
        <y>20</y>
        <width>911</width>
-       <height>131</height>
+       <height>155</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
@@ -516,7 +516,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>590</y>
+      <y>600</y>
       <width>931</width>
       <height>31</height>
      </rect>
@@ -554,7 +554,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>300</y>
+      <y>310</y>
       <width>931</width>
       <height>111</height>
      </rect>
@@ -690,6 +690,29 @@
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>570</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hint Setting</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="option_hints">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>570</y>
+      <width>101</width>
+      <height>25</height>
+     </rect>
+    </property>
    </widget>
   </widget>
  </widget>

@@ -212,3 +212,14 @@
   default: false
   help: Turns off logic
   ui: option_no_logic
+- name: Hints
+  command: hints
+  type: singlechoice
+  default: "Normal"
+  choices:
+    - "Junk"
+    - "Normal"
+    - "Bingo"
+  bits: 2
+  help: What hints should be on Gossip Stones, "Junk" is completely garbage, "Normal" has some long checks, "Bingo" is progression items
+  ui: option_hints

@@ -100,7 +100,28 @@ class Hints:
             all_locations_without_hint.remove(location_to_hint)
             hint_locations.append(location_to_hint)
             hints_left -= 1
+        self._place_hints_for_locations(hint_locations)
+
+    def do_bingo_hints(self):
+        important_items = set(("Progressive Sword", "Goddess Harp", "Clawshots", "Water Scale", "Fireshield Earrings"))
+        if self.logic.rando.options['shop-mode'] == 'Randomized':
+            important_items.add("Bug Net")
+        hint_locations = []
+        for location, item in self.logic.done_item_locations.items():
+            if item in important_items:
+                hint_locations.append(location)
+        assert len(hint_locations) <= len(self.stonehint_definitions), f"need {len(hint_locations)} locations, but only {len(self.stonehint_definitions)} stones available"
+
+        all_locations_without_hint = self.logic.filter_locations_for_progression((loc for loc in self.logic.done_item_locations if not loc in hint_locations and not loc in self.logic.prerandomization_item_locations))
+        while len(hint_locations) < len(self.stonehint_definitions) and all_locations_without_hint:
+            # add completely random locations if there are otherwise empty stones
+            location_to_hint = self.logic.rando.rng.choice(all_locations_without_hint)
+            all_locations_without_hint.remove(location_to_hint)
+            hint_locations.append(location_to_hint)
+
+        self._place_hints_for_locations(hint_locations)
         
+    def _place_hints_for_locations(self, hint_locations):
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)
         for hint_location in hint_locations:
