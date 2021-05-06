@@ -64,9 +64,12 @@ class Hints:
     def __init__(self, logic: Logic):
         with (RANDO_ROOT_PATH / "hints.yaml").open() as f:
             self.stonehint_definitions: dict = yaml.safe_load(f)
-        for hintdef in self.stonehint_definitions.values():
-            hintdef["Need"] = Logic.parse_logic_expression(hintdef["Need"])
         self.logic = logic
+        for hintdef in self.stonehint_definitions.values():
+            if self.logic.rando.options['no-logic']:
+                hintdef["Need"] = Logic.parse_logic_expression("Nothing")
+            else:
+                hintdef["Need"] = Logic.parse_logic_expression(hintdef["Need"])
         self.hints = OrderedDict()
     
     def do_junk_hints(self):
