@@ -55,6 +55,14 @@ def dummy_progress_callback(current_action_name):
 class Randomizer:
   def __init__(self, options: Options, progress_callback=dummy_progress_callback):
     self.options = options
+    # hack: if shops are vanilla, disable them as banned types because of bug net and progressive pouches
+    if self.options['shop-mode'] == 'Vanilla':
+      banned_types = self.options['banned-types']
+      for unban_shop_item in ['beedle', 'cheap', 'medium', 'expensive']:
+        if unban_shop_item in banned_types:
+          banned_types.remove(unban_shop_item)
+      self.options.set_option('banned-types', banned_types)
+
     self.progress_callback = progress_callback
     self.dry_run = bool(self.options['dry-run'])
     # TODO: maybe make paths configurable?

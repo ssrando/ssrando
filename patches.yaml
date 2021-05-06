@@ -27,6 +27,7 @@ global:
     - 28 # Pratice Sword storyflag
     - 519 # Updated Sand Sea map
     - 115 # Full Lake Floria map
+    - 180 # Thrill digger entrance CS
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
@@ -361,6 +362,13 @@ D003_7: # Skykeep Entrance Room
     type: objdelete
     id: 0xFC0B
     layer: 0
+    room: 0
+    objtype: OBJ
+D003_8: # this change is purely to make sure D003_8 gets patched, so a perviously broken rando version gets overwritten
+  - name: remove unused layer
+    type: objdelete
+    id: 0xFC08
+    layer: 6
     room: 0
     objtype: OBJ
 F000: # Skyloft

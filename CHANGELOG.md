@@ -1,8 +1,16 @@
 # Changelog
 
-## Dev
+## 1.0.6
+### Options
+- Added option to randomize beetles shop
+- Added No Logic Option
 ### Changes
 - Optionally added seed to permalink
+- Make faron BiT easy by setting all relevant flags in link's room
+- Bring back isle of songs crest and remove chests
+### Bugfixes
+- Fixed digging spots always giving key pieces
+- Fixed bokoblin in AC not giving any item if it was a random treasure
 
 ## 1.0.5
 ### Options
