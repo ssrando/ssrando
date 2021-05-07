@@ -550,10 +550,11 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
     by_item_name=dict((x['name'],x) for x in items)
 
     # make sure dungeon items exist
-    DUNGEONS = ['SW', 'ET', 'LMF', 'AC', 'SS', 'FS', 'SK', 'LanayruCaves'] # caves has a key, no spaces because the randomizer splits by spaces
-    for dungeon in DUNGEONS:
-        by_item_name[f'{dungeon} Small Key'] = by_item_name['Small Key']
-        by_item_name[f'{dungeon} Map'] = by_item_name['Map']
+    if False: # TODO: only when not keysanity
+        DUNGEONS = ['SW', 'ET', 'LMF', 'AC', 'SS', 'FS', 'SK', 'LanayruCaves'] # caves has a key, no spaces because the randomizer splits by spaces
+        for dungeon in DUNGEONS:
+            by_item_name[f'{dungeon} Small Key'] = by_item_name['Small Key']
+            by_item_name[f'{dungeon} Map'] = by_item_name['Map']
     # (stage, room) -> (object name, layer, id?, itemid)
     stagepatchv2 = defaultdict(list)
     # (stage, layer) -> oarc
@@ -678,6 +679,8 @@ class GamePatcher:
         self.add_stone_hint_patches()
         self.handle_oarc_add_remove()
         self.add_rando_hash()
+        if self.rando.options['keysanity']:
+            self.add_keysanity()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -730,6 +733,8 @@ class GamePatcher:
         self.all_asm_patches = defaultdict(OrderedDict)
         self.add_asm_patch('custom_funcs')
         self.add_asm_patch('ss_necessary')
+        if self.rando.options['keysanity']:
+            self.add_asm_patch('keysanity')
         if self.rando.options['shop-mode'] != 'Vanilla':
             self.add_asm_patch('shopsanity')
         self.add_asm_patch('gossip_stone_hints')
@@ -1147,6 +1152,84 @@ class GamePatcher:
             "index": 75,
             "text": self.rando.randomizer_hash,
         })
+
+    def add_keysanity(self):
+        KEYS_DUNGEONS = [
+            # ('Skyview', 200), # already has a textbox
+            ('Lanayru Mining Facility', 201),
+            ('Ancient Cistern', 202), 
+            ('Fire Sanctuary', 203),
+            ('Sandship', 204),
+            ('Skykeep', 205),
+            ('Lanayru Caves', 206)
+        ]
+        self.eventpatches['003-ItemGet'].append({
+            "name": f"Skyview Key Text", # for some reason there is an entry for item 200 (It's just an empty textbox though)
+            "type": "textpatch",
+            "index": 251,
+            "text": f"You got a\nSkyview Small Key!",
+        })
+        for dungeon, itemid in KEYS_DUNGEONS:
+            self.eventpatches['003-ItemGet'].append({
+                "name": f"{dungeon} Key Text",
+                "type": "textadd",
+                "unk1": 5,
+                "unk2": 1,
+                "text": f"You got a {dungeon} Small Key!" if dungeon != 'Lanayru Mining Facility' else f"You got a {dungeon} Small\nKey!",
+            })
+            self.eventpatches['003-ItemGet'].append({
+                "name": f"Show {dungeon} Key Text",
+                "type": "flowadd",
+                "flow": {
+                    "type": "type1",
+                    "next": -1,
+                    "param3": 3,
+                    "param4": f"{dungeon} Key Text",
+                },
+            })
+            self.eventpatches['003-ItemGet'].append({
+                "name": f"{dungeon} Key Entry",
+                "type": "entryadd",
+                "entry": {
+                    "name": f"003_{itemid}",
+                    "value": f"Show {dungeon} Key Text",
+                },
+            })
+        MAPS_DUNGEONS = [
+            ('Skyview', 207),
+            ('Earth Temple', 208),
+            ('Lanayru Mining Facility', 209),
+            ('Ancient Cistern', 210), 
+            ('Fire Sanctuary', 211),
+            ('Sandship', 212),
+            ('Skykeep', 213),
+        ]
+        for dungeon, itemid in MAPS_DUNGEONS:
+            self.eventpatches['003-ItemGet'].append({
+                "name": f"{dungeon} Map Text",
+                "type": "textadd",
+                "unk1": 5,
+                "unk2": 1,
+                "text": f"You got the {dungeon} Map!",
+            })
+            self.eventpatches['003-ItemGet'].append({
+                "name": f"Show {dungeon} Map Text",
+                "type": "flowadd",
+                "flow": {
+                    "type": "type1",
+                    "next": -1,
+                    "param3": 3,
+                    "param4": f"{dungeon} Map Text",
+                },
+            })
+            self.eventpatches['003-ItemGet'].append({
+                "name": f"{dungeon} Map Entry",
+                "type": "entryadd",
+                "entry": {
+                    "name": f"003_{itemid}",
+                    "value": f"Show {dungeon} Map Text",
+                },
+            })
 
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])

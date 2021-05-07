@@ -136,13 +136,13 @@ class Randomizer:
     # self.logic.set_prerandomization_item_location("Skyloft - Beedle Third 100 Rupee Item", "Rare Treasure")
     # self.logic.set_prerandomization_item_location("Skyloft - Beedle 1000 Rupee Item", "Rare Treasure")
     self.hints = Hints(self.logic)
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge's Pouch", "Emerald Tablet")
-    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")
+    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "SW Small Key")
+    # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "ET Map")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
-    # self.logic.set_prerandomization_item_location("Skyloft - Practice Sword", "Progressive Sword")
+    # self.logic.set_prerandomization_item_location("Skyloft - Practice Sword", "LanayruCaves Small Key")
 
   def _get_rando_hash(self):
     # hash of seed, options, version
@@ -383,7 +383,7 @@ class Randomizer:
       if not locations_in_this_sphere:
         raise Exception("Failed to calculate progression spheres")
       
-      if not self.options.get("keylunacy"):
+      if not self.options.get("keysanity"):
         # If the player gained access to any small keys, we need to give them the keys without counting that as a new sphere.
         newly_accessible_predetermined_item_locations = [
           loc for loc in locations_in_this_sphere

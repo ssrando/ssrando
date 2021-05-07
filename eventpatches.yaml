@@ -407,6 +407,11 @@
       param2: 7
       next: -1
       param3: 56
+  - name: Remove open map demo after dungeon map
+    type: flowpatch
+    index: 613
+    flow:
+      next: -1
 004-Object:
   - name: Remove Heart piece hint from gossip stone
     type: flowpatch

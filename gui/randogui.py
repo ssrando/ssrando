@@ -257,9 +257,9 @@ class RandoGUI(QMainWindow):
         self.update_settings()
 
     def update_ui_for_settings(self):
+        current_settings = self.options.copy()
         self.ui.output_folder.setText(str(self.options['output-folder']))
         self.ui.seed.setText(str(self.options["seed"]))
-        current_settings = self.options.copy()
         for option_key, option in OPTIONS.items():
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get('ui', None)

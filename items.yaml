@@ -432,3 +432,74 @@
   oarc: GetSparePurse
   getarcname: GetSparePurse
   getmodelname: GetSparePurse
+# start rando custom items
+- id: 200
+  name: SW Small Key
+  oarc: null
+  getarcname: GetKeySmall
+  getmodelname: GetKeySmall
+- id: 201
+  name: LMF Small Key
+  oarc: null
+  getarcname: GetKeySmall
+  getmodelname: GetKeySmall
+- id: 202
+  name: AC Small Key
+  oarc: null
+  getarcname: GetKeySmall
+  getmodelname: GetKeySmall
+- id: 203
+  name: FS Small Key
+  oarc: null
+  getarcname: GetKeySmall
+  getmodelname: GetKeySmall
+- id: 204
+  name: SS Small Key
+  oarc: null
+  getarcname: GetKeySmall
+  getmodelname: GetKeySmall
+- id: 205
+  name: SK Small Key
+  oarc: null
+  getarcname: GetKeySmall
+  getmodelname: GetKeySmall
+- id: 206
+  name: LanayruCaves Small Key
+  oarc: null
+  getarcname: GetKeySmall
+  getmodelname: GetKeySmall
+- id: 207
+  name: SW Map
+  oarc: null
+  getarcname: GetMap
+  getmodelname: GetMap
+- id: 208
+  name: ET Map
+  oarc: null
+  getarcname: GetMap
+  getmodelname: GetMap
+- id: 209
+  name: LMF Map
+  oarc: null
+  getarcname: GetMap
+  getmodelname: GetMap
+- id: 210
+  name: AC Map
+  oarc: null
+  getarcname: GetMap
+  getmodelname: GetMap
+- id: 211
+  name: FS Map
+  oarc: null
+  getarcname: GetMap
+  getmodelname: GetMap
+- id: 212
+  name: SS Map
+  oarc: null
+  getarcname: GetMap
+  getmodelname: GetMap
+- id: 213
+  name: SK Map
+  oarc: null
+  getarcname: GetMap
+  getmodelname: GetMap
