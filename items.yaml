@@ -67,14 +67,20 @@
   name: AC Boss Key
   oarc: GetKeyBoss2A
   shuffle: Dungeon
+  getarcname: GetKeyBoss2A
+  getmodelname: GetKeyBoss2A
 - id: 26
   name: FS Boss Key
   oarc: GetKeyBoss2B
   shuffle: Dungeon
+  getarcname: GetKeyBoss2B
+  getmodelname: GetKeyBoss2B
 - id: 27
   name: SS Boss Key
   oarc: GetKeyBoss2C
   shuffle: Dungeon
+  getarcname: GetKeyBoss2C
+  getmodelname: GetKeyBoss2C
 - id: 28
   name: Key Piece
   oarc: GetKeyKakera
@@ -84,14 +90,20 @@
   name: SW Boss Key
   oarc: GetKeyBossA
   shuffle: Dungeon
+  getarcname: GetKeyBossA
+  getmodelname: GetKeyBossA
 - id: 30
   name: ET Boss Key
   oarc: GetKeyBossB
   shuffle: Dungeon
+  getarcname: GetKeyBossB
+  getmodelname: GetKeyBossB
 - id: 31
   name: LMF Boss Key
   oarc: GetKeyBossC
   shuffle: Dungeon
+  getarcname: GetKeyBossC
+  getmodelname: GetKeyBossC
 - id: 32
   name: Silver Rupee
   oarc: null
@@ -437,37 +449,37 @@
   name: SW Small Key
   oarc: null
   getarcname: GetKeySmall
-  getmodelname: GetKeySmall
+  getmodelname: GetKeySmallNormal
 - id: 201
   name: LMF Small Key
   oarc: null
   getarcname: GetKeySmall
-  getmodelname: GetKeySmall
+  getmodelname: GetKeySmallNormal
 - id: 202
   name: AC Small Key
   oarc: null
   getarcname: GetKeySmall
-  getmodelname: GetKeySmall
+  getmodelname: GetKeySmallNormal
 - id: 203
   name: FS Small Key
   oarc: null
   getarcname: GetKeySmall
-  getmodelname: GetKeySmall
+  getmodelname: GetKeySmallNormal
 - id: 204
   name: SS Small Key
   oarc: null
   getarcname: GetKeySmall
-  getmodelname: GetKeySmall
+  getmodelname: GetKeySmallNormal
 - id: 205
   name: SK Small Key
   oarc: null
   getarcname: GetKeySmall
-  getmodelname: GetKeySmall
+  getmodelname: GetKeySmallNormal
 - id: 206
   name: LanayruCaves Small Key
   oarc: null
   getarcname: GetKeySmall
-  getmodelname: GetKeySmall
+  getmodelname: GetKeySmallNormal
 - id: 207
   name: SW Map
   oarc: null
