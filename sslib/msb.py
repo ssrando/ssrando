@@ -23,7 +23,7 @@ CONTROL_REPLACEMENTS = {
     '<b+<': '\x0e\x00\x03\x02\x08',   # blue rupee blue
     '<r+<': '\x0e\x00\x03\x02\x09',   # red-white
     '<s<':  '\x0e\x00\x03\x02\x0A',   # silver
-    '<y+<': '\x0e\x00\x03\x02\x0B',   # gold rupee gold
+    '<ye<': '\x0e\x00\x03\x02\x0B',   # gold rupee gold
     '<blk<':'\x0e\x00\x03\x02\x0C',   # rupoor
     '>>':   '\x0e\x00\x03\x02\uFFFF', # end color
 
