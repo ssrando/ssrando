@@ -123,7 +123,7 @@ nop
 
 .open "d_a_obj_time_door_beforeNP.rel"
 .org 0xD4C
-blt 0xDEC
+blt 0xDEC ; also allow opening GoT with a better sword
 .close
 
 .open "d_a_obj_door_bossNP.rel"

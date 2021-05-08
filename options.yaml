@@ -225,8 +225,9 @@
   type: singlechoice
   bits: 2
   choices:
-    - Open
-    - Any
+    - Goddess Sword
+    - Goddess Longsword
+    - Goddees Whitesword
     - Master Sword
     - True Master Sword
   default: Master Sword

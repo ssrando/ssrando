@@ -524,7 +524,7 @@ class Logic:
   
   def update_beat_game_macro(self):
     # needs to be able to open GoT and open it, requires required dungeons
-    access_past_requirements = ['Can Access Sealed Temple', 'Master Sword','Can Raise Gate of Time']
+    access_past_requirements = ['Can Access Sealed Temple', 'Can Open GOT After Raising','Can Raise Gate of Time']
     for dungeon in self.rando.required_dungeons:
       access_past_requirements.append(f'Can Beat {dungeon}')
     ' & '.join(f'Can Beat {dungeon}' for dungeon in self.rando.required_dungeons)

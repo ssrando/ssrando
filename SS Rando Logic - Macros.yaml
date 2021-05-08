@@ -234,6 +234,9 @@ Can Hit First Water Pods:
 Can Beat Fire Sanctuary:
     Can Access Fire Sanctuary & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS Boss Key & Goddess Sword
 
+Can Open GOT After Raising:
+    (Option "got-sword-requirement" Is "Goddess Sword" & Goddess Sword) | (Option "got-sword-requirement" Is "Goddess Longsword" & Goddess Longsword) | (Option "got-sword-requirement" Is "Goddess Whitesword" & Goddess White Sword) | (Option "got-sword-requirement" Is "Master Sword" & Master Sword) | (Option "got-sword-requirement" Is "True Master Sword" & True Master Sword)
+
 # Can Access Past:
 #     this is filled in at runtime with the required dungeons
 

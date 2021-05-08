@@ -738,6 +738,17 @@ class GamePatcher:
         if self.rando.options['shop-mode'] != 'Vanilla':
             self.add_asm_patch('shopsanity')
         self.add_asm_patch('gossip_stone_hints')
+
+        # GoT patch depends on required sword
+        # cmpwi r0, (insert sword)
+        GOT_SWORD_MODES = {
+            "Goddess Sword": 1,
+            "Goddess Longsword": 2,
+            "Goddees Whitesword": 3,
+            "Master Sword": 4,
+            "True Master Sword": 5,
+        }
+        self.all_asm_patches['d_a_obj_time_door_beforeNP.rel'][0xD48] = {"Data": [0x2C, 0x00, 0x00, GOT_SWORD_MODES[self.rando.options['got-sword-requirement']]]}
         
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / 'asm' / 'custom_symbols.txt').open('r') as f:
