@@ -1165,6 +1165,16 @@ class GamePatcher:
         })
 
     def add_keysanity(self):
+        DUNGEON_COLORS = {
+            'Skyview': '<g<',
+            'Earth Temple': '<r+<',
+            'Lanayru Mining Facility': '<y<',
+            'Ancient Cistern': '<b<',
+            'Fire Sanctuary': '<r<',
+            'Sandship': '<y+<',
+            'Skykeep': '<s<',
+            'Lanayru Caves': '<ye<',
+        }
         KEYS_DUNGEONS = [
             # ('Skyview', 200), # already has a textbox
             ('Lanayru Mining Facility', 201),
@@ -1178,15 +1188,16 @@ class GamePatcher:
             "name": f"Skyview Key Text", # for some reason there is an entry for item 200 (It's just an empty textbox though)
             "type": "textpatch",
             "index": 251,
-            "text": f"You got a\nSkyview Small Key!",
+            "text": f"You got a Skyview Small Key!",
         })
         for dungeon, itemid in KEYS_DUNGEONS:
+            dungeon_and_color = DUNGEON_COLORS[dungeon] + dungeon + '>>'
             self.eventpatches['003-ItemGet'].append({
                 "name": f"{dungeon} Key Text",
                 "type": "textadd",
                 "unk1": 5,
                 "unk2": 1,
-                "text": f"You got a {dungeon} Small Key!" if dungeon != 'Lanayru Mining Facility' else f"You got a {dungeon} Small\nKey!",
+                "text": f"You got a {dungeon_and_color} Small Key!" if dungeon != 'Lanayru Mining Facility' else f"You got a {dungeon_and_color} Small\nKey!",
             })
             self.eventpatches['003-ItemGet'].append({
                 "name": f"Show {dungeon} Key Text",
@@ -1216,12 +1227,13 @@ class GamePatcher:
             ('Skykeep', 213),
         ]
         for dungeon, itemid in MAPS_DUNGEONS:
+            dungeon_and_color = DUNGEON_COLORS[dungeon] + dungeon + '>>'
             self.eventpatches['003-ItemGet'].append({
                 "name": f"{dungeon} Map Text",
                 "type": "textadd",
                 "unk1": 5,
                 "unk2": 1,
-                "text": f"You got the {dungeon} Map!",
+                "text": f"You got the {dungeon_and_color} Map!",
             })
             self.eventpatches['003-ItemGet'].append({
                 "name": f"Show {dungeon} Map Text",
