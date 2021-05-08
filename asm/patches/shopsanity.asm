@@ -4,6 +4,18 @@
 ; is an item that uses the patched extra wallet class
 bl check_needs_custom_storyflag_subtype
 
+.org 0x1224
+; this normally sets up the bug net, but this is already handled and uses the extra wallet class
+; so it's essentially free space
+; we need to branch for the extra pouches now, cause otherwise pouch items use a different shop item class
+cmplwi r4, 0x14 ; extra pouch 1 (300R)
+beq 0x12C8
+cmplwi r4, 0x15 ; extra pouch 2 (600R)
+beq 0x12D8
+cmplwi r4, 0x16 ; extra pouch 3 (1200R)
+beq 0x12E8
+b 0x1250 ; skip rest of this block
+
 
 ; patches to make the extra wallet class use the last 2 bytes of the shop sample list as storyflag to check if it's sold out
 .org 0xAA0

@@ -674,7 +674,8 @@ class GamePatcher:
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
         self.add_startstoryflags_to_patches()
-        self.add_trial_hint_patches()
+        # self.add_trial_hint_patches()
+        self.add_stone_hint_patches()
         self.handle_oarc_add_remove()
         self.add_rando_hash()
 
@@ -697,6 +698,12 @@ class GamePatcher:
         if stage not in self.patches:
             self.patches[stage] = []
         self.patches[stage].append(stagepatch)
+
+    # also used for text
+    def add_patch_to_event(self, eventfile, eventpatch):
+        if eventfile not in self.eventpatches:
+            self.eventpatches[eventfile] = []
+        self.eventpatches[eventfile].append(eventpatch)
 
     def load_base_patches(self):
         with (RANDO_ROOT_PATH / "patches.yaml").open() as f:
@@ -725,6 +732,7 @@ class GamePatcher:
         self.add_asm_patch('ss_necessary')
         if self.rando.options['shop-mode'] != 'Vanilla':
             self.add_asm_patch('shopsanity')
+        self.add_asm_patch('gossip_stone_hints')
         
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / 'asm' / 'custom_symbols.txt').open('r') as f:
@@ -1094,6 +1102,15 @@ class GamePatcher:
                 'type': "textpatch",
                 'index': inventory_text_idx,
                 'text': inventory_text + useful_text
+            })
+    
+    def add_stone_hint_patches(self):
+        for hintname, hintdef in self.rando.hints.stonehint_definitions.items():
+            self.add_patch_to_event(hintdef['textfile'], {
+                'name': f"Hint {hintname}",
+                'type': "textpatch",
+                'index': hintdef['textindex'],
+                'text': self.rando.hints.hints[hintname].to_gossip_stone_text()
             })
     
     def handle_oarc_add_remove(self):

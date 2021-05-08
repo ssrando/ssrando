@@ -1,14 +1,83 @@
-from typing import List, Tuple
-from collections import OrderedDict
+from typing import List, Tuple, NewType, DefaultDict, Dict
+from collections import OrderedDict, defaultdict
 import re
+
+from .item_types import ALL_ITEM_NAMES
+from options import Options
+
+
+LocationName = NewType('LocationName', str)
+ItemName = NewType('ItemName', str)
+
+class Inventory:
+  def __init__(self):
+    self.owned_items: DefaultDict[str, int] = defaultdict(int)
+  
+  def copy(self):
+    inv = Inventory()
+    inv.owned_items = self.owned_items.copy()
+    return inv
+  
+  def has_item(self, item):
+    return self.owned_items.get(item, 0) >= 1
+  
+  def has_countable_item(self, item, count):
+    return self.owned_items.get(item, 0) >= count
+  
+  def collect_item(self, item):
+    # TODO: progress item groups
+    self.owned_items[item] += 1
+  
+  def remove_item(self, item):
+    # TODO: progress item groups
+    if self.owned_items[item] >= 1:
+      self.owned_items[item] -= 1
+
+  def all_owned_unique_items(self):
+    return set((item for item, count in self.owned_items.items() if count >= 1))
+  
+  def __str__(self):
+    return str(self.owned_items)
+
+def check_option_enabled_requirement(options, req_name):
+    positive_boolean_match = re.search(r"^Option \"([^\"]+)\" Enabled$", req_name)
+    negative_boolean_match = re.search(r"^Option \"([^\"]+)\" Disabled$", req_name)
+    positive_dropdown_match = re.search(r"^Option \"([^\"]+)\" Is \"([^\"]+)\"$", req_name)
+    negative_dropdown_match = re.search(r"^Option \"([^\"]+)\" Is Not \"([^\"]+)\"$", req_name)
+    positive_list_match = re.search(r"^Option \"([^\"]+)\" Contains \"([^\"]+)\"$", req_name)
+    negative_list_match = re.search(r"^Option \"([^\"]+)\" Does Not Contain \"([^\"]+)\"$", req_name)
+    if positive_boolean_match:
+        option_name = positive_boolean_match.group(1)
+        return not not options.get(option_name)
+    elif negative_boolean_match:
+        option_name = negative_boolean_match.group(1)
+        return not options.get(option_name)
+    elif positive_dropdown_match:
+        option_name = positive_dropdown_match.group(1)
+        value = positive_dropdown_match.group(2)
+        return options.get(option_name) == value
+    elif negative_dropdown_match:
+        option_name = negative_dropdown_match.group(1)
+        value = negative_dropdown_match.group(2)
+        return options.get(option_name) != value
+    elif positive_list_match:
+        option_name = positive_list_match.group(1)
+        value = positive_list_match.group(2)
+        return value in options.get(option_name, [])
+    elif negative_list_match:
+        option_name = negative_list_match.group(1)
+        value = negative_list_match.group(2)
+        return value not in options.get(option_name, [])
+    else:
+        raise Exception("Invalid option check requirement: %s" % req_name)
 
 ITEM_WITH_COUNT_REGEX = re.compile(r"^(.+) x(\d+)$")
 
 class LogicExpression:
-    def is_true(self, logic):
+    def is_true(self, options: Options, inventory: Inventory, macros):
         raise NotImplementedError("abstract")
     
-    def get_items_needed(self, logic) -> OrderedDict: # itemname -> count
+    def get_items_needed(self, options: Options, inventory: Inventory, macros) -> OrderedDict: # itemname -> count
         raise NotImplementedError("abstract")
 
     def to_str(self):
@@ -18,23 +87,19 @@ class BaseLogicExpression(LogicExpression):
     def __init__(self, req_name):
         self.req_name = req_name
     
-    def is_true(self, logic):
+    def is_true(self, options: Options, inventory: Inventory, macros):
         match = ITEM_WITH_COUNT_REGEX.match(self.req_name)
         if match:
             item_name = match.group(1)
             num_required = int(match.group(2))
             
-            num_owned = logic.currently_owned_items.count(item_name)
-            return num_owned >= num_required
-        elif self.req_name.startswith("Can Access Other Location \""):
-            return logic.check_other_location_requirement(self.req_name)
+            return inventory.has_countable_item(item_name, num_required)
         elif self.req_name.startswith("Option \""):
-            return logic.check_option_enabled_requirement(self.req_name)
-        elif self.req_name in logic.all_item_names:
-            return self.req_name in logic.currently_owned_items
-        elif self.req_name in logic.macros:
-            logical_expression = logic.macros[self.req_name]
-            return logic.check_logical_expression_req(logical_expression)
+            return check_option_enabled_requirement(options, self.req_name)
+        elif self.req_name in ALL_ITEM_NAMES:
+            return inventory.has_item(self.req_name)
+        elif self.req_name in macros:
+            return macros[self.req_name].is_true(options, inventory, macros)
         elif self.req_name == "Nothing":
             return True
         elif self.req_name == "Impossible":
@@ -42,8 +107,8 @@ class BaseLogicExpression(LogicExpression):
         else:
             raise Exception("Unknown requirement name: " + self.req_name)
     
-    def get_items_needed(self, logic) -> OrderedDict: # itemname, count
-        if self.is_true(logic): # don't include items if this is already met
+    def get_items_needed(self, options: Options, inventory: Inventory, macros) -> OrderedDict: # itemname, count
+        if self.is_true(options, inventory, macros): # don't include items if this is already met
             return OrderedDict()
         match = ITEM_WITH_COUNT_REGEX.match(self.req_name)
         if match:
@@ -51,16 +116,10 @@ class BaseLogicExpression(LogicExpression):
             num_required = int(match.group(2))
             
             return OrderedDict({item_name: num_required})
-        elif self.req_name.startswith("Can Access Other Location \""):
-            match = re.search(r"^Can Access Other Location \"([^\"]+)\"$", self.req_name)
-            other_location_name = match.group(1)
-            
-            requirement_expression: LogicExpression = logic.item_locations[other_location_name]["Need"]
-            return requirement_expression.get_items_needed(logic)
-        elif self.req_name in logic.all_item_names:
+        elif self.req_name in ALL_ITEM_NAMES:
             return OrderedDict({self.req_name: 1})
-        elif self.req_name in logic.macros:
-            return logic.macros[self.req_name].get_items_needed(logic)
+        elif self.req_name in macros:
+            return macros[self.req_name].get_items_needed(options, inventory, macros)
         else:
             return None # unreachable
     
@@ -71,15 +130,15 @@ class AndLogicExpression(LogicExpression):
     def __init__(self, requirements: List[LogicExpression]):
         self.requirements = requirements
     
-    def is_true(self, logic):
-        return all((req.is_true(logic) for req in self.requirements))
+    def is_true(self, options: Options, inventory: Inventory, macros):
+        return all((req.is_true(options, inventory, macros) for req in self.requirements))
     
     def to_str(self):
         return '(' + (' & '.join((req.to_str() for req in self.requirements))) + ')'
     
-    def get_items_needed(self, logic) -> OrderedDict: # itemname, count
+    def get_items_needed(self, options: Options, inventory: Inventory, macros) -> OrderedDict: # itemname, count
         items_needed = OrderedDict()
-        for subresult in (req.get_items_needed(logic) for req in self.requirements):
+        for subresult in (req.get_items_needed(options, inventory, macros) for req in self.requirements):
             if subresult is None: # if one is unreachable, all of this is
                 return None
             for item_name, num_required in subresult.items():
@@ -90,15 +149,15 @@ class OrLogicExpression(LogicExpression):
     def __init__(self, requirements: List[LogicExpression]):
         self.requirements = requirements
     
-    def is_true(self, logic):
-        return any((req.is_true(logic) for req in self.requirements))
+    def is_true(self, options: Options, inventory: Inventory, macros):
+        return any((req.is_true(options, inventory, macros) for req in self.requirements))
     
     def to_str(self):
         return '(' + (' | '.join((req.to_str() for req in self.requirements))) + ')'
     
-    def get_items_needed(self, logic) -> OrderedDict: # itemname, count
+    def get_items_needed(self, options: Options, inventory: Inventory, macros) -> OrderedDict: # itemname, count
         items_needed = OrderedDict()
-        for subresult in (req.get_items_needed(logic) for req in self.requirements):
+        for subresult in (req.get_items_needed(options, inventory, macros) for req in self.requirements):
             if subresult == OrderedDict(): # if one is reachable without items, return not items
                 return OrderedDict()
             if subresult == None:

@@ -8,8 +8,8 @@ import hashlib
 import json
 
 from logic.logic import Logic
+from logic.hints import Hints
 import logic.constants as constants
-import logic.item_types as item_types
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
@@ -55,6 +55,14 @@ def dummy_progress_callback(current_action_name):
 class Randomizer:
   def __init__(self, options: Options, progress_callback=dummy_progress_callback):
     self.options = options
+    # hack: if shops are vanilla, disable them as banned types because of bug net and progressive pouches
+    if self.options['shop-mode'] == 'Vanilla':
+      banned_types = self.options['banned-types']
+      for unban_shop_item in ['beedle', 'cheap', 'medium', 'expensive']:
+        if unban_shop_item in banned_types:
+          banned_types.remove(unban_shop_item)
+      self.options.set_option('banned-types', banned_types)
+
     self.progress_callback = progress_callback
     self.dry_run = bool(self.options['dry-run'])
     # TODO: maybe make paths configurable?
@@ -70,6 +78,7 @@ class Randomizer:
     self.seed = self.options['seed']
     if self.seed == -1:
       self.seed = random.randint(0,1000000)
+    self.options.set_option('seed', self.seed)
     
     self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
@@ -121,25 +130,15 @@ class Randomizer:
     self.race_mode_banned_locations = []
     self.non_required_dungeons = [dungeon for dungeon in
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
-    rupoor_mode = self.options['rupoor-mode']
-    if rupoor_mode != 'Off':
-      if rupoor_mode == 'Added':
-        logic.item_types.CONSUMABLE_ITEMS += ['Rupoor'] * 15
-      else:
-        self.rng.shuffle(logic.item_types.CONSUMABLE_ITEMS)
-        replace_end_index = len(logic.item_types.CONSUMABLE_ITEMS)
-        if rupoor_mode == 'Rupoor Mayhem':
-          replace_end_index /= 2
-        for i in range(int(replace_end_index)):
-          logic.item_types.CONSUMABLE_ITEMS[i] = 'Rupoor'
 
     self.logic = Logic(self)
     # self.logic.set_prerandomization_item_location("Skyloft - Beedle Second 100 Rupee Item", "Rare Treasure")
     # self.logic.set_prerandomization_item_location("Skyloft - Beedle Third 100 Rupee Item", "Rare Treasure")
     # self.logic.set_prerandomization_item_location("Skyloft - Beedle 1000 Rupee Item", "Rare Treasure")
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "Progressive Sword")
-    # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "Bow")
-    # self.logic.set_prerandomization_item_location("Skyloft - Bazaar Potion Lady", "Progressive Sword")
+    self.hints = Hints(self.logic)
+    # self.logic.set_prerandomization_item_location("Skyloft - Fledge's Pouch", "Emerald Tablet")
+    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Owlan's Shield", "Goddess Harp")
+    # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
@@ -182,6 +181,15 @@ class Randomizer:
   def randomize(self):
     self.progress_callback('randomizing items...')
     self.logic.randomize_items()
+    self.woth_locations = self.logic.get_woth_locations()
+    if self.options['hints'] == 'Junk':
+      self.hints.do_junk_hints()
+    elif self.options['hints'] == 'Normal':
+      self.hints.do_normal_hints()
+    elif self.options['hints'] == 'Bingo':
+      self.hints.do_bingo_hints()
+    else:
+      raise Exception(f"{self.options['hints']} is not a valid hint setting!")
     if self.no_logs:
       self.progress_callback('writing anti spoiler log...')
     else:
@@ -216,6 +224,13 @@ class Randomizer:
     # Write required dungeons
     for i, dungeon in enumerate(self.required_dungeons):
       spoiler_log += f"Required Dungeon {i+1}: " + dungeon + '\n'
+
+    spoiler_log += "\n\n"
+
+    # Write way of the hero (100% required) locations
+    spoiler_log += "WotH:\n"
+    for wothloc, item in self.woth_locations.items():
+      spoiler_log += "  %-53s %s\n" % (wothloc+":", item)
 
     spoiler_log += "\n\n"
     
@@ -271,6 +286,13 @@ class Randomizer:
       spoiler_log += "  %-48s %s\n" % (entrance_name+":", dungeon_or_cave_name)
     
     spoiler_log += "\n\n\n"
+
+    # Write hints
+    spoiler_log += "Hints:\n"
+    for hintlocation, hint in self.hints.hints.items():
+      spoiler_log += "  %-53s %s\n" % (hintlocation+":", hint.to_spoiler_log_text())
+    
+    spoiler_log += "\n\n\n"
     
     spoiler_log_output_path = self.options['output-folder'] / ("SS Random %s - Spoiler Log.txt" % self.seed)
     with spoiler_log_output_path.open('w') as f:
@@ -289,8 +311,10 @@ class Randomizer:
       return
     spoiler_log['starting-items'] = self.starting_items
     spoiler_log['required-dungeons'] = self.required_dungeons
+    spoiler_log['woth-locations'] = self.woth_locations
     spoiler_log['playthrough'] = self.calculate_playthrough_progression_spheres()
     spoiler_log['item-locations'] = self.logic.done_item_locations
+    spoiler_log['hints'] = dict(map(lambda kv: (kv[0], kv[1].to_spoiler_log_text()), self.hints.hints.items()))
     spoiler_log['entrances'] = self.entrance_connections
     
     spoiler_log_output_path = self.options['output-folder'] / ("SS Random %s - Spoiler Log.json" % self.seed)

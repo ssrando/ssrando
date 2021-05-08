@@ -274,8 +274,8 @@ Skyloft - Beedle Second 100 Rupee Item:
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/17
-Skyloft - Beedle Third 100 Rupee Item:
-  Need: Can Access Beedle's Shop & Can Afford 100 Rupees
+Skyloft - Beedle Third 100 Rupee Item: # to make not too much farming at the start necessary, the third item is only in logic with some rupee farming method
+  Need: Can Access Beedle's Shop & Can Afford 100 Rupees & Can Medium Rupee Farm
   original item: Extra Wallet
   type: skyloft, beedle, cheap
   Paths:

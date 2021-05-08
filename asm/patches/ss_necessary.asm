@@ -386,3 +386,10 @@ b 0xD88 ; this probably cancels the crest event?
 b 0x17C8
 
 .close
+
+.open "d_a_shop_sampleNP.rel"
+.org 0x6E9C
+.word -1 ; can always buy iron shield
+.org 0x6EF0
+.word -1 ; can always buy sacred shield
+.close

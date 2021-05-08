@@ -1,32 +1,33 @@
 global:
   startstoryflags: # first 8 flags are set during opening cutscenes
     - 36  # Hero's tunic
+    - storyflag: 226 # Hero Mode
+      onlyif: Option "hero-mode" Enabled
+    - 724 # Prevent first time light pillar CS sending player always to faron
+    - 96  # Fi's text after obtaining first map
+    - 496 # Skipper's cutscene after Sea Chart
+    - 264 # Talked to Skipper first time
+    - 273 # Talked to Skipper first time after saying no (prevents weird first text)
+    - 130 # Start with Beacon
+    - 358 # Interface choice unlocked
+    - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - 27  # Loftwing
     - 198 # Can jump off Loftwing
     - storyflag: 194 # open thunderhead
       onlyif: Option "closed-thunderhead" Disabled
     - 58  # b-wheel
-    - 724 # Prevent first time light pillar CS sending player always to faron
-    - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
-    - storyflag: 226 # Hero Mode
-      onlyif: Option "hero-mode" Enabled
     - 323 # Scrapper repaired
     - 661 # Windmill Repaired
-    - 358 # Interface choice unlocked
     - 494 # open gate to faron
     - 138 # Sealed Temple layer 1
     - 24  # no Fi sky text
     - 304 # Crystal Quest activated
     - 329 # No sleeping for Wyrna
     - 32  # Sailcoth
-    - 96  # Fi's text after obtaining first map
     - 28 # Pratice Sword storyflag
-    - 130 # Start with Beacon
-    - 496 # Skipper's cutscene after Sea Chart
     - 519 # Updated Sand Sea map
-    - 264 # Talked to Skipper first time
-    - 273 # Talked to Skipper first time after saying no (prevents weird first text)
     - 115 # Full Lake Floria map
+    - 180 # Thrill digger entrance CS
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
@@ -363,6 +364,13 @@ D003_7: # Skykeep Entrance Room
     layer: 0
     room: 0
     objtype: OBJ
+D003_8: # this change is purely to make sure D003_8 gets patched, so a perviously broken rando version gets overwritten
+  - name: remove unused layer
+    type: objdelete
+    id: 0xFC08
+    layer: 6
+    room: 0
+    objtype: OBJ
 F000: # Skyloft
   - name: Trial
     type: oarcadd
@@ -614,6 +622,36 @@ F000: # Skyloft
     layer: 4
     room: 0
     objtype: OBJ
+  - name: delete people on bridge 1
+    type: objdelete
+    id: 0x05D7
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: delete people on bridge 2
+    type: objdelete
+    id: 0x05D8
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: delete people on bridge 3
+    type: objdelete
+    id: 0x05D9
+    layer: 1
+    room: 0
+    objtype: OBJ
+  - name: delete people on bridge 1
+    type: oarcdelete
+    oarc: SenpaiAMotherLOD
+    layer: 1
+  - name: delete people on bridge 2
+    type: oarcdelete
+    oarc: DouguyaMotherLOD
+    layer: 1
+  - name: delete people on bridge 3
+    type: oarcdelete
+    oarc: JunkMotherLOD
+    layer: 1
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -882,6 +920,17 @@ F023: # Thunderhead
       anglez: 12003 # entrypoint 120_03
       id: 0xFC13
       name: NpcTke
+  - name: Gossip Stone
+    type: objmove
+    id: 0xFCEE
+    layer: 2
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Gossip Stone
+    type: oarcadd
+    oarc: GossipStone
+    destlayer: 0
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -1548,6 +1597,17 @@ F200: # Eldin main area
     layer: 1
     room: 2
     objtype: STAG
+  - name: Gossip Stone
+    type: objmove
+    id: 0xFC97
+    layer: 2
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Gossip Stone
+    type: oarcadd
+    oarc: GossipStone
+    destlayer: 0
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
@@ -1600,6 +1660,15 @@ F210: # Mogma Turf
     layer: 1
     room: 0
     objtype: OBJ
+F211:
+  - name: Remove thrill digger entry CS
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: -1
+      play_cutscene: -1
 F201_1: # Inside Volcano
   - name: Layer override
     type: layeroverride
@@ -2239,6 +2308,17 @@ F301_4: # Shipyard
     object:
       storyflag: -1
       play_cutscene: -1
+  - name: Gossip Stone
+    type: objmove
+    id: 0xFC5E
+    layer: 5
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Gossip Stone
+    type: oarcadd
+    oarc: GossipStone
+    destlayer: 0
 F301_5: # Skipper's Shack
   - name: Text after chest
     type: objdelete
