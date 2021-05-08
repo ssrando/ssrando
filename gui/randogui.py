@@ -152,7 +152,6 @@ class RandoGUI(QMainWindow):
 
         # disable currently unsupported options to make this version viable for public use
         getattr(self.ui, 'option_got_starting_state').setEnabled(False)
-        getattr(self.ui, 'option_got_sword_requirement').setEnabled(False)
         getattr(self.ui, 'option_got_dungeon_requirement').setEnabled(False)
         getattr(self.ui, 'option_open_lmf').setEnabled(False)
         getattr(self.ui, 'option_map_mode').setEnabled(False)
