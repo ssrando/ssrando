@@ -69,7 +69,7 @@ Can Get Gratitude Crystals:
     Gratitude Crystal x15 & 5 Gratitude Crystals x13
 
 Can Access Thunderhead:
-    Option "closed-thunderhead" Disabled | Ballad of the Goddess
+    Option "open-thunderhead" Is "Open" | Ballad of the Goddess
 # May be options in the future
 
 Can Access Beedle's Shop:

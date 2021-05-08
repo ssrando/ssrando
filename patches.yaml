@@ -14,7 +14,7 @@ global:
     - 27  # Loftwing
     - 198 # Can jump off Loftwing
     - storyflag: 194 # open thunderhead
-      onlyif: Option "closed-thunderhead" Disabled
+      onlyif: Option "open-thunderhead" Is "Open"
     - 58  # b-wheel
     - 323 # Scrapper repaired
     - 661 # Windmill Repaired
