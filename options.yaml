@@ -435,4 +435,8 @@
   bits: 4
   default: 0
   help: Item hints give the location of a specific item
-  ui: option_item_hints
+- name: Keysanity
+  command: keysanity
+  type: boolean
+  default: true # until the options is in the ui
+  help: make dungeon items appear anywhere

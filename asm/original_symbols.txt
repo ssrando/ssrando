@@ -15,13 +15,13 @@ main.dol:
     SceneflagManager__setFlag: 0x800be180
     # this, flag
     SceneflagManager__setTempOrSceneflag: 0x800be2d0
-    # itemid, bottle slot (-1 for no slot), always 0
-    giveItem: 0x80249210
     # ActorLink, Vec3f* pos, Vec3s* rot, zero1, one, zero2
     ActorLink__setPosRot: 0x802416d0
     # storyflag in r4
     checkStoryflagIsSet: 0x80141e90
     # r3 itemid, r4 pouch slot index or -1, r5 always 0
     giveItem: 0x80249210
+    # lwz r3,-0x4444(r13) ; FILE_MANAGER
+    FileManager__getDungeonFlags: 0x8000a460
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C

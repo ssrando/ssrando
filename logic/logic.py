@@ -181,7 +181,8 @@ class Logic:
   
   # main randomization method
   def randomize_items(self):
-    self.randomize_dungeon_items()
+    if not self.rando.options['keysanity']:
+      self.randomize_dungeon_items() # they are part of the progression items
     self.randomize_progression_items()
     self.randomize_nonprogress_items()
     self.randomize_consumable_items()
@@ -455,7 +456,7 @@ class Logic:
   
   def check_item_valid_in_location(self, item_name, location_name):
     # Don't allow dungeon items to appear outside their proper dungeon when Key-Lunacy is off.
-    if self.is_dungeon_item(item_name) and not self.rando.options.get("keylunacy"):
+    if self.is_dungeon_item(item_name) and not self.rando.options.get("keysanity"):
       short_dungeon_name = item_name.split(" ")[0]
       dungeon_name = DUNGEON_NAMES[short_dungeon_name]
       if not self.is_dungeon_location(location_name, dungeon_name_to_match=dungeon_name):
