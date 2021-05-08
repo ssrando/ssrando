@@ -1188,7 +1188,7 @@ class GamePatcher:
             "name": f"Skyview Key Text", # for some reason there is an entry for item 200 (It's just an empty textbox though)
             "type": "textpatch",
             "index": 251,
-            "text": f"You got a Skyview Small Key!",
+            "text": f"You got a <g<Skyview>> Small Key!",
         })
         for dungeon, itemid in KEYS_DUNGEONS:
             dungeon_and_color = DUNGEON_COLORS[dungeon] + dungeon + '>>'
