@@ -436,6 +436,18 @@ F000: # Skyloft
     type: oarcdelete
     oarc: PutGaragara
     layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: MoldoGut_Baby # baby molderarch, is probably here because of the dust pile but not needed
+    layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: SoMother # wryna is never outside anymore
+    layer: 4
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: SoMother # wryna is never outside anymore
+    layer: 6
   - name: Trial # trial object
     type: objmove
     id: 0xFDD8
@@ -471,6 +483,18 @@ F000: # Skyloft
   - name: Wyrna cs
     type: objdelete
     id: 0xFDD2
+    layer: 6
+    room: 0
+    objtype: OBJ
+  - name: Wyrna l4 1
+    type: objdelete
+    id: 0xFDCD
+    layer: 4
+    room: 0
+    objtype: OBJ
+  - name: Wyrna l6
+    type: objdelete
+    id: 0xFDD1
     layer: 6
     room: 0
     objtype: OBJ
@@ -616,7 +640,7 @@ F000: # Skyloft
     objtype: OBJ
     object:
       untrigstoryfid: 1114 # bow
-  - name: delete Wryna outside
+  - name: delete Wryna l4 2
     type: objdelete
     id: 0xFDF1
     layer: 4
