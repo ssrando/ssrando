@@ -182,11 +182,11 @@ class Randomizer:
     self.progress_callback('randomizing items...')
     self.logic.randomize_items()
     self.woth_locations = self.logic.get_woth_locations()
-    if self.options['hints'] == 'Junk':
+    if self.options['hint-distribution'] == 'Junk':
       self.hints.do_junk_hints()
-    elif self.options['hints'] == 'Normal':
+    elif self.options['hint-distribution'] == 'Normal':
       self.hints.do_normal_hints()
-    elif self.options['hints'] == 'Bingo':
+    elif self.options['hint-distribution'] == 'Bingo':
       self.hints.do_bingo_hints()
     else:
       raise Exception(f"{self.options['hints']} is not a valid hint setting!")

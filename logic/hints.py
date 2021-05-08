@@ -66,7 +66,7 @@ class Hints:
             self.stonehint_definitions: dict = yaml.safe_load(f)
         self.logic = logic
         for hintdef in self.stonehint_definitions.values():
-            if self.logic.rando.options['no-logic']:
+            if self.logic.rando.options['logic-mode'] == 'No Logic':
                 hintdef["Need"] = Logic.parse_logic_expression("Nothing")
             else:
                 hintdef["Need"] = Logic.parse_logic_expression(hintdef["Need"])

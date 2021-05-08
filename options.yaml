@@ -39,7 +39,7 @@
   bits: 2
   choices:
     - Ballad
-    - Harp and Ballad
+#    - Harp and Ballad
     - Open
   default: Ballad
   help: Controls the starting state of the Thunderhead.
@@ -327,10 +327,10 @@
   type: singlechoice
   bits: 3
   choices:
-    - Glitchless - Basic
+#    - Glitchless - Basic
     - Glitchless - Standard
-    - BiTless
-    - Glitched
+#    - BiTless
+#    - Glitched
     - No Logic
   default: Glitchless - Standard
   help: Sets the logic mode to use when placing items. Glitchless requires no major tricks to complete, but
@@ -379,15 +379,18 @@
 - name: Hint Distribution
   command: hint-distribution
   type: singlechoice
-  bits: 3
+  bits: 2
   choices:
-    - Weak
-    - Balanced
-    - Strong
-    - Very Strong
-    - Locations Only
-    - Items Only
-  default: Balanced
+#    - Weak
+#    - Balanced
+#    - Strong
+#    - Very Strong
+#    - Locations Only
+#    - Items Only
+    - Junk
+    - Normal
+    - Bingo
+  default: Normal
   help: Sets the distribution of hints. Select a distribution to automatically apply a preset, or custom to select
     your own distribution. Hover each hint type to see details on the hint
   ui: option_hint_distribution
@@ -440,3 +443,4 @@
   type: boolean
   default: true # until the options is in the ui
   help: make dungeon items appear anywhere
+  ui: option_keysanity
