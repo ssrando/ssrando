@@ -3,7 +3,7 @@ from collections import OrderedDict
 POTENTIALLY_REQUIRED_DUNGEONS = ['Skyview','Earth Temple','Lanayru Mining Facility','Ancient Cistern','Sandship','Fire Sanctuary']
 
 DUNGEON_NAMES = OrderedDict([
-    ("SW",  "Skyview"),
+    ("SV",  "Skyview"),
     ("ET",   "Earth Temple"),
     ("LMF", "Lanayru Mining Facility"),
     ("AC",   "Ancient Cistern"),

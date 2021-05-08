@@ -136,7 +136,7 @@ class Randomizer:
     # self.logic.set_prerandomization_item_location("Skyloft - Beedle Third 100 Rupee Item", "Rare Treasure")
     # self.logic.set_prerandomization_item_location("Skyloft - Beedle 1000 Rupee Item", "Rare Treasure")
     self.hints = Hints(self.logic)
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "SW Small Key")
+    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "SV Small Key")
     # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "ET Map")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")

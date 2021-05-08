@@ -1067,19 +1067,19 @@ Skyview - Small Key Digging Spot:
   # You can hit both switches with good bomb throws
   # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Spume and kill it near the switch, not in logic
   # You can hit the switch to enter that room with an upwards skyward strike using a boko or a spume, not in logic
-  original item: SW Small Key
+  original item: SV Small Key
   type: faron, dungeon, digging
   Paths:
     - stage/D100/r4/l0/Soil/15
 Skyview - Behind Two Eyes:
   Need: Can Access Skyview & Can Get Past the First Skyview Room & Can Hit High Skyview Switches & Practice Sword
   # Sword required to defeat the eyes
-  original item: SW Small Key
+  original item: SV Small Key
   type: faron, dungeon
   Paths:
    - stage/D100/r4/l0/TBox/67
 Skyview - Beetle:
-  Need: Can Access Skyview & (Practice Sword | (Water Scale & Bomb Bag)) & (Slingshot | Clawshots | Beetle | Bow) & SW Small Key x1
+  Need: Can Access Skyview & (Practice Sword | (Water Scale & Bomb Bag)) & (Slingshot | Clawshots | Beetle | Bow) & SV Small Key x1
   #Bombs don't work to hit the switch
   #The fight requires sword, but can be skipped with Water Scale
   #Note that to get past the locked door you need to be able to raise the water lever once (left room is easiest)
@@ -1089,20 +1089,20 @@ Skyview - Beetle:
    - stage/D100/r10/l1/TBox/65
    - stage/D100/r10/l2/TBox/65
 Skyview - Behind Bars in Hub Room:
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & Beetle & SW Small Key x1
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & Beetle & SV Small Key x1
   #add whip when all items are fixed. In that case make also sure you can raise the water level to unlock the door
   original item: Heart Piece
   type: faron, dungeon
   Paths:
    - stage/D100/r5/l0/Item/103
 Skyview - Behind Three Eyes:
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & Beetle & SW Small Key x1 & Practice Sword
-  original item: SW Small Key
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & Beetle & SV Small Key x1 & Practice Sword
+  original item: SV Small Key
   type: faron, dungeon
   Paths:
    - stage/D100/r7/l0/TBox/68
 Skyview - Near Boss Door:
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & SW Small Key x2
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & SV Small Key x2
   # The Staldra can be defeated with either sword or bombs, which we must already have
   # To get accross the rope with boko babas, hang down on the rope and go accross that way. The last boko baba may be annoying but nothing too bad if you time it
   # The Skulltula jump is not in logic. A bomb knocks it away. Both the Beetle and the bow can cut it down. The water scale makes it Skyview 2 where there is no spider anymore. A skyward strike can knock it away too
@@ -1114,14 +1114,14 @@ Skyview - Near Boss Door:
 Skyview - Boss Key:
   #If you had bombs for the Skulltula, you can't hit the 2nd vine, thus you need Beetle, bow, clawshots or slingshot
   #Note: You can also hit this vine with a Skyward Strike, but only on Hero Mode
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & SW Small Key x2
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & SV Small Key x2
   original item: Skyview Boss Key
   type: faron, dungeon
   Paths:
    - stage/D100/r9/l0/TBox/66
 
 Skyview - Ghirahim Heart Container:
- Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & Practice Sword & SW Small Key x2 & SW Boss Key
+ Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & Practice Sword & SV Small Key x2 & SV Boss Key
  original item: Heart Container
  type: faron, dungeon
  Paths:
@@ -1131,7 +1131,7 @@ Skyview - Ghirahim Heart Container:
   - stage/B100/r0/l4/HeartCo
 
 Skyview - Ruby Tablet:
-  Need: Can Access Skyview & Can Get Past the First Skyview Room & Goddess Sword & (Option "hero-mode" Enabled | Hook Beetle | Bow | True Master Sword) & SW Small Key x2 & SW Boss Key
+  Need: Can Access Skyview & Can Get Past the First Skyview Room & Goddess Sword & (Option "hero-mode" Enabled | Hook Beetle | Bow | True Master Sword) & SV Small Key x2 & SV Boss Key
   original item: Ruby Tablet
   type: faron, dungeon
   Paths:

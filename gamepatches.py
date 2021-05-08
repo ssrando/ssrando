@@ -551,7 +551,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
 
     # make sure dungeon items exist
     if False: # TODO: only when not keysanity
-        DUNGEONS = ['SW', 'ET', 'LMF', 'AC', 'SS', 'FS', 'SK', 'LanayruCaves'] # caves has a key, no spaces because the randomizer splits by spaces
+        DUNGEONS = ['SV', 'ET', 'LMF', 'AC', 'SS', 'FS', 'SK', 'LanayruCaves'] # caves has a key, no spaces because the randomizer splits by spaces
         for dungeon in DUNGEONS:
             by_item_name[f'{dungeon} Small Key'] = by_item_name['Small Key']
             by_item_name[f'{dungeon} Map'] = by_item_name['Map']

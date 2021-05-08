@@ -87,7 +87,7 @@
   getarcname: GetKeyKakera
   getmodelname: GetKeyKakeraA
 - id: 29
-  name: SW Boss Key
+  name: SV Boss Key
   oarc: GetKeyBossA
   shuffle: Dungeon
   getarcname: GetKeyBossA
@@ -446,7 +446,7 @@
   getmodelname: GetSparePurse
 # start rando custom items
 - id: 200
-  name: SW Small Key
+  name: SV Small Key
   oarc: null
   getarcname: GetKeySmall
   getmodelname: GetKeySmallNormal
@@ -481,7 +481,7 @@
   getarcname: GetKeySmall
   getmodelname: GetKeySmallNormal
 - id: 207
-  name: SW Map
+  name: SV Map
   oarc: null
   getarcname: GetMap
   getmodelname: GetMap

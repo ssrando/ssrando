@@ -94,7 +94,7 @@ DUPLICATABLE_CONSUMABLE_ITEMS = [
 
 DUNGEON_PROGRESS_ITEMS = \
   ["LanayruCaves Small Key"] * 1 + \
-  ["SW Boss Key"]  *1 + ["SW Small Key"]  *2 + \
+  ["SV Boss Key"]  *1 + ["SV Small Key"]  *2 + \
   ["ET Boss Key"]  *1 + ["ET Small Key"]  *0 + \
   ["LMF Boss Key"] *1 + ["LMF Small Key"] *1 + \
   ["AC Boss Key"]  *1 + ["AC Small Key"]  *2 + \
@@ -105,7 +105,7 @@ DUNGEON_PROGRESS_ITEMS = \
   # note: Lanayru Caves is technically not a dungeon, but has to be treated as such for non key sanity
 
 DUNGEON_NONPROGRESS_ITEMS = \
-  ["SW Map"] + \
+  ["SV Map"] + \
   ["ET Map"] + \
   ["LMF Map"] + \
   ["AC Map"] + \
