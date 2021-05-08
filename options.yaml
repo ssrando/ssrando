@@ -223,7 +223,7 @@
 - name: Gate of Time Sword Requirement
   command: got-sword-requirement
   type: singlechoice
-  bits: 2
+  bits: 3
   choices:
     - Goddess Sword
     - Goddess Longsword
