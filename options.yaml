@@ -280,13 +280,13 @@
   type: singlechoice
   bits: 3
   choices:
-    - Removed
-    - Start With
-    - Vanilla
-    - Own Dungeon - Restricted
+#    - Removed
+#    - Start With
+#    - Vanilla
+#    - Own Dungeon - Restricted
     - Own Dungeon - Unrestricted
-    - Overworld Only
-    - Any Dungeon
+#    - Overworld Only
+#    - Any Dungeon
     - Anywhere
   default: Own Dungeon - Unrestricted
   help: Controls the placement of maps. Restricted means that maps cannot be placed on the
@@ -297,12 +297,12 @@
   type: singlechoice
   bits: 3
   choices:
-    - Vanilla
+#    - Vanilla
     - Own Dungeon - Restricted
-    - Own Dungeon - Unrestricted
-    - Overworld Only
-    - Any Dungeon
-    - Anywhere (Keysanity)
+#    - Own Dungeon - Unrestricted
+#    - Overworld Only
+#    - Any Dungeon
+    - Anywhere
   default: Own Dungeon - Restricted
   help: Controls the placement of small keys. Vanilla means they will always be in their vanilla locations.
     In Skyview, the Digging Spot will not contain a key. Own Dungeon means the keys can only appear
@@ -314,10 +314,10 @@
   type: singlechoice
   bits: 3
   choices:
-    - Vanilla
+#    - Vanilla
     - Own Dungeon
-    - Overworld Only
-    - Any Dungeon
+#    - Overworld Only
+#    - Any Dungeon
     - Anywhere
   default: Own Dungeon
   help: Controls the placement of boss keys. Vanilla means they will always be in their vanilla locations.
@@ -439,9 +439,3 @@
   bits: 4
   default: 0
   help: Item hints give the location of a specific item
-- name: Keysanity
-  command: keysanity
-  type: boolean
-  default: true # until the options is in the ui
-  help: make dungeon items appear anywhere
-  ui: option_keysanity

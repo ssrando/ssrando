@@ -104,6 +104,25 @@ DUNGEON_PROGRESS_ITEMS = \
 
   # note: Lanayru Caves is technically not a dungeon, but has to be treated as such for non key sanity
 
+SMALL_KEYS = \
+  ["LanayruCaves Small Key"] * 1 + \
+  ["SV Small Key"] * 2 + \
+  ["ET Small Key"] * 0 + \
+  ["LMF Small Key"] * 1 + \
+  ["AC Small Key"] * 2 + \
+  ["SS Small Key"] * 2 + \
+  ["FS Small Key"] * 3 + \
+  ["SK Small Key"] * 1
+
+BOSS_KEYS = \
+  ["SV Boss Key"] * 1 + \
+  ["ET Boss Key"] * 1 + \
+  ["LMF Boss Key"] * 1 + \
+  ["AC Boss Key"] * 1 + \
+  ["SS Boss Key"] * 1 + \
+  ["FS Boss Key"] * 1 + \
+  ["SK Boss Key"] * 0
+
 DUNGEON_NONPROGRESS_ITEMS = \
   ["SV Map"] + \
   ["ET Map"] + \

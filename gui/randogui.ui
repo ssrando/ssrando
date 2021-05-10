@@ -709,13 +709,6 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
         <item>
-         <widget class="QCheckBox" name="option_keysanity">
-          <property name="text">
-           <string>Keysanity (temporary)</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <item>
            <widget class="QLabel" name="label_for_option_map_mode">

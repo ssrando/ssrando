@@ -9,7 +9,7 @@ from typing import DefaultDict
 
 import os
 
-from .item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS
+from .item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS, SMALL_KEYS, BOSS_KEYS
 from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, SHOP_CHECKS, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -172,6 +172,22 @@ class Logic:
         self.unplaced_nonprogress_items.append(wallet_item)
         self.all_progress_items.remove(wallet_item)
         self.all_nonprogress_items.append(wallet_item)
+
+    self.dungeon_progress_items = DUNGEON_PROGRESS_ITEMS.copy()
+    self.dungeon_nonprogress_items = DUNGEON_NONPROGRESS_ITEMS.copy()
+
+    # remove small keys from the dungeon pool if small key sanity is enabled
+    if self.rando.options['small-key-mode'] == 'Anywhere':
+      self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in SMALL_KEYS]
+    # remove boss keys from the dungeon pool if boss key sanity is enabled
+    if self.rando.options['boss-key-mode'] == 'Anywhere':
+      self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in BOSS_KEYS]
+    # remove maps from the dungeon pool if maps are shuffled
+    if self.rando.options['map-mode'] == 'Anywhere':
+      self.dungeon_nonprogress_items = []
+
+    print(self.dungeon_progress_items)
+
     if self.rando.options['logic-mode'] == 'No Logic':
       for location in self.item_locations:
         self.item_locations[location]['Need'] = Logic.parse_logic_expression('Nothing')
@@ -181,8 +197,7 @@ class Logic:
   
   # main randomization method
   def randomize_items(self):
-    if not self.rando.options['keysanity']:
-      self.randomize_dungeon_items() # they are part of the progression items
+    self.randomize_dungeon_items()  # this will only randomize the appropriate items
     self.randomize_progression_items()
     self.randomize_nonprogress_items()
     self.randomize_consumable_items()
@@ -456,7 +471,7 @@ class Logic:
   
   def check_item_valid_in_location(self, item_name, location_name):
     # Don't allow dungeon items to appear outside their proper dungeon when Key-Lunacy is off.
-    if self.is_dungeon_item(item_name) and not self.rando.options.get("keysanity"):
+    if self.is_dungeon_item(item_name):
       short_dungeon_name = item_name.split(" ")[0]
       dungeon_name = DUNGEON_NAMES[short_dungeon_name]
       if not self.is_dungeon_location(location_name, dungeon_name_to_match=dungeon_name):
@@ -601,7 +616,7 @@ class Logic:
     return zone_name, specific_location_name
   
   def is_dungeon_item(self, item_name):
-    return (item_name in DUNGEON_PROGRESS_ITEMS or item_name in DUNGEON_NONPROGRESS_ITEMS)
+    return (item_name in self.dungeon_progress_items or item_name in self.dungeon_nonprogress_items)
   
   def is_dungeon_location(self, location_name, dungeon_name_to_match=None):
     zone_name, specific_location_name = self.split_location_name_by_zone(location_name)
@@ -890,36 +905,40 @@ class Logic:
     ]
     for item_name in items_to_temporarily_add:
       self.add_owned_item(item_name)
-    
-    
-    # Randomize small keys.
-    small_keys_to_place = [
-      item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
-      if item_name.endswith(" Small Key")
-    ]
-    assert len(small_keys_to_place) > 0, f'no small '
-    for item_name in small_keys_to_place:
-      self.place_dungeon_item(item_name)
-      self.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
-    
-    # Randomize big keys.
-    big_keys_to_place = [
-      item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
-      if item_name.endswith(" Boss Key")
-    ]
-    assert len(big_keys_to_place) > 0
-    for item_name in big_keys_to_place:
-      self.place_dungeon_item(item_name)
-      self.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
-    
-    # Randomize dungeon maps and compasses.
-    other_dungeon_items_to_place = [
-      item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
-      if item_name.endswith(" Map")
-    ]
-    assert len(other_dungeon_items_to_place) > 0
-    for item_name in other_dungeon_items_to_place:
-      self.place_dungeon_item(item_name)
+
+    small_keys_to_place = []
+    if self.rando.options['small-key-mode'] != 'Anywhere':
+      # Randomize small keys.
+      small_keys_to_place = [
+        item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
+        if item_name.endswith(" Small Key")
+      ]
+      assert len(small_keys_to_place) > 0, f'no small '
+      for item_name in small_keys_to_place:
+        self.place_dungeon_item(item_name)
+        self.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
+
+    big_keys_to_place = []
+    if self.rando.options['boss-key-mode'] != 'Anywhere':
+      # Randomize big keys.
+      big_keys_to_place = [
+        item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
+        if item_name.endswith(" Boss Key")
+      ]
+      assert len(big_keys_to_place) > 0
+      for item_name in big_keys_to_place:
+        self.place_dungeon_item(item_name)
+        self.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
+
+    if self.rando.options['map-mode'] != 'Anywhere':
+      # Randomize dungeon maps and compasses.
+      other_dungeon_items_to_place = [
+        item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
+        if item_name.endswith(" Map")
+      ]
+      assert len(other_dungeon_items_to_place) > 0
+      for item_name in other_dungeon_items_to_place:
+        self.place_dungeon_item(item_name)
     
     # Remove the items we temporarily added.
     for item_name in items_to_temporarily_add:
