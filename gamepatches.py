@@ -679,7 +679,7 @@ class GamePatcher:
         self.add_stone_hint_patches()
         self.handle_oarc_add_remove()
         self.add_rando_hash()
-        if self.rando.options['keysanity']:
+        if self.rando.options['map-mode'] == 'Anywhere' or self.rando.options['small-key-mode'] == 'Anywhere' or self.rando.options['boss-key-mode'] == 'Anywhere':
             self.add_keysanity()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
@@ -733,7 +733,7 @@ class GamePatcher:
         self.all_asm_patches = defaultdict(OrderedDict)
         self.add_asm_patch('custom_funcs')
         self.add_asm_patch('ss_necessary')
-        if self.rando.options['keysanity']:
+        if self.rando.options['map-mode'] == 'Anywhere' or self.rando.options['small-key-mode'] == 'Anywhere' or self.rando.options['boss-key-mode'] == 'Anywhere':
             self.add_asm_patch('keysanity')
         if self.rando.options['shop-mode'] != 'Vanilla':
             self.add_asm_patch('shopsanity')
