@@ -31,6 +31,18 @@ SOMETIMES_LOCATIONS = [
     "Sky - Beedle's Island Goddess Chest", # goddess cube in ToT area
 ]
 
+HINTABLE_ITEMS = \
+    ["Clawshots"] + \
+   [ "Progressive Beetle"] * 2 + \
+    ["Progressive Sword"] * 4 + \
+    ["Emerald Tablet"] * 1 + \
+    ["Ruby Tablet"] * 1 + \
+    ["Amber Tablet"] * 1 + \
+    ["Goddess Harp"] * 1 + \
+    ["Water Scale"] * 1 + \
+    ["Fireshield Earrings"] * 1
+
+
 class GossipStoneHint:
     def to_gossip_stone_text(self) -> str:
         raise NotImplementedError("abstract")
@@ -49,6 +61,19 @@ class LocationGossipStoneHint(GossipStoneHint):
     
     def to_spoiler_log_text(self) -> str:
         return f"{self.location_name} has {self.item}"
+
+@dataclass
+class ItemGossipStoneHint(GossipStoneHint):
+    location_name: str
+    item: str
+
+    def to_gossip_stone_text(self) -> str:
+        zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
+        return f"{self.item} can be found at\n{zone}\n{specific_loc}"
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.item} is on {self.location_name}"
+
 
 @dataclass
 class EmptyGossipStoneHint(GossipStoneHint):
@@ -77,7 +102,8 @@ class Hints:
             self.hints[hintname] = EmptyGossipStoneHint(text='Useless hint')
     
     def do_normal_hints(self):
-        hint_locations = []
+        location_hints = []
+        item_hints = []
         total_stonehints = len(self.stonehint_definitions)
         needed_always_hints = self.logic.filter_locations_for_progression(ALWAYS_REQUIRED_LOCATIONS)
         # in shopsanity, we need to hint some beetle shop items
@@ -88,25 +114,40 @@ class Hints:
             needed_always_hints.append('Skyloft - Beedle 1600 Rupee Item')
         needed_sometimes_hints = self.logic.filter_locations_for_progression(SOMETIMES_LOCATIONS)
         hints_left = total_stonehints
+        location_hints_left = self.logic.rando.options['location-hints']
         for location in needed_always_hints:
-            hint_locations.append(location)
+            if location_hints_left <= 0:
+                break
+            location_hints.append(location)
             hints_left -= 1
-        for location in self.logic.rando.rng.sample(needed_sometimes_hints, k=min(hints_left, len(needed_sometimes_hints))):
-            hint_locations.append(location)
-            hints_left -= 1
-        
-        
-        all_locations_without_hint = self.logic.filter_locations_for_progression((loc for loc in self.logic.done_item_locations if not loc in hint_locations and not loc in self.logic.prerandomization_item_locations))
+            location_hints_left -= 1
+        while location_hints_left > 0:
+            for location in self.logic.rando.rng.sample(needed_sometimes_hints,
+                                                        k=min(hints_left, len(needed_sometimes_hints))):
+                location_hints.append(location)
+                hints_left -= 1
+                location_hints_left -= 1
+        hintable_items = HINTABLE_ITEMS.copy()
+        self.logic.rando.rng.shuffle(hintable_items)
+        for i in range(self.logic.rando.options['item-hints']):
+            hinted_item = hintable_items.pop()
+            for location, item in self.logic.done_item_locations.items():
+                if item == hinted_item:
+                    item_hints.append(location)
+                    hints_left -= 1
+                    break
+
+        all_locations_without_hint = self.logic.filter_locations_for_progression((loc for loc in self.logic.done_item_locations if not loc in location_hints and not loc in self.logic.prerandomization_item_locations))
         while hints_left > 0 and all_locations_without_hint:
             # add completely random locations if there are otherwise empty stones
             location_to_hint = self.logic.rando.rng.choice(all_locations_without_hint)
             all_locations_without_hint.remove(location_to_hint)
-            hint_locations.append(location_to_hint)
+            location_hints.append(location_to_hint)
             hints_left -= 1
-        self._place_hints_for_locations(hint_locations)
+        self._place_hints_for_locations(location_hints, item_hints)
 
     def do_bingo_hints(self):
-        important_items = set(("Progressive Sword", "Goddess Harp", "Clawshots", "Water Scale", "Fireshield Earrings"))
+        important_items = {"Progressive Sword", "Goddess Harp", "Clawshots", "Water Scale", "Fireshield Earrings"}
         if self.logic.rando.options['shop-mode'] == 'Randomized':
             important_items.add("Bug Net")
         hint_locations = []
@@ -122,9 +163,18 @@ class Hints:
             all_locations_without_hint.remove(location_to_hint)
             hint_locations.append(location_to_hint)
 
-        self._place_hints_for_locations(hint_locations)
+        self._place_hints_for_locations(hint_locations, [])
         
-    def _place_hints_for_locations(self, hint_locations):
+    def _place_hints_for_locations(self, location_hints, item_hints):
+        print(f"location hints: {len(location_hints)}")
+        for location in location_hints:
+            print(f"\t{location}")
+        print(f"location hints: {len(item_hints)}")
+        for location in item_hints:
+            print(f"\t{location}")
+        hint_locations = location_hints + item_hints
+        print(hint_locations)
+        print(len(hint_locations))
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)
         for hint_location in hint_locations:
@@ -165,4 +215,15 @@ class Hints:
             if loc_to_hint is None:
                 self.hints[gossipstone_name] = EmptyGossipStoneHint(text='--PLACEHOLDER--')
             else:
-                self.hints[gossipstone_name] = LocationGossipStoneHint(location_name=loc_to_hint, item=self.logic.done_item_locations[loc_to_hint])
+                if loc_to_hint in location_hints:
+                    self.hints[gossipstone_name] = LocationGossipStoneHint(
+                            location_name=loc_to_hint,
+                            item=self.logic.done_item_locations[loc_to_hint]
+                    )
+                elif loc_to_hint in item_hints:
+                    self.hints[gossipstone_name] = ItemGossipStoneHint(
+                        location_name=loc_to_hint,
+                        item=self.logic.done_item_locations[loc_to_hint]
+                    )
+                else:
+                    raise Exception(f"Unable to identify hint type for location {loc_to_hint}")
