@@ -43,13 +43,13 @@ class Logic:
   #     "Wind Tingle Statue",
   #   ]),
   # ])
-  
+
   def __init__(self, rando):
     self.rando = rando
-    
+
     # Initialize location related attributes.
-    self.item_locations = Logic.load_and_parse_item_locations()
-    self.load_and_parse_macros()
+    self.load_and_parse_item_requirements()
+    self.item_locations = self.load_and_parse_item_data()
 
     self.race_mode_banned_locations = []
     if self.rando.options['skip-skykeep'] and self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"] == 'Skykeep':
@@ -59,7 +59,7 @@ class Logic:
         zone, _ = Logic.split_location_name_by_zone(location_name)
         if zone in self.rando.non_required_dungeons:
           self.race_mode_banned_locations.append(location_name)
-      
+
       # checks outside locations that require dungeons:
       if self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"] in self.rando.non_required_dungeons:
         self.racemode_ban_location('Skyloft - Fledge\'s Crystals')
@@ -67,7 +67,7 @@ class Logic:
         # TODO: check again with entrance rando
         self.racemode_ban_location('Sky - Lumpy Pumpkin Roof Goddess Chest')
         self.racemode_ban_location('Sealed Grounds - Gorko Goddess Wall Reward')
-    
+
     batreaux_location_re = re.compile(r'.*Batreaux ([0-9]+) .*')
 
     for location_name in self.item_locations:
@@ -81,27 +81,27 @@ class Logic:
     if self.rando.options['skip-skykeep']:
       self.racemode_ban_location('Skykeep - Map Chest')
       self.racemode_ban_location('Skykeep - Small Key Chest')
-    
+
     self.locations_by_zone_name = OrderedDict()
     for location_name in self.item_locations:
       zone_name, specific_location_name = self.split_location_name_by_zone(location_name)
       if zone_name not in self.locations_by_zone_name:
         self.locations_by_zone_name[zone_name] = []
       self.locations_by_zone_name[zone_name].append(location_name)
-    
+
     self.remaining_item_locations = list(self.item_locations.keys())
     self.prerandomization_item_locations = OrderedDict()
-    
+
     self.done_item_locations = OrderedDict()
     for location_name in self.item_locations:
       self.done_item_locations[location_name] = None
-    
-    
+
+
     # Sync the logic macros with the randomizer.
     self.update_entrance_connection_macros()
     self.update_beat_game_macro()
-    
-    
+
+
     # Initialize item related attributes.
     self.all_progress_items = PROGRESS_ITEMS.copy()
     self.all_nonprogress_items = NONPROGRESS_ITEMS.copy()
@@ -119,27 +119,27 @@ class Logic:
           replace_end_index /= 2
         for i in range(int(replace_end_index)):
           self.all_fixed_consumable_items[i] = 'Rupoor'
-    
+
     self.all_progress_items += DUNGEON_PROGRESS_ITEMS
     if self.rando.options['map-mode'] != 'Removed':
       self.all_nonprogress_items += DUNGEON_NONPROGRESS_ITEMS
-    
+
     all_item_names = []
     all_item_names += self.all_progress_items
     all_item_names += self.all_nonprogress_items
     all_item_names += self.all_fixed_consumable_items
     all_item_names += self.duplicatable_consumable_items
     self.all_item_names = all_item_names
-    
+
     self.unplaced_progress_items = self.all_progress_items.copy()
     self.unplaced_nonprogress_items = self.all_nonprogress_items.copy()
     self.unplaced_fixed_consumable_items = self.all_fixed_consumable_items.copy()
-    
+
     self.current_inventory = Inventory()
-    
+
     for item_name in self.rando.starting_items:
       self.add_owned_item(item_name)
-    
+
     # collect all items that aren't supposed to be randomized
     for location_name, item in self.item_locations.items():
       item_name = item['original item']
@@ -198,11 +198,11 @@ class Logic:
 
     if self.rando.options['logic-mode'] == 'No Logic':
       for location in self.item_locations:
-        self.item_locations[location]['Need'] = Logic.parse_logic_expression('Nothing')
+        self.item_locations[location]['Need'] = Logic.parse_logic_expression(location, 'Nothing')
       # for macro in self.macros:
         # self.macros[macro]['Need'] = Logic.parse_logic_expression('Nothing')
 
-  
+
   # main randomization method
   def randomize_items(self):
     self.randomize_dungeon_items()  # this will only randomize the appropriate items
@@ -217,29 +217,29 @@ class Logic:
 
   def set_location_to_item(self, location_name, item_name):
     #print("Setting %s to %s" % (location_name, item_name))
-    
+
     if self.done_item_locations[location_name]:
       raise Exception("Location was used twice: " + location_name)
-    
+
     self.done_item_locations[location_name] = item_name
     self.remaining_item_locations.remove(location_name)
-    
+
     self.add_owned_item(item_name)
-  
+
   def set_prerandomization_item_location(self, location_name, item_name):
     # Temporarily keep track of where certain items are placed before the main progression item randomization loop starts.
-    
+
     #print("Setting prerand %s to %s" % (location_name, item_name))
-    
+
     assert location_name in self.item_locations
     self.prerandomization_item_locations[location_name] = item_name
-  
+
   def get_num_progression_items(self):
     return len(self.unplaced_progress_items)
-  
+
   def get_num_progression_locations(self):
     return Logic.get_num_progression_locations_static(self.item_locations, self.rando.banned_types)
-  
+
   @staticmethod
   def get_num_progression_locations_static(item_locations, banned_types):
     progress_locations = Logic.filter_locations_for_progression_static(
@@ -247,9 +247,9 @@ class Logic:
       item_locations,
       banned_types,
     )
-    
+
     return len(progress_locations)
-  
+
   def get_progress_and_non_progress_locations(self):
     all_locations = self.item_locations.keys()
     progress_locations = self.filter_locations_for_progression(all_locations)
@@ -257,34 +257,34 @@ class Logic:
     for location_name in all_locations:
       if location_name in progress_locations:
         continue
-      
+
       nonprogress_locations.append(location_name)
-    
+
     return (progress_locations, nonprogress_locations)
-  
+
   def add_owned_item(self, item_name):
     cleaned_item_name = item_name
     if cleaned_item_name not in self.all_item_names:
       raise Exception("Unknown item name: " + item_name)
-    
+
     else:
       self.current_inventory.collect_item(cleaned_item_name)
-    
+
     if item_name in self.unplaced_progress_items:
       self.unplaced_progress_items.remove(item_name)
     elif item_name in self.unplaced_nonprogress_items:
       self.unplaced_nonprogress_items.remove(item_name)
     elif item_name in self.unplaced_fixed_consumable_items:
       self.unplaced_fixed_consumable_items.remove(item_name)
-  
+
   def remove_owned_item(self, item_name):
     cleaned_item_name = item_name
     if cleaned_item_name not in self.all_item_names:
       raise Exception("Unknown item name: " + item_name)
-    
+
     else:
       self.current_inventory.remove_item(cleaned_item_name)
-    
+
     if item_name in self.all_progress_items:
       self.unplaced_progress_items.append(item_name)
     elif item_name in self.all_nonprogress_items:
@@ -292,20 +292,20 @@ class Logic:
     else:
       # Removing consumable items doesn't work because we don't know if the item is from the fixed list or the duplicatable list
       raise Exception("Cannot remove item from simulated inventory: %s" % item_name)
-  
+
   def get_accessible_remaining_locations(self, for_progression=False):
     accessible_location_names = []
-    
+
     locations_to_check = self.remaining_item_locations
     if for_progression:
       locations_to_check = self.filter_locations_for_progression(locations_to_check)
-    
+
     for location_name in locations_to_check:
       requirement_expression = self.item_locations[location_name]["Need"]
       if self.check_logical_expression_req(requirement_expression):
         accessible_location_names.append(location_name)
     return accessible_location_names
-  
+
   def filter_accessible_locations(self, locations, inventory):
     """
     returns a generator iterating through all given locations, that can be reached
@@ -313,7 +313,7 @@ class Logic:
     for loc in locations:
       if self.item_locations[loc]["Need"].is_true(self.rando.options, inventory, self.macros):
         yield loc
-  
+
   def get_first_useful_item(self, items_to_check, accessible_undone_locations):
     # Searches through a given list of items and returns the first one that opens up at least 1 new location.
     # The randomizer shuffles the list before passing it to this function, so in effect it picks a random useful item.
@@ -324,19 +324,19 @@ class Logic:
     for location_name in locations_to_check:
       if location_name not in accessible_undone_locations:
         inaccessible_undone_item_locations.append(location_name)
-    
+
     # Cache whether each item is useful in order to avoid an absurd number of duplicate recursive calls when checking if a predetermined dungeon item location has a useful item or not.
     self.cached_items_are_useful = {}
-    
+
     for item_name in items_to_check:
       if self.check_item_is_useful(item_name, inaccessible_undone_item_locations):
         self.cached_items_are_useful = None
         return item_name
-    
+
     self.cached_items_are_useful = None
-    
+
     return None
-  
+
   def get_items_by_usefulness_fraction(self, item_names_to_check, accessible_undone_locations):
     # Takes a list of items and locations, and determines for each item what the lowest number of items including it the player needs before a new location is opened up, and returns that in a dict.
     # For example, say there are 3 items A B and C, and 2 locations X and Y.
@@ -346,7 +346,7 @@ class Logic:
     # In addition to the usefulness, we also return the number of locations that this item can potentially unlock (not necessarely immediately)
     # We will multiply that number to the usefulness fraction. This is to make sure the game choses to place items that unlock a lot of locations even if we're far from unlocking those yet
     # Doing this fixes some randomization failures (for exemple we often want the rando to place key pieces rather than song of the hero parts even if we're far from having all key pieces)
-    
+
     inaccessible_undone_item_locations = []
     locations_to_check = self.remaining_item_locations
     locations_to_check = self.filter_locations_for_progression(locations_to_check)
@@ -360,30 +360,30 @@ class Logic:
           # TODO: In the future, we might want to consider recursively checking if the item here is useful, and if so include this location.
           continue
         inaccessible_undone_item_locations.append(location_name)
-    
+
     # Generate a list of what items are needed for each inaccessible location (+beating the game).
     # Note: Performance could be improved somewhat by only calculating which items are needed for each location at the start of item randomization, instead of once per call to this function. But this seems unnecessary.
     item_names_for_all_locations = []
     for location_name in inaccessible_undone_item_locations:
       requirement_expression = self.item_locations[location_name]["Need"]
-      item_names_for_loc = self.get_item_names_from_logical_expression_req(requirement_expression)
+      item_names_for_loc = self.get_item_names_from_logical_expression_req(location_name, requirement_expression)
       item_names_for_all_locations.append(item_names_for_loc)
     item_names_to_beat_game = self.get_item_names_by_req_name("Can Reach and Defeat Demise")
     item_names_for_all_locations.append(item_names_to_beat_game)
-    
+
     # Now calculate the best case scenario usefulness fraction for all items given.
     item_by_usefulness_fraction = OrderedDict()
     location_count_unlocked_by_items = OrderedDict()
     for item_name in item_names_to_check:
       item_by_usefulness_fraction[item_name] = 9999
       location_count_unlocked_by_items[item_name] = 0
-    
+
     for item_names_for_loc in item_names_for_all_locations:
       item_names_for_loc_without_owned = item_names_for_loc.copy()
       for item_name in self.current_inventory.all_owned_unique_items():
         if item_name in item_names_for_loc_without_owned:
           item_names_for_loc_without_owned.remove(item_name)
-      
+
       for item_name in item_names_for_loc_without_owned:
         if item_name not in item_by_usefulness_fraction:
           continue
@@ -392,45 +392,45 @@ class Logic:
         if usefulness_fraction_for_item < item_by_usefulness_fraction[item_name]:
           item_by_usefulness_fraction[item_name] = usefulness_fraction_for_item
     return item_by_usefulness_fraction, location_count_unlocked_by_items
-  
+
   def get_all_useless_items(self, items_to_check, accessible_undone_locations):
     # Searches through a given list of items and returns which of them do not open up even 1 new location.
-    
+
     if len(items_to_check) == 0:
       return []
-    
+
     inaccessible_undone_item_locations = []
     locations_to_check = self.remaining_item_locations
     locations_to_check = self.filter_locations_for_progression(locations_to_check)
     for location_name in locations_to_check:
       if location_name not in accessible_undone_locations:
         inaccessible_undone_item_locations.append(location_name)
-    
+
     self.cached_items_are_useful = {}
-    
+
     useless_items = []
     for item_name in items_to_check:
       if not self.check_item_is_useful(item_name, inaccessible_undone_item_locations):
         useless_items.append(item_name)
-    
+
     self.cached_items_are_useful = None
-    
+
     return useless_items
-  
+
   def check_item_is_useful(self, item_name, inaccessible_undone_item_locations):
     # Checks whether a specific item unlocks any new locations or not.
     # This function should only be called by get_first_useful_item, get_all_useless_items, or by itself for recursion purposes.
-    
+
     if item_name in self.cached_items_are_useful:
       return self.cached_items_are_useful[item_name]
-    
+
     self.add_owned_item(item_name)
-    
+
     for location_name in inaccessible_undone_item_locations:
       if location_name in self.race_mode_banned_locations:
         # Don't consider locations inside unchosen dungeons in race mode when calculating usefulness.
         continue
-      
+
       if location_name in self.prerandomization_item_locations:
         # If this location has a predetermined item in it, we need to recursively check if that item is useful.
         unlocked_prerand_item = self.prerandomization_item_locations[location_name]
@@ -442,23 +442,23 @@ class Logic:
         if not self.check_item_is_useful(unlocked_prerand_item, temp_inaccessible_undone_item_locations):
           # If that item is not useful, don't consider the current item useful for unlocking it.
           continue
-        
+
         requirement_expression = self.item_locations[location_name]["Need"]
         if self.check_logical_expression_req(requirement_expression):
           self.remove_owned_item(item_name)
           self.cached_items_are_useful[item_name] = True
           return True
-      
+
       requirement_expression = self.item_locations[location_name]["Need"]
       if self.check_logical_expression_req(requirement_expression):
         self.remove_owned_item(item_name)
         self.cached_items_are_useful[item_name] = True
         return True
-    
+
     self.remove_owned_item(item_name)
     self.cached_items_are_useful[item_name] = False
     return False
-  
+
   def filter_locations_for_progression(self, locations_to_filter):
     locations_to_filter = [loc for loc in locations_to_filter if not loc in self.race_mode_banned_locations]
     return Logic.filter_locations_for_progression_static(
@@ -466,7 +466,7 @@ class Logic:
       self.item_locations,
       self.rando.banned_types,
     )
-  
+
   @staticmethod
   def filter_locations_for_progression_static(locations_to_filter, item_locations, banned_types):
     filtered_locations = []
@@ -474,9 +474,9 @@ class Logic:
       types: set = item_locations[location_name]["type"]
       if types.isdisjoint(banned_types):
         filtered_locations.append(location_name)
-    
+
     return filtered_locations
-  
+
   def check_item_valid_in_location(self, item_name, location_name):
     # Don't allow dungeon items to appear outside their proper dungeon when Key-Lunacy is off.
     if self.is_dungeon_item(item_name):
@@ -484,9 +484,9 @@ class Logic:
       dungeon_name = DUNGEON_NAMES[short_dungeon_name]
       if not self.is_dungeon_location(location_name, dungeon_name_to_match=dungeon_name):
         return False
-    
+
     return True
-    
+
   def filter_items_by_any_valid_location(self, items, locations):
     # Filters out items that cannot be in any of the given possible locations.
     valid_items = []
@@ -496,52 +496,50 @@ class Logic:
           valid_items.append(item_name)
           break
     return valid_items
-  
+
   def filter_locations_valid_for_item(self, locations, item_name):
     valid_locations = []
     for location_name in locations:
       if self.check_item_valid_in_location(item_name, location_name):
         valid_locations.append(location_name)
     return valid_locations
-  
+
   def filter_items_valid_for_location(self, items, location_name):
     valid_items = []
     for item_name in items:
       if self.check_item_valid_in_location(item_name, location_name):
         valid_items.append(item_name)
     return valid_items
-  
-  @staticmethod
-  def load_and_parse_item_locations():
-    with (ROOT_DIR / "SS Rando Logic - Item Location.yaml").open('r') as f:
-      item_locations = yaml.load(f, YamlOrderedDictLoader)
-    
-    for location_name in item_locations:
-      req_string = item_locations[location_name]["Need"]
-      item_locations[location_name]["Need"] = Logic.parse_logic_expression(req_string)
-      
-      if not "type" in item_locations[location_name]:
+
+  def load_and_parse_item_data(self):
+    with (ROOT_DIR / "SS Rando Logic - Item Data.yaml").open('r') as f:
+      item_data = yaml.load(f, YamlOrderedDictLoader)
+
+    for location_name in item_data:
+      item_data[location_name]["Need"] = self.macros[location_name]
+
+      if not "type" in item_data[location_name]:
         print("ERROR, "+location_name+" doesn't have types!")
-      types_string = item_locations[location_name]["type"]
+      types_string = item_data[location_name]["type"]
       types = types_string.split(",")
       types = set((type.strip() for type in types))
       unknown_types = [x for x in types if not x in ALL_TYPES]
       if len(unknown_types) != 0:
         raise Exception(f"unknown types: {unknown_types}")
-      item_locations[location_name]["type"] = types
-    
-    return item_locations
-    
-  def load_and_parse_macros(self):
-    with (ROOT_DIR / "SS Rando Logic - Macros.yaml").open('r') as f:
+      item_data[location_name]["type"] = types
+
+    return item_data
+
+  def load_and_parse_item_requirements(self):
+    with (ROOT_DIR / "SS Rando Logic - Item Requirements.yaml").open('r') as f:
       macro_strings = yaml.safe_load(f)
     self.macros = {}
     for macro_name, req_string in macro_strings.items():
       self.set_macro(macro_name, req_string)
-  
+
   def set_macro(self, macro_name, req_string):
-    self.macros[macro_name] = Logic.parse_logic_expression(req_string)
-  
+    self.macros[macro_name] = Logic.parse_logic_expression(macro_name, req_string)
+
   def update_beat_game_macro(self):
     # needs to be able to open GoT and open it, requires required dungeons
     access_past_requirements = ['Can Access Sealed Temple', 'Can Open GOT After Raising','Can Raise Gate of Time']
@@ -560,24 +558,24 @@ class Logic:
       zone_beat_macro_name = "Can Beat " + zone_name
       entrance_beat_macro_name = "Can Beat " + entrance_name
       self.set_macro(entrance_beat_macro_name, zone_beat_macro_name)
-  
+
   def make_useless_progress_items_nonprogress(self):
     # Detect which progress items don't actually help access any locations with the user's current settings, and move those over to the nonprogress item list instead.
     # This is so things like dungeons-only runs don't have a lot of useless items hogging the progress locations.
-  
+
     progress_locations = Logic.filter_locations_for_progression_static(
       (loc for loc in self.item_locations.keys() if not loc in self.race_mode_banned_locations),
       self.item_locations,
       self.rando.banned_types,
     )
-    
+
     # print(progress_locations)
     useful_items = []
     for location_name in progress_locations:
       requirement_expression = self.item_locations[location_name]["Need"]
-      useful_items += self.get_item_names_from_logical_expression_req(requirement_expression)
+      useful_items += self.get_item_names_from_logical_expression_req(location_name, requirement_expression)
     useful_items += self.get_item_names_by_req_name("Can Reach and Defeat Demise")
-    
+
     all_progress_items_filtered = []
     for item_name in useful_items:
       if item_name == "Progressive Sword" and self.rando.options.get("sword_mode") == "Swordless":
@@ -606,23 +604,23 @@ class Logic:
       self.all_nonprogress_items.append(item_name)
       self.unplaced_progress_items.remove(item_name)
       self.unplaced_nonprogress_items.append(item_name)
-    
+
     if self.rando.options.get("randomize_entrances") not in ["Disabled", None]:
       # Reset the dungeon/secret cave access macros if we changed them earlier.
       self.update_entrance_connection_macros()
-  
+
   @staticmethod
   def split_location_name_by_zone(location_name):
     if " - " in location_name:
       zone_name, specific_location_name = location_name.split(" - ", 1)
     else:
       zone_name = specific_location_name = location_name
-    
+
     return zone_name, specific_location_name
-  
+
   def is_dungeon_item(self, item_name):
     return (item_name in self.dungeon_progress_items or item_name in self.dungeon_nonprogress_items)
-  
+
   def is_dungeon_location(self, location_name, dungeon_name_to_match=None):
     zone_name, specific_location_name = self.split_location_name_by_zone(location_name)
     if zone_name not in DUNGEON_NAME_TO_SHORT_DUNGEON_NAME:
@@ -632,21 +630,28 @@ class Logic:
       # Wrong dungeon.
       return False
     return True
-  
+
   @staticmethod
-  def parse_logic_expression(string):
-    return parse_logic_expression(string)
-  
+  def parse_logic_expression(name, string):
+    try:
+      return parse_logic_expression(string)
+    except Exception as e:
+      raise Exception(f"In the definition of {name}, {e}")
+
   def check_requirement_met(self, req_name):
     match = ITEM_WITH_COUNT_REGEX.match(req_name)
     if match:
       item_name = match.group(1)
       num_required = int(match.group(2))
-      
+
       return self.current_inventory.has_countable_item(item_name, num_required)
     elif req_name.startswith("Can Access Other Location \""):
       return self.check_other_location_requirement(req_name)
     elif req_name.startswith("Option \""):
+      return self.check_option_enabled_requirement(req_name)
+    elif req_name.endswith(" Trick"):
+      trickname = req_name[:-len(" Trick")]
+      req_name = f'Option "enabled-trick" Contains "{trickname}"'
       return self.check_option_enabled_requirement(req_name)
     elif req_name in self.all_item_names:
       return req_name in self.current_inventory.has_item(req_name)
@@ -661,27 +666,31 @@ class Logic:
       raise Exception("Unknown requirement name: " + req_name)
       # print("Unknown requirement name: " + req_name)
       # return True
-  
+
   def check_logical_expression_string_req(self, logical_expression_str):
-    return self.check_logical_expression_req(Logic.parse_logic_expression(logical_expression_str))
+    return self.check_logical_expression_req(Logic.parse_logic_expression("test", logical_expression_str))
 
   def check_logical_expression_req(self, logical_expression: LogicExpression):
     return logical_expression.is_true(self.rando.options, self.current_inventory, self.macros)
-  
+
   def get_item_names_by_req_name(self, req_name):
     items_needed = self.get_items_needed_by_req_name(req_name)
     return self.flatten_items_needed_to_item_names(items_needed)
-  
-  def get_item_names_from_logical_expression_req(self, logical_expression):
-    items_needed = self.get_items_needed_from_logical_expression_req(logical_expression)
-    return self.flatten_items_needed_to_item_names(items_needed)
-  
+
+  def get_item_names_from_logical_expression_req(self, name, logical_expression):
+    try:
+      items_needed = self.get_items_needed_from_logical_expression_req(logical_expression)
+      return self.flatten_items_needed_to_item_names(items_needed)
+    except BaseException as e:
+      print(f"In the definition of {name}, ", end="")
+      raise e
+
   def flatten_items_needed_to_item_names(self, items_needed: OrderedDict):
     item_names = []
     for item_name, num_required in items_needed.items():
       item_names += [item_name]*num_required
     return item_names
-  
+
   def get_items_needed_by_req_name(self, req_name):
     items_needed = OrderedDict()
     if req_name.startswith("Can Access Other Location \""):
@@ -692,6 +701,8 @@ class Logic:
       for item_name, num_required in sub_items_needed.items():
         items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
     elif req_name.startswith("Option \""):
+      pass
+    elif req_name.endswith(" Trick"):
       pass
     elif req_name in self.all_item_names:
       items_needed[req_name] = max(1, items_needed.setdefault(req_name, 0))
@@ -707,19 +718,19 @@ class Logic:
     else:
       # print("Unknown requirement name: " + req_name)
       raise Exception("Unknown requirement name: " + req_name)
-    
+
     return items_needed
-  
+
   def get_items_needed_from_logical_expression_req(self, logical_expression: LogicExpression):
     return logical_expression.get_items_needed(self.rando.options, self.current_inventory, self.macros)
-  
+
   def check_other_location_requirement(self, req_name):
     match = re.search(r"^Can Access Other Location \"([^\"]+)\"$", req_name)
     other_location_name = match.group(1)
-    
+
     requirement_expression = self.item_locations[other_location_name]["Need"]
     return self.check_logical_expression_req(requirement_expression)
-  
+
   def check_option_enabled_requirement(self, req_name):
     positive_boolean_match = re.search(r"^Option \"([^\"]+)\" Enabled$", req_name)
     negative_boolean_match = re.search(r"^Option \"([^\"]+)\" Disabled$", req_name)
@@ -756,16 +767,16 @@ class Logic:
     accessible_undone_locations = self.get_accessible_remaining_locations(for_progression=True)
     if len(accessible_undone_locations) == 0:
       raise Exception("No progress locations are accessible at the very start of the game!")
-    
+
     # Place progress items.
     location_weights = {}
     current_weight = 1
     while self.unplaced_progress_items:
       accessible_undone_locations = self.get_accessible_remaining_locations(for_progression=True)
-      
+
       if not accessible_undone_locations:
         raise Exception("No locations left to place progress items!")
-      
+
       # If the player gained access to any predetermined item locations, we need to give them those items.
       newly_accessible_predetermined_item_locations = [
         loc for loc in accessible_undone_locations
@@ -775,16 +786,16 @@ class Logic:
         for predetermined_item_location_name in newly_accessible_predetermined_item_locations:
           predetermined_item_name = self.prerandomization_item_locations[predetermined_item_location_name]
           self.set_location_to_item(predetermined_item_location_name, predetermined_item_name)
-        
+
         continue # Redo this loop iteration with the predetermined item locations no longer being considered 'remaining'.
-      
+
       for location in accessible_undone_locations:
         if location not in location_weights:
           location_weights[location] = current_weight
         elif location_weights[location] > 1:
           location_weights[location] -= 1
       current_weight += 1
-      
+
       possible_items = self.unplaced_progress_items.copy()
 
       # Don't randomly place items that already had their location predetermined.
@@ -802,7 +813,7 @@ class Logic:
         print(self.unplaced_progress_items)
         print(self.rando.entrance_connections)
         raise Exception("Only items left to place are predetermined items at inaccessible locations!")
-      
+
       # Remove duplicates from the list so items like swords and bows aren't so likely to show up early.
       # Don't do this with Eldin Key Pieces or Earth Temple will always be really late in logic. Same with crystals
       unique_possible_items = []
@@ -811,12 +822,12 @@ class Logic:
           unique_possible_items.append(item_name)
         elif item_name == 'Key Piece':
           unique_possible_items.append(item_name)
-        elif item_name == '5 Gratitude Crystals':
+        elif item_name == 'Gratitude Crystal Pack':
           unique_possible_items.append(item_name)
         elif item_name == 'Gratitude Crystal':
           unique_possible_items.append(item_name)
       possible_items = unique_possible_items
-      
+
       must_place_useful_item = False
       should_place_useful_item = True
       if len(accessible_undone_locations) == 1 and len(possible_items) > 1:
@@ -828,12 +839,12 @@ class Logic:
         # This can give the randomizer a chance to place things like Delivery Bag or small keys for dungeons that need x2 to do anything.
         should_place_useful_item = False
 
-      possible_items_when_not_placing_useful = [name for name in possible_items]      
+      possible_items_when_not_placing_useful = [name for name in possible_items]
 
       # Only exception is when there's exclusively groups left to place. Then we allow groups even if they're not useful.
       if len(possible_items_when_not_placing_useful) == 0 and len(possible_items) > 0:
         possible_items_when_not_placing_useful = possible_items
-      
+
       if must_place_useful_item or should_place_useful_item:
         shuffled_list = possible_items.copy()
         self.rando.rng.shuffle(shuffled_list)
@@ -848,9 +859,9 @@ class Logic:
             # In other words, which item has the smallest number of other items needed before it becomes useful?
             # We'd prefer to place an item which is 1/2 of what you need to access a new location over one which is 1/5 for example.
             # The number of locations an item can potentially unlock also matters (think key pieces)
-          
+
             item_by_usefulness_fraction, locations_unlocked_by_item = self.get_items_by_usefulness_fraction(possible_items_when_not_placing_useful, accessible_undone_locations)
-          
+
             # We want to limit it to choosing items at the maximum usefulness fraction.
             max_usefulness_denom = list(item_by_usefulness_fraction.values())
             max_usefulness_num = list(locations_unlocked_by_item.values())
@@ -877,7 +888,7 @@ class Logic:
       else:
         raise Exception("Failed to prevent progress items from appearing in banned locations!")
 
-      
+
       # We weight it so newly accessible locations are more likely to be chosen.
       # This way there is still a good chance it will not choose a new location.
       # Dungeons are prefered
@@ -897,14 +908,14 @@ class Logic:
       if location_name in self.remaining_item_locations:
         dungeon_item_name = self.prerandomization_item_locations[location_name]
         self.set_location_to_item(location_name, dungeon_item_name)
-    
+
     game_beatable = self.check_requirement_met("Can Reach and Defeat Demise")
     if not game_beatable:
       raise Exception("Game is not beatable on this seed! This error shouldn't happen.")
-  
+
   def randomize_dungeon_items(self):
     # Places dungeon-specific items first so all the dungeon locations don't get used up by other items.
-    
+
     # Temporarily add all progress items except for dungeon keys while we randomize them.
     items_to_temporarily_add = [
       item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
@@ -946,7 +957,7 @@ class Logic:
       assert len(other_dungeon_items_to_place) > 0
       for item_name in other_dungeon_items_to_place:
         self.place_dungeon_item(item_name)
-    
+
     # Remove the items we temporarily added.
     for item_name in items_to_temporarily_add:
       self.remove_owned_item(item_name)
@@ -961,9 +972,9 @@ class Logic:
       loc for loc in accessible_undone_locations
       if loc not in self.prerandomization_item_locations
     ]
-    
+
     possible_locations = self.filter_locations_valid_for_item(accessible_undone_locations, item_name)
-    
+
     # if self.dungeons_only_start and item_name == "DRC Small Key":
     #   # If we're in a dungeons-only-start, we have to ban small keys from appearing in the path that sequence breaks the hanging platform.
     #   # A key you need to progress appearing there can cause issues that dead-end the item placement logic when there are no locations outside DRC for the randomizer to give you other items at.
@@ -979,11 +990,11 @@ class Logic:
     #     loc for loc in possible_locations
     #     if loc != self.drc_failsafe_location
     #   ]
-    
+
     if not possible_locations:
       print(self.current_inventory)
       raise Exception(f"No valid locations left to place dungeon item {item_name}!")
-    
+
     location_name = self.rando.rng.choice(possible_locations)
     self.set_prerandomization_item_location(location_name, item_name)
 
@@ -991,15 +1002,15 @@ class Logic:
     # Place unique non-progress items.
     while self.unplaced_nonprogress_items:
       accessible_undone_locations = self.get_accessible_remaining_locations()
-      
+
       item_name = self.rando.rng.choice(self.unplaced_nonprogress_items)
-      
+
       if not accessible_undone_locations:
         raise Exception("No valid locations left to place non-progress items!")
-      
+
       location_name = self.rando.rng.choice(accessible_undone_locations)
       self.set_location_to_item(location_name, item_name)
-  
+
   @staticmethod
   def choose_random_weighted(rng, choices, weights):
     cum_weights = []
@@ -1008,7 +1019,7 @@ class Logic:
       cur_cum_weight += weights[choice]
       cum_weights.append(cur_cum_weight)
     return rng.choices(choices, cum_weights=cum_weights, k=1)[0]
-    
+
   def randomize_consumable_items(self):
     accessible_undone_locations = self.get_accessible_remaining_locations()
     inaccessible_locations = [loc for loc in self.remaining_item_locations if loc not in accessible_undone_locations]
@@ -1016,7 +1027,7 @@ class Logic:
       print("Inaccessible locations:")
       for location_name in inaccessible_locations:
         print(location_name)
-    
+
     # Fill remaining unused locations with consumables (Rupees, treasures).
     locations_to_place_consumables_at = self.remaining_item_locations.copy()
     for location_name in locations_to_place_consumables_at:
@@ -1025,10 +1036,10 @@ class Logic:
         possible_items = self.filter_items_valid_for_location(self.duplicatable_consumable_items, location_name)
         if len(possible_items) == 0:
           raise Exception("No valid consumable items for location %s" % location_name)
-      
+
       item_name = self.rando.rng.choice(possible_items)
       self.set_location_to_item(location_name, item_name)
-  
+
   def can_finish_without_locations(self, banned_locations):
     return self.can_reach_restricted(banned_locations, self.macros["Can Reach and Defeat Demise"])
 
@@ -1067,7 +1078,7 @@ class Logic:
         if not self.can_finish_without_locations([loc]):
           woth_items[loc] = item
     return woth_items
-  
+
   def get_barren_regions(self):
     region_is_barren = {}
     for loc in self.item_locations:
@@ -1100,7 +1111,7 @@ class Logic:
         spheres.append(current_sphere)
       if not new_loc_reached:
         raise Exception('no new location reached!', spheres)
-      
+
     return spheres
 
 

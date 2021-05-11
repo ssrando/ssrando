@@ -34,7 +34,7 @@ SOMETIMES_LOCATIONS = [
 class GossipStoneHint:
     def to_gossip_stone_text(self) -> str:
         raise NotImplementedError("abstract")
-    
+
     def to_spoiler_log_text(self) -> str:
         raise NotImplementedError("abstract")
 
@@ -46,7 +46,7 @@ class LocationGossipStoneHint(GossipStoneHint):
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
         return f"{zone}\n{specific_loc}\nhas {self.item}"
-    
+
     def to_spoiler_log_text(self) -> str:
         return f"{self.location_name} has {self.item}"
 
@@ -56,7 +56,7 @@ class EmptyGossipStoneHint(GossipStoneHint):
 
     def to_gossip_stone_text(self) -> str:
         return self.text
-    
+
     def to_spoiler_log_text(self) -> str:
         return self.text
 
@@ -65,17 +65,17 @@ class Hints:
         with (RANDO_ROOT_PATH / "hints.yaml").open() as f:
             self.stonehint_definitions: dict = yaml.safe_load(f)
         self.logic = logic
-        for hintdef in self.stonehint_definitions.values():
+        for hintname, hintdef in self.stonehint_definitions.items():
             if self.logic.rando.options['logic-mode'] == 'No Logic':
-                hintdef["Need"] = Logic.parse_logic_expression("Nothing")
+                hintdef["Need"] = Logic.parse_logic_expression(hintname, "Nothing")
             else:
-                hintdef["Need"] = Logic.parse_logic_expression(hintdef["Need"])
+                hintdef["Need"] = Logic.parse_logic_expression(hintname, hintdef["Need"])
         self.hints = OrderedDict()
-    
+
     def do_junk_hints(self):
         for hintname in self.stonehint_definitions.keys():
             self.hints[hintname] = EmptyGossipStoneHint(text='Useless hint')
-    
+
     def do_normal_hints(self):
         hint_locations = []
         total_stonehints = len(self.stonehint_definitions)
@@ -94,8 +94,8 @@ class Hints:
         for location in self.logic.rando.rng.sample(needed_sometimes_hints, k=min(hints_left, len(needed_sometimes_hints))):
             hint_locations.append(location)
             hints_left -= 1
-        
-        
+
+
         all_locations_without_hint = self.logic.filter_locations_for_progression((loc for loc in self.logic.done_item_locations if not loc in hint_locations and not loc in self.logic.prerandomization_item_locations))
         while hints_left > 0 and all_locations_without_hint:
             # add completely random locations if there are otherwise empty stones
@@ -123,7 +123,7 @@ class Hints:
             hint_locations.append(location_to_hint)
 
         self._place_hints_for_locations(hint_locations)
-        
+
     def _place_hints_for_locations(self, hint_locations):
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)

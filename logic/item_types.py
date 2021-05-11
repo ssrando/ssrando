@@ -11,7 +11,7 @@ PROGRESS_ITEMS = [
   "Fireshield Earrings",
   "Clawshots",
   "Stone of Trials",
-  
+
   "Sea Chart",
 
   # currently, all pillars are open at the start
@@ -31,12 +31,12 @@ PROGRESS_ITEMS = [
   "Faron Song of the Hero Part",
   "Eldin Song of the Hero Part",
   "Lanayru Song of the Hero Part",
-  
+
   "Spiral Charge"
 
   # "Revitalizing Potion" # causes problems in events, as it's treated like you buy a potion
 ] + \
-  ["5 Gratitude Crystals"]*13 + \
+  ["Gratitude Crystal Pack"]*13 + \
   ["Gratitude Crystal"]*15 + \
   ["Progressive Sword"]*6 + \
   ["Progressive Mitts"]*2 + \

@@ -29,7 +29,7 @@ Faron Woods - Gossip Stone in Deep Woods:
 Lake Floria - Gossip Stone outside Ancient Cistern:
   textfile: 004-Object
   textindex: 28
-  Need: Can Access Lake Floria
+  Need: Can Access Floria Waterfall
 Eldin Volcano - Gossip Stone next to Earth Temple:
   textfile: 004-Object
   textindex: 14
@@ -41,7 +41,7 @@ Eldin Volcano - Gossip Stone in Thrill Digger Cave:
 Eldin Volcano - Gossip Stone outside Fire Sanctuary:
   textfile: 004-Object
   textindex: 31
-  Need: Can Access Volcano Summit & Bottle
+  Need: Can Get Past First Frog
 Eldin Volcano - Gossip Stone in Waterfall Area:
   textfile: 004-Object
   textindex: 26
@@ -49,7 +49,7 @@ Eldin Volcano - Gossip Stone in Waterfall Area:
 Lanayru Desert - Gossip Stone in Temple of Time Area:
   textfile: 004-Object
   textindex: 25
-  Need: Can Access Second Part of Lanayru & Hook Beetle
+  Need: Can Access Front of Temple of Time & Hook Beetle
 Sand Sea - Gossip Stone in Shipyard:
   textfile: 004-Object
   textindex: 23
@@ -57,4 +57,4 @@ Sand Sea - Gossip Stone in Shipyard:
 Lanayru Caves - Gossip Stone in Center:
   textfile: 004-Object
   textindex: 24
-  Need: Can Access Lanayru & Clawshots
+  Need: Can Access Lanayru Caves
