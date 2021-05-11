@@ -881,11 +881,13 @@ class Logic:
       # We weight it so newly accessible locations are more likely to be chosen.
       # This way there is still a good chance it will not choose a new location.
       # Dungeons are prefered
-      possible_locations_with_weighting = []
+      possible_location_weights = []
+      cumul_loc_weight = 0
       for location_name in accessible_undone_locations:
-        possible_locations_with_weighting += [location_name]*location_weights[location_name]
+        cumul_loc_weight += location_weights[location_name]
+        possible_location_weights.append(cumul_loc_weight)
 
-      location_name = self.rando.rng.choice(possible_locations_with_weighting)
+      location_name = self.rando.rng.choices(accessible_undone_locations, cum_weights=possible_location_weights, k=1)[0]
       self.set_location_to_item(location_name, item_name)
 
       # continue loop if items are remaining
