@@ -18,17 +18,6 @@ ROOT_DIR = Path(__file__).parent.parent
 
 ITEM_WITH_COUNT_REGEX = re.compile(r"^(.+) x(\d+)$")
 
-# the event after dungeons break with a map that triggers the fi text
-# until that's removed, make sure the map can't appear there
-MAP_BANNED_LOCATIONS = [
-  'Skyview - Ruby Tablet',
-  'Earth Temple - Amber Tablet',
-  'Lanayru Mining Facility - Harp',
-  'Ancient Cistern - Goddess Longsword',
-  "Sandship - Nayru's Flame",
-  "Fire Sanctuary - Din's Flame"
-]
-
 class Logic:
   # PROGRESS_ITEM_GROUPS = OrderedDict([
   #   ("Triforce Shards",  [
@@ -496,11 +485,8 @@ class Logic:
       if not self.is_dungeon_location(location_name, dungeon_name_to_match=dungeon_name):
         return False
     
-    # ban maps in events where it breaks things
-    if item_name.endswith('Map') and location_name in MAP_BANNED_LOCATIONS:
-      return False
     return True
-  
+    
   def filter_items_by_any_valid_location(self, items, locations):
     # Filters out items that cannot be in any of the given possible locations.
     valid_items = []
