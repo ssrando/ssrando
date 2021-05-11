@@ -75,7 +75,7 @@ class ExtractSetupThread(QThread):
             if current_steps is None:
                 self.steps += 1
         return progress_cb
-    
+
     def run(self):
         total_steps = 2  + 100 + 100 + 100 # wit + done, verify, extract, copy
         self.update_total_steps.emit(total_steps)

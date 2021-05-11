@@ -165,10 +165,10 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, 'option_sometimes_hints').setEnabled(False)
         getattr(self.ui, 'option_location_hints').setEnabled(False)
         getattr(self.ui, 'option_item_hints').setEnabled(False)
-        getattr(self.ui, 'enable_trick').setEnabled(False)
-        getattr(self.ui, 'disable_trick').setEnabled(False)
-        getattr(self.ui, 'enabled_tricks').setEnabled(False)
-        getattr(self.ui, 'disabled_tricks').setEnabled(False)
+        # getattr(self.ui, 'enable_trick').setEnabled(False)
+        # getattr(self.ui, 'disable_trick').setEnabled(False)
+        # getattr(self.ui, 'enabled_tricks').setEnabled(False)
+        # getattr(self.ui, 'disabled_tricks').setEnabled(False)
         getattr(self.ui, 'enable_location').setEnabled(False)
         getattr(self.ui, 'disable_location').setEnabled(False)
         getattr(self.ui, 'enabled_locations').setEnabled(False)
@@ -447,7 +447,7 @@ class RandoGUI(QMainWindow):
         self.ui.progression_floria_goddess.setEnabled(enabled)
         self.ui.progression_summit_goddess.setEnabled(enabled)
         self.ui.progression_sand_sea_goddess.setEnabled(enabled)
-    
+
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
 

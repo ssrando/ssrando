@@ -347,69 +347,71 @@
   # Skyloft / Sky
     - Waterfall Cave Jump
     - Baby Rattle from Beedle's Shop
-    - Skyloft Trial RBW
-    - Early Thunderhead
+    # - Skyloft Trial RBW
+    # - Early Thunderhead
     - Sky Keep Entrance Jump
     - Sky - Volcanic Island Dive
     - Sky - Beedle's Island Cage Chest Dive
     - Thunderhead - East Island Dive
   # Faron
     - Early Lake Floria - Fence Hop
-    - Early Lake Floria - Moblin
-    - Early Lake Floria - Rope Floria
-    - Early Faron Woods
+    # - Early Lake Floria - Moblin
+    # - Early Lake Floria - Rope Floria
+    # - Early Faron Woods
     - Owlan Crystals without Bombs
     - Faron - Bokoblin Luring
-    - Faron Trial RBM
+    # - Faron Trial RBM
   # Eldin
-    - Upper Eldin RBM
-    - Earth Temple Door RBM
-    - Eldin Trial RBM
+    # - Upper Eldin RBM
+    # - Earth Temple Door RBM
+    # - Eldin Trial RBM
   # Lanayru
     - Itemless First Timeshift Stone
     - Lanayru Mines Brakeslide
-    - Temple of Time Skip - BiTwarp
+    # - Temple of Time Skip - BiTwarp
     - Temple of Time Skip - Brakeslide
     - Secret Passageway Hook Beetle Opening
     - Lightning Node End with Bombs  # Is it worth
     - Fire Node - Brakeslide
-    - Early Lanayru Caves
+    # - Early Lanayru Caves
     - Cactus Bomb Whip
-    - Skipper's Retreat Fast ClawshotsSkipper's Retreat Fast Clawshots
-    - Sand Sea Skip
+    - Skipper's Retreat Fast Clawshots
+    # - Sand Sea Skip
   # Skyview
     - Skyview Digging Spot without Scale
     - Skyview Slingshot Shot
-    - Skyview - BiTwarp
+    # - Skyview - BiTwarp
   # Earth Temple
     - Earth Temple - Keese Yeet
-    - Earth Temple - Boulder Skip RBM
+    # - Earth Temple - Boulder Skip RBM
     - Earth Temple - Slope Stuttersprint
     - Earth Temple - Bomb Flower Scaldera
   # Lanayru Mining Facility
     - LMF - Whip First Room Switch
     - LMF - Key-locked Room Bomb Throw
     - LMF - Minecart Jump
-    - LMF - West Wing Skip BiTwarp
-    - LMF - Gust Bellows Room Box RBM
-    - LMF - Boss Door Shortcut RBM
-    - LMF - Pinwheel Gate RBM
+    # - LMF - West Wing Skip BiTwarp
+    # - LMF - Gust Bellows Room Box RBM
+    # - LMF - Boss Door Shortcut RBM
+    # - LMF - Pinwheel Gate RBM
     - LMF - Molderach without Gust Bellows
   # Ancient Cistern
     - Ancient Cistern - Cistern Clip
     - Ancient Cistern - Lever Jump
     - Ancient Cistern - Map Chest Jump
+    - Ancient Cistern - Cistern Whip Room Clip
   # Sandship
     - Sandship - No Combination Hint
+    - Sandship - Itemless Spume Skip
     - Sandship - Mast Jump
-    - Sandship - Tentalus Skip
+    # - Sandship - Tentalus Skip
   # Fire Sanctuary
     - Fire Sanctuary - Pillar Jump
     - Fire Sanctuary - No Bombable Wall Hint
-    - Fire Sanctuary - Map Chest RBM
-    - Fire Sanctuary - Plats Chest RBM
-    - Fire Sanctuary - Boss Key without Mitts
-    - Fire Sanctuary - Overworld Statue RBM
+    # - Fire Sanctuary - Map Chest RBM
+    # - Fire Sanctuary - Plats Chest RBM
+    # - Fire Sanctuary - Boss Key without Mitts
+    # - Fire Sanctuary - Overworld Statue RBM
   default: []
   help: Enable specific tricks to be considered in logic
   ui: enabled_tricks
