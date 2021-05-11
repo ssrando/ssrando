@@ -1056,7 +1056,7 @@ Lanayru Sand Sea - 3rd Chest in Pirate Stronghold:
 
 Skyview - Map Chest:
   Need: Can Access Skyview & Can Get Past the First Skyview Room & Can Hit Vines in Skyview Left Room
-  original item: Skyview Map
+  original item: SV Map
   type: faron, dungeon
   Paths:
    - stage/D100/r2/l0/TBox/64
@@ -1115,7 +1115,7 @@ Skyview - Boss Key:
   #If you had bombs for the Skulltula, you can't hit the 2nd vine, thus you need Beetle, bow, clawshots or slingshot
   #Note: You can also hit this vine with a Skyward Strike, but only on Hero Mode
   Need: Can Access Skyview & Can Get Past the First Skyview Room & (Goddess Sword | Bomb Bag | Beetle | Bow | Water Scale) & ((Goddess Sword & Option "hero-mode" Enabled) | Hook Beetle | Bow | True Master Sword) & SV Small Key x2
-  original item: Skyview Boss Key
+  original item: SV Boss Key
   type: faron, dungeon
   Paths:
    - stage/D100/r9/l0/TBox/66
@@ -1250,7 +1250,7 @@ Lanayru Mining Facility - First West Room:
   type: lanayru, dungeon
   Paths:
    - stage/D300/r3/l0/TBox/66
-Lanayru Mining Facility - Map chest:
+Lanayru Mining Facility - Map Chest:
   Need: Can Access Lanayru Mining Facility & Hook Beetle & Gust Bellows & Practice Sword & Can Hit Crystal in LMF Map Room
   #You need to defeat the Beamos guarding the door to the map room, but you also need to be able to defeat the Armos, thus sword required
   #The Staldras don't need to be defeated and are surprisingly not very aggressive, letting you push the block relatively easily
@@ -1391,7 +1391,7 @@ Sandship - Map Chest:
   Need: Can Access Sandship & (Practice Sword | SS Small Key x2) & Bow
   # Getting the past inside the Sandship requires completing the Mast, even with early bow
   # The Practice Sword or two small keys are needed in order to be able to finish the Mast sequence and not be softlocked
-  original item: Sandship Map
+  original item: SS Map
   type: lanayru, dungeon
   Paths:
    - stage/D301/r3/l0/TBox/71
@@ -1623,13 +1623,13 @@ Fire Sanctuary - Din's Flame:
 
 Skykeep - Map Chest:
   Need: Can Access Skykeep
-  original item: Skykeep Map
+  original item: SK Map
   type: skyloft, dungeon
   Paths:
    - stage/D003_7/r0/l0/TBox/64
 Skykeep - Small Key Chest:
   Need: Can Access Skykeep & Gust Bellows & Whip & Bow & Clawshots & Practice Sword
-  original item: Skykeep Small Key
+  original item: SK Small Key
   type: skyloft, dungeon
   Paths:
    - stage/D003_6/r0/l0/TBox/65

@@ -10,7 +10,7 @@ from typing import DefaultDict
 import os
 
 from .item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS, SMALL_KEYS, BOSS_KEYS
-from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, SHOP_CHECKS, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
+from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, SHOP_CHECKS, MAP_CHECKS, SMALL_KEY_CHECKS, BOSS_KEY_CHECKS, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
 # TODO, path for logic files will probably be params
@@ -132,7 +132,8 @@ class Logic:
           self.all_fixed_consumable_items[i] = 'Rupoor'
     
     self.all_progress_items += DUNGEON_PROGRESS_ITEMS
-    self.all_nonprogress_items += DUNGEON_NONPROGRESS_ITEMS
+    if self.rando.options['map-mode'] != 'Removed':
+      self.all_nonprogress_items += DUNGEON_NONPROGRESS_ITEMS
     
     all_item_names = []
     all_item_names += self.all_progress_items
@@ -176,17 +177,35 @@ class Logic:
     self.dungeon_progress_items = DUNGEON_PROGRESS_ITEMS.copy()
     self.dungeon_nonprogress_items = DUNGEON_NONPROGRESS_ITEMS.copy()
 
+    small_key_mode = self.rando.options['small-key-mode']
+    boss_key_mode = self.rando.options['boss-key-mode']
+    map_mode = self.rando.options['map-mode']
     # remove small keys from the dungeon pool if small key sanity is enabled
-    if self.rando.options['small-key-mode'] == 'Anywhere':
+    if small_key_mode == 'Anywhere':
       self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in SMALL_KEYS]
+    elif small_key_mode == 'Vanilla':
+      self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in SMALL_KEYS]
+      for small_key_check in SMALL_KEY_CHECKS:
+        orig_item = self.item_locations[small_key_check]['original item']
+        self.set_prerandomization_item_location(small_key_check, orig_item)
+    elif small_key_mode == 'Lanayru Caves Key Only':
+      self.dungeon_progress_items.remove('LanayruCaves Small Key')
     # remove boss keys from the dungeon pool if boss key sanity is enabled
-    if self.rando.options['boss-key-mode'] == 'Anywhere':
+    if boss_key_mode == 'Anywhere':
       self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in BOSS_KEYS]
+    elif boss_key_mode == 'Vanilla':
+      self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in BOSS_KEYS]
+      for small_key_check in BOSS_KEY_CHECKS:
+        orig_item = self.item_locations[small_key_check]['original item']
+        self.set_prerandomization_item_location(small_key_check, orig_item)
     # remove maps from the dungeon pool if maps are shuffled
-    if self.rando.options['map-mode'] == 'Anywhere':
+    if map_mode in ['Anywhere', 'Removed']:
       self.dungeon_nonprogress_items = []
-
-    print(self.dungeon_progress_items)
+    elif map_mode == 'Vanilla':
+      self.dungeon_nonprogress_items = []
+      for small_key_check in MAP_CHECKS:
+        orig_item = self.item_locations[small_key_check]['original item']
+        self.set_prerandomization_item_location(small_key_check, orig_item)
 
     if self.rando.options['logic-mode'] == 'No Logic':
       for location in self.item_locations:
@@ -907,7 +926,7 @@ class Logic:
       self.add_owned_item(item_name)
 
     small_keys_to_place = []
-    if self.rando.options['small-key-mode'] != 'Anywhere':
+    if self.rando.options['small-key-mode'] not in ['Anywhere', 'Vanilla']:
       # Randomize small keys.
       small_keys_to_place = [
         item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
@@ -919,7 +938,7 @@ class Logic:
         self.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
 
     big_keys_to_place = []
-    if self.rando.options['boss-key-mode'] != 'Anywhere':
+    if self.rando.options['boss-key-mode']  not in ['Anywhere', 'Vanilla']:
       # Randomize big keys.
       big_keys_to_place = [
         item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
@@ -930,7 +949,7 @@ class Logic:
         self.place_dungeon_item(item_name)
         self.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
 
-    if self.rando.options['map-mode'] != 'Anywhere':
+    if self.rando.options['map-mode']  not in ['Anywhere', 'Vanilla', 'Removed']:
       # Randomize dungeon maps and compasses.
       other_dungeon_items_to_place = [
         item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)

@@ -280,9 +280,9 @@
   type: singlechoice
   bits: 3
   choices:
-#    - Removed
+    - Removed
 #    - Start With
-#    - Vanilla
+    - Vanilla
 #    - Own Dungeon - Restricted
     - Own Dungeon - Unrestricted
 #    - Overworld Only
@@ -297,9 +297,10 @@
   type: singlechoice
   bits: 3
   choices:
-#    - Vanilla
+    - Vanilla
     - Own Dungeon - Restricted
 #    - Own Dungeon - Unrestricted
+    - Lanayru Caves Key Only
 #    - Overworld Only
 #    - Any Dungeon
     - Anywhere
@@ -307,14 +308,14 @@
   help: Controls the placement of small keys. Vanilla means they will always be in their vanilla locations.
     In Skyview, the Digging Spot will not contain a key. Own Dungeon means the keys can only appear
     within their own dungeons. Restricted decreases the number of locations keys can appear in some
-    dungeons, depending on logic settings.
+    dungeons, depending on logic settings. Lanayru Caves Key only shuffles the Lanayru Caves Small Key.
   ui: option_small_key_mode
 - name: Boss Key Mode
   command: boss-key-mode
   type: singlechoice
   bits: 3
   choices:
-#    - Vanilla
+    - Vanilla
     - Own Dungeon
 #    - Overworld Only
 #    - Any Dungeon
