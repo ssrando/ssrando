@@ -53,7 +53,7 @@ class Logic:
 
     self.race_mode_banned_locations = []
     if self.rando.options['skip-skykeep'] and self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"] == 'Skykeep':
-      self.racemode_ban_location('Skyloft - Fledge\'s Crystals')
+      self.racemode_ban_location('Skyloft Academy - Fledge\'s Crystals')
     if self.rando.options['empty-unrequired-dungeons']:
       for location_name in self.item_locations:
         zone, _ = Logic.split_location_name_by_zone(location_name)
@@ -68,7 +68,7 @@ class Logic:
         self.racemode_ban_location('Sky - Lumpy Pumpkin Roof Goddess Chest')
         self.racemode_ban_location('Sealed Grounds - Gorko Goddess Wall Reward')
     
-    batreaux_location_re = re.compile(r'.*Batreaux ([0-9]+) .*')
+    batreaux_location_re = re.compile(r'.*Batreaux - ([0-9]+) .*')
 
     for location_name in self.item_locations:
       # ban batreaux locations in necessary

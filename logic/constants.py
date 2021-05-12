@@ -15,16 +15,16 @@ DUNGEON_NAMES = OrderedDict([
 DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict([v, k] for k, v in DUNGEON_NAMES.items())
 
 SHOP_CHECKS = [
-    "Skyloft - Beedle 50 Rupee Item",
-    "Skyloft - Beedle First 100 Rupee Item",
-    "Skyloft - Beedle Second 100 Rupee Item",
-    "Skyloft - Beedle Third 100 Rupee Item",
-    "Skyloft - Beedle 300 Rupee Item",
-    "Skyloft - Beedle 600 Rupee Item",
-    "Skyloft - Beedle 800 Rupee Item",
-    "Skyloft - Beedle 1000 Rupee Item",
-    "Skyloft - Beedle 1200 Rupee Item",
-    "Skyloft - Beedle 1600 Rupee Item",
+    "Beedle - 50 Rupee Item",
+    "Beedle - First 100 Rupee Item",
+    "Beedle - Second 100 Rupee Item",
+    "Beedle - Third 100 Rupee Item",
+    "Beedle - 300 Rupee Item",
+    "Beedle - 600 Rupee Item",
+    "Beedle - 800 Rupee Item",
+    "Beedle - 1000 Rupee Item",
+    "Beedle - 1200 Rupee Item",
+    "Beedle - 1600 Rupee Item",
 ]
 
 MAP_CHECKS = [
