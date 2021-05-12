@@ -159,35 +159,183 @@ Can Defeat Beamos:
 
 ### BiT Capabilities
 
-# Can Access Skyloft BiT:
-#   BiT
+Can Access Skyloft BiT:
+  BiT
 
-# Can Access Night-time Skyloft BiT:
-#   BiT & Nothing
-#   # Sleep in a bed, leave with an early-game file
+Can Access Night-time Skyloft BiT:
+  BiT & Nothing
+  # Sleep in a bed, leave with an early-game file
 
-# Can Access Sky BiT:
-#   Can Access Skyloft BiT & Nothing
-#   # No requirements, can be setup in Link's room at any time
+Can Access Sky BiT:
+  Can Access Skyloft BiT & Nothing
+  # No requirements, can be setup in Link's room at any time
 
-# Can Access Faron BiT:
-#   Can Access Sky BiT & Can Access Sealed Temple
-#   # Eldin pillar no longer plays CS
+Can Access Faron BiT:
+  Can Access Sky BiT & Can Access Sealed Temple
+  # Eldin pillar no longer plays CS
 
-# Can Access Most of Faron Woods BiT:
-#   Can Access Faron BiT & Can Access Most of Faron Woods
+Can Access Most of Faron Woods BiT:
+  Can Access Faron BiT & Can Access Most of Faron Woods
 
-# Can Access Deep Woods BiT:
-#   Can Access Most of Faron Woods BiT & Can Access Dungeon Entrance In Deep Woods
-#   # To knock down vine and beehive
+Can Access Deep Woods BiT:
+  Can Access Most of Faron Woods BiT & Can Access Dungeon Entrance In Deep Woods
+  # To knock down vine and beehive
 
-# Can Access Floria Waterfall BiT:
-#   Can Access Most of Faron Woods BiT & Can Access Floria Waterfall
+Can Access Floria Waterfall BiT:
+  Can Access Most of Faron Woods BiT & Can Access Floria Waterfall
 
-# Can Access Lake Floria BiT:
-#   Can Access Most of Faron Woods BiT & Can Access Lake Floria
-#   # The Yerbal route may be blocked
+Can Access Lake Floria BiT:
+  Can Access Most of Faron Woods BiT & Can Access Lake Floria
+  # The Yerbal route may be blocked
 
+
+Can RBM 0x80: Impossible
+Can RBM 0x40: Impossible
+Can RBM 0x20: Impossible
+Can RBM 0x10: Impossible
+Can RBM 0x08: Impossible
+Can RBM 0x04: Impossible
+Can RBM 0x02: Impossible
+Can RBM 0x01: Impossible
+Can RBM 1x80: Impossible
+Can RBM 1x40: Impossible
+Can RBM 1x20: Impossible
+Can RBM 1x10: Impossible
+Can RBM 1x08: Impossible
+Can RBM 1x04: Impossible
+Can RBM 1x02: Impossible
+Can RBM 1x01: Impossible
+Can RBM 2x80: Impossible
+Can RBM 2x40: Impossible
+Can RBM 2x20: Impossible
+Can RBM 2x10: Impossible
+Can RBM 2x08: Impossible
+Can RBM 2x04: Impossible
+Can RBM 2x02: Impossible
+Can RBM 2x01: Impossible
+Can RBM 3x80: Impossible
+Can RBM 3x40: Impossible
+Can RBM 3x20: Impossible
+Can RBM 3x10: Impossible
+Can RBM 3x08: Impossible
+Can RBM 3x04: Impossible
+Can RBM 3x02: Impossible
+Can RBM 3x01: Impossible
+Can RBM 4x80: Impossible
+Can RBM 4x40: Impossible
+Can RBM 4x20: Impossible
+Can RBM 4x10: Impossible
+Can RBM 4x08: Impossible
+Can RBM 4x04: Impossible
+Can RBM 4x02: Impossible
+Can RBM 4x01: Impossible
+Can RBM 5x80: Impossible
+Can RBM 5x40: Impossible
+Can RBM 5x20: Impossible
+Can RBM 5x10: Impossible
+Can RBM 5x08: Impossible
+Can RBM 5x04: Impossible
+Can RBM 5x02: Impossible
+Can RBM 5x01: Impossible
+Can RBM 6x80: Impossible
+Can RBM 6x40: Impossible
+Can RBM 6x20: Impossible
+Can RBM 6x10: Impossible
+Can RBM 6x08: Impossible
+Can RBM 6x04: Impossible
+Can RBM 6x02: Impossible
+Can RBM 6x01: Impossible
+Can RBM 7x80: Impossible
+Can RBM 7x40: Impossible
+Can RBM 7x20: Impossible
+Can RBM 7x10: Impossible
+Can RBM 7x08: Impossible
+Can RBM 7x04: Impossible
+Can RBM 7x02: Impossible
+Can RBM 7x01: Impossible
+Can RBM 8x80: Impossible
+Can RBM 8x40: Impossible
+Can RBM 8x20: Impossible
+Can RBM 8x10: Impossible
+Can RBM 8x08: Impossible
+Can RBM 8x04: Impossible
+Can RBM 8x02: Impossible
+Can RBM 8x01: Impossible
+Can RBM 9x80: Impossible
+Can RBM 9x40: Impossible
+Can RBM 9x20: Impossible
+Can RBM 9x10: Impossible
+Can RBM 9x08: Impossible
+Can RBM 9x04: Impossible
+Can RBM 9x02: Impossible
+Can RBM 9x01: Impossible
+Can RBM Ax80: Impossible
+Can RBM Ax40: Impossible
+Can RBM Ax20: Impossible
+Can RBM Ax10: Impossible
+Can RBM Ax08: Impossible
+Can RBM Ax04: Impossible
+Can RBM Ax02: Impossible
+Can RBM Ax01: Impossible
+Can RBM Bx80: Impossible
+Can RBM Bx40: Impossible
+Can RBM Bx20: Impossible
+Can RBM Bx10: Impossible
+Can RBM Bx08: Impossible
+Can RBM Bx04: Impossible
+Can RBM Bx02: Impossible
+Can RBM Bx01: Impossible
+Can RBM Cx80: Impossible
+Can RBM Cx40: Impossible
+Can RBM Cx20: Impossible
+Can RBM Cx10: Impossible
+Can RBM Cx08: Impossible
+Can RBM Cx04: Impossible
+Can RBM Cx02: Impossible
+Can RBM Cx01: Impossible
+Can RBM Dx80: Impossible
+Can RBM Dx40: Impossible
+Can RBM Dx20: Impossible
+Can RBM Dx10: Impossible
+Can RBM Dx08: Impossible
+Can RBM Dx04: Impossible
+Can RBM Dx02: Impossible
+Can RBM Dx01: Impossible
+Can RBM Ex80: Impossible
+Can RBM Ex40: Impossible
+Can RBM Ex20: Impossible
+Can RBM Ex10: Impossible
+Can RBM Ex08: Impossible
+Can RBM Ex04: Impossible
+Can RBM Ex02: Impossible
+Can RBM Ex01: Impossible
+Can RBM Fx80: Impossible
+Can RBM Fx40: Impossible
+Can RBM Fx20: Impossible
+Can RBM Fx10: Impossible
+Can RBM Fx08: Impossible
+Can RBM Fx04: Impossible
+Can RBM Fx02: Impossible
+Can RBM Fx01: Impossible
+
+Can BiTMagic 2x20:
+  Can Learn BotG | Can Access Dungeon Entrance In Deep Woods | Can Access Lake Floria |
+  Can Access Second Part of Eldin | (Can Access Lanayru & Can Activate Mines First Timeshift Stone) |
+  (Can Access Skyview & Can Hit Switch for Skyview Behind Bars) |
+  (Can Access Earth Temple & Can Get Past First ET Drawbridge) |
+  Can Reach Armos Fight in LMF Boss Key Room |
+  Can Watch Second Captured Mogma Liberation Cutscene |
+  Can Access Sky Keep  # | Can Heal Thunder Dragon | Can Access Flooded Faron  # LOL / Have blown up rock inside Flooded Great Tree
+  # Have played the harp tutorial (first part)
+  # Have opened the door to Skyview (Entrance)
+  # Have blown "middle rock near underwater statue revealing silver rupee"
+  # Have blown rock blocking digging spot in big slope
+  # Have talked to "robot near first timeshift stone" (I don't know present or past)
+  # Have hit Switch for Skyview - Behind Bars
+  # Have hit "high rope" in Earth Temple
+  # Have "hit crystal 1 in bk room" in LMF
+  # Have "First Trapped Mogma appear after learning about the secret bombable wall"
+  # Have the first iron bars in Sky Keep entrance room rise up (open the first chest)
 
 
 ### Skyloft
@@ -576,7 +724,8 @@ Sky - Northeast Island Cage Goddess Chest:
 ### Thunderhead
 
 Can Access Thunderhead:
-  Option "closed-thunderhead" Disabled | Ballad of the Goddess
+  Option "open-thunderhead" Is "Open" | Ballad of the Goddess |
+  (Can BiTMagic 2x20 & Early Thunderhead Trick)
   # May be options in the future
 
 Thunderhead - Levias:
@@ -656,8 +805,11 @@ Can Open GOT After Raising:
 Sealed Grounds - Inside Sealed Temple:
   Can Access Sealed Temple
 
-Sealed Grounds - Ballad of the Goddess:
+Can Learn BotG:
   Can Access Sealed Temple & Goddess Harp
+
+Sealed Grounds - Ballad of the Goddess:
+  Can Learn BotG
 
 Sealed Grounds - Gorko Goddess Wall Reward:
   Can Access Sealed Temple
@@ -1262,10 +1414,13 @@ Skyview - Beetle:
   # Bombs don't work to hit the switch
   # The fight requires sword, but is skipped in Skyview 2
 
-Skyview - Behind Bars in Hub Room:
-  Can Get to Skyview Second Part & (Beetle | Whip | (Slingshot & Skyview Slingshot Shot Trick))
-  # Does Whip always work ?
+Can Hit Switch for Skyview Behind Bars:
+  Beetle | (Slingshot & Skyview Slingshot Shot Trick)
   # Trick shot with slingshot works
+
+Skyview - Behind Bars in Hub Room:
+  Can Get to Skyview Second Part & (Can Hit Switch for Skyview Behind Bars | Whip)
+  # Does Whip always work ?
 
 Skyview - Behind Three Eyes:
   Can Get to Skyview Second Part & Beetle & Sword
@@ -1483,9 +1638,12 @@ Can Enter LMF Boss Key Room:
   (Can Escort LMF Minecart & Gust Bellows) | (LMF - Minecart Jump Trick & (Bomb Bag | Beetle))
   # Escort and wind switch, or minecart jump and activate timeshift stone
 
+Can Reach Armos Fight in LMF Boss Key Room:
+  Can Enter LMF Boss Key Room & Bomb Bag & Gust Bellows & (Sword | Distance Activator)
+  # "Bomb panels", uncover timeshift stone, something to hit it (not included), crystals
+
 Can Finish LMF Boss Key Room:
-  Can Enter LMF Boss Key Room & Bomb Bag & Gust Bellows & (Sword | Distance Activator) & Can Defeat Armos
-  # "Bomb panels", uncover timeshift stone, something to hit it (not included), crystals, armos
+  Can Reach Armos Fight in LMF Boss Key Room & Can Defeat Armos
 
 
 Lanayru Mining Facility - Boss Key:
@@ -1697,8 +1855,11 @@ Can Access Second Captured Mogma Room:
   Can Access FS Miniboss Room and Defeat Magmanos & Mogma Mitts & (Clawshots | Fire Sanctuary - Pillar Jump Trick)
   # Pillar Jump is not in logic. Note that if you fall without clawshots you're stuck
 
-Fire Sanctuary - Map Chest:
+Can Watch Second Captured Mogma Liberation Cutscene:
   Can Access Second Captured Mogma Room & Mogma Mitts & Sword
+
+Fire Sanctuary - Map Chest:
+  Can Watch Second Captured Mogma Liberation Cutscene
 
 Fire Sanctuary - Third Small Key Chest:
   Can Access Second Captured Mogma Room & Mogma Mitts & Sword & Bomb Bag #& (Map | Fire Sanctuary - No Bombable Wall Hint Trick)
