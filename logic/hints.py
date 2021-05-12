@@ -209,7 +209,7 @@ class Hints:
         for i in range(self.logic.rando.options['item-hints']):
             hinted_item = hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
-                if item == hinted_item:
+                if item == hinted_item and location not in item_hints:
                     item_hints.append(location)
                     hints_left -= 1
                     break
