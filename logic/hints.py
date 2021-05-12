@@ -143,7 +143,7 @@ class Hints:
         woth_hints_count = self.logic.rando.options['woth-hints']
         woth_hints = []
         if woth_hints_count > 0:  # avoid doing the additional woth calculations if it isn't necessary
-            woth_zones = []
+            woth_locations = {}
             for wothloc, item in self.logic.rando.woth_locations.items():
                 if self.logic.rando.options['small-key-mode'] not in ['Anywhere', 'Lanayru Caves Key Only']:
                     # don't hint small keys unless keysanity is on
@@ -159,15 +159,22 @@ class Hints:
                         continue
 
                 zone, specific_loc = Logic.split_location_name_by_zone(wothloc)
-                if zone not in woth_zones:  # we only need each zone to appear once
-                    woth_zones.append(zone)
-            self.logic.rando.rng.shuffle(woth_zones)  # shuffle the order of the zones so they can randomly be selected
+                if zone not in woth_locations.keys():  # we only need each zone to appear once
+                    woth_locations[zone] = [wothloc]
+                else:
+                    woth_locations[zone].append(wothloc)
+            woth_zones = []
+            for zone, locations in woth_locations.items():
+                woth_zones.append(zone)
             if len(woth_zones) < woth_hints_count:  # there are not enough woth zones to fill the number of hints
-                woth_hints_count = len(woth_zones)  # so to prevent odd behavior we cap it at the number of zones
+                woth_hints_count = len(woth_locations)  # so to prevent odd behavior we cap it at the number of zones
                 # this also means that the missing hint slots will be filled by random hints
+            self.logic.rando.rng.shuffle(woth_zones)
+            print(woth_locations)
             for i in range(woth_hints_count):
-                woth_hints.append(woth_zones.pop())
+                woth_hints.append(self.logic.rando.rng.choice(woth_locations[woth_zones[i]]))
                 hints_left -= 1
+            print(woth_hints)
 
         # create barren hints
         barren_hints_count = self.logic.rando.options['barren-hints']
@@ -252,7 +259,7 @@ class Hints:
         print(f"WotH hints: {len(woth_hints)}")
         for location in woth_hints:
             print(f"\t{location}")
-        hint_locations = location_hints + item_hints
+        hint_locations = location_hints + item_hints + woth_hints
         print(hint_locations)
         print(len(hint_locations))
         # make sure hint locations aren't locked by the item they hint
@@ -290,7 +297,7 @@ class Hints:
             loc_to_hint = self.logic.rando.rng.choice(unhinted_locations)
             unhinted_locations.remove(loc_to_hint)
             hint_to_location[gossipstone_name] = loc_to_hint
-        anywhere_hints = woth_hints + barren_hints
+        anywhere_hints = barren_hints + []
         self.logic.rando.rng.shuffle(anywhere_hints)
         for gossipstone_name in self.stonehint_definitions:
             loc_to_hint = hint_to_location[gossipstone_name]
@@ -315,8 +322,9 @@ class Hints:
                         item=self.logic.done_item_locations[loc_to_hint]
                     )
                 elif loc_to_hint in woth_hints:
+                    zone, specific_loc = Logic.split_location_name_by_zone(loc_to_hint)
                     self.hints[gossipstone_name] = WayOfTheHeroGossipStoneHint(
-                        zone=loc_to_hint
+                        zone=zone
                     )
                 else:
                     raise Exception(f"Unable to identify hint type for location {loc_to_hint}")
