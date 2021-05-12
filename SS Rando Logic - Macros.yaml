@@ -74,7 +74,7 @@ Can Access Thunderhead:
 
 Can Access Beedle's Shop:
     Slingshot | Beetle | Bow | Clawshots | Bomb Bag
-    
+
 Can Access Sealed Temple:
     Emerald Tablet
 
@@ -202,7 +202,7 @@ Can Access Skyview 2:
 
 Can Beat Skyview 2:
     Can Access Skyview 2 & Can Beat Skyview
-                                                                                                                                
+
 # Can Get Sacred Water:
 #     Can Beat Skyview 2 & Bottle
 
@@ -256,94 +256,94 @@ Can Open GOT After Raising:
 Can Access Dungeon Entrance On Skyloft:
     Stone of Trials & Clawshots
 
-Can Beat Skykeep:
-    Can Access Skykeep & Clawshots & SK Small Key x1 & Bow & Gust Bellows & Whip & Practice Sword
+Can Beat Sky Keep:
+    Can Access Sky Keep & Clawshots & SK Small Key x1 & Bow & Gust Bellows & Whip & Practice Sword
 
 Can Reach and Defeat Demise:
-    Can Access Past & (Can Beat Skykeep | Option "skip-skykeep" Enabled)
- 
+    Can Access Past & (Can Beat Sky Keep | Option "skip-skykeep" Enabled)
+
 Initial Goddess Cube:
     Can Access Deep Woods & Goddess Sword
- 
+
 Goddess Cube on West Great Tree near exit:
     Can Access Most of Faron Woods & (Clawshots | (Gust Bellows & Water Scale)) & Goddess Sword
     #bokoblin luring not in logic
- 
+
 Goddess Cube on East Great Tree with Rope:
     Can Access Most of Faron Woods & (Clawshots | (Gust Bellows & Water Scale)) & Goddess Sword
- 
+
 Goddess Cube on East Great Tree with Clawshot Target:
     Can Access Most of Faron Woods & (Clawshots | (Gust Bellows & Water Scale)) & Goddess Sword
- 
+
 Goddess Cube in Deep Woods:
     Can Access Deep Woods & Goddess Sword
- 
+
 Goddess Cube on top of Skyview:
     Can Access Deep Woods & Clawshots & Goddess Sword
- 
+
 Goddess Cube in Skyview Spring:
     Can Beat Skyview & Goddess Sword
- 
+
 Goddess Cube in Lake Floria:
     Can Access Lake Floria & Goddess Sword
- 
+
 Goddess Cube in Floria Waterfall:
     Can Access Lake Floria & Clawshots & Goddess Sword
- 
+
 Goddess Cube at Eldin Entrance:
     Can Access Eldin & Goddess Sword
- 
+
 Goddess Cube near Mogma Turf Entrance:
     Can Access Eldin & Goddess Sword
- 
+
 Goddess Cube in Mogma Turf:
     Can Access Eldin & Goddess Sword
- 
+
 Goddess Cube West of Temple Entrance:
     Can Access Second Part of Eldin & Digging Mitts & Goddess Sword
- 
+
 Goddess Cube East of Temple Entrance:
     Can Access Second Part of Eldin & Goddess Sword
- 
+
 Goddess Cube in Eldin Slide:
     Can Access Second Part of Eldin & Goddess Sword
- 
+
 Goddess Cube inside Volcano Summit:
     Can Access Volcano Summit & ((Goddess Sword & Option "hero-mode" Enabled) | True Master Sword) #hero mode allows getting this early
- 
+
 Goddess Cube in Summit Waterfall:
     Can Access Volcano Summit & Goddess Sword
- 
+
 Goddess Cube near FS Entrance:
     Can Access Volcano Summit & Bottle & Clawshots & Goddess Sword
- 
+
 Goddess Cube at Lanayru Mine Entrance:
     Can Access Lanayru & Goddess Sword
- 
+
 Goddess Cube in Sand Oasis:
     Can Access Second Part of Lanayru & Goddess Sword
- 
+
 Goddess Cube at ride in ToT area:
     Can Access Second Part of Lanayru & Hook Beetle & Goddess Sword
- 
+
 Goddess Cube in secret passageway in Desert:
     Can Access Second Part of Lanayru & Bomb Bag & Clawshots & Goddess Sword
     #the tough beetle can be used instead of bombs
- 
+
 Goddess Cube near Hook Beetle Fight:
     Can Access Lanayru & (Clawshots | Bomb Bag | Hook Beetle) & ((Goddess Sword & (Option "hero-mode" Enabled | Clawshots)) | True Master Sword)
     #On hero mode you can skyward strike this one early
- 
+
 Goddess Cube in Ancient Harbour:
     Can Access Sand Sea & Goddess Sword
- 
+
 Goddess Cube in Skipper's Retreat:
     Can Access Sand Sea & (Bomb Bag | Hook Beetle | Whip) & Goddess Sword
- 
+
 Goddess Cube in Pirate Stronghold:
     Can Access Sand Sea & Can Defeat Armos & Can Defeat Beamos & Goddess Sword
 #Technically this is possible without beating a Beamos but it's hard
- 
+
 #Goddess Cube in Lanayru Gorge:
 #    Can Access Lanayru Gorge & Clawshots & Hook Beetle & Whip & Goddess Sword
 

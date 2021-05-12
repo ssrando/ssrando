@@ -343,7 +343,7 @@ nop ; do not need spiral charge to spawn
 .org 0x458
 li r3, 0 ; load a null pointer for the skyloft exit, so the other custom code can take care of it
 
-; this patch branches to the custom trigger_exit_one function, when a scenechange is needed to outside of skykeep
+; this patch branches to the custom trigger_exit_one function, when a scenechange is needed to outside of sky keep
 .org 0x2EC ; branch, if link doesn't touch the trigger
 beq function_end
 
@@ -351,7 +351,7 @@ beq function_end
 beq trigger_exit_one_lbl
 
 .org 0x33C
-b function_end ; after triggering the normal skykeep entrance mechanic, do not trigger the exit to skyloft
+b function_end ; after triggering the normal sky keep entrance mechanic, do not trigger the exit to skyloft
 .global trigger_exit_one_lbl
 trigger_exit_one_lbl:
 bl trigger_exit_one ; if the returned ptr from getNextStageAndEntrance was null, it branches here

@@ -666,7 +666,7 @@
         <item>
          <widget class="QCheckBox" name="option_skip_skykeep">
           <property name="text">
-           <string>Skip Skykeep</string>
+           <string>Skip Sky Keep</string>
           </property>
          </widget>
         </item>

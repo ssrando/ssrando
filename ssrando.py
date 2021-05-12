@@ -27,7 +27,7 @@ if IS_RUNNING_FROM_SOURCE:
   VERSION = (RANDO_ROOT_PATH / "version.txt").read_text().strip()
   VERSION_WITHOUT_COMMIT = VERSION
   version_suffix = "_NOGIT"
-  
+
   git_commit_head_file = os.path.join(".git", "HEAD")
   if os.path.isfile(git_commit_head_file):
     with open(git_commit_head_file, "r") as f:
@@ -43,7 +43,7 @@ if IS_RUNNING_FROM_SOURCE:
     elif re.search(r"^[0-9a-f]{40}$", head_file_contents):
       # Detached head, commit hash directly in the HEAD file
       version_suffix = "_" + head_file_contents[:7]
-  
+
   VERSION += version_suffix
 else:
   VERSION = (RANDO_ROOT_PATH / "version-with-git.txt").read_text().strip()
@@ -79,7 +79,7 @@ class Randomizer:
     if self.seed == -1:
       self.seed = random.randint(0,1000000)
     self.options.set_option('seed', self.seed)
-    
+
     self.randomizer_hash = self._get_rando_hash()
     self.rng = random.Random()
     self.rng.seed(self.seed)
@@ -87,15 +87,15 @@ class Randomizer:
       self.rng.randint(0,100)
     dungeons = ["Skyview", "Earth Temple", "Lanayru Mining Facility", "Ancient Cistern", "Sandship", "Fire Sanctuary"]
     if self.options['randomize-entrances'] == 'None':
-      dungeons.append('Skykeep')
+      dungeons.append('Sky Keep')
       dungeons.reverse()
     else:
       if self.options['randomize-entrances'] == 'Dungeons':
         self.rng.shuffle(dungeons)
-        dungeons.append('Skykeep')
+        dungeons.append('Sky Keep')
         dungeons.reverse()
       else:
-        dungeons.append('Skykeep')
+        dungeons.append('Sky Keep')
         self.rng.shuffle(dungeons)
     self.entrance_connections = OrderedDict([
       ("Dungeon Entrance In Deep Woods", dungeons.pop()),
@@ -174,7 +174,7 @@ class Randomizer:
       return 2
     else:
       return 2 + GAMEPATCH_TOTAL_STEP_COUNT
-  
+
   def set_progress_callback(self, progress_callback: Callable[[str],None]):
     self.progress_callback = progress_callback
 
@@ -215,7 +215,7 @@ class Randomizer:
 
       return
 
-  
+
     if len(self.starting_items) > 0:
       spoiler_log += "\n\nStarting items:\n  "
       spoiler_log += "\n  ".join(self.starting_items)
@@ -233,7 +233,7 @@ class Randomizer:
       spoiler_log += "  %-53s %s\n" % (wothloc+":", item)
 
     spoiler_log += "\n\n"
-    
+
     # Write progression spheres.
     spoiler_log += "Playthrough:\n"
     progression_spheres = self.calculate_playthrough_progression_spheres()
@@ -245,14 +245,14 @@ class Randomizer:
       progression_sphere = [loc for loc in progression_sphere
         if loc == 'Past - Demise' or self.logic.done_item_locations[loc] != 'Gratitude Crystal']
       spoiler_log += "%d:\n" % (i+1)
-      
+
       for zone_name, locations_in_zone in zones.items():
         if not any(loc for (loc, _) in locations_in_zone if loc in progression_sphere):
           # No locations in this zone are used in this sphere.
           continue
-        
+
         spoiler_log += "  %s:\n" % zone_name
-        
+
         for (location_name, specific_location_name) in locations_in_zone:
           if location_name in progression_sphere:
             if location_name == "Past - Demise":
@@ -260,40 +260,40 @@ class Randomizer:
             else:
               item_name = self.logic.done_item_locations[location_name]
             spoiler_log += format_string % (specific_location_name + ":", item_name)
-      
+
     spoiler_log += "\n\n\n"
-    
+
     # Write item locations.
     spoiler_log += "All item locations:\n"
     zones, max_location_name_length = self.get_zones_and_max_location_name_len(self.logic.done_item_locations)
     format_string = "    %-" + str(max_location_name_length+1) + "s %s\n"
     for zone_name, locations_in_zone in zones.items():
       spoiler_log += zone_name + ":\n"
-      
+
       for (location_name, specific_location_name) in locations_in_zone:
         item_name = self.logic.done_item_locations[location_name]
         # skip single gratitude crystals, since they are forced vanilla
         if item_name == 'Gratitude Crystal':
           continue
         spoiler_log += format_string % (specific_location_name + ":", item_name)
-    
-    
+
+
     spoiler_log += "\n\n\n"
-    
+
     # Write dungeon/secret cave entrances.
     spoiler_log += "Entrances:\n"
     for entrance_name, dungeon_or_cave_name in self.entrance_connections.items():
       spoiler_log += "  %-48s %s\n" % (entrance_name+":", dungeon_or_cave_name)
-    
+
     spoiler_log += "\n\n\n"
 
     # Write hints
     spoiler_log += "Hints:\n"
     for hintlocation, hint in self.hints.hints.items():
       spoiler_log += "  %-53s %s\n" % (hintlocation+":", hint.to_spoiler_log_text())
-    
+
     spoiler_log += "\n\n\n"
-    
+
     spoiler_log_output_path = self.options['output-folder'] / ("SS Random %s - Spoiler Log.txt" % self.seed)
     with spoiler_log_output_path.open('w') as f:
       f.write(spoiler_log)
@@ -316,7 +316,7 @@ class Randomizer:
     spoiler_log['item-locations'] = self.logic.done_item_locations
     spoiler_log['hints'] = dict(map(lambda kv: (kv[0], kv[1].to_spoiler_log_text()), self.hints.hints.items()))
     spoiler_log['entrances'] = self.entrance_connections
-    
+
     spoiler_log_output_path = self.options['output-folder'] / ("SS Random %s - Spoiler Log.json" % self.seed)
     with spoiler_log_output_path.open('w') as f:
       json.dump(spoiler_log, f, indent=2)
@@ -339,15 +339,15 @@ class Randomizer:
 
   def get_log_header(self):
     header = ""
-    
+
     header += "Skyward Sword Randomizer Version %s\n" % VERSION
-    
+
     header += "Permalink: %s\n" % self.options.get_permalink()
-    
+
     header += "Seed: %s\n" % self.seed
 
     header += "Hash : %s\n" % self.randomizer_hash
-    
+
     header += "Options selected:\n"
     non_disabled_options = [
       name for name in self.options.options
@@ -362,18 +362,18 @@ class Randomizer:
         value = self.options[option_name]
         option_strings.append("  %s: %s" % (option_name, value))
     header += "\n".join(option_strings)
-    
+
     return header
 
   def calculate_playthrough_progression_spheres(self):
     progression_spheres = []
-    
+
     logic = Logic(self)
     previously_accessible_locations = []
     game_beatable = False
     while logic.unplaced_progress_items:
       progress_items_in_this_sphere = OrderedDict()
-      
+
       accessible_locations = logic.get_accessible_remaining_locations()
       assert len(accessible_locations) >= len(previously_accessible_locations)
       locations_in_this_sphere = [
@@ -382,7 +382,7 @@ class Randomizer:
       ]
       if not locations_in_this_sphere:
         raise Exception("Failed to calculate progression spheres")
-      
+
       if not self.options.get("keysanity"):
         # If the player gained access to any small keys, we need to give them the keys without counting that as a new sphere.
         newly_accessible_predetermined_item_locations = [
@@ -397,32 +397,32 @@ class Randomizer:
           for small_key_location_name in newly_accessible_small_key_locations:
             item_name = self.logic.prerandomization_item_locations[small_key_location_name]
             assert item_name.endswith(" Small Key")
-            
+
             logic.add_owned_item(item_name)
-          
+
           previously_accessible_locations += newly_accessible_small_key_locations
           continue # Redo this loop iteration with the small key locations no longer being considered 'remaining'.
-      
-      
+
+
       for location_name in locations_in_this_sphere:
         item_name = self.logic.done_item_locations[location_name]
         if item_name in logic.all_progress_items:
           progress_items_in_this_sphere[location_name] = item_name
-      
+
       if not game_beatable:
         game_beatable = logic.check_requirement_met("Can Reach and Defeat Demise")
         if game_beatable:
           progress_items_in_this_sphere["Past - Demise"] = "Defeat Demise"
-      
+
       progression_spheres.append(progress_items_in_this_sphere)
-      
+
       for location_name, item_name in progress_items_in_this_sphere.items():
         if item_name == "Defeat Demise":
           continue
         logic.add_owned_item(item_name)
-      
+
       previously_accessible_locations = accessible_locations
-    
+
     if not game_beatable:
       # If the game wasn't already beatable on a previous progression sphere but it is now we add one final one just for this.
       game_beatable = logic.check_requirement_met("Can Reach and Defeat Demise")
@@ -431,20 +431,20 @@ class Randomizer:
           ("Past - Demise", "Defeat Demise"),
         ])
         progression_spheres.append(final_progression_sphere)
-    
+
     return progression_spheres
-  
+
   def get_zones_and_max_location_name_len(self, locations):
     zones = OrderedDict()
     max_location_name_length = 0
     for location_name in locations:
       zone_name, specific_location_name = self.logic.split_location_name_by_zone(location_name)
-      
+
       if zone_name not in zones:
         zones[zone_name] = []
       zones[zone_name].append((location_name, specific_location_name))
-      
+
       if len(specific_location_name) > max_location_name_length:
         max_location_name_length = len(specific_location_name)
-    
+
     return (zones, max_location_name_length)

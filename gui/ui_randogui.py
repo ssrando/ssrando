@@ -1016,7 +1016,7 @@ class Ui_MainWindow(object):
         self.label_for_option_got_sword_requirement.setText(QCoreApplication.translate("MainWindow", u"Sword Requirement", None))
         self.label_for_option_got_dungeon_requirement.setText(QCoreApplication.translate("MainWindow", u"Dungeon Requirement", None))
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
-        self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Skykeep", None))
+        self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Sky Keep", None))
         self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"Dungeons", None))
         self.label_for_option_map_mode.setText(QCoreApplication.translate("MainWindow", u"Map Mode", None))
         self.label_for_option_small_key_mode.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))

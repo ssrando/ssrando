@@ -1392,30 +1392,30 @@ Fire Sanctuary - Din's Flame:
 #    - stage/F221.json
 
 
-Skykeep - Map Chest:
+Sky Keep - Map Chest:
   original item: SK Map
   type: skyloft, dungeon
   Paths:
     - stage/D003_7/r0/l0/TBox/64
-Skykeep - Small Key Chest:
+Sky Keep - Small Key Chest:
   original item: SK Small Key
   type: skyloft, dungeon
   Paths:
     - stage/D003_6/r0/l0/TBox/65
-#Skykeep - Triforce of Wisdom Event
-#   Need: Can Access Skykeep & Gust Bellows & Whip & Bow & Clawshots
+#Sky Keep - Triforce of Wisdom Event
+#   Need: Can Access Sky Keep & Gust Bellows & Whip & Bow & Clawshots
 #   original item: Triforce of Wisdom
 #   type: skyloft, dungeon
 #   Paths:
 #    - stage/D003_8.json
-#Skykeep - Triforce of Power Event
-#   Need: Can Access Skykeep & Gust Bellows & Whip & Bow & Clawshots
+#Sky Keep - Triforce of Power Event
+#   Need: Can Access Sky Keep & Gust Bellows & Whip & Bow & Clawshots
 #   original item: Triforce of Power
 #   type: skyloft, dungeon
 #   Paths:
 #    - stage/D003_8.json
-#Skykeep - Triforce of Courage Event
-#   Need: Can Access Skykeep & Gust Bellows & Whip & Bow & Clawshots & Skykeep Small Key x1
+#Sky Keep - Triforce of Courage Event
+#   Need: Can Access Sky Keep & Gust Bellows & Whip & Bow & Clawshots & SkyKeep Small Key x1
 #   original item: Triforce of Courage
 #   type: skyloft, dungeon
 #   Paths:
