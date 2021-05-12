@@ -1,4 +1,4 @@
-Skyloft - Fledge:
+Skyloft Academy - Fledge:
   Need: Nothing
   original item: Progressive Pouch
   type: skyloft, free gift
@@ -6,7 +6,7 @@ Skyloft - Fledge:
     - event/114-Friend/16
     - oarc/F001r/l3
     - oarc/F001r/l4
-Skyloft - Owlan's Shield:
+Skyloft Academy - Owlan's Shield:
   Need: Nothing
   original item: Wooden Shield
   type: skyloft, free gift
@@ -14,7 +14,7 @@ Skyloft - Owlan's Shield:
    - event/108-ShinkanA/169
    - oarc/F000/l4
    - oarc/F000/l6
-Skyloft - Practice Sword:
+Skyloft Academy - Practice Sword:
   Need: Nothing
   original item: Progressive Sword
   type: skyloft, miscellaneous
@@ -39,13 +39,13 @@ Skyloft - Waterfall Cave Second Chest:
   type: skyloft, miscellaneous
   Paths:
    - stage/D000/r0/l0/TBox/68
-Skyloft - Small Chest on Cliffs Near Goddess Statue:
+Skyloft Academy - Small Chest on Cliffs Near Goddess Statue:
   Need: Nothing
   original item: Red Rupee
   type: skyloft, miscellaneous
   Paths:
    - stage/F000/r0/l0/TBox/71
-Skyloft - Goddess Sword:
+Skyloft Academy - Goddess Sword:
   Need: Nothing
   original item: Progressive Sword
   type: skyloft, miscellaneous
@@ -87,7 +87,7 @@ Skyloft - Waterfall Goddess Chest:
   type: skyloft, goddess, sand sea goddess, mini dungeon
   Paths:
    - stage/F000/r0/l0/TBox/80
-Skyloft - Pumpkin Archery - 600 Points:
+Skyloft Academy - Pumpkin Archery - 600 Points:
   Need: Bow
   original item: Heart Piece
   type: skyloft, minigame
@@ -95,7 +95,7 @@ Skyloft - Pumpkin Archery - 600 Points:
    - event/114-Friend/99
    - oarc/F000/l4
    - oarc/F000/l6
-Skyloft - Zelda Heartpiece:
+Skyloft Academy - Zelda Heartpiece:
   Need: Clawshots
   original item: Heart Piece
   type: skyloft, miscellaneous
@@ -116,7 +116,7 @@ Skyloft - Parrow's Bottle:
     - event/115-Town2/733 # Bottle
     - oarc/F000/l0
     - oarc/F005r/l0
-Skyloft - Cawlin's Letter:
+Skyloft Academy - Cawlin's Letter:
   Need: Goddess Harp
   original item: Cawlin's Letter
   type: skyloft, short
@@ -148,21 +148,21 @@ Skyloft - Parrow's Crystals:
     - event/115-Town2/814
     - oarc/F000/l0
     - oarc/F005r/l0
-Skyloft - Fledge's Crystals:
+Skyloft Academy - Fledge's Crystals:
   Need: Can Beat Dungeon Entrance In Lanayru Desert & Bottle # LMF only for Potion right now, in entrance rando this means beating the dungeon that is inside LMF
   original item: 5 Gratitude Crystals
   type: skyloft, lanayru, short, crystal quest, dungeon
   Paths:
     - event/115-Town2/325
     - oarc/F001r/l0
-Skyloft - Baby Crystals:
+Skyloft Village - Baby Crystals:
   Need: Baby Rattle
   original item: 5 Gratitude Crystals
   type: skyloft, fetch, crystal quest
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
-Skyloft - Ghost/Pipit's Crystals:
+Skyloft Academy - Ghost/Pipit's Crystals:
   Need: Cawlin's Letter
   original item: 5 Gratitude Crystals
   type: skyloft, fetch, crystal quest
@@ -170,21 +170,21 @@ Skyloft - Ghost/Pipit's Crystals:
     - event/115-Town2/522
     - event/115-Town2/641
     - oarc/F001r/l0
-Skyloft - Sparrot's Crystals:
+Skyloft Village - Sparrot's Crystals:
   Need: Can Access Second Part of Eldin & Clawshots
   original item: 5 Gratitude Crystals
   type: skyloft, eldin, long, scrapper, crystal quest
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
-Skyloft - Cleaning Crystals:
+Skyloft Village - Cleaning Crystals:
   Need: Gust Bellows
   original item: 5 Gratitude Crystals
   type: skyloft, short, crystal quest
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
-Skyloft - Owlan's Crystals:
+Skyloft Academy - Owlan's Crystals:
   Need: Can Access Most of Faron Woods & Bomb Bag
   original item: 5 Gratitude Crystals
   type: skyloft, faron, long, scrapper, crystal quest, combat
@@ -193,62 +193,62 @@ Skyloft - Owlan's Crystals:
     - oarc/F001r/l0
 
 #  Batreaux Rewards
-Skyloft - Batreaux 5 Crystals:
+Batreaux - 5 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & (5 Gratitude Crystals | Gratitude Crystal x5) # since 5 packs are randomized, it's possible to get crystals without being able to meet batreaux
   original item: Progressive Wallet
   type: skyloft
   Paths:
     - event/121-AkumaKun/21
     - oarc/F012r/l0
-Skyloft - Batreaux 10 Crystals:
+Batreaux - 10 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 10 Gratitude Crystals
   original item: Heart Piece
   type: skyloft
   Paths:
     - event/121-AkumaKun/42
     - oarc/F012r/l0
-Skyloft - Batreaux 30 Crystals:
+Batreaux -  30 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 30 Gratitude Crystals # 30 gratitude Crystals
   original item: Progressive Wallet
   type: skyloft
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
-Skyloft - Batreaux 30 Crystals Chest:
+Batreaux - 30 Crystals Chest:
   Need: Can Open Batreaux Shed & 30 Gratitude Crystals # 30 gratitude Crystals
   original item: Cursed Medal
   type: skyloft
   Paths:
     - stage/F012r/r0/l0/TBox/69
-Skyloft - Batreaux 40 Crystals:
+Batreaux - 40 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 40 Gratitude Crystals # 40 gratitude Crystals
   original item: Gold Rupee
   type: skyloft
   Paths:
     - event/121-AkumaKun/49
     - oarc/F012r/l0
-Skyloft - Batreaux 50 Crystals:
+Batreaux - 50 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 50 Gratitude Crystals # 50 gratitude Crystals
   original item: Progressive Wallet
   type: skyloft
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
-Skyloft - Batreaux 70 Crystals:
+Batreaux - 70 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 70 Gratitude Crystals # 70 gratitude Crystals
   original item: Gold Rupee
   type: skyloft
   Paths:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
-Skyloft - Batreaux 70 Crystals Second Reward:
+Batreaux - 70 Crystals Second Reward:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 70 Gratitude Crystals # 70 gratitude Crystals
   original item: Gold Rupee
   type: skyloft
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
-Skyloft - Batreaux 80 Crystals:
+Batreaux - 80 Crystals:
   Need: Can Open Batreaux Shed & Can Get Gratitude Crystals & 80 Gratitude Crystals # 80 gratitude Crystals
   original item: Progressive Wallet
   type: skyloft
@@ -256,61 +256,61 @@ Skyloft - Batreaux 80 Crystals:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
 
-Skyloft - Beedle 50 Rupee Item:
+Beedle - 50 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 50 Rupees
   original item: Bug Net
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/25
-Skyloft - Beedle First 100 Rupee Item:
+Beedle - First 100 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 100 Rupees
   original item: Extra Wallet
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/24
-Skyloft - Beedle Second 100 Rupee Item:
+Beedle - Second 100 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 100 Rupees
   original item: Extra Wallet
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/17
-Skyloft - Beedle Third 100 Rupee Item: # to make not too much farming at the start necessary, the third item is only in logic with some rupee farming method
+Beedle - Third 100 Rupee Item: # to make not too much farming at the start necessary, the third item is only in logic with some rupee farming method
   Need: Can Access Beedle's Shop & Can Afford 100 Rupees & Can Medium Rupee Farm
   original item: Extra Wallet
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/18
-Skyloft - Beedle 300 Rupee Item:
+Beedle - 300 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 300 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
   original item: Progressive Pouch
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/20
-Skyloft - Beedle 600 Rupee Item:
+Beedle - 600 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 600 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
   original item: Progressive Pouch
   type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/21
-Skyloft - Beedle 800 Rupee Item:
+Beedle - 800 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 800 Rupees
   original item: Life Medal
   type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/26
-Skyloft - Beedle 1000 Rupee Item:
+Beedle - 1000 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 1000 Rupees
   original item: Bug Medal
   type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/27
-Skyloft - Beedle 1200 Rupee Item:
+Beedle - 1200 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 1200 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
   original item: Progressive Pouch
   type: skyloft, beedle, expensive
   Paths:
     - ShpSmpl/22
-Skyloft - Beedle 1600 Rupee Item:
+Beedle - 1600 Rupee Item:
   Need: Can Access Beedle's Shop & Can Afford 1600 Rupees
   original item: Heart Piece
   type: skyloft, beedle, expensive
