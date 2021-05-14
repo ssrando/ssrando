@@ -343,8 +343,11 @@
   command: enabled-tricks
   type: multichoice
   choices:
+    - BiT
     - Upgrade Hook Beetle
+    - Bed Trick
   # Skyloft / Sky
+    - Karane Clip
     - Waterfall Cave Jump
     - Baby Rattle from Beedle's Shop
     # - Skyloft Trial RBW
@@ -378,6 +381,7 @@
     - Skipper's Retreat Fast Clawshots
     # - Sand Sea Skip
   # Skyview
+    - Skyview - Spider Roll
     - Skyview Digging Spot without Scale
     - Skyview Slingshot Shot
     # - Skyview - BiTwarp
@@ -389,6 +393,7 @@
   # Lanayru Mining Facility
     - LMF - Whip First Room Switch
     - LMF - Key-locked Room Bomb Throw
+    - LMF - Keylocked Slingshot Trickshot
     - LMF - Minecart Jump
     # - LMF - West Wing Skip BiTwarp
     # - LMF - Gust Bellows Room Box RBM
@@ -397,9 +402,12 @@
     - LMF - Molderach without Gust Bellows
   # Ancient Cistern
     - Ancient Cistern - Cistern Clip
+    - Ancient Cistern - Swordless Cistern Clip
+    - Ancient Cistern - Lilypad Skip
     - Ancient Cistern - Lever Jump
     - Ancient Cistern - Map Chest Jump
     - Ancient Cistern - Cistern Whip Room Clip
+    - Ancient Cistern - Basement Highflip
   # Sandship
     - Sandship - No Combination Hint
     - Sandship - Itemless Spume Skip
@@ -412,6 +420,9 @@
     # - Fire Sanctuary - Plats Chest RBM
     # - Fire Sanctuary - Boss Key without Mitts
     # - Fire Sanctuary - Overworld Statue RBM
+  # Sky Keep
+    - Sky Keep - Shooting LMF Bow Switches in Present
+    - Sky Keep - FS Room Clawshot Vine Clip
   default: []
   help: Enable specific tricks to be considered in logic
   ui: enabled_tricks
