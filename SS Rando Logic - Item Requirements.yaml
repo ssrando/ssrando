@@ -187,8 +187,12 @@ Can Access Most of Faron Woods BiT:
   Can Access Faron BiT & Can Access Most of Faron Woods
 
 Can Access Deep Woods BiT:
-  Can Access Most of Faron Woods BiT & Can Access Dungeon Entrance In Deep Woods
-  # To knock down vine and beehive
+  Can Access Most of Faron Woods BiT & (Can Access Deep Woods | Can Set Scene Flag 0x04)
+  # Scene Flag 0x04 is "Vine to Deep Woods is down"
+
+Can Get Past Deep Woods Bee Hive BiT:
+  Can Access Deep Woods BiT & (Can Get Past Deep Woods Bee Hive | Can Set Scene Flag 2x02)
+  # Scene Flag 2x02 is "Push Down Highest Log in Deep Woods"
 
 Can Access Floria Waterfall BiT:
   Can Access Most of Faron Woods BiT & Can Access Floria Waterfall
@@ -346,18 +350,20 @@ Can RBM Fx01: Impossible
 
 
 Can Set Scene Flag 2x20:
-  Can Learn BotG | Can Get Past Deep Woods Bee Hive | Can Access Lake Floria |
-  Can Access Second Part of Eldin | (Can Access Lanayru & Can Activate Mines First Timeshift Stone) |
+  Can Learn BotG |
+  (Can Get Past Deep Woods Bee Hive & Distance Activator) |
+  Can Access Lake Floria | Can Access Second Part of Eldin |
+  (Can Access Lanayru & Can Activate Mines First Timeshift Stone) |
   (Can Access Skyview & Can Hit Switch for Skyview Behind Bars) |
-  (Can Access Earth Temple & Can Get Past First ET Drawbridge) |
+  (Can Access Earth Temple & Can Lower First ET Drawbridge) |
   Can Reach Armos Fight in LMF Boss Key Room |
   Can Watch Second Captured Mogma Liberation Cutscene |
-  Can Access Sky Keep  # | Can Heal Thunder Dragon | Can Access Flooded Faron  # LOL / Have blown up rock inside Flooded Great Tree
+  Can Access Sky Keep  # | Can Heal Thunder Dragon | Can Access Flooded Faron  # Have blown up rock inside Flooded Great Tree
   # Have played the harp tutorial (first part)
   # Have opened the door to Skyview (Entrance)
   # Have blown "middle rock near underwater statue revealing silver rupee"
   # Have blown rock blocking digging spot in big slope
-  # Have talked to "robot near first timeshift stone" (I don't know present or past)
+  # Have talked to "robot near first timeshift stone" (I don't know if present or past)
   # Have hit Switch for Skyview - Behind Bars
   # Have hit "high rope" in Earth Temple
   # Have "hit crystal 1 in bk room" in LMF
@@ -954,8 +960,9 @@ Can Access Deep Woods:
   # Scene Flag 0x04 is "Vine to Deep Woods is down"
 
 Can Get Past Deep Woods Bee Hive:
-  (Can Access Deep Woods & (Distance Activator | Goddess Sword | Bomb Bag)) |
-  Can Access Deep Woods BiT  # RBW from Lower Academy
+  (Can Access Deep Woods & (Distance Activator | Goddess Sword | Bomb Bag | Can RBM 2x02)) |
+  Can Access Deep Woods BiT  # RBW from Lower Academy, exit dungeon
+  # Scene Flag 2x02 is "Push Down Highest Log in Deep Woods"
   # Bomb Bag ?
 
 Can Access Dungeon Entrance In Deep Woods:
@@ -964,6 +971,7 @@ Can Access Dungeon Entrance In Deep Woods:
   Can Access Deep Woods BiT
 
   # Activate the crystal, BiTWarp past it or RBW past it (LA statue)
+  # A RBM on 2x10 should work, but it is currently impossible
 
 
 Faron Woods - Deep Woods Chest:
@@ -1008,7 +1016,12 @@ Can Access Lake Floria:
   # You need to charge a skyward strike to open the door to Lake Floria
 
 Can Access Floria Waterfall:
-  Can Access Lake Floria | (Can Access Most of Faron Woods & Early Lake Floria - Fence Hop Trick)
+  Can Access Lake Floria |
+  (Can Access Most of Faron Woods & (
+    Early Lake Floria - Fence Hop Trick |
+    Can RBM 3x40
+  ))
+  # Scene Flag 3x40 is "Log leading to Lake Floria"
 
 Can Access Dungeon Entrance In Lake Floria:
   Can Access Floria Waterfall & Water Scale
@@ -1111,7 +1124,9 @@ Can Access Sparrot's Crystal Ball:
   # Can use Eldin OoB movement to get up to the crystal ball without clawshots
 
 Goddess Cube West of Temple Entrance:
-  Can Access Second Part of Eldin & Digging Mitts & Goddess Sword
+  (Can Access Second Part of Eldin & Digging Mitts & Goddess Sword) |
+  (Can Access Eldin & Can BiTWarp at Behind the Temple & Bomb Bag & Goddess Sword)
+  # Can use Eldin OoB movement to get up to the crystal ball without clawshots
 
 Goddess Cube East of Temple Entrance:
   Can Access Second Part of Eldin & Goddess Sword
@@ -1429,8 +1444,9 @@ Goddess Cube in Ancient Harbour:
 
 
 Can Access Dungeon Entrance In Sand Sea:
-  Can Access Sand Sea & Sea Chart & Sword
+  Can Access Sand Sea & ((Sea Chart & Sword) | Can RBM Cx40)
   # You need any sword to be able to dowse
+  # Scene Flag Cx40 is "Sandship is docked at its port"
 
 
 # Skipper's Retreat
@@ -1653,10 +1669,10 @@ Goddess Cube in Skyview Spring:
 Earth Temple - First Chest:
   Can Access Earth Temple & Digging Mitts
 
-Can Get Past First ET Drawbridge:
+Can Lower First ET Drawbridge:
   Beetle | Bow | (Long Range Skyward Strike & Earth Temple - Keese Yeet Trick)
 
-Can Access Earth Temple Boulder:
+Can Dislodge Earth Temple Boulder:
   Slingshot | (Beetle & Can Defeat Lezalfos) | Clawshots | Bow | Long Range Skyward Strike
   # Advanced: Maybe reduce to normal skyward strike, maybe remove Can Defeat Lezalfos from Beetle
   # For some reason the beetle dies really fast if you stand far away from it, and if you go closer you have to fight the lezalfos
@@ -1666,7 +1682,7 @@ Can Access Earth Temple Boulder:
 
 
 Can Access Earth Temple Second Room:
-  Can Access Earth Temple & Can Get Past First ET Drawbridge & Can Access Earth Temple Boulder
+  Can Access Earth Temple & Can Lower First ET Drawbridge & Can Dislodge Earth Temple Boulder
 
 
 Earth Temple - Behind Boulder:
@@ -1705,7 +1721,11 @@ Earth Temple - Chest Guarded by Lizalfos:
 
 
 Can Access Earth Temple Last Room:
-  Can Access Past Boulder Section & (((Digging Mitts & Bomb Bag) | Hook Beetle) | Earth Temple - Slope Stuttersprint Trick)
+  Can Access Past Boulder Section & (
+    (Digging Mitts & Bomb Bag) |
+    Hook Beetle |
+    Earth Temple - Slope Stuttersprint Trick
+  )
   # You need to dig up an air vent to blow up the boulder, or use hook beetle, or be able to Stutter Sprint
 
 Earth Temple - Boss Key:
@@ -1741,7 +1761,7 @@ Can Access LMF Second Room:
 
 Can Access LMF Hub Room:
   Can Access LMF Second Room
-  # No other requirements, but further requirements are easier to understand
+  # Transparent macro, but further requirements are easier to understand
 
 Can Access LMF Hub Room Unloaded:
   Can Access Lanayru Mining Facility & Can BiTWarp at Upper Academy
@@ -1758,9 +1778,9 @@ Can Access LMF Key-locked Part:
   Can Access LMF Second Room & LMF Small Key x1
 
 Can Access LMF Key-locked Room in Past:
-  Can Access LMF Key-locked Part
-  & (Hook Beetle | (Bomb Bag & LMF - Key-locked Room Bomb Throw Trick))
-  & (Beetle | Bow | (Slingshot & LMF - Keylocked Slingshot Trickshot Trick))
+  Can Access LMF Key-locked Part &
+  (Hook Beetle | (Bomb Bag & LMF - Key-locked Room Bomb Throw Trick)) &
+  (Beetle | Bow | (Slingshot & LMF - Keylocked Slingshot Trickshot Trick))
   # Blow up Box & Activate Timeshift Stone
   # Bomb Bag is not easy, Slingshot snipe is difficult
   # Can't knock or take down the beamos: take it slow and go back (even on a conveyor belt) until they stop shooting and continue turning
@@ -1819,7 +1839,9 @@ Lanayru Mining Facility - Behind Second Crawlspace:
 
 
 Can Access LMF Boss Key Door:
-  Can Access West Part of Hub Room & Gust Bellows
+  (Can Access West Part of Hub Room & Gust Bellows) |
+  (Can Access LMF Boss Key Room Exit & (Gust Bellows | (LMF - Minecart Jump Trick & (Bomb Bag | Beetle))))
+
 
 Can Get After LMF Minecart Escort:
   (Can Access LMF Boss Key Door & Gust Bellows & Can Defeat Beamos) |
@@ -1827,13 +1849,18 @@ Can Get After LMF Minecart Escort:
   # When the enemy spaws in his little allies, you have time to activate the switch. Then, a Beamos.
   # Else, RBM open the Wind Gate. Scene Flag 5x80 is "Wind Gate near statue in hub room raised"
 
-Can Enter LMF Boss Key Room:
-  (Can Get After LMF Minecart Escort & Gust Bellows) |
+Can Access LMF Boss Key Room Exit:
+  Can Finish LMF Boss Key Room |
   (Can Get After LMF Minecart Escort & Can RBM Dx01) |
   (Can Access LMF Boss Key Door & LMF - Minecart Jump Trick & (Bomb Bag | Beetle))
+  # This refers to the part in Hub Room where Link can take the shortcut
+  # RBM open the shortcut right above After Minecart Escort. Scene Flag Dx01 is "Block shortcut to bk room"
+  # From Boss Door, Minecart Jump and activate timeshift stone
+
+Can Enter LMF Boss Key Room:
+  (Can Get After LMF Minecart Escort & Gust Bellows) |
+  Can Access LMF Boss Key Room Exit
   # Raise the wind gate by the second minecart
-  # RBM open the shortcut right above it. Scene Flag Dx01 is "Block shortcut to bk room"
-  # From Boss Door, minecart jump and activate timeshift stone
 
 Can Reach Armos Fight in LMF Boss Key Room:
   Can Enter LMF Boss Key Room & Bomb Bag & Gust Bellows & (Sword | Distance Activator)
@@ -2014,13 +2041,17 @@ Sandship - Boss Key:
 
 Can Beat Tentalus:
   Bow
-  # Tentalus can be defeated exclusively with bow
+  # Tentalus can only be defeated with bow, and be defeated with only bow
+
+Can Enter Sandship Boss:
+  Can Freely Change Sandship Temporality & (SS Boss Key | Can RBM 3x10)
+  # Scene Flag 3x10 is "Boss Door Opened"
 
 Sandship - Tentalus Heart Container:
-  Can Freely Change Sandship Temporality & SS Boss Key & Can Beat Tentalus
+  Can Enter Sandship Boss & Can Beat Tentalus
 
 Can Beat Sandship:
-  Can Freely Change Sandship Temporality & SS Boss Key & Can Beat Tentalus & Goddess Sword
+  Can Enter Sandship Boss & Can Beat Tentalus & Goddess Sword
 
 Sandship - Nayru's Flame:
   Can Beat Sandship
