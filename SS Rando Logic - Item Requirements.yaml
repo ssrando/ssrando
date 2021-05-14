@@ -2034,7 +2034,7 @@ Fire Sanctuary - After First Outside Section:
 
 Fire Sanctuary - Bottle:
   (Can Access First FS Magmanos Room & Mogma Mitts & Sword) |
-  (Can Access FS Outdoor Unloaded & Fire Sanctuary - Pillar Jump Trick)
+  (Can Access FS Outdoor Unloaded & Can Do Pillar Jump)
   # Sword needed to grab a water pod
   # Do Pillar Jump, open the door in the middle, do one fronthop, 5 sidehops right, aim so that the door you went in is on the right of the screen, sidehop left
 
@@ -2064,15 +2064,18 @@ Can Access Second FS Bridge:
   (Can Access First FS Magmanos Room & Can BiTWarp at Upper Academy)
   # Can Access First FS Magmanos Room is simply Can Enter Inner Map (one could enter from the back of 3rd key door, but the requirements are more strict)
 
+Can Do Pillar Jump:
+  Fire Sanctuary - Pillar Jump Trick & (Sword | Fire Sanctuary - Swordless Pillar Jump Trick)
+
 Can Access Second Captured Mogma Room:
-  Can Access Second FS Bridge & (Clawshots | Fire Sanctuary - Pillar Jump Trick)
+  Can Access Second FS Bridge & (Clawshots | Can Do Pillar Jump)
   # Pillar Jump is an option. Note that if you fall without clawshots you're stuck
 
 Can Watch Second Captured Mogma Liberation Cutscene:
   Can Access Second Captured Mogma Room & Mogma Mitts & Sword
 
 Fire Sanctuary - Map Chest:
-  Can Watch Second Captured Mogma Liberation Cutscene | (Can Access FS Outdoor Unloaded & Fire Sanctuary - Pillar Jump Trick & Can RBM 3x40)
+  Can Watch Second Captured Mogma Liberation Cutscene | (Can Access FS Outdoor Unloaded & Can Do Pillar Jump & Can RBM 3x40)
   # Scene Flag 3x40 is "Map Chest appears"
 
 Fire Sanctuary - Third Small Key Chest:
@@ -2092,7 +2095,7 @@ Can Access FS Boss Key Door:
   Can Access FS Plats Room & Mogma Mitts
 
 Can Reach Sleeping Statue:
-  Can Access FS Boss Key Door | (Can Access FS Outdoor Unloaded & Fire Sanctuary - Pillar Jump Trick)
+  Can Access FS Boss Key Door | (Can Access FS Outdoor Unloaded & Can Do Pillar Jump)
   # Do Pillar Jump, open the door in the middle, do one fronthop, 5 sidehops right, aim so that the door you went in is on the right of the screen, sidehop left
 
 Fire Sanctuary - Staircase Room:
