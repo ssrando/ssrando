@@ -461,11 +461,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_10 = QVBoxLayout(self.verticalLayoutWidget_7)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.option_keysanity = QCheckBox(self.verticalLayoutWidget_7)
-        self.option_keysanity.setObjectName(u"option_keysanity")
-
-        self.verticalLayout_10.addWidget(self.option_keysanity)
-
         self.verticalLayout_11 = QVBoxLayout()
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.label_for_option_map_mode = QLabel(self.verticalLayoutWidget_7)
@@ -1023,7 +1018,6 @@ class Ui_MainWindow(object):
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeon Count", None))
         self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Skykeep", None))
         self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"Dungeons", None))
-        self.option_keysanity.setText(QCoreApplication.translate("MainWindow", u"Keysanity (temporary)", None))
         self.label_for_option_map_mode.setText(QCoreApplication.translate("MainWindow", u"Map Mode", None))
         self.label_for_option_small_key_mode.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))
         self.label_for_option_boss_key_mode.setText(QCoreApplication.translate("MainWindow", u"Boss Keys", None))

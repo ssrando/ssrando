@@ -281,12 +281,12 @@
   bits: 3
   choices:
     - Removed
-    - Start With
+#    - Start With
     - Vanilla
-    - Own Dungeon - Restricted
+#    - Own Dungeon - Restricted
     - Own Dungeon - Unrestricted
-    - Overworld Only
-    - Any Dungeon
+#    - Overworld Only
+#    - Any Dungeon
     - Anywhere
   default: Own Dungeon - Unrestricted
   help: Controls the placement of maps. Restricted means that maps cannot be placed on the
@@ -299,15 +299,16 @@
   choices:
     - Vanilla
     - Own Dungeon - Restricted
-    - Own Dungeon - Unrestricted
-    - Overworld Only
-    - Any Dungeon
-    - Anywhere (Keysanity)
+#    - Own Dungeon - Unrestricted
+    - Lanayru Caves Key Only
+#    - Overworld Only
+#    - Any Dungeon
+    - Anywhere
   default: Own Dungeon - Restricted
   help: Controls the placement of small keys. Vanilla means they will always be in their vanilla locations.
     In Skyview, the Digging Spot will not contain a key. Own Dungeon means the keys can only appear
     within their own dungeons. Restricted decreases the number of locations keys can appear in some
-    dungeons, depending on logic settings.
+    dungeons, depending on logic settings. Lanayru Caves Key only shuffles the Lanayru Caves Small Key.
   ui: option_small_key_mode
 - name: Boss Key Mode
   command: boss-key-mode
@@ -316,8 +317,8 @@
   choices:
     - Vanilla
     - Own Dungeon
-    - Overworld Only
-    - Any Dungeon
+#    - Overworld Only
+#    - Any Dungeon
     - Anywhere
   default: Own Dungeon
   help: Controls the placement of boss keys. Vanilla means they will always be in their vanilla locations.
@@ -422,15 +423,6 @@
   default: 0
   help: Barren areas contain no items required to beat the game
   ui: option_barren_hints
-- name: Item Hints
-  command: item-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Location hints give the item at a specific check
-  ui: option_location_hints
 - name: Location Hints
   command: location-hints
   type: int
@@ -438,10 +430,14 @@
   max: 15
   bits: 4
   default: 0
+  help: Location hints give the item at a specific check
+  ui: option_location_hints
+- name: Item Hints
+  command: item-hints
+  type: int
+  min: 0
+  max: 15
+  bits: 4
+  default: 0
   help: Item hints give the location of a specific item
-- name: Keysanity
-  command: keysanity
-  type: boolean
-  default: true # until the options is in the ui
-  help: make dungeon items appear anywhere
-  ui: option_keysanity
+  ui: option_item_hints

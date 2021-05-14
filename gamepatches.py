@@ -227,16 +227,16 @@ POST_DUNGEON_CUTSCENE = {
 }
 
 BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
-    'Skyloft - Beedle 50 Rupee Item': (25, 26, 50, 25),
-    'Skyloft - Beedle First 100 Rupee Item': (23, 24, 100, 50),
-    'Skyloft - Beedle Second 100 Rupee Item': ("Second 100R undiscounted Text", "Second 100R discounted Text", 100, 50),
-    'Skyloft - Beedle Third 100 Rupee Item': ("Third 100R undiscounted Text", "Third 100R discounted Text", 100, 50),
-    'Skyloft - Beedle 300 Rupee Item': (19, 20, 300, 150),
-    'Skyloft - Beedle 600 Rupee Item': (29, 30, 600, 300),
-    'Skyloft - Beedle 800 Rupee Item': (27, 28, 800, 400),
-    'Skyloft - Beedle 1000 Rupee Item': (33, 34, 1000, 500),
-    'Skyloft - Beedle 1200 Rupee Item': (31, 32, 1200, 600),
-    'Skyloft - Beedle 1600 Rupee Item': (21, 22, 1600, 800),
+    'Beedle - 50 Rupee Item': (25, 26, 50, 25),
+    'Beedle - First 100 Rupee Item': (23, 24, 100, 50),
+    'Beedle - Second 100 Rupee Item': ("Second 100R undiscounted Text", "Second 100R discounted Text", 100, 50),
+    'Beedle - Third 100 Rupee Item': ("Third 100R undiscounted Text", "Third 100R discounted Text", 100, 50),
+    'Beedle - 300 Rupee Item': (19, 20, 300, 150),
+    'Beedle - 600 Rupee Item': (29, 30, 600, 300),
+    'Beedle - 800 Rupee Item': (27, 28, 800, 400),
+    'Beedle - 1000 Rupee Item': (33, 34, 1000, 500),
+    'Beedle - 1200 Rupee Item': (31, 32, 1200, 600),
+    'Beedle - 1600 Rupee Item': (21, 22, 1600, 800),
 }
 
 BEEDLE_BUY_SWTICH = '[1]I\'ll buy it![2-]No, thanks.'
@@ -549,12 +549,6 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
         items = yaml.safe_load(f)
     by_item_name=dict((x['name'],x) for x in items)
 
-    # make sure dungeon items exist
-    if False: # TODO: only when not keysanity
-        DUNGEONS = ['SV', 'ET', 'LMF', 'AC', 'SS', 'FS', 'SK', 'LanayruCaves'] # caves has a key, no spaces because the randomizer splits by spaces
-        for dungeon in DUNGEONS:
-            by_item_name[f'{dungeon} Small Key'] = by_item_name['Small Key']
-            by_item_name[f'{dungeon} Map'] = by_item_name['Map']
     # (stage, room) -> (object name, layer, id?, itemid)
     stagepatchv2 = defaultdict(list)
     # (stage, layer) -> oarc
@@ -679,8 +673,7 @@ class GamePatcher:
         self.add_stone_hint_patches()
         self.handle_oarc_add_remove()
         self.add_rando_hash()
-        if self.rando.options['keysanity']:
-            self.add_keysanity()
+        self.add_keysanity()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -733,8 +726,7 @@ class GamePatcher:
         self.all_asm_patches = defaultdict(OrderedDict)
         self.add_asm_patch('custom_funcs')
         self.add_asm_patch('ss_necessary')
-        if self.rando.options['keysanity']:
-            self.add_asm_patch('keysanity')
+        self.add_asm_patch('keysanity')
         if self.rando.options['shop-mode'] != 'Vanilla':
             self.add_asm_patch('shopsanity')
         self.add_asm_patch('gossip_stone_hints')

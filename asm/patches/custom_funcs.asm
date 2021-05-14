@@ -133,7 +133,7 @@ stw r0, 20(r1)
 stw r31, 12(r1) ; r31 is flagindex of the dungeon
 stw r30, 8(r1)
 addi r4, r3, -200 ; fist small key at 200
-cmplwi r4, 7
+cmplwi r4, 6
 bgt smallkey_func_end ; not a small key
 lis r5, smallkey_to_flagindex@ha
 addi r5, r5, smallkey_to_flagindex@l

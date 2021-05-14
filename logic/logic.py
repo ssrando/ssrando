@@ -9,25 +9,14 @@ from typing import DefaultDict
 
 import os
 
-from .item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS
-from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, SHOP_CHECKS, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
+from .item_types import PROGRESS_ITEMS, NONPROGRESS_ITEMS, CONSUMABLE_ITEMS, DUPLICATABLE_CONSUMABLE_ITEMS, DUNGEON_PROGRESS_ITEMS, DUNGEON_NONPROGRESS_ITEMS, SMALL_KEYS, BOSS_KEYS
+from .constants import DUNGEON_NAME_TO_SHORT_DUNGEON_NAME, DUNGEON_NAMES, SHOP_CHECKS, MAP_CHECKS, SMALL_KEY_CHECKS, BOSS_KEY_CHECKS, POTENTIALLY_REQUIRED_DUNGEONS, ALL_TYPES
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
 # TODO, path for logic files will probably be params
 ROOT_DIR = Path(__file__).parent.parent
 
 ITEM_WITH_COUNT_REGEX = re.compile(r"^(.+) x(\d+)$")
-
-# the event after dungeons break with a map that triggers the fi text
-# until that's removed, make sure the map can't appear there
-MAP_BANNED_LOCATIONS = [
-  'Skyview - Ruby Tablet',
-  'Earth Temple - Amber Tablet',
-  'Lanayru Mining Facility - Harp',
-  'Ancient Cistern - Goddess Longsword',
-  "Sandship - Nayru's Flame",
-  "Fire Sanctuary - Din's Flame"
-]
 
 class Logic:
   # PROGRESS_ITEM_GROUPS = OrderedDict([
@@ -64,7 +53,7 @@ class Logic:
 
     self.race_mode_banned_locations = []
     if self.rando.options['skip-skykeep'] and self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"] == 'Skykeep':
-      self.racemode_ban_location('Skyloft - Fledge\'s Crystals')
+      self.racemode_ban_location('Skyloft Academy - Fledge\'s Crystals')
     if self.rando.options['empty-unrequired-dungeons']:
       for location_name in self.item_locations:
         zone, _ = Logic.split_location_name_by_zone(location_name)
@@ -73,13 +62,13 @@ class Logic:
       
       # checks outside locations that require dungeons:
       if self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"] in self.rando.non_required_dungeons:
-        self.racemode_ban_location('Skyloft - Fledge\'s Crystals')
+        self.racemode_ban_location('Skyloft Academy - Fledge\'s Crystals')
       if 'Skyview' in self.rando.non_required_dungeons:
         # TODO: check again with entrance rando
         self.racemode_ban_location('Sky - Lumpy Pumpkin Roof Goddess Chest')
         self.racemode_ban_location('Sealed Grounds - Gorko Goddess Wall Reward')
     
-    batreaux_location_re = re.compile(r'.*Batreaux ([0-9]+) .*')
+    batreaux_location_re = re.compile(r'.*Batreaux - ([0-9]+) .*')
 
     for location_name in self.item_locations:
       # ban batreaux locations in necessary
@@ -132,7 +121,8 @@ class Logic:
           self.all_fixed_consumable_items[i] = 'Rupoor'
     
     self.all_progress_items += DUNGEON_PROGRESS_ITEMS
-    self.all_nonprogress_items += DUNGEON_NONPROGRESS_ITEMS
+    if self.rando.options['map-mode'] != 'Removed':
+      self.all_nonprogress_items += DUNGEON_NONPROGRESS_ITEMS
     
     all_item_names = []
     all_item_names += self.all_progress_items
@@ -172,6 +162,40 @@ class Logic:
         self.unplaced_nonprogress_items.append(wallet_item)
         self.all_progress_items.remove(wallet_item)
         self.all_nonprogress_items.append(wallet_item)
+
+    self.dungeon_progress_items = DUNGEON_PROGRESS_ITEMS.copy()
+    self.dungeon_nonprogress_items = DUNGEON_NONPROGRESS_ITEMS.copy()
+
+    small_key_mode = self.rando.options['small-key-mode']
+    boss_key_mode = self.rando.options['boss-key-mode']
+    map_mode = self.rando.options['map-mode']
+    # remove small keys from the dungeon pool if small key sanity is enabled
+    if small_key_mode == 'Anywhere':
+      self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in SMALL_KEYS]
+    elif small_key_mode == 'Vanilla':
+      self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in SMALL_KEYS]
+      for small_key_check in SMALL_KEY_CHECKS:
+        orig_item = self.item_locations[small_key_check]['original item']
+        self.set_prerandomization_item_location(small_key_check, orig_item)
+    elif small_key_mode == 'Lanayru Caves Key Only':
+      self.dungeon_progress_items.remove('LanayruCaves Small Key')
+    # remove boss keys from the dungeon pool if boss key sanity is enabled
+    if boss_key_mode == 'Anywhere':
+      self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in BOSS_KEYS]
+    elif boss_key_mode == 'Vanilla':
+      self.dungeon_progress_items = [key for key in self.dungeon_progress_items if key not in BOSS_KEYS]
+      for small_key_check in BOSS_KEY_CHECKS:
+        orig_item = self.item_locations[small_key_check]['original item']
+        self.set_prerandomization_item_location(small_key_check, orig_item)
+    # remove maps from the dungeon pool if maps are shuffled
+    if map_mode in ['Anywhere', 'Removed']:
+      self.dungeon_nonprogress_items = []
+    elif map_mode == 'Vanilla':
+      self.dungeon_nonprogress_items = []
+      for small_key_check in MAP_CHECKS:
+        orig_item = self.item_locations[small_key_check]['original item']
+        self.set_prerandomization_item_location(small_key_check, orig_item)
+
     if self.rando.options['logic-mode'] == 'No Logic':
       for location in self.item_locations:
         self.item_locations[location]['Need'] = Logic.parse_logic_expression('Nothing')
@@ -181,8 +205,7 @@ class Logic:
   
   # main randomization method
   def randomize_items(self):
-    if not self.rando.options['keysanity']:
-      self.randomize_dungeon_items() # they are part of the progression items
+    self.randomize_dungeon_items()  # this will only randomize the appropriate items
     self.randomize_progression_items()
     self.randomize_nonprogress_items()
     self.randomize_consumable_items()
@@ -456,17 +479,14 @@ class Logic:
   
   def check_item_valid_in_location(self, item_name, location_name):
     # Don't allow dungeon items to appear outside their proper dungeon when Key-Lunacy is off.
-    if self.is_dungeon_item(item_name) and not self.rando.options.get("keysanity"):
+    if self.is_dungeon_item(item_name):
       short_dungeon_name = item_name.split(" ")[0]
       dungeon_name = DUNGEON_NAMES[short_dungeon_name]
       if not self.is_dungeon_location(location_name, dungeon_name_to_match=dungeon_name):
         return False
     
-    # ban maps in events where it breaks things
-    if item_name.endswith('Map') and location_name in MAP_BANNED_LOCATIONS:
-      return False
     return True
-  
+    
   def filter_items_by_any_valid_location(self, items, locations):
     # Filters out items that cannot be in any of the given possible locations.
     valid_items = []
@@ -601,7 +621,7 @@ class Logic:
     return zone_name, specific_location_name
   
   def is_dungeon_item(self, item_name):
-    return (item_name in DUNGEON_PROGRESS_ITEMS or item_name in DUNGEON_NONPROGRESS_ITEMS)
+    return (item_name in self.dungeon_progress_items or item_name in self.dungeon_nonprogress_items)
   
   def is_dungeon_location(self, location_name, dungeon_name_to_match=None):
     zone_name, specific_location_name = self.split_location_name_by_zone(location_name)
@@ -861,11 +881,13 @@ class Logic:
       # We weight it so newly accessible locations are more likely to be chosen.
       # This way there is still a good chance it will not choose a new location.
       # Dungeons are prefered
-      possible_locations_with_weighting = []
+      possible_location_weights = []
+      cumul_loc_weight = 0
       for location_name in accessible_undone_locations:
-        possible_locations_with_weighting += [location_name]*location_weights[location_name]
+        cumul_loc_weight += location_weights[location_name]
+        possible_location_weights.append(cumul_loc_weight)
 
-      location_name = self.rando.rng.choice(possible_locations_with_weighting)
+      location_name = self.rando.rng.choices(accessible_undone_locations, cum_weights=possible_location_weights, k=1)[0]
       self.set_location_to_item(location_name, item_name)
 
       # continue loop if items are remaining
@@ -890,36 +912,40 @@ class Logic:
     ]
     for item_name in items_to_temporarily_add:
       self.add_owned_item(item_name)
-    
-    
-    # Randomize small keys.
-    small_keys_to_place = [
-      item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
-      if item_name.endswith(" Small Key")
-    ]
-    assert len(small_keys_to_place) > 0, f'no small '
-    for item_name in small_keys_to_place:
-      self.place_dungeon_item(item_name)
-      self.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
-    
-    # Randomize big keys.
-    big_keys_to_place = [
-      item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
-      if item_name.endswith(" Boss Key")
-    ]
-    assert len(big_keys_to_place) > 0
-    for item_name in big_keys_to_place:
-      self.place_dungeon_item(item_name)
-      self.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
-    
-    # Randomize dungeon maps and compasses.
-    other_dungeon_items_to_place = [
-      item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
-      if item_name.endswith(" Map")
-    ]
-    assert len(other_dungeon_items_to_place) > 0
-    for item_name in other_dungeon_items_to_place:
-      self.place_dungeon_item(item_name)
+
+    small_keys_to_place = []
+    if self.rando.options['small-key-mode'] not in ['Anywhere', 'Vanilla']:
+      # Randomize small keys.
+      small_keys_to_place = [
+        item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
+        if item_name.endswith(" Small Key")
+      ]
+      assert len(small_keys_to_place) > 0, f'no small '
+      for item_name in small_keys_to_place:
+        self.place_dungeon_item(item_name)
+        self.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
+
+    big_keys_to_place = []
+    if self.rando.options['boss-key-mode']  not in ['Anywhere', 'Vanilla']:
+      # Randomize big keys.
+      big_keys_to_place = [
+        item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
+        if item_name.endswith(" Boss Key")
+      ]
+      assert len(big_keys_to_place) > 0
+      for item_name in big_keys_to_place:
+        self.place_dungeon_item(item_name)
+        self.add_owned_item(item_name) # Temporarily add big keys to the player's inventory while placing them.
+
+    if self.rando.options['map-mode']  not in ['Anywhere', 'Vanilla', 'Removed']:
+      # Randomize dungeon maps and compasses.
+      other_dungeon_items_to_place = [
+        item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
+        if item_name.endswith(" Map")
+      ]
+      assert len(other_dungeon_items_to_place) > 0
+      for item_name in other_dungeon_items_to_place:
+        self.place_dungeon_item(item_name)
     
     # Remove the items we temporarily added.
     for item_name in items_to_temporarily_add:
