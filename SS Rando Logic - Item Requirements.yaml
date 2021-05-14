@@ -1821,10 +1821,10 @@ Can Get After LMF Minecart Escort:
 
 Can Enter LMF Boss Key Room:
   (Can Get After LMF Minecart Escort & Gust Bellows) |
-  (Can Get After LMF Minecart Escort & Can RBM Dx04) |
+  (Can Get After LMF Minecart Escort & Can RBM Dx01) |
   (Can Access LMF Boss Key Door & LMF - Minecart Jump Trick & (Bomb Bag | Beetle))
   # Raise the wind gate by the second minecart
-  # RBM open the shortcut right above it. Scene Flag Dx04 is "Block shortcut to bk room"
+  # RBM open the shortcut right above it. Scene Flag Dx01 is "Block shortcut to bk room"
   # From Boss Door, minecart jump and activate timeshift stone
 
 Can Reach Armos Fight in LMF Boss Key Room:
