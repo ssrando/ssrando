@@ -365,7 +365,9 @@ Can Set Scene Flag 2x20:
   # Have the first iron bars in Sky Keep entrance room rise up (open the first chest)
 
 Can Set Scene Flag 3x02:
-  Can Cut Tree | (Goddess Harp & Farore's Courage) | Can Access Second Part of Eldin |
+  Can Cut Tree |
+  (Can Access Most of Faron Woods & Goddess Harp & Farore's Courage) |
+  Can Access Second Part of Eldin |
   (Can Access Second Part of Lanayru Mines & (Bomb Bag | Hook Beetle)) |
   (Can Get Past Peahat and Boko Baba & Gust Bellows) |
   (Can Get to Skyview Second Part & Beetle & Sword) |
@@ -421,7 +423,13 @@ Can Unlock Zelda's Room:
   # Scene Flag 5x04 is "Drop down into Academy Chimney / Zelda's Door Unlocked"
 
 Skyloft - Crystal in Zelda's Room:
-  Can Get Gratitude Crystals & (Can Unlock Zelda's Room | (Can Access Skyloft BiT & Karane Clip Trick))
+  Can Get Gratitude Crystals & (
+    Can Unlock Zelda's Room |
+    Can Access Sky BiT |
+    (Can Access Skyloft BiT & Can Set Scene Flag 5x04)
+  )
+  # Drop down into the chimney from the Loftwing in BiT
+  # Scene Flag 5x04 is "Drop down into Academy Chimney / Zelda's Door Unlocked"
 
 Skyloft - Zelda Heartpiece:
   Can Unlock Zelda's Room
