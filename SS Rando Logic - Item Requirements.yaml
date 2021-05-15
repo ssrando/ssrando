@@ -182,6 +182,10 @@ Can Access Sky BiT:
   Can Access Skyloft BiT & Nothing
   # No requirements, can be setup in Link's room at any time
 
+Can Access Lumpy Pumpkin BiT:
+  Can Access Sky BiT
+  # Requires a long dive #UNSURE: Does it need instructions?
+
 Can Access Faron BiT:
   Can Access Sky BiT & Can Access Sealed Temple
   # Eldin pillar no longer plays CS
@@ -244,7 +248,7 @@ Can RBM 0x04:
 
 # Can RBM 0x02: Impossible
 Can RBM 0x01:
-  Can Access Sky BiT
+  Can Access Lumpy Pumpkin BiT
   # Skyloft: Impossible, Seen Cutscene After Getting Hero's Tunic
   # Sky: Refuse to help Barkeep 1
   # Sealed Grounds: Impossible, Set when map opens up with Impa
@@ -252,7 +256,7 @@ Can RBM 0x01:
   # Lake Floria: Unused
 
 Can RBM 1x80:
-  Can Access Sky BiT |
+  Can Access Lumpy Pumpkin BiT |
   (Can Access Most of Faron Woods BiT & Bomb Bag)
   # Skyloft: Impossible, Reveal Gossip Stone above Waterfall Cave
   # Sky: Break Lumpy Pumpkin Chandelier
@@ -285,10 +289,10 @@ Can RBM 1x01:
 Can RBM 2x40:
   (Can Access Faron BiT & Can Raise Gate of Time & Can Open GOT After Raising & Situational BiT Trick) |
   (Can Get Past Deep Woods Bee Hive BiT & (Can Set Scene Flag 2x20 | Distance Activator))
-  # Skyloft: Impossible, Complete Horwell Remlit Quest #UNSURE
+  # Skyloft: Impossible, Complete Horwell Remlit Quest
   # Sky: Unused
   # Sealed Grounds: Situational, Charge Master Sword Skyward Strike in front of Gate of Time #UNSURE
-  # Faron Woods: Enter Skyview Temple Cutscene #UNSURE
+  # Faron Woods: Enter Skyview Temple Cutscene
   # Lake Floria: Unused
 
 # Can RBM 2x20: Impossible
@@ -318,7 +322,7 @@ Can RBM 2x01:
   # Lake Floria: Unused
 
 Can RBM 3x80:
-  Can Access Skyloft BiT | Can Access Sky BiT
+  Can Access Skyloft BiT | Can Access Lumpy Pumpkin BiT
   # Skyloft: Talk to Fledge after delivering barrel
   # Sky: Enter Lumpy Pumpkin Cutscene #UNSURE
   # No need to include other areas
@@ -328,10 +332,11 @@ Can RBM 3x40:
   # Skyloft: Place down barrel for Lunch Lady
   # Sky: Situational, Talk to Barkeep after new chandelier
   # Sealed Grounds: Entering Faron Woods for the first time
+  # No need to include other areas
 
 # Can RBM 3x20: Impossible
 Can RBM 3x10:
-  (Can Access Sky BiT & Chandelier Quest Part 1) |
+  (Can Access Lumpy Pumpkin BiT & Chandelier Quest Part 1) |
   Can Access Most of Faron Woods BiT
   # Skyloft: Impossible, Set after Talking to Professor Owlan with Hero's Tunic #UNSURE
   # Sky: Start Hot Soup Delivery Quest in the Lumpy Pumpkin #UNSURE need bottle ?
@@ -387,7 +392,7 @@ Can RBM 4x01:
   # Skyloft: Talk to Fledge in Academy after meeting Zelda #UNSURE
   # Sky: Blow up rocks on Northeastern Island
   # Sealed Grounds: Impossible, [Should Exist]
-  # Faron Woods: Pick up Red Rupee on ledge near Lake Hylia doors with Beetle
+  # Faron Woods: Pick up Red Rupee on ledge near Lake Floria doors with Beetle
   # Lake Floria: Cutscene after breaking First Barricade (strictly harder than Faron Woods)
 
 Can RBM 5x80:
@@ -412,16 +417,16 @@ Can RBM 5x08:
 
 Can RBM 5x04:
   (Can Access Faron BiT & Can Access Hylia's Temple) |
-  Can Get Past Deep Woods Bee Hive |
-  Can Access Lake Floria above Rock
+  Can Get Past Deep Woods Bee Hive BiT |
+  Can Access Lake Floria above Rock BiT
   # Skyloft: Impossible, Drop down into Academy Chimney / Zelda's Door Unlocked
   # Sky: Impossible, Fi Text after obtaining Song of the Hero #UNSURE
   # Sealed Grounds: Check Hylia's Temple Statue #UNSURE
   # Faron Woods: Finish talking to Goron for first time #UNSURE
-  # Lake Floria: Check underwater statue #UNSURE
+  # Lake Floria: Check underwater statue #UNSURE: Possible ? Requirements ?
 
 Can RBM 5x02:
-  Can Access Night-time Skyloft | Can Access Sky BiT
+  Can Access Night-time Skyloft | Can Access Lumpy Pumpkin BiT
   # Skyloft: Open Shed Door at Night
   # Sky: Talk to Lumpy Pumpkin Barkeep #UNSURE
   # Sealed Grounds: Check Hylia's Realm Statue #UNSURE (strictly harder than Skyloft)
@@ -465,70 +470,156 @@ Can RBM 7x02:
   # No need to include other areas
 
 # Can RBM 7x01: Impossible
-Can RBM 8x80: Impossible
-Can RBM 8x40: Impossible
-Can RBM 8x20: Impossible
-Can RBM 8x10: Impossible
-Can RBM 8x08: Impossible
-Can RBM 8x04: Impossible
-Can RBM 8x02: Impossible
-Can RBM 8x01: Impossible
-Can RBM 9x80: Impossible
-Can RBM 9x40: Impossible
-Can RBM 9x20: Impossible
-Can RBM 9x10: Impossible
-Can RBM 9x08: Impossible
-Can RBM 9x04: Impossible
-Can RBM 9x02: Impossible
-Can RBM 9x01: Impossible
-Can RBM Ax80: Impossible
-Can RBM Ax40: Impossible
-Can RBM Ax20: Impossible
-Can RBM Ax10: Impossible
-Can RBM Ax08: Impossible
-Can RBM Ax04: Impossible
-Can RBM Ax02: Impossible
-Can RBM Ax01: Impossible
-Can RBM Bx80: Impossible
-Can RBM Bx40: Impossible
-Can RBM Bx20: Impossible
-Can RBM Bx10: Impossible
-Can RBM Bx08: Impossible
-Can RBM Bx04: Impossible
-Can RBM Bx02: Impossible
-Can RBM Bx01: Impossible
-Can RBM Cx80: Impossible
-Can RBM Cx40: Impossible
-Can RBM Cx20: Impossible
-Can RBM Cx10: Impossible
-Can RBM Cx08: Impossible
-Can RBM Cx04: Impossible
-Can RBM Cx02: Impossible
-Can RBM Cx01: Impossible
-Can RBM Dx80: Impossible
-Can RBM Dx40: Impossible
-Can RBM Dx20: Impossible
-Can RBM Dx10: Impossible
-Can RBM Dx08: Impossible
-Can RBM Dx04: Impossible
-Can RBM Dx02: Impossible
-Can RBM Dx01: Impossible
-Can RBM Ex80: Impossible
-Can RBM Ex40: Impossible
-Can RBM Ex20: Impossible
-Can RBM Ex10: Impossible
-Can RBM Ex08: Impossible
-Can RBM Ex04: Impossible
-Can RBM Ex02: Impossible
-Can RBM Ex01: Impossible
-Can RBM Fx80: Impossible
-Can RBM Fx40: Impossible
-Can RBM Fx20: Impossible
-Can RBM Fx10: Impossible
-Can RBM Fx08: Impossible
-Can RBM Fx04: Impossible
-Can RBM Fx02: Impossible
-Can RBM Fx01: Impossible
+Can RBM 8x80:
+  (Can Access Skyloft BiT & 80 Gratitude Crystals) |
+  (Can Access Faron BiT & Can Defeat Bokoblins) |
+  # Skyloft: Complete Quest / Talk to Batreaux after he becomes human #UNSURE This only applies to Bat's Quest, right ?
+  # Sky: Unused
+  # Sealed Grounds: Bokoblin left and behind Gorko defeated #UNSURE
+  # Faron Woods: Unused
+  # Lake Floria: Unused
+
+# Can RBM 8x40: Impossible
+# Can RBM 8x20: Impossible
+# Can RBM 8x10: Impossible
+# Can RBM 8x08: Impossible
+# Can RBM 8x04: Impossible
+# Can RBM 8x02: Impossible
+# Can RBM 8x01: Impossible
+# Can RBM 9x80: Impossible
+Can RBM 9x40:
+  (Can Access Night-time Skyloft BiT & 5 Gratitude Crystals) |
+  Can Access Lumpy Pumpkin BiT
+  # Skyloft: Batreaux 5 Gratitude Crystals
+  # Sky: Talk to old man in Lumpy Pumpkin after meeting both Batreaux and Wyrna #UNSURE: How is it checked ?
+  # Sealed Grounds: Impossible, Impa Text after beating Imp 2, asking Link to strike the Gate of Time
+  # Faron Woods: Defeat Deku Baba in front of stuck rope, or talk to Fi near it (strictly harder than Sky)
+  # Lake Floria: Unused
+
+Can RBM 9x20:
+  (Song of the Hero & Goddess Harp) |
+  Can Access Lumpy Pumpkin BiT
+  # Skyloft: Hylia's Trial Gate Opened
+  # Sky: Talk to young customer in Lumpy Pumpkin (after meeting Batreaux)
+  # No need to include other areas
+
+# Can RBM 9x10: Impossible
+# Can RBM 9x08: Impossible
+# Can RBM 9x04: Impossible
+# Can RBM 9x02: Impossible
+# Can RBM 9x01: Impossible
+# Can RBM Ax80: Impossible
+# Can RBM Ax40: Impossible
+# Can RBM Ax20: Impossible
+# Can RBM Ax10: Impossible
+Can RBM Ax08:
+  Can Access Skyloft BiT
+  # Skyloft: Talk to Professor Owlan after meeting Zelda #UNSURE
+  # Sky: Unused
+  # Sealed Grounds: Impossible, Groose describes Groosenator before Imp 2 #UNSURE
+  # Faron Woods: Unused
+  # Lake Floria: Unused
+
+# Can RBM Ax04: Impossible
+# Can RBM Ax02: Impossible
+# Can RBM Ax01: Impossible
+# Can RBM Bx80: Impossible
+# Can RBM Bx40: Impossible
+# Can RBM Bx20: Impossible
+# Can RBM Bx10: Impossible
+# Can RBM Bx08: Impossible
+# Can RBM Bx04: Impossible
+# Can RBM Bx02: Impossible
+# Can RBM Bx01: Impossible
+# Can RBM Cx80: Impossible
+Can RBM Cx40:
+  (Can Access Night-time Skyloft BiT & Can Get Gratitude Crystals BiT & (Can Enter Waterfall Cave at Night | Beetle)) |
+  Can Access Lake Floria above Rock BiT
+  # Skyloft: Gratitude Crystal in loftwing prison #UNSURE of the requirement
+  # Sky: Unused
+  # Sealed Grounds: Not-In-Logic, Listen to the Goron about his research after Skyview [Dungeon inside Deep Woods] but before beating Earth Temple [Dungeon in Eldin Volcano] #UNSURE: Can it be made in logic ?
+  # Faron Woods: Unused
+  # Lake Floria: First Encounter with Parella #UNSURE: Possible ? Requirements ?
+
+# Can RBM Cx20: Impossible
+Can RBM Cx10:
+  Can Access Night-time Skyloft BiT & Can Get Gratitude Crystals BiT
+  # Skyloft: Gratitude Crystal in Pumpkin Patch
+  # Sky: Unused
+  # Sealed Grounds: Impossible, Set before fadeout transition showing Imp 3 awakening
+  # Faron Woods: Unused
+  # Lake Hylia: Unused
+
+# Can RBM Cx08: Impossible
+# Can RBM Cx04: Impossible
+# Can RBM Cx02: Impossible
+# Can RBM Cx01: Impossible
+# Can RBM Dx80: Impossible
+Can RBM Dx40:
+  Can Access Night-time Skyloft BiT & Can Get Gratitude Crystals BiT
+  # Skyloft: Gratitude Crystal in Academy Plant
+  # Sky: Unused
+  # Sealed Grounds: #TODO, Talk to Past Impa with Seedling before planting it
+  # Faron Woods: Unused
+  # Lake Hylia: Unused
+
+# Can RBM Dx20: Impossible
+Can RBM Dx10:
+  Can Access Sky BiT & Can Get Gratitude Crystals BiT
+  # Skyloft: Unused
+  # Sky: Gratitude Crystal in Lumpy Pumpkin Shed
+  # Sealed Grounds: Talk to Impa after defeating Ghirahim 3 #UNSURE: Past or Present (strictly harder than Sky)
+  # Faron Woods: Unused
+  # Lake Hylia: Impossible, Water Dragon dispells Waterfall #UNSURE
+
+Can RBM Dx08:
+  Can Access Skyloft BiT & Can Get Gratitude Crystals BiT
+  # Skyloft: Triggered Sheikah Stone #UNSURE
+  # Sky: Unused
+  # Sealed Grounds: Talk to Impa after Sky Keep [Dungeon in Skyloft] #UNSURE: Past or Present (strictly harder than Skyloft)
+  # Faron Woods: Unused
+  # Lake Hylia: Unused
+
+Can RBM Dx04:
+  Can Access Skyloft BiT & Gust Bellows
+  # Skyloft: Set Village [East] Windmill in place (can be unset)
+  # Sky: Unused
+  # Sealed Grounds: Impossible, Talk to Impa after learning 3 SotH parts #UNSURE: Possible ? Past or Present ?
+  # Faron Woods: Unused
+  # Lake Hylia: Unused
+
+# Can RBM Dx02: Impossible
+Can RBM Dx01:
+  Can Access Skyloft BiT & Amber Tablet
+  # Skyloft: Fi Text after placing Amber Tablet #UNSURE: Does it need Tablet Pedestal ?
+  # Sky: Unused
+  # Sealed Grounds: Impossible, Talk to Impa after Tadtones #UNSURE: Possible ? Past or Present ?
+  # Faron Woods: Unused
+  # Lake Hylia: Unused
+
+# Can RBM Ex80: Impossible
+# Can RBM Ex40: Impossible
+# Can RBM Ex20: Impossible
+# Can RBM Ex10: Impossible
+# Can RBM Ex08: Impossible
+# Can RBM Ex04: Impossible
+# Can RBM Ex02: Impossible
+# Can RBM Ex01: Impossible
+# Can RBM Fx80: Impossible
+# Can RBM Fx40: Impossible
+# Can RBM Fx20: Impossible
+# Can RBM Fx10: Impossible
+# Can RBM Fx08: Impossible
+# Can RBM Fx04: Impossible
+Can RBM Fx02:
+  Can Access Night-time Skyloft BiT & Can Get Gratitude Crystals BiT
+  # Skyloft: Gratitude Crystal [at West Cliff] near West Windmill
+  # Sky: Unused
+  # Sealed Grounds: Set after drawing a heart on the Goddess Wall (strictly harder than Skyloft)
+  # Faron Woods: Unused
+  # Lake Hylia: Unused
+
+# Can RBM Fx01: Impossible
 
 Can Set Scene Flag 0x04:
   Nothing
