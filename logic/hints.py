@@ -134,8 +134,8 @@ class Hints:
         # add them manually, cause they need to be kinda weirdly implemented because of bug net
         if self.logic.rando.options['shop-mode'] == 'Randomized' and \
                 'expensive' not in self.logic.rando.options['banned-types']:
-            needed_always_hints.append('Skyloft - Beedle 1200 Rupee Item')
-            needed_always_hints.append('Skyloft - Beedle 1600 Rupee Item')
+            needed_always_hints.append('Beedle - 1200 Rupee Item')
+            needed_always_hints.append('Beedle - 1600 Rupee Item')
         needed_sometimes_hints = self.logic.filter_locations_for_progression(SOMETIMES_LOCATIONS)
 
         hints_left = total_stonehints
