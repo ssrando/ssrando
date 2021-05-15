@@ -168,6 +168,9 @@ Can Defeat Stalmaster:
 
 ### BiT Capabilities
 
+Can Get Gratitude Crystals BiT:
+  BiT Trick & Can Get Gratitude Crystals
+
 Can Access Skyloft BiT:
   BiT Trick
 
@@ -185,6 +188,8 @@ Can Access Faron BiT:
 
 Can Access Most of Faron Woods BiT:
   Can Access Faron BiT & Can Access Most of Faron Woods
+  # TODO Replace "BiTWarp to Faron" with the BiTMagic flags that would give access to Most of Faron
+  # For now, leave a file in Faron with a log pushed and use its BiTMagic properties
 
 Can Access Deep Woods BiT:
   Can Access Most of Faron Woods BiT & (Can Access Deep Woods | Can Set Scene Flag 0x04)
@@ -219,38 +224,130 @@ Can BiTWarp at Behind the Temple:
   Can Access Faron BiT
 
 
-Can RBM 0x80: Impossible
-Can RBM 0x40: Impossible
-Can RBM 0x20: Impossible
-Can RBM 0x10: Impossible
-Can RBM 0x08: Impossible
-Can RBM 0x04: Impossible
-Can RBM 0x02: Impossible
-Can RBM 0x01: Impossible
-Can RBM 1x80: Impossible
-Can RBM 1x40: Impossible
-Can RBM 1x20: Impossible
-Can RBM 1x10: Impossible
-Can RBM 1x08: Impossible
-Can RBM 1x04: Impossible
-Can RBM 1x02: Impossible
-Can RBM 1x01: Impossible
-Can RBM 2x80: Impossible
-Can RBM 2x40: Impossible
-Can RBM 2x20: Impossible
-Can RBM 2x10: Impossible
-Can RBM 2x08: Impossible
-Can RBM 2x04: Impossible
-Can RBM 2x02: Impossible
-Can RBM 2x01: Impossible
-Can RBM 3x80: Impossible
-Can RBM 3x40: Impossible
-Can RBM 3x20: Impossible
-Can RBM 3x10: Impossible
-Can RBM 3x08: Impossible
-Can RBM 3x04: Impossible
-Can RBM 3x02: Impossible
-Can RBM 3x01: Impossible
+# Can RBM 0x80: Impossible
+# Can RBM 0x40: Impossible
+Can RBM 0x20:
+  Can Access Skyloft BiT & (Can Access Sky BiT | Clawshots) & Gust Bellows
+  # Skyloft: Get Baby Rattle check #UNSURE
+  # Sky: Impossible, Fi Text about Goddess Cubes #UNSURE
+  # Sealed Grounds: Impossible, Door to Sealed Temple unlocks #UNSURE
+  # Faron Woods: Impossible, Fi Text before bonking Lopsa's tree #UNSURE
+  # Lake Floria: Impossible, Parella text after blowing up rock #UNSURE
+
+# Can RBM 0x10: Impossible
+# Can RBM 0x08: Impossible
+Can RBM 0x04:
+  Can Access Skyloft BiT
+  # Skyloft: Leave Kukiel's House #UNSURE
+
+# Can RBM 0x02: Impossible
+Can RBM 0x01:
+  Can Access Sky BiT | (Can Access Most of Faron Woods BiT & Bomb Bag)
+  # Skyloft: Impossible, Seen Cutscene After Getting Hero's Tunic #UNSURE
+  # Sky: Refuse to help Barkeep 1 #UNSURE
+  # Sealed Grounds: Impossible, Set when map opens up with Impa #UNSURE
+  # Faron Woods: Blow Up Rocks containing Chest near Erla
+  # Lake Floria: Unused
+
+Can RBM 1x80:
+  (Can Access Skyloft BiT & (Can Access Sky BiT | Clawshots) & Goddess Harp) |
+  Can Access Sky BiT |
+  (Can Access Most of Faron Woods BiT & Bomb Bag)
+  # Skyloft: Reveal Gossip Stone above Waterfall Cave
+  # Sky: Break Lumpy Pumpkin Chandelier #UNSURE
+  # Sealed Grounds: Impossible, active Air Gusts #UNSURE
+  # Faron Woods: Blow Up Rocks containing [HP]
+  # Lake Floria: Unused
+
+# Can RBM 1x40: Impossible
+# Can RBM 1x20: Impossible
+# Can RBM 1x10: Impossible
+# Can RBM 1x08: Impossible
+# Can RBM 1x04: Impossible
+Can RBM 1x02:
+  Can Access Most of Faron Woods BiT
+  # Skyloft: Impossible, Meet Zelda / Upper Academy Doors Unlocked
+  # Sky: Impossible, Bridge formed to Isle of Songs #UNSURE
+  # Sealed Grounds: Impossible [Should exist]
+  # Faron Woods: Lopsa can be talked to #UNSURE
+  # Lake Floria: Impossible, Talk to Water Dragon after Tadtones
+
+Can RBM 1x01:
+  Can Access Most of Faron Woods BiT & Can Defeat Bokoblins
+  # Skyloft: Impossible, Meet Zelda / Lower Academy Doors Unlocked
+  # Sky: Unused
+  # Sealed Grounds: Impossible, [Unlocks Door to Horde on layer 13/14]
+  # Faron Woods: Machi can be talked to #UNSURE
+  # Lake Floria: Strictly harder, Set after First Selection during Water Dragon text
+
+# Can RBM 2x80: Impossible
+Can RBM 2x40:
+  (Can Access Faron BiT & Can Raise Gate of Time & Can Open GOT After Raising & Situational BiT Trick) |
+  (Can Get Past Deep Woods Bee Hive BiT & (Can Set Scene Flag 2x20 | Distance Activator))
+  # Skyloft: Impossible, Complete Horwell Remlit Quest #UNSURE
+  # Sky: Unused
+  # Sealed Grounds: Situational, Charge Master Sword Skyward Strike in front of Gate of Time #UNSURE
+  # Faron Woods: Enter Skyview Temple Cutscene #UNSURE
+  # Lake Floria: Unused
+
+# Can RBM 2x20: Impossible
+# Can RBM 2x10: Impossible
+# Can RBM 2x08: Impossible
+Can RBM 2x04:
+  Can Access Skyloft BiT
+  # Skyloft: Fortune Teller talks to you in Skyloft #UNSURE
+
+Can RBM 2x02:
+  (Can Access Skyloft BiT & Goddess Sword & Impossible) |
+  Can Get Past Deep Woods Bee Hive BiT
+  # Skyloft: Skyward Strike on Tablet Pedestal
+  # Sky: Impossible, Talk to Barkeeper after completing Hot Soup before beating ET"
+  # Sealed Grounds: Impossible, Ground Shaking
+  # Faron Woods: Push Down Highest Log in Deep Woods
+  # Lake Floria: Blow up rock revealing the path (strictly more demanding than Faron Woods alternative) #UNSURE
+
+Can RBM 2x01:
+  (Chandellier Quest Over & Situational BiT Trick) |
+  (Can Access Most of Faron Woods BiT & Bomb Bag)
+  # Skyloft: Unused
+  # Sky: Situational, Cutscene showing new Chandelier #UNSURE
+  # Sealed Grounds: Impossible, Beacon placed successfully #UNSURE
+  # Faron Woods: Log after Lopsa is pushed down
+  # Lake Floria: Unused
+
+Can RBM 3x80:
+  Can Access Skyloft BiT | Can Access Sky BiT
+  # Skyloft: Talk to Fledge after delivering barrel
+  # Sky: Enter Lumpy Pumpkin Cutscene #UNSURE
+
+Can RBM 3x40:
+  Can Access Skyloft BiT | Can Access Faron BiT
+  # Skyloft: Place down barrel for Lunch Lady
+  # Sky: Situational, Talk to Barkeep after new chandelier
+  # Sealed Grounds: Entering Faron Woods for the first time
+
+# Can RBM 3x20: Impossible
+Can RBM 3x10:
+  (Can Access Sky BiT & Chandellier Quest Part 1) |
+  Can Access Most of Faron Woods BiT
+  # Skyloft: Impossible, Set after Talking to Professor Owlan with Hero's Tunic #UNSURE
+  # Sky: Start Hot Soup Delivery Quest in the Lumpy Pumpkin #UNSURE need bottle ?
+  # Sealed Grounds: Impossible, [Should Exist]
+  # Faron Woods: Log after swinging on initial rope
+  # Lake Floria: Break First Barricade (Strictly Harder than Faron Woods)
+
+# Can RBM 3x08: Impossible
+# Can RBM 3x04: Impossible
+Can RBM 3x02:
+  (Can Access Skyloft BiT & Can Cut Tree) |
+  (Can Access Most of Faron Woods & Goddess Harp & Farore's Courage)
+  # Skyloft: Cut Trees in front of [Waterfall] Cave
+  # Sky: Impossible, Opened Ground Patch on [Mogma Mitts] island inside Thunderhead ([quiver] chest) #UNSURE
+  # Sealed Grounds: Impossible, Set after Impa asks Link to seal Imp 1 #UNSURE
+  # Faron Woods: Open Faron Trial
+  # Lake Floria: Unused
+
+# Can RBM 3x01: Impossible
 Can RBM 4x80: Impossible
 Can RBM 4x40: Impossible
 Can RBM 4x20: Impossible
@@ -376,7 +473,7 @@ Can Set Scene Flag 2x02:
   # Sky is "Talk[ing] to Barkeeper after completing Hot Soup [Chandellier Quest pt 1] before beating ET"
   # Sealed Grounds is "Ground Shaking"
   # Faron Woods is "Push Down Highest Log in Deep Woods"
-  # Lake Floria is" Blow up rock revealing the path" (strictly more demanding than Faron Woods alternative)
+  # Lake Floria is "Blow up rock revealing the path" (strictly more demanding than Faron Woods alternative)
   # Eldin Volcano is "Tower leading to Hot cave falls"
   # Lanayru Desert is not used
   # Sand Sea is "Blow Up Rock in Skipper's Retreat"
@@ -857,11 +954,14 @@ Chandellier Quest Part 2: # Bring the pumpkins
 Chandellier Quest Part 3: # Play the harp
   Chandellier Quest Part 2 & Goddess Harp
 
-Sky - Lumpy Pumpkin Harp Minigame:
+Chandellier Quest Over:
   Chandellier Quest Part 3
 
+Sky - Lumpy Pumpkin Harp Minigame:
+  Chandellier Quest Over
+
 Sky - Kina's Crystals:
-  Chandellier Quest Part 3
+  Chandellier Quest Over & Can Access Mogma Turf
   # Unlocked after Chandellier Quest
 
 Sky - Lumpy Pumpkin Goddess Chest:
