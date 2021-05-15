@@ -1750,7 +1750,7 @@ Earth Temple - Chest Guarded by Lizalfos:
   #In this dungeon, the hook Beetle can replace the bombs everywhere. You absolutely need a Beetle to cut a rope in the boulder section
 
 
-Can Access Earth Temple Last Room:
+Can Access Earth Temple Boss Door:
   Can Access Past Boulder Section & (
     (Digging Mitts & Bomb Bag) |
     Hook Beetle |
@@ -1759,19 +1759,24 @@ Can Access Earth Temple Last Room:
   # You need to dig up an air vent to blow up the boulder, or use hook beetle, or be able to Stutter Sprint
 
 Earth Temple - Boss Key:
-  Can Access Earth Temple Last Room
+  Can Access Earth Temple Boss Door
 
 
 Can Beat Scaldera:
-  (Bomb Bag | Earth Temple - Bomb Flower Scaldera Trick) & Sword
-  # Scaldera can be beaten without bombs
+  (Bomb Bag & Sword) |
+  (Earth Temple - Bomb Flower Scaldera Trick & (
+    (Goddess Sword & Option "hero-mode" Enabled) |
+    (Goddess Longsword & Option "hero-mode" Enabled) |
+    Master Sword
+  )
+  # Scaldera can be beaten without bombs, see strats here: http://bombch.us/DPu1
 
 Can Beat Earth Temple:
-  Can Access Earth Temple Last Room & ET Boss Key & Can Beat Scaldera & Goddess Sword
+  Can Access Earth Temple Boss Door & ET Boss Key & Can Beat Scaldera & Goddess Sword
 
 
 Earth Temple - Scaldera Heart Container:
-  Can Access Earth Temple Last Room & Can Beat Scaldera
+  Can Access Earth Temple Boss Door & Can Beat Scaldera
 
 Earth Temple - Amber Tablet:
   Can Beat Earth Temple
@@ -1796,12 +1801,14 @@ Can Access LMF Hub Room:
 Can Access LMF Hub Room Unloaded:
   Can Access Lanayru Mining Facility & Can BiTWarp at Upper Academy
 
+
 Can Blow Up Boxes in LMF Hub Room:
   Bomb Bag | Hook Beetle
 
 Lanayru Mining Facility - First Chest in Hub Room:
   Can Access LMF Hub Room & Can Blow Up Boxes in LMF Hub Room
   # The path that requires a small key also need Hook Beetle or Bombs
+
 
 
 Can Access LMF Key-locked Part:
@@ -1830,6 +1837,7 @@ Lanayru Mining Facility - Inside Gust Bellows Room:
   Can Access LMF Key-locked Room in Past & Can Blow Up Rocks in LMF Gust Bellows Room
 
 
+
 Can Access LMF First West Room:
   Can Access LMF Second Room & Gust Bellows
   # To push box on the switch
@@ -1856,6 +1864,8 @@ Can Finish LMF Map Room:
 Lanayru Mining Facility - Map Chest:
   Can Finish LMF Map Room
 
+
+
 Can Access West Part of Hub Room:
   Can Finish LMF Map Room | (Can Access LMF Hub Room & Can BiTWarp at Upper Academy)
 
@@ -1866,6 +1876,7 @@ Lanayru Mining Facility - Behind First Crawlspace:
 
 Lanayru Mining Facility - Behind Second Crawlspace:
   Can Access West Part of Hub Room & Gust Bellows
+
 
 
 Can Access LMF Boss Key Door:
@@ -1887,6 +1898,8 @@ Can Access LMF Boss Key Room Exit:
   # RBM open the shortcut right above After Minecart Escort. Scene Flag Dx01 is "Block shortcut to bk room"
   # From Boss Door, Minecart Jump and activate timeshift stone
 
+
+
 Can Enter LMF Boss Key Room:
   (Can Get After LMF Minecart Escort & Gust Bellows) |
   Can Access LMF Boss Key Room Exit
@@ -1905,6 +1918,7 @@ Lanayru Mining Facility - Boss Key:
 
 Lanayru Mining Facility - Chest After Boss Key Room:
   Can Finish LMF Boss Key Room
+
 
 
 Lanayru Mining Facility - LMF Heart Container:
@@ -1940,18 +1954,25 @@ Can Enter Ancient Cistern Statue:
     Can Clip Into AC Whip Room
   )
 
+
 Ancient Cistern - Small Key Chest:
   Can Access Ancient Cistern & (Water Scale | Ancient Cistern - Lilypad Skip Trick) & Can Unlock Combination Lock
+  # Lilypad Skip is very difficult
+
+
 
 Can Clip Into AC Whip Room:
   Can Access Ancient Cistern & Can Do Cistern Clip & Water Scale & Ancient Cistern - Cistern Whip Room Clip Trick
 
 Ancient Cistern - Whip:
   (Can Enter Ancient Cistern Statue & Can Remove Ancient Cistern First Key-lock & (Can Defeat Stalmaster | Can Lower Ancient Cistern Statue)) | Can Clip Into AC Whip Room
+  # When using the clip, use the boms to deathwarp
+
 
 Ancient Cistern - Map Chest:
   (Can Access Ancient Cistern & Whip) | (Can Access AC Main Room Vines & Ancient Cistern - Map Chest Jump Trick)
   # The way down the gutters also requires Whip right after the waterfall. You can jump from the highest platform by the vines
+
 
 
 Can Stop AC Waterfall:
@@ -1976,6 +1997,7 @@ Ancient Cistern - Bokoblin:
 
 Can Resurface from the AC Gutters:
   Can Get to AC Boko Key Door & AC Small Key x2
+
 
 Can Access AC Main Room Vines:
   Can Access Ancient Cistern & (Clawshots | Can Resurface from the AC Gutters)
@@ -2042,7 +2064,8 @@ Sandship - Bow chest:
 
 Sandship - Heart Piece Chest:
   Can Access Sandship & Bow & (Clawshots | Sandship - Mast Jump Trick)
-  # This chest can be gotten without Clawshots with a good jump but then you must deathwarp
+  # This chest can be obtained without Clawshots with a good jump
+  # You must then deathwarp (you can use the bombflowers)
 
 Sandship - Map Chest:
   Can Freely Change Sandship Temporality & Bow
@@ -2137,10 +2160,11 @@ Can Access Second FS Bridge:
 
 Can Do Pillar Jump:
   Fire Sanctuary - Pillar Jump Trick & (Sword | Fire Sanctuary - Swordless Pillar Jump Trick)
+  # Note that if you fall without clawshots you're stuck. On Inner Map, there are bombflowers for a deathwarp, on Outer Map there are not
 
 Can Access Second Captured Mogma Room:
   Can Access Second FS Bridge & (Clawshots | Can Do Pillar Jump)
-  # Pillar Jump is an option. Note that if you fall without clawshots you're stuck
+  # Pillar Jump is an option.
 
 Can Watch Second Captured Mogma Liberation Cutscene:
   Can Access Second Captured Mogma Room & Mogma Mitts & Sword
@@ -2163,7 +2187,7 @@ Fire Sanctuary - Plats Chest:
   # Scene Flag 5x80 is "Heart Piece Chest appears"
 
 Can Access FS Boss Key Door:
-  Can Access FS Plats Room & Mogma Mitts
+  (Can Access FS Plats Room & Mogma Mitts) | Can Access FS Boss Key Room
 
 Can Reach Sleeping Statue:
   Can Access FS Boss Key Door | (Can Access FS Outdoor Unloaded & Can Do Pillar Jump)
@@ -2292,7 +2316,7 @@ Can Get Past SK Sandship Room:
   Can Access SK Sandship Room &
     Bow & Clawshots
 
-
+# Puzzle Logic (not completely optimised)
 
 Can Access SK Skyview Room:
   Can Access Sky Keep
@@ -2305,6 +2329,7 @@ Can Access SK Earth Temple Room:
 
 Can Access SK Mini Boss Room:
   Can Get Past SK Fire Sanctuary Room | Can Get Past SK Earth Temple Room
+  # Should be split into "Can Access From South" and "Can Access From West", so the Key Chest may not need Clawshots
 
 Can Access SK Ancient Cistern Room:
   Can Get Past SK LMF Room
