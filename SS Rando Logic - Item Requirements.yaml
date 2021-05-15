@@ -348,59 +348,175 @@ Can RBM Fx04: Impossible
 Can RBM Fx02: Impossible
 Can RBM Fx01: Impossible
 
+Can Set Scene Flag 0x04:
+  Nothing
+  # Skyloft is "Leave Kukiel's house"
+  # No need to include other areas
+
+Can Set Scene Flag 2x02:
+  Goddess Sword |
+  Impossible |
+  Can Get Past Deep Woods Bee Hive |
+  Can Access Lake Floria above Rock |
+  Can Access Second Part of Eldin |
+  Impossible |
+  Can Get Past Skipper's Rock |
+  Impossible |
+  Impossible |
+  Impossible |
+  Can Get Past Staldra Room |
+  (Can Access Earth Temple & Beetle) |
+  Can Access West Part of Hub Room |
+  (Can Access Ancient Cistern & Water Scale) |
+  (Can Access Sandship & SS Small Key x2 & Bow) |
+  (Can Access Second Captured Mogma Room & Mogma Mitts) |
+  Can Get Past SK Mini Boss Room
+
+  # Skyloft is "Skyward Strike on Tablet Pedestal"
+  # Sky is "Talk[ing] to Barkeeper after completing Hot Soup [Chandellier Quest pt 1] before beating ET"
+  # Sealed Grounds is "Ground Shaking"
+  # Faron Woods is "Push Down Highest Log in Deep Woods"
+  # Lake Floria is" Blow up rock revealing the path" (strictly more demanding than Faron Woods alternative)
+  # Eldin Volcano is "Tower leading to Hot cave falls"
+  # Lanayru Desert is not used
+  # Sand Sea is "Blow Up Rock in Skipper's Retreat"
+  # Boko Base / Volcano Summit is not used
+  # Lanayru Gorge is "Blow up rock in crawlspace blocking the entrance to Lanayru Gorge near Goron" (cannot be included, requires not having Clawshots) #UNSURE
+  # Flooded Faron is "Triggers Kikwi Elder Cutscene"
+  # Skyview is "Break 1st board blocking Staldra"
+  # Earth Temple is "Red Rupee on top of first drawbridge"
+  # Lanayru Mining Facility is "Set when getting close to first crawlspace" (should be confirmed) #UNSURE
+  # Ancient Cistern is "Flipped Lilypad revealing tunnel to small key" (may not need Scale) #UNSURE
+  # Sandship is "Beamos nearest BK defeated"
+  # Fire Sanctuary is "Right blue underground switch moving Gate in 2nd Trapped Mogma room"
+  # Sky Keep is "Dreadfuse defeated"
+
 
 Can Set Scene Flag 2x20:
+  Impossible |
+  Impossible |
   Can Learn BotG |
   (Can Get Past Deep Woods Bee Hive & Distance Activator) |
-  Can Access Lake Floria | Can Access Second Part of Eldin |
+  Can Access Lake Floria above Rock |
+  Can Access Second Part of Eldin |
   (Can Access Lanayru & Can Activate Mines First Timeshift Stone) |
+  Impossible |
+  Impossible |
+  Impossible |
+  Impossible |
   (Can Access Skyview & Can Hit Switch for Skyview Behind Bars) |
   (Can Access Earth Temple & Can Lower First ET Drawbridge) |
   Can Reach Armos Fight in LMF Boss Key Room |
+  Impossible |
+  Impossible |
   Can Watch Second Captured Mogma Liberation Cutscene |
-  Can Access Sky Keep  # | Can Heal Thunder Dragon | Can Access Flooded Faron  # Have blown up rock inside Flooded Great Tree
-  # Have played the harp tutorial (first part)
-  # Have opened the door to Skyview (Entrance)
-  # Have blown "middle rock near underwater statue revealing silver rupee"
-  # Have blown rock blocking digging spot in big slope
-  # Have talked to "robot near first timeshift stone" (I don't know if present or past)
-  # Have hit Switch for Skyview - Behind Bars
-  # Have hit "high rope" in Earth Temple
-  # Have "hit crystal 1 in bk room" in LMF
-  # Have "First Trapped Mogma appear after learning about the secret bombable wall"
-  # Have the first iron bars in Sky Keep entrance room rise up (open the first chest)
+  Can Access Sky Keep
+
+  # Skyloft is "Play Ballad of the Goddess on top of light tower"
+  # Sky is not used
+  # Sealed Temple is Have played the harp tutorial (first part)
+  # Faron Woods is Have opened the door to Skyview (Entrance)
+  # Lake Floria is "Blow up middle rock near underwater statue revealing silver rupee"
+  # Eldin Volcano is Have blown rock blocking digging spot in big slope
+  # Lanayru Desert is Have talked to "robot near first timeshift stone" (I don't know if present or past) #UNSURE
+  # Sand Sea is not used
+  # Boko Base / Volcano Summit is not used
+  # Lanayru Gorge is "Trigger Fi Text after giving fruit to Dragon"
+  # Flooded Faron is "Blow up right rock inside Flooded Great Tree"
+  # Skyview is Have hit Switch for Behind Bars
+  # Earth Temple is "Cut High Rope in First Room"
+  # LMF is "Hit crystal 1 in bk room"
+  # Ancient Cistern is not used
+  # Sandship is not used
+  # Fire Sanctuary is "First Trapped Mogma appears after learning about the secret bombable wall"
+  # Sky Keep is Have the first iron bars in Sky Keep entrance room rise up (open the first chest)
+
 
 Can Set Scene Flag 3x02:
   Can Cut Tree |
+  (Can Access Thunderhead & Mogma Mitts) |
+  Impossible |
   (Can Access Most of Faron Woods & Goddess Harp & Farore's Courage) |
+  Impossible |
   Can Access Second Part of Eldin |
   (Can Access Second Part of Lanayru Mines & (Bomb Bag | Hook Beetle)) |
   (Can Get Past Peahat and Boko Baba & Gust Bellows) |
+  Impossible |
+  Impossible |
+  Impossible |
   (Can Get to Skyview Second Part & Beetle & Sword) |
+  Impossible |
   (Can Access LMF First West Room & Gust Bellows) |
   Can Access Ancient Cistern |
-  Can Freely Change Sandship Temporality #|
-  #Can Access First FS Magmanos Room
+  Can Freely Change Sandship Temporality |
+  Impossible |
+  Impossible
 
-  # Cut Trees to Waterfall Cave
-  # Open Faron Trial
-  # Blow up Boulder covering [Key Piece] Patch after draining lava
-  # In Mines, Bomb down "upper left" Statue
-  # Open [Ancient Sea Chart] Chest
-  # Gate after 3 Eyes (gate for [2nd small key] Chest)
-  # Earth Temple would be Map Obtained, but the cutscene (which is probably responsible for the bit) may not happen
-  # Raise Wind Gate in Left Room
-  # Watch Cutscene of Flipping Lilypad in [Small Key] Chest Room
-  # Kill (one of) the technoblins in "basement"
-  # Fire Sanctuary would be Watch First Magmanos Cutscene, but I don't know if it has been removed
+  # Skyloft is "Cut Trees in front of [Waterfall] Cave"
+  # Sky is "Opened Ground Patch on [Mogma Mitts] island inside Thunderhead ([quiver] chest)"
+  # Sealed Grounds is "Set after Impa asks Link to seal Imp 1" (may in fact be set) #UNSURE
+  # Faron Woods is Open Faron Trial
+  # Lake Floria is unused
+  # Eldin Volcano is Blow up Boulder covering [Key Piece] Patch after draining lava
+  # Lanayru Desert is Bomb down "upper left" Statue in Mines
+  # Sand Sea is "Open [Ancient Sea Chart] Chest"
+  # Boko Base / Volcano Summit is "Bonk into Temple Entrance boko camp cauldron for heart"
+  # Lanayru Gorge is "Blow up rock on platform near minecart escort locked door"
+  # Flooded Faron is not used
+  # Skyview is Gate after 3 Eyes ("gate for [2nd small key] Chest")
+  # Earth Temple is "Map Obtained", but the cutscene (which is probably responsible for the bit) may not happen #UNSURE
+  # LMF is Raise Wind Gate in Left Room
+  # Ancient Cistern is Watch Cutscene of Flipping Lilypad in [Small Key] Chest Room
+  # Sandship is Defeat (one of) the technoblins in "basement"
+  # Fire Sanctuary is Watch First Magmanos Cutscene, but I don't know if it has been removed, or if it is always set #UNSURE
+  # Sky Keep is unused
 
+
+Can Set Scene Flag 5x04:
+  Can Unlock Zelda's Room |
+  Impossible |
+  Can Access Hylia's Temple |
+  Can Get Past Deep Woods Bee Hive |
+  Can Access Lake Floria above Rock |
+  (Can Access Second Part of Eldin & (Digging Miits | Hook Beetle)) |
+  (Can Access Second Part of Lanayru Mines & (Bomb Bag | Hook Beetle)) |
+  Impossible |
+  Impossible |
+  Impossible |
+  Impossible |
+  Impossible |
+  Impossible |
+  (Can Access LMF Boss Key Door & Gust Bellows & Can Defeat Beamos) |
+  (Can Access Ancient Cistern & Water Scale) |
+  (Can Freely Change Sandship Temporality & SS Small Key x2) |
+  (Can Access FS Plats Room & Mogma Mitts) |
+  Impossible
+
+  # Skyloft is "Drop down into Academy Chimney / Zelda's Door Unlocked"
+  # Sky is "Fi Text after obtaining Song of the Hero" #UNSURE
+  # Sealed Grounds is "Check Hylia's Temple Statue"
+  # Faron Woods is "Finish talking to Goron for first time" #UNSURE
+  # Lake Floria is "Check underwater statue"
+  # Eldin Volcano is Blow up "Boulder blocking Goddess Cube"
+  # Lanayru Desert is "Talk to Robot near Main Node"
+  # Sand Sea is "Finish Watching Shipyard Intro Cutscene" #UNSURE
+  # Boko Base / Volcano Summit is "Panning cutscene showing peahats" #UNSURE
+  # Lanayru Gorge is "Fi Text after opening chest in Lanayru Caves" #UNSURE
+  # Flooded Faron is "Circle of 8 light blue Tadtones collected"
+  # Skyview is "Call Fi near door when locked inside Beetle Room (also set after hitting Beetle Room switch from inside" #UNSURE
+  # Earth Temple is "Right peg pushed first" (cannot always be set) #UNSURE
+  # LMF is "Beamos in Hub Room defeated" (Which one ? I assume the one blocking the minecart) #UNSURE
+  # Ancient Cistern is "Red Rupee in underwater tunnel to Small Key [Chest]"
+  # Sandship is "BK Room Window Closing Cutscene" #UNSURE
+  # Fire Sanctuary is "Statue in Lava River [Plats] room"
+  # Sky Keep is "Lava isn't flowing from 2nd Dragon Mouth in Power Room?" #UNSURE
 
 
 
 Can Set Scene Flag 9x20:
   Nothing
-  # Talk to young customer in Lumpy Pumpkin (after meeting Batreaux)
-  # Can also be set elsewhere, but this instance requires nothing
+  # Sky is Talk to young customer in Lumpy Pumpkin (after meeting Batreaux)
+  # No need to include other areas
 
 ### Skyloft
 
@@ -874,8 +990,19 @@ Can Access Faron:
 Can Access Sealed Temple:
   Can Access Faron
 
+Sealed Grounds - Inside Sealed Temple:
+  Can Access Sealed Temple
+
+
+Can Learn BotG:
+  Can Access Sealed Temple & Goddess Harp
+
+Sealed Grounds - Ballad of the Goddess:
+  Can Learn BotG
+
 Can Raise Gate of Time:
-  Goddess Harp & Can Access Sealed Temple
+  Can Learn BotG
+
 
 Can Open GOT After Raising:
   (Option "got-sword-requirement" Is "Goddess Sword" & Goddess Sword) |
@@ -884,20 +1011,14 @@ Can Open GOT After Raising:
   (Option "got-sword-requirement" Is "Master Sword" & Master Sword) |
   (Option "got-sword-requirement" Is "True Master Sword" & True Master Sword)
 
+Can Access Hylia's Temple:
+  Can Access Sealed Temple & Can Access Past
 
-Sealed Grounds - Inside Sealed Temple:
-  Can Access Sealed Temple
-
-Can Learn BotG:
-  Can Access Sealed Temple & Goddess Harp
-
-Sealed Grounds - Ballad of the Goddess:
-  Can Learn BotG
+Sealed Grounds - True Master Sword:
+  Can Access Hylia's Temple
 
 Sealed Grounds - Gorko Goddess Wall Reward:
-  Can Access Sealed Temple
-  & Can Unlock Goddess Walls
-  & Goddess Sword
+  Can Access Sealed Temple & Can Unlock Goddess Walls & Goddess Sword
 
 #Sealed Grounds - Behind the Temple Triforce on goddess wall:
 #  Can Access Sealed Temple
@@ -905,9 +1026,6 @@ Sealed Grounds - Gorko Goddess Wall Reward:
 #  & Bow
 #  & Bomb Bag
 #  & Can Access Levias
-
-Sealed Grounds - True Master Sword:
-  Can Access Sealed Temple & Can Access Past
 
 
 ## Faron Woods
@@ -1011,14 +1129,18 @@ Faron Woods - Chest Inside Great Tree:
 
 ## Lake Floria
 
-Can Access Lake Floria:
-  (Can Talk to Yerbal & Goddess Sword & Water Scale) | (Can Access Floria Waterfall & Water Scale)
+Can Access Lake Floria above Rock:
+  (Can Talk to Yerbal & Goddess Sword & Water Scale)
   # You need to charge a skyward strike to open the door to Lake Floria
+
+Can Access Lake Floria Statue:
+  Can Access Lake Floria above Rock | (Can Access Floria Waterfall & Water Scale)
+  # You need to bllow up a rock to access Floria Statue from above, this is one-way
 
 Can Access Floria Waterfall:
   Can Access Lake Floria |
   (Can Access Most of Faron Woods & (
-    Early Lake Floria - Fence Hop Trick |
+    (Early Lake Floria - Fence Hop Trick & Sword) |
     Can RBM 3x40
   ))
   # Scene Flag 3x40 is "Log leading to Lake Floria"
@@ -1618,7 +1740,7 @@ Can Get to Skyview Second Part:
 Can Get Past Staldra Room:
   (
     (Can Get to Skyview Second Part & SV Small Key x2) |
-    (Can Get to Skyview Last Room & Can Get Past Skulltula) |
+    (Can Get to Skyview Last Room & Can Defeat or Evade Skyview Hanging Skulltula) |
     Can Get to Skyview Second Part Unloaded
   ) & (Sword | Bomb Bag)
   # To get accross the rope with boko babas, hang down on the rope and go accross that way.
@@ -1647,13 +1769,13 @@ Skyview - Behind Three Eyes:
 
 # Last room
 
-Can Get Past Skulltula:
+Can Defeat or Evade Skyview Hanging Skulltula:
   Bomb Bag | Goddess Sword | Beetle | Bow | Can Access Skyview 2
   # A bomb knocks the Skulltula away. A skyward strike can knock it away too.
   # Both the Beetle and the bow can cut it down. There is no spider anymore in Skyview.
 
 Can Get to Skyview Last Room:
-  (Can Get Past Staldra Room & Can Get Past Skulltula) |
+  (Can Get Past Staldra Room & Can Defeat or Evade Skyview Hanging Skulltula) |
   (Can Get to Skyview Second Part & Can RBM 3x80)
   # Scene Flag 3x80 is "Hit Crystal Switch connecting Hub Room to [Last Room]"
 
