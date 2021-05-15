@@ -1261,7 +1261,7 @@ Lanayru Mines - End of Mines:
 # First Part
 
 Can Access Lanayru Desert:
-  Can Access Second Part of Lanayru Mines | Can Access Lanayru Caves
+  Can Access Second Part of Lanayru Mines | Can Access Sand Oasis
 
 
 Can Access Higher Part near Entrance:
@@ -1288,14 +1288,49 @@ Goddess Cube near Hook Beetle Fight:
   # On hero mode you can skyward strike this one early with a jumpslash
 
 
-# Temple of Time
+# Before Temple of Time
 
-Can Access Front of Temple of Time:
-  (Can Access Lanayru Desert | Can Access Second Part of Lanayru Desert) & (Hook Beetle | Clawshots)
+Can Access Sand Oasis:
+  (Can Access Lanayru Desert & (
+    Hook Beetle | Clawshots |
+    (Lanayru Desert - Brakeslide to Sand Oasis Trick & (
+      (Long Range Skyward Strike | Bomb Bag | Bow) |
+      (Lanayru Desert - Spume Brakeslide Trick & Sword)
+    ))) |
+  Can Access West Desert Statue
+  # Killing the spume makes the brakeslide easier
+  # It may be possible to do the brakeslide with spume swordless
 
+Can Access West Desert Statue:
+  (Can Access Sand Oasis & (Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick)) |
+  (Can Access Lanayru Desert & Clawshots) |
+  Can Access Lanayru Caves
+  # When you kill the ampilus, you can reach the other side without brakeslide.
+  # When using the sword, rush it in the sand to defeat it, drowning in the sand won't make it respawn
 
 Goddess Cube in Sand Oasis:
-  Can Access Front of Temple of Time & Goddess Sword
+  Can Access West Desert Statue & Goddess Sword
+
+Lanayru - Chest Near Sand Oasis:
+  Can Access Lanayru Desert & (Clawshots | Can BiTWarp at Sealed Grounds Spiral)
+  # Hope this is really a BiTWarp from desert and not from Mines
+
+
+# Temple of Time
+
+Can Access Desert Gorge Statue:
+  (Can Access West Desert Statue & (Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick | Clawshots)) |
+  (Can Access Second Part of Lanayru Desert & Distance Activator)
+  Can Access Lanayru Caves
+  # When using the sword, rush it in the sand to defeat it, drowning in the sand won't make it respawn
+
+
+Can Access Front of Temple of Time:
+  (Can Access Desert Gorge Statue & Hook Beetle) |
+  Can Beat Dungeon Entrance In Lanayru Desert
+  # Beating the dungeon will make one spawn inside ToT
+  # If you already beat the dungeon and forgot to activate the ToT statue, RBM it with scene flag 8x40 "Check Temple of Time Statue"
+
 
 Goddess Cube at ride in ToT area:
   Can Access Front of Temple of Time & Hook Beetle & Goddess Sword
@@ -1352,12 +1387,6 @@ Lanayru - Chest Next to Trial:
 
 Lanayru - Chest on Platform Near Fire Node:
   Can Access Second Part of Lanayru Desert & Clawshots
-
-Lanayru - Chest Near Sand Oasis:
-  (Can Access Second Part of Lanayru Desert & Clawshots) |
-  (Can Access Lanayru Desert & Can BiTWarp at Sealed Grounds Spiral)
-  # Hope this is really a BiTWarp from desert and not from Mines
-
 
 
 # Lightning Node
