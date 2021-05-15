@@ -206,9 +206,12 @@ Can Get Past Deep Woods Bee Hive BiT:
 Can Access Floria Waterfall BiT:
   Can Access Most of Faron Woods BiT & Can Access Floria Waterfall
 
-Can Access Lake Floria BiT:
-  Can Access Most of Faron Woods BiT & Can Access Lake Floria
-  # The Yerbal route may be blocked
+Can Access Lake Floria above Rock BiT:
+  Can Access Most of Faron Woods BiT & Can Access Lake Floria above Rock
+  # The Yerbal requirement should be replaced with BiTMagic
+
+Can Access Lake Floria Statue BiT:
+  Can Access Most of Faron Woods BiT & Can Access Lake Floria Statue
 
 
 Can Do Bed Trick~:
@@ -232,7 +235,7 @@ Can BiTWarp at Behind the Temple:
 # Can RBM 0x40: Impossible
 Can RBM 0x20:
   (Can Access Skyloft BiT & (Can Access Sky BiT | Clawshots) & Gust Bellows) |
-  Can Access Most of Faron BiT
+  Can Access Most of Faron Woods BiT
   # Skyloft: Get Baby Rattle check
   # Sky: Impossible, Fi Text about Goddess Cubes
   # Sealed Grounds: Impossible, Door to Sealed Temple unlocks
@@ -426,7 +429,7 @@ Can RBM 5x04:
   # Lake Floria: Check underwater statue #UNSURE: Possible ? Requirements ?
 
 Can RBM 5x02:
-  Can Access Night-time Skyloft | Can Access Lumpy Pumpkin BiT
+  Can Access Night-time Skyloft BiT | Can Access Lumpy Pumpkin BiT
   # Skyloft: Open Shed Door at Night
   # Sky: Talk to Lumpy Pumpkin Barkeep #UNSURE
   # Sealed Grounds: Check Hylia's Realm Statue #UNSURE (strictly harder than Skyloft)
@@ -455,7 +458,7 @@ Can RBM 6x08:
 Can RBM 7x10:
   Impossible |
   (Can Access Most of Faron Woods BiT & Can Open Door to Lake Floria) |
-  Can Access Lake Floria BiT
+  Can Access Lake Floria Statue BiT
   # Skyloft: Impossible, Talk to Handiman by Upper Academy before meeting Zelda #UNSURE
   # Sky: Impossible, Goddess Crest for Din's Power / Eldin Trial
   # Sealed Grounds: #TODO, Set when collecting Fruit of Life
@@ -1416,7 +1419,7 @@ Can Access Lake Floria Statue:
   # You need to bllow up a rock to access Floria Statue from above, this is one-way
 
 Can Access Floria Waterfall:
-  Can Access Lake Floria |
+  Can Access Lake Floria Statue |
   (Can Access Most of Faron Woods & (
     (Early Lake Floria - Fence Hop Trick & Sword) |
     Can RBM 3x40
@@ -1429,13 +1432,13 @@ Can Access Dungeon Entrance In Lake Floria:
 
 
 Lake Floria - Lake Floria Chest:
-  Can Access Lake Floria
+  Can Access Lake Floria Statue
 
 Lake Floria - Lake Floria Silver Rupee: # currently not randomized
-  Can Access Lake Floria
+  Can Access Lake Floria Statue
 
 Goddess Cube in Lake Floria:
-  Can Access Lake Floria & Goddess Sword
+  Can Access Lake Floria Statue & Goddess Sword
 
 
 
@@ -1691,12 +1694,11 @@ Goddess Cube near Hook Beetle Fight:
 # Before Temple of Time
 
 Can Access Sand Oasis:
-  (Can Access Lanayru Desert & (
-    Hook Beetle | Clawshots |
-    (Lanayru Desert - Brakeslide to Sand Oasis Trick & (
+  (Can Access Lanayru Desert & (Hook Beetle | Clawshots)) |
+  (Can Access Lanayru Desert & Lanayru Desert - Brakeslide to Sand Oasis Trick & (
       (Long Range Skyward Strike | Bomb Bag | Bow) |
       (Lanayru Desert - Spume Brakeslide Trick & Sword)
-    ))) |
+    )) |
   Can Access West Desert Statue
   # Killing the spume makes the brakeslide easier
   # It may be possible to do the brakeslide with spume swordless
@@ -2168,7 +2170,7 @@ Can Beat Scaldera:
     (Goddess Sword & Option "hero-mode" Enabled) |
     (Goddess Longsword & Option "hero-mode" Enabled) |
     Master Sword
-  )
+  ))
   # Scaldera can be beaten without bombs, see strats here: http://bombch.us/DPu1
 
 Can Beat Earth Temple:
