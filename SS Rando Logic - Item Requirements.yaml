@@ -227,35 +227,36 @@ Can BiTWarp at Behind the Temple:
 # Can RBM 0x80: Impossible
 # Can RBM 0x40: Impossible
 Can RBM 0x20:
-  Can Access Skyloft BiT & (Can Access Sky BiT | Clawshots) & Gust Bellows
-  # Skyloft: Get Baby Rattle check #UNSURE
-  # Sky: Impossible, Fi Text about Goddess Cubes #UNSURE
-  # Sealed Grounds: Impossible, Door to Sealed Temple unlocks #UNSURE
-  # Faron Woods: Impossible, Fi Text before bonking Lopsa's tree #UNSURE
-  # Lake Floria: Impossible, Parella text after blowing up rock #UNSURE
+  (Can Access Skyloft BiT & (Can Access Sky BiT | Clawshots) & Gust Bellows) |
+  Can Access Most of Faron BiT
+  # Skyloft: Get Baby Rattle check
+  # Sky: Impossible, Fi Text about Goddess Cubes
+  # Sealed Grounds: Impossible, Door to Sealed Temple unlocks
+  # Faron Woods: Fi Text before bonking Lopsa's tree
+  # Lake Floria: Impossible, Parella text after blowing up rock
 
 # Can RBM 0x10: Impossible
 # Can RBM 0x08: Impossible
 Can RBM 0x04:
   Can Access Skyloft BiT
-  # Skyloft: Leave Kukiel's House #UNSURE
+  # Skyloft: Leave Kukiel's House
+  # No need to include other areas
 
 # Can RBM 0x02: Impossible
 Can RBM 0x01:
-  Can Access Sky BiT | (Can Access Most of Faron Woods BiT & Bomb Bag)
-  # Skyloft: Impossible, Seen Cutscene After Getting Hero's Tunic #UNSURE
-  # Sky: Refuse to help Barkeep 1 #UNSURE
-  # Sealed Grounds: Impossible, Set when map opens up with Impa #UNSURE
-  # Faron Woods: Blow Up Rocks containing Chest near Erla
+  Can Access Sky BiT
+  # Skyloft: Impossible, Seen Cutscene After Getting Hero's Tunic
+  # Sky: Refuse to help Barkeep 1
+  # Sealed Grounds: Impossible, Set when map opens up with Impa
+  # Faron Woods: Blow Up Rocks containing Chest near Erla (strictly harder than Sky)
   # Lake Floria: Unused
 
 Can RBM 1x80:
-  (Can Access Skyloft BiT & (Can Access Sky BiT | Clawshots) & Goddess Harp) |
   Can Access Sky BiT |
   (Can Access Most of Faron Woods BiT & Bomb Bag)
-  # Skyloft: Reveal Gossip Stone above Waterfall Cave
-  # Sky: Break Lumpy Pumpkin Chandelier #UNSURE
-  # Sealed Grounds: Impossible, active Air Gusts #UNSURE
+  # Skyloft: Impossible, Reveal Gossip Stone above Waterfall Cave
+  # Sky: Break Lumpy Pumpkin Chandelier
+  # Sealed Grounds: Impossible, active Air Gusts
   # Faron Woods: Blow Up Rocks containing [HP]
   # Lake Floria: Unused
 
@@ -267,9 +268,9 @@ Can RBM 1x80:
 Can RBM 1x02:
   Can Access Most of Faron Woods BiT
   # Skyloft: Impossible, Meet Zelda / Upper Academy Doors Unlocked
-  # Sky: Impossible, Bridge formed to Isle of Songs #UNSURE
-  # Sealed Grounds: Impossible [Should exist]
-  # Faron Woods: Lopsa can be talked to #UNSURE
+  # Sky: Impossible, Bridge formed to Isle of Songs
+  # Sealed Grounds: Impossible, [Should exist]
+  # Faron Woods: Lopsa can be talked to
   # Lake Floria: Impossible, Talk to Water Dragon after Tadtones
 
 Can RBM 1x01:
@@ -277,8 +278,8 @@ Can RBM 1x01:
   # Skyloft: Impossible, Meet Zelda / Lower Academy Doors Unlocked
   # Sky: Unused
   # Sealed Grounds: Impossible, [Unlocks Door to Horde on layer 13/14]
-  # Faron Woods: Machi can be talked to #UNSURE
-  # Lake Floria: Strictly harder, Set after First Selection during Water Dragon text
+  # Faron Woods: Machi can be talked to
+  # Lake Floria: Set after First Selection during Water Dragon text (strictly harder than Faron Woods)
 
 # Can RBM 2x80: Impossible
 Can RBM 2x40:
@@ -296,6 +297,7 @@ Can RBM 2x40:
 Can RBM 2x04:
   Can Access Skyloft BiT
   # Skyloft: Fortune Teller talks to you in Skyloft #UNSURE
+  # No need to include other areas
 
 Can RBM 2x02:
   (Can Access Skyloft BiT & Goddess Sword & Impossible) |
@@ -319,6 +321,7 @@ Can RBM 3x80:
   Can Access Skyloft BiT | Can Access Sky BiT
   # Skyloft: Talk to Fledge after delivering barrel
   # Sky: Enter Lumpy Pumpkin Cutscene #UNSURE
+  # No need to include other areas
 
 Can RBM 3x40:
   Can Access Skyloft BiT | Can Access Faron BiT
@@ -348,38 +351,120 @@ Can RBM 3x02:
   # Lake Floria: Unused
 
 # Can RBM 3x01: Impossible
-Can RBM 4x80: Impossible
-Can RBM 4x40: Impossible
-Can RBM 4x20: Impossible
-Can RBM 4x10: Impossible
-Can RBM 4x08: Impossible
-Can RBM 4x04: Impossible
-Can RBM 4x02: Impossible
-Can RBM 4x01: Impossible
-Can RBM 5x80: Impossible
-Can RBM 5x40: Impossible
-Can RBM 5x20: Impossible
-Can RBM 5x10: Impossible
-Can RBM 5x08: Impossible
-Can RBM 5x04: Impossible
-Can RBM 5x02: Impossible
-Can RBM 5x01: Impossible
-Can RBM 6x80: Impossible
-Can RBM 6x40: Impossible
-Can RBM 6x20: Impossible
-Can RBM 6x10: Impossible
-Can RBM 6x08: Impossible
-Can RBM 6x04: Impossible
-Can RBM 6x02: Impossible
-Can RBM 6x01: Impossible
-Can RBM 7x80: Impossible
-Can RBM 7x40: Impossible
-Can RBM 7x20: Impossible
-Can RBM 7x10: Impossible
-Can RBM 7x08: Impossible
-Can RBM 7x04: Impossible
-Can RBM 7x02: Impossible
-Can RBM 7x01: Impossible
+Can RBM 4x80:
+  Can Access Skyloft BiT
+  # Skyloft: Check Bazaar Statue
+  # No need to include other areas
+
+Can RBM 4x40:
+  Can Access Skyloft BiT
+  # Skyloft: Check Lower Academy Statue
+  # No need to include other areas
+
+# Can RBM 4x20: Impossible
+# Can RBM 4x10: Impossible
+# Can RBM 4x08: Impossible
+Can RBM 4x04:
+  Can Access Most of Faron Woods BiT
+  # Skyloft: Impossible, Talk to Orielle after meeting Zelda #UNSURE
+  # Sky: Impossible, Break Boulder near Fun Fun Island with Spiral Charge
+  # Sealed Grounds: Impossible, Groose text after sealing Imp 3
+  # Faron Woods: Pick up Blue Rupee near Kikwi Elder
+  # Lake Floria: Cutscene after breaking First Barricade (strictly harder than Faron Woods)
+
+Can RBM 4x02:
+  Can Access Most of Faron Woods BiT & Beetle
+  # Skyloft: Impossible, Talk to Horwell after meeting Zelda #UNSURE
+  # Sky: Impossible, Break Boulder near Lumpy Pumpkin with Spiral Charge
+  # Sealed Grounds: Impossible, Groose text after sealing Imp 2
+  # Faron Woods: Pick up Red Rupee near Kikwi Elder with Beetle
+  # Lake Floria: Cutscene after breaking First Barricade (strictly harder than Faron Woods)
+
+Can RBM 4x01:
+  Can Access Skyloft BiT |
+  (Can Access Sky BiT & Bomb Bag)
+  (Can Access Most of Faron Woods BiT & Beetle)
+  # Skyloft: Talk to Fledge in Academy after meeting Zelda #UNSURE
+  # Sky: Blow up rocks on Northeastern Island
+  # Sealed Grounds: Impossible, [Should Exist]
+  # Faron Woods: Pick up Red Rupee on ledge near Lake Hylia doors with Beetle
+  # Lake Floria: Cutscene after breaking First Barricade (strictly harder than Faron Woods)
+
+Can RBM 5x80:
+  Can Access Skyloft BiT
+  # Skyloft: Talk to Fledge in Academy
+  # Sky: Unused
+  # Sealed Grounds: Log push connecting areas
+  # Faron Woods: Blue Bokoblin near log to Floria Waterfall defeated (strictly harder than Skyloft)
+  # Lake Floria: Unused
+
+# Can RBM 5x40: Impossible
+# Can RBM 5x20: Impossible
+# Can RBM 5x10: Impossible
+Can RBM 5x08:
+  Can Access Skyloft BiT | Can Access Faron BiT |
+  (Can Get Past Deep Woods Bee Hive BiT & Goddess Sword)
+  # Skyloft: Talk to Pipit in Academy during intro #UNSURE
+  # Sky: Impossible, Isle of Songs introductory cutscene #UNSURE
+  # Sealed Grounds: Checked Sealed Grounds Statue / Save Goron #UNSURE
+  # Faron Woods: Goron Cutscene after striking Goddess Cube #UNSURE
+  # Lake Floria: Unused
+
+Can RBM 5x04:
+  (Can Access Faron BiT & Can Access Hylia's Temple) |
+  Can Get Past Deep Woods Bee Hive |
+  Can Access Lake Floria above Rock
+  # Skyloft: Impossible, Drop down into Academy Chimney / Zelda's Door Unlocked
+  # Sky: Impossible, Fi Text after obtaining Song of the Hero #UNSURE
+  # Sealed Grounds: Check Hylia's Temple Statue #UNSURE
+  # Faron Woods: Finish talking to Goron for first time #UNSURE
+  # Lake Floria: Check underwater statue #UNSURE
+
+Can RBM 5x02:
+  Can Access Night-time Skyloft | Can Access Sky BiT
+  # Skyloft: Open Shed Door at Night
+  # Sky: Talk to Lumpy Pumpkin Barkeep #UNSURE
+  # Sealed Grounds: Check Hylia's Realm Statue #UNSURE (strictly harder than Skyloft)
+  # Faron Woods: Heart Piece behind Rocks #UNSURE (strictly harder than Skyloft)
+  # Lake Floria: Check Floria Waterfall statue #UNSURE (strictly harder than Skyloft)
+
+# Can RBM 5x01: Impossible
+# Can RBM 6x80: Impossible
+# Can RBM 6x40: Impossible
+# Can RBM 6x20: Impossible
+# Can RBM 6x10: Impossible
+Can RBM 6x08:
+  Can Access Skyloft BiT
+  # Skyloft: Talk to Training Hall guy after getting green tunic with no shield #UNSURE
+  # Sky: Unused
+  # Sealed Grounds: Impossible, Cutscene of Groose being mad at himself after Imp 1
+  # Faron Woods: Set after Fi Text for opening the doors to Lake Floria #UNSURE (strictly harder than Skyloft)
+  # Lake Floria: Unused
+
+# Can RBM 6x04: Impossible
+# Can RBM 6x02: Impossible
+# Can RBM 6x01: Impossible
+# Can RBM 7x80: Impossible
+# Can RBM 7x40: Impossible
+# Can RBM 7x20: Impossible
+Can RBM 7x10:
+  Impossible |
+  (Can Access Most of Faron Woods BiT & Can Open Door to Lake Floria) |
+  Can Access Lake Floria BiT
+  # Skyloft: Impossible, Talk to Handiman by Upper Academy before meeting Zelda #UNSURE
+  # Sky: Impossible, Goddess Crest for Din's Power / Eldin Trial
+  # Sealed Grounds: #TODO, Set when collecting Fruit of Life
+  # Faron Woods: Fi Text after opening door to Lake Floria #UNSURE What triggers this being possible ? Does talking to Yerbal work ?
+  # Lake Floria: Cranioc defeated #UNSURE
+
+# Can RBM 7x08: Impossible
+# Can RBM 7x04: Impossible
+Can RBM 7x02:
+  Can Access Skyloft BiT
+  # Skyloft: Check Upper Academy Statue
+  # No need to include other areas
+
+# Can RBM 7x01: Impossible
 Can RBM 8x80: Impossible
 Can RBM 8x40: Impossible
 Can RBM 8x20: Impossible
@@ -575,7 +660,7 @@ Can Set Scene Flag 5x04:
   Can Access Hylia's Temple |
   Can Get Past Deep Woods Bee Hive |
   Can Access Lake Floria above Rock |
-  (Can Access Second Part of Eldin & (Digging Miits | Hook Beetle)) |
+  (Can Access Second Part of Eldin & (Digging Mitts | Hook Beetle)) |
   (Can Access Second Part of Lanayru Mines & (Bomb Bag | Hook Beetle)) |
   Impossible |
   Impossible |
@@ -1139,6 +1224,9 @@ Can Reach Oolo in Faron 2:
   # Must push down log near Lopsa's first position
   # Scene Flag 2x01 is "Log after Lopsa is pushed down"
 
+Can Open Door to Lake Floria:
+  Can Talk to Yerbal & Goddess Sword
+  # You need to charge a skyward strike to open the door to Lake Floria
 
 Faron Woods - Heart Piece on Tree:
   Can Access Most of Faron Woods
@@ -1230,8 +1318,7 @@ Faron Woods - Chest Inside Great Tree:
 ## Lake Floria
 
 Can Access Lake Floria above Rock:
-  (Can Talk to Yerbal & Goddess Sword & Water Scale)
-  # You need to charge a skyward strike to open the door to Lake Floria
+  Can Open Door to Lake Floria
 
 Can Access Lake Floria Statue:
   Can Access Lake Floria above Rock | (Can Access Floria Waterfall & Water Scale)
