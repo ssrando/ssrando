@@ -307,7 +307,7 @@ Can RBM 2x02:
   # Lake Floria: Blow up rock revealing the path (strictly more demanding than Faron Woods alternative) #UNSURE
 
 Can RBM 2x01:
-  (Chandellier Quest Over & Situational BiT Trick) |
+  (Chandelier Quest Over & Situational BiT Trick) |
   (Can Access Most of Faron Woods BiT & Bomb Bag)
   # Skyloft: Unused
   # Sky: Situational, Cutscene showing new Chandelier #UNSURE
@@ -328,7 +328,7 @@ Can RBM 3x40:
 
 # Can RBM 3x20: Impossible
 Can RBM 3x10:
-  (Can Access Sky BiT & Chandellier Quest Part 1) |
+  (Can Access Sky BiT & Chandelier Quest Part 1) |
   Can Access Most of Faron Woods BiT
   # Skyloft: Impossible, Set after Talking to Professor Owlan with Hero's Tunic #UNSURE
   # Sky: Start Hot Soup Delivery Quest in the Lumpy Pumpkin #UNSURE need bottle ?
@@ -470,7 +470,7 @@ Can Set Scene Flag 2x02:
   Can Get Past SK Mini Boss Room
 
   # Skyloft is "Skyward Strike on Tablet Pedestal"
-  # Sky is "Talk[ing] to Barkeeper after completing Hot Soup [Chandellier Quest pt 1] before beating ET"
+  # Sky is "Talk[ing] to Barkeeper after completing Hot Soup [Chandelier Quest pt 1] before beating ET"
   # Sealed Grounds is "Ground Shaking"
   # Faron Woods is "Push Down Highest Log in Deep Woods"
   # Lake Floria is "Blow up rock revealing the path" (strictly more demanding than Faron Woods alternative)
@@ -933,7 +933,7 @@ Sky - Breakable Boulder near Fun Fun island:
 
 ## Sky - South East
 
-Sky - Lumpy Pumpkin Chandellier:
+Sky - Lumpy Pumpkin Chandelier:
   Nothing
 
 Sky - Crystal outside Lumpy Pumpkin:
@@ -942,27 +942,27 @@ Sky - Crystal outside Lumpy Pumpkin:
 Sky - Crystal inside Lumpy Pumpkin:
   Can Get Gratitude Crystals
 
-Chandellier Quest Part 0: # Break the chandellier
+Chandelier Quest Part 0: # Break the Chandelier
   Nothing
 
-Chandellier Quest Part 1: # Deliver hot soup
-  Chandellier Quest Part 0 & Bottle
+Chandelier Quest Part 1: # Deliver hot soup
+  Chandelier Quest Part 0 & Bottle
 
-Chandellier Quest Part 2: # Bring the pumpkins
-  Chandellier Quest Part 1 & Nothing
+Chandelier Quest Part 2: # Bring the pumpkins
+  Chandelier Quest Part 1 & Nothing
 
-Chandellier Quest Part 3: # Play the harp
-  Chandellier Quest Part 2 & Goddess Harp
+Chandelier Quest Part 3: # Play the harp
+  Chandelier Quest Part 2 & Goddess Harp
 
-Chandellier Quest Over:
-  Chandellier Quest Part 3
+Chandelier Quest Over:
+  Chandelier Quest Part 3
 
 Sky - Lumpy Pumpkin Harp Minigame:
-  Chandellier Quest Over
+  Chandelier Quest Over
 
 Sky - Kina's Crystals:
-  Chandellier Quest Over & Can Access Mogma Turf
-  # Unlocked after Chandellier Quest
+  Chandelier Quest Over & Can Access Mogma Turf
+  # Unlocked after Chandelier Quest
 
 Sky - Lumpy Pumpkin Goddess Chest:
   Initial Goddess Cube
