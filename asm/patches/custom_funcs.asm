@@ -168,6 +168,16 @@ lwz r0, 20(r1)
 mtlr r0
 addi r1, r1, 0x10
 blr
+
+.global alloc_only_if_no_first_file
+alloc_only_if_no_first_file:
+; can't use r3, r4, r5, r6
+lwz r12, -0x3cb4(r13) ; LINK_PTR
+lwz r12, 0x4(r12) ; link params
+xoris r12, r12, 0xFFFF ; check for 0xFFFF0FFF, actor params on title screen, are different in BiT
+cmpwi r12, 0x0FFF
+bnelr
+b requestFileLoadFromDisk
 .close
 
 

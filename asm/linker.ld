@@ -6,3 +6,4 @@ INPUT_BUFFER = 0x80599d0c;
 AcItem__isBabyRattle = 0x80256c30;
 Math__approachF = 0x802decd0;
 FileManager__getDungeonFlags = 0x8000a460;
+requestFileLoadFromDisk = 0x802f0060;
