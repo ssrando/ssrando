@@ -2465,9 +2465,10 @@ Sandship - Bow chest:
   # Could add Pouch for a shield
 
 Sandship - Heart Piece Chest:
-  Can Access Sandship & Bow & (Clawshots | Sandship - Mast Jump Trick)
+  Can Access Sandship & Bow & (Clawshots | Sandship - Mast Jump Trick) & Can Freely Change Sandship Temporality
   # This chest can be obtained without Clawshots with a good jump
   # You must then deathwarp (you can use the bombflowers)
+  # Finishing the mast sequence is necessary as the only escaping method, death, rollbacks the item
 
 Sandship - Map Chest:
   Can Freely Change Sandship Temporality & Bow
