@@ -4,6 +4,7 @@ main.dol:
   setStoryflagToValue: 0x8067831C
   handleBossKeyMapDungeonflag: 0x80678350
   handleSmallKeyGet: 0x80678410
+  alloc_only_if_no_first_file: 0x806784B0
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:

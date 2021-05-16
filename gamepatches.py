@@ -730,6 +730,7 @@ class GamePatcher:
         if self.rando.options['shop-mode'] != 'Vanilla':
             self.add_asm_patch('shopsanity')
         self.add_asm_patch('gossip_stone_hints')
+        self.add_asm_patch('fix_bit_crashes')
 
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
