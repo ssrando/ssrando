@@ -176,7 +176,21 @@ lwz r12, -0x3cb4(r13) ; LINK_PTR
 lwz r12, 0x4(r12) ; link params
 xoris r12, r12, 0xFFFF ; check for 0xFFFF0FFF, actor params on title screen, are different in BiT
 cmpwi r12, 0x0FFF
+beq do_requestFileLoadFromDisk
+lwz r12,-0x4444(r13) ; FILE_MANAGER
+lwz r12, 0(r12) ; location for all saved save files
+lbz r11, 0x53ad(r12) ; new savefile flag on file 1 + 0x20 offset from save files in general
+cmpwi r11, 1
+beq do_requestFileLoadFromDisk
+addi r12, r12, 0x53c0
+lbz r11, 0x53cd(r12) ; new savefile flag on file 2
+cmpwi r11, 1
+beq do_requestFileLoadFromDisk
+addi r12, r12, 0x53c0
+lbz r11, 0x53cd(r12) ; new savefile flag
+cmpwi r11, 1
 bnelr
+do_requestFileLoadFromDisk:
 b requestFileLoadFromDisk
 .close
 
