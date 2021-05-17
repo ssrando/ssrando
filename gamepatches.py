@@ -549,12 +549,6 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
         items = yaml.safe_load(f)
     by_item_name=dict((x['name'],x) for x in items)
 
-    # make sure dungeon items exist
-    if False: # TODO: only when not keysanity
-        DUNGEONS = ['SV', 'ET', 'LMF', 'AC', 'SS', 'FS', 'SK', 'LanayruCaves'] # caves has a key, no spaces because the randomizer splits by spaces
-        for dungeon in DUNGEONS:
-            by_item_name[f'{dungeon} Small Key'] = by_item_name['Small Key']
-            by_item_name[f'{dungeon} Map'] = by_item_name['Map']
     # (stage, room) -> (object name, layer, id?, itemid)
     stagepatchv2 = defaultdict(list)
     # (stage, layer) -> oarc
@@ -679,8 +673,7 @@ class GamePatcher:
         self.add_stone_hint_patches()
         self.handle_oarc_add_remove()
         self.add_rando_hash()
-        if self.rando.options['map-mode'] == 'Anywhere' or self.rando.options['small-key-mode'] == 'Anywhere' or self.rando.options['boss-key-mode'] == 'Anywhere':
-            self.add_keysanity()
+        self.add_keysanity()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -733,11 +726,11 @@ class GamePatcher:
         self.all_asm_patches = defaultdict(OrderedDict)
         self.add_asm_patch('custom_funcs')
         self.add_asm_patch('ss_necessary')
-        if self.rando.options['map-mode'] == 'Anywhere' or self.rando.options['small-key-mode'] == 'Anywhere' or self.rando.options['boss-key-mode'] == 'Anywhere':
-            self.add_asm_patch('keysanity')
+        self.add_asm_patch('keysanity')
         if self.rando.options['shop-mode'] != 'Vanilla':
             self.add_asm_patch('shopsanity')
         self.add_asm_patch('gossip_stone_hints')
+        self.add_asm_patch('fix_bit_crashes')
 
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
