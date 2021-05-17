@@ -147,7 +147,7 @@ Can Access Lake Floria:
 Can Access Deep Woods:
     Can Access Most of Faron Woods & (Slingshot | Clawshots | Beetle | Bow | Bomb Bag)
 
-Can Access Dungeon Entrance In Deep Woods:
+Can Access Dungeon Entrance in Deep Woods:
     Can Access Deep Woods
 
 Can Hit High Skyview Switches:
@@ -169,7 +169,7 @@ Can Beat Skyview:
     Can Access Skyview & Can Get Past the First Skyview Room & Goddess Sword & (Option "hero-mode" Enabled | Hook Beetle | Bow | True Master Sword) & SV Small Key x2 & SV Boss Key
 # Goddess Sword to activate the crest
 
-Can Access Dungeon Entrance In Eldin Volcano:
+Can Access Dungeon Entrance in Eldin Volcano:
     Can Access Second Part of Eldin & Key Piece x5
 
 Can Get Past First ET Drawbridge:
@@ -182,7 +182,7 @@ Can Get Past First ET Drawbridge:
 Can Beat Earth Temple:
     Can Access Earth Temple & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET Boss Key & Goddess Sword
 
-Can Access Dungeon Entrance In Lanayru Desert:
+Can Access Dungeon Entrance in Lanayru Desert:
     Can Access Lanayru & Bomb Bag & Hook Beetle & Practice Sword
 # Sword needed to activate nodes
 
@@ -206,7 +206,7 @@ Can Beat Skyview 2:
 # Can Get Sacred Water:
 #     Can Beat Skyview 2 & Bottle
 
-Can Access Dungeon Entrance In Lake Floria: #if requiring Sacred Water, make sure the randomizer places the skyview boss key before
+Can Access Dungeon Entrance in Lake Floria: #if requiring Sacred Water, make sure the randomizer places the skyview boss key before
     Can Access Lake Floria
 
 Can Lower Ancient Cistern Statue:
@@ -218,14 +218,14 @@ Can Defeat Koloktos:
 Can Beat Ancient Cistern:
     Can Access Ancient Cistern & Whip & AC Boss Key & (AC Small Key x2 | Clawshots) & Goddess Sword
 
-Can Access Dungeon Entrance In Sand Sea:
+Can Access Dungeon Entrance in Sand Sea:
     Can Access Sand Sea & Sea Chart & Practice Sword
     # You need any sword to be able to dowse
 
 Can Beat Sandship:
     Can Access Sandship & Bow & SS Boss Key & Goddess Sword
 
-Can Access Dungeon Entrance In Volcano Summit:
+Can Access Dungeon Entrance in Volcano Summit:
     Can Access Volcano Summit & Bottle & Clawshots
 
 Can Hit First Water Pods:
@@ -234,7 +234,7 @@ Can Hit First Water Pods:
 Can Beat Fire Sanctuary:
     Can Access Fire Sanctuary & Hook Beetle & FS Small Key x3 & Mogma Mitts & FS Boss Key & Goddess Sword
 
-Can Open GOT After Raising:
+Meet Gate of Time Sword Requirement:
     (Option "got-sword-requirement" Is "Goddess Sword" & Goddess Sword) | (Option "got-sword-requirement" Is "Goddess Longsword" & Goddess Longsword) | (Option "got-sword-requirement" Is "Goddess Whitesword" & Goddess White Sword) | (Option "got-sword-requirement" Is "Master Sword" & Master Sword) | (Option "got-sword-requirement" Is "True Master Sword" & True Master Sword)
 
 # Can Access Past:
@@ -253,7 +253,7 @@ Can Open GOT After Raising:
 #    Can Access Lanayru Gorge & Life Tree Fruit & Clawshots & Hook Beetle & Whip & Can Defeat Beamos
 # # Note that the minecart escort is a softlock if done without a way to defeat the beamos or without whip (although maybe dying is always possible? not sure)
 
-Can Access Dungeon Entrance On Skyloft:
+Can Access Dungeon Entrance on Skyloft:
     Stone of Trials & Clawshots
 
 Can Beat Sky Keep:
@@ -265,14 +265,14 @@ Can Reach and Defeat Demise:
 Initial Goddess Cube:
     Can Access Deep Woods & Goddess Sword
 
-Goddess Cube on West Great Tree near exit:
+Goddess Cube on West Great Tree near Exit:
     Can Access Most of Faron Woods & (Clawshots | (Gust Bellows & Water Scale)) & Goddess Sword
     #bokoblin luring not in logic
 
 Goddess Cube on East Great Tree with Rope:
     Can Access Most of Faron Woods & (Clawshots | (Gust Bellows & Water Scale)) & Goddess Sword
 
-Goddess Cube on East Great Tree with Clawshot Target:
+Goddess Cube on East Great Tree with Clawshots Target:
     Can Access Most of Faron Woods & (Clawshots | (Gust Bellows & Water Scale)) & Goddess Sword
 
 Goddess Cube in Deep Woods:
@@ -299,10 +299,10 @@ Goddess Cube near Mogma Turf Entrance:
 Goddess Cube in Mogma Turf:
     Can Access Eldin & Goddess Sword
 
-Goddess Cube West of Temple Entrance:
+Goddess Cube West of Earth Temple Entrance:
     Can Access Second Part of Eldin & Digging Mitts & Goddess Sword
 
-Goddess Cube East of Temple Entrance:
+Goddess Cube East of Earth Temple Entrance:
     Can Access Second Part of Eldin & Goddess Sword
 
 Goddess Cube in Eldin Slide:
@@ -317,16 +317,16 @@ Goddess Cube in Summit Waterfall:
 Goddess Cube near FS Entrance:
     Can Access Volcano Summit & Bottle & Clawshots & Goddess Sword
 
-Goddess Cube at Lanayru Mine Entrance:
+Goddess Cube at Lanayru Mines Entrance:
     Can Access Lanayru & Goddess Sword
 
 Goddess Cube in Sand Oasis:
     Can Access Second Part of Lanayru & Goddess Sword
 
-Goddess Cube at ride in ToT area:
+Goddess Cube at Ride near Temple of Time:
     Can Access Second Part of Lanayru & Hook Beetle & Goddess Sword
 
-Goddess Cube in secret passageway in Desert:
+Goddess Cube in Secret Passageway in Desert:
     Can Access Second Part of Lanayru & Bomb Bag & Clawshots & Goddess Sword
     #the tough beetle can be used instead of bombs
 
@@ -375,11 +375,11 @@ Can Afford 1600 Rupees:
 Can Play Thrill Digger:
   Can Access Eldin & Digging Mitts
 
-Can Play Bamboo Cutting:
+Can Play Clean Cut:
   Practice Sword
 
 Can Medium Rupee Farm:
-  Can Play Bamboo Cutting | Can High Rupee Farm
+  Can Play Clean Cut | Can High Rupee Farm
 
 Can High Rupee Farm:
   Can Retrieve Party Wheel | Can Play Thrill Digger

@@ -1,18 +1,18 @@
-Skyloft - Fledge:
+Knight Academy - Fledge:
   original item: Progressive Pouch
   type: skyloft, free gift
   Paths:
     - event/114-Friend/16
     - oarc/F001r/l3
     - oarc/F001r/l4
-Skyloft - Owlan's Shield:
+Knight Academy - Owlan's Shield:
   original item: Wooden Shield
   type: skyloft, free gift
   Paths:
     - event/108-ShinkanA/169
     - oarc/F000/l4
     - oarc/F000/l6
-Skyloft - Practice Sword:
+Knight Academy - Practice Sword:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
@@ -33,12 +33,12 @@ Skyloft - Waterfall Cave Second Chest:
   type: skyloft, miscellaneous
   Paths:
     - stage/D000/r0/l0/TBox/68
-Skyloft - Small Chest on Cliffs Near Goddess Statue:
+Knight Academy - Small Chest on Cliffs near Goddess Statue:
   original item: Red Rupee
   type: skyloft, miscellaneous
   Paths:
     - stage/F000/r0/l0/TBox/71
-Skyloft - Goddess Sword:
+Knight Academy - Goddess Sword:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
@@ -73,14 +73,14 @@ Skyloft - Waterfall Goddess Chest:
   type: skyloft, goddess, sand sea goddess, mini dungeon
   Paths:
     - stage/F000/r0/l0/TBox/80
-Skyloft - Pumpkin Archery - 600 Points:
+Knight Academy - Pumpkin Archery - 600 Points:
   original item: Heart Piece
   type: skyloft, minigame
   Paths:
     - event/114-Friend/99
     - oarc/F000/l4
     - oarc/F000/l6
-Skyloft - Zelda Heartpiece:
+Knight Academy - Zelda's Heartpiece:
   original item: Heart Piece
   type: skyloft, miscellaneous
   Paths:
@@ -98,7 +98,7 @@ Skyloft - Parrow's Bottle:
     - event/115-Town2/733 # Bottle
     - oarc/F000/l0
     - oarc/F005r/l0
-Skyloft - Cawlin's Letter:
+Knight Academy - Cawlin's Letter:
   original item: Cawlin's Letter
   type: skyloft, short
   Paths:
@@ -119,45 +119,44 @@ Skyloft - Peater/Peatrice's Crystals:
     - oarc/F018r/l0
     - oarc/F019r/l0
 Skyloft - Parrow's Crystals:
-    # There are mushrooms in the Sky inside the Volcanic Island
   original item: 5 Gratitude Crystals
   type: skyloft, sky, short, crystal quest
   Paths:
     - event/115-Town2/814
     - oarc/F000/l0
     - oarc/F005r/l0
-Skyloft - Fledge's Crystals:
+Knight Academy - Fledge's Crystals:
   original item: 5 Gratitude Crystals
   type: skyloft, lanayru, short, crystal quest, dungeon
   Paths:
     - event/115-Town2/325
     - oarc/F001r/l0
-Skyloft - Baby Crystals:
+Skyloft Village - Bertie's Crystals:
   original item: 5 Gratitude Crystals
   type: skyloft, fetch, crystal quest
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
-Skyloft - Ghost/Pipit's Crystals:
+Knight Academy - Ghost/Pipit's Crystals:
   original item: 5 Gratitude Crystals
   type: skyloft, fetch, crystal quest
   Paths:
     - event/115-Town2/522
     - event/115-Town2/641
     - oarc/F001r/l0
-Skyloft - Sparrot's Crystals:
+Skyloft Village - Sparrot's Crystals:
   original item: 5 Gratitude Crystals
   type: skyloft, eldin, long, scrapper, crystal quest
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
-Skyloft - Cleaning Crystals:
+Skyloft Village - Mallara's Crystals:
   original item: 5 Gratitude Crystals
   type: skyloft, short, crystal quest
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
-Skyloft - Owlan's Crystals:
+Knight Academy - Owlan's Crystals:
   original item: 5 Gratitude Crystals
   type: skyloft, faron, long, scrapper, crystal quest, combat
   Paths:
@@ -165,128 +164,128 @@ Skyloft - Owlan's Crystals:
     - oarc/F001r/l0
 
 #  Batreaux Rewards
-Skyloft - Batreaux 5 Crystals:
+Batreaux - 5 Crystals:
   original item: Progressive Wallet
   type: skyloft
   Paths:
     - event/121-AkumaKun/21
     - oarc/F012r/l0
-Skyloft - Batreaux 10 Crystals:
+Batreaux - 10 Crystals:
   original item: Heart Piece
   type: skyloft
   Paths:
     - event/121-AkumaKun/42
     - oarc/F012r/l0
-Skyloft - Batreaux 30 Crystals:
+Batreaux - 30 Crystals:
   original item: Progressive Wallet
   type: skyloft
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
-Skyloft - Batreaux 30 Crystals Chest:
+Batreaux - 30 Crystals Chest:
   original item: Cursed Medal
   type: skyloft
   Paths:
     - stage/F012r/r0/l0/TBox/69
-Skyloft - Batreaux 40 Crystals:
+Batreaux - 40 Crystals:
   original item: Gold Rupee
   type: skyloft
   Paths:
     - event/121-AkumaKun/49
     - oarc/F012r/l0
-Skyloft - Batreaux 50 Crystals:
+Batreaux - 50 Crystals:
   original item: Progressive Wallet
   type: skyloft
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
-Skyloft - Batreaux 70 Crystals:
+Batreaux - 70 Crystals:
   original item: Gold Rupee
   type: skyloft
   Paths:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
-Skyloft - Batreaux 70 Crystals Second Reward:
+Batreaux - 70 Crystals Second Reward:
   original item: Gold Rupee
   type: skyloft
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
-Skyloft - Batreaux 80 Crystals:
+Batreaux - 80 Crystals:
   original item: Progressive Wallet
   type: skyloft
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
 
-Skyloft - Beedle 50 Rupee Item:
+Beedle - 50 Rupee Item:
   original item: Bug Net
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/25
-Skyloft - Beedle First 100 Rupee Item:
+Beedle - First 100 Rupee Item:
   original item: Extra Wallet
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/24
-Skyloft - Beedle Second 100 Rupee Item:
+Beedle - Second 100 Rupee Item:
   original item: Extra Wallet
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/17
-Skyloft - Beedle Third 100 Rupee Item: # to make not too much farming at the start necessary, the third item is only in logic with some rupee farming method
+Beedle - Third 100 Rupee Item: # to make not too much farming at the start necessary, the third item is only in logic with some rupee farming method
   original item: Extra Wallet
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/18
-Skyloft - Beedle 300 Rupee Item:
+Beedle - 300 Rupee Item:
   original item: Progressive Pouch
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/20
-Skyloft - Beedle 600 Rupee Item:
+Beedle - 600 Rupee Item:
   original item: Progressive Pouch
   type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/21
-Skyloft - Beedle 800 Rupee Item:
+Beedle - 800 Rupee Item:
   original item: Life Medal
   type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/26
-Skyloft - Beedle 1000 Rupee Item:
+Beedle - 1000 Rupee Item:
   original item: Bug Medal
   type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/27
-Skyloft - Beedle 1200 Rupee Item:
+Beedle - 1200 Rupee Item:
   original item: Progressive Pouch
   type: skyloft, beedle, expensive
   Paths:
     - ShpSmpl/22
-Skyloft - Beedle 1600 Rupee Item:
+Beedle - 1600 Rupee Item:
   original item: Heart Piece
   type: skyloft, beedle, expensive
   Paths:
     - ShpSmpl/23
 
 # Single Gratitude crystals aren't randomized, but still need logic, because some of them need items
-Skyloft - Crystal in Link's Room:
+Knight Academy - Crystal in Link's Room:
   original item: Gratitude Crystal
   type: crystal
 Skyloft - Crystal on Light Tower:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal near Pumpkin Patch:
+Skyloft Village - Crystal near Pumpkin Patch:
   original item: Gratitude Crystal
   type: crystal
 Skyloft - Crystal in Parrow and Orielle's House:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal inbetween wooden Planks:
+Skyloft - Crystal inbetween Wooden Planks:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal in Knight Academy Plant:
+Knight Academy - Crystal in Knight Academy Plant:
   original item: Gratitude Crystal
   type: crystal
 Skyloft - Crystal on West Cliff:
@@ -298,13 +297,13 @@ Skyloft - Crystal after Waterfall Cave:
 Skyloft - Crystal in Loftwing Prison:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal in Sparring Hall:
+Knight Academy - Crystal in Sparring Hall:
   original item: Gratitude Crystal
   type: crystal
 Skyloft - Crystal on Waterfall Island:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal in Zelda's Room:
+Knight Academy - Crystal in Zelda's Room:
   original item: Gratitude Crystal
   type: crystal
 
@@ -351,12 +350,11 @@ Sky - Beedle's Island Goddess Chest:
   Paths:
     - stage/F020/r0/l0/TBox/89
 Sky - Beedle's Island Cage Goddess Chest:
-  #Getting this chest during the day is possible but rather difficult, shouldn't be in logic
   original item: Rupee Medal
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/81
-Sky - Northeast Island Goddess Chest Behind Bombable Rocks:
+Sky - Northeast Island Goddess Chest behind Bombable Rocks:
   original item: Silver Rupee
   type: sky, goddess, lanayru goddess
   Paths:
@@ -371,18 +369,17 @@ Sky - Goddess Chest on Island Closest to Faron Pillar:
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/65
-Sky - Goddess Chest Outside Volcanic Island:
+Sky - Goddess Chest outside Volcanic Island:
   original item: Heart Medal
   type: sky, goddess, lanayru goddess
   Paths:
     - stage/F020/r0/l0/TBox/67
-Sky - Goddess Chest Inside Volcanic Island:
-  #Normally you would need clawshots, but you can skip them with a good dive
+Sky - Goddess Chest inside Volcanic Island:
   original item: Heart Piece
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/68
-Sky - Goddess Chest Under Fun Fun Island:
+Sky - Goddess Chest under Fun Fun Island:
   original item: Gold Rupee
   type: sky, goddess, floria goddess
   Paths:
@@ -402,20 +399,19 @@ Sky - Southwest Triple Island Cage Goddess Chest:
   type: sky, goddess, sand sea goddess
   Paths:
     - stage/F020/r0/l0/TBox/75
-Sky - Fun Fun Island Minigame:
+Sky - Dodoh's High Dive - 500 Rupees:
   original item: Heart Piece
   type: sky, lanayru, minigame, long, scrapper
   Paths:
     - event/110-DivingGame/19
     - oarc/F020/l2
-Sky - Dodoh Crystals:
+Sky - Dodoh's Crystals:
   original item: 5 Gratitude Crystals
   type: sky, lanayru, long, scrapper
   Paths:
     - event/110-DivingGame/60
     - oarc/F020/l0
 Sky - Orielle's Crystals:
-  # Need access to Faron to be able to get mushroom spores as many times as you want
   original item: 5 Gratitude Crystals
   type: sky, short, crystal quest
   Paths:
@@ -434,8 +430,7 @@ Sky - Beedle's Crystals:
     - event/105-Terry/115
     - oarc/F020/l0
 
-#These checks need Spiral Charge
-Sky - Breakable Boulder near Fun Fun island:
+Sky - Breakable Boulder near Fun Fun Island:
   original item: Silver Rupee
   type: sky, spiral charge
   Paths:
@@ -452,11 +447,11 @@ Sky - Crystal outside Lumpy Pumpkin:
 Sky - Crystal inside Lumpy Pumpkin:
   original item: Gratitude Crystal
   type: crystal
-Sky - Crystal on Beedles Ship:
+Sky - Crystal on Beedle's Ship:
   original item: Gratitude Crystal
   type: crystal
 
-Thunderhead - Goddess Chest Outside Isle of Song:
+Thunderhead - Goddess Chest outside Isle of Song:
   original item: Gold Rupee
   type: thunderhead, goddess, eldin goddess
   Paths:
@@ -476,7 +471,7 @@ Thunderhead - East Island Chest:
   type: thunderhead, miscellaneous
   Paths:
     - stage/F023/r0/l0/TBox/94
-Thunderhead - Bug Island Goddess Chest:
+Thunderhead - Bug Rock Goddess Chest:
   original item: Heart Piece
   type: thunderhead, goddess, summit goddess
   Paths:
@@ -487,12 +482,11 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
   Paths:
     - stage/F023/r0/l0/TBox/77
 #Thunderhead - Second Goddess Chest on Mogma Mitts Island:
-#  Need: Can Access Thunderhead & Mogma Mitts & Goddess Cube in Lanayru Gorge
 #  original item: Small Quiver
 #  type: thunderhead, goddess, lanayru goddess TODO: decide if this is a Lanyru or Sand Sea cube
 #  Paths:
 #   - stage/F023/r0/l0/TBox/76
-Thunderhead - Bug Island minigame:
+Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
   original item: Horned Colossus Beetle
   type: thunderhead, minigame
   Paths:
@@ -539,11 +533,6 @@ Sealed Grounds - Gorko Goddess Wall Reward:
     - event/503-Goron/630
     - oarc/F400/l0
 #Sealed Grounds - Behind the Temple Triforce on goddess wall:
-#  Need: Can Access Sealed Temple
-#        & Can Access Goddess Walls
-#        & Bow
-#        & Bomb Bag
-#        & Can Access Levias
 #  original item: Gold Rupee
 #  type: faron, long, dungeon
 #  Paths:
@@ -557,7 +546,7 @@ Sealed Grounds - True Master Sword:
     - oarc/F404/l1
 
 
-Faron Woods - Heart Piece on Tree:
+Faron Woods - Piece of Heart on Tree:
   original item: Heart Piece
   type: faron, freestanding
   Paths:
@@ -573,7 +562,7 @@ Faron Woods - Deep Woods Chest:
   type: faron, miscellaneous
   Paths:
     - stage/F101/r0/l0/TBox/74
-Faron Woods - Heart Piece Behind Boulder:
+Faron Woods - Piece of Heart behind Boulder:
   original item: Heart Piece
   type: faron, freestanding, bombable
   Paths:
@@ -583,8 +572,7 @@ Faron Woods - Behind Bombable Rocks near Erla:
   type: faron, bombable
   Paths:
     - stage/F100/r0/l0/TBox/64
-Faron Woods - Chest Inside Great Tree:
-  #You can jump to the chest from above AFTER you defeat the Moblin to remove the void
+Faron Woods - Chest inside Great Tree:
   original item: Gold Rupee
   type: faron, miscellaneous
   Paths:
@@ -596,7 +584,6 @@ Lake Floria - Lake Floria Chest:
   Paths:
     - stage/F102/r3/l0/TBox/64
 #Lake Floria - Lake Floria Silver Rupee: # not sure if we want to randomize this
-#  Need: Can Access Lake Floria
 #  original item: Silver Rupee
 #  type: faron, freestanding
 #  Paths:
@@ -612,7 +599,6 @@ Lake Floria - Dragon Lair Second Chest (Scale):
   Paths:
     - stage/F102_2/r0/l0/TBox/84
 # Lake Floria - Outside AC: # not sure if this one works for other items
-#   Need: Can Access Lake Floria & Beetle
 #   original item: Gold Rupee
 #   type: faron, freestanding
 #   Paths:
@@ -629,50 +615,50 @@ Eldin Volcano - After Crawlspace:
   type: eldin, bombable
   Paths:
     - stage/F200/r2/l0/TBox/66
-Eldin Volcano - Behind Bombable Wall Near HP:
+Eldin Volcano - Behind Bombable Wall near Piece of Heart:
   original item: Red Rupee
   type: eldin, bombable
   Paths:
     - stage/F200/r2/l0/TBox/73
-Eldin Volcano - Heart Piece on Cliff:
+Eldin Volcano - Piece of Heart on Cliff:
   original item: Heart Piece
   type: eldin, freestanding
   Paths:
     - stage/F200/r2/l0/Item/102 #sceneflagID
-Eldin Volcano - Behind Bombable Wall Near Volcano Ascent:
+Eldin Volcano - Behind Bombable Wall near Volcano Ascent:
   original item: Red Rupee
   type: eldin, bombable
   Paths:
     - stage/F200/r2/l0/TBox/71
 
 # These checks are Digging Spots
-Eldin Volcano - Key Piece in Front of ET:
- original item: Key Piece
- type: eldin, digging
- Paths:
-  - stage/F200/r4/l1/Soil/8
-Eldin Volcano - Key Piece Below Tower:
- original item: Key Piece
- type: eldin, bombable, digging
- Paths:
-  - stage/F200/r4/l1/Soil/9
-Eldin Volcano - Key Piece Behind Boulder on Sandy Slope:
- original item: Key Piece
- type: eldin, bombable, digging
- Paths:
-  - stage/F200/r4/l1/Soil/12
-Eldin Volcano - Key Piece After Vents:
- original item: Key Piece
- type: eldin, digging
- Paths:
-  - stage/F200/r6/l1/Soil/10
-Eldin Volcano - Key Piece After Draining Lava:
- original item: Key Piece
- type: eldin, digging
- Paths:
-  - stage/F200/r2/l1/Soil/64
+Eldin Volcano - Key Piece in front of Earth Temple:
+  original item: Key Piece
+  type: eldin, digging
+  Paths:
+    - stage/F200/r4/l1/Soil/8
+Eldin Volcano - Key Piece below Tower:
+  original item: Key Piece
+  type: eldin, bombable, digging
+  Paths:
+    - stage/F200/r4/l1/Soil/9
+Eldin Volcano - Key Piece behind Boulder on Sandy Slope:
+  original item: Key Piece
+  type: eldin, bombable, digging
+  Paths:
+    - stage/F200/r4/l1/Soil/12
+Eldin Volcano - Key Piece after Vents:
+  original item: Key Piece
+  type: eldin, digging
+  Paths:
+    - stage/F200/r6/l1/Soil/10
+Eldin Volcano - Key Piece after Draining Lava:
+  original item: Key Piece
+  type: eldin, digging
+  Paths:
+    - stage/F200/r2/l1/Soil/64
 
-Mogma Turf - Free Fall chest:
+Mogma Turf - Free Fall Chest:
   original item: Eldin Ore
   type: eldin, miscellaneous
   Paths:
@@ -700,7 +686,7 @@ Mogma Turf - Behind Bombable Wall in Lava Maze:
   Paths:
     - stage/F210/r0/l0/TBox/70
 
-Volcano Summit - Heart Piece Behind Digging:
+Volcano Summit - Piece of Heart behind Digging:
   original item: Heart Piece
   type: eldin, freestanding
   Paths:
@@ -711,12 +697,10 @@ Volcano Summit - Behind Bombable Wall in Waterfall Area:
   Paths:
     - stage/F201_4/r0/l0/TBox/95
 #Boko Base - Small chest in front of Sword in boko base:
-#  Need: Can Access Boko Base & Clawshots & Bomb Bag?
 #  original item: Blue Rupee
 #  Paths:
 #   - stage/F201_1.json
 #Boko Base - Pouch chest in boko base:
-#  Need: Can Access Boko Base & Clawshots & Bomb Bag?
 #  original item: Pouch & extra items
 #  Paths:
 #   - stage/F201_1.json
@@ -727,7 +711,6 @@ Lanayru Mines - Chest Behind First Landing:
   Paths:
     - stage/F300_1/r0/l0/TBox/64
 Lanayru Mines - Near First Timeshift Stone:
-  # In swordless, you can roll a bomb to the stone, eventhough it's a bit far
   original item: Red Rupee
   type: lanayru, miscellaneous
   Paths:
@@ -744,46 +727,43 @@ Lanayru Mines - End of Mines:
     - stage/F300_1/r2/l0/TBox/66
 
 
-Lanayru - Chest Near Party Wheel:
+Lanayru - Chest near Party Wheel:
   original item: Golden Skull
   type: lanayru, miscellaneous
   Paths:
     - stage/F300/r0/l0/TBox/70
-Lanayru - Chest Before Hook Beetle:
-  #In the Mines, you need to knock down statues to make a path through the sand (brakeslide not in logic)
+Lanayru - Chest before Hook Beetle Fight:
   original item: Tumbleweed
   type: lanayru, miscellaneous
   Paths:
     - stage/F300/r0/l0/TBox/84
 Lanayru - Hook Beetle:
-  # You can use bomb flowers to defeat the technoblins
   original item: Progressive Beetle
   type: lanayru, combat
   Paths:
     - event/400-Desert/8
     - oarc/F300/l0
-Lanayru - NE Desert Chest:
-  #The Tough Beetle can be used instead of Bombs
+Lanayru - Secret Passageway Chest:
   original item: Heart Piece
   type: lanayru, bombable
   Paths:
     - stage/F300/r0/l0/TBox/74
-Lanayru - On Top of Lanayru Mining Facility: # actually spawns on raising LMF
+Lanayru - Top of Lanayru Mining Facility: # actually spawns on raising LMF
   original item: Rare Treasure # TODO check
   type: lanayru, miscellaneous, mini dungeon
   Paths:
     - stage/F300/r0/l1/TBox/83
-Lanayru - Chest Next to Trial:
+Lanayru - Chest on Platform near Lighting Node:
   original item: Dusk Relic
   type: lanayru, miscellaneous
   Paths:
     - stage/F300/r0/l0/TBox/72
-Lanayru - Chest on Platform Near Fire Node:
+Lanayru - Chest on Platform near Fire Node:
   original item: Red Rupee
   type: lanayru, miscellaneous
   Paths:
     - stage/F300/r0/l0/TBox/73
-Lanayru - Chest Near Sand Oasis:
+Lanayru - Chest near Sand Oasis:
   original item: Red Rupee
   type: lanayru, miscellaneous
   Paths:
@@ -799,9 +779,7 @@ Lanayru - Middle of Lightning Node:
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_2/r0/l0/TBox/76
-Lanayru - End of Lightning Node room:
-  # Deactivate the timeshift stone with a bomb throw that lands near the timeshift stone.
-  # Then stand near the stone and activate it. Place down a bomb near the timeshift stone and run to the end.
+Lanayru - End of Lightning Node:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
   Paths:
@@ -845,15 +823,12 @@ Lanayru Caves - Golo:
     - oarc/F303/l0
 
 
-Lanayru Sand Sea - Skydive Chest at Skippers Retreat:
-  # You can whip the bomb on the cactus by first slashing it to make it swing
-  # You can also whip the bomb without a sword by standing very close to the cactus and whiping a few times (up to down swings)
+Lanayru Sand Sea - Skydive Chest at Skipper's Retreat:
   original item: Silver Rupee
   type: lanayru, miscellaneous
   Paths:
     - stage/F301_3/r0/l0/TBox/77
-Lanayru Sand Sea - Chest After Moblin at Skippers Retreat:
-  #If you don't have the whip, you can still get past the yellow chu cave with bombs or by using the hook beetle
+Lanayru Sand Sea - Chest after Moblin at Skipper's Retreat:
   original item: Red Rupee
   type: lanayru, miscellaneous
   Paths:
@@ -863,21 +838,18 @@ Lanayru Sand Sea - Near Shack:
   type: lanayru, miscellaneous
   Paths:
     - stage/F301_3/r0/l0/TBox/76
-Lanayru Sand Sea - In Skippers Shack:
-  # The Boko Baba can be bypassed without killing or stunning him, but it's not in logic
+Lanayru Sand Sea - In Skipper's Shack:
   original item: Sea Chart
   type: lanayru, miscellaneous
   Paths:
     - stage/F301_5/r0/l0/TBox/65
-Lanayru Sand Sea - Roller Coaster Minigame:
-  # You need Gust Bellows to defeat Molderach. I assume no Sea Chart requirement for now
+Lanayru Sand Sea - Rickety Coaster:
   original item: Heart Piece
   type: lanayru, minigame, combat #Molderach 2 makes this a combat check
   Paths:
     - event/406-TrolleyRace/77
     - oarc/F301_4/l0
 Lanayru Sand Sea - First Chest in Pirate Stronghold:
-  # You can run past the Beamos without killing it. You can also run past the boko baba (in logic?)
   original item: Silver Rupee
   type: lanayru, mini dungeon
   Paths:
@@ -887,7 +859,7 @@ Lanayru Sand Sea - Second Chest in Pirate Stronghold:
   type: lanayru, mini dungeon
   Paths:
     - stage/F301_2/r5/l0/TBox/73
-Lanayru Sand Sea - 3rd Chest in Pirate Stronghold:
+Lanayru Sand Sea - Third Chest in Pirate Stronghold:
   original item: Semi Rare Treasure
   type: lanayru, mini dungeon
   Paths:
@@ -900,32 +872,22 @@ Skyview - Map Chest:
   Paths:
     - stage/D100/r2/l0/TBox/64
 Skyview - Small Key Digging Spot:
-  # It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
-  # It is not possible to jump to the vines early in the main room with scale with only one switch for the water level hit
-  # You can hit both switches with good bomb throws
-  # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Spume and kill it near the switch, not in logic
-  # You can hit the switch to enter that room with an upwards skyward strike using a boko or a spume, not in logic
   original item: SV Small Key
   type: faron, dungeon, digging
   Paths:
     - stage/D100/r4/l0/Soil/15
 Skyview - Behind Two Eyes:
-  # Sword required to defeat the eyes
   original item: SV Small Key
   type: faron, dungeon
   Paths:
     - stage/D100/r4/l0/TBox/67
 Skyview - Beetle:
-  #Bombs don't work to hit the switch
-  #The fight requires sword, but can be skipped with Water Scale
-  #Note that to get past the locked door you need to be able to raise the water lever once (left room is easiest)
   original item: Progressive Beetle
   type: faron, dungeon
   Paths:
     - stage/D100/r10/l1/TBox/65
     - stage/D100/r10/l2/TBox/65
 Skyview - Behind Bars in Hub Room:
-  #add whip when all items are fixed. In that case make also sure you can raise the water level to unlock the door
   original item: Heart Piece
   type: faron, dungeon
   Paths:
@@ -936,17 +898,11 @@ Skyview - Behind Three Eyes:
   Paths:
     - stage/D100/r7/l0/TBox/68
 Skyview - Near Boss Door:
-  # The Staldra can be defeated with either sword or bombs, which we must already have
-  # To get accross the rope with boko babas, hang down on the rope and go accross that way. The last boko baba may be annoying but nothing too bad if you time it
-  # The Skulltula jump is not in logic. A bomb knocks it away. Both the Beetle and the bow can cut it down. The water scale makes it Skyview 2 where there is no spider anymore. A skyward strike can knock it away too
-  # The archer bokoblin can be killed with a skyward strike on Hero Mode. Otherwise you need bow or hook beetle
   original item: Red Rupee
   type: faron, dungeon
   Paths:
     - stage/D100/r9/l0/TBox/70
 Skyview - Boss Key:
-  #If you had bombs for the Skulltula, you can't hit the 2nd vine, thus you need Beetle, bow, clawshots or slingshot
-  #Note: You can also hit this vine with a Skyward Strike, but only on Hero Mode
   original item: SV Boss Key
   type: faron, dungeon
   Paths:
@@ -979,7 +935,7 @@ Earth Temple - Behind Boulder:
   type: eldin, dungeon
   Paths:
     - stage/D200/r1/l0/TBox/69
-Earth Temple - Left Chest After Boulder Section:
+Earth Temple - Left Chest with Boulder:
   original item: Golden Skull # TODO check again
   type: eldin, dungeon
   Paths:
@@ -1001,20 +957,17 @@ Earth Temple - 5 Bombs From Ledd:
     - event/301-MountainD1/16
     - oarc/D200/l0
 Earth Temple - Chest Guarded by Lizalfos:
-  #In this dungeon, the hook Beetle can replace the bombs everywhere. You absolutely need a Beetle to cut a rope in the boulder section
   original item: Red Rupee
   type: eldin, dungeon
   Paths:
     - stage/D200/r1/l0/TBox/67
 Earth Temple - Boss Key:
-  #Stutter Sprint not in logic, you need to dig up an air vent to blow up the boulder
   original item: ET Boss Key
   type: eldin, dungeon
   Paths:
     - stage/D200/r4/l0/TBox/68
 
 Earth Temple - Scaldera Heart Container:
- #Scaldera can be beaten without bombs but the logic does not require it
  original item: Heart Container
  type: eldin, dungeon
  Paths:
@@ -1035,21 +988,16 @@ Lanayru Mining Facility - Behind Bars:
   Paths:
     - stage/D300/r0/l0/TBox/64
 Lanayru Mining Facility - First Chest in Hub Room:
-  #You can whip the lever in the first room, but it is not in logic
-  #The path that requires a small key also need hook Beetle or bombs
   original item: LMF Small Key
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r5/l0/TBox/70
-Lanayru Mining Facility - Chest in Room Behind Locked Door:
-  #You need to blow up a crate on top of a ladder: you need hook Beetle or bombs
-  #To shoot the timeshift stone you need Beetle or bow or slingshot, but the slingshot snipe is difficult?
+Lanayru Mining Facility - Chest in Key Locked Room:
   original item: Red Rupee
   type: lanayru, dungeon
   Paths:
     - stage/D300/r2/l0/TBox/65
 Lanayru Mining Facility - Gust Bellows:
-  #You need to blow up at least one rock in the maze but the Spumes can take care of that, use the hook beetle if swordless
   original item: Gust Bellows
   type: lanayru, dungeon
   Paths:
@@ -1059,14 +1007,12 @@ Lanayru Mining Facility - Inside Gust Bellows Room:
   type: lanayru, dungeon
   Paths:
     - stage/D300/r4/l0/TBox/76
-Lanayru Mining Facility - First West Room:
+Lanayru Mining Facility - Chest in First West Room:
   original item: Golden Skull # TODO check again
   type: lanayru, dungeon
   Paths:
     - stage/D300/r3/l0/TBox/66
 Lanayru Mining Facility - Map Chest:
-  #You need to defeat the Beamos guarding the door to the map room, but you also need to be able to defeat the Armos, thus sword required
-  #The Staldras don't need to be defeated and are surprisingly not very aggressive, letting you push the block relatively easily
   original item: LMF Map
   type: lanayru, dungeon
   Paths:
@@ -1083,13 +1029,11 @@ Lanayru Mining Facility - Behind Second Crawlspace:
   Paths:
     - stage/D300_1/r7/l0/TBox/73
 Lanayru Mining Facility - Boss Key:
-  #You can hit the crystals with your sword
   original item: LMF Boss Key
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r8/l0/TBox/71
 Lanayru Mining Facility - Chest After Boss Key Room:
-  #You can hit the crystals with your sword
   original item: Red Rupee
   type: lanayru, dungeon
   Paths:
@@ -1110,13 +1054,11 @@ Lanayru Mining Facility - Harp:
     - oarc/F300_5/l0
 
 Ancient Cistern - Small Key Chest:
-  # Need sword for combination lock
   original item: AC Small Key
   type: faron, dungeon
   Paths:
     - stage/D101/r1/l0/TBox/67
 Ancient Cistern - Whip:
-  # Defeating the Stalmaster requires Practice Sword
   original item: Whip
   type: faron, dungeon
   Paths:
@@ -1142,14 +1084,12 @@ Ancient Cistern - Bokoblin:
   Paths:
     - stage/D101/r4/l0/EBc/0xFC00
 Ancient Cistern - Boss Key:
-  # In the Basement you can either clawshot around the boulder, or use hook Beetle to blow it up. A very precise bomb throw also works (not in logic).
   original item: AC Boss Key
   type: faron, dungeon
   Paths:
     - stage/D101/r4/l0/TBox/68
 
 Ancient Cistern - Koloktos Heart Container:
- #To reach the boss door, either you unlock the door, or you lower the statue
  original item: Heart Container
  type: faron, dungeon
  Paths:
@@ -1164,33 +1104,26 @@ Ancient Cistern - Goddess Longsword:
     - oarc/B101_1/l0
 
 Sandship - Behind Combination Lock:
-  # Skipping the Spume not in logic
-  # You need a sword to get rid of the lock
-  # The combination is always the same, but getting the hint requires gust bellows or turning the room into the past with bow. For newcomers, require the hint
   original item: SS Small Key
   type: lanayru, dungeon
   Paths:
     - stage/D301/r10/l0/TBox/69
-Sandship - Bow chest:
+Sandship - Bow Chest:
   original item: Bow
   type: lanayru, dungeon
   Paths:
     - stage/D301/r15/l0/TBox/72
-Sandship - Heart Piece Chest:
-  # Note for randomized dungeon entrances: this chest can be gotten without Clawshots with an obscure jump but then you are stuck
+Sandship - Piece of Heart Chest:
   original item: Heart Piece
   type: lanayru, dungeon
   Paths:
     - stage/D301/r0/l0/TBox/127
 Sandship - Map Chest:
-  # Getting the past inside the Sandship requires completing the Mast, even with early bow
-  # The Practice Sword or two small keys are needed in order to be able to finish the Mast sequence and not be softlocked
   original item: SS Map
   type: lanayru, dungeon
   Paths:
     - stage/D301/r3/l0/TBox/71
 Sandship - Treasure Room First Chest:
-  # Sword needed for generators
   original item: Semi Rare Treasure
   type: lanayru, dungeon
   Paths:
@@ -1227,7 +1160,6 @@ Sandship - Boss Key:
   Paths:
     - stage/D301/r14/l3/TBox/73
 Sandship - Tentalus Heart Container:
-  # Tentalus can be defeated exclusively with bow
   original item: Heart Container
   type: lanayru, dungeon
   Paths:
@@ -1243,47 +1175,42 @@ Sandship - Nayru's Flame:
 
 
 Fire Sanctuary - First Room:
-  #little known fact, the only bokoblin you need to defeat is the blue one
   original item: FS Small Key
   type: eldin, dungeon
   Paths:
     - stage/D201/r0/l0/TBox/64
-Fire Sanctuary - After First Outside Section:
+Fire Sanctuary - Chest in First Magmanos Room:
   original item: Red Rupee
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r1/l0/TBox/74
 Fire Sanctuary - Second Small Key Chest:
-  #If you don't have gust bellows you can get the chest but you are stuck inside
   original item: FS Small Key
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r5/l0/TBox/69
-Fire Sanctuary - First Chest in Water Pod Room:
+Fire Sanctuary - First Chest in Water Plants Room:
   original item: Red Rupee
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r7/l0/TBox/73
-Fire Sanctuary - Second Chest in Water Pod Room:
+Fire Sanctuary - Second Chest in Water Plants Room:
   original item: Semi Rare Treasure
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r7/l0/TBox/72
 Fire Sanctuary - Mogma Mitts:
-  # Sword needed to grab a water pod
   original item: Progressive Mitts
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r5/l0/TBox/68
-Fire Sanctuary - Bottle:
-  # Sword needed to grab a water pod
+Fire Sanctuary - Bottle Chest:
   original item: Bottle
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r6/l0/TBox/70
     - stage/D201/r6/l0/TBox/70
 Fire Sanctuary - Map Chest:
-  #Pillar Jump is not in logic. Note that if you fall without clawshots you're stuck, need to think of a fix
   original item: FS Map
   type: eldin, dungeon
   Paths:
@@ -1299,7 +1226,7 @@ Fire Sanctuary - Plats Chest:
   type: eldin, dungeon
   Paths:
     - stage/D201/r3/l0/TBox/66
-Fire Sanctuary - Staircase Room:
+Fire Sanctuary - Chest in Staircase Room:
   original item: Semi Rare Treasure
   type: eldin, dungeon
   Paths:
@@ -1326,67 +1253,55 @@ Fire Sanctuary - Din's Flame:
 
 
 #Lanayru Gorge - Boss rush heart piece
-#   Need: Can Heal Thunder Dragon?
 #   original item: Heart piece
 #   Paths:
 #    - event/
 #Lanayru Gorge - Boss rush hylian shield
-#   Need: Can Heal Thunder Dragon?
 #   original item: hylian shield
 #   Paths:
 #    - event/
 #Lanayru Gorge - Life Tree Seedling
-#   Need: Can Access Lanayru Gorge?
 #   original item: Life Tree Seedling
 #   Paths:
 #    - stage/F302.json
 #Lanayru Gorge - Lanayru Soth Part event
-#   Need: Can heal Thunder Dragon?
 #   original item: Lanayru Soth part
 #   Paths:
 #    - stage/F302.json
 
 
 #Flooded Faron Woods - Faron Soth Part event
-#   Need: Can Access Flooded Faron Woods & Water Scale
 #   original item: Faron Soth Part
 #   Paths:
 #    - event/
 
 
 #Boko base - Mogma Mitts Event
-#   Need: Can Access Boko Base?
 #   original item: Mogma Mitts
 #   Paths:
 #    - event
 #Boko base - Clawshots
-#   Need: Can Access Boko Base & Gust Bellows & (Mogma Mitts | Slingshot | Bow | Bomb Bag)?
 #   original item: Clawshots
 #   Paths:
 #    - stage/F202.json
 #Boko base - Gust Bellows
-#   Need: Can Access Boko Base?
 #   original item: Gust Bellows
 #   Paths:
 #    - stage/F202.json
 #Boko base - Bombs
-#   Need: Can Access Boko Base & Clawshots & ((Hook Beetle & Sword) | Bomb Bag | ((bow | slingshot) & Whip))?
 #   original item: Bombs
 #   Paths:
 #    - stage/F202.json
 #Boko base - Slingshot
-#   Need: Can Access Boko Base & Clawshots & (Hook Beetle | Whip | Bomb Bag)?
 #   original item: Slingshot
 #   Paths:
 #    - stage/F202.json
 #Boko base - Whip
-#   Need: Can Access Boko Base & Clawshots?
 #   original item: Whip
 #   Paths:
 #    - stage/F202.json
 
 #Fire Dragon Room - Eldin Soth part event
-#   Need: Can Access Boko Base & Clawshots & Bomb Bag & (Beetle | Bow)?
 #   original item: Eldin Soth part
 #   Paths:
 #    - stage/F221.json
@@ -1403,19 +1318,16 @@ Sky Keep - Small Key Chest:
   Paths:
     - stage/D003_6/r0/l0/TBox/65
 #Sky Keep - Triforce of Wisdom Event
-#   Need: Can Access Sky Keep & Gust Bellows & Whip & Bow & Clawshots
 #   original item: Triforce of Wisdom
 #   type: skyloft, dungeon
 #   Paths:
 #    - stage/D003_8.json
 #Sky Keep - Triforce of Power Event
-#   Need: Can Access Sky Keep & Gust Bellows & Whip & Bow & Clawshots
 #   original item: Triforce of Power
 #   type: skyloft, dungeon
 #   Paths:
 #    - stage/D003_8.json
 #Sky Keep - Triforce of Courage Event
-#   Need: Can Access Sky Keep & Gust Bellows & Whip & Bow & Clawshots & SkyKeep Small Key x1
 #   original item: Triforce of Courage
 #   type: skyloft, dungeon
 #   Paths:

@@ -876,7 +876,7 @@
       param3: 9
       param4: 0
       param5: 0
-  - name: Skip Clawshot Requirement for Rattle Delivery
+  - name: Skip Clawshots Requirement for Rattle Delivery
     type: flowpatch
     index: 7
     flow:

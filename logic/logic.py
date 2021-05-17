@@ -52,8 +52,8 @@ class Logic:
     self.item_locations = self.load_and_parse_item_data()
 
     self.race_mode_banned_locations = []
-    if self.rando.options['skip-skykeep'] and self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"] == 'Skykeep':
-      self.racemode_ban_location('Skyloft - Fledge\'s Crystals')
+    if self.rando.options['skip-skykeep'] and self.rando.entrance_connections["Dungeon Entrance in Lanayru Desert"] == 'Skykeep':
+      self.racemode_ban_location("Knight Academy - Fledge's Crystals")
     if self.rando.options['empty-unrequired-dungeons']:
       for location_name in self.item_locations:
         zone, _ = Logic.split_location_name_by_zone(location_name)
@@ -61,8 +61,8 @@ class Logic:
           self.race_mode_banned_locations.append(location_name)
 
       # checks outside locations that require dungeons:
-      if self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"] in self.rando.non_required_dungeons:
-        self.racemode_ban_location('Skyloft - Fledge\'s Crystals')
+      if self.rando.entrance_connections["Dungeon Entrance in Lanayru Desert"] in self.rando.non_required_dungeons:
+        self.racemode_ban_location("Knight Academy - Fledge's Crystals")
       if 'Skyview' in self.rando.non_required_dungeons:
         # TODO: check again with entrance rando
         self.racemode_ban_location('Sky - Lumpy Pumpkin Roof Goddess Chest')
@@ -542,7 +542,7 @@ class Logic:
 
   def update_beat_game_macro(self):
     # needs to be able to open GoT and open it, requires required dungeons
-    access_past_requirements = ['Can Access Sealed Temple', 'Can Open GOT After Raising','Can Raise Gate of Time']
+    access_past_requirements = ['Can Access Sealed Temple', 'Can Raise Gate of Time', 'Meet Gate of Time Sword Requirement']
     for dungeon in self.rando.required_dungeons:
       access_past_requirements.append(f'Can Beat {dungeon}')
     ' & '.join(f'Can Beat {dungeon}' for dungeon in self.rando.required_dungeons)

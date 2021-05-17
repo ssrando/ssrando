@@ -98,13 +98,13 @@ class Randomizer:
         dungeons.append('Sky Keep')
         self.rng.shuffle(dungeons)
     self.entrance_connections = OrderedDict([
-      ("Dungeon Entrance In Deep Woods", dungeons.pop()),
-      ("Dungeon Entrance In Eldin Volcano", dungeons.pop()),
-      ("Dungeon Entrance In Lanayru Desert", dungeons.pop()),
-      ("Dungeon Entrance In Lake Floria", dungeons.pop()),
-      ("Dungeon Entrance In Sand Sea", dungeons.pop()),
-      ("Dungeon Entrance In Volcano Summit", dungeons.pop()),
-      ("Dungeon Entrance On Skyloft", dungeons.pop()),
+      ("Dungeon Entrance in Deep Woods", dungeons.pop()),
+      ("Dungeon Entrance in Eldin Volcano", dungeons.pop()),
+      ("Dungeon Entrance in Lanayru Desert", dungeons.pop()),
+      ("Dungeon Entrance in Lake Floria", dungeons.pop()),
+      ("Dungeon Entrance in Sand Sea", dungeons.pop()),
+      ("Dungeon Entrance in Volcano Summit", dungeons.pop()),
+      ("Dungeon Entrance on Skyloft", dungeons.pop()),
     ])
     assert len(dungeons) == 0, 'Not all dungeons linked to an entrance'
     # self.starting_items = (x.strip() for x in self.options['starting_items']
@@ -132,17 +132,17 @@ class Randomizer:
       constants.POTENTIALLY_REQUIRED_DUNGEONS if not dungeon in self.required_dungeons]
 
     self.logic = Logic(self)
-    # self.logic.set_prerandomization_item_location("Skyloft - Beedle Second 100 Rupee Item", "Rare Treasure")
-    # self.logic.set_prerandomization_item_location("Skyloft - Beedle Third 100 Rupee Item", "Rare Treasure")
-    # self.logic.set_prerandomization_item_location("Skyloft - Beedle 1000 Rupee Item", "Rare Treasure")
+    # self.logic.set_prerandomization_item_location("Beedle - Second 100 Rupee Item", "Rare Treasure")
+    # self.logic.set_prerandomization_item_location("Beedle - Third 100 Rupee Item", "Rare Treasure")
+    # self.logic.set_prerandomization_item_location("Beedle - 1000 Rupee Item", "Rare Treasure")
     self.hints = Hints(self.logic)
-    # self.logic.set_prerandomization_item_location("Skyloft - Fledge", "SV Small Key")
-    # self.logic.set_prerandomization_item_location("Skyloft - Owlan's Shield", "ET Map")
+    # self.logic.set_prerandomization_item_location("Knight Academy - Fledge", "SV Small Key")
+    # self.logic.set_prerandomization_item_location("Knight Academy - Owlan's Shield", "ET Map")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
     # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
     # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
-    # self.logic.set_prerandomization_item_location("Skyloft - Practice Sword", "LanayruCaves Small Key")
+    # self.logic.set_prerandomization_item_location("Knight Academy - Practice Sword", "LanayruCaves Small Key")
 
   def _get_rando_hash(self):
     # hash of seed, options, version

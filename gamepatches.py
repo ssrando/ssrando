@@ -113,35 +113,35 @@ DUNGEON_STAGES = {
 # The stage for each map where there are dungeon entrances
 DUNGEON_ENTRANCE_STAGES = {
     # stage, room, scen
-    "Dungeon Entrance In Deep Woods": ("F101", 0, 1),
-    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 1),
-    "Dungeon Entrance In Eldin Volcano": ("F200", 4, 0),
-    "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 1),
-    "Dungeon Entrance In Lanayru Desert": ('F300', 0, 5),
-    "Dungeon Entrance In Sand Sea": ('F301_1', 0, 1),
-    "Dungeon Entrance On Skyloft": ('F000', 0, 48),
+    "Dungeon Entrance in Deep Woods": ("F101", 0, 1),
+    "Dungeon Entrance in Lake Floria": ('F102_1', 0, 1),
+    "Dungeon Entrance in Eldin Volcano": ("F200", 4, 0),
+    "Dungeon Entrance in Volcano Summit": ('F201_3', 0, 1),
+    "Dungeon Entrance in Lanayru Desert": ('F300', 0, 5),
+    "Dungeon Entrance in Sand Sea": ('F301_1', 0, 1),
+    "Dungeon Entrance on Skyloft": ('F000', 0, 48),
 }
 
 DUNGEON_EXITS = {
     # stage, layer, room, entrance
-    "Dungeon Entrance In Deep Woods": ('F101', 0, 0, 1),
-    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 0, 1),
-    "Dungeon Entrance In Eldin Volcano": ('F200', 0, 4, 1),
-    "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 0, 1),
-    "Dungeon Entrance In Lanayru Desert": ('F300', 0, 0, 5),
-    "Dungeon Entrance In Sand Sea": ('F301_1', 0, 0, 4),
-    "Dungeon Entrance On Skyloft": ('F000', 0, 0, 53),
+    "Dungeon Entrance in Deep Woods": ('F101', 0, 0, 1),
+    "Dungeon Entrance in Lake Floria": ('F102_1', 0, 0, 1),
+    "Dungeon Entrance in Eldin Volcano": ('F200', 0, 4, 1),
+    "Dungeon Entrance in Volcano Summit": ('F201_3', 0, 0, 1),
+    "Dungeon Entrance in Lanayru Desert": ('F300', 0, 0, 5),
+    "Dungeon Entrance in Sand Sea": ('F301_1', 0, 0, 4),
+    "Dungeon Entrance on Skyloft": ('F000', 0, 0, 53),
 }
 
 DUNGEON_FINISH_EXITS = {
     # stage, layer, room, entrance
-    "Dungeon Entrance In Deep Woods": ('F101', 0, 0, 1),
-    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 0, 6),
-    "Dungeon Entrance In Eldin Volcano": ('F200', 0, 4, 1),
-    "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 0, 1),
-    "Dungeon Entrance In Lanayru Desert": ('F300_4', 2, 0, 2),
-    "Dungeon Entrance In Sand Sea": ('F301', 0, 0, 3),
-    "Dungeon Entrance On Skyloft": ('F000', 0, 0, 52),
+    "Dungeon Entrance in Deep Woods": ('F101', 0, 0, 1),
+    "Dungeon Entrance in Lake Floria": ('F102_1', 0, 0, 6),
+    "Dungeon Entrance in Eldin Volcano": ('F200', 0, 4, 1),
+    "Dungeon Entrance in Volcano Summit": ('F201_3', 0, 0, 1),
+    "Dungeon Entrance in Lanayru Desert": ('F300_4', 2, 0, 2),
+    "Dungeon Entrance in Sand Sea": ('F301', 0, 0, 3),
+    "Dungeon Entrance on Skyloft": ('F000', 0, 0, 52),
 }
 
 DUNGEON_ENTRANCES = {
@@ -206,13 +206,13 @@ DUNGEON_EXIT_SCENS = {
 #fixes for entrance rando, ET, SSH and SK don't need to set storyflags at all
 #for LMF it's the ToT layer change
 POST_DUNGEON_STORYFLAGS = {
-    "Dungeon Entrance In Deep Woods":  5,
-    "Dungeon Entrance In Lake Floria": 900,
-    "Dungeon Entrance In Eldin Volcano": -1,
-    "Dungeon Entrance In Volcano Summit": 901,
-    "Dungeon Entrance In Lanayru Desert": 914,
-    "Dungeon Entrance In Sand Sea": -1,
-    "Dungeon Entrance On Skyloft": -1,
+    "Dungeon Entrance in Deep Woods":  5,
+    "Dungeon Entrance in Lake Floria": 900,
+    "Dungeon Entrance in Eldin Volcano": -1,
+    "Dungeon Entrance in Volcano Summit": 901,
+    "Dungeon Entrance in Lanayru Desert": 914,
+    "Dungeon Entrance in Sand Sea": -1,
+    "Dungeon Entrance on Skyloft": -1,
 }
 
 POST_DUNGEON_CUTSCENE = {
@@ -227,16 +227,16 @@ POST_DUNGEON_CUTSCENE = {
 }
 
 BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
-    'Skyloft - Beedle 50 Rupee Item': (25, 26, 50, 25),
-    'Skyloft - Beedle First 100 Rupee Item': (23, 24, 100, 50),
-    'Skyloft - Beedle Second 100 Rupee Item': ("Second 100R undiscounted Text", "Second 100R discounted Text", 100, 50),
-    'Skyloft - Beedle Third 100 Rupee Item': ("Third 100R undiscounted Text", "Third 100R discounted Text", 100, 50),
-    'Skyloft - Beedle 300 Rupee Item': (19, 20, 300, 150),
-    'Skyloft - Beedle 600 Rupee Item': (29, 30, 600, 300),
-    'Skyloft - Beedle 800 Rupee Item': (27, 28, 800, 400),
-    'Skyloft - Beedle 1000 Rupee Item': (33, 34, 1000, 500),
-    'Skyloft - Beedle 1200 Rupee Item': (31, 32, 1200, 600),
-    'Skyloft - Beedle 1600 Rupee Item': (21, 22, 1600, 800),
+    'Beedle - 50 Rupee Item': (25, 26, 50, 25),
+    'Beedle - First 100 Rupee Item': (23, 24, 100, 50),
+    'Beedle - Second 100 Rupee Item': ("Second 100R undiscounted Text", "Second 100R discounted Text", 100, 50),
+    'Beedle - Third 100 Rupee Item': ("Third 100R undiscounted Text", "Third 100R discounted Text", 100, 50),
+    'Beedle - 300 Rupee Item': (19, 20, 300, 150),
+    'Beedle - 600 Rupee Item': (29, 30, 600, 300),
+    'Beedle - 800 Rupee Item': (27, 28, 800, 400),
+    'Beedle - 1000 Rupee Item': (33, 34, 1000, 500),
+    'Beedle - 1200 Rupee Item': (31, 32, 1200, 600),
+    'Beedle - 1600 Rupee Item': (21, 22, 1600, 800),
 }
 
 BEEDLE_BUY_SWTICH = '[1]I\'ll buy it![2-]No, thanks.'
@@ -789,7 +789,7 @@ class GamePatcher:
 
             # handle the extra loading zone to the dungeon in Sand Sea from Ancient Harbor
             # yes I know there was probably a better way to do this but it's a one off special case
-            if entrance == 'Dungeon Entrance In Sand Sea':
+            if entrance == 'Dungeon Entrance in Sand Sea':
                 self.add_patch_to_stage('F301', {
                     'name': f'Dungeon entrance patch - Ancient Harbor to {dungeon}',
                     'type': 'objpatch',
@@ -824,7 +824,7 @@ class GamePatcher:
             # it should not and they don't need to be touched if the LMF entrance is vanilla
             # the first time exit is taken care of by the DUNGEON_FINISH_EXIT_SCEN stuff
             # patch the secondary exit if it's not vanilla
-            if dungeon == 'Lanayru Mining Facility' and not entrance == 'Dungeon Entrance In Lanayru Desert':
+            if dungeon == 'Lanayru Mining Facility' and not entrance == 'Dungeon Entrance in Lanayru Desert':
                 self.add_patch_to_stage('F300_5', {
                     'name': f'Dungeon exit patch - second LMF finish to {entrance}',
                     'type': 'objpatch',

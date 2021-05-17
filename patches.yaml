@@ -1858,7 +1858,7 @@ D201: # FS A
     room: 0
     objtype: OBJ
 D201_1: # FS B
-  - name: Clawshot Target for 2nd small Key
+  - name: Clawshots Target for 2nd small Key
     type: objadd
     layer: 0
     room: 5

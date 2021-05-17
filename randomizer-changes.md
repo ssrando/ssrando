@@ -71,7 +71,7 @@
 ### Fire Sanctuary
 - The first cutscene with Guld has been removed
 - The initial cutscene of the first trapped mogma was removed to prevent a possible softlock when activating it out of order
-- A clawshot target was added near the first trapped mogma chest. This is so you can escape from the corner without dying without gust bellows
+- A clawshots target was added near the first trapped mogma chest. This is so you can escape from the corner without dying without gust bellows
 ## Lanayru
 - The Mines Entry bird statue is unlocked from the start to make sure the player can always go back
 - The cutscene before the first timeshift stone has been removed

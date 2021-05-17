@@ -10,23 +10,23 @@ ALWAYS_REQUIRED_LOCATIONS = [
     'Faron Silent Realm - Water Scale',
     'Lanayru Silent Realm - Clawshots',
     'Eldin Silent Realm - Fireshield Earrings',
-    'Sky - Kina\'s Crystals',
+    "Sky - Kina's Crystals",
     "Skyloft - Peater/Peatrice's Crystals",
-    'Skyloft - Batreaux 80 Crystals',
+    'Batreaux - 80 Crystals',
 ]
 
 SOMETIMES_LOCATIONS = [
-    'Lanayru Sand Sea - Roller Coaster Minigame',
-    'Skyloft - Pumpkin Archery - 600 Points',
+    'Lanayru Sand Sea - Rickety Coaster',
+    'Knight Academy - Pumpkin Archery - 600 Points',
     'Sky - Lumpy Pumpkin Harp Minigame',
-    'Sky - Fun Fun Island Minigame',
-    'Thunderhead - Bug Island minigame',
-    'Skyloft - Batreaux 70 Crystals Second Reward',
-    'Skyloft - Batreaux 70 Crystals',
-    'Skyloft - Batreaux 50 Crystals',
-    "Skyloft - Owlan's Crystals",
-    "Skyloft - Sparrot's Crystals",
-    "Lanayru - On Top of Lanayru Mining Facility",
+    "Sky - Dodoh's High Dive - 500 Rupees",
+    'Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes',
+    'Batreaux - 70 Crystals Second Reward',
+    'Batreaux - 70 Crystals',
+    'Batreaux - 50 Crystals',
+    "Knight Academy - Owlan's Crystals",
+    "Skyloft Village - Sparrot's Crystals",
+    "Lanayru - Top of Lanayru Mining Facility",
     "Skyloft - Waterfall Goddess Chest", # stronghold cube
     "Sky - Beedle's Island Goddess Chest", # goddess cube in ToT area
 ]
@@ -84,8 +84,8 @@ class Hints:
         # add them manually, cause they need to be kinda weirdly implemented because of bug net
         if self.logic.rando.options['shop-mode'] == 'Randomized' and \
                 'expensive' not in self.logic.rando.options['banned-types']:
-            needed_always_hints.append('Skyloft - Beedle 1200 Rupee Item')
-            needed_always_hints.append('Skyloft - Beedle 1600 Rupee Item')
+            needed_always_hints.append('Beedle - 1200 Rupee Item')
+            needed_always_hints.append('Beedle - 1600 Rupee Item')
         needed_sometimes_hints = self.logic.filter_locations_for_progression(SOMETIMES_LOCATIONS)
         hints_left = total_stonehints
         for location in needed_always_hints:
