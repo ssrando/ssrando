@@ -17,7 +17,7 @@ ALWAYS_REQUIRED_LOCATIONS = [
 
 SOMETIMES_LOCATIONS = [
     'Lanayru Sand Sea - Rickety Coaster',
-    'Knight Academy - Pumpkin Archery - 600 Points',
+    'Knight Academy - Pumpkin Pull - 600 Points',
     'Sky - Lumpy Pumpkin Harp Minigame',
     "Sky - Dodoh's High Dive - 500 Rupees",
     'Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes',
