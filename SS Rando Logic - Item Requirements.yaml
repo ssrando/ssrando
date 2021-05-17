@@ -1,3 +1,11 @@
+# Requirements file
+
+# Words Conventions:
+#   - Beginning of Checks, Adjectives, Nound and Verbs are Capitalized, not Prepositions (Does Look Weird in a Sentence, not in Checks)
+#   - Macros using words implying location like Access, Get Past, Reach (also, Retrieve) must include the previous location in their requirements (Get Past X must include Access X)
+#   - Macros using words implying capacity of action (except retrieve) may not include location requirements in their definition, but they must include such requirement in their uses
+# Please tell if you think some elements don't fit the rules
+
 # Inventory macros
 
 Practice Sword:
@@ -351,7 +359,7 @@ Can RBM 3x10:
 # Can RBM 3x04: Impossible
 Can RBM 3x02:
   (Can Access Skyloft BiT & Can Cut Tree) |
-  (Can Access Most of Faron Woods & Goddess Harp & Farore's Courage)
+  (Can Access Most of Faron Woods BiT & Goddess Harp & Farore's Courage)
   # Skyloft: Cut Trees in front of [Waterfall] Cave
   # Sky: Impossible, Opened Ground Patch on [Mogma Mitts] island inside Thunderhead ([Quiver] Chest) #UNSURE
   # Sealed Grounds: Impossible, Set after Impa asks Link to seal Imp 1 #UNSURE
@@ -436,7 +444,16 @@ Can RBM 5x02:
   # Faron Woods: Heart Piece behind Rocks #UNSURE (strictly harder than Skyloft)
   # Lake Floria: Check Floria Waterfall statue #UNSURE (strictly harder than Skyloft)
 
-# Can RBM 5x01: Impossible
+Can RBM 5x01:
+  (Can Access Skyloft BiT & (Clawshots | Can Access Sky BiT | Can Set Scene Flag 5x04)) |
+  Can Access Lumpy Pumpkin BiT |
+  Can Access Faron BiT
+  # Skyloft: Piece of Heart from Zelda's Cabinet
+  # Sky: Lumpy Pumpkin Statue
+  # Sealed Grounds: Checked Sealed Temple Statue
+  # Faron Woods: Vine from Lopsa's tree down (strictly harder than Sealed Grounds)
+  # Lake Floria: Check Lake Floria Statue (strictly harder than Sealed Grounds)
+
 # Can RBM 6x80: Impossible
 # Can RBM 6x40: Impossible
 # Can RBM 6x20: Impossible
@@ -466,7 +483,16 @@ Can RBM 7x10:
   # Lake Floria: Cranioc defeated #UNSURE
 
 # Can RBM 7x08: Impossible
-# Can RBM 7x04: Impossible
+Can RBM 7x04:
+  (Can Access Faron BiT & Can Set Scene Flag 7x02) |
+  (Can Access Most of Faron Woods BiT & Can Open Door to Lake Floria) |
+  (Can Access Lake Floria Statue BiT & Water Scale)
+  # Skyloft: Unused
+  # Sky: Impossible, Goddess Crest for Faron Trial
+  # Sealed Grounds: Impossible, Door from Hylia's Temple to Hylia's Realm is unlocked
+  # Faron Woods: Doors to Lake Floria opened
+  # Lake Floria: Set after spin-jumping over 2nd fence / unset after Cranioc cutscene #UNSURE
+
 Can RBM 7x02:
   Can Access Skyloft BiT
   # Skyloft: Check Upper Academy Statue
@@ -551,7 +577,7 @@ Can RBM Cx10:
   # Sky: Unused
   # Sealed Grounds: Impossible, Set before fadeout transition showing Imp 3 awakening
   # Faron Woods: Unused
-  # Lake Hylia: Unused
+  # Lake Floria: Unused
 
 # Can RBM Cx08: Impossible
 # Can RBM Cx04: Impossible
@@ -564,16 +590,23 @@ Can RBM Dx40:
   # Sky: Unused
   # Sealed Grounds: #TODO, Talk to Past Impa with Seedling before planting it
   # Faron Woods: Unused
-  # Lake Hylia: Unused
+  # Lake Floria: Unused
 
-# Can RBM Dx20: Impossible
+Can RBM Dx20:
+  Can Access Faron BiT & Can Access Past
+  # Skyloft: Unused
+  # Sky: Unused
+  # Sealed Grounds: Talk to Past Impa after Zelda
+  # Faron Woods: Unused
+  # Lake Floria: Impossible (for now), Entering Ancient Cistern Cutscene
+
 Can RBM Dx10:
   Can Access Sky BiT & Can Get Gratitude Crystals BiT
   # Skyloft: Unused
   # Sky: Gratitude Crystal in Lumpy Pumpkin Shed
   # Sealed Grounds: Talk to Impa after defeating Ghirahim 3 #UNSURE: Past or Present (strictly harder than Sky)
   # Faron Woods: Unused
-  # Lake Hylia: Impossible, Water Dragon dispells Waterfall #UNSURE
+  # Lake Floria: Impossible, Water Dragon dispells Waterfall #UNSURE
 
 Can RBM Dx08:
   Can Access Skyloft BiT & Can Get Gratitude Crystals BiT
@@ -581,7 +614,7 @@ Can RBM Dx08:
   # Sky: Unused
   # Sealed Grounds: Talk to Impa after Sky Keep [Dungeon in Skyloft] #UNSURE: Past or Present (strictly harder than Skyloft)
   # Faron Woods: Unused
-  # Lake Hylia: Unused
+  # Lake Floria: Unused
 
 Can RBM Dx04:
   Can Access Skyloft BiT & Gust Bellows
@@ -589,7 +622,7 @@ Can RBM Dx04:
   # Sky: Unused
   # Sealed Grounds: Impossible, Talk to Impa after learning 3 SotH parts #UNSURE: Possible ? Past or Present ?
   # Faron Woods: Unused
-  # Lake Hylia: Unused
+  # Lake Floria: Unused
 
 # Can RBM Dx02: Impossible
 Can RBM Dx01:
@@ -598,7 +631,7 @@ Can RBM Dx01:
   # Sky: Unused
   # Sealed Grounds: Impossible, Talk to Impa after Tadtones #UNSURE: Possible ? Past or Present ?
   # Faron Woods: Unused
-  # Lake Hylia: Unused
+  # Lake Floria: Unused
 
 # Can RBM Ex80: Impossible
 # Can RBM Ex40: Impossible
@@ -620,7 +653,7 @@ Can RBM Fx02:
   # Sky: Unused
   # Sealed Grounds: Set after drawing a heart on the Goddess Wall (strictly harder than Skyloft)
   # Faron Woods: Unused
-  # Lake Hylia: Unused
+  # Lake Floria: Unused
 
 # Can RBM Fx01: Impossible
 
@@ -787,6 +820,11 @@ Can Set Scene Flag 5x04:
   # Fire Sanctuary is "Statue in Lava River [Plats] room"
   # Sky Keep is "Lava isn't flowing from 2nd Dragon Mouth in Power Room?" #UNSURE
 
+
+Can Set Scene Flag 7x02:
+  Nothing
+  # Skyloft is Check Upper Academy Statue
+  # No need to include other areas
 
 
 Can Set Scene Flag 9x20:
@@ -1317,7 +1355,7 @@ Sealed Grounds - Gorko Goddess Wall Reward:
 ## Faron Woods
 
 Can Access Most of Faron Woods:
-  Can Access Sealed Temple & (Can Cut Tree | Clawshots | Can BiTWarp at Upper Academy)
+  Can Access Sealed Temple & (Can Cut Tree | Clawshots | Can BiTWarp at Upper Academy | Gym's Rope Jump Trick)
   # Either you need to cut a row of trees, or you can clawshot to the vines to skip them, or you BiTWarp past the trees
 
 Can Reach Oolo in Faron 2:
@@ -1326,8 +1364,11 @@ Can Reach Oolo in Faron 2:
   # Scene Flag 2x01 is "Log after Lopsa is pushed down"
 
 Can Open Door to Lake Floria:
-  Can Talk to Yerbal & Goddess Sword
+  (Can Talk to Yerbal & Goddess Sword) |
+  Can RBM 7x02 | Can RBM 7x04
   # You need to charge a skyward strike to open the door to Lake Floria
+  # Scene Flag 7x02 is "Cutscene of the Doors to Lake Floria opening"
+  # Scene Flag 7x04 is "Doors to Lake Floria opened"
 
 Faron Woods - Piece of Heart on Tree:
   Can Access Most of Faron Woods
@@ -1419,19 +1460,29 @@ Faron Woods - Chest inside Great Tree:
 ## Lake Floria
 
 Can Access Lake Floria above Rock:
-  Can Open Door to Lake Floria
+  Can Open Door to Lake Floria & Water Scale
+
+Lake Floria - Lake Floria Silver Rupee: # currently not randomized
+  Can Access Lake Floria above Rock & Water Scale
+
 
 Can Access Lake Floria Statue:
-  Can Access Lake Floria above Rock | (Can Access Floria Waterfall & Water Scale)
-  # You need to bllow up a rock to access Floria Statue from above, this is one-way
+  Can Access Lake Floria above Rock |
+  (Can Access Floria Waterfall & Water Scale) |
+  (Can Access Floria Waterfall & Can RBM 5x01)
+  # You need to blow up a rock to access Floria Statue from above, this is one-way
+  # Scene Flag 5x01 is "Lake Floria Statue checked". Works anywhere in Lake Floria, but Waterfall is the only place where it makes sense
+
 
 Can Access Floria Waterfall:
   Can Access Lake Floria Statue |
+  (Can Access Sealed Temple & Early Lake Floria - Swordless Rope Floria Trick)
   (Can Access Most of Faron Woods & (
     (Early Lake Floria - Fence Hop Trick & Sword) |
     Can RBM 3x40
   ))
   # Scene Flag 3x40 is "Log leading to Lake Floria"
+  # Scene Flag 5x02 is "Lake Floria Waterfall Statue checked", but one needs to be in Lake Floria to RBM it
 
 Can Access Dungeon Entrance in Lake Floria:
   Can Access Floria Waterfall & Water Scale
@@ -1439,9 +1490,6 @@ Can Access Dungeon Entrance in Lake Floria:
 
 
 Lake Floria - Lake Floria Chest:
-  Can Access Lake Floria Statue
-
-Lake Floria - Lake Floria Silver Rupee: # currently not randomized
   Can Access Lake Floria Statue
 
 Goddess Cube in Lake Floria:
@@ -1735,22 +1783,30 @@ Can Access Desert Gorge Statue:
 
 
 Can Access Front of Temple of Time:
-  (Can Access Desert Gorge Statue & Hook Beetle) |
+  (Can Access Desert Gorge Statue & (Hook Beetle | (Slingshot & Temple of Time - Slingshot Shot Trick))) |
   Can Beat Dungeon Entrance in Lanayru Desert
+  # The Timeshift Stone in the big tree is reachable with a slingshot trickshot
   # Beating the dungeon will make one spawn inside ToT
   # If you already beat the dungeon and forgot to activate the ToT statue, RBM it with scene flag 8x40 "Check Temple of Time Statue"
 
+Can Access Second Part of Lanayru Desert from Temple of Time:
+  Can Access Front of Temple of Time & (
+    Hook Beetle |
+    (Temple of Time - Bomb Throw & Bomb Bag) |
+    (Temple of Time - Bomb Throw & Cactus Bomb Whip Trick & Whip)
+  ) & (Distance Activator | Long Range Skyward Strike)
+  # You can defeat the bokoblins in the ToT area with the bombs used to activate the timeshift stone
+
 
 Goddess Cube at Ride near Temple of Time:
-  Can Access Front of Temple of Time & Hook Beetle & Goddess Sword
+  Can Access Second Part of Lanayru Desert from Temple of Time & Goddess Sword
 
 
 # Second Part
 
 Can Access Second Part of Lanayru Desert:
   (Can Access Lanayru Desert & (Clawshots | Temple of Time Skip - Brakeslide Trick | Can BiTWarp at Upper Academy)) |
-  (Can Access Front of Temple of Time & Hook Beetle & (Can Defeat Bokoblins | Hook Beetle))
-  # You can defeat the bokoblins in the ToT area with the hook beetle by grabbing bomb flowers
+  Can Access Second Part of Lanayru Desert from Temple of Time
 
 Can Activate Water Node:
   Can Access Second Part of Lanayru Desert & (Bomb Bag | Hook Beetle) & Sword  # Not sure about the bomb/hook beetle requirement
@@ -1991,22 +2047,22 @@ Can Hit Vines in Skyview Left Room:
 
 Can Raise Skyview Water Level in Left Room:
   Can Get Past the First Skyview Room & Can Hit Vines in Skyview Left Room
-  # What you hit the vines with, use it activate the crystal
+  # What you just hit the vines with, use it activate the crystal
 
 Skyview - Map Chest:
   Can Get Past the First Skyview Room & (Can Hit Vines in Skyview Left Room | Skyview - Spider Roll Trick)
 
 Can Raise Skyview Water Level in Right Room:
   Can Get Past the First Skyview Room & Can Hit High Skyview Switches
-  # What you hit the vines with, use it activate the crystal
+  # What you would hit the vines with, use it activate the crystal
 
 Skyview - Small Key Digging Spot:
-  Can Raise Skyview Water Level in Right Room & Digging Mitts & (Water Scale | Skyview Digging Spot without Scale Trick)
+  Can Raise Skyview Water Level in Right Room & Water Scale & Digging Mitts
   # It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
   # It is not possible to jump to the vines early in the main room with scale with only one switch for the water level hit
   # You can hit both switches with good bomb throws
-  # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Spume and kill it near the switch, not in logic
-  # You can hit the switch to enter that room with an upwards skyward strike using a boko or a spume, not in logic
+  # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Froak and kill it near the switch, not in logic
+  # You can hit the switch to enter that room with an upwards skyward strike using a Bokoblin or a Froak, not in logic
 
 Skyview - Behind Two Eyes:
   Can Get Past the First Skyview Room & (Clawshots | (Can Raise Skyview Water Level in Left Room & Can Raise Skyview Water Level in Right Room)) & Sword
@@ -2156,6 +2212,7 @@ Can Get Past Boulder Section:
   # Then, you absolutely need a Beetle to cut a rope in the boulder section.
   # Alternatively, RBM up the staircase. Both Scene Flags have it raised
   # Scene Flag 5x08 and 5x02 are "Both pegs pushed"
+  # Lava Hop is impossible because the rocks blow-up cutscene is removed
 
 Earth Temple - Chest Guarded by Lizalfos:
   Can Get Past Boulder Section
