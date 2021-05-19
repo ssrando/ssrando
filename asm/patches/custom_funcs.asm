@@ -169,8 +169,11 @@ mtlr r0
 addi r1, r1, 0x10
 blr
 
-.global alloc_only_if_no_first_file
-alloc_only_if_no_first_file:
+; function, that only actually loads the keyboard arcs if the following conditions are met:
+; 1. you are in BiT (checked with Link's actor params)
+; 2. All files are not empty
+.global alloc_keyboard_arcs_conditional
+alloc_keyboard_arcs_conditional:
 ; can't use r3, r4, r5, r6
 lwz r12, -0x3cb4(r13) ; LINK_PTR
 lwz r12, 0x4(r12) ; link params
