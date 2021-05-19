@@ -6,10 +6,6 @@ from dataclasses import dataclass
 
 ALWAYS_REQUIRED_LOCATIONS = [
     'Thunderhead - Levias',
-    'Skyloft Silent Realm - Stone of Trials',
-    'Faron Silent Realm - Water Scale',
-    'Lanayru Silent Realm - Clawshots',
-    'Eldin Silent Realm - Fireshield Earrings',
     'Sky - Kina\'s Crystals',
     "Skyloft - Peater/Peatrice's Crystals",
     'Batreaux - 80 Crystals',
@@ -136,6 +132,11 @@ class Hints:
                 'expensive' not in self.logic.rando.options['banned-types']:
             needed_always_hints.append('Beedle - 1200 Rupee Item')
             needed_always_hints.append('Beedle - 1600 Rupee Item')
+        if self.logic.rando.options['song-hints'] == 'None':
+            needed_always_hints.append('Skyloft Silent Realm - Stone of Trials')
+            needed_always_hints.append('Faron Silent Realm - Water Scale')
+            needed_always_hints.append('Lanayru Silent Realm - Clawshots')
+            needed_always_hints.append('Eldin Silent Realm - Fireshield Earrings')
         needed_sometimes_hints = self.logic.filter_locations_for_progression(SOMETIMES_LOCATIONS)
 
         hints_left = total_stonehints
