@@ -455,3 +455,8 @@
     Basic tells if the reward item is any progress item. Advanced tells if the trial is WotH, Barren, or potentially required.
     Direct tells the item on the trial directly.
   ui: option_song_hints
+- name: Fix BiT crashes
+  command: fix-bit-crashes
+  type: boolean
+  default: false
+  help: If enabled, does not load some arcs in BiT when all file slots are filled to make all areas accessible in BiT
