@@ -52,7 +52,7 @@ class Logic:
     self.item_locations = self.load_and_parse_item_data()
 
     self.race_mode_banned_locations = []
-    if self.rando.options['skip-skykeep'] and self.rando.entrance_connections["Dungeon Entrance in Lanayru Desert"] == 'Skykeep':
+    if self.rando.options['skip-skykeep'] and self.rando.entrance_connections["Dungeon Entrance in Lanayru Desert"] == 'Sky Keep':
       self.racemode_ban_location("Knight Academy - Fledge's Crystals")
     if self.rando.options['empty-unrequired-dungeons']:
       for location_name in self.item_locations:
@@ -512,7 +512,7 @@ class Logic:
     return valid_items
 
   def load_and_parse_item_data(self):
-    with (ROOT_DIR / "SS Rando Logic - Item Data.yaml").open('r') as f:
+    with (ROOT_DIR / "checks.yaml").open('r') as f:
       item_data = yaml.load(f, YamlOrderedDictLoader)
 
     for location_name in item_data:
@@ -531,7 +531,7 @@ class Logic:
     return item_data
 
   def load_and_parse_item_requirements(self):
-    with (ROOT_DIR / "SS Rando Logic - Item Requirements.yaml").open('r') as f:
+    with (ROOT_DIR / "SS Rando Logic - Requirements.yaml").open('r') as f:
       macro_strings = yaml.safe_load(f)
     self.macros = {}
     for macro_name, req_string in macro_strings.items():

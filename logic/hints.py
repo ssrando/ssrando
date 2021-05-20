@@ -33,7 +33,7 @@ SOMETIMES_LOCATIONS = [
 
 HINTABLE_ITEMS = \
     ["Clawshots"] + \
-   [ "Progressive Beetle"] * 2 + \
+    ["Progressive Beetle"] * 2 + \
     ["Progressive Sword"] * 4 + \
     ["Emerald Tablet"] * 1 + \
     ["Ruby Tablet"] * 1 + \
@@ -118,7 +118,7 @@ class Hints:
             if self.logic.rando.options['logic-mode'] == 'No Logic':
                 hintdef["Need"] = Logic.parse_logic_expression(hintname, "Nothing")
             else:
-                hintdef["Need"] = Logic.parse_logic_expression(hintname, hintdef["Need"])
+                hintdef["Need"] = self.logic.macros[hintname]
         self.hints = OrderedDict()
 
     def do_junk_hints(self):
