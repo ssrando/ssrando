@@ -68,7 +68,7 @@ class Logic:
         self.racemode_ban_location('Sky - Lumpy Pumpkin Roof Goddess Chest')
         self.racemode_ban_location('Sealed Grounds - Gorko Goddess Wall Reward')
 
-    batreaux_location_re = re.compile(r'.*Batreaux ([0-9]+) .*')
+    batreaux_location_re = re.compile(r'.*Batreaux - ([0-9]+) .*')
 
     for location_name in self.item_locations:
       # ban batreaux locations in necessary

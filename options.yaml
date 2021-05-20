@@ -475,15 +475,6 @@
   default: 0
   help: Barren areas contain no items required to beat the game
   ui: option_barren_hints
-- name: Item Hints
-  command: item-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Location hints give the item at a specific check
-  ui: option_location_hints
 - name: Location Hints
   command: location-hints
   type: int
@@ -491,4 +482,14 @@
   max: 15
   bits: 4
   default: 0
+  help: Location hints give the item at a specific check
+  ui: option_location_hints
+- name: Item Hints
+  command: item-hints
+  type: int
+  min: 0
+  max: 15
+  bits: 4
+  default: 0
   help: Item hints give the location of a specific item
+  ui: option_item_hints
