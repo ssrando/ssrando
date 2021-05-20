@@ -1,3 +1,0 @@
-#!/bin/sh
-
-python randoscript.py --output-folder=~/Téléchargements/Jeux/SSRando $@
