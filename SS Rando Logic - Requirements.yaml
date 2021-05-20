@@ -1006,6 +1006,9 @@ Skyloft - Crystal in Loftwing Prison:
   Can Get Gratitude Crystals & (Can Enter Waterfall Cave at Night | Beetle)
 
 
+Skyloft - Gossip Stone on Floating Island:
+  Clawshots
+
 Skyloft - Crystal on Waterfall Island:
   Can Get Gratitude Crystals & (Clawshots | (Hook Beetle & Upgrade Hook Beetle Trick))
   # Can reach with Tough Beetle
@@ -1109,6 +1112,9 @@ Sky - Goddess Chest inside Volcanic Island:
   Goddess Cube on East Great Tree with Clawshots Target & (Clawshots | Sky - Volcanic Island Dive Trick)
   # Normally you would need clawshots, but you can skip them with a good dive
 
+Sky - Gossip Stone in Volcanic Island:
+  Nothing
+
 
 Can Save Orielle:
   Bottle
@@ -1187,6 +1193,9 @@ Sky - Lumpy Pumpkin Goddess Chest:
 Sky - Lumpy Pumpkin Roof Goddess Chest:
   Goddess Cube in Skyview Spring
 
+Sky - Gossip Stone on Lumpy Pumpkin:
+  Nothing
+
 
 Sky - Breakable Boulder near Lumpy Pumpkin:
   Spiral Charge | Can RBM 4x02
@@ -1205,6 +1214,9 @@ Can Play Clean Cut:  # Bamboo Minigame
 
 Sky - Bamboo Island Goddess Chest:
   Goddess Cube West of Earth Temple Entrance
+
+Sky - Gossip Stone in Bamboo Island:
+  Nothing
 
 Sky - Goddess Chest on Island next to Bamboo Island:
   Goddess Cube near Mogma Turf Entrance
@@ -1286,7 +1298,7 @@ Thunderhead - Second Goddess Chest on Mogma Mitts Island:
   # Inaccessible Goddess Cube
 
 
-## Bug Island
+## Bug Rock
 
 Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
   Can Access Thunderhead & Bug Net
@@ -1294,7 +1306,8 @@ Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
 Thunderhead - Bug Rock Goddess Chest:
   Can Access Thunderhead & Goddess Cube in Summit Waterfall
 
-
+Thunderhead - Gossip Stone on Bug Rock:
+  Can Access Thunderhead
 
 
 ### Faron
@@ -1344,7 +1357,10 @@ Can Reach and Defeat Demise:
 Sealed Grounds - Gorko Goddess Wall Reward:
   Can Access Sealed Temple & Can Unlock Goddess Walls & Goddess Sword
 
-#Sealed Grounds - Behind the Temple Triforce on goddess wall:
+Sealed Grounds - Gossip Stone behind the Temple:
+  Can Access Sealed Temple
+
+#Sealed Grounds - Behind the Temple Triforce on Goddess Wall:
 #  Can Access Sealed Temple &
 #  Can Access Goddess Walls &
 #  Bow &
@@ -1434,6 +1450,8 @@ Goddess Cube in Deep Woods:
 Goddess Cube on top of Skyview:
   Can Get Past Deep Woods Bee Hive & Clawshots & Goddess Sword
 
+Faron Woods - Gossip Stone in Deep Woods:
+  Can Get Past Deep Woods Bee Hive
 
 ## Great Tree
 
@@ -1509,6 +1527,8 @@ Lake Floria - Outside AC: # currently not randomized
 Goddess Cube in Floria Waterfall:
   Can Access Floria Waterfall & Clawshots & Goddess Sword
 
+Lake Floria - Gossip Stone outside Ancient Cistern:
+  Can Access Floria Waterfall
 
 
 ### Eldin
@@ -1560,6 +1580,9 @@ Eldin Volcano - Behind Bombable Wall near Volcano Ascent:
 Can Play Thrill Digger:
   Can Access Second Part of Eldin
 
+Eldin Volcano - Gossip Stone in Thrill Digger Cave:
+  Can Access Second Part of Eldin
+
 
 Eldin Volcano - Key Piece in front of Earth Temple:
   Can Access Second Part of Eldin & Digging Mitts
@@ -1592,6 +1615,8 @@ Goddess Cube East of Earth Temple Entrance:
 Goddess Cube in Eldin Slide:
   Can Access Second Part of Eldin & Goddess Sword
 
+Eldin Volcano - Gossip Stone next to Earth Temple:
+  Can Access Second Part of Eldin
 
 
 Can Access Dungeon Entrance in Eldin Volcano:
@@ -1656,11 +1681,20 @@ Goddess Cube inside Volcano Summit:
 Goddess Cube in Summit Waterfall:
   Can Access Volcano Summit & Goddess Sword
 
-Volcano Summit - Piece of Heart behind Digging:
-  Can Get Past First Frog & Mogma Mitts
+Volcano Summit - Gossip Stone in Waterfall Area:
+  Can Access Volcano Summit & Clawshots
 
 Volcano Summit - Behind Bombable Wall in Waterfall Area:
   Can Access Volcano Summit & Clawshots
+
+
+Volcano Summit - Gossip Stone outside Fire Sanctuary:
+  Can Get Past First Frog
+
+Volcano Summit - Piece of Heart behind Digging:
+  Can Get Past First Frog & Mogma Mitts
+
+
 
 Goddess Cube near FS Entrance:
   Can Access Dungeon Entrance in Volcano Summit & Clawshots & Goddess Sword
@@ -1789,11 +1823,14 @@ Can Access Front of Temple of Time:
   # Beating the dungeon will make one spawn inside ToT
   # If you already beat the dungeon and forgot to activate the ToT statue, RBM it with scene flag 8x40 "Check Temple of Time Statue"
 
+Lanayru Desert - Gossip Stone in Temple of Time Area:
+  Can Access Front of Temple of Time #UNSURE
+
 Can Access Second Part of Lanayru Desert from Temple of Time:
   Can Access Front of Temple of Time & (
     Hook Beetle |
-    (Temple of Time - Bomb Throw & Bomb Bag) |
-    (Temple of Time - Bomb Throw & Cactus Bomb Whip Trick & Whip)
+    (Temple of Time - Bomb Throw Trick & Bomb Bag) |
+    (Temple of Time - Bomb Throw Trick & Cactus Bomb Whip Trick & Whip)
   ) & (Distance Activator | Long Range Skyward Strike)
   # You can defeat the bokoblins in the ToT area with the bombs used to activate the timeshift stone
 
@@ -1929,6 +1966,8 @@ Lanayru Caves - Golo:
   Can Access Lanayru Caves & Clawshots
   # Clawshots needed for Golo to spawn
 
+Lanayru Caves - Gossip Stone in Center:
+  Can Access Lanayru Caves
 
 ## Lanayru Sand Sea
 
@@ -1980,6 +2019,8 @@ Lanayru Sand Sea - In Skipper's Shack:
 Lanayru Sand Sea - Rickety Coaster:  # Roller Coaster Minigame
   Can Access Sand Sea & Gust Bellows & Can Uncover and Defeat Molderach # Do you need to defeat Molderach ? #UNSURE
 
+Sand Sea - Gossip Stone in Shipyard:
+  Can Access Sand Sea
 
 # Pirate Stronghold
 

@@ -31,6 +31,18 @@ SOMETIMES_LOCATIONS = [
     "Sky - Beedle's Island Goddess Chest", # goddess cube in ToT area
 ]
 
+HINTABLE_ITEMS = \
+    ["Clawshots"] + \
+    ["Progressive Beetle"] * 2 + \
+    ["Progressive Sword"] * 4 + \
+    ["Emerald Tablet"] * 1 + \
+    ["Ruby Tablet"] * 1 + \
+    ["Amber Tablet"] * 1 + \
+    ["Goddess Harp"] * 1 + \
+    ["Water Scale"] * 1 + \
+    ["Fireshield Earrings"] * 1
+
+
 class GossipStoneHint:
     def to_gossip_stone_text(self) -> str:
         raise NotImplementedError("abstract")
@@ -69,7 +81,7 @@ class Hints:
             if self.logic.rando.options['logic-mode'] == 'No Logic':
                 hintdef["Need"] = Logic.parse_logic_expression(hintname, "Nothing")
             else:
-                hintdef["Need"] = Logic.parse_logic_expression(hintname, hintdef["Need"])
+                hintdef["Need"] = self.logic.macros[hintname]
         self.hints = OrderedDict()
 
     def do_junk_hints(self):

@@ -195,11 +195,11 @@ class OrLogicExpression(LogicExpression):
                     return OrderedDict()
                 if subresult == None:
                     continue
-                for item_name, num_required in subresult.items(): # This seems wrong
+                for item_name, num_required in subresult.items(): # This seems very wrong
                     items_needed[item_name] = max(num_required, items_needed.setdefault(item_name, 0))
             self.recursion_flag = False
 
-        return items_needed  # Doesn't return None on unreachable goals
+        return items_needed if items_needed else None # If the dict is still empty, then no-one subresult filled it, so it is impossible
 
 def find_closing_parenthesis(tokens: List[str], start: int) -> int:
     assert tokens[start] == '('
