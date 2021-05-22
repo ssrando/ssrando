@@ -141,6 +141,7 @@ class Hints:
         needed_sometimes_hints = self.logic.filter_locations_for_progression(SOMETIMES_LOCATIONS)
 
         hints_left = total_stonehints
+        hinted_locations = []
         # create woth hints
         woth_hints_count = self.logic.rando.options['woth-hints']
         woth_hints = []
@@ -174,8 +175,11 @@ class Hints:
             self.logic.rando.rng.shuffle(woth_zones)
             print(woth_locations)
             for i in range(woth_hints_count):
-                woth_hints.append(self.logic.rando.rng.choice(woth_locations[woth_zones[i]]))
-                hints_left -= 1
+                loc = self.logic.rando.rng.choice(woth_locations[woth_zones[i]])
+                if loc not in hinted_locations:
+                    woth_hints.append(loc)
+                    hinted_locations.append(loc)
+                    hints_left -= 1
             print(woth_hints)
 
         # create barren hints
@@ -196,7 +200,7 @@ class Hints:
                         # unrequired dungeons are always barren in race mode
                         continue
                 if zone == 'Skykeep':
-                    # exclude skykeep from the eligible barren locations if it has no open checks because of shuffle modes
+                    # exclude skykeep from the eligible barren locations if it has no open checks
                     if self.logic.rando.options['map-mode'] not in ['Removed, Anywhere'] or self.logic.rando.options['small-key-mode'] not in ['Anywhere']:
                         continue
                 if region_barren[zone]:
@@ -214,15 +218,19 @@ class Hints:
         for location in needed_always_hints:
             if location_hints_left <= 0:
                 break
-            location_hints.append(location)
-            hints_left -= 1
-            location_hints_left -= 1
+            if location not in hinted_locations:
+                location_hints.append(location)
+                hinted_locations.append(location)
+                hints_left -= 1
+                location_hints_left -= 1
         while location_hints_left > 0:
             for location in self.logic.rando.rng.sample(needed_sometimes_hints,
                                                         k=min(hints_left, len(needed_sometimes_hints))):
-                location_hints.append(location)
-                hints_left -= 1
-                location_hints_left -= 1
+                if location not in hinted_locations:
+                    location_hints.append(location)
+                    hinted_locations.append(location)
+                    hints_left -= 1
+                    location_hints_left -= 1
 
         # create  the item hints
         hintable_items = HINTABLE_ITEMS.copy()
@@ -230,8 +238,9 @@ class Hints:
         for i in range(self.logic.rando.options['item-hints']):
             hinted_item = hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
-                if item == hinted_item and location not in item_hints:
+                if item == hinted_item and location not in item_hints and loction not in hinted_locations:
                     item_hints.append(location)
+                    hinted_locations.append(location)
                     hints_left -= 1
                     break
 
