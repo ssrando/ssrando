@@ -173,14 +173,12 @@ class Hints:
                 woth_hints_count = len(woth_locations)  # so to prevent odd behavior we cap it at the number of zones
                 # this also means that the missing hint slots will be filled by random hints
             self.logic.rando.rng.shuffle(woth_zones)
-            print(woth_locations)
             for i in range(woth_hints_count):
                 loc = self.logic.rando.rng.choice(woth_locations[woth_zones[i]])
                 if loc not in hinted_locations:
                     woth_hints.append(loc)
                     hinted_locations.append(loc)
                     hints_left -= 1
-            print(woth_hints)
 
         # create barren hints
         barren_hints_count = self.logic.rando.options['barren-hints']
@@ -205,7 +203,6 @@ class Hints:
                         continue
                 if region_barren[zone]:
                     barren_zones.append(zone)
-            print(barren_zones)
             self.logic.rando.rng.shuffle(barren_zones)
             if len(barren_zones) < barren_hints_count:
                 barren_hints_count = len(barren_zones)
@@ -238,7 +235,7 @@ class Hints:
         for i in range(self.logic.rando.options['item-hints']):
             hinted_item = hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
-                if item == hinted_item and location not in item_hints and loction not in hinted_locations:
+                if item == hinted_item and location not in item_hints and location not in hinted_locations:
                     item_hints.append(location)
                     hinted_locations.append(location)
                     hints_left -= 1
@@ -273,18 +270,6 @@ class Hints:
         self._place_hints_for_locations(hint_locations, [], [], [])
         
     def _place_hints_for_locations(self, location_hints, item_hints, woth_hints, barren_hints):
-        print(f"location hints: {len(location_hints)}")
-        for location in location_hints:
-            print(f"\t{location}")
-        print(f"item hints: {len(item_hints)}")
-        for location in item_hints:
-            print(f"\t{location}")
-        print(f"WotH hints: {len(woth_hints)}")
-        for location in woth_hints:
-            print(f"\t{location}")
-        hint_locations = location_hints + item_hints + woth_hints
-        print(hint_locations)
-        print(len(hint_locations))
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)
         for hint_location in hint_locations:
