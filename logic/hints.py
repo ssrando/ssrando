@@ -270,6 +270,7 @@ class Hints:
         self._place_hints_for_locations(hint_locations, [], [], [])
         
     def _place_hints_for_locations(self, location_hints, item_hints, woth_hints, barren_hints):
+        hint_locations = location_hints + item_hints + woth_hints
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)
         for hint_location in hint_locations:
