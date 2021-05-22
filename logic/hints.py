@@ -3,7 +3,8 @@ from paths import RANDO_ROOT_PATH
 import yaml
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
-from.constants import POTENTIALLY_REQUIRED_DUNGEONS
+from .constants import POTENTIALLY_REQUIRED_DUNGEONS
+from util import textbox_utils
 
 ALWAYS_REQUIRED_LOCATIONS = [
     'Thunderhead - Levias',
@@ -48,13 +49,26 @@ class GossipStoneHint:
         raise NotImplementedError("abstract")
 
 @dataclass
+class GossipStoneHintWrapper(GossipStoneHint):
+    primary_hint: GossipStoneHint
+    secondary_hint: GossipStoneHint
+
+    def to_gossip_stone_text(self) -> str:
+        return ''
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.primary_hint.to_spoiler_log_text()} / {self.secondary_hint.to_spoiler_log_text()}"
+
+@dataclass
 class LocationGossipStoneHint(GossipStoneHint):
     location_name: str
     item: str
 
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        return f"{zone}\n{specific_loc}\nhas {self.item}"
+        return textbox_utils.break_lines(
+            f"<r<{zone} - {specific_loc}>> has <y<{self.item}>>"
+        )
     
     def to_spoiler_log_text(self) -> str:
         return f"{self.location_name} has {self.item}"
@@ -67,7 +81,9 @@ class ItemGossipStoneHint(GossipStoneHint):
 
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        return f"{self.item} can be found at\n{zone}\n{specific_loc}"
+        return textbox_utils.break_lines(
+            f"<y<{self.item}>> can be found at <r<{zone}: {specific_loc}>>"
+        )
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.item} is on {self.location_name}"
@@ -78,7 +94,9 @@ class WayOfTheHeroGossipStoneHint(GossipStoneHint):
     zone: str
 
     def to_gossip_stone_text(self) -> str:
-        return f"The <y<Spirit of the Sword>> guides the\ngoddess' chosen hero to\n<r<{self.zone}>>"
+        return textbox_utils.break_lines(
+            f"The <b+<Spirit of the Sword>> guides the goddess' chosen hero to <r<{self.zone}>>"
+        )
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.zone} is WotH"
@@ -89,7 +107,9 @@ class BarrenGossipStoneHint(GossipStoneHint):
     zone: str
 
     def to_gossip_stone_text(self) -> str:
-        return f"They say that those who travel to\n<r<{self.zone}>>\nwill never find anything for their quest>>"
+        return textbox_utils.break_lines(
+            f"They say that those who travel to <r<{self.zone}>> will never find anything for their quest"
+        )
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.zone} is barren"
