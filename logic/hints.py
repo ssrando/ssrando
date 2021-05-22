@@ -3,6 +3,7 @@ from paths import RANDO_ROOT_PATH
 import yaml
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
+from.constants import POTENTIALLY_REQUIRED_DUNGEONS
 
 ALWAYS_REQUIRED_LOCATIONS = [
     'Thunderhead - Levias',
@@ -186,6 +187,18 @@ class Hints:
             for zone in region_barren.keys():
                 if 'Silent Realm' in zone:
                     continue  # don't hint barren silent realms since they are an always hint
+                if self.logic.rando.options['empty-unrequired-dungeons']:
+                    # avoid placing barren hints for unrequired dungeons in race mode
+                    if self.logic.rando.options['skip-skykeep'] and zone == 'Skykeep':
+                        # skykeep is always barren when race mode is on a dn skykeep is skipped
+                        continue
+                    if zone in POTENTIALLY_REQUIRED_DUNGEONS and zone not in self.logic.rando.required_dungeons:
+                        # unrequired dungeons are always barren in race mode
+                        continue
+                if zone == 'Skykeep':
+                    # exclude skykeep from the eligible barren locations if it has no open checks because of shuffle modes
+                    if self.logic.rando.options['map-mode'] not in ['Removed, Anywhere'] or self.logic.rando.options['small-key-mode'] not in ['Anywhere']:
+                        continue
                 if region_barren[zone]:
                     barren_zones.append(zone)
             print(barren_zones)
