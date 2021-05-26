@@ -3,13 +3,11 @@ from paths import RANDO_ROOT_PATH
 import yaml
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
+from .constants import POTENTIALLY_REQUIRED_DUNGEONS
+from util import textbox_utils
 
 ALWAYS_REQUIRED_LOCATIONS = [
     'Thunderhead - Levias',
-    'Skyloft Silent Realm - Stone of Trials',
-    'Faron Silent Realm - Water Scale',
-    'Lanayru Silent Realm - Clawshots',
-    'Eldin Silent Realm - Fireshield Earrings',
     'Sky - Kina\'s Crystals',
     "Skyloft - Peater/Peatrice's Crystals",
     'Batreaux - 80 Crystals',
@@ -51,13 +49,26 @@ class GossipStoneHint:
         raise NotImplementedError("abstract")
 
 @dataclass
+class GossipStoneHintWrapper(GossipStoneHint):
+    primary_hint: GossipStoneHint
+    secondary_hint: GossipStoneHint
+
+    def to_gossip_stone_text(self) -> str:
+        return ''
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.primary_hint.to_spoiler_log_text()} / {self.secondary_hint.to_spoiler_log_text()}"
+
+@dataclass
 class LocationGossipStoneHint(GossipStoneHint):
     location_name: str
     item: str
 
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        return f"{zone}\n{specific_loc}\nhas {self.item}"
+        return textbox_utils.break_lines(
+            f"<r<{zone} - {specific_loc}>> has <y<{self.item}>>"
+        )
     
     def to_spoiler_log_text(self) -> str:
         return f"{self.location_name} has {self.item}"
@@ -70,7 +81,9 @@ class ItemGossipStoneHint(GossipStoneHint):
 
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        return f"{self.item} can be found at\n{zone}\n{specific_loc}"
+        return textbox_utils.break_lines(
+            f"<y<{self.item}>> can be found at <r<{zone}: {specific_loc}>>"
+        )
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.item} is on {self.location_name}"
@@ -81,7 +94,9 @@ class WayOfTheHeroGossipStoneHint(GossipStoneHint):
     zone: str
 
     def to_gossip_stone_text(self) -> str:
-        return f"The <y<Spirit of the Sword>> guides the\ngoddess' chosen hero to\n<r<{self.zone}>>"
+        return textbox_utils.break_lines(
+            f"The <b+<Spirit of the Sword>> guides the goddess' chosen hero to <r<{self.zone}>>"
+        )
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.zone} is WotH"
@@ -92,7 +107,9 @@ class BarrenGossipStoneHint(GossipStoneHint):
     zone: str
 
     def to_gossip_stone_text(self) -> str:
-        return f"They say that those who travel to\n<r<{self.zone}>>\nwill never find anything for their quest>>"
+        return textbox_utils.break_lines(
+            f"They say that those who travel to <r<{self.zone}>> will never find anything for their quest"
+        )
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.zone} is barren"
@@ -134,11 +151,17 @@ class Hints:
         # add them manually, cause they need to be kinda weirdly implemented because of bug net
         if self.logic.rando.options['shop-mode'] == 'Randomized' and \
                 'expensive' not in self.logic.rando.options['banned-types']:
-            needed_always_hints.append('Skyloft - Beedle 1200 Rupee Item')
-            needed_always_hints.append('Skyloft - Beedle 1600 Rupee Item')
+            needed_always_hints.append('Beedle - 1200 Rupee Item')
+            needed_always_hints.append('Beedle - 1600 Rupee Item')
+        if self.logic.rando.options['song-hints'] == 'None':
+            needed_always_hints.append('Skyloft Silent Realm - Stone of Trials')
+            needed_always_hints.append('Faron Silent Realm - Water Scale')
+            needed_always_hints.append('Lanayru Silent Realm - Clawshots')
+            needed_always_hints.append('Eldin Silent Realm - Fireshield Earrings')
         needed_sometimes_hints = self.logic.filter_locations_for_progression(SOMETIMES_LOCATIONS)
 
         hints_left = total_stonehints
+        hinted_locations = []
         # create woth hints
         woth_hints_count = self.logic.rando.options['woth-hints']
         woth_hints = []
@@ -170,11 +193,12 @@ class Hints:
                 woth_hints_count = len(woth_locations)  # so to prevent odd behavior we cap it at the number of zones
                 # this also means that the missing hint slots will be filled by random hints
             self.logic.rando.rng.shuffle(woth_zones)
-            print(woth_locations)
             for i in range(woth_hints_count):
-                woth_hints.append(self.logic.rando.rng.choice(woth_locations[woth_zones[i]]))
-                hints_left -= 1
-            print(woth_hints)
+                loc = self.logic.rando.rng.choice(woth_locations[woth_zones[i]])
+                if loc not in hinted_locations:
+                    woth_hints.append(loc)
+                    hinted_locations.append(loc)
+                    hints_left -= 1
 
         # create barren hints
         barren_hints_count = self.logic.rando.options['barren-hints']
@@ -185,9 +209,20 @@ class Hints:
             for zone in region_barren.keys():
                 if 'Silent Realm' in zone:
                     continue  # don't hint barren silent realms since they are an always hint
+                if self.logic.rando.options['empty-unrequired-dungeons']:
+                    # avoid placing barren hints for unrequired dungeons in race mode
+                    if self.logic.rando.options['skip-skykeep'] and zone == 'Skykeep':
+                        # skykeep is always barren when race mode is on a dn skykeep is skipped
+                        continue
+                    if zone in POTENTIALLY_REQUIRED_DUNGEONS and zone not in self.logic.rando.required_dungeons:
+                        # unrequired dungeons are always barren in race mode
+                        continue
+                if zone == 'Skykeep':
+                    # exclude skykeep from the eligible barren locations if it has no open checks
+                    if self.logic.rando.options['map-mode'] not in ['Removed, Anywhere'] or self.logic.rando.options['small-key-mode'] not in ['Anywhere']:
+                        continue
                 if region_barren[zone]:
                     barren_zones.append(zone)
-            print(barren_zones)
             self.logic.rando.rng.shuffle(barren_zones)
             if len(barren_zones) < barren_hints_count:
                 barren_hints_count = len(barren_zones)
@@ -200,15 +235,19 @@ class Hints:
         for location in needed_always_hints:
             if location_hints_left <= 0:
                 break
-            location_hints.append(location)
-            hints_left -= 1
-            location_hints_left -= 1
+            if location not in hinted_locations:
+                location_hints.append(location)
+                hinted_locations.append(location)
+                hints_left -= 1
+                location_hints_left -= 1
         while location_hints_left > 0:
             for location in self.logic.rando.rng.sample(needed_sometimes_hints,
                                                         k=min(hints_left, len(needed_sometimes_hints))):
-                location_hints.append(location)
-                hints_left -= 1
-                location_hints_left -= 1
+                if location not in hinted_locations:
+                    location_hints.append(location)
+                    hinted_locations.append(location)
+                    hints_left -= 1
+                    location_hints_left -= 1
 
         # create  the item hints
         hintable_items = HINTABLE_ITEMS.copy()
@@ -216,8 +255,9 @@ class Hints:
         for i in range(self.logic.rando.options['item-hints']):
             hinted_item = hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
-                if item == hinted_item and location not in item_hints:
+                if item == hinted_item and location not in item_hints and location not in hinted_locations:
                     item_hints.append(location)
+                    hinted_locations.append(location)
                     hints_left -= 1
                     break
 
@@ -250,18 +290,7 @@ class Hints:
         self._place_hints_for_locations(hint_locations, [], [], [])
         
     def _place_hints_for_locations(self, location_hints, item_hints, woth_hints, barren_hints):
-        print(f"location hints: {len(location_hints)}")
-        for location in location_hints:
-            print(f"\t{location}")
-        print(f"item hints: {len(item_hints)}")
-        for location in item_hints:
-            print(f"\t{location}")
-        print(f"WotH hints: {len(woth_hints)}")
-        for location in woth_hints:
-            print(f"\t{location}")
         hint_locations = location_hints + item_hints + woth_hints
-        print(hint_locations)
-        print(len(hint_locations))
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)
         for hint_location in hint_locations:

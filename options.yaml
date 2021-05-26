@@ -449,3 +449,17 @@
   default: 0
   help: Item hints give the location of a specific item
   ui: option_item_hints
+- name: Song Hints
+  command: song-hints
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - Basic
+    - Advanced
+    - Direct
+  default: None
+  help: Enables or disables hints appearing on songs. When set to None, the trials will be 'Always' location hints.
+    Basic tells if the reward item is any progress item. Advanced tells if the trial is WotH, Barren, or potentially required.
+    Direct tells the item on the trial directly.
+  ui: option_song_hints
