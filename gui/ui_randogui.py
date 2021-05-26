@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.1
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -372,7 +372,7 @@ class Ui_MainWindow(object):
         self.groupBox_5.setGeometry(QRect(10, 10, 181, 231))
         self.verticalLayoutWidget = QWidget(self.groupBox_5)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 170, 213))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 172, 213))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -457,7 +457,7 @@ class Ui_MainWindow(object):
         self.groupBox_7.setGeometry(QRect(560, 10, 181, 231))
         self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 162, 204))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 164, 204))
         self.verticalLayout_10 = QVBoxLayout(self.verticalLayoutWidget_7)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -553,7 +553,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setGeometry(QRect(200, 10, 171, 231))
         self.verticalLayoutWidget_2 = QWidget(self.groupBox_2)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 151, 201))
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 160, 201))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -602,6 +602,11 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_10)
+
+        self.option_heal_water_dragon = QCheckBox(self.verticalLayoutWidget_2)
+        self.option_heal_water_dragon.setObjectName(u"option_heal_water_dragon")
+
+        self.verticalLayout_2.addWidget(self.option_heal_water_dragon)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -794,7 +799,7 @@ class Ui_MainWindow(object):
         self.groupBox_10.setGeometry(QRect(10, 10, 181, 201))
         self.verticalLayoutWidget_12 = QWidget(self.groupBox_10)
         self.verticalLayoutWidget_12.setObjectName(u"verticalLayoutWidget_12")
-        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 161, 183))
+        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 161, 200))
         self.verticalLayout_22 = QVBoxLayout(self.verticalLayoutWidget_12)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
@@ -1031,6 +1036,7 @@ class Ui_MainWindow(object):
         self.label_for_option_open_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Open Thunderhead", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
+        self.option_heal_water_dragon.setText(QCoreApplication.translate("MainWindow", u"Heal Water Dragon", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Overworld", None))
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_randomize_entrances.setCurrentText("")

@@ -586,7 +586,7 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>170</width>
+         <width>172</width>
          <height>213</height>
         </rect>
        </property>
@@ -703,7 +703,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>162</width>
+         <width>164</width>
          <height>204</height>
         </rect>
        </property>
@@ -856,7 +856,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>151</width>
+         <width>160</width>
          <height>201</height>
         </rect>
        </property>
@@ -909,6 +909,13 @@
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_heal_water_dragon">
+          <property name="text">
+           <string>Heal Water Dragon</string>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_2">
@@ -1203,7 +1210,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>183</height>
+         <height>200</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_22">

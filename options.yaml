@@ -256,6 +256,14 @@
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
     Hook Beetle will raise LMF once the Hook Beetle is obtained.
   ui: option_open_lmf
+- name: Heal Water Dragon
+  command: heal-water-dragon
+  type: boolean
+  bits: 2
+  default: false
+  help: If checked, getting sacred water from Skyview Spring is required to heal the Water Dragon to
+    enter Ancient Cistern.
+  ui: option_heal_water_dragon
 - name: Horde
   command: horde
   type: boolean

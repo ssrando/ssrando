@@ -994,7 +994,7 @@
       next: 520
   - name: New text Option
     type: textadd
-    text: "Hey, you look like you have a Questions?\n[1]Levias[2-]Other Things"
+    text: "Hey, you look like you've got a question.\n[1]Levias[2-]Other Things"
   - name: Show new Text Option
     type: flowadd
     flow:

@@ -1,5 +1,19 @@
 # Changelog
 
+
+## Dev
+### Options
+- Added "Heal Water Dragon" option
+### Changes
+- Added crest back in Goddess Statue (to RBM 2x02)
+- Added layer 0 Sealed Grounds Spiral for tunicless files
+- Added layer 1 Behind the Temple for tunicless files
+- Added layer 0 Faron Woods for tunicless files
+- Set Skyview Spring to layer 4 for sacred water
+- Added a bomb flower behind rock guarding Goddess Cube west of Earth Temple (for Eldin Out of Bounds)
+### Bugfixes
+- Fixed grammar in Pumm's text
+
 ## 1.0.6
 ### Options
 - Added option to randomize beetles shop

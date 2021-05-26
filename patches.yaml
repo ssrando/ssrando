@@ -28,6 +28,8 @@ global:
     - 519 # Updated Sand Sea map
     - 115 # Full Lake Floria map
     - 180 # Thrill digger entrance CS
+    - 148 # Link looking around cutscene in Sealed Temple (for bokos in BtT)
+    - 64 # Water Dragon quest started
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
@@ -102,6 +104,12 @@ B100:
     room: 0
     objtype: STAG
 B100_1: # skyview spring
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: -1
+        night: 0
+        layer: 4
   - name: Fi text after skyview CS
     type: objpatch
     id: 0xFC73
@@ -766,12 +774,6 @@ F008r: # Goddess Statue
     layer: 0
     room: 0
     objtype: OBJ
-  - name: Delete Crest
-    type: objdelete
-    id: 0xFC02
-    layer: 0
-    room: 0
-    objtype: OBJ
 F010r: # Isle of songs tower
   - name: Delete Faron Trial Dowsing
     type: objdelete
@@ -855,14 +857,6 @@ F020: # Sky
     type: oarcdelete
     oarc: GetSpareBombBagA
     layer: 0
-  - name: unnecessary oarcs
-    type: oarcdelete
-    oarc: WaterPotWater
-    layer: 2
-  - name: unnecessary oarcs
-    type: oarcdelete
-    oarc: Waterpot
-    layer: 2
   - name: unnecessary oarcs
     type: oarcdelete
     oarc: Pinwheel
@@ -962,9 +956,12 @@ F100: # Faron main area
       - story_flag: 479 #owlan quest started
         night: 0
         layer: 5
-      - story_flag: -1
+      - story_flag: 36
         night: 0
         layer: 1
+      - story_flag: -1
+        night: 0
+        layer: 0
   - name: Yerbal
     type: objmove
     id: 0x52B6
@@ -1101,6 +1098,7 @@ F101: # Deep Woods
     objtype: OBJ
 F102_1: # Outside AC
   - name: Layer override
+    onlyif: Option "heal-water-dragon" Disabled # No Water Dragon Quest
     type: layeroverride
     override: # change layer 3 trigger, no layer 1
       - story_flag: 900 # new beat AC
@@ -1109,9 +1107,28 @@ F102_1: # Outside AC
       - story_flag: 155 # AC intro cs
         night: 0
         layer: 2
-      - story_flag: -1
+      - story_flag: 36 # Tunic
         night: 0
         layer: 0
+      - story_flag: -1
+        night: 0
+        layer: 1
+  - name: Layer override
+    onlyif: Option "heal-water-dragon" Enabled # Water Dragon Quest
+    type: layeroverride
+    override: # change layer 3 trigger, no layer 1
+      - story_flag: 900 # new beat AC
+        night: 0
+        layer: 3
+      - story_flag: 155 # AC intro cs
+        night: 0
+        layer: 2
+      - story_flag: 36 # Tunic
+        night: 0
+        layer: 1
+      - story_flag: -1
+        night: 0
+        layer: 1
   - name: Water Dragon trigger after AC
     type: objpatch
     id: 0xFC59
@@ -1120,6 +1137,21 @@ F102_1: # Outside AC
     objtype: OBJ
     object:
       trigstoryfid: 900 # new AC beat flag
+F102_2: # Water Dragon's Lair
+  - name: Layer override
+    onlyif: Option "heal-water-dragon" Enabled # Water Dragon Quest
+    type: layeroverride
+    override: # Layer 1 for the Water Dragon
+      - story_flag: -1
+        night: 0
+        layer: 1 
+  - name: Layer override
+    onlyif: Option "heal-water-dragon" Disabled # No Water Dragon Quest
+    type: layeroverride
+    override: # No need for Water Dragon
+      - story_flag: -1
+        night: 0
+        layer: 0
 F102: # lake Floria
   - name: Layer override
     type: layeroverride
@@ -1632,6 +1664,22 @@ F200: # Eldin main area
     type: oarcadd
     oarc: GossipStone
     destlayer: 0
+  - name: extra Bomb flower # Deathwarp if getting cube via Eldin OoB
+    type: objadd
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: -4717
+      posy: 14600
+      posz: -24954
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFD99
+      name: Bombf
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
@@ -2772,9 +2820,12 @@ F401: # Sealed grounds Whirlpool
       - story_flag: 13
         night: 0
         layer: 3
-      - story_flag: -1
+      - story_flag: 36
         night: 0
         layer: 1
+      - story_flag: -1
+        night: 0
+        layer: 0
   - name: Nightmare Cs 1
     type: objdelete
     id: 0xFC9C
@@ -2865,7 +2916,7 @@ F400: # Behind the Temple
         layer: 2
       - story_flag: -1
         night: 0
-        layer: 0
+        layer: 1
   - name: Goron doesn't Disapear after Sandship 1
     type: objpatch
     id: 0xFC95
