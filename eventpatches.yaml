@@ -876,7 +876,7 @@
       param3: 9
       param4: 0
       param5: 0
-  - name: Skip Clawshots Requirement for Rattle Delivery
+  - name: Skip Clawshot Requirement for Rattle Delivery
     type: flowpatch
     index: 7
     flow:
@@ -960,7 +960,7 @@
     index: 78
     flow:
       param2: 36 # always trigger
-  - name: Switch for Chandelier just fell
+  - name: Switch for chandellier just fell
     type: switchadd
     flow:
       subeType: 6
@@ -978,16 +978,16 @@
     cases:
       - 216 # soup has been delivered, normal event
       - Show new Text Option # soup has not been delivered, ask which quest to do
-  - name: Go to Switch for Chandelier
+  - name: Go to Switch for Chandellier
     type: flowpatch
     index: 6
     flow:
-      next: Switch for Chandelier just fell
+      next: Switch for chandellier just fell
   - name: Fix Soup textboxes
     type: textpatch
     index: 143
     text: "What's the matter? You look like\nyou've got something mighty\nserious on your mind.\n[1]Soup[2-]No Soup"
-  - name: Go back to Chandelier quest
+  - name: Go back to chandellier quest
     type: flowpatch
     index: 347
     flow:

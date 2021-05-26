@@ -120,11 +120,11 @@
     scrapper, peatrice, goddess, faron goddess, eldin goddess, lanayru goddess, floria
     goddess, summit goddess, sand sea goddess'
   ui: option_banned_types
-- name: Skip Sky Keep
+- name: Skip Skykeep
   command: skip-skykeep
   type: boolean
   default: false
-  help: If activated, skips the requirement to beat Sky Keep in order to access the
+  help: If activated, skips the requirement to beat skykeep in order to access the
     horde in the past
   ui: option_skip_skykeep
 - name: Seed

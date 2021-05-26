@@ -265,4 +265,4 @@ def test():
         req_str = locations[loc]['Need']
         print()
         print(req_str)
-        print(parse_logic_expression(req_str).__str__())
+        print(str(parse_logic_expression(req_str)))

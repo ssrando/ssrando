@@ -81,7 +81,7 @@
 ### Options
 - checks can be filtered by types
 - add option to make sure unrequired dungeons are useless
-- add option to skip Sky Keep
+- add option to skip skykeep
 - make number of required dungeons dynamic
 ### Gameplay
 - remove various unnecessary text triggers

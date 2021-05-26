@@ -12,15 +12,15 @@
 ## Goal
 - The Billboard in the Academy displays the required dungeons (2 by default)
 - All of them have to be beaten and the Master Sword has to be obtained to fight the imprisoned to access the past
-- Sky Keep has to be beaten in order for the door to the horde to unlock, to finish the game
-- If you chose the Skip Sky Keep option, you do not have to beat Sky Keep to unlock the door to the Horde fight
+- Skykeep has to be beaten in order for the door to the horde to unlock, to finish the game
+- If you chose the Skip Skykeep option, you do not have to beat Sky Keep to unlock the door to the Horde fight
 ## Skyloft
 - The goddess Sword is replaced by a chest and the check can be obtained even if you start with a sword
 - The chest on the cliff on the goddess statue has been moved to right side of the entrance to the goddess statue area
 - Npc's that used to check for a free slot in the pouch don't do that anymore and always give you their item
 - Owlan gives you his item even if you already have a shield
 - The size of the Dust pile covering babies rattle has been increased to prevent it being obtained without gust bellows
-- The trial is accessible on any layer, even after opening Sky Keep
+- The trial is accessible on any layer, even after opening Skykeep
 - To access the Archer minigame you just need Bow
 - To access Fledge 5 crystal reward you only need to have access to stamina potions (right now locked behind Beating LMF or the dungeon inside LMF in entrance rando)
 - To access Cawlin's Letter check you need to talk to the toilet hand first (which requires Harp)
@@ -34,9 +34,9 @@
 - The Bug Heaven minigame is accessible from the start (granted that you have the bug net)
 - The Lumpy Pumpkin Chandelier can now be bonked down even with Spiral Charge
 - All of Kina's sidequest chain can now be done from the start
-### Sky Keep
-- Beating Sky Keep doesn't let the goddess statue fall back to the surface
-- Beating Sky Keep spawns you back at Skyloft to prevent out of logic Faron access for tablet randomizer
+### Skykeep
+- Beating Skykeep doesn't let the goddess statue fall back to the surface
+- Beating Skykeep spawns you back at Skyloft to prevent out of logic Faron access for tablet randomizer
 ## Faron
 - Sealed Temple is opened from the Start
 - You don't have to talk to impa

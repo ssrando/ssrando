@@ -312,7 +312,7 @@ B301: # after Sandship boss
     object:
       params1: 0xC303FF03 # change to zone temp flag 3
       anglez: 0xFFFF # don't set any storyflag here
-D003_0: # Sky Keep Courage Room
+D003_0: # Skykeep Courage Room
   - name: Fi text
     type: objdelete
     id: 0xFC0F
@@ -325,7 +325,7 @@ D003_0: # Sky Keep Courage Room
     layer: 0
     room: 0
     objtype: OBJ
-D003_2: # Sky Keep Power Room
+D003_2: # Skykeep Power Room
   - name: Fi text
     type: objdelete
     id: 0xFC33
@@ -344,7 +344,7 @@ D003_2: # Sky Keep Power Room
     layer: 0
     room: 0
     objtype: OBJ
-D003_3: # Sky Keep Wisdom Room
+D003_3: # Skykeep Wisdom Room
   - name: Fi text
     type: objdelete
     id: 0xFC1B
@@ -357,7 +357,7 @@ D003_3: # Sky Keep Wisdom Room
     layer: 0
     room: 0
     objtype: OBJ
-D003_7: # Sky Keep Entrance Room
+D003_7: # Skykeep Entrance Room
   - name: Fi text
     type: objdelete
     id: 0xFC0B
@@ -1858,7 +1858,7 @@ D201: # FS A
     room: 0
     objtype: OBJ
 D201_1: # FS B
-  - name: Clawshots Target for 2nd small Key
+  - name: Clawshot Target for 2nd small Key
     type: objadd
     layer: 0
     room: 5
@@ -2944,22 +2944,22 @@ F403: # Hylia's Realm
       - story_flag: -1
         night: 0
         layer: 13
-F407: # Sky Keep beaten cs
-  - name: Sky Keep CS remove Storyflag
+F407: # Skykeep beaten cs
+  - name: Skykeep CS remove Storyflag
     type: objpatch
     room: 0
     index: 2
     objtype: EVNT
     object:
       story_flag2: -1 # first storyflag is handled by entrance rando patches
-  - name: Sky Keep CS remove Storyflag
+  - name: Skykeep CS remove Storyflag
     type: objpatch
     room: 0
     index: 3
     objtype: EVNT
     object:
       story_flag2: -1
-  # - name: Send player to Skyloft after Sky Keep
+  # - name: Send player to Skyloft after Skykeep
   #   type: objpatch
   #   room: 0
   #   index: 1

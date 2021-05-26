@@ -107,41 +107,41 @@ DUNGEON_STAGES = {
     'Fire Sanctuary': 'D201',
     'Lanayru Mining Facility': 'D300',
     'Sandship': 'D301',
-    'Sky Keep': 'D003_7'
+    'Skykeep': 'D003_7'
 }
 
 # The stage for each map where there are dungeon entrances
 DUNGEON_ENTRANCE_STAGES = {
     # stage, room, scen
-    "Dungeon Entrance in Deep Woods": ("F101", 0, 1),
-    "Dungeon Entrance in Lake Floria": ('F102_1', 0, 1),
-    "Dungeon Entrance in Eldin Volcano": ("F200", 4, 0),
-    "Dungeon Entrance in Volcano Summit": ('F201_3', 0, 1),
-    "Dungeon Entrance in Lanayru Desert": ('F300', 0, 5),
-    "Dungeon Entrance in Sand Sea": ('F301_1', 0, 1),
-    "Dungeon Entrance on Skyloft": ('F000', 0, 48),
+    "Dungeon Entrance In Deep Woods": ("F101", 0, 1),
+    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 1),
+    "Dungeon Entrance In Eldin Volcano": ("F200", 4, 0),
+    "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 1),
+    "Dungeon Entrance In Lanayru Desert": ('F300', 0, 5),
+    "Dungeon Entrance In Sand Sea": ('F301_1', 0, 1),
+    "Dungeon Entrance On Skyloft": ('F000', 0, 48),
 }
 
 DUNGEON_EXITS = {
     # stage, layer, room, entrance
-    "Dungeon Entrance in Deep Woods": ('F101', 0, 0, 1),
-    "Dungeon Entrance in Lake Floria": ('F102_1', 0, 0, 1),
-    "Dungeon Entrance in Eldin Volcano": ('F200', 0, 4, 1),
-    "Dungeon Entrance in Volcano Summit": ('F201_3', 0, 0, 1),
-    "Dungeon Entrance in Lanayru Desert": ('F300', 0, 0, 5),
-    "Dungeon Entrance in Sand Sea": ('F301_1', 0, 0, 4),
-    "Dungeon Entrance on Skyloft": ('F000', 0, 0, 53),
+    "Dungeon Entrance In Deep Woods": ('F101', 0, 0, 1),
+    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 0, 1),
+    "Dungeon Entrance In Eldin Volcano": ('F200', 0, 4, 1),
+    "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 0, 1),
+    "Dungeon Entrance In Lanayru Desert": ('F300', 0, 0, 5),
+    "Dungeon Entrance In Sand Sea": ('F301_1', 0, 0, 4),
+    "Dungeon Entrance On Skyloft": ('F000', 0, 0, 53),
 }
 
 DUNGEON_FINISH_EXITS = {
     # stage, layer, room, entrance
-    "Dungeon Entrance in Deep Woods": ('F101', 0, 0, 1),
-    "Dungeon Entrance in Lake Floria": ('F102_1', 0, 0, 6),
-    "Dungeon Entrance in Eldin Volcano": ('F200', 0, 4, 1),
-    "Dungeon Entrance in Volcano Summit": ('F201_3', 0, 0, 1),
-    "Dungeon Entrance in Lanayru Desert": ('F300_4', 2, 0, 2),
-    "Dungeon Entrance in Sand Sea": ('F301', 0, 0, 3),
-    "Dungeon Entrance on Skyloft": ('F000', 0, 0, 52),
+    "Dungeon Entrance In Deep Woods": ('F101', 0, 0, 1),
+    "Dungeon Entrance In Lake Floria": ('F102_1', 0, 0, 6),
+    "Dungeon Entrance In Eldin Volcano": ('F200', 0, 4, 1),
+    "Dungeon Entrance In Volcano Summit": ('F201_3', 0, 0, 1),
+    "Dungeon Entrance In Lanayru Desert": ('F300_4', 2, 0, 2),
+    "Dungeon Entrance In Sand Sea": ('F301', 0, 0, 3),
+    "Dungeon Entrance On Skyloft": ('F000', 0, 0, 52),
 }
 
 DUNGEON_ENTRANCES = {
@@ -152,7 +152,7 @@ DUNGEON_ENTRANCES = {
     'Ancient Cistern': ('D101', 0, 0, 0),
     'Sandship': ('D301', 1, 0, 0),
     'Fire Sanctuary': ('D201', 0, 0, 0),
-    'Sky Keep': ('D003_7', 0, 0, 4),
+    'Skykeep': ('D003_7', 0, 0, 4),
 }
 
 DUNGEON_FINISH_EXIT_SCEN = {
@@ -163,7 +163,7 @@ DUNGEON_FINISH_EXIT_SCEN = {
     'Ancient Cistern': ('B101_1', 0, 3),
     'Sandship': ('B301', 0, 4),
     'Fire Sanctuary': ('B201_1', 0, 2),
-    'Sky Keep': ('F407', 0, 1),
+    'Skykeep': ('F407', 0, 1),
 }
 
 DUNGEON_EXIT_SCENS = {
@@ -184,35 +184,35 @@ DUNGEON_EXIT_SCENS = {
                  ('B301', 0, 1)],
     'Fire Sanctuary': [('D201', 0, 1), ('D201', 3, 2), ('D201', 10, 2),
                        ('D201_1', 1, 0) , ('D201_1', 7, 0), ('D201_1', 5, 3), ('D201_1', 6, 2)],
-    'Sky Keep': [('D003_0', 0, 3), # most of them not needed
-                 ('D003_1', 0, 2),
-                 ('D003_2', 0, 3),
-                 ('D003_3', 0, 3),
-                 ('D003_4', 0, 2),
-                 ('D003_5', 0, 2),
-                 ('D003_6', 0, 2),
-                 ('D003_7', 0, 2),
-                 ('D003_0', 0, 1), # most of them not needed
-                 ('D003_1', 0, 1),
-                 ('D003_2', 0, 1),
-                 ('D003_3', 0, 1),
-                 ('D003_4', 0, 1),
-                 ('D003_5', 0, 1),
-                 ('D003_6', 0, 1),
-                 ('D003_7', 0, 1),
+    'Skykeep': [('D003_0', 0, 3), # most of them not needed
+                ('D003_1', 0, 2),
+                ('D003_2', 0, 3),
+                ('D003_3', 0, 3),
+                ('D003_4', 0, 2),
+                ('D003_5', 0, 2),
+                ('D003_6', 0, 2),
+                ('D003_7', 0, 2),
+                ('D003_0', 0, 1), # most of them not needed
+                ('D003_1', 0, 1),
+                ('D003_2', 0, 1),
+                ('D003_3', 0, 1),
+                ('D003_4', 0, 1),
+                ('D003_5', 0, 1),
+                ('D003_6', 0, 1),
+                ('D003_7', 0, 1),
                 ],
 }
 
 #fixes for entrance rando, ET, SSH and SK don't need to set storyflags at all
 #for LMF it's the ToT layer change
 POST_DUNGEON_STORYFLAGS = {
-    "Dungeon Entrance in Deep Woods":  5,
-    "Dungeon Entrance in Lake Floria": 900,
-    "Dungeon Entrance in Eldin Volcano": -1,
-    "Dungeon Entrance in Volcano Summit": 901,
-    "Dungeon Entrance in Lanayru Desert": 914,
-    "Dungeon Entrance in Sand Sea": -1,
-    "Dungeon Entrance on Skyloft": -1,
+    "Dungeon Entrance In Deep Woods":  5,
+    "Dungeon Entrance In Lake Floria": 900,
+    "Dungeon Entrance In Eldin Volcano": -1,
+    "Dungeon Entrance In Volcano Summit": 901,
+    "Dungeon Entrance In Lanayru Desert": 914,
+    "Dungeon Entrance In Sand Sea": -1,
+    "Dungeon Entrance On Skyloft": -1,
 }
 
 POST_DUNGEON_CUTSCENE = {
@@ -223,7 +223,7 @@ POST_DUNGEON_CUTSCENE = {
     'Ancient Cistern': ('B101_1', 0, 1),
     'Sandship': ('B301', 0, 1),
     'Fire Sanctuary': ('B201_1', 0, 0),
-    'Sky Keep': ('F407', 0, 2),
+    'Skykeep': ('F407', 0, 2),
 }
 
 BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
@@ -528,7 +528,7 @@ def rando_patch_goddess_crest(bzs: OrderedDict, itemid: int, index: str):
         obj['params1'] = mask_shift_set(obj['params1'], 0xFF, 0x10, itemid)
     elif index == "2":
         obj['params2'] = mask_shift_set(obj['params2'], 0xFF, 0x18, itemid)
-
+        
 
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
 RANDO_PATCH_FUNCS = {
@@ -659,7 +659,7 @@ class GamePatcher:
             oarc_cache_path=rando.oarc_cache_path,
             copy_unmodified=False)
         self.text_labels = {}
-
+    
     def do_all_gamepatches(self):
         self.load_base_patches()
         self.add_entrance_rando_patches()
@@ -690,7 +690,7 @@ class GamePatcher:
     def filter_option_requirement(self, entry):
         return not (isinstance(entry, dict) and 'onlyif' in entry \
             and not self.rando.logic.check_logical_expression_string_req(entry['onlyif']))
-
+    
     def add_patch_to_stage(self, stage, stagepatch):
         if stage not in self.patches:
             self.patches[stage] = []
@@ -707,7 +707,7 @@ class GamePatcher:
             self.patches = yaml.safe_load(f)
         with (RANDO_ROOT_PATH / "eventpatches.yaml").open() as f:
             self.eventpatches = yaml.safe_load(f)
-
+        
         filtered_storyflags = []
         for storyflag in self.patches['global']['startstoryflags']:
             # conditionals are an object
@@ -722,7 +722,7 @@ class GamePatcher:
         # patches from randomizing items
         self.rando_stagepatches, self.stageoarcs, self.rando_eventpatches, self.shoppatches = \
             get_patches_from_location_item_list(self.rando.logic.item_locations, self.rando.logic.done_item_locations)
-
+        
         # assembly patches
         self.all_asm_patches = defaultdict(OrderedDict)
         self.add_asm_patch('custom_funcs')
@@ -742,19 +742,19 @@ class GamePatcher:
             "True Master Sword": 5,
         }
         self.all_asm_patches['d_a_obj_time_door_beforeNP.rel'][0xD48] = {"Data": [0x2C, 0x00, 0x00, GOT_SWORD_MODES[self.rando.options['got-sword-requirement']]]}
-
+        
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / 'asm' / 'custom_symbols.txt').open('r') as f:
             self.custom_symbols = yaml.safe_load(f)
-        self.main_custom_symbols = self.custom_symbols.get('main.dol',{})
+        self.main_custom_symbols = self.custom_symbols.get('main.dol',{}) 
         with (RANDO_ROOT_PATH / 'asm' / 'original_symbols.txt').open('r') as f:
             self.original_symbols = yaml.safe_load(f)
-        self.main_original_symbols = self.original_symbols.get('main.dol',{})
-
+        self.main_original_symbols = self.original_symbols.get('main.dol',{}) 
+        
         # for asm, free space start offset
         with (RANDO_ROOT_PATH / 'asm' / 'free_space_start_offsets.txt').open('r') as f:
             self.free_space_start_offsets = yaml.safe_load(f)
-
+    
     def add_asm_patch(self, name):
         with (RANDO_ROOT_PATH / 'asm' / 'patch_diffs' / f'{name}_diff.txt').open('r') as f:
             asm_patch_file_data = yaml.safe_load(f)
@@ -782,7 +782,7 @@ class GamePatcher:
 
             # handle the extra loading zone to the dungeon in Sand Sea from Ancient Harbor
             # yes I know there was probably a better way to do this but it's a one off special case
-            if entrance == 'Dungeon Entrance in Sand Sea':
+            if entrance == 'Dungeon Entrance In Sand Sea':
                 self.add_patch_to_stage('F301', {
                     'name': f'Dungeon entrance patch - Ancient Harbor to {dungeon}',
                     'type': 'objpatch',
@@ -809,7 +809,7 @@ class GamePatcher:
                         'entrance': entrance_index
                     }
                 })
-
+            
             # most dungeons only have a single exit, exception being LMF, which is handled seperately
             exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance]
             # the exit out of the back of LMF is special, because it's the only dungeon finish that can be
@@ -817,7 +817,7 @@ class GamePatcher:
             # it should not and they don't need to be touched if the LMF entrance is vanilla
             # the first time exit is taken care of by the DUNGEON_FINISH_EXIT_SCEN stuff
             # patch the secondary exit if it's not vanilla
-            if dungeon == 'Lanayru Mining Facility' and not entrance == 'Dungeon Entrance in Lanayru Desert':
+            if dungeon == 'Lanayru Mining Facility' and not entrance == 'Dungeon Entrance In Lanayru Desert':
                 self.add_patch_to_stage('F300_5', {
                     'name': f'Dungeon exit patch - second LMF finish to {entrance}',
                     'type': 'objpatch',
@@ -846,7 +846,7 @@ class GamePatcher:
                         'entrance': exit_entrance
                     }
                 })
-
+            
             scen_stage, scen_room, scen_index = DUNGEON_FINISH_EXIT_SCEN[dungeon]
             exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_FINISH_EXITS[entrance]
             self.add_patch_to_stage(scen_stage, {
@@ -943,7 +943,7 @@ class GamePatcher:
         with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
             extracts = yaml.safe_load(f)
         self.patcher.create_oarc_cache(extracts)
-
+    
     def add_startitem_patches(self):
         # Add sword story/itemflags if required
         start_sword_count = self.rando.starting_items.count('Progressive Sword')
@@ -960,13 +960,13 @@ class GamePatcher:
             self.patches['global']['startstoryflags'].append(30) # storyflag for pouch
             self.patches['global']['startstoryflags'].append(931) # rando storyflag for progressive pouch 1
             self.patches['global']['startitems'].append(112) # itemflag for pouch
-
+        
 
         # Add storyflags for tablets
         for item in self.rando.starting_items:
             if item in START_ITEM_STORYFLAGS:
                 self.patches['global']['startstoryflags'].append(START_ITEM_STORYFLAGS[item])
-
+    
     def add_required_dungeon_patches(self):
         # Add required dungeon patches to eventpatches
         DUNGEON_TO_EVENTFILE = {
@@ -1127,7 +1127,7 @@ class GamePatcher:
                 'index': inventory_text_idx,
                 'text': inventory_text + useful_text
             })
-
+    
     def add_stone_hint_patches(self):
         for hintname, hintdef in self.rando.hints.stonehint_definitions.items():
             self.add_patch_to_event(hintdef['textfile'], {
@@ -1136,7 +1136,7 @@ class GamePatcher:
                 'index': hintdef['textindex'],
                 'text': self.rando.hints.hints[hintname].to_gossip_stone_text()
             })
-
+    
     def handle_oarc_add_remove(self):
         remove_stageoarcs = defaultdict(set)
 
@@ -1153,7 +1153,7 @@ class GamePatcher:
             self.patcher.add_stage_oarc(stage, layer, oarcs)
         for (stage, layer), oarcs in remove_stageoarcs.items():
             self.patcher.delete_stage_oarc(stage, layer, oarcs)
-
+    
     def add_rando_hash(self):
         if not '002-System' in self.eventpatches:
             self.eventpatches['002-System'] = []
@@ -1180,16 +1180,16 @@ class GamePatcher:
             'Ancient Cistern': '<b<',
             'Fire Sanctuary': '<r<',
             'Sandship': '<y+<',
-            'Sky Keep': '<s<',
+            'Skykeep': '<s<',
             'Lanayru Caves': '<ye<',
         }
         KEYS_DUNGEONS = [
             # ('Skyview', 200), # already has a textbox
             ('Lanayru Mining Facility', 201),
-            ('Ancient Cistern', 202),
+            ('Ancient Cistern', 202), 
             ('Fire Sanctuary', 203),
             ('Sandship', 204),
-            ('Sky Keep', 205),
+            ('Skykeep', 205),
             ('Lanayru Caves', 206)
         ]
         self.eventpatches['003-ItemGet'].append({
@@ -1229,10 +1229,10 @@ class GamePatcher:
             ('Skyview', 207),
             ('Earth Temple', 208),
             ('Lanayru Mining Facility', 209),
-            ('Ancient Cistern', 210),
+            ('Ancient Cistern', 210), 
             ('Fire Sanctuary', 211),
             ('Sandship', 212),
-            ('Sky Keep', 213),
+            ('Skykeep', 213),
         ]
         for dungeon, itemid in MAPS_DUNGEONS:
             dungeon_and_color = DUNGEON_COLORS[dungeon] + dungeon + '>>'

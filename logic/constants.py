@@ -9,7 +9,7 @@ DUNGEON_NAMES = OrderedDict([
     ("AC",   "Ancient Cistern"),
     ("SS",   "Sandship"),
     ("FS",   "Fire Sanctuary"),
-    ("SK",   "Sky Keep"),
+    ("SK",   "Skykeep"),
     ('LanayruCaves', 'Lanayru Caves'), # "short name" doesn't allow space
 ])
 DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict([v, k] for k, v in DUNGEON_NAMES.items())
@@ -34,7 +34,7 @@ MAP_CHECKS = [
     'Ancient Cistern - Map Chest',
     'Sandship - Map Chest',
     'Fire Sanctuary - Map Chest',
-    'Sky Keep - Map Chest',
+    'Skykeep - Map Chest',
 ]
 
 SMALL_KEY_CHECKS = [
@@ -49,7 +49,7 @@ SMALL_KEY_CHECKS = [
     'Fire Sanctuary - Second Small Key Chest',
     'Fire Sanctuary - Third Small Key Chest',
     'Lanayru Caves - Golo',
-    'Sky Keep - Small Key Chest'
+    'Skykeep - Small Key Chest'
 ]
 
 BOSS_KEY_CHECKS = [
