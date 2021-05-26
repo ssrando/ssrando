@@ -202,12 +202,15 @@ Can Access Skyview 2:
 
 Can Beat Skyview 2:
     Can Access Skyview 2 & Can Beat Skyview
+
+Can Heal Water Dragon:
+    (Can Beat Skyview & Bottle) | Option "heal-water-dragon" Disabled
                                                                                                                                 
 # Can Get Sacred Water:
 #     Can Beat Skyview 2 & Bottle
 
 Can Access Dungeon Entrance In Lake Floria: #if requiring Sacred Water, make sure the randomizer places the skyview boss key before
-    Can Access Lake Floria
+    Can Access Lake Floria & Can Heal Water Dragon
 
 Can Lower Ancient Cistern Statue:
     Whip & (Clawshots | (Water Scale & (Bow | Beetle) & AC Small Key x2))
