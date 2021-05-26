@@ -669,7 +669,8 @@ class GamePatcher:
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
         self.add_startstoryflags_to_patches()
-        # self.add_trial_hint_patches()
+        if (self.rando.options['song-hints']) != 'None':
+            self.add_trial_hint_patches()
         self.add_stone_hint_patches()
         self.handle_oarc_add_remove()
         self.add_rando_hash()
@@ -1098,12 +1099,27 @@ class GamePatcher:
         }
         for trial_check_name, (obtain_text_name, inventory_text_idx, inventory_text) in trial_checks.items():
             item = self.rando.logic.done_item_locations[trial_check_name]
-            if item in self.rando.logic.all_progress_items:
-                useful_text = '\nYou might need what it reveals...'
-                # print(f'{item} in {trial_check} is useful')
+            hint_mode = self.rando.options['song-hints']
+            if hint_mode == 'Basic':
+                if item in self.rando.logic.all_progress_items:
+                    useful_text = '\nYou might need what it reveals...'
+                    # print(f'{item} in {trial_check} is useful')
+                else:
+                    useful_text = '\nIt\'s probably not too important...'
+                    # print(f'{item} in {trial_check} is not useful')
+            elif hint_mode == 'Advanced':
+                if trial_check_name in self.rando.woth_locations:
+                    useful_text = '\nYour spirit will grow by completing this trial'
+                elif item in self.rando.logic.all_progress_items:
+                    useful_text = '\nYou might need what it reveals...'
+                else:
+                    # barren
+                    useful_text = '\nIt\'s probably not too important...'
+            elif hint_mode == 'Direct':
+                useful_text = f"\nThey say this trial rewards those who complete it with\n{item}"
             else:
-                useful_text = '\nIt\'s probably not too important...'
-                # print(f'{item} in {trial_check} is not useful')
+                useful_text = '\nSomething went wrong when generating song hints.\n' \
+                              'Please report this in #rando-bugs in the SSR Discord'
             find_event('003-ItemGet', obtain_text_name)["text"] += useful_text
             self.eventpatches['003-ItemGet'].append({
                 'name': "Harp Text",
