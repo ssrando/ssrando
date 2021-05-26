@@ -896,6 +896,31 @@ class Ui_MainWindow(object):
         self.groupBox_11 = QGroupBox(self.tab_7)
         self.groupBox_11.setObjectName(u"groupBox_11")
         self.groupBox_11.setGeometry(QRect(200, 10, 181, 201))
+        self.verticalLayoutWidget_6 = QWidget(self.groupBox_11)
+        self.verticalLayoutWidget_6.setObjectName(u"verticalLayoutWidget_6")
+        self.verticalLayoutWidget_6.setGeometry(QRect(10, 20, 161, 171))
+        self.verticalLayout_26 = QVBoxLayout(self.verticalLayoutWidget_6)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.verticalLayout_26.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_27 = QVBoxLayout()
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.label_6 = QLabel(self.verticalLayoutWidget_6)
+        self.label_6.setObjectName(u"label_6")
+
+        self.verticalLayout_27.addWidget(self.label_6)
+
+        self.option_song_hints = QComboBox(self.verticalLayoutWidget_6)
+        self.option_song_hints.setObjectName(u"option_song_hints")
+
+        self.verticalLayout_27.addWidget(self.option_song_hints)
+
+
+        self.verticalLayout_26.addLayout(self.verticalLayout_27)
+
+        self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_26.addItem(self.verticalSpacer_10)
+
         self.tabWidget.addTab(self.tab_7, "")
         self.tab_6 = QWidget()
         self.tab_6.setObjectName(u"tab_6")
@@ -943,7 +968,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(3)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1061,6 +1086,7 @@ class Ui_MainWindow(object):
         self.label_for_option_location_hints.setText(QCoreApplication.translate("MainWindow", u"Location Hints", None))
         self.label_for_option_item_hints.setText(QCoreApplication.translate("MainWindow", u"Item Hints", None))
         self.groupBox_11.setTitle(QCoreApplication.translate("MainWindow", u"GroupBox", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Song Hints", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"Hints", None))
         self.randomize_item.setText(QCoreApplication.translate("MainWindow", u"<--", None))
         self.start_with_item.setText(QCoreApplication.translate("MainWindow", u"-->", None))
