@@ -2491,7 +2491,7 @@ D301: # Sandship A
       posy: 0 # doesn't matter, is triggered anywhere
       posz: 0
       angley: 0xFFFF
-      anglez: 40118 # entrypoint 401_18
+      anglez: 40108 # entrypoint 401_08
       id: 0xFC00
       name: NpcTke
       trigstoryfid: 933 # triggered by storyflag for leaving tentalus room
