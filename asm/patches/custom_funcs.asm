@@ -314,7 +314,7 @@ blr
 .global trigger_exit_one
 trigger_exit_one:
 lwz r3,-0x3cac(r13) ; RELOADER_PTR
-li r4, 0 ; current room, all rooms in skykeep are room 0
+li r4, 0 ; current room, all rooms in sky keep are room 0
 li r5, 1 ; take exit 1, it's always the skyloft exit
 li r6, 2 ; idk
 li r7, 2 ; idk

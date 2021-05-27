@@ -255,8 +255,8 @@ class Hints:
                     continue  # don't hint barren silent realms since they are an always hint
                 if self.logic.rando.options["empty-unrequired-dungeons"]:
                     # avoid placing barren hints for unrequired dungeons in race mode
-                    if self.logic.rando.options["skip-skykeep"] and zone == "Skykeep":
-                        # skykeep is always barren when race mode is on a dn skykeep is skipped
+                    if self.logic.rando.options["skip-skykeep"] and zone == "Sky Keep":
+                        # skykeep is always barren when race mode is on and Sky Keep is skipped
                         continue
                     if (
                         zone in POTENTIALLY_REQUIRED_DUNGEONS
@@ -264,8 +264,8 @@ class Hints:
                     ):
                         # unrequired dungeons are always barren in race mode
                         continue
-                if zone == "Skykeep":
-                    # exclude skykeep from the eligible barren locations if it has no open checks
+                if zone == "Sky Keep":
+                    # exclude Sky Keep from the eligible barren locations if it has no open checks
                     if self.logic.rando.options["map-mode"] not in [
                         "Removed, Anywhere"
                     ] or self.logic.rando.options["small-key-mode"] not in ["Anywhere"]:
