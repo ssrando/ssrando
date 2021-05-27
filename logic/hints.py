@@ -16,17 +16,17 @@ ALWAYS_REQUIRED_LOCATIONS = [
 ]
 
 SOMETIMES_LOCATIONS = [
-    "Lanayru Sand Sea - Roller Coaster Minigame",
-    "Knight Academy - Pumpkin Archery - 600 Points",
+    "Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05",
+    "Knight Academy - Pumpkin Pull - 600 Points",
     "Sky - Lumpy Pumpkin Harp Minigame",
-    "Sky - Fun Fun Island Minigame",
-    "Thunderhead - Bug Island minigame",
+    "Sky - Dodoh's High Dive - 500 Rupees",
+    "Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes",
     "Batreaux - 70 Crystals Second Reward",
     "Batreaux - 70 Crystals",
     "Batreaux - 50 Crystals",
     "Knight Academy - Owlan's Crystals",
     "Skyloft Village - Sparrot's Crystals",
-    "Lanayru - On Top of Lanayru Mining Facility",
+    "Lanayru - Top of Lanayru Mining Facility",
     "Skyloft - Waterfall Goddess Chest",  # stronghold cube
     "Sky - Beedle's Island Goddess Chest",  # goddess cube in ToT area
 ]

@@ -205,10 +205,10 @@ Can Defeat Stalmaster:
 Knight Academy - Fledge:
   Nothing
 
-Skyloft - Crystal in Link's Room:
+Knight Academy - Crystal in Link's Room:
   Nothing
 
-Skyloft - Crystal in Knight Academy Plant:
+Knight Academy - Crystal in Knight Academy Plant:
   Nothing
 
 Knight Academy - Owlan's Crystals:
@@ -224,12 +224,12 @@ Can Unlock Zelda's Room:
   Clawshots
   # Scene Flag 5x04 is "Drop down into Academy Chimney / Zelda's Door Unlocked"
 
-Skyloft - Crystal in Zelda's Room:
+Knight Academy - Crystal in Zelda's Room:
   Can Unlock Zelda's Room
   # Drop down into the chimney from the Loftwing in BiT
   # Scene Flag 5x04 is "Drop down into Academy Chimney / Zelda's Door Unlocked"
 
-Knight Academy - Zelda Heartpiece:
+Knight Academy - Zelda's Heartpiece:
   Can Unlock Zelda's Room
 
 Knight Academy - Fledge's Crystals:
@@ -244,18 +244,18 @@ Knight Academy - Practice Sword:
 Knight Academy - Owlan's Shield:
   Nothing
 
-Skyloft - Crystal in Sparring Hall:
+Knight Academy - Crystal in Sparring Hall:
   Beetle
 
 Can Play Pumpkin Pull:
   Bow
 
-Knight Academy - Pumpkin Archery - 600 Points:
+Knight Academy - Pumpkin Pull - 600 Points:
   Can Play Pumpkin Pull
 
 ## Goddess statue
 
-Knight Academy - Small Chest on Cliffs Near Goddess Statue:
+Knight Academy - Small Chest on Cliffs near Goddess Statue:
   Nothing
 
 Knight Academy - Goddess Sword:
@@ -278,7 +278,7 @@ Skyloft - Bazaar Goddess Chest:
 
 ## Skyloft Main (counter-clockwise around the Bazaar)
 
-Skyloft - Crystal inbetween wooden Planks:
+Skyloft - Crystal inbetween Wooden Planks:
   Nothing
 
 Skyloft - Crystal on West Cliff:
@@ -331,13 +331,13 @@ Skyloft - Baby Rattle:
 
 ## Skyloft Village
 
-Skyloft - Crystal near Pumpkin Patch:
+Skyloft Village - Crystal near Pumpkin Patch:
   Nothing
 
-Skyloft Village - Cleaning Crystals:
+Skyloft Village - Mallara's Crystals:
   Gust Bellows
 
-Skyloft Village - Baby Crystals:
+Skyloft Village - Bertie's Crystals:
   Baby Rattle
 
 Skyloft Village - Sparrot's Crystals:
@@ -463,11 +463,11 @@ Batreaux - 80 Crystals:
 
 ## Sky - South West (East to West)
 
-Sky - Goddess Chest Outside Volcanic Island:
+Sky - Goddess Chest outside Volcanic Island:
   Goddess Cube in Sand Oasis
 
-Sky - Goddess Chest Inside Volcanic Island:
-  Goddess Cube on East Great Tree with Clawshots Target &
+Sky - Goddess Chest inside Volcanic Island:
+  Goddess Cube on East Great Tree with Clawshot Target &
   (Clawshots | Sky - Volcanic Island Dive Trick)
   # Normally you would need clawshots, but you can skip them with a good dive
 
@@ -481,17 +481,17 @@ Can Save Orielle:
 Sky - Orielle's Crystals:
   Can Save Orielle
 
-Sky - Dodoh Crystals:
+Sky - Dodoh's Crystals:
   Can Retrieve Party Wheel
 
 Can Play Dodoh's High Dive:
   Can Retrieve Party Wheel
   # Give Dodoh his Party Wheel
 
-Sky - Fun Fun Island Minigame:
+Sky - Dodoh's High Dive - 500 Rupees:
   Can Play Dodoh's High Dive
 
-Sky - Goddess Chest Under Fun Fun Island:
+Sky - Goddess Chest under Fun Fun Island:
   Goddess Cube in Floria Waterfall
 
 Sky - Southwest Triple Island Upper Goddess Chest:
@@ -503,7 +503,7 @@ Sky - Southwest Triple Island Lower Goddess Chest:
 Sky - Southwest Triple Island Cage Goddess Chest:
   Goddess Cube in Skipper's Retreat & Clawshots
 
-Sky - Breakable Boulder near Fun Fun island:
+Sky - Breakable Boulder near Fun Fun Island:
   Spiral Charge
   # Scene Flag 4x04 is "Break Boulder near Fun Fun Island with Spiral Charge"
 
@@ -576,7 +576,7 @@ Sky - Goddess Chest in Cave on Island Next to Bamboo Island:
 Sky - Beedle's Crystals:
   Can Access Beedle's Shop & Horned Colossus Beetle
 
-Sky - Crystal on Beedles Ship:
+Sky - Crystal on Beedle's Ship:
   Can Access Beedle's Shop & Beetle
 
 Sky - Beedle's Island Goddess Chest:
@@ -587,7 +587,7 @@ Sky - Beedle's Island Cage Goddess Chest:
   (Can Access Beedle's Shop | Sky - Beedle's Island Cage Chest Dive Trick)
   # Getting this Chest during the day is possible but rather difficult
 
-Sky - Northeast Island Goddess Chest Behind Bombable Rocks:
+Sky - Northeast Island Goddess Chest behind Bombable Rocks:
   Goddess Cube at Lanayru Mines Entrance & Bomb Bag
   # Scene Flag 4x01 is "Blow Up rocks on northeastern island"
 
@@ -616,7 +616,7 @@ Thunderhead - Nayru's Wisdom:
 Thunderhead - Din's Power:
   Can Access Thunderhead & Goddess White Sword
 
-Thunderhead - Goddess Chest Outside Isle of Song:
+Thunderhead - Goddess Chest outside Isle of Song:
   Can Access Thunderhead & Goddess Cube in Mogma Turf
 
 Thunderhead - Goddess Chest on top of Isle of Song:
@@ -641,13 +641,13 @@ Thunderhead - Second Goddess Chest on Mogma Mitts Island:
 
 ## Bug Rock
 
-Thunderhead - Bug Island minigame:
+Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
   Can Access Thunderhead & Bug Net
 
-Thunderhead - Bug Island Goddess Chest:
+Thunderhead - Bug Rock Goddess Chest:
   Can Access Thunderhead & Goddess Cube in Summit Waterfall
 
-Thunderhead - Gossip Stone on Bug Heaven:
+Thunderhead - Gossip Stone near Bug Rock:
   Can Access Thunderhead
 
 ### Faron
@@ -727,13 +727,13 @@ Can Open Door to Lake Floria:
   # Scene Flag 7x02 is "Cutscene of the Doors to Lake Floria opening"
   # Scene Flag 7x04 is "Doors to Lake Floria opened"
 
-Faron Woods - Heart Piece on Tree:
+Faron Woods - Piece of Heart on Tree:
   Can Access Most of Faron Woods
 
 Faron Woods - Slingshot:
   Can Access Most of Faron Woods & Can Defeat Bokoblins
 
-Faron Woods - Heart Piece Behind Boulder:
+Faron Woods - Piece of Heart behind Boulder:
   Can Access Most of Faron Woods & Bomb Bag
   # Scene Flag 1x80 is "Blow Up Rock containing HP"
 
@@ -755,7 +755,7 @@ Goddess Cube on West Great Tree near Exit:
 Goddess Cube on East Great Tree with Rope:
   Can Access Upper Great Tree & Goddess Sword
 
-Goddess Cube on East Great Tree with Clawshots Target:
+Goddess Cube on East Great Tree with Clawshot Target:
   Can Access Most of Faron Woods &
   (Clawshots | Can Access Upper Great Tree | Faron - Bokoblin Luring Trick) &
   Goddess Sword
@@ -808,7 +808,7 @@ Can Talk to Yerbal:
   Can Access Upper Great Tree & (Slingshot | Beetle)
   # Bow and Clawshots don't work to hit Yerbal
 
-Faron Woods - Chest Inside Great Tree:
+Faron Woods - Chest inside Great Tree:
   Can Swing Great Tree Platforms | (Can Access Upper Great Tree & Can Defeat Moblins)
   # You can jump to the Chest from above AFTER you defeat the Moblin to remove the void
   # Advanced: Include the logic where beating AC removes the void
@@ -882,10 +882,10 @@ Eldin Volcano - After Crawlspace:
 Goddess Cube near Mogma Turf Entrance:
   Can Access First Part of Eldin & Goddess Sword
 
-Eldin Volcano - Behind Bombable Wall Near HP:
+Eldin Volcano - Behind Bombable Wall near Piece of Heart:
   Can Access First Part of Eldin
 
-Eldin Volcano - Heart Piece on Cliff:
+Eldin Volcano - Piece of Heart on Cliff:
   Can Access First Part of Eldin
 
 # Second part
@@ -901,7 +901,7 @@ Can Open Trial Gate in Eldin Volcano:
 Eldin Silent Realm - Fireshield Earrings:
   Can Access Eldin Silent Realm
 
-Eldin Volcano - Behind Bombable Wall Near Volcano Ascent:
+Eldin Volcano - Behind Bombable Wall near Volcano Ascent:
   Can Access Second Part of Eldin
 
 Can Play Thrill Digger:
@@ -910,19 +910,19 @@ Can Play Thrill Digger:
 Eldin Volcano - Gossip Stone in Thrill Digger Cave:
   Can Access Second Part of Eldin
 
-Eldin Volcano - Key Piece in Front of ET:
+Eldin Volcano - Key Piece in front of Earth Temple:
   Can Access Second Part of Eldin & Digging Mitts
 
-Eldin Volcano - Key Piece Below Tower:
+Eldin Volcano - Key Piece below Tower:
   Can Access Second Part of Eldin & Digging Mitts
 
-Eldin Volcano - Key Piece Behind Boulder on Sandy Slope:
+Eldin Volcano - Key Piece behind Boulder on Sandy Slope:
   Can Access Second Part of Eldin & Digging Mitts
 
-Eldin Volcano - Key Piece After Vents:
+Eldin Volcano - Key Piece after Vents:
   Can Access Second Part of Eldin & Digging Mitts
 
-Eldin Volcano - Key Piece After Draining Lava:
+Eldin Volcano - Key Piece after Draining Lava:
   Can Access Second Part of Eldin & Digging Mitts
 
 Can Retrieve Sparrot's Crystal Ball:
@@ -959,7 +959,7 @@ Can Get Past Mogma Turf:
   Can Access Second Part of Mogma Turf & Digging Mitts
   # Scene Flag 1x02 is "Final Air Vent in Digging Mitts cave"
 
-Mogma Turf - Free Fall chest:
+Mogma Turf - Free Fall Chest:
   Can Access Mogma Turf
 
 Goddess Cube in Mogma Turf:
@@ -1005,16 +1005,16 @@ Goddess Cube inside Volcano Summit:
 Goddess Cube in Summit Waterfall:
   Can Access Volcano Summit & Goddess Sword
 
-Eldin Volcano - Gossip Stone in Waterfall Area:
+Volcano Summit - Gossip Stone in Waterfall Area:
   Can Access Volcano Summit & Clawshots
 
 Volcano Summit - Behind Bombable Wall in Waterfall Area:
   Can Access Volcano Summit & Clawshots
 
-Eldin Volcano - Gossip Stone outside Fire Sanctuary:
+Volcano Summit - Gossip Stone outside Fire Sanctuary:
   Can Get Past First Frog
 
-Volcano Summit - Heart Piece Behind Digging:
+Volcano Summit - Piece of Heart behind Digging:
   Can Get Past First Frog & Mogma Mitts
 
 Goddess Cube near FS Entrance:
@@ -1079,10 +1079,10 @@ Can Access Higher Part near Entrance:
 Can Retrieve Party Wheel:
   Can Access Higher Part near Entrance
 
-Lanayru - Chest Near Party Wheel:
+Lanayru - Chest near Party Wheel:
   Can Access Higher Part near Entrance
 
-Lanayru - Chest Before Hook Beetle:
+Lanayru - Chest before Hook Beetle Fight:
   Can Access Lanayru Desert
 
 Lanayru - Hook Beetle:
@@ -1125,7 +1125,7 @@ Can Access West Desert Statue:
 Goddess Cube in Sand Oasis:
   Can Access West Desert Statue & Goddess Sword
 
-Lanayru - Chest Near Sand Oasis:
+Lanayru - Chest near Sand Oasis:
   Can Access Lanayru Desert & Clawshots
   # Hope this is really a BiTWarp from desert and not from Mines
 
@@ -1197,7 +1197,7 @@ Can Access Lanayru Desert Secret Passageway:
   (Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick))
   # Scene Flag 4x01 is "Blow up wall revealing path to HP"
 
-Lanayru - NE Desert Chest:
+Lanayru - Secret Passageway Chest:
   Can Access Lanayru Desert Secret Passageway
 
 Goddess Cube in Secret Passageway in Desert:
@@ -1210,13 +1210,13 @@ Can Open Trial Gate in Lanayru Desert:
 Lanayru Silent Realm - Clawshots:
   Can Access Lanayru Silent Realm
 
-Lanayru - On Top of Lanayru Mining Facility: # actually spawns on raising LMF
+Lanayru - Top of Lanayru Mining Facility: # actually spawns on raising LMF
   Can Access Dungeon Entrance in Lanayru Desert
 
-Lanayru - Chest Next to Trial:
+Lanayru - Chest on Platform near Lighting Node:
   Can Access Second Part of Lanayru Desert & Clawshots
 
-Lanayru - Chest on Platform Near Fire Node:
+Lanayru - Chest on Platform near Fire Node:
   Can Access Second Part of Lanayru Desert & Clawshots
 
 # Lightning Node
@@ -1236,7 +1236,7 @@ Lanayru - Beginning of Lightning Node:
 Lanayru - Middle of Lightning Node:
   Can Access Lightning Node in Past
 
-Lanayru - End of Lightning Node room:
+Lanayru - End of Lightning Node:
   Can Access Lightning Node in Past &
   (Hook Beetle | Bow | (Bomb Bag & Lightning Node End with Bombs Trick))
   # You can deactivate the timeshift stone with a bomb throw that lands near the timeshift stone.
@@ -1310,7 +1310,7 @@ Can Get Past Skipper's Rock:
   # You can whip the bomb on the cactus by first slashing it to make it swing
   # Scene Flag 2x02 is "Blow Up Rock in Skipper's Retreat"
 
-Lanayru Sand Sea - Chest After Moblin at Skippers Retreat:
+Lanayru Sand Sea - Chest after Moblin at Skipper's Retreat:
   Can Get Past Skipper's Rock
 
 Goddess Cube in Skipper's Retreat:
@@ -1324,18 +1324,18 @@ Can Get Past Peahat and Boko Baba:
   # Scene Flag 3x40 is "Whipped Peahat at Skipper's Retreat"
   # Clawshot next to the baba, then to the target, then quickly on the next target
 
-Lanayru Sand Sea - Skydive Chest at Skippers Retreat:
+Lanayru Sand Sea - Skydive Chest at Skipper's Retreat:
   Can Get Past Peahat and Boko Baba
 
 Lanayru Sand Sea - Near Shack:
   Can Get Past Peahat and Boko Baba
 
-Lanayru Sand Sea - In Skippers Shack:
+Lanayru Sand Sea - In Skipper's Shack:
   Can Get Past Peahat and Boko Baba & Gust Bellows
 
 # Shipyard
 
-Lanayru Sand Sea - Roller Coaster Minigame: # Roller Coaster Minigame
+Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05: # Roller Coaster Minigame
   Can Access Sand Sea & Gust Bellows & Can Uncover and Defeat Molderach
   # Do you need to defeat Molderach ? #UNSURE
 
@@ -1351,7 +1351,7 @@ Lanayru Sand Sea - First Chest in Pirate Stronghold:
 Lanayru Sand Sea - Second Chest in Pirate Stronghold:
   Can Access Sand Sea
 
-Lanayru Sand Sea - 3rd Chest in Pirate Stronghold:
+Lanayru Sand Sea - Third Chest in Pirate Stronghold:
   Can Access Sand Sea
 
 Goddess Cube in Pirate Stronghold:
@@ -1531,7 +1531,7 @@ Can Access Earth Temple Second Room:
 Earth Temple - Behind Boulder:
   Can Access Earth Temple Second Room
 
-Earth Temple - Left Chest After Boulder Section:
+Earth Temple - Left Chest with Boulder:
   Can Access Earth Temple Second Room
 
 Earth Temple - Map Chest:
@@ -1618,7 +1618,7 @@ Can Access LMF Key Locked Room in Past:
   # Bomb Bag is not easy, Slingshot snipe is difficult
   # Can't knock or take down the beamos: take it slow and go back (even on a conveyor belt) until they stop shooting and continue turning
 
-Lanayru Mining Facility - Chest in Room Behind Locked Door:
+Lanayru Mining Facility - Chest in Key Locked Room:
   Can Access LMF Key Locked Room in Past
 
 Can Blow Up Rocks in LMF Gust Bellows Room:
@@ -1635,7 +1635,7 @@ Can Access LMF First West Room:
   Can Access LMF Second Room & Gust Bellows
   # To push box on the switch
 
-Lanayru Mining Facility - First West Room:
+Lanayru Mining Facility - Chest in First West Room:
   Can Access LMF First West Room & Gust Bellows
   # To reveal the timeshift stone
 
@@ -1846,11 +1846,11 @@ Sandship - Behind Combination Lock:
   # Present: Deal with the Spume, unlock the hint, hit the combination lock
   # Past: Read the hint, hit the combination lock
 
-Sandship - Bow chest:
+Sandship - Bow Chest:
   Can Access Sandship & SS Small Key x2 & Sword
   # Could add Pouch for a shield
 
-Sandship - Heart Piece Chest:
+Sandship - Piece of Heart Chest:
   Can Access Sandship &
   Bow &
   (Clawshots | Sandship - Mast Jump Trick) &
@@ -1914,10 +1914,10 @@ Fire Sanctuary - First Room:
 Can Access First FS Magmanos Room:
   Can Access Fire Sanctuary & (Distance Activator | Bomb Bag) & FS Small Key x1
 
-Fire Sanctuary - After First Outside Section:
+Fire Sanctuary - Chest in First Magmanos Room:
   Can Access First FS Magmanos Room
 
-Fire Sanctuary - Bottle:
+Fire Sanctuary - Bottle Chest:
   Can Access First FS Magmanos Room & Mogma Mitts & Sword
   # Sword needed to grab a water pod
   # Do Pillar Jump, open the door in the middle, do one fronthop, 5 sidehops right, aim so that the door you went in is on the right of the screen, sidehop left
@@ -1928,10 +1928,10 @@ Can Get Past Second Room with Water Pod:
 Fire Sanctuary - Second Small Key Chest:
   Can Get Past Second Room with Water Pod & (Gust Bellows | Clawshots)
 
-Fire Sanctuary - First Chest in Water Pod Room:
+Fire Sanctuary - First Chest in Water Plants Room:
   Can Get Past Second Room with Water Pod & FS Small Key x2
 
-Fire Sanctuary - Second Chest in Water Pod Room:
+Fire Sanctuary - Second Chest in Water Plants Room:
   Can Get Past Second Room with Water Pod & FS Small Key x2
 
 Can Access FS Miniboss Room and Defeat Magmanos:
@@ -1986,7 +1986,7 @@ Can Access Sleeping Statue:
   Can Access FS Boss Key Door
   # Do Pillar Jump, open the door in the middle, do one fronthop, 5 sidehops right, aim so that the door you went in is on the right of the screen, sidehop left
 
-Fire Sanctuary - Staircase Room:
+Fire Sanctuary - Chest in Staircase Room:
   Can Access Sleeping Statue & Can Defeat Lezalfos & Clawshots
 
 Can Access FS Boss Key Room:
