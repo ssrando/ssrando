@@ -875,6 +875,14 @@ F020: # Sky
     objtype: STAG
     object:
       untrigstoryfid: -1
+  - name: remove Wyrna requirement for orille
+    type: objpatch
+    id: 0xFCFB
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: 36
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
