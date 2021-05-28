@@ -553,7 +553,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setGeometry(QRect(200, 10, 171, 231))
         self.verticalLayoutWidget_2 = QWidget(self.groupBox_2)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 160, 201))
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 151, 201))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -587,6 +587,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addLayout(self.verticalLayout_8)
 
+        self.verticalLayout_26 = QVBoxLayout()
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.label_for_option_water_dragon_mode = QLabel(self.verticalLayoutWidget_2)
+        self.label_for_option_water_dragon_mode.setObjectName(u"label_for_option_water_dragon_mode")
+
+        self.verticalLayout_26.addWidget(self.label_for_option_water_dragon_mode)
+
+        self.option_open_ac = QComboBox(self.verticalLayoutWidget_2)
+        self.option_open_ac.setObjectName(u"option_open_ac")
+
+        self.verticalLayout_26.addWidget(self.option_open_ac)
+
+
+        self.verticalLayout_2.addLayout(self.verticalLayout_26)
+
         self.horizontalLayout_10 = QHBoxLayout()
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.label_for_option_starting_tablet_count = QLabel(self.verticalLayoutWidget_2)
@@ -602,11 +617,6 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_10)
-
-        self.option_heal_water_dragon = QCheckBox(self.verticalLayoutWidget_2)
-        self.option_heal_water_dragon.setObjectName(u"option_heal_water_dragon")
-
-        self.verticalLayout_2.addWidget(self.option_heal_water_dragon)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -896,31 +906,6 @@ class Ui_MainWindow(object):
         self.groupBox_11 = QGroupBox(self.tab_7)
         self.groupBox_11.setObjectName(u"groupBox_11")
         self.groupBox_11.setGeometry(QRect(200, 10, 181, 201))
-        self.verticalLayoutWidget_6 = QWidget(self.groupBox_11)
-        self.verticalLayoutWidget_6.setObjectName(u"verticalLayoutWidget_6")
-        self.verticalLayoutWidget_6.setGeometry(QRect(10, 20, 161, 171))
-        self.verticalLayout_26 = QVBoxLayout(self.verticalLayoutWidget_6)
-        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
-        self.verticalLayout_26.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_27 = QVBoxLayout()
-        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
-        self.label_6 = QLabel(self.verticalLayoutWidget_6)
-        self.label_6.setObjectName(u"label_6")
-
-        self.verticalLayout_27.addWidget(self.label_6)
-
-        self.option_song_hints = QComboBox(self.verticalLayoutWidget_6)
-        self.option_song_hints.setObjectName(u"option_song_hints")
-
-        self.verticalLayout_27.addWidget(self.option_song_hints)
-
-
-        self.verticalLayout_26.addLayout(self.verticalLayout_27)
-
-        self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_26.addItem(self.verticalSpacer_10)
-
         self.tabWidget.addTab(self.tab_7, "")
         self.tab_6 = QWidget()
         self.tab_6.setObjectName(u"tab_6")
@@ -968,7 +953,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(1)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1060,8 +1045,8 @@ class Ui_MainWindow(object):
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Open Settings", None))
         self.label_for_option_open_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Open Thunderhead", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
+        self.label_for_option_water_dragon_mode.setText(QCoreApplication.translate("MainWindow", u"Open Ancient Cistern", None))
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
-        self.option_heal_water_dragon.setText(QCoreApplication.translate("MainWindow", u"Heal Water Dragon", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Overworld", None))
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
@@ -1086,7 +1071,6 @@ class Ui_MainWindow(object):
         self.label_for_option_location_hints.setText(QCoreApplication.translate("MainWindow", u"Location Hints", None))
         self.label_for_option_item_hints.setText(QCoreApplication.translate("MainWindow", u"Item Hints", None))
         self.groupBox_11.setTitle(QCoreApplication.translate("MainWindow", u"GroupBox", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Song Hints", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"Hints", None))
         self.randomize_item.setText(QCoreApplication.translate("MainWindow", u"<--", None))
         self.start_with_item.setText(QCoreApplication.translate("MainWindow", u"-->", None))

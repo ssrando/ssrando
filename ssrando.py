@@ -85,27 +85,27 @@ class Randomizer:
     self.rng.seed(self.seed)
     if self.no_logs:
       self.rng.randint(0,100)
-    dungeons = ["Skyview", "Earth Temple", "Lanayru Mining Facility", "Ancient Cistern", "Sandship", "Fire Sanctuary"]
-    if self.options['randomize-entrances'] == 'None':
-      dungeons.append('Skykeep')
-      dungeons.reverse()
+    dungeons = ["Skyview", "Earth Temple", "Lanayru Mining Facility", "Ancient Cistern", "Sandship", "Fire Sanctuary", "Skykeep"]
+
+    if self.options["randomize-entrances"] == "None":
+      pass
+    elif self.options["randomize-entrances"] == "Dungeons":
+      dungeons.remove("Skykeep")
+      self.rng.shuffle(dungeons)
+      dungeons.append("Skykeep")
+    elif self.options["randomize-entrances"] == "Dungeons + Sky Keep":
+      self.rng.shuffle(dungeons)
     else:
-      if self.options['randomize-entrances'] == 'Dungeons':
-        self.rng.shuffle(dungeons)
-        dungeons.append('Skykeep')
-        dungeons.reverse()
-      else:
-        dungeons.append('Skykeep')
-        self.rng.shuffle(dungeons)
-    self.entrance_connections = OrderedDict([
-      ("Dungeon Entrance In Deep Woods", dungeons.pop()),
-      ("Dungeon Entrance In Eldin Volcano", dungeons.pop()),
-      ("Dungeon Entrance In Lanayru Desert", dungeons.pop()),
-      ("Dungeon Entrance In Lake Floria", dungeons.pop()),
-      ("Dungeon Entrance In Sand Sea", dungeons.pop()),
-      ("Dungeon Entrance In Volcano Summit", dungeons.pop()),
-      ("Dungeon Entrance On Skyloft", dungeons.pop()),
-    ])
+      assert False, f"""Unknown value {self.options["randomize-entrances"]} for option randomize-entrances"""
+
+    if self.options["open-ac"] == "Heal Water Dragon" and dungeons[3] == "Skyview":
+      new_index = self.rng.choice(i for i in range(len(dungeons)) if i != 3)
+      dungeons[3], dungeons[new_index] = dungeons[new_index], dungeons[3]
+
+    entrances = ["Dungeon Entrance in Deep Woods", "Dungeon Entrance in Eldin Volcano", "Dungeon Entrance in Lanayru Desert",
+      "Dungeon Entrance in Lake Floria", "Dungeon Entrance in Sand Sea", "Dungeon Entrance in Volcano Summit", "Dungeon Entrance on Skyloft"]
+
+    self.entrance_connections = OrderedDict(zip(entrances, dungeons))
     assert len(dungeons) == 0, 'Not all dungeons linked to an entrance'
     # self.starting_items = (x.strip() for x in self.options['starting_items']
     # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))

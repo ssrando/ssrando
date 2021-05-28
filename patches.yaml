@@ -1098,13 +1098,13 @@ F101: # Deep Woods
     objtype: OBJ
 F102_1: # Outside AC
   - name: Layer override
-    onlyif: Option "heal-water-dragon" Disabled # No Water Dragon Quest
+    onlyif: Option "open-ac" Is "Open" # No Water Dragon Quest
     type: layeroverride
     override: # change layer 3 trigger, no layer 1
       - story_flag: 900 # new beat AC
         night: 0
         layer: 3
-      - story_flag: 155 # AC intro cs
+      - story_flag: 10 # AC intro cs
         night: 0
         layer: 2
       - story_flag: 36 # Tunic
@@ -1114,18 +1114,15 @@ F102_1: # Outside AC
         night: 0
         layer: 1
   - name: Layer override
-    onlyif: Option "heal-water-dragon" Enabled # Water Dragon Quest
+    onlyif: Option "open-ac" is "Heal Water Dragon" # Water Dragon Quest
     type: layeroverride
     override: # change layer 3 trigger, no layer 1
       - story_flag: 900 # new beat AC
         night: 0
         layer: 3
-      - story_flag: 155 # AC intro cs
+      - story_flag: 10 # AC intro cs
         night: 0
         layer: 2
-      - story_flag: 36 # Tunic
-        night: 0
-        layer: 1
       - story_flag: -1
         night: 0
         layer: 1
@@ -1139,19 +1136,11 @@ F102_1: # Outside AC
       trigstoryfid: 900 # new AC beat flag
 F102_2: # Water Dragon's Lair
   - name: Layer override
-    onlyif: Option "heal-water-dragon" Enabled # Water Dragon Quest
     type: layeroverride
     override: # Layer 1 for the Water Dragon
       - story_flag: -1
         night: 0
         layer: 1 
-  - name: Layer override
-    onlyif: Option "heal-water-dragon" Disabled # No Water Dragon Quest
-    type: layeroverride
-    override: # No need for Water Dragon
-      - story_flag: -1
-        night: 0
-        layer: 0
 F102: # lake Floria
   - name: Layer override
     type: layeroverride

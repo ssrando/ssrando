@@ -200,7 +200,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -856,7 +856,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>160</width>
+         <width>151</width>
          <height>201</height>
         </rect>
        </property>
@@ -890,6 +890,20 @@
          </layout>
         </item>
         <item>
+         <layout class="QVBoxLayout" name="verticalLayout_26">
+          <item>
+           <widget class="QLabel" name="label_for_option_water_dragon_mode">
+            <property name="text">
+             <string>Open Ancient Cistern</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_open_ac"/>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_10">
           <item>
            <widget class="QLabel" name="label_for_option_starting_tablet_count">
@@ -909,13 +923,6 @@
            </widget>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_heal_water_dragon">
-          <property name="text">
-           <string>Heal Water Dragon</string>
-          </property>
-         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_2">
@@ -1313,45 +1320,6 @@
       <property name="title">
        <string>GroupBox</string>
       </property>
-      <widget class="QWidget" name="verticalLayoutWidget_6">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>161</width>
-         <height>171</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_26">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_27">
-          <item>
-           <widget class="QLabel" name="label_6">
-            <property name="text">
-             <string>Song Hints</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="option_song_hints"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_10">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_6">
