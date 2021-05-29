@@ -87,26 +87,33 @@ class Randomizer:
       self.rng.randint(0,100)
     dungeons = ["Skyview", "Earth Temple", "Lanayru Mining Facility", "Ancient Cistern", "Sandship", "Fire Sanctuary", "Skykeep"]
 
+    def check_sacred_water(dungeons):
+      if self.options["open-ac"] == "Heal Water Dragon" and dungeons[3] == "Skyview":
+        new_index = self.rng.choice([i for i in range(len(dungeons)) if i != 3])
+        dungeons[3], dungeons[new_index] = dungeons[new_index], dungeons[3]
+        print(dungeons)
+
+    
     if self.options["randomize-entrances"] == "None":
       pass
     elif self.options["randomize-entrances"] == "Dungeons":
       dungeons.remove("Skykeep")
       self.rng.shuffle(dungeons)
+      print(dungeons)
+      check_sacred_water(dungeons)
       dungeons.append("Skykeep")
     elif self.options["randomize-entrances"] == "Dungeons + Sky Keep":
       self.rng.shuffle(dungeons)
+      print(dungeons)
+      check_sacred_water(dungeons)
     else:
       assert False, f"""Unknown value {self.options["randomize-entrances"]} for option randomize-entrances"""
 
-    if self.options["open-ac"] == "Heal Water Dragon" and dungeons[3] == "Skyview":
-      new_index = self.rng.choice(i for i in range(len(dungeons)) if i != 3)
-      dungeons[3], dungeons[new_index] = dungeons[new_index], dungeons[3]
 
-    entrances = ["Dungeon Entrance in Deep Woods", "Dungeon Entrance in Eldin Volcano", "Dungeon Entrance in Lanayru Desert",
-      "Dungeon Entrance in Lake Floria", "Dungeon Entrance in Sand Sea", "Dungeon Entrance in Volcano Summit", "Dungeon Entrance on Skyloft"]
+    entrances = ["Dungeon Entrance In Deep Woods", "Dungeon Entrance In Eldin Volcano", "Dungeon Entrance In Lanayru Desert",
+      "Dungeon Entrance In Lake Floria", "Dungeon Entrance In Sand Sea", "Dungeon Entrance In Volcano Summit", "Dungeon Entrance On Skyloft"]
 
     self.entrance_connections = OrderedDict(zip(entrances, dungeons))
-    assert len(dungeons) == 0, 'Not all dungeons linked to an entrance'
     # self.starting_items = (x.strip() for x in self.options['starting_items']
     # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
     self.starting_items = []

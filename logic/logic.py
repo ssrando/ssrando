@@ -921,9 +921,11 @@ class Logic:
         if item_name.endswith(" Small Key")
       ]
       assert len(small_keys_to_place) > 0, f'no small '
+      self.add_owned_item("SV Boss Key")
       for item_name in small_keys_to_place:
         self.place_dungeon_item(item_name)
         self.add_owned_item(item_name) # Temporarily add small keys to the player's inventory while placing them.
+      self.remove_owned_item("SV Boss Key")
 
     big_keys_to_place = []
     if self.rando.options['boss-key-mode']  not in ['Anywhere', 'Vanilla']:
@@ -932,6 +934,8 @@ class Logic:
         item_name for item_name in (self.unplaced_progress_items + self.unplaced_nonprogress_items)
         if item_name.endswith(" Boss Key")
       ]
+      big_keys_to_place.insert(0, "SV Boss Key")
+      big_keys_to_place.pop() # Removes SV Boss Key from the end of the list and moves it to the beginning
       assert len(big_keys_to_place) > 0
       for item_name in big_keys_to_place:
         self.place_dungeon_item(item_name)
