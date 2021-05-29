@@ -91,7 +91,6 @@ class Randomizer:
       if self.options["open-ac"] == "Heal Water Dragon" and dungeons[3] == "Skyview":
         new_index = self.rng.choice([i for i in range(len(dungeons)) if i != 3])
         dungeons[3], dungeons[new_index] = dungeons[new_index], dungeons[3]
-        print(dungeons)
 
     
     if self.options["randomize-entrances"] == "None":
@@ -99,12 +98,10 @@ class Randomizer:
     elif self.options["randomize-entrances"] == "Dungeons":
       dungeons.remove("Skykeep")
       self.rng.shuffle(dungeons)
-      print(dungeons)
       check_sacred_water(dungeons)
       dungeons.append("Skykeep")
     elif self.options["randomize-entrances"] == "Dungeons + Sky Keep":
       self.rng.shuffle(dungeons)
-      print(dungeons)
       check_sacred_water(dungeons)
     else:
       assert False, f"""Unknown value {self.options["randomize-entrances"]} for option randomize-entrances"""
