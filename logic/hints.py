@@ -356,6 +356,8 @@ class Hints:
                 return WayOfTheHeroGossipStoneHint(
                     zone=zone
                 )
+            elif location is None:
+                return EmptyGossipStoneHint(text='--PLACEHOLDER--')
             else:
                 raise Exception(f"Unable to identify hint type for location {location}")
         for gossipstone_name in self.stonehint_definitions:
@@ -363,11 +365,14 @@ class Hints:
             print(locs_to_hint)
             loc_to_hint = locs_to_hint[0]
             second_loc_to_hint = locs_to_hint[1]
-            if second_loc_to_hint is None and locs_to_hint is not None:
+            if second_loc_to_hint is None and loc_to_hint is not None:
                 self.hints[gossipstone_name] = create_hint(loc_to_hint)
             if loc_to_hint is None:
                 # place barren hints at locations with no hints
-                hint = anywhere_hints.pop()
+                if len(anywhere_hints) < 0:
+                    hint = anywhere_hints.pop()
+                else:
+                    hint = None
                 if hint in barren_hints:
                     self.hints[gossipstone_name] = BarrenGossipStoneHint(zone=hint)
                 else:
