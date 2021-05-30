@@ -54,7 +54,10 @@ class GossipStoneHintWrapper(GossipStoneHint):
     secondary_hint: GossipStoneHint
 
     def to_gossip_stone_text(self) -> str:
-        return ''
+        primary_text = self.primary_hint.to_gossip_stone_text()
+        secondary_text = self.secondary_hint.to_gossip_stone_text()
+        return textbox_utils.make_mutliple_textboxes([primary_text, secondary_text])
+
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.primary_hint.to_spoiler_log_text()} / {self.secondary_hint.to_spoiler_log_text()}"
@@ -143,9 +146,7 @@ class Hints:
             self.hints[hintname] = EmptyGossipStoneHint(text='Useless hint')
     
     def do_normal_hints(self):
-        location_hints = []
-        item_hints = []
-        total_stonehints = len(self.stonehint_definitions)
+        total_stonehints = len(self.stonehint_definitions) * 2
         needed_always_hints = self.logic.filter_locations_for_progression(ALWAYS_REQUIRED_LOCATIONS)
         # in shopsanity, we need to hint some beetle shop items
         # add them manually, cause they need to be kinda weirdly implemented because of bug net
@@ -232,6 +233,7 @@ class Hints:
 
         # create location hints
         location_hints_left = self.logic.rando.options['location-hints']
+        location_hints = []
         for location in needed_always_hints:
             if location_hints_left <= 0:
                 break
@@ -251,6 +253,7 @@ class Hints:
 
         # create  the item hints
         hintable_items = HINTABLE_ITEMS.copy()
+        item_hints = []
         self.logic.rando.rng.shuffle(hintable_items)
         for i in range(self.logic.rando.options['item-hints']):
             hinted_item = hintable_items.pop()
@@ -301,8 +304,8 @@ class Hints:
                         hint_banned_stones[gossipstone_name].add(hint_location)
         stones_to_banned_locs_sorted = sorted(hint_banned_stones.items(), key=lambda x: len(x[1]), reverse=True)
 
-        if len(hint_locations) < len(self.stonehint_definitions):
-            hint_locations.extend([None]*(len(self.stonehint_definitions) - len(hint_locations)))
+        if len(hint_locations) < len(self.stonehint_definitions) * 2:
+            hint_locations.extend([None]*(len(self.stonehint_definitions) * 2 - len(hint_locations)))
         unhinted_locations = hint_locations.copy()
 
         hint_to_location = {}
@@ -312,48 +315,65 @@ class Hints:
             if len(valid_locations) == 0:
                 print(f"no valid location for {gossipstone_name} in seed {self.logic.rando.seed}")
                 loc_to_hint = unhinted_locations[0]
+                second_loc_to_hint = unhinted_locations[1]
                 # raise Exception('no valid location to place hint!')
             else:
                 loc_to_hint = self.logic.rando.rng.choice(valid_locations)
-            hint_to_location[gossipstone_name] = loc_to_hint
+                # ensure we dont try to place the same hint twice
+                removed_list = valid_locations.copy()
+                removed_list.remove(loc_to_hint)
+                second_loc_to_hint = self.logic.rando.rng.choice(removed_list)
+            hint_to_location[gossipstone_name] = [loc_to_hint, second_loc_to_hint]
             unhinted_locations.remove(loc_to_hint)
+            unhinted_locations.remove(second_loc_to_hint)
         # place locations that aren't restricted and also fill rest of locations
         for gossipstone_name in [name for name in self.stonehint_definitions if not name in hint_to_location]:
             if len(unhinted_locations) == 0:
                 # placeholder
-                hint_to_location[gossipstone_name] = None
+                hint_to_location[gossipstone_name] = [None]
                 continue
             loc_to_hint = self.logic.rando.rng.choice(unhinted_locations)
             unhinted_locations.remove(loc_to_hint)
-            hint_to_location[gossipstone_name] = loc_to_hint
+            second_loc_to_hint = self.logic.rando.rng.choice(unhinted_locations)
+            unhinted_locations.remove(second_loc_to_hint)
+            hint_to_location[gossipstone_name] = [loc_to_hint, second_loc_to_hint]
         anywhere_hints = barren_hints + []
         self.logic.rando.rng.shuffle(anywhere_hints)
+
+        def create_hint(location):
+            if location in location_hints:
+                return LocationGossipStoneHint(
+                    location_name=location,
+                    item=self.logic.done_item_locations[location]
+                )
+            elif location in item_hints:
+                return ItemGossipStoneHint(
+                    location_name=location,
+                    item=self.logic.done_item_locations[location]
+                )
+            elif location in woth_hints:
+                zone, specific_loc = Logic.split_location_name_by_zone(location)
+                return WayOfTheHeroGossipStoneHint(
+                    zone=zone
+                )
+            else:
+                raise Exception(f"Unable to identify hint type for location {location}")
         for gossipstone_name in self.stonehint_definitions:
-            loc_to_hint = hint_to_location[gossipstone_name]
+            locs_to_hint = hint_to_location[gossipstone_name]
+            print(locs_to_hint)
+            loc_to_hint = locs_to_hint[0]
+            second_loc_to_hint = locs_to_hint[1]
+            if second_loc_to_hint is None and locs_to_hint is not None:
+                self.hints[gossipstone_name] = create_hint(loc_to_hint)
             if loc_to_hint is None:
-                # place barren and woth hints at locations with no hints
+                # place barren hints at locations with no hints
                 hint = anywhere_hints.pop()
-                if hint in woth_hints:
-                    self.hints[gossipstone_name] = WayOfTheHeroGossipStoneHint(zone=hint)
-                elif hint in barren_hints:
+                if hint in barren_hints:
                     self.hints[gossipstone_name] = BarrenGossipStoneHint(zone=hint)
                 else:
                     self.hints[gossipstone_name] = EmptyGossipStoneHint(text='--PLACEHOLDER--')
             else:
-                if loc_to_hint in location_hints:
-                    self.hints[gossipstone_name] = LocationGossipStoneHint(
-                            location_name=loc_to_hint,
-                            item=self.logic.done_item_locations[loc_to_hint]
-                    )
-                elif loc_to_hint in item_hints:
-                    self.hints[gossipstone_name] = ItemGossipStoneHint(
-                        location_name=loc_to_hint,
-                        item=self.logic.done_item_locations[loc_to_hint]
-                    )
-                elif loc_to_hint in woth_hints:
-                    zone, specific_loc = Logic.split_location_name_by_zone(loc_to_hint)
-                    self.hints[gossipstone_name] = WayOfTheHeroGossipStoneHint(
-                        zone=zone
-                    )
-                else:
-                    raise Exception(f"Unable to identify hint type for location {loc_to_hint}")
+                self.hints[gossipstone_name] = GossipStoneHintWrapper(
+                    create_hint(loc_to_hint),
+                    create_hint(second_loc_to_hint)
+                )

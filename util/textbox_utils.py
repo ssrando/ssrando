@@ -25,7 +25,21 @@ def break_lines(text):
     return final_text
 
 
+def make_mutliple_textboxes(texts):
+    final_text = ''
+    for text in texts:
+        final_text += text
+        lines = text.count('\n')
+        while lines % 4 != 0:
+            final_text += '\n'
+            lines += 1
+    return final_text
+
+
+
+
 if __name__ == '__main__':
     print(break_lines('The <y<Spirit of the Sword>> guides the goddess\' chosen hero to <r<Skyloft Village>>'))
     print(break_lines('Hey, you look like you have a Questions?'))
     print(break_lines('Skyloft Peater/Peatrice\'s Crystals has Bug Net'))
+    print(make_mutliple_textboxes([break_lines('The <y<Spirit of the Sword>> guides the goddess\' chosen hero to <r<Skyloft Village>>'), break_lines('Hey, you look like you have a Questions?'), 'end']))
