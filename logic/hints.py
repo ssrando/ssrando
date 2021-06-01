@@ -242,14 +242,13 @@ class Hints:
                 hinted_locations.append(location)
                 hints_left -= 1
                 location_hints_left -= 1
-        while location_hints_left > 0:
-            for location in self.logic.rando.rng.sample(needed_sometimes_hints,
-                                                        k=min(hints_left, len(needed_sometimes_hints))):
-                if location not in hinted_locations:
-                    location_hints.append(location)
-                    hinted_locations.append(location)
-                    hints_left -= 1
-                    location_hints_left -= 1
+        for location in self.logic.rando.rng.sample(needed_sometimes_hints,
+                                                    k=min(hints_left, len(needed_sometimes_hints))):
+            if location not in hinted_locations:
+                location_hints.append(location)
+                hinted_locations.append(location)
+                hints_left -= 1
+                location_hints_left -= 1
 
         # create  the item hints
         hintable_items = HINTABLE_ITEMS.copy()
@@ -366,8 +365,22 @@ class Hints:
             loc_to_hint = locs_to_hint[0]
             second_loc_to_hint = locs_to_hint[1]
             if second_loc_to_hint is None and loc_to_hint is not None:
-                self.hints[gossipstone_name] = create_hint(loc_to_hint)
-            if loc_to_hint is None:
+                if len(anywhere_hints) > 0:
+                    self.hints[gossipstone_name] = GossipStoneHintWrapper(
+                        create_hint(loc_to_hint),
+                        BarrenGossipStoneHint(zone=anywhere_hints.pop()),
+                    )
+                else:
+                    self.hints[gossipstone_name] = create_hint(loc_to_hint)
+            elif second_loc_to_hint is not None and loc_to_hint is None:
+                if len(anywhere_hints) > 0:
+                    self.hints[gossipstone_name] = GossipStoneHintWrapper(
+                        BarrenGossipStoneHint(zone=anywhere_hints.pop()),
+                        create_hint(second_loc_to_hint)
+                    )
+                else:
+                    self.hints[gossipstone_name] = create_hint(second_loc_to_hint)
+            elif loc_to_hint is None:
                 # place barren hints at locations with no hints
                 if len(anywhere_hints) < 0:
                     hint = anywhere_hints.pop()
