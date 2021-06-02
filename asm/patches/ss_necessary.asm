@@ -119,6 +119,10 @@ nop
 nop
 nop
 
+; after the function that starts the new file, also process the startflags
+.org 0x801bb9bc
+b processStartflags
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

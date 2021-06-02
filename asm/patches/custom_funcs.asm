@@ -168,6 +168,96 @@ lwz r0, 20(r1)
 mtlr r0
 addi r1, r1, 0x10
 blr
+
+; function to be able to set sceneflags from everywhere
+; r3 is flag, r4 is area
+.global setSceneflagForArea
+setSceneflagForArea:
+stwu r1, -16(r1)
+mflr r0
+stw r0, 20(r1)
+stw r31, 12(r1)
+stw r30, 8(r1)
+mr r30, r3
+mr r31, r4
+cmplwi r3, 128
+bge setSceneflagForArea_end
+lwz r3,-0x4060(r13) ; SCENEFLAG_MANAGER
+lhz r0, 38(r3)
+cmpw r4, r0
+bne handle_diff_area
+mr r4, r30
+bl SceneflagManager__setTempOrSceneflag
+b setSceneflagForArea_end
+handle_diff_area:
+lwz r3,-0x4444(r13) ; FILE_MANAGER
+bl FileManager__getSceneflags
+rlwinm r4, r30, 29, 3, 31
+rlwinm r0, r31, 3, 0, 28
+add r0, r4, r0
+rlwinm r6, r0, 1, 0, 30
+lhzx r5, r3, r6
+li r4, 1
+clrlwi r0, r30, 29
+slw r0, r4, r0
+clrlwi r0, r0, 16
+or r0, r5, r0
+sthx r0, r3, r6
+setSceneflagForArea_end:
+lwz r31, 12(r1)
+lwz r30, 8(r1)
+lwz r0, 20(r1)
+mtlr r0
+addi r1, r1, 16
+blr
+
+; function that processes start story-, scene- and itemsflags
+.global processStartflags
+processStartflags:
+stwu r1, -16(r1)
+mflr r0
+stw r0, 20(r1)
+stw r31, 12(r1)
+stw r30, 8(r1)
+lis r31, 0x804e
+ori r31, r31, 0xe1b8
+; storyflags
+b storyflag_loop_cond
+storyflag_loop_body:
+lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+bl FlagManager__setFlagTo1
+storyflag_loop_cond:
+lhz r4, 0(r31)
+addi r31, r31, 2
+cmplwi r4, 0xFFFF
+bne storyflag_loop_body
+; itemflags
+b itemflag_loop_cond
+itemflag_loop_body:
+lwz r3,-0x4040(r13) ; ITEMFLAG_MANAGER
+bl FlagManager__setFlagTo1
+itemflag_loop_cond:
+lhz r4, 0(r31)
+addi r31, r31, 2
+cmplwi r4, 0xFFFF
+bne itemflag_loop_body
+; sceneflags
+b sceneflag_loop_cond
+sceneflag_loop_body:
+rlwinm r3,r4,0,0xff
+srwi r4,r4,8
+bl setSceneflagForArea
+sceneflag_loop_cond:
+lhz r4, 0(r31)
+addi r31, r31, 2
+cmplwi r4, 0xFFFF
+bne sceneflag_loop_body
+lwz r31, 12(r1)
+lwz r30, 8(r1)
+lwz r0, 20(r1)
+mtlr r0
+addi r1, r1, 16
+blr
 .close
 
 

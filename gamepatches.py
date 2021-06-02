@@ -9,6 +9,7 @@ from io import BytesIO
 from enum import IntEnum
 from typing import Optional
 import re
+import struct
 
 import nlzss11
 from sslib import AllPatcher, U8File
@@ -260,6 +261,34 @@ class FlagSwitchTypes(IntEnum):
     ZONEFLAG = 5,
     SCENEFLAG = 6,
     TEMPFLAG = 9,
+
+
+FLAGINDEX_NAMES = ["Skyloft",
+            "Faron Woods",
+            "Lake Floria",
+            "Flooded Faron Woods",
+            "Eldin Volcano",
+            "Eldin Volcano Summit",
+            "-Unused-",
+            "Lanayru Desert",
+            "Lanayru Sand Sea",
+            "Lanayru Gorge",
+            "Sealed Grounds",
+            "Skyview Temple",
+            "Ancient Cistern",
+            "-Unused-",
+            "Earth Temple",
+            "Fire Sanctuary",
+            "-Unused-",
+            "Mining Facility",
+            "Sandship",
+            "-Unused-",
+            "Sky Keep",
+            "The Sky",
+            "Faron Silent Realm",
+            "Eldin Silent Realm",
+            "Lanayru Silent Realm",
+            "Skyloft Silent Realm"]
 
 def entrypoint_hash(name: str, entries: int) -> int:
     hash = 0
@@ -668,7 +697,6 @@ class GamePatcher:
         self.do_build_arc_cache()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
-        self.add_startstoryflags_to_patches()
         if (self.rando.options['song-hints']) != 'None':
             self.add_trial_hint_patches()
         self.add_stone_hint_patches()
@@ -717,7 +745,9 @@ class GamePatcher:
                 else:
                     continue
             filtered_storyflags.append(storyflag)
-        self.patches['global']['startstoryflags'] = filtered_storyflags
+        self.startstoryflags = filtered_storyflags
+
+        self.startitemflags = self.patches['global']['startitems']
 
         # patches from randomizing items
         self.rando_stagepatches, self.stageoarcs, self.rando_eventpatches, self.shoppatches = \
@@ -948,24 +978,24 @@ class GamePatcher:
         # Add sword story/itemflags if required
         start_sword_count = self.rando.starting_items.count('Progressive Sword')
         for i in range(start_sword_count):
-            self.patches['global']['startstoryflags'].append(PROGRESSIVE_SWORD_STORYFLAGS[i])
+            self.startstoryflags.append(PROGRESSIVE_SWORD_STORYFLAGS[i])
         if start_sword_count > 0:
-            self.patches['global']['startitems'].append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count-1])
+            self.startitemflags.append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count-1])
 
         # if 'Sailcloth' in self.rando.starting_items:
-        #     self.patches['global']['startstoryflags'].append(32)
-        #     self.patches['global']['startitems'].append(15)
+        #     self.startstoryflags.append(32)
+        #     self.startitemflags.append(15)
 
         if 'Progressive Pouch' in self.rando.starting_items:
-            self.patches['global']['startstoryflags'].append(30) # storyflag for pouch
-            self.patches['global']['startstoryflags'].append(931) # rando storyflag for progressive pouch 1
-            self.patches['global']['startitems'].append(112) # itemflag for pouch
+            self.startstoryflags.append(30) # storyflag for pouch
+            self.startstoryflags.append(931) # rando storyflag for progressive pouch 1
+            self.startitemflags.append(112) # itemflag for pouch
         
 
         # Add storyflags for tablets
         for item in self.rando.starting_items:
             if item in START_ITEM_STORYFLAGS:
-                self.patches['global']['startstoryflags'].append(START_ITEM_STORYFLAGS[item])
+                self.startstoryflags.append(START_ITEM_STORYFLAGS[item])
     
     def add_required_dungeon_patches(self):
         # Add required dungeon patches to eventpatches
@@ -1019,72 +1049,6 @@ class GamePatcher:
             "index": 18,
             "text": required_dungeons_text,
         })
-
-    def add_startstoryflags_to_patches(self):
-        # add startflags to eventpatches
-        startstoryflags = self.patches['global'].get('startstoryflags',None)
-        startsceneflags = self.patches['global'].get('startsceneflags',None)
-        startitems = self.patches['global'].get('startitems',None)
-        def pop_or_default(lst, default=-1):
-            if len(lst) == 0:
-                return default
-            else:
-                return lst.pop(0)
-        for cs_stage, cs_room, cs_index in START_CUTSCENES:
-            if cs_stage.startswith('F0'):
-                # make sure to only set sceneflags on skyloft
-                self.add_patch_to_stage(cs_stage, {
-                    'name': 'Startflags',
-                    'type': 'objpatch',
-                    'room': cs_room,
-                    'index': cs_index,
-                    'objtype': 'EVNT',
-                    'object': {
-                        'item': pop_or_default(startitems),
-                        'story_flag1': pop_or_default(startstoryflags),
-                        'story_flag2': pop_or_default(startstoryflags),
-                        'sceneflag1': pop_or_default(startsceneflags),
-                        'sceneflag2': pop_or_default(startsceneflags),
-                    },
-                })
-            else:
-                self.add_patch_to_stage(cs_stage, {
-                    'name': 'Startflags',
-                    'type': 'objpatch',
-                    'room': cs_room,
-                    'index': cs_index,
-                    'objtype': 'EVNT',
-                    'object': {
-                        'item': pop_or_default(startitems),
-                        'story_flag1': pop_or_default(startstoryflags),
-                        'story_flag2': pop_or_default(startstoryflags),
-                    },
-                })
-        # for now, we can only set scene and storyflags here, so make sure all items were handled in the event
-        assert len(startitems) == 0, "Not all items were handled in events!"
-
-        while startsceneflags or startstoryflags:
-            self.add_patch_to_stage('F001r', {
-                'name': 'Startflags',
-                'type':'objadd',
-                'room': 1, # Link's room
-                'layer': 0,
-                'objtype': 'STAG',
-                'object': {
-                    "params1": 0xFFFFFF00 | (pop_or_default(startsceneflags) & 0xFF),
-                    "params2": 0xFF5FFFFF,
-                    "posx": 761,
-                    "posy": -22,
-                    "posz": -2260,
-                    "sizex": 1000,
-                    "sizey": 1000,
-                    "sizez": 1000,
-                    "anglex": pop_or_default(startstoryflags) & 0xFFFF,
-                    "angley": 0,
-                    "anglez": 65535,
-                    "name": "SwAreaT",
-                }
-            })
 
     def add_trial_hint_patches(self):
         def find_event(filename, name):
@@ -1566,6 +1530,27 @@ class GamePatcher:
         dol = DOL()
         dol.read(dol_bytes)
         apply_dol_patch(self, dol, self.all_asm_patches['main.dol'])
+        # do startflags, each entry is a u16, different flag types are terminated by 0xFFFF
+        # first storyflags, then itemflags, then sceneflags (first byte area, second byte flag)
+        start_flags_write = BytesIO()
+        for flag in self.startstoryflags:
+            start_flags_write.write(struct.pack('>H', flag))
+        start_flags_write.write(bytes.fromhex('FFFF'))
+        # itemflags
+        for flag in self.startitemflags:
+            start_flags_write.write(struct.pack('>H', flag))
+        start_flags_write.write(bytes.fromhex('FFFF'))
+        # sceneflags
+        for flagregion, flags in self.patches['global'].get('startsceneflags', {}).items():
+            flagregionid = FLAGINDEX_NAMES.index(flagregion)
+            for flag in flags:
+                start_flags_write.write(struct.pack('>BB',flagregionid, flag))
+        start_flags_write.write(bytes.fromhex('FFFF'))
+        startflag_byte_count = len(start_flags_write.getbuffer())
+        if startflag_byte_count > 512:
+            raise Exception(f"not enough space to fit in all of the startflags, need {startflag_byte_count}, but only 512 bytes available")
+        # print(f"total startflag byte count: {startflag_byte_count}")
+        dol.write_data_bytes(0x804ee1b8, start_flags_write.getbuffer())
         dol.save_changes()
         write_bytes_create_dirs(self.patcher.modified_extract_path / 'DATA' / 'sys' / 'main.dol', dol_bytes.getbuffer())
 

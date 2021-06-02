@@ -31,12 +31,13 @@ global:
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
-    - 95 # Fi Text for Ruby Tablet
-    - 96 # Fi Text for Amber Tablet
-    - 66 # Batreaux Doors outside open
-    - 99 # Sheikah Stone cs played
-    - 67 # Inside Doors open
-    - 1 # UA Doors open
+    Skyloft:
+      - 95 # Fi Text for Ruby Tablet
+      - 96 # Fi Text for Amber Tablet
+      - 66 # Batreaux Doors outside open
+      - 99 # Sheikah Stone cs played
+      - 67 # Inside Doors open
+      - 1 # UA Doors open
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack

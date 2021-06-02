@@ -23,5 +23,8 @@ main.dol:
     giveItem: 0x80249210
     # lwz r3,-0x4444(r13) ; FILE_MANAGER
     FileManager__getDungeonFlags: 0x8000a460
+    FileManager__getSceneflags: 0x8000a4e0
+    # used by both item and storyflag manager, r3 is flag manager, r4 is flag
+    FlagManager__setFlagTo1: 0x800bf5b0
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
