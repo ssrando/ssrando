@@ -283,14 +283,14 @@
     - Removed
 #    - Start With
     - Vanilla
-#    - Own Dungeon - Restricted
+    - Own Dungeon - Restricted
     - Own Dungeon - Unrestricted
 #    - Overworld Only
 #    - Any Dungeon
     - Anywhere
   default: Own Dungeon - Unrestricted
   help: Controls the placement of maps. Restricted means that maps cannot be placed on the
-    Boss Heart Container of the dungeon
+    Boss Heart Container or ending check of the dungeon
   ui: option_map_mode
 - name: Small Key Mode
   command: small-key-mode
