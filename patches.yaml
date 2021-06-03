@@ -1627,6 +1627,12 @@ F200: # Eldin main area
     type: oarcadd
     oarc: GossipStone
     destlayer: 0
+  - name: CS after draining lava for key piece
+    type: objdelete
+    id: 0x14CC
+    layer: 1
+    room: 2
+    objtype: STAG
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
@@ -2281,6 +2287,12 @@ F301_2: # inside Pirate Stronghold
     layer: 0
     room: 1
     objtype: OBJ
+  - name: CS before second lever
+    type: objdelete
+    id: 0xFC28
+    layer: 0
+    room: 6
+    objtype: STAG
 F301_3: # Skipper's Retreat
   - name: Text after intro
     type: objdelete
