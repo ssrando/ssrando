@@ -171,7 +171,7 @@ class Ui_MainWindow(object):
         self.groupBox.setGeometry(QRect(10, 70, 901, 161))
         self.gridLayoutWidget_3 = QWidget(self.groupBox)
         self.gridLayoutWidget_3.setObjectName(u"gridLayoutWidget_3")
-        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 891, 131))
+        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 891, 149))
         self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -372,7 +372,7 @@ class Ui_MainWindow(object):
         self.groupBox_5.setGeometry(QRect(10, 10, 181, 231))
         self.verticalLayoutWidget = QWidget(self.groupBox_5)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 170, 213))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 226, 233))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -457,7 +457,7 @@ class Ui_MainWindow(object):
         self.groupBox_7.setGeometry(QRect(560, 10, 181, 231))
         self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 162, 204))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 225, 204))
         self.verticalLayout_10 = QVBoxLayout(self.verticalLayoutWidget_7)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -520,7 +520,7 @@ class Ui_MainWindow(object):
         self.groupBox_8.setGeometry(QRect(750, 20, 161, 221))
         self.verticalLayoutWidget_3 = QWidget(self.groupBox_8)
         self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
-        self.verticalLayoutWidget_3.setGeometry(QRect(10, 20, 141, 191))
+        self.verticalLayoutWidget_3.setGeometry(QRect(10, 20, 148, 191))
         self.verticalLayout_14 = QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
@@ -553,7 +553,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setGeometry(QRect(200, 10, 171, 231))
         self.verticalLayoutWidget_2 = QWidget(self.groupBox_2)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 151, 201))
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 201, 201))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -640,7 +640,7 @@ class Ui_MainWindow(object):
         self.groupBox_9.setGeometry(QRect(10, 250, 181, 221))
         self.verticalLayoutWidget_5 = QWidget(self.groupBox_9)
         self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
-        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 161, 191))
+        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 215, 191))
         self.verticalLayout_15 = QVBoxLayout(self.verticalLayoutWidget_5)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
@@ -668,6 +668,11 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_15.addLayout(self.verticalLayout_16)
+
+        self.option_fix_bit_crashes = QCheckBox(self.verticalLayoutWidget_5)
+        self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
+
+        self.verticalLayout_15.addWidget(self.option_fix_bit_crashes)
 
         self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -794,7 +799,7 @@ class Ui_MainWindow(object):
         self.groupBox_10.setGeometry(QRect(10, 10, 181, 201))
         self.verticalLayoutWidget_12 = QWidget(self.groupBox_10)
         self.verticalLayoutWidget_12.setObjectName(u"verticalLayoutWidget_12")
-        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 161, 183))
+        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 204, 222))
         self.verticalLayout_22 = QVBoxLayout(self.verticalLayoutWidget_12)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
@@ -963,7 +968,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(1)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1063,6 +1068,7 @@ class Ui_MainWindow(object):
         self.option_swordless.setText(QCoreApplication.translate("MainWindow", u"Swordless", None))
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
+        self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))

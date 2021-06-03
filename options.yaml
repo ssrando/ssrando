@@ -460,3 +460,4 @@
   type: boolean
   default: false
   help: If enabled, does not load some arcs in BiT when all file slots are filled to make all areas accessible in BiT
+  ui: option_fix_bit_crashes
