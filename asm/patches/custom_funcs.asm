@@ -192,13 +192,13 @@ b setSceneflagForArea_end
 handle_diff_area:
 lwz r3,-0x4444(r13) ; FILE_MANAGER
 bl FileManager__getSceneflags
-rlwinm r4, r30, 29, 3, 31
+srwi r4, r30, 4
 rlwinm r0, r31, 3, 0, 28
 add r0, r4, r0
 rlwinm r6, r0, 1, 0, 30
 lhzx r5, r3, r6
 li r4, 1
-clrlwi r0, r30, 29
+rlwinm r0,r30,0,28,31
 slw r0, r4, r0
 clrlwi r0, r0, 16
 or r0, r5, r0
@@ -219,6 +219,10 @@ mflr r0
 stw r0, 20(r1)
 stw r31, 12(r1)
 stw r30, 8(r1)
+lwz r3,-0x4444(r13) ; FILE_MANAGER
+addis r3, r3, 1
+li r0, 1
+stb r0, -22450(r3)
 lis r31, 0x804e
 ori r31, r31, 0xe1b8
 ; storyflags
@@ -252,6 +256,10 @@ lhz r4, 0(r31)
 addi r31, r31, 2
 cmplwi r4, 0xFFFF
 bne sceneflag_loop_body
+lwz r3,-0x4444(r13) ; FILE_MANAGER
+addis r3, r3, 1
+li r0, 0
+stb r0, -22450(r3)
 lwz r31, 12(r1)
 lwz r30, 8(r1)
 lwz r0, 20(r1)

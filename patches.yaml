@@ -28,6 +28,8 @@ global:
     - 519 # Updated Sand Sea map
     - 115 # Full Lake Floria map
     - 180 # Thrill digger entrance CS
+    - 199 # talked to sword instructor after practice sword chest
+    - 804 # eldin entrance statue
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
@@ -38,6 +40,14 @@ global:
       - 99 # Sheikah Stone cs played
       - 67 # Inside Doors open
       - 1 # UA Doors open
+    Sealed Grounds:
+      - 7 # vents active
+      - onlyif: Option "skip-skykeep" Enabled
+        flag: 50 # horde door open
+      - 13 # door to temple unlocked
+    Lanayru Desert:
+      - 68 # desert statue checked
+      - 7 # pushed first minecart to end
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -1528,13 +1538,6 @@ F200: # Eldin main area
       - story_flag: -1
         night: 0
         layer: 1
-  - name: Eldin Entrance Statue always checked
-    type: objpatch
-    room: 0
-    index: 0
-    objtype: EVNT
-    object:
-      story_flag2: 804
   - name: intro cs
     type: objmove
     id: 0xFC26
@@ -1990,14 +1993,6 @@ F300_1: # Lanayru Mines
       - story_flag: -1
         night: 0
         layer: 1
-  - name: Connect intro event to entrance statue # make sure the statue is always checked
-    type: objpatch
-    id: 0xFC8C
-    layer: 1
-    room: 0
-    objtype: STAG
-    object:
-      params1: 0xFFFF4403 # sceneflag 68
   - name: Remove First timeshift stone cs
     type: objdelete
     id: 0xFC47
@@ -2821,21 +2816,6 @@ F401: # Sealed grounds Whirlpool
     layer: 3
     room: 1
     objtype: OBJ
-  - name: Set vents in Intro CS
-    type: objpatch
-    room: 1
-    index: 7
-    objtype: EVNT
-    object:
-      sceneflag1: 7 # vents active
-  - name: Set vents in Intro CS
-    type: objpatch
-    room: 1
-    index: 7
-    objtype: EVNT
-    onlyif: Option "skip-skykeep" Enabled
-    object:
-      sceneflag2: 50 # door to horde open
   - name: Fi text for Trial
     type: objdelete
     id: 0xFC09

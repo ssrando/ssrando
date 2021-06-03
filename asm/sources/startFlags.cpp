@@ -28,6 +28,8 @@ extern SceneflagManager* SCENEFLAG_MANAGER;
 
 class FileManager {
 public:
+u8 _0[0xa84e];
+u8 anticommitFlag;
     u16* getSceneflags();
 };
 
@@ -57,13 +59,14 @@ void setAreaSceneflag(u32 flag, int sceneIndex) {
     } else {
         u16* savedFlags = FILE_MANAGER->getSceneflags();
         // each area uses 16 bytes, so 8 u16
-        int slot = flag / 8;
-        int shift = flag % 8;
+        int slot = flag / 16; // each u16 has 16 bits
+        int shift = flag % 16;
         savedFlags[sceneIndex * 8 + slot] |= (1 << shift);
     }
 }
 
 void processStartflags() {
+    FILE_MANAGER->anticommitFlag = 1;
     u16* flagentryPtr = (u16*) 0x804ee1b8; // 512 unused bytes
     u16 val;
     // storyflags
@@ -80,4 +83,5 @@ void processStartflags() {
         u32 flag = val & 0xFF;
         setAreaSceneflag(flag, area);
     }
+    FILE_MANAGER->anticommitFlag = 0;
 }

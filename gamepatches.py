@@ -1544,6 +1544,11 @@ class GamePatcher:
         for flagregion, flags in self.patches['global'].get('startsceneflags', {}).items():
             flagregionid = FLAGINDEX_NAMES.index(flagregion)
             for flag in flags:
+                if not isinstance(flag, int): # it's a dict with onlyif and flag
+                    if not self.rando.logic.check_logical_expression_string_req(flag['onlyif']):
+                        # flag should not be set according to options
+                        continue
+                    flag = flag['flag']
                 start_flags_write.write(struct.pack('>BB',flagregionid, flag))
         start_flags_write.write(bytes.fromhex('FFFF'))
         startflag_byte_count = len(start_flags_write.getbuffer())
