@@ -737,6 +737,42 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 57 # talk to Elder after locating every Kikwi
+  - name: Startflags 1
+    type: objadd
+    room: 1 # Link's room
+    layer: 1 # only accessible in BiT
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000
+      sizey: 1000
+      sizez: 1000
+      anglex: 27 # loftwing storyflag
+      angley: 0
+      anglez: 65535
+      name: SwAreaT
+  - name: Startflags 2
+    type: objadd
+    room: 1 # Link's room
+    layer: 1 # only accessible in BiT
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000
+      sizey: 1000
+      sizez: 1000
+      anglex: 198 # can jump off loftwing storyflag
+      angley: 0
+      anglez: 65535
+      name: SwAreaT
 F002r: # Beedle's Airshop
   - name: Delete cutscene
     type: objdelete
