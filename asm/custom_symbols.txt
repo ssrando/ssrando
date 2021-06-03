@@ -5,8 +5,8 @@ main.dol:
   handleBossKeyMapDungeonflag: 0x80678350
   handleSmallKeyGet: 0x80678410
   setSceneflagForArea: 0x806784B0
-  processStartflags: 0x8067853C
-  alloc_keyboard_arcs_conditional: 0x806785E8
+  processStartflags: 0x80678520
+  alloc_keyboard_arcs_conditional: 0x806785CC
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:

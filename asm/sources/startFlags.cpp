@@ -53,16 +53,11 @@ void setAreaSceneflag(u32 flag, int sceneIndex) {
     if (flag >= 0x80) {
         return; // this is not a sceneflag
     }
-    SceneflagManager* mgr = SCENEFLAG_MANAGER;
-    if (sceneIndex == mgr->sceneIndex) {
-        mgr->setTempOrSceneflag(flag);
-    } else {
-        u16* savedFlags = FILE_MANAGER->getSceneflags();
-        // each area uses 16 bytes, so 8 u16
-        int slot = flag / 16; // each u16 has 16 bits
-        int shift = flag % 16;
-        savedFlags[sceneIndex * 8 + slot] |= (1 << shift);
-    }
+    u16* savedFlags = FILE_MANAGER->getSceneflags();
+    // each area uses 16 bytes, so 8 u16
+    int slot = flag / 16; // each u16 has 16 bits
+    int shift = flag % 16;
+    savedFlags[sceneIndex * 8 + slot] |= (1 << shift);
 }
 
 void processStartflags() {

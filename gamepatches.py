@@ -1020,7 +1020,7 @@ class GamePatcher:
         required_dungeon_count = len(self.rando.required_dungeons)
         # set flags for unrequired dungeons beforehand
         for required_dungeon_storyflag in REQUIRED_DUNGEON_STORYFLAGS[required_dungeon_count:]:
-            self.patches['global']['startstoryflags'].append(required_dungeon_storyflag)
+            self.startstoryflags.append(required_dungeon_storyflag)
 
         # patch required dungeon text in
         if required_dungeon_count == 0:

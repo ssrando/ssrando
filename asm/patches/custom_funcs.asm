@@ -169,7 +169,8 @@ mtlr r0
 addi r1, r1, 0x10
 blr
 
-; function to be able to set sceneflags from everywhere
+; function to set a sceneflag to the saved flags area
+; breaks in normal gameplay when settings a sceneflag for the current sceneflagindex
 ; r3 is flag, r4 is area
 .global setSceneflagForArea
 setSceneflagForArea:
@@ -182,14 +183,6 @@ mr r30, r3
 mr r31, r4
 cmplwi r3, 128
 bge setSceneflagForArea_end
-lwz r3,-0x4060(r13) ; SCENEFLAG_MANAGER
-lhz r0, 38(r3)
-cmpw r4, r0
-bne handle_diff_area
-mr r4, r30
-bl SceneflagManager__setTempOrSceneflag
-b setSceneflagForArea_end
-handle_diff_area:
 lwz r3,-0x4444(r13) ; FILE_MANAGER
 bl FileManager__getSceneflags
 srwi r4, r30, 4
