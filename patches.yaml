@@ -40,6 +40,9 @@ global:
       - 99 # Sheikah Stone cs played
       - 67 # Inside Doors open
       - 1 # UA Doors open
+    Faron Woods:
+      - 15 # fi text after vine to deep woods
+      - 14 # text in front of VP statue
     Sealed Grounds:
       - 7 # vents active
       - onlyif: Option "skip-skykeep" Enabled
@@ -1044,18 +1047,6 @@ F100: # Faron main area
     id: 0xFEF0
     layer: 4
     destlayer: 0
-    room: 0
-    objtype: OBJ
-  - name: Remove Fi text infront of Viewing Platform
-    type: objdelete
-    id: 0x46BD
-    layer: 1
-    room: 0
-    objtype: OBJ
-  - name: Remove Fi text after shooting down vine to deep woods
-    type: objdelete
-    id: 0x46BE
-    layer: 1
     room: 0
     objtype: OBJ
   - name: Remove Fi text Not letting you leave machi 1
