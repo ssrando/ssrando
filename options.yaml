@@ -283,14 +283,14 @@
     - Removed
 #    - Start With
     - Vanilla
-#    - Own Dungeon - Restricted
+    - Own Dungeon - Restricted
     - Own Dungeon - Unrestricted
 #    - Overworld Only
 #    - Any Dungeon
     - Anywhere
   default: Own Dungeon - Unrestricted
   help: Controls the placement of maps. Restricted means that maps cannot be placed on the
-    Boss Heart Container of the dungeon
+    Boss Heart Container or ending check of the dungeon
   ui: option_map_mode
 - name: Small Key Mode
   command: small-key-mode
@@ -455,3 +455,9 @@
     Basic tells if the reward item is any progress item. Advanced tells if the trial is WotH, Barren, or potentially required.
     Direct tells the item on the trial directly.
   ui: option_song_hints
+- name: Fix BiT crashes
+  command: fix-bit-crashes
+  type: boolean
+  default: false
+  help: If enabled, does not load some arcs in BiT when all file slots are filled to make all areas accessible in BiT
+  ui: option_fix_bit_crashes

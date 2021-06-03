@@ -200,7 +200,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -291,7 +291,7 @@
          <x>10</x>
          <y>20</y>
          <width>891</width>
-         <height>131</height>
+         <height>149</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -586,8 +586,8 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>170</width>
-         <height>213</height>
+         <width>226</width>
+         <height>233</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -703,7 +703,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>162</width>
+         <width>225</width>
          <height>204</height>
         </rect>
        </property>
@@ -790,7 +790,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>141</width>
+         <width>148</width>
          <height>191</height>
         </rect>
        </property>
@@ -856,7 +856,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>151</width>
+         <width>201</width>
          <height>201</height>
         </rect>
        </property>
@@ -1005,7 +1005,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>161</width>
+         <width>215</width>
          <height>191</height>
         </rect>
        </property>
@@ -1037,6 +1037,13 @@
            <widget class="QComboBox" name="option_rupoor_mode"/>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_fix_bit_crashes">
+          <property name="text">
+           <string>Fix BiT crashes</string>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_6">
@@ -1202,8 +1209,8 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>161</width>
-         <height>183</height>
+         <width>204</width>
+         <height>222</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_22">

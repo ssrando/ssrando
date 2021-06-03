@@ -266,6 +266,33 @@ lwz r0, 20(r1)
 mtlr r0
 addi r1, r1, 16
 blr
+
+; function, that only actually loads the keyboard arcs if the following conditions are met:
+; 1. you are in BiT (checked with Link's actor params)
+; 2. All files are not empty
+.global alloc_keyboard_arcs_conditional
+alloc_keyboard_arcs_conditional:
+; can't use r3, r4, r5, r6
+lwz r12, -0x3cb4(r13) ; LINK_PTR
+lwz r12, 0x4(r12) ; link params
+xoris r12, r12, 0xFFFF ; check for 0xFFFF0FFF, actor params on title screen, are different in BiT
+cmpwi r12, 0x0FFF
+beq do_requestFileLoadFromDisk
+lwz r12,-0x4444(r13) ; FILE_MANAGER
+lwz r12, 0(r12) ; location for all saved save files
+lbz r11, 0x53ad(r12) ; new savefile flag on file 1 + 0x20 offset from save files in general
+cmpwi r11, 1
+beq do_requestFileLoadFromDisk
+addi r12, r12, 0x53c0
+lbz r11, 0x53cd(r12) ; new savefile flag on file 2
+cmpwi r11, 1
+beq do_requestFileLoadFromDisk
+addi r12, r12, 0x53c0
+lbz r11, 0x53cd(r12) ; new savefile flag
+cmpwi r11, 1
+bnelr
+do_requestFileLoadFromDisk:
+b requestFileLoadFromDisk
 .close
 
 

@@ -9,3 +9,4 @@ FileManager__getDungeonFlags = 0x8000a460;
 FlagManager__setFlagTo1 = 0x800bf5b0;
 FileManager__getSceneflags = 0x8000a4e0;
 SceneflagManager__setTempOrSceneflag = 0x800be2d0;
+requestFileLoadFromDisk = 0x802f0060;
