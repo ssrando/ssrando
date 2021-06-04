@@ -183,7 +183,7 @@ Can Beat Earth Temple:
     Can Access Earth Temple & Bomb Bag & (Hook Beetle | (Beetle & Digging Mitts)) & ET Boss Key & Goddess Sword
 
 Can Access Dungeon Entrance In Lanayru Desert:
-    Can Access Lanayru & Bomb Bag & Hook Beetle & Practice Sword
+    Can Access Lanayru & ((Bomb Bag & Hook Beetle & Practice Sword) | Option "open-lmf" Is "Open")
 # Sword needed to activate nodes
 
 Can Hit Crystal in LMF Map Room:

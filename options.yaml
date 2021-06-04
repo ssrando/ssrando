@@ -250,7 +250,7 @@
   bits: 2
   choices:
     - Nodes
-    - Hook Beetle
+#    - Hook Beetle
     - Open
   default: Nodes
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,

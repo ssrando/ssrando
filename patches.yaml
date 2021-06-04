@@ -51,6 +51,10 @@ global:
     Lanayru Desert:
       - 68 # desert statue checked
       - 7 # pushed first minecart to end
+      - onlyif: Option "open-lmf" Is "Open"
+        flag: 30 # LMF Rises CS
+      - onlyif: Option "open-lmf" Is "Open"
+        flag: 31 # LMF rising CS watched
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
