@@ -586,7 +586,7 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>161</width>
+         <width>170</width>
          <height>201</height>
         </rect>
        </property>
@@ -998,7 +998,7 @@
        </rect>
       </property>
       <property name="title">
-       <string>GroupBox</string>
+       <string>Additional Options</string>
       </property>
       <widget class="QWidget" name="verticalLayoutWidget_5">
        <property name="geometry">
@@ -1011,11 +1011,18 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_15">
         <item>
-         <widget class="QCheckBox" name="option_swordless">
-          <property name="text">
-           <string>Swordless</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_28">
+          <item>
+           <widget class="QLabel" name="label_for_option_starting_sword">
+            <property name="text">
+             <string>Starting Sword</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_starting_sword"/>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QCheckBox" name="option_start_pouch">
@@ -1027,7 +1034,7 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_16">
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="label_for_option_rupoor">
             <property name="text">
              <string>Rupoor Mode</string>
             </property>

@@ -44,13 +44,22 @@
   default: Ballad
   help: Controls the starting state of the Thunderhead.
   ui: option_open_thunderhead
-- name: Swordless
-  command: swordless
-  type: boolean
-  default: false
+- name: Starting Sword
+  command: starting-sword
+  type: singlechoice
+  bits: 3
+  choices:
+    - Swordless
+    - Practice Sword
+    - Goddess Sword
+    - Goddess Longsword
+    - Goddess White Sword
+    - Master Sword
+    - True Master Sword
+  default: Goddess Sword
   help: Instead of starting with the goddess sword, in this mode all sword upgrades,
     including the pracice sword, have to be found
-  ui: option_swordless
+  ui: option_starting_sword
 - name: Required Dungeon Count
   command: required-dungeon-count
   type: int
