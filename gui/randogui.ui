@@ -200,7 +200,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -291,7 +291,7 @@
          <x>10</x>
          <y>20</y>
          <width>891</width>
-         <height>149</height>
+         <height>131</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -1216,8 +1216,8 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>204</width>
-         <height>222</height>
+         <width>161</width>
+         <height>171</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_22">
