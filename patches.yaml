@@ -1122,7 +1122,7 @@ F102_1: # Outside AC
         night: 0
         layer: 1
   - name: Layer override
-    onlyif: Option "open-ac" is "Heal Water Dragon" # Water Dragon Quest
+    onlyif: Option "open-ac" Is "Heal Water Dragon" # Water Dragon Quest
     type: layeroverride
     override: # change layer 3 trigger, no layer 1
       - story_flag: 900 # new beat AC
