@@ -44,13 +44,22 @@
   default: Ballad
   help: Controls the starting state of the Thunderhead.
   ui: option_open_thunderhead
-- name: Swordless
-  command: swordless
-  type: boolean
-  default: false
+- name: Starting Sword
+  command: starting-sword
+  type: singlechoice
+  bits: 3
+  choices:
+    - Swordless
+    - Practice Sword
+    - Goddess Sword
+    - Goddess Longsword
+    - Goddess White Sword
+    - Master Sword
+    - True Master Sword
+  default: Goddess Sword
   help: Instead of starting with the goddess sword, in this mode all sword upgrades,
     including the pracice sword, have to be found
-  ui: option_swordless
+  ui: option_starting_sword
 - name: Required Dungeon Count
   command: required-dungeon-count
   type: int
@@ -250,7 +259,7 @@
   bits: 2
   choices:
     - Nodes
-    - Hook Beetle
+#    - Hook Beetle
     - Open
   default: Nodes
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
@@ -283,14 +292,14 @@
     - Removed
 #    - Start With
     - Vanilla
-#    - Own Dungeon - Restricted
+    - Own Dungeon - Restricted
     - Own Dungeon - Unrestricted
 #    - Overworld Only
 #    - Any Dungeon
     - Anywhere
   default: Own Dungeon - Unrestricted
   help: Controls the placement of maps. Restricted means that maps cannot be placed on the
-    Boss Heart Container of the dungeon
+    Boss Heart Container or ending check of the dungeon
   ui: option_map_mode
 - name: Small Key Mode
   command: small-key-mode
@@ -507,3 +516,9 @@
     Basic tells if the reward item is any progress item. Advanced tells if the trial is WotH, Barren, or potentially required.
     Direct tells the item on the trial directly.
   ui: option_song_hints
+- name: Fix BiT crashes
+  command: fix-bit-crashes
+  type: boolean
+  default: false
+  help: If enabled, does not load some arcs in BiT when all file slots are filled to make all areas accessible in BiT
+  ui: option_fix_bit_crashes

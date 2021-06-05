@@ -196,6 +196,23 @@ class Logic:
         orig_item = self.item_locations[small_key_check]['original item']
         self.set_prerandomization_item_location(small_key_check, orig_item)
 
+    self.map_banned_locations = []
+    if self.rando.options['map-mode'] == 'Own Dungeon - Restricted':
+      self.map_banned_locations += [
+        'Skyview - Ghirahim Heart Container',
+        'Earth Temple - Scaldera Heart Container',
+        'Lanayru Mining Facility - LMF Heart Container',
+        'Ancient Cistern - Koloktos Heart Container',
+        'Sandship - Tentalus Heart Container',
+        'Fire Sanctuary - Ghirahim Heart Container',
+        'Skyview - Ruby Tablet',
+        'Earth Temple - Amber Tablet',
+        'Lanayru Mining Facility - Harp',
+        'Ancient Cistern - Goddess Longsword',
+        "Sandship - Nayru's Flame",
+        "Fire Sanctuary - Din's Flame"
+      ]
+
     if self.rando.options['logic-mode'] == 'No Logic':
       for location in self.item_locations:
         self.item_locations[location]['Need'] = Logic.parse_logic_expression(location, 'Nothing')
@@ -483,6 +500,10 @@ class Logic:
       short_dungeon_name = item_name.split(" ")[0]
       dungeon_name = DUNGEON_NAMES[short_dungeon_name]
       if not self.is_dungeon_location(location_name, dungeon_name_to_match=dungeon_name):
+        return False
+
+    if item_name.endswith('Map'):
+      if location_name in self.map_banned_locations:
         return False
 
     return True

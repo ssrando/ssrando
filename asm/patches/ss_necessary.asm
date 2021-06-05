@@ -119,6 +119,17 @@ nop
 nop
 nop
 
+; after the function that starts the new file, also process the startflags
+.org 0x801bb9bc
+b processStartflags
+
+; always allocate keyboard arcs to the end of the heap, to make sure
+; faron BiT doesn't crash
+.org 0x801b9a10
+li r5, 2
+.org 0x801b9a44
+li r5, 2
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

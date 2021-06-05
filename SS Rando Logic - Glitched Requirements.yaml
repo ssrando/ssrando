@@ -64,7 +64,9 @@ Bottle:
   Gratitude Crystal x5 | Gratitude Crystal Pack
 
 10 Gratitude Crystals:
-  Gratitude Crystal x10 | (Gratitude Crystal x5 & Gratitude Crystal Pack) | Gratitude Crystal Pack x2
+  Gratitude Crystal x10 |
+  (Gratitude Crystal x5 & Gratitude Crystal Pack) |
+  Gratitude Crystal Pack x2
 
 30 Gratitude Crystals:
   (Gratitude Crystal x15 & Gratitude Crystal Pack x3) |
@@ -114,7 +116,12 @@ Can Afford 1000 Rupees:
 
 Can Afford 1200 Rupees:
   Can High Rupee Farm &
-  (Extra Wallet x3 | (Medium Wallet & Extra Wallet x3) | (Big Wallet & Extra Wallet x1) | Giant Wallet)
+  (
+    Extra Wallet x3 |
+    (Medium Wallet & Extra Wallet x3) |
+    (Big Wallet & Extra Wallet x1) |
+    Giant Wallet
+  )
 
 Can Afford 1600 Rupees:
   Can High Rupee Farm & ((Big Wallet & Extra Wallet x2) | Giant Wallet)
@@ -257,7 +264,8 @@ Can BiTWarp at Behind the Temple:
 # Can RBM 0x40: Impossible
 
 Can RBM 0x20:
-  (Can Access Skyloft BiT & (Can Access Sky BiT | Clawshots) & Gust Bellows) | Can Access Most of Faron Woods BiT
+  (Can Access Skyloft BiT & (Can Access Sky BiT | Clawshots) & Gust Bellows) |
+  Can Access Most of Faron Woods BiT
   # Skyloft: Get Baby Rattle check
   # Sky: Impossible, Fi Text about Goddess Cubes
   # Sealed Grounds: Impossible, Door to Sealed Temple unlocks
@@ -383,7 +391,8 @@ Can RBM 3x10:
 # Can RBM 3x04: Impossible
 
 Can RBM 3x02:
-  (Can Access Skyloft BiT & Can Cut Tree) | (Can Access Most of Faron Woods BiT & Goddess Harp & Farore's Courage)
+  (Can Access Skyloft BiT & Can Cut Tree) |
+  (Can Access Most of Faron Woods BiT & Goddess Harp & Farore's Courage)
   # Skyloft: Cut Trees in front of [Waterfall] Cave
   # Sky: Impossible, Opened Ground Patch on [Mogma Mitts] island inside Thunderhead ([Quiver] Chest) #UNSURE
   # Sealed Grounds: Impossible, Set after Impa asks Link to seal Imp 1 #UNSURE
@@ -425,7 +434,9 @@ Can RBM 4x02:
   # Lake Floria: Cutscene after breaking First Barricade (strictly harder than Faron Woods)
 
 Can RBM 4x01:
-  Can Access Skyloft BiT | (Can Access Sky BiT & Bomb Bag) | (Can Access Most of Faron Woods BiT & Beetle)
+  Can Access Skyloft BiT |
+  (Can Access Sky BiT & Bomb Bag) |
+  (Can Access Most of Faron Woods BiT & Beetle)
   # Skyloft: Talk to Fledge in Academy after meeting Zelda #UNSURE
   # Sky: Blow up rocks on Northeastern Island
   # Sealed Grounds: Impossible, [Should Exist]
@@ -447,7 +458,9 @@ Can RBM 5x80:
 # Can RBM 5x10: Impossible
 
 Can RBM 5x08:
-  Can Access Skyloft BiT | Can Access Faron BiT | (Can Get Past Deep Woods Bee Hive BiT & Goddess Sword)
+  Can Access Skyloft BiT |
+  Can Access Faron BiT |
+  (Can Get Past Deep Woods Bee Hive BiT & Goddess Sword)
   # Skyloft: Talk to Pipit in Academy during intro #UNSURE
   # Sky: Impossible, Isle of Songs introductory cutscene #UNSURE
   # Sealed Grounds: Checked Sealed Grounds Statue / Save Goron #UNSURE
@@ -511,7 +524,8 @@ Can RBM 6x08:
 # Can RBM 7x20: Impossible
 
 Can RBM 7x10:
-  (Can Access Most of Faron Woods BiT & Can Open Door to Lake Floria) | Can Access Lake Floria Statue BiT
+  (Can Access Most of Faron Woods BiT & Can Open Door to Lake Floria) |
+  Can Access Lake Floria Statue BiT
   # Skyloft: Impossible, Talk to Handiman by Upper Academy before meeting Zelda #UNSURE
   # Sky: Impossible, Goddess Crest for Din's Power / Eldin Trial
   # Sealed Grounds: #TODO, Set when collecting Fruit of Life
@@ -626,7 +640,11 @@ Can RBM Ax08:
 # Can RBM Cx80: Impossible
 
 Can RBM Cx40:
-  (Can Access Night-time Skyloft BiT & Can Get Gratitude Crystals BiT & (Can Enter Waterfall Cave at Night | Beetle)) |
+  (
+    Can Access Night-time Skyloft BiT &
+    Can Get Gratitude Crystals BiT &
+    (Can Enter Waterfall Cave at Night | Beetle)
+  ) |
   Can Access Lake Floria above Rock BiT
   # Skyloft: Gratitude Crystal in loftwing prison #UNSURE of the requirement
   # Sky: Unused
@@ -907,7 +925,11 @@ Can Unlock Zelda's Room:
 
 Skyloft - Crystal in Zelda's Room:
   Can Get Gratitude Crystals &
-  (Can Unlock Zelda's Room | Can Access Sky BiT | (Can Access Skyloft BiT & Can Set Scene Flag 5x04))
+  (
+    Can Unlock Zelda's Room |
+    Can Access Sky BiT |
+    (Can Access Skyloft BiT & Can Set Scene Flag 5x04)
+  )
   # Drop down into the chimney from the Loftwing in BiT
   # Scene Flag 5x04 is "Drop down into Academy Chimney / Zelda's Door Unlocked"
 
@@ -982,7 +1004,9 @@ Skyloft - Crystal on Light Tower:
   Can Get Gratitude Crystals
 
 Skyloft Silent Realm - Stone of Trials:
-  (Song of the Hero & Goddess Harp) | Can RBM 9x20 | (Can Set Scene Flag 9x20 & Can Access Skyloft BiT)
+  (Song of the Hero & Goddess Harp) |
+  Can RBM 9x20 |
+  (Can Set Scene Flag 9x20 & Can Access Skyloft BiT)
   # Scene Flag 9x20 is "Hylia's Trial Gate Opened"
   # RBW method: When you are entering the trial, you want to start the file as the camera pans up, and you should BiTSave that file at the Bazzar statue in order to not spawn very far OoB
 
@@ -1000,7 +1024,12 @@ Skyloft - Shed Goddess Chest:
 
 Skyloft - Baby Rattle:
   (Clawshots & Gust Bellows) |
-  (Can Access Beedle's Shop Wherever & Baby Rattle from Beedle's Shop Trick & Gust Bellows & (Beetle | Whip))
+  (
+    Can Access Beedle's Shop Wherever &
+    Baby Rattle from Beedle's Shop Trick &
+    Gust Bellows &
+    (Beetle | Whip)
+  )
   # It's possible to get the item from Beetle's airship (you have to use beetle or whip to reach it)
 
 ## Skyloft Village
@@ -1073,10 +1102,14 @@ Beedle - Third 100 Rupee Item:
   # To reduce necessary rupee-farming at the start, the third item logically needs an efficient rupee-farming method
 
 Beedle - 300 Rupee Item:
-  Can Access Beedle's Shop & Can Afford 300 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
+  Can Access Beedle's Shop &
+  Can Afford 300 Rupees &
+  (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
 
 Beedle - 600 Rupee Item:
-  Can Access Beedle's Shop & Can Afford 600 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
+  Can Access Beedle's Shop &
+  Can Afford 600 Rupees &
+  (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
 
 Beedle - 800 Rupee Item:
   Can Access Beedle's Shop & Can Afford 800 Rupees
@@ -1085,7 +1118,9 @@ Beedle - 1000 Rupee Item:
   Can Access Beedle's Shop & Can Afford 1000 Rupees
 
 Beedle - 1200 Rupee Item:
-  Can Access Beedle's Shop & Can Afford 1200 Rupees & (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
+  Can Access Beedle's Shop &
+  Can Afford 1200 Rupees &
+  (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
 
 Beedle - 1600 Rupee Item:
   Can Access Beedle's Shop & Can Afford 1600 Rupees
@@ -1135,7 +1170,8 @@ Sky - Goddess Chest Outside Volcanic Island:
   Goddess Cube in Sand Oasis
 
 Sky - Goddess Chest Inside Volcanic Island:
-  Goddess Cube on East Great Tree with Clawshots Target & (Clawshots | Sky - Volcanic Island Dive Trick)
+  Goddess Cube on East Great Tree with Clawshots Target &
+  (Clawshots | Sky - Volcanic Island Dive Trick)
   # Normally you would need clawshots, but you can skip them with a good dive
 
 Sky - Gossip Stone in Volcanic Island:
@@ -1250,7 +1286,8 @@ Sky - Beedle's Island Goddess Chest:
   Goddess Cube at Ride near Temple of Time
 
 Sky - Beedle's Island Cage Goddess Chest:
-  Goddess Cube on top of Skyview & (Can Access Beedle's Shop | Sky - Beedle's Island Cage Chest Dive Trick)
+  Goddess Cube on top of Skyview &
+  (Can Access Beedle's Shop | Sky - Beedle's Island Cage Chest Dive Trick)
   # Getting this Chest during the day is possible but rather difficult
 
 Sky - Northeast Island Goddess Chest Behind Bombable Rocks:
@@ -1380,7 +1417,8 @@ Sealed Grounds - Gossip Stone behind the Temple:
 ## Faron Woods
 
 Can Access Most of Faron Woods:
-  Can Access Sealed Temple & (Can Cut Tree | Clawshots | Can BiTWarp at Upper Academy | Gym's Rope Jump Trick)
+  Can Access Sealed Temple &
+  (Can Cut Tree | Clawshots | Can BiTWarp at Upper Academy | Gym's Rope Jump Trick)
   # Either you need to cut a row of trees, or you can clawshot to the vines to skip them, or you BiTWarp past the trees
 
 Can Reach Oolo in Faron 2:
@@ -1415,7 +1453,8 @@ Faron Silent Realm - Water Scale:
   # Scene Flag 3x02 is "Water Scale Trial Gate"
 
 Goddess Cube on West Great Tree near Exit:
-  (Can Access Upper Great Tree | (Can Access Most of Faron Woods & Faron - Bokoblin Luring Trick)) & Goddess Sword
+  (Can Access Upper Great Tree | (Can Access Most of Faron Woods & Faron - Bokoblin Luring Trick)) &
+  Goddess Sword
 
 Goddess Cube on East Great Tree with Rope:
   Can Access Upper Great Tree & Goddess Sword
@@ -1433,7 +1472,8 @@ Can Access Deep Woods:
   # Scene Flag 0x04 is "Vine to Deep Woods is down"
 
 Can Get Past Deep Woods Bee Hive:
-  (Can Access Deep Woods & (Distance Activator | Goddess Sword | Bomb Bag | Can RBM 2x02)) | Can Access Deep Woods BiT
+  (Can Access Deep Woods & (Distance Activator | Goddess Sword | Bomb Bag | Can RBM 2x02)) |
+  Can Access Deep Woods BiT
   # RBW from Lower Academy, exit dungeon
   # Scene Flag 2x02 is "Push Down Highest Log in Deep Woods"
   # Bomb Bag ?
@@ -1561,7 +1601,10 @@ Eldin Volcano - Heart Piece on Cliff:
 
 Can Access Second Part of Eldin:
   Can Get Past Mogma Turf |
-  (Can Access First Part of Eldin & (Bomb Bag | Hook Beetle | Can RBM 6x08 | Can BiTWarp at Behind the Temple))
+  (
+    Can Access First Part of Eldin &
+    (Bomb Bag | Hook Beetle | Can RBM 6x08 | Can BiTWarp at Behind the Temple)
+  )
   # Scene Flag 6x08 is "Blow up rock between front and back of [Mogma Turf]". The BiTWarp is also the one used to get Sparrot's Crystal Ball
 
 Eldin Silent Realm - Fireshield Earrings:
@@ -1593,7 +1636,8 @@ Eldin Volcano - Key Piece After Draining Lava:
   Can Access Second Part of Eldin & Digging Mitts
 
 Can Retrieve Sparrot's Crystal Ball:
-  (Can Access Second Part of Eldin & Clawshots) | (Can Access Eldin & Can BiTWarp at Behind the Temple)
+  (Can Access Second Part of Eldin & Clawshots) |
+  (Can Access Eldin & Can BiTWarp at Behind the Temple)
   # Can use Eldin OoB movement to get up to the crystal ball without clawshots
 
 Goddess Cube West of Earth Temple Entrance:
@@ -1766,14 +1810,22 @@ Can Access Sand Oasis:
   (
     Can Access Lanayru Desert &
     Lanayru Desert - Brakeslide to Sand Oasis Trick &
-    (Long Range Skyward Strike | Bomb Bag | Bow | (Lanayru Desert - Spume Brakeslide Trick & Sword))
+    (
+      Long Range Skyward Strike |
+      Bomb Bag |
+      Bow |
+      (Lanayru Desert - Spume Brakeslide Trick & Sword)
+    )
   ) |
   Can Access West Desert Statue
   # Killing the spume makes the brakeslide easier
   # It may be possible to do the brakeslide with spume swordless
 
 Can Access West Desert Statue:
-  (Can Access Sand Oasis & (Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick)) |
+  (
+    Can Access Sand Oasis &
+    (Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick)
+  ) |
   (Can Access Lanayru Desert & Clawshots) |
   Can Access Lanayru Caves
   # When you kill the ampilus, you can reach the other side without brakeslide.
@@ -1798,7 +1850,10 @@ Can Access Desert Gorge Statue:
   # When using the sword, rush it in the sand to defeat it, drowning in the sand won't make it respawn
 
 Can Access Front of Temple of Time:
-  (Can Access Desert Gorge Statue & (Hook Beetle | (Slingshot & Temple of Time - Slingshot Shot Trick))) |
+  (
+    Can Access Desert Gorge Statue &
+    (Hook Beetle | (Slingshot & Temple of Time - Slingshot Shot Trick))
+  ) |
   Can Beat Dungeon Entrance In Lanayru Desert
   # The Timeshift Stone in the big tree is reachable with a slingshot trickshot
   # Beating the dungeon will make one spawn inside ToT
@@ -1824,19 +1879,31 @@ Goddess Cube at Ride near Temple of Time:
 # Second Part
 
 Can Access Second Part of Lanayru Desert:
-  (Can Access Lanayru Desert & (Clawshots | Temple of Time Skip - Brakeslide Trick | Can BiTWarp at Upper Academy)) |
+  (
+    Can Access Lanayru Desert &
+    (
+      Clawshots |
+      Can Raise Lanayru Mining Facility |
+      Temple of Time Skip - Brakeslide Trick |
+      Can BiTWarp at Upper Academy
+    )
+  ) |
   Can Access Second Part of Lanayru Desert from Temple of Time
 
 Can Activate Water Node:
   Can Access Second Part of Lanayru Desert & (Bomb Bag | Hook Beetle) & Sword
   # Not sure about the bomb/hook beetle requirement
 
-Can Access Dungeon Entrance In Lanayru Desert:
-  Can Access Lanayru Desert &
-  ((Can Activate Water Node & Can Activate Lightning Node & Can Activate Fire Node & Sword) | Can RBM 2x40)
+Can Raise Lanayru Mining Facility:
+  (Can Activate Water Node & Can Activate Lightning Node & Can Activate Fire Node & Sword) |
+  Option "open-lmf" Is "Open" |
+  (Can Access Lanayru Desert & Can RBM 2x40)
   # Scene Flag 2x40 is "LMF Rises up (+ Main Node is locked)"
 
-# Can Beat Dungeon Entrance In Lanayru Desert
+Can Access Dungeon Entrance In Lanayru Desert:
+  Can Access Second Part of Lanayru Desert & Can Raise Lanayru Mining Facility
+
+# Can Beat Dungeon Entrance In Lanayru Desert:
 
 #   Determined at runtime
 
@@ -1859,7 +1926,8 @@ Lanayru - On Top of Lanayru Mining Facility: # actually spawns on raising LMF
   Can Access Dungeon Entrance In Lanayru Desert
 
 Lanayru - Chest Next to Trial:
-  (Can Access Second Part of Lanayru Desert & Clawshots) | (Can Access Lanayru Desert & Can BiTWarp at Upper Academy)
+  (Can Access Second Part of Lanayru Desert & Clawshots) |
+  (Can Access Lanayru Desert & Can BiTWarp at Upper Academy)
 
 Lanayru - Chest on Platform Near Fire Node:
   Can Access Second Part of Lanayru Desert & Clawshots
@@ -1882,7 +1950,8 @@ Lanayru - Middle of Lightning Node:
   Can Access Lightning Node in Past
 
 Lanayru - End of Lightning Node room:
-  Can Access Lightning Node in Past & (Hook Beetle | Bow | (Bomb Bag & Lightning Node End with Bombs Trick))
+  Can Access Lightning Node in Past &
+  (Hook Beetle | Bow | (Bomb Bag & Lightning Node End with Bombs Trick))
   # You can deactivate the timeshift stone with a bomb throw that lands near the timeshift stone.
   # Then stand near the stone and activate it. Place down a bomb near the timeshift stone and run to the end.
 
@@ -2049,7 +2118,8 @@ Can Raise Skyview Water Level in Left Room:
   # What you just hit the vines with, use it activate the crystal
 
 Skyview - Map Chest:
-  Can Get Past the First Skyview Room & (Can Hit Vines in Skyview Left Room | Skyview - Spider Roll Trick)
+  Can Get Past the First Skyview Room &
+  (Can Hit Vines in Skyview Left Room | Skyview - Spider Roll Trick)
 
 Can Raise Skyview Water Level in Right Room:
   Can Get Past the First Skyview Room & Can Hit High Skyview Switches
@@ -2065,7 +2135,10 @@ Skyview - Small Key Digging Spot:
 
 Skyview - Behind Two Eyes:
   Can Get Past the First Skyview Room &
-  (Clawshots | (Can Raise Skyview Water Level in Left Room & Can Raise Skyview Water Level in Right Room)) &
+  (
+    Clawshots |
+    (Can Raise Skyview Water Level in Left Room & Can Raise Skyview Water Level in Right Room)
+  ) &
   Sword
   # Sword required to defeat the eyes
 
@@ -2198,7 +2271,8 @@ Earth Temple - 5 Bombs From Ledd:
   Can Get Past Earth Temple Miniboss Room
 
 Can Get Past Boulder Section:
-  Can Access Earth Temple Second Room & (((Bomb Bag | Hook Beetle) & Beetle) | Can RBM 5x08 | Can RBM 5x02)
+  Can Access Earth Temple Second Room &
+  (((Bomb Bag | Hook Beetle) & Beetle) | Can RBM 5x08 | Can RBM 5x02)
   # First, destroy the cracked wall. In this dungeon, the hook Beetle can replace the bombs everywhere.
   # Then, you absolutely need a Beetle to cut a rope in the boulder section.
   # Alternatively, RBM up the staircase. Both Scene Flags have it raised
@@ -2209,7 +2283,8 @@ Earth Temple - Chest Guarded by Lizalfos:
   Can Get Past Boulder Section
 
 Can Access Earth Temple Boss Door:
-  Can Get Past Boulder Section & ((Digging Mitts & Bomb Bag) | Hook Beetle | Earth Temple - Slope Stuttersprint Trick)
+  Can Get Past Boulder Section &
+  ((Digging Mitts & Bomb Bag) | Hook Beetle | Earth Temple - Slope Stuttersprint Trick)
   # You need to dig up an air vent to blow up the boulder, or use hook beetle, or be able to Stutter Sprint
 
 Earth Temple - Boss Key:
@@ -2219,7 +2294,11 @@ Can Beat Scaldera:
   (Bomb Bag & Sword) |
   (
     Earth Temple - Bomb Flower Scaldera Trick &
-    ((Goddess Sword & Option "hero-mode" Enabled) | (Goddess Longsword & Option "hero-mode" Enabled) | Master Sword)
+    (
+      (Goddess Sword & Option "hero-mode" Enabled) |
+      (Goddess Longsword & Option "hero-mode" Enabled) |
+      Master Sword
+    )
   )
   # Scaldera can be beaten without bombs, see strats here: http://bombch.us/DPu1
 
@@ -2308,7 +2387,8 @@ Can Access West Part of Hub Room:
   Can Finish LMF Map Room | (Can Access LMF Hub Room & Can BiTWarp at Upper Academy)
 
 Lanayru Mining Facility - Behind First Crawlspace:
-  (Can Access West Part of Hub Room & (Gust Bellows | Can RBM Dx40)) | Can Access LMF Hub Room Unloaded
+  (Can Access West Part of Hub Room & (Gust Bellows | Can RBM Dx40)) |
+  Can Access LMF Hub Room Unloaded
   # Scene Flag Dx40 is "Dust Pile revealing first crawlspace"
 
 Lanayru Mining Facility - Behind Second Crawlspace:
@@ -2316,10 +2396,14 @@ Lanayru Mining Facility - Behind Second Crawlspace:
 
 Can Access LMF Boss Key Door:
   (Can Access West Part of Hub Room & Gust Bellows) |
-  (Can Access LMF Boss Key Room Exit & (Gust Bellows | (LMF - Minecart Jump Trick & (Bomb Bag | Beetle))))
+  (
+    Can Access LMF Boss Key Room Exit &
+    (Gust Bellows | (LMF - Minecart Jump Trick & (Bomb Bag | Beetle)))
+  )
 
 Can Get After LMF Minecart Escort:
-  (Can Access LMF Boss Key Door & Gust Bellows & Can Defeat Beamos) | (Can Access LMF Hub Room & Can RBM 5x80)
+  (Can Access LMF Boss Key Door & Gust Bellows & Can Defeat Beamos) |
+  (Can Access LMF Hub Room & Can RBM 5x80)
   # When the enemy spaws in his little allies, you have time to activate the switch. Then, a Beamos.
   # Else, RBM open the Wind Gate. Scene Flag 5x80 is "Wind Gate near statue in hub room raised"
 
@@ -2382,11 +2466,16 @@ Can Enter Ancient Cistern Statue:
   )
 
 Ancient Cistern - Small Key Chest:
-  Can Access Ancient Cistern & (Water Scale | Ancient Cistern - Lilypad Skip Trick) & Can Unlock Combination Lock
+  Can Access Ancient Cistern &
+  (Water Scale | Ancient Cistern - Lilypad Skip Trick) &
+  Can Unlock Combination Lock
   # Lilypad Skip is very difficult
 
 Can Clip into AC Whip Room:
-  Can Access Ancient Cistern & Can Do Cistern Clip & Water Scale & Ancient Cistern - Cistern Whip Room Clip Trick
+  Can Access Ancient Cistern &
+  Can Do Cistern Clip &
+  Water Scale &
+  Ancient Cistern - Cistern Whip Room Clip Trick
 
 Ancient Cistern - Whip:
   (
@@ -2398,7 +2487,8 @@ Ancient Cistern - Whip:
   # When using the clip, use the boms to deathwarp
 
 Ancient Cistern - Map Chest:
-  (Can Access Ancient Cistern & Whip) | (Can Access AC Main Room Vines & Ancient Cistern - Map Chest Jump Trick)
+  (Can Access Ancient Cistern & Whip) |
+  (Can Access AC Main Room Vines & Ancient Cistern - Map Chest Jump Trick)
   # The way down the gutters also requires Whip right after the waterfall. You can jump from the highest platform by the vines
 
 Can Stop AC Waterfall:
@@ -2415,7 +2505,10 @@ Ancient Cistern - Behind Waterfall:
   Can Get Past AC Waterfall
 
 Can Get to AC Boko Key Door:
-  Can Get Past AC Waterfall & Whip & (Beetle | Bow) & (Water Scale | Ancient Cistern - Basement Lilypad Clip Trick)
+  Can Get Past AC Waterfall &
+  Whip &
+  (Beetle | Bow) &
+  (Water Scale | Ancient Cistern - Basement Lilypad Clip Trick)
   # Cut spider thread with either Beetle or Bow
   # Then swim under the lilypad, or clip under it
 
@@ -2433,7 +2526,8 @@ Ancient Cistern - Vines Chest:
   Can Access AC Main Room Vines
 
 Can Access AC Thread:
-  (Can Lower Ancient Cistern Statue & (Clawshots | Hook Beetle)) | (Can Access Ancient Cistern & Can Do Cistern Clip)
+  (Can Lower Ancient Cistern Statue & (Clawshots | Hook Beetle)) |
+  (Can Access Ancient Cistern & Can Do Cistern Clip)
   # In the Basement you can either clawshot around the boulder, or use hook Beetle to blow it up.
   # A very precise bomb throw also works (not in logic).
 
@@ -2450,7 +2544,9 @@ Can Defeat Koloktos:
   Whip & (Sword | Bomb Bag | Bow)
 
 Can Reach Koloktos:
-  Can Enter Ancient Cistern Statue & Whip & (AC Boss Key | Can RBM Cx10 | (Can Do Bed Trick~ & Can Access AC Thread))
+  Can Enter Ancient Cistern Statue &
+  Whip &
+  (AC Boss Key | Can RBM Cx10 | (Can Do Bed Trick~ & Can Access AC Thread))
   # To reach the boss door, either you unlock the door, or you lower the statue, or you enter from the lowest floor
   # To unlock boss door, use the key or the RBM, or try Bed Trick
   # Scene Flag Cx10 is "Boss Door Opened"
@@ -2491,7 +2587,10 @@ Sandship - Bow chest:
   # Could add Pouch for a shield
 
 Sandship - Heart Piece Chest:
-  Can Access Sandship & Bow & (Clawshots | Sandship - Mast Jump Trick) & Can Freely Change Sandship Temporality
+  Can Access Sandship &
+  Bow &
+  (Clawshots | Sandship - Mast Jump Trick) &
+  Can Freely Change Sandship Temporality
   # This Chest can be obtained without Clawshots with a good jump
   # You must then deathwarp (you can use the bombflowers)
   # Finishing the mast sequence is necessary as the only escaping method, death, rollbacks the item
@@ -2558,7 +2657,8 @@ Fire Sanctuary - After First Outside Section:
   Can Access First FS Magmanos Room
 
 Fire Sanctuary - Bottle:
-  (Can Access First FS Magmanos Room & Mogma Mitts & Sword) | (Can Access FS Outdoor Unloaded & Can Do Pillar Jump)
+  (Can Access First FS Magmanos Room & Mogma Mitts & Sword) |
+  (Can Access FS Outdoor Unloaded & Can Do Pillar Jump)
   # Sword needed to grab a water pod
   # Do Pillar Jump, open the door in the middle, do one fronthop, 5 sidehops right, aim so that the door you went in is on the right of the screen, sidehop left
 
@@ -2598,7 +2698,8 @@ Can Free Second Captured Mogma:
   Can Access Second Captured Mogma Room & Mogma Mitts & Sword
 
 Fire Sanctuary - Map Chest:
-  Can Free Second Captured Mogma | (Can Access FS Outdoor Unloaded & Can Do Pillar Jump & Can RBM 3x40)
+  Can Free Second Captured Mogma |
+  (Can Access FS Outdoor Unloaded & Can Do Pillar Jump & Can RBM 3x40)
   # Scene Flag 3x40 is "Map Chest appears"
 
 Fire Sanctuary - Third Small Key Chest:
@@ -2607,7 +2708,11 @@ Fire Sanctuary - Third Small Key Chest:
   # Map is not yet handled by logic
 
 Can Access FS Plats Room:
-  (Can Access FS Miniboss Room and Defeat Magmanos & FS Small Key x3 & (Distance Activator | Bomb Bag)) |
+  (
+    Can Access FS Miniboss Room and Defeat Magmanos &
+    FS Small Key x3 &
+    (Distance Activator | Bomb Bag)
+  ) |
   Can Access FS Boss Key Door
   # To hit another water pod
 
@@ -2626,7 +2731,8 @@ Fire Sanctuary - Staircase Room:
   Can Access Sleeping Statue & Can Defeat Lezalfos & Clawshots
 
 Can Access FS Boss Key Room:
-  (Can Access Sleeping Statue & Can Defeat Lezalfos & Clawshots) | (Can Access FS Boss Key Door & Can RBM 7x02)
+  (Can Access Sleeping Statue & Can Defeat Lezalfos & Clawshots) |
+  (Can Access FS Boss Key Door & Can RBM 7x02)
   # Scene Flag 7x02 is "Bars before Boss Door Open Up"
 
 Fire Sanctuary - Boss Key:
@@ -2702,7 +2808,16 @@ Skykeep - Map Chest:
 
 Can Get Past SK Skyview Room:
   Can Access SK Skyview Room &
-  (((Beetle | Bow | Can RBM 8x80) & Whip & Clawshots & (Bomb Bag | Hook Beetle | Bow) & Gust Bellows) | Can RBM 9x40)
+  (
+    (
+      (Beetle | Bow | Can RBM 8x80) &
+      Whip &
+      Clawshots &
+      (Bomb Bag | Hook Beetle | Bow) &
+      Gust Bellows
+    ) |
+    Can RBM 9x40
+  )
   # Cut the rope, reach it with whip, clawshot vines, kill pyrups and gust bellows for the moving platforms. Or RBM the shortcut lever
   # Scene Flag 8x80 is "Cut Rope in Skyview Room"
   # Scene Flag 9x40 is "Lever in Skyview Room"
@@ -2714,7 +2829,11 @@ Can Get Past SK LMF Room:
   # Scene Flag 7x10 is the gates around the puzzle and the last door. Short-circuits the whole room
 
 Can Get Past SK Earth Temple Room:
-  Can Access SK Earth Temple Room & Mogma Mitts & Bomb Bag & Hook Beetle & Long Range Skyward Strike
+  Can Access SK Earth Temple Room &
+  Mogma Mitts &
+  Bomb Bag &
+  Hook Beetle &
+  Long Range Skyward Strike
   # Open the first door, open lower "bomb panel", slice the trees, open higher "bomb panel"
 
 Can Get Past SK Mini Boss Room:
@@ -2727,7 +2846,11 @@ Can Get Past SK Ancient Cistern Room:
 
 Can Get Past SK Fire Sanctuary Room:
   Can Access SK Fire Sanctuary Room &
-  ((Beetle & Clawshots) | (Clawshots & Sky Keep - FS Room Clawshots Vine Clip Trick) | Can RBM 4x04)
+  (
+    (Beetle & Clawshots) |
+    (Clawshots & Sky Keep - FS Room Clawshots Vine Clip Trick) |
+    Can RBM 4x04
+  )
   # Scene Flag 4x04 is the shortcut from the right entrance, 4x02 should be the shortcut from the wrong entrance
 
 Can Get Past SK Sandship Room:
@@ -2794,5 +2917,8 @@ Skykeep - Triforce of Courage Event:
   Can Get Triforce of Courage
 
 Can Beat Skykeep:
-  Can Access Skykeep & Can Get Triforce of Courage & Can Get Triforce of Power & Can Get Triforce of Wisdom
+  Can Access Skykeep &
+  Can Get Triforce of Courage &
+  Can Get Triforce of Power &
+  Can Get Triforce of Wisdom
 

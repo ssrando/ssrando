@@ -119,9 +119,19 @@ class Randomizer:
     tablets = ['Emerald Tablet', 'Ruby Tablet', 'Amber Tablet']
     self.starting_items.extend(self.rng.sample(tablets, k=self.options['starting-tablet-count']))
 
-    if not self.options['swordless']:
+    starting_sword_count = {
+      'Swordless': 0,
+      'Practice Sword': 1,
+      'Goddess Sword': 2,
+      'Goddess Longsword': 3,
+      'Goddess White Sword': 4,
+      'Master Sword': 5,
+      'True Master Sword': 6,
+    }
+
+    for i in range(starting_sword_count[self.options['starting-sword']]):
       self.starting_items.append('Progressive Sword')
-      self.starting_items.append('Progressive Sword')
+
     # if not self.options.get('randomize-sailcloth',False):
     #   self.starting_items.append('Sailcloth')
     if self.options['start-with-pouch']:

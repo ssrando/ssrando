@@ -1843,20 +1843,25 @@ Goddess Cube at Ride near Temple of Time:
 # Second Part
 
 Can Access Second Part of Lanayru Desert:
-  (Can Access Lanayru Desert & (Clawshots | Temple of Time Skip - Brakeslide Trick | Can BiTWarp at Upper Academy)) |
+  (Can Access Lanayru Desert & (
+    Clawshots | Can Raise Lanayru Mining Facility |
+    Temple of Time Skip - Brakeslide Trick | Can BiTWarp at Upper Academy
+  )) |
   Can Access Second Part of Lanayru Desert from Temple of Time
 
 Can Activate Water Node:
   Can Access Second Part of Lanayru Desert & (Bomb Bag | Hook Beetle) & Sword  # Not sure about the bomb/hook beetle requirement
 
-Can Access Dungeon Entrance In Lanayru Desert:
-  Can Access Lanayru Desert & (
-    (Can Activate Water Node & Can Activate Lightning Node & Can Activate Fire Node & Sword) |
-    Can RBM 2x40
-  )
+Can Raise Lanayru Mining Facility:
+  (Can Activate Water Node & Can Activate Lightning Node & Can Activate Fire Node & Sword) |
+  Option "open-lmf" Is "Open" |
+  (Can Access Lanayru Desert & Can RBM 2x40)
   # Scene Flag 2x40 is "LMF Rises up (+ Main Node is locked)"
 
-# Can Beat Dungeon Entrance In Lanayru Desert
+Can Access Dungeon Entrance In Lanayru Desert:
+  Can Access Second Part of Lanayru Desert & Can Raise Lanayru Mining Facility
+
+# Can Beat Dungeon Entrance In Lanayru Desert:
 #   Determined at runtime
 
 
