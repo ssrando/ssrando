@@ -63,9 +63,9 @@ class RandoGUI(QMainWindow):
                     for option_val in option['choices']:
                         widget.addItem(str(option_val))
                     widget.setCurrentIndex(option['choices'].index(self.options[option_key]))
-                    widget.currentIndexChanged.connect(self.update_settings)
                     if option['name'] == 'Logic Mode':
                         widget.currentIndexChanged.connect(self.logic_mode_changed)
+                    widget.currentIndexChanged.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):
@@ -347,13 +347,29 @@ class RandoGUI(QMainWindow):
                 pass
 
         for option_command, option in OPTIONS.items():
-            if option["name"] != "Banned Types" and option["name"] != "Seed":
+            if option["name"] != "Banned Types" and option["name"] != "Seed" and 'Enabled Tricks' not in option['name']:
                 ui_name = option.get('ui', None)
                 if not ui_name:
                     continue
                 self.options.set_option(option_command, self.get_option_value(ui_name))
 
         self.options.set_option("banned-types", self.get_banned_types())
+
+        # handle tricks
+        logic_mode = getattr(self.ui, 'option_logic_mode').currentText()
+        if 'Glitchless' in logic_mode:
+            self.options.set_option('enabled-tricks-bitless', [])
+            self.options.set_option('enabled-tricks-glitched', [])
+        elif 'BiTless' in logic_mode:
+            self.options.set_option('enabled-tricks-bitless', self.get_option_value('enabled_tricks'))
+            self.options.set_option('enabled-tricks-glitched', [])
+        elif 'Glitched' in logic_mode:
+            self.options.set_option('enabled-tricks-bitless', [])
+            self.options.set_option('enabled-tricks-glitched', self.get_option_value('enabled_tricks'))
+        else:  # this should only be no logic
+            self.options.set_option('enabled-tricks-bitless', [])
+            self.options.set_option('enabled-tricks-glitched', [])
+
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
 
