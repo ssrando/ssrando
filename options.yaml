@@ -338,10 +338,10 @@
   type: singlechoice
   bits: 3
   choices:
-#    - Glitchless - Basic
+    - Glitchless - Basic
     - Glitchless - Standard
-#    - BiTless
-#    - Glitched
+    - BiTless
+    - Glitched
     - No Logic
   default: Glitchless - Standard
   help: Sets the logic mode to use when placing items. Glitchless requires no major tricks to complete, but

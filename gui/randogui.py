@@ -64,6 +64,8 @@ class RandoGUI(QMainWindow):
                         widget.addItem(str(option_val))
                     widget.setCurrentIndex(option['choices'].index(self.options[option_key]))
                     widget.currentIndexChanged.connect(self.update_settings)
+                    if option['name'] == 'Logic Mode':
+                        widget.currentIndexChanged.connect(self.logic_mode_changed)
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):
@@ -157,10 +159,7 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, 'option_g3').setEnabled(False)
         getattr(self.ui, 'option_demise').setEnabled(False)
         getattr(self.ui, 'option_sometimes_hints').setEnabled(False)
-        getattr(self.ui, 'enable_trick').setEnabled(False)
-        getattr(self.ui, 'disable_trick').setEnabled(False)
-        getattr(self.ui, 'enabled_tricks').setEnabled(False)
-        getattr(self.ui, 'disabled_tricks').setEnabled(False)
+        self.disable_trick_interface()
         getattr(self.ui, 'enable_location').setEnabled(False)
         getattr(self.ui, 'disable_location').setEnabled(False)
         getattr(self.ui, 'enabled_locations').setEnabled(False)
@@ -324,6 +323,7 @@ class RandoGUI(QMainWindow):
             f.write(self.options.get_permalink())
 
     def update_settings(self):
+        print('updating settings')
         self.options.set_option('output-folder', self.ui.output_folder.text())
         try:
             self.options.set_option("seed", int(self.ui.seed.text()))
@@ -344,6 +344,37 @@ class RandoGUI(QMainWindow):
         self.options.set_option("banned-types", self.get_banned_types())
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
+
+    def logic_mode_changed(self):
+        print('logic mode changed')
+        value = getattr(self.ui, 'option_logic_mode').currentText()
+        if 'Glitchless' in value:
+            print('glitchless found')
+            self.disable_trick_interface()
+        if value == 'BiTless':
+            print('bitless found')
+            # swap bitless tricks into the ui
+            self.enable_trick_interface()
+        if 'Glitched' in value:
+            print('glitched found')
+            # swap the glitched tricks into the ui
+            self.enable_trick_interface()
+        else:  # this should only be no logic
+            print('no logic found')
+            # disable the trick interface
+            self.disable_trick_interface()
+
+    def enable_trick_interface(self):
+        getattr(self.ui, 'enable_trick').setEnabled(True)
+        getattr(self.ui, 'disable_trick').setEnabled(True)
+        getattr(self.ui, 'enabled_tricks').setEnabled(True)
+        getattr(self.ui, 'disabled_tricks').setEnabled(True)
+
+    def disable_trick_interface(self):
+        getattr(self.ui, 'enable_trick').setEnabled(False)
+        getattr(self.ui, 'disable_trick').setEnabled(False)
+        getattr(self.ui, 'enabled_tricks').setEnabled(False)
+        getattr(self.ui, 'disabled_tricks').setEnabled(False)
 
     def get_option_value(self, option_name):
         widget = getattr(self.ui, option_name)
