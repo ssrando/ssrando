@@ -336,7 +336,6 @@ class RandoGUI(QMainWindow):
             f.write(self.options.get_permalink())
 
     def update_settings(self):
-        print('updating settings')
         self.options.set_option('output-folder', self.ui.output_folder.text())
         try:
             self.options.set_option("seed", int(self.ui.seed.text()))
@@ -359,25 +358,20 @@ class RandoGUI(QMainWindow):
         self.ui.permalink.setText(self.options.get_permalink())
 
     def logic_mode_changed(self):
-        print('logic mode changed')
         value = getattr(self.ui, 'option_logic_mode').currentText()
         if 'Glitchless' in value:
-            print('glitchless found')
             self.disable_trick_interface()
         elif 'BiTless' in value:
-            print('bitless found')
             # swap bitless tricks into the ui
             self.enable_trick_interface()
             self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['default'])
             self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['choices'])
         elif 'Glitched' in value:
-            print('glitched found')
             # swap the glitched tricks into the ui
             self.enable_trick_interface()
             self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks-glitched']['default'])
             self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks-glitched']['choices'])
         else:  # this should only be no logic
-            print('no logic found')
             # disable the trick interface
             self.disable_trick_interface()
 

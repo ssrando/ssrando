@@ -39,7 +39,7 @@
   bits: 2
   choices:
     - Ballad
-#    - Harp and Ballad
+    #    - Harp and Ballad
     - Open
   default: Ballad
   help: Controls the starting state of the Thunderhead.
@@ -84,44 +84,44 @@
 - name: Banned Types
   command: banned-types
   type: multichoice
-  default: []
+  default: [ ]
   choices:
-  - skyloft
-  - sky
-  - thunderhead
-  - faron
-  - eldin
-  - lanayru
-  - dungeon
-  - mini dungeon
-  - free gift
-  - freestanding
-  - miscellaneous
-  - silent realm
-  - digging
-  - bombable
-  - combat
-  - song
-  - spiral charge
-  - minigame
-  - crystal
-  - short
-  - long
-  - fetch
-  - crystal quest
-  - scrapper
-  - peatrice
-  - goddess
-  - beedle
-  - cheap
-  - medium
-  - expensive
-  - faron goddess
-  - eldin goddess
-  - lanayru goddess
-  - floria goddess
-  - summit goddess
-  - sand sea goddess
+    - skyloft
+    - sky
+    - thunderhead
+    - faron
+    - eldin
+    - lanayru
+    - dungeon
+    - mini dungeon
+    - free gift
+    - freestanding
+    - miscellaneous
+    - silent realm
+    - digging
+    - bombable
+    - combat
+    - song
+    - spiral charge
+    - minigame
+    - crystal
+    - short
+    - long
+    - fetch
+    - crystal quest
+    - scrapper
+    - peatrice
+    - goddess
+    - beedle
+    - cheap
+    - medium
+    - expensive
+    - faron goddess
+    - eldin goddess
+    - lanayru goddess
+    - floria goddess
+    - summit goddess
+    - sand sea goddess
   help: 'Choose subtypes that can''t contain progression items, as a comma seperated
     list, available types are: skyloft, sky, thunderhead, faron, eldin, lanayru, dungeon,
     mini dungeon, free gift, freestanding, miscellaneous, silent realm, digging, bombable,
@@ -154,9 +154,9 @@
   type: singlechoice
   bits: 2
   choices:
-  - None
-  - Dungeons
-  - Dungeons + Sky Keep
+    - None
+    - Dungeons
+    - Dungeons + Sky Keep
   default: None
   help: "Shuffles entrances with one another. Options: None, Dungeons, Dungeons + Sky Keep"
   ui: option_randomize_entrances
@@ -179,14 +179,14 @@
   type: singlechoice
   default: 80
   choices:
-  - 0
-  - 5
-  - 10
-  - 30
-  - 40
-  - 50
-  - 70
-  - 80
+    - 0
+    - 5
+    - 10
+    - 30
+    - 40
+    - 50
+    - 70
+    - 80
   bits: 3
   help: Enables progression items to appear in all Batreaux rewards up to an including
     the specified amount.
@@ -259,7 +259,7 @@
   bits: 2
   choices:
     - Nodes
-#    - Hook Beetle
+    #    - Hook Beetle
     - Open
   default: Nodes
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
@@ -290,12 +290,12 @@
   bits: 3
   choices:
     - Removed
-#    - Start With
+    #    - Start With
     - Vanilla
     - Own Dungeon - Restricted
     - Own Dungeon - Unrestricted
-#    - Overworld Only
-#    - Any Dungeon
+    #    - Overworld Only
+    #    - Any Dungeon
     - Anywhere
   default: Own Dungeon - Unrestricted
   help: Controls the placement of maps. Restricted means that maps cannot be placed on the
@@ -308,10 +308,10 @@
   choices:
     - Vanilla
     - Own Dungeon - Restricted
-#    - Own Dungeon - Unrestricted
+    #    - Own Dungeon - Unrestricted
     - Lanayru Caves Key Only
-#    - Overworld Only
-#    - Any Dungeon
+    #    - Overworld Only
+    #    - Any Dungeon
     - Anywhere
   default: Own Dungeon - Restricted
   help: Controls the placement of small keys. Vanilla means they will always be in their vanilla locations.
@@ -326,8 +326,8 @@
   choices:
     - Vanilla
     - Own Dungeon
-#    - Overworld Only
-#    - Any Dungeon
+    #    - Overworld Only
+    #    - Any Dungeon
     - Anywhere
   default: Own Dungeon
   help: Controls the placement of boss keys. Vanilla means they will always be in their vanilla locations.
@@ -352,10 +352,56 @@
   command: enabled-tricks-bitless
   type: multichoice
   choices:
-    - Trick 1
-    - Trick 2
-    - Trick 3
-  default: []
+    - Upgrade Hook Beetle
+    # Skyloft / Sky
+    - Waterfall Cave Jump
+    - Baby Rattle from Beedle's Shop
+    - Sky Keep Entrance Jump
+    - Sky - Volcanic Island Dive
+    - Sky - Beedle's Island Cage Chest Dive
+    - Thunderhead - East Island Dive
+    # Faron
+    - Gym's Rope Jump
+    - Early Lake Floria - Fence Hop
+    # - Faron - Bokoblin Luring
+    # Lanayru
+    - Itemless First Timeshift Stone
+    - Lanayru Mines Brakeslide
+    - Temple of Time - Slingshot Shot
+    - Temple of Time - Bomb Throw
+    - Temple of Time Skip - Brakeslide
+    - Secret Passageway Hook Beetle Opening
+    - Lightning Node End with Bombs  # Is it worth
+    - Fire Node - Brakeslide
+    - Cactus Bomb Whip
+    - Skipper's Retreat Fast Clawshots
+    # Skyview
+    - Skyview - Spider Roll
+    - Skyview Slingshot Shot
+    # Earth Temple
+    - Earth Temple - Keese Yeet
+    - Earth Temple - Slope Stuttersprint
+    - Earth Temple - Bomb Flower Scaldera
+    # Lanayru Mining Facility
+    - LMF - Whip First Room Switch
+    - LMF - Key Locked Room Bomb Throw
+    - LMF - Keylocked Slingshot Trickshot
+    - LMF - Minecart Jump
+    - LMF - Molderach without Gust Bellows
+    # Ancient Cistern
+    - Ancient Cistern - Basement Highflip
+    # Sandship
+    - Sandship - No Combination Hint
+    - Sandship - Itemless Spume Skip
+    - Sandship - Mast Jump
+    # Fire Sanctuary
+    - Fire Sanctuary - Pillar Jump
+    - Fire Sanctuary - Swordless Pillar Jump
+    - Fire Sanctuary - No Bombable Wall Hint
+    # Sky Keep
+    - Sky Keep - Shooting LMF Bow Switches in Present
+    - Sky Keep - FS Room Clawshots Vine Clip
+  default: [ ]
   help: Enable specific tricks to be considered in logic
   ui: enabled_tricks
 - name: Enabled Tricks Glitched
@@ -394,7 +440,7 @@
     - LMF - Pinwheel Gate RBM
     - Ancient Cistern - Cistern Clip
     - Ancient Cistern - Lever Jump
-  default: []
+  default: [ ]
   help: Enable specific tricks to be considered in logic
   ui: enabled_tricks
 - name: Hint Distribution
@@ -402,12 +448,12 @@
   type: singlechoice
   bits: 2
   choices:
-#    - Weak
-#    - Balanced
-#    - Strong
-#    - Very Strong
-#    - Locations Only
-#    - Items Only
+    #    - Weak
+    #    - Balanced
+    #    - Strong
+    #    - Very Strong
+    #    - Locations Only
+    #    - Items Only
     - Junk
     - Normal
     - Bingo
