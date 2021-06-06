@@ -348,8 +348,18 @@
     Standard may require minor tricks, such as whipping bombflowers. BiTless may require basic non-BiT tricks
     such as Fence Hop. Glitched may require BiT. No logic may be unbeatable
   ui: option_logic_mode
-- name: Enabled Tricks
-  command: enabled-tricks
+- name: Enabled Tricks BiTless
+  command: enabled-tricks-bitless
+  type: multichoice
+  choices:
+    - Trick 1
+    - Trick 2
+    - Trick 3
+  default: []
+  help: Enable specific tricks to be considered in logic
+  ui: enabled_tricks
+- name: Enabled Tricks Glitched
+  command: enabled-tricks-glitched
   type: multichoice
   choices:
     - Early Lake Floria - Fence Hop

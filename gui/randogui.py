@@ -77,9 +77,9 @@ class RandoGUI(QMainWindow):
                     widget.valueChanged.connect(self.update_settings)
 
         self.enabled_tricks_model = QStringListModel()
-        self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks']['default'])
+        self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['default'])
         self.disabled_tricks_model = QStringListModel()
-        self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks']['choices'])
+        self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['choices'])
         self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
         self.ui.enable_trick.clicked.connect(self.enable_trick)
@@ -308,12 +308,25 @@ class RandoGUI(QMainWindow):
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in current_settings['banned-types'])
         self.enabled_tricks_model = QStringListModel()
-        self.enabled_tricks_model.setStringList(current_settings['enabled-tricks'])
         self.disabled_tricks_model = QStringListModel()
-        self.disabled_tricks_model.setStringList([
-            choice for choice in OPTIONS['enabled-tricks']['choices']
-            if choice not in current_settings['enabled-tricks']
-        ])
+        if 'Glitchless' in current_settings['logic-mode']:
+            self.enabled_tricks_model.setStringList([])
+            self.disabled_tricks_model.setStringList([])
+        elif 'BiTless' in current_settings['logic-mode']:
+            self.enabled_tricks_model.setStringList(current_settings['enabled-tricks-bitless'])
+            self.disabled_tricks_model.setStringList([
+                choice for choice in OPTIONS['enabled-tricks-bitless']['choices']
+                if choice not in current_settings['enabled-tricks-bitless']
+            ])
+        elif 'Glitched' in current_settings['logic-mode']:
+            self.enabled_tricks_model.setStringList(current_settings['enabled-tricks-glitched'])
+            self.disabled_tricks_model.setStringList([
+                choice for choice in OPTIONS['enabled-tricks-glitched']['choices']
+                if choice not in current_settings['enabled-tricks-glitched']
+            ])
+        else:
+            self.enabled_tricks_model.setStringList([])
+            self.disabled_tricks_model.setStringList([])
         self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
         self.ui.permalink.setText(current_settings.get_permalink())
@@ -351,14 +364,18 @@ class RandoGUI(QMainWindow):
         if 'Glitchless' in value:
             print('glitchless found')
             self.disable_trick_interface()
-        if value == 'BiTless':
+        elif 'BiTless' in value:
             print('bitless found')
             # swap bitless tricks into the ui
             self.enable_trick_interface()
-        if 'Glitched' in value:
+            self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['default'])
+            self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['choices'])
+        elif 'Glitched' in value:
             print('glitched found')
             # swap the glitched tricks into the ui
             self.enable_trick_interface()
+            self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks-glitched']['default'])
+            self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks-glitched']['choices'])
         else:  # this should only be no logic
             print('no logic found')
             # disable the trick interface
