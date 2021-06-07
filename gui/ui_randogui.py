@@ -171,7 +171,7 @@ class Ui_MainWindow(object):
         self.groupBox.setGeometry(QRect(10, 70, 901, 161))
         self.gridLayoutWidget_3 = QWidget(self.groupBox)
         self.gridLayoutWidget_3.setObjectName(u"gridLayoutWidget_3")
-        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 891, 149))
+        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 891, 131))
         self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -809,7 +809,7 @@ class Ui_MainWindow(object):
         self.groupBox_10.setGeometry(QRect(10, 10, 181, 201))
         self.verticalLayoutWidget_12 = QWidget(self.groupBox_10)
         self.verticalLayoutWidget_12.setObjectName(u"verticalLayoutWidget_12")
-        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 204, 222))
+        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 161, 171))
         self.verticalLayout_22 = QVBoxLayout(self.verticalLayoutWidget_12)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
@@ -978,7 +978,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 

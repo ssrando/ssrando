@@ -63,6 +63,8 @@ class RandoGUI(QMainWindow):
                     for option_val in option['choices']:
                         widget.addItem(str(option_val))
                     widget.setCurrentIndex(option['choices'].index(self.options[option_key]))
+                    if option['name'] == 'Logic Mode':
+                        widget.currentIndexChanged.connect(self.logic_mode_changed)
                     widget.currentIndexChanged.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
@@ -75,9 +77,9 @@ class RandoGUI(QMainWindow):
                     widget.valueChanged.connect(self.update_settings)
 
         self.enabled_tricks_model = QStringListModel()
-        self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks']['default'])
+        self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['default'])
         self.disabled_tricks_model = QStringListModel()
-        self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks']['choices'])
+        self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['choices'])
         self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
         self.ui.enable_trick.clicked.connect(self.enable_trick)
@@ -157,10 +159,7 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, 'option_g3').setEnabled(False)
         getattr(self.ui, 'option_demise').setEnabled(False)
         getattr(self.ui, 'option_sometimes_hints').setEnabled(False)
-        # getattr(self.ui, 'enable_trick').setEnabled(False)
-        # getattr(self.ui, 'disable_trick').setEnabled(False)
-        # getattr(self.ui, 'enabled_tricks').setEnabled(False)
-        # getattr(self.ui, 'disabled_tricks').setEnabled(False)
+        self.disable_trick_interface()
         getattr(self.ui, 'enable_location').setEnabled(False)
         getattr(self.ui, 'disable_location').setEnabled(False)
         getattr(self.ui, 'enabled_locations').setEnabled(False)
@@ -309,12 +308,25 @@ class RandoGUI(QMainWindow):
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in current_settings['banned-types'])
         self.enabled_tricks_model = QStringListModel()
-        self.enabled_tricks_model.setStringList(current_settings['enabled-tricks'])
         self.disabled_tricks_model = QStringListModel()
-        self.disabled_tricks_model.setStringList([
-            choice for choice in OPTIONS['enabled-tricks']['choices']
-            if choice not in current_settings['enabled-tricks']
-        ])
+        if 'Glitchless' in current_settings['logic-mode']:
+            self.enabled_tricks_model.setStringList([])
+            self.disabled_tricks_model.setStringList([])
+        elif 'BiTless' in current_settings['logic-mode']:
+            self.enabled_tricks_model.setStringList(current_settings['enabled-tricks-bitless'])
+            self.disabled_tricks_model.setStringList([
+                choice for choice in OPTIONS['enabled-tricks-bitless']['choices']
+                if choice not in current_settings['enabled-tricks-bitless']
+            ])
+        elif 'Glitched' in current_settings['logic-mode']:
+            self.enabled_tricks_model.setStringList(current_settings['enabled-tricks-glitched'])
+            self.disabled_tricks_model.setStringList([
+                choice for choice in OPTIONS['enabled-tricks-glitched']['choices']
+                if choice not in current_settings['enabled-tricks-glitched']
+            ])
+        else:
+            self.enabled_tricks_model.setStringList([])
+            self.disabled_tricks_model.setStringList([])
         self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
         self.ui.permalink.setText(current_settings.get_permalink())
@@ -335,15 +347,61 @@ class RandoGUI(QMainWindow):
                 pass
 
         for option_command, option in OPTIONS.items():
-            if option["name"] != "Banned Types" and option["name"] != "Seed":
+            if option["name"] != "Banned Types" and option["name"] != "Seed" and 'Enabled Tricks' not in option['name']:
                 ui_name = option.get('ui', None)
                 if not ui_name:
                     continue
                 self.options.set_option(option_command, self.get_option_value(ui_name))
 
         self.options.set_option("banned-types", self.get_banned_types())
+
+        # handle tricks
+        logic_mode = getattr(self.ui, 'option_logic_mode').currentText()
+        if 'Glitchless' in logic_mode:
+            self.options.set_option('enabled-tricks-bitless', [])
+            self.options.set_option('enabled-tricks-glitched', [])
+        elif 'BiTless' in logic_mode:
+            self.options.set_option('enabled-tricks-bitless', self.get_option_value('enabled_tricks'))
+            self.options.set_option('enabled-tricks-glitched', [])
+        elif 'Glitched' in logic_mode:
+            self.options.set_option('enabled-tricks-bitless', [])
+            self.options.set_option('enabled-tricks-glitched', self.get_option_value('enabled_tricks'))
+        else:  # this should only be no logic
+            self.options.set_option('enabled-tricks-bitless', [])
+            self.options.set_option('enabled-tricks-glitched', [])
+
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
+
+    def logic_mode_changed(self):
+        value = getattr(self.ui, 'option_logic_mode').currentText()
+        if 'Glitchless' in value:
+            self.disable_trick_interface()
+        elif 'BiTless' in value:
+            # swap bitless tricks into the ui
+            self.enable_trick_interface()
+            self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['default'])
+            self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks-bitless']['choices'])
+        elif 'Glitched' in value:
+            # swap the glitched tricks into the ui
+            self.enable_trick_interface()
+            self.enabled_tricks_model.setStringList(OPTIONS['enabled-tricks-glitched']['default'])
+            self.disabled_tricks_model.setStringList(OPTIONS['enabled-tricks-glitched']['choices'])
+        else:  # this should only be no logic
+            # disable the trick interface
+            self.disable_trick_interface()
+
+    def enable_trick_interface(self):
+        getattr(self.ui, 'enable_trick').setEnabled(True)
+        getattr(self.ui, 'disable_trick').setEnabled(True)
+        getattr(self.ui, 'enabled_tricks').setEnabled(True)
+        getattr(self.ui, 'disabled_tricks').setEnabled(True)
+
+    def disable_trick_interface(self):
+        getattr(self.ui, 'enable_trick').setEnabled(False)
+        getattr(self.ui, 'disable_trick').setEnabled(False)
+        getattr(self.ui, 'enabled_tricks').setEnabled(False)
+        getattr(self.ui, 'disabled_tricks').setEnabled(False)
 
     def get_option_value(self, option_name):
         widget = getattr(self.ui, option_name)
