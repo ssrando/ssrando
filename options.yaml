@@ -338,12 +338,12 @@
   type: singlechoice
   bits: 3
   choices:
-    - Glitchless - Basic
-    - Glitchless - Standard
+    # - Glitchless - Basic
+    # - Glitchless - Standard
     - BiTless
     - Glitched
     - No Logic
-  default: Glitchless - Standard
+  default: BiTless
   help: Sets the logic mode to use when placing items. Glitchless requires no major tricks to complete, but
     Standard may require minor tricks, such as whipping bombflowers. BiTless may require basic non-BiT tricks
     such as Fence Hop. Glitched may require BiT. No logic may be unbeatable
