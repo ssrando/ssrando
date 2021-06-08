@@ -361,7 +361,7 @@ class Hints:
                 raise Exception(f"Unable to identify hint type for location {location}")
         for gossipstone_name in self.stonehint_definitions:
             locs_to_hint = hint_to_location[gossipstone_name]
-            print(locs_to_hint)
+            # print(locs_to_hint)
             loc_to_hint = locs_to_hint[0]
             second_loc_to_hint = locs_to_hint[1]
             if second_loc_to_hint is None and loc_to_hint is not None:
