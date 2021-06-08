@@ -159,7 +159,7 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, 'option_g3').setEnabled(False)
         getattr(self.ui, 'option_demise').setEnabled(False)
         getattr(self.ui, 'option_sometimes_hints').setEnabled(False)
-        self.disable_trick_interface()
+        self.enable_trick_interface()
         getattr(self.ui, 'enable_location').setEnabled(False)
         getattr(self.ui, 'disable_location').setEnabled(False)
         getattr(self.ui, 'enabled_locations').setEnabled(False)
