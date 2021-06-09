@@ -1,0 +1,3 @@
+[tool.black]
+include = '\.pyi?$'
+exclude = 'gui/ui_randogui.py'

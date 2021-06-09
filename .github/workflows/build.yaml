@@ -1,4 +1,6 @@
-on: [push]
+on:
+  - push
+  - pull-request
 
 jobs:
   build:
@@ -15,6 +17,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install requirements
         run: python -m pip install -r requirements.txt
+      - name: Install dev requirements
+        run: python -m pip install -r requirements_dev.txt
+      - name: Test if the formatting is correct
+        run: black . --check
       - name: Install build requirements
         run: python -m pip install -r requirements_build.txt
       - name: Build distribution
