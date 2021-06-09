@@ -417,39 +417,6 @@
     - Ancient Cistern - Lilypad Skip
     - Ancient Cistern - Swordless Cistern Clip
 
-    # Skyloft / Sky
-    - Skyloft Trial RBW
-    - Early Thunderhead
-    # Faron
-    - Early Faron Woods
-    - Faron Trial RBM
-    # Eldin
-    - Upper Eldin RBM
-    - Earth Temple Door RBM
-    - Eldin Trial RBM
-    # Lanayru
-    - Temple of Time Skip - BiTWarp
-    - Early Lanayru Caves
-    - Sand Sea Skip
-    # Skyview
-    - Skyview - BiTWarp
-    # Earth Temple
-    - Earth Temple - Boulder Skip RBM
-    # Lanayru Mining Facility
-    - LMF - West Wing Skip BiTWarp
-    - LMF - Gust Bellows Room Box RBM
-    - LMF - Boss Door Shortcut RBM
-    - LMF - Pinwheel Gate RBM
-    # Ancient Cistern
-    # Sandship
-    # - Sandship - Tentalus Skip
-    # Fire Sanctuary
-    - Fire Sanctuary - Map Chest RBM
-    - Fire Sanctuary - Plats Chest RBM
-    - Fire Sanctuary - Boss Key without Mitts
-    - Fire Sanctuary - Overworld Statue RBM
-    # Sky Keep
-
   default: []
   help: Enable specific tricks to be considered in logic
   ui: enabled_tricks

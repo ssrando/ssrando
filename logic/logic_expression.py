@@ -98,7 +98,10 @@ class BaseLogicExpression(LogicExpression):
             return check_option_enabled_requirement(options, self.req_name)
         elif self.req_name.endswith(" Trick"):
             trickname = self.req_name[:-len(" Trick")]
-            self.req_name = f'Option "enabled-tricks" Contains "{trickname}"'
+            if options['logic-mode'] == 'BiTless':
+                self.req_name = f'Option "enabled-tricks-bitless" Contains "{trickname}"'
+            else:
+                self.req_name = f'Option "enabled-tricks-glitched" Contains "{trickname}"'
             return check_option_enabled_requirement(options, self.req_name)
         elif self.req_name in ALL_ITEM_NAMES:
             return inventory.has_item(self.req_name)
