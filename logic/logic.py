@@ -552,7 +552,12 @@ class Logic:
     return item_data
 
   def load_and_parse_item_requirements(self):
-    with (ROOT_DIR / "SS Rando Logic - Requirements.yaml").open('r') as f:
+    requirements_file = {
+      "BiTless": "SS Rando Logic - Glitchless Requirements.yaml",
+      "Glitched": "SS Rando Logic - Glitched Requirements.yaml",
+      "No Logic":"SS Rando Logic - Glitched Requirements.yaml", #TODO: no logic doesn't need requirements
+    }[self.rando.options["logic-mode"]]
+    with (ROOT_DIR / requirements_file).open('r') as f:
       macro_strings = yaml.safe_load(f)
     self.macros = {}
     for macro_name, req_string in macro_strings.items():
