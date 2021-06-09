@@ -1,5 +1,7 @@
 This is still under heavy development, be careful to use it!  
+**IMPORTANT NOTES**  
 This only works if the game language is set to ENGLISH, other languages will NOT WORK and will break  
+Do NOT use hero mode files, instead select the "hero mode" option in the randomizer. Some hero mode files break the randomizer!  
 There is also the [Skyward Sword Randomizer Discord](https://discord.gg/evpNKkaaw6)
 
 ## Running the compiled binary (Windows)(recommended)
