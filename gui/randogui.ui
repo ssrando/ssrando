@@ -200,7 +200,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -564,7 +564,7 @@
     </widget>
     <widget class="QWidget" name="tab_4">
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string/>
      </property>
      <attribute name="title">
       <string>Additional Settings</string>
@@ -586,7 +586,7 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>170</width>
+         <width>172</width>
          <height>201</height>
         </rect>
        </property>
@@ -703,7 +703,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>161</width>
+         <width>165</width>
          <height>204</height>
         </rect>
        </property>
@@ -1217,7 +1217,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>171</height>
+         <height>184</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_22">
@@ -1318,7 +1318,7 @@
        </rect>
       </property>
       <property name="title">
-       <string>GroupBox</string>
+       <string>Other Hints</string>
       </property>
       <widget class="QWidget" name="verticalLayoutWidget_6">
        <property name="geometry">
