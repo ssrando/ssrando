@@ -171,6 +171,27 @@ class Hints:
 
         hints_left = total_stonehints
         hinted_locations = []
+
+        # create location hints
+        location_hints_left = self.logic.rando.options["location-hints"]
+        location_hints = []
+        for location in needed_always_hints:
+            if location_hints_left <= 0:
+                break
+            if location not in hinted_locations:
+                location_hints.append(location)
+                hinted_locations.append(location)
+                hints_left -= 1
+                location_hints_left -= 1
+        for location in self.logic.rando.rng.sample(
+                needed_sometimes_hints, k=min(hints_left, len(needed_sometimes_hints))
+        ):
+            if location not in hinted_locations:
+                location_hints.append(location)
+                hinted_locations.append(location)
+                hints_left -= 1
+                location_hints_left -= 1
+
         # create woth hints
         woth_hints_count = self.logic.rando.options["woth-hints"]
         woth_hints = []
@@ -257,26 +278,6 @@ class Hints:
             for i in range(barren_hints_count):
                 barren_hints.append(barren_zones.pop())
                 hints_left -= 1
-
-        # create location hints
-        location_hints_left = self.logic.rando.options["location-hints"]
-        location_hints = []
-        for location in needed_always_hints:
-            if location_hints_left <= 0:
-                break
-            if location not in hinted_locations:
-                location_hints.append(location)
-                hinted_locations.append(location)
-                hints_left -= 1
-                location_hints_left -= 1
-        for location in self.logic.rando.rng.sample(
-            needed_sometimes_hints, k=min(hints_left, len(needed_sometimes_hints))
-        ):
-            if location not in hinted_locations:
-                location_hints.append(location)
-                hinted_locations.append(location)
-                hints_left -= 1
-                location_hints_left -= 1
 
         # create  the item hints
         hintable_items = HINTABLE_ITEMS.copy()
