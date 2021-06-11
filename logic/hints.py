@@ -300,7 +300,7 @@ class Hints:
             (
                 loc
                 for loc in self.logic.done_item_locations
-                if not loc in location_hints
+                if not loc in hinted_locations
                 and not loc in self.logic.prerandomization_item_locations
             )
         )
