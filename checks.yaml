@@ -1,18 +1,18 @@
-Skyloft Academy - Fledge:
+Knight Academy - Fledge:
   original item: Progressive Pouch
   type: skyloft, free gift
   Paths:
     - event/114-Friend/16
     - oarc/F001r/l3
     - oarc/F001r/l4
-Skyloft Academy - Owlan's Shield:
+Knight Academy - Owlan's Shield:
   original item: Wooden Shield
   type: skyloft, free gift
   Paths:
     - event/108-ShinkanA/169
     - oarc/F000/l4
     - oarc/F000/l6
-Skyloft Academy - Practice Sword:
+Knight Academy - Practice Sword:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
@@ -33,12 +33,12 @@ Skyloft - Waterfall Cave Second Chest:
   type: skyloft, miscellaneous
   Paths:
     - stage/D000/r0/l0/TBox/68
-Skyloft Academy - Small Chest on Cliffs Near Goddess Statue:
+Knight Academy - Small Chest on Cliffs Near Goddess Statue:
   original item: Red Rupee
   type: skyloft, miscellaneous
   Paths:
     - stage/F000/r0/l0/TBox/71
-Skyloft Academy - Goddess Sword:
+Knight Academy - Goddess Sword:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
@@ -73,14 +73,14 @@ Skyloft - Waterfall Goddess Chest:
   type: skyloft, goddess, sand sea goddess, mini dungeon
   Paths:
     - stage/F000/r0/l0/TBox/80
-Skyloft Academy - Pumpkin Archery - 600 Points:
+Knight Academy - Pumpkin Archery - 600 Points:
   original item: Heart Piece
   type: skyloft, minigame
   Paths:
     - event/114-Friend/99
     - oarc/F000/l4
     - oarc/F000/l6
-Skyloft Academy - Zelda Heartpiece:
+Knight Academy - Zelda Heartpiece:
   original item: Heart Piece
   type: skyloft, miscellaneous
   Paths:
@@ -98,7 +98,7 @@ Skyloft - Parrow's Bottle:
     - event/115-Town2/733 # Bottle
     - oarc/F000/l0
     - oarc/F005r/l0
-Skyloft Academy - Cawlin's Letter:
+Knight Academy - Cawlin's Letter:
   original item: Cawlin's Letter
   type: skyloft, short
   Paths:
@@ -125,7 +125,7 @@ Skyloft - Parrow's Crystals:
     - event/115-Town2/814
     - oarc/F000/l0
     - oarc/F005r/l0
-Skyloft Academy - Fledge's Crystals:
+Knight Academy - Fledge's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, lanayru, short, crystal quest, dungeon
   Paths:
@@ -137,7 +137,7 @@ Skyloft Village - Baby Crystals:
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
-Skyloft Academy - Ghost/Pipit's Crystals:
+Knight Academy - Ghost/Pipit's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, fetch, crystal quest
   Paths:
@@ -156,7 +156,7 @@ Skyloft Village - Cleaning Crystals:
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
-Skyloft Academy - Owlan's Crystals:
+Knight Academy - Owlan's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, faron, long, scrapper, crystal quest, combat
   Paths:

@@ -17,14 +17,14 @@ ALWAYS_REQUIRED_LOCATIONS = [
 
 SOMETIMES_LOCATIONS = [
     "Lanayru Sand Sea - Roller Coaster Minigame",
-    "Skyloft Academy - Pumpkin Archery - 600 Points",
+    "Knight Academy - Pumpkin Archery - 600 Points",
     "Sky - Lumpy Pumpkin Harp Minigame",
     "Sky - Fun Fun Island Minigame",
     "Thunderhead - Bug Island minigame",
     "Batreaux - 70 Crystals Second Reward",
     "Batreaux - 70 Crystals",
     "Batreaux - 50 Crystals",
-    "Skyloft Academy - Owlan's Crystals",
+    "Knight Academy - Owlan's Crystals",
     "Skyloft Village - Sparrot's Crystals",
     "Lanayru - On Top of Lanayru Mining Facility",
     "Skyloft - Waterfall Goddess Chest",  # stronghold cube
