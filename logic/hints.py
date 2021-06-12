@@ -184,7 +184,7 @@ class Hints:
                 hints_left -= 1
                 location_hints_left -= 1
         for location in self.logic.rando.rng.sample(
-                needed_sometimes_hints, k=min(hints_left, len(needed_sometimes_hints))
+            needed_sometimes_hints, k=min(hints_left, len(needed_sometimes_hints))
         ):
             if location not in hinted_locations:
                 location_hints.append(location)
