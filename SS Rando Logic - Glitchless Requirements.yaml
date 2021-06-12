@@ -202,7 +202,7 @@ Can Defeat Stalmaster:
 
 ## Knight Academy
 
-Skyloft Academy - Fledge:
+Knight Academy - Fledge:
   Nothing
 
 Skyloft - Crystal in Link's Room:
@@ -211,13 +211,13 @@ Skyloft - Crystal in Link's Room:
 Skyloft - Crystal in Knight Academy Plant:
   Nothing
 
-Skyloft Academy - Owlan's Crystals:
+Knight Academy - Owlan's Crystals:
   Can Reach Oolo in Faron 2
 
-Skyloft Academy - Cawlin's Letter:
+Knight Academy - Cawlin's Letter:
   Goddess Harp
 
-Skyloft Academy - Ghost/Pipit's Crystals:
+Knight Academy - Ghost/Pipit's Crystals:
   Cawlin's Letter
 
 Can Unlock Zelda's Room:
@@ -229,19 +229,19 @@ Skyloft - Crystal in Zelda's Room:
   # Drop down into the chimney from the Loftwing in BiT
   # Scene Flag 5x04 is "Drop down into Academy Chimney / Zelda's Door Unlocked"
 
-Skyloft Academy - Zelda Heartpiece:
+Knight Academy - Zelda Heartpiece:
   Can Unlock Zelda's Room
 
-Skyloft Academy - Fledge's Crystals:
+Knight Academy - Fledge's Crystals:
   Unlocked Endurance Potion & Bottle
   # Only need to unlock the potion
 
 ## Outside Knight Academy
 
-Skyloft Academy - Practice Sword:
+Knight Academy - Practice Sword:
   Nothing
 
-Skyloft Academy - Owlan's Shield:
+Knight Academy - Owlan's Shield:
   Nothing
 
 Skyloft - Crystal in Sparring Hall:
@@ -250,18 +250,18 @@ Skyloft - Crystal in Sparring Hall:
 Can Play Pumpkin Pull:
   Bow
 
-Skyloft Academy - Pumpkin Archery - 600 Points:
+Knight Academy - Pumpkin Archery - 600 Points:
   Can Play Pumpkin Pull
 
 ## Goddess statue
 
-Skyloft Academy - Small Chest on Cliffs Near Goddess Statue:
+Knight Academy - Small Chest on Cliffs Near Goddess Statue:
   Nothing
 
-Skyloft Academy - Goddess Sword:
+Knight Academy - Goddess Sword:
   Nothing
 
-Can Access Dungeon Entrance On Skyloft:
+Can Access Dungeon Entrance on Skyloft:
   Stone of Trials & (Clawshots | Sky Keep Entrance Jump Trick)
 
 ## Inside Bazaar
@@ -270,7 +270,7 @@ Skyloft - Bazaar Potion Lady:
   Nothing
 
 Unlocked Endurance Potion:
-  Can Beat Dungeon Entrance In Lanayru Desert
+  Can Beat Dungeon Entrance in Lanayru Desert
   # LMF only for Potion right now, in entrance rando this means beating the dungeon that is inside LMF
 
 Skyloft - Bazaar Goddess Chest:
@@ -669,7 +669,7 @@ Sealed Grounds - Ballad of the Goddess:
 Can Raise Gate of Time:
   Can Learn Ballad of the Goddess
 
-Can Open GOT After Raising:
+Meet Gate of Time Sword Requirement:
   (Option "got-sword-requirement" Is "Goddess Sword" & Goddess Sword) |
   (Option "got-sword-requirement" Is "Goddess Longsword" & Goddess Longsword) |
   (Option "got-sword-requirement" Is "Goddess Whitesword" & Goddess White Sword) |
@@ -767,7 +767,7 @@ Can Get Past Deep Woods Bee Hive:
   # Scene Flag 2x02 is "Push Down Highest Log in Deep Woods"
   # Bomb Bag ?
 
-Can Access Dungeon Entrance In Deep Woods:
+Can Access Dungeon Entrance in Deep Woods:
   Can Get Past Deep Woods Bee Hive & Distance Activator
   # Activate the crystal, BiTWarp past it or RBW past it (LA statue)
   # A RBM on 2x10 should work, but it is currently impossible
@@ -827,7 +827,7 @@ Can Access Floria Waterfall:
   # Scene Flag 3x40 is "Log leading to Lake Floria"
   # Scene Flag 5x02 is "Lake Floria Waterfall Statue checked", but one needs to be in Lake Floria to RBM it
 
-Can Access Dungeon Entrance In Lake Floria:
+Can Access Dungeon Entrance in Lake Floria:
   Can Access Floria Waterfall & Water Scale
   # If requiring Sacred Water, make sure the randomizer places the skyview boss key before
 
@@ -933,7 +933,7 @@ Goddess Cube in Eldin Slide:
 Eldin Volcano - Gossip Stone next to Earth Temple:
   Can Access Second Part of Eldin
 
-Can Access Dungeon Entrance In Eldin Volcano:
+Can Access Dungeon Entrance in Eldin Volcano:
   Can Access Second Part of Eldin & Key Piece x5
   # Scene Flag 5x02 is "Open Door to Earth Temple"
 
@@ -981,7 +981,7 @@ Can Get Past Second Frog:
   Can Get Past First Frog & Clawshots & Bottle
   # Scene Flag Dx08 is "Second Frog Watered"
 
-Can Access Dungeon Entrance In Volcano Summit:
+Can Access Dungeon Entrance in Volcano Summit:
   Can Get Past Second Frog
 
 Goddess Cube inside Volcano Summit:
@@ -1003,7 +1003,7 @@ Volcano Summit - Heart Piece Behind Digging:
   Can Get Past First Frog & Mogma Mitts
 
 Goddess Cube near FS Entrance:
-  Can Access Dungeon Entrance In Volcano Summit & Clawshots & Goddess Sword
+  Can Access Dungeon Entrance in Volcano Summit & Clawshots & Goddess Sword
 
 ## Boko Base
 
@@ -1130,7 +1130,7 @@ Can Access Front of Temple of Time:
     Can Access Desert Gorge Statue &
     (Hook Beetle | (Slingshot & Temple of Time - Slingshot Shot Trick))
   ) |
-  Can Beat Dungeon Entrance In Lanayru Desert
+  Can Beat Dungeon Entrance in Lanayru Desert
   # The Timeshift Stone in the big tree is reachable with a slingshot trickshot
   # Beating the dungeon will make one spawn inside ToT
   # If you already beat the dungeon and forgot to activate the ToT statue, RBM it with scene flag 8x40 "Check Temple of Time Statue"
@@ -1170,10 +1170,10 @@ Can Raise Lanayru Mining Facility:
   Option "open-lmf" Is "Open"
   # Scene Flag 2x40 is "LMF Rises up (+ Main Node is locked)"
 
-Can Access Dungeon Entrance In Lanayru Desert:
+Can Access Dungeon Entrance in Lanayru Desert:
   Can Access Second Part of Lanayru Desert & Can Raise Lanayru Mining Facility
 
-# Can Beat Dungeon Entrance In Lanayru Desert:
+# Can Beat Dungeon Entrance in Lanayru Desert:
 
 #   Determined at runtime
 
@@ -1193,7 +1193,7 @@ Lanayru Silent Realm - Clawshots:
   # Scene Flag Ax08 is "Clawshots Trial Gate Opened"
 
 Lanayru - On Top of Lanayru Mining Facility: # actually spawns on raising LMF
-  Can Access Dungeon Entrance In Lanayru Desert
+  Can Access Dungeon Entrance in Lanayru Desert
 
 Lanayru - Chest Next to Trial:
   Can Access Second Part of Lanayru Desert & Clawshots
@@ -1280,7 +1280,7 @@ Can Access Sand Sea:
 Goddess Cube in Ancient Harbour:
   Can Access Sand Sea & Clawshots & Goddess Sword
 
-Can Access Dungeon Entrance In Sand Sea:
+Can Access Dungeon Entrance in Sand Sea:
   Can Access Sand Sea & Sea Chart & Sword
   # You need any sword to be able to dowse
   # Scene Flag Cx40 is "Sandship is docked at its port"

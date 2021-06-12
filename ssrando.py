@@ -108,13 +108,13 @@ class Randomizer:
                 self.rng.shuffle(dungeons)
         self.entrance_connections = OrderedDict(
             [
-                ("Dungeon Entrance In Deep Woods", dungeons.pop()),
-                ("Dungeon Entrance In Eldin Volcano", dungeons.pop()),
-                ("Dungeon Entrance In Lanayru Desert", dungeons.pop()),
-                ("Dungeon Entrance In Lake Floria", dungeons.pop()),
-                ("Dungeon Entrance In Sand Sea", dungeons.pop()),
-                ("Dungeon Entrance In Volcano Summit", dungeons.pop()),
-                ("Dungeon Entrance On Skyloft", dungeons.pop()),
+                ("Dungeon Entrance in Deep Woods", dungeons.pop()),
+                ("Dungeon Entrance in Eldin Volcano", dungeons.pop()),
+                ("Dungeon Entrance in Lanayru Desert", dungeons.pop()),
+                ("Dungeon Entrance in Lake Floria", dungeons.pop()),
+                ("Dungeon Entrance in Sand Sea", dungeons.pop()),
+                ("Dungeon Entrance in Volcano Summit", dungeons.pop()),
+                ("Dungeon Entrance on Skyloft", dungeons.pop()),
             ]
         )
         assert len(dungeons) == 0, "Not all dungeons linked to an entrance"
