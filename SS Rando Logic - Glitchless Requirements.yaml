@@ -635,10 +635,6 @@ Thunderhead - East Island Chest:
 Thunderhead - First Goddess Chest on Mogma Mitts Island:
   Can Access Thunderhead & Goddess Cube inside Volcano Summit & Mogma Mitts
 
-Thunderhead - Second Goddess Chest on Mogma Mitts Island:
-  Can Access Thunderhead & Goddess Cube in Lanayru Gorge & Mogma Mitts
-  # Inaccessible Goddess Cube
-
 ## Bug Rock
 
 Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
@@ -858,6 +854,10 @@ Goddess Cube in Floria Waterfall:
 Lake Floria - Gossip Stone outside Ancient Cistern:
   Can Access Floria Waterfall
 
+#Flooded Faron Woods - Faron Soth Part event:
+
+#  Can Access Flooded Faron Woods & Water Scale
+
 ### Eldin
 
 Can Access Eldin:
@@ -1026,6 +1026,34 @@ Goddess Cube near FS Entrance:
 
 #  ---
 
+# Volcano
+
+#Boko base - Mogma Mitts Event:
+
+#  Can Access Boko Base?
+
+#Boko base - Clawshots:
+
+#  Can Access Boko Base & Gust Bellows & (Mogma Mitts | Slingshot | Bow | Bomb Bag)?
+
+#Boko base - Gust Bellows:
+
+#  Can Access Boko Base?
+
+#Boko base - Bombs:
+
+#  Can Access Boko Base & Clawshots & ((Hook Beetle & Sword) | Bomb Bag | ((Bow | Slingshot) & Whip))?
+
+#Boko base - Slingshot:
+
+#  Can Access Boko Base & Clawshots & (Hook Beetle | Whip | Bomb Bag)?
+
+#Boko base - Whip:
+
+#  Can Access Boko Base & Clawshots?
+
+# Summit
+
 #Boko Base - Small Chest in front of Sword in Boko Base:
 
 #  Can Access Boko Base & Clawshots & Bomb Bag?
@@ -1033,6 +1061,10 @@ Goddess Cube near FS Entrance:
 #Boko Base - Pouch Chest in Boko Base:
 
 #  Can Access Boko Base & Clawshots & Bomb Bag?
+
+#Fire Dragon Room - Eldin Soth part event:
+
+#  Can Access Boko Base & Clawshots & Bomb Bag & (Beetle | Bow)?
 
 ### Lanayru
 
@@ -1178,7 +1210,7 @@ Can Access Second Part of Lanayru Desert:
 
 Can Activate Water Node:
   Can Access Second Part of Lanayru Desert & (Bomb Bag | Hook Beetle) & Sword
-  # Not sure about the bomb/hook beetle requirement
+  # UNSURE about the bomb/hook beetle requirement
 
 Can Raise Lanayru Mining Facility:
   (Can Activate Water Node & Can Activate Lightning Node & Can Activate Fire Node & Sword) |
@@ -1357,6 +1389,22 @@ Lanayru Sand Sea - Third Chest in Pirate Stronghold:
 Goddess Cube in Pirate Stronghold:
   Can Access Sand Sea & Can Defeat Beamos & Can Defeat Armos & Goddess Sword
   # Technically this is possible without beating a Beamos but it's hard
+
+#Lanayru Gorge - Boss Rush Piece of Heart:
+
+#  Can Heal Thunder Dragon?
+
+#Lanayru Gorge - Boss Rush Hylian Shield:
+
+#  Can Heal Thunder Dragon?
+
+#Lanayru Gorge - Life Tree Seedling:
+
+#  Can Access Lanayru Gorge?
+
+#Lanayru Gorge - Lanayru SotH Part:
+
+#  Can heal Thunder Dragon?
 
 ### Dungeons
 
@@ -1962,7 +2010,7 @@ Fire Sanctuary - Map Chest:
 
 Fire Sanctuary - Third Small Key Chest:
   Can Access Second Captured Mogma Room & Mogma Mitts & Sword & Bomb Bag
-  #& (Map | Fire Sanctuary - No Bombable Wall Hint Trick)
+  #& (Fire Sanctuary - Map | Fire Sanctuary - No Bombable Wall Hint Trick)
   # Map is not yet handled by logic
 
 Can Access FS Plats Room:
@@ -2006,58 +2054,6 @@ Can Beat Fire Sanctuary:
 
 Fire Sanctuary - Din's Flame:
   Can Beat Fire Sanctuary
-
-#Lanayru Gorge - Boss rush heart piece:
-
-#  Can Heal Thunder Dragon?
-
-#Lanayru Gorge - Boss rush hylian shield:
-
-#  Can Heal Thunder Dragon?
-
-#Lanayru Gorge - Life Tree Seedling:
-
-#  Can Access Lanayru Gorge?
-
-#Lanayru Gorge - Lanayru Soth Part event:
-
-#  Can heal Thunder Dragon?
-
-#Goddess Cube in Lanayru Gorge:
-
-#  Can Access Lanayru Gorge & Clawshots & Hook Beetle & Whip & Goddess Sword
-
-#Flooded Faron Woods - Faron Soth Part event:
-
-#  Can Access Flooded Faron Woods & Water Scale
-
-#Boko base - Mogma Mitts Event:
-
-#  Can Access Boko Base?
-
-#Boko base - Clawshots:
-
-#  Can Access Boko Base & Gust Bellows & (Mogma Mitts | Slingshot | Bow | Bomb Bag)?
-
-#Boko base - Gust Bellows:
-
-#  Can Access Boko Base?
-
-#Boko base - Bombs:
-
-#  Can Access Boko Base & Clawshots & ((Hook Beetle & Sword) | Bomb Bag | ((Bow | Slingshot) & Whip))?
-
-#Boko base - Slingshot:
-
-#  Can Access Boko Base & Clawshots & (Hook Beetle | Whip | Bomb Bag)?
-
-#Boko base - Whip:
-
-#  Can Access Boko Base & Clawshots?
-
-#Fire Dragon Room - Eldin Soth part event:
-
-#  Can Access Boko Base & Clawshots & Bomb Bag & (Beetle | Bow)?
 
 ## Sky Keep
 
