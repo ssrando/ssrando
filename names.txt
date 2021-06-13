@@ -63,7 +63,7 @@ Scervo
 Dreadfuse
 Slingshot
 Bow
-Clawshot
+Clawshots
 Beetle
 Net
 Skulltula

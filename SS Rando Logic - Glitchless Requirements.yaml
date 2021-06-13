@@ -506,7 +506,7 @@ Sky - Breakable Boulder near Fun Fun island:
 
 ## Sky - South East
 
-Sky - Lumpy Pumpkin Chandellier:
+Sky - Lumpy Pumpkin Chandelier:
   Nothing
 
 Sky - Crystal outside Lumpy Pumpkin:
@@ -687,7 +687,7 @@ Sealed Grounds - True Master Sword:
   Can Access Hylia's Temple
 
 Can Reach and Defeat Demise:
-  Can Access Past & (Can Beat Skykeep | Option "skip-skykeep" Enabled)
+  Can Access Past & (Can Beat Sky Keep | Option "skip-skykeep" Enabled)
 
 Sealed Grounds - Gorko Goddess Wall Reward:
   Can Access Sealed Temple & Can Unlock Goddess Walls & Goddess Sword
@@ -2043,8 +2043,8 @@ Fire Sanctuary - Din's Flame:
 
 ## Sky Keep
 
-Skykeep - Map Chest:
-  Can Access Skykeep
+Sky Keep - Map Chest:
+  Can Access Sky Keep
 
 Can Get Past SK Skyview Room:
   Can Access SK Skyview Room &
@@ -2091,7 +2091,7 @@ Can Get Past SK Sandship Room:
 # Puzzle Logic (not completely optimised)
 
 Can Access SK Skyview Room:
-  Can Access Skykeep
+  Can Access Sky Keep
 
 Can Access SK LMF Room:
   Can Get Past SK Skyview Room
@@ -2112,19 +2112,19 @@ Can Access SK Fire Sanctuary Room:
 Can Access SK Sandship Room:
   Can Get Past SK Fire Sanctuary Room
 
-Skykeep - Small Key Chest:
+Sky Keep - Small Key Chest:
   Can Get Past SK Mini Boss Room
 
 Can Get Triforce of Wisdom:
   Can Get Past SK Sandship Room
 
-Skykeep - Triforce of Wisdom Event:
+Sky Keep - Triforce of Wisdom Event:
   Can Get Triforce of Wisdom
 
 Can Get Triforce of Power:
   Can Get Past SK Fire Sanctuary Room
 
-Skykeep - Triforce of Power Event:
+Sky Keep - Triforce of Power Event:
   Can Get Triforce of Power
 
 Can Get Triforce of Courage:
@@ -2140,11 +2140,11 @@ Can Get Triforce of Courage:
   # Sword is required for the stalmaster, and I don't know whether other items kill zombie bokos, so I don't need to include them
   # Scene Flag 3x10 is Lever Blocking Triforce of Courage
 
-Skykeep - Triforce of Courage Event:
+Sky Keep - Triforce of Courage Event:
   Can Get Triforce of Courage
 
-Can Beat Skykeep:
-  Can Access Skykeep &
+Can Beat Sky Keep:
+  Can Access Sky Keep &
   Can Get Triforce of Courage &
   Can Get Triforce of Power &
   Can Get Triforce of Wisdom

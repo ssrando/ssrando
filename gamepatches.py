@@ -100,7 +100,7 @@ DUNGEON_STAGES = {
     "Fire Sanctuary": "D201",
     "Lanayru Mining Facility": "D300",
     "Sandship": "D301",
-    "Skykeep": "D003_7",
+    "Sky Keep": "D003_7",
 }
 
 # The stage for each map where there are dungeon entrances
@@ -145,7 +145,7 @@ DUNGEON_ENTRANCES = {
     "Ancient Cistern": ("D101", 0, 0, 0),
     "Sandship": ("D301", 1, 0, 0),
     "Fire Sanctuary": ("D201", 0, 0, 0),
-    "Skykeep": ("D003_7", 0, 0, 4),
+    "Sky Keep": ("D003_7", 0, 0, 4),
 }
 
 DUNGEON_FINISH_EXIT_SCEN = {
@@ -156,7 +156,7 @@ DUNGEON_FINISH_EXIT_SCEN = {
     "Ancient Cistern": ("B101_1", 0, 3),
     "Sandship": ("B301", 0, 4),
     "Fire Sanctuary": ("B201_1", 0, 2),
-    "Skykeep": ("F407", 0, 1),
+    "Sky Keep": ("F407", 0, 1),
 }
 
 DUNGEON_EXIT_SCENS = {
@@ -208,7 +208,7 @@ DUNGEON_EXIT_SCENS = {
         ("D201_1", 5, 3),
         ("D201_1", 6, 2),
     ],
-    "Skykeep": [
+    "Sky Keep": [
         ("D003_0", 0, 3),  # most of them not needed
         ("D003_1", 0, 2),
         ("D003_2", 0, 3),
@@ -248,7 +248,7 @@ POST_DUNGEON_CUTSCENE = {
     "Ancient Cistern": ("B101_1", 0, 1),
     "Sandship": ("B301", 0, 1),
     "Fire Sanctuary": ("B201_1", 0, 0),
-    "Skykeep": ("F407", 0, 2),
+    "Sky Keep": ("F407", 0, 2),
 }
 
 BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
@@ -1355,7 +1355,7 @@ class GamePatcher:
             "Ancient Cistern": "<b<",
             "Fire Sanctuary": "<r<",
             "Sandship": "<y+<",
-            "Skykeep": "<s<",
+            "Sky Keep": "<s<",
             "Lanayru Caves": "<ye<",
         }
         KEYS_DUNGEONS = [
@@ -1364,7 +1364,7 @@ class GamePatcher:
             ("Ancient Cistern", 202),
             ("Fire Sanctuary", 203),
             ("Sandship", 204),
-            ("Skykeep", 205),
+            ("Sky Keep", 205),
             ("Lanayru Caves", 206),
         ]
         self.eventpatches["003-ItemGet"].append(
@@ -1417,7 +1417,7 @@ class GamePatcher:
             ("Ancient Cistern", 210),
             ("Fire Sanctuary", 211),
             ("Sandship", 212),
-            ("Skykeep", 213),
+            ("Sky Keep", 213),
         ]
         for dungeon, itemid in MAPS_DUNGEONS:
             dungeon_and_color = DUNGEON_COLORS[dungeon] + dungeon + ">>"
