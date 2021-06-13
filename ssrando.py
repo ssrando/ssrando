@@ -96,15 +96,15 @@ class Randomizer:
             "Fire Sanctuary",
         ]
         if self.options["randomize-entrances"] == "None":
-            dungeons.append("Skykeep")
+            dungeons.append("Sky Keep")
             dungeons.reverse()
         else:
             if self.options["randomize-entrances"] == "Dungeons":
                 self.rng.shuffle(dungeons)
-                dungeons.append("Skykeep")
+                dungeons.append("Sky Keep")
                 dungeons.reverse()
             else:
-                dungeons.append("Skykeep")
+                dungeons.append("Sky Keep")
                 self.rng.shuffle(dungeons)
         self.entrance_connections = OrderedDict(
             [

@@ -74,7 +74,7 @@ class Logic:
         if (
             self.rando.options["skip-skykeep"]
             and self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"]
-            == "Skykeep"
+            == "Sky Keep"
         ):
             self.racemode_ban_location("Skyloft Academy - Fledge's Crystals")
         if self.rando.options["empty-unrequired-dungeons"]:
@@ -107,8 +107,8 @@ class Logic:
                     # print(f'banned {location_name}')
 
         if self.rando.options["skip-skykeep"]:
-            self.racemode_ban_location("Skykeep - Map Chest")
-            self.racemode_ban_location("Skykeep - Small Key Chest")
+            self.racemode_ban_location("Sky Keep - Map Chest")
+            self.racemode_ban_location("Sky Keep - Small Key Chest")
 
         self.locations_by_zone_name = OrderedDict()
         for location_name in self.item_locations:

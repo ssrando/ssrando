@@ -307,7 +307,7 @@ Skyloft - Crystal in Zelda's Room:
   original item: Gratitude Crystal
   type: crystal
 
-Sky - Lumpy Pumpkin Chandellier:
+Sky - Lumpy Pumpkin Chandelier:
   original item: Heart Piece
   type: sky, freestanding
   Paths:
@@ -1307,27 +1307,27 @@ Fire Sanctuary - Din's Flame:
 #    - stage/F221.json
 
 
-Skykeep - Map Chest:
+Sky Keep - Map Chest:
   original item: SK Map
   type: skyloft, dungeon
   Paths:
     - stage/D003_7/r0/l0/TBox/64
-Skykeep - Small Key Chest:
+Sky Keep - Small Key Chest:
   original item: SK Small Key
   type: skyloft, dungeon
   Paths:
     - stage/D003_6/r0/l0/TBox/65
-#Skykeep - Triforce of Wisdom Event
+#Sky Keep - Triforce of Wisdom Event
 #   original item: Triforce of Wisdom
 #   type: skyloft, dungeon
 #   Paths:
 #    - stage/D003_8.json
-#Skykeep - Triforce of Power Event
+#Sky Keep - Triforce of Power Event
 #   original item: Triforce of Power
 #   type: skyloft, dungeon
 #   Paths:
 #    - stage/D003_8.json
-#Skykeep - Triforce of Courage Event
+#Sky Keep - Triforce of Courage Event
 #   original item: Triforce of Courage
 #   type: skyloft, dungeon
 #   Paths:
