@@ -57,8 +57,8 @@
     - Master Sword
     - True Master Sword
   default: Goddess Sword
-  help: Instead of starting with the goddess sword, in this mode all sword upgrades,
-    including the pracice sword, have to be found
+  help: Select which sword to start with. The remaining upgrades will be shuffled into
+    the item pool
   ui: option_starting_sword
 - name: Required Dungeon Count
   command: required-dungeon-count
@@ -73,7 +73,7 @@
   command: imp2-skip
   type: boolean
   default: true
-  help: Skips the requirement to beat Imp 2 in oder to beat the seed
+  help: Skips the requirement to beat Imp 2 in order to beat the seed
   ui: option_imp_2
 - name: Empty unrequired Dungeons
   command: empty-unrequired-dungeons
@@ -164,8 +164,8 @@
   command: start-with-pouch
   type: boolean
   default: false
-  help: If activated, you will start with the adventure pouch unlocked. One progressive
-    pouch will still be randomized
+  help: If activated, you will start with the adventure pouch unlocked. The remaining four
+    progressive pouches will still be shuffled.
   ui: option_start_pouch
 - name: No Spoiler Log
   command: no-spoiler-log
@@ -188,7 +188,7 @@
     - 70
     - 80
   bits: 3
-  help: Enables progression items to appear in all Batreaux rewards up to an including
+  help: Enables progression items to appear in all Batreaux rewards up to and including
     the specified amount.
   ui: option_max_batreaux_reward
 - name: Shop Mode
@@ -275,7 +275,7 @@
   command: g3
   type: boolean
   default: true
-  help: When disabled, the Ghiriahim 3 fight will be skipped
+  help: When disabled, the Ghirahim 3 fight will be skipped
   ui: option_g3
 - name: Demise
   command: demise
@@ -436,7 +436,7 @@
     - Bingo
   default: Normal
   help: Sets the distribution of hints. Select a distribution to automatically apply a preset, or custom to select
-    your own distribution. Hover each hint type to see details on the hint
+    your own distribution. Hover over each hint type to see details on the hint
   ui: option_hint_distribution
 - name: Way of the Hero Hints
   command: woth-hints
