@@ -608,21 +608,10 @@ class Logic:
         return valid_items
 
     def load_and_parse_item_data(self):
-        with (ROOT_DIR / "checks.yaml").open("r") as f:
-            item_data = yaml.load(f, YamlOrderedDictLoader)
+        item_data = self.rando.item_locations
 
         for location_name in item_data:
             item_data[location_name]["Need"] = self.macros[location_name]
-
-            if not "type" in item_data[location_name]:
-                print("ERROR, " + location_name + " doesn't have types!")
-            types_string = item_data[location_name]["type"]
-            types = types_string.split(",")
-            types = set((type.strip() for type in types))
-            unknown_types = [x for x in types if not x in ALL_TYPES]
-            if len(unknown_types) != 0:
-                raise Exception(f"unknown types: {unknown_types}")
-            item_data[location_name]["type"] = types
 
         return item_data
 
@@ -760,6 +749,10 @@ class Logic:
             return parse_logic_expression(string)
         except Exception as e:
             raise Exception(f"In the definition of {name}, {e}")
+
+    @staticmethod
+    def check_static_option_req(string, options):
+        return parse_logic_expression(string).is_true(options, Inventory(), {})
 
     def check_requirement_met(self, req_name):
         match = ITEM_WITH_COUNT_REGEX.match(req_name)
@@ -1340,13 +1333,3 @@ class Logic:
                 raise Exception("no new location reached!", spheres)
 
         return spheres
-
-
-class YamlOrderedDictLoader(yaml.SafeLoader):
-    pass
-
-
-YamlOrderedDictLoader.add_constructor(
-    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-    lambda loader, node: OrderedDict(loader.construct_pairs(node)),
-)

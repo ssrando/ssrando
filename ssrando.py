@@ -6,48 +6,25 @@ import random
 from pathlib import Path
 import hashlib
 import json
+import yaml
 import subprocess
 
 from logic.logic import Logic
 from logic.hints import Hints
 import logic.constants as constants
+from logic.placement_file import PlacementFile
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
 import logic.item_types
 from sslib.utils import encodeBytes
+from version import VERSION, VERSION_WITHOUT_COMMIT
 
 from typing import List, Callable
 
 
 class StartupException(Exception):
     pass
-
-
-# Try to add the git commit hash to the version number if running from source.
-if IS_RUNNING_FROM_SOURCE:
-    VERSION = (RANDO_ROOT_PATH / "version.txt").read_text().strip()
-    VERSION_WITHOUT_COMMIT = VERSION
-    version_suffix = "_NOGIT"
-
-    import subprocess
-
-    try:
-        version_suffix = (
-            "_"
-            + subprocess.check_output(
-                ["git", "rev-parse", "--short", "HEAD"], cwd=Path(__file__).parent
-            )
-            .decode("ASCII")
-            .strip()
-        )
-    except Exception:
-        pass  # probably not git installed
-
-    VERSION += version_suffix
-else:
-    VERSION = (RANDO_ROOT_PATH / "version-with-git.txt").read_text().strip()
-    VERSION_WITHOUT_COMMIT = VERSION
 
 
 def dummy_progress_callback(current_action_name):
@@ -163,11 +140,30 @@ class Randomizer:
             if not dungeon in self.required_dungeons
         ]
 
+        # not happy that is has to land here, it's used by both GamePatches and Logic
+        with (self.rando_root_path / "checks.yaml").open("r") as f:
+            self.item_locations = yaml.load(f, YamlOrderedDictLoader)
+
+        for location_name in self.item_locations:
+            if not "type" in self.item_locations[location_name]:
+                print("ERROR, " + location_name + " doesn't have types!")
+            types_string = self.item_locations[location_name]["type"]
+            types = types_string.split(",")
+            types = set((type.strip() for type in types))
+            unknown_types = [x for x in types if not x in constants.ALL_TYPES]
+            if len(unknown_types) != 0:
+                raise Exception(f"unknown types: {unknown_types}")
+            self.item_locations[location_name]["type"] = types
+
+        with (RANDO_ROOT_PATH / "hints.yaml").open() as f:
+            self.stonehint_definitions: dict = yaml.safe_load(f)
+
         self.logic = Logic(self)
+        self.hints = Hints(self.logic)
+
         # self.logic.set_prerandomization_item_location("Beedle - Second 100 Rupee Item", "Rare Treasure")
         # self.logic.set_prerandomization_item_location("Beedle - Third 100 Rupee Item", "Rare Treasure")
         # self.logic.set_prerandomization_item_location("Beedle - 1000 Rupee Item", "Rare Treasure")
-        self.hints = Hints(self.logic)
         # self.logic.set_prerandomization_item_location("Skyloft Academy - Fledge", "SV Small Key")
         # self.logic.set_prerandomization_item_location("Skyloft Academy - Owlan's Shield", "ET Map")
         # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
@@ -239,12 +235,16 @@ class Randomizer:
             self.progress_callback("writing anti spoiler log...")
         else:
             self.progress_callback("writing spoiler log...")
+        plcmt_file = self.get_placement_file()
+        if self.options["out-placement-file"] and not self.no_logs:
+            with open(f"placement_file_{self.seed}.json", "w") as f:
+                f.write(plcmt_file.to_json_str())
         if self.options["json"]:
             self.write_spoiler_log_json()
         else:
             self.write_spoiler_log()
         if not self.dry_run:
-            GamePatcher(self).do_all_gamepatches()
+            GamePatcher(self, plcmt_file).do_all_gamepatches()
         self.progress_callback("patching done")
 
     def write_spoiler_log(self):
@@ -544,3 +544,77 @@ class Randomizer:
                 max_location_name_length = len(specific_location_name)
 
         return (zones, max_location_name_length)
+
+    def get_placement_file(self):
+        # temporary placement file stuff
+        trial_checks = {
+            # (getting it text patch, inventory text line)
+            "Skyloft Silent Realm - Stone of Trials": "Song of the Hero - Trial Hint",
+            "Faron Silent Realm - Water Scale": "Farore's Courage - Trial Hint",
+            "Lanayru Silent Realm - Clawshots": "Nayru's Wisdom - Trial Hint",
+            "Eldin Silent Realm - Fireshield Earrings": "Din's Power - Trial Hint",
+        }
+        item_locations = set(
+            loc
+            for loc in self.logic.item_locations.keys()
+            if self.logic.item_locations[loc].get("original item", None)
+            != "Gratitude Crystal"
+        )
+        hint_names = set(self.hints.stonehint_definitions.keys())
+        hint_names.update(trial_checks.values())
+        hint_defs = dict(
+            (k, v.to_gossip_stone_text()) for (k, v) in self.hints.hints.items()
+        )
+        for (trial_check_name, hintname) in trial_checks.items():
+            item = self.logic.done_item_locations[trial_check_name]
+            hint_mode = self.options["song-hints"]
+            if hint_mode == "Basic":
+                if item in self.logic.all_progress_items:
+                    useful_text = "\nYou might need what it reveals..."
+                    # print(f'{item} in {trial_check} is useful')
+                else:
+                    useful_text = "\nIt's probably not too important..."
+                    # print(f'{item} in {trial_check} is not useful')
+            elif hint_mode == "Advanced":
+                if trial_check_name in self.woth_locations:
+                    useful_text = "\nYour spirit will grow by completing this trial"
+                elif item in self.logic.all_progress_items:
+                    useful_text = "\nYou might need what it reveals..."
+                else:
+                    # barren
+                    useful_text = "\nIt's probably not too important..."
+            elif hint_mode == "Direct":
+                useful_text = (
+                    f"\nThey say this trial rewards those who complete it with\n{item}"
+                )
+            else:
+                useful_text = ""
+            hint_defs[hintname] = useful_text
+
+        plcmt_file = PlacementFile()
+        plcmt_file.entrance_connections = self.entrance_connections
+        plcmt_file.hash_str = self.randomizer_hash
+        plcmt_file.hints = hint_defs
+        plcmt_file.item_locations = dict(
+            (k, v)
+            for (k, v) in self.logic.done_item_locations.items()
+            if k in item_locations
+        )
+        plcmt_file.options = self.options
+        plcmt_file.required_dungeons = self.required_dungeons
+        plcmt_file.starting_items = self.starting_items
+        plcmt_file.version = VERSION
+
+        plcmt_file.check_valid(item_locations, hint_names)
+
+        return plcmt_file
+
+
+class YamlOrderedDictLoader(yaml.SafeLoader):
+    pass
+
+
+YamlOrderedDictLoader.add_constructor(
+    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+    lambda loader, node: OrderedDict(loader.construct_pairs(node)),
+)

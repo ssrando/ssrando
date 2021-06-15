@@ -781,8 +781,9 @@ def get_entry_from_bzs(
 
 
 class GamePatcher:
-    def __init__(self, rando):
+    def __init__(self, rando, placement_file):
         self.rando = rando
+        self.placement_file = placement_file
         self.patcher = AllPatcher(
             actual_extract_path=rando.actual_extract_path,
             modified_extract_path=rando.modified_extract_path,
@@ -794,12 +795,12 @@ class GamePatcher:
     def do_all_gamepatches(self):
         self.load_base_patches()
         self.add_entrance_rando_patches()
-        if self.rando.options["shop-mode"] != "Vanilla":
+        if self.placement_file.options["shop-mode"] != "Vanilla":
             self.shopsanity_patches()
         self.do_build_arc_cache()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
-        if (self.rando.options["song-hints"]) != "None":
+        if (self.placement_file.options["song-hints"]) != "None":
             self.add_trial_hint_patches()
         self.add_stone_hint_patches()
         self.handle_oarc_add_remove()
@@ -821,8 +822,8 @@ class GamePatcher:
         return not (
             isinstance(entry, dict)
             and "onlyif" in entry
-            and not self.rando.logic.check_logical_expression_string_req(
-                entry["onlyif"]
+            and not Logic.check_static_option_req(
+                entry["onlyif"], self.placement_file.options
             )
         )
 
@@ -863,7 +864,7 @@ class GamePatcher:
             self.rando_eventpatches,
             self.shoppatches,
         ) = get_patches_from_location_item_list(
-            self.rando.logic.item_locations, self.rando.logic.done_item_locations
+            self.rando.item_locations, self.placement_file.item_locations
         )
 
         # assembly patches
@@ -871,10 +872,10 @@ class GamePatcher:
         self.add_asm_patch("custom_funcs")
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("keysanity")
-        if self.rando.options["shop-mode"] != "Vanilla":
+        if self.placement_file.options["shop-mode"] != "Vanilla":
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
-        if self.rando.options["fix-bit-crashes"]:
+        if self.placement_file.options["fix-bit-crashes"]:
             self.add_asm_patch("fix_bit_crashes")
 
         # GoT patch depends on required sword
@@ -891,7 +892,7 @@ class GamePatcher:
                 0x2C,
                 0x00,
                 0x00,
-                GOT_SWORD_MODES[self.rando.options["got-sword-requirement"]],
+                GOT_SWORD_MODES[self.placement_file.options["got-sword-requirement"]],
             ]
         }
 
@@ -916,7 +917,7 @@ class GamePatcher:
             self.all_asm_patches[exec_file].update(patches)
 
     def add_entrance_rando_patches(self):
-        for entrance, dungeon in self.rando.entrance_connections.items():
+        for entrance, dungeon in self.placement_file.entrance_connections.items():
             entrance_stage, entrance_room, entrance_scen = DUNGEON_ENTRANCE_STAGES[
                 entrance
             ]
@@ -1059,14 +1060,6 @@ class GamePatcher:
             )
 
     def shopsanity_patches(self):
-        # self.eventpatches['105-Terry'].append({
-        #     'name': 'go to Check for Pouch',
-        #     'type': 'flowpatch',
-        #     'index': 16,
-        #     'flow': {
-        #         'next': 'Check for Pouch' if self.rando.options['shop-mode'] == 'Vanilla' else 43
-        #     }
-        # })
         with (Path(__file__).parent / "beedle_texts.yaml").open("r") as f:
             beedle_texts = yaml.safe_load(f)
         # print(beedle_texts)
@@ -1074,7 +1067,7 @@ class GamePatcher:
             normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[
                 location
             ]
-            sold_item = self.rando.logic.done_item_locations[location]
+            sold_item = self.placement_file.item_locations[location]
             normal_text = (
                 f"That there is a <y<{sold_item}>>.\n"
                 f"I'm selling it for only <r<{normal_price}>> rupees!\n"
@@ -1130,23 +1123,25 @@ class GamePatcher:
 
     def add_startitem_patches(self):
         # Add sword story/itemflags if required
-        start_sword_count = self.rando.starting_items.count("Progressive Sword")
+        start_sword_count = self.placement_file.starting_items.count(
+            "Progressive Sword"
+        )
         for i in range(start_sword_count):
             self.startstoryflags.append(PROGRESSIVE_SWORD_STORYFLAGS[i])
         if start_sword_count > 0:
             self.startitemflags.append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count - 1])
 
-        # if 'Sailcloth' in self.rando.starting_items:
+        # if 'Sailcloth' in self.placement_file.starting_items:
         #     self.startstoryflags.append(32)
         #     self.startitemflags.append(15)
 
-        if "Progressive Pouch" in self.rando.starting_items:
+        if "Progressive Pouch" in self.placement_file.starting_items:
             self.startstoryflags.append(30)  # storyflag for pouch
             self.startstoryflags.append(931)  # rando storyflag for progressive pouch 1
             self.startitemflags.append(112)  # itemflag for pouch
 
         # Add storyflags for tablets
-        for item in self.rando.starting_items:
+        for item in self.placement_file.starting_items:
             if item in START_ITEM_STORYFLAGS:
                 self.startstoryflags.append(START_ITEM_STORYFLAGS[item])
 
@@ -1163,7 +1158,7 @@ class GamePatcher:
 
         REQUIRED_DUNGEON_STORYFLAGS = [902, 903, 926, 927, 928, 929]
 
-        for i, dungeon in enumerate(self.rando.required_dungeons):
+        for i, dungeon in enumerate(self.placement_file.required_dungeons):
             dungeon_events = self.eventpatches[DUNGEON_TO_EVENTFILE[dungeon]]
             required_dungeon_storyflag_event = next(
                 filter(
@@ -1177,7 +1172,7 @@ class GamePatcher:
                 i
             ]  # param2 is storyflag of event
 
-        required_dungeon_count = len(self.rando.required_dungeons)
+        required_dungeon_count = len(self.placement_file.required_dungeons)
         # set flags for unrequired dungeons beforehand
         for required_dungeon_storyflag in REQUIRED_DUNGEON_STORYFLAGS[
             required_dungeon_count:
@@ -1191,11 +1186,11 @@ class GamePatcher:
             required_dungeons_text = "All Dungeons"
         elif required_dungeon_count < 4:
             required_dungeons_text = "Required Dungeons:\n" + (
-                "\n".join(self.rando.required_dungeons)
+                "\n".join(self.placement_file.required_dungeons)
             )
         else:
             required_dungeons_text = "Required: " + ", ".join(
-                self.rando.required_dungeons
+                self.placement_file.required_dungeons
             )
 
             # try to fit the text in as few lines as possible, breaking up at spaces if necessary
@@ -1233,59 +1228,39 @@ class GamePatcher:
 
         # Trial Hints
         trial_checks = {
-            # (getting it text patch, inventory text line)
+            # (getting it text patch, line, inventory text line, hintname)
             "Skyloft Silent Realm - Stone of Trials": (
                 "Full SotH text",
                 659,
                 "The song that leads you to the final trial.",
+                "Song of the Hero - Trial Hint",
             ),
             "Faron Silent Realm - Water Scale": (
                 "Farore's Courage Text",
                 653,
                 "This song opens the trial located in Faron\nWoods.",
+                "Farore's Courage - Trial Hint",
             ),
             "Lanayru Silent Realm - Clawshots": (
                 "Nayru's Wisdom Text",
                 654,
                 "This song opens the trial located in\nLanayru Desert.",
+                "Nayru's Wisdom - Trial Hint",
             ),
             "Eldin Silent Realm - Fireshield Earrings": (
                 "Din's Power Text",
                 655,
                 "This song opens the trial located on\nEldin Volcano.",
+                "Din's Power - Trial Hint",
             ),
         }
         for trial_check_name, (
             obtain_text_name,
             inventory_text_idx,
             inventory_text,
+            hintname,
         ) in trial_checks.items():
-            item = self.rando.logic.done_item_locations[trial_check_name]
-            hint_mode = self.rando.options["song-hints"]
-            if hint_mode == "Basic":
-                if item in self.rando.logic.all_progress_items:
-                    useful_text = "\nYou might need what it reveals..."
-                    # print(f'{item} in {trial_check} is useful')
-                else:
-                    useful_text = "\nIt's probably not too important..."
-                    # print(f'{item} in {trial_check} is not useful')
-            elif hint_mode == "Advanced":
-                if trial_check_name in self.rando.woth_locations:
-                    useful_text = "\nYour spirit will grow by completing this trial"
-                elif item in self.rando.logic.all_progress_items:
-                    useful_text = "\nYou might need what it reveals..."
-                else:
-                    # barren
-                    useful_text = "\nIt's probably not too important..."
-            elif hint_mode == "Direct":
-                useful_text = (
-                    f"\nThey say this trial rewards those who complete it with\n{item}"
-                )
-            else:
-                useful_text = (
-                    "\nSomething went wrong when generating song hints.\n"
-                    "Please report this in #rando-bugs in the SSR Discord"
-                )
+            useful_text = self.placement_file.hints[hintname]
             find_event("003-ItemGet", obtain_text_name)["text"] += useful_text
             self.eventpatches["003-ItemGet"].append(
                 {
@@ -1297,14 +1272,14 @@ class GamePatcher:
             )
 
     def add_stone_hint_patches(self):
-        for hintname, hintdef in self.rando.hints.stonehint_definitions.items():
+        for hintname, hintdef in self.rando.stonehint_definitions.items():
             self.add_patch_to_event(
                 hintdef["textfile"],
                 {
                     "name": f"Hint {hintname}",
                     "type": "textpatch",
                     "index": hintdef["textindex"],
-                    "text": self.rando.hints.hints[hintname].to_gossip_stone_text(),
+                    "text": self.placement_file.hints[hintname],
                 },
             )
 
@@ -1334,7 +1309,7 @@ class GamePatcher:
                 "name": "Rando hash on file select",
                 "type": "textpatch",
                 "index": 73,
-                "text": self.rando.randomizer_hash,
+                "text": self.placement_file.hash_str,
             }
         )
 
@@ -1343,7 +1318,7 @@ class GamePatcher:
                 "name": "Rando hash on new file",
                 "type": "textpatch",
                 "index": 75,
-                "text": self.rando.randomizer_hash,
+                "text": self.placement_file.hash_str,
             }
         )
 
@@ -1851,8 +1826,8 @@ class GamePatcher:
             flagregionid = FLAGINDEX_NAMES.index(flagregion)
             for flag in flags:
                 if not isinstance(flag, int):  # it's a dict with onlyif and flag
-                    if not self.rando.logic.check_logical_expression_string_req(
-                        flag["onlyif"]
+                    if not Logic.check_static_option_req(
+                        flag["onlyif"], self.placement_file.options
                     ):
                         # flag should not be set according to options
                         continue
@@ -1894,7 +1869,7 @@ class GamePatcher:
             apply_rel_patch(self, rel, file, codepatches)
             if (
                 file == "d_a_shop_sampleNP.rel"
-                and self.rando.options["shop-mode"] != "Vanilla"
+                and self.placement_file.options["shop-mode"] != "Vanilla"
             ):
                 self.do_shoptable_rel_patch(rel)
             rel.save_changes()

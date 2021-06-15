@@ -25,6 +25,16 @@ DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict(
     [v, k] for k, v in DUNGEON_NAMES.items()
 )
 
+ENTRANCE_CONNECTIONS = {
+    "Dungeon Entrance In Deep Woods": "Skyview",
+    "Dungeon Entrance In Eldin Volcano": "Earth Temple",
+    "Dungeon Entrance In Lanayru Desert": "Lanayru Mining Facility",
+    "Dungeon Entrance In Lake Floria": "Ancient Cistern",
+    "Dungeon Entrance In Sand Sea": "Sandship",
+    "Dungeon Entrance In Volcano Summit": "Fire Sanctuary",
+    "Dungeon Entrance On Skyloft": "Sky Keep",
+}
+
 SHOP_CHECKS = [
     "Beedle - 50 Rupee Item",
     "Beedle - First 100 Rupee Item",

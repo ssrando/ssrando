@@ -144,4 +144,5 @@ ALL_ITEM_NAMES = set(
     + DUPLICATABLE_CONSUMABLE_ITEMS
     + DUNGEON_PROGRESS_ITEMS
     + DUNGEON_NONPROGRESS_ITEMS
+    + ["Rupoor"]  # has to be added here since it's not in the vanilla pool
 )

@@ -133,8 +133,7 @@ class EmptyGossipStoneHint(GossipStoneHint):
 
 class Hints:
     def __init__(self, logic: Logic):
-        with (RANDO_ROOT_PATH / "hints.yaml").open() as f:
-            self.stonehint_definitions: dict = yaml.safe_load(f)
+        self.stonehint_definitions = logic.rando.stonehint_definitions
         self.logic = logic
         for hintname, hintdef in self.stonehint_definitions.items():
             if self.logic.rando.options["logic-mode"] == "No Logic":

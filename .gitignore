@@ -170,6 +170,7 @@ modified-extract
 spoiler.txt
 *Spoiler Log.txt
 *Spoiler Log.json
+placement_file_*.json
 
 # files generated for build
 version-with-git.txt
