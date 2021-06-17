@@ -372,7 +372,7 @@ class Ui_MainWindow(object):
         self.groupBox_5.setGeometry(QRect(10, 10, 181, 231))
         self.verticalLayoutWidget = QWidget(self.groupBox_5)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 172, 201))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 170, 201))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -553,7 +553,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setGeometry(QRect(200, 10, 171, 231))
         self.verticalLayoutWidget_2 = QWidget(self.groupBox_2)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 151, 201))
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 151, 218))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -586,6 +586,36 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_2.addLayout(self.verticalLayout_8)
+
+        self.verticalLayout_30 = QVBoxLayout()
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.label_for_option_open_ac = QLabel(self.verticalLayoutWidget_2)
+        self.label_for_option_open_ac.setObjectName(u"label_for_option_open_ac")
+
+        self.verticalLayout_30.addWidget(self.label_for_option_open_ac)
+
+        self.option_open_ac = QComboBox(self.verticalLayoutWidget_2)
+        self.option_open_ac.setObjectName(u"option_open_ac")
+
+        self.verticalLayout_30.addWidget(self.option_open_ac)
+
+
+        self.verticalLayout_2.addLayout(self.verticalLayout_30)
+
+        self.verticalLayout_29 = QVBoxLayout()
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.label_for_option_open_fs = QLabel(self.verticalLayoutWidget_2)
+        self.label_for_option_open_fs.setObjectName(u"label_for_option_open_fs")
+
+        self.verticalLayout_29.addWidget(self.label_for_option_open_fs)
+
+        self.option_open_fs = QComboBox(self.verticalLayoutWidget_2)
+        self.option_open_fs.setObjectName(u"option_open_fs")
+
+        self.verticalLayout_29.addWidget(self.option_open_fs)
+
+
+        self.verticalLayout_2.addLayout(self.verticalLayout_29)
 
         self.horizontalLayout_10 = QHBoxLayout()
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
@@ -978,7 +1008,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(1)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1070,6 +1100,8 @@ class Ui_MainWindow(object):
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Open Settings", None))
         self.label_for_option_open_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Open Thunderhead", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
+        self.label_for_option_open_ac.setText(QCoreApplication.translate("MainWindow", u"Open Ancient Cistern", None))
+        self.label_for_option_open_fs.setText(QCoreApplication.translate("MainWindow", u"Open Fire Sanctuary", None))
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Overworld", None))
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))

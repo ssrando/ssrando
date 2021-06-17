@@ -586,8 +586,8 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>172</width>
-         <height>213</height>
+         <width>170</width>
+         <height>201</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -857,7 +857,7 @@
          <x>10</x>
          <y>20</y>
          <width>151</width>
-         <height>229</height>
+         <height>218</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -890,7 +890,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_28">
+         <layout class="QVBoxLayout" name="verticalLayout_30">
           <item>
            <widget class="QLabel" name="label_for_option_open_ac">
             <property name="text">
@@ -901,19 +901,19 @@
           <item>
            <widget class="QComboBox" name="option_open_ac"/>
           </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_29">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_29">
-            <item>
-             <widget class="QLabel" name="label_for_option_open_fs">
-              <property name="text">
-               <string>Open Fire Sanctuary</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="option_open_fs"/>
-            </item>
-           </layout>
+           <widget class="QLabel" name="label_for_option_open_fs">
+            <property name="text">
+             <string>Open Fire Sanctuary</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_open_fs"/>
           </item>
          </layout>
         </item>

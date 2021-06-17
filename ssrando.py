@@ -34,12 +34,12 @@ if IS_RUNNING_FROM_SOURCE:
 
     try:
         version_suffix = (
-            "_"
-            + subprocess.check_output(
-                ["git", "rev-parse", "--short", "HEAD"], cwd=Path(__file__).parent
-            )
-            .decode("ASCII")
-            .strip()
+                "_"
+                + subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"], cwd=Path(__file__).parent
+        )
+                .decode("ASCII")
+                .strip()
         )
     except Exception:
         pass  # probably not git installed
@@ -94,25 +94,26 @@ class Randomizer:
             "Ancient Cistern",
             "Sandship",
             "Fire Sanctuary",
+            "Sky Keep"
         ]
 
         def check_sacred_water(dungeons):
-          if self.options["open-ac"] == "Heal Water Dragon" and dungeons[3] == "Skyview":
-            new_index = self.rng.choice([i for i in range(len(dungeons)) if i != 3])
-            dungeons[3], dungeons[new_index] = dungeons[new_index], dungeons[3]
+            if self.options["open-ac"] == "Heal Water Dragon" and dungeons[3] == "Skyview":
+                new_index = self.rng.choice([i for i in range(len(dungeons)) if i != 3])
+                dungeons[3], dungeons[new_index] = dungeons[new_index], dungeons[3]
 
         if self.options["randomize-entrances"] == "None":
-          pass
+            pass
         elif self.options["randomize-entrances"] == "Dungeons":
-          dungeons.remove("Skykeep")
-          self.rng.shuffle(dungeons)
-          check_sacred_water(dungeons)
-          dungeons.append("Skykeep")
+            dungeons.remove("Sky Keep")
+            self.rng.shuffle(dungeons)
+            check_sacred_water(dungeons)
+            dungeons.append("Sky Keep")
         elif self.options["randomize-entrances"] == "Dungeons + Sky Keep":
-          self.rng.shuffle(dungeons)
-          check_sacred_water(dungeons)
+            self.rng.shuffle(dungeons)
+            check_sacred_water(dungeons)
         else:
-          assert False, f"""Unknown value {self.options["randomize-entrances"]} for option randomize-entrances"""
+            assert False, f"""Unknown value {self.options["randomize-entrances"]} for option randomize-entrances"""
 
         self.entrance_connections = OrderedDict(
             [
@@ -215,10 +216,10 @@ class Randomizer:
                 "ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract"
             )
         if not (
-            self.modified_extract_path
-            / "DATA"
-            / "files"
-            / "COPYDATE_CODE_2011-09-28_153155"
+                self.modified_extract_path
+                / "DATA"
+                / "files"
+                / "COPYDATE_CODE_2011-09-28_153155"
         ).exists():
             raise StartupException("ERROR: the randomizer only supports NTSC-U 1.00")
 
@@ -263,7 +264,7 @@ class Randomizer:
             self.calculate_playthrough_progression_spheres()
 
             spoiler_log_output_path = self.options["output-folder"] / (
-                "SS Random %s - Anti Spoiler Log.txt" % self.seed
+                    "SS Random %s - Anti Spoiler Log.txt" % self.seed
             )
             with spoiler_log_output_path.open("w") as f:
                 f.write(spoiler_log)
@@ -277,7 +278,7 @@ class Randomizer:
 
         # Write required dungeons
         for i, dungeon in enumerate(self.required_dungeons):
-            spoiler_log += f"Required Dungeon {i+1}: " + dungeon + "\n"
+            spoiler_log += f"Required Dungeon {i + 1}: " + dungeon + "\n"
 
         spoiler_log += "\n\n"
 
@@ -304,13 +305,13 @@ class Randomizer:
                 loc
                 for loc in progression_sphere
                 if loc == "Past - Demise"
-                or self.logic.done_item_locations[loc] != "Gratitude Crystal"
+                   or self.logic.done_item_locations[loc] != "Gratitude Crystal"
             ]
             spoiler_log += "%d:\n" % (i + 1)
 
             for zone_name, locations_in_zone in zones.items():
                 if not any(
-                    loc for (loc, _) in locations_in_zone if loc in progression_sphere
+                        loc for (loc, _) in locations_in_zone if loc in progression_sphere
                 ):
                     # No locations in this zone are used in this sphere.
                     continue
@@ -366,7 +367,7 @@ class Randomizer:
         spoiler_log += "\n\n\n"
 
         spoiler_log_output_path = self.options["output-folder"] / (
-            "SS Random %s - Spoiler Log.txt" % self.seed
+                "SS Random %s - Spoiler Log.txt" % self.seed
         )
         with spoiler_log_output_path.open("w") as f:
             f.write(spoiler_log)
@@ -378,7 +379,7 @@ class Randomizer:
             self.calculate_playthrough_progression_spheres()
 
             spoiler_log_output_path = self.options["output-folder"] / (
-                "SS Random %s - Anti Spoiler Log.json" % self.seed
+                    "SS Random %s - Anti Spoiler Log.json" % self.seed
             )
             with spoiler_log_output_path.open("w") as f:
                 json.dump(spoiler_log, f, indent=2)
@@ -398,7 +399,7 @@ class Randomizer:
         spoiler_log["entrances"] = self.entrance_connections
 
         spoiler_log_output_path = self.options["output-folder"] / (
-            "SS Random %s - Spoiler Log.json" % self.seed
+                "SS Random %s - Spoiler Log.json" % self.seed
         )
         with spoiler_log_output_path.open("w") as f:
             json.dump(spoiler_log, f, indent=2)
@@ -413,10 +414,10 @@ class Randomizer:
             name
             for name in self.options.options
             if (
-                self.options[name] not in [False, [], {}, OrderedDict()]
-                or OPTIONS[name]["type"] == "int"
-            )
-            and OPTIONS[name].get("permalink", True) == True
+                       self.options[name] not in [False, [], {}, OrderedDict()]
+                       or OPTIONS[name]["type"] == "int"
+               )
+               and OPTIONS[name].get("permalink", True) == True
         ]
         header_dict["options"] = OrderedDict()
         for option_name in non_disabled_options:
@@ -439,10 +440,10 @@ class Randomizer:
             name
             for name in self.options.options
             if (
-                self.options[name] not in [False, [], {}, OrderedDict()]
-                or OPTIONS[name]["type"] == "int"
-            )
-            and OPTIONS[name].get("permalink", True) == True
+                       self.options[name] not in [False, [], {}, OrderedDict()]
+                       or OPTIONS[name]["type"] == "int"
+               )
+               and OPTIONS[name].get("permalink", True) == True
         ]
         option_strings = []
         for option_name in non_disabled_options:

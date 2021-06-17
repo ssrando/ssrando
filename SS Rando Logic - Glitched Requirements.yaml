@@ -1508,7 +1508,7 @@ Can Access Floria Waterfall:
   # Scene Flag 5x02 is "Lake Floria Waterfall Statue checked", but one needs to be in Lake Floria to RBM it
 
 Can Access Dungeon Entrance In Lake Floria:
-  Can Access Floria Waterfall & Water Scale
+  Can Access Floria Waterfall & Water Scale & (Option "open-ac" Is "Open" | Can Heal Water Dragon)
   # If requiring Sacred Water, make sure the randomizer places the skyview boss key before
 
 Lake Floria - Lake Floria Chest:
