@@ -1714,22 +1714,6 @@ F200: # Eldin main area
     layer: 1
     room: 2
     objtype: STAG
-  - name: extra Bomb flower # Deathwarp if getting cube via Eldin OoB
-    type: objadd
-    layer: 0
-    room: 4
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0xFFFFFFFF
-      posx: -4717
-      posy: 14600
-      posz: -24954
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFD99
-      name: Bombf
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
