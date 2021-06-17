@@ -1337,7 +1337,7 @@
       next: 468
   - name: Water Dragon Return Basin Text
     type: textadd
-    text: "Very well. I'll be waiting here if you\ndecide to borrow my <r<water\nbasin>> again."
+    text: "Very well. I'll be waiting here if you\ndecide to borrow my <r<water basin>>\nagain."
   - name: Tell player about returning Basin
     type: textpatch
     index: 128
@@ -1355,18 +1355,18 @@
       type: type3
       subType: 0
       param1: 0
-      param2: 186
+      param2: 186 # Water Basin Collected Flag 1
       next: Unset Water Basin Collected Storyflag Part 2
-      param3: 1
+      param3: 1 # Unset flag
   - name: Unset Water Basin Collected Storyflag Part 2
     type: flowadd
     flow:
       type: type3
       subType: 0
       param1: 0
-      param2: 677
+      param2: 677 # Water Basin Collected Flag 2
       next: Unset Water Basin Collected Storyflag Part 3
-      param3: 1
+      param3: 1 # Unset flag
   - name: Unset Water Basin Collected Storyflag Part 3
     type: flowadd
     flow:

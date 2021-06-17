@@ -809,6 +809,12 @@ Faron Woods - Chest Inside Great Tree:
 
 ## Lake Floria
 
+Can Heal Water Dragon:
+  Can Get Sacred Water & Can Access Floria Waterfall
+
+Can Collect Water Basin:
+  Can Heal Water Dragon # Flag is set during Dragon healing CS
+
 Can Access Lake Floria above Rock:
   Can Open Door to Lake Floria & Water Scale
 
@@ -981,8 +987,11 @@ Can Get Past Second Frog:
   Can Get Past First Frog & Clawshots & Bottle
   # Scene Flag Dx08 is "Second Frog Watered"
 
+Can Complete Scrapper Escort:
+  Can Defeat Moblins & Can Defeat Lezalfos & Can Access Volcano Summit & Can Get Past Second Frog & Can Collect Water Basin
+
 Can Access Dungeon Entrance In Volcano Summit:
-  Can Get Past Second Frog
+  Can Get Past Second Frog & (Option "open-fs" Is "Open" | Can Complete Scrapper Escort)
 
 Goddess Cube inside Volcano Summit:
   Can Access Volcano Summit & Long Range Skyward Strike
@@ -1355,8 +1364,8 @@ Can Unlock Goddess Walls:
 Can Beat Skyview 2:
   Can Access Skyview 2 & Can Beat Skyview
 
-Can Get Sacred Water: # currently unneeded
-  Can Beat Skyview 2 & Bottle
+Can Get Sacred Water:
+  Can Beat Skyview & Bottle # Sacred water available on all Skyview layers
 
 Can Hit High Skyview Switches:
   Distance Activator | Bomb Bag
