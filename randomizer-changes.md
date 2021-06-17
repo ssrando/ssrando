@@ -49,6 +49,9 @@
 - Kikwi Hermit Yerbal spawns after obtaining Water Dragon Scale
 - The sacred water quest is skipped, the waterfall in front of Ancient Cistern is removed
 - Many Fi Texts are removed
+### Lake Floria
+- An option can be set to have Ancient Cistern be open from the start or require healing the Water Dragon with Sacred Water.
+- The water basin can be returned to the Water Dragon if you find yourself unable to complete Scrapper Escort. Just return to the Dragon's lair and talk to her. This will save your progress in Scrapper escort as well, so you can recollect the basin from the Water Dragon and continue where you left off when you get the items.
 ### Skyview Temple
 - Obtaining Water Dragon scale changes Skyview to it's layer 2 state (where you are supposed to get sacred water). This naturally changes a lot of things about the dungeon, such as the enemies you will encounter
 - On layer 2, the shortcut boards from the first room are already gone. The Mogmas also don't trigger cutscenes anymore (except the first one)
@@ -56,6 +59,7 @@
 - The key door to the main area of the dungeon needs only one key on both layers, thus removing one small key in the dungeon, to a total of 2
 - After opening the Beetle chest, the door out of the miniboss room automatically opens, preventing a softlock without beetle
 - Some pots have been added that will give you bombs. This is to help players having to go through Skyview with only Bombs
+- Sacred water can be obtained on all Skyview layers for healing the Water Dragon
 ### Ancient Cistern
 - After raising the statue all the way up, it's possible to reset the statues position by talking to the stone tablet next to the boss key hole. This is important in order to be able to reach the whip chest and the basement chest
 - The cutscene inside the statue has been removed
@@ -67,7 +71,7 @@
 ### Earth Temple
 - no noteworthy changes
 ### Volcano Summit
-- The Fire Sanctuary is opened by default. This means you do not need the Water Basin or to complete the Scrapper Escort
+- Scrapper Escort is optional, there is an option to have Fire Sanctuary be open from the start or require Scrapper Escort to open it. You must also heal the Water Dragon to complete Scrapper Escort.
 ### Fire Sanctuary
 - The first cutscene with Guld has been removed
 - The initial cutscene of the first trapped mogma was removed to prevent a possible softlock when activating it out of order
