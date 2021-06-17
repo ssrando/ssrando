@@ -553,7 +553,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setGeometry(QRect(200, 10, 171, 231))
         self.verticalLayoutWidget_2 = QWidget(self.groupBox_2)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 151, 201))
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 20, 151, 229))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -598,6 +598,21 @@ class Ui_MainWindow(object):
         self.option_open_ac.setObjectName(u"option_open_ac")
 
         self.verticalLayout_28.addWidget(self.option_open_ac)
+
+        self.verticalLayout_29 = QVBoxLayout()
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.label_for_option_open_fs = QLabel(self.verticalLayoutWidget_2)
+        self.label_for_option_open_fs.setObjectName(u"label_for_option_open_fs")
+
+        self.verticalLayout_29.addWidget(self.label_for_option_open_fs)
+
+        self.option_open_fs = QComboBox(self.verticalLayoutWidget_2)
+        self.option_open_fs.setObjectName(u"option_open_fs")
+
+        self.verticalLayout_29.addWidget(self.option_open_fs)
+
+
+        self.verticalLayout_28.addLayout(self.verticalLayout_29)
 
 
         self.verticalLayout_2.addLayout(self.verticalLayout_28)
@@ -978,7 +993,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(1)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1071,6 +1086,7 @@ class Ui_MainWindow(object):
         self.label_for_option_open_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Open Thunderhead", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
         self.label_for_option_open_ac.setText(QCoreApplication.translate("MainWindow", u"Open Ancient Cistern", None))
+        self.label_for_option_open_fs.setText(QCoreApplication.translate("MainWindow", u"Open Fire Sanctuary", None))
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Overworld", None))
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))

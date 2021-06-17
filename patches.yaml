@@ -1142,6 +1142,14 @@ F102_1: # Outside AC
     objtype: OBJ
     object:
       trigstoryfid: 900 # new AC beat flag
+  - name: Basin pickup storyflag after healing Dragon
+    onlyif: Option "open-fs" Is "Scrapper Escort"
+    type: objpatch
+    room: 0
+    index: 0
+    objtype: EVNT
+    object:
+      story_flag1: 467 # Goron frog text (allows basin to be picked up)
 F102_2: # Water Dragon's Lair
   - name: Layer override
     type: layeroverride
@@ -1553,6 +1561,12 @@ F200: # Eldin main area
   - name: Layer override
     type: layeroverride
     override:
+      - story_flag: 187
+        night: 0
+        layer: 1
+      - story_flag: 186
+        night: 0
+        layer: 3
       - story_flag: -1
         night: 0
         layer: 1
@@ -1742,10 +1756,10 @@ F201_1: # Inside Volcano
   - name: Layer override
     type: layeroverride
     override:
-      - story_flag: 19
+      - story_flag: 187
         night: 0
-        layer: 4
-      - story_flag: 677
+        layer: 1
+      - story_flag: 186
         night: 0
         layer: 3
       - story_flag: 207
@@ -1761,7 +1775,10 @@ F201_3: # FS entrance
       - story_flag: 901
         night: 0
         layer: 4
-      - story_flag: 677
+      - story_flag: 187
+        night: 0
+        layer: 1
+      - story_flag: 186
         night: 0
         layer: 3
       - story_flag: 207
@@ -1771,6 +1788,7 @@ F201_3: # FS entrance
         night: 0
         layer: 1
   - name: Big Flames
+    onlyif: Option "open-fs" Is "Open"
     type: objdelete
     id: 0xFC15
     layer: 0

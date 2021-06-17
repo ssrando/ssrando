@@ -1335,6 +1335,82 @@
     index: 62
     flow:
       next: 468
+  - name: Water Dragon Return Basin Text
+    type: textadd
+    text: "Very well. I'll be waiting here if you\ndecide to borrow my <r<water\nbasin>> again."
+  - name: Tell player about returning Basin
+    type: textpatch
+    index: 128
+    text: "Ah, it's you. Tell me, are you mastering\nthe power that dwells within your\nsword?\n\nOh? You wish to borrow my <r<water\nbasin>>?\n\n\nHmm... Very well. I have\nrecovered, and I have no intention of\nhaving to soak in it again soon!\n\nBegone with it. It's yours to use as\nyou please. I'll be waiting here\nif you need to return it."
+  - name: Show Water Dragon Return Basin Text
+    type: flowadd
+    flow:
+      type: type1
+      next: Water Dragon Reload
+      param3: 111
+      param4: Water Dragon Return Basin Text
+  - name: Unset Water Basin Collected Storyflag Part 1
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 186
+      next: Unset Water Basin Collected Storyflag Part 2
+      param3: 1
+  - name: Unset Water Basin Collected Storyflag Part 2
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 677
+      next: Unset Water Basin Collected Storyflag Part 3
+      param3: 1
+  - name: Unset Water Basin Collected Storyflag Part 3
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 366
+      next: Show Water Dragon Return Basin Text
+      param3: 0
+  - name: Allow Returning Water Basin
+    type: flowpatch
+    index: 173
+    flow: {}
+    cases:
+      - Show new Water Dragon Text Option
+      - 171
+  - name: New Water Dragon text Option
+    type: textadd
+    text: "How is that confounded contraption\ntreating you?\n[1]Return Basin[2-]Nevermind"
+  - name: Show new Water Dragon Text Option
+    type: flowadd
+    flow:
+      type: type1
+      next: Water Dragon Text option Switch
+      param3: 111
+      param4: New Water Dragon text Option
+  - name: Water Dragon Text option Switch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 0
+    cases:
+      - Unset Water Basin Collected Storyflag Part 1
+      - 170
+  - name: Water Dragon Reload
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 1
+      param2: 0
+      next: -1
+      param3: 10
 
 250-ForestSiren:
   - name: shorten fi text

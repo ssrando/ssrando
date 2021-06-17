@@ -200,7 +200,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -857,7 +857,7 @@
          <x>10</x>
          <y>20</y>
          <width>151</width>
-         <height>201</height>
+         <height>229</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -900,6 +900,20 @@
           </item>
           <item>
            <widget class="QComboBox" name="option_open_ac"/>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_29">
+            <item>
+             <widget class="QLabel" name="label_for_option_open_fs">
+              <property name="text">
+               <string>Open Fire Sanctuary</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="option_open_fs"/>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>

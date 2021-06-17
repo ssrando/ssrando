@@ -176,6 +176,7 @@ class RandoGUI(QMainWindow):
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.progression_goddess.clicked.connect(self.goddess_cubes_toggled)
+        self.ui.option_open_ac.currentIndexChanged.connect(self.open_ac_updated)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.update_ui_for_settings()
         self.set_option_description(None)
@@ -440,6 +441,14 @@ class RandoGUI(QMainWindow):
         self.ui.progression_floria_goddess.setEnabled(enabled)
         self.ui.progression_summit_goddess.setEnabled(enabled)
         self.ui.progression_sand_sea_goddess.setEnabled(enabled)
+
+    def open_ac_updated(self):
+        open_status = self.ui.option_open_ac.currentIndex()
+        if open_status == 0:
+            self.ui.option_open_fs.setEnabled(False)
+            self.ui.option_open_fs.setCurrentIndex(0)
+        else:
+            self.ui.option_open_fs.setEnabled(True)
     
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))

@@ -263,11 +263,23 @@
   choices:
     - Open
     - Heal Water Dragon
-  default: Open
+  default: Heal Water Dragon
   help: Controls the conditions for opening Ancient Cistern. Open means that it will be open from the
     start, and Heal Water Dragon means that sacred water is required to heal the water dragon and open
     Ancient Cistern.
   ui: option_open_ac
+- name: Open Fire Sanctuary
+  command: open-fs
+  type: singlechoice
+  bits: 2
+  choices:
+    - Open
+    - Scrapper Escort
+  default: Open
+  help: Controls the conditions for opening Fire Sanctuary. Open means that it will be open from the
+    start, and Scrapper Escort means that healing the Water Dragon and doing Scrapper Escort is required
+    to enter Fire Santuary. "Open Ancient Cistern" must be "Heal Water Dragon" to activate Scrapper Escort.
+  ui: option_open_fs
 - name: Horde
   command: horde
   type: boolean
