@@ -1,60 +1,59 @@
 Skyloft - Gossip Stone on Floating Island:
   textfile: 124-Town6
   textindex: 18
-  Need: Clawshots
+
 Sky - Gossip Stone on Lumpy Pumpkin:
   textfile: 004-Object
   textindex: 27
-  Need: Nothing
+
 Sky - Gossip Stone in Volcanic Island:
   textfile: 004-Object
   textindex: 30
-  Need: Nothing
+
 Sky - Gossip Stone in Bamboo Island:
   textfile: 004-Object
   textindex: 11
-  Need: Nothing
+
 Thunderhead - Gossip Stone on Bug Heaven:
   textfile: 004-Object
   textindex: 12
-  Need: Can Access Thunderhead
+
 Sealed Grounds - Gossip Stone behind the Temple:
   textfile: 004-Object
   textindex: 13
-  Need: Can Access Sealed Temple
+
 Faron Woods - Gossip Stone in Deep Woods:
   textfile: 004-Object
   textindex: 15
-  Need: Can Access Deep Woods
+
 Lake Floria - Gossip Stone outside Ancient Cistern:
   textfile: 004-Object
   textindex: 28
-  Need: Can Access Lake Floria
+
 Eldin Volcano - Gossip Stone next to Earth Temple:
   textfile: 004-Object
   textindex: 14
-  Need: Can Access Second Part of Eldin
+
 Eldin Volcano - Gossip Stone in Thrill Digger Cave:
   textfile: 004-Object
   textindex: 16
-  Need: Can Access Second Part of Eldin
+
 Eldin Volcano - Gossip Stone outside Fire Sanctuary:
   textfile: 004-Object
   textindex: 31
-  Need: Can Access Volcano Summit & Bottle
+
 Eldin Volcano - Gossip Stone in Waterfall Area:
   textfile: 004-Object
   textindex: 26
-  Need: Can Access Volcano Summit & Clawshots
+
 Lanayru Desert - Gossip Stone in Temple of Time Area:
   textfile: 004-Object
   textindex: 25
-  Need: Can Access Second Part of Lanayru & Hook Beetle
+
 Sand Sea - Gossip Stone in Shipyard:
   textfile: 004-Object
   textindex: 23
-  Need: Can Access Sand Sea
+
 Lanayru Caves - Gossip Stone in Center:
   textfile: 004-Object
   textindex: 24
-  Need: Can Access Lanayru & Clawshots

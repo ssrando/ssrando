@@ -28,17 +28,35 @@ global:
     - 519 # Updated Sand Sea map
     - 115 # Full Lake Floria map
     - 180 # Thrill digger entrance CS
+    - 199 # talked to sword instructor after practice sword chest
+    - 804 # eldin entrance statue
     - 148 # Link looking around cutscene in Sealed Temple (for bokos in BtT)
     - 64 # Water Dragon quest started
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
-    - 95 # Fi Text for Ruby Tablet
-    - 96 # Fi Text for Amber Tablet
-    - 66 # Batreaux Doors outside open
-    - 99 # Sheikah Stone cs played
-    - 67 # Inside Doors open
-    - 1 # UA Doors open
+    Skyloft:
+      - 95 # Fi Text for Ruby Tablet
+      - 96 # Fi Text for Amber Tablet
+      - 66 # Batreaux Doors outside open
+      - 99 # Sheikah Stone cs played
+      - 67 # Inside Doors open
+      - 1 # UA Doors open
+    Faron Woods:
+      - 15 # fi text after vine to deep woods
+      - 14 # text in front of VP statue
+    Sealed Grounds:
+      - 7 # vents active
+      - onlyif: Option "skip-skykeep" Enabled
+        flag: 50 # horde door open
+      - 13 # door to temple unlocked
+    Lanayru Desert:
+      - 68 # desert statue checked
+      - 7 # pushed first minecart to end
+      - onlyif: Option "open-lmf" Is "Open"
+        flag: 30 # LMF Rises CS
+      - onlyif: Option "open-lmf" Is "Open"
+        flag: 31 # LMF rising CS watched
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -320,7 +338,7 @@ B301: # after Sandship boss
     object:
       params1: 0xC303FF03 # change to zone temp flag 3
       anglez: 0xFFFF # don't set any storyflag here
-D003_0: # Skykeep Courage Room
+D003_0: # Sky Keep Courage Room
   - name: Fi text
     type: objdelete
     id: 0xFC0F
@@ -333,7 +351,7 @@ D003_0: # Skykeep Courage Room
     layer: 0
     room: 0
     objtype: OBJ
-D003_2: # Skykeep Power Room
+D003_2: # Sky Keep Power Room
   - name: Fi text
     type: objdelete
     id: 0xFC33
@@ -352,7 +370,7 @@ D003_2: # Skykeep Power Room
     layer: 0
     room: 0
     objtype: OBJ
-D003_3: # Skykeep Wisdom Room
+D003_3: # Sky Keep Wisdom Room
   - name: Fi text
     type: objdelete
     id: 0xFC1B
@@ -365,7 +383,7 @@ D003_3: # Skykeep Wisdom Room
     layer: 0
     room: 0
     objtype: OBJ
-D003_7: # Skykeep Entrance Room
+D003_7: # Sky Keep Entrance Room
   - name: Fi text
     type: objdelete
     id: 0xFC0B
@@ -731,6 +749,42 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 57 # talk to Elder after locating every Kikwi
+  - name: Startflags 1
+    type: objadd
+    room: 1 # Link's room
+    layer: 1 # only accessible in BiT
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000
+      sizey: 1000
+      sizez: 1000
+      anglex: 27 # loftwing storyflag
+      angley: 0
+      anglez: 65535
+      name: SwAreaT
+  - name: Startflags 2
+    type: objadd
+    room: 1 # Link's room
+    layer: 1 # only accessible in BiT
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 761
+      posy: -22
+      posz: -2260
+      sizex: 1000
+      sizey: 1000
+      sizez: 1000
+      anglex: 198 # can jump off loftwing storyflag
+      angley: 0
+      anglez: 65535
+      name: SwAreaT
 F002r: # Beedle's Airshop
   - name: Delete cutscene
     type: objdelete
@@ -771,6 +825,12 @@ F008r: # Goddess Statue
   - name: Delete SwrdSt
     type: objdelete
     id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Delete Crest
+    type: objdelete
+    id: 0xFC02
     layer: 0
     room: 0
     objtype: OBJ
@@ -875,14 +935,6 @@ F020: # Sky
     objtype: STAG
     object:
       untrigstoryfid: -1
-  - name: remove Wyrna requirement for orille
-    type: objpatch
-    id: 0xFCFB
-    layer: 2
-    room: 0
-    objtype: OBJ
-    object:
-      trigstoryfid: 36
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
@@ -1040,18 +1092,6 @@ F100: # Faron main area
     destlayer: 0
     room: 0
     objtype: OBJ
-  - name: Remove Fi text infront of Viewing Platform
-    type: objdelete
-    id: 0x46BD
-    layer: 1
-    room: 0
-    objtype: OBJ
-  - name: Remove Fi text after shooting down vine to deep woods
-    type: objdelete
-    id: 0x46BE
-    layer: 1
-    room: 0
-    objtype: OBJ
   - name: Remove Fi text Not letting you leave machi 1
     type: objdelete
     id: 0x0EBB
@@ -1156,7 +1196,7 @@ F102_2: # Water Dragon's Lair
     override: # Layer 1 for the Water Dragon
       - story_flag: -1
         night: 0
-        layer: 1 
+        layer: 1
 F102: # lake Floria
   - name: Layer override
     type: layeroverride
@@ -1570,13 +1610,6 @@ F200: # Eldin main area
       - story_flag: -1
         night: 0
         layer: 1
-  - name: Eldin Entrance Statue always checked
-    type: objpatch
-    room: 0
-    index: 0
-    objtype: EVNT
-    object:
-      story_flag2: 804
   - name: intro cs
     type: objmove
     id: 0xFC26
@@ -1675,6 +1708,12 @@ F200: # Eldin main area
     type: oarcadd
     oarc: GossipStone
     destlayer: 0
+  - name: CS after draining lava for key piece
+    type: objdelete
+    id: 0x14CC
+    layer: 1
+    room: 2
+    objtype: STAG
   - name: extra Bomb flower # Deathwarp if getting cube via Eldin OoB
     type: objadd
     layer: 0
@@ -1906,7 +1945,7 @@ B200: # Boss Room
     id: 0xFC30
     layer: 2
     room: 10
-    objtype: OBJ  
+    objtype: OBJ
 D201: # FS A
   - name: Mogma 1
     type: objdelete
@@ -2052,14 +2091,6 @@ F300_1: # Lanayru Mines
       - story_flag: -1
         night: 0
         layer: 1
-  - name: Connect intro event to entrance statue # make sure the statue is always checked
-    type: objpatch
-    id: 0xFC8C
-    layer: 1
-    room: 0
-    objtype: STAG
-    object:
-      params1: 0xFFFF4403 # sceneflag 68
   - name: Remove First timeshift stone cs
     type: objdelete
     id: 0xFC47
@@ -2357,6 +2388,12 @@ F301_2: # inside Pirate Stronghold
     layer: 0
     room: 1
     objtype: OBJ
+  - name: CS before second lever
+    type: objdelete
+    id: 0xFC28
+    layer: 0
+    room: 6
+    objtype: STAG
 F301_3: # Skipper's Retreat
   - name: Text after intro
     type: objdelete
@@ -2886,21 +2923,6 @@ F401: # Sealed grounds Whirlpool
     layer: 3
     room: 1
     objtype: OBJ
-  - name: Set vents in Intro CS
-    type: objpatch
-    room: 1
-    index: 7
-    objtype: EVNT
-    object:
-      sceneflag1: 7 # vents active
-  - name: Set vents in Intro CS
-    type: objpatch
-    room: 1
-    index: 7
-    objtype: EVNT
-    onlyif: Option "skip-skykeep" Enabled
-    object:
-      sceneflag2: 50 # door to horde open
   - name: Fi text for Trial
     type: objdelete
     id: 0xFC09
@@ -3010,22 +3032,22 @@ F403: # Hylia's Realm
       - story_flag: -1
         night: 0
         layer: 13
-F407: # Skykeep beaten cs
-  - name: Skykeep CS remove Storyflag
+F407: # Sky Keep beaten CS
+  - name: Sky Keep CS remove Storyflag
     type: objpatch
     room: 0
     index: 2
     objtype: EVNT
     object:
       story_flag2: -1 # first storyflag is handled by entrance rando patches
-  - name: Skykeep CS remove Storyflag
+  - name: Sky Keep CS remove Storyflag
     type: objpatch
     room: 0
     index: 3
     objtype: EVNT
     object:
       story_flag2: -1
-  # - name: Send player to Skyloft after Skykeep
+  # - name: Send player to Skyloft after Sky Keep
   #   type: objpatch
   #   room: 0
   #   index: 1

@@ -168,6 +168,124 @@ lwz r0, 20(r1)
 mtlr r0
 addi r1, r1, 0x10
 blr
+
+; function to set a sceneflag to the saved flags area
+; breaks in normal gameplay when settings a sceneflag for the current sceneflagindex
+; r3 is flag, r4 is area
+.global setSceneflagForArea
+setSceneflagForArea:
+stwu r1, -16(r1)
+mflr r0
+stw r0, 20(r1)
+stw r31, 12(r1)
+stw r30, 8(r1)
+mr r30, r3
+mr r31, r4
+cmplwi r3, 128
+bge setSceneflagForArea_end
+lwz r3,-0x4444(r13) ; FILE_MANAGER
+bl FileManager__getSceneflags
+srwi r4, r30, 4
+rlwinm r0, r31, 3, 0, 28
+add r0, r4, r0
+rlwinm r6, r0, 1, 0, 30
+lhzx r5, r3, r6
+li r4, 1
+rlwinm r0,r30,0,28,31
+slw r0, r4, r0
+clrlwi r0, r0, 16
+or r0, r5, r0
+sthx r0, r3, r6
+setSceneflagForArea_end:
+lwz r31, 12(r1)
+lwz r30, 8(r1)
+lwz r0, 20(r1)
+mtlr r0
+addi r1, r1, 16
+blr
+
+; function that processes start story-, scene- and itemsflags
+.global processStartflags
+processStartflags:
+stwu r1, -16(r1)
+mflr r0
+stw r0, 20(r1)
+stw r31, 12(r1)
+stw r30, 8(r1)
+lwz r3,-0x4444(r13) ; FILE_MANAGER
+addis r3, r3, 1
+li r0, 1
+stb r0, -22450(r3)
+lis r31, 0x804e
+ori r31, r31, 0xe1b8
+; storyflags
+b storyflag_loop_cond
+storyflag_loop_body:
+lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+bl FlagManager__setFlagTo1
+storyflag_loop_cond:
+lhz r4, 0(r31)
+addi r31, r31, 2
+cmplwi r4, 0xFFFF
+bne storyflag_loop_body
+; itemflags
+b itemflag_loop_cond
+itemflag_loop_body:
+lwz r3,-0x4040(r13) ; ITEMFLAG_MANAGER
+bl FlagManager__setFlagTo1
+itemflag_loop_cond:
+lhz r4, 0(r31)
+addi r31, r31, 2
+cmplwi r4, 0xFFFF
+bne itemflag_loop_body
+; sceneflags
+b sceneflag_loop_cond
+sceneflag_loop_body:
+rlwinm r3,r4,0,0xff
+srwi r4,r4,8
+bl setSceneflagForArea
+sceneflag_loop_cond:
+lhz r4, 0(r31)
+addi r31, r31, 2
+cmplwi r4, 0xFFFF
+bne sceneflag_loop_body
+lwz r3,-0x4444(r13) ; FILE_MANAGER
+addis r3, r3, 1
+li r0, 0
+stb r0, -22450(r3)
+lwz r31, 12(r1)
+lwz r30, 8(r1)
+lwz r0, 20(r1)
+mtlr r0
+addi r1, r1, 16
+blr
+
+; function, that only actually loads the keyboard arcs if the following conditions are met:
+; 1. you are in BiT (checked with Link's actor params)
+; 2. All files are not empty
+.global alloc_keyboard_arcs_conditional
+alloc_keyboard_arcs_conditional:
+; can't use r3, r4, r5, r6
+lwz r12, -0x3cb4(r13) ; LINK_PTR
+lwz r12, 0x4(r12) ; link params
+xoris r12, r12, 0xFFFF ; check for 0xFFFF0FFF, actor params on title screen, are different in BiT
+cmpwi r12, 0x0FFF
+beq do_requestFileLoadFromDisk
+lwz r12,-0x4444(r13) ; FILE_MANAGER
+lwz r12, 0(r12) ; location for all saved save files
+lbz r11, 0x53ad(r12) ; new savefile flag on file 1 + 0x20 offset from save files in general
+cmpwi r11, 1
+beq do_requestFileLoadFromDisk
+addi r12, r12, 0x53c0
+lbz r11, 0x53cd(r12) ; new savefile flag on file 2
+cmpwi r11, 1
+beq do_requestFileLoadFromDisk
+addi r12, r12, 0x53c0
+lbz r11, 0x53cd(r12) ; new savefile flag
+cmpwi r11, 1
+bnelr
+do_requestFileLoadFromDisk:
+b requestFileLoadFromDisk
 .close
 
 
@@ -196,7 +314,7 @@ blr
 .global trigger_exit_one
 trigger_exit_one:
 lwz r3,-0x3cac(r13) ; RELOADER_PTR
-li r4, 0 ; current room, all rooms in skykeep are room 0 
+li r4, 0 ; current room, all rooms in sky keep are room 0
 li r5, 1 ; take exit 1, it's always the skyloft exit
 li r6, 2 ; idk
 li r7, 2 ; idk

@@ -119,6 +119,17 @@ nop
 nop
 nop
 
+; after the function that starts the new file, also process the startflags
+.org 0x801bb9bc
+b processStartflags
+
+; always allocate keyboard arcs to the end of the heap, to make sure
+; faron BiT doesn't crash
+.org 0x801b9a10
+li r5, 2
+.org 0x801b9a44
+li r5, 2
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
@@ -343,7 +354,7 @@ nop ; do not need spiral charge to spawn
 .org 0x458
 li r3, 0 ; load a null pointer for the skyloft exit, so the other custom code can take care of it
 
-; this patch branches to the custom trigger_exit_one function, when a scenechange is needed to outside of skykeep
+; this patch branches to the custom trigger_exit_one function, when a scenechange is needed to outside of sky keep
 .org 0x2EC ; branch, if link doesn't touch the trigger
 beq function_end
 
@@ -351,7 +362,7 @@ beq function_end
 beq trigger_exit_one_lbl
 
 .org 0x33C
-b function_end ; after triggering the normal skykeep entrance mechanic, do not trigger the exit to skyloft
+b function_end ; after triggering the normal sky keep entrance mechanic, do not trigger the exit to skyloft
 .global trigger_exit_one_lbl
 trigger_exit_one_lbl:
 bl trigger_exit_one ; if the returned ptr from getNextStageAndEntrance was null, it branches here

@@ -1,5 +1,7 @@
 This is still under heavy development, be careful to use it!  
+**IMPORTANT NOTES**  
 This only works if the game language is set to ENGLISH, other languages will NOT WORK and will break  
+Do NOT use hero mode files, instead select the "hero mode" option in the randomizer. Some hero mode files break the randomizer!  
 There is also the [Skyward Sword Randomizer Discord](https://discord.gg/evpNKkaaw6)
 
 ## Running the compiled binary (Windows)(recommended)
@@ -63,6 +65,19 @@ To modify them, you need an external program. To include make sure the models ge
 ### Tests
 `python3 -mpytest test`  
 Make sure to have the extracted game prepared as stated in Installing, otherwise they won't work
+
+### Contributing
+Contributions are always welcome!  
+To make sure we don't have to fight about formatting, make sure to install `black`  
+On Linux:
+
+    python3 -mpip install -r requirements_dev.txt
+
+On Windows:
+
+    pip install -r requirements_dev.txt
+
+Then run `black .` and you are good to go!
 
 ### Executable
 To build the executable, you need PyInstaller installed:

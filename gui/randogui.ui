@@ -564,7 +564,7 @@
     </widget>
     <widget class="QWidget" name="tab_4">
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string/>
      </property>
      <attribute name="title">
       <string>Additional Settings</string>
@@ -666,7 +666,7 @@
         <item>
          <widget class="QCheckBox" name="option_skip_skykeep">
           <property name="text">
-           <string>Skip Skykeep</string>
+           <string>Skip Sky Keep</string>
           </property>
          </widget>
         </item>
@@ -703,7 +703,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>164</width>
+         <width>165</width>
          <height>204</height>
         </rect>
        </property>
@@ -790,7 +790,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>141</width>
+         <width>148</width>
          <height>191</height>
         </rect>
        </property>
@@ -1026,7 +1026,7 @@
        </rect>
       </property>
       <property name="title">
-       <string>GroupBox</string>
+       <string>Additional Options</string>
       </property>
       <widget class="QWidget" name="verticalLayoutWidget_5">
        <property name="geometry">
@@ -1039,11 +1039,18 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_15">
         <item>
-         <widget class="QCheckBox" name="option_swordless">
-          <property name="text">
-           <string>Swordless</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_28">
+          <item>
+           <widget class="QLabel" name="label_for_option_starting_sword">
+            <property name="text">
+             <string>Starting Sword</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_starting_sword"/>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QCheckBox" name="option_start_pouch">
@@ -1055,7 +1062,7 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_16">
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="label_for_option_rupoor">
             <property name="text">
              <string>Rupoor Mode</string>
             </property>
@@ -1065,6 +1072,13 @@
            <widget class="QComboBox" name="option_rupoor_mode"/>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_fix_bit_crashes">
+          <property name="text">
+           <string>Fix BiT crashes</string>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_6">
@@ -1231,7 +1245,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>200</height>
+         <height>184</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_22">
@@ -1332,7 +1346,7 @@
        </rect>
       </property>
       <property name="title">
-       <string>GroupBox</string>
+       <string>Other Hints</string>
       </property>
       <widget class="QWidget" name="verticalLayoutWidget_6">
        <property name="geometry">

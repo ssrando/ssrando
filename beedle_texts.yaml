@@ -1,40 +1,40 @@
-Skyloft - Beedle 50 Rupee Item:
+Beedle - 50 Rupee Item:
   - Bug Net:
       normal: "That's a <y<Bug Net>>. You know, for\ncatching bugs! Insects too.\n\n\nOK, so there aren't so many bugs here,\nbut you'll be able to catch tons with\nthis when there are some!\n\nAnd at only <r<50 Rupees>>, I'm sure\nyou'll make a \x201Cnet profit\"!\nWant to buy it?\n"
       discount: "That's a <y<Bug Net>>. You know, for\ncatching bugs! Insects too.\n\n\nOK, so there aren't so many bugs here,\nbut you'll be able to catch tons with\nthis when there are some!\n\nAnd at only <r<25 Rupees>>, I'm sure\nyou'll make a \x201Cnet profit\"!\nWant to buy it?\n"
-Skyloft - Beedle First 100 Rupee Item:
+Beedle - First 100 Rupee Item:
   - Extra Wallet:
       normal: "That's an <y<Extra Wallet>>. It's amazingly\nuseful!\n\n\nWith this, you can carry an extra\n300 Rupees in your wallet!\n\n\nSay good-bye to all those times you\ncouldn't pick up another Rupee because\nyour wallet was stuffed full!\nLeave no Rupee behind!\nEven you must be able to see just how\nuseful this item is, and all for only\n<r<100 Rupees>>. Want to buy it?"
       discount: "That's an <y<Extra Wallet>>. It's amazingly\nuseful!\n\n\nWith this, you can carry an extra\n300 Rupees in your wallet!\n\n\nSay good-bye to all those times you\ncouldn't pick up another Rupee because\nyour wallet was stuffed full!\nLeave no Rupee behind!\nIt's usually <r<100 Rupees>>, but I'll sell it to\nyou now for <r<50>><r<<r< <r<Rupees>>. How about it?\n"
-Skyloft - Beedle Second 100 Rupee Item:
+Beedle - Second 100 Rupee Item:
   - Extra Wallet:
       normal: "That's an <y<Extra Wallet>>. It's amazingly\nuseful!\n\n\nWith this, you can carry an extra\n300 Rupees in your wallet!\n\n\nSay good-bye to all those times you\ncouldn't pick up another Rupee because\nyour wallet was stuffed full!\nLeave no Rupee behind!\nEven you must be able to see just how\nuseful this item is, and all for only\n<r<100 Rupees>>. Want to buy it?"
       discount: "That's an <y<Extra Wallet>>. It's amazingly\nuseful!\n\n\nWith this, you can carry an extra\n300 Rupees in your wallet!\n\n\nSay good-bye to all those times you\ncouldn't pick up another Rupee because\nyour wallet was stuffed full!\nLeave no Rupee behind!\nIt's usually <r<100 Rupees>>, but I'll sell it to\nyou now for <r<50>><r<<r< <r<Rupees>>. How about it?\n"
-Skyloft - Beedle Third 100 Rupee Item:
+Beedle - Third 100 Rupee Item:
   - Extra Wallet:
       normal: "That's an <y<Extra Wallet>>. It's amazingly\nuseful!\n\n\nWith this, you can carry an extra\n300 Rupees in your wallet!\n\n\nSay good-bye to all those times you\ncouldn't pick up another Rupee because\nyour wallet was stuffed full!\nLeave no Rupee behind!\nEven you must be able to see just how\nuseful this item is, and all for only\n<r<100 Rupees>>. Want to buy it?"
       discount: "That's an <y<Extra Wallet>>. It's amazingly\nuseful!\n\n\nWith this, you can carry an extra\n300 Rupees in your wallet!\n\n\nSay good-bye to all those times you\ncouldn't pick up another Rupee because\nyour wallet was stuffed full!\nLeave no Rupee behind!\nIt's usually <r<100 Rupees>>, but I'll sell it to\nyou now for <r<50>><r<<r< <r<Rupees>>. How about it?\n"
-Skyloft - Beedle 300  Rupee Item:
+Beedle - 300  Rupee Item:
   - Progressive Pouch:
       normal: "That'll increase the number of items\nyou can carry in your <r<<y<Adventure\nPouch<r< >>by one!\n\nIt has to be the most useful thing\nimaginable for an adventure! And yet\nit costs a mere <r<300 Rupees>>.\n"
       discount: "That will let you carry one additional\nitem in your <y<Adventure Pouch>>!\n\n\nIf you're on an adventure, this has to\nbe the most useful thing you can\nimagine. And it's half price just this\nonce! It's yours for <r<150 Rupees>>.\n"
-Skyloft - Beedle 600 Rupee Item:
+Beedle - 600 Rupee Item:
   - Progressive Pouch:
       normal: "That thing right there will allow you\nto carry one additional item in your\n<y<Adventure Pouch>>!\n\nFor an adventurer like yourself, it\nhas to be the most amazing item ever\nimagined. And it costs just <r<600>><r< Rupees>>.\n\nWhat? Me, raise prices? Never!\nYou're obviously hallucinating! So\nhow about it? Only <r<600>><r< Rupees>>.\n"
       discount: "That thing right there will allow you\nto carry one additional item in your\n<y<Adventure Pouch>>!\n\nFor an adventurer like yourself, it\nhas to be the most amazing item ever\nimagined. And it costs just <r<300>><r< Rupees>>.\n\nIt's usually <r<600 Rupees>>, so you'd\nbe getting an incredible deal.\nSo, want to buy it? Only <r<300>><r< Rupees>>.\n"
-Skyloft - Beedle 800 Rupee Item:
+Beedle - 800 Rupee Item:
   - Life Medal:
       normal: "That's a <y<Life Medal>>! It bestows a bunch\nof mysterious and mystical effects on\nwhoever carries it!\n\nWhat kind of effects<pause0A>.<pause0A>.<pause0A>.<pause0A>? Don't ask me--\nI don't actually know! You should find\nout for yourself.\n\nI'm pretty sure it's a real bargain at\n<r<800 Rupees>>, though! How about it?\n"
       discount: "That's a <y<Life Medal>>! It bestows a bunch\nof mysterious and mystical effects on\nwhoever carries it!\n\nWhat kind of effects<pause0A>.<pause0A>.<pause0A>.<pause0A>? Don't ask me--\nI don't actually know! You should find\nout for yourself.\n\nToday, I'm slashing the price and\noffering it half off! Usually <r<800\nRupees>>, now just <r<400 Rupees>>! Want it?\n"
-Skyloft - Beedle 1000 Rupee Item:
+Beedle - 1000 Rupee Item:
   - Bug Medal:
       normal: "That right there is a <y<Bug Medal>>.\nAs long as you're carrying that, you'll\nbe able to see on your map where\nbugs can be found.\nQuite expensive, but if you like\ncatching bugs, it's indispensable! I'll\nsell it for <r<1,000 Rupees>>. Wanna buy it?\n"
       discount: "That right there is a <y<Bug Medal>>.\nAs long as you're carrying that, you'll\nbe able to see on your map where\nbugs can be found.\nQuite expensive, but if you like to\ncatch bugs, it's indispensable!\n\n\nI usually sell this for <r<1,000 Rupees>>, but\ntoday I can offer it to you for just\n<r<500 Rupees>>. How about it?\n"
-Skyloft - Beedle 1200 Rupee Item:
+Beedle - 1200 Rupee Item:
   - Progressive Pouch:
       normal: "This thing will open up another space\nin your <y<Adventure Pouch>>. It's my last\none, so it's, uh...a little expensive!\n\nThe price is <r<1,200 Rupees>>. If I were\nyou, I'd think hard about whether I\nreally need it or not...\n"
       discount: "This will open up another space in\nyour <y<Adventure Pouch>>. It's my last one,\nso it's pretty expensive, I'm afraid!\n\nI usually sell it for <r<1,200 Rupees>>.\nBut just for you, I'll sell it right now\nfor <r<600 Rupees>>.\n\nStill, that's a lot of Rupees. If I were\nyou, I'd think carefully about whether\nI really need it...\n"
-Skyloft - Beedle 1600 Rupee Item:
+Beedle - 1600 Rupee Item:
   - Piece of Heart:
       normal: "Oh! You have great taste in things...\nIsn't it shiny? I found it someplace\nnearby.\n\nTo be honest, I have no idea what it's\nfor, but I'll sell it to you for\njust <r<1,600 Rupees>>!\n"
       discount: "Oh! You have great taste in things...\nIsn't it shiny? I found it someplace\nnearby.\n\nTo be honest, I have no idea what it's\nfor, but I'm pricing it at <r<1,600 Rupees>>!\n\n\nHowever, you can have it at half price\ntoday for only <r<800 Rupees>>. Is it a deal?\n"
