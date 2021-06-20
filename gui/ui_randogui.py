@@ -809,7 +809,7 @@ class Ui_MainWindow(object):
         self.groupBox_10.setGeometry(QRect(10, 10, 181, 201))
         self.verticalLayoutWidget_12 = QWidget(self.groupBox_10)
         self.verticalLayoutWidget_12.setObjectName(u"verticalLayoutWidget_12")
-        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 161, 184))
+        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 161, 171))
         self.verticalLayout_22 = QVBoxLayout(self.verticalLayoutWidget_12)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
@@ -902,6 +902,10 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_22.addLayout(self.horizontalLayout_15)
+
+        self.verticalSpacer_11 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_22.addItem(self.verticalSpacer_11)
 
         self.groupBox_11 = QGroupBox(self.tab_7)
         self.groupBox_11.setObjectName(u"groupBox_11")
