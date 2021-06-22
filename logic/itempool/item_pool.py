@@ -2,19 +2,27 @@ from ssrando import Randomizer
 
 
 class ItemPool:
-    FILLER_ITEMS: list = []
+    FILLER_ITEMS: list = [
+        "Blue Rupee",
+        "Red Rupee",
+        "Semi Rare Treasure",
+        "Rare Treasure",
+    ]
 
     rando: Randomizer
     progress_items: list
-    dungeon_items: list
+    dungeon_progress_items: list
     nonprogress_items: list
+    dungeon_nonprogress_items: list
     junk_items: list
 
-    def __init__(self, rando: Randomizer, progress_items: list, dungeon_items: list, nonprogress_items: list, junk_items: list):
+    def __init__(self, rando: Randomizer, progress_items: list, dungeon_progress_items: list, nonprogress_items: list,
+                 dungeon_nonprogress_items, junk_items: list):
         self.rando = rando
         self.progress_items = self.rando.rng.shuffle(progress_items.copy())
-        self.dungeon_items = self.rando.rng.shuffle(dungeon_items.copy())
+        self.dungeon_progress_items = self.rando.rng.shuffle(dungeon_progress_items.copy())
         self.nonprogress_items = self.rando.rng.shuffle(nonprogress_items.copy())
+        self.dungeon_nonprogress_items = self.rando.rng.shuffle(dungeon_nonprogress_items.copy())
         self.nonprogress_items = self.rando.rng.shuffle(junk_items.copy())
 
     def get_nonprogress_item(self):
@@ -47,11 +55,17 @@ class ItemPool:
         """
         return self.progress_items.pop()
 
-    def get_dungeon_item(self):
+    def get_dungeon_progress_item(self):
         """
         Pops and returns the next item from the dungeon item pool
         """
-        return self.dungeon_items.pop()
+        return self.dungeon_progress_items.pop()
+
+    def get_dungeon_nonprogress_item(self):
+        """
+        Pops and returns the next item from the dungeon nonprogress pool
+        """
+        return self.dungeon_nonprogress_items.pop()
 
     def get_all_progress_items(self):
         """
@@ -95,9 +109,9 @@ class ItemPool:
         """
         if item in self.progress_items:
             self.progress_items.remove(item)
-        elif item in self.dungeon_items:
-            self.dungeon_items.remove(item)
+        elif item in self.dungeon_progress_items:
+            self.dungeon_progress_items.remove(item)
         elif item in self.nonprogress_items:
             self.nonprogress_items.remove(item)
-        else: #  if it hasn't appeared anywhere else, it is either junk or doesn't exist at all
+        else:  # if it hasn't appeared anywhere else, it is either junk or doesn't exist at all
             self.junk_items.remove(item)
