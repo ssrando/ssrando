@@ -45,6 +45,9 @@ class RandomizerThread(QThread):
             self.randomizer.randomize()
         except Exception as e:
             self.error_abort.emit(str(e))
+            import traceback
+
+            print(traceback.format_exc())
             return
         if not dry_run:
             default_ui_progress_callback("repacking game...")

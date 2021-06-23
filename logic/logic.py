@@ -70,27 +70,30 @@ class Logic:
         self.load_and_parse_item_requirements()
         self.item_locations = self.load_and_parse_item_data()
 
+        self.required_dungeons = self.randomize_required_dungeons()
+        self.entrance_connections = self.randomize_entrance_connections()
+        self.starting_items = self.randomize_starting_items()
+
         self.race_mode_banned_locations = []
         if (
             self.rando.options["skip-skykeep"]
-            and self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"]
+            and self.entrance_connections["Dungeon Entrance In Lanayru Desert"]
             == "Sky Keep"
         ):
             self.racemode_ban_location("Skyloft Academy - Fledge's Crystals")
         if self.rando.options["empty-unrequired-dungeons"]:
             for location_name in self.item_locations:
                 zone, _ = Logic.split_location_name_by_zone(location_name)
-                if zone in self.rando.non_required_dungeons:
+                if not zone in self.required_dungeons:
                     self.race_mode_banned_locations.append(location_name)
 
             # checks outside locations that require dungeons:
             if (
-                self.rando.entrance_connections["Dungeon Entrance In Lanayru Desert"]
-                in self.rando.non_required_dungeons
+                not self.entrance_connections["Dungeon Entrance In Lanayru Desert"]
+                in self.required_dungeons
             ):
                 self.racemode_ban_location("Skyloft Academy - Fledge's Crystals")
-            if "Skyview" in self.rando.non_required_dungeons:
-                # TODO: check again with entrance rando
+            if not "Skyview" in self.required_dungeons:
                 self.racemode_ban_location("Sky - Lumpy Pumpkin Roof Goddess Chest")
                 self.racemode_ban_location("Sealed Grounds - Gorko Goddess Wall Reward")
 
@@ -165,7 +168,7 @@ class Logic:
 
         self.current_inventory = Inventory()
 
-        for item_name in self.rando.starting_items:
+        for item_name in self.starting_items:
             self.add_owned_item(item_name)
 
         # collect all items that aren't supposed to be randomized
@@ -267,6 +270,99 @@ class Logic:
         self.randomize_progression_items()
         self.randomize_nonprogress_items()
         self.randomize_consumable_items()
+
+    def randomize_required_dungeons(self):
+        """
+        Selects the required dungeons randomly based on options
+        and returns them in a list
+        """
+        required_dungeons = self.rando.rng.sample(
+            POTENTIALLY_REQUIRED_DUNGEONS,
+            k=self.rando.options["required-dungeon-count"],
+        )
+        # make the order always consistent
+        return [
+            dungeon
+            for dungeon in POTENTIALLY_REQUIRED_DUNGEONS
+            if dungeon in required_dungeons
+        ]
+
+    def randomize_entrance_connections(self):
+        """
+        Randomizes dungeon entrance connections based on options
+        and returns the randomized connections as an ordered dict
+        the returned connection configuration is guaranteed to be beatable
+        """
+        connections_invalid = True
+        while connections_invalid:
+            dungeons = [
+                "Skyview",
+                "Earth Temple",
+                "Lanayru Mining Facility",
+                "Ancient Cistern",
+                "Sandship",
+                "Fire Sanctuary",
+            ]
+            if self.rando.options["randomize-entrances"] == "None":
+                dungeons.append("Sky Keep")
+                dungeons.reverse()
+            else:
+                if self.rando.options["randomize-entrances"] == "Dungeons":
+                    self.rando.rng.shuffle(dungeons)
+                    dungeons.append("Sky Keep")
+                    dungeons.reverse()
+                else:
+                    dungeons.append("Sky Keep")
+                    self.rando.rng.shuffle(dungeons)
+            entrance_connections = OrderedDict(
+                [
+                    ("Dungeon Entrance In Deep Woods", dungeons.pop()),
+                    ("Dungeon Entrance In Eldin Volcano", dungeons.pop()),
+                    ("Dungeon Entrance In Lanayru Desert", dungeons.pop()),
+                    ("Dungeon Entrance In Lake Floria", dungeons.pop()),
+                    ("Dungeon Entrance In Sand Sea", dungeons.pop()),
+                    ("Dungeon Entrance In Volcano Summit", dungeons.pop()),
+                    ("Dungeon Entrance On Skyloft", dungeons.pop()),
+                ]
+            )
+            assert len(dungeons) == 0, "Not all dungeons linked to an entrance"
+            # TODO: do checks here if in the future some connections aren't possible
+            connections_invalid = False
+        return entrance_connections
+
+    def randomize_starting_items(self):
+        """
+        Returns a list with all items the player has at the start,
+        for tablet randomizer adds random tablets
+        """
+        starting_items = []
+
+        tablets = ["Emerald Tablet", "Ruby Tablet", "Amber Tablet"]
+        starting_items.extend(
+            self.rando.rng.sample(
+                tablets, k=self.rando.options["starting-tablet-count"]
+            )
+        )
+
+        starting_sword_count = {
+            "Swordless": 0,
+            "Practice Sword": 1,
+            "Goddess Sword": 2,
+            "Goddess Longsword": 3,
+            "Goddess White Sword": 4,
+            "Master Sword": 5,
+            "True Master Sword": 6,
+        }
+
+        for _ in range(starting_sword_count[self.rando.options["starting-sword"]]):
+            starting_items.append("Progressive Sword")
+
+        # if not self.rando.options.get('randomize-sailcloth',False):
+        #   starting_items.append('Sailcloth')
+        if self.rando.options["start-with-pouch"]:
+            starting_items.append("Progressive Pouch")
+
+        return starting_items
 
     def racemode_ban_location(self, location_name):
         if not location_name in self.item_locations:
@@ -637,14 +733,14 @@ class Logic:
             "Can Open GOT After Raising",
             "Can Raise Gate of Time",
         ]
-        for dungeon in self.rando.required_dungeons:
+        for dungeon in self.required_dungeons:
             access_past_requirements.append(f"Can Beat {dungeon}")
-        " & ".join(f"Can Beat {dungeon}" for dungeon in self.rando.required_dungeons)
+        " & ".join(f"Can Beat {dungeon}" for dungeon in self.required_dungeons)
         self.set_macro("Can Access Past", " & ".join(access_past_requirements))
 
     def update_entrance_connection_macros(self):
         # Update all the macros to take randomized entrances into account.
-        for entrance_name, zone_name in self.rando.entrance_connections.items():
+        for entrance_name, zone_name in self.entrance_connections.items():
             zone_access_macro_name = "Can Access " + zone_name
             entrance_access_macro_name = "Can Access " + entrance_name
             self.set_macro(zone_access_macro_name, entrance_access_macro_name)
@@ -965,9 +1061,9 @@ class Logic:
                     possible_items.remove(prerand_item)
 
             if len(possible_items) == 0:
-                print(self.rando.required_dungeons)
+                print(self.required_dungeons)
                 print(self.unplaced_progress_items)
-                print(self.rando.entrance_connections)
+                print(self.entrance_connections)
                 raise Exception(
                     "Only items left to place are predetermined items at inaccessible locations!"
                 )
@@ -1259,7 +1355,7 @@ class Logic:
 
     def can_reach_restricted(self, banned_locations, requirement: LogicExpression):
         inventory = Inventory()
-        for item_name in self.rando.starting_items:
+        for item_name in self.starting_items:
             inventory.collect_item(item_name)
         remaining_locations = set(self.item_locations.keys())
         for loc in banned_locations:
@@ -1311,22 +1407,40 @@ class Logic:
     def calculate_playthrough_progression_spheres(self):
         remaining_locations = set(self.item_locations.keys())
         temp_inventory = Inventory()
-        for item_name in self.rando.starting_items:
+        for item_name in self.starting_items:
             temp_inventory.collect_item(item_name)
         spheres = []
         while remaining_locations:
             current_sphere = {}
             new_loc_reached = False
-            for loc in self.filter_accessible_locations(
-                remaining_locations.copy(), temp_inventory.copy()
-            ):
-                new_loc_reached = True
-                remaining_locations.remove(loc)
+            new_log_invisible_item_reached = False
+            newly_accessible_locations = list(
+                self.filter_accessible_locations(remaining_locations, temp_inventory)
+            )
+            # first, collect all items in those locations that should not appear
+            # in the spoiler log (sigle crystals, maybe keys in the future)
+            for loc in newly_accessible_locations:
                 item = self.done_item_locations[loc]
-                temp_inventory.collect_item(item)
+                if item == "Gratitude Crystal":
+                    temp_inventory.collect_item(item)
+                    new_log_invisible_item_reached = True
+                    remaining_locations.remove(loc)
+
+            if new_log_invisible_item_reached:
+                continue
+            # now we can handle the new sphere
+            if self.macros["Can Reach and Defeat Demise"].is_true(
+                self.rando.options, temp_inventory, self.macros
+            ):
+                current_sphere["Past - Demise"] = "Defeat Demise"
+            for loc in newly_accessible_locations:
+                new_loc_reached = True
+                item = self.done_item_locations[loc]
                 # only show progress items
                 if item in self.all_progress_items:
                     current_sphere[loc] = item
+                temp_inventory.collect_item(item)
+                remaining_locations.remove(loc)
             if len(current_sphere) > 0:
                 spheres.append(current_sphere)
             if not new_loc_reached:
