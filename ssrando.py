@@ -118,6 +118,25 @@ class Randomizer:
             ]
         )
         assert len(dungeons) == 0, "Not all dungeons linked to an entrance"
+
+        trials = [
+            "Faron Silent Realm",
+            "Lanayru Silent Realm",
+            "Eldin Silent Realm",
+            "Skyloft Silent Realm"
+        ]
+
+        trial_gates = [
+            "Trial Gate in Faron Woods",
+            "Trial Gate in Lanayru Desert",
+            "Trial Gate in Eldin Volcano",
+            "Trial Gate on Skyloft"
+        ]
+
+        if self.options["randomize-trials"] == True:
+            self.rng.shuffle(trials)
+        self.trial_connections = OrderedDict(zip(trial_gates, trials))
+
         # self.starting_items = (x.strip() for x in self.options['starting_items']
         # self.starting_items: List[str] = list(filter(lambda x: x != '', self.starting_items))
         self.starting_items = []
@@ -344,6 +363,13 @@ class Randomizer:
         spoiler_log += "Entrances:\n"
         for entrance_name, dungeon_or_cave_name in self.entrance_connections.items():
             spoiler_log += "  %-48s %s\n" % (entrance_name + ":", dungeon_or_cave_name)
+
+        spoiler_log += "\n\n"
+
+        # Write randomized trials
+        spoiler_log += "Trial Gates:\n"
+        for trial_gate, trial in self.trial_connections.items():
+            spoiler_log += "  %-48s %s\n" % (trial_gate + ":", trial)
 
         spoiler_log += "\n\n\n"
 

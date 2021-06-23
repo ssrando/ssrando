@@ -160,6 +160,12 @@
   default: None
   help: "Shuffles entrances with one another. Options: None, Dungeons, Dungeons + Sky Keep"
   ui: option_randomize_entrances
+- name: Randomize Silent Realms
+  command: randomize-trials
+  type: boolean
+  default: false
+  help: "Shuffles the trials. If checked, entering a trial gate will send you to a randomized trial."
+  ui: option_randomize_trials
 - name: Start with Adventure Pouch
   command: start-with-pouch
   type: boolean

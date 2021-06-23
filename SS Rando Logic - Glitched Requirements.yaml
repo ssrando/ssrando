@@ -984,10 +984,14 @@ Skyloft - Parrow's Crystals:
 Skyloft - Crystal on Light Tower:
   Nothing
 
-Skyloft Silent Realm - Stone of Trials:
-  Nothing
+Can Open Trial Gate on Skyloft:
+  Option "randomize-trials" Disabled | Can Access Lumpy Pumpkin BiT | (Song of the Hero & Goddess Harp)
   # Scene Flag 9x20 is "Hylia's Trial Gate Opened"
   # RBW method: When you are entering the trial, you want to start the file as the camera pans up, and you should BiTSave that file at the Bazzar statue in order to not spawn very far OoB
+  # RBW method does not work with trial rando
+
+Skyloft Silent Realm - Stone of Trials:
+  Can Access Skyloft Silent Realm
 
 Skyloft - Peater/Peatrice's Crystals:
   Nothing
@@ -1416,11 +1420,15 @@ Faron Woods - Behind Bombable Rocks near Erla:
   Can Access Most of Faron Woods
   # Scene Flag 0x01 is "Blow Up Rocks containing Chest (near Erla)"
 
-Faron Silent Realm - Water Scale:
+Can Open Trial Gate in Faron Woods:
   (Can Access Most of Faron Woods & Farore's Courage & Goddess Harp) |
   (Can Access Most of Faron Woods & Can RBM 3x02) |
-  (Can Set Scene Flag 3x02 & Can Access Most of Faron Woods BiT)
+  (Option "randomize-trials" Disabled & Can Set Scene Flag 3x02 & Can Access Most of Faron Woods BiT)
   # Scene Flag 3x02 is "Water Scale Trial Gate"
+  # Trial RBW does not work with trial rando
+
+Faron Silent Realm - Water Scale:
+  Can Access Faron Silent Realm
 
 Goddess Cube on West Great Tree near Exit:
   (Can Access Upper Great Tree | Can Access Most of Faron Woods) & Goddess Sword
@@ -1568,9 +1576,12 @@ Can Access Second Part of Eldin:
   Can Get Past Mogma Turf | Can Access First Part of Eldin
   # Scene Flag 6x08 is "Blow up rock between front and back of [Mogma Turf]". The BiTWarp is also the one used to get Sparrot's Crystal Ball
 
-Eldin Silent Realm - Fireshield Earrings:
+Can Open Trial Gate in Eldin Volcano:
   Can Access Second Part of Eldin
   # Scene Flag 9x40 is "Fireshield Earrings Trial Gate Opened"
+
+Eldin Silent Realm - Fireshield Earrings:
+  Can Access Eldin Silent Realm
 
 Eldin Volcano - Behind Bombable Wall Near Volcano Ascent:
   Can Access Second Part of Eldin
@@ -1843,9 +1854,12 @@ Lanayru - NE Desert Chest:
 Goddess Cube in Secret Passageway in Desert:
   Can Access Lanayru Desert Secret Passageway & Goddess Sword
 
-Lanayru Silent Realm - Clawshots:
+Can Open Trial Gate in Lanayru Desert:
   Can Access Second Part of Lanayru Desert
   # Scene Flag Ax08 is "Clawshots Trial Gate Opened"
+
+Lanayru Silent Realm - Clawshots:
+  Can Access Lanayru Silent Realm
 
 Lanayru - On Top of Lanayru Mining Facility: # actually spawns on raising LMF
   Can Access Dungeon Entrance In Lanayru Desert

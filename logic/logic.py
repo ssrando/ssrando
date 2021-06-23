@@ -128,6 +128,7 @@ class Logic:
 
         # Sync the logic macros with the randomizer.
         self.update_entrance_connection_macros()
+        self.update_trial_rando_macros()
         self.update_beat_game_macro()
 
         # Initialize item related attributes.
@@ -663,6 +664,12 @@ class Logic:
             zone_beat_macro_name = "Can Beat " + zone_name
             entrance_beat_macro_name = "Can Beat " + entrance_name
             self.set_macro(entrance_beat_macro_name, zone_beat_macro_name)
+
+    def update_trial_rando_macros(self):
+        for trial_gate, trial in self.rando.trial_connections.items():
+            trial_gate_access_macro = "Can Open " + trial_gate
+            trial_access_macro = "Can Access " + trial
+            self.set_macro(trial_access_macro, trial_gate_access_macro)
 
     def make_useless_progress_items_nonprogress(self):
         # Detect which progress items don't actually help access any locations with the user's current settings, and move those over to the nonprogress item list instead.
