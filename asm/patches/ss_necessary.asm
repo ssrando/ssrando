@@ -185,9 +185,23 @@ nop ; normally only sets the flag, if the item was a key piece, nop the branch
 
 .open "d_a_obj_warpNP.rel"
 .org 0x22C0 ; function, that gives the trial item
-lbz r3, 0x4(r3) ; first byte of params1 is itemid
+stwu r1,-16(r1)
+mflr r0
+stw r0,20(r1)
+stw r31,12(r1)
+mr r31,r3 ; r31 is AcOWarp ptr
+lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+lhz r4, 0xaa(r31) ; 3rd and 4th byte in params2 is storyflag for completing trial
+bl FlagManager__setFlagTo1 ; set storyflag for completing trial
+lbz r3, 0x4(r31) ; first byte of params1 is itemid
 li r4, -1 ; set pouch slot param to -1, otherwise pouch items break
-b 0x231C ; go directly to give item function call
+li r5, 0 ; 3rd arg for giveItem function call
+bl giveItem ; give the item for the trial
+lwz r0,20(r1)
+lwz r31,12(r1)
+mtlr r0
+addi r1,r1,16
+blr
 
 .org 0x2344 ; function, that runs after giving the item, if the event is triggered immediately, the item won't be given
 bl check_should_delay_walk_out_event ; check current counter after giving item
