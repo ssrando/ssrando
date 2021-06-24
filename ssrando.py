@@ -486,17 +486,7 @@ class Randomizer:
             "Lanayru Silent Realm - Clawshots": "Nayru's Wisdom - Trial Hint",
             "Eldin Silent Realm - Fireshield Earrings": "Din's Power - Trial Hint",
         }
-        item_locations = set(
-            loc
-            for loc in self.logic.item_locations.keys()
-            if self.logic.item_locations[loc].get("original item", None)
-            != "Gratitude Crystal"
-        )
-        hint_names = set(self.hints.stonehint_definitions.keys())
-        hint_names.update(trial_checks.values())
-        hint_defs = dict(
-            (k, v.to_gossip_stone_text()) for (k, v) in self.hints.hints.items()
-        )
+        trial_hints = {}
         for (trial_check_name, hintname) in trial_checks.items():
             item = self.logic.done_item_locations[trial_check_name]
             hint_mode = self.options["song-hints"]
@@ -521,23 +511,27 @@ class Randomizer:
                 )
             else:
                 useful_text = ""
-            hint_defs[hintname] = useful_text
+            trial_hints[hintname] = useful_text
 
         plcmt_file = PlacementFile()
         plcmt_file.entrance_connections = self.logic.entrance_connections
         plcmt_file.hash_str = self.randomizer_hash
-        plcmt_file.hints = hint_defs
+        plcmt_file.gossip_stone_hints = dict(
+            (k, v.to_gossip_stone_text()) for (k, v) in self.hints.hints.items()
+        )
+        print(plcmt_file.gossip_stone_hints)
+        plcmt_file.trial_hints = trial_hints
         plcmt_file.item_locations = dict(
             (k, v)
             for (k, v) in self.logic.done_item_locations.items()
-            if k in item_locations
+            if v != "Gratitude Crystal"
         )
         plcmt_file.options = self.options
         plcmt_file.required_dungeons = self.logic.required_dungeons
         plcmt_file.starting_items = self.logic.starting_items
         plcmt_file.version = VERSION
 
-        plcmt_file.check_valid(item_locations, hint_names)
+        plcmt_file.check_valid()
 
         return plcmt_file
 

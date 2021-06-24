@@ -1,5 +1,5 @@
 from context import sslib
-from util import get_bzs_data, get_arc_data, ALL_STAGES, STAGEPATH
+from test_utils import get_bzs_data, get_arc_data, ALL_STAGES, STAGEPATH
 import pytest
 from io import BytesIO
 import nlzss11

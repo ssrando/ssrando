@@ -1260,7 +1260,7 @@ class GamePatcher:
             inventory_text,
             hintname,
         ) in trial_checks.items():
-            useful_text = self.placement_file.hints[hintname]
+            useful_text = self.placement_file.trial_hints[hintname]
             find_event("003-ItemGet", obtain_text_name)["text"] += useful_text
             self.eventpatches["003-ItemGet"].append(
                 {
@@ -1279,7 +1279,7 @@ class GamePatcher:
                     "name": f"Hint {hintname}",
                     "type": "textpatch",
                     "index": hintdef["textindex"],
-                    "text": self.placement_file.hints[hintname],
+                    "text": self.placement_file.gossip_stone_hints[hintname],
                 },
             )
 

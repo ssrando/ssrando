@@ -2,6 +2,7 @@ from options import Options
 from version import VERSION
 from logic.item_types import ALL_ITEM_NAMES
 from logic.constants import POTENTIALLY_REQUIRED_DUNGEONS, ENTRANCE_CONNECTIONS
+from util.file_accessor import read_yaml_file_cached
 
 import json
 
@@ -18,7 +19,8 @@ class PlacementFile:
         self.starting_items = []
         self.required_dungeons = []
         self.item_locations = {}
-        self.hints = {}
+        self.gossip_stone_hints = {}
+        self.trial_hints = {}
         self.entrance_connections = {}
 
     def read_from_file(self, f):
@@ -30,13 +32,14 @@ class PlacementFile:
     def to_json_str(self):
         retval = {
             "version": self.version,
-            "permalink": self.options.get_permalink(),
+            "permalink": self.options.get_permalink(exclude_seed=True),
             "hash": self.hash_str,
             "starting-items": self.starting_items,
             "required-dungeons": self.required_dungeons,
             "item-locations": self.item_locations,
-            "hints": self.hints,
-            "entrance_connections": self.entrance_connections,
+            "gossip-stone-hints": self.gossip_stone_hints,
+            "trial-hints": self.trial_hints,
+            "entrance-connections": self.entrance_connections,
         }
         return json.dumps(retval, indent=2)
 
@@ -48,10 +51,11 @@ class PlacementFile:
         self.starting_items = jsn["starting-items"]
         self.required_dungeons = jsn["required-dungeons"]
         self.item_locations = jsn["item-locations"]
-        self.hints = jsn["hints"]
-        self.entrance_connections = jsn["entrance_connections"]
+        self.gossip_stone_hints = jsn["gossip-stone-hints"]
+        self.trial_hints = jsn["trial-hints"]
+        self.entrance_connections = jsn["entrance-connections"]
 
-    def check_valid(self, all_check_names, all_hint_names):
+    def check_valid(self):
         """checks, if the current state is valid, throws an exception otherwise
         This does not check consistency with all the settings"""
         if VERSION != self.version:
@@ -96,30 +100,45 @@ class PlacementFile:
             if item not in item_names:
                 raise InvalidPlacementFile(f'invalid item "{item}"')
 
-        orig_check_names = set(all_check_names)
-        check_names = set(self.item_locations.keys())
-        if all_check_names != self.item_locations.keys():
-            additional = check_names - orig_check_names
-            missing = orig_check_names - check_names
-            error_msg = ""
-            if additional:
-                error_msg += "Additional checks:\n"
-                error_msg += ", ".join(additional) + "\n"
-            if missing:
-                error_msg += "Missing checks:\n"
-                error_msg += ", ".join(missing) + "\n"
-            raise InvalidPlacementFile(error_msg)
+        checks_file = read_yaml_file_cached("checks.yaml")
+        check_sets_equal(
+            set(
+                k
+                for (k, v) in checks_file.items()
+                if v["original item"] != "Gratitude Crystal"
+            ),
+            set(self.item_locations.keys()),
+            "Checks",
+        )
 
-        orig_hints = set(all_hint_names)
-        hint_names = set(self.hints.keys())
-        if orig_hints != hint_names:
-            additional = hint_names - orig_hints
-            missing = orig_hints - hint_names
-            error_msg = ""
-            if additional:
-                error_msg += "Additional hints:\n"
-                error_msg += ", ".join(additional) + "\n"
-            if missing:
-                error_msg += "Missing hints:\n"
-                error_msg += ", ".join(missing) + "\n"
-            raise InvalidPlacementFile(error_msg)
+        hint_file = read_yaml_file_cached("hints.yaml")
+        check_sets_equal(
+            set(hint_file.keys()),
+            set(self.gossip_stone_hints.keys()),
+            "Gossip Stone Hints",
+        )
+
+        trial_check_names = set(
+            (
+                "Song of the Hero - Trial Hint",
+                "Farore's Courage - Trial Hint",
+                "Nayru's Wisdom - Trial Hint",
+                "Din's Power - Trial Hint",
+            )
+        )
+
+        check_sets_equal(trial_check_names, set(self.trial_hints.keys()), "Trial Hints")
+
+
+def check_sets_equal(orig: set, actual: set, name: str):
+    if orig != actual:
+        additional = actual - orig
+        missing = orig - actual
+        error_msg = ""
+        if additional:
+            error_msg += f"Additional {name}:\n"
+            error_msg += ", ".join(additional) + "\n"
+        if missing:
+            error_msg += f"Missing {name}:\n"
+            error_msg += ", ".join(missing) + "\n"
+        raise InvalidPlacementFile(error_msg)

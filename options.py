@@ -91,7 +91,7 @@ class Options:
             problems.append(f"unknown option {option_name}!")
         return problems
 
-    def get_permalink(self):
+    def get_permalink(self, exclude_seed=False):
         writer = PackedBitsWriter()
         for option_name, option in OPTIONS.items():
             if not option.get("permalink", True):
@@ -114,7 +114,7 @@ class Options:
                 raise Exception(f'unknown type: {option["type"]}')
         writer.flush()
         permalink = writer.to_base64()
-        if self["seed"] != -1:
+        if self["seed"] != -1 and not exclude_seed:
             permalink += "#" + str(self["seed"])
         return permalink
 
