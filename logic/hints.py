@@ -3,7 +3,7 @@ from paths import RANDO_ROOT_PATH
 import yaml
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
-from .constants import POTENTIALLY_REQUIRED_DUNGEONS
+from .constants import POTENTIALLY_REQUIRED_DUNGEONS, SILENT_REALMS, SILENT_REALM_CHECKS
 from util import textbox_utils
 
 ALWAYS_REQUIRED_LOCATIONS = [
@@ -70,10 +70,8 @@ class LocationGossipStoneHint(GossipStoneHint):
     item: str
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        trials = [("Skyloft Silent Realm", "Skyloft Trial Gate"), ("Faron Silent Realm", "Faron Trial Gate"), ("Lanayru Silent Realm", "Lanayru Trial Gate"), ("Eldin Silent Realm", "Eldin Trial Gate")]
-        if zone in [trial[0] for trial in trials]:
-            silent_realm = [trial for trial in trials if trial[0] == zone].pop()
-            trial_gate = silent_realm[1]
+        if zone in SILENT_REALMS.keys():
+            trial_gate = SILENT_REALMS[zone]
             return textbox_utils.break_lines(
                 f"Opening the <r<{trial_gate}>> will reveal <y<{self.item}>>"
             )
@@ -84,10 +82,8 @@ class LocationGossipStoneHint(GossipStoneHint):
 
     def to_spoiler_log_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        trials = [("Skyloft Silent Realm", "Skyloft Trial Gate"), ("Faron Silent Realm", "Faron Trial Gate"), ("Lanayru Silent Realm", "Lanayru Trial Gate"), ("Eldin Silent Realm", "Eldin Trial Gate")]
-        if zone in [trial[0] for trial in trials]:
-            silent_realm = [trial for trial in trials if trial[0] == zone].pop()
-            trial_gate = silent_realm[1]
+        if zone in SILENT_REALMS.keys():
+            trial_gate = SILENT_REALMS[zone]
             return f"{trial_gate} has {self.item}"
         else:
             return f"{self.location_name} has {self.item}"
@@ -100,10 +96,8 @@ class ItemGossipStoneHint(GossipStoneHint):
 
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        trials = [("Skyloft Silent Realm", "Skyloft Trial Gate"), ("Faron Silent Realm", "Faron Trial Gate"), ("Lanayru Silent Realm", "Lanayru Trial Gate"), ("Eldin Silent Realm", "Eldin Trial Gate")]
-        if zone in [trial[0] for trial in trials]:
-            silent_realm = [trial for trial in trials if trial[0] == zone].pop()
-            trial_gate = silent_realm[1]
+        if zone in SILENT_REALMS.keys():
+            trial_gate = SILENT_REALMS[zone]
             return textbox_utils.break_lines(
                 f"<y<{self.item}>> can be found by opening <r<{trial_gate}>>"
             )
@@ -114,10 +108,8 @@ class ItemGossipStoneHint(GossipStoneHint):
 
     def to_spoiler_log_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        trials = [("Skyloft Silent Realm", "Skyloft Trial Gate"), ("Faron Silent Realm", "Faron Trial Gate"), ("Lanayru Silent Realm", "Lanayru Trial Gate"), ("Eldin Silent Realm", "Eldin Trial Gate")]
-        if zone in [trial[0] for trial in trials]:
-            silent_realm = [trial for trial in trials if trial[0] == zone].pop()
-            trial_gate = silent_realm[1]
+        if zone in SILENT_REALMS.keys():
+            trial_gate = SILENT_REALMS[zone]
             return f"{self.item} is on {trial_gate}"
         else:
             return f"{self.item} is on {self.location_name}"
@@ -446,12 +438,11 @@ class Hints:
         self.logic.rando.rng.shuffle(anywhere_hints)
 
         def create_hint(location):
-            trials = [("Skyloft Silent Realm - Stone of Trials", "Trial Gate on Skyloft"), ("Faron Silent Realm - Water Scale", "Trial Gate in Faron Woods"), ("Lanayru Silent Realm - Clawshots", "Trial Gate in Lanayru Desert"), ("Eldin Silent Realm - Fireshield Earrings", "Trial Gate in Eldin Volcano")]
             if location in location_hints:
-                if location in [trial[0] for trial in trials]:
-                    loc_trial_gate = [trial_gate for trial, trial_gate in trials if trial == location].pop()
-                    trial_gate_dest = [trial for trial_gate, trial in self.logic.rando.trial_connections.items() if trial_gate == loc_trial_gate].pop()
-                    trial_gate_dest_loc = [trial for trial, trial_gate in trials if trial_gate_dest in trial].pop()
+                if location in SILENT_REALM_CHECKS.keys():
+                    loc_trial_gate = SILENT_REALM_CHECKS[location]
+                    trial_gate_dest = self.logic.rando.trial_connections[loc_trial_gate]
+                    trial_gate_dest_loc = [trial for trial in SILENT_REALM_CHECKS.keys() if trial_gate_dest in trial].pop()
                     trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
                     return LocationGossipStoneHint(
                         location_name=location,
@@ -463,11 +454,15 @@ class Hints:
                         item=self.logic.done_item_locations[location],
                     )
             elif location in item_hints:
-                if location in [trial[1] for trial in trials]:
-                    loc_trial_gate = [trial_gate for trial, trial_gate in trials if trial == location].pop()
-                    trial_gate_dest = [trial for trial_gate, trial in self.logic.rando.trial_connections.items() if trial_gate == loc_trial_gate].pop()
-                    trial_gate_dest_loc = [trial for trial, trial_gate in trials if trial_gate_dest in trial].pop()
+                if location in SILENT_REALM_CHECKS.keys():
+                    loc_trial_gate = SILENT_REALM_CHECKS[location]
+                    trial_gate_dest = self.logic.rando.trial_connections[loc_trial_gate]
+                    trial_gate_dest_loc = [trial for trial in SILENT_REALM_CHECKS.keys() if trial_gate_dest in trial].pop()
                     trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
+                    return ItemGossipStoneHint(
+                        location_name=location,
+                        item=trial_item
+                    )
                 else:
                     return ItemGossipStoneHint(
                         location_name=location,

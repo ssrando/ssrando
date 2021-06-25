@@ -22,6 +22,7 @@ from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 
 from logic.logic import Logic
+from logic.constants import SILENT_REALM_CHECKS
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -249,6 +250,13 @@ POST_DUNGEON_CUTSCENE = {
     "Sandship": ("B301", 0, 1),
     "Fire Sanctuary": ("B201_1", 0, 0),
     "Sky Keep": ("F407", 0, 2),
+}
+
+TRIAL_GATE_TO_TRIAL = {
+    "Trial Gate on Skyloft": "Skyloft Silent Realm",
+    "Trial Gate in Faron Woods": "Faron Silent Realm",
+    "Trial Gate in Eldin Volcano": "Eldin Silent Realm",
+    "Trial Gate in Lanayru Desert": "Lanayru Silent Realm"
 }
 
 TRIAL_STAGES = {
@@ -621,11 +629,8 @@ def patch_trial_item(trial: OrderedDict, itemid: int):
 
 
 def patch_trial_flags(trial: OrderedDict, storyflag: int):
-    storyflag = storyflag >> 8, storyflag & 0xFF
-    print(hex(trial["params2"]), trial['id'])
-    trial["params2"] = mask_shift_set(trial["params2"], 0xFF, 0x08, storyflag[0])
-    trial["params2"] = mask_shift_set(trial["params2"], 0xFF, 0x0, storyflag[1])
-    print(hex(trial["params2"]), trial['id'])
+    # Use last 2 bytes of params2 as the randomized trial storyflag
+    trial["params2"] = mask_shift_set(trial["params2"], 0xFFFF, 0x0, storyflag)
 
 
 def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
@@ -655,12 +660,10 @@ def rando_patch_warpobj(bzs: OrderedDict, itemid: int, id: str, trial_connection
         filter(lambda x: x["name"] == "WarpObj", bzs["OBJ "])
     )  # there is only one trial exit at a time
     patch_trial_item(obj, itemid)
-    print(trial_connections)
     for trial, trialid in TRIAL_EXIT_GATE_IDS.items():
         if obj['id'] == trialid:
             trial_gate = [tg for tg, t in trial_connections.items() if t == trial].pop()
             trial_storyflag = TRIAL_COMPLETE_STORYFLAGS[trial_gate]
-            print(trial_gate, trial_storyflag)
     patch_trial_flags(obj, trial_storyflag)
 
 
@@ -1377,10 +1380,10 @@ class GamePatcher:
             inventory_text_idx,
             inventory_text,
         ) in trial_checks.items():
-            randomized_trial = [(trial_gate, trial) for (trial_gate, trial) in self.rando.trial_connections.items() if trial_check_name.startswith(trial)]
-            randomized_trial_name = randomized_trial.pop()
-            randomized_trial_check_name = [trial_name for trial_name in trial_checks.keys() if trial_name.startswith(randomized_trial_name[1])]
-            item = self.rando.logic.done_item_locations[randomized_trial_check_name.pop()]
+            trial_gate = SILENT_REALM_CHECKS[trial_check_name]
+            randomized_trial = self.rando.trial_connections[trial_gate]
+            randomized_trial_check = [trial for trial in trial_checks if trial.startswith(randomized_trial)].pop()
+            item = self.rando.logic.done_item_locations[randomized_trial_check]
             hint_mode = self.rando.options["song-hints"]
             if hint_mode == "Basic":
                 if item in self.rando.logic.all_progress_items:
@@ -1391,7 +1394,7 @@ class GamePatcher:
                     # print(f'{item} in {trial_check} is not useful')
             elif hint_mode == "Advanced":
                 if trial_check_name in self.rando.woth_locations:
-                    useful_text = "\nYour spirit will grow by completing this trial"
+                    useful_text = "\nYour <b+<spirit>> will grow by completing this trial"
                 elif item in self.rando.logic.all_progress_items:
                     useful_text = "\nYou might need what it reveals..."
                 else:
@@ -1399,7 +1402,7 @@ class GamePatcher:
                     useful_text = "\nIt's probably not too important..."
             elif hint_mode == "Direct":
                 useful_text = (
-                    f"\nThey say this trial rewards those who complete it with\n{item}"
+                    f"\nThey say this trial rewards those who\ncomplete it with\n<r<{item}>>"
                 )
             else:
                 useful_text = (
