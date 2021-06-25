@@ -65,29 +65,32 @@ class GossipStoneHintWrapper(GossipStoneHint):
 
 
 @dataclass
+class TrialGateGossipStoneHint(GossipStoneHint):
+    trial_gate: str
+    trial_item: str
+
+    def to_gossip_stone_text(self) -> str:
+        return textbox_utils.break_lines(
+            f"They say that opening the <r<{self.trial_gate}>> will reveal <y<{self.trial_item}>>"
+        )
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.trial_gate} has {self.trial_item}"
+
+
+@dataclass
 class LocationGossipStoneHint(GossipStoneHint):
     location_name: str
     item: str
 
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        if zone in SILENT_REALMS.keys():
-            trial_gate = SILENT_REALMS[zone]
-            return textbox_utils.break_lines(
-                f"Opening the <r<{trial_gate}>> will reveal <y<{self.item}>>"
-            )
-        else:
-            return textbox_utils.break_lines(
-                f"<r<{zone} - {specific_loc}>> has <y<{self.item}>>"
-            )
+        return textbox_utils.break_lines(
+            f"<r<{zone} - {specific_loc}>> has <y<{self.item}>>"
+        )
 
     def to_spoiler_log_text(self) -> str:
-        zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        if zone in SILENT_REALMS.keys():
-            trial_gate = SILENT_REALMS[zone]
-            return f"{trial_gate} has {self.item}"
-        else:
-            return f"{self.location_name} has {self.item}"
+        return f"{self.location_name} has {self.item}"
 
 
 @dataclass
@@ -97,23 +100,12 @@ class ItemGossipStoneHint(GossipStoneHint):
 
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        if zone in SILENT_REALMS.keys():
-            trial_gate = SILENT_REALMS[zone]
-            return textbox_utils.break_lines(
-                f"<y<{self.item}>> can be found by opening <r<{trial_gate}>>"
-            )
-        else:
-            return textbox_utils.break_lines(
-                f"<y<{self.item}>> can be found at <r<{zone}: {specific_loc}>>"
-            )
+        return textbox_utils.break_lines(
+            f"<y<{self.item}>> can be found at <r<{zone}: {specific_loc}>>"
+        )
 
     def to_spoiler_log_text(self) -> str:
-        zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        if zone in SILENT_REALMS.keys():
-            trial_gate = SILENT_REALMS[zone]
-            return f"{self.item} is on {trial_gate}"
-        else:
-            return f"{self.item} is on {self.location_name}"
+        return f"{self.item} is on {self.location_name}"
 
 
 @dataclass
@@ -449,9 +441,9 @@ class Hints:
                         if trial_gate_dest in trial
                     ].pop()
                     trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
-                    return LocationGossipStoneHint(
-                        location_name=location,
-                        item=trial_item,
+                    return TrialGateGossipStoneHint(
+                        trial_gate=loc_trial_gate,
+                        trial_item=trial_item,
                     )
                 else:
                     return LocationGossipStoneHint(
@@ -468,7 +460,10 @@ class Hints:
                         if trial_gate_dest in trial
                     ].pop()
                     trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
-                    return ItemGossipStoneHint(location_name=location, item=trial_item)
+                    return TrialGateGossipStoneHint(
+                        trial_gate=loc_trial_gate,
+                        trial_item=trial_item,
+                    )
                 else:
                     return ItemGossipStoneHint(
                         location_name=location,
