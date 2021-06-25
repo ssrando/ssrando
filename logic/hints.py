@@ -68,6 +68,7 @@ class GossipStoneHintWrapper(GossipStoneHint):
 class LocationGossipStoneHint(GossipStoneHint):
     location_name: str
     item: str
+
     def to_gossip_stone_text(self) -> str:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
         if zone in SILENT_REALMS.keys():
@@ -442,7 +443,11 @@ class Hints:
                 if location in SILENT_REALM_CHECKS.keys():
                     loc_trial_gate = SILENT_REALM_CHECKS[location]
                     trial_gate_dest = self.logic.rando.trial_connections[loc_trial_gate]
-                    trial_gate_dest_loc = [trial for trial in SILENT_REALM_CHECKS.keys() if trial_gate_dest in trial].pop()
+                    trial_gate_dest_loc = [
+                        trial
+                        for trial in SILENT_REALM_CHECKS.keys()
+                        if trial_gate_dest in trial
+                    ].pop()
                     trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
                     return LocationGossipStoneHint(
                         location_name=location,
@@ -457,12 +462,13 @@ class Hints:
                 if location in SILENT_REALM_CHECKS.keys():
                     loc_trial_gate = SILENT_REALM_CHECKS[location]
                     trial_gate_dest = self.logic.rando.trial_connections[loc_trial_gate]
-                    trial_gate_dest_loc = [trial for trial in SILENT_REALM_CHECKS.keys() if trial_gate_dest in trial].pop()
+                    trial_gate_dest_loc = [
+                        trial
+                        for trial in SILENT_REALM_CHECKS.keys()
+                        if trial_gate_dest in trial
+                    ].pop()
                     trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
-                    return ItemGossipStoneHint(
-                        location_name=location,
-                        item=trial_item
-                    )
+                    return ItemGossipStoneHint(location_name=location, item=trial_item)
                 else:
                     return ItemGossipStoneHint(
                         location_name=location,

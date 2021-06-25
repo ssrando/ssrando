@@ -256,14 +256,14 @@ TRIAL_GATE_TO_TRIAL = {
     "Trial Gate on Skyloft": "Skyloft Silent Realm",
     "Trial Gate in Faron Woods": "Faron Silent Realm",
     "Trial Gate in Eldin Volcano": "Eldin Silent Realm",
-    "Trial Gate in Lanayru Desert": "Lanayru Silent Realm"
+    "Trial Gate in Lanayru Desert": "Lanayru Silent Realm",
 }
 
 TRIAL_STAGES = {
     "Skyloft Silent Realm": "S000",
     "Faron Silent Realm": "S100",
     "Eldin Silent Realm": "S200",
-    "Lanayru Silent Realm": "S300"
+    "Lanayru Silent Realm": "S300",
 }
 
 TRIAL_GATE_STAGES = {
@@ -271,7 +271,7 @@ TRIAL_GATE_STAGES = {
     "Trial Gate on Skyloft": ("F000", 0, 45),
     "Trial Gate in Faron Woods": ("F100", 0, 8),
     "Trial Gate in Eldin Volcano": ("F200", 2, 4),
-    "Trial Gate in Lanayru Desert": ("F300", 0, 7)
+    "Trial Gate in Lanayru Desert": ("F300", 0, 7),
 }
 
 TRIAL_EXITS = {
@@ -279,7 +279,7 @@ TRIAL_EXITS = {
     "Trial Gate on Skyloft": ("F000", 0, 0, 83),
     "Trial Gate in Faron Woods": ("F100", 0, 0, 48),
     "Trial Gate in Eldin Volcano": ("F200", 0, 2, 5),
-    "Trial Gate in Lanayru Desert": ("F300", 0, 0, 4)
+    "Trial Gate in Lanayru Desert": ("F300", 0, 0, 4),
 }
 
 TRIAL_ENTRANCES = {
@@ -288,7 +288,7 @@ TRIAL_ENTRANCES = {
     "Skyloft Silent Realm": ("S000", 2, 0, 0),
     "Faron Silent Realm": ("S100", 2, 0, 0),
     "Eldin Silent Realm": ("S200", 2, 2, 0),
-    "Lanayru Silent Realm": ("S300", 2, 0, 0)
+    "Lanayru Silent Realm": ("S300", 2, 0, 0),
 }
 
 TRIAL_EXIT_SCENS = {
@@ -296,7 +296,7 @@ TRIAL_EXIT_SCENS = {
     "Skyloft Silent Realm": ("S000", 0, 1),
     "Faron Silent Realm": ("S100", 0, 1),
     "Eldin Silent Realm": ("S200", 2, 1),
-    "Lanayru Silent Realm": ("S300", 0, 1)
+    "Lanayru Silent Realm": ("S300", 0, 1),
 }
 
 TRIAL_EXIT_GATE_IDS = {
@@ -304,7 +304,7 @@ TRIAL_EXIT_GATE_IDS = {
     "Skyloft Silent Realm": 0xFC26,
     "Faron Silent Realm": 0xFC94,
     "Eldin Silent Realm": 0xFC37,
-    "Lanayru Silent Realm": 0xFC18
+    "Lanayru Silent Realm": 0xFC18,
 }
 
 TRIAL_COMPLETE_STORYFLAGS = {
@@ -312,7 +312,7 @@ TRIAL_COMPLETE_STORYFLAGS = {
     "Trial Gate on Skyloft": 0x39A,
     "Trial Gate in Faron Woods": 0x397,
     "Trial Gate in Eldin Volcano": 0x398,
-    "Trial Gate in Lanayru Desert": 0x399
+    "Trial Gate in Lanayru Desert": 0x399,
 }
 
 BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
@@ -655,13 +655,15 @@ def rando_patch_heartco(bzs: OrderedDict, itemid: int, id: str):
     patch_heart_co(obj, itemid)
 
 
-def rando_patch_warpobj(bzs: OrderedDict, itemid: int, id: str, trial_connections: OrderedDict):
+def rando_patch_warpobj(
+    bzs: OrderedDict, itemid: int, id: str, trial_connections: OrderedDict
+):
     obj = next(
         filter(lambda x: x["name"] == "WarpObj", bzs["OBJ "])
     )  # there is only one trial exit at a time
     patch_trial_item(obj, itemid)
     for trial, trialid in TRIAL_EXIT_GATE_IDS.items():
-        if obj['id'] == trialid:
+        if obj["id"] == trialid:
             trial_gate = [tg for tg, t in trial_connections.items() if t == trial].pop()
             trial_storyflag = TRIAL_COMPLETE_STORYFLAGS[trial_gate]
     patch_trial_flags(obj, trial_storyflag)
@@ -1132,7 +1134,7 @@ class GamePatcher:
                     "object": {"story_flag1": storyflag},
                 },
             )
-    
+
     def add_trial_rando_patches(self):
         for trial_gate, trial in self.rando.trial_connections.items():
             trial_gate_stage, trial_gate_room, trial_gate_scen = TRIAL_GATE_STAGES[
@@ -1158,9 +1160,7 @@ class GamePatcher:
             )
 
             scen_stage, scen_room, scen_index = TRIAL_EXIT_SCENS[trial]
-            exit_stage, exit_layer, exit_room, exit_entrance = TRIAL_EXITS[
-                trial_gate
-            ]
+            exit_stage, exit_layer, exit_room, exit_entrance = TRIAL_EXITS[trial_gate]
             self.add_patch_to_stage(
                 scen_stage,
                 {
@@ -1382,7 +1382,9 @@ class GamePatcher:
         ) in trial_checks.items():
             trial_gate = SILENT_REALM_CHECKS[trial_check_name]
             randomized_trial = self.rando.trial_connections[trial_gate]
-            randomized_trial_check = [trial for trial in trial_checks if trial.startswith(randomized_trial)].pop()
+            randomized_trial_check = [
+                trial for trial in trial_checks if trial.startswith(randomized_trial)
+            ].pop()
             item = self.rando.logic.done_item_locations[randomized_trial_check]
             hint_mode = self.rando.options["song-hints"]
             if hint_mode == "Basic":
@@ -1394,16 +1396,16 @@ class GamePatcher:
                     # print(f'{item} in {trial_check} is not useful')
             elif hint_mode == "Advanced":
                 if trial_check_name in self.rando.woth_locations:
-                    useful_text = "\nYour <b+<spirit>> will grow by completing this trial"
+                    useful_text = (
+                        "\nYour <b+<spirit>> will grow by completing this trial"
+                    )
                 elif item in self.rando.logic.all_progress_items:
                     useful_text = "\nYou might need what it reveals..."
                 else:
                     # barren
                     useful_text = "\nIt's probably not too important..."
             elif hint_mode == "Direct":
-                useful_text = (
-                    f"\nThey say this trial rewards those who\ncomplete it with\n<r<{item}>>"
-                )
+                useful_text = f"\nThey say this trial rewards those who\ncomplete it with\n<r<{item}>>"
             else:
                 useful_text = (
                     "\nSomething went wrong when generating song hints.\n"
@@ -1726,7 +1728,12 @@ class GamePatcher:
         ):
             modified = True
             if objname == "WarpObj":
-                RANDO_PATCH_FUNCS[objname](bzs["LAY "][f"l{layer}"], itemid, objid, self.rando.trial_connections)
+                RANDO_PATCH_FUNCS[objname](
+                    bzs["LAY "][f"l{layer}"],
+                    itemid,
+                    objid,
+                    self.rando.trial_connections,
+                )
             else:
                 RANDO_PATCH_FUNCS[objname](bzs["LAY "][f"l{layer}"], itemid, objid)
 

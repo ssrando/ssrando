@@ -26,11 +26,21 @@ DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict(
 )
 
 SILENT_REALMS = OrderedDict(
-    [("Skyloft Silent Realm", "Skyloft Trial Gate"), ("Faron Silent Realm", "Faron Trial Gate"), ("Lanayru Silent Realm", "Lanayru Trial Gate"), ("Eldin Silent Realm", "Eldin Trial Gate")]
+    [
+        ("Skyloft Silent Realm", "Skyloft Trial Gate"),
+        ("Faron Silent Realm", "Faron Trial Gate"),
+        ("Lanayru Silent Realm", "Lanayru Trial Gate"),
+        ("Eldin Silent Realm", "Eldin Trial Gate"),
+    ]
 )
 
 SILENT_REALM_CHECKS = OrderedDict(
-    [("Skyloft Silent Realm - Stone of Trials", "Trial Gate on Skyloft"), ("Faron Silent Realm - Water Scale", "Trial Gate in Faron Woods"), ("Lanayru Silent Realm - Clawshots", "Trial Gate in Lanayru Desert"), ("Eldin Silent Realm - Fireshield Earrings", "Trial Gate in Eldin Volcano")]
+    [
+        ("Skyloft Silent Realm - Stone of Trials", "Trial Gate on Skyloft"),
+        ("Faron Silent Realm - Water Scale", "Trial Gate in Faron Woods"),
+        ("Lanayru Silent Realm - Clawshots", "Trial Gate in Lanayru Desert"),
+        ("Eldin Silent Realm - Fireshield Earrings", "Trial Gate in Eldin Volcano"),
+    ]
 )
 
 SHOP_CHECKS = [

@@ -123,14 +123,14 @@ class Randomizer:
             "Faron Silent Realm",
             "Lanayru Silent Realm",
             "Eldin Silent Realm",
-            "Skyloft Silent Realm"
+            "Skyloft Silent Realm",
         ]
 
         trial_gates = [
             "Trial Gate in Faron Woods",
             "Trial Gate in Lanayru Desert",
             "Trial Gate in Eldin Volcano",
-            "Trial Gate on Skyloft"
+            "Trial Gate on Skyloft",
         ]
 
         if self.options["randomize-trials"] == True:
