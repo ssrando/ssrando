@@ -22,6 +22,7 @@ class PlacementFile:
         self.gossip_stone_hints = {}
         self.trial_hints = {}
         self.entrance_connections = {}
+        self.trial_connections = {}
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))
@@ -40,6 +41,7 @@ class PlacementFile:
             "gossip-stone-hints": self.gossip_stone_hints,
             "trial-hints": self.trial_hints,
             "entrance-connections": self.entrance_connections,
+            "trial-connections": self.trial_connections,
         }
         return json.dumps(retval, indent=2)
 
@@ -54,6 +56,7 @@ class PlacementFile:
         self.gossip_stone_hints = jsn["gossip-stone-hints"]
         self.trial_hints = jsn["trial-hints"]
         self.entrance_connections = jsn["entrance-connections"]
+        self.trial_connections = jsn["trial-connections"]
 
     def check_valid(self):
         """checks, if the current state is valid, throws an exception otherwise

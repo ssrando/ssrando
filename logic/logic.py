@@ -72,6 +72,7 @@ class Logic:
 
         self.required_dungeons = self.randomize_required_dungeons()
         self.entrance_connections = self.randomize_entrance_connections()
+        self.trial_connections = self.randomize_trial_entrances()
         self.starting_items = self.randomize_starting_items()
 
         self.race_mode_banned_locations = []
@@ -131,6 +132,7 @@ class Logic:
 
         # Sync the logic macros with the randomizer.
         self.update_entrance_connection_macros()
+        self.update_trial_rando_macros()
         self.update_beat_game_macro()
 
         # Initialize item related attributes.
@@ -329,6 +331,25 @@ class Logic:
             # TODO: do checks here if in the future some connections aren't possible
             connections_invalid = False
         return entrance_connections
+
+    def randomize_trial_entrances(self):
+        trials = [
+            "Faron Silent Realm",
+            "Lanayru Silent Realm",
+            "Eldin Silent Realm",
+            "Skyloft Silent Realm",
+        ]
+
+        trial_gates = [
+            "Trial Gate in Faron Woods",
+            "Trial Gate in Lanayru Desert",
+            "Trial Gate in Eldin Volcano",
+            "Trial Gate on Skyloft",
+        ]
+
+        if self.rando.options["randomize-trials"] == True:
+            self.rando.rng.shuffle(trials)
+        return OrderedDict(zip(trial_gates, trials))
 
     def randomize_starting_items(self):
         """
@@ -748,6 +769,12 @@ class Logic:
             zone_beat_macro_name = "Can Beat " + zone_name
             entrance_beat_macro_name = "Can Beat " + entrance_name
             self.set_macro(entrance_beat_macro_name, zone_beat_macro_name)
+
+    def update_trial_rando_macros(self):
+        for trial_gate, trial in self.trial_connections.items():
+            trial_gate_access_macro = "Can Open " + trial_gate
+            trial_access_macro = "Can Access " + trial
+            self.set_macro(trial_access_macro, trial_gate_access_macro)
 
     def make_useless_progress_items_nonprogress(self):
         # Detect which progress items don't actually help access any locations with the user's current settings, and move those over to the nonprogress item list instead.

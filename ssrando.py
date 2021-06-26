@@ -64,7 +64,6 @@ class Randomizer:
         self.rng.seed(self.seed)
         if self.no_logs:
             self.rng.randint(0, 100)
-
         self.banned_types = self.options["banned-types"]
 
         # not happy that is has to land here, it's used by both GamePatches and Logic
@@ -275,6 +274,13 @@ class Randomizer:
         ) in self.logic.entrance_connections.items():
             spoiler_log += "  %-48s %s\n" % (entrance_name + ":", dungeon_or_cave_name)
 
+        spoiler_log += "\n\n"
+
+        # Write randomized trials
+        spoiler_log += "Trial Gates:\n"
+        for trial_gate, trial in self.logic.trial_connections.items():
+            spoiler_log += "  %-48s %s\n" % (trial_gate + ":", trial)
+
         spoiler_log += "\n\n\n"
 
         # Write hints
@@ -320,6 +326,7 @@ class Randomizer:
             )
         )
         spoiler_log["entrances"] = self.logic.entrance_connections
+        spoiler_log["trial-connections"] = self.logic.trial_connections
 
         spoiler_log_output_path = self.options["output-folder"] / (
             "SS Random %s - Spoiler Log.json" % self.seed
@@ -488,7 +495,12 @@ class Randomizer:
         }
         trial_hints = {}
         for (trial_check_name, hintname) in trial_checks.items():
-            item = self.logic.done_item_locations[trial_check_name]
+            trial_gate = constants.SILENT_REALM_CHECKS[trial_check_name]
+            randomized_trial = self.logic.trial_connections[trial_gate]
+            randomized_trial_check = [
+                trial for trial in trial_checks if trial.startswith(randomized_trial)
+            ].pop()
+            item = self.logic.done_item_locations[randomized_trial_check]
             hint_mode = self.options["song-hints"]
             if hint_mode == "Basic":
                 if item in self.logic.all_progress_items:
@@ -519,7 +531,6 @@ class Randomizer:
         plcmt_file.gossip_stone_hints = dict(
             (k, v.to_gossip_stone_text()) for (k, v) in self.hints.hints.items()
         )
-        print(plcmt_file.gossip_stone_hints)
         plcmt_file.trial_hints = trial_hints
         plcmt_file.item_locations = dict(
             (k, v)

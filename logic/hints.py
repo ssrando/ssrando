@@ -3,7 +3,7 @@ from paths import RANDO_ROOT_PATH
 import yaml
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
-from .constants import POTENTIALLY_REQUIRED_DUNGEONS
+from .constants import POTENTIALLY_REQUIRED_DUNGEONS, SILENT_REALMS, SILENT_REALM_CHECKS
 from util import textbox_utils
 
 ALWAYS_REQUIRED_LOCATIONS = [
@@ -62,6 +62,20 @@ class GossipStoneHintWrapper(GossipStoneHint):
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.primary_hint.to_spoiler_log_text()} / {self.secondary_hint.to_spoiler_log_text()}"
+
+
+@dataclass
+class TrialGateGossipStoneHint(GossipStoneHint):
+    trial_gate: str
+    trial_item: str
+
+    def to_gossip_stone_text(self) -> str:
+        return textbox_utils.break_lines(
+            f"They say that opening the <r<{self.trial_gate}>> will reveal <y<{self.trial_item}>>"
+        )
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.trial_gate} has {self.trial_item}"
 
 
 @dataclass
@@ -417,15 +431,43 @@ class Hints:
 
         def create_hint(location):
             if location in location_hints:
-                return LocationGossipStoneHint(
-                    location_name=location,
-                    item=self.logic.done_item_locations[location],
-                )
+                if location in SILENT_REALM_CHECKS.keys():
+                    loc_trial_gate = SILENT_REALM_CHECKS[location]
+                    trial_gate_dest = self.logic.trial_connections[loc_trial_gate]
+                    trial_gate_dest_loc = [
+                        trial
+                        for trial in SILENT_REALM_CHECKS.keys()
+                        if trial_gate_dest in trial
+                    ].pop()
+                    trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
+                    return TrialGateGossipStoneHint(
+                        trial_gate=loc_trial_gate,
+                        trial_item=trial_item,
+                    )
+                else:
+                    return LocationGossipStoneHint(
+                        location_name=location,
+                        item=self.logic.done_item_locations[location],
+                    )
             elif location in item_hints:
-                return ItemGossipStoneHint(
-                    location_name=location,
-                    item=self.logic.done_item_locations[location],
-                )
+                if location in SILENT_REALM_CHECKS.keys():
+                    loc_trial_gate = SILENT_REALM_CHECKS[location]
+                    trial_gate_dest = self.logic.trial_connections[loc_trial_gate]
+                    trial_gate_dest_loc = [
+                        trial
+                        for trial in SILENT_REALM_CHECKS.keys()
+                        if trial_gate_dest in trial
+                    ].pop()
+                    trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
+                    return TrialGateGossipStoneHint(
+                        trial_gate=loc_trial_gate,
+                        trial_item=trial_item,
+                    )
+                else:
+                    return ItemGossipStoneHint(
+                        location_name=location,
+                        item=self.logic.done_item_locations[location],
+                    )
             elif location in woth_hints:
                 zone, specific_loc = Logic.split_location_name_by_zone(location)
                 return WayOfTheHeroGossipStoneHint(zone=zone)

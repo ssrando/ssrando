@@ -22,6 +22,7 @@ from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 
 from logic.logic import Logic
+from logic.constants import SILENT_REALM_CHECKS
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -249,6 +250,69 @@ POST_DUNGEON_CUTSCENE = {
     "Sandship": ("B301", 0, 1),
     "Fire Sanctuary": ("B201_1", 0, 0),
     "Sky Keep": ("F407", 0, 2),
+}
+
+TRIAL_GATE_TO_TRIAL = {
+    "Trial Gate on Skyloft": "Skyloft Silent Realm",
+    "Trial Gate in Faron Woods": "Faron Silent Realm",
+    "Trial Gate in Eldin Volcano": "Eldin Silent Realm",
+    "Trial Gate in Lanayru Desert": "Lanayru Silent Realm",
+}
+
+TRIAL_STAGES = {
+    "Skyloft Silent Realm": "S000",
+    "Faron Silent Realm": "S100",
+    "Eldin Silent Realm": "S200",
+    "Lanayru Silent Realm": "S300",
+}
+
+TRIAL_GATE_STAGES = {
+    # stage, room, scen
+    "Trial Gate on Skyloft": ("F000", 0, 45),
+    "Trial Gate in Faron Woods": ("F100", 0, 8),
+    "Trial Gate in Eldin Volcano": ("F200", 2, 4),
+    "Trial Gate in Lanayru Desert": ("F300", 0, 7),
+}
+
+TRIAL_EXITS = {
+    # stage, layer, room, entrance
+    "Trial Gate on Skyloft": ("F000", 0, 0, 83),
+    "Trial Gate in Faron Woods": ("F100", 0, 0, 48),
+    "Trial Gate in Eldin Volcano": ("F200", 0, 2, 5),
+    "Trial Gate in Lanayru Desert": ("F300", 0, 0, 4),
+}
+
+TRIAL_ENTRANCES = {
+    # stage, layer, room, entrance
+    # all trials are layer 2
+    "Skyloft Silent Realm": ("S000", 2, 0, 0),
+    "Faron Silent Realm": ("S100", 2, 0, 0),
+    "Eldin Silent Realm": ("S200", 2, 2, 0),
+    "Lanayru Silent Realm": ("S300", 2, 0, 0),
+}
+
+TRIAL_EXIT_SCENS = {
+    # stage, room, index
+    "Skyloft Silent Realm": ("S000", 0, 1),
+    "Faron Silent Realm": ("S100", 0, 1),
+    "Eldin Silent Realm": ("S200", 2, 1),
+    "Lanayru Silent Realm": ("S300", 0, 1),
+}
+
+TRIAL_EXIT_GATE_IDS = {
+    # silent realm name, silent realm WarpObj ID
+    "Skyloft Silent Realm": 0xFC26,
+    "Faron Silent Realm": 0xFC94,
+    "Eldin Silent Realm": 0xFC37,
+    "Lanayru Silent Realm": 0xFC18,
+}
+
+TRIAL_COMPLETE_STORYFLAGS = {
+    # trial gate, storyflag
+    "Trial Gate on Skyloft": 0x39A,
+    "Trial Gate in Faron Woods": 0x397,
+    "Trial Gate in Eldin Volcano": 0x398,
+    "Trial Gate in Lanayru Desert": 0x399,
 }
 
 BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
@@ -564,6 +628,11 @@ def patch_trial_item(trial: OrderedDict, itemid: int):
     trial["params1"] = mask_shift_set(trial["params1"], 0xFF, 0x18, itemid)
 
 
+def patch_trial_flags(trial: OrderedDict, storyflag: int):
+    # Use last 2 bytes of params2 as the randomized trial storyflag
+    trial["params2"] = mask_shift_set(trial["params2"], 0xFFFF, 0x0, storyflag)
+
+
 def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
     boko["params2"] = mask_shift_set(boko["params2"], 0xFF, 0x0, itemid)
 
@@ -586,11 +655,18 @@ def rando_patch_heartco(bzs: OrderedDict, itemid: int, id: str):
     patch_heart_co(obj, itemid)
 
 
-def rando_patch_warpobj(bzs: OrderedDict, itemid: int, id: str):
+def rando_patch_warpobj(
+    bzs: OrderedDict, itemid: int, id: str, trial_connections: OrderedDict
+):
     obj = next(
         filter(lambda x: x["name"] == "WarpObj", bzs["OBJ "])
     )  # there is only one trial exit at a time
     patch_trial_item(obj, itemid)
+    for trial, trialid in TRIAL_EXIT_GATE_IDS.items():
+        if obj["id"] == trialid:
+            trial_gate = [tg for tg, t in trial_connections.items() if t == trial].pop()
+            trial_storyflag = TRIAL_COMPLETE_STORYFLAGS[trial_gate]
+    patch_trial_flags(obj, trial_storyflag)
 
 
 def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str):
@@ -795,6 +871,7 @@ class GamePatcher:
     def do_all_gamepatches(self):
         self.load_base_patches()
         self.add_entrance_rando_patches()
+        self.add_trial_rando_patches()
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.shopsanity_patches()
         self.do_build_arc_cache()
@@ -1056,6 +1133,49 @@ class GamePatcher:
                     "room": inner_room,
                     "objtype": "EVNT",
                     "object": {"story_flag1": storyflag},
+                },
+            )
+
+    def add_trial_rando_patches(self):
+        for trial_gate, trial in self.placement_file.trial_connections.items():
+            trial_gate_stage, trial_gate_room, trial_gate_scen = TRIAL_GATE_STAGES[
+                trial_gate
+            ]
+            trial_stage, layer, room, trial_gate_index = TRIAL_ENTRANCES[trial]
+            # patch dungeon entrance
+            self.add_patch_to_stage(
+                trial_gate_stage,
+                {
+                    "name": f"Trial gate patch - {trial_gate} to {trial}",
+                    "type": "objpatch",
+                    "index": trial_gate_scen,
+                    "room": trial_gate_room,
+                    "objtype": "SCEN",
+                    "object": {
+                        "name": trial_stage,
+                        "layer": layer,
+                        "room": room,
+                        "entrance": trial_gate_index,
+                    },
+                },
+            )
+
+            scen_stage, scen_room, scen_index = TRIAL_EXIT_SCENS[trial]
+            exit_stage, exit_layer, exit_room, exit_entrance = TRIAL_EXITS[trial_gate]
+            self.add_patch_to_stage(
+                scen_stage,
+                {
+                    "name": f"Trial exit patch - {trial} to {trial_gate}",
+                    "type": "objpatch",
+                    "index": scen_index,
+                    "room": scen_room,
+                    "objtype": "SCEN",
+                    "object": {
+                        "name": exit_stage,
+                        "layer": exit_layer,
+                        "room": exit_room,
+                        "entrance": exit_entrance,
+                    },
                 },
             )
 
@@ -1577,7 +1697,15 @@ class GamePatcher:
             (stage, room), []
         ):
             modified = True
-            RANDO_PATCH_FUNCS[objname](bzs["LAY "][f"l{layer}"], itemid, objid)
+            if objname == "WarpObj":
+                RANDO_PATCH_FUNCS[objname](
+                    bzs["LAY "][f"l{layer}"],
+                    itemid,
+                    objid,
+                    self.placement_file.trial_connections,
+                )
+            else:
+                RANDO_PATCH_FUNCS[objname](bzs["LAY "][f"l{layer}"], itemid, objid)
 
         if modified:
             # print(json.dumps(bzs))
