@@ -108,63 +108,6 @@
     index: 540 # before storyflag
     flow:
       next: -1 # after Storyflag
-    # after the last tear is picked up, patch it so that the flag for the trial is set
-  - name: to set faron trial storyflag
-    type: flowpatch
-    index: 401
-    flow:
-      next: set faron trial storyflag
-  - name: set faron trial storyflag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 919
-      next: -1
-      param3: 0
-  - name: to set eldin trial storyflag
-    type: flowpatch
-    index: 441
-    flow:
-      next: set eldin trial storyflag
-  - name: set eldin trial storyflag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 920
-      next: -1
-      param3: 0
-  - name: to set lanayru trial storyflag
-    type: flowpatch
-    index: 451
-    flow:
-      next: set lanayru trial storyflag
-  - name: set lanayru trial storyflag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 921
-      next: -1
-      param3: 0
-  - name: to set skyloft trial storyflag
-    type: flowpatch
-    index: 446
-    flow:
-      next: set skyloft trial storyflag
-  - name: set skyloft trial storyflag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 922
-      next: -1
-      param3: 0
   - name: Go to Harp Storyflag
     type: flowpatch
     index: 71
@@ -1104,22 +1047,6 @@
       param3: 9
       param4: 0
       param5: 0
-150-Siren:
-  - name: to unset trial storyflag
-    type: flowpatch
-    index: 38
-    flow:
-      next: 81
-  - name: unset trial storyflag on failure
-    type: flowadd
-    index: 81
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 922
-      next: -1
-      param3: 1 # unset storyflag
 200-Forest:
   - name: give slingshot directly
     type: flowpatch
@@ -1335,28 +1262,12 @@
     index: 62
     flow:
       next: 468
-
 250-ForestSiren:
   - name: shorten fi text
     type: flowpatch
     index: 1
     flow:
       next: 78
-  # unset trial storyflag on fail
-  - name: to unset Trial storyflag
-    type: flowpatch
-    index: 37
-    flow:
-      next: unset Trial storyflag
-  - name: unset Trial storyflag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 919
-      next: -1
-      param3: 1 # unset storyflag
 299-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
@@ -1446,21 +1357,6 @@
       param2: 7
       next: -1
       param3: 7
-350-MountainSairen:
-  - name: to unset trial storyflag
-    type: flowpatch
-    index: 30
-    flow:
-      next: unset trial storyflag on failure
-  - name: unset trial storyflag on failure
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 920
-      next: -1
-      param3: 1 # unset storyflag
 399-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
@@ -1591,21 +1487,6 @@
     index: 17
     flow:
       next: 276
-450-DesertSiren:
-  - name: to unset trial storyflag
-    type: flowpatch
-    index: 30
-    flow:
-      next: unset trial storyflag on failure
-  - name: unset trial storyflag on failure
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 921
-      next: -1
-      param3: 1 # unset storyflag
 499-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
