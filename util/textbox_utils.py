@@ -1,7 +1,7 @@
 CHARACTERS_PER_LINE = 39
 
 
-def break_lines(text):
+def break_lines(text, characters_per_line=CHARACTERS_PER_LINE):
     words = text.split()
     final_text = ""
     chars_in_line = 0
@@ -9,7 +9,7 @@ def break_lines(text):
         chars_in_line += (
             len(word) + 1
         )  # add 1 to account for the space at the beginning of the word
-        if chars_in_line >= CHARACTERS_PER_LINE:
+        if chars_in_line >= characters_per_line:
             final_text = final_text[
                 : len(final_text) - 1
             ]  # strip trailing space at the end of each line

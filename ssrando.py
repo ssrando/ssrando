@@ -504,29 +504,28 @@ class Randomizer:
             hint_mode = self.options["song-hints"]
             if hint_mode == "Basic":
                 if item in self.logic.all_progress_items:
-                    useful_text = "\nYou might need what it reveals..."
+                    useful_text = "You might need what it reveals..."
                     # print(f'{item} in {trial_check} is useful')
                 else:
-                    useful_text = "\nIt's probably not too important..."
+                    useful_text = "It's probably not too important..."
                     # print(f'{item} in {trial_check} is not useful')
             elif hint_mode == "Advanced":
                 if trial_check_name in self.woth_locations:
-                    useful_text = "\nYour spirit will grow by completing this trial"
+                    useful_text = "Your spirit will grow by completing this trial"
                 elif item in self.logic.all_progress_items:
-                    useful_text = "\nYou might need what it reveals..."
+                    useful_text = "You might need what it reveals..."
                 else:
                     # barren
-                    useful_text = "\nIt's probably not too important..."
+                    useful_text = "It's probably not too important..."
             elif hint_mode == "Direct":
-                useful_text = (
-                    f"\nThey say this trial rewards those who complete it with\n{item}"
-                )
+                useful_text = f"This trial holds {item}"
             else:
                 useful_text = ""
             trial_hints[hintname] = useful_text
 
         plcmt_file = PlacementFile()
         plcmt_file.entrance_connections = self.logic.entrance_connections
+        plcmt_file.trial_connections = self.logic.trial_connections
         plcmt_file.hash_str = self.randomizer_hash
         plcmt_file.gossip_stone_hints = dict(
             (k, v.to_gossip_stone_text()) for (k, v) in self.hints.hints.items()

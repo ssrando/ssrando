@@ -26,6 +26,8 @@ from logic.constants import SILENT_REALM_CHECKS
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
+from util.textbox_utils import break_lines
+
 TOTAL_STAGE_FILES = 369
 TOTAL_EVENT_FILES = 6
 
@@ -1381,13 +1383,15 @@ class GamePatcher:
             hintname,
         ) in trial_checks.items():
             useful_text = self.placement_file.trial_hints[hintname]
-            find_event("003-ItemGet", obtain_text_name)["text"] += useful_text
+            item_get_patch = find_event("003-ItemGet", obtain_text_name)
+            item_get_patch["text"] += " " + useful_text
+            item_get_patch["text"] = break_lines(item_get_patch["text"], 44)
             self.eventpatches["003-ItemGet"].append(
                 {
                     "name": "Harp Text",
                     "type": "textpatch",
                     "index": inventory_text_idx,
-                    "text": inventory_text + useful_text,
+                    "text": break_lines(inventory_text + " " + useful_text, 44),
                 }
             )
 
