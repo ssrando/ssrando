@@ -26,7 +26,7 @@ from logic.constants import SILENT_REALM_CHECKS
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
-from util.textbox_utils import break_lines
+from util.textbox_utils import break_lines, break_and_make_multiple_textboxes
 
 TOTAL_STAGE_FILES = 369
 TOTAL_EVENT_FILES = 6
@@ -1407,7 +1407,9 @@ class GamePatcher:
                     "name": f"Hint {hintname}",
                     "type": "textpatch",
                     "index": hintdef["textindex"],
-                    "text": self.placement_file.gossip_stone_hints[hintname],
+                    "text": break_and_make_multiple_textboxes(
+                        self.placement_file.gossip_stone_hints[hintname]
+                    ),
                 },
             )
 

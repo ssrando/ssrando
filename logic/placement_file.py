@@ -121,6 +121,17 @@ class PlacementFile:
             "Gossip Stone Hints",
         )
 
+        for hintlist in self.gossip_stone_hints.values():
+            if not isinstance(hintlist, list):
+                raise InvalidPlacementFile(
+                    "gossip stone hints need to be LISTS of strings!"
+                )
+            for hint in hintlist:
+                if not isinstance(hint, str):
+                    raise InvalidPlacementFile(
+                        "gossip stone hints need to be lists of STRINGS!"
+                    )
+
         trial_check_names = set(
             (
                 "Song of the Hero - Trial Hint",
