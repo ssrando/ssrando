@@ -34,6 +34,10 @@ def make_mutliple_textboxes(texts):
     return final_text
 
 
+def break_and_make_multiple_textboxes(texts):
+    return make_mutliple_textboxes((break_lines(text) for text in texts))
+
+
 if __name__ == "__main__":
     test_separator = "===================================="
     print(

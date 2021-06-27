@@ -1191,17 +1191,21 @@ class GamePatcher:
             ]
             sold_item = self.placement_file.item_locations[location]
             normal_text = (
-                f"That there is a <y<{sold_item}>>.\n"
-                f"I'm selling it for only <r<{normal_price}>> rupees!\n"
-                f"Want to buy it?\n"
-                f"{BEEDLE_BUY_SWTICH}"
+                break_lines(
+                    f"That there is a <y<{sold_item}>>. "
+                    f"I'm selling it for only <r<{normal_price}>> rupees! "
+                    f"Want to buy it?\n"
+                )
+                + f"\n{BEEDLE_BUY_SWTICH}"
             )
             discount_text = (
-                f"That there is a <y<{sold_item}>>.\n"
-                f"Just this once it's half off!\n"
-                f"It can be yours for just <r<{discount_price}>> rupees!\n"
-                f"Want to buy it?\n"
-                f"{BEEDLE_BUY_SWTICH}"
+                break_lines(
+                    f"That there is a <y<{sold_item}>>. "
+                    f"Just this once it's half off! "
+                    f"It can be yours for just <r<{discount_price}>> rupees! "
+                    f"Want to buy it?"
+                )
+                + f"\n{BEEDLE_BUY_SWTICH}"
             )
             if location in beedle_texts:
                 if sold_item in beedle_texts[location]:
