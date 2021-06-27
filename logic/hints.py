@@ -402,7 +402,7 @@ class Hints:
                             [hint_location], gossipstone_def["Need"]
                         ):
                             hint_banned_stones[gossipstone_name].add(hint_location)
-            
+
         stones_to_banned_locs_sorted = sorted(
             hint_banned_stones.items(), key=lambda x: len(x[1]), reverse=True
         )
