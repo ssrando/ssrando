@@ -703,6 +703,33 @@
     index: 92
     flow:
       next: 79
+  - name: To Sword Check
+    # prevent playing bamboo cutting without any sword
+    type: flowpatch
+    index: 35
+    flow: {}
+    cases:
+      - Sword Check # soup has been delivered, normal event
+      - 37 # no
+  - name: Sword Check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 906 # Rando storyflag for practice sword
+      param3: 3
+    cases:
+      - 36 # normal text
+      - Show No Sword Text
+  - name: No Sword Text
+    type: textadd
+    text: "You don't have a Sword,\nso I can't let you play!"
+  - name: Show No Sword Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 109
+      param4: No Sword Text
 110-DivingGame:
   - name: Fun Fun Owner's Quest requirement
     type: flowpatch
@@ -1313,6 +1340,31 @@
       param2: 7
       next: -1
       param3: 7
+302-Anahori:
+  - name: To Mitts Check
+    type: flowpatch
+    index: 0
+    flow:
+      next: Mitts Check
+  - name: Mitts Check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 904 # Rando storyflag for digging mitts
+      param3: 3
+    cases:
+      - 19 # normal text
+      - Show No Mitts Text
+  - name: No Mitts Text
+    type: textadd
+    text: "You don't have Digging Mitts,\nso I can't let you play!"
+  - name: Show No Mitts Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: No Mitts Text
 303-MountainF2:
   - name: skip over Water Basin dowsing
     type: flowpatch
