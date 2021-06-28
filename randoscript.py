@@ -47,6 +47,13 @@ def process_command_line_options(options):
             + " "
             + "(bulk mode only) specify the number of threads to use (default: 1)"
         )
+        print()
+        print(
+            " --"
+            + "placement-file".ljust(longest_option)
+            + " "
+            + "specify the location of a placement file json that is used directly as a plandomizer, overrides all other options"
+        )
         return None
     elif "version" in options:
         print(VERSION)
