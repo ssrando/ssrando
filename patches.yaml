@@ -171,7 +171,7 @@ B101: # Koloktos Boss Room
     id: 0xFC13
     objtype: OBJS
     object:
-      params1: 0xFFFD4C00
+      params1: 0xFFFD3000
   - name: Open door after boss
     type: objpatch
     room: 0
@@ -179,7 +179,7 @@ B101: # Koloktos Boss Room
     id: 0xFC15
     objtype: OBJS
     object:
-      params1: 0xFFFD4C00
+      params1: 0xFFFD3000
 B101_1: # after AC boss
   - name: AC CS remove item and flags
     type: objpatch
