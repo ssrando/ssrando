@@ -31,40 +31,19 @@ def dummy_progress_callback(current_action_name):
     pass
 
 
-class Randomizer:
-    def __init__(self, options: Options, progress_callback=dummy_progress_callback):
-        self.options = options
-        # hack: if shops are vanilla, disable them as banned types because of bug net and progressive pouches
-        if self.options["shop-mode"] == "Vanilla":
-            banned_types = self.options["banned-types"]
-            for unban_shop_item in ["beedle", "cheap", "medium", "expensive"]:
-                if unban_shop_item in banned_types:
-                    banned_types.remove(unban_shop_item)
-            self.options.set_option("banned-types", banned_types)
+class BaseRandomizer:
+    """Class holding all the path and callback info for the GamePatcher"""
 
+    def __init__(self, progress_callback=dummy_progress_callback):
         self.progress_callback = progress_callback
-        self.dry_run = bool(self.options["dry-run"])
         # TODO: maybe make paths configurable?
         # exe root path is where the executable is
         self.exe_root_path = Path(".").resolve()
         # this is where all assets/read only files are
         self.rando_root_path = RANDO_ROOT_PATH
-        if not self.dry_run:
-            self.actual_extract_path = self.exe_root_path / "actual-extract"
-            self.modified_extract_path = self.exe_root_path / "modified-extract"
-            self.oarc_cache_path = self.exe_root_path / "oarc"
-        self.no_logs = self.options["no-spoiler-log"]
-        self.seed = self.options["seed"]
-        if self.seed == -1:
-            self.seed = random.randint(0, 1000000)
-        self.options.set_option("seed", self.seed)
-
-        self.randomizer_hash = self._get_rando_hash()
-        self.rng = random.Random()
-        self.rng.seed(self.seed)
-        if self.no_logs:
-            self.rng.randint(0, 100)
-        self.banned_types = self.options["banned-types"]
+        self.actual_extract_path = self.exe_root_path / "actual-extract"
+        self.modified_extract_path = self.exe_root_path / "modified-extract"
+        self.oarc_cache_path = self.exe_root_path / "oarc"
 
         # not happy that is has to land here, it's used by both GamePatches and Logic
         with (self.rando_root_path / "checks.yaml").open("r") as f:
@@ -83,6 +62,37 @@ class Randomizer:
 
         with (RANDO_ROOT_PATH / "hints.yaml").open() as f:
             self.stonehint_definitions: dict = yaml.safe_load(f)
+
+    def randomize(self):
+        """patch the game, or only write the spoiler log, depends on the implementation"""
+        raise NotImplementedError("abstract")
+
+
+class Randomizer(BaseRandomizer):
+    def __init__(self, options: Options, progress_callback=dummy_progress_callback):
+        super().__init__(progress_callback)
+        self.options = options
+        # hack: if shops are vanilla, disable them as banned types because of bug net and progressive pouches
+        if self.options["shop-mode"] == "Vanilla":
+            banned_types = self.options["banned-types"]
+            for unban_shop_item in ["beedle", "cheap", "medium", "expensive"]:
+                if unban_shop_item in banned_types:
+                    banned_types.remove(unban_shop_item)
+            self.options.set_option("banned-types", banned_types)
+
+        self.dry_run = bool(self.options["dry-run"])
+        self.no_logs = self.options["no-spoiler-log"]
+        self.seed = self.options["seed"]
+        if self.seed == -1:
+            self.seed = random.randint(0, 1000000)
+        self.options.set_option("seed", self.seed)
+
+        self.randomizer_hash = self._get_rando_hash()
+        self.rng = random.Random()
+        self.rng.seed(self.seed)
+        if self.no_logs:
+            self.rng.randint(0, 100)
+        self.banned_types = self.options["banned-types"]
 
         self.logic = Logic(self)
         self.hints = Hints(self.logic)
@@ -544,6 +554,20 @@ class Randomizer:
         plcmt_file.check_valid()
 
         return plcmt_file
+
+
+class PlandoRandomizer(BaseRandomizer):
+    def __init__(
+        self, placement_file: PlacementFile, progress_callback=dummy_progress_callback
+    ):
+        super().__init__(progress_callback)
+        self.placement_file = placement_file
+
+    def get_total_progress_steps(self):
+        return GAMEPATCH_TOTAL_STEP_COUNT
+
+    def randomize(self):
+        GamePatcher(self, self.placement_file).do_all_gamepatches()
 
 
 class YamlOrderedDictLoader(yaml.SafeLoader):

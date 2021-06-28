@@ -1,7 +1,8 @@
 from collections import OrderedDict
 import sys
 
-from ssrando import Randomizer, VERSION
+from ssrando import Randomizer, PlandoRandomizer, VERSION
+from logic.placement_file import PlacementFile
 from options import OPTIONS, Options
 
 
@@ -81,6 +82,26 @@ for arg in sys.argv[1:]:
         cmd_line_args[option_name[2:]] = "true"
     else:
         cmd_line_args[option_name[2:]] = arg_parts[1]
+plcmt_file_name = cmd_line_args.pop("placement-file", None)
+if plcmt_file_name is not None:
+    plcmt_file = PlacementFile()
+    with open(plcmt_file_name) as f:
+        plcmt_file.read_from_file(f)
+    plcmt_file.check_valid()
+
+    plandomizer = PlandoRandomizer(plcmt_file)
+    total_progress_steps = plandomizer.get_total_progress_steps()
+    progress_steps = 0
+
+    def progress_callback(action):
+        global progress_steps
+        print(f"{action} {progress_steps}/{total_progress_steps}")
+        progress_steps += 1
+
+    plandomizer.progress_callback = progress_callback
+    plandomizer.randomize()
+    exit(0)
+
 bulk_mode = False
 if cmd_line_args.pop("bulk", False):
     bulk_mode = True
