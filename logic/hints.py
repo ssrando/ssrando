@@ -370,16 +370,37 @@ class Hints:
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)
         for hint_location in hint_locations:
-            hinted_item = self.logic.done_item_locations[hint_location]
-            if hinted_item in self.logic.all_progress_items:
-                for (
-                    gossipstone_name,
-                    gossipstone_def,
-                ) in self.stonehint_definitions.items():
-                    if not self.logic.can_reach_restricted(
-                        [hint_location], gossipstone_def["Need"]
-                    ):
-                        hint_banned_stones[gossipstone_name].add(hint_location)
+            if hint_location in SILENT_REALM_CHECKS.keys():
+                loc_trial_gate = SILENT_REALM_CHECKS[hint_location]
+                trial_gate_dest = self.logic.rando.trial_connections[loc_trial_gate]
+                trial_gate_dest_loc = [
+                    trial
+                    for trial in SILENT_REALM_CHECKS.keys()
+                    if trial_gate_dest in trial
+                ].pop()
+                hinted_trial = trial_gate_dest_loc
+                hinted_item = self.logic.done_item_locations[trial_gate_dest_loc]
+                if hinted_item in self.logic.all_progress_items:
+                    for (
+                        gossipstone_name,
+                        gossipstone_def,
+                    ) in self.stonehint_definitions.items():
+                        if not self.logic.can_reach_restricted(
+                            [hinted_trial], gossipstone_def["Need"]
+                        ):
+                            hint_banned_stones[gossipstone_name].add(hint_location)
+            else:
+                hinted_item = self.logic.done_item_locations[hint_location]
+                if hinted_item in self.logic.all_progress_items:
+                    for (
+                        gossipstone_name,
+                        gossipstone_def,
+                    ) in self.stonehint_definitions.items():
+                        if not self.logic.can_reach_restricted(
+                            [hint_location], gossipstone_def["Need"]
+                        ):
+                            hint_banned_stones[gossipstone_name].add(hint_location)
+
         stones_to_banned_locs_sorted = sorted(
             hint_banned_stones.items(), key=lambda x: len(x[1]), reverse=True
         )
