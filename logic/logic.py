@@ -71,6 +71,9 @@ class Logic:
         self.item_locations = self.load_and_parse_item_data()
 
         self.required_dungeons = self.randomize_required_dungeons()
+        self.unrequired_dungeons = [
+            d for d in POTENTIALLY_REQUIRED_DUNGEONS if d not in self.required_dungeons
+        ]
         self.entrance_connections = self.randomize_entrance_connections()
         self.trial_connections = self.randomize_trial_entrances()
         self.starting_items = self.randomize_starting_items()
@@ -85,16 +88,16 @@ class Logic:
         if self.rando.options["empty-unrequired-dungeons"]:
             for location_name in self.item_locations:
                 zone, _ = Logic.split_location_name_by_zone(location_name)
-                if not zone in self.required_dungeons:
+                if zone in self.unrequired_dungeons:
                     self.race_mode_banned_locations.append(location_name)
 
             # checks outside locations that require dungeons:
             if (
-                not self.entrance_connections["Dungeon Entrance In Lanayru Desert"]
-                in self.required_dungeons
+                self.entrance_connections["Dungeon Entrance In Lanayru Desert"]
+                in self.unrequired_dungeons
             ):
                 self.racemode_ban_location("Skyloft Academy - Fledge's Crystals")
-            if not "Skyview" in self.required_dungeons:
+            if "Skyview" in self.unrequired_dungeons:
                 self.racemode_ban_location("Sky - Lumpy Pumpkin Roof Goddess Chest")
                 self.racemode_ban_location("Sealed Grounds - Gorko Goddess Wall Reward")
 
@@ -186,6 +189,9 @@ class Logic:
                 else:
                     self.racemode_ban_location(shop_check)
 
+        self.dungeon_progress_items = DUNGEON_PROGRESS_ITEMS.copy()
+        self.dungeon_nonprogress_items = DUNGEON_NONPROGRESS_ITEMS.copy()
+
         self.make_useless_progress_items_nonprogress()
 
         if self.rando.options["shop-mode"] == "Vanilla":
@@ -199,9 +205,6 @@ class Logic:
                 self.unplaced_nonprogress_items.append(wallet_item)
                 self.all_progress_items.remove(wallet_item)
                 self.all_nonprogress_items.append(wallet_item)
-
-        self.dungeon_progress_items = DUNGEON_PROGRESS_ITEMS.copy()
-        self.dungeon_nonprogress_items = DUNGEON_NONPROGRESS_ITEMS.copy()
 
         small_key_mode = self.rando.options["small-key-mode"]
         boss_key_mode = self.rando.options["boss-key-mode"]
@@ -798,6 +801,15 @@ class Logic:
                 location_name, requirement_expression
             )
         useful_items += self.get_item_names_by_req_name("Can Reach and Defeat Demise")
+
+        # all dungeon items from unrequired dungeons are non progress
+        for item_name in useful_items:
+            if self.rando.options["empty-unrequired-dungeons"]:
+                if self.is_dungeon_item(item_name):
+                    short_dungeon_name = item_name.split(" ")[0]
+                    dungeon_name = DUNGEON_NAMES[short_dungeon_name]
+                    if dungeon_name in self.unrequired_dungeons:
+                        useful_items.remove(item_name)
 
         all_progress_items_filtered = []
         for item_name in useful_items:
