@@ -515,3 +515,4 @@
   default: false
   permalink: false
   help: If enabled, writes a placement json file that can be modified for plandomizer purposes
+  ui: option_out_placement_file

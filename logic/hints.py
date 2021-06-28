@@ -272,7 +272,7 @@ class Hints:
                         continue
                     if (
                         zone in POTENTIALLY_REQUIRED_DUNGEONS
-                        and zone not in self.logic.rando.required_dungeons
+                        and zone not in self.logic.required_dungeons
                     ):
                         # unrequired dungeons are always barren in race mode
                         continue
@@ -372,7 +372,7 @@ class Hints:
         for hint_location in hint_locations:
             if hint_location in SILENT_REALM_CHECKS.keys():
                 loc_trial_gate = SILENT_REALM_CHECKS[hint_location]
-                trial_gate_dest = self.logic.rando.trial_connections[loc_trial_gate]
+                trial_gate_dest = self.logic.trial_connections[loc_trial_gate]
                 trial_gate_dest_loc = [
                     trial
                     for trial in SILENT_REALM_CHECKS.keys()
