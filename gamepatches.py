@@ -251,7 +251,7 @@ POST_DUNGEON_CUTSCENE = {
     "Ancient Cistern": ("B101_1", 0, 1),
     "Sandship": ("B301", 0, 1),
     "Fire Sanctuary": ("B201_1", 0, 0),
-    "Sky Keep": ("F407", 0, 2),
+    "Sky Keep": ("F000", 0, 19),
 }
 
 TRIAL_GATE_TO_TRIAL = {
