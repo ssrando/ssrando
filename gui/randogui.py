@@ -184,9 +184,13 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, "starting_items").setVisible(False)
 
         # hide supporting elements
-        getattr(self.ui, "tabWidget").removeTab(4)
+        getattr(self.ui, "tabWidget").removeTab(5)
         getattr(self.ui, "label").setVisible(False)
         getattr(self.ui, "label_for_option_sometimes_hints").setVisible(False)
+        getattr(self.ui, "option_plando").setVisible(False)
+        getattr(self.ui, "plando_file").setVisible(False)
+        getattr(self.ui, "plando_file_browse").setVisible(False)
+        getattr(self.ui, "option_json_spoiler").setVisible(False)
 
         self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)

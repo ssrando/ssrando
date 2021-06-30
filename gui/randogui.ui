@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
+    <width>956</width>
     <height>704</height>
    </rect>
   </property>
@@ -26,133 +26,6 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>931</width>
-      <height>58</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="7">
-      <widget class="QPushButton" name="seed_button">
-       <property name="text">
-        <string>New Seed</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Output Folder</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="toolTipDuration">
-        <number>-1</number>
-       </property>
-       <property name="statusTip">
-        <string/>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>Seed</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="7">
-      <widget class="QPushButton" name="ouput_folder_browse_button">
-       <property name="text">
-        <string>Browse</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="seed"/>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="output_folder"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>660</y>
-      <width>931</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QCheckBox" name="option_dry_run">
-       <property name="text">
-        <string>Dry Run</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="option_hero_mode">
-       <property name="text">
-        <string>Hero Mode</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="option_no_spoiler_log">
-       <property name="text">
-        <string>No Spoiler Log</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="option_out_placement_file">
-       <property name="text">
-        <string>Placement File</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="randomize_button">
-       <property name="text">
-        <string>Randomize</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QLabel" name="option_description">
     <property name="enabled">
      <bool>true</bool>
@@ -160,7 +33,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>590</y>
+      <y>570</y>
       <width>931</width>
       <height>31</height>
      </rect>
@@ -172,43 +45,204 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>630</y>
-      <width>931</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QLabel" name="permalink_label">
-       <property name="text">
-        <string>Permalink (copy paste to share your settings)</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="permalink"/>
-     </item>
-    </layout>
-   </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>10</y>
       <width>931</width>
-      <height>501</height>
+      <height>541</height>
      </rect>
     </property>
     <property name="toolTip">
      <string/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Setup</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>901</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_29">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Output Folder</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="output_folder"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ouput_folder_browse_button">
+           <property name="text">
+            <string>Browse</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_32">
+         <item>
+          <widget class="QCheckBox" name="option_plando">
+           <property name="text">
+            <string>Enable Plandomizer</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_19">
+           <item>
+            <widget class="QLineEdit" name="plando_file"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="plando_file_browse">
+             <property name="text">
+              <string>Browse</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_12">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_12">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>181</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Additional File Generation</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_13">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>160</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_33">
+        <item>
+         <widget class="QCheckBox" name="option_no_spoiler_log">
+          <property name="text">
+           <string>No Spoiler Log</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_json_spoiler">
+          <property name="text">
+           <string>Generate JSON Spoiler Log</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_out_placement_file">
+          <property name="text">
+           <string>Generate Placement File</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_13">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_13">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>120</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Advanced Options</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_14">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>111</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_34">
+        <item>
+         <widget class="QCheckBox" name="option_dry_run">
+          <property name="text">
+           <string>Dry Run</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_14">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
       <string>Progress Locations</string>
@@ -582,7 +616,7 @@
         <x>10</x>
         <y>10</y>
         <width>181</width>
-        <height>231</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -593,8 +627,8 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>172</width>
-         <height>205</height>
+         <width>164</width>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -643,7 +677,7 @@
             <item>
              <widget class="QLabel" name="label_for_option_required_dungeon_count">
               <property name="text">
-               <string>Required Dungeon Count</string>
+               <string>Required Dungeons</string>
               </property>
              </widget>
             </item>
@@ -699,7 +733,7 @@
         <x>560</x>
         <y>10</y>
         <width>181</width>
-        <height>231</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -711,7 +745,7 @@
          <x>10</x>
          <y>20</y>
          <width>165</width>
-         <height>204</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -786,7 +820,7 @@
         <x>750</x>
         <y>20</y>
         <width>161</width>
-        <height>221</height>
+        <height>241</height>
        </rect>
       </property>
       <property name="title">
@@ -798,7 +832,7 @@
          <x>10</x>
          <y>20</y>
          <width>148</width>
-         <height>191</height>
+         <height>211</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -852,7 +886,7 @@
         <x>200</x>
         <y>10</y>
         <width>171</width>
-        <height>231</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -864,7 +898,7 @@
          <x>10</x>
          <y>20</y>
          <width>151</width>
-         <height>201</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -939,7 +973,7 @@
         <x>380</x>
         <y>10</y>
         <width>171</width>
-        <height>231</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -951,7 +985,7 @@
          <x>10</x>
          <y>19</y>
          <width>151</width>
-         <height>201</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -974,30 +1008,30 @@
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QCheckBox" name="option_randomize_trials">
-            <property name="text">
-             <string>Randomize Silent Realms</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::MinimumExpanding</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>70</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_randomize_trials">
+          <property name="text">
+           <string>Randomize Silent Realms</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::MinimumExpanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>70</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
@@ -1006,9 +1040,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>250</y>
+        <y>270</y>
         <width>181</width>
-        <height>221</height>
+        <height>241</height>
        </rect>
       </property>
       <property name="title">
@@ -1020,7 +1054,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>191</height>
+         <height>211</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1067,6 +1101,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QCheckBox" name="option_hero_mode">
+          <property name="text">
+           <string>Hero Mode</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer_6">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1087,118 +1128,114 @@
      <attribute name="title">
       <string>Logic Settings</string>
      </attribute>
-     <widget class="QWidget" name="verticalLayoutWidget_8">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>9</x>
-        <y>9</y>
-        <width>911</width>
-        <height>461</height>
+        <x>10</x>
+        <y>10</y>
+        <width>909</width>
+        <height>499</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_17">
+      <layout class="QVBoxLayout" name="verticalLayout_18">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_18">
+        <widget class="QLabel" name="label_for_option_logic_mode">
+         <property name="text">
+          <string>Logic Mode</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="option_logic_mode"/>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QLabel" name="label_for_option_logic_mode">
-           <property name="text">
-            <string>Logic Mode</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="option_logic_mode"/>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_7">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <layout class="QVBoxLayout" name="verticalLayout_19">
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_19">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Exclude Locations</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_17">
              <item>
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Exclude Locations</string>
-               </property>
-              </widget>
+              <widget class="QListView" name="enabled_locations"/>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_17">
+              <layout class="QVBoxLayout" name="verticalLayout_20">
                <item>
-                <widget class="QListView" name="enabled_locations"/>
+                <widget class="QPushButton" name="enable_location">
+                 <property name="text">
+                  <string>&lt;---</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <layout class="QVBoxLayout" name="verticalLayout_20">
-                 <item>
-                  <widget class="QPushButton" name="enable_location">
-                   <property name="text">
-                    <string>&lt;---</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="disable_location">
-                   <property name="text">
-                    <string>---&gt;</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <widget class="QListWidget" name="disabled_locations"/>
+                <widget class="QPushButton" name="disable_location">
+                 <property name="text">
+                  <string>---&gt;</string>
+                 </property>
+                </widget>
                </item>
               </layout>
+             </item>
+             <item>
+              <widget class="QListWidget" name="disabled_locations"/>
              </item>
             </layout>
            </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_25">
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_25">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Enable Tricks</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_18">
              <item>
-              <widget class="QLabel" name="label_5">
-               <property name="text">
-                <string>Enable Tricks</string>
-               </property>
-              </widget>
+              <widget class="QListView" name="enabled_tricks"/>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_18">
+              <layout class="QVBoxLayout" name="verticalLayout_21">
                <item>
-                <widget class="QListView" name="enabled_tricks"/>
+                <widget class="QPushButton" name="enable_trick">
+                 <property name="text">
+                  <string>&lt;---</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <layout class="QVBoxLayout" name="verticalLayout_21">
-                 <item>
-                  <widget class="QPushButton" name="enable_trick">
-                   <property name="text">
-                    <string>&lt;---</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="disable_trick">
-                   <property name="text">
-                    <string>---&gt;</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <widget class="QListView" name="disabled_tricks"/>
+                <widget class="QPushButton" name="disable_trick">
+                 <property name="text">
+                  <string>---&gt;</string>
+                 </property>
+                </widget>
                </item>
               </layout>
+             </item>
+             <item>
+              <widget class="QListView" name="disabled_tricks"/>
              </item>
             </layout>
            </item>
@@ -1219,7 +1256,7 @@
         <x>10</x>
         <y>10</y>
         <width>181</width>
-        <height>201</height>
+        <height>221</height>
        </rect>
       </property>
       <property name="title">
@@ -1231,7 +1268,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>200</height>
+         <height>191</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_22">
@@ -1341,7 +1378,7 @@
         <x>200</x>
         <y>10</y>
         <width>181</width>
-        <height>201</height>
+        <height>221</height>
        </rect>
       </property>
       <property name="title">
@@ -1455,6 +1492,82 @@
       </layout>
      </widget>
     </widget>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_10">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>615</y>
+      <width>931</width>
+      <height>86</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_30">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="permalink_label">
+         <property name="text">
+          <string>Permalink (copy paste to share your settings)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="permalink"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_16">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="toolTipDuration">
+          <number>-1</number>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Seed</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="seed"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="seed_button">
+         <property name="text">
+          <string>New Seed</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="randomize_button">
+         <property name="text">
+          <string>Randomize</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
