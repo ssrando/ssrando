@@ -516,3 +516,9 @@
   permalink: false
   help: If enabled, writes a placement json file that can be modified for plandomizer purposes
   ui: option_out_placement_file
+- name: Randomize Music
+  command: music-rando
+  type: boolean
+  default: false
+  help: If enabled, most music will be randomized. Unstable, and some songs will end abruptly or not loop.
+  ui: option_music_rando

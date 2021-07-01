@@ -58,7 +58,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1108,6 +1108,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QCheckBox" name="option_music_rando">
+          <property name="text">
+           <string>Randomize Music</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer_6">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1128,7 +1135,7 @@
      <attribute name="title">
       <string>Logic Settings</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1268,7 +1275,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>191</height>
+         <height>206</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_22">

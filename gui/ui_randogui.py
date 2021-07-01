@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.1
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -712,6 +712,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addWidget(self.option_hero_mode)
 
+        self.option_music_rando = QCheckBox(self.verticalLayoutWidget_5)
+        self.option_music_rando.setObjectName(u"option_music_rando")
+
+        self.verticalLayout_15.addWidget(self.option_music_rando)
+
         self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_15.addItem(self.verticalSpacer_6)
@@ -719,18 +724,18 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
         self.tab_5.setObjectName(u"tab_5")
-        self.widget = QWidget(self.tab_5)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(10, 10, 909, 499))
-        self.verticalLayout_18 = QVBoxLayout(self.widget)
+        self.layoutWidget = QWidget(self.tab_5)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(10, 10, 909, 499))
+        self.verticalLayout_18 = QVBoxLayout(self.layoutWidget)
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
-        self.label_for_option_logic_mode = QLabel(self.widget)
+        self.label_for_option_logic_mode = QLabel(self.layoutWidget)
         self.label_for_option_logic_mode.setObjectName(u"label_for_option_logic_mode")
 
         self.verticalLayout_18.addWidget(self.label_for_option_logic_mode)
 
-        self.option_logic_mode = QComboBox(self.widget)
+        self.option_logic_mode = QComboBox(self.layoutWidget)
         self.option_logic_mode.setObjectName(u"option_logic_mode")
 
         self.verticalLayout_18.addWidget(self.option_logic_mode)
@@ -743,26 +748,26 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.verticalLayout_19 = QVBoxLayout()
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
-        self.label = QLabel(self.widget)
+        self.label = QLabel(self.layoutWidget)
         self.label.setObjectName(u"label")
 
         self.verticalLayout_19.addWidget(self.label)
 
         self.horizontalLayout_17 = QHBoxLayout()
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
-        self.enabled_locations = QListView(self.widget)
+        self.enabled_locations = QListView(self.layoutWidget)
         self.enabled_locations.setObjectName(u"enabled_locations")
 
         self.horizontalLayout_17.addWidget(self.enabled_locations)
 
         self.verticalLayout_20 = QVBoxLayout()
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.enable_location = QPushButton(self.widget)
+        self.enable_location = QPushButton(self.layoutWidget)
         self.enable_location.setObjectName(u"enable_location")
 
         self.verticalLayout_20.addWidget(self.enable_location)
 
-        self.disable_location = QPushButton(self.widget)
+        self.disable_location = QPushButton(self.layoutWidget)
         self.disable_location.setObjectName(u"disable_location")
 
         self.verticalLayout_20.addWidget(self.disable_location)
@@ -770,7 +775,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_17.addLayout(self.verticalLayout_20)
 
-        self.disabled_locations = QListWidget(self.widget)
+        self.disabled_locations = QListWidget(self.layoutWidget)
         self.disabled_locations.setObjectName(u"disabled_locations")
 
         self.horizontalLayout_17.addWidget(self.disabled_locations)
@@ -783,26 +788,26 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_25 = QVBoxLayout()
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
-        self.label_5 = QLabel(self.widget)
+        self.label_5 = QLabel(self.layoutWidget)
         self.label_5.setObjectName(u"label_5")
 
         self.verticalLayout_25.addWidget(self.label_5)
 
         self.horizontalLayout_18 = QHBoxLayout()
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
-        self.enabled_tricks = QListView(self.widget)
+        self.enabled_tricks = QListView(self.layoutWidget)
         self.enabled_tricks.setObjectName(u"enabled_tricks")
 
         self.horizontalLayout_18.addWidget(self.enabled_tricks)
 
         self.verticalLayout_21 = QVBoxLayout()
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.enable_trick = QPushButton(self.widget)
+        self.enable_trick = QPushButton(self.layoutWidget)
         self.enable_trick.setObjectName(u"enable_trick")
 
         self.verticalLayout_21.addWidget(self.enable_trick)
 
-        self.disable_trick = QPushButton(self.widget)
+        self.disable_trick = QPushButton(self.layoutWidget)
         self.disable_trick.setObjectName(u"disable_trick")
 
         self.verticalLayout_21.addWidget(self.disable_trick)
@@ -810,7 +815,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_18.addLayout(self.verticalLayout_21)
 
-        self.disabled_tricks = QListView(self.widget)
+        self.disabled_tricks = QListView(self.layoutWidget)
         self.disabled_tricks.setObjectName(u"disabled_tricks")
 
         self.horizontalLayout_18.addWidget(self.disabled_tricks)
@@ -832,7 +837,7 @@ class Ui_MainWindow(object):
         self.groupBox_10.setGeometry(QRect(10, 10, 181, 221))
         self.verticalLayoutWidget_12 = QWidget(self.groupBox_10)
         self.verticalLayoutWidget_12.setObjectName(u"verticalLayoutWidget_12")
-        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 161, 191))
+        self.verticalLayoutWidget_12.setGeometry(QRect(10, 20, 161, 206))
         self.verticalLayout_22 = QVBoxLayout(self.verticalLayoutWidget_12)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
@@ -1060,7 +1065,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1159,6 +1164,7 @@ class Ui_MainWindow(object):
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
+        self.option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
