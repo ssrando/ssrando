@@ -1359,25 +1359,25 @@ class GamePatcher:
         # Trial Hints
         trial_checks = {
             # (getting it text patch, line, inventory text line, hintname)
-            "Skyloft Silent Realm - Stone of Trials": (
+            "Skyloft Silent Realm - Trial Reward": (
                 "Full SotH text",
                 659,
                 "The song that leads you to the final trial.",
                 "Song of the Hero - Trial Hint",
             ),
-            "Faron Silent Realm - Water Scale": (
+            "Faron Silent Realm - Trial Reward": (
                 "Farore's Courage Text",
                 653,
                 "This song opens the trial located in Faron\nWoods.",
                 "Farore's Courage - Trial Hint",
             ),
-            "Lanayru Silent Realm - Clawshots": (
+            "Lanayru Silent Realm - Trial Reward": (
                 "Nayru's Wisdom Text",
                 654,
                 "This song opens the trial located in\nLanayru Desert.",
                 "Nayru's Wisdom - Trial Hint",
             ),
-            "Eldin Silent Realm - Fireshield Earrings": (
+            "Eldin Silent Realm - Trial Reward": (
                 "Din's Power Text",
                 655,
                 "This song opens the trial located on\nEldin Volcano.",

@@ -1,23 +1,23 @@
-Knight Academy - Fledge:
+Knight Academy - Fledge's Gift:
   original item: Progressive Pouch
   type: skyloft, free gift
   Paths:
     - event/114-Friend/16
     - oarc/F001r/l3
     - oarc/F001r/l4
-Knight Academy - Owlan's Shield:
+Knight Academy - Owlan's Gift:
   original item: Wooden Shield
   type: skyloft, free gift
   Paths:
     - event/108-ShinkanA/169
     - oarc/F000/l4
     - oarc/F000/l6
-Knight Academy - Practice Sword:
+Knight Academy - Training Hall Chest:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
     - stage/F009r/r0/l0/TBox/66
-Skyloft - Bazaar Potion Lady:
+Skyloft - Potion Lady's Gift:
   original item: Bottle
   type: skyloft, free gift
   Paths:
@@ -33,12 +33,12 @@ Skyloft - Waterfall Cave Second Chest:
   type: skyloft, miscellaneous
   Paths:
     - stage/D000/r0/l0/TBox/68
-Knight Academy - Small Chest on Cliffs near Goddess Statue:
+Knight Academy - Chest near Goddess Statue:
   original item: Red Rupee
   type: skyloft, miscellaneous
   Paths:
     - stage/F000/r0/l0/TBox/71
-Knight Academy - Goddess Sword:
+Knight Academy - Chest in Goddess Statue:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
@@ -80,7 +80,7 @@ Knight Academy - Pumpkin Pull - 600 Points:
     - event/114-Friend/99
     - oarc/F000/l4
     - oarc/F000/l6
-Knight Academy - Zelda's Heartpiece:
+Knight Academy - Zelda's Closet:
   original item: Heart Piece
   type: skyloft, miscellaneous
   Paths:
@@ -90,7 +90,7 @@ Skyloft - Baby Rattle:
   type: skyloft, freestanding
   Paths:
     - stage/F000/r0/l0/Item/13
-Skyloft - Parrow's Bottle:
+Skyloft - Parrow's Gift:
   original item: Bottle
   type: skyloft, free gift, short
   Paths:
@@ -430,12 +430,12 @@ Sky - Beedle's Crystals:
     - event/105-Terry/115
     - oarc/F020/l0
 
-Sky - Breakable Boulder near Fun Fun Island:
+Sky - Breakable Boulder Chest near Fun Fun Island:
   original item: Silver Rupee
   type: sky, spiral charge
   Paths:
     - stage/F020/r0/l0/TBox/70
-Sky - Breakable Boulder near Lumpy Pumpkin:
+Sky - Breakable Boulder Chest near Lumpy Pumpkin:
   original item: Silver Rupee
   type: sky, spiral charge
   Paths:
@@ -483,7 +483,7 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
     - stage/F023/r0/l0/TBox/77
 #Thunderhead - Second Goddess Chest on Mogma Mitts Island:
 #  original item: Small Quiver
-#  type: thunderhead, goddess, lanayru goddess TODO: decide if this is a Lanyru or Sand Sea cube
+#  type: thunderhead, goddess, lanayru goddess TODO: decide if this is a Lanayru or Sand Sea cube
 #  Paths:
 #   - stage/F023/r0/l0/TBox/76
 Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
@@ -515,7 +515,7 @@ Thunderhead - Din's Power:
     - stage/F010r/r0/l0/SwSB/2
 
 
-Sealed Grounds - Inside Sealed Temple:
+Sealed Grounds - Chest inside Sealed Temple:
   original item: Revitalizing Potion
   type: faron, miscellaneous
   Paths:
@@ -526,19 +526,19 @@ Sealed Grounds - Ballad of the Goddess:
   Paths:
     - event/501-Inpa/267
     - oarc/F402/l2
-Sealed Grounds - Gorko Goddess Wall Reward:
+Sealed Grounds - Gorko's Goddess Wall Reward:
   type: faron, long, dungeon
   original item: Heart Piece
   Paths:
     - event/503-Goron/630
     - oarc/F400/l0
-#Sealed Grounds - Behind the Temple Triforce on goddess wall:
+#Sealed Grounds - Behind the Temple Triforce on Goddess Wall:
 #  original item: Gold Rupee
 #  type: faron, long, dungeon
 #  Paths:
 #   - event/503-Goron/418
 #   - oarc/F400/l0
-Sealed Grounds - True Master Sword:
+Sealed Grounds - Zelda's Blessing:
   original item: Progressive Sword
   type: faron #TODO: this may need to be revisited as it doesnt really fit any other checks
   Paths:
@@ -546,7 +546,7 @@ Sealed Grounds - True Master Sword:
     - oarc/F404/l1
 
 
-Faron Woods - Piece of Heart on Tree:
+Faron Woods - Freestanding Item on Tree:
   original item: Heart Piece
   type: faron, freestanding
   Paths:
@@ -562,7 +562,7 @@ Faron Woods - Deep Woods Chest:
   type: faron, miscellaneous
   Paths:
     - stage/F101/r0/l0/TBox/74
-Faron Woods - Piece of Heart behind Boulder:
+Faron Woods - Freestanding Item behind Boulder:
   original item: Heart Piece
   type: faron, freestanding, bombable
   Paths:
@@ -605,54 +605,54 @@ Lake Floria - Dragon Lair Second Chest [Scale]:
 #    - stage/F102_1/r0/l0/Item/64
 
 
-Eldin Volcano - Behind Bombable Wall in First Room:
+Eldin Volcano - Chest behind Bombable Wall in First Room:
   original item: Red Rupee
   type: eldin, bombable
   Paths:
     - stage/F200/r1/l0/TBox/72
-Eldin Volcano - After Crawlspace:
+Eldin Volcano - Chest after Crawlspace:
   original item: Red Rupee
   type: eldin, bombable
   Paths:
     - stage/F200/r2/l0/TBox/66
-Eldin Volcano - Behind Bombable Wall near Piece of Heart:
+Eldin Volcano - Chest behind Bombable Wall near Cliff:
   original item: Red Rupee
   type: eldin, bombable
   Paths:
     - stage/F200/r2/l0/TBox/73
-Eldin Volcano - Piece of Heart on Cliff:
+Eldin Volcano - Freestanding Item on Cliff:
   original item: Heart Piece
   type: eldin, freestanding
   Paths:
     - stage/F200/r2/l0/Item/102 #sceneflagID
-Eldin Volcano - Behind Bombable Wall near Volcano Ascent:
+Eldin Volcano - Chest behind Bombable Wall near Volcano Ascent:
   original item: Red Rupee
   type: eldin, bombable
   Paths:
     - stage/F200/r2/l0/TBox/71
 
 # These checks are Digging Spots
-Eldin Volcano - Key Piece in front of Earth Temple:
+Eldin Volcano - Digging Spot in front of Earth Temple:
   original item: Key Piece
   type: eldin, digging
   Paths:
     - stage/F200/r4/l1/Soil/8
-Eldin Volcano - Key Piece below Tower:
+Eldin Volcano - Digging Spot below Tower:
   original item: Key Piece
   type: eldin, bombable, digging
   Paths:
     - stage/F200/r4/l1/Soil/9
-Eldin Volcano - Key Piece behind Boulder on Sandy Slope:
+Eldin Volcano - Digging Spot behind Boulder on Sandy Slope:
   original item: Key Piece
   type: eldin, bombable, digging
   Paths:
     - stage/F200/r4/l1/Soil/12
-Eldin Volcano - Key Piece after Vents:
+Eldin Volcano - Digging Spot after Vents:
   original item: Key Piece
   type: eldin, digging
   Paths:
     - stage/F200/r6/l1/Soil/10
-Eldin Volcano - Key Piece after Draining Lava:
+Eldin Volcano - Digging Spot after Draining Lava:
   original item: Key Piece
   type: eldin, digging
   Paths:
@@ -663,7 +663,7 @@ Mogma Turf - Free Fall Chest:
   type: eldin, miscellaneous
   Paths:
     - stage/F210/r0/l0/TBox/64
-Mogma Turf - Behind Bombable Wall at Entrance:
+Mogma Turf - Chest behind Bombable Wall at Entrance:
   original item: Golden Skull
   type: eldin, bombable
   Paths:
@@ -680,7 +680,7 @@ Mogma Turf - Digging Mitts:
     - event/300-Mountain/6
     - event/300-Mountain/135
     - oarc/F210/l0
-Mogma Turf - Behind Bombable Wall in Lava Maze:
+Mogma Turf - Chest behind Bombable Wall in Lava Maze:
   original item: Silver Rupee
   type: eldin, bombable
   Paths:
@@ -696,33 +696,33 @@ Volcano Summit - Boko Base Pouch Chest:
   type: eldin, miscellaneous
   Paths:
     - stage/F201_1/r0/l0/TBox/71
-Volcano Summit - Piece of Heart behind Digging:
+Volcano Summit - Freestanding Item behind Digging:
   original item: Heart Piece
   type: eldin, freestanding
   Paths:
     - stage/F201_3/r0/l0/Item/104 #sceneflagID
-Volcano Summit - Behind Bombable Wall in Waterfall Area:
+Volcano Summit - Chest behind Bombable Wall in Waterfall Area:
   original item: Silver Rupee
   type: eldin, bombable
   Paths:
     - stage/F201_4/r0/l0/TBox/95
 
-Lanayru Mines - Chest Behind First Landing:
+Lanayru Mines - Chest behind First Landing:
   original item: Evil Crystal
   type: lanayru, miscellaneous
   Paths:
     - stage/F300_1/r0/l0/TBox/64
-Lanayru Mines - Near First Timeshift Stone:
+Lanayru Mines - Chest near First Timeshift Stone:
   original item: Red Rupee
   type: lanayru, miscellaneous
   Paths:
     - stage/F300_1/r1/l0/TBox/65
-Lanayru Mines - Behind Statue:
+Lanayru Mines - Chest behind Statue:
   original item: Red Rupee
   type: lanayru, bombable
   Paths:
     - stage/F300_1/r2/l0/TBox/67
-Lanayru Mines - End of Mines:
+Lanayru Mines - Chest at the End of Mines:
   original item: Rare Treasure
   type: lanayru, miscellaneous
   Paths:
@@ -750,7 +750,7 @@ Lanayru - Secret Passageway Chest:
   type: lanayru, bombable
   Paths:
     - stage/F300/r0/l0/TBox/74
-Lanayru - Top of Lanayru Mining Facility: # actually spawns on raising LMF
+Lanayru - Chest on top of Lanayru Mining Facility: # actually spawns on raising LMF
   original item: Rare Treasure # TODO check
   type: lanayru, miscellaneous, mini dungeon
   Paths:
@@ -771,42 +771,42 @@ Lanayru - Chest near Sand Oasis:
   Paths:
     - stage/F300/r0/l0/TBox/71
 
-Lanayru - Beginning of Lightning Node:
+Lanayru - First Chest in Lightning Node:
   original item: Red Rupee
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_2/r0/l0/TBox/75
-Lanayru - Middle of Lightning Node:
+Lanayru - Second Chest in Lightning Node:
   original item: Blue Rupee
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_2/r0/l0/TBox/76
-Lanayru - End of Lightning Node:
+Lanayru - Hidden Chest in Lightning Node:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_2/r0/l0/TBox/77
-Lanayru - Fire Node Shortcut Chest:
+Lanayru - Shortcut Chest in Fire Node:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_3/r0/l0/TBox/79
-Lanayru - Beginning of Fire Node:
+Lanayru - First Small Chest in Fire Node:
   original item: Blue Rupee
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_3/r0/l0/TBox/78
-Lanayru - Middle of Fire Node:
+Lanayru - Second Small Chest in Fire Node:
   original item: Blue Rupee
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_3/r0/l0/TBox/80
-Lanayru - Fire Node Left Chest:
+Lanayru - Left Ending Chest in Fire Node:
   original item: Golden Skull # TODO check again
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_3/r0/l0/TBox/81
-Lanayru - Fire Node Right Chest:
+Lanayru - Right Ending Chest in Fire Node:
   original item: Blue Rupee
   type: lanayru, mini dungeon
   Paths:
@@ -817,7 +817,7 @@ Lanayru Caves - Chest:
   type: lanayru, miscellaneous
   Paths:
     - stage/F303/r0/l0/TBox/127
-Lanayru Caves - Golo:
+Lanayru Caves - Golo's Gift:
   original item: LanayruCaves Small Key
   type: lanayru, free gift
   Paths:
@@ -825,26 +825,26 @@ Lanayru Caves - Golo:
     - oarc/F303/l0
 
 
-Lanayru Sand Sea - Skydive Chest at Skipper's Retreat:
-  original item: Silver Rupee
-  type: lanayru, miscellaneous
-  Paths:
-    - stage/F301_3/r0/l0/TBox/77
 Lanayru Sand Sea - Chest after Moblin at Skipper's Retreat:
   original item: Red Rupee
   type: lanayru, miscellaneous
   Paths:
     - stage/F301_3/r0/l0/TBox/78
-Lanayru Sand Sea - Cacti Pillar:
+Lanayru Sand Sea - Chest on top of Cacti Pillar:
   original item: Semi Rare Treasure
   type: lanayru, miscellaneous
   Paths:
     - stage/F301_3/r0/l0/TBox/76
-Lanayru Sand Sea - In Skipper's Shack:
+Lanayru Sand Sea - Chest in Skipper's Shack:
   original item: Sea Chart
   type: lanayru, miscellaneous
   Paths:
     - stage/F301_5/r0/l0/TBox/65
+Lanayru Sand Sea - Skydive Chest at Skipper's Retreat:
+  original item: Silver Rupee
+  type: lanayru, miscellaneous
+  Paths:
+    - stage/F301_3/r0/l0/TBox/77
 Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05:
   original item: Heart Piece
   type: lanayru, minigame, combat #Molderach 2 makes this a combat check
@@ -868,17 +868,17 @@ Lanayru Sand Sea - Third Chest in Pirate Stronghold:
     - stage/F301_2/r6/l0/TBox/74
 
 
-Skyview - Map Chest:
+Skyview - Chest on Tree Branch:
   original item: SV Map
   type: faron, dungeon
   Paths:
     - stage/D100/r2/l0/TBox/64
-Skyview - Small Key Digging Spot:
+Skyview - Digging Spot in Crawlspace:
   original item: SV Small Key
   type: faron, dungeon, digging
   Paths:
     - stage/D100/r4/l0/Soil/15
-Skyview - Behind Two Eyes:
+Skyview - Chest behind Two Eyes:
   original item: SV Small Key
   type: faron, dungeon
   Paths:
@@ -889,28 +889,28 @@ Skyview - Beetle:
   Paths:
     - stage/D100/r10/l1/TBox/65
     - stage/D100/r10/l2/TBox/65
-Skyview - Behind Bars in Hub Room:
+Skyview - Freestanding Item behind Bars:
   original item: Heart Piece
   type: faron, dungeon
   Paths:
     - stage/D100/r5/l0/Item/103
-Skyview - Behind Three Eyes:
+Skyview - Chest behind Three Eyes:
   original item: SV Small Key
   type: faron, dungeon
   Paths:
     - stage/D100/r7/l0/TBox/68
-Skyview - Near Boss Door:
+Skyview - Chest near Boss Door:
   original item: Red Rupee
   type: faron, dungeon
   Paths:
     - stage/D100/r9/l0/TBox/70
-Skyview - Boss Key:
+Skyview - Boss Key Chest:
   original item: SV Boss Key
   type: faron, dungeon
   Paths:
     - stage/D100/r9/l0/TBox/66
 
-Skyview - Ghirahim Heart Container:
+Skyview - Ghirahim's Heart Container:
   original item: Heart Container
   type: faron, dungeon
   Paths:
@@ -919,7 +919,7 @@ Skyview - Ghirahim Heart Container:
     - stage/B100/r0/l3/HeartCo
     - stage/B100/r0/l4/HeartCo
 
-Skyview - Ruby Tablet:
+Skyview - Dungeon Reward:
   original item: Ruby Tablet
   type: faron, dungeon
   Paths:
@@ -927,22 +927,22 @@ Skyview - Ruby Tablet:
     - oarc/B100_1/l0
 
 
-Earth Temple - First Chest:
+Earth Temple - Vent Chest:
   original item: Red Rupee
   type: eldin, dungeon, digging
   Paths:
     - stage/D200/r1/l0/TBox/66
-Earth Temple - Behind Boulder:
+Earth Temple - Chest behind Bombable Rock:
   original item: Golden Skull
   type: eldin, dungeon
   Paths:
     - stage/D200/r1/l0/TBox/69
-Earth Temple - Left Chest with Boulder:
+Earth Temple - Chest Left of Main Room Bridge:
   original item: Golden Skull # TODO check again
   type: eldin, dungeon
   Paths:
     - stage/D200/r1/l0/TBox/70
-Earth Temple - Map Chest:
+Earth Temple - Chest in West Room:
   original item: ET Map
   type: eldin, dungeon
   Paths:
@@ -952,7 +952,7 @@ Earth Temple - Bomb Bag:
   type: eldin, dungeon
   Paths:
     - stage/D200/r3/l0/TBox/65
-Earth Temple - 5 Bombs From Ledd:
+Earth Temple - Ledd's Gift:
   original item: 5 Bombs
   type: eldin, dungeon
   Paths:
@@ -963,20 +963,20 @@ Earth Temple - Chest Guarded by Lizalfos:
   type: eldin, dungeon
   Paths:
     - stage/D200/r1/l0/TBox/67
-Earth Temple - Boss Key:
+Earth Temple - Boss Key Chest:
   original item: ET Boss Key
   type: eldin, dungeon
   Paths:
     - stage/D200/r4/l0/TBox/68
 
-Earth Temple - Scaldera Heart Container:
+Earth Temple - Scaldera's Heart Container:
   original item: Heart Container
   type: eldin, dungeon
   Paths:
     - stage/B200/r10/l1/HeartCo
     - stage/B200/r10/l2/HeartCo
 
-Earth Temple - Amber Tablet:
+Earth Temple - Dungeon Reward:
   original item: Amber Tablet
   type: eldin, dungeon
   Paths:
@@ -984,7 +984,7 @@ Earth Temple - Amber Tablet:
     - oarc/B210/l0
 
 
-Lanayru Mining Facility - Behind Bars:
+Lanayru Mining Facility - Chest behind Bars:
   original item: Red Rupee
   type: lanayru, dungeon
   Paths:
@@ -1004,7 +1004,7 @@ Lanayru Mining Facility - Gust Bellows:
   type: lanayru, dungeon
   Paths:
     - stage/D300/r4/l0/TBox/68
-Lanayru Mining Facility - Inside Gust Bellows Room:
+Lanayru Mining Facility - Chest inside Gust Bellows Room:
   original item: Golden Skull # TODO check again
   type: lanayru, dungeon
   Paths:
@@ -1014,48 +1014,48 @@ Lanayru Mining Facility - Chest in First West Room:
   type: lanayru, dungeon
   Paths:
     - stage/D300/r3/l0/TBox/66
-Lanayru Mining Facility - Map Chest:
+Lanayru Mining Facility - Chest after Armos Fight:
   original item: LMF Map
   type: lanayru, dungeon
   Paths:
     - stage/D300/r6/l0/TBox/69
-Lanayru Mining Facility - Behind First Crawlspace:
+Lanayru Mining Facility - Chest behind First Crawlspace:
   original item: Golden Skull # TODO check again
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r9/l0/TBox/72
     - stage/D300/r9/l0/TBox/72
-Lanayru Mining Facility - Behind Second Crawlspace:
+Lanayru Mining Facility - Chest in Spike Maze:
   original item: Red Rupee
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r7/l0/TBox/73
-Lanayru Mining Facility - Boss Key:
+Lanayru Mining Facility - Boss Key Chest:
   original item: LMF Boss Key
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r8/l0/TBox/71
-Lanayru Mining Facility - Chest After Boss Key Room:
+Lanayru Mining Facility - Shortcut Chest in Main Hub:
   original item: Red Rupee
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r5/l0/TBox/74
 
-Lanayru Mining Facility - LMF Heart Container:
+Lanayru Mining Facility - Molderach's Heart Container:
   original item: Heart Container
   type: lanayru, dungeon
   Paths:
     - stage/B300/r0/l1/HeartCo
     - stage/B300/r0/l3/HeartCo
 
-Lanayru Mining Facility - Harp:
+Lanayru Mining Facility - Dungeon Reward:
   original item: Goddess Harp
   type: lanayru, dungeon
   Paths:
     - event/400-Desert/286
     - oarc/F300_5/l0
 
-Ancient Cistern - Small Key Chest:
+Ancient Cistern - Chest in East Part:
   original item: AC Small Key
   type: faron, dungeon
   Paths:
@@ -1065,40 +1065,40 @@ Ancient Cistern - Whip:
   type: faron, dungeon
   Paths:
     - stage/D101/r7/l0/TBox/69
-Ancient Cistern - Map Chest:
+Ancient Cistern - Chest after Whip Hooks:
   original item: AC Map
   type: faron, dungeon
   Paths:
     - stage/D101/r0/l0/TBox/65
-Ancient Cistern - Vines Chest:
+Ancient Cistern - Chest in Vines:
   original item: Red Rupee
   type: faron, dungeon
   Paths:
     - stage/D101/r0/l0/TBox/66
-Ancient Cistern - Behind Waterfall:
+Ancient Cistern - Chest behind the Waterfall:
   original item: Red Rupee
   type: faron, dungeon
   Paths:
     - stage/D101/r3/l0/TBox/84
-Ancient Cistern - Bokoblin:
+Ancient Cistern - On Bokoblin's Waist:
   original item: AC Small Key
   type: faron, dungeon
   Paths:
     - stage/D101/r4/l0/EBc/0xFC00
-Ancient Cistern - Boss Key:
+Ancient Cistern - Boss Key Chest:
   original item: AC Boss Key
   type: faron, dungeon
   Paths:
     - stage/D101/r4/l0/TBox/68
 
-Ancient Cistern - Koloktos Heart Container:
+Ancient Cistern - Koloktos' Heart Container:
   original item: Heart Container
   type: faron, dungeon
   Paths:
     - stage/B101/r0/l1/HeartCo
     - stage/B101/r0/l3/HeartCo
 
-Ancient Cistern - Goddess Longsword:
+Ancient Cistern - Dungeon Reward:
   original item: Progressive Sword
   type: faron, dungeon
   Paths:
@@ -1110,17 +1110,17 @@ Sandship - Behind Combination Lock:
   type: lanayru, dungeon
   Paths:
     - stage/D301/r10/l0/TBox/69
-Sandship - Bow Chest:
+Sandship - Bow:
   original item: Bow
   type: lanayru, dungeon
   Paths:
     - stage/D301/r15/l0/TBox/72
-Sandship - Piece of Heart Chest:
+Sandship - Chest at the Stern:
   original item: Heart Piece
   type: lanayru, dungeon
   Paths:
     - stage/D301/r0/l0/TBox/127
-Sandship - Map Chest:
+Sandship - Chest before 4-Door Corridor:
   original item: SS Map
   type: lanayru, dungeon
   Paths:
@@ -1150,24 +1150,24 @@ Sandship - Treasure Room Fifth Chest:
   type: lanayru, dungeon
   Paths:
     - stage/D301/r9/l0/TBox/68
-Sandship - Robot in Brig:
+Sandship - Robot in Brig's Reward:
   original item: SS Small Key
   type: lanayru, dungeon
   Paths:
     - event/401-DesertD2/14
     - oarc/D301/l4
-Sandship - Boss Key:
+Sandship - Boss Key Chest:
   original item: SS Boss Key
   type: lanayru, dungeon
   Paths:
     - stage/D301/r14/l3/TBox/73
-Sandship - Tentalus Heart Container:
+Sandship - Tentalus' Heart Container:
   original item: Heart Container
   type: lanayru, dungeon
   Paths:
     - stage/B301/r0/l1/HeartCo
     - stage/D301/r0/l1/HeartCo
-Sandship - Nayru's Flame:
+Sandship - Dungeon Reward:
   original item: Progressive Sword
   type: lanayru, dungeon
   Paths:
@@ -1176,27 +1176,27 @@ Sandship - Nayru's Flame:
     - oarc/D301/l1
 
 
-Fire Sanctuary - First Room:
+Fire Sanctuary - Chest in First Room:
   original item: FS Small Key
   type: eldin, dungeon
   Paths:
     - stage/D201/r0/l0/TBox/64
-Fire Sanctuary - Chest in First Magmanos Room:
+Fire Sanctuary - Chest in Second Room:
   original item: Red Rupee
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r1/l0/TBox/74
-Fire Sanctuary - Second Small Key Chest:
+Fire Sanctuary - Chest near First Trapped Mogma:
   original item: FS Small Key
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r5/l0/TBox/69
-Fire Sanctuary - First Chest in Water Plants Room:
+Fire Sanctuary - First Chest in Water Fruit Room:
   original item: Red Rupee
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r7/l0/TBox/73
-Fire Sanctuary - Second Chest in Water Plants Room:
+Fire Sanctuary - Second Chest in Water Fruit Room:
   original item: Semi Rare Treasure
   type: eldin, dungeon
   Paths:
@@ -1206,24 +1206,24 @@ Fire Sanctuary - Mogma Mitts:
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r5/l0/TBox/68
-Fire Sanctuary - Bottle Chest:
+Fire Sanctuary - Chest on Balcony:
   original item: Bottle
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r6/l0/TBox/70
     - stage/D201/r6/l0/TBox/70
-Fire Sanctuary - Map Chest:
+Fire Sanctuary - Chest after Second Trapped Mogma:
   original item: FS Map
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r2/l0/TBox/65
     - stage/D201/r2/l0/TBox/65
-Fire Sanctuary - Third Small Key Chest:
+Fire Sanctuary - Chest after Bombable Wall:
   original item: FS Small Key
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r11/l0/TBox/71
-Fire Sanctuary - Plats Chest:
+Fire Sanctuary - Plats' Chest:
   original item: Heart Piece
   type: eldin, dungeon
   Paths:
@@ -1233,20 +1233,20 @@ Fire Sanctuary - Chest in Staircase Room:
   type: eldin, dungeon
   Paths:
     - stage/D201/r9/l0/TBox/75
-Fire Sanctuary - Boss Key:
+Fire Sanctuary - Boss Key Chest:
   original item: FS Boss Key
   type: eldin, dungeon
   Paths:
     - stage/D201/r4/l0/TBox/67
 
-Fire Sanctuary - Ghirahim Heart Container:
+Fire Sanctuary - Ghirahim's Heart Container:
   original item: Heart Container
   type: eldin, dungeon
   Paths:
     - stage/B201/r0/l1/HeartCo
     - stage/B201/r0/l2/HeartCo
 
-Fire Sanctuary - Din's Flame:
+Fire Sanctuary - Dungeon Reward:
   original item: Progressive Sword
   type: eldin, dungeon
   Paths:
@@ -1254,11 +1254,11 @@ Fire Sanctuary - Din's Flame:
     - oarc/B201_1/l0
 
 
-#Lanayru Gorge - Boss rush heart piece
+#Lanayru Gorge - Boss Rush - 4 Bosses
 #   original item: Heart piece
 #   Paths:
 #    - event/
-#Lanayru Gorge - Boss rush hylian shield
+#Lanayru Gorge - Boss Rush - 8 Bosses
 #   original item: hylian shield
 #   Paths:
 #    - event/
@@ -1266,55 +1266,55 @@ Fire Sanctuary - Din's Flame:
 #   original item: Life Tree Seedling
 #   Paths:
 #    - stage/F302.json
-#Lanayru Gorge - Lanayru Soth Part event
+#Lanayru Gorge - Thunder Dragon's Reward
 #   original item: Lanayru Soth part
 #   Paths:
 #    - stage/F302.json
 
 
-#Flooded Faron Woods - Faron Soth Part event
+#Flooded Faron Woods - Water Dragon's Reward
 #   original item: Faron Soth Part
 #   Paths:
 #    - event/
 
 
-#Boko base - Mogma Mitts Event
+#Boko Base - Mogma Mitts Event
 #   original item: Mogma Mitts
 #   Paths:
 #    - event
-#Boko base - Clawshots
+#Boko Base - Clawshots
 #   original item: Clawshots
 #   Paths:
 #    - stage/F202.json
-#Boko base - Gust Bellows
+#Boko Base - Gust Bellows
 #   original item: Gust Bellows
 #   Paths:
 #    - stage/F202.json
-#Boko base - Bombs
+#Boko Base - Bombs
 #   original item: Bombs
 #   Paths:
 #    - stage/F202.json
-#Boko base - Slingshot
+#Boko Base - Slingshot
 #   original item: Slingshot
 #   Paths:
 #    - stage/F202.json
-#Boko base - Whip
+#Boko Base - Whip
 #   original item: Whip
 #   Paths:
 #    - stage/F202.json
 
-#Fire Dragon Room - Eldin Soth part event
+#Fire Dragon Room - Fire Dragon's Reward
 #   original item: Eldin Soth part
 #   Paths:
 #    - stage/F221.json
 
 
-Sky Keep - Map Chest:
+Sky Keep - First Chest:
   original item: SK Map
   type: skyloft, dungeon
   Paths:
     - stage/D003_7/r0/l0/TBox/64
-Sky Keep - Small Key Chest:
+Sky Keep - Chest after Scervo:
   original item: SK Small Key
   type: skyloft, dungeon
   Paths:
@@ -1336,25 +1336,25 @@ Sky Keep - Small Key Chest:
 #    - stage/D003_8.json
 
 
-Skyloft Silent Realm - Stone of Trials:
+Skyloft Silent Realm - Trial Reward:
   original item: Stone of Trials
   type: skyloft, silent realm
   Paths:
     - stage/S000/r0/l2/WarpObj
 
-Faron Silent Realm - Water Scale:
+Faron Silent Realm - Trial Reward:
   original item: Water Scale
   type: faron, silent realm
   Paths:
     - stage/S100/r0/l2/WarpObj
 
-Lanayru Silent Realm - Clawshots:
+Lanayru Silent Realm - Trial Reward:
   original item: Clawshots
   type: lanayru, silent realm
   Paths:
     - stage/S300/r0/l2/WarpObj
 
-Eldin Silent Realm - Fireshield Earrings:
+Eldin Silent Realm - Trial Reward:
   original item: Fireshield Earrings
   type: eldin, silent realm
   Paths:

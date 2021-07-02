@@ -67,37 +67,37 @@ SHOP_CHECKS = [
 ]
 
 MAP_CHECKS = [
-    "Skyview - Map Chest",
-    "Earth Temple - Map Chest",
-    "Lanayru Mining Facility - Map Chest",
-    "Ancient Cistern - Map Chest",
-    "Sandship - Map Chest",
-    "Fire Sanctuary - Map Chest",
-    "Sky Keep - Map Chest",
+    "Skyview - Chest on Tree Branch",
+    "Earth Temple - Chest in West Room",
+    "Lanayru Mining Facility - Chest after Armos Fight",
+    "Ancient Cistern - Chest after Whip Hooks",
+    "Sandship - Chest before 4-Door Corridor",
+    "Fire Sanctuary - Chest after Second Trapped Mogma",
+    "Sky Keep - First Chest",
 ]
 
 SMALL_KEY_CHECKS = [
-    "Skyview - Behind Two Eyes",
-    "Skyview - Behind Three Eyes",
+    "Skyview - Chest behind Two Eyes",
+    "Skyview - Chest behind Three Eyes",
     "Lanayru Mining Facility - First Chest in Hub Room",
-    "Ancient Cistern - Small Key Chest",
-    "Ancient Cistern - Bokoblin",
+    "Ancient Cistern - Chest in East Part",
+    "Ancient Cistern - On Bokoblin's Waist",
     "Sandship - Behind Combination Lock",
-    "Sandship - Robot in Brig",
-    "Fire Sanctuary - First Room",
-    "Fire Sanctuary - Second Small Key Chest",
-    "Fire Sanctuary - Third Small Key Chest",
-    "Lanayru Caves - Golo",
-    "Sky Keep - Small Key Chest",
+    "Sandship - Robot in Brig's Reward",
+    "Fire Sanctuary - Chest in First Room",
+    "Fire Sanctuary - Chest near First Trapped Mogma",
+    "Fire Sanctuary - Chest after Bombable Wall",
+    "Lanayru Caves - Golo's Gift",
+    "Sky Keep - Chest after Scervo",
 ]
 
 BOSS_KEY_CHECKS = [
-    "Skyview - Boss Key",
-    "Earth Temple - Boss Key",
-    "Lanayru Mining Facility - Boss Key",
-    "Ancient Cistern - Boss Key",
-    "Sandship - Boss Key",
-    "Fire Sanctuary - Boss Key",
+    "Skyview - Boss Key Chest",
+    "Earth Temple - Boss Key Chest",
+    "Lanayru Mining Facility - Boss Key Chest",
+    "Ancient Cistern - Boss Key Chest",
+    "Sandship - Boss Key Chest",
+    "Fire Sanctuary - Boss Key Chest",
 ]
 
 END_OF_DUNGEON_CHECKS = OrderedDict(

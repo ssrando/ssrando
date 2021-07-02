@@ -101,7 +101,9 @@ class Logic:
                 self.racemode_ban_location("Knight Academy - Fledge's Crystals")
             if "Skyview" in self.unrequired_dungeons:
                 self.racemode_ban_location("Sky - Lumpy Pumpkin Roof Goddess Chest")
-                self.racemode_ban_location("Sealed Grounds - Gorko Goddess Wall Reward")
+                self.racemode_ban_location(
+                    "Sealed Grounds - Gorko's Goddess Wall Reward"
+                )
 
         batreaux_location_re = re.compile(r".*Batreaux - ([0-9]+) .*")
 
@@ -116,8 +118,8 @@ class Logic:
                     # print(f'banned {location_name}')
 
         if self.rando.options["skip-skykeep"]:
-            self.racemode_ban_location("Sky Keep - Map Chest")
-            self.racemode_ban_location("Sky Keep - Small Key Chest")
+            self.racemode_ban_location("Sky Keep - First Chest")
+            self.racemode_ban_location("Sky Keep - Chest after Scervo")
 
         self.locations_by_zone_name = OrderedDict()
         for location_name in self.item_locations:
@@ -266,18 +268,18 @@ class Logic:
         self.map_banned_locations = []
         if self.rando.options["map-mode"] == "Own Dungeon - Restricted":
             self.map_banned_locations += [
-                "Skyview - Ghirahim Heart Container",
-                "Earth Temple - Scaldera Heart Container",
-                "Lanayru Mining Facility - LMF Heart Container",
-                "Ancient Cistern - Koloktos Heart Container",
-                "Sandship - Tentalus Heart Container",
-                "Fire Sanctuary - Ghirahim Heart Container",
-                "Skyview - Ruby Tablet",
-                "Earth Temple - Amber Tablet",
-                "Lanayru Mining Facility - Harp",
-                "Ancient Cistern - Goddess Longsword",
-                "Sandship - Nayru's Flame",
-                "Fire Sanctuary - Din's Flame",
+                "Skyview - Ghirahim's Heart Container",
+                "Earth Temple - Scaldera's Heart Container",
+                "Lanayru Mining Facility - Molderach's Heart Container",
+                "Ancient Cistern - Koloktos' Heart Container",
+                "Sandship - Tentalus' Heart Container",
+                "Fire Sanctuary - Ghirahim's Heart Container",
+                "Skyview - Dungeon Reward",
+                "Earth Temple - Dungeon Reward",
+                "Lanayru Mining Facility - Dungeon Reward",
+                "Ancient Cistern - Dungeon Reward",
+                "Sandship - Dungeon Reward",
+                "Fire Sanctuary - Dungeon Reward",
             ]
 
         if self.rando.options["logic-mode"] == "No Logic":
