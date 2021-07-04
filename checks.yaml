@@ -80,12 +80,12 @@ Knight Academy - Pumpkin Pull - 600 Points:
     - event/114-Friend/99
     - oarc/F000/l4
     - oarc/F000/l6
-Knight Academy - Zelda's Closet:
+Knight Academy - In Zelda's Closet:
   original item: Heart Piece
   type: skyloft, miscellaneous
   Paths:
     - stage/F001r/r6/l0/chest/32 #sceneflag
-Skyloft - Baby Rattle:
+Skyloft - Freestanding Item in Bird Nest:
   original item: Baby's Rattle
   type: skyloft, freestanding
   Paths:
@@ -307,17 +307,17 @@ Knight Academy - Crystal in Zelda's Room:
   original item: Gratitude Crystal
   type: crystal
 
-Sky - Lumpy Pumpkin Chandelier:
+Sky - Item on Lumpy Pumpkin Chandelier:
   original item: Heart Piece
   type: sky, freestanding
   Paths:
     - stage/F011r/r0/l0/Chandel
-Sky - Lumpy Pumpkin Roof Goddess Chest:
+Sky - Goddess Chest on Lumpy Pumpkin Roof:
   original item: Gold Rupee
   type: sky, goddess, faron goddess, dungeon
   Paths:
     - stage/F020/r0/l0/TBox/87
-Sky - Lumpy Pumpkin Goddess Chest:
+Sky - Goddess Chest outside Lumpy Pumpkin:
   original item: Progressive Pouch
   type: sky, goddess, faron goddess
   Paths:
@@ -492,23 +492,23 @@ Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
   Paths:
     - event/116-InsectGame/69
     - oarc/F023/l0
-Thunderhead - Levias:
+Thunderhead - Levias' Teaching:
   original item: Song of the Hero
   type: thunderhead, sky, scrapper, combat, song
   Paths:
     - event/120-Nushi/give item after levias
     - oarc/F023/l0
-Thunderhead - Farore's Courage:
+Thunderhead - Goddess Sword Strike:
   original item: Farore's Courage
   type: thunderhead, song
   Paths:
     - stage/F010r/r0/l0/SwSB/0
-Thunderhead - Nayru's Wisdom:
+Thunderhead - Goddess Longsword Strike:
   original item: Nayru's Wisdom
   type: thunderhead, song
   Paths:
     - stage/F010r/r0/l0/SwSB/1
-Thunderhead - Din's Power:
+Thunderhead - Master Sword Strike:
   original item: Din's Power
   type: thunderhead, song
   Paths:
@@ -520,7 +520,7 @@ Sealed Grounds - Chest inside Sealed Temple:
   type: faron, miscellaneous
   Paths:
     - stage/F402/r2/l0/TBox/64
-Sealed Grounds - Ballad of the Goddess:
+Sealed Grounds - Old Lady's Teaching:
   original item: Ballad of the Goddess
   type: faron, song
   Paths:
@@ -562,12 +562,12 @@ Faron Woods - Deep Woods Chest:
   type: faron, miscellaneous
   Paths:
     - stage/F101/r0/l0/TBox/74
-Faron Woods - Freestanding Item behind Boulder:
+Faron Woods - Freestanding Item behind Bombable Boulder:
   original item: Heart Piece
   type: faron, freestanding, bombable
   Paths:
     - stage/F100/r0/l0/Item/33 #last thing is SceneflagID
-Faron Woods - Behind Bombable Rocks near Erla:
+Faron Woods - Chest behind Bombable Rocks near Erla:
   original item: Semi Rare Treasure
   type: faron, bombable
   Paths:
@@ -588,12 +588,12 @@ Lake Floria - Lake Floria Chest:
 #  type: faron, freestanding
 #  Paths:
 #   - stage/F102/r2/l0/Item/60
-Lake Floria - Dragon Lair First Chest:
+Lake Floria - Dragon Lair East Chest:
   original item: Semi Rare Treasure
   type: faron, miscellaneous
   Paths:
     - stage/F102_2/r0/l0/TBox/85
-Lake Floria - Dragon Lair Second Chest [Scale]:
+Lake Floria - Dragon Lair South Chest:
   original item: Silver Rupee
   type: faron, miscellaneous
   Paths:

@@ -9,7 +9,7 @@ from .constants import POTENTIALLY_REQUIRED_DUNGEONS, SILENT_REALMS, SILENT_REAL
 from util import textbox_utils
 
 ALWAYS_REQUIRED_LOCATIONS = [
-    "Thunderhead - Levias",
+    "Thunderhead - Levias' Teaching",
     "Sky - Kina's Crystals",
     "Skyloft - Peater/Peatrice's Crystals",
     "Batreaux - 80 Crystals",

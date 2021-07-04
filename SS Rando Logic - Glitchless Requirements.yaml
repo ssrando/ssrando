@@ -229,7 +229,7 @@ Knight Academy - Crystal in Zelda's Room:
   # Drop down into the chimney from the Loftwing in BiT
   # Scene Flag 5x04 is "Drop down into Academy Chimney / Zelda's Door Unlocked"
 
-Knight Academy - Zelda's Closet:
+Knight Academy - In Zelda's Closet:
   Can Unlock Zelda's Room
 
 Knight Academy - Fledge's Crystals:
@@ -319,7 +319,7 @@ Skyloft - Shed Chest:
 Skyloft - Shed Goddess Chest:
   Goddess Cube in Eldin Slide & Water Scale
 
-Skyloft - Baby Rattle:
+Skyloft - Freestanding Item in Bird Nest:
   (Clawshots & Gust Bellows) |
   (
     Can Access Beedle's Shop Wherever &
@@ -509,7 +509,7 @@ Sky - Breakable Boulder Chest near Fun Fun Island:
 
 ## Sky - South East
 
-Sky - Lumpy Pumpkin Chandelier:
+Sky - Item on Lumpy Pumpkin Chandelier:
   Nothing
 
 Sky - Crystal outside Lumpy Pumpkin:
@@ -540,10 +540,10 @@ Sky - Kina's Crystals:
   Chandelier Quest Over & Can Access Mogma Turf
   # Unlocked after Chandelier Quest
 
-Sky - Lumpy Pumpkin Goddess Chest:
+Sky - Goddess Chest outside Lumpy Pumpkin:
   Initial Goddess Cube
 
-Sky - Lumpy Pumpkin Roof Goddess Chest:
+Sky - Goddess Chest on Lumpy Pumpkin Roof:
   Goddess Cube in Skyview Spring
 
 Sky - Gossip Stone on Lumpy Pumpkin:
@@ -601,19 +601,19 @@ Can Access Thunderhead:
   (Option "open-thunderhead" Is "Ballad" & Ballad of the Goddess)
   # May be options in the future
 
-Thunderhead - Levias:
+Thunderhead - Levias' Teaching:
   Can Access Thunderhead & Spiral Charge & Sword
   # Get the soup, fight Bilocyte
 
 ## Isle of Songs
 
-Thunderhead - Farore's Courage:
+Thunderhead - Goddess Sword Strike:
   Can Access Thunderhead & Goddess Sword
 
-Thunderhead - Nayru's Wisdom:
+Thunderhead - Goddess Longsword Strike:
   Can Access Thunderhead & Goddess Longsword
 
-Thunderhead - Din's Power:
+Thunderhead - Master Sword Strike:
   Can Access Thunderhead & Goddess White Sword
 
 Thunderhead - Goddess Chest outside Isle of Song:
@@ -662,7 +662,7 @@ Sealed Grounds - Chest inside Sealed Temple:
 Can Learn Ballad of the Goddess:
   Can Access Sealed Temple & Goddess Harp
 
-Sealed Grounds - Ballad of the Goddess:
+Sealed Grounds - Old Lady's Teaching:
   Can Learn Ballad of the Goddess
 
 Can Raise Gate of Time:
@@ -729,11 +729,11 @@ Faron Woods - Freestanding Item on Tree:
 Faron Woods - Slingshot:
   Can Access Most of Faron Woods & Can Defeat Bokoblins
 
-Faron Woods - Freestanding Item behind Boulder:
+Faron Woods - Freestanding Item behind Bombable Boulder:
   Can Access Most of Faron Woods & Bomb Bag
   # Scene Flag 1x80 is "Blow Up Rock containing HP"
 
-Faron Woods - Behind Bombable Rocks near Erla:
+Faron Woods - Chest behind Bombable Rocks near Erla:
   Can Access Most of Faron Woods & Bomb Bag
   # Scene Flag 0x01 is "Blow Up Rocks containing Chest (near Erla)"
 
@@ -839,10 +839,10 @@ Lake Floria - Lake Floria Chest:
 Goddess Cube in Lake Floria:
   Can Access Lake Floria Statue & Goddess Sword
 
-Lake Floria - Dragon Lair First Chest:
+Lake Floria - Dragon Lair East Chest:
   Can Access Floria Waterfall
 
-Lake Floria - Dragon Lair Second Chest [Scale]:
+Lake Floria - Dragon Lair South Chest:
   Can Access Floria Waterfall & Water Scale
 
 Lake Floria - Outside AC: # currently not randomized
