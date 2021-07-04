@@ -520,5 +520,6 @@
   command: music-rando
   type: boolean
   default: false
+  permalink: false
   help: If enabled, most music will be randomized. Unstable, and some songs will end abruptly or not loop.
   ui: option_music_rando
