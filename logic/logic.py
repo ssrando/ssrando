@@ -1449,6 +1449,7 @@ class Logic:
         for item_name in self.starting_items:
             temp_inventory.collect_item(item_name)
         spheres = []
+        game_end_reached = False
         while remaining_locations:
             current_sphere = {}
             new_loc_reached = False
@@ -1468,10 +1469,11 @@ class Logic:
             if new_log_invisible_item_reached:
                 continue
             # now we can handle the new sphere
-            if self.macros["Can Reach and Defeat Demise"].is_true(
-                self.rando.options, temp_inventory, self.macros
-            ):
+            if not game_end_reached and self.macros[
+                "Can Reach and Defeat Demise"
+            ].is_true(self.rando.options, temp_inventory, self.macros):
                 current_sphere["Past - Demise"] = "Defeat Demise"
+                game_end_reached = True
             for loc in newly_accessible_locations:
                 new_loc_reached = True
                 item = self.done_item_locations[loc]
