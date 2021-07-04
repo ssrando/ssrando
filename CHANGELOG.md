@@ -1,5 +1,21 @@
 # Changelog
 
+## Dev
+### Options
+- Keysanity
+- Choose Required Sword for Gate of Time
+- Add Way of the Hero and Barren Region Hints
+- Glitched Logic
+- Logic Tricks for both BiTless and Glitched Logic
+- Added option to make BiT not crash in areas where it normally would
+- Added option to randomize which trial corresponds to which trial gate
+### Changes
+- Split up Skyloft in different Areas for logic
+### Bugfixes
+- Fix a bunch of typos
+- Fix potential softlocks when playing Clean Cut or Thrill Digger without the necessary item
+- Fix softlocking in Koloktos' Boss Room without Goddess Sword
+
 ## 1.0.6
 ### Options
 - Added option to randomize beetles shop
