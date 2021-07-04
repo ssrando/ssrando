@@ -218,11 +218,31 @@ Batreaux - 80 Crystals:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
 
-Beedle - 50 Rupee Item:
-  original item: Bug Net
+Beedle - 300 Rupee Item:
+  original item: Progressive Pouch
   type: skyloft, beedle, cheap
   Paths:
-    - ShpSmpl/25
+    - ShpSmpl/20
+Beedle - 600 Rupee Item:
+  original item: Progressive Pouch
+  type: skyloft, beedle, medium
+  Paths:
+    - ShpSmpl/21
+Beedle - 1200 Rupee Item:
+  original item: Progressive Pouch
+  type: skyloft, beedle, expensive
+  Paths:
+    - ShpSmpl/22
+Beedle - 800 Rupee Item:
+  original item: Life Medal
+  type: skyloft, beedle, medium
+  Paths:
+    - ShpSmpl/26
+Beedle - 1600 Rupee Item:
+  original item: Heart Piece
+  type: skyloft, beedle, expensive
+  Paths:
+    - ShpSmpl/23
 Beedle - First 100 Rupee Item:
   original item: Extra Wallet
   type: skyloft, beedle, cheap
@@ -238,36 +258,16 @@ Beedle - Third 100 Rupee Item: # to make not too much farming at the start neces
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/18
-Beedle - 300 Rupee Item:
-  original item: Progressive Pouch
+Beedle - 50 Rupee Item:
+  original item: Bug Net
   type: skyloft, beedle, cheap
   Paths:
-    - ShpSmpl/20
-Beedle - 600 Rupee Item:
-  original item: Progressive Pouch
-  type: skyloft, beedle, medium
-  Paths:
-    - ShpSmpl/21
-Beedle - 800 Rupee Item:
-  original item: Life Medal
-  type: skyloft, beedle, medium
-  Paths:
-    - ShpSmpl/26
+    - ShpSmpl/25
 Beedle - 1000 Rupee Item:
   original item: Bug Medal
   type: skyloft, beedle, medium
   Paths:
     - ShpSmpl/27
-Beedle - 1200 Rupee Item:
-  original item: Progressive Pouch
-  type: skyloft, beedle, expensive
-  Paths:
-    - ShpSmpl/22
-Beedle - 1600 Rupee Item:
-  original item: Heart Piece
-  type: skyloft, beedle, expensive
-  Paths:
-    - ShpSmpl/23
 
 # Single Gratitude crystals aren't randomized, but still need logic, because some of them need items
 Knight Academy - Crystal in Link's Room:
@@ -508,7 +508,7 @@ Thunderhead - Goddess Longsword Strike:
   type: thunderhead, song
   Paths:
     - stage/F010r/r0/l0/SwSB/1
-Thunderhead - Master Sword Strike:
+Thunderhead - Goddess White Sword:
   original item: Din's Power
   type: thunderhead, song
   Paths:
@@ -1105,7 +1105,7 @@ Ancient Cistern - Dungeon Reward:
     - event/202-ForestD2/give item after beating ancient cistern
     - oarc/B101_1/l0
 
-Sandship - Behind Combination Lock:
+Sandship - Chest behind Combination Lock:
   original item: SS Small Key
   type: lanayru, dungeon
   Paths:

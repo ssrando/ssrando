@@ -766,7 +766,7 @@ class Logic:
         access_past_requirements = [
             "Can Access Sealed Temple",
             "Can Raise Gate of Time",
-            "Meet Gate of Time Sword Requirement",
+            "Meets Gate of Time Sword Requirement",
         ]
         for dungeon in self.required_dungeons:
             access_past_requirements.append(f"Can Beat {dungeon}")

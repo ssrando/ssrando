@@ -82,7 +82,7 @@ SMALL_KEY_CHECKS = [
     "Lanayru Mining Facility - First Chest in Hub Room",
     "Ancient Cistern - Chest in East Part",
     "Ancient Cistern - On Bokoblin's Waist",
-    "Sandship - Behind Combination Lock",
+    "Sandship - Chest behind Combination Lock",
     "Sandship - Robot in Brig's Reward",
     "Fire Sanctuary - Chest in First Room",
     "Fire Sanctuary - Chest near First Trapped Mogma",

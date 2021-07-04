@@ -385,18 +385,7 @@ Can Access Beedle's Shop Wherever:
 Can Access Beedle's Shop:
   Can Access Beedle's Shop Wherever | Bomb Bag
 
-Beedle - 50 Rupee Item:
-  Can Access Beedle's Shop
-
-Beedle - First 100 Rupee Item:
-  Can Access Beedle's Shop
-
-Beedle - Second 100 Rupee Item:
-  Can Access Beedle's Shop
-
-Beedle - Third 100 Rupee Item:
-  Can Access Beedle's Shop & Can Medium Rupee Farm
-  # To reduce necessary rupee-farming at the start, the third item logically needs an efficient rupee-farming method
+### Left-most
 
 Beedle - 300 Rupee Item:
   Can Access Beedle's Shop &
@@ -408,19 +397,38 @@ Beedle - 600 Rupee Item:
   Can Afford 600 Rupees &
   (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
 
-Beedle - 800 Rupee Item:
-  Can Access Beedle's Shop & Can Afford 800 Rupees
-
-Beedle - 1000 Rupee Item:
-  Can Access Beedle's Shop & Can Afford 1000 Rupees
-
 Beedle - 1200 Rupee Item:
   Can Access Beedle's Shop &
   Can Afford 1200 Rupees &
   (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
 
+### Left
+
+Beedle - 800 Rupee Item:
+  Can Access Beedle's Shop & Can Afford 800 Rupees
+
 Beedle - 1600 Rupee Item:
   Can Access Beedle's Shop & Can Afford 1600 Rupees
+
+### Right
+
+Beedle - First 100 Rupee Item:
+  Can Access Beedle's Shop
+
+Beedle - Second 100 Rupee Item:
+  Can Access Beedle's Shop
+
+Beedle - Third 100 Rupee Item:
+  Can Access Beedle's Shop & Can Medium Rupee Farm
+  # To reduce necessary rupee-farming at the start, the third item logically needs an efficient rupee-farming method
+
+### Right-most
+
+Beedle - 50 Rupee Item:
+  Can Access Beedle's Shop
+
+Beedle - 1000 Rupee Item:
+  Can Access Beedle's Shop & Can Afford 1000 Rupees
 
 ## Batreaux Rewards
 
@@ -613,7 +621,7 @@ Thunderhead - Goddess Sword Strike:
 Thunderhead - Goddess Longsword Strike:
   Can Access Thunderhead & Goddess Longsword
 
-Thunderhead - Master Sword Strike:
+Thunderhead - Goddess White Sword:
   Can Access Thunderhead & Goddess White Sword
 
 Thunderhead - Goddess Chest outside Isle of Song:
@@ -659,16 +667,16 @@ Can Access Sealed Temple:
 Sealed Grounds - Chest inside Sealed Temple:
   Can Access Sealed Temple
 
-Can Learn Ballad of the Goddess:
+Can Receive Old Lady's Teaching:
   Can Access Sealed Temple & Goddess Harp
 
 Sealed Grounds - Old Lady's Teaching:
-  Can Learn Ballad of the Goddess
+  Can Receive Old Lady's Teaching
 
 Can Raise Gate of Time:
-  Can Learn Ballad of the Goddess
+  Can Receive Old Lady's Teaching
 
-Meet Gate of Time Sword Requirement:
+Meets Gate of Time Sword Requirement:
   (Option "got-sword-requirement" Is "Goddess Sword" & Goddess Sword) |
   (Option "got-sword-requirement" Is "Goddess Longsword" & Goddess Longsword) |
   (Option "got-sword-requirement" Is "Goddess Whitesword" & Goddess White Sword) |
@@ -1356,14 +1364,14 @@ Can Get Past Peahat and Boko Baba:
   # Scene Flag 3x40 is "Whipped Peahat at Skipper's Retreat"
   # Clawshot next to the baba, then to the target, then quickly on the next target
 
-Lanayru Sand Sea - Skydive Chest at Skipper's Retreat:
-  Can Get Past Peahat and Boko Baba
-
 Lanayru Sand Sea - Chest on top of Cacti Pillar:
   Can Get Past Peahat and Boko Baba
 
 Lanayru Sand Sea - Chest in Skipper's Shack:
   Can Get Past Peahat and Boko Baba & Gust Bellows
+
+Lanayru Sand Sea - Skydive Chest at Skipper's Retreat:
+  Can Get Past Peahat and Boko Baba
 
 # Shipyard
 
@@ -1390,7 +1398,7 @@ Goddess Cube in Pirate Stronghold:
   Can Access Sand Sea & Can Defeat Beamos & Can Defeat Armos & Goddess Sword
   # Technically this is possible without beating a Beamos but it's hard
 
-#Lanayru Gorge - Boss Rush Piece of Heart:
+#Lanayru Gorge - Boss Rush - 4 Bosses:
 
 #  Can Heal Thunder Dragon?
 
@@ -1402,7 +1410,7 @@ Goddess Cube in Pirate Stronghold:
 
 #  Can Access Lanayru Gorge?
 
-#Lanayru Gorge - Lanayru SotH Part:
+#Lanayru Gorge - Thunder Dragon's Reward:
 
 #  Can heal Thunder Dragon?
 
@@ -1691,13 +1699,13 @@ Can Access LMF Map Room:
   Can Access LMF First West Room & Gust Bellows & Can Defeat Beamos
   # To reveal the timeshift stone, and raise the wind gate
 
-Can Hit Crystal in LMF Map Room:
+Can Hit Timeshift Stone in LMF Map Room:
   Goddess Sword | Slingshot | Whip | Bow
   # You can skyward strike the timeshift stone through the gate (even on normal mode).
   # The bow, slingshot and whip also work
 
 Can Finish LMF Map Room:
-  Can Access LMF Map Room & Can Hit Crystal in LMF Map Room & Can Defeat Armos
+  Can Access LMF Map Room & Can Hit Timeshift Stone in LMF Map Room & Can Defeat Armos
   # You need to defeat the Beamos guarding the door to the map room, but you also need to be able to defeat the Armos, thus sword required
   # The Staldras don't need to be defeated and are surprisingly not very aggressive, letting you push the block relatively easily
 
@@ -1883,7 +1891,7 @@ Can Freely Change Sandship Temporality:
 Can Pass Sandship Spume:
   Goddess Sword | Bow | Bomb Bag | Slingshot | Sandship - Itemless Spume Skip Trick
 
-Sandship - Behind Combination Lock:
+Sandship - Chest behind Combination Lock:
   (
     Can Access Sandship &
     Can Pass Sandship Spume &
