@@ -2,6 +2,11 @@
 
 ## Dev
 ### Options
+### Changes
+### Bugfixes
+
+## 1.0.7
+### Options
 - Keysanity
 - Choose Required Sword for Gate of Time
 - Add Way of the Hero and Barren Region Hints
