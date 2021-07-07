@@ -3,1188 +3,1426 @@
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2782059
 0D22F5D87B7F70B2E2EBAC1462769F43:
     name: Lumpy Pumpkin
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3070184
 0D69624FF595784723DE8035A322931F:
     name: Stalfos
     isLooped: True
     streams: 3
     type: 7
+    numsamples: 2753711
 0E52B10E2C145DD892F6998C967906E9:
     name: Kikwi-1
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 617218
 0F09C16568160B31F8B142F04754C677:
     name: Pipit Interruption/Cooking 1
     isLooped: False
     streams: 1
     type: 9
+    numsamples: 169984
 0F9C3334EC83BA73C240FCD04435196D:
     name: Follow Fi
     isLooped: True
     streams: 2
     type: 2
+    numsamples: 3099843
 1A84EB27DE745DAB4B92DBE1CF2F87C0:
     name: Kikwi-2
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1119357
 1A95F50116CF39F82B42B50372044B18:
     name: TODO
     isLooped: True
     streams: 1
     type: 10
+    numsamples: 438916
 1BEC297483EC5170A52EDEF7552A4C6A:
     name: Romance in the Air
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2129886
 1C36751A6995E33A9FE5AE999204B869:
     name: Silly Groose 1
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2136745
 1DC2D0E6C25942ADB6FF88BD78B0ED8E:
     name: Kikwi-3
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1191036
 1E20D864A94A866D70090559E6D0CD2A:
     name: Demise
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 2140161
 1ECF196FF65976CA547B3728D355E6EF:
     name: Link's Nightmare 1
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1943147
 2D9A5A5C616A950699C3DC73A7FB7240:
     name: Ancient Cistern
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 4129953
 2D109AA4EBECD2406C8B4193F91826B9:
     name: Kina Singing
     isLooped: False
     streams: 1
     type: 11
+    numsamples: 2284800
 2E0AFD66CE693C928E73E3F9CC34A9C4:
     name: Pumpkin Pastime
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1868233
 2EF6EAC7A9EB2FC2E7874C715A8BAAFA:
     name: Skyview
     isLooped: True
     streams: 3
     type: 6
+    numsamples: 2655726
 2FAC6CAAB0DD2E75606888E65F9BBAF2:
     name: The Sky 1
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 3137605
 03C8C90CC621939FA47032CF86286645:
     name: Dodoh Receives Party Wheel
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 245945
 3A24382871E0B1F9AA8D37BE618CF467:
     name: Zelda Escapes
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 3333808
 3CC68CA8CFD938A7ABC2354775726CE4:
     name: Enter Dungeon
     isLooped: False 
     streams: 1
     type: 8
+    numsamples: 341504
 3CE49AD71BB2C839CDC94EECCF594B69:
     name: Monster of Skyloft 1
     isLooped: False
     streams: 2
     type: 5
+    numsamples: 980483
 3F3A60AAA99746A58B3EDB148D1F5FC1:
     name: Out of the Blue
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 705024
 3F852FB861034AE7716A677577492A4C:
     name: After Link's Nightmare
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 539850
 4D2650A2C6202583F041D88C45356AA8:
     name: Temple Spring
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2953356
 4FE9B0BA132303515E3F755E1A0E53C5:
     name: Harp Farore's Courage Background
     isLooped: True 
     streams: 1
     type: 2
+    numsamples: 1246760
 5B93CF241DEA9E6C429C2D8F50FB015D:
     name: Song of the Hero
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 1222484
 5C82C8F67E44600AD9887A29A1BD1BB9:
     name: Mogma Theme 1
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 837947
 5D7E2F90C3DB5F8CD20102F6A91E67F8:
     name: Gate of Time 1
     isLooped: True 
     streams: 2
     type: 5
+    numsamples: 3472725
 5D9E5A3FBE7851EBB9E7A59AF0ACD086:
     name: Levias Appears 1
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 1253172
 5F097410108EEAB3D6CBFC6E46E2A24E:
     name: Scrapper
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1348915
 06FC63FA3986951002602E703B0E9CD7:
     name: Lanayru's Vocals
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 736256
 6AD6EFB5F2682AFFB352B19D17CE8807:
     name: Sacred Flame
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1008119
 6BFB1BE3835873B1208FBEE633BCCC93:
     name: Flooded Faron Woods
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 4310164
 6D3A1FAD2D6C64D0EC53618B25F0D97D:
     name: Nayru's Wisdom
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2060302
 6D97D210EE2203DD0486AB17DDCCA3D3:
     name: Bamboo Island
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1995108
 6FABB38472EDC472585108640017FB4B:
     name: Levias' Vocals
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 744448
 07B5A2222997D394DC7602A61A8F6883:
     name: Koloktos
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 2962876
 7B9B86CF44E22BF9B10A157974450198:
     name: Temple of Time Ballad of the Goddess
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 297248
 7B75D5DB2D55CE49B646155F1808A245:
     name: Lanayru Sand Sea 1
     isLooped: True
     streams: 1
     type: 4
+    numsamples: 4780536
 7F5BE8E992150DA9F990F50D0A1E6E94:
     name: Opening
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 2099064
 8ADD3F099CBF2777FC445C913F7AB27A:
     name: Activating the Spirit Crest
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 706837
 8AFB3D8EF1ED1D276E6F8AC81CB738F3:
     name: TODO # timeshift stone?
     isLooped: True
     streams: 1
     type: 10
+    numsamples: 485718
 8DC2F7EB759EFC39DF378E93A9C0B146:
     name: Cursed Bokoblins
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 807086
 8FA3C6FB578749B7B27DF52C146E571C:
     name: Island in the Sky
     isLooped: False
     streams: 1
     type: 1
+    numsamples: 2392746
 9A35C312BF3FC1B59A9503C1928EFAC9:
     name: The Seal Weakens 1
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 755746
 9B2C3D74615976E218838F452279FCE3:
     name: The Dragons
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3113310
 9C1A4520DB787B4DEB030BCCC807D294:
     name: Koloktos Phase 2
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2644821
 9EB3BB26B4EE4FBE668AA8F50E74359F:
     name: TODO # Zelda cutscene?
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 394832
 9FA472216EA8EE30C84392FE0F5D8EF4:
     name: Kumite
     isLooped: True
     streams: 3
     type: 6
+    numsamples: 2494407
 10BAB99AF131BF0979699BFEFCC44EA8:
     name: Empty
     isLooped: False
     streams: 1
     type: 11
+    numsamples: 32
 11BE35899CFD364D0BAF977F6B0E06E9:
     name: Sailing the Sand Sea
     isLooped: True
     streams: 3
     type: 13
+    numsamples: 3306116
 12F7A68A86516E2DE04D90C0D286D423:
     name: Sealed Temple
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3370755
 13C9954A71E1E7F5529D7C2ECFB5B26A:
     name: Fire Sanctuary 1
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 2930685
 22E4BBFB1F691F6D40FDAED84F60F334:
     name: Impa Singing
     isLooped: False
     streams: 1
     type: 11
+    numsamples: 292000
 024F95B344307BD81E219F2D53DCFC87:
     name: Guardians Awaken
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1801146
 35B667D33B1AC98B91E7298AF6C3712C:
     name: Kikwi-4
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 990334
 43B0749044A1FBEC4FDD79628260F468:
     name: Final Ghirahim
     isLooped: True
     streams: 3
     type: 7
+    numsamples: 2644718
 43E3D4843D86F684444A1C80CBBEB897:
     name: Enemy Appears
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 594554
 44BCB14F47E514BB3DED9BADA07E6599:
     name: Nayru's Silent Realm
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1994046
 47BEF24C1A164ED458543B2E6BF01771:
     name: Moldarach
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 2805397
 51C1FF721E3B0B908AB6F62977FBD40E:
     name: Zelda Singing
     isLooped: False
     streams: 1
     type: 11
+    numsamples: 802816
 62DC9019520E00C573AF49235235FD97:
     name: Impa's Fate
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 4946768
 67C94429EA6DA009543561360FBF0BDF:
     name: Bucha Theme
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1055835
 67ED7A542A5A5D225747B015B5CD6020:
     name: Batreaux Transforming to Human
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 332881
 68D493DEE34B5834C4C4D78502E4EE66:
     name: Fi's Theme
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 3624215
 75F99CBE3C733522E7E960304C7538D5:
     name: The Seal Weakens 2
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 755746
 76BF0D9DCFE07C18F0D02EF230571A9B:
     name: Blessing of the Goddess
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1422168
 82AEF1119059B800D9917833B0078571:
     name: Lanayru Sand Sea 2 # Skipper's Retreat?
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 4780536
 84B4C84A4E53F3596B82F32BA7A084BD:
     name: Lanayru Sand Sea 3
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 4379132
 88A1B9B47056EC0DB6F06F674C6D6977:
     name: Eldin Volcano
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3756716
 94C27DB633FFFE6C8E47FEF2277967C2:
     name: Batreaux's Theme
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2377371
 99AA0BFC82CC7CE2DDBF00422859DBF9:
     name: Romance
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1097433
 112F25C6ABBA0A57CBD9951FF837BC18:
     name: Ancient Cistern Above
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 4129953
 203E8B46B79916CD0ADB7693AE2B0E0B:
     name: Inside the Sandship
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 5587805
 269EDA5E967A55620D00E960D6EE6668:
     name: Silly Groose 2
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2222761
 333A0C92E7FE65C0CE1EE1A137EB46C5:
     name: Din's Power (Goddess)
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 266016
 380DAE639D85849FF25624A3A3605577:
     name: Skyview 2 # TODO: check skyview 1/2
     isLooped: True
     streams: 3
     type: 6
+    numsamples: 2655726
 431AFC01415FA62739AE47D31556FA67:
     name: Gate of Time 2
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 3472725
 459BA60F44006CAF4B4A66412FA60445:
     name: Ghirahim's Ritual
     isLooped: False
     streams: 2
     type: 12
+    numsamples: 1804628
 555C3D6F6DC9017B59EC201F398159D1:
     name: Goddess's Silent Realm
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2894853
 567F9E6B3F6F090DCFEB31AF1701C1EC:
     name: Imprisoned Roars
     isLooped: False
     streams: 1
     type: 11
+    numsamples: 976000
 569EA3C8174A04A21E3575AE7142C7AD:
     name: Levias Battle
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2576538
 577D49CAF285E7B0E18C2AF0E8575E11:
     name: Crumbling Impact 1
     isLooped: False
     streams: 2
     type: 12
+    numsamples: 2839651
 587F7FAB1F7321BD8771E4FAF7F14C66:
     name: Crimson Loftwing 1
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1946770
 599F6B9C583BC27DE1BEDB3DCB420CD3:
     name: Knight's Academy
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1826441
 700D8D13FD0BA58007C22B35650C5524:
     name: Last Triforce Piece
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 672140
 702D21C908E2F1DB55682B0DBF21E28C:
     name: Message from the Goddess
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2777315
 704BE37CE965B70AAF9459BB53FF726D:
     name: Sealing Spike
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1513298
 753F5E116BB2AD9D7C808BCEC68BB333:
     name: Triforce pieces fly towards link
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 276283
 811D3DF6CE1B911719F0E8521E8C2259:
     name: Zelda's Lullaby 1
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 3124736
 839E553360ADC26D9FD3CE9EBEFC83EF: 
     name: Lanayru Mining Facility
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 3205121
 914E1C32A14BF55EE64048BB4A66A4C9:
     name: Spot Loftwing in Cage
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 137849
 914E9B74FD3377BE732B427269716243:
     name: Legendary Hero Harp
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 3047466
 960E774EB2F14BCBE4B88F05E3908F45:
     name: Final Ghirahim Phase 2
     isLooped: True
     streams: 3
     type: 7
+    numsamples: 2493964
 968EC7F04605532D598CF01BB6DC4BA3:
     name: Earth Temple 1 # with intro
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 4548192
 969EA3FBF67B9B5BBE856272C7952361:
     name: Sandship Deck
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 2239938
 1410B6D92E139F10236DD46CF97F5CA7:
     name: Harp Song of the Hero Background
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1513650
 1517BCDC727BB2EE09B2F7785BC1F82A:
     name: Water Dragon Healed
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 470468
 1965ECCC54106AEF1F391811BB09A988:
     name: Kikwi-5 # Skips beginning
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 990326
 2630A387D8A575CDB42BFF6F66E6864F:
     name: Farore's Courage
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2135591
 4198EC4D6C70084417657C6DC4503D41:
     name: Ghirahim Revives Demise
     isLooped: False
     streams: 2
     type: 12
+    numsamples: 2741069
 4324D4B65BE54AB58C702CE72A4B0A10:
     name: Entering Sandship # TODO: check
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1937156
 5167C43E5FEDA25CD11EDB1B0FF5DF27:
     name: Sacred Flame
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 450281
 5282AE91E5E0AB143BEA2B5EB96E2A25:
     name: Machi Being Attacked
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 608890
 05324A4E5A65A1242FD4F961A663D5FD:
     name: Sky Keep Intro Room
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3342559
 6467ABC16D82F98B8D8119D78419C894:
     name: The Imprisoned
     isLooped: True
     streams: 3
     type: 13
+    numsamples: 2765057
 7807D7CA7DAB4DC568A8DC2FA1960D49:
     name: Isle of Songs
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2925866
 7878ED348582DD87D9833CAA9F53E570:
     name: Sky Keep
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3184864
 9995F5792A99DD4D33D4E992813CD0EF:
     name: Avoiding Danger
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 432190
 052801C5A785CEDD5CB411EDDE9095AB:
     name: The End
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 1057212
 65485F0FC46A9A856A3B982C360B6310:
-    name: Inside Sandship # TODO: multiple sandships
+    name: Inside Sandship
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 5587805
 71964FEA682B0B930B2F45B8CCDB7E8F:
     name: Thrill Digger
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 1951744
 76916B2B2F27CD8CFFD9F539D9E7AB4C:
     name: Crumbling Impact 2
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 2087527
 77917BD20A7A7FA0C047CE15998AC5B2:
     name: Romantic Groose Short # TODO: check
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 636848
 82666AF7454AEDEE4A79992DE1CBA673:
     name: TODO # What is this sound effect???
     isLooped: False
     streams: 1
     type: 9
+    numsamples: 74238
 89517CB1D1DC4986C6EE5C5FEAB15AD9:
     name: TODO # imp?
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 389883
 96026C0EBF01686D8E9D82A2212BAD58:
     name: Leaping off the Edge 1
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 750171
 107842B6E234513052FA1C83F2C1F910:
     name: Harp Ballad of the Goddess Background
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1450039
 253802E3D7DEDF3139C810AE368B5D04:
     name: TODO # imp?
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 757790
 312221A23193C817C70C62C2F23722D6:
     name: Entering Sky Keep
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 362805
 3211591DCF06ADAEC8F5B71D37D1F271:
     name: Zelda Blessing MS to become TMS
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 570653
 5550206D025A7308599447833F3B6A17:
     name: Zelda's Lullaby 2
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 3124736
 9776528CF7A8B49328012B24B2B82276:
     name: After Demise's Death # Delayed a lot
     isLooped: False
     streams: 1
     type: 11
+    numsamples: 3818289
 9987519C6A07D1871D37F35B718B7190:
     name: Harp Din's Power Background
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1215489
 34959499EABD0A61DA6F50FD3C5AF4C6:
     name: Empty
     isLooped: True
     streams: 1
     type: 11
+    numsamples: 28690
 39098741AA0EB81704C653A345319E15:
     name: Lanayru Desert 1
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 3844275
 54488866B4341FDA46DD9BAA32A41655:
     name: Fire Sanctuary 2
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 2930685
 131879443BDAE5C8A8F647ED3732671C:
     name: Grooseland
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2549760
 9429167994A6669F8EE7B31BC2785403:
     name: Chase the Mogma Brother # Plats Chase
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1260452
 319980573093B7AB8F6830120236F5DC:
     name: Separation
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 3583011
 2426409510721725551A5E14E70AEF78:
     name: Legendary Hero
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 1402093
 A0C2FAF7C5DA15E1615F7D126EA4F588:
     name: TODO # Fanfare
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 354816
 A3B58B593FDA95A45A6AF367AE751B03:
     name: Tubert's Theme
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2881190
 A3CE90071AB2E97E77BFA908CCD87C99:
     name: Ceremony Begins
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 750195
 A06A9CA3A6A8A089EAF12324BC75F5EC:
     name: Inside the Great Tree
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1952445
 A7F91A0FA674BCA4C4F3F01790F13824:
     name: Romantic Groose
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1515436
 A60DEA2226A162BBA2E0996E547A855F:
     name: Fun Fun Island # High Dive minigame
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1362160
 A350D345280F55EB7C429672BC295368:
     name: Lanayru Mining Facility
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 3205121
 A500F9516A929A789A116BE3A13BDE26:
     name: Groose's Theme 1
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2073957
 A887C48BB676AC2F66B2AD651808B0BC:
     name: Faron's Vocals
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 740352
 A3906FC276610A2BE35AD037E986F574:
     name: Crimson Loftwing 2
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1946770
 A6865E1A606411521EF47242166621C1:
     name: Fi's Farewell
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2483711
 AA0412939B7B4386927A412AA6024A25:
     name: Volcano Summit 1
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 3179521
 ACB55702EEC591D72A361E088EC1F73A:
     name: Monster of Skyloft 2
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1273040
 ACC7A02CCA3ED950CB21CE3B1F7311C7:
     name: Ghirahim's Theme 2
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 3775634
 AD8CEDF96286EF95A49E3469720E2373:
     name: File Select 1
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1977176
 AE7D9A868A9BB3BB46D509E78D355EC6:
     name: Destiny's Call
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1986156
 AEAB6415CFB8CFE2BD7B514135E008EE:
     name: Zelda Playing Harp # Ballad of the Goddess
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 686964
 B0DF18B4AE250A163AA1F08F465DF4A7:
     name: Groose's Theme 2
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1887589
 B3B72C083501DBF2BD5A7C0F2158E414:
     name: Earth Temple Boss Door Cutscene Fanfare
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 161684
 B3CBB762B21B2662DF85384E76109AF9:
     name: Lanayru Sand Sea 4
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 4379132
 B7E5D532B12FEA5D7323F3B22A7354BD:
     name: Bug Heaven
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2903343
 B20CADCB0C9C35AB21408608E0E282FD:
     name: Temple of Hylia
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3871777
 B32C716D4C30030BBBE8D7DC1BF84EC1:
     name: Scaldera/Tentalus
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2486078
 B65B914B18E92AC690FD0E388F357240:
     name: Lanayru Sand Sea 5 # past
     isLooped: True
     streams: 3
     type: 6 # 13?
+    numsamples: 4379132
 B169A34947835FA1B56A463CFD4CF060:
     name: Ghirahim Battle # Ghirahim 1
     isLooped: True
     streams: 3
     type: 7
+    numsamples: 2644718
 B982E09FDE81CA199A5C06DED739F0B0:
     name: The Seal Breaks
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 1262633
 B4398B07F3EC7009C2214515AED0CEA4:
     name: Final Demise
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1753284
 B34079AEDF9C9C567B8B13501FB1E531:
     name: Sealed Grounds
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3717783
 B51014C9B60F5F7A85903B46BCFAFDBC:
     name: The Sky 2
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 3137438
 B683451F1C99DC28ED3358E84837D93D:
     name: Gate of Time 3
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 3472725
 BA0BCE079892AFA39EC63B72C9D81560:
     name: Mogma Theme 2
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 952780
 BA42C295566287D1E60B1C89188A3A8A:
     name: Kikwi Short
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 284928
 BA129FBC224C2E371E985C915DFEE85C:
     name: Beedle's Air Shop
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2224662
 BC8E5301946F565ADF455FC3DB7284D4:
     name: To the Surface
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 585624
 BC69EBCDFAEC4A6B6B4C8AF4EA1BCFCF:
     name: Mogmas at the Fire Sanctuary
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 966218
 BCAF01802B2AF3E03778255F2CE7CFD5:
     name: File Select 2
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 845117
 BDB93CF89F4B58C0F7DBB800511785D3:
     name: Past at Peace
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 3181618
 BE5DE649E09A351FB82A418633F9EA67:
     name: Lake Floria # Including Dragon Lair
     isLooped: True
     streams: 3
     type: 13 # 6?
+    numsamples: 3529416
 BEA72DEE936C8A52D4AEBD355BBCC5A3:
     name: Power of the Triforce
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 859411
 BF007461CC06E99ABEF73A24B4406F01:
     name: TODO
     isLooped: True
     streams: 1
     type: 11
+    numsamples: 880128
 C8A002291553849876E1E2298A3EBBF9:
     name: Lanayru Sand Sea 6
     isLooped: True
     streams: 3
     type: 13 # 6?
+    numsamples: 4780536
 C9AE4139BEE913E9B9DA7F7A12AE0C49:
     name: Lanayru Gorge
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 3844275
 C36AF100F5045EDA48BC62312CF5B40A:
     name: Dejected Groose
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2880511
 C40F0E48D7265FBA6563271656BA5AA9:
     name: Battlefield of Demise
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 2913599
 C47D3DF4C435739443D195F7265A7D57:
     name: Game Over
     isLooped: False
     streams: 1
     type: 3 # Might need to be 11
+    numsamples: 320343
 C919FEE884F2C5306C10E20BD7434DE7:
     name: Pipit Interruption/Cooking 2
     isLooped: False
     streams: 1
     type: 9
+    numsamples: 169984
 C364192D52885E026D7F6AC030FB4A61:
     name: Nayru's Wisdom (Goddess)
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 291108
 C91365470F0545A24393818D8918CC24:
     name: Fi's Gratitude
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2972373
 CA8E7A72FFFD1A502D9CE15F2A9615B2:
     name: Link Puts TMS to Reset
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 917972
 CB6F555F49167EB4545ACC3DF6AEE55F:
-    name: File Select 3
+    name: File Select Music During Cutscene after Sky Keep
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1977179
 CFDE4B15AA1C60F476F0AE0B3CEFC2B3:
     name: Flying Practice
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2233566
 D0B6C73861A3E16D0E0CB90893BDC5D0:
     name: Pirate Stronghold
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 3569623
 D0CE063BC34AA25E5D4015C36AC463A7:
     name: Collect Part of the Triforce
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 515854
 D5ABDCA5F93A0B3614D8A40D426530C3:
     name: Entering Silent Realm
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 228065
 D6F92F983BDFE0DF4A3AABBC70F9CA33:
     name: TODO # Imp close to ST; heroic groose
     isLooped: True
     streams: 2
     type: 4 # 5?
+    numsamples: 1568666
 D7D3CF5920F7A63A3EC170DC99594177:
     name: Volcano Ascent # Mogma Turf
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2662487
 D533DAC848B7F74ED0F8F0914D5AED8D:
     name: Eldin Eruption
     isLooped: True
     streams: 3
     type: 7
+    numsamples: 3248433
 D38996F90153E71CF1B9CB4C6A77592B:
     name: Inside a House
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1049745
 D56625A904070BC96317AC6BE2DBF08A:
     name: Volcano Summit 2
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 3179521
 DA9B8075949093F0220C3FFBB316EA79:
     name: Present at Peace
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 3443109
 DAC90E423F1B090FF59C8CAC013F8EA8:
     name: Groosenator
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 1239719
 DB62247585100C3944F044EF336EBEC8:
     name: Disrupted Ritual
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 1454592
 DC9518799C1E7474ECEE92C8AF5E3024:
     name: Harp Nayru's Wisdom Background
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1415185
 DCAA6EFB54D294DAEDF5DE128F517322:
     name: Tubert's Theme with Tubert Appearing # First enter thrill digger cave
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3640998
 DFAD8872EB2C33071F1CAB598F817FA6:
-    name: TODO
+    name: TODO # Imprisoned destroys Temple?
     isLooped: False
     streams: 1
     type: 11
+    numsamples: 376000
 E0B9789E355788D90AA8C21BC0269E0F:
     name: Leaping off the Edge 2
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 865242
 E1AAFB2193A7A65C1E6B6EC3EC2551A1:
     name: Ghirahim's Theme 3
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 3775634
 E1C740E39B1BC2D15E30E65FA071FCCC:
     name: Din's Power
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1946624
 E02E59E50DB6AEF7D353823C92ABE0B1:
     name: Guld's Theme
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1475070
 E2AA27988B667A453710BBB40743AA35:
     name: Zelda's Intervention 1
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 840264
 E3EE1545547C64C568747C6FDAB0AF59:
     name: Ghirahim's Sword Fades
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 473504
 E04DCD3417B3487FE52CFF1CD2498BA5:
     name: Zelda's Intervention 2
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 940617
 E5BCF6380A591891E1AD442A62DF3CDE:
     name: Bamboo Cutting
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1470730
 E06C17D7BEF9304FA06B488D53F96025:
     name: The Goddess Sword
     isLooped: True
     streams: 2
     type: 5
+    numsamples: 3472726
 E6D79EC3A651727B264333EC5261ACC6:
     name: Harp after Earth Temple
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 432000
 E7A78FF2A126FEA482B98BE3F393A131:
     name: Earth Temple 2
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 4161120
 E8A1D1558367630C042B61EAA04634D6:
     name: Demise's Theme
     isLooped: True
     streams: 2
     type: 5 # 4?
+    numsamples: 1053042
 E9A147FAD41D6946C031A8D2CAEEE826:
     name: Din's Silent Realm
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1985713
 E71C0C0EC1177B62C6738DF1450F8AC0:
     name: Farore's Silent Realm
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2618970
 E761EFFD942BA595361C5D3FA35CDE95:
     name: Farore's Courage (Goddess)
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 348453
 E808BFC7AA7D9178CB942A716BD8100D:
     name: Koloktos/Moldarach Battle Start # TODO: check (tentalus?)
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 480745
 E9692C8981E064BEFE19BFC52B910709:
     name: TODO
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 285326
 E116979770001C073CD6C48D4B00D4B6:
     name: TODO # Collect part of the triforce?
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 365574
 EBCA372A7F74FF719C61817851F47308:
     name: Pillar Opening Sound Effect
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 497215
 EBD700052611E3D2C00FAD5E06EB0432:
     name: Scaldera Appears
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 971969
 EBF77EBC148114AB2740D55917EE9A5B:
     name: Levias Appears 2
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1077405
 ED6ACFD3E6C90E5F71F15BCA0BDAF2AD:
     name: Skykeep Falls and Kills Imprisoned
     isLooped: False
     streams: 1
     type: 11
+    numsamples: 1515250
 EEAE03E86C37A3EC154FA52B84474106:
     name: TODO # Fi's theme?
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 4082967
 F0CFB457B1B214AA054E2B0281365BAB:
     name: Cave
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1182711
 F2E8D789E703D3719C3FDBDCFB5BAA37:
     name: Skyloft
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 3036439
 F30ED52FE88E8AA38C2876ADCC1ABDF6:
     name: Link's Nightmare 2
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 2656000
 F43CB87F13CFFA96D8F554643FA213EF:
     name: Wing Ceremony
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 1957593
 F50A9156CEDED747CFAC558816F61F39:
     name: Cymbal Roll
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 192000
 F63D5DB51DE748A3729628C659397A49:
     name: Tadtone Melody # After the tadtones
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 750201
 F74DC14D721C78FC31690B15F1891A87:
     name: Victory!
     isLooped: False
     streams: 1
     type: 8
+    numsamples: 354966
 F1631E879C00AE14082918012987F7F9:
     name: Bilocyte
     isLooped: True
     streams: 2
     type: 4
+    numsamples: 2136775
 F2815ADBDE30C00084B10966B9DCEC83:
     name: Ghirahim Battle 2
     isLooped: True
     streams: 3
     type: 7
+    numsamples: 2644718
 F38973DD8740EFFDF88B80FDDFF78C28:
     name: TODO # Grooseland/Rejected Groose?
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 1858918
 F066470CDB5729C2F7CE8E7AA4598517:
     name: Sandship Escape
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2494407
 F750507AF4CB3758DECE7CEC185EBD91:
     name: Skyview 3
     isLooped: True
     streams: 3
     type: 6
+    numsamples: 2655726
 FC7FC814FDEEF4B1CBE7C75DE98CC628:
     name: Tadtone Trial
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 2458758
 FC171FA0CE86ACE09E11E975E2707740:
     name: Emerging from a Silent Realm
     isLooped: False
     streams: 1
     type: 9
+    numsamples: 86564
 FCAD8EE6043E7C56C0F47767D56F9788:
     name: Beginning's End
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 1770610
 FCEFA835D14A2C5D6936D9FBC5B2531B:
     name: Romance 2 # TODO: check
     isLooped: True
     streams: 1
     type: 2
+    numsamples: 2592585
 FD85B0A15338D4A32EF6A31C4EC97F63:
     name: Faron Woods
     isLooped: True
     streams: 1
     type: 1
+    numsamples: 3631104
 FD23764935B647CC33C62D9E36D3E8B3:
     name: Eldin's Vocals
     isLooped: False
     streams: 1
     type: 3
+    numsamples: 755712

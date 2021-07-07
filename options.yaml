@@ -518,8 +518,13 @@
   ui: option_out_placement_file
 - name: Randomize Music
   command: music-rando
-  type: boolean
-  default: false
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - Duplicates Allowed
+    - Shuffled
+  default: None
   permalink: false
-  help: If enabled, most music will be randomized. Unstable, and some songs will end abruptly or not loop.
+  help: If enabled, most music will be randomized. Shuffled is less stable and music can stop abruptly.
   ui: option_music_rando

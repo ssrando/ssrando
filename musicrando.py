@@ -9,23 +9,6 @@ def music_rando(self):
     with (RANDO_ROOT_PATH / "music.yaml").open() as f:
         self.musiclist = yaml.safe_load(f)
 
-    if os.path.exists(RANDO_ROOT_PATH / "music") == False:
-        os.mkdir(RANDO_ROOT_PATH / "music")
-
-    for m in self.musiclist.keys():
-        if os.path.exists(RANDO_ROOT_PATH / "music" / m) == False:
-            shutil.copyfile(
-                (
-                    self.rando.actual_extract_path
-                    / "DATA"
-                    / "files"
-                    / "Sound"
-                    / "wzs"
-                    / m
-                ),
-                (RANDO_ROOT_PATH / "music" / m),
-            )
-
     try:
         shutil.rmtree(
             self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs"
@@ -36,41 +19,73 @@ def music_rando(self):
 
     NON_SHUFFLED_TYPES = ["type10", "type11"]
     self.music = {}
-    self.shuffled_music = {}
-    i = 1
-    while i <= 13:
-        self.music["type" + str(i)] = []
-        i += 1
-
-    for musicfile, musicdata in self.musiclist.items():
-        musictype = "type" + str(musicdata["type"])
-        self.music[musictype].append(musicfile)
-
-    self.music["type1"] += self.music["type2"]
-    del self.music["type2"]
-
+    self.music_pool = {}
     rng = random.Random()
     rng.seed(self.rando.options["seed"])
 
-    for type, music in self.music.items():
-        if type in NON_SHUFFLED_TYPES:
-            continue
-        shuffled_music = music.copy()
-        rng.shuffle(shuffled_music)
-        self.shuffled_music[type] = shuffled_music
+    if self.rando.options["music-rando"] == "None":
+        for f in self.musiclist.keys():
+            self.music[f] = f
+    else:
+        i = 1
+        while i <= 13:
+            self.music_pool["type" + str(i)] = []
+            i += 1
+        for musicfile, musicdata in self.musiclist.items():
+            musictype = "type" + str(musicdata["type"])
+            self.music_pool[musictype].append(musicfile)
 
-    for music_list, shuffled_music_list in zip(
-        self.music.values(), self.shuffled_music.values()
-    ):
-        for m, sm in zip(music_list, shuffled_music_list):
-            shutil.copyfile(
-                (RANDO_ROOT_PATH / "music" / sm),
-                (
-                    self.rando.modified_extract_path
-                    / "DATA"
-                    / "files"
-                    / "Sound"
-                    / "wzs"
-                    / m
-                ),
-            )
+        self.music_pool["type1"] += self.music_pool["type2"]
+        del self.music_pool["type2"]  # Type 2 is currently shuffled with 1
+
+        for track, trackinfo in self.musiclist.items():
+            tracklen = trackinfo["numsamples"]
+            if trackinfo["type"] == 2:
+                tracktype = "type1"
+            else:
+                tracktype = "type" + str(trackinfo["type"])
+
+            if tracktype in NON_SHUFFLED_TYPES:
+                self.music[track] = track
+            elif tracktype in ["type1", "type4", "type5", "type6", "type7"]:
+                print(
+                    [
+                        t
+                        for t in self.music_pool[tracktype]
+                        if self.musiclist[t]["numsamples"] <= tracklen
+                    ]
+                )
+                if (
+                    len(
+                        [
+                            t
+                            for t in self.music_pool[tracktype]
+                            if self.musiclist[t]["numsamples"] <= tracklen
+                        ]
+                    )
+                    != 0
+                ):
+                    self.music[track] = rng.choice(
+                        [
+                            t
+                            for t in self.music_pool[tracktype]
+                            if self.musiclist[t]["numsamples"] <= tracklen
+                        ]
+                    )
+                    if self.rando.options["music-rando"] == "Shuffled":
+                        self.music_pool[tracktype].remove(self.music[track])
+                else:
+                    self.music[track] = rng.choice(self.music_pool[tracktype])
+                    if self.rando.options["music-rando"] == "Shuffled":
+                        self.music_pool[tracktype].remove(self.music[track])
+            else:
+                self.music[track] = rng.choice(self.music_pool[tracktype])
+                if self.rando.options["music-rando"] == "Shuffled":
+                    self.music_pool[tracktype].remove(self.music[track])
+
+    print(self.music)
+    for m, sm in self.music.items():
+        shutil.copyfile(
+            (self.rando.actual_extract_path / "DATA" / "files" / "Sound" / "wzs" / sm),
+            (self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / m),
+        )
