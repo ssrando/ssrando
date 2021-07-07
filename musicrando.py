@@ -48,13 +48,6 @@ def music_rando(self):
             if tracktype in NON_SHUFFLED_TYPES:
                 self.music[track] = track
             elif tracktype in ["type1", "type4", "type5", "type6", "type7"]:
-                print(
-                    [
-                        t
-                        for t in self.music_pool[tracktype]
-                        if self.musiclist[t]["numsamples"] <= tracklen
-                    ]
-                )
                 if (
                     len(
                         [
@@ -83,7 +76,6 @@ def music_rando(self):
                 if self.rando.options["music-rando"] == "Shuffled":
                     self.music_pool[tracktype].remove(self.music[track])
 
-    print(self.music)
     for m, sm in self.music.items():
         shutil.copyfile(
             (self.rando.actual_extract_path / "DATA" / "files" / "Sound" / "wzs" / sm),
