@@ -11,7 +11,7 @@ from util import textbox_utils
 ALWAYS_REQUIRED_LOCATIONS = [
     "Thunderhead - Levias' Teaching",
     "Sky - Kina's Crystals",
-    "Skyloft - Peater/Peatrice's Crystals",
+    "Skyloft Central - Peater/Peatrice's Crystals",
     "Batreaux - 80 Crystals",
 ]
 
@@ -27,7 +27,7 @@ SOMETIMES_LOCATIONS = [
     "Knight Academy - Owlan's Crystals",
     "Skyloft Village - Sparrot's Crystals",
     "Lanayru - Chest on top of Lanayru Mining Facility",
-    "Skyloft - Waterfall Goddess Chest",  # stronghold cube
+    "Skyloft Central - Waterfall Goddess Chest",  # stronghold cube
     "Sky - Beedle's Island Goddess Chest",  # goddess cube in ToT area
 ]
 

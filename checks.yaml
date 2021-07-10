@@ -17,18 +17,18 @@ Knight Academy - Training Hall Chest:
   type: skyloft, miscellaneous
   Paths:
     - stage/F009r/r0/l0/TBox/66
-Skyloft - Potion Lady's Gift:
+Skyloft Central - Potion Lady's Gift:
   original item: Bottle
   type: skyloft, free gift
   Paths:
     - event/106-DrugStore/44
     - oarc/F004r/l0
-Skyloft - Waterfall Cave First Chest:
+Skyloft Central - Waterfall Cave First Chest:
   original item: Red Rupee
   type: skyloft, miscellaneous
   Paths:
     - stage/D000/r0/l0/TBox/67
-Skyloft - Waterfall Cave Second Chest:
+Skyloft Central - Waterfall Cave Second Chest:
   original item: Red Rupee
   type: skyloft, miscellaneous
   Paths:
@@ -43,32 +43,32 @@ Knight Academy - Chest in Goddess Statue:
   type: skyloft, miscellaneous
   Paths:
     - stage/F008r/r0/l0/TBox/95
-Skyloft - Bazaar Goddess Chest:
+Skyloft Central - Bazaar Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, sand sea goddess
   Paths:
     - stage/F004r/r0/l0/TBox/93
-Skyloft - Shed Chest:
+Skyloft Central - Shed Chest:
   original item: Silver Rupee
   type: skyloft, miscellaneous
   Paths:
     - stage/F000/r0/l0/TBox/70
-Skyloft - Shed Goddess Chest:
+Skyloft Central - Shed Goddess Chest:
   original item: Heart Piece
   type: skyloft, goddess, eldin goddess
   Paths:
     - stage/F000/r0/l0/TBox/79
-Skyloft - West Cliff Goddess Chest:
+Skyloft Central - West Cliff Goddess Chest:
   original item: Silver Rupee
   type: skyloft, goddess, faron goddess
   Paths:
     - stage/F000/r0/l0/TBox/78
-Skyloft - Floating Island Goddess Chest:
+Skyloft Central - Floating Island Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, floria goddess
   Paths:
     - stage/F000/r0/l0/TBox/91
-Skyloft - Waterfall Goddess Chest:
+Skyloft Central - Waterfall Goddess Chest:
   original item: Heart Piece
   type: skyloft, goddess, sand sea goddess, mini dungeon
   Paths:
@@ -85,12 +85,12 @@ Knight Academy - In Zelda's Closet:
   type: skyloft, miscellaneous
   Paths:
     - stage/F001r/r6/l0/chest/32 #sceneflag
-Skyloft - Freestanding Item in Bird Nest:
+Skyloft Central - Freestanding Item in Bird Nest:
   original item: Baby's Rattle
   type: skyloft, freestanding
   Paths:
     - stage/F000/r0/l0/Item/13
-Skyloft - Parrow's Gift:
+Skyloft Central - Parrow's Gift:
   original item: Bottle
   type: skyloft, free gift, short
   Paths:
@@ -104,13 +104,13 @@ Knight Academy - Cawlin's Letter:
   Paths:
     - event/115-Town2/166
     - oarc/F001r/l0
-Skyloft - Wryna's Crystals:
+Skyloft Central - Wryna's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, free gift, crystal quest
   Paths:
     - event/118-Town3/144
     - oarc/F006r/l0
-Skyloft - Peater/Peatrice's Crystals:
+Skyloft Central - Peater/Peatrice's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, long, crystal quest, peatrice
   Paths:
@@ -118,7 +118,7 @@ Skyloft - Peater/Peatrice's Crystals:
     - event/123-Town5/316
     - oarc/F018r/l0
     - oarc/F019r/l0
-Skyloft - Parrow's Crystals:
+Skyloft Central - Parrow's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, sky, short, crystal quest
   Paths:
@@ -273,34 +273,34 @@ Beedle - 1000 Rupee Item:
 Knight Academy - Crystal in Link's Room:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal on Light Tower:
+Skyloft Central - Crystal on Light Tower:
   original item: Gratitude Crystal
   type: crystal
 Skyloft Village - Crystal near Pumpkin Patch:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal in Parrow and Orielle's House:
+Skyloft Central - Crystal in Parrow and Orielle's House:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal inbetween Wooden Planks:
+Skyloft Central - Crystal inbetween Wooden Planks:
   original item: Gratitude Crystal
   type: crystal
 Knight Academy - Crystal in Knight Academy Plant:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal on West Cliff:
+Skyloft Central - Crystal on West Cliff:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal after Waterfall Cave:
+Skyloft Central - Crystal after Waterfall Cave:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal in Loftwing Prison:
+Skyloft Central - Crystal in Loftwing Prison:
   original item: Gratitude Crystal
   type: crystal
 Knight Academy - Crystal in Sparring Hall:
   original item: Gratitude Crystal
   type: crystal
-Skyloft - Crystal on Waterfall Island:
+Skyloft Central - Crystal on Waterfall Island:
   original item: Gratitude Crystal
   type: crystal
 Knight Academy - Crystal in Zelda's Room:
