@@ -12,7 +12,7 @@ Knight Academy - Owlan's Gift:
     - event/108-ShinkanA/169
     - oarc/F000/l4
     - oarc/F000/l6
-Knight Academy - Training Hall Chest:
+Knight Academy - Sparring Hall Chest:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
@@ -680,7 +680,7 @@ Mogma Turf - Digging Mitts:
     - event/300-Mountain/6
     - event/300-Mountain/135
     - oarc/F210/l0
-Mogma Turf - Chest behind Bombable Wall in Lava Maze:
+Mogma Turf - Chest behind Bombable Wall in Fire Maze:
   original item: Silver Rupee
   type: eldin, bombable
   Paths:
@@ -1070,7 +1070,7 @@ Ancient Cistern - Chest after Whip Hooks:
   type: faron, dungeon
   Paths:
     - stage/D101/r0/l0/TBox/65
-Ancient Cistern - Chest in Vines:
+Ancient Cistern - Chest near Vines:
   original item: Red Rupee
   type: faron, dungeon
   Paths:
@@ -1314,7 +1314,7 @@ Sky Keep - First Chest:
   type: skyloft, dungeon
   Paths:
     - stage/D003_7/r0/l0/TBox/64
-Sky Keep - Chest after Scervo:
+Sky Keep - Chest after Dreadfuse:
   original item: SK Small Key
   type: skyloft, dungeon
   Paths:

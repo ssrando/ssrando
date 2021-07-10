@@ -88,7 +88,7 @@ SMALL_KEY_CHECKS = [
     "Fire Sanctuary - Chest near First Trapped Mogma",
     "Fire Sanctuary - Chest after Bombable Wall",
     "Lanayru Caves - Golo's Gift",
-    "Sky Keep - Chest after Scervo",
+    "Sky Keep - Chest after Dreadfuse",
 ]
 
 BOSS_KEY_CHECKS = [

@@ -119,7 +119,7 @@ class Logic:
 
         if self.rando.options["skip-skykeep"]:
             self.racemode_ban_location("Sky Keep - First Chest")
-            self.racemode_ban_location("Sky Keep - Chest after Scervo")
+            self.racemode_ban_location("Sky Keep - Chest after Dreadfuse")
 
         self.locations_by_zone_name = OrderedDict()
         for location_name in self.item_locations:
