@@ -2573,7 +2573,7 @@ Fire Sanctuary - Mogma Mitts:
   Can Access FS Miniboss Room and Defeat Magmanos
 
 Can Access Second FS Bridge:
-  (Can Access FS Miniboss Room and Defeat Magmanos & Mogma Mitts) |
+  (Can Access FS Miniboss Room and Defeat Magmanos & Mogma Mitts & Gust Bellows) |
   Can Access First FS Magmanos Room
   # Can Access First FS Magmanos Room is simply Can Enter Inner Map (one could enter from the back of 3rd key door, but the requirements are more strict)
 
@@ -2600,6 +2600,7 @@ Fire Sanctuary - Third Small Key Chest:
 Can Access FS Plats Room:
   (
     Can Access FS Miniboss Room and Defeat Magmanos &
+    Mogma Mitts &
     FS Small Key x3 &
     (Distance Activator | Bomb Bag)
   ) |
