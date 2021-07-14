@@ -686,6 +686,16 @@ Mogma Turf - Behind Bombable Wall in Lava Maze:
   Paths:
     - stage/F210/r0/l0/TBox/70
 
+Volcano Summit - Small Chest in Volcano Summit:
+  original item: Blue Rupee
+  type: eldin, miscellaneous
+  Paths:
+    - stage/F201_1/r0/l0/TBox/72
+Volcano Summit - Boko Base Pouch Chest:
+  original item: Pouch & extra items
+  type: eldin, miscellaneous
+  Paths:
+    - stage/F201_1/r0/l0/TBox/71
 Volcano Summit - Heart Piece Behind Digging:
   original item: Heart Piece
   type: eldin, freestanding
@@ -696,14 +706,6 @@ Volcano Summit - Behind Bombable Wall in Waterfall Area:
   type: eldin, bombable
   Paths:
     - stage/F201_4/r0/l0/TBox/95
-#Boko Base - Small chest in front of Sword in boko base:
-#  original item: Blue Rupee
-#  Paths:
-#   - stage/F201_1.json
-#Boko Base - Pouch chest in boko base:
-#  original item: Pouch & extra items
-#  Paths:
-#   - stage/F201_1.json
 
 Lanayru Mines - Chest Behind First Landing:
   original item: Evil Crystal

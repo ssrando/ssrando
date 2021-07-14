@@ -1674,6 +1674,12 @@ Can Get Past Second Frog:
   Can Get Past First Frog
   # Scene Flag Dx08 is "Second Frog Watered"
 
+Volcano Summit - Small Chest in Volcano Summit:
+  Can Access Volcano Summit
+
+Volcano Summit - Boko Base Pouch Chest:
+  Can Access Volcano Summit
+
 Can Access Dungeon Entrance In Volcano Summit:
   Can Get Past Second Frog
 
