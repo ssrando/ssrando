@@ -48,29 +48,73 @@ def music_rando(self):
             if tracktype in NON_SHUFFLED_TYPES:
                 self.music[track] = track
             elif tracktype in ["type1", "type4", "type5", "type6", "type7"]:
-                if (
-                    len(
-                        [
-                            t
-                            for t in self.music_pool[tracktype]
-                            if self.musiclist[t]["numsamples"] <= tracklen
-                        ]
-                    )
-                    != 0
-                ):
-                    self.music[track] = rng.choice(
-                        [
-                            t
-                            for t in self.music_pool[tracktype]
-                            if self.musiclist[t]["numsamples"] <= tracklen
-                        ]
-                    )
-                    if self.rando.options["music-rando"] == "Shuffled":
-                        self.music_pool[tracktype].remove(self.music[track])
+                if self.rando.options["limit-vanilla-music"] == True:
+                    if (
+                        len(
+                            [
+                                t
+                                for t in self.music_pool[tracktype]
+                                if self.musiclist[t]["numsamples"] < tracklen
+                            ]
+                        )
+                        != 0
+                    ):
+                        self.music[track] = rng.choice(
+                            [
+                                t
+                                for t in self.music_pool[tracktype]
+                                if self.musiclist[t]["numsamples"] < tracklen
+                            ]
+                        )
+                        if self.rando.options["music-rando"] == "Shuffled":
+                            self.music_pool[tracktype].remove(self.music[track])
+                    elif (
+                        len(
+                            [
+                                t
+                                for t in self.music_pool[tracktype]
+                                if self.musiclist[t]["numsamples"] <= tracklen
+                            ]
+                        )
+                        != 0
+                    ):
+                        self.music[track] = rng.choice(
+                            [
+                                t
+                                for t in self.music_pool[tracktype]
+                                if self.musiclist[t]["numsamples"] <= tracklen
+                            ]
+                        )
+                        if self.rando.options["music-rando"] == "Shuffled":
+                            self.music_pool[tracktype].remove(self.music[track])
+                    else:
+                        self.music[track] = rng.choice(self.music_pool[tracktype])
+                        if self.rando.options["music-rando"] == "Shuffled":
+                            self.music_pool[tracktype].remove(self.music[track])
                 else:
-                    self.music[track] = rng.choice(self.music_pool[tracktype])
-                    if self.rando.options["music-rando"] == "Shuffled":
-                        self.music_pool[tracktype].remove(self.music[track])
+                    if (
+                        len(
+                            [
+                                t
+                                for t in self.music_pool[tracktype]
+                                if self.musiclist[t]["numsamples"] <= tracklen
+                            ]
+                        )
+                        != 0
+                    ):
+                        self.music[track] = rng.choice(
+                            [
+                                t
+                                for t in self.music_pool[tracktype]
+                                if self.musiclist[t]["numsamples"] <= tracklen
+                            ]
+                        )
+                        if self.rando.options["music-rando"] == "Shuffled":
+                            self.music_pool[tracktype].remove(self.music[track])
+                    else:
+                        self.music[track] = rng.choice(self.music_pool[tracktype])
+                        if self.rando.options["music-rando"] == "Shuffled":
+                            self.music_pool[tracktype].remove(self.music[track])
             else:
                 self.music[track] = rng.choice(self.music_pool[tracktype])
                 if self.rando.options["music-rando"] == "Shuffled":

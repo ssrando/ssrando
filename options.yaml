@@ -528,3 +528,10 @@
   permalink: false
   help: If enabled, most music will be randomized. Shuffled is less stable and music can stop abruptly.
   ui: option_music_rando
+- name: Limit Vanilla Music
+  command: limit-vanilla-music
+  type: boolean
+  default: true
+  permalink: false
+  help: If enabled, the randomizer will attempt to prevent vanilla music. Note that some music can still be vanilla. This does not apply when the music rando option is set to "None"
+  ui: option_limit_vanilla_music

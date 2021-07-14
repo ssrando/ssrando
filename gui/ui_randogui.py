@@ -712,24 +712,42 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addWidget(self.option_hero_mode)
 
+        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_15.addItem(self.verticalSpacer_6)
+
+        self.groupBox_14 = QGroupBox(self.tab_4)
+        self.groupBox_14.setObjectName(u"groupBox_14")
+        self.groupBox_14.setGeometry(QRect(200, 270, 181, 241))
+        self.verticalLayoutWidget_8 = QWidget(self.groupBox_14)
+        self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
+        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 161, 224))
+        self.verticalLayout_31 = QVBoxLayout(self.verticalLayoutWidget_8)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.verticalLayout_31.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_17 = QVBoxLayout()
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.label_for_option_music_rando = QLabel(self.verticalLayoutWidget_5)
+        self.label_for_option_music_rando = QLabel(self.verticalLayoutWidget_8)
         self.label_for_option_music_rando.setObjectName(u"label_for_option_music_rando")
 
         self.verticalLayout_17.addWidget(self.label_for_option_music_rando)
 
-        self.option_music_rando = QComboBox(self.verticalLayoutWidget_5)
+        self.option_music_rando = QComboBox(self.verticalLayoutWidget_8)
         self.option_music_rando.setObjectName(u"option_music_rando")
 
         self.verticalLayout_17.addWidget(self.option_music_rando)
 
 
-        self.verticalLayout_15.addLayout(self.verticalLayout_17)
+        self.verticalLayout_31.addLayout(self.verticalLayout_17)
 
-        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.option_limit_vanilla_music = QCheckBox(self.verticalLayoutWidget_8)
+        self.option_limit_vanilla_music.setObjectName(u"option_limit_vanilla_music")
 
-        self.verticalLayout_15.addItem(self.verticalSpacer_6)
+        self.verticalLayout_31.addWidget(self.option_limit_vanilla_music)
+
+        self.verticalSpacer_15 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_15)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
@@ -1174,7 +1192,9 @@ class Ui_MainWindow(object):
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
+        self.groupBox_14.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
+        self.option_limit_vanilla_music.setText(QCoreApplication.translate("MainWindow", u"Limit Vanilla Music", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
