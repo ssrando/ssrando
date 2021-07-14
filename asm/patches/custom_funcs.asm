@@ -456,3 +456,40 @@ cmpwi r5, 1
 blr
 
 .close
+
+.open "d_a_npc_douguyanightNP.rel"
+.org @NextFreeSpace
+.global select_new_item_column
+select_new_item_column:
+; r5 is command
+cmplwi r5, 9 ; we only care about command 9 (custom for rerandomizing what item row to buy)
+bne new_treasure_function_end
+; get current row
+lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+li r4, 0x28C
+bl FlagManager__getFlagOrCounter
+mr r31, r3
+
+random_new_row:
+li r3, 4
+bl cM_rndI
+cmpw r3, r31
+beq random_new_row
+; set new row
+mr r5, r3
+lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+li r4, 0x28C
+bl FlagManager__setFlagOrCounter
+; end of function we jumped out of
+new_treasure_function_end:
+lwz r31, 0x3C(r1)
+li r3, 1
+lwz r30, 0x38(r1)
+lwz r29, 0x34(r1)
+lwz r28, 0x30(r1)
+lwz r0, 0x44(r1)
+mtlr r0
+addi r1, r1, 0x40
+blr
+
+.close

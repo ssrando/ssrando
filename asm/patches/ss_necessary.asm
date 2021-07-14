@@ -418,3 +418,8 @@ b 0x17C8
 .org 0x6EF0
 .word -1 ; can always buy sacred shield
 .close
+
+.open "d_a_npc_douguyanightNP.rel"
+.org 0xBA0
+b select_new_item_column
+.close

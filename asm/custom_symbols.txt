@@ -21,3 +21,5 @@ d_a_obj_sw_sword_beamNP.rel:
   handle_crest_hit_item_give: 0x3780
 d_a_shop_sampleNP.rel:
   check_needs_custom_storyflag_subtype: 0x8450
+d_a_npc_douguyanightNP.rel:
+  select_new_item_column: 0x2F20
