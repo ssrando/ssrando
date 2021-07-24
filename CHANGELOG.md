@@ -4,6 +4,7 @@
 ### Options
 ### Changes
 ### Bugfixes
+- Fix Softlock in FS, this removes the mogma cutscene after the double magmanos fight
 
 ## 1.0.7
 ### Options
