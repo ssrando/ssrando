@@ -1758,6 +1758,20 @@ F201_1: # Inside Volcano
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Chest in front of sword
+    type: objmove
+    id: 0xFC2E
+    layer: 4
+    destlayer: 0
+    room: 0
+    objtype: OBJS
+  - name: Boko Base pouch chest
+    type: objmove
+    id: 0xFC2D
+    layer: 4
+    destlayer: 0
+    room: 0
+    objtype: OBJS
 F201_3: # FS entrance
   - name: Layer override
     type: layeroverride
@@ -1935,6 +1949,18 @@ D201_1: # FS B
     room: 5
     objtype: STAG
     id: 0xFC2B
+  - name: Text after Magmanos fight 1
+    type: objdelete
+    layer: 0
+    room: 5
+    objtype: OBJ
+    id: 0xFC1E
+  - name: Text after Magmanos fight 2
+    type: objdelete
+    layer: 0
+    room: 5
+    objtype: OBJ
+    id: 0xFC23
   - name: Remove Sealed Grounds intro CS flag
     type: objpatch
     room: 6

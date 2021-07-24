@@ -208,3 +208,7 @@ d_a_shop_sampleNP.rel:
     Data: [0xFF, 0xFF]
   0x6EF0:
     Data: [0xFF, 0xFF]
+d_a_npc_douguyanightNP.rel:
+  0xBA0:
+    Data: [0x48, 0x00, 0x00, 0x00]
+    Relocations: [{SymbolName: select_new_item_column, Offset: 0x00, Type: R_PPC_REL24}]

@@ -872,6 +872,41 @@
     index: 507
     flow:
       next: 503
+  - name: to rerandomize treasure question
+    type: flowpatch
+    index: 410
+    flow:
+      next: Show Rerandomize Treasure Question
+  - name: Rerandomize Treasure Question
+    type: textadd
+    text: "Want to sell something different?\n[1]Yes[2-]No"
+  - name: Show Rerandomize Treasure Question
+    type: flowadd
+    flow:
+      type: type1
+      next: Treasure Question Switch
+      param3: 115
+      param4: Rerandomize Treasure Question
+  - name: Rerandomize Treasure
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 9 # custom actor action done with asm
+      param2: 0 # item
+      param3: 33 # make actor do something
+      next: 495 # ask to buy again
+      param4: 0
+      param5: 0
+  - name: Treasure Question Switch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 0
+    cases:
+      - Rerandomize Treasure
+      - -1
 116-InsectGame:
   - name: Fix switch 1
     type: flowpatch
