@@ -516,7 +516,7 @@ Can RBM 6x08:
 # Can RBM 7x20: Impossible
 
 Can RBM 7x10:
-  Can Access Most of Faron Woods BiT | Can Access Lake Floria Statue BiT
+  (Can Access Most of Faron Woods BiT & Can Open Door to Lake Floria) | Can Access Lake Floria Statue BiT
   # Skyloft: Impossible, Talk to Handiman by Upper Academy before meeting Zelda #UNSURE
   # Sky: Impossible, Goddess Crest for Din's Power / Eldin Trial
   # Sealed Grounds: #TODO, Set when collecting Fruit of Life
@@ -527,7 +527,7 @@ Can RBM 7x10:
 
 Can RBM 7x04:
   Can Access Faron BiT |
-  Can Access Most of Faron Woods BiT |
+  (Can Access Most of Faron Woods BiT & Can Open Door to Lake Floria) |
   (Can Access Lake Floria Statue BiT & Water Scale)
   # Skyloft: Unused
   # Sky: Impossible, Goddess Crest for Faron Trial
@@ -1401,7 +1401,7 @@ Can Reach Oolo in Faron 2:
   # Scene Flag 2x01 is "Log after Lopsa is pushed down"
 
 Can Open Door to Lake Floria:
-  Nothing
+  Can Access Most of Faron Woods
   # You need to charge a skyward strike to open the door to Lake Floria
   # Scene Flag 7x02 is "Cutscene of the Doors to Lake Floria opening"
   # Scene Flag 7x04 is "Doors to Lake Floria opened"
@@ -1498,7 +1498,7 @@ Faron Woods - Chest Inside Great Tree:
 ## Lake Floria
 
 Can Access Lake Floria above Rock:
-  Water Scale
+  Can Open Door to Lake Floria & Water Scale
 
 Lake Floria - Lake Floria Silver Rupee: # currently not randomized
   Can Access Lake Floria above Rock & Water Scale
@@ -1673,6 +1673,12 @@ Can Get Past First Frog:
 Can Get Past Second Frog:
   Can Get Past First Frog
   # Scene Flag Dx08 is "Second Frog Watered"
+
+Volcano Summit - Small Chest in Volcano Summit:
+  Can Access Volcano Summit
+
+Volcano Summit - Boko Base Pouch Chest:
+  Can Access Volcano Summit
 
 Can Access Dungeon Entrance In Volcano Summit:
   Can Get Past Second Frog
@@ -2573,7 +2579,7 @@ Fire Sanctuary - Mogma Mitts:
   Can Access FS Miniboss Room and Defeat Magmanos
 
 Can Access Second FS Bridge:
-  (Can Access FS Miniboss Room and Defeat Magmanos & Mogma Mitts) |
+  (Can Access FS Miniboss Room and Defeat Magmanos & Mogma Mitts & Gust Bellows) |
   Can Access First FS Magmanos Room
   # Can Access First FS Magmanos Room is simply Can Enter Inner Map (one could enter from the back of 3rd key door, but the requirements are more strict)
 
@@ -2600,6 +2606,7 @@ Fire Sanctuary - Third Small Key Chest:
 Can Access FS Plats Room:
   (
     Can Access FS Miniboss Room and Defeat Magmanos &
+    Mogma Mitts &
     FS Small Key x3 &
     (Distance Activator | Bomb Bag)
   ) |

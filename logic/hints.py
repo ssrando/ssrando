@@ -125,9 +125,9 @@ class BarrenGossipStoneHint(GossipStoneHint):
     zone: str
 
     def to_gossip_stone_text(self) -> List[str]:
-        return textbox_utils.break_lines(
+        return [
             f"They say that those who travel to <r<{self.zone}>> will never find anything for their quest"
-        )
+        ]
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.zone} is barren"

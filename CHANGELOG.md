@@ -1,5 +1,30 @@
 # Changelog
 
+## Dev
+### Options
+### Changes
+### Bugfixes
+- Fix Softlock in FS, this removes the mogma cutscene after the double magmanos fight
+
+## 1.0.7
+### Options
+- Keysanity
+- Choose Required Sword for Gate of Time
+- Add Way of the Hero and Barren Region Hints
+- Glitched Logic
+- Logic Tricks for both BiTless and Glitched Logic
+- Added option to make BiT not crash in areas where it normally would
+- Added option to randomize which trial corresponds to which trial gate
+- Added option to start with Lanayru Mining Facility being already raised
+- Added hints with customizable amounts for various hint types
+### Changes
+- Split up Skyloft in different Areas for logic
+### Bugfixes
+- Fix a bunch of typos
+- Fix potential softlocks when playing Clean Cut or Thrill Digger without the necessary item
+- Fix softlocking in Koloktos' Boss Room without Goddess Sword
+- Fix textwrapping for hints and Beedle's shop
+
 ## 1.0.6
 ### Options
 - Added option to randomize beetles shop

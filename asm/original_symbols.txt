@@ -26,5 +26,8 @@ main.dol:
     FileManager__getSceneflags: 0x8000a4e0
     # used by both item and storyflag manager, r3 is flag manager, r4 is flag
     FlagManager__setFlagTo1: 0x800bf5b0
+    FlagManager__getFlagOrCounter: 0x800bf480
+    FlagManager__setFlagOrCounter: 0x800bf530
+    cM_rndI: 0x802e0d20
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
