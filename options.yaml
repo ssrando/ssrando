@@ -516,3 +516,10 @@
   permalink: false
   help: If enabled, writes a placement json file that can be modified for plandomizer purposes
   ui: option_out_placement_file
+- name: Past Impa Stone of Trials Hint
+  command: impa-sot-hint
+  type: boolean
+  default: true
+  permalink: false
+  help: Enables Impa in the Past to give a hint to the location of the Stone of Trials
+  ui: option_impa_sot_hint

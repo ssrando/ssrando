@@ -58,7 +58,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1128,7 +1128,7 @@
      <attribute name="title">
       <string>Logic Settings</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1407,6 +1407,13 @@
            <widget class="QComboBox" name="option_song_hints"/>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_impa_sot_hint">
+          <property name="text">
+           <string>Impa Stone of Trials Hint</string>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_10">
