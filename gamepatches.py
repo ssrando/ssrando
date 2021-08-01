@@ -1412,8 +1412,10 @@ class GamePatcher:
                 "name": "Past Impa SoT Hint",
                 "type": "textpatch",
                 "index": 6,
-                "text": break_lines(f"Do not fear for <b<Zelda>>. I will watch over her here. Go now to "
-                                    f"<b<{sot_region}>>. The <r<item you need to fulfill your destiny>> is there."),
+                "text": break_lines(
+                    f"Do not fear for <b<Zelda>>. I will watch over her here. Go now to "
+                    f"<b<{sot_region}>>. The <r<item you need to fulfill your destiny>> is there."
+                ),
             }
         )
 
