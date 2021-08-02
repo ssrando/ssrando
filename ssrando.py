@@ -520,7 +520,7 @@ class Randomizer(BaseRandomizer):
                     useful_text = "It's probably not too important..."
                     # print(f'{item} in {trial_check} is not useful')
             elif hint_mode == "Advanced":
-                if trial_check_name in self.woth_locations:
+                if randomized_trial_check in self.woth_locations:
                     useful_text = "Your spirit will grow by completing this trial"
                 elif item in self.logic.all_progress_items:
                     useful_text = "You might need what it reveals..."
