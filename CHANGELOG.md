@@ -5,7 +5,7 @@
 ### Changes
 ### Bugfixes
 
-## 1.0.7.1
+## 1.1.0
 ### Options
 ### Changes
 - Added Boko Base Checks to Volcano Summit
