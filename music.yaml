@@ -1,1428 +1,1904 @@
-0A2EB53FB4A43869EF8892CA146BBDF4:
-    name: Ghirahim's Theme 1
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2782059
-0D22F5D87B7F70B2E2EBAC1462769F43:
-    name: Lumpy Pumpkin
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3070184
-0D69624FF595784723DE8035A322931F:
-    name: Stalfos
-    isLooped: True
-    streams: 3
-    type: 7
-    numsamples: 2753711
-0E52B10E2C145DD892F6998C967906E9:
-    name: Kikwi-1
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 617218
-0F09C16568160B31F8B142F04754C677:
-    name: Pipit Interruption/Cooking 1
-    isLooped: False
-    streams: 1
-    type: 9
-    numsamples: 169984
-0F9C3334EC83BA73C240FCD04435196D:
-    name: Follow Fi
-    isLooped: True
-    streams: 2
-    type: 2
-    numsamples: 3099843
-1A84EB27DE745DAB4B92DBE1CF2F87C0:
-    name: Kikwi-2
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1119357
-1A95F50116CF39F82B42B50372044B18:
-    name: TODO
-    isLooped: True
-    streams: 1
-    type: 10
-    numsamples: 438916
-1BEC297483EC5170A52EDEF7552A4C6A:
-    name: Romance in the Air
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2129886
-1C36751A6995E33A9FE5AE999204B869:
-    name: Silly Groose 1
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2136745
-1DC2D0E6C25942ADB6FF88BD78B0ED8E:
-    name: Kikwi-3
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1191036
-1E20D864A94A866D70090559E6D0CD2A:
-    name: Demise
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 2140161
-1ECF196FF65976CA547B3728D355E6EF:
-    name: Link's Nightmare 1
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1943147
-2D9A5A5C616A950699C3DC73A7FB7240:
-    name: Ancient Cistern
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 4129953
-2D109AA4EBECD2406C8B4193F91826B9:
-    name: Kina Singing
-    isLooped: False
-    streams: 1
-    type: 11
-    numsamples: 2284800
-2E0AFD66CE693C928E73E3F9CC34A9C4:
-    name: Pumpkin Pastime
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1868233
-2EF6EAC7A9EB2FC2E7874C715A8BAAFA:
-    name: Skyview
-    isLooped: True
-    streams: 3
-    type: 6
-    numsamples: 2655726
-2FAC6CAAB0DD2E75606888E65F9BBAF2:
-    name: The Sky 1
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 3137605
-03C8C90CC621939FA47032CF86286645:
-    name: Dodoh Receives Party Wheel
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 245945
-3A24382871E0B1F9AA8D37BE618CF467:
-    name: Zelda Escapes
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 3333808
-3CC68CA8CFD938A7ABC2354775726CE4:
-    name: Enter Dungeon
-    isLooped: False 
-    streams: 1
-    type: 8
-    numsamples: 341504
-3CE49AD71BB2C839CDC94EECCF594B69:
-    name: Monster of Skyloft 1
-    isLooped: False
-    streams: 2
-    type: 5
-    numsamples: 980483
-3F3A60AAA99746A58B3EDB148D1F5FC1:
-    name: Out of the Blue
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 705024
-3F852FB861034AE7716A677577492A4C:
-    name: After Link's Nightmare
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 539850
-4D2650A2C6202583F041D88C45356AA8:
-    name: Temple Spring
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2953356
-4FE9B0BA132303515E3F755E1A0E53C5:
-    name: Harp Farore's Courage Background
-    isLooped: True 
-    streams: 1
-    type: 2
-    numsamples: 1246760
-5B93CF241DEA9E6C429C2D8F50FB015D:
-    name: Song of the Hero
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 1222484
-5C82C8F67E44600AD9887A29A1BD1BB9:
-    name: Mogma Theme 1
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 837947
-5D7E2F90C3DB5F8CD20102F6A91E67F8:
-    name: Gate of Time 1
-    isLooped: True 
-    streams: 2
-    type: 5
-    numsamples: 3472725
-5D9E5A3FBE7851EBB9E7A59AF0ACD086:
-    name: Levias Appears 1
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 1253172
-5F097410108EEAB3D6CBFC6E46E2A24E:
-    name: Scrapper
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1348915
-06FC63FA3986951002602E703B0E9CD7:
-    name: Lanayru's Vocals
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 736256
-6AD6EFB5F2682AFFB352B19D17CE8807:
-    name: Sacred Flame
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1008119
-6BFB1BE3835873B1208FBEE633BCCC93:
-    name: Flooded Faron Woods
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 4310164
-6D3A1FAD2D6C64D0EC53618B25F0D97D:
-    name: Nayru's Wisdom
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2060302
-6D97D210EE2203DD0486AB17DDCCA3D3:
-    name: Bamboo Island
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1995108
-6FABB38472EDC472585108640017FB4B:
-    name: Levias' Vocals
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 744448
-07B5A2222997D394DC7602A61A8F6883:
-    name: Koloktos
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 2962876
-7B9B86CF44E22BF9B10A157974450198:
-    name: Temple of Time Ballad of the Goddess
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 297248
-7B75D5DB2D55CE49B646155F1808A245:
-    name: Lanayru Sand Sea 1
-    isLooped: True
-    streams: 1
-    type: 4
-    numsamples: 4780536
-7F5BE8E992150DA9F990F50D0A1E6E94:
-    name: Opening
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 2099064
-8ADD3F099CBF2777FC445C913F7AB27A:
-    name: Activating the Spirit Crest
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 706837
-8AFB3D8EF1ED1D276E6F8AC81CB738F3:
-    name: TODO # timeshift stone?
-    isLooped: True
-    streams: 1
-    type: 10
-    numsamples: 485718
-8DC2F7EB759EFC39DF378E93A9C0B146:
-    name: Cursed Bokoblins
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 807086
-8FA3C6FB578749B7B27DF52C146E571C:
-    name: Island in the Sky
-    isLooped: False
-    streams: 1
-    type: 1
-    numsamples: 2392746
-9A35C312BF3FC1B59A9503C1928EFAC9:
-    name: The Seal Weakens 1
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 755746
-9B2C3D74615976E218838F452279FCE3:
-    name: The Dragons
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3113310
-9C1A4520DB787B4DEB030BCCC807D294:
-    name: Koloktos Phase 2
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2644821
-9EB3BB26B4EE4FBE668AA8F50E74359F:
-    name: TODO # Zelda cutscene?
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 394832
-9FA472216EA8EE30C84392FE0F5D8EF4:
-    name: Kumite
-    isLooped: True
-    streams: 3
-    type: 6
-    numsamples: 2494407
-10BAB99AF131BF0979699BFEFCC44EA8:
-    name: Empty
-    isLooped: False
-    streams: 1
-    type: 11
-    numsamples: 32
-11BE35899CFD364D0BAF977F6B0E06E9:
-    name: Sailing the Sand Sea
-    isLooped: True
-    streams: 3
-    type: 13
-    numsamples: 3306116
-12F7A68A86516E2DE04D90C0D286D423:
-    name: Sealed Temple
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3370755
-13C9954A71E1E7F5529D7C2ECFB5B26A:
-    name: Fire Sanctuary 1
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 2930685
-22E4BBFB1F691F6D40FDAED84F60F334:
-    name: Impa Singing
-    isLooped: False
-    streams: 1
-    type: 11
-    numsamples: 292000
 024F95B344307BD81E219F2D53DCFC87:
-    name: Guardians Awaken
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1801146
-35B667D33B1AC98B91E7298AF6C3712C:
-    name: Kikwi-4
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 990334
-43B0749044A1FBEC4FDD79628260F468:
-    name: Final Ghirahim
-    isLooped: True
-    streams: 3
-    type: 7
-    numsamples: 2644718
-43E3D4843D86F684444A1C80CBBEB897:
-    name: Enemy Appears
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 594554
-44BCB14F47E514BB3DED9BADA07E6599:
-    name: Nayru's Silent Realm
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1994046
-47BEF24C1A164ED458543B2E6BF01771:
-    name: Moldarach
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 2805397
-51C1FF721E3B0B908AB6F62977FBD40E:
-    name: Zelda Singing
-    isLooped: False
-    streams: 1
-    type: 11
-    numsamples: 802816
-62DC9019520E00C573AF49235235FD97:
-    name: Impa's Fate
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 4946768
-67C94429EA6DA009543561360FBF0BDF:
-    name: Bucha Theme
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1055835
-67ED7A542A5A5D225747B015B5CD6020:
-    name: Batreaux Transforming to Human
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 332881
-68D493DEE34B5834C4C4D78502E4EE66:
-    name: Fi's Theme
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 3624215
-75F99CBE3C733522E7E960304C7538D5:
-    name: The Seal Weakens 2
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 755746
-76BF0D9DCFE07C18F0D02EF230571A9B:
-    name: Blessing of the Goddess
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1422168
-82AEF1119059B800D9917833B0078571:
-    name: Lanayru Sand Sea 2 # Skipper's Retreat?
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 4780536
-84B4C84A4E53F3596B82F32BA7A084BD:
-    name: Lanayru Sand Sea 3
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 4379132
-88A1B9B47056EC0DB6F06F674C6D6977:
-    name: Eldin Volcano
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3756716
-94C27DB633FFFE6C8E47FEF2277967C2:
-    name: Batreaux's Theme
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2377371
-99AA0BFC82CC7CE2DDBF00422859DBF9:
-    name: Romance
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1097433
-112F25C6ABBA0A57CBD9951FF837BC18:
-    name: Ancient Cistern Above
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 4129953
-203E8B46B79916CD0ADB7693AE2B0E0B:
-    name: Inside the Sandship
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 5587805
-269EDA5E967A55620D00E960D6EE6668:
-    name: Silly Groose 2
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2222761
-333A0C92E7FE65C0CE1EE1A137EB46C5:
-    name: Din's Power (Goddess)
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 266016
-380DAE639D85849FF25624A3A3605577:
-    name: Skyview 2 # TODO: check skyview 1/2
-    isLooped: True
-    streams: 3
-    type: 6
-    numsamples: 2655726
-431AFC01415FA62739AE47D31556FA67:
-    name: Gate of Time 2
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 3472725
-459BA60F44006CAF4B4A66412FA60445:
-    name: Ghirahim's Ritual
-    isLooped: False
-    streams: 2
-    type: 12
-    numsamples: 1804628
-555C3D6F6DC9017B59EC201F398159D1:
-    name: Goddess's Silent Realm
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2894853
-567F9E6B3F6F090DCFEB31AF1701C1EC:
-    name: Imprisoned Roars
-    isLooped: False
-    streams: 1
-    type: 11
-    numsamples: 976000
-569EA3C8174A04A21E3575AE7142C7AD:
-    name: Levias Battle
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2576538
-577D49CAF285E7B0E18C2AF0E8575E11:
-    name: Crumbling Impact 1
-    isLooped: False
-    streams: 2
-    type: 12
-    numsamples: 2839651
-587F7FAB1F7321BD8771E4FAF7F14C66:
-    name: Crimson Loftwing 1
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1946770
-599F6B9C583BC27DE1BEDB3DCB420CD3:
-    name: Knight's Academy
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1826441
-700D8D13FD0BA58007C22B35650C5524:
-    name: Last Triforce Piece
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 672140
-702D21C908E2F1DB55682B0DBF21E28C:
-    name: Message from the Goddess
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2777315
-704BE37CE965B70AAF9459BB53FF726D:
-    name: Sealing Spike
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1513298
-753F5E116BB2AD9D7C808BCEC68BB333:
-    name: Triforce pieces fly towards link
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 276283
-811D3DF6CE1B911719F0E8521E8C2259:
-    name: Zelda's Lullaby 1
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 3124736
-839E553360ADC26D9FD3CE9EBEFC83EF: 
-    name: Lanayru Mining Facility
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 3205121
-914E1C32A14BF55EE64048BB4A66A4C9:
-    name: Spot Loftwing in Cage
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 137849
-914E9B74FD3377BE732B427269716243:
-    name: Legendary Hero Harp
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 3047466
-960E774EB2F14BCBE4B88F05E3908F45:
-    name: Final Ghirahim Phase 2
-    isLooped: True
-    streams: 3
-    type: 7
-    numsamples: 2493964
-968EC7F04605532D598CF01BB6DC4BA3:
-    name: Earth Temple 1 # with intro
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 4548192
-969EA3FBF67B9B5BBE856272C7952361:
-    name: Sandship Deck
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 2239938
-1410B6D92E139F10236DD46CF97F5CA7:
-    name: Harp Song of the Hero Background
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1513650
-1517BCDC727BB2EE09B2F7785BC1F82A:
-    name: Water Dragon Healed
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 470468
-1965ECCC54106AEF1F391811BB09A988:
-    name: Kikwi-5 # Skips beginning
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 990326
-2630A387D8A575CDB42BFF6F66E6864F:
-    name: Farore's Courage
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2135591
-4198EC4D6C70084417657C6DC4503D41:
-    name: Ghirahim Revives Demise
-    isLooped: False
-    streams: 2
-    type: 12
-    numsamples: 2741069
-4324D4B65BE54AB58C702CE72A4B0A10:
-    name: Entering Sandship # TODO: check
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1937156
-5167C43E5FEDA25CD11EDB1B0FF5DF27:
-    name: Sacred Flame
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 450281
-5282AE91E5E0AB143BEA2B5EB96E2A25:
-    name: Machi Being Attacked
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 608890
-05324A4E5A65A1242FD4F961A663D5FD:
-    name: Sky Keep Intro Room
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3342559
-6467ABC16D82F98B8D8119D78419C894:
-    name: The Imprisoned
-    isLooped: True
-    streams: 3
-    type: 13
-    numsamples: 2765057
-7807D7CA7DAB4DC568A8DC2FA1960D49:
-    name: Isle of Songs
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2925866
-7878ED348582DD87D9833CAA9F53E570:
-    name: Sky Keep
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3184864
-9995F5792A99DD4D33D4E992813CD0EF:
-    name: Avoiding Danger
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 432190
+  audiolen: '0x1f6e60'
+  audiolenLoc: 1039416
+  isLooped: true
+  name: Guardians Awaken
+  numsamples: 1801146
+  streams: 1
+  type: 1
+03C8C90CC621939FA47032CF86286645:
+  audiolen: '0x44c00'
+  audiolenLoc: 1047848
+  isLooped: false
+  name: Dodoh Receives Party Wheel
+  numsamples: 245945
+  streams: 1
+  type: 8
 052801C5A785CEDD5CB411EDDE9095AB:
-    name: The End
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 1057212
-65485F0FC46A9A856A3B982C360B6310:
-    name: Inside Sandship
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 5587805
-71964FEA682B0B930B2F45B8CCDB7E8F:
-    name: Thrill Digger
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 1951744
-76916B2B2F27CD8CFFD9F539D9E7AB4C:
-    name: Crumbling Impact 2
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 2087527
-77917BD20A7A7FA0C047CE15998AC5B2:
-    name: Romantic Groose Short # TODO: check
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 636848
-82666AF7454AEDEE4A79992DE1CBA673:
-    name: TODO # What is this sound effect???
-    isLooped: False
-    streams: 1
-    type: 9
-    numsamples: 74238
-89517CB1D1DC4986C6EE5C5FEAB15AD9:
-    name: TODO # imp?
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 389883
-96026C0EBF01686D8E9D82A2212BAD58:
-    name: Leaping off the Edge 1
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 750171
+  audiolen: '0x127380'
+  audiolenLoc: 1054580
+  isLooped: false
+  name: The End
+  numsamples: 1057212
+  streams: 1
+  type: 3
+05324A4E5A65A1242FD4F961A663D5FD:
+  audiolen: '0x3a5300'
+  audiolenLoc: 1044380
+  isLooped: true
+  name: Sky Keep Intro Room
+  numsamples: 3342559
+  streams: 1
+  type: 1
+06FC63FA3986951002602E703B0E9CD7:
+  audiolen: '0xcda20'
+  audiolenLoc: 1052880
+  isLooped: false
+  name: Lanayru's Vocals
+  numsamples: 736256
+  streams: 1
+  type: 3
+07B5A2222997D394DC7602A61A8F6883:
+  audiolen: '0x676580'
+  audiolenLoc: 1044992
+  isLooped: true
+  name: Koloktos
+  numsamples: 2962876
+  streams: 2
+  type: 5
+0A2EB53FB4A43869EF8892CA146BBDF4:
+  audiolen: '0x308b80'
+  audiolenLoc: 1046556
+  isLooped: true
+  name: Ghirahim's Theme 1
+  numsamples: 2782059
+  streams: 1
+  type: 2
+0D22F5D87B7F70B2E2EBAC1462769F43:
+  audiolen: '0x359260'
+  audiolenLoc: 1041048
+  isLooped: true
+  name: Lumpy Pumpkin
+  numsamples: 3070184
+  streams: 1
+  type: 1
+0D69624FF595784723DE8035A322931F:
+  audiolen: '0x902520'
+  audiolenLoc: 1044856
+  isLooped: true
+  name: Stalfos
+  numsamples: 2753711
+  streams: 3
+  type: 7
+0E52B10E2C145DD892F6998C967906E9:
+  audiolen: '0xac660'
+  audiolenLoc: 1046080
+  isLooped: true
+  name: Kikwi-1
+  numsamples: 617218
+  streams: 1
+  type: 1
+0F09C16568160B31F8B142F04754C677:
+  audiolen: '0x2f8e0'
+  audiolenLoc: 1047304
+  isLooped: false
+  name: Pipit Interruption/Cooking 1
+  numsamples: 169984
+  streams: 1
+  type: 9
+0F9C3334EC83BA73C240FCD04435196D:
+  audiolen: '0x6c2d20'
+  audiolenLoc: 1039484
+  isLooped: true
+  name: Follow Fi
+  numsamples: 3099843
+  streams: 2
+  type: 2
 107842B6E234513052FA1C83F2C1F910:
-    name: Harp Ballad of the Goddess Background
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1450039
-253802E3D7DEDF3139C810AE368B5D04:
-    name: TODO # imp?
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 757790
-312221A23193C817C70C62C2F23722D6:
-    name: Entering Sky Keep
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 362805
-3211591DCF06ADAEC8F5B71D37D1F271:
-    name: Zelda Blessing MS to become TMS
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 570653
-5550206D025A7308599447833F3B6A17:
-    name: Zelda's Lullaby 2
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 3124736
-9776528CF7A8B49328012B24B2B82276:
-    name: After Demise's Death # Delayed a lot
-    isLooped: False
-    streams: 1
-    type: 11
-    numsamples: 3818289
-9987519C6A07D1871D37F35B718B7190:
-    name: Harp Din's Power Background
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1215489
-34959499EABD0A61DA6F50FD3C5AF4C6:
-    name: Empty
-    isLooped: True
-    streams: 1
-    type: 11
-    numsamples: 28690
-39098741AA0EB81704C653A345319E15:
-    name: Lanayru Desert 1
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 3844275
-54488866B4341FDA46DD9BAA32A41655:
-    name: Fire Sanctuary 2
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 2930685
+  audiolen: '0x194e20'
+  audiolenLoc: 1040300
+  isLooped: true
+  name: Harp Ballad of the Goddess Background
+  numsamples: 1450039
+  streams: 1
+  type: 2
+10BAB99AF131BF0979699BFEFCC44EA8:
+  audiolen: '0x160'
+  audiolenLoc: 1038804
+  isLooped: false
+  name: Empty
+  numsamples: 32
+  streams: 1
+  type: 11
+112F25C6ABBA0A57CBD9951FF837BC18:
+  audiolen: '0x481000'
+  audiolenLoc: 1044040
+  isLooped: true
+  name: Ancient Cistern Above
+  numsamples: 4129953
+  streams: 1
+  type: 2
+11BE35899CFD364D0BAF977F6B0E06E9:
+  audiolen: '0xad0ec0'
+  audiolenLoc: 1042272
+  isLooped: true
+  name: Sailing the Sand Sea
+  numsamples: 3306116
+  streams: 3
+  type: 13
+12F7A68A86516E2DE04D90C0D286D423:
+  audiolen: '0x3ad120'
+  audiolenLoc: 1042816
+  isLooped: true
+  name: Sealed Temple
+  numsamples: 3370755
+  streams: 1
+  type: 1
 131879443BDAE5C8A8F647ED3732671C:
-    name: Grooseland
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2549760
-9429167994A6669F8EE7B31BC2785403:
-    name: Chase the Mogma Brother # Plats Chase
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1260452
-319980573093B7AB8F6830120236F5DC:
-    name: Separation
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 3583011
+  audiolen: '0x2c7e00'
+  audiolenLoc: 1050840
+  isLooped: true
+  name: Grooseland
+  numsamples: 2549760
+  streams: 1
+  type: 2
+13C9954A71E1E7F5529D7C2ECFB5B26A:
+  audiolen: '0x6645e0'
+  audiolenLoc: 1044108
+  isLooped: true
+  name: Fire Sanctuary 1
+  numsamples: 2930685
+  streams: 2
+  type: 5
+1410B6D92E139F10236DD46CF97F5CA7:
+  audiolen: '0x1a6a40'
+  audiolenLoc: 1040572
+  isLooped: true
+  name: Harp Song of the Hero Background
+  numsamples: 1513650
+  streams: 1
+  type: 2
+1517BCDC727BB2EE09B2F7785BC1F82A:
+  audiolen: '0x83700'
+  audiolenLoc: 1047712
+  isLooped: false
+  name: Water Dragon Healed
+  numsamples: 470468
+  streams: 1
+  type: 8
+1965ECCC54106AEF1F391811BB09A988:
+  audiolen: '0x1148e0'
+  audiolenLoc: 1046216
+  isLooped: true
+  name: Kikwi-5
+  numsamples: 990326
+  streams: 1
+  type: 2
+1A84EB27DE745DAB4B92DBE1CF2F87C0:
+  audiolen: '0x138920'
+  audiolenLoc: 1046012
+  isLooped: true
+  name: Kikwi-2
+  numsamples: 1119357
+  streams: 1
+  type: 1
+1A95F50116CF39F82B42B50372044B18:
+  audiolen: '0x7a9e0'
+  audiolenLoc: 1050908
+  isLooped: true
+  name: TODO
+  numsamples: 438916
+  streams: 1
+  type: 10
+1BEC297483EC5170A52EDEF7552A4C6A:
+  audiolen: '0x4a5460'
+  audiolenLoc: 1049208
+  isLooped: true
+  name: Romance in the Air
+  numsamples: 2129886
+  streams: 1
+  type: 1
+1C36751A6995E33A9FE5AE999204B869:
+  audiolen: '0x254960'
+  audiolenLoc: 1047372
+  isLooped: true
+  name: Silly Groose 1
+  numsamples: 2136745
+  streams: 1
+  type: 2
+1DC2D0E6C25942ADB6FF88BD78B0ED8E:
+  audiolen: '0x14c960'
+  audiolenLoc: 1046148
+  isLooped: true
+  name: Kikwi-3
+  numsamples: 1191036
+  streams: 1
+  type: 1
+1E20D864A94A866D70090559E6D0CD2A:
+  audiolen: '0x4ab080'
+  audiolenLoc: 1045808
+  isLooped: true
+  name: Demise
+  numsamples: 2140161
+  streams: 2
+  type: 4
+1ECF196FF65976CA547B3728D355E6EF:
+  audiolen: '0x21e8c0'
+  audiolenLoc: 1048460
+  isLooped: true
+  name: Link's Nightmare 1
+  numsamples: 1943147
+  streams: 1
+  type: 2
+203E8B46B79916CD0ADB7693AE2B0E0B:
+  audiolen: '0xc2fe00'
+  audiolenLoc: 1044176
+  isLooped: true
+  name: Inside the Sandship
+  numsamples: 5587805
+  streams: 2
+  type: 4
+22E4BBFB1F691F6D40FDAED84F60F334:
+  audiolen: '0x519e0'
+  audiolenLoc: 1051112
+  isLooped: false
+  name: Impa Singing
+  numsamples: 292000
+  streams: 1
+  type: 11
 2426409510721725551A5E14E70AEF78:
-    name: Legendary Hero
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 1402093
-A0C2FAF7C5DA15E1615F7D126EA4F588:
-    name: TODO # Fanfare
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 354816
-A3B58B593FDA95A45A6AF367AE751B03:
-    name: Tubert's Theme
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2881190
-A3CE90071AB2E97E77BFA908CCD87C99:
-    name: Ceremony Begins
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 750195
+  audiolen: '0x187800'
+  audiolenLoc: 1048528
+  isLooped: false
+  name: Legendary Hero
+  numsamples: 1402093
+  streams: 1
+  type: 3
+253802E3D7DEDF3139C810AE368B5D04:
+  audiolen: '0xd3a20'
+  audiolenLoc: 1052676
+  isLooped: false
+  name: TODO
+  numsamples: 757790
+  streams: 1
+  type: 8
+2630A387D8A575CDB42BFF6F66E6864F:
+  audiolen: '0x254420'
+  audiolenLoc: 1051520
+  isLooped: true
+  name: Farore's Courage
+  numsamples: 2135591
+  streams: 1
+  type: 2
+269EDA5E967A55620D00E960D6EE6668:
+  audiolen: '0x26c9a0'
+  audiolenLoc: 1048936
+  isLooped: true
+  name: Silly Groose 2
+  numsamples: 2222761
+  streams: 1
+  type: 2
+2D109AA4EBECD2406C8B4193F91826B9:
+  audiolen: '0x13efc0'
+  audiolenLoc: 1040640
+  isLooped: false
+  name: Kina Singing
+  numsamples: 2284800
+  streams: 1
+  type: 11
+2D9A5A5C616A950699C3DC73A7FB7240:
+  audiolen: '0x901f20'
+  audiolenLoc: 1043156
+  isLooped: true
+  name: Ancient Cistern
+  numsamples: 4129953
+  streams: 2
+  type: 5
+2E0AFD66CE693C928E73E3F9CC34A9C4:
+  audiolen: '0x209a00'
+  audiolenLoc: 1040164
+  isLooped: true
+  name: Pumpkin Pastime
+  numsamples: 1868233
+  streams: 1
+  type: 1
+2EF6EAC7A9EB2FC2E7874C715A8BAAFA:
+  audiolen: '0x8b0400'
+  audiolenLoc: 1043020
+  isLooped: true
+  name: Skyview
+  numsamples: 2655726
+  streams: 3
+  type: 6
+2FAC6CAAB0DD2E75606888E65F9BBAF2:
+  audiolen: '0x6d7e40'
+  audiolenLoc: 1039144
+  isLooped: true
+  name: The Sky 1
+  numsamples: 3137605
+  streams: 2
+  type: 5
+312221A23193C817C70C62C2F23722D6:
+  audiolen: '0x65600'
+  audiolenLoc: 1054716
+  isLooped: false
+  name: Entering Sky Keep
+  numsamples: 362805
+  streams: 1
+  type: 3
+319980573093B7AB8F6830120236F5DC:
+  audiolen: '0x3e8500'
+  audiolenLoc: 1049684
+  isLooped: true
+  name: Separation
+  numsamples: 3583011
+  streams: 1
+  type: 2
+3211591DCF06ADAEC8F5B71D37D1F271:
+  audiolen: '0x9f680'
+  audiolenLoc: 1052472
+  isLooped: false
+  name: Zelda Blessing MS to become TMS
+  numsamples: 570653
+  streams: 1
+  type: 8
+333A0C92E7FE65C0CE1EE1A137EB46C5:
+  audiolen: '0x4a5c0'
+  audiolenLoc: 1051928
+  isLooped: true
+  name: Din's Power (Goddess)
+  numsamples: 266016
+  streams: 1
+  type: 2
+34959499EABD0A61DA6F50FD3C5AF4C6:
+  audiolen: '0x4160'
+  audiolenLoc: 1046896
+  isLooped: true
+  name: Empty
+  numsamples: 28690
+  streams: 1
+  type: 11
+35B667D33B1AC98B91E7298AF6C3712C:
+  audiolen: '0x1148e0'
+  audiolenLoc: 1047916
+  isLooped: true
+  name: Kikwi-4
+  numsamples: 990334
+  streams: 1
+  type: 1
+380DAE639D85849FF25624A3A3605577:
+  audiolen: '0x8b0400'
+  audiolenLoc: 1044312
+  isLooped: true
+  name: Skyview 2
+  numsamples: 2655726
+  streams: 3
+  type: 6
+39098741AA0EB81704C653A345319E15:
+  audiolen: '0x8626e0'
+  audiolenLoc: 1042068
+  isLooped: true
+  name: Lanayru Desert 1
+  numsamples: 3844275
+  streams: 2
+  type: 4
+3A24382871E0B1F9AA8D37BE618CF467:
+  audiolen: '0x3a2c00'
+  audiolenLoc: 1050704
+  isLooped: true
+  name: Zelda Escapes
+  numsamples: 3333808
+  streams: 1
+  type: 2
+3CC68CA8CFD938A7ABC2354775726CE4:
+  audiolen: '0x5f700'
+  audiolenLoc: 1054648
+  isLooped: false
+  name: Enter Dungeon
+  numsamples: 341504
+  streams: 1
+  type: 8
+3CE49AD71BB2C839CDC94EECCF594B69:
+  audiolen: '0x2238e0'
+  audiolenLoc: 1053696
+  isLooped: false
+  name: Monster of Skyloft 1
+  numsamples: 980483
+  streams: 2
+  type: 5
+3F3A60AAA99746A58B3EDB148D1F5FC1:
+  audiolen: '0xc4e80'
+  audiolenLoc: 1050772
+  isLooped: false
+  name: Out of the Blue
+  numsamples: 705024
+  streams: 1
+  type: 8
+3F852FB861034AE7716A677577492A4C:
+  audiolen: '0x96ce0'
+  audiolenLoc: 1049616
+  isLooped: false
+  name: After Link's Nightmare
+  numsamples: 539850
+  streams: 1
+  type: 8
+4198EC4D6C70084417657C6DC4503D41:
+  audiolen: '0x5fa820'
+  audiolenLoc: 1053764
+  isLooped: false
+  name: Ghirahim Revives Demise
+  numsamples: 2741069
+  streams: 2
+  type: 12
+431AFC01415FA62739AE47D31556FA67:
+  audiolen: '0x792fc0'
+  audiolenLoc: 1048120
+  isLooped: true
+  name: Gate of Time 2
+  numsamples: 3472725
+  streams: 2
+  type: 5
+4324D4B65BE54AB58C702CE72A4B0A10:
+  audiolen: '0x21ce00'
+  audiolenLoc: 1043768
+  isLooped: true
+  name: Entering Sandship
+  numsamples: 1937156
+  streams: 1
+  type: 1
+43B0749044A1FBEC4FDD79628260F468:
+  audiolen: '0x8a70e0'
+  audiolenLoc: 1045468
+  isLooped: true
+  name: Final Ghirahim
+  numsamples: 2644718
+  streams: 3
+  type: 7
+43E3D4843D86F684444A1C80CBBEB897:
+  audiolen: '0xa6140'
+  audiolenLoc: 1047644
+  isLooped: true
+  name: Enemy Appears
+  numsamples: 594554
+  streams: 1
+  type: 1
+44BCB14F47E514BB3DED9BADA07E6599:
+  audiolen: '0x22cbe0'
+  audiolenLoc: 1044720
+  isLooped: true
+  name: Nayru's Silent Realm
+  numsamples: 1994046
+  streams: 1
+  type: 1
+459BA60F44006CAF4B4A66412FA60445:
+  audiolen: '0x3efb00'
+  audiolenLoc: 1053628
+  isLooped: false
+  name: Ghirahim's Ritual
+  numsamples: 1804628
+  streams: 2
+  type: 12
+47BEF24C1A164ED458543B2E6BF01771:
+  audiolen: '0x61e6e0'
+  audiolenLoc: 1045128
+  isLooped: true
+  name: Moldarach
+  numsamples: 2805397
+  streams: 2
+  type: 5
+4D2650A2C6202583F041D88C45356AA8:
+  audiolen: '0x3388a0'
+  audiolenLoc: 1039620
+  isLooped: true
+  name: Temple Spring
+  numsamples: 2953356
+  streams: 1
+  type: 1
+4FE9B0BA132303515E3F755E1A0E53C5:
+  audiolen: '0x15c220'
+  audiolenLoc: 1040368
+  isLooped: true
+  name: Harp Farore's Courage Background
+  numsamples: 1246760
+  streams: 1
+  type: 2
+5167C43E5FEDA25CD11EDB1B0FF5DF27:
+  audiolen: '0x7dcc0'
+  audiolenLoc: 1051656
+  isLooped: false
+  name: Sacred Flame
+  numsamples: 450281
+  streams: 1
+  type: 8
+51C1FF721E3B0B908AB6F62977FBD40E:
+  audiolen: '0xe0340'
+  audiolenLoc: 1050568
+  isLooped: false
+  name: Zelda Singing
+  numsamples: 802816
+  streams: 1
+  type: 11
+5282AE91E5E0AB143BEA2B5EB96E2A25:
+  audiolen: '0xaa140'
+  audiolenLoc: 1045944
+  isLooped: true
+  name: Machi Being Attacked
+  numsamples: 608890
+  streams: 1
+  type: 1
+54488866B4341FDA46DD9BAA32A41655:
+  audiolen: '0x6645e0'
+  audiolenLoc: 1043360
+  isLooped: true
+  name: Fire Sanctuary 2
+  numsamples: 2930685
+  streams: 2
+  type: 4
+5550206D025A7308599447833F3B6A17:
+  audiolen: '0x368600'
+  audiolenLoc: 1052336
+  isLooped: true
+  name: Zelda's Lullaby 2
+  numsamples: 3124736
+  streams: 1
+  type: 2
+555C3D6F6DC9017B59EC201F398159D1:
+  audiolen: '0x328340'
+  audiolenLoc: 1044516
+  isLooped: true
+  name: Goddess's Silent Realm
+  numsamples: 2894853
+  streams: 1
+  type: 1
+567F9E6B3F6F090DCFEB31AF1701C1EC:
+  audiolen: '0x1108e0'
+  audiolenLoc: 1048324
+  isLooped: false
+  name: Imprisoned Roars
+  numsamples: 976000
+  streams: 1
+  type: 11
+569EA3C8174A04A21E3575AE7142C7AD:
+  audiolen: '0x2cf5a0'
+  audiolenLoc: 1045196
+  isLooped: true
+  name: Levias Battle
+  numsamples: 2576538
+  streams: 1
+  type: 1
+577D49CAF285E7B0E18C2AF0E8575E11:
+  audiolen: '0x631900'
+  audiolenLoc: 1052132
+  isLooped: false
+  name: Crumbling Impact 1
+  numsamples: 2839651
+  streams: 2
+  type: 12
+587F7FAB1F7321BD8771E4FAF7F14C66:
+  audiolen: '0x21f8c0'
+  audiolenLoc: 1049412
+  isLooped: true
+  name: Crimson Loftwing 1
+  numsamples: 1946770
+  streams: 1
+  type: 2
+599F6B9C583BC27DE1BEDB3DCB420CD3:
+  audiolen: '0x1fdf80'
+  audiolenLoc: 1040912
+  isLooped: true
+  name: Knight's Academy
+  numsamples: 1826441
+  streams: 1
+  type: 1
+5B93CF241DEA9E6C429C2D8F50FB015D:
+  audiolen: '0x1555e0'
+  audiolenLoc: 1053084
+  isLooped: false
+  name: Song of the Hero
+  numsamples: 1222484
+  streams: 1
+  type: 3
+5C82C8F67E44600AD9887A29A1BD1BB9:
+  audiolen: '0xea040'
+  audiolenLoc: 1047168
+  isLooped: true
+  name: Mogma Theme 1
+  numsamples: 837947
+  streams: 1
+  type: 1
+5D7E2F90C3DB5F8CD20102F6A91E67F8:
+  audiolen: '0x792fc0'
+  audiolenLoc: 1051180
+  isLooped: true
+  name: Gate of Time 1
+  numsamples: 3472725
+  streams: 2
+  type: 5
+5D9E5A3FBE7851EBB9E7A59AF0ACD086:
+  audiolen: '0x15df00'
+  audiolenLoc: 1047780
+  isLooped: false
+  name: Levias Appears 1
+  numsamples: 1253172
+  streams: 1
+  type: 3
+5F097410108EEAB3D6CBFC6E46E2A24E:
+  audiolen: '0x178a60'
+  audiolenLoc: 1046760
+  isLooped: true
+  name: Scrapper
+  numsamples: 1348915
+  streams: 1
+  type: 2
+62DC9019520E00C573AF49235235FD97:
+  audiolen: '0x565040'
+  audiolenLoc: 1054308
+  isLooped: true
+  name: Impa's Fate
+  numsamples: 4946768
+  streams: 1
+  type: 2
+6467ABC16D82F98B8D8119D78419C894:
+  audiolen: '0x90bd60'
+  audiolenLoc: 1045604
+  isLooped: true
+  name: The Imprisoned
+  numsamples: 2765057
+  streams: 3
+  type: 13
+65485F0FC46A9A856A3B982C360B6310:
+  audiolen: '0xc2fe00'
+  audiolenLoc: 1043904
+  isLooped: true
+  name: Inside Sandship
+  numsamples: 5587805
+  streams: 2
+  type: 4
+67C94429EA6DA009543561360FBF0BDF:
+  audiolen: '0x126d80'
+  audiolenLoc: 1046352
+  isLooped: true
+  name: Bucha Theme
+  numsamples: 1055835
+  streams: 1
+  type: 2
+67ED7A542A5A5D225747B015B5CD6020:
+  audiolen: '0x5d080'
+  audiolenLoc: 1047032
+  isLooped: false
+  name: Batreaux Transforming to Human
+  numsamples: 332881
+  streams: 1
+  type: 8
+68D493DEE34B5834C4C4D78502E4EE66:
+  audiolen: '0x3f3d20'
+  audiolenLoc: 1049752
+  isLooped: true
+  name: Fi's Theme
+  numsamples: 3624215
+  streams: 1
+  type: 2
+6AD6EFB5F2682AFFB352B19D17CE8807:
+  audiolen: '0x119860'
+  audiolenLoc: 1051588
+  isLooped: true
+  name: Sacred Flame
+  numsamples: 1008119
+  streams: 1
+  type: 2
+6BFB1BE3835873B1208FBEE633BCCC93:
+  audiolen: '0x4b34e0'
+  audiolenLoc: 1041456
+  isLooped: true
+  name: Flooded Faron Woods
+  numsamples: 4310164
+  streams: 1
+  type: 1
+6D3A1FAD2D6C64D0EC53618B25F0D97D:
+  audiolen: '0x23f400'
+  audiolenLoc: 1051860
+  isLooped: true
+  name: Nayru's Wisdom
+  numsamples: 2060302
+  streams: 1
+  type: 2
+6D97D210EE2203DD0486AB17DDCCA3D3:
+  audiolen: '0x22d0a0'
+  audiolenLoc: 1039892
+  isLooped: true
+  name: Bamboo Island
+  numsamples: 1995108
+  streams: 1
+  type: 1
+6FABB38472EDC472585108640017FB4B:
+  audiolen: '0xcfea0'
+  audiolenLoc: 1052948
+  isLooped: false
+  name: Levias' Vocals
+  numsamples: 744448
+  streams: 1
+  type: 3
+700D8D13FD0BA58007C22B35650C5524:
+  audiolen: '0xbbba0'
+  audiolenLoc: 1054920
+  isLooped: false
+  name: Last Triforce Piece
+  numsamples: 672140
+  streams: 1
+  type: 8
+702D21C908E2F1DB55682B0DBF21E28C:
+  audiolen: '0x307640'
+  audiolenLoc: 1050364
+  isLooped: true
+  name: Message from the Goddess
+  numsamples: 2777315
+  streams: 1
+  type: 2
+704BE37CE965B70AAF9459BB53FF726D:
+  audiolen: '0x1a68c0'
+  audiolenLoc: 1039756
+  isLooped: true
+  name: Sealing Spike
+  numsamples: 1513298
+  streams: 1
+  type: 1
+71964FEA682B0B930B2F45B8CCDB7E8F:
+  audiolen: '0x441d20'
+  audiolenLoc: 1040028
+  isLooped: true
+  name: Thrill Digger
+  numsamples: 1951744
+  streams: 2
+  type: 5
+753F5E116BB2AD9D7C808BCEC68BB333:
+  audiolen: '0x4d3a0'
+  audiolenLoc: 1053016
+  isLooped: false
+  name: Triforce pieces fly towards link
+  numsamples: 276283
+  streams: 1
+  type: 8
+75F99CBE3C733522E7E960304C7538D5:
+  audiolen: '0xd3120'
+  audiolenLoc: 1049480
+  isLooped: true
+  name: The Seal Weakens 2
+  numsamples: 755746
+  streams: 1
+  type: 1
+76916B2B2F27CD8CFFD9F539D9E7AB4C:
+  audiolen: '0x246d80'
+  audiolenLoc: 1053152
+  isLooped: false
+  name: Crumbling Impact 2
+  numsamples: 2087527
+  streams: 1
+  type: 3
+76BF0D9DCFE07C18F0D02EF230571A9B:
+  audiolen: '0x18d1a0'
+  audiolenLoc: 1049344
+  isLooped: true
+  name: Blessing of the Goddess
+  numsamples: 1422168
+  streams: 1
+  type: 2
+77917BD20A7A7FA0C047CE15998AC5B2:
+  audiolen: '0xb1e20'
+  audiolenLoc: 1050976
+  isLooped: false
+  name: Romantic Groose Short
+  numsamples: 636848
+  streams: 1
+  type: 8
+7807D7CA7DAB4DC568A8DC2FA1960D49:
+  audiolen: '0x330de0'
+  audiolenLoc: 1040844
+  isLooped: true
+  name: Isle of Songs
+  numsamples: 2925866
+  streams: 1
+  type: 1
+7878ED348582DD87D9833CAA9F53E570:
+  audiolen: '0x3792a0'
+  audiolenLoc: 1044448
+  isLooped: true
+  name: Sky Keep
+  numsamples: 3184864
+  streams: 1
+  type: 1
+7B75D5DB2D55CE49B646155F1808A245:
+  audiolen: '0xa6d280'
+  audiolenLoc: 1042136
+  isLooped: true
+  name: Lanayru Sand Sea 1
+  numsamples: 4780536
+  streams: 1
+  type: 4
+7B9B86CF44E22BF9B10A157974450198:
+  audiolen: '0x53120'
+  audiolenLoc: 1051316
+  isLooped: false
+  name: Temple of Time Ballad of the Goddess
+  numsamples: 297248
+  streams: 1
+  type: 8
+7F5BE8E992150DA9F990F50D0A1E6E94:
+  audiolen: '0x24a100'
+  audiolenLoc: 1048392
+  isLooped: false
+  name: Opening
+  numsamples: 2099064
+  streams: 1
+  type: 3
+811D3DF6CE1B911719F0E8521E8C2259:
+  audiolen: '0x368600'
+  audiolenLoc: 1054376
+  isLooped: true
+  name: Zelda's Lullaby 1
+  numsamples: 3124736
+  streams: 1
+  type: 2
+82666AF7454AEDEE4A79992DE1CBA673:
+  audiolen: '0x14d20'
+  audiolenLoc: 1051044
+  isLooped: false
+  name: TODO
+  numsamples: 74238
+  streams: 1
+  type: 9
+82AEF1119059B800D9917833B0078571:
+  audiolen: '0x5369a0'
+  audiolenLoc: 1042544
+  isLooped: true
+  name: Lanayru Sand Sea 2
+  numsamples: 4780536
+  streams: 1
+  type: 1
+839E553360ADC26D9FD3CE9EBEFC83EF:
+  audiolen: '0x6fd9a0'
+  audiolenLoc: 1043700
+  isLooped: true
+  name: Lanayru Mining Facility
+  numsamples: 3205121
+  streams: 2
+  type: 4
+84B4C84A4E53F3596B82F32BA7A084BD:
+  audiolen: '0x4c68c0'
+  audiolenLoc: 1042612
+  isLooped: true
+  name: Lanayru Sand Sea 3
+  numsamples: 4379132
+  streams: 1
+  type: 1
+88A1B9B47056EC0DB6F06F674C6D6977:
+  audiolen: '0x418ce0'
+  audiolenLoc: 1041592
+  isLooped: true
+  name: Eldin Volcano
+  numsamples: 3756716
+  streams: 1
+  type: 1
+89517CB1D1DC4986C6EE5C5FEAB15AD9:
+  audiolen: '0x6cf20'
+  audiolenLoc: 1052608
+  isLooped: false
+  name: TODO
+  numsamples: 389883
+  streams: 1
+  type: 8
+8ADD3F099CBF2777FC445C913F7AB27A:
+  audiolen: '0xc56c0'
+  audiolenLoc: 1050228
+  isLooped: false
+  name: Activating the Spirit Crest
+  numsamples: 706837
+  streams: 1
+  type: 3
+8AFB3D8EF1ED1D276E6F8AC81CB738F3:
+  audiolen: '0x87b00'
+  audiolenLoc: 1050296
+  isLooped: true
+  name: TODO
+  numsamples: 485718
+  streams: 1
+  type: 10
+8DC2F7EB759EFC39DF378E93A9C0B146:
+  audiolen: '0xe1680'
+  audiolenLoc: 1043496
+  isLooped: true
+  name: Cursed Bokoblins
+  numsamples: 807086
+  streams: 1
+  type: 1
+8FA3C6FB578749B7B27DF52C146E571C:
+  audiolen: '0x29c0a0'
+  audiolenLoc: 1041184
+  isLooped: false
+  name: Island in the Sky
+  numsamples: 2392746
+  streams: 1
+  type: 1
+914E1C32A14BF55EE64048BB4A66A4C9:
+  audiolen: '0x26940'
+  audiolenLoc: 1047984
+  isLooped: false
+  name: Spot Loftwing in Cage
+  numsamples: 137849
+  streams: 1
+  type: 8
+914E9B74FD3377BE732B427269716243:
+  audiolen: '0x352d20'
+  audiolenLoc: 1054512
+  isLooped: false
+  name: Legendary Hero Harp
+  numsamples: 3047466
+  streams: 1
+  type: 3
+9429167994A6669F8EE7B31BC2785403:
+  audiolen: '0x15ff80'
+  audiolenLoc: 1043632
+  isLooped: true
+  name: Chase the Mogma Brother
+  numsamples: 1260452
+  streams: 1
+  type: 1
+94C27DB633FFFE6C8E47FEF2277967C2:
+  audiolen: '0x297c20'
+  audiolenLoc: 1041116
+  isLooped: true
+  name: Batreaux's Theme
+  numsamples: 2377371
+  streams: 1
+  type: 1
+96026C0EBF01686D8E9D82A2212BAD58:
+  audiolen: '0xd1820'
+  audiolenLoc: 1049140
+  isLooped: true
+  name: Leaping off the Edge 1
+  numsamples: 750171
+  streams: 1
+  type: 2
+960E774EB2F14BCBE4B88F05E3908F45:
+  audiolen: '0x828ce0'
+  audiolenLoc: 1045536
+  isLooped: true
+  name: Final Ghirahim Phase 2
+  numsamples: 2493964
+  streams: 3
+  type: 7
+968EC7F04605532D598CF01BB6DC4BA3:
+  audiolen: '0x4f5be0'
+  audiolenLoc: 1043224
+  isLooped: true
+  name: Earth Temple 1
+  numsamples: 4548192
+  streams: 1
+  type: 1
+969EA3FBF67B9B5BBE856272C7952361:
+  audiolen: '0x4e2b60'
+  audiolenLoc: 1043836
+  isLooped: true
+  name: Sandship Deck
+  numsamples: 2239938
+  streams: 2
+  type: 4
+9776528CF7A8B49328012B24B2B82276:
+  audiolen: '0x853ec0'
+  audiolenLoc: 1053968
+  isLooped: false
+  name: After Demise's Death
+  numsamples: 3818289
+  streams: 1
+  type: 11
+9987519C6A07D1871D37F35B718B7190:
+  audiolen: '0x1536a0'
+  audiolenLoc: 1040436
+  isLooped: true
+  name: Harp Din's Power Background
+  numsamples: 1215489
+  streams: 1
+  type: 2
+9995F5792A99DD4D33D4E992813CD0EF:
+  audiolen: '0x78be0'
+  audiolenLoc: 1043428
+  isLooped: true
+  name: Avoiding Danger
+  numsamples: 432190
+  streams: 1
+  type: 2
+99AA0BFC82CC7CE2DDBF00422859DBF9:
+  audiolen: '0x132760'
+  audiolenLoc: 1047576
+  isLooped: true
+  name: Romance
+  numsamples: 1097433
+  streams: 1
+  type: 2
+9A35C312BF3FC1B59A9503C1928EFAC9:
+  audiolen: '0xd3120'
+  audiolenLoc: 1039824
+  isLooped: true
+  name: The Seal Weakens 1
+  numsamples: 755746
+  streams: 1
+  type: 1
+9B2C3D74615976E218838F452279FCE3:
+  audiolen: '0x365300'
+  audiolenLoc: 1039688
+  isLooped: true
+  name: The Dragons
+  numsamples: 3113310
+  streams: 1
+  type: 1
+9C1A4520DB787B4DEB030BCCC807D294:
+  audiolen: '0x2e2680'
+  audiolenLoc: 1045060
+  isLooped: true
+  name: Koloktos Phase 2
+  numsamples: 2644821
+  streams: 1
+  type: 1
+9EB3BB26B4EE4FBE668AA8F50E74359F:
+  audiolen: '0x6e520'
+  audiolenLoc: 1052268
+  isLooped: false
+  name: TODO
+  numsamples: 394832
+  streams: 1
+  type: 8
+9FA472216EA8EE30C84392FE0F5D8EF4:
+  audiolen: '0x829220'
+  audiolenLoc: 1044788
+  isLooped: true
+  name: Kumite
+  numsamples: 2494407
+  streams: 3
+  type: 6
 A06A9CA3A6A8A089EAF12324BC75F5EC:
-    name: Inside the Great Tree
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1952445
-A7F91A0FA674BCA4C4F3F01790F13824:
-    name: Romantic Groose
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1515436
-A60DEA2226A162BBA2E0996E547A855F:
-    name: Fun Fun Island # High Dive minigame
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1362160
+  audiolen: '0x221240'
+  audiolenLoc: 1041320
+  isLooped: true
+  name: Inside the Great Tree
+  numsamples: 1952445
+  streams: 1
+  type: 1
+A0C2FAF7C5DA15E1615F7D126EA4F588:
+  audiolen: '0x63240'
+  audiolenLoc: 1050160
+  isLooped: false
+  name: TODO
+  numsamples: 354816
+  streams: 1
+  type: 8
 A350D345280F55EB7C429672BC295368:
-    name: Lanayru Mining Facility
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 3205121
-A500F9516A929A789A116BE3A13BDE26:
-    name: Groose's Theme 1
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2073957
-A887C48BB676AC2F66B2AD651808B0BC:
-    name: Faron's Vocals
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 740352
+  audiolen: '0x6fd9a0'
+  audiolenLoc: 1044244
+  isLooped: true
+  name: Lanayru Mining Facility
+  numsamples: 3205121
+  streams: 2
+  type: 4
 A3906FC276610A2BE35AD037E986F574:
-    name: Crimson Loftwing 2
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1946770
+  audiolen: '0x21f8c0'
+  audiolenLoc: 1049072
+  isLooped: true
+  name: Crimson Loftwing 2
+  numsamples: 1946770
+  streams: 1
+  type: 2
+A3B58B593FDA95A45A6AF367AE751B03:
+  audiolen: '0x324640'
+  audiolenLoc: 1041728
+  isLooped: true
+  name: Tubert's Theme
+  numsamples: 2881190
+  streams: 1
+  type: 1
+A3CE90071AB2E97E77BFA908CCD87C99:
+  audiolen: '0xd1860'
+  audiolenLoc: 1047440
+  isLooped: false
+  name: Ceremony Begins
+  numsamples: 750195
+  streams: 1
+  type: 8
+A500F9516A929A789A116BE3A13BDE26:
+  audiolen: '0x2430c0'
+  audiolenLoc: 1048800
+  isLooped: true
+  name: Groose's Theme 1
+  numsamples: 2073957
+  streams: 1
+  type: 2
+A60DEA2226A162BBA2E0996E547A855F:
+  audiolen: '0x17c5c0'
+  audiolenLoc: 1040096
+  isLooped: true
+  name: Fun Fun Island
+  numsamples: 1362160
+  streams: 1
+  type: 1
 A6865E1A606411521EF47242166621C1:
-    name: Fi's Farewell
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2483711
+  audiolen: '0x2b56e0'
+  audiolenLoc: 1054104
+  isLooped: true
+  name: Fi's Farewell
+  numsamples: 2483711
+  streams: 1
+  type: 2
+A7F91A0FA674BCA4C4F3F01790F13824:
+  audiolen: '0x1a7240'
+  audiolenLoc: 1049004
+  isLooped: true
+  name: Romantic Groose
+  numsamples: 1515436
+  streams: 1
+  type: 2
+A887C48BB676AC2F66B2AD651808B0BC:
+  audiolen: '0xcec60'
+  audiolenLoc: 1052744
+  isLooped: false
+  name: Faron's Vocals
+  numsamples: 740352
+  streams: 1
+  type: 3
 AA0412939B7B4386927A412AA6024A25:
-    name: Volcano Summit 1
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 3179521
+  audiolen: '0x6ef500'
+  audiolenLoc: 1041864
+  isLooped: true
+  name: Volcano Summit 1
+  numsamples: 3179521
+  streams: 2
+  type: 4
 ACB55702EEC591D72A361E088EC1F73A:
-    name: Monster of Skyloft 2
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1273040
+  audiolen: '0x163780'
+  audiolenLoc: 1046964
+  isLooped: true
+  name: Monster of Skyloft 2
+  numsamples: 1273040
+  streams: 1
+  type: 2
 ACC7A02CCA3ED950CB21CE3B1F7311C7:
-    name: Ghirahim's Theme 2
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 3775634
+  audiolen: '0x41e180'
+  audiolenLoc: 1053492
+  isLooped: true
+  name: Ghirahim's Theme 2
+  numsamples: 3775634
+  streams: 1
+  type: 2
 AD8CEDF96286EF95A49E3469720E2373:
-    name: File Select 1
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1977176
+  audiolen: '0x228080'
+  audiolenLoc: 1039008
+  isLooped: true
+  name: File Select 1
+  numsamples: 1977176
+  streams: 1
+  type: 1
 AE7D9A868A9BB3BB46D509E78D355EC6:
-    name: Destiny's Call
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1986156
+  audiolen: '0x22a8c0'
+  audiolenLoc: 1049548
+  isLooped: true
+  name: Destiny's Call
+  numsamples: 1986156
+  streams: 1
+  type: 2
 AEAB6415CFB8CFE2BD7B514135E008EE:
-    name: Zelda Playing Harp # Ballad of the Goddess
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 686964
+  audiolen: '0xbfe00'
+  audiolenLoc: 1049276
+  isLooped: false
+  name: Zelda Playing Harp
+  numsamples: 686964
+  streams: 1
+  type: 3
 B0DF18B4AE250A163AA1F08F465DF4A7:
-    name: Groose's Theme 2
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1887589
-B3B72C083501DBF2BD5A7C0F2158E414:
-    name: Earth Temple Boss Door Cutscene Fanfare
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 161684
-B3CBB762B21B2662DF85384E76109AF9:
-    name: Lanayru Sand Sea 4
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 4379132
-B7E5D532B12FEA5D7323F3B22A7354BD:
-    name: Bug Heaven
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2903343
-B20CADCB0C9C35AB21408608E0E282FD:
-    name: Temple of Hylia
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3871777
-B32C716D4C30030BBBE8D7DC1BF84EC1:
-    name: Scaldera/Tentalus
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2486078
-B65B914B18E92AC690FD0E388F357240:
-    name: Lanayru Sand Sea 5 # past
-    isLooped: True
-    streams: 3
-    type: 6 # 13?
-    numsamples: 4379132
+  audiolen: '0x20f060'
+  audiolenLoc: 1047236
+  isLooped: true
+  name: Groose's Theme 2
+  numsamples: 1887589
+  streams: 1
+  type: 2
 B169A34947835FA1B56A463CFD4CF060:
-    name: Ghirahim Battle # Ghirahim 1
-    isLooped: True
-    streams: 3
-    type: 7
-    numsamples: 2644718
-B982E09FDE81CA199A5C06DED739F0B0:
-    name: The Seal Breaks
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 1262633
-B4398B07F3EC7009C2214515AED0CEA4:
-    name: Final Demise
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1753284
+  audiolen: '0x8a70e0'
+  audiolenLoc: 1045332
+  isLooped: true
+  name: Ghirahim Battle
+  numsamples: 2644718
+  streams: 3
+  type: 7
+B20CADCB0C9C35AB21408608E0E282FD:
+  audiolen: '0x438ea0'
+  audiolenLoc: 1042884
+  isLooped: true
+  name: Temple of Hylia
+  numsamples: 3871777
+  streams: 1
+  type: 1
+B32C716D4C30030BBBE8D7DC1BF84EC1:
+  audiolen: '0x2b61a0'
+  audiolenLoc: 1044924
+  isLooped: true
+  name: Scaldera/Tentalus
+  numsamples: 2486078
+  streams: 1
+  type: 1
 B34079AEDF9C9C567B8B13501FB1E531:
-    name: Sealed Grounds
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3717783
+  audiolen: '0x40dee0'
+  audiolenLoc: 1042748
+  isLooped: true
+  name: Sealed Grounds
+  numsamples: 3717783
+  streams: 1
+  type: 1
+B3B72C083501DBF2BD5A7C0F2158E414:
+  audiolen: '0x2d3e0'
+  audiolenLoc: 1046488
+  isLooped: false
+  name: Earth Temple Boss Door Cutscene Fanfare
+  numsamples: 161684
+  streams: 1
+  type: 8
+B3CBB762B21B2662DF85384E76109AF9:
+  audiolen: '0x98d0c0'
+  audiolenLoc: 1042204
+  isLooped: true
+  name: Lanayru Sand Sea 4
+  numsamples: 4379132
+  streams: 2
+  type: 4
+B4398B07F3EC7009C2214515AED0CEA4:
+  audiolen: '0x1e9880'
+  audiolenLoc: 1045876
+  isLooped: true
+  name: Final Demise
+  numsamples: 1753284
+  streams: 1
+  type: 1
 B51014C9B60F5F7A85903B46BCFAFDBC:
-    name: The Sky 2
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 3137438
+  audiolen: '0x6d7cc0'
+  audiolenLoc: 1039212
+  isLooped: true
+  name: The Sky 2
+  numsamples: 3137438
+  streams: 2
+  type: 5
+B65B914B18E92AC690FD0E388F357240:
+  audiolen: '0xe53880'
+  audiolenLoc: 1042476
+  isLooped: true
+  name: Lanayru Sand Sea 5
+  numsamples: 4379132
+  streams: 3
+  type: 6
 B683451F1C99DC28ED3358E84837D93D:
-    name: Gate of Time 3
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 3472725
+  audiolen: '0x792fc0'
+  audiolenLoc: 1051248
+  isLooped: true
+  name: Gate of Time 3
+  numsamples: 3472725
+  streams: 2
+  type: 5
+B7E5D532B12FEA5D7323F3B22A7354BD:
+  audiolen: '0x32a940'
+  audiolenLoc: 1040232
+  isLooped: true
+  name: Bug Heaven
+  numsamples: 2903343
+  streams: 1
+  type: 1
+B982E09FDE81CA199A5C06DED739F0B0:
+  audiolen: '0x160940'
+  audiolenLoc: 1046828
+  isLooped: false
+  name: The Seal Breaks
+  numsamples: 1262633
+  streams: 1
+  type: 3
 BA0BCE079892AFA39EC63B72C9D81560:
-    name: Mogma Theme 2
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 952780
-BA42C295566287D1E60B1C89188A3A8A:
-    name: Kikwi Short
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 284928
+  audiolen: '0x10a100'
+  audiolenLoc: 1039552
+  isLooped: true
+  name: Mogma Theme 2
+  numsamples: 952780
+  streams: 1
+  type: 1
 BA129FBC224C2E371E985C915DFEE85C:
-    name: Beedle's Air Shop
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2224662
-BC8E5301946F565ADF455FC3DB7284D4:
-    name: To the Surface
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 585624
+  audiolen: '0x26d220'
+  audiolenLoc: 1040980
+  isLooped: true
+  name: Beedle's Air Shop
+  numsamples: 2224662
+  streams: 1
+  type: 1
+BA42C295566287D1E60B1C89188A3A8A:
+  audiolen: '0x4fa20'
+  audiolenLoc: 1046284
+  isLooped: false
+  name: Kikwi Short
+  numsamples: 284928
+  streams: 1
+  type: 8
 BC69EBCDFAEC4A6B6B4C8AF4EA1BCFCF:
-    name: Mogmas at the Fire Sanctuary
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 966218
+  audiolen: '0x10dd20'
+  audiolenLoc: 1043564
+  isLooped: true
+  name: Mogmas at the Fire Sanctuary
+  numsamples: 966218
+  streams: 1
+  type: 1
+BC8E5301946F565ADF455FC3DB7284D4:
+  audiolen: '0xa3940'
+  audiolenLoc: 1048188
+  isLooped: false
+  name: To the Surface
+  numsamples: 585624
+  streams: 1
+  type: 8
 BCAF01802B2AF3E03778255F2CE7CFD5:
-    name: File Select 2
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 845117
+  audiolen: '0xec040'
+  audiolenLoc: 1040708
+  isLooped: true
+  name: File Select 2
+  numsamples: 845117
+  streams: 1
+  type: 1
 BDB93CF89F4B58C0F7DBB800511785D3:
-    name: Past at Peace
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 3181618
+  audiolen: '0x378420'
+  audiolenLoc: 1054036
+  isLooped: true
+  name: Past at Peace
+  numsamples: 3181618
+  streams: 1
+  type: 2
 BE5DE649E09A351FB82A418633F9EA67:
-    name: Lake Floria # Including Dragon Lair
-    isLooped: True
-    streams: 3
-    type: 13 # 6?
-    numsamples: 3529416
+  audiolen: '0xb8bf40'
+  audiolenLoc: 1041388
+  isLooped: true
+  name: Lake Floria
+  numsamples: 3529416
+  streams: 3
+  type: 13
 BEA72DEE936C8A52D4AEBD355BBCC5A3:
-    name: Power of the Triforce
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 859411
+  audiolen: '0xf0020'
+  audiolenLoc: 1053288
+  isLooped: false
+  name: Power of the Triforce
+  numsamples: 859411
+  streams: 1
+  type: 3
 BF007461CC06E99ABEF73A24B4406F01:
-    name: TODO
-    isLooped: True
-    streams: 1
-    type: 11
-    numsamples: 880128
-C8A002291553849876E1E2298A3EBBF9:
-    name: Lanayru Sand Sea 6
-    isLooped: True
-    streams: 3
-    type: 13 # 6?
-    numsamples: 4780536
-C9AE4139BEE913E9B9DA7F7A12AE0C49:
-    name: Lanayru Gorge
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 3844275
-C36AF100F5045EDA48BC62312CF5B40A:
-    name: Dejected Groose
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2880511
-C40F0E48D7265FBA6563271656BA5AA9:
-    name: Battlefield of Demise
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 2913599
-C47D3DF4C435739443D195F7265A7D57:
-    name: Game Over
-    isLooped: False
-    streams: 1
-    type: 3 # Might need to be 11
-    numsamples: 320343
-C919FEE884F2C5306C10E20BD7434DE7:
-    name: Pipit Interruption/Cooking 2
-    isLooped: False
-    streams: 1
-    type: 9
-    numsamples: 169984
+  audiolen: '0xf5ca0'
+  audiolenLoc: 1050500
+  isLooped: true
+  name: TODO
+  numsamples: 880128
+  streams: 1
+  type: 11
 C364192D52885E026D7F6AC030FB4A61:
-    name: Nayru's Wisdom (Goddess)
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 291108
+  audiolen: '0x515e0'
+  audiolenLoc: 1051792
+  isLooped: true
+  name: Nayru's Wisdom (Goddess)
+  numsamples: 291108
+  streams: 1
+  type: 2
+C36AF100F5045EDA48BC62312CF5B40A:
+  audiolen: '0x324340'
+  audiolenLoc: 1052200
+  isLooped: true
+  name: Dejected Groose
+  numsamples: 2880511
+  streams: 1
+  type: 2
+C40F0E48D7265FBA6563271656BA5AA9:
+  audiolen: '0x65ad60'
+  audiolenLoc: 1053900
+  isLooped: true
+  name: Battlefield of Demise
+  numsamples: 2913599
+  streams: 2
+  type: 5
+C47D3DF4C435739443D195F7265A7D57:
+  audiolen: '0x59860'
+  audiolenLoc: 1038940
+  isLooped: false
+  name: Game Over
+  numsamples: 320343
+  streams: 1
+  type: 3
+C8A002291553849876E1E2298A3EBBF9:
+  audiolen: '0xfa3b20'
+  audiolenLoc: 1042408
+  isLooped: true
+  name: Lanayru Sand Sea 6
+  numsamples: 4780536
+  streams: 3
+  type: 13
 C91365470F0545A24393818D8918CC24:
-    name: Fi's Gratitude
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2972373
+  audiolen: '0x33ddc0'
+  audiolenLoc: 1054240
+  isLooped: true
+  name: Fi's Gratitude
+  numsamples: 2972373
+  streams: 1
+  type: 2
+C919FEE884F2C5306C10E20BD7434DE7:
+  audiolen: '0x2f8e0'
+  audiolenLoc: 1048868
+  isLooped: false
+  name: Pipit Interruption/Cooking 2
+  numsamples: 169984
+  streams: 1
+  type: 9
+C9AE4139BEE913E9B9DA7F7A12AE0C49:
+  audiolen: '0x8626e0'
+  audiolenLoc: 1042680
+  isLooped: true
+  name: Lanayru Gorge
+  numsamples: 3844275
+  streams: 2
+  type: 4
 CA8E7A72FFFD1A502D9CE15F2A9615B2:
-    name: Link Puts TMS to Reset
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 917972
+  audiolen: '0x1005c0'
+  audiolenLoc: 1054172
+  isLooped: false
+  name: Link Puts TMS to Reset
+  numsamples: 917972
+  streams: 1
+  type: 8
 CB6F555F49167EB4545ACC3DF6AEE55F:
-    name: File Select Music During Cutscene after Sky Keep
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1977179
+  audiolen: '0x228080'
+  audiolenLoc: 1053220
+  isLooped: true
+  name: File Select Music During Cutscene after Sky Keep
+  numsamples: 1977179
+  streams: 1
+  type: 1
 CFDE4B15AA1C60F476F0AE0B3CEFC2B3:
-    name: Flying Practice
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2233566
+  audiolen: '0x26f9e0'
+  audiolenLoc: 1039280
+  isLooped: true
+  name: Flying Practice
+  numsamples: 2233566
+  streams: 1
+  type: 1
 D0B6C73861A3E16D0E0CB90893BDC5D0:
-    name: Pirate Stronghold
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 3569623
+  audiolen: '0x7c91a0'
+  audiolenLoc: 1042340
+  isLooped: true
+  name: Pirate Stronghold
+  numsamples: 3569623
+  streams: 2
+  type: 4
 D0CE063BC34AA25E5D4015C36AC463A7:
-    name: Collect Part of the Triforce
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 515854
-D5ABDCA5F93A0B3614D8A40D426530C3:
-    name: Entering Silent Realm
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 228065
-D6F92F983BDFE0DF4A3AABBC70F9CA33:
-    name: TODO # Imp close to ST; heroic groose
-    isLooped: True
-    streams: 2
-    type: 4 # 5?
-    numsamples: 1568666
-D7D3CF5920F7A63A3EC170DC99594177:
-    name: Volcano Ascent # Mogma Turf
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2662487
-D533DAC848B7F74ED0F8F0914D5AED8D:
-    name: Eldin Eruption
-    isLooped: True
-    streams: 3
-    type: 7
-    numsamples: 3248433
+  audiolen: '0x901a0'
+  audiolenLoc: 1052404
+  isLooped: false
+  name: Collect Part of the Triforce
+  numsamples: 515854
+  streams: 1
+  type: 8
 D38996F90153E71CF1B9CB4C6A77592B:
-    name: Inside a House
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1049745
+  audiolen: '0x125240'
+  audiolenLoc: 1039076
+  isLooped: true
+  name: Inside a House
+  numsamples: 1049745
+  streams: 1
+  type: 1
+D533DAC848B7F74ED0F8F0914D5AED8D:
+  audiolen: '0xaa09e0'
+  audiolenLoc: 1042000
+  isLooped: true
+  name: Eldin Eruption
+  numsamples: 3248433
+  streams: 3
+  type: 7
 D56625A904070BC96317AC6BE2DBF08A:
-    name: Volcano Summit 2
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 3179521
+  audiolen: '0x6ef500'
+  audiolenLoc: 1041932
+  isLooped: true
+  name: Volcano Summit 2
+  numsamples: 3179521
+  streams: 2
+  type: 4
+D5ABDCA5F93A0B3614D8A40D426530C3:
+  audiolen: '0x3fc40'
+  audiolenLoc: 1054784
+  isLooped: false
+  name: Entering Silent Realm
+  numsamples: 228065
+  streams: 1
+  type: 8
+D6F92F983BDFE0DF4A3AABBC70F9CA33:
+  audiolen: '0x36bf00'
+  audiolenLoc: 1045672
+  isLooped: true
+  name: TODO
+  numsamples: 1568666
+  streams: 2
+  type: 4
+D7D3CF5920F7A63A3EC170DC99594177:
+  audiolen: '0x2e7580'
+  audiolenLoc: 1041660
+  isLooped: true
+  name: Volcano Ascent
+  numsamples: 2662487
+  streams: 1
+  type: 1
 DA9B8075949093F0220C3FFBB316EA79:
-    name: Present at Peace
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 3443109
+  audiolen: '0x3c1440'
+  audiolenLoc: 1053424
+  isLooped: true
+  name: Present at Peace
+  numsamples: 3443109
+  streams: 1
+  type: 2
 DAC90E423F1B090FF59C8CAC013F8EA8:
-    name: Groosenator
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 1239719
+  audiolen: '0x2b4480'
+  audiolenLoc: 1053832
+  isLooped: true
+  name: Groosenator
+  numsamples: 1239719
+  streams: 2
+  type: 4
 DB62247585100C3944F044EF336EBEC8:
-    name: Disrupted Ritual
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 1454592
+  audiolen: '0x196260'
+  audiolenLoc: 1050636
+  isLooped: false
+  name: Disrupted Ritual
+  numsamples: 1454592
+  streams: 1
+  type: 3
 DC9518799C1E7474ECEE92C8AF5E3024:
-    name: Harp Nayru's Wisdom Background
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1415185
+  audiolen: '0x18b280'
+  audiolenLoc: 1040504
+  isLooped: true
+  name: Harp Nayru's Wisdom Background
+  numsamples: 1415185
+  streams: 1
+  type: 2
 DCAA6EFB54D294DAEDF5DE128F517322:
-    name: Tubert's Theme with Tubert Appearing # First enter thrill digger cave
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3640998
+  audiolen: '0x3f87e0'
+  audiolenLoc: 1041796
+  isLooped: true
+  name: Tubert's Theme with Tubert Appearing
+  numsamples: 3640998
+  streams: 1
+  type: 1
 DFAD8872EB2C33071F1CAB598F817FA6:
-    name: TODO # Imprisoned destroys Temple?
-    isLooped: False
-    streams: 1
-    type: 11
-    numsamples: 376000
-E0B9789E355788D90AA8C21BC0269E0F:
-    name: Leaping off the Edge 2
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 865242
-E1AAFB2193A7A65C1E6B6EC3EC2551A1:
-    name: Ghirahim's Theme 3
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 3775634
-E1C740E39B1BC2D15E30E65FA071FCCC:
-    name: Din's Power
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1946624
+  audiolen: '0x69100'
+  audiolenLoc: 1052812
+  isLooped: false
+  name: TODO
+  numsamples: 376000
+  streams: 1
+  type: 11
 E02E59E50DB6AEF7D353823C92ABE0B1:
-    name: Guld's Theme
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1475070
-E2AA27988B667A453710BBB40743AA35:
-    name: Zelda's Intervention 1
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 840264
-E3EE1545547C64C568747C6FDAB0AF59:
-    name: Ghirahim's Sword Fades
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 473504
+  audiolen: '0x19bde0'
+  audiolenLoc: 1046692
+  isLooped: true
+  name: Guld's Theme
+  numsamples: 1475070
+  streams: 1
+  type: 1
 E04DCD3417B3487FE52CFF1CD2498BA5:
-    name: Zelda's Intervention 2
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 940617
-E5BCF6380A591891E1AD442A62DF3CDE:
-    name: Bamboo Cutting
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1470730
+  audiolen: '0x106ac0'
+  audiolenLoc: 1047508
+  isLooped: true
+  name: Zelda's Intervention 2
+  numsamples: 940617
+  streams: 1
+  type: 1
 E06C17D7BEF9304FA06B488D53F96025:
-    name: The Goddess Sword
-    isLooped: True
-    streams: 2
-    type: 5
-    numsamples: 3472726
-E6D79EC3A651727B264333EC5261ACC6:
-    name: Harp after Earth Temple
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 432000
-E7A78FF2A126FEA482B98BE3F393A131:
-    name: Earth Temple 2
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 4161120
-E8A1D1558367630C042B61EAA04634D6:
-    name: Demise's Theme
-    isLooped: True
-    streams: 2
-    type: 5 # 4?
-    numsamples: 1053042
-E9A147FAD41D6946C031A8D2CAEEE826:
-    name: Din's Silent Realm
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1985713
-E71C0C0EC1177B62C6738DF1450F8AC0:
-    name: Farore's Silent Realm
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2618970
-E761EFFD942BA595361C5D3FA35CDE95:
-    name: Farore's Courage (Goddess)
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 348453
-E808BFC7AA7D9178CB942A716BD8100D:
-    name: Koloktos/Moldarach Battle Start # TODO: check (tentalus?)
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 480745
-E9692C8981E064BEFE19BFC52B910709:
-    name: TODO
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 285326
+  audiolen: '0x792fc0'
+  audiolenLoc: 1049888
+  isLooped: true
+  name: The Goddess Sword
+  numsamples: 3472726
+  streams: 2
+  type: 5
+E0B9789E355788D90AA8C21BC0269E0F:
+  audiolen: '0x1e3360'
+  audiolenLoc: 1048664
+  isLooped: true
+  name: Leaping off the Edge 2
+  numsamples: 865242
+  streams: 2
+  type: 5
 E116979770001C073CD6C48D4B00D4B6:
-    name: TODO # Collect part of the triforce?
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 365574
+  audiolen: '0x66280'
+  audiolenLoc: 1051724
+  isLooped: false
+  name: TODO
+  numsamples: 365574
+  streams: 1
+  type: 8
+E1AAFB2193A7A65C1E6B6EC3EC2551A1:
+  audiolen: '0x41e180'
+  audiolenLoc: 1050092
+  isLooped: true
+  name: Ghirahim's Theme 3
+  numsamples: 3775634
+  streams: 1
+  type: 2
+E1C740E39B1BC2D15E30E65FA071FCCC:
+  audiolen: '0x21f840'
+  audiolenLoc: 1051996
+  isLooped: true
+  name: Din's Power
+  numsamples: 1946624
+  streams: 1
+  type: 2
+E2AA27988B667A453710BBB40743AA35:
+  audiolen: '0xeaa80'
+  audiolenLoc: 1048732
+  isLooped: true
+  name: Zelda's Intervention 1
+  numsamples: 840264
+  streams: 1
+  type: 1
+E3EE1545547C64C568747C6FDAB0AF59:
+  audiolen: '0x84480'
+  audiolenLoc: 1050024
+  isLooped: false
+  name: Ghirahim's Sword Fades
+  numsamples: 473504
+  streams: 1
+  type: 8
+E5BCF6380A591891E1AD442A62DF3CDE:
+  audiolen: '0x19aaa0'
+  audiolenLoc: 1039960
+  isLooped: true
+  name: Bamboo Cutting
+  numsamples: 1470730
+  streams: 1
+  type: 1
+E6D79EC3A651727B264333EC5261ACC6:
+  audiolen: '0x78b20'
+  audiolenLoc: 1050432
+  isLooped: false
+  name: Harp after Earth Temple
+  numsamples: 432000
+  streams: 1
+  type: 8
+E71C0C0EC1177B62C6738DF1450F8AC0:
+  audiolen: '0x2db320'
+  audiolenLoc: 1044584
+  isLooped: true
+  name: Farore's Silent Realm
+  numsamples: 2618970
+  streams: 1
+  type: 1
+E761EFFD942BA595361C5D3FA35CDE95:
+  audiolen: '0x61600'
+  audiolenLoc: 1051452
+  isLooped: true
+  name: Farore's Courage (Goddess)
+  numsamples: 348453
+  streams: 1
+  type: 2
+E7A78FF2A126FEA482B98BE3F393A131:
+  audiolen: '0x489b00'
+  audiolenLoc: 1043292
+  isLooped: true
+  name: Earth Temple 2
+  numsamples: 4161120
+  streams: 1
+  type: 1
+E808BFC7AA7D9178CB942A716BD8100D:
+  audiolen: '0x864c0'
+  audiolenLoc: 1048256
+  isLooped: false
+  name: Koloktos/Moldarach Battle Start
+  numsamples: 480745
+  streams: 1
+  type: 8
+E8A1D1558367630C042B61EAA04634D6:
+  audiolen: '0x24c140'
+  audiolenLoc: 1045740
+  isLooped: true
+  name: Demise's Theme
+  numsamples: 1053042
+  streams: 2
+  type: 5
+E9692C8981E064BEFE19BFC52B910709:
+  audiolen: '0x4fc20'
+  audiolenLoc: 1047100
+  isLooped: false
+  name: TODO
+  numsamples: 285326
+  streams: 1
+  type: 8
+E9A147FAD41D6946C031A8D2CAEEE826:
+  audiolen: '0x22a6c0'
+  audiolenLoc: 1044652
+  isLooped: true
+  name: Din's Silent Realm
+  numsamples: 1985713
+  streams: 1
+  type: 1
 EBCA372A7F74FF719C61817851F47308:
-    name: Pillar Opening Sound Effect
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 497215
+  audiolen: '0x8ae40'
+  audiolenLoc: 1048052
+  isLooped: false
+  name: Pillar Opening Sound Effect
+  numsamples: 497215
+  streams: 1
+  type: 8
 EBD700052611E3D2C00FAD5E06EB0432:
-    name: Scaldera Appears
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 971969
+  audiolen: '0x10f6e0'
+  audiolenLoc: 1046624
+  isLooped: false
+  name: Scaldera Appears
+  numsamples: 971969
+  streams: 1
+  type: 3
 EBF77EBC148114AB2740D55917EE9A5B:
-    name: Levias Appears 2
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1077405
+  audiolen: '0x12cde0'
+  audiolenLoc: 1053560
+  isLooped: true
+  name: Levias Appears 2
+  numsamples: 1077405
+  streams: 1
+  type: 2
 ED6ACFD3E6C90E5F71F15BCA0BDAF2AD:
-    name: Skykeep Falls and Kills Imprisoned
-    isLooped: False
-    streams: 1
-    type: 11
-    numsamples: 1515250
+  audiolen: '0x1a7180'
+  audiolenLoc: 1053356
+  isLooped: false
+  name: Skykeep Falls and Kills Imprisoned
+  numsamples: 1515250
+  streams: 1
+  type: 11
 EEAE03E86C37A3EC154FA52B84474106:
-    name: TODO # Fi's theme?
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 4082967
-F0CFB457B1B214AA054E2B0281365BAB:
-    name: Cave
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1182711
-F2E8D789E703D3719C3FDBDCFB5BAA37:
-    name: Skyloft
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 3036439
-F30ED52FE88E8AA38C2876ADCC1ABDF6:
-    name: Link's Nightmare 2
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 2656000
-F43CB87F13CFFA96D8F554643FA213EF:
-    name: Wing Ceremony
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 1957593
-F50A9156CEDED747CFAC558816F61F39:
-    name: Cymbal Roll
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 192000
-F63D5DB51DE748A3729628C659397A49:
-    name: Tadtone Melody # After the tadtones
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 750201
-F74DC14D721C78FC31690B15F1891A87:
-    name: Victory!
-    isLooped: False
-    streams: 1
-    type: 8
-    numsamples: 354966
-F1631E879C00AE14082918012987F7F9:
-    name: Bilocyte
-    isLooped: True
-    streams: 2
-    type: 4
-    numsamples: 2136775
-F2815ADBDE30C00084B10966B9DCEC83:
-    name: Ghirahim Battle 2
-    isLooped: True
-    streams: 3
-    type: 7
-    numsamples: 2644718
-F38973DD8740EFFDF88B80FDDFF78C28:
-    name: TODO # Grooseland/Rejected Groose?
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 1858918
+  audiolen: '0x8e7b60'
+  audiolenLoc: 1049820
+  isLooped: true
+  name: TODO
+  numsamples: 4082967
+  streams: 2
+  type: 4
 F066470CDB5729C2F7CE8E7AA4598517:
-    name: Sandship Escape
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2494407
+  audiolen: '0x2b86a0'
+  audiolenLoc: 1043972
+  isLooped: true
+  name: Sandship Escape
+  numsamples: 2494407
+  streams: 1
+  type: 1
+F0CFB457B1B214AA054E2B0281365BAB:
+  audiolen: '0x14a400'
+  audiolenLoc: 1042952
+  isLooped: true
+  name: Cave
+  numsamples: 1182711
+  streams: 1
+  type: 1
+F1631E879C00AE14082918012987F7F9:
+  audiolen: '0x4a9200'
+  audiolenLoc: 1045264
+  isLooped: true
+  name: Bilocyte
+  numsamples: 2136775
+  streams: 2
+  type: 4
+F2815ADBDE30C00084B10966B9DCEC83:
+  audiolen: '0x8a70e0'
+  audiolenLoc: 1045400
+  isLooped: true
+  name: Ghirahim Battle 2
+  numsamples: 2644718
+  streams: 3
+  type: 7
+F2E8D789E703D3719C3FDBDCFB5BAA37:
+  audiolen: '0x69f6e0'
+  audiolenLoc: 1040776
+  isLooped: true
+  name: Skyloft
+  numsamples: 3036439
+  streams: 2
+  type: 4
+F30ED52FE88E8AA38C2876ADCC1ABDF6:
+  audiolen: '0x2e5880'
+  audiolenLoc: 1049956
+  isLooped: false
+  name: Link's Nightmare 2
+  numsamples: 2656000
+  streams: 1
+  type: 3
+F38973DD8740EFFDF88B80FDDFF78C28:
+  audiolen: '0x207040'
+  audiolenLoc: 1051384
+  isLooped: true
+  name: TODO
+  numsamples: 1858918
+  streams: 1
+  type: 2
+F43CB87F13CFFA96D8F554643FA213EF:
+  audiolen: '0x222940'
+  audiolenLoc: 1039348
+  isLooped: true
+  name: Wing Ceremony
+  numsamples: 1957593
+  streams: 1
+  type: 1
+F50A9156CEDED747CFAC558816F61F39:
+  audiolen: '0x35b20'
+  audiolenLoc: 1052064
+  isLooped: false
+  name: Cymbal Roll
+  numsamples: 192000
+  streams: 1
+  type: 8
+F63D5DB51DE748A3729628C659397A49:
+  audiolen: '0xd1860'
+  audiolenLoc: 1046420
+  isLooped: false
+  name: Tadtone Melody
+  numsamples: 750201
+  streams: 1
+  type: 3
+F74DC14D721C78FC31690B15F1891A87:
+  audiolen: '0x63300'
+  audiolenLoc: 1038872
+  isLooped: false
+  name: Victory!
+  numsamples: 354966
+  streams: 1
+  type: 8
 F750507AF4CB3758DECE7CEC185EBD91:
-    name: Skyview 3
-    isLooped: True
-    streams: 3
-    type: 6
-    numsamples: 2655726
-FC7FC814FDEEF4B1CBE7C75DE98CC628:
-    name: Tadtone Trial
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 2458758
+  audiolen: '0x8b0400'
+  audiolenLoc: 1043088
+  isLooped: true
+  name: Skyview 3
+  numsamples: 2655726
+  streams: 3
+  type: 6
 FC171FA0CE86ACE09E11E975E2707740:
-    name: Emerging from a Silent Realm
-    isLooped: False
-    streams: 1
-    type: 11
-    numsamples: 86564
+  audiolen: '0x18420'
+  audiolenLoc: 1054852
+  isLooped: false
+  name: Emerging from a Silent Realm
+  numsamples: 86564
+  streams: 1
+  type: 11
+FC7FC814FDEEF4B1CBE7C75DE98CC628:
+  audiolen: '0x2ae7a0'
+  audiolenLoc: 1041524
+  isLooped: true
+  name: Tadtone Trial
+  numsamples: 2458758
+  streams: 1
+  type: 1
 FCAD8EE6043E7C56C0F47767D56F9788:
-    name: Beginning's End
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 1770610
+  audiolen: '0x1ee620'
+  audiolenLoc: 1054444
+  isLooped: false
+  name: Beginning's End
+  numsamples: 1770610
+  streams: 1
+  type: 3
 FCEFA835D14A2C5D6936D9FBC5B2531B:
-    name: Romance 2 # TODO: check
-    isLooped: True
-    streams: 1
-    type: 2
-    numsamples: 2592585
-FD85B0A15338D4A32EF6A31C4EC97F63:
-    name: Faron Woods
-    isLooped: True
-    streams: 1
-    type: 1
-    numsamples: 3631104
+  audiolen: '0x2d3d60'
+  audiolenLoc: 1048596
+  isLooped: true
+  name: Romance 2
+  numsamples: 2592585
+  streams: 1
+  type: 2
 FD23764935B647CC33C62D9E36D3E8B3:
-    name: Eldin's Vocals
-    isLooped: False
-    streams: 1
-    type: 3
-    numsamples: 755712
+  audiolen: '0xd30e0'
+  audiolenLoc: 1052540
+  isLooped: false
+  name: Eldin's Vocals
+  numsamples: 755712
+  streams: 1
+  type: 3
+FD85B0A15338D4A32EF6A31C4EC97F63:
+  audiolen: '0x3f5be0'
+  audiolenLoc: 1041252
+  isLooped: true
+  name: Faron Woods
+  numsamples: 3631104
+  streams: 1
+  type: 1

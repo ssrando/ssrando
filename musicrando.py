@@ -20,6 +20,7 @@ def music_rando(self):
     NON_SHUFFLED_TYPES = ["type10", "type11"]
     self.music = {}
     self.music_pool = {}
+    # self.loop_patch_list = []
     rng = random.Random()
     rng.seed(self.rando.options["seed"])
 
@@ -39,7 +40,7 @@ def music_rando(self):
         del self.music_pool["type2"]  # Type 2 is currently shuffled with 1
 
         for track, trackinfo in self.musiclist.items():
-            tracklen = trackinfo["numsamples"]
+            trackname = trackinfo["name"]
             if trackinfo["type"] == 2:
                 tracktype = "type1"
             else:
@@ -47,76 +48,17 @@ def music_rando(self):
 
             if tracktype in NON_SHUFFLED_TYPES:
                 self.music[track] = track
-            elif tracktype in ["type1", "type4", "type5", "type6", "type7"]:
-                if self.rando.options["limit-vanilla-music"] == True:
-                    if (
-                        len(
-                            [
-                                t
-                                for t in self.music_pool[tracktype]
-                                if self.musiclist[t]["numsamples"] < tracklen
-                            ]
-                        )
-                        != 0
-                    ):
-                        self.music[track] = rng.choice(
-                            [
-                                t
-                                for t in self.music_pool[tracktype]
-                                if self.musiclist[t]["numsamples"] < tracklen
-                            ]
-                        )
-                        if self.rando.options["music-rando"] == "Shuffled":
-                            self.music_pool[tracktype].remove(self.music[track])
-                    elif (
-                        len(
-                            [
-                                t
-                                for t in self.music_pool[tracktype]
-                                if self.musiclist[t]["numsamples"] <= tracklen
-                            ]
-                        )
-                        != 0
-                    ):
-                        self.music[track] = rng.choice(
-                            [
-                                t
-                                for t in self.music_pool[tracktype]
-                                if self.musiclist[t]["numsamples"] <= tracklen
-                            ]
-                        )
-                        if self.rando.options["music-rando"] == "Shuffled":
-                            self.music_pool[tracktype].remove(self.music[track])
-                    else:
-                        self.music[track] = rng.choice(self.music_pool[tracktype])
-                        if self.rando.options["music-rando"] == "Shuffled":
-                            self.music_pool[tracktype].remove(self.music[track])
-                else:
-                    if (
-                        len(
-                            [
-                                t
-                                for t in self.music_pool[tracktype]
-                                if self.musiclist[t]["numsamples"] <= tracklen
-                            ]
-                        )
-                        != 0
-                    ):
-                        self.music[track] = rng.choice(
-                            [
-                                t
-                                for t in self.music_pool[tracktype]
-                                if self.musiclist[t]["numsamples"] <= tracklen
-                            ]
-                        )
-                        if self.rando.options["music-rando"] == "Shuffled":
-                            self.music_pool[tracktype].remove(self.music[track])
-                    else:
-                        self.music[track] = rng.choice(self.music_pool[tracktype])
-                        if self.rando.options["music-rando"] == "Shuffled":
-                            self.music_pool[tracktype].remove(self.music[track])
             else:
-                self.music[track] = rng.choice(self.music_pool[tracktype])
+                if self.rando.options["limit-vanilla-music"] == True:
+                    self.music[track] = rng.choice(
+                        [
+                            t
+                            for t in self.music_pool[tracktype]
+                            if self.musiclist[t]["name"] != trackname
+                        ]
+                    )
+                else:
+                    self.music[track] = rng.choice(self.music_pool[tracktype])
                 if self.rando.options["music-rando"] == "Shuffled":
                     self.music_pool[tracktype].remove(self.music[track])
 
@@ -125,3 +67,23 @@ def music_rando(self):
             (self.rando.actual_extract_path / "DATA" / "files" / "Sound" / "wzs" / sm),
             (self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / m),
         )
+        if m == sm:
+            print(self.musiclist[m]["name"] + ": " + self.musiclist[sm]["name"])
+
+    # patch WZSound.brsar for length requirements
+    with open(
+        self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "WZSound.brsar",
+        "r+b",
+    ) as brsar:
+        for original_track, new_track in self.music.items():
+            new_track_len = int.to_bytes(
+                int(self.musiclist[new_track]["audiolen"], base=16), 0x4, "big"
+            )
+            tracklenLoc = self.musiclist[original_track]["audiolenLoc"]
+            brsar.seek(tracklenLoc)
+            brsar.write(new_track_len)
+
+    """ for track in self.loop_patch_list:
+        with open(self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / track, 'r+b') as mfile:
+            mfile.seek(0x61) # Loop flag offset
+            mfile.write(0x01.to_bytes(1, "big")) """
