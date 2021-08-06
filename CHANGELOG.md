@@ -3,8 +3,13 @@
 ## Dev
 ### Options
 ### Changes
+- Added Boko Base Checks to Volcano Summit
+- Added hint for Stone of Trial to Impa in the past
+- Added dialogue option to Rupin to make him buy different treasures
 ### Bugfixes
 - Fix Softlock in FS, this removes the mogma cutscene after the double magmanos fight
+- Fix a bug with trial rando hinting to the wrong trial
+- Fix some buggy logic in Fire Sanctuary
 
 ## 1.0.7
 ### Options
