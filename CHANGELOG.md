@@ -3,6 +3,11 @@
 ## Dev
 ### Options
 ### Changes
+### Bugfixes
+
+## 1.0.7.1
+### Options
+### Changes
 - Added Boko Base Checks to Volcano Summit
 - Added hint for Stone of Trial to Impa in the past
 - Added dialogue option to Rupin to make him buy different treasures
