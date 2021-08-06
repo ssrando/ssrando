@@ -526,7 +526,7 @@
     - Shuffled
   default: None
   permalink: false
-  help: If enabled, most music will be randomized. Shuffled is less stable and music can stop abruptly.
+  help: If enabled, music will be randomized.
   ui: option_music_rando
 - name: Limit Vanilla Music
   command: limit-vanilla-music
