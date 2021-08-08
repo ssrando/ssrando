@@ -67,8 +67,6 @@ def music_rando(self):
             (self.rando.actual_extract_path / "DATA" / "files" / "Sound" / "wzs" / sm),
             (self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / m),
         )
-        if m == sm:
-            print(self.musiclist[m]["name"] + ": " + self.musiclist[sm]["name"])
 
     # patch WZSound.brsar for length requirements
     with open(
