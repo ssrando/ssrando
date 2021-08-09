@@ -69,10 +69,9 @@ def music_rando(self):
         )
 
     # patch WZSound.brsar for length requirements
-    with open(
-        self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "WZSound.brsar",
-        "r+b",
-    ) as brsar:
+    with (
+        self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "WZSound.brsar"
+    ).open("r+b") as brsar:
         for original_track, new_track in self.music.items():
             new_track_len = int.to_bytes(
                 int(self.musiclist[new_track]["audiolen"], base=16), 0x4, "big"
