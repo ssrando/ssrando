@@ -882,6 +882,8 @@ class GamePatcher:
         self.add_required_dungeon_patches()
         if (self.placement_file.options["song-hints"]) != "None":
             self.add_trial_hint_patches()
+        if self.placement_file.options["impa-sot-hint"]:
+            self.add_impa_hint()
         self.add_stone_hint_patches()
         self.handle_oarc_add_remove()
         self.add_rando_hash()
@@ -1402,6 +1404,24 @@ class GamePatcher:
                     "text": break_lines(inventory_text + " " + useful_text, 44),
                 }
             )
+
+    def add_impa_hint(self):
+        sot_region = "Stone of Trials not placed monkaS"
+        for location in self.placement_file.item_locations.keys():
+            item = self.placement_file.item_locations[location]
+            if item == "Stone of Trials":
+                sot_region = Logic.split_location_name_by_zone(location)[0]
+        self.eventpatches["502-CenterFieldBack"].append(
+            {
+                "name": "Past Impa SoT Hint",
+                "type": "textpatch",
+                "index": 6,
+                "text": break_lines(
+                    f"Do not fear for <b<Zelda>>. I will watch over her here. Go now to "
+                    f"<b<{sot_region}>>. The <r<item you need to fulfill your destiny>> is there."
+                ),
+            }
+        )
 
     def add_stone_hint_patches(self):
         for hintname, hintdef in self.rando.stonehint_definitions.items():

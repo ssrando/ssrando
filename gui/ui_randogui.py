@@ -987,6 +987,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_26.addLayout(self.verticalLayout_27)
 
+        self.option_impa_sot_hint = QCheckBox(self.verticalLayoutWidget_6)
+        self.option_impa_sot_hint.setObjectName(u"option_impa_sot_hint")
+
+        self.verticalLayout_26.addWidget(self.option_impa_sot_hint)
+
         self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_26.addItem(self.verticalSpacer_10)
@@ -1093,7 +1098,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(4)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1213,6 +1218,7 @@ class Ui_MainWindow(object):
         self.label_for_option_item_hints.setText(QCoreApplication.translate("MainWindow", u"Item Hints", None))
         self.groupBox_11.setTitle(QCoreApplication.translate("MainWindow", u"Other Hints", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Song Hints", None))
+        self.option_impa_sot_hint.setText(QCoreApplication.translate("MainWindow", u"Impa Stone of Trials Hint", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"Hints", None))
         self.randomize_item.setText(QCoreApplication.translate("MainWindow", u"<--", None))
         self.start_with_item.setText(QCoreApplication.translate("MainWindow", u"-->", None))

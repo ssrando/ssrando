@@ -205,6 +205,8 @@ class RandoGUI(QMainWindow):
         self.update_ui_for_settings()
         self.set_option_description(None)
 
+        self.ui.tabWidget.setCurrentIndex(0)
+
         if "NOGIT" in VERSION:
             self.error_msg = QErrorMessage()
             self.error_msg.showMessage(
