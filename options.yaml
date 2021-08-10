@@ -522,3 +522,10 @@
   default: true
   help: Enables Impa in the Past to give a hint to the location of the Stone of Trials
   ui: option_impa_sot_hint
+- name: Tunic Swap
+  command: tunic-swap
+  type: boolean
+  default: false
+  permalink: false # this should be purely cosmetic
+  help: Swaps Link's casual clothes for the hero's tunic and vice versa
+  ui: option_tunic_swap

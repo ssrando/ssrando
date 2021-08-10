@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.1
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -142,6 +142,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_34.addItem(self.verticalSpacer_14)
 
+        self.groupBox_14 = QGroupBox(self.tab)
+        self.groupBox_14.setObjectName(u"groupBox_14")
+        self.groupBox_14.setGeometry(QRect(350, 120, 131, 111))
+        self.option_tunic_swap = QCheckBox(self.groupBox_14)
+        self.option_tunic_swap.setObjectName(u"option_tunic_swap")
+        self.option_tunic_swap.setGeometry(QRect(10, 20, 111, 23))
         self.tabWidget.addTab(self.tab, "")
         self.tab_3 = QWidget()
         self.tab_3.setObjectName(u"tab_3")
@@ -1088,6 +1094,8 @@ class Ui_MainWindow(object):
         self.option_out_placement_file.setText(QCoreApplication.translate("MainWindow", u"Generate Placement File", None))
         self.groupBox_13.setTitle(QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
+        self.groupBox_14.setTitle(QCoreApplication.translate("MainWindow", u"Cosmetics", None))
+        self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Setup", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"What areas of the world should progress items appear?", None))
         self.progression_skyloft.setText(QCoreApplication.translate("MainWindow", u"Skyloft", None))
