@@ -24,7 +24,7 @@ Just open the generated `SOUE01.wbfs` in dolphin and enjoy!
 5)
 On Linux:
 
-    python3 -mpip install -r requirements.txt
+    python3 -m pip install -r requirements.txt
 
 On Windows:
 
@@ -61,13 +61,13 @@ After running the randomizer once, a folder `oarc` will be created, which has Li
 To modify them, you need an external program. To include make sure the models get actually replaced when running the randomizer, save the modified arcs (the name **has** to stay the same) in the `arc-replacements` folder, which needs to be located next to the randomizer executable
 
 ### Tests
-`python3 -mpytest test`  
+`python3 -m pytest test`  
 Make sure to have the extracted game prepared as stated in Installing, otherwise they won't work
 
 ### Executable
 To build the executable, you need PyInstaller installed:
 
-    python3 -mpip install pyinstaller
+    python3 -m pip install pyinstaller
 
 Then, build the executable using
 
