@@ -100,6 +100,16 @@ BOSS_KEY_CHECKS = [
     "Fire Sanctuary - Boss Key",
 ]
 
+END_OF_DUNGEON_CHECKS = OrderedDict(
+    [
+        ("Skyview","Skyview - Ruby Tablet"),
+        ("Earth Temple","Earth Temple - Amber Tablet"),
+        ("Lanayru Mining Facility","Lanayru Mining Facility - Harp"),
+        ("Ancient Cistern","Ancient Cistern - Goddess Longsword"),
+        ("Sandship","Sandship - Nayru's Flame"),
+        ("Fire Sanctuary","Fire Sanctuary - Din's Flame"),
+    ]
+)
 ALL_TYPES = [
     "skyloft",
     "sky",

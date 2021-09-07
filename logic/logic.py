@@ -26,6 +26,7 @@ from .constants import (
     MAP_CHECKS,
     SMALL_KEY_CHECKS,
     BOSS_KEY_CHECKS,
+    END_OF_DUNGEON_CHECKS,
     POTENTIALLY_REQUIRED_DUNGEONS,
     ALL_TYPES,
 )
@@ -188,6 +189,27 @@ class Logic:
                     self.set_prerandomization_item_location(shop_check, orig_item)
                 else:
                     self.racemode_ban_location(shop_check)
+
+        starting_sword_count = {
+            "Swordless": 0,
+            "Practice Sword": 1,
+            "Goddess Sword": 2,
+            "Goddess Longsword": 3,
+            "Goddess White Sword": 4,
+            "Master Sword": 5,
+            "True Master Sword": 6,
+        }
+        #yes this is defined twice, idk why but it only works when i do that. sorry
+        swords_left = 6 - starting_sword_count[self.rando.options["starting-sword"]]
+
+        if (self.rando.options["sword-dungeon-reward"] and ("dungeon" not in self.rando.banned_types)):
+            if swords_left < self.rando.options["required-dungeon-count"]:
+                sworded_dungeons = self.rando.rng.sample(self.required_dungeons,k=swords_left)
+            else:
+                sworded_dungeons = self.required_dungeons.copy()
+            for dungeon in sworded_dungeons:
+                self.set_prerandomization_item_location(END_OF_DUNGEON_CHECKS[dungeon], "Progressive Sword")
+
 
         self.dungeon_progress_items = DUNGEON_PROGRESS_ITEMS.copy()
         self.dungeon_nonprogress_items = DUNGEON_NONPROGRESS_ITEMS.copy()
@@ -368,6 +390,13 @@ class Logic:
             )
         )
 
+
+        #key_pieces_TEMP = 0
+        #for _ in range(key_pieces_TEMP):
+        #    PROGRESS_ITEMS.append("Key Piece")
+        #groundwork for key piece startflags later, which idk how to do
+
+
         starting_sword_count = {
             "Swordless": 0,
             "Practice Sword": 1,
@@ -380,6 +409,10 @@ class Logic:
 
         for _ in range(starting_sword_count[self.rando.options["starting-sword"]]):
             starting_items.append("Progressive Sword")
+
+        #for _ in range(key_pieces_TEMP):
+        #    starting_items.append("Key Piece")
+        #same as above
 
         # if not self.rando.options.get('randomize-sailcloth',False):
         #   starting_items.append('Sailcloth')
