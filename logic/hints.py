@@ -5,7 +5,7 @@ from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
 from typing import List
 
-from .constants import POTENTIALLY_REQUIRED_DUNGEONS, SILENT_REALMS, SILENT_REALM_CHECKS
+from .constants import POTENTIALLY_REQUIRED_DUNGEONS, SILENT_REALMS, SILENT_REALM_CHECKS, END_OF_DUNGEON_CHECKS
 from util import textbox_utils
 
 ALWAYS_REQUIRED_LOCATIONS = [
@@ -295,6 +295,8 @@ class Hints:
         hintable_items = HINTABLE_ITEMS.copy()
         item_hints = []
         self.logic.rando.rng.shuffle(hintable_items)
+        for i in self.logic.sworded_dungeon_locations:
+            hinted_locations.append(i)
         for i in range(self.logic.rando.options["item-hints"]):
             hinted_item = hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
