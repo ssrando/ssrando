@@ -533,5 +533,5 @@
   command: sword-dungeon-reward
   type: boolean
   default: false
-  help: If activated, the final check of a required dungeon will be a sword (if possible). If there aren't enough swords to place, some required dungeons will not force a sword at the end.
+  help: If activated, the final check of a required dungeon will be a sword (if possible). If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
   ui: option_sword_dungeon_reward

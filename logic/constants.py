@@ -102,14 +102,25 @@ BOSS_KEY_CHECKS = [
 
 END_OF_DUNGEON_CHECKS = OrderedDict(
     [
-        ("Skyview","Skyview - Ruby Tablet"),
-        ("Earth Temple","Earth Temple - Amber Tablet"),
-        ("Lanayru Mining Facility","Lanayru Mining Facility - Harp"),
-        ("Ancient Cistern","Ancient Cistern - Goddess Longsword"),
-        ("Sandship","Sandship - Nayru's Flame"),
-        ("Fire Sanctuary","Fire Sanctuary - Din's Flame"),
+        ("Skyview", "Skyview - Ruby Tablet"),
+        ("Earth Temple", "Earth Temple - Amber Tablet"),
+        ("Lanayru Mining Facility", "Lanayru Mining Facility - Harp"),
+        ("Ancient Cistern", "Ancient Cistern - Goddess Longsword"),
+        ("Sandship", "Sandship - Nayru's Flame"),
+        ("Fire Sanctuary", "Fire Sanctuary - Din's Flame"),
     ]
 )
+
+STARTING_SWORD_COUNT = {
+    "Swordless": 0,
+    "Practice Sword": 1,
+    "Goddess Sword": 2,
+    "Goddess Longsword": 3,
+    "Goddess White Sword": 4,
+    "Master Sword": 5,
+    "True Master Sword": 6,
+}
+
 ALL_TYPES = [
     "skyloft",
     "sky",

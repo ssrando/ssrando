@@ -29,6 +29,7 @@ from .constants import (
     END_OF_DUNGEON_CHECKS,
     POTENTIALLY_REQUIRED_DUNGEONS,
     ALL_TYPES,
+    STARTING_SWORD_COUNT,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -190,27 +191,24 @@ class Logic:
                 else:
                     self.racemode_ban_location(shop_check)
 
-        starting_sword_count = {
-            "Swordless": 0,
-            "Practice Sword": 1,
-            "Goddess Sword": 2,
-            "Goddess Longsword": 3,
-            "Goddess White Sword": 4,
-            "Master Sword": 5,
-            "True Master Sword": 6,
-        }
-        #yes this is defined twice, idk why but it only works when i do that. sorry
-        swords_left = 6 - starting_sword_count[self.rando.options["starting-sword"]]
+        swords_left = 6 - STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]
         self.sworded_dungeon_locations = []
-        if (self.rando.options["sword-dungeon-reward"] and ("dungeon" not in self.rando.banned_types)):
+        if self.rando.options["sword-dungeon-reward"] and (
+            "dungeon" not in self.rando.banned_types
+        ):
             if swords_left < self.rando.options["required-dungeon-count"]:
-                sworded_dungeons = self.rando.rng.sample(self.required_dungeons,k=swords_left)
+                sworded_dungeons = self.rando.rng.sample(
+                    self.required_dungeons, k=min(4, swords_left)
+                )  # if swords_left > 4 and there are >4 required dungeons, seeds may be impossible or homogenous
             else:
-                sworded_dungeons = self.required_dungeons.copy()
-            self.sworded_dungeon_locations = [check for dungeon, check in END_OF_DUNGEON_CHECKS.items() if dungeon in sworded_dungeons]
+                sworded_dungeons = self.required_dungeons
+            self.sworded_dungeon_locations = [
+                check
+                for dungeon, check in END_OF_DUNGEON_CHECKS.items()
+                if dungeon in sworded_dungeons
+            ]
             for location in self.sworded_dungeon_locations:
                 self.set_prerandomization_item_location(location, "Progressive Sword")
-
 
         self.dungeon_progress_items = DUNGEON_PROGRESS_ITEMS.copy()
         self.dungeon_nonprogress_items = DUNGEON_NONPROGRESS_ITEMS.copy()
@@ -391,17 +389,7 @@ class Logic:
             )
         )
 
-        starting_sword_count = {
-            "Swordless": 0,
-            "Practice Sword": 1,
-            "Goddess Sword": 2,
-            "Goddess Longsword": 3,
-            "Goddess White Sword": 4,
-            "Master Sword": 5,
-            "True Master Sword": 6,
-        }
-
-        for _ in range(starting_sword_count[self.rando.options["starting-sword"]]):
+        for _ in range(STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]):
             starting_items.append("Progressive Sword")
 
         # if not self.rando.options.get('randomize-sailcloth',False):
