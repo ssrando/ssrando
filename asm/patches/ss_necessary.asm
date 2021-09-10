@@ -184,6 +184,9 @@ nop ; normally only sets the flag, if the item was a key piece, nop the branch
 .close
 
 .open "d_a_obj_warpNP.rel"
+.org 0x234
+li r3, 0xC98 ; in ctor, give 4 bytes more memory
+
 .org 0x22C0 ; function, that gives the trial item
 stwu r1,-16(r1)
 mflr r0
@@ -197,6 +200,7 @@ lbz r3, 0x4(r31) ; first byte of params1 is itemid
 li r4, -1 ; set pouch slot param to -1, otherwise pouch items break
 li r5, 0 ; 3rd arg for giveItem function call
 bl giveItem ; give the item for the trial
+stw r3, 0xC94(r31)
 lwz r0,20(r1)
 lwz r31,12(r1)
 mtlr r0
@@ -204,9 +208,9 @@ addi r1,r1,16
 blr
 
 .org 0x2344 ; function, that runs after giving the item, if the event is triggered immediately, the item won't be given
-bl check_should_delay_walk_out_event ; check current counter after giving item
-cmpwi r3, 2 ; only trigger item after a few frames
-ble 0x23A4
+bl check_should_delay_walk_out_event ; check whether or not the item get event started
+cmpwi r3, 0 ; function returns 0 if returning from the trial should be delayed
+beq 0x23A4
 nop
 
 ; the trial storyflags got changed, cause they used the same one as the items associated with it

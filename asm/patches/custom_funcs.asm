@@ -325,13 +325,19 @@ b Reloader__triggerExit
 .org @NextFreeSpace
 .global check_should_delay_walk_out_event
 check_should_delay_walk_out_event:
-mr r4, r3
-lbz r3, 0xc7d(r4) ; counter, in the original actor this was the itemid to wait on (all code that uses it is skipped)
-cmpwi r3, 5 ; only increment it to an arbitrary amoung
-bgelr
-addi r3, r3, 1 ; increment
-stb r3, 0xc7d(r4) ; store counter back
-
+; 0xC94 (rando exclusive field at the end of the warp struct) either holds:
+; 0, if there is no pointer stored, this should not happen and will crash :)
+; some pointer to the item actor that the trial gave to the player
+; 1 if the item event has started. This is fine because 1 is not a valid pointer
+mr r4, r3 ; r3 is trial pointer
+lwz r3, 0xC94(r4)
+cmplwi r3, 1
+beqlr
+lbz r3, 0xB0F(r3) ; some byte from the actorevent idk, was 0 before event and then 1
+cmplwi r3, 0
+beqlr
+li r3, 1
+stw r3, 0xC94(r4)
 blr
 .close
 
