@@ -26,13 +26,13 @@ DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict(
 )
 
 ENTRANCE_CONNECTIONS = {
-    "Dungeon Entrance In Deep Woods": "Skyview",
-    "Dungeon Entrance In Eldin Volcano": "Earth Temple",
-    "Dungeon Entrance In Lanayru Desert": "Lanayru Mining Facility",
-    "Dungeon Entrance In Lake Floria": "Ancient Cistern",
-    "Dungeon Entrance In Sand Sea": "Sandship",
-    "Dungeon Entrance In Volcano Summit": "Fire Sanctuary",
-    "Dungeon Entrance On Skyloft": "Sky Keep",
+    "Dungeon Entrance in Deep Woods": "Skyview",
+    "Dungeon Entrance in Eldin Volcano": "Earth Temple",
+    "Dungeon Entrance in Lanayru Desert": "Lanayru Mining Facility",
+    "Dungeon Entrance in Lake Floria": "Ancient Cistern",
+    "Dungeon Entrance in Sand Sea": "Sandship",
+    "Dungeon Entrance in Volcano Summit": "Fire Sanctuary",
+    "Dungeon Entrance on Skyloft": "Sky Keep",
 }
 
 SILENT_REALMS = OrderedDict(
@@ -46,10 +46,10 @@ SILENT_REALMS = OrderedDict(
 
 SILENT_REALM_CHECKS = OrderedDict(
     [
-        ("Skyloft Silent Realm - Stone of Trials", "Trial Gate on Skyloft"),
-        ("Faron Silent Realm - Water Scale", "Trial Gate in Faron Woods"),
-        ("Lanayru Silent Realm - Clawshots", "Trial Gate in Lanayru Desert"),
-        ("Eldin Silent Realm - Fireshield Earrings", "Trial Gate in Eldin Volcano"),
+        ("Skyloft Silent Realm - Trial Reward", "Trial Gate on Skyloft"),
+        ("Faron Silent Realm - Trial Reward", "Trial Gate in Faron Woods"),
+        ("Lanayru Silent Realm - Trial Reward", "Trial Gate in Lanayru Desert"),
+        ("Eldin Silent Realm - Trial Reward", "Trial Gate in Eldin Volcano"),
     ]
 )
 
