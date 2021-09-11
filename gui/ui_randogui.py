@@ -535,6 +535,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_10.addWidget(self.option_empty_unrequired_dungeons)
 
+        self.option_sword_dungeon_reward = QCheckBox(self.verticalLayoutWidget_7)
+        self.option_sword_dungeon_reward.setObjectName(u"option_sword_dungeon_reward")
+
+        self.verticalLayout_10.addWidget(self.option_sword_dungeon_reward)
+
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_10.addItem(self.verticalSpacer_4)
@@ -1153,6 +1158,7 @@ class Ui_MainWindow(object):
         self.label_for_option_small_key_mode.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))
         self.label_for_option_boss_key_mode.setText(QCoreApplication.translate("MainWindow", u"Boss Keys", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Empty Unrequired Dungeons", None))
+        self.option_sword_dungeon_reward.setText(QCoreApplication.translate("MainWindow", u"Force Sword Dungeon Reward", None))
         self.groupBox_8.setTitle(QCoreApplication.translate("MainWindow", u"Endgame Bosses", None))
         self.option_imp_2.setText(QCoreApplication.translate("MainWindow", u"Skip Imprisoned 2", None))
         self.option_horde.setText(QCoreApplication.translate("MainWindow", u"Horde", None))

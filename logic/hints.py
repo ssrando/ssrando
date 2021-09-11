@@ -295,6 +295,7 @@ class Hints:
         hintable_items = HINTABLE_ITEMS.copy()
         item_hints = []
         self.logic.rando.rng.shuffle(hintable_items)
+        hinted_locations.extend(self.logic.sworded_dungeon_locations)
         for i in range(self.logic.rando.options["item-hints"]):
             hinted_item = hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
