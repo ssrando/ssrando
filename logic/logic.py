@@ -197,7 +197,8 @@ class Logic:
             "dungeon" not in self.rando.banned_types
         ):
             sworded_dungeons = self.rando.rng.sample(
-                self.required_dungeons, k=min(4, swords_left, self.rando.options["required-dungeon-count"])
+                self.required_dungeons,
+                k=min(4, swords_left, self.rando.options["required-dungeon-count"]),
             )  # if swords_left > 4 and there are >4 required dungeons, seeds may be impossible or homogenous
             self.sworded_dungeon_locations = [
                 check
