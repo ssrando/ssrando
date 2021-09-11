@@ -1,73 +1,10 @@
 from collections import OrderedDict
 import sys
+import argparse
 
 from ssrando import Randomizer, PlandoRandomizer, VERSION
 from logic.placement_file import PlacementFile
 from options import OPTIONS, Options
-
-
-def process_command_line_options(options):
-    if "help" in options:
-        print("Skyward Sword Randomizer Version " + VERSION)
-        print("Available command line options:\n")
-        longest_option = max(len(option_name) for option_name in OPTIONS.keys())
-        for option_name, option in OPTIONS.items():
-            print(" --" + option_name.ljust(longest_option) + " " + option["help"])
-        # permalink
-        print()
-        print(
-            " --"
-            + "permalink".ljust(longest_option)
-            + " "
-            + "Specify a permlink, which includes the settings. This is set first, other options may override these settings"
-        )
-        # bulk options
-        print()
-        print(
-            " --"
-            + "bulk".ljust(longest_option)
-            + " "
-            + "Runs the randomizer in bulk mode, to generate lots of spoiler logs. Implies --dry-run"
-        )
-        print(
-            " --"
-            + "low".ljust(longest_option)
-            + " "
-            + "(bulk mode only) specify the lower end of seeds to generate (inclusive, default: 1)"
-        )
-        print(
-            " --"
-            + "high".ljust(longest_option)
-            + " "
-            + "(bulk mode only) specify the higher end of seeds to generate (inclusive, default: 100)"
-        )
-        print(
-            " --"
-            + "threads".ljust(longest_option)
-            + " "
-            + "(bulk mode only) specify the number of threads to use (default: 1)"
-        )
-        print()
-        print(
-            " --"
-            + "placement-file".ljust(longest_option)
-            + " "
-            + "specify the location of a placement file json that is used directly as a plandomizer, overrides all other options"
-        )
-        return None
-    elif "version" in options:
-        print(VERSION)
-        return None
-    else:
-        cleaned_options = Options()
-        if "permalink" in options:
-            cleaned_options.update_from_permalink(options.pop("permalink"))
-        problems = cleaned_options.update_from_cmd_args(options)
-        if problems:
-            print("ERROR: invalid options:")
-            for problem in problems:
-                print(problem)
-        return cleaned_options
 
 
 def get_ranges(start, end, parts):
@@ -79,17 +16,96 @@ def get_ranges(start, end, parts):
 if "NOGIT" in VERSION:
     print("WARNING: Running from source, but without git, this is highly discouraged")
 
-# use command line parameters
-cmd_line_args = OrderedDict()
-for arg in sys.argv[1:]:
-    arg_parts = arg.split("=", 1)
-    option_name = arg_parts[0]
-    assert option_name.startswith("--")
-    if len(arg_parts) == 1:
-        cmd_line_args[option_name[2:]] = "true"
-    else:
-        cmd_line_args[option_name[2:]] = arg_parts[1]
-plcmt_file_name = cmd_line_args.pop("placement-file", None)
+# add options
+parser = argparse.ArgumentParser(
+    description="Skyward Sword Randomizer Version " + VERSION
+)
+parser.add_argument(
+    "--permalink",
+    help="Specify a permlink, which includes the settings. This is set first, other options may override these settings",
+)
+parser.add_argument(
+    "--placement-file",
+    help="Specify the location of a placement file json that is used directly as a plandomizer, overrides all other options",
+)
+parser.add_argument(
+    "--version",
+    help="Prints the version and exits",
+    action="store_true",
+)
+seed_opts = parser.add_argument_group("seed options")
+
+for optname, opt in OPTIONS.items():
+    args = {
+        "help": f'(default: {opt["default"]}) {opt["help"]}',
+    }
+    if opt["type"] == "boolean":
+        args["const"] = "true"
+        args["nargs"] = "?"
+        args["metavar"] = "BOOL"
+    elif opt["type"] == "int":
+        args["type"] = int
+        if "min" in opt and "max" in opt:
+            args["choices"] = range(opt["min"], opt["max"] + 1)
+    elif opt["type"] == "singlechoice":
+        args["choices"] = opt["choices"]
+        # --max-batreaux-reward being the only int choice...
+        if isinstance(opt["default"], int):
+            args["type"] = int
+    seed_opts.add_argument(f"--{optname}", **args)
+
+bulk_opts = parser.add_argument_group("bulk options")
+bulk_opts.add_argument(
+    "--bulk",
+    help="Runs the randomizer in bulk mode, to generate lots of spoiler logs. Implies --dry-run",
+    action="store_true",
+)
+bulk_opts.add_argument(
+    "--low",
+    help="specify the lower end of seeds to generate (inclusive)",
+    default=1,
+    type=int,
+    dest="bulk_low",
+)
+bulk_opts.add_argument(
+    "--high",
+    help="specify the higher end of seeds to generate (inclusive)",
+    default=100,
+    type=int,
+    dest="bulk_high",
+)
+bulk_opts.add_argument(
+    "--threads",
+    help="specify the number of threads to use",
+    default=1,
+    type=int,
+    dest="bulk_threads",
+)
+
+parsed_args = parser.parse_args()
+if parsed_args.version:
+    print(VERSION)
+    exit(0)
+options = Options()
+if not parsed_args.permalink is None:
+    options.update_from_permalink(parsed_args.permalink)
+all_errors = []
+for optname, opt in OPTIONS.items():
+    optval = parsed_args.__getattribute__(optname.replace("-", "_"))
+    if not optval is None:
+        value, validation_errors = Options.parse_and_validate_option(optval, opt)
+        if len(validation_errors) > 0:
+            all_errors.extend(validation_errors)
+        else:
+            options.set_option(optname, value)
+
+if len(all_errors) > 0:
+    print("Options ERROR:")
+    for err in all_errors:
+        print(err)
+    exit(1)
+
+plcmt_file_name = parsed_args.placement_file
 if plcmt_file_name is not None:
     plcmt_file = PlacementFile()
     with open(plcmt_file_name) as f:
@@ -110,15 +126,14 @@ if plcmt_file_name is not None:
     exit(0)
 
 bulk_mode = False
-if cmd_line_args.pop("bulk", False):
+if parsed_args.bulk:
     bulk_mode = True
-    bulk_low = int(cmd_line_args.pop("low", "1"))
-    bulk_high = int(cmd_line_args.pop("high", "100"))
+    bulk_low = parsed_args.bulk_low
+    bulk_high = parsed_args.bulk_high
     if bulk_high < bulk_low:
         print("high has to be higher than low!")
         exit(1)
-    bulk_threads = int(cmd_line_args.pop("threads", "1"))
-options = process_command_line_options(cmd_line_args)
+    bulk_threads = parsed_args.bulk_threads
 if options is not None:
     if bulk_mode:
         from multiprocessing import Process
