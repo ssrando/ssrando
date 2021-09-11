@@ -932,11 +932,11 @@ Knight Academy - Owlan's Gift:
 Knight Academy - Crystal in Sparring Hall:
   Beetle
 
-Can Play Pumpkin Pull:
+Can Play Pumpkin Archery:
   Bow
 
-Knight Academy - Pumpkin Pull - 600 Points:
-  Can Play Pumpkin Pull
+Knight Academy - Pumpkin Archery - 600 Points:
+  Can Play Pumpkin Archery
 
 ## Goddess statue
 
@@ -951,37 +951,37 @@ Can Access Dungeon Entrance on Skyloft:
 
 ## Inside Bazaar
 
-Skyloft Central - Potion Lady's Gift:
+Central Skyloft - Potion Lady's Gift:
   Nothing
 
 Unlocked Endurance Potion:
   Can Beat Dungeon Entrance in Lanayru Desert
   # LMF only for Potion right now, in entrance rando this means beating the dungeon that is inside LMF
 
-Skyloft Central - Bazaar Goddess Chest:
+Central Skyloft - Bazaar Goddess Chest:
   Goddess Cube in Ancient Harbour
 
 ## Skyloft Main (counter-clockwise around the Bazaar)
 
-Skyloft Central - Crystal inbetween Wooden Planks:
+Central Skyloft - Crystal inbetween Wooden Planks:
   Nothing
 
-Skyloft Central - Crystal on West Cliff:
+Central Skyloft - Crystal on West Cliff:
   Nothing
 
-Skyloft Central - West Cliff Goddess Chest:
+Central Skyloft - West Cliff Goddess Chest:
   Goddess Cube on West Great Tree near Exit
 
-Skyloft Central - Crystal in Parrow and Orielle's House:
+Central Skyloft - Crystal in Parrow and Orielle's House:
   Nothing
 
-Skyloft Central - Parrow's Gift:
+Central Skyloft - Parrow's Gift:
   Nothing
 
-Skyloft Central - Parrow's Crystals:
+Central Skyloft - Parrow's Crystals:
   Can Save Orielle
 
-Skyloft Central - Crystal on Light Tower:
+Central Skyloft - Crystal on Light Tower:
   Nothing
 
 Can Open Trial Gate on Skyloft:
@@ -993,19 +993,19 @@ Can Open Trial Gate on Skyloft:
 Skyloft Silent Realm - Trial Reward:
   Can Access Skyloft Silent Realm
 
-Skyloft Central - Peater/Peatrice's Crystals:
+Central Skyloft - Peater/Peatrice's Crystals:
   Nothing
 
-Skyloft Central - Wryna's Crystals:
+Central Skyloft - Wryna's Crystals:
   Nothing
 
-Skyloft Central - Shed Chest:
+Central Skyloft - Shed Chest:
   Water Scale
 
-Skyloft Central - Shed Goddess Chest:
+Central Skyloft - Shed Goddess Chest:
   Goddess Cube in Eldin Slide & Water Scale
 
-Skyloft Central - Item in Bird Nest:
+Central Skyloft - Item in Bird Nest:
   (Clawshots & Gust Bellows) | (Can Access Beedle's Shop Wherever & Gust Bellows & (Beetle | Whip))
   # It's possible to get the item from Beetle's airship (you have to use beetle or whip to reach it)
 
@@ -1032,29 +1032,29 @@ Can Enter Waterfall Cave:
 Can Enter Waterfall Cave at Night:
   Can Cut Tree
 
-Skyloft Central - Waterfall Cave First Chest:
+Central Skyloft - Waterfall Cave First Chest:
   Nothing
 
-Skyloft Central - Waterfall Cave Second Chest:
+Central Skyloft - Waterfall Cave Second Chest:
   Nothing
 
-Skyloft Central - Crystal after Waterfall Cave:
+Central Skyloft - Crystal after Waterfall Cave:
   Can Enter Waterfall Cave at Night | Beetle
 
-Skyloft Central - Crystal in Loftwing Prison:
+Central Skyloft - Crystal in Loftwing Prison:
   Can Enter Waterfall Cave at Night | Beetle
 
-Skyloft Central - Gossip Stone on Floating Island:
+Central Skyloft - Gossip Stone on Floating Island:
   Clawshots
 
-Skyloft Central - Crystal on Waterfall Island:
+Central Skyloft - Crystal on Waterfall Island:
   Clawshots | Hook Beetle
   # Can reach with Tough Beetle
 
-Skyloft Central - Waterfall Goddess Chest:
+Central Skyloft - Waterfall Goddess Chest:
   Goddess Cube in Pirate Stronghold & Clawshots
 
-Skyloft Central - Floating Island Goddess Chest:
+Central Skyloft - Floating Island Goddess Chest:
   Goddess Cube in Lake Floria & Clawshots
 
 ## Beedle's Shop
@@ -1175,7 +1175,7 @@ Can Play Dodoh's High Dive:
   Can Retrieve Party Wheel
   # Give Dodoh his Party Wheel
 
-Sky - Dodoh's High Dive - 500 Rupees:
+Sky - Fun Fun Island Minigame - 500 Rupees:
   Can Play Dodoh's High Dive
 
 Sky - Goddess Chest under Fun Fun Island:
@@ -1322,15 +1322,15 @@ Thunderhead - East Island Chest:
 Thunderhead - First Goddess Chest on Mogma Mitts Island:
   Can Access Thunderhead & Goddess Cube inside Volcano Summit & Mogma Mitts
 
-## Bug Rock
+## Bug Heaven
 
 Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
   Can Access Thunderhead & Bug Net
 
-Thunderhead - Bug Rock Goddess Chest:
+Thunderhead - Bug Heaven Goddess Chest:
   Can Access Thunderhead & Goddess Cube in Summit Waterfall
 
-Thunderhead - Gossip Stone near Bug Rock:
+Thunderhead - Gossip Stone near Bug Heaven:
   Can Access Thunderhead
 
 ### Faron

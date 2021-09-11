@@ -105,7 +105,7 @@ class Randomizer(BaseRandomizer):
         # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
         # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
         # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
-        # self.logic.set_prerandomization_item_location("Skyloft Central - Item in Bird Nest", "Sea Chart")
+        # self.logic.set_prerandomization_item_location("Central Skyloft - Item in Bird Nest", "Sea Chart")
         # self.logic.set_prerandomization_item_location("Skyloft Academy - Practice Sword", "LanayruCaves Small Key")
 
     def _get_rando_hash(self):

@@ -11,15 +11,15 @@ from util import textbox_utils
 ALWAYS_REQUIRED_LOCATIONS = [
     "Thunderhead - Levias' Teaching",
     "Sky - Kina's Crystals",
-    "Skyloft Central - Peater/Peatrice's Crystals",
+    "Central Skyloft - Peater/Peatrice's Crystals",
     "Batreaux - 80 Crystals",
 ]
 
 SOMETIMES_LOCATIONS = [
     "Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05",
-    "Knight Academy - Pumpkin Pull - 600 Points",
+    "Knight Academy - Pumpkin Archery - 600 Points",
     "Sky - Lumpy Pumpkin Harp Minigame",
-    "Sky - Dodoh's High Dive - 500 Rupees",
+    "Sky - Fun Fun Island Minigame - 500 Rupees",
     "Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes",
     "Batreaux - 70 Crystals Second Reward",
     "Batreaux - 70 Crystals",
@@ -27,7 +27,7 @@ SOMETIMES_LOCATIONS = [
     "Knight Academy - Owlan's Crystals",
     "Skyloft Village - Sparrot's Crystals",
     "Lanayru - Chest on top of Lanayru Mining Facility",
-    "Skyloft Central - Waterfall Goddess Chest",  # stronghold cube
+    "Central Skyloft - Waterfall Goddess Chest",  # stronghold cube
     "Sky - Beedle's Island Goddess Chest",  # goddess cube in ToT area
 ]
 
