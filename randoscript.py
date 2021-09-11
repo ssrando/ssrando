@@ -25,7 +25,7 @@ def main():
     )
     parser.add_argument(
         "--permalink",
-        help="Specify a permlink, which includes the settings. This is set first, other options may override these settings",
+        help="Specify a permalink, which includes the settings. This is set first, other options may override these settings",
     )
     parser.add_argument(
         "--placement-file",
@@ -90,19 +90,19 @@ def main():
         print(VERSION)
         exit(0)
     options = Options()
-    if not parsed_args.permalink is None:
+    if parsed_args.permalink is not None:
         options.update_from_permalink(parsed_args.permalink)
     all_errors = []
     for optname, opt in OPTIONS.items():
         optval = parsed_args.__getattribute__(optname.replace("-", "_"))
-        if not optval is None:
+        if optval is not None:
             value, validation_errors = Options.parse_and_validate_option(optval, opt)
-            if len(validation_errors) > 0:
+            if validation_errors:
                 all_errors.extend(validation_errors)
             else:
                 options.set_option(optname, value)
 
-    if len(all_errors) > 0:
+    if all_errors:
         print("Options ERROR:")
         for err in all_errors:
             print(err)
@@ -164,7 +164,7 @@ def main():
             progress_steps = 0
 
             def progress_callback(action):
-                global progress_steps
+                nonlocal progress_steps
                 print(f"{action} {progress_steps}/{total_progress_steps}")
                 progress_steps += 1
 
