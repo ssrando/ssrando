@@ -1005,7 +1005,7 @@ Skyloft Central - Shed Chest:
 Skyloft Central - Shed Goddess Chest:
   Goddess Cube in Eldin Slide & Water Scale
 
-Skyloft Central - Freestanding Item in Bird Nest:
+Skyloft Central - Item in Bird Nest:
   (Clawshots & Gust Bellows) | (Can Access Beedle's Shop Wherever & Gust Bellows & (Beetle | Whip))
   # It's possible to get the item from Beetle's airship (you have to use beetle or whip to reach it)
 
@@ -1410,13 +1410,13 @@ Can Open Door to Lake Floria:
   # Scene Flag 7x02 is "Cutscene of the Doors to Lake Floria opening"
   # Scene Flag 7x04 is "Doors to Lake Floria opened"
 
-Faron Woods - Freestanding Item on Tree:
+Faron Woods - Item on Tree:
   Can Access Most of Faron Woods
 
 Faron Woods - Slingshot:
   Can Access Most of Faron Woods & Can Defeat Bokoblins
 
-Faron Woods - Freestanding Item behind Bombable Boulder:
+Faron Woods - Item behind Bombable Boulder:
   Can Access Most of Faron Woods
   # Scene Flag 1x80 is "Blow Up Rock containing HP"
 
@@ -1575,7 +1575,7 @@ Goddess Cube near Mogma Turf Entrance:
 Eldin Volcano - Chest behind Bombable Wall near Cliff:
   Can Access First Part of Eldin
 
-Eldin Volcano - Freestanding Item on Cliff:
+Eldin Volcano - Item on Cliff:
   Can Access First Part of Eldin
 
 # Second part
@@ -1664,7 +1664,7 @@ Mogma Turf - Chest behind Bombable Wall at Entrance:
 Mogma Turf - Sand Slide Chest:
   Can Access Second Part of Mogma Turf
 
-Mogma Turf - Digging Mitts:
+Mogma Turf - Digging Mitts Fight:
   Can Access Mogma Turf & Can Defeat Bokoblins
 
 Mogma Turf - Chest behind Bombable Wall in Fire Maze:
@@ -1707,7 +1707,7 @@ Volcano Summit - Chest behind Bombable Wall in Waterfall Area:
 Volcano Summit - Gossip Stone outside Fire Sanctuary:
   Can Get Past First Frog
 
-Volcano Summit - Freestanding Item behind Digging:
+Volcano Summit - Item behind Digging:
   Can Get Past First Frog & Mogma Mitts
 
 Goddess Cube near FS Entrance:
@@ -1811,7 +1811,7 @@ Lanayru - Chest near Party Wheel:
 Lanayru - Chest before Hook Beetle Fight:
   Can Access Lanayru Desert
 
-Lanayru - Hook Beetle:
+Lanayru - Hook Beetle Fight:
   Can Access Lanayru Desert & (Bomb Bag | Hook Beetle | Can RBM 3x10)
   # You can use bomb flowers to defeat the technoblins
   # Scene Flag 3x10 is "Timeshift Stone for Hook Beetle fight revealed"
@@ -2177,7 +2177,7 @@ Can Hit Switch for Skyview Behind Bars:
   Beetle | Slingshot
   # Trick shot with slingshot works
 
-Skyview - Freestanding Item behind Bars:
+Skyview - Item behind Bars:
   Can Get to Skyview Second Part & (Can Hit Switch for Skyview Behind Bars | Whip)
   # Does Whip always work ?
 

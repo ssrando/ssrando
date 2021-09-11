@@ -85,7 +85,7 @@ Knight Academy - In Zelda's Closet:
   type: skyloft, miscellaneous
   Paths:
     - stage/F001r/r6/l0/chest/32 #sceneflag
-Skyloft Central - Freestanding Item in Bird Nest:
+Skyloft Central - Item in Bird Nest:
   original item: Baby's Rattle
   type: skyloft, freestanding
   Paths:
@@ -546,7 +546,7 @@ Sealed Grounds - Zelda's Blessing:
     - oarc/F404/l1
 
 
-Faron Woods - Freestanding Item on Tree:
+Faron Woods - Item on Tree:
   original item: Heart Piece
   type: faron, freestanding
   Paths:
@@ -562,7 +562,7 @@ Faron Woods - Deep Woods Chest:
   type: faron, miscellaneous
   Paths:
     - stage/F101/r0/l0/TBox/74
-Faron Woods - Freestanding Item behind Bombable Boulder:
+Faron Woods - Item behind Bombable Boulder:
   original item: Heart Piece
   type: faron, freestanding, bombable
   Paths:
@@ -620,7 +620,7 @@ Eldin Volcano - Chest behind Bombable Wall near Cliff:
   type: eldin, bombable
   Paths:
     - stage/F200/r2/l0/TBox/73
-Eldin Volcano - Freestanding Item on Cliff:
+Eldin Volcano - Item on Cliff:
   original item: Heart Piece
   type: eldin, freestanding
   Paths:
@@ -673,7 +673,7 @@ Mogma Turf - Sand Slide Chest:
   type: eldin, miscellaneous
   Paths:
     - stage/F210/r0/l0/TBox/68
-Mogma Turf - Digging Mitts:
+Mogma Turf - Digging Mitts Fight:
   original item: Progressive Mitts
   type: eldin, combat
   Paths:
@@ -696,7 +696,7 @@ Volcano Summit - Boko Base Pouch Chest:
   type: eldin, miscellaneous
   Paths:
     - stage/F201_1/r0/l0/TBox/71
-Volcano Summit - Freestanding Item behind Digging:
+Volcano Summit - Item behind Digging:
   original item: Heart Piece
   type: eldin, freestanding
   Paths:
@@ -739,7 +739,7 @@ Lanayru - Chest before Hook Beetle Fight:
   type: lanayru, miscellaneous
   Paths:
     - stage/F300/r0/l0/TBox/84
-Lanayru - Hook Beetle:
+Lanayru - Hook Beetle Fight:
   original item: Progressive Beetle
   type: lanayru, combat
   Paths:
@@ -889,7 +889,7 @@ Skyview - Beetle:
   Paths:
     - stage/D100/r10/l1/TBox/65
     - stage/D100/r10/l2/TBox/65
-Skyview - Freestanding Item behind Bars:
+Skyview - Item behind Bars:
   original item: Heart Piece
   type: faron, dungeon
   Paths:
