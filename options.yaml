@@ -158,7 +158,7 @@
     - Dungeons
     - Dungeons + Sky Keep
   default: None
-  help: "Shuffles entrances with one another. Options: None, Dungeons, Dungeons + Sky Keep"
+  help: "Shuffles entrances with one another."
   ui: option_randomize_entrances
 - name: Randomize Silent Realms
   command: randomize-trials
