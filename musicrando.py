@@ -9,14 +9,6 @@ def music_rando(self):
     with (RANDO_ROOT_PATH / "music.yaml").open() as f:
         self.musiclist = yaml.safe_load(f)
 
-    try:
-        shutil.rmtree(
-            self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs"
-        )
-    except:
-        pass
-    os.mkdir(self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs")
-
     NON_SHUFFLED_TYPES = ["type10", "type11"]
     self.music = {}
     self.music_pool = {}
@@ -62,13 +54,7 @@ def music_rando(self):
                 if self.rando.options["music-rando"] == "Shuffled":
                     self.music_pool[tracktype].remove(self.music[track])
 
-    for m, sm in self.music.items():
-        shutil.copyfile(
-            (self.rando.actual_extract_path / "DATA" / "files" / "Sound" / "wzs" / sm),
-            (self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / m),
-        )
-
-    # patch WZSound.brsar for length requirements
+    # patch WZSound.brsar for filename and length requirements
     with (
         self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "WZSound.brsar"
     ).open("r+b") as brsar:
@@ -79,6 +65,9 @@ def music_rando(self):
             tracklenLoc = self.musiclist[original_track]["audiolenLoc"]
             brsar.seek(tracklenLoc)
             brsar.write(new_track_len)
+            filenameLoc = self.musiclist[original_track]["filenameLoc"]
+            brsar.seek(filenameLoc)
+            brsar.write(new_track.encode("ASCII"))
 
     """ for track in self.loop_patch_list:
         with open(self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / track, 'r+b') as mfile:
