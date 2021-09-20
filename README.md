@@ -11,7 +11,7 @@ You can access most resources on the [Skyward Sword Randomizer website](https://
 
 - Something to run the randomized game:
     + An emulator (Dolphin is the most widely used one)
-    + A Wii, homebrewed to accept running games from a SD card, a USB flash drive or an external hard drive (for homebrewing, visit [this website](https://wii.guide))
+    + A Wii, homebrewed to accept running games from a SD card, a USB drive or an external hard drive (for homebrewing, visit [this website](https://wii.guide))
 
 ## Installation
 
@@ -45,7 +45,7 @@ If you didn't follow these rules, your progress cannot be restored; delete the s
 1. Just open the generated `SOUE01.wbfs` in Dolphin
 
 ### For console
-1. Move the generated `SOUE01.wbfs` to your SD card / USB flash drive / external disk in this folder:
+1. Move the generated `SOUE01.wbfs` to your SD card / USB drive / external disk in this folder:
 
     `/wbfs/The Legend of Zelda Skyward Sword [SOUE01]/`
 2. Launch the USB loader, you should see the game as "The Legend of Zelda Skyward Sword"
