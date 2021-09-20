@@ -125,7 +125,7 @@
   name: Sailing the Sand Sea
   numsamples: 3306116
   streams: 3
-  type: 13
+  type: 6
 12F7A68A86516E2DE04D90C0D286D423:
   audiolen: '0x3ad120'
   audiolenLoc: 1042816
@@ -146,7 +146,7 @@
   audiolen: '0x6645e0'
   audiolenLoc: 1044108
   isLooped: true
-  name: Fire Sanctuary 1
+  name: Fire Sanctuary Room in Sky Keep
   numsamples: 2930685
   streams: 2
   type: 5
@@ -405,7 +405,7 @@
   name: Monster of Skyloft 1
   numsamples: 980483
   streams: 2
-  type: 5
+  type: 12
 3F3A60AAA99746A58B3EDB148D1F5FC1:
   audiolen: '0xc4e80'
   audiolenLoc: 1050772
@@ -530,7 +530,7 @@
   audiolen: '0x6645e0'
   audiolenLoc: 1043360
   isLooped: true
-  name: Fire Sanctuary 2
+  name: Fire Sanctuary
   numsamples: 2930685
   streams: 2
   type: 4
@@ -546,7 +546,7 @@
   audiolen: '0x328340'
   audiolenLoc: 1044516
   isLooped: true
-  name: Goddess's Silent Realm
+  name: Hylia's Silent Realm
   numsamples: 2894853
   streams: 1
   type: 1
@@ -810,9 +810,9 @@
   audiolen: '0xa6d280'
   audiolenLoc: 1042136
   isLooped: true
-  name: Lanayru Sand Sea 1
+  name: Ancient Harbor Intro
   numsamples: 4780536
-  streams: 1
+  streams: 2
   type: 4
 7B9B86CF44E22BF9B10A157974450198:
   audiolen: '0x53120'
@@ -850,7 +850,7 @@
   audiolen: '0x5369a0'
   audiolenLoc: 1042544
   isLooped: true
-  name: Lanayru Sand Sea 2
+  name: Shipyard Intro
   numsamples: 4780536
   streams: 1
   type: 1
@@ -866,7 +866,7 @@
   audiolen: '0x4c68c0'
   audiolenLoc: 1042612
   isLooped: true
-  name: Lanayru Sand Sea 3
+  name: Shipyard
   numsamples: 4379132
   streams: 1
   type: 1
@@ -1242,7 +1242,7 @@ B3CBB762B21B2662DF85384E76109AF9:
   audiolen: '0x98d0c0'
   audiolenLoc: 1042204
   isLooped: true
-  name: Lanayru Sand Sea 4
+  name: Ancient Harbor
   numsamples: 4379132
   streams: 2
   type: 4
@@ -1266,7 +1266,7 @@ B65B914B18E92AC690FD0E388F357240:
   audiolen: '0xe53880'
   audiolenLoc: 1042476
   isLooped: true
-  name: Lanayru Sand Sea 5
+  name: Skipper's Retreat
   numsamples: 4379132
   streams: 3
   type: 6
@@ -1357,7 +1357,7 @@ BE5DE649E09A351FB82A418633F9EA67:
   name: Lake Floria
   numsamples: 3529416
   streams: 3
-  type: 13
+  type: 7
 BEA72DEE936C8A52D4AEBD355BBCC5A3:
   audiolen: '0xf0020'
   audiolenLoc: 1053288
@@ -1410,10 +1410,10 @@ C8A002291553849876E1E2298A3EBBF9:
   audiolen: '0xfa3b20'
   audiolenLoc: 1042408
   isLooped: true
-  name: Lanayru Sand Sea 6
+  name: Skipper's Retreat Intro
   numsamples: 4780536
   streams: 3
-  type: 13
+  type: 6
 C91365470F0545A24393818D8918CC24:
   audiolen: '0x33ddc0'
   audiolenLoc: 1054240
@@ -1786,7 +1786,7 @@ F2815ADBDE30C00084B10966B9DCEC83:
   audiolen: '0x8a70e0'
   audiolenLoc: 1045400
   isLooped: true
-  name: Ghirahim Battle 2
+  name: Ghirahim 2 Battle
   numsamples: 2644718
   streams: 3
   type: 7
