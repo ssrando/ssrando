@@ -70,13 +70,14 @@ def music_rando(self):
         self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "WZSound.brsar"
     ).open("r+b") as brsar:
         for original_track, new_track in self.music.items():
-            entryLoc = self.musiclist[original_track]["entryLoc"]
             # patch filename
-            brsar.seek(entryLoc)
+            filenameLoc = self.musiclist[original_track]["filenameLoc"]
+            brsar.seek(filenameLoc)
             brsar.write(new_track.encode("ASCII"))
             # patch track length
+            audiolenLoc = self.musiclist[original_track]["audiolenLoc"]
             track_len_bytes = struct.pack(">I", self.musiclist[new_track]["audiolen"])
-            brsar.seek(entryLoc + 0x20)  # 0x20 offset in the entry for the length
+            brsar.seek(audiolenLoc)
             brsar.write(track_len_bytes)
 
     """ for track in self.loop_patch_list:
