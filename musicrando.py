@@ -3,6 +3,7 @@ import yaml
 import shutil
 import random
 from collections import defaultdict
+import struct
 from typing import List
 from paths import RANDO_ROOT_PATH
 
@@ -69,16 +70,14 @@ def music_rando(self):
         self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "WZSound.brsar"
     ).open("r+b") as brsar:
         for original_track, new_track in self.music.items():
-            new_track_len = int.to_bytes(
-                int(self.musiclist[new_track]["audiolen"], base=16), 0x4, "big"
-            )
-            tracklenLoc = self.musiclist[original_track]["audiolenLoc"]
-            brsar.seek(tracklenLoc)
-            brsar.write(new_track_len)
-            filenameLoc = self.musiclist[original_track]["filenameLoc"]
-            brsar.seek(filenameLoc)
+            entryLoc = self.musiclist[original_track]["entryLoc"]
+            # patch filename
+            brsar.seek(entryLoc)
             brsar.write(new_track.encode("ASCII"))
-            # print(tracklenLoc - filenameLoc)
+            # patch track length
+            track_len_bytes = struct.pack(">I", self.musiclist[new_track]["audiolen"])
+            brsar.seek(entryLoc + 0x20)  # 0x20 offset in the entry for the length
+            brsar.write(track_len_bytes)
 
     """ for track in self.loop_patch_list:
         with open(self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / track, 'r+b') as mfile:
