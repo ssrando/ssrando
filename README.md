@@ -11,7 +11,7 @@ You can access most resources on the [Skyward Sword Randomizer website](https://
 
 - Something to run the randomized game:
     + An emulator (Dolphin is the most widely used one)
-    + A homebrewed Wii that can launch games from an external medium, such as a SD card, a USB drive or an external hard drive. You can visit [this website](https://wii.guide) to get help homebrewing your console
+    + A homebrewed Wii that can launch games from an external medium, such as a SD card, a USB drive or an external hard drive. Visit [https://wii.guide](https://wii.guide) for homebrewing information
 
 ## Installation
 
@@ -29,15 +29,18 @@ You can either run from a compiled binary (recommended for Windows, required for
 
 1. As indicated, select a clean NTSC-U 1.00 ISO. The randomizer will then check its integrity, which may take a few minutes
 2. Choose the folder where the randomized file will be created; by default, it is the randomizer installation folder
-3. Customize the settings to your liking; use permalinks to store and share selected settings
-4. Hit randomize; this may also take a few minutes and the progress bar won't increase uniformly
+3. Customize the settings to your liking. You can use permalinks to store and share selected settings
+4. Hit randomize; this may also take a few minutes
 
 
 ## Playing the randomized game
 
 The randomized game will only work if the game language is set to **English**, other languages **will not work**.
 
-Do **not** use the game's hero-mode files, it **will not work**. If you wish to play on hero mode, select the "hero mode" option in the randomizer. Then, even if they don't appear as such in the menu, all files will be set to hero mode. Please note that cutscenes are made skippable regardless of whether you are playing in hero mode.
+Do **not** use the game's hero-mode files, it **will not work**.  
+If you only want it to skip cutscenes, they are made skippable even in normal mode.  
+If you really wish to play on hero mode, select the "hero mode" option in the randomizer.
+When this option is selected, even if they don't appear as such in the menu, all files will be set to hero mode.
 
 If you didn't follow these rules, your progress cannot be restored; delete the save from the Wii menu / Dolphin's toolbar and correct the settings to play the game.
 
