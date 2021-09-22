@@ -11,11 +11,11 @@ You can access most resources on the [Skyward Sword Randomizer website](https://
 
 - Something to run the randomized game:
     + An emulator (Dolphin is the most widely used one)
-    + A Wii, homebrewed to accept running games from a SD card, a USB drive or an external hard drive (for homebrewing, visit [this website](https://wii.guide))
+    + A homebrewed Wii that can launch games from an external medium, such as a SD card, a USB drive or an external hard drive. You can visit [this website](https://wii.guide) to get help homebrewing your console
 
 ## Installation
 
-You can either run from a compiled binary (recommended for Windows, necessary for tournaments) or directly from source ([jump here](#Installing-from-source), recommended for Linux). Support for OSX won't be there in the foreseeable future; the command-line interface works however.
+You can either run from a compiled binary (recommended for Windows, required for tournaments) or directly from source ([jump here](#Installing-from-source), recommended for Linux). Currently, only the command-line interface works for OSX; it needs an installation from source.
 
 
 ## Installing from a compiled binary
@@ -27,17 +27,17 @@ You can either run from a compiled binary (recommended for Windows, necessary fo
 
 ## Running the randomizer
 
-1. As indicated, select a clean NTSC-U 1.00 ISO. The randomizer will then check its integrity (it may take some time)
-2. Customize the settings to your liking (you can use permalink to store and share selected settings)
-3. Choose the folder where the randomized file will be created (by default, the randomizer installation folder)
-4. Hit randomize (it may also take some time)
+1. As indicated, select a clean NTSC-U 1.00 ISO. The randomizer will then check its integrity, which may take a few minutes
+2. Choose the folder where the randomized file will be created; by default, it is the randomizer installation folder
+3. Customize the settings to your liking; use permalinks to store and share selected settings
+4. Hit randomize; this may also take a few minutes and the progress bar won't increase uniformly
 
 
 ## Playing the randomized game
 
 The randomized game will only work if the game language is set to **English**, other languages **will not work**.
 
-Do **not** use the game's hero-mode files, it **will not work**. If you wish to play on hero mode, select the "hero mode" option in the randomizer (even if unmarked, the files will be in this mode).
+Do **not** use the game's hero-mode files, it **will not work**. If you wish to play on hero mode, select the "hero mode" option in the randomizer. Then, even if they don't appear as such in the menu, all files will be set to hero mode. Please note that cutscenes are made skippable regardless of whether you are playing in hero mode.
 
 If you didn't follow these rules, your progress cannot be restored; delete the save from the Wii menu / Dolphin's toolbar and correct the settings to play the game.
 
@@ -45,7 +45,7 @@ If you didn't follow these rules, your progress cannot be restored; delete the s
 1. Just open the generated `SOUE01.wbfs` in Dolphin
 
 ### For console
-1. Move the generated `SOUE01.wbfs` to your SD card / USB drive / external disk in this folder:
+1. Move the generated `SOUE01.wbfs` to your SD card / USB drive / external disk in this folder (the folder name may change depending on the game loader you are using):
 
     `/wbfs/The Legend of Zelda Skyward Sword [SOUE01]/`
 2. Launch the USB loader, you should see the game as "The Legend of Zelda Skyward Sword"
@@ -53,7 +53,7 @@ If you didn't follow these rules, your progress cannot be restored; delete the s
 
 ## Installing from source
 
-You will need Python (3.8 for Windows) and pip (which should come with Python), as well as [WIT](https://wit.wiimm.de/download.html) (Windows users, download the Cygwin version; there's a simple installer.exe, you will probably have to reboot your system)
+You will need Python (version 3.8 for Windows) and pip (which should come with Python)
 
 1. In a terminal, navigate to the directory where you want to install the randomizer (using `cd`)
 2. Clone the repository with git and enter the directory
@@ -65,7 +65,7 @@ You will need Python (3.8 for Windows) and pip (which should come with Python), 
 
         git checkout [BRANCH OR VERSION]
     Replace `[BRANCH OR VERSION]` with the desired branch or version in the command
-4. Install the library dependencies:
+4. Install the dependencies:
 
         pip install -r requirements.txt
     If your system uses old versions of Python, you may need to replace `pip` with `python3 -mpip`
