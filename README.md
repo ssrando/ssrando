@@ -1,142 +1,125 @@
-This is still under heavy development, be careful to use it!  
-This only works if the game language is set to ENGLISH, other languages will NOT WORK and will break  
-There is also the [Skyward Sword Randomizer Discord](https://discord.gg/evpNKkaaw6)
+# The Legend of Zelda - Skyward Sword Randomizer
 
-## Running the compiled binary (Windows)(recommended)
-1. For stable releases, grab the compiled program from the [github release section](https://github.com/lepelog/sslib/releases), for the newest, although potentially untested build get them from [github actions](https://nightly.link/lepelog/sslib/workflows/build.yaml/master).
-2. Download the zipfile, extract it somewhere (if you already have an older version installed, install it over and replace the existing files)
-3. run `ssrando.exe`
-4. Select a clean NTSC-U 1.00 ISO
-5. Customize the settings however you want
-6. hit randomize, it might take a while
+This is a randomizer for the game _The Legend of Zelda: Skyward Sword_.
 
-### For dolphin
-Just open the generated `SOUE01.wbfs` in dolphin and enjoy!
+You can access most resources on the [Skyward Sword Randomizer website](https://ssrando.com); you can also come discuss or ask for help on the [Skyward Sword Randomizer Discord](https://discord.gg/evpNKkaaw6).
+
+## Requirements
+- A computer (to run the randomizer)
+- A clean NTSC-U 1.00 ISO (MD5 hash: e7c39bb46cf938a5a030a01a677ef7d1)
+- The randomizer (see below for installation)
+
+- Something to run the randomized game:
+    + An emulator (Dolphin is the most widely used one)
+    + A homebrewed Wii that can launch games from an external medium, such as a SD card, a USB drive or an external hard drive. Visit [https://wii.guide](https://wii.guide) for homebrewing information
+
+## Installation
+
+You can either run from a compiled binary (recommended for Windows, required for tournaments) or directly from source ([jump here](#Installing-from-source), recommended for Linux). Currently, only the command-line interface works for OSX; it needs an installation from source.
+
+
+## Installing from a compiled binary
+1. Choose the version of the randomizer on the [website](https://ssrando.com) and download it
+2. Extract the ZIP file where you want to install the randomizer
+    + if you already have another version installed, you can use the same folder for multiple instances and rename the executables to avoid conflicts
+3. [Run](#Running-the-randomizer) the extracted executable (`ssrando.exe`)
+
+
+## Running the randomizer
+
+1. As indicated, select a clean NTSC-U 1.00 ISO. The randomizer will then check its integrity, which may take a few minutes
+2. Choose the folder where the randomized file will be created; by default, it is the randomizer installation folder
+3. Customize the settings to your liking. You can use permalinks to store and share selected settings
+4. Hit randomize; this may also take a few minutes
+
+
+## Playing the randomized game
+
+The randomized game will only work if the game language is set to **English**, other languages **will not work**.
+
+Do **not** use the game's hero-mode files, it **will not work**.  
+If you only want it to skip cutscenes, they are made skippable even in normal mode.  
+If you really wish to play on hero mode, select the "hero mode" option in the randomizer.
+When this option is selected, even if they don't appear as such in the menu, all files will be set to hero mode.
+
+If you didn't follow these rules, your progress cannot be restored; delete the save from the Wii menu / Dolphin's toolbar and correct the settings to play the game.
+
+### For Dolphin
+1. Just open the generated `SOUE01.wbfs` in Dolphin
+
 ### For console
-1. Make sure to have homebrew and a USB loader installed (for example Configurable USB Loader)
-2. copy the generated `SOUE01.wbfs` to your SD card in this folder: /wbfs/The Legend of Zelda Skyward Sword [SOUE01]/ and put the SD into your Wii
-3. Power up your Wii, homebrew channel, configurable USB Loader, Profit
-## Installing from source (for development)
-1) Clone [https://github.com/lepelog/sslib](https://github.com/lepelog/sslib)
-2) Install Python 3.8(!) (3.9 won't work on Windows) and pip (comes with most python installers)
-3) Download and Install wit from [here](https://wit.wiimm.de/download.html) (there's a simple installer.exe for Windows, you will probably have to reboot your system)
-4) Open a terminal of your choice and use the `cd` command to navigate to the directory where you have sslib saved
-5)
-On Linux:
+1. Move the generated `SOUE01.wbfs` to your external medium in this folder (the folder name may change depending on the game loader you are using):
 
-    python3 -mpip install -r requirements.txt
-
-On Windows:
-
-    pip install -r requirements.txt
-
-6) Take a clean E 1.00 ISO (make sure to verify the hashes in dolphin: crc="2b48d050" md5="e7c39bb46cf938a5a030a01a677ef7d1" sha1="9cf9a4a7ed2a6a4abb4582e3304af1327c160640") and put it somewere you can find it again(in the following steps it will be simply called disc.iso)
-7)Start the GUI/Setup by writeing this into your terminal
-
-On Linux:
-
-    python3 randoscript.py
-
-On Windows:
-
-    py randoscript.py
-Or:
-
-    python randoscript.py
-
-It will ask you to choose an iso and will extract it for you into the sslib directory (you should see 2 new folders in the directory afterwards).
-The GUI will also Test your ISO version if you haven't checked yourself before and won't extract unless you have the right version.
-After it is complete it should show up the GUI you can use to modify your game.
-The randomized game will then show up in the folder you choose in the GUI.
+    `/wbfs/The Legend of Zelda Skyward Sword [SOUE01]/`
+2. Launch the USB loader, you should see the game as "The Legend of Zelda Skyward Sword"
 
 
-#### MORE OPTIONS
-To access more options you can start the GUI by starting the randoscript.py (see above).
-If you don't want to use the GUI you can do `--noui`, otherwise this extra information is not important for you
-To see all options, use `--help` or see options.yaml
+## Installing from source
 
-#### Model Customization
-After running the randomizer once, a folder `oarc` will be created, which has Link's model (Alink.arc) and his bird (Bird_Link.arc)
+You will need Python (version 3.8 for Windows) and pip (which should come with Python)
 
-To modify them, you need an external program. To include make sure the models get actually replaced when running the randomizer, save the modified arcs (the name **has** to stay the same) in the `arc-replacements` folder, which needs to be located next to the randomizer executable
+1. In a terminal, navigate to the directory where you want to install the randomizer (using `cd`)
+2. Clone the repository with git and enter the directory
 
-### Tests
-`python3 -mpytest test`  
-Make sure to have the extracted game prepared as stated in Installing, otherwise they won't work
+        git clone https://github.com/ssrando/ssrando
+        cd ssrando
+
+3. Choose the branch you want to run (`gui-redesign` is the most up-to-date), or the version you want to run (`v1.x.x` for stable releases, `async-[month]-[yy]` for async races; you can check the releases in Github):
+
+        git checkout [BRANCH OR VERSION]
+    Replace `[BRANCH OR VERSION]` with the desired branch or version in the command
+4. Install the dependencies:
+
+        pip install -r requirements.txt
+    If your system uses old versions of Python, you may need to replace `pip` with `python3 -mpip`
+
+5. [Run](#Running-the-randomizer) the randomizer:
+
+        python randoscript.py
+    If your system uses old versions of Python, you may need to replace `python` with `python3`
+
+## The command-line interface
+
+If you installed from source, you can run the randomizer without using the GUI by using `--noui` when running `randoscript.py`.
+
+You will need to select the settings using the command-line options, use `--help` to list them.
+
+For now, you have to run the GUI once so the ISO can be extracted (ask for a workaround in Discord if needed)
+
+You can also pass options when launching the GUI, they will be pre-entered (this can be useful when creating a script to run the randomizer)
+
+## Model Customization
+After running the randomizer once, a folder `oarc` will be created, which contains Link's model (Alink.arc) and his bird's (Bird_Link.arc)
+
+To modify them, you need an external program. Then save the modified arcs (the name **must** stay the same) in the `arc-replacements` folder of the randomizer installation directory.
+
+## Tests
+Tests need a source installation and an extracted ISO:
+
+    python -mpytest test
+If your system uses old versions of Python, you may need to replace `python` with `python3`
+
+## Contributing
+Contributions are always welcome! Discussion happens on Discord.
+
+We are using `black` to format code; you can run `black .` to format all files.
+
+To install developing dependencies (including `black`):
+
+    pip install -r requirements_dev.txt
+If your system uses old versions of Python, you may need to replace `pip` with `python3 -mpip`
 
 ### Executable
-To build the executable, you need PyInstaller installed:
+To build the executable, you need `PyInstaller` installed:
 
-    python3 -mpip install pyinstaller
+    pip install -r requirements_build.txt
 
 Then, build the executable using
 
     pyinstaller ssrando.spec
 
-### Changes
-#### Storyflag
-900: Beat Ancient Cistern
-901: Beat Fire Sanctuary
-11 & 13: Imp2 Requirements reached (should be set at once)
-902: Beat Required dungeon 1
-903: Beat Required dungeon 2
-
-904: Progressive Mitts1 (Digging Mitts)
-905: Progressive Mitts2 (Mogma Mitts)
-
-906: Progressive Sword1 (Practice Sword)
-907: Progressive Sword2 (Goddess Sword)
-908: Progressive Sword3 (Goddess Long Sword)
-909: Progressive Sword4 (Goddess White Sword)
-910: Progressive Sword5 (Master Sword)
-911: Progressive Sword6 (True Master Sword)
-
-912: Progressive Beetle1
-913: Progressive Beetle2 (Hook Beetle)
-
-914: Change Temple of Time Layer, storyflag 9 is associated with harp
-
-915: Medium Wallet
-916: Big Wallet
-917: Giant Wallet
-918: Tycoon Wallet
-
-New Trial Completed Storyflags:
-919: Faron
-920: Eldin
-921: Lanayru
-922: Skyloft
-
-923: Obtained Item from Fledge at start
-924: Obtained Item from Cawlin
-925: Obtained Item from Strich
-
-926: Required Dungeon 3  
-927: Required Dungeon 4  
-928: Required Dungeon 5  
-929: Required Dungeon 6  
-
-931: Adventure Pouch 932 Pouch Expansion
-
-933: Defeat Tentalus
-934: Obtained Item from Levias
-
-935: Exit out of back of LMF for first time
-936: Obtained Item at end of LMF
-
-937: bought Beetles first 100R item
-938: bought Beetles second 100R item
-939: bought Beetles third 100R item
-940: bought Beetles Bug Net item
-941: bought Beetles Bug Medal item
-
-#### Sceneflags
-Ancient Cistern:
-- 85, after recieving item from flame CS
-Sandship:
-- 87, after recieving item from flame CS
-
-### Shoutouts
+### Contributors
+- lepelog: Main developer
 - Peppernicus2000: Logic, fixes
 - Azer67: Logic
 - MrCheeze: Reverse engineering file formats
