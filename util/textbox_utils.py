@@ -17,10 +17,7 @@ def break_lines(text, characters_per_line=CHARACTERS_PER_LINE):
             chars_in_line = len(word) + 1  # account for the space again
         else:
             final_text += f"{word} "
-    final_text = final_text[
-        : len(final_text) - 1
-    ]  # strip the trailing space at the end of the string
-    return final_text
+    return final_text.strip()
 
 
 def make_mutliple_textboxes(texts):

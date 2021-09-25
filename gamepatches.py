@@ -1309,33 +1309,30 @@ class GamePatcher:
         ]:
             self.startstoryflags.append(required_dungeon_storyflag)
 
-        # patch required dungeon text in
-        if required_dungeon_count == 0:
-            required_dungeons_text = "No Dungeons"
-        elif required_dungeon_count == 6:
-            required_dungeons_text = "All Dungeons"
-        elif required_dungeon_count < 4:
-            required_dungeons_text = "Required Dungeons:\n" + (
-                "\n".join(self.placement_file.required_dungeons)
-            )
+        if required_dungeon_count == 6:
+            if self.placement_file.options["skip-skykeep"]:
+                required_dungeons_text = "All Dungeons Required"
+            else:
+                required_dungeons_text = "All Dungeons and\nSky Keep Required"
         else:
-            required_dungeons_text = "Required: " + ", ".join(
-                self.placement_file.required_dungeons
-            )
+            required_dungeons = self.placement_file.required_dungeons.copy()
+            if not self.placement_file.options["skip-skykeep"]:
+                required_dungeons.append("Sky Keep")
 
-            # try to fit the text in as few lines as possible, breaking up at spaces if necessary
-            cur_line = ""
-            combined = ""
+            # patch required dungeon text in
+            if len(required_dungeons) == 0:
+                required_dungeons_text = "No Dungeons Required"
+            elif len(required_dungeons) < 4:
+                required_dungeons_text = "Required Dungeons:\n" + (
+                    "\n".join(required_dungeons)
+                )
+            else:
+                required_dungeons_text = "Required: " + ", ".join(required_dungeons)
 
-            for part in required_dungeons_text.split(" "):
-                if len(cur_line + part) > 27:  # limit of one line
-                    combined += cur_line + "\n"
-                    cur_line = part + " "
-                else:
-                    cur_line += part + " "
-            combined += cur_line
-            required_dungeons_text = combined.strip()
-
+                # try to fit the text in as few lines as possible, breaking up at spaces if necessary
+                required_dungeons_text = break_lines(
+                    required_dungeons_text, characters_per_line=27
+                )
         self.eventpatches["107-Kanban"].append(
             {
                 "name": "Knight Academy Billboard text",
