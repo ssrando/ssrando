@@ -286,6 +286,24 @@ cmpwi r11, 1
 bnelr
 do_requestFileLoadFromDisk:
 b requestFileLoadFromDisk
+
+.global unset_sandship_timestone_if_necessary
+unset_sandship_timestone_if_necessary:
+li r28, 0 ; replaced instruction
+lis r3, SPAWN_SLAVE@ha
+lwz r3, SPAWN_SLAVE@l(r3) ; load 4 bytes of stage name
+xoris r0, r3, 0x4233 ; 'B3'
+cmplwi r0, 0x3031 ; '01
+beqlr
+xoris r0, r3, 0x4433 ; 'D3'
+cmplwi r0, 0x3031 ; '01
+beqlr
+; if we're not in Sandship (D301), Sandship Escape (D301_1) or Tentalus (B301)
+; unset the storyflag
+li r3, 154 ; storyflag for SSH timeshift stone being active
+li r4, 0 ; storyflag will be unset
+b setStoryflagToValue
+
 .close
 
 

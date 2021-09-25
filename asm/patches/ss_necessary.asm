@@ -130,6 +130,10 @@ li r5, 2
 .org 0x801b9a44
 li r5, 2
 
+; when loading a stage
+.org 0x80198dc0
+bl unset_sandship_timestone_if_necessary
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

@@ -7,6 +7,7 @@ main.dol:
   setSceneflagForArea: 0x806784B0
   processStartflags: 0x80678520
   alloc_keyboard_arcs_conditional: 0x806785CC
+  unset_sandship_timestone_if_necessary: 0x80678618
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
