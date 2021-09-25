@@ -351,17 +351,25 @@ class Randomizer(BaseRandomizer):
         header_dict["seed"] = self.seed
         header_dict["hash"] = self.randomizer_hash
         non_disabled_options = [
-            name
-            for name in self.options.options
+            (name, val)
+            for (name, val) in self.options.options.items()
             if (
                 self.options[name] not in [False, [], {}, OrderedDict()]
                 or OPTIONS[name]["type"] == "int"
             )
-            and OPTIONS[name].get("permalink", True) == True
         ]
-        header_dict["options"] = OrderedDict()
-        for option_name in non_disabled_options:
-            header_dict["options"][option_name] = self.options[option_name]
+        header_dict["options"] = OrderedDict(
+            filter(
+                lambda tupl: OPTIONS[tupl[0]].get("permalink", True),
+                non_disabled_options,
+            )
+        )
+        header_dict["cosmetic-options"] = OrderedDict(
+            filter(
+                lambda tupl: OPTIONS[tupl[0]].get("cosmetic", False),
+                non_disabled_options,
+            )
+        )
         return header_dict
 
     def get_log_header(self):
@@ -377,22 +385,38 @@ class Randomizer(BaseRandomizer):
 
         header += "Options selected:\n"
         non_disabled_options = [
-            name
-            for name in self.options.options
+            (name, val)
+            for (name, val) in self.options.options.items()
             if (
                 self.options[name] not in [False, [], {}, OrderedDict()]
                 or OPTIONS[name]["type"] == "int"
             )
-            and OPTIONS[name].get("permalink", True) == True
         ]
-        option_strings = []
-        for option_name in non_disabled_options:
-            if isinstance(self.options[option_name], bool):
-                option_strings.append("  %s" % option_name)
-            else:
-                value = self.options[option_name]
-                option_strings.append("  %s: %s" % (option_name, value))
-        header += "\n".join(option_strings)
+
+        def format_opts(opts):
+            option_strings = []
+            for option_name, option_value in opts:
+                if isinstance(option_value, bool):
+                    option_strings.append("  %s" % option_name)
+                else:
+                    option_strings.append("  %s: %s" % (option_name, option_value))
+            return "\n".join(option_strings)
+
+        header += format_opts(
+            filter(
+                lambda tupl: OPTIONS[tupl[0]].get("permalink", True),
+                non_disabled_options,
+            )
+        )
+        cosmetic_options = list(
+            filter(
+                lambda tupl: OPTIONS[tupl[0]].get("cosmetic", False),
+                non_disabled_options,
+            )
+        )
+        if cosmetic_options:
+            header += "\n\nCosmetic Options:\n"
+            header += format_opts(cosmetic_options)
 
         return header
 
