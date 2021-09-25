@@ -1160,13 +1160,6 @@
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_limit_vanilla_music">
-          <property name="text">
-           <string>Limit Vanilla Music</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer name="verticalSpacer_15">
           <property name="orientation">
            <enum>Qt::Vertical</enum>

@@ -52,7 +52,7 @@ def music_rando(self):
 
         for music_type, tracks in self.music_pool.items():
             if music_type not in NON_SHUFFLED_TYPES and len(tracks) > 1:
-                if self.rando.options["limit-vanilla-music"]:
+                if self.rando.options["music-rando"] == "Shuffled (Limit Vanilla)":
                     derangement = get_derangement(len(tracks), rng)
                     for i in range(len(tracks)):
                         self.music[tracks[i]] = tracks[derangement[i]]
