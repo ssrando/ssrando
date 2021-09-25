@@ -1,3 +1,5 @@
+# if not specified otherwise, options are put in the permalink
+# cosmetic options should have `permalink: false` as well
 - name: Dry Run
   command: dry-run
   type: boolean
@@ -526,7 +528,8 @@
   command: tunic-swap
   type: boolean
   default: false
-  permalink: false # this should be purely cosmetic
+  permalink: false
+  cosmetic: true
   help: Swaps Link's casual clothes for the hero's tunic and vice versa
   ui: option_tunic_swap
 - name: Force Sword Dungeon Reward
@@ -545,6 +548,7 @@
     - Shuffled (Limit Vanilla)
   default: None
   permalink: false
+  cosmetic: true
   help: If enabled, music will be randomized. Limit Vanilla means, the randomizer will attempt to prevent vanilla music. Note that some music can still be vanilla.
   ui: option_music_rando
 - name: Cutoff Game Over Music
@@ -552,5 +556,6 @@
   type: boolean
   default: false
   permalink: false
+  cosmetic: true
   help: If enabled, the game over music will cutoff when it normally would. If disabled, the music will continue to play until the end of the song, even after pressing continue.
   ui: option_cutoff_gameover_music
