@@ -22,7 +22,7 @@ global:
     - 138 # Sealed Temple layer 1
     - 24  # no Fi sky text
     - 304 # Crystal Quest activated
-    - 329 # No sleeping for Wyrna
+    - 329 # No sleeping for Wryna
     - 32  # Sailcoth
     - 28 # Pratice Sword storyflag
     - 519 # Updated Sand Sea map
@@ -492,25 +492,25 @@ F000: # Skyloft
     layer: 4
     room: 0
     objtype: STAG
-  - name: Wyrna cs
+  - name: Wryna cs
     type: objdelete
     id: 0xFDCE
     layer: 4
     room: 0
     objtype: OBJ
-  - name: Wyrna cs
+  - name: Wryna cs
     type: objdelete
     id: 0xFDD2
     layer: 6
     room: 0
     objtype: OBJ
-  - name: Wyrna l4 1
+  - name: Wryna l4 1
     type: objdelete
     id: 0xFDCD
     layer: 4
     room: 0
     objtype: OBJ
-  - name: Wyrna l6
+  - name: Wryna l6
     type: objdelete
     id: 0xFDD1
     layer: 6
@@ -935,7 +935,7 @@ F020: # Sky
     objtype: STAG
     object:
       untrigstoryfid: -1
-  - name: remove Wyrna requirement for orille
+  - name: remove Wryna requirement for orille
     type: objpatch
     id: 0xFCFB
     layer: 2

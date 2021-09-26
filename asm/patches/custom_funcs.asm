@@ -286,6 +286,24 @@ cmpwi r11, 1
 bnelr
 do_requestFileLoadFromDisk:
 b requestFileLoadFromDisk
+
+.global unset_sandship_timestone_if_necessary
+unset_sandship_timestone_if_necessary:
+li r28, 0 ; replaced instruction
+lis r3, SPAWN_SLAVE@ha
+lwz r3, SPAWN_SLAVE@l(r3) ; load 4 bytes of stage name
+xoris r0, r3, 0x4233 ; 'B3'
+cmplwi r0, 0x3031 ; '01
+beqlr
+xoris r0, r3, 0x4433 ; 'D3'
+cmplwi r0, 0x3031 ; '01
+beqlr
+; if we're not in Sandship (D301), Sandship Escape (D301_1) or Tentalus (B301)
+; unset the storyflag
+li r3, 154 ; storyflag for SSH timeshift stone being active
+li r4, 0 ; storyflag will be unset
+b setStoryflagToValue
+
 .close
 
 
@@ -325,13 +343,19 @@ b Reloader__triggerExit
 .org @NextFreeSpace
 .global check_should_delay_walk_out_event
 check_should_delay_walk_out_event:
-mr r4, r3
-lbz r3, 0xc7d(r4) ; counter, in the original actor this was the itemid to wait on (all code that uses it is skipped)
-cmpwi r3, 5 ; only increment it to an arbitrary amoung
-bgelr
-addi r3, r3, 1 ; increment
-stb r3, 0xc7d(r4) ; store counter back
-
+; 0xC94 (rando exclusive field at the end of the warp struct) either holds:
+; 0, if there is no pointer stored, this should not happen and will crash :)
+; some pointer to the item actor that the trial gave to the player
+; 1 if the item event has started. This is fine because 1 is not a valid pointer
+mr r4, r3 ; r3 is trial pointer
+lwz r3, 0xC94(r4)
+cmplwi r3, 1
+beqlr
+lbz r3, 0xB0F(r3) ; some byte from the actorevent idk, was 0 before event and then 1
+cmplwi r3, 0
+beqlr
+li r3, 1
+stw r3, 0xC94(r4)
 blr
 .close
 

@@ -242,6 +242,32 @@
        </layout>
       </widget>
      </widget>
+     <widget class="QGroupBox" name="groupBox_14">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>120</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Cosmetics</string>
+      </property>
+      <widget class="QCheckBox" name="option_tunic_swap">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>111</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tunic Swap</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -795,6 +821,13 @@
          <widget class="QCheckBox" name="option_empty_unrequired_dungeons">
           <property name="text">
            <string>Empty Unrequired Dungeons</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+        <widget class="QCheckBox" name="option_sword_dungeon_reward">
+          <property name="text">
+           <string>Force Sword Dungeon Reward</string>
           </property>
          </widget>
         </item>

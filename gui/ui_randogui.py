@@ -142,6 +142,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_34.addItem(self.verticalSpacer_14)
 
+        self.groupBox_14 = QGroupBox(self.tab)
+        self.groupBox_14.setObjectName(u"groupBox_14")
+        self.groupBox_14.setGeometry(QRect(350, 120, 131, 111))
+        self.option_tunic_swap = QCheckBox(self.groupBox_14)
+        self.option_tunic_swap.setObjectName(u"option_tunic_swap")
+        self.option_tunic_swap.setGeometry(QRect(10, 20, 111, 23))
         self.tabWidget.addTab(self.tab, "")
         self.tab_3 = QWidget()
         self.tab_3.setObjectName(u"tab_3")
@@ -528,6 +534,11 @@ class Ui_MainWindow(object):
         self.option_empty_unrequired_dungeons.setObjectName(u"option_empty_unrequired_dungeons")
 
         self.verticalLayout_10.addWidget(self.option_empty_unrequired_dungeons)
+
+        self.option_sword_dungeon_reward = QCheckBox(self.verticalLayoutWidget_7)
+        self.option_sword_dungeon_reward.setObjectName(u"option_sword_dungeon_reward")
+
+        self.verticalLayout_10.addWidget(self.option_sword_dungeon_reward)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1116,6 +1127,8 @@ class Ui_MainWindow(object):
         self.option_out_placement_file.setText(QCoreApplication.translate("MainWindow", u"Generate Placement File", None))
         self.groupBox_13.setTitle(QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
+        self.groupBox_14.setTitle(QCoreApplication.translate("MainWindow", u"Cosmetics", None))
+        self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Setup", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"What areas of the world should progress items appear?", None))
         self.progression_skyloft.setText(QCoreApplication.translate("MainWindow", u"Skyloft", None))
@@ -1173,6 +1186,7 @@ class Ui_MainWindow(object):
         self.label_for_option_small_key_mode.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))
         self.label_for_option_boss_key_mode.setText(QCoreApplication.translate("MainWindow", u"Boss Keys", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Empty Unrequired Dungeons", None))
+        self.option_sword_dungeon_reward.setText(QCoreApplication.translate("MainWindow", u"Force Sword Dungeon Reward", None))
         self.groupBox_8.setTitle(QCoreApplication.translate("MainWindow", u"Endgame Bosses", None))
         self.option_imp_2.setText(QCoreApplication.translate("MainWindow", u"Skip Imprisoned 2", None))
         self.option_horde.setText(QCoreApplication.translate("MainWindow", u"Horde", None))

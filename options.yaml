@@ -158,7 +158,7 @@
     - Dungeons
     - Dungeons + Sky Keep
   default: None
-  help: "Shuffles entrances with one another. Options: None, Dungeons, Dungeons + Sky Keep"
+  help: "Shuffles entrances with one another."
   ui: option_randomize_entrances
 - name: Randomize Silent Realms
   command: randomize-trials
@@ -520,9 +520,21 @@
   command: impa-sot-hint
   type: boolean
   default: true
-  permalink: false
   help: Enables Impa in the Past to give a hint to the location of the Stone of Trials
   ui: option_impa_sot_hint
+- name: Tunic Swap
+  command: tunic-swap
+  type: boolean
+  default: false
+  permalink: false # this should be purely cosmetic
+  help: Swaps Link's casual clothes for the hero's tunic and vice versa
+  ui: option_tunic_swap
+- name: Force Sword Dungeon Reward
+  command: sword-dungeon-reward
+  type: boolean
+  default: false
+  help: If activated, the final check of a required dungeon will be a sword (if possible). If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
+  ui: option_sword_dungeon_reward
 - name: Randomize Music
   command: music-rando
   type: singlechoice

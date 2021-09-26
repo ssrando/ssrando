@@ -940,7 +940,7 @@ Goddess Cube in Eldin Slide:
   Can Access Second Part of Eldin & Goddess Sword
 
 Eldin Volcano - Gossip Stone next to Earth Temple:
-  Can Access Second Part of Eldin
+  Can Access Second Part of Eldin & Digging Mitts
 
 Can Access Dungeon Entrance In Eldin Volcano:
   Can Access Second Part of Eldin & Key Piece x5
@@ -1786,8 +1786,7 @@ Can Resurface from the AC Gutters:
   Can Get to AC Boko Key Door & AC Small Key x2
 
 Can Access AC Main Room Vines:
-  Can Access Ancient Cistern & (Clawshots | Can Resurface from the AC Gutters)
-  # Is there a way using Cistern Clip ?
+  Can Access Ancient Cistern & ((Clawshots & Whip) | Can Resurface from the AC Gutters)
 
 Ancient Cistern - Vines Chest:
   Can Access AC Main Room Vines
