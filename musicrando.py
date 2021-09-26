@@ -75,12 +75,13 @@ def music_rando(self):
             brsar.seek(filenameLoc)
             brsar.write(new_track.encode("ASCII"))
             # patch track length
-            audiolenLoc = self.musiclist[original_track]["audiolenLoc"]
-            track_len_bytes = struct.pack(">I", self.musiclist[new_track]["audiolen"])
-            brsar.seek(audiolenLoc)
-            brsar.write(track_len_bytes)
-
-    """ for track in self.loop_patch_list:
-        with open(self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / track, 'r+b') as mfile:
-            mfile.seek(0x61) # Loop flag offset
-            mfile.write(0x01.to_bytes(1, "big")) """
+            if self.rando.options["cutoff-gameover-music"] and original_track == "C47D3DF4C435739443D195F7265A7D57":
+                audiolenLoc = self.musiclist[original_track]["audiolenLoc"]
+                track_len_bytes = struct.pack(">I", self.musiclist[original_track]["audiolen"])
+                brsar.seek(audiolenLoc)
+                brsar.write(track_len_bytes)
+            else:
+                audiolenLoc = self.musiclist[original_track]["audiolenLoc"]
+                track_len_bytes = struct.pack(">I", self.musiclist[new_track]["audiolen"])
+                brsar.seek(audiolenLoc)
+                brsar.write(track_len_bytes)

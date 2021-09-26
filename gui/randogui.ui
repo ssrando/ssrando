@@ -58,7 +58,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -245,7 +245,7 @@
      <widget class="QGroupBox" name="groupBox_14">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>360</x>
         <y>120</y>
         <width>131</width>
         <height>111</height>
@@ -266,6 +266,65 @@
        <property name="text">
         <string>Tunic Swap</string>
        </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_15">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>120</y>
+        <width>181</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Randomize Music</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_11">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>161</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_35">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_36">
+          <item>
+           <widget class="QLabel" name="label_for_option_music_rando">
+            <property name="text">
+             <string>Randomize Music</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_music_rando"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_cutoff_gameover_music">
+          <property name="text">
+           <string>Cutoff Game Over Music</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_16">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
      </widget>
     </widget>
@@ -770,7 +829,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>165</width>
+         <width>173</width>
          <height>221</height>
         </rect>
        </property>
@@ -825,7 +884,7 @@
          </widget>
         </item>
         <item>
-        <widget class="QCheckBox" name="option_sword_dungeon_reward">
+         <widget class="QCheckBox" name="option_sword_dungeon_reward">
           <property name="text">
            <string>Force Sword Dungeon Reward</string>
           </property>
@@ -1142,58 +1201,6 @@
         </item>
         <item>
          <spacer name="verticalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_14">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>270</y>
-        <width>181</width>
-        <height>241</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Randomize Music</string>
-      </property>
-      <widget class="QWidget" name="verticalLayoutWidget_8">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>161</width>
-         <height>224</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_31">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_17">
-          <item>
-           <widget class="QLabel" name="label_for_option_music_rando">
-            <property name="text">
-             <string>Randomize Music</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="option_music_rando"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_15">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>

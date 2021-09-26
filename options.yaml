@@ -547,3 +547,10 @@
   permalink: false
   help: If enabled, music will be randomized. Limit Vanilla means, the randomizer will attempt to prevent vanilla music. Note that some music can still be vanilla.
   ui: option_music_rando
+- name: Cutoff Game Over Music
+  command: cutoff-gameover-music
+  type: boolean
+  default: false
+  permalink: false
+  help: If enabled, the game over music will cutoff when it normally would. If disabled, the music will continue to play until the end of the song, even after pressing continue.
+  ui: option_cutoff_gameover_music

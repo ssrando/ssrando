@@ -144,10 +144,43 @@ class Ui_MainWindow(object):
 
         self.groupBox_14 = QGroupBox(self.tab)
         self.groupBox_14.setObjectName(u"groupBox_14")
-        self.groupBox_14.setGeometry(QRect(350, 120, 131, 111))
+        self.groupBox_14.setGeometry(QRect(360, 120, 131, 111))
         self.option_tunic_swap = QCheckBox(self.groupBox_14)
         self.option_tunic_swap.setObjectName(u"option_tunic_swap")
         self.option_tunic_swap.setGeometry(QRect(10, 20, 111, 23))
+        self.groupBox_15 = QGroupBox(self.tab)
+        self.groupBox_15.setObjectName(u"groupBox_15")
+        self.groupBox_15.setGeometry(QRect(510, 120, 181, 111))
+        self.verticalLayoutWidget_11 = QWidget(self.groupBox_15)
+        self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
+        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 81))
+        self.verticalLayout_35 = QVBoxLayout(self.verticalLayoutWidget_11)
+        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
+        self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_36 = QVBoxLayout()
+        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
+        self.label_for_option_music_rando = QLabel(self.verticalLayoutWidget_11)
+        self.label_for_option_music_rando.setObjectName(u"label_for_option_music_rando")
+
+        self.verticalLayout_36.addWidget(self.label_for_option_music_rando)
+
+        self.option_music_rando = QComboBox(self.verticalLayoutWidget_11)
+        self.option_music_rando.setObjectName(u"option_music_rando")
+
+        self.verticalLayout_36.addWidget(self.option_music_rando)
+
+
+        self.verticalLayout_35.addLayout(self.verticalLayout_36)
+
+        self.option_cutoff_gameover_music = QCheckBox(self.verticalLayoutWidget_11)
+        self.option_cutoff_gameover_music.setObjectName(u"option_cutoff_gameover_music")
+
+        self.verticalLayout_35.addWidget(self.option_cutoff_gameover_music)
+
+        self.verticalSpacer_16 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_35.addItem(self.verticalSpacer_16)
+
         self.tabWidget.addTab(self.tab, "")
         self.tab_3 = QWidget()
         self.tab_3.setObjectName(u"tab_3")
@@ -481,7 +514,7 @@ class Ui_MainWindow(object):
         self.groupBox_7.setGeometry(QRect(560, 10, 181, 251))
         self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 165, 221))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 173, 221))
         self.verticalLayout_10 = QVBoxLayout(self.verticalLayoutWidget_7)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -726,34 +759,6 @@ class Ui_MainWindow(object):
         self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_15.addItem(self.verticalSpacer_6)
-
-        self.groupBox_14 = QGroupBox(self.tab_4)
-        self.groupBox_14.setObjectName(u"groupBox_14")
-        self.groupBox_14.setGeometry(QRect(200, 270, 181, 241))
-        self.verticalLayoutWidget_8 = QWidget(self.groupBox_14)
-        self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 161, 224))
-        self.verticalLayout_31 = QVBoxLayout(self.verticalLayoutWidget_8)
-        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
-        self.verticalLayout_31.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_17 = QVBoxLayout()
-        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.label_for_option_music_rando = QLabel(self.verticalLayoutWidget_8)
-        self.label_for_option_music_rando.setObjectName(u"label_for_option_music_rando")
-
-        self.verticalLayout_17.addWidget(self.label_for_option_music_rando)
-
-        self.option_music_rando = QComboBox(self.verticalLayoutWidget_8)
-        self.option_music_rando.setObjectName(u"option_music_rando")
-
-        self.verticalLayout_17.addWidget(self.option_music_rando)
-
-
-        self.verticalLayout_31.addLayout(self.verticalLayout_17)
-
-        self.verticalSpacer_15 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_31.addItem(self.verticalSpacer_15)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
@@ -1104,7 +1109,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(0)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1129,6 +1134,9 @@ class Ui_MainWindow(object):
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.groupBox_14.setTitle(QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
+        self.groupBox_15.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
+        self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
+        self.option_cutoff_gameover_music.setText(QCoreApplication.translate("MainWindow", u"Cutoff Game Over Music", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Setup", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"What areas of the world should progress items appear?", None))
         self.progression_skyloft.setText(QCoreApplication.translate("MainWindow", u"Skyloft", None))
@@ -1206,8 +1214,6 @@ class Ui_MainWindow(object):
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
-        self.groupBox_14.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
-        self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
