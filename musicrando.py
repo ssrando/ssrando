@@ -79,16 +79,9 @@ def music_rando(self):
                 self.rando.options["cutoff-gameover-music"]
                 and original_track == "C47D3DF4C435739443D195F7265A7D57"
             ):
-                audiolenLoc = self.musiclist[original_track]["audiolenLoc"]
-                track_len_bytes = struct.pack(
-                    ">I", self.musiclist[original_track]["audiolen"]
-                )
-                brsar.seek(audiolenLoc)
-                brsar.write(track_len_bytes)
+                track_len = self.musiclist[original_track]["audiolen"]
             else:
-                audiolenLoc = self.musiclist[original_track]["audiolenLoc"]
-                track_len_bytes = struct.pack(
-                    ">I", self.musiclist[new_track]["audiolen"]
-                )
-                brsar.seek(audiolenLoc)
-                brsar.write(track_len_bytes)
+                track_len = self.musiclist[new_track]["audiolen"]
+            audiolenLoc = self.musiclist[original_track]["audiolenLoc"]
+            brsar.seek(audiolenLoc)
+            brsar.write(struct.pack(">I", track_len))
