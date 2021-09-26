@@ -2,24 +2,40 @@ import os
 import yaml
 import shutil
 import random
+from collections import defaultdict
+import struct
+from typing import List
 from paths import RANDO_ROOT_PATH
+
+
+def is_derangement(l: List[int]) -> bool:
+    for i, n in enumerate(l):
+        if i == n:
+            return False
+    return True
+
+
+def get_derangement(length: int, rng: random.Random) -> List[int]:
+    """
+    Generates a list of the range [0,length),
+    shuffled such that no number is at its index
+    """
+    if length <= 1:
+        raise ValueError("length needs to be at least 2")
+    lst = list(range(length))
+    rng.shuffle(lst)
+    while not is_derangement(lst):
+        rng.shuffle(lst)
+    return lst
 
 
 def music_rando(self):
     with (RANDO_ROOT_PATH / "music.yaml").open() as f:
         self.musiclist = yaml.safe_load(f)
 
-    try:
-        shutil.rmtree(
-            self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs"
-        )
-    except:
-        pass
-    os.mkdir(self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs")
-
-    NON_SHUFFLED_TYPES = ["type10", "type11"]
+    NON_SHUFFLED_TYPES = [10, 11]
     self.music = {}
-    self.music_pool = {}
+    self.music_pool = defaultdict(list)
     # self.loop_patch_list = []
     rng = random.Random()
     rng.seed(self.rando.options["seed"])
@@ -28,57 +44,41 @@ def music_rando(self):
         for f in self.musiclist.keys():
             self.music[f] = f
     else:
-        i = 1
-        while i <= 13:
-            self.music_pool["type" + str(i)] = []
-            i += 1
         for musicfile, musicdata in self.musiclist.items():
-            musictype = "type" + str(musicdata["type"])
-            self.music_pool[musictype].append(musicfile)
+            music_type = musicdata["type"]
+            if music_type == 2:  # Type 2 is currently shuffled with 1
+                music_type = 1
+            self.music_pool[music_type].append(musicfile)
 
-        self.music_pool["type1"] += self.music_pool["type2"]
-        del self.music_pool["type2"]  # Type 2 is currently shuffled with 1
-
-        for track, trackinfo in self.musiclist.items():
-            trackname = trackinfo["name"]
-            if trackinfo["type"] == 2:
-                tracktype = "type1"
-            else:
-                tracktype = "type" + str(trackinfo["type"])
-
-            if tracktype in NON_SHUFFLED_TYPES:
-                self.music[track] = track
-            else:
-                if self.rando.options["limit-vanilla-music"] == True:
-                    self.music[track] = rng.choice(
-                        [
-                            t
-                            for t in self.music_pool[tracktype]
-                            if self.musiclist[t]["name"] != trackname
-                        ]
-                    )
+        for music_type, tracks in self.music_pool.items():
+            if music_type not in NON_SHUFFLED_TYPES and len(tracks) > 1:
+                if self.rando.options["music-rando"] == "Shuffled (Limit Vanilla)":
+                    derangement = get_derangement(len(tracks), rng)
+                    for i in range(len(tracks)):
+                        self.music[tracks[i]] = tracks[derangement[i]]
                 else:
-                    self.music[track] = rng.choice(self.music_pool[tracktype])
-                if self.rando.options["music-rando"] == "Shuffled":
-                    self.music_pool[tracktype].remove(self.music[track])
+                    shuffled_tracks = tracks[:]
+                    rng.shuffle(shuffled_tracks)
+                    for orig_track, shuf_track in zip(tracks, shuffled_tracks):
+                        self.music[orig_track] = shuf_track
+            else:  # this should not be shuffled
+                for track in tracks:
+                    self.music[track] = track
 
-    for m, sm in self.music.items():
-        shutil.copyfile(
-            (self.rando.actual_extract_path / "DATA" / "files" / "Sound" / "wzs" / sm),
-            (self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / m),
-        )
-
-    # patch WZSound.brsar for length requirements
+    # patch WZSound.brsar for filename and length requirements
     with (
         self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "WZSound.brsar"
     ).open("r+b") as brsar:
         for original_track, new_track in self.music.items():
-            new_track_len = int.to_bytes(
-                int(self.musiclist[new_track]["audiolen"], base=16), 0x4, "big"
-            )
-            tracklenLoc = self.musiclist[original_track]["audiolenLoc"]
-            brsar.seek(tracklenLoc)
-            brsar.write(new_track_len)
+            # patch filename
+            filenameLoc = self.musiclist[original_track]["filenameLoc"]
+            brsar.seek(filenameLoc)
+            brsar.write(new_track.encode("ASCII"))
+            # patch track length
+            audiolenLoc = self.musiclist[original_track]["audiolenLoc"]
+            track_len_bytes = struct.pack(">I", self.musiclist[new_track]["audiolen"])
+            brsar.seek(audiolenLoc)
+            brsar.write(track_len_bytes)
 
     """ for track in self.loop_patch_list:
         with open(self.rando.modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / track, 'r+b') as mfile:

@@ -740,11 +740,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_31.addLayout(self.verticalLayout_17)
 
-        self.option_limit_vanilla_music = QCheckBox(self.verticalLayoutWidget_8)
-        self.option_limit_vanilla_music.setObjectName(u"option_limit_vanilla_music")
-
-        self.verticalLayout_31.addWidget(self.option_limit_vanilla_music)
-
         self.verticalSpacer_15 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_31.addItem(self.verticalSpacer_15)
@@ -1199,7 +1194,6 @@ class Ui_MainWindow(object):
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.groupBox_14.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
-        self.option_limit_vanilla_music.setText(QCoreApplication.translate("MainWindow", u"Limit Vanilla Music", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))

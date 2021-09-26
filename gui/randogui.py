@@ -192,15 +192,11 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, "plando_file_browse").setVisible(False)
         getattr(self.ui, "option_json_spoiler").setVisible(False)
 
-        # Music rando options default to not-enabled
-        getattr(self.ui, "option_limit_vanilla_music").setEnabled(False)
-
         self.ui.ouput_folder_browse_button.clicked.connect(self.browse_for_output_dir)
         self.ui.randomize_button.clicked.connect(self.randomize)
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.progression_goddess.clicked.connect(self.goddess_cubes_toggled)
-        self.ui.option_music_rando.currentIndexChanged.connect(self.music_rando_updated)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.update_ui_for_settings()
         self.set_option_description(None)
@@ -580,13 +576,6 @@ class RandoGUI(QMainWindow):
         self.ui.progression_floria_goddess.setEnabled(enabled)
         self.ui.progression_summit_goddess.setEnabled(enabled)
         self.ui.progression_sand_sea_goddess.setEnabled(enabled)
-
-    def music_rando_updated(self):
-        music_option = self.ui.option_music_rando.currentText()
-        if music_option == "None":
-            self.ui.option_limit_vanilla_music.setEnabled(False)
-        else:
-            self.ui.option_limit_vanilla_music.setEnabled(True)
 
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
