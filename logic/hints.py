@@ -13,6 +13,8 @@ ALWAYS_REQUIRED_LOCATIONS = [
     "Sky - Kina's Crystals",
     "Skyloft - Peater/Peatrice's Crystals",
     "Batreaux - 80 Crystals",
+    "Lanayru Mining Facility - Boss Key",
+    "Fire Sanctuary - Third Small Key"
 ]
 
 SOMETIMES_LOCATIONS = [
@@ -29,6 +31,17 @@ SOMETIMES_LOCATIONS = [
     "Lanayru - On Top of Lanayru Mining Facility",
     "Skyloft - Waterfall Goddess Chest",  # stronghold cube
     "Sky - Beedle's Island Goddess Chest",  # goddess cube in ToT area
+    "Skyview - Behind Three Eyes",
+    "Sandship - Boss Key",
+    "Sandship - Tentalus Heart Container",
+    "Sandship - Bow",
+    "Thunderhead - Din's Power",
+    "Sealed Grounds - True Master Sword",
+    "Lanayru Sand Sea - In Skippers Shack",
+    "Volcano Summit - Heart Piece Behind Digging",
+    "Faron Woods - Slingshot",
+    "Sky - Beedle's Crystals",
+    "Sealed Grounds - Gorko Goddess Wall Reward"
 ]
 
 HINTABLE_ITEMS = (
@@ -181,6 +194,11 @@ class Hints:
             SOMETIMES_LOCATIONS
         )
 
+        hintable_items = HINTABLE_ITEMS.copy()
+        # tweak item pool
+        if "Sandship" in self.logic.required_dungeons:
+            hintable_items.append("Sea Chart")
+
         hints_left = total_stonehints
         hinted_locations = []
 
@@ -292,7 +310,6 @@ class Hints:
                 hints_left -= 1
 
         # create  the item hints
-        hintable_items = HINTABLE_ITEMS.copy()
         item_hints = []
         self.logic.rando.rng.shuffle(hintable_items)
         hinted_locations.extend(self.logic.sworded_dungeon_locations)
