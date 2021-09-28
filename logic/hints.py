@@ -14,7 +14,7 @@ ALWAYS_REQUIRED_LOCATIONS = [
     "Skyloft - Peater/Peatrice's Crystals",
     "Batreaux - 80 Crystals",
     "Lanayru Mining Facility - Boss Key",
-    "Fire Sanctuary - Third Small Key"
+    "Fire Sanctuary - Third Small Key",
 ]
 
 SOMETIMES_LOCATIONS = [
@@ -41,7 +41,7 @@ SOMETIMES_LOCATIONS = [
     "Volcano Summit - Heart Piece Behind Digging",
     "Faron Woods - Slingshot",
     "Sky - Beedle's Crystals",
-    "Sealed Grounds - Gorko Goddess Wall Reward"
+    "Sealed Grounds - Gorko Goddess Wall Reward",
 ]
 
 HINTABLE_ITEMS = (
