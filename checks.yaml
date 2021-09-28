@@ -279,7 +279,7 @@ Central Skyloft - Crystal on Light Tower:
 Skyloft Village - Crystal near Pumpkin Patch:
   original item: Gratitude Crystal
   type: crystal
-Central Skyloft - Crystal Orielle and Parrow House:
+Central Skyloft - Crystal in Orielle and Parrow's House:
   original item: Gratitude Crystal
   type: crystal
 Central Skyloft - Crystal between Wooden Planks:
@@ -312,12 +312,12 @@ Sky - Lumpy Pumpkin - Chandelier:
   type: sky, freestanding
   Paths:
     - stage/F011r/r0/l0/Chandel
-Sky - Lumpy Pumpkin - Goddess Chest on Roof:
+Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
   original item: Gold Rupee
   type: sky, goddess, faron goddess, dungeon
   Paths:
     - stage/F020/r0/l0/TBox/87
-Sky -  Lumpy Pumpkin - Goddess Chest outside:
+Sky -  Lumpy Pumpkin - Outside Goddess Chest:
   original item: Progressive Pouch
   type: sky, goddess, faron goddess
   Paths:
@@ -451,12 +451,12 @@ Sky - Crystal on Beedle's Ship:
   original item: Gratitude Crystal
   type: crystal
 
-Thunderhead - Goddess Chest outside Isle of Song:
+Thunderhead - Goddess Chest outside Isle of Songs:
   original item: Gold Rupee
   type: thunderhead, goddess, eldin goddess
   Paths:
     - stage/F023/r0/l0/TBox/92
-Thunderhead - Goddess Chest on top of Isle of Song:
+Thunderhead - Goddess Chest on top of Isle of Songs:
   original item: Small Bomb Bag
   type: thunderhead, goddess, summit goddess
   Paths:
@@ -498,17 +498,17 @@ Thunderhead - Song from Levias:
   Paths:
     - event/120-Nushi/give item after levias
     - oarc/F023/l0
-Thunderhead - Isle of Song - Farore's Courage:
+Thunderhead - Isle of Songs - Farore's Courage:
   original item: Farore's Courage
   type: thunderhead, song
   Paths:
     - stage/F010r/r0/l0/SwSB/0
-Thunderhead - Isle of Song - Nayru's Wisdom:
+Thunderhead - Isle of Songs - Nayru's Wisdom:
   original item: Nayru's Wisdom
   type: thunderhead, song
   Paths:
     - stage/F010r/r0/l0/SwSB/1
-Thunderhead - Isle of Song - Din's Power:
+Thunderhead - Isle of Songs - Din's Power:
   original item: Din's Power
   type: thunderhead, song
   Paths:
