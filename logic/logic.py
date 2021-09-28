@@ -100,7 +100,7 @@ class Logic:
             ):
                 self.racemode_ban_location("Knight Academy - Fledge's Crystals")
             if "Skyview" in self.unrequired_dungeons:
-                self.racemode_ban_location("Sky - Goddess Chest on Lumpy Pumpkin Roof")
+                self.racemode_ban_location("Sky - Lumpy Pumpkin - Goddess Chest on  Roof")
                 self.racemode_ban_location(
                     "Sealed Grounds - Gorko's Goddess Wall Reward"
                 )
