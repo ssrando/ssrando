@@ -2136,8 +2136,11 @@ class GamePatcher:
         ARC_REPLACEMENTS_PATH.mkdir(exist_ok=True)
         for file in ARC_REPLACEMENTS_PATH.glob("*.arc"):
             arcname = file.parts[-1]  # includes the .arc extension
-            arcdata = file.read_bytes()
-            object_arc.set_file_data(f"oarc/{arcname}", arcdata)
+            filename = f"oarc/{arcname}"
+            file_in_arc = object_arc.get_file(filename)
+            if file_in_arc is not None:
+                arcdata = file.read_bytes()
+                file_in_arc.set_data(arcdata)
             objpack_modified = True
         if objpack_modified:
             objpack_data = object_arc.to_buffer()
