@@ -120,7 +120,7 @@ def main():
         progress_steps = 0
 
         def progress_callback(action):
-            global progress_steps
+            nonlocal progress_steps
             print(f"{action} {progress_steps}/{total_progress_steps}")
             progress_steps += 1
 
