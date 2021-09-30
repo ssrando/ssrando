@@ -9,7 +9,7 @@ from .constants import POTENTIALLY_REQUIRED_DUNGEONS, SILENT_REALMS, SILENT_REAL
 from util import textbox_utils
 
 ALWAYS_REQUIRED_LOCATIONS = [
-    "Thunderhead - Levias' Teaching",
+    "Thunderhead - Song from Levias",
     "Sky - Kina's Crystals",
     "Central Skyloft - Peater/Peatrice's Crystals",
     "Batreaux - 80 Crystals",
@@ -26,7 +26,7 @@ SOMETIMES_LOCATIONS = [
     "Batreaux - 50 Crystals",
     "Knight Academy - Owlan's Crystals",
     "Skyloft Village - Sparrot's Crystals",
-    "Lanayru - Chest on top of Lanayru Mining Facility",
+    "Lanayru Desert - Chest on top of Lanayru Mining Facility",
     "Central Skyloft - Waterfall Goddess Chest",  # stronghold cube
     "Sky - Beedle's Island Goddess Chest",  # goddess cube in ToT area
 ]
@@ -173,10 +173,10 @@ class Hints:
             needed_always_hints.append("Beedle - 1200 Rupee Item")
             needed_always_hints.append("Beedle - 1600 Rupee Item")
         if self.logic.rando.options["song-hints"] == "None":
-            needed_always_hints.append("Skyloft Silent Realm - Trial Reward")
-            needed_always_hints.append("Faron Silent Realm - Trial Reward")
-            needed_always_hints.append("Lanayru Silent Realm - Trial Reward")
-            needed_always_hints.append("Eldin Silent Realm - Trial Reward")
+            needed_always_hints.append("Skyloft Silent Realm - Stone of Trials")
+            needed_always_hints.append("Faron Silent Realm - Water Scale")
+            needed_always_hints.append("Lanayru Silent Realm - Clawshots")
+            needed_always_hints.append("Eldin Silent Realm - Fireshield Earrings")
         needed_sometimes_hints = self.logic.filter_locations_for_progression(
             SOMETIMES_LOCATIONS
         )

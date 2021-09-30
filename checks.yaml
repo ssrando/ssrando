@@ -755,7 +755,7 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
   type: lanayru, miscellaneous, mini dungeon
   Paths:
     - stage/F300/r0/l1/TBox/83
-Lanayru Desert - Chest on Platform near Lighting Node:
+Lanayru Desert - Chest on Platform near Lightning Node:
   original item: Dusk Relic
   type: lanayru, miscellaneous
   Paths:

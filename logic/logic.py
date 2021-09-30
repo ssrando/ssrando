@@ -270,18 +270,18 @@ class Logic:
         self.map_banned_locations = []
         if self.rando.options["map-mode"] == "Own Dungeon - Restricted":
             self.map_banned_locations += [
-                "Skyview - Ghirahim's Heart Container",
-                "Earth Temple - Scaldera's Heart Container",
-                "Lanayru Mining Facility - Molderach's Heart Container",
-                "Ancient Cistern - Koloktos' Heart Container",
-                "Sandship - Tentalus' Heart Container",
-                "Fire Sanctuary - Ghirahim's Heart Container",
-                "Skyview - Dungeon Reward",
-                "Earth Temple - Dungeon Reward",
-                "Lanayru Mining Facility - Dungeon Reward",
-                "Ancient Cistern - Dungeon Reward",
-                "Sandship - Dungeon Reward",
-                "Fire Sanctuary - Dungeon Reward",
+                "Skyview - Ghirahim Heart Container",
+                "Earth Temple - Scaldera Heart Container",
+                "Lanayru Mining Facility - Molderach Heart Container",
+                "Ancient Cistern - Koloktos Heart Container",
+                "Sandship - Tentalus Heart Container",
+                "Fire Sanctuary - Ghirahim Heart Container",
+                "Skyview - Ruby Tablet",
+                "Earth Temple - Amber Tablet",
+                "Lanayru Mining Facility - Goddess Harp",
+                "Ancient Cistern - Farore's Flame",
+                "Sandship - Nayru's Flame",
+                "Fire Sanctuary - Din's Flame",
             ]
 
         if self.rando.options["logic-mode"] == "No Logic":

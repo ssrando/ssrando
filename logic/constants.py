@@ -46,10 +46,10 @@ SILENT_REALMS = OrderedDict(
 
 SILENT_REALM_CHECKS = OrderedDict(
     [
-        ("Skyloft Silent Realm - Trial Reward", "Trial Gate on Skyloft"),
-        ("Faron Silent Realm - Trial Reward", "Trial Gate in Faron Woods"),
-        ("Lanayru Silent Realm - Trial Reward", "Trial Gate in Lanayru Desert"),
-        ("Eldin Silent Realm - Trial Reward", "Trial Gate in Eldin Volcano"),
+        ("Skyloft Silent Realm - Stone of Trials", "Trial Gate on Skyloft"),
+        ("Faron Silent Realm - Water Scale", "Trial Gate in Faron Woods"),
+        ("Lanayru Silent Realm - Clawshots", "Trial Gate in Lanayru Desert"),
+        ("Eldin Silent Realm - Fireshield Earrings", "Trial Gate in Eldin Volcano"),
     ]
 )
 
@@ -81,7 +81,7 @@ SMALL_KEY_CHECKS = [
     "Skyview - Chest behind Three Eyes",
     "Lanayru Mining Facility - First Chest in Hub Room",
     "Ancient Cistern - Chest in East Part",
-    "Ancient Cistern - On Bokoblin's Waist",
+    "Ancient Cistern - Bokoblin",
     "Sandship - Chest behind Combination Lock",
     "Sandship - Robot in Brig's Reward",
     "Fire Sanctuary - Chest in First Room",

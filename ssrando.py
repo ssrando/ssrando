@@ -498,10 +498,10 @@ class Randomizer(BaseRandomizer):
         # temporary placement file stuff
         trial_checks = {
             # (getting it text patch, inventory text line)
-            "Skyloft Silent Realm - Trial Reward": "Song of the Hero - Trial Hint",
-            "Faron Silent Realm - Trial Reward": "Farore's Courage - Trial Hint",
-            "Lanayru Silent Realm - Trial Reward": "Nayru's Wisdom - Trial Hint",
-            "Eldin Silent Realm - Trial Reward": "Din's Power - Trial Hint",
+            "Skyloft Silent Realm - Stone of Trials": "Song of the Hero - Trial Hint",
+            "Faron Silent Realm - Water Scale": "Farore's Courage - Trial Hint",
+            "Lanayru Silent Realm - Clawshots": "Nayru's Wisdom - Trial Hint",
+            "Eldin Silent Realm - Fireshield Earrings": "Din's Power - Trial Hint",
         }
         trial_hints = {}
         for (trial_check_name, hintname) in trial_checks.items():
