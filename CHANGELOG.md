@@ -38,6 +38,7 @@
 - Changed item hints, that point to a specific location, to use the same hint format as location hints
 ### Bugfixes
 - always copy layer 0, this fixes various bugs, where changes from previous randomizations were not reverted
+- fix gorko sometimes asking to draw bombs even when you don't have them
 
 ## 1.2.0
 ### Options
