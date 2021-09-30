@@ -21,7 +21,7 @@ def test_roundtrip():
             rando.hints.do_junk_hints()
         elif rando.options["hint-distribution"] == "Normal":
             rando.hints.do_normal_hints()
-        elif rnado.options["hint-distribution"] == "Bingo":
+        elif rando.options["hint-distribution"] == "Bingo":
             rando.hints.do_bingo_hints()
         else:
             raise Exception(f"{rando.options['hints']} is not a valid hint setting!")
