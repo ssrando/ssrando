@@ -14,7 +14,7 @@ ALWAYS_REQUIRED_LOCATIONS = [
     "Skyloft - Peater/Peatrice's Crystals",
     "Batreaux - 80 Crystals",
     "Lanayru Mining Facility - Boss Key",
-    "Fire Sanctuary - Third Small Key",
+    "Fire Sanctuary - Third Small Key Chest",
 ]
 
 SOMETIMES_LOCATIONS = [
@@ -34,7 +34,7 @@ SOMETIMES_LOCATIONS = [
     "Skyview - Behind Three Eyes",
     "Sandship - Boss Key",
     "Sandship - Tentalus Heart Container",
-    "Sandship - Bow",
+    "Sandship - Bow chest",
     "Thunderhead - Din's Power",
     "Sealed Grounds - True Master Sword",
     "Lanayru Sand Sea - In Skippers Shack",
