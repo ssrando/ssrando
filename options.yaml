@@ -535,3 +535,22 @@
   default: false
   help: If activated, the final check of a required dungeon will be a sword (if possible). If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
   ui: option_sword_dungeon_reward
+- name: Randomize Music
+  command: music-rando
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - Shuffled
+    - Shuffled (Limit Vanilla)
+  default: None
+  permalink: false
+  help: If enabled, music will be randomized. Limit Vanilla means, the randomizer will attempt to prevent vanilla music. Note that some music can still be vanilla.
+  ui: option_music_rando
+- name: Cutoff Game Over Music
+  command: cutoff-gameover-music
+  type: boolean
+  default: false
+  permalink: false
+  help: If enabled, the game over music will cutoff when it normally would. If disabled, the music will continue to play until the end of the song, even after pressing continue.
+  ui: option_cutoff_gameover_music
