@@ -694,6 +694,46 @@ F000: # Skyloft
     type: oarcdelete
     oarc: JunkMotherLOD
     layer: 1
+  - name: delete parrow before wryna
+    type: objdelete
+    id: 0xFDC7
+    layer: 4
+    room: 0
+    objtype: OBJ
+  - name: always spawn parrow for quest
+    type: objpatch
+    id: 0xFDD4
+    layer: 4
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
+  - name: delete parrow before wryna 2
+    type: objdelete
+    id: 0xFDCD
+    layer: 6
+    room: 0
+    objtype: OBJ
+  - name: always spawn parrow for quest 2
+    type: objpatch
+    id: 0xFDD6
+    layer: 6
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
+  - name: delete parrow CS
+    type: objdelete
+    id: 0xFDF9
+    layer: 4
+    room: 0
+    objtype: OBJ
+  - name: delete parrow CS 2
+    type: objdelete
+    id: 0xFDEA
+    layer: 6
+    room: 0
+    objtype: OBJ
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -935,14 +975,22 @@ F020: # Sky
     objtype: STAG
     object:
       untrigstoryfid: -1
-  - name: remove Wryna requirement for orille
+  - name: remove Wryna requirement for orielle
     type: objpatch
     id: 0xFCFB
     layer: 2
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 36
+      trigstoryfid: -1
+  - name: remove Wryna requirement for orielle's bird
+    type: objpatch
+    id: 0xFD0E
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xCBFFFFFF # make it always spawn
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
