@@ -37,13 +37,13 @@ def music_rando(self):
     self.music = {}
     self.music_pool = defaultdict(list)
     # self.loop_patch_list = []
-    rng = random.Random()
-    rng.seed(self.rando.options["seed"])
 
-    if self.rando.options["music-rando"] == "None":
+    if self.placement_file.options["music-rando"] == "None":
         for f in self.musiclist.keys():
             self.music[f] = f
     else:
+        rng = random.Random()
+        rng.seed(self.placement_file.options["seed"])
         for musicfile, musicdata in self.musiclist.items():
             music_type = musicdata["type"]
             if music_type == 2:  # Type 2 is currently shuffled with 1
@@ -52,7 +52,10 @@ def music_rando(self):
 
         for music_type, tracks in self.music_pool.items():
             if music_type not in NON_SHUFFLED_TYPES and len(tracks) > 1:
-                if self.rando.options["music-rando"] == "Shuffled (Limit Vanilla)":
+                if (
+                    self.placement_file.options["music-rando"]
+                    == "Shuffled (Limit Vanilla)"
+                ):
                     derangement = get_derangement(len(tracks), rng)
                     for i in range(len(tracks)):
                         self.music[tracks[i]] = tracks[derangement[i]]
@@ -76,7 +79,7 @@ def music_rando(self):
             brsar.write(new_track.encode("ASCII"))
             # patch track length
             if (
-                self.rando.options["cutoff-gameover-music"]
+                self.placement_file.options["cutoff-gameover-music"]
                 and original_track == "C47D3DF4C435739443D195F7265A7D57"
             ):
                 track_len = self.musiclist[original_track]["audiolen"]
