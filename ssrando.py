@@ -100,13 +100,13 @@ class Randomizer(BaseRandomizer):
         # self.logic.set_prerandomization_item_location("Beedle - Second 100 Rupee Item", "Rare Treasure")
         # self.logic.set_prerandomization_item_location("Beedle - Third 100 Rupee Item", "Rare Treasure")
         # self.logic.set_prerandomization_item_location("Beedle - 1000 Rupee Item", "Rare Treasure")
-        # self.logic.set_prerandomization_item_location("Skyloft Academy - Fledge", "SV Small Key")
-        # self.logic.set_prerandomization_item_location("Skyloft Academy - Owlan's Shield", "ET Map")
+        # self.logic.set_prerandomization_item_location("Knight Academy - Fledge's Gift", "SV Small Key")
+        # self.logic.set_prerandomization_item_location("Knight Academy - Owlan's Gift", "ET Map")
         # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
         # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
         # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
-        # self.logic.set_prerandomization_item_location("Skyloft - Baby Rattle", "Sea Chart")
-        # self.logic.set_prerandomization_item_location("Skyloft Academy - Practice Sword", "LanayruCaves Small Key")
+        # self.logic.set_prerandomization_item_location("Central Skyloft - Item in Bird Nest", "Sea Chart")
+        # self.logic.set_prerandomization_item_location("Knight Academy - Sparring Hall Chest", "LanayruCaves Small Key")
 
     def _get_rando_hash(self):
         # hash of seed, options, version

@@ -64,6 +64,6 @@ if __name__ == "__main__":
     print(test_separator)
     print(
         break_lines(
-            "<r<Skyloft Academy - Owlan's Crystals>> has <y<Eldin Song of the Hero Part>>"
+            "<r<Knight Academy - Owlan's Crystals>> has <y<Eldin Song of the Hero Part>>"
         )
     )

@@ -83,10 +83,10 @@ class Logic:
         self.race_mode_banned_locations = []
         if (
             self.rando.options["skip-skykeep"]
-            and self.entrance_connections["Dungeon Entrance In Lanayru Desert"]
+            and self.entrance_connections["Dungeon Entrance in Lanayru Desert"]
             == "Sky Keep"
         ):
-            self.racemode_ban_location("Skyloft Academy - Fledge's Crystals")
+            self.racemode_ban_location("Knight Academy - Fledge's Crystals")
         if self.rando.options["empty-unrequired-dungeons"]:
             for location_name in self.item_locations:
                 zone, _ = Logic.split_location_name_by_zone(location_name)
@@ -95,13 +95,17 @@ class Logic:
 
             # checks outside locations that require dungeons:
             if (
-                self.entrance_connections["Dungeon Entrance In Lanayru Desert"]
+                self.entrance_connections["Dungeon Entrance in Lanayru Desert"]
                 in self.unrequired_dungeons
             ):
-                self.racemode_ban_location("Skyloft Academy - Fledge's Crystals")
+                self.racemode_ban_location("Knight Academy - Fledge's Crystals")
             if "Skyview" in self.unrequired_dungeons:
-                self.racemode_ban_location("Sky - Lumpy Pumpkin Roof Goddess Chest")
-                self.racemode_ban_location("Sealed Grounds - Gorko Goddess Wall Reward")
+                self.racemode_ban_location(
+                    "Sky - Lumpy Pumpkin - Goddess Chest on the Roof"
+                )
+                self.racemode_ban_location(
+                    "Sealed Grounds - Gorko's Goddess Wall Reward"
+                )
 
         batreaux_location_re = re.compile(r".*Batreaux - ([0-9]+) .*")
 
@@ -116,8 +120,8 @@ class Logic:
                     # print(f'banned {location_name}')
 
         if self.rando.options["skip-skykeep"]:
-            self.racemode_ban_location("Sky Keep - Map Chest")
-            self.racemode_ban_location("Sky Keep - Small Key Chest")
+            self.racemode_ban_location("Sky Keep - First Chest")
+            self.racemode_ban_location("Sky Keep - Chest after Dreadfuse")
 
         self.locations_by_zone_name = OrderedDict()
         for location_name in self.item_locations:
@@ -268,14 +272,14 @@ class Logic:
             self.map_banned_locations += [
                 "Skyview - Ghirahim Heart Container",
                 "Earth Temple - Scaldera Heart Container",
-                "Lanayru Mining Facility - LMF Heart Container",
+                "Lanayru Mining Facility - Molderach Heart Container",
                 "Ancient Cistern - Koloktos Heart Container",
                 "Sandship - Tentalus Heart Container",
                 "Fire Sanctuary - Ghirahim Heart Container",
                 "Skyview - Ruby Tablet",
                 "Earth Temple - Amber Tablet",
-                "Lanayru Mining Facility - Harp",
-                "Ancient Cistern - Goddess Longsword",
+                "Lanayru Mining Facility - Goddess Harp",
+                "Ancient Cistern - Farore's Flame",
                 "Sandship - Nayru's Flame",
                 "Fire Sanctuary - Din's Flame",
             ]
@@ -340,13 +344,13 @@ class Logic:
                     self.rando.rng.shuffle(dungeons)
             entrance_connections = OrderedDict(
                 [
-                    ("Dungeon Entrance In Deep Woods", dungeons.pop()),
-                    ("Dungeon Entrance In Eldin Volcano", dungeons.pop()),
-                    ("Dungeon Entrance In Lanayru Desert", dungeons.pop()),
-                    ("Dungeon Entrance In Lake Floria", dungeons.pop()),
-                    ("Dungeon Entrance In Sand Sea", dungeons.pop()),
-                    ("Dungeon Entrance In Volcano Summit", dungeons.pop()),
-                    ("Dungeon Entrance On Skyloft", dungeons.pop()),
+                    ("Dungeon Entrance in Deep Woods", dungeons.pop()),
+                    ("Dungeon Entrance in Eldin Volcano", dungeons.pop()),
+                    ("Dungeon Entrance in Lanayru Desert", dungeons.pop()),
+                    ("Dungeon Entrance in Lake Floria", dungeons.pop()),
+                    ("Dungeon Entrance in Sand Sea", dungeons.pop()),
+                    ("Dungeon Entrance in Volcano Summit", dungeons.pop()),
+                    ("Dungeon Entrance on Skyloft", dungeons.pop()),
                 ]
             )
             assert len(dungeons) == 0, "Not all dungeons linked to an entrance"
@@ -763,7 +767,7 @@ class Logic:
         # needs to be able to open GoT and open it, requires required dungeons
         access_past_requirements = [
             "Can Access Sealed Temple",
-            "Can Open GOT After Raising",
+            "Meets Gate of Time Sword Requirement",
             "Can Raise Gate of Time",
         ]
         for dungeon in self.required_dungeons:

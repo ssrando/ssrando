@@ -26,13 +26,13 @@ DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict(
 )
 
 ENTRANCE_CONNECTIONS = {
-    "Dungeon Entrance In Deep Woods": "Skyview",
-    "Dungeon Entrance In Eldin Volcano": "Earth Temple",
-    "Dungeon Entrance In Lanayru Desert": "Lanayru Mining Facility",
-    "Dungeon Entrance In Lake Floria": "Ancient Cistern",
-    "Dungeon Entrance In Sand Sea": "Sandship",
-    "Dungeon Entrance In Volcano Summit": "Fire Sanctuary",
-    "Dungeon Entrance On Skyloft": "Sky Keep",
+    "Dungeon Entrance in Deep Woods": "Skyview",
+    "Dungeon Entrance in Eldin Volcano": "Earth Temple",
+    "Dungeon Entrance in Lanayru Desert": "Lanayru Mining Facility",
+    "Dungeon Entrance in Lake Floria": "Ancient Cistern",
+    "Dungeon Entrance in Sand Sea": "Sandship",
+    "Dungeon Entrance in Volcano Summit": "Fire Sanctuary",
+    "Dungeon Entrance on Skyloft": "Sky Keep",
 }
 
 SILENT_REALMS = OrderedDict(
@@ -67,45 +67,45 @@ SHOP_CHECKS = [
 ]
 
 MAP_CHECKS = [
-    "Skyview - Map Chest",
-    "Earth Temple - Map Chest",
-    "Lanayru Mining Facility - Map Chest",
-    "Ancient Cistern - Map Chest",
-    "Sandship - Map Chest",
-    "Fire Sanctuary - Map Chest",
-    "Sky Keep - Map Chest",
+    "Skyview - Chest on Tree Branch",
+    "Earth Temple - Chest in West Room",
+    "Lanayru Mining Facility - Chest after Armos Fight",
+    "Ancient Cistern - Chest after Whip Hooks",
+    "Sandship - Chest before 4-Door Corridor",
+    "Fire Sanctuary - Chest after Second Trapped Mogma",
+    "Sky Keep - First Chest",
 ]
 
 SMALL_KEY_CHECKS = [
-    "Skyview - Behind Two Eyes",
-    "Skyview - Behind Three Eyes",
+    "Skyview - Chest behind Two Eyes",
+    "Skyview - Chest behind Three Eyes",
     "Lanayru Mining Facility - First Chest in Hub Room",
-    "Ancient Cistern - Small Key Chest",
+    "Ancient Cistern - Chest in East Part",
     "Ancient Cistern - Bokoblin",
-    "Sandship - Behind Combination Lock",
-    "Sandship - Robot in Brig",
-    "Fire Sanctuary - First Room",
-    "Fire Sanctuary - Second Small Key Chest",
-    "Fire Sanctuary - Third Small Key Chest",
-    "Lanayru Caves - Golo",
-    "Sky Keep - Small Key Chest",
+    "Sandship - Chest behind Combination Lock",
+    "Sandship - Robot in Brig's Reward",
+    "Fire Sanctuary - Chest in First Room",
+    "Fire Sanctuary - Chest near First Trapped Mogma",
+    "Fire Sanctuary - Chest after Bombable Wall",
+    "Lanayru Caves - Golo's Gift",
+    "Sky Keep - Chest after Dreadfuse",
 ]
 
 BOSS_KEY_CHECKS = [
-    "Skyview - Boss Key",
-    "Earth Temple - Boss Key",
-    "Lanayru Mining Facility - Boss Key",
-    "Ancient Cistern - Boss Key",
-    "Sandship - Boss Key",
-    "Fire Sanctuary - Boss Key",
+    "Skyview - Boss Key Chest",
+    "Earth Temple - Boss Key Chest",
+    "Lanayru Mining Facility - Boss Key Chest",
+    "Ancient Cistern - Boss Key Chest",
+    "Sandship - Boss Key Chest",
+    "Fire Sanctuary - Boss Key Chest",
 ]
 
 END_OF_DUNGEON_CHECKS = OrderedDict(
     [
         ("Skyview", "Skyview - Ruby Tablet"),
         ("Earth Temple", "Earth Temple - Amber Tablet"),
-        ("Lanayru Mining Facility", "Lanayru Mining Facility - Harp"),
-        ("Ancient Cistern", "Ancient Cistern - Goddess Longsword"),
+        ("Lanayru Mining Facility", "Lanayru Mining Facility - Goddess Harp"),
+        ("Ancient Cistern", "Ancient Cistern - Farore's Flame"),
         ("Sandship", "Sandship - Nayru's Flame"),
         ("Fire Sanctuary", "Fire Sanctuary - Din's Flame"),
     ]
