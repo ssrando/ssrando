@@ -1444,16 +1444,15 @@ class GamePatcher:
             )
 
     def add_race_integrity_patches(self):
-        self.eventpatches["599-Demo"].append(
+        self.add_patch_to_event(
+            "599-Demo",
             {
                 "name": "Race Integrity Patch for Fi",
                 "type": "textpatch",
                 "index": 153,
                 "text": make_mutliple_textboxes(
                     [
-                        "Congratulations, Master <heroname>.\nSeed: {0}\nHash: {1}".format(
-                            self.rando.seed, self.placement_file.hash_str
-                        ),
+                        f"Congratulations, Master <heroname>.\nHash: {self.placement_file.hash_str}",
                         break_lines(
                             "Thank you for playing <b+<Skyward Sword Randomizer>>!"
                         ),
@@ -1461,14 +1460,13 @@ class GamePatcher:
                 ),
             }
         )
-        self.eventpatches["599-Demo"].append(
+        self.add_patch_to_event(
+            "599-Demo",
             {
                 "name": "Race Integrity Patch for Impa",
                 "type": "textpatch",
                 "index": 155,
-                "text": "You have done well, <heroname>.\nSeed: {0}\nHash: {1}".format(
-                    self.rando.seed, self.placement_file.hash_str
-                ),
+                "text": f"Congratulations, Master <heroname>.\nHash: {self.placement_file.hash_str}"
             }
         )
 
