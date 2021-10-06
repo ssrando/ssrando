@@ -1458,7 +1458,7 @@ class GamePatcher:
                         ),
                     ]
                 ),
-            }
+            },
         )
         self.add_patch_to_event(
             "599-Demo",
@@ -1466,8 +1466,8 @@ class GamePatcher:
                 "name": "Race Integrity Patch for Impa",
                 "type": "textpatch",
                 "index": 155,
-                "text": f"You have done well, <heroname>.\nHash: {self.placement_file.hash_str}"
-            }
+                "text": f"You have done well, <heroname>.\nHash: {self.placement_file.hash_str}",
+            },
         )
 
     def handle_oarc_add_remove(self):
