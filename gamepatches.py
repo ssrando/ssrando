@@ -1466,7 +1466,7 @@ class GamePatcher:
                 "name": "Race Integrity Patch for Impa",
                 "type": "textpatch",
                 "index": 155,
-                "text": f"Congratulations, Master <heroname>.\nHash: {self.placement_file.hash_str}"
+                "text": f"You have done well, <heroname>.\nHash: {self.placement_file.hash_str}"
             }
         )
 
