@@ -27,7 +27,11 @@ from logic.constants import SILENT_REALM_CHECKS
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
-from util.textbox_utils import break_lines, break_and_make_multiple_textboxes
+from util.textbox_utils import (
+    break_lines,
+    break_and_make_multiple_textboxes,
+    make_mutliple_textboxes,
+)
 
 TOTAL_STAGE_FILES = 369
 TOTAL_EVENT_FILES = 6
@@ -885,6 +889,7 @@ class GamePatcher:
         if self.placement_file.options["impa-sot-hint"]:
             self.add_impa_hint()
         self.add_stone_hint_patches()
+        self.add_race_integrity_patches()
         self.handle_oarc_add_remove()
         self.add_rando_hash()
         self.add_keysanity()
@@ -1437,6 +1442,33 @@ class GamePatcher:
                     ),
                 },
             )
+
+    def add_race_integrity_patches(self):
+        self.add_patch_to_event(
+            "599-Demo",
+            {
+                "name": "Race Integrity Patch for Fi",
+                "type": "textpatch",
+                "index": 153,
+                "text": make_mutliple_textboxes(
+                    [
+                        f"Congratulations, Master <heroname>.\nHash: {self.placement_file.hash_str}",
+                        break_lines(
+                            "Thank you for playing <b+<Skyward Sword Randomizer>>!"
+                        ),
+                    ]
+                ),
+            },
+        )
+        self.add_patch_to_event(
+            "599-Demo",
+            {
+                "name": "Race Integrity Patch for Impa",
+                "type": "textpatch",
+                "index": 155,
+                "text": f"You have done well, <heroname>.\nHash: {self.placement_file.hash_str}",
+            },
+        )
 
     def handle_oarc_add_remove(self):
         remove_stageoarcs = defaultdict(set)
