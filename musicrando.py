@@ -85,7 +85,7 @@ def music_rando(self):
                 track_len = self.musiclist[original_track]["audiolen"]
             else:
                 if self.placement_file.options["allow-custom-music"]:
-                    track_len = 2147483647 # 0x7F FF FF FF - 2GB
+                    track_len = 2147483647  # 0x7F FF FF FF - 2GB
                 else:
                     track_len = self.musiclist[new_track]["audiolen"]
             audiolenLoc = self.musiclist[original_track]["audiolenLoc"]
