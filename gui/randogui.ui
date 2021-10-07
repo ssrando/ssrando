@@ -144,7 +144,7 @@
         <x>10</x>
         <y>120</y>
         <width>181</width>
-        <height>111</height>
+        <height>131</height>
        </rect>
       </property>
       <property name="title">
@@ -156,7 +156,7 @@
          <x>10</x>
          <y>20</y>
          <width>160</width>
-         <height>80</height>
+         <height>101</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_33">
@@ -203,7 +203,7 @@
         <x>210</x>
         <y>120</y>
         <width>131</width>
-        <height>111</height>
+        <height>131</height>
        </rect>
       </property>
       <property name="title">
@@ -215,7 +215,7 @@
          <x>10</x>
          <y>20</y>
          <width>111</width>
-         <height>81</height>
+         <height>101</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_34">
@@ -248,7 +248,7 @@
         <x>360</x>
         <y>120</y>
         <width>131</width>
-        <height>111</height>
+        <height>131</height>
        </rect>
       </property>
       <property name="title">
@@ -274,7 +274,7 @@
         <x>510</x>
         <y>120</y>
         <width>181</width>
-        <height>111</height>
+        <height>131</height>
        </rect>
       </property>
       <property name="title">
@@ -286,7 +286,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>81</height>
+         <height>101</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_35">
@@ -308,6 +308,13 @@
          <widget class="QCheckBox" name="option_cutoff_gameover_music">
           <property name="text">
            <string>Cutoff Game Over Music</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_allow_custom_music">
+          <property name="text">
+           <string>Allow Custom Music</string>
           </property>
          </widget>
         </item>
