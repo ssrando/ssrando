@@ -64,7 +64,7 @@ You will need Python (version 3.8 for Windows) and pip (which should come with P
         git clone https://github.com/ssrando/ssrando
         cd ssrando
 
-3. Choose the branch you want to run (`gui-redesign` is the most up-to-date), or the version you want to run (`v1.x.x` for stable releases, `async-[month]-[yy]` for async races; you can check the releases in Github):
+3. Choose the branch you want to run (`master` is the most up-to-date), or the version you want to run (`v1.x.x` for stable releases, `async-[month]-[yy]` for async races; you can check the releases in Github):
 
         git checkout [BRANCH OR VERSION]
     Replace `[BRANCH OR VERSION]` with the desired branch or version in the command
