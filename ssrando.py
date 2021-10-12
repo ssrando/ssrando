@@ -91,7 +91,8 @@ class Randomizer(BaseRandomizer):
         self.rng = random.Random()
         self.rng.seed(self.seed)
         if self.no_logs:
-            self.rng.randint(0, 100)
+            for _ in range(100):
+                self.rng.random()
         self.banned_types = self.options["banned-types"]
 
         self.logic = Logic(self)

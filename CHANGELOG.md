@@ -2,8 +2,18 @@
 
 ## Dev
 ### Options
+- Added option to randomize music (by Battlecats59)
+- Added option to force swords at the end of dungeons (by YourAverageLink)
+- Added option to visually swap Skyloft and hero's clothes
 ### Changes
+- Various name changes (by NULL and cjs07)
+- Added playername and hash to textboxes after demise (by Battlecats59)
+- CLI improvements
 ### Bugfixes
+- Added some tricks that were in the logic files but not in options (by NULL)
+- Fix bug with arc-replacements causing an error if the arc doesn't exist in ObjectPack, it's ignored now
+- Fix Sandship Timeshiftstone not being unset when leaving the dungeon in entrance rando
+- Fix a bug in trials where you could be unable to get the item with glitches
 
 ## 1.1.0
 ### Options
