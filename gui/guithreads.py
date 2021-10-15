@@ -50,6 +50,7 @@ class RandomizerThread(QThread):
             print(traceback.format_exc())
             return
         if not dry_run:
+            self.wit_manager.ensure_wit_installed()
             default_ui_progress_callback("repacking game...")
             repack_progress_cb = self.create_ui_progress_callback(
                 self.randomizer.get_total_progress_steps()
