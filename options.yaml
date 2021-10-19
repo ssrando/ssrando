@@ -563,3 +563,16 @@
   cosmetic: true
   help: If enabled, the game over music will cutoff when it normally would. If disabled, the music will continue to play until the end of the song, even after pressing continue.
   ui: option_cutoff_gameover_music
+- name: Chest Sizes
+  command: chest-sizes
+  type: singlechoice
+  bits: 3
+  choices:
+    - Vanilla
+    - All Small
+    - All Normal
+    - All Boss Keys
+    - Matches Contents
+    - Random
+  default: Vanilla
+  help: Changes the way chest sizes are determined. Never impacts Goddess Chests
