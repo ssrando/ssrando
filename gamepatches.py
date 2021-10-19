@@ -579,9 +579,20 @@ def try_patch_obj(obj, key, value):
         print(f"ERROR: unsupported object to patch {obj}")
 
 
-def patch_tbox_item(tbox: OrderedDict, itemid: int):
+def patch_tbox_item(tbox: OrderedDict, itemid: int, size: str):
     origitemid = tbox["anglez"] & 0x1FF
-    boxtype = tboxSubtypes[origitemid]
+    if size == 'Vanilla':
+        boxtype = tboxSubtypes[origitemid]
+    elif size == 'All Small':
+        boxtype = 1
+    elif size == 'All Normal':
+        boxtype = 0
+    elif size == 'All Boss Keys':
+        boxtype = 2
+    elif size == 'Matches Contents':
+        boxtype = tboxSubtypes[itemid]
+    else:
+        boxtype = random.randint(0, 2)
     tbox["anglez"] = mask_shift_set(tbox["anglez"], 0x1FF, 0, itemid)
     # code has been patched, to interpret this part of params1 as boxtype
     tbox["params1"] = mask_shift_set(tbox["params1"], 0x3, 4, boxtype)
@@ -661,7 +672,7 @@ def rando_patch_warpobj(
     patch_trial_flags(obj, trial_storyflag)
 
 
-def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str):
+def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str, size: str):
     id = int(id)
     tboxs = list(
         filter(lambda x: x["name"] == "TBox" and (x["anglez"] >> 9) == id, bzs["OBJS"])
@@ -669,7 +680,7 @@ def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str):
     if len(tboxs) == 0:
         print(tboxs)
     obj = tboxs[0]  # anglez >> 9 is chest id
-    patch_tbox_item(obj, itemid)
+    patch_tbox_item(obj, itemid, size)
 
 
 def rando_patch_item(bzs: OrderedDict, itemid: int, id: str):
@@ -1770,6 +1781,13 @@ class GamePatcher:
                     itemid,
                     objid,
                     self.placement_file.trial_connections,
+                )
+            elif objname == "Tbox" or objname == "TBox":
+                RANDO_PATCH_FUNCS[objname](
+                    bzs["LAY "][f"l{layer}"],
+                    itemid,
+                    objid,
+                    self.placement_file.options['chest-sizes']
                 )
             else:
                 RANDO_PATCH_FUNCS[objname](bzs["LAY "][f"l{layer}"], itemid, objid)

@@ -540,6 +540,19 @@
   help: If enabled, item hints will indicate exactly which check the item lies, otherwise, it will just indicate the region.
   ui: option_precise_item
 # make this always last for maximum cross version permalink support
+- name: Chest Sizes
+  command: chest-sizes
+  type: singlechoice
+  bits: 3
+  choices:
+    - Vanilla
+    - All Small
+    - All Normal
+    - All Boss Keys
+    - Matches Contents
+    - Random
+  default: Vanilla
+  help: Changes the way chest sizes are determined. Never impacts Goddess Chests
 - name: Hint Distribution
   command: hint-distribution
   type: singlechoice
@@ -560,3 +573,4 @@
   help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
     as specifics about what additional items and locations can and cannot be hinted
   ui: option_hint_distribution
+
