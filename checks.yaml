@@ -771,42 +771,42 @@ Lanayru Desert - Chest near Sand Oasis:
   Paths:
     - stage/F300/r0/l0/TBox/71
 
-Lanayru Desert - Lightning Node - First Chest:
+Lanayru Nodes - Lightning Node - First Chest:
   original item: Red Rupee
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_2/r0/l0/TBox/75
-Lanayru Desert - Lightning Node - Second Chest:
+Lanayru Nodes - Lightning Node - Second Chest:
   original item: Blue Rupee
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_2/r0/l0/TBox/76
-Lanayru Desert - Lightning Node - Raised Chest near Generator:
+Lanayru Nodes - Lightning Node - Raised Chest near Generator:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_2/r0/l0/TBox/77
-Lanayru Desert - Fire Node - Shortcut Chest:
+Lanayru Nodes - Fire Node - Shortcut Chest:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_3/r0/l0/TBox/79
-Lanayru Desert - Fire Node - First Small Chest:
+Lanayru Nodes - Fire Node - First Small Chest:
   original item: Blue Rupee
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_3/r0/l0/TBox/78
-Lanayru Desert - Fire Node - Second Small Chest:
+Lanayru Nodes - Fire Node - Second Small Chest:
   original item: Blue Rupee
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_3/r0/l0/TBox/80
-Lanayru Desert - Fire Node - Left Ending Chest:
+Lanayru Nodes - Fire Node - Left Ending Chest:
   original item: Golden Skull # TODO check again
   type: lanayru, mini dungeon
   Paths:
     - stage/F300_3/r0/l0/TBox/81
-Lanayru Desert - Fire Node - Right Ending Chest:
+Lanayru Nodes - Fire Node - Right Ending Chest:
   original item: Blue Rupee
   type: lanayru, mini dungeon
   Paths:
