@@ -58,7 +58,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1146,7 +1146,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>224</height>
+         <height>211</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1182,6 +1182,20 @@
           </item>
           <item>
            <widget class="QComboBox" name="option_rupoor_mode"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_17">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Chest Sizes</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_chest_sizes"/>
           </item>
          </layout>
         </item>

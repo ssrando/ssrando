@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.2
+## Created by: Qt User Interface Compiler version 5.15.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -707,7 +707,7 @@ class Ui_MainWindow(object):
         self.groupBox_9.setGeometry(QRect(10, 270, 181, 241))
         self.verticalLayoutWidget_5 = QWidget(self.groupBox_9)
         self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
-        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 161, 224))
+        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 161, 211))
         self.verticalLayout_15 = QVBoxLayout(self.verticalLayoutWidget_5)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
@@ -745,6 +745,21 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_15.addLayout(self.verticalLayout_16)
+
+        self.verticalLayout_17 = QVBoxLayout()
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.label_4 = QLabel(self.verticalLayoutWidget_5)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout_17.addWidget(self.label_4)
+
+        self.option_chest_sizes = QComboBox(self.verticalLayoutWidget_5)
+        self.option_chest_sizes.setObjectName(u"option_chest_sizes")
+
+        self.verticalLayout_17.addWidget(self.option_chest_sizes)
+
+
+        self.verticalLayout_15.addLayout(self.verticalLayout_17)
 
         self.option_fix_bit_crashes = QCheckBox(self.verticalLayoutWidget_5)
         self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
@@ -1109,7 +1124,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1212,6 +1227,7 @@ class Ui_MainWindow(object):
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Chest Sizes", None))
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
