@@ -1225,6 +1225,20 @@
          </layout>
         </item>
         <item>
+         <layout class="QVBoxLayout" name="verticalLayout_17">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Chest Sizes</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_chest_sizes"/>
+          </item>
+         </layout>
+        </item>
+        <item>
          <widget class="QCheckBox" name="option_fix_bit_crashes">
           <property name="text">
            <string>Fix BiT crashes</string>

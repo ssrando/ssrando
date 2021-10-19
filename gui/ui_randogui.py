@@ -780,6 +780,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addLayout(self.verticalLayout_16)
 
+        self.verticalLayout_17 = QVBoxLayout()
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.label_4 = QLabel(self.verticalLayoutWidget_5)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout_17.addWidget(self.label_4)
+
+        self.option_chest_sizes = QComboBox(self.verticalLayoutWidget_5)
+        self.option_chest_sizes.setObjectName(u"option_chest_sizes")
+
+        self.verticalLayout_17.addWidget(self.option_chest_sizes)
+
+
+        self.verticalLayout_15.addLayout(self.verticalLayout_17)
+
         self.option_fix_bit_crashes = QCheckBox(self.verticalLayoutWidget_5)
         self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
 
@@ -1195,6 +1210,7 @@ class Ui_MainWindow(object):
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Chest Sizes", None))
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.label_for_option_demise_count.setText(QCoreApplication.translate("MainWindow", u"Demise Count", None))

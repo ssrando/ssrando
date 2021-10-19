@@ -553,6 +553,7 @@
     - Random
   default: Vanilla
   help: Changes the way chest sizes are determined. Never impacts Goddess Chests
+  ui: option_chest_sizes
 - name: Hint Distribution
   command: hint-distribution
   type: singlechoice
