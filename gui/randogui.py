@@ -4,9 +4,9 @@ from pathlib import Path
 import random
 
 import yaml
-from PySide2 import QtWidgets
-from PySide2.QtCore import Qt, QTimer, QEvent, QStringListModel
-from PySide2.QtWidgets import (
+from PySide6 import QtWidgets
+from PySide6.QtCore import Qt, QTimer, QEvent, QStringListModel
+from PySide6.QtWidgets import (
     QMainWindow,
     QAbstractButton,
     QComboBox,
