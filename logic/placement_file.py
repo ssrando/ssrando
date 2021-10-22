@@ -19,6 +19,7 @@ class PlacementFile:
         self.starting_items = []
         self.required_dungeons = []
         self.item_locations = {}
+        self.chest_sizes = {}
         self.gossip_stone_hints = {}
         self.trial_hints = {}
         self.entrance_connections = {}
@@ -38,6 +39,7 @@ class PlacementFile:
             "starting-items": self.starting_items,
             "required-dungeons": self.required_dungeons,
             "item-locations": self.item_locations,
+            "chest-sizes": self.chest_sizes,
             "gossip-stone-hints": self.gossip_stone_hints,
             "trial-hints": self.trial_hints,
             "entrance-connections": self.entrance_connections,
@@ -53,6 +55,7 @@ class PlacementFile:
         self.starting_items = jsn["starting-items"]
         self.required_dungeons = jsn["required-dungeons"]
         self.item_locations = jsn["item-locations"]
+        self.chest_sizes = jsn("chest-sizes")
         self.gossip_stone_hints = jsn["gossip-stone-hints"]
         self.trial_hints = jsn["trial-hints"]
         self.entrance_connections = jsn["entrance-connections"]
@@ -102,6 +105,12 @@ class PlacementFile:
         for item in self.item_locations.values():
             if item not in item_names:
                 raise InvalidPlacementFile(f'invalid item "{item}"')
+
+        for (loc, size) in self.chest_sizes.items():
+            if size > 3:
+                raise InvalidPlacementFile(
+                    f'invalid chest size {size} for location "{loc}"'
+                )
 
         checks_file = read_yaml_file_cached("checks.yaml")
         check_sets_equal(
