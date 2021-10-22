@@ -588,6 +588,33 @@ class Randomizer(BaseRandomizer):
             for (k, v) in self.logic.done_item_locations.items()
             if v != "Gratitude Crystal"
         )
+        for (k, v) in self.logic.done_item_locations.items():
+            size_setting = self.options["chest-sizes"]
+            if size_setting == "Vanilla":
+                plcmt_file.chest_sizes[k] = -1
+            elif size_setting == "All Small":
+                plcmt_file.chest_sizes[k] = 1
+            elif size_setting == "All Normal":
+                plcmt_file.chest_sizes[k] = 0
+            elif size_setting == "All Boss Keys":
+                plcmt_file.chest_sizes[k] = 2
+            elif size_setting == "Matches Contents":
+                if v in self.logic.all_progress_items:
+                    if v == "Gratitude Crystal" or v == "Gratitude Crystal Pack":
+                        plcmt_file.chest_sizes[k] = 1
+                    elif "Key" in v:
+                        plcmt_file.chest_sizes[k] = 2
+                    else:
+                        plcmt_file.chest_sizes[k] = 0
+                else:
+                    plcmt_file.chest_sizes[k] = 1
+            else:
+                plcmt_file.chest_sizes[k] = self.rng.randint(0, 2)
+
+            # overwrite goddess chests to be subtype 3 regardless of setting otherwise they break
+            if "Goddess Chest" in v:
+                plcmt_file.chest_sizes[k] = 3
+
         plcmt_file.options = self.options
         plcmt_file.required_dungeons = self.logic.required_dungeons
         plcmt_file.starting_items = self.logic.starting_items
