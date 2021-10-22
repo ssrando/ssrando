@@ -1778,7 +1778,6 @@ class GamePatcher:
                     self.placement_file.trial_connections,
                 )
             elif objname == "Tbox" or objname == "TBox":
-                print(f"TBox patch: Item ID: {itemid} -> Size: {size}")
                 RANDO_PATCH_FUNCS[objname](
                     bzs["LAY "][f"l{layer}"], itemid, objid, size
                 )
