@@ -1249,7 +1249,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Logic Settings", None))
         self.groupBox_10.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
         self.label_for_option_hint_distribution.setText(QCoreApplication.translate("MainWindow", u"Hint Distribution", None))
-        self.label_for_option_woth_hints.setText(QCoreApplication.translate("MainWindow", u"Way of the Hero Hints", None))
+        self.label_for_option_woth_hints.setText(QCoreApplication.translate("MainWindow", u"Spirit of the Sword Hints", None))
         self.label_for_option_barren_hints.setText(QCoreApplication.translate("MainWindow", u"Barren Hints", None))
         self.label_for_option_sometimes_hints.setText(QCoreApplication.translate("MainWindow", u"Sometimes Hints", None))
         self.label_for_option_location_hints.setText(QCoreApplication.translate("MainWindow", u"Location Hints", None))

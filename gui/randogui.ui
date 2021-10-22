@@ -1408,7 +1408,7 @@
           <item>
            <widget class="QLabel" name="label_for_option_woth_hints">
             <property name="text">
-             <string>Way of the Hero Hints</string>
+             <string>Spirit of the Sword Hints</string>
             </property>
            </widget>
           </item>

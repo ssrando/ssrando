@@ -130,7 +130,7 @@ class WayOfTheHeroGossipStoneHint(GossipStoneHint):
         ]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.zone} is WotH"
+        return f"{self.zone} is SotS"
 
 
 @dataclass
@@ -222,14 +222,14 @@ class Hints:
                 hints_left -= 1
                 location_hints_left -= 1
 
-        # create woth hints
-        woth_hints_count = self.logic.rando.options["woth-hints"]
-        woth_hints = []
+        # create sots hints
+        sots_hints_count = self.logic.rando.options["sots-hints"]
+        sots_hints = []
         if (
-            woth_hints_count > 0
-        ):  # avoid doing the additional woth calculations if it isn't necessary
-            woth_locations = {}
-            for wothloc, item in self.logic.rando.woth_locations.items():
+            sots_hints_count > 0
+        ):  # avoid doing the additional sots calculations if it isn't necessary
+            sots_locations = {}
+            for sotsloc, item in self.logic.rando.sots_locations.items():
                 if self.logic.rando.options["small-key-mode"] not in [
                     "Anywhere",
                     "Lanayru Caves Key Only",
@@ -249,28 +249,28 @@ class Hints:
                     if item.endswith("Boss Key"):
                         continue
 
-                zone, specific_loc = Logic.split_location_name_by_zone(wothloc)
+                zone, specific_loc = Logic.split_location_name_by_zone(sotsloc)
                 if (
-                    zone not in woth_locations.keys()
+                    zone not in sots_locations.keys()
                 ):  # we only need each zone to appear once
-                    woth_locations[zone] = [wothloc]
+                    sots_locations[zone] = [sotsloc]
                 else:
-                    woth_locations[zone].append(wothloc)
-            woth_zones = []
-            for zone, locations in woth_locations.items():
-                woth_zones.append(zone)
+                    sots_locations[zone].append(sotsloc)
+            sots_zones = []
+            for zone, locations in sots_locations.items():
+                sots_zones.append(zone)
             if (
-                len(woth_zones) < woth_hints_count
-            ):  # there are not enough woth zones to fill the number of hints
-                woth_hints_count = len(
-                    woth_locations
+                len(sots_zones) < sots_hints_count
+            ):  # there are not enough sots zones to fill the number of hints
+                sots_hints_count = len(
+                    sots_locations
                 )  # so to prevent odd behavior we cap it at the number of zones
                 # this also means that the missing hint slots will be filled by random hints
-            self.logic.rando.rng.shuffle(woth_zones)
-            for i in range(woth_hints_count):
-                loc = self.logic.rando.rng.choice(woth_locations[woth_zones[i]])
+            self.logic.rando.rng.shuffle(sots_zones)
+            for i in range(sots_hints_count):
+                loc = self.logic.rando.rng.choice(sots_locations[sots_zones[i]])
                 if loc not in hinted_locations:
-                    woth_hints.append(loc)
+                    sots_hints.append(loc)
                     hinted_locations.append(loc)
                     hints_left -= 1
 
@@ -341,7 +341,7 @@ class Hints:
             location_hints.append(location_to_hint)
             hints_left -= 1
         self._place_hints_for_locations(
-            location_hints, item_hints, woth_hints, barren_hints
+            location_hints, item_hints, sots_hints, barren_hints
         )
 
     def do_bingo_hints(self):
@@ -382,9 +382,9 @@ class Hints:
         self._place_hints_for_locations(hint_locations, [], [], [])
 
     def _place_hints_for_locations(
-        self, location_hints, item_hints, woth_hints, barren_hints
+        self, location_hints, item_hints, sots_hints, barren_hints
     ):
-        hint_locations = location_hints + item_hints + woth_hints
+        hint_locations = location_hints + item_hints + sots_hints
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)
         for hint_location in hint_locations:
@@ -506,7 +506,7 @@ class Hints:
                         location_name=location,
                         item=self.logic.done_item_locations[location],
                     )
-            elif location in woth_hints:
+            elif location in sots_hints:
                 zone, specific_loc = Logic.split_location_name_by_zone(location)
                 return WayOfTheHeroGossipStoneHint(zone=zone)
             elif location is None:
