@@ -50,12 +50,12 @@ class RandoGUI(QMainWindow):
 
         self.options = options
         self.settings_path = "settings.txt"
-        # if os.path.isfile(self.settings_path):
-        #     with open(self.settings_path) as f:
-        #         try:
-        #             self.options.update_from_permalink(f.readline())
-        #         except Exception as e:
-        #             print("couldn't update from saved settings!", e)
+        if os.path.isfile(self.settings_path):
+            with open(self.settings_path) as f:
+                try:
+                    self.options.update_from_permalink(f.readline())
+                except Exception as e:
+                    print("couldn't update from saved settings!", e)
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
