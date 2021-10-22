@@ -6,6 +6,7 @@ import random
 import yaml
 from PySide6 import QtWidgets
 from PySide6.QtCore import Qt, QTimer, QEvent, QStringListModel
+from PySide6.QtGui import QFontDatabase
 from PySide6.QtWidgets import (
     QMainWindow,
     QAbstractButton,
@@ -45,6 +46,13 @@ class RandoGUI(QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        font_id = QFontDatabase.addApplicationFont("assets/Lato-Regular.ttf")
+        family = QFontDatabase.applicationFontFamilies(font_id)[0]
+        font = self.font()
+        font.setFamily(family)
+        font.setPointSize(9)
+        self.setFont(font)
 
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
 
@@ -167,7 +175,9 @@ class RandoGUI(QMainWindow):
             widget.installEventFilter(self)
 
         # hide currently unsupported options to make this version viable for public use
+        getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
         getattr(self.ui, "option_got_starting_state").setVisible(False)
+        getattr(self.ui, "label_for_option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_horde").setVisible(False)
         getattr(self.ui, "option_g3").setVisible(False)
