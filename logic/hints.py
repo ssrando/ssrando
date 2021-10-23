@@ -200,7 +200,6 @@ class Hints:
             hintable_items.append("Sea Chart")
 
         hints_left = total_stonehints
-        print(f'placing {hints_left} total hints')
         hinted_locations = []
 
         # create location hints
@@ -214,8 +213,6 @@ class Hints:
                 hinted_locations.append(location)
                 hints_left -= 1
                 location_hints_left -= 1
-        print(f'always hints placed, {hints_left} remaining')
-        print(f'attempting to place {min(location_hints_left, len(needed_sometimes_hints))} sometimes hints')
         for location in self.logic.rando.rng.sample(
             needed_sometimes_hints, k=min(location_hints_left, len(needed_sometimes_hints))
         ):
@@ -283,7 +280,6 @@ class Hints:
         if barren_hints_count > 0:
             region_barren = self.logic.get_barren_regions().copy()
             barren_zones = []
-            print(region_barren)
             for zone in region_barren.keys():
                 if "Silent Realm" in zone:
                     continue  # don't hint barren silent realms since they are an always hint
@@ -307,13 +303,11 @@ class Hints:
                 if region_barren[zone]:
                     barren_zones.append(zone)
             self.logic.rando.rng.shuffle(barren_zones)
-            print(barren_zones)
             if len(barren_zones) < barren_hints_count:
                 barren_hints_count = len(barren_zones)
             for i in range(barren_hints_count):
                 barren_hints.append(barren_zones.pop())
                 hints_left -= 1
-            print(barren_hints)
 
         # create  the item hints
         item_hints = []
@@ -346,15 +340,6 @@ class Hints:
             all_locations_without_hint.remove(location_to_hint)
             location_hints.append(location_to_hint)
             hints_left -= 1
-
-        print(f'{len(location_hints)} location hints placed')
-        print(location_hints)
-        print(f'{len(item_hints)} item hints placed')
-        print(item_hints)
-        print(f'{len(sots_hints)} sots hints placed')
-        print(sots_hints)
-        print(f'{len(barren_hints)} barren hints placed')
-        print(barren_hints)
         self._place_hints_for_locations(
             location_hints, item_hints, sots_hints, barren_hints
         )
