@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 from typing import Optional
 
-from PySide2.QtCore import QThread, Signal
+from PySide6.QtCore import QThread, Signal
 
 from ssrando import Randomizer, StartupException
 from witmanager import WitManager, WitException, WrongChecksumException

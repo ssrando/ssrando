@@ -1,1 +1,1 @@
-pyside2-uic randogui.ui > ui_randogui.py
+pyside6-uic randogui.ui > ui_randogui.py
