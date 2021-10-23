@@ -200,7 +200,7 @@ class Hints:
             hintable_items.append("Sea Chart")
 
         hints_left = total_stonehints
-        hinted_locations = []
+        hinted_locations = self.logic.sworded_dungeon_locations
 
         # create location hints
         location_hints_left = self.logic.rando.options["location-hints"]
@@ -312,7 +312,6 @@ class Hints:
         # create  the item hints
         item_hints = []
         self.logic.rando.rng.shuffle(hintable_items)
-        hinted_locations.extend(self.logic.sworded_dungeon_locations)
         for i in range(self.logic.rando.options["item-hints"]):
             hinted_item = hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
