@@ -16,7 +16,7 @@ def test_roundtrip():
         rando = Randomizer(opts)
         rando.logic.randomize_items()
         # this belongs to the randomizer
-        rando.woth_locations = rando.logic.get_woth_locations()
+        rando.sots_locations = rando.logic.get_sots_locations()
         if rando.options["hint-distribution"] == "Junk":
             rando.hints.do_junk_hints()
         elif rando.options["hint-distribution"] == "Normal":
