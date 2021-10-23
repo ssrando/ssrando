@@ -217,6 +217,12 @@ class Randomizer(BaseRandomizer):
 
         spoiler_log += "\n\n"
 
+        spoiler_log += "Barren:\n"
+        for (region, barren) in self.logic.get_barren_regions().items():
+            if barren:
+                spoiler_log += "  " + region + "\n"
+        spoiler_log += "\n\n"
+
         # Write progression spheres.
         spoiler_log += "Playthrough:\n"
         progression_spheres = self.logic.calculate_playthrough_progression_spheres()
