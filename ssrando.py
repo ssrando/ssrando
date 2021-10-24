@@ -595,7 +595,7 @@ class Randomizer(BaseRandomizer):
                 plcmt_file.chest_sizes[k] = self.rng.randint(0, 2)
 
             # overwrite goddess chests to be subtype 3 regardless of setting otherwise they break
-            if "Goddess Chest" in v:
+            if "Goddess Chest" in k:
                 plcmt_file.chest_sizes[k] = 3
 
         plcmt_file.options = self.options
