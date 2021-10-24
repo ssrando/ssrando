@@ -32,7 +32,6 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         font = QFont()
-        font.setFamilies([u"Segoe UI"])
         font.setPointSize(9)
         MainWindow.setFont(font)
         self.centralwidget = QWidget(MainWindow)
@@ -770,6 +769,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addLayout(self.verticalLayout_16)
 
+        self.verticalLayout_31 = QVBoxLayout()
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.label_4 = QLabel(self.verticalLayoutWidget_5)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout_31.addWidget(self.label_4)
+
+        self.option_chest_sizes = QComboBox(self.verticalLayoutWidget_5)
+        self.option_chest_sizes.setObjectName(u"option_chest_sizes")
+
+        self.verticalLayout_31.addWidget(self.option_chest_sizes)
+
+
+        self.verticalLayout_15.addLayout(self.verticalLayout_31)
+
         self.option_fix_bit_crashes = QCheckBox(self.verticalLayoutWidget_5)
         self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
 
@@ -1133,7 +1147,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(2)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1236,6 +1250,7 @@ class Ui_MainWindow(object):
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Chest Sizes", None))
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))

@@ -18,7 +18,6 @@
   </property>
   <property name="font">
    <font>
-    <family>Segoe UI</family>
     <pointsize>9</pointsize>
    </font>
   </property>
@@ -1170,7 +1169,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>161</width>
+         <width>181</width>
          <height>211</height>
         </rect>
        </property>
@@ -1211,7 +1210,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_17">
+         <layout class="QVBoxLayout" name="verticalLayout_31">
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
