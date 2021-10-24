@@ -1479,12 +1479,10 @@ class Logic:
                     "FS Boss Key"
                 ]
             )
-        for loc in self.prerandomization_item_locations:
-            non_barren_items.remove(self.item_locations[loc])
         for loc in self.item_locations:
             zone_name, _ = Logic.split_location_name_by_zone(loc)
             item = self.done_item_locations[loc]
-            if item in non_barren_items:
+            if item in non_barren_items and loc not in self.prerandomization_item_locations:
                 region_is_barren[zone_name] = False
             elif zone_name not in region_is_barren:
                 region_is_barren[zone_name] = True
