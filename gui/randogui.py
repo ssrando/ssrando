@@ -25,6 +25,7 @@ from options import OPTIONS, Options
 from gui.progressdialog import ProgressDialog
 from gui.guithreads import RandomizerThread, ExtractSetupThread
 from ssrando import Randomizer, VERSION
+from paths import RANDO_ROOT_PATH
 from gui.ui_randogui import Ui_MainWindow
 from witmanager import WitManager
 
@@ -47,7 +48,9 @@ class RandoGUI(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        font_id = QFontDatabase.addApplicationFont("assets/Lato-Regular.ttf")
+        font_id = QFontDatabase.addApplicationFont(
+            str(RANDO_ROOT_PATH / "assets" / "Lato-Regular.ttf")
+        )
         family = QFontDatabase.applicationFontFamilies(font_id)[0]
         font = self.font()
         font.setFamily(family)
