@@ -4,9 +4,10 @@ from pathlib import Path
 import random
 
 import yaml
-from PySide2 import QtWidgets
-from PySide2.QtCore import Qt, QTimer, QEvent, QStringListModel
-from PySide2.QtWidgets import (
+from PySide6 import QtWidgets
+from PySide6.QtCore import Qt, QTimer, QEvent, QStringListModel
+from PySide6.QtGui import QFontDatabase
+from PySide6.QtWidgets import (
     QMainWindow,
     QAbstractButton,
     QComboBox,
@@ -46,16 +47,23 @@ class RandoGUI(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        font_id = QFontDatabase.addApplicationFont("assets/Lato-Regular.ttf")
+        family = QFontDatabase.applicationFontFamilies(font_id)[0]
+        font = self.font()
+        font.setFamily(family)
+        font.setPointSize(9)
+        self.setFont(font)
+
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
 
         self.options = options
         self.settings_path = "settings.txt"
-        # if os.path.isfile(self.settings_path):
-        #     with open(self.settings_path) as f:
-        #         try:
-        #             self.options.update_from_permalink(f.readline())
-        #         except Exception as e:
-        #             print("couldn't update from saved settings!", e)
+        if os.path.isfile(self.settings_path):
+            with open(self.settings_path) as f:
+                try:
+                    self.options.update_from_permalink(f.readline())
+                except Exception as e:
+                    print("couldn't update from saved settings!", e)
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
@@ -167,7 +175,9 @@ class RandoGUI(QMainWindow):
             widget.installEventFilter(self)
 
         # hide currently unsupported options to make this version viable for public use
+        getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
         getattr(self.ui, "option_got_starting_state").setVisible(False)
+        getattr(self.ui, "label_for_option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_horde").setVisible(False)
         getattr(self.ui, "option_g3").setVisible(False)

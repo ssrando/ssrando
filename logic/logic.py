@@ -1430,20 +1430,20 @@ class Logic:
             if not new_location_checked:
                 return False
 
-    def get_woth_locations(self):
+    def get_sots_locations(self):
         # locations, which can not be logically skipped
         # this doesn't mean that collecting these items is enough,
         # it doesn't include interchangeable items, like the first progressive upgrade
         # (for example, if one mitts upgrade is required, but both are reachable, they are both not included)
 
-        woth_items = {}
+        sots_items = {}
         # check for every progress item, if it's hard required
         for loc in self.item_locations:
             item = self.done_item_locations[loc]
             if item in self.all_progress_items:
                 if not self.can_finish_without_locations([loc]):
-                    woth_items[loc] = item
-        return woth_items
+                    sots_items[loc] = item
+        return sots_items
 
     def get_barren_regions(self):
         region_is_barren = {}

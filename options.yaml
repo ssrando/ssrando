@@ -450,14 +450,14 @@
   help: Sets the distribution of hints. Select a distribution to automatically apply a preset, or custom to select
     your own distribution. Hover over each hint type to see details on the hint
   ui: option_hint_distribution
-- name: Way of the Hero Hints
-  command: woth-hints
+- name: Spirit of the Sword Hints
+  command: sots-hints
   type: int
   min: 0
   max: 15
   bits: 4
   default: 0
-  help: Way of the Hero areas contain item(s) required to beat the game
+  help: Spirit of the Sword areas contain item(s) required to beat the game
   ui: option_woth_hints
 - name: Sometimes Hints
   command: sometimes-hints
