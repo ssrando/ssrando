@@ -2775,6 +2775,34 @@ F402: # Sealed Temple
     layer: 3
     room: 2
     objtype: OBJ
+  - name: BotG item trigger extended
+    type: objpatch
+    index: 1
+    room: 2
+    objtype: AREA
+    object:
+      sizex: 20000
+      sizey: 20000
+      sizez: 20000
+  - name: Groose area delete
+    type: objdelete
+    index: 11
+    room: 2
+    objtype: AREA
+  - name: Groose delete
+    type: objdelete
+    id: 0xFC4B
+    layer: 2
+    room: 2
+    objtype: OBJ
+  - name: Scene flag test
+    type: objpatch
+    id: 0xFC4E
+    layer: 2
+    room: 2
+    objtype: OBJ
+    object:
+      trigscenefid: 255
   - name: Remove Music and shaking
     type: objpatch
     room: 2
