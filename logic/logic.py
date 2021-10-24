@@ -1463,10 +1463,24 @@ class Logic:
                     "AC Small Key",
                     "SSH Small Key",
                     "FS Small Key",
+                    "SK Small Key"
                 ]
             )
             if self.rando.options["small-key-mode"] != "Lanayru Caves Key Only":
                 non_barren_items.remove("LanayruCaves Small Key")
+        if self.rando.options["boss-key-mode"] in ["Vanilla", "Own Dungeon"]:
+            non_barren_items.difference_update(
+                [
+                    "SV Boss Key",
+                    "ET Boss Key",
+                    "LMF Boss Key",
+                    "AC Boss Key",
+                    "SSH Boss Key",
+                    "FS Boss Key"
+                ]
+            )
+        for loc in self.prerandomization_item_locations:
+            non_barren_items.remove(self.item_locations[loc])
         for loc in self.item_locations:
             zone_name, _ = Logic.split_location_name_by_zone(loc)
             item = self.done_item_locations[loc]
