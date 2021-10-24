@@ -583,7 +583,7 @@ class Randomizer(BaseRandomizer):
                 plcmt_file.chest_sizes[k] = 2
             elif size_setting == "Matches Contents":
                 if v in self.logic.all_progress_items:
-                    if v == "Gratitude Crystal" or v == "Gratitude Crystal Pack":
+                    if v == "Gratitude Crystal":
                         plcmt_file.chest_sizes[k] = 1
                     elif "Key" in v:
                         plcmt_file.chest_sizes[k] = 2
