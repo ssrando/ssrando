@@ -1601,6 +1601,21 @@
     flow:
       next: 492
 501-Inpa:
+  - name: BotG Context Text
+    type: textadd
+    text: "I see you've acquired the <y<harp>>.\nWell done. Let me teach you a <b<song>>,\nit will be useful for your adventure."
+  - name: Insert BotG Context Text
+    type: flowpatch
+    index: 264
+    flow:
+      next: Show BotG Context Text
+  - name: Show BotG Context Text
+    type: flowadd
+    flow:
+      type: type1
+      next: 267
+      param3: 302
+      param4: BotG Context Text
   - name: got to rando dungeons completed check
     type: flowpatch
     index: 267
