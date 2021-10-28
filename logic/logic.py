@@ -1463,7 +1463,7 @@ class Logic:
                     "AC Small Key",
                     "SSH Small Key",
                     "FS Small Key",
-                    "SK Small Key"
+                    "SK Small Key",
                 ]
             )
             if self.rando.options["small-key-mode"] != "Lanayru Caves Key Only":
@@ -1475,14 +1475,17 @@ class Logic:
                     "ET Boss Key",
                     "LMF Boss Key",
                     "AC Boss Key",
-                    "SSH Boss Key",
-                    "FS Boss Key"
+                    "SS Boss Key",
+                    "FS Boss Key",
                 ]
             )
         for loc in self.item_locations:
             zone_name, _ = Logic.split_location_name_by_zone(loc)
             item = self.done_item_locations[loc]
-            if item in non_barren_items and loc not in self.prerandomization_item_locations:
+            if (
+                item in non_barren_items
+                and loc not in self.prerandomization_item_locations
+            ):
                 region_is_barren[zone_name] = False
             elif zone_name not in region_is_barren:
                 region_is_barren[zone_name] = True
