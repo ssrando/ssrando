@@ -1450,35 +1450,6 @@ class Logic:
         non_barren_items = set(self.all_progress_items)
         if self.rando.options["start-with-pouch"]:
             non_barren_items.remove("Progressive Pouch")
-        if self.rando.options["small-key-mode"] in [
-            "Vanilla",
-            "Own Dungeon - Restricted",
-            "Own Dungeon - Unrestricted",
-            "Lanayru Caves Key Only",
-        ]:
-            non_barren_items.difference_update(
-                [
-                    "SV Small Key",
-                    "LMF Small Key",
-                    "AC Small Key",
-                    "SSH Small Key",
-                    "FS Small Key",
-                    "SK Small Key",
-                ]
-            )
-            if self.rando.options["small-key-mode"] != "Lanayru Caves Key Only":
-                non_barren_items.remove("LanayruCaves Small Key")
-        if self.rando.options["boss-key-mode"] in ["Vanilla", "Own Dungeon"]:
-            non_barren_items.difference_update(
-                [
-                    "SV Boss Key",
-                    "ET Boss Key",
-                    "LMF Boss Key",
-                    "AC Boss Key",
-                    "SS Boss Key",
-                    "FS Boss Key",
-                ]
-            )
         for loc in self.item_locations:
             zone_name, _ = Logic.split_location_name_by_zone(loc)
             item = self.done_item_locations[loc]
