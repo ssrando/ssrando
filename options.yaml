@@ -282,13 +282,13 @@
 - name: Skip Ghirahim 3
   command: skip-g3
   type: boolean
-  default: true
+  default: false
   help: When enabled, the Ghirahim 3 fight will be skipped
   ui: option_g3
 - name: Skip Demise
   command: skip-demise
   type: boolean
-  default: true
+  default: false
   help: When enabled, the Demise fight will be skipped. Entering the portal in the
     spiral will play the credits
   ui: option_demise
