@@ -53,6 +53,8 @@ global:
       - 7 # vents active
       - onlyif: Option "skip-skykeep" Enabled
         flag: 50 # horde door open
+      - onlyif: Option "skip-horde" Enabled
+        flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
       - 13 # door to temple unlocked
     Lanayru Desert:
       - 68 # desert statue checked
