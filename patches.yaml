@@ -30,6 +30,12 @@ global:
     - 180 # Thrill digger entrance CS
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
+    - storyflag: 134 # Horde defeated
+      onlyif: Option "skip-horde" Enabled
+    - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
+      onlyif: Option "skip-horde" Enabled
+    - storyflag: 486 # Ghirahim 3 defeated
+      onlyif: Option "skip-g3" Enabled
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
@@ -3066,6 +3072,14 @@ F403: # Hylia's Realm
       - story_flag: -1
         night: 0
         layer: 13
+  - name: Skip Ghirahim 3 Fight
+    onlyif: Option "skip-g3" Enabled
+    type: objpatch
+    room: 1
+    index: 1
+    objtype: EVNT
+    object:
+      exit_id: 7
 F407: # Sky Keep beaten CS
   - name: Sky Keep CS remove Storyflag
     type: objpatch

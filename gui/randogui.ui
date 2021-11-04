@@ -963,21 +963,21 @@
         <item>
          <widget class="QCheckBox" name="option_horde">
           <property name="text">
-           <string>Horde</string>
+           <string>Skip Horde</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QCheckBox" name="option_g3">
           <property name="text">
-           <string>Ghirahim 3</string>
+           <string>Skip Ghirahim 3</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QCheckBox" name="option_demise">
           <property name="text">
-           <string>Demise</string>
+           <string>Skip Demise</string>
           </property>
          </widget>
         </item>
