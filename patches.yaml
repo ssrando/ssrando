@@ -3082,6 +3082,19 @@ F403: # Hylia's Realm
     objtype: EVNT
     object:
       exit_id: 7
+  - name: Skip Demise Fight
+    onlyif: Option "skip-demise" Enabled
+    type: objpatch
+    room: 1
+    index: 8
+    objtype: SCEN
+    object:
+      name: F404
+      room: 2
+      layer: 14
+      entrance: 5
+      byte4: 2
+      byte5: 1
 F407: # Sky Keep beaten CS
   - name: Sky Keep CS remove Storyflag
     type: objpatch
