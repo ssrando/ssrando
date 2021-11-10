@@ -2908,9 +2908,6 @@ F401: # Sealed grounds Whirlpool
       - story_flag: 703
         night: 0
         layer: 2
-      - story_flag: 134
-        night: 0
-        layer: 6
       - story_flag: 133
         night: 0
         layer: 5
