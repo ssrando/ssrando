@@ -273,23 +273,23 @@
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
     Hook Beetle will raise LMF once the Hook Beetle is obtained.
   ui: option_open_lmf
-- name: Horde
-  command: horde
+- name: Skip Horde
+  command: skip-horde
   type: boolean
-  default: true
-  help: When disabled, the horde fight will be skipped
+  default: false
+  help: When enabled, the horde fight will be skipped
   ui: option_horde
-- name: Ghirahim 3
-  command: g3
+- name: Skip Ghirahim 3
+  command: skip-g3
   type: boolean
-  default: true
-  help: When disabled, the Ghirahim 3 fight will be skipped
+  default: false
+  help: When enabled, the Ghirahim 3 fight will be skipped
   ui: option_g3
-- name: Demise
-  command: demise
+- name: Skip Demise
+  command: skip-demise
   type: boolean
-  default: true
-  help: When disabled, the Demise fight will be skipped. Entering the portal in the
+  default: false
+  help: When enabled, the Demise fight will be skipped. Entering the portal in the
     spiral will play the credits
   ui: option_demise
 - name: Map Mode

@@ -5,6 +5,7 @@
 - Added option to randomize music (by Battlecats59)
 - Added option to force swords at the end of dungeons (by YourAverageLink)
 - Added option to visually swap Skyloft and hero's clothes
+- Added options to skip Horde, Ghirahim 3, and Demise (by Battlecats59)
 ### Changes
 - Various name changes (by NULL and cjs07)
 - Added playername and hash to textboxes after Demise (by Battlecats59)
