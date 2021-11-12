@@ -1460,7 +1460,22 @@ class Logic:
                 region_is_barren[zone_name] = False
             elif zone_name not in region_is_barren:
                 region_is_barren[zone_name] = True
-        return region_is_barren
+        barren = []
+        nonprogress = []
+        for (region, is_barren) in region_is_barren.items():
+            if is_barren:
+                if (
+                    len(
+                        self.filter_locations_for_progression(
+                            self.locations_by_zone_name[region]
+                        )
+                    )
+                    > 0
+                ):
+                    barren.append(region)
+                else:
+                    nonprogress.append(region)
+        return barren, nonprogress
 
     def calculate_playthrough_progression_spheres(self):
         remaining_locations = set(self.item_locations.keys())
