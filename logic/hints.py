@@ -214,7 +214,8 @@ class Hints:
                 hints_left -= 1
                 location_hints_left -= 1
         for location in self.logic.rando.rng.sample(
-            needed_sometimes_hints, k=min(hints_left, len(needed_sometimes_hints))
+            needed_sometimes_hints,
+            k=min(location_hints_left, len(needed_sometimes_hints)),
         ):
             if location not in hinted_locations:
                 location_hints.append(location)
@@ -278,9 +279,9 @@ class Hints:
         barren_hints_count = self.logic.rando.options["barren-hints"]
         barren_hints = []
         if barren_hints_count > 0:
-            region_barren = self.logic.get_barren_regions().copy()
+            region_barren, nonprogress = self.logic.get_barren_regions()
             barren_zones = []
-            for zone in region_barren.keys():
+            for zone in region_barren:
                 if "Silent Realm" in zone:
                     continue  # don't hint barren silent realms since they are an always hint
                 if self.logic.rando.options["empty-unrequired-dungeons"]:
@@ -300,8 +301,7 @@ class Hints:
                         "Removed, Anywhere"
                     ] or self.logic.rando.options["small-key-mode"] not in ["Anywhere"]:
                         continue
-                if region_barren[zone]:
-                    barren_zones.append(zone)
+                barren_zones.append(zone)
             self.logic.rando.rng.shuffle(barren_zones)
             if len(barren_zones) < barren_hints_count:
                 barren_hints_count = len(barren_zones)
