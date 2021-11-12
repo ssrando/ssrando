@@ -304,6 +304,15 @@ class Hints:
                 if region_barren[zone]:
                     barren_zones.append(zone)
             self.logic.rando.rng.shuffle(barren_zones)
+            # trim regions that are barren because they have no progression locations enabled
+            final_barren = []
+            for zone in barren_zones:
+                active_checks = self.logic.filter_locations_for_progression(
+                    self.logic.locations_by_zone_name[zone]
+                )
+                if len(active_checks) > 0:
+                    final_barren.append(zone)
+            barren_zones = final_barren
             if len(barren_zones) < barren_hints_count:
                 barren_hints_count = len(barren_zones)
             for i in range(barren_hints_count):
