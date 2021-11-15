@@ -18,6 +18,9 @@ if IS_RUNNING_FROM_SOURCE:
             .decode("ASCII")
             .strip()
         )
+        retcode = subprocess.call(["git", "diff-index", "--quiet", "HEAD", "--"])
+        if retcode != 0:
+            version_suffix += "_dirty"
     except Exception:
         pass  # probably not git installed
 
