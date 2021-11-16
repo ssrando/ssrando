@@ -4,7 +4,7 @@ import os
 import zipfile
 import tarfile
 from io import BytesIO
-from urllib import request
+from urllib import request, error
 from pathlib import Path
 import subprocess
 import shutil
@@ -68,25 +68,30 @@ class WitManager:
         self.update_wit_command()
         if self.witcommand is None:
             print("wit not installed, installing")
-            if IS_WINDOWS:
-                with zipfile.ZipFile(
-                    BytesIO(
-                        request.urlopen(
-                            "https://wit.wiimm.de/download/wit-v3.03a-r8245-cygwin.zip"
-                        ).read()
-                    )
-                ) as wit_zip:
-                    wit_zip.extractall(self.rootpath)
-            else:
-                with tarfile.open(
-                    mode="r:gz",
-                    fileobj=BytesIO(
-                        request.urlopen(
-                            "https://wit.wiimm.de/download/wit-v3.03a-r8245-x86_64.tar.gz"
-                        ).read()
-                    ),
-                ) as wit_zip:
-                    wit_zip.extractall(self.rootpath)
+            try:
+                if IS_WINDOWS:
+                    with zipfile.ZipFile(
+                        BytesIO(
+                            request.urlopen(
+                                "https://wit.wiimm.de/download/wit-v3.03a-r8245-cygwin.zip"
+                            ).read()
+                        )
+                    ) as wit_zip:
+                        wit_zip.extractall(self.rootpath)
+                else:
+                    with tarfile.open(
+                        mode="r:gz",
+                        fileobj=BytesIO(
+                            request.urlopen(
+                                "https://wit.wiimm.de/download/wit-v3.03a-r8245-x86_64.tar.gz"
+                            ).read()
+                        ),
+                    ) as wit_zip:
+                        wit_zip.extractall(self.rootpath)
+            except error.URLError as e:
+                print(f"Couldn't install wit; {e}")
+                print("Please install wit manually")
+                exit(1)
             self.update_wit_command()
 
     def iso_integrity_check(self, iso_path, progress_cb=NOP):
