@@ -5,7 +5,12 @@ from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
 from typing import List
 
-from .constants import POTENTIALLY_REQUIRED_DUNGEONS, SILENT_REALMS, SILENT_REALM_CHECKS
+from .constants import (
+    POTENTIALLY_REQUIRED_DUNGEONS,
+    ALL_DUNGEON_AREAS,
+    SILENT_REALMS,
+    SILENT_REALM_CHECKS,
+)
 from util import textbox_utils
 
 ALWAYS_REQUIRED_LOCATIONS = [
@@ -279,10 +284,11 @@ class Hints:
         # create barren hints
         barren_hints_count = self.logic.rando.options["barren-hints"]
         barren_hints = []
+        prev_barren_type = None
         if barren_hints_count > 0:
             region_barren, nonprogress = self.logic.get_barren_regions()
-            barren_zones = []
-            print(region_barren)
+            barren_overworld_zones = []
+            barren_dungeons = []
             for zone in region_barren:
                 if "Silent Realm" in zone:
                     continue  # don't hint barren silent realms since they are an always hint
@@ -303,17 +309,56 @@ class Hints:
                         "Removed, Anywhere"
                     ] or self.logic.rando.options["small-key-mode"] not in ["Anywhere"]:
                         continue
-                barren_zones.append(zone)
-            self.logic.rando.rng.shuffle(barren_zones)
-            if len(barren_zones) < barren_hints_count:
-                barren_hints_count = len(barren_zones)
+                if zone in ALL_DUNGEON_AREAS:
+                    barren_dungeons.append(zone)
+                else:
+                    barren_overworld_zones.append(zone)
+
+            if len(barren_overworld_zones) + len(barren_dungeons) < barren_hints_count:
+                barren_hints_count = len(barren_overworld_zones) + len(barren_dungeons)
             for i in range(barren_hints_count):
-                barren_hints.append(barren_zones.pop())
+                if len(barren_overworld_zones) <= 0:
+                    prev_barren_type = "dungeon"
+                elif len(barren_dungeons) <= 0:
+                    prev_barren_type = "overworld"
+                else:
+                    if prev_barren_type is None:
+                        # 50/50 between dungeon and overworld on the first hint
+                        prev_barren_type = self.logic.rando.rng.choices(
+                            ["dungeon", "overworld"], [0.5, 0.5]
+                        )[0]
+                    elif prev_barren_type == "dungeon":
+                        prev_barren_type = self.logic.rando.rng.choices(
+                            ["dungeon", "overworld"], [0.25, 0.75]
+                        )[0]
+                    elif prev_barren_type == "overworld":
+                        prev_barren_type = self.logic.rando.rng.choices(
+                            ["dungeon", "overworld"], [0.75, 0.25]
+                        )[0]
+                if prev_barren_type == "dungeon":
+                    print("dungeon selected")
+                    areas = [area for area in barren_dungeons if area not in barren_hints]
+                else:
+                    print("overworld selected")
+                    areas = [area for area in barren_overworld_zones if area not in barren_hints]
+                if not areas:
+                    # something went wrong generating this hint, there are likely no more barren hints able to be placed
+                    break
+                area_weights = [
+                    len(self.logic.locations_by_zone_name[area])
+                    for area in areas
+                    if area not in barren_hints
+                ]
+
+                barren_hints.append(
+                    self.logic.rando.rng.choices(areas, area_weights)[0]
+                )
                 hints_left -= 1
 
         # create  the item hints
         item_hints = []
         self.logic.rando.rng.shuffle(hintable_items)
+        hinted_locations.extend(self.logic.sworded_dungeon_locations)
         for i in range(self.logic.rando.options["item-hints"]):
             hinted_item = hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
