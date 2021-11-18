@@ -49,6 +49,14 @@ else:
 with open('version-with-git.txt','w') as f:
   f.write(VERSION)
 
+hiddenimports = []
+
+try:
+  import certifi
+  hiddenimports.append('certifi')
+except ModuleNotFoundError:
+  pass
+
 a = Analysis(['randoscript.py'],
              pathex=[],
              binaries=[],
@@ -60,7 +68,7 @@ a = Analysis(['randoscript.py'],
               'asm/*.txt',
               'asm/patch_diffs/*.txt'
              ]),
-             hiddenimports=[],
+             hiddenimports=hiddenimports,
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
