@@ -28,6 +28,7 @@
     - Sealed Grounds - Gorko's Goddess Wall Reward
   - The Sea Chart can now be hinted when Sandship is a required dungeon
   - Improved how the randomizer categorizes regions as barren
+  - Spoiler logs are now put into the `logs` folder next to the exe
 ### Bugfixes
 - Added some tricks that were in the logic files but not in options (by NULL)
 - Fix bug with arc-replacements causing an error if the arc doesn't exist in ObjectPack, it's ignored now

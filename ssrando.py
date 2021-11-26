@@ -44,6 +44,8 @@ class BaseRandomizer:
         self.actual_extract_path = self.exe_root_path / "actual-extract"
         self.modified_extract_path = self.exe_root_path / "modified-extract"
         self.oarc_cache_path = self.exe_root_path / "oarc"
+        self.log_file_path = self.exe_root_path / "logs"
+        self.log_file_path.mkdir(exist_ok=True, parents=True)
 
         # not happy that is has to land here, it's used by both GamePatches and Logic
         with (self.rando_root_path / "checks.yaml").open("r") as f:
@@ -174,8 +176,9 @@ class Randomizer(BaseRandomizer):
             self.progress_callback("writing spoiler log...")
         plcmt_file = self.get_placement_file()
         if self.options["out-placement-file"] and not self.no_logs:
-            with open(f"placement_file_{self.seed}.json", "w") as f:
-                f.write(plcmt_file.to_json_str())
+            (self.log_file_path / f"placement_file_{self.seed}.json").write_text(
+                plcmt_file.to_json_str()
+            )
         if self.options["json"]:
             self.write_spoiler_log_json()
         else:
@@ -191,7 +194,7 @@ class Randomizer(BaseRandomizer):
             # We still calculate progression spheres even if we're not going to write them anywhere to catch more errors in testing.
             self.logic.calculate_playthrough_progression_spheres()
 
-            spoiler_log_output_path = self.options["output-folder"] / (
+            spoiler_log_output_path = self.log_file_path / (
                 "SS Random %s - Anti Spoiler Log.txt" % self.seed
             )
             with spoiler_log_output_path.open("w") as f:
@@ -315,7 +318,7 @@ class Randomizer(BaseRandomizer):
 
         spoiler_log += "\n\n\n"
 
-        spoiler_log_output_path = self.options["output-folder"] / (
+        spoiler_log_output_path = self.log_file_path / (
             "SS Random %s - Spoiler Log.txt" % self.seed
         )
         with spoiler_log_output_path.open("w") as f:
@@ -327,7 +330,7 @@ class Randomizer(BaseRandomizer):
             # We still calculate progression spheres even if we're not going to write them anywhere to catch more errors in testing.
             self.logic.calculate_playthrough_progression_spheres()
 
-            spoiler_log_output_path = self.options["output-folder"] / (
+            spoiler_log_output_path = self.log_file_path / (
                 "SS Random %s - Anti Spoiler Log.json" % self.seed
             )
             with spoiler_log_output_path.open("w") as f:
@@ -350,7 +353,7 @@ class Randomizer(BaseRandomizer):
         spoiler_log["entrances"] = self.logic.entrance_connections
         spoiler_log["trial-connections"] = self.logic.trial_connections
 
-        spoiler_log_output_path = self.options["output-folder"] / (
+        spoiler_log_output_path = self.log_file_path / (
             "SS Random %s - Spoiler Log.json" % self.seed
         )
         with spoiler_log_output_path.open("w") as f:
