@@ -393,7 +393,7 @@ class Hints:
             "Bomb Bag",
             "Heart Medal",
             "Life Medal",
-            "Progressive Pouch"
+            "Progressive Pouch",
         ]
         if self.logic.rando.options["shop-mode"] == "Randomized":
             important_items.append("Bug Net")
