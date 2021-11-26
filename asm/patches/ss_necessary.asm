@@ -431,3 +431,21 @@ b 0x17C8
 .org 0xBA0
 b select_new_item_column
 .close
+
+.open "d_t_skyEnemyNP.rel"
+.org 0x1270
+lis r3, 0x46DF ; float 28544.0, replaces 12000
+.org 0x1280
+stw r3, 0x30(r1)
+.close
+
+.open "d_a_obj_tornadoNP.rel"
+.org 0x920 ; thanks to 16 byte alignment, we can just insert 2 instructions here
+lis r4, 0x47DF ; float 114176.0, just arbitrarily large to not make the tornado despawn
+stw r4, 0x1A4(r31) ; culling distance, most likely
+lwz r31, 0x3C(r1)
+lwz r30, 0x38(r1)
+mtlr r0
+addi r1, r1, 0x40
+blr
+.close
