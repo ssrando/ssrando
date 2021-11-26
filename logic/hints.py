@@ -344,41 +344,86 @@ class Hints:
         )
 
     def do_bingo_hints(self):
-        important_items = {
+        total_stonehints = len(self.stonehint_definitions) * 2
+        needed_always_hints = self.logic.filter_locations_for_progression(
+            ALWAYS_REQUIRED_LOCATIONS
+        )
+        # in shopsanity, we need to hint some beetle shop items
+        # add them manually, cause they need to be kinda weirdly implemented because of bug net
+        if (
+            self.logic.rando.options["shop-mode"] == "Randomized"
+            and "expensive" not in self.logic.rando.options["banned-types"]
+        ):
+            needed_always_hints.append("Beedle - 1200 Rupee Item")
+            needed_always_hints.append("Beedle - 1600 Rupee Item")
+        if self.logic.rando.options["song-hints"] == "None":
+            needed_always_hints.append("Skyloft Silent Realm - Stone of Trials")
+            needed_always_hints.append("Faron Silent Realm - Water Scale")
+            needed_always_hints.append("Lanayru Silent Realm - Clawshots")
+            needed_always_hints.append("Eldin Silent Realm - Fireshield Earrings")
+        needed_sometimes_hints = self.logic.filter_locations_for_progression(
+            SOMETIMES_LOCATIONS
+        )
+        hints_left = total_stonehints
+        hinted_locations = self.logic.sworded_dungeon_locations
+
+        # create location hints
+        location_hints = []
+        for location in needed_always_hints:
+            if location not in hinted_locations:
+                location_hints.append(location)
+                hinted_locations.append(location)
+                hints_left -= 1
+        important_items = [
             "Progressive Sword",
             "Goddess Harp",
             "Clawshots",
             "Water Scale",
             "Fireshield Earrings",
-        }
+            "Sea Chart",
+            "Clawshots",
+            "Goddess Harp",
+            ["Gratitude Crystal Pack"] * 3,
+            ["Progressive Beetle"] * 2,
+            ["Gold Rupee"] * 2,
+            ["Silver Rupee"] * 2,
+            ["Progressive Sword"] * 2,
+            "Whip",
+            "Gust Bellows",
+            "Bomb Bag",
+            "Heart Medal",
+            "Life Medal",
+            "Progressive Pouch"
+        ]
         if self.logic.rando.options["shop-mode"] == "Randomized":
-            important_items.add("Bug Net")
-        hint_locations = []
-        for location, item in self.logic.done_item_locations.items():
-            if item in important_items:
-                hint_locations.append(location)
-        assert len(hint_locations) <= len(
-            self.stonehint_definitions
-        ), f"need {len(hint_locations)} locations, but only {len(self.stonehint_definitions)} stones available"
-
-        all_locations_without_hint = self.logic.filter_locations_for_progression(
-            (
-                loc
-                for loc in self.logic.done_item_locations
-                if not loc in hint_locations
-                and not loc in self.logic.prerandomization_item_locations
-            )
-        )
-        while (
-            len(hint_locations) < len(self.stonehint_definitions)
-            and all_locations_without_hint
+            important_items.append("Bug Net")
+            # create  the item hints
+        item_hints = []
+        self.logic.rando.rng.shuffle(important_items)
+        for i in range(15):
+            hinted_item = important_items.pop()
+            for location, item in self.logic.done_item_locations.items():
+                if (
+                    item == hinted_item
+                    and location not in item_hints
+                    and location not in hinted_locations
+                ):
+                    item_hints.append(location)
+                    hinted_locations.append(location)
+                    hints_left -= 1
+                    break
+        location_hints_left = hints_left
+        for location in self.logic.rando.rng.sample(
+            needed_sometimes_hints,
+            k=min(location_hints_left, len(needed_sometimes_hints)),
         ):
-            # add completely random locations if there are otherwise empty stones
-            location_to_hint = self.logic.rando.rng.choice(all_locations_without_hint)
-            all_locations_without_hint.remove(location_to_hint)
-            hint_locations.append(location_to_hint)
+            if location not in hinted_locations:
+                location_hints.append(location)
+                hinted_locations.append(location)
+                hints_left -= 1
+                location_hints_left -= 1
 
-        self._place_hints_for_locations(hint_locations, [], [], [])
+        self._place_hints_for_locations(location_hints, item_hints, [], [])
 
     def _place_hints_for_locations(
         self, location_hints, item_hints, sots_hints, barren_hints
