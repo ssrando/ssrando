@@ -1430,31 +1430,52 @@ class Logic:
             if not new_location_checked:
                 return False
 
-    def get_woth_locations(self):
+    def get_sots_locations(self):
         # locations, which can not be logically skipped
         # this doesn't mean that collecting these items is enough,
         # it doesn't include interchangeable items, like the first progressive upgrade
         # (for example, if one mitts upgrade is required, but both are reachable, they are both not included)
 
-        woth_items = {}
+        sots_items = {}
         # check for every progress item, if it's hard required
         for loc in self.item_locations:
             item = self.done_item_locations[loc]
             if item in self.all_progress_items:
                 if not self.can_finish_without_locations([loc]):
-                    woth_items[loc] = item
-        return woth_items
+                    sots_items[loc] = item
+        return sots_items
 
     def get_barren_regions(self):
         region_is_barren = {}
+        non_barren_items = set(self.all_progress_items)
+        if self.rando.options["start-with-pouch"]:
+            non_barren_items.remove("Progressive Pouch")
         for loc in self.item_locations:
             zone_name, _ = Logic.split_location_name_by_zone(loc)
             item = self.done_item_locations[loc]
-            if item in self.all_progress_items:
+            if (
+                item in non_barren_items
+                and loc not in self.prerandomization_item_locations
+            ):
                 region_is_barren[zone_name] = False
-            elif not zone_name in region_is_barren:
+            elif zone_name not in region_is_barren:
                 region_is_barren[zone_name] = True
-        return region_is_barren
+        barren = []
+        nonprogress = []
+        for (region, is_barren) in region_is_barren.items():
+            if is_barren:
+                if (
+                    len(
+                        self.filter_locations_for_progression(
+                            self.locations_by_zone_name[region]
+                        )
+                    )
+                    > 0
+                ):
+                    barren.append(region)
+                else:
+                    nonprogress.append(region)
+        return barren, nonprogress
 
     def calculate_playthrough_progression_spheres(self):
         remaining_locations = set(self.item_locations.keys())

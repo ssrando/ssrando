@@ -15,7 +15,7 @@ You can access most resources on the [Skyward Sword Randomizer website](https://
 
 ## Installation
 
-You can either run from a compiled binary (recommended for Windows, required for tournaments) or directly from source ([jump here](#Installing-from-source), recommended for Linux). Currently, only the command-line interface works for OSX; it needs an installation from source.
+You can either run from a compiled binary (recommended for Windows, required for tournaments) or directly from source ([jump here](#Installing-from-source), required for Linux). Currently, only the command-line interface works for OSX; it needs an installation from source.
 
 
 ## Installing from a compiled binary

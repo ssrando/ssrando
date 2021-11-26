@@ -5,6 +5,7 @@
 - Added option to randomize music (by Battlecats59)
 - Added option to force swords at the end of dungeons (by YourAverageLink)
 - Added option to visually swap Skyloft and hero's clothes
+- Added options to skip Horde, Ghirahim 3, and Demise (by Battlecats59)
 ### Changes
 - Various name changes (by NULL and cjs07)
 - Added playername and hash to textboxes after Demise (by Battlecats59)
@@ -26,11 +27,15 @@
     - Sky - Beedle's Crystals
     - Sealed Grounds - Gorko's Goddess Wall Reward
   - The Sea Chart can now be hinted when Sandship is a required dungeon
+  - Improved how the randomizer categorizes regions as barren
+- Spoiler logs are now put into the `logs` folder next to the exe
+- Make tornadoes spawn away further away to adjust for the increased loftwing speed
 ### Bugfixes
 - Added some tricks that were in the logic files but not in options (by NULL)
 - Fix bug with arc-replacements causing an error if the arc doesn't exist in ObjectPack, it's ignored now
 - Fix Sandship Timeshift stone not being unset when leaving the dungeon in entrance rando
 - Fix a bug in trials where you could be unable to get the item with glitches
+- Fix a bug which prevented hints from being placed correctly 
 
 ## 1.1.0
 ### Options

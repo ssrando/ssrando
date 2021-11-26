@@ -1653,6 +1653,16 @@
       param2: 2 # room 2
       next: -1
       param3: 10
+  - name: Patch Fi text before Demise
+    onlyif: Option "skip-demise" Enabled
+    type: textpatch
+    index: 23
+    text: "Master <heroname>, I have\nimportant information for you.\n\n\nMy analysis indicates a 100% chance\nthat entering this portal will\n<r<conclude>> your journey.\n\nAre you ready to proceed?\n[1]I'm ready![2-]Not yet..."
+  - name: Patch Fi text before Demise 2
+    onlyif: Option "skip-demise" Enabled
+    type: textpatch
+    index: 25
+    text: "Understood, Master <heroname>.\nThank you for taking me on this\njourney with you."
 599-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
