@@ -86,10 +86,10 @@ nop
 b 0x802da0c0
 ; this replaces unused code
 .org 0x802da0c0
-lwz r3, -0x4040(r13) ;ITEMFLAG_MANAGER
+lwz r3, ITEMFLAG_MANAGER@sda21(r13)
 li r4, 0x1F6 ;gratitude crystals
 bl FlagManager__getUncommittedFlags
-lwz r4, -0x3fb8(r13) ;LYT_MSG_MANAGER
+lwz r4, LYT_MSG_MANAGER@sda21(r13)
 lwz r4, 0x724(r4) ;Text Manager
 stw r3, 0x8A0(r4) ;text counter 1
 lwz r0, 0x24(r1) ; instruction that was overwritten
@@ -197,7 +197,7 @@ mflr r0
 stw r0,20(r1)
 stw r31,12(r1)
 mr r31,r3 ; r31 is AcOWarp ptr
-lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
 lhz r4, 0xaa(r31) ; 3rd and 4th byte in params2 is storyflag for completing trial
 bl FlagManager__setFlagTo1 ; set storyflag for completing trial
 lbz r3, 0x4(r31) ; first byte of params1 is itemid

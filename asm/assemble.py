@@ -45,7 +45,7 @@ yaml.CDumper.add_representer(
 yaml.CDumper.add_representer(
     list,
     lambda dumper, data: dumper.represent_sequence(
-        u"tag:yaml.org,2002:seq", data, flow_style=True
+        "tag:yaml.org,2002:seq", data, flow_style=True
     ),
 )
 
@@ -60,6 +60,9 @@ print()
 
 custom_symbols = OrderedDict()
 custom_symbols["main.dol"] = OrderedDict()
+
+with open("original_symbols.txt", "r") as f:
+    original_symbols = yaml.safe_load(f)
 
 with open("free_space_start_offsets.txt", "r") as f:
     free_space_start_offsets = yaml.safe_load(f)
@@ -161,6 +164,31 @@ def try_apply_local_relocation(bin_name, elf_relocation, elf_symbol):
         return True
 
     return False
+
+
+SDA_RE = re.compile(r"([a-z]+) (r[0-9]+), *([a-zA-Z0-9_]+)@sda21 *\(r13\).*")
+SDA_13_BASE = 0x80579440
+SDA_13_MAX = SDA_13_BASE + 0x7FFF
+SDA_13_MIN = SDA_13_BASE - 0x8000
+
+
+def handle_sda_instr(line: str) -> str:
+    match = SDA_RE.match(line)
+    if not match:
+        raise Exception(line)
+        return line
+    instr = match.group(1)
+    reg = match.group(2)
+    lbl = match.group(3)
+    address = original_symbols["main.dol"][lbl]
+    if address < SDA_13_MIN or address > SDA_13_MAX:
+        raise Exception(
+            f"Relocation failed, SDA for symbol {elf_symbol.name} out of range!"
+        )
+    if instr == "la":
+        return f"addi {reg}, r13, {address-SDA_13_BASE}"
+    else:
+        return f"{instr} {reg}, {address-SDA_13_BASE}(r13)"
 
 
 try:
@@ -277,6 +305,9 @@ try:
                     # Comment
                     continue
                 raise Exception("Found code before any .org directive")
+
+            if "@sda21" in line:
+                line = handle_sda_instr(line)
 
             code_chunks[patch_name][most_recent_file_path][most_recent_org_offset] += (
                 line + "\n"
