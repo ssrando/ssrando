@@ -383,7 +383,8 @@ Can Access Beedle's Shop Wherever:
   Distance Activator
 
 Can Access Beedle's Shop:
-  Can Access Beedle's Shop Wherever | Bomb Bag
+  Can Access Beedle's Shop Wherever |
+  (Bomb Bag & Bomb Bag Beedle Trick)
 
 ### Left-most
 
@@ -782,7 +783,10 @@ Can Get Past Deep Woods Bee Hive:
   # Bomb Bag ?
 
 Can Access Dungeon Entrance in Deep Woods:
-  Can Get Past Deep Woods Bee Hive & Distance Activator
+  Can Get Past Deep Woods Bee Hive & (
+    Distance Activator |
+    (Bomb Bag & Skyview - Bomb Throws Trick)
+  )
   # Activate the crystal, BiTWarp past it or RBW past it (LA statue)
   # A RBM on 2x10 should work, but it is currently impossible
 
@@ -1437,7 +1441,7 @@ Can Get Sacred Water: # currently unneeded
   Can Beat Skyview 2 & Bottle
 
 Can Hit High Skyview Switches:
-  Distance Activator | Bomb Bag
+  Distance Activator | (Bomb Bag & Skyview - Bomb Throws Trick)
 
 # First room
 
@@ -1456,7 +1460,7 @@ Can Get Past the First Skyview Room:
 # First part
 
 Can Hit Vines in Skyview Left Room:
-  Distance Activator | Bomb Bag | Goddess Sword | Whip
+  Distance Activator | (Bomb Bag & Skyview - Bomb Throws Trick) | Goddess Sword | Whip
   # You can skyward strike the vine even on Normal Mode. Use the rope to jump to the crystal alcove and simply hit it with your sword.
   # You can also get the vines down with whip but the positioning for the first vine is a bit weird
 
