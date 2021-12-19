@@ -4,6 +4,7 @@ import yaml
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
 from typing import List
+import pprint
 
 from .constants import (
     POTENTIALLY_REQUIRED_DUNGEONS,
@@ -105,8 +106,7 @@ class LocationGossipStoneHint(GossipStoneHint):
     item: str
 
     def to_gossip_stone_text(self) -> List[str]:
-        zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
-        return [f"<r<{zone} - {specific_loc}>> has <y<{self.item}>>"]
+        return [f"They say that {self.location_name} <y<{self.item}>>"]
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.location_name} has {self.item}"
@@ -172,6 +172,12 @@ class Hints:
             else:
                 hintdef["Need"] = self.logic.macros[hintname]
         self.hints = OrderedDict()
+        with open(RANDO_ROOT_PATH / "hint_locations.yaml") as f:
+            hints = yaml.safe_load(f)
+            self.always_locations = hints['always']
+            self.sometimes_locations = hints['sometimes']
+            self.hint_defs = {**self.always_locations, **self.sometimes_locations}
+            print(self.hint_defs)
 
     def do_junk_hints(self):
         for hintname in self.stonehint_definitions.keys():
@@ -180,23 +186,23 @@ class Hints:
     def do_normal_hints(self):
         total_stonehints = len(self.stonehint_definitions) * 2
         needed_always_hints = self.logic.filter_locations_for_progression(
-            ALWAYS_REQUIRED_LOCATIONS
+            self.always_locations.keys()
         )
         # in shopsanity, we need to hint some beetle shop items
         # add them manually, cause they need to be kinda weirdly implemented because of bug net
         if (
-            self.logic.rando.options["shop-mode"] == "Randomized"
-            and "expensive" not in self.logic.rando.options["banned-types"]
+            self.logic.rando.options["shop-mode"] != "Randomized"
+            and "expensive" in self.logic.rando.options["banned-types"]
         ):
-            needed_always_hints.append("Beedle - 1200 Rupee Item")
-            needed_always_hints.append("Beedle - 1600 Rupee Item")
-        if self.logic.rando.options["song-hints"] == "None":
-            needed_always_hints.append("Skyloft Silent Realm - Stone of Trials")
-            needed_always_hints.append("Faron Silent Realm - Water Scale")
-            needed_always_hints.append("Lanayru Silent Realm - Clawshots")
-            needed_always_hints.append("Eldin Silent Realm - Fireshield Earrings")
+            needed_always_hints.remove("Beedle - 1200 Rupee Item")
+            needed_always_hints.remove("Beedle - 1600 Rupee Item")
+        if self.logic.rando.options["song-hints"] != "None":
+            needed_always_hints.remove("Skyloft Silent Realm - Stone of Trials")
+            needed_always_hints.remove("Faron Silent Realm - Water Scale")
+            needed_always_hints.remove("Lanayru Silent Realm - Clawshots")
+            needed_always_hints.remove("Eldin Silent Realm - Fireshield Earrings")
         needed_sometimes_hints = self.logic.filter_locations_for_progression(
-            SOMETIMES_LOCATIONS
+            self.sometimes_locations
         )
 
         hintable_items = HINTABLE_ITEMS.copy()
@@ -384,7 +390,7 @@ class Hints:
             # add completely random locations if there are otherwise empty stones
             location_to_hint = self.logic.rando.rng.choice(all_locations_without_hint)
             all_locations_without_hint.remove(location_to_hint)
-            location_hints.append(location_to_hint)
+            # location_hints.append(location_to_hint)
             hints_left -= 1
         self._place_hints_for_locations(
             location_hints, item_hints, sots_hints, barren_hints
@@ -575,7 +581,7 @@ class Hints:
                     )
                 else:
                     return LocationGossipStoneHint(
-                        location_name=location,
+                        location_name=self.hint_defs[location],
                         item=self.logic.done_item_locations[location],
                     )
             elif location in item_hints:
