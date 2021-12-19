@@ -157,10 +157,11 @@
   bits: 2
   choices:
     - None
-    - Dungeons
-    - Dungeons + Sky Keep
+    - Required Dungeons
+    - All Dungeons
+    - All Dungeons + Sky Keep
   default: None
-  help: "Shuffles entrances with one another."
+  help: "Shuffles entrances with one another. The Required Dungeons option will also shuffle Sky Keep if Skip Sky Keep is disabled."
   ui: option_randomize_entrances
 - name: Randomize Silent Realms
   command: randomize-trials

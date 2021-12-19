@@ -335,13 +335,27 @@ class Logic:
                 dungeons.append("Sky Keep")
                 dungeons.reverse()
             else:
-                if self.rando.options["randomize-entrances"] == "Dungeons":
-                    self.rando.rng.shuffle(dungeons)
+                if self.rando.options["randomize-entrances"] == "Required Dungeons":
+                    required_dungeon_indices = [
+                        dungeons.index(dungeon) for dungeon in self.required_dungeons
+                    ]
                     dungeons.append("Sky Keep")
+                    if not self.rando.options["skip-skykeep"]:
+                        required_dungeon_indices.append(6)
+                    self.rando.rng.shuffle(required_dungeon_indices)
+                    if not self.rando.options["skip-skykeep"]:
+                        dungeons[required_dungeon_indices.pop()] = "Sky Keep"
+                    for n, i in enumerate(required_dungeon_indices):
+                        dungeons[i] = self.required_dungeons[n]
                     dungeons.reverse()
                 else:
-                    dungeons.append("Sky Keep")
-                    self.rando.rng.shuffle(dungeons)
+                    if self.rando.options["randomize-entrances"] == "All Dungeons":
+                        self.rando.rng.shuffle(dungeons)
+                        dungeons.append("Sky Keep")
+                        dungeons.reverse()
+                    else:
+                        dungeons.append("Sky Keep")
+                        self.rando.rng.shuffle(dungeons)
             entrance_connections = OrderedDict(
                 [
                     ("Dungeon Entrance in Deep Woods", dungeons.pop()),
