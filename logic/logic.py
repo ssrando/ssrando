@@ -351,13 +351,13 @@ class Logic:
 
         elif option == "Required Dungeons":
             req_indices, unreq_indices = [], []
-            for index, dungeon in enumerate(dungeons):
+            for index, dungeon in enumerate(POTENTIALLY_REQUIRED_DUNGEONS):
                 if dungeon in self.required_dungeons:
                     req_indices.append(index)
                 else:
                     unreq_indices.append(index)
 
-            if self.rando.options["skip-skykeep"]:
+            if not self.rando.options["skip-skykeep"]:
                 req_indices.append(dungeons.index("Sky Keep"))
 
             self.rando.rng.shuffle_indices(dungeons, indices=req_indices)
