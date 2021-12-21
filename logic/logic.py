@@ -339,25 +339,37 @@ class Logic:
         and returns the randomized connections as an ordered dict
         the returned connection configuration is guaranteed to be beatable
         """
-        entrances = []
-        dungeons = []
+        entrances, dungeons = [], []
         for k, v in ENTRANCE_CONNECTIONS.items():
             entrances.append(k)
             dungeons.append(v)
-        shuffle_indices = []
-        if not self.rando.options["skip-skykeep"]:
-            shuffle_indices.append(dungeons.index("Sky Keep"))
 
-        if self.rando.options["randomize-entrances"] == "None":
-            shuffle_indices = []
-        elif self.rando.options["randomize-entrances"] == "Required Dungeons":
-            shuffle_indices.extend(
-                dungeons.index(dungeon) for dungeon in self.required_dungeons
-            )
-        elif self.rando.options["randomize-entrances"] == "All Dungeons":
-            shuffle_indices.extend(range(len(POTENTIALLY_REQUIRED_DUNGEONS)))
+        option = self.rando.options["randomize-entrances"]
 
-        self.rando.rng.shuffle_indices(dungeons, indices=shuffle_indices)
+        if option == "None":
+            pass
+
+        elif option == "Required Dungeons":
+            req_indices, unreq_indices = [], []
+            for index, dungeon in enumerate(dungeons):
+                if dungeon in self.required_dungeons:
+                    req_indices.append(index)
+                else:
+                    unreq_indices.append(index)
+
+            if self.rando.options["skip-skykeep"]:
+                req_indices.append(dungeons.index("Sky Keep"))
+
+            self.rando.rng.shuffle_indices(dungeons, indices=req_indices)
+            self.rando.rng.shuffle_indices(dungeons, indices=unreq_indices)
+
+        elif option == "All Dungeons":
+            shuffle_indices = list(range(len(POTENTIALLY_REQUIRED_DUNGEONS)))
+            self.rando.rng.shuffle_indices(dungeons, indices=shuffle_indices)
+
+        elif option == "All Dungeons + Sky Keep":
+            self.rando.rng.shuffle(dungeons)
+
         return OrderedDict(zip(entrances, dungeons))
 
     def randomize_trial_entrances(self):
