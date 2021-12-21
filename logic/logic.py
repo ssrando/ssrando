@@ -28,6 +28,7 @@ from .constants import (
     BOSS_KEY_CHECKS,
     END_OF_DUNGEON_CHECKS,
     POTENTIALLY_REQUIRED_DUNGEONS,
+    ENTRANCE_CONNECTIONS,
     ALL_TYPES,
     STARTING_SWORD_COUNT,
 )
@@ -37,6 +38,23 @@ from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 ROOT_DIR = Path(__file__).parent.parent
 
 ITEM_WITH_COUNT_REGEX = re.compile(r"^(.+) x(\d+)$")
+
+
+def shuffle_indices(self, list, indices=None):
+    if indices is None:
+        return self.shuffle(list)
+    else:
+        n = len(indices)
+        for i in range(n):
+            j = self.randint(i, n - 1)
+            ii, jj = indices[i], indices[j]
+            list[ii], list[jj] = list[jj], list[ii]
+        return
+
+
+import random
+
+random.Random.shuffle_indices = shuffle_indices
 
 
 class Logic:
@@ -321,56 +339,38 @@ class Logic:
         and returns the randomized connections as an ordered dict
         the returned connection configuration is guaranteed to be beatable
         """
-        connections_invalid = True
-        while connections_invalid:
-            dungeons = [
-                "Skyview",
-                "Earth Temple",
-                "Lanayru Mining Facility",
-                "Ancient Cistern",
-                "Sandship",
-                "Fire Sanctuary",
-            ]
-            if self.rando.options["randomize-entrances"] == "None":
-                dungeons.append("Sky Keep")
-                dungeons.reverse()
-            else:
-                if self.rando.options["randomize-entrances"] == "Required Dungeons":
-                    required_dungeon_indices = [
-                        dungeons.index(dungeon) for dungeon in self.required_dungeons
-                    ]
-                    dungeons.append("Sky Keep")
-                    if not self.rando.options["skip-skykeep"]:
-                        required_dungeon_indices.append(6)
-                    self.rando.rng.shuffle(required_dungeon_indices)
-                    if not self.rando.options["skip-skykeep"]:
-                        dungeons[required_dungeon_indices.pop()] = "Sky Keep"
-                    for n, i in enumerate(required_dungeon_indices):
-                        dungeons[i] = self.required_dungeons[n]
-                    dungeons.reverse()
+        entrances, dungeons = [], []
+        for k, v in ENTRANCE_CONNECTIONS.items():
+            entrances.append(k)
+            dungeons.append(v)
+
+        option = self.rando.options["randomize-entrances"]
+
+        if option == "None":
+            pass
+
+        elif option == "Required Dungeons":
+            req_indices, unreq_indices = [], []
+            for index, dungeon in enumerate(dungeons):
+                if dungeon in self.required_dungeons:
+                    req_indices.append(index)
                 else:
-                    if self.rando.options["randomize-entrances"] == "All Dungeons":
-                        self.rando.rng.shuffle(dungeons)
-                        dungeons.append("Sky Keep")
-                        dungeons.reverse()
-                    else:
-                        dungeons.append("Sky Keep")
-                        self.rando.rng.shuffle(dungeons)
-            entrance_connections = OrderedDict(
-                [
-                    ("Dungeon Entrance in Deep Woods", dungeons.pop()),
-                    ("Dungeon Entrance in Eldin Volcano", dungeons.pop()),
-                    ("Dungeon Entrance in Lanayru Desert", dungeons.pop()),
-                    ("Dungeon Entrance in Lake Floria", dungeons.pop()),
-                    ("Dungeon Entrance in Sand Sea", dungeons.pop()),
-                    ("Dungeon Entrance in Volcano Summit", dungeons.pop()),
-                    ("Dungeon Entrance on Skyloft", dungeons.pop()),
-                ]
-            )
-            assert len(dungeons) == 0, "Not all dungeons linked to an entrance"
-            # TODO: do checks here if in the future some connections aren't possible
-            connections_invalid = False
-        return entrance_connections
+                    unreq_indices.append(index)
+
+            if self.rando.options["skip-skykeep"]:
+                req_indices.append(dungeons.index("Sky Keep"))
+
+            self.rando.rng.shuffle_indices(dungeons, indices=req_indices)
+            self.rando.rng.shuffle_indices(dungeons, indices=unreq_indices)
+
+        elif option == "All Dungeons":
+            shuffle_indices = list(range(len(POTENTIALLY_REQUIRED_DUNGEONS)))
+            self.rando.rng.shuffle_indices(dungeons, indices=shuffle_indices)
+
+        elif option == "All Dungeons + Sky Keep":
+            self.rando.rng.shuffle(dungeons)
+
+        return OrderedDict(zip(entrances, dungeons))
 
     def randomize_trial_entrances(self):
         trials = [
