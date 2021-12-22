@@ -45,16 +45,11 @@ def shuffle_indices(self, list, indices=None):
         return self.shuffle(list)
     else:
         n = len(indices)
-        for i in range(n):
+        for i in range(n - 1):
             j = self.randint(i, n - 1)
             ii, jj = indices[i], indices[j]
             list[ii], list[jj] = list[jj], list[ii]
         return
-
-
-import random
-
-random.Random.shuffle_indices = shuffle_indices
 
 
 class Logic:
@@ -360,12 +355,12 @@ class Logic:
             if not self.rando.options["skip-skykeep"]:
                 req_indices.append(dungeons.index("Sky Keep"))
 
-            self.rando.rng.shuffle_indices(dungeons, indices=req_indices)
-            self.rando.rng.shuffle_indices(dungeons, indices=unreq_indices)
+            shuffle_indices(self.rando.rng, dungeons, indices=req_indices)
+            shuffle_indices(self.rando.rng, dungeons, indices=unreq_indices)
 
         elif option == "All Dungeons":
-            shuffle_indices = list(range(len(POTENTIALLY_REQUIRED_DUNGEONS)))
-            self.rando.rng.shuffle_indices(dungeons, indices=shuffle_indices)
+            indices = list(range(len(POTENTIALLY_REQUIRED_DUNGEONS)))
+            shuffle_indices(self.rando.rng, dungeons, indices=indices)
 
         elif option == "All Dungeons + Sky Keep":
             self.rando.rng.shuffle(dungeons)
