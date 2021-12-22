@@ -344,7 +344,7 @@ class Logic:
         if option == "None":
             pass
 
-        elif option == "Required Dungeons":
+        elif option == "Required Dungeons Separately":
             req_indices, unreq_indices = [], []
             for index, dungeon in enumerate(POTENTIALLY_REQUIRED_DUNGEONS):
                 if dungeon in self.required_dungeons:
