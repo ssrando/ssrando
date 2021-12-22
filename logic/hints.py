@@ -1,10 +1,10 @@
+from hints.hint_distribution import HintDistribution
 from .logic import Logic
 from paths import RANDO_ROOT_PATH
 import yaml
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
 from typing import List
-import pprint
 
 from .constants import (
     POTENTIALLY_REQUIRED_DUNGEONS,
@@ -13,42 +13,6 @@ from .constants import (
     SILENT_REALM_CHECKS,
 )
 from util import textbox_utils
-
-ALWAYS_REQUIRED_LOCATIONS = [
-    "Thunderhead - Song from Levias",
-    "Sky - Kina's Crystals",
-    "Central Skyloft - Peater/Peatrice's Crystals",
-    "Batreaux - 80 Crystals",
-    "Lanayru Mining Facility - Boss Key Chest",
-    "Fire Sanctuary - Chest after Bombable Wall",
-]
-
-SOMETIMES_LOCATIONS = [
-    "Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05",
-    "Knight Academy - Pumpkin Archery - 600 Points",
-    "Sky - Lumpy Pumpkin Harp Minigame",
-    "Sky - Fun Fun Island Minigame - 500 Rupees",
-    "Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes",
-    "Batreaux - 70 Crystals Second Reward",
-    "Batreaux - 70 Crystals",
-    "Batreaux - 50 Crystals",
-    "Knight Academy - Owlan's Crystals",
-    "Skyloft Village - Sparrot's Crystals",
-    "Lanayru Desert - Chest on top of Lanayru Mining Facility",
-    "Central Skyloft - Waterfall Goddess Chest",  # stronghold cube
-    "Sky - Beedle's Island Goddess Chest",  # goddess cube in ToT area
-    "Skyview - Chest behind Three Eyes",
-    "Sandship - Boss Key Chest",
-    "Sandship - Tentalus Heart Container",
-    "Sandship - Bow",
-    "Thunderhead - Isle of Songs - Din's Power",
-    "Sealed Grounds - Zelda's Blessing",
-    "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack",
-    "Volcano Summit - Item behind Digging",
-    "Faron Woods - Slingshot",
-    "Sky - Beedle's Crystals",
-    "Sealed Grounds - Gorko's Goddess Wall Reward",
-]
 
 HINTABLE_ITEMS = (
     ["Clawshots"]
@@ -102,14 +66,14 @@ class TrialGateGossipStoneHint(GossipStoneHint):
 
 @dataclass
 class LocationGossipStoneHint(GossipStoneHint):
-    location_name: str
+    location_string: str
     item: str
 
     def to_gossip_stone_text(self) -> List[str]:
-        return [f"They say that {self.location_name} <y<{self.item}>>"]
+        return [f"They say that {self.location_string} <y<{self.item}>>"]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.location_name} has {self.item}"
+        return f"{self.location_string} has {self.item}"
 
 
 @dataclass
@@ -174,10 +138,12 @@ class Hints:
         self.hints = OrderedDict()
         with open(RANDO_ROOT_PATH / "hint_locations.yaml") as f:
             hints = yaml.safe_load(f)
-            self.always_locations = hints['always']
-            self.sometimes_locations = hints['sometimes']
+            self.always_locations = hints["always"]
+            self.sometimes_locations = hints["sometimes"]
             self.hint_defs = {**self.always_locations, **self.sometimes_locations}
-            print(self.hint_defs)
+        with open(RANDO_ROOT_PATH / f"hints/distributions/standard.json") as f:
+            self.dist = HintDistribution()
+            self.dist.read_from_file(f)
 
     def do_junk_hints(self):
         for hintname in self.stonehint_definitions.keys():
@@ -203,6 +169,10 @@ class Hints:
             needed_always_hints.remove("Eldin Silent Realm - Fireshield Earrings")
         needed_sometimes_hints = self.logic.filter_locations_for_progression(
             self.sometimes_locations
+        )
+
+        self.dist.start(
+            self.logic.rando.rng, needed_always_hints, needed_sometimes_hints
         )
 
         hintable_items = HINTABLE_ITEMS.copy()
@@ -343,10 +313,16 @@ class Hints:
                         )[0]
                 if prev_barren_type == "dungeon":
                     print("dungeon selected")
-                    areas = [area for area in barren_dungeons if area not in barren_hints]
+                    areas = [
+                        area for area in barren_dungeons if area not in barren_hints
+                    ]
                 else:
                     print("overworld selected")
-                    areas = [area for area in barren_overworld_zones if area not in barren_hints]
+                    areas = [
+                        area
+                        for area in barren_overworld_zones
+                        if area not in barren_hints
+                    ]
                 if not areas:
                     # something went wrong generating this hint, there are likely no more barren hints able to be placed
                     break
@@ -581,7 +557,7 @@ class Hints:
                     )
                 else:
                     return LocationGossipStoneHint(
-                        location_name=self.hint_defs[location],
+                        location_string=self.hint_defs[location],
                         item=self.logic.done_item_locations[location],
                     )
             elif location in item_hints:
