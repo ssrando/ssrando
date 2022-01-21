@@ -352,7 +352,9 @@ class Logic:
                 else:
                     unreq_indices.append(index)
 
-            if not self.rando.options["skip-skykeep"]:
+            if self.rando.options["skip-skykeep"]:
+                unreq_indices.append(dungeons.index("Sky Keep"))
+            else:
                 req_indices.append(dungeons.index("Sky Keep"))
 
             shuffle_indices(self.rando.rng, dungeons, indices=req_indices)
