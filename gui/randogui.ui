@@ -64,7 +64,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1069,6 +1069,13 @@
          </layout>
         </item>
         <item>
+         <widget class="QCheckBox" name="option_open_et">
+          <property name="text">
+           <string>Open Earth Temple</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer_2">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1384,7 +1391,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>171</width>
+         <width>175</width>
          <height>207</height>
         </rect>
        </property>
