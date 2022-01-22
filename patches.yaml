@@ -1753,6 +1753,13 @@ F200: # Eldin main area
     layer: 1
     room: 2
     objtype: STAG
+  - name: remove ET Door if open ET
+    onlyif: Option "open-et" Enabled
+    type: objdelete
+    id: 0x2413
+    layer: 0
+    room: 4
+    objtype: OBJ
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride

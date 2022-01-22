@@ -955,7 +955,7 @@ Eldin Volcano - Gossip Stone next to Earth Temple:
   Can Access Second Part of Eldin & Digging Mitts
 
 Can Access Dungeon Entrance in Eldin Volcano:
-  Can Access Second Part of Eldin & Key Piece x5
+  Can Access Second Part of Eldin & (Key Piece x5 | Option "open-et" Enabled)
   # Scene Flag 5x02 is "Open Door to Earth Temple"
 
 ## Mogma Turf
