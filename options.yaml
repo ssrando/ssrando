@@ -548,6 +548,7 @@
   type: boolean
   default: false
   help: If activated, the door requiring 5 key pieces to access the dungeon is removed
+  ui: option_open_et
 - name: Randomize Music
   command: music-rando
   type: singlechoice
