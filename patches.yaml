@@ -58,7 +58,6 @@ global:
       - 13 # door to temple unlocked
       - 21 # ballad of the goddess played (item and cutscene trigger instantly activate when outside of BiT)
       - 28 # groose cutscene watched (prevents groose cutscene from taking priority outside of BiT)
-      - 29 # harp tutorial played (so the flag can still be used for BiT)
     Lanayru Desert:
       - 68 # desert statue checked
       - 7 # pushed first minecart to end
