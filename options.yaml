@@ -157,10 +157,11 @@
   bits: 2
   choices:
     - None
-    - Dungeons
-    - Dungeons + Sky Keep
+    - Required Dungeons Separately
+    - All Dungeons
+    - All Dungeons + Sky Keep
   default: None
-  help: "Shuffles entrances with one another."
+  help: "Shuffles entrances with one another. The Required Dungeons Separately option will also shuffle Sky Keep if Skip Sky Keep is disabled, and shuffles unrequired dungeons among each other."
   ui: option_randomize_entrances
 - name: Randomize Silent Realms
   command: randomize-trials
@@ -542,6 +543,12 @@
   default: false
   help: If activated, the final check of a required dungeon will be a sword (if possible). If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
   ui: option_sword_dungeon_reward
+- name: Open Earth Temple
+  command: open-et
+  type: boolean
+  default: false
+  help: If activated, the door requiring 5 key pieces to access the dungeon is removed
+  ui: option_open_et
 - name: Randomize Music
   command: music-rando
   type: singlechoice

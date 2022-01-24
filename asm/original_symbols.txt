@@ -7,6 +7,7 @@ main.dol:
     AcItem__isBabyRattle: 0x80256c30
     Math__approachF: 0x802decd0
     # SceneflagManager: r3,-0x4060(r13)
+    SCENEFLAG_MANAGER: 0x805753e0
     # this, roomid, flag
     SceneflagManager__checkFlag: 0x800bdeb0
     # this, flag
@@ -22,12 +23,20 @@ main.dol:
     # r3 itemid, r4 pouch slot index or -1, r5 always 0
     giveItem: 0x80249210
     # lwz r3,-0x4444(r13) ; FILE_MANAGER
+    FILE_MANAGER: 0x80574ffc
     FileManager__getDungeonFlags: 0x8000a460
     FileManager__getSceneflags: 0x8000a4e0
     # used by both item and storyflag manager, r3 is flag manager, r4 is flag
+    STORYFLAG_MANAGER: 0x805753FC
+    ITEMFLAG_MANAGER: 0x80575400
     FlagManager__setFlagTo1: 0x800bf5b0
     FlagManager__getFlagOrCounter: 0x800bf480
     FlagManager__setFlagOrCounter: 0x800bf530
     cM_rndI: 0x802e0d20
+    LINK_PTR: 0x8057578C
+    RELOADER_PTR: 0x80575794
+    EQUIPPED_SWORD: 0x80571C74
+    DUNGEONFLAG_MANAGER: 0x80575404
+    LYT_MSG_MANAGER: 0x80575488
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
