@@ -2849,15 +2849,18 @@ F402: # Sealed Temple
     layer: 3
     room: 2
     objtype: OBJ
-  - name: BotG item trigger extended
+  - name: BotG item trigger extended #so that the player automatically gets the item and the gate of time raised, while also not getting in the way of harp tutorial in BiT
     type: objpatch
     index: 1
     room: 2
     objtype: AREA
     object:
-      sizex: 20000
-      sizey: 20000
-      sizez: 20000
+      posx: 0
+      posy: 7000
+      posz: 9600
+      sizex: 3600
+      sizey: 2000
+      sizez: 3000
   - name: Remove Music and shaking
     type: objpatch
     room: 2
