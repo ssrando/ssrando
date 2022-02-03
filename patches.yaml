@@ -56,6 +56,9 @@ global:
       - onlyif: Option "skip-horde" Enabled
         flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
       - 13 # door to temple unlocked
+    Eldin Volcano:
+      - 2 # gets rid of first digging mitts mogma text
+      - 58 # digging mitts mogma cutscene watched
     Lanayru Desert:
       - 68 # desert statue checked
       - 7 # pushed first minecart to end

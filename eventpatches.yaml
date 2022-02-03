@@ -731,6 +731,11 @@
       param3: 109
       param4: No Sword Text
 110-DivingGame:
+  - name: Shorten Dodoh quest start text
+    type: flowpatch
+    index: 49
+    flow:
+      next: 55
   - name: Fun Fun Owner's Quest requirement
     type: flowpatch
     index: 38
@@ -765,6 +770,21 @@
     flow:
       param2: 909 # Whitesword
 115-Town2:
+  - name: Shorten Karane letter text
+    type: flowpatch
+    index: 592
+    flow:
+      next: 612
+  - name: Shorten Pipit letter text
+    type: flowpatch
+    index: 92
+    flow:
+      next: 121
+  - name: Shorten letter cutscene
+    type: flowpatch
+    index: 365
+    flow:
+      next: 377
   - name: Parrow's Empty Bottle
     type: flowpatch
     index: 734
@@ -1017,6 +1037,16 @@
       - 208
       - 216
 118-Town3:
+  - name: Shorten Sparrot quest start text
+    type: flowpatch
+    index: 100
+    flow:
+      next: 97
+  - name: Shorten Owlan quest start text
+    type: flowpatch
+    index: 320
+    flow:
+      next: 133
   - name: Wryna's Crystal
     type: flowpatch
     index: 144
