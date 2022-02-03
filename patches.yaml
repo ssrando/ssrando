@@ -1980,6 +1980,12 @@ B200: # Boss Room
       - story_flag: -1
         night: 0
         layer: 2
+  - name: delete boulder cutscene
+    type: objdelete
+    id: 0xFC36
+    layer: 2
+    room: 10
+    objtype: STAG
   - name: delete fi text
     type: objdelete
     id: 0xFC30

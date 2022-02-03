@@ -1206,6 +1206,11 @@
       next: -1
       param3: 7
 202-ForestD2:
+  #- name: remove ghirahim text before koloktos #works, but ghirahim is still there.
+  #  type: flowpatch
+  #  index: 14
+  #  flow:
+  #    next: 41
   - name: Give item after AC
     type: entryadd
     entry:
@@ -1343,6 +1348,11 @@
     flow:
       next: -1
 301-MountainD1:
+  - name: remove ghirahim text before scaldera
+    type: flowpatch
+    index: 82
+    flow:
+      next: 48
   - name: give item after beating earth temple
     type: flowpatch
     index: 22
@@ -1494,6 +1504,11 @@
     flow:
       next: -1
 401-DesertD2:
+  - name: remove skipper text after opening mast
+    type: flowpatch
+    index: 25
+    flow:
+      next: 50
   - name: give item after beating sandship
     type: flowpatch
     index: 45
