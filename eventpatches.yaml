@@ -694,7 +694,7 @@
   - name: Does have slingshot
     type: textpatch
     index: 68 # switch is false
-    text: "\x0E\x01\x09\x04\x00\x01By the way, <heroname>, I have been looking\nfor new sources of research about\n<b<plant life>>.\n\nIf you ever find something, please meet\nme <r<in the Knight Academy>>!"
+    text: "\x0E\x01\x09\x04\x00\x01By the way, <heroname>, I have been \nlooking for new sources of research\nabout <b<plant life>>.\n\nIf you ever find something, please meet\nme <r<in the Knight Academy>>!"
   - name: Does not have slingshot
     type: textpatch
     index: 69 # switch is true
