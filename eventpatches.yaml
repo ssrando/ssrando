@@ -686,6 +686,19 @@
       param3: 9
       param4: 0
       param5: 0
+  - name: Hint to owlan crystals
+    type: flowpatch
+    index: 272
+    flow:
+      param2: 57 # changes switch condition to kikwi elder slingshot storyflag
+  - name: Does have slingshot
+    type: textpatch
+    index: 68 # switch is false
+    text: "\x0E\x01\x09\x04\x00\x01By the way, <heroname>, I have been looking\nfor new sources of research about\n<b<plant life>>.\n\nIf you ever find something, please meet\nme <r<in the Knight Academy>>!"
+  - name: Does not have slingshot
+    type: textpatch
+    index: 69 # switch is true
+    text: "\x0E\x01\x09\x04\x00\x01Oh, <heroname>, something tells me you\nmight know some <b<plant life>> I could\nresearch! Please meet me \n<r<in the Knight Academy>>!"
 109-TakeGoron:
   - name: Peater's Crystal 1
     type: flowpatch
@@ -769,6 +782,32 @@
     index: 143
     flow:
       param2: 909 # Whitesword
+114-Friend:
+  - name: Fledge text # skips part about link's tunic and being a knight
+    type: flowpatch
+    index: 22
+    flow:
+      next: 111
+  - name: Fledge pouch text skip # skips part explaining the adventure pouch
+    type: flowpatch
+    index: 16
+    flow:
+      next: 24
+  - name: Fledge dungeon text
+    type: textadd
+    text: "By the way, your <r<required dungeons>>\nare on the <b<bulletin board>> over there."
+  - name: Show Fledge text
+    type: flowadd
+    flow:
+      type: type1
+      next: 100
+      param3: 115
+      param4: Fledge dungeon text
+  - name: Patch in text
+    type: flowpatch
+    index: 21
+    flow:
+      next: Show Fledge text
 115-Town2:
   - name: Shorten Karane letter text
     type: flowpatch
@@ -1148,10 +1187,25 @@
       subType: 0
       param1: 0
       param2: 0 # item
-      next: -1 # elder talks after gotten sligshot
+      next: insert owlan hint text # elder talks after gotten sligshot
       param3: 9
       param4: 0
       param5: 0
+  - name: text hinting to owlan
+    type: textadd
+    text: "\x0E\x01\x09\x04\x00\x08Do you think there might be a\n<r<professor>> who would want to see\n<b<one of my Kikwis>>, kwee?"
+  - name: insert owlan hint text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: text hinting to owlan
+  - name: change later elder text to reference owlan
+    type: flowpatch
+    index: 46 # text when you talk to the kikwi elder after slingshot
+    flow:
+      next: insert owlan hint text
   - name: Skip over Zelda Dowsing
     type: flowpatch
     index: 410
