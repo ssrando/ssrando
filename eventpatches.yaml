@@ -1646,6 +1646,30 @@
     flow:
       next: 492
 501-Inpa:
+  - name: botg context text
+    type: textadd
+    text: "I see you have acquired the <y<harp>>.\nWell done. Let me teach you a <b<song>>,\nit will be useful for your adventure."
+  - name: show botg context text
+    type: flowadd
+    flow:
+      type: type1
+      next: set 2x20 in lieu of botg tutorial
+      param3: 302
+      param4: botg context text
+  - name: botg cutscene skip to harp
+    type: flowpatch
+    index: 264
+    flow:
+      next: show botg context text
+  - name: set 2x20 in lieu of botg tutorial
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 29
+      param2: 10
+      next: 267
+      param3: 2
   - name: got to rando dungeons completed check
     type: flowpatch
     index: 267
