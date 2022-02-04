@@ -56,6 +56,8 @@ global:
       - onlyif: Option "skip-horde" Enabled
         flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
       - 13 # door to temple unlocked
+      - 21 # ballad of the goddess played (item and cutscene trigger instantly activate when outside of BiT)
+      - 28 # groose cutscene watched (prevents groose cutscene from taking priority outside of BiT)
     Lanayru Desert:
       - 68 # desert statue checked
       - 7 # pushed first minecart to end
@@ -2816,11 +2818,11 @@ F402: # Sealed Temple
       params1: 0xC303FF02 # scenlink: 2
       params2: 0xFF5FFFFF
       posx: 0
-      posy: 7650
+      posy: 7000
       posz: 10971.697265625
-      sizex: 200
-      sizey: 200
-      sizez: 200
+      sizex: 20000
+      sizey: 20000
+      sizez: 20000
       anglex: 65535 # no trigger storyflag
       angley: 0
       anglez: 63828 # untriggered by storyflag 340 (GoT raised)
@@ -2854,6 +2856,18 @@ F402: # Sealed Temple
     layer: 3
     room: 2
     objtype: OBJ
+  - name: BotG item trigger extended #so that the player automatically gets the item and the gate of time raised, while also not getting in the way of harp tutorial in BiT
+    type: objpatch
+    index: 1
+    room: 2
+    objtype: AREA
+    object:
+      posx: 0
+      posy: 7000
+      posz: 9600
+      sizex: 3600
+      sizey: 2000
+      sizez: 3000
   - name: Remove Music and shaking
     type: objpatch
     room: 2
