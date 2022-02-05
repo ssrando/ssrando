@@ -652,6 +652,10 @@
       param3: 87
       param4: Third 100R discounted Text
 106-DrugStore:
+  - name: Potion Lady Text Patch # generalized for rando
+    type: textpatch
+    index: 5
+    text: "Just so you know, I can't sell you a \npotion if you don't have an Empty \nBottle to pour it into!\n\n\x0E\x01\x09\x04\x09\x90For some reason, I like you, though, so\nI'll give you a spare item I've\nbeen keeping here in the stall!\nOh, it's nothing. It's my little gift."
   - name: Potion Lady Bottle # skip pouch requirements
     type: flowpatch
     index: 42
