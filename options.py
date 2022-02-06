@@ -214,7 +214,10 @@ class Options:
     def update_from_dict(self, opts):
         for option_name, option in OPTIONS.items():
             if option_name in opts:
-                self.set_option(option_name, opts[option_name])
+                try:
+                    self.set_option(option_name, opts[option_name])
+                except ValueError as e:
+                    print(f"error restoring option {option_name}:", e)
 
     def __getitem__(self, item):
         return self.options[item]
