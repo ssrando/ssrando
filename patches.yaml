@@ -56,8 +56,12 @@ global:
       - onlyif: Option "skip-horde" Enabled
         flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
       - 13 # door to temple unlocked
+
       - 21 # ballad of the goddess played (item and cutscene trigger instantly activate when outside of BiT)
       - 28 # groose cutscene watched (prevents groose cutscene from taking priority outside of BiT)
+    Eldin Volcano:
+      - 2 # gets rid of first digging mitts mogma text
+      - 58 # digging mitts mogma cutscene watched
     Lanayru Desert:
       - 68 # desert statue checked
       - 7 # pushed first minecart to end
@@ -1982,6 +1986,12 @@ B200: # Boss Room
       - story_flag: -1
         night: 0
         layer: 2
+  - name: delete boulder cutscene
+    type: objdelete
+    id: 0xFC36
+    layer: 2
+    room: 10
+    objtype: STAG
   - name: delete fi text
     type: objdelete
     id: 0xFC30
