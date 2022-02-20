@@ -120,15 +120,30 @@ class Logic:
                     "Sealed Grounds - Gorko's Goddess Wall Reward"
                 )
 
+        single_counts_to_ban = (
+            i for i in (5, 10, 15) if i > self.rando.options["max-single-crystals"]
+        )
+        for i in single_counts_to_ban:
+            loc = f"{i} Single Gratitude Crystals"
+            self.macros[loc] = Logic.parse_logic_expression(loc, "Impossible")
+
         batreaux_location_re = re.compile(r".*Batreaux - ([0-9]+) .*")
 
         for location_name in self.item_locations:
             # ban batreaux locations in necessary
-            bat_loc_match = batreaux_location_re.match(location_name)
-            if bat_loc_match:
-                if self.rando.options["max-batreaux-reward"] < int(
-                    bat_loc_match.group(1)
-                ):
+            if match := batreaux_location_re.match(location_name):
+                nb_crystals = int(match.group(1))
+                shifted = nb_crystals + self.rando.options["crystals-offset"]
+                new_req = (
+                    f"{shifted} Gratitude Crystals"
+                    if 5 <= shifted <= 80
+                    else "Impossible"
+                )
+                self.item_locations[location_name][
+                    "Need"
+                ] = Logic.parse_logic_expression(location_name, new_req)
+
+                if nb_crystals > self.rando.options["max-batreaux-reward"]:
                     self.racemode_ban_location(location_name)
                     # print(f'banned {location_name}')
 

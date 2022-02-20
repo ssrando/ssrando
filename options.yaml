@@ -183,6 +183,30 @@
   help: If activated, no spoiler log will be generated. This is highly discouraged
     to activate, as it makes debugging issues much harder.
   ui: option_no_spoiler_log
+- name: Max Single Crystals
+  command: max-single-crystals
+  type: singlechoice
+  default: 15
+  choices:
+    - 0
+    - 5
+    - 10
+    - 15
+  bits: 2
+  help: Maximum amount of loose gratitude crystals logic is allowed to pick up.
+  # ui: option_max_single_crystals
+- name: Logic Crystals Offset
+  command: crystals-offset
+  type: singlechoice
+  default: 0
+  choices:
+    - 0
+    - 5
+    - 10
+    - 15
+  bits: 2
+  help: Number of additional crystals logic has to collect before it can get the associated Batreaux check.
+  # ui: option_crystals_offset
 - name: Max Batreaux Reward
   command: max-batreaux-reward
   type: singlechoice
