@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>956</width>
-    <height>704</height>
+    <width>1051</width>
+    <height>734</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,6 +15,12 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="font">
+   <font>
+    <family>Segoe UI</family>
+    <pointsize>9</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Skyward Sword Randomizer</string>
@@ -50,7 +56,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>931</width>
+      <width>1031</width>
       <height>541</height>
      </rect>
     </property>
@@ -58,7 +64,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -69,8 +75,8 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>901</width>
-        <height>101</height>
+        <width>1001</width>
+        <height>115</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_29">
@@ -142,7 +148,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>120</y>
+        <y>130</y>
         <width>181</width>
         <height>131</height>
        </rect>
@@ -155,8 +161,8 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>160</width>
-         <height>101</height>
+         <width>166</width>
+         <height>89</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_33">
@@ -201,7 +207,7 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>120</y>
+        <y>130</y>
         <width>131</width>
         <height>131</height>
        </rect>
@@ -246,7 +252,7 @@
       <property name="geometry">
        <rect>
         <x>360</x>
-        <y>120</y>
+        <y>130</y>
         <width>131</width>
         <height>131</height>
        </rect>
@@ -254,25 +260,44 @@
       <property name="title">
        <string>Cosmetics</string>
       </property>
-      <widget class="QCheckBox" name="option_tunic_swap">
+      <widget class="QWidget" name="verticalLayoutWidget_8">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>20</y>
          <width>111</width>
-         <height>23</height>
+         <height>80</height>
         </rect>
        </property>
-       <property name="text">
-        <string>Tunic Swap</string>
-       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_17">
+        <item>
+         <widget class="QCheckBox" name="option_tunic_swap">
+          <property name="text">
+           <string>Tunic Swap</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_15">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_15">
       <property name="geometry">
        <rect>
         <x>510</x>
-        <y>120</y>
+        <y>130</y>
         <width>181</width>
         <height>131</height>
        </rect>
@@ -344,7 +369,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>901</width>
+        <width>1001</width>
         <height>51</height>
        </rect>
       </property>
@@ -356,7 +381,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>891</width>
+         <width>981</width>
          <height>25</height>
         </rect>
        </property>
@@ -411,7 +436,7 @@
        <rect>
         <x>10</x>
         <y>70</y>
-        <width>901</width>
+        <width>1001</width>
         <height>161</height>
        </rect>
       </property>
@@ -423,8 +448,8 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>891</width>
-         <height>131</height>
+         <width>981</width>
+         <height>140</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -625,7 +650,7 @@
        <rect>
         <x>10</x>
         <y>240</y>
-        <width>901</width>
+        <width>1001</width>
         <height>111</height>
        </rect>
       </property>
@@ -637,7 +662,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>891</width>
+         <width>981</width>
          <height>83</height>
         </rect>
        </property>
@@ -707,7 +732,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>181</width>
+        <width>201</width>
         <height>251</height>
        </rect>
       </property>
@@ -719,8 +744,8 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>164</width>
-         <height>221</height>
+         <width>181</width>
+         <height>223</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -822,9 +847,9 @@
      <widget class="QGroupBox" name="groupBox_7">
       <property name="geometry">
        <rect>
-        <x>560</x>
+        <x>620</x>
         <y>10</y>
-        <width>181</width>
+        <width>201</width>
         <height>251</height>
        </rect>
       </property>
@@ -836,7 +861,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>173</width>
+         <width>181</width>
          <height>221</height>
         </rect>
        </property>
@@ -893,7 +918,7 @@
         <item>
          <widget class="QCheckBox" name="option_sword_dungeon_reward">
           <property name="text">
-           <string>Force Sword Dungeon Reward</string>
+           <string>Sword Dungeon Rewards</string>
           </property>
          </widget>
         </item>
@@ -916,10 +941,10 @@
      <widget class="QGroupBox" name="groupBox_8">
       <property name="geometry">
        <rect>
-        <x>750</x>
-        <y>20</y>
-        <width>161</width>
-        <height>241</height>
+        <x>830</x>
+        <y>10</y>
+        <width>181</width>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -930,8 +955,8 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>148</width>
-         <height>211</height>
+         <width>161</width>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -945,21 +970,21 @@
         <item>
          <widget class="QCheckBox" name="option_horde">
           <property name="text">
-           <string>Horde</string>
+           <string>Skip Horde</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QCheckBox" name="option_g3">
           <property name="text">
-           <string>Ghirahim 3</string>
+           <string>Skip Ghirahim 3</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QCheckBox" name="option_demise">
           <property name="text">
-           <string>Demise</string>
+           <string>Skip Demise</string>
           </property>
          </widget>
         </item>
@@ -982,9 +1007,9 @@
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>10</y>
-        <width>171</width>
+        <width>191</width>
         <height>251</height>
        </rect>
       </property>
@@ -996,7 +1021,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>151</width>
+         <width>171</width>
          <height>221</height>
         </rect>
        </property>
@@ -1051,6 +1076,13 @@
          </layout>
         </item>
         <item>
+         <widget class="QCheckBox" name="option_open_et">
+          <property name="text">
+           <string>Open Earth Temple</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer_2">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1069,9 +1101,9 @@
      <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>420</x>
         <y>10</y>
-        <width>171</width>
+        <width>191</width>
         <height>251</height>
        </rect>
       </property>
@@ -1083,7 +1115,7 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>151</width>
+         <width>171</width>
          <height>221</height>
         </rect>
        </property>
@@ -1140,7 +1172,7 @@
        <rect>
         <x>10</x>
         <y>270</y>
-        <width>181</width>
+        <width>201</width>
         <height>241</height>
        </rect>
       </property>
@@ -1152,8 +1184,8 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>161</width>
-         <height>224</height>
+         <width>181</width>
+         <height>211</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1232,7 +1264,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>909</width>
+        <width>1001</width>
         <height>499</height>
        </rect>
       </property>
@@ -1354,8 +1386,8 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>181</width>
-        <height>221</height>
+        <width>191</width>
+        <height>231</height>
        </rect>
       </property>
       <property name="title">
@@ -1366,8 +1398,8 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>161</width>
-         <height>206</height>
+         <width>175</width>
+         <height>207</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_22">
@@ -1390,7 +1422,7 @@
           <item>
            <widget class="QLabel" name="label_for_option_woth_hints">
             <property name="text">
-             <string>Way of the Hero Hints</string>
+             <string>Spirit of the Sword Hints</string>
             </property>
            </widget>
           </item>
@@ -1474,10 +1506,10 @@
      <widget class="QGroupBox" name="groupBox_11">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>210</x>
         <y>10</y>
-        <width>181</width>
-        <height>221</height>
+        <width>191</width>
+        <height>231</height>
        </rect>
       </property>
       <property name="title">
@@ -1488,8 +1520,8 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>161</width>
-         <height>171</height>
+         <width>171</width>
+         <height>201</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_26">
@@ -1540,7 +1572,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>911</width>
+        <width>1011</width>
         <height>451</height>
        </rect>
       </property>
@@ -1604,8 +1636,8 @@
      <rect>
       <x>10</x>
       <y>615</y>
-      <width>931</width>
-      <height>86</height>
+      <width>1031</width>
+      <height>110</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_30">

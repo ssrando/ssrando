@@ -37,7 +37,7 @@ blr
 setStoryflagToValue:
 mr r5, r4
 mr r4, r3
-lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
 lwz r12, 0x0(r3)
 lwz r12, 0x28(r12)
 mtctr r12
@@ -87,7 +87,7 @@ lis r5, map_to_flagindex@ha
 addi r5, r5, map_to_flagindex@l
 lbzx r31, r4, r5
 set_dungeonflag:
-lwz r3,-0x403c(r13) ; DUNGEONFLAG_MANAGER
+lwz r3, DUNGEONFLAG_MANAGER@sda21(r13)
 lha r0, 2(r3)
 cmpw r0, r31 ; check if dungeon item is for current area
 bne handle_other_area
@@ -99,7 +99,7 @@ li r0, 1
 stb r0, 0(r3) ; set commit flag
 b bkget_func_end
 handle_other_area:
-lwz r3,-0x4444(r13) ; FILE_MANAGER
+lwz r3, FILE_MANAGER@sda21(r13)
 bl FileManager__getDungeonFlags
 rlwinm r4, r31, 4, 0, 27 ; flagindex * 16
 lhzx r0, r3, r4 ; load byte from the saved dungeonflags that also has the boss key and map flag
@@ -138,7 +138,7 @@ bgt smallkey_func_end ; not a small key
 lis r5, smallkey_to_flagindex@ha
 addi r5, r5, smallkey_to_flagindex@l
 lbzx r31, r4, r5 ; load flagindex of the small key
-lwz r3,-0x403c(r13) ; DUNGEONFLAG_MANAGER
+lwz r3, DUNGEONFLAG_MANAGER@sda21(r13)
 lha r0, 2(r3)
 cmpw r0, r31 ; check if dungeon item is for current area
 bne handle_other_area_small_key
@@ -152,7 +152,7 @@ li r0, 1
 stb r0, 0(r3) ; set commit flag
 b smallkey_func_end
 handle_other_area_small_key:
-lwz r3,-0x4444(r13) ; FILE_MANAGER
+lwz r3, FILE_MANAGER@sda21(r13)
 bl FileManager__getDungeonFlags
 rlwinm r4, r31, 4, 0, 27 ; flagindex * 16
 lwzx r5, r3, r4 ; load first word of saved dungeonflags, last 4 bits are small key count
@@ -183,7 +183,7 @@ mr r30, r3
 mr r31, r4
 cmplwi r3, 128
 bge setSceneflagForArea_end
-lwz r3,-0x4444(r13) ; FILE_MANAGER
+lwz r3, FILE_MANAGER@sda21(r13)
 bl FileManager__getSceneflags
 srwi r4, r30, 4
 rlwinm r0, r31, 3, 0, 28
@@ -212,7 +212,7 @@ mflr r0
 stw r0, 20(r1)
 stw r31, 12(r1)
 stw r30, 8(r1)
-lwz r3,-0x4444(r13) ; FILE_MANAGER
+lwz r3, FILE_MANAGER@sda21(r13)
 addis r3, r3, 1
 li r0, 1
 stb r0, -22450(r3)
@@ -221,7 +221,7 @@ ori r31, r31, 0xe1b8
 ; storyflags
 b storyflag_loop_cond
 storyflag_loop_body:
-lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
 bl FlagManager__setFlagTo1
 storyflag_loop_cond:
 lhz r4, 0(r31)
@@ -231,7 +231,7 @@ bne storyflag_loop_body
 ; itemflags
 b itemflag_loop_cond
 itemflag_loop_body:
-lwz r3,-0x4040(r13) ; ITEMFLAG_MANAGER
+lwz r3, ITEMFLAG_MANAGER@sda21(r13)
 bl FlagManager__setFlagTo1
 itemflag_loop_cond:
 lhz r4, 0(r31)
@@ -249,7 +249,7 @@ lhz r4, 0(r31)
 addi r31, r31, 2
 cmplwi r4, 0xFFFF
 bne sceneflag_loop_body
-lwz r3,-0x4444(r13) ; FILE_MANAGER
+lwz r3, FILE_MANAGER@sda21(r13)
 addis r3, r3, 1
 li r0, 0
 stb r0, -22450(r3)
@@ -266,12 +266,12 @@ blr
 .global alloc_keyboard_arcs_conditional
 alloc_keyboard_arcs_conditional:
 ; can't use r3, r4, r5, r6
-lwz r12, -0x3cb4(r13) ; LINK_PTR
+lwz r12, LINK_PTR@sda21(r13)
 lwz r12, 0x4(r12) ; link params
 xoris r12, r12, 0xFFFF ; check for 0xFFFF0FFF, actor params on title screen, are different in BiT
 cmpwi r12, 0x0FFF
 beq do_requestFileLoadFromDisk
-lwz r12,-0x4444(r13) ; FILE_MANAGER
+lwz r12, FILE_MANAGER@sda21(r13)
 lwz r12, 0(r12) ; location for all saved save files
 lbz r11, 0x53ad(r12) ; new savefile flag on file 1 + 0x20 offset from save files in general
 cmpwi r11, 1
@@ -331,7 +331,7 @@ blr
 .org @NextFreeSpace
 .global trigger_exit_one
 trigger_exit_one:
-lwz r3,-0x3cac(r13) ; RELOADER_PTR
+lwz r3, RELOADER_PTR@sda21(r13)
 li r4, 0 ; current room, all rooms in sky keep are room 0
 li r5, 1 ; take exit 1, it's always the skyloft exit
 li r6, 2 ; idk
@@ -387,14 +387,14 @@ stw r0, 0x10(r1)
 li r0, 0 ; float 0.0
 stw r0, 0x8(r1)
 stw r0, 0xC(r1)
-lwz r3,-0x3cb4(r13) ; LINK_PTR
+lwz r3, LINK_PTR@sda21(r13)
 addi r4, r1, 8
 li r5, 0
 li r6, 0
 li r7, 1
 li r8, 0
 bl ActorLink__setPosRot
-lwz r3,-0x4060(r13) ; SCENEFLAG_MANAGER
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
 li r4, 50
 bl SceneflagManager__checkTempOrSceneflag
 cmpwi r3, 0
@@ -404,14 +404,14 @@ rlwinm r3,r0,8,24,31
 li r4, -1
 li r5, 0
 bl giveItem
-lwz r3,-0x4060(r13); SCENEFLAG_MANAGER
+lwz r3, SCENEFLAG_MANAGER@sda21(r13); SCENEFLAG_MANAGER
 li r4, 50
 bl SceneflagManager__setTempOrSceneflag
 longsword_reward_check:
-lbz r0,-0x77cc(r13); EQUIPPED_SWORD
+lbz r0, EQUIPPED_SWORD@sda21(r13)
 cmplwi r0, 2
 blt function_end
-lwz r3,-0x4060(r13); SCENEFLAG_MANAGER
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
 li r4, 51
 bl SceneflagManager__checkTempOrSceneflag
 cmpwi r3, 0
@@ -421,14 +421,14 @@ rlwinm r3,r0,16,24,31
 li r4, -1
 li r5, 0
 bl giveItem
-lwz r3,-0x4060(r13); SCENEFLAG_MANAGER
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
 li r4, 51
 bl SceneflagManager__setTempOrSceneflag
 whitesword_reward_check:
-lbz r0,-0x77cc(r13); EQUIPPED_SWORD
+lbz r0, EQUIPPED_SWORD@sda21(r13)
 cmplwi r0, 3
 blt function_end
-lwz r3,-0x4060(r13); SCENEFLAG_MANAGER
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
 li r4, 52
 bl SceneflagManager__checkTempOrSceneflag
 cmpwi r3, 0
@@ -438,7 +438,7 @@ rlwinm r3,r0,8,24,31
 li r4, -1
 li r5, 0
 bl giveItem
-lwz r3,-0x4060(r13); SCENEFLAG_MANAGER
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
 li r4, 52
 bl SceneflagManager__setTempOrSceneflag
 function_end:
@@ -489,7 +489,7 @@ select_new_item_column:
 cmplwi r5, 9 ; we only care about command 9 (custom for rerandomizing what item row to buy)
 bne new_treasure_function_end
 ; get current row
-lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
 li r4, 0x28C
 bl FlagManager__getFlagOrCounter
 mr r31, r3
@@ -501,7 +501,7 @@ cmpw r3, r31
 beq random_new_row
 ; set new row
 mr r5, r3
-lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
 li r4, 0x28C
 bl FlagManager__setFlagOrCounter
 ; end of function we jumped out of

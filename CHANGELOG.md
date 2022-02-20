@@ -5,19 +5,42 @@
 - Added option to randomize music (by Battlecats59)
 - Added option to force swords at the end of dungeons (by YourAverageLink)
 - Added option to visually swap Skyloft and hero's clothes
+- Added options to skip Horde, Ghirahim 3, and Demise (by Battlecats59)
 ### Changes
 - Various name changes (by NULL and cjs07)
-- Added playername and hash to textboxes after demise (by Battlecats59)
+- Added playername and hash to textboxes after Demise (by Battlecats59)
 - CLI improvements
+- Hint changes (by cjs07)
+  - Added 2 new always hinted locations:
+    - LMF - Boss Key Chest
+    - FS - Chest after Bombable Wall
+  - Added 11 new sometimes hinted locations:
+    - SV - Chest behind Three Eyes
+    - SSH - Boss Key Chest
+    - SSH - Tentalus Heart Container
+    - SSH - Bow
+    - Thunderhead - Isle of Songs - Din's Power
+    - Sealed Grounds - Zelda's Blessing
+    - Sand Sea - Skipper's Retreat - Chest in Shack
+    - Volcano Summit - Item behind Digging
+    - Faron Woods - Slingshot
+    - Sky - Beedle's Crystals
+    - Sealed Grounds - Gorko's Goddess Wall Reward
+  - The Sea Chart can now be hinted when Sandship is a required dungeon
+  - Improved how the randomizer categorizes regions as barren
+- Spoiler logs are now put into the `logs` folder next to the exe
+- Make tornadoes spawn away further away to adjust for the increased loftwing speed
 ### Bugfixes
 - Added some tricks that were in the logic files but not in options (by NULL)
 - Fix bug with arc-replacements causing an error if the arc doesn't exist in ObjectPack, it's ignored now
-- Fix Sandship Timeshiftstone not being unset when leaving the dungeon in entrance rando
+- Fix Sandship Timeshift stone not being unset when leaving the dungeon in entrance rando
 - Fix a bug in trials where you could be unable to get the item with glitches
+- Fix a bug which prevented hints from being placed correctly 
 
 ## 1.1.0
 ### Options
 ### Changes
+- Redesigned GUI
 - Added Boko Base Checks to Volcano Summit
 - Added hint for Stone of Trial to Impa in the past
 - Added dialogue option to Rupin to make him buy different treasures

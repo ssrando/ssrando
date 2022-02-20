@@ -56,7 +56,7 @@ a = Analysis(['randoscript.py'],
              	'version-with-git.txt',
              	'names.txt',
              	'*.yaml',
-             	'assets/logo.tpl',
+             	'assets/*',
               'asm/*.txt',
               'asm/patch_diffs/*.txt'
              ]),

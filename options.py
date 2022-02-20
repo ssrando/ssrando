@@ -204,6 +204,21 @@ class Options:
                 raise Exception(f'unknown type: {option["type"]}')
             self.set_option(option_name, value)
 
+    def to_dict(self):
+        opts = self.options.copy()
+        for option_name, option in OPTIONS.items():
+            if option["type"] == "dirpath":
+                opts[option_name] = str(opts[option_name])
+        return opts
+
+    def update_from_dict(self, opts):
+        for option_name, option in OPTIONS.items():
+            if option_name in opts:
+                try:
+                    self.set_option(option_name, opts[option_name])
+                except ValueError as e:
+                    print(f"error restoring option {option_name}:", e)
+
     def __getitem__(self, item):
         return self.options[item]
 

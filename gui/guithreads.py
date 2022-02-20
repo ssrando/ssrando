@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 from typing import Optional
 
-from PySide2.QtCore import QThread, Signal
+from PySide6.QtCore import QThread, Signal
 
 from ssrando import Randomizer, StartupException
 from witmanager import WitManager, WitException, WrongChecksumException
@@ -50,6 +50,7 @@ class RandomizerThread(QThread):
             print(traceback.format_exc())
             return
         if not dry_run:
+            self.wit_manager.ensure_wit_installed()
             default_ui_progress_callback("repacking game...")
             repack_progress_cb = self.create_ui_progress_callback(
                 self.randomizer.get_total_progress_steps()

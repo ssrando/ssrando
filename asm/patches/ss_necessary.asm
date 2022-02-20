@@ -86,10 +86,10 @@ nop
 b 0x802da0c0
 ; this replaces unused code
 .org 0x802da0c0
-lwz r3, -0x4040(r13) ;ITEMFLAG_MANAGER
+lwz r3, ITEMFLAG_MANAGER@sda21(r13)
 li r4, 0x1F6 ;gratitude crystals
 bl FlagManager__getUncommittedFlags
-lwz r4, -0x3fb8(r13) ;LYT_MSG_MANAGER
+lwz r4, LYT_MSG_MANAGER@sda21(r13)
 lwz r4, 0x724(r4) ;Text Manager
 stw r3, 0x8A0(r4) ;text counter 1
 lwz r0, 0x24(r1) ; instruction that was overwritten
@@ -197,7 +197,7 @@ mflr r0
 stw r0,20(r1)
 stw r31,12(r1)
 mr r31,r3 ; r31 is AcOWarp ptr
-lwz r3,-0x4044(r13) ; STORYFLAG_MANAGER
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
 lhz r4, 0xaa(r31) ; 3rd and 4th byte in params2 is storyflag for completing trial
 bl FlagManager__setFlagTo1 ; set storyflag for completing trial
 lbz r3, 0x4(r31) ; first byte of params1 is itemid
@@ -430,4 +430,22 @@ b 0x17C8
 .open "d_a_npc_douguyanightNP.rel"
 .org 0xBA0
 b select_new_item_column
+.close
+
+.open "d_t_skyEnemyNP.rel"
+.org 0x1270
+lis r3, 0x46DF ; float 28544.0, replaces 12000
+.org 0x1280
+stw r3, 0x30(r1)
+.close
+
+.open "d_a_obj_tornadoNP.rel"
+.org 0x920 ; thanks to 16 byte alignment, we can just insert 2 instructions here
+lis r4, 0x47DF ; float 114176.0, just arbitrarily large to not make the tornado despawn
+stw r4, 0x1A4(r31) ; culling distance, most likely
+lwz r31, 0x3C(r1)
+lwz r30, 0x38(r1)
+mtlr r0
+addi r1, r1, 0x40
+blr
 .close

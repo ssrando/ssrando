@@ -731,6 +731,11 @@
       param3: 109
       param4: No Sword Text
 110-DivingGame:
+  - name: Shorten Dodoh quest start text
+    type: flowpatch
+    index: 49
+    flow:
+      next: 55
   - name: Fun Fun Owner's Quest requirement
     type: flowpatch
     index: 38
@@ -765,6 +770,21 @@
     flow:
       param2: 909 # Whitesword
 115-Town2:
+  - name: Shorten Karane letter text
+    type: flowpatch
+    index: 592
+    flow:
+      next: 612
+  - name: Shorten Pipit letter text
+    type: flowpatch
+    index: 92
+    flow:
+      next: 121
+  - name: Shorten letter cutscene
+    type: flowpatch
+    index: 365
+    flow:
+      next: 377
   - name: Parrow's Empty Bottle
     type: flowpatch
     index: 734
@@ -1017,6 +1037,16 @@
       - 208
       - 216
 118-Town3:
+  - name: Shorten Sparrot quest start text
+    type: flowpatch
+    index: 100
+    flow:
+      next: 97
+  - name: Shorten Owlan quest start text
+    type: flowpatch
+    index: 320
+    flow:
+      next: 133
   - name: Wryna's Crystal
     type: flowpatch
     index: 144
@@ -1206,6 +1236,11 @@
       next: -1
       param3: 7
 202-ForestD2:
+  #- name: remove ghirahim text before koloktos #works, but ghirahim is still there.
+  #  type: flowpatch
+  #  index: 14
+  #  flow:
+  #    next: 41
   - name: Give item after AC
     type: entryadd
     entry:
@@ -1343,6 +1378,11 @@
     flow:
       next: -1
 301-MountainD1:
+  - name: remove ghirahim text before scaldera
+    type: flowpatch
+    index: 82
+    flow:
+      next: 48
   - name: give item after beating earth temple
     type: flowpatch
     index: 22
@@ -1494,6 +1534,11 @@
     flow:
       next: -1
 401-DesertD2:
+  - name: remove skipper text after opening mast
+    type: flowpatch
+    index: 25
+    flow:
+      next: 50
   - name: give item after beating sandship
     type: flowpatch
     index: 45
@@ -1601,6 +1646,30 @@
     flow:
       next: 492
 501-Inpa:
+  - name: botg context text
+    type: textadd
+    text: "I see you have acquired the <y<harp>>.\nWell done. Let me teach you a <b<song>>,\nit will be useful for your adventure."
+  - name: show botg context text
+    type: flowadd
+    flow:
+      type: type1
+      next: set 2x20 in lieu of botg tutorial
+      param3: 302
+      param4: botg context text
+  - name: botg cutscene skip to harp
+    type: flowpatch
+    index: 264
+    flow:
+      next: show botg context text
+  - name: set 2x20 in lieu of botg tutorial
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 29
+      param2: 10
+      next: 267
+      param3: 2
   - name: got to rando dungeons completed check
     type: flowpatch
     index: 267
@@ -1638,6 +1707,16 @@
       param2: 2 # room 2
       next: -1
       param3: 10
+  - name: Patch Fi text before Demise
+    onlyif: Option "skip-demise" Enabled
+    type: textpatch
+    index: 23
+    text: "Master <heroname>, I have\nimportant information for you.\n\n\nMy analysis indicates a 100% chance\nthat entering this portal will\n<r<conclude>> your journey.\n\nAre you ready to proceed?\n[1]I'm ready![2-]Not yet..."
+  - name: Patch Fi text before Demise 2
+    onlyif: Option "skip-demise" Enabled
+    type: textpatch
+    index: 25
+    text: "Understood, Master <heroname>.\nThank you for taking me on this\njourney with you."
 599-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
