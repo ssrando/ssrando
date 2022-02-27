@@ -1,0 +1,2346 @@
+- name: 'start entrance'
+  exit:
+    name: F001r
+    room: 1
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 1
+    index: 2
+- name: ''
+  exit:
+    name: F023
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F010r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F010r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F023
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: F200
+    room: 4
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D200
+    room: 1
+    index: 0
+- name: ''
+  exit:
+    name: D200
+    room: 1
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 4
+    index: 0
+- name: ''
+  exit:
+    name: F202_3
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 2
+    index: 3
+- name: ''
+  exit:
+    name: F200
+    room: 2
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F202_3
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F202_4
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 4
+    index: 3
+- name: ''
+  exit:
+    name: F200
+    room: 4
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F202_4
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F201_1
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 5
+    index: 0
+- name: ''
+  exit:
+    name: F200
+    room: 5
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_1
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F200
+    room: 4
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F211
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F211
+    room: 0
+    layer: 1
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 4
+    index: 1
+- name: ''
+  exit:
+    name: F102_2
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102
+    room: 4
+    index: 0
+- name: ''
+  exit:
+    name: F102
+    room: 4
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102_2
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F301_6
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_2
+    room: 1
+    index: 0
+- name: ''
+  exit:
+    name: F301_2
+    room: 1
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_6
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F301_6
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_2
+    room: 1
+    index: 2
+- name: ''
+  exit:
+    name: F301_2
+    room: 1
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_6
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: D201
+    room: 10
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201_1
+    room: 5
+    index: 2
+- name: ''
+  exit:
+    name: D201_1
+    room: 5
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201
+    room: 10
+    index: 0
+- name: ''
+  exit:
+    name: D201
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201_1
+    room: 6
+    index: 0
+- name: ''
+  exit:
+    name: D201_1
+    room: 6
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F020
+    room: 0
+    layer: 0
+    entrance: 11
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F019r
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: F019r
+    room: 0
+    layer: 1
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 13
+- name: ''
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 7
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_2
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F300_2
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F301_4
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_7
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F301_7
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_4
+    room: 0
+    index: 4
+- name: ''
+  exit:
+    name: F301_4
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_7
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F301_7
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_4
+    room: 0
+    index: 3
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F004r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F004r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F004r
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F004r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 20
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F004r
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: F004r
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 19
+- name: ''
+  exit:
+    name: F300_1
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F303
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F303
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_1
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 6
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F303
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F303
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 8
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 7
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D000
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: D000
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 6
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 8
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D000
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: D000
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 7
+- name: ''
+  exit:
+    name: F300_5
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_4
+    room: 0
+    index: 4
+- name: ''
+  exit:
+    name: F201_1
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_3
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F201_3
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_1
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: D201
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_3
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F201_3
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 2
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F102_2
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102_1
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F102_1
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102_2
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: D101
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102_1
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F102_1
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D101
+    room: 0
+    index: 3
+- name: ''
+  exit:
+    name: F008r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 5
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 6
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F008r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F013r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 58
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 33
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F013r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F201_4
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_1
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F201_1
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_4
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_3
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F300_3
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_4
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F300_4
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 3
+- name: ''
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_4
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F300_4
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 4
+- name: ''
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: D300
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 5
+- name: ''
+  exit:
+    name: D300_1
+    room: 5
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300
+    room: 1
+    index: 0
+- name: ''
+  exit:
+    name: D300
+    room: 1
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300_1
+    room: 5
+    index: 2
+- name: ''
+  exit:
+    name: D300_1
+    room: 5
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300
+    room: 4
+    index: 0
+- name: ''
+  exit:
+    name: D300
+    room: 4
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300_1
+    room: 5
+    index: 3
+- name: ''
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100_1
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F100_1
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 3
+- name: ''
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100_1
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: F100_1
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 4
+- name: ''
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 6
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100_1
+    room: 0
+    index: 3
+- name: ''
+  exit:
+    name: F100_1
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 5
+- name: ''
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 7
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100_1
+    room: 0
+    index: 4
+- name: ''
+  exit:
+    name: F100_1
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 6
+- name: ''
+  exit:
+    name: D300
+    room: 6
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300_1
+    room: 5
+    index: 1
+- name: ''
+  exit:
+    name: D300_1
+    room: 5
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300
+    room: 6
+    index: 0
+- name: ''
+  exit:
+    name: F101
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 13
+- name: ''
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 45
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F101
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F001r
+    room: 5
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 4
+- name: ''
+  exit:
+    name: F001r
+    room: 5
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 5
+    index: 1
+- name: ''
+  exit:
+    name: F401
+    room: 1
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F400
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F400
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F401
+    room: 1
+    index: 1
+- name: ''
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F400
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: F400
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F101
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D100
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: D100
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F101
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_1
+    room: 2
+    index: 0
+- name: ''
+  exit:
+    name: F300_1
+    room: 2
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 35
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F015r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F015r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 35
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 36
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F016r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F016r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 36
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 30
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F005r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F005r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 31
+- name: ''
+  exit:
+    name: F020
+    room: 0
+    layer: 0
+    entrance: 22
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F011r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F011r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 19
+- name: ''
+  exit:
+    name: F020
+    room: 0
+    layer: 0
+    entrance: 23
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F011r
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F011r
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 18
+- name: ''
+  exit:
+    name: F020
+    room: 0
+    layer: 0
+    entrance: 24
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F011r
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: F011r
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 20
+- name: ''
+  exit:
+    name: F400
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F402
+    room: 2
+    index: 1
+- name: ''
+  exit:
+    name: F402
+    room: 2
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F400
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F401
+    room: 1
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F402
+    room: 2
+    index: 0
+- name: ''
+  exit:
+    name: F402
+    room: 2
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F401
+    room: 1
+    index: 0
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 37
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F017r
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F017r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 37
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 32
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F007r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F007r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 32
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 21
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F009r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F009r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 20
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 26
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F009r
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F009r
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 27
+- name: ''
+  exit:
+    name: F018r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 38
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 38
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F018r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F001r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 4
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 1
+- name: ''
+  exit:
+    name: F001r
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 3
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F001r
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 23
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 23
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 2
+- name: ''
+  exit:
+    name: F001r
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 24
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 24
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 3
+- name: ''
+  exit:
+    name: F006r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 10
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 31
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F006r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F014r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 34
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 34
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F014r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F013r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 33
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 4
+    entrance: 50
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 21
+- name: ''
+  exit:
+    name: F012r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 30
+- name: ''
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 29
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F012r
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F301_3
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_5
+    room: 0
+    index: 0
+- name: ''
+  exit:
+    name: F301_5
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_3
+    room: 0
+    index: 3
+- name: Volcano Entry
+  type: statue
+  scen:
+    stage: F200
+    room: 0
+    index: 0
+- name: Volcano East
+  type: statue
+  scen:
+    stage: F200
+    room: 2
+    index: 2
+- name: Volcano Ascent
+  type: statue
+  scen:
+    stage: F200
+    room: 2
+    index: 2
+- name: Temple Entrance
+  type: statue
+  scen:
+    stage: F200
+    room: 4
+    index: 2
+- name: Great Tree Top
+  type: statue
+  scen:
+    stage: F103
+    room: 0
+    index: 1
+- name: Lake Floria
+  type: statue
+  scen:
+    stage: F102
+    room: 3
+    index: 0
+- name: Lanayru Gorge
+  type: statue
+  scen:
+    stage: F302
+    room: 0
+    index: 1
+- name: Inside Fire Sanctuary
+  type: statue
+  scen:
+    stage: D201_1
+    room: 10
+    index: 3
+- name: Inside the Volcano
+  type: statue
+  scen:
+    stage: F201_3
+    room: 0
+    index: 2
+- name: Floria Waterfall
+  type: statue
+  scen:
+    stage: F102_1
+    room: 0
+    index: 3
+- name: Behind the Temple
+  type: statue
+  scen:
+    stage: F402
+    room: 2
+    index: 5
+- name: Sealed Grounds
+  type: statue
+  scen:
+    stage: F402
+    room: 2
+    index: 19
+- name: Ancient Harbor
+  type: statue
+  scen:
+    stage: F301
+    room: 0
+    index: 3
+- name: Pirate Stronghold
+  type: statue
+  scen:
+    stage: F301_6
+    room: 0
+    index: 3
+- name: Behind the Temple
+  type: statue
+  scen:
+    stage: F406
+    room: 1
+    index: 5
+- name: Sealed Grounds
+  type: statue
+  scen:
+    stage: F406
+    room: 1
+    index: 16
+- name: Desert Gorge
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 2
+- name: Temple of Time
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 2
+- name: Lanayru Mine Entry
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 6
+- name: North Desert
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 6
+- name: West Desert
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 6
+- name: Stone Cache
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 6
+- name: Faron Woods Entry
+  type: statue
+  scen:
+    stage: F100
+    room: 0
+    index: 10
+- name: In the Woods
+  type: statue
+  scen:
+    stage: F100
+    room: 0
+    index: 10
+- name: Viewing Platform
+  type: statue
+  scen:
+    stage: F100
+    room: 0
+    index: 10
+- name: The Great Tree
+  type: statue
+  scen:
+    stage: F100
+    room: 0
+    index: 10
+- name: Inside Fire Sanctuary
+  type: statue
+  scen:
+    stage: D201
+    room: 10
+    index: 3
+- name: Behind the Temple
+  type: statue
+  scen:
+    stage: F400
+    room: 0
+    index: 5
+- name: Sealed Grounds
+  type: statue
+  scen:
+    stage: F400
+    room: 0
+    index: 19
+- name: Skipper's Retreat
+  type: statue
+  scen:
+    stage: F301_3
+    room: 0
+    index: 1
+- name: Behind the Temple
+  type: statue
+  scen:
+    stage: F401
+    room: 1
+    index: 5
+- name: Sealed Grounds
+  type: statue
+  scen:
+    stage: F401
+    room: 1
+    index: 19
+- name: Skipper's Retreat
+  type: statue
+  scen:
+    stage: F301_1
+    room: 0
+    index: 0
+- name: Shipyard
+  type: statue
+  scen:
+    stage: F301_1
+    room: 0
+    index: 0
+- name: Pirate Stronghold
+  type: statue
+  scen:
+    stage: F301_1
+    room: 0
+    index: 0
+- name: Ancient Harbor
+  type: statue
+  scen:
+    stage: F301_1
+    room: 0
+    index: 0
+- name: Lanayru Mine Entry
+  type: statue
+  scen:
+    stage: F300_1
+    room: 0
+    index: 0
+- name: Shipyard
+  type: statue
+  scen:
+    stage: F301_4
+    room: 0
+    index: 1
+- name: Deep Woods
+  type: statue
+  scen:
+    stage: F101
+    room: 0
+    index: 2
+- name: Forest Temple
+  type: statue
+  scen:
+    stage: F101
+    room: 0
+    index: 2
+- name: Desert Entrance
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 6
+- name: North Desert
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 6
+- name: Desert Gorge
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 2
+- name: Temple of Time
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 2
+- name: West Desert
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 6
+- name: Stone Cache
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 6
