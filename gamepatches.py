@@ -1152,22 +1152,7 @@ class GamePatcher:
             )
 
     def add_hacky_entrance_rando_patches(self):
-        with (Path(__file__).parent / "entrance_table.yaml").open("r") as f:
-            entrance_table = yaml.safe_load(f)
-        exits = []
-        scens = []
-        statue_scens = []
-        for entry in entrance_table:
-            if entry.get("type") == "statue":
-                statue_scens.append(entry["scen"])
-            else:
-                exits.append(entry["exit"])
-                scens.append(entry["scen"])
-        self.rando.rng.shuffle(scens)
-        for (
-            exit,
-            scen,
-        ) in zip(exits, scens):
+        for exit, scen in self.placement_file.exits_connections.items():
             self.add_patch_to_stage(
                 scen["stage"],
                 {
@@ -1185,8 +1170,7 @@ class GamePatcher:
                 },
             )
         # to make no logic more possible, let bird statues point to random exits
-        self.rando.rng.shuffle(exits)
-        for scen, exit in zip(statue_scens, exits):
+        for scen, exit in self.placement_file.statue_exits_connections:
             self.add_patch_to_stage(
                 scen["stage"],
                 {
