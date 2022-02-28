@@ -175,6 +175,35 @@ class Randomizer(BaseRandomizer):
         else:
             self.progress_callback("writing spoiler log...")
         plcmt_file = self.get_placement_file()
+
+        with (Path(__file__).parent / "entrance_table.yaml").open("r") as f:
+            entrance_table = yaml.safe_load(f)
+        exits = []
+        scens = []
+        statue_scens = []
+        for entry in entrance_table:
+            if entry.get("type") == "statue":
+                statue_scens.append((entry["name"], entry["scen"]))
+            else:
+                exits.append((entry["name"], entry["exit"]))
+                scens.append((entry["name"], entry["scen"]))
+        self.rng.shuffle(scens)
+        self.logic.exits_connections = [
+            (exit_name, entrance_name)
+            for ((exit_name, _), (entrance_name, _)) in zip(exits, scens)
+        ]
+        plcmt_file.exits_connections = [
+            (exit, entrance) for ((_, exit), (_, entrance)) in zip(exits, scens)
+        ]
+        self.rng.shuffle(exits)
+        self.logic.statue_exits_connections = [
+            (statue_name, exit_name)
+            for ((statue_name, _), (exit_name, _)) in zip(statue_scens, exits)
+        ]
+        plcmt_file.statue_exits_connections = [
+            (statue, exit) for ((_, statue), (_, exit)) in zip(statue_scens, exits)
+        ]
+
         if self.options["out-placement-file"] and not self.no_logs:
             (self.log_file_path / f"placement_file_{self.seed}.json").write_text(
                 plcmt_file.to_json_str()
@@ -290,6 +319,27 @@ class Randomizer(BaseRandomizer):
                 spoiler_log += format_string % (specific_location_name + ":", item_name)
 
         spoiler_log += "\n\n\n"
+
+        # Write down exits.
+        spoiler_log += "Exits:\n"
+        rev = [(a, b) for (b, a) in self.logic.exits_connections]
+        for (
+            entrance_name,
+            exit_name,
+        ) in sorted(rev):
+            spoiler_log += "  %-56s %s\n" % (entrance_name + ":", exit_name)
+
+        spoiler_log += "\n\n"
+
+        # Write down exits.
+        spoiler_log += "Statue Exits:\n"
+        for (
+            statue_name,
+            exit_name,
+        ) in sorted(self.logic.statue_exits_connections):
+            spoiler_log += "  %-24s %s\n" % (statue_name + ":", exit_name)
+
+        spoiler_log += "\n\n"
 
         # Write dungeon/secret cave entrances.
         spoiler_log += "Entrances:\n"
