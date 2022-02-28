@@ -13,7 +13,7 @@
     stage: F001r
     room: 1
     index: 2
-- name: ''
+- name: "F010r (Isle of Songs) -> F023 (Thunderhead)"
   exit:
     name: F023
     room: 0
@@ -28,7 +28,7 @@
     stage: F010r
     room: 0
     index: 0
-- name: ''
+- name: "F023 (Thunderhead) -> F010r (Isle of Songs)"
   exit:
     name: F010r
     room: 0
@@ -43,7 +43,7 @@
     stage: F023
     room: 0
     index: 2
-- name: ''
+- name: "D200 (Earth Temple) -> F200 (Eldin Volcano)"
   exit:
     name: F200
     room: 4
@@ -58,7 +58,7 @@
     stage: D200
     room: 1
     index: 0
-- name: ''
+- name: "F200 (Eldin Volcano) -> D200 (Earth Temple)"
   exit:
     name: D200
     room: 1
@@ -73,7 +73,7 @@
     stage: F200
     room: 4
     index: 0
-- name: ''
+- name: "F200 (Eldin Volcano) -> F202_3 (Boko Base Inner 1)"
   exit:
     name: F202_3
     room: 0
@@ -88,7 +88,7 @@
     stage: F200
     room: 2
     index: 3
-- name: ''
+- name: "F202_3 (Boko Base Inner 1) -> F200 (Eldin Volcano)"
   exit:
     name: F200
     room: 2
@@ -103,7 +103,7 @@
     stage: F202_3
     room: 0
     index: 0
-- name: ''
+- name: "F200 (Eldin Volcano) -> F202_4 (Boko Base Inner 2)"
   exit:
     name: F202_4
     room: 0
@@ -118,7 +118,7 @@
     stage: F200
     room: 4
     index: 3
-- name: ''
+- name: "F202_4 (Boko Base Inner 2) -> F200 (Eldin Volcano)"
   exit:
     name: F200
     room: 4
@@ -133,7 +133,7 @@
     stage: F202_4
     room: 0
     index: 0
-- name: ''
+- name: "F200 (Eldin Volcano) -> F201_1 (VS - Main)"
   exit:
     name: F201_1
     room: 0
@@ -148,7 +148,7 @@
     stage: F200
     room: 5
     index: 0
-- name: ''
+- name: "F201_1 (VS - Main) -> F200 (Eldin Volcano)"
   exit:
     name: F200
     room: 5
@@ -163,7 +163,7 @@
     stage: F201_1
     room: 0
     index: 0
-- name: ''
+- name: "F211 (Thrill Digger Cave ?) -> F200 (Eldin Volcano)"
   exit:
     name: F200
     room: 4
@@ -178,7 +178,7 @@
     stage: F211
     room: 0
     index: 0
-- name: ''
+- name: "F200 (Eldin Volcano) -> F211 (Thrill Digger Cave ?)"
   exit:
     name: F211
     room: 0
@@ -193,7 +193,7 @@
     stage: F200
     room: 4
     index: 1
-- name: ''
+- name: "F102_2 (Lake Floria) -> F102_2 (Floria - Dragon's Lair)"
   exit:
     name: F102_2
     room: 0
@@ -208,7 +208,7 @@
     stage: F102
     room: 4
     index: 0
-- name: ''
+- name: "F102_2 (Floria - Dragon's Lair) -> F102_2 (Lake Floria)"
   exit:
     name: F102
     room: 4
@@ -223,7 +223,7 @@
     stage: F102_2
     room: 0
     index: 0
-- name: ''
+- name: "F301_2 (Pirate Stronghold Inside) -> F301_6 (Pirate Stronghold Outside)"
   exit:
     name: F301_6
     room: 0
@@ -238,7 +238,7 @@
     stage: F301_2
     room: 1
     index: 0
-- name: ''
+- name: "F301_6 (Pirate Stronghold Outside) -> F301_2 (Pirate Stronghold Inside)"
   exit:
     name: F301_2
     room: 1
@@ -253,7 +253,7 @@
     stage: F301_6
     room: 0
     index: 1
-- name: ''
+- name: "F301_2 (Pirate Stronghold Inside) -> F301_6 (Pirate Stronghold Outside)"
   exit:
     name: F301_6
     room: 0
@@ -268,7 +268,7 @@
     stage: F301_2
     room: 1
     index: 2
-- name: ''
+- name: "F301_6 (Pirate Stronghold Outside) -> F301_2 (Pirate Stronghold Inside)"
   exit:
     name: F301_2
     room: 1
@@ -283,7 +283,7 @@
     stage: F301_6
     room: 0
     index: 2
-- name: ''
+- name: "D201_1 (FS Inner) -> D201 (FS Outer)"
   exit:
     name: D201
     room: 10
@@ -298,7 +298,7 @@
     stage: D201_1
     room: 5
     index: 2
-- name: ''
+- name: "D201 (FS Outer) -> D201_1 (FS Inner)"
   exit:
     name: D201_1
     room: 5
@@ -313,7 +313,7 @@
     stage: D201
     room: 10
     index: 0
-- name: ''
+- name: "D201_1 (FS Inner) -> D201 (FS Outer)"
   exit:
     name: D201
     room: 0
@@ -328,7 +328,7 @@
     stage: D201_1
     room: 6
     index: 0
-- name: ''
+- name: "D201 (FS Outer) -> D201_1 (FS Inner)"
   exit:
     name: D201_1
     room: 6
@@ -343,7 +343,7 @@
     stage: D201
     room: 0
     index: 0
-- name: ''
+- name: "F019r (Bamboo House) -> F020 (Sky)"
   exit:
     name: F020
     room: 0
@@ -358,7 +358,7 @@
     stage: F019r
     room: 0
     index: 2
-- name: ''
+- name: "F020 (Sky) -> F019r (Bamboo House)"
   exit:
     name: F019r
     room: 0
@@ -373,7 +373,7 @@
     stage: F020
     room: 0
     index: 13
-- name: ''
+- name: "F300_2 (Lightning Node) -> F300 (Lanayru Desert)"
   exit:
     name: F300
     room: 0
@@ -388,7 +388,7 @@
     stage: F300_2
     room: 0
     index: 0
-- name: ''
+- name: "F300 (Lanayru Desert) -> F300_2 (Lightning Node)"
   exit:
     name: F300_2
     room: 0
@@ -403,7 +403,7 @@
     stage: F300
     room: 0
     index: 0
-- name: ''
+- name: "F301_7 (Shipyard Inside ?) -> F301_4 (Shipyard Outside ?)"
   exit:
     name: F301_4
     room: 0
@@ -418,7 +418,7 @@
     stage: F301_7
     room: 0
     index: 0
-- name: ''
+- name: "F301_4 (Shipyard Outside ?) -> F301_7 (Shipyard Inside ?)"
   exit:
     name: F301_7
     room: 0
@@ -433,7 +433,7 @@
     stage: F301_4
     room: 0
     index: 4
-- name: ''
+- name: "F301_7 (Shipyard Inside ?) -> F301_4 (Shipyard Outside ?)"
   exit:
     name: F301_4
     room: 0
@@ -448,7 +448,7 @@
     stage: F301_7
     room: 0
     index: 1
-- name: ''
+- name: "F301_4 (Shipyard Outside ?) -> F301_7 (Shipyard Inside ?)"
   exit:
     name: F301_7
     room: 0
@@ -463,7 +463,7 @@
     stage: F301_4
     room: 0
     index: 3
-- name: ''
+- name: "F004r (Bazaar) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -478,7 +478,7 @@
     stage: F004r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F004r (Bazaar)"
   exit:
     name: F004r
     room: 0
@@ -493,7 +493,7 @@
     stage: F000
     room: 0
     index: 1
-- name: ''
+- name: "F004r (Bazaar) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -508,7 +508,7 @@
     stage: F004r
     room: 0
     index: 1
-- name: ''
+- name: "F000 (Skyloft) -> F004r (Bazaar)"
   exit:
     name: F004r
     room: 0
@@ -523,7 +523,7 @@
     stage: F000
     room: 0
     index: 2
-- name: ''
+- name: "F004r (Bazaar) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -538,7 +538,7 @@
     stage: F004r
     room: 0
     index: 2
-- name: ''
+- name: "F000 (Skyloft) -> F004r (Bazaar)"
   exit:
     name: F004r
     room: 0
@@ -553,7 +553,7 @@
     stage: F000
     room: 0
     index: 19
-- name: ''
+- name: "F303 (Lanayru Caves) -> F300_1 (Lanayru Mines)"
   exit:
     name: F300_1
     room: 0
@@ -568,7 +568,7 @@
     stage: F303
     room: 0
     index: 0
-- name: ''
+- name: "F300_1 (Lanayru Mines) -> F303 (Lanayru Caves)"
   exit:
     name: F303
     room: 0
@@ -583,7 +583,7 @@
     stage: F300_1
     room: 0
     index: 1
-- name: ''
+- name: "F303 (Lanayru Caves) -> F300 (Lanayru Desert)"
   exit:
     name: F300
     room: 0
@@ -598,7 +598,7 @@
     stage: F303
     room: 0
     index: 1
-- name: ''
+- name: "F300 (Lanayru Desert) -> F303 (Lanayru Caves)"
   exit:
     name: F303
     room: 0
@@ -613,7 +613,7 @@
     stage: F300
     room: 0
     index: 8
-- name: ''
+- name: "D000 (Waterfall Cave) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -628,7 +628,7 @@
     stage: D000
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> D000 (Waterfall Cave)"
   exit:
     name: D000
     room: 0
@@ -643,7 +643,7 @@
     stage: F000
     room: 0
     index: 6
-- name: ''
+- name: "D000 (Waterfall Cave) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -658,7 +658,7 @@
     stage: D000
     room: 0
     index: 1
-- name: ''
+- name: "F000 (Skyloft) -> D000 (Waterfall Cave)"
   exit:
     name: D000
     room: 0
@@ -673,7 +673,7 @@
     stage: F000
     room: 0
     index: 7
-- name: ''
+- name: "F300_4 (ToT Area) -> F300_5 (LMF Final)"
   exit:
     name: F300_5
     room: 0
@@ -688,7 +688,7 @@
     stage: F300_4
     room: 0
     index: 4
-- name: ''
+- name: "F201_3 (VS - Temple Entrance) -> F201_1 (VS - Main)"
   exit:
     name: F201_1
     room: 0
@@ -703,7 +703,7 @@
     stage: F201_3
     room: 0
     index: 0
-- name: ''
+- name: "F201_1 (VS - Main) -> F201_3 (VS - Temple Entrance)"
   exit:
     name: F201_3
     room: 0
@@ -718,7 +718,7 @@
     stage: F201_1
     room: 0
     index: 2
-- name: ''
+- name: "F201_3 (VS - Temple Entrance) -> D201 (FS Outer)"
   exit:
     name: D201
     room: 0
@@ -733,7 +733,7 @@
     stage: F201_3
     room: 0
     index: 1
-- name: ''
+- name: "D201 (FS Outer) -> F201_3 (VS - Temple Entrance)"
   exit:
     name: F201_3
     room: 0
@@ -748,7 +748,7 @@
     stage: D201
     room: 0
     index: 1
-- name: ''
+- name: "F102_1 (Floria Waterfall) -> F102_2 (Floria - Dragon's Lair)"
   exit:
     name: F102_2
     room: 0
@@ -763,7 +763,7 @@
     stage: F102_1
     room: 0
     index: 0
-- name: ''
+- name: "F102_2 (Floria - Dragon's Lair) -> F102_1 (Floria Waterfall)"
   exit:
     name: F102_1
     room: 0
@@ -778,7 +778,7 @@
     stage: F102_2
     room: 0
     index: 1
-- name: ''
+- name: "F102_1 (Floria Waterfall) -> D101 (Ancient Cistern)"
   exit:
     name: D101
     room: 0
@@ -793,7 +793,7 @@
     stage: F102_1
     room: 0
     index: 1
-- name: ''
+- name: "D101 (Ancient Cistern) -> F102_1 (Floria Waterfall)"
   exit:
     name: F102_1
     room: 0
@@ -808,7 +808,7 @@
     stage: D101
     room: 0
     index: 3
-- name: ''
+- name: "F000 (Skyloft) -> F008r (Goddess Statue)"
   exit:
     name: F008r
     room: 0
@@ -823,7 +823,7 @@
     stage: F000
     room: 0
     index: 5
-- name: ''
+- name: "F008r (Goddess Statue) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -838,7 +838,7 @@
     stage: F008r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F013r (Sparrot's House)"
   exit:
     name: F013r
     room: 0
@@ -853,7 +853,7 @@
     stage: F000
     room: 0
     index: 58
-- name: ''
+- name: "F013r (Sparrot's House) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -868,7 +868,7 @@
     stage: F013r
     room: 0
     index: 0
-- name: ''
+- name: "F201_1 (VS - Main) -> F201_4 (VS - Waterfall)"
   exit:
     name: F201_4
     room: 0
@@ -883,7 +883,7 @@
     stage: F201_1
     room: 0
     index: 1
-- name: ''
+- name: "F201_4 (VS - Waterfall) -> F201_1 (VS - Main)"
   exit:
     name: F201_1
     room: 0
@@ -898,7 +898,7 @@
     stage: F201_4
     room: 0
     index: 0
-- name: ''
+- name: "F300_3 (Fire Node) -> F300 (Lanayru Desert)"
   exit:
     name: F300
     room: 0
@@ -913,7 +913,7 @@
     stage: F300_3
     room: 0
     index: 0
-- name: ''
+- name: "F300 (Lanayru Desert) -> F300_3 (Fire Node)"
   exit:
     name: F300_3
     room: 0
@@ -928,7 +928,7 @@
     stage: F300
     room: 0
     index: 2
-- name: ''
+- name: "F300_4 (ToT Area) -> F300 (Lanayru Desert)"
   exit:
     name: F300
     room: 0
@@ -943,7 +943,7 @@
     stage: F300_4
     room: 0
     index: 0
-- name: ''
+- name: "F300 (Lanayru Desert) -> F300_4 (ToT Area)"
   exit:
     name: F300_4
     room: 0
@@ -958,7 +958,7 @@
     stage: F300
     room: 0
     index: 3
-- name: ''
+- name: "F300_4 (ToT Area) -> F300 (Lanayru Desert)"
   exit:
     name: F300
     room: 0
@@ -973,7 +973,7 @@
     stage: F300_4
     room: 0
     index: 1
-- name: ''
+- name: "F300 (Lanayru Desert) -> F300_4 (ToT Area)"
   exit:
     name: F300_4
     room: 0
@@ -988,7 +988,7 @@
     stage: F300
     room: 0
     index: 4
-- name: ''
+- name: "D300 (LMF - pt1) -> F300 (Lanayru Desert)"
   exit:
     name: F300
     room: 0
@@ -1003,7 +1003,7 @@
     stage: D300
     room: 0
     index: 0
-- name: ''
+- name: "F300 (Lanayru Desert) -> D300 (LMF - pt1)"
   exit:
     name: D300
     room: 0
@@ -1018,7 +1018,7 @@
     stage: F300
     room: 0
     index: 5
-- name: ''
+- name: "D300 (LMF - pt1) -> D300_1 (LMF pt2)"
   exit:
     name: D300_1
     room: 5
@@ -1033,7 +1033,7 @@
     stage: D300
     room: 1
     index: 0
-- name: ''
+- name: "D300_1 (LMF pt2) -> D300 (LMF - pt1)"
   exit:
     name: D300
     room: 1
@@ -1048,7 +1048,7 @@
     stage: D300_1
     room: 5
     index: 2
-- name: ''
+- name: "D300 (LMF - pt1) -> D300_1 (LMF pt2)"
   exit:
     name: D300_1
     room: 5
@@ -1063,7 +1063,7 @@
     stage: D300
     room: 4
     index: 0
-- name: ''
+- name: "D300_1 (LMF pt2) -> D300 (LMF - pt1)"
   exit:
     name: D300
     room: 4
@@ -1078,7 +1078,7 @@
     stage: D300_1
     room: 5
     index: 3
-- name: ''
+- name: "F100_1 (Great Tree) -> F100 (Main Faron Woods)"
   exit:
     name: F100
     room: 0
@@ -1093,7 +1093,7 @@
     stage: F100_1
     room: 0
     index: 1
-- name: ''
+- name: "F100 (Main Faron Woods) -> F100_1 (Great Tree)"
   exit:
     name: F100_1
     room: 0
@@ -1108,7 +1108,7 @@
     stage: F100
     room: 0
     index: 3
-- name: ''
+- name: "F100_1 (Great Tree) -> F100 (Main Faron Woods)"
   exit:
     name: F100
     room: 0
@@ -1123,7 +1123,7 @@
     stage: F100_1
     room: 0
     index: 2
-- name: ''
+- name: "F100 (Main Faron Woods) -> F100_1 (Great Tree)"
   exit:
     name: F100_1
     room: 0
@@ -1138,7 +1138,7 @@
     stage: F100
     room: 0
     index: 4
-- name: ''
+- name: "F100_1 (Great Tree) -> F100 (Main Faron Woods)"
   exit:
     name: F100
     room: 0
@@ -1153,7 +1153,7 @@
     stage: F100_1
     room: 0
     index: 3
-- name: ''
+- name: "F100 (Main Faron Woods) -> F100_1 (Great Tree)"
   exit:
     name: F100_1
     room: 0
@@ -1168,7 +1168,7 @@
     stage: F100
     room: 0
     index: 5
-- name: ''
+- name: "F100_1 (Great Tree) -> F100 (Main Faron Woods)"
   exit:
     name: F100
     room: 0
@@ -1183,7 +1183,7 @@
     stage: F100_1
     room: 0
     index: 4
-- name: ''
+- name: "F100 (Main Faron Woods) -> F100_1 (Great Tree)"
   exit:
     name: F100_1
     room: 0
@@ -1198,7 +1198,7 @@
     stage: F100
     room: 0
     index: 6
-- name: ''
+- name: "D300_1 (LMF pt2) -> D300 (LMF - pt1)"
   exit:
     name: D300
     room: 6
@@ -1213,7 +1213,7 @@
     stage: D300_1
     room: 5
     index: 1
-- name: ''
+- name: "D300 (LMF - pt1) -> D300_1 (LMF pt2)"
   exit:
     name: D300_1
     room: 5
@@ -1228,7 +1228,7 @@
     stage: D300
     room: 6
     index: 0
-- name: ''
+- name: "F100 (Main Faron Woods) -> F101 (Deep Woods)"
   exit:
     name: F101
     room: 0
@@ -1243,7 +1243,7 @@
     stage: F100
     room: 0
     index: 13
-- name: ''
+- name: "F101 (Deep Woods) -> F100 (Main Faron Woods)"
   exit:
     name: F100
     room: 0
@@ -1258,7 +1258,7 @@
     stage: F101
     room: 0
     index: 0
-- name: ''
+- name: "F001r (Academy) -> F001r (Academy)"
   exit:
     name: F001r
     room: 5
@@ -1273,7 +1273,7 @@
     stage: F001r
     room: 0
     index: 4
-- name: ''
+- name: "F001r (Academy) -> F001r (Academy)"
   exit:
     name: F001r
     room: 5
@@ -1288,7 +1288,7 @@
     stage: F001r
     room: 5
     index: 1
-- name: ''
+- name: "F400 (Behind the Temple) -> F401 (SG - Spiral)"
   exit:
     name: F401
     room: 1
@@ -1303,7 +1303,7 @@
     stage: F400
     room: 0
     index: 0
-- name: ''
+- name: "F401 (SG - Spiral) -> F400 (Behind the Temple)"
   exit:
     name: F400
     room: 0
@@ -1318,7 +1318,7 @@
     stage: F401
     room: 1
     index: 1
-- name: ''
+- name: "F400 (Behind the Temple) -> F100 (Main Faron Woods)"
   exit:
     name: F100
     room: 0
@@ -1333,7 +1333,7 @@
     stage: F400
     room: 0
     index: 2
-- name: ''
+- name: "F100 (Main Faron Woods) -> F400 (Behind the Temple)"
   exit:
     name: F400
     room: 0
@@ -1348,7 +1348,7 @@
     stage: F100
     room: 0
     index: 0
-- name: ''
+- name: "D100 (Skyview) -> F101 (Deep Woods)"
   exit:
     name: F101
     room: 0
@@ -1363,7 +1363,7 @@
     stage: D100
     room: 0
     index: 0
-- name: ''
+- name: "F101 (Deep Woods) -> D100 (Skyview)"
   exit:
     name: D100
     room: 0
@@ -1378,7 +1378,7 @@
     stage: F101
     room: 0
     index: 1
-- name: ''
+- name: "F300_1 (Lanayru Mines) -> F300 (Lanayru Desert)"
   exit:
     name: F300
     room: 0
@@ -1393,7 +1393,7 @@
     stage: F300_1
     room: 2
     index: 0
-- name: ''
+- name: "F300 (Lanayru Desert) -> F300_1 (Lanayru Mines)"
   exit:
     name: F300_1
     room: 2
@@ -1408,7 +1408,7 @@
     stage: F300
     room: 0
     index: 1
-- name: ''
+- name: "F015r (Gondo's House) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1423,7 +1423,7 @@
     stage: F015r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F015r (Gondo's House)"
   exit:
     name: F015r
     room: 0
@@ -1438,7 +1438,7 @@
     stage: F000
     room: 0
     index: 35
-- name: ''
+- name: "F016r (Mallara's House) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1453,7 +1453,7 @@
     stage: F016r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F016r (Mallara's House)"
   exit:
     name: F016r
     room: 0
@@ -1468,7 +1468,7 @@
     stage: F000
     room: 0
     index: 36
-- name: ''
+- name: "F005r (Parrow's House) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1483,7 +1483,7 @@
     stage: F005r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F005r (Parrow's House)"
   exit:
     name: F005r
     room: 0
@@ -1498,7 +1498,7 @@
     stage: F000
     room: 0
     index: 31
-- name: ''
+- name: "F011r (Lumpy Pumpkin) -> F020 (Sky)"
   exit:
     name: F020
     room: 0
@@ -1513,7 +1513,7 @@
     stage: F011r
     room: 0
     index: 0
-- name: ''
+- name: "F020 (Sky) -> F011r (Lumpy Pumpkin)"
   exit:
     name: F011r
     room: 0
@@ -1528,7 +1528,7 @@
     stage: F020
     room: 0
     index: 19
-- name: ''
+- name: "F011r (Lumpy Pumpkin) -> F020 (Sky)"
   exit:
     name: F020
     room: 0
@@ -1543,7 +1543,7 @@
     stage: F011r
     room: 0
     index: 1
-- name: ''
+- name: "F020 (Sky) -> F011r (Lumpy Pumpkin)"
   exit:
     name: F011r
     room: 0
@@ -1558,7 +1558,7 @@
     stage: F020
     room: 0
     index: 18
-- name: ''
+- name: "F011r (Lumpy Pumpkin) -> F020 (Sky)"
   exit:
     name: F020
     room: 0
@@ -1573,7 +1573,7 @@
     stage: F011r
     room: 0
     index: 2
-- name: ''
+- name: "F020 (Sky) -> F011r (Lumpy Pumpkin)"
   exit:
     name: F011r
     room: 0
@@ -1588,7 +1588,7 @@
     stage: F020
     room: 0
     index: 20
-- name: ''
+- name: "F402 (Sealed Temple) -> F400 (Behind the Temple)"
   exit:
     name: F400
     room: 0
@@ -1603,7 +1603,7 @@
     stage: F402
     room: 2
     index: 1
-- name: ''
+- name: "F400 (Behind the Temple) -> F402 (Sealed Temple)"
   exit:
     name: F402
     room: 2
@@ -1618,7 +1618,7 @@
     stage: F400
     room: 0
     index: 1
-- name: ''
+- name: "F402 (Sealed Temple) -> F401 (SG - Spiral)"
   exit:
     name: F401
     room: 1
@@ -1633,7 +1633,7 @@
     stage: F402
     room: 2
     index: 0
-- name: ''
+- name: "F401 (SG - Spiral) -> F402 (Sealed Temple)"
   exit:
     name: F402
     room: 2
@@ -1648,7 +1648,7 @@
     stage: F401
     room: 1
     index: 0
-- name: ''
+- name: "F017r (Rupin's House) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1663,7 +1663,7 @@
     stage: F017r
     room: 0
     index: 1
-- name: ''
+- name: "F000 (Skyloft) -> F017r (Rupin's House)"
   exit:
     name: F017r
     room: 0
@@ -1678,7 +1678,7 @@
     stage: F000
     room: 0
     index: 37
-- name: ''
+- name: "F007r (Piper's House) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1693,7 +1693,7 @@
     stage: F007r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F007r (Piper's House)"
   exit:
     name: F007r
     room: 0
@@ -1708,7 +1708,7 @@
     stage: F000
     room: 0
     index: 32
-- name: ''
+- name: "F009r (Training Hall) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1723,7 +1723,7 @@
     stage: F009r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F009r (Training Hall)"
   exit:
     name: F009r
     room: 0
@@ -1738,7 +1738,7 @@
     stage: F000
     room: 0
     index: 20
-- name: ''
+- name: "F009r (Training Hall) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1753,7 +1753,7 @@
     stage: F009r
     room: 0
     index: 1
-- name: ''
+- name: "F000 (Skyloft) -> F009r (Training Hall)"
   exit:
     name: F009r
     room: 0
@@ -1768,7 +1768,7 @@
     stage: F000
     room: 0
     index: 27
-- name: ''
+- name: "F000 (Skyloft) -> F018r (Peatrice's House)"
   exit:
     name: F018r
     room: 0
@@ -1783,7 +1783,7 @@
     stage: F000
     room: 0
     index: 38
-- name: ''
+- name: "F018r (Peatrice's House) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1798,7 +1798,7 @@
     stage: F018r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F001r (Academy)"
   exit:
     name: F001r
     room: 0
@@ -1813,7 +1813,7 @@
     stage: F000
     room: 0
     index: 4
-- name: ''
+- name: "F001r (Academy) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1828,7 +1828,7 @@
     stage: F001r
     room: 0
     index: 1
-- name: ''
+- name: "F000 (Skyloft) -> F001r (Academy)"
   exit:
     name: F001r
     room: 0
@@ -1843,7 +1843,7 @@
     stage: F000
     room: 0
     index: 3
-- name: ''
+- name: "F001r (Academy) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1858,7 +1858,7 @@
     stage: F001r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F001r (Academy)"
   exit:
     name: F001r
     room: 0
@@ -1873,7 +1873,7 @@
     stage: F000
     room: 0
     index: 23
-- name: ''
+- name: "F001r (Academy) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1888,7 +1888,7 @@
     stage: F001r
     room: 0
     index: 2
-- name: ''
+- name: "F000 (Skyloft) -> F001r (Academy)"
   exit:
     name: F001r
     room: 0
@@ -1903,7 +1903,7 @@
     stage: F000
     room: 0
     index: 24
-- name: ''
+- name: "F001r (Academy) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1918,7 +1918,7 @@
     stage: F001r
     room: 0
     index: 3
-- name: ''
+- name: "F000 (Skyloft) -> F006r (Wryna's House)"
   exit:
     name: F006r
     room: 0
@@ -1933,7 +1933,7 @@
     stage: F000
     room: 0
     index: 10
-- name: ''
+- name: "F006r (Wryna's House) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1948,7 +1948,7 @@
     stage: F006r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F014r (Bertie's House)"
   exit:
     name: F014r
     room: 0
@@ -1963,7 +1963,7 @@
     stage: F000
     room: 0
     index: 34
-- name: ''
+- name: "F014r (Bertie's House) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -1978,7 +1978,7 @@
     stage: F014r
     room: 0
     index: 0
-- name: ''
+- name: "F000 (Skyloft) -> F013r (Sparrot's House)"
   exit:
     name: F013r
     room: 0
@@ -1993,7 +1993,7 @@
     stage: F000
     room: 0
     index: 33
-- name: ''
+- name: "F020 (Sky) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -2008,7 +2008,7 @@
     stage: F020
     room: 0
     index: 21
-- name: ''
+- name: "F000 (Skyloft) -> F012r (Batreaux)"
   exit:
     name: F012r
     room: 0
@@ -2023,7 +2023,7 @@
     stage: F000
     room: 0
     index: 30
-- name: ''
+- name: "F012r (Batreaux) -> F000 (Skyloft)"
   exit:
     name: F000
     room: 0
@@ -2038,7 +2038,7 @@
     stage: F012r
     room: 0
     index: 0
-- name: ''
+- name: "F301_3 (Skipper's Retreat Outside) -> F301_5 (Skipper's Retreat Inside)"
   exit:
     name: F301_3
     room: 0
@@ -2053,7 +2053,7 @@
     stage: F301_5
     room: 0
     index: 0
-- name: ''
+- name: "F301_5 (Skipper's Retreat Inside) -> F301_3 (Skipper's Retreat Outside)"
   exit:
     name: F301_5
     room: 0

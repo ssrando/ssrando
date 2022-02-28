@@ -197,11 +197,11 @@ class Randomizer(BaseRandomizer):
         ]
         self.rng.shuffle(exits)
         self.logic.statue_exits_connections = [
-            (exit_name, entrance_name)
-            for ((exit_name, _), (entrance_name, _)) in zip(statue_scens, scens)
+            (statue_name, exit_name)
+            for ((statue_name, _), (exit_name, _)) in zip(statue_scens, exits)
         ]
         plcmt_file.statue_exits_connections = [
-            (exit, entrance) for ((_, exit), (_, entrance)) in zip(statue_scens, scens)
+            (statue, exit) for ((_, statue), (_, exit)) in zip(statue_scens, exits)
         ]
 
         if self.options["out-placement-file"] and not self.no_logs:
@@ -322,21 +322,22 @@ class Randomizer(BaseRandomizer):
 
         # Write down exits.
         spoiler_log += "Exits:\n"
+        rev = [(a, b) for (b, a) in self.logic.exits_connections]
         for (
             entrance_name,
-            dungeon_or_cave_name,
-        ) in self.logic.exits_connections:
-            spoiler_log += "  %-48s %s\n" % (entrance_name + ":", dungeon_or_cave_name)
+            exit_name,
+        ) in sorted(rev):
+            spoiler_log += "  %-56s %s\n" % (entrance_name + ":", exit_name)
 
         spoiler_log += "\n\n"
 
         # Write down exits.
         spoiler_log += "Statue Exits:\n"
         for (
-            entrance_name,
-            dungeon_or_cave_name,
-        ) in self.logic.statue_exits_connections:
-            spoiler_log += "  %-48s %s\n" % (entrance_name + ":", dungeon_or_cave_name)
+            statue_name,
+            exit_name,
+        ) in sorted(self.logic.statue_exits_connections):
+            spoiler_log += "  %-24s %s\n" % (statue_name + ":", exit_name)
 
         spoiler_log += "\n\n"
 

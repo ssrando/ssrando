@@ -1152,7 +1152,7 @@ class GamePatcher:
             )
 
     def add_hacky_entrance_rando_patches(self):
-        for exit, scen in self.placement_file.exits_connections.items():
+        for exit, scen in self.placement_file.exits_connections:
             self.add_patch_to_stage(
                 scen["stage"],
                 {
