@@ -1152,41 +1152,27 @@ class GamePatcher:
             )
 
     def add_hacky_entrance_rando_patches(self):
-        for exit, scen in self.placement_file.exits_connections:
-            self.add_patch_to_stage(
-                scen["stage"],
-                {
-                    "name": "h",
-                    "type": "objpatch",
-                    "index": scen["index"],
-                    "room": scen["room"],
-                    "objtype": "SCEN",
-                    "object": {
-                        "name": exit["name"],
-                        "layer": exit["layer"],
-                        "room": exit["room"],
-                        "entrance": exit["entrance"],
+        for exit_name, scen_name in self.rando.logic.exits_connections:
+            exit = self.rando.exit_map[exit_name]
+            scens = self.rando.scen_map[scen_name]
+            print(exit, scens)
+            for scen in scens:
+                self.add_patch_to_stage(
+                    scen["stage"],
+                    {
+                        "name": "h",
+                        "type": "objpatch",
+                        "index": scen["index"],
+                        "room": scen["room"],
+                        "objtype": "SCEN",
+                        "object": {
+                            "name": exit["stage"],
+                            "layer": exit["layer"],
+                            "room": exit["room"],
+                            "entrance": exit["entrance"],
+                        },
                     },
-                },
-            )
-        # to make no logic more possible, let bird statues point to random exits
-        for scen, exit in self.placement_file.statue_exits_connections:
-            self.add_patch_to_stage(
-                scen["stage"],
-                {
-                    "name": "h",
-                    "type": "objpatch",
-                    "index": scen["index"],
-                    "room": scen["room"],
-                    "objtype": "SCEN",
-                    "object": {
-                        "name": exit["name"],
-                        "layer": exit["layer"],
-                        "room": exit["room"],
-                        "entrance": exit["entrance"],
-                    },
-                },
-            )
+                )
 
     def add_trial_rando_patches(self):
         for trial_gate, trial in self.placement_file.trial_connections.items():

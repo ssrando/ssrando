@@ -1,0 +1,2541 @@
+- stage: Start
+  to-stage: Knight Academy
+  orig:
+    stage: F001r
+    room: 1
+    layer: 0
+    entrance: 5
+  scens:
+  - stage: F001r
+    room: 1
+    index: 2
+- stage: Skyview Temple
+  to-stage: Deep Woods
+  orig:
+    stage: F101
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: B100_1
+    room: 0
+    index: 1
+  - stage: B100_1
+    room: 0
+    index: 4
+  - stage: D100
+    room: 0
+    index: 0
+  - stage: D100
+    room: 0
+    index: 2
+  - stage: D100
+    room: 2
+    index: 0
+  - stage: D100
+    room: 5
+    index: 0
+  - stage: D100
+    room: 9
+    index: 0
+- stage: Fire Sanctuary
+  to-stage: Outside Fire Sanctuary
+  orig:
+    stage: F201_3
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: B201_1
+    room: 0
+    index: 2
+  - stage: D201_1
+    room: 1
+    index: 0
+  - stage: D201_1
+    room: 5
+    index: 3
+  - stage: D201_1
+    room: 6
+    index: 1
+  - stage: D201_1
+    room: 6
+    index: 2
+  - stage: D201_1
+    room: 7
+    index: 0
+  - stage: D201_1
+    room: 8
+    index: 0
+  - stage: D201_1
+    room: 10
+    index: 0
+  - stage: D201
+    room: 0
+    index: 1
+  - stage: D201
+    room: 3
+    index: 2
+  - stage: D201
+    room: 10
+    index: 2
+- stage: Gondo's House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 35
+  scens:
+  - stage: F015r
+    room: 0
+    index: 0
+- stage: Isle of Songs
+  to-stage: Inside Thunderhead
+  orig:
+    stage: F023
+    room: 0
+    layer: 0
+    entrance: 4
+  scens:
+  - stage: F010r
+    room: 0
+    index: 0
+- stage: Earth Temple
+  to-stage: Eldin Volcano
+  orig:
+    stage: F200
+    room: 4
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: D200
+    room: 1
+    index: 0
+  - stage: D200
+    room: 1
+    index: 1
+  - stage: D200
+    room: 2
+    index: 0
+  - stage: D200
+    room: 4
+    index: 2
+  - stage: B210
+    room: 0
+    index: 0
+- stage: Eldin
+  to-stage: Sky
+  type: statue
+  orig:
+    stage: F020
+    room: 0
+    layer: 0
+    entrance: 13
+  scens:
+  - stage: F200
+    room: 0
+    index: 0
+  - stage: F200
+    room: 2
+    index: 2
+  - stage: F200
+    room: 4
+    index: 2
+  - stage: D201_1
+    room: 10
+    index: 1
+  - stage: F201_3
+    room: 0
+    index: 2
+  - stage: D201
+    room: 10
+    index: 3
+- stage: Eldin Volcano
+  to-stage: Mogma Turf
+  orig:
+    stage: F210
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F200
+    room: 2
+    index: 1
+- stage: Eldin Volcano
+  to-stage: Earth Temple
+  orig:
+    stage: D200
+    room: 1
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F200
+    room: 4
+    index: 0
+- stage: Eldin Volcano
+  to-stage: Thrill Digger Cave
+  orig:
+    stage: F211
+    room: 0
+    layer: 1
+    entrance: 0
+  scens:
+  - stage: F200
+    room: 4
+    index: 1
+- stage: Eldin Volcano
+  to-stage: Inside Volcano Summit
+  orig:
+    stage: F201_1
+    room: 0
+    layer: 0
+    entrance: 4
+  scens: # special exit for first time CS
+  - stage: F200
+    room: 5
+    index: 1
+  - stage: F200
+    room: 5
+    index: 0
+- stage: Thrill Digger Cave
+  to-stage: Eldin Volcano
+  orig:
+    stage: F200
+    room: 4
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F211
+    room: 0
+    index: 0
+- stage: Faron
+  to-stage: Sky
+  type: statue
+  orig:
+    stage: F020
+    room: 0
+    layer: 0
+    entrance: 12
+  scens:
+  - stage: F102
+    room: 3
+    index: 0
+  - stage: F102_1
+    room: 0
+    index: 3
+  - stage: F100
+    room: 0
+    index: 10
+  - stage: F400
+    room: 0
+    index: 5
+  - stage: F401
+    room: 1
+    index: 19
+  - stage: F101
+    room: 0
+    index: 2
+- stage: Lake Floria
+  to-stage: Farore's Lair
+  orig:
+    stage: F102_2
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F102
+    room: 4
+    index: 0
+# unused
+# - stage: Inside Pirate's Stronghold
+#   to-stage: Sand Sea Docks
+#   orig:
+#     stage: F301
+#     room: 0
+#     layer: 0
+#     entrance: 8
+#   scens:
+#   - stage: F301_2
+#     room: 0
+#     index: 0
+- stage: Inside Pirate's Stronghold
+  to-stage: Outside Pirate's Stronghold
+  disambiguation: Beginning
+  orig:
+    stage: F301_6
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F301_2
+    room: 1
+    index: 0
+- stage: Inside Pirate's Stronghold
+  to-stage: Outside Pirate's Stronghold
+  disambiguation: End
+  orig:
+    stage: F301_6
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F301_2
+    room: 1
+    index: 2
+- stage: Farore's Lair
+  to-stage: Lake Floria
+  orig:
+    stage: F102
+    room: 4
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F102_2
+    room: 0
+    index: 0
+- stage: Farore's Lair
+  to-stage: Floria Waterfall
+  orig:
+    stage: F102_1
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F102_2
+    room: 0
+    index: 1
+- stage: Mallara's House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 36
+  scens:
+  - stage: F016r
+    room: 0
+    index: 0
+- stage: Parrow and Orielle's House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 30
+  scens:
+  - stage: F005r
+    room: 0
+    index: 0
+- stage: Lumpy Pumpkin
+  to-stage: Sky
+  disambiguation: South
+  door: Right
+  orig:
+    stage: F020
+    room: 0
+    layer: 0
+    entrance: 22
+  scens:
+  - stage: F011r
+    room: 0
+    index: 0
+- stage: Lumpy Pumpkin
+  to-stage: Sky
+  disambiguation: South
+  door: Left
+  orig:
+    stage: F020
+    room: 0
+    layer: 0
+    entrance: 23
+  scens:
+  - stage: F011r
+    room: 0
+    index: 1
+- stage: Lumpy Pumpkin
+  to-stage: Sky
+  disambiguation: North
+  orig:
+    stage: F020
+    room: 0
+    layer: 0
+    entrance: 24
+  scens:
+  - stage: F011r
+    room: 0
+    index: 2
+- stage: Inside Bamboo Island
+  to-stage: Sky
+  orig:
+    stage: F020
+    room: 0
+    layer: 0
+    entrance: 11
+  scens:
+  - stage: F019r
+    room: 0
+    index: 2
+# TODO see if this works
+- stage: Beedle's Shop
+  to-stage: Skyloft
+  disambiguation: Day
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F002r
+    room: 0
+    index: 0
+  - stage: F002r
+    room: 0
+    index: 1
+- stage: Lightning Node
+  to-stage: Lanayru Desert
+  orig:
+    stage: F300
+    room: 0
+    layer: 0
+    entrance: 7
+  scens:
+  - stage: F300_2
+    room: 0
+    index: 0
+- stage: Shipyard Construction Bay
+  to-stage: Shipyard
+  disambiguation: Lower
+  orig:
+    stage: F301_4
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F301_7
+    room: 0
+    index: 0
+- stage: Shipyard Construction Bay
+  to-stage: Shipyard
+  disambiguation: Upper
+  orig:
+    stage: F301_4
+    room: 0
+    layer: 0
+    entrance: 4
+  scens:
+  - stage: F301_7
+    room: 0
+    index: 1
+- stage: Bazaar
+  to-stage: Skyloft
+  disambiguation: North
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F004r
+    room: 0
+    index: 0
+- stage: Bazaar
+  to-stage: Skyloft
+  disambiguation: South
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 3
+  scens:
+  - stage: F004r
+    room: 0
+    index: 1
+- stage: Bazaar
+  to-stage: Skyloft
+  disambiguation: West
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 20
+  scens:
+  - stage: F004r
+    room: 0
+    index: 2
+- stage: Lanayru Caves
+  to-stage: Lanayru Mines
+  orig:
+    stage: F300_1
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F303
+    room: 0
+    index: 0
+- stage: Lanayru Caves
+  to-stage: Lanayru Desert
+  orig:
+    stage: F300
+    room: 0
+    layer: 0
+    entrance: 6
+  scens:
+  - stage: F303
+    room: 0
+    index: 1
+- stage: Lanayru Caves
+  to-stage: Sand Sea Docks
+  orig:
+    stage: F301
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F303
+    room: 0
+    index: 2
+  # these should all be unused?
+  # - stage: D301
+  #   room: 0
+  #   index: 0
+  # - stage: D301
+  #   room: 2
+  #   index: 0
+  # - stage: D301
+  #   room: 12
+  #   index: 0
+  # - stage: F301_4
+  #   room: 0
+  #   index: 0
+# - stage: Sandship Boss
+#   to-stage: Sand Sea Docks
+#   orig:
+#     stage: F301
+#     room: 0
+#     layer: 0
+#     entrance: 3
+#   scens:
+#   - stage: F301_2
+#     room: 0
+#     index: 1
+#   - stage: B301
+#     room: 0
+#     index: 1
+#   - stage: B301
+#     room: 0
+#     index: 4
+- stage: Waterfall Cave
+  to-stage: Skyloft
+  disambiguation: Upper
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 7
+  scens:
+  - stage: D000
+    room: 0
+    index: 0
+- stage: Waterfall Cave
+  to-stage: Skyloft
+  disambiguation: Lower
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 8
+  scens:
+  - stage: D000
+    room: 0
+    index: 1
+- stage: Sandship
+  to-stage: Sand Sea
+  orig:
+    stage: F301_1
+    room: 0
+    layer: 0
+    entrance: 4
+  scens:
+  - stage: D301
+    room: 0
+    index: 1
+  - stage: D301
+    room: 1
+    index: 2
+  - stage: D301
+    room: 6
+    index: 0
+  - stage: D301
+    room: 9
+    index: 1
+  - stage: D301
+    room: 13
+    index: 0
+  - stage: B301
+    room: 0
+    index: 1
+  - stage: B301
+    room: 0
+    index: 4
+# ToT stuff always vanilla (for now)
+# - stage: Lanayru Mining Facility to ToT
+#   to-stage: Temple of Time
+#   orig:
+#     stage: F300_4
+#     room: 0
+#     layer: 2
+#     entrance: 5
+#   scens:
+#   - stage: F300_5
+#     room: 0
+#     index: 1
+# - stage: Lanayru Mining Facility to ToT
+#   to-stage: Lanayru Mining Facility Boss
+#   orig:
+#     stage: B300
+#     room: 0
+#     layer: 0
+#     entrance: 2
+#   scens:
+#   - stage: F300_5
+#     room: 0
+#     index: 2
+# - stage: Temple of Time
+#   to-stage: Lanayru Mining Facility to ToT
+#   orig:
+#     stage: F300_5
+#     room: 0
+#     layer: 0
+#     entrance: 1
+#   scens:
+#   - stage: F300_4
+#     room: 0
+#     index: 4
+# - stage: Lanayru Mining Facility Boss
+#   to-stage: Lanayru Mining Facility to ToT
+#   orig:
+#     stage: F300_5
+#     room: 0
+#     layer: 0
+#     entrance: 0
+#   scens:
+#   - stage: B300
+#     room: 0
+#     index: 0
+- stage: Outside Fire Sanctuary
+  to-stage: Inside Volcano Summit
+  orig:
+    stage: F201_1
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F201_3
+    room: 0
+    index: 0
+- stage: Outside Fire Sanctuary
+  to-stage: Fire Sanctuary
+  orig:
+    stage: D201
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F201_3
+    room: 0
+    index: 1
+- stage: Floria Waterfall
+  to-stage: Farore's Lair
+  orig:
+    stage: F102_2
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F102_1
+    room: 0
+    index: 0
+- stage: Floria Waterfall
+  to-stage: Ancient Cistern
+  orig:
+    stage: D101
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F102_1
+    room: 0
+    index: 1
+- stage: Floria Waterfall
+  to-stage: Faron Woods
+  orig:
+    stage: F100
+    room: 0
+    layer: 0
+    entrance: 17
+  scens:
+  - stage: F102_1
+    room: 0
+    index: 2
+- stage: Inside Thunderhead
+  to-stage: Sky
+  orig:
+    stage: F020
+    room: 0
+    layer: 0
+    entrance: 28
+  scens:
+  - stage: F023
+    room: 0
+    index: 1
+- stage: Inside Thunderhead
+  to-stage: Isle of Songs
+  orig:
+    stage: F010r
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F023
+    room: 0
+    index: 2
+- stage: Sealed Temple
+  to-stage: Sealed Grounds Spiral
+  orig:
+    stage: F401
+    room: 1
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F402
+    room: 2
+    index: 0
+- stage: Sealed Temple
+  to-stage: Behind the Temple
+  orig:
+    stage: F400
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F402
+    room: 2
+    index: 1
+- stage: Rupin's House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 37
+  scens:
+  - stage: F017r
+    room: 0
+    index: 1
+# most likely unused
+# - stage: Rupin's House
+#   to-stage: Skyloft
+#   orig:
+#     stage: F000
+#     room: 0
+#     layer: 0
+#     entrance: 39
+#   scens:
+#   - stage: F017r
+#     room: 0
+#     index: 2
+- stage: Piper's House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 32
+  scens:
+  - stage: F007r
+    room: 0
+    index: 0
+- stage: Sparring Hall
+  to-stage: Skyloft
+  door: Right
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 21
+  scens:
+  - stage: F009r
+    room: 0
+    index: 0
+- stage: Sparring Hall
+  to-stage: Skyloft
+  door: Left
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 26
+  scens:
+  - stage: F009r
+    room: 0
+    index: 1
+# - stage: Sky
+#   to-stage: Sealed Grounds Spiral
+#   orig:
+#     stage: F401
+#     room: 1
+#     layer: 0
+#     entrance: 8
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 0
+#   - stage: F020
+#     room: 0
+#     index: 68
+# - stage: Sky
+#   to-stage: Eldin Volcano
+#   disambiguation: TODO
+#   orig:
+#     stage: F200
+#     room: 0
+#     layer: 0
+#     entrance: 0
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 1
+# - stage: Sky
+#   to-stage: Lanayru Mines
+#   disambiguation: TODO
+#   orig:
+#     stage: F300_1
+#     room: 0
+#     layer: 0
+#     entrance: 0
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 2
+- stage: Sky
+  to-stage: Inside Bamboo Island
+  orig:
+    stage: F019r
+    room: 0
+    layer: 1
+    entrance: 0
+  scens:
+  - stage: F020
+    room: 0
+    index: 13
+- stage: Skyloft
+  to-stage: Beedle's Shop
+  disambiguation: Day
+  orig:
+    stage: F002r
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F000
+    room: 0
+    index: 26
+# night only so prevent problems here
+# - stage: Skyloft
+#   to-stage: Beedle's Shop
+#   disambiguation: Night
+#   orig:
+#     stage: F002r
+#     room: 0
+#     layer: 0
+#     entrance: 0
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 14
+# - stage: Beedle's Shop
+#   to-stage: Sky
+#   disambiguation: Night
+#   orig:
+#     stage: F020
+#     room: 0
+#     layer: 4
+#     entrance: 0
+#   scens:
+#   - stage: F002r
+#     room: 0
+#     index: 2
+- stage: Sky
+  to-stage: Lumpy Pumpkin
+  disambiguation: South
+  door: Right
+  orig:
+    stage: F011r
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F020
+    room: 0
+    index: 18
+- stage: Sky
+  to-stage: Lumpy Pumpkin
+  disambiguation: South
+  door: Left
+  orig:
+    stage: F011r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F020
+    room: 0
+    index: 19
+- stage: Sky
+  to-stage: Lumpy Pumpkin
+  disambiguation: North
+  orig:
+    stage: F011r
+    room: 0
+    layer: 0
+    entrance: 3
+  scens:
+  - stage: F020
+    room: 0
+    index: 20
+# item delivery CS, make vanilla for now
+# - stage: Skyloft
+#   to-stage: Sparrot's House
+#   orig:
+#     stage: F013r
+#     room: 0
+#     layer: 0
+#     entrance: 0
+#   scens:
+#   # why is there an exit from sky to sparrot?
+#   - stage: F020
+#     room: 0
+#     index: 24
+#   - stage: F000
+#     room: 0
+#     index: 58
+- stage: Sky
+  to-stage: Inside Thunderhead
+  orig:
+    stage: F023
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F020
+    room: 0
+    index: 25
+# TODO: statues work differently
+# - stage: Sky
+#   to-stage: Deep Woods
+#   disambiguation: TODO
+#   orig:
+#     stage: F101
+#     room: 0
+#     layer: 0
+#     entrance: 13
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 27
+#   - stage: F020
+#     room: 0
+#     index: 45
+# - stage: Sky
+#   to-stage: Lake Floria
+#   disambiguation: TODO
+#   orig:
+#     stage: F102
+#     room: 0
+#     layer: 0
+#     entrance: 5
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 28
+# - stage: Sky
+#   to-stage: Eldin Volcano
+#   disambiguation: TODO
+#   orig:
+#     stage: F200
+#     room: 4
+#     layer: 0
+#     entrance: 7
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 29
+#   - stage: F020
+#     room: 0
+#     index: 53
+# - stage: Sky
+#   to-stage: Outside Fire Sanctuary
+#   orig:
+#     stage: F201_3
+#     room: 0
+#     layer: 0
+#     entrance: 3
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 30
+#   - stage: F020
+#     room: 0
+#     index: 54
+# - stage: Sky
+#   to-stage: Lanayru Desert
+#   disambiguation: TODO
+#   orig:
+#     stage: F300
+#     room: 0
+#     layer: 0
+#     entrance: 10
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 31
+# - stage: Sky
+#   to-stage: Sand Sea Docks
+#   disambiguation: TODO
+#   orig:
+#     stage: F301
+#     room: 0
+#     layer: 0
+#     entrance: 4
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 32
+# - stage: Sky
+#   to-stage: Behind the Temple
+#   orig:
+#     stage: F400
+#     room: 0
+#     layer: 0
+#     entrance: 10
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 40
+# - stage: Sky
+#   to-stage: Faron Woods
+#   disambiguation: TODO
+#   orig:
+#     stage: F100
+#     room: 0
+#     layer: 0
+#     entrance: 50
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 41
+# - stage: Sky
+#   to-stage: Faron Woods
+#   disambiguation: TODO
+#   orig:
+#     stage: F100
+#     room: 0
+#     layer: 0
+#     entrance: 51
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 42
+# - stage: Sky
+#   to-stage: Faron Woods
+#   disambiguation: TODO
+#   orig:
+#     stage: F100
+#     room: 0
+#     layer: 0
+#     entrance: 52
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 43
+# - stage: Sky
+#   to-stage: Faron Woods
+#   disambiguation: TODO
+#   orig:
+#     stage: F100
+#     room: 0
+#     layer: 0
+#     entrance: 53
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 44
+# - stage: Sky
+#   to-stage: Deep Woods
+#   disambiguation: TODO
+#   orig:
+#     stage: F101
+#     room: 0
+#     layer: 0
+#     entrance: 14
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 46
+# - stage: Sky
+#   to-stage: Lake Floria
+#   disambiguation: TODO
+#   orig:
+#     stage: F102
+#     room: 3
+#     layer: 0
+#     entrance: 2
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 47
+# - stage: Sky
+#   to-stage: Floria Waterfall
+#   orig:
+#     stage: F102_1
+#     room: 0
+#     layer: 0
+#     entrance: 5
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 48
+# - stage: Sky
+#   to-stage: Eldin Volcano
+#   disambiguation: TODO
+#   orig:
+#     stage: F200
+#     room: 0
+#     layer: 0
+#     entrance: 2
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 50
+# - stage: Sky
+#   to-stage: Eldin Volcano
+#   disambiguation: TODO
+#   orig:
+#     stage: F200
+#     room: 2
+#     layer: 0
+#     entrance: 6
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 51
+# - stage: Sky
+#   to-stage: Eldin Volcano
+#   disambiguation: TODO
+#   orig:
+#     stage: F200
+#     room: 2
+#     layer: 0
+#     entrance: 7
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 52
+# - stage: Sky
+#   to-stage: Fire Sanctuary A
+#   orig:
+#     stage: D201
+#     room: 10
+#     layer: 0
+#     entrance: 2
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 55
+# - stage: Sky
+#   to-stage: Lanayru Mines
+#   disambiguation: TODO
+#   orig:
+#     stage: F300_1
+#     room: 0
+#     layer: 0
+#     entrance: 2
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 56
+# - stage: Sky
+#   to-stage: Lanayru Desert
+#   disambiguation: TODO
+#   orig:
+#     stage: F300
+#     room: 0
+#     layer: 0
+#     entrance: 15
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 57
+# - stage: Sky
+#   to-stage: Lanayru Desert
+#   disambiguation: TODO
+#   orig:
+#     stage: F300
+#     room: 0
+#     layer: 0
+#     entrance: 16
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 58
+# - stage: Sky
+#   to-stage: Lanayru Desert
+#   disambiguation: TODO
+#   orig:
+#     stage: F300
+#     room: 0
+#     layer: 0
+#     entrance: 17
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 59
+# - stage: Sky
+#   to-stage: Lanayru Desert
+#   disambiguation: TODO
+#   orig:
+#     stage: F300
+#     room: 0
+#     layer: 0
+#     entrance: 18
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 60
+# - stage: Sky
+#   to-stage: Temple of Time
+#   disambiguation: TODO
+#   orig:
+#     stage: F300_4
+#     room: 0
+#     layer: 0
+#     entrance: 16
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 61
+# - stage: Sky
+#   to-stage: Temple of Time
+#   disambiguation: TODO
+#   orig:
+#     stage: F300_4
+#     room: 0
+#     layer: 0
+#     entrance: 17
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 62
+# - stage: Sky
+#   to-stage: Sand Sea Docks
+#   disambiguation: TODO
+#   orig:
+#     stage: F301
+#     room: 0
+#     layer: 0
+#     entrance: 10
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 63
+# - stage: Sky
+#   to-stage: Skipper's Retreat
+#   orig:
+#     stage: F301_3
+#     room: 0
+#     layer: 0
+#     entrance: 10
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 64
+# - stage: Sky
+#   to-stage: Shipyard
+#   orig:
+#     stage: F301_4
+#     room: 0
+#     layer: 0
+#     entrance: 10
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 65
+# - stage: Sky
+#   to-stage: Outside Pirate's Stronghold
+#   orig:
+#     stage: F301_6
+#     room: 0
+#     layer: 0
+#     entrance: 10
+#   scens:
+#   - stage: F020
+#     room: 0
+#     index: 66
+- stage: Sand Sea
+  to-stage: Sandship
+  orig:
+    stage: D301
+    room: 0
+    layer: 1
+    entrance: 0
+  scens:
+  - stage: F301
+    room: 0
+    index: 0
+  - stage: F301_1
+    room: 0
+    index: 1
+- stage: Sand Sea Docks
+  to-stage: Lanayru Caves
+  orig:
+    stage: F303
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F301
+    room: 0
+    index: 1
+- stage: Sand Sea Docks
+  to-stage: Sand Sea
+  orig:
+    stage: F301_1
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F301
+    room: 0
+    index: 2
+- stage: Lanayru Desert
+  to-stage: Sky
+  type: statue
+  orig:
+    stage: F020
+    room: 0
+    layer: 0
+    entrance: 14
+  scens:
+  - stage: F301
+    room: 0
+    index: 3
+  - stage: F301_6
+    room: 0
+    index: 3
+  - stage: F300_4
+    room: 0
+    index: 2
+  - stage: F301_3
+    room: 0
+    index: 1
+  - stage: F300_1
+    room: 0
+    index: 0
+  - stage: F301_4
+    room: 0
+    index: 1
+  - stage: F300
+    room: 0
+    index: 6
+- stage: Skyloft
+  to-stage: Piper's House
+  orig:
+    stage: F007r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 0
+  - stage: F000
+    room: 0
+    index: 32
+- stage: Skyloft
+  to-stage: Bazaar
+  disambiguation: North
+  orig:
+    stage: F004r
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F000
+    room: 0
+    index: 1
+- stage: Skyloft
+  to-stage: Bazaar
+  disambiguation: South
+  orig:
+    stage: F004r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 2
+- stage: Skyloft
+  to-stage: Knight Academy
+  disambiguation: Lower
+  door: Right
+  orig:
+    stage: F001r
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F000
+    room: 0
+    index: 3
+- stage: Skyloft
+  to-stage: Knight Academy
+  disambiguation: Lower
+  door: Left
+  orig:
+    stage: F001r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 4
+- stage: Skyloft
+  to-stage: Inside Goddess Statue
+  orig:
+    stage: F008r
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F000
+    room: 0
+    index: 5
+- stage: Skyloft
+  to-stage: Waterfall Cave
+  disambiguation: Upper
+  orig:
+    stage: D000
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F000
+    room: 0
+    index: 6
+- stage: Skyloft
+  to-stage: Waterfall Cave
+  disambiguation: Lower
+  orig:
+    stage: D000
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 7
+- stage: Skyloft
+  to-stage: Wryna's House
+  orig:
+    stage: F006r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 10
+- stage: Skyloft
+  to-stage: Bazaar
+  disambiguation: West
+  orig:
+    stage: F004r
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F000
+    room: 0
+    index: 19
+- stage: Skyloft
+  to-stage: Sparring Hall
+  door: Left
+  orig:
+    stage: F009r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 20
+- stage: Skyloft
+  to-stage: Sparring Hall
+  door: Right
+  orig:
+    stage: F009r
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F000
+    room: 0
+    index: 27
+- stage: Skyloft
+  to-stage: Knight Academy
+  disambiguation: Upper
+  door: Left
+  orig:
+    stage: F001r
+    room: 0
+    layer: 0
+    entrance: 3
+  scens:
+  - stage: F000
+    room: 0
+    index: 23
+- stage: Skyloft
+  to-stage: Knight Academy
+  disambiguation: Upper
+  door: Right
+  orig:
+    stage: F001r
+    room: 0
+    layer: 0
+    entrance: 4
+  scens:
+  - stage: F000
+    room: 0
+    index: 24
+- stage: Skyloft
+  to-stage: Batreaux' House
+  orig:
+    stage: F012r
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F000
+    room: 0
+    index: 30
+- stage: Skyloft
+  to-stage: Parrow and Orielle's House
+  orig:
+    stage: F005r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 31
+- stage: Skyloft
+  to-stage: Sparrot's House
+  orig:
+    stage: F013r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 33
+- stage: Skyloft
+  to-stage: Bertie's House
+  orig:
+    stage: F014r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 34
+- stage: Skyloft
+  to-stage: Gondo's House
+  orig:
+    stage: F015r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 35
+- stage: Skyloft
+  to-stage: Mallara's House
+  orig:
+    stage: F016r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 36
+- stage: Skyloft
+  to-stage: Rupin's House
+  orig:
+    stage: F017r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 37
+- stage: Skyloft
+  to-stage: Peatrice's House
+  orig:
+    stage: F018r
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 38
+- stage: Skyloft
+  to-stage: Sky Keep Entry
+  orig:
+    stage: D003_7
+    room: 0
+    layer: 0
+    entrance: 4
+  scens:
+  - stage: F000
+    room: 0
+    index: 48
+- stage: Skyloft
+  to-stage: Knight Academy
+  disambiguation: Chimney
+  orig:
+    stage: F001r
+    room: 6
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F000
+    room: 0
+    index: 57
+- stage: Inside Volcano Summit
+  to-stage: Eldin Volcano
+  orig:
+    stage: F200
+    room: 5
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F201_1
+    room: 0
+    index: 0
+- stage: Inside Volcano Summit
+  to-stage: Volcano Summit Waterfall
+  orig:
+    stage: F201_4
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F201_1
+    room: 0
+    index: 1
+- stage: Inside Volcano Summit
+  to-stage: Outside Fire Sanctuary
+  orig:
+    stage: F201_3
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F201_1
+    room: 0
+    index: 2
+- stage: Outside Pirate's Stronghold
+  to-stage: Sand Sea
+  orig:
+    stage: F301_1
+    room: 0
+    layer: 0
+    entrance: 3
+  scens:
+  - stage: F301_6
+    room: 0
+    index: 0
+- stage: Outside Pirate's Stronghold
+  to-stage: Inside Pirate's Stronghold
+  disambiguation: Beginning
+  orig:
+    stage: F301_2
+    room: 1
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F301_6
+    room: 0
+    index: 1
+- stage: Outside Pirate's Stronghold
+  to-stage: Inside Pirate's Stronghold
+  disambiguation: End
+  orig:
+    stage: F301_2
+    room: 1
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F301_6
+    room: 0
+    index: 2
+- stage: Sparrot's House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 33
+  scens:
+  - stage: F013r
+    room: 0
+    index: 0
+- stage: Skipper's Shack
+  to-stage: Skipper's Retreat
+  orig:
+    stage: F301_3
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F301_5
+    room: 0
+    index: 0
+- stage: Fire Node
+  to-stage: Lanayru Desert
+  orig:
+    stage: F300
+    room: 0
+    layer: 0
+    entrance: 3
+  scens:
+  - stage: F300_3
+    room: 0
+    index: 0
+# don't randomize GoT stuff
+# - stage: Hylia's Temple
+#   to-stage: Sealed Temple
+#   orig:
+#     stage: F402
+#     room: 2
+#     layer: 0
+#     entrance: 11
+#   scens:
+#   - stage: F404
+#     room: 2
+#     index: 1
+# - stage: Sealed Temple
+#   to-stage: Hylia's Temple
+#   orig:
+#     stage: F404
+#     room: 2
+#     layer: 0
+#     entrance: 1
+#   scens:
+#   - stage: F402
+#     room: 2
+#     index: 5
+- stage: Ancient Cistern
+  to-stage: Floria Waterfall
+  orig:
+    stage: F102_1
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: D101
+    room: 0
+    index: 2
+  - stage: D101
+    room: 0
+    index: 3
+  - stage: D101
+    room: 3
+    index: 1
+  - stage: D101
+    room: 4
+    index: 2
+  - stage: D101
+    room: 5
+    index: 0
+  - stage: B101_1
+    room: 0
+    index: 3
+# unused?
+# - stage: Ancient Cistern Candle Room
+#   to-stage: Lake Floria
+#   orig:
+#     stage: F102
+#     room: 0
+#     layer: 0
+#     entrance: 1
+#   scens:
+#   - stage: B101_1
+#     room: 0
+#     index: 1
+# different exit, use the default though
+# - stage: Ancient Cistern Candle Room
+#   to-stage: Floria Waterfall
+#   orig:
+#     stage: F102_1
+#     room: 0
+#     layer: 0
+#     entrance: 6
+#   scens:
+#   - stage: B101_1
+#     room: 0
+#     index: 3
+- stage: Bertie's House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 34
+  scens:
+  - stage: F014r
+    room: 0
+    index: 0
+- stage: Temple of Time
+  to-stage: Lanayru Desert
+  disambiguation: Start
+  orig:
+    stage: F300
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F300_4
+    room: 0
+    index: 0
+- stage: Temple of Time
+  to-stage: Lanayru Desert
+  disambiguation: End
+  orig:
+    stage: F300
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F300_4
+    room: 0
+    index: 1
+- stage: Lanayru Mining Facility
+  to-stage: Lanayru Desert
+  orig:
+    stage: F300
+    room: 0
+    layer: 0
+    entrance: 5
+  scens:
+  - stage: D300
+    room: 0
+    index: 0
+  - stage: D300
+    room: 0
+    index: 1
+  - stage: D300
+    room: 5
+    index: 4
+  - stage: D300_1
+    room: 0
+    index: 0
+  - stage: D300_1
+    room: 0
+    index: 1
+  - stage: D300_1
+    room: 5
+    index: 4
+- stage: Great Tree
+  to-stage: Faron Woods
+  disambiguation: Lower Platform
+  orig:
+    stage: F100
+    room: 0
+    layer: 0
+    entrance: 4
+  scens:
+  - stage: F100_1
+    room: 0
+    index: 1
+- stage: Great Tree
+  to-stage: Faron Woods
+  disambiguation: Upper Platform
+  orig:
+    stage: F100
+    room: 0
+    layer: 0
+    entrance: 5
+  scens:
+  - stage: F100_1
+    room: 0
+    index: 2
+- stage: Great Tree
+  to-stage: Faron Woods
+  disambiguation: Top
+  orig:
+    stage: F100
+    room: 0
+    layer: 0
+    entrance: 6
+  scens:
+  - stage: F100_1
+    room: 0
+    index: 3
+- stage: Great Tree
+  to-stage: Faron Woods
+  disambiguation: Tunnel
+  orig:
+    stage: F100
+    room: 0
+    layer: 0
+    entrance: 7
+  scens:
+  - stage: F100_1
+    room: 0
+    index: 4
+- stage: Peatrice's House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 38
+  scens:
+  - stage: F018r
+    room: 0
+    index: 0
+- stage: Faron Woods
+  to-stage: Behind the Temple
+  orig:
+    stage: F400
+    room: 0
+    layer: 0
+    entrance: 3
+  scens:
+  - stage: F100
+    room: 0
+    index: 0
+- stage: Faron Woods
+  to-stage: Deep Woods
+  orig:
+    stage: F101
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F100
+    room: 0
+    index: 1
+  - stage: F100
+    room: 0
+    index: 13
+- stage: Faron Woods
+  to-stage: Great Tree
+  disambiguation: Lower Platform
+  orig:
+    stage: F100_1
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F100
+    room: 0
+    index: 3
+- stage: Faron Woods
+  to-stage: Great Tree
+  disambiguation: Upper Platform
+  orig:
+    stage: F100_1
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F100
+    room: 0
+    index: 4
+- stage: Faron Woods
+  to-stage: Great Tree
+  disambiguation: Top
+  orig:
+    stage: F100_1
+    room: 0
+    layer: 0
+    entrance: 3
+  scens:
+  - stage: F100
+    room: 0
+    index: 5
+- stage: Faron Woods
+  to-stage: Great Tree
+  disambiguation: Tunnel
+  orig:
+    stage: F100_1
+    room: 0
+    layer: 0
+    entrance: 4
+  scens:
+  - stage: F100
+    room: 0
+    index: 6
+- stage: Faron Woods
+  to-stage: Lake Floria
+  orig:
+    stage: F102
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F100
+    room: 0
+    index: 9
+  - stage: F100 # copied from duplicate
+    room: 0
+    index: 12
+# TODO: duplicate related to the first time CS here
+# - stage: Faron Woods
+#   to-stage: Lake Floria
+#   orig:
+#     stage: F102
+#     room: 0
+#     layer: 0
+#     entrance: 2
+#   scens:
+#   - stage: F100
+#     room: 0
+#     index: 12
+- stage: Faron Woods
+  to-stage: Floria Waterfall
+  orig:
+    stage: F102_1
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F100
+    room: 0
+    index: 11
+- stage: Knight Academy
+  to-stage: Skyloft
+  disambiguation: Lower
+  door: Left
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 4
+  scens:
+  - stage: F001r
+    room: 0
+    index: 0
+- stage: Knight Academy
+  to-stage: Skyloft
+  disambiguation: Lower
+  door: Right
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 5
+  scens:
+  - stage: F001r
+    room: 0
+    index: 1
+- stage: Knight Academy
+  to-stage: Skyloft
+  disambiguation: Upper
+  door: Right
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 23
+  scens:
+  - stage: F001r
+    room: 0
+    index: 2
+- stage: Knight Academy
+  to-stage: Skyloft
+  disambiguation: Upper
+  door: Left
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 24
+  scens:
+  - stage: F001r
+    room: 0
+    index: 3
+- stage: Wryna's House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 31
+  scens:
+  - stage: F006r
+    room: 0
+    index: 0
+- stage: Volcano Summit Waterfall
+  to-stage: Inside Volcano Summit
+  orig:
+    stage: F201_1
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F201_4
+    room: 0
+    index: 0
+- stage: Inside Goddess Statue
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 6
+  scens:
+  - stage: F008r
+    room: 0
+    index: 0
+- stage: Behind the Temple
+  to-stage: Sealed Grounds Spiral
+  orig:
+    stage: F401
+    room: 1
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F400
+    room: 0
+    index: 0
+- stage: Behind the Temple
+  to-stage: Sealed Temple
+  orig:
+    stage: F402
+    room: 2
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F400
+    room: 0
+    index: 1
+- stage: Behind the Temple
+  to-stage: Faron Woods
+  orig:
+    stage: F100
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F400
+    room: 0
+    index: 2
+- stage: Skipper's Retreat
+  to-stage: Sand Sea Docks
+  orig:
+    stage: F301
+    room: 0
+    layer: 0
+    entrance: 6
+  scens:
+  - stage: F301_3
+    room: 0
+    index: 0
+- stage: Skipper's Retreat
+  to-stage: Sand Sea
+  orig:
+    stage: F301_1
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F301_3
+    room: 0
+    index: 2
+- stage: Skipper's Retreat
+  to-stage: Skipper's Shack
+  orig:
+    stage: F301_5
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F301_3
+    room: 0
+    index: 3
+- stage: Sky Keep Entry
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 53
+  scens:
+  - stage: D003_7
+    room: 0
+    index: 1
+  - stage: D003_7
+    room: 0
+    index: 2
+- stage: Mogma Turf
+  to-stage: Eldin Volcano
+  disambiguation: Start Vent
+  orig:
+    stage: F200
+    room: 2
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F210
+    room: 0
+    index: 0
+- stage: Mogma Turf
+  to-stage: Eldin Volcano
+  disambiguation: End Vent
+  orig:
+    stage: F200
+    room: 2
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F210
+    room: 0
+    index: 1
+- stage: Sealed Grounds Spiral
+  to-stage: Sealed Temple
+  orig:
+    stage: F402
+    room: 2
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F401
+    room: 1
+    index: 0
+- stage: Sealed Grounds Spiral
+  to-stage: Behind the Temple
+  orig:
+    stage: F400
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F401
+    room: 1
+    index: 1
+# groosenator
+# - stage: Sealed Grounds Spiral
+#   to-stage: Sky
+#   orig:
+#     stage: F020
+#     room: 0
+#     layer: 0
+#     entrance: 15
+#   scens:
+#   - stage: F401
+#     room: 1
+#     index: 8
+# - stage: Sealed Grounds Spiral
+#   to-stage: Inside Thunderhead
+#   orig:
+#     stage: F023
+#     room: 0
+#     layer: 0
+#     entrance: 3
+#   scens:
+#   - stage: F401
+#     room: 1
+#     index: 9
+# - stage: Sealed Grounds Spiral
+#   to-stage: Sky
+#   orig:
+#     stage: F020
+#     room: 0
+#     layer: 0
+#     entrance: 30
+#   scens:
+#   - stage: F401
+#     room: 1
+#     index: 10
+# - stage: Sealed Grounds Spiral
+#   to-stage: Skyloft
+#   orig:
+#     stage: F000
+#     room: 0
+#     layer: 0
+#     entrance: 18
+#   scens:
+#   - stage: F401
+#     room: 1
+#     index: 11
+# - stage: Sealed Grounds Spiral
+#   to-stage: Eldin Volcano
+#   orig:
+#     stage: F200
+#     room: 4
+#     layer: 0
+#     entrance: 6
+#   scens:
+#   - stage: F401
+#     room: 1
+#     index: 13
+# - stage: Sealed Grounds Spiral
+#   to-stage: Shipyard
+#   orig:
+#     stage: F301_4
+#     room: 0
+#     layer: 0
+#     entrance: 9
+#   scens:
+#   - stage: F401
+#     room: 1
+#     index: 14
+# cutscene after imp1, not randomized
+# - stage: Sealed Grounds Spiral
+#   to-stage: Sealed Temple
+#   orig:
+#     stage: F402
+#     room: 2
+#     layer: 2
+#     entrance: 2
+#   scens:
+#   - stage: F401
+#     room: 1
+#     index: 17
+- stage: Sand Sea
+  to-stage: Sand Sea Docks
+  orig:
+    stage: F301
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F301_1
+    room: 0
+    index: 0
+- stage: Sand Sea
+  to-stage: Skipper's Retreat
+  orig:
+    stage: F301_3
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F301_1
+    room: 0
+    index: 2
+- stage: Sand Sea
+  to-stage: Shipyard
+  orig:
+    stage: F301_4
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F301_1
+    room: 0
+    index: 3
+- stage: Sand Sea
+  to-stage: Outside Pirate's Stronghold
+  orig:
+    stage: F301_6
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F301_1
+    room: 0
+    index: 4
+- stage: Lanayru Mines
+  to-stage: Lanayru Caves
+  orig:
+    stage: F303
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F300_1
+    room: 0
+    index: 1
+- stage: Lanayru Mines
+  to-stage: Lanayru Desert
+  orig:
+    stage: F300
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F300_1
+    room: 2
+    index: 0
+- stage: Shipyard
+  to-stage: Sand Sea
+  orig:
+    stage: F301_1
+    room: 0
+    layer: 0
+    entrance: 2
+  scens:
+  - stage: F301_4
+    room: 0
+    index: 2
+- stage: Shipyard
+  to-stage: Shipyard Construction Bay
+  disambiguation: Upper
+  orig:
+    stage: F301_7
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F301_4
+    room: 0
+    index: 3
+- stage: Shipyard
+  to-stage: Shipyard Construction Bay
+  disambiguation: Lower
+  orig:
+    stage: F301_7
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F301_4
+    room: 0
+    index: 4
+- stage: Deep Woods
+  to-stage: Faron Woods
+  orig:
+    stage: F100
+    room: 0
+    layer: 0
+    entrance: 45
+  scens:
+  - stage: F101
+    room: 0
+    index: 0
+- stage: Deep Woods
+  to-stage: Skyview Temple
+  orig:
+    stage: D100
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F101
+    room: 0
+    index: 1
+- stage: Batreaux' House
+  to-stage: Skyloft
+  orig:
+    stage: F000
+    room: 0
+    layer: 0
+    entrance: 29
+  scens:
+  - stage: F012r
+    room: 0
+    index: 0
+- stage: Lanayru Desert
+  to-stage: Lightning Node
+  orig:
+    stage: F300_2
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F300
+    room: 0
+    index: 0
+- stage: Lanayru Desert
+  to-stage: Lanayru Mines
+  orig:
+    stage: F300_1
+    room: 2
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F300
+    room: 0
+    index: 1
+- stage: Lanayru Desert
+  to-stage: Fire Node
+  orig:
+    stage: F300_3
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F300
+    room: 0
+    index: 2
+- stage: Lanayru Desert
+  to-stage: Temple of Time
+  disambiguation: Start
+  orig:
+    stage: F300_4
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F300
+    room: 0
+    index: 3
+- stage: Lanayru Desert
+  to-stage: Temple of Time
+  disambiguation: End
+  orig:
+    stage: F300_4
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F300
+    room: 0
+    index: 4
+- stage: Lanayru Desert
+  to-stage: Lanayru Mining Facility
+  orig:
+    stage: D300
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+  - stage: F300
+    room: 0
+    index: 5
+- stage: Lanayru Desert
+  to-stage: Lanayru Caves
+  orig:
+    stage: F303
+    room: 0
+    layer: 0
+    entrance: 1
+  scens:
+  - stage: F300
+    room: 0
+    index: 8
