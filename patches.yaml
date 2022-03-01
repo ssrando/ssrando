@@ -47,9 +47,12 @@ global:
       - 99 # Sheikah Stone cs played
       - 67 # Inside Doors open
       - 1 # UA Doors open
+      - 0 # LA Doors
+      - 21 # Upper academy Doors
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
+      - 31 # Ghirahim's Feet CS
     Sealed Grounds:
       - 7 # vents active
       - onlyif: Option "skip-skykeep" Enabled
@@ -70,6 +73,7 @@ global:
         flag: 30 # LMF Rises CS
       - onlyif: Option "open-lmf" Is "Open"
         flag: 31 # LMF rising CS watched
+      - 50 # LMF entry CS
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
