@@ -95,6 +95,9 @@ stw r3, 0x8A0(r4) ;text counter 1
 lwz r0, 0x24(r1) ; instruction that was overwritten
 b 0x802539e0
 
+; since there is still unused space from 0x802da0e0 - 0x802da10c patch the start entrance here
+; use 8 bytes for stage name, 1 byte room, 1 byte layer, 1 byte entrance, 1 byte force tod (not implemented yet)
+
 ; change storyflag that disables sandship dowsing
 ; to bombed sandship
 .org 0x80097b18
@@ -138,6 +141,13 @@ bl unset_sandship_timestone_if_necessary
 ; hook into function before spawning link at entrance
 .org 0x800635b4
 bl do_entrance_fixes
+
+; branch to function for rando custom text event flows (if no other matches)
+.org 0x801aff2c
+bgt 0x801b0788
+.org 0x801b0788
+bl rando_text_command_handler
+b 0x801b0764 ; return to original function
 
 .close
 

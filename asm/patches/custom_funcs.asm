@@ -412,6 +412,39 @@ addi r1, r1, 0x10
 lbz r0,-0x3ca3(r13) ; replaced instruction
 blr
 
+; use this functions to add new text event commands
+.global rando_text_command_handler
+rando_text_command_handler:
+; we start at 70
+stwu r1, -0x10(r1)
+mflr r5
+stw r5, 0x14(r1)
+; cmd in r0, eventflowmanager in r3, flowelement in r4
+cmpwi r0, 70
+beq send_to_start
+b rando_text_command_handler_end
+
+send_to_start:
+lwz r3, RELOADER_PTR@sda21(r13)
+lis r4, 0x802DA0E0@ha ; this is where the start entrance info is patched
+la r4, 0x802DA0E0@l(r4)
+lbz r5, 8(r4)
+lbz r6, 9(r4)
+lbz r7, 0xA(r4)
+lbz r8, 0xB(r4)
+li r9, 2
+li r10, 0
+li r0, 0xF
+stw r0, 0x8(r1)
+li r0, -1
+stw r0, 0xC(r1)
+bl Reloader__triggerEntrance
+
+rando_text_command_handler_end:
+lwz r0, 0x14(r1)
+addi r1, r1, 0x10
+mtlr r0
+blr
 .close
 
 

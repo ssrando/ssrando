@@ -9,6 +9,7 @@ FileManager__getDungeonFlags = 0x8000a460;
 FlagManager__setFlagTo1 = 0x800bf5b0;
 checkStoryflagIsSet = 0x80141e90;
 FileManager__getSceneflags = 0x8000a4e0;
+Reloader__triggerEntrance = 0x801bafa0;
 SceneflagManager__setTempOrSceneflag = 0x800be2d0;
 SceneflagManager__checkFlagGlobal = 0x800bdf20;
 SceneflagManager__setFlagGlobal = 0x800be1f0;

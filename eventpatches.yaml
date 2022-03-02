@@ -479,6 +479,19 @@
       param2: 11
       next: Rando Dungeon 1 check
       param3: 4
+006-2KenseiNormal:
+  # TODO: move to proper flow and confirm window 
+  - name: Go To Send to Start
+    type: flowpatch
+    index: 70
+    flow:
+      next: Send to Start
+  - name: Send to Start
+    type: flowadd
+    flow:
+      type: type3
+      next: -1
+      param3: 70 # rando event to go back to start
 102-Zelda:
   - name: Fledge Quest Switch 1
     type: flowpatch
