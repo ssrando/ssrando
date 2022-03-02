@@ -134,6 +134,11 @@ li r5, 2
 .org 0x80198dc0
 bl unset_sandship_timestone_if_necessary
 
+; er patches
+; hook into function before spawning link at entrance
+.org 0x800635b4
+bl do_entrance_fixes
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
