@@ -2152,7 +2152,7 @@ F300: # lanayru Main Area
     room: 0
     objtype: STAG
     object:
-      trigstoryfid: 8 # LMF raised
+      trigstoryfid: -1
 F300_1: # Lanayru Mines
   - name: Layer override
     type: layeroverride
