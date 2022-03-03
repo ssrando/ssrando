@@ -32,6 +32,7 @@ from util.textbox_utils import (
     break_and_make_multiple_textboxes,
     make_mutliple_textboxes,
 )
+from util.file_accessor import get_entrance_table
 
 TOTAL_STAGE_FILES = 369
 TOTAL_EVENT_FILES = 6
@@ -1152,24 +1153,24 @@ class GamePatcher:
             )
 
     def add_hacky_entrance_rando_patches(self):
-        for exit_name, scen_name in self.rando.logic.exits_connections:
-            exit = self.rando.exit_map[exit_name]
-            scens = self.rando.scen_map[scen_name]
-            print(exit, scens)
-            for scen in scens:
+        entrance_table = get_entrance_table()
+        for exit_name, entrance_name in self.placement_file.exits_connections.items():
+            entrance = entrance_table.entrance_map[entrance_name]
+            exits = entrance_table.exit_map[exit_name]
+            for exit in exits:
                 self.add_patch_to_stage(
-                    scen["stage"],
+                    exit["stage"],
                     {
                         "name": "h",
                         "type": "objpatch",
-                        "index": scen["index"],
-                        "room": scen["room"],
+                        "index": exit["index"],
+                        "room": exit["room"],
                         "objtype": "SCEN",
                         "object": {
-                            "name": exit["stage"],
-                            "layer": exit["layer"],
-                            "room": exit["room"],
-                            "entrance": exit["entrance"],
+                            "name": entrance["stage"],
+                            "layer": entrance["layer"],
+                            "room": entrance["room"],
+                            "entrance": entrance["entrance"],
                         },
                     },
                 )
@@ -2058,18 +2059,14 @@ class GamePatcher:
             raise Exception(
                 f"not enough space to fit in all of the startflags, need {startflag_byte_count}, but only 512 bytes available"
             )
-        # print(f"total startflag byte count: {startflag_byte_count}")
+        print(f"total startflag byte count: {startflag_byte_count}")
         dol.write_data_bytes(0x804EE1B8, start_flags_write.getbuffer())
 
+        entrance_table = get_entrance_table()
+
         # write startstage (used for ER) to some unused space
-        start_entrance = self.rando.exit_map[
-            next(
-                (
-                    entrance
-                    for (entrance, exit) in self.rando.logic.exits_connections
-                    if exit == "Start -> Knight Academy"
-                )
-            )
+        start_entrance = entrance_table.entrance_map[
+            self.placement_file.exits_connections["Start to Knight Academy"]
         ]
         dol.write_data_bytes(0x802DA0E0, toBytes(start_entrance["stage"], 8))
         dol.write_data(write_u8, 0x802DA0E8, start_entrance["room"])
