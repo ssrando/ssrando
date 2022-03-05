@@ -175,17 +175,16 @@ class Randomizer(BaseRandomizer):
             self.progress_callback("writing anti spoiler log...")
         else:
             self.progress_callback("writing spoiler log...")
-        plcmt_file = self.get_placement_file()
-
         entrance_table = get_entrance_table()
         entrances = entrance_table.entrances.copy()
         exits = entrance_table.exits.copy()
         statue_exits = entrance_table.statue_exits.copy()
         self.rng.shuffle(exits)
-        plcmt_file.exits_connections = dict(zip(exits, entrances))
+        self.logic.exits_connections = dict(zip(exits, entrances))
         self.rng.shuffle(entrances)
-        plcmt_file.exits_connections.update(dict(zip(statue_exits, entrances)))
-        self.logic.exits_connections = plcmt_file.exits_connections
+        self.logic.exits_connections.update(dict(zip(statue_exits, entrances)))
+
+        plcmt_file = self.get_placement_file()
 
         if self.options["out-placement-file"] and not self.no_logs:
             (self.log_file_path / f"placement_file_{self.seed}.json").write_text(
@@ -611,6 +610,8 @@ class Randomizer(BaseRandomizer):
         plcmt_file.required_dungeons = self.logic.required_dungeons
         plcmt_file.starting_items = self.logic.starting_items
         plcmt_file.version = VERSION
+
+        plcmt_file.exits_connections = self.logic.exits_connections
 
         plcmt_file.check_valid()
 

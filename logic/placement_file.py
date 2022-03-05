@@ -2,7 +2,7 @@ from options import Options
 from version import VERSION
 from logic.item_types import ALL_ITEM_NAMES
 from logic.constants import POTENTIALLY_REQUIRED_DUNGEONS, ENTRANCE_CONNECTIONS
-from util.file_accessor import read_yaml_file_cached
+from util.file_accessor import read_yaml_file_cached, get_entrance_table
 
 import json
 
@@ -146,6 +146,20 @@ class PlacementFile:
 
         check_sets_equal(trial_check_names, set(self.trial_hints.keys()), "Trial Hints")
 
+        entrance_table = get_entrance_table()
+        # all exits needs to be connected
+        check_sets_equal(
+            set(entrance_table.exits) | set(entrance_table.statue_exits),
+            set(self.exits_connections.keys()),
+            "exits",
+        )
+        # but not all entrances need to be connected by something,
+        check_all_in_set(
+            set(entrance_table.entrances),
+            set(self.exits_connections.values()),
+            "entrances",
+        )
+
 
 def check_sets_equal(orig: set, actual: set, name: str):
     if orig != actual:
@@ -158,4 +172,12 @@ def check_sets_equal(orig: set, actual: set, name: str):
         if missing:
             error_msg += f"Missing {name}:\n"
             error_msg += ", ".join(missing) + "\n"
+        raise InvalidPlacementFile(error_msg)
+
+
+def check_all_in_set(orig: set, actual: set, name: str):
+    additional = actual - orig
+    if additional:
+        error_msg = f"Additional {name}:\n"
+        error_msg += ", ".join(additional) + "\n"
         raise InvalidPlacementFile(error_msg)
