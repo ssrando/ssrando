@@ -2,10 +2,16 @@
 
 ## Dev
 ### Options
+### Changes
+### Bugfixes
+
+## 1.2.0
+### Options
 - Added option to randomize music (by Battlecats59)
 - Added option to force swords at the end of dungeons (by YourAverageLink)
 - Added option to visually swap Skyloft and hero's clothes
 - Added options to skip Horde, Ghirahim 3, and Demise (by Battlecats59)
+- Added option to start with Earth Temple opened
 ### Changes
 - Various name changes (by NULL and cjs07)
 - Added playername and hash to textboxes after Demise (by Battlecats59)
@@ -30,6 +36,7 @@
   - Improved how the randomizer categorizes regions as barren
 - Spoiler logs are now put into the `logs` folder next to the exe
 - Make tornadoes spawn away further away to adjust for the increased loftwing speed
+- Added more cutscene skips
 ### Bugfixes
 - Added some tricks that were in the logic files but not in options (by NULL)
 - Fix bug with arc-replacements causing an error if the arc doesn't exist in ObjectPack, it's ignored now
