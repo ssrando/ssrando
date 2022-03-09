@@ -792,10 +792,6 @@ class Logic:
             zone_access_macro_name = "Can Access " + zone_name
             entrance_access_macro_name = "Can Access " + entrance_name
             self.set_macro(zone_access_macro_name, entrance_access_macro_name)
-            # dungeon finishes
-            zone_beat_macro_name = "Can Beat " + zone_name
-            entrance_beat_macro_name = "Can Beat " + entrance_name
-            self.set_macro(entrance_beat_macro_name, zone_beat_macro_name)
 
     def update_trial_rando_macros(self):
         for trial_gate, trial in self.trial_connections.items():
