@@ -2,6 +2,7 @@
 
 ## Dev
 ### Options
+- Added bomb throw tricks for Beedle's Shop and Skyview (by NULL)
 ### Changes
 ### Bugfixes
 
