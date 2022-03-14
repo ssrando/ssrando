@@ -6,6 +6,7 @@ from PySide6.QtCore import QThread, Signal
 
 from ssrando import Randomizer, StartupException
 from witmanager import WitManager, WitException, WrongChecksumException
+from urllib.error import HTTPError, URLError
 
 
 class RandomizerThread(QThread):
@@ -50,7 +51,15 @@ class RandomizerThread(QThread):
             print(traceback.format_exc())
             return
         if not dry_run:
-            self.wit_manager.ensure_wit_installed()
+            try:
+                self.wit_manager.ensure_wit_installed()
+            except (HTTPError, URLError) as e:
+                self.error_abort.emit(str(e))
+                print(str(e))
+                import traceback
+
+                print(traceback.format_exc())
+                return
             default_ui_progress_callback("repacking game...")
             repack_progress_cb = self.create_ui_progress_callback(
                 self.randomizer.get_total_progress_steps()
@@ -97,7 +106,14 @@ class ExtractSetupThread(QThread):
         self.update_total_steps.emit(total_steps)
         default_ui_progress_callback = self.create_ui_progress_callback(0)
         default_ui_progress_callback("setting up wiimms ISO tools...")
-        self.wit_manager.ensure_wit_installed()
+        try:
+            self.wit_manager.ensure_wit_installed()
+        except (HTTPError, URLError) as e:
+            self.error_abort.emit(str(e))
+            import traceback
+
+            print(traceback.format_exc())
+            return
 
         default_ui_progress_callback("extracting game...")
         if not self.wit_manager.actual_extract_already_exists():

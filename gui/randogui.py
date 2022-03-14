@@ -321,11 +321,7 @@ class RandoGUI(QMainWindow):
 
         self.extract_thread.extract_complete.connect(on_complete)
 
-        def on_error(msg):
-            self.progress_dialog.reset()
-            self.error_msg = QMessageBox.critical(self, "Error", msg)
-
-        self.extract_thread.error_abort.connect(on_error)
+        self.extract_thread.error_abort.connect(self.on_error)
         self.extract_thread.start()
 
     def browse_for_output_dir(self):
