@@ -344,9 +344,9 @@ continue_lanayru:
 xoris r0, r4, 0x4633
 cmpwi r0, 0x3030 ; F300
 bne continue_turf
-lbz r0, 5(r30) ; 6th char of stagename
-cmplwi r0, 0
-bne continue_mines
+lhz r0, 4(r30) ; 5+6th char of stagename
+cmplwi r0, 0xFF ; <= 0xFF means the 5th char is 0, so it's desert
+bgt continue_mines
 cmpwi r5, 2 ; desert from mines
 beq lanayru_timeshift_fix
 cmpwi r5, 5 ; desert from LMF
@@ -362,7 +362,7 @@ stb r0, 36(r30)
 b do_entrance_fixes_end
 
 continue_mines:
-cmplwi r0, 49 ; '1', for mines
+cmplwi r0, 0x5f31 ; '_1', for mines
 bne do_entrance_fixes_end
 cmpwi r5, 1
 bne do_entrance_fixes_end

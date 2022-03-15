@@ -32,9 +32,9 @@ void doErFixes()
     }
     else if (stageName == 'F300')
     {
-        u8 subArea = SPAWN_SLAVE.name[5]; // '\0' for Desert, '1' for mines
+        u16 subArea = *(u16 *)&SPAWN_SLAVE.name[4]; // '\0X' for Desert, '_1' for mines
         // Lanayru Desert
-        if (subArea == '\0')
+        if (subArea <= 0xFF)
         {
             // Lanayru Desert from LMF
             if (SPAWN_SLAVE.entrance == 5)
@@ -54,7 +54,7 @@ void doErFixes()
         }
         else
             // Lanayru Mines
-            if (subArea == '1')
+            if (subArea == '_1')
         {
             // Mines from Desert
             if (SPAWN_SLAVE.entrance == 1)
