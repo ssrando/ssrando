@@ -2154,17 +2154,17 @@
   - stage: F400
     room: 0
     index: 2
-- stage: Skipper's Retreat
-  to-stage: Sand Sea Docks
-  orig:
-    stage: F301
-    room: 0
-    layer: 0
-    entrance: 6
-  scens:
-  - stage: F301_3
-    room: 0
-    index: 0
+# - stage: Skipper's Retreat
+#   to-stage: Sand Sea Docks
+#   orig:
+#     stage: F301
+#     room: 0
+#     layer: 0
+#     entrance: 6
+#   scens:
+#   - stage: F301_3
+#     room: 0
+#     index: 0
 - stage: Skipper's Retreat
   to-stage: Sand Sea
   orig:
