@@ -83,7 +83,7 @@ def get_entrance_table() -> EntranceTable:
                 name = f'{statue_scen["stage"]}, {statue_scen["room"]}, {statue_scen["index"]}'
                 exit_map[name] = [statue_scen]
                 statue_exits.append(name)
-        else:
+        elif "type" not in entry:
             entrance_name = to_entrance_name(entry)
             exit_name = to_exit_name(entry)
             entrance_map[entrance_name] = entry["orig"]
