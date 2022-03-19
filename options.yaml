@@ -572,3 +572,11 @@
   cosmetic: true
   help: If enabled, the game over music will cutoff when it normally would. If disabled, the music will continue to play until the end of the song, even after pressing continue.
   ui: option_cutoff_gameover_music
+- name: Allow Custom Music
+  command: allow-custom-music
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: If enabled, the WZSound.brsar file will be patched to allow custom music. Custom music must be installed manually.
+  ui: option_allow_custom_music
