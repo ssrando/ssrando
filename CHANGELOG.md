@@ -36,6 +36,9 @@
     - Sometimes
     - Some of these hint types existed in prior versions, but users had no control over them
 - Changed item hints, that point to a specific location, to use the same hint format as location hints
+- Temple of Time is always in post LMF finish state
+- Beating Skyview (even if it's in a different dungeon) rescues Machi
+- Beating Ancient Cistern (even if it's in a different dungeon) removes the void in the Great Tree
 ### Bugfixes
 - always copy layer 0, this fixes various bugs, where changes from previous randomizations were not reverted
 - fix gorko sometimes asking to draw bombs even when you don't have them
