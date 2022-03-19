@@ -4,6 +4,7 @@
 ### Options
 - Added bomb throw tricks for Beedle's Shop and Skyview (by NULL)
 ### Changes
+- Allow calling Fi underwater and without a sword
 ### Bugfixes
 
 ## 1.2.0
