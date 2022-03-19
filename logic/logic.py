@@ -94,12 +94,6 @@ class Logic:
         self.starting_items = self.randomize_starting_items()
 
         self.race_mode_banned_locations = []
-        if (
-            self.rando.options["skip-skykeep"]
-            and self.entrance_connections["Dungeon Entrance in Lanayru Desert"]
-            == "Sky Keep"
-        ):
-            self.racemode_ban_location("Knight Academy - Fledge's Crystals")
         if self.rando.options["empty-unrequired-dungeons"]:
             for location_name in self.item_locations:
                 zone, _ = Logic.split_location_name_by_zone(location_name)
@@ -107,11 +101,6 @@ class Logic:
                     self.race_mode_banned_locations.append(location_name)
 
             # checks outside locations that require dungeons:
-            if (
-                self.entrance_connections["Dungeon Entrance in Lanayru Desert"]
-                in self.unrequired_dungeons
-            ):
-                self.racemode_ban_location("Knight Academy - Fledge's Crystals")
             if "Skyview" in self.unrequired_dungeons:
                 self.racemode_ban_location(
                     "Sky - Lumpy Pumpkin - Goddess Chest on the Roof"
