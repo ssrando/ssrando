@@ -31,14 +31,12 @@
   default: 3
   min: 0
   max: 3
-  bits: 2
   help: Number of tablets to start with. Tablets are selected randomly, and the remainder
     are randomized
   ui: option_starting_tablet_count
 - name: Open Thunderhead
   command: open-thunderhead
   type: singlechoice
-  bits: 2
   choices:
     - Ballad
     # - Harp and Ballad
@@ -49,7 +47,6 @@
 - name: Starting Sword
   command: starting-sword
   type: singlechoice
-  bits: 3
   choices:
     - Swordless
     - Practice Sword
@@ -68,7 +65,6 @@
   default: 2
   min: 0
   max: 6
-  bits: 3
   help: The number of dungeons that are required, to beat the seed
   ui: option_required_dungeon_count
 - name: Imp 2
@@ -154,7 +150,6 @@
 - name: Randomize Entrances
   command: randomize-entrances
   type: singlechoice
-  bits: 2
   choices:
     - None
     - Required Dungeons Separately
@@ -196,7 +191,6 @@
     - 50
     - 70
     - 80
-  bits: 3
   help: Enables progression items to appear in all Batreaux rewards up to and including
     the specified amount.
   ui: option_max_batreaux_reward
@@ -208,7 +202,6 @@
     - Vanilla
     - Always Junk
     - Randomized
-  bits: 2
   help: Controls how shops are randomized. If vanilla, shops will always contain their vanilla
     items. Always Junk will randomize the shops, but will not place progression items in shops.
     Randmomized will apply standard randomization to shops.
@@ -222,7 +215,6 @@
     - Added
     - Rupoor Mayhem
     - Rupoor Insanity
-  bits: 2
   help: Adds or replaces items in the junk item pool with Rupoors. Added adds 15 rupoors to the pool
     (not replacing existing items), Mayhem replaces half of the junk pool and Insanity replaces the entire
     pool. All modes also add ruppors to the backup, duplicatable pool for when all other items have been
@@ -231,7 +223,6 @@
 - name: Gate of Time Starting State
   command: got-start
   type: singlechoice
-  bits: 1
   choices:
     - Lowered
     - Raised
@@ -241,7 +232,6 @@
 - name: Gate of Time Sword Requirement
   command: got-sword-requirement
   type: singlechoice
-  bits: 3
   choices:
     - Goddess Sword
     - Goddess Longsword
@@ -254,7 +244,6 @@
 - name: Gate of Time Dungeon Requirements
   command: got-dungeon-requirement
   type: singlechoice
-  bits: 1
   choices:
     - Required
     - Unrequired
@@ -265,7 +254,6 @@
 - name: Open LMF
   command: open-lmf
   type: singlechoice
-  bits: 2
   choices:
     - Nodes
     # - Hook Beetle
@@ -296,7 +284,6 @@
 - name: Map Mode
   command: map-mode
   type: singlechoice
-  bits: 3
   choices:
     - Removed
     # - Start With
@@ -313,7 +300,6 @@
 - name: Small Key Mode
   command: small-key-mode
   type: singlechoice
-  bits: 3
   choices:
     - Vanilla
     - Own Dungeon - Restricted
@@ -331,7 +317,6 @@
 - name: Boss Key Mode
   command: boss-key-mode
   type: singlechoice
-  bits: 3
   choices:
     - Vanilla
     - Own Dungeon
@@ -345,7 +330,6 @@
 - name: Logic Mode
   command: logic-mode
   type: singlechoice
-  bits: 3
   choices:
     # - Glitchless - Basic
     # - Glitchless - Standard
@@ -438,7 +422,6 @@
 - name: Hint Distribution
   command: hint-distribution
   type: singlechoice
-  bits: 2
   choices:
     # - Weak
     # - Balanced
@@ -458,7 +441,6 @@
   type: int
   min: 0
   max: 15
-  bits: 4
   default: 0
   help: Spirit of the Sword areas contain item(s) required to beat the game
   ui: option_woth_hints
@@ -467,7 +449,6 @@
   type: int
   min: 0
   max: 15
-  bits: 4
   default: 0
   help: Sometimes areas contain item(s) that may be required for the seed.
   ui: option_sometimes_hints
@@ -476,7 +457,6 @@
   type: int
   min: 0
   max: 15
-  bits: 4
   default: 0
   help: Barren areas contain no items required to beat the game
   ui: option_barren_hints
@@ -485,7 +465,6 @@
   type: int
   min: 0
   max: 15
-  bits: 4
   default: 0
   help: Location hints give the item at a specific check
   ui: option_location_hints
@@ -494,14 +473,12 @@
   type: int
   min: 0
   max: 15
-  bits: 4
   default: 0
   help: Item hints give the location of a specific item
   ui: option_item_hints
 - name: Song Hints
   command: song-hints
   type: singlechoice
-  bits: 2
   choices:
     - None
     - Basic
@@ -554,7 +531,6 @@
 - name: Randomize Music
   command: music-rando
   type: singlechoice
-  bits: 2
   choices:
     - None
     - Shuffled
