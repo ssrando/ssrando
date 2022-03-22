@@ -73,7 +73,7 @@ class LocationGossipStoneHint(GossipStoneHint):
         return [f"They say that {self.location_string} <y<{self.item}>>"]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.location_string} has {self.item}"
+        return f"They say that {self.location_string} <y<{self.item}>>"
 
 
 @dataclass
@@ -171,9 +171,7 @@ class Hints:
             self.sometimes_locations
         )
 
-        self.dist.start(
-            self.logic.rando.rng, needed_always_hints, needed_sometimes_hints
-        )
+        self.dist.start(self.logic, needed_always_hints, needed_sometimes_hints)
 
         hintable_items = HINTABLE_ITEMS.copy()
         # tweak item pool
@@ -182,7 +180,7 @@ class Hints:
 
         hints_left = total_stonehints
         hinted_locations = self.logic.sworded_dungeon_locations
-        print(f'placing {hints_left} total hints')
+        print(f"placing {hints_left} total hints")
 
         # create location hints
         location_hints_left = self.logic.rando.options["location-hints"]
@@ -285,10 +283,11 @@ class Hints:
                         "Removed, Anywhere"
                     ] or self.logic.rando.options["small-key-mode"] not in ["Anywhere"]:
                         continue
-                if zone in ALL_DUNGEON_AREAS:
-                    barren_dungeons.append(zone)
-                else:
-                    barren_overworld_zones.append(zone)
+                if region_barren[zone]:
+                    if zone in ALL_DUNGEON_AREAS:
+                        barren_dungeons.append(zone)
+                    else:
+                        barren_overworld_zones.append(zone)
 
             if len(barren_overworld_zones) + len(barren_dungeons) < barren_hints_count:
                 barren_hints_count = len(barren_overworld_zones) + len(barren_dungeons)
@@ -312,28 +311,21 @@ class Hints:
                             ["dungeon", "overworld"], [0.75, 0.25]
                         )[0]
                 if prev_barren_type == "dungeon":
-                    print("dungeon selected")
-                    areas = [
-                        area for area in barren_dungeons if area not in barren_hints
-                    ]
+                    areas = barren_dungeons
                 else:
-                    print("overworld selected")
-                    areas = [
-                        area
-                        for area in barren_overworld_zones
-                        if area not in barren_hints
-                    ]
+                    areas = barren_overworld_zones
                 if not areas:
                     # something went wrong generating this hint, there are likely no more barren hints able to be placed
                     break
+
                 area_weights = [
-                    len(self.logic.locations_by_zone_name[area])
+                    len(self.logic.locations_by_zone_name(area))
                     for area in areas
                     if area not in barren_hints
                 ]
 
                 barren_hints.append(
-                    self.logic.rando.rng.choices(areas, area_weights)[0]
+                    self.logic.rando.rng.choices(barren_overworld_zones, area_weights)
                 )
                 hints_left -= 1
 
