@@ -4,7 +4,6 @@ from paths import RANDO_ROOT_PATH
 from pathlib import Path
 
 import yaml
-import math
 from collections import OrderedDict
 
 with (RANDO_ROOT_PATH / "options.yaml").open("r") as f:
@@ -102,15 +101,15 @@ class Options:
                 # one bit
                 writer.write(int(value), 1)
             elif option["type"] == "int":
-                bits = math.ceil(math.log2(option["max"]))
-                writer.write(value, bits)
+                # needs information, how many bits this number is
+                writer.write(value, option["bits"])
             elif option["type"] == "multichoice":
                 # as many bits as choices
                 for choice in option["choices"]:
                     writer.write(int(choice in value), 1)
             elif option["type"] == "singlechoice":
-                bits = math.ceil(math.log2(len(option["choices"])))
-                writer.write(option["choices"].index(value), bits)
+                # needs information, how many bits this number is, then it's just the index to the choices
+                writer.write(option["choices"].index(value), option["bits"])
             else:
                 raise Exception(f'unknown type: {option["type"]}')
         writer.flush()
@@ -192,8 +191,7 @@ class Options:
             if option["type"] == "boolean":
                 value = bool(reader.read(1))
             elif option["type"] == "int":
-                bits = math.ceil(math.log2(option["max"]))
-                value = reader.read(bits)
+                value = reader.read(option["bits"])
             elif option["type"] == "multichoice":
                 # as many bits as choices
                 value = []
@@ -201,8 +199,7 @@ class Options:
                     if reader.read(1):
                         value.append(choice)
             elif option["type"] == "singlechoice":
-                bits = math.ceil(math.log2(len(option["choices"])))
-                value = option["choices"][reader.read(bits)]
+                value = option["choices"][reader.read(option["bits"])]
             else:
                 raise Exception(f'unknown type: {option["type"]}')
             self.set_option(option_name, value)
