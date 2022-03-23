@@ -110,7 +110,7 @@ class Ui_MainWindow(object):
 
         self.groupBox_12 = QGroupBox(self.tab)
         self.groupBox_12.setObjectName(u"groupBox_12")
-        self.groupBox_12.setGeometry(QRect(10, 130, 181, 111))
+        self.groupBox_12.setGeometry(QRect(10, 130, 181, 131))
         self.verticalLayoutWidget_13 = QWidget(self.groupBox_12)
         self.verticalLayoutWidget_13.setObjectName(u"verticalLayoutWidget_13")
         self.verticalLayoutWidget_13.setGeometry(QRect(10, 20, 166, 89))
@@ -138,10 +138,10 @@ class Ui_MainWindow(object):
 
         self.groupBox_13 = QGroupBox(self.tab)
         self.groupBox_13.setObjectName(u"groupBox_13")
-        self.groupBox_13.setGeometry(QRect(210, 130, 131, 111))
+        self.groupBox_13.setGeometry(QRect(210, 130, 131, 131))
         self.verticalLayoutWidget_14 = QWidget(self.groupBox_13)
         self.verticalLayoutWidget_14.setObjectName(u"verticalLayoutWidget_14")
-        self.verticalLayoutWidget_14.setGeometry(QRect(10, 20, 111, 81))
+        self.verticalLayoutWidget_14.setGeometry(QRect(10, 20, 111, 101))
         self.verticalLayout_34 = QVBoxLayout(self.verticalLayoutWidget_14)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.verticalLayout_34.setContentsMargins(0, 0, 0, 0)
@@ -156,7 +156,7 @@ class Ui_MainWindow(object):
 
         self.groupBox_14 = QGroupBox(self.tab)
         self.groupBox_14.setObjectName(u"groupBox_14")
-        self.groupBox_14.setGeometry(QRect(360, 130, 131, 111))
+        self.groupBox_14.setGeometry(QRect(360, 130, 131, 131))
         self.verticalLayoutWidget_8 = QWidget(self.groupBox_14)
         self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
         self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 111, 80))
@@ -174,10 +174,10 @@ class Ui_MainWindow(object):
 
         self.groupBox_15 = QGroupBox(self.tab)
         self.groupBox_15.setObjectName(u"groupBox_15")
-        self.groupBox_15.setGeometry(QRect(510, 130, 181, 111))
+        self.groupBox_15.setGeometry(QRect(510, 130, 181, 131))
         self.verticalLayoutWidget_11 = QWidget(self.groupBox_15)
         self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
-        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 89))
+        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 101))
         self.verticalLayout_35 = QVBoxLayout(self.verticalLayoutWidget_11)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
@@ -200,6 +200,11 @@ class Ui_MainWindow(object):
         self.option_cutoff_gameover_music.setObjectName(u"option_cutoff_gameover_music")
 
         self.verticalLayout_35.addWidget(self.option_cutoff_gameover_music)
+
+        self.option_allow_custom_music = QCheckBox(self.verticalLayoutWidget_11)
+        self.option_allow_custom_music.setObjectName(u"option_allow_custom_music")
+
+        self.verticalLayout_35.addWidget(self.option_allow_custom_music)
 
         self.verticalSpacer_16 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1166,6 +1171,7 @@ class Ui_MainWindow(object):
         self.groupBox_15.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.option_cutoff_gameover_music.setText(QCoreApplication.translate("MainWindow", u"Cutoff Game Over Music", None))
+        self.option_allow_custom_music.setText(QCoreApplication.translate("MainWindow", u"Allow Custom Music", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Setup", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"What areas of the world should progress items appear?", None))
         self.progression_skyloft.setText(QCoreApplication.translate("MainWindow", u"Skyloft", None))

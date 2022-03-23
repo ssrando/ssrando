@@ -149,6 +149,20 @@ bgt 0x801b0788
 bl rando_text_command_handler
 b 0x801b0764 ; return to original function
 
+; replace check for sword with check for not trial
+.org 0x80221aa8
+lis r3, SPAWN_SLAVE+0x26@ha
+lbz r3, SPAWN_SLAVE+0x26@l(r3)
+cmplwi r3, 1
+
+; remove goddess sword requirement to call fi
+.org 0x80221b50
+nop
+
+; don't prevent calling fi in water
+.org 0x80221b5c
+nop
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
