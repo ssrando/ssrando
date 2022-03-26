@@ -283,11 +283,10 @@ class Hints:
                         "Removed, Anywhere"
                     ] or self.logic.rando.options["small-key-mode"] not in ["Anywhere"]:
                         continue
-                if region_barren[zone]:
-                    if zone in ALL_DUNGEON_AREAS:
-                        barren_dungeons.append(zone)
-                    else:
-                        barren_overworld_zones.append(zone)
+                if zone in ALL_DUNGEON_AREAS:
+                    barren_dungeons.append(zone)
+                else:
+                    barren_overworld_zones.append(zone)
 
             if len(barren_overworld_zones) + len(barren_dungeons) < barren_hints_count:
                 barren_hints_count = len(barren_overworld_zones) + len(barren_dungeons)
