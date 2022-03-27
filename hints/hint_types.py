@@ -1,8 +1,15 @@
 from dataclasses import dataclass
+from re import S
 from typing import List
 
+from logic.logic import Logic
 
+@dataclass
 class GossipStoneHint:
+    location: str
+    item: str
+    needs_logic: bool
+
     def to_gossip_stone_text(self) -> List[str]:
         """each string in the list appear in a separate textbox and will be line broken"""
         raise NotImplementedError("abstract")
@@ -10,9 +17,12 @@ class GossipStoneHint:
     def to_spoiler_log_text(self) -> str:
         raise NotImplementedError("abstract")
 
+    def __hash__(self):
+        return hash(self.location + self.item)
+
 
 @dataclass
-class GossipStoneHintWrapper(GossipStoneHint):
+class GossipStoneHintWrapper:
     primary_hint: GossipStoneHint
     secondary_hint: GossipStoneHint
 
@@ -42,26 +52,27 @@ class TrialGateGossipStoneHint(GossipStoneHint):
 @dataclass
 class LocationGossipStoneHint(GossipStoneHint):
     location_string: str
-    item: str
-
     def to_gossip_stone_text(self) -> List[str]:
         return [f"They say that {self.location_string} <y<{self.item}>>"]
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.location_string} has {self.item}"
 
+    def __hash__(self):
+        return hash(self.location + self.item)
+
 
 @dataclass
 class ItemGossipStoneHint(GossipStoneHint):
-    location_name: str
-    item: str
-
     def to_gossip_stone_text(self) -> List[str]:
-        zone, specific_loc = Logic.split_location_name_by_zone(self.location_name)
+        zone, specific_loc = Logic.split_location_name_by_zone(self.location)
         return [f"<y<{self.item}>> can be found at <r<{zone}: {specific_loc}>>"]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.item} is on {self.location_name}"
+        return f"{self.item} is on {self.location}"
+
+    def __hash__(self):
+        return hash(self.location + self.item)
 
 
 @dataclass
@@ -89,6 +100,9 @@ class BarrenGossipStoneHint(GossipStoneHint):
     def to_spoiler_log_text(self) -> str:
         return f"{self.zone} is barren"
 
+    def __hash__(self):
+        return hash(self.zone)
+
 
 @dataclass
 class EmptyGossipStoneHint(GossipStoneHint):
@@ -99,3 +113,6 @@ class EmptyGossipStoneHint(GossipStoneHint):
 
     def to_spoiler_log_text(self) -> str:
         return self.text
+
+    def __hash__(self):
+        return hash(self.text)

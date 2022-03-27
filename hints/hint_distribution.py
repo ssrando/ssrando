@@ -1,5 +1,8 @@
 import json
+from pprint import pprint
 from random import Random
+from typing import Tuple
+from xmlrpc.client import Boolean
 
 import yaml
 
@@ -35,7 +38,7 @@ class HintDistribution:
         self.dungeon_sots_limit = 0
         self.dungeon_barren_limit = 0
         self.distribution = {}
-        self.rng = None
+        self.rng: Random = None
         self.logic = None
         self.hints = []
         self.weighted_types = []
@@ -88,7 +91,7 @@ class HintDistribution:
             print(hint)
             self.hints.append(
                 LocationGossipStoneHint(
-                    always_location_descriptors[hint], logic.item_locations[hint]
+                    hint, self.logic.done_item_locations[hint], True, always_location_descriptors[hint]
                 )
             )
         self.rng.shuffle(self.hints)
@@ -102,10 +105,16 @@ class HintDistribution:
             # cover a given number of sometimes hints
             num_sometimes = self.distribution["sometimes"]["fixed"]
         self.rng.shuffle(sometimes_hints)
+        if (len(sometimes_hints) < num_sometimes):
+            num_sometimes = len(sometimes_hints)
         for i in range(num_sometimes):
+            hint = sometimes_hints[i]
             self.hints.append(
                 LocationGossipStoneHint(
-                    sometimes_location_descriptors[sometimes_hints[i]], "?"
+                    hint,
+                    self.logic.done_item_locations[hint],
+                    True,
+                    sometimes_location_descriptors[hint]
                 )
             )
 
@@ -133,6 +142,8 @@ class HintDistribution:
             self.sots_regions.append(zone)
 
         region_barren, nonprogress = self.logic.get_barren_regions()
+        print(region_barren)
+        print(nonprogress)
         for zone in region_barren:
             if "Silent Realm" in zone:
                 continue  # don't hint barren silent realms since they are an always hint
@@ -169,13 +180,17 @@ class HintDistribution:
     Uses the distribution to calculate the next hint
     """
 
-    def next_hint(self):
+    def next_hint(self) -> GossipStoneHint:
         if len(self.hints) > 0:
             return self.hints.pop()
-        next_type = self.rng.choice(self.weighted_types, self.weights)
+        [next_type] = self.rng.choices(self.weighted_types, self.weights)
+        print(next_type)
         if next_type == "sots":
-            return WayOfTheHeroGossipStoneHint(self.sots_regions.pop())
+            # return WayOfTheHeroGossipStoneHint(self.sots_regions.pop()), True
+            return EmptyGossipStoneHint(None, None, False, 'sots placeholder')
         elif next_type == "barren":
+            print(self.barren_dungeons)
+            print(self.barren_overworld_zones)
             if self.prev_barren_type is None:
                 # 50/50 between dungeon and overworld on the first hint
                 self.prev_barren_type = self.rng.choices(
@@ -189,6 +204,16 @@ class HintDistribution:
                 self.prev_barren_type = self.rng.choices(
                     ["dungeon", "overworld"], [0.75, 0.25]
                 )[0]
+            # Failsafes if there are not enough barren hints to fill out the generated hint
+            if len(self.barren_dungeons) == 0 and self.prev_barren_type == 'dungeon':
+                self.prev_barren_type = 'overworld'
+                if len(self.barren_overworld_zones) == 0:
+                    return EmptyGossipStoneHint(None, None, False, 'no barrens to place')
+            if len(self.barren_overworld_zones) == 0 and self.prev_barren_type == 'overworld':
+                self.prev_barren_type = 'dungeon'
+                if len(self.barren_dungeons) == 0:
+                    return EmptyGossipStoneHint(None, None, False, 'no barrens to place')
+
             # generate a hint and remove it from the lists
             if self.prev_barren_type == "dungeon":
                 print("dungeon selected")
@@ -198,7 +223,7 @@ class HintDistribution:
                 ]
                 area = self.rng.choices(self.barren_dungeons, weights)[0]
                 self.barren_dungeons.remove(area)
-                return BarrenGossipStoneHint(area)
+                return BarrenGossipStoneHint(None, None, False, area)
             else:
                 print("overworld selected")
                 weights = [
@@ -207,7 +232,7 @@ class HintDistribution:
                 ]
                 area = self.rng.choices(self.barren_overworld_zones, weights)[0]
                 self.barren_overworld_zones.remove(area)
-                return BarrenGossipStoneHint(area)
+                return BarrenGossipStoneHint(None, None, False, area)
         elif next_type == "item":
             hinted_item = self.hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
@@ -216,7 +241,7 @@ class HintDistribution:
                     and location not in self.hinted_locations
                 ):
                     self.hinted_locations.append(location)
-                    return ItemGossipStoneHint(location, item)
-        else:
-            # junk hint is the last and also a fallback
-            pass
+                    return ItemGossipStoneHint(location, item, True)
+        # junk hint is the last possible type and also a fallback
+        return EmptyGossipStoneHint(None, None, False, text='Hi I have nothing for you')
+    
