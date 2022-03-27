@@ -4,6 +4,7 @@ from typing import List
 
 from logic.logic import Logic
 
+
 @dataclass
 class GossipStoneHint:
     location: str
@@ -52,6 +53,7 @@ class TrialGateGossipStoneHint(GossipStoneHint):
 @dataclass
 class LocationGossipStoneHint(GossipStoneHint):
     location_string: str
+
     def to_gossip_stone_text(self) -> List[str]:
         return [f"They say that {self.location_string} <y<{self.item}>>"]
 

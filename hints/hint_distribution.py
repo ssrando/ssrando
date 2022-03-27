@@ -23,6 +23,53 @@ HINTABLE_ITEMS = (
     + ["Fireshield Earrings"] * 1
 )
 
+JUNK_TEXT = [
+    "They say that crashing in BiT is easy.",
+    "They say that bookshelves can talk",
+    "They say that people who love the Bug Net also like Trains",
+    "They say that there is a Gossip Stone by the Temple of Time",
+    "They say there's a 35% chance for FS Boss Key to be Heetle Locked",
+    "They say 64bit left Fire Sanctuary without learning Ballad of the Goddess",
+    "They say that Ancient Cistern is haunted by the ghosts of softlocked Links",
+    "They say the Potion Lady is still holding onto a Spiral Charge for CJ",
+    "They say there is a chest underneath the party wheel in Lanayru",
+    "They say that you need the hero's tunic to sleep on the main part of Skyloft",
+    "They say that you need to Hot the Spile to defeat Imprisoned 2",
+    "They say whenever Spiral Charge is on a trial, a seed roller goes mysteriously missing",
+    "They say that Eldin Trial is vanilla whenever it is required",
+    "They say that gymnast86 won the first randomizer tournament and retired immediately after",
+    "They say that Mogmas don't understand Minesweeper",
+    "They say that you can win a race by abandoning Lanayru to check Cawlin's Letter",
+    "They say that tornados spawn frequently in the Sky",
+    "They say Scrapper gets easily tilted",
+    "They say there is a chest on the cliffs by the Goddess Statue",
+    "They say that entering Ancient Cistern with no B items has a 1% chance of success",
+    "They say that Glittering Spores are the best bird drugs",
+    "They say that the Ancient Automaton fears danger darts",
+    "They say the single tumbling plant is required every seed",
+    "They say that your battery is low",
+    "They say that you just have to get the right checks to win",
+    "They say that rushing Peatrice is the play",
+    "They say there is a 0.0000001164% chance your RNG won't change",
+    "If only we could go Back in Time and name the glitch properly..."
+    'They say that there is something called a "hash" that makes it easier for people to verify that they are playing the right seed',
+    "They say that the bad seed rollers are still in the car, seeking for a safe refugee",
+    "Have you heard the tragedy of Darth Kolok the Pause? I thought not, it's not a story the admins would tell you",
+    "Sand Sea is the most hated region in the game, because Sand is coarse, rough and gets everywhere",
+    "They say that rice has magical properties when visiting Yerbal",
+    "They say that Jannon is still jammin to this day",
+    "They say that there is only one place where the Slingshot beats the Bow",
+    "They say that Koloktos waiting caused a civil war among players",
+    "They say that there is a settings combination which needs 0 checks to be completed",
+    "They say that avoiding Fledge's item from a fresh file is impossible",
+    "... astronomically ...",
+    "They say that you can open the chest behind bars in LMF after raising said bars",
+    "They say that you look like you have a Questions",
+    "They say that HD randomizer development is delayed by a day every time someone asks about it in the Discord",
+    "The disc could not be read. Refer to the Wii Operations Manual for details.",
+]
+
+
 class InvalidHintDistribution(Exception):
     pass
 
@@ -55,6 +102,7 @@ class HintDistribution:
         self.weights = []
         self.hintable_items = []
         self.ready = False
+        self.junk_hints = []
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))
@@ -91,7 +139,10 @@ class HintDistribution:
         for hint in always_hints:
             self.hints.append(
                 LocationGossipStoneHint(
-                    hint, self.logic.done_item_locations[hint], True, always_location_descriptors[hint]
+                    hint,
+                    self.logic.done_item_locations[hint],
+                    True,
+                    always_location_descriptors[hint],
                 )
             )
         self.rng.shuffle(self.hints)
@@ -105,7 +156,7 @@ class HintDistribution:
             # cover a given number of sometimes hints
             num_sometimes = self.distribution["sometimes"]["fixed"]
         self.rng.shuffle(sometimes_hints)
-        if (len(sometimes_hints) < num_sometimes):
+        if len(sometimes_hints) < num_sometimes:
             num_sometimes = len(sometimes_hints)
         for i in range(num_sometimes):
             hint = sometimes_hints[i]
@@ -114,7 +165,7 @@ class HintDistribution:
                     hint,
                     self.logic.done_item_locations[hint],
                     True,
-                    sometimes_location_descriptors[hint]
+                    sometimes_location_descriptors[hint],
                 )
             )
 
@@ -139,7 +190,7 @@ class HintDistribution:
                 if item.endswith("Boss Key"):
                     continue
             zone, specific_loc = Logic.split_location_name_by_zone(sots_loc)
-            print(f'{sots_loc}-{zone}: {item}')
+            print(f"{sots_loc}-{zone}: {item}")
             self.sots_locations.append((zone, sots_loc, item))
         print(self.sots_locations)
 
@@ -176,11 +227,15 @@ class HintDistribution:
             self.weighted_types.append(hint_type)
             self.weights.append(self.distribution[hint_type]["weight"])
 
+        self.junk_hints = JUNK_TEXT.copy()
+        self.rng.shuffle(self.junk_hints)
+
     """
     Uses the distribution to calculate the next hint
     """
 
     def next_hint(self) -> GossipStoneHint:
+        print(self.junk_hints)
         if len(self.hints) > 0:
             return self.hints.pop()
         [next_type] = self.rng.choices(self.weighted_types, self.weights)
@@ -207,21 +262,28 @@ class HintDistribution:
                 self.prev_barren_type = self.rng.choices(
                     ["dungeon", "overworld"], [0.75, 0.25]
                 )[0]
-            
+
             # Check against caps
-            if self.prev_barren_type == 'dungeon':
+            if self.prev_barren_type == "dungeon":
                 if self.placed_dungeon_barren > self.dungeon_barren_limit:
-                    self.prev_barren_type = 'overworld'
+                    self.prev_barren_type = "overworld"
 
             # Failsafes if there are not enough barren hints to fill out the generated hint
-            if len(self.barren_dungeons) == 0 and self.prev_barren_type == 'dungeon':
-                self.prev_barren_type = 'overworld'
+            if len(self.barren_dungeons) == 0 and self.prev_barren_type == "dungeon":
+                self.prev_barren_type = "overworld"
                 if len(self.barren_overworld_zones) == 0:
-                    return EmptyGossipStoneHint(None, None, False, 'no barrens to place')
-            if len(self.barren_overworld_zones) == 0 and self.prev_barren_type == 'overworld':
-                self.prev_barren_type = 'dungeon'
+                    return EmptyGossipStoneHint(
+                        None, None, False, self.junk_hints.pop()
+                    )
+            if (
+                len(self.barren_overworld_zones) == 0
+                and self.prev_barren_type == "overworld"
+            ):
+                self.prev_barren_type = "dungeon"
                 if len(self.barren_dungeons) == 0:
-                    return EmptyGossipStoneHint(None, None, False, 'no barrens to place')
+                    return EmptyGossipStoneHint(
+                        None, None, False, self.junk_hints.pop()
+                    )
 
             # generate a hint and remove it from the lists
             if self.prev_barren_type == "dungeon":
@@ -243,12 +305,11 @@ class HintDistribution:
         elif next_type == "item":
             hinted_item = self.hintable_items.pop()
             for location, item in self.logic.done_item_locations.items():
-                if (
-                    item == hinted_item
-                    and location not in self.hinted_locations
-                ):
+                if item == hinted_item and location not in self.hinted_locations:
                     self.hinted_locations.append(location)
                     return ItemGossipStoneHint(location, item, True)
         # junk hint is the last possible type and also a fallback
-        return EmptyGossipStoneHint(None, None, False, text='Hi I have nothing for you')
-    
+        return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
+
+    def get_junk_text(self):
+        return self.junk_hints.pop()

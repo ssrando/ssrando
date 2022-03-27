@@ -63,6 +63,7 @@ SOMETIMES_LOCATIONS = [
     "Sealed Grounds - Gorko's Goddess Wall Reward",
 ]
 
+
 class Hints:
     def __init__(self, logic: Logic):
         self.stonehint_definitions = logic.rando.stonehint_definitions
@@ -110,9 +111,7 @@ class Hints:
         hints = []
         for i in range(30):
             hints.append(self.dist.next_hint())
-        self._place_hints_for_locations(
-            hints
-        )
+        self._place_hints_for_locations(hints)
 
     def do_bingo_hints(self):
         total_stonehints = len(self.stonehint_definitions) * 2
@@ -240,9 +239,7 @@ class Hints:
         )
 
         if len(hints) < len(self.stonehint_definitions) * 2:
-            hints.extend(
-                [None] * (len(self.stonehint_definitions) * 2 - len(hints))
-            )
+            hints.extend([None] * (len(self.stonehint_definitions) * 2 - len(hints)))
         unplace_hints = hints.copy()
 
         hint_to_location = {}
@@ -302,7 +299,7 @@ class Hints:
                         second_loc_to_hint,
                     )
                 else:
-                    self.hints[gossipstone_name] =second_loc_to_hint
+                    self.hints[gossipstone_name] = second_loc_to_hint
             elif loc_to_hint is None:
                 # place barren hints at locations with no hints
                 if len(anywhere_hints) < 0:
@@ -313,7 +310,7 @@ class Hints:
                     self.hints[gossipstone_name] = hint
                 else:
                     self.hints[gossipstone_name] = EmptyGossipStoneHint(
-                        text="--PLACEHOLDER--"
+                        None, None, False, self.dist.get_junk_text()
                     )
             else:
                 self.hints[gossipstone_name] = GossipStoneHintWrapper(
