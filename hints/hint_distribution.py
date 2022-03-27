@@ -190,9 +190,7 @@ class HintDistribution:
                 if item.endswith("Boss Key"):
                     continue
             zone, specific_loc = Logic.split_location_name_by_zone(sots_loc)
-            print(f"{sots_loc}-{zone}: {item}")
             self.sots_locations.append((zone, sots_loc, item))
-        print(self.sots_locations)
 
         region_barren, nonprogress = self.logic.get_barren_regions()
         for zone in region_barren:
@@ -235,12 +233,10 @@ class HintDistribution:
     """
 
     def next_hint(self) -> GossipStoneHint:
-        print(self.junk_hints)
         if len(self.hints) > 0:
             return self.hints.pop()
         [next_type] = self.rng.choices(self.weighted_types, self.weights)
         if next_type == "sots":
-            # print(self.sots_locations)
             zone, loc, item = self.sots_locations.pop()
             if self.sots_dungeon_placed >= self.dungeon_sots_limit:
                 while zone in ALL_DUNGEON_AREAS:

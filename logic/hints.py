@@ -281,38 +281,43 @@ class Hints:
         self.logic.rando.rng.shuffle(anywhere_hints)
 
         for gossipstone_name in self.stonehint_definitions:
-            locs_to_hint = hint_to_location[gossipstone_name]
-            loc_to_hint = locs_to_hint[0]
-            second_loc_to_hint = locs_to_hint[1]
-            if second_loc_to_hint is None and loc_to_hint is not None:
-                if len(anywhere_hints) > 0:
-                    self.hints[gossipstone_name] = GossipStoneHintWrapper(
-                        loc_to_hint,
-                        BarrenGossipStoneHint(zone=anywhere_hints.pop()),
-                    )
-                else:
-                    self.hints[gossipstone_name] = loc_to_hint
-            elif second_loc_to_hint is not None and loc_to_hint is None:
-                if len(anywhere_hints) > 0:
-                    self.hints[gossipstone_name] = GossipStoneHintWrapper(
-                        BarrenGossipStoneHint(zone=anywhere_hints.pop()),
-                        second_loc_to_hint,
-                    )
-                else:
-                    self.hints[gossipstone_name] = second_loc_to_hint
-            elif loc_to_hint is None:
-                # place barren hints at locations with no hints
-                if len(anywhere_hints) < 0:
-                    hint = anywhere_hints.pop()
-                else:
-                    hint = None
-                if hint is not None:
-                    self.hints[gossipstone_name] = hint
-                else:
-                    self.hints[gossipstone_name] = EmptyGossipStoneHint(
-                        None, None, False, self.dist.get_junk_text()
-                    )
-            else:
-                self.hints[gossipstone_name] = GossipStoneHintWrapper(
-                    loc_to_hint, second_loc_to_hint
+            if gossipstone_name in self.dist.banned_stones:
+                self.hints[gossipstone_name] = EmptyGossipStoneHint(
+                    None, None, False, self.dist.get_junk_text()
                 )
+            else:
+                locs_to_hint = hint_to_location[gossipstone_name]
+                loc_to_hint = locs_to_hint[0]
+                second_loc_to_hint = locs_to_hint[1]
+                if second_loc_to_hint is None and loc_to_hint is not None:
+                    if len(anywhere_hints) > 0:
+                        self.hints[gossipstone_name] = GossipStoneHintWrapper(
+                            loc_to_hint,
+                            BarrenGossipStoneHint(zone=anywhere_hints.pop()),
+                        )
+                    else:
+                        self.hints[gossipstone_name] = loc_to_hint
+                elif second_loc_to_hint is not None and loc_to_hint is None:
+                    if len(anywhere_hints) > 0:
+                        self.hints[gossipstone_name] = GossipStoneHintWrapper(
+                            BarrenGossipStoneHint(zone=anywhere_hints.pop()),
+                            second_loc_to_hint,
+                        )
+                    else:
+                        self.hints[gossipstone_name] = second_loc_to_hint
+                elif loc_to_hint is None:
+                    # place barren hints at locations with no hints
+                    if len(anywhere_hints) < 0:
+                        hint = anywhere_hints.pop()
+                    else:
+                        hint = None
+                    if hint is not None:
+                        self.hints[gossipstone_name] = hint
+                    else:
+                        self.hints[gossipstone_name] = EmptyGossipStoneHint(
+                            None, None, False, self.dist.get_junk_text()
+                        )
+                else:
+                    self.hints[gossipstone_name] = GossipStoneHintWrapper(
+                        loc_to_hint, second_loc_to_hint
+                    )
