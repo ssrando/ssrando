@@ -1,5 +1,4 @@
 import json
-from pprint import pprint
 from random import Random
 from typing import Tuple
 from xmlrpc.client import Boolean
@@ -35,7 +34,9 @@ class HintDistribution:
         self.removed_locations = []
         self.added_items = []
         self.removed_items = []
+        self.sots_dungeon_placed = 0
         self.dungeon_sots_limit = 0
+        self.sots_dungeon_placed = 0
         self.dungeon_barren_limit = 0
         self.distribution = {}
         self.rng: Random = None
@@ -88,7 +89,6 @@ class HintDistribution:
 
         # all always hints are always hinted
         for hint in always_hints:
-            print(hint)
             self.hints.append(
                 LocationGossipStoneHint(
                     hint, self.logic.done_item_locations[hint], True, always_location_descriptors[hint]
@@ -139,11 +139,11 @@ class HintDistribution:
                 if item.endswith("Boss Key"):
                     continue
             zone, specific_loc = Logic.split_location_name_by_zone(sots_loc)
-            self.sots_regions.append(zone)
+            print(f'{sots_loc}-{zone}: {item}')
+            self.sots_locations.append((zone, sots_loc, item))
+        print(self.sots_locations)
 
         region_barren, nonprogress = self.logic.get_barren_regions()
-        print(region_barren)
-        print(nonprogress)
         for zone in region_barren:
             if "Silent Realm" in zone:
                 continue  # don't hint barren silent realms since they are an always hint
@@ -184,13 +184,16 @@ class HintDistribution:
         if len(self.hints) > 0:
             return self.hints.pop()
         [next_type] = self.rng.choices(self.weighted_types, self.weights)
-        print(next_type)
         if next_type == "sots":
-            # return WayOfTheHeroGossipStoneHint(self.sots_regions.pop()), True
-            return EmptyGossipStoneHint(None, None, False, 'sots placeholder')
+            # print(self.sots_locations)
+            zone, loc, item = self.sots_locations.pop()
+            if self.sots_dungeon_placed >= self.dungeon_sots_limit:
+                while zone in ALL_DUNGEON_AREAS:
+                    zone, loc, item = self.sots_locations.pop()
+            elif zone in ALL_DUNGEON_AREAS:
+                self.sots_dungeon_placed += 1
+            return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
         elif next_type == "barren":
-            print(self.barren_dungeons)
-            print(self.barren_overworld_zones)
             if self.prev_barren_type is None:
                 # 50/50 between dungeon and overworld on the first hint
                 self.prev_barren_type = self.rng.choices(
@@ -204,6 +207,12 @@ class HintDistribution:
                 self.prev_barren_type = self.rng.choices(
                     ["dungeon", "overworld"], [0.75, 0.25]
                 )[0]
+            
+            # Check against caps
+            if self.prev_barren_type == 'dungeon':
+                if self.placed_dungeon_barren > self.dungeon_barren_limit:
+                    self.prev_barren_type = 'overworld'
+
             # Failsafes if there are not enough barren hints to fill out the generated hint
             if len(self.barren_dungeons) == 0 and self.prev_barren_type == 'dungeon':
                 self.prev_barren_type = 'overworld'
@@ -216,7 +225,6 @@ class HintDistribution:
 
             # generate a hint and remove it from the lists
             if self.prev_barren_type == "dungeon":
-                print("dungeon selected")
                 weights = [
                     len(self.logic.locations_by_zone_name[area])
                     for area in self.barren_dungeons
@@ -225,7 +233,6 @@ class HintDistribution:
                 self.barren_dungeons.remove(area)
                 return BarrenGossipStoneHint(None, None, False, area)
             else:
-                print("overworld selected")
                 weights = [
                     len(self.logic.locations_by_zone_name[area])
                     for area in self.barren_overworld_zones

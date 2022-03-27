@@ -198,7 +198,6 @@ class Hints:
 
     def _place_hints_for_locations(self, hints: List[GossipStoneHint]):
         # make sure hint locations aren't locked by the item they hint
-        print(hints)
         hint_banned_stones = defaultdict(set)
         for hint in hints:
             if not hint.needs_logic:
@@ -286,7 +285,6 @@ class Hints:
 
         for gossipstone_name in self.stonehint_definitions:
             locs_to_hint = hint_to_location[gossipstone_name]
-            # print(locs_to_hint)
             loc_to_hint = locs_to_hint[0]
             second_loc_to_hint = locs_to_hint[1]
             if second_loc_to_hint is None and loc_to_hint is not None:

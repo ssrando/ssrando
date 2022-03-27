@@ -76,7 +76,7 @@ class ItemGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
-class WayOfTheHeroGossipStoneHint(GossipStoneHint):
+class SpiritOfTheSwordGossipStoneHint(GossipStoneHint):
     zone: str
 
     def to_gossip_stone_text(self) -> List[str]:
@@ -86,6 +86,9 @@ class WayOfTheHeroGossipStoneHint(GossipStoneHint):
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.zone} is SotS"
+
+    def __hash__(self):
+        return hash(self.location + self.item)
 
 
 @dataclass

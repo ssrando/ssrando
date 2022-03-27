@@ -98,7 +98,6 @@ class Randomizer(BaseRandomizer):
         self.banned_types = self.options["banned-types"]
 
         self.logic = Logic(self)
-        self.sots_locations = self.logic.get_sots_locations()
         self.hints = Hints(self.logic)
 
         # self.logic.set_prerandomization_item_location("Beedle - Second 100 Rupee Item", "Rare Treasure")
@@ -162,6 +161,7 @@ class Randomizer(BaseRandomizer):
     def randomize(self):
         self.progress_callback("randomizing items...")
         self.logic.randomize_items()
+        self.sots_locations = self.logic.get_sots_locations()
         if self.options["hint-distribution"] == "Junk":
             self.hints.do_junk_hints()
         elif self.options["hint-distribution"] == "Normal":
