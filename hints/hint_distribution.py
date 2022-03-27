@@ -9,6 +9,18 @@ from logic.logic import Logic
 from paths import RANDO_ROOT_PATH
 
 
+HINTABLE_ITEMS = (
+    ["Clawshots"]
+    + ["Progressive Beetle"] * 2
+    + ["Progressive Sword"] * 4
+    + ["Emerald Tablet"] * 1
+    + ["Ruby Tablet"] * 1
+    + ["Amber Tablet"] * 1
+    + ["Goddess Harp"] * 1
+    + ["Water Scale"] * 1
+    + ["Fireshield Earrings"] * 1
+)
+
 class InvalidHintDistribution(Exception):
     pass
 
@@ -28,16 +40,16 @@ class HintDistribution:
         self.hints = []
         self.weighted_types = []
         self.weights = []
-        self.sots_regions = []
+        self.sots_locations = []
         self.barren_overworld_zones = []
         self.placed_ow_barren = 0
         self.barren_dungeons = []
         self.placed_dungeon_barren = 0
         self.prev_barren_type = None
         self.hinted_locations = []
-        self.hints = []
         self.weighted_types = []
         self.weights = []
+        self.hintable_items = []
         self.ready = False
 
     def read_from_file(self, f):
@@ -146,6 +158,9 @@ class HintDistribution:
             else:
                 self.barren_overworld_zones.append(zone)
 
+        self.hintable_items = HINTABLE_ITEMS.copy()
+        self.logic.rando.rng.shuffle(self.hintable_items)
+
         for hint_type in self.distribution.keys():
             self.weighted_types.append(hint_type)
             self.weights.append(self.distribution[hint_type]["weight"])
@@ -194,7 +209,14 @@ class HintDistribution:
                 self.barren_overworld_zones.remove(area)
                 return BarrenGossipStoneHint(area)
         elif next_type == "item":
-            pass
+            hinted_item = self.hintable_items.pop()
+            for location, item in self.logic.done_item_locations.items():
+                if (
+                    item == hinted_item
+                    and location not in self.hinted_locations
+                ):
+                    self.hinted_locations.append(location)
+                    return ItemGossipStoneHint(location, item)
         else:
             # junk hint is the last and also a fallback
             pass
