@@ -242,6 +242,11 @@ class HintDistribution:
         self.hintable_items = HINTABLE_ITEMS.copy()
         for item in self.added_items:
             self.hintable_items.extend([item["name"]] * item["amount"])
+        if (
+            "Sandship" in self.logic.required_dungeons
+            or not self.logic.rando.options["empty-unrequired-dungeons"]
+        ):
+            self.hintable_items.append("Sea Chart")
         for item in self.removed_items:
             if item in self.hintable_items:
                 self.hintable_items.remove(item)
