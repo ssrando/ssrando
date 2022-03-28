@@ -74,11 +74,6 @@ class Hints:
             else:
                 hintdef["Need"] = self.logic.macros[hintname]
         self.hints = OrderedDict()
-        with open(RANDO_ROOT_PATH / "hint_locations.yaml") as f:
-            hints = yaml.safe_load(f)
-            self.always_locations = hints["always"]
-            self.sometimes_locations = hints["sometimes"]
-            self.hint_defs = {**self.always_locations, **self.sometimes_locations}
         with open(RANDO_ROOT_PATH / f"hints/distributions/standard.json") as f:
             self.dist = HintDistribution()
             self.dist.read_from_file(f)
@@ -89,7 +84,12 @@ class Hints:
 
     def do_normal_hints(self):
         needed_always_hints = self.logic.filter_locations_for_progression(
-            ALWAYS_REQUIRED_LOCATIONS
+            [
+                loc
+                for loc in self.logic.item_locations.keys()
+                if "hint" in self.logic.item_locations[loc]
+                and self.logic.item_locations[loc]["hint"] == "always"
+            ]
         )
         # in shopsanity, we need to hint some beetle shop items
         # add them manually, cause they need to be kinda weirdly implemented because of bug net
@@ -105,7 +105,12 @@ class Hints:
             needed_always_hints.append("Lanayru Silent Realm - Clawshots")
             needed_always_hints.append("Eldin Silent Realm - Fireshield Earrings")
         needed_sometimes_hints = self.logic.filter_locations_for_progression(
-            SOMETIMES_LOCATIONS
+            [
+                loc
+                for loc in self.logic.item_locations.keys()
+                if "hint" in self.logic.item_locations[loc]
+                and self.logic.item_locations[loc]["hint"] == "sometimes"
+            ]
         )
         self.dist.start(self.logic, needed_always_hints, needed_sometimes_hints)
         hints = []

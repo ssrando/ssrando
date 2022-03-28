@@ -3,7 +3,9 @@
     "Sand Sea - Gossip Stone in Shipyard",
     "Lanayru Desert - Gossip Stone in Temple of Time Area"
   ],
-  "added_locations": [],
+  "added_locations": [
+    {"location": "Batreaux - 10 Crystals", "type": "always"}
+  ],
   "removed_locations": [],
   "added_items": [],
   "removed_items": [

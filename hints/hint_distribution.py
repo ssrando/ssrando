@@ -1,4 +1,6 @@
+from collections import defaultdict
 import json
+from pprint import pprint
 from random import Random
 from typing import Tuple
 from xmlrpc.client import Boolean
@@ -129,11 +131,29 @@ class HintDistribution:
         self.rng = logic.rando.rng
         self.logic = logic
 
-        # load additional resources in
-        with open(RANDO_ROOT_PATH / "hint_locations.yaml") as f:
-            hints = yaml.safe_load(f)
-            always_location_descriptors = hints["always"]
-            sometimes_location_descriptors = hints["sometimes"]
+
+        hint_descriptors = {}
+        for name, loc in self.logic.item_locations.items():
+            if "text" in loc:
+                hint_descriptors[name] = loc["text"]
+        for name, loc in self.logic.item_locations.items():
+            if "text" not in loc:
+                hint_descriptors[name] = name + " has"
+
+        for loc in self.added_locations:
+            location = loc["location"]
+            if loc["type"] == "always":
+                always_hints.append(loc["location"])
+                if location in sometimes_hints:
+                    sometimes_hints.remove(location)
+            elif loc["type"] == "sometimes":
+                always_hints.append(loc["location"])
+                if location in sometimes_hints:
+                    always_hints.remove(location)
+
+        for loc in self.removed_locations:
+            always_hints.remove(loc)
+            sometimes_hints.remove(loc)
 
         # all always hints are always hinted
         for hint in always_hints:
@@ -142,7 +162,7 @@ class HintDistribution:
                     hint,
                     self.logic.done_item_locations[hint],
                     True,
-                    always_location_descriptors[hint],
+                    hint_descriptors[hint],
                 )
             )
         self.rng.shuffle(self.hints)
@@ -165,7 +185,7 @@ class HintDistribution:
                     hint,
                     self.logic.done_item_locations[hint],
                     True,
-                    sometimes_location_descriptors[hint],
+                    hint_descriptors[hint],
                 )
             )
 
