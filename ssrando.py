@@ -162,7 +162,7 @@ class Randomizer(BaseRandomizer):
         self.progress_callback("randomizing items...")
         self.logic.randomize_items()
         self.sots_locations = self.logic.get_sots_locations()
-        self.hints.do_normal_hints()
+        self.hints.do_hints()
         if self.no_logs:
             self.progress_callback("writing anti spoiler log...")
         else:
