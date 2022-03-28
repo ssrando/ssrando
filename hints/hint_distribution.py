@@ -163,6 +163,7 @@ class HintDistribution:
 
         # all always hints are always hinted
         for hint in always_hints:
+            self.hinted_locations.append(hint)
             self.hints.append(
                 LocationGossipStoneHint(
                     hint,
@@ -312,6 +313,9 @@ class HintDistribution:
 
     def _create_sometimes_hint(self):
         hint = self.sometimes_hints.pop()
+        while hint in self.hinted_locations:
+            hint = self.sometimes_hints.pop()
+        self.hinted_locations.append(hint)
         return LocationGossipStoneHint(
             hint,
             self.logic.done_item_locations[hint],
@@ -321,6 +325,9 @@ class HintDistribution:
 
     def _create_sots_hint(self):
         zone, loc, item = self.sots_locations.pop()
+        while loc in self.hinted_locations:
+            zone, loc, item = self.sots_locations.pop()
+        self.hinted_locations.append(loc)
         if self.sots_dungeon_placed >= self.dungeon_sots_limit:
             while zone in ALL_DUNGEON_AREAS:
                 zone, loc, item = self.sots_locations.pop()
