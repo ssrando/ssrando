@@ -164,13 +164,13 @@ class HintDistribution:
         # all always hints are always hinted
         for hint in always_hints:
             self.hinted_locations.append(hint)
-            self.hints.append(
-                LocationGossipStoneHint(
+            self.hints.extend(
+                [LocationGossipStoneHint(
                     hint,
                     self.logic.done_item_locations[hint],
                     True,
                     hint_descriptors[hint],
-                )
+                )] * self.distribution["always"]["copies"]
             )
         self.rng.shuffle(self.hints)
         self.rng.shuffle(sometimes_hints)
@@ -233,7 +233,6 @@ class HintDistribution:
         for item in self.logic.starting_items:
             if item in self.hintable_items:
                 self.hintable_items.remove(item)
-        print(self.hintable_items)
         self.logic.rando.rng.shuffle(self.hintable_items)
 
         needed_fixed = []
@@ -243,39 +242,40 @@ class HintDistribution:
         needed_fixed.sort(key=lambda type: self.distribution[type]["order"])
 
         for type in needed_fixed:
+            curr_type = self.distribution[type]
             if type == "sometimes":
-                num_sometimes = self.distribution[type]["fixed"]
+                num_sometimes = curr_type["fixed"]
                 if len(sometimes_hints) < num_sometimes:
                     # overrun protection
                     num_sometimes = len(sometimes_hints)
                 for i in range(num_sometimes):
-                    self.hints.append(self._create_sometimes_hint())
+                    self.hints.extend([self._create_sometimes_hint()] * curr_type["copies"])
             elif type == "sots":
-                for i in range(self.distribution[type]["fixed"]):
+                for i in range(curr_type["fixed"]):
                     try:
-                        self.hints.append(self._create_sots_hint())
+                        self.hints.extend([self._create_sots_hint()] * curr_type["copies"])
                     except:
                         # squash the pop from empty list since we don't have a good way of preventing it
                         # we don't know how many valid sots placements there are in the distribution because
                         # of limits, so this works more easily
                         pass
             elif type == "barren":
-                for i in range(self.distribution[type]["fixed"]):
+                for i in range(curr_type["fixed"]):
                     try:
                         hint = self._create_barren_hint()
                         if hint is not None:
-                            self.hints.append(hint)
+                            self.hints.extend([hint] * curr_type["copies"])
                         
                     except:
                         # same as above, squash this error
                         pass
             elif type == "item":
-                num_items = self.distribution[type]["fixed"]
+                num_items = curr_type["fixed"]
                 if num_items > len(self.hintable_items):
                     # this is a failsafe for if there are more item hints than there are items to be hinted
                     num_items = len(self.hintable_items)
                 for i in range(num_items):
-                    self.hints.append(self._create_item_hint())
+                    self.hints.extend([self._create_item_hint()] * curr_type["copies"])
             else:
                 raise InvalidHintDistribution(
                     "Invalid hint type found in distribution while geneating fixed hints"
@@ -284,6 +284,7 @@ class HintDistribution:
         # reverse the list of hints to we can pop off the back in O(1) in next_hint ()
         # this also preserves the order they were added as they are removed so that order parameter is repsected
         self.hints.reverse()
+        pprint(self.hints)
 
         for hint_type in self.distribution.keys():
             self.weighted_types.append(hint_type)
@@ -300,14 +301,27 @@ class HintDistribution:
         if len(self.hints) > 0:
             return self.hints.pop()
         [next_type] = self.rng.choices(self.weighted_types, self.weights)
+        type = self.distribution[next_type]
         if next_type == "sometimes":
-            return self._create_sometimes_hint()
+            hint = self._create_sometimes_hint()
+            if type["copies"] :
+                self.hints.extend([hint] * (type["copies"]-1))
+            return hint
         elif next_type == "sots":
-            return self._create_sots_hint()
+            hint = self._create_sots_hint()
+            if type["copies"] :
+                self.hints.extend([hint] * (type["copies"]-1))
+            return hint
         elif next_type == "barren":
-            return self._create_barren_hint()
+            hint = self._create_barren_hint()
+            if type["copies"] :
+                self.hints.extend([hint] * (type["copies"]-1))
+            return hint
         elif next_type == "item":
-            return self._create_item_hint()
+            hint = self._create_item_hint()
+            if type["copies"] :
+                self.hints.extend([hint] * (type["copies"]-1))
+            return hint
         # junk hint is the last possible type and also a fallback
         return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
 
