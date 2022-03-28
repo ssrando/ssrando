@@ -162,14 +162,7 @@ class Randomizer(BaseRandomizer):
         self.progress_callback("randomizing items...")
         self.logic.randomize_items()
         self.sots_locations = self.logic.get_sots_locations()
-        if self.options["hint-distribution"] == "Junk":
-            self.hints.do_junk_hints()
-        elif self.options["hint-distribution"] == "Normal":
-            self.hints.do_normal_hints()
-        elif self.options["hint-distribution"] == "Bingo":
-            self.hints.do_bingo_hints()
-        else:
-            raise Exception(f"{self.options['hints']} is not a valid hint setting!")
+        self.hints.do_normal_hints()
         if self.no_logs:
             self.progress_callback("writing anti spoiler log...")
         else:

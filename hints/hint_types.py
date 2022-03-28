@@ -39,15 +39,17 @@ class GossipStoneHintWrapper:
 @dataclass
 class TrialGateGossipStoneHint(GossipStoneHint):
     trial_gate: str
-    trial_item: str
 
     def to_gossip_stone_text(self) -> List[str]:
         return [
-            f"They say that opening the <r<{self.trial_gate}>> will reveal <y<{self.trial_item}>>"
+            f"They say that opening the <r<{self.trial_gate}>> will reveal <y<{self.item}>>"
         ]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.trial_gate} has {self.trial_item}"
+        return f"{self.trial_gate} has {self.item}"
+
+    def __hash__(self):
+        return hash(self.location + self.item)
 
 
 @dataclass

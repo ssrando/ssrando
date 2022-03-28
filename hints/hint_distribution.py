@@ -10,7 +10,11 @@ from typing import Tuple
 import yaml
 
 from hints.hint_types import *
-from logic.constants import POTENTIALLY_REQUIRED_DUNGEONS, ALL_DUNGEON_AREAS
+from logic.constants import (
+    POTENTIALLY_REQUIRED_DUNGEONS,
+    ALL_DUNGEON_AREAS,
+    SILENT_REALM_CHECKS,
+)
 from logic.logic import Logic
 from paths import RANDO_ROOT_PATH
 
@@ -164,14 +168,35 @@ class HintDistribution:
         # all always hints are always hinted
         for hint in always_hints:
             self.hinted_locations.append(hint)
-            self.hints.extend(
-                [LocationGossipStoneHint(
-                    hint,
-                    self.logic.done_item_locations[hint],
-                    True,
-                    hint_descriptors[hint],
-                )] * self.distribution["always"]["copies"]
-            )
+            if hint in SILENT_REALM_CHECKS.keys():
+                loc_trial_gate = SILENT_REALM_CHECKS[hint]
+                trial_gate_dest = self.logic.trial_connections[loc_trial_gate]
+                trial_gate_dest_loc = [
+                    trial
+                    for trial in SILENT_REALM_CHECKS.keys()
+                    if trial_gate_dest in trial
+                ].pop()
+                trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
+                self.hints.extend(
+                    [
+                        TrialGateGossipStoneHint(
+                            hint, trial_item, True, loc_trial_gate
+                        )
+                    ]
+                    * self.distribution["always"]["copies"]
+                )
+            else:
+                self.hints.extend(
+                    [
+                        LocationGossipStoneHint(
+                            hint,
+                            self.logic.done_item_locations[hint],
+                            True,
+                            hint_descriptors[hint],
+                        )
+                    ]
+                    * self.distribution["always"]["copies"]
+                )
         self.rng.shuffle(self.hints)
         self.rng.shuffle(sometimes_hints)
         self.sometimes_hints = sometimes_hints
@@ -249,11 +274,15 @@ class HintDistribution:
                     # overrun protection
                     num_sometimes = len(sometimes_hints)
                 for i in range(num_sometimes):
-                    self.hints.extend([self._create_sometimes_hint()] * curr_type["copies"])
+                    self.hints.extend(
+                        [self._create_sometimes_hint()] * curr_type["copies"]
+                    )
             elif type == "sots":
                 for i in range(curr_type["fixed"]):
                     try:
-                        self.hints.extend([self._create_sots_hint()] * curr_type["copies"])
+                        self.hints.extend(
+                            [self._create_sots_hint()] * curr_type["copies"]
+                        )
                     except:
                         # squash the pop from empty list since we don't have a good way of preventing it
                         # we don't know how many valid sots placements there are in the distribution because
@@ -265,7 +294,7 @@ class HintDistribution:
                         hint = self._create_barren_hint()
                         if hint is not None:
                             self.hints.extend([hint] * curr_type["copies"])
-                        
+
                     except:
                         # same as above, squash this error
                         pass
@@ -304,23 +333,23 @@ class HintDistribution:
         type = self.distribution[next_type]
         if next_type == "sometimes":
             hint = self._create_sometimes_hint()
-            if type["copies"] :
-                self.hints.extend([hint] * (type["copies"]-1))
+            if type["copies"]:
+                self.hints.extend([hint] * (type["copies"] - 1))
             return hint
         elif next_type == "sots":
             hint = self._create_sots_hint()
-            if type["copies"] :
-                self.hints.extend([hint] * (type["copies"]-1))
+            if type["copies"]:
+                self.hints.extend([hint] * (type["copies"] - 1))
             return hint
         elif next_type == "barren":
             hint = self._create_barren_hint()
-            if type["copies"] :
-                self.hints.extend([hint] * (type["copies"]-1))
+            if type["copies"]:
+                self.hints.extend([hint] * (type["copies"] - 1))
             return hint
         elif next_type == "item":
             hint = self._create_item_hint()
-            if type["copies"] :
-                self.hints.extend([hint] * (type["copies"]-1))
+            if type["copies"]:
+                self.hints.extend([hint] * (type["copies"] - 1))
             return hint
         # junk hint is the last possible type and also a fallback
         return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
