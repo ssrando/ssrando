@@ -1,13 +1,7 @@
 from collections import defaultdict
-from dis import dis
 from importlib.metadata import distribution
 import json
-from math import dist
-from pprint import pprint
 from random import Random
-from typing import Tuple
-
-import yaml
 
 from hints.hint_types import *
 from logic.constants import (
@@ -313,7 +307,6 @@ class HintDistribution:
         # reverse the list of hints to we can pop off the back in O(1) in next_hint ()
         # this also preserves the order they were added as they are removed so that order parameter is repsected
         self.hints.reverse()
-        pprint(self.hints)
 
         for hint_type in self.distribution.keys():
             self.weighted_types.append(hint_type)
