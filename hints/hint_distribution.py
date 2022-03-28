@@ -18,7 +18,7 @@ from paths import RANDO_ROOT_PATH
 HINTABLE_ITEMS = (
     ["Clawshots"]
     + ["Progressive Beetle"] * 2
-    + ["Progressive Sword"] * 4
+    + ["Progressive Sword"] * 6
     + ["Emerald Tablet"] * 1
     + ["Ruby Tablet"] * 1
     + ["Amber Tablet"] * 1
@@ -225,15 +225,15 @@ class HintDistribution:
                 self.barren_overworld_zones.append(zone)
 
         self.hintable_items = HINTABLE_ITEMS.copy()
-        self.hintable_items.extend(self.added_items)
+        for item in self.added_items:
+            self.hintable_items.extend([item["name"]] * item["amount"])
         for item in self.removed_items:
             if item in self.hintable_items:
                 self.hintable_items.remove(item)
-        self.hintable_items = [
-            item
-            for item in self.hintable_items
-            if item not in self.logic.starting_items
-        ]
+        for item in self.logic.starting_items:
+            if item in self.hintable_items:
+                self.hintable_items.remove(item)
+        print(self.hintable_items)
         self.logic.rando.rng.shuffle(self.hintable_items)
 
         needed_fixed = []
