@@ -183,7 +183,6 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, "option_got_starting_state").setVisible(False)
         getattr(self.ui, "label_for_option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_got_dungeon_requirement").setVisible(False)
-        getattr(self.ui, "option_sometimes_hints").setVisible(False)
         self.enable_trick_interface()
         getattr(self.ui, "enable_location").setVisible(False)
         getattr(self.ui, "disable_location").setVisible(False)
@@ -197,7 +196,6 @@ class RandoGUI(QMainWindow):
         # hide supporting elements
         getattr(self.ui, "tabWidget").removeTab(5)
         getattr(self.ui, "label").setVisible(False)
-        getattr(self.ui, "label_for_option_sometimes_hints").setVisible(False)
         getattr(self.ui, "option_plando").setVisible(False)
         getattr(self.ui, "plando_file").setVisible(False)
         getattr(self.ui, "plando_file_browse").setVisible(False)

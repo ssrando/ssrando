@@ -64,7 +64,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -311,7 +311,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>101</height>
+         <height>102</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_35">
@@ -1414,76 +1414,6 @@
           </item>
           <item>
            <widget class="QComboBox" name="option_hint_distribution"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_9">
-          <item>
-           <widget class="QLabel" name="label_for_option_woth_hints">
-            <property name="text">
-             <string>Spirit of the Sword Hints</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="option_woth_hints"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_12">
-          <item>
-           <widget class="QLabel" name="label_for_option_barren_hints">
-            <property name="text">
-             <string>Barren Hints</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="option_barren_hints"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_13">
-          <item>
-           <widget class="QLabel" name="label_for_option_sometimes_hints">
-            <property name="text">
-             <string>Sometimes Hints</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="option_sometimes_hints"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_14">
-          <item>
-           <widget class="QLabel" name="label_for_option_location_hints">
-            <property name="text">
-             <string>Location Hints</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="option_location_hints"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_15">
-          <item>
-           <widget class="QLabel" name="label_for_option_item_hints">
-            <property name="text">
-             <string>Item Hints</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="option_item_hints"/>
           </item>
          </layout>
         </item>
