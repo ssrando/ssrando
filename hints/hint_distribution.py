@@ -1,5 +1,8 @@
 from collections import defaultdict
+from dis import dis
+from importlib.metadata import distribution
 import json
+from math import dist
 from pprint import pprint
 from random import Random
 from typing import Tuple
@@ -104,6 +107,8 @@ class HintDistribution:
         self.hintable_items = []
         self.ready = False
         self.junk_hints = []
+        self.sometimes_hints = []
+        self.hint_descriptors = []
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))
@@ -130,7 +135,6 @@ class HintDistribution:
         self.rng = logic.rando.rng
         self.logic = logic
 
-
         hint_descriptors = {}
         for name, loc in self.logic.item_locations.items():
             if "text" in loc:
@@ -138,6 +142,7 @@ class HintDistribution:
         for name, loc in self.logic.item_locations.items():
             if "text" not in loc:
                 hint_descriptors[name] = name + " has"
+        self.hint_descriptors = hint_descriptors
 
         for loc in self.added_locations:
             location = loc["location"]
@@ -167,47 +172,8 @@ class HintDistribution:
                 )
             )
         self.rng.shuffle(self.hints)
-
-        needed_fixed = []
-        for type in self.distribution.keys():
-            if self.distribution[type]["fixed"] > 0:
-                needed_fixed.append(type)
-        print(needed_fixed  )
-        
-        for type in needed_fixed:
-            if type == 'sometimes':
-                pass
-            elif type == 'sots':
-                pass
-            elif type == "barren":
-                pass
-            elif type == 'item':
-                pass
-
-        # calculate sometimes hints
-        sometimes_coverage = self.distribution["sometimes"]["coverage"]
-        if sometimes_coverage > 0:
-            # we want to cover a specific portion of the available sometimes hints
-            num_sometimes = len(sometimes_hints) * sometimes_coverage
-        else:
-            # cover a given number of sometimes hints
-            num_sometimes = self.distribution["sometimes"]["fixed"]
         self.rng.shuffle(sometimes_hints)
-        if len(sometimes_hints) < num_sometimes:
-            num_sometimes = len(sometimes_hints)
-        for i in range(num_sometimes):
-            hint = sometimes_hints[i]
-            self.hints.append(
-                LocationGossipStoneHint(
-                    hint,
-                    self.logic.done_item_locations[hint],
-                    True,
-                    hint_descriptors[hint],
-                )
-            )
-
-        # reverse the list of hints to we can pop off the back in O(1) in next_hint ()
-        self.hints.reverse()
+        self.sometimes_hints = sometimes_hints
 
         # populate our internal list copies for later manipulation
         for sots_loc, item in self.logic.rando.sots_locations.items():
@@ -262,7 +228,61 @@ class HintDistribution:
         for item in self.removed_items:
             if item in self.hintable_items:
                 self.hintable_items.remove(item)
+        self.hintable_items = [
+            item
+            for item in self.hintable_items
+            if item not in self.logic.starting_items
+        ]
         self.logic.rando.rng.shuffle(self.hintable_items)
+
+        needed_fixed = []
+        for type in self.distribution.keys():
+            if self.distribution[type]["fixed"] > 0:
+                needed_fixed.append(type)
+        needed_fixed.sort(key=lambda type: self.distribution[type]["order"])
+
+        for type in needed_fixed:
+            if type == "sometimes":
+                num_sometimes = self.distribution[type]["fixed"]
+                if len(sometimes_hints) < num_sometimes:
+                    # overrun protection
+                    num_sometimes = len(sometimes_hints)
+                for i in range(num_sometimes):
+                    self.hints.append(self._create_sometimes_hint())
+            elif type == "sots":
+                for i in range(self.distribution[type]["fixed"]):
+                    try:
+                        self.hints.append(self._create_sots_hint())
+                    except:
+                        # squash the pop from empty list since we don't have a good way of preventing it
+                        # we don't know how many valid sots placements there are in the distribution because
+                        # of limits, so this works more easily
+                        pass
+            elif type == "barren":
+                for i in range(self.distribution[type]["fixed"]):
+                    try:
+                        hint = self._create_barren_hint()
+                        if hint is not None:
+                            self.hints.append(hint)
+                        
+                    except:
+                        # same as above, squash this error
+                        pass
+            elif type == "item":
+                num_items = self.distribution[type]["fixed"]
+                if num_items > len(self.hintable_items):
+                    # this is a failsafe for if there are more item hints than there are items to be hinted
+                    num_items = len(self.hintable_items)
+                for i in range(num_items):
+                    self.hints.append(self._create_item_hint())
+            else:
+                raise InvalidHintDistribution(
+                    "Invalid hint type found in distribution while geneating fixed hints"
+                )
+
+        # reverse the list of hints to we can pop off the back in O(1) in next_hint ()
+        # this also preserves the order they were added as they are removed so that order parameter is repsected
+        self.hints.reverse()
 
         for hint_type in self.distribution.keys():
             self.weighted_types.append(hint_type)
@@ -279,76 +299,92 @@ class HintDistribution:
         if len(self.hints) > 0:
             return self.hints.pop()
         [next_type] = self.rng.choices(self.weighted_types, self.weights)
-        if next_type == "sots":
-            zone, loc, item = self.sots_locations.pop()
-            if self.sots_dungeon_placed >= self.dungeon_sots_limit:
-                while zone in ALL_DUNGEON_AREAS:
-                    zone, loc, item = self.sots_locations.pop()
-            elif zone in ALL_DUNGEON_AREAS:
-                self.sots_dungeon_placed += 1
-            return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
+        if next_type == "sometimes":
+            return self._create_sometimes_hint()
+        elif next_type == "sots":
+            return self._create_sots_hint()
         elif next_type == "barren":
-            if self.prev_barren_type is None:
-                # 50/50 between dungeon and overworld on the first hint
-                self.prev_barren_type = self.rng.choices(
-                    ["dungeon", "overworld"], [0.5, 0.5]
-                )[0]
-            elif self.prev_barren_type == "dungeon":
-                self.prev_barren_type = self.rng.choices(
-                    ["dungeon", "overworld"], [0.25, 0.75]
-                )[0]
-            elif self.prev_barren_type == "overworld":
-                self.prev_barren_type = self.rng.choices(
-                    ["dungeon", "overworld"], [0.75, 0.25]
-                )[0]
-
-            # Check against caps
-            if self.prev_barren_type == "dungeon":
-                if self.placed_dungeon_barren > self.dungeon_barren_limit:
-                    self.prev_barren_type = "overworld"
-
-            # Failsafes if there are not enough barren hints to fill out the generated hint
-            if len(self.barren_dungeons) == 0 and self.prev_barren_type == "dungeon":
-                self.prev_barren_type = "overworld"
-                if len(self.barren_overworld_zones) == 0:
-                    return EmptyGossipStoneHint(
-                        None, None, False, self.junk_hints.pop()
-                    )
-            if (
-                len(self.barren_overworld_zones) == 0
-                and self.prev_barren_type == "overworld"
-            ):
-                self.prev_barren_type = "dungeon"
-                if len(self.barren_dungeons) == 0:
-                    return EmptyGossipStoneHint(
-                        None, None, False, self.junk_hints.pop()
-                    )
-
-            # generate a hint and remove it from the lists
-            if self.prev_barren_type == "dungeon":
-                weights = [
-                    len(self.logic.locations_by_zone_name[area])
-                    for area in self.barren_dungeons
-                ]
-                area = self.rng.choices(self.barren_dungeons, weights)[0]
-                self.barren_dungeons.remove(area)
-                return BarrenGossipStoneHint(None, None, False, area)
-            else:
-                weights = [
-                    len(self.logic.locations_by_zone_name[area])
-                    for area in self.barren_overworld_zones
-                ]
-                area = self.rng.choices(self.barren_overworld_zones, weights)[0]
-                self.barren_overworld_zones.remove(area)
-                return BarrenGossipStoneHint(None, None, False, area)
+            return self._create_barren_hint()
         elif next_type == "item":
-            hinted_item = self.hintable_items.pop()
-            for location, item in self.logic.done_item_locations.items():
-                if item == hinted_item and location not in self.hinted_locations:
-                    self.hinted_locations.append(location)
-                    return ItemGossipStoneHint(location, item, True)
+            return self._create_item_hint()
         # junk hint is the last possible type and also a fallback
         return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
+
+    def _create_sometimes_hint(self):
+        hint = self.sometimes_hints.pop()
+        return LocationGossipStoneHint(
+            hint,
+            self.logic.done_item_locations[hint],
+            True,
+            self.hint_descriptors[hint],
+        )
+
+    def _create_sots_hint(self):
+        zone, loc, item = self.sots_locations.pop()
+        if self.sots_dungeon_placed >= self.dungeon_sots_limit:
+            while zone in ALL_DUNGEON_AREAS:
+                zone, loc, item = self.sots_locations.pop()
+        elif zone in ALL_DUNGEON_AREAS:
+            self.sots_dungeon_placed += 1
+        return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
+
+    def _create_barren_hint(self):
+        if self.prev_barren_type is None:
+            # 50/50 between dungeon and overworld on the first hint
+            self.prev_barren_type = self.rng.choices(
+                ["dungeon", "overworld"], [0.5, 0.5]
+            )[0]
+        elif self.prev_barren_type == "dungeon":
+            self.prev_barren_type = self.rng.choices(
+                ["dungeon", "overworld"], [0.25, 0.75]
+            )[0]
+        elif self.prev_barren_type == "overworld":
+            self.prev_barren_type = self.rng.choices(
+                ["dungeon", "overworld"], [0.75, 0.25]
+            )[0]
+
+        # Check against caps
+        if self.prev_barren_type == "dungeon":
+            if self.placed_dungeon_barren > self.dungeon_barren_limit:
+                self.prev_barren_type = "overworld"
+
+        # Failsafes if there are not enough barren hints to fill out the generated hint
+        if len(self.barren_dungeons) == 0 and self.prev_barren_type == "dungeon":
+            self.prev_barren_type = "overworld"
+            if len(self.barren_overworld_zones) == 0:
+                return None
+        if (
+            len(self.barren_overworld_zones) == 0
+            and self.prev_barren_type == "overworld"
+        ):
+            self.prev_barren_type = "dungeon"
+            if len(self.barren_dungeons) == 0:
+                return None
+
+        # generate a hint and remove it from the lists
+        if self.prev_barren_type == "dungeon":
+            weights = [
+                len(self.logic.locations_by_zone_name[area])
+                for area in self.barren_dungeons
+            ]
+            area = self.rng.choices(self.barren_dungeons, weights)[0]
+            self.barren_dungeons.remove(area)
+            return BarrenGossipStoneHint(None, None, False, area)
+        else:
+            weights = [
+                len(self.logic.locations_by_zone_name[area])
+                for area in self.barren_overworld_zones
+            ]
+            area = self.rng.choices(self.barren_overworld_zones, weights)[0]
+            self.barren_overworld_zones.remove(area)
+            return BarrenGossipStoneHint(None, None, False, area)
+
+    def _create_item_hint(self):
+        hinted_item = self.hintable_items.pop()
+        for location, item in self.logic.done_item_locations.items():
+            if item == hinted_item and location not in self.hinted_locations:
+                self.hinted_locations.append(location)
+                return ItemGossipStoneHint(location, item, True)
 
     def get_junk_text(self):
         return self.junk_hints.pop()

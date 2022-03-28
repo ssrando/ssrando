@@ -114,8 +114,12 @@ class Hints:
         )
         self.dist.start(self.logic, needed_always_hints, needed_sometimes_hints)
         hints = []
-        for i in range(30):
-            hints.append(self.dist.next_hint())
+        i = 0
+        while i < 30:
+            hint = self.dist.next_hint()
+            if hint is not None:
+                hints.append(hint)
+                i += 1
         self._place_hints_for_locations(hints)
 
     def do_bingo_hints(self):
