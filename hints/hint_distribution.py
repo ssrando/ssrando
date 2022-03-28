@@ -172,11 +172,7 @@ class HintDistribution:
                 ].pop()
                 trial_item = self.logic.done_item_locations[trial_gate_dest_loc]
                 self.hints.extend(
-                    [
-                        TrialGateGossipStoneHint(
-                            hint, trial_item, True, loc_trial_gate
-                        )
-                    ]
+                    [TrialGateGossipStoneHint(hint, trial_item, True, loc_trial_gate)]
                     * self.distribution["always"]["copies"]
                 )
             else:

@@ -524,12 +524,13 @@
   type: singlechoice
   bits: 2
   choices:
-    # - Weak
+    - Weak
     - Balanced
     # - Strong
     # - Very Strong
     # - Locations Only
     # - Items Only
+    - Junk
   default: Balanced
   help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
     as specifics about what additional items and locations can and cannot be hinted

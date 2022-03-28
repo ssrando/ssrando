@@ -74,7 +74,10 @@ class Hints:
             else:
                 hintdef["Need"] = self.logic.macros[hintname]
         self.hints = OrderedDict()
-        with open(RANDO_ROOT_PATH / f"hints/distributions/standard.json") as f:
+        with open(
+            RANDO_ROOT_PATH
+            / f"hints/distributions/{self.logic.rando.options['hint-distribution']}.json"
+        ) as f:
             self.dist = HintDistribution()
             self.dist.read_from_file(f)
 
