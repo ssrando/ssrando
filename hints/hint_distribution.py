@@ -3,7 +3,6 @@ import json
 from pprint import pprint
 from random import Random
 from typing import Tuple
-from xmlrpc.client import Boolean
 
 import yaml
 
@@ -152,8 +151,10 @@ class HintDistribution:
                     always_hints.remove(location)
 
         for loc in self.removed_locations:
-            always_hints.remove(loc)
-            sometimes_hints.remove(loc)
+            if loc in always_hints:
+                always_hints.remove(loc)
+            if loc in sometimes_hints:
+                sometimes_hints.remove(loc)
 
         # all always hints are always hinted
         for hint in always_hints:
@@ -166,6 +167,22 @@ class HintDistribution:
                 )
             )
         self.rng.shuffle(self.hints)
+
+        needed_fixed = []
+        for type in self.distribution.keys():
+            if self.distribution[type]["fixed"] > 0:
+                needed_fixed.append(type)
+        print(needed_fixed  )
+        
+        for type in needed_fixed:
+            if type == 'sometimes':
+                pass
+            elif type == 'sots':
+                pass
+            elif type == "barren":
+                pass
+            elif type == 'item':
+                pass
 
         # calculate sometimes hints
         sometimes_coverage = self.distribution["sometimes"]["coverage"]
@@ -243,7 +260,8 @@ class HintDistribution:
         self.hintable_items = HINTABLE_ITEMS.copy()
         self.hintable_items.extend(self.added_items)
         for item in self.removed_items:
-            self.hintable_items.remove(item)
+            if item in self.hintable_items:
+                self.hintable_items.remove(item)
         self.logic.rando.rng.shuffle(self.hintable_items)
 
         for hint_type in self.distribution.keys():
