@@ -194,6 +194,8 @@ class HintDistribution:
 
         # populate our internal list copies for later manipulation
         for sots_loc, item in self.logic.rando.sots_locations.items():
+            if item in self.removed_items:
+                continue
             if self.logic.rando.options["small-key-mode"] not in [
                 "Anywhere",
                 "Lanayru Caves Key Only",
@@ -239,6 +241,9 @@ class HintDistribution:
                 self.barren_overworld_zones.append(zone)
 
         self.hintable_items = HINTABLE_ITEMS.copy()
+        self.hintable_items.extend(self.added_items)
+        for item in self.removed_items:
+            self.hintable_items.remove(item)
         self.logic.rando.rng.shuffle(self.hintable_items)
 
         for hint_type in self.distribution.keys():
