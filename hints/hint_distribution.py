@@ -103,7 +103,6 @@ class HintDistribution:
         self.weighted_types = []
         self.weights = []
         self.hintable_items = []
-        self.ready = False
         self.junk_hints = []
         self.sometimes_hints = []
         self.hint_descriptors = []
@@ -242,10 +241,7 @@ class HintDistribution:
         self.hintable_items = HINTABLE_ITEMS.copy()
         for item in self.added_items:
             self.hintable_items.extend([item["name"]] * item["amount"])
-        if (
-            "Sandship" in self.logic.required_dungeons
-            or not self.logic.rando.options["empty-unrequired-dungeons"]
-        ):
+        if ("Sea Chart" in self.logic.all_progress_items):
             self.hintable_items.append("Sea Chart")
         for item in self.removed_items:
             if item in self.hintable_items:
@@ -274,15 +270,8 @@ class HintDistribution:
                     )
             elif type == "sots":
                 for i in range(curr_type["fixed"]):
-                    try:
-                        self.hints.extend(
-                            [self._create_sots_hint()] * curr_type["copies"]
-                        )
-                    except:
-                        # squash the pop from empty list since we don't have a good way of preventing it
-                        # we don't know how many valid sots placements there are in the distribution because
-                        # of limits, so this works more easily
-                        pass
+                    if hint := self._create_sots_hint() is not None:
+                        self.hints.extend([hint] * curr_type["copies"])
             elif type == "barren":
                 for i in range(curr_type["fixed"]):
                     try:
@@ -290,7 +279,7 @@ class HintDistribution:
                         if hint is not None:
                             self.hints.extend([hint] * curr_type["copies"])
 
-                    except:
+                    except IndexError:
                         # same as above, squash this error
                         pass
             elif type == "item":
@@ -361,12 +350,18 @@ class HintDistribution:
         )
 
     def _create_sots_hint(self):
+        if len(self.sots_locations) == 0:
+            return None
         zone, loc, item = self.sots_locations.pop()
         while loc in self.hinted_locations:
+            if len(self.sots_locations) == 0:
+                return None
             zone, loc, item = self.sots_locations.pop()
         self.hinted_locations.append(loc)
         if self.sots_dungeon_placed >= self.dungeon_sots_limit:
             while zone in ALL_DUNGEON_AREAS:
+                if len(self.sots_locations) == 0:
+                    return None
                 zone, loc, item = self.sots_locations.pop()
         elif zone in ALL_DUNGEON_AREAS:
             self.sots_dungeon_placed += 1
