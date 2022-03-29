@@ -116,7 +116,7 @@ class EmptyGossipStoneHint(GossipStoneHint):
     text: str
 
     def to_gossip_stone_text(self) -> List[str]:
-        return [self.text]
+        return [f"<blk<{self.text}>>"]
 
     def to_spoiler_log_text(self) -> str:
         return self.text
