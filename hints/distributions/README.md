@@ -1,6 +1,6 @@
 # SSR Hint Distributions
 
-Hint distributions define everything about gossip stone hints are placed by the randomizer. Distributions have the ability to fine tune exactly how hints are placed in the world, by banning specific stones, adding and removing items and locations from their respecitve pools, and more.
+Hint distributions define everything about how gossip stone hints are placed by the randomizer. Distributions have the ability to fine tune exactly how hints are placed in the world, by banning specific stones, adding and removing items and locations from their respecitve pools, and more.
 
 
 ## Existing Distributions
@@ -36,5 +36,5 @@ All fields are **required** in all distribution files, however, specific hint ty
 ### Distribution Data
 - order: defines what order hints should have their fixed quantities generated. Types with the same order will be resolved in the order they are listed in the distribution
 - weight: The relative chance that this hint type is randomly selected to be placed
-- fixed: Generates the specified number of hints prior to randomly selecting additional hints by weight. Note that this **does not** guarantee that all these hints will be placed dpeending on the rest of the distribution
+- fixed: Generates the specified number of hints prior to randomly selecting additional hints by weight. Note that this **does not** guarantee that all these hints will be placed depending on the rest of the distribution
 - copies: Generates the specified number of copies of the hint everytime a hint of this type is generated (both randomly and fixed). Note that this **does not** guarantee that all copies will be placed, but they will all be generated before the next hint is generated.
