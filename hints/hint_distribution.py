@@ -289,6 +289,11 @@ class HintDistribution:
                     num_items = len(self.hintable_items)
                 for i in range(num_items):
                     self.hints.extend([self._create_item_hint()] * curr_type["copies"])
+            elif type == "random":
+                num_random = curr_type["fixed"]
+                for i in range(num_random):
+                    # no failsafe is needed here as there should also be progress locations to hint that have not been previously hinted
+                    self.hints.extend([self._create_random_hint()] * curr_type["copies"])
             else:
                 raise InvalidHintDistribution(
                     "Invalid hint type found in distribution while geneating fixed hints"
@@ -334,6 +339,11 @@ class HintDistribution:
             if type["copies"]:
                 self.hints.extend([hint] * (type["copies"] - 1))
             return hint
+        elif next_type == "random":
+            hint = self._create_random_hint()
+            if type["copies"]:
+                self.hints.extend([hint] * (type["copies"] - 1))
+            return hint 
         # junk hint is the last possible type and also a fallback
         return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
 
@@ -424,6 +434,17 @@ class HintDistribution:
             if item == hinted_item and location not in self.hinted_locations:
                 self.hinted_locations.append(location)
                 return ItemGossipStoneHint(location, item, True)
+
+    def _create_random_hint(self):
+        all_locations_without_hint = self.logic.filter_locations_for_progression(
+            (
+                loc
+                for loc in self.logic.done_item_locations
+                if not loc in self.hinted_locations
+                and not loc in self.logic.prerandomization_item_locations
+            )
+        )
+        return self.rng.choice(all_locations_without_hint)
 
     def get_junk_text(self):
         return self.junk_hints.pop()
