@@ -3,6 +3,16 @@
 Hint distributions define everything about how gossip stone hints are placed by the randomizer. Distributions have the ability to fine tune exactly how hints are placed in the world, by banning specific stones, adding and removing items and locations from their respecitve pools, and more.
 
 
+**Hint Types**
+- **Always**: Always hints hint locations that are long, out of the way, or have differeing requirements from other nearby checks causing for long double dips. When enabled, they are placed first, regardless of order, and all of them are always generated
+- **Sometimes**: Sometimes hints are locations that annoying for various reasons, they have differing requirements, they require a lot of items, or they can be routed around if they are junk, among others.
+- **Spirit of the Sword (SotS)**: SotS hints hint regions that contain items that are required to beat the game. The randomizer decides if an item is required by removing it from the game and checking if it is still beatable.
+- **Barren**: Barren hints hint to regions that do not require any progression items, regardless of if the items thenselvews are reqired
+- **Item**: Item hints directly hint the location of a potentially valuable item.
+- **Random**: Random hints tell the item on randomly selected locations
+- **Junk**: Junk hints are random tips or community memes
+
+
 ## Existing Distributions
 - **Balanced**: The recommended way to play the randomizer casually. Balances the various hint types can includes all the important locations and items for hints. Hints will neither be too strong or to weak, nor will their be many junk hints eating away at your valuable hint slots
 - **Junk**: Fills the seed entirely with junk hints. Reading gossip stones will be a complete waste of time, but should get a good laugh out of you
