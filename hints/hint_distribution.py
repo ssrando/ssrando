@@ -241,7 +241,7 @@ class HintDistribution:
         self.hintable_items = HINTABLE_ITEMS.copy()
         for item in self.added_items:
             self.hintable_items.extend([item["name"]] * item["amount"])
-        if ("Sea Chart" in self.logic.all_progress_items):
+        if "Sea Chart" in self.logic.all_progress_items:
             self.hintable_items.append("Sea Chart")
         for item in self.removed_items:
             if item in self.hintable_items:
@@ -270,7 +270,7 @@ class HintDistribution:
                     )
             elif type == "sots":
                 for i in range(curr_type["fixed"]):
-                    if hint := self._create_sots_hint() is not None:
+                    if hint := self._create_sots_hint():
                         self.hints.extend([hint] * curr_type["copies"])
             elif type == "barren":
                 for i in range(curr_type["fixed"]):
@@ -293,7 +293,13 @@ class HintDistribution:
                 num_random = curr_type["fixed"]
                 for i in range(num_random):
                     # no failsafe is needed here as there should also be progress locations to hint that have not been previously hinted
-                    self.hints.extend([self._create_random_hint()] * curr_type["copies"])
+                    self.hints.extend(
+                        [self._create_random_hint()] * curr_type["copies"]
+                    )
+            elif type == "junk":
+                self.hints.append(
+                    EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
+                )
             else:
                 raise InvalidHintDistribution(
                     "Invalid hint type found in distribution while geneating fixed hints"
@@ -343,7 +349,7 @@ class HintDistribution:
             hint = self._create_random_hint()
             if type["copies"]:
                 self.hints.extend([hint] * (type["copies"] - 1))
-            return hint 
+            return hint
         # junk hint is the last possible type and also a fallback
         return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
 
@@ -444,7 +450,10 @@ class HintDistribution:
                 and not loc in self.logic.prerandomization_item_locations
             )
         )
-        return self.rng.choice(all_locations_without_hint)
+        loc = self.rng.choice(all_locations_without_hint)
+        return LocationGossipStoneHint(
+            loc, self.logic.done_item_locations[loc], True, self.hint_descriptors[loc]
+        )
 
     def get_junk_text(self):
         return self.junk_hints.pop()
