@@ -451,6 +451,7 @@ class HintDistribution:
             )
         )
         loc = self.rng.choice(all_locations_without_hint)
+        self.hinted_locations.append(loc)
         return LocationGossipStoneHint(
             loc, self.logic.done_item_locations[loc], True, self.hint_descriptors[loc]
         )
