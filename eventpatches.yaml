@@ -695,11 +695,11 @@
     index: 272
     flow:
       param2: 57 # changes switch condition to kikwi elder slingshot storyflag
-  - name: Does have slingshot
+  - name: Does not have slingshot
     type: textpatch
     index: 68 # switch is false
     text: "\x0E\x01\x09\x04\x00\x01By the way, <heroname>, I have been \nlooking for new sources of research\nabout <b<plant life>>.\n\nIf you ever find something, please meet\nme <r<in the Knight Academy>>!"
-  - name: Does not have slingshot
+  - name: Does have slingshot
     type: textpatch
     index: 69 # switch is true
     text: "\x0E\x01\x09\x04\x00\x01Oh, <heroname>, something tells me you\nmight know some <b<plant life>> I could\nresearch! Please meet me \n<r<in the Knight Academy>>!"
@@ -1294,11 +1294,11 @@
       next: -1
       param3: 7
 202-ForestD2:
-  #- name: remove ghirahim text before koloktos #works, but ghirahim is still there.
-  #  type: flowpatch
-  #  index: 14
-  #  flow:
-  #    next: 41
+  - name: Shorten Ghirahim text before Koloktos
+    type: flowpatch
+    index: 18
+    flow:
+      next: 34
   - name: Give item after AC
     type: entryadd
     entry:

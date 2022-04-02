@@ -1241,13 +1241,17 @@ F102_1: # Outside AC
         night: 0
         layer: 0
   - name: Water Dragon trigger after AC
-    type: objpatch
+    type: objdelete
     id: 0xFC59
     layer: 3
     room: 0
     objtype: OBJ
-    object:
-      trigstoryfid: 900 # new AC beat flag
+  - name: Water Dragon after AC
+    type: objdelete
+    id: 0xFC5A
+    layer: 3
+    room: 0
+    objtype: OBJ
 F102: # lake Floria
   - name: Layer override
     type: layeroverride
@@ -1942,6 +1946,12 @@ F201_4: # Volcano Waterfall
       id: 0xFC30
       name: Bombf
 D200: # ET
+  - name: Ledd Text before Bomb Bag
+    type: objdelete
+    id: 0xFC51
+    layer: 0
+    room: 1
+    objtype: OBJ
   - name: Bomb Bag from Ledd
     type: objdelete
     id: 0xFC52
