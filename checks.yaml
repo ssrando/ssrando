@@ -157,7 +157,7 @@ Skyloft Village - Sparrot's Crystals:
     - event/118-Town3/141
     - oarc/F013r/l0
   hint: sometimes
-  text: delivering a fortune telling device
+  text: delivering a fortune telling device reveals
 Skyloft Village - Mallara's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, short, crystal quest

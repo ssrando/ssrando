@@ -60,7 +60,7 @@ class LocationGossipStoneHint(GossipStoneHint):
         return [f"They say that {self.location_string} <y<{self.item}>>"]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.location_string} has {self.item}"
+        return f"{self.location_string} {self.item}"
 
     def __hash__(self):
         return hash(self.location + self.item)
