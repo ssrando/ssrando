@@ -211,6 +211,7 @@ class HintDistribution:
                     continue
             zone, specific_loc = Logic.split_location_name_by_zone(sots_loc)
             self.sots_locations.append((zone, sots_loc, item))
+        self.rng.shuffle(self.sots_locations)
 
         region_barren, nonprogress = self.logic.get_barren_regions()
         for zone in region_barren:
