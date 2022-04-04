@@ -340,6 +340,7 @@ class Randomizer(BaseRandomizer):
         spoiler_log["starting-items"] = self.logic.starting_items
         spoiler_log["required-dungeons"] = self.logic.required_dungeons
         spoiler_log["sots-locations"] = self.sots_locations
+        spoiler_log["barren-regions"] = self.logic.get_barren_regions()[0]
         spoiler_log[
             "playthrough"
         ] = self.logic.calculate_playthrough_progression_spheres()
