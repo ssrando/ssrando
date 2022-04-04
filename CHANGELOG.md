@@ -5,6 +5,7 @@
 - Added bomb throw tricks for Beedle's Shop and Skyview (by NULL)
 ### Changes
 - Allow calling Fi underwater and without a sword
+- Added even more cutscene skips, plus text patches for clarity (by YourAverageLink)
 ### Bugfixes
 
 ## 1.2.0
@@ -38,7 +39,7 @@
   - Improved how the randomizer categorizes regions as barren
 - Spoiler logs are now put into the `logs` folder next to the exe
 - Make tornadoes spawn away further away to adjust for the increased loftwing speed
-- Added more cutscene skips
+- Added more cutscene skips (by YourAverageLink)
 ### Bugfixes
 - Added some tricks that were in the logic files but not in options (by NULL)
 - Fix bug with arc-replacements causing an error if the arc doesn't exist in ObjectPack, it's ignored now
