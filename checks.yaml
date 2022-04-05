@@ -74,7 +74,7 @@ Central Skyloft - Waterfall Goddess Chest:
   Paths:
     - stage/F000/r0/l0/TBox/80
   hint: sometimes
-  text: a goddess cube amongst the pirates reveals
+  text: a <s<goddess cube>> <r<amongst the pirates>> reveals
 Knight Academy - Pumpkin Archery - 600 Points:
   original item: Heart Piece
   type: skyloft, minigame
@@ -83,7 +83,7 @@ Knight Academy - Pumpkin Archery - 600 Points:
     - oarc/F000/l4
     - oarc/F000/l6
   hint: sometimes
-  text: shooting pumpkings reveals
+  text: <r<shooting pumpkings>> is rewarded with
 Knight Academy - In Zelda's Closet:
   original item: Heart Piece
   type: skyloft, miscellaneous
@@ -123,7 +123,7 @@ Central Skyloft - Peater/Peatrice's Crystals:
     - oarc/F018r/l0
     - oarc/F019r/l0
   hint: always
-  text: the item check girl hides
+  text: the <r<item check girl>> hides
 Central Skyloft - Parrow's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, sky, short, crystal quest
@@ -157,7 +157,7 @@ Skyloft Village - Sparrot's Crystals:
     - event/118-Town3/141
     - oarc/F013r/l0
   hint: sometimes
-  text: delivering a fortune telling device reveals
+  text: delivering a <r<fortune telling device>> reveals
 Skyloft Village - Mallara's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, short, crystal quest
@@ -171,7 +171,7 @@ Knight Academy - Owlan's Crystals:
     - event/118-Town3/157
     - oarc/F001r/l0
   hint: sometimes
-  text: delivering a Kikwi reveals
+  text: delivering a <r<Kikwi>> reveals
 
 #  Batreaux Rewards
 Batreaux - 5 Crystals:
@@ -210,7 +210,7 @@ Batreaux - 50 Crystals:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
   hint: sometimes
-  text: 50 pieces of gratitude can be exchanged for
+  text: <ye<50>> <r<pieces of gratitude>> can be exchanged for
 Batreaux - 70 Crystals:
   original item: Gold Rupee
   type: skyloft
@@ -218,7 +218,7 @@ Batreaux - 70 Crystals:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
   hint: sometimes
-  text: the demon's penultimate reward is
+  text: the <r<demon's penultimate reward>> is
 Batreaux - 70 Crystals Second Reward:
   original item: Gold Rupee
   type: skyloft
@@ -226,7 +226,7 @@ Batreaux - 70 Crystals Second Reward:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
   hint: sometimes
-  text: the demon's penultimate reward is
+  text: the <r<demon's penultimate reward>> is
 Batreaux - 80 Crystals:
   original item: Progressive Wallet
   type: skyloft
@@ -234,7 +234,7 @@ Batreaux - 80 Crystals:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
   hint: always
-  text: a demon in human form grants
+  text: a <r<demon in human form>> grants
 
 Beedle - 300 Rupee Item:
   original item: Progressive Pouch
@@ -251,7 +251,7 @@ Beedle - 1200 Rupee Item:
   type: skyloft, beedle, expensive
   Paths:
     - ShpSmpl/22
-  text: for 1200 rupees Beedle sells
+  text: for <g+<1200 rupees>> <r<Beedle>> sells
 Beedle - 800 Rupee Item:
   original item: Life Medal
   type: skyloft, beedle, medium
@@ -262,7 +262,7 @@ Beedle - 1600 Rupee Item:
   type: skyloft, beedle, expensive
   Paths:
     - ShpSmpl/23
-  text: for 1600 rupees Beedle sells
+  text: for <g+<1600 rupees>> <r<Beedle>> sells
 Beedle - First 100 Rupee Item:
   original item: Extra Wallet
   type: skyloft, beedle, cheap
@@ -349,7 +349,7 @@ Sky - Lumpy Pumpkin Harp Minigame:
     - event/117-Pumpkin/305
     - oarc/F011r/l0
   hint: sometimes
-  text: the bartender holds
+  text: the <r<bartender>> holds
 
 Sky - Bamboo Island Goddess Chest:
   original item: Gold Rupee
@@ -372,7 +372,7 @@ Sky - Beedle's Island Goddess Chest:
   Paths:
     - stage/F020/r0/l0/TBox/89
   hint: sometimes
-  text: a goddess cube at the monument to time reveals
+  text: a <s<goddess cube>> at the <r<monument to time>> reveals
 Sky - Beedle's Island Cage Goddess Chest:
   original item: Rupee Medal
   type: sky, goddess, faron goddess
@@ -436,7 +436,7 @@ Sky - Fun Fun Island Minigame - 500 Rupees:
     - event/110-DivingGame/19
     - oarc/F020/l2
   hint: sometimes
-  text: diving through 5 rings reveals
+  text: <r<diving through 5 rings>> yields
 
 Sky - Orielle's Crystals:
   original item: Gratitude Crystal Pack
@@ -451,7 +451,7 @@ Sky - Kina's Crystals:
     - event/117-Pumpkin/386
     - oarc/F020/l0
   hint: always
-  text: delivering a mogma to the Sky will reveal
+  text: <r<delivering a mogma to the sky>> is rewarded with
 Sky - Beedle's Crystals:
   original item: Gratitude Crystal Pack
   type: sky, fetch, crystal quest
@@ -459,7 +459,7 @@ Sky - Beedle's Crystals:
     - event/105-Terry/115
     - oarc/F020/l0
   hint: sometimes
-  text: reuniting two Beedles reveals
+  text: <r<reuniting two Beedles>> is rewarded with
 
 Sky - Chest in Breakable Boulder near Fun Fun Island:
   original item: Silver Rupee
@@ -524,7 +524,7 @@ Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
     - event/116-InsectGame/69
     - oarc/F023/l0
   hint: sometimes
-  text: true bug catchers can find
+  text: <r<true bug catchers>> can find
 Thunderhead - Song from Levias:
   original item: Song of the Hero
   type: thunderhead, sky, scrapper, combat, song
@@ -532,7 +532,7 @@ Thunderhead - Song from Levias:
     - event/120-Nushi/give item after levias
     - oarc/F023/l0
   hint: always
-  text: the ancient whale within a raging storm bellows out
+  text: the <r<ancient whale within a raging storm>> bellows out
 Thunderhead - Isle of Songs - Farore's Courage:
   original item: Farore's Courage
   type: thunderhead, song
@@ -549,7 +549,7 @@ Thunderhead - Isle of Songs - Din's Power:
   Paths:
     - stage/F010r/r0/l0/SwSB/2
   hint: sometimes
-  text: a blade of white reveals
+  text: a <r<blade of white>> reveals
 
 Sealed Grounds - Chest inside Sealed Temple:
   original item: Revitalizing Potion
@@ -569,7 +569,7 @@ Sealed Grounds - Gorko's Goddess Wall Reward:
     - event/503-Goron/630
     - oarc/F400/l0
   hint: sometimes
-  text: drawing upon a magical wall reveals
+  text: <r<drawing upon a magical wall>> reveals
 #Sealed Grounds - Behind the Temple Triforce on Goddess Wall:
 #  original item: Gold Rupee
 #  type: faron, long, dungeon
@@ -583,7 +583,7 @@ Sealed Grounds - Zelda's Blessing:
     - event/502-CenterFieldBack/17
     - oarc/F404/l1
   hint: sometimes
-  text: the goddess blesses you with
+  text: the <r<goddess blesses you>> with
 
 
 Faron Woods - Item on Tree:
@@ -598,7 +598,7 @@ Faron Woods - Slingshot:
     - event/200-Forest/595
     - oarc/F100/l0
   hint: sometimes
-  text: the Kikwi relic is
+  text: the <r<Kikwi relic>> is
 Faron Woods - Deep Woods Chest:
   original item: Red Rupee
   type: faron, miscellaneous
@@ -744,7 +744,7 @@ Volcano Summit - Item behind Digging:
   Paths:
     - stage/F201_3/r0/l0/Item/104 #sceneflagID
   hint: sometimes
-  text: fairies at the summit dance with
+  text: <r<fairies at the summit>> dance with
 Volcano Summit - Chest behind Bombable Wall in Waterfall Area:
   original item: Silver Rupee
   type: eldin, bombable
@@ -800,7 +800,7 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
   Paths:
     - stage/F300/r0/l1/TBox/83
   hint: sometimes
-  text: the midst of the desert holds
+  text: the <r<midst of the desert>> holds
 Lanayru Desert - Chest on Platform near Lightning Node:
   original item: Dusk Relic
   type: lanayru, miscellaneous
@@ -887,7 +887,7 @@ Lanayru Sand Sea - Skipper's Retreat - Chest in Shack:
   Paths:
     - stage/F301_5/r0/l0/TBox/65
   hint: sometimes
-  text: a chest atop a sandy retreat holds
+  text: a <r<chest atop a sandy retreat>> holds
 Lanayru Sand Sea - Skipper's Retreat - Skydive Chest:
   original item: Silver Rupee
   type: lanayru, miscellaneous
@@ -900,7 +900,7 @@ Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05:
     - event/406-TrolleyRace/77
     - oarc/F301_4/l0
   hint: sometimes
-  text: a fast minecart time reveals
+  text: a <r<fast minecart time>> is rewarded with
 Lanayru Sand Sea - Pirate Stronghold - First Chest:
   original item: Silver Rupee
   type: lanayru, mini dungeon
@@ -950,7 +950,7 @@ Skyview - Chest behind Three Eyes:
   Paths:
     - stage/D100/r7/l0/TBox/68
   hint: sometimes
-  text: three watchful eyes guard
+  text: <r<three watchful eyes>> guard
 Skyview - Chest near Boss Door:
   original item: Red Rupee
   type: faron, dungeon
@@ -1088,7 +1088,7 @@ Lanayru Mining Facility - Boss Key Chest:
   Paths:
     - stage/D300_1/r8/l0/TBox/71
   hint: always
-  text: deep inside Lanayru Mining Facility, a pair of Armos guard
+  text: deep inside <r<Lanayru Mining Facility, a pair of Armos>> guard
 Lanayru Mining Facility - Shortcut Chest in Main Hub:
   original item: Red Rupee
   type: lanayru, dungeon
@@ -1170,7 +1170,7 @@ Sandship - Bow:
   Paths:
     - stage/D301/r15/l0/TBox/72
   hint: sometimes
-  text: a robot upon the Sandship's bow guards
+  text: a <r<robot upon the Sandship's bow>> guards
 Sandship - Chest at the Stern:
   original item: Heart Piece
   type: lanayru, dungeon
@@ -1218,7 +1218,7 @@ Sandship - Boss Key Chest:
   Paths:
     - stage/D301/r14/l3/TBox/73
   hint: sometimes
-  text: the secret treasure of the Sandship's captain is
+  text: the <r<secret treasure of the Sandship's captain>> is
 Sandship - Tentalus Heart Container:
   original item: Heart Container
   type: lanayru, dungeon
@@ -1226,7 +1226,7 @@ Sandship - Tentalus Heart Container:
     - stage/B301/r0/l1/HeartCo
     - stage/D301/r0/l1/HeartCo
   hint: sometimes
-  text: an ancient sea creature holds
+  text: the <r<heart of an ancient sea creature>> holds
 Sandship - Nayru's Flame:
   original item: Progressive Sword
   type: lanayru, dungeon
@@ -1284,7 +1284,7 @@ Fire Sanctuary - Chest after Bombable Wall:
   Paths:
     - stage/D201_1/r11/l0/TBox/71
   hint: always
-  text: a false wall in the Fire Sanctuary guards
+  text: a <r<false wall in the Fire Sanctuary>> guards
 Fire Sanctuary - Plats' Chest:
   original item: Heart Piece
   type: eldin, dungeon
@@ -1403,7 +1403,7 @@ Skyloft Silent Realm - Stone of Trials:
   type: skyloft, silent realm
   Paths:
     - stage/S000/r0/l2/WarpObj
-  text: the goddess's final trial grants
+  text: the <r<goddess's final trial>> grants
 
 
 Faron Silent Realm - Water Scale:
@@ -1411,18 +1411,18 @@ Faron Silent Realm - Water Scale:
   type: faron, silent realm
   Paths:
     - stage/S100/r0/l2/WarpObj
-  text: a trial of courage grants
+  text: a <r<trial of courage>> grants
 
 Lanayru Silent Realm - Clawshots:
   original item: Clawshots
   type: lanayru, silent realm
   Paths:
     - stage/S300/r0/l2/WarpObj
-  text: a trial of wisdom grants
+  text: a <r<trial of wisdom>> grants
  
 Eldin Silent Realm - Fireshield Earrings:
   original item: Fireshield Earrings
   type: eldin, silent realm
   Paths:
     - stage/S200/r2/l2/WarpObj
-  text: a trial of power grants
+  text: a <r<trial of power>> grants
