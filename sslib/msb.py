@@ -111,12 +111,12 @@ def parseMSB(data: bytes) -> ParsedMsb:
                 parsed[seg_id].append(entrypoint_group)
         elif seg_id == "ATR1":
             parsed["ATR1"] = []
-            count, dimension = struct.unpack('>ii',seg_data[:8])
+            count, dimension = struct.unpack(">ii", seg_data[:8])
             for i in range(count):
                 cur_list = []
                 for j in range(dimension):
-                    cur_list.append(seg_data[8+i*dimension+j])
-                parsed['ATR1'].append(cur_list)
+                    cur_list.append(seg_data[8 + i * dimension + j])
+                parsed["ATR1"].append(cur_list)
         elif seg_id == "TXT2":
             parsed["TXT2"] = []
             count = struct.unpack(">i", seg_data[:4])[0]
