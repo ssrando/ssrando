@@ -1975,7 +1975,7 @@ class GamePatcher:
                 process_control_sequences(command["text"]).encode("utf-16be")
             )
             msbt["ATR1"].append(
-                {"unk1": command.get("unk1", 1), "unk2": command.get("unk2", 0)}
+                [command.get("unk1", 1), command.get("unk2", 0)]
             )
             # the game doesn't care about the name, but it has to exist and be unique
             # only unique within a file but whatever

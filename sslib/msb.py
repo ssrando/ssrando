@@ -111,14 +111,12 @@ def parseMSB(data: bytes) -> ParsedMsb:
                 parsed[seg_id].append(entrypoint_group)
         elif seg_id == "ATR1":
             parsed["ATR1"] = []
-            count, two = struct.unpack(">ii", seg_data[:8])
-            assert two == 2
+            count, dimension = struct.unpack('>ii',seg_data[:8])
             for i in range(count):
-                value = struct.unpack(">bb", seg_data[8 + 2 * i : 8 + 2 * (i + 1)])
-                atr = OrderedDict()
-                atr["unk1"] = value[0]  # 0 to 33 (inclusive), probably textbox type
-                atr["unk2"] = value[1]  # 0 to 3 (inclusive)
-                parsed["ATR1"].append(atr)
+                cur_list = []
+                for j in range(dimension):
+                    cur_list.append(seg_data[8+i*dimension+j])
+                parsed['ATR1'].append(cur_list)
         elif seg_id == "TXT2":
             parsed["TXT2"] = []
             count = struct.unpack(">i", seg_data[:4])[0]
@@ -185,9 +183,17 @@ def buildMSB(msb: ParsedMsb) -> bytes:
             body += struct.pack(">i", len(seg_data))
             body += data
         elif seg_id == "ATR1":
-            body += struct.pack(">ii", len(seg_data), 2)
+            dimension = None
             for atr in seg_data:
-                body += struct.pack(">bb", atr["unk1"], atr["unk2"])
+                if dimension is None:
+                    dimension = len(atr)
+                else:
+                    assert dimension == len(atr)
+            body += struct.pack(">ii", len(seg_data), dimension)
+            for atr in seg_data:
+                for val in atr:
+                    print(val)
+                    body += struct.pack(">b", val)
         elif seg_id == "TXT2":
             body += struct.pack(">i", len(seg_data))
             offset = 4 * len(seg_data) + 4
