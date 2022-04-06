@@ -192,7 +192,6 @@ def buildMSB(msb: ParsedMsb) -> bytes:
             body += struct.pack(">ii", len(seg_data), dimension)
             for atr in seg_data:
                 for val in atr:
-                    print(val)
                     body += struct.pack(">b", val)
         elif seg_id == "TXT2":
             body += struct.pack(">i", len(seg_data))
