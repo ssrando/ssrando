@@ -136,19 +136,22 @@ class HintDistribution:
         for name, loc in self.logic.item_locations.items():
             if "text" in loc:
                 hint_descriptors[name] = loc["text"]
-        for name, loc in self.logic.item_locations.items():
-            if "text" not in loc:
+            else:
                 hint_descriptors[name] = name + " has"
         self.hint_descriptors = hint_descriptors
 
         for loc in self.added_locations:
             location = loc["location"]
             if loc["type"] == "always":
-                always_hints.append(loc["location"])
+                if location in always_hints:
+                    continue
+                always_hints.append(location)
                 if location in sometimes_hints:
+                    if location in sometimes_hints:
+                        continue
                     sometimes_hints.remove(location)
             elif loc["type"] == "sometimes":
-                always_hints.append(loc["location"])
+                sometimes_hints.append(location)
                 if location in sometimes_hints:
                     always_hints.remove(location)
 
@@ -261,14 +264,9 @@ class HintDistribution:
         for type in needed_fixed:
             curr_type = self.distribution[type]
             if type == "sometimes":
-                num_sometimes = curr_type["fixed"]
-                if len(sometimes_hints) < num_sometimes:
-                    # overrun protection
-                    num_sometimes = len(sometimes_hints)
-                for i in range(num_sometimes):
-                    self.hints.extend(
-                        [self._create_sometimes_hint()] * curr_type["copies"]
-                    )
+                for i in range(curr_type["fixed"]):
+                    if hint := self._create_barren_hint():
+                        self.hints.extend([hint] * curr_type["copies"])
             elif type == "sots":
                 for i in range(curr_type["fixed"]):
                     if hint := self._create_sots_hint():
@@ -276,20 +274,16 @@ class HintDistribution:
             elif type == "barren":
                 for i in range(curr_type["fixed"]):
                     try:
-                        hint = self._create_barren_hint()
-                        if hint is not None:
+                        if hint := self._create_barren_hint():
                             self.hints.extend([hint] * curr_type["copies"])
 
                     except IndexError:
                         # same as above, squash this error
                         pass
             elif type == "item":
-                num_items = curr_type["fixed"]
-                if num_items > len(self.hintable_items):
-                    # this is a failsafe for if there are more item hints than there are items to be hinted
-                    num_items = len(self.hintable_items)
-                for i in range(num_items):
-                    self.hints.extend([self._create_item_hint()] * curr_type["copies"])
+                for i in range(curr_type["fixed"]):
+                    if hint := self._create_item_hint():
+                        self.hints.extend([hint] * curr_type["copies"])
             elif type == "random":
                 num_random = curr_type["fixed"]
                 for i in range(num_random):
@@ -328,35 +322,28 @@ class HintDistribution:
         type = self.distribution[next_type]
         if next_type == "sometimes":
             hint = self._create_sometimes_hint()
-            if type["copies"]:
-                self.hints.extend([hint] * (type["copies"] - 1))
-            return hint
         elif next_type == "sots":
             hint = self._create_sots_hint()
-            if type["copies"]:
-                self.hints.extend([hint] * (type["copies"] - 1))
-            return hint
         elif next_type == "barren":
             hint = self._create_barren_hint()
-            if type["copies"]:
-                self.hints.extend([hint] * (type["copies"] - 1))
-            return hint
         elif next_type == "item":
             hint = self._create_item_hint()
-            if type["copies"]:
-                self.hints.extend([hint] * (type["copies"] - 1))
-            return hint
         elif next_type == "random":
             hint = self._create_random_hint()
-            if type["copies"]:
+        else:
+            # junk hint is the last possible type and also a fallback
+            return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
+        if type["copies"]:
                 self.hints.extend([hint] * (type["copies"] - 1))
-            return hint
-        # junk hint is the last possible type and also a fallback
-        return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
+        return hint
 
     def _create_sometimes_hint(self):
+        if not self.sometimes_hints:
+            return None
         hint = self.sometimes_hints.pop()
         while hint in self.hinted_locations:
+            if not self.sometimes_hints:
+                return None
             hint = self.sometimes_hints.pop()
         self.hinted_locations.append(hint)
         return LocationGossipStoneHint(
@@ -367,14 +354,13 @@ class HintDistribution:
         )
 
     def _create_sots_hint(self):
-        if len(self.sots_locations) == 0:
+        if not self.sots_locations:
             return None
         zone, loc, item = self.sots_locations.pop()
         while loc in self.hinted_locations:
             if len(self.sots_locations) == 0:
                 return None
             zone, loc, item = self.sots_locations.pop()
-        self.hinted_locations.append(loc)
         if self.sots_dungeon_placed >= self.dungeon_sots_limit:
             while zone in ALL_DUNGEON_AREAS:
                 if len(self.sots_locations) == 0:
@@ -382,6 +368,7 @@ class HintDistribution:
                 zone, loc, item = self.sots_locations.pop()
         elif zone in ALL_DUNGEON_AREAS:
             self.sots_dungeon_placed += 1
+        self.hinted_locations.append(loc)
         return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
 
     def _create_barren_hint(self):
@@ -436,6 +423,8 @@ class HintDistribution:
             return BarrenGossipStoneHint(None, None, False, area)
 
     def _create_item_hint(self):
+        if not self.hintable_items:
+            return None
         hinted_item = self.hintable_items.pop()
         for location, item in self.logic.done_item_locations.items():
             if item == hinted_item and location not in self.hinted_locations:
