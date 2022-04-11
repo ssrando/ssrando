@@ -334,7 +334,7 @@ class HintDistribution:
             # junk hint is the last possible type and also a fallback
             return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
         if type["copies"]:
-                self.hints.extend([hint] * (type["copies"] - 1))
+            self.hints.extend([hint] * (type["copies"] - 1))
         return hint
 
     def _create_sometimes_hint(self):
