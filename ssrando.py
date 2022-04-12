@@ -340,7 +340,7 @@ class Randomizer(BaseRandomizer):
         spoiler_log["item-locations"] = self.logic.done_item_locations
         spoiler_log["hints"] = dict(
             map(
-                lambda kv: (kv[0], kv[1].to_spoiler_log_text()),
+                lambda kv: (kv[0], kv[1].to_spoiler_log_json()),
                 self.hints.hints.items(),
             )
         )
