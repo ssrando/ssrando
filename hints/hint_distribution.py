@@ -147,12 +147,12 @@ class HintDistribution:
                     continue
                 always_hints.append(location)
                 if location in sometimes_hints:
-                    if location in sometimes_hints:
-                        continue
                     sometimes_hints.remove(location)
             elif loc["type"] == "sometimes":
-                sometimes_hints.append(location)
                 if location in sometimes_hints:
+                    continue
+                sometimes_hints.append(location)
+                if location in always_hints:
                     always_hints.remove(location)
 
         for loc in self.removed_locations:
