@@ -790,9 +790,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addWidget(self.option_hero_mode)
 
-        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalLayout_20 = QHBoxLayout()
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.label_for_option_demise_count = QLabel(self.verticalLayoutWidget_5)
+        self.label_for_option_demise_count.setObjectName(u"label_for_option_demise_count")
 
-        self.verticalLayout_15.addItem(self.verticalSpacer_6)
+        self.horizontalLayout_20.addWidget(self.label_for_option_demise_count)
+
+        self.option_demise_count = QSpinBox(self.verticalLayoutWidget_5)
+        self.option_demise_count.setObjectName(u"option_demise_count")
+        self.option_demise_count.setMaximumSize(QSize(41, 16777215))
+
+        self.horizontalLayout_20.addWidget(self.option_demise_count)
+
+
+        self.verticalLayout_15.addLayout(self.horizontalLayout_20)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
@@ -1175,6 +1187,7 @@ class Ui_MainWindow(object):
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
+        self.label_for_option_demise_count.setText(QCoreApplication.translate("MainWindow", u"Demise Count", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))

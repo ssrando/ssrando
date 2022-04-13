@@ -893,6 +893,7 @@ class GamePatcher:
         self.handle_oarc_add_remove()
         self.add_rando_hash()
         self.add_keysanity()
+        self.add_demises()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -1613,6 +1614,35 @@ class GamePatcher:
                         "value": f"Show {dungeon} Map Text",
                     },
                 }
+            )
+
+    def add_demises(self):
+        orig_demise = {
+            "params1": 0xFFFFFFC0,
+            "params2": 0xFFFFFFFF,
+            "posx": 0,
+            "posy": 0,
+            "posz": -500,
+            "anglex": 0,
+            "angley": 0,
+            "anglez": 0,
+            "id": 0xFC00,
+            "name": "BLasBos",
+        }
+
+        for idx in range(1, self.rando.options["demise-count"]):
+            demise = orig_demise.copy()
+            demise["posy"] = 1000 * idx
+            self.add_patch_to_stage(
+                "B400",
+                {
+                    "name": f"Demise add {idx}",
+                    "type": "objadd",
+                    "room": 0,
+                    "layer": 1,
+                    "objtype": "OBJ ",
+                    "object": demise,
+                },
             )
 
     def bzs_patch_func(self, bzs, stage, room):
