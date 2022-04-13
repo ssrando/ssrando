@@ -17,14 +17,7 @@ def test_roundtrip():
         rando.logic.randomize_items()
         # this belongs to the randomizer
         rando.sots_locations = rando.logic.get_sots_locations()
-        if rando.options["hint-distribution"] == "Junk":
-            rando.hints.do_junk_hints()
-        elif rando.options["hint-distribution"] == "Normal":
-            rando.hints.do_normal_hints()
-        elif rando.options["hint-distribution"] == "Bingo":
-            rando.hints.do_bingo_hints()
-        else:
-            raise Exception(f"{rando.options['hints']} is not a valid hint setting!")
+        rando.hints.do_hints()
         plcmt_file = rando.get_placement_file()
         round_tripped_file = PlacementFile()
         round_tripped_file.read_from_str(plcmt_file.to_json_str())

@@ -435,69 +435,6 @@
   default: []
   help: Enable specific tricks to be considered in logic
   ui: enabled_tricks
-- name: Hint Distribution
-  command: hint-distribution
-  type: singlechoice
-  bits: 2
-  choices:
-    # - Weak
-    # - Balanced
-    # - Strong
-    # - Very Strong
-    # - Locations Only
-    # - Items Only
-    - Junk
-    - Normal
-    - Bingo
-  default: Normal
-  help: Sets the distribution of hints. Select a distribution to automatically apply a preset, or custom to select
-    your own distribution. Hover over each hint type to see details on the hint
-  ui: option_hint_distribution
-- name: Spirit of the Sword Hints
-  command: sots-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Spirit of the Sword areas contain item(s) required to beat the game
-  ui: option_woth_hints
-- name: Sometimes Hints
-  command: sometimes-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Sometimes areas contain item(s) that may be required for the seed.
-  ui: option_sometimes_hints
-- name: Barren
-  command: barren-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Barren areas contain no items required to beat the game
-  ui: option_barren_hints
-- name: Location Hints
-  command: location-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Location hints give the item at a specific check
-  ui: option_location_hints
-- name: Item Hints
-  command: item-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Item hints give the location of a specific item
-  ui: option_item_hints
 - name: Song Hints
   command: song-hints
   type: singlechoice
@@ -580,3 +517,21 @@
   cosmetic: true
   help: If enabled, the WZSound.brsar file will be patched to allow custom music. Custom music must be installed manually.
   ui: option_allow_custom_music
+
+# make this always last for maximum cross version permalink support
+- name: Hint Distribution
+  command: hint-distribution
+  type: singlechoice
+  bits: 2
+  choices:
+    - Weak
+    - Balanced
+    # - Strong
+    # - Very Strong
+    # - Locations Only
+    # - Items Only
+    - Junk
+  default: Balanced
+  help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
+    as specifics about what additional items and locations can and cannot be hinted
+  ui: option_hint_distribution
