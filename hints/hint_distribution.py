@@ -193,6 +193,9 @@ class HintDistribution:
         self.rng.shuffle(sometimes_hints)
         self.sometimes_hints = sometimes_hints
 
+        # ensure prerandomized locations cannot be hinted
+        self.hinted_locations.extend(self.logic.prerandomization_item_locations.keys())
+
         # populate our internal list copies for later manipulation
         for sots_loc, item in self.logic.rando.sots_locations.items():
             if item in self.removed_items:
@@ -265,7 +268,7 @@ class HintDistribution:
             curr_type = self.distribution[type]
             if type == "sometimes":
                 for i in range(curr_type["fixed"]):
-                    if hint := self._create_barren_hint():
+                    if hint := self._create_sometimes_hint():
                         self.hints.extend([hint] * curr_type["copies"])
             elif type == "sots":
                 for i in range(curr_type["fixed"]):
@@ -426,7 +429,13 @@ class HintDistribution:
         if not self.hintable_items:
             return None
         hinted_item = self.hintable_items.pop()
-        for location, item in self.logic.done_item_locations.items():
+        locs = [
+            (location, item)
+            for location, item in self.logic.done_item_locations.items()
+            if item == hinted_item and location not in self.hinted_locations
+        ]
+        self.rng.shuffle(locs)
+        for location, item in locs:
             if item == hinted_item and location not in self.hinted_locations:
                 self.hinted_locations.append(location)
                 return ItemGossipStoneHint(location, item, True)
