@@ -1245,7 +1245,7 @@ F102_1: # Outside AC
     id: 0xFC59
     layer: 3
     room: 0
-    objtype: obj
+    objtype: OBJ
   - name: Remove CS after cistern
     type: objpatch
     index: 6
