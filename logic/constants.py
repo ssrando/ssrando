@@ -9,6 +9,16 @@ POTENTIALLY_REQUIRED_DUNGEONS = [
     "Fire Sanctuary",
 ]
 
+ALL_DUNGEON_AREAS = [
+    "Skyview",
+    "Earth Temple",
+    "Lanayru Mining Facility",
+    "Ancient Cistern",
+    "Sandship",
+    "Fire Sanctuary",
+    "Sky Keep",
+]
+
 DUNGEON_NAMES = OrderedDict(
     [
         ("SV", "Skyview"),

@@ -6,6 +6,22 @@
 ### Changes
 - Allow calling Fi underwater and without a sword
 - Added even more cutscene skips, plus text patches for clarity (by YourAverageLink)
+- - New Hint System (by cjs07)
+  - Removed all counter options for hints
+  - Added Hint Distributions
+    - Distributions can specufy the follwing *new* parameters
+      - Maximum hints SotS dungeons
+      - Maximum hinted barren dungeons
+    - Distributions additionally can do the following
+      - Add items to the hintable pool
+      - Remove items from the hintable pool
+      - Add locations to the always/sometimes pools
+      - Remove locations from the always/sometimes pools
+  - New hint types
+    - Junk
+    - Random
+    - Sometimes
+    - Some of these hint types existed in prior versions, but users had no control over them
 ### Bugfixes
 
 ## 1.2.0

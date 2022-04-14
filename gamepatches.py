@@ -893,6 +893,7 @@ class GamePatcher:
         self.handle_oarc_add_remove()
         self.add_rando_hash()
         self.add_keysanity()
+        self.add_demises()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -1615,6 +1616,35 @@ class GamePatcher:
                 }
             )
 
+    def add_demises(self):
+        orig_demise = {
+            "params1": 0xFFFFFFC0,
+            "params2": 0xFFFFFFFF,
+            "posx": 0,
+            "posy": 0,
+            "posz": -500,
+            "anglex": 0,
+            "angley": 0,
+            "anglez": 0,
+            "id": 0xFC00,
+            "name": "BLasBos",
+        }
+
+        for idx in range(1, self.rando.options["demise-count"]):
+            demise = orig_demise.copy()
+            demise["posy"] = 1000 * idx
+            self.add_patch_to_stage(
+                "B400",
+                {
+                    "name": f"Demise add {idx}",
+                    "type": "objadd",
+                    "room": 0,
+                    "layer": 1,
+                    "objtype": "OBJ ",
+                    "object": demise,
+                },
+            )
+
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])
         stagepatches = list(filter(self.filter_option_requirement, stagepatches))
@@ -1974,9 +2004,7 @@ class GamePatcher:
             msbt["TXT2"].append(
                 process_control_sequences(command["text"]).encode("utf-16be")
             )
-            msbt["ATR1"].append(
-                {"unk1": command.get("unk1", 1), "unk2": command.get("unk2", 0)}
-            )
+            msbt["ATR1"].append([command.get("unk1", 1), command.get("unk2", 0)])
             # the game doesn't care about the name, but it has to exist and be unique
             # only unique within a file but whatever
             entry_name = "%s:%d" % (filename[-3:], index)
