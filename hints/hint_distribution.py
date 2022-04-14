@@ -237,7 +237,8 @@ class HintDistribution:
             if zone == "Sky Keep":
                 # exclude Sky Keep from the eligible barren locations if it has no open checks
                 if self.logic.rando.options["map-mode"] not in [
-                    "Removed, Anywhere"
+                    "Removed",
+                    "Anywhere",
                 ] or self.logic.rando.options["small-key-mode"] not in ["Anywhere"]:
                     continue
             if zone in ALL_DUNGEON_AREAS:
@@ -276,13 +277,8 @@ class HintDistribution:
                         self.hints.extend([hint] * curr_type["copies"])
             elif type == "barren":
                 for i in range(curr_type["fixed"]):
-                    try:
-                        if hint := self._create_barren_hint():
-                            self.hints.extend([hint] * curr_type["copies"])
-
-                    except IndexError:
-                        # same as above, squash this error
-                        pass
+                    if hint := self._create_barren_hint():
+                        self.hints.extend([hint] * curr_type["copies"])
             elif type == "item":
                 for i in range(curr_type["fixed"]):
                     if hint := self._create_item_hint():
@@ -434,11 +430,10 @@ class HintDistribution:
             for location, item in self.logic.done_item_locations.items()
             if item == hinted_item and location not in self.hinted_locations
         ]
-        self.rng.shuffle(locs)
-        for location, item in locs:
-            if item == hinted_item and location not in self.hinted_locations:
-                self.hinted_locations.append(location)
-                return ItemGossipStoneHint(location, item, True)
+        if not locs:
+            return None
+        location, item = self.rng.choice(locs)
+        return ItemGossipStoneHint(location, item, True)
 
     def _create_random_hint(self):
         all_locations_without_hint = self.logic.filter_locations_for_progression(
