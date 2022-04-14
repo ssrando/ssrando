@@ -1240,12 +1240,13 @@ F102_1: # Outside AC
       - story_flag: -1
         night: 0
         layer: 0
-  - name: Water Dragon trigger after AC
-    type: objdelete
-    id: 0xFC59
-    layer: 3
+  - name: Remove CS after cistern
+    type: objpatch
+    index: 6
     room: 0
-    objtype: OBJ
+    objtype: PLY
+    object:
+      play_cutscene: -1
   - name: Water Dragon after AC
     type: objdelete
     id: 0xFC5A
