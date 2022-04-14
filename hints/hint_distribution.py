@@ -268,7 +268,7 @@ class HintDistribution:
             curr_type = self.distribution[type]
             if type == "sometimes":
                 for i in range(curr_type["fixed"]):
-                    if hint := self._create_barren_hint():
+                    if hint := self._create_sometimes_hint():
                         self.hints.extend([hint] * curr_type["copies"])
             elif type == "sots":
                 for i in range(curr_type["fixed"]):
