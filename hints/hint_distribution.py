@@ -195,7 +195,6 @@ class HintDistribution:
 
         # ensure prerandomized locations cannot be hinted
         self.hinted_locations.extend(self.logic.prerandomization_item_locations.keys())
-        print(self.hinted_locations)
 
         # populate our internal list copies for later manipulation
         for sots_loc, item in self.logic.rando.sots_locations.items():
