@@ -429,7 +429,13 @@ class HintDistribution:
         if not self.hintable_items:
             return None
         hinted_item = self.hintable_items.pop()
-        for location, item in self.logic.done_item_locations.items():
+        locs = [
+            (location, item)
+            for location, item in self.logic.done_item_locations.items()
+            if item == hinted_item and location not in self.hinted_locations
+        ]
+        self.rng.shuffle(locs)
+        for location, item in locs:
             if item == hinted_item and location not in self.hinted_locations:
                 self.hinted_locations.append(location)
                 return ItemGossipStoneHint(location, item, True)
