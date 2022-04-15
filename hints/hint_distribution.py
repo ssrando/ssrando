@@ -433,6 +433,7 @@ class HintDistribution:
         if not locs:
             return None
         location, item = self.rng.choice(locs)
+        self.hinted_locations.append(location)
         return ItemGossipStoneHint(location, item, True)
 
     def _create_random_hint(self):
