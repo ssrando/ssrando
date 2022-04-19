@@ -18,6 +18,9 @@ class GossipStoneHint:
     def to_spoiler_log_text(self) -> str:
         raise NotImplementedError("abstract")
 
+    def to_spoiler_log_json(self):
+        raise NotImplementedError("abstract")
+
     def __hash__(self):
         return hash(self.location + self.item)
 
@@ -35,6 +38,12 @@ class GossipStoneHintWrapper:
     def to_spoiler_log_text(self) -> str:
         return f"{self.primary_hint.to_spoiler_log_text()} / {self.secondary_hint.to_spoiler_log_text()}"
 
+    def to_spoiler_log_json(self):
+        return [
+            self.primary_hint.to_spoiler_log_json(),
+            self.secondary_hint.to_spoiler_log_json(),
+        ]
+
 
 @dataclass
 class TrialGateGossipStoneHint(GossipStoneHint):
@@ -47,6 +56,9 @@ class TrialGateGossipStoneHint(GossipStoneHint):
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.trial_gate} has {self.item}"
+
+    def to_spoiler_log_json(self):
+        return {"location": self.trial_gate, "item": self.item, "type": "trial"}
 
     def __hash__(self):
         return hash(self.location + self.item)
@@ -62,6 +74,9 @@ class LocationGossipStoneHint(GossipStoneHint):
     def to_spoiler_log_text(self) -> str:
         return f"{self.location_string} {self.item}"
 
+    def to_spoiler_log_json(self):
+        return {"location": self.location, "item": self.item, "type": "location"}
+
     def __hash__(self):
         return hash(self.location + self.item)
 
@@ -74,6 +89,9 @@ class ItemGossipStoneHint(GossipStoneHint):
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.item} is on {self.location}"
+
+    def to_spoiler_log_json(self):
+        return {"location": self.location, "item": self.item, "type": "item"}
 
     def __hash__(self):
         return hash(self.location + self.item)
@@ -91,6 +109,14 @@ class SpiritOfTheSwordGossipStoneHint(GossipStoneHint):
     def to_spoiler_log_text(self) -> str:
         return f"{self.zone} is SotS"
 
+    def to_spoiler_log_json(self):
+        return {
+            "location": self.location,
+            "item": self.item,
+            "zone": self.zone,
+            "type": "sots",
+        }
+
     def __hash__(self):
         return hash(self.location + self.item)
 
@@ -107,6 +133,9 @@ class BarrenGossipStoneHint(GossipStoneHint):
     def to_spoiler_log_text(self) -> str:
         return f"{self.zone} is barren"
 
+    def to_spoiler_log_json(self):
+        return {"zone": self.zone, "type": "barren"}
+
     def __hash__(self):
         return hash(self.zone)
 
@@ -120,6 +149,9 @@ class EmptyGossipStoneHint(GossipStoneHint):
 
     def to_spoiler_log_text(self) -> str:
         return self.text
+
+    def to_spoiler_log_json(self):
+        return {"text": self.text, "type": "junk"}
 
     def __hash__(self):
         return hash(self.text)
