@@ -105,7 +105,7 @@ class HintDistribution:
         self.hintable_items = []
         self.junk_hints = []
         self.sometimes_hints = []
-        self.hint_descriptors = []
+        self.hint_descriptors = {}
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))
@@ -136,8 +136,6 @@ class HintDistribution:
         for name, loc in self.logic.item_locations.items():
             if "text" in loc:
                 hint_descriptors[name] = loc["text"]
-            else:
-                hint_descriptors[name] = name + " has"
         self.hint_descriptors = hint_descriptors
 
         for loc in self.added_locations:
@@ -184,7 +182,8 @@ class HintDistribution:
                             hint,
                             self.logic.done_item_locations[hint],
                             True,
-                            hint_descriptors[hint],
+                            self.hint_descriptors.get(hint),
+                            "always",
                         )
                     ]
                     * self.distribution["always"]["copies"]
@@ -349,7 +348,8 @@ class HintDistribution:
             hint,
             self.logic.done_item_locations[hint],
             True,
-            self.hint_descriptors[hint],
+            self.hint_descriptors.get(hint),
+            "sometimes",
         )
 
     def _create_sots_hint(self):
@@ -434,7 +434,9 @@ class HintDistribution:
             return None
         location, item = self.rng.choice(locs)
         self.hinted_locations.append(location)
-        return ItemGossipStoneHint(location, item, True)
+        return LocationGossipStoneHint(
+            location, item, True, self.hint_descriptors.get(location), "item"
+        )
 
     def _create_random_hint(self):
         all_locations_without_hint = self.logic.filter_locations_for_progression(
@@ -448,7 +450,11 @@ class HintDistribution:
         loc = self.rng.choice(all_locations_without_hint)
         self.hinted_locations.append(loc)
         return LocationGossipStoneHint(
-            loc, self.logic.done_item_locations[loc], True, self.hint_descriptors[loc]
+            loc,
+            self.logic.done_item_locations[loc],
+            True,
+            self.hint_descriptors.get(loc),
+            "random",
         )
 
     def get_junk_text(self):

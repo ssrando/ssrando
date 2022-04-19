@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from re import S
-from typing import List
+from typing import List, Optional
 
 from logic.logic import Logic
 
@@ -66,32 +66,26 @@ class TrialGateGossipStoneHint(GossipStoneHint):
 
 @dataclass
 class LocationGossipStoneHint(GossipStoneHint):
-    location_string: str
+    location_name_override: Optional[str]
+    hint_type: str
 
     def to_gossip_stone_text(self) -> List[str]:
-        return [f"They say that {self.location_string} <y<{self.item}>>"]
+        if override := self.location_name_override:
+            return [f"They say that {override} <y<{self.item}>>"]
+        else:
+            zone, specific_loc = Logic.split_location_name_by_zone(self.location)
+            return [f"They say that <r<{zone}: {specific_loc}>> has <y<{self.item}>>"]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.location_string} {self.item}"
+        return f"{self.location} has {self.item}"
 
     def to_spoiler_log_json(self):
-        return {"location": self.location, "item": self.item, "type": "location"}
-
-    def __hash__(self):
-        return hash(self.location + self.item)
-
-
-@dataclass
-class ItemGossipStoneHint(GossipStoneHint):
-    def to_gossip_stone_text(self) -> List[str]:
-        zone, specific_loc = Logic.split_location_name_by_zone(self.location)
-        return [f"<y<{self.item}>> can be found at <r<{zone}: {specific_loc}>>"]
-
-    def to_spoiler_log_text(self) -> str:
-        return f"{self.item} is on {self.location}"
-
-    def to_spoiler_log_json(self):
-        return {"location": self.location, "item": self.item, "type": "item"}
+        return {
+            "location": self.location,
+            "nameoverride": self.location_name_override,
+            "item": self.item,
+            "type": self.hint_type,
+        }
 
     def __hash__(self):
         return hash(self.location + self.item)
