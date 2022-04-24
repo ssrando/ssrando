@@ -69,7 +69,15 @@ DEFAULT_OBJ = OrderedDict(
 )
 
 DEFAULT_SCEN = OrderedDict(
-    name="", room=0, layer=0, entrance=0, byte4=0, byte5=0, flag6=0, zero=0, flag8=0
+    name="",
+    room=0,
+    layer=0,
+    entrance=0,
+    night=0,
+    byte5=0,
+    flag6=0,
+    zero=0,
+    saveprompt=0,
 )
 
 DEFAULT_AREA = OrderedDict(
@@ -1131,7 +1139,7 @@ class GamePatcher:
                         "layer": exit_layer,
                         "room": exit_room,
                         "entrance": exit_entrance,
-                        "flag8": 1,  # save prompt
+                        "saveprompt": 1,  # save prompt
                     },
                 },
             )
