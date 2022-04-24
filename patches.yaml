@@ -771,6 +771,14 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 923
+  - name: Fledge trains without wryna
+    type: objpatch
+    id: 0xFC10
+    layer: 4
+    room: 1
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
   - name: Keep cawlin with Letter check
     type: objpatch
     id: 0xFC7A
