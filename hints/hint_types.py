@@ -120,6 +120,29 @@ class SpiritOfTheSwordGossipStoneHint(GossipStoneHint):
     def __hash__(self):
         return hash(self.location + self.item)
 
+@dataclass
+class CubeSotSGossipStoneHint(GossipStoneHint):
+    cube_zone: str
+
+    def to_gossip_stone_text(self) -> List[str]:
+        return [
+            f"The <ye<goddess>> left a sacred gift for the hero who unites <r<{self.cube_zone}>> with the skies."
+        ]
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.cube_zone} has a SotS cube"
+
+    def to_spoiler_log_json(self):
+        return {
+            "location": self.location,
+            "item": self.item,
+            "cube_zone": self.cube_zone,
+            "type": "cube_sots",
+        }
+
+    def __hash__(self):
+        return hash(self.location + self.item)
+
 
 @dataclass
 class BarrenGossipStoneHint(GossipStoneHint):

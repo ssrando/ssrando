@@ -31,6 +31,7 @@ from .constants import (
     ENTRANCE_CONNECTIONS,
     ALL_TYPES,
     STARTING_SWORD_COUNT,
+    GODDESS_PRECISE_ZONES,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -1463,6 +1464,9 @@ class Logic:
             non_barren_items.remove("Progressive Pouch")
         for loc in self.item_locations:
             zone_name, _ = Logic.split_location_name_by_zone(loc)
+            # calculate barren regions for goddess CUBES not their chests
+            if "Goddess Chest" in loc:
+                zone_name = GODDESS_PRECISE_ZONES[loc]
             item = self.done_item_locations[loc]
             if (
                 item in non_barren_items

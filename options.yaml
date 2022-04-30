@@ -545,3 +545,9 @@
   help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
     as specifics about what additional items and locations can and cannot be hinted
   ui: option_hint_distribution
+- name: Separate Cube SotS
+  command: cube-sots
+  type: boolean
+  default: false
+  help: If enabled, when a SotS hint points to a goddess chest, the hint will change to reflect that it points to a cube & display which of the six cube progress regions it falls into.
+  #TODO: ui: option_cube_sots
