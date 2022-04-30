@@ -177,7 +177,7 @@ class Ui_MainWindow(object):
         self.groupBox_15.setGeometry(QRect(510, 130, 181, 131))
         self.verticalLayoutWidget_11 = QWidget(self.groupBox_15)
         self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
-        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 102))
+        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 106))
         self.verticalLayout_35 = QVBoxLayout(self.verticalLayoutWidget_11)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
@@ -941,6 +941,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_22.addLayout(self.verticalLayout_24)
 
+        self.option_cube_sots = QCheckBox(self.verticalLayoutWidget_12)
+        self.option_cube_sots.setObjectName(u"option_cube_sots")
+
+        self.verticalLayout_22.addWidget(self.option_cube_sots)
+
         self.verticalSpacer_11 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_22.addItem(self.verticalSpacer_11)
@@ -1199,6 +1204,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Logic Settings", None))
         self.groupBox_10.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
         self.label_for_option_hint_distribution.setText(QCoreApplication.translate("MainWindow", u"Hint Distribution", None))
+        self.option_cube_sots.setText(QCoreApplication.translate("MainWindow", u"Separate Cube SotS Hints", None))
         self.groupBox_11.setTitle(QCoreApplication.translate("MainWindow", u"Other Hints", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Song Hints", None))
         self.option_impa_sot_hint.setText(QCoreApplication.translate("MainWindow", u"Impa Stone of Trials Hint", None))

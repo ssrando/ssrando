@@ -135,14 +135,13 @@ class HintDistribution:
         self.logic = logic
 
         hint_descriptors = {}
-        
+
         for name, loc in self.logic.item_locations.items():
             if "text" in loc:
                 hint_descriptors[name] = loc["text"]
             else:
                 hint_descriptors[name] = name + " has"
         self.hint_descriptors = hint_descriptors
-
 
         for loc in self.added_locations:
             location = loc["location"]
@@ -219,7 +218,7 @@ class HintDistribution:
                 # don't hint boss keys unless keysanity is on
                 if item.endswith("Boss Key"):
                     continue
-            
+
             zone, specific_loc = Logic.split_location_name_by_zone(sots_loc)
             self.sots_locations.append((zone, sots_loc, item))
         self.rng.shuffle(self.sots_locations)

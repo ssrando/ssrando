@@ -120,6 +120,7 @@ class SpiritOfTheSwordGossipStoneHint(GossipStoneHint):
     def __hash__(self):
         return hash(self.location + self.item)
 
+
 @dataclass
 class CubeSotSGossipStoneHint(GossipStoneHint):
     cube_zone: str

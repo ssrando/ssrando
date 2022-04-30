@@ -550,4 +550,4 @@
   type: boolean
   default: false
   help: If enabled, when a SotS hint points to a goddess chest, the hint will change to reflect that it points to a cube & display which of the six cube progress regions it falls into.
-  #TODO: ui: option_cube_sots
+  ui: option_cube_sots
