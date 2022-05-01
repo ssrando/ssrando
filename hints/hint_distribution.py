@@ -340,10 +340,8 @@ class HintDistribution:
         if not self.sometimes_hints:
             return None
         hint = self.sometimes_hints.pop()
-        while hint in self.hinted_locations:
-            if not self.sometimes_hints:
-                return None
-            hint = self.sometimes_hints.pop()
+        if hint in self.hinted_locations:
+            return self._create_sometimes_hint()
         self.hinted_locations.append(hint)
         return LocationGossipStoneHint(
             hint,
@@ -356,16 +354,14 @@ class HintDistribution:
         if not self.sots_locations:
             return None
         zone, loc, item = self.sots_locations.pop()
-        while loc in self.hinted_locations:
-            if len(self.sots_locations) == 0:
-                return None
-            zone, loc, item = self.sots_locations.pop()
-        if self.sots_dungeon_placed >= self.dungeon_sots_limit:
-            while zone in ALL_DUNGEON_AREAS:
-                if len(self.sots_locations) == 0:
-                    return None
-                zone, loc, item = self.sots_locations.pop()
-        elif zone in ALL_DUNGEON_AREAS:
+        if loc in self.hinted_locations:
+            return self._create_sots_hint()
+        if (
+            self.sots_dungeon_placed >= self.dungeon_sots_limit
+            and zone in ALL_DUNGEON_AREAS
+        ):
+            return self._create_sots_hint()
+        if zone in ALL_DUNGEON_AREAS:
             self.sots_dungeon_placed += 1
         self.hinted_locations.append(loc)
         return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
