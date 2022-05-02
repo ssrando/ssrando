@@ -48,6 +48,7 @@ Central Skyloft - Bazaar Goddess Chest:
   type: skyloft, goddess, sand sea goddess
   Paths:
     - stage/F004r/r0/l0/TBox/93
+  cube_region: Lanayru Sand Sea
 Central Skyloft - Shed Chest:
   original item: Silver Rupee
   type: skyloft, miscellaneous
@@ -58,16 +59,19 @@ Central Skyloft - Shed Goddess Chest:
   type: skyloft, goddess, eldin goddess
   Paths:
     - stage/F000/r0/l0/TBox/79
+  cube_region: Eldin Volcano
 Central Skyloft - West Cliff Goddess Chest:
   original item: Silver Rupee
   type: skyloft, goddess, faron goddess
   Paths:
     - stage/F000/r0/l0/TBox/78
+  cube_region: Faron Woods
 Central Skyloft - Floating Island Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, floria goddess
   Paths:
     - stage/F000/r0/l0/TBox/91
+  cube_region: Lake Floria
 Central Skyloft - Waterfall Goddess Chest:
   original item: Heart Piece
   type: skyloft, goddess, sand sea goddess, mini dungeon
@@ -75,6 +79,7 @@ Central Skyloft - Waterfall Goddess Chest:
     - stage/F000/r0/l0/TBox/80
   hint: sometimes
   text: a <s<goddess cube>> <r<amongst the pirates>> reveals
+  cube_region: Lanayru Sand Sea
 Knight Academy - Pumpkin Archery - 600 Points:
   original item: Heart Piece
   type: skyloft, minigame
@@ -337,11 +342,13 @@ Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
   type: sky, goddess, faron goddess, dungeon
   Paths:
     - stage/F020/r0/l0/TBox/87
+  cube_region: Skyview
 Sky - Lumpy Pumpkin - Outside Goddess Chest:
   original item: Progressive Pouch
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/64
+  cube_region: Faron Woods
 Sky - Lumpy Pumpkin Harp Minigame:
   original item: Heart Piece
   type: sky, long, minigame
@@ -356,16 +363,19 @@ Sky - Bamboo Island Goddess Chest:
   type: sky, goddess, eldin goddess, bombable
   Paths:
     - stage/F020/r0/l0/TBox/82
+  cube_region: Eldin Volcano
 Sky - Goddess Chest on Island next to Bamboo Island:
   original item: Silver Rupee
   type: sky, goddess, eldin goddess
   Paths:
     - stage/F020/r0/l0/TBox/71
+  cube_region: Eldin Volcano
 Sky - Goddess Chest in Cave on Island Next to Bamboo Island:
   original item: Heart Medal
   type: sky, goddess, lanayru goddess, bombable
   Paths:
     - stage/F020/r0/l0/TBox/83
+  cube_region: Lanayru Desert
 Sky - Beedle's Island Goddess Chest:
   original item: Heart Piece
   type: sky, goddess, lanayru goddess, combat
@@ -373,56 +383,67 @@ Sky - Beedle's Island Goddess Chest:
     - stage/F020/r0/l0/TBox/89
   hint: sometimes
   text: a <s<goddess cube>> at the <r<monument to time>> reveals
+  cube_region: Lanayru Desert
 Sky - Beedle's Island Cage Goddess Chest:
   original item: Rupee Medal
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/81
+  cube_region: Faron Woods
 Sky - Northeast Island Goddess Chest behind Bombable Rocks:
   original item: Silver Rupee
   type: sky, goddess, lanayru goddess
   Paths:
     - stage/F020/r0/l0/TBox/72
+  cube_region: Lanayru Mines
 Sky - Northeast Island Cage Goddess Chest:
   original item: Treasure Medal
   type: sky, goddess, eldin goddess
   Paths:
     - stage/F020/r0/l0/TBox/74
+  cube_region: Eldin Volcano
 Sky - Goddess Chest on Island Closest to Faron Pillar:
   original item: Heart Piece
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/65
+  cube_region: Faron Woods
 Sky - Goddess Chest outside Volcanic Island:
   original item: Heart Medal
   type: sky, goddess, lanayru goddess
   Paths:
     - stage/F020/r0/l0/TBox/67
+  cube_region: Lanayru Desert
 Sky - Goddess Chest inside Volcanic Island:
   original item: Heart Piece
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/68
+  cube_region: Faron Woods
 Sky - Goddess Chest under Fun Fun Island:
   original item: Gold Rupee
   type: sky, goddess, floria goddess
   Paths:
     - stage/F020/r0/l0/TBox/86
+  cube_region: Lake Floria
 Sky - Southwest Triple Island Upper Goddess Chest:
   original item: Small Seed Satchel
   type: sky, goddess, eldin goddess
   Paths:
     - stage/F020/r0/l0/TBox/66
+  cube_region: Eldin Volcano
 Sky - Southwest Triple Island Lower Goddess Chest:
   original item: Life Medal
   type: sky, goddess, lanayru goddess
   Paths:
     - stage/F020/r0/l0/TBox/84
+  cube_region: Lanayru Desert
 Sky - Southwest Triple Island Cage Goddess Chest:
   original item: Potion Medal
   type: sky, goddess, sand sea goddess
   Paths:
     - stage/F020/r0/l0/TBox/75
+  cube_region: Lanayru Sand Sea
 Sky - Dodoh's Crystals:
   original item: Gratitude Crystal Pack
   type: sky, lanayru, long, scrapper
@@ -487,16 +508,19 @@ Thunderhead - Goddess Chest outside Isle of Songs:
   type: thunderhead, goddess, eldin goddess
   Paths:
     - stage/F023/r0/l0/TBox/92
+  cube_region: Mogma Turf
 Thunderhead - Goddess Chest on top of Isle of Songs:
   original item: Small Bomb Bag
   type: thunderhead, goddess, summit goddess
   Paths:
     - stage/F023/r0/l0/TBox/85
+  cube_region: Volcano Summit
 Thunderhead - East Island Goddess Chest:
   original item: Rupee Medal
   type: thunderhead, goddess, faron goddess
   Paths:
     - stage/F023/r0/l0/TBox/73
+  cube_region: Faron Woods
 Thunderhead - East Island Chest:
   original item: Evil Crystal
   type: thunderhead, miscellaneous
@@ -507,11 +531,13 @@ Thunderhead - Bug Heaven Goddess Chest:
   type: thunderhead, goddess, summit goddess
   Paths:
     - stage/F023/r0/l0/TBox/88
+  cube_region: Volcano Summit
 Thunderhead - First Goddess Chest on Mogma Mitts Island:
   original item: Bottle
   type: thunderhead, goddess, summit goddess
   Paths:
     - stage/F023/r0/l0/TBox/77
+  cube_region: Volcano Summit
 #Thunderhead - Second Goddess Chest on Mogma Mitts Island:
 #  original item: Small Quiver
 #  type: thunderhead, goddess, lanayru goddess TODO: decide if this is a Lanayru or Sand Sea cube

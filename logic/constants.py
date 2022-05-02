@@ -131,35 +131,6 @@ STARTING_SWORD_COUNT = {
     "True Master Sword": 6,
 }
 
-GODDESS_PRECISE_ZONES = {
-    "Central Skyloft - Bazaar Goddess Chest": "Lanayru Sand Sea",
-    "Central Skyloft - West Cliff Goddess Chest": "Faron Woods",
-    "Central Skyloft - Shed Goddess Chest": "Eldin Volcano",
-    "Central Skyloft - Waterfall Goddess Chest": "Lanayru Sand Sea",
-    "Central Skyloft - Floating Island Goddess Chest": "Lake Floria",
-    "Sky - Goddess Chest outside Volcanic Island": "Lanayru Desert",
-    "Sky - Goddess Chest inside Volcanic Island": "Faron Woods",
-    "Sky - Goddess Chest under Fun Fun Island": "Lake Floria",
-    "Sky - Southwest Triple Island Upper Goddess Chest": "Eldin Volcano",
-    "Sky - Southwest Triple Island Lower Goddess Chest": "Lanayru Desert",
-    "Sky - Southwest Triple Island Cage Goddess Chest": "Lanayru Sand Sea",
-    "Sky - Lumpy Pumpkin - Outside Goddess Chest": "Faron Woods",
-    "Sky - Lumpy Pumpkin - Goddess Chest on the Roof": "Skyview",
-    "Sky - Goddess Chest on Island Closest to Faron Pillar": "Faron Woods",
-    "Sky - Bamboo Island Goddess Chest": "Eldin Volcano",
-    "Sky - Goddess Chest on Island next to Bamboo Island": "Eldin Volcano",
-    "Sky - Goddess Chest in Cave on Island Next to Bamboo Island": "Lanayru Desert",
-    "Sky - Beedle's Island Goddess Chest": "Lanayru Desert",
-    "Sky - Beedle's Island Cage Goddess Chest": "Faron Woods",
-    "Sky - Northeast Island Goddess Chest behind Bombable Rocks": "Lanayru Mines",
-    "Sky - Northeast Island Cage Goddess Chest": "Eldin Volcano",
-    "Thunderhead - Goddess Chest outside Isle of Songs": "Mogma Turf",
-    "Thunderhead - Goddess Chest on top of Isle of Songs": "Volcano Summit",
-    "Thunderhead - East Island Goddess Chest": "Faron Woods",
-    "Thunderhead - First Goddess Chest on Mogma Mitts Island": "Volcano Summit",
-    "Thunderhead - Bug Heaven Goddess Chest": "Volcano Summit",
-}
-
 ALL_TYPES = [
     "skyloft",
     "sky",

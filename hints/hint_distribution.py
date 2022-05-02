@@ -8,7 +8,6 @@ from logic.constants import (
     POTENTIALLY_REQUIRED_DUNGEONS,
     ALL_DUNGEON_AREAS,
     SILENT_REALM_CHECKS,
-    GODDESS_PRECISE_ZONES,
 )
 from logic.logic import Logic
 from paths import RANDO_ROOT_PATH
@@ -107,7 +106,6 @@ class HintDistribution:
         self.junk_hints = []
         self.sometimes_hints = []
         self.hint_descriptors = []
-        self.goddess_cube_zones = GODDESS_PRECISE_ZONES
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))
@@ -373,14 +371,14 @@ class HintDistribution:
             self.sots_dungeon_placed += 1
         self.hinted_locations.append(loc)
         if "Goddess Chest" in loc:
-            zone = self.goddess_cube_zones[loc]
+            zone = self.logic.rando.item_locations[loc]["cube_region"]
             # place cube sots hint & catch specific zones and fit them into their general zone (as seen in the cube progress options)
             if self.logic.rando.options["cube-sots"]:
                 if zone == "Skyview":
                     zone = "Faron Woods"
-                if zone == "Mogma Turf":
+                elif zone == "Mogma Turf":
                     zone = "Eldin Volcano"
-                if zone == "Lanayru Mines":
+                elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
                 return CubeSotSGossipStoneHint(loc, item, True, zone)
         return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
