@@ -53,7 +53,7 @@ JUNK_TEXT = [
     "They say that you just have to get the right checks to win",
     "They say that rushing Peatrice is the play",
     "They say there is a 0.0000001164% chance your RNG won't change",
-    "If only we could go Back in Time and name the glitch properly..."
+    "If only we could go Back in Time and name the glitch properly...",
     'They say that there is something called a "hash" that makes it easier for people to verify that they are playing the right seed',
     "They say that the bad seed rollers are still in the car, seeking for a safe refugee",
     "Have you heard the tragedy of Darth Kolok the Pause? I thought not, it's not a story the admins would tell you",
