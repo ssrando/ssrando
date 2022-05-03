@@ -83,7 +83,7 @@ class LocationGossipStoneHint(GossipStoneHint):
 
 @dataclass
 class ItemGossipStoneHint(GossipStoneHint):
-    zone_override: str | None
+    zone_override: str
 
     def to_gossip_stone_text(self) -> List[str]:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location)
