@@ -447,7 +447,12 @@ class HintDistribution:
             return None
         location, item = self.rng.choice(locs)
         self.hinted_locations.append(location)
-        return ItemGossipStoneHint(location, item, True)
+        if self.logic.rando.options["precise-item"]:
+            return ItemGossipStoneHint(location, item, True, None)
+        zone_override, _ = self.logic.split_location_name_by_zone(location)
+        if "Goddess Chest" in location:
+            zone_override = self.logic.rando.item_locations[location]["cube_region"]
+        return ItemGossipStoneHint(location, item, True, zone_override)
 
     def _create_random_hint(self):
         all_locations_without_hint = self.logic.filter_locations_for_progression(

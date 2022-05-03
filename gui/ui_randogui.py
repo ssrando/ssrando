@@ -946,6 +946,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_22.addWidget(self.option_cube_sots)
 
+        self.option_precise_item = QCheckBox(self.verticalLayoutWidget_12)
+        self.option_precise_item.setObjectName(u"option_precise_item")
+
+        self.verticalLayout_22.addWidget(self.option_precise_item)
+
         self.verticalSpacer_11 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_22.addItem(self.verticalSpacer_11)
@@ -1205,6 +1210,7 @@ class Ui_MainWindow(object):
         self.groupBox_10.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
         self.label_for_option_hint_distribution.setText(QCoreApplication.translate("MainWindow", u"Hint Distribution", None))
         self.option_cube_sots.setText(QCoreApplication.translate("MainWindow", u"Separate Cube SotS Hints", None))
+        self.option_precise_item.setText(QCoreApplication.translate("MainWindow", u"Precise Item Hints", None))
         self.groupBox_11.setTitle(QCoreApplication.translate("MainWindow", u"Other Hints", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Song Hints", None))
         self.option_impa_sot_hint.setText(QCoreApplication.translate("MainWindow", u"Impa Stone of Trials Hint", None))
