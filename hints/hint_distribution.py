@@ -105,7 +105,6 @@ class HintDistribution:
         self.hintable_items = []
         self.junk_hints = []
         self.sometimes_hints = []
-        self.hint_descriptors = []
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))
@@ -131,15 +130,6 @@ class HintDistribution:
     def start(self, logic: Logic, always_hints: list, sometimes_hints: list):
         self.rng = logic.rando.rng
         self.logic = logic
-
-        hint_descriptors = {}
-
-        for name, loc in self.logic.item_locations.items():
-            if "text" in loc:
-                hint_descriptors[name] = loc["text"]
-            else:
-                hint_descriptors[name] = name + " has"
-        self.hint_descriptors = hint_descriptors
 
         for loc in self.added_locations:
             location = loc["location"]
@@ -185,7 +175,8 @@ class HintDistribution:
                             hint,
                             self.logic.done_item_locations[hint],
                             True,
-                            hint_descriptors[hint],
+                            self.logic.item_locations[hint].get("text"),
+                            "always",
                         )
                     ]
                     * self.distribution["always"]["copies"]
@@ -349,7 +340,8 @@ class HintDistribution:
             hint,
             self.logic.done_item_locations[hint],
             True,
-            self.hint_descriptors[hint],
+            self.logic.item_locations[hint].get("text"),
+            "sometimes",
         )
 
     def _create_sots_hint(self):
@@ -444,11 +436,17 @@ class HintDistribution:
         location, item = self.rng.choice(locs)
         self.hinted_locations.append(location)
         if self.logic.rando.options["precise-item"]:
-            return ItemGossipStoneHint(location, item, True, None)
+            return LocationGossipStoneHint(
+                location,
+                item,
+                True,
+                self.logic.item_locations[location].get("text"),
+                "precise_item",
+            )
         zone_override, _ = self.logic.split_location_name_by_zone(location)
         if "Goddess Chest" in location:
             zone_override = self.logic.rando.item_locations[location]["cube_region"]
-        return ItemGossipStoneHint(location, item, True, zone_override)
+        return ZoneItemGossipStoneHint(location, item, True, zone_override)
 
     def _create_random_hint(self):
         all_locations_without_hint = self.logic.filter_locations_for_progression(
@@ -462,7 +460,11 @@ class HintDistribution:
         loc = self.rng.choice(all_locations_without_hint)
         self.hinted_locations.append(loc)
         return LocationGossipStoneHint(
-            loc, self.logic.done_item_locations[loc], True, self.hint_descriptors[loc]
+            loc,
+            self.logic.done_item_locations[loc],
+            True,
+            self.logic.item_locations[loc].get("text"),
+            "random",
         )
 
     def get_junk_text(self):
