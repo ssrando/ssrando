@@ -526,7 +526,18 @@
   cosmetic: true
   help: If enabled, the WZSound.brsar file will be patched to allow custom music. Custom music must be installed manually.
   ui: option_allow_custom_music
-
+- name: Separate Cube SotS
+  command: cube-sots
+  type: boolean
+  default: false
+  help: If enabled, when a SotS hint points to a goddess chest, the hint will change to reflect that it points to a cube & display which of the six cube progress regions it falls into.
+  ui: option_cube_sots
+- name: Precise Item Hints
+  command: precise-item
+  type: boolean
+  default: false
+  help: If enabled, item hints will indicate exactly which check the item lies, otherwise, it will just indicate the region.
+  ui: option_precise_item
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

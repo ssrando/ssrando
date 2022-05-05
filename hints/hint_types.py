@@ -83,12 +83,18 @@ class LocationGossipStoneHint(GossipStoneHint):
 
 @dataclass
 class ItemGossipStoneHint(GossipStoneHint):
+    zone_override: str
+
     def to_gossip_stone_text(self) -> List[str]:
         zone, specific_loc = Logic.split_location_name_by_zone(self.location)
-        return [f"<y<{self.item}>> can be found at <r<{zone}: {specific_loc}>>"]
+        if not self.zone_override:
+            return [f"<y<{self.item}>> can be found at <r<{zone}: {specific_loc}>>"]
+        return [f"<y<{self.item}>> can be found in <r<{self.zone_override}>>"]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.item} is on {self.location}"
+        if not self.zone_override:
+            return f"{self.item} is on {self.location}"
+        return f"{self.item} is in {self.zone_override}"
 
     def to_spoiler_log_json(self):
         return {"location": self.location, "item": self.item, "type": "item"}
@@ -115,6 +121,30 @@ class SpiritOfTheSwordGossipStoneHint(GossipStoneHint):
             "item": self.item,
             "zone": self.zone,
             "type": "sots",
+        }
+
+    def __hash__(self):
+        return hash(self.location + self.item)
+
+
+@dataclass
+class CubeSotSGossipStoneHint(GossipStoneHint):
+    cube_zone: str
+
+    def to_gossip_stone_text(self) -> List[str]:
+        return [
+            f"The <ye<goddess>> left a sacred gift for the hero who unites <r<{self.cube_zone}>> with the skies."
+        ]
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.cube_zone} has a SotS cube"
+
+    def to_spoiler_log_json(self):
+        return {
+            "location": self.location,
+            "item": self.item,
+            "cube_zone": self.cube_zone,
+            "type": "cube_sots",
         }
 
     def __hash__(self):

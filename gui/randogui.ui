@@ -311,7 +311,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>102</height>
+         <height>106</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_35">
@@ -1424,6 +1424,20 @@
            <widget class="QComboBox" name="option_hint_distribution"/>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_cube_sots">
+          <property name="text">
+           <string>Separate Cube SotS Hints</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_precise_item">
+          <property name="text">
+           <string>Precise Item Hints</string>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_11">

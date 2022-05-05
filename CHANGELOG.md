@@ -17,6 +17,15 @@
       - Remove items from the hintable pool
       - Add locations to the always/sometimes pools
       - Remove locations from the always/sometimes pools
+  - Reworked the interaction between Goddess Cubes and hints (by YourAverageLink)
+    - Goddess chests are now linked to the region their associated cube is in for the purpose of hints
+      - For example, a SotS hint that would have previously pointed to the goddess chest next to Isle of Songs would say Mogma Turf is SotS not Thunderhead
+      - Additionally, an option has been added for whether or not cube SotS hints should look different (above example would say Eldin Volcano has a SotS cube)
+      - Barren region calculation now factors in the goddess cubes in the region; a region with no progress items but a cube that unlocks a progress item is NOT barren
+  - Added option to choose between specific locations for item hints or just the general region (by YourAverageLink)
+    - Note that the default setting is DISABLED, however previous versions of the randomizer always used the precise locations for item hints (ENABLED).
+    - When this option is disabled (which uses general regions), it will follow the same logic for Goddess Cubes 
+      - Example: Sword in the Goddess Chest next to Isle of Songs -> Progressive Sword can be found in Mogma Turf
   - New hint types
     - Junk
     - Random

@@ -53,7 +53,7 @@ JUNK_TEXT = [
     "They say that you just have to get the right checks to win",
     "They say that rushing Peatrice is the play",
     "They say there is a 0.0000001164% chance your RNG won't change",
-    "If only we could go Back in Time and name the glitch properly..."
+    "If only we could go Back in Time and name the glitch properly...",
     'They say that there is something called a "hash" that makes it easier for people to verify that they are playing the right seed',
     "They say that the bad seed rollers are still in the car, seeking for a safe refugee",
     "Have you heard the tragedy of Darth Kolok the Pause? I thought not, it's not a story the admins would tell you",
@@ -133,6 +133,7 @@ class HintDistribution:
         self.logic = logic
 
         hint_descriptors = {}
+
         for name, loc in self.logic.item_locations.items():
             if "text" in loc:
                 hint_descriptors[name] = loc["text"]
@@ -215,6 +216,7 @@ class HintDistribution:
                 # don't hint boss keys unless keysanity is on
                 if item.endswith("Boss Key"):
                     continue
+
             zone, specific_loc = Logic.split_location_name_by_zone(sots_loc)
             self.sots_locations.append((zone, sots_loc, item))
         self.rng.shuffle(self.sots_locations)
@@ -364,6 +366,17 @@ class HintDistribution:
         if zone in ALL_DUNGEON_AREAS:
             self.sots_dungeon_placed += 1
         self.hinted_locations.append(loc)
+        if "Goddess Chest" in loc:
+            zone = self.logic.rando.item_locations[loc]["cube_region"]
+            # place cube sots hint & catch specific zones and fit them into their general zone (as seen in the cube progress options)
+            if self.logic.rando.options["cube-sots"]:
+                if zone == "Skyview":
+                    zone = "Faron Woods"
+                elif zone == "Mogma Turf":
+                    zone = "Eldin Volcano"
+                elif zone == "Lanayru Mines":
+                    zone = "Lanayru Desert"
+                return CubeSotSGossipStoneHint(loc, item, True, zone)
         return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
 
     def _create_barren_hint(self):
@@ -430,7 +443,12 @@ class HintDistribution:
             return None
         location, item = self.rng.choice(locs)
         self.hinted_locations.append(location)
-        return ItemGossipStoneHint(location, item, True)
+        if self.logic.rando.options["precise-item"]:
+            return ItemGossipStoneHint(location, item, True, None)
+        zone_override, _ = self.logic.split_location_name_by_zone(location)
+        if "Goddess Chest" in location:
+            zone_override = self.logic.rando.item_locations[location]["cube_region"]
+        return ItemGossipStoneHint(location, item, True, zone_override)
 
     def _create_random_hint(self):
         all_locations_without_hint = self.logic.filter_locations_for_progression(
