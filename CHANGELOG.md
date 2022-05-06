@@ -5,6 +5,10 @@
 - Added bomb throw tricks for Beedle's Shop and Skyview (by NULL)
 ### Changes
 - Allow calling Fi underwater and without a sword
+- Force english regardless of system language
+- Write hints as json in json spoiler log
+- Added option to fight multiple Demises at the end of the game
+- Added option to allow custom music (by Battlecats59)
 - Added even more cutscene skips, plus text patches for clarity (by YourAverageLink)
 - - New Hint System (by cjs07)
   - Removed all counter options for hints
@@ -32,6 +36,7 @@
     - Sometimes
     - Some of these hint types existed in prior versions, but users had no control over them
 ### Bugfixes
+- always copy layer 0, this fixes various bugs, where changes from previous randomizations were not reverted
 
 ## 1.2.0
 ### Options
