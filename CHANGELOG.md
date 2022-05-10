@@ -35,6 +35,7 @@
     - Random
     - Sometimes
     - Some of these hint types existed in prior versions, but users had no control over them
+- Changed item hints, that point to a specific location, to use the same hint format as location hints
 ### Bugfixes
 - always copy layer 0, this fixes various bugs, where changes from previous randomizations were not reverted
 
