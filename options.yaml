@@ -362,6 +362,8 @@
   type: multichoice
   choices:
     - Upgrade Hook Beetle
+    - Bomb Throws
+    - Long Range Skyward Strike Jumpslash Cube Hits
     # Skyloft / Sky
     - Waterfall Cave Jump
     - Bomb Bag Beedle
@@ -388,7 +390,6 @@
     - Cactus Bomb Whip
     - Skipper's Retreat Fast Clawshots
     # Skyview
-    - Skyview - Bomb Throws
     - Skyview - Spider Roll
     - Skyview Slingshot Shot
     # Earth Temple
@@ -431,6 +432,7 @@
     - Owlan Crystals without Bombs
     - Ancient Cistern - Lilypad Skip
     - Ancient Cistern - Swordless Cistern Clip
+    - Fire Sanctuary - Hook Beetle Skip
 
   default: []
   help: Enable specific tricks to be considered in logic

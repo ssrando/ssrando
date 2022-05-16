@@ -785,7 +785,7 @@ Can Get Past Deep Woods Bee Hive:
 Can Access Dungeon Entrance in Deep Woods:
   Can Get Past Deep Woods Bee Hive & (
     Distance Activator |
-    (Bomb Bag & Skyview - Bomb Throws Trick)
+    (Bomb Bag & Bomb Throws Trick)
   )
   # Activate the crystal, BiTWarp past it or RBW past it (LA statue)
   # A RBM on 2x10 should work, but it is currently impossible
@@ -945,8 +945,14 @@ Can Retrieve Sparrot's Crystal Ball:
   Can Access Second Part of Eldin & Clawshots
   # Can use Eldin OoB movement to get up to the crystal ball without clawshots
 
+Rocks Blocking Goddess Cube West of Earth Temple Entrance:
+  Digging Mitts | Hook Beetle | Bomb Throws Trick
+
 Goddess Cube West of Earth Temple Entrance:
-  Can Access Second Part of Eldin & Digging Mitts & Goddess Sword
+  Can Access Second Part of Eldin & Rocks Blocking Goddess Cube West of Earth Temple Entrance & (
+    (Digging Mitts & Goddess Sword) |
+    (Clawshots & Long Range Skyward Strike & Long Range Skyward Strike Jumpslash Cube Hits Trick)
+  )
   # Can use Eldin OoB movement to get up to the crystal ball without clawshots
 
 Goddess Cube East of Earth Temple Entrance:
@@ -1139,7 +1145,7 @@ Lanayru Desert - Hook Beetle Fight:
   # Scene Flag 3x10 is "Timeshift Stone for Hook Beetle fight revealed"
 
 Goddess Cube near Hook Beetle Fight:
-  Can Access Lanayru Desert & (Long Range Skyward Strike | (Clawshots & Goddess Sword))
+  Can Access Lanayru Desert & ((Long Range Skyward Strike & Long Range Skyward Strike Jumpslash Cube Hits Trick) | (Clawshots & Goddess Sword))
   # On hero mode you can skyward strike this one early with a jumpslash
 
 # Before Temple of Time
@@ -1441,7 +1447,7 @@ Can Get Sacred Water: # currently unneeded
   Can Beat Skyview 2 & Bottle
 
 Can Hit High Skyview Switches:
-  Distance Activator | (Bomb Bag & Skyview - Bomb Throws Trick)
+  Distance Activator | (Bomb Bag & Bomb Throws Trick)
 
 # First room
 
@@ -1460,7 +1466,7 @@ Can Get Past the First Skyview Room:
 # First part
 
 Can Hit Vines in Skyview Left Room:
-  Distance Activator | (Bomb Bag & Skyview - Bomb Throws Trick) | Goddess Sword | Whip
+  Distance Activator | (Bomb Bag & Bomb Throws Trick) | Goddess Sword | Whip
   # You can skyward strike the vine even on Normal Mode. Use the rope to jump to the crystal alcove and simply hit it with your sword.
   # You can also get the vines down with whip but the positioning for the first vine is a bit weird
 
