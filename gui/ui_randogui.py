@@ -708,7 +708,7 @@ class Ui_MainWindow(object):
         self.groupBox_6.setGeometry(QRect(420, 10, 191, 251))
         self.verticalLayoutWidget_4 = QWidget(self.groupBox_6)
         self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
-        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 171, 221))
+        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 206, 221))
         self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_4)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -731,6 +731,21 @@ class Ui_MainWindow(object):
         self.option_randomize_trials.setObjectName(u"option_randomize_trials")
 
         self.verticalLayout_7.addWidget(self.option_randomize_trials)
+
+        self.verticalLayout_31 = QVBoxLayout()
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.label_4 = QLabel(self.verticalLayoutWidget_4)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout_31.addWidget(self.label_4)
+
+        self.option_shuffle_trial_objects = QComboBox(self.verticalLayoutWidget_4)
+        self.option_shuffle_trial_objects.setObjectName(u"option_shuffle_trial_objects")
+
+        self.verticalLayout_31.addWidget(self.option_shuffle_trial_objects)
+
+
+        self.verticalLayout_7.addLayout(self.verticalLayout_31)
 
         self.verticalSpacer = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
@@ -1190,7 +1205,8 @@ class Ui_MainWindow(object):
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Overworld", None))
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
-        self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realms", None))
+        self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Shuffle Tiral Objects", None))
         self.groupBox_9.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
