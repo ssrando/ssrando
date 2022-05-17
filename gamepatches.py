@@ -1155,7 +1155,8 @@ class GamePatcher:
         self.add_rando_hash()
         self.add_keysanity()
         self.add_demises()
-        self.shuffle_trial_objects()
+        if not self.placement_file.options["shuffle-trial-objects"] == "None":
+            self.shuffle_trial_objects()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -1923,6 +1924,10 @@ class GamePatcher:
             params = []
             locs = []
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
+                if item_type == "Relics" and self.placement_file.options["shuffle-trial-objects"] not in ["Advanced", "Full"]:
+                    continue
+                if item_type == "Stamina Fruits" and not self.placement_file.options["shuffle-trial-objects"] == "Full":
+                    continue
                 locs.extend(objlist)
                 if item_type == "Tears":
                     item_id = TEAR_ITEM_IDS[trial]
