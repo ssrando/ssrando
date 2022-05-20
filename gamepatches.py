@@ -1924,9 +1924,15 @@ class GamePatcher:
             params = []
             locs = []
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
-                if item_type == "Relics" and self.placement_file.options["shuffle-trial-objects"] not in ["Advanced", "Full"]:
+                if item_type == "Relics" and self.placement_file.options[
+                    "shuffle-trial-objects"
+                ] not in ["Advanced", "Full"]:
                     continue
-                if item_type == "Stamina Fruits" and not self.placement_file.options["shuffle-trial-objects"] == "Full":
+                if (
+                    item_type == "Stamina Fruits"
+                    and not self.placement_file.options["shuffle-trial-objects"]
+                    == "Full"
+                ):
                     continue
                 locs.extend(objlist)
                 if item_type == "Tears":
