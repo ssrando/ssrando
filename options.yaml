@@ -539,7 +539,7 @@
   help: If enabled, item hints will indicate exactly which check the item lies, otherwise, it will just indicate the region.
   ui: option_precise_item
 - name: Shuffle Trial Objects
-  command: shuffle_trial-objects
+  command: shuffle-trial-objects
   type: singlechoice
   bits: 2
   choices:
