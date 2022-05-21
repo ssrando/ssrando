@@ -951,7 +951,7 @@ Rocks Blocking Goddess Cube West of Earth Temple Entrance:
 Goddess Cube West of Earth Temple Entrance:
   Can Access Second Part of Eldin & Rocks Blocking Goddess Cube West of Earth Temple Entrance & (
     (Digging Mitts & Goddess Sword) |
-    (Clawshots & Long Range Skyward Strike & Long Range Skyward Strike Jumpslash Cube Hits Trick)
+    (Clawshots & Long Range Skyward Strike & Long Range Skyward Strike Jumpslash Trick)
   )
   # Can use Eldin OoB movement to get up to the crystal ball without clawshots
 
@@ -1145,7 +1145,7 @@ Lanayru Desert - Hook Beetle Fight:
   # Scene Flag 3x10 is "Timeshift Stone for Hook Beetle fight revealed"
 
 Goddess Cube near Hook Beetle Fight:
-  Can Access Lanayru Desert & ((Long Range Skyward Strike & Long Range Skyward Strike Jumpslash Cube Hits Trick) | (Clawshots & Goddess Sword))
+  Can Access Lanayru Desert & ((Long Range Skyward Strike & Long Range Skyward Strike Jumpslash Trick) | (Clawshots & Goddess Sword))
   # On hero mode you can skyward strike this one early with a jumpslash
 
 # Before Temple of Time
@@ -1212,8 +1212,8 @@ Can Access Second Part of Lanayru Desert from Temple of Time:
   Can Access Front of Temple of Time &
   (
     Hook Beetle |
-    (Temple of Time - Bomb Throw Trick & Bomb Bag) |
-    (Temple of Time - Bomb Throw Trick & Cactus Bomb Whip Trick & Whip)
+    (Bomb Throws Trick & Bomb Bag) |
+    (Bomb Throws Trick & Cactus Bomb Whip Trick & Whip)
   ) &
   (Distance Activator | Long Range Skyward Strike)
   # You can defeat the bokoblins in the ToT area with the bombs used to activate the timeshift stone
@@ -1682,7 +1682,7 @@ Can Access LMF Key Locked Part:
 
 Can Access LMF Key Locked Room in Past:
   Can Access LMF Key Locked Part &
-  (Hook Beetle | (Bomb Bag & LMF - Key Locked Room Bomb Throw Trick)) &
+  (Hook Beetle | (Bomb Bag & Bomb Throws Trick)) &
   (Beetle | Bow | (Slingshot & LMF - Keylocked Slingshot Trickshot Trick))
   # Blow up Box & Activate Timeshift Stone
   # Bomb Bag is not easy, Slingshot snipe is difficult

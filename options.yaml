@@ -363,7 +363,7 @@
   choices:
     - Upgrade Hook Beetle
     - Bomb Throws
-    - Long Range Skyward Strike Jumpslash Cube Hits
+    - Long Range Skyward Strike Jumpslash
     # Skyloft / Sky
     - Waterfall Cave Jump
     - Bomb Bag Beedle
@@ -382,7 +382,6 @@
     - Itemless First Timeshift Stone
     - Lanayru Mines Brakeslide
     - Temple of Time - Slingshot Shot
-    - Temple of Time - Bomb Throw
     - Temple of Time Skip - Brakeslide
     - Secret Passageway Hook Beetle Opening
     - Lightning Node End with Bombs  # Is it worth
@@ -398,7 +397,6 @@
     - Earth Temple - Bomb Flower Scaldera
     # Lanayru Mining Facility
     - LMF - Whip First Room Switch
-    - LMF - Key Locked Room Bomb Throw
     - LMF - Keylocked Slingshot Trickshot
     - LMF - Minecart Jump
     - LMF - Molderach without Gust Bellows
