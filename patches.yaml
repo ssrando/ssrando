@@ -905,7 +905,7 @@ F008r: # Goddess Statue
       posz: -1130
       anglex: 0xFFFF
       angley: 0
-      anglez: 0xBC02 # chest flag 96, item 2
+      anglez: 0xBC02 # chest flag 94, item 2
       id: 0xFC10
       name: TBox
   - name: Delete SwrdSt
