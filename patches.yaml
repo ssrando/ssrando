@@ -892,6 +892,22 @@ F008r: # Goddess Statue
       anglez: 0xBE02 # chest flag 95, item 0, will be filled in later
       id: 0xFC10
       name: TBox
+  - name: Emerald Tablet chest
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJS
+    object:
+      params1: 0xFFFFFFF3
+      params2: 0xFF5FFFFF
+      posx: 0
+      posy: 87.5
+      posz: -1130
+      anglex: 0xFFFF
+      angley: 0
+      anglez: 0xBC02 # chest flag 96, item 2
+      id: 0xFC10
+      name: TBox
   - name: Delete SwrdSt
     type: objdelete
     id: 0xFC05

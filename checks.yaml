@@ -38,11 +38,16 @@ Knight Academy - Chest near Goddess Statue:
   type: skyloft, miscellaneous
   Paths:
     - stage/F000/r0/l0/TBox/71
-Knight Academy - Chest in Goddess Statue:
+Knight Academy - First Chest in Goddess Statue:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
     - stage/F008r/r0/l0/TBox/95
+Knight Academy - Second Chest in Goddess Statue:
+  original item: Emerald Tablet
+  type: skyloft, miscellaneous
+  Paths:
+    - stage/F008r/r0/l0/TBox/94
 Central Skyloft - Bazaar Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, sand sea goddess
