@@ -1568,12 +1568,12 @@ Ancient Cistern - East Room Short Tunnel Rupee 3:
   Paths:
     - stage/D101/r2/l0/Item/67
 
-# Can Be Locked Out Of if activating water pillar before collecting
-Ancient Cistern - Rupee North Room Under Lilypad:
-  original item: Red Rupee
-  type: faron, dungeon, freestanding #, rupee
-  Paths:
-    - stage/D101/r5/l0/Item/13
+## Can Be Locked Out Of if activating water pillar before collecting
+#Ancient Cistern - Rupee North Room Under Lilypad:
+#  original item: Red Rupee
+#  type: faron, dungeon, freestanding #, rupee
+#  Paths:
+#    - stage/D101/r5/l0/Item/13
 
 Earth Temple - Rupee in Lava Tunnel:
   original item: Silver Rupee
@@ -1617,29 +1617,29 @@ Faron Woods - Rupee on Hollow Tree Branch:
   Paths:
     - stage/F100/r0/l0/Item/41
 
-Lake Floria - Rupee Under Boulder:
-  original item: Silver Rupee
-  type: faron, freestanding #, rupee
-  Paths:
-   - stage/F102/r2/l0/Item/60
-
-Lake Floria - Rupee Behind Boulder 1:
-  original item: Red Rupee
-  type: faron, freestanding #, rupee
-  Paths:
-   - stage/F102/r2/l0/Item/61
-
-Lake Floria - Rupee Behind Boulder 2:
-  original item: Red Rupee
-  type: faron, freestanding #, rupee
-  Paths:
-   - stage/F102/r2/l0/Item/62
-
-Lake Floria - Rupee Behind Boulder 3:
-  original item: Blue Rupee
-  type: faron, freestanding #, rupee
-  Paths:
-   - stage/F102/r2/l0/Item/63
+#Lake Floria - Rupee Under Boulder:
+#  original item: Silver Rupee
+#  type: faron, freestanding #, rupee
+#  Paths:
+#   - stage/F102/r2/l0/Item/60
+#
+#Lake Floria - Rupee Behind Boulder 1:
+#  original item: Red Rupee
+#  type: faron, freestanding #, rupee
+#  Paths:
+#   - stage/F102/r2/l0/Item/61
+#
+#Lake Floria - Rupee Behind Boulder 2:
+#  original item: Red Rupee
+#  type: faron, freestanding #, rupee
+#  Paths:
+#   - stage/F102/r2/l0/Item/62
+#
+#Lake Floria - Rupee Behind Boulder 3:
+#  original item: Blue Rupee
+#  type: faron, freestanding #, rupee
+#  Paths:
+#   - stage/F102/r2/l0/Item/63
 
 Lake Floria - Rupee Outside AC:
   original item: Gold Rupee
