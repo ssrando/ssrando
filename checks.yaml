@@ -1695,7 +1695,7 @@ Lanayru Sand Sea - Rupee Harbor First Pillar:
   Paths:
     - stage/F301/r0/l0/Item/92
 
-# NOT UNTIL QUICK BEETLE IS IMPLEMENTED
+# NOT UNTIL QUICK BEETLE IS IMPLEMENTED 
 Lanayru Sand Sea - Rupee Harbor Entrance Crown 1:
   original item: Silver Rupee
   type: lanayru, freestanding #, rupee
