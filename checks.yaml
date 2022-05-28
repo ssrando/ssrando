@@ -1514,7 +1514,7 @@ Skyview - Rupee Southwest Tunnel:
   Paths:
     - stage/D100/r5/l0/Item/67
 
-Skyview - Rupee West Tunnel:
+Skyview - Rupee East Tunnel:
   original item: Red Rupee
   type: faron, dungeon, freestanding #, rupee
   Paths:
