@@ -1532,12 +1532,6 @@ Ancient Cistern - Rupee West Hand:
   Paths:
     - stage/D101/r0/l0/Item/93
 
-Ancient Cistern - Rupee West Hand:
-  original item: Silver Rupee
-  type: faron, dungeon, freestanding #, rupee
-  Paths:
-    - stage/D101/r0/l0/Item/93
-
 Ancient Cistern - East Room Rupee 1:
   original item: Red Rupee
   type: faron, dungeon, freestanding #, rupee
