@@ -219,8 +219,6 @@ class Logic:
                         orig_item = self.item_locations[rupee_check]["original item"]
                         self.set_prerandomization_item_location(rupee_check, orig_item)
 
-                
-
         swords_left = 6 - STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]
         self.sworded_dungeon_locations = []
         if self.rando.options["sword-dungeon-reward"] and (
