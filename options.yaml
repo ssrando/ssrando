@@ -228,6 +228,17 @@
     pool. All modes also add ruppors to the backup, duplicatable pool for when all other items have been
     placed
   ui: option_rupoor_mode
+- name: Rupeesanity
+  command: rupeesanity
+  type: singlechoice
+  default: Vanilla
+  choices:
+    - Vanilla
+    - No Quick Beetle
+    - All
+  bits: 2
+  help: Makes Freestanding Rupees be able to be randomized!
+  ui: option_rupeesanity
 - name: Gate of Time Starting State
   command: got-start
   type: singlechoice
