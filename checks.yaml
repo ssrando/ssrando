@@ -1486,240 +1486,236 @@ Eldin Silent Realm - Fireshield Earrings:
 
 Skyview - Rupee on Spring Pillar:
   original item: Red Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/B100_1/r0/l0/Item/109
 
 Central Skyloft - Waterfall Cave Red Rupees:
   original item: Red Rupee
-  type: skyloft, freestanding #, rupee
+  type: skyloft, freestanding
   Paths:
     - stage/D000/r0/l0/Item/88
 
 Sky Keep - Rupee in Alcove of FS Room:
   original item: Silver Rupee
-  type: skyloft, dungeon, freestanding #, rupee
+  type: skyloft, dungeon, freestanding
   Paths:
     - stage/D003_2/r0/l0/Item/36
 
 Skyview - Rupee Southeast Tunnel:
   original item: Red Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D100/r5/l0/Item/65
 
 Skyview - Rupee Southwest Tunnel:
   original item: Red Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D100/r5/l0/Item/67
 
 Skyview - Rupee East Tunnel:
   original item: Red Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D100/r5/l0/Item/66
 
 Ancient Cistern - Rupee East Hand:
   original item: Silver Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r0/l0/Item/92
 
 Ancient Cistern - Rupee West Hand:
   original item: Silver Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r0/l0/Item/93
 
 Ancient Cistern - East Room Rupee 1:
   original item: Red Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r2/l0/Item/34
 
 Ancient Cistern - East Room Rupee 2:
   original item: Red Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r2/l0/Item/68
 
 Ancient Cistern - East Room Short Tunnel Rupee 1:
   original item: Green Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r2/l0/Item/65
 
 Ancient Cistern - East Room Short Tunnel Rupee 2:
   original item: Green Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r2/l0/Item/66
 
 Ancient Cistern - East Room Short Tunnel Rupee 3:
   original item: Green Rupee
-  type: faron, dungeon, freestanding #, rupee
+  type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r2/l0/Item/67
 
 ## Can Be Locked Out Of if activating water pillar before collecting
 #Ancient Cistern - Rupee North Room Under Lilypad:
 #  original item: Red Rupee
-#  type: faron, dungeon, freestanding #, rupee
+#  type: faron, dungeon, freestanding
 #  Paths:
 #    - stage/D101/r5/l0/Item/13
 
 Earth Temple - Rupee in Lava Tunnel:
   original item: Silver Rupee
-  type: eldin, dungeon, freestanding #, rupee
+  type: eldin, dungeon, freestanding
   Paths:
     - stage/D200/r2/l0/Item/21
 
 Earth Temple - Rupee above Drawbridge:
   original item: Red Rupee
-  type: eldin, dungeon, freestanding #, rupee
+  type: eldin, dungeon, freestanding
   Paths:
     - stage/D200/r1/l0/Item/25
 
 Faron Woods - Rupee on Great Tree Branch 1:
   original item: Blue Rupee
-  type: faron, freestanding #, rupee
+  type: faron, freestanding
   Paths:
     - stage/F100/r0/l0/Item/43
 
 Faron Woods - Rupee on Great Tree Branch 2:
   original item: Blue Rupee
-  type: faron, freestanding #, rupee
+  type: faron, freestanding
   Paths:
     - stage/F100/r0/l0/Item/44
 
 Faron Woods - Rupee on Platform Near Floria Door:
   original item: Red Rupee
-  type: faron, freestanding #, rupee
+  type: faron, freestanding
   Paths:
     - stage/F100/r0/l0/Item/40
 
 Faron Woods - Rupee on Hollow Tree Root:
   original item: Blue Rupee
-  type: faron, freestanding #, rupee
+  type: faron, freestanding
   Paths:
     - stage/F100/r0/l0/Item/42
 
 Faron Woods - Rupee on Hollow Tree Branch:
   original item: Red Rupee
-  type: faron, freestanding #, rupee
+  type: faron, freestanding
   Paths:
     - stage/F100/r0/l0/Item/41
 
 #Lake Floria - Rupee Under Boulder:
 #  original item: Silver Rupee
-#  type: faron, freestanding #, rupee
+#  type: faron, freestanding
 #  Paths:
 #   - stage/F102/r2/l0/Item/60
 #
 #Lake Floria - Rupee Behind Boulder 1:
 #  original item: Red Rupee
-#  type: faron, freestanding #, rupee
+#  type: faron, freestanding
 #  Paths:
 #   - stage/F102/r2/l0/Item/61
 #
 #Lake Floria - Rupee Behind Boulder 2:
 #  original item: Red Rupee
-#  type: faron, freestanding #, rupee
+#  type: faron, freestanding
 #  Paths:
 #   - stage/F102/r2/l0/Item/62
 #
 #Lake Floria - Rupee Behind Boulder 3:
 #  original item: Blue Rupee
-#  type: faron, freestanding #, rupee
+#  type: faron, freestanding
 #  Paths:
 #   - stage/F102/r2/l0/Item/63
 
 Lake Floria - Rupee Outside AC:
   original item: Gold Rupee
-  type: faron, freestanding #, rupee
+  type: faron, freestanding
   Paths:
    - stage/F102_1/r0/l0/Item/64
 
 Eldin Volcano - Rupee by First Mogma Interaction:
   original item: Red Rupee
-  type: eldin, freestanding #, rupee
+  type: eldin, freestanding
   Paths:
     - stage/F200/r0/l0/Item/41
 
 Eldin Volcano - Rupee behind Bombable Wall in First Room:
   original item: Blue Rupee
-  type: eldin, freestanding #, rupee
+  type: eldin, freestanding
   Paths:
     - stage/F200/r1/l0/Item/13
 
 Eldin Volcano - Rupee in Crawlspace in First Room:
   original item: Blue Rupee
-  type: eldin, freestanding #, rupee
+  type: eldin, freestanding
   Paths:
     - stage/F200/r1/l0/Item/19
 
 Eldin Volcano - Rupee above Mogma Turf Entrance 1:
   original item: Blue Rupee
-  type: eldin, freestanding #, rupee
+  type: eldin, freestanding
   Paths:
     - stage/F200/r2/l0/Item/125
 
 Eldin Volcano - Rupee above Mogma Turf Entrance 2:
   original item: Red Rupee
-  type: eldin, freestanding #, rupee
+  type: eldin, freestanding
   Paths:
     - stage/F200/r2/l0/Item/123
 
 Eldin Volcano - Rupee Left of First Slope 1:
   original item: Red Rupee
-  type: eldin, freestanding #, rupee
+  type: eldin, freestanding
   Paths:
     - stage/F200/r4/l0/Item/45
 
 Eldin Volcano - Rupee Left of First Slope 2:
   original item: Red Rupee
-  type: eldin, freestanding #, rupee
+  type: eldin, freestanding
   Paths:
     - stage/F200/r4/l0/Item/11
 
 Lanayru Sand Sea - Rupee Harbor First Pillar:
   original item: Red Rupee
-  type: lanayru, freestanding #, rupee
+  type: lanayru, freestanding
   Paths:
     - stage/F301/r0/l0/Item/92
 
-# NOT UNTIL QUICK BEETLE IS IMPLEMENTED 
 Lanayru Sand Sea - Rupee Harbor Entrance Crown 1:
   original item: Silver Rupee
-  type: lanayru, freestanding #, rupee
+  type: lanayru, freestanding
   Paths:
     - stage/F301/r0/l0/Item/91
 
-# NOT UNTIL QUICK BEETLE IS IMPLEMENTED
 Lanayru Sand Sea - Rupee Harbor Entrance Crown 2:
   original item: Silver Rupee
-  type: lanayru, freestanding #, rupee
+  type: lanayru, freestanding
   Paths:
     - stage/F301/r0/l0/Item/93
 
-# NOT UNTIL QUICK BEETLE IS IMPLEMENTED
 Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 1:
   original item: Silver Rupee
-  type: lanayru, freestanding #, rupee
+  type: lanayru, freestanding
   Paths:
     - stage/F301_6/r0/l0/Item/11
 
-# NOT UNTIL QUICK BEETLE IS IMPLEMENTED
 Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 2:
   original item: Silver Rupee
-  type: lanayru, freestanding #, rupee
+  type: lanayru, freestanding
   Paths:
     - stage/F301_6/r0/l0/Item/12
 
 Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose:
   original item: Silver Rupee
-  type: lanayru, freestanding #, rupee
+  type: lanayru, freestanding
   Paths:
     - stage/F301_6/r0/l1/Item/13
     - stage/F301_6/r0/l2/Item/13
