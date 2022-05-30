@@ -31,6 +31,7 @@ from .constants import (
     ENTRANCE_CONNECTIONS,
     ALL_TYPES,
     STARTING_SWORD_COUNT,
+    RUPEE_CHECKS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -207,6 +208,18 @@ class Logic:
                     self.set_prerandomization_item_location(shop_check, orig_item)
                 else:
                     self.racemode_ban_location(shop_check)
+
+        if self.rando.options["rupeesanity"] != "All":
+            for rupee_check in RUPEE_CHECKS:
+                if self.rando.options["rupeesanity"] == "Vanilla":
+                    orig_item = self.item_locations[rupee_check]["original item"]
+                    self.set_prerandomization_item_location(rupee_check, orig_item)
+                else:
+                    if "Sea Pillar" in rupee_check or "Entrance Crown" in rupee_check:
+                        orig_item = self.item_locations[rupee_check]["original item"]
+                        self.set_prerandomization_item_location(rupee_check, orig_item)
+
+                
 
         swords_left = 6 - STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]
         self.sworded_dungeon_locations = []
