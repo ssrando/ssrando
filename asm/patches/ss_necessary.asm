@@ -153,6 +153,11 @@ nop
 li r3, 1 ; 1 is english
 blr
 
+; don't show textbox for first time treasures
+.org 0x80254e30
+li r3, 0
+blr
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
