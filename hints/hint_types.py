@@ -139,6 +139,32 @@ class SpiritOfTheSwordGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
+class PathGossipStoneHint(GossipStoneHint):
+    zone: str
+    goal: str
+
+    def to_gossip_stone_text(self) -> List[str]:
+        return [
+            f"The servant of the goddess who wishes to vanquish <ye<{self.goal}>> shall venture to <r<{self.zone}>>"
+        ]
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.zone} is on the path to {self.goal}"
+
+    def to_spoiler_log_json(self):
+        return {
+            "location": self.location,
+            "item": self.item,
+            "zone": self.zone,
+            "goal": self.goal,
+            "type": "path",
+        }
+
+    def __hash__(self):
+        return hash(self.location + self.item)
+
+
+@dataclass
 class CubeSotSGossipStoneHint(GossipStoneHint):
     cube_zone: str
 

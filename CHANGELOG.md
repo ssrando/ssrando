@@ -30,6 +30,12 @@
     - Note that the default setting is DISABLED, however previous versions of the randomizer always used the precise locations for item hints (ENABLED).
     - When this option is disabled (which uses general regions), it will follow the same logic for Goddess Cubes 
       - Example: Sword in the Goddess Chest next to Isle of Songs -> Progressive Sword can be found in Mogma Turf
+  - Added option for path hints (by YourAverageLink)
+    - If path hints are enabled, SotS hints will change to specify a required dungeon boss locked by an item in that region
+      - Example: Gust Bellows on Sparring Hall Chest with LMF as a required dungeon; Knight Academy is SotS -> Knight Academy is on the path to Molderach
+      - If the item that is hinted is not on the path to any particular boss, but is required to beat the game anyway (Ex: Harp, Items like Stone of Trials for Sky Keep, Emerald Tablet in some cases), it is on the path to Demise.
+        - Example: Goddess Harp on Isle of Songs - Nayru's Wisdom; Thunderhead is SotS -> Thunderhead is on the path to Demise
+    - At the moment, path hints are not compatible with separate cube sots; they will be hinted like normal path hints
   - New hint types
     - Junk
     - Random
