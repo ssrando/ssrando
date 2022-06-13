@@ -31,6 +31,8 @@ from .constants import (
     ENTRANCE_CONNECTIONS,
     ALL_TYPES,
     STARTING_SWORD_COUNT,
+    DUNGEON_GOALS,
+    POST_GOAL_LOCS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -89,6 +91,7 @@ class Logic:
         self.unrequired_dungeons = [
             d for d in POTENTIALLY_REQUIRED_DUNGEONS if d not in self.required_dungeons
         ]
+        self.goals = self.get_goals()
         self.entrance_connections = self.randomize_entrance_connections()
         self.trial_connections = self.randomize_trial_entrances()
         self.starting_items = self.randomize_starting_items()
@@ -1455,6 +1458,25 @@ class Logic:
                 if not self.can_finish_without_locations([loc]):
                     sots_items[loc] = item
         return sots_items
+
+    def get_goals(self):
+        return list([DUNGEON_GOALS[dungeon] for dungeon in self.required_dungeons])
+
+    def get_goals_by_requirement(self, loc):
+        goals = []
+        for goal in self.goals:
+            if not self.can_reach_restricted([loc], self.macros[POST_GOAL_LOCS[goal]]):
+                goals.append(goal)
+        if goals == []:  # not on path to any dungeon boss, try to add Demise as a goal
+            if not self.can_reach_restricted(
+                [loc], self.macros["Can Reach and Defeat Demise"]
+            ):
+                goals.append("Demise")
+            else:  # this method should only be called by the SotS hint generator for now
+                raise Exception(
+                    f"Location {loc} is not on the path to any goal, despite being a SotS location!"
+                )
+        return goals
 
     def get_barren_regions(self):
         region_is_barren = {}

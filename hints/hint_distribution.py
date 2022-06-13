@@ -344,7 +344,7 @@ class HintDistribution:
             "sometimes",
         )
 
-    def _create_sots_hint(self):
+    def _create_sots_hint(self):  # also handles path hints
         if not self.sots_locations:
             return None
         zone, loc, item = self.sots_locations.pop()
@@ -361,7 +361,10 @@ class HintDistribution:
         if "Goddess Chest" in loc:
             zone = self.logic.rando.item_locations[loc]["cube_region"]
             # place cube sots hint & catch specific zones and fit them into their general zone (as seen in the cube progress options)
-            if self.logic.rando.options["cube-sots"]:
+            if (
+                self.logic.rando.options["cube-sots"]
+                and not self.logic.rando.options["path-hints"]
+            ):  # currently not compatible with path
                 if zone == "Skyview":
                     zone = "Faron Woods"
                 elif zone == "Mogma Turf":
@@ -369,6 +372,11 @@ class HintDistribution:
                 elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
                 return CubeSotSGossipStoneHint(loc, item, True, zone)
+        if self.logic.rando.options["path-hints"]:
+            goal = self.rng.choice(
+                self.logic.get_goals_by_requirement(loc)
+            )  # choose a random goal boss locked by the location
+            return PathGossipStoneHint(loc, item, True, zone, goal)
         return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
 
     def _create_barren_hint(self):

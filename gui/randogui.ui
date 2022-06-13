@@ -1440,6 +1440,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QCheckBox" name="option_path_hints">
+          <property name="text">
+           <string>Path Hints</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer_11">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
