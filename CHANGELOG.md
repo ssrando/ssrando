@@ -30,16 +30,19 @@
     - Note that the default setting is DISABLED, however previous versions of the randomizer always used the precise locations for item hints (ENABLED).
     - When this option is disabled (which uses general regions), it will follow the same logic for Goddess Cubes 
       - Example: Sword in the Goddess Chest next to Isle of Songs -> Progressive Sword can be found in Mogma Turf
-  - Added option for path hints (by YourAverageLink)
-    - If path hints are enabled, SotS hints will change to specify a required dungeon boss locked by an item in that region
-      - Example: Gust Bellows on Sparring Hall Chest with LMF as a required dungeon; Knight Academy is SotS -> Knight Academy is on the path to Molderach
-      - If the item that is hinted is not on the path to any particular boss, but is required to beat the game anyway (Ex: Harp, Items like Stone of Trials for Sky Keep, Emerald Tablet in some cases), it is on the path to Demise.
-        - Example: Goddess Harp on Isle of Songs - Nayru's Wisdom; Thunderhead is SotS -> Thunderhead is on the path to Demise
-    - At the moment, path hints are not compatible with separate cube sots; they will be hinted like normal path hints
   - New hint types
     - Junk
     - Random
     - Sometimes
+    - Path (by YourAverageLink)
+      - Path hints are a new hint type that may be specified in a hint distribution. They act similar to SotS hints, but they specify a required dungeon boss locked by an item in that region
+        - Example: Gust Bellows on Sparring Hall Chest with LMF as a required dungeon = Knight Academy is on the path to Molderach
+      - At the moment, path hints are not compatible with the separate cube sots; they will be hinted like normal path hints
+      - Path hints inherit the dungeon sots limit and use the same limit.
+        - Example: If one path hint is placed for a dungeon, the sots dungeon limit is 2, and path hints are ordered before sots in the distribution, only up to one dungeon sots hint may be placed.
+      - The order of dungeon boss goals for path hints is randomized once at the start, and then chosen in sequence to try to ensure one exists for each goal, if possible.
+        - Example: If there are 3 required dungeons and 3 fixed path hints (with 0 weight), there will be one path hint for each of the three goals.
+        - Exception: If there are no applicable path items left for a goal (can happen if already always/sometimes hinted, or with low-requirement dungeons like Skyview), the hint will be placed for the next goal in the chain (potentially causing a second goal hint for one of the goals)
     - Some of these hint types existed in prior versions, but users had no control over them
 - Changed item hints, that point to a specific location, to use the same hint format as location hints
 ### Bugfixes

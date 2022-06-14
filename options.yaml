@@ -538,12 +538,6 @@
   default: false
   help: If enabled, item hints will indicate exactly which check the item lies, otherwise, it will just indicate the region.
   ui: option_precise_item
-- name: Path Hints
-  command: path-hints
-  type: boolean
-  default: false
-  help: If enabled, SotS hints will instead specify a required dungeon boss an item in that zone locks. If the item locks no boss in particular, it is on the path to Demise. This is currently not compatible with separate cube sots.
-  ui: option_path_hints
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

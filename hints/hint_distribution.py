@@ -5,6 +5,7 @@ from random import Random
 
 from hints.hint_types import *
 from logic.constants import (
+    POST_GOAL_LOCS,
     POTENTIALLY_REQUIRED_DUNGEONS,
     ALL_DUNGEON_AREAS,
     SILENT_REALM_CHECKS,
@@ -94,6 +95,9 @@ class HintDistribution:
         self.weighted_types = []
         self.weights = []
         self.sots_locations = []
+        self.goal_locations = []
+        self.goals = []
+        self.goal_index = 0
         self.barren_overworld_zones = []
         self.placed_ow_barren = 0
         self.barren_dungeons = []
@@ -189,28 +193,20 @@ class HintDistribution:
         self.hinted_locations.extend(self.logic.prerandomization_item_locations.keys())
 
         # populate our internal list copies for later manipulation
-        for sots_loc, item in self.logic.rando.sots_locations.items():
-            if item in self.removed_items:
-                continue
-            if self.logic.rando.options["small-key-mode"] not in [
-                "Anywhere",
-                "Lanayru Caves Key Only",
-            ]:
-                # don't hint small keys unless keysanity is on
-                if item.endswith("Small Key"):
-                    continue
-            elif self.logic.rando.options["small-key-mode"] == "Lanayru Caves Key Only":
-                if item.endswith("Small Key") and item != "LanayruCaves Small Key":
-                    continue
-
-            if self.logic.rando.options["boss-key-mode"] not in ["Anywhere"]:
-                # don't hint boss keys unless keysanity is on
-                if item.endswith("Boss Key"):
-                    continue
-
-            zone, specific_loc = Logic.split_location_name_by_zone(sots_loc)
-            self.sots_locations.append((zone, sots_loc, item))
+        self.sots_locations = self.loc_dict_filter(self.logic.sots_locations)
         self.rng.shuffle(self.sots_locations)
+        self.goals = list(self.logic.goal_locations.keys())
+        self.rng.shuffle(
+            self.goals
+        )  # shuffle the goal names that will be chosen in sequence when goal hints are placed to try to ensure one is placed for each goal
+        self.goal_locations = list(
+            [
+                (self.loc_dict_filter(self.logic.goal_locations[goal_name]))
+                for goal_name in self.goals
+            ]
+        )  # create corresponding list of shuffled goal items
+        for locations in self.goal_locations:
+            self.rng.shuffle(locations)
 
         region_barren, nonprogress = self.logic.get_barren_regions()
         for zone in region_barren:
@@ -268,6 +264,10 @@ class HintDistribution:
                 for i in range(curr_type["fixed"]):
                     if hint := self._create_sots_hint():
                         self.hints.extend([hint] * curr_type["copies"])
+            elif type == "path":
+                for i in range(curr_type["fixed"]):
+                    if hint := self._create_path_hint():
+                        self.hints.extend([hint] * curr_type["copies"])
             elif type == "barren":
                 for i in range(curr_type["fixed"]):
                     if hint := self._create_barren_hint():
@@ -304,6 +304,35 @@ class HintDistribution:
         self.rng.shuffle(self.junk_hints)
 
     """
+    Method to filter out keys from SotS and Goal item location dictionaries and return a list of tuples of zones, locations, and items
+    """
+
+    def loc_dict_filter(self, loc_dict):
+        filtered_locations = []
+        for loc, item in loc_dict.items():
+            if item in self.removed_items:
+                continue
+            if self.logic.rando.options["small-key-mode"] not in [
+                "Anywhere",
+                "Lanayru Caves Key Only",
+            ]:
+                # don't hint small keys unless keysanity is on
+                if item.endswith("Small Key"):
+                    continue
+            elif self.logic.rando.options["small-key-mode"] == "Lanayru Caves Key Only":
+                if item.endswith("Small Key") and item != "LanayruCaves Small Key":
+                    continue
+
+            if self.logic.rando.options["boss-key-mode"] not in ["Anywhere"]:
+                # don't hint boss keys unless keysanity is on
+                if item.endswith("Boss Key"):
+                    continue
+
+            zone, specific_loc = Logic.split_location_name_by_zone(loc)
+            filtered_locations.append((zone, loc, item))
+        return filtered_locations
+
+    """
     Uses the distribution to calculate the next hint
     """
 
@@ -316,6 +345,8 @@ class HintDistribution:
             hint = self._create_sometimes_hint()
         elif next_type == "sots":
             hint = self._create_sots_hint()
+        elif next_type == "path":
+            hint = self._create_path_hint()
         elif next_type == "barren":
             hint = self._create_barren_hint()
         elif next_type == "item":
@@ -344,7 +375,7 @@ class HintDistribution:
             "sometimes",
         )
 
-    def _create_sots_hint(self):  # also handles path hints
+    def _create_sots_hint(self):
         if not self.sots_locations:
             return None
         zone, loc, item = self.sots_locations.pop()
@@ -364,7 +395,7 @@ class HintDistribution:
             if (
                 self.logic.rando.options["cube-sots"]
                 and not self.logic.rando.options["path-hints"]
-            ):  # currently not compatible with path
+            ):
                 if zone == "Skyview":
                     zone = "Faron Woods"
                 elif zone == "Mogma Turf":
@@ -372,12 +403,49 @@ class HintDistribution:
                 elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
                 return CubeSotSGossipStoneHint(loc, item, True, zone)
-        if self.logic.rando.options["path-hints"]:
-            goal = self.rng.choice(
-                self.logic.get_goals_by_requirement(loc)
-            )  # choose a random goal boss locked by the location
-            return PathGossipStoneHint(loc, item, True, zone, goal)
         return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
+
+    def _create_path_hint(self):
+        if not self.goal_locations[self.goal_index]:
+            # if there aren't applicable locations for any goal, return None
+            if not any(self.goal_locations):
+                return None
+            # go to next goal if no locations are left for this goal
+            self.goal_index += 1
+            self.goal_index %= len(self.goals)
+            return self._create_path_hint()
+        zone, loc, item = self.goal_locations[self.goal_index].pop()
+        if loc in self.hinted_locations:
+            return self._create_path_hint()
+        if (
+            self.sots_dungeon_placed >= self.dungeon_sots_limit
+            and zone in ALL_DUNGEON_AREAS
+        ):
+            return self._create_path_hint()
+        if zone in ALL_DUNGEON_AREAS:
+            self.sots_dungeon_placed += (
+                1  # path hints will use the same dungeon limits as sots hints
+            )
+        self.hinted_locations.append(loc)
+        if "Goddess Chest" in loc:
+            zone = self.logic.rando.item_locations[loc]["cube_region"]
+            # place cube sots hint & catch specific zones and fit them into their general zone (as seen in the cube progress options)
+            # if (
+            #    self.logic.rando.options["cube-sots"]
+            # ):  # currently not compatible with path
+            #    if zone == "Skyview":
+            #        zone = "Faron Woods"
+            #    elif zone == "Mogma Turf":
+            #        zone = "Eldin Volcano"
+            #    elif zone == "Lanayru Mines":
+            #        zone = "Lanayru Desert"
+            #    return CubeSotSGossipStoneHint(loc, item, True, zone)
+        # move to next goal boss for next goal hint
+        self.goal_index += 1
+        self.goal_index %= len(self.goals)
+        return PathGossipStoneHint(
+            loc, item, True, zone, self.goals[self.goal_index - 1]
+        )
 
     def _create_barren_hint(self):
         if self.prev_barren_type is None:
