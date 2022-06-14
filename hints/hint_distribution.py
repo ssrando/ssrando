@@ -392,10 +392,7 @@ class HintDistribution:
         if "Goddess Chest" in loc:
             zone = self.logic.rando.item_locations[loc]["cube_region"]
             # place cube sots hint & catch specific zones and fit them into their general zone (as seen in the cube progress options)
-            if (
-                self.logic.rando.options["cube-sots"]
-                and not self.logic.rando.options["path-hints"]
-            ):
+            if self.logic.rando.options["cube-sots"]:
                 if zone == "Skyview":
                     zone = "Faron Woods"
                 elif zone == "Mogma Turf":
