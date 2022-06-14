@@ -7,6 +7,7 @@ Hint distributions define everything about how gossip stone hints are placed by 
 - **Always**: Always hints hint locations that are long, out of the way, or have differeing requirements from other nearby checks causing for long double dips. When enabled, they are placed first, regardless of order, and all of them are always generated
 - **Sometimes**: Sometimes hints are locations that annoying for various reasons, they have differing requirements, they require a lot of items, or they can be routed around if they are junk, among others.
 - **Spirit of the Sword (SotS)**: SotS hints hint regions that contain items that are required to beat the game. The randomizer decides if an item is required by removing it from the game and checking if it is still beatable.
+- **Path Hints (aka as goal hints)**: Path hints act similarly to SotS hints, but they hint regions that contain items specifically required to complete a given required dungeon, and they will show both the dungeon boss referred to and the region containing the item. The randomizer decides if an item is on the path to a boss by removing it from the game and checking if it is still possible to defeat the boss.
 - **Barren**: Barren hints hint to regions that do not require any progression items, regardless of if the items thenselvews are reqired
 - **Item**: Item hints directly hint the location of a potentially valuable item.
 - **Random**: Random hints tell the item on randomly selected locations
