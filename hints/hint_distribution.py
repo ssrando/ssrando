@@ -5,7 +5,6 @@ from random import Random
 
 from hints.hint_types import *
 from logic.constants import (
-    POST_GOAL_LOCS,
     POTENTIALLY_REQUIRED_DUNGEONS,
     ALL_DUNGEON_AREAS,
     SILENT_REALM_CHECKS,
@@ -193,18 +192,16 @@ class HintDistribution:
         self.hinted_locations.extend(self.logic.prerandomization_item_locations.keys())
 
         # populate our internal list copies for later manipulation
-        self.sots_locations = self.loc_dict_filter(self.logic.sots_locations)
+        self.sots_locations = self.loc_dict_filter(self.logic.rando.sots_locations)
         self.rng.shuffle(self.sots_locations)
-        self.goals = list(self.logic.goal_locations.keys())
-        self.rng.shuffle(
-            self.goals
-        )  # shuffle the goal names that will be chosen in sequence when goal hints are placed to try to ensure one is placed for each goal
-        self.goal_locations = list(
-            [
-                (self.loc_dict_filter(self.logic.goal_locations[goal_name]))
-                for goal_name in self.goals
-            ]
-        )  # create corresponding list of shuffled goal items
+        self.goals = list(self.logic.rando.goal_locations.keys())
+        # shuffle the goal names that will be chosen in sequence when goal hints are placed to try to ensure one is placed for each goal
+        self.rng.shuffle(self.goals)
+        # create corresponding list of shuffled goal items
+        self.goal_locations = [
+            (self.loc_dict_filter(self.logic.rando.goal_locations[goal_name]))
+            for goal_name in self.goals
+        ]
         for locations in self.goal_locations:
             self.rng.shuffle(locations)
 

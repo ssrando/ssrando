@@ -307,9 +307,6 @@ class Logic:
             # for macro in self.macros:
             # self.macros[macro]['Need'] = Logic.parse_logic_expression('Nothing')
 
-        self.sots_locations = {}
-        self.goal_locations = {}
-
     # main randomization method
     def randomize_items(self):
         self.randomize_dungeon_items()  # this will only randomize the appropriate items
@@ -1446,33 +1443,30 @@ class Logic:
             if not new_location_checked:
                 return False
 
-    def get_sots_locations(self):
+    def get_sots_goal_locations(self):
         # locations, which can not be logically skipped
         # this doesn't mean that collecting these items is enough,
         # it doesn't include interchangeable items, like the first progressive upgrade
         # (for example, if one mitts upgrade is required, but both are reachable, they are both not included)
-        # also calculates path for each required dungeon goal
+        # also calculates which locations are on the path for each required dungeon goal
 
         sots_items = {}
-        path_goals = self.get_goals()
+        goal_items = self.get_goals()
+
         # check for every progress item, if it's hard required
         for loc in self.item_locations:
             item = self.done_item_locations[loc]
             if item in self.all_progress_items:
                 if not self.can_finish_without_locations([loc]):
                     sots_items[loc] = item
-                    for goal in path_goals.keys():
+                    for goal in goal_items.keys():
+                        # if it is impossible to reach the heart container of a dungeon without a location, it is on the path to that boss
                         if not self.can_reach_restricted(
                             [loc], self.macros[POST_GOAL_LOCS[goal]]
                         ):
-                            path_goals[goal][loc] = item
-        if not self.sots_locations or not self.goal_locations:
-            self.sots_locations, self.goal_locations = sots_items, path_goals
-            return (
-                sots_items,
-                path_goals,
-            )  # return only the first time this method is called
-        self.sots_locations, self.goal_locations = sots_items, path_goals
+                            goal_items[goal][loc] = item
+
+        return sots_items, goal_items
 
     def get_goals(self):
         return dict({DUNGEON_GOALS[dungeon]: {} for dungeon in self.required_dungeons})
