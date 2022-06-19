@@ -188,6 +188,35 @@ class HintDistribution:
         # ensure prerandomized locations cannot be hinted
         self.hinted_locations.extend(self.logic.prerandomization_item_locations.keys())
 
+        # filter out prerandomized keys
+        to_remove = []
+        for loc in self.hinted_locations:
+            item = self.logic.done_item_locations[loc]
+            if item.endswith("Small Key"):
+                if self.logic.rando.options["small-key-mode"] not in [
+                    "Anywhere",
+                    "Lanayru Caves Key Only",
+                ]:
+
+                    to_remove.append(loc)
+                elif (
+                    self.logic.rando.options["small-key-mode"]
+                    == "Lanayru Caves Key Only"
+                ):
+                    if item != "LanayruCaves Small Key":
+                        to_remove.append(loc)
+
+            if item.endswith("Boss Key"):
+                if self.logic.rando.options["boss-key-mode"] not in ["Anywhere"]:
+                    to_remove.append(loc)
+
+            if item.endswith("Map"):
+                if self.logic.rando.options["map-mode"] != "Anywhere":
+                    to_remove.append(loc)
+
+        for loc in to_remove:
+            self.hinted_locations.remove(loc)
+
         # populate our internal list copies for later manipulation
         for sots_loc, item in self.logic.rando.sots_locations.items():
             if item in self.removed_items:
