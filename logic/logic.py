@@ -1491,6 +1491,27 @@ class Logic:
                     nonprogress.append(region)
         return barren, nonprogress
 
+    def is_restricted_placement_item(self, item):
+        if item.endswith("Small Key"):
+            if self.rando.options["small-key-mode"] not in [
+                "Anywhere",
+                "Lanayru Caves Key Only",
+            ]:
+
+                return True
+            elif self.rando.options["small-key-mode"] == "Lanayru Caves Key Only":
+                if item != "LanayruCaves Small Key":
+                    return True
+
+        if item.endswith("Boss Key"):
+            if self.rando.options["boss-key-mode"] not in ["Anywhere"]:
+                return True
+
+        if item.endswith("Map"):
+            if self.rando.options["map-mode"] != "Anywhere":
+                return True
+        return False
+
     def calculate_playthrough_progression_spheres(self):
         remaining_locations = set(self.item_locations.keys())
         temp_inventory = Inventory()
