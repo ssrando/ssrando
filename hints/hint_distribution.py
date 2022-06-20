@@ -189,7 +189,15 @@ class HintDistribution:
         self.sometimes_hints = sometimes_hints
 
         # ensure prerandomized locations cannot be hinted
-        self.hinted_locations.extend(self.logic.prerandomization_item_locations.keys())
+        self.hinted_locations.extend(
+            (
+                loc
+                for loc in self.logic.prerandomization_item_locations.keys()
+                if not self.logic.is_restricted_placement_item(
+                    self.logic.done_item_locations[loc]
+                )
+            )
+        )
 
         # populate our internal list copies for later manipulation
         self.sots_locations = self.loc_dict_filter(self.logic.rando.sots_locations)
@@ -309,21 +317,8 @@ class HintDistribution:
         for loc, item in loc_dict.items():
             if item in self.removed_items:
                 continue
-            if self.logic.rando.options["small-key-mode"] not in [
-                "Anywhere",
-                "Lanayru Caves Key Only",
-            ]:
-                # don't hint small keys unless keysanity is on
-                if item.endswith("Small Key"):
-                    continue
-            elif self.logic.rando.options["small-key-mode"] == "Lanayru Caves Key Only":
-                if item.endswith("Small Key") and item != "LanayruCaves Small Key":
-                    continue
-
-            if self.logic.rando.options["boss-key-mode"] not in ["Anywhere"]:
-                # don't hint boss keys unless keysanity is on
-                if item.endswith("Boss Key"):
-                    continue
+            if self.logic.is_restricted_placement_item(item):
+                continue
 
             zone, specific_loc = Logic.split_location_name_by_zone(loc)
             filtered_locations.append((zone, loc, item))
