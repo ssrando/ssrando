@@ -94,6 +94,9 @@ class HintDistribution:
         self.weighted_types = []
         self.weights = []
         self.sots_locations = []
+        self.goal_locations = []
+        self.goals = []
+        self.goal_index = 0
         self.barren_overworld_zones = []
         self.placed_ow_barren = 0
         self.barren_dungeons = []
@@ -197,15 +200,18 @@ class HintDistribution:
         )
 
         # populate our internal list copies for later manipulation
-        for sots_loc, item in self.logic.rando.sots_locations.items():
-            if item in self.removed_items:
-                continue
-            if self.logic.is_restricted_placement_item(item):
-                continue
-
-            zone, specific_loc = Logic.split_location_name_by_zone(sots_loc)
-            self.sots_locations.append((zone, sots_loc, item))
+        self.sots_locations = self.loc_dict_filter(self.logic.rando.sots_locations)
         self.rng.shuffle(self.sots_locations)
+        self.goals = list(self.logic.rando.goal_locations.keys())
+        # shuffle the goal names that will be chosen in sequence when goal hints are placed to try to ensure one is placed for each goal
+        self.rng.shuffle(self.goals)
+        # create corresponding list of shuffled goal items
+        self.goal_locations = [
+            (self.loc_dict_filter(self.logic.rando.goal_locations[goal_name]))
+            for goal_name in self.goals
+        ]
+        for locations in self.goal_locations:
+            self.rng.shuffle(locations)
 
         region_barren, nonprogress = self.logic.get_barren_regions()
         for zone in region_barren:
@@ -248,10 +254,18 @@ class HintDistribution:
         self.logic.rando.rng.shuffle(self.hintable_items)
 
         needed_fixed = []
+
+        # for each fixed goal hint, place one for each required dungeon
+        if "goal" in self.distribution.keys():
+            self.distribution["goal"]["fixed"] *= len(self.logic.required_dungeons)
+
         for type in self.distribution.keys():
             if self.distribution[type]["fixed"] > 0:
                 needed_fixed.append(type)
         needed_fixed.sort(key=lambda type: self.distribution[type]["order"])
+
+        self.junk_hints = JUNK_TEXT.copy()
+        self.rng.shuffle(self.junk_hints)
 
         for type in needed_fixed:
             curr_type = self.distribution[type]
@@ -262,6 +276,10 @@ class HintDistribution:
             elif type == "sots":
                 for i in range(curr_type["fixed"]):
                     if hint := self._create_sots_hint():
+                        self.hints.extend([hint] * curr_type["copies"])
+            elif type == "goal":
+                for i in range(curr_type["fixed"]):
+                    if hint := self._create_goal_hint():
                         self.hints.extend([hint] * curr_type["copies"])
             elif type == "barren":
                 for i in range(curr_type["fixed"]):
@@ -295,8 +313,21 @@ class HintDistribution:
             self.weighted_types.append(hint_type)
             self.weights.append(self.distribution[hint_type]["weight"])
 
-        self.junk_hints = JUNK_TEXT.copy()
-        self.rng.shuffle(self.junk_hints)
+    """
+    Method to filter out keys from SotS and Goal item location dictionaries and return a list of tuples of zones, locations, and items
+    """
+
+    def loc_dict_filter(self, loc_dict):
+        filtered_locations = []
+        for loc, item in loc_dict.items():
+            if item in self.removed_items:
+                continue
+            if self.logic.is_restricted_placement_item(item):
+                continue
+
+            zone, specific_loc = Logic.split_location_name_by_zone(loc)
+            filtered_locations.append((zone, loc, item))
+        return filtered_locations
 
     """
     Uses the distribution to calculate the next hint
@@ -311,6 +342,8 @@ class HintDistribution:
             hint = self._create_sometimes_hint()
         elif next_type == "sots":
             hint = self._create_sots_hint()
+        elif next_type == "goal":
+            hint = self._create_goal_hint()
         elif next_type == "barren":
             hint = self._create_barren_hint()
         elif next_type == "item":
@@ -365,6 +398,48 @@ class HintDistribution:
                     zone = "Lanayru Desert"
                 return CubeSotSGossipStoneHint(loc, item, True, zone)
         return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
+
+    def _create_goal_hint(self):
+        if not self.goal_locations[self.goal_index]:
+            # if there aren't applicable locations for any goal, return None
+            if not any(self.goal_locations):
+                return None
+            # go to next goal if no locations are left for this goal
+            self.goal_index += 1
+            self.goal_index %= len(self.goals)
+            return self._create_goal_hint()
+        zone, loc, item = self.goal_locations[self.goal_index].pop()
+        if loc in self.hinted_locations:
+            return self._create_goal_hint()
+        if (
+            self.sots_dungeon_placed >= self.dungeon_sots_limit
+            and zone in ALL_DUNGEON_AREAS
+        ):
+            return self._create_goal_hint()
+        if zone in ALL_DUNGEON_AREAS:
+            self.sots_dungeon_placed += (
+                1  # goal hints will use the same dungeon limits as sots hints
+            )
+        self.hinted_locations.append(loc)
+        if "Goddess Chest" in loc:
+            zone = self.logic.rando.item_locations[loc]["cube_region"]
+            # place cube sots hint & catch specific zones and fit them into their general zone (as seen in the cube progress options)
+            # if (
+            #    self.logic.rando.options["cube-sots"]
+            # ):  # currently not compatible with goal
+            #    if zone == "Skyview":
+            #        zone = "Faron Woods"
+            #    elif zone == "Mogma Turf":
+            #        zone = "Eldin Volcano"
+            #    elif zone == "Lanayru Mines":
+            #        zone = "Lanayru Desert"
+            #    return CubeSotSGossipStoneHint(loc, item, True, zone)
+        # move to next goal boss for next goal hint
+        self.goal_index += 1
+        self.goal_index %= len(self.goals)
+        return GoalGossipStoneHint(
+            loc, item, True, zone, self.goals[self.goal_index - 1]
+        )
 
     def _create_barren_hint(self):
         if self.prev_barren_type is None:

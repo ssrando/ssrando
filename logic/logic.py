@@ -31,6 +31,8 @@ from .constants import (
     ENTRANCE_CONNECTIONS,
     ALL_TYPES,
     STARTING_SWORD_COUNT,
+    DUNGEON_GOALS,
+    POST_GOAL_LOCS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -1426,20 +1428,33 @@ class Logic:
             if not new_location_checked:
                 return False
 
-    def get_sots_locations(self):
+    def get_sots_goal_locations(self):
         # locations, which can not be logically skipped
         # this doesn't mean that collecting these items is enough,
         # it doesn't include interchangeable items, like the first progressive upgrade
         # (for example, if one mitts upgrade is required, but both are reachable, they are both not included)
+        # also calculates which locations are on the path for each required dungeon goal
 
         sots_items = {}
+        goal_items = self.get_goals()
+
         # check for every progress item, if it's hard required
         for loc in self.item_locations:
             item = self.done_item_locations[loc]
             if item in self.all_progress_items:
                 if not self.can_finish_without_locations([loc]):
                     sots_items[loc] = item
-        return sots_items
+                    for goal in goal_items.keys():
+                        # if it is impossible to reach the heart container of a dungeon without a location, it is on the path to that boss
+                        if not self.can_reach_restricted(
+                            [loc], self.macros[POST_GOAL_LOCS[goal]]
+                        ):
+                            goal_items[goal][loc] = item
+
+        return sots_items, goal_items
+
+    def get_goals(self):
+        return dict({DUNGEON_GOALS[dungeon]: {} for dungeon in self.required_dungeons})
 
     def get_barren_regions(self):
         region_is_barren = {}

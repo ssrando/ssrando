@@ -161,7 +161,7 @@ class Randomizer(BaseRandomizer):
     def randomize(self):
         self.progress_callback("randomizing items...")
         self.logic.randomize_items()
-        self.sots_locations = self.logic.get_sots_locations()
+        self.sots_locations, self.goal_locations = self.logic.get_sots_goal_locations()
         self.hints.do_hints()
         if self.no_logs:
             self.progress_callback("writing anti spoiler log...")
@@ -210,6 +210,15 @@ class Randomizer(BaseRandomizer):
         spoiler_log += "SotS:\n"
         for sotsloc, item in self.sots_locations.items():
             spoiler_log += "  %-53s %s\n" % (sotsloc + ":", item)
+
+        spoiler_log += "\n\n"
+
+        # Write path locations; locations 100% required to complete a given required dungeon
+        spoiler_log += "Path:\n"
+        for goal, goallocs in self.goal_locations.items():
+            spoiler_log += f"{goal}:\n"
+            for goalloc, item in goallocs.items():
+                spoiler_log += "  %-53s %s\n" % (goalloc + ":", item)
 
         spoiler_log += "\n\n"
 
