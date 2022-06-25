@@ -1277,6 +1277,7 @@ Fire Sanctuary - Chest in Second Room:
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r1/l0/TBox/74
+    - stage/D201/r1/l0/TBox/74
 Fire Sanctuary - Chest near First Trapped Mogma:
   original item: FS Small Key
   type: eldin, dungeon
