@@ -36,6 +36,8 @@ global:
       onlyif: Option "skip-horde" Enabled
     - storyflag: 486 # Ghirahim 3 defeated
       onlyif: Option "skip-g3" Enabled
+    - storyflag: 8 # LMF rising CS watched
+      onlyif: Option "open-lmf" Is "Open"
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
@@ -164,7 +166,8 @@ B100_1: # skyview spring
     objtype: EVNT
     object:
       sceneflag1: 104
-      item: -1 # first storyflag handled by entrance rando patches
+      item: -1
+      story_flag1: 52 # machi located
   - name: Loadzone to outside layer 3
     type: objdelete
     room: 0
@@ -201,7 +204,8 @@ B101_1: # after AC boss
     index: 1
     objtype: EVNT
     object:
-      item: -1 # first storyflag handled by entrance rando patches
+      item: -1
+      story_flag1: 900 # rando for AC beaten
       story_flag2: -1
   - name: Fi text before AC CS
     type: objadd
@@ -261,7 +265,8 @@ B201_1: # after FS boss
     index: 0
     objtype: EVNT
     object:
-      item: -1 # first storyflag handled by entrance rando patches
+      item: -1
+      story_flag1: 901 # rando for FS beaten
   - name: Fi text before FS CS
     type: objadd
     room: 0
@@ -295,7 +300,8 @@ B301: # after Sandship boss
     room: 0
     index: 1
     objtype: EVNT
-    object: # first storyflag handled by entrance rando patches
+    object:
+      story_flag1: -1
       story_flag2: 933 # set defeat tentalus storyflag
       item: -1
   - name: Fi text before FS CS
@@ -1226,10 +1232,7 @@ F100: # Faron main area
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
-    override: # default layer 1, remove layer 3+
-      - story_flag: 5 # beat Skyview
-        night: 0
-        layer: 2
+    override: # always
       - story_flag: -1
         night: 0
         layer: 1
@@ -1254,13 +1257,7 @@ F101: # Deep Woods
 F102_1: # Outside AC
   - name: Layer override
     type: layeroverride
-    override: # change layer 3 trigger, no layer 1
-      - story_flag: 900 # new beat AC
-        night: 0
-        layer: 3
-      - story_flag: 155 # AC intro cs
-        night: 0
-        layer: 2
+    override: # always layer 0
       - story_flag: -1
         night: 0
         layer: 0
@@ -1372,12 +1369,9 @@ F100_1: # Great Tree
       - story_flag: 900 # new beat AC
         night: 0
         layer: 2
-      - story_flag: 137
-        night: 0
-        layer: 1
       - story_flag: -1
         night: 0
-        layer: 0
+        layer: 1
   - name: extra Bomb flower
     type: objadd
     layer: 0
@@ -2253,20 +2247,18 @@ F300_3: # Fire node
 F300_4: # Temple of Time
   - name: Layer override
     type: layeroverride
-    override: # harp CS storyflag changed
-      - story_flag: 914
-        night: 0
-        layer: 2
+    override: # always be layer 2
       - story_flag: -1
         night: 0
-        layer: 1
+        layer: 2
   - name: Harp CS
     type: objpatch
     index: 20
     room: 0
     objtype: EVNT
     object:
-      item: -1 # storyflag handled in entrance rando patches
+      item: -1
+      story_flag1: -1
       story_flag2: 935 # changes loadzone out of LMF
   - name: Fi text after Harp
     type: objdelete

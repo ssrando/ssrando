@@ -958,8 +958,8 @@ Central Skyloft - Potion Lady's Gift:
   Nothing
 
 Unlocked Endurance Potion:
-  Can Beat Dungeon Entrance in Lanayru Desert
-  # LMF only for Potion right now, in entrance rando this means beating the dungeon that is inside LMF
+  Can Raise Lanayru Mining Facility | Option "open-lmf" Is "Open"
+  # potion is tied to raising LMF, it's always enabled with open lmf
 
 Central Skyloft - Bazaar Goddess Chest:
   Goddess Cube in Ancient Harbour
@@ -1857,8 +1857,7 @@ Can Access Desert Gorge Statue:
   # When using the sword, rush it in the sand to defeat it, drowning in the sand won't make it respawn
 
 Can Access Front of Temple of Time:
-  (Can Access Desert Gorge Statue & (Hook Beetle | Slingshot)) |
-  Can Beat Dungeon Entrance in Lanayru Desert
+  (Can Access Desert Gorge Statue & (Hook Beetle | Slingshot))
   # The Timeshift Stone in the big tree is reachable with a slingshot trickshot
   # Beating the dungeon will make one spawn inside ToT
   # If you already beat the dungeon and forgot to activate the ToT statue, RBM it with scene flag 8x40 "Check Temple of Time Statue"
@@ -1893,8 +1892,6 @@ Can Raise Lanayru Mining Facility:
 
 Can Access Dungeon Entrance in Lanayru Desert:
   Can Access Second Part of Lanayru Desert & Can Raise Lanayru Mining Facility
-
-# Can Beat Dungeon Entrance in Lanayru Desert:
 
 #   Determined at runtime
 

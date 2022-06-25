@@ -244,29 +244,6 @@ DUNGEON_EXIT_SCENS = {
     ],
 }
 
-# fixes for entrance rando, ET, SSH and SK don't need to set storyflags at all
-# for LMF it's the ToT layer change
-POST_DUNGEON_STORYFLAGS = {
-    "Dungeon Entrance in Deep Woods": 5,
-    "Dungeon Entrance in Lake Floria": 900,
-    "Dungeon Entrance in Eldin Volcano": -1,
-    "Dungeon Entrance in Volcano Summit": 901,
-    "Dungeon Entrance in Lanayru Desert": 914,
-    "Dungeon Entrance in Sand Sea": -1,
-    "Dungeon Entrance on Skyloft": -1,
-}
-
-POST_DUNGEON_CUTSCENE = {
-    # (stage, room, EVNT)
-    "Skyview": ("B100_1", 0, 1),
-    "Earth Temple": ("B210", 0, 2),
-    "Lanayru Mining Facility": ("F300_4", 0, 20),
-    "Ancient Cistern": ("B101_1", 0, 1),
-    "Sandship": ("B301", 0, 1),
-    "Fire Sanctuary": ("B201_1", 0, 0),
-    "Sky Keep": ("F000", 0, 19),
-}
-
 TRIAL_GATE_TO_TRIAL = {
     "Trial Gate on Skyloft": "Skyloft Silent Realm",
     "Trial Gate in Faron Woods": "Faron Silent Realm",
@@ -1141,21 +1118,6 @@ class GamePatcher:
                         "entrance": exit_entrance,
                         "saveprompt": 1,  # save prompt
                     },
-                },
-            )
-
-            # fix post dungeon storyflags
-            inner_stage, inner_room, inner_evnt = POST_DUNGEON_CUTSCENE[dungeon]
-            storyflag = POST_DUNGEON_STORYFLAGS[entrance]
-            self.add_patch_to_stage(
-                inner_stage,
-                {
-                    "name": f"Post Dungeon Storyflag fix: {entrance} - {dungeon}",
-                    "type": "objpatch",
-                    "index": inner_evnt,
-                    "room": inner_room,
-                    "objtype": "EVNT",
-                    "object": {"story_flag1": storyflag},
                 },
             )
 
