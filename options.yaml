@@ -542,7 +542,7 @@
 - name: Hint Distribution
   command: hint-distribution
   type: singlechoice
-  bits: 2
+  bits: 3
   choices:
     - Weak
     - Balanced
@@ -552,6 +552,9 @@
     # - Items Only
     - Junk
     - Co-op S1
+    - S2 - 2D
+    - S2 - 3D
+    - S2 - 3D EUD Off
   default: Balanced
   help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
     as specifics about what additional items and locations can and cannot be hinted

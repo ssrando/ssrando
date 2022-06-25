@@ -139,7 +139,7 @@ class SpiritOfTheSwordGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
-class PathGossipStoneHint(GossipStoneHint):
+class GoalGossipStoneHint(GossipStoneHint):
     zone: str
     goal: str
 
@@ -157,7 +157,7 @@ class PathGossipStoneHint(GossipStoneHint):
             "item": self.item,
             "zone": self.zone,
             "goal": self.goal,
-            "type": "path",
+            "type": "goal",
         }
 
     def __hash__(self):

@@ -7,7 +7,7 @@ Hint distributions define everything about how gossip stone hints are placed by 
 - **Always**: Always hints hint locations that are long, out of the way, or have differeing requirements from other nearby checks causing for long double dips. When enabled, they are placed first, regardless of order, and all of them are always generated
 - **Sometimes**: Sometimes hints are locations that annoying for various reasons, they have differing requirements, they require a lot of items, or they can be routed around if they are junk, among others.
 - **Spirit of the Sword (SotS)**: SotS hints hint regions that contain items that are required to beat the game. The randomizer decides if an item is required by removing it from the game and checking if it is still beatable.
-- **Path Hints (aka as goal hints)**: Path hints act similarly to SotS hints, but they hint regions that contain items specifically required to complete a given required dungeon, and they will show both the dungeon boss referred to and the region containing the item. The randomizer decides if an item is on the path to a boss by removing it from the game and checking if it is still possible to defeat the boss.
+- **Goal Hints (aka as path hints)**: Goal hints act similarly to SotS hints, but they hint regions that contain items specifically required to complete a given required dungeon, and they will show both the dungeon boss referred to and the region containing the item. The randomizer decides if an item is on the path to a boss by removing it from the game and checking if it is still possible to defeat the boss. IMPORTANT - The fixed count works a bit differently for goal hints. For each fixed count in the distribution, one goal hint will be placed for a required dungeon. For example: a fixed of 1 with 3 required dungeons will result in three goal hints being placed, one for each required dungeon.
 - **Barren**: Barren hints hint to regions that do not require any progression items, regardless of if the items thenselvews are reqired
 - **Item**: Item hints directly hint the location of a potentially valuable item.
 - **Random**: Random hints tell the item on randomly selected locations
@@ -38,7 +38,7 @@ All fields are **required** in all distribution files, however, specific hint ty
 - removed_items (Array of strings)
   - Prevents the specified item from being hinted for any hint type
 - dungeon_sots_limit (number)
-  - Limits the number of dungeon SotS hints that can be placed. They will attempt be replaced by a different SotS hint if a hint past the limit would be placed.
+  - Limits the number of dungeon SotS/Goal hints that can be placed. They will attempt be replaced by a different SotS/Goal hint if a hint past the limit would be placed.
 - dungeon_barren_limit (number)
   - Limits the number of barren dungeon hints that can be placed. They will attempt to be replaced by an overworld barren hint if another hint past the limit would be placed.
 - distribution (name: distribution_data (see below))
@@ -47,5 +47,5 @@ All fields are **required** in all distribution files, however, specific hint ty
 ### Distribution Data
 - order: defines what order hints should have their fixed quantities generated. Types with the same order will be resolved in the order they are listed in the distribution
 - weight: The relative chance that this hint type is randomly selected to be placed
-- fixed: Generates the specified number of hints prior to randomly selecting additional hints by weight. Note that this **does not** guarantee that all these hints will be placed depending on the rest of the distribution
+- fixed: Generates the specified number of hints prior to randomly selecting additional hints by weight. Note that this **does not** guarantee that all these hints will be placed depending on the rest of the distribution. For goal hints, the fixed count is multiplied by the number of required dungeons.
 - copies: Generates the specified number of copies of the hint everytime a hint of this type is generated (both randomly and fixed). Note that this **does not** guarantee that all copies will be placed, but they will all be generated before the next hint is generated.

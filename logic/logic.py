@@ -1505,7 +1505,7 @@ class Logic:
                 else:
                     nonprogress.append(region)
         return barren, nonprogress
-    
+
     def is_restricted_placement_item(self, item):
         if item.endswith("Small Key"):
             if self.rando.options["small-key-mode"] not in [

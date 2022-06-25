@@ -19,7 +19,7 @@
   "distribution": {
     "always": {"order":  0, "weight":  0.00, "fixed":  0, "copies":  2},
     "sometimes": {"order":  1, "weight":  0.00, "fixed":  5, "copies":  1},
-    "path": {"order":  2, "weight":  0.00, "fixed":  3, "copies":  1},
+    "goal": {"order":  2, "weight":  0.00, "fixed":  1, "copies":  1},
     "sots": {"order":  3, "weight":  2.50, "fixed":  2, "copies":  1},
     "barren": {"order": 4, "weight":  1.50, "fixed":  1, "copies":  1},
     "item": {"order":  5, "weight":  2.00, "fixed":  1, "copies":  1},
