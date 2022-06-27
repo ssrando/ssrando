@@ -650,10 +650,14 @@ Faron Woods - Chest inside Great Tree:
   type: faron, miscellaneous
   Paths:
     - stage/F100_1/r0/l0/TBox/84
+  hint: sometimes
+  text: the <r<hollow>> tree holds
 
 Lake Floria - Lake Floria Chest:
   original item: Goddess Plume
   type: faron, miscellaneous
+  hint: sometimes
+  text: a <r<lonely chest in the lake>> contains
   Paths:
     - stage/F102/r3/l0/TBox/64
 #Lake Floria - Lake Floria Silver Rupee: # not sure if we want to randomize this
@@ -718,6 +722,8 @@ Eldin Volcano - Digging Spot below Tower:
 Eldin Volcano - Digging Spot behind Boulder on Sandy Slope:
   original item: Key Piece
   type: eldin, bombable, digging
+  hint: sometimes
+  text: a <r<boulder on a sandy slope>> hides
   Paths:
     - stage/F200/r4/l1/Soil/12
 Eldin Volcano - Digging Spot after Vents:
@@ -744,6 +750,8 @@ Mogma Turf - Chest behind Bombable Wall at Entrance:
 Mogma Turf - Sand Slide Chest:
   original item: Eldin Ore
   type: eldin, miscellaneous
+  hint: sometimes
+  text: <r<behind>> a slide mogmas buried
   Paths:
     - stage/F210/r0/l0/TBox/68
 Mogma Turf - Digging Mitts Fight:
@@ -823,6 +831,8 @@ Lanayru Desert - Hook Beetle Fight:
 Lanayru Desert - Secret Passageway Chest:
   original item: Heart Piece
   type: lanayru, bombable
+  hint: sometimes
+  text: a <r<secret passage in the desert>> holds
   Paths:
     - stage/F300/r0/l0/TBox/74
 Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on raising LMF
@@ -861,11 +871,15 @@ Lanayru Desert - Lightning Node - Second Chest:
 Lanayru Desert - Lightning Node - Raised Chest near Generator:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
+  hint: sometimes
+  text: a <r<raised chest in the Lightning Node>>
   Paths:
     - stage/F300_2/r0/l0/TBox/77
 Lanayru Desert - Fire Node - Shortcut Chest:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
+  hint: sometimes
+  text: a <r<raised chest in the Fire Node>> holds
   Paths:
     - stage/F300_3/r0/l0/TBox/79
 Lanayru Desert - Fire Node - First Small Chest:
@@ -957,6 +971,8 @@ Skyview - Chest on Tree Branch:
 Skyview - Digging Spot in Crawlspace:
   original item: SV Small Key
   type: faron, dungeon, digging
+  hints: sometimes
+  text: in a <r<temple in the forest>> a mogma <r<buried>>
   Paths:
     - stage/D100/r4/l0/Soil/15
 Skyview - Chest behind Two Eyes:
@@ -1028,6 +1044,8 @@ Earth Temple - Chest Left of Main Room Bridge:
 Earth Temple - Chest in West Room:
   original item: ET Map
   type: eldin, dungeon
+  hint: sometimes
+  text: the <r<western wing in the Earth Temple>> holds
   Paths:
     - stage/D200/r0/l0/TBox/64
 Earth Temple - Bomb Bag:
@@ -1143,6 +1161,8 @@ Lanayru Mining Facility - Goddess Harp:
 Ancient Cistern - Chest in East Part:
   original item: AC Small Key
   type: faron, dungeon
+  hint: sometimes
+  text: the <r<lone west chest in the Ancient Cistern>> reveals
   Paths:
     - stage/D101/r1/l0/TBox/67
 Ancient Cistern - Whip:
@@ -1240,6 +1260,8 @@ Sandship - Treasure Room Fifth Chest:
 Sandship - Robot in Brig's Reward:
   original item: SS Small Key
   type: lanayru, dungeon
+  hint: sometimes
+  text: the <r<gratitude of a freed captain>> reveals
   Paths:
     - event/401-DesertD2/14
     - oarc/D301/l4
