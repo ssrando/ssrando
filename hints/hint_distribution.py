@@ -1,5 +1,4 @@
 from collections import defaultdict
-from importlib.metadata import distribution
 import json
 from random import Random
 
@@ -83,7 +82,6 @@ class HintDistribution:
         self.removed_locations = []
         self.added_items = []
         self.removed_items = []
-        self.sots_dungeon_placed = 0
         self.dungeon_sots_limit = 0
         self.sots_dungeon_placed = 0
         self.dungeon_barren_limit = 0
@@ -103,11 +101,20 @@ class HintDistribution:
         self.placed_dungeon_barren = 0
         self.prev_barren_type = None
         self.hinted_locations = []
-        self.weighted_types = []
-        self.weights = []
         self.hintable_items = []
         self.junk_hints = []
         self.sometimes_hints = []
+        self.barren_hinted_areas = set()
+
+        self.hintfuncs = {
+            "sometimes": self._create_sometimes_hint,
+            "sots": self._create_sots_hint,
+            "goal": self._create_goal_hint,
+            "barren": self._create_barren_hint,
+            "item": self._create_item_hint,
+            "random": self._create_random_hint,
+            "junk": self._create_junk_hint,
+        }
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))
@@ -269,43 +276,12 @@ class HintDistribution:
 
         for type in needed_fixed:
             curr_type = self.distribution[type]
-            if type == "sometimes":
-                for i in range(curr_type["fixed"]):
-                    if hint := self._create_sometimes_hint():
-                        self.hints.extend([hint] * curr_type["copies"])
-            elif type == "sots":
-                for i in range(curr_type["fixed"]):
-                    if hint := self._create_sots_hint():
-                        self.hints.extend([hint] * curr_type["copies"])
-            elif type == "goal":
-                for i in range(curr_type["fixed"]):
-                    if hint := self._create_goal_hint():
-                        self.hints.extend([hint] * curr_type["copies"])
-            elif type == "barren":
-                for i in range(curr_type["fixed"]):
-                    if hint := self._create_barren_hint():
-                        self.hints.extend([hint] * curr_type["copies"])
-            elif type == "item":
-                for i in range(curr_type["fixed"]):
-                    if hint := self._create_item_hint():
-                        self.hints.extend([hint] * curr_type["copies"])
-            elif type == "random":
-                num_random = curr_type["fixed"]
-                for i in range(num_random):
-                    # no failsafe is needed here as there should also be progress locations to hint that have not been previously hinted
-                    self.hints.extend(
-                        [self._create_random_hint()] * curr_type["copies"]
-                    )
-            elif type == "junk":
-                self.hints.append(
-                    EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
-                )
-            else:
-                raise InvalidHintDistribution(
-                    "Invalid hint type found in distribution while geneating fixed hints"
-                )
+            func = self.hintfuncs[type]
+            for _ in range(curr_type["fixed"]):
+                if hint := func():
+                    self.hints.extend([hint] * curr_type["copies"])
 
-        # reverse the list of hints to we can pop off the back in O(1) in next_hint ()
+        # reverse the list of hints to we can pop off the back in O(1)
         # this also preserves the order they were added as they are removed so that order parameter is repsected
         self.hints.reverse()
 
@@ -330,32 +306,17 @@ class HintDistribution:
         return filtered_locations
 
     """
-    Uses the distribution to calculate the next hint
+    Uses the distribution to calculate all the hints
     """
 
-    def next_hint(self) -> GossipStoneHint:
-        if len(self.hints) > 0:
-            return self.hints.pop()
-        [next_type] = self.rng.choices(self.weighted_types, self.weights)
-        type = self.distribution[next_type]
-        if next_type == "sometimes":
-            hint = self._create_sometimes_hint()
-        elif next_type == "sots":
-            hint = self._create_sots_hint()
-        elif next_type == "goal":
-            hint = self._create_goal_hint()
-        elif next_type == "barren":
-            hint = self._create_barren_hint()
-        elif next_type == "item":
-            hint = self._create_item_hint()
-        elif next_type == "random":
-            hint = self._create_random_hint()
-        else:
-            # junk hint is the last possible type and also a fallback
-            return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
-        if type["copies"]:
-            self.hints.extend([hint] * (type["copies"] - 1))
-        return hint
+    def get_hints(self, count) -> List[GossipStoneHint]:
+        hints = self.hints
+        while len(hints) < count:
+            [next_type] = self.rng.choices(self.weighted_types, self.weights)
+            if hint := self.hintfuncs[next_type]():
+                hints.extend([hint] * self.distribution[next_type]["copies"])
+        hints = hints[:count]
+        return hints
 
     def _create_sometimes_hint(self):
         if not self.sometimes_hints:
@@ -417,9 +378,8 @@ class HintDistribution:
         ):
             return self._create_goal_hint()
         if zone in ALL_DUNGEON_AREAS:
-            self.sots_dungeon_placed += (
-                1  # goal hints will use the same dungeon limits as sots hints
-            )
+            # goal hints will use the same dungeon limits as sots hints
+            self.sots_dungeon_placed += 1
         self.hinted_locations.append(loc)
         # move to next goal boss for next goal hint
         self.goal_index += 1
@@ -473,21 +433,17 @@ class HintDistribution:
 
         # generate a hint and remove it from the lists
         if self.prev_barren_type == "dungeon":
-            weights = [
-                len(self.logic.locations_by_zone_name[area])
-                for area in self.barren_dungeons
-            ]
-            area = self.rng.choices(self.barren_dungeons, weights)[0]
-            self.barren_dungeons.remove(area)
-            return BarrenGossipStoneHint(None, None, False, area)
+            barren_area_list = self.barren_dungeons
         else:
-            weights = [
-                len(self.logic.locations_by_zone_name[area])
-                for area in self.barren_overworld_zones
-            ]
-            area = self.rng.choices(self.barren_overworld_zones, weights)[0]
-            self.barren_overworld_zones.remove(area)
-            return BarrenGossipStoneHint(None, None, False, area)
+            barren_area_list = self.barren_overworld_zones
+        weights = [
+            len(self.logic.prog_locations_by_zone_name[area])
+            for area in barren_area_list
+        ]
+        area = self.rng.choices(barren_area_list, weights)[0]
+        barren_area_list.remove(area)
+        self.barren_hinted_areas.add(area)
+        return BarrenGossipStoneHint(None, None, False, area)
 
     def _create_item_hint(self):
         if not self.hintable_items:
@@ -522,6 +478,8 @@ class HintDistribution:
                 for loc in self.logic.done_item_locations
                 if not loc in self.hinted_locations
                 and not loc in self.logic.prerandomization_item_locations
+                and Logic.split_location_name_by_zone(loc)[0]
+                not in self.barren_hinted_areas
             )
         )
         loc = self.rng.choice(all_locations_without_hint)
@@ -533,6 +491,9 @@ class HintDistribution:
             self.logic.item_locations[loc].get("text"),
             "random",
         )
+
+    def _create_junk_hint(self):
+        return EmptyGossipStoneHint(None, None, False, self.junk_hints.pop())
 
     def get_junk_text(self):
         return self.junk_hints.pop()

@@ -128,14 +128,14 @@ class Logic:
             self.racemode_ban_location("Sky Keep - First Chest")
             self.racemode_ban_location("Sky Keep - Chest after Dreadfuse")
 
-        self.locations_by_zone_name = OrderedDict()
-        for location_name in self.item_locations:
+        self.prog_locations_by_zone_name = defaultdict(list)
+        for location_name in self.filter_locations_for_progression(
+            self.item_locations.keys()
+        ):
             zone_name, specific_location_name = self.split_location_name_by_zone(
                 location_name
             )
-            if zone_name not in self.locations_by_zone_name:
-                self.locations_by_zone_name[zone_name] = []
-            self.locations_by_zone_name[zone_name].append(location_name)
+            self.prog_locations_by_zone_name[zone_name].append(location_name)
 
         self.remaining_item_locations = list(self.item_locations.keys())
         self.prerandomization_item_locations = OrderedDict()
@@ -1483,14 +1483,7 @@ class Logic:
         nonprogress = []
         for (region, is_barren) in region_is_barren.items():
             if is_barren:
-                if (
-                    len(
-                        self.filter_locations_for_progression(
-                            self.locations_by_zone_name[region]
-                        )
-                    )
-                    > 0
-                ):
+                if len(self.prog_locations_by_zone_name[region]) > 0:
                     barren.append(region)
                 else:
                     nonprogress.append(region)
