@@ -105,6 +105,7 @@ class HintDistribution:
         self.junk_hints = []
         self.sometimes_hints = []
         self.barren_hinted_areas = set()
+        self.counts_by_type = defaultdict(int)
 
         self.hintfuncs = {
             "sometimes": self._create_sometimes_hint,
@@ -279,6 +280,7 @@ class HintDistribution:
             func = self.hintfuncs[type]
             for _ in range(curr_type["fixed"]):
                 if hint := func():
+                    self.counts_by_type[type] += 1
                     self.hints.extend([hint] * curr_type["copies"])
 
         # reverse the list of hints to we can pop off the back in O(1)
@@ -313,7 +315,11 @@ class HintDistribution:
         hints = self.hints
         while len(hints) < count:
             [next_type] = self.rng.choices(self.weighted_types, self.weights)
+            if (limit := self.distribution[next_type].get("max")) is not None:
+                if self.counts_by_type[next_type] >= limit:
+                    continue
             if hint := self.hintfuncs[next_type]():
+                self.counts_by_type[next_type] += 1
                 hints.extend([hint] * self.distribution[next_type]["copies"])
         hints = hints[:count]
         return hints
