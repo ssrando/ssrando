@@ -2627,6 +2627,45 @@ D300_1: # LMF B
     layer: 0
     room: 5
     objtype: OBJ
+  - name: Close door to BK room from both sides
+    type: objpatch
+    index: 6 # all have id FFFF :(
+    layer: 0
+    objtype: DOOR
+    object:
+      anglex: 0x1313
+  - name: visual fence from BK room side
+    type: objadd
+    layer: 0
+    room: 8
+    objtype: OBJ
+    object:
+      params1: 0xCF134401
+      params2: 0xFF5FFFFF
+      posx: 5050
+      posy: 600
+      posz: -14350
+      anglex: 0xFF00
+      angley: 0x4000
+      anglez: 0xFFFF
+      id: 0xFC00
+      name: Fence
+  - name: anti softlock bomb flower
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 4716
+      posy: 600
+      posz: -14716
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC00
+      name: Bombf
 D301: # Sandship A
   - name: extra Bomb flower
     type: objadd
