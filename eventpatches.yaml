@@ -1090,14 +1090,14 @@
       param3: 0
     cases:
       - 96 # mogma quest switch
-      - 499 # pumpkin carrying
+      - 200 # pumpkin carrying
       - -1 # nothing
   - name: Show Kina Option
-    type: flowadd
+    type: flowpatch
+    index: 605
     flow:
       type: type1
       next: Kina Quest Switch
-      param3: 82
       param4: New Kina Text Option
 118-Town3:
   - name: Shorten Sparrot quest start text
