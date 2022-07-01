@@ -1079,6 +1079,26 @@
     cases:
       - 208
       - 216
+  - name: New Kina Text Option
+    type: textadd
+    text: "Hey, kid, what do you need from me?\n[1]Plowing the fields?[2]Carrying pumpkins![3-]Nothing."
+  - name: Kina Quest Switch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 0
+    cases:
+      - 96 # mogma quest switch
+      - 200 # pumpkin carrying
+      - -1 # nothing
+  - name: Show Kina Option
+    type: flowpatch
+    index: 605
+    flow:
+      type: type1
+      next: Kina Quest Switch
+      param4: New Kina Text Option
 118-Town3:
   - name: Shorten Sparrot quest start text
     type: flowpatch

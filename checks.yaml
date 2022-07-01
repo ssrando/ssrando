@@ -472,11 +472,11 @@ Sky - Orielle's Crystals:
     - oarc/F020/l0
 Sky - Kina's Crystals:
   original item: Gratitude Crystal Pack
-  type: sky, eldin, scrapper, minigame, long, crystal quest
+  type: sky, eldin, scrapper, long, crystal quest
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
-  hint: always
+  hint: sometimes
   text: <r<delivering a mogma to the sky>> is rewarded with
 Sky - Beedle's Crystals:
   original item: Gratitude Crystal Pack
