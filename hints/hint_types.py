@@ -115,41 +115,25 @@ class ZoneItemGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
-class SpiritOfTheSwordGossipStoneHint(GossipStoneHint):
+class SotsGoalGossipStoneHint(GossipStoneHint):
     zone: str
+    goal: Optional[str]
 
     def to_gossip_stone_text(self) -> List[str]:
-        return [
-            f"The <b+<Spirit of the Sword>> guides the goddess' chosen hero to <r<{self.zone}>>"
-        ]
+        if goal := self.goal:
+            return [
+                f"The servant of the goddess who wishes to vanquish <ye<{goal}>> shall venture to <r<{self.zone}>>"
+            ]
+        else:
+            return [
+                f"The <b+<Spirit of the Sword>> guides the goddess' chosen hero to <r<{self.zone}>>"
+            ]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.zone} is SotS"
-
-    def to_spoiler_log_json(self):
-        return {
-            "location": self.location,
-            "item": self.item,
-            "zone": self.zone,
-            "type": "sots",
-        }
-
-    def __hash__(self):
-        return hash(self.location + self.item)
-
-
-@dataclass
-class GoalGossipStoneHint(GossipStoneHint):
-    zone: str
-    goal: str
-
-    def to_gossip_stone_text(self) -> List[str]:
-        return [
-            f"The servant of the goddess who wishes to vanquish <ye<{self.goal}>> shall venture to <r<{self.zone}>>"
-        ]
-
-    def to_spoiler_log_text(self) -> str:
-        return f"{self.zone} is on the path to {self.goal}"
+        if goal := self.goal:
+            return f"{self.zone} is on the path to {self.goal}"
+        else:
+            return f"{self.zone} is SotS"
 
     def to_spoiler_log_json(self):
         return {
@@ -157,7 +141,7 @@ class GoalGossipStoneHint(GossipStoneHint):
             "item": self.item,
             "zone": self.zone,
             "goal": self.goal,
-            "type": "goal",
+            "type": "sots" if self.goal is None else "goal",
         }
 
     def __hash__(self):
@@ -165,23 +149,33 @@ class GoalGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
-class CubeSotSGossipStoneHint(GossipStoneHint):
+class CubeSotsGoalGossipStoneHint(GossipStoneHint):
     cube_zone: str
+    goal: Optional[str]
 
     def to_gossip_stone_text(self) -> List[str]:
-        return [
-            f"The <ye<goddess>> left a sacred gift for the hero who unites <r<{self.cube_zone}>> with the skies."
-        ]
+        if goal := self.goal:
+            return [
+                f"The servant of the goddess who wishes to vanquish <ye<{goal}>> shall unite <r<{self.cube_zone}>> with the skies."
+            ]
+        else:
+            return [
+                f"The <ye<goddess>> left a sacred gift for the hero who unites <r<{self.cube_zone}>> with the skies."
+            ]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.cube_zone} has a SotS cube"
+        if goal := self.goal:
+            return f"a cube in {self.cube_zone} is on the path to {goal}"
+        else:
+            return f"{self.cube_zone} has a SotS cube"
 
     def to_spoiler_log_json(self):
         return {
             "location": self.location,
             "item": self.item,
             "cube_zone": self.cube_zone,
-            "type": "cube_sots",
+            "goal": self.goal,
+            "type": "cube_sots" if self.goal is None else "cube_goal",
         }
 
     def __hash__(self):

@@ -396,8 +396,8 @@ class HintDistribution:
                     zone = "Eldin Volcano"
                 elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
-                return CubeSotSGossipStoneHint(loc, item, True, zone)
-        return SpiritOfTheSwordGossipStoneHint(loc, item, True, zone)
+                return CubeSotsGoalGossipStoneHint(loc, item, True, zone, None)
+        return SotsGoalGossipStoneHint(loc, item, True, zone, None)
 
     def _create_goal_hint(self):
         if not self.goal_locations[self.goal_index]:
@@ -421,25 +421,22 @@ class HintDistribution:
                 1  # goal hints will use the same dungeon limits as sots hints
             )
         self.hinted_locations.append(loc)
-        if "Goddess Chest" in loc:
-            zone = self.logic.rando.item_locations[loc]["cube_region"]
-            # place cube sots hint & catch specific zones and fit them into their general zone (as seen in the cube progress options)
-            # if (
-            #    self.logic.rando.options["cube-sots"]
-            # ):  # currently not compatible with goal
-            #    if zone == "Skyview":
-            #        zone = "Faron Woods"
-            #    elif zone == "Mogma Turf":
-            #        zone = "Eldin Volcano"
-            #    elif zone == "Lanayru Mines":
-            #        zone = "Lanayru Desert"
-            #    return CubeSotSGossipStoneHint(loc, item, True, zone)
         # move to next goal boss for next goal hint
         self.goal_index += 1
         self.goal_index %= len(self.goals)
-        return GoalGossipStoneHint(
-            loc, item, True, zone, self.goals[self.goal_index - 1]
-        )
+        goal = self.goals[self.goal_index - 1]
+        if "Goddess Chest" in loc:
+            zone = self.logic.rando.item_locations[loc]["cube_region"]
+            # place cube sots hint & catch specific zones and fit them into their general zone (as seen in the cube progress options)
+            if self.logic.rando.options["cube-sots"]:
+                if zone == "Skyview":
+                    zone = "Faron Woods"
+                elif zone == "Mogma Turf":
+                    zone = "Eldin Volcano"
+                elif zone == "Lanayru Mines":
+                    zone = "Lanayru Desert"
+                return CubeSotsGoalGossipStoneHint(loc, item, True, zone, goal)
+        return SotsGoalGossipStoneHint(loc, item, True, zone, goal)
 
     def _create_barren_hint(self):
         if self.prev_barren_type is None:
