@@ -651,7 +651,7 @@ Faron Woods - Chest inside Great Tree:
   Paths:
     - stage/F100_1/r0/l0/TBox/84
   hint: sometimes
-  text: the <r<hollow>> tree holds
+  text: the <r<hollow tree>> holds
 
 Lake Floria - Lake Floria Chest:
   original item: Goddess Plume
@@ -750,7 +750,6 @@ Mogma Turf - Chest behind Bombable Wall at Entrance:
 Mogma Turf - Sand Slide Chest:
   original item: Eldin Ore
   type: eldin, miscellaneous
-  hint: sometimes
   text: <r<behind>> a slide mogmas buried
   Paths:
     - stage/F210/r0/l0/TBox/68
@@ -871,8 +870,7 @@ Lanayru Desert - Lightning Node - Second Chest:
 Lanayru Desert - Lightning Node - Raised Chest near Generator:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
-  hint: sometimes
-  text: a <r<raised chest in the Lightning Node>>
+  text: a <r<raised chest in the Lightning Node>> contains
   Paths:
     - stage/F300_2/r0/l0/TBox/77
 Lanayru Desert - Fire Node - Shortcut Chest:
@@ -1162,7 +1160,7 @@ Ancient Cistern - Chest in East Part:
   original item: AC Small Key
   type: faron, dungeon
   hint: sometimes
-  text: the <r<lone west chest in the Ancient Cistern>> reveals
+  text: the <r<lone east chest in the Ancient Cistern>> contains
   Paths:
     - stage/D101/r1/l0/TBox/67
 Ancient Cistern - Whip:
