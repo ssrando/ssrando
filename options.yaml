@@ -268,9 +268,9 @@
   bits: 2
   choices:
     - Nodes
-    - Main Node
     # - Hook Beetle
     - Open
+    - Main Node
   default: Nodes
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
     Main Node will set the fire, water, and lightning nodes to be active but LMF still needs to be raised from the main node.
