@@ -16,6 +16,7 @@ from .item_types import (
     DUPLICATABLE_CONSUMABLE_ITEMS,
     DUNGEON_PROGRESS_ITEMS,
     DUNGEON_NONPROGRESS_ITEMS,
+    KEY_PIECES,
     SMALL_KEYS,
     BOSS_KEYS,
 )
@@ -169,6 +170,10 @@ class Logic:
         self.all_progress_items += DUNGEON_PROGRESS_ITEMS
         if self.rando.options["map-mode"] != "Removed":
             self.all_nonprogress_items += DUNGEON_NONPROGRESS_ITEMS
+
+        # remove key pieces if open ET is on
+        if not self.rando.options["open-et"]:
+            self.all_progress_items += KEY_PIECES
 
         all_item_names = []
         all_item_names += self.all_progress_items
