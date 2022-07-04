@@ -2836,6 +2836,75 @@ D301_1: # Sandship B
     layer: 0
     room: 0
     objtype: OBJ
+F302: # Lanayru Gorge
+  - name: Layer override
+    type: layeroverride
+    override: # always be layer 2
+      - story_flag: -1
+        night: 0
+        layer: 2
+  - name: Delete Thunderdragon after heal
+    type: objdelete
+    id: 0x10D0
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Delete trigger preventing you from moveing over bridge
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Patch wounded Thuderdragon to always exist
+    type: objpatch
+    id: 0x10D1
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: 36 # Always trigger
+  - name: Move Key to Layer 2
+    type: objmove
+    id: 0xFCC3
+    layer: 1
+    destlayer: 2
+    room: 0
+    objtype: OBJ
+  - name: delete FrmLand
+    type: objdelete
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Create Seedling Soil # WiP
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFF0B1E00
+      params2: 0xFFFFFFFF
+      posx: 9804.2412109375
+      posy: 350
+      posz: -4532.95361328125
+      anglex: 0
+      angley: 6371
+      anglez: 0
+      id: 0xFC05
+      name: Soil
+  - name: delete Fi after Lanayru SotH
+    type: objdelete
+    id: 0xFCC0
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Remove Lanayru Soth from CS
+    type: objpatch
+    room: 0
+    index: 8
+    objtype: EVNT
+    object:
+      item: -1 # no lanayru Soth anymore
 F303: # Lanayru Caves
   - name: Layer override
     type: layeroverride
@@ -2846,6 +2915,22 @@ F303: # Lanayru Caves
       - story_flag: -1
         night: 0
         layer: 0
+  - name: Delete Wall blocking path to Gorge
+    type: objdelete
+    id: 0xFC62
+    layer: 1
+    room: 0
+    objtype: SOBJ
+  - name: Fi text after hitting Sandship Crest
+    type: objpatch
+    room: 0
+    layer: 1
+    id: 0xFC5C
+    objtype: OBJ
+    object:
+      posx: -195
+      posy: 0
+      posz: 2146
   - name: Fi text after chest
     type: objdelete
     id: 0xFC25

@@ -1697,6 +1697,21 @@
     index: 17
     flow:
       next: 276
+404-DesertF3:
+  - name: Go to item
+    type: flowpatch
+    index: 139
+    flow:
+      next: give item after Healing Thunderdragon
+  - name: give item after Healing Thunderdragon
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: -1
+      param3: 9
 499-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
