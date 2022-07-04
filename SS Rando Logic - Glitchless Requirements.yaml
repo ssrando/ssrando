@@ -1239,7 +1239,7 @@ Can Activate Water Node:
 Can Raise Lanayru Mining Facility:
   (Can Activate Water Node & Can Activate Lightning Node & Can Activate Fire Node & Sword) |
   Option "open-lmf" Is "Open" | 
-  (Option "open-lmf" Is "Main Node" & Can Access Second Part of Lanayru Desert & (Bomb Bag | Hook Beetle) & Sword) |
+  (Option "open-lmf" Is "Main Node" & Can Access Second Part of Lanayru Desert & (Bomb Bag | Hook Beetle) & Sword)
   # TODO: add trick for whipping bomb flower near LMF being sufficient for Main Node only
   # Need explosive for Main Node LMF so the timeshift stone can be activated 
 
