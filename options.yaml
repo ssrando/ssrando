@@ -268,11 +268,12 @@
   bits: 2
   choices:
     - Nodes
+    - Main Node
     # - Hook Beetle
     - Open
   default: Nodes
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
-    Hook Beetle will raise LMF once the Hook Beetle is obtained.
+    Main Node will set the fire, water, and lightning nodes to be active but LMF still needs to be raised from the main node.
   ui: option_open_lmf
 - name: Skip Horde
   command: skip-horde
