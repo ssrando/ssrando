@@ -71,6 +71,12 @@ global:
         flag: 30 # LMF Rises CS
       - onlyif: Option "open-lmf" Is "Open"
         flag: 31 # LMF rising CS watched
+      - onlyif: Option "open-lmf" Is "Main Node"
+        flag: 100 # Lightning node active
+      - onlyif: Option "open-lmf" Is "Main Node"
+        flag: 101 # Fire node active
+      - onlyif: Option "open-lmf" Is "Main Node"
+        flag: 102 # Water node active
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
