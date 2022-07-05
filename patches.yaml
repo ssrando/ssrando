@@ -77,6 +77,8 @@ global:
         flag: 101 # Fire node active
       - onlyif: Option "open-lmf" Is "Main Node"
         flag: 102 # Water node active
+    Lanayru Gorge:
+      - 10 # Minecart at end of Track
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
