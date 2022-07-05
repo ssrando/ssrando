@@ -545,10 +545,12 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
   cube_region: Volcano Summit
 Thunderhead - Second Goddess Chest on Mogma Mitts Island:
   original item: Small Quiver
-  type: thunderhead, goddess, lanayru goddess # maybe rather sand sea cube
+  type: thunderhead, goddess, sand sea goddess
   Paths:
    - stage/F023/r0/l0/TBox/76
-  cube_region: Lanayru Desert
+  cube_region: Lanayru Gorge
+  hint: sometimes
+  text: They say that <r<curing an ancient dragon>> is rewarded with
 Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
   original item: Horned Colossus Beetle
   type: thunderhead, minigame
