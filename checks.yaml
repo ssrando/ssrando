@@ -617,7 +617,6 @@ Sealed Grounds - Zelda's Blessing:
   hint: sometimes
   text: the <r<goddess blesses you>> with
 
-
 Faron Woods - Item on Tree:
   original item: Heart Piece
   type: faron, freestanding
@@ -1375,11 +1374,11 @@ Lanayru Gorge - Key Check:
   type: lanayru, freestanding
   Paths:
     - stage/F302/r0/l0/Item/9
-#Lanayru Gorge - Seedling:
-#  original item: Red Rupee
-#  type: lanayru, digging
-#  Paths:
-#    - stage/F302/r0/l0/Soil/30
+Lanayru Gorge - Seedling:
+  original item: Life Tree Seedling
+  type: lanayru, digging
+  Paths:
+    - stage/F302/r0/l0/Soil/30
 Lanayru Gorge - Lanayru Soth:
   original item: Lanayru Song of the Hero Part
   type: lanayru

@@ -26,7 +26,8 @@ PROGRESS_ITEMS = (
         "Faron Song of the Hero Part",
         "Eldin Song of the Hero Part",
         "Lanayru Song of the Hero Part",
-        "Spiral Charge"
+        "Spiral Charge",
+        "Life Tree Fruit"
         # "Revitalizing Potion" # causes problems in events, as it's treated like you buy a potion
     ]
     + ["Gratitude Crystal Pack"] * 13

@@ -2878,19 +2878,29 @@ F302: # Lanayru Gorge
     destlayer: 0
     room: 0
     objtype: OBJ
-  - name: delete FrmLand
-    type: objdelete
+  - name: patch FrmLand
+    type: objpatch
     id: 0xFC05
     layer: 0
     room: 0
     objtype: OBJ
+    object:
+      params1: 0xFF4D11E2
+      params2: 0xFFFFFFFF
+      posx: 9804.2412109375
+      posy: 350
+      posz: -4532.95361328125
+      anglex: 0
+      angley: 16384
+      anglez: 0
+      name: Soil
 #  - name: Create Seedling Soil # WiP
 #    type: objadd
 #    layer: 0
 #    room: 0
 #    objtype: OBJ
 #    object:
-#      params1: 0xFF4F1EF2
+#      params1: 0xFF4D1EF2
 #      params2: 0xFFFFFFFF
 #      posx: 9804.2412109375
 #      posy: 350
@@ -2898,7 +2908,7 @@ F302: # Lanayru Gorge
 #      anglex: 0
 #      angley: 16384
 #      anglez: 0
-#      id: 0xFC49
+#      id: 0xFC05
 #      name: Soil
   - name: delete Fi after Lanayru SotH
     type: objdelete
