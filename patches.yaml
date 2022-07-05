@@ -2843,6 +2843,14 @@ F302: # Lanayru Gorge
       - story_flag: -1
         night: 0
         layer: 2
+  - name: Unlock Door
+    type: objpatch
+    id: 0x2BFF
+    index: 0
+    layer: 0
+    objtype: DOOR
+    object:
+      anglex: 0xFF # Always unlocked
   - name: Delete Thunderdragon after heal
     type: objdelete
     id: 0x10D0
@@ -2867,7 +2875,7 @@ F302: # Lanayru Gorge
     type: objmove
     id: 0xFCC3
     layer: 1
-    destlayer: 2
+    destlayer: 0
     room: 0
     objtype: OBJ
   - name: delete FrmLand
@@ -2876,22 +2884,22 @@ F302: # Lanayru Gorge
     layer: 0
     room: 0
     objtype: OBJ
-  - name: Create Seedling Soil # WiP
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFF0B1E00
-      params2: 0xFFFFFFFF
-      posx: 9804.2412109375
-      posy: 350
-      posz: -4532.95361328125
-      anglex: 0
-      angley: 6371
-      anglez: 0
-      id: 0xFC05
-      name: Soil
+#  - name: Create Seedling Soil # WiP
+#    type: objadd
+#    layer: 0
+#    room: 0
+#    objtype: OBJ
+#    object:
+#      params1: 0xFF4F1EF2
+#      params2: 0xFFFFFFFF
+#      posx: 9804.2412109375
+#      posy: 350
+#      posz: -4532.95361328125
+#      anglex: 0
+#      angley: 16384
+#      anglez: 0
+#      id: 0xFC49
+#      name: Soil
   - name: delete Fi after Lanayru SotH
     type: objdelete
     id: 0xFCC0
@@ -2905,6 +2913,22 @@ F302: # Lanayru Gorge
     objtype: EVNT
     object:
       item: -1 # no lanayru Soth anymore
+  - name: extra Bomb flower
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 4100
+      posy: 28.9521332
+      posz: -3200
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC50
+      name: Bombf
 F303: # Lanayru Caves
   - name: Layer override
     type: layeroverride

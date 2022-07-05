@@ -1330,7 +1330,6 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
 
 Thunderhead - Second Goddess Chest on Mogma Mitts Island:
   Can Access Thunderhead & Goddess Cube in Lanayru Gorge & Mogma Mitts
-  # Inaccessible Goddess Cube
 
 ## Bug Heaven
 
@@ -1995,6 +1994,23 @@ Lanayru Caves - Golo's Gift:
 
 Lanayru Caves - Gossip Stone in Center:
   Can Access Lanayru Caves
+
+## Lanayru Gorge
+
+Can Access Lanayru Gorge:
+  Can Access Lanayru Caves
+
+Goddess Cube in Lanayru Gorge:
+  Can Access Lanayru Gorge & Goddess Sword
+
+Lanayru Gorge - Key Check:
+  Can Access Lanayru Gorge & Beetle
+
+Lanayru Gorge - Seedling:
+  Can Access Lanayru Gorge & Gust Bellows & Can Hit Timeshiftstone & Digging Mitts
+
+Lanayru Gorge - Lanayru Soth:
+  Can Access Lanayru Gorge #& Fruit
 
 ## Lanayru Sand Sea
 
