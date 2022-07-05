@@ -155,6 +155,9 @@ Can Cut Tree:
 Can Unlock Combination Lock:
   Sword | Whip | Clawshots | Bow
 
+Can Hit Timeshiftstone:
+    Can Cut Tree | Whip | Distance Activator
+
 # Can defeat enemy
 
 Can Defeat Bokoblins:
@@ -1105,7 +1108,7 @@ Goddess Cube at Lanayru Mines Entrance:
   Can Access Lanayru & Goddess Sword
 
 Can Activate Mines First Timeshift Stone:
-  Distance Activator | Bomb Bag | Sword | Itemless First Timeshift Stone Trick
+  Can Hit Timeshiftstone | Itemless First Timeshift Stone Trick
   # In swordless, you can roll a bomb to the stone, even though it's a bit far
 
 Lanayru Mines - Chest near First Timeshift Stone:
