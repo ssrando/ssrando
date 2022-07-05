@@ -114,7 +114,7 @@ class Hints:
         self.dist.start(self.logic, needed_always_hints, needed_sometimes_hints)
         hints = []
         i = 0
-        while i < 30:
+        while i < 32:
             hint = self.dist.next_hint()
             if hint is not None:
                 hints.append(hint)
