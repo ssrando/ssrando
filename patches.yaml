@@ -2852,7 +2852,7 @@ F302: # Lanayru Gorge
     layer: 0
     objtype: DOOR
     object:
-      anglex: 0xFF # Always unlocked
+      anglex: 0xFFFF # Always unlocked
   - name: Patch Entry of Thunderdragon after heal
     type: objpatch
     id: 0x10D0
