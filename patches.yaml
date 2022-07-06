@@ -2943,7 +2943,7 @@ F303: # Lanayru Caves
     layer: 1
     room: 0
     objtype: SOBJ
-  - name: Fi text after hitting Sandship Crest
+  - name: Move Golo out of the Way
     type: objpatch
     room: 0
     layer: 1
