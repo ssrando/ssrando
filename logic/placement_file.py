@@ -55,7 +55,7 @@ class PlacementFile:
         self.starting_items = jsn["starting-items"]
         self.required_dungeons = jsn["required-dungeons"]
         self.item_locations = jsn["item-locations"]
-        self.chest_sizes = jsn("chest-sizes")
+        self.chest_sizes = jsn["chest-sizes"]
         self.gossip_stone_hints = jsn["gossip-stone-hints"]
         self.trial_hints = jsn["trial-hints"]
         self.entrance_connections = jsn["entrance-connections"]
