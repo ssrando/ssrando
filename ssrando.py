@@ -600,9 +600,9 @@ class Randomizer(BaseRandomizer):
                 plcmt_file.chest_sizes[k] = 2
             elif size_setting == "Matches Contents":
                 if v in self.logic.all_progress_items:
-                    if v == "Gratitude Crystal" or v == "Gratitude Crystal Pack":
-                        plcmt_file.chest_sizes[k] = 1
-                    elif "Key" in v:
+                    #if v == "Gratitude Crystal" or v == "Gratitude Crystal Pack":
+                    #    plcmt_file.chest_sizes[k] = 1
+                    if "Key" in v:
                         plcmt_file.chest_sizes[k] = 2
                     else:
                         plcmt_file.chest_sizes[k] = 0
@@ -612,8 +612,13 @@ class Randomizer(BaseRandomizer):
                 plcmt_file.chest_sizes[k] = self.rng.randint(0, 2)
 
             # overwrite goddess chests to be subtype 3 regardless of setting otherwise they break
-            if "Goddess Chest" in v:
+            if "Goddess Chest" in k:
                 plcmt_file.chest_sizes[k] = 3
+            
+            # force appearing chests to be big (because non-big chests don't have the code to appear)
+            if self.item_locations[k].get("appearing", False):
+                plcmt_file.chest_sizes[k] = 0
+            
 
         plcmt_file.options = self.options
         plcmt_file.required_dungeons = self.logic.required_dungeons

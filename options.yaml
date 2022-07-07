@@ -552,7 +552,7 @@
     - Matches Contents
     - Random
   default: Vanilla
-  help: Changes the way chest sizes are determined. Never impacts Goddess Chests
+  help: Changes the way chest sizes are determined. Never impacts Goddess Chests. Chests that appear (and are originally not there) will always be big (includes top of LMF if open LMF).
   ui: option_chest_sizes
 - name: Hint Distribution
   command: hint-distribution
@@ -574,4 +574,3 @@
   help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
     as specifics about what additional items and locations can and cannot be hinted
   ui: option_hint_distribution
-

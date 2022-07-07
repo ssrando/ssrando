@@ -207,6 +207,7 @@ Batreaux - 30 Crystals Chest:
   type: skyloft
   Paths:
     - stage/F012r/r0/l0/TBox/69
+  appearing: True
 Batreaux - 40 Crystals:
   original item: Gold Rupee
   type: skyloft
@@ -841,6 +842,7 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
     - stage/F300/r0/l1/TBox/83
   hint: sometimes
   text: the <r<midst of the desert>> holds
+  appearing: True
 Lanayru Desert - Chest on Platform near Lightning Node:
   original item: Dusk Relic
   type: lanayru, miscellaneous
@@ -984,6 +986,7 @@ Skyview - Beetle:
   Paths:
     - stage/D100/r10/l1/TBox/65
     - stage/D100/r10/l2/TBox/65
+  appearing: True
 Skyview - Item behind Bars:
   original item: Heart Piece
   type: faron, dungeon
@@ -1051,6 +1054,7 @@ Earth Temple - Bomb Bag:
   type: eldin, dungeon
   Paths:
     - stage/D200/r3/l0/TBox/65
+  appearing: True
 Earth Temple - Ledd's Gift:
   original item: 5 Bombs
   type: eldin, dungeon
@@ -1221,6 +1225,7 @@ Sandship - Bow:
     - stage/D301/r15/l0/TBox/72
   hint: sometimes
   text: a <r<robot upon the Sandship's bow>> guards
+  appearing: True
 Sandship - Chest at the Stern:
   original item: Heart Piece
   type: lanayru, dungeon
@@ -1319,6 +1324,7 @@ Fire Sanctuary - Mogma Mitts:
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r5/l0/TBox/68
+  appearing: True
 Fire Sanctuary - Chest on Balcony:
   original item: Bottle
   type: eldin, dungeon
@@ -1331,6 +1337,7 @@ Fire Sanctuary - Chest after Second Trapped Mogma:
   Paths:
     - stage/D201_1/r2/l0/TBox/65
     - stage/D201/r2/l0/TBox/65
+  appearing: True
 Fire Sanctuary - Chest after Bombable Wall:
   original item: FS Small Key
   type: eldin, dungeon
@@ -1343,6 +1350,7 @@ Fire Sanctuary - Plats' Chest:
   type: eldin, dungeon
   Paths:
     - stage/D201/r3/l0/TBox/66
+  appearing: True
 Fire Sanctuary - Chest in Staircase Room:
   original item: Semi Rare Treasure
   type: eldin, dungeon
