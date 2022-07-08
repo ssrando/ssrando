@@ -1109,6 +1109,7 @@ class GamePatcher:
             actual_extract_path=rando.actual_extract_path,
             modified_extract_path=rando.modified_extract_path,
             oarc_cache_path=rando.oarc_cache_path,
+            arc_replacement_path=self.rando.exe_root_path / "arc-replacements",
             copy_unmodified=False,
         )
         self.text_labels = {}
@@ -1139,11 +1140,11 @@ class GamePatcher:
         self.patcher.set_event_patch(self.flow_patch)
         self.patcher.set_event_text_patch(self.text_patch)
         self.patcher.progress_callback = self.rando.progress_callback
+        self.patcher.objpackoarcadd = self.patches["global"].get("objpackoarcadd", [])
         self.patcher.do_patch()
 
         self.do_dol_patch()
         self.do_rel_patch()
-        self.do_patch_object_pack()
         self.do_patch_title_screen_logo()
 
         music_rando(self)
@@ -2463,46 +2464,6 @@ class GamePatcher:
                 write_u16(
                     data_bytes, current_shop_entry_offset + 0x52, sold_out_storyflag
                 )
-
-    def do_patch_object_pack(self):
-        self.rando.progress_callback("patching ObjectPack...")
-        # patch object pack
-        objpack_data = nlzss11.decompress(
-            (
-                self.patcher.actual_extract_path
-                / "DATA"
-                / "files"
-                / "Object"
-                / "ObjectPack.arc.LZ"
-            ).read_bytes()
-        )
-        object_arc = U8File.parse_u8(BytesIO(objpack_data))
-        objpack_modified = False
-        for oarc in self.patches["global"].get("objpackoarcadd", []):
-            oarc_data = (self.patcher.oarc_cache_path / f"{oarc}.arc").read_bytes()
-            object_arc.add_file_data(f"oarc/{oarc}.arc", oarc_data)
-            objpack_modified = True
-        # arc replacements
-        ARC_REPLACEMENTS_PATH = self.rando.exe_root_path / "arc-replacements"
-        ARC_REPLACEMENTS_PATH.mkdir(exist_ok=True)
-        for file in ARC_REPLACEMENTS_PATH.glob("*.arc"):
-            arcname = file.parts[-1]  # includes the .arc extension
-            filename = f"oarc/{arcname}"
-            file_in_arc = object_arc.get_file(filename)
-            if file_in_arc is not None:
-                arcdata = file.read_bytes()
-                file_in_arc.set_data(arcdata)
-            objpack_modified = True
-        if objpack_modified:
-            objpack_data = object_arc.to_buffer()
-            write_bytes_create_dirs(
-                self.patcher.modified_extract_path
-                / "DATA"
-                / "files"
-                / "Object"
-                / "ObjectPack.arc.LZ",
-                nlzss11.compress(objpack_data),
-            )
 
     def do_patch_title_screen_logo(self):
         # patch title screen logo
