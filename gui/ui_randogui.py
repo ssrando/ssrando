@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.0
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -177,7 +177,7 @@ class Ui_MainWindow(object):
         self.groupBox_15.setGeometry(QRect(510, 130, 181, 131))
         self.verticalLayoutWidget_11 = QWidget(self.groupBox_15)
         self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
-        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 101))
+        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 106))
         self.verticalLayout_35 = QVBoxLayout(self.verticalLayoutWidget_11)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
@@ -790,9 +790,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addWidget(self.option_hero_mode)
 
-        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalLayout_20 = QHBoxLayout()
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.label_for_option_demise_count = QLabel(self.verticalLayoutWidget_5)
+        self.label_for_option_demise_count.setObjectName(u"label_for_option_demise_count")
 
-        self.verticalLayout_15.addItem(self.verticalSpacer_6)
+        self.horizontalLayout_20.addWidget(self.label_for_option_demise_count)
+
+        self.option_demise_count = QSpinBox(self.verticalLayoutWidget_5)
+        self.option_demise_count.setObjectName(u"option_demise_count")
+        self.option_demise_count.setMaximumSize(QSize(41, 16777215))
+
+        self.horizontalLayout_20.addWidget(self.option_demise_count)
+
+
+        self.verticalLayout_15.addLayout(self.horizontalLayout_20)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
@@ -929,80 +941,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_22.addLayout(self.verticalLayout_24)
 
-        self.horizontalLayout_9 = QHBoxLayout()
-        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.label_for_option_woth_hints = QLabel(self.verticalLayoutWidget_12)
-        self.label_for_option_woth_hints.setObjectName(u"label_for_option_woth_hints")
+        self.option_cube_sots = QCheckBox(self.verticalLayoutWidget_12)
+        self.option_cube_sots.setObjectName(u"option_cube_sots")
 
-        self.horizontalLayout_9.addWidget(self.label_for_option_woth_hints)
+        self.verticalLayout_22.addWidget(self.option_cube_sots)
 
-        self.option_woth_hints = QSpinBox(self.verticalLayoutWidget_12)
-        self.option_woth_hints.setObjectName(u"option_woth_hints")
+        self.option_precise_item = QCheckBox(self.verticalLayoutWidget_12)
+        self.option_precise_item.setObjectName(u"option_precise_item")
 
-        self.horizontalLayout_9.addWidget(self.option_woth_hints)
-
-
-        self.verticalLayout_22.addLayout(self.horizontalLayout_9)
-
-        self.horizontalLayout_12 = QHBoxLayout()
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.label_for_option_barren_hints = QLabel(self.verticalLayoutWidget_12)
-        self.label_for_option_barren_hints.setObjectName(u"label_for_option_barren_hints")
-
-        self.horizontalLayout_12.addWidget(self.label_for_option_barren_hints)
-
-        self.option_barren_hints = QSpinBox(self.verticalLayoutWidget_12)
-        self.option_barren_hints.setObjectName(u"option_barren_hints")
-
-        self.horizontalLayout_12.addWidget(self.option_barren_hints)
-
-
-        self.verticalLayout_22.addLayout(self.horizontalLayout_12)
-
-        self.horizontalLayout_13 = QHBoxLayout()
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.label_for_option_sometimes_hints = QLabel(self.verticalLayoutWidget_12)
-        self.label_for_option_sometimes_hints.setObjectName(u"label_for_option_sometimes_hints")
-
-        self.horizontalLayout_13.addWidget(self.label_for_option_sometimes_hints)
-
-        self.option_sometimes_hints = QSpinBox(self.verticalLayoutWidget_12)
-        self.option_sometimes_hints.setObjectName(u"option_sometimes_hints")
-
-        self.horizontalLayout_13.addWidget(self.option_sometimes_hints)
-
-
-        self.verticalLayout_22.addLayout(self.horizontalLayout_13)
-
-        self.horizontalLayout_14 = QHBoxLayout()
-        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.label_for_option_location_hints = QLabel(self.verticalLayoutWidget_12)
-        self.label_for_option_location_hints.setObjectName(u"label_for_option_location_hints")
-
-        self.horizontalLayout_14.addWidget(self.label_for_option_location_hints)
-
-        self.option_location_hints = QSpinBox(self.verticalLayoutWidget_12)
-        self.option_location_hints.setObjectName(u"option_location_hints")
-
-        self.horizontalLayout_14.addWidget(self.option_location_hints)
-
-
-        self.verticalLayout_22.addLayout(self.horizontalLayout_14)
-
-        self.horizontalLayout_15 = QHBoxLayout()
-        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.label_for_option_item_hints = QLabel(self.verticalLayoutWidget_12)
-        self.label_for_option_item_hints.setObjectName(u"label_for_option_item_hints")
-
-        self.horizontalLayout_15.addWidget(self.label_for_option_item_hints)
-
-        self.option_item_hints = QSpinBox(self.verticalLayoutWidget_12)
-        self.option_item_hints.setObjectName(u"option_item_hints")
-
-        self.horizontalLayout_15.addWidget(self.option_item_hints)
-
-
-        self.verticalLayout_22.addLayout(self.horizontalLayout_15)
+        self.verticalLayout_22.addWidget(self.option_precise_item)
 
         self.verticalSpacer_11 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1143,7 +1090,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(4)
         self.option_randomize_entrances.setCurrentIndex(-1)
 
 
@@ -1250,6 +1197,7 @@ class Ui_MainWindow(object):
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
+        self.label_for_option_demise_count.setText(QCoreApplication.translate("MainWindow", u"Demise Count", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
@@ -1261,11 +1209,8 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Logic Settings", None))
         self.groupBox_10.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
         self.label_for_option_hint_distribution.setText(QCoreApplication.translate("MainWindow", u"Hint Distribution", None))
-        self.label_for_option_woth_hints.setText(QCoreApplication.translate("MainWindow", u"Spirit of the Sword Hints", None))
-        self.label_for_option_barren_hints.setText(QCoreApplication.translate("MainWindow", u"Barren Hints", None))
-        self.label_for_option_sometimes_hints.setText(QCoreApplication.translate("MainWindow", u"Sometimes Hints", None))
-        self.label_for_option_location_hints.setText(QCoreApplication.translate("MainWindow", u"Location Hints", None))
-        self.label_for_option_item_hints.setText(QCoreApplication.translate("MainWindow", u"Item Hints", None))
+        self.option_cube_sots.setText(QCoreApplication.translate("MainWindow", u"Separate Cube SotS Hints", None))
+        self.option_precise_item.setText(QCoreApplication.translate("MainWindow", u"Precise Item Hints", None))
         self.groupBox_11.setTitle(QCoreApplication.translate("MainWindow", u"Other Hints", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Song Hints", None))
         self.option_impa_sot_hint.setText(QCoreApplication.translate("MainWindow", u"Impa Stone of Trials Hint", None))

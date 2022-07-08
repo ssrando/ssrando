@@ -162,15 +162,8 @@ class Randomizer(BaseRandomizer):
     def randomize(self):
         self.progress_callback("randomizing items...")
         self.logic.randomize_items()
-        self.sots_locations = self.logic.get_sots_locations()
-        if self.options["hint-distribution"] == "Junk":
-            self.hints.do_junk_hints()
-        elif self.options["hint-distribution"] == "Normal":
-            self.hints.do_normal_hints()
-        elif self.options["hint-distribution"] == "Bingo":
-            self.hints.do_bingo_hints()
-        else:
-            raise Exception(f"{self.options['hints']} is not a valid hint setting!")
+        self.sots_locations, self.goal_locations = self.logic.get_sots_goal_locations()
+        self.hints.do_hints()
         if self.no_logs:
             self.progress_callback("writing anti spoiler log...")
         else:
@@ -228,6 +221,15 @@ class Randomizer(BaseRandomizer):
         spoiler_log += "SotS:\n"
         for sotsloc, item in self.sots_locations.items():
             spoiler_log += "  %-53s %s\n" % (sotsloc + ":", item)
+
+        spoiler_log += "\n\n"
+
+        # Write path locations; locations 100% required to complete a given required dungeon
+        spoiler_log += "Path:\n"
+        for goal, goallocs in self.goal_locations.items():
+            spoiler_log += f"{goal}:\n"
+            for goalloc, item in goallocs.items():
+                spoiler_log += "  %-53s %s\n" % (goalloc + ":", item)
 
         spoiler_log += "\n\n"
 
@@ -361,13 +363,14 @@ class Randomizer(BaseRandomizer):
         spoiler_log["starting-items"] = self.logic.starting_items
         spoiler_log["required-dungeons"] = self.logic.required_dungeons
         spoiler_log["sots-locations"] = self.sots_locations
+        spoiler_log["barren-regions"] = self.logic.get_barren_regions()[0]
         spoiler_log[
             "playthrough"
         ] = self.logic.calculate_playthrough_progression_spheres()
         spoiler_log["item-locations"] = self.logic.done_item_locations
         spoiler_log["hints"] = dict(
             map(
-                lambda kv: (kv[0], kv[1].to_spoiler_log_text()),
+                lambda kv: (kv[0], kv[1].to_spoiler_log_json()),
                 self.hints.hints.items(),
             )
         )

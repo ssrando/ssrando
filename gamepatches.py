@@ -70,7 +70,15 @@ DEFAULT_OBJ = OrderedDict(
 )
 
 DEFAULT_SCEN = OrderedDict(
-    name="", room=0, layer=0, entrance=0, byte4=0, byte5=0, flag6=0, zero=0, flag8=0
+    name="",
+    room=0,
+    layer=0,
+    entrance=0,
+    night=0,
+    byte5=0,
+    flag6=0,
+    zero=0,
+    saveprompt=0,
 )
 
 DEFAULT_AREA = OrderedDict(
@@ -235,29 +243,6 @@ DUNGEON_EXIT_SCENS = {
         ("D003_6", 0, 1),
         ("D003_7", 0, 1),
     ],
-}
-
-# fixes for entrance rando, ET, SSH and SK don't need to set storyflags at all
-# for LMF it's the ToT layer change
-POST_DUNGEON_STORYFLAGS = {
-    "Dungeon Entrance in Deep Woods": 5,
-    "Dungeon Entrance in Lake Floria": 900,
-    "Dungeon Entrance in Eldin Volcano": -1,
-    "Dungeon Entrance in Volcano Summit": 901,
-    "Dungeon Entrance in Lanayru Desert": 914,
-    "Dungeon Entrance in Sand Sea": -1,
-    "Dungeon Entrance on Skyloft": -1,
-}
-
-POST_DUNGEON_CUTSCENE = {
-    # (stage, room, EVNT)
-    "Skyview": ("B100_1", 0, 1),
-    "Earth Temple": ("B210", 0, 2),
-    "Lanayru Mining Facility": ("F300_4", 0, 20),
-    "Ancient Cistern": ("B101_1", 0, 1),
-    "Sandship": ("B301", 0, 1),
-    "Fire Sanctuary": ("B201_1", 0, 0),
-    "Sky Keep": ("F000", 0, 19),
 }
 
 TRIAL_GATE_TO_TRIAL = {
@@ -895,6 +880,7 @@ class GamePatcher:
         self.handle_oarc_add_remove()
         self.add_rando_hash()
         self.add_keysanity()
+        self.add_demises()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -1132,23 +1118,8 @@ class GamePatcher:
                         "layer": exit_layer,
                         "room": exit_room,
                         "entrance": exit_entrance,
-                        "flag8": 1,  # save prompt
+                        "saveprompt": 1,  # save prompt
                     },
-                },
-            )
-
-            # fix post dungeon storyflags
-            inner_stage, inner_room, inner_evnt = POST_DUNGEON_CUTSCENE[dungeon]
-            storyflag = POST_DUNGEON_STORYFLAGS[entrance]
-            self.add_patch_to_stage(
-                inner_stage,
-                {
-                    "name": f"Post Dungeon Storyflag fix: {entrance} - {dungeon}",
-                    "type": "objpatch",
-                    "index": inner_evnt,
-                    "room": inner_room,
-                    "objtype": "EVNT",
-                    "object": {"story_flag1": storyflag},
                 },
             )
 
@@ -1640,6 +1611,35 @@ class GamePatcher:
                 }
             )
 
+    def add_demises(self):
+        orig_demise = {
+            "params1": 0xFFFFFFC0,
+            "params2": 0xFFFFFFFF,
+            "posx": 0,
+            "posy": 0,
+            "posz": -500,
+            "anglex": 0,
+            "angley": 0,
+            "anglez": 0,
+            "id": 0xFC00,
+            "name": "BLasBos",
+        }
+
+        for idx in range(1, self.rando.options["demise-count"]):
+            demise = orig_demise.copy()
+            demise["posy"] = 1000 * idx
+            self.add_patch_to_stage(
+                "B400",
+                {
+                    "name": f"Demise add {idx}",
+                    "type": "objadd",
+                    "room": 0,
+                    "layer": 1,
+                    "objtype": "OBJ ",
+                    "object": demise,
+                },
+            )
+
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])
         stagepatches = list(filter(self.filter_option_requirement, stagepatches))
@@ -1999,9 +1999,7 @@ class GamePatcher:
             msbt["TXT2"].append(
                 process_control_sequences(command["text"]).encode("utf-16be")
             )
-            msbt["ATR1"].append(
-                {"unk1": command.get("unk1", 1), "unk2": command.get("unk2", 0)}
-            )
+            msbt["ATR1"].append([command.get("unk1", 1), command.get("unk2", 0)])
             # the game doesn't care about the name, but it has to exist and be unique
             # only unique within a file but whatever
             entry_name = "%s:%d" % (filename[-3:], index)

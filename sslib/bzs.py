@@ -82,7 +82,7 @@ def parseObj(objtype, quantity, data):
 objectstructs = {
     "FILE": ("unk dummy", ">hh", 4),
     "SCEN": (
-        "name room layer entrance byte4 byte5 flag6 zero flag8",
+        "name room layer entrance night byte5 flag6 zero saveprompt",
         ">32sbbbbbbbb",
         40,
     ),
@@ -107,8 +107,8 @@ objectstructs = {
         56,
     ),
     "PLY ": (
-        "storyflag play_cutscene byte4 posx posy posz unk2 entrance_id",
-        ">hbb3f6sh",
+        "storyflag play_cutscene byte4 posx posy posz anglex angley anglez entrance_id",
+        ">hbb3f3Hh",
         24,
     ),
     "OBJS": (

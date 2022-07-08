@@ -215,9 +215,10 @@ class AllPatcher:
                 stagedata = stageu8.to_buffer()
                 write_bytes_create_dirs(modified_stagepath, nlzss11.compress(stagedata))
                 # print(f'patched {stage} l{layer}')
-            elif self.copy_unmodified:
+            elif self.copy_unmodified or layer == 0:
+                # always copy layer 0 because it contains the stage definitions
                 shutil.copy(stagepath, modified_stagepath)
-                # print(f'copied {stage} l{layer}')
+                # print(f"copied {stage} l{layer}")
 
         # events and text
         eventrootpath = None

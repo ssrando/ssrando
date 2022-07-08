@@ -9,6 +9,16 @@ POTENTIALLY_REQUIRED_DUNGEONS = [
     "Fire Sanctuary",
 ]
 
+ALL_DUNGEON_AREAS = [
+    "Skyview",
+    "Earth Temple",
+    "Lanayru Mining Facility",
+    "Ancient Cistern",
+    "Sandship",
+    "Fire Sanctuary",
+    "Sky Keep",
+]
+
 DUNGEON_NAMES = OrderedDict(
     [
         ("SV", "Skyview"),
@@ -159,3 +169,21 @@ ALL_TYPES = [
     "summit goddess",
     "sand sea goddess",
 ]
+
+POST_GOAL_LOCS = {
+    "Ghirahim 1": "Skyview - Ghirahim Heart Container",
+    "Scaldera": "Earth Temple - Scaldera Heart Container",
+    "Molderach": "Lanayru Mining Facility - Molderach Heart Container",
+    "Koloktos": "Ancient Cistern - Koloktos Heart Container",
+    "Tentalus": "Sandship - Tentalus Heart Container",
+    "Ghirahim 2": "Fire Sanctuary - Ghirahim Heart Container",
+}
+
+DUNGEON_GOALS = {
+    "Skyview": "Ghirahim 1",
+    "Earth Temple": "Scaldera",
+    "Lanayru Mining Facility": "Molderach",
+    "Ancient Cistern": "Koloktos",
+    "Sandship": "Tentalus",
+    "Fire Sanctuary": "Ghirahim 2",
+}

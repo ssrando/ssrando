@@ -37,6 +37,8 @@ global:
       onlyif: Option "skip-horde" Enabled
     - storyflag: 486 # Ghirahim 3 defeated
       onlyif: Option "skip-g3" Enabled
+    - storyflag: 8 # LMF rising CS watched
+      onlyif: Option "open-lmf" Is "Open"
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft
@@ -73,6 +75,12 @@ global:
         flag: 30 # LMF Rises CS
       - onlyif: Option "open-lmf" Is "Open"
         flag: 31 # LMF rising CS watched
+      - onlyif: Option "open-lmf" Is "Main Node"
+        flag: 100 # Lightning node active
+      - onlyif: Option "open-lmf" Is "Main Node"
+        flag: 101 # Fire node active
+      - onlyif: Option "open-lmf" Is "Main Node"
+        flag: 102 # Water node active
       - 50 # LMF entry CS
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
@@ -169,7 +177,8 @@ B100_1: # skyview spring
     objtype: EVNT
     object:
       sceneflag1: 104
-      item: -1 # first storyflag handled by entrance rando patches
+      item: -1
+      story_flag1: 52 # machi located
   - name: Loadzone to outside layer 3
     type: objdelete
     room: 0
@@ -206,7 +215,8 @@ B101_1: # after AC boss
     index: 1
     objtype: EVNT
     object:
-      item: -1 # first storyflag handled by entrance rando patches
+      item: -1
+      story_flag1: 900 # rando for AC beaten
       story_flag2: -1
   - name: Fi text before AC CS
     type: objadd
@@ -266,7 +276,8 @@ B201_1: # after FS boss
     index: 0
     objtype: EVNT
     object:
-      item: -1 # first storyflag handled by entrance rando patches
+      item: -1
+      story_flag1: 901 # rando for FS beaten
   - name: Fi text before FS CS
     type: objadd
     room: 0
@@ -300,7 +311,8 @@ B301: # after Sandship boss
     room: 0
     index: 1
     objtype: EVNT
-    object: # first storyflag handled by entrance rando patches
+    object:
+      story_flag1: -1
       story_flag2: 933 # set defeat tentalus storyflag
       item: -1
   - name: Fi text before FS CS
@@ -776,6 +788,14 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 923
+  - name: Fledge trains without wryna
+    type: objpatch
+    id: 0xFC10
+    layer: 4
+    room: 1
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
   - name: Keep cawlin with Letter check
     type: objpatch
     id: 0xFC7A
@@ -887,6 +907,22 @@ F008r: # Goddess Statue
       anglex: 0xFFFF
       angley: 0
       anglez: 0xBE02 # chest flag 95, item 0, will be filled in later
+      id: 0xFC10
+      name: TBox
+  - name: Emerald Tablet chest
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJS
+    object:
+      params1: 0xFFFFFFF3
+      params2: 0xFF5FFFFF
+      posx: 0
+      posy: 87.5
+      posz: -1130
+      anglex: 0xFFFF
+      angley: 0
+      anglez: 0xBC02 # chest flag 94, item 2
       id: 0xFC10
       name: TBox
   - name: Delete SwrdSt
@@ -1207,10 +1243,7 @@ F100: # Faron main area
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
-    override: # default layer 1, remove layer 3+
-      - story_flag: 5 # beat Skyview
-        night: 0
-        layer: 2
+    override: # always
       - story_flag: -1
         night: 0
         layer: 1
@@ -1235,24 +1268,29 @@ F101: # Deep Woods
 F102_1: # Outside AC
   - name: Layer override
     type: layeroverride
-    override: # change layer 3 trigger, no layer 1
-      - story_flag: 900 # new beat AC
-        night: 0
-        layer: 3
-      - story_flag: 155 # AC intro cs
-        night: 0
-        layer: 2
+    override: # always layer 0
       - story_flag: -1
         night: 0
         layer: 0
   - name: Water Dragon trigger after AC
-    type: objpatch
+    type: objdelete
     id: 0xFC59
     layer: 3
     room: 0
     objtype: OBJ
+  - name: Remove CS after cistern
+    type: objpatch
+    index: 6
+    room: 0
+    objtype: PLY
     object:
-      trigstoryfid: 900 # new AC beat flag
+      play_cutscene: -1
+  - name: Water Dragon after AC
+    type: objdelete
+    id: 0xFC5A
+    layer: 3
+    room: 0
+    objtype: OBJ
 F102: # lake Floria
   - name: Layer override
     type: layeroverride
@@ -1342,12 +1380,9 @@ F100_1: # Great Tree
       - story_flag: 900 # new beat AC
         night: 0
         layer: 2
-      - story_flag: 137
-        night: 0
-        layer: 1
       - story_flag: -1
         night: 0
-        layer: 0
+        layer: 1
   - name: extra Bomb flower
     type: objadd
     layer: 0
@@ -1614,11 +1649,11 @@ D101: # Ancient Cistern
       room: 0
       layer: 0
       entrance: 0
-      byte4: 2
+      night: 2
       byte5: 2
       flag6: 0
       zero: 0
-      flag8: 0
+      saveprompt: 0
   - name: extra Bomb flower
     type: objadd
     layer: 0
@@ -1947,6 +1982,12 @@ F201_4: # Volcano Waterfall
       id: 0xFC30
       name: Bombf
 D200: # ET
+  - name: Ledd Text before Bomb Bag
+    type: objdelete
+    id: 0xFC51
+    layer: 0
+    room: 1
+    objtype: OBJ
   - name: Bomb Bag from Ledd
     type: objdelete
     id: 0xFC52
@@ -2217,20 +2258,18 @@ F300_3: # Fire node
 F300_4: # Temple of Time
   - name: Layer override
     type: layeroverride
-    override: # harp CS storyflag changed
-      - story_flag: 914
-        night: 0
-        layer: 2
+    override: # always be layer 2
       - story_flag: -1
         night: 0
-        layer: 1
+        layer: 2
   - name: Harp CS
     type: objpatch
     index: 20
     room: 0
     objtype: EVNT
     object:
-      item: -1 # storyflag handled in entrance rando patches
+      item: -1
+      story_flag1: -1
       story_flag2: 935 # changes loadzone out of LMF
   - name: Fi text after Harp
     type: objdelete
@@ -2342,11 +2381,11 @@ F300_5: # LMF to ToT
       room: 0
       layer: 0
       entrance: 5
-      byte4: 2
+      night: 2
       byte5: 2
       flag6: 0
       zero: 0
-      flag8: 0
+      saveprompt: 0
 F301_1: # Sand Sea Main Area
   - name: Skipper's Text at first time in Sand  # gets rid of 2x40 so also of the Evnttags
     type: objdelete
@@ -2599,6 +2638,45 @@ D300_1: # LMF B
     layer: 0
     room: 5
     objtype: OBJ
+  - name: Close door to BK room from both sides
+    type: objpatch
+    index: 6 # all have id FFFF :(
+    layer: 0
+    objtype: DOOR
+    object:
+      anglex: 0x1313
+  - name: visual fence from BK room side
+    type: objadd
+    layer: 0
+    room: 8
+    objtype: OBJ
+    object:
+      params1: 0xCF134401
+      params2: 0xFF5FFFFF
+      posx: 5050
+      posy: 600
+      posz: -14350
+      anglex: 0xFF00
+      angley: 0x4000
+      anglez: 0xFFFF
+      id: 0xFC00
+      name: Fence
+  - name: anti softlock bomb flower
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 4716
+      posy: 600
+      posz: -14716
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC00
+      name: Bombf
 D301: # Sandship A
   - name: extra Bomb flower
     type: objadd
@@ -2695,11 +2773,11 @@ D301: # Sandship A
       room: 0
       layer: 13
       entrance: 4
-      byte4: 2
+      night: 2
       byte5: 0
       flag6: 0
       zero: 0
-      flag8: 0
+      saveprompt: 0
   - name: Remove Boss Door loadzone after beating dungeon
     type: objpatch
     id: 0xFC45
@@ -3126,7 +3204,7 @@ F403: # Hylia's Realm
       room: 2
       layer: 14
       entrance: 5
-      byte4: 2
+      night: 2
       byte5: 1
 F407: # Sky Keep beaten CS
   - name: Sky Keep CS remove Storyflag

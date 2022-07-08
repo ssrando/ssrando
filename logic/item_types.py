@@ -35,7 +35,6 @@ PROGRESS_ITEMS = (
     + ["Progressive Mitts"] * 2
     + ["Progressive Beetle"] * 2
     + ["Progressive Pouch"] * 5
-    + ["Key Piece"] * 5
     + ["Empty Bottle"] * 5
     + ["Progressive Wallet"] * 4
     + ["Extra Wallet"] * 3
@@ -106,6 +105,8 @@ DUNGEON_PROGRESS_ITEMS = (
 
 # note: Lanayru Caves is technically not a dungeon, but has to be treated as such for non key sanity
 
+KEY_PIECES = ["Key Piece"] * 5
+
 SMALL_KEYS = (
     ["LanayruCaves Small Key"] * 1
     + ["SV Small Key"] * 2
@@ -142,6 +143,7 @@ ALL_ITEM_NAMES = set(
     + NONPROGRESS_ITEMS
     + CONSUMABLE_ITEMS
     + DUPLICATABLE_CONSUMABLE_ITEMS
+    + KEY_PIECES
     + DUNGEON_PROGRESS_ITEMS
     + DUNGEON_NONPROGRESS_ITEMS
     + ["Rupoor"]  # has to be added here since it's not in the vanilla pool

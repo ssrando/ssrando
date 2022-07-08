@@ -270,9 +270,10 @@
     - Nodes
     # - Hook Beetle
     - Open
+    - Main Node
   default: Nodes
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
-    Hook Beetle will raise LMF once the Hook Beetle is obtained.
+    Main Node will set the fire, water, and lightning nodes to be active but LMF still needs to be raised from the main node.
   ui: option_open_lmf
 - name: Skip Horde
   command: skip-horde
@@ -362,6 +363,8 @@
   type: multichoice
   choices:
     - Upgrade Hook Beetle
+    - Bomb Throws
+    - Long Range Skyward Strike Jumpslash
     # Skyloft / Sky
     - Waterfall Cave Jump
     - Bomb Bag Beedle
@@ -380,7 +383,6 @@
     - Itemless First Timeshift Stone
     - Lanayru Mines Brakeslide
     - Temple of Time - Slingshot Shot
-    - Temple of Time - Bomb Throw
     - Temple of Time Skip - Brakeslide
     - Secret Passageway Hook Beetle Opening
     - Lightning Node End with Bombs  # Is it worth
@@ -388,7 +390,6 @@
     - Cactus Bomb Whip
     - Skipper's Retreat Fast Clawshots
     # Skyview
-    - Skyview - Bomb Throws
     - Skyview - Spider Roll
     - Skyview Slingshot Shot
     # Earth Temple
@@ -397,7 +398,6 @@
     - Earth Temple - Bomb Flower Scaldera
     # Lanayru Mining Facility
     - LMF - Whip First Room Switch
-    - LMF - Key Locked Room Bomb Throw
     - LMF - Keylocked Slingshot Trickshot
     - LMF - Minecart Jump
     - LMF - Molderach without Gust Bellows
@@ -431,73 +431,11 @@
     - Owlan Crystals without Bombs
     - Ancient Cistern - Lilypad Skip
     - Ancient Cistern - Swordless Cistern Clip
+    - Fire Sanctuary - Hook Beetle Skip
 
   default: []
   help: Enable specific tricks to be considered in logic
   ui: enabled_tricks
-- name: Hint Distribution
-  command: hint-distribution
-  type: singlechoice
-  bits: 2
-  choices:
-    # - Weak
-    # - Balanced
-    # - Strong
-    # - Very Strong
-    # - Locations Only
-    # - Items Only
-    - Junk
-    - Normal
-    - Bingo
-  default: Normal
-  help: Sets the distribution of hints. Select a distribution to automatically apply a preset, or custom to select
-    your own distribution. Hover over each hint type to see details on the hint
-  ui: option_hint_distribution
-- name: Spirit of the Sword Hints
-  command: sots-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Spirit of the Sword areas contain item(s) required to beat the game
-  ui: option_woth_hints
-- name: Sometimes Hints
-  command: sometimes-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Sometimes areas contain item(s) that may be required for the seed.
-  ui: option_sometimes_hints
-- name: Barren
-  command: barren-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Barren areas contain no items required to beat the game
-  ui: option_barren_hints
-- name: Location Hints
-  command: location-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Location hints give the item at a specific check
-  ui: option_location_hints
-- name: Item Hints
-  command: item-hints
-  type: int
-  min: 0
-  max: 15
-  bits: 4
-  default: 0
-  help: Item hints give the location of a specific item
-  ui: option_item_hints
 - name: Song Hints
   command: song-hints
   type: singlechoice
@@ -551,6 +489,15 @@
   default: false
   help: If activated, the door requiring 5 key pieces to access the dungeon is removed
   ui: option_open_et
+- name: Demise Count
+  command: demise-count
+  type: int
+  default: 1
+  min: 1
+  max: 10
+  bits: 4
+  help: How many demises you want to fight at the end of the game
+  ui: option_demise_count
 - name: Randomize Music
   command: music-rando
   type: singlechoice
@@ -580,3 +527,36 @@
   cosmetic: true
   help: If enabled, the WZSound.brsar file will be patched to allow custom music. Custom music must be installed manually.
   ui: option_allow_custom_music
+- name: Separate Cube SotS
+  command: cube-sots
+  type: boolean
+  default: false
+  help: If enabled, when a SotS hint points to a goddess chest, the hint will change to reflect that it points to a cube & display which of the six cube progress regions it falls into.
+  ui: option_cube_sots
+- name: Precise Item Hints
+  command: precise-item
+  type: boolean
+  default: false
+  help: If enabled, item hints will indicate exactly which check the item lies, otherwise, it will just indicate the region.
+  ui: option_precise_item
+# make this always last for maximum cross version permalink support
+- name: Hint Distribution
+  command: hint-distribution
+  type: singlechoice
+  bits: 3
+  choices:
+    - Weak
+    - Balanced
+    # - Strong
+    # - Very Strong
+    # - Locations Only
+    # - Items Only
+    - Junk
+    - Co-op S1
+    - S2 - 2D
+    - S2 - 3D
+    - S2 - 3D EUD Off
+  default: Balanced
+  help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
+    as specifics about what additional items and locations can and cannot be hinted
+  ui: option_hint_distribution

@@ -38,16 +38,22 @@ Knight Academy - Chest near Goddess Statue:
   type: skyloft, miscellaneous
   Paths:
     - stage/F000/r0/l0/TBox/71
-Knight Academy - Chest in Goddess Statue:
+Knight Academy - First Chest in Goddess Statue:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
     - stage/F008r/r0/l0/TBox/95
+Knight Academy - Second Chest in Goddess Statue:
+  original item: Emerald Tablet
+  type: skyloft, miscellaneous
+  Paths:
+    - stage/F008r/r0/l0/TBox/94
 Central Skyloft - Bazaar Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, sand sea goddess
   Paths:
     - stage/F004r/r0/l0/TBox/93
+  cube_region: Lanayru Sand Sea
 Central Skyloft - Shed Chest:
   original item: Silver Rupee
   type: skyloft, miscellaneous
@@ -58,21 +64,27 @@ Central Skyloft - Shed Goddess Chest:
   type: skyloft, goddess, eldin goddess
   Paths:
     - stage/F000/r0/l0/TBox/79
+  cube_region: Eldin Volcano
 Central Skyloft - West Cliff Goddess Chest:
   original item: Silver Rupee
   type: skyloft, goddess, faron goddess
   Paths:
     - stage/F000/r0/l0/TBox/78
+  cube_region: Faron Woods
 Central Skyloft - Floating Island Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, floria goddess
   Paths:
     - stage/F000/r0/l0/TBox/91
+  cube_region: Lake Floria
 Central Skyloft - Waterfall Goddess Chest:
   original item: Heart Piece
   type: skyloft, goddess, sand sea goddess, mini dungeon
   Paths:
     - stage/F000/r0/l0/TBox/80
+  hint: sometimes
+  text: a <s<goddess cube>> <r<amongst the pirates>> reveals
+  cube_region: Lanayru Sand Sea
 Knight Academy - Pumpkin Archery - 600 Points:
   original item: Heart Piece
   type: skyloft, minigame
@@ -80,6 +92,8 @@ Knight Academy - Pumpkin Archery - 600 Points:
     - event/114-Friend/99
     - oarc/F000/l4
     - oarc/F000/l6
+  hint: sometimes
+  text: <r<shooting pumpkings>> is rewarded with
 Knight Academy - In Zelda's Closet:
   original item: Heart Piece
   type: skyloft, miscellaneous
@@ -118,6 +132,8 @@ Central Skyloft - Peater/Peatrice's Crystals:
     - event/123-Town5/316
     - oarc/F018r/l0
     - oarc/F019r/l0
+  hint: always
+  text: the <r<item check girl>> hides
 Central Skyloft - Parrow's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, sky, short, crystal quest
@@ -150,6 +166,8 @@ Skyloft Village - Sparrot's Crystals:
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
+  hint: sometimes
+  text: delivering a <r<fortune telling device>> reveals
 Skyloft Village - Mallara's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, short, crystal quest
@@ -162,6 +180,8 @@ Knight Academy - Owlan's Crystals:
   Paths:
     - event/118-Town3/157
     - oarc/F001r/l0
+  hint: sometimes
+  text: delivering a <r<Kikwi>> reveals
 
 #  Batreaux Rewards
 Batreaux - 5 Crystals:
@@ -199,24 +219,32 @@ Batreaux - 50 Crystals:
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
+  hint: sometimes
+  text: <ye<50>> <r<pieces of gratitude>> can be exchanged for
 Batreaux - 70 Crystals:
   original item: Gold Rupee
   type: skyloft
   Paths:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
+  hint: sometimes
+  text: the <r<demon's penultimate reward>> is
 Batreaux - 70 Crystals Second Reward:
   original item: Gold Rupee
   type: skyloft
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
+  hint: sometimes
+  text: the <r<demon's penultimate reward>> is
 Batreaux - 80 Crystals:
   original item: Progressive Wallet
   type: skyloft
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
+  hint: always
+  text: a <r<demon in human form>> grants
 
 Beedle - 300 Rupee Item:
   original item: Progressive Pouch
@@ -233,6 +261,7 @@ Beedle - 1200 Rupee Item:
   type: skyloft, beedle, expensive
   Paths:
     - ShpSmpl/22
+  text: for <g+<1200 rupees>> <r<Beedle>> sells
 Beedle - 800 Rupee Item:
   original item: Life Medal
   type: skyloft, beedle, medium
@@ -243,6 +272,7 @@ Beedle - 1600 Rupee Item:
   type: skyloft, beedle, expensive
   Paths:
     - ShpSmpl/23
+  text: for <g+<1600 rupees>> <r<Beedle>> sells
 Beedle - First 100 Rupee Item:
   original item: Extra Wallet
   type: skyloft, beedle, cheap
@@ -317,88 +347,108 @@ Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
   type: sky, goddess, faron goddess, dungeon
   Paths:
     - stage/F020/r0/l0/TBox/87
+  cube_region: Skyview
 Sky - Lumpy Pumpkin - Outside Goddess Chest:
   original item: Progressive Pouch
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/64
+  cube_region: Faron Woods
 Sky - Lumpy Pumpkin Harp Minigame:
   original item: Heart Piece
   type: sky, long, minigame
   Paths:
     - event/117-Pumpkin/305
     - oarc/F011r/l0
+  hint: sometimes
+  text: the <r<bartender>> holds
 
 Sky - Bamboo Island Goddess Chest:
   original item: Gold Rupee
   type: sky, goddess, eldin goddess, bombable
   Paths:
     - stage/F020/r0/l0/TBox/82
+  cube_region: Eldin Volcano
 Sky - Goddess Chest on Island next to Bamboo Island:
   original item: Silver Rupee
   type: sky, goddess, eldin goddess
   Paths:
     - stage/F020/r0/l0/TBox/71
+  cube_region: Eldin Volcano
 Sky - Goddess Chest in Cave on Island Next to Bamboo Island:
   original item: Heart Medal
   type: sky, goddess, lanayru goddess, bombable
   Paths:
     - stage/F020/r0/l0/TBox/83
+  cube_region: Lanayru Desert
 Sky - Beedle's Island Goddess Chest:
   original item: Heart Piece
   type: sky, goddess, lanayru goddess, combat
   Paths:
     - stage/F020/r0/l0/TBox/89
+  hint: sometimes
+  text: a <s<goddess cube>> at the <r<monument to time>> reveals
+  cube_region: Lanayru Desert
 Sky - Beedle's Island Cage Goddess Chest:
   original item: Rupee Medal
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/81
+  cube_region: Faron Woods
 Sky - Northeast Island Goddess Chest behind Bombable Rocks:
   original item: Silver Rupee
   type: sky, goddess, lanayru goddess
   Paths:
     - stage/F020/r0/l0/TBox/72
+  cube_region: Lanayru Mines
 Sky - Northeast Island Cage Goddess Chest:
   original item: Treasure Medal
   type: sky, goddess, eldin goddess
   Paths:
     - stage/F020/r0/l0/TBox/74
+  cube_region: Eldin Volcano
 Sky - Goddess Chest on Island Closest to Faron Pillar:
   original item: Heart Piece
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/65
+  cube_region: Faron Woods
 Sky - Goddess Chest outside Volcanic Island:
   original item: Heart Medal
   type: sky, goddess, lanayru goddess
   Paths:
     - stage/F020/r0/l0/TBox/67
+  cube_region: Lanayru Desert
 Sky - Goddess Chest inside Volcanic Island:
   original item: Heart Piece
   type: sky, goddess, faron goddess
   Paths:
     - stage/F020/r0/l0/TBox/68
+  cube_region: Faron Woods
 Sky - Goddess Chest under Fun Fun Island:
   original item: Gold Rupee
   type: sky, goddess, floria goddess
   Paths:
     - stage/F020/r0/l0/TBox/86
+  cube_region: Lake Floria
 Sky - Southwest Triple Island Upper Goddess Chest:
   original item: Small Seed Satchel
   type: sky, goddess, eldin goddess
   Paths:
     - stage/F020/r0/l0/TBox/66
+  cube_region: Eldin Volcano
 Sky - Southwest Triple Island Lower Goddess Chest:
   original item: Life Medal
   type: sky, goddess, lanayru goddess
   Paths:
     - stage/F020/r0/l0/TBox/84
+  cube_region: Lanayru Desert
 Sky - Southwest Triple Island Cage Goddess Chest:
   original item: Potion Medal
   type: sky, goddess, sand sea goddess
   Paths:
     - stage/F020/r0/l0/TBox/75
+  cube_region: Lanayru Sand Sea
 Sky - Dodoh's Crystals:
   original item: Gratitude Crystal Pack
   type: sky, lanayru, long, scrapper
@@ -411,6 +461,9 @@ Sky - Fun Fun Island Minigame - 500 Rupees:
   Paths:
     - event/110-DivingGame/19
     - oarc/F020/l2
+  hint: sometimes
+  text: <r<diving through 5 rings>> yields
+
 Sky - Orielle's Crystals:
   original item: Gratitude Crystal Pack
   type: sky, short, crystal quest
@@ -419,16 +472,20 @@ Sky - Orielle's Crystals:
     - oarc/F020/l0
 Sky - Kina's Crystals:
   original item: Gratitude Crystal Pack
-  type: sky, eldin, scrapper, minigame, long, crystal quest
+  type: sky, eldin, scrapper, long, crystal quest
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
+  hint: sometimes
+  text: <r<delivering a mogma to the sky>> is rewarded with
 Sky - Beedle's Crystals:
   original item: Gratitude Crystal Pack
   type: sky, fetch, crystal quest
   Paths:
     - event/105-Terry/115
     - oarc/F020/l0
+  hint: sometimes
+  text: <r<reuniting two Beedles>> is rewarded with
 
 Sky - Chest in Breakable Boulder near Fun Fun Island:
   original item: Silver Rupee
@@ -456,16 +513,19 @@ Thunderhead - Goddess Chest outside Isle of Songs:
   type: thunderhead, goddess, eldin goddess
   Paths:
     - stage/F023/r0/l0/TBox/92
+  cube_region: Mogma Turf
 Thunderhead - Goddess Chest on top of Isle of Songs:
   original item: Small Bomb Bag
   type: thunderhead, goddess, summit goddess
   Paths:
     - stage/F023/r0/l0/TBox/85
+  cube_region: Volcano Summit
 Thunderhead - East Island Goddess Chest:
   original item: Rupee Medal
   type: thunderhead, goddess, faron goddess
   Paths:
     - stage/F023/r0/l0/TBox/73
+  cube_region: Faron Woods
 Thunderhead - East Island Chest:
   original item: Evil Crystal
   type: thunderhead, miscellaneous
@@ -476,11 +536,13 @@ Thunderhead - Bug Heaven Goddess Chest:
   type: thunderhead, goddess, summit goddess
   Paths:
     - stage/F023/r0/l0/TBox/88
+  cube_region: Volcano Summit
 Thunderhead - First Goddess Chest on Mogma Mitts Island:
   original item: Bottle
   type: thunderhead, goddess, summit goddess
   Paths:
     - stage/F023/r0/l0/TBox/77
+  cube_region: Volcano Summit
 #Thunderhead - Second Goddess Chest on Mogma Mitts Island:
 #  original item: Small Quiver
 #  type: thunderhead, goddess, lanayru goddess TODO: decide if this is a Lanayru or Sand Sea cube
@@ -492,12 +554,16 @@ Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
   Paths:
     - event/116-InsectGame/69
     - oarc/F023/l0
+  hint: sometimes
+  text: <r<true bug catchers>> can find
 Thunderhead - Song from Levias:
   original item: Song of the Hero
   type: thunderhead, sky, scrapper, combat, song
   Paths:
     - event/120-Nushi/give item after levias
     - oarc/F023/l0
+  hint: always
+  text: the <r<ancient whale within a raging storm>> bellows out
 Thunderhead - Isle of Songs - Farore's Courage:
   original item: Farore's Courage
   type: thunderhead, song
@@ -513,7 +579,8 @@ Thunderhead - Isle of Songs - Din's Power:
   type: thunderhead, song
   Paths:
     - stage/F010r/r0/l0/SwSB/2
-
+  hint: sometimes
+  text: a <r<blade of white>> reveals
 
 Sealed Grounds - Chest inside Sealed Temple:
   original item: Revitalizing Potion
@@ -532,6 +599,8 @@ Sealed Grounds - Gorko's Goddess Wall Reward:
   Paths:
     - event/503-Goron/630
     - oarc/F400/l0
+  hint: sometimes
+  text: <r<drawing upon a magical wall>> reveals
 #Sealed Grounds - Behind the Temple Triforce on Goddess Wall:
 #  original item: Gold Rupee
 #  type: faron, long, dungeon
@@ -544,6 +613,8 @@ Sealed Grounds - Zelda's Blessing:
   Paths:
     - event/502-CenterFieldBack/17
     - oarc/F404/l1
+  hint: sometimes
+  text: the <r<goddess blesses you>> with
 
 
 Faron Woods - Item on Tree:
@@ -557,6 +628,8 @@ Faron Woods - Slingshot:
   Paths:
     - event/200-Forest/595
     - oarc/F100/l0
+  hint: sometimes
+  text: the <r<Kikwi relic>> is
 Faron Woods - Deep Woods Chest:
   original item: Red Rupee
   type: faron, miscellaneous
@@ -577,10 +650,14 @@ Faron Woods - Chest inside Great Tree:
   type: faron, miscellaneous
   Paths:
     - stage/F100_1/r0/l0/TBox/84
+  hint: sometimes
+  text: the <r<hollow tree>> holds
 
 Lake Floria - Lake Floria Chest:
   original item: Goddess Plume
   type: faron, miscellaneous
+  hint: sometimes
+  text: a <r<lonely chest in the lake>> contains
   Paths:
     - stage/F102/r3/l0/TBox/64
 #Lake Floria - Lake Floria Silver Rupee: # not sure if we want to randomize this
@@ -645,6 +722,8 @@ Eldin Volcano - Digging Spot below Tower:
 Eldin Volcano - Digging Spot behind Boulder on Sandy Slope:
   original item: Key Piece
   type: eldin, bombable, digging
+  hint: sometimes
+  text: a <r<boulder on a sandy slope>> hides
   Paths:
     - stage/F200/r4/l1/Soil/12
 Eldin Volcano - Digging Spot after Vents:
@@ -671,6 +750,7 @@ Mogma Turf - Chest behind Bombable Wall at Entrance:
 Mogma Turf - Sand Slide Chest:
   original item: Eldin Ore
   type: eldin, miscellaneous
+  text: <r<behind>> a slide mogmas buried
   Paths:
     - stage/F210/r0/l0/TBox/68
 Mogma Turf - Digging Mitts Fight:
@@ -701,6 +781,8 @@ Volcano Summit - Item behind Digging:
   type: eldin, freestanding
   Paths:
     - stage/F201_3/r0/l0/Item/104 #sceneflagID
+  hint: sometimes
+  text: <r<fairies at the summit>> dance with
 Volcano Summit - Chest behind Bombable Wall in Waterfall Area:
   original item: Silver Rupee
   type: eldin, bombable
@@ -748,6 +830,8 @@ Lanayru Desert - Hook Beetle Fight:
 Lanayru Desert - Secret Passageway Chest:
   original item: Heart Piece
   type: lanayru, bombable
+  hint: sometimes
+  text: a <r<secret passage in the desert>> holds
   Paths:
     - stage/F300/r0/l0/TBox/74
 Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on raising LMF
@@ -755,6 +839,8 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
   type: lanayru, miscellaneous, mini dungeon
   Paths:
     - stage/F300/r0/l1/TBox/83
+  hint: sometimes
+  text: the <r<midst of the desert>> holds
 Lanayru Desert - Chest on Platform near Lightning Node:
   original item: Dusk Relic
   type: lanayru, miscellaneous
@@ -784,11 +870,14 @@ Lanayru Desert - Lightning Node - Second Chest:
 Lanayru Desert - Lightning Node - Raised Chest near Generator:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
+  text: a <r<raised chest in the Lightning Node>> contains
   Paths:
     - stage/F300_2/r0/l0/TBox/77
 Lanayru Desert - Fire Node - Shortcut Chest:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
+  hint: sometimes
+  text: a <r<raised chest in the Fire Node>> holds
   Paths:
     - stage/F300_3/r0/l0/TBox/79
 Lanayru Desert - Fire Node - First Small Chest:
@@ -840,6 +929,8 @@ Lanayru Sand Sea - Skipper's Retreat - Chest in Shack:
   type: lanayru, miscellaneous
   Paths:
     - stage/F301_5/r0/l0/TBox/65
+  hint: sometimes
+  text: a <r<chest atop a sandy retreat>> holds
 Lanayru Sand Sea - Skipper's Retreat - Skydive Chest:
   original item: Silver Rupee
   type: lanayru, miscellaneous
@@ -851,6 +942,8 @@ Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05:
   Paths:
     - event/406-TrolleyRace/77
     - oarc/F301_4/l0
+  hint: sometimes
+  text: a <r<fast minecart time>> is rewarded with
 Lanayru Sand Sea - Pirate Stronghold - First Chest:
   original item: Silver Rupee
   type: lanayru, mini dungeon
@@ -876,6 +969,8 @@ Skyview - Chest on Tree Branch:
 Skyview - Digging Spot in Crawlspace:
   original item: SV Small Key
   type: faron, dungeon, digging
+  hints: sometimes
+  text: in a <r<temple in the forest>> a mogma <r<buried>>
   Paths:
     - stage/D100/r4/l0/Soil/15
 Skyview - Chest behind Two Eyes:
@@ -899,6 +994,8 @@ Skyview - Chest behind Three Eyes:
   type: faron, dungeon
   Paths:
     - stage/D100/r7/l0/TBox/68
+  hint: sometimes
+  text: <r<three watchful eyes>> guard
 Skyview - Chest near Boss Door:
   original item: Red Rupee
   type: faron, dungeon
@@ -945,6 +1042,8 @@ Earth Temple - Chest Left of Main Room Bridge:
 Earth Temple - Chest in West Room:
   original item: ET Map
   type: eldin, dungeon
+  hint: sometimes
+  text: the <r<western wing in the Earth Temple>> holds
   Paths:
     - stage/D200/r0/l0/TBox/64
 Earth Temple - Bomb Bag:
@@ -1030,11 +1129,14 @@ Lanayru Mining Facility - Chest in Spike Maze:
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r7/l0/TBox/73
+    - stage/D300/r7/l0/TBox/73
 Lanayru Mining Facility - Boss Key Chest:
   original item: LMF Boss Key
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r8/l0/TBox/71
+  hint: always
+  text: deep inside <r<Lanayru Mining Facility, a pair of Armos>> guard
 Lanayru Mining Facility - Shortcut Chest in Main Hub:
   original item: Red Rupee
   type: lanayru, dungeon
@@ -1058,6 +1160,8 @@ Lanayru Mining Facility - Goddess Harp:
 Ancient Cistern - Chest in East Part:
   original item: AC Small Key
   type: faron, dungeon
+  hint: sometimes
+  text: the <r<lone east chest in the Ancient Cistern>> contains
   Paths:
     - stage/D101/r1/l0/TBox/67
 Ancient Cistern - Whip:
@@ -1115,6 +1219,8 @@ Sandship - Bow:
   type: lanayru, dungeon
   Paths:
     - stage/D301/r15/l0/TBox/72
+  hint: sometimes
+  text: a <r<robot upon the Sandship's bow>> guards
 Sandship - Chest at the Stern:
   original item: Heart Piece
   type: lanayru, dungeon
@@ -1153,6 +1259,8 @@ Sandship - Treasure Room Fifth Chest:
 Sandship - Robot in Brig's Reward:
   original item: SS Small Key
   type: lanayru, dungeon
+  hint: sometimes
+  text: the <r<gratitude of a freed captain>> reveals
   Paths:
     - event/401-DesertD2/14
     - oarc/D301/l4
@@ -1161,12 +1269,16 @@ Sandship - Boss Key Chest:
   type: lanayru, dungeon
   Paths:
     - stage/D301/r14/l3/TBox/73
+  hint: sometimes
+  text: the <r<secret treasure of the Sandship's captain>> is
 Sandship - Tentalus Heart Container:
   original item: Heart Container
   type: lanayru, dungeon
   Paths:
     - stage/B301/r0/l1/HeartCo
     - stage/D301/r0/l1/HeartCo
+  hint: sometimes
+  text: the <r<heart of an ancient sea creature>> holds
 Sandship - Nayru's Flame:
   original item: Progressive Sword
   type: lanayru, dungeon
@@ -1186,6 +1298,7 @@ Fire Sanctuary - Chest in Second Room:
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r1/l0/TBox/74
+    - stage/D201/r1/l0/TBox/74
 Fire Sanctuary - Chest near First Trapped Mogma:
   original item: FS Small Key
   type: eldin, dungeon
@@ -1223,6 +1336,8 @@ Fire Sanctuary - Chest after Bombable Wall:
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r11/l0/TBox/71
+  hint: always
+  text: a <r<false wall in the Fire Sanctuary>> guards
 Fire Sanctuary - Plats' Chest:
   original item: Heart Piece
   type: eldin, dungeon
@@ -1341,21 +1456,26 @@ Skyloft Silent Realm - Stone of Trials:
   type: skyloft, silent realm
   Paths:
     - stage/S000/r0/l2/WarpObj
+  text: the <r<goddess's final trial>> grants
+
 
 Faron Silent Realm - Water Scale:
   original item: Water Scale
   type: faron, silent realm
   Paths:
     - stage/S100/r0/l2/WarpObj
+  text: a <r<trial of courage>> grants
 
 Lanayru Silent Realm - Clawshots:
   original item: Clawshots
   type: lanayru, silent realm
   Paths:
     - stage/S300/r0/l2/WarpObj
-
+  text: a <r<trial of wisdom>> grants
+ 
 Eldin Silent Realm - Fireshield Earrings:
   original item: Fireshield Earrings
   type: eldin, silent realm
   Paths:
     - stage/S200/r2/l2/WarpObj
+  text: a <r<trial of power>> grants

@@ -163,6 +163,15 @@ nop
 .org 0x80221b5c
 nop
 
+; force the language to be english
+.org 0x803d6630
+li r3, 1 ; 1 is english
+blr
+
+; always return true when checking if a treasure/insect was obtained this play session
+.org 0x80252edc
+li r3, 1
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
