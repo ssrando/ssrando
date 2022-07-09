@@ -887,6 +887,15 @@ F004r: # Bazaar
     layer: 0
     room: 0
     objtype: OBJ
+F005r: # Orielle and Parrow's House
+  - name: Always Spawn Parrow
+    type: objpatch
+    id: 0xFC15
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1 # always Trigger
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
@@ -981,7 +990,7 @@ F013r: # Sparrot's House
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 36 # always there
+      trigstoryfid: -1 # always there
   - name: Sparrot at night
     type: objdelete
     id: 0xFC17
@@ -3051,7 +3060,7 @@ F401: # Sealed grounds Whirlpool
     room: 1
     objtype: STAG
     object:
-      trigstoryfid: 36 # always trigger
+      trigstoryfid: -1 # always trigger
   - name: Door cs to Layer 0
     type: objmove
     id: 0xFCA2
