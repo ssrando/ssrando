@@ -2278,7 +2278,6 @@ F300: # lanayru Main Area
       anglez: 0
       id: 0xFE50
       name: Tubo
->>>>>>> Stashed changes
 F300_1: # Lanayru Mines
   - name: Layer override
     type: layeroverride
