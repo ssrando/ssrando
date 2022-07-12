@@ -760,6 +760,22 @@ F000: # Skyloft
     layer: 6
     room: 0
     objtype: OBJ
+  - name: extra Arrow Pot next to Bazaar Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 2010
+      posy: 390.534943
+      posz: 830
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFE50
+      name: Tubo
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -1244,6 +1260,22 @@ F100: # Faron main area
     layer: 1
     room: 0
     objtype: OBJ
+  - name: extra Arrow Pot next to Entrance Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: -8600
+      posy: -903.477051
+      posz: -1450
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFE50
+      name: Tubo
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
@@ -1625,6 +1657,22 @@ D100: # Skyview
     layer: 1
     room: 5
     objtype: STAG
+  - name: extra Arrow Pot next to Entrance Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 42
+      posy: 1124.34998
+      posz: 6013
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFE50
+      name: Tubo
 D101: # Ancient Cistern
   - name: remove stone tablet text
     type: objpatch
@@ -1862,6 +1910,22 @@ F210: # Mogma Turf
     layer: 1
     room: 0
     objtype: OBJ
+  - name: extra Arrow Pot Next to Entrance Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 1000
+      posy: -7390
+      posz: 1950
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFE50
+      name: Tubo
 F211:
   - name: Remove thrill digger entry CS
     type: objpatch
@@ -2026,6 +2090,22 @@ D200: # ET
     layer: 0
     room: 1
     objtype: STAG
+  - name: extra Arrow Pot next to entrance Statue
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 800
+      posy: 0
+      posz: 14400
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFE50
+      name: Tubo
 B200: # Boss Room
   - name: Layer override
     type: layeroverride
@@ -2198,6 +2278,22 @@ F300: # lanayru Main Area
     objtype: STAG
     object:
       trigstoryfid: 8 # LMF raised
+  - name: extra Arrow Pot next to first Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 1670
+      posy: 1975.19812
+      posz: 18750
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFE50
+      name: Tubo
 F300_1: # Lanayru Mines
   - name: Layer override
     type: layeroverride
@@ -2217,6 +2313,22 @@ F300_1: # Lanayru Mines
     layer: 0
     room: 0
     objtype: OBJ
+  - name: extra Arrow Pot next to first Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 10200
+      posy: 2299.69092
+      posz: 35300
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFE50
+      name: Tubo
 F300_2: # Thunder node
   - name: extra Bomb flower
     type: objadd
@@ -2635,6 +2747,22 @@ D300: # LMF A
       anglez: 0
       id: 0xFC50
       name: Bombf
+  - name: extra Arrow Pot next to entrance Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: -1100
+      posy: 0
+      posz: 2200
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFE50
+      name: Tubo
 D300_1: # LMF B
   - name: Fi Text in front of boss door
     type: objdelete
@@ -3013,6 +3141,22 @@ F402: # Sealed Temple
     layer: 4
     room: 2
     objtype: OBJ
+  - name: extra Arrow Pot Next to Fairy
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 1215
+      posy: 7700
+      posz: 12700
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFE50
+      name: Tubo
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
