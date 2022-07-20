@@ -499,3 +499,23 @@ b 0x5070 ; skip over code checking for scale and BotG (we check for BotG somewhe
 bl reveal_goddess_wall_check ; require BotG here
 
 .close
+
+.open "d_t_insectNP.rel"
+.org 0xC70
+li r4, 9 ; change goddess wall requirement from scale to harp
+.org 0xBC4
+li r4, 9 ; change goddess wall requirement from imp1 to harp
+
+; fix trial storyflags
+.org 0x9DC
+li r4, 0x397 ; new storyflag
+
+.org 0xA1C
+li r4, 0x398
+
+.org 0xA68
+li r4, 0x399
+
+.org 0xAB4
+li r4, 0x39A
+.close
