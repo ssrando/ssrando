@@ -3256,7 +3256,7 @@ F400: # Behind the Temple
       - story_flag: -1
         night: 0
         layer: 0
-  - name: Goron doesn't Disapear after Sandship 1
+  - name: Goron text trigger doesn't disappear after Sandship
     type: objpatch
     id: 0xFC95
     layer: 3
@@ -3264,13 +3264,14 @@ F400: # Behind the Temple
     objtype: OBJ
     object:
       untrigstoryfid: 2047
-  - name: Goron doesn't Disapear after Sandship 2
+  - name: Goron doesn't disappear after Sandship
     type: objpatch
     id: 0xFC94
     layer: 3
     room: 0
     objtype: OBJ
     object:
+      trigstoryfid: 2047
       untrigstoryfid: 2047
   - name: Goron after Skyview
     type: objdelete
@@ -3278,14 +3279,12 @@ F400: # Behind the Temple
     layer: 0
     room: 0
     objtype: OBJ
-  - name: Untrigger Goron with Goddess Walls unlocked
-    type: objpatch
+  - name: Goron before unlocking goddess Walls
+    type: objdelete
     id: 0xFC2F
     layer: 0
     room: 0
     objtype: OBJ
-    object:
-      untrigstoryfid: 493 #godess walls unlocked
   - name: Fi text for Trial
     type: objdelete
     id: 0xFC5B

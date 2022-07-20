@@ -489,3 +489,13 @@ mtlr r0
 addi r1, r1, 0x40
 blr
 .close
+
+.open "d_a_obj_swrd_prjNP.rel" ; goddess wall
+.org 0x4D48
+b 0x4D70 ; skip over code checking for skyview mogma storyflag
+.org 0x5024
+b 0x5070 ; skip over code checking for scale and BotG (we check for BotG somewhere else again)
+.org 0x63E8
+bl reveal_goddess_wall_check ; require BotG here
+
+.close

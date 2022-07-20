@@ -108,9 +108,6 @@ class Logic:
                 self.racemode_ban_location(
                     "Sky - Lumpy Pumpkin - Goddess Chest on the Roof"
                 )
-                self.racemode_ban_location(
-                    "Sealed Grounds - Gorko's Goddess Wall Reward"
-                )
 
         batreaux_location_re = re.compile(r".*Batreaux - ([0-9]+) .*")
 
