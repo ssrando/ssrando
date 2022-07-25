@@ -912,6 +912,12 @@ F005r: # Orielle and Parrow's House
     objtype: OBJ
     object:
       trigstoryfid: -1 # always Trigger
+  - name: Delete Parrow before Crystal Quest
+    type: objdelete
+    id: 0xFC13
+    layer: 2
+    room: 0
+    objtype: OBJ
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
