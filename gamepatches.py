@@ -1925,7 +1925,7 @@ class GamePatcher:
             # make progressive slingshot
             make_progressive_item(msbf, 97, [39, 237], [52, 105], [947, 948])
             # make progressive bug net
-            make_progressive_item(msbf, 20, [18, 278], [71, 140], [949, 950])
+            make_progressive_item(msbf, 20, [18, 309], [71, 140], [949, 950])
             # make progressive pouch
             make_progressive_item(msbf, 258, [254, 253], [112, 113], [931, 932])
             # make progressive wallets
