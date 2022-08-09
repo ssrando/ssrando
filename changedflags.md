@@ -59,14 +59,21 @@ New Trial Completed Storyflags:
 942: Progressive Beetle 3 (Swift Beetle)
 943: Progressive Beetle 4 (Tough Beetle)
 
+
 944: Progressive Bow 1 (Bow)
+
 945: Progressive Bow 2 (Iron Bow)
+
+
 946: Progressive Bow 3 (Sacred Bow)
 
 947: Progressive Slingshot 1 (Slingshot)
+
 948: Progressive Slingshot 2 (Scattershot)
 
+
 949: Progressive Bug Net 1 (Bug Net)
+
 950: Progressive Bug Net 2 (Big Bug Net)
 
 Sceneflags  
