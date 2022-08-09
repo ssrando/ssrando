@@ -49,7 +49,7 @@
   getarcname: GetHarp
   getmodelname: GetHarp
 - id: 19
-  name: Bow
+  name: Progressive Bow
   oarc: GetBowA
   getarcname: GetBowA
   getmodelname: GetBowA
@@ -144,7 +144,7 @@
   oarc: null
   shuffle: Dungeon
 - id: 52
-  name: Slingshot
+  name: Progressive Slingshot
   oarc: GetPachinkoA
   getarcname: GetPachinkoA
   getmodelname: GetPachinkoA
@@ -184,7 +184,7 @@
   getarcname: GetMedal
   getmodelname: GetMedalReturn
 - id: 71
-  name: Bug Net
+  name: Progressive Bug Net
   oarc: GetNetA
   getarcname: GetNetA
   getmodelname: GetNetA
@@ -197,12 +197,12 @@
 # - id: 77
 #   name: Though Beetle
 #   oarc: GetBeetleD
-- id: 90
-  name: Iron Bow
-  oarc: GetBowB
-- id: 91
-  name: Sacred Bow
-  oarc: GetBowC
+# - id: 90
+#   name: Iron Bow
+#   oarc: GetBowB
+# - id: 91
+#   name: Sacred Bow
+#   oarc: GetBowC
 - id: 92
   name: Bomb Bag
   oarc: GetBombBag
@@ -253,9 +253,9 @@
   oarc: GetMedal
   getarcname: GetMedal
   getmodelname: GetMedalDemon
-- id: 105
-  name: Scatershot
-  oarc: GetPachinkoB
+# - id: 105
+#   name: Scatershot
+#   oarc: GetPachinkoB
 - id: 108
   name: Progressive Wallet # Medium Wallet
   oarc: GetPurseB
@@ -321,9 +321,9 @@
   oarc: GetEarring
   getarcname: GetEarring
   getmodelname: GetEarring
-- id: 140
-  name: Big Bug Net
-  oarc: GetNetB
+# - id: 140
+#   name: Big Bug Net
+#   oarc: GetNetB
 - id: 153
   name: Empty Bottle
   oarc: null
