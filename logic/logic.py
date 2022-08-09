@@ -204,7 +204,7 @@ class Logic:
                     self.set_prerandomization_item_location(shop_check, orig_item)
                 else:
                     self.racemode_ban_location(shop_check)
-                    
+
         if self.rando.options["rupeesanity"] != "All":
             for rupee_check in RUPEE_CHECKS:
                 if self.rando.options["rupeesanity"] == "Vanilla":

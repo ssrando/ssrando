@@ -1047,6 +1047,9 @@ Central Skyloft - Waterfall Cave First Chest:
 Central Skyloft - Waterfall Cave Second Chest:
   Nothing
 
+Central Skyloft - Waterfall Cave Red Rupees:
+  Can Enter Waterfall Cave
+
 Central Skyloft - Crystal after Waterfall Cave:
   Can Enter Waterfall Cave at Night | Beetle
 
@@ -1456,6 +1459,22 @@ Goddess Cube on East Great Tree with Rope:
 Goddess Cube on East Great Tree with Clawshot Target:
   Can Access Most of Faron Woods & Goddess Sword
 
+#for Checks on Great Tree - Beetle dies from main faron before being able to reach with any beetle
+Faron Woods - Rupee on Great Tree Branch 1:
+  Can Access Upper Great Tree & Beetle
+
+Faron Woods - Rupee on Great Tree Branch 2:
+  Can Access Upper Great Tree & Beetle
+
+Faron Woods - Rupee on Platform Near Floria Door:
+  Can Access Most of Faron Woods & Beetle
+
+Faron Woods - Rupee on Hollow Tree Root:
+  Can Access Most of Faron Woods & Beetle
+
+Faron Woods - Rupee on Hollow Tree Branch:
+  Can Access Most of Faron Woods
+  
 ## Deep Woods
 
 Can Access Deep Woods:
@@ -1539,6 +1558,18 @@ Can Access Dungeon Entrance in Lake Floria:
 Lake Floria - Lake Floria Chest:
   Can Access Lake Floria Statue
 
+Lake Floria - Rupee Under Boulder:
+  Can Access Lake Floria above Rock & Water Scale
+
+Lake Floria - Rupee Behind Boulder 1:
+  Can Access Lake Floria above Rock & Water Scale
+
+Lake Floria - Rupee Behind Boulder 2:
+  Can Access Lake Floria above Rock & Water Scale
+
+Lake Floria - Rupee Behind Boulder 3:
+  Can Access Lake Floria above Rock & Water Scale
+
 Goddess Cube in Lake Floria:
   Can Access Lake Floria Statue & Goddess Sword
 
@@ -1556,6 +1587,9 @@ Goddess Cube in Floria Waterfall:
 
 Lake Floria - Gossip Stone outside Ancient Cistern:
   Can Access Floria Waterfall
+
+Lake Floria - Rupee Outside AC:
+  Can Access Floria Waterfall & Beetle
 
 #Flooded Faron Woods - Water Dragon's Reward:
 
@@ -1576,7 +1610,16 @@ Can Access First Part of Eldin:
 Goddess Cube at Eldin Entrance:
   Can Access First Part of Eldin & Goddess Sword
 
+Eldin Volcano - Rupee by First Mogma Interaction:
+  Can Access First Part of Eldin
+
 Eldin Volcano - Chest behind Bombable Wall in First Room:
+  Can Access First Part of Eldin
+
+Eldin Volcano - Rupee behind Bombable Wall in First Room:
+  Can Access First Part of Eldin
+
+Eldin Volcano - Rupee in Crawlspace in First Room:
   Can Access First Part of Eldin
 
 Eldin Volcano - Chest after Crawlspace:
@@ -1584,6 +1627,12 @@ Eldin Volcano - Chest after Crawlspace:
 
 Goddess Cube near Mogma Turf Entrance:
   Can Access First Part of Eldin & Goddess Sword
+
+Eldin Volcano - Rupee above Mogma Turf Entrance 1:
+  Can Access First Part of Eldin & Beetle
+
+Eldin Volcano - Rupee above Mogma Turf Entrance 2:
+  Can Access First Part of Eldin & Beetle
 
 Eldin Volcano - Chest behind Bombable Wall near Cliff:
   Can Access First Part of Eldin
@@ -1605,6 +1654,12 @@ Eldin Silent Realm - Fireshield Earrings:
   Can Access Eldin Silent Realm
 
 Eldin Volcano - Chest behind Bombable Wall near Volcano Ascent:
+  Can Access Second Part of Eldin
+
+Eldin Volcano - Rupee Left of First Slope 1:
+  Can Access Second Part of Eldin
+
+Eldin Volcano - Rupee Left of First Slope 2:
   Can Access Second Part of Eldin
 
 Can Play Thrill Digger:
@@ -2005,6 +2060,15 @@ Can Access Sand Sea:
   Can Access Lanayru Caves & LanayruCaves Small Key x1 & Clawshots
   # You can activate Skipper's boat with clawshots
 
+Lanayru Sand Sea - Rupee Harbor First Pillar:
+  Can Access Sand Sea & Beetle
+
+Lanayru Sand Sea - Rupee Harbor Entrance Crown 1:
+  Can Access Sand Sea & Quick Beetle
+
+Lanayru Sand Sea - Rupee Harbor Entrance Crown 2:
+  Can Access Sand Sea & Quick Beetle
+
 Goddess Cube in Ancient Harbour:
   Can Access Sand Sea & Clawshots & Goddess Sword
 
@@ -2050,6 +2114,15 @@ Sand Sea - Gossip Stone in Shipyard:
   Can Access Sand Sea
 
 # Pirate Stronghold
+
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 1:
+  Can Access Sand Sea & Quick Beetle
+
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 2:
+  Can Access Sand Sea & Quick Beetle
+
+Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose:
+  Can Access Sand Sea & Beetle
 
 Lanayru Sand Sea - Pirate Stronghold - First Chest:
   Can Access Sand Sea
@@ -2181,6 +2254,15 @@ Can Get Past Staldra Room:
   # You can enter from the key door after the rope, from backwards if you can already reach Last Room,
   # or from Unloaded Skyview where the gate between Hub Room and Last Room (and the Skulltula) aren't loaded
 
+Skyview - Rupee Southeast Tunnel:
+  Can Get to Skyview Second Part & Beetle
+
+Skyview - Rupee Southwest Tunnel:
+  Can Get to Skyview Second Part & Beetle
+
+Skyview - Rupee East Tunnel:
+  Can Get to Skyview Second Part & Beetle
+
 Skyview - Beetle:
   Can Get to Skyview Second Part & Distance Activator & (Sword | Can Access Skyview 2)
   # Bombs don't work to hit the switch
@@ -2235,6 +2317,9 @@ Can Beat Skyview:
 Skyview - Ghirahim Heart Container:
   Can Beat Ghirahim 1
 
+Skyview - Rupee on Spring Pillar:
+  Can Beat Ghirahim 1 & Beetle
+
 Skyview - Ruby Tablet:
   Can Beat Skyview
 
@@ -2245,6 +2330,9 @@ Goddess Cube in Skyview Spring:
 
 Earth Temple - Vent Chest:
   Can Access Earth Temple & Digging Mitts
+
+Earth Temple - Rupee above Drawbridge:
+  Can Access Earth Temple & Beetle
 
 Can Lower First ET Drawbridge:
   Beetle | Bow | Long Range Skyward Strike
@@ -2286,6 +2374,9 @@ Can Get Past Boulder Section:
   # Alternatively, RBM up the staircase. Both Scene Flags have it raised
   # Scene Flag 5x08 and 5x02 are "Both pegs pushed"
   # Lava Hop is impossible because the rocks blow-up cutscene is removed
+
+Earth Temple - Rupee in Lava Tunnel:
+  Can Get Past Boulder Section
 
 Earth Temple - Chest Guarded by Lizalfos:
   Can Get Past Boulder Section
@@ -2443,6 +2534,12 @@ Can Do Cistern Clip:
   Sword | Ancient Cistern - Swordless Cistern Clip Trick
   # Jumpslash to land on collision, or try to backflip into it
 
+Ancient Cistern - Rupee East Hand:
+  Can Access Ancient Cistern & Water Scale
+
+Ancient Cistern - Rupee West Hand:
+  Can Access Ancient Cistern & Water Scale
+  
 Can Lower Ancient Cistern Statue:
   ((Can Access AC Main Room Vines | Can Access AC Thread) & Whip) | Can Access AC Boss Key Chest
   # From main room or from under, or using the boss key sequence
@@ -2459,6 +2556,25 @@ Ancient Cistern - Chest in East Part:
   (Water Scale | Ancient Cistern - Lilypad Skip Trick) &
   Can Unlock Combination Lock
   # Lilypad Skip is very difficult
+
+Ancient Cistern - East Room Rupee 1:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+Ancient Cistern - East Room Rupee 2:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+Ancient Cistern - East Room Short Tunnel Rupee 1:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+Ancient Cistern - East Room Short Tunnel Rupee 2:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+Ancient Cistern - East Room Short Tunnel Rupee 3:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+# Can Be Locked Out Of If activating the water jet thing under the lilypad before collecting the item
+Ancient Cistern - Rupee North Room Under Lilypad:
+  Can Resurface from the AC Gutters & Water Scale
 
 Can Clip into AC Whip Room:
   Can Access Ancient Cistern & Can Do Cistern Clip & Water Scale
@@ -2820,122 +2936,5 @@ Can Beat Sky Keep:
   Can Get Triforce of Power &
   Can Get Triforce of Wisdom
 
-#START OF RUPEESANITY ADDITIONS - WILL BE ORGANIZED LATER
-Skyview - Rupee on Spring Pillar:
-  Can Beat Ghirahim 1 & Beetle
-
-Central Skyloft - Waterfall Cave Red Rupees:
-  Can Enter Waterfall Cave
-
 Sky Keep - Rupee in Alcove of FS Room:
   Can Get Past SK Fire Sanctuary Room & Beetle
-
-Skyview - Rupee Southeast Tunnel:
-  Can Get to Skyview Second Part & Beetle
-
-Skyview - Rupee Southwest Tunnel:
-  Can Get to Skyview Second Part & Beetle
-
-Skyview - Rupee East Tunnel:
-  Can Get to Skyview Second Part & Beetle
-
-Ancient Cistern - Rupee East Hand:
-  Can Access Ancient Cistern & Water Scale
-
-Ancient Cistern - Rupee West Hand:
-  Can Access Ancient Cistern & Water Scale
-
-Ancient Cistern - East Room Rupee 1:
-  Ancient Cistern - Chest in East Part
-
-Ancient Cistern - East Room Rupee 2:
-  Ancient Cistern - Chest in East Part
-
-Ancient Cistern - East Room Short Tunnel Rupee 1:
-  Ancient Cistern - Chest in East Part
-
-Ancient Cistern - East Room Short Tunnel Rupee 2:
-  Ancient Cistern - Chest in East Part
-
-Ancient Cistern - East Room Short Tunnel Rupee 3:
-  Ancient Cistern - Chest in East Part
-
-# Can Be Locked Out Of If activating the water jet thing under the lilypad before collecting the item
-Ancient Cistern - Rupee North Room Under Lilypad:
-  Can Resurface from the AC Gutters & Water Scale
-
-Earth Temple - Rupee in Lava Tunnel:
-  Can Get Past Boulder Section
-
-Earth Temple - Rupee above Drawbridge:
-  Can Access Earth Temple & Beetle
-
-#for Checks on Great Tree - Beetle dies from main faron before being able to reach with any beetle
-Faron Woods - Rupee on Great Tree Branch 1:
-  Can Access Upper Great Tree & Beetle
-
-Faron Woods - Rupee on Great Tree Branch 2:
-  Can Access Upper Great Tree & Beetle
-
-Faron Woods - Rupee on Platform Near Floria Door:
-  Can Access Most of Faron Woods & Beetle
-
-Faron Woods - Rupee on Hollow Tree Root:
-  Can Access Most of Faron Woods & Beetle
-
-Faron Woods - Rupee on Hollow Tree Branch:
-  Can Access Most of Faron Woods
-
-Lake Floria - Rupee Under Boulder:
-  Can Access Lake Floria above Rock & Water Scale
-
-Lake Floria - Rupee Behind Boulder 1:
-  Can Access Lake Floria above Rock & Water Scale
-
-Lake Floria - Rupee Behind Boulder 2:
-  Can Access Lake Floria above Rock & Water Scale
-
-Lake Floria - Rupee Behind Boulder 3:
-  Can Access Lake Floria above Rock & Water Scale
-
-Lake Floria - Rupee Outside AC:
-  Can Access Floria Waterfall & Beetle
-
-Eldin Volcano - Rupee by First Mogma Interaction:
-  Can Access First Part of Eldin
-
-Eldin Volcano - Rupee behind Bombable Wall in First Room:
-  Can Access First Part of Eldin
-
-Eldin Volcano - Rupee in Crawlspace in First Room:
-  Can Access First Part of Eldin
-
-Eldin Volcano - Rupee above Mogma Turf Entrance 1:
-  Can Access First Part of Eldin & Beetle
-
-Eldin Volcano - Rupee above Mogma Turf Entrance 2:
-  Can Access First Part of Eldin & Beetle
-
-Eldin Volcano - Rupee Left of First Slope 1:
-  Can Access Second Part of Eldin
-
-Eldin Volcano - Rupee Left of First Slope 2:
-  Can Access Second Part of Eldin
-
-Lanayru Sand Sea - Rupee Harbor First Pillar:
-  Can Access Sand Sea & Beetle
-
-Lanayru Sand Sea - Rupee Harbor Entrance Crown 1:
-  Can Access Sand Sea & Quick Beetle
-
-Lanayru Sand Sea - Rupee Harbor Entrance Crown 2:
-  Can Access Sand Sea & Quick Beetle
-
-Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 1:
-  Can Access Sand Sea & Quick Beetle
-
-Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 2:
-  Can Access Sand Sea & Quick Beetle
-
-Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose:
-  Can Access Sand Sea & Beetle
