@@ -702,29 +702,29 @@ Lake Floria - Dragon Lair South Chest:
   type: faron, miscellaneous
   Paths:
     - stage/F102_2/r0/l0/TBox/84
-#Lake Floria - Rupee Under Boulder:
-#  original item: Silver Rupee
-#  type: faron, freestanding
-#  Paths:
-#   - stage/F102/r2/l0/Item/60
-#
-#Lake Floria - Rupee Behind Boulder 1:
-#  original item: Red Rupee
-#  type: faron, freestanding
-#  Paths:
-#   - stage/F102/r2/l0/Item/61
-#
-#Lake Floria - Rupee Behind Boulder 2:
-#  original item: Red Rupee
-#  type: faron, freestanding
-#  Paths:
-#   - stage/F102/r2/l0/Item/62
-#
-#Lake Floria - Rupee Behind Boulder 3:
-#  original item: Blue Rupee
-#  type: faron, freestanding
-#  Paths:
-#   - stage/F102/r2/l0/Item/63
+Lake Floria - Rupee Under Boulder:
+ original item: Silver Rupee
+ type: faron, freestanding
+ Paths:
+  - stage/F102/r2/l0/Item/60
+
+Lake Floria - Rupee Behind Boulder 1:
+ original item: Red Rupee
+ type: faron, freestanding
+ Paths:
+  - stage/F102/r2/l0/Item/61
+
+Lake Floria - Rupee Behind Boulder 2:
+ original item: Red Rupee
+ type: faron, freestanding
+ Paths:
+  - stage/F102/r2/l0/Item/62
+
+Lake Floria - Rupee Behind Boulder 3:
+ original item: Blue Rupee
+ type: faron, freestanding
+ Paths:
+  - stage/F102/r2/l0/Item/63
 Lake Floria - Rupee Outside AC:
   original item: Gold Rupee
   type: faron, freestanding
