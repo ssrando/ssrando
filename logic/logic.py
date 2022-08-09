@@ -292,11 +292,7 @@ class Logic:
                 "Sandship - Nayru's Flame",
                 "Fire Sanctuary - Din's Flame",
             ]
-        
-        self.set_prerandomization_item_location("Knight Academy - Fledge's Gift", "Progressive Bow")
-        self.set_prerandomization_item_location("Knight Academy - Owlan's Gift", "Progressive Bow")
-        self.set_prerandomization_item_location("Knight Academy - Sparring Hall Chest", "Progressive Bow")
-        
+
         if self.rando.options["logic-mode"] == "No Logic":
             for location in self.item_locations:
                 self.item_locations[location]["Need"] = Logic.parse_logic_expression(
