@@ -458,7 +458,7 @@ class Ui_MainWindow(object):
         self.groupBox_5.setGeometry(QRect(10, 10, 201, 251))
         self.verticalLayoutWidget = QWidget(self.groupBox_5)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 181, 223))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 181, 242))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -528,11 +528,6 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout.addLayout(self.verticalLayout_5)
-
-        self.option_skip_skykeep = QCheckBox(self.verticalLayoutWidget)
-        self.option_skip_skykeep.setObjectName(u"option_skip_skykeep")
-
-        self.verticalLayout.addWidget(self.option_skip_skykeep)
 
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -805,6 +800,39 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_15.addLayout(self.horizontalLayout_20)
+
+        self.groupBox_17 = QGroupBox(self.tab_4)
+        self.groupBox_17.setObjectName(u"groupBox_17")
+        self.groupBox_17.setGeometry(QRect(220, 270, 191, 241))
+        self.verticalLayoutWidget_15 = QWidget(self.groupBox_17)
+        self.verticalLayoutWidget_15.setObjectName(u"verticalLayoutWidget_15")
+        self.verticalLayoutWidget_15.setGeometry(QRect(10, 19, 171, 221))
+        self.verticalLayout_31 = QVBoxLayout(self.verticalLayoutWidget_15)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.verticalLayout_31.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_37 = QVBoxLayout()
+        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+
+        self.verticalLayout_31.addLayout(self.verticalLayout_37)
+
+        self.option_triforce_required = QCheckBox(self.verticalLayoutWidget_15)
+        self.option_triforce_required.setObjectName(u"option_triforce_required")
+
+        self.verticalLayout_31.addWidget(self.option_triforce_required)
+
+        self.label_for_option_triforce_shuffle = QLabel(self.verticalLayoutWidget_15)
+        self.label_for_option_triforce_shuffle.setObjectName(u"label_for_option_triforce_shuffle")
+
+        self.verticalLayout_31.addWidget(self.label_for_option_triforce_shuffle)
+
+        self.option_triforce_shuffle = QComboBox(self.verticalLayoutWidget_15)
+        self.option_triforce_shuffle.setObjectName(u"option_triforce_shuffle")
+
+        self.verticalLayout_31.addWidget(self.option_triforce_shuffle)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_6)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
@@ -1090,8 +1118,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(2)
         self.option_randomize_entrances.setCurrentIndex(-1)
+        self.option_triforce_shuffle.setCurrentIndex(-1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1170,7 +1199,6 @@ class Ui_MainWindow(object):
         self.label_for_option_got_sword_requirement.setText(QCoreApplication.translate("MainWindow", u"Sword Requirement", None))
         self.label_for_option_got_dungeon_requirement.setText(QCoreApplication.translate("MainWindow", u"Dungeon Requirement", None))
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeons", None))
-        self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Sky Keep", None))
         self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"Dungeons", None))
         self.label_for_option_map_mode.setText(QCoreApplication.translate("MainWindow", u"Map Mode", None))
         self.label_for_option_small_key_mode.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))
@@ -1198,6 +1226,10 @@ class Ui_MainWindow(object):
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.label_for_option_demise_count.setText(QCoreApplication.translate("MainWindow", u"Demise Count", None))
+        self.groupBox_17.setTitle(QCoreApplication.translate("MainWindow", u"Triforce", None))
+        self.option_triforce_required.setText(QCoreApplication.translate("MainWindow", u"Triforce Required", None))
+        self.label_for_option_triforce_shuffle.setText(QCoreApplication.translate("MainWindow", u"Triforce Shuffle", None))
+        self.option_triforce_shuffle.setCurrentText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))

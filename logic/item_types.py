@@ -101,6 +101,9 @@ DUNGEON_PROGRESS_ITEMS = (
     + ["FS Small Key"] * 3
     + ["SK Boss Key"] * 0
     + ["SK Small Key"] * 1
+    + ["Triforce of Courage"] * 1
+    + ["Triforce of Wisdom"] * 1
+    + ["Triforce of Power"] * 1
 )
 
 # note: Lanayru Caves is technically not a dungeon, but has to be treated as such for non key sanity
@@ -137,6 +140,8 @@ DUNGEON_NONPROGRESS_ITEMS = (
     + ["FS Map"]
     + ["SK Map"]
 )
+
+TRIFORCES = ["Triforce of Courage"] + ["Triforce of Wisdom"] + ["Triforce of Power"]
 
 ALL_ITEM_NAMES = set(
     PROGRESS_ITEMS

@@ -54,7 +54,7 @@ global:
       - 14 # text in front of VP statue
     Sealed Grounds:
       - 7 # vents active
-      - onlyif: Option "skip-skykeep" Enabled
+      - onlyif: Option "triforce-required" Disabled
         flag: 50 # horde door open
       - onlyif: Option "skip-horde" Enabled
         flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
@@ -416,6 +416,72 @@ D003_8: # this change is purely to make sure D003_8 gets patched, so a perviousl
     layer: 6
     room: 0
     objtype: OBJ
+  - name: remove last triforce cutscene # this does mean if triforces are vanilla you have to leave yourself
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Scene Change for Wisdom layer
+    type: objadd
+    room: 0
+    layer: 1
+    id: 0xFC20
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFF11 # copied from layer 5; storyflags removed
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      anglex: 0xFF3E
+      angley: 0xFFFF
+      anglez: 12521 # entrypoint 125_21
+      id: 0xFC20
+      name: NpcTke
+      trigscenefid: 62 # triforce of wisdom check collected
+      untrigscenefid: 0xFF
+      untrigstoryfid: 0x7FF
+  - name: Scene Change for Power layer
+    type: objadd
+    room: 0
+    layer: 2
+    id: 0xFC20
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFF11 # copied from layer 5; storyflags removed
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      anglex: 0xFF3D
+      angley: 0xFFFF
+      anglez: 12522 # entrypoint 125_22
+      id: 0xFC20
+      name: NpcTke
+      trigscenefid: 61 # triforce of power check collected
+      untrigscenefid: 0xFF
+      untrigstoryfid: 0x7FF
+  - name: Scene Change for Courage layer
+    type: objadd
+    room: 0
+    layer: 3
+    id: 0xFC20
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFF11 # copied from layer 5; storyflags removed
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      anglex: 0xFF40
+      angley: 0xFFFF
+      anglez: 12523 # entrypoint 125_23
+      id: 0xFC20
+      name: NpcTke
+      trigscenefid: 64 # triforce of courage check collected
+      untrigscenefid: 0xFF
+      untrigstoryfid: 0x7FF
 F000: # Skyloft
   - name: Trial
     type: oarcadd
@@ -3318,6 +3384,23 @@ F404: # Hylia's Temple
     layer: 0
     room: 2
     objtype: OBJ
+  - name: Trigger to Check Triforces
+    type: objadd
+    onlyif: Option "triforce-required" Enabled
+    room: 2
+    layer: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFEA1400 # triggered by triforce completed
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 7600
+      posz: 8250
+      anglex: 0x32FF # sets 7x04
+      angley: 0xFFFF
+      anglez: 50220 # entrypoint 502_20
+      id: 0xFC40
+      name: NpcTke
 F403: # Hylia's Realm
   - name: Layer override
     type: layeroverride

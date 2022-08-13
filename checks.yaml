@@ -1436,21 +1436,21 @@ Sky Keep - Chest after Dreadfuse:
   type: skyloft, dungeon
   Paths:
     - stage/D003_6/r0/l0/TBox/65
-#Sky Keep - Triforce of Wisdom
-#   original item: Triforce of Wisdom
-#   type: skyloft, dungeon
-#   Paths:
-#    - stage/D003_8.json
-#Sky Keep - Triforce of Power
-#   original item: Triforce of Power
-#   type: skyloft, dungeon
-#   Paths:
-#    - stage/D003_8.json
-#Sky Keep - Triforce of Courage
-#   original item: Triforce of Courage
-#   type: skyloft, dungeon
-#   Paths:
-#    - stage/D003_8.json
+Sky Keep - Triforce of Wisdom:
+   original item: Triforce of Wisdom
+   type: skyloft, dungeon
+   Paths:
+    - stage/D003_8/r0/l1/Item/62
+Sky Keep - Triforce of Power:
+   original item: Triforce of Power
+   type: skyloft, dungeon
+   Paths:
+    - stage/D003_8/r0/l2/Item/61
+Sky Keep - Triforce of Courage:
+   original item: Triforce of Courage
+   type: skyloft, dungeon
+   Paths:
+    - stage/D003_8/r0/l3/Item/64
 
 
 Skyloft Silent Realm - Stone of Trials:

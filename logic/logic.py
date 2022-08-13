@@ -19,6 +19,7 @@ from .item_types import (
     KEY_PIECES,
     SMALL_KEYS,
     BOSS_KEYS,
+    TRIFORCES,
 )
 from .constants import (
     DUNGEON_NAME_TO_SHORT_DUNGEON_NAME,
@@ -27,6 +28,7 @@ from .constants import (
     MAP_CHECKS,
     SMALL_KEY_CHECKS,
     BOSS_KEY_CHECKS,
+    TRIFORCE_CHECKS,
     END_OF_DUNGEON_CHECKS,
     POTENTIALLY_REQUIRED_DUNGEONS,
     ENTRANCE_CONNECTIONS,
@@ -124,9 +126,15 @@ class Logic:
                     self.racemode_ban_location(location_name)
                     # print(f'banned {location_name}')
 
-        if self.rando.options["skip-skykeep"]:
+        if (
+            not self.rando.options["triforce-required"]
+            or self.rando.options["triforce-shuffle"] == "Anywhere"
+        ):
             self.racemode_ban_location("Sky Keep - First Chest")
             self.racemode_ban_location("Sky Keep - Chest after Dreadfuse")
+            self.racemode_ban_location("Sky Keep - Triforce of Courage")
+            self.racemode_ban_location("Sky Keep - Triforce of Wisdom")
+            self.racemode_ban_location("Sky Keep - Triforce of Power")
 
         self.prog_locations_by_zone_name = defaultdict(list)
         for location_name in self.filter_locations_for_progression(
@@ -240,6 +248,7 @@ class Logic:
 
         small_key_mode = self.rando.options["small-key-mode"]
         boss_key_mode = self.rando.options["boss-key-mode"]
+        triforce_mode = self.rando.options["triforce-shuffle"]
         map_mode = self.rando.options["map-mode"]
         # remove small keys from the dungeon pool if small key sanity is enabled
         if small_key_mode == "Anywhere":
@@ -267,6 +276,18 @@ class Logic:
             for small_key_check in BOSS_KEY_CHECKS:
                 orig_item = self.item_locations[small_key_check]["original item"]
                 self.set_prerandomization_item_location(small_key_check, orig_item)
+        # remove triforces from the dungeon pool if triforce shuffle is enabled
+        if triforce_mode == "Anywhere":
+            self.dungeon_progress_items = [
+                key for key in self.dungeon_progress_items if key not in TRIFORCES
+            ]
+        elif triforce_mode == "Vanilla":
+            self.dungeon_progress_items = [
+                key for key in self.dungeon_progress_items if key not in TRIFORCES
+            ]
+            for triforce_check in TRIFORCE_CHECKS:
+                orig_item = self.item_locations[triforce_check]["original item"]
+                self.set_prerandomization_item_location(triforce_check, orig_item)
         # remove maps from the dungeon pool if maps are shuffled
         if map_mode in ["Anywhere", "Removed"]:
             self.dungeon_nonprogress_items = []
@@ -348,7 +369,7 @@ class Logic:
                 else:
                     unreq_indices.append(index)
 
-            if self.rando.options["skip-skykeep"]:
+            if not self.rando.options["triforce-required"]:
                 unreq_indices.append(dungeons.index("Sky Keep"))
             else:
                 req_indices.append(dungeons.index("Sky Keep"))
@@ -1292,6 +1313,23 @@ class Logic:
                 self.add_owned_item(
                     item_name
                 )  # Temporarily add big keys to the player's inventory while placing them.
+
+        triforces_to_place = []
+        if self.rando.options["triforce-shuffle"] not in ["Anywhere", "Vanilla"]:
+            # Randomize triforces.
+            triforces_to_place = [
+                item_name
+                for item_name in (
+                    self.unplaced_progress_items + self.unplaced_nonprogress_items
+                )
+                if "Triforce" in item_name
+            ]
+            assert len(triforces_to_place) > 0
+            for item_name in triforces_to_place:
+                self.place_dungeon_item(item_name)
+                self.add_owned_item(
+                    item_name
+                )  # Temporarily add triforces to the player's inventory while placing them
 
         if self.rando.options["map-mode"] not in ["Anywhere", "Vanilla", "Removed"]:
             # Randomize dungeon maps and compasses.

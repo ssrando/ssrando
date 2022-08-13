@@ -16,6 +16,36 @@
     index: 462 # skip scene change after getting goddess sword
     flow:
       next: -1
+  - name: Remove Triforce of Wisdom Scene change (1st part)
+    type: flowpatch
+    index: 531
+    flow:
+      next: -1
+  - name: Remove Triforce of Wisdom Scene change (2nd part)
+    type: flowpatch
+    index: 532
+    flow:
+      next: -1
+  - name: Remove Triforce of Courage Scene change (1st part)
+    type: flowpatch
+    index: 534
+    flow:
+      next: -1
+  - name: Remove Triforce of Courage Scene change (2nd part)
+    type: flowpatch
+    index: 535
+    flow:
+      next: -1
+  - name: Remove Triforce of Power Scene change (1st part)
+    type: flowpatch
+    index: 536
+    flow:
+      next: -1
+  - name: Remove Triforce of Power Scene change (2nd part)
+    type: flowpatch
+    index: 537
+    flow:
+      next: -1
   - name: Goddess Longsword Text
     type: textpatch
     index: 16
@@ -1202,6 +1232,49 @@
       param3: 9
       param4: 0
       param5: 0
+125-D3:
+  - name: Wisdom Scene Change Entrypoint
+    type: entryadd
+    entry:
+      name: "125_21"
+      value: Wisdom Scene Change
+  - name: Power Scene Change Entrypoint
+    type: entryadd
+    entry:
+      name: "125_22"
+      value: Power Scene Change
+  - name: Courage Scene Change Entrypoint
+    type: entryadd
+    entry:
+      name: "125_23"
+      value: Courage Scene Change
+  - name: Wisdom Scene Change
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 1
+      param2: 1
+      next: -1
+      param3: 10
+  - name: Power Scene Change
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 2
+      param2: 1
+      next: -1
+      param3: 10
+  - name: Courage Scene Change
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 3
+      param2: 1
+      next: -1
+      param3: 10 
 200-Forest:
   - name: give slingshot directly
     type: flowpatch
@@ -1280,6 +1353,7 @@
     index: 165
     flow:
       next: -1
+
 201-ForestD1:
   - name: give item after beating skyview
     type: flowpatch
@@ -1795,6 +1869,21 @@
     type: textpatch
     index: 25
     text: "Understood, Master <heroname>.\nThank you for taking me on this\njourney with you."
+  - name: Impa Complete Triforce text
+    type: textadd
+    text: "Though your wish has been granted by\nthe <y+<Triforce>>, <b<Ghirahim>> escaped with\nZelda through the <r<great doors\nat the front of the temple>>.\nYou may yet catch him before it's too\nlate. Hurry, <heroname>!"
+  - name: Show Triforce text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Impa Complete Triforce text
+  - name: Check for Triforces
+    type: entryadd
+    entry:
+      name: "502_20"
+      value: Show Triforce text
 503-Goron:
   - name: To Bomb Bag Check I # when you don't have bow
     type: flowpatch
