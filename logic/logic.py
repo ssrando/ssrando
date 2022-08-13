@@ -205,6 +205,8 @@ class Logic:
                 if self.rando.options["shop-mode"] == "Vanilla":
                     orig_item = self.item_locations[shop_check]["original item"]
                     self.set_prerandomization_item_location(shop_check, orig_item)
+                    if orig_item != "Bug Net":
+                        self.racemode_ban_location(shop_check)
                 else:
                     self.racemode_ban_location(shop_check)
 
@@ -243,15 +245,14 @@ class Logic:
 
         if self.rando.options["shop-mode"] == "Vanilla":
             # if shops are vanilla, make wallets and the extra pouch upgrades non progress
-            for wallet_item in (
-                ["Progressive Wallet"] * 4
-                + ["Extra Wallet"] * 3
-                + ["Progressive Pouch"] * 3
-            ):
-                self.unplaced_progress_items.remove(wallet_item)
-                self.unplaced_nonprogress_items.append(wallet_item)
-                self.all_progress_items.remove(wallet_item)
-                self.all_nonprogress_items.append(wallet_item)
+            # wallets are already made nonprogress by make_useless_progress_items_nonprogress
+            for item in ["Progressive Pouch"] * 3:
+                if item in self.unplaced_progress_items:
+                    self.unplaced_progress_items.remove(item)
+                    self.unplaced_nonprogress_items.append(item)
+                if item in self.all_progress_items:
+                    self.all_progress_items.remove(item)
+                    self.all_nonprogress_items.append(item)
 
         small_key_mode = self.rando.options["small-key-mode"]
         boss_key_mode = self.rando.options["boss-key-mode"]
@@ -845,58 +846,43 @@ class Logic:
         )
 
         # print(progress_locations)
-        useful_items = []
+        # set is fine here since we never rely on the order of its elements
+        useful_items = set()
         for location_name in progress_locations:
             requirement_expression = self.item_locations[location_name]["Need"]
-            useful_items += self.get_item_names_from_logical_expression_req(
-                location_name, requirement_expression
+            useful_items.update(
+                self.get_item_names_from_logical_expression_req(
+                    location_name, requirement_expression
+                )
             )
-        useful_items += self.get_item_names_by_req_name("Can Reach and Defeat Demise")
+        useful_items.update(
+            self.get_item_names_by_req_name("Can Reach and Defeat Demise")
+        )
 
-        # all dungeon items from unrequired dungeons are non progress
+        # check that no nonprogress items are required
         for item_name in useful_items:
-            if self.rando.options["empty-unrequired-dungeons"]:
-                if self.is_dungeon_item(item_name):
-                    short_dungeon_name = item_name.split(" ")[0]
-                    dungeon_name = DUNGEON_NAMES[short_dungeon_name]
-                    if dungeon_name in self.unrequired_dungeons:
-                        useful_items.remove(item_name)
-
-        all_progress_items_filtered = []
-        for item_name in useful_items:
-            if (
-                item_name == "Progressive Sword"
-                and self.rando.options.get("sword_mode") == "Swordless"
-            ):
-                continue
-            # if self.is_dungeon_item(item_name) and not self.rando.options.get("progression_dungeons"):
-            #   continue
             if item_name not in self.all_progress_items:
                 # we can always assume that if wallets are not progress items than they are not needed
                 # since they are only added to the progress pool if shops are not vanilla
                 # Progressive Wallets should always be progress items
-                if not (item_name.startswith("Extra Wallet")):
+                if not item_name.startswith("Extra Wallet"):
                     raise Exception(
                         "Item %s opens up progress locations but is not in the list of all progress items."
                         % item_name
                     )
-            if item_name in all_progress_items_filtered:
-                # Avoid duplicates
-                continue
-            all_progress_items_filtered.append(item_name)
 
-        items_to_make_nonprogress = [
-            item_name
-            for item_name in self.all_progress_items
-            if item_name not in all_progress_items_filtered
-            and item_name not in self.current_inventory.all_owned_unique_items()
-        ]
-        for item_name in items_to_make_nonprogress:
+        items_to_remove = list(
+            filter(lambda x: x not in useful_items, self.all_progress_items)
+        )
+
+        for item_name in items_to_remove:
             # print(item_name)
             self.all_progress_items.remove(item_name)
             self.all_nonprogress_items.append(item_name)
-            self.unplaced_progress_items.remove(item_name)
-            self.unplaced_nonprogress_items.append(item_name)
+            # ignore items that you start with
+            if item_name in self.unplaced_progress_items:
+                self.unplaced_progress_items.remove(item_name)
+                self.unplaced_nonprogress_items.append(item_name)
 
         if self.rando.options.get("randomize_entrances") not in ["Disabled", None]:
             # Reset the dungeon/secret cave access macros if we changed them earlier.
@@ -1499,8 +1485,6 @@ class Logic:
     def get_barren_regions(self):
         region_is_barren = {}
         non_barren_items = set(self.all_progress_items)
-        if self.rando.options["start-with-pouch"]:
-            non_barren_items.remove("Progressive Pouch")
         for loc in self.item_locations:
             zone_name, _ = Logic.split_location_name_by_zone(loc)
             # calculate barren regions for goddess CUBES not their chests
