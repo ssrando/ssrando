@@ -154,7 +154,14 @@ class Logic:
         self.all_nonprogress_items = NONPROGRESS_ITEMS.copy()
         self.all_fixed_consumable_items = CONSUMABLE_ITEMS.copy()
         self.duplicatable_consumable_items = DUPLICATABLE_CONSUMABLE_ITEMS.copy()
-
+        
+        # Remove excess progressive items if Upgrade Item Shuffle is off.
+        if self.rando.options["gondo-upgrades"] == False:
+            self.all_progress_items -= ["Progressive Beetle"]    * 2
+            self.all_progress_items -= ["Progressive Bow"]       * 2
+            self.all_progress_items -= ["Progressive Slingshot"] * 1
+            self.all_progress_items -= ["Progressive Bug Net"]   * 1
+        
         rupoor_mode = self.rando.options["rupoor-mode"]
         if rupoor_mode != "Off":
             if rupoor_mode == "Added":
