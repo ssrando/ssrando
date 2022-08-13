@@ -161,6 +161,7 @@ class Logic:
             self.all_progress_items.remove("Progressive Beetle")
             self.all_progress_items.remove("Progressive Slingshot")
             self.all_progress_items.remove("Progressive Bow")
+            self.all_progress_items.remove("Progressive Bow")
             self.all_progress_items.remove("Progressive Bug Net")
         
         rupoor_mode = self.rando.options["rupoor-mode"]
