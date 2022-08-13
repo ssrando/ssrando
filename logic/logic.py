@@ -157,10 +157,11 @@ class Logic:
         
         # Remove excess progressive items if Upgrade Item Shuffle is off.
         if self.rando.options["gondo-upgrades"] == False:
-            self.all_progress_items -= ["Progressive Beetle"]    * 2
-            self.all_progress_items -= ["Progressive Bow"]       * 2
-            self.all_progress_items -= ["Progressive Slingshot"] * 1
-            self.all_progress_items -= ["Progressive Bug Net"]   * 1
+            self.all_progress_items.remove("Progressive Beetle")
+            self.all_progress_items.remove("Progressive Beetle")
+            self.all_progress_items.remove("Progressive Slingshot")
+            self.all_progress_items.remove("Progressive Bow")
+            self.all_progress_items.remove("Progressive Bug Net")
         
         rupoor_mode = self.rando.options["rupoor-mode"]
         if rupoor_mode != "Off":
