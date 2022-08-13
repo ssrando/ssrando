@@ -2,7 +2,7 @@
 
 # Words Conventions:
 
-#   - Beginning of Checks, Adjectives, Nound and Verbs are Capitalized, not Prepositions (Does Look Weird in a Sentence, not in Checks)
+#   - Beginning of Checks, Adjectives, Nouns and Verbs are Capitalized, not Prepositions (Does Look Weird in a Sentence, not in Checks)
 
 #   - Macros using words implying location like Access, Get Past, Reach (also, Retrieve) must include the previous location in their requirements (Get Past X must include Access X)
 
@@ -386,7 +386,7 @@ Central Skyloft - Gossip Stone on Floating Island:
   Clawshots
 
 Central Skyloft - Crystal on Waterfall Island:
-  Clawshots | (Hook Beetle & Upgrade Hook Beetle Trick)
+  Clawshots | (Hook Beetle & Upgrade Hook Beetle Trick) | Swift Beetle
   # Can reach with Tough Beetle
 
 Central Skyloft - Waterfall Goddess Chest:
@@ -1265,7 +1265,7 @@ Can Access Dungeon Entrance in Lanayru Desert:
 
 Can Access Lanayru Desert Secret Passageway:
   Can Access Second Part of Lanayru Desert &
-  (Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick))
+  (Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Swift Beetle)
   # Scene Flag 4x01 is "Blow up wall revealing path to HP"
 
 Lanayru Desert - Secret Passageway Chest:
