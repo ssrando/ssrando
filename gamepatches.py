@@ -1919,9 +1919,13 @@ class GamePatcher:
                 PROGRESSIVE_SWORD_STORYFLAGS,
             )
             # make progressive beetle - msbf, base item, item text, item id, storyflags
-            make_progressive_item(msbf, 96, [38, 178, 177, 176], [53, 75, 76, 77], [912, 913, 942, 943])
+            make_progressive_item(
+                msbf, 96, [38, 178, 177, 176], [53, 75, 76, 77], [912, 913, 942, 943]
+            )
             # make progressive bow
-            make_progressive_item(msbf, 127, [68, 163, 162], [19, 90, 91], [944, 945, 946])
+            make_progressive_item(
+                msbf, 127, [68, 163, 162], [19, 90, 91], [944, 945, 946]
+            )
             # make progressive slingshot
             make_progressive_item(msbf, 97, [39, 237], [52, 105], [947, 948])
             # make progressive bug net
