@@ -228,7 +228,7 @@
     pool. All modes also add ruppors to the backup, duplicatable pool for when all other items have been
     placed
   ui: option_rupoor_mode
-- name: Place Progressive Item Upgrades
+- name: Place Scrap Shop Upgrades
   command: gondo-upgrades
   type: boolean
   default: false
