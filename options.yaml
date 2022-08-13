@@ -228,6 +228,13 @@
     pool. All modes also add ruppors to the backup, duplicatable pool for when all other items have been
     placed
   ui: option_rupoor_mode
+- name: Place Progressive Item Upgrades
+  command: gondo-upgrades
+  type: boolean
+  default: false
+  help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for 
+  the Beetle, Bow, Bug Net, and Slingshot.
+  ui: option_gondo_upgrades
 - name: Gate of Time Starting State
   command: got-start
   type: singlechoice
