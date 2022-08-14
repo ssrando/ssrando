@@ -61,8 +61,8 @@ NONPROGRESS_ITEMS = (
 
 CONSUMABLE_ITEMS = (
     3 * ["Green Rupee"]
-    + 14 * ["Blue Rupee"]
-    + 38 * ["Red Rupee"]
+    + 12 * ["Blue Rupee"]
+    + 42 * ["Red Rupee"]
     + 23 * ["Silver Rupee"]
     + 11 * ["Gold Rupee"]
     + 10 * ["Semi Rare Treasure"]
