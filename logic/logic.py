@@ -128,6 +128,7 @@ class Logic:
         if self.rando.options["skip-skykeep"]:
             self.racemode_ban_location("Sky Keep - First Chest")
             self.racemode_ban_location("Sky Keep - Chest after Dreadfuse")
+            self.racemode_ban_location("Sky Keep - Rupee in Alcove of FS Room")
 
         self.prog_locations_by_zone_name = defaultdict(list)
         for location_name in self.filter_locations_for_progression(
@@ -672,7 +673,7 @@ class Logic:
                     for loc in inaccessible_undone_item_locations
                     if not loc == location_name
                 ]
-                if not self.check_item_is_useful(
+                if unlocked_prerand_item in CONSUMABLE_ITEMS or not self.check_item_is_useful(
                     unlocked_prerand_item, temp_inaccessible_undone_item_locations
                 ):
                     # If that item is not useful, don't consider the current item useful for unlocking it.
