@@ -673,8 +673,11 @@ class Logic:
                     for loc in inaccessible_undone_item_locations
                     if not loc == location_name
                 ]
-                if unlocked_prerand_item in CONSUMABLE_ITEMS or not self.check_item_is_useful(
-                    unlocked_prerand_item, temp_inaccessible_undone_item_locations
+                if (
+                    unlocked_prerand_item in CONSUMABLE_ITEMS
+                    or not self.check_item_is_useful(
+                        unlocked_prerand_item, temp_inaccessible_undone_item_locations
+                    )
                 ):
                     # If that item is not useful, don't consider the current item useful for unlocking it.
                     continue
