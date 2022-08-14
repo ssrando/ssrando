@@ -39,6 +39,9 @@ Hook Beetle:
 Swift Beetle:
   Progressive Beetle x3
   
+Tough Beetle:
+  Progressive Beetle x4
+  
 Bow:
   Progressive Bow x1
   
@@ -1265,7 +1268,7 @@ Can Access Dungeon Entrance in Lanayru Desert:
 
 Can Access Lanayru Desert Secret Passageway:
   Can Access Second Part of Lanayru Desert &
-  (Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Swift Beetle)
+  (Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Tough Beetle)
   # Scene Flag 4x01 is "Blow up wall revealing path to HP"
 
 Lanayru Desert - Secret Passageway Chest:
