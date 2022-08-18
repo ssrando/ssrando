@@ -211,6 +211,7 @@ class Logic:
                 if self.rando.options["rupeesanity"] == "Vanilla":
                     orig_item = self.item_locations[rupee_check]["original item"]
                     self.set_prerandomization_item_location(rupee_check, orig_item)
+                # No Quick Beetle is the only other option
                 else:
                     if "Sea Pillar" in rupee_check or "Entrance Crown" in rupee_check:
                         orig_item = self.item_locations[rupee_check]["original item"]
