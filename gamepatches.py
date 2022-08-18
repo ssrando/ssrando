@@ -940,7 +940,7 @@ class GamePatcher:
                 if self.rando.options["rupeesanity"] == "Vanilla":
                     temp_item_locations.pop(rupee_check)
                 elif "Sea Pillar" in rupee_check or "Entrance Crown" in rupee_check:
-                    temp_item_locations(rupee_check)
+                    temp_item_locations.pop(rupee_check)
 
         (
             self.rando_stagepatches,
