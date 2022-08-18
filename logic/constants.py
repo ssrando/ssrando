@@ -228,3 +228,10 @@ RUPEE_CHECKS = [
     "Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 2",
     "Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose",
 ]
+
+SWIFT_BEETLE_CHECKS = [
+    "Lanayru Sand Sea - Rupee Harbor Entrance Crown 1",
+    "Lanayru Sand Sea - Rupee Harbor Entrance Crown 2",
+    "Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 1",
+    "Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 2",
+]

@@ -35,6 +35,7 @@ from .constants import (
     DUNGEON_GOALS,
     POST_GOAL_LOCS,
     RUPEE_CHECKS,
+    SWIFT_BEETLE_CHECKS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -213,7 +214,7 @@ class Logic:
                     self.set_prerandomization_item_location(rupee_check, orig_item)
                 # No Quick Beetle is the only other option
                 else:
-                    if "Sea Pillar" in rupee_check or "Entrance Crown" in rupee_check:
+                    if rupee_check in SWIFT_BEETLE_CHECKS:
                         orig_item = self.item_locations[rupee_check]["original item"]
                         self.set_prerandomization_item_location(rupee_check, orig_item)
 
