@@ -3,6 +3,7 @@
 ## Dev
 ### Options
 - Added bomb throw tricks for Beedle's Shop and Skyview (by NULL)
+- Added option to randomize objects such as tears and light fruits in trials (by cjs07)
 ### Changes
 - Allow calling Fi underwater and without a sword
 - Force english regardless of system language
