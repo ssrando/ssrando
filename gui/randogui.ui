@@ -1153,7 +1153,7 @@
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Shuffle Tiral Objects</string>
+             <string>Shuffle Trial Objects</string>
             </property>
            </widget>
           </item>

@@ -1206,7 +1206,7 @@ class Ui_MainWindow(object):
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
         self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Shuffle Tiral Objects", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Shuffle Trial Objects", None))
         self.groupBox_9.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
