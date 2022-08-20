@@ -153,6 +153,27 @@ nop
 li r3, 1 ; 1 is english
 blr
 
+; always return true when checking if a treasure/insect was obtained this play session
+.org 0x80252edc
+li r3, 1
+
+; optimize some code around separating textfileindex from entrypoint
+; to then temporarily backup the current textfileindex
+; this fixes potential crashes when initiating a conversation while a Npc updates for the first time
+.org 0x800c41f8
+mullw r5, r4, r5
+subf r5, r5, r28
+rlwinm r5, r5, 0, 0x10, 0x1F
+lwz r6, GLOBAL_MESSAGE_RELATED_CONTEXT@sda21(r13)
+lwz r28, 0x2f8(r6) ; currentTextFileNumber
+b 0x800c4220 ; skip stuff we don't need anymore
+
+; restore the backed up text file number
+; the destructor here does nothing so we can overwrite it
+.org 0x800c4240
+lwz r6, GLOBAL_MESSAGE_RELATED_CONTEXT@sda21(r13)
+stw r28, 0x2f8(r6) ; currentTextFileNumber
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

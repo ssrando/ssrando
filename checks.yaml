@@ -38,11 +38,16 @@ Knight Academy - Chest near Goddess Statue:
   type: skyloft, miscellaneous
   Paths:
     - stage/F000/r0/l0/TBox/71
-Knight Academy - Chest in Goddess Statue:
+Knight Academy - First Chest in Goddess Statue:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
     - stage/F008r/r0/l0/TBox/95
+Knight Academy - Second Chest in Goddess Statue:
+  original item: Emerald Tablet
+  type: skyloft, miscellaneous
+  Paths:
+    - stage/F008r/r0/l0/TBox/94
 Central Skyloft - Bazaar Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, sand sea goddess
@@ -142,6 +147,7 @@ Knight Academy - Fledge's Crystals:
   Paths:
     - event/115-Town2/325
     - oarc/F001r/l0
+  text: <r<lending strength to a friend>> yields
 Skyloft Village - Bertie's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, fetch, crystal quest
@@ -450,6 +456,7 @@ Sky - Dodoh's Crystals:
   Paths:
     - event/110-DivingGame/60
     - oarc/F020/l0
+  text: delivering a <r<colorful wheel>> is rewarded with
 Sky - Fun Fun Island Minigame - 500 Rupees:
   original item: Heart Piece
   type: sky, lanayru, minigame, long, scrapper
@@ -467,11 +474,11 @@ Sky - Orielle's Crystals:
     - oarc/F020/l0
 Sky - Kina's Crystals:
   original item: Gratitude Crystal Pack
-  type: sky, eldin, scrapper, minigame, long, crystal quest
+  type: sky, eldin, scrapper, long, crystal quest
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
-  hint: always
+  hint: sometimes
   text: <r<delivering a mogma to the sky>> is rewarded with
 Sky - Beedle's Crystals:
   original item: Gratitude Crystal Pack
@@ -645,10 +652,14 @@ Faron Woods - Chest inside Great Tree:
   type: faron, miscellaneous
   Paths:
     - stage/F100_1/r0/l0/TBox/84
+  hint: sometimes
+  text: the <r<hollow tree>> holds
 
 Lake Floria - Lake Floria Chest:
   original item: Goddess Plume
   type: faron, miscellaneous
+  hint: sometimes
+  text: a <r<lonely chest in the lake>> contains
   Paths:
     - stage/F102/r3/l0/TBox/64
 #Lake Floria - Lake Floria Silver Rupee: # not sure if we want to randomize this
@@ -713,6 +724,8 @@ Eldin Volcano - Digging Spot below Tower:
 Eldin Volcano - Digging Spot behind Boulder on Sandy Slope:
   original item: Key Piece
   type: eldin, bombable, digging
+  hint: sometimes
+  text: a <r<boulder on a sandy slope>> hides
   Paths:
     - stage/F200/r4/l1/Soil/12
 Eldin Volcano - Digging Spot after Vents:
@@ -739,6 +752,7 @@ Mogma Turf - Chest behind Bombable Wall at Entrance:
 Mogma Turf - Sand Slide Chest:
   original item: Eldin Ore
   type: eldin, miscellaneous
+  text: <r<behind>> a slide mogmas buried
   Paths:
     - stage/F210/r0/l0/TBox/68
 Mogma Turf - Digging Mitts Fight:
@@ -818,6 +832,8 @@ Lanayru Desert - Hook Beetle Fight:
 Lanayru Desert - Secret Passageway Chest:
   original item: Heart Piece
   type: lanayru, bombable
+  hint: sometimes
+  text: a <r<secret passage in the desert>> holds
   Paths:
     - stage/F300/r0/l0/TBox/74
 Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on raising LMF
@@ -856,11 +872,14 @@ Lanayru Desert - Lightning Node - Second Chest:
 Lanayru Desert - Lightning Node - Raised Chest near Generator:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
+  text: a <r<raised chest in the Lightning Node>> contains
   Paths:
     - stage/F300_2/r0/l0/TBox/77
 Lanayru Desert - Fire Node - Shortcut Chest:
   original item: Rare Treasure # TODO check again
   type: lanayru, mini dungeon
+  hint: sometimes
+  text: a <r<raised chest in the Fire Node>> holds
   Paths:
     - stage/F300_3/r0/l0/TBox/79
 Lanayru Desert - Fire Node - First Small Chest:
@@ -952,6 +971,8 @@ Skyview - Chest on Tree Branch:
 Skyview - Digging Spot in Crawlspace:
   original item: SV Small Key
   type: faron, dungeon, digging
+  hints: sometimes
+  text: in a <r<temple in the forest>> a mogma <r<buried>>
   Paths:
     - stage/D100/r4/l0/Soil/15
 Skyview - Chest behind Two Eyes:
@@ -1023,6 +1044,8 @@ Earth Temple - Chest Left of Main Room Bridge:
 Earth Temple - Chest in West Room:
   original item: ET Map
   type: eldin, dungeon
+  hint: sometimes
+  text: the <r<western wing in the Earth Temple>> holds
   Paths:
     - stage/D200/r0/l0/TBox/64
 Earth Temple - Bomb Bag:
@@ -1108,6 +1131,7 @@ Lanayru Mining Facility - Chest in Spike Maze:
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r7/l0/TBox/73
+    - stage/D300/r7/l0/TBox/73
 Lanayru Mining Facility - Boss Key Chest:
   original item: LMF Boss Key
   type: lanayru, dungeon
@@ -1138,6 +1162,8 @@ Lanayru Mining Facility - Goddess Harp:
 Ancient Cistern - Chest in East Part:
   original item: AC Small Key
   type: faron, dungeon
+  hint: sometimes
+  text: the <r<lone east chest in the Ancient Cistern>> contains
   Paths:
     - stage/D101/r1/l0/TBox/67
 Ancient Cistern - Whip:
@@ -1235,6 +1261,8 @@ Sandship - Treasure Room Fifth Chest:
 Sandship - Robot in Brig's Reward:
   original item: SS Small Key
   type: lanayru, dungeon
+  hint: sometimes
+  text: the <r<gratitude of a freed captain>> reveals
   Paths:
     - event/401-DesertD2/14
     - oarc/D301/l4
@@ -1272,6 +1300,7 @@ Fire Sanctuary - Chest in Second Room:
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r1/l0/TBox/74
+    - stage/D201/r1/l0/TBox/74
 Fire Sanctuary - Chest near First Trapped Mogma:
   original item: FS Small Key
   type: eldin, dungeon

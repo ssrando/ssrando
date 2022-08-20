@@ -34,10 +34,27 @@
     - Junk
     - Random
     - Sometimes
+    - Goal (by YourAverageLink)
+      - Goal hints are a new hint type that may be specified in a hint distribution. They act similar to SotS hints, but they specify a required dungeon boss locked by an item in that region
+        - Example: Gust Bellows on Sparring Hall Chest with LMF as a required dungeon = Knight Academy is on the path to Molderach
+      - At the moment, goal hints are not compatible with the separate cube sots; they will be hinted like normal goal hints
+      - Goal hints inherit the dungeon sots limit and use the same limit.
+        - Example: If one goal hint is placed for a dungeon, the sots dungeon limit is 2, and goal hints are ordered before sots in the distribution, only up to one dungeon sots hint may be placed.
+      - The fixed count specified in a hint distribution is multiplied by the required dungeon count. For example, a fixed of 1 and 3 required dungeons means 3 goal hints will be placed
+      - The order of dungeon boss goals for goal hints is randomized once at the start, and then chosen in sequence to try to ensure one exists for each goal, if possible.
+        - Example: If there are 3 required dungeons and 1 fixed goal hint (3 after multiplication by dungeon count, with 0 weight), there will be one goal hint for each of the three goals.
+        - Exception: If there are no applicable goal-satisfying items left for a goal (can happen if already always/sometimes hinted, or with low-requirement dungeons like Skyview), the hint will be placed for the next goal in the chain (potentially causing a second goal hint for one of the goals)
     - Some of these hint types existed in prior versions, but users had no control over them
 - Changed item hints, that point to a specific location, to use the same hint format as location hints
+- Temple of Time is always in post LMF finish state
+- Beating Skyview (even if it's in a different dungeon) rescues Machi
+- Beating Ancient Cistern (even if it's in a different dungeon) removes the void in the Great Tree
+- Added "Main Node" option to Open LMF (by YourAverageLink)
+  - When enabled, the fire, water, and lightning nodes will start out as active, but the player still needs to activate the main node (which requires an explosive to reveal the timeshift stone) to raise LMF.
+- Barren areas are now less likely to receive random location hints
 ### Bugfixes
 - always copy layer 0, this fixes various bugs, where changes from previous randomizations were not reverted
+- fix gorko sometimes asking to draw bombs even when you don't have them
 
 ## 1.2.0
 ### Options

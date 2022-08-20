@@ -16,6 +16,7 @@ from .item_types import (
     DUPLICATABLE_CONSUMABLE_ITEMS,
     DUNGEON_PROGRESS_ITEMS,
     DUNGEON_NONPROGRESS_ITEMS,
+    KEY_PIECES,
     SMALL_KEYS,
     BOSS_KEYS,
 )
@@ -31,6 +32,8 @@ from .constants import (
     ENTRANCE_CONNECTIONS,
     ALL_TYPES,
     STARTING_SWORD_COUNT,
+    DUNGEON_GOALS,
+    POST_GOAL_LOCS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -94,12 +97,6 @@ class Logic:
         self.starting_items = self.randomize_starting_items()
 
         self.race_mode_banned_locations = []
-        if (
-            self.rando.options["skip-skykeep"]
-            and self.entrance_connections["Dungeon Entrance in Lanayru Desert"]
-            == "Sky Keep"
-        ):
-            self.racemode_ban_location("Knight Academy - Fledge's Crystals")
         if self.rando.options["empty-unrequired-dungeons"]:
             for location_name in self.item_locations:
                 zone, _ = Logic.split_location_name_by_zone(location_name)
@@ -107,11 +104,6 @@ class Logic:
                     self.race_mode_banned_locations.append(location_name)
 
             # checks outside locations that require dungeons:
-            if (
-                self.entrance_connections["Dungeon Entrance in Lanayru Desert"]
-                in self.unrequired_dungeons
-            ):
-                self.racemode_ban_location("Knight Academy - Fledge's Crystals")
             if "Skyview" in self.unrequired_dungeons:
                 self.racemode_ban_location(
                     "Sky - Lumpy Pumpkin - Goddess Chest on the Roof"
@@ -136,14 +128,14 @@ class Logic:
             self.racemode_ban_location("Sky Keep - First Chest")
             self.racemode_ban_location("Sky Keep - Chest after Dreadfuse")
 
-        self.locations_by_zone_name = OrderedDict()
-        for location_name in self.item_locations:
+        self.prog_locations_by_zone_name = defaultdict(list)
+        for location_name in self.filter_locations_for_progression(
+            self.item_locations.keys()
+        ):
             zone_name, specific_location_name = self.split_location_name_by_zone(
                 location_name
             )
-            if zone_name not in self.locations_by_zone_name:
-                self.locations_by_zone_name[zone_name] = []
-            self.locations_by_zone_name[zone_name].append(location_name)
+            self.prog_locations_by_zone_name[zone_name].append(location_name)
 
         self.remaining_item_locations = list(self.item_locations.keys())
         self.prerandomization_item_locations = OrderedDict()
@@ -178,6 +170,10 @@ class Logic:
         self.all_progress_items += DUNGEON_PROGRESS_ITEMS
         if self.rando.options["map-mode"] != "Removed":
             self.all_nonprogress_items += DUNGEON_NONPROGRESS_ITEMS
+
+        # remove key pieces if open ET is on
+        if not self.rando.options["open-et"]:
+            self.all_progress_items += KEY_PIECES
 
         all_item_names = []
         all_item_names += self.all_progress_items
@@ -792,10 +788,6 @@ class Logic:
             zone_access_macro_name = "Can Access " + zone_name
             entrance_access_macro_name = "Can Access " + entrance_name
             self.set_macro(zone_access_macro_name, entrance_access_macro_name)
-            # dungeon finishes
-            zone_beat_macro_name = "Can Beat " + zone_name
-            entrance_beat_macro_name = "Can Beat " + entrance_name
-            self.set_macro(entrance_beat_macro_name, zone_beat_macro_name)
 
     def update_trial_rando_macros(self):
         for trial_gate, trial in self.trial_connections.items():
@@ -1441,20 +1433,33 @@ class Logic:
             if not new_location_checked:
                 return False
 
-    def get_sots_locations(self):
+    def get_sots_goal_locations(self):
         # locations, which can not be logically skipped
         # this doesn't mean that collecting these items is enough,
         # it doesn't include interchangeable items, like the first progressive upgrade
         # (for example, if one mitts upgrade is required, but both are reachable, they are both not included)
+        # also calculates which locations are on the path for each required dungeon goal
 
         sots_items = {}
+        goal_items = self.get_goals()
+
         # check for every progress item, if it's hard required
         for loc in self.item_locations:
             item = self.done_item_locations[loc]
             if item in self.all_progress_items:
                 if not self.can_finish_without_locations([loc]):
                     sots_items[loc] = item
-        return sots_items
+                    for goal in goal_items.keys():
+                        # if it is impossible to reach the heart container of a dungeon without a location, it is on the path to that boss
+                        if not self.can_reach_restricted(
+                            [loc], self.macros[POST_GOAL_LOCS[goal]]
+                        ):
+                            goal_items[goal][loc] = item
+
+        return sots_items, goal_items
+
+    def get_goals(self):
+        return dict({DUNGEON_GOALS[dungeon]: {} for dungeon in self.required_dungeons})
 
     def get_barren_regions(self):
         region_is_barren = {}
@@ -1478,18 +1483,32 @@ class Logic:
         nonprogress = []
         for (region, is_barren) in region_is_barren.items():
             if is_barren:
-                if (
-                    len(
-                        self.filter_locations_for_progression(
-                            self.locations_by_zone_name[region]
-                        )
-                    )
-                    > 0
-                ):
+                if len(self.prog_locations_by_zone_name[region]) > 0:
                     barren.append(region)
                 else:
                     nonprogress.append(region)
         return barren, nonprogress
+
+    def is_restricted_placement_item(self, item):
+        if item.endswith("Small Key"):
+            if self.rando.options["small-key-mode"] not in [
+                "Anywhere",
+                "Lanayru Caves Key Only",
+            ]:
+
+                return True
+            elif self.rando.options["small-key-mode"] == "Lanayru Caves Key Only":
+                if item != "LanayruCaves Small Key":
+                    return True
+
+        if item.endswith("Boss Key"):
+            if self.rando.options["boss-key-mode"] not in ["Anywhere"]:
+                return True
+
+        if item.endswith("Map"):
+            if self.rando.options["map-mode"] != "Anywhere":
+                return True
+        return False
 
     def calculate_playthrough_progression_spheres(self):
         remaining_locations = set(self.item_locations.keys())

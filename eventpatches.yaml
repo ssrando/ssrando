@@ -665,7 +665,7 @@
     type: flowpatch
     index: 103
     flow:
-      param2: 914
+      param2: 8 # raised LMF
 107-Kanban:
   - name: Knight Academy Billboard skip condition
     type: flowpatch
@@ -1079,6 +1079,26 @@
     cases:
       - 208
       - 216
+  - name: New Kina Text Option
+    type: textadd
+    text: "Hey, kid, what do you need from me?\n[1]Plowing the fields?[2]Carrying pumpkins![3-]Nothing."
+  - name: Kina Quest Switch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 0
+    cases:
+      - 96 # mogma quest switch
+      - 200 # pumpkin carrying
+      - -1 # nothing
+  - name: Show Kina Option
+    type: flowpatch
+    index: 605
+    flow:
+      type: type1
+      next: Kina Quest Switch
+      param4: New Kina Text Option
 118-Town3:
   - name: Shorten Sparrot quest start text
     type: flowpatch
@@ -1775,6 +1795,53 @@
     type: textpatch
     index: 25
     text: "Understood, Master <heroname>.\nThank you for taking me on this\njourney with you."
+503-Goron:
+  - name: To Bomb Bag Check I # when you don't have bow
+    type: flowpatch
+    index: 255
+    flow:
+      next: Bomb Bag Check I 1
+  - name: Bomb Bag Check I 1
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 92 # Bomb Bag itemflag
+      param2: 1 # check it's set
+      next: Bomb Bag Check I 2
+      param3: 23 # for checking a itemflag
+  - name: Bomb Bag Check I 2
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # use result from previous chck
+    cases:
+      - 122 # true, continue with bomb as drawing quest
+      - 224  # false, go to random select
+  - name: To Bomb Bag Check II # when you do have bow
+    type: flowpatch
+    index: 259
+    flow:
+      next: Bomb Bag Check II 1
+  - name: Bomb Bag Check II 1
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 92 # Bomb Bag itemflag
+      param2: 1 # check it's set
+      next: Bomb Bag Check II 2
+      param3: 23 # for checking a itemflag
+  - name: Bomb Bag Check II 2
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # use result from previous chck
+    cases:
+      - 116 # true, continue with bomb as drawing quest
+      - 261  # false, go to random select
 599-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch

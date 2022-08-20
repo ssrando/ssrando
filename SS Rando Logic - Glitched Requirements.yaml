@@ -155,6 +155,9 @@ Can Cut Tree:
 Can Unlock Combination Lock:
   Sword | Whip | Clawshots | Bow
 
+Can Hit Timeshiftstone:
+  Can Cut Tree | Whip | Distance Activator
+
 # Can defeat enemy
 
 Can Defeat Bokoblins:
@@ -943,7 +946,10 @@ Knight Academy - Pumpkin Archery - 600 Points:
 Knight Academy - Chest near Goddess Statue:
   Nothing
 
-Knight Academy - Chest in Goddess Statue:
+Knight Academy - First Chest in Goddess Statue:
+  Nothing
+
+Knight Academy - Second Chest in Goddess Statue:
   Nothing
 
 Can Access Dungeon Entrance on Skyloft:
@@ -955,8 +961,8 @@ Central Skyloft - Potion Lady's Gift:
   Nothing
 
 Unlocked Endurance Potion:
-  Can Beat Dungeon Entrance in Lanayru Desert
-  # LMF only for Potion right now, in entrance rando this means beating the dungeon that is inside LMF
+  Can Raise Lanayru Mining Facility | Option "open-lmf" Is "Open"
+  # potion is tied to raising LMF, it's always enabled with open lmf
 
 Central Skyloft - Bazaar Goddess Chest:
   Goddess Cube in Ancient Harbour
@@ -1224,8 +1230,8 @@ Sky - Lumpy Pumpkin Harp Minigame:
   Chandelier Quest Over
 
 Sky - Kina's Crystals:
-  Chandelier Quest Over & Can Access Mogma Turf
-  # Unlocked after Chandelier Quest
+  Chandelier Quest Part 1 & Can Access Mogma Turf
+  # Unlocked after giving Eagus the soup and talking to Pumm to start the Kina pumpkin moving quest
 
 Sky - Lumpy Pumpkin - Outside Goddess Chest:
   Initial Goddess Cube
@@ -1854,8 +1860,7 @@ Can Access Desert Gorge Statue:
   # When using the sword, rush it in the sand to defeat it, drowning in the sand won't make it respawn
 
 Can Access Front of Temple of Time:
-  (Can Access Desert Gorge Statue & (Hook Beetle | Slingshot)) |
-  Can Beat Dungeon Entrance in Lanayru Desert
+  (Can Access Desert Gorge Statue & (Hook Beetle | Slingshot))
   # The Timeshift Stone in the big tree is reachable with a slingshot trickshot
   # Beating the dungeon will make one spawn inside ToT
   # If you already beat the dungeon and forgot to activate the ToT statue, RBM it with scene flag 8x40 "Check Temple of Time Statue"
@@ -1885,13 +1890,14 @@ Can Activate Water Node:
 Can Raise Lanayru Mining Facility:
   (Can Activate Water Node & Can Activate Lightning Node & Can Activate Fire Node & Sword) |
   Option "open-lmf" Is "Open" |
+  (Option "open-lmf" Is "Main Node" & Can Access Second Part of Lanayru Desert & (Bomb Bag | Hook Beetle) & Sword) |
   (Can Access Lanayru Desert & Can RBM 2x40)
+  # TODO: add trick for whipping bomb flower near LMF being sufficient for Main Node only
+  # Need explosive for Main Node LMF so the timeshift stone can be activated
   # Scene Flag 2x40 is "LMF Rises up (+ Main Node is locked)"
 
 Can Access Dungeon Entrance in Lanayru Desert:
   Can Access Second Part of Lanayru Desert & Can Raise Lanayru Mining Facility
-
-# Can Beat Dungeon Entrance in Lanayru Desert:
 
 #   Determined at runtime
 
@@ -2621,7 +2627,7 @@ Fire Sanctuary - Chest on Balcony:
   # Do Pillar Jump, open the door in the middle, do one fronthop, 5 sidehops right, aim so that the door you went in is on the right of the screen, sidehop left
 
 Can Get Past Second Room with Water Pod:
-  Can Access First FS Magmanos Room & Can Defeat Lezalfos & Hook Beetle
+  Can Access First FS Magmanos Room & Can Defeat Lezalfos & (Hook Beetle | (Bomb Bag & Fire Sanctuary - Hook Beetle Skip Trick))
 
 Fire Sanctuary - Chest near First Trapped Mogma:
   Can Get Past Second Room with Water Pod & (Gust Bellows | Clawshots)

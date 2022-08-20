@@ -270,9 +270,10 @@
     - Nodes
     # - Hook Beetle
     - Open
+    - Main Node
   default: Nodes
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
-    Hook Beetle will raise LMF once the Hook Beetle is obtained.
+    Main Node will set the fire, water, and lightning nodes to be active but LMF still needs to be raised from the main node.
   ui: option_open_lmf
 - name: Skip Horde
   command: skip-horde
@@ -362,6 +363,8 @@
   type: multichoice
   choices:
     - Upgrade Hook Beetle
+    - Bomb Throws
+    - Long Range Skyward Strike Jumpslash
     # Skyloft / Sky
     - Waterfall Cave Jump
     - Bomb Bag Beedle
@@ -380,7 +383,6 @@
     - Itemless First Timeshift Stone
     - Lanayru Mines Brakeslide
     - Temple of Time - Slingshot Shot
-    - Temple of Time - Bomb Throw
     - Temple of Time Skip - Brakeslide
     - Secret Passageway Hook Beetle Opening
     - Lightning Node End with Bombs  # Is it worth
@@ -388,7 +390,6 @@
     - Cactus Bomb Whip
     - Skipper's Retreat Fast Clawshots
     # Skyview
-    - Skyview - Bomb Throws
     - Skyview - Spider Roll
     - Skyview Slingshot Shot
     # Earth Temple
@@ -397,7 +398,6 @@
     - Earth Temple - Bomb Flower Scaldera
     # Lanayru Mining Facility
     - LMF - Whip First Room Switch
-    - LMF - Key Locked Room Bomb Throw
     - LMF - Keylocked Slingshot Trickshot
     - LMF - Minecart Jump
     - LMF - Molderach without Gust Bellows
@@ -431,6 +431,7 @@
     - Owlan Crystals without Bombs
     - Ancient Cistern - Lilypad Skip
     - Ancient Cistern - Swordless Cistern Clip
+    - Fire Sanctuary - Hook Beetle Skip
 
   default: []
   help: Enable specific tricks to be considered in logic
@@ -554,7 +555,7 @@
 - name: Hint Distribution
   command: hint-distribution
   type: singlechoice
-  bits: 2
+  bits: 3
   choices:
     - Weak
     - Balanced
@@ -564,6 +565,9 @@
     # - Items Only
     - Junk
     - Co-op S1
+    - S2 - 2D
+    - S2 - 3D
+    - S2 - 3D EUD Off
   default: Balanced
   help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
     as specifics about what additional items and locations can and cannot be hinted

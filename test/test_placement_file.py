@@ -16,7 +16,10 @@ def test_roundtrip():
         rando = Randomizer(opts)
         rando.logic.randomize_items()
         # this belongs to the randomizer
-        rando.sots_locations = rando.logic.get_sots_locations()
+        (
+            rando.sots_locations,
+            rando.goal_locations,
+        ) = rando.logic.get_sots_goal_locations()
         rando.hints.do_hints()
         plcmt_file = rando.get_placement_file()
         round_tripped_file = PlacementFile()
