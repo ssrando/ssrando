@@ -157,6 +157,7 @@ class Logic:
         self.all_nonprogress_items = NONPROGRESS_ITEMS.copy()
         self.all_fixed_consumable_items = CONSUMABLE_ITEMS.copy()
         self.duplicatable_consumable_items = DUPLICATABLE_CONSUMABLE_ITEMS.copy()
+        self.prerandomized_consumable_items = []
 
         rupoor_mode = self.rando.options["rupoor-mode"]
         if rupoor_mode != "Off":
@@ -289,6 +290,21 @@ class Logic:
             for small_key_check in MAP_CHECKS:
                 orig_item = self.item_locations[small_key_check]["original item"]
                 self.set_prerandomization_item_location(small_key_check, orig_item)
+
+        # Add consumable items that were prerandomized if they were replaced (Should only happen in rupoor settings)
+        if rupoor_mode != "Off":
+            for consumable_item in self.prerandomized_consumable_items:
+                consumable_item_cnt = self.prerandomized_consumable_items.count(
+                    consumable_item
+                )
+                fixed_consume_item_cnt = self.unplaced_fixed_consumable_items.count(
+                    consumable_item
+                )
+                if consumable_item_cnt > fixed_consume_item_cnt:
+                    self.unplaced_fixed_consumable_items.remove("Rupoor")
+                    self.unplaced_fixed_consumable_items.append(consumable_item)
+                    self.all_item_names.remove("Rupoor")
+                    self.all_item_names.append(consumable_item)
 
         self.map_banned_locations = []
         if self.rando.options["map-mode"] == "Own Dungeon - Restricted":
@@ -444,6 +460,8 @@ class Logic:
         # print("Setting prerand %s to %s" % (location_name, item_name))
 
         assert location_name in self.item_locations
+        if item_name in CONSUMABLE_ITEMS:
+            self.prerandomized_consumable_items.append(item_name)
         self.prerandomization_item_locations[location_name] = item_name
 
     def get_num_progression_items(self):
