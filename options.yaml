@@ -539,6 +539,18 @@
   default: false
   help: If enabled, item hints will indicate exactly which check the item lies, otherwise, it will just indicate the region.
   ui: option_precise_item
+- name: Shuffle Trial Objects
+  command: shuffle-trial-objects
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - Simple
+    - Advanced
+    - Full
+  default: None
+  help: Shuffles trial objects amongst themselves (within the same trial). Simple shuffles only tears and light fruits, advanced adds dusk relic spawn locations, and full adds stamina fruits
+  ui: option_shuffle_trial_objects
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution
