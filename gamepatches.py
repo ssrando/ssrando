@@ -1,7 +1,6 @@
 from pathlib import Path
 import random
 from collections import OrderedDict, defaultdict
-from pprint import pprint
 
 import yaml
 import json
@@ -1944,7 +1943,7 @@ class GamePatcher:
                     params.extend([ITEM_PARAM_MAP[item_type]] * len(objlist))
 
             self.rando.rng.shuffle(locs)
-            print(locs)
+            # print(locs)
 
             for ((id, room), (params, actor_name)) in zip(
                 locs,
