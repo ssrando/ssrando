@@ -290,7 +290,7 @@ Beedle - Third 100 Rupee Item: # to make not too much farming at the start neces
   Paths:
     - ShpSmpl/18
 Beedle - 50 Rupee Item:
-  original item: Bug Net
+  original item: Progressive Bug Net
   type: skyloft, beedle, cheap
   Paths:
     - ShpSmpl/25
@@ -625,7 +625,7 @@ Faron Woods - Item on Tree:
   Paths:
     - stage/F100/r0/l0/Item/68
 Faron Woods - Slingshot:
-  original item: Slingshot
+  original item: Progressive Slingshot
   type: faron, long, combat #because of the Lopsa Bokoblin fight, this is a combat reward
   Paths:
     - event/200-Forest/595
@@ -1217,7 +1217,7 @@ Sandship - Chest behind Combination Lock:
   Paths:
     - stage/D301/r10/l0/TBox/69
 Sandship - Bow:
-  original item: Bow
+  original item: Progressive Bow
   type: lanayru, dungeon
   Paths:
     - stage/D301/r15/l0/TBox/72
