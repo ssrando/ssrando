@@ -1,3 +1,4 @@
+import copy
 from pathlib import Path
 import random
 from collections import OrderedDict, defaultdict
@@ -22,7 +23,7 @@ from tboxSubtypes import tboxSubtypes
 from musicrando import music_rando
 
 from logic.logic import Logic
-from logic.constants import SILENT_REALM_CHECKS
+from logic.constants import SILENT_REALM_CHECKS, RUPEE_CHECKS, QUICK_BEETLE_CHECKS
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -1187,13 +1188,21 @@ class GamePatcher:
         self.startitemflags = self.patches["global"]["startitems"]
 
         # patches from randomizing items
+        temp_item_locations = copy.deepcopy(self.placement_file.item_locations)
+        if self.placement_file.options["rupeesanity"] != "All":
+            for rupee_check in RUPEE_CHECKS:
+                if self.rando.options["rupeesanity"] == "Vanilla":
+                    temp_item_locations.pop(rupee_check)
+                elif rupee_check in QUICK_BEETLE_CHECKS:
+                    temp_item_locations.pop(rupee_check)
+
         (
             self.rando_stagepatches,
             self.stageoarcs,
             self.rando_eventpatches,
             self.shoppatches,
         ) = get_patches_from_location_item_list(
-            self.rando.item_locations, self.placement_file.item_locations
+            self.rando.item_locations, temp_item_locations
         )
 
         # assembly patches

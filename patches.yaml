@@ -2702,6 +2702,32 @@ F301_6: # outside Pirate stronghold
     object:
       storyflag: -1
       play_cutscene: -1
+  - name: Removeing Nose Rupee 1
+    type: objdelete
+    layer: 2
+    room: 0
+    objtype: OBJ
+    id: 0xFC46
+  - name: Removeing Nose Rupee 2
+    type: objdelete
+    layer: 2
+    room: 0
+    objtype: OBJ
+    id: 0xFC47
+  - name: Forcing Pillar Rupee 1 on layer 0
+    type: objmove
+    layer: 1
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+    id: 0xFC46
+  - name: Forcing Pillar Rupee 2 on layer 0
+    type: objmove
+    room: 0
+    layer: 1
+    destlayer: 0
+    objtype: OBJ
+    id: 0xFC47
 F301_7: # inside Shipyard
   - name: Text near minecart door
     type: objdelete
