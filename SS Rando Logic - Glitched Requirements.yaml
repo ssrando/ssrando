@@ -1047,7 +1047,7 @@ Central Skyloft - Waterfall Cave First Chest:
 Central Skyloft - Waterfall Cave Second Chest:
   Nothing
 
-Central Skyloft - Waterfall Cave Red Rupees:
+Central Skyloft - Rupee Waterfall Cave Crawlspace:
   Can Enter Waterfall Cave
 
 Central Skyloft - Crystal after Waterfall Cave:
@@ -1460,10 +1460,10 @@ Goddess Cube on East Great Tree with Clawshot Target:
   Can Access Most of Faron Woods & Goddess Sword
 
 #for Checks on Great Tree - Beetle dies from main faron before being able to reach with any beetle
-Faron Woods - Rupee on Great Tree Branch 1:
+Faron Woods - Rupee on Great Tree Branch North:
   Can Access Upper Great Tree & Beetle
 
-Faron Woods - Rupee on Great Tree Branch 2:
+Faron Woods - Rupee on Great Tree Branch West:
   Can Access Upper Great Tree & Beetle
 
 Faron Woods - Rupee on Platform Near Floria Door:
@@ -1536,9 +1536,6 @@ Faron Woods - Chest inside Great Tree:
 Can Access Lake Floria above Rock:
   Can Open Door to Lake Floria & Water Scale
 
-Lake Floria - Lake Floria Silver Rupee: # currently not randomized
-  Can Access Lake Floria above Rock & Water Scale
-
 Can Access Lake Floria Statue:
   Can Access Lake Floria above Rock |
   (Can Access Floria Waterfall & Water Scale) |
@@ -1558,16 +1555,16 @@ Can Access Dungeon Entrance in Lake Floria:
 Lake Floria - Lake Floria Chest:
   Can Access Lake Floria Statue
 
-Lake Floria - Rupee Under Boulder:
+Lake Floria - Rupee Under Big Boulder:
   Can Access Lake Floria above Rock & Water Scale
 
-Lake Floria - Rupee Behind Boulder 1:
+Lake Floria - Rupee Behind Northeast Boulder Right:
   Can Access Lake Floria above Rock & Water Scale
 
-Lake Floria - Rupee Behind Boulder 2:
+Lake Floria - Rupee Behind Northeast Boulder Left:
   Can Access Lake Floria above Rock & Water Scale
 
-Lake Floria - Rupee Behind Boulder 3:
+Lake Floria - Rupee Behind Southeast Boulder:
   Can Access Lake Floria above Rock & Water Scale
 
 Goddess Cube in Lake Floria:
@@ -1579,16 +1576,13 @@ Lake Floria - Dragon Lair East Chest:
 Lake Floria - Dragon Lair South Chest:
   Can Access Floria Waterfall & Water Scale
 
-Lake Floria - Outside AC: # currently not randomized
-  Can Access Floria Waterfall & Beetle
-
 Goddess Cube in Floria Waterfall:
   Can Access Floria Waterfall & Clawshots & Goddess Sword
 
 Lake Floria - Gossip Stone outside Ancient Cistern:
   Can Access Floria Waterfall
 
-Lake Floria - Rupee Outside AC:
+Lake Floria - Rupee High Ledge Outside Cistern Entrance:
   Can Access Floria Waterfall & Beetle
 
 #Flooded Faron Woods - Water Dragon's Reward:
@@ -1610,7 +1604,7 @@ Can Access First Part of Eldin:
 Goddess Cube at Eldin Entrance:
   Can Access First Part of Eldin & Goddess Sword
 
-Eldin Volcano - Rupee by First Mogma Interaction:
+Eldin Volcano - Rupee Ledge before First Room:
   Can Access First Part of Eldin
 
 Eldin Volcano - Chest behind Bombable Wall in First Room:
@@ -1628,10 +1622,10 @@ Eldin Volcano - Chest after Crawlspace:
 Goddess Cube near Mogma Turf Entrance:
   Can Access First Part of Eldin & Goddess Sword
 
-Eldin Volcano - Rupee above Mogma Turf Entrance 1:
+Eldin Volcano - Rupee above Mogma Turf Entrance North:
   Can Access First Part of Eldin & Beetle
 
-Eldin Volcano - Rupee above Mogma Turf Entrance 2:
+Eldin Volcano - Rupee above Mogma Turf Entrance Southeast:
   Can Access First Part of Eldin & Beetle
 
 Eldin Volcano - Chest behind Bombable Wall near Cliff:
@@ -1656,10 +1650,10 @@ Eldin Silent Realm - Fireshield Earrings:
 Eldin Volcano - Chest behind Bombable Wall near Volcano Ascent:
   Can Access Second Part of Eldin
 
-Eldin Volcano - Rupee Left of First Slope 1:
+Eldin Volcano - Rupee Bombable Wall First Slope Right:
   Can Access Second Part of Eldin
 
-Eldin Volcano - Rupee Left of First Slope 2:
+Eldin Volcano - Rupee Bombable Wall First Slope Left:
   Can Access Second Part of Eldin
 
 Can Play Thrill Digger:
@@ -2063,10 +2057,10 @@ Can Access Sand Sea:
 Lanayru Sand Sea - Rupee Harbor First Pillar:
   Can Access Sand Sea & Beetle
 
-Lanayru Sand Sea - Rupee Harbor Entrance Crown 1:
+Lanayru Sand Sea - Rupee Harbor Entrance Crown Right:
   Can Access Sand Sea & Quick Beetle
 
-Lanayru Sand Sea - Rupee Harbor Entrance Crown 2:
+Lanayru Sand Sea - Rupee Harbor Entrance Crown Left:
   Can Access Sand Sea & Quick Beetle
 
 Goddess Cube in Ancient Harbour:
@@ -2115,10 +2109,10 @@ Sand Sea - Gossip Stone in Shipyard:
 
 # Pirate Stronghold
 
-Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 1:
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar East:
   Can Access Sand Sea & Quick Beetle
 
-Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 2:
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar West:
   Can Access Sand Sea & Quick Beetle
 
 Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose:
@@ -2557,19 +2551,19 @@ Ancient Cistern - Chest in East Part:
   Can Unlock Combination Lock
   # Lilypad Skip is very difficult
 
-Ancient Cistern - East Room Rupee 1:
+Ancient Cistern - Rupee East Room Main Path:
   Ancient Cistern - Chest in East Part & Water Scale
 
-Ancient Cistern - East Room Rupee 2:
+Ancient Cistern - Rupee East Room Cubby:
   Ancient Cistern - Chest in East Part & Water Scale
 
-Ancient Cistern - East Room Short Tunnel Rupee 1:
+Ancient Cistern - Rupee East Room Short Tunnel 1:
   Ancient Cistern - Chest in East Part & Water Scale
 
-Ancient Cistern - East Room Short Tunnel Rupee 2:
+Ancient Cistern - Rupee East Room Short Tunnel 2:
   Ancient Cistern - Chest in East Part & Water Scale
 
-Ancient Cistern - East Room Short Tunnel Rupee 3:
+Ancient Cistern - Rupee East Room Short Tunnel 3:
   Ancient Cistern - Chest in East Part & Water Scale
 
 # Can Be Locked Out Of If activating the water jet thing under the lilypad before collecting the item

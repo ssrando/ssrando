@@ -33,7 +33,7 @@ Central Skyloft - Waterfall Cave Second Chest:
   type: skyloft, miscellaneous
   Paths:
     - stage/D000/r0/l0/TBox/68
-Central Skyloft - Waterfall Cave Red Rupees:
+Central Skyloft - Rupee Waterfall Cave Crawlspace:
   original item: Red Rupee
   type: skyloft, freestanding
   Paths:
@@ -659,12 +659,12 @@ Faron Woods - Chest inside Great Tree:
     - stage/F100_1/r0/l0/TBox/84
   hint: sometimes
   text: the <r<hollow tree>> holds
-Faron Woods - Rupee on Great Tree Branch 1:
+Faron Woods - Rupee on Great Tree Branch North:
   original item: Blue Rupee
   type: faron, freestanding
   Paths:
     - stage/F100/r0/l0/Item/43
-Faron Woods - Rupee on Great Tree Branch 2:
+Faron Woods - Rupee on Great Tree Branch West:
   original item: Blue Rupee
   type: faron, freestanding
   Paths:
@@ -702,30 +702,30 @@ Lake Floria - Dragon Lair South Chest:
   type: faron, miscellaneous
   Paths:
     - stage/F102_2/r0/l0/TBox/84
-Lake Floria - Rupee Under Boulder:
+Lake Floria - Rupee Under Big Boulder:
  original item: Silver Rupee
  type: faron, freestanding
  Paths:
   - stage/F102/r2/l0/Item/60
 
-Lake Floria - Rupee Behind Boulder 1:
+Lake Floria - Rupee Behind Northeast Boulder Right:
  original item: Red Rupee
  type: faron, freestanding
  Paths:
   - stage/F102/r2/l0/Item/61
 
-Lake Floria - Rupee Behind Boulder 2:
+Lake Floria - Rupee Behind Northeast Boulder Left:
  original item: Red Rupee
  type: faron, freestanding
  Paths:
   - stage/F102/r2/l0/Item/62
 
-Lake Floria - Rupee Behind Boulder 3:
+Lake Floria - Rupee Behind Southeast Boulder:
  original item: Blue Rupee
  type: faron, freestanding
  Paths:
   - stage/F102/r2/l0/Item/63
-Lake Floria - Rupee Outside AC:
+Lake Floria - Rupee High Ledge Outside Cistern Entrance:
   original item: Gold Rupee
   type: faron, freestanding
   Paths:
@@ -758,7 +758,7 @@ Eldin Volcano - Chest behind Bombable Wall near Volcano Ascent:
   Paths:
     - stage/F200/r2/l0/TBox/71
 
-Eldin Volcano - Rupee by First Mogma Interaction:
+Eldin Volcano - Rupee Ledge before First Room:
   original item: Red Rupee
   type: eldin, freestanding
   Paths:
@@ -766,37 +766,37 @@ Eldin Volcano - Rupee by First Mogma Interaction:
 
 Eldin Volcano - Rupee behind Bombable Wall in First Room:
   original item: Blue Rupee
-  type: eldin, freestanding
+  type: eldin, freestanding, bombable
   Paths:
     - stage/F200/r1/l0/Item/13
 
 Eldin Volcano - Rupee in Crawlspace in First Room:
   original item: Blue Rupee
-  type: eldin, freestanding
+  type: eldin, freestanding, bombable
   Paths:
     - stage/F200/r1/l0/Item/19
 
-Eldin Volcano - Rupee above Mogma Turf Entrance 1:
+Eldin Volcano - Rupee above Mogma Turf Entrance Southeast:
   original item: Blue Rupee
   type: eldin, freestanding
   Paths:
     - stage/F200/r2/l0/Item/125
 
-Eldin Volcano - Rupee above Mogma Turf Entrance 2:
+Eldin Volcano - Rupee above Mogma Turf Entrance North:
   original item: Red Rupee
   type: eldin, freestanding
   Paths:
     - stage/F200/r2/l0/Item/123
 
-Eldin Volcano - Rupee Left of First Slope 1:
+Eldin Volcano - Rupee Bombable Wall First Slope Left:
   original item: Red Rupee
-  type: eldin, freestanding
+  type: eldin, freestanding, bombable
   Paths:
     - stage/F200/r4/l0/Item/45
 
-Eldin Volcano - Rupee Left of First Slope 2:
+Eldin Volcano - Rupee Bombable Wall First Slope Right:
   original item: Red Rupee
-  type: eldin, freestanding
+  type: eldin, freestanding, bombable
   Paths:
     - stage/F200/r4/l0/Item/11
 
@@ -1012,13 +1012,13 @@ Lanayru Sand Sea - Rupee Harbor First Pillar:
   Paths:
     - stage/F301/r0/l0/Item/92
 
-Lanayru Sand Sea - Rupee Harbor Entrance Crown 1:
+Lanayru Sand Sea - Rupee Harbor Entrance Crown Left:
   original item: Silver Rupee
   type: lanayru, freestanding
   Paths:
     - stage/F301/r0/l0/Item/91
 
-Lanayru Sand Sea - Rupee Harbor Entrance Crown 2:
+Lanayru Sand Sea - Rupee Harbor Entrance Crown Right:
   original item: Silver Rupee
   type: lanayru, freestanding
   Paths:
@@ -1070,13 +1070,13 @@ Lanayru Sand Sea - Pirate Stronghold - Third Chest:
   Paths:
     - stage/F301_2/r6/l0/TBox/74
 
-Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 1:
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar West:
   original item: Silver Rupee
   type: lanayru, freestanding
   Paths:
     - stage/F301_6/r0/l0/Item/11
 
-Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 2:
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar East:
   original item: Silver Rupee
   type: lanayru, freestanding
   Paths:
@@ -1213,7 +1213,7 @@ Earth Temple - Ledd's Gift:
     - oarc/D200/l0
 Earth Temple - Rupee in Lava Tunnel:
   original item: Silver Rupee
-  type: eldin, dungeon, freestanding
+  type: eldin, dungeon, freestanding, bombable
   Paths:
     - stage/D200/r2/l0/Item/21
 Earth Temple - Chest Guarded by Lizalfos:
@@ -1323,27 +1323,27 @@ Ancient Cistern - Chest in East Part:
   text: the <r<lone east chest in the Ancient Cistern>> contains
   Paths:
     - stage/D101/r1/l0/TBox/67
-Ancient Cistern - East Room Rupee 1:
+Ancient Cistern - Rupee East Room Main Path:
   original item: Red Rupee
   type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r2/l0/Item/34
-Ancient Cistern - East Room Rupee 2:
+Ancient Cistern - Rupee East Room Cubby:
   original item: Red Rupee
   type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r2/l0/Item/68
-Ancient Cistern - East Room Short Tunnel Rupee 1:
+Ancient Cistern - Rupee East Room Short Tunnel 3:
   original item: Green Rupee
   type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r2/l0/Item/65
-Ancient Cistern - East Room Short Tunnel Rupee 2:
+Ancient Cistern - Rupee East Room Short Tunnel 2:
   original item: Green Rupee
   type: faron, dungeon, freestanding
   Paths:
     - stage/D101/r2/l0/Item/66
-Ancient Cistern - East Room Short Tunnel Rupee 3:
+Ancient Cistern - Rupee East Room Short Tunnel 1:
   original item: Green Rupee
   type: faron, dungeon, freestanding
   Paths:

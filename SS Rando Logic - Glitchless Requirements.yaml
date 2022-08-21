@@ -367,7 +367,7 @@ Central Skyloft - Waterfall Cave First Chest:
 Central Skyloft - Waterfall Cave Second Chest:
   Can Enter Waterfall Cave
 
-Central Skyloft - Waterfall Cave Red Rupees:
+Central Skyloft - Rupee Waterfall Cave Crawlspace:
   Can Enter Waterfall Cave
   
 Central Skyloft - Crystal after Waterfall Cave:
@@ -782,10 +782,10 @@ Goddess Cube on East Great Tree with Clawshot Target:
   Goddess Sword
 
 #for Checks on Great Tree - Beetle dies from main faron before being able to reach with any beetle
-Faron Woods - Rupee on Great Tree Branch 1:
+Faron Woods - Rupee on Great Tree Branch North:
   Can Access Upper Great Tree & Beetle
 
-Faron Woods - Rupee on Great Tree Branch 2:
+Faron Woods - Rupee on Great Tree Branch West:
   Can Access Upper Great Tree & Beetle
 
 Faron Woods - Rupee on Platform Near Floria Door:
@@ -880,16 +880,16 @@ Lake Floria - Lake Floria Chest:
 Goddess Cube in Lake Floria:
   Can Access Lake Floria Statue & Goddess Sword
 
-Lake Floria - Rupee Under Boulder:
+Lake Floria - Rupee Under Big Boulder:
   Can Access Lake Floria above Rock & Water Scale
 
-Lake Floria - Rupee Behind Boulder 1:
+Lake Floria - Rupee Behind Northeast Boulder Right:
   Can Access Lake Floria above Rock & Water Scale
 
-Lake Floria - Rupee Behind Boulder 2:
+Lake Floria - Rupee Behind Northeast Boulder Left:
   Can Access Lake Floria above Rock & Water Scale
 
-Lake Floria - Rupee Behind Boulder 3:
+Lake Floria - Rupee Behind Southeast Boulder:
   Can Access Lake Floria above Rock & Water Scale
 
 Lake Floria - Dragon Lair East Chest:
@@ -904,7 +904,7 @@ Goddess Cube in Floria Waterfall:
 Lake Floria - Gossip Stone outside Ancient Cistern:
   Can Access Floria Waterfall
 
-Lake Floria - Rupee Outside AC:
+Lake Floria - Rupee High Ledge Outside Cistern Entrance:
   Can Access Floria Waterfall & Beetle
 
 #Flooded Faron Woods - Water Dragon's Reward:
@@ -926,7 +926,7 @@ Can Access First Part of Eldin:
 Goddess Cube at Eldin Entrance:
   Can Access First Part of Eldin & Goddess Sword
 
-Eldin Volcano - Rupee by First Mogma Interaction:
+Eldin Volcano - Rupee Ledge before First Room:
   Can Access First Part of Eldin
 
 Eldin Volcano - Chest behind Bombable Wall in First Room:
@@ -944,10 +944,10 @@ Eldin Volcano - Chest after Crawlspace:
 Goddess Cube near Mogma Turf Entrance:
   Can Access First Part of Eldin & Goddess Sword
 
-Eldin Volcano - Rupee above Mogma Turf Entrance 1:
+Eldin Volcano - Rupee above Mogma Turf Entrance North:
   Can Access First Part of Eldin & Beetle
 
-Eldin Volcano - Rupee above Mogma Turf Entrance 2:
+Eldin Volcano - Rupee above Mogma Turf Entrance Southeast:
   Can Access First Part of Eldin & Beetle
 
 Eldin Volcano - Chest behind Bombable Wall near Cliff:
@@ -972,10 +972,10 @@ Eldin Silent Realm - Fireshield Earrings:
 Eldin Volcano - Chest behind Bombable Wall near Volcano Ascent:
   Can Access Second Part of Eldin
 
-Eldin Volcano - Rupee Left of First Slope 1:
+Eldin Volcano - Rupee Bombable Wall First Slope Right:
   Can Access Second Part of Eldin
 
-Eldin Volcano - Rupee Left of First Slope 2:
+Eldin Volcano - Rupee Bombable Wall First Slope Left:
   Can Access Second Part of Eldin
 
 Can Play Thrill Digger:
@@ -1412,10 +1412,10 @@ Goddess Cube in Ancient Harbour:
 Lanayru Sand Sea - Rupee Harbor First Pillar:
   Can Access Sand Sea & Beetle
 
-Lanayru Sand Sea - Rupee Harbor Entrance Crown 1:
+Lanayru Sand Sea - Rupee Harbor Entrance Crown Right:
   Can Access Sand Sea & Quick Beetle
 
-Lanayru Sand Sea - Rupee Harbor Entrance Crown 2:
+Lanayru Sand Sea - Rupee Harbor Entrance Crown Left:
   Can Access Sand Sea & Quick Beetle
 
 
@@ -1479,10 +1479,10 @@ Goddess Cube in Pirate Stronghold:
   Can Access Sand Sea & Can Defeat Beamos & Can Defeat Armos & Goddess Sword
   # Technically this is possible without beating a Beamos but it's hard
 
-Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 1:
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar East:
   Can Access Sand Sea & Quick Beetle
 
-Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar 2:
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar West:
   Can Access Sand Sea & Quick Beetle
 
 Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose:
@@ -1909,20 +1909,20 @@ Ancient Cistern - Chest in East Part:
   Can Access Ancient Cistern & Water Scale & Can Unlock Combination Lock
   # Lilypad Skip is very difficult
 
-Ancient Cistern - East Room Rupee 1:
-  Ancient Cistern - Chest in East Part
+Ancient Cistern - Rupee East Room Main Path:
+  Ancient Cistern - Chest in East Part & Water Scale
 
-Ancient Cistern - East Room Rupee 2:
-  Ancient Cistern - Chest in East Part
+Ancient Cistern - Rupee East Room Cubby:
+  Ancient Cistern - Chest in East Part & Water Scale
 
-Ancient Cistern - East Room Short Tunnel Rupee 1:
-  Ancient Cistern - Chest in East Part
+Ancient Cistern - Rupee East Room Short Tunnel 1:
+  Ancient Cistern - Chest in East Part & Water Scale
 
-Ancient Cistern - East Room Short Tunnel Rupee 2:
-  Ancient Cistern - Chest in East Part
+Ancient Cistern - Rupee East Room Short Tunnel 2:
+  Ancient Cistern - Chest in East Part & Water Scale
 
-Ancient Cistern - East Room Short Tunnel Rupee 3:
-  Ancient Cistern - Chest in East Part
+Ancient Cistern - Rupee East Room Short Tunnel 3:
+  Ancient Cistern - Chest in East Part & Water Scale
 
 Can Clip into AC Whip Room:
   Can Access Ancient Cistern &
