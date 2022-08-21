@@ -550,11 +550,14 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
   Paths:
     - stage/F023/r0/l0/TBox/77
   cube_region: Volcano Summit
-#Thunderhead - Second Goddess Chest on Mogma Mitts Island:
-#  original item: Small Quiver
-#  type: thunderhead, goddess, lanayru goddess TODO: decide if this is a Lanayru or Sand Sea cube
-#  Paths:
-#   - stage/F023/r0/l0/TBox/76
+Thunderhead - Second Goddess Chest on Mogma Mitts Island:
+  original item: Small Quiver
+  type: thunderhead, goddess, sand sea goddess
+  Paths:
+   - stage/F023/r0/l0/TBox/76
+  cube_region: Lanayru Gorge
+  hint: sometimes
+  text: They say that <r<curing an ancient dragon>> is rewarded with
 Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
   original item: Horned Colossus Beetle
   type: thunderhead, minigame
@@ -622,7 +625,6 @@ Sealed Grounds - Zelda's Blessing:
     - oarc/F404/l1
   hint: sometimes
   text: the <r<goddess blesses you>> with
-
 
 Faron Woods - Item on Tree:
   original item: Heart Piece
@@ -1569,22 +1571,22 @@ Fire Sanctuary - Din's Flame:
     - oarc/B201_1/l0
 
 
-#Lanayru Gorge - Boss Rush - 4 Bosses
-#   original item: Heart piece
-#   Paths:
-#    - event/
-#Lanayru Gorge - Boss Rush - 8 Bosses
-#   original item: hylian shield
-#   Paths:
-#    - event/
-#Lanayru Gorge - Life Tree Seedling
-#   original item: Life Tree Seedling
-#   Paths:
-#    - stage/F302.json
-#Lanayru Gorge - Thunder Dragon's Reward
-#   original item: Lanayru Soth part
-#   Paths:
-#    - stage/F302.json
+Lanayru Gorge - Key Check:
+  original item: Red Rupee
+  type: lanayru, freestanding
+  Paths:
+    - stage/F302/r0/l0/Item/9
+Lanayru Gorge - Seedling:
+  original item: Life Tree Seedling
+  type: lanayru, digging
+  Paths:
+    - stage/F302/r0/l0/Soil/30
+Lanayru Gorge - Lanayru Soth:
+  original item: Lanayru Song of the Hero Part
+  type: lanayru
+  Paths:
+    - event/404-DesertF3/give item after Healing Thunderdragon
+    - oarc/F302/l0
 
 
 #Flooded Faron Woods - Water Dragon's Reward

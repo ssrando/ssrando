@@ -1697,6 +1697,37 @@
     index: 17
     flow:
       next: 276
+404-DesertF3:
+  - name: Go to item
+    type: flowpatch
+    index: 139
+    flow:
+      next: give item after Healing Thunderdragon
+  - name: give item after Healing Thunderdragon
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: -1
+      param3: 9
+460-RairyuMinigame:
+  - name: Avoid Boss rush Entry
+    type: entryadd
+    entry:
+      name: "460_70"
+      value: display Thank you text
+  - name: Thunderdragon Thank you text
+    type: textadd
+    text: "Thank you for saving me"
+  - name: display Thank you text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 115
+      param4: Thunderdragon Thank you text
 499-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
