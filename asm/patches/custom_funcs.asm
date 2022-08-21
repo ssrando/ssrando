@@ -486,21 +486,14 @@ blr
 .global select_new_item_column
 select_new_item_column:
 ; r5 is command
-cmplwi r5, 9 ; we only care about command 9 (custom for rerandomizing what item row to buy)
+cmplwi r5, 9 ; we only care about command 9 (custom for advancing what item row to buy)
 bne new_treasure_function_end
 ; get current row
 lwz r3, STORYFLAG_MANAGER@sda21(r13)
 li r4, 0x28C
 bl FlagManager__getFlagOrCounter
-mr r31, r3
-
-random_new_row:
-li r3, 4
-bl cM_rndI
-cmpw r3, r31
-beq random_new_row
-; set new row
-mr r5, r3
+addi r3, r3, 1 ; advance 1 slot
+rlwinm r5,r3,0,30,31 ; only use last 2 bits, there are 4 options
 lwz r3, STORYFLAG_MANAGER@sda21(r13)
 li r4, 0x28C
 bl FlagManager__setFlagOrCounter

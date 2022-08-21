@@ -86,8 +86,7 @@ class Hints:
             [
                 loc
                 for loc in self.logic.item_locations.keys()
-                if "hint" in self.logic.item_locations[loc]
-                and self.logic.item_locations[loc]["hint"] == "always"
+                if self.logic.item_locations[loc].get("hint") == "always"
             ]
         )
         # in shopsanity, we need to hint some beetle shop items
@@ -112,13 +111,7 @@ class Hints:
             ]
         )
         self.dist.start(self.logic, needed_always_hints, needed_sometimes_hints)
-        hints = []
-        i = 0
-        while i < 32:
-            hint = self.dist.next_hint()
-            if hint is not None:
-                hints.append(hint)
-                i += 1
+        hints = self.dist.get_hints(30)
         self._place_hints_for_locations(hints)
 
     def _place_hints_for_locations(self, hints: List[GossipStoneHint]):

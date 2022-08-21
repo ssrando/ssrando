@@ -34,6 +34,8 @@ from .constants import (
     STARTING_SWORD_COUNT,
     DUNGEON_GOALS,
     POST_GOAL_LOCS,
+    RUPEE_CHECKS,
+    QUICK_BEETLE_CHECKS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -127,15 +129,16 @@ class Logic:
         if self.rando.options["skip-skykeep"]:
             self.racemode_ban_location("Sky Keep - First Chest")
             self.racemode_ban_location("Sky Keep - Chest after Dreadfuse")
+            self.racemode_ban_location("Sky Keep - Rupee in Alcove of FS Room")
 
-        self.locations_by_zone_name = OrderedDict()
-        for location_name in self.item_locations:
+        self.prog_locations_by_zone_name = defaultdict(list)
+        for location_name in self.filter_locations_for_progression(
+            self.item_locations.keys()
+        ):
             zone_name, specific_location_name = self.split_location_name_by_zone(
                 location_name
             )
-            if zone_name not in self.locations_by_zone_name:
-                self.locations_by_zone_name[zone_name] = []
-            self.locations_by_zone_name[zone_name].append(location_name)
+            self.prog_locations_by_zone_name[zone_name].append(location_name)
 
         self.remaining_item_locations = list(self.item_locations.keys())
         self.prerandomization_item_locations = OrderedDict()
@@ -154,6 +157,7 @@ class Logic:
         self.all_nonprogress_items = NONPROGRESS_ITEMS.copy()
         self.all_fixed_consumable_items = CONSUMABLE_ITEMS.copy()
         self.duplicatable_consumable_items = DUPLICATABLE_CONSUMABLE_ITEMS.copy()
+        self.prerandomized_consumable_items = []
 
         rupoor_mode = self.rando.options["rupoor-mode"]
         if rupoor_mode != "Off":
@@ -203,6 +207,17 @@ class Logic:
                     self.set_prerandomization_item_location(shop_check, orig_item)
                 else:
                     self.racemode_ban_location(shop_check)
+
+        if self.rando.options["rupeesanity"] != "All":
+            for rupee_check in RUPEE_CHECKS:
+                if self.rando.options["rupeesanity"] == "Vanilla":
+                    orig_item = self.item_locations[rupee_check]["original item"]
+                    self.set_prerandomization_item_location(rupee_check, orig_item)
+                # No Quick Beetle is the only other option
+                else:
+                    if rupee_check in QUICK_BEETLE_CHECKS:
+                        orig_item = self.item_locations[rupee_check]["original item"]
+                        self.set_prerandomization_item_location(rupee_check, orig_item)
 
         swords_left = 6 - STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]
         self.sworded_dungeon_locations = []
@@ -275,6 +290,21 @@ class Logic:
             for small_key_check in MAP_CHECKS:
                 orig_item = self.item_locations[small_key_check]["original item"]
                 self.set_prerandomization_item_location(small_key_check, orig_item)
+
+        # Add consumable items that were prerandomized if they were replaced (Should only happen in rupoor settings)
+        if rupoor_mode != "Off":
+            for consumable_item in self.prerandomized_consumable_items:
+                consumable_item_cnt = self.prerandomized_consumable_items.count(
+                    consumable_item
+                )
+                fixed_consume_item_cnt = self.unplaced_fixed_consumable_items.count(
+                    consumable_item
+                )
+                if consumable_item_cnt > fixed_consume_item_cnt:
+                    self.unplaced_fixed_consumable_items.remove("Rupoor")
+                    self.unplaced_fixed_consumable_items.append(consumable_item)
+                    self.all_item_names.remove("Rupoor")
+                    self.all_item_names.append(consumable_item)
 
         self.map_banned_locations = []
         if self.rando.options["map-mode"] == "Own Dungeon - Restricted":
@@ -430,6 +460,8 @@ class Logic:
         # print("Setting prerand %s to %s" % (location_name, item_name))
 
         assert location_name in self.item_locations
+        if item_name in CONSUMABLE_ITEMS:
+            self.prerandomized_consumable_items.append(item_name)
         self.prerandomization_item_locations[location_name] = item_name
 
     def get_num_progression_items(self):
@@ -661,8 +693,11 @@ class Logic:
                     for loc in inaccessible_undone_item_locations
                     if not loc == location_name
                 ]
-                if not self.check_item_is_useful(
-                    unlocked_prerand_item, temp_inaccessible_undone_item_locations
+                if (
+                    unlocked_prerand_item in CONSUMABLE_ITEMS
+                    or not self.check_item_is_useful(
+                        unlocked_prerand_item, temp_inaccessible_undone_item_locations
+                    )
                 ):
                     # If that item is not useful, don't consider the current item useful for unlocking it.
                     continue
@@ -1483,14 +1518,7 @@ class Logic:
         nonprogress = []
         for (region, is_barren) in region_is_barren.items():
             if is_barren:
-                if (
-                    len(
-                        self.filter_locations_for_progression(
-                            self.locations_by_zone_name[region]
-                        )
-                    )
-                    > 0
-                ):
+                if len(self.prog_locations_by_zone_name[region]) > 0:
                     barren.append(region)
                 else:
                     nonprogress.append(region)
