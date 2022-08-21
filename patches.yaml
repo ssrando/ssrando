@@ -3162,6 +3162,12 @@ F402: # Sealed Temple
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Delete LTF Tree
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 2
+    objtype: OBJ
   - name: SotH start cs
     type: objdelete
     id: 0xFC4F
