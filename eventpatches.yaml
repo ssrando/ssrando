@@ -1232,49 +1232,6 @@
       param3: 9
       param4: 0
       param5: 0
-125-D3:
-  - name: Wisdom Scene Change Entrypoint
-    type: entryadd
-    entry:
-      name: "125_21"
-      value: Wisdom Scene Change
-  - name: Power Scene Change Entrypoint
-    type: entryadd
-    entry:
-      name: "125_22"
-      value: Power Scene Change
-  - name: Courage Scene Change Entrypoint
-    type: entryadd
-    entry:
-      name: "125_23"
-      value: Courage Scene Change
-  - name: Wisdom Scene Change
-    type: flowadd
-    flow:
-      type: type3
-      subType: 1
-      param1: 1
-      param2: 1
-      next: -1
-      param3: 10
-  - name: Power Scene Change
-    type: flowadd
-    flow:
-      type: type3
-      subType: 1
-      param1: 2
-      param2: 1
-      next: -1
-      param3: 10
-  - name: Courage Scene Change
-    type: flowadd
-    flow:
-      type: type3
-      subType: 1
-      param1: 3
-      param2: 1
-      next: -1
-      param3: 10 
 200-Forest:
   - name: give slingshot directly
     type: flowpatch

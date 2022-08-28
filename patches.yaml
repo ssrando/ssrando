@@ -427,61 +427,58 @@ D003_8: # this change is purely to make sure D003_8 gets patched, so a perviousl
     room: 0
     layer: 1
     id: 0xFC20
-    objtype: OBJ
+    objtype: STAG
     object:
-      params1: 0xFFFFFF11 # copied from layer 5; storyflags removed
-      params2: 0xFF1FFFFF
+      params1: 0x3EFFFF01 # scenlink: 1, triggered by scene flag 62
+      params2: 0xFF5FFFFF
       posx: 0
-      posy: 0 # doesn't matter, is triggered anywhere
+      posy: 0
       posz: 0
-      anglex: 0xFF3E
-      angley: 0xFFFF
-      anglez: 12521 # entrypoint 125_21
-      id: 0xFC20
-      name: NpcTke
-      trigscenefid: 62 # triforce of wisdom check collected
-      untrigscenefid: 0xFF
-      untrigstoryfid: 0x7FF
+      sizex: 10000
+      sizey: 10000
+      sizez: 10000
+      anglex: 0xFFFF
+      angley: 0
+      anglez: 0xFFFF
+      name: ScChang
   - name: Scene Change for Power layer
     type: objadd
     room: 0
     layer: 2
     id: 0xFC20
-    objtype: OBJ
+    objtype: STAG
     object:
-      params1: 0xFFFFFF11 # copied from layer 5; storyflags removed
-      params2: 0xFF1FFFFF
+      params1: 0x3DFFFF02 # scenlink: 2, triggered by scene flag 61
+      params2: 0xFF5FFFFF
       posx: 0
-      posy: 0 # doesn't matter, is triggered anywhere
+      posy: 0
       posz: 0
-      anglex: 0xFF3D
-      angley: 0xFFFF
-      anglez: 12522 # entrypoint 125_22
-      id: 0xFC20
-      name: NpcTke
-      trigscenefid: 61 # triforce of power check collected
-      untrigscenefid: 0xFF
-      untrigstoryfid: 0x7FF
+      sizex: 10000
+      sizey: 10000
+      sizez: 10000
+      anglex: 0xFFFF
+      angley: 0
+      anglez: 0xFFFF
+      name: ScChang
   - name: Scene Change for Courage layer
     type: objadd
     room: 0
     layer: 3
     id: 0xFC20
-    objtype: OBJ
+    objtype: STAG
     object:
-      params1: 0xFFFFFF11 # copied from layer 5; storyflags removed
-      params2: 0xFF1FFFFF
+      params1: 0x40FFFF03 # scenlink: 3, triggered by scene flag 64
+      params2: 0xFF5FFFFF
       posx: 0
-      posy: 0 # doesn't matter, is triggered anywhere
+      posy: 0
       posz: 0
-      anglex: 0xFF40
-      angley: 0xFFFF
-      anglez: 12523 # entrypoint 125_23
-      id: 0xFC20
-      name: NpcTke
-      trigscenefid: 64 # triforce of courage check collected
-      untrigscenefid: 0xFF
-      untrigstoryfid: 0x7FF
+      sizex: 10000
+      sizey: 10000
+      sizez: 10000
+      anglex: 0xFFFF
+      angley: 0
+      anglez: 0xFFFF
+      name: ScChang
 F000: # Skyloft
   - name: Trial
     type: oarcadd
