@@ -28,10 +28,8 @@ DUNGEON_NAMES = OrderedDict(
         ("SS", "Sandship"),
         ("FS", "Fire Sanctuary"),
         ("SK", "Sky Keep"),
-        (
-            "Triforce",
-            "Sky Keep",
-        ),  # for the purposes of restricting triforces to sky keep
+        # for the purposes of restricting triforces to sky keep
+        ("Triforce", "Sky Keep"),
         ("LanayruCaves", "Lanayru Caves"),  # "short name" doesn't allow space
     ]
 )
