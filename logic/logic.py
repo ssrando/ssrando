@@ -369,7 +369,10 @@ class Logic:
                 else:
                     unreq_indices.append(index)
 
-            if not self.rando.options["triforce-required"]:
+            if (
+                not self.rando.options["triforce-required"]
+                or self.rando.options["triforce-shuffle"] == "Anywhere"
+            ):
                 unreq_indices.append(dungeons.index("Sky Keep"))
             else:
                 req_indices.append(dungeons.index("Sky Keep"))
