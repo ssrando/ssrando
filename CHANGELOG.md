@@ -3,7 +3,15 @@
 ## Dev
 ### Options
 - Added bomb throw tricks for Beedle's Shop and Skyview (by NULL)
-  
+- Added option to randomize Triforces (by YourAverageLink)
+  - Skip Skykeep has been split into two new triforce-related options: Triforce Required & Triforce Shuffle
+  - When Triforce Required is enabled, the door to Hylia's Realm will only open if the player has the full Triforce; a confirmation textbox will appear in Hylia's Realm if the Triforce is complete.
+    - Disabling Triforce Required acts similarly to the old Skip Sky Keep option; Sky Keep is an unrequired dungeon, and the horde door is always open.
+    - Enabling Triforce Required and setting Triforce Shuffle to Vanilla acts like the old Skip Sky Keep OFF option.
+  - Triforces act similarly to dungeon keys; they can be vanilla, restricted to Sky Keep, or anywhere.
+    - When set to be placed anywhere, Sky Keep counts as an unrequired dungeon (empty if EUD is on).
+  - To prevent kicking players out of Sky Keep for having a complete triforce, the game no longer forces you out of Sky Keep once you pick up the third Triforce.
+  - The locations originally containing the Triforces are now randomizable checks.
 ### Changes
 - Allow calling Fi underwater and without a sword
 - Force english regardless of system language
@@ -53,15 +61,6 @@
 - Added "Main Node" option to Open LMF (by YourAverageLink)
   - When enabled, the fire, water, and lightning nodes will start out as active, but the player still needs to activate the main node (which requires an explosive to reveal the timeshift stone) to raise LMF.
 - Barren areas are now less likely to receive random location hints
-- Added option to randomize Triforces (by YourAverageLink)
-  - Skip Skykeep has been split into two new triforce-related options: Triforce Required & Triforce Shuffle
-  - When Triforce Required is enabled, the door to Hylia's Realm will only open if the player has the full Triforce; a confirmation textbox will appear in Hylia's Realm if the Triforce is complete.
-    - Disabling Triforce Required acts similarly to the old Skip Sky Keep option; Sky Keep is an unrequired dungeon, and the horde door is always open.
-    - Enabling Triforce Required and setting Triforce Shuffle to Vanilla acts like the old Skip Sky Keep OFF option.
-  - Triforces act similarly to dungeon keys; they can be vanilla, restricted to Sky Keep, or anywhere.
-    - When set to be placed anywhere, Sky Keep counts as an unrequired dungeon (empty if EUD is on).
-  - To prevent kicking players out of Sky Keep for having a complete triforce, the game no longer forces you out of Sky Keep once you pick up the third Triforce.
-  - The locations originally containing the Triforces are now randomizable checks.
 ### Bugfixes
 - always copy layer 0, this fixes various bugs, where changes from previous randomizations were not reverted
 - fix gorko sometimes asking to draw bombs even when you don't have them
