@@ -115,7 +115,8 @@ Central Skyloft - Parrow's Gift:
   Paths:
     - event/115-Town2/230 # mushroom spores
     - event/115-Town2/733 # Bottle
-    - oarc/F000/l0
+    - oarc/F000/l4
+    - oarc/F000/l6
     - oarc/F005r/l0
 Knight Academy - Cawlin's Letter:
   original item: Cawlin's Letter
@@ -144,7 +145,8 @@ Central Skyloft - Parrow's Crystals:
   type: skyloft, sky, short, crystal quest
   Paths:
     - event/115-Town2/814
-    - oarc/F000/l0
+    - oarc/F000/l4
+    - oarc/F000/l6
     - oarc/F005r/l0
 Knight Academy - Fledge's Crystals:
   original item: Gratitude Crystal Pack

@@ -747,6 +747,11 @@
       next: -1
       param3: 109
       param4: No Sword Text
+  - name: Fix rupee requirement in Bamboo minigame
+    type: flowpatch
+    index: 16
+    flow:
+      param2: 10
 110-DivingGame:
   - name: Shorten Dodoh quest start text
     type: flowpatch
