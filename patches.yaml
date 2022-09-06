@@ -78,6 +78,8 @@ global:
         flag: 101 # Fire node active
       - onlyif: Option "open-lmf" Is "Main Node"
         flag: 102 # Water node active
+    Lanayru Gorge:
+      - 10 # Minecart at end of Track
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -3006,6 +3008,95 @@ D301_1: # Sandship B
     layer: 0
     room: 0
     objtype: OBJ
+F302: # Lanayru Gorge
+  - name: Layer override
+    type: layeroverride
+    override: # always be layer 2
+      - story_flag: -1
+        night: 0
+        layer: 2
+  - name: Unlock Door
+    type: objpatch
+    id: 0x2BFF
+    index: 0
+    layer: 0
+    objtype: DOOR
+    object:
+      anglex: 0xFFFF # Always unlocked
+  - name: Patch Entry of Thunderdragon after heal
+    type: objpatch
+    id: 0x10D0
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      talk_behaviour: 46070
+  - name: Delete trigger preventing you from moveing over bridge
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Patch wounded Thuderdragon to always trigger
+    type: objpatch
+    id: 0x10D1
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1 # Always trigger
+  - name: Move Key to Layer 2
+    type: objmove
+    id: 0xFCC3
+    layer: 1
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: patch FrmLand
+    type: objpatch
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFF4D11E2
+      params2: 0xFFFFFFFF
+      posx: 9804.2412109375
+      posy: 350
+      posz: -4532.95361328125
+      anglex: 0
+      angley: 16384
+      anglez: 0
+      name: Soil
+  - name: delete Fi after Lanayru SotH
+    type: objdelete
+    id: 0xFCC0
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Remove Lanayru Soth from CS
+    type: objpatch
+    room: 0
+    index: 8
+    objtype: EVNT
+    object:
+      item: -1 # no lanayru Soth anymore
+  - name: extra Bomb flower
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 4100
+      posy: 28.9521332
+      posz: -3200
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC50
+      name: Bombf
 F303: # Lanayru Caves
   - name: Layer override
     type: layeroverride
@@ -3016,6 +3107,22 @@ F303: # Lanayru Caves
       - story_flag: -1
         night: 0
         layer: 0
+  - name: Delete Wall blocking path to Gorge
+    type: objdelete
+    id: 0xFC62
+    layer: 1
+    room: 0
+    objtype: SOBJ
+  - name: Move Golo out of the Way
+    type: objpatch
+    room: 0
+    layer: 1
+    id: 0xFC5C
+    objtype: OBJ
+    object:
+      posx: -195
+      posy: 0
+      posz: 2146
   - name: Fi text after chest
     type: objdelete
     id: 0xFC25
@@ -3055,6 +3162,12 @@ F402: # Sealed Temple
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Delete LTF Tree
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 2
+    objtype: OBJ
   - name: SotH start cs
     type: objdelete
     id: 0xFC4F
