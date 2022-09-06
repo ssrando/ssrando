@@ -366,6 +366,8 @@ class HintDistribution:
                     zone = "Eldin Volcano"
                 elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
+                elif zone == "Lanayru Gorge":
+                    zone = "Lanayru Sand Sea"
                 return CubeSotsGoalGossipStoneHint(loc, item, True, zone, None)
         return SotsGoalGossipStoneHint(loc, item, True, zone, None)
 
@@ -404,6 +406,8 @@ class HintDistribution:
                     zone = "Eldin Volcano"
                 elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
+                elif zone == "Lanayru Gorge":
+                    zone = "Lanayru Sand Sea"
                 return CubeSotsGoalGossipStoneHint(loc, item, True, zone, goal)
         return SotsGoalGossipStoneHint(loc, item, True, zone, goal)
 

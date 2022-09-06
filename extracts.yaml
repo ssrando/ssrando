@@ -123,6 +123,10 @@
   stage: F402
 - layer: 0
   oarcs:
+  - GetFruitB
+  stage: F402
+- layer: 0
+  oarcs:
   - GetGaragara
   - PutGaragara
   - GetSeedLife

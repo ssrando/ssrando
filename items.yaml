@@ -460,6 +460,16 @@
 # - id: 193
 #   name: Song of the Hero
 #   oarc: GetHarp
+- id: 197
+  name: Life Tree Seedling
+  oarc: GetSeedLife
+  getarcname: GetSeedLife
+  getmodelname: GetSeedLife
+- id: 198
+  name: Life Tree Fruit
+  oarc: GetFruitB
+  getarcname: GetFruitB
+  getmodelname: GetFruitB
 - id: 199
   name: Extra Wallet
   oarc: GetSparePurse

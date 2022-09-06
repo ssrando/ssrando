@@ -26,7 +26,8 @@ PROGRESS_ITEMS = (
         "Faron Song of the Hero Part",
         "Eldin Song of the Hero Part",
         "Lanayru Song of the Hero Part",
-        "Spiral Charge"
+        "Spiral Charge",
+        "Life Tree Fruit"
         # "Revitalizing Potion" # causes problems in events, as it's treated like you buy a potion
     ]
     + ["Gratitude Crystal Pack"] * 13
@@ -60,10 +61,11 @@ NONPROGRESS_ITEMS = (
 )
 
 CONSUMABLE_ITEMS = (
-    4 * ["Blue Rupee"]
-    + 25 * ["Red Rupee"]
-    + 12 * ["Silver Rupee"]
-    + 10 * ["Gold Rupee"]
+    3 * ["Green Rupee"]
+    + 12 * ["Blue Rupee"]
+    + 42 * ["Red Rupee"]
+    + 23 * ["Silver Rupee"]
+    + 11 * ["Gold Rupee"]
     + 10 * ["Semi Rare Treasure"]
     + 1 * ["Golden Skull"]
     + 12 * ["Rare Treasure"]

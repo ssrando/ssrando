@@ -12,6 +12,7 @@
     - When set to be placed anywhere, Sky Keep counts as an unrequired dungeon (empty if EUD is on).
   - To prevent kicking players out of Sky Keep for having a complete triforce, the game no longer forces you out of Sky Keep once you pick up the third Triforce.
   - The locations originally containing the Triforces are now randomizable checks.
+- Added option to randomize objects such as tears and light fruits in trials (by cjs07)
 ### Changes
 - Allow calling Fi underwater and without a sword
 - Force english regardless of system language
