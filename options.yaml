@@ -131,13 +131,23 @@
     scrapper, peatrice, goddess, faron goddess, eldin goddess, lanayru goddess, floria
     goddess, summit goddess, sand sea goddess'
   ui: option_banned_types
-- name: Skip Sky Keep
-  command: skip-skykeep
+- name: Triforce Required
+  command: triforce-required
   type: boolean
-  default: false
-  help: If activated, skips the requirement to beat Sky Keep in order to access the
-    horde in the past
-  ui: option_skip_skykeep
+  default: true
+  help: If activated, the three Triforces will be required to open the door to Hylia's Realm. If disabled, Sky Keep counts as an unrequired dungeon
+  ui: option_triforce_required
+- name: Triforce Shuffle
+  command: triforce-shuffle
+  type: singlechoice
+  bits: 2
+  choices:
+    - Vanilla
+    - Sky Keep
+    - Anywhere
+  default: Vanilla
+  help: Choose where Triforces will appear. Vanilla sets them to their locations in Sky Keep. If Anywhere is chosen, Sky Keep counts as an unrequired dungeon
+  ui: option_triforce_shuffle
 - name: Seed
   command: seed
   type: int

@@ -220,6 +220,27 @@
   oarc: null
   getarcname: GetHeartKakera
   getmodelname: GetHeartKakera
+- id: 95
+  name: Triforce of Courage
+  oarc:
+  - PutTriForceSingle
+  - GetTriForceSingle
+  getarcname: GetTriForceSingle
+  getmodelname: GetTriForceSingle
+- id: 96
+  name: Triforce of Power
+  oarc:
+  - PutTriForceSingle
+  - GetTriForceSingle
+  getarcname: GetTriForceSingle
+  getmodelname: GetTriForceSingle
+- id: 97
+  name: Triforce of Wisdom
+  oarc:
+  - PutTriForceSingle
+  - GetTriForceSingle
+  getarcname: GetTriForceSingle
+  getmodelname: GetTriForceSingle
 - id: 98
   name: Sea Chart
   oarc: GetMapSea

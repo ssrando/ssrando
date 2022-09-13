@@ -703,6 +703,9 @@ Meets Gate of Time Sword Requirement:
 
 #   Determined at runtime
 
+Can Complete Triforce:
+  Triforce of Courage & Triforce of Wisdom & Triforce of Power
+
 Can Access Hylia's Temple:
   Can Access Sealed Temple & Can Access Past
 
@@ -710,7 +713,7 @@ Sealed Grounds - Zelda's Blessing:
   Can Access Hylia's Temple
 
 Can Reach and Defeat Demise:
-  Can Access Past & (Can Beat Sky Keep | Option "skip-skykeep" Enabled)
+  Can Access Past & (Can Complete Triforce | Option "triforce-required" Disabled)
 
 Sealed Grounds - Gorko's Goddess Wall Reward:
   Can Access Sealed Temple & Can Unlock Goddess Walls & Goddess Sword

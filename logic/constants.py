@@ -28,6 +28,8 @@ DUNGEON_NAMES = OrderedDict(
         ("SS", "Sandship"),
         ("FS", "Fire Sanctuary"),
         ("SK", "Sky Keep"),
+        # for the purposes of restricting triforces to sky keep
+        ("Triforce", "Sky Keep"),
         ("LanayruCaves", "Lanayru Caves"),  # "short name" doesn't allow space
     ]
 )
@@ -108,6 +110,12 @@ BOSS_KEY_CHECKS = [
     "Ancient Cistern - Boss Key Chest",
     "Sandship - Boss Key Chest",
     "Fire Sanctuary - Boss Key Chest",
+]
+
+TRIFORCE_CHECKS = [
+    "Sky Keep - Triforce of Courage",
+    "Sky Keep - Triforce of Wisdom",
+    "Sky Keep - Triforce of Power",
 ]
 
 END_OF_DUNGEON_CHECKS = OrderedDict(

@@ -16,6 +16,36 @@
     index: 462 # skip scene change after getting goddess sword
     flow:
       next: -1
+  - name: Remove Triforce of Wisdom Scene change (1st part)
+    type: flowpatch
+    index: 531
+    flow:
+      next: -1
+  - name: Remove Triforce of Wisdom Scene change (2nd part)
+    type: flowpatch
+    index: 532
+    flow:
+      next: -1
+  - name: Remove Triforce of Courage Scene change (1st part)
+    type: flowpatch
+    index: 534
+    flow:
+      next: -1
+  - name: Remove Triforce of Courage Scene change (2nd part)
+    type: flowpatch
+    index: 535
+    flow:
+      next: -1
+  - name: Remove Triforce of Power Scene change (1st part)
+    type: flowpatch
+    index: 536
+    flow:
+      next: -1
+  - name: Remove Triforce of Power Scene change (2nd part)
+    type: flowpatch
+    index: 537
+    flow:
+      next: -1
   - name: Goddess Longsword Text
     type: textpatch
     index: 16
@@ -1285,6 +1315,7 @@
     index: 165
     flow:
       next: -1
+
 201-ForestD1:
   - name: give item after beating skyview
     type: flowpatch
@@ -1831,6 +1862,21 @@
     type: textpatch
     index: 25
     text: "Understood, Master <heroname>.\nThank you for taking me on this\njourney with you."
+  - name: Impa Complete Triforce text
+    type: textadd
+    text: "Though your wish has been granted by\nthe <y+<Triforce>>, <b<Ghirahim>> escaped with\nZelda through the <r<great doors\nat the front of the temple>>.\nYou may yet catch him before it's too\nlate. Hurry, <heroname>!"
+  - name: Show Triforce text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Impa Complete Triforce text
+  - name: Check for Triforces
+    type: entryadd
+    entry:
+      name: "502_20"
+      value: Show Triforce text
 503-Goron:
   - name: To Bomb Bag Check I # when you don't have bow
     type: flowpatch

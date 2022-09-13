@@ -759,7 +759,7 @@
          <x>10</x>
          <y>19</y>
          <width>181</width>
-         <height>223</height>
+         <height>242</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -834,13 +834,6 @@
            </layout>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_skip_skykeep">
-          <property name="text">
-           <string>Skip Sky Keep</string>
-          </property>
-         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_3">
@@ -1286,6 +1279,74 @@
            </widget>
           </item>
          </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_17">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>270</y>
+        <width>191</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Triforce</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_15">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>19</y>
+         <width>171</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_31">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_37"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_triforce_required">
+          <property name="text">
+           <string>Triforce Required</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_for_option_triforce_shuffle">
+          <property name="text">
+           <string>Triforce Shuffle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="option_triforce_shuffle">
+          <property name="currentText">
+           <string/>
+          </property>
+          <property name="currentIndex">
+           <number>-1</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::MinimumExpanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>70</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
