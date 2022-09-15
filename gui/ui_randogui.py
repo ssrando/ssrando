@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.0
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1051, 734)
+        MainWindow.resize(1051, 738)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
         self.groupBox_12.setGeometry(QRect(10, 130, 181, 131))
         self.verticalLayoutWidget_13 = QWidget(self.groupBox_12)
         self.verticalLayoutWidget_13.setObjectName(u"verticalLayoutWidget_13")
-        self.verticalLayoutWidget_13.setGeometry(QRect(10, 20, 166, 89))
+        self.verticalLayoutWidget_13.setGeometry(QRect(10, 20, 169, 89))
         self.verticalLayout_33 = QVBoxLayout(self.verticalLayoutWidget_13)
         self.verticalLayout_33.setObjectName(u"verticalLayout_33")
         self.verticalLayout_33.setContentsMargins(0, 0, 0, 0)
@@ -473,7 +473,7 @@ class Ui_MainWindow(object):
         self.groupBox_5.setGeometry(QRect(10, 10, 201, 251))
         self.verticalLayoutWidget = QWidget(self.groupBox_5)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 181, 242))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 181, 221))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -550,7 +550,7 @@ class Ui_MainWindow(object):
 
         self.groupBox_7 = QGroupBox(self.tab_4)
         self.groupBox_7.setObjectName(u"groupBox_7")
-        self.groupBox_7.setGeometry(QRect(620, 10, 201, 251))
+        self.groupBox_7.setGeometry(QRect(630, 10, 191, 251))
         self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
         self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 181, 221))
@@ -645,6 +645,22 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_14.addWidget(self.option_demise)
 
+        self.horizontalLayout_20 = QHBoxLayout()
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.label_for_option_demise_count = QLabel(self.verticalLayoutWidget_3)
+        self.label_for_option_demise_count.setObjectName(u"label_for_option_demise_count")
+
+        self.horizontalLayout_20.addWidget(self.label_for_option_demise_count)
+
+        self.option_demise_count = QSpinBox(self.verticalLayoutWidget_3)
+        self.option_demise_count.setObjectName(u"option_demise_count")
+        self.option_demise_count.setMaximumSize(QSize(41, 16777215))
+
+        self.horizontalLayout_20.addWidget(self.option_demise_count)
+
+
+        self.verticalLayout_14.addLayout(self.horizontalLayout_20)
+
         self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_14.addItem(self.verticalSpacer_5)
@@ -715,10 +731,10 @@ class Ui_MainWindow(object):
 
         self.groupBox_6 = QGroupBox(self.tab_4)
         self.groupBox_6.setObjectName(u"groupBox_6")
-        self.groupBox_6.setGeometry(QRect(420, 10, 191, 251))
+        self.groupBox_6.setGeometry(QRect(420, 10, 201, 251))
         self.verticalLayoutWidget_4 = QWidget(self.groupBox_6)
         self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
-        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 206, 221))
+        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 186, 221))
         self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_4)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -742,20 +758,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addWidget(self.option_randomize_trials)
 
-        self.verticalLayout_31 = QVBoxLayout()
-        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.verticalLayout_trialshuffle = QVBoxLayout()
+        self.verticalLayout_trialshuffle.setObjectName(u"verticalLayout_trialshuffle")
         self.label_4 = QLabel(self.verticalLayoutWidget_4)
         self.label_4.setObjectName(u"label_4")
 
-        self.verticalLayout_31.addWidget(self.label_4)
+        self.verticalLayout_trialshuffle.addWidget(self.label_4)
 
         self.option_shuffle_trial_objects = QComboBox(self.verticalLayoutWidget_4)
         self.option_shuffle_trial_objects.setObjectName(u"option_shuffle_trial_objects")
 
-        self.verticalLayout_31.addWidget(self.option_shuffle_trial_objects)
+        self.verticalLayout_trialshuffle.addWidget(self.option_shuffle_trial_objects)
 
 
-        self.verticalLayout_7.addLayout(self.verticalLayout_31)
+        self.verticalLayout_7.addLayout(self.verticalLayout_trialshuffle)
 
         self.verticalSpacer = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
@@ -766,7 +782,7 @@ class Ui_MainWindow(object):
         self.groupBox_9.setGeometry(QRect(10, 270, 201, 241))
         self.verticalLayoutWidget_5 = QWidget(self.groupBox_9)
         self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
-        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 181, 211))
+        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 181, 210))
         self.verticalLayout_15 = QVBoxLayout(self.verticalLayoutWidget_5)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
@@ -805,69 +821,62 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addLayout(self.verticalLayout_16)
 
-        self.option_fix_bit_crashes = QCheckBox(self.verticalLayoutWidget_5)
-        self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
+        self.option_gondo_upgrades = QCheckBox(self.verticalLayoutWidget_5)
+        self.option_gondo_upgrades.setObjectName(u"option_gondo_upgrades")
 
-        self.verticalLayout_15.addWidget(self.option_fix_bit_crashes)
+        self.verticalLayout_15.addWidget(self.option_gondo_upgrades)
 
         self.option_hero_mode = QCheckBox(self.verticalLayoutWidget_5)
         self.option_hero_mode.setObjectName(u"option_hero_mode")
 
         self.verticalLayout_15.addWidget(self.option_hero_mode)
 
-        self.horizontalLayout_20 = QHBoxLayout()
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.label_for_option_demise_count = QLabel(self.verticalLayoutWidget_5)
-        self.label_for_option_demise_count.setObjectName(u"label_for_option_demise_count")
+        self.option_fix_bit_crashes = QCheckBox(self.verticalLayoutWidget_5)
+        self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
 
-        self.horizontalLayout_20.addWidget(self.label_for_option_demise_count)
+        self.verticalLayout_15.addWidget(self.option_fix_bit_crashes)
 
-        self.option_demise_count = QSpinBox(self.verticalLayoutWidget_5)
-        self.option_demise_count.setObjectName(u"option_demise_count")
-        self.option_demise_count.setMaximumSize(QSize(41, 16777215))
+        self.verticalSpacer_17 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.horizontalLayout_20.addWidget(self.option_demise_count)
+        self.verticalLayout_15.addItem(self.verticalSpacer_17)
 
-
-        self.verticalLayout_15.addLayout(self.horizontalLayout_20)
-
-        self.groupBox_17 = QGroupBox(self.tab_4)
-        self.groupBox_17.setObjectName(u"groupBox_17")
-        self.groupBox_17.setGeometry(QRect(220, 270, 191, 241))
-        self.verticalLayoutWidget_15 = QWidget(self.groupBox_17)
+        self.groupBox_16 = QGroupBox(self.tab_4)
+        self.groupBox_16.setObjectName(u"groupBox_16")
+        self.groupBox_16.setGeometry(QRect(220, 270, 191, 241))
+        self.verticalLayoutWidget_15 = QWidget(self.groupBox_16)
         self.verticalLayoutWidget_15.setObjectName(u"verticalLayoutWidget_15")
-        self.verticalLayoutWidget_15.setGeometry(QRect(10, 19, 171, 221))
-        self.verticalLayout_311 = QVBoxLayout(self.verticalLayoutWidget_15)
-        self.verticalLayout_311.setObjectName(u"verticalLayout_311")
-        self.verticalLayout_311.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutWidget_15.setGeometry(QRect(10, 20, 171, 211))
+        self.verticalLayout_31 = QVBoxLayout(self.verticalLayoutWidget_15)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.verticalLayout_31.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_37 = QVBoxLayout()
         self.verticalLayout_37.setObjectName(u"verticalLayout_37")
 
-        self.verticalLayout_311.addLayout(self.verticalLayout_37)
+        self.verticalLayout_31.addLayout(self.verticalLayout_37)
 
         self.option_triforce_required = QCheckBox(self.verticalLayoutWidget_15)
         self.option_triforce_required.setObjectName(u"option_triforce_required")
 
-        self.verticalLayout_311.addWidget(self.option_triforce_required)
+        self.verticalLayout_31.addWidget(self.option_triforce_required)
 
+        self.verticalLayout_38 = QVBoxLayout()
+        self.verticalLayout_38.setObjectName(u"verticalLayout_38")
         self.label_for_option_triforce_shuffle = QLabel(self.verticalLayoutWidget_15)
         self.label_for_option_triforce_shuffle.setObjectName(u"label_for_option_triforce_shuffle")
 
-        self.verticalLayout_311.addWidget(self.label_for_option_triforce_shuffle)
+        self.verticalLayout_38.addWidget(self.label_for_option_triforce_shuffle)
 
         self.option_triforce_shuffle = QComboBox(self.verticalLayoutWidget_15)
         self.option_triforce_shuffle.setObjectName(u"option_triforce_shuffle")
 
-        self.verticalLayout_311.addWidget(self.option_triforce_shuffle)
+        self.verticalLayout_38.addWidget(self.option_triforce_shuffle)
 
-        self.option_gondo_upgrades = QCheckBox(self.verticalLayoutWidget_15)
-        self.option_gondo_upgrades.setObjectName(u"option_gondo_upgrades")
 
-        self.verticalLayout_311.addWidget(self.option_gondo_upgrades)
+        self.verticalLayout_31.addLayout(self.verticalLayout_38)
 
         self.verticalSpacer_6 = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
-        self.verticalLayout_311.addItem(self.verticalSpacer_6)
+        self.verticalLayout_31.addItem(self.verticalSpacer_6)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
@@ -1246,6 +1255,7 @@ class Ui_MainWindow(object):
         self.option_horde.setText(QCoreApplication.translate("MainWindow", u"Skip Horde", None))
         self.option_g3.setText(QCoreApplication.translate("MainWindow", u"Skip Ghirahim 3", None))
         self.option_demise.setText(QCoreApplication.translate("MainWindow", u"Skip Demise", None))
+        self.label_for_option_demise_count.setText(QCoreApplication.translate("MainWindow", u"Demise Count", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Open Settings", None))
         self.label_for_option_open_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Open Thunderhead", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
@@ -1260,14 +1270,13 @@ class Ui_MainWindow(object):
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
-        self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
+        self.option_gondo_upgrades.setText(QCoreApplication.translate("MainWindow", u"Place Scrap Shop Upgrades", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
-        self.label_for_option_demise_count.setText(QCoreApplication.translate("MainWindow", u"Demise Count", None))
-        self.groupBox_17.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
+        self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
+        self.groupBox_16.setTitle(QCoreApplication.translate("MainWindow", u"Triforce", None))
         self.option_triforce_required.setText(QCoreApplication.translate("MainWindow", u"Triforce Required", None))
         self.label_for_option_triforce_shuffle.setText(QCoreApplication.translate("MainWindow", u"Triforce Shuffle", None))
         self.option_triforce_shuffle.setCurrentText("")
-        self.option_gondo_upgrades.setText(QCoreApplication.translate("MainWindow", u"Place Scrap Shop Upgrades", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
@@ -1299,3 +1308,4 @@ class Ui_MainWindow(object):
         self.seed_button.setText(QCoreApplication.translate("MainWindow", u"New Seed", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
     # retranslateUi
+
