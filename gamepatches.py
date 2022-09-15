@@ -1,7 +1,7 @@
+import copy
 from pathlib import Path
 import random
 from collections import OrderedDict, defaultdict
-from pprint import pprint
 
 import yaml
 import json
@@ -23,7 +23,7 @@ from tboxSubtypes import tboxSubtypes
 from musicrando import music_rando
 
 from logic.logic import Logic
-from logic.constants import SILENT_REALM_CHECKS
+from logic.constants import SILENT_REALM_CHECKS, RUPEE_CHECKS, QUICK_BEETLE_CHECKS
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -334,6 +334,259 @@ BEEDLE_BUY_SWTICH = "[1]I'll buy it![2-]No, thanks."
 
 PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
 PROGRESSIVE_SWORD_ITEMIDS = [10, 11, 12, 9, 13, 14]
+
+TRIAL_OBJECT_IDS = {
+    "S000": {
+        "Tears": [
+            (0xFC2F, 0),
+            (0xFC31, 0),
+            (0xFC32, 0),
+            (0xFC33, 0),
+            (0xFC34, 0),
+            (0xFC35, 0),
+            (0xFC36, 0),
+            (0xFC37, 0),
+            (0xFC38, 0),
+            (0xFC39, 0),
+            (0xFC3A, 0),
+            (0xFC5D, 0),
+            (0xFC5F, 0),
+            (0xFC60, 0),
+            (0xFC7E, 0),
+        ],
+        "Light Fruits": [
+            (0xFC3B, 0),
+            (0xFC3C, 0),
+            (0xFC3E, 0),
+            (0xFC3F, 0),
+            (0xFC40, 0),
+            (0xFC41, 0),
+            (0xFC43, 0),
+            (0xFC45, 0),
+            (0xFC48, 0),
+            (0xFC49, 0),
+            (0xFC4A, 0),
+            (0xFC4C, 0),
+            (0xFC4D, 0),
+            (0xFC4F, 0),
+            (0xFC50, 0),
+            (0xFC53, 0),
+            (0xFC56, 0),
+            (0xFC57, 0),
+            (0xFC58, 0),
+            (0xFC59, 0),
+            (0xFC5C, 0),
+            (0xFC62, 0),
+            (0xFC63, 0),
+            (0xFC66, 0),
+            (0xFC69, 0),
+            (0xFC7D, 0),
+            (0xFC80, 0),
+        ],
+        "Relics": [
+            (0xFC1C, 0),
+            (0xFC1D, 0),
+            (0xFC1E, 0),
+            (0xFC1F, 0),
+            (0xFC20, 0),
+            (0xFC21, 0),
+            (0xFC22, 0),
+            (0xFC23, 0),
+            (0xFC24, 0),
+            (0xFC25, 0),
+        ],
+        "Stamina Fruits": [
+            (0xFC55, 0),
+        ],
+    },
+    "S100": {
+        "Tears": [
+            (0xFC84, 0),
+            (0xFC85, 0),
+            (0xFC86, 0),
+            (0xFC87, 0),
+            (0xFC88, 0),
+            (0xFC89, 0),
+            (0xFC8A, 0),
+            (0xFC8B, 0),
+            (0xFC8C, 0),
+            (0xFC8D, 0),
+            (0xFC8E, 0),
+            (0xFC8F, 0),
+            (0xFC90, 0),
+            (0xFC91, 0),
+            (0xFC92, 0),
+        ],
+        "Light Fruits": [
+            (0xFC96, 0),
+            (0xFC99, 0),
+            (0xFC9C, 0),
+            (0xFC9D, 0),
+            (0xFC9F, 0),
+            (0xFCA1, 0),
+            (0xFCA2, 0),
+            (0xFCA3, 0),
+            (0xFCA5, 0),
+            (0xFCA8, 0),
+            (0xFCAA, 0),
+            (0xFCAC, 0),
+            (0xFCBE, 0),
+            (0xFCBF, 0),
+            (0xFCC0, 0),
+            (0xFCC1, 0),
+            (0xFCC2, 0),
+            (0xFCC3, 0),
+            (0xFCCD, 0),
+            (0xFCCE, 0),
+            (0xFCD0, 0),
+            (0xFCD1, 0),
+        ],
+        "Relics": [
+            (0xFC78, 0),
+            (0xFC79, 0),
+            (0xFC7A, 0),
+            (0xFC7B, 0),
+            (0xFC7C, 0),
+            (0xFC7D, 0),
+            (0xFC7E, 0),
+            (0xFC7F, 0),
+            (0xFC80, 0),
+            (0xFC81, 0),
+        ],
+        "Stamina Fruits": [
+            (0xFC9A, 0),
+            (0xFC9B, 0),
+        ],
+    },
+    "S200": {
+        "Tears": [
+            (0xFC10, 2),
+            (0xFC1B, 2),
+            (0xFC1D, 2),
+            (0xFC1F, 2),
+            (0xFC25, 2),
+            (0xFC27, 2),
+            (0xFC29, 2),
+            (0xFC3D, 2),
+            (0xFC00, 4),
+            (0xFC04, 4),
+            (0xFC0B, 4),
+            (0xFC02, 5),
+            (0xFC04, 6),
+            (0xFC05, 6),
+            (0xFC06, 6),
+        ],
+        "Light Fruits": [
+            (0xFC0F, 2),
+            (0xFC12, 2),
+            (0xFC13, 2),
+            (0xFC17, 2),
+            (0xFC1C, 2),
+            (0xFC1E, 2),
+            (0xFC20, 2),
+            (0xFC21, 2),
+            (0xFC22, 2),
+            (0xFC28, 2),
+            (0xFC2A, 2),
+            (0xFC2C, 2),
+            (0xFC38, 2),
+            (0xFC39, 2),
+            (0xFC3C, 2),
+            (0xFC3F, 2),
+            (0xFC4C, 2),
+            (0xFC4E, 2),
+            (0xFC01, 4),
+            (0xFC08, 4),
+            (0xFC0C, 4),
+            (0xFC0E, 4),
+            (0xFC15, 4),
+            (0xFC16, 4),
+            (0xFC01, 5),
+            (0xFC05, 5),
+            (0xFC00, 6),
+            (0xFC01, 6),
+            (0xFC02, 6),
+            (0xFC03, 6),
+        ],
+        "Relics": [
+            (0xFC00, 2),
+            (0xFC01, 2),
+            (0xFC02, 2),
+            (0xFC03, 2),
+            (0xFC04, 2),
+            (0xFC05, 2),
+            (0xFC06, 2),
+            (0xFC07, 2),
+            (0xFC08, 2),
+            (0xFC09, 2),
+        ],
+        "Stamina Fruits": [
+            (0xFC40, 2),
+            (0xFC4D, 2),
+            (0xFC05, 4),
+        ],
+    },
+    "S300": {
+        "Tears": [
+            (0xFC09, 0),
+            (0xFC0A, 0),
+            (0xFC0B, 0),
+            (0xFC0C, 0),
+            (0xFC0D, 0),
+            (0xFC0E, 0),
+            (0xFC0F, 0),
+            (0xFC10, 0),
+            (0xFC11, 0),
+            (0xFC12, 0),
+            (0xFC13, 0),
+            (0xFC14, 0),
+            (0xFC15, 0),
+            (0xFC16, 0),
+            (0xFC17, 0),
+        ],
+        "Light Fruits": [
+            (0xFC1F, 0),
+            (0xFC20, 0),
+            (0xFC21, 0),
+            (0xFC22, 0),
+            (0xFC25, 0),
+            (0xFC27, 0),
+            (0xFC29, 0),
+            (0xFC2C, 0),
+            (0xFC2E, 0),
+            (0xFC32, 0),
+            (0xFC33, 0),
+            (0xFC35, 0),
+            (0xFC58, 0),
+            (0xFC5A, 0),
+            (0xFC5D, 0),
+            (0xFC5E, 0),
+            (0xFC61, 0),
+            (0xFC62, 0),
+            (0xFC64, 0),
+            (0xFC65, 0),
+        ],
+        "Relics": [
+            (0xFC00, 0),
+            (0xFC01, 0),
+            (0xFC02, 0),
+            (0xFC03, 0),
+            (0xFC04, 0),
+            (0xFC05, 0),
+            (0xFC06, 0),
+            (0xFC07, 0),
+            (0xFC08, 0),
+            (0xFC73, 0),
+        ],
+        "Stamina Fruits": [
+            (0xFC2D, 0),
+            (0xFC30, 0),
+            (0xFC31, 0),
+            (0xFC36, 0),
+            (0xFC63, 0),
+        ],
+    },
+}
 
 
 class FlagEventTypes(IntEnum):
@@ -879,6 +1132,8 @@ class GamePatcher:
         self.add_rando_hash()
         self.add_keysanity()
         self.add_demises()
+        if not self.placement_file.options["shuffle-trial-objects"] == "None":
+            self.shuffle_trial_objects()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -933,13 +1188,21 @@ class GamePatcher:
         self.startitemflags = self.patches["global"]["startitems"]
 
         # patches from randomizing items
+        temp_item_locations = copy.deepcopy(self.placement_file.item_locations)
+        if self.placement_file.options["rupeesanity"] != "All":
+            for rupee_check in RUPEE_CHECKS:
+                if self.rando.options["rupeesanity"] == "Vanilla":
+                    temp_item_locations.pop(rupee_check)
+                elif rupee_check in QUICK_BEETLE_CHECKS:
+                    temp_item_locations.pop(rupee_check)
+
         (
             self.rando_stagepatches,
             self.stageoarcs,
             self.rando_eventpatches,
             self.shoppatches,
         ) = get_patches_from_location_item_list(
-            self.rando.item_locations, self.placement_file.item_locations
+            self.rando.item_locations, temp_item_locations
         )
 
         # assembly patches
@@ -1614,6 +1877,61 @@ class GamePatcher:
                     "object": demise,
                 },
             )
+
+    def shuffle_trial_objects(self):
+        ITEM_PARAM_MAP = {
+            "Light Fruits": (0xFF0FFE2F, "Item"),
+            "Stamina Fruits": (0xFF0FFE2A, "Item"),
+            "Relics": (0xFFFFFFF0, "AncJwls"),
+        }
+        TEAR_ITEM_IDS = {
+            "S000": 0x2E,
+            "S100": 0x2B,
+            "S200": 0x2C,
+            "S300": 0x2D,
+        }
+        for trial in TRIAL_OBJECT_IDS:
+            params = []
+            locs = []
+            for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
+                if item_type == "Relics" and self.placement_file.options[
+                    "shuffle-trial-objects"
+                ] not in ["Advanced", "Full"]:
+                    continue
+                if (
+                    item_type == "Stamina Fruits"
+                    and not self.placement_file.options["shuffle-trial-objects"]
+                    == "Full"
+                ):
+                    continue
+                locs.extend(objlist)
+                if item_type == "Tears":
+                    item_id = TEAR_ITEM_IDS[trial]
+                    assert len(objlist) == 15
+                    for i in range(15):
+                        params.append((0x07FE00 | (i << 24) | item_id, "Item"))
+                else:
+                    params.extend([ITEM_PARAM_MAP[item_type]] * len(objlist))
+
+            self.rando.rng.shuffle(locs)
+            # print(locs)
+
+            for ((id, room), (params, actor_name)) in zip(
+                locs,
+                params,
+            ):
+                self.add_patch_to_stage(
+                    trial,
+                    {
+                        "name": "trial object shuffle",
+                        "type": "objpatch",
+                        "id": id,
+                        "layer": 2,
+                        "room": room,
+                        "objtype": "OBJ ",
+                        "object": {"params1": params, "name": actor_name},
+                    },
+                )
 
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])

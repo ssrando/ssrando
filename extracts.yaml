@@ -1,5 +1,6 @@
 - layer: 0
   oarcs:
+  - PutTriForceSingle
   - GetTriForceSingle
   stage: D003_0
 - layer: 0
@@ -119,6 +120,10 @@
 - layer: 2
   oarcs:
   - GetHarp
+  stage: F402
+- layer: 0
+  oarcs:
+  - GetFruitB
   stage: F402
 - layer: 0
   oarcs:

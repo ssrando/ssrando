@@ -227,7 +227,10 @@ class HintDistribution:
                 continue  # don't hint barren silent realms since they are an always hint
             if self.logic.rando.options["empty-unrequired-dungeons"]:
                 # avoid placing barren hints for unrequired dungeons in race mode
-                if self.logic.rando.options["skip-skykeep"] and zone == "Sky Keep":
+                if (
+                    not self.logic.rando.options["triforce-required"]
+                    or self.logic.rando.options["triforce-shuffle"] == "Anywhere"
+                ) and (zone == "Sky Keep"):
                     # skykeep is always barren when race mode is on and Sky Keep is skipped
                     continue
                 if (
@@ -363,6 +366,8 @@ class HintDistribution:
                     zone = "Eldin Volcano"
                 elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
+                elif zone == "Lanayru Gorge":
+                    zone = "Lanayru Sand Sea"
                 return CubeSotsGoalGossipStoneHint(loc, item, True, zone, None)
         return SotsGoalGossipStoneHint(loc, item, True, zone, None)
 
@@ -401,6 +406,8 @@ class HintDistribution:
                     zone = "Eldin Volcano"
                 elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
+                elif zone == "Lanayru Gorge":
+                    zone = "Lanayru Sand Sea"
                 return CubeSotsGoalGossipStoneHint(loc, item, True, zone, goal)
         return SotsGoalGossipStoneHint(loc, item, True, zone, goal)
 
