@@ -11,6 +11,7 @@ Hint distributions define everything about how gossip stone hints are placed by 
 - **Barren**: Barren hints hint to regions that do not require any progression items, regardless of if the items thenselvews are reqired
 - **Item**: Item hints directly hint the location of a potentially valuable item.
 - **Random**: Random hints tell the item on randomly selected locations
+- **BK**: Points to the location of the boss key for required dungeons
 - **Junk**: Junk hints are random tips or community memes
 
 
