@@ -2323,6 +2323,12 @@ F300: # lanayru Main Area
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove Boulder cs
+    type: objdelete
+    id: 0xFD53
+    layer: 0
+    room: 0
+    objtype: STAG
   - name: Remove Zelda Dowsing from LMF raising cs
     type: objpatch
     room: 0
