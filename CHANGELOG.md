@@ -1,6 +1,10 @@
 # Changelog
 
 ## Dev
+### Changes
+### Bugfixes
+
+## 1.3.0
 ### Options
 - Added bomb throw tricks for Beedle's Shop and Skyview (by NULL)
 - Added option to randomize Triforces (by YourAverageLink)
