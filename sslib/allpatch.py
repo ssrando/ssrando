@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Callable, Iterable, Dict, Optional
+from typing import Callable, Iterable, Dict, Optional, List
 import re
 from io import BytesIO
 from collections import defaultdict
@@ -14,6 +14,7 @@ from .utils import write_bytes_create_dirs
 STAGE_REGEX = re.compile("(.+)_stg_l([0-9]+).arc.LZ")
 EVENT_REGEX = re.compile("([0-9])-[A-Za-z]+.arc")
 ROOM_REGEX = re.compile(r"/rarc/(?P<stage>.+)_r(?P<roomid>[0-9]+).arc")
+OARC_ARC_REGEX = re.compile(r"/oarc/(?P<name>.+\.arc)")
 LANGUAGES = {"EU": "en_GB", "US": "en_US", "JP": "ja_JP"}
 
 
@@ -23,6 +24,7 @@ class AllPatcher:
         actual_extract_path: Path,
         modified_extract_path: Path,
         oarc_cache_path: Path,
+        arc_replacement_path: Path,
         copy_unmodified: bool = True,
     ):
         """
@@ -35,6 +37,12 @@ class AllPatcher:
         self.modified_extract_path = modified_extract_path
         self.oarc_cache_path = oarc_cache_path
         self.copy_unmodified = copy_unmodified
+        self.arc_replacements = {}
+        for replace_path in arc_replacement_path.iterdir():
+            arcname = replace_path.parts[-1]
+            if arcname.endswith(".arc"):
+                self.arc_replacements[arcname] = replace_path
+        self.objpackoarcadd = []
         self.stage_oarc_add = {}
         self.stage_oarc_delete = {}
         self.bzs_patch = None
@@ -164,7 +172,7 @@ class AllPatcher:
             remove_arcs = set(self.stage_oarc_delete.get((stage, layer), []))
             # add additional arcs if needed
             additional_arcs = set(self.stage_oarc_add.get((stage, layer), []))
-            if remove_arcs or additional_arcs or layer == 0:
+            if remove_arcs or additional_arcs or layer == 0 or self.arc_replacements:
                 # only decompress and extract files, if needed
                 stagedata = nlzss11.decompress(stagepath.read_bytes())
                 stageu8 = U8File.parse_u8(BytesIO(stagedata))
@@ -177,10 +185,25 @@ class AllPatcher:
                 for arc in remove_arcs:
                     stageu8.delete_file(f"oarc/{arc}.arc")
                     modified = True
+                patched_arcs = set()
                 for arc in additional_arcs:
-                    oarc_bytes = (self.oarc_cache_path / f"{arc}.arc").read_bytes()
-                    stageu8.add_file_data(f"oarc/{arc}.arc", oarc_bytes)
+                    arcname = f"{arc}.arc"
+                    oarc_path = self.arc_replacements.get(arcname) or (
+                        self.oarc_cache_path / arcname
+                    )
+                    stageu8.add_file_data(f"oarc/{arcname}", oarc_path.read_bytes())
+                    patched_arcs.add(arcname)
                     modified = True
+                if self.arc_replacements:
+                    for path in stageu8.get_all_paths():
+                        if match := OARC_ARC_REGEX.match(path):
+                            arc = match.group("name")
+                            if arc in patched_arcs:
+                                continue
+                            if replacement := self.arc_replacements.get(arc):
+                                stageu8.set_file_data(path, replacement.read_bytes())
+                                patched_arcs.add(arc)
+                                modified = True
                 if layer == 0:
                     stagebzs = parseBzs(stageu8.get_file_data("dat/stage.bzs"))
                     # patch stage
@@ -271,3 +294,46 @@ class AllPatcher:
             if modified:
                 write_bytes_create_dirs(modified_eventpath, eventarc.to_buffer())
                 # print(f'patched {filename}')
+
+        self.progress_callback("patching ObjectPack...")
+        # patch object pack
+        objpack_data = nlzss11.decompress(
+            (
+                self.actual_extract_path
+                / "DATA"
+                / "files"
+                / "Object"
+                / "ObjectPack.arc.LZ"
+            ).read_bytes()
+        )
+        object_arc = U8File.parse_u8(BytesIO(objpack_data))
+        objpack_modified = False
+        patched_arcs = set()
+        for oarc in self.objpackoarcadd:
+            arcname = f"{oarc}.arc"
+            oarc_path = self.arc_replacements.get(arcname) or (
+                self.oarc_cache_path / arcname
+            )
+            stageu8.add_file_data(f"oarc/{arcname}", oarc_path.read_bytes())
+            patched_arcs.add(arcname)
+            objpack_modified = True
+        if self.arc_replacements:
+            for path in object_arc.get_all_paths():
+                if match := OARC_ARC_REGEX.match(path):
+                    arc = match.group("name")
+                    if arc in patched_arcs:
+                        continue
+                    if replacement := self.arc_replacements.get(arc):
+                        object_arc.set_file_data(path, replacement.read_bytes())
+                        patched_arcs.add(arc)
+                        objpack_modified = True
+        if objpack_modified:
+            objpack_data = object_arc.to_buffer()
+            write_bytes_create_dirs(
+                self.modified_extract_path
+                / "DATA"
+                / "files"
+                / "Object"
+                / "ObjectPack.arc.LZ",
+                nlzss11.compress(objpack_data),
+            )

@@ -62,6 +62,7 @@
 - Added "Main Node" option to Open LMF (by YourAverageLink)
   - When enabled, the fire, water, and lightning nodes will start out as active, but the player still needs to activate the main node (which requires an explosive to reveal the timeshift stone) to raise LMF.
 - Barren areas are now less likely to receive random location hints
+- arc-replacements will now also replace arcs in stages
 ### Bugfixes
 - always copy layer 0, this fixes various bugs, where changes from previous randomizations were not reverted
 - fix gorko sometimes asking to draw bombs even when you don't have them
