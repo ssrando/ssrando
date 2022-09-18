@@ -208,6 +208,7 @@ class HintDistribution:
             )
         )
 
+        # creates a list of boss key locations for required dungeons
         self.required_boss_key_locations = [
             loc
             for loc, item in self.logic.done_item_locations.items()
