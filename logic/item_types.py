@@ -1,11 +1,8 @@
 PROGRESS_ITEMS = (
     [
-        "Slingshot",
         "Bomb Bag",
         "Gust Bellows",
         "Whip",
-        "Bow",
-        "Bug Net",
         "Water Scale",
         "Fireshield Earrings",
         "Clawshots",
@@ -34,7 +31,10 @@ PROGRESS_ITEMS = (
     + ["Gratitude Crystal"] * 15
     + ["Progressive Sword"] * 6
     + ["Progressive Mitts"] * 2
-    + ["Progressive Beetle"] * 2
+    + ["Progressive Beetle"] * 4
+    + ["Progressive Bow"] * 3
+    + ["Progressive Slingshot"] * 2
+    + ["Progressive Bug Net"] * 2
     + ["Progressive Pouch"] * 5
     + ["Empty Bottle"] * 5
     + ["Progressive Wallet"] * 4

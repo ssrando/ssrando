@@ -2,7 +2,7 @@
 
 # Words Conventions:
 
-#   - Beginning of Checks, Adjectives, Nound and Verbs are Capitalized, not Prepositions (Does Look Weird in a Sentence, not in Checks)
+#   - Beginning of Checks, Adjectives, Nouns and Verbs are Capitalized, not Prepositions (Does Look Weird in a Sentence, not in Checks)
 
 #   - Macros using words implying location like Access, Get Past, Reach (also, Retrieve) must include the previous location in their requirements (Get Past X must include Access X)
 
@@ -37,7 +37,19 @@ Hook Beetle:
   Progressive Beetle x2
 
 Quick Beetle:
-  Hook Beetle & Can Access Deep Woods & Can Activate Mines First Timeshift Stone & Can Defeat Bokoblins
+  (Hook Beetle & Emerald Tablet & Amber Tablet & Can Defeat Bokoblins & Option "gondo-upgrades" Disabled) | Progressive Beetle x3
+
+Tough Beetle:
+  Progressive Beetle x4
+  
+Bow:
+  Progressive Bow x1
+  
+Slingshot:
+  Progressive Slingshot x1
+  
+Bug Net:
+  Progressive Bug Net x1
 
 Digging Mitts:
   Progressive Mitts x1
@@ -380,8 +392,8 @@ Central Skyloft - Gossip Stone on Floating Island:
   Clawshots
 
 Central Skyloft - Crystal on Waterfall Island:
-  Clawshots | (Hook Beetle & Upgrade Hook Beetle Trick)
-  # Can reach with Tough Beetle
+  Clawshots | Quick Beetle
+  # Can reach with Quick Beetle
 
 Central Skyloft - Waterfall Goddess Chest:
   Goddess Cube in Pirate Stronghold & Clawshots
@@ -1307,7 +1319,7 @@ Can Access Dungeon Entrance in Lanayru Desert:
 
 Can Access Lanayru Desert Secret Passageway:
   Can Access Second Part of Lanayru Desert &
-  (Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick))
+  (Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Tough Beetle)
   # Scene Flag 4x01 is "Blow up wall revealing path to HP"
 
 Lanayru Desert - Secret Passageway Chest:

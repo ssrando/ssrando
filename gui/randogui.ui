@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1051</width>
-    <height>734</height>
+    <height>738</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -161,7 +161,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>166</width>
+         <width>169</width>
          <height>89</height>
         </rect>
        </property>
@@ -759,7 +759,7 @@
          <x>10</x>
          <y>19</y>
          <width>181</width>
-         <height>242</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -854,9 +854,9 @@
      <widget class="QGroupBox" name="groupBox_7">
       <property name="geometry">
        <rect>
-        <x>620</x>
+        <x>630</x>
         <y>10</y>
-        <width>201</width>
+        <width>191</width>
         <height>251</height>
        </rect>
       </property>
@@ -996,6 +996,27 @@
          </widget>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_20">
+          <item>
+           <widget class="QLabel" name="label_for_option_demise_count">
+            <property name="text">
+             <string>Demise Count</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="option_demise_count">
+            <property name="maximumSize">
+             <size>
+              <width>41</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
          <spacer name="verticalSpacer_5">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1110,7 +1131,7 @@
        <rect>
         <x>420</x>
         <y>10</y>
-        <width>191</width>
+        <width>201</width>
         <height>251</height>
        </rect>
       </property>
@@ -1122,7 +1143,7 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>206</width>
+         <width>186</width>
          <height>221</height>
         </rect>
        </property>
@@ -1156,7 +1177,7 @@
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_31">
+         <layout class="QVBoxLayout" name="verticalLayout_trialshuffle">
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
@@ -1206,7 +1227,7 @@
          <x>10</x>
          <y>20</y>
          <width>181</width>
-         <height>211</height>
+         <height>210</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1246,9 +1267,9 @@
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_fix_bit_crashes">
+         <widget class="QCheckBox" name="option_gondo_upgrades">
           <property name="text">
-           <string>Fix BiT crashes</string>
+           <string>Place Scrap Shop Upgrades</string>
           </property>
          </widget>
         </item>
@@ -1260,30 +1281,29 @@
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_20">
-          <item>
-           <widget class="QLabel" name="label_for_option_demise_count">
-            <property name="text">
-             <string>Demise Count</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="option_demise_count">
-            <property name="maximumSize">
-             <size>
-              <width>41</width>
-              <height>16777215</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QCheckBox" name="option_fix_bit_crashes">
+          <property name="text">
+           <string>Fix BiT crashes</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_17">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
      </widget>
-     <widget class="QGroupBox" name="groupBox_17">
+     <widget class="QGroupBox" name="groupBox_16">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -1299,9 +1319,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>19</y>
+         <y>20</y>
          <width>171</width>
-         <height>221</height>
+         <height>211</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_31">
@@ -1316,21 +1336,25 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_for_option_triforce_shuffle">
-          <property name="text">
-           <string>Triforce Shuffle</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="option_triforce_shuffle">
-          <property name="currentText">
-           <string/>
-          </property>
-          <property name="currentIndex">
-           <number>-1</number>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_38">
+          <item>
+           <widget class="QLabel" name="label_for_option_triforce_shuffle">
+            <property name="text">
+             <string>Triforce Shuffle</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_triforce_shuffle">
+            <property name="currentText">
+             <string/>
+            </property>
+            <property name="currentIndex">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <spacer name="verticalSpacer_6">

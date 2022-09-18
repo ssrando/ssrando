@@ -249,6 +249,13 @@
   bits: 2
   help: Makes Freestanding Rupees be able to be randomized!
   ui: option_rupeesanity
+- name: Place Scrap Shop Upgrades
+  command: gondo-upgrades
+  type: boolean
+  default: false
+  help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for 
+    the Beetle, Bow, Bug Net, and Slingshot.
+  ui: option_gondo_upgrades
 - name: Gate of Time Starting State
   command: got-start
   type: singlechoice
