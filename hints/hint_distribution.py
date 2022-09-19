@@ -528,7 +528,7 @@ class HintDistribution:
             self.logic.done_item_locations[loc],
             True,
             self.logic.item_locations[loc].get("text"),
-            "boss key",
+            "boss_key",
         )
 
     def _create_junk_hint(self):
