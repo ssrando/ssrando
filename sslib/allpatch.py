@@ -314,7 +314,7 @@ class AllPatcher:
             oarc_path = self.arc_replacements.get(arcname) or (
                 self.oarc_cache_path / arcname
             )
-            stageu8.add_file_data(f"oarc/{arcname}", oarc_path.read_bytes())
+            object_arc.add_file_data(f"oarc/{arcname}", oarc_path.read_bytes())
             patched_arcs.add(arcname)
             objpack_modified = True
         if self.arc_replacements:
