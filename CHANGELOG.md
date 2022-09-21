@@ -4,6 +4,12 @@
 ### Changes
 ### Bugfixes
 
+## 1.3.1
+### Changes
+### Bugfixes
+- Fix broken rare treasures (regression from previous version)
+- Fix glitched logic (regression from previous version)
+
 ## 1.3.0
 ### Options
 - Added bomb throw tricks for Beedle's Shop and Skyview (by NULL)
