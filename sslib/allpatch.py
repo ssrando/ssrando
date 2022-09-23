@@ -38,10 +38,11 @@ class AllPatcher:
         self.oarc_cache_path = oarc_cache_path
         self.copy_unmodified = copy_unmodified
         self.arc_replacements = {}
-        for replace_path in arc_replacement_path.iterdir():
-            arcname = replace_path.parts[-1]
-            if arcname.endswith(".arc"):
-                self.arc_replacements[arcname] = replace_path
+        if arc_replacement_path.is_dir():
+            for replace_path in arc_replacement_path.iterdir():
+                arcname = replace_path.parts[-1]
+                if arcname.endswith(".arc"):
+                    self.arc_replacements[arcname] = replace_path
         self.objpackoarcadd = []
         self.stage_oarc_add = {}
         self.stage_oarc_delete = {}
