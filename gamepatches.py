@@ -1904,7 +1904,6 @@ class GamePatcher:
                     },
                 )
                 i=i+1024
-                print(0xFF000000+i)
 
 
 
