@@ -1118,6 +1118,7 @@ class GamePatcher:
         self.load_base_patches()
         self.add_entrance_rando_patches()
         self.add_trial_rando_patches()
+        self.AncJwls_into_Item()
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.shopsanity_patches()
         self.do_build_arc_cache()
@@ -1878,6 +1879,34 @@ class GamePatcher:
                     "object": demise,
                 },
             )
+
+    def AncJwls_into_Item(self):
+        for trial in TRIAL_OBJECT_IDS:
+            params = []
+            locs = []
+            relic_list = []
+            for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
+                if item_type == "Relics":
+                    relic_list = objlist
+            locs.extend(random.sample(relic_list,5))
+            i=876544
+            for (id, room) in locs:
+                self.add_patch_to_stage(
+                    trial,
+                    {
+                        "name": "AncJwls into Item",
+                        "type": "objpatch",
+                        "id": id,
+                        "layer": 2,
+                        "room": room,
+                        "objtype": "OBJ ",
+                        "object": {"params1": 0xFF000000+i, "name": "Item"},
+                    },
+                )
+                i=i+1024
+                print(0xFF000000+i)
+
+
 
     def shuffle_trial_objects(self):
         ITEM_PARAM_MAP = {

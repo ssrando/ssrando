@@ -1666,7 +1666,31 @@ Skyloft Silent Realm - Stone of Trials:
   Paths:
     - stage/S000/r0/l2/WarpObj
   text: the <r<goddess's final trial>> grants
-
+Skyloft Silent Realm - Relic 1:
+  original item: Dusk Relic
+  type: skyloft, silent realm
+  Paths:
+    - stage/S000/r0/l2/Item/88
+Skyloft Silent Realm - Relic 2:
+  original item: Dusk Relic
+  type: skyloft, silent realm
+  Paths:
+    - stage/S000/r0/l2/Item/89
+Skyloft Silent Realm - Relic 3:
+  original item: Dusk Relic
+  type: skyloft, silent realm
+  Paths:
+    - stage/S000/r0/l2/Item/90
+#Skyloft Silent Realm - Relic 4:
+#  original item: Dusk Relic
+#  type: skyloft, silent realm
+#  Paths:
+#    - stage/S000/r0/l2/Item/91
+#Skyloft Silent Realm - Relic 5:
+#  original item: Dusk Relic
+#  type: skyloft, silent realm
+#  Paths:
+#    - stage/S000/r0/l2/Item/92
 
 Faron Silent Realm - Water Scale:
   original item: Water Scale
@@ -1674,6 +1698,31 @@ Faron Silent Realm - Water Scale:
   Paths:
     - stage/S100/r0/l2/WarpObj
   text: a <r<trial of courage>> grants
+Faron Silent Realm - Relic 1:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/88
+Faron Silent Realm - Relic 2:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/89
+Faron Silent Realm - Relic 3:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/90
+Faron Silent Realm - Relic 4:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/91
+Faron Silent Realm - Relic 5:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/92
 
 Lanayru Silent Realm - Clawshots:
   original item: Clawshots
@@ -1681,6 +1730,31 @@ Lanayru Silent Realm - Clawshots:
   Paths:
     - stage/S300/r0/l2/WarpObj
   text: a <r<trial of wisdom>> grants
+Lanayru Silent Realm - Relic 1:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/88
+Lanayru Silent Realm - Relic 2:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/89
+Lanayru Silent Realm - Relic 3:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/90
+Lanayru Silent Realm - Relic 4:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/91
+Lanayru Silent Realm - Relic 5:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/92
  
 Eldin Silent Realm - Fireshield Earrings:
   original item: Fireshield Earrings
@@ -1688,3 +1762,28 @@ Eldin Silent Realm - Fireshield Earrings:
   Paths:
     - stage/S200/r2/l2/WarpObj
   text: a <r<trial of power>> grants
+Eldin Silent Realm - Relic 1:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/88
+Eldin Silent Realm - Relic 2:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/89
+Eldin Silent Realm - Relic 3:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/90
+Eldin Silent Realm - Relic 4:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/91
+Eldin Silent Realm - Relic 5:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/92
