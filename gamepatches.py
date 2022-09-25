@@ -1971,7 +1971,6 @@ class GamePatcher:
                     relic_list = objlist
             if trial == "S200":
                 relic_list = self.fix_eldin(relic_list)
-            print(relic_list)
             locs.extend(random.sample(relic_list,5))
             params1 = 0xFF0D6000
             for (id, room) in locs:
