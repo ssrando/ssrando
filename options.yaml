@@ -587,7 +587,7 @@
     - Off
     - Only in Silent Realms
   default: Only in Silent Realms
-  help: Randomizes Treasure into Items. Only in Silent Realm randomizes 5 Dusk Relics into Items
+  help: Randomizes Treasure into Items. Only in Silent Realm randomizes 5 Dusk Relics into Items. For eldin can only randomize Dusk relics in room 2
   #ui: option_treasuresanity
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution

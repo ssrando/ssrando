@@ -1897,6 +1897,9 @@ class GamePatcher:
             params = []
             locs = []
             relic_list = []
+            tear_list = []
+            lightfruit_list = []
+            stamina_list = []
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
                 if item_type == "Relics" and self.placement_file.options[
                     "shuffle-trial-objects"
@@ -1938,8 +1941,26 @@ class GamePatcher:
                 )
                 if actor_name == "AncJwls":
                     relic_list.append((id, room))
+                elif params == 0xFF0FFE2F: #Lightfruit params
+                    lightfruit_list.append((id,room))
+                elif params == 0xFF0FFE2A: #Stamina params
+                    stamina_list.append((id,room))
+                else:
+                    tear_list.append((id,room))
             TRIAL_OBJECT_IDS[trial].update({"Relics": relic_list})
+            TRIAL_OBJECT_IDS[trial].update({"Tears": tear_list})
+            TRIAL_OBJECT_IDS[trial].update({"Light Fruits": lightfruit_list})
+            TRIAL_OBJECT_IDS[trial].update({"Stamina Fruits": stamina_list})
 
+
+    def fix_eldin(self,relic_list):
+        for (id, room) in list(relic_list):
+            if room != 2:
+                relic_list.remove((id, room))
+        if len(relic_list) < 5:
+            self.shuffle_trial_objects()  # reshuffle to get enough room 2 dusk relics
+            self.fix_eldin()
+        return relic_list
 
     def treasuresanity_in_silent_realms(self):
         for trial in TRIAL_OBJECT_IDS:
@@ -1948,7 +1969,9 @@ class GamePatcher:
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
                 if item_type == "Relics":
                     relic_list = objlist
-
+            if trial == "S200":
+                relic_list = self.fix_eldin(relic_list)
+            print(relic_list)
             locs.extend(random.sample(relic_list,5))
             params1 = 0xFF0D6000
             for (id, room) in locs:
