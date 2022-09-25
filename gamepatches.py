@@ -1118,7 +1118,6 @@ class GamePatcher:
         self.load_base_patches()
         self.add_entrance_rando_patches()
         self.add_trial_rando_patches()
-        self.AncJwls_into_Item()
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.shopsanity_patches()
         self.do_build_arc_cache()
@@ -1136,6 +1135,8 @@ class GamePatcher:
         self.add_demises()
         if not self.placement_file.options["shuffle-trial-objects"] == "None":
             self.shuffle_trial_objects()
+        if self.placement_file.options["treasuresanity"] == "Only in Silent Realms":
+            self.treasuresanity_in_silent_realms()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -1880,33 +1881,6 @@ class GamePatcher:
                 },
             )
 
-    def AncJwls_into_Item(self):
-        for trial in TRIAL_OBJECT_IDS:
-            params = []
-            locs = []
-            relic_list = []
-            for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
-                if item_type == "Relics":
-                    relic_list = objlist
-            locs.extend(random.sample(relic_list,5))
-            i=876544
-            for (id, room) in locs:
-                self.add_patch_to_stage(
-                    trial,
-                    {
-                        "name": "AncJwls into Item",
-                        "type": "objpatch",
-                        "id": id,
-                        "layer": 2,
-                        "room": room,
-                        "objtype": "OBJ ",
-                        "object": {"params1": 0xFF000000+i, "name": "Item"},
-                    },
-                )
-                i=i+1024
-
-
-
     def shuffle_trial_objects(self):
         ITEM_PARAM_MAP = {
             "Light Fruits": (0xFF0FFE2F, "Item"),
@@ -1922,6 +1896,7 @@ class GamePatcher:
         for trial in TRIAL_OBJECT_IDS:
             params = []
             locs = []
+            relic_list = []
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
                 if item_type == "Relics" and self.placement_file.options[
                     "shuffle-trial-objects"
@@ -1961,6 +1936,36 @@ class GamePatcher:
                         "object": {"params1": params, "name": actor_name},
                     },
                 )
+                if actor_name == "AncJwls":
+                    relic_list.append((id, room))
+            TRIAL_OBJECT_IDS[trial].update({"Relics": relic_list})
+
+
+    def treasuresanity_in_silent_realms(self):
+        for trial in TRIAL_OBJECT_IDS:
+            locs = []
+            relic_list = []
+            for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
+                if item_type == "Relics":
+                    relic_list = objlist
+
+            locs.extend(random.sample(relic_list,5))
+            params1 = 0xFF0D6000
+            for (id, room) in locs:
+                self.add_patch_to_stage(
+                    trial,
+                    {
+                        "name": "AncJwls into Item",
+                        "type": "objpatch",
+                        "id": id,
+                        "layer": 2,
+                        "room": room,
+                        "objtype": "OBJ ",
+                        "object": {"params1": params1, "name": "Item"},
+                    },
+                )
+                params1=params1+0x400
+
 
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])

@@ -579,6 +579,16 @@
   default: None
   help: Shuffles trial objects amongst themselves (within the same trial). Simple shuffles only tears and light fruits, advanced adds dusk relic spawn locations, and full adds stamina fruits
   ui: option_shuffle_trial_objects
+- name: Treasuresanity
+  command: treasuresanity
+  type: singlechoice
+  bits: 2
+  choices:
+    - Off
+    - Only in Silent Realms
+  default: Only in Silent Realms
+  help: Randomizes Treasure into Items. Only in Silent Realm randomizes 5 Dusk Relics into Items
+  #ui: option_treasuresanity
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution
