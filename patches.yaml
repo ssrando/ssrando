@@ -54,7 +54,7 @@ global:
       - 14 # text in front of VP statue
     Sealed Grounds:
       - 7 # vents active
-      - onlyif: Option "skip-skykeep" Enabled
+      - onlyif: Option "triforce-required" Disabled
         flag: 50 # horde door open
       - onlyif: Option "skip-horde" Enabled
         flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
@@ -78,6 +78,8 @@ global:
         flag: 101 # Fire node active
       - onlyif: Option "open-lmf" Is "Main Node"
         flag: 102 # Water node active
+    Lanayru Gorge:
+      - 10 # Minecart at end of Track
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -416,6 +418,69 @@ D003_8: # this change is purely to make sure D003_8 gets patched, so a perviousl
     layer: 6
     room: 0
     objtype: OBJ
+  - name: remove last triforce cutscene # this does mean if triforces are vanilla you have to leave yourself
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Scene Change for Wisdom layer
+    type: objadd
+    room: 0
+    layer: 1
+    id: 0xFC20
+    objtype: STAG
+    object:
+      params1: 0x3EFFFF01 # scenlink: 1, triggered by scene flag 62
+      params2: 0xFF5FFFFF
+      posx: 0
+      posy: 0
+      posz: 0
+      sizex: 10000
+      sizey: 10000
+      sizez: 10000
+      anglex: 0xFFFF
+      angley: 0
+      anglez: 0xFFFF
+      name: ScChang
+  - name: Scene Change for Power layer
+    type: objadd
+    room: 0
+    layer: 2
+    id: 0xFC20
+    objtype: STAG
+    object:
+      params1: 0x3DFFFF02 # scenlink: 2, triggered by scene flag 61
+      params2: 0xFF5FFFFF
+      posx: 0
+      posy: 0
+      posz: 0
+      sizex: 10000
+      sizey: 10000
+      sizez: 10000
+      anglex: 0xFFFF
+      angley: 0
+      anglez: 0xFFFF
+      name: ScChang
+  - name: Scene Change for Courage layer
+    type: objadd
+    room: 0
+    layer: 3
+    id: 0xFC20
+    objtype: STAG
+    object:
+      params1: 0x40FFFF03 # scenlink: 3, triggered by scene flag 64
+      params2: 0xFF5FFFFF
+      posx: 0
+      posy: 0
+      posz: 0
+      sizex: 10000
+      sizey: 10000
+      sizez: 10000
+      anglex: 0xFFFF
+      angley: 0
+      anglez: 0xFFFF
+      name: ScChang
 F000: # Skyloft
   - name: Trial
     type: oarcadd
@@ -913,6 +978,12 @@ F005r: # Orielle and Parrow's House
     objtype: OBJ
     object:
       trigstoryfid: -1 # always Trigger
+  - name: Delete Parrow before Crystal Quest
+    type: objdelete
+    id: 0xFC13
+    layer: 2
+    room: 0
+    objtype: OBJ
 F008r: # Goddess Statue
   - name: Goddess Sword chest
     type: objadd
@@ -1859,6 +1930,14 @@ F200: # Eldin main area
     layer: 0
     room: 4
     objtype: OBJ
+  - name: Remove 2nd key piece tower cs
+    type: objpatch
+    id: 0x200A
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFF0FF18
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
@@ -2252,6 +2331,12 @@ F300: # lanayru Main Area
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove Boulder cs
+    type: objdelete
+    id: 0xFD53
+    layer: 0
+    room: 0
+    objtype: STAG
   - name: Remove Zelda Dowsing from LMF raising cs
     type: objpatch
     room: 0
@@ -2696,6 +2781,32 @@ F301_6: # outside Pirate stronghold
     object:
       storyflag: -1
       play_cutscene: -1
+  - name: Removeing Nose Rupee 1
+    type: objdelete
+    layer: 2
+    room: 0
+    objtype: OBJ
+    id: 0xFC46
+  - name: Removeing Nose Rupee 2
+    type: objdelete
+    layer: 2
+    room: 0
+    objtype: OBJ
+    id: 0xFC47
+  - name: Forcing Pillar Rupee 1 on layer 0
+    type: objmove
+    layer: 1
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+    id: 0xFC46
+  - name: Forcing Pillar Rupee 2 on layer 0
+    type: objmove
+    room: 0
+    layer: 1
+    destlayer: 0
+    objtype: OBJ
+    id: 0xFC47
 F301_7: # inside Shipyard
   - name: Text near minecart door
     type: objdelete
@@ -2974,6 +3085,95 @@ D301_1: # Sandship B
     layer: 0
     room: 0
     objtype: OBJ
+F302: # Lanayru Gorge
+  - name: Layer override
+    type: layeroverride
+    override: # always be layer 2
+      - story_flag: -1
+        night: 0
+        layer: 2
+  - name: Unlock Door
+    type: objpatch
+    id: 0x2BFF
+    index: 0
+    layer: 0
+    objtype: DOOR
+    object:
+      anglex: 0xFFFF # Always unlocked
+  - name: Patch Entry of Thunderdragon after heal
+    type: objpatch
+    id: 0x10D0
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      talk_behaviour: 46070
+  - name: Delete trigger preventing you from moveing over bridge
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Patch wounded Thuderdragon to always trigger
+    type: objpatch
+    id: 0x10D1
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1 # Always trigger
+  - name: Move Key to Layer 2
+    type: objmove
+    id: 0xFCC3
+    layer: 1
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: patch FrmLand
+    type: objpatch
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFF4D11E2
+      params2: 0xFFFFFFFF
+      posx: 9804.2412109375
+      posy: 350
+      posz: -4532.95361328125
+      anglex: 0
+      angley: 16384
+      anglez: 0
+      name: Soil
+  - name: delete Fi after Lanayru SotH
+    type: objdelete
+    id: 0xFCC0
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Remove Lanayru Soth from CS
+    type: objpatch
+    room: 0
+    index: 8
+    objtype: EVNT
+    object:
+      item: -1 # no lanayru Soth anymore
+  - name: extra Bomb flower
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: 4100
+      posy: 28.9521332
+      posz: -3200
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFC50
+      name: Bombf
 F303: # Lanayru Caves
   - name: Layer override
     type: layeroverride
@@ -2984,6 +3184,22 @@ F303: # Lanayru Caves
       - story_flag: -1
         night: 0
         layer: 0
+  - name: Delete Wall blocking path to Gorge
+    type: objdelete
+    id: 0xFC62
+    layer: 1
+    room: 0
+    objtype: SOBJ
+  - name: Move Golo out of the Way
+    type: objpatch
+    room: 0
+    layer: 1
+    id: 0xFC5C
+    objtype: OBJ
+    object:
+      posx: -195
+      posy: 0
+      posz: 2146
   - name: Fi text after chest
     type: objdelete
     id: 0xFC25
@@ -3023,6 +3239,12 @@ F402: # Sealed Temple
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Delete LTF Tree
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 2
+    objtype: OBJ
   - name: SotH start cs
     type: objdelete
     id: 0xFC4F
@@ -3311,6 +3533,23 @@ F404: # Hylia's Temple
     layer: 0
     room: 2
     objtype: OBJ
+  - name: Trigger to Check Triforces
+    type: objadd
+    onlyif: Option "triforce-required" Enabled
+    room: 2
+    layer: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFEA1400 # triggered by triforce completed
+      params2: 0xFF1FFFFF
+      posx: 0
+      posy: 7600
+      posz: 8250
+      anglex: 0x32FF # sets 7x04
+      angley: 0xFFFF
+      anglez: 50220 # entrypoint 502_20
+      id: 0xFC40
+      name: NpcTke
 F403: # Hylia's Realm
   - name: Layer override
     type: layeroverride

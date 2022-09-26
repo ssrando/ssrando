@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1051, 734)
+        MainWindow.resize(1051, 738)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
         self.groupBox_12.setGeometry(QRect(10, 130, 181, 131))
         self.verticalLayoutWidget_13 = QWidget(self.groupBox_12)
         self.verticalLayoutWidget_13.setObjectName(u"verticalLayoutWidget_13")
-        self.verticalLayoutWidget_13.setGeometry(QRect(10, 20, 166, 89))
+        self.verticalLayoutWidget_13.setGeometry(QRect(10, 20, 169, 89))
         self.verticalLayout_33 = QVBoxLayout(self.verticalLayoutWidget_13)
         self.verticalLayout_33.setObjectName(u"verticalLayout_33")
         self.verticalLayout_33.setContentsMargins(0, 0, 0, 0)
@@ -254,62 +254,62 @@ class Ui_MainWindow(object):
 
         self.groupBox = QGroupBox(self.tab_3)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(10, 70, 1001, 161))
+        self.groupBox.setGeometry(QRect(10, 70, 1001, 191))
         self.gridLayoutWidget_3 = QWidget(self.groupBox)
         self.gridLayoutWidget_3.setObjectName(u"gridLayoutWidget_3")
-        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 981, 140))
+        self.gridLayoutWidget_3.setGeometry(QRect(10, 20, 981, 164))
         self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.progression_freestanding = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_freestanding.setObjectName(u"progression_freestanding")
+
+        self.gridLayout_3.addWidget(self.progression_freestanding, 1, 4, 1, 1)
+
         self.progression_miscellaneous = QCheckBox(self.gridLayoutWidget_3)
         self.progression_miscellaneous.setObjectName(u"progression_miscellaneous")
 
-        self.gridLayout_3.addWidget(self.progression_miscellaneous, 1, 4, 1, 1)
-
-        self.progression_long = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_long.setObjectName(u"progression_long")
-
-        self.gridLayout_3.addWidget(self.progression_long, 4, 1, 1, 1)
-
-        self.progression_short = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_short.setObjectName(u"progression_short")
-
-        self.gridLayout_3.addWidget(self.progression_short, 4, 0, 1, 1)
-
-        self.progression_free_gift = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_free_gift.setObjectName(u"progression_free_gift")
-
-        self.gridLayout_3.addWidget(self.progression_free_gift, 1, 2, 1, 1)
-
-        self.progression_digging = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_digging.setObjectName(u"progression_digging")
-
-        self.gridLayout_3.addWidget(self.progression_digging, 2, 1, 1, 1)
-
-        self.progression_dungeon = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_dungeon.setObjectName(u"progression_dungeon")
-
-        self.gridLayout_3.addWidget(self.progression_dungeon, 1, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_miscellaneous, 1, 5, 1, 1)
 
         self.progression_spiral_charge = QCheckBox(self.gridLayoutWidget_3)
         self.progression_spiral_charge.setObjectName(u"progression_spiral_charge")
 
         self.gridLayout_3.addWidget(self.progression_spiral_charge, 3, 0, 1, 1)
 
-        self.progression_crystal = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_crystal.setObjectName(u"progression_crystal")
-
-        self.gridLayout_3.addWidget(self.progression_crystal, 3, 3, 1, 1)
-
         self.progression_bombable = QCheckBox(self.gridLayoutWidget_3)
         self.progression_bombable.setObjectName(u"progression_bombable")
 
-        self.gridLayout_3.addWidget(self.progression_bombable, 2, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_bombable, 2, 3, 1, 1)
+
+        self.progression_silent_realm = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_silent_realm.setObjectName(u"progression_silent_realm")
+
+        self.gridLayout_3.addWidget(self.progression_silent_realm, 2, 0, 1, 1)
+
+        self.progression_long = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_long.setObjectName(u"progression_long")
+
+        self.gridLayout_3.addWidget(self.progression_long, 4, 2, 1, 1)
+
+        self.progression_song = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_song.setObjectName(u"progression_song")
+
+        self.gridLayout_3.addWidget(self.progression_song, 2, 5, 1, 1)
 
         self.progression_minigame = QCheckBox(self.gridLayoutWidget_3)
         self.progression_minigame.setObjectName(u"progression_minigame")
 
-        self.gridLayout_3.addWidget(self.progression_minigame, 3, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_minigame, 3, 2, 1, 1)
+
+        self.progression_scrapper = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_scrapper.setObjectName(u"progression_scrapper")
+
+        self.gridLayout_3.addWidget(self.progression_scrapper, 4, 5, 1, 1)
+
+        self.progression_dungeon = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_dungeon.setObjectName(u"progression_dungeon")
+
+        self.gridLayout_3.addWidget(self.progression_dungeon, 1, 0, 1, 1)
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
@@ -324,72 +324,67 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.label_for_option_max_batreaux_reward)
 
 
-        self.gridLayout_3.addLayout(self.horizontalLayout_6, 3, 2, 1, 1)
-
-        self.progression_combat = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_combat.setObjectName(u"progression_combat")
-
-        self.gridLayout_3.addWidget(self.progression_combat, 2, 3, 1, 1)
-
-        self.progression_mini_dungeon = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_mini_dungeon.setObjectName(u"progression_mini_dungeon")
-
-        self.gridLayout_3.addWidget(self.progression_mini_dungeon, 1, 1, 1, 1)
-
-        self.progression_freestanding = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_freestanding.setObjectName(u"progression_freestanding")
-
-        self.gridLayout_3.addWidget(self.progression_freestanding, 1, 3, 1, 1)
+        self.gridLayout_3.addLayout(self.horizontalLayout_6, 3, 3, 1, 1)
 
         self.progression_crystal_quest = QCheckBox(self.gridLayoutWidget_3)
         self.progression_crystal_quest.setObjectName(u"progression_crystal_quest")
 
-        self.gridLayout_3.addWidget(self.progression_crystal_quest, 4, 3, 1, 1)
-
-        self.progression_song = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_song.setObjectName(u"progression_song")
-
-        self.gridLayout_3.addWidget(self.progression_song, 2, 4, 1, 1)
-
-        self.progression_scrapper = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_scrapper.setObjectName(u"progression_scrapper")
-
-        self.gridLayout_3.addWidget(self.progression_scrapper, 4, 4, 1, 1)
-
-        self.progression_silent_realm = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_silent_realm.setObjectName(u"progression_silent_realm")
-
-        self.gridLayout_3.addWidget(self.progression_silent_realm, 2, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_crystal_quest, 4, 4, 1, 1)
 
         self.progression_peatrice = QCheckBox(self.gridLayoutWidget_3)
         self.progression_peatrice.setObjectName(u"progression_peatrice")
 
-        self.gridLayout_3.addWidget(self.progression_peatrice, 3, 4, 1, 1)
-
-        self.progression_fetch = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_fetch.setObjectName(u"progression_fetch")
-
-        self.gridLayout_3.addWidget(self.progression_fetch, 4, 2, 1, 1)
-
-        self.progression_beedle = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_beedle.setObjectName(u"progression_beedle")
-
-        self.gridLayout_3.addWidget(self.progression_beedle, 5, 1, 1, 1)
-
-        self.progression_cheap = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_cheap.setObjectName(u"progression_cheap")
-
-        self.gridLayout_3.addWidget(self.progression_cheap, 5, 2, 1, 1)
-
-        self.progression_medium = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_medium.setObjectName(u"progression_medium")
-
-        self.gridLayout_3.addWidget(self.progression_medium, 5, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_peatrice, 3, 5, 1, 1)
 
         self.progression_expensive = QCheckBox(self.gridLayoutWidget_3)
         self.progression_expensive.setObjectName(u"progression_expensive")
 
-        self.gridLayout_3.addWidget(self.progression_expensive, 5, 4, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_expensive, 5, 5, 1, 1)
+
+        self.progression_combat = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_combat.setObjectName(u"progression_combat")
+
+        self.gridLayout_3.addWidget(self.progression_combat, 2, 4, 1, 1)
+
+        self.progression_crystal = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_crystal.setObjectName(u"progression_crystal")
+
+        self.gridLayout_3.addWidget(self.progression_crystal, 3, 4, 1, 1)
+
+        self.progression_cheap = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_cheap.setObjectName(u"progression_cheap")
+
+        self.gridLayout_3.addWidget(self.progression_cheap, 5, 3, 1, 1)
+
+        self.progression_free_gift = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_free_gift.setObjectName(u"progression_free_gift")
+
+        self.gridLayout_3.addWidget(self.progression_free_gift, 1, 3, 1, 1)
+
+        self.progression_mini_dungeon = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_mini_dungeon.setObjectName(u"progression_mini_dungeon")
+
+        self.gridLayout_3.addWidget(self.progression_mini_dungeon, 1, 2, 1, 1)
+
+        self.progression_fetch = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_fetch.setObjectName(u"progression_fetch")
+
+        self.gridLayout_3.addWidget(self.progression_fetch, 4, 3, 1, 1)
+
+        self.progression_digging = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_digging.setObjectName(u"progression_digging")
+
+        self.gridLayout_3.addWidget(self.progression_digging, 2, 2, 1, 1)
+
+        self.progression_beedle = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_beedle.setObjectName(u"progression_beedle")
+
+        self.gridLayout_3.addWidget(self.progression_beedle, 5, 2, 1, 1)
+
+        self.progression_medium = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_medium.setObjectName(u"progression_medium")
+
+        self.gridLayout_3.addWidget(self.progression_medium, 5, 4, 1, 1)
 
         self.horizontalLayout_11 = QHBoxLayout()
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
@@ -406,9 +401,29 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addLayout(self.horizontalLayout_11, 5, 0, 1, 1)
 
+        self.progression_short = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_short.setObjectName(u"progression_short")
+
+        self.gridLayout_3.addWidget(self.progression_short, 4, 0, 1, 1)
+
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.option_rupeesanity = QComboBox(self.gridLayoutWidget_3)
+        self.option_rupeesanity.setObjectName(u"option_rupeesanity")
+
+        self.horizontalLayout_9.addWidget(self.option_rupeesanity)
+
+        self.label_for_option_rupeesanity = QLabel(self.gridLayoutWidget_3)
+        self.label_for_option_rupeesanity.setObjectName(u"label_for_option_rupeesanity")
+
+        self.horizontalLayout_9.addWidget(self.label_for_option_rupeesanity)
+
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_9, 6, 0, 1, 1)
+
         self.groupBox_3 = QGroupBox(self.tab_3)
         self.groupBox_3.setObjectName(u"groupBox_3")
-        self.groupBox_3.setGeometry(QRect(10, 240, 1001, 111))
+        self.groupBox_3.setGeometry(QRect(10, 270, 1001, 111))
         self.gridLayoutWidget_4 = QWidget(self.groupBox_3)
         self.gridLayoutWidget_4.setObjectName(u"gridLayoutWidget_4")
         self.gridLayoutWidget_4.setGeometry(QRect(10, 20, 981, 83))
@@ -458,7 +473,7 @@ class Ui_MainWindow(object):
         self.groupBox_5.setGeometry(QRect(10, 10, 201, 251))
         self.verticalLayoutWidget = QWidget(self.groupBox_5)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 181, 223))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 19, 181, 221))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -529,18 +544,13 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.verticalLayout_5)
 
-        self.option_skip_skykeep = QCheckBox(self.verticalLayoutWidget)
-        self.option_skip_skykeep.setObjectName(u"option_skip_skykeep")
-
-        self.verticalLayout.addWidget(self.option_skip_skykeep)
-
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer_3)
 
         self.groupBox_7 = QGroupBox(self.tab_4)
         self.groupBox_7.setObjectName(u"groupBox_7")
-        self.groupBox_7.setGeometry(QRect(620, 10, 201, 251))
+        self.groupBox_7.setGeometry(QRect(630, 10, 191, 251))
         self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
         self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 181, 221))
@@ -635,6 +645,22 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_14.addWidget(self.option_demise)
 
+        self.horizontalLayout_20 = QHBoxLayout()
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.label_for_option_demise_count = QLabel(self.verticalLayoutWidget_3)
+        self.label_for_option_demise_count.setObjectName(u"label_for_option_demise_count")
+
+        self.horizontalLayout_20.addWidget(self.label_for_option_demise_count)
+
+        self.option_demise_count = QSpinBox(self.verticalLayoutWidget_3)
+        self.option_demise_count.setObjectName(u"option_demise_count")
+        self.option_demise_count.setMaximumSize(QSize(41, 16777215))
+
+        self.horizontalLayout_20.addWidget(self.option_demise_count)
+
+
+        self.verticalLayout_14.addLayout(self.horizontalLayout_20)
+
         self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_14.addItem(self.verticalSpacer_5)
@@ -705,10 +731,10 @@ class Ui_MainWindow(object):
 
         self.groupBox_6 = QGroupBox(self.tab_4)
         self.groupBox_6.setObjectName(u"groupBox_6")
-        self.groupBox_6.setGeometry(QRect(420, 10, 191, 251))
+        self.groupBox_6.setGeometry(QRect(420, 10, 201, 251))
         self.verticalLayoutWidget_4 = QWidget(self.groupBox_6)
         self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
-        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 171, 221))
+        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 186, 221))
         self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_4)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -732,6 +758,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addWidget(self.option_randomize_trials)
 
+        self.verticalLayout_trialshuffle = QVBoxLayout()
+        self.verticalLayout_trialshuffle.setObjectName(u"verticalLayout_trialshuffle")
+        self.label_4 = QLabel(self.verticalLayoutWidget_4)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout_trialshuffle.addWidget(self.label_4)
+
+        self.option_shuffle_trial_objects = QComboBox(self.verticalLayoutWidget_4)
+        self.option_shuffle_trial_objects.setObjectName(u"option_shuffle_trial_objects")
+
+        self.verticalLayout_trialshuffle.addWidget(self.option_shuffle_trial_objects)
+
+
+        self.verticalLayout_7.addLayout(self.verticalLayout_trialshuffle)
+
         self.verticalSpacer = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
         self.verticalLayout_7.addItem(self.verticalSpacer)
@@ -741,7 +782,7 @@ class Ui_MainWindow(object):
         self.groupBox_9.setGeometry(QRect(10, 270, 201, 241))
         self.verticalLayoutWidget_5 = QWidget(self.groupBox_9)
         self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
-        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 181, 211))
+        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 181, 210))
         self.verticalLayout_15 = QVBoxLayout(self.verticalLayoutWidget_5)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
@@ -780,31 +821,62 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addLayout(self.verticalLayout_16)
 
-        self.option_fix_bit_crashes = QCheckBox(self.verticalLayoutWidget_5)
-        self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
+        self.option_gondo_upgrades = QCheckBox(self.verticalLayoutWidget_5)
+        self.option_gondo_upgrades.setObjectName(u"option_gondo_upgrades")
 
-        self.verticalLayout_15.addWidget(self.option_fix_bit_crashes)
+        self.verticalLayout_15.addWidget(self.option_gondo_upgrades)
 
         self.option_hero_mode = QCheckBox(self.verticalLayoutWidget_5)
         self.option_hero_mode.setObjectName(u"option_hero_mode")
 
         self.verticalLayout_15.addWidget(self.option_hero_mode)
 
-        self.horizontalLayout_20 = QHBoxLayout()
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.label_for_option_demise_count = QLabel(self.verticalLayoutWidget_5)
-        self.label_for_option_demise_count.setObjectName(u"label_for_option_demise_count")
+        self.option_fix_bit_crashes = QCheckBox(self.verticalLayoutWidget_5)
+        self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
 
-        self.horizontalLayout_20.addWidget(self.label_for_option_demise_count)
+        self.verticalLayout_15.addWidget(self.option_fix_bit_crashes)
 
-        self.option_demise_count = QSpinBox(self.verticalLayoutWidget_5)
-        self.option_demise_count.setObjectName(u"option_demise_count")
-        self.option_demise_count.setMaximumSize(QSize(41, 16777215))
+        self.verticalSpacer_17 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.horizontalLayout_20.addWidget(self.option_demise_count)
+        self.verticalLayout_15.addItem(self.verticalSpacer_17)
+
+        self.groupBox_16 = QGroupBox(self.tab_4)
+        self.groupBox_16.setObjectName(u"groupBox_16")
+        self.groupBox_16.setGeometry(QRect(220, 270, 191, 241))
+        self.verticalLayoutWidget_15 = QWidget(self.groupBox_16)
+        self.verticalLayoutWidget_15.setObjectName(u"verticalLayoutWidget_15")
+        self.verticalLayoutWidget_15.setGeometry(QRect(10, 20, 171, 211))
+        self.verticalLayout_31 = QVBoxLayout(self.verticalLayoutWidget_15)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.verticalLayout_31.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_37 = QVBoxLayout()
+        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+
+        self.verticalLayout_31.addLayout(self.verticalLayout_37)
+
+        self.option_triforce_required = QCheckBox(self.verticalLayoutWidget_15)
+        self.option_triforce_required.setObjectName(u"option_triforce_required")
+
+        self.verticalLayout_31.addWidget(self.option_triforce_required)
+
+        self.verticalLayout_38 = QVBoxLayout()
+        self.verticalLayout_38.setObjectName(u"verticalLayout_38")
+        self.label_for_option_triforce_shuffle = QLabel(self.verticalLayoutWidget_15)
+        self.label_for_option_triforce_shuffle.setObjectName(u"label_for_option_triforce_shuffle")
+
+        self.verticalLayout_38.addWidget(self.label_for_option_triforce_shuffle)
+
+        self.option_triforce_shuffle = QComboBox(self.verticalLayoutWidget_15)
+        self.option_triforce_shuffle.setObjectName(u"option_triforce_shuffle")
+
+        self.verticalLayout_38.addWidget(self.option_triforce_shuffle)
 
 
-        self.verticalLayout_15.addLayout(self.horizontalLayout_20)
+        self.verticalLayout_31.addLayout(self.verticalLayout_38)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_6)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
@@ -1090,8 +1162,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(2)
         self.option_randomize_entrances.setCurrentIndex(-1)
+        self.option_triforce_shuffle.setCurrentIndex(-1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1128,31 +1201,32 @@ class Ui_MainWindow(object):
         self.progression_eldin.setText(QCoreApplication.translate("MainWindow", u"Eldin", None))
         self.progression_lanayru.setText(QCoreApplication.translate("MainWindow", u"Lanayru", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Where should progress items appear?", None))
-        self.progression_miscellaneous.setText(QCoreApplication.translate("MainWindow", u"Miscellaneous", None))
-        self.progression_long.setText(QCoreApplication.translate("MainWindow", u"Long Quests", None))
-        self.progression_short.setText(QCoreApplication.translate("MainWindow", u"Short Quests", None))
-        self.progression_free_gift.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
-        self.progression_digging.setText(QCoreApplication.translate("MainWindow", u"Digging Spots", None))
-        self.progression_dungeon.setText(QCoreApplication.translate("MainWindow", u"Dungeons", None))
-        self.progression_spiral_charge.setText(QCoreApplication.translate("MainWindow", u"Spiral Charge Chests", None))
-        self.progression_crystal.setText(QCoreApplication.translate("MainWindow", u"Loose Crystals", None))
-        self.progression_bombable.setText(QCoreApplication.translate("MainWindow", u"Bombable Walls", None))
-        self.progression_minigame.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
-        self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Batreaux", None))
-        self.progression_combat.setText(QCoreApplication.translate("MainWindow", u"Combat Rewards", None))
-        self.progression_mini_dungeon.setText(QCoreApplication.translate("MainWindow", u"Mini Dungeons", None))
         self.progression_freestanding.setText(QCoreApplication.translate("MainWindow", u"Freestanding Items", None))
-        self.progression_crystal_quest.setText(QCoreApplication.translate("MainWindow", u"Crystal Quests", None))
-        self.progression_song.setText(QCoreApplication.translate("MainWindow", u"Songs", None))
-        self.progression_scrapper.setText(QCoreApplication.translate("MainWindow", u"Scrapper Quests", None))
+        self.progression_miscellaneous.setText(QCoreApplication.translate("MainWindow", u"Miscellaneous", None))
+        self.progression_spiral_charge.setText(QCoreApplication.translate("MainWindow", u"Spiral Charge Chests", None))
+        self.progression_bombable.setText(QCoreApplication.translate("MainWindow", u"Bombable Walls", None))
         self.progression_silent_realm.setText(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
+        self.progression_long.setText(QCoreApplication.translate("MainWindow", u"Long Quests", None))
+        self.progression_song.setText(QCoreApplication.translate("MainWindow", u"Songs", None))
+        self.progression_minigame.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
+        self.progression_scrapper.setText(QCoreApplication.translate("MainWindow", u"Scrapper Quests", None))
+        self.progression_dungeon.setText(QCoreApplication.translate("MainWindow", u"Dungeons", None))
+        self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Batreaux", None))
+        self.progression_crystal_quest.setText(QCoreApplication.translate("MainWindow", u"Crystal Quests", None))
         self.progression_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
-        self.progression_fetch.setText(QCoreApplication.translate("MainWindow", u"Fetch Quests", None))
-        self.progression_beedle.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
-        self.progression_cheap.setText(QCoreApplication.translate("MainWindow", u"Cheap Purchases", None))
-        self.progression_medium.setText(QCoreApplication.translate("MainWindow", u"Medium Cost Purchases", None))
         self.progression_expensive.setText(QCoreApplication.translate("MainWindow", u"Expensive Purchases", None))
+        self.progression_combat.setText(QCoreApplication.translate("MainWindow", u"Combat Rewards", None))
+        self.progression_crystal.setText(QCoreApplication.translate("MainWindow", u"Loose Crystals", None))
+        self.progression_cheap.setText(QCoreApplication.translate("MainWindow", u"Cheap Purchases", None))
+        self.progression_free_gift.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
+        self.progression_mini_dungeon.setText(QCoreApplication.translate("MainWindow", u"Mini Dungeons", None))
+        self.progression_fetch.setText(QCoreApplication.translate("MainWindow", u"Fetch Quests", None))
+        self.progression_digging.setText(QCoreApplication.translate("MainWindow", u"Digging Spots", None))
+        self.progression_beedle.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
+        self.progression_medium.setText(QCoreApplication.translate("MainWindow", u"Medium Cost Purchases", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Shop Mode", None))
+        self.progression_short.setText(QCoreApplication.translate("MainWindow", u"Short Quests", None))
+        self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Goddess Cube Options", None))
         self.progression_eldin_goddess.setText(QCoreApplication.translate("MainWindow", u"Eldin Volcano", None))
         self.progression_goddess.setText(QCoreApplication.translate("MainWindow", u"Enabled", None))
@@ -1170,7 +1244,6 @@ class Ui_MainWindow(object):
         self.label_for_option_got_sword_requirement.setText(QCoreApplication.translate("MainWindow", u"Sword Requirement", None))
         self.label_for_option_got_dungeon_requirement.setText(QCoreApplication.translate("MainWindow", u"Dungeon Requirement", None))
         self.label_for_option_required_dungeon_count.setText(QCoreApplication.translate("MainWindow", u"Required Dungeons", None))
-        self.option_skip_skykeep.setText(QCoreApplication.translate("MainWindow", u"Skip Sky Keep", None))
         self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"Dungeons", None))
         self.label_for_option_map_mode.setText(QCoreApplication.translate("MainWindow", u"Map Mode", None))
         self.label_for_option_small_key_mode.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))
@@ -1182,6 +1255,7 @@ class Ui_MainWindow(object):
         self.option_horde.setText(QCoreApplication.translate("MainWindow", u"Skip Horde", None))
         self.option_g3.setText(QCoreApplication.translate("MainWindow", u"Skip Ghirahim 3", None))
         self.option_demise.setText(QCoreApplication.translate("MainWindow", u"Skip Demise", None))
+        self.label_for_option_demise_count.setText(QCoreApplication.translate("MainWindow", u"Demise Count", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Open Settings", None))
         self.label_for_option_open_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Open Thunderhead", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
@@ -1190,14 +1264,19 @@ class Ui_MainWindow(object):
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Overworld", None))
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
-        self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realms", None))
+        self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Shuffle Trial Objects", None))
         self.groupBox_9.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
-        self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
+        self.option_gondo_upgrades.setText(QCoreApplication.translate("MainWindow", u"Place Scrap Shop Upgrades", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
-        self.label_for_option_demise_count.setText(QCoreApplication.translate("MainWindow", u"Demise Count", None))
+        self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
+        self.groupBox_16.setTitle(QCoreApplication.translate("MainWindow", u"Triforce", None))
+        self.option_triforce_required.setText(QCoreApplication.translate("MainWindow", u"Triforce Required", None))
+        self.label_for_option_triforce_shuffle.setText(QCoreApplication.translate("MainWindow", u"Triforce Shuffle", None))
+        self.option_triforce_shuffle.setCurrentText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))

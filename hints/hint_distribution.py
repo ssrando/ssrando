@@ -115,6 +115,7 @@ class HintDistribution:
             "item": self._create_item_hint,
             "random": self._create_random_hint,
             "junk": self._create_junk_hint,
+            "bk": self._create_bk_hint,
         }
 
     def read_from_file(self, f):
@@ -207,6 +208,16 @@ class HintDistribution:
             )
         )
 
+        # creates a list of boss key locations for required dungeons
+        self.required_boss_key_locations = [
+            loc
+            for loc, item in self.logic.done_item_locations.items()
+            if ("Boss Key" in item)
+            and Logic.split_location_name_by_zone(loc)[0]
+            in self.logic.required_dungeons
+        ]
+        self.rng.shuffle(self.required_boss_key_locations)
+
         # populate our internal list copies for later manipulation
         self.sots_locations = self.loc_dict_filter(self.logic.rando.sots_locations)
         self.rng.shuffle(self.sots_locations)
@@ -227,7 +238,10 @@ class HintDistribution:
                 continue  # don't hint barren silent realms since they are an always hint
             if self.logic.rando.options["empty-unrequired-dungeons"]:
                 # avoid placing barren hints for unrequired dungeons in race mode
-                if self.logic.rando.options["skip-skykeep"] and zone == "Sky Keep":
+                if (
+                    not self.logic.rando.options["triforce-required"]
+                    or self.logic.rando.options["triforce-shuffle"] == "Anywhere"
+                ) and (zone == "Sky Keep"):
                     # skykeep is always barren when race mode is on and Sky Keep is skipped
                     continue
                 if (
@@ -363,6 +377,8 @@ class HintDistribution:
                     zone = "Eldin Volcano"
                 elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
+                elif zone == "Lanayru Gorge":
+                    zone = "Lanayru Sand Sea"
                 return CubeSotsGoalGossipStoneHint(loc, item, True, zone, None)
         return SotsGoalGossipStoneHint(loc, item, True, zone, None)
 
@@ -401,6 +417,8 @@ class HintDistribution:
                     zone = "Eldin Volcano"
                 elif zone == "Lanayru Mines":
                     zone = "Lanayru Desert"
+                elif zone == "Lanayru Gorge":
+                    zone = "Lanayru Sand Sea"
                 return CubeSotsGoalGossipStoneHint(loc, item, True, zone, goal)
         return SotsGoalGossipStoneHint(loc, item, True, zone, goal)
 
@@ -496,6 +514,21 @@ class HintDistribution:
             True,
             self.logic.item_locations[loc].get("text"),
             "random",
+        )
+
+    def _create_bk_hint(self):
+        if not self.required_boss_key_locations:
+            return None
+        loc = self.required_boss_key_locations.pop()
+        if loc in self.hinted_locations:
+            return self._create_bk_hint()
+        self.hinted_locations.append(loc)
+        return LocationGossipStoneHint(
+            loc,
+            self.logic.done_item_locations[loc],
+            True,
+            self.logic.item_locations[loc].get("text"),
+            "boss_key",
         )
 
     def _create_junk_hint(self):

@@ -57,3 +57,7 @@ Sand Sea - Gossip Stone in Shipyard:
 Lanayru Caves - Gossip Stone in Center:
   textfile: 004-Object
   textindex: 24
+
+Lanayru Caves - Gossip Stone towards Lanayru Gorge:
+  textfile: 004-Object
+  textindex: 29

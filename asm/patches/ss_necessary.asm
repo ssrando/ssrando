@@ -174,6 +174,10 @@ b 0x800c4220 ; skip stuff we don't need anymore
 lwz r6, GLOBAL_MESSAGE_RELATED_CONTEXT@sda21(r13)
 stw r28, 0x2f8(r6) ; currentTextFileNumber
 
+; always use non trial mode when using loadzones
+.org 0x80242060
+li r7, 0 ; force non trial
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

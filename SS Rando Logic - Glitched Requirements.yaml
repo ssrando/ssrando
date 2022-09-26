@@ -36,6 +36,21 @@ Beetle:
 Hook Beetle:
   Progressive Beetle x2
 
+Quick Beetle:
+  (Hook Beetle & Can Access Deep Woods & Can Activate Mines First Timeshift Stone & Can Defeat Bokoblins) | Progressive Beetle x3
+
+Tough Beetle:
+  Progressive Beetle x4
+  
+Bow:
+  Progressive Bow x1
+  
+Slingshot:
+  Progressive Slingshot x1
+  
+Bug Net:
+  Progressive Bug Net x1
+
 Digging Mitts:
   Progressive Mitts x1
 
@@ -1044,6 +1059,9 @@ Central Skyloft - Waterfall Cave First Chest:
 Central Skyloft - Waterfall Cave Second Chest:
   Nothing
 
+Central Skyloft - Rupee Waterfall Cave Crawlspace:
+  Can Enter Waterfall Cave
+
 Central Skyloft - Crystal after Waterfall Cave:
   Can Enter Waterfall Cave at Night | Beetle
 
@@ -1055,7 +1073,7 @@ Central Skyloft - Gossip Stone on Floating Island:
 
 Central Skyloft - Crystal on Waterfall Island:
   Clawshots | Hook Beetle
-  # Can reach with Tough Beetle
+  # Can reach with Quick Beetle
 
 Central Skyloft - Waterfall Goddess Chest:
   Goddess Cube in Pirate Stronghold & Clawshots
@@ -1330,7 +1348,6 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
 
 Thunderhead - Second Goddess Chest on Mogma Mitts Island:
   Can Access Thunderhead & Goddess Cube in Lanayru Gorge & Mogma Mitts
-  # Inaccessible Goddess Cube
 
 ## Bug Heaven
 
@@ -1376,6 +1393,9 @@ Meets Gate of Time Sword Requirement:
 
 #   Determined at runtime
 
+Can Complete Triforce:
+  Triforce of Courage & Triforce of Wisdom & Triforce of Power
+
 Can Access Hylia's Temple:
   Can Access Sealed Temple & Can Access Past
 
@@ -1383,7 +1403,7 @@ Sealed Grounds - Zelda's Blessing:
   Can Access Hylia's Temple
 
 Can Reach and Defeat Demise:
-  Can Access Past & (Can Beat Sky Keep | Option "skip-skykeep" Enabled)
+  Can Access Past & (Can Complete Triforce | Option "triforce-required" Disabled)
 
 Sealed Grounds - Gorko's Goddess Wall Reward:
   Can Access Sealed Temple & Can Unlock Goddess Walls & Goddess Sword
@@ -1453,6 +1473,22 @@ Goddess Cube on East Great Tree with Rope:
 Goddess Cube on East Great Tree with Clawshot Target:
   Can Access Most of Faron Woods & Goddess Sword
 
+#for Checks on Great Tree - Beetle dies from main faron before being able to reach with any beetle
+Faron Woods - Rupee on Great Tree Branch North:
+  Can Access Upper Great Tree & Beetle
+
+Faron Woods - Rupee on Great Tree Branch West:
+  Can Access Upper Great Tree & Beetle
+
+Faron Woods - Rupee on Platform Near Floria Door:
+  Can Access Most of Faron Woods & Beetle
+
+Faron Woods - Rupee on Hollow Tree Root:
+  Can Access Most of Faron Woods
+
+Faron Woods - Rupee on Hollow Tree Branch:
+  Can Access Most of Faron Woods & Beetle
+  
 ## Deep Woods
 
 Can Access Deep Woods:
@@ -1514,9 +1550,6 @@ Faron Woods - Chest inside Great Tree:
 Can Access Lake Floria above Rock:
   Can Open Door to Lake Floria & Water Scale
 
-Lake Floria - Lake Floria Silver Rupee: # currently not randomized
-  Can Access Lake Floria above Rock & Water Scale
-
 Can Access Lake Floria Statue:
   Can Access Lake Floria above Rock |
   (Can Access Floria Waterfall & Water Scale) |
@@ -1536,6 +1569,18 @@ Can Access Dungeon Entrance in Lake Floria:
 Lake Floria - Lake Floria Chest:
   Can Access Lake Floria Statue
 
+Lake Floria - Rupee Under Big Boulder:
+  Can Access Lake Floria above Rock & Water Scale
+
+Lake Floria - Rupee Behind Northeast Boulder Right:
+  Can Access Lake Floria above Rock & Water Scale
+
+Lake Floria - Rupee Behind Northeast Boulder Left:
+  Can Access Lake Floria above Rock & Water Scale
+
+Lake Floria - Rupee Behind Southeast Boulder:
+  Can Access Lake Floria above Rock & Water Scale
+
 Goddess Cube in Lake Floria:
   Can Access Lake Floria Statue & Goddess Sword
 
@@ -1545,14 +1590,14 @@ Lake Floria - Dragon Lair East Chest:
 Lake Floria - Dragon Lair South Chest:
   Can Access Floria Waterfall & Water Scale
 
-Lake Floria - Outside AC: # currently not randomized
-  Can Access Floria Waterfall & Beetle
-
 Goddess Cube in Floria Waterfall:
   Can Access Floria Waterfall & Clawshots & Goddess Sword
 
 Lake Floria - Gossip Stone outside Ancient Cistern:
   Can Access Floria Waterfall
+
+Lake Floria - Rupee High Ledge Outside Cistern Entrance:
+  Can Access Floria Waterfall & Beetle
 
 #Flooded Faron Woods - Water Dragon's Reward:
 
@@ -1573,7 +1618,16 @@ Can Access First Part of Eldin:
 Goddess Cube at Eldin Entrance:
   Can Access First Part of Eldin & Goddess Sword
 
+Eldin Volcano - Rupee Ledge before First Room:
+  Can Access First Part of Eldin
+
 Eldin Volcano - Chest behind Bombable Wall in First Room:
+  Can Access First Part of Eldin
+
+Eldin Volcano - Rupee behind Bombable Wall in First Room:
+  Can Access First Part of Eldin
+
+Eldin Volcano - Rupee in Crawlspace in First Room:
   Can Access First Part of Eldin
 
 Eldin Volcano - Chest after Crawlspace:
@@ -1581,6 +1635,12 @@ Eldin Volcano - Chest after Crawlspace:
 
 Goddess Cube near Mogma Turf Entrance:
   Can Access First Part of Eldin & Goddess Sword
+
+Eldin Volcano - Rupee above Mogma Turf Entrance North:
+  Can Access First Part of Eldin & Beetle
+
+Eldin Volcano - Rupee above Mogma Turf Entrance Southeast:
+  Can Access First Part of Eldin & Beetle
 
 Eldin Volcano - Chest behind Bombable Wall near Cliff:
   Can Access First Part of Eldin
@@ -1602,6 +1662,12 @@ Eldin Silent Realm - Fireshield Earrings:
   Can Access Eldin Silent Realm
 
 Eldin Volcano - Chest behind Bombable Wall near Volcano Ascent:
+  Can Access Second Part of Eldin
+
+Eldin Volcano - Rupee Bombable Wall First Slope Right:
+  Can Access Second Part of Eldin
+
+Eldin Volcano - Rupee Bombable Wall First Slope Left:
   Can Access Second Part of Eldin
 
 Can Play Thrill Digger:
@@ -1996,11 +2062,40 @@ Lanayru Caves - Golo's Gift:
 Lanayru Caves - Gossip Stone in Center:
   Can Access Lanayru Caves
 
+Lanayru Caves - Gossip Stone towards Lanayru Gorge:
+  Can Access Lanayru Caves
+
+## Lanayru Gorge
+
+Can Access Lanayru Gorge:
+  Can Access Lanayru Caves
+
+Goddess Cube in Lanayru Gorge:
+  Can Access Lanayru Gorge & Goddess Sword
+
+Lanayru Gorge - Key Check:
+  Can Access Lanayru Gorge & Beetle
+
+Lanayru Gorge - Seedling:
+  Can Access Lanayru Gorge & Gust Bellows & Can Hit Timeshiftstone & Digging Mitts
+
+Lanayru Gorge - Lanayru Soth:
+  Can Access Lanayru Gorge & Can Hit Timeshiftstone & Life Tree Fruit
+
 ## Lanayru Sand Sea
 
 Can Access Sand Sea:
   Can Access Lanayru Caves & LanayruCaves Small Key x1 & Clawshots
   # You can activate Skipper's boat with clawshots
+
+Lanayru Sand Sea - Rupee Harbor First Pillar:
+  Can Access Sand Sea & Beetle
+
+Lanayru Sand Sea - Rupee Harbor Entrance Crown Right:
+  Can Access Sand Sea & Quick Beetle
+
+Lanayru Sand Sea - Rupee Harbor Entrance Crown Left:
+  Can Access Sand Sea & Quick Beetle
 
 Goddess Cube in Ancient Harbour:
   Can Access Sand Sea & Clawshots & Goddess Sword
@@ -2047,6 +2142,15 @@ Sand Sea - Gossip Stone in Shipyard:
   Can Access Sand Sea
 
 # Pirate Stronghold
+
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar East:
+  Can Access Sand Sea & Quick Beetle
+
+Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar West:
+  Can Access Sand Sea & Quick Beetle
+
+Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose:
+  Can Access Sand Sea & Beetle
 
 Lanayru Sand Sea - Pirate Stronghold - First Chest:
   Can Access Sand Sea
@@ -2178,6 +2282,15 @@ Can Get Past Staldra Room:
   # You can enter from the key door after the rope, from backwards if you can already reach Last Room,
   # or from Unloaded Skyview where the gate between Hub Room and Last Room (and the Skulltula) aren't loaded
 
+Skyview - Rupee Southeast Tunnel:
+  Can Get to Skyview Second Part & Beetle
+
+Skyview - Rupee Southwest Tunnel:
+  Can Get to Skyview Second Part & Beetle
+
+Skyview - Rupee East Tunnel:
+  Can Get to Skyview Second Part & Beetle
+
 Skyview - Beetle:
   Can Get to Skyview Second Part & Distance Activator & (Sword | Can Access Skyview 2)
   # Bombs don't work to hit the switch
@@ -2232,6 +2345,9 @@ Can Beat Skyview:
 Skyview - Ghirahim Heart Container:
   Can Beat Ghirahim 1
 
+Skyview - Rupee on Spring Pillar:
+  Can Beat Ghirahim 1 & Beetle
+
 Skyview - Ruby Tablet:
   Can Beat Skyview
 
@@ -2242,6 +2358,9 @@ Goddess Cube in Skyview Spring:
 
 Earth Temple - Vent Chest:
   Can Access Earth Temple & Digging Mitts
+
+Earth Temple - Rupee above Drawbridge:
+  Can Access Earth Temple & Beetle
 
 Can Lower First ET Drawbridge:
   Beetle | Bow | Long Range Skyward Strike
@@ -2283,6 +2402,9 @@ Can Get Past Boulder Section:
   # Alternatively, RBM up the staircase. Both Scene Flags have it raised
   # Scene Flag 5x08 and 5x02 are "Both pegs pushed"
   # Lava Hop is impossible because the rocks blow-up cutscene is removed
+
+Earth Temple - Rupee in Lava Tunnel:
+  Can Get Past Boulder Section
 
 Earth Temple - Chest Guarded by Lizalfos:
   Can Get Past Boulder Section
@@ -2440,6 +2562,12 @@ Can Do Cistern Clip:
   Sword | Ancient Cistern - Swordless Cistern Clip Trick
   # Jumpslash to land on collision, or try to backflip into it
 
+Ancient Cistern - Rupee East Hand:
+  Can Access Ancient Cistern & Water Scale
+
+Ancient Cistern - Rupee West Hand:
+  Can Access Ancient Cistern & Water Scale
+  
 Can Lower Ancient Cistern Statue:
   ((Can Access AC Main Room Vines | Can Access AC Thread) & Whip) | Can Access AC Boss Key Chest
   # From main room or from under, or using the boss key sequence
@@ -2456,6 +2584,25 @@ Ancient Cistern - Chest in East Part:
   (Water Scale | Ancient Cistern - Lilypad Skip Trick) &
   Can Unlock Combination Lock
   # Lilypad Skip is very difficult
+
+Ancient Cistern - Rupee East Room Main Path:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+Ancient Cistern - Rupee East Room Cubby:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+Ancient Cistern - Rupee East Room Short Tunnel 1:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+Ancient Cistern - Rupee East Room Short Tunnel 2:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+Ancient Cistern - Rupee East Room Short Tunnel 3:
+  Ancient Cistern - Chest in East Part & Water Scale
+
+# Can Be Locked Out Of If activating the water jet thing under the lilypad before collecting the item
+Ancient Cistern - Rupee North Room Under Lilypad:
+  Can Resurface from the AC Gutters & Water Scale
 
 Can Clip into AC Whip Room:
   Can Access Ancient Cistern & Can Do Cistern Clip & Water Scale
@@ -2817,3 +2964,5 @@ Can Beat Sky Keep:
   Can Get Triforce of Power &
   Can Get Triforce of Wisdom
 
+Sky Keep - Rupee in Alcove of FS Room:
+  Can Get Past SK Fire Sanctuary Room & Beetle

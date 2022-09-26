@@ -131,13 +131,23 @@
     scrapper, peatrice, goddess, faron goddess, eldin goddess, lanayru goddess, floria
     goddess, summit goddess, sand sea goddess'
   ui: option_banned_types
-- name: Skip Sky Keep
-  command: skip-skykeep
+- name: Triforce Required
+  command: triforce-required
   type: boolean
-  default: false
-  help: If activated, skips the requirement to beat Sky Keep in order to access the
-    horde in the past
-  ui: option_skip_skykeep
+  default: true
+  help: If activated, the three Triforces will be required to open the door to Hylia's Realm. If disabled, Sky Keep counts as an unrequired dungeon
+  ui: option_triforce_required
+- name: Triforce Shuffle
+  command: triforce-shuffle
+  type: singlechoice
+  bits: 2
+  choices:
+    - Vanilla
+    - Sky Keep
+    - Anywhere
+  default: Vanilla
+  help: Choose where Triforces will appear. Vanilla sets them to their locations in Sky Keep. If Anywhere is chosen, Sky Keep counts as an unrequired dungeon
+  ui: option_triforce_shuffle
 - name: Seed
   command: seed
   type: int
@@ -228,6 +238,24 @@
     pool. All modes also add ruppors to the backup, duplicatable pool for when all other items have been
     placed
   ui: option_rupoor_mode
+- name: Rupeesanity
+  command: rupeesanity
+  type: singlechoice
+  default: Vanilla
+  choices:
+    - Vanilla
+    - No Quick Beetle
+    - All
+  bits: 2
+  help: Makes Freestanding Rupees be able to be randomized!
+  ui: option_rupeesanity
+- name: Place Scrap Shop Upgrades
+  command: gondo-upgrades
+  type: boolean
+  default: false
+  help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for 
+    the Beetle, Bow, Bug Net, and Slingshot.
+  ui: option_gondo_upgrades
 - name: Gate of Time Starting State
   command: got-start
   type: singlechoice
@@ -539,6 +567,18 @@
   default: false
   help: If enabled, item hints will indicate exactly which check the item lies, otherwise, it will just indicate the region.
   ui: option_precise_item
+- name: Shuffle Trial Objects
+  command: shuffle-trial-objects
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - Simple
+    - Advanced
+    - Full
+  default: None
+  help: Shuffles trial objects amongst themselves (within the same trial). Simple shuffles only tears and light fruits, advanced adds dusk relic spawn locations, and full adds stamina fruits
+  ui: option_shuffle_trial_objects
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution
