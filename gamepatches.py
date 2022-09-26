@@ -1969,7 +1969,7 @@ class GamePatcher:
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
                 if item_type == "Relics":
                     relic_list = objlist
-            if trial == "S200":
+            if trial == "S200" and not self.placement_file.options["shuffle-trial-objects"] == "None":
                 relic_list = self.fix_eldin(relic_list)
             locs.extend(random.sample(relic_list,5))
             params1 = 0xFF0D6000
