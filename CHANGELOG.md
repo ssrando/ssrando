@@ -2,9 +2,14 @@
 
 ## Dev
 ### Changes
+### Bugfixes 
+
+## 1.3.2
+### Changes
 - Added Boss Key (BK) hints as a new hint type (by Muzugalium)
   - A BK hint will point to the precise location of the boss key of a required dungeon
 ### Bugfixes
+- Fixed a crash when the arc-replacements folder was missing
 
 ## 1.3.1
 ### Changes
