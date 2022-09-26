@@ -24,3 +24,5 @@ d_a_shop_sampleNP.rel:
   check_needs_custom_storyflag_subtype: 0x8450
 d_a_npc_douguyanightNP.rel:
   select_new_item_column: 0x2F20
+d_a_obj_swrd_prjNP.rel:
+  reveal_goddess_wall_check: 0x99B0

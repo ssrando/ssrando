@@ -606,7 +606,7 @@ Sealed Grounds - Song from Impa:
     - event/501-Inpa/267
     - oarc/F402/l2
 Sealed Grounds - Gorko's Goddess Wall Reward:
-  type: faron, long, dungeon
+  type: faron
   original item: Heart Piece
   Paths:
     - event/503-Goron/630

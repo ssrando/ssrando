@@ -510,3 +510,26 @@ addi r1, r1, 0x40
 blr
 
 .close
+
+.open "d_a_obj_swrd_prjNP.rel" ; goddess wall
+.org @NextFreeSpace
+; replaces the call to "isPlayingHarp" and adds the BotG requirement
+; we do this because otherwise the actor despawns on load, meaning you can't activate goddess walls
+; after getting BotG until you reload
+.global reveal_goddess_wall_check
+reveal_goddess_wall_check:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 20(r1)
+bl isPlayingHarp
+cmpwi r3, 0
+beq reveal_goddess_wall_check_end
+lwz r3, ITEMFLAG_MANAGER@sda21(r13)
+li r4, 0xba ; BAllad (nice coincidence)
+bl FlagManager__getFlagOrCounter
+reveal_goddess_wall_check_end:
+lwz r0, 20(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+.close
