@@ -23,7 +23,7 @@ from tboxSubtypes import tboxSubtypes
 from musicrando import music_rando
 
 from logic.logic import Logic
-from logic.constants import SILENT_REALM_CHECKS, RUPEE_CHECKS, QUICK_BEETLE_CHECKS
+from logic.constants import SILENT_REALM_CHECKS, SILENT_REALM_RELIC_CHECKS, RUPEE_CHECKS, QUICK_BEETLE_CHECKS
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -1198,6 +1198,10 @@ class GamePatcher:
                     temp_item_locations.pop(rupee_check)
                 elif rupee_check in QUICK_BEETLE_CHECKS:
                     temp_item_locations.pop(rupee_check)
+
+        if self.placement_file.options["treasuresanity"] != "Only in Silent Realms":
+            for relic_check in SILENT_REALM_RELIC_CHECKS:
+                temp_item_locations.pop(relic_check)
 
         (
             self.rando_stagepatches,
