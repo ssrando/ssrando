@@ -23,7 +23,12 @@ from tboxSubtypes import tboxSubtypes
 from musicrando import music_rando
 
 from logic.logic import Logic
-from logic.constants import SILENT_REALM_CHECKS, SILENT_REALM_RELIC_CHECKS, RUPEE_CHECKS, QUICK_BEETLE_CHECKS
+from logic.constants import (
+    SILENT_REALM_CHECKS,
+    SILENT_REALM_RELIC_CHECKS,
+    RUPEE_CHECKS,
+    QUICK_BEETLE_CHECKS,
+)
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 

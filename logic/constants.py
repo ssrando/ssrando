@@ -71,25 +71,22 @@ SILENT_REALM_RELIC_CHECKS = [
     "Skyloft Silent Realm - Relic 3",
     "Skyloft Silent Realm - Relic 4",
     "Skyloft Silent Realm - Relic 5",
-
     "Faron Silent Realm - Relic 1",
     "Faron Silent Realm - Relic 2",
     "Faron Silent Realm - Relic 3",
     "Faron Silent Realm - Relic 4",
     "Faron Silent Realm - Relic 5",
-
     "Lanayru Silent Realm - Relic 1",
     "Lanayru Silent Realm - Relic 2",
     "Lanayru Silent Realm - Relic 3",
     "Lanayru Silent Realm - Relic 4",
     "Lanayru Silent Realm - Relic 5",
-
     "Eldin Silent Realm - Relic 1",
     "Eldin Silent Realm - Relic 2",
     "Eldin Silent Realm - Relic 3",
     "Eldin Silent Realm - Relic 4",
     "Eldin Silent Realm - Relic 5",
-    ]
+]
 
 SHOP_CHECKS = [
     "Beedle - 50 Rupee Item",
