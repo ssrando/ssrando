@@ -1967,16 +1967,19 @@ class GamePatcher:
             TRIAL_OBJECT_IDS[trial].update({"Light Fruits": lightfruit_list})
             TRIAL_OBJECT_IDS[trial].update({"Stamina Fruits": stamina_list})
 
-    def fix_eldin(self, relic_list):
-        for (id, room) in list(relic_list):
-            if room != 2:
-                relic_list.remove((id, room))
-        if len(relic_list) < 5:
-            self.shuffle_trial_objects()  # reshuffle to get enough room 2 dusk relics
-            self.fix_eldin(relic_list)
-        return relic_list
-
     def treasuresanity_in_silent_realms(self):
+        if not self.placement_file.options["shuffle-trial-objects"] == "None":
+            x = 0
+            for item_type, objlist in TRIAL_OBJECT_IDS["S200"].items():
+                if item_type == "Relics":
+                    test_list = objlist
+            for (id, room) in test_list:
+                if room == 2:
+                    x = x + 1
+            if self.placement_file.options["trial-treasure-amount"] > x:
+                self.shuffle_trial_objects()  # reshuffle to get enough room 2 dusk relics
+                self.treasuresanity_in_silent_realms()  # redo this
+                return
         for trial in TRIAL_OBJECT_IDS:
             locs = []
             relic_list = []
@@ -1987,7 +1990,9 @@ class GamePatcher:
                 trial == "S200"
                 and not self.placement_file.options["shuffle-trial-objects"] == "None"
             ):
-                relic_list = self.fix_eldin(relic_list)
+                for (id, room) in list(relic_list):
+                    if room != 2:
+                        relic_list.remove((id, room))
             locs.extend(
                 random.sample(
                     relic_list, self.placement_file.options["trial-treasure-amount"]
