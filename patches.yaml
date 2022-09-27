@@ -3257,6 +3257,13 @@ F402: # Sealed Temple
     layer: 4
     room: 2
     objtype: OBJ
+  - name: Remove cs when entering ST
+    type: objpatch
+    room: 2
+    index: 0
+    objtype: PLY
+    object:
+      play_cutscene: -1 # no cs anymore
   - name: Raise GoT CS trigger
     type: objadd
     layer: 2
@@ -3420,19 +3427,10 @@ F401: # Sealed grounds Whirlpool
     layer: 1
     room: 1
     objtype: STAG
-  - name: Door Cs requirement
-    type: objpatch
+  - name: delete Door Cs
+    type: obdelete
     id: 0xFCA2
     layer: 1
-    room: 1
-    objtype: STAG
-    object:
-      trigstoryfid: -1 # always trigger
-  - name: Door cs to Layer 0
-    type: objmove
-    id: 0xFCA2
-    layer: 1
-    destlayer: 0
     room: 1
     objtype: STAG
   - name: Ruined save
