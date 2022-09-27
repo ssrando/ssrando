@@ -72,7 +72,7 @@ CONSUMABLE_ITEMS = (
     + 2 * ["Evil Crystal"]
     + 2 * ["Eldin Ore"]
     + 1 * ["Goddess Plume"]
-    + 1 * ["Dusk Relic"]
+    + 41 * ["Dusk Relic"]
     + 1 * ["Tumbleweed"]
     + 1 * ["5 Bombs"]
 )

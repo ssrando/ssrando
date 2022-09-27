@@ -38,6 +38,7 @@ from .constants import (
     POST_GOAL_LOCS,
     RUPEE_CHECKS,
     QUICK_BEETLE_CHECKS,
+    SILENT_REALM_RELIC_CHECKS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -235,6 +236,15 @@ class Logic:
                     if rupee_check in QUICK_BEETLE_CHECKS:
                         orig_item = self.item_locations[rupee_check]["original item"]
                         self.set_prerandomization_item_location(rupee_check, orig_item)
+        if (
+            self.rando.options["treasuresanity-in-silent-realms"] == False
+            or self.rando.options["trial-treasure-amount"] < 10
+        ):
+            x = 0
+            for relic_check in SILENT_REALM_RELIC_CHECKS:
+                if x < 4 * (10 - self.rando.options["trial-treasure-amount"]):
+                    self.set_prerandomization_item_location(relic_check, "Dusk Relic")
+                    x = x + 1
 
         swords_left = 6 - STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]
         self.sworded_dungeon_locations = []

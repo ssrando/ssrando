@@ -1671,27 +1671,52 @@ Skyloft Silent Realm - Relic 1:
   original item: Dusk Relic
   type: skyloft, silent realm
   Paths:
-    - stage/S000/r0/l2/Item/88
+    - stage/S000/r0/l2/Item/102
 Skyloft Silent Realm - Relic 2:
   original item: Dusk Relic
   type: skyloft, silent realm
   Paths:
-    - stage/S000/r0/l2/Item/89
+    - stage/S000/r0/l2/Item/103
 Skyloft Silent Realm - Relic 3:
   original item: Dusk Relic
   type: skyloft, silent realm
   Paths:
-    - stage/S000/r0/l2/Item/90
+    - stage/S000/r0/l2/Item/104
 Skyloft Silent Realm - Relic 4:
   original item: Dusk Relic
   type: skyloft, silent realm
   Paths:
-    - stage/S000/r0/l2/Item/91
+    - stage/S000/r0/l2/Item/105
 Skyloft Silent Realm - Relic 5:
   original item: Dusk Relic
   type: skyloft, silent realm
   Paths:
-    - stage/S000/r0/l2/Item/92
+    - stage/S000/r0/l2/Item/106
+Skyloft Silent Realm - Relic 6:
+  original item: Dusk Relic
+  type: skyloft, silent realm
+  Paths:
+    - stage/S000/r0/l2/Item/107
+Skyloft Silent Realm - Relic 7:
+  original item: Dusk Relic
+  type: skyloft, silent realm
+  Paths:
+    - stage/S000/r0/l2/Item/108
+Skyloft Silent Realm - Relic 8:
+  original item: Dusk Relic
+  type: skyloft, silent realm
+  Paths:
+    - stage/S000/r0/l2/Item/109
+Skyloft Silent Realm - Relic 9:
+  original item: Dusk Relic
+  type: skyloft, silent realm
+  Paths:
+    - stage/S000/r0/l2/Item/110
+Skyloft Silent Realm - Relic 10:
+  original item: Dusk Relic
+  type: skyloft, silent realm
+  Paths:
+    - stage/S000/r0/l2/Item/111
 
 Faron Silent Realm - Water Scale:
   original item: Water Scale
@@ -1704,27 +1729,52 @@ Faron Silent Realm - Relic 1:
   original item: Dusk Relic
   type: faron, silent realm
   Paths:
-    - stage/S100/r0/l2/Item/88
+    - stage/S100/r0/l2/Item/102
 Faron Silent Realm - Relic 2:
   original item: Dusk Relic
   type: faron, silent realm
   Paths:
-    - stage/S100/r0/l2/Item/89
+    - stage/S100/r0/l2/Item/103
 Faron Silent Realm - Relic 3:
   original item: Dusk Relic
   type: faron, silent realm
   Paths:
-    - stage/S100/r0/l2/Item/90
+    - stage/S100/r0/l2/Item/104
 Faron Silent Realm - Relic 4:
   original item: Dusk Relic
   type: faron, silent realm
   Paths:
-    - stage/S100/r0/l2/Item/91
+    - stage/S100/r0/l2/Item/105
 Faron Silent Realm - Relic 5:
   original item: Dusk Relic
   type: faron, silent realm
   Paths:
-    - stage/S100/r0/l2/Item/92
+    - stage/S100/r0/l2/Item/106
+Faron Silent Realm - Relic 6:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/107
+Faron Silent Realm - Relic 7:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/108
+Faron Silent Realm - Relic 8:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/109
+Faron Silent Realm - Relic 9:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/110
+Faron Silent Realm - Relic 10:
+  original item: Dusk Relic
+  type: faron, silent realm
+  Paths:
+    - stage/S100/r0/l2/Item/111
 
 Lanayru Silent Realm - Clawshots:
   original item: Clawshots
@@ -1737,27 +1787,52 @@ Lanayru Silent Realm - Relic 1:
   original item: Dusk Relic
   type: lanayru, silent realm
   Paths:
-    - stage/S300/r0/l2/Item/88
+    - stage/S300/r0/l2/Item/102
 Lanayru Silent Realm - Relic 2:
   original item: Dusk Relic
   type: lanayru, silent realm
   Paths:
-    - stage/S300/r0/l2/Item/89
+    - stage/S300/r0/l2/Item/103
 Lanayru Silent Realm - Relic 3:
   original item: Dusk Relic
   type: lanayru, silent realm
   Paths:
-    - stage/S300/r0/l2/Item/90
+    - stage/S300/r0/l2/Item/104
 Lanayru Silent Realm - Relic 4:
   original item: Dusk Relic
   type: lanayru, silent realm
   Paths:
-    - stage/S300/r0/l2/Item/91
+    - stage/S300/r0/l2/Item/105
 Lanayru Silent Realm - Relic 5:
   original item: Dusk Relic
   type: lanayru, silent realm
   Paths:
-    - stage/S300/r0/l2/Item/92
+    - stage/S300/r0/l2/Item/106
+Lanayru Silent Realm - Relic 6:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/107
+Lanayru Silent Realm - Relic 7:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/108
+Lanayru Silent Realm - Relic 8:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/109
+Lanayru Silent Realm - Relic 9:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/110
+Lanayru Silent Realm - Relic 10:
+  original item: Dusk Relic
+  type: lanayru, silent realm
+  Paths:
+    - stage/S300/r0/l2/Item/111
  
 Eldin Silent Realm - Fireshield Earrings:
   original item: Fireshield Earrings
@@ -1770,24 +1845,49 @@ Eldin Silent Realm - Relic 1:
   original item: Dusk Relic
   type: eldin, silent realm
   Paths:
-    - stage/S200/r2/l2/Item/88
+    - stage/S200/r2/l2/Item/102
 Eldin Silent Realm - Relic 2:
   original item: Dusk Relic
   type: eldin, silent realm
   Paths:
-    - stage/S200/r2/l2/Item/89
+    - stage/S200/r2/l2/Item/103
 Eldin Silent Realm - Relic 3:
   original item: Dusk Relic
   type: eldin, silent realm
   Paths:
-    - stage/S200/r2/l2/Item/90
+    - stage/S200/r2/l2/Item/104
 Eldin Silent Realm - Relic 4:
   original item: Dusk Relic
   type: eldin, silent realm
   Paths:
-    - stage/S200/r2/l2/Item/91
+    - stage/S200/r2/l2/Item/105
 Eldin Silent Realm - Relic 5:
   original item: Dusk Relic
   type: eldin, silent realm
   Paths:
-    - stage/S200/r2/l2/Item/92
+    - stage/S200/r2/l2/Item/106
+Eldin Silent Realm - Relic 6:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/107
+Eldin Silent Realm - Relic 7:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/108
+Eldin Silent Realm - Relic 8:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/109
+Eldin Silent Realm - Relic 9:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/110
+Eldin Silent Realm - Relic 10:
+  original item: Dusk Relic
+  type: eldin, silent realm
+  Paths:
+    - stage/S200/r2/l2/Item/111

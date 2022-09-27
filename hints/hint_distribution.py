@@ -169,8 +169,7 @@ class HintDistribution:
             self.hinted_locations.append(hint)
             if (
                 hint in SILENT_REALM_CHECKS.keys()
-                and not self.logic.rando.options["treasuresanity"]
-                == "Only in Silent Realms"
+                and self.logic.rando.options["treasuresanity-in-silent-realms"] == False
             ):
                 loc_trial_gate = SILENT_REALM_CHECKS[hint]
                 trial_gate_dest = self.logic.trial_connections[loc_trial_gate]
@@ -240,8 +239,7 @@ class HintDistribution:
         for zone in region_barren:
             if (
                 "Silent Realm" in zone
-                and not self.logic.rando.options["treasuresanity"]
-                == "Only in Silent Realms"
+                and self.logic.rando.options["treasuresanity-in-silent-realms"] == False
             ):
                 continue  # don't hint barren silent realms since they are an always hint
             if self.logic.rando.options["empty-unrequired-dungeons"]:

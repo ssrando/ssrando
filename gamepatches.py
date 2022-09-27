@@ -1140,7 +1140,7 @@ class GamePatcher:
         self.add_demises()
         if not self.placement_file.options["shuffle-trial-objects"] == "None":
             self.shuffle_trial_objects()
-        if self.placement_file.options["treasuresanity"] == "Only in Silent Realms":
+        if self.placement_file.options["treasuresanity-in-silent-realms"]:
             self.treasuresanity_in_silent_realms()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
@@ -1204,9 +1204,15 @@ class GamePatcher:
                 elif rupee_check in QUICK_BEETLE_CHECKS:
                     temp_item_locations.pop(rupee_check)
 
-        if self.placement_file.options["treasuresanity"] != "Only in Silent Realms":
+        if (
+            self.placement_file.options["treasuresanity-in-silent-realms"] == False
+            or self.placement_file.options["trial-treasure-amount"] < 10
+        ):
+            x = 0
             for relic_check in SILENT_REALM_RELIC_CHECKS:
-                temp_item_locations.pop(relic_check)
+                if x < 4 * (10 - self.placement_file.options["trial-treasure-amount"]):
+                    temp_item_locations.pop(relic_check)
+                    x = x + 1
 
         (
             self.rando_stagepatches,
@@ -1967,7 +1973,7 @@ class GamePatcher:
                 relic_list.remove((id, room))
         if len(relic_list) < 5:
             self.shuffle_trial_objects()  # reshuffle to get enough room 2 dusk relics
-            self.fix_eldin()
+            self.fix_eldin(relic_list)
         return relic_list
 
     def treasuresanity_in_silent_realms(self):
@@ -1982,8 +1988,12 @@ class GamePatcher:
                 and not self.placement_file.options["shuffle-trial-objects"] == "None"
             ):
                 relic_list = self.fix_eldin(relic_list)
-            locs.extend(random.sample(relic_list, 5))
-            params1 = 0xFF0D6000
+            locs.extend(
+                random.sample(
+                    relic_list, self.placement_file.options["trial-treasure-amount"]
+                )
+            )
+            params1 = 0xFF0D9800
             for (id, room) in locs:
                 self.add_patch_to_stage(
                     trial,
