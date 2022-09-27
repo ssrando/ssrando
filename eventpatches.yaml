@@ -1005,6 +1005,11 @@
     cases:
       - Rerandomize Treasure
       - -1
+  - name: Skip Fledge 3
+    type: flowpatch
+    index: 268 # after giving fledge the second stamina potion
+    flow:
+      next: 320 # before crystal itemget
 116-InsectGame:
   - name: Fix switch 1
     type: flowpatch
@@ -1184,6 +1189,11 @@
     index: 7
     flow:
       next: 21 # never talk about triforce or song of the hero
+  - name: Shorten Levias text
+    type: flowpatch
+    index: 0
+    flow:
+      next: 22
   - name: Skip bokobase story flag
     type: flowpatch
     index: 22
