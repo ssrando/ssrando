@@ -1956,26 +1956,43 @@ class GamePatcher:
             self.rando.rng.shuffle(loc_params)
 
             trial_relic_patches = self.trialrelicpatches[trial].copy()
+            has_relic_patches = bool(trial_relic_patches)
 
             for ((id, room), (params, actor_name)) in loc_params:
-                if actor_name == "AncJwls" and trial_relic_patches:
-                    (sceneflag, itemid) = trial_relic_patches.pop()
-                    # 9 is the rando item subtype forcing a textbox
-                    params1 = 0xFF9C0200
-                    params1 = mask_shift_set(params1, 0xFF, 10, sceneflag)
-                    params1 = mask_shift_set(params1, 0xFF, 0, itemid)
-                    self.add_patch_to_stage(
-                        trial,
-                        {
-                            "name": "AncJwls into Item",
-                            "type": "objpatch",
-                            "id": id,
-                            "layer": 2,
-                            "room": room,
-                            "objtype": "OBJ ",
-                            "object": {"params1": params1, "name": "Item"},
-                        },
-                    )
+                # only handle dusk relics specially if the option is enabled
+                if actor_name == "AncJwls" and has_relic_patches:
+                    # replace relics with randomized items
+                    if trial_relic_patches:
+                        (sceneflag, itemid) = trial_relic_patches.pop()
+                        # 9 is the rando item subtype forcing a textbox
+                        params1 = 0xFF9C0200
+                        params1 = mask_shift_set(params1, 0xFF, 10, sceneflag)
+                        params1 = mask_shift_set(params1, 0xFF, 0, itemid)
+                        self.add_patch_to_stage(
+                            trial,
+                            {
+                                "name": "AncJwls into Item",
+                                "type": "objpatch",
+                                "id": id,
+                                "layer": 2,
+                                "room": room,
+                                "objtype": "OBJ ",
+                                "object": {"params1": params1, "name": "Item"},
+                            },
+                        )
+                    else:
+                        # remove other relics
+                        self.add_patch_to_stage(
+                            trial,
+                            {
+                                "name": "remove other Relics",
+                                "type": "objdelete",
+                                "id": id,
+                                "layer": 2,
+                                "room": room,
+                                "objtype": "OBJ ",
+                            },
+                        )
                 else:
                     self.add_patch_to_stage(
                         trial,
