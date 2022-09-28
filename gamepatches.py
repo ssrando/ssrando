@@ -1986,6 +1986,7 @@ class GamePatcher:
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
                 if item_type == "Relics":
                     relic_list = objlist
+            all_relics = set(relic_list)
             if (
                 trial == "S200"
                 and not self.placement_file.options["shuffle-trial-objects"] == "None"
@@ -1999,6 +2000,7 @@ class GamePatcher:
                     relic_list, self.placement_file.options["trial-treasure-amount"]
                 )
             )
+            remove_locs = list(all_relics.difference(locs))
             params1 = 0xFF0D9800
             for (id, room) in locs:
                 self.add_patch_to_stage(
@@ -2014,6 +2016,18 @@ class GamePatcher:
                     },
                 )
                 params1 = params1 + 0x400
+            for (id, room) in remove_locs:
+                self.add_patch_to_stage(
+                    trial,
+                    {
+                        "name": "remove other Relics",
+                        "type": "objdelete",
+                        "id": id,
+                        "layer": 2,
+                        "room": room,
+                        "objtype": "OBJ ",
+                    },
+                )
 
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])
