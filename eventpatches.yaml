@@ -1139,6 +1139,11 @@
       type: type1
       next: Kina Quest Switch
       param4: New Kina Text Option
+  - name: Shorten Kina Text
+    type: flowpatch
+    index: 97
+    flow:
+      next: 103
 118-Town3:
   - name: Shorten Sparrot quest start text
     type: flowpatch
