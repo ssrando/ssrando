@@ -39,6 +39,7 @@ from .constants import (
     RUPEE_CHECKS,
     QUICK_BEETLE_CHECKS,
     SILENT_REALM_RELIC_CHECKS,
+    SILENT_REALMS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -92,6 +93,15 @@ class Logic:
         # Initialize location related attributes.
         self.load_and_parse_item_requirements()
         self.item_locations = self.load_and_parse_item_data()
+
+        trial_treasure_amount = self.rando.options["trial-treasure-amount"]
+        if not self.rando.options["treasuresanity-in-silent-realms"]:
+            trial_treasure_amount = 0
+
+        # remove silent realm checks that aren't randomized
+        for i in range(trial_treasure_amount + 1, 11):
+            for trial in SILENT_REALMS.keys():
+                self.item_locations.pop(f"{trial} - Relic {i}")
 
         self.required_dungeons = self.randomize_required_dungeons()
         self.unrequired_dungeons = [
@@ -168,6 +178,11 @@ class Logic:
         self.duplicatable_consumable_items = DUPLICATABLE_CONSUMABLE_ITEMS.copy()
         self.prerandomized_consumable_items = []
 
+        # remove unrandomized dusk relics
+        for i in range(trial_treasure_amount + 1, 11):
+            for _ in SILENT_REALMS.keys():
+                self.all_fixed_consumable_items.remove("Dusk Relic")
+
         # Remove excess progressive items if Upgrade Item Shuffle is off.
         if self.rando.options["gondo-upgrades"] == False:
             self.all_progress_items.remove("Progressive Beetle")
@@ -236,15 +251,6 @@ class Logic:
                     if rupee_check in QUICK_BEETLE_CHECKS:
                         orig_item = self.item_locations[rupee_check]["original item"]
                         self.set_prerandomization_item_location(rupee_check, orig_item)
-        if (
-            self.rando.options["treasuresanity-in-silent-realms"] == False
-            or self.rando.options["trial-treasure-amount"] < 10
-        ):
-            x = 0
-            for relic_check in SILENT_REALM_RELIC_CHECKS:
-                if x < 4 * (10 - self.rando.options["trial-treasure-amount"]):
-                    self.set_prerandomization_item_location(relic_check, "Dusk Relic")
-                    x = x + 1
 
         swords_left = 6 - STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]
         self.sworded_dungeon_locations = []

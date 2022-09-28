@@ -1004,6 +1004,8 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
     eventpatches = defaultdict(list)
     # shopindex: (itemid, arcname, modelname)
     shoppatches = {}
+    # trialstage -> (itemsceneflag, itemid)
+    trialrelics = defaultdict(list)
 
     stage_re = re.compile(
         r"stage/(?P<stage>[^/]+)/r(?P<room>[0-9]+)/l(?P<layer>[0-9]+)/(?P<objname>[a-zA-Z]+)(/(?P<objid>[^/]+))?"
@@ -1036,7 +1038,13 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
                             stageoarcs[(stage, layer)].add(o)
                     else:
                         stageoarcs[(stage, layer)].add(oarc)
-                stagepatchv2[(stage, room)].append((objname, layer, objid, item["id"]))
+                # fake object name to handle it easier
+                if objname == "Relic":
+                    trialrelics[stage].append((int(objid), item["id"]))
+                else:
+                    stagepatchv2[(stage, room)].append(
+                        (objname, layer, objid, item["id"])
+                    )
             elif event_match:
                 eventfile = event_match.group("eventfile")
                 eventid = event_match.group("eventid")
@@ -1068,7 +1076,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
                 shoppatches[index] = (item["id"], arcname, modelname)
             else:
                 print(f"ERROR: {path} didn't match any regex!")
-    return stagepatchv2, stageoarcs, eventpatches, shoppatches
+    return stagepatchv2, stageoarcs, eventpatches, shoppatches, trialrelics
 
 
 def get_entry_from_bzs(
@@ -1138,10 +1146,9 @@ class GamePatcher:
         self.add_rando_hash()
         self.add_keysanity()
         self.add_demises()
-        if not self.placement_file.options["shuffle-trial-objects"] == "None":
-            self.shuffle_trial_objects()
-        if self.placement_file.options["treasuresanity-in-silent-realms"]:
-            self.treasuresanity_in_silent_realms()
+        self.shuffle_trial_objects()
+        # if self.placement_file.options["treasuresanity-in-silent-realms"]:
+        #     self.treasuresanity_in_silent_realms()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -1204,21 +1211,12 @@ class GamePatcher:
                 elif rupee_check in QUICK_BEETLE_CHECKS:
                     temp_item_locations.pop(rupee_check)
 
-        if (
-            self.placement_file.options["treasuresanity-in-silent-realms"] == False
-            or self.placement_file.options["trial-treasure-amount"] < 10
-        ):
-            x = 0
-            for relic_check in SILENT_REALM_RELIC_CHECKS:
-                if x < 4 * (10 - self.placement_file.options["trial-treasure-amount"]):
-                    temp_item_locations.pop(relic_check)
-                    x = x + 1
-
         (
             self.rando_stagepatches,
             self.stageoarcs,
             self.rando_eventpatches,
             self.shoppatches,
+            self.trialrelicpatches,
         ) = get_patches_from_location_item_list(
             self.rando.item_locations, temp_item_locations
         )
@@ -1908,23 +1906,27 @@ class GamePatcher:
             "S200": 0x2C,
             "S300": 0x2D,
         }
+
+        shuffle_option = self.placement_file.options["shuffle-trial-objects"]
+        if shuffle_option == "None":
+            types_to_shuffle = set()
+        elif shuffle_option == "Simple":
+            types_to_shuffle = {"Tears", "Light Fruits"}
+        elif shuffle_option == "Advanced":
+            types_to_shuffle = {"Tears", "Light Fruits", "Relics"}
+        elif shuffle_option == "Full":
+            types_to_shuffle = {"Tears", "Light Fruits", "Relics", "Stamina Fruits"}
+
         for trial in TRIAL_OBJECT_IDS:
             params = []
             locs = []
+            unshuffled_locs = []
             relic_list = []
             tear_list = []
             lightfruit_list = []
             stamina_list = []
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
-                if item_type == "Relics" and self.placement_file.options[
-                    "shuffle-trial-objects"
-                ] not in ["Advanced", "Full"]:
-                    continue
-                if (
-                    item_type == "Stamina Fruits"
-                    and not self.placement_file.options["shuffle-trial-objects"]
-                    == "Full"
-                ):
+                if item_type not in types_to_shuffle:
                     continue
                 locs.extend(objlist)
                 if item_type == "Tears":
@@ -1937,96 +1939,56 @@ class GamePatcher:
 
             self.rando.rng.shuffle(locs)
             # print(locs)
+            if "Relics" not in types_to_shuffle:
+                objlist = TRIAL_OBJECT_IDS[trial]["Relics"]
+                locs.extend(objlist)
+                params.extend([ITEM_PARAM_MAP["Relics"]] * len(objlist))
 
-            for ((id, room), (params, actor_name)) in zip(
-                locs,
-                params,
-            ):
-                self.add_patch_to_stage(
-                    trial,
-                    {
-                        "name": "trial object shuffle",
-                        "type": "objpatch",
-                        "id": id,
-                        "layer": 2,
-                        "room": room,
-                        "objtype": "OBJ ",
-                        "object": {"params1": params, "name": actor_name},
-                    },
-                )
-                if actor_name == "AncJwls":
-                    relic_list.append((id, room))
-                elif params == 0xFF0FFE2F:  # Lightfruit params
-                    lightfruit_list.append((id, room))
-                elif params == 0xFF0FFE2A:  # Stamina params
-                    stamina_list.append((id, room))
-                else:
-                    tear_list.append((id, room))
-            TRIAL_OBJECT_IDS[trial].update({"Relics": relic_list})
-            TRIAL_OBJECT_IDS[trial].update({"Tears": tear_list})
-            TRIAL_OBJECT_IDS[trial].update({"Light Fruits": lightfruit_list})
-            TRIAL_OBJECT_IDS[trial].update({"Stamina Fruits": stamina_list})
-
-    def treasuresanity_in_silent_realms(self):
-        if not self.placement_file.options["shuffle-trial-objects"] == "None":
-            x = 0
-            for item_type, objlist in TRIAL_OBJECT_IDS["S200"].items():
-                if item_type == "Relics":
-                    test_list = objlist
-            for (id, room) in test_list:
-                if room == 2:
-                    x = x + 1
-            if self.placement_file.options["trial-treasure-amount"] > x:
-                self.shuffle_trial_objects()  # reshuffle to get enough room 2 dusk relics
-                self.treasuresanity_in_silent_realms()  # redo this
-                return
-        for trial in TRIAL_OBJECT_IDS:
-            locs = []
-            relic_list = []
-            for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
-                if item_type == "Relics":
-                    relic_list = objlist
-            all_relics = set(relic_list)
-            if (
-                trial == "S200"
-                and not self.placement_file.options["shuffle-trial-objects"] == "None"
-            ):
-                for (id, room) in list(relic_list):
-                    if room != 2:
-                        relic_list.remove((id, room))
-            locs.extend(
-                self.rando.rng.sample(
-                    relic_list, self.placement_file.options["trial-treasure-amount"]
+            loc_params = list(
+                zip(
+                    locs,
+                    params,
                 )
             )
-            remove_locs = list(all_relics.difference(locs))
-            params1 = 0xFF0D9800
-            for (id, room) in locs:
-                self.add_patch_to_stage(
-                    trial,
-                    {
-                        "name": "AncJwls into Item",
-                        "type": "objpatch",
-                        "id": id,
-                        "layer": 2,
-                        "room": room,
-                        "objtype": "OBJ ",
-                        "object": {"params1": params1, "name": "Item"},
-                    },
-                )
-                params1 = params1 + 0x400
-            for (id, room) in remove_locs:
-                self.add_patch_to_stage(
-                    trial,
-                    {
-                        "name": "remove other Relics",
-                        "type": "objdelete",
-                        "id": id,
-                        "layer": 2,
-                        "room": room,
-                        "objtype": "OBJ ",
-                    },
-                )
+
+            # shuffle the location -> params mapping to then patch a random
+            # sample of relics with items
+            self.rando.rng.shuffle(loc_params)
+
+            trial_relic_patches = self.trialrelicpatches[trial].copy()
+
+            for ((id, room), (params, actor_name)) in loc_params:
+                if actor_name == "AncJwls" and trial_relic_patches:
+                    (sceneflag, itemid) = trial_relic_patches.pop()
+                    # 9 is the rando item subtype forcing a textbox
+                    params1 = 0xFF9C0200
+                    params1 = mask_shift_set(params1, 0xFF, 10, sceneflag)
+                    params1 = mask_shift_set(params1, 0xFF, 0, itemid)
+                    self.add_patch_to_stage(
+                        trial,
+                        {
+                            "name": "AncJwls into Item",
+                            "type": "objpatch",
+                            "id": id,
+                            "layer": 2,
+                            "room": room,
+                            "objtype": "OBJ ",
+                            "object": {"params1": params1, "name": "Item"},
+                        },
+                    )
+                else:
+                    self.add_patch_to_stage(
+                        trial,
+                        {
+                            "name": "trial object shuffle",
+                            "type": "objpatch",
+                            "id": id,
+                            "layer": 2,
+                            "room": room,
+                            "objtype": "OBJ ",
+                            "object": {"params1": params, "name": actor_name},
+                        },
+                    )
 
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])

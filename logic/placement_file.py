@@ -1,7 +1,11 @@
 from options import Options
 from version import VERSION
 from logic.item_types import ALL_ITEM_NAMES
-from logic.constants import POTENTIALLY_REQUIRED_DUNGEONS, ENTRANCE_CONNECTIONS
+from logic.constants import (
+    POTENTIALLY_REQUIRED_DUNGEONS,
+    ENTRANCE_CONNECTIONS,
+    SILENT_REALMS,
+)
 from util.file_accessor import read_yaml_file_cached
 
 import json
@@ -103,7 +107,17 @@ class PlacementFile:
             if item not in item_names:
                 raise InvalidPlacementFile(f'invalid item "{item}"')
 
-        checks_file = read_yaml_file_cached("checks.yaml")
+        checks_file = read_yaml_file_cached("checks.yaml").copy()
+
+        trial_treasure_amount = self.options["trial-treasure-amount"]
+        if not self.options["treasuresanity-in-silent-realms"]:
+            trial_treasure_amount = 0
+
+        # remove silent realm checks that aren't randomized
+        for i in range(trial_treasure_amount + 1, 11):
+            for trial in SILENT_REALMS.keys():
+                checks_file.pop(f"{trial} - Relic {i}")
+
         check_sets_equal(
             set(
                 k
