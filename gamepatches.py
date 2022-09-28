@@ -1996,7 +1996,7 @@ class GamePatcher:
                         relic_list.remove((id, room))
             rng = random.Random(self.placement_file.trial_object_seed)
             locs.extend(
-                rng.sample(
+                self.rando.rng.sample(
                     relic_list, self.placement_file.options["trial-treasure-amount"]
                 )
             )
