@@ -68,6 +68,7 @@ JUNK_TEXT = [
     "They say that you look like you have a Questions",
     "They say that HD randomizer development is delayed by a day every time someone asks about it in the Discord",
     "The disc could not be read. Refer to the Wii Operations Manual for details.",
+    "They say that a massive storm brews over the Lanayru Sand Sea due to Tentalus' immense size",
 ]
 
 
