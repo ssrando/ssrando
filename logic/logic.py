@@ -338,7 +338,7 @@ class Logic:
             self.map_banned_locations += [
                 "Skyview - Ghirahim Heart Container",
                 "Earth Temple - Scaldera Heart Container",
-                "Lanayru Mining Facility - Molderach Heart Container",
+                "Lanayru Mining Facility - Moldarach Heart Container",
                 "Ancient Cistern - Koloktos Heart Container",
                 "Sandship - Tentalus Heart Container",
                 "Fire Sanctuary - Ghirahim Heart Container",
