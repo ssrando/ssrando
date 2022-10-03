@@ -10,6 +10,7 @@ global:
     - 273 # Talked to Skipper first time after saying no (prevents weird first text)
     - 130 # Start with Beacon
     - 358 # Interface choice unlocked
+    - 792 # SG Big Door cs
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - 27  # Loftwing
     - 198 # Can jump off Loftwing
