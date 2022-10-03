@@ -5,6 +5,7 @@ global:
       onlyif: Option "hero-mode" Enabled
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 96  # Fi's text after obtaining first map
+    - 745 # 5 Beacons
     - 496 # Skipper's cutscene after Sea Chart
     - 264 # Talked to Skipper first time
     - 273 # Talked to Skipper first time after saying no (prevents weird first text)
@@ -2370,6 +2371,12 @@ F300: # lanayru Main Area
   - name: Remove Fi text after Tumbleweed Chest
     type: objdelete
     id: 0xFCC6
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Remove Fi text for 5 Beacons
+    type: objdelete
+    id: 0xFCBC
     layer: 0
     room: 0
     objtype: OBJ
