@@ -1365,6 +1365,22 @@ F100: # Faron main area
       anglez: 0
       id: 0xFD01
       name: Tubo
+  - name: extra bomb Pot next to VP Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0BFFFFFF
+      posx: 7200
+      posy: 2103.08911
+      posz: -9500
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFD01
+      name: Tubo
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
