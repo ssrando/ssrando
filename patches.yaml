@@ -51,6 +51,7 @@ global:
       - 99 # Sheikah Stone cs played
       - 67 # Inside Doors open
       - 1 # UA Doors open
+      - 26 # Eye cs in Bazaar
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
@@ -1060,6 +1061,18 @@ F011r: # Lumpy Pumpkin
   - name: Delete Lumpy Pumpkin Cutscene 2
     type: objdelete
     id: 0xFC43
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Delete  new Lumpy chandelier Cutscene 1
+    type: objdelete
+    id: 0xFC44
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Delete  new Lumpy chandelier Cutscene 2
+    type: objdelete
+    id: 0xFC45
     layer: 0
     room: 0
     objtype: OBJ
