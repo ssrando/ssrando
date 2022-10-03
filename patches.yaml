@@ -1064,7 +1064,13 @@ F011r: # Lumpy Pumpkin
     layer: 0
     room: 0
     objtype: OBJ
-  - name: Delete  new Lumpy chandelier Cutscene
+  - name: Delete  new Lumpy chandelier Cutscene 1
+    type: objdelete
+    id: 0xFC44
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Delete  new Lumpy chandelier Cutscene 2
     type: objdelete
     id: 0xFC45
     layer: 0
