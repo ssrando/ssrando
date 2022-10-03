@@ -1531,6 +1531,14 @@ F102: # lake Floria
     layer: 1
     room: 1
     objtype: OBJS
+F102_2: # Faron's Lair
+  - name: Remove Faron's Lair entry cs
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      play_cutscene: -1
 F100_1: # Great Tree
   - name: Layer override
     type: layeroverride
