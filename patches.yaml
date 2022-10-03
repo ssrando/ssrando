@@ -1347,6 +1347,12 @@ F100: # Faron main area
     layer: 1
     room: 0
     objtype: OBJ
+  - name: Remove Fi text before lopsa roll
+    type: objdelete
+    id: 0x56BC
+    layer: 1
+    room: 0
+    objtype: OBJ
   - name: Remove G1 Feet cs
     type: objdelete
     id: 0xFEEC
@@ -1693,6 +1699,42 @@ D100: # Skyview
     layer: 2
     room: 2
     objtype: OBJ
+  - name: Remove Mogma near goddess wall
+    type: objdelete
+    id: 0xFC4F
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Remove Mogma cs near goddess wall
+    type: objdelete
+    id: 0xFC4E
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Remove Mogma cs near goddess wall
+    type: objdelete
+    id: 0xFC4B
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Remove Mogma cs swTag near goddess wall
+    type: objdelete
+    id: 0xFC57
+    layer: 2
+    room: 0
+    objtype: STAG
+  - name: Remove Mogma cs AreaTag 1 near goddess wall
+    type: objdelete
+    id: 0xFC52
+    layer: 2
+    room: 0
+    objtype: STAG
+  - name: Remove Mogma cs AreaTag 2 near goddess wall
+    type: objdelete
+    id: 0xFC53
+    layer: 2
+    room: 0
+    objtype: STAG
   - name: Pot in start room with bombs
     type: objadd
     layer: 0
