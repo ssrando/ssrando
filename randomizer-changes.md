@@ -83,7 +83,7 @@
 - The dust pile in front of the door in the gust bellows room was removed to prevent being stuck inside
 ### Sandsea
 - All areas of Sandsea are open from the start (Skipper's Retreat, Shipyard, Pirate Stronghold)
-- The door to the Shipyard Construction Bay is opened by default and never locks. This skips doing the rollercoaster before the Molderach fight, and prevents being softlocked without gust bellows
+- The door to the Shipyard Construction Bay is opened by default and never locks. This skips doing the rollercoaster before the Moldarach fight, and prevents being softlocked without gust bellows
 - Ancient Sea Chart is required to access Sandship. It unlocks the dowsing ability. You cannot get the ship dowsing in Pirate Stronghold anymore
 ### Sandship
 - Sandship never reaches it's `post boss defeated state`, to make all checks still possible if Tentalus is fought early

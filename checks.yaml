@@ -1052,7 +1052,7 @@ Lanayru Sand Sea - Skipper's Retreat - Skydive Chest:
     - stage/F301_3/r0/l0/TBox/77
 Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05:
   original item: Heart Piece
-  type: lanayru, minigame, combat #Molderach 2 makes this a combat check
+  type: lanayru, minigame, combat #Moldarach 2 makes this a combat check
   Paths:
     - event/406-TrolleyRace/77
     - oarc/F301_4/l0
@@ -1306,7 +1306,7 @@ Lanayru Mining Facility - Shortcut Chest in Main Hub:
   Paths:
     - stage/D300_1/r5/l0/TBox/74
 
-Lanayru Mining Facility - Molderach Heart Container:
+Lanayru Mining Facility - Moldarach Heart Container:
   original item: Heart Container
   type: lanayru, dungeon
   Paths:
