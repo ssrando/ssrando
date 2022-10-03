@@ -3276,6 +3276,12 @@ F303: # Lanayru Caves
       posx: -195
       posy: 0
       posz: 2146
+  - name: Delete temp rock in the back
+    type: objdelete
+    id: 0xFC61
+    layer: 1
+    room: 0
+    objtype: OBJS
   - name: Fi text after chest
     type: objdelete
     id: 0xFC25
