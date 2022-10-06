@@ -112,6 +112,9 @@ class RandoGUI(QMainWindow):
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
+        self.ui.load_preset.clicked.connect(self.load_preset)
+        self.ui.save_preset.clicked.connect(self.save_preset)
+        self.ui.delete_preset.clicked.connect(self.delete_preset)
 
         self.location_descriptions = {
             "skyloft": "Enables progression items to appear on Skyloft",
@@ -530,6 +533,15 @@ class RandoGUI(QMainWindow):
         self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
         self.ui.disabled_tricks.model().sort(0)
         self.update_settings()
+
+    def load_preset(self):
+        print("loading currently selected preset")
+
+    def save_preset(self):
+        print("saving currently selected preset")
+
+    def delete_preset(Self):
+        print("deleting currently selected preset")
 
     def eventFilter(self, target, event):
         if event.type() == QEvent.Enter:
