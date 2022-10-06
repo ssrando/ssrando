@@ -112,10 +112,36 @@ class RandoGUI(QMainWindow):
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
+
+        # setup presets
+        self.presets = {}
+        self.ui.presets_list.addItem("[New Preset]")
+        sep_idx = 1
+        with open("gui/default_presets.json") as f:
+            try:
+                default_presets = json.load(f)
+                for preset in default_presets:
+                    self.ui.presets_list.addItem(preset)
+                    self.presets[preset] = default_presets[preset]
+                    sep_idx += 1
+            except Exception as e:
+                print("couldn't load default presets")
+        self.ui.presets_list.insertSeparator(sep_idx)
+        self.user_presets_path="presets.txt"
+        if os.path.isfile(self.user_presets_path):
+            with open(self.user_presets_path) as f:
+                try:
+                    user_presets = json.load(f)
+                    print(user_presets)
+                    for preset in user_presets:
+                        self.ui.presets_list.addItem(preset)
+                        self.presets[preset] = user_presets[preset]
+                except Exception as e:
+                    print("couldn't load user presets", e)
         self.ui.load_preset.clicked.connect(self.load_preset)
         self.ui.save_preset.clicked.connect(self.save_preset)
         self.ui.delete_preset.clicked.connect(self.delete_preset)
-
+        
         self.location_descriptions = {
             "skyloft": "Enables progression items to appear on Skyloft",
             "sky": "Enables progression items to appear in The Sky",

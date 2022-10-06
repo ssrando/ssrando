@@ -389,7 +389,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox"/>
+         <widget class="QComboBox" name="presets_list"/>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_12">
