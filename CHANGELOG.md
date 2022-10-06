@@ -2,7 +2,8 @@
 
 ## Dev
 ### Changes
-### Bugfixes 
+### Bugfixes
+- Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 
 ## 1.3.2
 ### Changes
