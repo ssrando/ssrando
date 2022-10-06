@@ -1347,12 +1347,12 @@ F100: # Faron main area
     layer: 1
     room: 0
     objtype: OBJ
-  - name: Remove Fi text before lopsa roll
-    type: objdelete
-    id: 0x56BC
-    layer: 1
-    room: 0
-    objtype: OBJ
+  # - name: Remove Fi text before lopsa roll
+  #   type: objdelete
+  #   id: 0x56BC
+  #   layer: 1
+  #   room: 0
+  #   objtype: OBJ
   - name: Remove G1 Feet cs
     type: objdelete
     id: 0xFEEC
