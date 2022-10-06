@@ -2333,6 +2333,12 @@ D201: # FS A
     layer: 0
     room: 0
     objtype: OBJ
+  - name: BK chest intro cs deleted
+    type: objdelete
+    id: 0xFC44
+    layer: 0
+    room: 4
+    objtype: STAG
 D201_1: # FS B
   - name: Clawshot Target for 2nd small Key
     type: objadd
