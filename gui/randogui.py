@@ -132,7 +132,6 @@ class RandoGUI(QMainWindow):
             with open(self.user_presets_path) as f:
                 try:
                     user_presets = json.load(f)
-                    print(user_presets)
                     for preset in user_presets:
                         self.ui.presets_list.addItem(preset)
                         self.presets[preset] = user_presets[preset]
@@ -561,7 +560,13 @@ class RandoGUI(QMainWindow):
         self.update_settings()
 
     def load_preset(self):
-        print("loading currently selected preset")
+        preset = self.ui.presets_list.currentText()
+        # prevent loading the new preset option
+        if preset == "[New Preset]":
+            return
+        self.options.update_from_dict(self.presets[preset])
+        self.update_ui_for_settings()
+        self.update_settings()
 
     def save_preset(self):
         print("saving currently selected preset")
