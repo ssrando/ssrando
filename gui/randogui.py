@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QErrorMessage,
     QInputDialog,
-    QLineEdit
+    QLineEdit,
 )
 
 from logic.constants import ALL_TYPES
@@ -131,7 +131,7 @@ class RandoGUI(QMainWindow):
             except Exception as e:
                 print("couldn't load default presets")
         self.ui.presets_list.insertSeparator(sep_idx)
-        self.user_presets_path="presets.txt"
+        self.user_presets_path = "presets.txt"
         if os.path.isfile(self.user_presets_path):
             with open(self.user_presets_path) as f:
                 try:
@@ -144,7 +144,7 @@ class RandoGUI(QMainWindow):
         self.ui.load_preset.clicked.connect(self.load_preset)
         self.ui.save_preset.clicked.connect(self.save_preset)
         self.ui.delete_preset.clicked.connect(self.delete_preset)
-        
+
         self.location_descriptions = {
             "skyloft": "Enables progression items to appear on Skyloft",
             "sky": "Enables progression items to appear in The Sky",
@@ -568,7 +568,10 @@ class RandoGUI(QMainWindow):
         # prevent loading the new preset option
         if preset == "[New Preset]":
             return
-        self.options.update_from_dict(self.presets[preset])
+        if preset in self.default_presets:
+            self.options.update_from_dict(self.default_presets[preset])
+        else:
+            self.options.update_from_dict(self.user_presets[preset])
         self.update_ui_for_settings()
         self.update_settings()
 
@@ -581,7 +584,12 @@ class RandoGUI(QMainWindow):
             )
             return
         if preset == "[New Preset]":
-            (name, ok) = QInputDialog.getText(self, "Create New Preset", "Enter a name for the new preset", QLineEdit.Normal)
+            (name, ok) = QInputDialog.getText(
+                self,
+                "Create New Preset",
+                "Enter a name for the new preset",
+                QLineEdit.Normal,
+            )
             if ok:
                 if name in self.default_presets or name in self.user_presets:
                     self.error_msg = QErrorMessage()
@@ -591,7 +599,19 @@ class RandoGUI(QMainWindow):
                     preset = name
                     self.ui.presets_list.addItem(preset)
                     self.ui.presets_list.setCurrentText(preset)
-        self.user_presets[preset] = self.options.to_dict(["dry-run", "output-folder", "json", "noui", "music-rando", "cutoff-game-over-music", "allow-custom-music", "tunic-swap", "out-placement-file"])
+        self.user_presets[preset] = self.options.to_dict(
+            [
+                "dry-run",
+                "output-folder",
+                "json",
+                "noui",
+                "music-rando",
+                "cutoff-game-over-music",
+                "allow-custom-music",
+                "tunic-swap",
+                "out-placement-file",
+            ]
+        )
         self.write_presets()
 
     def delete_preset(self):
