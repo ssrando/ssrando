@@ -1478,7 +1478,16 @@
     type: flowpatch
     index: 16
     flow:
-      next: Show Flooded Faron Entry Question
+      next: Tadtones Completion Storyflag Check
+  - name: Tadtones Completion Storyflag Check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 18 # All Tadtones Collected
+      param3: 3
+    cases:
+      - 21 # Tadtones complete
+      - Show Flooded Faron Entry Question
   - name: Show Flooded Faron Entry Question
     type: flowadd
     flow:
