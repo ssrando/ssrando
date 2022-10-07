@@ -20,6 +20,8 @@ from PySide6.QtWidgets import (
     QFileDialog,
     QMessageBox,
     QErrorMessage,
+    QInputDialog,
+    QLineEdit
 )
 
 from logic.constants import ALL_TYPES
@@ -572,6 +574,25 @@ class RandoGUI(QMainWindow):
 
     def save_preset(self):
         preset = self.ui.presets_list.currentText()
+        if preset in self.default_presets:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage(
+                "Default presets are protected and cannot be updated"
+            )
+            return
+        if preset == "[New Preset]":
+            (name, ok) = QInputDialog.getText(self, "Create New Preset", "Enter a name for the new preset", QLineEdit.Normal)
+            if ok:
+                if name in self.default_presets or name in self.user_presets:
+                    self.error_msg = QErrorMessage()
+                    self.error_msg.showMessage("Cannot have duplicate preset names")
+                    return
+                else:
+                    preset = name
+                    self.ui.presets_list.addItem(preset)
+                    self.ui.presets_list.setCurrentText(preset)
+        self.user_presets[preset] = self.options.to_dict()
+        self.write_presets()
 
     def delete_preset(self):
         preset = self.ui.presets_list.currentText()
