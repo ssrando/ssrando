@@ -1487,18 +1487,65 @@
       param3: 3
     cases:
       - 21 # Tadtones complete
-      - Show Flooded Faron Entry Question
+      - Flooded Faron Intro CS Check
+  - name: Flooded Faron Intro CS Check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 527 # Watched Flooded Faron Intro CS
+      param3: 3
+    cases:
+      - Show Flooded Faron Exit Question # true
+      - Show Flooded Faron Entry Question # false
+  - name: Show Flooded Faron Exit Question
+    type: flowadd
+    flow:
+      type: type1
+      next: Flooded Faron Exit Switch
+      param3: 302
+      param4: Flooded Faron Exit Question
+  - name: Flooded Faron Exit Question
+    type: textadd
+    text: "Want to take a break?\n[1]Yes[2-]No"
+  - name: Flooded Faron Exit Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Remove Flooded Faron Intro CS Storyflag # Yes
+      - -1 # No
+  - name: Remove Flooded Faron Intro CS Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 527 # Flooded Faron Intro CS
+      next: Trigger Exit to Non-Flooded Faron
+      param3: 1
+  - name: Trigger Exit to Non-Flooded Faron
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 5 # Entrance number
+      param2: 0
+      next: -1
+      param3: 10 # Triggers an exit
   - name: Show Flooded Faron Entry Question
     type: flowadd
     flow:
       type: type1
-      next: Flooded Faron Switch
+      next: Flooded Faron Entry Switch
       param3: 302
       param4: Flooded Faron Entry Question
   - name: Flooded Faron Entry Question
     type: textadd
-    text: "Would you like to accept my final test?\n[1]Yes[2-]No"
-  - name: Flooded Faron Switch
+    text: "Here to accept my final test?\n[1]Yes[2-]No"
+  - name: Flooded Faron Entry Switch
     type: switchadd
     flow:
       type: switch
@@ -1534,7 +1581,7 @@
       param2: 0
       param3: 7 # Use result from previous check
     cases:
-      - Trigger Exit to Flooded Faron # true
+      - Set Flooded Faron Intro CS Storyflag # true
       - Show No Water Dragon Scale Text # false
   - name: No Water Dragon Scale Text
     type: textadd
@@ -1546,6 +1593,15 @@
       next: -1
       param3: 302
       param4: No Water Dragon Scale Text
+  - name: Set Flooded Faron Intro CS Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 527 # Flooded Faron Intro CS
+      next: Trigger Exit to Flooded Faron
+      param3: 0
   - name: Trigger Exit to Flooded Faron
     type: flowadd
     flow:
