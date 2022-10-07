@@ -591,7 +591,7 @@ class RandoGUI(QMainWindow):
                     preset = name
                     self.ui.presets_list.addItem(preset)
                     self.ui.presets_list.setCurrentText(preset)
-        self.user_presets[preset] = self.options.to_dict(["dry-run", "output-folder", "json", "noui", "music-rando", "cutoff-game-over-music", "allow-custom-music"])
+        self.user_presets[preset] = self.options.to_dict(["dry-run", "output-folder", "json", "noui", "music-rando", "cutoff-game-over-music", "allow-custom-music", "tunic-swap", "out-placement-file"])
         self.write_presets()
 
     def delete_preset(self):
