@@ -1574,6 +1574,26 @@ F100_1: # Great Tree
       anglez: 0
       id: 0xFC50
       name: Bombf
+  - name: Waterdragon in Great Tree
+    type: oarcadd
+    destlayer: 0
+    oarc: Waterdragon
+  - name: Add Test Stuff to Inside Great Tree
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFCFF
+      params2: 0xFF5FFFFF
+      posx: -864.560546875
+      posy: 3350
+      posz: 513.1231689453125
+      anglex: 65535
+      angley: 19660
+      anglez: 20406
+      id: 0x0065
+      name: NpcAdr
 D100: # Skyview
   - name: Layer override
     type: layeroverride
