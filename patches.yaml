@@ -1604,6 +1604,17 @@ F100_1: # Great Tree
       anglez: 20406
       id: 0x0065
       name: NpcAdr
+F103_1: # Flooded Great Tree
+  - name: Exit from Flooded GT to GT
+    type: objadd
+    index: 1
+    room: 0
+    objtype: SCEN
+    object:
+      name: F100_1
+      layer: 1 # Layer with Water Dragon before Tadtones completion
+      room: 0
+      entrance: 5 # New GT -> Flooded GT entrance
 D100: # Skyview
   - name: Layer override
     type: layeroverride
