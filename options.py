@@ -204,9 +204,12 @@ class Options:
                 raise Exception(f'unknown type: {option["type"]}')
             self.set_option(option_name, value)
 
-    def to_dict(self):
+    def to_dict(self, exclude=[]):
         opts = self.options.copy()
         for option_name, option in OPTIONS.items():
+            if option_name in exclude:
+                del opts[option_name]
+                continue
             if option["type"] == "dirpath":
                 opts[option_name] = str(opts[option_name])
         return opts
