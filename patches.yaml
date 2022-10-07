@@ -1574,6 +1574,16 @@ F100_1: # Great Tree
       anglez: 0
       id: 0xFC50
       name: Bombf
+  - name: Exit from GT to Flooded GT
+    type: objadd
+    index: 1
+    room: 0
+    objtype: SCEN
+    object:
+      name: F103_1
+      layer: 1 # Layer with Water Dragon before Tadtones completion
+      room: 0
+      entrance: 5 # New GT -> Flooded GT entrance
   - name: Waterdragon in Great Tree
     type: oarcadd
     destlayer: 0

@@ -1473,6 +1473,21 @@
     index: 62
     flow:
       next: 468
+204-ForestF3:
+  - name: Entry to Flooded Faron
+    type: flowpatch
+    index: 16 # Start of Water Dragon SotH event
+    flow:
+      next: Trigger Exit to Flooded Faron
+  - name: Trigger Exit to Flooded Faron
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 5 # Entrance number
+      param2: 0
+      next: -1
+      param3: 10 # Triggers an exit
 250-ForestSiren:
   - name: shorten fi text
     type: flowpatch
