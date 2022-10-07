@@ -1474,11 +1474,69 @@
     flow:
       next: 468
 204-ForestF3:
-  - name: Entry to Flooded Faron
+  - name:
     type: flowpatch
-    index: 16 # Start of Water Dragon SotH event
+    index: 16
     flow:
-      next: Trigger Exit to Flooded Faron
+      next: Show Flooded Faron Entry Question
+  - name: Show Flooded Faron Entry Question
+    type: flowadd
+    flow:
+      type: type1
+      next: Flooded Faron Switch
+      param3: 302
+      param4: Flooded Faron Entry Question
+  - name: Flooded Faron Entry Question
+    type: textadd
+    text: "Would you like to accept my final test?\n[1]Yes[2-]No"
+  - name: Flooded Faron Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Check for Water Dragon Scale # Yes
+      - Show Declined Flooded Faron Offer Text # No
+  - name: Declined Flooded Faron Offer Text
+    type: textadd
+    text: "Very well. Talk to me again\nif you change your mind."
+  - name: Show Declined Flooded Faron Offer Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Declined Flooded Faron Offer Text
+  - name: Check for Water Dragon Scale
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 68 # Water Dragon Scale itemflag
+      param2: 1 # Check itemflag is set
+      next: Water Dragon Scale Branch
+      param3: 23 # Check for an itemflag
+  - name: Water Dragon Scale Branch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # Use result from previous check
+    cases:
+      - Trigger Exit to Flooded Faron # true
+      - Show No Water Dragon Scale Text # false
+  - name: No Water Dragon Scale Text
+    type: textadd
+    text: "You don't have my <b<Sacred Gift>>.\nI cannot allow you to attempt my final test unprepared."
+  - name: Show No Water Dragon Scale Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: No Water Dragon Scale Text
   - name: Trigger Exit to Flooded Faron
     type: flowadd
     flow:
