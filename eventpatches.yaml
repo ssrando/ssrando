@@ -1487,12 +1487,12 @@
       param3: 3
     cases:
       - 21 # Tadtones complete
-      - Flooded Faron Intro CS Check
-  - name: Flooded Faron Intro CS Check
+      - Music Scroll Check
+  - name: Music Scroll Check
     type: switchadd
     flow:
       subType: 6
-      param2: 527 # Watched Flooded Faron Intro CS
+      param2: 82 # Music scroll given
       param3: 3
     cases:
       - Show Flooded Faron Exit Question # true
@@ -1515,15 +1515,15 @@
       param2: 0
       param3: 2
     cases:
-      - Remove Flooded Faron Intro CS Storyflag # Yes
+      - Remove Music Scroll Storyflag # Yes
       - -1 # No
-  - name: Remove Flooded Faron Intro CS Storyflag
+  - name: Remove Music Scroll Storyflag
     type: flowadd
     flow:
       type: type3
       subType: 0
       param1: 0
-      param2: 527 # Flooded Faron Intro CS
+      param2: 82 # Music Scroll Storyflag
       next: Trigger Exit to Non-Flooded Faron
       param3: 1
   - name: Trigger Exit to Non-Flooded Faron
@@ -1581,7 +1581,7 @@
       param2: 0
       param3: 7 # Use result from previous check
     cases:
-      - Set Flooded Faron Intro CS Storyflag # true
+      - Set Music Scroll Storyflag # true
       - Show No Water Dragon Scale Text # false
   - name: No Water Dragon Scale Text
     type: textadd
@@ -1593,13 +1593,13 @@
       next: -1
       param3: 302
       param4: No Water Dragon Scale Text
-  - name: Set Flooded Faron Intro CS Storyflag
+  - name: Set Music Scroll Storyflag
     type: flowadd
     flow:
       type: type3
       subType: 0
       param1: 0
-      param2: 527 # Flooded Faron Intro CS
+      param2: 82 # Music Scroll Storyflag
       next: Check for Tadtones Starting CS
       param3: 0
   - name: Check for Tadtones Starting CS
