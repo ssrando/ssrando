@@ -1,3 +1,4 @@
+from email.policy import default
 import os
 import sys
 from pathlib import Path
@@ -114,15 +115,16 @@ class RandoGUI(QMainWindow):
         self.ui.disable_trick.clicked.connect(self.disable_trick)
 
         # setup presets
-        self.presets = {}
+        self.default_presets = {}
+        self.user_presets = {}
         self.ui.presets_list.addItem("[New Preset]")
         sep_idx = 1
         with open("gui/default_presets.json") as f:
             try:
-                default_presets = json.load(f)
-                for preset in default_presets:
+                load_default_presets = json.load(f)
+                for preset in load_default_presets:
                     self.ui.presets_list.addItem(preset)
-                    self.presets[preset] = default_presets[preset]
+                    self.default_presets[preset] = load_default_presets[preset]
                     sep_idx += 1
             except Exception as e:
                 print("couldn't load default presets")
@@ -131,10 +133,10 @@ class RandoGUI(QMainWindow):
         if os.path.isfile(self.user_presets_path):
             with open(self.user_presets_path) as f:
                 try:
-                    user_presets = json.load(f)
-                    for preset in user_presets:
+                    load_user_presets = json.load(f)
+                    for preset in load_user_presets:
                         self.ui.presets_list.addItem(preset)
-                        self.presets[preset] = user_presets[preset]
+                        self.user_presets[preset] = load_user_presets[preset]
                 except Exception as e:
                     print("couldn't load user presets", e)
         self.ui.load_preset.clicked.connect(self.load_preset)
@@ -569,10 +571,26 @@ class RandoGUI(QMainWindow):
         self.update_settings()
 
     def save_preset(self):
-        print("saving currently selected preset")
+        preset = self.ui.presets_list.currentText()
 
-    def delete_preset(Self):
-        print("deleting currently selected preset")
+    def delete_preset(self):
+        preset = self.ui.presets_list.currentText()
+        # protect from deleting default presets
+        if preset == "[New Preset]" or preset in self.default_presets:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage(
+                "Default presets are protected and cannot be deleted"
+            )
+            return
+        index = self.ui.presets_list.currentIndex()
+        del self.user_presets[preset]
+        self.ui.presets_list.removeItem(index)
+        self.ui.presets_list.setCurrentIndex(0)
+        self.write_presets()
+
+    def write_presets(self):
+        with open(self.user_presets_path, "w") as f:
+            json.dump(self.user_presets, f)
 
     def eventFilter(self, target, event):
         if event.type() == QEvent.Enter:
