@@ -1005,9 +1005,14 @@
     cases:
       - Rerandomize Treasure
       - -1
+  - name: Skip to end of fledge 2
+    type: flowpatch
+    index: 347 # after giving fledge the second stamina potion
+    flow:
+      next: 353
   - name: Skip Fledge 3
     type: flowpatch
-    index: 268 # after giving fledge the second stamina potion
+    index: 353
     flow:
       next: 320 # before crystal itemget
 116-InsectGame:
