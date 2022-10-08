@@ -1625,6 +1625,13 @@ F103_1: # Flooded Great Tree
       layer: 1 # Default layer for GT in rando??
       room: 0
       entrance: 5 # New Flooded GT -> GT entrance
+  - name: Remove Faron Soth from CS
+    type: objpatch
+    room: 0
+    index: 1
+    objtype: EVNT
+    object:
+      item: -1 # no faron Soth anymore
 D100: # Skyview
   - name: Layer override
     type: layeroverride
