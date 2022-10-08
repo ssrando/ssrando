@@ -1,7 +1,15 @@
 # Changelog
 
 ## Dev
+### Options
+- Added option to randomize progression in Flooded Faron Woods (by CovenEsme)
+  - Added Faron SotH check that is obtained when completing the Tadtones story quest
 ### Changes
+- Added Water Dragon to the Great Tree (by CovenEsme)
+- Added entrance and exit to and from Flooded Great Tree (by CovenEsme)
+  - Entering Flooded Great Tree for the first time automatically starts the Tadtones story quest
+  - New logical option for completing the Owlan's Crystals check
+    - Added access to Flooded Faron as an alternative to needing bomb bag
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 
