@@ -1500,9 +1500,29 @@
     type: flowadd
     flow:
       type: type1
-      next: -1
+      next: Show Flooded Faron Reentry Text
       param3: 302
       param4: Already Completed Tadtones Text
+  - name: Flooded Faron Reentry Text
+    type: textadd
+    text: "Would you like me to flood the forest\nagain?\n[1]Yes[2-]No"
+  - name: Show Flooded Faron Reentry Text
+    type: flowadd
+    flow:
+      type: type1
+      next: Flooded Faron Reentry Switch
+      param3: 302
+      param4: Flooded Faron Reentry Text
+  - name: Flooded Faron Reentry Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Check for Water Dragon Scale # Yes
+      - Show Declined Flooded Faron Offer Text # No
   - name: Show Flooded Faron Entry Question
     type: flowadd
     flow:
@@ -1589,11 +1609,20 @@
       next: -1
       param3: 10 # Triggers an exit
 204-ForestF3:
-  - name:
+  - name: Talk to Water Dragon in Flooded Faron
     type: flowpatch
-    index: 20
+    index: 16
     flow:
-      next: Show Flooded Faron Exit Question
+      next: Check If Already Obtained Faron SotH Item
+  - name: Check If Already Obtained Faron SotH Item
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 16 # Received Faron SotH
+      param3: 3
+    cases:
+      - Show Flooded Faron Exit Question # Already received item
+      - 19
   - name: Show Flooded Faron Exit Question
     type: flowadd
     flow:
@@ -1603,7 +1632,7 @@
       param4: Flooded Faron Exit Question
   - name: Flooded Faron Exit Question
     type: textadd
-    text: "Not giving up are you? I can drain the\nforest if you wish to continue later.\n[1]Yes[2-]No"
+    text: "Leaving so soon? I can drain the forest\nif you wish to return later.\n[1]Yes[2-]No"
   - name: Flooded Faron Exit Switch
     type: switchadd
     flow:
