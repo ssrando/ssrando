@@ -1585,7 +1585,7 @@
       - Show No Water Dragon Scale Text # false
   - name: No Water Dragon Scale Text
     type: textadd
-    text: "You don't have my <b<Sacred Gift>>.\nI cannot allow you to attempt my final test unprepared."
+    text: "You don't have my <b<Sacred Gift>>.\nI cannot allow you to attempt my final\ntest unprepared."
   - name: Show No Water Dragon Scale Text
     type: flowadd
     flow:

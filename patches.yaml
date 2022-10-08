@@ -1598,7 +1598,7 @@ F100_1: # Great Tree
     type: oarcadd
     destlayer: 0
     oarc: Waterdragon
-  - name: Add Test Stuff to Inside Great Tree
+  - name: Add WaterDragon to Inside Great Tree
     type: objadd
     layer: 0
     room: 0
