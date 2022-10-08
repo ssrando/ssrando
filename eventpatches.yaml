@@ -1623,6 +1623,11 @@
     cases:
       - Show Flooded Faron Exit Question # Already received item
       - 19
+  - name: Exit mid tadtones
+    type: flowpatch
+    index: 20
+    flow:
+      next: Show Flooded Faron Exit Question
   - name: Show Flooded Faron Exit Question
     type: flowadd
     flow:
