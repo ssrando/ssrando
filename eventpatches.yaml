@@ -1585,7 +1585,7 @@
       - Show No Water Dragon Scale Text # false
   - name: No Water Dragon Scale Text
     type: textadd
-    text: "You don't have my <b<Sacred Gift>>.\nI cannot allow you to attempt my final\ntest unprepared."
+    text: "You don't have my <b<Sacred Gift>>. I\ncannot allow you to attempt my final\ntest unprepared."
   - name: Show No Water Dragon Scale Text
     type: flowadd
     flow:
@@ -1629,6 +1629,20 @@
       param2: 0
       next: -1
       param3: 10 # Triggers an exit
+  - name: Go to Faron SotH item
+    type: flowpatch
+    index: 160
+    flow:
+      next: Give item after Faron SotH CS
+  - name: Give item after Faron SotH CS
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: 36
+      param3: 9
 250-ForestSiren:
   - name: shorten fi text
     type: flowpatch

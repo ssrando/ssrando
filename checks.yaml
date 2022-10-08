@@ -735,6 +735,13 @@ Lake Floria - Rupee High Ledge Outside Cistern Entrance:
   Paths:
    - stage/F102_1/r0/l0/Item/64
 
+Flooded Faron Woods - Faron Soth:
+  original item: Faron Song of the Hero Part
+  type: faron, long
+  Paths:
+    - event/204-ForestF3/Give item after Faron SotH CS
+    - oarc/F103_1/l0
+
 
 Eldin Volcano - Chest behind Bombable Wall in First Room:
   original item: Red Rupee
@@ -1589,12 +1596,6 @@ Lanayru Gorge - Lanayru Soth:
   Paths:
     - event/404-DesertF3/give item after Healing Thunderdragon
     - oarc/F302/l0
-
-
-#Flooded Faron Woods - Water Dragon's Reward
-#   original item: Faron Soth Part
-#   Paths:
-#    - event/
 
 
 #Boko Base - Mogma Mitts Event

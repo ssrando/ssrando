@@ -1599,9 +1599,13 @@ Lake Floria - Gossip Stone outside Ancient Cistern:
 Lake Floria - Rupee High Ledge Outside Cistern Entrance:
   Can Access Floria Waterfall & Beetle
 
-#Flooded Faron Woods - Water Dragon's Reward:
+## Flooded Faron Woods
 
-#  Can Access Flooded Faron Woods & Water Scale
+Can Access Flooded Faron Woods:
+  Can Access Upper Great Tree & Water Scale
+
+Flooded Faron Woods - Faron Soth:
+  Can Access Flooded Faron Woods
 
 ### Eldin
 
