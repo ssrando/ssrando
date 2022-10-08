@@ -3561,15 +3561,6 @@ F400: # Behind the Temple
   - name: Layer override
     type: layeroverride
     override:
-      - story_flag: 342
-        night: 0
-        layer: 8
-      - story_flag: 16
-        night: 0
-        layer: 7
-      - story_flag: 133
-        night: 0
-        layer: 6
       - story_flag: 13
         night: 0
         layer: 4
@@ -3579,9 +3570,6 @@ F400: # Behind the Temple
       - story_flag: 36
         night: 0
         layer: 2
-      - story_flag: -1
-        night: 0
-        layer: 0
   - name: Goron text trigger doesn't disappear after Sandship
     type: objpatch
     id: 0xFC95
