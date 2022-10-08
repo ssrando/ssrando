@@ -421,6 +421,21 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addLayout(self.horizontalLayout_9, 6, 0, 1, 1)
 
+        self.horizontalLayout_13 = QHBoxLayout()
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.option_tadtones = QComboBox(self.gridLayoutWidget_3)
+        self.option_tadtones.setObjectName(u"option_tadtones")
+
+        self.horizontalLayout_13.addWidget(self.option_tadtones)
+
+        self.label_for_option_tadtones_3 = QLabel(self.gridLayoutWidget_3)
+        self.label_for_option_tadtones_3.setObjectName(u"label_for_option_tadtones_3")
+
+        self.horizontalLayout_13.addWidget(self.label_for_option_tadtones_3)
+
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_13, 6, 2, 1, 1)
+
         self.groupBox_3 = QGroupBox(self.tab_3)
         self.groupBox_3.setObjectName(u"groupBox_3")
         self.groupBox_3.setGeometry(QRect(10, 270, 1001, 111))
@@ -1162,7 +1177,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
 
@@ -1227,6 +1242,7 @@ class Ui_MainWindow(object):
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Shop Mode", None))
         self.progression_short.setText(QCoreApplication.translate("MainWindow", u"Short Quests", None))
         self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
+        self.label_for_option_tadtones_3.setText(QCoreApplication.translate("MainWindow", u"Tadtones", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Goddess Cube Options", None))
         self.progression_eldin_goddess.setText(QCoreApplication.translate("MainWindow", u"Eldin Volcano", None))
         self.progression_goddess.setText(QCoreApplication.translate("MainWindow", u"Enabled", None))

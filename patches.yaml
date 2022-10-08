@@ -1631,7 +1631,7 @@ F103_1: # Flooded Great Tree
     index: 1
     objtype: EVNT
     object:
-      item: -1 # no faron Soth anymore
+      item: -1 # No Faron Soth anymore
 D100: # Skyview
   - name: Layer override
     type: layeroverride
