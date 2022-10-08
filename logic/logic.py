@@ -136,9 +136,6 @@ class Logic:
             self.racemode_ban_location("Sky Keep - Triforce of Power")
             self.racemode_ban_location("Sky Keep - Rupee in Alcove of FS Room")
 
-        if self.rando.options["tadtones"] == "Junk":
-            self.racemode_ban_location("Flooded Faron Woods - Faron Soth")
-
         self.prog_locations_by_zone_name = defaultdict(list)
         for location_name in self.filter_locations_for_progression(
             self.item_locations.keys()

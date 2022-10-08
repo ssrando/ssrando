@@ -657,18 +657,11 @@
          </layout>
         </item>
         <item row="6" column="2">
-         <layout class="QHBoxLayout" name="horizontalLayout_13">
-          <item>
-           <widget class="QComboBox" name="option_tadtones"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_for_option_tadtones_3">
-            <property name="text">
-             <string>Tadtones</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QCheckBox" name="progression_flooded_faron">
+          <property name="text">
+           <string>Flooded Faron</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>

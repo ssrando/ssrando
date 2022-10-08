@@ -737,7 +737,7 @@ Lake Floria - Rupee High Ledge Outside Cistern Entrance:
 
 Flooded Faron Woods - Faron Soth:
   original item: Faron Song of the Hero Part
-  type: faron, long
+  type: faron, flooded faron, long
   Paths:
     - event/204-ForestF3/Give item after Faron SotH CS
     - oarc/F103_1/l0
