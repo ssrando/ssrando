@@ -1,7 +1,7 @@
 - layer: 4
   oarcs:
     - Waterdragon
-  stage: F103_1
+  stage: F102_2
 - layer: 0
   oarcs:
   - PutTriForceSingle
