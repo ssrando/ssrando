@@ -1483,7 +1483,26 @@
     type: flowpatch
     index: 68
     flow:
-      next: Show Flooded Faron Entry Question
+      next: Tadtones Completion Storyflag Check
+  - name: Tadtones Completion Storyflag Check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 18 # All Tadtones Collected
+      param3: 3
+    cases:
+      - Show Already Completed Tadtones Text # Tadtones complete
+      - Show Flooded Faron Entry Question
+  - name: Already Completed Tadtones Text
+    type: textadd
+    text: "You have already completed my final\ntest. There is nothing more I can do\nfor you."
+  - name: Show Already Completed Tadtones Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Already Completed Tadtones Text
   - name: Show Flooded Faron Entry Question
     type: flowadd
     flow:
@@ -1594,7 +1613,17 @@
       param3: 2
     cases:
       - Trigger Exit to Non-Flooded Faron # Yes
-      - -1 # No
+      - Show Continue With Tadtones Text # No
+  - name: Continue With Tadtones Text
+    type: textadd
+    text: "Very well. Talk to me again if you\nchange your mind."
+  - name: Show Continue With Tadtones Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Continue With Tadtones Text
   - name: Trigger Exit to Non-Flooded Faron
     type: flowadd
     flow:
