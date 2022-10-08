@@ -1479,68 +1479,11 @@
     index: 62
     flow:
       next: 468
-204-ForestF3:
-  - name:
+  - name: Offer entry into Flooded Faron
     type: flowpatch
-    index: 16
+    index: 68
     flow:
-      next: Tadtones Completion Storyflag Check
-  - name: Tadtones Completion Storyflag Check
-    type: switchadd
-    flow:
-      subType: 6
-      param2: 18 # All Tadtones Collected
-      param3: 3
-    cases:
-      - 21 # Tadtones complete
-      - Music Scroll Check
-  - name: Music Scroll Check
-    type: switchadd
-    flow:
-      subType: 6
-      param2: 82 # Music scroll given
-      param3: 3
-    cases:
-      - Show Flooded Faron Exit Question # true
-      - Show Flooded Faron Entry Question # false
-  - name: Show Flooded Faron Exit Question
-    type: flowadd
-    flow:
-      type: type1
-      next: Flooded Faron Exit Switch
-      param3: 302
-      param4: Flooded Faron Exit Question
-  - name: Flooded Faron Exit Question
-    type: textadd
-    text: "Want to take a break?\n[1]Yes[2-]No"
-  - name: Flooded Faron Exit Switch
-    type: switchadd
-    flow:
-      type: switch
-      subType: 6
-      param2: 0
-      param3: 2
-    cases:
-      - Remove Music Scroll Storyflag # Yes
-      - -1 # No
-  - name: Remove Music Scroll Storyflag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 82 # Music Scroll Storyflag
-      next: Trigger Exit to Non-Flooded Faron
-      param3: 1
-  - name: Trigger Exit to Non-Flooded Faron
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 5 # Entrance number
-      param2: 0
-      next: -1
-      param3: 10 # Triggers an exit
+      next: Show Flooded Faron Entry Question
   - name: Show Flooded Faron Entry Question
     type: flowadd
     flow:
@@ -1563,7 +1506,7 @@
       - Show Declined Flooded Faron Offer Text # No
   - name: Declined Flooded Faron Offer Text
     type: textadd
-    text: "Very well. Talk to me again\nif you change your mind."
+    text: "Very well. Talk to me again if you\nchange your mind."
   - name: Show Declined Flooded Faron Offer Text
     type: flowadd
     flow:
@@ -1587,7 +1530,7 @@
       param2: 0
       param3: 7 # Use result from previous check
     cases:
-      - Set Music Scroll Storyflag # true
+      - Check for Tadtones Starting CS # true
       - Show No Water Dragon Scale Text # false
   - name: No Water Dragon Scale Text
     type: textadd
@@ -1599,15 +1542,6 @@
       next: -1
       param3: 302
       param4: No Water Dragon Scale Text
-  - name: Set Music Scroll Storyflag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 82 # Music Scroll Storyflag
-      next: Check for Tadtones Starting CS
-      param3: 0
   - name: Check for Tadtones Starting CS
     type: switchadd
     flow:
@@ -1632,6 +1566,41 @@
       type: type3
       subType: 0
       param1: 6 # Entrance number
+      param2: 0
+      next: -1
+      param3: 10 # Triggers an exit
+204-ForestF3:
+  - name:
+    type: flowpatch
+    index: 20
+    flow:
+      next: Show Flooded Faron Exit Question
+  - name: Show Flooded Faron Exit Question
+    type: flowadd
+    flow:
+      type: type1
+      next: Flooded Faron Exit Switch
+      param3: 302
+      param4: Flooded Faron Exit Question
+  - name: Flooded Faron Exit Question
+    type: textadd
+    text: "Not giving up are you? I can drain the\nforest if you wish to continue later.\n[1]Yes[2-]No"
+  - name: Flooded Faron Exit Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Trigger Exit to Non-Flooded Faron # Yes
+      - -1 # No
+  - name: Trigger Exit to Non-Flooded Faron
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 5 # Entrance number
       param2: 0
       next: -1
       param3: 10 # Triggers an exit

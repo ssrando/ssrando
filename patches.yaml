@@ -1611,7 +1611,7 @@ F100_1: # Great Tree
       posz: 513.1231689453125
       anglex: 65535
       angley: 19660
-      anglez: 20406
+      anglez: 20392
       id: 0x0065
       name: NpcAdr
 F103_1: # Flooded Great Tree
