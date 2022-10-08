@@ -1407,6 +1407,12 @@ F100: # Faron main area
       anglez: 0
       id: 0xFD01
       name: Tubo
+  - name: Remove Faron soth fi text
+    type: objdelete
+    id: 0x52B6
+    layer: 5
+    room: 0
+    objtype: OBJ
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
