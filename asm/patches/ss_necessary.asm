@@ -172,6 +172,27 @@ blr
 .org 0x80252edc
 li r3, 1
 
+; optimize some code around separating textfileindex from entrypoint
+; to then temporarily backup the current textfileindex
+; this fixes potential crashes when initiating a conversation while a Npc updates for the first time
+.org 0x800c41f8
+mullw r5, r4, r5
+subf r5, r5, r28
+rlwinm r5, r5, 0, 0x10, 0x1F
+lwz r6, GLOBAL_MESSAGE_RELATED_CONTEXT@sda21(r13)
+lwz r28, 0x2f8(r6) ; currentTextFileNumber
+b 0x800c4220 ; skip stuff we don't need anymore
+
+; restore the backed up text file number
+; the destructor here does nothing so we can overwrite it
+.org 0x800c4240
+lwz r6, GLOBAL_MESSAGE_RELATED_CONTEXT@sda21(r13)
+stw r28, 0x2f8(r6) ; currentTextFileNumber
+
+; always use non trial mode when using loadzones
+.org 0x80242060
+li r7, 0 ; force non trial
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
@@ -486,4 +507,34 @@ lwz r30, 0x38(r1)
 mtlr r0
 addi r1, r1, 0x40
 blr
+.close
+
+.open "d_a_obj_swrd_prjNP.rel" ; goddess wall
+.org 0x4D48
+b 0x4D70 ; skip over code checking for skyview mogma storyflag
+.org 0x5024
+b 0x5070 ; skip over code checking for scale and BotG (we check for BotG somewhere else again)
+.org 0x63E8
+bl reveal_goddess_wall_check ; require BotG here
+
+.close
+
+.open "d_t_insectNP.rel"
+.org 0xC70
+li r4, 9 ; change goddess wall requirement from scale to harp
+.org 0xBC4
+li r4, 9 ; change goddess wall requirement from imp1 to harp
+
+; fix trial storyflags
+.org 0x9DC
+li r4, 0x397 ; new storyflag
+
+.org 0xA1C
+li r4, 0x398
+
+.org 0xA68
+li r4, 0x399
+
+.org 0xAB4
+li r4, 0x39A
 .close

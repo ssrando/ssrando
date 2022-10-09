@@ -1,11 +1,8 @@
 PROGRESS_ITEMS = (
     [
-        "Slingshot",
         "Bomb Bag",
         "Gust Bellows",
         "Whip",
-        "Bow",
-        "Bug Net",
         "Water Scale",
         "Fireshield Earrings",
         "Clawshots",
@@ -26,14 +23,18 @@ PROGRESS_ITEMS = (
         "Faron Song of the Hero Part",
         "Eldin Song of the Hero Part",
         "Lanayru Song of the Hero Part",
-        "Spiral Charge"
+        "Spiral Charge",
+        "Life Tree Fruit"
         # "Revitalizing Potion" # causes problems in events, as it's treated like you buy a potion
     ]
     + ["Gratitude Crystal Pack"] * 13
     + ["Gratitude Crystal"] * 15
     + ["Progressive Sword"] * 6
     + ["Progressive Mitts"] * 2
-    + ["Progressive Beetle"] * 2
+    + ["Progressive Beetle"] * 4
+    + ["Progressive Bow"] * 3
+    + ["Progressive Slingshot"] * 2
+    + ["Progressive Bug Net"] * 2
     + ["Progressive Pouch"] * 5
     + ["Empty Bottle"] * 5
     + ["Progressive Wallet"] * 4
@@ -60,10 +61,11 @@ NONPROGRESS_ITEMS = (
 )
 
 CONSUMABLE_ITEMS = (
-    4 * ["Blue Rupee"]
-    + 25 * ["Red Rupee"]
-    + 12 * ["Silver Rupee"]
-    + 10 * ["Gold Rupee"]
+    3 * ["Green Rupee"]
+    + 12 * ["Blue Rupee"]
+    + 42 * ["Red Rupee"]
+    + 23 * ["Silver Rupee"]
+    + 11 * ["Gold Rupee"]
     + 10 * ["Semi Rare Treasure"]
     + 1 * ["Golden Skull"]
     + 12 * ["Rare Treasure"]
@@ -101,6 +103,9 @@ DUNGEON_PROGRESS_ITEMS = (
     + ["FS Small Key"] * 3
     + ["SK Boss Key"] * 0
     + ["SK Small Key"] * 1
+    + ["Triforce of Courage"] * 1
+    + ["Triforce of Wisdom"] * 1
+    + ["Triforce of Power"] * 1
 )
 
 # note: Lanayru Caves is technically not a dungeon, but has to be treated as such for non key sanity
@@ -137,6 +142,8 @@ DUNGEON_NONPROGRESS_ITEMS = (
     + ["FS Map"]
     + ["SK Map"]
 )
+
+TRIFORCES = ["Triforce of Courage"] + ["Triforce of Wisdom"] + ["Triforce of Power"]
 
 ALL_ITEM_NAMES = set(
     PROGRESS_ITEMS

@@ -19,6 +19,7 @@ from .item_types import (
     KEY_PIECES,
     SMALL_KEYS,
     BOSS_KEYS,
+    TRIFORCES,
 )
 from .constants import (
     DUNGEON_NAME_TO_SHORT_DUNGEON_NAME,
@@ -27,6 +28,7 @@ from .constants import (
     MAP_CHECKS,
     SMALL_KEY_CHECKS,
     BOSS_KEY_CHECKS,
+    TRIFORCE_CHECKS,
     END_OF_DUNGEON_CHECKS,
     POTENTIALLY_REQUIRED_DUNGEONS,
     ENTRANCE_CONNECTIONS,
@@ -34,6 +36,8 @@ from .constants import (
     STARTING_SWORD_COUNT,
     DUNGEON_GOALS,
     POST_GOAL_LOCS,
+    RUPEE_CHECKS,
+    QUICK_BEETLE_CHECKS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -108,9 +112,6 @@ class Logic:
                 self.racemode_ban_location(
                     "Sky - Lumpy Pumpkin - Goddess Chest on the Roof"
                 )
-                self.racemode_ban_location(
-                    "Sealed Grounds - Gorko's Goddess Wall Reward"
-                )
 
         batreaux_location_re = re.compile(r".*Batreaux - ([0-9]+) .*")
 
@@ -124,18 +125,25 @@ class Logic:
                     self.racemode_ban_location(location_name)
                     # print(f'banned {location_name}')
 
-        if self.rando.options["skip-skykeep"]:
+        if (
+            not self.rando.options["triforce-required"]
+            or self.rando.options["triforce-shuffle"] == "Anywhere"
+        ):
             self.racemode_ban_location("Sky Keep - First Chest")
             self.racemode_ban_location("Sky Keep - Chest after Dreadfuse")
+            self.racemode_ban_location("Sky Keep - Triforce of Courage")
+            self.racemode_ban_location("Sky Keep - Triforce of Wisdom")
+            self.racemode_ban_location("Sky Keep - Triforce of Power")
+            self.racemode_ban_location("Sky Keep - Rupee in Alcove of FS Room")
 
-        self.locations_by_zone_name = OrderedDict()
-        for location_name in self.item_locations:
+        self.prog_locations_by_zone_name = defaultdict(list)
+        for location_name in self.filter_locations_for_progression(
+            self.item_locations.keys()
+        ):
             zone_name, specific_location_name = self.split_location_name_by_zone(
                 location_name
             )
-            if zone_name not in self.locations_by_zone_name:
-                self.locations_by_zone_name[zone_name] = []
-            self.locations_by_zone_name[zone_name].append(location_name)
+            self.prog_locations_by_zone_name[zone_name].append(location_name)
 
         self.remaining_item_locations = list(self.item_locations.keys())
         self.prerandomization_item_locations = OrderedDict()
@@ -154,6 +162,16 @@ class Logic:
         self.all_nonprogress_items = NONPROGRESS_ITEMS.copy()
         self.all_fixed_consumable_items = CONSUMABLE_ITEMS.copy()
         self.duplicatable_consumable_items = DUPLICATABLE_CONSUMABLE_ITEMS.copy()
+        self.prerandomized_consumable_items = []
+
+        # Remove excess progressive items if Upgrade Item Shuffle is off.
+        if self.rando.options["gondo-upgrades"] == False:
+            self.all_progress_items.remove("Progressive Beetle")
+            self.all_progress_items.remove("Progressive Beetle")
+            self.all_progress_items.remove("Progressive Slingshot")
+            self.all_progress_items.remove("Progressive Bow")
+            self.all_progress_items.remove("Progressive Bow")
+            self.all_progress_items.remove("Progressive Bug Net")
 
         rupoor_mode = self.rando.options["rupoor-mode"]
         if rupoor_mode != "Off":
@@ -204,6 +222,17 @@ class Logic:
                 else:
                     self.racemode_ban_location(shop_check)
 
+        if self.rando.options["rupeesanity"] != "All":
+            for rupee_check in RUPEE_CHECKS:
+                if self.rando.options["rupeesanity"] == "Vanilla":
+                    orig_item = self.item_locations[rupee_check]["original item"]
+                    self.set_prerandomization_item_location(rupee_check, orig_item)
+                # No Quick Beetle is the only other option
+                else:
+                    if rupee_check in QUICK_BEETLE_CHECKS:
+                        orig_item = self.item_locations[rupee_check]["original item"]
+                        self.set_prerandomization_item_location(rupee_check, orig_item)
+
         swords_left = 6 - STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]
         self.sworded_dungeon_locations = []
         if self.rando.options["sword-dungeon-reward"] and (
@@ -240,6 +269,7 @@ class Logic:
 
         small_key_mode = self.rando.options["small-key-mode"]
         boss_key_mode = self.rando.options["boss-key-mode"]
+        triforce_mode = self.rando.options["triforce-shuffle"]
         map_mode = self.rando.options["map-mode"]
         # remove small keys from the dungeon pool if small key sanity is enabled
         if small_key_mode == "Anywhere":
@@ -267,6 +297,18 @@ class Logic:
             for small_key_check in BOSS_KEY_CHECKS:
                 orig_item = self.item_locations[small_key_check]["original item"]
                 self.set_prerandomization_item_location(small_key_check, orig_item)
+        # remove triforces from the dungeon pool if triforce shuffle is enabled
+        if triforce_mode == "Anywhere":
+            self.dungeon_progress_items = [
+                key for key in self.dungeon_progress_items if key not in TRIFORCES
+            ]
+        elif triforce_mode == "Vanilla":
+            self.dungeon_progress_items = [
+                key for key in self.dungeon_progress_items if key not in TRIFORCES
+            ]
+            for triforce_check in TRIFORCE_CHECKS:
+                orig_item = self.item_locations[triforce_check]["original item"]
+                self.set_prerandomization_item_location(triforce_check, orig_item)
         # remove maps from the dungeon pool if maps are shuffled
         if map_mode in ["Anywhere", "Removed"]:
             self.dungeon_nonprogress_items = []
@@ -276,12 +318,27 @@ class Logic:
                 orig_item = self.item_locations[small_key_check]["original item"]
                 self.set_prerandomization_item_location(small_key_check, orig_item)
 
+        # Add consumable items that were prerandomized if they were replaced (Should only happen in rupoor settings)
+        if rupoor_mode != "Off":
+            for consumable_item in self.prerandomized_consumable_items:
+                consumable_item_cnt = self.prerandomized_consumable_items.count(
+                    consumable_item
+                )
+                fixed_consume_item_cnt = self.unplaced_fixed_consumable_items.count(
+                    consumable_item
+                )
+                if consumable_item_cnt > fixed_consume_item_cnt:
+                    self.unplaced_fixed_consumable_items.remove("Rupoor")
+                    self.unplaced_fixed_consumable_items.append(consumable_item)
+                    self.all_item_names.remove("Rupoor")
+                    self.all_item_names.append(consumable_item)
+
         self.map_banned_locations = []
         if self.rando.options["map-mode"] == "Own Dungeon - Restricted":
             self.map_banned_locations += [
                 "Skyview - Ghirahim Heart Container",
                 "Earth Temple - Scaldera Heart Container",
-                "Lanayru Mining Facility - Molderach Heart Container",
+                "Lanayru Mining Facility - Moldarach Heart Container",
                 "Ancient Cistern - Koloktos Heart Container",
                 "Sandship - Tentalus Heart Container",
                 "Fire Sanctuary - Ghirahim Heart Container",
@@ -348,7 +405,10 @@ class Logic:
                 else:
                     unreq_indices.append(index)
 
-            if self.rando.options["skip-skykeep"]:
+            if (
+                not self.rando.options["triforce-required"]
+                or self.rando.options["triforce-shuffle"] == "Anywhere"
+            ):
                 unreq_indices.append(dungeons.index("Sky Keep"))
             else:
                 req_indices.append(dungeons.index("Sky Keep"))
@@ -430,6 +490,8 @@ class Logic:
         # print("Setting prerand %s to %s" % (location_name, item_name))
 
         assert location_name in self.item_locations
+        if item_name in CONSUMABLE_ITEMS:
+            self.prerandomized_consumable_items.append(item_name)
         self.prerandomization_item_locations[location_name] = item_name
 
     def get_num_progression_items(self):
@@ -661,8 +723,11 @@ class Logic:
                     for loc in inaccessible_undone_item_locations
                     if not loc == location_name
                 ]
-                if not self.check_item_is_useful(
-                    unlocked_prerand_item, temp_inaccessible_undone_item_locations
+                if (
+                    unlocked_prerand_item in CONSUMABLE_ITEMS
+                    or not self.check_item_is_useful(
+                        unlocked_prerand_item, temp_inaccessible_undone_item_locations
+                    )
                 ):
                     # If that item is not useful, don't consider the current item useful for unlocking it.
                     continue
@@ -1293,6 +1358,23 @@ class Logic:
                     item_name
                 )  # Temporarily add big keys to the player's inventory while placing them.
 
+        triforces_to_place = []
+        if self.rando.options["triforce-shuffle"] not in ["Anywhere", "Vanilla"]:
+            # Randomize triforces.
+            triforces_to_place = [
+                item_name
+                for item_name in (
+                    self.unplaced_progress_items + self.unplaced_nonprogress_items
+                )
+                if "Triforce" in item_name
+            ]
+            assert len(triforces_to_place) > 0
+            for item_name in triforces_to_place:
+                self.place_dungeon_item(item_name)
+                self.add_owned_item(
+                    item_name
+                )  # Temporarily add triforces to the player's inventory while placing them
+
         if self.rando.options["map-mode"] not in ["Anywhere", "Vanilla", "Removed"]:
             # Randomize dungeon maps and compasses.
             other_dungeon_items_to_place = [
@@ -1483,14 +1565,7 @@ class Logic:
         nonprogress = []
         for (region, is_barren) in region_is_barren.items():
             if is_barren:
-                if (
-                    len(
-                        self.filter_locations_for_progression(
-                            self.locations_by_zone_name[region]
-                        )
-                    )
-                    > 0
-                ):
+                if len(self.prog_locations_by_zone_name[region]) > 0:
                     barren.append(region)
                 else:
                     nonprogress.append(region)

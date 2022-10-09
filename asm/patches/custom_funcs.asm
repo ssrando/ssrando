@@ -627,21 +627,14 @@ blr
 .global select_new_item_column
 select_new_item_column:
 ; r5 is command
-cmplwi r5, 9 ; we only care about command 9 (custom for rerandomizing what item row to buy)
+cmplwi r5, 9 ; we only care about command 9 (custom for advancing what item row to buy)
 bne new_treasure_function_end
 ; get current row
 lwz r3, STORYFLAG_MANAGER@sda21(r13)
 li r4, 0x28C
 bl FlagManager__getFlagOrCounter
-mr r31, r3
-
-random_new_row:
-li r3, 4
-bl cM_rndI
-cmpw r3, r31
-beq random_new_row
-; set new row
-mr r5, r3
+addi r3, r3, 1 ; advance 1 slot
+rlwinm r5,r3,0,30,31 ; only use last 2 bits, there are 4 options
 lwz r3, STORYFLAG_MANAGER@sda21(r13)
 li r4, 0x28C
 bl FlagManager__setFlagOrCounter
@@ -657,4 +650,27 @@ mtlr r0
 addi r1, r1, 0x40
 blr
 
+.close
+
+.open "d_a_obj_swrd_prjNP.rel" ; goddess wall
+.org @NextFreeSpace
+; replaces the call to "isPlayingHarp" and adds the BotG requirement
+; we do this because otherwise the actor despawns on load, meaning you can't activate goddess walls
+; after getting BotG until you reload
+.global reveal_goddess_wall_check
+reveal_goddess_wall_check:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 20(r1)
+bl isPlayingHarp
+cmpwi r3, 0
+beq reveal_goddess_wall_check_end
+lwz r3, ITEMFLAG_MANAGER@sda21(r13)
+li r4, 0xba ; BAllad (nice coincidence)
+bl FlagManager__getFlagOrCounter
+reveal_goddess_wall_check_end:
+lwz r0, 20(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
 .close

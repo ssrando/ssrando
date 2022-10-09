@@ -208,6 +208,7 @@ class RandoGUI(QMainWindow):
         self.ui.progression_goddess.clicked.connect(self.goddess_cubes_toggled)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.update_ui_for_settings()
+        self.update_settings()
         self.set_option_description(None)
 
         self.ui.tabWidget.setCurrentIndex(0)
