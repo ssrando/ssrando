@@ -129,7 +129,6 @@ class RandoGUI(QMainWindow):
                     self.default_presets[preset] = load_default_presets[preset]
                     sep_idx += 1
             except Exception as e:
-                print(e)
                 print("couldn't load default presets")
         self.ui.presets_list.insertSeparator(sep_idx)
         self.user_presets_path = "presets.txt"
@@ -142,9 +141,11 @@ class RandoGUI(QMainWindow):
                         self.user_presets[preset] = load_user_presets[preset]
                 except Exception as e:
                     print("couldn't load user presets", e)
+        self.ui.presets_list.currentIndexChanged.connect(self.preset_selection_changed)
         self.ui.load_preset.clicked.connect(self.load_preset)
         self.ui.save_preset.clicked.connect(self.save_preset)
         self.ui.delete_preset.clicked.connect(self.delete_preset)
+        self.preset_selection_changed()
 
         self.location_descriptions = {
             "skyloft": "Enables progression items to appear on Skyloft",
@@ -618,6 +619,21 @@ class RandoGUI(QMainWindow):
             ]
         )
         self.write_presets()
+
+    def preset_selection_changed(self):
+        preset = self.ui.presets_list.currentText()
+        if preset == new_preset:
+            self.ui.load_preset.setDisabled(True)
+            self.ui.save_preset.setDisabled(False)
+            self.ui.delete_preset.setDisabled(True)
+        elif preset in self.default_presets:
+            self.ui.load_preset.setDisabled(False)
+            self.ui.save_preset.setDisabled(True)
+            self.ui.delete_preset.setDisabled(True)
+        else:
+            self.ui.load_preset.setDisabled(False)
+            self.ui.save_preset.setDisabled(False)
+            self.ui.delete_preset.setDisabled(False)
 
     def delete_preset(self):
         preset = self.ui.presets_list.currentText()
