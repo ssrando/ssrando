@@ -130,22 +130,17 @@ def main():
         plandomizer.randomize()
         exit(0)
 
-    bulk_mode = False
+    assert options is not None
+
+    areas = Areas(requirements, checks, hints, map_exits)
+
     if parsed_args.bulk:
-        bulk_mode = True
         bulk_low = parsed_args.bulk_low
         bulk_high = parsed_args.bulk_high
         if bulk_high < bulk_low:
             print("high has to be higher than low!")
             exit(1)
         bulk_threads = parsed_args.bulk_threads
-
-    assert options is not None
-
-    areas = Areas(requirements, checks, hints, map_exits)
-
-    if bulk_mode:
-        from multiprocessing import Process
 
         options.set_option("dry-run", True)
 
@@ -155,13 +150,18 @@ def main():
                 rando = Randomizer(areas, local_opts)
                 rando.randomize()
 
-        threads = []
-        for (start, end) in get_ranges(bulk_low, bulk_high, bulk_threads):
-            thread = Process(target=randothread, args=(start, end, options.copy()))
-            thread.start()
-            threads.append(thread)
-        for thread in threads:
-            thread.join()
+        if bulk_threads == 1:
+            randothread(bulk_low, bulk_high, options)
+        else:
+            from multiprocessing import Process
+
+            threads = []
+            for (start, end) in get_ranges(bulk_low, bulk_high, bulk_threads):
+                thread = Process(target=randothread, args=(start, end, options.copy()))
+                thread.start()
+                threads.append(thread)
+            for thread in threads:
+                thread.join()
     elif options["noui"]:
         rando = Randomizer(areas, options)
         if not options["dry-run"]:
