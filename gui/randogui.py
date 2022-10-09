@@ -606,16 +606,9 @@ class RandoGUI(QMainWindow):
                     self.ui.presets_list.addItem(preset)
                     self.ui.presets_list.setCurrentText(preset)
         self.user_presets[preset] = self.options.to_dict(
+            False,
             [
-                "dry-run",
-                "output-folder",
-                "json",
-                "noui",
-                "music-rando",
-                "cutoff-game-over-music",
-                "allow-custom-music",
-                "tunic-swap",
-                "out-placement-file",
+                "no-spoiler-log",
             ]
         )
         self.write_presets()

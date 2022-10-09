@@ -204,9 +204,12 @@ class Options:
                 raise Exception(f'unknown type: {option["type"]}')
             self.set_option(option_name, value)
 
-    def to_dict(self, exclude=[]):
+    def to_dict(self, include_nonperma=True, exclude=[]):
         opts = self.options.copy()
         for option_name, option in OPTIONS.items():
+            if not include_nonperma and "permalink" in option and not option["permalink"]:
+                del opts[option_name]
+                continue
             if option_name in exclude:
                 del opts[option_name]
                 continue
