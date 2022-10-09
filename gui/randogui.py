@@ -1,4 +1,3 @@
-from email.policy import default
 import os
 import sys
 from pathlib import Path
@@ -38,6 +37,7 @@ import signal
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
+new_preset = "[New Preset]"
 
 class RandoGUI(QMainWindow):
     def __init__(self, options: Options):
@@ -119,9 +119,9 @@ class RandoGUI(QMainWindow):
         # setup presets
         self.default_presets = {}
         self.user_presets = {}
-        self.ui.presets_list.addItem("[New Preset]")
+        self.ui.presets_list.addItem(new_preset)
         sep_idx = 1
-        with open("gui/default_presets.json") as f:
+        with (RANDO_ROOT_PATH / 'gui' / 'default_presets.json').open('r') as f:
             try:
                 load_default_presets = json.load(f)
                 for preset in load_default_presets:
@@ -129,6 +129,7 @@ class RandoGUI(QMainWindow):
                     self.default_presets[preset] = load_default_presets[preset]
                     sep_idx += 1
             except Exception as e:
+                print(e)
                 print("couldn't load default presets")
         self.ui.presets_list.insertSeparator(sep_idx)
         self.user_presets_path = "presets.txt"
@@ -566,7 +567,7 @@ class RandoGUI(QMainWindow):
     def load_preset(self):
         preset = self.ui.presets_list.currentText()
         # prevent loading the new preset option
-        if preset == "[New Preset]":
+        if preset == new_preset:
             return
         if preset in self.default_presets:
             self.options.update_from_dict(self.default_presets[preset])
@@ -583,7 +584,7 @@ class RandoGUI(QMainWindow):
                 "Default presets are protected and cannot be updated"
             )
             return
-        if preset == "[New Preset]":
+        if preset == new_preset:
             (name, ok) = QInputDialog.getText(
                 self,
                 "Create New Preset",
@@ -594,6 +595,10 @@ class RandoGUI(QMainWindow):
                 if name in self.default_presets or name in self.user_presets:
                     self.error_msg = QErrorMessage()
                     self.error_msg.showMessage("Cannot have duplicate preset names")
+                    return
+                elif name == new_preset:
+                    self.error_msg = QErrorMessage()
+                    self.error_msg.showMessage("Invalid preset name")
                     return
                 else:
                     preset = name
@@ -617,7 +622,7 @@ class RandoGUI(QMainWindow):
     def delete_preset(self):
         preset = self.ui.presets_list.currentText()
         # protect from deleting default presets
-        if preset == "[New Preset]" or preset in self.default_presets:
+        if preset == new_preset or preset in self.default_presets:
             self.error_msg = QErrorMessage()
             self.error_msg.showMessage(
                 "Default presets are protected and cannot be deleted"
