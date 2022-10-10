@@ -68,6 +68,8 @@ global:
     Eldin Volcano:
       - 2 # gets rid of first digging mitts mogma text
       - 58 # digging mitts mogma cutscene watched
+    Earth Temple:
+      - 15 # Set boulder entering dragon's mouth cutscene watched
     Lanayru Desert:
       - 68 # desert statue checked
       - 7 # pushed first minecart to end
@@ -2298,6 +2300,40 @@ D200: # ET
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: Remove cutscene showing the boss door
+    type: objdelete
+    id: 0xFC68
+    layer: 0
+    room: 4
+    objtype: STAG
+  - name: Remove cutscene after lavafall
+    type: objdelete
+    id: 0xFC65
+    layer: 0
+    room: 4
+    objtype: STAG
+  - name: Remove lavafall while stood near the boss door
+    type: objadd
+    room: 4
+    layer: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFEFF16
+      params2: 0xFF5FFFFF
+      posx: -7830
+      posy: 6000
+      posz: -15120
+      sizex: 4660
+      sizey: 3000
+      sizez: 4760
+      anglex: 65535
+      angley: 0
+      anglez: 65535
+      name: SwAreaT
+      setscenefid: 4
+      unsetscenefid: 255
+      setstoryfid: 2047
+      unsetstoryfid: 2047
 B200: # Boss Room
   - name: Layer override
     type: layeroverride
