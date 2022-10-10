@@ -1464,7 +1464,7 @@ Sandship - Robot in Brig's Reward:
   original item: SS Small Key
   type: lanayru, dungeon
   hint: sometimes
-  text: the <r<gratitude of a freed captain>> reveals
+  text: the <r<gratitude of a freed crew>> reveals
   Paths:
     - event/401-DesertD2/14
     - oarc/D301/l4
