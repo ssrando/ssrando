@@ -69,6 +69,7 @@ global:
       - 2 # gets rid of first digging mitts mogma text
       - 58 # digging mitts mogma cutscene watched
     Earth Temple:
+      - 12 # Removes lavafall in front of Boss Door
       - 15 # Set boulder entering dragon's mouth cutscene watched
     Lanayru Desert:
       - 68 # desert statue checked
@@ -2312,14 +2313,14 @@ D200: # ET
     layer: 0
     room: 4
     objtype: STAG
-  - name: Remove lavafall in front of the boss door
+  - name: change untrigger of lavafall in front of Boss Door
     type: objpatch
     id: 0xFC1F
     layer: 0
     room: 4
     objtype: OBJ
     object:
-      params1: 0x3F02053B
+      params1: 0x3F02050C
 B200: # Boss Room
   - name: Layer override
     type: layeroverride
