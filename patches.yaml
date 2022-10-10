@@ -70,7 +70,7 @@ global:
       - 58 # digging mitts mogma cutscene watched
     Earth Temple:
       - 12 # Removes lavafall in front of Boss Door
-      - 15 # Set boulder entering dragon's mouth cutscene watched
+      - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
     Lanayru Desert:
       - 68 # desert statue checked
       - 7 # pushed first minecart to end
@@ -2320,7 +2320,7 @@ D200: # ET
     room: 4
     objtype: OBJ
     object:
-      params1: 0x3F02050C
+      params1: 0x3F02050F
 B200: # Boss Room
   - name: Layer override
     type: layeroverride
