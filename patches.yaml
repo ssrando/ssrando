@@ -2312,28 +2312,14 @@ D200: # ET
     layer: 0
     room: 4
     objtype: STAG
-  - name: Remove lavafall while stood near the boss door
-    type: objadd
-    room: 4
+  - name: Remove lavafall in front of the boss door
+    type: objpatch
+    id: 0xFC1F
     layer: 0
-    objtype: STAG
+    room: 4
+    objtype: OBJ
     object:
-      params1: 0xFFFEFF16
-      params2: 0xFF5FFFFF
-      posx: -7830
-      posy: 6000
-      posz: -15120
-      sizex: 4660
-      sizey: 3000
-      sizez: 4760
-      anglex: 65535
-      angley: 0
-      anglez: 65535
-      name: SwAreaT
-      setscenefid: 4
-      unsetscenefid: 255
-      setstoryfid: 2047
-      unsetstoryfid: 2047
+      params1: 0x3F02053B
 B200: # Boss Room
   - name: Layer override
     type: layeroverride
