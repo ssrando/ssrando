@@ -2,6 +2,13 @@
 
 ## Dev
 ### Changes
+- Presets (by cjs07)
+  - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
+  - The randomizer is distributed with a set of default presets that cannot be changed
+    - This list includes all 6 Season 2 Tournament modes and a new beginner friendly mode
+  - Presets persist between versions and are forward compatible with new versions.
+  - User preset data is sharable between users via the `presets.txt` file
+  - Only options included in permalinks are saved, with the exception of the spoiler log toggle
 ### Bugfixes 
 
 ## 1.3.2
@@ -37,7 +44,7 @@
 - Added option to fight multiple Demises at the end of the game
 - Added option to allow custom music (by Battlecats59)
 - Added even more cutscene skips, plus text patches for clarity (by YourAverageLink)
-- - New Hint System (by cjs07)
+- New Hint System (by cjs07)
   - Removed all counter options for hints
   - Added Hint Distributions
     - Distributions can specufy the follwing *new* parameters

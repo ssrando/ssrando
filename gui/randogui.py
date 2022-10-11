@@ -39,6 +39,7 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 NEW_PRESET = "[New Preset]"
 
+
 class RandoGUI(QMainWindow):
     def __init__(self, options: Options):
         super().__init__()
@@ -121,7 +122,7 @@ class RandoGUI(QMainWindow):
         self.user_presets = {}
         self.ui.presets_list.addItem(NEW_PRESET)
         sep_idx = 1
-        with (RANDO_ROOT_PATH / 'gui' / 'default_presets.json').open('r') as f:
+        with (RANDO_ROOT_PATH / "gui" / "default_presets.json").open("r") as f:
             try:
                 load_default_presets = json.load(f)
                 for preset in load_default_presets:
@@ -609,7 +610,7 @@ class RandoGUI(QMainWindow):
             True,
             [
                 "no-spoiler-log",
-            ]
+            ],
         )
         self.write_presets()
 
