@@ -9,6 +9,7 @@
 ### Changes
 - Added Boss Key (BK) hints as a new hint type (by Muzugalium)
   - A BK hint will point to the precise location of the boss key of a required dungeon
+- Added Stamina Potion for logical access to the end of Lanayru Mine and Lanayru Desert when Open LMF is set to Open (by CovenEsme)
 ### Bugfixes
 - Fixed a crash when the arc-replacements folder was missing
 
