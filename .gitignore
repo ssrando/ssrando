@@ -177,3 +177,5 @@ version-with-git.txt
 
 #settings save file
 settings.txt
+#presets save file
+presets.txt
