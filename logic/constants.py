@@ -181,7 +181,7 @@ ALL_TYPES = [
 POST_GOAL_LOCS = {
     "Ghirahim 1": "Skyview - Ghirahim Heart Container",
     "Scaldera": "Earth Temple - Scaldera Heart Container",
-    "Molderach": "Lanayru Mining Facility - Molderach Heart Container",
+    "Moldarach": "Lanayru Mining Facility - Moldarach Heart Container",
     "Koloktos": "Ancient Cistern - Koloktos Heart Container",
     "Tentalus": "Sandship - Tentalus Heart Container",
     "Ghirahim 2": "Fire Sanctuary - Ghirahim Heart Container",
@@ -190,7 +190,7 @@ POST_GOAL_LOCS = {
 DUNGEON_GOALS = {
     "Skyview": "Ghirahim 1",
     "Earth Temple": "Scaldera",
-    "Lanayru Mining Facility": "Molderach",
+    "Lanayru Mining Facility": "Moldarach",
     "Ancient Cistern": "Koloktos",
     "Sandship": "Tentalus",
     "Fire Sanctuary": "Ghirahim 2",

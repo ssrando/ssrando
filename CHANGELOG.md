@@ -9,12 +9,14 @@
   - Presets persist between versions and are forward compatible with new versions.
   - User preset data is sharable between users via the `presets.txt` file
   - Only options included in permalinks are saved, with the exception of the spoiler log toggle
-### Bugfixes 
+### Bugfixes
+- Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 
 ## 1.3.2
 ### Changes
 - Added Boss Key (BK) hints as a new hint type (by Muzugalium)
   - A BK hint will point to the precise location of the boss key of a required dungeon
+- Added Stamina Potion for logical access to the end of Lanayru Mine and Lanayru Desert when Open LMF is set to Open (by CovenEsme)
 ### Bugfixes
 - Fixed a crash when the arc-replacements folder was missing
 
@@ -70,7 +72,7 @@
     - Sometimes
     - Goal (by YourAverageLink)
       - Goal hints are a new hint type that may be specified in a hint distribution. They act similar to SotS hints, but they specify a required dungeon boss locked by an item in that region
-        - Example: Gust Bellows on Sparring Hall Chest with LMF as a required dungeon = Knight Academy is on the path to Molderach
+        - Example: Gust Bellows on Sparring Hall Chest with LMF as a required dungeon = Knight Academy is on the path to Moldarach
       - At the moment, goal hints are not compatible with the separate cube sots; they will be hinted like normal goal hints
       - Goal hints inherit the dungeon sots limit and use the same limit.
         - Example: If one goal hint is placed for a dungeon, the sots dungeon limit is 2, and goal hints are ordered before sots in the distribution, only up to one dungeon sots hint may be placed.
