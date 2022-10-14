@@ -161,6 +161,7 @@ Skyloft Village - Bertie's Crystals:
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
+  text: helping an <r<exhausted parent>> rewards
 Knight Academy - Ghost/Pipit's Crystals:
   original item: Gratitude Crystal Pack
   type: skyloft, fetch, crystal quest
@@ -350,6 +351,7 @@ Sky - Lumpy Pumpkin - Chandelier:
   type: sky, freestanding
   Paths:
     - stage/F011r/r0/l0/Chandel
+  text: <r<angering a bartender>> dislodges
 Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
   original item: Gold Rupee
   type: sky, goddess, faron goddess, dungeon
@@ -479,6 +481,7 @@ Sky - Orielle's Crystals:
   Paths:
     - event/115-Town2/225
     - oarc/F020/l0
+  text: saving a <r<sick loftwing>> is rewardede with
 Sky - Kina's Crystals:
   original item: Gratitude Crystal Pack
   type: sky, eldin, scrapper, long, crystal quest
@@ -558,8 +561,6 @@ Thunderhead - Second Goddess Chest on Mogma Mitts Island:
   Paths:
    - stage/F023/r0/l0/TBox/76
   cube_region: Lanayru Gorge
-  hint: sometimes
-  text: They say that <r<curing an ancient dragon>> is rewarded with
 Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes:
   original item: Horned Colossus Beetle
   type: thunderhead, minigame
@@ -581,11 +582,13 @@ Thunderhead - Isle of Songs - Farore's Courage:
   type: thunderhead, song
   Paths:
     - stage/F010r/r0/l0/SwSB/0
+  text: the <r<goddess' blade>> reveals
 Thunderhead - Isle of Songs - Nayru's Wisdom:
   original item: Nayru's Wisdom
   type: thunderhead, song
   Paths:
     - stage/F010r/r0/l0/SwSB/1
+  text: a <r<longsword>> reveals
 Thunderhead - Isle of Songs - Din's Power:
   original item: Din's Power
   type: thunderhead, song
@@ -662,7 +665,7 @@ Faron Woods - Chest inside Great Tree:
   Paths:
     - stage/F100_1/r0/l0/TBox/84
   hint: sometimes
-  text: the <r<hollow tree>> holds
+  text: climbing inside an <r<old hermit's home>> rewards
 Faron Woods - Rupee on Great Tree Branch North:
   original item: Blue Rupee
   type: faron, freestanding
@@ -865,6 +868,7 @@ Mogma Turf - Digging Mitts Fight:
     - event/300-Mountain/6
     - event/300-Mountain/135
     - oarc/F210/l0
+  text: helping <r<reclaim the mogmas' territory>> rewards
 Mogma Turf - Chest behind Bombable Wall in Fire Maze:
   original item: Silver Rupee
   type: eldin, bombable
@@ -893,6 +897,7 @@ Volcano Summit - Chest behind Bombable Wall in Waterfall Area:
   type: eldin, bombable
   Paths:
     - stage/F201_4/r0/l0/TBox/95
+  text: atop a <r<volcanic waterfall>> hides
 
 Lanayru Mines - Chest behind First Landing:
   original item: Evil Crystal
@@ -1047,6 +1052,7 @@ Lanayru Sand Sea - Skipper's Retreat - Chest on top of Cacti Pillar:
   type: lanayru, miscellaneous
   Paths:
     - stage/F301_3/r0/l0/TBox/76
+  text: a <r<chest amongst cacti>> holds
 Lanayru Sand Sea - Skipper's Retreat - Chest in Shack:
   original item: Sea Chart
   type: lanayru, miscellaneous
@@ -1120,6 +1126,7 @@ Skyview - Chest behind Two Eyes:
   type: faron, dungeon
   Paths:
     - stage/D100/r4/l0/TBox/67
+  text: <r<two watchful eyes>> guard
 Skyview - Beetle:
   original item: Progressive Beetle
   type: faron, dungeon
@@ -1218,6 +1225,7 @@ Earth Temple - Bomb Bag:
   type: eldin, dungeon
   Paths:
     - stage/D200/r3/l0/TBox/65
+  text: a menacing <r<pair of Lizalfos>> protect
 Earth Temple - Ledd's Gift:
   original item: 5 Bombs
   type: eldin, dungeon
@@ -1229,6 +1237,7 @@ Earth Temple - Rupee in Lava Tunnel:
   type: eldin, dungeon, freestanding, bombable
   Paths:
     - stage/D200/r2/l0/Item/21
+  text: hidden within the <r<neck of a dragon>> rests
 Earth Temple - Chest Guarded by Lizalfos:
   original item: Red Rupee
   type: eldin, dungeon
@@ -1473,7 +1482,7 @@ Sandship - Robot in Brig's Reward:
   original item: SS Small Key
   type: lanayru, dungeon
   hint: sometimes
-  text: the <r<gratitude of a freed captain>> reveals
+  text: the <r<gratitude of a freed crew>> reveals
   Paths:
     - event/401-DesertD2/14
     - oarc/D301/l4
@@ -1532,6 +1541,7 @@ Fire Sanctuary - Mogma Mitts:
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r5/l0/TBox/68
+  text: saving a <r<mogma>> from a <r<fiery fate>> rewards
 Fire Sanctuary - Chest on Balcony:
   original item: Bottle
   type: eldin, dungeon
@@ -1561,6 +1571,7 @@ Fire Sanctuary - Chest in Staircase Room:
   type: eldin, dungeon
   Paths:
     - stage/D201/r9/l0/TBox/75
+  text: exploring a <r<broken staircase>> reveals
 Fire Sanctuary - Boss Key Chest:
   original item: FS Boss Key
   type: eldin, dungeon
@@ -1598,7 +1609,8 @@ Lanayru Gorge - Lanayru Soth:
   Paths:
     - event/404-DesertF3/give item after Healing Thunderdragon
     - oarc/F302/l0
-
+  hint: sometimes
+  text: They say that <r<curing an ancient dragon>> is rewarded with
 
 #Boko Base - Mogma Mitts Event
 #   original item: Mogma Mitts

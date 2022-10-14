@@ -365,10 +365,10 @@
     # - Any Dungeon
     - Anywhere
   default: Own Dungeon - Restricted
-  help: Controls the placement of small keys. Vanilla means they will always be in their vanilla locations.
-    In Skyview, the Digging Spot will not contain a key. Own Dungeon means the keys can only appear
-    within their own dungeons. Restricted decreases the number of locations keys can appear in some
-    dungeons, depending on logic settings. Lanayru Caves Key only shuffles the Lanayru Caves Small Key.
+  help: "Controls the placement of small keys.
+    Vanilla: keys will be in their vanilla locations (The Skyview Digging Spot will not contain a key).
+    Own Dungeon - Restricted: keys will be within their own dungeons (reduces the locations keys can appear,
+    depending on logic settings). Lanayru Caves Key only: shuffles the Lanayru Caves Small Key."
   ui: option_small_key_mode
 - name: Boss Key Mode
   command: boss-key-mode
