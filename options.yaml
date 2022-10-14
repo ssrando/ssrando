@@ -118,6 +118,7 @@
     - cheap
     - medium
     - expensive
+    - flooded faron
     - faron goddess
     - eldin goddess
     - lanayru goddess
@@ -128,7 +129,7 @@
     list, available types are: skyloft, sky, thunderhead, faron, eldin, lanayru, dungeon,
     mini dungeon, free gift, freestanding, miscellaneous, silent realm, digging, bombable,
     combat, song, spiral charge, minigame, crystal, short, long, fetch, crystal quest,
-    scrapper, peatrice, goddess, faron goddess, eldin goddess, lanayru goddess, floria
+    scrapper, peatrice, flooded faron, goddess, faron goddess, eldin goddess, lanayru goddess, floria
     goddess, summit goddess, sand sea goddess'
   ui: option_banned_types
 - name: Triforce Required
@@ -256,6 +257,18 @@
   help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for 
     the Beetle, Bow, Bug Net, and Slingshot.
   ui: option_gondo_upgrades
+# - name: Tadtone Shuffle
+#   command: tadtones
+#   type: singlechoice
+#   default: Junk
+#   bits: 1
+#   choices:
+#     - Junk
+#     - Reward
+#     # - Tadtone Groups
+#     # - Reward + Tadtone Groups
+#   help: Randomizes the Faron SotH reward for collecting all the Tadtones.
+#   ui: option_tadtones
 - name: Gate of Time Starting State
   command: got-start
   type: singlechoice
