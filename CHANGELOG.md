@@ -1,6 +1,8 @@
 # Changelog
 
 ## Dev
+### Options
+- Added option to make sword reward place swords on heart containers rather than final checks (by YourAverageLink)
 ### Changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer

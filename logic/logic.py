@@ -38,6 +38,7 @@ from .constants import (
     POST_GOAL_LOCS,
     RUPEE_CHECKS,
     QUICK_BEETLE_CHECKS,
+    VANILLA_HEART_CONTAINERS,
 )
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
@@ -235,18 +236,25 @@ class Logic:
 
         swords_left = 6 - STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]
         self.sworded_dungeon_locations = []
-        if self.rando.options["sword-dungeon-reward"] and (
+        if self.rando.options["sword-dungeon-reward"] != "None" and (
             "dungeon" not in self.rando.banned_types
         ):
             sworded_dungeons = self.rando.rng.sample(
                 self.required_dungeons,
                 k=min(4, swords_left, self.rando.options["required-dungeon-count"]),
             )  # if swords_left > 4 and there are >4 required dungeons, seeds may be impossible or homogenous
-            self.sworded_dungeon_locations = [
-                check
-                for dungeon, check in END_OF_DUNGEON_CHECKS.items()
-                if dungeon in sworded_dungeons
-            ]
+            if self.rando.options["sword-dungeon-reward"] == "Heart Container":
+                self.sworded_dungeon_locations = [
+                    check
+                    for dungeon, check in VANILLA_HEART_CONTAINERS.items()
+                    if dungeon in sworded_dungeons
+                ]
+            else:  # must be final checks
+                self.sworded_dungeon_locations = [
+                    check
+                    for dungeon, check in END_OF_DUNGEON_CHECKS.items()
+                    if dungeon in sworded_dungeons
+                ]
             for location in self.sworded_dungeon_locations:
                 self.set_prerandomization_item_location(location, "Progressive Sword")
 
