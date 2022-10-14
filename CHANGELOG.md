@@ -17,6 +17,7 @@
   - Entering Flooded Great Tree for the first time automatically starts the Tadtones story quest
   - New logical option for completing the Owlan's Crystals check
     - Added access to Flooded Faron as an alternative to needing bomb bag
+- Machi is no longer rescued after beating Skyview
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 
