@@ -181,7 +181,7 @@ B100_1: # skyview spring
     object:
       sceneflag1: 104
       item: -1
-      story_flag1: 52 # machi located
+      story_flag1: -1
   - name: Loadzone to outside layer 3
     type: objdelete
     room: 0

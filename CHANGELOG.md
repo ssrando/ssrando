@@ -9,6 +9,7 @@
   - Presets persist between versions and are forward compatible with new versions.
   - User preset data is sharable between users via the `presets.txt` file
   - Only options included in permalinks are saved, with the exception of the spoiler log toggle
+- Machi is no longer rescued after beating Skyview
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 
