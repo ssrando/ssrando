@@ -235,7 +235,7 @@ class HintDistribution:
 
         region_barren, nonprogress = self.logic.get_barren_regions()
         for zone in region_barren:
-            if "Silent Realm" in zone or "Flooded Faron Woods":
+            if ("Silent Realm" in zone) or (zone == "Flooded Faron Woods"):
                 continue  # don't hint barren silent realms since they are an always hint
             if self.logic.rando.options["empty-unrequired-dungeons"]:
                 # avoid placing barren hints for unrequired dungeons in race mode
