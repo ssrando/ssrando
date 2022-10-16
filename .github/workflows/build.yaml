@@ -32,8 +32,8 @@ jobs:
       - name: Make arc-replacements folder
         run: mkdir -p dist/arc-replacements
         shell: bash
-      - name: Copy Readme
-        run: cp README.md dist
+      - name: Copy Readme and changelog
+        run: cp README.md CHANGELOG.md dist
         shell: bash
       - uses: actions/upload-artifact@v2
         with:
