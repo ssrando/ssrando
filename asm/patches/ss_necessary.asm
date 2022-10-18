@@ -309,6 +309,14 @@ li r4, 0x399
 .org 0xD64
 li r4, 0x39A
 
+; this usually delays starting the trial finish event until the
+; tear display is ready, which can softlock so skip the check,
+; which seems to only have a visual impact *at worst*
+;
+; preferably, the tear display should be fixed, but this works for now
+.org 0x1AA4
+nop
+
 .close
 
 .open "d_a_e_bcNP.rel"

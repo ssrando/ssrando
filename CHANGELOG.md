@@ -20,6 +20,7 @@
 - Machi is no longer rescued after beating Skyview
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
+- Fixed a softlock caused by collecting the last 2 tears in a trial too close together
 
 ## 1.3.2
 ### Changes
