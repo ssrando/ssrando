@@ -191,6 +191,7 @@ class RandoGUI(QMainWindow):
             "shops where progression items can appear",
             "expensive": "Enables progression items to be sold for more than 1000 rupees. Appleis to all shops"
             "where progression items can appear",
+            "flooded_faron": "Enables progression items to appear in Flooded Faron",
             "goddess": "Enables progression items to appear as items in Goddess Chests",
             "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
             "Faron Woods and Deep Woods",

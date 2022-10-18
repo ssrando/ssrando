@@ -169,6 +169,7 @@ ALL_TYPES = [
     "cheap",
     "medium",
     "expensive",
+    "flooded faron",
     "goddess",
     "faron goddess",
     "eldin goddess",
