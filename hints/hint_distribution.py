@@ -161,10 +161,11 @@ class HintDistribution:
             if loc in sometimes_hints:
                 sometimes_hints.remove(loc)
 
+        trial_rando = self.logic.rando.options["randomize-trials"]
         # all always hints are always hinted
         for hint in always_hints:
             self.hinted_locations.append(hint)
-            if hint in SILENT_REALM_CHECKS_REV:
+            if trial_rando and hint in SILENT_REALM_CHECKS_REV:
                 trial = SILENT_REALM_CHECKS_REV[hint]
                 trial_gate = {v: k for k, v in self.logic.trial_connections.items()}[
                     trial
