@@ -194,7 +194,7 @@
 ### Changes
 - Verify ISO checksum
 - Item after LMF is given before exiting out of the back
-- Treasure and Rupee dowsing are now obtainable after getting the Goddess Whitesword
+- Treasure and Rupee dowsing are now obtainable after getting the Goddess White Sword
 - Shorten timeshift stone cutscenes
 - Make it possible to not get pumpkin soup when doing lumpy pumpkin quest with spiral charge
 

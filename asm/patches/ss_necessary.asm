@@ -463,7 +463,7 @@ bl set_first_time_cs_already_watched ; in a branch that is not taken for the tim
 .open "d_a_obj_sw_sword_beamNP.rel"
 ; function that checks for your current sword, so that you can't activate the crest
 .org 0x25B0
-bge 0x2650 ; instead of only checking for whitesword for the last reward, check for at least that
+bge 0x2650 ; instead of only checking for White Sword for the last reward, check for at least that
 
 .org 0xD5C ; should handle the isle of songs CS starting, overwrite it with a jump to the custom function, that gives the items
 mr r3, r31

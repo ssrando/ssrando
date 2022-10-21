@@ -24,9 +24,7 @@ def test_roundtrip():
         plcmt_file = rando.get_placement_file()
         round_tripped_file = PlacementFile()
         round_tripped_file.read_from_str(plcmt_file.to_json_str())
-        assert (
-            plcmt_file.entrance_connections == round_tripped_file.entrance_connections
-        )
+        assert plcmt_file.dungeon_connections == round_tripped_file.dungeon_connections
         assert plcmt_file.gossip_stone_hints == round_tripped_file.gossip_stone_hints
         assert plcmt_file.hash_str == round_tripped_file.hash_str
         assert plcmt_file.item_locations == round_tripped_file.item_locations

@@ -1017,7 +1017,7 @@ Lanayru Caves - Chest:
   Paths:
     - stage/F303/r0/l0/TBox/127
 Lanayru Caves - Golo's Gift:
-  original item: LanayruCaves Small Key
+  original item: Lanayru Caves Key
   type: lanayru, free gift
   Paths:
     - event/404-DesertF3/127
@@ -1110,19 +1110,19 @@ Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose:
 
 
 Skyview - Chest on Tree Branch:
-  original item: SV Map
+  original item: Skyview Map
   type: faron, dungeon
   Paths:
     - stage/D100/r2/l0/TBox/64
 Skyview - Digging Spot in Crawlspace:
-  original item: SV Small Key
+  original item: Skyview Small Key
   type: faron, dungeon, digging
   hints: sometimes
   text: in a <r<temple in the forest>> a mogma <r<buried>>
   Paths:
     - stage/D100/r4/l0/Soil/15
 Skyview - Chest behind Two Eyes:
-  original item: SV Small Key
+  original item: Skyview Small Key
   type: faron, dungeon
   Paths:
     - stage/D100/r4/l0/TBox/67
@@ -1154,7 +1154,7 @@ Skyview - Rupee East Tunnel:
   Paths:
     - stage/D100/r5/l0/Item/66
 Skyview - Chest behind Three Eyes:
-  original item: SV Small Key
+  original item: Skyview Small Key
   type: faron, dungeon
   Paths:
     - stage/D100/r7/l0/TBox/68
@@ -1166,7 +1166,7 @@ Skyview - Chest near Boss Door:
   Paths:
     - stage/D100/r9/l0/TBox/70
 Skyview - Boss Key Chest:
-  original item: SV Boss Key
+  original item: Skyview Boss Key
   type: faron, dungeon
   Paths:
     - stage/D100/r9/l0/TBox/66
@@ -1214,7 +1214,7 @@ Earth Temple - Chest Left of Main Room Bridge:
   Paths:
     - stage/D200/r1/l0/TBox/70
 Earth Temple - Chest in West Room:
-  original item: ET Map
+  original item: Earth Temple Map
   type: eldin, dungeon
   hint: sometimes
   text: the <r<western wing in the Earth Temple>> holds
@@ -1244,7 +1244,7 @@ Earth Temple - Chest Guarded by Lizalfos:
   Paths:
     - stage/D200/r1/l0/TBox/67
 Earth Temple - Boss Key Chest:
-  original item: ET Boss Key
+  original item: Earth Temple Boss Key
   type: eldin, dungeon
   Paths:
     - stage/D200/r4/l0/TBox/68
@@ -1270,7 +1270,7 @@ Lanayru Mining Facility - Chest behind Bars:
   Paths:
     - stage/D300/r0/l0/TBox/64
 Lanayru Mining Facility - First Chest in Hub Room:
-  original item: LMF Small Key
+  original item: Lanayru Mining Facility Small Key
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r5/l0/TBox/70
@@ -1295,7 +1295,7 @@ Lanayru Mining Facility - Chest in First West Room:
   Paths:
     - stage/D300/r3/l0/TBox/66
 Lanayru Mining Facility - Chest after Armos Fight:
-  original item: LMF Map
+  original item: Lanayru Mining Facility Map
   type: lanayru, dungeon
   Paths:
     - stage/D300/r6/l0/TBox/69
@@ -1312,7 +1312,7 @@ Lanayru Mining Facility - Chest in Spike Maze:
     - stage/D300_1/r7/l0/TBox/73
     - stage/D300/r7/l0/TBox/73
 Lanayru Mining Facility - Boss Key Chest:
-  original item: LMF Boss Key
+  original item: Lanayru Mining Facility Boss Key
   type: lanayru, dungeon
   Paths:
     - stage/D300_1/r8/l0/TBox/71
@@ -1339,7 +1339,7 @@ Lanayru Mining Facility - Goddess Harp:
     - oarc/F300_5/l0
 
 Ancient Cistern - Chest in East Part:
-  original item: AC Small Key
+  original item: Ancient Cistern Small Key
   type: faron, dungeon
   hint: sometimes
   text: the <r<lone east chest in the Ancient Cistern>> contains
@@ -1382,7 +1382,7 @@ Ancient Cistern - Whip:
   Paths:
     - stage/D101/r7/l0/TBox/69
 Ancient Cistern - Chest after Whip Hooks:
-  original item: AC Map
+  original item: Ancient Cistern Map
   type: faron, dungeon
   Paths:
     - stage/D101/r0/l0/TBox/65
@@ -1407,12 +1407,12 @@ Ancient Cistern - Chest behind the Waterfall:
   Paths:
     - stage/D101/r3/l0/TBox/84
 Ancient Cistern - Bokoblin:
-  original item: AC Small Key
+  original item: Ancient Cistern Small Key
   type: faron, dungeon
   Paths:
     - stage/D101/r4/l0/EBc/0xFC00
 Ancient Cistern - Boss Key Chest:
-  original item: AC Boss Key
+  original item: Ancient Cistern Boss Key
   type: faron, dungeon
   Paths:
     - stage/D101/r4/l0/TBox/68
@@ -1432,7 +1432,7 @@ Ancient Cistern - Farore's Flame:
     - oarc/B101_1/l0
 
 Sandship - Chest behind Combination Lock:
-  original item: SS Small Key
+  original item: Sandship Small Key
   type: lanayru, dungeon
   Paths:
     - stage/D301/r10/l0/TBox/69
@@ -1449,7 +1449,7 @@ Sandship - Chest at the Stern:
   Paths:
     - stage/D301/r0/l0/TBox/127
 Sandship - Chest before 4-Door Corridor:
-  original item: SS Map
+  original item: Sandship Map
   type: lanayru, dungeon
   Paths:
     - stage/D301/r3/l0/TBox/71
@@ -1479,7 +1479,7 @@ Sandship - Treasure Room Fifth Chest:
   Paths:
     - stage/D301/r9/l0/TBox/68
 Sandship - Robot in Brig's Reward:
-  original item: SS Small Key
+  original item: Sandship Small Key
   type: lanayru, dungeon
   hint: sometimes
   text: the <r<gratitude of a freed crew>> reveals
@@ -1487,7 +1487,7 @@ Sandship - Robot in Brig's Reward:
     - event/401-DesertD2/14
     - oarc/D301/l4
 Sandship - Boss Key Chest:
-  original item: SS Boss Key
+  original item: Sandship Boss Key
   type: lanayru, dungeon
   Paths:
     - stage/D301/r14/l3/TBox/73
@@ -1511,7 +1511,7 @@ Sandship - Nayru's Flame:
 
 
 Fire Sanctuary - Chest in First Room:
-  original item: FS Small Key
+  original item: Fire Sanctuary Small Key
   type: eldin, dungeon
   Paths:
     - stage/D201/r0/l0/TBox/64
@@ -1522,7 +1522,7 @@ Fire Sanctuary - Chest in Second Room:
     - stage/D201_1/r1/l0/TBox/74
     - stage/D201/r1/l0/TBox/74
 Fire Sanctuary - Chest near First Trapped Mogma:
-  original item: FS Small Key
+  original item: Fire Sanctuary Small Key
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r5/l0/TBox/69
@@ -1549,13 +1549,13 @@ Fire Sanctuary - Chest on Balcony:
     - stage/D201_1/r6/l0/TBox/70
     - stage/D201/r6/l0/TBox/70
 Fire Sanctuary - Chest after Second Trapped Mogma:
-  original item: FS Map
+  original item: Fire Sanctuary Map
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r2/l0/TBox/65
     - stage/D201/r2/l0/TBox/65
 Fire Sanctuary - Chest after Bombable Wall:
-  original item: FS Small Key
+  original item: Fire Sanctuary Small Key
   type: eldin, dungeon
   Paths:
     - stage/D201_1/r11/l0/TBox/71
@@ -1573,7 +1573,7 @@ Fire Sanctuary - Chest in Staircase Room:
     - stage/D201/r9/l0/TBox/75
   text: exploring a <r<broken staircase>> reveals
 Fire Sanctuary - Boss Key Chest:
-  original item: FS Boss Key
+  original item: Fire Sanctuary Boss Key
   type: eldin, dungeon
   Paths:
     - stage/D201/r4/l0/TBox/67
@@ -1644,12 +1644,12 @@ Lanayru Gorge - Lanayru Soth:
 
 
 Sky Keep - First Chest:
-  original item: SK Map
+  original item: Sky Keep Map
   type: skyloft, dungeon
   Paths:
     - stage/D003_7/r0/l0/TBox/64
 Sky Keep - Chest after Dreadfuse:
-  original item: SK Small Key
+  original item: Sky Keep Small Key
   type: skyloft, dungeon
   Paths:
     - stage/D003_6/r0/l0/TBox/65
@@ -1696,7 +1696,7 @@ Lanayru Silent Realm - Clawshots:
   Paths:
     - stage/S300/r0/l2/WarpObj
   text: a <r<trial of wisdom>> grants
- 
+
 Eldin Silent Realm - Fireshield Earrings:
   original item: Fireshield Earrings
   type: eldin, silent realm

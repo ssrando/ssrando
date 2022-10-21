@@ -1,4 +1,4 @@
-from logic.constants import ALL_TYPES
+from logic.constants import BANNABLE_TYPES
 from packedbits import PackedBitsReader, PackedBitsWriter
 from paths import RANDO_ROOT_PATH
 from pathlib import Path
