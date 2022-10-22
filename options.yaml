@@ -403,14 +403,15 @@
   command: enabled-tricks-bitless
   type: multichoice
   choices:
-    - Upgrade Hook Beetle
     - Bomb Throws
     - Long Range Skyward Strike Jumpslash
+    - Advanced Lizalfos Combat
     # Skyloft / Sky
     - Waterfall Cave Jump
-    - Bomb Bag Beedle
+    - Beedle's Shop With Bombs
     - Baby Rattle from Beedle's Shop
     - Sky Keep Entrance Jump
+    - Gravestone Jump
     - Sky - Volcanic Island Dive
     - Sky - Beedle's Island Cage Chest Dive
     - Thunderhead - East Island Dive
@@ -420,9 +421,14 @@
     # - Early Lake Floria - Moblin
     - Early Lake Floria - Swordless Rope Floria
     - Faron - Bokoblin Luring
+    # Eldin
+    - Stuttersprint
     # Lanayru
     - Itemless First Timeshift Stone
+    - Lanayru Mines - Quick Bomb
     - Lanayru Mines Brakeslide
+    - Lanayru Desert - Spume Brakeslide
+    - Lanayru Desert - Sand Oasis Brakeslide
     - Temple of Time - Slingshot Shot
     - Temple of Time Skip - Brakeslide
     - Secret Passageway Hook Beetle Opening
@@ -620,6 +626,18 @@
   default: false
   help: If enabled, dowsing will be re-enabled in dungeons and other dungeon-like areas like Great Tree and Waterfall Cave.
   ui: option_dungeon_dowsing
+- name: Filling Algorithm
+  command: fill-algorithm
+  type: singlechoice
+  bits: 2
+  choices:
+    - Assumed Fill
+    - Front Fill
+    - Random Fill
+  default: Assumed Fill
+  permalink: true
+  help: The algorithm used to place items in the world. Random Fill has an extremely high chance of failure.
+  # ui: option_filling_algorithm
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

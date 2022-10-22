@@ -1,10 +1,12 @@
 {
     "banned_stones": [],
     "added_locations": [
-      {"location": "Sky - Dodoh's Crystals", "type": "sometimes"},
-      {"location": "Flooded Faron Woods - Faron Soth", "type": "sometimes"}
+      {"location": "Sky - Dodoh's Crystals", "type": "sometimes"}
     ],
-    "removed_locations": ["Lanayru Desert - Chest on top of Lanayru Mining Facility","Faron Woods - Slingshot"],
+    "removed_locations": [
+      "Lanayru Desert - Top of LMF - Chest",
+      "Faron Woods - Slingshot"
+    ],
     "added_items": [],
     "removed_items": [],
     "dungeon_sots_limit": 2,

@@ -1,0 +1,226 @@
+allowed-time-of-day: DayOnly
+
+Volcano:
+  toplevel-alias: Eldin Volcano
+  hint-region: Eldin Volcano
+  Entry:
+    locations:
+      Goddess Cube: Goddess Sword
+      Unlock Statue: Nothing
+      Rupee on Ledge: Nothing
+      Ascent - Unlock Shortcut to Entry: Bomb Bag # I'm pretty sure Hook Beetle won't work here
+    exits:
+      First Time Entrance: Impossible
+      Volcano Entrance Statue: Unlock Statue
+      Ascent: Ascent - Unlock Shortcut to Entry
+      First Room: Nothing
+
+  First Room: # Until the rocks
+    locations:
+      Chest behind Bombable Wall: Nothing
+      Rupee behind Bombable Wall: Nothing
+      Rupee in Crawlspace: Nothing
+      Blow up Rock to East: Nothing
+    exits:
+      East: Blow up Rock to East
+
+  East:
+    locations:
+      First Room - Blow up Rock to East: Bomb Bag # can probably also use hook beetle
+      Unlock Statue: Nothing
+      Goddess Cube near Mogma Turf Entrance: Goddess Sword
+      Chest after Crawlspace: Nothing
+      Chest behind Bombable Wall: Nothing
+      Item on Cliff: Nothing
+      Drain Lava: Nothing
+      Southeast Rupee above Mogma Turf Entrance: Beetle
+      North Rupee above Mogma Turf Entrance: Beetle
+      Past Mogma Turf - Unlock Shortcut to Pre Turf: Bomb Bag | Hook Beetle
+    exits:
+      Volcano East Statue Entrance: Impossible
+      Volcano East / Volcano Ascent Statue: Unlock Statue
+      Entry: Clawshots
+      Dive to Mogma Turf: Drain Lava
+      First Vent from Mogma Turf: Impossible
+      First Room: First Room - Blow up Rock to East
+      Past Mogma Turf: Past Mogma Turf - Unlock Shortcut to Pre Turf
+
+
+  Past Mogma Turf:
+    locations:
+      Unlock Shortcut to Pre Turf: Nothing
+      Watch Bridge Cutscene: Nothing
+      East - Southeast Rupee above Mogma Turf Entrance: Beetle
+      East - North Rupee above Mogma Turf Entrance: Beetle
+      East - Goddess Cube near Mogma Turf Entrance: Goddess Sword
+    exits:
+      East: Unlock Shortcut to Pre Turf
+      Second Vent from Mogma Turf: Impossible
+      Ascent: Watch Bridge Cutscene
+
+  Ascent:
+    locations:
+      Chest behind Bombable Wall: Nothing
+      Unlock Statue: Nothing
+      Unlock Shortcut to Entry: Nothing
+      Past Slide - Unlock Shortcut to Ascent: Bomb Bag | Hook Beetle # | (Whip & Whip Bomb Trick)
+      Defeat Slope Bokoblins: Bow | Slingshot | Beetle
+      Open Trial Gate: Goddess Harp & Din's Power
+    exits:
+      Volcano Ascent Statue Entrance: Impossible
+      East - Volcano East / Volcano Ascent Statue Exit: Unlock Statue
+      Trial Gate Exit: Open Trial Gate
+      Entry: Unlock Shortcut to Entry
+      Near Thrill Digger Cave: Defeat Slope Bokoblins | Stuttersprint Trick
+      Past Slide: Past Slide - Unlock Shortcut to Ascent
+
+  Near Thrill Digger Cave:
+    locations:
+      Left Rupee behind Bombable Wall: Nothing
+      Right Rupee behind Bombable Wall: Nothing
+      Blow down Watchtower: Nothing
+    exits:
+      Ascent: Nothing
+      Near Temple Entrance: Blow down Watchtower
+      Thrill Digger Cave Exit: Nothing
+
+  Thrill Digger Cave:
+    locations:
+      Thrill Digger Minigame: Digging Mitts
+      Gossip Stone: Nothing
+    exits:
+      Exit: Nothing
+
+  Near Temple Entrance:
+    exits:
+      Temple Entrance Statue: Unlock Statue
+      Near Thrill Digger Cave: Near Thrill Digger Cave - Blow down Watchtower
+      Exit to Earth Temple: Open ET option | Key Piece x5
+      Hot Cave: Blow down Watchtower between Earth Temple and Hot Cave
+    locations:
+      Unlock Statue: Nothing
+      Blow down Watchtower between Earth Temple and Hot Cave: Nothing
+      Retrieve Crystal Ball: Clawshots & Skyloft - Village - Start Sparrot's Quest
+      Goddess Cube West of Earth Temple Entrance: Digging Mitts & Goddess Sword
+      Gossip Stone next to Earth Temple: Digging Mitts
+      Goddess Cube East of Earth Temple Entrance: Goddess Sword
+      Digging Spot in front of Earth Temple: Digging Mitts
+      Digging Spot below Tower: Digging Mitts
+      Digging Spot behind Boulder on Sandy Slope: Digging Mitts
+
+  Hot Cave:
+    locations:
+      Blow down Watchtower between Earth Temple and Hot Cave: Impossible # Bomb Bag & Bomb Throw Trick
+    exits:
+      Exit to Summit: Fireshield Earrings
+      Vent Entrance near Hot Cave: Impossible
+      Near Temple Entrance: Blow down Watchtower between Earth Temple and Hot Cave
+      Sand Slide: Nothing
+
+  Sand Slide:
+    locations:
+      Goddess Cube: Goddess Sword
+      Digging Spot after Vents: Digging Mitts
+    exits:
+      Past Slide: Nothing
+
+  Past Slide:
+    locations:
+      Digging Spot after Draining Lava: Digging Mitts
+      Unlock Shortcut to Ascent: Nothing
+    exits:
+      Ascent: Unlock Shortcut to Ascent
+      Vent Exit near Ascent: Nothing
+
+
+Mogma Turf: # when randomizing this, need to find a way to force the skydiving animation
+  hint-region: Mogma Turf
+  Pre Vent:
+    locations:
+      Free Fall Chest: Nothing
+      Goddess Cube: Goddess Sword
+      Chest behind Bombable Wall at Entrance: Nothing
+      Pick up Guld: Sky - Pumpkin Landing - Start Kina's Quest
+      Digging Mitts Fight: Can Defeat Bokoblins
+      Open Vent: Digging Mitts
+    exits:
+      Entrance: Impossible
+      First Vent: Nothing
+      Past Vent: Open Vent
+
+  Sand Slide Platform:
+    locations:
+      Sand Slide Chest: Nothing
+    exits:
+      Pre Vent: Nothing
+
+  Past Vent:
+    locations:
+      Chest behind Bombable Wall in Fire Maze: Nothing
+    exits:
+      Pre Vent: Nothing
+      Sand Slide Platform: Nothing
+      Second Vent: Nothing
+
+Silent Realm:
+  hint-region: Eldin Silent Realm
+  exits:
+    Entrance: Nothing
+    Exit: Nothing
+  locations:
+    Fireshield Earrings: Nothing
+
+# VOLCANO SUMMIT
+Volcano Summit:
+  hint-region: Volcano Summit
+  locations:
+    Goddess Cube inside Volcano Summit: Fireshield Earrings & Long Range Skyward Strike
+    Small Chest: Fireshield Earrings
+    Boko Base Pouch Chest: Fireshield Earrings
+  exits:
+    Exit to Eldin Volcano: Fireshield Earrings
+    Exit to Waterfall: Fireshield Earrings
+    Exit to Outside Fire Sanctuary: Fireshield Earrings
+
+  Waterfall:
+    locations:
+      Goddess Cube in Summit Waterfall: Goddess Sword
+      General - Can Collect Water: Nothing
+    exits:
+      Exit: Nothing
+
+    Higher Area:
+      entrance: Clawshots
+      exits:
+        Waterfall: Nothing
+      locations:
+        Chest behind Bombable Wall: Nothing
+        Gossip Stone: Nothing
+
+
+  Outside Fire Sanctuary:
+
+    Before Thirsty Frogs:
+      locations:
+        Hydrate First Frog: Water Bottle
+      exits:
+        Exit to Summit: Nothing
+        Between Thirsty Frogs: Hydrate First Frog
+
+    Between Thirsty Frogs:
+      locations:
+        Item behind Digging: Mogma Mitts
+        Gossip Stone: Nothing
+        Hydrate Second Frog: Clawshots & Water Bottle
+      exits:
+        Before Thirsty Frogs: Before Thirsty Frogs - Hydrate First Frog
+        Outside Fire Sanctuary: Hydrate Second Frog
+
+    locations:
+      Goddess Cube: Clawshots & Goddess Sword
+      Hydrate Giant Frog: Nothing
+      Unlock Statue: Nothing
+    exits:
+      Statue: Unlock Statue
+      Between Thirsty Frogs: Between Thirsty Frogs - Hydrate Second Frog
+      Exit to Fire Sanctuary: Hydrate Giant Frog

@@ -1,0 +1,127 @@
+allowed-time-of-day: DayOnly
+hint-region: Sandship
+
+macros:
+  Pass Spume: Goddess Sword | Bow | Bomb Bag | Slingshot | Sandship - Itemless Spume Skip Trick
+
+Main:
+  Deck:
+    locations:
+      Raise Timeshift Stone: Bow
+      Start Mast Sequence: Raise Timeshift Stone & Bow
+      Freely Usable Timeshift Stone: Mast - Finish Mast Sequence & Bow
+
+    exits:
+      Main Exit: Nothing # If stuck in the mast sequence, deathwarp
+      Before Bow: Nothing
+      Captain's Cabin: Sandship Small Key x 2 & (Start Mast Sequence | Freely Usable Timeshift Stone)
+      Starboard Rooms: Starboard Rooms - Switch & Bow
+      Mast: Start Mast Sequence | Freely Usable Timeshift Stone
+
+    Mast:
+      locations:
+        Finish Mast Sequence: Bow & Sword
+      exits:
+        Deck: Nothing
+        Stern: Bow & (Clawshots | Sandship - Mast Jump Trick)
+
+    Stern:
+      locations:
+        Chest: Nothing
+      exits:
+        Deck: Clawshots
+        # Deathwarp possible
+
+    Captain's Cabin:
+      locations:
+        Switch: Bow & Deck - Freely Usable Timeshift Stone
+        Bars: Can Defeat Beamos
+        Boss Key Chest: Switch & Bars
+
+      exits:
+        Deck: Sandship Small Key x 2
+
+  Before Bow:
+    locations:
+      Chest before 4-Door Corridor: Deck - Freely Usable Timeshift Stone
+    exits:
+      Ship's Bow: Sandship Small Key x 2
+      Corridor: Pass Spume | Deck - Freely Usable Timeshift Stone
+
+  Ship's Bow:
+    locations:
+      Chest: Can Defeat Scervo/Dreadfuse
+
+    exits:
+      Before Bow: Chest
+
+  Corridor:
+    locations:
+      Port Rooms - Switch: Bow
+    exits:
+      Before Bow: Pass Spume | Deck - Freely Usable Timeshift Stone
+      Starboard Rooms:
+        Deck - Freely Usable Timeshift Stone
+      Port Rooms:
+        Port Rooms - Switch
+      Before Boss Door: Nothing
+
+  Starboard Rooms:
+    locations:
+      Switch: Nothing
+      Generator: Bow & Deck - Freely Usable Timeshift Stone
+    exits:
+      Deck: Switch & Bow
+      Brig: Switch
+      Corridor: Deck - Freely Usable Timeshift Stone
+
+  Port Rooms:
+    locations:
+      Switch: Bow
+      Generator: Bow & Deck - Freely Usable Timeshift Stone
+    exits:
+      Corridor:
+        Switch
+
+  Before Boss Door:
+    locations:
+      Combination Lock:
+        (Gust Bellows | Deck - Freely Usable Timeshift Stone | Sandship - No Combination Hint Trick) & Can Unlock Combination Lock
+      Chest behind Combination Lock:
+        Combination Lock
+      Open Boss Door:
+        Deck - Freely Usable Timeshift Stone & Sandship Boss Key
+
+    exits:
+      Corridor: Nothing
+      Boss Door one-way Exit: Open Boss Door
+
+  Brig:
+    exits:
+      Treasure Room: Starboard Rooms - Generator & Whip
+      Brig Prison: Starboard Rooms - Generator & Whip & Port Rooms - Generator
+      Starboard Rooms: Starboard Rooms - Switch
+
+  Treasure Room:
+    locations:
+      First Chest: Nothing
+      Second Chest: Nothing
+      Third Chest: Nothing
+      Fourth Chest: Nothing
+      Fifth Chest: Nothing
+    exits:
+      Brig: Nothing
+
+  Brig Prison:
+    locations:
+      Robot's Reward: Nothing
+    exits:
+      Brig: Nothing
+
+Boss Room:
+  locations:
+    Beat Tentalus: Bow
+    Heart Container: Beat Tentalus
+    Nayru's Flame: Beat Tentalus & Goddess Sword
+  exits:
+    Entrance: Impossible
