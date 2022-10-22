@@ -1501,6 +1501,13 @@ class GamePatcher:
         )
         for i in range(start_sword_count):
             self.startstoryflags.append(PROGRESSIVE_SWORD_STORYFLAGS[i])
+        if start_sword_count > 3:
+            self.startstoryflags.append(583) # 4 extra Dowsing slots
+            if self.placement_file.options["dowsing-after-whitesword"]:
+                self.startstoryflags.append(102) # treasure Dowsing
+                self.startstoryflags.append(104) # Crystal Dowsing
+                self.startstoryflags.append(105) # Rupee Dowsing
+                self.startstoryflags.append(110) # Goddess Cube Dowsing
         if start_sword_count > 0:
             self.startitemflags.append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count - 1])
 
