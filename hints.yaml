@@ -1,32 +1,32 @@
-Central Skyloft - Gossip Stone on Floating Island:
+Skyloft - Waterfall Island - Gossip Stone:
   textfile: 124-Town6
   textindex: 18
 
-Sky - Gossip Stone on Lumpy Pumpkin:
+Sky - Pumpkin Landing - Gossip Stone:
   textfile: 004-Object
   textindex: 27
 
-Sky - Gossip Stone in Volcanic Island:
+Sky - Volcanic Island - Gossip Stone:
   textfile: 004-Object
   textindex: 30
 
-Sky - Gossip Stone in Bamboo Island:
+Sky - Bamboo Island - Gossip Stone:
   textfile: 004-Object
   textindex: 11
 
-Thunderhead - Gossip Stone near Bug Heaven:
+Thunderhead - Bug Heaven - Gossip Stone Near:
   textfile: 004-Object
   textindex: 12
 
-Sealed Grounds - Gossip Stone behind the Temple:
+Sealed Grounds - Behind the Temple - Gossip Stone:
   textfile: 004-Object
   textindex: 13
 
-Faron Woods - Gossip Stone in Deep Woods:
+Deep Woods - Gossip Stone:
   textfile: 004-Object
   textindex: 15
 
-Lake Floria - Gossip Stone outside Ancient Cistern:
+Floria Waterfall - Gossip Stone:
   textfile: 004-Object
   textindex: 28
 
@@ -34,23 +34,23 @@ Eldin Volcano - Gossip Stone next to Earth Temple:
   textfile: 004-Object
   textindex: 14
 
-Eldin Volcano - Gossip Stone in Thrill Digger Cave:
+Eldin Volcano - Thrill Digger Cave - Gossip Stone:
   textfile: 004-Object
   textindex: 16
 
-Volcano Summit - Gossip Stone near Second Thirsty Frog:
+Volcano Summit - Between Thirsty Frogs - Gossip Stone:
   textfile: 004-Object
   textindex: 31
 
-Volcano Summit - Gossip Stone in Waterfall Area:
+Volcano Summit - Waterfall - Gossip Stone:
   textfile: 004-Object
   textindex: 26
 
-Lanayru Desert - Gossip Stone in Temple of Time Area:
+Lanayru - Temple of Time - Gossip Stone:
   textfile: 004-Object
   textindex: 25
 
-Sand Sea - Gossip Stone in Shipyard:
+Shipyard - Gossip Stone:
   textfile: 004-Object
   textindex: 23
 
@@ -58,6 +58,6 @@ Lanayru Caves - Gossip Stone in Center:
   textfile: 004-Object
   textindex: 24
 
-Lanayru Caves - Gossip Stone towards Lanayru Gorge:
+Lanayru Caves - Gossip Stone towards Gorge:
   textfile: 004-Object
   textindex: 29

@@ -3,24 +3,28 @@ import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from ssrando import Randomizer
+from ssrando import Hints, Randomizer
 from options import Options
-from logic.placement_file import PlacementFile
+from graph_logic.logic_input import Areas
+from graph_logic.placement_file import PlacementFile
+from graph_logic.fill_algo_common import UserOutput
+from yaml_files import graph_requirements, checks, hints, map_exits
 
 
 def test_roundtrip():
+    areas = Areas(graph_requirements, checks, hints, map_exits)
+    useroutput = UserOutput(Exception, lambda s: None)
     opts = Options()
     opts.set_option("dry-run", True)
     for i in range(5):
         opts.set_option("seed", i)
-        rando = Randomizer(opts)
-        rando.logic.randomize_items()
-        # this belongs to the randomizer
-        (
-            rando.sots_locations,
-            rando.goal_locations,
-        ) = rando.logic.get_sots_goal_locations()
-        rando.hints.do_hints()
+        rando = Randomizer(areas, opts)
+        rando.rando.randomize(useroutput)
+        rando.logic = rando.rando.extract_hint_logic()
+        del rando.rando
+        rando.logic.check(useroutput)
+        rando.hints_gen = Hints(rando.options, rando.rng, rando.areas, rando.logic)
+        rando.hints = rando.hints_gen.do_hints(useroutput)
         plcmt_file = rando.get_placement_file()
         round_tripped_file = PlacementFile()
         round_tripped_file.read_from_str(plcmt_file.to_json_str())

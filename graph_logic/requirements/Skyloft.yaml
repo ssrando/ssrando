@@ -1,0 +1,289 @@
+# this logic assumes, that you can always reach outside skyloft
+
+Upper:
+  hint-region: Upper Skyloft
+  Knight Academy:
+    can-sleep: true
+    locations:
+      Fledge's Gift: Nothing
+      Crystal in Plant: Night
+      Start Owlan's Quest: Faron - Woods - Slingshot # The check
+      Owlan's Crystals: Faron - Woods - Retrieve Oolo & Day
+      Knock on Toilet Door: Goddess Harp & Night
+      Cawlin's Letter: Knock on Toilet Door & Day
+      Ghost/Pipit's Crystals: Cawlin's Letter & Day
+      Fledge's Crystals: Skyloft - Central - Bazaar - Endurance Potion & Night
+    exits:
+      Upper Right Door: Nothing
+      Upper Left Door: Nothing
+      Lower Right Door: Day
+      Lower Left Door: Day
+
+    Link's Room:
+      can-sleep: true
+      entrance: Nothing
+      exits:
+        Start Entrance: Impossible
+        Knight Academy: Nothing
+      locations:
+        Crystal: Night
+
+
+    Zelda's Room:
+      entrance:
+        Unlocked Zelda's Room
+      exits:
+        Chimney: Impossible
+        Knight Academy: Nothing
+      locations:
+        Unlocked Zelda's Room: Nothing
+        Crystal: Night
+        In Zelda's Closet: Nothing
+
+  Sparring Hall:
+    locations:
+      Crystal: Beetle & Night
+      Chest: Nothing
+      Delivered Hot Soup: Sky - Lumpy Pumpkin - Start Hot Soup Delivery
+    exits:
+      Right Door: Nothing
+      Left Door: Nothing
+
+  Goddess Statue:
+    locations:
+      First Chest: Nothing
+      Second Chest: Nothing
+    exits:
+      Exit: Nothing
+
+  locations:
+    Owlan's Gift: Day
+    Chest near Goddess Statue: Nothing
+    Pumpkin Archery -- 600 Points: Bow & Day
+  exits:
+    Knight Academy Upper Right Door: Nothing
+    Knight Academy Upper Left Door: Nothing
+    Knight Academy Lower Right Door: Day
+    Knight Academy Lower Left Door: Day
+    Knight Academy Chimney Entrance: Clawshots
+    Sparring Hall Right Door: Nothing
+    Sparring Hall Left Door: Nothing
+    Goddess Statue: Nothing
+    Central: Nothing
+
+
+Central:
+  hint-region: Skyloft Central
+  locations:
+    Crystal between Wooden Planks: Night
+    Crystal on West Cliff: Night
+    Crystal on Light Tower: Night
+    Past Waterfall Cave - Crystal after Waterfall Cave: Night & Waterfall Cave Crystals
+    Past Waterfall Cave - Crystal in Loftwing Prison: Night & Waterfall Cave Crystals
+    Waterfall Island - Crystal: Night & Quick Beetle
+    West Cliff Goddess Chest: Faron - Goddess Cube on West Great Tree near Exit
+    Parrow's Gift: Sky - Talk to Orielle & Day
+    Parrow's Crystals: Sky - Save Orielle & Day
+    Shed Chest: Water Scale
+    Shed Goddess Chest: Water Scale & Eldin - Sand Slide - Goddess Cube
+    Item in Bird Nest: (Clawshots & Gust Bellows) | (Beetle & Baby Rattle from Beedle's Shop Trick & Gust Bellows)
+    Waterfall Cave Crystals: Beetle
+    Open Trial Gate: Goddess Harp & Song of the Hero
+    General - Can Collect Water: Nothing
+  exits:
+    Waterfall Cave Upper: Sword | Bomb Bag
+    Exit to Beedle's Shop: Day & (Distance Activator | (Beedle's Shop With Bombs Trick & Bomb Bag))
+    Bazaar North: Day
+    Bazaar West: Day
+    Bazaar South: Day
+    Trial Gate: Open Trial Gate
+    Orielle and Parrow's House: Nothing
+    Peatrice's House: Nothing
+    Wryna's House: Nothing
+    Piper's House: Nothing
+    Near Temple Entrance: Clawshots
+    Exit to Sky: Day
+
+    Skyloft - Upper: Nothing
+    Village: Nothing
+
+  Near Temple Entrance:
+    exits:
+      Exit to Sky Keep: Nothing
+      Central: Clawshots
+
+  Waterfall Island:
+    entrance: Clawshots
+    exits:
+      Central: Nothing # You can also reach Village
+    locations:
+      Crystal: Night
+      Goddess Chest: Lanayru - Sand Sea - Pirate Stronghold - Goddess Cube
+      Floating Island Goddess Chest: Faron - Goddess Cube in Lake Floria
+      Gossip Stone: Nothing
+
+
+  Waterfall Cave:
+    locations:
+      First Chest: Nothing
+      Second Chest: Nothing
+      Rupee in Crawlspace: Nothing
+    exits:
+      Upper Exit: Nothing
+      Lower Exit: Nothing
+
+  Past Waterfall Cave:
+    locations:
+      Crystal after Waterfall Cave: Night
+      Crystal in Loftwing Prison: Night
+    exits:
+      Waterfall Cave Lower Exit: Nothing
+      Central - Exit to Sky: Day
+
+  Bazaar:
+    allowed-time-of-day: DayOnly
+    locations:
+      Potion Lady's Gift: Nothing
+      Goddess Chest: Lanayru - Ancient Harbour - Goddess Cube
+      Endurance Potion: Bottle & Lanayru - Raise Lanayru Mining Facility
+      Talk to Peatrice: Nothing
+      Item Check Access: Nothing
+    exits:
+      North Exit: Nothing
+      West Exit: Nothing
+      South Exit: Nothing
+
+    Gondo's Upgrades:
+      entrance: Gondo Upgrades On option
+      exits:
+        Bazaar: Nothing
+      locations:
+        Upgrade to Quick Beetle:
+          $ Hook Beetle &
+          Faron - Deep Woods - Hornet Larvae Farming &
+          Lanayru - Mines - Ancient Flower Farming &
+          Sky - Clean Cut Minigame # Golden Skull farming
+        Upgrade to Tough Beetle:
+          $ Quick Beetle &
+          Faron - Woods - Amber Relic Farming &
+          Lanayru - Mines - Ancient Flower Farming &
+          Sky - Clean Cut Minigame # Goddess Plumes / Blue Bird Feathers farming
+
+
+  Orielle and Parrow's House:
+    locations:
+      Crystal: Nothing
+      Parrow's Gift: Sky - Talk to Orielle & Night
+      Parrow's Crystals: Sky - Save Orielle & Night
+    exits:
+      Exit: Nothing
+
+  Peatrice's House:
+    locations:
+      Peater/Peatrice's Crystals: Bazaar - Talk to Peatrice & Night
+    exits:
+      Exit: Nothing
+
+  Wryna's House:
+    locations:
+      Wryna's Crystals: Nothing
+    exits:
+      Exit: Nothing
+
+  Piper's House:
+    exits:
+      Exit: Nothing
+
+Silent Realm:
+  hint-region: Skyloft Silent Realm
+  exits:
+    Entrance: Nothing
+    Exit: Nothing
+  locations:
+    Stone of Trials: Nothing
+
+Village:
+  hint-region: Skyloft Village
+  locations:
+    Crystal near Pumpkin Patch: Night
+    Opened Shed: Night
+  exits:
+    Central: Nothing
+    Central - Past Waterfall Cave: Waterfall Cave Jump Trick & Day
+    Bertie's House: Nothing
+    Sparrot's House: Nothing
+    Mallara's House: Nothing
+    Gondo's House: Nothing
+    Rupin's House: Nothing
+    Batreaux's House: Opened Shed | Gravestone Jump Trick
+
+  Bertie's House:
+    locations:
+      Bertie's Crystals: Baby Rattle & Night
+    exits:
+      Exit: Nothing
+
+  Sparrot's House:
+    locations:
+      Start Sparrot's Quest: Nothing
+      Sparrot's Crystals: Eldin - Retrieve Crystal Ball
+    exits:
+      Exit: Nothing
+
+  Mallara's House:
+    locations:
+      Mallara's Crystals: Gust Bellows
+    exits:
+      Exit: Nothing
+
+  Gondo's House:
+    exits:
+      Exit: Nothing
+
+  Rupin's House:
+    exits:
+      Exit: Nothing
+
+  Batreaux's House:
+    hint-region: Batreaux's House
+    locations:
+      5 Crystals: 5 Gratitude Crystals
+      10 Crystals: 10 Gratitude Crystals & 5 Crystals
+      30 Crystals: 30 Gratitude Crystals & 10 Crystals
+      Spawn 30 Crystals Chest: 30 Gratitude Crystals & 30 Crystals
+      30 Crystals Chest: Spawn 30 Crystals Chest
+      40 Crystals: 40 Gratitude Crystals & 30 Crystals
+      50 Crystals: 50 Gratitude Crystals & 40 Crystals
+      70 Crystals: 70 Gratitude Crystals & 50 Crystals
+      70 Crystals Second Reward: 70 Gratitude Crystals & 70 Crystals
+      80 Crystals: 80 Gratitude Crystals & 70 Crystals Second Reward
+    exits:
+      Exit: Nothing
+
+# BEEDLES SHOP
+
+Beedle's Shop:
+  toplevel-alias: Beedle
+  hint-region: Beedle's Shop
+  can-sleep: true
+  exits:
+    Night Exit: Night
+    Day Exit: Day
+
+  Stall:
+    entrance: Day & Beedle Stall Access Token
+    exits:
+      Beedle's Shop: Nothing
+    locations:
+      # We don't want the pouch extensions to be the logical access to the pouch
+      300 Rupee Item: Can Afford 300 Rupees & (Pouch | Randomized Beedle option)
+      600 Rupee Item: Can Afford 600 Rupees & 300 Rupee Item
+      1200 Rupee Item: Can Afford 1200 Rupees & 600 Rupee Item
+      800 Rupee Item: Can Afford 800 Rupees
+      1600 Rupee Item: Can Afford 1600 Rupees & 800 Rupee Item
+      First 100 Rupee Item: Can Afford 100 Rupees
+      Second 100 Rupee Item: Can Afford 100 Rupees & First 100 Rupee Item
+      # To reduce necessary rupee-farming at the start, the third item logically needs an efficient rupee-farming method
+      Third 100 Rupee Item: Can Afford 100 Rupees & Can Medium Rupee Farm & Second 100 Rupee Item
+      50 Rupee Item: Can Afford 50 Rupees
+      1000 Rupee Item: Can Afford 1000 Rupees & 50 Rupee Item
