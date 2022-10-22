@@ -116,7 +116,7 @@ def main():
         plcmt_file.check_valid()
 
         plandomizer = PlandoRandomizer(plcmt_file)
-        total_progress_steps = plandomizer.get_total_progress_steps()
+        total_progress_steps = plandomizer.get_total_progress_steps
         progress_steps = 0
 
         def progress_callback(action):
@@ -137,44 +137,46 @@ def main():
             print("high has to be higher than low!")
             exit(1)
         bulk_threads = parsed_args.bulk_threads
-    if options is not None:
-        if bulk_mode:
-            from multiprocessing import Process
 
-            options.set_option("dry-run", True)
+    assert options is not None
 
-            def randothread(start, end, local_opts):
-                for i in range(start, end):
-                    local_opts.set_option("seed", i)
-                    rando = Randomizer(local_opts)
-                    rando.randomize()
+    if bulk_mode:
+        from multiprocessing import Process
 
-            threads = []
-            for (start, end) in get_ranges(bulk_low, bulk_high, bulk_threads):
-                thread = Process(target=randothread, args=(start, end, options.copy()))
-                thread.start()
-                threads.append(thread)
-            for thread in threads:
-                thread.join()
-        elif options["noui"]:
-            rando = Randomizer(options)
-            if not options["dry-run"]:
-                rando.check_valid_directory_setup()
-            total_progress_steps = rando.get_total_progress_steps()
-            progress_steps = 0
+        options.set_option("dry-run", True)
 
-            def progress_callback(action):
-                nonlocal progress_steps
-                print(f"{action} {progress_steps}/{total_progress_steps}")
-                progress_steps += 1
+        def randothread(start, end, local_opts):
+            for i in range(start, end):
+                local_opts.set_option("seed", i)
+                rando = Randomizer(local_opts)
+                rando.randomize()
 
-            rando.progress_callback = progress_callback
-            rando.randomize()
-            print(f"SEED HASH: {rando.randomizer_hash}")
-        else:
-            from gui.randogui import run_main_gui
+        threads = []
+        for (start, end) in get_ranges(bulk_low, bulk_high, bulk_threads):
+            thread = Process(target=randothread, args=(start, end, options.copy()))
+            thread.start()
+            threads.append(thread)
+        for thread in threads:
+            thread.join()
+    elif options["noui"]:
+        rando = Randomizer(options)
+        if not options["dry-run"]:
+            rando.check_valid_directory_setup()
+        total_progress_steps = rando.get_total_progress_steps
+        progress_steps = 0
 
-            run_main_gui(options)
+        def progress_callback(action):
+            nonlocal progress_steps
+            print(f"{action} {progress_steps}/{total_progress_steps}")
+            progress_steps += 1
+
+        rando.progress_callback = progress_callback
+        rando.randomize()
+        print(f"SEED HASH: {rando.randomizer_hash}")
+    else:
+        from gui.randogui import run_main_gui
+
+        run_main_gui(options)
 
 
 if __name__ == "__main__":

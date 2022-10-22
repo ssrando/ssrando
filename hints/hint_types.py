@@ -1,5 +1,5 @@
-from dataclasses import dataclass
-from re import S
+from __future__ import annotations
+from dataclasses import dataclass, field
 from typing import List, Optional
 
 from logic.logic import Logic
@@ -7,9 +7,10 @@ from logic.logic import Logic
 
 @dataclass
 class GossipStoneHint:
-    location: str
-    item: str
-    needs_logic: bool
+    hint_type: str
+
+    def __init__(self) -> None:
+        raise NotImplementedError("abstract")
 
     def to_gossip_stone_text(self) -> List[str]:
         """each string in the list appear in a separate textbox and will be line broken"""
@@ -22,7 +23,7 @@ class GossipStoneHint:
         raise NotImplementedError("abstract")
 
     def __hash__(self):
-        return hash(self.location + self.item)
+        raise NotImplementedError("abstract")
 
 
 @dataclass
@@ -33,7 +34,7 @@ class GossipStoneHintWrapper:
     def to_gossip_stone_text(self) -> List[str]:
         primary_text = self.primary_hint.to_gossip_stone_text()
         secondary_text = self.secondary_hint.to_gossip_stone_text()
-        return [*primary_text, *secondary_text]
+        return primary_text + secondary_text
 
     def to_spoiler_log_text(self) -> str:
         return f"{self.primary_hint.to_spoiler_log_text()} / {self.secondary_hint.to_spoiler_log_text()}"
@@ -46,38 +47,20 @@ class GossipStoneHintWrapper:
 
 
 @dataclass
-class TrialGateGossipStoneHint(GossipStoneHint):
-    trial_gate: str
-
-    def to_gossip_stone_text(self) -> List[str]:
-        return [
-            f"They say that opening the <r<{self.trial_gate}>> will reveal <y<{self.item}>>"
-        ]
-
-    def to_spoiler_log_text(self) -> str:
-        return f"{self.trial_gate} has {self.item}"
-
-    def to_spoiler_log_json(self):
-        return {"location": self.trial_gate, "item": self.item, "type": "trial"}
-
-    def __hash__(self):
-        return hash(self.location + self.item)
-
-
-@dataclass
 class LocationGossipStoneHint(GossipStoneHint):
-    location_name_override: Optional[str]
-    hint_type: str
+    location: str
+    item: str
+    location_name_override: Optional[str] = None
 
     def to_gossip_stone_text(self) -> List[str]:
         if override := self.location_name_override:
             return [f"They say that {override} <y<{self.item}>>"]
-        else:
-            zone, specific_loc = Logic.split_location_name_by_zone(self.location)
-            return [f"They say that <r<{zone}: {specific_loc}>> has <y<{self.item}>>"]
+
+        zone, specific_loc = Logic.split_location_name_by_zone(self.location)
+        return [f"They say that <r<{zone}: {specific_loc}>> has <y<{self.item}>>"]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.location} has {self.item}"
+        return f"{self.location} has {self.item} [{self.hint_type}]"
 
     def to_spoiler_log_json(self):
         return {
@@ -92,21 +75,47 @@ class LocationGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
-class ZoneItemGossipStoneHint(GossipStoneHint):
+class TrialGateGossipStoneHint(LocationGossipStoneHint):
+    location_name_override: Optional[str] = field(default=None, init=False)
+    hint_type: str = field(init=False, default="trial")
+    trial_gate: str
+
+    def to_gossip_stone_text(self) -> List[str]:
+        return [
+            f"They say that opening the <r<{self.trial_gate}>> will reveal <y<{self.item}>>"
+        ]
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.trial_gate} has {self.item}"
+
+    def to_spoiler_log_json(self):
+        return {
+            "location": self.trial_gate,
+            "item": self.item,
+            "type": self.hint_type,
+        }
+
+    def __hash__(self):
+        return hash(self.location + self.item)
+
+
+@dataclass
+class ZoneItemGossipStoneHint(LocationGossipStoneHint):
+    location_name_override: Optional[str] = field(default=None, init=False)
+    hint_type: str = field(init=False, default="zone_item")
     zone_override: str
 
     def to_gossip_stone_text(self) -> List[str]:
-        zone, specific_loc = Logic.split_location_name_by_zone(self.location)
         return [f"<y<{self.item}>> can be found in <r<{self.zone_override}>>"]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.item} is in {self.zone_override}"
+        return f"{self.item} is in {self.zone_override} [{self.hint_type}]"
 
     def to_spoiler_log_json(self):
         return {
             "location": self.location,
             "item": self.item,
-            "type": "zone_item",
+            "type": self.hint_type,
             "zone": self.zone_override,
         }
 
@@ -115,25 +124,28 @@ class ZoneItemGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
-class SotsGoalGossipStoneHint(GossipStoneHint):
+class SotsGoalGossipStoneHint(LocationGossipStoneHint):
+    location_name_override: Optional[str] = field(default=None, init=False)
+    hint_type: str = field(init=False)
     zone: str
-    goal: Optional[str]
+    goal: str | None = None
+
+    def __post_init__(self):
+        self.hint_type = "sots" if self.goal is None else "goal"
 
     def to_gossip_stone_text(self) -> List[str]:
-        if goal := self.goal:
+        if self.goal is not None:
             return [
-                f"The servant of the goddess who wishes to vanquish <ye<{goal}>> shall venture to <r<{self.zone}>>"
+                f"The servant of the goddess who wishes to vanquish <ye<{self.goal}>> shall venture to <r<{self.zone}>>"
             ]
-        else:
-            return [
-                f"The <b+<Spirit of the Sword>> guides the goddess' chosen hero to <r<{self.zone}>>"
-            ]
+        return [
+            f"The <b+<Spirit of the Sword>> guides the goddess' chosen hero to <r<{self.zone}>>"
+        ]
 
     def to_spoiler_log_text(self) -> str:
-        if goal := self.goal:
-            return f"{self.zone} is on the path to {self.goal}"
-        else:
-            return f"{self.zone} is SotS"
+        if self.goal is not None:
+            return f"{self.zone} is on the path to {self.goal} [{self.item}]"
+        return f"{self.zone} is SotS [{self.item}]"
 
     def to_spoiler_log_json(self):
         return {
@@ -141,7 +153,7 @@ class SotsGoalGossipStoneHint(GossipStoneHint):
             "item": self.item,
             "zone": self.zone,
             "goal": self.goal,
-            "type": "sots" if self.goal is None else "goal",
+            "type": self.hint_type,
         }
 
     def __hash__(self):
@@ -149,25 +161,28 @@ class SotsGoalGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
-class CubeSotsGoalGossipStoneHint(GossipStoneHint):
+class CubeSotsGoalGossipStoneHint(LocationGossipStoneHint):
+    location_name_override: Optional[str] = field(default=None, init=False)
+    hint_type: str = field(init=False)
     cube_zone: str
-    goal: Optional[str]
+    goal: str | None = None
+
+    def __post_init__(self):
+        self.hint_type = "cube_sots" if self.goal is None else "cube_goal"
 
     def to_gossip_stone_text(self) -> List[str]:
-        if goal := self.goal:
+        if self.goal is not None:
             return [
-                f"The servant of the goddess who wishes to vanquish <ye<{goal}>> shall unite <r<{self.cube_zone}>> with the skies."
+                f"The servant of the goddess who wishes to vanquish <ye<{self.goal}>> shall unite <r<{self.cube_zone}>> with the skies."
             ]
-        else:
-            return [
-                f"The <ye<goddess>> left a sacred gift for the hero who unites <r<{self.cube_zone}>> with the skies."
-            ]
+        return [
+            f"The <ye<goddess>> left a sacred gift for the hero who unites <r<{self.cube_zone}>> with the skies."
+        ]
 
     def to_spoiler_log_text(self) -> str:
         if goal := self.goal:
-            return f"a cube in {self.cube_zone} is on the path to {goal}"
-        else:
-            return f"{self.cube_zone} has a SotS cube"
+            return f"a cube in {self.cube_zone} is on the path to {goal} [{self.item}]"
+        return f"{self.cube_zone} has a SotS cube [{self.item}]"
 
     def to_spoiler_log_json(self):
         return {
@@ -175,7 +190,7 @@ class CubeSotsGoalGossipStoneHint(GossipStoneHint):
             "item": self.item,
             "cube_zone": self.cube_zone,
             "goal": self.goal,
-            "type": "cube_sots" if self.goal is None else "cube_goal",
+            "type": self.hint_type,
         }
 
     def __hash__(self):
@@ -184,6 +199,7 @@ class CubeSotsGoalGossipStoneHint(GossipStoneHint):
 
 @dataclass
 class BarrenGossipStoneHint(GossipStoneHint):
+    hint_type: str = field(init=False, default="barren")
     zone: str
 
     def to_gossip_stone_text(self) -> List[str]:
@@ -203,6 +219,7 @@ class BarrenGossipStoneHint(GossipStoneHint):
 
 @dataclass
 class EmptyGossipStoneHint(GossipStoneHint):
+    hint_type: str = field(init=False, default="junk")
     text: str
 
     def to_gossip_stone_text(self) -> List[str]:
