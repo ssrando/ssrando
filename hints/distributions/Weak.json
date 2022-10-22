@@ -3,8 +3,9 @@
     "added_locations": [],
     "removed_locations": [],
     "added_items": [
-        {"name": "Bug Net", "amount": 1},
-        {"name": "Progressive Mitts", "amount": 2},
+        {"name": "Progressive Bug Net #0", "amount": 1},
+        {"name": "Progressive Mitts #0", "amount": 1},
+        {"name": "Progressive Mitts #1", "amount": 1},
         {"name": "Tumbleweed", "amount": 1}
     ],
     "removed_items": [],

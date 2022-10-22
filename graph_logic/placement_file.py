@@ -1,0 +1,144 @@
+from .constants import *
+from options import Options
+from version import VERSION
+from util.file_accessor import read_yaml_file_cached
+
+import json
+
+
+class InvalidPlacementFile(Exception):
+    pass
+
+
+class PlacementFile:
+    def __init__(self):
+        self.version = ""
+        self.options = Options()
+        self.hash_str = ""
+        self.starting_items = []
+        self.required_dungeons = []
+        self.item_locations = {}
+        self.chest_dowsing = {}
+        self.hints = {}
+        self.dungeon_connections = {}
+        self.trial_connections = {}
+        self.trial_object_seed = -1
+        self.music_rando_seed = -1
+
+    def read_from_file(self, f):
+        self._read_from_json(json.load(f))
+
+    def read_from_str(self, s):
+        self._read_from_json(json.loads(s))
+
+    def to_json_str(self):
+        retval = {
+            "version": self.version,
+            "permalink": self.options.get_permalink(exclude_seed=True),
+            "hash": self.hash_str,
+            "starting-items": self.starting_items,
+            "required-dungeons": self.required_dungeons,
+            "item-locations": self.item_locations,
+            "chest-dowsing": self.chest_dowsing,
+            "hints": self.hints,
+            "entrance-connections": self.dungeon_connections,
+            "trial-connections": self.trial_connections,
+            "trial-object-seed": self.trial_object_seed,
+            "music-rando-seed": self.music_rando_seed,
+        }
+        return json.dumps(retval, indent=2)
+
+    def _read_from_json(self, jsn):
+        self.version = jsn["version"]
+        self.options.update_from_permalink(jsn["permalink"])
+        self.options.set_option("seed", -1)
+        self.hash_str = jsn["hash"]
+        self.starting_items = jsn["starting-items"]
+        self.required_dungeons = jsn["required-dungeons"]
+        self.item_locations = jsn["item-locations"]
+        self.chest_dowsing = jsn["chest-dowsing"]
+        self.hints = jsn["hints"]
+        self.dungeon_connections = jsn["entrance-connections"]
+        self.trial_connections = jsn["trial-connections"]
+        self.trial_object_seed = jsn["trial-object-seed"]
+        self.music_rando_seed = jsn["music-rando-seed"]
+
+    def check_valid(self, areas):
+        """checks, if the current state is valid, throws an exception otherwise
+        This does not check consistency with all the settings"""
+        if VERSION != self.version:
+            raise InvalidPlacementFile(
+                f"Version did not match, requires {self.version} but found {VERSION}"
+            )
+
+        ALLOWED_STARTING_ITEMS = (
+            dict.fromkeys((EMERALD_TABLET, AMBER_TABLET, RUBY_TABLET))
+            | PROGRESSIVE_SWORDS
+            | group(PROGRESSIVE_POUCH, 1)
+        )
+        for item in self.starting_items:
+            if item not in ALLOWED_STARTING_ITEMS:
+                raise InvalidPlacementFile(f"Invalid starting item {item} !")
+
+        for req_dungeon in self.required_dungeons:
+            if req_dungeon not in REGULAR_DUNGEONS:
+                raise InvalidPlacementFile(
+                    f"{req_dungeon} is not a valid required dungeon!"
+                )
+
+        if sorted(self.dungeon_connections.keys()) != sorted(
+            DUNGEON_OVERWORLD_ENTRANCES.values()
+        ):
+            raise InvalidPlacementFile("dungeon dungeon_connections are wrong!")
+
+        if sorted(self.dungeon_connections.values()) != sorted(
+            DUNGEON_OVERWORLD_ENTRANCES.keys()
+        ):
+            raise InvalidPlacementFile("dungeon entries are wrong!")
+
+        if sorted(self.trial_connections.keys()) != sorted(SILENT_REALM_GATES.values()):
+            raise InvalidPlacementFile("trial trial_connections are wrong!")
+
+        if sorted(self.trial_connections.values()) != sorted(SILENT_REALM_GATES.keys()):
+            raise InvalidPlacementFile("trial entries are wrong!")
+
+        for item in self.item_locations.values():
+            if item not in ALL_ITEM_NAMES:
+                raise InvalidPlacementFile(f'invalid item "{item}"')
+
+        check_sets_equal(
+            set(areas.checks.keys()),
+            set(self.item_locations.keys()),
+            "Checks",
+        )
+
+        check_sets_equal(
+            set(areas.gossip_stones.keys()) | set(SONG_HINTS),
+            set(self.hints.keys()),
+            "Gossip Stone Hints",
+        )
+
+        for hintlist in self.hints.values():
+            if not isinstance(hintlist, list):
+                raise InvalidPlacementFile(
+                    "gossip stone hints need to be LISTS of strings!"
+                )
+            for hint in hintlist:
+                if not isinstance(hint, str):
+                    raise InvalidPlacementFile(
+                        "gossip stone hints need to be lists of STRINGS!"
+                    )
+
+
+def check_sets_equal(orig: set, actual: set, name: str):
+    if orig != actual:
+        additional = actual - orig
+        missing = orig - actual
+        error_msg = ""
+        if additional:
+            error_msg += f"Additional {name}:\n"
+            error_msg += ", ".join(additional) + "\n"
+        if missing:
+            error_msg += f"Missing {name}:\n"
+            error_msg += ", ".join(missing) + "\n"
+        raise InvalidPlacementFile(error_msg)

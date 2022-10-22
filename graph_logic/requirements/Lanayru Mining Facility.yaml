@@ -1,0 +1,178 @@
+allowed-time-of-day: DayOnly
+hint-region: Lanayru Mining Facility
+
+macros:
+  Can Activate Minecart Timeshift Stone: Sword | Whip | Bomb Bag | Distance Activator
+
+Main:
+  First Room:
+    locations:
+      Left Lever: Hook Beetle | (Whip & LMF - Whip First Room Switch Trick)
+      Right Lever: Nothing
+      Chest behind Bars: Right Lever
+    exits:
+      First Hub: Left Lever
+      Main Exit: Nothing
+
+  First Hub:
+    locations:
+      Push Box on Switch: Gust Bellows
+    exits:
+      First Room: Nothing
+      Exit to Big Hub: Nothing
+      Key Locked Room: Lanayru Mining Facility Small Key
+      First West Room: Push Box on Switch
+
+  Key Locked Room:
+    locations:
+      Blow Up Boxes: Hook Beetle | (Bomb Bag & Bomb Throws Trick)
+      Activate Timeshift Stone: Blow Up Boxes & (Bow | Beetle | (Slingshot & LMF - Keylocked Slingshot Trickshot Trick))
+      Chest: Activate Timeshift Stone
+    exits:
+      First Hub: Nothing
+      Gust Bellows Room: Activate Timeshift Stone
+
+  Gust Bellows Room:
+    # Does not include the entry ledge you can only jump from
+    locations:
+      Blow Up Rocks:
+        Sword | Slingshot | Beetle | Bomb Bag | Gust Bellows | Whip | Clawshots | Bow
+        # You need to blow up at least one rock in the maze, pretty much any item will make the Froak explode
+      Gust Bellows Chest: Blow Up Rocks
+      Chest in Spike Maze: Blow Up Rocks
+    exits:
+      Near Exit: Blow Up Rocks | Near Exit - Push Shortcut Box
+
+    Near Exit:
+      locations:
+        Push Shortcut Box: Nothing
+        Remove Dust Pile at Door: Nothing  # Present in vanilla, removed in rando
+      exits:
+        Exit to Big Hub: Remove Dust Pile at Door
+
+  First West Room:
+    locations:
+      Chest: Gust Bellows
+    exits:
+      First Hub: Nothing
+      Armos Fight Room: Gust Bellows & Can Defeat Beamos
+
+  Armos Fight Room:
+    locations:
+      Activate Timeshift Stone: Distance Activator | Goddess Sword
+      Defeat Armos: Activate Timeshift Stone & Can Defeat Armos
+      Chest: Defeat Armos
+    exits:
+      Exit to Big Hub: Defeat Armos
+
+  Big Hub:
+    Entry:
+      locations:
+        Blow Up Boxes: Bomb Bag | Hook Beetle
+      exits:
+        Exit to First Hub: Nothing
+        After Wooden Boxes: Blow Up Boxes
+        Past West Gate: Past West Gate - Open Gate
+        Between Wind Gates: Between Wind Gates - Open First Wind Gate
+
+    After Wooden Boxes:
+      locations:
+        Chest: Nothing
+      exits:
+        Entry: Nothing
+        Near Exit to Gust Bellows Room: Near Exit to Gust Bellows Room - Push Box
+
+    Near Exit to Gust Bellows Room:
+      locations:
+        Push Box: Nothing
+      exits:
+        Exit to Gust Bellows Room: Nothing
+        After Wooden Boxes: Nothing
+
+    Past West Gate:
+      locations:
+        Blow Off Pile for First Crawlspace: Gust Bellows
+        Blow Off Pile for Second Crawlspace: Gust Bellows
+        Open Gate: Nothing
+        Chest behind First Crawlspace: Blow Off Pile for First Crawlspace
+      exits:
+        Entry: Open Gate
+        Exit to Armos Fight Room: Nothing
+        Sand Spike Maze: Blow Off Pile for Second Crawlspace
+
+    Sand Spike Maze:
+      # Also includes the platform in Big Hub after the door
+      locations:
+        Switch under Sand: Gust Bellows
+        Chest: Gust Bellows
+      exits:
+        Near Boss Door: Switch under Sand & Can Activate Minecart Timeshift Stone
+
+    Near Boss Key Room First Exit:
+      exits:
+        Boss Key Room: Between Wind Gates - Unlock Exit to Boss Key Room
+
+    Near Boss Key Room Second Exit:
+      locations:
+        Push Box: Nothing
+        Shortcut Chest: Nothing
+      exits:
+        Between Wind Gates: Nothing
+        Near Boss Key Room First Exit: Nothing
+        Near Boss Door: Gust Bellows | (LMF - Minecart Jump Trick & Sword & (Bomb Bag | Beetle))
+
+    Between Wind Gates:
+      locations:
+        Get Minecart: Near Boss Door - Open Second Wind Gate
+        Open First Wind Gate: Get Minecart & Can Activate Minecart Timeshift Stone & Gust Bellows
+        Activate Minecart Stone to Boss Key Room: Gust Bellows & Can Activate Minecart Timeshift Stone
+        Unlock Exit to Boss Key Room: Activate Minecart Stone to Boss Key Room & Gust Bellows
+      exits:
+        Entry: Open First Wind Gate
+        Near Boss Key Room First Exit: Activate Minecart Stone to Boss Key Room
+        Near Boss Key Room Second Exit: Near Boss Key Room Second Exit - Push Box
+
+  Near Boss Door:
+    locations:
+      Get Minecart to Wind Gate: Gust Bellows & Can Activate Minecart Timeshift Stone
+      Open Second Wind Gate: Get Minecart to Wind Gate & Gust Bellows
+    exits:
+      Boss Door: Lanayru Mining Facility Boss Key & Can Activate Minecart Timeshift Stone
+      Big Hub - Near Boss Key Room Second Exit: LMF - Minecart Jump Trick & Sword & (Bomb Bag | Beetle)
+      Big Hub - Between Wind Gates: Open Second Wind Gate & Can Defeat Beamos
+
+  Boss Key Room:
+    locations:
+      Can Beat Room: Bomb Bag & Gust Bellows & Sword
+      Boss Key Chest: Can Beat Room
+    exits:
+      Big Hub - Near Boss Key Room Second Exit: Can Beat Room
+
+
+
+Boss Room:
+  exits:
+    Exit to Dungeon: Boss Room - Beat Moldarach
+    After Sand Drain: Nothing
+
+  After Sand Drain:
+    locations:
+      Beat Moldarach:
+        (Gust Bellows | LMF - Moldarach without Gust Bellows Trick) & Sword
+        # Bow also works instead of sword but you need a LOT of arrows
+      Heart Container: Beat Moldarach
+    exits:
+      Exit to Great Hall: Beat Moldarach
+
+Great Hall:
+  Entry:
+    locations:
+      Hit Timeshift Stone: Beetle | Bow
+    exits:
+      Exit to Boss Room: Nothing
+      End: Hit Timeshift Stone
+  End:
+    locations:
+      Goddess Harp: Nothing
+    exits:
+      Exit to Temple of Time: Nothing
