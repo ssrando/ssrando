@@ -34,6 +34,7 @@ def music_rando(self):
         self.musiclist = yaml.safe_load(f)
 
     NON_SHUFFLED_TYPES = [10, 11]
+    TADTONES_FILE_NAME = "F63D5DB51DE748A3729628C659397A49"
     self.music = {}
     self.music_pool = defaultdict(list)
     # self.loop_patch_list = []
@@ -63,10 +64,15 @@ def music_rando(self):
                     shuffled_tracks = tracks[:]
                     rng.shuffle(shuffled_tracks)
                     for orig_track, shuf_track in zip(tracks, shuffled_tracks):
+                        # if orig_track == TADTONES_FILE_NAME:
+                        #     print("Tadtones replacing: " + shuf_track)
                         self.music[orig_track] = shuf_track
             else:  # this should not be shuffled
                 for track in tracks:
                     self.music[track] = track
+                # Force vanilla tadtones music to prevent softlock.
+                # Tadtones music can still be randomized to other locations.
+                self.music[TADTONES_FILE_NAME] = TADTONES_FILE_NAME
 
     # patch WZSound.brsar for filename and length requirements
     with (

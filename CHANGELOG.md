@@ -1,7 +1,23 @@
 # Changelog
 
 ## Dev
+### Options
+- Added option to randomize progression in Flooded Faron Woods (by CovenEsme)
+  - Added Faron SotH check that is obtained when completing the Tadtones story quest
 ### Changes
+- Presets (by cjs07)
+  - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
+  - The randomizer is distributed with a set of default presets that cannot be changed
+    - This list includes all 6 Season 2 Tournament modes and a new beginner friendly mode
+  - Presets persist between versions and are forward compatible with new versions.
+  - User preset data is sharable between users via the `presets.txt` file
+  - Only options included in permalinks are saved, with the exception of the spoiler log toggle
+- Added Water Dragon to the Great Tree (by CovenEsme)
+- Added entrance and exit to and from Flooded Great Tree (by CovenEsme)
+  - Entering Flooded Great Tree for the first time automatically starts the Tadtones story quest
+  - New logical option for completing the Owlan's Crystals check
+    - Added access to Flooded Faron as an alternative to needing bomb bag
+- Machi is no longer rescued after beating Skyview
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 
@@ -9,6 +25,7 @@
 ### Changes
 - Added Boss Key (BK) hints as a new hint type (by Muzugalium)
   - A BK hint will point to the precise location of the boss key of a required dungeon
+- Added Stamina Potion for logical access to the end of Lanayru Mine and Lanayru Desert when Open LMF is set to Open (by CovenEsme)
 ### Bugfixes
 - Fixed a crash when the arc-replacements folder was missing
 
@@ -38,7 +55,7 @@
 - Added option to fight multiple Demises at the end of the game
 - Added option to allow custom music (by Battlecats59)
 - Added even more cutscene skips, plus text patches for clarity (by YourAverageLink)
-- - New Hint System (by cjs07)
+- New Hint System (by cjs07)
   - Removed all counter options for hints
   - Added Hint Distributions
     - Distributions can specufy the follwing *new* parameters

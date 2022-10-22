@@ -210,6 +210,45 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_35.addItem(self.verticalSpacer_16)
 
+        self.groupBox_17 = QGroupBox(self.tab)
+        self.groupBox_17.setObjectName(u"groupBox_17")
+        self.groupBox_17.setGeometry(QRect(10, 270, 331, 101))
+        self.verticalLayoutWidget_16 = QWidget(self.groupBox_17)
+        self.verticalLayoutWidget_16.setObjectName(u"verticalLayoutWidget_16")
+        self.verticalLayoutWidget_16.setGeometry(QRect(10, 20, 311, 75))
+        self.verticalLayout_39 = QVBoxLayout(self.verticalLayoutWidget_16)
+        self.verticalLayout_39.setObjectName(u"verticalLayout_39")
+        self.verticalLayout_39.setContentsMargins(0, 0, 0, 0)
+        self.label_7 = QLabel(self.verticalLayoutWidget_16)
+        self.label_7.setObjectName(u"label_7")
+
+        self.verticalLayout_39.addWidget(self.label_7)
+
+        self.presets_list = QComboBox(self.verticalLayoutWidget_16)
+        self.presets_list.setObjectName(u"presets_list")
+
+        self.verticalLayout_39.addWidget(self.presets_list)
+
+        self.horizontalLayout_12 = QHBoxLayout()
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.load_preset = QPushButton(self.verticalLayoutWidget_16)
+        self.load_preset.setObjectName(u"load_preset")
+
+        self.horizontalLayout_12.addWidget(self.load_preset)
+
+        self.save_preset = QPushButton(self.verticalLayoutWidget_16)
+        self.save_preset.setObjectName(u"save_preset")
+
+        self.horizontalLayout_12.addWidget(self.save_preset)
+
+        self.delete_preset = QPushButton(self.verticalLayoutWidget_16)
+        self.delete_preset.setObjectName(u"delete_preset")
+
+        self.horizontalLayout_12.addWidget(self.delete_preset)
+
+
+        self.verticalLayout_39.addLayout(self.horizontalLayout_12)
+
         self.tabWidget.addTab(self.tab, "")
         self.tab_3 = QWidget()
         self.tab_3.setObjectName(u"tab_3")
@@ -420,6 +459,11 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout_3.addLayout(self.horizontalLayout_9, 6, 0, 1, 1)
+
+        self.progression_flooded_faron = QCheckBox(self.gridLayoutWidget_3)
+        self.progression_flooded_faron.setObjectName(u"progression_flooded_faron")
+
+        self.gridLayout_3.addWidget(self.progression_flooded_faron, 6, 2, 1, 1)
 
         self.groupBox_3 = QGroupBox(self.tab_3)
         self.groupBox_3.setObjectName(u"groupBox_3")
@@ -1162,7 +1206,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
 
@@ -1192,6 +1236,11 @@ class Ui_MainWindow(object):
         self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.option_cutoff_gameover_music.setText(QCoreApplication.translate("MainWindow", u"Cutoff Game Over Music", None))
         self.option_allow_custom_music.setText(QCoreApplication.translate("MainWindow", u"Allow Custom Music", None))
+        self.groupBox_17.setTitle(QCoreApplication.translate("MainWindow", u"Presets", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Presets overwrite ALL game settings", None))
+        self.load_preset.setText(QCoreApplication.translate("MainWindow", u"Load", None))
+        self.save_preset.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+        self.delete_preset.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Setup", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"What areas of the world should progress items appear?", None))
         self.progression_skyloft.setText(QCoreApplication.translate("MainWindow", u"Skyloft", None))
@@ -1227,6 +1276,7 @@ class Ui_MainWindow(object):
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Shop Mode", None))
         self.progression_short.setText(QCoreApplication.translate("MainWindow", u"Short Quests", None))
         self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
+        self.progression_flooded_faron.setText(QCoreApplication.translate("MainWindow", u"Flooded Faron", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Goddess Cube Options", None))
         self.progression_eldin_goddess.setText(QCoreApplication.translate("MainWindow", u"Eldin Volcano", None))
         self.progression_goddess.setText(QCoreApplication.translate("MainWindow", u"Enabled", None))

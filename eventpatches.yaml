@@ -1492,6 +1492,208 @@
     index: 62
     flow:
       next: 468
+  - name: Offer entry into Flooded Faron
+    type: flowpatch
+    index: 68
+    flow:
+      next: Tadtones Completion Storyflag Check
+  - name: Tadtones Completion Storyflag Check
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 18 # All Tadtones Collected
+      param3: 3
+    cases:
+      - Show Already Completed Tadtones Text # Tadtones complete
+      - Show Flooded Faron Entry Question
+  - name: Already Completed Tadtones Text
+    type: textadd
+    text: "You have already completed my final\ntest. There is nothing more I can do\nfor you."
+  - name: Show Already Completed Tadtones Text
+    type: flowadd
+    flow:
+      type: type1
+      next: Show Flooded Faron Reentry Text
+      param3: 302
+      param4: Already Completed Tadtones Text
+  - name: Flooded Faron Reentry Text
+    type: textadd
+    text: "Would you like me to flood the forest\nagain?\n[1]Yes[2-]No"
+  - name: Show Flooded Faron Reentry Text
+    type: flowadd
+    flow:
+      type: type1
+      next: Flooded Faron Reentry Switch
+      param3: 302
+      param4: Flooded Faron Reentry Text
+  - name: Flooded Faron Reentry Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Check for Water Dragon Scale # Yes
+      - Show Declined Flooded Faron Offer Text # No
+  - name: Show Flooded Faron Entry Question
+    type: flowadd
+    flow:
+      type: type1
+      next: Flooded Faron Entry Switch
+      param3: 302
+      param4: Flooded Faron Entry Question
+  - name: Flooded Faron Entry Question
+    type: textadd
+    text: "Here to accept my final test?\n[1]Yes[2-]No"
+  - name: Flooded Faron Entry Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Check for Water Dragon Scale # Yes
+      - Show Declined Flooded Faron Offer Text # No
+  - name: Declined Flooded Faron Offer Text
+    type: textadd
+    text: "Very well. Talk to me again if you\nchange your mind."
+  - name: Show Declined Flooded Faron Offer Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Declined Flooded Faron Offer Text
+  - name: Check for Water Dragon Scale
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 68 # Water Dragon Scale itemflag
+      param2: 1 # Check itemflag is set
+      next: Water Dragon Scale Branch
+      param3: 23 # Check for an itemflag
+  - name: Water Dragon Scale Branch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # Use result from previous check
+    cases:
+      - Check for Tadtones Starting CS # true
+      - Show No Water Dragon Scale Text # false
+  - name: No Water Dragon Scale Text
+    type: textadd
+    text: "You don't have my <b<Sacred Gift>>.\nI cannot allow you to attempt my final\ntest unprepared."
+  - name: Show No Water Dragon Scale Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: No Water Dragon Scale Text
+  - name: Check for Tadtones Starting CS
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 80 # Tadtones Starting CS Storyflag
+      param3: 3
+    cases:
+      - Trigger Exit to Flooded Faron Layer 2 # true
+      - Trigger Exit to Flooded Faron Layer 1 # false
+  - name: Trigger Exit to Flooded Faron Layer 1
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 5 # Entrance number
+      param2: 0
+      next: -1
+      param3: 10 # Triggers an exit
+  - name: Trigger Exit to Flooded Faron Layer 2
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 6 # Entrance number
+      param2: 0
+      next: -1
+      param3: 10 # Triggers an exit
+204-ForestF3:
+  - name: Talk to Water Dragon in Flooded Faron
+    type: flowpatch
+    index: 16
+    flow:
+      next: Check If Already Obtained Faron SotH Item
+  - name: Check If Already Obtained Faron SotH Item
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 16 # Received Faron SotH
+      param3: 3
+    cases:
+      - Show Flooded Faron Exit Question # Already received item
+      - 19
+  - name: Exit mid tadtones
+    type: flowpatch
+    index: 20
+    flow:
+      next: Show Flooded Faron Exit Question
+  - name: Show Flooded Faron Exit Question
+    type: flowadd
+    flow:
+      type: type1
+      next: Flooded Faron Exit Switch
+      param3: 302
+      param4: Flooded Faron Exit Question
+  - name: Flooded Faron Exit Question
+    type: textadd
+    text: "Leaving so soon? I can drain the forest\nif you wish to return later.\n[1]Yes[2-]No"
+  - name: Flooded Faron Exit Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Trigger Exit to Non-Flooded Faron # Yes
+      - Show Continue With Tadtones Text # No
+  - name: Continue With Tadtones Text
+    type: textadd
+    text: "Very well. Talk to me again if you\nchange your mind."
+  - name: Show Continue With Tadtones Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Continue With Tadtones Text
+  - name: Trigger Exit to Non-Flooded Faron
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 5 # Entrance number
+      param2: 0
+      next: -1
+      param3: 10 # Triggers an exit
+  - name: Go to Faron SotH item
+    type: flowpatch
+    index: 160
+    flow:
+      next: Give item after Faron SotH CS
+  - name: Give item after Faron SotH CS
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: 36
+      param3: 9
 250-ForestSiren:
   - name: shorten fi text
     type: flowpatch

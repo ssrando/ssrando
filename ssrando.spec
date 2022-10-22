@@ -59,7 +59,8 @@ a = Analysis(['randoscript.py'],
              	'assets/*',
               'asm/*.txt',
               'asm/patch_diffs/*.txt',
-              'hints/distributions/*.json'
+              'hints/distributions/*.json',
+              'gui/default_presets.json'
              ]),
              hiddenimports=[],
              hookspath=[],
