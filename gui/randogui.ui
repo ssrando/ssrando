@@ -1459,7 +1459,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>171</width>
+         <width>174</width>
          <height>211</height>
         </rect>
        </property>
@@ -1487,6 +1487,13 @@
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_dungeon_dowsing">
+          <property name="text">
+           <string>Allow Dowsing in Dungeons</string>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_18">

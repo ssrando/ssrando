@@ -603,6 +603,12 @@
   default: None
   help: Choose whether the treasure dowsing option should point to chests. If Matches Contents, dowsing will only point to chests that contain progress items. Currently, dowsing doesn't work on Goddess Chests.
   ui: option_chest_dowsing
+- name: Allow Dowsing in Dungeons
+  command: dungeon-dowsing
+  type: boolean
+  default: false
+  help: If enabled, dowsing will be re-enabled in dungeons and other dungeon-like areas like Great Tree and Waterfall Cave.
+  ui: option_dungeon_dowsing
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution
