@@ -1,0 +1,768 @@
+TlpTag:
+  scenefid:
+    mask: 0xFF
+    shift: 24
+  map_name_idx:
+    mask: 0xFF
+    shift: 8
+EMagupp:
+  scenefid:
+    mask: 0xFF
+    shift: 24
+Log: # faron woods logs
+  scenefid:
+    mask: 0xFF
+    shift: 16
+trolley: # push minecart in lanayru desert
+  scenefid:
+    mask: 0xFF
+    shift: 16
+Fence:
+  scenefid:
+    mask: 0xFF
+    shift: 16
+Chandel: # lumpy pumpkin chandelier
+  scenefid:
+    mask: 0xFF
+    shift: 16
+  rando_itemid:
+    mask: 0xFF
+    shift: 8
+FrmLand: # life tree seedling spot
+  scenefid:
+    mask: 0xFF
+    shift: 8
+SwWall: # wall switch
+  scenefid:
+    mask: 0xFF
+    shift: 8
+SwDir2:
+  scenefid:
+    mask: 0xFF
+    shift: 8
+BrgFall: # drawbridges in ET and fire dragon room
+  scenefid:
+    mask: 0xFF
+    shift: 8
+D300Obj: # LMF in lanayru desert
+  scenefid:
+    mask: 0xFF
+    shift: 8
+TSBase: # time shift orb base
+  scenefid:
+    mask: 0xFF
+    shift: 8
+TgReact: # actors, that spawn drop for bonking,slingshot seeds,gust bellows
+  scenefid:
+    mask: 0xFF
+    shift: 0
+  tgreactitemid: # special drop table
+    mask: 0xFF
+    shift: 24
+    bitfield_name: params2
+  subtype:
+    mask: 0xF
+    shift: 28
+    values: ['bonk','slingshot','gust bellow blow','underwater something']
+saveObj: # save bird statue
+  scenefid:
+    mask: 0xFF
+    shift: 0
+  subtype:
+    mask: 0xFF
+    shift: 8
+    values: ['normal','overworld','dungeon']
+  scen_link:
+    mask: 0xFF
+    shift: 16
+  saveobj_name_id:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: params2
+HrpHint: # gossip/shiekah stone
+  scenefid:
+    mask: 0xFF
+    shift: 0
+  talk_behaviour:
+    mask: 0xFFFF
+    shift: 0
+    bitfield_name: anglez
+BlsRock: # bombable rock, various forms
+  scenefid:
+    mask: 0xFF
+    shift: 0
+  2scenefid: # used for walls that can be half broken
+    mask: 0xFF
+    shift: 24
+TowerB: # towers, that fall down in eldin
+  scenefid:
+    mask: 0xFF
+    shift: 0
+  event_id:
+    mask: 0xFF
+    shift: 8
+WdBoard: # underwater breakable boards
+  scenefid:
+    mask: 0xFF
+    shift: 0
+SStatue: # statues you can bomb down in lanayru
+  scenefid:
+    mask: 0xFF
+    shift: 0
+FShutte: # iron bars
+  scenefid:
+    mask: 0xFF
+    shift: 0
+Lotus: # lilipads in Ancient Cistern
+  scenefid:
+    mask: 0xFF
+    shift: 0
+  2scenefid:
+    mask: 0xFF
+    shift: 14
+WaterSW: # thirsty frogs in Volcano Summit
+  scenefid:
+    mask: 0xFF
+    shift: 0
+FireObs: # fire walls in Volcano Summit
+  scenefid:
+    mask: 0xFF
+    shift: 0
+StprRc: # stopper rock in Earth Temple
+  scenefid:
+    mask: 0xFF
+    shift: 0
+Gear: # ropes to cut in Earth Temple and Fire Dragon Room
+  scenefid:
+    mask: 0xFF
+    shift: 0
+MDvTg: # megami diving tag used for diving after getting sailcloth
+  scenefid:
+    mask: 0xFF
+    shift: 0
+chest: # wardrobes
+  scenefid:
+    mask: 0xFF
+    shift: 0
+  itemid:
+    mask: 0xFF
+    shift: 8
+IslTreB: # treasure islands in the sky
+  scenefid:
+    mask: 0xFF
+    shift: 0
+RoAtLog: # roll attack log
+  scenefid:
+    mask: 0xFF
+    shift: 0
+swsyako: # generator in lanayru to feed ampilus eggs to
+  scenefid:
+    mask: 0xFF
+    shift: 0
+TgDefea: # tag after defeating boss
+  scenefid:
+    mask: 0xFF
+    shift: 0
+SwHrp: # harp playing related
+  scenefid:
+    mask: 0xFF
+    shift: 0
+SwdStb: # warps to triforce rooms
+  scenefid:
+    mask: 0xFF
+    shift: 0
+TAgo:
+  scenefid:
+    mask: 0xFF
+    shift: 0
+SdCdl: # crests to hit with skyward strike after dungeons (not Isle of Songs)
+  scenefid:
+    mask: 0xFF
+    shift: 0
+  scen_link:
+    mask: 0xF
+    shift: 8
+Barrel:
+  scenefid:
+    mask: 0xFF
+    shift: 20
+  2scenefid:
+    mask: 0xFF
+    shift: 12
+TimeStn:
+  scenefid:
+    mask: 0xFF
+    shift: 20
+  subtype:
+    mask: 0xF
+    shift: 28
+Tubo: # little pots
+  scenefid:
+    mask: 0xFF
+    shift: 4
+Soil: # dig spots
+  scenefid:
+    mask: 0xFF
+    shift: 4
+  rando_itemid:
+    mask: 0xFF
+    shift: 0x18
+    bitfield_name: params2
+Wind:
+  scenefid:
+    mask: 0xFF
+    shift: 4
+ColStp: # Logs before skyloft cave and elsewhere
+  scenefid:
+    mask: 0xFF
+    shift: 4
+EEye: # Eyes in Skyview
+  scenefid:
+    mask: 0xFF
+    shift: 4
+Est: # Spider
+  scenefid:
+    mask: 0xFF
+    shift: 4
+Wind03: # water spot in Ancient Cistern
+  scenefid:
+    mask: 0xFF
+    shift: 4
+SldDoor: # Door after bosses
+  scenefid:
+    mask: 0xFF
+    shift: 4
+  2scenefid:
+    mask: 0xFF
+    shift: 13
+Wind02: # Appears in Eldin, probably lava fountains
+  scenefid:
+    mask: 0xFF
+    shift: 4
+ERemly: # Remlit
+  scenefid:
+    mask: 0xFF
+    shift: 4
+RolRock: # Rolling Rocks
+  scenefid:
+    mask: 0xFF
+    shift: 4
+Fire: # small fire
+  scenefid:
+    mask: 0xFF
+    shift: 4
+  checkscenefid:
+    mask: 0xFF
+    shift: 22
+SwBnkS: # small lanayru node & sandship switches to rotate
+  scenefid:
+    mask: 0xFF
+    shift: 4
+Char: # Chair
+  scenefid:
+    mask: 0xFF
+    shift: 4
+TouchTa:
+  scenefid:
+    mask: 0xFF
+    shift: 4
+Kibako:
+  scenefid:
+    mask: 0xFF
+    shift: 12
+PushBlk:
+  scenefid:
+    mask: 0xFF
+    shift: 12
+vmSand:
+  scenefid:
+    mask: 0xFF
+    shift: 12
+Truck:
+  scenefid:
+    mask: 0xFF
+    shift: 12
+Heartf:
+  scenefid:
+    mask: 0xFF
+    shift: 12
+Windmill:
+  scenefid:
+    mask: 0xFF
+    shift: 12
+  2scenefid:
+    mask: 0xFF
+    shift: 4
+Item:
+  scenefid:
+    mask: 0xFF
+    shift: 10
+  itemid:
+    mask: 0xFF
+    shift: 0
+  subtype:
+    mask: 0xF
+    shift: 20
+  unk_param3:
+    mask: 0x1
+    shift: 9
+  unk_param5:
+    mask: 0x1
+    shift: 19
+HitLVSW:
+  scenefid:
+    mask: 0xFF
+    shift: 10
+  2scenefid:
+    mask: 0xFF
+    shift: 18
+ArrowSW:
+  scenefid:
+    mask: 0xFF
+    shift: 10
+  2scenefid:
+    mask: 0xFF
+    shift: 18
+BlwCoal:
+  scenefid:
+    mask: 0xFF
+    shift: 0
+  2scenefid:
+    mask: 0xFF
+    shift: 8
+BulbSW:
+  scenefid:
+    mask: 0xFF
+    shift: 2
+sw_whip:
+  scenefid:
+    mask: 0xFF
+    shift: 2
+  2scenefid:
+    mask: 0xFF
+    shift: 10
+Swhit:
+  setscenefid:
+    mask: 0xFF
+    shift: 3
+  unsetscenefid:
+    mask: 0xFF
+    shift: 11
+FenceIr:
+  scenefid:
+    mask: 0xFF
+    shift: 0
+DoorBs:
+  scenefid:
+    mask: 0xFF
+    shift: 6
+EHidoK:
+  scenefid:
+    mask: 0xFF
+    shift: 21
+NpcTke:
+  trigstoryfid:
+    mask: 0x7FF
+    shift: 10
+  untrigstoryfid:
+    mask: 0x7FF
+    shift: 21
+  subtype:
+    mask: 0xF
+    shift: 0
+  talk_behaviour:
+    mask: 0xFFFF
+    shift: 0
+    bitfield_name: anglez
+  trigscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglex
+  untrigscenefid:
+    mask: 0xFF
+    shift: 8
+    bitfield_name: anglex
+  trigareaindex:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: angley
+Npc:
+  trigstoryfid:
+    mask: 0x7FF
+    shift: 10
+  untrigstoryfid:
+    mask: 0x7FF
+    shift: 21
+  talk_behaviour:
+    mask: 0xFFFF
+    shift: 0
+    bitfield_name: anglez
+Door:
+  scenefid:
+    mask: 0xFF
+    shift: 8
+    bitfield_name: anglex
+  subtype2:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglex
+  scen_link:
+    mask: 0xFF
+    shift: 8
+  talk_behaviour:
+    mask: 0xFFFF
+    shift: 16
+  subtype:
+    mask: 0x3F
+    shift: 0
+  locked:
+    mask: 1
+    shift: 6
+TBox:
+  spawnscenefid:
+    mask: 0xFF
+    shift: 20
+  setscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglex
+  itemid:
+    mask: 0x1FF
+    shift: 0
+    bitfield_name: anglez
+  chestid:
+    mask: 0x7F
+    shift: 9
+    bitfield_name: anglez
+  trigstoryfid:
+    mask: 0x7FF
+    shift: 0
+    bitfield_name: params2
+  rando_chesttype:
+    mask: 0x3
+    shift: 4
+DNight:
+  sleep_storyfid:
+    mask: 0x7FF
+    shift: 0
+WarpObj:
+  scen_link:
+    mask: 0xFF
+    shift: 16
+  trigscenefid:
+    mask: 0xFF
+    shift: 8
+  untrigscenefid:
+    mask: 0xFF
+    shift: 0
+  rando_itemid:
+    mask: 0xFF
+    shift: 0x18
+  rando_storyflag:
+    mask: 0xFFFF
+    shift: 0
+    bitfield_name: params2
+IvyRope:
+  scenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglez
+  2scenefid:
+    mask: 0xFF
+    shift: 12
+TChk:
+  scenefid:
+    mask: 0xFF
+    shift: 8
+  2scenefid:
+    mask: 0xFF
+    shift: 0
+Kanban:
+  talk_behaviour:
+    mask: 0xFFFF
+    shift: 4
+  setscenefid:
+    mask: 0xFF
+    shift: 24
+KanbanS:
+  talk_behaviour:
+    mask: 0xFFFF
+    shift: 0
+  setscenefid:
+    mask: 0xFF
+    shift: 16
+AutoMes:
+  talk_behaviour:
+    mask: 0xFFFF
+    shift: 0
+BlockUg:
+  scenefid:
+    mask: 0xFF
+    shift: 8
+  2scenefid:
+    mask: 0xFF
+    shift: 16
+LvPlt:
+  checkscenefid:
+    mask: 0xFF
+    shift: 0
+  setscenefid:
+    mask: 0xFF
+    shift: 8
+Piston:
+  setscenefid:
+    mask: 0xFF
+    shift: 8
+    bitfield_name: anglez
+DoorDun:
+  setscenefid:
+    mask: 0xFF
+    shift: 8
+  checkscenefid:
+    mask: 0xFF
+    shift: 16
+GodCube:
+  storyfid:
+    mask: 0x7FF
+    shift: 0
+ScChang:
+  scen_link:
+    mask: 0xFF
+    shift: 0
+  trigscenefid:
+    mask: 0xFF
+    shift: 24
+  trigstoryfid:
+    mask: 0x7FF
+    shift: 0
+    bitfield_name: anglex
+  untrigstoryfid:
+    mask: 0x7FF
+    shift: 0
+    bitfield_name: anglez
+SwAreaT:
+  setstoryfid:
+    mask: 0x7FF
+    shift: 0
+    bitfield_name: anglex
+  unsetstoryfid:
+    mask: 0x7FF
+    shift: 0
+    bitfield_name: anglez
+  setscenefid:
+    mask: 0xFF
+    shift: 0
+  unsetscenefid:
+    mask: 0xFF
+    shift: 8
+DieTag:
+  setscenefid:
+    mask: 0xFF
+    shift: 4
+EvntTag:
+  trigscenefid:
+    mask: 0xFF
+    shift: 16
+  setscenefid:
+    mask: 0xFF
+    shift: 8
+  event:
+    mask: 0xFF
+    shift: 0
+  subtype:
+    mask: 3
+    shift: 24
+    values: ['unsetflag','setflag','-','-']
+EvfTag:
+  trigstoryfid:
+    mask: 0x7FF
+    shift: 19
+  setstoryfid:
+    mask: 0x7FF
+    shift: 8
+TDoorB:
+  trigstoryfid:
+    mask: 0x7FF
+    shift: 0
+  untrigstoryfid:
+    mask: 0x7FF
+    shift: 11
+  setscenefid:
+    mask: 0xFF
+    shift: 22
+TDoor:
+  trigstoryfid:
+    mask: 0x7FF
+    shift: 0
+TstShtr:
+  subtype:
+    mask: 0xF
+    shift: 0
+  side1room:
+    mask: 0x3F
+    shift: 20
+  side2room:
+    mask: 0x3F
+    shift: 26
+  unk_bit: # inverted in the actor
+    mask: 1
+    shift: 18
+  side1scenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglex
+  side2scenefid:
+    mask: 0xFF
+    shift: 8
+    bitfield_name: anglex
+PlRsTag:
+  trigscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglez
+  untrigscenefid:
+    mask: 0xFF
+    shift: 8
+    bitfield_name: anglez
+  roomid:
+    mask: 0x3F
+    shift: 12
+  entranceid:
+    mask: 0xFF
+    shift: 0
+Dowsing:
+  option:
+    mask: 0xF
+    shift: 16
+    values:
+      - Faron Trial
+      - Lanayru Trial
+      - Eldin Trial
+      - Skyloft Trial
+      - Propeller
+      - Water Basin
+      - Crystal Ball
+      - Mogma
+      - Plant #that owlan quest
+      - Party Wheel
+      - Zelda
+      - -
+      - -
+      - -
+      - -
+      - Sandship
+  trigstoryfid:
+    mask: 0x7FF
+    shift: 0
+    bitfield_name: anglez
+  untrigstoryfid:
+    mask: 0x7FF
+    shift: 20
+  trigscenefid:
+    mask: 0xFF
+    shift: 8
+  untrigscenefid:
+    mask: 0xFF
+    shift: 0
+CamTag:
+  trigscenefid:
+    mask: 0xFF
+    shift: 16
+  untrigscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglez
+  camidx:
+    mask: 0xFF
+    shift: 0
+Cam2Tag:
+  trigscenefid:
+    mask: 0xFF
+    shift: 16
+  untrigscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglez
+  camidx:
+    mask: 0xFF
+    shift: 0
+SwTag:
+  trigscenefid:
+    mask: 0xFF
+    shift: 14
+  untrigscenefid:
+    mask: 0xFF
+    shift: 6
+  count:
+    mask: 0x3F
+    shift: 22
+TgTimer:
+  trigscenefid:
+    mask: 0xFF
+    shift: 16
+  setscenefid:
+    mask: 0xFF
+    shift: 24
+WndMilD:
+  setscenefid:
+    mask: 0xFF
+    shift: 0
+  checkscenefid:
+    mask: 0xFF
+    shift: 8
+EBc:
+  setscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglez
+  rando_itemid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: params2
+EMr:
+  setscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglez
+EBce:
+  setscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglez
+EBeamos:
+  setscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglez
+EHydra:
+  setscenefid:
+    mask: 0xFF
+    shift: 22
+EGumarm:
+  setscenefid:
+    mask: 0xFF
+    shift: 0
+  set2scenefid:
+    mask: 0xFF
+    shift: 8
+MapMark:
+  trigstoryfid:
+    mask: 0x7FF
+    shift: 12
+SwrdPrj:
+  flag_add:
+    mask: 0x1F
+    shift: 3
+EBfish:
+  appearscenefid:
+    mask: 0xFF
+    shift: 0
+    bitfield_name: anglez
+  diescenefid:
+    mask: 0xFF
+    shift: 8
+    bitfield_name: anglez
+HeartCo:
+  rando_itemid:
+    mask: 0xFF
+    shift: 16

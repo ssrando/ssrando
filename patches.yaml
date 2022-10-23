@@ -157,7 +157,8 @@ B100_1: # skyview spring
     room: 0
     objtype: OBJ
     object:
-      params1: 0xFFFFFFF1 # last 1 is subtype (not talk to fi)
+      subtype: 1 # don't talk to fi
+      trigstoryfid: -1
       trigscenefid: 104
   - name: Fi text after skyview CS
     type: objmove

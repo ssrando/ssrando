@@ -33,15 +33,26 @@ from util.textbox_utils import (
     make_mutliple_textboxes,
 )
 
+from util.file_accessor import read_yaml_file_cached
+
+
+class InvalidPatch(Exception):
+    def __init__(self, msg, obj) -> None:
+        message = f"ERROR: {msg}, caused by {json.dumps(obj)}"
+        super().__init__(message)
+
+
 TOTAL_STAGE_FILES = 369
 TOTAL_EVENT_FILES = 6
 
 # arc cache, main.dol, rels, objectpack
 GAMEPATCH_TOTAL_STEP_COUNT = TOTAL_EVENT_FILES + TOTAL_STAGE_FILES + 4
 
+ACTOR_PARAMS = read_yaml_file_cached("util/actor_params.yaml")
+
 DEFAULT_SOBJ = OrderedDict(
-    params1=0,
-    params2=0,
+    params1=0xFFFFFFFF,
+    params2=0xFFFFFFFF,
     posx=0,
     posy=0,
     posz=0,
@@ -56,8 +67,8 @@ DEFAULT_SOBJ = OrderedDict(
 )
 
 DEFAULT_OBJ = OrderedDict(
-    params1=0,
-    params2=0,
+    params1=0xFFFFFFFF,
+    params2=0xFFFFFFFF,
     posx=0,
     posy=0,
     posz=0,
@@ -753,76 +764,23 @@ def mask_shift_set(value, mask, shift, new_value):
     return (value & ~(mask << shift)) | (new_value << shift)
 
 
+def mask_shift_get(value, mask, shift):
+    return (value >> shift) & mask
+
+
 def try_patch_obj(obj, key, value):
-    if obj["name"].startswith("Npc"):
-        if key == "trigstoryfid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0x7FF, 10, value)
-        elif key == "untrigstoryfid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0x7FF, 21, value)
-        elif key == "talk_behaviour":
-            obj["anglez"] = value
-        elif obj["name"] == "NpcTke":
-            if key == "trigscenefid":
-                obj["anglex"] = mask_shift_set(obj["anglex"], 0xFF, 0, value)
-            elif key == "untrigscenefid":
-                obj["anglex"] = mask_shift_set(obj["anglex"], 0xFF, 8, value)
-            elif key == "subtype":
-                obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0, value)
-            else:
-                print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
-        else:
-            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
-    elif obj["name"] == "TBox":
-        if key == "spawnscenefid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 20, value)
-        elif key == "setscenefid":
-            obj["anglex"] = mask_shift_set(obj["anglex"], 0xFF, 0, value)
-        elif key == "itemid":
-            obj["anglez"] = mask_shift_set(obj["anglez"], 0x1FF, 0, value)
-        else:
-            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
-    elif obj["name"] == "EvntTag":
-        if key == "trigscenefid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 16, value)
-        elif key == "setscenefid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 8, value)
-        elif key == "event":
-            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0, value)
-        else:
-            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
-    elif obj["name"] == "EvfTag":
-        if key == "trigstoryfid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0x7FF, 19, value)
-        elif key == "setstoryfid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0x7FF, 8, value)
-        elif key == "event":
-            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0, value)
-        else:
-            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
-    elif obj["name"] == "ScChang":
-        if key == "trigstoryfid":
-            obj["anglex"] = mask_shift_set(obj["anglex"], 0x7FF, 0, value)
-        elif key == "untrigstoryfid":
-            obj["anglez"] = mask_shift_set(obj["anglez"], 0x7FF, 0, value)
-        elif key == "scen_link":
-            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0, value)
-        elif key == "trigscenefid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 24, value)
-        else:
-            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
-    elif obj["name"] == "SwAreaT":
-        if key == "setstoryfid":
-            obj["anglex"] = mask_shift_set(obj["anglex"], 0x7FF, 0, value)
-        elif key == "unsetstoryfid":
-            obj["anglez"] = mask_shift_set(obj["anglez"], 0x7FF, 0, value)
-        elif key == "setscenefid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0, value)
-        elif key == "unsetscenefid":
-            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 8, value)
-        else:
-            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    entry = ACTOR_PARAMS.get(obj["name"], {}).get(key)
+    if entry is None and obj["name"].startswith("Npc"):
+        entry = ACTOR_PARAMS.get("Npc", {}).get(key)
+    if entry is not None:
+        # search the objlist using the provided query
+        mask = entry["mask"]
+        shift = entry["shift"]
+        bitfield = entry.get("bitfield_name", "params1")
+        obj[bitfield] = mask_shift_set(obj[bitfield], mask, shift, value)
+        print(obj)
     else:
-        print(f"ERROR: unsupported object to patch {obj}")
+        raise InvalidPatch(f"can't patch key {key}", obj)
 
 
 def patch_tbox_item(tbox: OrderedDict, itemid: int):
@@ -1062,35 +1020,69 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
 def get_entry_from_bzs(
     bzs: OrderedDict, objdef: dict, remove: bool = False
 ) -> Optional[OrderedDict]:
-    id = objdef.get("id", None)
-    index = objdef.get("index", None)
     layer = objdef.get("layer", None)
-    objtype = objdef["objtype"].ljust(
-        4
-    )  # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
+    # OBJ has a whitespace at the end but thats was too error prone for the yaml, so just pad it here
+    objtype = objdef["objtype"].ljust(4)
     if layer is None:
         objlist = bzs[objtype]
     else:
         objlist = bzs["LAY "][f"l{layer}"][objtype]
-    if not id is None:
+    if (id := objdef.get("id")) is not None:
         objs = [x for x in objlist if x["id"] == id]
         if len(objs) != 1:
-            print(f"Error finding object: {json.dumps(objdef)}")
-            return None
+            raise InvalidPatch("couldn't find object", objdef)
         obj = objs[0]
         if remove:
             objlist.remove(obj)
-    elif not index is None:
+    elif (index := objdef.get("index")) is not None:
         if index >= len(objlist):
-            print(f"Error lisError list index out of range: {json.dumps(objdef)}")
-            return None
+            raise InvalidPatch("list index out of range", objdef)
         if remove:
             obj = objlist.pop(index)
         else:
             obj = objlist[index]
+    elif (query := objdef.get("query")) is not None:
+        matchfuncs = []
+        for querytype, queryvalue in query.items():
+            if "name" in query:
+                entry = ACTOR_PARAMS.get(query["name"], {}).get(querytype)
+                if entry is None and query["name"].startswith("Npc"):
+                    entry = ACTOR_PARAMS.get("Npc", {}).get(querytype)
+                print(entry)
+                if entry is not None:
+                    # search the objlist using the provided query
+                    mask = entry["mask"]
+                    shift = entry["shift"]
+                    bitfield = entry.get("bitfield_name", "params1")
+
+                    def mask_shift_matches(
+                        obj,
+                        bitfield=bitfield,
+                        mask=mask,
+                        shift=shift,
+                        queryvalue=queryvalue,
+                    ):
+                        return mask_shift_get(obj[bitfield], mask, shift) == queryvalue
+
+                    matchfuncs.append(mask_shift_matches)
+                    continue
+
+            # not a documented actor param, assume it's directly on the struct
+            def matches(obj, querytype=querytype, queryvalue=queryvalue):
+                return obj[querytype] == queryvalue
+
+            matchfuncs.append(matches)
+            continue
+
+        objs = [obj for obj in objlist if all(matches(obj) for matches in matchfuncs)]
+        if len(objs) != 1:
+            raise InvalidPatch(f"can't query object, found {len(objs)}", objdef)
+        obj = objs[0]
+        if remove:
+            objlist.remove(obj)
+
     else:
-        print(f"ERROR: neither id nor index given for object {json.dumps(objdef)}")
-        return None
+        raise InvalidPatch("no way to find object in patch", objdef)
     return obj
 
 
@@ -1950,9 +1942,8 @@ class GamePatcher:
             stagepatches,
         ):
             layer = objadd.get("layer", None)
-            objtype = objadd["objtype"].ljust(
-                4
-            )  # OBJ has an whitespace but thats was too error prone for the yaml, so just pad it here
+            # OBJ has a whitespace at the end but thats was too error prone for the yaml, so just pad it here
+            objtype = objadd["objtype"].ljust(4)
             obj = objadd["object"]
             if objtype in ["SOBS", "SOBJ", "STAS", "STAG", "SNDT"]:
                 new_obj = DEFAULT_SOBJ.copy()
