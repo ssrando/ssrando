@@ -304,12 +304,6 @@ li r3, 154 ; storyflag for SSH timeshift stone being active
 li r4, 0 ; storyflag will be unset
 b setStoryflagToValue
 
-.global chest_has_progress_item
-chest_has_progress_item:
-lwz r0, 0xa8(r28) ; params2
-srawi r3, r0, 0x1F ; get first bit of params2, set to 1 if progress in gamepatches, 0 otherwise
-blr
-
 .close
 
 

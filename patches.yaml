@@ -15,7 +15,7 @@ global:
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - 27  # Loftwing
     - 198 # Can jump off Loftwing
-    - 102 # Treasure dowsing
+    - 668 # Propeller dowsing (need a default main quest dowsing option for cdmc)
     - storyflag: 194 # open thunderhead
       onlyif: Option "open-thunderhead" Is "Open"
     - 58  # b-wheel
@@ -849,6 +849,12 @@ F000: # Skyloft
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: Remove confounding propeller dowsing
+    type: objdelete
+    id: 0xFD4E
+    layer: 0
+    room: 0
+    objtype: STAG
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -1173,6 +1179,12 @@ F020: # Sky
     objtype: OBJ
     object:
       params1: 0xCBFFFFFF # make it always spawn
+  - name: Remove confounding propeller dowsing
+    type: objdelete
+    id: 0xFCAD
+    layer: 0
+    room: 0
+    objtype: STAG
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
@@ -1247,6 +1259,12 @@ F023: # Thunderhead
     type: oarcadd
     oarc: GossipStone
     destlayer: 0
+  - name: Remove confounding propeller dowsing
+    type: objdelete
+    id: 0xFCAE
+    layer: 0
+    room: 0
+    objtype: STAG
 F100: # Faron main area
   - name: Layer override
     type: layeroverride

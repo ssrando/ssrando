@@ -832,14 +832,14 @@ def try_patch_obj(obj, key, value):
         print(f"ERROR: unsupported object to patch {obj}")
 
 
-def patch_tbox_item(tbox: OrderedDict, itemid: int, dowsing: bool):
+def patch_tbox_item(tbox: OrderedDict, itemid: int, dowsing: int):
     origitemid = tbox["anglez"] & 0x1FF
     boxtype = tboxSubtypes[origitemid]
     tbox["anglez"] = mask_shift_set(tbox["anglez"], 0x1FF, 0, itemid)
     # code has been patched, to interpret this part of params1 as boxtype
     tbox["params1"] = mask_shift_set(tbox["params1"], 0x3, 4, boxtype)
-    # asm patch checks for first bit of params2 to enable dowsing w/ treasure dowsing
-    tbox["params2"] = (tbox["params2"] & 0x7FFFFFFF) + 0x80000000 * dowsing
+    # asm patch checks for first nybble of params2 to enable dowsing on the given slot
+    tbox["params2"] = mask_shift_set(tbox["params2"], 0xF, 28, dowsing)
 
 
 def patch_item_item(itemobj: OrderedDict, itemid: int):

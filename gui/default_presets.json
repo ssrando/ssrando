@@ -42,6 +42,7 @@
         "precise-item": false,
         "shuffle-trial-objects": "None",
         "chest-dowsing": "None",
+        "dungeon-dowsing": false,
         "hint-distribution": "Balanced"
     },
     "3D Rupeesanity": {
@@ -87,6 +88,7 @@
         "precise-item": false,
         "shuffle-trial-objects": "Full",
         "chest-dowsing": "None",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
     "Allsanity": {
@@ -132,6 +134,7 @@
         "precise-item": false,
         "shuffle-trial-objects": "Full",
         "chest-dowsing": "None",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D EUD Off"
     },
     "S2 - 3D Standard": {
@@ -177,6 +180,7 @@
         "precise-item": false,
         "shuffle-trial-objects": "None",
         "chest-dowsing": "None",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
     "S2 - 2D Cubes": {
@@ -222,6 +226,7 @@
         "precise-item": false,
         "shuffle-trial-objects": "None",
         "chest-dowsing": "None",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 2D"
     },
     "S2 - 3D Open": {
@@ -267,6 +272,7 @@
         "precise-item": false,
         "shuffle-trial-objects": "None",
         "chest-dowsing": "None",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
     "S2 - 3D Swordless": {
@@ -312,6 +318,7 @@
         "precise-item": false,
         "shuffle-trial-objects": "None",
         "chest-dowsing": "None",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
     "S2 - 3D EUD Off": {
@@ -357,6 +364,7 @@
         "precise-item": false,
         "shuffle-trial-objects": "None",
         "chest-dowsing": "None",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D EUD Off"
     },
     "S2 - Keysanity": {
@@ -402,6 +410,7 @@
         "precise-item": false,
         "shuffle-trial-objects": "None",
         "chest-dowsing": "None",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     }
 }
