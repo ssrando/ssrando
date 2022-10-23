@@ -262,6 +262,8 @@ TRIAL_STAGES = {
     LANAYRU_SILENT_REALM: "S300",
 }
 
+TRIAL_STAGES_REV = dict((v, k) for (k, v) in TRIAL_STAGES.items())
+
 TRIAL_GATE_STAGES = {
     # stage, room, scen
     SKYLOFT_TRIAL_GATE: ("F000", 0, 45),
@@ -778,163 +780,8 @@ def try_patch_obj(obj, key, value):
         shift = entry["shift"]
         bitfield = entry.get("bitfield_name", "params1")
         obj[bitfield] = mask_shift_set(obj[bitfield], mask, shift, value)
-        print(obj)
     else:
         raise InvalidPatch(f"can't patch key {key}", obj)
-
-
-def patch_tbox_item(tbox: OrderedDict, itemid: int):
-    origitemid = tbox["anglez"] & 0x1FF
-    boxtype = tboxSubtypes[origitemid]
-    tbox["anglez"] = mask_shift_set(tbox["anglez"], 0x1FF, 0, itemid)
-    # code has been patched, to interpret this part of params1 as boxtype
-    tbox["params1"] = mask_shift_set(tbox["params1"], 0x3, 4, boxtype)
-
-
-def patch_item_item(itemobj: OrderedDict, itemid: int):
-    itemobj["params1"] = mask_shift_set(itemobj["params1"], 0xFF, 0, itemid)
-    # subtype 9, this acts like hearpieces and force being collected with a textbox
-    itemobj["params1"] = mask_shift_set(itemobj["params1"], 0xF, 0x14, 9)
-
-
-# these are not treasure chests, but instead only used for the hp in zeldas room
-def patch_chest_item(chest: OrderedDict, itemid: int):
-    chest["params1"] = mask_shift_set(chest["params1"], 0xFF, 8, itemid)
-
-
-# code has been patched to use this part of params1 as itemid
-def patch_heart_co(heart_co: OrderedDict, itemid: int):
-    heart_co["params1"] = mask_shift_set(heart_co["params1"], 0xFF, 16, itemid)
-
-
-# code has been patched to use this part of params1 as itemid
-def patch_chandelier_item(chandel: OrderedDict, itemid: int):
-    chandel["params1"] = mask_shift_set(chandel["params1"], 0xFF, 8, itemid)
-
-
-def patch_soil_item(soil: OrderedDict, itemid: int):
-    # match key piece soils in all ways but keep sceneflag
-    soil["params1"] = (soil["params1"] & 0xFF0) | 0xFF0B1004
-    # code has been patched to use the first byte of params2 as itemid, but only
-    # if it would have been a key piece otherwise
-    soil["params2"] = mask_shift_set(soil["params2"], 0xFF, 0x18, itemid)
-
-
-def patch_trial_item(trial: OrderedDict, itemid: int):
-    trial["params1"] = mask_shift_set(trial["params1"], 0xFF, 0x18, itemid)
-
-
-def patch_trial_flags(trial: OrderedDict, storyflag: int):
-    # Use last 2 bytes of params2 as the randomized trial storyflag
-    trial["params2"] = mask_shift_set(trial["params2"], 0xFFFF, 0x0, storyflag)
-
-
-def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
-    boko["params2"] = mask_shift_set(boko["params2"], 0xFF, 0x0, itemid)
-
-
-# not treasure chest, wardrobes you can open, used for zelda room HP
-def rando_patch_chest(bzs: OrderedDict, itemid: int, id: str):
-    id = int(id)
-    chest = next(
-        filter(
-            lambda x: x["name"] == "chest" and (x["params1"] & 0xFF) == id, bzs["OBJ "]
-        )
-    )
-    patch_chest_item(chest, itemid)
-
-
-def rando_patch_heartco(bzs: OrderedDict, itemid: int, id: str):
-    obj = next(
-        filter(lambda x: x["name"] == "HeartCo", bzs["OBJ "])
-    )  # there is only one heart container at a time
-    patch_heart_co(obj, itemid)
-
-
-def rando_patch_warpobj(
-    bzs: OrderedDict, itemid: int, id: str, trial_connections: OrderedDict
-):
-    obj = next(
-        filter(lambda x: x["name"] == "WarpObj", bzs["OBJ "])
-    )  # there is only one trial exit at a time
-    patch_trial_item(obj, itemid)
-    for trial, trialid in TRIAL_EXIT_GATE_IDS.items():
-        if obj["id"] == trialid:
-            trial_gate = [tg for tg, t in trial_connections.items() if t == trial].pop()
-            trial_storyflag = TRIAL_COMPLETE_STORYFLAGS[trial_gate]
-    patch_trial_flags(obj, trial_storyflag)
-
-
-def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str):
-    id = int(id)
-    tboxs = list(
-        filter(lambda x: x["name"] == "TBox" and (x["anglez"] >> 9) == id, bzs["OBJS"])
-    )
-    if len(tboxs) == 0:
-        print(tboxs)
-    obj = tboxs[0]  # anglez >> 9 is chest id
-    patch_tbox_item(obj, itemid)
-
-
-def rando_patch_item(bzs: OrderedDict, itemid: int, id: str):
-    id = int(id)
-    obj = next(
-        filter(
-            lambda x: x["name"] == "Item" and ((x["params1"] >> 10) & 0xFF) == id,
-            bzs["OBJ "],
-        )
-    )  # (params1 >> 10) & 0xFF is sceneflag
-    patch_item_item(obj, itemid)
-
-
-def rando_patch_chandelier(bzs: OrderedDict, itemid: int, id: str):
-    obj = next(filter(lambda x: x["name"] == "Chandel", bzs["OBJ "]))
-    patch_chandelier_item(obj, itemid)
-
-
-def rando_patch_soil(bzs: OrderedDict, itemid: int, id: str):
-    id = int(id)
-    obj = next(
-        filter(
-            lambda x: x["name"] == "Soil" and ((x["params1"] >> 4) & 0xFF) == id,
-            bzs["OBJ "],
-        )
-    )  # (params1 >> 4) & 0xFF is sceneflag
-    patch_soil_item(obj, itemid)
-
-
-def rando_patch_bokoblin(bzs: OrderedDict, itemid: int, id: str):
-    id = int(id, 0)
-    obj = next(filter(lambda x: x["name"] == "EBc" and x["id"] == id, bzs["OBJ "]))
-    patch_key_bokoblin_item(obj, itemid)
-
-
-def rando_patch_goddess_crest(bzs: OrderedDict, itemid: int, index: str):
-    obj = next(filter(lambda x: x["name"] == "SwSB", bzs["OBJ "]))
-    # we need to patch 3 item ids into this object:
-    # 1 is params1 FF 00 00 00, 2 is params1 00 FF 00 00
-    # 3 is params2 FF 00 00 00
-    if index == "0":
-        obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0x18, itemid)
-    elif index == "1":
-        obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0x10, itemid)
-    elif index == "2":
-        obj["params2"] = mask_shift_set(obj["params2"], 0xFF, 0x18, itemid)
-
-
-# functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
-RANDO_PATCH_FUNCS = {
-    "chest": rando_patch_chest,
-    "HeartCo": rando_patch_heartco,
-    "WarpObj": rando_patch_warpobj,
-    "TBox": rando_patch_tbox,
-    "Item": rando_patch_item,
-    "Chandel": rando_patch_chandelier,
-    "Soil": rando_patch_soil,
-    "EBc": rando_patch_bokoblin,
-    "Tbox": rando_patch_tbox,
-    "SwSB": rando_patch_goddess_crest,
-}
 
 
 def get_patches_from_location_item_list(all_checks, filled_checks):
@@ -1048,7 +895,6 @@ def get_entry_from_bzs(
                 entry = ACTOR_PARAMS.get(query["name"], {}).get(querytype)
                 if entry is None and query["name"].startswith("Npc"):
                     entry = ACTOR_PARAMS.get("Npc", {}).get(querytype)
-                print(entry)
                 if entry is not None:
                     # search the objlist using the provided query
                     mask = entry["mask"]
@@ -1190,6 +1036,192 @@ class GamePatcher:
         ) = get_patches_from_location_item_list(
             self.rando.item_locations, temp_item_locations
         )
+
+        for (
+            (stage, room),
+            stagepatches,
+        ) in self.rando_stagepatches.items():
+            for (
+                objname,
+                layer,
+                objid,
+                itemid,
+            ) in stagepatches:
+                if objname == "TBox":
+                    tboxid = int(objid[1:])
+                    tboxtype = {"n": 0, "s": 1, "b": 2, "g": 3}[objid[0]]
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"{stage} - {room}",
+                            "type": "objpatch",
+                            "query": {
+                                "name": "TBox",
+                                "tboxid": tboxid,
+                            },
+                            "layer": layer,
+                            "room": room,
+                            "objtype": "OBJS",
+                            "object": {
+                                # code has been patched to interpret this as the tboxtype
+                                "rando_tboxtype": tboxtype,
+                                "itemid": itemid,
+                            },
+                        },
+                    )
+                elif objname == "Item":
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"{stage} - {room}",
+                            "type": "objpatch",
+                            "query": {
+                                "name": "Item",
+                                "scenefid": int(objid),
+                            },
+                            "layer": layer,
+                            "room": room,
+                            "objtype": "OBJ",
+                            "object": {
+                                "itemid": itemid,
+                                # subtype 9, this acts like hearpieces and force being collected with a textbox
+                                "subtype": 9,
+                            },
+                        },
+                    )
+                elif objname == "chest":
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"{stage} - {room}",
+                            "type": "objpatch",
+                            "query": {
+                                "name": "chest",
+                                "scenefid": int(objid),
+                            },
+                            "layer": layer,
+                            "room": room,
+                            "objtype": "OBJ",
+                            "object": {
+                                "itemid": itemid,
+                            },
+                        },
+                    )
+                elif objname == "HeartCo":
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"{stage} - {room}",
+                            "type": "objpatch",
+                            "query": {
+                                "name": "HeartCo",
+                            },
+                            "layer": layer,
+                            "room": room,
+                            "objtype": "OBJ",
+                            "object": {
+                                "rando_itemid": itemid,
+                            },
+                        },
+                    )
+                elif objname == "Chandel":
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"{stage} - {room}",
+                            "type": "objpatch",
+                            "query": {
+                                "name": "Chandel",
+                            },
+                            "layer": layer,
+                            "room": room,
+                            "objtype": "OBJ",
+                            "object": {
+                                "rando_itemid": itemid,
+                            },
+                        },
+                    )
+                elif objname == "Soil":
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"{stage} - {room}",
+                            "type": "objpatch",
+                            "query": {
+                                "name": "Soil",
+                                "scenefid": int(objid),
+                            },
+                            "layer": layer,
+                            "room": room,
+                            "objtype": "OBJ",
+                            "object": {
+                                # match key piece soils in all ways but keep sceneflag
+                                "params1": int(objid) << 4 | 0xFF0B1004,
+                                "rando_itemid": itemid,
+                            },
+                        },
+                    )
+                elif objname == "WarpObj":
+                    trial = TRIAL_STAGES_REV[stage]
+                    trial_gate = [
+                        tg
+                        for tg, t in self.placement_file.trial_connections.items()
+                        if t == trial
+                    ].pop()
+                    trial_storyflag = TRIAL_COMPLETE_STORYFLAGS[trial_gate]
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"{stage} - {room}",
+                            "type": "objpatch",
+                            "query": {
+                                "name": "WarpObj",
+                            },
+                            "layer": layer,
+                            "room": room,
+                            "objtype": "OBJ",
+                            "object": {
+                                "rando_itemid": itemid,
+                                "rando_storyflag": trial_storyflag,
+                            },
+                        },
+                    )
+                elif objname == "EBc":
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"{stage} - {room}",
+                            "type": "objpatch",
+                            "id": int(objid, 0),
+                            "layer": layer,
+                            "room": room,
+                            "objtype": "OBJ",
+                            "object": {
+                                "rando_itemid": itemid,
+                            },
+                        },
+                    )
+                elif objname == "SwSB":
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"{stage} - {room}",
+                            "type": "objpatch",
+                            "query": {
+                                "name": "SwSB",
+                            },
+                            "layer": layer,
+                            "room": room,
+                            "objtype": "OBJ",
+                            "object": {
+                                f"rando_itemid{objid}": itemid,
+                            },
+                        },
+                    )
+                else:
+                    raise Exception(f"unknown patch {objname}")
+
+        self.rando_stagepatches = {}
 
         # assembly patches
         self.all_asm_patches = defaultdict(OrderedDict)
@@ -1937,143 +1969,121 @@ class GamePatcher:
                 bzs["LYSE"] = layer_override
                 modified = True
         next_id = highest_objid(bzs) + 1
-        for objadd in filter(
-            lambda x: x["type"] == "objadd" and x.get("room", None) == room,
-            stagepatches,
-        ):
-            layer = objadd.get("layer", None)
-            # OBJ has a whitespace at the end but thats was too error prone for the yaml, so just pad it here
-            objtype = objadd["objtype"].ljust(4)
-            obj = objadd["object"]
-            if objtype in ["SOBS", "SOBJ", "STAS", "STAG", "SNDT"]:
-                new_obj = DEFAULT_SOBJ.copy()
-            elif objtype in ["OBJS", "OBJ ", "DOOR"]:
-                new_obj = DEFAULT_OBJ.copy()
-            elif objtype == "SCEN":
-                new_obj = DEFAULT_SCEN.copy()
-            elif objtype == "AREA":
-                new_obj = DEFAULT_AREA.copy()
-            else:
-                print(f"Error: unknown objtype: {objtype}")
+        for stagepatch in stagepatches:
+            if stagepatch.get("room") != room:
                 continue
-            if "index" in obj:
-                # check index, just to verify index based lists don't have a mistake in them
-                if layer is None:
-                    objlist = bzs.get(objtype, [])
+            if stagepatch["type"] == "objadd":
+                objadd = stagepatch
+                layer = objadd.get("layer", None)
+                # OBJ has a whitespace at the end but thats was too error prone for the yaml, so just pad it here
+                objtype = objadd["objtype"].ljust(4)
+                obj = objadd["object"]
+                if objtype in ["SOBS", "SOBJ", "STAS", "STAG", "SNDT"]:
+                    new_obj = DEFAULT_SOBJ.copy()
+                elif objtype in ["OBJS", "OBJ ", "DOOR"]:
+                    new_obj = DEFAULT_OBJ.copy()
+                elif objtype == "SCEN":
+                    new_obj = DEFAULT_SCEN.copy()
+                elif objtype == "AREA":
+                    new_obj = DEFAULT_AREA.copy()
                 else:
-                    objlist = bzs["LAY "][f"l{layer}"].get(objtype, [])
-                if len(objlist) != obj["index"]:
-                    print(f"ERROR: wrong index adding object: {json.dumps(objadd)}")
+                    print(f"Error: unknown objtype: {objtype}")
                     continue
-            for key, val in obj.items():
-                if key in new_obj:
-                    new_obj[key] = val
-                else:
-                    try_patch_obj(new_obj, key, val)
-            if "id" in new_obj:
-                new_obj["id"] = (new_obj["id"] & ~0x3FF) | next_id
-                next_id += 1
-            if layer is None:
-                if not objtype in bzs:
-                    bzs[objtype] = []
-                objlist = bzs[objtype]
-            else:
-                if not objtype in bzs["LAY "][f"l{layer}"]:
-                    bzs["LAY "][f"l{layer}"][objtype] = []
-                objlist = bzs["LAY "][f"l{layer}"][objtype]
-            # add object name to objn if it's some kind of actor
-            if objtype in [
-                "SOBS",
-                "SOBJ",
-                "STAS",
-                "STAG",
-                "SNDT",
-                "OBJS",
-                "OBJ ",
-                "DOOR",
-            ]:
-                # TODO: this only works if the layer is set
-                if not "OBJN" in bzs["LAY "][f"l{layer}"]:
-                    bzs["LAY "][f"l{layer}"]["OBJN"] = []
-                objn = bzs["LAY "][f"l{layer}"]["OBJN"]
-                if not obj["name"] in objn:
-                    objn.append(obj["name"])
-            objlist.append(new_obj)
-            modified = True
-            # print(obj)
-        for objpatch in filter(
-            lambda x: x["type"] == "objpatch" and x.get("room", None) == room,
-            stagepatches,
-        ):
-            obj = get_entry_from_bzs(bzs, objpatch)
-            if not obj is None:
-                for key, val in objpatch["object"].items():
-                    if key in obj:
-                        obj[key] = val
+                if "index" in obj:
+                    # check index, just to verify index based lists don't have a mistake in them
+                    if layer is None:
+                        objlist = bzs.get(objtype, [])
                     else:
-                        try_patch_obj(obj, key, val)
+                        objlist = bzs["LAY "][f"l{layer}"].get(objtype, [])
+                    if len(objlist) != obj["index"]:
+                        print(f"ERROR: wrong index adding object: {json.dumps(objadd)}")
+                        continue
+                for key, val in obj.items():
+                    if key in new_obj:
+                        new_obj[key] = val
+                    else:
+                        try_patch_obj(new_obj, key, val)
+                if "id" in new_obj:
+                    new_obj["id"] = (new_obj["id"] & ~0x3FF) | next_id
+                    next_id += 1
+                if layer is None:
+                    if not objtype in bzs:
+                        bzs[objtype] = []
+                    objlist = bzs[objtype]
+                else:
+                    if not objtype in bzs["LAY "][f"l{layer}"]:
+                        bzs["LAY "][f"l{layer}"][objtype] = []
+                    objlist = bzs["LAY "][f"l{layer}"][objtype]
+                # add object name to objn if it's some kind of actor
+                if objtype in [
+                    "SOBS",
+                    "SOBJ",
+                    "STAS",
+                    "STAG",
+                    "SNDT",
+                    "OBJS",
+                    "OBJ ",
+                    "DOOR",
+                ]:
+                    # TODO: this only works if the layer is set
+                    if not "OBJN" in bzs["LAY "][f"l{layer}"]:
+                        bzs["LAY "][f"l{layer}"]["OBJN"] = []
+                    objn = bzs["LAY "][f"l{layer}"]["OBJN"]
+                    if not obj["name"] in objn:
+                        objn.append(obj["name"])
+                objlist.append(new_obj)
                 modified = True
-                # print(f'modified object from {layer} in room {room} with id {objpatch["id"]:04X}')
                 # print(obj)
-        for objmove in filter(
-            lambda x: x["type"] == "objmove" and x.get("room", None) == room,
-            stagepatches,
-        ):
-            obj = get_entry_from_bzs(bzs, objmove, remove=True)
-            destlayer = objmove["destlayer"]
-            if not obj is None:
-                layer = objmove["layer"]
-                objtype = objmove["objtype"].ljust(4)
-                obj["id"] = (obj["id"] & ~0x3FF) | next_id
-                next_id += 1
-                if not objtype in bzs["LAY "][f"l{destlayer}"]:
-                    bzs["LAY "][f"l{destlayer}"][objtype] = []
-                bzs["LAY "][f"l{destlayer}"][objtype].append(obj)
-                objn = bzs["LAY "][f"l{destlayer}"]["OBJN"]
-                if not obj["name"] in objn:
-                    objn.append(obj["name"])
-                modified = True
-                # print(f'moved object from {layer} to {destlayer} in room {room} with id {objmove["id"]:04X}')
-                # print(obj)
-        for objdelete in filter(
-            lambda x: x["type"] == "objdelete" and x.get("room", None) == room,
-            stagepatches,
-        ):
-            obj = get_entry_from_bzs(bzs, objdelete, remove=True)
-            if not obj is None:
-                modified = True
-                # print(f'removed object from {layer} in room {room} with id {objdelete["id"]:04X}')
-                # print(obj)
-        for command in filter(
-            lambda x: x["type"] == "objnadd" and x.get("room", None) == room,
-            stagepatches,
-        ):
-            layer = command.get("layer", None)
-            name_to_add = command["objn"]
-            if layer is None:
-                if not "OBJN" in bzs:
-                    bzs["OBJN"] = []
-                objlist = bzs["OBJN"]
-            else:
-                if not "OBJN" in bzs["LAY "][f"l{layer}"]:
-                    bzs["LAY "][f"l{layer}"]["OBJN"] = []
-                objlist = bzs["LAY "][f"l{layer}"]["OBJN"]
-            objlist.append(name_to_add)
-
-        # patch randomized items on stages
-        for objname, layer, objid, itemid in self.rando_stagepatches.get(
-            (stage, room), []
-        ):
-            modified = True
-            if objname == "WarpObj":
-                RANDO_PATCH_FUNCS[objname](
-                    bzs["LAY "][f"l{layer}"],
-                    itemid,
-                    objid,
-                    self.placement_file.trial_connections,
-                )
-            else:
-                RANDO_PATCH_FUNCS[objname](bzs["LAY "][f"l{layer}"], itemid, objid)
+            elif stagepatch["type"] == "objpatch":
+                objpatch = stagepatch
+                obj = get_entry_from_bzs(bzs, objpatch)
+                if not obj is None:
+                    for key, val in objpatch["object"].items():
+                        if key in obj:
+                            obj[key] = val
+                        else:
+                            try_patch_obj(obj, key, val)
+                    modified = True
+                    # print(f'modified object from {layer} in room {room} with id {objpatch["id"]:04X}')
+                    # print(obj)
+            elif stagepatch["type"] == "objmove":
+                objmove = stagepatch
+                obj = get_entry_from_bzs(bzs, objmove, remove=True)
+                destlayer = objmove["destlayer"]
+                if not obj is None:
+                    layer = objmove["layer"]
+                    objtype = objmove["objtype"].ljust(4)
+                    obj["id"] = (obj["id"] & ~0x3FF) | next_id
+                    next_id += 1
+                    if not objtype in bzs["LAY "][f"l{destlayer}"]:
+                        bzs["LAY "][f"l{destlayer}"][objtype] = []
+                    bzs["LAY "][f"l{destlayer}"][objtype].append(obj)
+                    objn = bzs["LAY "][f"l{destlayer}"]["OBJN"]
+                    if not obj["name"] in objn:
+                        objn.append(obj["name"])
+                    modified = True
+                    # print(f'moved object from {layer} to {destlayer} in room {room} with id {objmove["id"]:04X}')
+                    # print(obj)
+            elif stagepatch["type"] == "objdelete":
+                objdelete = stagepatch
+                obj = get_entry_from_bzs(bzs, objdelete, remove=True)
+                if not obj is None:
+                    modified = True
+                    # print(f'removed object from {layer} in room {room} with id {objdelete["id"]:04X}')
+                    # print(obj)
+            elif stagepatch["type"] == "objnadd":
+                command = stagepatch
+                layer = command.get("layer", None)
+                name_to_add = command["objn"]
+                if layer is None:
+                    if not "OBJN" in bzs:
+                        bzs["OBJN"] = []
+                    objlist = bzs["OBJN"]
+                else:
+                    if not "OBJN" in bzs["LAY "][f"l{layer}"]:
+                        bzs["LAY "][f"l{layer}"]["OBJN"] = []
+                    objlist = bzs["LAY "][f"l{layer}"]["OBJN"]
+                objlist.append(name_to_add)
 
         if modified:
             # print(json.dumps(bzs))

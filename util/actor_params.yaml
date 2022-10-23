@@ -430,7 +430,7 @@ TBox:
     mask: 0x1FF
     shift: 0
     bitfield_name: anglez
-  chestid:
+  tboxid:
     mask: 0x7F
     shift: 9
     bitfield_name: anglez
@@ -438,7 +438,7 @@ TBox:
     mask: 0x7FF
     shift: 0
     bitfield_name: params2
-  rando_chesttype:
+  rando_tboxtype:
     mask: 0x3
     shift: 4
 DNight:
@@ -766,3 +766,14 @@ HeartCo:
   rando_itemid:
     mask: 0xFF
     shift: 16
+SwSB:
+  rando_itemid0:
+    mask: 0xFF
+    shift: 0x18
+  rando_itemid1:
+    mask: 0xFF
+    shift: 0x10
+  rando_itemid2:
+    mask: 0xFF
+    shift: 0x18
+    bitfield_name: params2
