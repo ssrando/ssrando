@@ -178,6 +178,17 @@ blr
 .org 0x80252edc
 li r3, 1
 
+; treat all Kikwi's as "found" in non main faron stages
+.org 0x8004ec24
+; make sure this branch is always taken, should always be the case anyways
+b 0x8004ec30
+li r3, 1 ; code below jumps here when not in faron main
+.org 0x8004ec44
+lis r4, SPAWN_SLAVE+2@ha
+lhz r4, SPAWN_SLAVE+2@l(r4)
+cmplwi r4, 0x3030 ; '00', we assume all stages like XX00 are faron main
+bne 0x8004ec28 ; if not faron main, treat this kikwi as found
+
 ; optimize some code around separating textfileindex from entrypoint
 ; to then temporarily backup the current textfileindex
 ; this fixes potential crashes when initiating a conversation while a Npc updates for the first time

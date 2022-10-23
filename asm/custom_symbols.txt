@@ -1,14 +1,14 @@
 main.dol:
   fix_freestanding_item_y_offset: 0x806782C0
   should_increase_freestanding_model_size: 0x806782EC
-  chest_has_progress_item: 0x8067831C
-  setStoryflagToValue: 0x80678328
-  handleBossKeyMapDungeonflag: 0x80678360
-  handleSmallKeyGet: 0x80678420
-  setSceneflagForArea: 0x806784C0
-  processStartflags: 0x80678530
-  alloc_keyboard_arcs_conditional: 0x806785DC
-  unset_sandship_timestone_if_necessary: 0x80678628
+  setStoryflagToValue: 0x8067831C
+  handleBossKeyMapDungeonflag: 0x80678350
+  handleSmallKeyGet: 0x80678410
+  setSceneflagForArea: 0x806784B0
+  processStartflags: 0x80678520
+  alloc_keyboard_arcs_conditional: 0x806785CC
+  unset_sandship_timestone_if_necessary: 0x80678618
+  chest_has_progress_item: 0x80678648
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
