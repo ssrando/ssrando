@@ -507,7 +507,7 @@
   getarcname: GetKeySmall
   getmodelname: GetKeySmallNormal
 - id: 206
-  name: Lanayru Caves Key
+  name: Lanayru Caves Small Key
   oarc: null
   getarcname: GetKeySmall
   getmodelname: GetKeySmallNormal

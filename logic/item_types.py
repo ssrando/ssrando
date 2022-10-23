@@ -88,7 +88,7 @@ DUPLICATABLE_CONSUMABLE_ITEMS = [
 ]
 
 DUNGEON_PROGRESS_ITEMS = (
-    ["Lanayru Caves Key"] * 1
+    ["Lanayru Caves Small Key"] * 1
     + ["Skyview Boss Key"] * 1
     + ["Skyview Small Key"] * 2
     + ["Earth Temple Boss Key"] * 1
@@ -113,7 +113,7 @@ DUNGEON_PROGRESS_ITEMS = (
 KEY_PIECES = ["Key Piece"] * 5
 
 SMALL_KEYS = (
-    ["Lanayru Caves Key"] * 1
+    ["Lanayru Caves Small Key"] * 1
     + ["Skyview Small Key"] * 2
     + ["Earth Temple Small Key"] * 0
     + ["Lanayru Mining Facility Small Key"] * 1

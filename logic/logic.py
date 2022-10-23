@@ -267,7 +267,7 @@ class Logic:
                 orig_item = self.item_locations[small_key_check]["original item"]
                 self.set_prerandomization_item_location(small_key_check, orig_item)
         elif small_key_mode == "Lanayru Caves Key Only":
-            self.dungeon_progress_items.remove("Lanayru Caves Key")
+            self.dungeon_progress_items.remove("Lanayru Caves Small Key")
         # remove boss keys from the dungeon pool if boss key sanity is enabled
         if boss_key_mode == "Anywhere":
             self.dungeon_progress_items = [
@@ -1312,7 +1312,7 @@ class Logic:
                 for item_name in (
                     self.unplaced_progress_items + self.unplaced_nonprogress_items
                 )
-                if item_name.endswith(" Small Key") or item_name == "Lanayru Caves Key"
+                if item_name.endswith(" Small Key")
             ]
             assert len(small_keys_to_place) > 0, f"no small "
             for item_name in small_keys_to_place:
@@ -1560,7 +1560,7 @@ class Logic:
 
                 return True
             elif self.rando.options["small-key-mode"] == "Lanayru Caves Key Only":
-                if item != "Lanayru Caves Key":
+                if item != "Lanayru Caves Small Key":
                     return True
 
         if item.endswith("Boss Key"):
