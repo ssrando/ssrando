@@ -832,12 +832,14 @@ def try_patch_obj(obj, key, value):
         print(f"ERROR: unsupported object to patch {obj}")
 
 
-def patch_tbox_item(tbox: OrderedDict, itemid: int):
+def patch_tbox_item(tbox: OrderedDict, itemid: int, dowsing: bool):
     origitemid = tbox["anglez"] & 0x1FF
     boxtype = tboxSubtypes[origitemid]
     tbox["anglez"] = mask_shift_set(tbox["anglez"], 0x1FF, 0, itemid)
     # code has been patched, to interpret this part of params1 as boxtype
     tbox["params1"] = mask_shift_set(tbox["params1"], 0x3, 4, boxtype)
+    # asm patch checks for first bit of params2 to enable dowsing w/ treasure dowsing
+    tbox["params2"] = (tbox["params2"] & 0x7FFFFFFF) + 0x80000000 * dowsing
 
 
 def patch_item_item(itemobj: OrderedDict, itemid: int):
@@ -914,7 +916,7 @@ def rando_patch_warpobj(
     patch_trial_flags(obj, trial_storyflag)
 
 
-def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str):
+def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str, dowsing: bool):
     id = int(id)
     tboxs = list(
         filter(lambda x: x["name"] == "TBox" and (x["anglez"] >> 9) == id, bzs["OBJS"])
@@ -922,7 +924,7 @@ def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str):
     if len(tboxs) == 0:
         print(tboxs)
     obj = tboxs[0]  # anglez >> 9 is chest id
-    patch_tbox_item(obj, itemid)
+    patch_tbox_item(obj, itemid, dowsing)
 
 
 def rando_patch_item(bzs: OrderedDict, itemid: int, id: str):
@@ -986,7 +988,7 @@ RANDO_PATCH_FUNCS = {
 }
 
 
-def get_patches_from_location_item_list(all_checks, filled_checks):
+def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing):
     with (RANDO_ROOT_PATH / "items.yaml").open() as f:
         items = yaml.safe_load(f)
     by_item_name = dict((x["name"], x) for x in items)
@@ -1031,7 +1033,9 @@ def get_patches_from_location_item_list(all_checks, filled_checks):
                             stageoarcs[(stage, layer)].add(o)
                     else:
                         stageoarcs[(stage, layer)].add(oarc)
-                stagepatchv2[(stage, room)].append((objname, layer, objid, item["id"]))
+                stagepatchv2[(stage, room)].append(
+                    (objname, layer, objid, item["id"], chest_dowsing[checkname])
+                )
             elif event_match:
                 eventfile = event_match.group("eventfile")
                 eventid = event_match.group("eventid")
@@ -1203,7 +1207,9 @@ class GamePatcher:
             self.rando_eventpatches,
             self.shoppatches,
         ) = get_patches_from_location_item_list(
-            self.rando.item_locations, temp_item_locations
+            self.rando.item_locations,
+            temp_item_locations,
+            self.placement_file.chest_dowsing,
         )
 
         # assembly patches
@@ -2079,7 +2085,7 @@ class GamePatcher:
             objlist.append(name_to_add)
 
         # patch randomized items on stages
-        for objname, layer, objid, itemid in self.rando_stagepatches.get(
+        for objname, layer, objid, itemid, dowsing in self.rando_stagepatches.get(
             (stage, room), []
         ):
             modified = True
@@ -2089,6 +2095,10 @@ class GamePatcher:
                     itemid,
                     objid,
                     self.placement_file.trial_connections,
+                )
+            elif objname == "Tbox" or objname == "TBox":
+                RANDO_PATCH_FUNCS[objname](
+                    bzs["LAY "][f"l{layer}"], itemid, objid, dowsing
                 )
             else:
                 RANDO_PATCH_FUNCS[objname](bzs["LAY "][f"l{layer}"], itemid, objid)

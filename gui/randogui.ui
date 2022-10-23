@@ -64,7 +64,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -377,7 +377,7 @@
          <x>10</x>
          <y>20</y>
          <width>311</width>
-         <height>75</height>
+         <height>78</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_39">
@@ -1425,6 +1425,71 @@
         </item>
         <item>
          <spacer name="verticalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::MinimumExpanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>70</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_18">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>270</y>
+        <width>191</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Dowsing Options</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_17">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>171</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_40">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_41"/>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_42">
+          <item>
+           <widget class="QLabel" name="label_for_option_chest_dowsing">
+            <property name="text">
+             <string>Chest Dowsing</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_chest_dowsing">
+            <property name="currentText">
+             <string/>
+            </property>
+            <property name="currentIndex">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_18">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>

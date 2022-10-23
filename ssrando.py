@@ -588,6 +588,14 @@ class Randomizer(BaseRandomizer):
             for (k, v) in self.logic.done_item_locations.items()
             if v != "Gratitude Crystal"
         )
+        dowsing_setting = self.options["chest-dowsing"]
+        for (k, v) in self.logic.done_item_locations.items():
+            if dowsing_setting == "None":
+                plcmt_file.chest_dowsing[k] = False
+            elif dowsing_setting == "All":
+                plcmt_file.chest_dowsing[k] = True
+            elif dowsing_setting == "Matches Contents":
+                plcmt_file.chest_dowsing[k] = v in self.logic.all_progress_items
         plcmt_file.options = self.options
         plcmt_file.required_dungeons = self.logic.required_dungeons
         plcmt_file.starting_items = self.logic.starting_items

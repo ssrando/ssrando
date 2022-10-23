@@ -592,6 +592,17 @@
   default: None
   help: Shuffles trial objects amongst themselves (within the same trial). Simple shuffles only tears and light fruits, advanced adds dusk relic spawn locations, and full adds stamina fruits
   ui: option_shuffle_trial_objects
+- name: Chest Dowsing
+  command: chest-dowsing
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - All
+    - Matches Contents
+  default: None
+  help: Choose whether the treasure dowsing option should point to chests. If Matches Contents, dowsing will only point to chests that contain progress items. Currently, dowsing doesn't work on Goddess Chests.
+  ui: option_chest_dowsing
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

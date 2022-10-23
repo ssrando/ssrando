@@ -36,6 +36,27 @@ subi r0, r3, 9 ; subtype 9, normally checks for rattle itemid
 .org 0x80252b48
 b 0x80252bb4
 
+; tbox cdmc patches:
+; replace treasure check with progress item check
+.org 0x802697c8
+bl chest_has_progress_item
+
+; don't branch away from dowsing if rupee
+.org 0x802697a0
+nop
+
+; don't branch away from dowsing if key piece
+.org 0x802697c0
+nop
+
+; allow dowsing even if item isn't rupee, key piece, or treasure
+.org 0x80269820
+li r3, 1
+
+; remove treasure dowsing for freestanding items
+.org 0x8024d208
+li r3, 0x0
+
 ; function that checks if the item is the bird statuette
 ; always return false to fix the animation
 .org 0x80250b00
@@ -177,17 +198,6 @@ stw r28, 0x2f8(r6) ; currentTextFileNumber
 ; always use non trial mode when using loadzones
 .org 0x80242060
 li r7, 0 ; force non trial
-
-; treat all Kikwi's as "found" in non main faron stages
-.org 0x8004ec24
-; make sure this branch is always taken, should always be the case anyways
-b 0x8004ec30
-li r3, 1 ; code below jumps here when not in faron main
-.org 0x8004ec44
-lis r4, SPAWN_SLAVE+2@ha
-lhz r4, SPAWN_SLAVE+2@l(r4)
-cmplwi r4, 0x3030 ; '00', we assume all stages like XX00 are faron main
-bne 0x8004ec28 ; if not faron main, treat this kikwi as found
 
 .close
 
