@@ -4,6 +4,13 @@
 ### Options
 - Added option to randomize progression in Flooded Faron Woods (by CovenEsme)
   - Added Faron SotH check that is obtained when completing the Tadtones story quest
+- Added chest dowsing functionality as an option (by YourAverageLink)
+  - None: Like currently (treasure dowsing will not pick up on any chest)
+  - All: Treasure dowsing will point to all chests
+  - Matches Contents: Treasure dowsing will point to chests that contain progress items
+  - Treasure dowsing will no longer point to chests that contain treasures
+  - Treasure dowsing currently does not work on goddess chests
+  - Treasure dowsing will not point to freestanding treasures, to avoid confusion with potential chests
 ### Changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
