@@ -56,6 +56,11 @@ bge 0x802697e0 ; branch to handling goddess chest dowsing
 bl AcOTBox__initDowsingTarget
 b 0x802697e0
 
+; always return propeller image (patched to chest in rando) for top dowsing slot
+.org 0x800983e0
+li r3, 0xa
+blr
+
 ; function that checks if the item is the bird statuette
 ; always return false to fix the animation
 .org 0x80250b00

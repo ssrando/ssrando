@@ -599,9 +599,9 @@
   choices:
     - None
     - All
-    - Matches Contents
+    - Progress Items
   default: None
-  help: Choose whether the main quest dowsing option should point to chests. If Matches Contents, dowsing will only point to chests that contain progress items. Currently, dowsing doesn't work on Goddess Chests.
+  help: Choose whether the main quest dowsing option should point to chests. If Progress Items, dowsing will only point to chests that contain progress items. Currently, dowsing doesn't work on Goddess Chests.
   ui: option_chest_dowsing
 - name: Allow Dowsing in Dungeons
   command: dungeon-dowsing

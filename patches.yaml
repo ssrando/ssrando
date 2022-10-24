@@ -15,7 +15,8 @@ global:
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - 27  # Loftwing
     - 198 # Can jump off Loftwing
-    - 668 # Propeller dowsing (need a default main quest dowsing option for cdmc)
+    - storyflag: 668 # Propeller dowsing (need a default main quest dowsing option for cdmc)
+      onlyif: Option "chest-dowsing" Is Not "None"
     - storyflag: 194 # open thunderhead
       onlyif: Option "open-thunderhead" Is "Open"
     - 58  # b-wheel

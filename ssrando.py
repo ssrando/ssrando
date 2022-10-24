@@ -604,7 +604,7 @@ class Randomizer(BaseRandomizer):
                 plcmt_file.chest_dowsing[k] = 8
             elif dowsing_setting == "All":
                 plcmt_file.chest_dowsing[k] = 0
-            elif dowsing_setting == "Matches Contents":
+            elif dowsing_setting == "Progress Items":
                 if v in self.logic.all_progress_items:
                     plcmt_file.chest_dowsing[k] = 0
                 else:
