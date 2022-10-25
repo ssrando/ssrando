@@ -86,7 +86,26 @@ class WitManager:
                         ).read()
                     ),
                 ) as wit_zip:
-                    wit_zip.extractall(self.rootpath)
+                    def is_within_directory(directory, target):
+                        
+                        abs_directory = os.path.abspath(directory)
+                        abs_target = os.path.abspath(target)
+                    
+                        prefix = os.path.commonprefix([abs_directory, abs_target])
+                        
+                        return prefix == abs_directory
+                    
+                    def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+                    
+                        for member in tar.getmembers():
+                            member_path = os.path.join(path, member.name)
+                            if not is_within_directory(path, member_path):
+                                raise Exception("Attempted Path Traversal in Tar File")
+                    
+                        tar.extractall(path, members, numeric_owner=numeric_owner) 
+                        
+                    
+                    safe_extract(wit_zip, self.rootpath)
             self.update_wit_command()
 
     def iso_integrity_check(self, iso_path, progress_cb=NOP):
