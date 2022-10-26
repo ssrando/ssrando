@@ -108,7 +108,7 @@ class Logic:
                     self.racemode_ban_location(location_name)
                     # print(f'banned {location_name}')
 
-        if (
+        if self.rando.options["empty-unrequired-dungeons"] and (
             not self.rando.options["triforce-required"]
             or self.rando.options["triforce-shuffle"] == "Anywhere"
         ):
@@ -1374,6 +1374,8 @@ class Logic:
         for item_name in small_keys_to_place:
             self.remove_owned_item(item_name)
         for item_name in big_keys_to_place:
+            self.remove_owned_item(item_name)
+        for item_name in triforces_to_place:
             self.remove_owned_item(item_name)
 
     def place_dungeon_item(self, item_name):
