@@ -18,6 +18,7 @@
   - New logical option for completing the Owlan's Crystals check
     - Added access to Flooded Faron as an alternative to needing bomb bag
 - Machi is no longer rescued after beating Skyview
+- Shooting the bell during pumpkin archery ends the minigame immediately
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
