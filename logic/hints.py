@@ -106,7 +106,7 @@ class Hints:
             ]
         )
         self.dist.start(self.logic, needed_always_hints, needed_sometimes_hints)
-        hints = self.dist.get_hints(32)
+        hints = self.dist.get_hints()
         self._place_hints_for_locations(hints)
 
     def _place_hints_for_locations(self, hints: List[GossipStoneHint]):
