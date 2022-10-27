@@ -1,36 +1,66 @@
 from collections import OrderedDict
 
+SV = "Skyview"
+ET = "Earth Temple"
+LMF = "Lanayru Mining Facility"
+AC = "Ancient Cistern"
+SSH = "Sandship"
+FS = "Fire Sanctuary"
+SK = "Sky Keep"
+
+SV_ENTRANCE = "Dungeon Entrance in Deep Woods"
+ET_ENTRANCE = "Dungeon Entrance in Eldin Volcano"
+LMF_ENTRANCE = "Dungeon Entrance in Lanayru Desert"
+AC_ENTRANCE = "Dungeon Entrance in Lake Floria"
+SSH_ENTRANCE = "Dungeon Entrance in Sand Sea"
+FS_ENTRANCE = "Dungeon Entrance in Volcano Summit"
+SK_ENTRANCE = "Dungeon Entrance on Skyloft"
+
+EMERALD_TABLET = "Emerald Tablet"
+RUBY_TABLET = "Ruby Tablet"
+AMBER_TABLET = "Amber Tablet"
+
+SKYLOFT_SILENT_REALM = "Skyloft Silent Realm"
+FARON_SILENT_REALM = "Faron Silent Realm"
+ELDIN_SILENT_REALM = "Eldin Silent Realm"
+LANAYRU_SILENT_REALM = "Lanayru Silent Realm"
+
+SKYLOFT_TRIAL_GATE = "Trial Gate on Skyloft"
+FARON_TRIAL_GATE = "Trial Gate in Faron Woods"
+ELDIN_TRIAL_GATE = "Trial Gate in Eldin Volcano"
+LANAYRU_TRIAL_GATE = "Trial Gate in Lanayru Desert"
+
 POTENTIALLY_REQUIRED_DUNGEONS = [
-    "Skyview",
-    "Earth Temple",
-    "Lanayru Mining Facility",
-    "Ancient Cistern",
-    "Sandship",
-    "Fire Sanctuary",
+    SV,
+    ET,
+    LMF,
+    AC,
+    SSH,
+    FS,
 ]
 
 ALL_DUNGEON_AREAS = [
-    "Skyview",
-    "Earth Temple",
-    "Lanayru Mining Facility",
-    "Ancient Cistern",
-    "Sandship",
-    "Fire Sanctuary",
-    "Sky Keep",
+    SV,
+    ET,
+    LMF,
+    AC,
+    SSH,
+    FS,
+    SK,
 ]
 
 DUNGEON_NAMES = OrderedDict(
     [
-        ("SV", "Skyview"),
-        ("ET", "Earth Temple"),
-        ("LMF", "Lanayru Mining Facility"),
-        ("AC", "Ancient Cistern"),
-        ("SS", "Sandship"),
-        ("FS", "Fire Sanctuary"),
-        ("SK", "Sky Keep"),
+        (SV, SV),
+        (ET, ET),
+        (LMF, LMF),
+        (AC, AC),
+        (SSH, SSH),
+        (FS, FS),
+        (SK, SK),
         # for the purposes of restricting triforces to sky keep
-        ("Triforce", "Sky Keep"),
-        ("LanayruCaves", "Lanayru Caves"),  # "short name" doesn't allow space
+        ("Triforce", SK),
+        ("Lanayru Caves", "Lanayru Caves"),
     ]
 )
 DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict(
@@ -38,13 +68,20 @@ DUNGEON_NAME_TO_SHORT_DUNGEON_NAME = OrderedDict(
 )
 
 ENTRANCE_CONNECTIONS = {
-    "Dungeon Entrance in Deep Woods": "Skyview",
-    "Dungeon Entrance in Eldin Volcano": "Earth Temple",
-    "Dungeon Entrance in Lanayru Desert": "Lanayru Mining Facility",
-    "Dungeon Entrance in Lake Floria": "Ancient Cistern",
-    "Dungeon Entrance in Sand Sea": "Sandship",
-    "Dungeon Entrance in Volcano Summit": "Fire Sanctuary",
-    "Dungeon Entrance on Skyloft": "Sky Keep",
+    SV_ENTRANCE: SV,
+    ET_ENTRANCE: ET,
+    LMF_ENTRANCE: LMF,
+    AC_ENTRANCE: AC,
+    SSH_ENTRANCE: SSH,
+    FS_ENTRANCE: FS,
+    SK_ENTRANCE: SK,
+}
+
+SILENT_REALM_GATES = {
+    SKYLOFT_SILENT_REALM: SKYLOFT_TRIAL_GATE,
+    FARON_SILENT_REALM: FARON_TRIAL_GATE,
+    ELDIN_SILENT_REALM: ELDIN_TRIAL_GATE,
+    LANAYRU_SILENT_REALM: LANAYRU_TRIAL_GATE,
 }
 
 SILENT_REALMS = OrderedDict(
@@ -64,6 +101,15 @@ SILENT_REALM_CHECKS = OrderedDict(
         ("Eldin Silent Realm - Fireshield Earrings", "Trial Gate in Eldin Volcano"),
     ]
 )
+
+SILENT_REALM_CHECKS = {
+    SKYLOFT_SILENT_REALM: "Skyloft Silent Realm - Stone of Trials",
+    FARON_SILENT_REALM: "Faron Silent Realm - Water Scale",
+    ELDIN_SILENT_REALM: "Eldin Silent Realm - Fireshield Earrings",
+    LANAYRU_SILENT_REALM: "Lanayru Silent Realm - Clawshots",
+}
+
+SILENT_REALM_CHECKS_REV = {v: k for k, v in SILENT_REALM_CHECKS.items()}
 
 SHOP_CHECKS = [
     "Beedle - 50 Rupee Item",
@@ -134,12 +180,12 @@ VANILLA_HEART_CONTAINERS = OrderedDict(
 
 END_OF_DUNGEON_CHECKS = OrderedDict(
     [
-        ("Skyview", "Skyview - Ruby Tablet"),
-        ("Earth Temple", "Earth Temple - Amber Tablet"),
-        ("Lanayru Mining Facility", "Lanayru Mining Facility - Goddess Harp"),
-        ("Ancient Cistern", "Ancient Cistern - Farore's Flame"),
-        ("Sandship", "Sandship - Nayru's Flame"),
-        ("Fire Sanctuary", "Fire Sanctuary - Din's Flame"),
+        (SV, "Skyview - Ruby Tablet"),
+        (ET, "Earth Temple - Amber Tablet"),
+        (LMF, "Lanayru Mining Facility - Goddess Harp"),
+        (AC, "Ancient Cistern - Farore's Flame"),
+        (SSH, "Sandship - Nayru's Flame"),
+        (FS, "Fire Sanctuary - Din's Flame"),
     ]
 )
 
@@ -153,7 +199,7 @@ STARTING_SWORD_COUNT = {
     "True Master Sword": 6,
 }
 
-ALL_TYPES = [
+BANNABLE_TYPES = [
     "skyloft",
     "sky",
     "thunderhead",
@@ -183,6 +229,7 @@ ALL_TYPES = [
     "cheap",
     "medium",
     "expensive",
+    "flooded faron",
     "goddess",
     "faron goddess",
     "eldin goddess",
@@ -191,6 +238,8 @@ ALL_TYPES = [
     "summit goddess",
     "sand sea goddess",
 ]
+
+DEMISE = "Demise"
 
 POST_GOAL_LOCS = {
     "Ghirahim 1": "Skyview - Ghirahim Heart Container",
@@ -202,12 +251,12 @@ POST_GOAL_LOCS = {
 }
 
 DUNGEON_GOALS = {
-    "Skyview": "Ghirahim 1",
-    "Earth Temple": "Scaldera",
-    "Lanayru Mining Facility": "Moldarach",
-    "Ancient Cistern": "Koloktos",
-    "Sandship": "Tentalus",
-    "Fire Sanctuary": "Ghirahim 2",
+    SV: "Ghirahim 1",
+    ET: "Scaldera",
+    LMF: "Moldarach",
+    AC: "Koloktos",
+    SSH: "Tentalus",
+    FS: "Ghirahim 2",
 }
 
 RUPEE_CHECKS = [

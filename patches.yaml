@@ -1409,6 +1409,12 @@ F100: # Faron main area
       anglez: 0
       id: 0xFD01
       name: Tubo
+  - name: Remove Faron soth fi text
+    type: objdelete
+    id: 0x52B6
+    layer: 5
+    room: 0
+    objtype: OBJ
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
@@ -1576,6 +1582,64 @@ F100_1: # Great Tree
       anglez: 0
       id: 0xFC50
       name: Bombf
+  - name: Exit from GT to Flooded GT Layer 1
+    type: objadd
+    index: 1
+    room: 0
+    objtype: SCEN
+    object:
+      name: F103_1
+      layer: 1 # Layer with Water Dragon before Tadtones appear
+      room: 0
+      entrance: 5 # New GT -> Flooded GT entrance
+  - name: Exit from GT to Flooded GT Layer 2
+    type: objadd
+    index: 1
+    room: 0
+    objtype: SCEN
+    object:
+      name: F103_1
+      layer: 2 # Layer with Water Dragon after Tadtones appear
+      room: 0
+      entrance: 6 # New GT -> Flooded GT entrance
+  - name: Waterdragon in Great Tree
+    type: oarcadd
+    destlayer: 0
+    oarc: Waterdragon
+  - name: Add WaterDragon to Inside Great Tree
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFCFF
+      params2: 0xFF5FFFFF
+      posx: -864.560546875
+      posy: 3350
+      posz: 513.1231689453125
+      anglex: 65535
+      angley: 19660
+      anglez: 20392
+      id: 0x0065
+      name: NpcAdr
+F103_1: # Flooded Great Tree
+  - name: Exit from Flooded GT to GT
+    type: objadd
+    index: 1
+    room: 0
+    objtype: SCEN
+    object:
+      name: F100_1
+      layer: 1 # Default layer for GT in rando??
+      room: 0
+      entrance: 5 # New Flooded GT -> GT entrance
+  - name: Remove Faron Soth from CS
+    type: objpatch
+    room: 0
+    index: 1
+    objtype: EVNT
+    object:
+      item: -1 # No Faron Soth anymore
 D100: # Skyview
   - name: Layer override
     type: layeroverride
@@ -2066,7 +2130,7 @@ F210: # Mogma Turf
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 909 # Whitesword
+      trigstoryfid: 909 # White Sword
   - name: Cobal
     type: objmove
     id: 0xFC70
@@ -2819,7 +2883,7 @@ F301: # Ancient Harbour
     objtype: SCEN
     object:
       layer: 1
-  - name: Remove Skipper Text with Whitesword
+  - name: Remove Skipper Text with White Sword
     type: objdelete
     id: 0xFC0F
     layer: 0

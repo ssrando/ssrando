@@ -3,6 +3,8 @@
 ## Dev
 ### Options
 - Added option to make sword reward place swords on heart containers rather than final checks (by YourAverageLink)
+- Added option to randomize progression in Flooded Faron Woods (by CovenEsme)
+  - Added Faron SotH check that is obtained when completing the Tadtones story quest
 ### Changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
@@ -11,9 +13,15 @@
   - Presets persist between versions and are forward compatible with new versions.
   - User preset data is sharable between users via the `presets.txt` file
   - Only options included in permalinks are saved, with the exception of the spoiler log toggle
+- Added Water Dragon to the Great Tree (by CovenEsme)
+- Added entrance and exit to and from Flooded Great Tree (by CovenEsme)
+  - Entering Flooded Great Tree for the first time automatically starts the Tadtones story quest
+  - New logical option for completing the Owlan's Crystals check
+    - Added access to Flooded Faron as an alternative to needing bomb bag
 - Machi is no longer rescued after beating Skyview
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
+- Fixed a softlock caused by collecting the last 2 tears in a trial too close together
 
 ## 1.3.2
 ### Changes
@@ -188,7 +196,7 @@
 ### Changes
 - Verify ISO checksum
 - Item after LMF is given before exiting out of the back
-- Treasure and Rupee dowsing are now obtainable after getting the Goddess Whitesword
+- Treasure and Rupee dowsing are now obtainable after getting the Goddess White Sword
 - Shorten timeshift stone cutscenes
 - Make it possible to not get pumpkin soup when doing lumpy pumpkin quest with spiral charge
 

@@ -178,6 +178,17 @@ stw r28, 0x2f8(r6) ; currentTextFileNumber
 .org 0x80242060
 li r7, 0 ; force non trial
 
+; treat all Kikwi's as "found" in non main faron stages
+.org 0x8004ec24
+; make sure this branch is always taken, should always be the case anyways
+b 0x8004ec30
+li r3, 1 ; code below jumps here when not in faron main
+.org 0x8004ec44
+lis r4, SPAWN_SLAVE+2@ha
+lhz r4, SPAWN_SLAVE+2@l(r4)
+cmplwi r4, 0x3030 ; '00', we assume all stages like XX00 are faron main
+bne 0x8004ec28 ; if not faron main, treat this kikwi as found
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
@@ -297,6 +308,14 @@ li r4, 0x399
 
 .org 0xD64
 li r4, 0x39A
+
+; this usually delays starting the trial finish event until the
+; tear display is ready, which can softlock so skip the check,
+; which seems to only have a visual impact *at worst*
+;
+; preferably, the tear display should be fixed, but this works for now
+.org 0x1AA4
+nop
 
 .close
 
@@ -452,7 +471,7 @@ bl set_first_time_cs_already_watched ; in a branch that is not taken for the tim
 .open "d_a_obj_sw_sword_beamNP.rel"
 ; function that checks for your current sword, so that you can't activate the crest
 .org 0x25B0
-bge 0x2650 ; instead of only checking for whitesword for the last reward, check for at least that
+bge 0x2650 ; instead of only checking for White Sword for the last reward, check for at least that
 
 .org 0xD5C ; should handle the isle of songs CS starting, overwrite it with a jump to the custom function, that gives the items
 mr r3, r31

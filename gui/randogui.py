@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (
     QLineEdit,
 )
 
-from logic.constants import ALL_TYPES
+from logic.constants import BANNABLE_TYPES
 from options import OPTIONS, Options
 from gui.progressdialog import ProgressDialog
 from gui.guithreads import RandomizerThread, ExtractSetupThread
@@ -191,6 +191,7 @@ class RandoGUI(QMainWindow):
             "shops where progression items can appear",
             "expensive": "Enables progression items to be sold for more than 1000 rupees. Appleis to all shops"
             "where progression items can appear",
+            "flooded_faron": "Enables progression items to appear in Flooded Faron",
             "goddess": "Enables progression items to appear as items in Goddess Chests",
             "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
             "Faron Woods and Deep Woods",
@@ -205,7 +206,7 @@ class RandoGUI(QMainWindow):
             "sand_sea_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
             "in Sand Sea",
         }
-        for check_type in ALL_TYPES:
+        for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in self.options["banned-types"])
             if check_type == "crystal":
@@ -289,7 +290,7 @@ class RandoGUI(QMainWindow):
         self.progress_dialog = ProgressDialog(
             "Randomizing",
             "Initializing...",
-            self.rando.get_total_progress_steps() + extra_steps,
+            self.rando.get_total_progress_steps + extra_steps,
         )
         self.randomizer_thread = RandomizerThread(
             self.rando, self.wit_manager, self.options["output-folder"]
@@ -396,7 +397,7 @@ class RandoGUI(QMainWindow):
                     widget.setValue(current_settings[option_key])
                     getattr(self.ui, f"label_for_{ui_name}").installEventFilter(self)
 
-        for check_type in ALL_TYPES:
+        for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in current_settings["banned-types"])
         self.enabled_tricks_model = QStringListModel()
@@ -536,7 +537,7 @@ class RandoGUI(QMainWindow):
 
     def get_banned_types(self):
         banned_types = []
-        for check_type in ALL_TYPES:
+        for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             if not widget.isChecked():
                 banned_types.append(check_type)

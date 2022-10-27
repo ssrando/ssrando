@@ -21,25 +21,7 @@ from .item_types import (
     BOSS_KEYS,
     TRIFORCES,
 )
-from .constants import (
-    DUNGEON_NAME_TO_SHORT_DUNGEON_NAME,
-    DUNGEON_NAMES,
-    SHOP_CHECKS,
-    MAP_CHECKS,
-    SMALL_KEY_CHECKS,
-    BOSS_KEY_CHECKS,
-    TRIFORCE_CHECKS,
-    END_OF_DUNGEON_CHECKS,
-    POTENTIALLY_REQUIRED_DUNGEONS,
-    ENTRANCE_CONNECTIONS,
-    ALL_TYPES,
-    STARTING_SWORD_COUNT,
-    DUNGEON_GOALS,
-    POST_GOAL_LOCS,
-    RUPEE_CHECKS,
-    QUICK_BEETLE_CHECKS,
-    VANILLA_HEART_CONTAINERS,
-)
+from .constants import *
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
 # TODO, path for logic files will probably be params
@@ -109,7 +91,7 @@ class Logic:
                     self.race_mode_banned_locations.append(location_name)
 
             # checks outside locations that require dungeons:
-            if "Skyview" in self.unrequired_dungeons:
+            if SV in self.unrequired_dungeons:
                 self.racemode_ban_location(
                     "Sky - Lumpy Pumpkin - Goddess Chest on the Roof"
                 )
@@ -292,7 +274,7 @@ class Logic:
                 orig_item = self.item_locations[small_key_check]["original item"]
                 self.set_prerandomization_item_location(small_key_check, orig_item)
         elif small_key_mode == "Lanayru Caves Key Only":
-            self.dungeon_progress_items.remove("LanayruCaves Small Key")
+            self.dungeon_progress_items.remove("Lanayru Caves Small Key")
         # remove boss keys from the dungeon pool if boss key sanity is enabled
         if boss_key_mode == "Anywhere":
             self.dungeon_progress_items = [
@@ -417,9 +399,9 @@ class Logic:
                 not self.rando.options["triforce-required"]
                 or self.rando.options["triforce-shuffle"] == "Anywhere"
             ):
-                unreq_indices.append(dungeons.index("Sky Keep"))
+                unreq_indices.append(dungeons.index(SK))
             else:
-                req_indices.append(dungeons.index("Sky Keep"))
+                req_indices.append(dungeons.index(SK))
 
             shuffle_indices(self.rando.rng, dungeons, indices=req_indices)
             shuffle_indices(self.rando.rng, dungeons, indices=unreq_indices)
@@ -434,19 +416,10 @@ class Logic:
         return OrderedDict(zip(entrances, dungeons))
 
     def randomize_trial_entrances(self):
-        trials = [
-            "Faron Silent Realm",
-            "Lanayru Silent Realm",
-            "Eldin Silent Realm",
-            "Skyloft Silent Realm",
-        ]
-
-        trial_gates = [
-            "Trial Gate in Faron Woods",
-            "Trial Gate in Lanayru Desert",
-            "Trial Gate in Eldin Volcano",
-            "Trial Gate on Skyloft",
-        ]
+        trials, trial_gates = [], []
+        for k, v in SILENT_REALM_GATES.items():
+            trials.append(k)
+            trial_gates.append(v)
 
         if self.rando.options["randomize-trials"] == True:
             self.rando.rng.shuffle(trials)
@@ -459,7 +432,7 @@ class Logic:
         """
         starting_items = []
 
-        tablets = ["Emerald Tablet", "Ruby Tablet", "Amber Tablet"]
+        tablets = [EMERALD_TABLET, RUBY_TABLET, AMBER_TABLET]
         starting_items.extend(
             self.rando.rng.sample(
                 tablets, k=self.rando.options["starting-tablet-count"]
@@ -783,8 +756,11 @@ class Logic:
     def check_item_valid_in_location(self, item_name, location_name):
         # Don't allow dungeon items to appear outside their proper dungeon when Key-Lunacy is off.
         if self.is_dungeon_item(item_name):
-            short_dungeon_name = item_name.split(" ")[0]
-            dungeon_name = DUNGEON_NAMES[short_dungeon_name]
+            dungeon_name = [
+                dungeon
+                for short, dungeon in DUNGEON_NAMES.items()
+                if short in item_name
+            ][0]
             if not self.is_dungeon_location(
                 location_name, dungeon_name_to_match=dungeon_name
             ):
@@ -895,8 +871,11 @@ class Logic:
         for item_name in useful_items:
             if self.rando.options["empty-unrequired-dungeons"]:
                 if self.is_dungeon_item(item_name):
-                    short_dungeon_name = item_name.split(" ")[0]
-                    dungeon_name = DUNGEON_NAMES[short_dungeon_name]
+                    dungeon_name = [
+                        dungeon
+                        for short, dungeon in DUNGEON_NAMES.items()
+                        if short in item_name
+                    ][0]
                     if dungeon_name in self.unrequired_dungeons:
                         useful_items.remove(item_name)
 
@@ -1588,7 +1567,7 @@ class Logic:
 
                 return True
             elif self.rando.options["small-key-mode"] == "Lanayru Caves Key Only":
-                if item != "LanayruCaves Small Key":
+                if item != "Lanayru Caves Small Key":
                     return True
 
         if item.endswith("Boss Key"):
