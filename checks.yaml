@@ -150,7 +150,7 @@ Skyloft - Parrow's Crystals:
     - oarc/F005r/l0
 Knight Academy - Fledge's Crystals:
   original item: Gratitude Crystal Pack
-  type: skyloft, lanayru, short, crystal quest, dungeon
+  type: skyloft, lanayru, long, crystal quest, dungeon
   Paths:
     - event/115-Town2/325
     - oarc/F001r/l0
