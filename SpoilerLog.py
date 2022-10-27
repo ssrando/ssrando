@@ -124,7 +124,10 @@ def write(file: TextIO, options: Options, logic, hints, sots_locations, hash):
     # Write hints
     file.write("Hints:\n")
     for hintloc, hint in hints.items():
-        file.write(f"  {hintloc+':':53} {hint.to_spoiler_log_text()}\n")
+        hint_stone = hints[hintloc]
+        file.write(f"  {hintloc+':'}\n")
+        for hint in (hint_stone.primary_hint, hint_stone.secondary_hint):
+            file.write(f"      {hint.to_spoiler_log_text()}\n")
 
     file.write("\n\n\n")
 
