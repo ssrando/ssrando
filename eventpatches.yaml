@@ -1005,6 +1005,16 @@
     cases:
       - Rerandomize Treasure
       - -1
+  - name: Skip to end of fledge 2
+    type: flowpatch
+    index: 347 # after giving fledge the second stamina potion
+    flow:
+      next: 353
+  - name: Skip Fledge 3
+    type: flowpatch
+    index: 353
+    flow:
+      next: 320 # before crystal itemget
 116-InsectGame:
   - name: Fix switch 1
     type: flowpatch
@@ -1134,6 +1144,11 @@
       type: type1
       next: Kina Quest Switch
       param4: New Kina Text Option
+  - name: Shorten Kina Text
+    type: flowpatch
+    index: 97
+    flow:
+      next: 103
 118-Town3:
   - name: Shorten Sparrot quest start text
     type: flowpatch
@@ -1184,6 +1199,11 @@
     index: 7
     flow:
       next: 21 # never talk about triforce or song of the hero
+  - name: Shorten Levias text
+    type: flowpatch
+    index: 0
+    flow:
+      next: 22
   - name: Skip bokobase story flag
     type: flowpatch
     index: 22
