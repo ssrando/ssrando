@@ -164,6 +164,20 @@ TRIFORCE_CHECKS = [
     "Sky Keep - Triforce of Power",
 ]
 
+VANILLA_HEART_CONTAINERS = OrderedDict(
+    [
+        ("Skyview", "Skyview - Ghirahim Heart Container"),
+        ("Earth Temple", "Earth Temple - Scaldera Heart Container"),
+        (
+            "Lanayru Mining Facility",
+            "Lanayru Mining Facility - Moldarach Heart Container",
+        ),
+        ("Ancient Cistern", "Ancient Cistern - Koloktos Heart Container"),
+        ("Sandship", "Sandship - Tentalus Heart Container"),
+        ("Fire Sanctuary", "Fire Sanctuary - Ghirahim Heart Container"),
+    ]
+)
+
 END_OF_DUNGEON_CHECKS = OrderedDict(
     [
         (SV, "Skyview - Ruby Tablet"),
