@@ -11,8 +11,6 @@ from hints.hint_types import *
 from options import Options
 from logic.randomize import LogicUtils
 
-MAX_HINTS_PER_STONE = 2
-
 HINTABLE_ITEMS = (
     dict.fromkeys(
         [
@@ -83,6 +81,7 @@ class InvalidHintDistribution(Exception):
 
 class HintDistribution:
     def __init__(self):
+        self.hints_per_stone = 0
         self.banned_stones = []
         self.added_locations = []
         self.removed_locations = []
@@ -158,7 +157,7 @@ class HintDistribution:
 
         self.banned_stones = list(map(areas.short_to_full, self.banned_stones))
         self.max_hints_per_stone = {
-            stone: 0 if stone in self.banned_stones else MAX_HINTS_PER_STONE
+            stone: 0 if stone in self.banned_stones else self.hints_per_stone
             for stone in self.areas.gossip_stones
         }
         self.nb_hints = sum(self.max_hints_per_stone.values())
@@ -486,7 +485,7 @@ class HintDistribution:
         return BarrenGossipStoneHint(area)
 
     def _create_junk_hint(self):
-        return EmptyGossipStoneHint(self.rng.choice(self.junk_hints)
+        return EmptyGossipStoneHint(self.rng.choice(self.junk_hints))
 
     def get_junk_text(self):
         return self.junk_hints.pop()
