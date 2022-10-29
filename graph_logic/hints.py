@@ -3,7 +3,7 @@ from graph_logic.constants import *
 from graph_logic.inventory import EXTENDED_ITEM
 from graph_logic.logic import DNFInventory
 from graph_logic.logic_input import Areas
-from hints.hint_distribution import MAX_HINTS_PER_STONE, HintDistribution
+from hints.hint_distribution import HintDistribution
 from hints.hint_types import *
 from .randomize import LogicUtils, UserOutput
 from options import Options
@@ -115,7 +115,7 @@ class Hints:
         hintstone_hints = {
             hintname: hint for hint, hintname in zip(hintstone_hints, HINTS)
         }
-        self.max_hints_per_stone = self.dist.max_hints_per_stone
+        self.max_hints_for = self.dist.max_hints_for
         self.randomize(hintstone_hints)
 
         placed_hintstone_hints = {
@@ -157,8 +157,7 @@ class Hints:
             stone
             for stone in accessible_stones
             for spot in range(
-                self.max_hints_per_stone[stone]
-                - len(self.logic.placement.stones[stone])
+                self.max_hints_for[stone] - len(self.logic.placement.stones[stone])
             )
         ]
 
