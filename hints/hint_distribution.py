@@ -486,7 +486,7 @@ class HintDistribution:
         return BarrenGossipStoneHint(area)
 
     def _create_junk_hint(self):
-        return EmptyGossipStoneHint(self.junk_hints.pop())
+        return EmptyGossipStoneHint(self.rng.choice(self.junk_hints)
 
     def get_junk_text(self):
         return self.junk_hints.pop()
