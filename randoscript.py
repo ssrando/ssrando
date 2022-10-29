@@ -178,8 +178,12 @@ def main():
         rando = Randomizer(areas, options)
         if not options["dry-run"]:
             rando.check_valid_directory_setup()
-        total_progress_steps = rando.get_total_progress_steps
+        total_progress_steps = 0
         progress_steps = 0
+
+        def update_progress_dialog(hash, total_steps):
+            nonlocal total_progress_steps
+            total_progress_steps = total_steps
 
         def progress_callback(action):
             nonlocal progress_steps
@@ -187,7 +191,7 @@ def main():
             progress_steps += 1
 
         rando.progress_callback = progress_callback
-        rando.randomize()
+        rando.randomize(update_progress_dialog)
         print(f"SEED HASH: {rando.randomizer_hash}")
     else:
         from gui.randogui import run_main_gui

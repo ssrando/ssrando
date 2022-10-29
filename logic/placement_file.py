@@ -19,8 +19,8 @@ class PlacementFile:
         self.item_locations = {}
         self.chest_dowsing = {}
         self.hints = {}
-        self.dungeon_connections = {}
         self.trial_connections = {}
+        self.map_connections = {}
         self.trial_object_seed = -1
         self.music_rando_seed = -1
         self.bk_angle_seed = -1
@@ -41,8 +41,7 @@ class PlacementFile:
             "item-locations": self.item_locations,
             "chest-dowsing": self.chest_dowsing,
             "hints": self.hints,
-            "entrance-connections": self.dungeon_connections,
-            "trial-connections": self.trial_connections,
+            "map-connections": self.map_connections,
             "trial-object-seed": self.trial_object_seed,
             "music-rando-seed": self.music_rando_seed,
             "bk-angle-seed": self.bk_angle_seed,
@@ -59,9 +58,8 @@ class PlacementFile:
         self.item_locations = jsn["item-locations"]
         self.chest_dowsing = jsn["chest-dowsing"]
         self.hints = jsn["hints"]
-        self.dungeon_connections = jsn["entrance-connections"]
-        self.trial_connections = jsn["trial-connections"]
         self.trial_object_seed = jsn["trial-object-seed"]
+        self.map_connections = jsn["map-connections"]
         self.music_rando_seed = jsn["music-rando-seed"]
         self.bk_angle_seed = jsn["bk-angle-seed"]
 
@@ -83,21 +81,22 @@ class PlacementFile:
                     f"{req_dungeon} is not a valid required dungeon."
                 )
 
-        if sorted(self.dungeon_connections.keys()) != sorted(
-            DUNGEON_OVERWORLD_ENTRANCES.values()
-        ):
-            raise InvalidPlacementFile("Dungeon dungeon_connections are wrong.")
+        # if sorted(self.map_connections.keys()) != sorted(
+        #     k
+        #     for k, v in areas.map_exits.items()
+        #     if v["type"] == "exit"
+        #     if "vanilla" in v
+        #     if not v.get("disabled", False)
+        # ):
+        #     raise InvalidPlacementFile("exit map_connections are wrong!")
 
-        if sorted(self.dungeon_connections.values()) != sorted(
-            DUNGEON_OVERWORLD_ENTRANCES.keys()
-        ):
-            raise InvalidPlacementFile("Dungeon entries are wrong.")
-
-        if sorted(self.trial_connections.keys()) != sorted(SILENT_REALM_GATES.values()):
-            raise InvalidPlacementFile("Trial trial_connections are wrong.")
-
-        if sorted(self.trial_connections.values()) != sorted(SILENT_REALM_GATES.keys()):
-            raise InvalidPlacementFile("Trial entries are wrong.")
+        # if sorted(dict.fromkeys(self.map_connections.values())) != sorted(
+        #     k
+        #     for k, v in areas.map_entrances.items()
+        #     if v["type"] == "entrance"
+        #     if not v.get("disabled", False)
+        # ):
+        #     raise InvalidPlacementFile("map_connections entries are wrong!")
 
         for item in self.item_locations.values():
             if item not in ALL_ITEM_NAMES:

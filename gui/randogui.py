@@ -377,17 +377,20 @@ class RandoGUI(QMainWindow):
         self.rando = Randomizer(self.areas, self.options.copy())
 
         if dry_run:
-            extra_steps = 1  # done
+            self.extra_steps = 1  # done
         else:
-            extra_steps = 101  # create iso + done
+            self.extra_steps = 101  # create iso + done
 
         self.progress_dialog = ProgressDialog(
-            f"Randomizing - Hash: {self.rando.randomizer_hash}",
+            f"Randomizing",
             "Initializing...",
-            self.rando.get_total_progress_steps + extra_steps,
+            self.extra_steps,
         )
         self.randomizer_thread = RandomizerThread(
             self.rando, self.extract_manager, self.options["output-folder"]
+        )
+        self.randomizer_thread.update_progress_dialog.connect(
+            self.update_progress_dialog
         )
         self.randomizer_thread.update_progress.connect(self.ui_progress_callback)
         self.randomizer_thread.randomization_complete.connect(
@@ -395,6 +398,10 @@ class RandoGUI(QMainWindow):
         )
         self.randomizer_thread.error_abort.connect(self.on_error)
         self.randomizer_thread.start()
+
+    def update_progress_dialog(self, hash, steps):
+        self.progress_dialog.setWindowTitle(f"Randomizing - Hash: {hash}")
+        self.progress_dialog.setMaximum(self.extra_steps + steps)
 
     def ui_progress_callback(
         self, current_action: str, completed_steps: int, total_steps: int = None

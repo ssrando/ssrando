@@ -83,9 +83,21 @@ class Hints:
             raise ValueError(f'Unknown value for setting "song-hints": "{hint_mode}".')
 
         does_hint = hint_mode != "None"
-        get_check = lambda trial_gate: self.norm(
-            SILENT_REALM_CHECKS[self.logic.randomized_trial_entrance[trial_gate]]
-        )
+
+        def get_check(trial_gate):
+            gate_exit = TRIAL_GATE_EXITS[trial_gate]
+            associated_entrance = self.logic.placement.map_transitions[
+                self.norm(gate_exit)
+            ]
+            trial_of_entrance = {
+                self.norm(entrance_of_exit(exit)): trial
+                for trial, exit in SILENT_REALM_EXITS.items()
+            }.get(associated_entrance)
+            if trial_of_entrance is None:
+                raise self.useroutput.GenerationFailed(
+                    "Cannot generate trial hint for non-trial check"
+                )
+            return self.norm(SILENT_REALM_CHECKS[trial_of_entrance])
 
         self.do_hint_per_status(hintmodes, does_hint, SongHint, get_check, SONG_HINTS)
 
@@ -119,12 +131,30 @@ class Hints:
             unhintables + hinted_checks,
             check_hint_status,
         )
-        fi_hints, hintstone_hints = self.dist.get_hints()
+
+        self.logic.fill_inventory_i(monotonic=True)
+        accessible_stones = list(self.logic.accessible_stones())
+
+        self.hints_per_stone = {
+            stone: (
+                self.dist.hints_per_stone
+                if stone in accessible_stones and stone not in self.dist.banned_stones
+                else 0
+            )
+            for stone in self.areas.gossip_stones
+        }
+
+        nb_hints = sum(self.hints_per_stone.values())
+        assert nb_hints <= MAX_STONE_HINTS
+        nb_hints += self.dist.fi_hints
+        assert self.dist.fi_hints <= MAX_FI_HINTS
+
+        fi_hints, hintstone_hints = self.dist.get_hints(nb_hints)
         self.useroutput.progress_callback("placing hints...")
         hintstone_hints = {
             hintname: hint for hint, hintname in zip(hintstone_hints, HINTS)
         }
-        self.hints_per_stone = self.dist.hints_per_stone
+
         self.randomize(hintstone_hints)
         placed_fi_hints = {FI_HINTS_KEY: FiHintWrapper(fi_hints)}
         placed_hintstone_hints = {
@@ -172,8 +202,7 @@ class Hints:
             stone
             for stone in accessible_stones
             for spot in range(
-                self.dist.hints_per_stone[stone]
-                - len(self.logic.placement.stones[stone])
+                self.hints_per_stone[stone] - len(self.logic.placement.stones[stone])
             )
         ]
 

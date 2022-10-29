@@ -8,6 +8,7 @@ from extractmanager import ExtractManager
 
 class RandomizerThread(QThread):
     update_progress = Signal(str, int)
+    update_progress_dialog = Signal(str, int)
     error_abort = Signal(str)
     randomization_complete = Signal()
 
@@ -42,7 +43,7 @@ class RandomizerThread(QThread):
                 return
         self.randomizer.set_progress_callback(self.create_ui_progress_callback(0))
         try:
-            self.randomizer.randomize()
+            self.randomizer.randomize(self.update_progress_dialog.emit)
         except Exception as e:
             self.error_abort.emit(str(e))
             import traceback
@@ -51,9 +52,7 @@ class RandomizerThread(QThread):
             return
         if not dry_run:
             default_ui_progress_callback("repacking game...")
-            repack_progress_cb = self.create_ui_progress_callback(
-                self.randomizer.get_total_progress_steps
-            )
+            repack_progress_cb = self.create_ui_progress_callback(self.steps)
             self.extract_manager.repack_game(
                 Path(self.output_folder),
                 progress_cb=repack_progress_cb,

@@ -85,7 +85,7 @@ class AssumedFill:
     def fill_with_junk(self, junk):
         empty_locations = [
             loc
-            for loc in self.logic.accessible_checks()
+            for loc in self.logic.check_list("")
             if loc not in self.logic.placement.locations
         ]
         junk = list(junk)

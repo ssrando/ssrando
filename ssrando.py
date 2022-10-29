@@ -93,21 +93,6 @@ class Randomizer(BaseRandomizer):
 
         self.no_logs = self.options["no-spoiler-log"]
 
-        self.seed = self.options["seed"]
-        if self.seed == -1:
-            self.seed = random.randint(0, 1000000)
-        self.options.set_option("seed", self.seed)
-
-        print(f"Seed: {self.seed}")
-        self.rng = random.Random(self.seed)
-        if self.no_logs:
-            for _ in range(100):
-                self.rng.random()
-        self.rando = Rando(self.areas, self.options, self.rng)
-        self.excluded_locations = self.options["excluded-locations"]
-        self.dry_run = bool(self.options["dry-run"])
-        self.randomizer_hash = calculate_rando_hash(self.seed, self.options)
-
     def check_valid_directory_setup(self):
         # catch common errors with directory setup
         if not self.actual_extract_path.is_dir():
@@ -136,10 +121,23 @@ class Randomizer(BaseRandomizer):
                 "ERROR: the randomizer only supports NTSC-U 1.00 (North American)."
             )
 
-    @cached_property
+    def init_rng(self, seed=-1):
+        if seed == -1:
+            seed = random.randint(0, 1000000)
+        self.seed = seed
+        self.options.set_option("seed", self.seed)
+        self.randomizer_hash = calculate_rando_hash(self.seed, self.options)
+
+        print(f"Seed: {seed}")
+        rng = random.Random(seed)
+        if self.no_logs:
+            for _ in range(100):
+                rng.random()
+        return rng
+
     def get_total_progress_steps(self):
         rando_steps = self.rando.get_total_progress_steps() + 3
-        if self.dry_run:
+        if self.options["dry-run"]:
             return rando_steps + 1
         else:
             return rando_steps + 1 + 1 + GAMEPATCH_TOTAL_STEP_COUNT
@@ -147,8 +145,16 @@ class Randomizer(BaseRandomizer):
     def set_progress_callback(self, progress_callback: Callable[[str], None]):
         self.progress_callback = progress_callback
 
-    def randomize(self):
+    def randomize(self, update_progress_dialog=None):
         useroutput = UserOutput(GenerationFailed, self.progress_callback)
+        self.rng = self.init_rng(self.options["seed"])
+        self.rando = Rando(self.areas, self.options, self.rng)
+
+        if update_progress_dialog is not None:
+            update_progress_dialog(
+                self.randomizer_hash, self.get_total_progress_steps()
+            )
+
         self.progress_callback("randomizing items...")
         self.rando.randomize(useroutput)
         self.progress_callback("preparing for hints...")
@@ -192,9 +198,7 @@ class Randomizer(BaseRandomizer):
                 required_dungeons=self.logic.required_dungeons,
                 sots_items=sots_items,
                 barren_nonprogress=self.logic.get_barren_regions(),
-                randomized_dungeon_entrance=self.logic.randomized_dungeon_entrance,
-                randomized_trial_entrance=self.logic.randomized_trial_entrance,
-                randomized_start_entrance=self.logic.randomized_start_entrance,
+                randomized_entrances=self.logic.placement.map_transitions,
             )
             with log_address.open("w") as f:
                 json.dump(dump, f, indent=2)
@@ -211,11 +215,9 @@ class Randomizer(BaseRandomizer):
                     required_dungeons=self.logic.required_dungeons,
                     sots_items=sots_items,
                     barren_nonprogress=self.logic.get_barren_regions(),
-                    randomized_dungeon_entrance=self.logic.randomized_dungeon_entrance,
-                    randomized_trial_entrance=self.logic.randomized_trial_entrance,
-                    randomized_start_entrance=self.logic.randomized_start_entrance,
+                    randomized_entrances=self.logic.placement.map_transitions,
                 )
-        if not self.dry_run:
+        if not self.options["dry-run"]:
             GamePatcher(
                 self.areas,
                 self.options,
@@ -235,9 +237,7 @@ class Randomizer(BaseRandomizer):
         # temporary placement file stuff
 
         plcmt_file = PlacementFile()
-        plcmt_file.dungeon_connections = self.logic.randomized_dungeon_entrance
-        plcmt_file.trial_connections = self.logic.randomized_trial_entrance
-        plcmt_file.start_entrance = self.logic.randomized_start_entrance
+        plcmt_file.map_connections = self.logic.placement.map_transitions
         plcmt_file.hash_str = self.randomizer_hash
         plcmt_file.hints = {
             k: v.to_ingame_text(lambda s: self.areas.prettify(s))

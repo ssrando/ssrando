@@ -179,8 +179,8 @@
   help: "Specify a seed to use for randomization.
         If set to -1, a random seed is used."
   ui: seed
-- name: Randomize Entrances
-  command: randomize-entrances
+- name: Randomize Dungeon Entrances
+  command: randomize-dungeon-entrances
   type: singlechoice
   bits: 2
   choices:
@@ -189,12 +189,12 @@
     - All Surface Dungeons
     - All Surface Dungeons + Sky Keep
   default: None
-  help: "Shuffles entrances with one another.
-        **None**: entrances are vanilla.
+  help: "Shuffles dungeon entrances with one another.
+        **None**: dungeon entrances are vanilla.
         **Required Dungeons Separately**: required dungeons entrances are only shuffled with each other.
         **All Surface Dungeons**: all surface dungeons entrances are shuffled with each other.
         **All Surface Dungeons + Sky Keep** - all surface dungeon entrances AND the Sky Keep entrance are shuffled with each other."
-  ui: option_randomize_entrances
+  ui: option_randomize_dungeon_entrances
 - name: Randomize Silent Realms
   command: randomize-trials
   type: boolean
@@ -1107,3 +1107,15 @@
   help: If enabled, location hints (always, sometimes, & random hints) that normally have flavor text
         will just appear as their location name, like other locations.
   ui: option_clear_location_hints
+- name: Randomize Entrances
+  command: randomize-entrances
+  type: singlechoice
+  bits: 1
+  choices:
+    - Vanilla
+    - All
+  default: Vanilla
+  help: "Shuffles entrances with one another.
+        **Vanilla**: entrances are vanilla.
+        **All**: all entrances are shuffled with one another."
+  ui: option_randomize_entrances
