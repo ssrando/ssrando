@@ -9,6 +9,7 @@ from graph_logic.logic_input import Areas
 from graph_logic.constants import *
 from hints.hint_types import *
 from options import Options
+from paths import RANDO_ROOT_PATH
 from graph_logic.randomize import LogicUtils
 
 HINTABLE_ITEMS = (
@@ -27,52 +28,8 @@ HINTABLE_ITEMS = (
     | PROGRESSIVE_SWORDS
 )
 
-JUNK_TEXT = [
-    "They say that crashing in BiT is easy.",
-    "They say that bookshelves can talk",
-    "They say that people who love the Bug Net also like Trains",
-    "They say that there is a Gossip Stone by the Temple of Time",
-    "They say there's a 35% chance for Fire Sanctuary Boss Key to be Heetle Locked",
-    "They say 64bit left Fire Sanctuary without learning Ballad of the Goddess",
-    "They say that Ancient Cistern is haunted by the ghosts of softlocked Links",
-    "They say the Potion Lady is still holding onto a Spiral Charge for CJ",
-    "They say there is a chest underneath the party wheel in Lanayru",
-    "They say that you need the hero's tunic to sleep on the main part of Skyloft",
-    "They say that you need to Hot the Spile to defeat Imprisoned 2",
-    "They say whenever Spiral Charge is on a trial, a seed roller goes mysteriously missing",
-    "They say that Eldin Trial is vanilla whenever it is required",
-    "They say that gymnast86 won the first randomizer tournament and retired immediately after",
-    "They say that Mogmas don't understand Minesweeper",
-    "They say that you can win a race by abandoning Lanayru to check Cawlin's Letter",
-    "They say that tornados spawn frequently in the Sky",
-    "They say Scrapper gets easily tilted",
-    "They say there is a chest on the cliffs by the Goddess Statue",
-    "They say that entering Ancient Cistern with no B items has a 1% chance of success",
-    "They say that Glittering Spores are the best bird drugs",
-    "They say that the Ancient Automaton fears danger darts",
-    "They say the single tumbling plant is required every seed",
-    "They say that your battery is low",
-    "They say that you just have to get the right checks to win",
-    "They say that rushing Peatrice is the play",
-    "They say there is a 0.0000001164% chance your RNG won't change",
-    "If only we could go Back in Time and name the glitch properly...",
-    'They say that there is something called a "hash" that makes it easier for people to verify that they are playing the right seed',
-    "They say that the bad seed rollers are still in the car, seeking for a safe refugee",
-    "Have you heard the tragedy of Darth Kolok the Pause? I thought not, it's not a story the admins would tell you",
-    "Sand Sea is the most hated region in the game, because Sand is coarse, rough and gets everywhere",
-    "They say that rice has magical properties when visiting Yerbal",
-    "They say that Jannon is still jammin to this day",
-    "They say that there is only one place where the Slingshot beats the Bow",
-    "They say that Koloktos waiting caused a civil war among players",
-    "They say that there is a settings combination which needs 0 checks to be completed",
-    "They say that avoiding Fledge's item from a fresh file is impossible",
-    "... astronomically ...",
-    "They say that you can open the chest behind bars in LMF after raising said bars",
-    "They say that you look like you have a Questions",
-    "They say that HD randomizer development is delayed by a day every time someone asks about it in the Discord",
-    "The disc could not be read. Refer to the Wii Operations Manual for details.",
-    "They say that a massive storm brews over the Lanayru Sand Sea due to Tentalus' immense size",
-]
+with open(RANDO_ROOT_PATH / f"hints/junk_hints.json") as f:
+    JUNK_TEXT = json.load(f)
 
 
 class InvalidHintDistribution(Exception):
