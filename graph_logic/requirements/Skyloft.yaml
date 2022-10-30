@@ -78,20 +78,15 @@ Central:
     Crystal between Wooden Planks: Night
     Crystal on West Cliff: Night
     Crystal on Light Tower: Night
-    Past Waterfall Cave - Crystal after Waterfall Cave: Night & Waterfall Cave Crystals
-    Past Waterfall Cave - Crystal in Loftwing Prison: Night & Waterfall Cave Crystals
-    Waterfall Island - Crystal: Night & Quick Beetle
     West Cliff Goddess Chest: Faron - Goddess Cube on West Great Tree near Exit
     Parrow's Gift: Sky - Talk to Orielle & Day
     Parrow's Crystals: Sky - Save Orielle & Day
     Shed Chest: Water Scale
     Shed Goddess Chest: Water Scale & Eldin - Sand Slide - Goddess Cube
-    Item in Bird Nest: (Clawshots & Gust Bellows) | (Beetle & Baby Rattle from Beedle's Shop Trick & Gust Bellows)
-    Waterfall Cave Crystals: Beetle
+    Bird Nest - Item in Bird Nest: Baby Rattle from Beedle's Shop Trick & Gust Bellows & Beetle # Beetle to stop Beedle and get item
     Open Trial Gate: Goddess Harp & Song of the Hero
     General - Can Collect Water: Nothing
   exits:
-    Waterfall Cave Upper: Sword | Bomb Bag
     Exit to Beedle's Shop: Day & (Distance Activator | (Beedle's Shop With Bombs Trick & Bomb Bag))
     Bazaar North: Day
     Bazaar West: Day
@@ -101,44 +96,17 @@ Central:
     Peatrice's House: Nothing
     Wryna's House: Nothing
     Piper's House: Nothing
-    Near Temple Entrance: Clawshots
     Exit to Sky: Day
 
     Skyloft - Upper: Nothing
+    Near Waterfall: Nothing
     Village: Nothing
 
-  Near Temple Entrance:
-    exits:
-      Exit to Sky Keep: Nothing
-      Central: Clawshots
-
-  Waterfall Island:
-    entrance: Clawshots
-    exits:
-      Central: Nothing # You can also reach Village
+  Bird Nest:
     locations:
-      Crystal: Night
-      Goddess Chest: Lanayru - Sand Sea - Pirate Stronghold - Goddess Cube
-      Floating Island Goddess Chest: Faron - Goddess Cube in Lake Floria
-      Gossip Stone: Nothing
-
-
-  Waterfall Cave:
-    locations:
-      First Chest: Nothing
-      Second Chest: Nothing
-      Rupee in Crawlspace: Nothing
+      Item in Bird Nest: Gust Bellows
     exits:
-      Upper Exit: Nothing
-      Lower Exit: Nothing
-
-  Past Waterfall Cave:
-    locations:
-      Crystal after Waterfall Cave: Night
-      Crystal in Loftwing Prison: Night
-    exits:
-      Waterfall Cave Lower Exit: Nothing
-      Central - Exit to Sky: Day
+      Central: Nothing
 
   Bazaar:
     allowed-time-of-day: DayOnly
@@ -194,6 +162,64 @@ Central:
     exits:
       Exit: Nothing
 
+Near Waterfall:
+  hint-region: Skyloft Central
+
+  locations:
+    Waterfall Cave Crystals from above: Beetle
+    Waterfall Island Crystal from the ground: Quick Beetle
+    Past Waterfall Cave - Crystal after Waterfall Cave: Night & Waterfall Cave Crystals from above
+    Past Waterfall Cave - Crystal in Loftwing Prison: Night & Waterfall Cave Crystals from above
+    Waterfall Island - Crystal: Night & Waterfall Island Crystal from the ground
+
+    Open Temple Entrance: Stone of Trials
+    Open Cave Entrance: Sword | Bomb Bag
+  exits:
+    Near Temple Entrance: Open Temple Entrance & Clawshots
+    Waterfall Island: Clawshots
+    Waterfall Cave Upper: Open Cave Entrance
+
+    Central - Exit to Sky: Day
+
+    Skyloft - Central: Nothing
+
+
+  Near Temple Entrance:
+    exits:
+      Exit to Sky Keep: Nothing
+      Central: Clawshots
+
+  Waterfall Island:
+    exits:
+      Near Waterfall: Nothing
+      Central: Nothing
+      Village: Nothing
+      Central - Bird Nest: Nothing
+    locations:
+      Crystal: Night
+      Goddess Chest: Lanayru - Sand Sea - Pirate Stronghold - Goddess Cube
+      Floating Island Goddess Chest: Faron - Goddess Cube in Lake Floria
+      Gossip Stone: Nothing
+
+
+  Waterfall Cave:
+    locations:
+      First Chest: Nothing
+      Second Chest: Nothing
+      Rupee in Crawlspace: Nothing
+    exits:
+      Upper Exit: Nothing
+      Lower Exit: Nothing
+
+  Past Waterfall Cave:
+    locations:
+      Crystal after Waterfall Cave: Night
+      Crystal in Loftwing Prison: Night
+    exits:
+      Waterfall Cave Lower Exit: Nothing
+      Central - Exit to Sky: Day
+
+
 Silent Realm:
   hint-region: Skyloft Silent Realm
   exits:
@@ -209,13 +235,15 @@ Village:
     Opened Shed: Night
   exits:
     Central: Nothing
-    Central - Past Waterfall Cave: Waterfall Cave Jump Trick & Day
+    Near Waterfall - Past Waterfall Cave: Waterfall Cave Jump Trick & Day
     Bertie's House: Nothing
     Sparrot's House: Nothing
     Mallara's House: Nothing
     Gondo's House: Nothing
     Rupin's House: Nothing
     Batreaux's House: Opened Shed | Gravestone Jump Trick
+
+    Central - Exit to Sky: Day
 
   Bertie's House:
     locations:
