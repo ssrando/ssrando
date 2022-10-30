@@ -15,8 +15,6 @@ global:
     - 789 # Set after skyward striking imp spike first time (allows dowsing option [still needs a goddess sword])
     - 27  # Loftwing
     - 198 # Can jump off Loftwing
-    - storyflag: 668 # Propeller dowsing (need a default main quest dowsing option for cdmc)
-      onlyif: Option "chest-dowsing" Is Not "None"
     - storyflag: 194 # open thunderhead
       onlyif: Option "open-thunderhead" Is "Open"
     - 58  # b-wheel
@@ -856,6 +854,24 @@ F000: # Skyloft
     layer: 0
     room: 0
     objtype: STAG
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFD4B
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Lanayru trial dowsing target
+    type: objdelete
+    id: 0xFD51
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Eldin trial dowsing target
+    type: objdelete
+    id: 0xFD4D
+    layer: 0
+    room: 0
+    objtype: STAG
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -1186,6 +1202,30 @@ F020: # Sky
     layer: 0
     room: 0
     objtype: STAG
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFCAA
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Lanayru trial dowsing target
+    type: objdelete
+    id: 0xFCB0
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Eldin trial dowsing target
+    type: objdelete
+    id: 0xFCAC
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Skyloft trial dowsing target
+    type: objdelete
+    id: 0xFCB3
+    layer: 0
+    room: 0
+    objtype: STAG
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
@@ -1263,6 +1303,36 @@ F023: # Thunderhead
   - name: Remove confounding propeller dowsing
     type: objdelete
     id: 0xFCAE
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFCAB
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Lanayru trial dowsing target
+    type: objdelete
+    id: 0xFCB1
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Eldin trial dowsing target
+    type: objdelete
+    id: 0xFCAD
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Skyloft trial dowsing target
+    type: objdelete
+    id: 0xFCB4
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Skyloft trial dowsing target
+    type: objdelete
+    id: 0xFCA3
     layer: 0
     room: 0
     objtype: STAG
@@ -2646,6 +2716,24 @@ F300_1: # Lanayru Mines
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFC59
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFC0A
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFC62
+    layer: 0
+    room: 2
+    objtype: STAG
 F300_2: # Thunder node
   - name: extra Bomb flower
     type: objadd
@@ -2738,6 +2826,12 @@ F300_4: # Temple of Time
   #     sizez: 500
   #     anglez: 0xFFFF # don't set any storyflag here
   #     name: ScChang
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFCB1
+    layer: 2
+    room: 0
+    objtype: STAG
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch

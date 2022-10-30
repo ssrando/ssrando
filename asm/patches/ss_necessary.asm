@@ -36,31 +36,6 @@ subi r0, r3, 9 ; subtype 9, normally checks for rattle itemid
 .org 0x80252b48
 b 0x80252bb4
 
-; tbox cdmc patches:
-
-; always register the dowsing target, this is safe since a non initialized dowsing target
-; has dowsing index 8, so it's rejected from registering and unregistering
-.org 0x80269820
-li r3, 1
-
-; remove treasure dowsing for freestanding items
-.org 0x8024d208
-li r3, 0x0
-
-; get the dowsing slot index from first nibble in params
-.org 0x80269788
-lwz r0, 0xa8(r28) ; params2
-srwi r4,r0,28 ; first nibble
-cmplwi r4, 8
-bge 0x802697e0 ; branch to handling goddess chest dowsing
-bl AcOTBox__initDowsingTarget
-b 0x802697e0
-
-; always return propeller image (patched to chest in rando) for top dowsing slot
-.org 0x800983e0
-li r3, 0xa
-blr
-
 ; function that checks if the item is the bird statuette
 ; always return false to fix the animation
 .org 0x80250b00
@@ -119,6 +94,10 @@ lwz r4, 0x724(r4) ;Text Manager
 stw r3, 0x8A0(r4) ;text counter 1
 lwz r0, 0x24(r1) ; instruction that was overwritten
 b 0x802539e0
+
+; change top priority dowsing icon to sandship
+.org 0x800983ec ; checks zelda dowsing
+b 0x80098428 ; checks sandship dowsing
 
 ; change storyflag that disables sandship dowsing
 ; to bombed sandship
