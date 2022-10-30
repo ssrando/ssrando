@@ -120,9 +120,12 @@ class Hints:
 
         placed_hintstone_hints = {
             stone: GossipStoneHintWrapper(
-                [hintstone_hints[hintname] for hintname in hintnames]
+                [
+                    hintstone_hints[hintname]
+                    for hintname in self.logic.placement.stones[stone]
+                ]
             )
-            for stone, hintnames in self.logic.placement.stones.items()
+            for stone in self.areas.gossip_stones
         }
 
         self.logic.placement.hints = placed_hintstone_hints | non_hintstone_hints
