@@ -542,3 +542,8 @@ li r4, 0x399
 .org 0xAB4
 li r4, 0x39A
 .close
+
+.open "d_a_obj_bellNP.rel"
+.org 0xCE0 ; function called when transitioning to the state after dropping rupee
+b try_end_pumpkin_archery
+.close
