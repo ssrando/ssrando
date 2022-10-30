@@ -33,7 +33,6 @@ global:
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
-    - 583 # full dowsing wheel
     - storyflag: 134 # Horde defeated
       onlyif: Option "skip-horde" Enabled
     - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
@@ -194,6 +193,12 @@ B100_1: # skyview spring
     room: 0
     layer: 1
     id: 0xFC73
+    objtype: STAG
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFC63
+    layer: 0
+    room: 0
     objtype: STAG
 B101: # Koloktos Boss Room
   - name: Open door after boss
@@ -1078,6 +1083,24 @@ F010r: # Isle of songs tower
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFC09
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Lanayru trial dowsing target
+    type: objdelete
+    id: 0xFC08
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Eldin trial dowsing target
+    type: objdelete
+    id: 0xFC07
+    layer: 0
+    room: 0
+    objtype: STAG
 F011r: # Lumpy Pumpkin
   - name: Delete Lumpy Pumpkin Cutscene 1
     type: objdelete
@@ -1531,6 +1554,12 @@ F101: # Deep Woods
     layer: 1
     room: 0
     objtype: OBJ
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFCF2
+    layer: 0
+    room: 0
+    objtype: STAG
 F102_1: # Outside AC
   - name: Layer override
     type: layeroverride
@@ -3718,6 +3747,12 @@ F402: # Sealed Temple
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFC3D
+    layer: 0
+    room: 2
+    objtype: STAG
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
@@ -3758,6 +3793,12 @@ F401: # Sealed grounds Whirlpool
     layer: 0
     room: 1
     objtype: OBJ
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFCA3
+    layer: 2
+    room: 1
+    objtype: STAG
 F400: # Behind the Temple
   - name: Layer override
     type: layeroverride
@@ -3806,6 +3847,12 @@ F400: # Behind the Temple
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove fake trial dowsing
+    type: objdelete
+    id: 0xFC8A
+    layer: 0
+    room: 0
+    objtype: STAG
 F404: # Hylia's Temple
   - name: Layer override
     type: layeroverride

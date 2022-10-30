@@ -10,7 +10,6 @@
   - All: Main quest dowsing will point to all chests
   - Matches Contents: Main quest dowsing will point to chests that contain progress items
   - Currently does not work on goddess chests
-  - Treasure dowsing will not point to freestanding treasures
 - Added option to enable dowsing in dungeons (by YourAverageLink, but shoutouts to Zeldex)
 ### Changes
 - Presets (by cjs07)
@@ -26,8 +25,10 @@
   - New logical option for completing the Owlan's Crystals check
     - Added access to Flooded Faron as an alternative to needing bomb bag
 - Machi is no longer rescued after beating Skyview
+- Added custom dowsing images for new chest dowsing functionality (by YourAverageLink)
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
+- Fixed a bug that would make sandship dowsing sometimes not be the top dowsing slot icon; it now has top priority (by YourAverageLink)
 
 ## 1.3.2
 ### Changes
