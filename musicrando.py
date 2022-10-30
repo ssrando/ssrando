@@ -86,10 +86,7 @@ def music_rando(placement_file, modified_extract_path):
             ):
                 track_len = musiclist[original_track]["audiolen"]
             else:
-                if placement_file.options["allow-custom-music"]:
-                    track_len = 0x7FFFFFFF  # 2GB
-                else:
-                    track_len = musiclist[new_track]["audiolen"]
+                track_len = 0x7FFFFFFF  # 2GB
             audiolenLoc = musiclist[original_track]["audiolenLoc"]
             brsar.seek(audiolenLoc)
             brsar.write(struct.pack(">I", track_len))
