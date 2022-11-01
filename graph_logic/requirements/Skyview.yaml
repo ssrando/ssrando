@@ -5,7 +5,7 @@ hint-region: Skyview
 # Global macros
 macros:
   Skyview 2: Water Scale
-  Can Hit High Skyview Switches: Distance Activator | Bomb Bag
+  Can Hit High Skyview Switches: Distance Activator | Bomb Bag & Bomb Throws Trick
   Can Cut Tree: Sword | Bomb Bag
 
 Main:
@@ -39,7 +39,7 @@ Main:
   First Hub:
     locations:
       First Room - Destroy Barricade: Nothing
-      Switch to Left Room: Can Hit High Skyview Switches | (One Water Raise & Water Scale)
+      Switch to Left Room: Can Hit Switch | One Water Raise & Water Scale
       Switch to Right Room: Can Hit High Skyview Switches
       One Water Raise: Left Room - Raise Water | Right Room - Raise Water
 
