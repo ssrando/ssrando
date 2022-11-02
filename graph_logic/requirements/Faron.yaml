@@ -50,7 +50,7 @@ Sealed Grounds:
     locations:
       Unlock Statue: Nothing
       Gossip Stone: Nothing
-      Gorko's Goddess Wall Reward: Goddess Harp & Goddess Sword & Skyview - Goddess Wall Trigger
+      Gorko's Goddess Wall Reward: Goddess Harp & Ballad of the Goddess & Goddess Sword
     exits:
       Statue: Unlock Statue
       Door: Nothing
@@ -86,8 +86,8 @@ Woods:
     Trial Gate: Open Trial Gate
     Great Tree - Near Underwater Hole: Water Scale
     Great Tree - Platforms: Clawshots
-    Lake Floria Dive: Open Door to Lake Floria
     Clawshot Target Branch: Clawshots
+    Lake Floria Dive: Open Door to Lake Floria
   locations:
     Unlock Viewing Platform Statue: Nothing
     Unlock In the Woods Statue: Nothing
@@ -99,7 +99,11 @@ Woods:
     Rupee on Hollow Tree Root: Nothing
     Rupee on Hollow Tree Branch: Beetle
     Rupee on Platform near Floria Door: Beetle
-    Slingshot: Bomb Bag | Sword # to kill bokos and cut grass
+    Save Machi: Can Defeat Bokoblins
+    Save Lopsa: Can Defeat Bokoblins
+    Save Erla: Sword | Beetle # Cut grass
+    Save Oolo: Nothing
+    Slingshot: Save Machi & Save Lopsa & Save Erla & Save Oolo
     Item on Tree: Nothing
     Item behind Bombable Rock: Bomb Bag
     Chest behind Bombable Rocks near Erla: Bomb Bag
@@ -117,7 +121,7 @@ Woods:
       Faron - Woods: Nothing
     locations:
       Push Log: Nothing
-      # Save Kikwi in tree: Can defeat Bokoblin  # Don't include, otherwise Slingshot requires Bomb Bag
+      # Save Lopsa: Can defeat Bokoblins  # Don't include, otherwise Slingshot requires Bomb Bag
       Retrieve Oolo:
         Skyloft - Knight Academy - Start Owlan's Quest
 
@@ -153,7 +157,7 @@ Great Tree:
   hint-region: Faron Woods
   Near Underwater Hole:
     exits:
-      Faron - Woods: Water Scale # Is it really needed ?
+      Faron - Woods: Nothing
       Underwater Hole: Water Scale
 
   Lower Area: # down in the water

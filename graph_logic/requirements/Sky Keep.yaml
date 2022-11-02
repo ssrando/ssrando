@@ -31,7 +31,7 @@ Main:
     locations:
       Finish Room: (Gust Bellows | Sky Keep - Shooting LMF Bow Switches in Present Trick) & Bow
       Bottom Exit: Nothing
-      Top Exit: Nothing
+      Top Exit: Finish Room
     exits: {}
 
   Earth Temple Room:
