@@ -83,7 +83,8 @@ Central:
     Parrow's Crystals: Sky - Save Orielle & Day
     Shed Chest: Water Scale
     Shed Goddess Chest: Water Scale & Eldin - Sand Slide - Goddess Cube
-    Bird Nest - Item in Bird Nest: Baby Rattle from Beedle's Shop Trick & Gust Bellows & Beetle # Beetle to stop Beedle and get item
+    Bird Nest - Item in Bird Nest:
+      Baby Rattle from Beedle's Shop Trick & Day & Distance Activator & Gust Bellows & (Beetle | Whip)
     Open Trial Gate: Goddess Harp & Song of the Hero
     General - Can Collect Water: Nothing
   exits:
@@ -139,6 +140,7 @@ Central:
 
 
   Orielle and Parrow's House:
+    can-sleep: true
     locations:
       Crystal: Nothing
       Parrow's Gift: Sky - Talk to Orielle & Night
@@ -147,18 +149,21 @@ Central:
       Exit: Nothing
 
   Peatrice's House:
+    can-sleep: true
     locations:
       Peater/Peatrice's Crystals: Bazaar - Talk to Peatrice & Night
     exits:
       Exit: Nothing
 
   Wryna's House:
+    can-sleep: true
     locations:
       Wryna's Crystals: Nothing
     exits:
       Exit: Nothing
 
   Piper's House:
+    can-sleep: true
     exits:
       Exit: Nothing
 
@@ -246,12 +251,14 @@ Village:
     Central - Exit to Sky: Day
 
   Bertie's House:
+    can-sleep: true
     locations:
       Bertie's Crystals: Baby Rattle & Night
     exits:
       Exit: Nothing
 
   Sparrot's House:
+    can-sleep: true
     locations:
       Start Sparrot's Quest: Nothing
       Sparrot's Crystals: Eldin - Retrieve Crystal Ball
@@ -259,16 +266,19 @@ Village:
       Exit: Nothing
 
   Mallara's House:
+    can-sleep: true
     locations:
       Mallara's Crystals: Gust Bellows
     exits:
       Exit: Nothing
 
   Gondo's House:
+    can-sleep: true
     exits:
       Exit: Nothing
 
   Rupin's House:
+    can-sleep: true
     exits:
       Exit: Nothing
 

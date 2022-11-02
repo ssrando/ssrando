@@ -55,7 +55,7 @@ Main:
       locations:
         Hit Vines: Can Hit High Skyview Switches | Goddess Sword | Whip
         Spider Roll: Skyview - Spider Roll Trick
-        Raise Water: (Hit Vines | Spider Roll) & Can Hit High Skyview Switches | Goddess Sword | Whip
+        Raise Water: Hit Vines & Can Hit Switch | Spider Roll & Can Hit High Skyview Switches
         Chest on Tree Branch: Hit Vines | Spider Roll
       exits:
         First Hub: Nothing
@@ -64,14 +64,22 @@ Main:
       Lower Area:
         exits:
           First Hub: Nothing
-          After Crawlspace: Water Scale
+          After Crawlspace: Nothing
+          After Crawlspace - With Water: Water Scale
 
       After Crawlspace:
         locations:
           Raise Water: Can Hit High Skyview Switches
-          Digging Spot: Digging Mitts
+          Digging Spot: Impossible
+          # We have to assume Link has to enter with water to get the check
         exits:
           Lower Area: Nothing
+
+        With Water:
+          locations:
+            After Crawlspace - Digging Spot: Digging Mitts
+          exits:
+            Lower Area: Nothing
 
       Upper Area:
         locations:
