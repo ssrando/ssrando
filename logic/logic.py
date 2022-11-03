@@ -1582,7 +1582,7 @@ class Logic:
         return False
 
     def calculate_playthrough_progression_spheres(self):
-        remaining_locations = set(self.item_locations.keys())
+        remaining_locations = dict.fromkeys(self.item_locations.keys())
         temp_inventory = Inventory()
         for item_name in self.starting_items:
             temp_inventory.collect_item(item_name)
@@ -1602,7 +1602,7 @@ class Logic:
                 if item == "Gratitude Crystal":
                     temp_inventory.collect_item(item)
                     new_log_invisible_item_reached = True
-                    remaining_locations.remove(loc)
+                    del remaining_locations[loc]
 
             if new_log_invisible_item_reached:
                 continue
@@ -1619,7 +1619,7 @@ class Logic:
                 if item in self.all_progress_items:
                     current_sphere[loc] = item
                 temp_inventory.collect_item(item)
-                remaining_locations.remove(loc)
+                del remaining_locations[loc]
             if len(current_sphere) > 0:
                 spheres.append(current_sphere)
             if not new_loc_reached:
