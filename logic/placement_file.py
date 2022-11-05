@@ -1,7 +1,7 @@
 from options import Options
 from version import VERSION
 from logic.item_types import ALL_ITEM_NAMES
-from logic.constants import POTENTIALLY_REQUIRED_DUNGEONS, ENTRANCE_CONNECTIONS
+from logic.constants import *
 from util.file_accessor import read_yaml_file_cached
 
 import json
@@ -22,8 +22,10 @@ class PlacementFile:
         self.chest_dowsing = {}
         self.gossip_stone_hints = {}
         self.trial_hints = {}
-        self.entrance_connections = {}
+        self.dungeon_connections = {}
         self.trial_connections = {}
+        self.trial_object_seed = -1
+        self.music_rando_seed = -1
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))
@@ -42,8 +44,10 @@ class PlacementFile:
             "chest-dowsing": self.chest_dowsing,
             "gossip-stone-hints": self.gossip_stone_hints,
             "trial-hints": self.trial_hints,
-            "entrance-connections": self.entrance_connections,
+            "entrance-connections": self.dungeon_connections,
             "trial-connections": self.trial_connections,
+            "trial-object-seed": self.trial_object_seed,
+            "music-rando-seed": self.music_rando_seed,
         }
         return json.dumps(retval, indent=2)
 
@@ -58,8 +62,10 @@ class PlacementFile:
         self.chest_dowsing = jsn["chest-dowsing"]
         self.gossip_stone_hints = jsn["gossip-stone-hints"]
         self.trial_hints = jsn["trial-hints"]
-        self.entrance_connections = jsn["entrance-connections"]
+        self.dungeon_connections = jsn["entrance-connections"]
         self.trial_connections = jsn["trial-connections"]
+        self.trial_object_seed = jsn["trial-object-seed"]
+        self.music_rando_seed = jsn["music-rando-seed"]
 
     def check_valid(self):
         """checks, if the current state is valid, throws an exception otherwise
@@ -89,12 +95,12 @@ class PlacementFile:
                     f"{req_dungeon} is not a valid required dungeon!"
                 )
 
-        if sorted(self.entrance_connections.keys()) != sorted(
+        if sorted(self.dungeon_connections.keys()) != sorted(
             ENTRANCE_CONNECTIONS.keys()
         ):
             raise InvalidPlacementFile("dungeon entrance_connections are wrong!")
 
-        if sorted(self.entrance_connections.values()) != sorted(
+        if sorted(self.dungeon_connections.values()) != sorted(
             ENTRANCE_CONNECTIONS.values()
         ):
             raise InvalidPlacementFile("dungeon entries are wrong!")

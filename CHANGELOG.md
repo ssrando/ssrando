@@ -2,6 +2,7 @@
 
 ## Dev
 ### Options
+- Added option to make sword reward place swords on heart containers rather than final checks (by YourAverageLink)
 - Added option to randomize progression in Flooded Faron Woods (by CovenEsme)
   - Added Faron SotH check that is obtained when completing the Tadtones story quest
 - Added chest dowsing functionality as an option (by YourAverageLink)
@@ -26,9 +27,12 @@
     - Added access to Flooded Faron as an alternative to needing bomb bag
 - Machi is no longer rescued after beating Skyview
 - Added custom dowsing images for new chest dowsing functionality (by YourAverageLink)
+- Shooting the bell during pumpkin archery ends the minigame immediately
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
-- Fixed a bug that would make sandship dowsing sometimes not be the top dowsing slot icon; it now has top priority (by YourAverageLink)
+- Fixed a softlock caused by collecting the last 2 tears in a trial too close together
+- Fixed a bug that would make sandship dowsing sometimes not be the top dowsing slot icon; it now has top priority
+
 
 ## 1.3.2
 ### Changes
@@ -203,7 +207,7 @@
 ### Changes
 - Verify ISO checksum
 - Item after LMF is given before exiting out of the back
-- Treasure and Rupee dowsing are now obtainable after getting the Goddess Whitesword
+- Treasure and Rupee dowsing are now obtainable after getting the Goddess White Sword
 - Shorten timeshift stone cutscenes
 - Make it possible to not get pumpkin soup when doing lumpy pumpkin quest with spiral charge
 

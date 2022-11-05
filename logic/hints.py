@@ -7,12 +7,7 @@ from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
 from typing import List
 
-from .constants import (
-    POTENTIALLY_REQUIRED_DUNGEONS,
-    ALL_DUNGEON_AREAS,
-    SILENT_REALMS,
-    SILENT_REALM_CHECKS,
-)
+from .constants import *
 from util import textbox_utils
 
 HINTABLE_ITEMS = (
@@ -118,7 +113,7 @@ class Hints:
         # make sure hint locations aren't locked by the item they hint
         hint_banned_stones = defaultdict(set)
         for hint in hints:
-            if not hint.needs_logic:
+            if not isinstance(hint, LocationGossipStoneHint):
                 # hints with no logic don't have any banned stones
                 # this also short circuits type errors for hints that don't have locations
                 continue
@@ -196,13 +191,15 @@ class Hints:
             second_loc_to_hint = self.logic.rando.rng.choice(unplace_hints)
             unplace_hints.remove(second_loc_to_hint)
             hint_to_location[gossipstone_name] = [loc_to_hint, second_loc_to_hint]
-        anywhere_hints = [hint for hint in hints if not hint.needs_logic]
+        anywhere_hints = [
+            hint for hint in hints if not isinstance(hint, LocationGossipStoneHint)
+        ]
         self.logic.rando.rng.shuffle(anywhere_hints)
 
         for gossipstone_name in self.stonehint_definitions:
             if gossipstone_name in self.dist.banned_stones:
                 self.hints[gossipstone_name] = EmptyGossipStoneHint(
-                    None, None, False, self.dist.get_junk_text()
+                    self.dist.get_junk_text()
                 )
             else:
                 locs_to_hint = hint_to_location[gossipstone_name]
@@ -212,14 +209,14 @@ class Hints:
                     if len(anywhere_hints) > 0:
                         self.hints[gossipstone_name] = GossipStoneHintWrapper(
                             loc_to_hint,
-                            BarrenGossipStoneHint(zone=anywhere_hints.pop()),
+                            anywhere_hints.pop(),
                         )
                     else:
                         self.hints[gossipstone_name] = loc_to_hint
                 elif second_loc_to_hint is not None and loc_to_hint is None:
                     if len(anywhere_hints) > 0:
                         self.hints[gossipstone_name] = GossipStoneHintWrapper(
-                            BarrenGossipStoneHint(zone=anywhere_hints.pop()),
+                            anywhere_hints.pop(),
                             second_loc_to_hint,
                         )
                     else:
@@ -234,7 +231,7 @@ class Hints:
                         self.hints[gossipstone_name] = hint
                     else:
                         self.hints[gossipstone_name] = EmptyGossipStoneHint(
-                            None, None, False, self.dist.get_junk_text()
+                            self.dist.get_junk_text()
                         )
                 else:
                     self.hints[gossipstone_name] = GossipStoneHintWrapper(

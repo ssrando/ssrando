@@ -936,7 +936,7 @@
          <x>10</x>
          <y>20</y>
          <width>181</width>
-         <height>221</height>
+         <height>236</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -990,11 +990,25 @@
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_sword_dungeon_reward">
-          <property name="text">
-           <string>Sword Dungeon Rewards</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_40">
+          <item>
+           <widget class="QLabel" name="label_for_option_sword_reward">
+            <property name="text">
+             <string>Sword Dungeon Rewards</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_sword_dungeon_reward">
+            <property name="currentText">
+             <string/>
+            </property>
+            <property name="currentIndex">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <spacer name="verticalSpacer_4">

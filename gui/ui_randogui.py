@@ -597,7 +597,7 @@ class Ui_MainWindow(object):
         self.groupBox_7.setGeometry(QRect(630, 10, 191, 251))
         self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 181, 221))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 181, 236))
         self.verticalLayout_10 = QVBoxLayout(self.verticalLayoutWidget_7)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -651,10 +651,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_10.addWidget(self.option_empty_unrequired_dungeons)
 
-        self.option_sword_dungeon_reward = QCheckBox(self.verticalLayoutWidget_7)
+        self.verticalLayout_40 = QVBoxLayout()
+        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
+        self.label_for_option_sword_reward = QLabel(self.verticalLayoutWidget_7)
+        self.label_for_option_sword_reward.setObjectName(u"label_for_option_sword_reward")
+
+        self.verticalLayout_40.addWidget(self.label_for_option_sword_reward)
+
+        self.option_sword_dungeon_reward = QComboBox(self.verticalLayoutWidget_7)
         self.option_sword_dungeon_reward.setObjectName(u"option_sword_dungeon_reward")
 
-        self.verticalLayout_10.addWidget(self.option_sword_dungeon_reward)
+        self.verticalLayout_40.addWidget(self.option_sword_dungeon_reward)
+
+
+        self.verticalLayout_10.addLayout(self.verticalLayout_40)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1245,6 +1255,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.tabWidget.setCurrentIndex(2)
+        self.option_sword_dungeon_reward.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1338,7 +1349,8 @@ class Ui_MainWindow(object):
         self.label_for_option_small_key_mode.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))
         self.label_for_option_boss_key_mode.setText(QCoreApplication.translate("MainWindow", u"Boss Keys", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Empty Unrequired Dungeons", None))
-        self.option_sword_dungeon_reward.setText(QCoreApplication.translate("MainWindow", u"Sword Dungeon Rewards", None))
+        self.label_for_option_sword_reward.setText(QCoreApplication.translate("MainWindow", u"Sword Dungeon Rewards", None))
+        self.option_sword_dungeon_reward.setCurrentText("")
         self.groupBox_8.setTitle(QCoreApplication.translate("MainWindow", u"Endgame Bosses", None))
         self.option_imp_2.setText(QCoreApplication.translate("MainWindow", u"Skip Imprisoned 2", None))
         self.option_horde.setText(QCoreApplication.translate("MainWindow", u"Skip Horde", None))

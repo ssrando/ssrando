@@ -2250,7 +2250,7 @@ F210: # Mogma Turf
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 909 # Whitesword
+      trigstoryfid: 909 # White Sword
   - name: Cobal
     type: objmove
     id: 0xFC70
@@ -3027,7 +3027,7 @@ F301: # Ancient Harbour
     objtype: SCEN
     object:
       layer: 1
-  - name: Remove Skipper Text with Whitesword
+  - name: Remove Skipper Text with White Sword
     type: objdelete
     id: 0xFC0F
     layer: 0

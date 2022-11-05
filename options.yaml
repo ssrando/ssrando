@@ -254,7 +254,7 @@
   command: gondo-upgrades
   type: boolean
   default: false
-  help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for 
+  help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for
     the Beetle, Bow, Bug Net, and Slingshot.
   ui: option_gondo_upgrades
 # - name: Tadtone Shuffle
@@ -286,7 +286,7 @@
   choices:
     - Goddess Sword
     - Goddess Longsword
-    - Goddess Whitesword
+    - Goddess White Sword
     - Master Sword
     - True Master Sword
   default: Master Sword
@@ -520,9 +520,14 @@
   ui: option_tunic_swap
 - name: Force Sword Dungeon Reward
   command: sword-dungeon-reward
-  type: boolean
-  default: false
-  help: If activated, the final check of a required dungeon will be a sword (if possible). If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - Heart Container
+    - Final Check
+  default: None
+  help: Set if swords should be forced on the heart container or final check of a required dungeon will be a sword (or not at all), if possible. If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
   ui: option_sword_dungeon_reward
 - name: Open Earth Temple
   command: open-et
