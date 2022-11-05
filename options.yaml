@@ -612,6 +612,12 @@
   bits: 4
   help: How many treasures per Silent Realm you want to randomize.
   ui: option_trial_treasure_amount
+- name: Fill Dowsing on White Sword
+  command: dowsing-after-whitesword
+  type: boolean
+  default: true
+  help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after obtaining White Sword.
+  ui: option_fill_dowsing_on_white_sword
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

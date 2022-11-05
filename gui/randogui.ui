@@ -1490,6 +1490,57 @@
        </layout>
       </widget>
      </widget>
+     <widget class="QGroupBox" name="groupBox_18">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>270</y>
+        <width>191</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Dowsing Options</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_17">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>177</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_40">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_41"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_fill_dowsing_on_white_sword">
+          <property name="text">
+           <string>Fill Dowsing on White Sword</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_18">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::MinimumExpanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>70</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_5">
      <attribute name="title">
