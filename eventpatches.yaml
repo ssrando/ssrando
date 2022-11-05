@@ -871,7 +871,19 @@
     type: flowpatch
     index: 143
     flow:
-      param2: 909 # White Sword
+      param2: 909 # Whitesword
+  - name: remove Treasure Dowsing 1
+    onlyif: Option "dowsing-after-whitesword" Enabled
+    type: flowpatch
+    index: 123
+    flow:
+      next: -1
+  - name: remove Treasure Dowsing 2
+    onlyif: Option "dowsing-after-whitesword" Enabled
+    type: flowpatch
+    index: 13
+    flow:
+      next: -1
 114-Friend:
   - name: Fledge text # skips part about link's tunic and being a knight
     type: flowpatch
