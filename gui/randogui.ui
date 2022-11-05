@@ -1477,7 +1477,7 @@
          <height>211</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_40">
+       <layout class="QVBoxLayout" name="verticalLayout_43">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_41"/>
         </item>
