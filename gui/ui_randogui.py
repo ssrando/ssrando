@@ -215,7 +215,7 @@ class Ui_MainWindow(object):
         self.groupBox_17.setGeometry(QRect(10, 270, 331, 101))
         self.verticalLayoutWidget_16 = QWidget(self.groupBox_17)
         self.verticalLayoutWidget_16.setObjectName(u"verticalLayoutWidget_16")
-        self.verticalLayoutWidget_16.setGeometry(QRect(10, 20, 311, 75))
+        self.verticalLayoutWidget_16.setGeometry(QRect(10, 20, 311, 77))
         self.verticalLayout_39 = QVBoxLayout(self.verticalLayoutWidget_16)
         self.verticalLayout_39.setObjectName(u"verticalLayout_39")
         self.verticalLayout_39.setContentsMargins(0, 0, 0, 0)
@@ -922,6 +922,29 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_31.addItem(self.verticalSpacer_6)
 
+        self.groupBox_18 = QGroupBox(self.tab_4)
+        self.groupBox_18.setObjectName(u"groupBox_18")
+        self.groupBox_18.setGeometry(QRect(430, 270, 191, 241))
+        self.verticalLayoutWidget_17 = QWidget(self.groupBox_18)
+        self.verticalLayoutWidget_17.setObjectName(u"verticalLayoutWidget_17")
+        self.verticalLayoutWidget_17.setGeometry(QRect(10, 20, 177, 211))
+        self.verticalLayout_40 = QVBoxLayout(self.verticalLayoutWidget_17)
+        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
+        self.verticalLayout_40.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_41 = QVBoxLayout()
+        self.verticalLayout_41.setObjectName(u"verticalLayout_41")
+
+        self.verticalLayout_40.addLayout(self.verticalLayout_41)
+
+        self.option_fill_dowsing_on_white_sword = QCheckBox(self.verticalLayoutWidget_17)
+        self.option_fill_dowsing_on_white_sword.setObjectName(u"option_fill_dowsing_on_white_sword")
+
+        self.verticalLayout_40.addWidget(self.option_fill_dowsing_on_white_sword)
+
+        self.verticalSpacer_18 = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+
+        self.verticalLayout_40.addItem(self.verticalSpacer_18)
+
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
         self.tab_5.setObjectName(u"tab_5")
@@ -1206,7 +1229,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
 
@@ -1327,6 +1350,8 @@ class Ui_MainWindow(object):
         self.option_triforce_required.setText(QCoreApplication.translate("MainWindow", u"Triforce Required", None))
         self.label_for_option_triforce_shuffle.setText(QCoreApplication.translate("MainWindow", u"Triforce Shuffle", None))
         self.option_triforce_shuffle.setCurrentText("")
+        self.groupBox_18.setTitle(QCoreApplication.translate("MainWindow", u"Dowsing Options", None))
+        self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
