@@ -17,8 +17,10 @@ from .item_types import (
     DUNGEON_PROGRESS_ITEMS,
     DUNGEON_NONPROGRESS_ITEMS,
     KEY_PIECES,
+    RUPEES,
     SMALL_KEYS,
     BOSS_KEYS,
+    TREASURES,
     TRIFORCES,
 )
 from .constants import (
@@ -1637,3 +1639,33 @@ class Logic:
                 raise Exception("no new location reached!", spheres)
 
         return spheres
+
+    def calculate_chest_dowsing_info(self):
+        # Get info for which dowsing slot (if any) a chest should respond to.
+        dowsing_setting = self.rando.options["chest-dowsing"]
+        # Dowsing slots:
+        # 0: Main quest
+        # 1: Rupee
+        # 2: Key Piece / Scrapper Quest
+        # 3: Crystal
+        # 4: Heart
+        # 5: Goddess Cube
+        # 6: Look around (not usable afaik)
+        # 7: Treasure
+        # 8: None
+        if dowsing_setting == "Vanilla":
+            dowse = lambda _: 8
+        elif dowsing_setting == "All Chests":
+            dowse = lambda _: 0
+        else:
+            assert dowsing_setting == "Progress Items"
+            dowse = (
+                lambda v: 0
+                if v in self.all_progress_items
+                else 1
+                if v in RUPEES
+                else 7
+                if v in TREASURES
+                else 8
+            )
+        return {k: dowse(v) for k, v in self.done_item_locations.items()}

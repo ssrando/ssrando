@@ -5,10 +5,10 @@
 - Added option to randomize progression in Flooded Faron Woods (by CovenEsme)
   - Added Faron SotH check that is obtained when completing the Tadtones story quest
 - Added chest dowsing functionality as an option (by YourAverageLink)
-  - Uses the main quest dowsing slot (top slot), you now start with propeller dowsing to have something in that slot
-  - None: Main quest dowsing will not point to chests
-  - All: Main quest dowsing will point to all chests
-  - Matches Contents: Main quest dowsing will point to chests that contain progress items
+  - Uses the main quest dowsing slot (top slot), with a custom dowsing icon to indicate its usage for chests.
+  - Vanilla: No change in dowsing functionality (rupee/treasure dowsing works on chests)
+  - All Chests: Main quest dowsing will point to all chests. This means you cannot dowse for chests with rupee/treasure dowsing.
+  - Progress Items: Main quest dowsing will point to chests that contain progress items
   - Currently does not work on goddess chests
 - Added option to enable dowsing in dungeons (by YourAverageLink, but shoutouts to Zeldex)
 ### Changes

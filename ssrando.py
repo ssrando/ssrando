@@ -588,27 +588,7 @@ class Randomizer(BaseRandomizer):
             for (k, v) in self.logic.done_item_locations.items()
             if v != "Gratitude Crystal"
         )
-        dowsing_setting = self.options["chest-dowsing"]
-        # Dowsing slots:
-        # 0: Main quest
-        # 1: Rupee
-        # 2: Key Piece / Scrapper Quest
-        # 3: Crystal
-        # 4: Heart
-        # 5: Goddess Cube
-        # 6: Look around (not usable afaik)
-        # 7: Treasure
-        # 8: None
-        for (k, v) in self.logic.done_item_locations.items():
-            if dowsing_setting == "None":
-                plcmt_file.chest_dowsing[k] = 8
-            elif dowsing_setting == "All":
-                plcmt_file.chest_dowsing[k] = 0
-            elif dowsing_setting == "Progress Items":
-                if v in self.logic.all_progress_items:
-                    plcmt_file.chest_dowsing[k] = 0
-                else:
-                    plcmt_file.chest_dowsing[k] = 8
+        plcmt_file.chest_dowsing = self.logic.calculate_chest_dowsing_info()
         plcmt_file.options = self.options
         plcmt_file.required_dungeons = self.logic.required_dungeons
         plcmt_file.starting_items = self.logic.starting_items

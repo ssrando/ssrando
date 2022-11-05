@@ -41,7 +41,7 @@
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
-        "chest-dowsing": "None",
+        "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
         "hint-distribution": "Balanced"
     },
@@ -87,7 +87,7 @@
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "Full",
-        "chest-dowsing": "None",
+        "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
@@ -133,7 +133,7 @@
         "cube-sots": true,
         "precise-item": false,
         "shuffle-trial-objects": "Full",
-        "chest-dowsing": "None",
+        "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D EUD Off"
     },
@@ -179,7 +179,7 @@
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
-        "chest-dowsing": "None",
+        "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
@@ -225,7 +225,7 @@
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
-        "chest-dowsing": "None",
+        "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
         "hint-distribution": "S2 - 2D"
     },
@@ -271,7 +271,7 @@
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
-        "chest-dowsing": "None",
+        "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
@@ -317,7 +317,7 @@
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
-        "chest-dowsing": "None",
+        "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
@@ -363,7 +363,7 @@
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
-        "chest-dowsing": "None",
+        "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D EUD Off"
     },
@@ -409,7 +409,7 @@
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
-        "chest-dowsing": "None",
+        "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     }
