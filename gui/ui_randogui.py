@@ -732,9 +732,10 @@ class Ui_MainWindow(object):
         self.groupBox_6 = QGroupBox(self.tab_4)
         self.groupBox_6.setObjectName(u"groupBox_6")
         self.groupBox_6.setGeometry(QRect(420, 10, 201, 251))
+        self.groupBox_6.setMaximumSize(QSize(16777215, 16777215))
         self.verticalLayoutWidget_4 = QWidget(self.groupBox_6)
         self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
-        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 186, 221))
+        self.verticalLayoutWidget_4.setGeometry(QRect(10, 19, 186, 255))
         self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_4)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -772,6 +773,27 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_7.addLayout(self.verticalLayout_trialshuffle)
+
+        self.option_treasuresanity_in_silent_realm = QCheckBox(self.verticalLayoutWidget_4)
+        self.option_treasuresanity_in_silent_realm.setObjectName(u"option_treasuresanity_in_silent_realm")
+
+        self.verticalLayout_7.addWidget(self.option_treasuresanity_in_silent_realm)
+
+        self.horizontalLayout_21 = QHBoxLayout()
+        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
+        self.label_for_option_trial_treasure_amount = QLabel(self.verticalLayoutWidget_4)
+        self.label_for_option_trial_treasure_amount.setObjectName(u"label_for_option_trial_treasure_amount")
+
+        self.horizontalLayout_21.addWidget(self.label_for_option_trial_treasure_amount)
+
+        self.option_trial_treasure_amount = QSpinBox(self.verticalLayoutWidget_4)
+        self.option_trial_treasure_amount.setObjectName(u"option_trial_treasure_amount")
+        self.option_trial_treasure_amount.setMaximumSize(QSize(41, 16777215))
+
+        self.horizontalLayout_21.addWidget(self.option_trial_treasure_amount)
+
+
+        self.verticalLayout_7.addLayout(self.horizontalLayout_21)
 
         self.verticalSpacer = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
@@ -1266,6 +1288,8 @@ class Ui_MainWindow(object):
         self.option_randomize_entrances.setCurrentText("")
         self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Shuffle Trial Objects", None))
+        self.option_treasuresanity_in_silent_realm.setText(QCoreApplication.translate("MainWindow", u"Silent Realm Treasuresanity", None))
+        self.label_for_option_trial_treasure_amount.setText(QCoreApplication.translate("MainWindow", u"Treasure Amount", None))
         self.groupBox_9.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))

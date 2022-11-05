@@ -1135,6 +1135,12 @@
         <height>251</height>
        </rect>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="title">
        <string>Overworld</string>
       </property>
@@ -1144,7 +1150,7 @@
          <x>10</x>
          <y>19</y>
          <width>186</width>
-         <height>221</height>
+         <height>255</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1187,6 +1193,34 @@
           </item>
           <item>
            <widget class="QComboBox" name="option_shuffle_trial_objects"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_treasuresanity_in_silent_realm">
+          <property name="text">
+           <string>Silent Realm Treasuresanity</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_21">
+          <item>
+           <widget class="QLabel" name="label_for_option_trial_treasure_amount">
+            <property name="text">
+             <string>Treasure Amount</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="option_trial_treasure_amount">
+            <property name="maximumSize">
+             <size>
+              <width>41</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
