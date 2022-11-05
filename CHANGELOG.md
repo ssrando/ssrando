@@ -1,13 +1,34 @@
 # Changelog
 
 ## Dev
+### Options
+- Added option to make sword reward place swords on heart containers rather than final checks (by YourAverageLink)
+- Added option to randomize progression in Flooded Faron Woods (by CovenEsme)
+  - Added Faron SotH check that is obtained when completing the Tadtones story quest
 ### Changes
-### Bugfixes 
+- Presets (by cjs07)
+  - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
+  - The randomizer is distributed with a set of default presets that cannot be changed
+    - This list includes all 6 Season 2 Tournament modes and a new beginner friendly mode
+  - Presets persist between versions and are forward compatible with new versions.
+  - User preset data is sharable between users via the `presets.txt` file
+  - Only options included in permalinks are saved, with the exception of the spoiler log toggle
+- Added Water Dragon to the Great Tree (by CovenEsme)
+- Added entrance and exit to and from Flooded Great Tree (by CovenEsme)
+  - Entering Flooded Great Tree for the first time automatically starts the Tadtones story quest
+  - New logical option for completing the Owlan's Crystals check
+    - Added access to Flooded Faron as an alternative to needing bomb bag
+- Machi is no longer rescued after beating Skyview
+- Shooting the bell during pumpkin archery ends the minigame immediately
+### Bugfixes
+- Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
+- Fixed a softlock caused by collecting the last 2 tears in a trial too close together
 
 ## 1.3.2
 ### Changes
 - Added Boss Key (BK) hints as a new hint type (by Muzugalium)
   - A BK hint will point to the precise location of the boss key of a required dungeon
+- Added Stamina Potion for logical access to the end of Lanayru Mine and Lanayru Desert when Open LMF is set to Open (by CovenEsme)
 ### Bugfixes
 - Fixed a crash when the arc-replacements folder was missing
 
@@ -38,7 +59,7 @@
 - Added option to fight multiple Demises at the end of the game
 - Added option to allow custom music (by Battlecats59)
 - Added even more cutscene skips, plus text patches for clarity (by YourAverageLink)
-- - New Hint System (by cjs07)
+- New Hint System (by cjs07)
   - Removed all counter options for hints
   - Added Hint Distributions
     - Distributions can specufy the follwing *new* parameters
@@ -64,7 +85,7 @@
     - Sometimes
     - Goal (by YourAverageLink)
       - Goal hints are a new hint type that may be specified in a hint distribution. They act similar to SotS hints, but they specify a required dungeon boss locked by an item in that region
-        - Example: Gust Bellows on Sparring Hall Chest with LMF as a required dungeon = Knight Academy is on the path to Molderach
+        - Example: Gust Bellows on Sparring Hall Chest with LMF as a required dungeon = Knight Academy is on the path to Moldarach
       - At the moment, goal hints are not compatible with the separate cube sots; they will be hinted like normal goal hints
       - Goal hints inherit the dungeon sots limit and use the same limit.
         - Example: If one goal hint is placed for a dungeon, the sots dungeon limit is 2, and goal hints are ordered before sots in the distribution, only up to one dungeon sots hint may be placed.
@@ -80,10 +101,12 @@
 - Added "Main Node" option to Open LMF (by YourAverageLink)
   - When enabled, the fire, water, and lightning nodes will start out as active, but the player still needs to activate the main node (which requires an explosive to reveal the timeshift stone) to raise LMF.
 - Barren areas are now less likely to receive random location hints
+- Change goddess walls to only require Harp and BotG, this removes the Skyview dependency from Gorko's Goddess Wall
 - arc-replacements will now also replace arcs in stages
 ### Bugfixes
 - always copy layer 0, this fixes various bugs, where changes from previous randomizations were not reverted
 - fix gorko sometimes asking to draw bombs even when you don't have them
+- Butterflies now spawn correctly near trial gates
 
 ## 1.2.0
 ### Options
@@ -175,7 +198,7 @@
 ### Changes
 - Verify ISO checksum
 - Item after LMF is given before exiting out of the back
-- Treasure and Rupee dowsing are now obtainable after getting the Goddess Whitesword
+- Treasure and Rupee dowsing are now obtainable after getting the Goddess White Sword
 - Shorten timeshift stone cutscenes
 - Make it possible to not get pumpkin soup when doing lumpy pumpkin quest with spiral charge
 

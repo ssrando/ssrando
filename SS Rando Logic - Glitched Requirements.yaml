@@ -41,13 +41,13 @@ Quick Beetle:
 
 Tough Beetle:
   Progressive Beetle x4
-  
+
 Bow:
   Progressive Bow x1
-  
+
 Slingshot:
   Progressive Slingshot x1
-  
+
 Bug Net:
   Progressive Bug Net x1
 
@@ -170,8 +170,8 @@ Can Cut Tree:
 Can Unlock Combination Lock:
   Sword | Whip | Clawshots | Bow
 
-Can Hit Timeshiftstone:
-  Can Cut Tree | Whip | Distance Activator
+Can Hit Timeshift Stone:
+  Sword | Bomb Bag | Whip | Distance Activator
 
 # Can defeat enemy
 
@@ -191,12 +191,12 @@ Can Defeat Lezalfos:
 Can Defeat Ampilus:
   Damaging Item
 
-Can Defeat Molderach:
+Can Defeat Moldarach:
   Sword
   # Bow also works instead of sword but you need a LOT of arrows
 
-Can Uncover and Defeat Molderach:
-  Gust Bellows & Can Defeat Molderach
+Can Uncover and Defeat Moldarach:
+  Gust Bellows & Can Defeat Moldarach
 
 Can Defeat Armos:
   Gust Bellows & Sword
@@ -779,7 +779,7 @@ Can Set Scene Flag 2x02:
   (Can Access Earth Temple & Beetle) |
   Can Access West Part of Hub Room |
   (Can Access Ancient Cistern & Water Scale) |
-  (Can Access Sandship & SS Small Key x2 & Bow) |
+  (Can Access Sandship & Sandship Small Key x2 & Bow) |
   (Can Access Second Captured Mogma Room & Mogma Mitts) |
   Can Get Past SK Mini Boss Room
   # Skyloft is "Skyward Strike on Tablet Pedestal"
@@ -809,7 +809,7 @@ Can Set Scene Flag 2x20:
   Can Access Lanayru |
   (Can Access Skyview & Can Hit Switch for Skyview Behind Bars) |
   (Can Access Earth Temple & Can Lower First ET Drawbridge) |
-  Can Reach Armos Fight in LMF Boss Key Room |
+  Can Reach Armos Fight in Lanayru Mining Facility Boss Key Room |
   Can Free Second Captured Mogma |
   Can Access Sky Keep
   # Skyloft is "Play Ballad of the Goddess on top of light tower"
@@ -868,9 +868,9 @@ Can Set Scene Flag 5x04:
   Can Access Lake Floria above Rock |
   (Can Access Second Part of Eldin & (Digging Mitts | Hook Beetle)) |
   (Can Access Second Part of Lanayru Mines & (Bomb Bag | Hook Beetle)) |
-  (Can Access LMF Boss Key Door & Gust Bellows & Can Defeat Beamos) |
+  (Can Access Lanayru Mining Facility Boss Key Door & Gust Bellows & Can Defeat Beamos) |
   (Can Access Ancient Cistern & Water Scale) |
-  (Can Freely Change Sandship Temporality & SS Small Key x2) |
+  (Can Freely Change Sandship Temporality & Sandship Small Key x2) |
   (Can Access FS Plats Room & Mogma Mitts)
   # Skyloft is "Drop down into Academy Chimney / Zelda's Door Unlocked"
   # Sky is "Fi Text after obtaining Song of the Hero" #UNSURE
@@ -915,7 +915,7 @@ Knight Academy - Crystal in Knight Academy Plant:
   Nothing
 
 Knight Academy - Owlan's Crystals:
-  Can Reach Oolo in Faron 2
+  Can Reach Oolo in Faron 2 | (Can Access Most of Faron Woods & Can Access Flooded Faron Woods)
 
 Knight Academy - Cawlin's Letter:
   Goddess Harp
@@ -976,8 +976,8 @@ Central Skyloft - Potion Lady's Gift:
   Nothing
 
 Unlocked Endurance Potion:
-  Can Raise Lanayru Mining Facility | Option "open-lmf" Is "Open"
-  # potion is tied to raising LMF, it's always enabled with open lmf
+  Can Raise Lanayru Mining Facility
+  # Potion is tied to raising LMF, it's always enabled with open lmf
 
 Central Skyloft - Bazaar Goddess Chest:
   Goddess Cube in Ancient Harbour
@@ -1405,7 +1405,7 @@ Can Raise Gate of Time:
 Meets Gate of Time Sword Requirement:
   (Option "got-sword-requirement" Is "Goddess Sword" & Goddess Sword) |
   (Option "got-sword-requirement" Is "Goddess Longsword" & Goddess Longsword) |
-  (Option "got-sword-requirement" Is "Goddess Whitesword" & Goddess White Sword) |
+  (Option "got-sword-requirement" Is "Goddess White Sword" & Goddess White Sword) |
   (Option "got-sword-requirement" Is "Master Sword" & Master Sword) |
   (Option "got-sword-requirement" Is "True Master Sword" & True Master Sword)
 
@@ -1528,7 +1528,7 @@ Faron Woods - Rupee on Hollow Tree Root:
 
 Faron Woods - Rupee on Hollow Tree Branch:
   Can Access Most of Faron Woods & Beetle
-  
+
 ## Deep Woods
 
 Can Access Deep Woods:
@@ -1639,9 +1639,13 @@ Lake Floria - Gossip Stone outside Ancient Cistern:
 Lake Floria - Rupee High Ledge Outside Cistern Entrance:
   Can Access Floria Waterfall & Beetle
 
-#Flooded Faron Woods - Water Dragon's Reward:
+## Flooded Faron Woods
 
-#  Can Access Flooded Faron Woods & Water Scale
+Can Access Flooded Faron Woods:
+  Can Access Upper Great Tree & Water Scale
+
+Flooded Faron Woods - Faron Soth:
+  Can Access Flooded Faron Woods
 
 ### Eldin
 
@@ -1986,7 +1990,7 @@ Can Access Desert Gorge Statue:
   # When using the sword, rush it in the sand to defeat it, drowning in the sand won't make it respawn
 
 Can Access Front of Temple of Time:
-  (Can Access Desert Gorge Statue & (Hook Beetle | Slingshot))
+  Can Access Desert Gorge Statue & (Hook Beetle | Slingshot)
   # The Timeshift Stone in the big tree is reachable with a slingshot trickshot
   # Beating the dungeon will make one spawn inside ToT
   # If you already beat the dungeon and forgot to activate the ToT statue, RBM it with scene flag 8x40 "Check Temple of Time Statue"
@@ -2157,15 +2161,15 @@ Lanayru Gorge - Key Check:
   Can Access Lanayru Gorge & Beetle
 
 Lanayru Gorge - Seedling:
-  Can Access Lanayru Gorge & Gust Bellows & Can Hit Timeshiftstone & Digging Mitts
+  Can Access Lanayru Gorge & Gust Bellows & Can Hit Timeshift Stone & Digging Mitts
 
 Lanayru Gorge - Lanayru Soth:
-  Can Access Lanayru Gorge & Can Hit Timeshiftstone & Life Tree Fruit
+  Can Access Lanayru Gorge & Can Hit Timeshift Stone & Life Tree Fruit
 
 ## Lanayru Sand Sea
 
 Can Access Sand Sea:
-  Can Access Lanayru Caves & LanayruCaves Small Key x1 & Clawshots
+  Can Access Lanayru Caves & Lanayru Caves Small Key x1 & Clawshots
   # You can activate Skipper's boat with clawshots
 
 Lanayru Sand Sea - Rupee Harbor First Pillar:
@@ -2215,8 +2219,8 @@ Lanayru Sand Sea - Skipper's Retreat - Skydive Chest:
 # Shipyard
 
 Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05: # Roller Coaster Minigame
-  Can Access Sand Sea & Gust Bellows & Can Uncover and Defeat Molderach
-  # Do you need to defeat Molderach ? #UNSURE
+  Can Access Sand Sea & Gust Bellows & Can Uncover and Defeat Moldarach
+  # Do you need to defeat Moldarach ? #UNSURE
 
 Sand Sea - Gossip Stone in Shipyard:
   Can Access Sand Sea
@@ -2272,7 +2276,7 @@ Can Access Skyview 2:
   Can Access Skyview & Water Scale
 
 Can Unlock Goddess Walls:
-  Can Access Skyview 2 & Can Cut Tree & Ballad of the Goddess & Goddess Harp
+  Ballad of the Goddess & Goddess Harp
 
 Can Beat Skyview 2:
   Can Access Skyview 2 & Can Beat Skyview
@@ -2343,7 +2347,7 @@ Can Get to Skyview Second Part:
   (
     Can Get Past the First Skyview Room &
     (Can Raise Skyview Water Level in Left Room | Can Raise Skyview Water Level in Right Room) &
-    SV Small Key x1
+    Skyview Small Key x1
   ) |
   Can Get to Skyview Second Part Unloaded
   # To get past the locked door you need to be able to raise the water lever once (left room is easiest)
@@ -2351,7 +2355,7 @@ Can Get to Skyview Second Part:
 
 Can Get Past Staldra Room:
   (
-    (Can Get to Skyview Second Part & SV Small Key x2) |
+    (Can Get to Skyview Second Part & Skyview Small Key x2) |
     (Can Get to Skyview Last Room & Can Defeat or Evade Skyview Hanging Skulltula) |
     Can Get to Skyview Second Part Unloaded
   ) &
@@ -2504,10 +2508,10 @@ Can Beat Scaldera:
   # Scaldera can be beaten without bombs, see strats here: http://bombch.us/DPu1
 
 Can Beat Earth Temple:
-  Can Access Earth Temple Boss Door & ET Boss Key & Can Beat Scaldera & Goddess Sword
+  Can Access Earth Temple Boss Door & Earth Temple Boss Key & Can Beat Scaldera & Goddess Sword
 
 Earth Temple - Scaldera Heart Container:
-  Can Access Earth Temple Boss Door & ET Boss Key & Can Beat Scaldera
+  Can Access Earth Temple Boss Door & Earth Temple Boss Key & Can Beat Scaldera
 
 Earth Temple - Amber Tablet:
   Can Beat Earth Temple
@@ -2536,7 +2540,7 @@ Lanayru Mining Facility - First Chest in Hub Room:
   # The path that requires a small key also need Hook Beetle or Bombs
 
 Can Access LMF Key Locked Part:
-  Can Access LMF Second Room & LMF Small Key x1
+  Can Access LMF Second Room & Lanayru Mining Facility Small Key x1
 
 Can Access LMF Key Locked Room in Past:
   Can Access LMF Key Locked Part & (Hook Beetle | Bomb Bag) & (Beetle | Bow | Slingshot)
@@ -2565,25 +2569,25 @@ Lanayru Mining Facility - Chest in First West Room:
   Can Access LMF First West Room & Gust Bellows
   # To reveal the timeshift stone
 
-Can Access LMF Map Room:
+Can Access Lanayru Mining Facility Map Room:
   Can Access LMF First West Room & Gust Bellows & Can Defeat Beamos
   # To reveal the timeshift stone, and raise the wind gate
 
-Can Hit Timeshift Stone in LMF Map Room:
+Can Hit Timeshift Stone in Lanayru Mining Facility Map Room:
   Goddess Sword | Slingshot | Whip | Bow
   # You can skyward strike the timeshift stone through the gate (even on normal mode).
   # The bow, slingshot and whip also work
 
-Can Finish LMF Map Room:
-  Can Access LMF Map Room & Can Hit Timeshift Stone in LMF Map Room & Can Defeat Armos
+Can Finish Lanayru Mining Facility Map Room:
+  Can Access Lanayru Mining Facility Map Room & Can Hit Timeshift Stone in Lanayru Mining Facility Map Room & Can Defeat Armos
   # You need to defeat the Beamos guarding the door to the map room, but you also need to be able to defeat the Armos, thus sword required
   # The Staldras don't need to be defeated and are surprisingly not very aggressive, letting you push the block relatively easily
 
 Lanayru Mining Facility - Chest after Armos Fight:
-  Can Finish LMF Map Room
+  Can Finish Lanayru Mining Facility Map Room
 
 Can Access West Part of Hub Room:
-  Can Finish LMF Map Room | Can Access LMF Hub Room
+  Can Finish Lanayru Mining Facility Map Room | Can Access LMF Hub Room
 
 Lanayru Mining Facility - Chest behind First Crawlspace:
   Can Access West Part of Hub Room | Can Access LMF Hub Room Unloaded
@@ -2592,45 +2596,45 @@ Lanayru Mining Facility - Chest behind First Crawlspace:
 Lanayru Mining Facility - Chest in Spike Maze:
   Can Access West Part of Hub Room & Gust Bellows
 
-Can Access LMF Boss Key Door:
+Can Access Lanayru Mining Facility Boss Key Door:
   (Can Access West Part of Hub Room & Gust Bellows) |
-  (Can Access LMF Boss Key Room Exit & (Gust Bellows | Bomb Bag | Beetle))
+  (Can Access Lanayru Mining Facility Boss Key Room Exit & (Gust Bellows | Bomb Bag | Beetle))
 
 Can Get After LMF Minecart Escort:
-  (Can Access LMF Boss Key Door & Gust Bellows & Can Defeat Beamos) | Can Access LMF Hub Room
+  (Can Access Lanayru Mining Facility Boss Key Door & Gust Bellows & Can Defeat Beamos) | Can Access LMF Hub Room
   # When the enemy spaws in his little allies, you have time to activate the switch. Then, a Beamos.
   # Else, RBM open the Wind Gate. Scene Flag 5x80 is "Wind Gate near statue in hub room raised"
 
-Can Access LMF Boss Key Room Exit:
-  Can Finish LMF Boss Key Room |
+Can Access Lanayru Mining Facility Boss Key Room Exit:
+  Can Finish Lanayru Mining Facility Boss Key Room |
   (Can Get After LMF Minecart Escort & Can RBM Dx01) |
-  (Can Access LMF Boss Key Door & (Bomb Bag | Beetle))
+  (Can Access Lanayru Mining Facility Boss Key Door & (Bomb Bag | Beetle))
   # This refers to the part in Hub Room where Link can take the shortcut
   # RBM open the shortcut right above After Minecart Escort. Scene Flag Dx01 is "Block shortcut to bk room"
   # From Boss Door, Minecart Jump and activate timeshift stone
 
 Lanayru Mining Facility - Shortcut Chest in Main Hub:
-  Can Access LMF Boss Key Room Exit
+  Can Access Lanayru Mining Facility Boss Key Room Exit
 
-Can Enter LMF Boss Key Room:
-  (Can Get After LMF Minecart Escort & Gust Bellows) | Can Access LMF Boss Key Room Exit
+Can Enter Lanayru Mining Facility Boss Key Room:
+  (Can Get After LMF Minecart Escort & Gust Bellows) | Can Access Lanayru Mining Facility Boss Key Room Exit
   # Raise the wind gate by the second minecart
 
-Can Reach Armos Fight in LMF Boss Key Room:
-  Can Enter LMF Boss Key Room & Bomb Bag & Gust Bellows & (Sword | Distance Activator)
+Can Reach Armos Fight in Lanayru Mining Facility Boss Key Room:
+  Can Enter Lanayru Mining Facility Boss Key Room & Bomb Bag & Gust Bellows & (Sword | Distance Activator)
   # "Bomb panels", uncover timeshift stone, something to hit it (not included), crystals
 
-Can Finish LMF Boss Key Room:
-  Can Reach Armos Fight in LMF Boss Key Room & Can Defeat Armos
+Can Finish Lanayru Mining Facility Boss Key Room:
+  Can Reach Armos Fight in Lanayru Mining Facility Boss Key Room & Can Defeat Armos
 
 Lanayru Mining Facility - Boss Key Chest:
-  Can Finish LMF Boss Key Room
+  Can Finish Lanayru Mining Facility Boss Key Room
 
-Lanayru Mining Facility - Molderach Heart Container:
-  Can Access LMF Boss Key Door & LMF Boss Key & Can Defeat Molderach
+Lanayru Mining Facility - Moldarach Heart Container:
+  Can Access Lanayru Mining Facility Boss Key Door & Lanayru Mining Facility Boss Key & Can Defeat Moldarach
 
 Can Beat Lanayru Mining Facility:
-  Can Access LMF Boss Key Door & LMF Boss Key & Can Defeat Molderach & (Beetle | Bow)
+  Can Access Lanayru Mining Facility Boss Key Door & Lanayru Mining Facility Boss Key & Can Defeat Moldarach & (Beetle | Bow)
   # You need to be able to shoot the timeshift stone in the last room
 
 Lanayru Mining Facility - Goddess Harp:
@@ -2647,9 +2651,9 @@ Ancient Cistern - Rupee East Hand:
 
 Ancient Cistern - Rupee West Hand:
   Can Access Ancient Cistern & Water Scale
-  
+
 Can Lower Ancient Cistern Statue:
-  ((Can Access AC Main Room Vines | Can Access AC Thread) & Whip) | Can Access AC Boss Key Chest
+  ((Can Access AC Main Room Vines | Can Access AC Thread) & Whip) | Can Access Ancient Cistern Boss Key Chest
   # From main room or from under, or using the boss key sequence
 
 Can Remove Ancient Cistern First Key Lock:
@@ -2718,7 +2722,7 @@ Ancient Cistern - Bokoblin:
   Can Get to AC Boko Key Door & Whip
 
 Can Resurface from the AC Gutters:
-  Can Get to AC Boko Key Door & AC Small Key x2
+  Can Get to AC Boko Key Door & Ancient Cistern Small Key x2
 
 Can Access AC Main Room Vines:
   Can Access Ancient Cistern & ((Clawshots & Whip) | Can Resurface from the AC Gutters)
@@ -2733,14 +2737,14 @@ Can Access AC Thread:
   # In the Basement you can either clawshot around the boulder, or use hook Beetle to blow it up.
   # A very precise bomb throw also works (not in logic).
 
-Can Access AC Boss Key Chest:
+Can Access Ancient Cistern Boss Key Chest:
   Can Access AC Thread & (Whip | Can Do Cistern Clip)
   # Either you have to reraise the statue, or you reached AC Thread before it was lowered using Cistern Clip
   # Without Whip, Highflip is required to exit the basement
   # May have to be changed to include other tricks
 
 Ancient Cistern - Boss Key Chest:
-  Can Access AC Boss Key Chest
+  Can Access Ancient Cistern Boss Key Chest
 
 Can Defeat Koloktos:
   Whip & (Sword | Bomb Bag | Bow)
@@ -2765,7 +2769,7 @@ Ancient Cistern - Farore's Flame:
 ## Sandship
 
 Can Freely Change Sandship Temporality:
-  Can Access Sandship & Bow & (Sword | SS Small Key x2)
+  Can Access Sandship & Bow & (Sword | Sandship Small Key x2)
   # A Sword or two small keys are needed in order to be able to finish the Mast sequence and not be softlocked
 
 Can Pass Sandship Spume:
@@ -2778,7 +2782,7 @@ Sandship - Chest behind Combination Lock:
   # Past: Read the hint, hit the combination lock
 
 Sandship - Bow:
-  Can Access Sandship & SS Small Key x2 & Sword
+  Can Access Sandship & Sandship Small Key x2 & Sword
   # Could add Pouch for a shield
 
 Sandship - Chest at the Stern:
@@ -2813,14 +2817,14 @@ Sandship - Robot in Brig's Reward:
   Can Access Sandship Brig
 
 Sandship - Boss Key Chest:
-  Can Access Sandship & SS Small Key x2 & Bow
+  Can Access Sandship & Sandship Small Key x2 & Bow
 
 Can Beat Tentalus:
   Bow
   # Tentalus can only be defeated with bow, and be defeated with only bow
 
 Can Access Sandship Boss:
-  Can Freely Change Sandship Temporality & (SS Boss Key | Can RBM 3x10)
+  Can Freely Change Sandship Temporality & (Sandship Boss Key | Can RBM 3x10)
   # Scene Flag 3x10 is "Boss Door Opened"
 
 Sandship - Tentalus Heart Container:
@@ -2843,7 +2847,7 @@ Fire Sanctuary - Chest in First Room:
   # Little known fact, the only bokoblin you need to defeat is the blue one
 
 Can Access First FS Magmanos Room:
-  Can Access Fire Sanctuary & (Distance Activator | Bomb Bag) & FS Small Key x1
+  Can Access Fire Sanctuary & (Distance Activator | Bomb Bag) & Fire Sanctuary Small Key x1
 
 Fire Sanctuary - Chest in Second Room:
   Can Access First FS Magmanos Room
@@ -2860,13 +2864,13 @@ Fire Sanctuary - Chest near First Trapped Mogma:
   Can Get Past Second Room with Water Pod & (Gust Bellows | Clawshots)
 
 Fire Sanctuary - First Chest in Water Fruit Room:
-  Can Get Past Second Room with Water Pod & FS Small Key x2
+  Can Get Past Second Room with Water Pod & Fire Sanctuary Small Key x2
 
 Fire Sanctuary - Second Chest in Water Fruit Room:
-  Can Get Past Second Room with Water Pod & FS Small Key x2
+  Can Get Past Second Room with Water Pod & Fire Sanctuary Small Key x2
 
 Can Access FS Miniboss Room and Defeat Magmanos:
-  Can Get Past Second Room with Water Pod & Sword & FS Small Key x2
+  Can Get Past Second Room with Water Pod & Sword & Fire Sanctuary Small Key x2
   # Sword needed to grab a water plant
 
 Fire Sanctuary - Mogma Mitts:
@@ -2901,40 +2905,40 @@ Can Access FS Plats Room:
   (
     Can Access FS Miniboss Room and Defeat Magmanos &
     Mogma Mitts &
-    FS Small Key x3 &
+    Fire Sanctuary Small Key x3 &
     (Distance Activator | Bomb Bag)
   ) |
-  Can Access FS Boss Key Door
+  Can Access Fire Sanctuary Boss Key Door
   # To hit another water pod
 
 Fire Sanctuary - Plats' Chest:
   Can Access FS Plats Room
   # Scene Flag 5x80 is "Heart Piece Chest appears"
 
-Can Access FS Boss Key Door:
-  (Can Access FS Plats Room & Mogma Mitts) | Can Access FS Boss Key Room
+Can Access Fire Sanctuary Boss Key Door:
+  (Can Access FS Plats Room & Mogma Mitts) | Can Access Fire Sanctuary Boss Key Room
 
 Can Access Sleeping Statue:
-  Can Access FS Boss Key Door | Can Access FS Outdoor Unloaded
+  Can Access Fire Sanctuary Boss Key Door | Can Access FS Outdoor Unloaded
   # Do Pillar Jump, open the door in the middle, do one fronthop, 5 sidehops right, aim so that the door you went in is on the right of the screen, sidehop left
 
 Fire Sanctuary - Chest in Staircase Room:
   Can Access Sleeping Statue & Can Defeat Lezalfos & Clawshots
 
-Can Access FS Boss Key Room:
-  (Can Access Sleeping Statue & Can Defeat Lezalfos & Clawshots) | Can Access FS Boss Key Door
+Can Access Fire Sanctuary Boss Key Room:
+  (Can Access Sleeping Statue & Can Defeat Lezalfos & Clawshots) | Can Access Fire Sanctuary Boss Key Door
   # Scene Flag 7x02 is "Bars before Boss Door Open Up"
 
 Fire Sanctuary - Boss Key Chest:
-  Can Access FS Boss Key Room
+  Can Access Fire Sanctuary Boss Key Room
   # Scene Flag 4x80 is "Set after Moldorm death (allows bars to stay raised, set automatically by Fx08 and being in the bk room"
   # Scene Flag 4x40 is "Bars to the Boss Key Chest rise up"
 
 Fire Sanctuary - Ghirahim Heart Container:
-  Can Access FS Boss Key Door & FS Boss Key & Sword
+  Can Access Fire Sanctuary Boss Key Door & Fire Sanctuary Boss Key & Sword
 
 Can Beat Fire Sanctuary:
-  Can Access FS Boss Key Door & FS Boss Key & Goddess Sword
+  Can Access Fire Sanctuary Boss Key Door & Fire Sanctuary Boss Key & Goddess Sword
 
 Fire Sanctuary - Din's Flame:
   Can Beat Fire Sanctuary
@@ -3021,7 +3025,7 @@ Can Get Triforce of Courage:
   Can Get Past SK Ancient Cistern Room &
   (
     (
-      SK Small Key x1 &
+      Sky Keep Small Key x1 &
       Can Defeat Moblins &
       Can Defeat Bokoblins &
       Can Defeat Stalfos &

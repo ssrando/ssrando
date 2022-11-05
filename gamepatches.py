@@ -23,12 +23,7 @@ from tboxSubtypes import tboxSubtypes
 from musicrando import music_rando
 
 from logic.logic import Logic
-from logic.constants import (
-    SILENT_REALM_CHECKS,
-    SILENT_REALM_RELIC_CHECKS,
-    RUPEE_CHECKS,
-    QUICK_BEETLE_CHECKS,
-)
+from logic.constants import *
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -108,81 +103,81 @@ START_CUTSCENES = [
 ]
 
 START_ITEM_STORYFLAGS = {
-    "Emerald Tablet": 46,
-    "Ruby Tablet": 47,
-    "Amber Tablet": 48,
+    EMERALD_TABLET: 46,
+    RUBY_TABLET: 47,
+    AMBER_TABLET: 48,
 }
 
 # The stage name of each dungeon
 DUNGEON_STAGES = {
-    "Skyview": "D100",
-    "Ancient Cistern": "D101",
-    "Earth Temple": "D200",
-    "Fire Sanctuary": "D201",
-    "Lanayru Mining Facility": "D300",
-    "Sandship": "D301",
-    "Sky Keep": "D003_7",
+    SV: "D100",
+    AC: "D101",
+    ET: "D200",
+    FS: "D201",
+    LMF: "D300",
+    SSH: "D301",
+    SK: "D003_7",
 }
 
 # The stage for each map where there are dungeon entrances
 DUNGEON_ENTRANCE_STAGES = {
     # stage, room, scen
-    "Dungeon Entrance in Deep Woods": ("F101", 0, 1),
-    "Dungeon Entrance in Lake Floria": ("F102_1", 0, 1),
-    "Dungeon Entrance in Eldin Volcano": ("F200", 4, 0),
-    "Dungeon Entrance in Volcano Summit": ("F201_3", 0, 1),
-    "Dungeon Entrance in Lanayru Desert": ("F300", 0, 5),
-    "Dungeon Entrance in Sand Sea": ("F301_1", 0, 1),
-    "Dungeon Entrance on Skyloft": ("F000", 0, 48),
+    SV_ENTRANCE: ("F101", 0, 1),
+    AC_ENTRANCE: ("F102_1", 0, 1),
+    ET_ENTRANCE: ("F200", 4, 0),
+    FS_ENTRANCE: ("F201_3", 0, 1),
+    LMF_ENTRANCE: ("F300", 0, 5),
+    SSH_ENTRANCE: ("F301_1", 0, 1),
+    SK_ENTRANCE: ("F000", 0, 48),
 }
 
 DUNGEON_EXITS = {
     # stage, layer, room, entrance
-    "Dungeon Entrance in Deep Woods": ("F101", 0, 0, 1),
-    "Dungeon Entrance in Lake Floria": ("F102_1", 0, 0, 1),
-    "Dungeon Entrance in Eldin Volcano": ("F200", 0, 4, 1),
-    "Dungeon Entrance in Volcano Summit": ("F201_3", 0, 0, 1),
-    "Dungeon Entrance in Lanayru Desert": ("F300", 0, 0, 5),
-    "Dungeon Entrance in Sand Sea": ("F301_1", 0, 0, 4),
-    "Dungeon Entrance on Skyloft": ("F000", 0, 0, 53),
+    SV_ENTRANCE: ("F101", 0, 0, 1),
+    AC_ENTRANCE: ("F102_1", 0, 0, 1),
+    ET_ENTRANCE: ("F200", 0, 4, 1),
+    FS_ENTRANCE: ("F201_3", 0, 0, 1),
+    LMF_ENTRANCE: ("F300", 0, 0, 5),
+    SSH_ENTRANCE: ("F301_1", 0, 0, 4),
+    SK_ENTRANCE: ("F000", 0, 0, 53),
 }
 
 DUNGEON_FINISH_EXITS = {
     # stage, layer, room, entrance
-    "Dungeon Entrance in Deep Woods": ("F101", 0, 0, 1),
-    "Dungeon Entrance in Lake Floria": ("F102_1", 0, 0, 6),
-    "Dungeon Entrance in Eldin Volcano": ("F200", 0, 4, 1),
-    "Dungeon Entrance in Volcano Summit": ("F201_3", 0, 0, 1),
-    "Dungeon Entrance in Lanayru Desert": ("F300_4", 2, 0, 2),
-    "Dungeon Entrance in Sand Sea": ("F301", 0, 0, 3),
-    "Dungeon Entrance on Skyloft": ("F000", 0, 0, 52),
+    SV_ENTRANCE: ("F101", 0, 0, 1),
+    AC_ENTRANCE: ("F102_1", 0, 0, 6),
+    ET_ENTRANCE: ("F200", 0, 4, 1),
+    FS_ENTRANCE: ("F201_3", 0, 0, 1),
+    LMF_ENTRANCE: ("F300_4", 2, 0, 2),
+    SSH_ENTRANCE: ("F301", 0, 0, 3),
+    SK_ENTRANCE: ("F000", 0, 0, 52),
 }
 
 DUNGEON_ENTRANCES = {
     # stage, layer, room, entrance
-    "Skyview": ("D100", 0, 0, 0),
-    "Earth Temple": ("D200", 0, 1, 0),
-    "Lanayru Mining Facility": ("D300", 0, 0, 0),
-    "Ancient Cistern": ("D101", 0, 0, 0),
-    "Sandship": ("D301", 1, 0, 0),
-    "Fire Sanctuary": ("D201", 0, 0, 0),
-    "Sky Keep": ("D003_7", 0, 0, 4),
+    SV: ("D100", 0, 0, 0),
+    ET: ("D200", 0, 1, 0),
+    LMF: ("D300", 0, 0, 0),
+    AC: ("D101", 0, 0, 0),
+    SSH: ("D301", 1, 0, 0),
+    FS: ("D201", 0, 0, 0),
+    SK: ("D003_7", 0, 0, 4),
 }
 
 DUNGEON_FINISH_EXIT_SCEN = {
     # stage, room, index
-    "Skyview": ("B100_1", 0, 1),
-    "Earth Temple": ("B210", 0, 0),
-    "Lanayru Mining Facility": ("F300_4", 0, 3),
-    "Ancient Cistern": ("B101_1", 0, 3),
-    "Sandship": ("B301", 0, 4),
-    "Fire Sanctuary": ("B201_1", 0, 2),
-    "Sky Keep": ("F407", 0, 1),
+    SV: ("B100_1", 0, 1),
+    ET: ("B210", 0, 0),
+    LMF: ("F300_4", 0, 3),
+    AC: ("B101_1", 0, 3),
+    SSH: ("B301", 0, 4),
+    FS: ("B201_1", 0, 2),
+    SK: ("F407", 0, 1),
 }
 
 DUNGEON_EXIT_SCENS = {
     # stage, room, index
-    "Skyview": [
+    SV: [
         ("D100", 0, 0),
         ("D100", 0, 2),
         ("D100", 2, 0),
@@ -190,8 +185,8 @@ DUNGEON_EXIT_SCENS = {
         ("D100", 9, 0),
         ("B100_1", 0, 4),
     ],
-    "Earth Temple": [("D200", 1, 0), ("D200", 1, 1), ("D200", 2, 0), ("D200", 4, 2)],
-    "Lanayru Mining Facility": [
+    ET: [("D200", 1, 0), ("D200", 1, 1), ("D200", 2, 0), ("D200", 4, 2)],
+    LMF: [
         ("D300", 0, 0),
         ("D300", 0, 1),
         ("D300", 5, 4),
@@ -201,7 +196,7 @@ DUNGEON_EXIT_SCENS = {
         ("B300", 0, 1),
         ("F300_5", 0, 3),  # extra bird statue
     ],
-    "Ancient Cistern": [
+    AC: [
         ("D101", 0, 2),
         ("D101", 0, 3),
         ("D101", 3, 1),
@@ -209,7 +204,7 @@ DUNGEON_EXIT_SCENS = {
         ("D101", 5, 0),
         # ('B101_1', 0, 1)
     ],
-    "Sandship": [
+    SSH: [
         ("D301", 0, 0),
         ("D301", 0, 1),
         ("D301", 1, 2),
@@ -220,7 +215,7 @@ DUNGEON_EXIT_SCENS = {
         ("D301", 13, 0),
         ("B301", 0, 1),
     ],
-    "Fire Sanctuary": [
+    FS: [
         ("D201", 0, 1),
         ("D201", 3, 2),
         ("D201", 10, 2),
@@ -229,7 +224,7 @@ DUNGEON_EXIT_SCENS = {
         ("D201_1", 5, 3),
         ("D201_1", 6, 2),
     ],
-    "Sky Keep": [
+    SK: [
         ("D003_0", 0, 3),  # most of them not needed
         ("D003_1", 0, 2),
         ("D003_2", 0, 3),
@@ -249,67 +244,60 @@ DUNGEON_EXIT_SCENS = {
     ],
 }
 
-TRIAL_GATE_TO_TRIAL = {
-    "Trial Gate on Skyloft": "Skyloft Silent Realm",
-    "Trial Gate in Faron Woods": "Faron Silent Realm",
-    "Trial Gate in Eldin Volcano": "Eldin Silent Realm",
-    "Trial Gate in Lanayru Desert": "Lanayru Silent Realm",
-}
-
 TRIAL_STAGES = {
-    "Skyloft Silent Realm": "S000",
-    "Faron Silent Realm": "S100",
-    "Eldin Silent Realm": "S200",
-    "Lanayru Silent Realm": "S300",
+    SKYLOFT_SILENT_REALM: "S000",
+    FARON_SILENT_REALM: "S100",
+    ELDIN_SILENT_REALM: "S200",
+    LANAYRU_SILENT_REALM: "S300",
 }
 
 TRIAL_GATE_STAGES = {
     # stage, room, scen
-    "Trial Gate on Skyloft": ("F000", 0, 45),
-    "Trial Gate in Faron Woods": ("F100", 0, 8),
-    "Trial Gate in Eldin Volcano": ("F200", 2, 4),
-    "Trial Gate in Lanayru Desert": ("F300", 0, 7),
+    SKYLOFT_TRIAL_GATE: ("F000", 0, 45),
+    FARON_TRIAL_GATE: ("F100", 0, 8),
+    ELDIN_TRIAL_GATE: ("F200", 2, 4),
+    LANAYRU_TRIAL_GATE: ("F300", 0, 7),
 }
 
 TRIAL_EXITS = {
     # stage, layer, room, entrance
-    "Trial Gate on Skyloft": ("F000", 0, 0, 83),
-    "Trial Gate in Faron Woods": ("F100", 0, 0, 48),
-    "Trial Gate in Eldin Volcano": ("F200", 0, 2, 5),
-    "Trial Gate in Lanayru Desert": ("F300", 0, 0, 4),
+    SKYLOFT_TRIAL_GATE: ("F000", 0, 0, 83),
+    FARON_TRIAL_GATE: ("F100", 0, 0, 48),
+    ELDIN_TRIAL_GATE: ("F200", 0, 2, 5),
+    LANAYRU_TRIAL_GATE: ("F300", 0, 0, 4),
 }
 
 TRIAL_ENTRANCES = {
     # stage, layer, room, entrance
     # all trials are layer 2
-    "Skyloft Silent Realm": ("S000", 2, 0, 0),
-    "Faron Silent Realm": ("S100", 2, 0, 0),
-    "Eldin Silent Realm": ("S200", 2, 2, 0),
-    "Lanayru Silent Realm": ("S300", 2, 0, 0),
+    SKYLOFT_SILENT_REALM: ("S000", 2, 0, 0),
+    FARON_SILENT_REALM: ("S100", 2, 0, 0),
+    ELDIN_SILENT_REALM: ("S200", 2, 2, 0),
+    LANAYRU_SILENT_REALM: ("S300", 2, 0, 0),
 }
 
 TRIAL_EXIT_SCENS = {
     # stage, room, index
-    "Skyloft Silent Realm": ("S000", 0, 1),
-    "Faron Silent Realm": ("S100", 0, 1),
-    "Eldin Silent Realm": ("S200", 2, 1),
-    "Lanayru Silent Realm": ("S300", 0, 1),
+    SKYLOFT_SILENT_REALM: ("S000", 0, 1),
+    FARON_SILENT_REALM: ("S100", 0, 1),
+    ELDIN_SILENT_REALM: ("S200", 2, 1),
+    LANAYRU_SILENT_REALM: ("S300", 0, 1),
 }
 
 TRIAL_EXIT_GATE_IDS = {
     # silent realm name, silent realm WarpObj ID
-    "Skyloft Silent Realm": 0xFC26,
-    "Faron Silent Realm": 0xFC94,
-    "Eldin Silent Realm": 0xFC37,
-    "Lanayru Silent Realm": 0xFC18,
+    SKYLOFT_SILENT_REALM: 0xFC26,
+    FARON_SILENT_REALM: 0xFC94,
+    ELDIN_SILENT_REALM: 0xFC37,
+    LANAYRU_SILENT_REALM: 0xFC18,
 }
 
 TRIAL_COMPLETE_STORYFLAGS = {
     # trial gate, storyflag
-    "Trial Gate on Skyloft": 0x39A,
-    "Trial Gate in Faron Woods": 0x397,
-    "Trial Gate in Eldin Volcano": 0x398,
-    "Trial Gate in Lanayru Desert": 0x399,
+    SKYLOFT_TRIAL_GATE: 0x39A,
+    FARON_TRIAL_GATE: 0x397,
+    ELDIN_TRIAL_GATE: 0x398,
+    LANAYRU_TRIAL_GATE: 0x399,
 }
 
 BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
@@ -1161,7 +1149,7 @@ class GamePatcher:
         self.do_rel_patch()
         self.do_patch_title_screen_logo()
 
-        music_rando(self)
+        music_rando(self.placement_file, self.rando.modified_extract_path)
 
     def filter_option_requirement(self, entry):
         return not (
@@ -1239,7 +1227,7 @@ class GamePatcher:
         GOT_SWORD_MODES = {
             "Goddess Sword": 1,
             "Goddess Longsword": 2,
-            "Goddess Whitesword": 3,
+            "Goddess White Sword": 3,
             "Master Sword": 4,
             "True Master Sword": 5,
         }
@@ -1273,7 +1261,7 @@ class GamePatcher:
             self.all_asm_patches[exec_file].update(patches)
 
     def add_entrance_rando_patches(self):
-        for entrance, dungeon in self.placement_file.entrance_connections.items():
+        for entrance, dungeon in self.placement_file.dungeon_connections.items():
             entrance_stage, entrance_room, entrance_scen = DUNGEON_ENTRANCE_STAGES[
                 entrance
             ]
@@ -1298,7 +1286,7 @@ class GamePatcher:
 
             # handle the extra loading zone to the dungeon in Sand Sea from Ancient Harbor
             # yes I know there was probably a better way to do this but it's a one off special case
-            if entrance == "Dungeon Entrance in Sand Sea":
+            if entrance == SSH_ENTRANCE:
                 self.add_patch_to_stage(
                     "F301",
                     {
@@ -1339,10 +1327,7 @@ class GamePatcher:
             # it should not and they don't need to be touched if the LMF entrance is vanilla
             # the first time exit is taken care of by the DUNGEON_FINISH_EXIT_SCEN stuff
             # patch the secondary exit if it's not vanilla
-            if (
-                dungeon == "Lanayru Mining Facility"
-                and not entrance == "Dungeon Entrance in Lanayru Desert"
-            ):
+            if dungeon == LMF and not entrance == LMF_ENTRANCE:
                 self.add_patch_to_stage(
                     "F300_5",
                     {
@@ -1536,12 +1521,12 @@ class GamePatcher:
     def add_required_dungeon_patches(self):
         # Add required dungeon patches to eventpatches
         DUNGEON_TO_EVENTFILE = {
-            "Skyview": "201-ForestD1",
-            "Earth Temple": "301-MountainD1",
-            "Lanayru Mining Facility": "400-Desert",
-            "Ancient Cistern": "202-ForestD2",
-            "Sandship": "401-DesertD2",
-            "Fire Sanctuary": "304-MountainD2",
+            SV: "201-ForestD1",
+            ET: "301-MountainD1",
+            LMF: "400-Desert",
+            AC: "202-ForestD2",
+            SSH: "401-DesertD2",
+            FS: "304-MountainD2",
         }
 
         REQUIRED_DUNGEON_STORYFLAGS = [902, 903, 926, 927, 928, 929]
@@ -1761,22 +1746,22 @@ class GamePatcher:
 
     def add_keysanity(self):
         DUNGEON_COLORS = {
-            "Skyview": "<g<",
-            "Earth Temple": "<r+<",
-            "Lanayru Mining Facility": "<y<",
-            "Ancient Cistern": "<b<",
-            "Fire Sanctuary": "<r<",
-            "Sandship": "<y+<",
-            "Sky Keep": "<s<",
+            SV: "<g<",
+            ET: "<r+<",
+            LMF: "<y<",
+            AC: "<b<",
+            FS: "<r<",
+            SSH: "<y+<",
+            SK: "<s<",
             "Lanayru Caves": "<ye<",
         }
         KEYS_DUNGEONS = [
             # ('Skyview', 200), # already has a textbox
-            ("Lanayru Mining Facility", 201),
-            ("Ancient Cistern", 202),
-            ("Fire Sanctuary", 203),
-            ("Sandship", 204),
-            ("Sky Keep", 205),
+            (LMF, 201),
+            (AC, 202),
+            (FS, 203),
+            (SSH, 204),
+            (SK, 205),
             ("Lanayru Caves", 206),
         ]
         self.eventpatches["003-ItemGet"].append(
@@ -1796,7 +1781,7 @@ class GamePatcher:
                     "unk1": 5,
                     "unk2": 1,
                     "text": f"You got a {dungeon_and_color} Small Key!"
-                    if dungeon != "Lanayru Mining Facility"
+                    if dungeon != LMF
                     else f"You got a {dungeon_and_color} Small\nKey!",
                 }
             )
@@ -1823,13 +1808,13 @@ class GamePatcher:
                 }
             )
         MAPS_DUNGEONS = [
-            ("Skyview", 207),
-            ("Earth Temple", 208),
-            ("Lanayru Mining Facility", 209),
-            ("Ancient Cistern", 210),
-            ("Fire Sanctuary", 211),
-            ("Sandship", 212),
-            ("Sky Keep", 213),
+            (SV, 207),
+            (ET, 208),
+            (LMF, 209),
+            (AC, 210),
+            (FS, 211),
+            (SSH, 212),
+            (SK, 213),
         ]
         for dungeon, itemid in MAPS_DUNGEONS:
             dungeon_and_color = DUNGEON_COLORS[dungeon] + dungeon + ">>"
@@ -1937,7 +1922,8 @@ class GamePatcher:
                 else:
                     params.extend([ITEM_PARAM_MAP[item_type]] * len(objlist))
 
-            self.rando.rng.shuffle(locs)
+            rng = random.Random(self.placement_file.trial_object_seed)
+            rng.shuffle(locs)
             # print(locs)
             if "Relics" not in types_to_shuffle:
                 objlist = TRIAL_OBJECT_IDS[trial]["Relics"]

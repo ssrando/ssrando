@@ -359,6 +359,66 @@
        </layout>
       </widget>
      </widget>
+     <widget class="QGroupBox" name="groupBox_17">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>270</y>
+        <width>331</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Presets</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_16">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>311</width>
+         <height>78</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_39">
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Presets overwrite ALL game settings</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="presets_list"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <item>
+           <widget class="QPushButton" name="load_preset">
+            <property name="text">
+             <string>Load</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="save_preset">
+            <property name="text">
+             <string>Save</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="delete_preset">
+            <property name="text">
+             <string>Delete</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -656,6 +716,13 @@
           </item>
          </layout>
         </item>
+        <item row="6" column="2">
+         <widget class="QCheckBox" name="progression_flooded_faron">
+          <property name="text">
+           <string>Flooded Faron</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -869,7 +936,7 @@
          <x>10</x>
          <y>20</y>
          <width>181</width>
-         <height>221</height>
+         <height>236</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -923,11 +990,25 @@
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_sword_dungeon_reward">
-          <property name="text">
-           <string>Sword Dungeon Rewards</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_40">
+          <item>
+           <widget class="QLabel" name="label_for_option_sword_reward">
+            <property name="text">
+             <string>Sword Dungeon Rewards</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_sword_dungeon_reward">
+            <property name="currentText">
+             <string/>
+            </property>
+            <property name="currentIndex">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <spacer name="verticalSpacer_4">

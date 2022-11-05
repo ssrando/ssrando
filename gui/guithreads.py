@@ -62,7 +62,7 @@ class RandomizerThread(QThread):
                 return
             default_ui_progress_callback("repacking game...")
             repack_progress_cb = self.create_ui_progress_callback(
-                self.randomizer.get_total_progress_steps()
+                self.randomizer.get_total_progress_steps
             )
             self.wit_manager.reapack_game(
                 Path(self.output_folder),

@@ -19,9 +19,11 @@ from PySide6.QtWidgets import (
     QFileDialog,
     QMessageBox,
     QErrorMessage,
+    QInputDialog,
+    QLineEdit,
 )
 
-from logic.constants import ALL_TYPES
+from logic.constants import BANNABLE_TYPES
 from options import OPTIONS, Options
 from gui.progressdialog import ProgressDialog
 from gui.guithreads import RandomizerThread, ExtractSetupThread
@@ -34,6 +36,8 @@ from witmanager import WitManager
 import signal
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
+
+NEW_PRESET = "[New Preset]"
 
 
 class RandoGUI(QMainWindow):
@@ -113,6 +117,37 @@ class RandoGUI(QMainWindow):
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
 
+        # setup presets
+        self.default_presets = {}
+        self.user_presets = {}
+        self.ui.presets_list.addItem(NEW_PRESET)
+        sep_idx = 1
+        with (RANDO_ROOT_PATH / "gui" / "default_presets.json").open("r") as f:
+            try:
+                load_default_presets = json.load(f)
+                for preset in load_default_presets:
+                    self.ui.presets_list.addItem(preset)
+                    self.default_presets[preset] = load_default_presets[preset]
+                    sep_idx += 1
+            except Exception as e:
+                print("couldn't load default presets")
+        self.ui.presets_list.insertSeparator(sep_idx)
+        self.user_presets_path = "presets.txt"
+        if os.path.isfile(self.user_presets_path):
+            with open(self.user_presets_path) as f:
+                try:
+                    load_user_presets = json.load(f)
+                    for preset in load_user_presets:
+                        self.ui.presets_list.addItem(preset)
+                        self.user_presets[preset] = load_user_presets[preset]
+                except Exception as e:
+                    print("couldn't load user presets", e)
+        self.ui.presets_list.currentIndexChanged.connect(self.preset_selection_changed)
+        self.ui.load_preset.clicked.connect(self.load_preset)
+        self.ui.save_preset.clicked.connect(self.save_preset)
+        self.ui.delete_preset.clicked.connect(self.delete_preset)
+        self.preset_selection_changed()
+
         self.location_descriptions = {
             "skyloft": "Enables progression items to appear on Skyloft",
             "sky": "Enables progression items to appear in The Sky",
@@ -156,6 +191,7 @@ class RandoGUI(QMainWindow):
             "shops where progression items can appear",
             "expensive": "Enables progression items to be sold for more than 1000 rupees. Appleis to all shops"
             "where progression items can appear",
+            "flooded_faron": "Enables progression items to appear in Flooded Faron",
             "goddess": "Enables progression items to appear as items in Goddess Chests",
             "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
             "Faron Woods and Deep Woods",
@@ -170,7 +206,7 @@ class RandoGUI(QMainWindow):
             "sand_sea_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
             "in Sand Sea",
         }
-        for check_type in ALL_TYPES:
+        for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in self.options["banned-types"])
             if check_type == "crystal":
@@ -208,6 +244,7 @@ class RandoGUI(QMainWindow):
         self.ui.progression_goddess.clicked.connect(self.goddess_cubes_toggled)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.update_ui_for_settings()
+        self.update_settings()
         self.set_option_description(None)
 
         self.ui.tabWidget.setCurrentIndex(0)
@@ -253,7 +290,7 @@ class RandoGUI(QMainWindow):
         self.progress_dialog = ProgressDialog(
             "Randomizing",
             "Initializing...",
-            self.rando.get_total_progress_steps() + extra_steps,
+            self.rando.get_total_progress_steps + extra_steps,
         )
         self.randomizer_thread = RandomizerThread(
             self.rando, self.wit_manager, self.options["output-folder"]
@@ -360,7 +397,7 @@ class RandoGUI(QMainWindow):
                     widget.setValue(current_settings[option_key])
                     getattr(self.ui, f"label_for_{ui_name}").installEventFilter(self)
 
-        for check_type in ALL_TYPES:
+        for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in current_settings["banned-types"])
         self.enabled_tricks_model = QStringListModel()
@@ -500,7 +537,7 @@ class RandoGUI(QMainWindow):
 
     def get_banned_types(self):
         banned_types = []
-        for check_type in ALL_TYPES:
+        for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             if not widget.isChecked():
                 banned_types.append(check_type)
@@ -530,6 +567,88 @@ class RandoGUI(QMainWindow):
         self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
         self.ui.disabled_tricks.model().sort(0)
         self.update_settings()
+
+    def load_preset(self):
+        preset = self.ui.presets_list.currentText()
+        # prevent loading the new preset option
+        if preset == NEW_PRESET:
+            return
+        if preset in self.default_presets:
+            self.options.update_from_dict(self.default_presets[preset])
+        else:
+            self.options.update_from_dict(self.user_presets[preset])
+        self.update_ui_for_settings()
+        self.update_settings()
+
+    def save_preset(self):
+        preset = self.ui.presets_list.currentText()
+        if preset in self.default_presets:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage(
+                "Default presets are protected and cannot be updated"
+            )
+            return
+        if preset == NEW_PRESET:
+            (name, ok) = QInputDialog.getText(
+                self,
+                "Create New Preset",
+                "Enter a name for the new preset",
+                QLineEdit.Normal,
+            )
+            if ok:
+                if name in self.default_presets or name in self.user_presets:
+                    self.error_msg = QErrorMessage()
+                    self.error_msg.showMessage("Cannot have duplicate preset names")
+                    return
+                elif name == NEW_PRESET:
+                    self.error_msg = QErrorMessage()
+                    self.error_msg.showMessage("Invalid preset name")
+                    return
+                else:
+                    preset = name
+                    self.ui.presets_list.addItem(preset)
+                    self.ui.presets_list.setCurrentText(preset)
+        self.user_presets[preset] = self.options.to_dict(
+            True,
+            [
+                "no-spoiler-log",
+            ],
+        )
+        self.write_presets()
+
+    def preset_selection_changed(self):
+        preset = self.ui.presets_list.currentText()
+        if preset == NEW_PRESET:
+            self.ui.load_preset.setDisabled(True)
+            self.ui.save_preset.setDisabled(False)
+            self.ui.delete_preset.setDisabled(True)
+        elif preset in self.default_presets:
+            self.ui.load_preset.setDisabled(False)
+            self.ui.save_preset.setDisabled(True)
+            self.ui.delete_preset.setDisabled(True)
+        else:
+            self.ui.load_preset.setDisabled(False)
+            self.ui.save_preset.setDisabled(False)
+            self.ui.delete_preset.setDisabled(False)
+
+    def delete_preset(self):
+        preset = self.ui.presets_list.currentText()
+        # protect from deleting default presets
+        if preset == NEW_PRESET or preset in self.default_presets:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage(
+                "Default presets are protected and cannot be deleted"
+            )
+            return
+        index = self.ui.presets_list.currentIndex()
+        del self.user_presets[preset]
+        self.ui.presets_list.removeItem(index)
+        self.ui.presets_list.setCurrentIndex(0)
+        self.write_presets()
+
+    def write_presets(self):
+        with open(self.user_presets_path, "w") as f:
+            json.dump(self.user_presets, f)
 
     def eventFilter(self, target, event):
         if event.type() == QEvent.Enter:

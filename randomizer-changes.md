@@ -9,6 +9,7 @@
 - Obtaining a Tablet in Tablet Randomizer automatically opens the corresponding light pillar
 - Obtaining Ballad of the Goddess in Closed Thunderhead mode will immediately open it
 - The randomizer offers the ability to play on Hero Mode or on Normal Mode. On Normal Mode the skyward strike is weaker, but you take less damage and can get hearts. The logic will change with the option you select: some goddess cubes are assumed obtainable with the Goddess Sword on Hero Mode, but will require True Master Sword on Normal Mode for the longer skyward strike range
+- Goddess Walls can be revealed with just Ballad and Harp
 ## Goal
 - The Billboard in the Academy displays the required dungeons (2 by default)
 - All of them have to be beaten and the Master Sword has to be obtained to fight the imprisoned to access the past
@@ -41,6 +42,7 @@
 - Sealed Temple is opened from the Start
 - You don't have to talk to impa
 - Gorko's Bokoblin fight is skipped
+- Gorko's Goddess Wall only requires Ballad and Harp to spawn
 - When finishing the Kikwi Quest and talking to the elder, the item is given directly instead of appearing on the elders back
 - The layer of faron is 1 by default, and switches to 5 after starting Owlan's Kikwi quest. All important actors have been moved to be on both layers 1 and 5.
 - You can go past the Goron in Deep Woods without hitting the Goddess Cube
@@ -81,7 +83,7 @@
 - The dust pile in front of the door in the gust bellows room was removed to prevent being stuck inside
 ### Sandsea
 - All areas of Sandsea are open from the start (Skipper's Retreat, Shipyard, Pirate Stronghold)
-- The door to the Shipyard Construction Bay is opened by default and never locks. This skips doing the rollercoaster before the Molderach fight, and prevents being softlocked without gust bellows
+- The door to the Shipyard Construction Bay is opened by default and never locks. This skips doing the rollercoaster before the Moldarach fight, and prevents being softlocked without gust bellows
 - Ancient Sea Chart is required to access Sandship. It unlocks the dowsing ability. You cannot get the ship dowsing in Pirate Stronghold anymore
 ### Sandship
 - Sandship never reaches it's `post boss defeated state`, to make all checks still possible if Tentalus is fought early
