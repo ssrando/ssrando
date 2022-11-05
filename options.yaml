@@ -603,6 +603,12 @@
   default: true
   help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after obtaining White Sword.
   ui: option_fill_dowsing_on_white_sword
+- name: OHKO Mode
+  command: ohko-mode
+  type: boolean
+  default: false
+  help: If enabled, all damage to Link will be a one-hit kill, even on normal mode + regular guardian potion. Logic will adjust for the hot cave in Eldin or tricks that require damage. Enable at your own risk!
+  ui: option_ohko_mode
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

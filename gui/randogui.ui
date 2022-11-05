@@ -1308,7 +1308,7 @@
          <x>10</x>
          <y>20</y>
          <width>181</width>
-         <height>210</height>
+         <height>236</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -1334,30 +1334,19 @@
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_16">
-          <item>
-           <widget class="QLabel" name="label_for_option_rupoor">
-            <property name="text">
-             <string>Rupoor Mode</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="option_rupoor_mode"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_gondo_upgrades">
-          <property name="text">
-           <string>Place Scrap Shop Upgrades</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_16"/>
         </item>
         <item>
          <widget class="QCheckBox" name="option_hero_mode">
           <property name="text">
            <string>Hero Mode</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_ohko_mode">
+          <property name="text">
+           <string>OHKO Mode</string>
           </property>
          </widget>
         </item>
@@ -1394,7 +1383,7 @@
        </rect>
       </property>
       <property name="title">
-       <string>Triforce</string>
+       <string>Additional Item Options</string>
       </property>
       <widget class="QWidget" name="verticalLayoutWidget_15">
        <property name="geometry">
@@ -1402,7 +1391,7 @@
          <x>10</x>
          <y>20</y>
          <width>171</width>
-         <height>211</height>
+         <height>234</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_31">
@@ -1436,6 +1425,23 @@
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_gondo_upgrades">
+          <property name="text">
+           <string>Place Scrap Shop Upgrades</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_for_option_rupoor">
+          <property name="text">
+           <string>Rupoor Mode</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="option_rupoor_mode"/>
         </item>
         <item>
          <spacer name="verticalSpacer_6">
@@ -1477,7 +1483,7 @@
          <height>211</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_40">
+       <layout class="QVBoxLayout" name="verticalLayout_42">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_41"/>
         </item>

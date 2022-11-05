@@ -984,6 +984,10 @@ Can Open Trial Gate in Eldin Volcano:
   Can Access Second Part of Eldin & Din's Power & Goddess Harp
   # Scene Flag 9x40 is "Fireshield Earrings Trial Gate Opened"
 
+Can Survive Hot Cave:
+  Option "ohko-mode" Disabled | Fireshield Earrings
+  # Hot cave will kill the player on ohko mode, so you need earrings to pass.
+
 Eldin Silent Realm - Fireshield Earrings:
   Can Access Eldin Silent Realm
 
@@ -1012,10 +1016,13 @@ Eldin Volcano - Digging Spot behind Boulder on Sandy Slope:
   Can Access Second Part of Eldin & Digging Mitts
 
 Eldin Volcano - Digging Spot after Vents:
-  Can Access Second Part of Eldin & Digging Mitts
+  Can Access Second Part of Eldin & Digging Mitts & Can Survive Hot Cave
+  # Need to go through hot cave to reach this dig spot; could also perform an extending blow
 
 Eldin Volcano - Digging Spot after Draining Lava:
-  Can Access Second Part of Eldin & Digging Mitts
+  Can Access Second Part of Eldin & Digging Mitts & (Can Survive Hot Cave | (Bomb Bag | Hook Beetle))
+  # Need to either go through hot cave or bomb the rock blocking the other side
+  # TODO: Add whipping bombs trick
 
 Can Retrieve Sparrot's Crystal Ball:
   Can Access Second Part of Eldin & Clawshots
@@ -1917,8 +1924,9 @@ Lanayru Mining Facility - Goddess Harp:
 ## Ancient Cistern
 
 Can Do Cistern Clip:
-  Ancient Cistern - Cistern Clip Trick & Sword
+  Ancient Cistern - Cistern Clip Trick & Sword & Option "ohko-mode" Disabled
   # Jumpslash to land on collision, or try to backflip into it
+  # Jumpslash won't work on OHKO mode due to forced fall damage
 
 Can Lower Ancient Cistern Statue:
   ((Can Access AC Main Room Vines | Can Access AC Thread) & Whip) | Can Access Ancient Cistern Boss Key Chest
