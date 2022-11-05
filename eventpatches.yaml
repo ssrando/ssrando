@@ -46,6 +46,57 @@
     index: 537
     flow:
       next: -1
+  - name: Give Dowsings after Whitesword
+    type: flowpatch
+    onlyif: Option "dowsing-after-whitesword" Enabled
+    index: 542
+    flow:
+      next: Rupee Dowsing
+  - name: Rupee Dowsing
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 105 # Rupee Dowsing
+      next: Crystal Dowsing
+      param3: 0
+  - name: Crystal Dowsing
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 104 # Crystal Dowsing
+      next: Treasure Dowsing
+      param3: 0
+  - name: Treasure Dowsing
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 102 # Treasure Dowsing
+      next: Goddess Cube Dowsing
+      param3: 0
+  - name: Goddess Cube Dowsing
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 110 # Goddess Cube Dowsing
+      next: Open Dowsing Wheel
+      param3: 0
+  - name: Open Dowsing Wheel
+    type: flowadd
+    flow:
+      type: type3
+      subType: 6
+      param1: 0
+      param2: 19 # Crystal blinks
+      next: -1
+      param3: 56
   - name: Goddess Longsword Text
     type: textpatch
     index: 16
@@ -820,7 +871,19 @@
     type: flowpatch
     index: 143
     flow:
-      param2: 909 # White Sword
+      param2: 909 # Whitesword
+  - name: remove Treasure Dowsing 1
+    onlyif: Option "dowsing-after-whitesword" Enabled
+    type: flowpatch
+    index: 123
+    flow:
+      next: -1
+  - name: remove Treasure Dowsing 2
+    onlyif: Option "dowsing-after-whitesword" Enabled
+    type: flowpatch
+    index: 13
+    flow:
+      next: -1
 114-Friend:
   - name: Fledge text # skips part about link's tunic and being a knight
     type: flowpatch
