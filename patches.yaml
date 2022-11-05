@@ -1135,6 +1135,13 @@ F012r: # Batreaux House
     objtype: OBJS
     object:
       anglex: 0xFF00 # sets the flag to -1 (meaning open)
+  - name: Remove Crystal Dowsing
+    onlyif: Option "dowsing-after-whitesword" Enabled
+    type: objdelete
+    id: 0xFC23
+    layer: 1
+    room: 0
+    objtype: OBJ
 F013r: # Sparrot's House
   - name: Sparrot spawn
     type: objpatch
@@ -2304,6 +2311,13 @@ F210: # Mogma Turf
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: Remove Rupee Dowsing
+    onlyif: Option "dowsing-after-whitesword" Enabled
+    type: objdelete
+    id: 0xFC3B
+    layer: 0
+    room: 0
+    objtype: OBJ
 F211:
   - name: Remove thrill digger entry CS
     type: objpatch

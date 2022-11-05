@@ -1459,7 +1459,7 @@
      <widget class="QGroupBox" name="groupBox_18">
       <property name="geometry">
        <rect>
-        <x>420</x>
+        <x>430</x>
         <y>270</y>
         <width>191</width>
         <height>241</height>
@@ -1473,13 +1473,20 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>174</width>
+         <width>177</width>
          <height>211</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_40">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_41"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_fill_dowsing_on_white_sword">
+          <property name="text">
+           <string>Fill Dowsing on White Sword</string>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_42">
