@@ -597,12 +597,12 @@
   default: None
   help: Shuffles trial objects amongst themselves (within the same trial). Simple shuffles only tears and light fruits, advanced adds dusk relic spawn locations, and full adds stamina fruits
   ui: option_shuffle_trial_objects
-- name: Give all Dowsing after Whitesword
+- name: Fill Dowsing on White Sword
   command: dowsing-after-whitesword
   type: boolean
   default: true
-  help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after optaining whitesword
-#  ui: option_dowsing_after_whitesword
+  help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after obtaining White Sword.
+  ui: option_fill_dowsing_on_white_sword
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution
