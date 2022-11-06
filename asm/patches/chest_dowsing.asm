@@ -28,7 +28,7 @@ beq 0x8009845c ; propeller dowsing image
 .open "d_a_obj_warpNP.rel"
 
 ; never register trial gate dowsing
-.org 0xf00
-b 0xf0c ; skip over registration
+.org 0xbf8
+nop ; skip over init
 
 .close
