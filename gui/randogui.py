@@ -106,6 +106,7 @@ class RandoGUI(QMainWindow):
                     widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
 
+        # Tricks ui.
         self.enabled_tricks_model = QStringListModel()
         self.enabled_tricks_model.setStringList(
             OPTIONS["enabled-tricks-bitless"]["default"]
@@ -118,6 +119,20 @@ class RandoGUI(QMainWindow):
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
+
+        # Starting Items ui.
+        self.randomized_items_model = QStringListModel()
+        self.randomized_items_model.setStringList(
+            OPTIONS["starting-items"]["choices"]
+        )
+        self.starting_items_model = QStringListModel()
+        self.starting_items_model.setStringList(
+            OPTIONS["starting-items"]["default"]
+        )
+        self.ui.randomized_items.setModel(self.randomized_items_model)
+        self.ui.starting_items.setModel(self.starting_items_model)
+        self.ui.randomize_item.clicked.connect(self.remove_starting_item)
+        self.ui.start_with_item.clicked.connect(self.add_starting_item)
 
         # setup presets
         self.default_presets = {}
@@ -570,6 +585,18 @@ class RandoGUI(QMainWindow):
     def disable_trick(self):
         self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
         self.ui.disabled_tricks.model().sort(0)
+        self.update_settings()
+    
+    def remove_starting_item(self):
+        self.move_selected_rows(self.ui.starting_items, self.ui.randomized_items)
+        self.ui.starting_items.model().sort(0)
+        self.ui.randomized_items.model().sort(0)
+        self.update_settings()
+
+    def add_starting_item(self):
+        self.move_selected_rows(self.ui.randomized_items, self.ui.starting_items)
+        self.ui.starting_items.model().sort(0)
+        self.ui.randomized_items.model().sort(0)
         self.update_settings()
 
     def load_preset(self):
