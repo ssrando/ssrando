@@ -177,10 +177,10 @@ Near Waterfall:
     Past Waterfall Cave - Crystal in Loftwing Prison: Night & Waterfall Cave Crystals from above
     Waterfall Island - Crystal: Night & Waterfall Island Crystal from the ground
 
-    Open Temple Entrance: Stone of Trials
+    Open Temple Entrance: Stone of Trials & Day
     Open Cave Entrance: Sword | Bomb Bag
   exits:
-    Near Temple Entrance: Open Temple Entrance & Clawshots
+    Near Temple Entrance: Open Temple Entrance & Day & Clawshots
     Waterfall Island: Clawshots
     Waterfall Cave Upper: Open Cave Entrance
 
@@ -190,6 +190,7 @@ Near Waterfall:
 
 
   Near Temple Entrance:
+    allowed-time-of-day: DayOnly
     exits:
       Exit to Sky Keep: Nothing
       Central: Clawshots
