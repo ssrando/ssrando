@@ -1,37 +1,37 @@
 # macros, for logic snippets used in lots of different areas
 
 Practice Sword:
-  $ Progressive Sword x 1
+  ~ Progressive Sword x 1
 
 Goddess Sword:
-  $ Progressive Sword x 2
+  ~ Progressive Sword x 2
 
 Goddess Longsword:
-  $ Progressive Sword x 3
+  ~ Progressive Sword x 3
 
 Goddess White Sword:
-  $ Progressive Sword x 4
+  ~ Progressive Sword x 4
 
 Master Sword:
-  $ Progressive Sword x 5
+  ~ Progressive Sword x 5
 
 True Master Sword:
-  $ Progressive Sword x 6
+  ~ Progressive Sword x 6
 
 Beetle:
-  $ Progressive Beetle x 1
+  ~ Progressive Beetle x 1
 
 Hook Beetle:
-  $ Progressive Beetle x 2
+  ~ Progressive Beetle x 2
 
 Three Beetles:
   Progressive Beetle x 3
 
 Quick Beetle:
-  $ Three Beetles | Gondo's Upgrades - Upgrade to Quick Beetle
+  ~ Three Beetles | Gondo's Upgrades - Upgrade to Quick Beetle
 
 Tough Beetle:
-  $ Progressive Beetle x 4 | Gondo's Upgrades - Upgrade to Tough Beetle
+  ~ Progressive Beetle x 4 | Gondo's Upgrades - Upgrade to Tough Beetle
 
 Bow:
   Progressive Bow x 1
@@ -49,7 +49,7 @@ Mogma Mitts:
   Progressive Mitts x 2
 
 Pouch:
-  $ Progressive Pouch x 1
+  ~ Progressive Pouch x 1
 
 Medium Wallet:
   Progressive Wallet x 1
@@ -114,7 +114,7 @@ Song of the Hero:
 Complete Triforce:
   Triforce of Courage & Triforce of Wisdom & Triforce of Power
 
-Empty Bottle_ : $ Empty Bottle x 1
+Empty Bottle_ : ~ Empty Bottle x 1
 
 Bottle:
   Pouch & Skyloft - Item Check Access & Empty Bottle_
@@ -123,101 +123,37 @@ Can Collect Water: Impossible # To be completed locally
 
 Water Bottle: Bottle & Can Collect Water
 
-5 Single Gratitude Crystals:
-  Gratitude Crystal x 5
+Gratitude Crystals:
+  $ 1 x Gratitude Crystal + 5 x Gratitude Crystal Pack
 
-10 Single Gratitude Crystals:
-  Gratitude Crystal x 10
-
-15 Single Gratitude Crystals:
-  Gratitude Crystal x 15
-
-1 Gratitude Crystal Pack:
-  $ Gratitude Crystal Pack x 1
-
-2 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 2
-
-3 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 3
-
-4 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 4
-
-5 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 5
-
-6 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 6
-
-7 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 7
-
-8 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 8
-
-9 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 9
-
-10 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 10
-
-11 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 11
-
-12 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 12
-
-13 Gratitude Crystal Packs:
-  $ Gratitude Crystal Pack x 13
+5 Gratitude Crystals_:  Gratitude Crystals >= 5
+10 Gratitude Crystals_: Gratitude Crystals >= 10
+30 Gratitude Crystals_: Gratitude Crystals >= 30
+40 Gratitude Crystals_: Gratitude Crystals >= 40
+50 Gratitude Crystals_: Gratitude Crystals >= 50
+70 Gratitude Crystals_: Gratitude Crystals >= 70
+80 Gratitude Crystals_: Gratitude Crystals >= 80
 
 5 Gratitude Crystals:
-  May Get 5 Crystals Token & (
-  5 Single Gratitude Crystals | 1 Gratitude Crystal Pack
-  )
+  May Get 5 Crystals Token & 5 Gratitude Crystals_
 
 10 Gratitude Crystals:
-  May Get 10 Crystals Token & (
-  10 Single Gratitude Crystals |
-  (5 Single Gratitude Crystals & 1 Gratitude Crystal Pack) |
-  2 Gratitude Crystal Packs
-  )
+  May Get 10 Crystals Token & 10 Gratitude Crystals_
 
 30 Gratitude Crystals:
-  May Get 30 Crystals Token & (
-  (15 Single Gratitude Crystals & 3 Gratitude Crystal Packs) |
-  (10 Single Gratitude Crystals & 4 Gratitude Crystal Packs) |
-  (5 Single Gratitude Crystals & 5 Gratitude Crystal Packs) |
-  6 Gratitude Crystal Packs
-  )
+  May Get 30 Crystals Token & 30 Gratitude Crystals_
 
 40 Gratitude Crystals:
-  May Get 40 Crystals Token & (
-  (15 Single Gratitude Crystals & 5 Gratitude Crystal Packs) |
-  (10 Single Gratitude Crystals & 6 Gratitude Crystal Packs) |
-  (5 Single Gratitude Crystals & 7 Gratitude Crystal Packs) |
-  8 Gratitude Crystal Packs
-  )
+  May Get 40 Crystals Token & 40 Gratitude Crystals_
 
 50 Gratitude Crystals:
-  May Get 50 Crystals Token & (
-  (15 Single Gratitude Crystals & 7 Gratitude Crystal Packs) |
-  (10 Single Gratitude Crystals & 8 Gratitude Crystal Packs) |
-  (5 Single Gratitude Crystals & 9 Gratitude Crystal Packs) |
-  10 Gratitude Crystal Packs
-  )
+  May Get 50 Crystals Token & 50 Gratitude Crystals_
 
 70 Gratitude Crystals:
-  May Get 70 Crystals Token & (
-  (15 Single Gratitude Crystals & 11 Gratitude Crystal Packs) |
-  (10 Single Gratitude Crystals & 12 Gratitude Crystal Packs) |
-  (5 Single Gratitude Crystals & 13 Gratitude Crystal Packs)
-  )
+  May Get 70 Crystals Token & 70 Gratitude Crystals_
 
 80 Gratitude Crystals:
-  May Get 80 Crystals Token & (
-  15 Single Gratitude Crystals & 13 Gratitude Crystal Packs
-  )
+  May Get 80 Crystals Token & 80 Gratitude Crystals_
 
 Sword:
   Practice Sword

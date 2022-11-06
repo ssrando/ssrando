@@ -126,12 +126,12 @@ Central:
       entrance: Gondo Upgrades On option
       locations:
         Upgrade to Quick Beetle:
-          $ Hook Beetle &
+          ~ Hook Beetle &
           Faron - Deep Woods - Hornet Larvae Farming &
           Lanayru - Mine - Ancient Flower Farming &
           Sky - Clean Cut Minigame # Golden Skull farming
         Upgrade to Tough Beetle:
-          $ Quick Beetle &
+          ~ Quick Beetle &
           Faron - Woods - Amber Relic Farming &
           Lanayru - Mine - Ancient Flower Farming &
           Sky - Clean Cut Minigame # Goddess Plumes / Blue Bird Feathers farming

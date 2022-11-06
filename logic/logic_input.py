@@ -4,7 +4,13 @@ from collections import deque
 from enum import Enum
 from dataclasses import dataclass, field
 
-from .logic_expression import DNFInventory, LogicExpression
+from .logic_expression import (
+    Counter,
+    DNFInventory,
+    LogicExpression,
+    Requirement,
+    unknown_req,
+)
 from .inventory import EXTENDED_ITEM, Inventory
 from .constants import *
 
@@ -21,6 +27,7 @@ class defaultfactorydict(dict):
 
 
 events: List[EXTENDED_ITEM_NAME] = []
+counters: Dict[EXTENDED_ITEM_NAME, Counter] = {}
 areas_list: List[Area[LogicExpression]] = []
 
 LE = TypeVar("LE")
@@ -74,16 +81,24 @@ class Area(Generic[LE]):
         if (d := raw_dict.get("macros")) is not None:
             area.abstract = True
             assert "locations" not in raw_dict
-            area.locations = {k: LogicExpression.parse(v) for k, v in d.items()}
-            for k in d:
+            d2 = {k: LogicExpression.parse(v) for k, v in d.items()}
+            for k, v in d2.items():
+                if isinstance(v, Counter):
+                    counters[EIN(k)] = v
+                    continue
+                area.locations[k] = v
                 if " - " not in k:
                     events.append(with_sep_full(name, k))
 
         if (d := raw_dict.get("locations")) is not None:
             area.abstract = False
             assert "macros" not in raw_dict
-            area.locations = {k: LogicExpression.parse(v) for k, v in d.items()}
-            for k in d:
+            d2 = {k: LogicExpression.parse(v) for k, v in d.items()}
+            for k, v in d2.items():
+                if isinstance(v, Counter):
+                    counters[EIN(k)] = v
+                    continue
+                area.locations[k] = v
                 if " - " not in k:
                     events.append(with_sep_full(name, k))
 
@@ -133,7 +148,7 @@ class Area(Generic[LE]):
 
 
 class Areas:
-    areas: Dict[str, Area[DNFInventory]]
+    areas: Dict[str, Area[Requirement]]
 
     def __getitem__(self, loc):
         return self.areas[loc]
@@ -237,6 +252,7 @@ class Areas:
 
         assert not EXTENDED_ITEM.complete
         EXTENDED_ITEM.items_list.extend(events)
+        EXTENDED_ITEM.counters |= counters
         for area in areas_list:
             if area.allowed_time_of_day == Both:
                 EXTENDED_ITEM.items_list.append(make_day(area.name))
@@ -290,7 +306,7 @@ class Areas:
             fexit,
         )
 
-        self.areas: Dict[str, Area[DNFInventory]] = areas
+        self.areas: Dict[str, Area[Requirement]] = areas
         self.all_areas.sub_areas = {k: v for (k, v) in all_areas.items() if k != ""}
 
         self.short_full: List[Tuple[str, EXTENDED_ITEM_NAME]] = [("", EIN(""))]
@@ -383,8 +399,9 @@ class Areas:
 
         self.exit_to_area = {}
 
-        self.requirements = [DNFInventory() for _ in EXTENDED_ITEM.items()]
-        self.opaque = [True for _ in EXTENDED_ITEM.items()]
+        self.requirements: List[Requirement] = [
+            unknown_req for _ in EXTENDED_ITEM.items()
+        ]
 
         reqs = self.requirements  # Local alias
         DNFInv = DNFInventory
@@ -395,8 +412,6 @@ class Areas:
                 assert area.allowed_time_of_day == Both
                 darea_bit = EXTENDED_ITEM[make_day(area_name)]
                 narea_bit = EXTENDED_ITEM[make_night(area_name)]
-                self.opaque[darea_bit] = False
-                self.opaque[narea_bit] = False
                 reqs[darea_bit] |= DNFInv(narea_bit)
                 reqs[narea_bit] |= DNFInv(darea_bit)
 
@@ -423,7 +438,6 @@ class Areas:
                     timed_req &= DNFInventory(check_types)
 
                 reqs[loc_bit] |= timed_req
-                self.opaque[loc_bit] = req.opaque
 
             for exit, req in area.exits.items():
                 if exit in self.areas:  # Logical exit, the name is the area
@@ -431,8 +445,6 @@ class Areas:
                     if area_dest.allowed_time_of_day == Both:
                         darea_bit = EXTENDED_ITEM[make_day(area_dest.name)]
                         narea_bit = EXTENDED_ITEM[make_night(area_dest.name)]
-                        self.opaque[darea_bit] = False
-                        self.opaque[narea_bit] = False
 
                         if area.allowed_time_of_day == Both:
                             reqs[darea_bit] |= req.day_only() & DNFInv(
@@ -447,7 +459,6 @@ class Areas:
                             reqs[narea_bit] |= req.night_only() & DNFInv(EIN(area_name))
                     else:
                         area_bit = EXTENDED_ITEM[area_dest.name]
-                        self.opaque[area_bit] = False
                         if area_dest.allowed_time_of_day == DayOnly:
                             timed_req = req.day_only()
                             timed_area = make_day(area_name)
@@ -464,7 +475,6 @@ class Areas:
                 else:  # Map exit
                     exit_full = with_sep_full(area_name, exit)
                     exit_bit = EXTENDED_ITEM[exit_full]
-                    self.opaque[exit_bit] = False
                     self.exit_to_area[exit_full] = area
                     if area.abstract:
                         assert exit == START
@@ -487,8 +497,6 @@ class Areas:
                 if allowed_time_of_day == Both:
                     darea_bit = EXTENDED_ITEM[make_day(area_name)]
                     narea_bit = EXTENDED_ITEM[make_night(area_name)]
-                    self.opaque[darea_bit] = False
-                    self.opaque[narea_bit] = False
                     reqs[darea_bit] |= DNFInv(make_day(entrance))
                     reqs[narea_bit] |= DNFInv(make_night(entrance))
                 else:
@@ -499,5 +507,4 @@ class Areas:
                             area_bit = EXTENDED_ITEM[make_night(area_name)]
                     else:
                         area_bit = EXTENDED_ITEM[area_name]
-                    self.opaque[area_bit] = False
                     reqs[area_bit] |= DNFInv(entrance)

@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Dict, List, Callable, Optional, Set, Tuple
 from dataclasses import dataclass
-from functools import reduce
+from functools import cached_property, reduce
 from abc import ABC
 import re
 from itertools import product, combinations
@@ -13,10 +13,7 @@ from .constants import EXTENDED_ITEM_NAME, number, ITEM_COUNTS, RAW_ITEM_NAMES
 class LogicExpression(ABC):
     opaque: bool = False
 
-    def localize(self, localizer: Callable[[str], Optional[str]]) -> LogicExpression:
-        raise NotImplementedError
-
-    def eval(self, inventory: Inventory) -> bool:
+    def localize(self, localizer: Callable[[str], Optional[str]]) -> Requirement:
         raise NotImplementedError
 
     @staticmethod
@@ -24,7 +21,24 @@ class LogicExpression(ABC):
         raise NotImplementedError
 
 
-class DNFInventory(LogicExpression):
+class Requirement(LogicExpression):
+    def eval(self, inventory: Inventory) -> bool:
+        raise NotImplementedError
+
+    def day_only(self) -> Requirement:
+        raise NotImplementedError
+
+    def night_only(self) -> Requirement:
+        raise NotImplementedError
+
+    def __or__(self, other) -> Requirement:
+        raise NotImplementedError
+
+    def __and__(self, other) -> Requirement:
+        raise NotImplementedError
+
+
+class DNFInventory(Requirement):
     disjunction: Dict[Inventory, Inventory]
 
     def __init__(
@@ -118,7 +132,75 @@ class DNFInventory(LogicExpression):
         )
 
 
-def InventoryAtom(item_name: str, quantity: int) -> DNFInventory:
+@dataclass
+class Counter:
+    targets: Dict[EXTENDED_ITEM, int]
+
+    def localize(self, *args):
+        return self
+
+    def compute(self, inventory: Inventory):
+        return sum(v * inventory[k] for k, v in self.targets.items())
+
+
+@dataclass
+class CounterThreshold(Requirement):
+    target: EXTENDED_ITEM_NAME
+    threshold: int
+
+    @cached_property
+    def counter(self) -> Counter:
+        return EXTENDED_ITEM.counters[self.target]
+
+    def eval(self, inventory: Inventory):
+        return self.counter.compute(inventory) >= self.threshold
+
+    def localize(self, *args):
+        return self
+
+    def day_only(self):
+        return self
+
+    def night_only(self):
+        return self
+
+    def __or__(self, other) -> CounterThreshold:
+        if isinstance(other, CounterThreshold) and other.target == self.target:
+            return CounterThreshold(self.target, min(self.threshold, other.threshold))
+        else:
+            raise ValueError
+
+    def __and__(self, other) -> CounterThreshold:
+        if isinstance(other, CounterThreshold) and other.target == self.target:
+            return CounterThreshold(self.target, max(self.threshold, other.threshold))
+        else:
+            raise ValueError
+
+
+class UnknownReq(Requirement):
+    def eval(self, inventory: Inventory):
+        return False
+
+    def localize(self, *args):
+        return self
+
+    def day_only(self):
+        return self
+
+    def night_only(self):
+        return self
+
+    def __or__(self, other: Requirement) -> Requirement:
+        return other
+
+    def __and__(self, other) -> UnknownReq:
+        raise ValueError
+
+
+unknown_req = UnknownReq()
+
+
+def InventoryAtom(item_name: str, quantity: int) -> Requirement:
     disjunction = set()
     for comb in combinations(range(ITEM_COUNTS[item_name]), quantity):
         i = Inventory()
@@ -128,16 +210,13 @@ def InventoryAtom(item_name: str, quantity: int) -> DNFInventory:
     return DNFInventory(disjunction)
 
 
-def EventAtom(event_address: EXTENDED_ITEM_NAME) -> DNFInventory:
+def EventAtom(event_address: EXTENDED_ITEM_NAME) -> Requirement:
     return DNFInventory(event_address)
 
 
 @dataclass
 class BasicTextAtom(LogicExpression):
     text: str
-
-    def eval(self, *args):
-        raise TypeError("Text must be localized to be evaluated")
 
     def localize(self, localizer: Callable[[str], EXTENDED_ITEM_NAME | None]):
         if (v := localizer(self.text)) is None:
@@ -182,11 +261,6 @@ class AndCombination(LogicExpression):
         ret.opaque = self.opaque
         return ret
 
-    def eval(self, *args):
-        raise TypeError(
-            f"Some argument of this {type(self).__name__} cannot be evaluated, or something has gone wrong"
-        )
-
 
 @dataclass
 class OrCombination(LogicExpression):
@@ -212,19 +286,14 @@ class OrCombination(LogicExpression):
         ret.opaque = self.opaque
         return ret
 
-    def eval(self, *args):
-        raise TypeError(
-            f"Some argument of this {type(self).__name__} cannot be evaluated, or something has gone wrong"
-        )
-
 
 # Parsing
 
 from lark import Lark, Transformer, v_args
 
-exp_grammar = """
+exp_grammar = r"""
     ?start: disjunction
-        | "$" disjunction -> mk_opaque
+        | "~" disjunction -> mk_opaque
 
     ?disjunction: conjunction
         | disjunction "|" conjunction -> mk_or
@@ -232,11 +301,21 @@ exp_grammar = """
     ?conjunction: atom
         | conjunction "&" atom -> mk_and
 
-    ?atom: TEXT -> mk_atom
-         | "(" disjunction ")"
+    ?atom:
+        | "Nothing" -> mk_true
+        | "Impossible" -> mk_false
+        | "$" counter -> mk_counter
+        | TEXT ">=" INT -> mk_counter_threshold
+        | TEXT "*" INT -> mk_atom
+        | TEXT -> mk_atom
+        | "(" disjunction ")"
 
-    TEXT: /[^$|&())]+/
+    ?counter: counter "+" counter -> mk_counter_add
+        | INT ("x" | "*") TEXT -> mk_counter_atom
 
+    TEXT.-100: /\b[^$~|&()>=+]+\b/
+
+    %import common.INT
     %import common.WS
     %ignore WS
 """
@@ -262,24 +341,52 @@ class MakeExpression(Transformer):
         else:
             return AndCombination([left, right])
 
-    def mk_atom(self, text):
+    def mk_true(self):
+        return DNFInventory(True)
+
+    def mk_false(self):
+        return DNFInventory(False)
+
+    def mk_atom(self, text, count=None):
         text = text.strip()
-        if text == "Nothing":
-            return DNFInventory(True)
-        if text == "Impossible":
-            return DNFInventory(False)
 
         if match := item_with_count_re.search(text):
-            item_name = match.group(1)
-            if item_name not in RAW_ITEM_NAMES:
-                raise ValueError(f"Unknown item {item_name}")
-            return InventoryAtom(item_name, int(match.group(2)))
+            text = match.group(1)
+            count = match.group(2)
+
+        if count is not None:
+            count = int(count)
+            if text not in RAW_ITEM_NAMES:
+                raise ValueError(f"Unknown item {text}")
+            return InventoryAtom(text, count)
 
         elif text in RAW_ITEM_NAMES or text in EXTENDED_ITEM:
             return InventoryAtom(text, 1)
 
         else:
             return BasicTextAtom(text)
+
+    def mk_counter_atom(self, count, item):
+        count = int(count)
+        if item not in RAW_ITEM_NAMES and item not in EXTENDED_ITEM:
+            raise ValueError(f"Unknown item {item}")
+        if item in EXTENDED_ITEM:
+            return {EXTENDED_ITEM[item]: count}
+        return {
+            EXTENDED_ITEM[number(item, index)]: count
+            for index in range(ITEM_COUNTS[item])
+        }
+
+    def mk_counter_add(self, left, right):
+        return left | right
+
+    def mk_counter(self, counter):
+        return Counter(counter)
+
+    def mk_counter_threshold(self, counter_name, threshold):
+        c = CounterThreshold(counter_name, int(threshold))
+        c.opaque = True
+        return c
 
 
 exp_parser = Lark(exp_grammar, parser="lalr", transformer=MakeExpression())
