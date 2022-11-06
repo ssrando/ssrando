@@ -671,3 +671,28 @@
   help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
     as specifics about what additional items and locations can and cannot be hinted
   ui: option_hint_distribution
+- name: Starting Items
+  command: starting-items
+  type: multichoice
+  choices:
+    - Bomb Bag
+    - Clawshots
+    - Fireshield Earrings
+    - Goddess Harp
+    - Gust Bellows
+    - Progressive Beetle
+    - Progressive Beetle
+    - Progressive Beetle
+    - Progressive Beetle
+    - Progressive Bow
+    - Progressive Bow
+    - Progressive Bow
+    - Progressive Bug Net
+    - Progressive Bug Net
+    - Progressive Mitts
+    - Progressive Mitts
+    - Water Scale
+    - Whip
+  default: []
+  help: Items that will be in your inventory at the start of the game.
+  ui: starting_items

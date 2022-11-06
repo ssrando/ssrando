@@ -103,12 +103,6 @@ START_CUTSCENES = [
     ("F405", 0, 0),
 ]
 
-START_ITEM_STORYFLAGS = {
-    EMERALD_TABLET: 46,
-    RUBY_TABLET: 47,
-    AMBER_TABLET: 48,
-}
-
 # The stage name of each dungeon
 DUNGEON_STAGES = {
     SV: "D100",
@@ -1562,8 +1556,11 @@ class GamePatcher:
 
         # Add storyflags for tablets
         for item in self.placement_file.starting_items:
-            if item in START_ITEM_STORYFLAGS:
-                self.startstoryflags.append(START_ITEM_STORYFLAGS[item])
+            if item in TABLET_STORY_FLAGS:
+                self.startstoryflags.append(TABLET_STORY_FLAGS[item])
+        
+        # for item in ITEM_FLAGS:
+        #     self.startitemflags.append(ITEM_FLAGS[item])
 
     def add_required_dungeon_patches(self):
         # Add required dungeon patches to eventpatches

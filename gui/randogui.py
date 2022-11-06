@@ -107,6 +107,7 @@ class RandoGUI(QMainWindow):
                     widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
 
+        # Tricks ui.
         self.enabled_tricks_model = QStringListModel()
         self.enabled_tricks_model.setStringList(
             OPTIONS["enabled-tricks-bitless"]["default"]
@@ -137,6 +138,20 @@ class RandoGUI(QMainWindow):
         self.ui.included_locations.setModel(self.included_locations_model)
         self.ui.exclude_location.clicked.connect(self.exclude_location)
         self.ui.include_location.clicked.connect(self.include_location)
+
+        # Starting Items ui.
+        self.randomized_items_model = QStringListModel()
+        self.randomized_items_model.setStringList(
+            OPTIONS["starting-items"]["choices"]
+        )
+        self.starting_items_model = QStringListModel()
+        self.starting_items_model.setStringList(
+            OPTIONS["starting-items"]["default"]
+        )
+        self.ui.randomized_items.setModel(self.randomized_items_model)
+        self.ui.starting_items.setModel(self.starting_items_model)
+        self.ui.randomize_item.clicked.connect(self.remove_starting_item)
+        self.ui.start_with_item.clicked.connect(self.add_starting_item)
 
         # setup presets
         self.default_presets = {}
@@ -606,13 +621,25 @@ class RandoGUI(QMainWindow):
         self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
         self.ui.disabled_tricks.model().sort(0)
         self.update_settings()
-
+    
     def exclude_location(self):
         self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
         self.update_settings()
 
     def include_location(self):
         self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
+        self.update_settings()
+
+    def remove_starting_item(self):
+        self.move_selected_rows(self.ui.starting_items, self.ui.randomized_items)
+        self.ui.starting_items.model().sort(0)
+        self.ui.randomized_items.model().sort(0)
+        self.update_settings()
+
+    def add_starting_item(self):
+        self.move_selected_rows(self.ui.randomized_items, self.ui.starting_items)
+        self.ui.starting_items.model().sort(0)
+        self.ui.randomized_items.model().sort(0)
         self.update_settings()
 
     def load_preset(self):
