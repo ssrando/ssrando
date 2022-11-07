@@ -175,6 +175,16 @@ class Rando:
         #   starting_items.add('Sailcloth')
         if self.options["start-with-pouch"]:
             starting_items.add(number(PROGRESSIVE_POUCH, 0))
+        
+        for item in self.options["starting-items"]:
+            if item.startswith("Progressive"):
+                if number(item, 0) not in starting_items:
+                    for count in range(self.options["starting-items"].count(item)):
+                        starting_items.add(number(item, count))
+                else: # Skips over duplicate entries for Progressive Items.
+                    continue
+            else:
+                starting_items.add(item)
 
         self.placement = self.placement.add_starting_items(starting_items)
 

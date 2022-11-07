@@ -106,6 +106,17 @@ class Options:
             elif option["type"] == "int":
                 # needs information, how many bits this number is
                 writer.write(value, option["bits"])
+            elif option_name == "starting-items":
+                starting_items = option["choices"].copy()
+                while len(starting_items) > 0:
+                    starting_item_count = value.count(starting_items[0])
+                    if starting_item_count == 0:
+                        writer.write(0, 1)
+                        starting_items.remove(starting_items[0])
+                    else:
+                        for progressive_count in range(starting_items.count(starting_items[0])):
+                            writer.write(progressive_count < starting_item_count, 1)
+                            starting_items.pop(0)
             elif option["type"] == "multichoice":
                 # as many bits as choices
                 for choice in option["choices"]:

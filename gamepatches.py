@@ -1535,8 +1535,18 @@ class GamePatcher:
 
         # Add storyflags for tablets
         for item in self.placement_file.starting_items:
+            item = strip_item_number(item)
             if item in TABLET_STORY_FLAGS:
                 self.startstoryflags.append(TABLET_STORY_FLAGS[item])
+            elif item in [PROGRESSIVE_POUCH, PROGRESSIVE_SWORD]:
+                continue
+            elif type(ITEM_FLAGS[item]) is list:
+                for flag in ITEM_FLAGS[item]:
+                    if flag not in self.startitemflags:
+                        self.startitemflags.append(flag)
+                        break
+            else:
+                self.startitemflags.append(ITEM_FLAGS[item])
         
         # for item in ITEM_FLAGS:
         #     self.startitemflags.append(ITEM_FLAGS[item])
