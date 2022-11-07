@@ -71,11 +71,6 @@ class PlacementFile:
                 f"Version did not match, requires {self.version} but found {VERSION}"
             )
 
-        ALLOWED_STARTING_ITEMS = (
-            dict.fromkeys((EMERALD_TABLET, AMBER_TABLET, RUBY_TABLET))
-            | PROGRESSIVE_SWORDS
-            | group(PROGRESSIVE_POUCH, 1)
-        )
         for item in self.starting_items:
             if item not in ALLOWED_STARTING_ITEMS:
                 raise InvalidPlacementFile(f"Invalid starting item {item} !")

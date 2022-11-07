@@ -737,6 +737,28 @@ BANNABLE_TYPES = [
     EIN("sand sea goddess"),
 ]
 
+ALLOWED_STARTING_ITEMS = (
+    dict.fromkeys((
+        EMERALD_TABLET,
+        AMBER_TABLET,
+        RUBY_TABLET,
+        BOMB_BAG,
+        CLAWSHOTS,
+        WHIP,
+        GUST_BELLOWS,
+        WATER_SCALE,
+        FIRESHIELD_EARRINGS,
+        GODDESS_HARP
+    ))
+    | PROGRESSIVE_SWORDS
+    | group(PROGRESSIVE_POUCH, 1)
+    | PROGRESSIVE_MITTS_ALL
+    | PROGRESSIVE_SLINGSHOTS
+    | PROGRESSIVE_BEETLES
+    | PROGRESSIVE_BOWS
+    | PROGRESSIVE_BUG_NETS
+)
+
 ITEM_FLAGS = {
     PROGRESSIVE_BOW: [19, 90, 91],
     BOMB_BAG: 92,
