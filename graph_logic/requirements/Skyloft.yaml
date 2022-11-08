@@ -229,7 +229,6 @@ Near Waterfall:
 Silent Realm:
   hint-region: Skyloft Silent Realm
   exits:
-    Entrance: Nothing
     Exit: Nothing
   locations:
     Stone of Trials: Nothing

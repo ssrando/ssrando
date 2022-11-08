@@ -146,7 +146,6 @@ Woods:
 Silent Realm:
   hint-region: Faron Silent Realm
   exits:
-    Entrance: Nothing
     Exit: Nothing
   locations:
     Water Scale: Nothing

@@ -95,7 +95,7 @@ Desert:
       Blow Statues to Sand Oasis Down: Hook Beetle
     exits:
       Entry: Nothing
-      Top of Wall: Clawshots
+      Top of West Wall: Clawshots
       Top of LMF: Raise Lanayru Mining Facility
       East: Temple of Time Skip - Brakeslide Trick | East - Open Wall Shortcut | Clawshots
       Sand Oasis: Blow Statues to Sand Oasis Down | (Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick)
@@ -111,7 +111,7 @@ Desert:
       Near Hook Beetle Fight:
         Near Hook Beetle Fight - Blow Statues to Sand Oasis Down |
         (Near Hook Beetle Fight - Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick)
-      Top of Wall: Clawshots | Top of Wall - Push Minecart
+      Top of West Wall: Clawshots | Top of West Wall - Push Minecart
       West Part: Can Navigate in Oasis | West Part - Push Minecart
 
   West Part:
@@ -123,7 +123,7 @@ Desert:
       Desert - Shared Statue Exit: Unlock Statue
       West Desert Statue Entrance: Impossible
       Sand Oasis: Nothing
-      Top of Wall: Clawshots
+      Top of West Wall: Clawshots
       Near South Exit to Temple of Time: Can Navigate in Oasis | Near South Exit to Temple of Time - Push Minecart
 
   Near South Exit to Temple of Time:
@@ -139,7 +139,7 @@ Desert:
         Near South Exit to Temple of Time: Nothing
         Exit to Caves: Nothing
 
-  Top of Wall:
+  Top of West Wall:
     locations:
       Chest: Nothing
       Near Hook Beetle Fight - Goddess Cube: Goddess Sword
@@ -332,7 +332,6 @@ Temple of Time:
 Silent Realm:
   hint-region: Lanayru Silent Realm
   exits:
-    Entrance: Nothing
     Exit: Nothing
   locations:
     Clawshots: Nothing

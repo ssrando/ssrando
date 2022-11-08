@@ -96,10 +96,10 @@ Volcano:
       Temple Entrance Statue: Unlock Statue
       Near Thrill Digger Cave: Near Thrill Digger Cave - Blow down Watchtower
       Exit to Earth Temple: Open ET option | Key Piece x5
-      Hot Cave: Blow down Watchtower between Earth Temple and Hot Cave
+      Hot Cave: Blow down Watchtower to Hot Cave
     locations:
       Unlock Statue: Nothing
-      Blow down Watchtower between Earth Temple and Hot Cave: Nothing
+      Blow down Watchtower to Hot Cave: Nothing
       Retrieve Crystal Ball: Clawshots & Skyloft - Village - Start Sparrot's Quest
       Goddess Cube West of Earth Temple Entrance: Digging Mitts & Goddess Sword
       Gossip Stone next to Earth Temple: Digging Mitts
@@ -110,11 +110,11 @@ Volcano:
 
   Hot Cave:
     locations:
-      Blow down Watchtower between Earth Temple and Hot Cave: Impossible # Bomb Bag & Bomb Throw Trick
+      Near Temple Entrance - Blow down Watchtower to Hot Cave: Impossible # Bomb Bag & Bomb Throw Trick
     exits:
       Exit to Summit: Fireshield Earrings
       Vent Entrance near Hot Cave: Impossible
-      Near Temple Entrance: Blow down Watchtower between Earth Temple and Hot Cave
+      Near Temple Entrance: Near Temple Entrance - Blow down Watchtower to Hot Cave
       Sand Slide: Nothing
 
   Sand Slide:
@@ -165,7 +165,6 @@ Mogma Turf: # when randomizing this, need to find a way to force the skydiving a
 Silent Realm:
   hint-region: Eldin Silent Realm
   exits:
-    Entrance: Nothing
     Exit: Nothing
   locations:
     Fireshield Earrings: Nothing
