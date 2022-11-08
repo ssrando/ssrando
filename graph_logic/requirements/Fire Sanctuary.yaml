@@ -85,7 +85,7 @@ Main:
       Second Chest: Nothing
       Hydrate Frog: Sword
       Room with Water Plant - Unlock Key Door:
-        Fire Sanctuary Small Key
+        Fire Sanctuary Small Key x 2  # Would need better key logic to be exact
     exits:
       Room with Water Plant - Past Lava:
         Room with Water Plant - Unlock Key Door
@@ -144,15 +144,17 @@ Main:
       Hydrate Frog: Move Sliding Doors Correctly & Sword
       Rescue Mogma: Hydrate Frog
       Reward: Rescue Mogma
-      Blow up Wall: Bomb Bag # & Fire Sanctuary - Map
+      Blow up Wall: Hydrate Frog & Bomb Bag # & Fire Sanctuary - Map
 
     exits:
       Second Bridge - Right: Nothing
-      Past Bombable Wall: Blow up Wall & Mogma Mitts
+      Past Bombable Wall: Hydrate Frog & Blow up Wall & Mogma Mitts
 
     Past Bombable Wall:
       locations:
         Chest: Nothing
+      exits:
+        Second Trapped Mogma Room: Nothing
 
   West of Boss Door:
     Entry:
