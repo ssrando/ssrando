@@ -938,22 +938,22 @@ class Ui_MainWindow(object):
         self.verticalLayoutWidget_17 = QWidget(self.groupBox_18)
         self.verticalLayoutWidget_17.setObjectName(u"verticalLayoutWidget_17")
         self.verticalLayoutWidget_17.setGeometry(QRect(10, 20, 177, 211))
-        self.verticalLayout_40 = QVBoxLayout(self.verticalLayoutWidget_17)
-        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
-        self.verticalLayout_40.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_42 = QVBoxLayout(self.verticalLayoutWidget_17)
+        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
+        self.verticalLayout_42.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_41 = QVBoxLayout()
         self.verticalLayout_41.setObjectName(u"verticalLayout_41")
 
-        self.verticalLayout_40.addLayout(self.verticalLayout_41)
+        self.verticalLayout_42.addLayout(self.verticalLayout_41)
 
         self.option_fill_dowsing_on_white_sword = QCheckBox(self.verticalLayoutWidget_17)
         self.option_fill_dowsing_on_white_sword.setObjectName(u"option_fill_dowsing_on_white_sword")
 
-        self.verticalLayout_40.addWidget(self.option_fill_dowsing_on_white_sword)
+        self.verticalLayout_42.addWidget(self.option_fill_dowsing_on_white_sword)
 
         self.verticalSpacer_18 = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
-        self.verticalLayout_40.addItem(self.verticalSpacer_18)
+        self.verticalLayout_42.addItem(self.verticalSpacer_18)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
@@ -1132,6 +1132,11 @@ class Ui_MainWindow(object):
         self.option_impa_sot_hint.setObjectName(u"option_impa_sot_hint")
 
         self.verticalLayout_26.addWidget(self.option_impa_sot_hint)
+
+        self.option_npc_hints = QCheckBox(self.verticalLayoutWidget_6)
+        self.option_npc_hints.setObjectName(u"option_npc_hints")
+
+        self.verticalLayout_26.addWidget(self.option_npc_hints)
 
         self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1380,6 +1385,7 @@ class Ui_MainWindow(object):
         self.groupBox_11.setTitle(QCoreApplication.translate("MainWindow", u"Other Hints", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Song Hints", None))
         self.option_impa_sot_hint.setText(QCoreApplication.translate("MainWindow", u"Impa Stone of Trials Hint", None))
+        self.option_npc_hints.setText(QCoreApplication.translate("MainWindow", u"NPC Hints", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"Hints", None))
         self.randomize_item.setText(QCoreApplication.translate("MainWindow", u"<--", None))
         self.start_with_item.setText(QCoreApplication.translate("MainWindow", u"-->", None))

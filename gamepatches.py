@@ -1120,6 +1120,7 @@ class GamePatcher:
             self.add_trial_hint_patches()
         if self.placement_file.options["impa-sot-hint"]:
             self.add_impa_hint()
+        self.add_npc_hints()
         self.add_stone_hint_patches()
         self.add_race_integrity_patches()
         self.handle_oarc_add_remove()
@@ -1657,6 +1658,69 @@ class GamePatcher:
                 "text": break_lines(
                     f"Do not fear for <b<Zelda>>. I will watch over her here. Go now to "
                     f"<b<{sot_region}>>. The <r<item you need to fulfill your destiny>> is there."
+                ),
+            }
+        )
+
+    def add_npc_hints(self):
+        wd_hint = self.placement_file.npc_hints["Water Dragon's Hint"]
+        kina_hint = self.placement_file.npc_hints["Kina's Hint"]
+        pumm_hint = self.placement_file.npc_hints["Pumm's Hint"]
+        owlan_hint = self.placement_file.npc_hints["Owlan's Hint"]
+        self.eventpatches["203-ForestF2"].append(
+            {
+                "name": "Flooded Faron Entry Question",
+                "type": "textadd",
+                "text": break_lines(
+                    f"Here to accept my final test? " f"{wd_hint}\n" f"[1]Yes[2-]No"
+                ),
+            }
+        )
+        self.eventpatches["117-Pumpkin"].append(
+            {
+                "name": "New Kina Text Option",
+                "type": "textadd",
+                "text": break_lines(
+                    f"Hey, kid, what do you need from me? "
+                    f"{kina_hint}\n"
+                    f"[1]Plowing the fields?[2]Carrying pumpkins![3-]Nothing."
+                ),
+            }
+        )
+        self.eventpatches["117-Pumpkin"].append(
+            {
+                "name": "New text Option",
+                "type": "textadd",
+                "text": break_lines(
+                    f"Hey, you look like you have a Questions? "
+                    f"{pumm_hint}\n"
+                    f"[1]Levias[2-]Other Things"
+                ),
+            }
+        )
+        self.eventpatches["118-Town3"].append(
+            {
+                "name": "Owlan Crystals hint",
+                "type": "textpatch",
+                "index": 141,
+                "text": break_and_make_multiple_textboxes(
+                    [
+                        f"Aha! I knew you would be willing\nto help me out, <heroname>. "
+                        f"{owlan_hint}",
+                        "I'm truly sorry to trouble you, but\nplease try to bring me something\nrare... Something no one will have\nseen before!",
+                    ]
+                ),
+            }
+        )
+        # have to patch another text so the player won't miss the hint
+        self.eventpatches["118-Town3"].append(
+            {
+                "name": "Owlan Crystals hint",
+                "type": "textpatch",
+                "index": 143,
+                "text": break_lines(
+                    f"Ha! I knew you would lend me a\ngreen thumb, <heroname>!\nThank you in advance! "
+                    f"{owlan_hint}"
                 ),
             }
         )

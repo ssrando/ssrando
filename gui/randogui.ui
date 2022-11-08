@@ -1477,7 +1477,7 @@
          <height>211</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_40">
+       <layout class="QVBoxLayout" name="verticalLayout_42">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_41"/>
         </item>
@@ -1740,6 +1740,13 @@
          <widget class="QCheckBox" name="option_impa_sot_hint">
           <property name="text">
            <string>Impa Stone of Trials Hint</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_npc_hints">
+          <property name="text">
+           <string>NPC Hints</string>
           </property>
          </widget>
         </item>

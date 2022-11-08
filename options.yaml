@@ -603,6 +603,12 @@
   default: true
   help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after obtaining White Sword.
   ui: option_fill_dowsing_on_white_sword
+- name: NPC Hints
+  command: npc-hints
+  type: boolean
+  default: false
+  help: If enabled, talking to the Water Dragon, Owlan, Kina, or Pumm (for Levias) once you can start their quests will give a hint relating to whether their reward is SotS, progression, or useless. If disabled, those checks become sometimes (always for Levias) hints.
+  ui: option_npc_hints
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

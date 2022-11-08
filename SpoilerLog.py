@@ -7,7 +7,16 @@ from version import VERSION
 from logic.constants import DUNGEON_GOALS, DEMISE
 
 
-def write(file: TextIO, options: Options, logic, hints, sots_locations, hash):
+def write(
+    file: TextIO,
+    options: Options,
+    logic,
+    hints,
+    song_hints,
+    npc_hints,
+    sots_locations,
+    hash,
+):
     write_header(file, options, hash)
 
     if options["no-spoiler-log"]:
@@ -121,6 +130,20 @@ def write(file: TextIO, options: Options, logic, hints, sots_locations, hash):
 
     file.write("\n\n\n")
 
+    # Write song hints
+    file.write("Song Hints:\n")
+    for hint, text in song_hints.items():
+        file.write(f"  {hint+':':53} {text}\n")
+
+    file.write("\n\n")
+
+    # Write NPC hints
+    file.write("NPC Hints:\n")
+    for hint, text in npc_hints.items():
+        file.write(f"  {hint+':':53} {text}\n")
+
+    file.write("\n\n\n")
+
     # Write hints
     file.write("Hints:\n")
     for hintloc, hint in hints.items():
@@ -129,7 +152,9 @@ def write(file: TextIO, options: Options, logic, hints, sots_locations, hash):
     file.write("\n\n\n")
 
 
-def dump_json(options: Options, logic, hints, sots_locations, hash):
+def dump_json(
+    options: Options, logic, hints, song_hints, npc_hints, sots_locations, hash
+):
     spoiler_log = dump_header_json(options, hash)
     if options["no-spoiler-log"]:
         return spoiler_log
@@ -139,6 +164,8 @@ def dump_json(options: Options, logic, hints, sots_locations, hash):
     spoiler_log["barren-regions"] = logic.get_barren_regions()[0]
     spoiler_log["playthrough"] = logic.calculate_playthrough_progression_spheres()
     spoiler_log["item-locations"] = logic.done_item_locations
+    spoiler_log["song-hints"] = song_hints
+    spoiler_log["npc-hints"] = npc_hints
     spoiler_log["hints"] = {k: v.to_spoiler_log_json() for k, v in hints.items()}
     spoiler_log["entrances"] = logic.entrance_connections
     spoiler_log["trial-connections"] = logic.trial_connections

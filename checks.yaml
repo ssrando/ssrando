@@ -189,7 +189,6 @@ Knight Academy - Owlan's Crystals:
   Paths:
     - event/118-Town3/157
     - oarc/F001r/l0
-  hint: sometimes
   text: delivering a <r<Kikwi>> reveals
 
 #  Batreaux Rewards
@@ -488,7 +487,6 @@ Sky - Kina's Crystals:
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
-  hint: sometimes
   text: <r<delivering a mogma to the sky>> is rewarded with
 Sky - Beedle's Crystals:
   original item: Gratitude Crystal Pack
@@ -575,7 +573,6 @@ Thunderhead - Song from Levias:
   Paths:
     - event/120-Nushi/give item after levias
     - oarc/F023/l0
-  hint: always
   text: the <r<ancient whale within a raging storm>> bellows out
 Thunderhead - Isle of Songs - Farore's Courage:
   original item: Farore's Courage
@@ -741,7 +738,6 @@ Lake Floria - Rupee High Ledge Outside Cistern Entrance:
 Flooded Faron Woods - Faron Soth:
   original item: Faron Song of the Hero Part
   type: faron, flooded faron, long
-  hint: sometimes
   text: completing a <r<watery song>> reveals
   Paths:
     - event/204-ForestF3/Give item after Faron SotH CS
