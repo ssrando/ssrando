@@ -136,6 +136,7 @@ def group(name: str, count: int) -> Dict[EXTENDED_ITEM_NAME, None]:
 HINT = "Hint"
 HINTS = group(HINT, MAX_HINTS)
 
+# SAILCLOTH = EIN("Sailcloth")
 BOMB_BAG = EIN("Bomb Bag")
 GUST_BELLOWS = EIN("Gust Bellows")
 WHIP = EIN("Whip")
@@ -159,6 +160,7 @@ DINS_POWER = EIN("Din's Power")
 FARON_SOTH_PART = EIN("Faron Song of the Hero Part")
 ELDIN_SOTH_PART = EIN("Eldin Song of the Hero Part")
 LANAYRU_SOTH_PART = EIN("Lanayru Song of the Hero Part")
+SONG_OF_THE_HERO = "Song of the Hero"
 SPIRAL_CHARGE = EIN("Spiral Charge")
 LIFE_TREE_SEEDLING = EIN("Life Tree Seedling")
 LIFE_TREE_FRUIT = EIN("Life Tree Fruit")
@@ -204,6 +206,7 @@ BOSS_KEY = {dun: boss_key(dun) for dun in ALL_DUNGEONS}
 dungeon_map = lambda d: EIN(d + " Map")
 MAP = {dun: dungeon_map(dun) for dun in ALL_DUNGEONS}
 
+SONG_OF_THE_HERO_PARTS = [FARON_SOTH_PART, ELDIN_SOTH_PART, LANAYRU_SOTH_PART]
 TRIFORCES = dict.fromkeys([TRIFORCE_OF_COURAGE, TRIFORCE_OF_POWER, TRIFORCE_OF_WISDOM])
 
 CAVES_KEY = EIN("Lanayru Caves Small Key")
@@ -314,6 +317,7 @@ PROGRESS_ITEMS = (
             TRIFORCE_OF_COURAGE,
             TRIFORCE_OF_WISDOM,
             TRIFORCE_OF_POWER,
+            # SAILCLOTH,
         ]
     )
     | GRATITUDE_CRYSTAL_PACKS
@@ -748,7 +752,26 @@ ALLOWED_STARTING_ITEMS = (
         GUST_BELLOWS,
         WATER_SCALE,
         FIRESHIELD_EARRINGS,
-        GODDESS_HARP
+        GODDESS_HARP,
+        BALLAD_OF_THE_GODDESS,
+        FARORES_COURAGE,
+        NAYRUS_WISDOM,
+        DINS_POWER,
+        FARON_SOTH_PART,
+        ELDIN_SOTH_PART,
+        LANAYRU_SOTH_PART,
+        LIFE_TREE_FRUIT,
+        LIFE_TREE_SEEDLING,
+        STONE_OF_TRIALS,
+        CAWLINS_LETTER,
+        HORNED_COLOSSUS_BEETLE,
+        BABY_RATTLE,
+        SEA_CHART,
+        TRIFORCE_OF_COURAGE,
+        TRIFORCE_OF_POWER,
+        TRIFORCE_OF_WISDOM,
+        SPIRAL_CHARGE,
+        # SAILCLOTH
     ))
     | PROGRESSIVE_SWORDS
     | group(PROGRESSIVE_POUCH, 1)
@@ -757,6 +780,7 @@ ALLOWED_STARTING_ITEMS = (
     | PROGRESSIVE_BEETLES
     | PROGRESSIVE_BOWS
     | PROGRESSIVE_BUG_NETS
+    | PROGRESSIVE_WALLETS
 )
 
 ITEM_FLAGS = {
@@ -772,10 +796,51 @@ ITEM_FLAGS = {
     WATER_SCALE: 68,
     FIRESHIELD_EARRINGS: 138,
     GODDESS_HARP: 16,
+    PROGRESSIVE_WALLET: [108, 109, 110, 111],
+    BALLAD_OF_THE_GODDESS: 186,
+    FARORES_COURAGE: 187,
+    NAYRUS_WISDOM: 188,
+    DINS_POWER: 189,
+    FARON_SOTH_PART: 190,
+    ELDIN_SOTH_PART: 191,
+    LANAYRU_SOTH_PART: 192,
+    SONG_OF_THE_HERO: 193,
+    LIFE_TREE_FRUIT: 198,
+    LIFE_TREE_SEEDLING: 197,
+    STONE_OF_TRIALS: 180,
+    CAWLINS_LETTER: 158,
+    HORNED_COLOSSUS_BEETLE: 159,
+    BABY_RATTLE: 160,
+    SEA_CHART: 98,
+    TRIFORCE_OF_COURAGE: 95,
+    TRIFORCE_OF_POWER: 96,
+    TRIFORCE_OF_WISDOM: 97,
+    SPIRAL_CHARGE: 21,
+    # SAILCLOTH: 15
 }
 
-TABLET_STORY_FLAGS = {
+ITEM_STORY_FLAGS = {
     EMERALD_TABLET: 46,
     RUBY_TABLET: 47,
     AMBER_TABLET: 48,
+    HORNED_COLOSSUS_BEETLE: 476,
+    CAWLINS_LETTER: 547,
+    SPIRAL_CHARGE: 364,
+    SEA_CHART: 271,
+    WATER_SCALE: 206, # Completed Faron Trial
+    FIRESHIELD_EARRINGS: 207, # Completed Eldin Trial
+    CLAWSHOTS: 208, # Completed Lanayru Trial
+    STONE_OF_TRIALS: (210, 209), # Obtained SoT, Completed Hylia's Trial
+    GODDESS_HARP: (9, 140), # Harp, Watched Groose CS
+    BALLAD_OF_THE_GODDESS: 194,
+    TRIFORCE_OF_COURAGE: 729,
+    TRIFORCE_OF_POWER: 728,
+    TRIFORCE_OF_WISDOM: 730,
+    PROGRESSIVE_MITTS: [904, 905], # Digging Mitts, Mogma Mitts
+    PROGRESSIVE_BEETLE: [912, 913, 942, 943], # Beetle, Heetle, Queetle, Teetle
+    PROGRESSIVE_WALLET: [915, 916, 917, 918], # Medium, Big, Giant, Tycoon
+    PROGRESSIVE_BOW: [944, 945, 946], # Bow, Iron, Sacred
+    PROGRESSIVE_SLINGSHOT: [947, 948], # Slingshot, Scatershot
+    PROGRESSIVE_BUG_NET: [949, 950], # Bug Net, Big Bug Net
+    # SAILCLOTH: 32
 }

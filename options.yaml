@@ -675,11 +675,23 @@
   command: starting-items
   type: multichoice
   choices:
+    - Baby Rattle
+    - Ballad of the Goddess
     - Bomb Bag
+    - Cawlin's Letter
     - Clawshots
+    - Din's Power
+    - Eldin Song of the Hero Part
+    - Faron Song of the Hero Part
+    - Farore's Courage
     - Fireshield Earrings
     - Goddess Harp
     - Gust Bellows
+    - Horned Colossus Beetle
+    - Lanayru Song of the Hero Part
+    - Life Tree Fruit
+    # - Life Tree Seedling
+    - Nayru's Wisdom
     - Progressive Beetle
     - Progressive Beetle
     - Progressive Beetle
@@ -691,8 +703,21 @@
     - Progressive Bug Net
     - Progressive Mitts
     - Progressive Mitts
+    - Progressive Slingshot
+    - Progressive Slingshot
+    - Progressive Wallet
+    - Progressive Wallet
+    - Progressive Wallet
+    - Progressive Wallet
+    - Sea Chart
+    - Spiral Charge
+    - Stone of Trials
+    - Triforce of Courage
+    - Triforce of Power
+    - Triforce of Wisdom
     - Water Scale
     - Whip
   default: []
+    # - Sailcloth
   help: Items that will be in your inventory at the start of the game.
   ui: starting_items

@@ -1539,9 +1539,8 @@ class GamePatcher:
         if start_sword_count > 0:
             self.startitemflags.append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count - 1])
 
-        # if 'Sailcloth' in self.placement_file.starting_items:
-        #     self.startstoryflags.append(32)
-        #     self.startitemflags.append(15)
+        if all(soth_part in self.placement_file.starting_items for soth_part in SONG_OF_THE_HERO_PARTS):
+            self.startitemflags.append(ITEM_FLAGS[SONG_OF_THE_HERO])
 
         nb_starting_pouches = len(
             set(PROGRESSIVE_POUCHES) & set(self.placement_file.starting_items)
@@ -1557,20 +1556,24 @@ class GamePatcher:
         # Add storyflags for tablets
         for item in self.placement_file.starting_items:
             item = strip_item_number(item)
-            if item in TABLET_STORY_FLAGS:
-                self.startstoryflags.append(TABLET_STORY_FLAGS[item])
-            elif item in [PROGRESSIVE_POUCH, PROGRESSIVE_SWORD]:
-                continue
-            elif type(ITEM_FLAGS[item]) is list:
-                for flag in ITEM_FLAGS[item]:
-                    if flag not in self.startitemflags:
-                        self.startitemflags.append(flag)
+            self.startstoryflags = self._starting_item_helper(ITEM_STORY_FLAGS, item, self.startstoryflags)
+            self.startitemflags = self._starting_item_helper(ITEM_FLAGS, item, self.startitemflags)
+    
+    def _starting_item_helper(self, flags, item, startflags):
+        if item in flags:
+            # Progressive flags.
+            if type(flags[item]) is list:
+                for flag in flags[item]:
+                    if flag not in startflags:
+                        startflags.append(flag)
                         break
+            # Items needing multiple flags (e.g. harp).
+            elif type(flags[item]) is tuple:
+                for flag in flags[item]:
+                    startflags.append(flag)
             else:
-                self.startitemflags.append(ITEM_FLAGS[item])
-        
-        # for item in ITEM_FLAGS:
-        #     self.startitemflags.append(ITEM_FLAGS[item])
+                startflags.append(flags[item])
+        return startflags
 
     def add_required_dungeon_patches(self):
         # Add required dungeon patches to eventpatches
