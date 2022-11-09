@@ -2168,6 +2168,60 @@
     entry:
       name: "502_20"
       value: Show Triforce text
+  - name: Check If Has Triforce of Courage
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 729 # Triforce of Courage storyflag
+      param3: 3
+    cases:
+      - Check If Has Triforce of Wisdom # Has triforce
+      - Show Courage Text
+  - name: Check If Has Triforce of Wisdom
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 730 # Triforce of Wisdom storyflag
+      param3: 3
+    cases:
+      - Check If Has Triforce of Power # Has triforce
+      - Show Wisdom Text
+  - name: Check If Has Triforce of Power
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 728 # Triforce of Power storyflag
+      param3: 3
+    cases:
+      - -1 # Has full triforce, don't display hint
+      - Show Power Text
+  - name: Show Courage Text
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Courage Hint Text # added in gamepatches
+  - name: Show Wisdom Text
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Wisdom Hint Text # added in gamepatches
+  - name: Show Power Text
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Power Hint Text # added in gamepatches
 503-Goron:
   - name: To Bomb Bag Check I # when you don't have bow
     type: flowpatch
