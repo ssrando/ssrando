@@ -1168,9 +1168,9 @@
     index: 347
     flow:
       next: 520
-  - name: New text Option
-    type: textadd
-    text: "Hey, you look like you have a Questions?\n[1]Levias[2-]Other Things"
+  #- name: New text Option
+  #  type: textadd
+  #  text: "Hey, you look like you have a Questions?\n[1]Levias[2-]Other Things"
   - name: Show new Text Option
     type: flowadd
     flow:
@@ -1187,9 +1187,9 @@
     cases:
       - 208
       - 216
-  - name: New Kina Text Option
-    type: textadd
-    text: "Hey, kid, what do you need from me?\n[1]Plowing the fields?[2]Carrying pumpkins![3-]Nothing."
+  #- name: New Kina Text Option
+  #  type: textadd
+  #  text: "Hey, kid, what do you need from me?\n[1]Plowing the fields?[2]Carrying pumpkins![3-]Nothing."
   - name: Kina Quest Switch
     type: switchadd
     flow:
@@ -1613,9 +1613,9 @@
       next: Flooded Faron Entry Switch
       param3: 302
       param4: Flooded Faron Entry Question
-  - name: Flooded Faron Entry Question
-    type: textadd
-    text: "Here to accept my final test?\n[1]Yes[2-]No"
+  #- name: Flooded Faron Entry Question
+  #  type: textadd
+  #  text: "Here to accept my final test?\n[1]Yes[2-]No"
   - name: Flooded Faron Entry Switch
     type: switchadd
     flow:
@@ -2168,6 +2168,60 @@
     entry:
       name: "502_20"
       value: Show Triforce text
+  - name: Check If Has Triforce of Courage
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 729 # Triforce of Courage storyflag
+      param3: 3
+    cases:
+      - Check If Has Triforce of Wisdom # Has triforce
+      - Show Courage Text
+  - name: Check If Has Triforce of Wisdom
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 730 # Triforce of Wisdom storyflag
+      param3: 3
+    cases:
+      - Check If Has Triforce of Power # Has triforce
+      - Show Wisdom Text
+  - name: Check If Has Triforce of Power
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 728 # Triforce of Power storyflag
+      param3: 3
+    cases:
+      - -1 # Has full triforce, don't display hint
+      - Show Power Text
+  - name: Show Courage Text
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Courage Hint Text # added in gamepatches
+  - name: Show Wisdom Text
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Wisdom Hint Text # added in gamepatches
+  - name: Show Power Text
+    onlyif: Option "impa-hint" Is "Triforce"
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Power Hint Text # added in gamepatches
 503-Goron:
   - name: To Bomb Bag Check I # when you don't have bow
     type: flowpatch

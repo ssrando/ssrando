@@ -505,11 +505,16 @@
   help: If enabled, writes a placement json file that can be modified for plandomizer purposes
   ui: option_out_placement_file
 - name: Past Impa Stone of Trials Hint
-  command: impa-sot-hint
-  type: boolean
-  default: true
-  help: Enables Impa in the Past to give a hint to the location of the Stone of Trials
-  ui: option_impa_sot_hint
+  command: impa-hint
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - Stone of Trials
+    - Triforce
+  default: None
+  help: Enables Impa in the Past to give a hint to the location of the Stone of Trials or a Triforce you are missing.
+  ui: option_impa_hint
 - name: Tunic Swap
   command: tunic-swap
   type: boolean
@@ -603,6 +608,12 @@
   default: true
   help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after obtaining White Sword.
   ui: option_fill_dowsing_on_white_sword
+- name: NPC Hints
+  command: npc-hints
+  type: boolean
+  default: false
+  help: If enabled, talking to the Water Dragon, Owlan, Kina, or Pumm (for Levias) once you can start their quests will give a hint relating to whether their reward is SotS, progression, or useless. If disabled, those checks become sometimes (always for Levias) hints.
+  ui: option_npc_hints
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

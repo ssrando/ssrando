@@ -64,7 +64,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1477,7 +1477,7 @@
          <height>211</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_40">
+       <layout class="QVBoxLayout" name="verticalLayout_42">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_41"/>
         </item>
@@ -1737,11 +1737,21 @@
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_impa_sot_hint">
+         <widget class="QCheckBox" name="option_npc_hints">
           <property name="text">
-           <string>Impa Stone of Trials Hint</string>
+           <string>NPC Hints</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Impa Hint</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="option_impa_hint"/>
         </item>
         <item>
          <spacer name="verticalSpacer_10">

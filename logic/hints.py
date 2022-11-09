@@ -105,6 +105,21 @@ class Hints:
                 and self.logic.item_locations[loc]["hint"] == "sometimes"
             ]
         )
+        if not self.logic.rando.options["npc-hints"]:
+            needed_sometimes_hints.extend(
+                self.logic.filter_locations_for_progression(
+                    [
+                        "Flooded Faron Woods - Faron Soth",
+                        "Knight Academy - Owlan's Crystals",
+                        "Sky - Kina's Crystals",
+                    ]
+                )
+            )
+            needed_always_hints.extend(
+                self.logic.filter_locations_for_progression(
+                    ["Thunderhead - Song from Levias"]
+                )
+            )
         self.dist.start(self.logic, needed_always_hints, needed_sometimes_hints)
         hints = self.dist.get_hints(32)
         self._place_hints_for_locations(hints)

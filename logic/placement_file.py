@@ -21,6 +21,7 @@ class PlacementFile:
         self.item_locations = {}
         self.gossip_stone_hints = {}
         self.trial_hints = {}
+        self.npc_hints = {}
         self.dungeon_connections = {}
         self.trial_connections = {}
         self.trial_object_seed = -1
@@ -42,6 +43,7 @@ class PlacementFile:
             "item-locations": self.item_locations,
             "gossip-stone-hints": self.gossip_stone_hints,
             "trial-hints": self.trial_hints,
+            "npc-hints": self.npc_hints,
             "entrance-connections": self.dungeon_connections,
             "trial-connections": self.trial_connections,
             "trial-object-seed": self.trial_object_seed,
