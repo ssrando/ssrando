@@ -277,3 +277,7 @@ d_a_obj_bellNP.rel:
   0xCE0:
     Data: [0x48, 0x00, 0x00, 0x00]
     Relocations: [{SymbolName: try_end_pumpkin_archery, Offset: 0x00, Type: R_PPC_REL24}]
+d_a_obj_light_lineNP.rel:
+  0xDAC:
+    Data: [0x48, 0x00, 0x00, 0x01]
+    Relocations: [{SymbolName: check_activated_storyflag, Offset: 0x00, Type: R_PPC_REL24}]

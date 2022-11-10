@@ -551,3 +551,8 @@ li r4, 0x39A
 .org 0xCE0 ; function called when transitioning to the state after dropping rupee
 b try_end_pumpkin_archery
 .close
+
+.open "d_a_obj_light_lineNP.rel"
+.org 0xDAC
+bl check_activated_storyflag
+.close

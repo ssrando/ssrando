@@ -32,6 +32,7 @@
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
 - Fixed a bug that would make sandship dowsing sometimes not be the top dowsing slot icon; it now has top priority
+- Fixed light pillars not visually appearing when obtaining a tablet until a reload
 
 
 ## 1.3.2
