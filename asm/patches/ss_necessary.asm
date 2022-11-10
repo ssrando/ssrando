@@ -95,6 +95,10 @@ stw r3, 0x8A0(r4) ;text counter 1
 lwz r0, 0x24(r1) ; instruction that was overwritten
 b 0x802539e0
 
+; change top priority dowsing icon to sandship
+.org 0x800983ec ; checks zelda dowsing
+b 0x80098428 ; checks sandship dowsing
+
 ; change storyflag that disables sandship dowsing
 ; to bombed sandship
 .org 0x80097b18

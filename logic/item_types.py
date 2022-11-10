@@ -145,6 +145,19 @@ DUNGEON_NONPROGRESS_ITEMS = (
 
 TRIFORCES = ["Triforce of Courage"] + ["Triforce of Wisdom"] + ["Triforce of Power"]
 
+RUPEES = ["Green Rupee", "Blue Rupee", "Red Rupee", "Silver Rupee", "Gold Rupee"]
+
+TREASURES = [
+    "Golden Skull",
+    "Goddess Plume",
+    "Evil Crystal",
+    "Eldin Ore",
+    "Dusk Relic",
+    "Tumbleweed",
+    "Semi Rare Treasure",
+    "Rare Treasure",
+]
+
 ALL_ITEM_NAMES = set(
     PROGRESS_ITEMS
     + NONPROGRESS_ITEMS

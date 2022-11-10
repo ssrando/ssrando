@@ -264,6 +264,7 @@ class Randomizer(BaseRandomizer):
             for (k, v) in self.logic.done_item_locations.items()
             if v != "Gratitude Crystal"
         )
+        plcmt_file.chest_dowsing = self.logic.calculate_chest_dowsing_info()
         plcmt_file.options = self.options
         plcmt_file.required_dungeons = self.logic.required_dungeons
         plcmt_file.starting_items = self.logic.starting_items

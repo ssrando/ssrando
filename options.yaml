@@ -603,6 +603,23 @@
   default: true
   help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after obtaining White Sword.
   ui: option_fill_dowsing_on_white_sword
+- name: Chest Dowsing
+  command: chest-dowsing
+  type: singlechoice
+  bits: 2
+  choices:
+    - Vanilla
+    - All Chests
+    - Progress Items
+  default: Vanilla
+  help: Choose whether the main quest dowsing option should point to chests. Vanilla doesn't make any dowsing changes. If Progress Items, dowsing will only point to chests that contain progress items. Currently, dowsing doesn't work on Goddess Chests.
+  ui: option_chest_dowsing
+- name: Allow Dowsing in Dungeons
+  command: dungeon-dowsing
+  type: boolean
+  default: false
+  help: If enabled, dowsing will be re-enabled in dungeons and other dungeon-like areas like Great Tree and Waterfall Cave.
+  ui: option_dungeon_dowsing
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

@@ -19,6 +19,7 @@ class PlacementFile:
         self.starting_items = []
         self.required_dungeons = []
         self.item_locations = {}
+        self.chest_dowsing = {}
         self.gossip_stone_hints = {}
         self.trial_hints = {}
         self.dungeon_connections = {}
@@ -40,6 +41,7 @@ class PlacementFile:
             "starting-items": self.starting_items,
             "required-dungeons": self.required_dungeons,
             "item-locations": self.item_locations,
+            "chest-dowsing": self.chest_dowsing,
             "gossip-stone-hints": self.gossip_stone_hints,
             "trial-hints": self.trial_hints,
             "entrance-connections": self.dungeon_connections,
@@ -57,6 +59,7 @@ class PlacementFile:
         self.starting_items = jsn["starting-items"]
         self.required_dungeons = jsn["required-dungeons"]
         self.item_locations = jsn["item-locations"]
+        self.chest_dowsing = jsn["chest-dowsing"]
         self.gossip_stone_hints = jsn["gossip-stone-hints"]
         self.trial_hints = jsn["trial-hints"]
         self.dungeon_connections = jsn["entrance-connections"]

@@ -938,22 +938,42 @@ class Ui_MainWindow(object):
         self.verticalLayoutWidget_17 = QWidget(self.groupBox_18)
         self.verticalLayoutWidget_17.setObjectName(u"verticalLayoutWidget_17")
         self.verticalLayoutWidget_17.setGeometry(QRect(10, 20, 177, 211))
-        self.verticalLayout_40 = QVBoxLayout(self.verticalLayoutWidget_17)
-        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
-        self.verticalLayout_40.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_43 = QVBoxLayout(self.verticalLayoutWidget_17)
+        self.verticalLayout_43.setObjectName(u"verticalLayout_43")
+        self.verticalLayout_43.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_41 = QVBoxLayout()
         self.verticalLayout_41.setObjectName(u"verticalLayout_41")
 
-        self.verticalLayout_40.addLayout(self.verticalLayout_41)
+        self.verticalLayout_43.addLayout(self.verticalLayout_41)
 
         self.option_fill_dowsing_on_white_sword = QCheckBox(self.verticalLayoutWidget_17)
         self.option_fill_dowsing_on_white_sword.setObjectName(u"option_fill_dowsing_on_white_sword")
 
-        self.verticalLayout_40.addWidget(self.option_fill_dowsing_on_white_sword)
+        self.verticalLayout_43.addWidget(self.option_fill_dowsing_on_white_sword)
+
+        self.verticalLayout_42 = QVBoxLayout()
+        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
+        self.label_for_option_chest_dowsing = QLabel(self.verticalLayoutWidget_17)
+        self.label_for_option_chest_dowsing.setObjectName(u"label_for_option_chest_dowsing")
+
+        self.verticalLayout_42.addWidget(self.label_for_option_chest_dowsing)
+
+        self.option_chest_dowsing = QComboBox(self.verticalLayoutWidget_17)
+        self.option_chest_dowsing.setObjectName(u"option_chest_dowsing")
+
+        self.verticalLayout_42.addWidget(self.option_chest_dowsing)
+
+
+        self.verticalLayout_43.addLayout(self.verticalLayout_42)
+
+        self.option_dungeon_dowsing = QCheckBox(self.verticalLayoutWidget_17)
+        self.option_dungeon_dowsing.setObjectName(u"option_dungeon_dowsing")
+
+        self.verticalLayout_43.addWidget(self.option_dungeon_dowsing)
 
         self.verticalSpacer_18 = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
-        self.verticalLayout_40.addItem(self.verticalSpacer_18)
+        self.verticalLayout_43.addItem(self.verticalSpacer_18)
 
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QWidget()
@@ -1243,6 +1263,7 @@ class Ui_MainWindow(object):
         self.option_sword_dungeon_reward.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
+        self.option_chest_dowsing.setCurrentIndex(-1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1364,6 +1385,9 @@ class Ui_MainWindow(object):
         self.option_triforce_shuffle.setCurrentText("")
         self.groupBox_18.setTitle(QCoreApplication.translate("MainWindow", u"Dowsing Options", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
+        self.label_for_option_chest_dowsing.setText(QCoreApplication.translate("MainWindow", u"Chest Dowsing", None))
+        self.option_chest_dowsing.setCurrentText("")
+        self.option_dungeon_dowsing.setText(QCoreApplication.translate("MainWindow", u"Allow Dowsing in Dungeons", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))

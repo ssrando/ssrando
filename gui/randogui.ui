@@ -1477,7 +1477,7 @@
          <height>211</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_40">
+       <layout class="QVBoxLayout" name="verticalLayout_43">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_41"/>
         </item>
@@ -1485,6 +1485,34 @@
          <widget class="QCheckBox" name="option_fill_dowsing_on_white_sword">
           <property name="text">
            <string>Fill Dowsing on White Sword</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_42">
+          <item>
+           <widget class="QLabel" name="label_for_option_chest_dowsing">
+            <property name="text">
+             <string>Chest Dowsing</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_chest_dowsing">
+            <property name="currentText">
+             <string/>
+            </property>
+            <property name="currentIndex">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_dungeon_dowsing">
+          <property name="text">
+           <string>Allow Dowsing in Dungeons</string>
           </property>
          </widget>
         </item>

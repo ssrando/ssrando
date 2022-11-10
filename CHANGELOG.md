@@ -5,6 +5,13 @@
 - Added option to make sword reward place swords on heart containers rather than final checks (by YourAverageLink)
 - Added option to randomize progression in Flooded Faron Woods (by CovenEsme)
   - Added Faron SotH check that is obtained when completing the Tadtones story quest
+- Added chest dowsing functionality as an option (by YourAverageLink)
+  - Uses the main quest dowsing slot (top slot), with a custom dowsing icon to indicate its usage for chests.
+  - Vanilla: No change in dowsing functionality (rupee/treasure dowsing works on chests)
+  - All Chests: Main quest dowsing will point to all chests. This means you cannot dowse for chests with rupee/treasure dowsing.
+  - Progress Items: Main quest dowsing will point to chests that contain progress items
+  - Currently does not work on goddess chests
+- Added option to enable dowsing in dungeons (by YourAverageLink, but shoutouts to Zeldex)
 ### Changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
@@ -19,10 +26,13 @@
   - New logical option for completing the Owlan's Crystals check
     - Added access to Flooded Faron as an alternative to needing bomb bag
 - Machi is no longer rescued after beating Skyview
+- Added custom dowsing images for new chest dowsing functionality (by YourAverageLink)
 - Shooting the bell during pumpkin archery ends the minigame immediately
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
+- Fixed a bug that would make sandship dowsing sometimes not be the top dowsing slot icon; it now has top priority
+
 
 ## 1.3.2
 ### Changes
