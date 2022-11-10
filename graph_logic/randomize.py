@@ -171,20 +171,35 @@ class Rando:
         for tablet in self.rng.sample(TABLETS, k=self.options["starting-tablet-count"]):
             starting_items.add(tablet)
 
-        # if self.options.get('start-with-sailcloth', True):
-        #   starting_items.add('Sailcloth')
-        if self.options["start-with-pouch"]:
-            starting_items.add(number(PROGRESSIVE_POUCH, 0))
-        
+        starting_items |= {
+            number(HEART_CONTAINER, i)
+            for i in range(self.options["starting-heart-containers"])
+        }
+
+        starting_items |= {
+            number(HEART_PIECE, i) for i in range(self.options["starting-heart-pieces"])
+        }
+
         for item in self.options["starting-items"]:
             if item.startswith("Progressive"):
                 if number(item, 0) not in starting_items:
                     for count in range(self.options["starting-items"].count(item)):
                         starting_items.add(number(item, count))
-                else: # Skips over duplicate entries for Progressive Items.
+                else:  # Skips over duplicate entries for Progressive Items.
                     continue
             else:
                 starting_items.add(item)
+
+        if self.options["random-starting-item"]:
+            possible_random_starting_items = tuple(
+                set(RANDOM_STARTING_ITEMS) - set(self.options["starting-items"])
+            )
+            if len(possible_random_starting_items) == 0:
+                raise ValueError(
+                    "All valid progress items have already been added as starting items."
+                )
+            else:
+                starting_items.add(self.rng.choice(possible_random_starting_items))
 
         self.placement = self.placement.add_starting_items(starting_items)
 

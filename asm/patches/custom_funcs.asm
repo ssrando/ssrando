@@ -232,7 +232,11 @@ bne storyflag_loop_body
 b itemflag_loop_cond
 itemflag_loop_body:
 lwz r3, ITEMFLAG_MANAGER@sda21(r13)
-bl FlagManager__setFlagTo1
+; 2 byte entries have the following form: 7 bytes count, 9 bytes flagindex
+; so count = val >> 9, flag = val & 0x1FF
+srwi r5, r4, 9
+rlwinm r4, r4, 0, 23, 31 ; r4 &= 0x1FF
+bl FlagManager__setFlagOrCounter
 itemflag_loop_cond:
 lhz r4, 0(r31)
 addi r31, r31, 2
@@ -249,8 +253,16 @@ lhz r4, 0(r31)
 addi r31, r31, 2
 cmplwi r4, 0xFFFF
 bne sceneflag_loop_body
-lwz r3, FILE_MANAGER@sda21(r13)
-addis r3, r3, 1
+lwz r3,-0x4040(r13) ; ITEMFLAG_MANAGER
+li r4, 501 ; counter for rupees
+lhz r5, 0(r31)
+bl FlagManager__setFlagOrCounter
+lwz r5,-0x4444(r13) ; FILE_MANAGER
+lhz r3, 2(r31)
+sth r3, 0x530A(r5) ; current health capacity file A
+addis r3, r5, 1
+sth r3, 0x530D(r5) ; Fill player health to match capacity
+addis r3, r5, 1
 li r0, 0
 stb r0, -22450(r3)
 lwz r31, 12(r1)

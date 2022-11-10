@@ -1319,27 +1319,6 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_15">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_28">
-          <item>
-           <widget class="QLabel" name="label_for_option_starting_sword">
-            <property name="text">
-             <string>Starting Sword</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="option_starting_sword"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_start_pouch">
-          <property name="text">
-           <string>Start with Adventure Pouch</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <layout class="QVBoxLayout" name="verticalLayout_16">
           <item>
            <widget class="QLabel" name="label_for_option_rupoor">
@@ -1842,6 +1821,20 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="label_for_option_starting_sword">
+             <property name="text">
+              <string>Starting Sword</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="option_starting_sword"/>
+           </item>
+          </layout>
+         </item>
          <item>
           <widget class="QCheckBox" name="option_random_starting_item">
            <property name="sizePolicy">

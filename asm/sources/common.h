@@ -67,6 +67,7 @@ class FileManager
 public:
     u8 _0[0xa84e];
     u8 anticommitFlag;
+    u16 dungeonFlags[8][22]; // not their actual place but whatever
     u16 *getSceneflags();
 };
 
@@ -76,6 +77,7 @@ class ItemflagManager
 {
 public:
     void setItemflag(u32 flag);
+    void setItemflagToValue(u32 flag, u32 count);
 };
 
 extern ItemflagManager *ITEMFLAG_MANAGER;
