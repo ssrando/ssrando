@@ -1545,6 +1545,11 @@ class GamePatcher:
         ):
             self.startstoryflags.append(ITEM_STORY_FLAGS[COMPLETE_TRIFORCE])
 
+        if all(
+            key_piece in self.placement_file.starting_items for key_piece in KEY_PIECES
+        ):
+            self.startstoryflags.append(ITEM_STORY_FLAGS[FULL_ET_KEY])
+
         # Add starting story and item flags.
         self.starting_heart_containers = 0
         self.starting_heart_pieces = 0

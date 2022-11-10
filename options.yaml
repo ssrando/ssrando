@@ -727,6 +727,15 @@
   default: false
   help: Gives you a random progression item at the start of the game.
   ui: option_random_starting_item
+- name: Starting ET Key Pieces
+  command: et-key-pieces
+  type: int
+  default: 0
+  min: 0
+  max: 5
+  bits: 3
+  help: How many Earth Temple key pieces you start with.
+  ui: option_et_key_pieces
 - name: Starting Heart Containers
   command: starting-heart-containers
   type: int
