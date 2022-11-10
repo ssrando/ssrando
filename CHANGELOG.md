@@ -89,6 +89,7 @@
   - The 2 small chests previously found within the Goddess Statue have been removed
 - Removed all skippable cutscenes except boss intro cutscenes (by CovenEsme)
   - When starting a new file, Link will now spawn directly in his room
+- Add an option for a custom hint distribution (by cjs07)
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
