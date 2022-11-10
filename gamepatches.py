@@ -320,9 +320,6 @@ BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted p
 
 BEEDLE_BUY_SWTICH = "[1]I'll buy it![2-]No, thanks."
 
-PROGRESSIVE_SWORD_STORYFLAGS = [906, 907, 908, 909, 910, 911]
-PROGRESSIVE_SWORD_ITEMIDS = [10, 11, 12, 9, 13, 14]
-
 TRIAL_OBJECT_IDS = {
     "S000": {
         "Tears": [
@@ -1528,37 +1525,46 @@ class GamePatcher:
         )
 
         for i in range(start_sword_count):
-            self.startstoryflags.append(PROGRESSIVE_SWORD_STORYFLAGS[i])
-        if start_sword_count > 3:
-            self.startstoryflags.append(583)  # 4 extra Dowsing slots
-            if self.placement_file.options["dowsing-after-whitesword"]:
-                self.startstoryflags.append(102)  # treasure Dowsing
-                self.startstoryflags.append(104)  # Crystal Dowsing
-                self.startstoryflags.append(105)  # Rupee Dowsing
-                self.startstoryflags.append(110)  # Goddess Cube Dowsing
+            self.startstoryflags.append(ITEM_STORY_FLAGS[PROGRESSIVE_SWORD][i])
         if start_sword_count > 0:
-            self.startitemflags.append(PROGRESSIVE_SWORD_ITEMIDS[start_sword_count - 1])
+            self.startitemflags.append(
+                ITEM_FLAGS[PROGRESSIVE_SWORD][start_sword_count - 1]
+            )
 
-        if all(soth_part in self.placement_file.starting_items for soth_part in SONG_OF_THE_HERO_PARTS):
+        # Give the completed song of the hero if all 3 pieces are added as starting items.
+        if all(
+            soth_part in self.placement_file.starting_items
+            for soth_part in SONG_OF_THE_HERO_PARTS
+        ):
             self.startitemflags.append(ITEM_FLAGS[SONG_OF_THE_HERO])
 
-        nb_starting_pouches = len(
-            set(PROGRESSIVE_POUCHES) & set(self.placement_file.starting_items)
-        )
+        # Give the completed triforce storyflag if all 3 triforce pieces are added as starting items.
+        if all(
+            triforce_piece in self.placement_file.starting_items
+            for triforce_piece in TRIFORCES
+        ):
+            self.startstoryflags.append(ITEM_STORY_FLAGS[COMPLETE_TRIFORCE])
 
-        assert 0 <= nb_starting_pouches <= 1
-
-        if nb_starting_pouches:
-            self.startstoryflags.append(30)  # storyflag for pouch
-            self.startstoryflags.append(931)  # rando storyflag for progressive pouch 1
-            self.startitemflags.append(112)  # itemflag for pouch
-
-        # Add storyflags for tablets
+        # Add starting story and item flags.
+        self.starting_heart_containers = 0
+        self.starting_heart_pieces = 0
         for item in self.placement_file.starting_items:
             item = strip_item_number(item)
-            self.startstoryflags = self._starting_item_helper(ITEM_STORY_FLAGS, item, self.startstoryflags)
-            self.startitemflags = self._starting_item_helper(ITEM_FLAGS, item, self.startitemflags)
-    
+            self.startstoryflags = self._starting_item_helper(
+                ITEM_STORY_FLAGS, item, self.startstoryflags
+            )
+            self.startitemflags = self._starting_item_helper(
+                ITEM_FLAGS, item, self.startitemflags
+            )
+            if item == HEART_CONTAINER:
+                self.starting_heart_containers += 1
+            elif item == HEART_PIECE:
+                self.starting_heart_pieces += 1
+            if item in ITEM_COUNT_FLAGS:
+                self.startitemflags.append(ITEM_COUNT_FLAGS[item])
+        if ITEM_STORY_FLAGS[PROGRESSIVE_POUCH][0] in self.startstoryflags:
+            self.startstoryflags.append(30)  # Vanilla storyflag for pouch.
+
     def _starting_item_helper(self, flags, item, startflags):
         if item in flags:
             # Progressive flags.
@@ -2294,8 +2300,8 @@ class GamePatcher:
                 msbf,
                 136,
                 [77, 608, 75, 78, 74, 73],
-                PROGRESSIVE_SWORD_ITEMIDS,
-                PROGRESSIVE_SWORD_STORYFLAGS,
+                ITEM_FLAGS[PROGRESSIVE_SWORD],
+                ITEM_STORY_FLAGS[PROGRESSIVE_SWORD],
             )
             # make progressive beetle - msbf, base item, item text, item id, storyflags
             make_progressive_item(
@@ -2399,7 +2405,24 @@ class GamePatcher:
         start_flags_write.write(bytes.fromhex("FFFF"))
         # itemflags
         for flag in self.startitemflags:
+            assert flag < 0x1FF
+            if flag in DEFAULT_ITEM_COUNTS:
+                flag |= DEFAULT_ITEM_COUNTS[flag] << 9
+            elif (
+                flag != ITEM_COUNT_FLAGS[HEART_PIECE]
+                and flag in ITEM_COUNT_FLAGS.values()
+            ):
+                if flag == ITEM_COUNT_FLAGS[PROGRESSIVE_POUCH]:
+                    flag |= (self.startitemflags.count(flag) - 1) << 9
+                else:
+                    flag |= self.startitemflags.count(flag) << 9
+            elif flag not in (HEART_CONTAINER_ITEM_FLAG, HEART_PIECE_ITEM_FLAG):
+                flag |= 1 << 9
             start_flags_write.write(struct.pack(">H", flag))
+        heart_piece_flag = ITEM_COUNT_FLAGS[HEART_PIECE] | (
+            (self.starting_heart_pieces % 4) << 9
+        )
+        start_flags_write.write(struct.pack(">H", heart_piece_flag))
         start_flags_write.write(bytes.fromhex("FFFF"))
         # sceneflags
         for flagregion, flags in (
@@ -2416,6 +2439,14 @@ class GamePatcher:
                     flag = flag["flag"]
                 start_flags_write.write(struct.pack(">BB", flagregionid, flag))
         start_flags_write.write(bytes.fromhex("FFFF"))
+        # Starting rupee count.
+        start_flags_write.write(struct.pack(">H", 0))
+        # Start health.
+        heart_container_count = self.starting_heart_containers
+        heart_piece_count = self.starting_heart_pieces
+        # (default health + num of containers + num of containers from pieces) * pieces per container
+        starting_health = (6 + heart_container_count + (heart_piece_count // 4)) * 4
+        start_flags_write.write(struct.pack(">H", starting_health))
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:
             raise Exception(

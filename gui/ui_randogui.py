@@ -847,26 +847,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_15 = QVBoxLayout(self.verticalLayoutWidget_5)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_28 = QVBoxLayout()
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
-        self.label_for_option_starting_sword = QLabel(self.verticalLayoutWidget_5)
-        self.label_for_option_starting_sword.setObjectName(u"label_for_option_starting_sword")
-
-        self.verticalLayout_28.addWidget(self.label_for_option_starting_sword)
-
-        self.option_starting_sword = QComboBox(self.verticalLayoutWidget_5)
-        self.option_starting_sword.setObjectName(u"option_starting_sword")
-
-        self.verticalLayout_28.addWidget(self.option_starting_sword)
-
-
-        self.verticalLayout_15.addLayout(self.verticalLayout_28)
-
-        self.option_start_pouch = QCheckBox(self.verticalLayoutWidget_5)
-        self.option_start_pouch.setObjectName(u"option_start_pouch")
-
-        self.verticalLayout_15.addWidget(self.option_start_pouch)
-
         self.verticalLayout_16 = QVBoxLayout()
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_for_option_rupoor = QLabel(self.verticalLayoutWidget_5)
@@ -1240,6 +1220,21 @@ class Ui_MainWindow(object):
         self.horizontalLayout_27 = QHBoxLayout()
         self.horizontalLayout_27.setObjectName(u"horizontalLayout_27")
         self.horizontalLayout_27.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_for_option_starting_sword = QLabel(self.verticalLayoutWidget_20)
+        self.label_for_option_starting_sword.setObjectName(u"label_for_option_starting_sword")
+
+        self.horizontalLayout_5.addWidget(self.label_for_option_starting_sword)
+
+        self.option_starting_sword = QComboBox(self.verticalLayoutWidget_20)
+        self.option_starting_sword.setObjectName(u"option_starting_sword")
+
+        self.horizontalLayout_5.addWidget(self.option_starting_sword)
+
+
+        self.horizontalLayout_27.addLayout(self.horizontalLayout_5)
+
         self.option_random_starting_item = QCheckBox(self.verticalLayoutWidget_20)
         self.option_random_starting_item.setObjectName(u"option_random_starting_item")
         sizePolicy2.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
@@ -1482,8 +1477,6 @@ class Ui_MainWindow(object):
         self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Shuffle Trial Objects", None))
         self.groupBox_9.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
-        self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
-        self.option_start_pouch.setText(QCoreApplication.translate("MainWindow", u"Start with Adventure Pouch", None))
         self.label_for_option_rupoor.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.option_gondo_upgrades.setText(QCoreApplication.translate("MainWindow", u"Place Scrap Shop Upgrades", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
@@ -1525,6 +1518,7 @@ class Ui_MainWindow(object):
         self.randomize_item.setText(QCoreApplication.translate("MainWindow", u"<--", None))
         self.start_with_item.setText(QCoreApplication.translate("MainWindow", u"-->", None))
         self.label_starting_items.setText(QCoreApplication.translate("MainWindow", u"Starting Items", None))
+        self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
         self.label_for_option_starting_heart_containers.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))
         self.label_for_option_starting_heart_pieces.setText(QCoreApplication.translate("MainWindow", u"Heart Pieces", None))

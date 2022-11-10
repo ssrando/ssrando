@@ -180,13 +180,6 @@
   default: false
   help: "Shuffles the trials. If checked, entering a trial gate will send you to a randomized trial."
   ui: option_randomize_trials
-- name: Start with Adventure Pouch
-  command: start-with-pouch
-  type: boolean
-  default: false
-  help: If activated, you will start with the adventure pouch unlocked. The remaining four
-    progressive pouches will still be shuffled.
-  ui: option_start_pouch
 - name: No Spoiler Log
   command: no-spoiler-log
   type: boolean
@@ -703,6 +696,11 @@
     - Progressive Bug Net
     - Progressive Mitts
     - Progressive Mitts
+    - Progressive Pouch
+    - Progressive Pouch
+    - Progressive Pouch
+    - Progressive Pouch
+    - Progressive Pouch
     - Progressive Slingshot
     - Progressive Slingshot
     - Progressive Wallet
@@ -717,7 +715,33 @@
     - Triforce of Wisdom
     - Water Scale
     - Whip
-  default: []
-    # - Sailcloth
+  default: [
+    Progressive Pouch
+    # Sailcloth
+  ]
   help: Items that will be in your inventory at the start of the game.
   ui: starting_items
+- name: Random Starting Item
+  command: random-starting-item
+  type: boolean
+  default: false
+  help: Gives you a random progression item at the start of the game.
+  ui: option_random_starting_item
+- name: Starting Heart Containers
+  command: starting-heart-containers
+  type: int
+  default: 0
+  min: 0
+  max: 6
+  bits: 3
+  help: How many heart containers to start with.
+  ui: option_starting_heart_containers
+- name: Starting Heart Pieces
+  command: starting-heart-pieces
+  type: int
+  default: 0
+  min: 0
+  max: 24
+  bits: 5
+  help: How many heart pieces to start with.
+  ui: option_starting_heart_pieces

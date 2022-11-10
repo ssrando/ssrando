@@ -118,7 +118,9 @@ class Options:
                         writer.write(0, 1)
                         starting_items.remove(starting_items[0])
                     else:
-                        for progressive_count in range(starting_items.count(starting_items[0])):
+                        for progressive_count in range(
+                            starting_items.count(starting_items[0])
+                        ):
                             writer.write(progressive_count < starting_item_count, 1)
                             starting_items.pop(0)
             elif option["type"] == "multichoice":
