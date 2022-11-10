@@ -33,6 +33,7 @@ global:
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
+    - 70 # First time Light Fruit Cutscene
     - storyflag: 134 # Horde defeated
       onlyif: Option "skip-horde" Enabled
     - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
