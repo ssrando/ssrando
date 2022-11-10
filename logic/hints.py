@@ -26,7 +26,9 @@ class Hints:
         self.dist = HintDistribution()
         if self.logic.rando.options["hint-distribution"] == "Custom":
             if not os.path.exists("custom_hint_distribution.json"):
-                raise Exception("Custom distro file not found. Ensure that custom_hint_distribution.json exists in the same directory as the randomizer")
+                raise Exception(
+                    "Custom distro file not found. Ensure that custom_hint_distribution.json exists in the same directory as the randomizer"
+                )
             with open("custom_hint_distribution.json") as f:
                 self.dist.read_from_file(f)
         else:
