@@ -166,6 +166,7 @@ PROGRESSIVE_BOW = "Progressive Bow"
 PROGRESSIVE_BUG_NET = "Progressive Bug Net"
 PROGRESSIVE_POUCH = "Progressive Pouch"
 KEY_PIECE = "Key Piece"
+FULL_ET_KEY = "Full ET Key"
 EMPTY_BOTTLE = "Empty Bottle"
 PROGRESSIVE_WALLET = "Progressive Wallet"
 EXTRA_WALLET = "Extra Wallet"
@@ -781,6 +782,7 @@ ITEM_STORY_FLAGS = {
     TRIFORCE_OF_POWER: 728,
     TRIFORCE_OF_WISDOM: 730,
     COMPLETE_TRIFORCE: 645,
+    FULL_ET_KEY: 120,
     PROGRESSIVE_SWORD: [
         906,
         907,
@@ -849,4 +851,5 @@ ALLOWED_STARTING_ITEMS = (
     | PROGRESSIVE_WALLETS
     | HEART_CONTAINERS
     | HEART_PIECES
+    | KEY_PIECES
 )

@@ -180,6 +180,11 @@ class Rando:
             number(HEART_PIECE, i) for i in range(self.options["starting-heart-pieces"])
         }
 
+        if not self.options["open-et"]:
+            starting_items |= {
+                number(KEY_PIECE, i) for i in range(self.options["et-key-pieces"])
+            }
+
         for item in self.options["starting-items"]:
             if item.startswith("Progressive"):
                 if number(item, 0) not in starting_items:

@@ -1203,6 +1203,21 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_27.addWidget(self.option_random_starting_item)
 
+        self.horizontalLayout_13 = QHBoxLayout()
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.label_for_option_et_key_pieces = QLabel(self.verticalLayoutWidget_20)
+        self.label_for_option_et_key_pieces.setObjectName(u"label_for_option_et_key_pieces")
+
+        self.horizontalLayout_13.addWidget(self.label_for_option_et_key_pieces)
+
+        self.option_et_key_pieces = QSpinBox(self.verticalLayoutWidget_20)
+        self.option_et_key_pieces.setObjectName(u"option_et_key_pieces")
+
+        self.horizontalLayout_13.addWidget(self.option_et_key_pieces)
+
+
+        self.horizontalLayout_27.addLayout(self.horizontalLayout_13)
+
         self.horizontalLayout_28 = QHBoxLayout()
         self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
         self.label_for_option_starting_heart_containers = QLabel(self.verticalLayoutWidget_20)
@@ -1467,6 +1482,7 @@ class Ui_MainWindow(object):
         self.label_starting_items.setText(QCoreApplication.translate("MainWindow", u"Starting Items", None))
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
+        self.label_for_option_et_key_pieces.setText(QCoreApplication.translate("MainWindow", u"ET Key Pieces", None))
         self.label_for_option_starting_heart_containers.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))
         self.label_for_option_starting_heart_pieces.setText(QCoreApplication.translate("MainWindow", u"Heart Pieces", None))
         self.label_current_starting_health.setText(QCoreApplication.translate("MainWindow", u"Current Starting Health:", None))

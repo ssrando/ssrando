@@ -1849,6 +1849,20 @@
           </widget>
          </item>
          <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <item>
+            <widget class="QLabel" name="label_for_option_et_key_pieces">
+             <property name="text">
+              <string>ET Key Pieces</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="option_et_key_pieces"/>
+           </item>
+          </layout>
+         </item>
+         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_28">
            <item>
             <widget class="QLabel" name="label_for_option_starting_heart_containers">
