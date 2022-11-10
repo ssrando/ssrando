@@ -93,6 +93,12 @@ class Randomizer(BaseRandomizer):
         current_hash.update(str(self.seed).encode("ASCII"))
         current_hash.update(self.options.get_permalink().encode("ASCII"))
         current_hash.update(VERSION.encode("ASCII"))
+        if self.options["hint-distribution"] == "Custom":
+            print("adding custom distro to hash")
+            with open("custom_hint_distribution.json") as f:
+                lines = f.readlines()
+                for line in lines:
+                    current_hash.update(line.strip(" \n").encode("ASCII"))
         with open(RANDO_ROOT_PATH / "names.txt") as f:
             names = [s.strip() for s in f.readlines()]
         hash_random = random.Random()

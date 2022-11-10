@@ -22,12 +22,16 @@ class Hints:
         self.options = options
         self.rng = rng
 
-        with open(
-            RANDO_ROOT_PATH
-            / f"hints/distributions/{self.options['hint-distribution']}.json"
-        ) as f:
-            self.dist = HintDistribution()
-            self.dist.read_from_file(f)
+        self.dist = HintDistribution()
+        if self.logic.rando.options["hint-distribution"] == "Custom":
+            with open("custom_hint_distribution.json") as f:
+                self.dist.read_from_file(f)
+        else:
+            with open(
+                RANDO_ROOT_PATH
+                / f"hints/distributions/{self.logic.rando.options['hint-distribution']}.json"
+            ) as f:
+                self.dist.read_from_file(f)
 
     def do_hint_per_status(self, hintmodes, does_hint, hintcls, get_check, hintpack):
         for (hintname, raw_check) in hintpack.items():

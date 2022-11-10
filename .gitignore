@@ -185,3 +185,5 @@ custom-music/
 
 # temp asm
 *.s
+# ignore any custom setting source files
+custom_*.*
