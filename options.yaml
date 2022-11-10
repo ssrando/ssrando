@@ -497,6 +497,12 @@
   default: false
   help: If enabled, does not load some arcs in BiT when all file slots are filled to make all areas accessible in BiT
   ui: option_fix_bit_crashes
+- name: Skip Region Intro Cutscenes
+  command: skip-region-intro-cutscenes
+  type: boolean
+  default: false
+  help: If enabled, the introductory cutscenes to an area will be automatically skipped.
+  ui: option_skip_region_intro_cutscenes
 - name: Output placement file
   command: out-placement-file
   type: boolean

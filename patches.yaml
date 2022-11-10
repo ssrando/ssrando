@@ -41,6 +41,52 @@ global:
       onlyif: Option "skip-g3" Enabled
     - storyflag: 8 # LMF rising CS watched
       onlyif: Option "open-lmf" Is "Open"
+    - storyflag: 87 # Faron Woods Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 88 # Lake Floria Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 89 # Skyview Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 91 # Deep Woods Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 92 # Lanayru Desert Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 94 # Faron Silent Realm Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 156 # Sandship Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 157 # Ancient Harbour Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 159 # Sky Keep Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 172 # Fire Sanctuary Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 173 # Fire Sanctuary Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 183 # Earth Temple Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 190 # Lanayru Mine Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 199 # Lanayru Silent Realm Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 211 # Lanayru Mining Facility Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 265 # Shipyard Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 266 # Skipper's Retreat Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 267 # Outside Pirate Stronghold Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 330 # Eldin Silent Realm Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 331 # Hylia's Silent Realm Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 526 # Lanayru Gorge Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    - storyflag: 562 # Volcano Summit Intro Cutscene
+      onlyif: Option "skip-region-intro-cutscenes" Enabled
+    # - storyflag: 641 # Spiral Charge Training Intro Cutscene
+    #   onlyif: Option "skip-region-intro-cutscenes" Enabled
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
     - 15 # sailcloth
   startsceneflags: # currently only for skyloft

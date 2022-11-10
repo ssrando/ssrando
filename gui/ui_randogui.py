@@ -836,7 +836,7 @@ class Ui_MainWindow(object):
         self.groupBox_9.setGeometry(QRect(10, 270, 201, 241))
         self.verticalLayoutWidget_5 = QWidget(self.groupBox_9)
         self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
-        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 181, 210))
+        self.verticalLayoutWidget_5.setGeometry(QRect(10, 20, 181, 222))
         self.verticalLayout_15 = QVBoxLayout(self.verticalLayoutWidget_5)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
@@ -860,20 +860,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addWidget(self.option_start_pouch)
 
-        self.verticalLayout_16 = QVBoxLayout()
-        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.horizontalLayout_13 = QHBoxLayout()
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
         self.label_for_option_rupoor = QLabel(self.verticalLayoutWidget_5)
         self.label_for_option_rupoor.setObjectName(u"label_for_option_rupoor")
 
-        self.verticalLayout_16.addWidget(self.label_for_option_rupoor)
+        self.horizontalLayout_13.addWidget(self.label_for_option_rupoor)
 
         self.option_rupoor_mode = QComboBox(self.verticalLayoutWidget_5)
         self.option_rupoor_mode.setObjectName(u"option_rupoor_mode")
 
-        self.verticalLayout_16.addWidget(self.option_rupoor_mode)
+        self.horizontalLayout_13.addWidget(self.option_rupoor_mode)
 
 
-        self.verticalLayout_15.addLayout(self.verticalLayout_16)
+        self.verticalLayout_15.addLayout(self.horizontalLayout_13)
 
         self.option_gondo_upgrades = QCheckBox(self.verticalLayoutWidget_5)
         self.option_gondo_upgrades.setObjectName(u"option_gondo_upgrades")
@@ -889,6 +889,11 @@ class Ui_MainWindow(object):
         self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
 
         self.verticalLayout_15.addWidget(self.option_fix_bit_crashes)
+
+        self.option_skip_region_intro_cutscenes = QCheckBox(self.verticalLayoutWidget_5)
+        self.option_skip_region_intro_cutscenes.setObjectName(u"option_skip_region_intro_cutscenes")
+
+        self.verticalLayout_15.addWidget(self.option_skip_region_intro_cutscenes)
 
         self.verticalSpacer_17 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1379,6 +1384,7 @@ class Ui_MainWindow(object):
         self.option_gondo_upgrades.setText(QCoreApplication.translate("MainWindow", u"Place Scrap Shop Upgrades", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
+        self.option_skip_region_intro_cutscenes.setText(QCoreApplication.translate("MainWindow", u"Skip Region Intro Cutscenes", None))
         self.groupBox_16.setTitle(QCoreApplication.translate("MainWindow", u"Triforce", None))
         self.option_triforce_required.setText(QCoreApplication.translate("MainWindow", u"Triforce Required", None))
         self.label_for_option_triforce_shuffle.setText(QCoreApplication.translate("MainWindow", u"Triforce Shuffle", None))

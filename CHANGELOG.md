@@ -12,6 +12,7 @@
   - Progress Items: Main quest dowsing will point to chests that contain progress items
   - Currently does not work on goddess chests
 - Added option to enable dowsing in dungeons (by YourAverageLink, but shoutouts to Zeldex)
+- Added option to have region intro cutscenes automatically skipped (by CovenEsme)
 ### Changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
