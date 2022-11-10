@@ -5,6 +5,11 @@
 - Added option to make sword reward place swords on heart containers rather than final checks (by YourAverageLink)
 - Added option to randomize progression in Flooded Faron Woods (by CovenEsme)
   - Added Faron SotH check that is obtained when completing the Tadtones story quest
+- Added option to start with various items (by CovenEsme)
+  - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge and stone of trials.
+- Added option to start with extra health (by CovenEsme)
+- Added option to start with a random progress item (by CovenEsme)
+- Added option to start with a given number of Earth Temple key pieces (by CovenEsme)
 ### Changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
