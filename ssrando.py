@@ -94,7 +94,8 @@ class Randomizer(BaseRandomizer):
         current_hash.update(self.options.get_permalink().encode("ASCII"))
         current_hash.update(VERSION.encode("ASCII"))
         if self.options["hint-distribution"] == "Custom":
-            print("adding custom distro to hash")
+            if not os.path.exists("custom_hint_distribution.json"):
+                raise Exception("Custom hint distribution file not found. Make sure custom_hint_distribution.json exists at the same location as the randomizer")
             with open("custom_hint_distribution.json") as f:
                 lines = f.readlines()
                 for line in lines:

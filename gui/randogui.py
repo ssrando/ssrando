@@ -25,6 +25,7 @@ from PySide6.QtWidgets import (
     QStyleFactory,
 )
 from gui.sort_model import LocationsModel
+from hints.hint_distribution import InvalidHintDistribution
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -266,7 +267,8 @@ class RandoGUI(QMainWindow):
 
     def on_error(self, message):
         self.error_msg = QErrorMessage(self)
-        self.progress_dialog.reset()
+        if self.progress_dialog:
+            self.progress_dialog.reset()
         self.error_msg.showMessage(message)
 
     def randomization_complete(self):

@@ -113,7 +113,10 @@ class HintDistribution:
         }
 
     def read_from_file(self, f):
-        self._read_from_json(json.load(f))
+        try:
+            self._read_from_json(json.load(f))
+        except:
+            raise InvalidHintDistribution("Provided hint distribution was unable to be read")
 
     def read_from_str(self, s):
         self._read_from_json(json.loads(s))
