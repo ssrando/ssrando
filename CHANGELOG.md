@@ -28,6 +28,8 @@
 - Machi is no longer rescued after beating Skyview
 - Added custom dowsing images for new chest dowsing functionality (by YourAverageLink)
 - Shooting the bell during pumpkin archery ends the minigame immediately
+- Removed first time textboxes (by CovenEsme)
+  - Removes rupee, heart, arrow, bomb, stamina fruit, silent realm tear and light fruit first time textboxes
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
