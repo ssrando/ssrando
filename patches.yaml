@@ -33,6 +33,7 @@ global:
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
+    - 70 # First time Light Fruit Cutscene
     - storyflag: 134 # Horde defeated
       onlyif: Option "skip-horde" Enabled
     - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
@@ -42,7 +43,21 @@ global:
     - storyflag: 8 # LMF rising CS watched
       onlyif: Option "open-lmf" Is "Open"
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
+    - 2 # Green Rupee
+    - 3 # Blue Rupee
+    - 4 # Red Rupee
+    - 6 # Heart
+    - 7 # Single Arrow
+    - 8 # Bundle of Arrows
     - 15 # sailcloth
+    - 40 # 5 Bombs
+    - 41 # 10 Bombs
+    - 42 # Stamina Fruit
+    - 43 # Tear of Farore
+    - 44 # Tear of Din
+    - 45 # Tear of Nayru
+    - 46 # Sacred Tear
+    - 47 # Light Fruit
   startsceneflags: # currently only for skyloft
     Skyloft:
       - 95 # Fi Text for Ruby Tablet
