@@ -6,20 +6,85 @@ from logic.logic import Logic
 
 
 @dataclass
-class GossipStoneHint:
+class Hint:
     hint_type: str
 
     def __init__(self) -> None:
-        raise NotImplementedError("abstract")
-
-    def to_gossip_stone_text(self) -> List[str]:
-        """each string in the list appear in a separate textbox and will be line broken"""
         raise NotImplementedError("abstract")
 
     def to_spoiler_log_text(self) -> str:
         raise NotImplementedError("abstract")
 
     def to_spoiler_log_json(self):
+        raise NotImplementedError("abstract")
+
+
+@dataclass
+class SongHint(Hint):
+    hint_type: str = field(init=False)
+    songhintname: str
+    item: str
+
+    def to_textbox(self) -> str:
+        raise NotImplementedError("abstract")
+
+    def to_spoiler_log_text(self) -> str:
+        return f"{self.to_textbox()} [{self.item}]"
+
+    def to_spoiler_log_json(self):
+        return {
+            "location": self.songhintname,
+            "item": self.item,
+            "type": self.hint_type,
+        }
+
+
+class SongEmptyHint(SongHint):
+    hint_type = "song-empty"
+    text = ""
+
+    def to_textbox(self):
+        return self.text
+
+
+class SongDirectHint(SongHint):
+    hint_type = "song-direct"
+    text = "This trial holds {}"
+
+    def to_textbox(self):
+        return self.text.format(self.item)
+
+
+class SongUselessHint(SongHint):
+    hint_type = "song-useless"
+    text = "It's probably not too important..."
+
+    def to_textbox(self):
+        return self.text
+
+
+class SongUsefulHint(SongHint):
+    hint_type = "song-useful"
+    text = "You might need what it reveals..."
+
+    def to_textbox(self):
+        return self.text
+
+
+class SongRequiredHint(SongHint):
+    hint_type = "song-required"
+    text = "Your spirit will grow by completing this trial"
+
+    def to_textbox(self):
+        return self.text
+
+
+@dataclass
+class GossipStoneHint(Hint):
+    hint_type: str
+
+    def to_gossip_stone_text(self) -> List[str]:
+        """each string in the list appear in a separate textbox and will be line broken"""
         raise NotImplementedError("abstract")
 
     def __hash__(self):
@@ -28,22 +93,17 @@ class GossipStoneHint:
 
 @dataclass
 class GossipStoneHintWrapper:
-    primary_hint: GossipStoneHint
-    secondary_hint: GossipStoneHint
+    hints: List[GossipStoneHint]
 
     def to_gossip_stone_text(self) -> List[str]:
-        primary_text = self.primary_hint.to_gossip_stone_text()
-        secondary_text = self.secondary_hint.to_gossip_stone_text()
-        return primary_text + secondary_text
-
-    def to_spoiler_log_text(self) -> str:
-        return f"{self.primary_hint.to_spoiler_log_text()} / {self.secondary_hint.to_spoiler_log_text()}"
+        return [
+            hint_entry
+            for hint in self.hints
+            for hint_entry in hint.to_gossip_stone_text()
+        ]
 
     def to_spoiler_log_json(self):
-        return [
-            self.primary_hint.to_spoiler_log_json(),
-            self.secondary_hint.to_spoiler_log_json(),
-        ]
+        return [hint.to_spoiler_log_json() for hint in self.hints]
 
 
 @dataclass

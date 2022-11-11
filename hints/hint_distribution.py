@@ -125,19 +125,18 @@ class HintDistribution:
     tracking mechanisms for hint generation
     """
 
-    def start(self, logic: Logic, always_hints: list, sometimes_hints: list):
+    def start(
+        self,
+        logic: Logic,
+        unhintable: list,
+        always_hints: list,
+        sometimes_hints: list,
+    ):
         self.rng = logic.rando.rng
         self.logic = logic
         self.options = logic.rando.options
 
-        # ensure prerandomized locations cannot be hinted
-        self.hinted_locations = [
-            loc
-            for loc in self.logic.prerandomization_item_locations.keys()
-            if not self.logic.is_restricted_placement_item(
-                self.logic.done_item_locations[loc]
-            )
-        ]
+        self.hinted_locations = unhintable
 
         self.max_hints_per_stone = {
             stone: 0 if stone in self.banned_stones else MAX_HINTS_PER_STONE
@@ -316,6 +315,7 @@ class HintDistribution:
     def _create_always_hint(self):
         if not self.always_hints:
             return None
+
         loc = self.always_hints.pop()
         item = self.logic.done_item_locations[loc]
         text = self.logic.item_locations[loc].get("text")
@@ -477,11 +477,11 @@ class HintDistribution:
         # weights = (dungeon_weight, overworld_weight)
         if self.prev_barren_type is None:
             # 50/50 between dungeon and overworld on the first hint
-            weights = (1, 1)
+            weights = (0.5, 0.5)
         elif self.prev_barren_type == "dungeon":
-            weights = (1, 3)
+            weights = (0.25, 0.75)
         elif self.prev_barren_type == "overworld":
-            weights = (3, 1)
+            weights = (0.75, 0.25)
         else:
             assert False
 

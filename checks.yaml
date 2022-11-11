@@ -1680,6 +1680,7 @@ Skyloft Silent Realm - Stone of Trials:
   type: skyloft, silent realm
   Paths:
     - stage/S000/r0/l2/WarpObj
+  hint: always
   text: the <r<goddess's final trial>> grants
 
 
@@ -1688,6 +1689,7 @@ Faron Silent Realm - Water Scale:
   type: faron, silent realm
   Paths:
     - stage/S100/r0/l2/WarpObj
+  hint: always
   text: a <r<trial of courage>> grants
 
 Lanayru Silent Realm - Clawshots:
@@ -1695,6 +1697,7 @@ Lanayru Silent Realm - Clawshots:
   type: lanayru, silent realm
   Paths:
     - stage/S300/r0/l2/WarpObj
+  hint: always
   text: a <r<trial of wisdom>> grants
 
 Eldin Silent Realm - Fireshield Earrings:
@@ -1702,4 +1705,5 @@ Eldin Silent Realm - Fireshield Earrings:
   type: eldin, silent realm
   Paths:
     - stage/S200/r2/l2/WarpObj
+  hint: always
   text: a <r<trial of power>> grants

@@ -5,7 +5,8 @@ from paths import RANDO_ROOT_PATH
 import yaml
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
-from typing import List
+from enum import Enum
+from typing import Dict, List, Type
 
 from .constants import *
 from util import textbox_utils
@@ -58,6 +59,8 @@ SOMETIMES_LOCATIONS = [
     "Sealed Grounds - Gorko's Goddess Wall Reward",
 ]
 
+STATUS = Enum("STATUS", ["required", "useful", "useless"])
+
 
 class Hints:
     def __init__(self, logic: Logic):
@@ -76,6 +79,58 @@ class Hints:
             self.dist = HintDistribution()
             self.dist.read_from_file(f)
 
+    def do_non_hintstone_hints(self):
+        hinted_checks = []
+
+        trial_checks = {
+            "Song of the Hero - Trial Hint": SKYLOFT_TRIAL_GATE,
+            "Farore's Courage - Trial Hint": FARON_TRIAL_GATE,
+            "Nayru's Wisdom - Trial Hint": ELDIN_TRIAL_GATE,
+            "Din's Power - Trial Hint": LANAYRU_TRIAL_GATE,
+        }
+
+        hint_mode = self.logic.rando.options["song-hints"]
+        if hint_mode != "None":
+            for check in SILENT_REALM_CHECKS.values():
+                hinted_checks.append(check)
+
+        hintfunc: Dict[Enum, Type[SongHint]]
+        if hint_mode == "None":
+            hintfunc = {k: SongEmptyHint for k in STATUS}
+        elif hint_mode == "Direct":
+            hintfunc = {k: SongDirectHint for k in STATUS}
+        elif hint_mode == "Basic":
+            hintfunc = {
+                STATUS.required: SongUsefulHint,
+                STATUS.useful: SongUsefulHint,
+                STATUS.useless: SongUselessHint,
+            }
+        elif hint_mode == "Advanced":
+            hintfunc = {
+                STATUS.required: SongRequiredHint,
+                STATUS.useful: SongUsefulHint,
+                STATUS.useless: SongUselessHint,
+            }
+        else:
+            raise ValueError(f'Unknown value for setting "song-hints": "{hint_mode}"')
+
+        for (hintname, trial_gate) in trial_checks.items():
+            randomized_trial = self.logic.trial_connections[trial_gate]
+            randomized_trial_check = SILENT_REALM_CHECKS[randomized_trial]
+            item = self.logic.done_item_locations[randomized_trial_check]
+
+            status: Enum
+            if randomized_trial_check in self.logic.rando.sots_locations:
+                status = STATUS.required
+            elif item in self.logic.all_progress_items:
+                status = STATUS.useful
+            else:
+                status = STATUS.useless
+
+            self.hints[hintname] = hintfunc[status](hintname, item)
+
+        return hinted_checks
+
     def do_hints(self):
         needed_always_hints = self.logic.filter_locations_for_progression(
             [
@@ -92,11 +147,7 @@ class Hints:
         ):
             needed_always_hints.append("Beedle - 1200 Rupee Item")
             needed_always_hints.append("Beedle - 1600 Rupee Item")
-        if self.logic.rando.options["song-hints"] == "None":
-            needed_always_hints.append("Skyloft Silent Realm - Stone of Trials")
-            needed_always_hints.append("Faron Silent Realm - Water Scale")
-            needed_always_hints.append("Lanayru Silent Realm - Clawshots")
-            needed_always_hints.append("Eldin Silent Realm - Fireshield Earrings")
+
         needed_sometimes_hints = self.logic.filter_locations_for_progression(
             [
                 loc
@@ -105,7 +156,24 @@ class Hints:
                 and self.logic.item_locations[loc]["hint"] == "sometimes"
             ]
         )
-        self.dist.start(self.logic, needed_always_hints, needed_sometimes_hints)
+
+        # ensure prerandomized locations cannot be hinted
+        unhintables = [
+            loc
+            for loc in self.logic.prerandomization_item_locations.keys()
+            if not self.logic.is_restricted_placement_item(
+                self.logic.done_item_locations[loc]
+            )
+        ]
+
+        hinted_checks = self.do_non_hintstone_hints()
+
+        self.dist.start(
+            self.logic,
+            unhintables + hinted_checks,
+            needed_always_hints,
+            needed_sometimes_hints,
+        )
         hints = self.dist.get_hints()
         self._place_hints_for_locations(hints)
 
@@ -208,16 +276,14 @@ class Hints:
                 if second_loc_to_hint is None and loc_to_hint is not None:
                     if len(anywhere_hints) > 0:
                         self.hints[gossipstone_name] = GossipStoneHintWrapper(
-                            loc_to_hint,
-                            anywhere_hints.pop(),
+                            [loc_to_hint, anywhere_hints.pop()]
                         )
                     else:
                         self.hints[gossipstone_name] = loc_to_hint
                 elif second_loc_to_hint is not None and loc_to_hint is None:
                     if len(anywhere_hints) > 0:
                         self.hints[gossipstone_name] = GossipStoneHintWrapper(
-                            anywhere_hints.pop(),
-                            second_loc_to_hint,
+                            [anywhere_hints.pop(), second_loc_to_hint]
                         )
                     else:
                         self.hints[gossipstone_name] = second_loc_to_hint
@@ -235,5 +301,5 @@ class Hints:
                         )
                 else:
                     self.hints[gossipstone_name] = GossipStoneHintWrapper(
-                        loc_to_hint, second_loc_to_hint
+                        [loc_to_hint, second_loc_to_hint]
                     )
