@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
+from enum import Enum
 from typing import List, Optional
 
 from logic.logic import Logic
@@ -23,20 +24,43 @@ class Hint:
         raise NotImplementedError("abstract")
 
 
+HINT_MODES = Enum("HINT_MODES", ["Empty", "Direct", "Useless", "Useful", "Required"])
+
+hint_types = {
+    HINT_MODES.Empty: "empty",
+    HINT_MODES.Direct: "direct",
+    HINT_MODES.Useless: "useless",
+    HINT_MODES.Useful: "useful",
+    HINT_MODES.Required: "required",
+}
+
+
 @dataclass
-class SongHint(Hint):
+class NonStoneHint(Hint):
     hint_type: str = field(init=False)
+    hint_mode: Enum
     songhintname: str
     item: str
 
-    def to_text(self) -> str:
+    base_type: str = field(init=False)
+    raw_texts: dict[Enum, str] = field(init=False)
+
+    def __init__(self):
         raise NotImplementedError("abstract")
+
+    def __post_init__(self):
+        self.hint_type = f"{self.base_type}-{hint_types[self.hint_mode]}"
+
+    def to_text(self) -> str:
+        if self.hint_mode == HINT_MODES.Direct:
+            return self.raw_texts[self.hint_mode].format(self.item)
+        return self.raw_texts[self.hint_mode]
 
     def to_ingame_text(self) -> List[str]:
         return [self.to_text()]
 
     def to_spoiler_log_text(self) -> str:
-        return f"{self.to_ingame_text()} [{self.item}]"
+        return f"{self.to_text()} [{self.item}]"
 
     def to_spoiler_log_json(self):
         return {
@@ -47,48 +71,15 @@ class SongHint(Hint):
 
 
 @dataclass
-class SongEmptyHint(SongHint):
-    hint_type = "song-empty"
-    text = ""
-
-    def to_text(self):
-        return self.text
-
-
-@dataclass
-class SongDirectHint(SongHint):
-    hint_type = "song-direct"
-    text = "This trial holds {}"
-
-    def to_text(self):
-        return self.text.format(self.item)
-
-
-@dataclass
-class SongUselessHint(SongHint):
-    hint_type = "song-useless"
-    text = "It's probably not too important..."
-
-    def to_text(self):
-        return self.text
-
-
-@dataclass
-class SongUsefulHint(SongHint):
-    hint_type = "song-useful"
-    text = "You might need what it reveals..."
-
-    def to_text(self):
-        return self.text
-
-
-@dataclass
-class SongRequiredHint(SongHint):
-    hint_type = "song-required"
-    text = "Your spirit will grow by completing this trial"
-
-    def to_text(self):
-        return self.text
+class SongHint(NonStoneHint):
+    base_type = "song"
+    raw_texts = {
+        HINT_MODES.Empty: "",
+        HINT_MODES.Direct: "This trial holds {}",
+        HINT_MODES.Useless: "It's probably not too important...",
+        HINT_MODES.Useful: "You might need what it reveals...",
+        HINT_MODES.Required: "Your spirit will grow by completing this trial",
+    }
 
 
 @dataclass

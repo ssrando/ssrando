@@ -2,14 +2,12 @@ from hints.hint_distribution import HintDistribution
 from hints.hint_types import *
 from .logic import Logic
 from paths import RANDO_ROOT_PATH
-import yaml
+
 from collections import OrderedDict, defaultdict
-from dataclasses import dataclass
 from enum import Enum
-from typing import Dict, List, Type
+from typing import Dict, List
 
 from .constants import *
-from util import textbox_utils
 
 HINTABLE_ITEMS = (
     ["Clawshots"]
@@ -94,22 +92,22 @@ class Hints:
             for check in SILENT_REALM_CHECKS.values():
                 hinted_checks.append(check)
 
-        hintfunc: Dict[Enum, Type[SongHint]]
+        hintfunc: Dict[Enum, Enum]
         if hint_mode == "None":
-            hintfunc = {k: SongEmptyHint for k in STATUS}
+            hintfunc = {k: HINT_MODES.Empty for k in STATUS}
         elif hint_mode == "Direct":
-            hintfunc = {k: SongDirectHint for k in STATUS}
+            hintfunc = {k: HINT_MODES.Direct for k in STATUS}
         elif hint_mode == "Basic":
             hintfunc = {
-                STATUS.required: SongUsefulHint,
-                STATUS.useful: SongUsefulHint,
-                STATUS.useless: SongUselessHint,
+                STATUS.required: HINT_MODES.Useful,
+                STATUS.useful: HINT_MODES.Useful,
+                STATUS.useless: HINT_MODES.Useless,
             }
         elif hint_mode == "Advanced":
             hintfunc = {
-                STATUS.required: SongRequiredHint,
-                STATUS.useful: SongUsefulHint,
-                STATUS.useless: SongUselessHint,
+                STATUS.required: HINT_MODES.Required,
+                STATUS.useful: HINT_MODES.Useful,
+                STATUS.useless: HINT_MODES.Useless,
             }
         else:
             raise ValueError(f'Unknown value for setting "song-hints": "{hint_mode}"')
@@ -127,7 +125,7 @@ class Hints:
             else:
                 status = STATUS.useless
 
-            self.hints[hintname] = hintfunc[status](hintname, item)
+            self.hints[hintname] = SongHint(hintfunc[status], hintname, item)
 
         return hinted_checks
 
