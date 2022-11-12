@@ -192,7 +192,11 @@ class Rando:
             for c in CRYSTAL_THRESHOLDS
         }
 
-        banned_types = set(self.options["banned-types"]) - {"medium", "expensive"}
+        banned_types = set(self.options["banned-types"]) - {
+            "medium",
+            "expensive",
+            "silent realm",
+        }
         self.ban_options |= {s: maybe_req(s in banned_types) for s in BANNABLE_TYPES}
 
         self.banned: List[EIN] = []
@@ -209,6 +213,12 @@ class Rando:
                 or self.options["triforce-shuffle"] == "Anywhere"
             ):
                 self.banned.append(self.norm(entrance_of_exit(DUNGEON_MAIN_EXITS[SK])))
+
+        if "silent realm" in self.options["banned-types"]:
+            self.banned.extend(
+                self.norm(entrance_of_exit(silent_realm_exit))
+                for silent_realm_exit in SILENT_REALM_EXITS.values()
+            )
 
     def get_endgame_requirements(self):
         # needs to be able to open GoT and open it, requires required dungeons

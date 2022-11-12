@@ -316,7 +316,7 @@ class Logic:
         self.placement = placement
         self.fixed_locations = list(placement.locations)
 
-        self.banned = {EXTENDED_ITEM[loc] for loc in logic_settings.banned}
+        self.banned = logic_settings.banned
         banned_bit_inv = DNFInventory(BANNED_BIT)
 
         self.ban_if = lambda it, r: r & banned_bit_inv if it in self.banned else r
@@ -329,7 +329,7 @@ class Logic:
         for loc, req in logic_settings.runtime_requirements.items():
             it = EXTENDED_ITEM[loc]
             assert self.opaque[it]
-            self.requirements[it] |= self.ban_if(it, req)
+            self.requirements[it] |= self.ban_if(loc, req)
             if it != EVERYTHING_BIT:
                 self.opaque[it] = False
 
@@ -344,8 +344,11 @@ class Logic:
 
         pure_usefuls = self.aggregate_requirements(areas.requirements, None)
         for it in self.banned:
-            if self.areas.requirements[it].is_impossible() or it not in pure_usefuls:
-                self.requirements[it] &= banned_bit_inv
+            if it not in EXTENDED_ITEM:
+                continue
+            bit = EXTENDED_ITEM[it]
+            if self.areas.requirements[bit].is_impossible() or bit not in pure_usefuls:
+                self.requirements[bit] &= banned_bit_inv
             else:
                 raise ValueError(
                     f"Cannot ban potentially inlined away requirement {it}"
@@ -469,12 +472,12 @@ class Logic:
             self.placement.reverse_map_transitions[entrance] = exit
             for bit, req in bit_req:
                 self.opaque[bit] = False
-                req = self.ban_if(bit, req)
+                req = self.ban_if(entrance, req)
                 self.requirements[bit] |= req
                 self.backup_requirements[bit] |= req
         else:
             for bit, req in bit_req:
-                req = self.ban_if(bit, req)
+                req = self.ban_if(entrance, req)
                 requirements[bit] |= req
 
     def place_item(self, location: EIN, item: EIN, hint_mode=False, fill=True):
@@ -514,7 +517,7 @@ class Logic:
 
         if item in EXTENDED_ITEM:
             item_bit = EXTENDED_ITEM[item]
-            req = self.ban_if(item_bit, req)
+            req = self.ban_if(item, req)
             self.requirements[item_bit] = req
             self.backup_requirements[item_bit] = req
             self.opaque[item_bit] = False
