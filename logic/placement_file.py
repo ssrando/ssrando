@@ -20,8 +20,7 @@ class PlacementFile:
         self.required_dungeons = []
         self.item_locations = {}
         self.chest_dowsing = {}
-        self.gossip_stone_hints = {}
-        self.trial_hints = {}
+        self.hints = {}
         self.dungeon_connections = {}
         self.trial_connections = {}
         self.trial_object_seed = -1
@@ -42,8 +41,7 @@ class PlacementFile:
             "required-dungeons": self.required_dungeons,
             "item-locations": self.item_locations,
             "chest-dowsing": self.chest_dowsing,
-            "gossip-stone-hints": self.gossip_stone_hints,
-            "trial-hints": self.trial_hints,
+            "hints": self.hints,
             "entrance-connections": self.dungeon_connections,
             "trial-connections": self.trial_connections,
             "trial-object-seed": self.trial_object_seed,
@@ -60,8 +58,7 @@ class PlacementFile:
         self.required_dungeons = jsn["required-dungeons"]
         self.item_locations = jsn["item-locations"]
         self.chest_dowsing = jsn["chest-dowsing"]
-        self.gossip_stone_hints = jsn["gossip-stone-hints"]
-        self.trial_hints = jsn["trial-hints"]
+        self.hints = jsn["hints"]
         self.dungeon_connections = jsn["entrance-connections"]
         self.trial_connections = jsn["trial-connections"]
         self.trial_object_seed = jsn["trial-object-seed"]
@@ -124,13 +121,21 @@ class PlacementFile:
         )
 
         hint_file = read_yaml_file_cached("hints.yaml")
+        trial_check_names = set(
+            (
+                "Song of the Hero - Trial Hint",
+                "Farore's Courage - Trial Hint",
+                "Nayru's Wisdom - Trial Hint",
+                "Din's Power - Trial Hint",
+            )
+        )
         check_sets_equal(
-            set(hint_file.keys()),
-            set(self.gossip_stone_hints.keys()),
+            set(hint_file.keys()) | trial_check_names,
+            set(self.hints.keys()),
             "Gossip Stone Hints",
         )
 
-        for hintlist in self.gossip_stone_hints.values():
+        for hintlist in self.hints.values():
             if not isinstance(hintlist, list):
                 raise InvalidPlacementFile(
                     "gossip stone hints need to be LISTS of strings!"
@@ -140,17 +145,6 @@ class PlacementFile:
                     raise InvalidPlacementFile(
                         "gossip stone hints need to be lists of STRINGS!"
                     )
-
-        trial_check_names = set(
-            (
-                "Song of the Hero - Trial Hint",
-                "Farore's Courage - Trial Hint",
-                "Nayru's Wisdom - Trial Hint",
-                "Din's Power - Trial Hint",
-            )
-        )
-
-        check_sets_equal(trial_check_names, set(self.trial_hints.keys()), "Trial Hints")
 
 
 def check_sets_equal(orig: set, actual: set, name: str):

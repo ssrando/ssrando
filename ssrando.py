@@ -223,15 +223,8 @@ class Randomizer(BaseRandomizer):
         plcmt_file.dungeon_connections = self.logic.entrance_connections
         plcmt_file.trial_connections = self.logic.trial_connections
         plcmt_file.hash_str = self.randomizer_hash
-        plcmt_file.gossip_stone_hints = {
-            k: v.to_gossip_stone_text()
-            for (k, v) in self.hints.hints.items()
-            if isinstance(v, GossipStoneHintWrapper)
-        }
-        plcmt_file.trial_hints = {
-            k: v.to_textbox()
-            for (k, v) in self.hints.hints.items()
-            if isinstance(v, SongHint)
+        plcmt_file.hints = {
+            k: v.to_ingame_text() for (k, v) in self.hints.hints.items()
         }
         plcmt_file.item_locations = dict(
             (k, v)

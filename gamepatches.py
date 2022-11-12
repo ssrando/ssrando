@@ -24,6 +24,7 @@ from musicrando import music_rando
 
 from logic.logic import Logic
 from logic.constants import *
+from logic.placement_file import PlacementFile
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -1099,7 +1100,7 @@ def get_entry_from_bzs(
 
 
 class GamePatcher:
-    def __init__(self, rando, placement_file):
+    def __init__(self, rando, placement_file: PlacementFile):
         self.rando = rando
         self.placement_file = placement_file
         self.patcher = AllPatcher(
@@ -1641,7 +1642,7 @@ class GamePatcher:
             inventory_text,
             hintname,
         ) in trial_checks.items():
-            useful_text = self.placement_file.trial_hints[hintname]
+            [useful_text] = self.placement_file.hints[hintname]
             item_get_patch = find_event("003-ItemGet", obtain_text_name)
             item_get_patch["text"] += " " + useful_text
             item_get_patch["text"] = break_lines(item_get_patch["text"], 44)
@@ -1681,7 +1682,7 @@ class GamePatcher:
                     "type": "textpatch",
                     "index": hintdef["textindex"],
                     "text": break_and_make_multiple_textboxes(
-                        self.placement_file.gossip_stone_hints[hintname]
+                        self.placement_file.hints[hintname]
                     ),
                 },
             )
