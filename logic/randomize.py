@@ -204,7 +204,10 @@ class Rando:
                     "All valid progress items have already been added as starting items."
                 )
             else:
-                starting_items.add(self.rng.choice(possible_random_starting_items))
+                random_item = self.rng.choice(possible_random_starting_items)
+                if random_item.startswith("Progressive"):
+                    random_item = number(random_item, 0)
+                starting_items.add(random_item)
 
         self.placement.add_starting_items(starting_items)
 
