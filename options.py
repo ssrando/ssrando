@@ -1,4 +1,3 @@
-from logic.constants import ALL_TYPES
 from packedbits import PackedBitsReader, PackedBitsWriter
 from paths import RANDO_ROOT_PATH
 from pathlib import Path
@@ -26,17 +25,18 @@ class Options:
                 self.options[option_name] = option["default"]
 
     @staticmethod
-    def parse_and_validate_option(value: str, option: dict):
+    def parse_and_validate_option(value_str: str, option: dict):
         validation_errors = []
         if option["type"] == "boolean":
-            value = value.lower() == "true"
+            value = value_str.lower() == "true"
         elif option["type"] == "int":
             try:
-                value = int(value)
+                value = int(value_str)
             except ValueError:
                 validation_errors.append(
-                    f'{value} is not a number, which is required for {option["command"]}'
+                    f'{value_str} is not a number, which is required for {option["command"]}'
                 )
+                return value_str, validation_errors
             if "max" in option and value > option["max"]:
                 validation_errors.append(
                     f'{value} is greater than the maximum of {option["max"]} for {option["command"]}'
@@ -46,7 +46,7 @@ class Options:
                     f'{value} is smaller than the minimum of {option["min"]} for {option["command"]}'
                 )
         elif option["type"] == "multichoice":
-            value = [v.strip() for v in value.split(",")]
+            value = [v.strip() for v in value_str.split(",")]
             # skip out empty string
             value = [v for v in value if v]
             unknown_values = [v for v in value if not v in option["choices"]]
@@ -57,19 +57,22 @@ class Options:
         elif option["type"] == "singlechoice":
             if isinstance(option["default"], int):
                 try:
-                    value = int(value)
+                    value = int(value_str)
                 except ValueError:
                     validation_errors.append(
-                        f'{value} is not a number, which is required for {option["command"]}'
+                        f'{value_str} is not a number, which is required for {option["command"]}'
                     )
+                    return value_str, validation_errors
+            else:
+                value = value_str
             if not value in option["choices"]:
                 validation_errors.append(
                     f'value {value} is not valid for {option["command"]}'
                 )
         elif option["type"] == "dirpath":
-            path = Path(value).expanduser()
+            path = Path(value_str).expanduser()
             if not path.is_dir():
-                validation_errors.append(f"path {value} is not a directory!")
+                validation_errors.append(f"path {value_str} is not a directory!")
             value = path
         else:
             raise Exception(f'unknown type: {option["type"]}')

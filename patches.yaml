@@ -33,6 +33,7 @@ global:
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
+    - 70 # First time Light Fruit Cutscene
     - 152 # skipper's boat active
     - storyflag: 134 # Horde defeated
       onlyif: Option "skip-horde" Enabled
@@ -43,7 +44,21 @@ global:
     - storyflag: 8 # LMF rising CS watched
       onlyif: Option "open-lmf" Is "Open"
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
+    - 2 # Green Rupee
+    - 3 # Blue Rupee
+    - 4 # Red Rupee
+    - 6 # Heart
+    - 7 # Single Arrow
+    - 8 # Bundle of Arrows
     - 15 # sailcloth
+    - 40 # 5 Bombs
+    - 41 # 10 Bombs
+    - 42 # Stamina Fruit
+    - 43 # Tear of Farore
+    - 44 # Tear of Din
+    - 45 # Tear of Nayru
+    - 46 # Sacred Tear
+    - 47 # Light Fruit
   startsceneflags: # currently only for skyloft
     Skyloft:
       - 95 # Fi Text for Ruby Tablet
@@ -197,6 +212,12 @@ B100_1: # skyview spring
     room: 0
     layer: 1
     id: 0xFC73
+    objtype: STAG
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFC63
+    layer: 0
+    room: 0
     objtype: STAG
 B101: # Koloktos Boss Room
   - name: Open door after boss
@@ -851,6 +872,30 @@ F000: # Skyloft
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: Remove confounding propeller dowsing
+    type: objdelete
+    id: 0xFD4E
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFD4B
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Lanayru trial dowsing target
+    type: objdelete
+    id: 0xFD51
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Eldin trial dowsing target
+    type: objdelete
+    id: 0xFD4D
+    layer: 0
+    room: 0
+    objtype: STAG
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -1057,6 +1102,24 @@ F010r: # Isle of songs tower
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFC09
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Lanayru trial dowsing target
+    type: objdelete
+    id: 0xFC08
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Eldin trial dowsing target
+    type: objdelete
+    id: 0xFC07
+    layer: 0
+    room: 0
+    objtype: STAG
 F011r: # Lumpy Pumpkin
   - name: Delete Lumpy Pumpkin Cutscene 1
     type: objdelete
@@ -1091,6 +1154,13 @@ F012r: # Batreaux House
     objtype: OBJS
     object:
       anglex: 0xFF00 # sets the flag to -1 (meaning open)
+  - name: Remove Crystal Dowsing
+    onlyif: Option "dowsing-after-whitesword" Enabled
+    type: objdelete
+    id: 0xFC23
+    layer: 1
+    room: 0
+    objtype: OBJ
 F013r: # Sparrot's House
   - name: Sparrot spawn
     type: objpatch
@@ -1175,6 +1245,36 @@ F020: # Sky
     objtype: OBJ
     object:
       params1: 0xCBFFFFFF # make it always spawn
+  - name: Remove confounding propeller dowsing
+    type: objdelete
+    id: 0xFCAD
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFCAA
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Lanayru trial dowsing target
+    type: objdelete
+    id: 0xFCB0
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Eldin trial dowsing target
+    type: objdelete
+    id: 0xFCAC
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Skyloft trial dowsing target
+    type: objdelete
+    id: 0xFCB3
+    layer: 0
+    room: 0
+    objtype: STAG
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
@@ -1249,6 +1349,42 @@ F023: # Thunderhead
     type: oarcadd
     oarc: GossipStone
     destlayer: 0
+  - name: Remove confounding propeller dowsing
+    type: objdelete
+    id: 0xFCAE
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFCAB
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Lanayru trial dowsing target
+    type: objdelete
+    id: 0xFCB1
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Eldin trial dowsing target
+    type: objdelete
+    id: 0xFCAD
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Skyloft trial dowsing target
+    type: objdelete
+    id: 0xFCB4
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake Skyloft trial dowsing target
+    type: objdelete
+    id: 0xFCA3
+    layer: 0
+    room: 0
+    objtype: STAG
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -1444,6 +1580,12 @@ F101: # Deep Woods
     layer: 1
     room: 0
     objtype: OBJ
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFCF2
+    layer: 0
+    room: 0
+    objtype: STAG
 F102_1: # Outside AC
   - name: Layer override
     type: layeroverride
@@ -2134,7 +2276,7 @@ F210: # Mogma Turf
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 909 # Whitesword
+      trigstoryfid: 909 # White Sword
   - name: Cobal
     type: objmove
     id: 0xFC70
@@ -2188,6 +2330,13 @@ F210: # Mogma Turf
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: Remove Rupee Dowsing
+    onlyif: Option "dowsing-after-whitesword" Enabled
+    type: objdelete
+    id: 0xFC3B
+    layer: 0
+    room: 0
+    objtype: OBJ
 F211:
   - name: Remove thrill digger entry CS
     type: objpatch
@@ -2629,6 +2778,24 @@ F300_1: # Lanayru Mines
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFC59
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFC0A
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFC62
+    layer: 0
+    room: 2
+    objtype: STAG
 F300_2: # Thunder node
   - name: extra Bomb flower
     type: objadd
@@ -2721,6 +2888,12 @@ F300_4: # Temple of Time
   #     sizez: 500
   #     anglez: 0xFFFF # don't set any storyflag here
   #     name: ScChang
+  - name: Remove fake trial dowsing target
+    type: objdelete
+    id: 0xFCB1
+    layer: 2
+    room: 0
+    objtype: STAG
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch
@@ -2887,7 +3060,7 @@ F301: # Ancient Harbour
     objtype: SCEN
     object:
       layer: 1
-  - name: Remove Skipper Text with Whitesword
+  - name: Remove Skipper Text with White Sword
     type: objdelete
     id: 0xFC0F
     layer: 0
@@ -3607,6 +3780,12 @@ F402: # Sealed Temple
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFC3D
+    layer: 0
+    room: 2
+    objtype: STAG
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
@@ -3647,6 +3826,12 @@ F401: # Sealed grounds Whirlpool
     layer: 0
     room: 1
     objtype: OBJ
+  - name: Remove fake Faron trial dowsing target
+    type: objdelete
+    id: 0xFCA3
+    layer: 2
+    room: 1
+    objtype: STAG
 F400: # Behind the Temple
   - name: Layer override
     type: layeroverride
@@ -3695,6 +3880,12 @@ F400: # Behind the Temple
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove fake trial dowsing
+    type: objdelete
+    id: 0xFC8A
+    layer: 0
+    room: 0
+    objtype: STAG
 F404: # Hylia's Temple
   - name: Layer override
     type: layeroverride

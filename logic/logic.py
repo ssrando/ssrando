@@ -17,28 +17,13 @@ from .item_types import (
     DUNGEON_PROGRESS_ITEMS,
     DUNGEON_NONPROGRESS_ITEMS,
     KEY_PIECES,
+    RUPEES,
     SMALL_KEYS,
     BOSS_KEYS,
+    TREASURES,
     TRIFORCES,
 )
-from .constants import (
-    DUNGEON_NAME_TO_SHORT_DUNGEON_NAME,
-    DUNGEON_NAMES,
-    SHOP_CHECKS,
-    MAP_CHECKS,
-    SMALL_KEY_CHECKS,
-    BOSS_KEY_CHECKS,
-    TRIFORCE_CHECKS,
-    END_OF_DUNGEON_CHECKS,
-    POTENTIALLY_REQUIRED_DUNGEONS,
-    ENTRANCE_CONNECTIONS,
-    ALL_TYPES,
-    STARTING_SWORD_COUNT,
-    DUNGEON_GOALS,
-    POST_GOAL_LOCS,
-    RUPEE_CHECKS,
-    QUICK_BEETLE_CHECKS,
-)
+from .constants import *
 from .logic_expression import LogicExpression, parse_logic_expression, Inventory
 
 # TODO, path for logic files will probably be params
@@ -108,7 +93,7 @@ class Logic:
                     self.race_mode_banned_locations.append(location_name)
 
             # checks outside locations that require dungeons:
-            if "Skyview" in self.unrequired_dungeons:
+            if SV in self.unrequired_dungeons:
                 self.racemode_ban_location(
                     "Sky - Lumpy Pumpkin - Goddess Chest on the Roof"
                 )
@@ -125,7 +110,7 @@ class Logic:
                     self.racemode_ban_location(location_name)
                     # print(f'banned {location_name}')
 
-        if (
+        if self.rando.options["empty-unrequired-dungeons"] and (
             not self.rando.options["triforce-required"]
             or self.rando.options["triforce-shuffle"] == "Anywhere"
         ):
@@ -235,18 +220,25 @@ class Logic:
 
         swords_left = 6 - STARTING_SWORD_COUNT[self.rando.options["starting-sword"]]
         self.sworded_dungeon_locations = []
-        if self.rando.options["sword-dungeon-reward"] and (
+        if self.rando.options["sword-dungeon-reward"] != "None" and (
             "dungeon" not in self.rando.banned_types
         ):
             sworded_dungeons = self.rando.rng.sample(
                 self.required_dungeons,
                 k=min(4, swords_left, self.rando.options["required-dungeon-count"]),
             )  # if swords_left > 4 and there are >4 required dungeons, seeds may be impossible or homogenous
-            self.sworded_dungeon_locations = [
-                check
-                for dungeon, check in END_OF_DUNGEON_CHECKS.items()
-                if dungeon in sworded_dungeons
-            ]
+            if self.rando.options["sword-dungeon-reward"] == "Heart Container":
+                self.sworded_dungeon_locations = [
+                    check
+                    for dungeon, check in VANILLA_HEART_CONTAINERS.items()
+                    if dungeon in sworded_dungeons
+                ]
+            else:  # must be final checks
+                self.sworded_dungeon_locations = [
+                    check
+                    for dungeon, check in END_OF_DUNGEON_CHECKS.items()
+                    if dungeon in sworded_dungeons
+                ]
             for location in self.sworded_dungeon_locations:
                 self.set_prerandomization_item_location(location, "Progressive Sword")
 
@@ -284,7 +276,7 @@ class Logic:
                 orig_item = self.item_locations[small_key_check]["original item"]
                 self.set_prerandomization_item_location(small_key_check, orig_item)
         elif small_key_mode == "Lanayru Caves Key Only":
-            self.dungeon_progress_items.remove("LanayruCaves Small Key")
+            self.dungeon_progress_items.remove("Lanayru Caves Small Key")
         # remove boss keys from the dungeon pool if boss key sanity is enabled
         if boss_key_mode == "Anywhere":
             self.dungeon_progress_items = [
@@ -409,9 +401,9 @@ class Logic:
                 not self.rando.options["triforce-required"]
                 or self.rando.options["triforce-shuffle"] == "Anywhere"
             ):
-                unreq_indices.append(dungeons.index("Sky Keep"))
+                unreq_indices.append(dungeons.index(SK))
             else:
-                req_indices.append(dungeons.index("Sky Keep"))
+                req_indices.append(dungeons.index(SK))
 
             shuffle_indices(self.rando.rng, dungeons, indices=req_indices)
             shuffle_indices(self.rando.rng, dungeons, indices=unreq_indices)
@@ -426,19 +418,10 @@ class Logic:
         return OrderedDict(zip(entrances, dungeons))
 
     def randomize_trial_entrances(self):
-        trials = [
-            "Faron Silent Realm",
-            "Lanayru Silent Realm",
-            "Eldin Silent Realm",
-            "Skyloft Silent Realm",
-        ]
-
-        trial_gates = [
-            "Trial Gate in Faron Woods",
-            "Trial Gate in Lanayru Desert",
-            "Trial Gate in Eldin Volcano",
-            "Trial Gate on Skyloft",
-        ]
+        trials, trial_gates = [], []
+        for k, v in SILENT_REALM_GATES.items():
+            trials.append(k)
+            trial_gates.append(v)
 
         if self.rando.options["randomize-trials"] == True:
             self.rando.rng.shuffle(trials)
@@ -451,7 +434,7 @@ class Logic:
         """
         starting_items = []
 
-        tablets = ["Emerald Tablet", "Ruby Tablet", "Amber Tablet"]
+        tablets = [EMERALD_TABLET, RUBY_TABLET, AMBER_TABLET]
         starting_items.extend(
             self.rando.rng.sample(
                 tablets, k=self.rando.options["starting-tablet-count"]
@@ -775,8 +758,11 @@ class Logic:
     def check_item_valid_in_location(self, item_name, location_name):
         # Don't allow dungeon items to appear outside their proper dungeon when Key-Lunacy is off.
         if self.is_dungeon_item(item_name):
-            short_dungeon_name = item_name.split(" ")[0]
-            dungeon_name = DUNGEON_NAMES[short_dungeon_name]
+            dungeon_name = [
+                dungeon
+                for short, dungeon in DUNGEON_NAMES.items()
+                if short in item_name
+            ][0]
             if not self.is_dungeon_location(
                 location_name, dungeon_name_to_match=dungeon_name
             ):
@@ -887,8 +873,11 @@ class Logic:
         for item_name in useful_items:
             if self.rando.options["empty-unrequired-dungeons"]:
                 if self.is_dungeon_item(item_name):
-                    short_dungeon_name = item_name.split(" ")[0]
-                    dungeon_name = DUNGEON_NAMES[short_dungeon_name]
+                    dungeon_name = [
+                        dungeon
+                        for short, dungeon in DUNGEON_NAMES.items()
+                        if short in item_name
+                    ][0]
                     if dungeon_name in self.unrequired_dungeons:
                         useful_items.remove(item_name)
 
@@ -1395,6 +1384,8 @@ class Logic:
             self.remove_owned_item(item_name)
         for item_name in big_keys_to_place:
             self.remove_owned_item(item_name)
+        for item_name in triforces_to_place:
+            self.remove_owned_item(item_name)
 
     def place_dungeon_item(self, item_name):
         accessible_undone_locations = self.get_accessible_remaining_locations()
@@ -1580,7 +1571,7 @@ class Logic:
 
                 return True
             elif self.rando.options["small-key-mode"] == "Lanayru Caves Key Only":
-                if item != "LanayruCaves Small Key":
+                if item != "Lanayru Caves Small Key":
                     return True
 
         if item.endswith("Boss Key"):
@@ -1593,7 +1584,7 @@ class Logic:
         return False
 
     def calculate_playthrough_progression_spheres(self):
-        remaining_locations = set(self.item_locations.keys())
+        remaining_locations = dict.fromkeys(self.item_locations.keys())
         temp_inventory = Inventory()
         for item_name in self.starting_items:
             temp_inventory.collect_item(item_name)
@@ -1613,7 +1604,7 @@ class Logic:
                 if item == "Gratitude Crystal":
                     temp_inventory.collect_item(item)
                     new_log_invisible_item_reached = True
-                    remaining_locations.remove(loc)
+                    del remaining_locations[loc]
 
             if new_log_invisible_item_reached:
                 continue
@@ -1630,10 +1621,40 @@ class Logic:
                 if item in self.all_progress_items:
                     current_sphere[loc] = item
                 temp_inventory.collect_item(item)
-                remaining_locations.remove(loc)
+                del remaining_locations[loc]
             if len(current_sphere) > 0:
                 spheres.append(current_sphere)
             if not new_loc_reached:
                 raise Exception("no new location reached!", spheres)
 
         return spheres
+
+    def calculate_chest_dowsing_info(self):
+        # Get info for which dowsing slot (if any) a chest should respond to.
+        dowsing_setting = self.rando.options["chest-dowsing"]
+        # Dowsing slots:
+        # 0: Main quest
+        # 1: Rupee
+        # 2: Key Piece / Scrapper Quest
+        # 3: Crystal
+        # 4: Heart
+        # 5: Goddess Cube
+        # 6: Look around (not usable afaik)
+        # 7: Treasure
+        # 8: None
+        if dowsing_setting == "Vanilla":
+            dowse = lambda _: 8
+        elif dowsing_setting == "All Chests":
+            dowse = lambda _: 0
+        else:
+            assert dowsing_setting == "Progress Items"
+            dowse = (
+                lambda v: 0
+                if v in self.all_progress_items
+                else 1
+                if v in RUPEES
+                else 7
+                if v in TREASURES
+                else 8
+            )
+        return {k: dowse(v) for k, v in self.done_item_locations.items()}

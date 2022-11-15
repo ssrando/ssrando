@@ -254,7 +254,7 @@
   command: gondo-upgrades
   type: boolean
   default: false
-  help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for 
+  help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for
     the Beetle, Bow, Bug Net, and Slingshot.
   ui: option_gondo_upgrades
 # - name: Tadtone Shuffle
@@ -286,7 +286,7 @@
   choices:
     - Goddess Sword
     - Goddess Longsword
-    - Goddess Whitesword
+    - Goddess White Sword
     - Master Sword
     - True Master Sword
   default: Master Sword
@@ -520,9 +520,14 @@
   ui: option_tunic_swap
 - name: Force Sword Dungeon Reward
   command: sword-dungeon-reward
-  type: boolean
-  default: false
-  help: If activated, the final check of a required dungeon will be a sword (if possible). If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - Heart Container
+    - Final Check
+  default: None
+  help: Set if swords should be forced on the heart container or final check of a required dungeon will be a sword (or not at all), if possible. If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
   ui: option_sword_dungeon_reward
 - name: Open Earth Temple
   command: open-et
@@ -592,6 +597,29 @@
   default: None
   help: Shuffles trial objects amongst themselves (within the same trial). Simple shuffles only tears and light fruits, advanced adds dusk relic spawn locations, and full adds stamina fruits
   ui: option_shuffle_trial_objects
+- name: Fill Dowsing on White Sword
+  command: dowsing-after-whitesword
+  type: boolean
+  default: true
+  help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after obtaining White Sword.
+  ui: option_fill_dowsing_on_white_sword
+- name: Chest Dowsing
+  command: chest-dowsing
+  type: singlechoice
+  bits: 2
+  choices:
+    - Vanilla
+    - All Chests
+    - Progress Items
+  default: Vanilla
+  help: Choose whether the main quest dowsing option should point to chests. Vanilla doesn't make any dowsing changes. If Progress Items, dowsing will only point to chests that contain progress items. Currently, dowsing doesn't work on Goddess Chests.
+  ui: option_chest_dowsing
+- name: Allow Dowsing in Dungeons
+  command: dungeon-dowsing
+  type: boolean
+  default: false
+  help: If enabled, dowsing will be re-enabled in dungeons and other dungeon-like areas like Great Tree and Waterfall Cave.
+  ui: option_dungeon_dowsing
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

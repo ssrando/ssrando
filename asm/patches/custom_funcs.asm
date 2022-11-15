@@ -674,3 +674,51 @@ mtlr r0
 addi r1, r1, 0x10
 blr
 .close
+
+.open "d_a_obj_bellNP.rel"
+; custom function that ends the pumpkin archery minigame early
+; used when the bell is hit
+.org @NextFreeSpace
+.global try_end_pumpkin_archery
+try_end_pumpkin_archery:
+; check that we're in the right minigame mode
+lis r3, SPECIAL_MINIGAME_STATE@ha
+lwz r3, SPECIAL_MINIGAME_STATE@l(r3)
+cmplwi r3, 6 ; archery
+bnelr
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 20(r1)
+li r3, 272 ; NpcPcs, fledge for the minigame
+li r4, 0 ; previous actor in search, NULL for search from start
+bl findActorByActorType
+cmplwi r3, 0 ; I can't think of a way this is ever NULL, but just in case
+beq try_end_pumpkin_archery_end
+li r4, 0
+stw r4, 0x1040(r3) ; store 0 in the remaining time (it's 64 bit)
+stw r4, 0x1044(r3)
+try_end_pumpkin_archery_end:
+lwz r0, 20(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+.close
+
+.open "d_a_obj_light_lineNP.rel"
+.org @NextFreeSpace
+.global check_activated_storyflag
+check_activated_storyflag:
+; actor pointer in r31
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 20(r1)
+lwz r3, 0x4(r31)
+rlwinm r4,r3,24,16,31 ; (r3 >> 8) & 0xFFFF
+bl checkStoryflagIsSet
+stb r3, 0x8fd(r31) ; store that it's activated
+mr r3, r31 ; replaced instruction
+lwz r0, 20(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+.close

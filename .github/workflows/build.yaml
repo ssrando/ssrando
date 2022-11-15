@@ -10,25 +10,31 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-        python-version: [3.8]
+        python-version: ["3.10"]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install wheel
+        run: python -m pip install wheel
       - name: Install requirements
         run: python -m pip install -r requirements.txt
       - name: Install dev requirements
         run: python -m pip install -r requirements_dev.txt
       - name: Test if the formatting is correct
         run: black . --check
-      # - name: Run tests
-      #   run: python3 -mpytest test/test_placement_file.py
       - name: Install build requirements
         run: python -m pip install -r requirements_build.txt
       - name: Build distribution
         run: pyinstaller ssrando.spec
+      - name: Run tests
+        run: |
+          python3 randoscript.py --noui --dry-run --seed=0
+          cp -r logs logs_source
+          dist/ssrando --noui --dry-run --seed=0
+          diff logs logs_source
       - name: Make arc-replacements folder
         run: mkdir -p dist/arc-replacements
         shell: bash

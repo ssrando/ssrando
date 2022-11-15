@@ -35,12 +35,14 @@
         "song-hints": "None",
         "fix-bit-crashes": false,
         "impa-sot-hint": false,
-        "sword-dungeon-reward": false,
+        "sword-dungeon-reward": "None",
         "open-et": true,
         "demise-count": 1,
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
+        "chest-dowsing": "Vanilla",
+        "dungeon-dowsing": false,
         "hint-distribution": "Balanced"
     },
     "3D Rupeesanity": {
@@ -79,12 +81,14 @@
         "song-hints": "None",
         "fix-bit-crashes": false,
         "impa-sot-hint": false,
-        "sword-dungeon-reward": false,
+        "sword-dungeon-reward": "None",
         "open-et": true,
         "demise-count": 1,
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "Full",
+        "chest-dowsing": "Vanilla",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
     "Allsanity": {
@@ -123,12 +127,14 @@
         "song-hints": "None",
         "fix-bit-crashes": false,
         "impa-sot-hint": true,
-        "sword-dungeon-reward": false,
+        "sword-dungeon-reward": "None",
         "open-et": true,
         "demise-count": 1,
         "cube-sots": true,
         "precise-item": false,
         "shuffle-trial-objects": "Full",
+        "chest-dowsing": "Vanilla",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D EUD Off"
     },
     "S2 - 3D Standard": {
@@ -167,12 +173,14 @@
         "song-hints": "None",
         "fix-bit-crashes": false,
         "impa-sot-hint": false,
-        "sword-dungeon-reward": false,
+        "sword-dungeon-reward": "None",
         "open-et": true,
         "demise-count": 1,
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
+        "chest-dowsing": "Vanilla",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
     "S2 - 2D Cubes": {
@@ -211,12 +219,14 @@
         "song-hints": "None",
         "fix-bit-crashes": false,
         "impa-sot-hint": false,
-        "sword-dungeon-reward": false,
+        "sword-dungeon-reward": "None",
         "open-et": true,
         "demise-count": 1,
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
+        "chest-dowsing": "Vanilla",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 2D"
     },
     "S2 - 3D Open": {
@@ -255,12 +265,15 @@
         "song-hints": "None",
         "fix-bit-crashes": false,
         "impa-sot-hint": false,
-        "sword-dungeon-reward": false,
+        "sword-dungeon-reward": "None"
+        ,
         "open-et": true,
         "demise-count": 1,
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
+        "chest-dowsing": "Vanilla",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
     "S2 - 3D Swordless": {
@@ -299,12 +312,14 @@
         "song-hints": "None",
         "fix-bit-crashes": false,
         "impa-sot-hint": false,
-        "sword-dungeon-reward": true,
+        "sword-dungeon-reward": "Final Check",
         "open-et": true,
         "demise-count": 1,
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
+        "chest-dowsing": "Vanilla",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     },
     "S2 - 3D EUD Off": {
@@ -343,12 +358,14 @@
         "song-hints": "None",
         "fix-bit-crashes": false,
         "impa-sot-hint": false,
-        "sword-dungeon-reward": true,
+        "sword-dungeon-reward": "Final Check",
         "open-et": true,
         "demise-count": 1,
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
+        "chest-dowsing": "Vanilla",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D EUD Off"
     },
     "S2 - Keysanity": {
@@ -387,12 +404,14 @@
         "song-hints": "None",
         "fix-bit-crashes": false,
         "impa-sot-hint": false,
-        "sword-dungeon-reward": false,
+        "sword-dungeon-reward": "None",
         "open-et": true,
         "demise-count": 1,
         "cube-sots": false,
         "precise-item": false,
         "shuffle-trial-objects": "None",
+        "chest-dowsing": "Vanilla",
+        "dungeon-dowsing": false,
         "hint-distribution": "S2 - 3D"
     }
 }

@@ -17,3 +17,4 @@ SceneflagManager__unsetFlagGlobal = 0x800be500;
 requestFileLoadFromDisk = 0x802f0060;
 SPAWN_SLAVE = 0x805b3860;
 SPAWN_MASTER = 0x805b388c;
+AcOTBox__initDowsingTarget = 0x8026d780;

@@ -88,21 +88,21 @@ DUPLICATABLE_CONSUMABLE_ITEMS = [
 ]
 
 DUNGEON_PROGRESS_ITEMS = (
-    ["LanayruCaves Small Key"] * 1
-    + ["SV Boss Key"] * 1
-    + ["SV Small Key"] * 2
-    + ["ET Boss Key"] * 1
-    + ["ET Small Key"] * 0
-    + ["LMF Boss Key"] * 1
-    + ["LMF Small Key"] * 1
-    + ["AC Boss Key"] * 1
-    + ["AC Small Key"] * 2
-    + ["SS Boss Key"] * 1
-    + ["SS Small Key"] * 2
-    + ["FS Boss Key"] * 1
-    + ["FS Small Key"] * 3
-    + ["SK Boss Key"] * 0
-    + ["SK Small Key"] * 1
+    ["Lanayru Caves Small Key"] * 1
+    + ["Skyview Boss Key"] * 1
+    + ["Skyview Small Key"] * 2
+    + ["Earth Temple Boss Key"] * 1
+    + ["Earth Temple Small Key"] * 0
+    + ["Lanayru Mining Facility Boss Key"] * 1
+    + ["Lanayru Mining Facility Small Key"] * 1
+    + ["Ancient Cistern Boss Key"] * 1
+    + ["Ancient Cistern Small Key"] * 2
+    + ["Sandship Boss Key"] * 1
+    + ["Sandship Small Key"] * 2
+    + ["Fire Sanctuary Boss Key"] * 1
+    + ["Fire Sanctuary Small Key"] * 3
+    + ["Sky Keep Boss Key"] * 0
+    + ["Sky Keep Small Key"] * 1
     + ["Triforce of Courage"] * 1
     + ["Triforce of Wisdom"] * 1
     + ["Triforce of Power"] * 1
@@ -113,37 +113,50 @@ DUNGEON_PROGRESS_ITEMS = (
 KEY_PIECES = ["Key Piece"] * 5
 
 SMALL_KEYS = (
-    ["LanayruCaves Small Key"] * 1
-    + ["SV Small Key"] * 2
-    + ["ET Small Key"] * 0
-    + ["LMF Small Key"] * 1
-    + ["AC Small Key"] * 2
-    + ["SS Small Key"] * 2
-    + ["FS Small Key"] * 3
-    + ["SK Small Key"] * 1
+    ["Lanayru Caves Small Key"] * 1
+    + ["Skyview Small Key"] * 2
+    + ["Earth Temple Small Key"] * 0
+    + ["Lanayru Mining Facility Small Key"] * 1
+    + ["Ancient Cistern Small Key"] * 2
+    + ["Sandship Small Key"] * 2
+    + ["Fire Sanctuary Small Key"] * 3
+    + ["Sky Keep Small Key"] * 1
 )
 
 BOSS_KEYS = (
-    ["SV Boss Key"] * 1
-    + ["ET Boss Key"] * 1
-    + ["LMF Boss Key"] * 1
-    + ["AC Boss Key"] * 1
-    + ["SS Boss Key"] * 1
-    + ["FS Boss Key"] * 1
-    + ["SK Boss Key"] * 0
+    ["Skyview Boss Key"] * 1
+    + ["Earth Temple Boss Key"] * 1
+    + ["Lanayru Mining Facility Boss Key"] * 1
+    + ["Ancient Cistern Boss Key"] * 1
+    + ["Sandship Boss Key"] * 1
+    + ["Fire Sanctuary Boss Key"] * 1
+    + ["Sky Keep Boss Key"] * 0
 )
 
 DUNGEON_NONPROGRESS_ITEMS = (
-    ["SV Map"]
-    + ["ET Map"]
-    + ["LMF Map"]
-    + ["AC Map"]
-    + ["SS Map"]
-    + ["FS Map"]
-    + ["SK Map"]
+    ["Skyview Map"]
+    + ["Earth Temple Map"]
+    + ["Lanayru Mining Facility Map"]
+    + ["Ancient Cistern Map"]
+    + ["Sandship Map"]
+    + ["Fire Sanctuary Map"]
+    + ["Sky Keep Map"]
 )
 
 TRIFORCES = ["Triforce of Courage"] + ["Triforce of Wisdom"] + ["Triforce of Power"]
+
+RUPEES = ["Green Rupee", "Blue Rupee", "Red Rupee", "Silver Rupee", "Gold Rupee"]
+
+TREASURES = [
+    "Golden Skull",
+    "Goddess Plume",
+    "Evil Crystal",
+    "Eldin Ore",
+    "Dusk Relic",
+    "Tumbleweed",
+    "Semi Rare Treasure",
+    "Rare Treasure",
+]
 
 ALL_ITEM_NAMES = set(
     PROGRESS_ITEMS
