@@ -494,6 +494,28 @@
   - stage: F303
     room: 0
     index: 2
+- stage: Lanayru Caves
+  to-stage: Lanayru Gorge
+  orig:
+    stage: F302
+    room: 0
+    layer: 0
+    entrance: 0
+  scens:
+    - stage: F303
+      room: 0
+      index: 3
+- stage: Lanayru Gorge
+  to-stage: Lanayru Caves
+  orig:
+    stage: F303
+    room: 0
+    layer: 0
+    entrance: 3
+  scens:
+    - stage: F302
+      room: 0
+      index: 0
 - stage: Waterfall Cave
   to-stage: Skyloft
   disambiguation: Upper
