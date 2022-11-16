@@ -808,6 +808,7 @@ class Logic:
 
     def load_and_parse_item_requirements(self):
         requirements_file = {
+            "Glitchless": "SS Rando Logic - Glitchless Requirements.yaml",
             "BiTless": "SS Rando Logic - Glitchless Requirements.yaml",
             "Glitched": "SS Rando Logic - Glitched Requirements.yaml",
             "No Logic": "SS Rando Logic - Glitched Requirements.yaml",  # TODO: no logic doesn't need requirements
