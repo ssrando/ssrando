@@ -187,7 +187,7 @@
   type: boolean
   default: false
   help: If activated, you will start with the adventure pouch unlocked. The remaining four
-    progressive pouche upgrades will still be shuffled.
+    progressive pouch upgrades will still be shuffled.
   ui: option_start_pouch
 - name: No Spoiler Log
   command: no-spoiler-log
