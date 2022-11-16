@@ -740,7 +740,7 @@ Lake Floria - Rupee High Ledge Outside Cistern Entrance:
 
 Flooded Faron Woods - Faron Soth:
   original item: Faron Song of the Hero Part
-  type: faron, flooded faron, long
+  type: faron, flooded faron, long, song
   hint: sometimes
   text: completing a <r<watery song>> reveals
   Paths:
@@ -1605,7 +1605,7 @@ Lanayru Gorge - Seedling:
     - stage/F302/r0/l0/Soil/30
 Lanayru Gorge - Lanayru Soth:
   original item: Lanayru Song of the Hero Part
-  type: lanayru
+  type: lanayru, fetch, song
   Paths:
     - event/404-DesertF3/give item after Healing Thunderdragon
     - oarc/F302/l0
