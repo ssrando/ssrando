@@ -1115,7 +1115,7 @@ class GamePatcher:
         self.load_base_patches()
         self.add_entrance_rando_patches()
         self.add_trial_rando_patches()
-        if self.placement_file.options["shop-mode"] != "Vanilla":
+        if self.placement_file.options["beedle-shop"] != "Vanilla":
             self.shopsanity_patches()
         self.do_build_arc_cache()
         self.add_startitem_patches()
@@ -1211,7 +1211,7 @@ class GamePatcher:
         self.add_asm_patch("custom_funcs")
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("keysanity")
-        if self.placement_file.options["shop-mode"] != "Vanilla":
+        if self.placement_file.options["beedle-shop"] != "Vanilla":
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
         if self.placement_file.options["fix-bit-crashes"]:
@@ -2404,7 +2404,7 @@ class GamePatcher:
             apply_rel_patch(self, rel, file, codepatches)
             if (
                 file == "d_a_shop_sampleNP.rel"
-                and self.placement_file.options["shop-mode"] != "Vanilla"
+                and self.placement_file.options["beedle-shop"] != "Vanilla"
             ):
                 self.do_shoptable_rel_patch(rel)
             rel.save_changes()

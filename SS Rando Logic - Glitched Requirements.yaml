@@ -1094,17 +1094,17 @@ Can Access Beedle's Shop:
 Beedle - 300 Rupee Item:
   Can Access Beedle's Shop &
   Can Afford 300 Rupees &
-  (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
+  (Progressive Pouch x1 | Option "beedle-shop" Is Not "Vanilla")
 
 Beedle - 600 Rupee Item:
   Can Access Beedle's Shop &
   Can Afford 600 Rupees &
-  (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
+  (Progressive Pouch x1 | Option "beedle-shop" Is Not "Vanilla")
 
 Beedle - 1200 Rupee Item:
   Can Access Beedle's Shop &
   Can Afford 1200 Rupees &
-  (Progressive Pouch x1 | Option "shop-mode" Is Not "Vanilla")
+  (Progressive Pouch x1 | Option "beedle-shop" Is Not "Vanilla")
 
 ### Left
 

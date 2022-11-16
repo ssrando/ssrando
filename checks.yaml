@@ -257,54 +257,54 @@ Batreaux - 80 Crystals:
 
 Beedle - 300 Rupee Item:
   original item: Progressive Pouch
-  type: skyloft, beedle, cheap
+  type: skyloft
   Paths:
     - ShpSmpl/20
 Beedle - 600 Rupee Item:
   original item: Progressive Pouch
-  type: skyloft, beedle, medium
+  type: skyloft
   Paths:
     - ShpSmpl/21
 Beedle - 1200 Rupee Item:
   original item: Progressive Pouch
-  type: skyloft, beedle, expensive
+  type: skyloft
   Paths:
     - ShpSmpl/22
   text: for <g+<1200 rupees>> <r<Beedle>> sells
 Beedle - 800 Rupee Item:
   original item: Life Medal
-  type: skyloft, beedle, medium
+  type: skyloft
   Paths:
     - ShpSmpl/26
 Beedle - 1600 Rupee Item:
   original item: Heart Piece
-  type: skyloft, beedle, expensive
+  type: skyloft
   Paths:
     - ShpSmpl/23
   text: for <g+<1600 rupees>> <r<Beedle>> sells
 Beedle - First 100 Rupee Item:
   original item: Extra Wallet
-  type: skyloft, beedle, cheap
+  type: skyloft
   Paths:
     - ShpSmpl/24
 Beedle - Second 100 Rupee Item:
   original item: Extra Wallet
-  type: skyloft, beedle, cheap
+  type: skyloft
   Paths:
     - ShpSmpl/17
 Beedle - Third 100 Rupee Item: # to make not too much farming at the start necessary, the third item is only in logic with some rupee farming method
   original item: Extra Wallet
-  type: skyloft, beedle, cheap
+  type: skyloft
   Paths:
     - ShpSmpl/18
 Beedle - 50 Rupee Item:
   original item: Progressive Bug Net
-  type: skyloft, beedle, cheap
+  type: skyloft
   Paths:
     - ShpSmpl/25
 Beedle - 1000 Rupee Item:
   original item: Bug Medal
-  type: skyloft, beedle, medium
+  type: skyloft
   Paths:
     - ShpSmpl/27
 
@@ -481,7 +481,7 @@ Sky - Orielle's Crystals:
   Paths:
     - event/115-Town2/225
     - oarc/F020/l0
-  text: saving a <r<sick loftwing>> is rewardede with
+  text: saving a <r<sick loftwing>> is rewarded with
 Sky - Kina's Crystals:
   original item: Gratitude Crystal Pack
   type: sky, eldin, scrapper, long, crystal quest

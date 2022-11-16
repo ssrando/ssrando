@@ -86,10 +86,7 @@ class Hints:
         )
         # in shopsanity, we need to hint some beetle shop items
         # add them manually, cause they need to be kinda weirdly implemented because of bug net
-        if (
-            self.logic.rando.options["shop-mode"] == "Randomized"
-            and "expensive" not in self.logic.rando.options["banned-types"]
-        ):
+        if self.logic.rando.options["beedle-shop"] == "Expensive Purchases":
             needed_always_hints.append("Beedle - 1200 Rupee Item")
             needed_always_hints.append("Beedle - 1600 Rupee Item")
         if self.logic.rando.options["song-hints"] == "None":

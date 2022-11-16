@@ -64,7 +64,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -611,13 +611,6 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="5">
-         <widget class="QCheckBox" name="progression_expensive">
-          <property name="text">
-           <string>Expensive Purchases</string>
-          </property>
-         </widget>
-        </item>
         <item row="2" column="4">
          <widget class="QCheckBox" name="progression_combat">
           <property name="text">
@@ -629,13 +622,6 @@
          <widget class="QCheckBox" name="progression_crystal">
           <property name="text">
            <string>Loose Crystals</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="3">
-         <widget class="QCheckBox" name="progression_cheap">
-          <property name="text">
-           <string>Cheap Purchases</string>
           </property>
          </widget>
         </item>
@@ -667,29 +653,15 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="2">
-         <widget class="QCheckBox" name="progression_beedle">
-          <property name="text">
-           <string>Beedle's Shop</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="4">
-         <widget class="QCheckBox" name="progression_medium">
-          <property name="text">
-           <string>Medium Cost Purchases</string>
-          </property>
-         </widget>
-        </item>
         <item row="5" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_11">
           <item>
-           <widget class="QComboBox" name="option_shopsanity"/>
+           <widget class="QComboBox" name="option_beedle_shop"/>
           </item>
           <item>
            <widget class="QLabel" name="label_10">
             <property name="text">
-             <string>Shop Mode</string>
+             <string>Beedle's Shop</string>
             </property>
            </widget>
           </item>
@@ -702,7 +674,7 @@
           </property>
          </widget>
         </item>
-        <item row="6" column="0">
+        <item row="5" column="2">
          <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
            <widget class="QComboBox" name="option_rupeesanity"/>
@@ -716,7 +688,7 @@
           </item>
          </layout>
         </item>
-        <item row="6" column="2">
+        <item row="5" column="3">
          <widget class="QCheckBox" name="progression_flooded_faron">
           <property name="text">
            <string>Flooded Faron</string>

@@ -111,18 +111,26 @@ SILENT_REALM_CHECKS = {
 
 SILENT_REALM_CHECKS_REV = {v: k for k, v in SILENT_REALM_CHECKS.items()}
 
-SHOP_CHECKS = [
+CHEAP_SHOP_CHECKS = [
     "Beedle - 50 Rupee Item",
     "Beedle - First 100 Rupee Item",
     "Beedle - Second 100 Rupee Item",
     "Beedle - Third 100 Rupee Item",
     "Beedle - 300 Rupee Item",
+]
+
+MEDIUM_SHOP_CHECKS = [
     "Beedle - 600 Rupee Item",
     "Beedle - 800 Rupee Item",
     "Beedle - 1000 Rupee Item",
+]
+
+EXPENSIVE_SHOP_CHECKS = [
     "Beedle - 1200 Rupee Item",
     "Beedle - 1600 Rupee Item",
 ]
+
+SHOP_CHECKS = CHEAP_SHOP_CHECKS + MEDIUM_SHOP_CHECKS + EXPENSIVE_SHOP_CHECKS
 
 MAP_CHECKS = [
     "Skyview - Chest on Tree Branch",
@@ -225,10 +233,6 @@ BANNABLE_TYPES = [
     "crystal quest",
     "scrapper",
     "peatrice",
-    "beedle",
-    "cheap",
-    "medium",
-    "expensive",
     "flooded faron",
     "goddess",
     "faron goddess",

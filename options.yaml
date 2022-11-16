@@ -122,10 +122,6 @@
     - scrapper
     - peatrice
     - goddess
-    - beedle
-    - cheap
-    - medium
-    - expensive
     - flooded faron
     - faron goddess
     - eldin goddess
@@ -234,20 +230,24 @@
   help: Enables progression items to appear in all Batreaux rewards up to and
         including the selected amount.
   ui: option_max_batreaux_reward
-- name: Shop Mode
-  command: shop-mode
+- name: Beedle's Shop
+  command: beedle-shop
   type: singlechoice
-  default: Randomized
+  default: Cheap Purchases
   choices:
     - Vanilla
-    - Always Junk
-    - Randomized
-  bits: 2
+    - Junk
+    - Cheap Purchases
+    - Medium Purchases
+    - Expensive Purchases
+  bits: 3
   help: Controls how Beedle's shop is randomized. Vanilla - Beedle will sell
-        his vanilla items. Always Junk - Beedle will sell only non-progress
-        items. Randmomized - Beedle will sell random items (potentially
-        including progress items).
-  ui: option_shopsanity
+        his vanilla items. Junk - Beedle will sell only non-progress items.
+        Cheap Purchases - Only items 300 rupees or less can be progress items.
+        Medium Purchases - Only items 1000 rupees or less can be progress
+        items. Expensive Purchases - all of Beedle's items can be progress
+        items.
+  ui: option_beedle_shop
 - name: Rupoor Mode
   command: rupoor-mode
   type: singlechoice
@@ -552,9 +552,9 @@
   min: 1
   max: 10
   bits: 4
-  help: "Controls how many demises appear in the final fight of the game.
+  help: "Controls how many Demises appear in the final fight of the game.
         WARNING: Enabling more than one makes the fight very difficult.
-        BIG WARNING: Enabling more than 3 demises produces a lot of lag and
+        BIG WARNING: Enabling more than 3 Demises produces a lot of lag and
         can make the game unplayable."
   ui: option_demise_count
 - name: Randomize Music

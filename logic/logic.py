@@ -45,31 +45,6 @@ def shuffle_indices(self, list, indices=None):
 
 
 class Logic:
-    # PROGRESS_ITEM_GROUPS = OrderedDict([
-    #   ("Triforce Shards",  [
-    #     "Triforce Shard 1",
-    #     "Triforce Shard 2",
-    #     "Triforce Shard 3",
-    #     "Triforce Shard 4",
-    #     "Triforce Shard 5",
-    #     "Triforce Shard 6",
-    #     "Triforce Shard 7",
-    #     "Triforce Shard 8",
-    #   ]),
-    #   ("Goddess Pearls",  [
-    #     "Nayru's Pearl",
-    #     "Din's Pearl",
-    #     "Farore's Pearl",
-    #   ]),
-    #   ("Tingle Statues",  [
-    #     "Dragon Tingle Statue",
-    #     "Forbidden Tingle Statue",
-    #     "Goddess Tingle Statue",
-    #     "Earth Tingle Statue",
-    #     "Wind Tingle Statue",
-    #   ]),
-    # ])
-
     def __init__(self, rando):
         self.rando = rando
 
@@ -120,6 +95,13 @@ class Logic:
             self.racemode_ban_location("Sky Keep - Triforce of Wisdom")
             self.racemode_ban_location("Sky Keep - Triforce of Power")
             self.racemode_ban_location("Sky Keep - Rupee in Alcove of FS Room")
+
+        if self.rando.options["beedle-shop"] == "Cheap Purchases":
+            for shop_check in MEDIUM_SHOP_CHECKS + EXPENSIVE_SHOP_CHECKS:
+                self.racemode_ban_location(shop_check)
+        elif self.rando.options["beedle-shop"] == "Medium Purchases":
+            for shop_check in EXPENSIVE_SHOP_CHECKS:
+                self.racemode_ban_location(shop_check)
 
         self.prog_locations_by_zone_name = defaultdict(list)
         for location_name in self.filter_locations_for_progression(
@@ -199,9 +181,9 @@ class Logic:
             item_name = item["original item"]
             if item_name == "Gratitude Crystal":
                 self.set_prerandomization_item_location(location_name, item_name)
-        if self.rando.options["shop-mode"] != "Randomized":
+        if self.rando.options["beedle-shop"] in ("Vanilla", "Junk"):
             for shop_check in SHOP_CHECKS:
-                if self.rando.options["shop-mode"] == "Vanilla":
+                if self.rando.options["beedle-shop"] == "Vanilla":
                     orig_item = self.item_locations[shop_check]["original item"]
                     self.set_prerandomization_item_location(shop_check, orig_item)
                 else:
@@ -247,7 +229,7 @@ class Logic:
 
         self.make_useless_progress_items_nonprogress()
 
-        if self.rando.options["shop-mode"] == "Vanilla":
+        if self.rando.options["beedle-shop"] == "Vanilla":
             # if shops are vanilla, make wallets and the extra pouch upgrades non progress
             for wallet_item in (
                 ["Progressive Wallet"] * 4

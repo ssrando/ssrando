@@ -375,11 +375,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.progression_peatrice, 3, 5, 1, 1)
 
-        self.progression_expensive = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_expensive.setObjectName(u"progression_expensive")
-
-        self.gridLayout_3.addWidget(self.progression_expensive, 5, 5, 1, 1)
-
         self.progression_combat = QCheckBox(self.gridLayoutWidget_3)
         self.progression_combat.setObjectName(u"progression_combat")
 
@@ -389,11 +384,6 @@ class Ui_MainWindow(object):
         self.progression_crystal.setObjectName(u"progression_crystal")
 
         self.gridLayout_3.addWidget(self.progression_crystal, 3, 4, 1, 1)
-
-        self.progression_cheap = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_cheap.setObjectName(u"progression_cheap")
-
-        self.gridLayout_3.addWidget(self.progression_cheap, 5, 3, 1, 1)
 
         self.progression_free_gift = QCheckBox(self.gridLayoutWidget_3)
         self.progression_free_gift.setObjectName(u"progression_free_gift")
@@ -415,22 +405,12 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addWidget(self.progression_digging, 2, 2, 1, 1)
 
-        self.progression_beedle = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_beedle.setObjectName(u"progression_beedle")
-
-        self.gridLayout_3.addWidget(self.progression_beedle, 5, 2, 1, 1)
-
-        self.progression_medium = QCheckBox(self.gridLayoutWidget_3)
-        self.progression_medium.setObjectName(u"progression_medium")
-
-        self.gridLayout_3.addWidget(self.progression_medium, 5, 4, 1, 1)
-
         self.horizontalLayout_11 = QHBoxLayout()
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.option_shopsanity = QComboBox(self.gridLayoutWidget_3)
-        self.option_shopsanity.setObjectName(u"option_shopsanity")
+        self.option_beedle_shop = QComboBox(self.gridLayoutWidget_3)
+        self.option_beedle_shop.setObjectName(u"option_beedle_shop")
 
-        self.horizontalLayout_11.addWidget(self.option_shopsanity)
+        self.horizontalLayout_11.addWidget(self.option_beedle_shop)
 
         self.label_10 = QLabel(self.gridLayoutWidget_3)
         self.label_10.setObjectName(u"label_10")
@@ -458,12 +438,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.label_for_option_rupeesanity)
 
 
-        self.gridLayout_3.addLayout(self.horizontalLayout_9, 6, 0, 1, 1)
+        self.gridLayout_3.addLayout(self.horizontalLayout_9, 5, 2, 1, 1)
 
         self.progression_flooded_faron = QCheckBox(self.gridLayoutWidget_3)
         self.progression_flooded_faron.setObjectName(u"progression_flooded_faron")
 
-        self.gridLayout_3.addWidget(self.progression_flooded_faron, 6, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.progression_flooded_faron, 5, 3, 1, 1)
 
         self.groupBox_3 = QGroupBox(self.tab_3)
         self.groupBox_3.setObjectName(u"groupBox_3")
@@ -1259,7 +1239,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(1)
         self.option_sword_dungeon_reward.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
@@ -1318,17 +1298,13 @@ class Ui_MainWindow(object):
         self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Batreaux", None))
         self.progression_crystal_quest.setText(QCoreApplication.translate("MainWindow", u"Crystal Quests", None))
         self.progression_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
-        self.progression_expensive.setText(QCoreApplication.translate("MainWindow", u"Expensive Purchases", None))
         self.progression_combat.setText(QCoreApplication.translate("MainWindow", u"Combat Rewards", None))
         self.progression_crystal.setText(QCoreApplication.translate("MainWindow", u"Loose Crystals", None))
-        self.progression_cheap.setText(QCoreApplication.translate("MainWindow", u"Cheap Purchases", None))
         self.progression_free_gift.setText(QCoreApplication.translate("MainWindow", u"Free Gifts", None))
         self.progression_mini_dungeon.setText(QCoreApplication.translate("MainWindow", u"Mini Dungeons", None))
         self.progression_fetch.setText(QCoreApplication.translate("MainWindow", u"Fetch Quests", None))
         self.progression_digging.setText(QCoreApplication.translate("MainWindow", u"Digging Spots", None))
-        self.progression_beedle.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
-        self.progression_medium.setText(QCoreApplication.translate("MainWindow", u"Medium Cost Purchases", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Shop Mode", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
         self.progression_short.setText(QCoreApplication.translate("MainWindow", u"Short Quests", None))
         self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
         self.progression_flooded_faron.setText(QCoreApplication.translate("MainWindow", u"Flooded Faron", None))
