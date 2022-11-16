@@ -174,7 +174,7 @@
     - All Dungeons
     - All Dungeons + Sky Keep
   default: None
-  help: "Shuffles entrances with one another. The Required Dungeons Separately option will shuggle only Required Dungeons with each other and Unrequired Dungeons with each other."
+  help: "Shuffles entrances with one another. The Required Dungeons Separately option will shuffle only Required Dungeons with each other and Unrequired Dungeons with each other."
   ui: option_randomize_entrances
 - name: Randomize Silent Realms
   command: randomize-trials
