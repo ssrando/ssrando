@@ -39,6 +39,9 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 NEW_PRESET = "[New Preset]"
 
+with open(RANDO_ROOT_PATH / "gui/location_descriptions.json") as f:
+    LOCATION_DESCRIPTIONS = json.load(f)
+
 
 class RandoGUI(QMainWindow):
     def __init__(self, options: Options):
@@ -148,64 +151,6 @@ class RandoGUI(QMainWindow):
         self.ui.delete_preset.clicked.connect(self.delete_preset)
         self.preset_selection_changed()
 
-        self.location_descriptions = {
-            "skyloft": "Enables progression items to appear on Skyloft",
-            "sky": "Enables progression items to appear in The Sky",
-            "thunderhead": "Enables progression items to appear in The Thunderhead",
-            "faron": "Enables progression items to appear in the Faron Province",
-            "eldin": "Enables progression items to appear in the Eldin Province",
-            "lanayru": "Enables progression items to appear in the Lanayru Province",
-            "dungeon": "Enables progression items to appear in dungeons",
-            "mini_dungeon": "Enables progression items to appear inside Mini Dungeons (i.e. the nodes in "
-            "Lanayru Desert)",
-            "free_gift": "Enables progression items to appear as free gifts from NPCs (i.e. the shield from "
-            "Professor Owlan)",
-            "freestanding": "Enables progression items to appear as freestanding items in the world "
-            "(does not include the freestanding gratitude crystals)",
-            "miscellaneous": "Enables progression items to appear in miscellaneous locations that don't fit into "
-            "any other category (i.e. overworld chests) ",
-            "silent_realm": "Enables progression items to appear as rewards for completing Silent Realm trials",
-            "digging": "Enables progression items to appear in digging spots in the world (does not include Mogma "
-            "Mitts checks, such as the one in Volcano Summit or in Fire Sanctuary)",
-            "bombable": "Enables progression items to appear behind bombable walls or other bombable structures",
-            "combat": "Enables progression items to appear as rewards for combat or completing a quest involving "
-            "combat (i.e. Digging Mitts fight, Kikwi rescue). Does not impact combat within dungeons",
-            "song": "Enables progression items to appear in place of learning songs (from Isle of Song, Ballad of the "
-            "Goddess in Sealed Temple, Song of the Hero from Levias)",
-            "spiral_charge": "Enables progression items to appear in the chests in the sky requiring Spiral Charge to"
-            " access",
-            "minigame": "Enables progression items to appear as rewards from winning minigames",
-            "crystal": "Enables progression items to appear as loose crystals (currently not randomized and must "
-            "always be enabled)",
-            "short": "Enables progression items to appear as rewards for completing short quests (i.e. rescuing"
-            " Orielle)",
-            "long": "Enables progression items to appear as rewards for completing long quests (i.e. Peatrice)",
-            "fetch": "Enables progression items to appear as rewards for returning items to NPCs ",
-            "crystal_quest": "Enables progression items to appear as rewards for completing Gratitude Crystal quests",
-            "scrapper": "Enables progression items to appear as rewards for Scrapper Quests",
-            "peatrice": "Enables a progression item to appear as the reward for completing the Peatrice side quest",
-            "beedle": "Enables progression items to be sold in Beedle's shop",
-            "cheap": "Enables progression items to be sold for 300 rupees or less. Applies to all shops where "
-            "progression items can appear.",
-            "medium": "Enables progression items to be sold for between 300 and 1000 rupees. Applies to all "
-            "shops where progression items can appear",
-            "expensive": "Enables progression items to be sold for more than 1000 rupees. Appleis to all shops"
-            "where progression items can appear",
-            "flooded_faron": "Enables progression items to appear in Flooded Faron",
-            "goddess": "Enables progression items to appear as items in Goddess Chests",
-            "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
-            "Faron Woods and Deep Woods",
-            "eldin_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
-            "the main part of Eldin Volcano and Mogma Turf",
-            "lanayru_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in the main part of Lanayru Desert, Temple of Time and Lanayru Mines",
-            "floria_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in Lake Floria",
-            "summit_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in Volcano Summit",
-            "sand_sea_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in Sand Sea",
-        }
         for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in self.options["banned-types"])
@@ -656,7 +601,7 @@ class RandoGUI(QMainWindow):
 
             if ui_name.startswith("progression_"):
                 ui_name = ui_name[len("progression_") :]
-                self.set_option_description(self.location_descriptions[ui_name])
+                self.set_option_description(LOCATION_DESCRIPTIONS[ui_name])
 
             else:
                 if ui_name.startswith("label_for_"):
