@@ -44,7 +44,8 @@
     # - Harp and Ballad
     - Open
   default: Ballad
-  help: Controls the starting state of the Thunderhead.
+  help: Controls the starting state of the Thunderhead. Open means it is open at the start,
+    Ballad requires you to get Ballad of the Goddess
   ui: option_open_thunderhead
 - name: Starting Sword
   command: starting-sword
@@ -60,7 +61,7 @@
     - True Master Sword
   default: Goddess Sword
   help: Select which sword to start with. The remaining upgrades will be shuffled into
-    the item pool
+    the item pool (based on other settings)
   ui: option_starting_sword
 - name: Required Dungeon Count
   command: required-dungeon-count
@@ -69,13 +70,13 @@
   min: 0
   max: 6
   bits: 3
-  help: The number of dungeons that are required, to beat the seed
+  help: The number of dungeons that are required to beat the seed (excluding Sky Keep)
   ui: option_required_dungeon_count
 - name: Imp 2
   command: imp2-skip
   type: boolean
   default: true
-  help: Skips the requirement to beat Imp 2 in order to beat the seed
+  help: Skips the requirement to beat the second Imprisoned fight in order to beat the seed
   ui: option_imp_2
 - name: Empty unrequired Dungeons
   command: empty-unrequired-dungeons
@@ -136,7 +137,7 @@
   command: triforce-required
   type: boolean
   default: true
-  help: If activated, the three Triforces will be required to open the door to Hylia's Realm. If disabled, Sky Keep counts as an unrequired dungeon
+  help: If activated, the three Triforces will be required to open the door to Hylia's Realm. If disabled, Sky Keep counts as an unrequired dungeon.
   ui: option_triforce_required
 - name: Triforce Shuffle
   command: triforce-shuffle
@@ -147,7 +148,8 @@
     - Sky Keep
     - Anywhere
   default: Vanilla
-  help: Choose where Triforces will appear. Vanilla sets them to their locations in Sky Keep. If Anywhere is chosen, Sky Keep counts as an unrequired dungeon
+  help: Choose where Triforces will appear. Vanilla sets them to their locations in Sky Keep. Sky Keep shuffles them in Sky Keep. Anywhere will shuffle them
+    throughout the world and make Sky Keep an unrequired dungeon.
   ui: option_triforce_shuffle
 - name: Seed
   command: seed
@@ -160,7 +162,7 @@
   command: hero-mode
   type: boolean
   default: true
-  help: If activated, play the game on Hero Mode
+  help: If activated, play the game on Hero Mode (resulting in double damage, but improved Skyward Strike)
   ui: option_hero_mode
 - name: Randomize Entrances
   command: randomize-entrances
@@ -172,7 +174,7 @@
     - All Dungeons
     - All Dungeons + Sky Keep
   default: None
-  help: "Shuffles entrances with one another. The Required Dungeons Separately option will also shuffle Sky Keep if Skip Sky Keep is disabled, and shuffles unrequired dungeons among each other."
+  help: "Shuffles entrances with one another. The Required Dungeons Separately option will shuggle only Required Dungeons with each other and Unrequired Dungeons with each other."
   ui: option_randomize_entrances
 - name: Randomize Silent Realms
   command: randomize-trials
@@ -185,7 +187,7 @@
   type: boolean
   default: false
   help: If activated, you will start with the adventure pouch unlocked. The remaining four
-    progressive pouches will still be shuffled.
+    progressive pouche upgrades will still be shuffled.
   ui: option_start_pouch
 - name: No Spoiler Log
   command: no-spoiler-log
@@ -234,9 +236,9 @@
     - Rupoor Mayhem
     - Rupoor Insanity
   bits: 2
-  help: Adds or replaces items in the junk item pool with Rupoors. Added adds 15 rupoors to the pool
-    (not replacing existing items), Mayhem replaces half of the junk pool and Insanity replaces the entire
-    pool. All modes also add ruppors to the backup, duplicatable pool for when all other items have been
+  help: Adds or replaces items in the junk item pool with Rupoors. Added adds 15 Rupoors to the pool
+    (not replacing existing items), Mayhem replaces half of the junk pool with Rupoors, and Insanity replaces the entire
+    junk pool with Rupoors. All modes also add Rupoors to the backup, duplicatable pool for when all other items have been
     placed
   ui: option_rupoor_mode
 - name: Rupeesanity
@@ -248,7 +250,8 @@
     - No Quick Beetle
     - All
   bits: 2
-  help: Makes Freestanding Rupees be able to be randomized!
+  help: Makes Freestanding Rupees be able to be randomized. No Quick Beetle removes Freestanding Rupees which can only be
+    collected with Quick Beetle. If you activate All, it is strongly recommended that you enable Place Scrap Shop Upgrades.
   ui: option_rupeesanity
 - name: Place Scrap Shop Upgrades
   command: gondo-upgrades
@@ -313,14 +316,14 @@
     - Open
     - Main Node
   default: Nodes
-  help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
-    Main Node will set the fire, water, and lightning nodes to be active but LMF still needs to be raised from the main node.
+  help: Controls the conditions for opening LMF. Open means it is open from the start. Nodes requires activating the 3 nodes as in vanilla.
+    Main Node will set the Fire, Water, and Lightning nodes to be active, but LMF still needs to be raised from the main node.
   ui: option_open_lmf
 - name: Skip Horde
   command: skip-horde
   type: boolean
   default: false
-  help: When enabled, the horde fight will be skipped
+  help: When enabled, the Horde fight will be skipped
   ui: option_horde
 - name: Skip Ghirahim 3
   command: skip-g3
@@ -349,8 +352,8 @@
     # - Any Dungeon
     - Anywhere
   default: Own Dungeon - Unrestricted
-  help: Controls the placement of maps. Restricted means that maps cannot be placed on the
-    Boss Heart Container or ending check of the dungeon
+  help: Controls the placement of maps. Vanilla means they will not be shuffled. Own Dungeon will shuffle the map
+    within the Dungeon, and Restricted means that maps cannot be placed on the Boss Heart Container or ending check of the dungeon.
   ui: option_map_mode
 - name: Small Key Mode
   command: small-key-mode
@@ -395,9 +398,8 @@
     - Glitched
     - No Logic
   default: BiTless
-  help: Sets the logic mode to use when placing items. Glitchless requires no major tricks to complete, but
-    Standard may require minor tricks, such as whipping bombflowers. BiTless may require basic non-BiT tricks
-    such as Fence Hop. Glitched may require BiT. No logic may be unbeatable
+  help: Sets the logic mode to use when placing items. BiTless currently means Glitchless, and requires no major tricks to complete.
+    Glitched may require BiT. No logic may be unbeatable
   ui: option_logic_mode
 - name: Enabled Tricks BiTless
   command: enabled-tricks-bitless
@@ -488,7 +490,7 @@
     - Direct
   default: None
   help: Enables or disables hints appearing on songs. When set to None, the trials will be 'Always' location hints.
-    Basic tells if the reward item is any progress item. Advanced tells if the trial is WotH, Barren, or potentially required.
+    Basic tells if the reward item is any progress item. Advanced tells if the trial is SotS, Barren, or potentially required.
     Direct tells the item on the trial directly.
   ui: option_song_hints
 - name: Fix BiT crashes
@@ -516,7 +518,7 @@
   default: false
   permalink: false
   cosmetic: true
-  help: Swaps Link's casual clothes for the hero's tunic and vice versa
+  help: Swaps Link's casual clothes for the Hero's Tunic, and vice versa
   ui: option_tunic_swap
 - name: Force Sword Dungeon Reward
   command: sword-dungeon-reward
@@ -527,13 +529,13 @@
     - Heart Container
     - Final Check
   default: None
-  help: Set if swords should be forced on the heart container or final check of a required dungeon will be a sword (or not at all), if possible. If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
+  help: Set if swords should be forced to be on the heart container or final check of a required dungeon, if possible. If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
   ui: option_sword_dungeon_reward
 - name: Open Earth Temple
   command: open-et
   type: boolean
   default: false
-  help: If activated, the door requiring 5 key pieces to access the dungeon is removed
+  help: If activated, Earth Temple's entrance will be open and you do not need to find the 5 key pieces to access it.
   ui: option_open_et
 - name: Demise Count
   command: demise-count
@@ -542,7 +544,7 @@
   min: 1
   max: 10
   bits: 4
-  help: How many demises you want to fight at the end of the game
+  help: How many Demises you want to fight at the end of the game.  More than 1 will cause significant lag to your game.
   ui: option_demise_count
 - name: Randomize Music
   command: music-rando
@@ -595,13 +597,14 @@
     - Advanced
     - Full
   default: None
-  help: Shuffles trial objects amongst themselves (within the same trial). Simple shuffles only tears and light fruits, advanced adds dusk relic spawn locations, and full adds stamina fruits
+  help: Shuffles trial objects amongst themselves (within the same trial). Simple shuffles only tears and light fruits, advanced adds dusk relic spawn locations
+    as options, and full adds stamina fruits as options
   ui: option_shuffle_trial_objects
 - name: Fill Dowsing on White Sword
   command: dowsing-after-whitesword
   type: boolean
   default: true
-  help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after obtaining White Sword.
+  help: If enabled, will give you Rupee, Crystal, Treasure and Goddess Cube dowsing after obtaining White Sword.
   ui: option_fill_dowsing_on_white_sword
 - name: Chest Dowsing
   command: chest-dowsing
