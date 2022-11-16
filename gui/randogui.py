@@ -154,7 +154,7 @@ class RandoGUI(QMainWindow):
         for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
             widget.setChecked(not check_type in self.options["banned-types"])
-            if check_type == "crystal":
+            if check_type in ("crystal", "dungeon"):
                 widget.setEnabled(False)
             widget.clicked.connect(self.update_settings)
             widget.installEventFilter(self)

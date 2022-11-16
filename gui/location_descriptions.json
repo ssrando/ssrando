@@ -5,7 +5,7 @@
     "faron": "Enables progression items to appear in the Faron Province.",
     "eldin": "Enables progression items to appear in the Eldin Province.",
     "lanayru": "Enables progression items to appear in the Lanayru Province.",
-    "dungeon": "Enables progression items to appear in dungeons.",
+    "dungeon": "Enables progression items to appear in dungeons (must be enabled).",
     "mini_dungeon": "Enables progression items to appear inside Mini Dungeons. Includes: Fire Node, Lightning Node, Top of LMF (unlocked after activating the nodes) and Pirate Stronghold.",
     "free_gift": "Enables progression items to appear as free gifts from NPCs. Includes: Fledge's Gift, Owlan's Gift, Potion Lady's Gift, Parrow's Gift, Wryna's Crystals and Golo's Gift.",
     "freestanding": "Enables progression items to appear as freestanding items in the world (does not include the freestanding gratitude crystals).",
