@@ -58,6 +58,8 @@ global:
     - 45 # Tear of Nayru
     - 46 # Sacred Tear
     - 47 # Light Fruit
+    - 57 # 5 Deku Seeds
+    - 60 # 10 Deku Seeds
   startsceneflags: # currently only for skyloft
     Skyloft:
       - 95 # Fi Text for Ruby Tablet
