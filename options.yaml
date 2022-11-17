@@ -620,6 +620,11 @@
   default: false
   help: If enabled, dowsing will be re-enabled in dungeons and other dungeon-like areas like Great Tree and Waterfall Cave.
   ui: option_dungeon_dowsing
+- name: Excluded Locations
+  command: excluded-locations
+  type: multichoice
+  default: []
+  help: Set locations to be excluded from the progress pool. While the item found in these locations will still be shuffled, it will never be an item required to beat the game
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution

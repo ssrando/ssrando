@@ -17,9 +17,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGridLayout,
     QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-    QListView, QListWidget, QListWidgetItem, QMainWindow,
-    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
-    QTabWidget, QVBoxLayout, QWidget)
+    QListView, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QSpinBox, QTabWidget, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -994,12 +994,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_18.addWidget(self.option_logic_mode)
 
-        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_18.addItem(self.verticalSpacer_7)
-
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.verticalLayout_19 = QVBoxLayout()
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
         self.label = QLabel(self.layoutWidget)
@@ -1009,10 +1003,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_17 = QHBoxLayout()
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
-        self.enabled_locations = QListView(self.layoutWidget)
-        self.enabled_locations.setObjectName(u"enabled_locations")
+        self.included_locations = QListView(self.layoutWidget)
+        self.included_locations.setObjectName(u"included_locations")
 
-        self.horizontalLayout_17.addWidget(self.enabled_locations)
+        self.horizontalLayout_17.addWidget(self.included_locations)
 
         self.verticalLayout_20 = QVBoxLayout()
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
@@ -1029,16 +1023,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_17.addLayout(self.verticalLayout_20)
 
-        self.disabled_locations = QListWidget(self.layoutWidget)
-        self.disabled_locations.setObjectName(u"disabled_locations")
+        self.excluded_locations = QListView(self.layoutWidget)
+        self.excluded_locations.setObjectName(u"excluded_locations")
 
-        self.horizontalLayout_17.addWidget(self.disabled_locations)
+        self.horizontalLayout_17.addWidget(self.excluded_locations)
 
 
         self.verticalLayout_19.addLayout(self.horizontalLayout_17)
 
 
-        self.horizontalLayout_2.addLayout(self.verticalLayout_19)
+        self.verticalLayout_18.addLayout(self.verticalLayout_19)
 
         self.verticalLayout_25 = QVBoxLayout()
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
@@ -1078,10 +1072,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.addLayout(self.horizontalLayout_18)
 
 
-        self.horizontalLayout_2.addLayout(self.verticalLayout_25)
-
-
-        self.verticalLayout_18.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_18.addLayout(self.verticalLayout_25)
 
         self.tabWidget.addTab(self.tab_5, "")
         self.tab_7 = QWidget()
@@ -1259,7 +1250,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(3)
         self.option_sword_dungeon_reward.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)

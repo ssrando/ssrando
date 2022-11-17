@@ -117,6 +117,18 @@ class RandoGUI(QMainWindow):
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
 
+        # setup exlcuded locations
+        self.excluded_locations_model = QStringListModel()
+        self.excluded_locations_model.setStringList(
+            OPTIONS["excluded-locations"]["default"]
+        )
+        self.included_locations_model = QStringListModel()
+        self.included_locations_model.setStringList(
+            OPTIONS["excluded-locations"]["choices"]
+        )
+        self.ui.excluded_locations.setModel(self.excluded_locations_model)
+        self.ui.included_locations.setModel(self.included_locations_model)
+
         # setup presets
         self.default_presets = {}
         self.user_presets = {}
@@ -221,10 +233,6 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, "label_for_option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_got_dungeon_requirement").setVisible(False)
         self.enable_trick_interface()
-        getattr(self.ui, "enable_location").setVisible(False)
-        getattr(self.ui, "disable_location").setVisible(False)
-        getattr(self.ui, "enabled_locations").setVisible(False)
-        getattr(self.ui, "disabled_locations").setVisible(False)
         getattr(self.ui, "randomize_item").setVisible(False)
         getattr(self.ui, "start_with_item").setVisible(False)
         getattr(self.ui, "randomized_items").setVisible(False)
@@ -232,7 +240,6 @@ class RandoGUI(QMainWindow):
 
         # hide supporting elements
         getattr(self.ui, "tabWidget").removeTab(5)
-        getattr(self.ui, "label").setVisible(False)
         getattr(self.ui, "option_plando").setVisible(False)
         getattr(self.ui, "plando_file").setVisible(False)
         getattr(self.ui, "plando_file_browse").setVisible(False)

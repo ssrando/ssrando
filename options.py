@@ -9,7 +9,8 @@ with (RANDO_ROOT_PATH / "options.yaml").open("r") as f:
     OPTIONS_LIST = yaml.safe_load(f)
 
 OPTIONS = OrderedDict((option["command"], option) for option in OPTIONS_LIST)
-
+with (RANDO_ROOT_PATH / "checks.yaml").open("r") as f:
+    OPTIONS["excluded-locations"]["choices"] = [check for check in yaml.load(f, yaml.SafeLoader)]
 
 class Options:
     def __init__(self):
