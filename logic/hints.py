@@ -8,10 +8,58 @@ from hints.hint_distribution import HintDistribution
 from hints.hint_types import *
 from .randomize import LogicUtils, UserOutput
 from options import Options
-from paths import RANDO_ROOT_PATH
+from paths import CUSTOM_HINT_DISTRIBUTION_PATH, RANDO_ROOT_PATH
 from typing import Dict, List
 
 STATUS = Enum("STATUS", ["required", "useful", "useless"])
+
+HINTABLE_ITEMS = (
+    ["Clawshots"]
+    + ["Progressive Beetle"] * 2
+    + ["Progressive Sword"] * 4
+    + ["Emerald Tablet"] * 1
+    + ["Ruby Tablet"] * 1
+    + ["Amber Tablet"] * 1
+    + ["Goddess Harp"] * 1
+    + ["Water Scale"] * 1
+    + ["Fireshield Earrings"] * 1
+)
+
+ALWAYS_REQUIRED_LOCATIONS = [
+    "Thunderhead - Song from Levias",
+    "Sky - Kina's Crystals",
+    "Central Skyloft - Peater/Peatrice's Crystals",
+    "Batreaux - 80 Crystals",
+    "Lanayru Mining Facility - Boss Key Chest",
+    "Fire Sanctuary - Chest after Bombable Wall",
+]
+
+SOMETIMES_LOCATIONS = [
+    "Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05",
+    "Knight Academy - Pumpkin Archery - 600 Points",
+    "Sky - Lumpy Pumpkin Harp Minigame",
+    "Sky - Fun Fun Island Minigame - 500 Rupees",
+    "Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes",
+    "Batreaux - 70 Crystals Second Reward",
+    "Batreaux - 70 Crystals",
+    "Batreaux - 50 Crystals",
+    "Knight Academy - Owlan's Crystals",
+    "Skyloft Village - Sparrot's Crystals",
+    "Lanayru Desert - Chest on top of Lanayru Mining Facility",
+    "Central Skyloft - Waterfall Goddess Chest",  # stronghold cube
+    "Sky - Beedle's Island Goddess Chest",  # goddess cube in ToT area
+    "Skyview - Chest behind Three Eyes",
+    "Sandship - Boss Key Chest",
+    "Sandship - Tentalus Heart Container",
+    "Sandship - Bow",
+    "Thunderhead - Isle of Songs - Din's Power",
+    "Sealed Grounds - Zelda's Blessing",
+    "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack",
+    "Volcano Summit - Item behind Digging",
+    "Faron Woods - Slingshot",
+    "Sky - Beedle's Crystals",
+    "Sealed Grounds - Gorko's Goddess Wall Reward",
+]
 
 
 class Hints:
@@ -25,11 +73,11 @@ class Hints:
 
         self.dist = HintDistribution()
         if self.logic.rando.options["hint-distribution"] == "Custom":
-            if not os.path.exists("custom_hint_distribution.json"):
+            if not CUSTOM_HINT_DISTRIBUTION_PATH.exists():
                 raise Exception(
                     "Custom distro file not found. Ensure that custom_hint_distribution.json exists in the same directory as the randomizer"
                 )
-            with open("custom_hint_distribution.json") as f:
+            with CUSTOM_HINT_DISTRIBUTION_PATH.open('r') as f:
                 self.dist.read_from_file(f)
         else:
             with open(

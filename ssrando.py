@@ -1,7 +1,6 @@
 from collections import OrderedDict
 from functools import cached_property
 import sys
-import os
 import re
 import random
 from pathlib import Path
@@ -20,7 +19,7 @@ from logic.placement_file import PlacementFile
 import SpoilerLog
 
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
-from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
+from paths import CUSTOM_HINT_DISTRIBUTION_PATH, RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
 from sslib.utils import encodeBytes
 from version import VERSION, VERSION_WITHOUT_COMMIT
@@ -94,14 +93,13 @@ class Randomizer(BaseRandomizer):
         current_hash.update(self.options.get_permalink().encode("ASCII"))
         current_hash.update(VERSION.encode("ASCII"))
         if self.options["hint-distribution"] == "Custom":
-            if not os.path.exists("custom_hint_distribution.json"):
+            if not CUSTOM_HINT_DISTRIBUTION_PATH.exists():
                 raise Exception(
                     "Custom hint distribution file not found. Make sure custom_hint_distribution.json exists at the same location as the randomizer"
                 )
-            with open("custom_hint_distribution.json") as f:
-                lines = f.readlines()
-                for line in lines:
-                    current_hash.update(line.strip(" \n").encode("ASCII"))
+            with CUSTOM_HINT_DISTRIBUTION_PATH.open('r') as f:
+                normalized_json = json.dumps(json.load(f))
+                current_hash.update(normalized_json.encode('ASCII'))
         with open(RANDO_ROOT_PATH / "names.txt") as f:
             names = [s.strip() for s in f.readlines()]
         hash_random = random.Random()
