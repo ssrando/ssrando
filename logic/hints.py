@@ -77,8 +77,26 @@ class Hints:
             self.dist = HintDistribution()
             self.dist.read_from_file(f)
 
+    def do_hint_per_status(self, hintmodes, does_hint, hintcls, get_check, hintpack):
+        for (hintname, raw_check) in hintpack.items():
+            check = get_check(raw_check)
+            item = self.logic.done_item_locations[check]
+
+            if does_hint:
+                self.hinted_checks.append(check)
+
+            status: Enum
+            if item in self.logic.rando.sots_locations:
+                status = STATUS.required
+            elif item in self.logic.all_progress_items:
+                status = STATUS.useful
+            else:
+                status = STATUS.useless
+
+            self.hints[hintname] = hintcls(hintmodes[status], hintname, item)
+
     def do_non_hintstone_hints(self):
-        hinted_checks = []
+        self.hinted_checks = []
 
         trial_checks = {
             "Song of the Hero - Trial Hint": SKYLOFT_TRIAL_GATE,
@@ -88,23 +106,20 @@ class Hints:
         }
 
         hint_mode = self.logic.rando.options["song-hints"]
-        if hint_mode != "None":
-            for check in SILENT_REALM_CHECKS.values():
-                hinted_checks.append(check)
 
-        hintfunc: Dict[Enum, Enum]
+        hintmodes: Dict[Enum, Enum]
         if hint_mode == "None":
-            hintfunc = {k: HINT_MODES.Empty for k in STATUS}
+            hintmodes = {k: HINT_MODES.Empty for k in STATUS}
         elif hint_mode == "Direct":
-            hintfunc = {k: HINT_MODES.Direct for k in STATUS}
+            hintmodes = {k: HINT_MODES.Direct for k in STATUS}
         elif hint_mode == "Basic":
-            hintfunc = {
+            hintmodes = {
                 STATUS.required: HINT_MODES.Useful,
                 STATUS.useful: HINT_MODES.Useful,
                 STATUS.useless: HINT_MODES.Useless,
             }
         elif hint_mode == "Advanced":
-            hintfunc = {
+            hintmodes = {
                 STATUS.required: HINT_MODES.Required,
                 STATUS.useful: HINT_MODES.Useful,
                 STATUS.useless: HINT_MODES.Useless,
@@ -112,48 +127,32 @@ class Hints:
         else:
             raise ValueError(f'Unknown value for setting "song-hints": "{hint_mode}"')
 
-        for (hintname, trial_gate) in trial_checks.items():
-            randomized_trial = self.logic.trial_connections[trial_gate]
-            randomized_trial_check = SILENT_REALM_CHECKS[randomized_trial]
-            item = self.logic.done_item_locations[randomized_trial_check]
+        does_hint = hint_mode != "None"
+        get_check = lambda trial_gate: SILENT_REALM_CHECKS[
+            self.logic.trial_connections[trial_gate]
+        ]
 
-            status: Enum
-            if randomized_trial_check in self.logic.rando.sots_locations:
-                status = STATUS.required
-            elif item in self.logic.all_progress_items:
-                status = STATUS.useful
-            else:
-                status = STATUS.useless
+        self.do_hint_per_status(hintmodes, does_hint, SongHint, get_check, trial_checks)
 
-            self.hints[hintname] = SongHint(hintfunc[status], hintname, item)
-
-        return hinted_checks
+        return self.hinted_checks
 
     def do_hints(self):
-        needed_always_hints = self.logic.filter_locations_for_progression(
-            [
-                loc
-                for loc in self.logic.item_locations.keys()
-                if self.logic.item_locations[loc].get("hint") == "always"
-            ]
-        )
+
+        check_hint_status = {
+            loc: self.logic.item_locations[loc].get("hint")
+            for loc in self.logic.filter_locations_for_progression(
+                self.logic.item_locations.keys()
+            )
+        }
+
         # in shopsanity, we need to hint some beetle shop items
         # add them manually, cause they need to be kinda weirdly implemented because of bug net
         if (
             self.logic.rando.options["shop-mode"] == "Randomized"
             and "expensive" not in self.logic.rando.options["banned-types"]
         ):
-            needed_always_hints.append("Beedle - 1200 Rupee Item")
-            needed_always_hints.append("Beedle - 1600 Rupee Item")
-
-        needed_sometimes_hints = self.logic.filter_locations_for_progression(
-            [
-                loc
-                for loc in self.logic.item_locations.keys()
-                if "hint" in self.logic.item_locations[loc]
-                and self.logic.item_locations[loc]["hint"] == "sometimes"
-            ]
-        )
+            check_hint_status["Beedle - 1200 Rupee Item"] = "always"
+            check_hint_status["Beedle - 1600 Rupee Item"] = "always"
 
         # ensure prerandomized locations cannot be hinted
         unhintables = [
@@ -169,8 +168,7 @@ class Hints:
         self.dist.start(
             self.logic,
             unhintables + hinted_checks,
-            needed_always_hints,
-            needed_sometimes_hints,
+            check_hint_status,
         )
         hints = self.dist.get_hints()
         self._place_hints_for_locations(hints)

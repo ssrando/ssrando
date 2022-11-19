@@ -129,8 +129,7 @@ class HintDistribution:
         self,
         logic: Logic,
         unhintable: list,
-        always_hints: list,
-        sometimes_hints: list,
+        check_hint_status: dict,
     ):
         self.rng = logic.rando.rng
         self.logic = logic
@@ -144,31 +143,21 @@ class HintDistribution:
         }
         self.nb_hints = sum(self.max_hints_per_stone.values())
 
-        for loc in self.added_locations:
-            location = loc["location"]
-            if loc["type"] == "always":
-                if location in always_hints:
-                    continue
-                always_hints.append(location)
-                if location in sometimes_hints:
-                    sometimes_hints.remove(location)
-            elif loc["type"] == "sometimes":
-                if location in sometimes_hints:
-                    continue
-                sometimes_hints.append(location)
-                if location in always_hints:
-                    always_hints.remove(location)
+        check_hint_status2 = (
+            check_hint_status
+            | {loc["location"]: loc["type"] for loc in self.added_locations}
+            | {loc: None for loc in self.removed_locations}
+        )
+        # The right-most dict has priority when keys are shared
 
-        for loc in self.removed_locations:
-            if loc in always_hints:
-                always_hints.remove(loc)
-            if loc in sometimes_hints:
-                sometimes_hints.remove(loc)
-
-        self.rng.shuffle(always_hints)
-        self.rng.shuffle(sometimes_hints)
-        self.always_hints = always_hints
-        self.sometimes_hints = sometimes_hints
+        self.always_hints = [
+            loc for loc, status in check_hint_status2.items() if status == "always"
+        ]
+        self.sometimes_hints = [
+            loc for loc, status in check_hint_status2.items() if status == "sometimes"
+        ]
+        self.rng.shuffle(self.always_hints)
+        self.rng.shuffle(self.sometimes_hints)
 
         # creates a list of boss key locations for required dungeons
         self.required_boss_key_locations = [
