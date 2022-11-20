@@ -14,6 +14,7 @@ OPTIONS["excluded-locations"]["choices"] = [
     check for check in read_yaml_file_cached("checks.yaml")
 ]
 
+
 class Options:
     def __init__(self):
         self.options = OrderedDict()
