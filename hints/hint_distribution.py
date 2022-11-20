@@ -148,7 +148,7 @@ class HintDistribution:
             | {loc["location"]: loc["type"] for loc in self.added_locations}
             | {loc: None for loc in self.removed_locations}
         )
-        # The right-most dict has priority when keys are shared
+        # Combines those 3 dictionaries, the right-most dict has priority when keys are shared
 
         self.always_hints = [
             loc for loc, status in check_hint_status2.items() if status == "always"
