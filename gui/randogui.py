@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (
     QInputDialog,
     QLineEdit,
 )
+from gui.sort_model import LocationsModel
 
 from logic.constants import BANNABLE_TYPES
 from options import OPTIONS, Options
@@ -117,14 +118,16 @@ class RandoGUI(QMainWindow):
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
 
-        print(OPTIONS["excluded-locations"]["choices"])
-
         # setup exlcuded locations
         self.excluded_locations_model = QStringListModel()
+        self.excluded_locations_proxy = LocationsModel()
+        self.excluded_locations_proxy.setSourceModel(self.excluded_locations_model)
         self.excluded_locations_model.setStringList(
             OPTIONS["excluded-locations"]["default"]
         )
         self.included_locations_model = QStringListModel()
+        self.included_locations_proxy = LocationsModel()
+        self.included_locations_proxy.setSourceModel(self.included_locations_model)
         self.included_locations_model.setStringList(
             OPTIONS["excluded-locations"]["choices"]
         )
@@ -457,8 +460,6 @@ class RandoGUI(QMainWindow):
                 if choice not in current_settings["excluded-locations"]
             ]
         )
-        self.excluded_locations_model.sort(0)
-        self.included_locations_model.sort(0)
         self.ui.excluded_locations.setModel(self.excluded_locations_model)
         self.ui.included_locations.setModel(self.included_locations_model)
 
@@ -604,12 +605,10 @@ class RandoGUI(QMainWindow):
 
     def exclude_location(self):
         self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
-        self.ui.excluded_locations.model().sort(0)
         self.update_settings()
 
     def include_location(self):
         self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
-        self.ui.included_locations.model().sort(0)
         self.update_settings()
 
     def load_preset(self):
