@@ -1579,14 +1579,16 @@
              <item>
               <widget class="QPushButton" name="include_location">
                <property name="text">
-                <string>&lt;---</string>
+                <string>Include
+&lt;--</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="exclude_location">
                <property name="text">
-                <string>---&gt;</string>
+                <string>Exclude
+--&gt;</string>
                </property>
               </widget>
              </item>
@@ -1611,7 +1613,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_18">
            <item>
-            <widget class="QListView" name="enabled_tricks">
+            <widget class="QListView" name="disabled_tricks">
              <property name="toolTip">
               <string>test</string>
              </property>
@@ -1620,23 +1622,25 @@
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_21">
              <item>
-              <widget class="QPushButton" name="enable_trick">
+              <widget class="QPushButton" name="disable_trick">
                <property name="text">
-                <string>&lt;---</string>
+                <string>Disable
+&lt;--</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="disable_trick">
+              <widget class="QPushButton" name="enable_trick">
                <property name="text">
-                <string>---&gt;</string>
+                <string>Enable
+--&gt;</string>
                </property>
               </widget>
              </item>
             </layout>
            </item>
            <item>
-            <widget class="QListView" name="disabled_tricks"/>
+            <widget class="QListView" name="enabled_tricks"/>
            </item>
           </layout>
          </item>

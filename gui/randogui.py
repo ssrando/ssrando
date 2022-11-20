@@ -117,6 +117,8 @@ class RandoGUI(QMainWindow):
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
 
+        print(OPTIONS["excluded-locations"]["choices"])
+
         # setup exlcuded locations
         self.excluded_locations_model = QStringListModel()
         self.excluded_locations_model.setStringList(

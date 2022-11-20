@@ -1043,30 +1043,30 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_18 = QHBoxLayout()
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
-        self.enabled_tricks = QListView(self.layoutWidget)
-        self.enabled_tricks.setObjectName(u"enabled_tricks")
+        self.disabled_tricks = QListView(self.layoutWidget)
+        self.disabled_tricks.setObjectName(u"disabled_tricks")
 
-        self.horizontalLayout_18.addWidget(self.enabled_tricks)
+        self.horizontalLayout_18.addWidget(self.disabled_tricks)
 
         self.verticalLayout_21 = QVBoxLayout()
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.enable_trick = QPushButton(self.layoutWidget)
-        self.enable_trick.setObjectName(u"enable_trick")
-
-        self.verticalLayout_21.addWidget(self.enable_trick)
-
         self.disable_trick = QPushButton(self.layoutWidget)
         self.disable_trick.setObjectName(u"disable_trick")
 
         self.verticalLayout_21.addWidget(self.disable_trick)
 
+        self.enable_trick = QPushButton(self.layoutWidget)
+        self.enable_trick.setObjectName(u"enable_trick")
+
+        self.verticalLayout_21.addWidget(self.enable_trick)
+
 
         self.horizontalLayout_18.addLayout(self.verticalLayout_21)
 
-        self.disabled_tricks = QListView(self.layoutWidget)
-        self.disabled_tricks.setObjectName(u"disabled_tricks")
+        self.enabled_tricks = QListView(self.layoutWidget)
+        self.enabled_tricks.setObjectName(u"enabled_tricks")
 
-        self.horizontalLayout_18.addWidget(self.disabled_tricks)
+        self.horizontalLayout_18.addWidget(self.enabled_tricks)
 
 
         self.verticalLayout_25.addLayout(self.horizontalLayout_18)
@@ -1382,14 +1382,18 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
-        self.include_location.setText(QCoreApplication.translate("MainWindow", u"<---", None))
-        self.exclude_location.setText(QCoreApplication.translate("MainWindow", u"--->", None))
+        self.include_location.setText(QCoreApplication.translate("MainWindow", u"Include\n"
+"<--", None))
+        self.exclude_location.setText(QCoreApplication.translate("MainWindow", u"Exclude\n"
+"-->", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Enable Tricks", None))
 #if QT_CONFIG(tooltip)
-        self.enabled_tricks.setToolTip(QCoreApplication.translate("MainWindow", u"test", None))
+        self.disabled_tricks.setToolTip(QCoreApplication.translate("MainWindow", u"test", None))
 #endif // QT_CONFIG(tooltip)
-        self.enable_trick.setText(QCoreApplication.translate("MainWindow", u"<---", None))
-        self.disable_trick.setText(QCoreApplication.translate("MainWindow", u"--->", None))
+        self.disable_trick.setText(QCoreApplication.translate("MainWindow", u"Disable\n"
+"<--", None))
+        self.enable_trick.setText(QCoreApplication.translate("MainWindow", u"Enable\n"
+"-->", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Logic Settings", None))
         self.groupBox_10.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
         self.label_for_option_hint_distribution.setText(QCoreApplication.translate("MainWindow", u"Hint Distribution", None))
