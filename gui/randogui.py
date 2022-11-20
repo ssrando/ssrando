@@ -448,11 +448,13 @@ class RandoGUI(QMainWindow):
         self.excluded_locations_model.setStringList(
             current_settings["excluded-locations"]
         )
-        self.included_locations_model.setStringList([
-            choice
-            for choice in OPTIONS["excluded-locations"]["choices"]
-            if choice not in current_settings["excluded-locations"]
-        ])
+        self.included_locations_model.setStringList(
+            [
+                choice
+                for choice in OPTIONS["excluded-locations"]["choices"]
+                if choice not in current_settings["excluded-locations"]
+            ]
+        )
         self.excluded_locations_model.sort(0)
         self.included_locations_model.sort(0)
         self.ui.excluded_locations.setModel(self.excluded_locations_model)
@@ -507,7 +509,9 @@ class RandoGUI(QMainWindow):
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
 
-        self.options.set_option("excluded-locations", self.get_option_value("excluded_locations"))
+        self.options.set_option(
+            "excluded-locations", self.get_option_value("excluded_locations")
+        )
 
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())

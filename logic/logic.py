@@ -741,7 +741,7 @@ class Logic:
             locations_to_filter,
             self.item_locations,
             self.rando.banned_types,
-            self.rando.options["excluded-locations"]
+            self.rando.options["excluded-locations"],
         )
 
     @staticmethod
@@ -751,7 +751,10 @@ class Logic:
         filtered_locations = []
         for location_name in locations_to_filter:
             types: set = item_locations[location_name]["type"]
-            if types.isdisjoint(banned_types) and location_name not in excluded_locations:
+            if (
+                types.isdisjoint(banned_types)
+                and location_name not in excluded_locations
+            ):
                 filtered_locations.append(location_name)
 
         return filtered_locations
