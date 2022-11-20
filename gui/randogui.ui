@@ -1577,14 +1577,14 @@
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_20">
              <item>
-              <widget class="QPushButton" name="enable_location">
+              <widget class="QPushButton" name="include_location">
                <property name="text">
                 <string>&lt;---</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="disable_location">
+              <widget class="QPushButton" name="exclude_location">
                <property name="text">
                 <string>---&gt;</string>
                </property>
@@ -1611,7 +1611,11 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_18">
            <item>
-            <widget class="QListView" name="enabled_tricks"/>
+            <widget class="QListView" name="enabled_tricks">
+             <property name="toolTip">
+              <string>test</string>
+             </property>
+            </widget>
            </item>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_21">

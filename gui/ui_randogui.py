@@ -1010,15 +1010,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_20 = QVBoxLayout()
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.enable_location = QPushButton(self.layoutWidget)
-        self.enable_location.setObjectName(u"enable_location")
+        self.include_location = QPushButton(self.layoutWidget)
+        self.include_location.setObjectName(u"include_location")
 
-        self.verticalLayout_20.addWidget(self.enable_location)
+        self.verticalLayout_20.addWidget(self.include_location)
 
-        self.disable_location = QPushButton(self.layoutWidget)
-        self.disable_location.setObjectName(u"disable_location")
+        self.exclude_location = QPushButton(self.layoutWidget)
+        self.exclude_location.setObjectName(u"exclude_location")
 
-        self.verticalLayout_20.addWidget(self.disable_location)
+        self.verticalLayout_20.addWidget(self.exclude_location)
 
 
         self.horizontalLayout_17.addLayout(self.verticalLayout_20)
@@ -1382,9 +1382,12 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
-        self.enable_location.setText(QCoreApplication.translate("MainWindow", u"<---", None))
-        self.disable_location.setText(QCoreApplication.translate("MainWindow", u"--->", None))
+        self.include_location.setText(QCoreApplication.translate("MainWindow", u"<---", None))
+        self.exclude_location.setText(QCoreApplication.translate("MainWindow", u"--->", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Enable Tricks", None))
+#if QT_CONFIG(tooltip)
+        self.enabled_tricks.setToolTip(QCoreApplication.translate("MainWindow", u"test", None))
+#endif // QT_CONFIG(tooltip)
         self.enable_trick.setText(QCoreApplication.translate("MainWindow", u"<---", None))
         self.disable_trick.setText(QCoreApplication.translate("MainWindow", u"--->", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Logic Settings", None))

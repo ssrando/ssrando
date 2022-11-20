@@ -128,6 +128,8 @@ class RandoGUI(QMainWindow):
         )
         self.ui.excluded_locations.setModel(self.excluded_locations_model)
         self.ui.included_locations.setModel(self.included_locations_model)
+        self.ui.exclude_location.clicked.connect(self.exclude_location)
+        self.ui.include_location.clicked.connect(self.include_location)
 
         # setup presets
         self.default_presets = {}
@@ -438,8 +440,24 @@ class RandoGUI(QMainWindow):
         else:
             self.enabled_tricks_model.setStringList([])
             self.disabled_tricks_model.setStringList([])
+        self.enabled_tricks_model.sort(0)
+        self.disabled_tricks_model.sort(0)
         self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
+
+        self.excluded_locations_model.setStringList(
+            current_settings["excluded-locations"]
+        )
+        self.included_locations_model.setStringList([
+            choice
+            for choice in OPTIONS["excluded-locations"]["choices"]
+            if choice not in current_settings["excluded-locations"]
+        ])
+        self.excluded_locations_model.sort(0)
+        self.included_locations_model.sort(0)
+        self.ui.excluded_locations.setModel(self.excluded_locations_model)
+        self.ui.included_locations.setModel(self.included_locations_model)
+
         self.ui.permalink.setText(current_settings.get_permalink())
 
     def save_settings(self):
@@ -488,6 +506,8 @@ class RandoGUI(QMainWindow):
         else:  # this should only be no logic
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
+
+        self.options.set_option("excluded-locations", self.get_option_value("excluded_locations"))
 
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
@@ -574,6 +594,16 @@ class RandoGUI(QMainWindow):
     def disable_trick(self):
         self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
         self.ui.disabled_tricks.model().sort(0)
+        self.update_settings()
+
+    def exclude_location(self):
+        self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
+        self.ui.excluded_locations.model().sort(0)
+        self.update_settings()
+
+    def include_location(self):
+        self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
+        self.ui.included_locations.model().sort(0)
         self.update_settings()
 
     def load_preset(self):
