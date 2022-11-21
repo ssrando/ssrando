@@ -259,20 +259,11 @@ class Rando:
 
     def initialize_items(self):
         # Initialize item related attributes.
-        must_be_placed_items = (
-            PROGRESS_ITEMS | NONPROGRESS_ITEMS | ALL_SMALL_KEYS | ALL_BOSS_KEYS
-        )
-        if self.options["map-mode"] != "Removed":
-            must_be_placed_items |= ALL_MAPS
-
-        may_be_placed_list: List[EIN] = [
-            item for item in CONSUMABLE_ITEMS if item not in self.placement.items
-        ]
-        duplicable_items = DUPLICABLE_ITEMS
-
         rupoor_mode = self.options["rupoor-mode"]
         if rupoor_mode != "Off":
-            duplicable_items = DUPLICABLE_COUNTERPROGRESS_ITEMS  # Rupoors
+            may_be_placed_list: List[EIN] = [
+                item for item in CONSUMABLE_ITEMS if item not in self.placement.items
+            ]
             length = len(may_be_placed_list)
             self.rng.shuffle(may_be_placed_list)
             if rupoor_mode == "Added":
@@ -288,7 +279,20 @@ class Rando:
             else:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}")
             self.placement = self.placement.add_unplaced_items(set(unplaced))
-        may_be_placed_items = dict.fromkeys(may_be_placed_list)
+
+        must_be_placed_items = (
+            PROGRESS_ITEMS
+            | NONPROGRESS_ITEMS
+            | ALL_SMALL_KEYS
+            | ALL_BOSS_KEYS
+            | ALL_MAPS
+        )
+        may_be_placed_items = CONSUMABLE_ITEMS.copy()
+        duplicable_items = (
+            DUPLICABLE_ITEMS
+            if rupoor_mode != "Off"
+            else DUPLICABLE_COUNTERPROGRESS_ITEMS  # Rupoors
+        )
 
         for item in self.placement.items:
             must_be_placed_items.pop(item, None)
@@ -414,7 +418,7 @@ class Rando:
 
         # remove maps from the dungeon pool if maps are shuffled
         if map_mode == "Removed":
-            pass  # Dealt with during item initialization
+            self.placement = self.placement.add_unplaced_items(set(ALL_MAPS))
         elif map_mode == "Vanilla":
             self.placement |= VANILLA_MAPS_PLACEMENT(self.norm, self.areas.checks)
         elif map_mode == "Own Dungeon - Restricted":
