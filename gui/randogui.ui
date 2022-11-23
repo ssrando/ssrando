@@ -63,8 +63,11 @@
     <property name="toolTip">
      <string/>
     </property>
+    <property name="toolTipDuration">
+     <number>-6</number>
+    </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>2</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -433,400 +436,19 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_progress_locations">
-     <attribute name="title">
-      <string>Progress Locations</string>
-     </attribute>
-     <widget class="QGroupBox" name="groupBox_4">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>1001</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>What areas of the world should progress items appear?</string>
-      </property>
-      <widget class="QWidget" name="horizontalLayoutWidget_3">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>981</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <widget class="QCheckBox" name="progression_skyloft">
-          <property name="text">
-           <string>Skyloft</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="progression_sky">
-          <property name="text">
-           <string>The Sky</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="progression_thunderhead">
-          <property name="text">
-           <string>Thunderhead</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="progression_faron">
-          <property name="text">
-           <string>Faron</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="progression_eldin">
-          <property name="text">
-           <string>Eldin</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="progression_lanayru">
-          <property name="text">
-           <string>Lanayru</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>70</y>
-        <width>1001</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Where should progress items appear?</string>
-      </property>
-      <widget class="QWidget" name="gridLayoutWidget_3">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>981</width>
-         <height>164</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="1" column="4">
-         <widget class="QCheckBox" name="progression_freestanding">
-          <property name="text">
-           <string>Freestanding Items</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5">
-         <widget class="QCheckBox" name="progression_miscellaneous">
-          <property name="text">
-           <string>Miscellaneous</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QCheckBox" name="progression_spiral_charge">
-          <property name="text">
-           <string>Spiral Charge Chests</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="QCheckBox" name="progression_bombable">
-          <property name="text">
-           <string>Bombable Walls</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QCheckBox" name="progression_silent_realm">
-          <property name="text">
-           <string>Silent Realms</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QCheckBox" name="progression_long">
-          <property name="text">
-           <string>Long Quests</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="5">
-         <widget class="QCheckBox" name="progression_song">
-          <property name="text">
-           <string>Songs</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QCheckBox" name="progression_minigame">
-          <property name="text">
-           <string>Minigames</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="5">
-         <widget class="QCheckBox" name="progression_scrapper">
-          <property name="text">
-           <string>Scrapper Quests</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QCheckBox" name="progression_dungeon">
-          <property name="text">
-           <string>Dungeons</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="3">
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
-          <item>
-           <widget class="QComboBox" name="option_max_batreaux_reward"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_for_option_max_batreaux_reward">
-            <property name="text">
-             <string>Batreaux</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="4" column="4">
-         <widget class="QCheckBox" name="progression_crystal_quest">
-          <property name="text">
-           <string>Crystal Quests</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="5">
-         <widget class="QCheckBox" name="progression_peatrice">
-          <property name="text">
-           <string>Peatrice</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="5">
-         <widget class="QCheckBox" name="progression_expensive">
-          <property name="text">
-           <string>Expensive Purchases</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="4">
-         <widget class="QCheckBox" name="progression_combat">
-          <property name="text">
-           <string>Combat Rewards</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="4">
-         <widget class="QCheckBox" name="progression_crystal">
-          <property name="text">
-           <string>Loose Crystals</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="3">
-         <widget class="QCheckBox" name="progression_cheap">
-          <property name="text">
-           <string>Cheap Purchases</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QCheckBox" name="progression_free_gift">
-          <property name="text">
-           <string>Free Gifts</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QCheckBox" name="progression_mini_dungeon">
-          <property name="text">
-           <string>Mini Dungeons</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="3">
-         <widget class="QCheckBox" name="progression_fetch">
-          <property name="text">
-           <string>Fetch Quests</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QCheckBox" name="progression_digging">
-          <property name="text">
-           <string>Digging Spots</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QCheckBox" name="progression_beedle">
-          <property name="text">
-           <string>Beedle's Shop</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="4">
-         <widget class="QCheckBox" name="progression_medium">
-          <property name="text">
-           <string>Medium Cost Purchases</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_11">
-          <item>
-           <widget class="QComboBox" name="option_shopsanity"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_10">
-            <property name="text">
-             <string>Shop Mode</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="4" column="0">
-         <widget class="QCheckBox" name="progression_short">
-          <property name="text">
-           <string>Short Quests</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_9">
-          <item>
-           <widget class="QComboBox" name="option_rupeesanity"/>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_for_option_rupeesanity">
-            <property name="text">
-             <string>Rupeesanity</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="6" column="2">
-         <widget class="QCheckBox" name="progression_flooded_faron">
-          <property name="text">
-           <string>Flooded Faron</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_3">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>270</y>
-        <width>1001</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Goddess Cube Options</string>
-      </property>
-      <widget class="QWidget" name="gridLayoutWidget_4">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>981</width>
-         <height>83</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="1" column="1">
-         <widget class="QCheckBox" name="progression_eldin_goddess">
-          <property name="text">
-           <string>Eldin Volcano</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QCheckBox" name="progression_goddess">
-          <property name="text">
-           <string>Enabled</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QCheckBox" name="progression_faron_goddess">
-          <property name="text">
-           <string>Faron Woods</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QCheckBox" name="progression_lanayru_goddess">
-          <property name="text">
-           <string>Lanayru Desert</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QCheckBox" name="progression_summit_goddess">
-          <property name="text">
-           <string>Volcano Summit</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QCheckBox" name="progression_floria_goddess">
-          <property name="text">
-           <string>Lake Floria</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QCheckBox" name="progression_sand_sea_goddess">
-          <property name="text">
-           <string>Lanayru Sand Sea</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_additional_settings">
+    <widget class="QWidget" name="tab_4">
      <property name="toolTip">
       <string/>
      </property>
      <attribute name="title">
-      <string>Additional Settings</string>
+      <string>Randomization Settings</string>
      </attribute>
      <widget class="QGroupBox" name="groupBox_5">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>201</width>
+        <x>210</x>
+        <y>0</y>
+        <width>191</width>
         <height>251</height>
        </rect>
       </property>
@@ -838,7 +460,7 @@
         <rect>
          <x>10</x>
          <y>19</y>
-         <width>181</width>
+         <width>171</width>
          <height>221</height>
         </rect>
        </property>
@@ -934,8 +556,8 @@
      <widget class="QGroupBox" name="groupBox_7">
       <property name="geometry">
        <rect>
-        <x>630</x>
-        <y>10</y>
+        <x>820</x>
+        <y>0</y>
         <width>191</width>
         <height>251</height>
        </rect>
@@ -949,7 +571,7 @@
          <x>10</x>
          <y>20</y>
          <width>181</width>
-         <height>236</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1003,23 +625,16 @@
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_40">
+         <layout class="QVBoxLayout" name="verticalLayout_16">
           <item>
-           <widget class="QLabel" name="label_for_option_sword_reward">
+           <widget class="QLabel" name="label_for_sword_dungeon_reward">
             <property name="text">
-             <string>Sword Dungeon Rewards</string>
+             <string>Sword Dungeon Reward</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="option_sword_dungeon_reward">
-            <property name="currentText">
-             <string/>
-            </property>
-            <property name="currentIndex">
-             <number>-1</number>
-            </property>
-           </widget>
+           <widget class="QComboBox" name="option_sword_dungeon_reward"/>
           </item>
          </layout>
         </item>
@@ -1042,9 +657,9 @@
      <widget class="QGroupBox" name="groupBox_8">
       <property name="geometry">
        <rect>
-        <x>830</x>
-        <y>10</y>
-        <width>181</width>
+        <x>820</x>
+        <y>250</y>
+        <width>191</width>
         <height>251</height>
        </rect>
       </property>
@@ -1056,7 +671,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>161</width>
+         <width>171</width>
          <height>221</height>
         </rect>
        </property>
@@ -1129,8 +744,8 @@
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>10</y>
+        <x>410</x>
+        <y>0</y>
         <width>191</width>
         <height>251</height>
        </rect>
@@ -1163,6 +778,13 @@
          </layout>
         </item>
         <item>
+         <widget class="QCheckBox" name="option_open_et">
+          <property name="text">
+           <string>Open Earth Temple</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <item>
            <widget class="QLabel" name="label_for_option_open_lmf">
@@ -1175,6 +797,20 @@
            <widget class="QComboBox" name="option_open_lmf"/>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox_2">
+          <property name="text">
+           <string>Open Ancient Cistern</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox_3">
+          <property name="text">
+           <string>Open Fire Sanctuary</string>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -1198,13 +834,6 @@
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_open_et">
-          <property name="text">
-           <string>Open Earth Temple</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer name="verticalSpacer_2">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1223,14 +852,14 @@
      <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
        <rect>
-        <x>420</x>
-        <y>10</y>
+        <x>610</x>
+        <y>0</y>
         <width>201</width>
         <height>251</height>
        </rect>
       </property>
       <property name="title">
-       <string>Overworld</string>
+       <string>Entrance Randomization</string>
       </property>
       <widget class="QWidget" name="verticalLayoutWidget_4">
        <property name="geometry">
@@ -1247,7 +876,7 @@
           <item>
            <widget class="QLabel" name="label_for_option_randomize_entrances">
             <property name="text">
-             <string>Randomize Entrances</string>
+             <string>Randomize Dungeon Entrances</string>
             </property>
            </widget>
           </item>
@@ -1271,20 +900,6 @@
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_trialshuffle">
-          <item>
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Shuffle Trial Objects</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="option_shuffle_trial_objects"/>
-          </item>
-         </layout>
-        </item>
-        <item>
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1303,86 +918,13 @@
        </layout>
       </widget>
      </widget>
-     <widget class="QGroupBox" name="groupBox_9">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>270</y>
-        <width>201</width>
-        <height>241</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Additional Options</string>
-      </property>
-      <widget class="QWidget" name="verticalLayoutWidget_5">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>181</width>
-         <height>210</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_15">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_16">
-          <item>
-           <widget class="QLabel" name="label_for_option_rupoor">
-            <property name="text">
-             <string>Rupoor Mode</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="option_rupoor_mode"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_gondo_upgrades">
-          <property name="text">
-           <string>Place Scrap Shop Upgrades</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_hero_mode">
-          <property name="text">
-           <string>Hero Mode</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_fix_bit_crashes">
-          <property name="text">
-           <string>Fix BiT crashes</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_17">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-     </widget>
      <widget class="QGroupBox" name="groupBox_16">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>270</y>
+        <x>410</x>
+        <y>250</y>
         <width>191</width>
-        <height>241</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -1451,60 +993,99 @@
      <widget class="QGroupBox" name="groupBox_18">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>270</y>
+        <x>10</x>
+        <y>0</y>
         <width>191</width>
-        <height>241</height>
+        <height>501</height>
        </rect>
       </property>
       <property name="title">
-       <string>Dowsing Options</string>
+       <string>Shuffles</string>
       </property>
       <widget class="QWidget" name="verticalLayoutWidget_17">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>20</y>
-         <width>177</width>
-         <height>211</height>
+         <y>21</y>
+         <width>171</width>
+         <height>461</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_43">
+       <layout class="QVBoxLayout" name="verticalLayout_40">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_41"/>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_fill_dowsing_on_white_sword">
-          <property name="text">
-           <string>Fill Dowsing on White Sword</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_42">
+         <layout class="QVBoxLayout" name="verticalLayout_41">
           <item>
-           <widget class="QLabel" name="label_for_option_chest_dowsing">
+           <widget class="QLabel" name="label_for_option_max_batreaux_reward">
             <property name="text">
-             <string>Chest Dowsing</string>
+             <string>Batreaux</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="option_chest_dowsing">
-            <property name="currentText">
-             <string/>
-            </property>
-            <property name="currentIndex">
-             <number>-1</number>
-            </property>
-           </widget>
+           <widget class="QComboBox" name="option_max_batreaux_reward"/>
           </item>
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_dungeon_dowsing">
+         <widget class="QCheckBox" name="progression_peatrice">
           <property name="text">
-           <string>Allow Dowsing in Dungeons</string>
+           <string>Peatrice</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox">
+          <property name="text">
+           <string>Goddess Cubes</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_44">
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Minigames</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_43">
+          <item>
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Beedle's Shop</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_shopsanity"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_42">
+          <item>
+           <widget class="QLabel" name="label_for_option_rupeesanity">
+            <property name="text">
+             <string>Rupeesanity</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_rupeesanity"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox_4">
+          <property name="text">
+           <string>Song of the Hero Quest</string>
           </property>
          </widget>
         </item>
@@ -1513,16 +1094,285 @@
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::MinimumExpanding</enum>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_19">
+      <property name="geometry">
+       <rect>
+        <x>619</x>
+        <y>249</y>
+        <width>191</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Silent Realms</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_22">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>19</y>
+         <width>171</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_45">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_trialshuffle">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Shuffle Trial Objects</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_shuffle_trial_objects"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_19">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>70</height>
+            <height>40</height>
            </size>
           </property>
          </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_additional_settings">
+     <attribute name="title">
+      <string>Additional Settings</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_9">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>0</y>
+        <width>191</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Additional Options</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>181</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_15">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_28">
+          <item>
+           <widget class="QLabel" name="label_for_option_starting_sword">
+            <property name="text">
+             <string>Starting Sword</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_starting_sword"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_start_pouch">
+          <property name="text">
+           <string>Start with Adventure Pouch</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_hero_mode">
+          <property name="text">
+           <string>Hero Mode</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_17">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="box_convenience_tweaks">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>191</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Convenience Tweaks</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_19">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>176</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="vlay_convenience_tweaks">
+        <item>
+         <widget class="QCheckBox" name="option_fill_dowsing_on_white_sword">
+          <property name="text">
+           <string>Fill Dowsing on White Sword</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="vspace_convenience_tweaks">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="box_vanilla_tweaks">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>0</y>
+        <width>191</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Vanilla Tweaks</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_18">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>181</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="vlay_vanilla_tweaks">
+        <item>
+         <widget class="QCheckBox" name="option_fix_bit_crashes">
+          <property name="text">
+           <string>Fix BiT crashes</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="vspace_vanilla_tweaks">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="box_item_pool">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>0</y>
+        <width>191</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Item Pool</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_20">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>171</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="vlay_item_pool">
+        <item>
+         <layout class="QVBoxLayout" name="vlay_rupoor_mode">
+          <item>
+           <widget class="QCheckBox" name="option_gondo_upgrades">
+            <property name="text">
+             <string>Place Scrap Shop Upgrades</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_for_option_rupoor_mode">
+            <property name="text">
+             <string>Rupoor Mode</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_rupoor_mode"/>
+          </item>
+          <item>
+           <spacer name="vspace_item_pool">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1728,7 +1578,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>171</width>
+         <width>174</width>
          <height>201</height>
         </rect>
        </property>
@@ -1751,6 +1601,34 @@
          <widget class="QCheckBox" name="option_impa_sot_hint">
           <property name="text">
            <string>Impa Stone of Trials Hint</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_42">
+          <item>
+           <widget class="QLabel" name="label_for_option_chest_dowsing">
+            <property name="text">
+             <string>Chest Dowsing</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="option_chest_dowsing">
+            <property name="currentText">
+             <string/>
+            </property>
+            <property name="currentIndex">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_dungeon_dowsing">
+          <property name="text">
+           <string>Allow Dowsing in Dungeons</string>
           </property>
          </widget>
         </item>
@@ -2036,6 +1914,324 @@
         </layout>
        </item>
       </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Progress Locations</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>1001</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>What areas of the world should progress items appear?</string>
+      </property>
+      <widget class="QWidget" name="horizontalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>981</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QCheckBox" name="progression_skyloft">
+          <property name="text">
+           <string>Skyloft</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="progression_sky">
+          <property name="text">
+           <string>The Sky</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="progression_thunderhead">
+          <property name="text">
+           <string>Thunderhead</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="progression_faron">
+          <property name="text">
+           <string>Faron</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="progression_eldin">
+          <property name="text">
+           <string>Eldin</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="progression_lanayru">
+          <property name="text">
+           <string>Lanayru</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>1001</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Where should progress items appear?</string>
+      </property>
+      <widget class="QWidget" name="gridLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>981</width>
+         <height>164</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="2" column="4">
+         <widget class="QCheckBox" name="progression_combat">
+          <property name="text">
+           <string>Combat Rewards</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="4">
+         <widget class="QCheckBox" name="progression_crystal_quest">
+          <property name="text">
+           <string>Crystal Quests</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QCheckBox" name="progression_freestanding">
+          <property name="text">
+           <string>Freestanding Items</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="progression_dungeon">
+          <property name="text">
+           <string>Dungeons</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QCheckBox" name="progression_digging">
+          <property name="text">
+           <string>Digging Spots</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QCheckBox" name="progression_bombable">
+          <property name="text">
+           <string>Bombable Walls</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QCheckBox" name="progression_short">
+          <property name="text">
+           <string>Short Quests</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QCheckBox" name="progression_mini_dungeon">
+          <property name="text">
+           <string>Mini Dungeons</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="5">
+         <widget class="QCheckBox" name="progression_expensive">
+          <property name="text">
+           <string>Expensive Purchases</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="4">
+         <widget class="QCheckBox" name="progression_medium">
+          <property name="text">
+           <string>Medium Cost Purchases</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <widget class="QCheckBox" name="progression_beedle">
+          <property name="text">
+           <string>Beedle's Shop</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QCheckBox" name="progression_silent_realm">
+          <property name="text">
+           <string>Silent Realms</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="4">
+         <widget class="QCheckBox" name="progression_crystal">
+          <property name="text">
+           <string>Loose Crystals</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QCheckBox" name="progression_long">
+          <property name="text">
+           <string>Long Quests</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QCheckBox" name="progression_spiral_charge">
+          <property name="text">
+           <string>Spiral Charge Chests</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="3">
+         <widget class="QCheckBox" name="progression_cheap">
+          <property name="text">
+           <string>Cheap Purchases</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="QCheckBox" name="progression_fetch">
+          <property name="text">
+           <string>Fetch Quests</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="5">
+         <widget class="QCheckBox" name="progression_miscellaneous">
+          <property name="text">
+           <string>Miscellaneous</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QCheckBox" name="progression_free_gift">
+          <property name="text">
+           <string>Free Gifts</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="5">
+         <widget class="QCheckBox" name="progression_scrapper">
+          <property name="text">
+           <string>Scrapper Quests</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="5">
+         <widget class="QCheckBox" name="progression_song">
+          <property name="text">
+           <string>Songs</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>270</y>
+        <width>1001</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Goddess Cube Options</string>
+      </property>
+      <widget class="QWidget" name="gridLayoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>981</width>
+         <height>83</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="progression_eldin_goddess">
+          <property name="text">
+           <string>Eldin Volcano</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="progression_goddess">
+          <property name="text">
+           <string>Enabled</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="progression_faron_goddess">
+          <property name="text">
+           <string>Faron Woods</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QCheckBox" name="progression_lanayru_goddess">
+          <property name="text">
+           <string>Lanayru Desert</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QCheckBox" name="progression_summit_goddess">
+          <property name="text">
+           <string>Volcano Summit</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QCheckBox" name="progression_floria_goddess">
+          <property name="text">
+           <string>Lake Floria</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QCheckBox" name="progression_sand_sea_goddess">
+          <property name="text">
+           <string>Sand Sea</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </widget>
    </widget>

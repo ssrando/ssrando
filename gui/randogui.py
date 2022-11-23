@@ -7,7 +7,7 @@ import yaml
 import json
 from PySide6 import QtWidgets
 from PySide6.QtCore import Qt, QTimer, QEvent, QStringListModel
-from PySide6.QtGui import QFontDatabase
+from PySide6.QtGui import QFontDatabase, QPalette, QColor
 from PySide6.QtWidgets import (
     QMainWindow,
     QAbstractButton,
@@ -21,6 +21,8 @@ from PySide6.QtWidgets import (
     QErrorMessage,
     QInputDialog,
     QLineEdit,
+    QApplication,
+    QStyleFactory,
 )
 from gui.sort_model import LocationsModel
 
@@ -40,7 +42,6 @@ import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 NEW_PRESET = "[New Preset]"
-
 
 class RandoGUI(QMainWindow):
     def __init__(self, areas: Areas, options: Options):
@@ -78,6 +79,7 @@ class RandoGUI(QMainWindow):
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
+            print(option_key)
             if option["name"] != "Banned Types" and option["name"] != "Seed":
                 ui_name = option.get("ui", None)
                 self.option_map[ui_name] = option
@@ -801,7 +803,34 @@ class RandoGUI(QMainWindow):
 
 
 def run_main_gui(areas: Areas, options: Options):
-    app = QtWidgets.QApplication([])
+    app = QApplication([])
+
+    print(QStyleFactory.keys())
+
+    app.setStyle(QStyleFactory.create("fusion"))
+    darkPalette = QPalette()
+    darkColor = QColor(45,45,45)
+    disabledColor = QColor(127,127,127)
+    darkPalette.setColor(QPalette.Window, darkColor)
+    darkPalette.setColor(QPalette.WindowText, Qt.white)
+    darkPalette.setColor(QPalette.Base, QColor(18,18,18))
+    darkPalette.setColor(QPalette.AlternateBase, darkColor)
+    darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
+    darkPalette.setColor(QPalette.ToolTipText, Qt.white)
+    darkPalette.setColor(QPalette.Text, Qt.white)
+    darkPalette.setColor(QPalette.Disabled, QPalette.Text, disabledColor)
+    darkPalette.setColor(QPalette.Button, darkColor)
+    darkPalette.setColor(QPalette.ButtonText, Qt.white)
+    darkPalette.setColor(QPalette.Disabled, QPalette.ButtonText, disabledColor)
+    darkPalette.setColor(QPalette.BrightText, Qt.red)
+    darkPalette.setColor(QPalette.Link, QColor(42, 130, 218))
+
+    darkPalette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+    darkPalette.setColor(QPalette.HighlightedText, Qt.black)
+    darkPalette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabledColor)
+
+    # app.setPalette(darkPalette)
+    # app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }")
 
     widget = RandoGUI(areas, options)
     widget.show()
