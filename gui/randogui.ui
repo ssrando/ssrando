@@ -67,7 +67,7 @@
      <number>-6</number>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -571,7 +571,7 @@
          <x>10</x>
          <y>20</y>
          <width>181</width>
-         <height>221</height>
+         <height>236</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1013,7 +1013,7 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_40">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_41">
+         <layout class="QVBoxLayout" name="vlay_batreaux">
           <item>
            <widget class="QLabel" name="label_for_option_max_batreaux_reward">
             <property name="text">
@@ -1027,35 +1027,35 @@
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="progression_peatrice">
+         <widget class="QCheckBox" name="option_peatrice">
           <property name="text">
            <string>Peatrice</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="option_cubes">
           <property name="text">
            <string>Goddess Cubes</string>
           </property>
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_44">
+         <layout class="QVBoxLayout" name="vlay_minigames">
           <item>
-           <widget class="QLabel" name="label_8">
+           <widget class="QLabel" name="label_for_option_minigames">
             <property name="text">
              <string>Minigames</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox"/>
+           <widget class="QComboBox" name="option_minigames"/>
           </item>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_43">
+         <layout class="QVBoxLayout" name="vlay_beedle">
           <item>
            <widget class="QLabel" name="label_10">
             <property name="text">
@@ -1069,7 +1069,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_42">
+         <layout class="QVBoxLayout" name="vlay_rupeesanity">
           <item>
            <widget class="QLabel" name="label_for_option_rupeesanity">
             <property name="text">
@@ -1083,14 +1083,14 @@
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_4">
+         <widget class="QCheckBox" name="option_soth">
           <property name="text">
            <string>Song of the Hero Quest</string>
           </property>
          </widget>
         </item>
         <item>
-         <spacer name="verticalSpacer_18">
+         <spacer name="vspace_shuffles">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>

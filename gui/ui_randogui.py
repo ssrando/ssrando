@@ -345,7 +345,7 @@ class Ui_MainWindow(object):
         self.groupBox_7.setGeometry(QRect(820, 0, 191, 251))
         self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 181, 221))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 181, 236))
         self.verticalLayout_10 = QVBoxLayout(self.verticalLayoutWidget_7)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -621,84 +621,84 @@ class Ui_MainWindow(object):
         self.verticalLayout_40 = QVBoxLayout(self.verticalLayoutWidget_17)
         self.verticalLayout_40.setObjectName(u"verticalLayout_40")
         self.verticalLayout_40.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_41 = QVBoxLayout()
-        self.verticalLayout_41.setObjectName(u"verticalLayout_41")
+        self.vlay_batreaux = QVBoxLayout()
+        self.vlay_batreaux.setObjectName(u"vlay_batreaux")
         self.label_for_option_max_batreaux_reward = QLabel(self.verticalLayoutWidget_17)
         self.label_for_option_max_batreaux_reward.setObjectName(u"label_for_option_max_batreaux_reward")
 
-        self.verticalLayout_41.addWidget(self.label_for_option_max_batreaux_reward)
+        self.vlay_batreaux.addWidget(self.label_for_option_max_batreaux_reward)
 
         self.option_max_batreaux_reward = QComboBox(self.verticalLayoutWidget_17)
         self.option_max_batreaux_reward.setObjectName(u"option_max_batreaux_reward")
 
-        self.verticalLayout_41.addWidget(self.option_max_batreaux_reward)
+        self.vlay_batreaux.addWidget(self.option_max_batreaux_reward)
 
 
-        self.verticalLayout_40.addLayout(self.verticalLayout_41)
+        self.verticalLayout_40.addLayout(self.vlay_batreaux)
 
-        self.progression_peatrice = QCheckBox(self.verticalLayoutWidget_17)
-        self.progression_peatrice.setObjectName(u"progression_peatrice")
+        self.option_peatrice = QCheckBox(self.verticalLayoutWidget_17)
+        self.option_peatrice.setObjectName(u"option_peatrice")
 
-        self.verticalLayout_40.addWidget(self.progression_peatrice)
+        self.verticalLayout_40.addWidget(self.option_peatrice)
 
-        self.checkBox = QCheckBox(self.verticalLayoutWidget_17)
-        self.checkBox.setObjectName(u"checkBox")
+        self.option_cubes = QCheckBox(self.verticalLayoutWidget_17)
+        self.option_cubes.setObjectName(u"option_cubes")
 
-        self.verticalLayout_40.addWidget(self.checkBox)
+        self.verticalLayout_40.addWidget(self.option_cubes)
 
-        self.verticalLayout_44 = QVBoxLayout()
-        self.verticalLayout_44.setObjectName(u"verticalLayout_44")
-        self.label_8 = QLabel(self.verticalLayoutWidget_17)
-        self.label_8.setObjectName(u"label_8")
+        self.vlay_minigames = QVBoxLayout()
+        self.vlay_minigames.setObjectName(u"vlay_minigames")
+        self.label_for_option_minigames = QLabel(self.verticalLayoutWidget_17)
+        self.label_for_option_minigames.setObjectName(u"label_for_option_minigames")
 
-        self.verticalLayout_44.addWidget(self.label_8)
+        self.vlay_minigames.addWidget(self.label_for_option_minigames)
 
-        self.comboBox = QComboBox(self.verticalLayoutWidget_17)
-        self.comboBox.setObjectName(u"comboBox")
+        self.option_minigames = QComboBox(self.verticalLayoutWidget_17)
+        self.option_minigames.setObjectName(u"option_minigames")
 
-        self.verticalLayout_44.addWidget(self.comboBox)
+        self.vlay_minigames.addWidget(self.option_minigames)
 
 
-        self.verticalLayout_40.addLayout(self.verticalLayout_44)
+        self.verticalLayout_40.addLayout(self.vlay_minigames)
 
-        self.verticalLayout_43 = QVBoxLayout()
-        self.verticalLayout_43.setObjectName(u"verticalLayout_43")
+        self.vlay_beedle = QVBoxLayout()
+        self.vlay_beedle.setObjectName(u"vlay_beedle")
         self.label_10 = QLabel(self.verticalLayoutWidget_17)
         self.label_10.setObjectName(u"label_10")
 
-        self.verticalLayout_43.addWidget(self.label_10)
+        self.vlay_beedle.addWidget(self.label_10)
 
         self.option_shopsanity = QComboBox(self.verticalLayoutWidget_17)
         self.option_shopsanity.setObjectName(u"option_shopsanity")
 
-        self.verticalLayout_43.addWidget(self.option_shopsanity)
+        self.vlay_beedle.addWidget(self.option_shopsanity)
 
 
-        self.verticalLayout_40.addLayout(self.verticalLayout_43)
+        self.verticalLayout_40.addLayout(self.vlay_beedle)
 
-        self.verticalLayout_42 = QVBoxLayout()
-        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
+        self.vlay_rupeesanity = QVBoxLayout()
+        self.vlay_rupeesanity.setObjectName(u"vlay_rupeesanity")
         self.label_for_option_rupeesanity = QLabel(self.verticalLayoutWidget_17)
         self.label_for_option_rupeesanity.setObjectName(u"label_for_option_rupeesanity")
 
-        self.verticalLayout_42.addWidget(self.label_for_option_rupeesanity)
+        self.vlay_rupeesanity.addWidget(self.label_for_option_rupeesanity)
 
         self.option_rupeesanity = QComboBox(self.verticalLayoutWidget_17)
         self.option_rupeesanity.setObjectName(u"option_rupeesanity")
 
-        self.verticalLayout_42.addWidget(self.option_rupeesanity)
+        self.vlay_rupeesanity.addWidget(self.option_rupeesanity)
 
 
-        self.verticalLayout_40.addLayout(self.verticalLayout_42)
+        self.verticalLayout_40.addLayout(self.vlay_rupeesanity)
 
-        self.checkBox_4 = QCheckBox(self.verticalLayoutWidget_17)
-        self.checkBox_4.setObjectName(u"checkBox_4")
+        self.option_soth = QCheckBox(self.verticalLayoutWidget_17)
+        self.option_soth.setObjectName(u"option_soth")
 
-        self.verticalLayout_40.addWidget(self.checkBox_4)
+        self.verticalLayout_40.addWidget(self.option_soth)
 
-        self.verticalSpacer_18 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.vspace_shuffles = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_40.addItem(self.verticalSpacer_18)
+        self.verticalLayout_40.addItem(self.vspace_shuffles)
 
         self.groupBox_19 = QGroupBox(self.tab_4)
         self.groupBox_19.setObjectName(u"groupBox_19")
@@ -1007,20 +1007,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_26.addWidget(self.option_impa_sot_hint)
 
-        self.verticalLayout_421 = QVBoxLayout()
-        self.verticalLayout_421.setObjectName(u"verticalLayout_421")
+        self.verticalLayout_42 = QVBoxLayout()
+        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
         self.label_for_option_chest_dowsing = QLabel(self.verticalLayoutWidget_6)
         self.label_for_option_chest_dowsing.setObjectName(u"label_for_option_chest_dowsing")
 
-        self.verticalLayout_421.addWidget(self.label_for_option_chest_dowsing)
+        self.verticalLayout_42.addWidget(self.label_for_option_chest_dowsing)
 
         self.option_chest_dowsing = QComboBox(self.verticalLayoutWidget_6)
         self.option_chest_dowsing.setObjectName(u"option_chest_dowsing")
 
-        self.verticalLayout_421.addWidget(self.option_chest_dowsing)
+        self.verticalLayout_42.addWidget(self.option_chest_dowsing)
 
 
-        self.verticalLayout_26.addLayout(self.verticalLayout_421)
+        self.verticalLayout_26.addLayout(self.verticalLayout_42)
 
         self.option_dungeon_dowsing = QCheckBox(self.verticalLayoutWidget_6)
         self.option_dungeon_dowsing.setObjectName(u"option_dungeon_dowsing")
@@ -1470,7 +1470,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1545,12 +1545,12 @@ class Ui_MainWindow(object):
         self.option_triforce_shuffle.setCurrentText("")
         self.groupBox_18.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
         self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Batreaux", None))
-        self.progression_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"Goddess Cubes", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
+        self.option_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
+        self.option_cubes.setText(QCoreApplication.translate("MainWindow", u"Goddess Cubes", None))
+        self.label_for_option_minigames.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
         self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
-        self.checkBox_4.setText(QCoreApplication.translate("MainWindow", u"Song of the Hero Quest", None))
+        self.option_soth.setText(QCoreApplication.translate("MainWindow", u"Song of the Hero Quest", None))
         self.groupBox_19.setTitle(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Shuffle Trial Objects", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"Randomization Settings", None))

@@ -83,55 +83,40 @@
   default: false
   help: If activated, only the required dungeons will contain progression items
   ui: option_empty_unrequired_dungeons
-- name: Banned Types
-  command: banned-types
-  type: multichoice
-  default: []
+- name: Peatrice
+  command: peatrice
+  type: boolean
+  default: true
+  help: Determines if the location "Peatrice/Peater's Crystals" can contain a progression item. When disabled, the check will still be randomized
+    but it will never contain an item required to beat the game
+  ui: option_peatrice
+- name: Goddess Cubes
+  command: goddess-cubes
+  type: boolean
+  default: true
+  help: Determines if the 27 Goddess Chests scattered throughout the Sky can contain progression items. When disabled,
+    they will still be shuffled but will never contain items required to beat the game
+  ui: option_cubes
+- name: minigames
+  command: minigames
+  type: singlechoice
+  bits: 2
   choices:
-    - skyloft
-    - sky
-    - thunderhead
-    - faron
-    - eldin
-    - lanayru
-    - dungeon
-    - mini dungeon
-    - free gift
-    - freestanding
-    - miscellaneous
-    - silent realm
-    - digging
-    - bombable
-    - combat
-    - song
-    - spiral charge
-    - minigame
-    - crystal
-    - short
-    - long
-    - fetch
-    - crystal quest
-    - scrapper
-    - peatrice
-    - goddess
-    - beedle
-    - cheap
-    - medium
-    - expensive
-    - flooded faron
-    - faron goddess
-    - eldin goddess
-    - lanayru goddess
-    - floria goddess
-    - summit goddess
-    - sand sea goddess
-  help: 'Choose subtypes that can''t contain progression items, as a comma seperated
-    list, available types are: skyloft, sky, thunderhead, faron, eldin, lanayru, dungeon,
-    mini dungeon, free gift, freestanding, miscellaneous, silent realm, digging, bombable,
-    combat, song, spiral charge, minigame, crystal, short, long, fetch, crystal quest,
-    scrapper, peatrice, flooded faron, goddess, faron goddess, eldin goddess, lanayru goddess, floria
-    goddess, summit goddess, sand sea goddess'
-  ui: option_banned_types
+    - Disabled
+    - Enabled
+  default: Enabled
+  help: Determines if the various minigames across the game can contain progression items. This includes Pumpkin Archery with Fledge, playing the
+    harp in the Lumpy Pumpkin, Fun Fun Island, Bug Island, and riding the coaster in Lanayru Sand Sea. It DOES NOT include bamboo cutting or Thrill
+    Digger as those are not randomized. When disabled, they will still be shuffled but will never contain items required to beat the game
+  ui: option_minigames
+- name: Song of the Hero Quest
+  command: soth
+  type: boolean
+  default: true
+  help: Determines if the Song of the Hero quest locations can contain progression. This includes the Tadtones quest in Flooded Faron Woods and
+    returning the Life Tree Fruit to the Thunder Dragon in Lanayru Gorge. When disabled, they will still be shuffled but will never contain
+    items required to beat the game
+  ui: option_soth
 - name: Triforce Required
   command: triforce-required
   type: boolean
