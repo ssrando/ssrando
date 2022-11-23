@@ -176,7 +176,7 @@ class Rando:
         if self.options["start-with-pouch"]:
             starting_items.add(number(PROGRESSIVE_POUCH, 0))
 
-        self.placement = self.placement.add_starting_items(starting_items)
+        self.placement.add_starting_items(starting_items)
 
     def ban_the_banned(self):
 
@@ -278,7 +278,7 @@ class Rando:
                 unplaced = may_be_placed_list
             else:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}")
-            self.placement = self.placement.add_unplaced_items(set(unplaced))
+            self.placement.add_unplaced_items(set(unplaced))
 
         must_be_placed_items = (
             PROGRESS_ITEMS
@@ -381,10 +381,10 @@ class Rando:
         # self.placement |= HARDCODED_PLACEMENT(self.norm)
 
         if self.options["open-et"]:
-            self.placement = self.placement.add_unplaced_items(set(KEY_PIECES))
+            self.placement.add_unplaced_items(set(KEY_PIECES))
 
         if not place_gondo_progressives:
-            self.placement = self.placement.add_unplaced_items(GONDO_ITEMS)
+            self.placement.add_unplaced_items(GONDO_ITEMS)
 
         if shop_mode == "Vanilla":
             self.placement |= VANILLA_BEEDLE_PLACEMENT(self.norm, self.areas.checks)
@@ -418,7 +418,7 @@ class Rando:
 
         # remove maps from the dungeon pool if maps are shuffled
         if map_mode == "Removed":
-            self.placement = self.placement.add_unplaced_items(set(ALL_MAPS))
+            self.placement.add_unplaced_items(set(ALL_MAPS))
         elif map_mode == "Vanilla":
             self.placement |= VANILLA_MAPS_PLACEMENT(self.norm, self.areas.checks)
         elif map_mode == "Own Dungeon - Restricted":

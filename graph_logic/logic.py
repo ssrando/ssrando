@@ -111,36 +111,16 @@ class Placement:
             if i in self.items and self.items[i] != START_ITEM:
                 raise ValueError
 
-        return Placement(
-            self.item_placement_limit,
-            self.map_transitions,
-            self.reverse_map_transitions,
-            self.locations,
-            self.items | {k: START_ITEM for k in items},
-            self.stones,
-            self.stone_hints,
-            self.hints,
-            self.starting_items | items,
-            self.unplaced_items,
-        )
+        self.items |= {k: START_ITEM for k in items}
+        self.starting_items |= items
 
     def add_unplaced_items(self, items: Set[EIN]):
         for i in items:
             if i in self.items and self.items[i] != UNPLACED_ITEM:
                 raise ValueError
 
-        return Placement(
-            self.item_placement_limit,
-            self.map_transitions,
-            self.reverse_map_transitions,
-            self.locations,
-            self.items | {k: UNPLACED_ITEM for k in items},
-            self.stones,
-            self.stone_hints,
-            self.hints,
-            self.starting_items,
-            self.unplaced_items | items,
-        )
+        self.items |= {k: UNPLACED_ITEM for k in items}
+        self.unplaced_items |= items
 
 
 @dataclass
