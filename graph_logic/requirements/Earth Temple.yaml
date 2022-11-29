@@ -32,11 +32,12 @@ Main:
       Raise Bridge: Left Peg & Past Lava Section - Right Peg
 
     exits:
+      First Room: Access to Boulder
+      East Room: Access to Boulder
+      West Room: Rock to West Room
       Past Lava Section:
         Access to Boulder & (
         Wall to Lava Section & Lower Lava Section Portcullis | Raise Bridge)
-      East Room: Access to Boulder
-      West Room: Rock to West Room
       Room with Slopes: Raise Bridge
 
     Past Lava Section:

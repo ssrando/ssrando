@@ -7,15 +7,29 @@ Main:
       Hit Water Plant: Distance Activator | Bomb Bag
     exits:
       Main Exit: Nothing
+      Between Water Plants: Hit Water Plant
 
-    Past Water Plant:
-      entrance: Hit Water Plant
+    Between Water Plants:
       locations:
         First Room - Hit Water Plant: Distance Activator | Bomb Bag
-        Defeat Last Bokoblin: Can Defeat Bokoblins
-        Chest: Defeat Last Bokoblin
+
       exits:
         First Room: Hit Water Plant
+        Bokoblins Area: Hit Water Plant
+
+    Bokoblins Area:
+      locations:
+        Open Gate to Chest: Can Defeat Bokoblins
+        Chest: Open Gate to Chest
+      exits:
+        After Water Plants: Open Gate to Chest
+
+    After Water Plants:
+      locations:
+        First Room - Hit Water Plant: Distance Activator | Bomb Bag
+      exits:
+        Between Water Plants: Hit Water Plant
+        Bokoblins Area: Hit Water Plant
         Exit to Second Room: Fire Sanctuary Small Key
 
   Second Room:
@@ -191,6 +205,7 @@ Main:
       Unlock Statue: Nothing
     exits:
       Statue: Unlock Statue
+      West of Boss Door: Nothing
       Boss Door: Fire Sanctuary Boss Key
       Lizalfos Fight Room: Nothing
       Past Bars: Past Bars - Unlock Way to Front
