@@ -741,16 +741,20 @@ class Logic:
             locations_to_filter,
             self.item_locations,
             self.rando.banned_types,
+            self.rando.options["excluded-locations"],
         )
 
     @staticmethod
     def filter_locations_for_progression_static(
-        locations_to_filter, item_locations, banned_types
+        locations_to_filter, item_locations, banned_types, excluded_locations=[]
     ):
         filtered_locations = []
         for location_name in locations_to_filter:
             types: set = item_locations[location_name]["type"]
-            if types.isdisjoint(banned_types):
+            if (
+                types.isdisjoint(banned_types)
+                and location_name not in excluded_locations
+            ):
                 filtered_locations.append(location_name)
 
         return filtered_locations

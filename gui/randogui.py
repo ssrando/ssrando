@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (
     QInputDialog,
     QLineEdit,
 )
+from gui.sort_model import LocationsModel
 
 from logic.constants import BANNABLE_TYPES
 from options import OPTIONS, Options
@@ -117,6 +118,24 @@ class RandoGUI(QMainWindow):
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
 
+        # setup exlcuded locations
+        self.excluded_locations_model = QStringListModel()
+        self.excluded_locations_proxy = LocationsModel()
+        self.excluded_locations_proxy.setSourceModel(self.excluded_locations_model)
+        self.excluded_locations_model.setStringList(
+            OPTIONS["excluded-locations"]["default"]
+        )
+        self.included_locations_model = QStringListModel()
+        self.included_locations_proxy = LocationsModel()
+        self.included_locations_proxy.setSourceModel(self.included_locations_model)
+        self.included_locations_model.setStringList(
+            OPTIONS["excluded-locations"]["choices"]
+        )
+        self.ui.excluded_locations.setModel(self.excluded_locations_model)
+        self.ui.included_locations.setModel(self.included_locations_model)
+        self.ui.exclude_location.clicked.connect(self.exclude_location)
+        self.ui.include_location.clicked.connect(self.include_location)
+
         # setup presets
         self.default_presets = {}
         self.user_presets = {}
@@ -183,15 +202,16 @@ class RandoGUI(QMainWindow):
             "fetch": "Enables progression items to appear as rewards for returning items to NPCs ",
             "crystal_quest": "Enables progression items to appear as rewards for completing Gratitude Crystal quests",
             "scrapper": "Enables progression items to appear as rewards for Scrapper Quests",
-            "peatrice": "Enables a progression item to appear as the reward for completing the Peatrice side quest",
+            "peatrice": "Enables a progression item to appear as the reward for completing the Peatrice side quest"
+            " (if Long Quests is enabled)",
             "beedle": "Enables progression items to be sold in Beedle's shop",
             "cheap": "Enables progression items to be sold for 300 rupees or less. Applies to all shops where "
             "progression items can appear.",
-            "medium": "Enables progression items to be sold for between 300 and 1000 rupees. Applies to all "
+            "medium": "Enables progression items to be sold for between 301 and 1000 rupees. Applies to all "
             "shops where progression items can appear",
-            "expensive": "Enables progression items to be sold for more than 1000 rupees. Appleis to all shops"
+            "expensive": "Enables progression items to be sold for more than 1000 rupees. Applies to all shops"
             "where progression items can appear",
-            "flooded_faron": "Enables progression items to appear in Flooded Faron",
+            "flooded_faron": "Enables progression items to appear as the Song of the Hero Quest in Flooded Faron Woods",
             "goddess": "Enables progression items to appear as items in Goddess Chests",
             "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
             "Faron Woods and Deep Woods",
@@ -220,10 +240,6 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, "label_for_option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_got_dungeon_requirement").setVisible(False)
         self.enable_trick_interface()
-        getattr(self.ui, "enable_location").setVisible(False)
-        getattr(self.ui, "disable_location").setVisible(False)
-        getattr(self.ui, "enabled_locations").setVisible(False)
-        getattr(self.ui, "disabled_locations").setVisible(False)
         getattr(self.ui, "randomize_item").setVisible(False)
         getattr(self.ui, "start_with_item").setVisible(False)
         getattr(self.ui, "randomized_items").setVisible(False)
@@ -231,7 +247,6 @@ class RandoGUI(QMainWindow):
 
         # hide supporting elements
         getattr(self.ui, "tabWidget").removeTab(5)
-        getattr(self.ui, "label").setVisible(False)
         getattr(self.ui, "option_plando").setVisible(False)
         getattr(self.ui, "plando_file").setVisible(False)
         getattr(self.ui, "plando_file_browse").setVisible(False)
@@ -430,8 +445,24 @@ class RandoGUI(QMainWindow):
         else:
             self.enabled_tricks_model.setStringList([])
             self.disabled_tricks_model.setStringList([])
+        self.enabled_tricks_model.sort(0)
+        self.disabled_tricks_model.sort(0)
         self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
+
+        self.excluded_locations_model.setStringList(
+            current_settings["excluded-locations"]
+        )
+        self.included_locations_model.setStringList(
+            [
+                choice
+                for choice in OPTIONS["excluded-locations"]["choices"]
+                if choice not in current_settings["excluded-locations"]
+            ]
+        )
+        self.ui.excluded_locations.setModel(self.excluded_locations_model)
+        self.ui.included_locations.setModel(self.included_locations_model)
+
         self.ui.permalink.setText(current_settings.get_permalink())
 
     def save_settings(self):
@@ -480,6 +511,10 @@ class RandoGUI(QMainWindow):
         else:  # this should only be no logic
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
+
+        self.options.set_option(
+            "excluded-locations", self.get_option_value("excluded_locations")
+        )
 
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
@@ -566,6 +601,14 @@ class RandoGUI(QMainWindow):
     def disable_trick(self):
         self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
         self.ui.disabled_tricks.model().sort(0)
+        self.update_settings()
+
+    def exclude_location(self):
+        self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
+        self.update_settings()
+
+    def include_location(self):
+        self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
         self.update_settings()
 
     def load_preset(self):

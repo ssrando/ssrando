@@ -59,6 +59,8 @@ global:
     - 45 # Tear of Nayru
     - 46 # Sacred Tear
     - 47 # Light Fruit
+    - 57 # 5 Deku Seeds
+    - 60 # 10 Deku Seeds
   startsceneflags: # currently only for skyloft
     Skyloft:
       - 95 # Fi Text for Ruby Tablet
@@ -422,6 +424,12 @@ D003_2: # Sky Keep Power Room
     room: 0
     objtype: OBJ
 D003_3: # Sky Keep Wisdom Room
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: -1
+        night: 0
+        layer: 1 # always use layer 1, 
   - name: Fi text
     type: objdelete
     id: 0xFC1B
@@ -511,6 +519,13 @@ D003_8: # this change is purely to make sure D003_8 gets patched, so a perviousl
       angley: 0
       anglez: 0xFFFF
       name: ScChang
+  - name: layer 2 in Wisdom room
+    type: objpatch
+    index: 1
+    room: 0
+    objtype: SCEN
+    object:
+      layer: 2 # force layer 2 so the barbed wire is gone
 F000: # Skyloft
   - name: Trial
     type: oarcadd
