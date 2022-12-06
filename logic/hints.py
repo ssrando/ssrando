@@ -101,8 +101,8 @@ class Hints:
         trial_checks = {
             "Song of the Hero - Trial Hint": SKYLOFT_TRIAL_GATE,
             "Farore's Courage - Trial Hint": FARON_TRIAL_GATE,
-            "Nayru's Wisdom - Trial Hint": ELDIN_TRIAL_GATE,
-            "Din's Power - Trial Hint": LANAYRU_TRIAL_GATE,
+            "Nayru's Wisdom - Trial Hint": LANAYRU_TRIAL_GATE,
+            "Din's Power - Trial Hint": ELDIN_TRIAL_GATE,
         }
 
         hint_mode = self.logic.rando.options["song-hints"]
