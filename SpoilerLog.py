@@ -104,6 +104,16 @@ def write(file: TextIO, options: Options, logic, hints, sots_locations, hash):
 
     file.write("\n\n\n")
 
+    # Write down exits.
+    file.write("Exits:\n")
+    for (
+        entrance_name,
+        exit_name,
+    ) in sorted(logic.exits_connections.items()):
+        file.write("  %-56s %s\n" % (entrance_name + ":", exit_name))
+
+    file.write("\n\n")
+
     # Write dungeon entrances.
     file.write("Entrances:\n")
     for (

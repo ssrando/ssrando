@@ -14,8 +14,8 @@ import struct
 import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.msb import process_control_sequences
-from sslib.utils import write_bytes_create_dirs, encodeBytes
-from sslib.fs_helpers import write_str, write_u16, write_float
+from sslib.utils import write_bytes_create_dirs, encodeBytes, toBytes
+from sslib.fs_helpers import write_str, write_u16, write_float, write_u8
 from sslib.dol import DOL
 from sslib.rel import REL
 from paths import RANDO_ROOT_PATH
@@ -32,6 +32,7 @@ from util.textbox_utils import (
     break_and_make_multiple_textboxes,
     make_mutliple_textboxes,
 )
+from util.file_accessor import get_entrance_table
 
 TOTAL_STAGE_FILES = 369
 TOTAL_EVENT_FILES = 6
@@ -1114,6 +1115,7 @@ class GamePatcher:
     def do_all_gamepatches(self):
         self.load_base_patches()
         self.add_entrance_rando_patches()
+        self.add_hacky_entrance_rando_patches()
         self.add_trial_rando_patches()
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.shopsanity_patches()
@@ -1385,6 +1387,29 @@ class GamePatcher:
                     },
                 },
             )
+
+    def add_hacky_entrance_rando_patches(self):
+        entrance_table = get_entrance_table()
+        for exit_name, entrance_name in self.placement_file.exits_connections.items():
+            entrance = entrance_table.entrance_map[entrance_name]
+            exits = entrance_table.exit_map[exit_name]
+            for exit in exits:
+                self.add_patch_to_stage(
+                    exit["stage"],
+                    {
+                        "name": "h",
+                        "type": "objpatch",
+                        "index": exit["index"],
+                        "room": exit["room"],
+                        "objtype": "SCEN",
+                        "object": {
+                            "name": entrance["stage"],
+                            "layer": entrance["layer"],
+                            "room": entrance["room"],
+                            "entrance": entrance["entrance"],
+                        },
+                    },
+                )
 
     def add_trial_rando_patches(self):
         for trial_gate, trial in self.placement_file.trial_connections.items():
@@ -2374,8 +2399,20 @@ class GamePatcher:
             raise Exception(
                 f"not enough space to fit in all of the startflags, need {startflag_byte_count}, but only 512 bytes available"
             )
-        # print(f"total startflag byte count: {startflag_byte_count}")
+        print(f"total startflag byte count: {startflag_byte_count}")
         dol.write_data_bytes(0x804EE1B8, start_flags_write.getbuffer())
+
+        entrance_table = get_entrance_table()
+
+        # write startstage (used for ER) to some unused space
+        start_entrance = entrance_table.entrance_map[
+            self.placement_file.exits_connections["Start to Knight Academy"]
+        ]
+        dol.write_data_bytes(0x802DA0E0, toBytes(start_entrance["stage"], 8))
+        dol.write_data(write_u8, 0x802DA0E8, start_entrance["room"])
+        dol.write_data(write_u8, 0x802DA0E9, start_entrance["layer"])
+        dol.write_data(write_u8, 0x802DA0EA, start_entrance["entrance"])
+        dol.write_data(write_u8, 0x802DA0EB, 0)  # force day
         dol.save_changes()
         write_bytes_create_dirs(
             self.patcher.modified_extract_path / "DATA" / "sys" / "main.dol",

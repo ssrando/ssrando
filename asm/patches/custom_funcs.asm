@@ -304,6 +304,147 @@ li r3, 154 ; storyflag for SSH timeshift stone being active
 li r4, 0 ; storyflag will be unset
 b setStoryflagToValue
 
+.global do_entrance_fixes
+do_entrance_fixes:
+stwu r1, -16(r1)
+mflr r0
+stw r0, 20(r1)
+stw r31, 12(r1)
+stw r30, 8(r1)
+mr r31, r3 ; save value from hijacked function
+
+; fix stored speed (can be high from loftwing)
+lfs f0,-0x7c50(r2); 30.0
+lwz r3, RELOADER_PTR@sda21(r13)
+lfs f1, 0x290(r3)
+fcmpo cr0, f0, f1
+bge skip_speed_cap
+stfs f0, 0x290(r3)
+
+skip_speed_cap:
+lis r30, SPAWN_SLAVE@ha
+la r30, SPAWN_SLAVE@l(r30)
+lwz r4, 0(r30)
+lbz r5, 36(r30)
+; spawn ptr in r30, stage in r4, entrance in r5
+xoris r0, r4, 0x4630
+cmpwi r0, 0x3030 ; F000
+bne continue_lanayru
+cmpwi r5, 53 ; Skyloft from Sky Keep
+bne do_entrance_fixes_end
+li r4, 22 ; SK appears storyflag
+bl checkStoryflagIsSet
+cmpwi r3, 0
+bne do_entrance_fixes_end
+li r0, 52 ; exit next to statue
+stb r0, 36(r30)
+b do_entrance_fixes_end
+
+continue_lanayru:
+xoris r0, r4, 0x4633
+cmpwi r0, 0x3030 ; F300
+bne continue_turf
+lhz r0, 4(r30) ; 5+6th char of stagename
+cmplwi r0, 0xFF ; <= 0xFF means the 5th char is 0, so it's desert
+bgt continue_mines
+cmpwi r5, 2 ; desert from mines
+beq lanayru_timeshift_fix
+cmpwi r5, 5 ; desert from LMF
+bne do_entrance_fixes_end
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
+li r4, 7 ; desert
+li r5, 30 ; LMF rasing
+bl SceneflagManager__checkFlagGlobal
+cmpwi r3, 0
+bne do_entrance_fixes_end
+li r0, 12 ; entrance 12, a bit weird but works for now
+stb r0, 36(r30)
+b do_entrance_fixes_end
+
+continue_mines:
+cmplwi r0, 0x5f31 ; '_1', for mines
+bne do_entrance_fixes_end
+cmpwi r5, 1
+bne do_entrance_fixes_end
+lanayru_timeshift_fix:
+; use r30 as a counter for the loop
+li r30, 114
+lanayru_timeshift_fix_loop:
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
+li r4, 7 ; desert flagindex
+mr r5, r30
+addi r30, r30, 1
+bl SceneflagManager__unsetFlagGlobal
+cmpwi r30, 125
+bne lanayru_timeshift_fix_loop
+
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
+li r4, 7 ; desert flagindex
+li r5, 111
+bl SceneflagManager__unsetFlagGlobal
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
+li r4, 7 ; desert flagindex
+li r5, 108
+bl SceneflagManager__unsetFlagGlobal
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
+li r4, 7 ; desert flagindex
+li r5, 113
+bl SceneflagManager__setFlagGlobal
+b do_entrance_fixes_end
+
+continue_turf:
+xoris r0, r4, 0x4632
+cmpwi r0, 0x3130 ; F210
+bne do_entrance_fixes_end
+cmpwi r5, 0 ; entrance 0 from the top
+bne do_entrance_fixes_end
+lwz r3, RELOADER_PTR@sda21(r13)
+li r4, 0x13 ; Skydive anim
+sth r4, 0x29A(r3)
+
+do_entrance_fixes_end:
+mr r3, r31 ; restore r3
+lwz r30, 8(r1)
+lwz r31, 12(r1)
+lwz r0, 20(r1)
+mtlr r0
+addi r1, r1, 0x10
+lbz r0,-0x3ca3(r13) ; replaced instruction
+blr
+
+; use this functions to add new text event commands
+.global rando_text_command_handler
+rando_text_command_handler:
+; we start at 70
+stwu r1, -0x10(r1)
+mflr r5
+stw r5, 0x14(r1)
+; cmd in r0, eventflowmanager in r3, flowelement in r4
+cmpwi r0, 70
+beq send_to_start
+b rando_text_command_handler_end
+
+send_to_start:
+lwz r3, RELOADER_PTR@sda21(r13)
+lis r4, 0x802DA0E0@ha ; this is where the start entrance info is patched
+la r4, 0x802DA0E0@l(r4)
+lbz r5, 8(r4)
+lbz r6, 9(r4)
+lbz r7, 0xA(r4)
+lbz r8, 0xB(r4)
+li r9, 2
+li r10, 0
+li r0, 0xF
+stw r0, 0x8(r1)
+li r0, -1
+stw r0, 0xC(r1)
+bl Reloader__triggerEntrance
+
+rando_text_command_handler_end:
+lwz r0, 0x14(r1)
+addi r1, r1, 0x10
+mtlr r0
+blr
 .close
 
 

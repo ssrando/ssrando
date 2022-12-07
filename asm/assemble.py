@@ -166,7 +166,7 @@ def try_apply_local_relocation(bin_name, elf_relocation, elf_symbol):
     return False
 
 
-SDA_RE = re.compile(r"([a-z]+) (r[0-9]+), *([a-zA-Z0-9_]+)@sda21 *\(r13\).*")
+SDA_RE = re.compile(r"([a-z]+) (r?[0-9]+), *([a-zA-Z0-9_]+)@sda21 *\(r13\).*")
 SDA_13_BASE = 0x80579440
 SDA_13_MAX = SDA_13_BASE + 0x7FFF
 SDA_13_MIN = SDA_13_BASE - 0x8000

@@ -21,6 +21,7 @@ import logic.item_types
 from sslib.utils import encodeBytes
 from version import VERSION, VERSION_WITHOUT_COMMIT
 import SpoilerLog
+from util.file_accessor import get_entrance_table
 
 from typing import List, Callable
 
@@ -171,7 +172,17 @@ class Randomizer(BaseRandomizer):
             self.progress_callback("writing anti spoiler log...")
         else:
             self.progress_callback("writing spoiler log...")
+        entrance_table = get_entrance_table()
+        entrances = entrance_table.entrances.copy()
+        exits = entrance_table.exits.copy()
+        statue_exits = entrance_table.statue_exits.copy()
+        self.rng.shuffle(exits)
+        self.logic.exits_connections = dict(zip(exits, entrances))
+        self.rng.shuffle(entrances)
+        self.logic.exits_connections.update(dict(zip(statue_exits, entrances)))
+
         plcmt_file = self.get_placement_file()
+
         if self.options["out-placement-file"] and not self.no_logs:
             (self.log_file_path / f"placement_file_{self.seed}.json").write_text(
                 plcmt_file.to_json_str()
@@ -271,6 +282,8 @@ class Randomizer(BaseRandomizer):
         plcmt_file.version = VERSION
         plcmt_file.trial_object_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.music_rando_seed = self.rng.randint(1, MAX_SEED)
+
+        plcmt_file.exits_connections = self.logic.exits_connections
 
         plcmt_file.check_valid()
 

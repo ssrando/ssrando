@@ -1,0 +1,2346 @@
+- name: 'start entrance'
+  exit:
+    name: F001r
+    room: 1
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 1
+    index: 2
+- name: "F010r (Isle of Songs) -> F023 (Thunderhead)"
+  exit:
+    name: F023
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F010r
+    room: 0
+    index: 0
+- name: "F023 (Thunderhead) -> F010r (Isle of Songs)"
+  exit:
+    name: F010r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F023
+    room: 0
+    index: 2
+- name: "D200 (Earth Temple) -> F200 (Eldin Volcano)"
+  exit:
+    name: F200
+    room: 4
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D200
+    room: 1
+    index: 0
+- name: "F200 (Eldin Volcano) -> D200 (Earth Temple)"
+  exit:
+    name: D200
+    room: 1
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 4
+    index: 0
+- name: "F200 (Eldin Volcano) -> F202_3 (Boko Base Inner 1)"
+  exit:
+    name: F202_3
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 2
+    index: 3
+- name: "F202_3 (Boko Base Inner 1) -> F200 (Eldin Volcano)"
+  exit:
+    name: F200
+    room: 2
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F202_3
+    room: 0
+    index: 0
+- name: "F200 (Eldin Volcano) -> F202_4 (Boko Base Inner 2)"
+  exit:
+    name: F202_4
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 4
+    index: 3
+- name: "F202_4 (Boko Base Inner 2) -> F200 (Eldin Volcano)"
+  exit:
+    name: F200
+    room: 4
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F202_4
+    room: 0
+    index: 0
+- name: "F200 (Eldin Volcano) -> F201_1 (VS - Main)"
+  exit:
+    name: F201_1
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 5
+    index: 0
+- name: "F201_1 (VS - Main) -> F200 (Eldin Volcano)"
+  exit:
+    name: F200
+    room: 5
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_1
+    room: 0
+    index: 0
+- name: "F211 (Thrill Digger Cave ?) -> F200 (Eldin Volcano)"
+  exit:
+    name: F200
+    room: 4
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F211
+    room: 0
+    index: 0
+- name: "F200 (Eldin Volcano) -> F211 (Thrill Digger Cave ?)"
+  exit:
+    name: F211
+    room: 0
+    layer: 1
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F200
+    room: 4
+    index: 1
+- name: "F102_2 (Lake Floria) -> F102_2 (Floria - Dragon's Lair)"
+  exit:
+    name: F102_2
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102
+    room: 4
+    index: 0
+- name: "F102_2 (Floria - Dragon's Lair) -> F102_2 (Lake Floria)"
+  exit:
+    name: F102
+    room: 4
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102_2
+    room: 0
+    index: 0
+- name: "F301_2 (Pirate Stronghold Inside) -> F301_6 (Pirate Stronghold Outside)"
+  exit:
+    name: F301_6
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_2
+    room: 1
+    index: 0
+- name: "F301_6 (Pirate Stronghold Outside) -> F301_2 (Pirate Stronghold Inside)"
+  exit:
+    name: F301_2
+    room: 1
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_6
+    room: 0
+    index: 1
+- name: "F301_2 (Pirate Stronghold Inside) -> F301_6 (Pirate Stronghold Outside)"
+  exit:
+    name: F301_6
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_2
+    room: 1
+    index: 2
+- name: "F301_6 (Pirate Stronghold Outside) -> F301_2 (Pirate Stronghold Inside)"
+  exit:
+    name: F301_2
+    room: 1
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_6
+    room: 0
+    index: 2
+- name: "D201_1 (FS Inner) -> D201 (FS Outer)"
+  exit:
+    name: D201
+    room: 10
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201_1
+    room: 5
+    index: 2
+- name: "D201 (FS Outer) -> D201_1 (FS Inner)"
+  exit:
+    name: D201_1
+    room: 5
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201
+    room: 10
+    index: 0
+- name: "D201_1 (FS Inner) -> D201 (FS Outer)"
+  exit:
+    name: D201
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201_1
+    room: 6
+    index: 0
+- name: "D201 (FS Outer) -> D201_1 (FS Inner)"
+  exit:
+    name: D201_1
+    room: 6
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201
+    room: 0
+    index: 0
+- name: "F019r (Bamboo House) -> F020 (Sky)"
+  exit:
+    name: F020
+    room: 0
+    layer: 0
+    entrance: 11
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F019r
+    room: 0
+    index: 2
+- name: "F020 (Sky) -> F019r (Bamboo House)"
+  exit:
+    name: F019r
+    room: 0
+    layer: 1
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 13
+- name: "F300_2 (Lightning Node) -> F300 (Lanayru Desert)"
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 7
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_2
+    room: 0
+    index: 0
+- name: "F300 (Lanayru Desert) -> F300_2 (Lightning Node)"
+  exit:
+    name: F300_2
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 0
+- name: "F301_7 (Shipyard Inside ?) -> F301_4 (Shipyard Outside ?)"
+  exit:
+    name: F301_4
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_7
+    room: 0
+    index: 0
+- name: "F301_4 (Shipyard Outside ?) -> F301_7 (Shipyard Inside ?)"
+  exit:
+    name: F301_7
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_4
+    room: 0
+    index: 4
+- name: "F301_7 (Shipyard Inside ?) -> F301_4 (Shipyard Outside ?)"
+  exit:
+    name: F301_4
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_7
+    room: 0
+    index: 1
+- name: "F301_4 (Shipyard Outside ?) -> F301_7 (Shipyard Inside ?)"
+  exit:
+    name: F301_7
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_4
+    room: 0
+    index: 3
+- name: "F004r (Bazaar) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F004r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F004r (Bazaar)"
+  exit:
+    name: F004r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 1
+- name: "F004r (Bazaar) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F004r
+    room: 0
+    index: 1
+- name: "F000 (Skyloft) -> F004r (Bazaar)"
+  exit:
+    name: F004r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 2
+- name: "F004r (Bazaar) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 20
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F004r
+    room: 0
+    index: 2
+- name: "F000 (Skyloft) -> F004r (Bazaar)"
+  exit:
+    name: F004r
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 19
+- name: "F303 (Lanayru Caves) -> F300_1 (Lanayru Mines)"
+  exit:
+    name: F300_1
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F303
+    room: 0
+    index: 0
+- name: "F300_1 (Lanayru Mines) -> F303 (Lanayru Caves)"
+  exit:
+    name: F303
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_1
+    room: 0
+    index: 1
+- name: "F303 (Lanayru Caves) -> F300 (Lanayru Desert)"
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 6
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F303
+    room: 0
+    index: 1
+- name: "F300 (Lanayru Desert) -> F303 (Lanayru Caves)"
+  exit:
+    name: F303
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 8
+- name: "D000 (Waterfall Cave) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 7
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D000
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> D000 (Waterfall Cave)"
+  exit:
+    name: D000
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 6
+- name: "D000 (Waterfall Cave) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 8
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D000
+    room: 0
+    index: 1
+- name: "F000 (Skyloft) -> D000 (Waterfall Cave)"
+  exit:
+    name: D000
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 7
+- name: "F300_4 (ToT Area) -> F300_5 (LMF Final)"
+  exit:
+    name: F300_5
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_4
+    room: 0
+    index: 4
+- name: "F201_3 (VS - Temple Entrance) -> F201_1 (VS - Main)"
+  exit:
+    name: F201_1
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_3
+    room: 0
+    index: 0
+- name: "F201_1 (VS - Main) -> F201_3 (VS - Temple Entrance)"
+  exit:
+    name: F201_3
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_1
+    room: 0
+    index: 2
+- name: "F201_3 (VS - Temple Entrance) -> D201 (FS Outer)"
+  exit:
+    name: D201
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_3
+    room: 0
+    index: 1
+- name: "D201 (FS Outer) -> F201_3 (VS - Temple Entrance)"
+  exit:
+    name: F201_3
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 2
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D201
+    room: 0
+    index: 1
+- name: "F102_1 (Floria Waterfall) -> F102_2 (Floria - Dragon's Lair)"
+  exit:
+    name: F102_2
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102_1
+    room: 0
+    index: 0
+- name: "F102_2 (Floria - Dragon's Lair) -> F102_1 (Floria Waterfall)"
+  exit:
+    name: F102_1
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102_2
+    room: 0
+    index: 1
+- name: "F102_1 (Floria Waterfall) -> D101 (Ancient Cistern)"
+  exit:
+    name: D101
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F102_1
+    room: 0
+    index: 1
+- name: "D101 (Ancient Cistern) -> F102_1 (Floria Waterfall)"
+  exit:
+    name: F102_1
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D101
+    room: 0
+    index: 3
+- name: "F000 (Skyloft) -> F008r (Goddess Statue)"
+  exit:
+    name: F008r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 5
+- name: "F008r (Goddess Statue) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 6
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F008r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F013r (Sparrot's House)"
+  exit:
+    name: F013r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 58
+- name: "F013r (Sparrot's House) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 33
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F013r
+    room: 0
+    index: 0
+- name: "F201_1 (VS - Main) -> F201_4 (VS - Waterfall)"
+  exit:
+    name: F201_4
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_1
+    room: 0
+    index: 1
+- name: "F201_4 (VS - Waterfall) -> F201_1 (VS - Main)"
+  exit:
+    name: F201_1
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F201_4
+    room: 0
+    index: 0
+- name: "F300_3 (Fire Node) -> F300 (Lanayru Desert)"
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_3
+    room: 0
+    index: 0
+- name: "F300 (Lanayru Desert) -> F300_3 (Fire Node)"
+  exit:
+    name: F300_3
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 2
+- name: "F300_4 (ToT Area) -> F300 (Lanayru Desert)"
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_4
+    room: 0
+    index: 0
+- name: "F300 (Lanayru Desert) -> F300_4 (ToT Area)"
+  exit:
+    name: F300_4
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 3
+- name: "F300_4 (ToT Area) -> F300 (Lanayru Desert)"
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_4
+    room: 0
+    index: 1
+- name: "F300 (Lanayru Desert) -> F300_4 (ToT Area)"
+  exit:
+    name: F300_4
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 4
+- name: "D300 (LMF - pt1) -> F300 (Lanayru Desert)"
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300
+    room: 0
+    index: 0
+- name: "F300 (Lanayru Desert) -> D300 (LMF - pt1)"
+  exit:
+    name: D300
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 5
+- name: "D300 (LMF - pt1) -> D300_1 (LMF pt2)"
+  exit:
+    name: D300_1
+    room: 5
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300
+    room: 1
+    index: 0
+- name: "D300_1 (LMF pt2) -> D300 (LMF - pt1)"
+  exit:
+    name: D300
+    room: 1
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300_1
+    room: 5
+    index: 2
+- name: "D300 (LMF - pt1) -> D300_1 (LMF pt2)"
+  exit:
+    name: D300_1
+    room: 5
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300
+    room: 4
+    index: 0
+- name: "D300_1 (LMF pt2) -> D300 (LMF - pt1)"
+  exit:
+    name: D300
+    room: 4
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300_1
+    room: 5
+    index: 3
+- name: "F100_1 (Great Tree) -> F100 (Main Faron Woods)"
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100_1
+    room: 0
+    index: 1
+- name: "F100 (Main Faron Woods) -> F100_1 (Great Tree)"
+  exit:
+    name: F100_1
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 3
+- name: "F100_1 (Great Tree) -> F100 (Main Faron Woods)"
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100_1
+    room: 0
+    index: 2
+- name: "F100 (Main Faron Woods) -> F100_1 (Great Tree)"
+  exit:
+    name: F100_1
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 4
+- name: "F100_1 (Great Tree) -> F100 (Main Faron Woods)"
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 6
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100_1
+    room: 0
+    index: 3
+- name: "F100 (Main Faron Woods) -> F100_1 (Great Tree)"
+  exit:
+    name: F100_1
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 5
+- name: "F100_1 (Great Tree) -> F100 (Main Faron Woods)"
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 7
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100_1
+    room: 0
+    index: 4
+- name: "F100 (Main Faron Woods) -> F100_1 (Great Tree)"
+  exit:
+    name: F100_1
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 6
+- name: "D300_1 (LMF pt2) -> D300 (LMF - pt1)"
+  exit:
+    name: D300
+    room: 6
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300_1
+    room: 5
+    index: 1
+- name: "D300 (LMF - pt1) -> D300_1 (LMF pt2)"
+  exit:
+    name: D300_1
+    room: 5
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D300
+    room: 6
+    index: 0
+- name: "F100 (Main Faron Woods) -> F101 (Deep Woods)"
+  exit:
+    name: F101
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 13
+- name: "F101 (Deep Woods) -> F100 (Main Faron Woods)"
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 45
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F101
+    room: 0
+    index: 0
+- name: "F001r (Academy) -> F001r (Academy)"
+  exit:
+    name: F001r
+    room: 5
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 4
+- name: "F001r (Academy) -> F001r (Academy)"
+  exit:
+    name: F001r
+    room: 5
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 5
+    index: 1
+- name: "F400 (Behind the Temple) -> F401 (SG - Spiral)"
+  exit:
+    name: F401
+    room: 1
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F400
+    room: 0
+    index: 0
+- name: "F401 (SG - Spiral) -> F400 (Behind the Temple)"
+  exit:
+    name: F400
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F401
+    room: 1
+    index: 1
+- name: "F400 (Behind the Temple) -> F100 (Main Faron Woods)"
+  exit:
+    name: F100
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F400
+    room: 0
+    index: 2
+- name: "F100 (Main Faron Woods) -> F400 (Behind the Temple)"
+  exit:
+    name: F400
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F100
+    room: 0
+    index: 0
+- name: "D100 (Skyview) -> F101 (Deep Woods)"
+  exit:
+    name: F101
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: D100
+    room: 0
+    index: 0
+- name: "F101 (Deep Woods) -> D100 (Skyview)"
+  exit:
+    name: D100
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F101
+    room: 0
+    index: 1
+- name: "F300_1 (Lanayru Mines) -> F300 (Lanayru Desert)"
+  exit:
+    name: F300
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300_1
+    room: 2
+    index: 0
+- name: "F300 (Lanayru Desert) -> F300_1 (Lanayru Mines)"
+  exit:
+    name: F300_1
+    room: 2
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F300
+    room: 0
+    index: 1
+- name: "F015r (Gondo's House) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 35
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F015r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F015r (Gondo's House)"
+  exit:
+    name: F015r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 35
+- name: "F016r (Mallara's House) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 36
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F016r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F016r (Mallara's House)"
+  exit:
+    name: F016r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 36
+- name: "F005r (Parrow's House) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 30
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F005r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F005r (Parrow's House)"
+  exit:
+    name: F005r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 31
+- name: "F011r (Lumpy Pumpkin) -> F020 (Sky)"
+  exit:
+    name: F020
+    room: 0
+    layer: 0
+    entrance: 22
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F011r
+    room: 0
+    index: 0
+- name: "F020 (Sky) -> F011r (Lumpy Pumpkin)"
+  exit:
+    name: F011r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 19
+- name: "F011r (Lumpy Pumpkin) -> F020 (Sky)"
+  exit:
+    name: F020
+    room: 0
+    layer: 0
+    entrance: 23
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F011r
+    room: 0
+    index: 1
+- name: "F020 (Sky) -> F011r (Lumpy Pumpkin)"
+  exit:
+    name: F011r
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 18
+- name: "F011r (Lumpy Pumpkin) -> F020 (Sky)"
+  exit:
+    name: F020
+    room: 0
+    layer: 0
+    entrance: 24
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F011r
+    room: 0
+    index: 2
+- name: "F020 (Sky) -> F011r (Lumpy Pumpkin)"
+  exit:
+    name: F011r
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 20
+- name: "F402 (Sealed Temple) -> F400 (Behind the Temple)"
+  exit:
+    name: F400
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F402
+    room: 2
+    index: 1
+- name: "F400 (Behind the Temple) -> F402 (Sealed Temple)"
+  exit:
+    name: F402
+    room: 2
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F400
+    room: 0
+    index: 1
+- name: "F402 (Sealed Temple) -> F401 (SG - Spiral)"
+  exit:
+    name: F401
+    room: 1
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F402
+    room: 2
+    index: 0
+- name: "F401 (SG - Spiral) -> F402 (Sealed Temple)"
+  exit:
+    name: F402
+    room: 2
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F401
+    room: 1
+    index: 0
+- name: "F017r (Rupin's House) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 37
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F017r
+    room: 0
+    index: 1
+- name: "F000 (Skyloft) -> F017r (Rupin's House)"
+  exit:
+    name: F017r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 37
+- name: "F007r (Piper's House) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 32
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F007r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F007r (Piper's House)"
+  exit:
+    name: F007r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 32
+- name: "F009r (Training Hall) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 21
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F009r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F009r (Training Hall)"
+  exit:
+    name: F009r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 20
+- name: "F009r (Training Hall) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 26
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F009r
+    room: 0
+    index: 1
+- name: "F000 (Skyloft) -> F009r (Training Hall)"
+  exit:
+    name: F009r
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 27
+- name: "F000 (Skyloft) -> F018r (Peatrice's House)"
+  exit:
+    name: F018r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 38
+- name: "F018r (Peatrice's House) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 38
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F018r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F001r (Academy)"
+  exit:
+    name: F001r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 4
+- name: "F001r (Academy) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 5
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 1
+- name: "F000 (Skyloft) -> F001r (Academy)"
+  exit:
+    name: F001r
+    room: 0
+    layer: 0
+    entrance: 2
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 3
+- name: "F001r (Academy) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F001r (Academy)"
+  exit:
+    name: F001r
+    room: 0
+    layer: 0
+    entrance: 3
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 23
+- name: "F001r (Academy) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 23
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 2
+- name: "F000 (Skyloft) -> F001r (Academy)"
+  exit:
+    name: F001r
+    room: 0
+    layer: 0
+    entrance: 4
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 24
+- name: "F001r (Academy) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 24
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F001r
+    room: 0
+    index: 3
+- name: "F000 (Skyloft) -> F006r (Wryna's House)"
+  exit:
+    name: F006r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 10
+- name: "F006r (Wryna's House) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 31
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F006r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F014r (Bertie's House)"
+  exit:
+    name: F014r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 34
+- name: "F014r (Bertie's House) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 34
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F014r
+    room: 0
+    index: 0
+- name: "F000 (Skyloft) -> F013r (Sparrot's House)"
+  exit:
+    name: F013r
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 33
+- name: "F020 (Sky) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 4
+    entrance: 50
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F020
+    room: 0
+    index: 21
+- name: "F000 (Skyloft) -> F012r (Batreaux)"
+  exit:
+    name: F012r
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F000
+    room: 0
+    index: 30
+- name: "F012r (Batreaux) -> F000 (Skyloft)"
+  exit:
+    name: F000
+    room: 0
+    layer: 0
+    entrance: 29
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F012r
+    room: 0
+    index: 0
+- name: "F301_3 (Skipper's Retreat Outside) -> F301_5 (Skipper's Retreat Inside)"
+  exit:
+    name: F301_3
+    room: 0
+    layer: 0
+    entrance: 1
+    byte4: 2
+    byte5: 1
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_5
+    room: 0
+    index: 0
+- name: "F301_5 (Skipper's Retreat Inside) -> F301_3 (Skipper's Retreat Outside)"
+  exit:
+    name: F301_5
+    room: 0
+    layer: 0
+    entrance: 0
+    byte4: 2
+    byte5: 0
+    flag6: 0
+    zero: 0
+    flag8: 0
+  scen:
+    stage: F301_3
+    room: 0
+    index: 3
+- name: Volcano Entry
+  type: statue
+  scen:
+    stage: F200
+    room: 0
+    index: 0
+- name: Volcano East
+  type: statue
+  scen:
+    stage: F200
+    room: 2
+    index: 2
+- name: Volcano Ascent
+  type: statue
+  scen:
+    stage: F200
+    room: 2
+    index: 2
+- name: Temple Entrance
+  type: statue
+  scen:
+    stage: F200
+    room: 4
+    index: 2
+- name: Great Tree Top
+  type: statue
+  scen:
+    stage: F103
+    room: 0
+    index: 1
+- name: Lake Floria
+  type: statue
+  scen:
+    stage: F102
+    room: 3
+    index: 0
+- name: Lanayru Gorge
+  type: statue
+  scen:
+    stage: F302
+    room: 0
+    index: 1
+- name: Inside Fire Sanctuary
+  type: statue
+  scen:
+    stage: D201_1
+    room: 10
+    index: 3
+- name: Inside the Volcano
+  type: statue
+  scen:
+    stage: F201_3
+    room: 0
+    index: 2
+- name: Floria Waterfall
+  type: statue
+  scen:
+    stage: F102_1
+    room: 0
+    index: 3
+- name: Behind the Temple
+  type: statue
+  scen:
+    stage: F402
+    room: 2
+    index: 5
+- name: Sealed Grounds
+  type: statue
+  scen:
+    stage: F402
+    room: 2
+    index: 19
+- name: Ancient Harbor
+  type: statue
+  scen:
+    stage: F301
+    room: 0
+    index: 3
+- name: Pirate Stronghold
+  type: statue
+  scen:
+    stage: F301_6
+    room: 0
+    index: 3
+- name: Behind the Temple
+  type: statue
+  scen:
+    stage: F406
+    room: 1
+    index: 5
+- name: Sealed Grounds
+  type: statue
+  scen:
+    stage: F406
+    room: 1
+    index: 16
+- name: Desert Gorge
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 2
+- name: Temple of Time
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 2
+- name: Lanayru Mine Entry
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 6
+- name: North Desert
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 6
+- name: West Desert
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 6
+- name: Stone Cache
+  type: statue
+  scen:
+    stage: F300_4
+    room: 0
+    index: 6
+- name: Faron Woods Entry
+  type: statue
+  scen:
+    stage: F100
+    room: 0
+    index: 10
+- name: In the Woods
+  type: statue
+  scen:
+    stage: F100
+    room: 0
+    index: 10
+- name: Viewing Platform
+  type: statue
+  scen:
+    stage: F100
+    room: 0
+    index: 10
+- name: The Great Tree
+  type: statue
+  scen:
+    stage: F100
+    room: 0
+    index: 10
+- name: Inside Fire Sanctuary
+  type: statue
+  scen:
+    stage: D201
+    room: 10
+    index: 3
+- name: Behind the Temple
+  type: statue
+  scen:
+    stage: F400
+    room: 0
+    index: 5
+- name: Sealed Grounds
+  type: statue
+  scen:
+    stage: F400
+    room: 0
+    index: 19
+- name: Skipper's Retreat
+  type: statue
+  scen:
+    stage: F301_3
+    room: 0
+    index: 1
+- name: Behind the Temple
+  type: statue
+  scen:
+    stage: F401
+    room: 1
+    index: 5
+- name: Sealed Grounds
+  type: statue
+  scen:
+    stage: F401
+    room: 1
+    index: 19
+- name: Skipper's Retreat
+  type: statue
+  scen:
+    stage: F301_1
+    room: 0
+    index: 0
+- name: Shipyard
+  type: statue
+  scen:
+    stage: F301_1
+    room: 0
+    index: 0
+- name: Pirate Stronghold
+  type: statue
+  scen:
+    stage: F301_1
+    room: 0
+    index: 0
+- name: Ancient Harbor
+  type: statue
+  scen:
+    stage: F301_1
+    room: 0
+    index: 0
+- name: Lanayru Mine Entry
+  type: statue
+  scen:
+    stage: F300_1
+    room: 0
+    index: 0
+- name: Shipyard
+  type: statue
+  scen:
+    stage: F301_4
+    room: 0
+    index: 1
+- name: Deep Woods
+  type: statue
+  scen:
+    stage: F101
+    room: 0
+    index: 2
+- name: Forest Temple
+  type: statue
+  scen:
+    stage: F101
+    room: 0
+    index: 2
+- name: Desert Entrance
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 6
+- name: North Desert
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 6
+- name: Desert Gorge
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 2
+- name: Temple of Time
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 2
+- name: West Desert
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 6
+- name: Stone Cache
+  type: statue
+  scen:
+    stage: F300
+    room: 0
+    index: 6

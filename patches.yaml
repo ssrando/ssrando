@@ -34,6 +34,7 @@ global:
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
     - 70 # First time Light Fruit Cutscene
+    - 152 # skipper's boat active
     - storyflag: 134 # Horde defeated
       onlyif: Option "skip-horde" Enabled
     - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
@@ -69,6 +70,8 @@ global:
       - 67 # Inside Doors open
       - 1 # UA Doors open
       - 26 # Eye cs in Bazaar
+      - 0 # LA Doors
+      - 21 # Upper academy Doors
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
@@ -100,6 +103,7 @@ global:
         flag: 101 # Fire node active
       - onlyif: Option "open-lmf" Is "Main Node"
         flag: 102 # Water node active
+      - 50 # LMF entry CS
     Lanayru Gorge:
       - 10 # Minecart at end of Track
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
@@ -2737,7 +2741,7 @@ F300: # lanayru Main Area
     room: 0
     objtype: STAG
     object:
-      trigstoryfid: 8 # LMF raised
+      trigstoryfid: -1
   - name: extra Arrow Pot next to first Statue
     type: objadd
     layer: 0
