@@ -14,6 +14,7 @@ from logic.logic import Logic
 from logic.hints import Hints
 import logic.constants as constants
 from logic.placement_file import PlacementFile
+from hints.hint_types import GossipStoneHintWrapper, SongHint
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
@@ -217,48 +218,14 @@ class Randomizer(BaseRandomizer):
     def get_placement_file(self):
         MAX_SEED = 1_000_000
         # temporary placement file stuff
-        trial_checks = {
-            # (getting it text patch, inventory text line)
-            "Song of the Hero - Trial Hint": constants.SKYLOFT_TRIAL_GATE,
-            "Farore's Courage - Trial Hint": constants.FARON_TRIAL_GATE,
-            "Nayru's Wisdom - Trial Hint": constants.ELDIN_TRIAL_GATE,
-            "Din's Power - Trial Hint": constants.LANAYRU_TRIAL_GATE,
-        }
-        trial_hints = {}
-        for (hintname, trial_gate) in trial_checks.items():
-            randomized_trial = self.logic.trial_connections[trial_gate]
-            randomized_trial_check = constants.SILENT_REALM_CHECKS[randomized_trial]
-            item = self.logic.done_item_locations[randomized_trial_check]
-            hint_mode = self.options["song-hints"]
-            if hint_mode == "Basic":
-                if item in self.logic.all_progress_items:
-                    useful_text = "You might need what it reveals..."
-                    # print(f'{item} in {trial_check} is useful')
-                else:
-                    useful_text = "It's probably not too important..."
-                    # print(f'{item} in {trial_check} is not useful')
-            elif hint_mode == "Advanced":
-                if randomized_trial_check in self.sots_locations:
-                    useful_text = "Your spirit will grow by completing this trial"
-                elif item in self.logic.all_progress_items:
-                    useful_text = "You might need what it reveals..."
-                else:
-                    # barren
-                    useful_text = "It's probably not too important..."
-            elif hint_mode == "Direct":
-                useful_text = f"This trial holds {item}"
-            else:
-                useful_text = ""
-            trial_hints[hintname] = useful_text
 
         plcmt_file = PlacementFile()
         plcmt_file.dungeon_connections = self.logic.entrance_connections
         plcmt_file.trial_connections = self.logic.trial_connections
         plcmt_file.hash_str = self.randomizer_hash
-        plcmt_file.gossip_stone_hints = dict(
-            (k, v.to_gossip_stone_text()) for (k, v) in self.hints.hints.items()
-        )
-        plcmt_file.trial_hints = trial_hints
+        plcmt_file.hints = {
+            k: v.to_ingame_text() for (k, v) in self.hints.hints.items()
+        }
         plcmt_file.item_locations = dict(
             (k, v)
             for (k, v) in self.logic.done_item_locations.items()

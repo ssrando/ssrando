@@ -1,5 +1,6 @@
 from collections import OrderedDict
 from typing import TextIO
+from hints.hint_types import GossipStoneHintWrapper
 from options import OPTIONS, Options
 import itertools
 
@@ -124,7 +125,13 @@ def write(file: TextIO, options: Options, logic, hints, sots_locations, hash):
     # Write hints
     file.write("Hints:\n")
     for hintloc, hint in hints.items():
-        file.write(f"  {hintloc+':':53} {hint.to_spoiler_log_text()}\n")
+        hint_stone = hints[hintloc]
+        if isinstance(hint_stone, GossipStoneHintWrapper):
+            file.write(f"  {hintloc+':'}\n")
+            for hint in hint_stone.hints:
+                file.write(f"  {'':48} {hint.to_spoiler_log_text()}\n")
+        else:
+            file.write(f"  {hintloc+':':48} {hint_stone.to_spoiler_log_text()}\n")
 
     file.write("\n\n\n")
 
