@@ -64,7 +64,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -253,7 +253,7 @@
        <rect>
         <x>360</x>
         <y>130</y>
-        <width>131</width>
+        <width>161</width>
         <height>131</height>
        </rect>
       </property>
@@ -265,7 +265,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>111</width>
+         <width>142</width>
          <height>80</height>
         </rect>
        </property>
@@ -274,6 +274,13 @@
          <widget class="QCheckBox" name="option_tunic_swap">
           <property name="text">
            <string>Tunic Swap</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_no_enemy_music">
+          <property name="text">
+           <string>Remove Enemy Music</string>
           </property>
          </widget>
         </item>
@@ -296,7 +303,7 @@
      <widget class="QGroupBox" name="groupBox_15">
       <property name="geometry">
        <rect>
-        <x>510</x>
+        <x>540</x>
         <y>130</y>
         <width>181</width>
         <height>131</height>
@@ -311,7 +318,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>106</height>
+         <height>132</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_35">

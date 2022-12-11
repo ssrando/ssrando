@@ -625,6 +625,14 @@
   type: multichoice
   default: []
   help: Set locations to be excluded from the progress pool. While the item found in these locations will still be shuffled, it will never be an item required to beat the game
+- name: Remove Enemy Music
+  command: no-enemy-music
+  type: boolean
+  default: false
+  help: If enabled, the enemy battle music will not play; instead, the regular field music in that area will keep playing.
+  ui: option_no_enemy_music
+  permalink: false
+  cosmetic: true
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution
