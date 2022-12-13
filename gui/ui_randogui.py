@@ -156,10 +156,10 @@ class Ui_MainWindow(object):
 
         self.groupBox_14 = QGroupBox(self.tab)
         self.groupBox_14.setObjectName(u"groupBox_14")
-        self.groupBox_14.setGeometry(QRect(360, 130, 131, 131))
+        self.groupBox_14.setGeometry(QRect(360, 130, 161, 131))
         self.verticalLayoutWidget_8 = QWidget(self.groupBox_14)
         self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 111, 80))
+        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 142, 80))
         self.verticalLayout_17 = QVBoxLayout(self.verticalLayoutWidget_8)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.verticalLayout_17.setContentsMargins(0, 0, 0, 0)
@@ -168,16 +168,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_17.addWidget(self.option_tunic_swap)
 
+        self.option_no_enemy_music = QCheckBox(self.verticalLayoutWidget_8)
+        self.option_no_enemy_music.setObjectName(u"option_no_enemy_music")
+
+        self.verticalLayout_17.addWidget(self.option_no_enemy_music)
+
         self.verticalSpacer_15 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_17.addItem(self.verticalSpacer_15)
 
         self.groupBox_15 = QGroupBox(self.tab)
         self.groupBox_15.setObjectName(u"groupBox_15")
-        self.groupBox_15.setGeometry(QRect(510, 130, 181, 131))
+        self.groupBox_15.setGeometry(QRect(540, 130, 181, 131))
         self.verticalLayoutWidget_11 = QWidget(self.groupBox_15)
         self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
-        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 106))
+        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 132))
         self.verticalLayout_35 = QVBoxLayout(self.verticalLayoutWidget_11)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
@@ -1250,7 +1255,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(0)
         self.option_sword_dungeon_reward.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
@@ -1278,6 +1283,7 @@ class Ui_MainWindow(object):
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.groupBox_14.setTitle(QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
+        self.option_no_enemy_music.setText(QCoreApplication.translate("MainWindow", u"Remove Enemy Music", None))
         self.groupBox_15.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.option_cutoff_gameover_music.setText(QCoreApplication.translate("MainWindow", u"Cutoff Game Over Music", None))

@@ -1223,6 +1223,8 @@ class GamePatcher:
             self.add_asm_patch("chest_dowsing")
         if self.placement_file.options["dungeon-dowsing"]:
             self.add_asm_patch("dungeon_dowsing")
+        if self.placement_file.options["no-enemy-music"]:
+            self.add_asm_patch("no_enemy_music")
 
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
