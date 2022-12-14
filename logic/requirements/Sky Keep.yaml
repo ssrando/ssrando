@@ -14,7 +14,7 @@ Main:
   Skyview Room:
     Beginning:
       exits:
-        End: Whip & Free Rope & Clawshots & Kill Pyrups & Gust Bellows | End - Lever
+        End: (Whip & Free Rope & Clawshots & Kill Pyrups & Gust Bellows) | End - Lever
       locations:
         Free Rope: Beetle | Bow
         Kill Pyrups: Bomb Bag | Hook Beetle | Bow

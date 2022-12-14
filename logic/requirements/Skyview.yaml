@@ -5,7 +5,7 @@ hint-region: Skyview
 # Global macros
 macros:
   Skyview 2: Water Scale
-  Can Hit High Skyview Switches: Distance Activator | Bomb Bag & Bomb Throws Trick
+  Can Hit High Skyview Switches: Distance Activator | (Bomb Bag & Bomb Throws Trick)
   Can Cut Tree: Sword | Bomb Bag
 
 Main:
@@ -40,11 +40,11 @@ Main:
       First Room: First Room - Destroy Barricade
       Left Room: Switch to Left Room
       Right Room - Lower Area: Switch to Right Room
-      Right Room - Upper Area: Left Room - Raise Water & Right Room - Raise Water | Clawshots
+      Right Room - Upper Area: (Left Room - Raise Water & Right Room - Raise Water) | Clawshots
       Second Hub: One Water Raise & Skyview Small Key
     locations:
       First Room - Destroy Barricade: Nothing
-      Switch to Left Room: Can Hit Switch | One Water Raise & Water Scale
+      Switch to Left Room: Can Hit Switch | (One Water Raise & Water Scale)
       Switch to Right Room: Can Hit High Skyview Switches
       One Water Raise: Left Room - Raise Water | Right Room - Raise Water
 
@@ -54,7 +54,7 @@ Main:
       locations:
         Hit Vines: Can Hit High Skyview Switches | Goddess Sword | Whip
         Spider Roll: Skyview - Spider Roll Trick
-        Raise Water: Hit Vines & Can Hit Switch | Spider Roll & Can Hit High Skyview Switches
+        Raise Water: (Hit Vines & Can Hit Switch) | (Spider Roll & Can Hit High Skyview Switches)
         Chest on Tree Branch: Hit Vines | Spider Roll
 
     Right Room:

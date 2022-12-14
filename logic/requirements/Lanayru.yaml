@@ -169,7 +169,7 @@ Desert:
       Activate Master Generator: All Three Nodes & Master Generator Timeshift Stone & Sword
       Unlock Statue: Nothing
       Open Trial Gate: Nayru's Wisdom & Goddess Harp
-      Open Secret Passageway: Bomb Bag | Hook Beetle & Secret Passageway Hook Beetle Opening Trick | Tough Beetle
+      Open Secret Passageway: Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Tough Beetle
       Chest on Platform near Lightning Node: Clawshots
       Open Lightning Node: Nothing # There's a bombflower nearby
 
@@ -283,7 +283,7 @@ Temple of Time:
     locations:
       Gossip Stone in Temple of Time Area: Nothing
       Blow up Rock for Timeshift Stone:
-        Hook Beetle | Bomb Throws Trick & (Bomb Bag | Cactus Bomb Whip Trick & Whip)
+        Hook Beetle | Bomb Throws Trick & (Bomb Bag | (Cactus Bomb Whip Trick & Whip))
       Timeshift Stone: Blow up Rock for Timeshift Stone & Distance Activator
       Save Robot: Timeshift Stone & Can Defeat Bokoblins
       Near Goddess Cube - Timeshift Stone: Long Range Skyward Strike | Distance Activator

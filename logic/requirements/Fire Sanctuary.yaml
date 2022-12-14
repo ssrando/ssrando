@@ -161,7 +161,7 @@ Main:
       Entry: Hit Water Plant
       Front of Boss Door: Hit Water Plant & Past Plats - Release Lava
       Past Plats:
-        Catch Plats & (Distance Activator | Bomb Bag) |
+        (Catch Plats & (Distance Activator | Bomb Bag)) |
         Past Plats - Unlock Shortcut to Pre Plats
     locations:
       Hit Water Plant: Distance Activator | Bomb Bag
