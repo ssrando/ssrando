@@ -428,6 +428,11 @@ try:
                 ]
                 # add custom functions from rust
                 if is_custom_function and file_path == "main.dol":
+                    result = call(
+                        ["cargo", "build", "--release"], cwd="./custom-functions"
+                    )
+                    if result != 0:
+                        raise Exception("building rust functions failed")
                     command.append(
                         "./custom-functions/target/powerpc-unknown-eabi/release/libcustom_functions.a"
                     )
