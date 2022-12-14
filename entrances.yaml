@@ -491,10 +491,10 @@ Skyloft - Exit to Beedle's Shop:
 
 ## Trial
 
-Skyloft - Silent Realm - Entrance:
+Skyloft Silent Realm - Entrance:
   type: entrance
 
-Skyloft - Silent Realm - Exit:
+Skyloft Silent Realm - Exit:
   type: exit
   vanilla: Skyloft - Trial Gate Entrance
 
@@ -503,7 +503,7 @@ Skyloft - Trial Gate Entrance:
 
 Skyloft - Trial Gate Exit:
   type: exit
-  vanilla: Skyloft - Silent Realm - Entrance
+  vanilla: Skyloft Silent Realm - Entrance
 
 ## Sky Keep
 
@@ -1039,7 +1039,7 @@ Sky - Eldin Pillar - Fire Sanctuary Statue Dive:
 ## South East
 
 
-Lumpy Pumpkin - Main Right Door Entrance:
+Lumpy Pumpkin Building - Main Right Door Entrance:
   type: entrance
   stage: F011r
   room: 0
@@ -1047,7 +1047,7 @@ Lumpy Pumpkin - Main Right Door Entrance:
   entrance: 1
   tod: 2
 
-Lumpy Pumpkin - Main Left Door Entrance:
+Lumpy Pumpkin Building - Main Left Door Entrance:
   type: entrance
   stage: F011r
   room: 0
@@ -1055,7 +1055,7 @@ Lumpy Pumpkin - Main Left Door Entrance:
   entrance: 2
   tod: 2
 
-Lumpy Pumpkin - Back Door Entrance:
+Lumpy Pumpkin Building - Back Door Entrance:
   type: entrance
   stage: F011r
   room: 0
@@ -1064,30 +1064,30 @@ Lumpy Pumpkin - Back Door Entrance:
   tod: 2
 
 
-Lumpy Pumpkin - Main Right Door Exit:
+Lumpy Pumpkin Building - Main Right Door Exit:
   type: exit
-  vanilla: Pumpkin Landing - Main Left Door Entrance
+  vanilla: Lumpy Pumpkin - Main Left Door Entrance
   stage: F011r
   room: 0
   index: 0
 
-Lumpy Pumpkin - Main Left Door Exit:
+Lumpy Pumpkin Building - Main Left Door Exit:
   type: exit
-  vanilla: Pumpkin Landing - Main Right Door Entrance
+  vanilla: Lumpy Pumpkin - Main Right Door Entrance
   stage: F011r
   room: 0
   index: 1
 
-Lumpy Pumpkin - Back Door Exit:
+Lumpy Pumpkin Building - Back Door Exit:
   type: exit
-  vanilla: Pumpkin Landing - Back Door Entrance
+  vanilla: Lumpy Pumpkin - Back Door Entrance
   stage: F011r
   room: 0
   index: 2
 
 
 
-Pumpkin Landing - Main Left Door Entrance:
+Lumpy Pumpkin - Main Left Door Entrance:
   type: entrance
   stage: F020
   room: 0
@@ -1095,7 +1095,7 @@ Pumpkin Landing - Main Left Door Entrance:
   entrance: 22
   tod: 2
 
-Pumpkin Landing - Main Right Door Entrance:
+Lumpy Pumpkin - Main Right Door Entrance:
   type: entrance
   stage: F020
   room: 0
@@ -1103,7 +1103,7 @@ Pumpkin Landing - Main Right Door Entrance:
   entrance: 23
   tod: 2
 
-Pumpkin Landing - Back Door Entrance:
+Lumpy Pumpkin - Back Door Entrance:
   type: entrance
   stage: F020
   room: 0
@@ -1112,23 +1112,23 @@ Pumpkin Landing - Back Door Entrance:
   tod: 2
 
 
-Pumpkin Landing - Main Right Door Exit:
+Lumpy Pumpkin - Main Right Door Exit:
   type: exit
-  vanilla: Lumpy Pumpkin - Main Left Door Entrance
+  vanilla: Lumpy Pumpkin Building - Main Left Door Entrance
   stage: F020
   room: 0
   index: 18
 
-Pumpkin Landing - Main Left Door Exit:
+Lumpy Pumpkin - Main Left Door Exit:
   type: exit
-  vanilla: Lumpy Pumpkin - Main Right Door Entrance
+  vanilla: Lumpy Pumpkin Building - Main Right Door Entrance
   stage: F020
   room: 0
   index: 19
 
-Pumpkin Landing - Back Door Exit:
+Lumpy Pumpkin - Back Door Exit:
   type: exit
-  vanilla: Lumpy Pumpkin - Back Door Entrance
+  vanilla: Lumpy Pumpkin Building - Back Door Entrance
   stage: F020
   room: 0
   index: 20
@@ -1257,7 +1257,7 @@ Sky - Faron Pillar - Floria Waterfall Statue Dive:
 Sky - Lanayru Pillar - First Time Dive:
   type: exit
   subtype: statue
-  vanilla: Lanayru Mines - First Time Entrance
+  vanilla: Lanayru Mine - First Time Entrance
   stage: F020
   room: 0
   index: 2
@@ -1274,7 +1274,7 @@ Sky - Lanayru Pillar - <<?? Statue Dive>>:
 Sky - Lanayru Pillar - Ancient Harbour <<Alternate>> Statue Dive:
   type: exit
   subtype: statue
-  vanilla: Sand Sea Docks - <<Alternate>> Statue Entrance
+  vanilla: Lanayru Sand Sea Docks - <<Alternate>> Statue Entrance
   disabled: true
   stage: F020
   room: 0
@@ -1283,7 +1283,7 @@ Sky - Lanayru Pillar - Ancient Harbour <<Alternate>> Statue Dive:
 Sky - Lanayru Pillar - Lanayru Mine Entry Statue Dive:
   type: exit
   subtype: statue
-  vanilla: Lanayru Mines - Statue Entrance
+  vanilla: Lanayru Mine - Statue Entrance
   stage: F020
   room: 0
   index: 56
@@ -1339,7 +1339,7 @@ Sky - Lanayru Pillar - Temple of Time Statue Dive:
 Sky - Lanayru Pillar - Ancient Harbour Statue Dive:
   type: exit
   subtype: statue
-  vanilla: Sand Sea Docks - Statue Entrance
+  vanilla: Lanayru Sand Sea Docks - Statue Entrance
   stage: F020
   room: 0
   index: 63
@@ -1790,7 +1790,7 @@ Faron Woods - Exit to Behind the Temple:
 
 Faron Woods - Exit to Deep Woods:
   type: exit
-  vanilla: Deep Woods - Entrance from Woods
+  vanilla: Deep Woods - Entrance from Faron Woods
   stage: F100
   room: 0
   index: 1
@@ -1804,7 +1804,7 @@ Faron Woods - Lake Floria Dive:
 
 Faron Woods - Shortcut Exit to Floria Waterfall:
   type: exit
-  vanilla: Floria Waterfall - Entrance from Woods
+  vanilla: Floria Waterfall - Entrance from Faron Woods
   stage: F100
   room: 0
   index: 11
@@ -1819,7 +1819,7 @@ Faron Woods - Alternate Exit to Lake Floria:
 
 Faron Woods - Alternate <<Cutscene ?>> Exit to Deep Woods:
   type: exit
-  vanilla: Deep Woods - Entrance from Woods
+  vanilla: Deep Woods - Entrance from Faron Woods
   disabled: true
   stage: F100
   room: 0
@@ -1831,14 +1831,14 @@ Faron Woods - Trial Gate Entrance:
 
 Faron Woods - Trial Gate Exit:
   type: exit
-  vanilla: Faron - Silent Realm - Entrance
+  vanilla: Faron Silent Realm - Entrance
 
 ## Trial
 
-Faron - Silent Realm - Entrance:
+Faron Silent Realm - Entrance:
   type: entrance
 
-Faron - Silent Realm - Exit:
+Faron Silent Realm - Exit:
   type: exit
   vanilla: Faron Woods - Trial Gate Entrance
 
@@ -2007,7 +2007,7 @@ Deep Woods - Shared Statue Exit:
   index: 2
 
 
-Deep Woods - Entrance from Woods:
+Deep Woods - Entrance from Faron Woods:
   type: entrance
   stage: F101
   room: 0
@@ -2022,7 +2022,7 @@ Deep Woods - Entrance from Skyview Temple:
   entrance: 1
 
 
-Deep Woods - Exit to Woods:
+Deep Woods - Exit to Faron Woods:
   type: exit
   vanilla: Faron Woods - Entrance from Deep Woods
   stage: F101
@@ -2152,7 +2152,7 @@ Floria Waterfall - Entrance from Ancient Cistern:
   layer: 0
   entrance: 1
 
-Floria Waterfall - Entrance from Woods:
+Floria Waterfall - Entrance from Faron Woods:
   type: entrance
   stage: F102_1
   room: 0
@@ -2174,7 +2174,7 @@ Floria Waterfall - Exit to Ancient Cistern:
   room: 0
   index: 1
 
-Floria Waterfall - Exit to Woods:
+Floria Waterfall - Exit to Faron Woods:
   type: exit
   vanilla: Faron Woods - Shortcut Entrance from Floria Waterfall
   stage: F102_1
@@ -2555,7 +2555,7 @@ Eldin Volcano - Exit to Summit:
 
 Eldin Volcano - Trial Gate Exit:
   type: exit
-  vanilla: Eldin - Silent Realm - Entrance
+  vanilla: Eldin Silent Realm - Entrance
 
 Eldin Volcano - Vent Exit near Ascent:
   type: exit
@@ -2603,10 +2603,10 @@ Thrill Digger Cave - Exit:
 
 ## Trial
 
-Eldin - Silent Realm - Entrance:
+Eldin Silent Realm - Entrance:
   type: entrance
 
-Eldin - Silent Realm - Exit:
+Eldin Silent Realm - Exit:
   type: exit
   vanilla: Eldin Volcano - Trial Gate Entrance
 
@@ -3019,9 +3019,9 @@ Fire Sanctuary - Flame Room - Exit:
 
 # Lanayru
 
-## Lanayru Mines
+## Lanayru Mine
 
-Lanayru Mines - First Time Entrance:
+Lanayru Mine - First Time Entrance:
   type: entrance
   subtype: statue
   stage: F300_1
@@ -3029,14 +3029,14 @@ Lanayru Mines - First Time Entrance:
   layer: 0
   entrance: 0
 
-Lanayru Mines - Entrance from Caves:
+Lanayru Mine - Entrance from Caves:
   type: entrance
   stage: F300_1
   room: 0
   layer: 0
   entrance: 1
 
-Lanayru Mines - Statue Entrance:
+Lanayru Mine - Statue Entrance:
   type: entrance
   subtype: statue
   stage: F300_1
@@ -3044,14 +3044,14 @@ Lanayru Mines - Statue Entrance:
   layer: 0
   entrance: 2
 
-Lanayru Mines - Entrance from Desert:
+Lanayru Mine - Entrance from Desert:
   type: entrance
   stage: F300_1
   room: 2
   layer: 0
   entrance: 1
 
-Lanayru Mines - Statue Exit:
+Lanayru Mine - Statue Exit:
   type: exit
   subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
@@ -3059,16 +3059,16 @@ Lanayru Mines - Statue Exit:
   room: 0
   index: 0
 
-Lanayru Mines - Exit to Caves:
+Lanayru Mine - Exit to Caves:
   type: exit
-  vanilla: Lanayru Caves - Entrance from Mines
+  vanilla: Lanayru Caves - Entrance from Mine
   stage: F300_1
   room: 0
   index: 1
 
-Lanayru Mines - Exit to Desert:
+Lanayru Mine - Exit to Desert:
   type: exit
-  vanilla: Lanayru Desert - Entrance from Mines
+  vanilla: Lanayru Desert - Entrance from Mine
   stage: F300_1
   room: 2
   index: 0
@@ -3131,7 +3131,7 @@ Lanayru Desert - North Entrance from Temple of Time:
   layer: 0
   entrance: 1
 
-Lanayru Desert - Entrance from Mines:
+Lanayru Desert - Entrance from Mine:
   type: entrance
   stage: F300
   room: 0
@@ -3184,9 +3184,9 @@ Lanayru Desert - Lightning Node Exit:
   room: 0
   index: 0
 
-Lanayru Desert - Exit to Mines:
+Lanayru Desert - Exit to Mine:
   type: exit
-  vanilla: Lanayru Mines - Entrance from Desert
+  vanilla: Lanayru Mine - Entrance from Desert
   stage: F300
   room: 0
   index: 1
@@ -3231,14 +3231,14 @@ Lanayru Desert - Trial Gate Entrance:
 
 Lanayru Desert - Trial Gate Exit:
   type: exit
-  vanilla: Lanayru - Silent Realm - Entrance
+  vanilla: Lanayru Silent Realm - Entrance
 
 ## Trial
 
-Lanayru - Silent Realm - Entrance:
+Lanayru Silent Realm - Entrance:
   type: entrance
 
-Lanayru - Silent Realm - Exit:
+Lanayru Silent Realm - Exit:
   type: exit
   vanilla: Lanayru Desert - Trial Gate Entrance
 
@@ -3350,7 +3350,7 @@ Temple of Time - Exit to Lanayru Mining Facility:
 
 ## Lanayru Caves
 
-Lanayru Caves - Entrance from Mines:
+Lanayru Caves - Entrance from Mine:
   type: entrance
   stage: F303
   room: 0
@@ -3364,7 +3364,7 @@ Lanayru Caves - Entrance from Desert:
   layer: 0
   entrance: 1
 
-Lanayru Caves - Entrance from Sand Sea:
+Lanayru Caves - Entrance from Lanayru Sand Sea:
   type: entrance
   stage: F303
   room: 0
@@ -3374,9 +3374,9 @@ Lanayru Caves - Entrance from Sand Sea:
 Lanayru Caves - Entrance from Gorge:
   type: entrance
 
-Lanayru Caves - Exit to Mines:
+Lanayru Caves - Exit to Mine:
   type: exit
-  vanilla: Lanayru Mines - Entrance from Caves
+  vanilla: Lanayru Mine - Entrance from Caves
   stage: F303
   room: 0
   index: 0
@@ -3388,9 +3388,9 @@ Lanayru Caves - Exit to Desert:
   room: 0
   index: 1
 
-Lanayru Caves - Exit to Sand Sea:
+Lanayru Caves - Exit to Lanayru Sand Sea:
   type: exit
-  vanilla: Sand Sea Docks - Entrance from Caves
+  vanilla: Lanayru Sand Sea Docks - Entrance from Caves
   stage: F303
   room: 0
   index: 2
@@ -3417,37 +3417,37 @@ Lanayru Gorge - Statue Exit:
   subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
 
-## Sand Sea
+## Lanayru Sand Sea
 
-Sand Sea - Ancient Harbour Dock Entrance:
+Lanayru Sand Sea - Ancient Harbour Dock Entrance:
   type: entrance
   stage: F301_1
   room: 0
   layer: 0
   entrance: 0
 
-Sand Sea - Skipper's Retreat Dock Entrance:
+Lanayru Sand Sea - Skipper's Retreat Dock Entrance:
   type: entrance
   stage: F301_1
   room: 0
   layer: 0
   entrance: 1
 
-Sand Sea - Shipyard Dock Entrance:
+Lanayru Sand Sea - Shipyard Dock Entrance:
   type: entrance
   stage: F301_1
   room: 0
   layer: 0
   entrance: 2
 
-Sand Sea - Pirate Stronghold Dock Entrance:
+Lanayru Sand Sea - Pirate Stronghold Dock Entrance:
   type: entrance
   stage: F301_1
   room: 0
   layer: 0
   entrance: 3
 
-Sand Sea - Sandship Dock Entrance:
+Lanayru Sand Sea - Sandship Dock Entrance:
   type: entrance
   subtype: statue
   stage: F301_1
@@ -3456,35 +3456,35 @@ Sand Sea - Sandship Dock Entrance:
   entrance: 4
 
 
-Sand Sea - Ancient Harbour Dock Exit:
+Lanayru Sand Sea - Ancient Harbour Dock Exit:
   type: exit
-  vanilla: Sand Sea Docks - Dock Entrance
+  vanilla: Lanayru Sand Sea Docks - Dock Entrance
   stage: F301_1
   room: 0
   index: 0
 
-Sand Sea - Sandship Dock Exit:
+Lanayru Sand Sea - Sandship Dock Exit:
   type: exit
   vanilla: Sandship - Main Entrance
   stage: F301_1
   room: 0
   index: 1
 
-Sand Sea - Skipper's Retreat Dock Exit:
+Lanayru Sand Sea - Skipper's Retreat Dock Exit:
   type: exit
   vanilla: Skipper's Retreat - Dock Entrance
   stage: F301_1
   room: 0
   index: 2
 
-Sand Sea - Shipyard Dock Exit:
+Lanayru Sand Sea - Shipyard Dock Exit:
   type: exit
   vanilla: Shipyard - Dock Entrance
   stage: F301_1
   room: 0
   index: 3
 
-Sand Sea - Pirate Stronghold Dock Exit:
+Lanayru Sand Sea - Pirate Stronghold Dock Exit:
   type: exit
   vanilla: Pirate Stronghold - Dock Entrance
   stage: F301_1
@@ -3492,9 +3492,9 @@ Sand Sea - Pirate Stronghold Dock Exit:
   index: 4
 
 
-## Sand Sea Docks
+## Lanayru Sand Sea Docks
 
-Sand Sea Docks - Statue Entrance:
+Lanayru Sand Sea Docks - Statue Entrance:
   type: entrance
   subtype: statue
   stage: F301
@@ -3502,7 +3502,7 @@ Sand Sea Docks - Statue Entrance:
   layer: 0
   entrance: 10
 
-Sand Sea Docks - <<Alternate>> Statue Entrance:
+Lanayru Sand Sea Docks - <<Alternate>> Statue Entrance:
   type: entrance
   subtype: statue
   disabled: true
@@ -3511,7 +3511,7 @@ Sand Sea Docks - <<Alternate>> Statue Entrance:
   layer: 0
   entrance: 4
 
-Sand Sea Docks - Statue Exit:
+Lanayru Sand Sea Docks - Statue Exit:
   type: exit
   subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
@@ -3520,37 +3520,37 @@ Sand Sea Docks - Statue Exit:
   index: 3
 
 
-Sand Sea Docks - Entrance from Caves:
+Lanayru Sand Sea Docks - Entrance from Caves:
   type: entrance
   stage: F301
   room: 0
   layer: 0
   entrance: 0
 
-Sand Sea Docks - Dock Entrance:
+Lanayru Sand Sea Docks - Dock Entrance:
   type: entrance
   stage: F301
   room: 0
   layer: 0
   entrance: 1
 
-Sand Sea Docks - Exit to Sandship:
+Lanayru Sand Sea Docks - Exit to Sandship:
   type: exit
   vanilla: Sandship - Main Entrance
   stage: F301
   room: 0
   index: 0
 
-Sand Sea Docks - Exit to Caves:
+Lanayru Sand Sea Docks - Exit to Caves:
   type: exit
-  vanilla: Lanayru Caves - Entrance from Sand Sea
+  vanilla: Lanayru Caves - Entrance from Lanayru Sand Sea
   stage: F301
   room: 0
   index: 1
 
-Sand Sea Docks - Dock Exit:
+Lanayru Sand Sea Docks - Dock Exit:
   type: exit
-  vanilla: Sand Sea - Ancient Harbour Dock Entrance
+  vanilla: Lanayru Sand Sea - Ancient Harbour Dock Entrance
   stage: F301
   room: 0
   index: 2
@@ -3591,7 +3591,7 @@ Skipper's Retreat - Shack Entrance:
 
 Skipper's Retreat - Dock Exit:
   type: exit
-  vanilla: Sand Sea - Skipper's Retreat Dock Entrance
+  vanilla: Lanayru Sand Sea - Skipper's Retreat Dock Entrance
   stage: F301_3
   room: 0
   index: 2
@@ -3672,7 +3672,7 @@ Shipyard - Groosenator Rickety Coaster Entrance:
 
 Shipyard - Dock Exit:
   type: exit
-  vanilla: Sand Sea - Shipyard Dock Entrance
+  vanilla: Lanayru Sand Sea - Shipyard Dock Entrance
   stage: F301_4
   room: 0
   index: 2
@@ -3764,7 +3764,7 @@ Pirate Stronghold - Top Entrance:
 
 Pirate Stronghold - Dock Exit:
   type: exit
-  vanilla: Sand Sea - Pirate Stronghold Dock Entrance
+  vanilla: Lanayru Sand Sea - Pirate Stronghold Dock Entrance
   stage: F301_6
   room: 0
   index: 0
@@ -3987,12 +3987,12 @@ Sandship - Main Entrance:
 Sandship - Main Exit:
   type: exit
   subtype: statue
-  vanilla: Sand Sea - Sandship Dock Entrance
+  vanilla: Lanayru Sand Sea - Sandship Dock Entrance
 
 Sandship - <<Normal/Statue1>> Exit:
   type: exit
   subtype: statue
-  vanilla: Sand Sea - Sandship Dock Entrance
+  vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
   room: 0
@@ -4001,7 +4001,7 @@ Sandship - <<Normal/Statue1>> Exit:
 Sandship - <<Normal/Statue2>> Exit:
   type: exit
   subtype: statue
-  vanilla: Sand Sea - Sandship Dock Entrance
+  vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
   room: 1
@@ -4010,7 +4010,7 @@ Sandship - <<Normal/Statue2>> Exit:
 Sandship - <<Normal/Statue3>> Exit:
   type: exit
   subtype: statue
-  vanilla: Sand Sea - Sandship Dock Entrance
+  vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
   room: 6
@@ -4019,7 +4019,7 @@ Sandship - <<Normal/Statue3>> Exit:
 Sandship - <<Normal/Statue4>> Exit:
   type: exit
   subtype: statue
-  vanilla: Sand Sea - Sandship Dock Entrance
+  vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
   room: 9
@@ -4028,7 +4028,7 @@ Sandship - <<Normal/Statue4>> Exit:
 Sandship - <<Normal/Statue5>> Exit:
   type: exit
   subtype: statue
-  vanilla: Sand Sea - Sandship Dock Entrance
+  vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
   room: 13
@@ -4044,7 +4044,7 @@ Sandship - Boss Room - Entrance:
 Sandship - Boss Room - <<Crest Hit>> Exit:
   type: exit
   subtype: statue
-  vanilla: Sand Sea - Sandship Dock Entrance
+  vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: B301
   room: 0
@@ -4053,7 +4053,7 @@ Sandship - Boss Room - <<Crest Hit>> Exit:
 Sandship - Boss Room - <<??>> Exit:
   type: exit
   subtype: statue
-  vanilla: Sand Sea - Sandship Dock Entrance
+  vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: B301
   room: 0

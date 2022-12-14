@@ -75,7 +75,7 @@
 - The initial cutscene of the first trapped mogma was removed to prevent a possible softlock when activating it out of order
 - A clawshot target was added near the first trapped mogma chest. This is so you can escape from the corner without dying without gust bellows
 ## Lanayru
-- The Mines Entry bird statue is unlocked from the start to make sure the player can always go back
+- The Mine Entry bird statue is unlocked from the start to make sure the player can always go back
 - The cutscene before the first timeshift stone has been removed
 - The bokoblins for the hook beetle fight do not disappear even with Hook Beetle in inventory
 ### Lanayru Mining Facility

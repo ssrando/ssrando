@@ -61,7 +61,7 @@ JUNK_TEXT = [
     'They say that there is something called a "hash" that makes it easier for people to verify that they are playing the right seed',
     "They say that the bad seed rollers are still in the car, seeking for a safe refugee",
     "Have you heard the tragedy of Darth Kolok the Pause? I thought not, it's not a story the admins would tell you",
-    "Sand Sea is the most hated region in the game, because Sand is coarse, rough and gets everywhere",
+    "Lanayru Sand Sea is the most hated region in the game, because Sand is coarse, rough and gets everywhere",
     "They say that rice has magical properties when visiting Yerbal",
     "They say that Jannon is still jammin to this day",
     "They say that there is only one place where the Slingshot beats the Bow",
@@ -417,10 +417,10 @@ class HintDistribution:
                     zone = FARON_WOODS
                 elif zone == MOGMA_TURF:
                     zone = ELDIN_VOLCANO
-                elif zone == LANAYRU_MINES:
+                elif zone == LANAYRU_MINE:
                     zone = LANAYRU_DESERT
                 elif zone == LANAYRU_GORGE:
-                    zone = SAND_SEA
+                    zone = LANAYRU_SAND_SEA
                 return CubeSotsGoalGossipStoneHint(loc, item, zone, goal)
         zone = self.areas.checks[loc]["hint_region"]
         return SotsGoalGossipStoneHint(loc, item, zone, goal)

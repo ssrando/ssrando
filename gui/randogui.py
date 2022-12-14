@@ -220,13 +220,13 @@ class RandoGUI(QMainWindow):
             "eldin_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
             "the main part of Eldin Volcano and Mogma Turf",
             "lanayru_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in the main part of Lanayru Desert, Temple of Time and Lanayru Mines",
+            "in the main part of Lanayru Desert, Temple of Time and Lanayru Mine",
             "floria_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
             "in Lake Floria",
             "summit_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
             "in Volcano Summit",
             "sand_sea_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in Sand Sea",
+            "in Lanayru Sand Sea",
         }
         for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))

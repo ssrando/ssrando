@@ -621,7 +621,7 @@ Sky - Beedle's Island Cage Goddess Chest:
   # Getting this Chest during the day is possible but rather difficult
 
 Sky - Northeast Island Goddess Chest behind Bombable Rocks:
-  Goddess Cube at Lanayru Mines Entrance & Bomb Bag
+  Goddess Cube at Lanayru Mine Entrance & Bomb Bag
   # Scene Flag 4x01 is "Blow Up rocks on northeastern island"
 
 Sky - Northeast Island Cage Goddess Chest:
@@ -1169,38 +1169,38 @@ Goddess Cube near FS Entrance:
 Can Access Lanayru:
   Amber Tablet
 
-## Lanayru Mines
+## Lanayru Mine
 
-Lanayru Mines - Chest behind First Landing:
+Lanayru Mine - Chest behind First Landing:
   Can Access Lanayru & Clawshots
 
-Goddess Cube at Lanayru Mines Entrance:
+Goddess Cube at Lanayru Mine Entrance:
   Can Access Lanayru & Goddess Sword
 
-Can Activate Mines First Timeshift Stone:
+Can Activate Mine First Timeshift Stone:
   Can Hit Timeshift Stone | Itemless First Timeshift Stone Trick
   # In swordless, you can roll a bomb to the stone, even though it's a bit far
 
-Lanayru Mines - Chest near First Timeshift Stone:
-  Can Access Lanayru & Can Activate Mines First Timeshift Stone
+Lanayru Mine - Chest near First Timeshift Stone:
+  Can Access Lanayru & Can Activate Mine First Timeshift Stone
 
-Can Access Second Part of Lanayru Mines:
+Can Access Second Part of Lanayru Mine:
   Can Access Lanayru &
-  Can Activate Mines First Timeshift Stone &
-  (Bomb Bag | Hook Beetle | Lanayru Mines Brakeslide Trick | (Unlocked Endurance Potion & Bottle))
+  Can Activate Mine First Timeshift Stone &
+  (Bomb Bag | Hook Beetle | Lanayru Mine Brakeslide Trick | (Unlocked Endurance Potion & Bottle))
 
-Lanayru Mines - Chest behind Statue:
-  Can Access Second Part of Lanayru Mines & (Bomb Bag | Hook Beetle)
+Lanayru Mine - Chest behind Statue:
+  Can Access Second Part of Lanayru Mine & (Bomb Bag | Hook Beetle)
 
-Lanayru Mines - Chest at the End of Mines:
-  Can Access Second Part of Lanayru Mines
+Lanayru Mine - Chest at the End of Mine:
+  Can Access Second Part of Lanayru Mine
 
 ## Lanayru Desert
 
 # First Part
 
 Can Access Lanayru Desert:
-  Can Access Second Part of Lanayru Mines | Can Access Sand Oasis
+  Can Access Second Part of Lanayru Mine | Can Access Sand Oasis
 
 Can Access Higher Part near Entrance:
   Can Access Lanayru Desert & Bomb Bag
@@ -1257,7 +1257,7 @@ Goddess Cube in Sand Oasis:
 
 Lanayru Desert - Chest near Sand Oasis:
   Can Access Lanayru Desert & Clawshots
-  # Hope this is really a BiTWarp from desert and not from Mines
+  # Hope this is really a BiTWarp from desert and not from Mine
 
 # Temple of Time
 
@@ -1440,32 +1440,32 @@ Lanayru Gorge - Lanayru Soth:
 
 ## Lanayru Sand Sea
 
-Can Access Sand Sea:
+Can Access Lanayru Sand Sea:
   Can Access Lanayru Caves & Lanayru Caves Small Key x1 & Clawshots
   # You can activate Skipper's boat with clawshots
 
 Goddess Cube in Ancient Harbour:
-  Can Access Sand Sea & Clawshots & Goddess Sword
+  Can Access Lanayru Sand Sea & Clawshots & Goddess Sword
 
 Lanayru Sand Sea - Rupee Harbor First Pillar:
-  Can Access Sand Sea & Beetle
+  Can Access Lanayru Sand Sea & Beetle
 
 Lanayru Sand Sea - Rupee Harbor Entrance Crown Right:
-  Can Access Sand Sea & Quick Beetle
+  Can Access Lanayru Sand Sea & Quick Beetle
 
 Lanayru Sand Sea - Rupee Harbor Entrance Crown Left:
-  Can Access Sand Sea & Quick Beetle
+  Can Access Lanayru Sand Sea & Quick Beetle
 
 
-Can Access Dungeon Entrance in Sand Sea:
-  Can Access Sand Sea & Sea Chart & Sword
+Can Access Dungeon Entrance in Lanayru Sand Sea:
+  Can Access Lanayru Sand Sea & Sea Chart & Sword
   # You need any sword to be able to dowse
   # Scene Flag Cx40 is "Sandship is docked at its port"
 
 # Skipper's Retreat
 
 Can Get Past Skipper's Rock:
-  Can Access Sand Sea & (Bomb Bag | Hook Beetle | (Whip & Cactus Bomb Whip Trick))
+  Can Access Lanayru Sand Sea & (Bomb Bag | Hook Beetle | (Whip & Cactus Bomb Whip Trick))
   # You can whip the bomb on the cactus by first slashing it to make it swing
   # Scene Flag 2x02 is "Blow Up Rock in Skipper's Retreat"
 
@@ -1495,36 +1495,36 @@ Lanayru Sand Sea - Skipper's Retreat - Skydive Chest:
 # Shipyard
 
 Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05: # Roller Coaster Minigame
-  Can Access Sand Sea & Gust Bellows & Can Uncover and Defeat Moldarach
+  Can Access Lanayru Sand Sea & Gust Bellows & Can Uncover and Defeat Moldarach
   # Do you need to defeat Moldarach ? #UNSURE
 
-Sand Sea - Gossip Stone in Shipyard:
-  Can Access Sand Sea
+Lanayru Sand Sea - Gossip Stone in Shipyard:
+  Can Access Lanayru Sand Sea
 
 # Pirate Stronghold
 
 Lanayru Sand Sea - Pirate Stronghold - First Chest:
-  Can Access Sand Sea
+  Can Access Lanayru Sand Sea
   # You can run past the Beamos without killing it. You can also run past the boko baba (in logic?) #UNSURE
 
 Lanayru Sand Sea - Pirate Stronghold - Second Chest:
-  Can Access Sand Sea
+  Can Access Lanayru Sand Sea
 
 Lanayru Sand Sea - Pirate Stronghold - Third Chest:
-  Can Access Sand Sea
+  Can Access Lanayru Sand Sea
 
 Goddess Cube in Pirate Stronghold:
-  Can Access Sand Sea & Can Defeat Beamos & Can Defeat Armos & Goddess Sword
+  Can Access Lanayru Sand Sea & Can Defeat Beamos & Can Defeat Armos & Goddess Sword
   # Technically this is possible without beating a Beamos but it's hard
 
 Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar East:
-  Can Access Sand Sea & Quick Beetle
+  Can Access Lanayru Sand Sea & Quick Beetle
 
 Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar West:
-  Can Access Sand Sea & Quick Beetle
+  Can Access Lanayru Sand Sea & Quick Beetle
 
 Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose:
-  Can Access Sand Sea & Beetle
+  Can Access Lanayru Sand Sea & Beetle
 
 #Lanayru Gorge - Boss Rush - 4 Bosses:
 

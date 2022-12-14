@@ -800,7 +800,7 @@
         <item row="2" column="2">
          <widget class="QCheckBox" name="progression_sand_sea_goddess">
           <property name="text">
-           <string>Sand Sea</string>
+           <string>Lanayru Sand Sea</string>
           </property>
          </widget>
         </item>

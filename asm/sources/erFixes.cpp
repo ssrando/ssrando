@@ -32,7 +32,7 @@ void doErFixes()
     }
     else if (stageName == 'F300')
     {
-        u16 subArea = *(u16 *)&SPAWN_SLAVE.name[4]; // '\0X' for Desert, '_1' for mines
+        u16 subArea = *(u16 *)&SPAWN_SLAVE.name[4]; // '\0X' for Desert, '_1' for mine
         // Lanayru Desert
         if (subArea <= 0xFF)
         {
@@ -46,17 +46,17 @@ void doErFixes()
                 }
             }
             else
-                // Lanayru Desert from Mines
+                // Lanayru Desert from Mine
                 if (SPAWN_SLAVE.entrance == 2)
             {
                 goto doTimeshiftFix;
             }
         }
         else
-            // Lanayru Mines
+            // Lanayru Mine
             if (subArea == '_1')
         {
-            // Mines from Desert
+            // Mine from Desert
             if (SPAWN_SLAVE.entrance == 1)
             {
                 goto doTimeshiftFix;
@@ -79,6 +79,6 @@ doTimeshiftFix:
     }
     SCENEFLAG_MANAGER->unsetFlagGlobal(7, 111);
     SCENEFLAG_MANAGER->unsetFlagGlobal(7, 108);
-    // last timeshift stone in mines
+    // last timeshift stone in mine
     SCENEFLAG_MANAGER->setFlagGlobal(7, 113);
 }

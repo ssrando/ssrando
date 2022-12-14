@@ -15,7 +15,7 @@ VANILLA_DUNGEON_ACCESSES = {
     ET: EIN("Eldin - Volcano - Exit to Earth Temple"),
     LMF: EIN("Lanayru - Desert - Exit to Lanayru Mining Facility"),
     AC: EIN("Faron - Lake Floria - Exit to Ancient Cistern"),
-    SSH: EIN("Lanayru - Sand Sea - Sandship Dock Exit"),
+    SSH: EIN("Lanayru - Lanayru Sand Sea - Sandship Dock Exit"),
     FS: EIN("Eldin - Volcano Summit - Exit to Fire Sanctuary"),
     SK: EIN("Skyloft - Exit to Sky Keep"),
 }
@@ -52,7 +52,7 @@ SILENT_REALM_EXITS_POOL = {
 
 SILENT_REALM_ACCESSES = {
     EIN("Skyloft - Trial Gate Exit"),
-    EIN("Faron - Woods - Trial Gate Exit"),
+    EIN("Faron - Faron Woods - Trial Gate Exit"),
     EIN("Lanayru - Desert - Trial Gate Exit"),
     EIN("Eldin - Volcano - Trial Gate Exit"),
 }

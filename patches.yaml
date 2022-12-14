@@ -2754,7 +2754,7 @@ F300: # lanayru Main Area
       anglez: 0
       id: 0xFE50
       name: Tubo
-F300_1: # Lanayru Mines
+F300_1: # Lanayru Mine
   - name: Layer override
     type: layeroverride
     override:
