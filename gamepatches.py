@@ -22,9 +22,9 @@ from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 from musicrando import music_rando
 
-from graph_logic.old_logic import check_static_option_req
-from graph_logic.constants import *
-from graph_logic.placement_file import PlacementFile
+from logic.old_logic import check_static_option_req
+from logic.constants import *
+from logic.placement_file import PlacementFile
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 

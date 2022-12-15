@@ -1,8 +1,8 @@
 from collections import OrderedDict
 from typing import TextIO
-from graph_logic.logic import Placement
-from graph_logic.constants import *
-from graph_logic.logic_input import Areas
+from logic.logic import Placement
+from logic.constants import *
+from logic.logic_input import Areas
 from hints.hint_types import GossipStoneHintWrapper
 from options import OPTIONS, Options
 import itertools

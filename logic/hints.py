@@ -1,8 +1,8 @@
 from enum import Enum
-from graph_logic.constants import *
-from graph_logic.inventory import EXTENDED_ITEM
-from graph_logic.logic import DNFInventory
-from graph_logic.logic_input import Areas
+from logic.constants import *
+from logic.inventory import EXTENDED_ITEM
+from logic.logic import DNFInventory
+from logic.logic_input import Areas
 from hints.hint_distribution import MAX_HINTS_PER_STONE, HintDistribution
 from hints.hint_types import *
 from .randomize import LogicUtils, UserOutput

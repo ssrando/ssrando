@@ -10,13 +10,13 @@ import json
 import yaml
 import subprocess
 
-from graph_logic.constants import *
-from graph_logic.inventory import EXTENDED_ITEM
-from graph_logic.fill_algo_common import UserOutput
-from graph_logic.randomize import Rando
-from graph_logic.hints import Hints
-from graph_logic.logic_input import Areas
-from graph_logic.placement_file import PlacementFile
+from logic.constants import *
+from logic.inventory import EXTENDED_ITEM
+from logic.fill_algo_common import UserOutput
+from logic.randomize import Rando
+from logic.hints import Hints
+from logic.logic_input import Areas
+from logic.placement_file import PlacementFile
 import SpoilerLog
 
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT

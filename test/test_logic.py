@@ -5,14 +5,14 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from ssrando import Randomizer
 from options import Options
-from yaml_files import graph_requirements, checks, hints, map_exits
-from graph_logic.logic_input import Areas
-from graph_logic.fill_algo_common import UserOutput
+from yaml_files import requirements, checks, hints, map_exits
+from logic.logic_input import Areas
+from logic.fill_algo_common import UserOutput
 
 import time
 import json
 
-areas = Areas(graph_requirements, checks, hints, map_exits)
+areas = Areas(requirements, checks, hints, map_exits)
 useroutput = UserOutput(Exception, lambda s: None)
 
 

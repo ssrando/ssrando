@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Optional
 
-from graph_logic.constants import EXTENDED_ITEM_NAME
+from logic.constants import EXTENDED_ITEM_NAME
 
 
 @dataclass

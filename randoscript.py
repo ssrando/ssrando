@@ -1,11 +1,11 @@
 from collections import OrderedDict
 import sys
 import argparse
-from graph_logic.logic_input import Areas
-from yaml_files import graph_requirements, checks, hints, map_exits
+from logic.logic_input import Areas
+from yaml_files import requirements, checks, hints, map_exits
 
 from ssrando import Randomizer, PlandoRandomizer, VERSION
-from graph_logic.placement_file import PlacementFile
+from logic.placement_file import PlacementFile
 from options import OPTIONS, Options
 
 
@@ -142,7 +142,7 @@ def main():
 
     assert options is not None
 
-    areas = Areas(graph_requirements, checks, hints, map_exits)
+    areas = Areas(requirements, checks, hints, map_exits)
 
     if bulk_mode:
         from multiprocessing import Process

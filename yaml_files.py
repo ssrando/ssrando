@@ -47,7 +47,7 @@ glitched_requirements_file = (
 glitched_requirements = yaml_load(glitched_requirements_file)
 
 
-def requirements(folder: Path):
+def requirements_gen(folder: Path):
     files = sorted(os.listdir(folder))
     files = filter(lambda s: s[0].isupper() and s.endswith(".yaml"), files)
     requirements = {
@@ -60,5 +60,5 @@ def requirements(folder: Path):
     return requirements
 
 
-graph_requirements_folder = RANDO_ROOT_PATH / "graph_logic" / "requirements"
-graph_requirements = requirements(graph_requirements_folder)
+requirements_folder = RANDO_ROOT_PATH / "logic" / "requirements"
+requirements = requirements_gen(requirements_folder)

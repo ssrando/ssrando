@@ -3,13 +3,13 @@ from collections import defaultdict
 import json
 from random import Random
 from typing import Literal
-from graph_logic.inventory import EXTENDED_ITEM
-from graph_logic.logic_input import Areas
+from logic.inventory import EXTENDED_ITEM
+from logic.logic_input import Areas
 
-from graph_logic.constants import *
+from logic.constants import *
 from hints.hint_types import *
 from options import Options
-from graph_logic.randomize import LogicUtils
+from logic.randomize import LogicUtils
 
 MAX_HINTS_PER_STONE = 2
 

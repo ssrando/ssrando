@@ -5,14 +5,14 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 from ssrando import Hints, Randomizer
 from options import Options
-from graph_logic.logic_input import Areas
-from graph_logic.placement_file import PlacementFile
-from graph_logic.fill_algo_common import UserOutput
-from yaml_files import graph_requirements, checks, hints, map_exits
+from logic.logic_input import Areas
+from logic.placement_file import PlacementFile
+from logic.fill_algo_common import UserOutput
+from yaml_files import requirements, checks, hints, map_exits
 
 
 def test_roundtrip():
-    areas = Areas(graph_requirements, checks, hints, map_exits)
+    areas = Areas(requirements, checks, hints, map_exits)
     useroutput = UserOutput(Exception, lambda s: None)
     opts = Options()
     opts.set_option("dry-run", True)
