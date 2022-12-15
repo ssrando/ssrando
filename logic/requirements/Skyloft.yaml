@@ -85,7 +85,9 @@ Central Skyloft:
     Exit to Sky: Day
     Skyloft - Upper Skyloft: Nothing
     Skyloft Village: Nothing
-    Near Temple Entrance: Open Temple Entrance & Day & Clawshots
+    # omit SoT here intentionally, see the comment on that
+    # area for an explanation
+    Near Temple Entrance: Day & Clawshots
     Waterfall Island: Clawshots
     Waterfall Cave Upper: Open Cave Entrance
   locations:
@@ -106,7 +108,6 @@ Central Skyloft:
     Past Waterfall Cave - Crystal after Waterfall Cave: Night & Waterfall Cave Crystals from above
     Past Waterfall Cave - Crystal in Loftwing Prison: Night & Waterfall Cave Crystals from above
     Crystal on Waterfall Island: Night & Crystal on Waterfall Island from the ground
-    Open Temple Entrance: Stone of Trials & Day
     Open Cave Entrance: Sword | Bomb Bag
 
   Bird Nest:
@@ -172,10 +173,17 @@ Central Skyloft:
     exits:
       Exit: Nothing
 
+  # Pretend this area is reachable without SoT and instead require it
+  # for the exit to SK
+  # the reason for this is twofold:
+  # - only requiring SoT for the actual exit doesn't trip up the algorithm that
+  #   separates progress items from nonprogress
+  # - When coming from SK in ER, when it hasn't been opened yet *doesn't* place
+  #   you on the platform near the entrance (cause it doesn't exist), so you always need SoT to enter SK
   Near Temple Entrance:
     allowed-time-of-day: DayOnly
     exits:
-      Exit to Sky Keep: Nothing
+      Exit to Sky Keep: Stone of Trials
       Central Skyloft: Clawshots
 
   Waterfall Island:
