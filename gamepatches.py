@@ -22,7 +22,7 @@ from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 from musicrando import music_rando
 
-from logic.logic import Logic
+from graph_logic.old_logic import check_static_option_req
 from graph_logic.constants import *
 from graph_logic.placement_file import PlacementFile
 
@@ -1171,7 +1171,7 @@ class GamePatcher:
         return not (
             isinstance(entry, dict)
             and "onlyif" in entry
-            and not Logic.check_static_option_req(
+            and not check_static_option_req(
                 entry["onlyif"], self.placement_file.options
             )
         )
@@ -1694,11 +1694,9 @@ class GamePatcher:
             )
 
     def add_impa_hint(self):
-        sot_region = "Stone of Trials not placed monkaS"
-        for location in self.placement_file.item_locations.keys():
-            item = self.placement_file.item_locations[location]
-            if item == "Stone of Trials":
-                sot_region = Logic.split_location_name_by_zone(location)[0]
+        item = STONE_OF_TRIALS
+        loc = {v: k for k, v in self.placement_file.item_locations.items()}[item]
+        region = self.areas.checks[loc]["hint_region"]
         self.eventpatches["502-CenterFieldBack"].append(
             {
                 "name": "Past Impa SoT Hint",
@@ -1706,7 +1704,7 @@ class GamePatcher:
                 "index": 6,
                 "text": break_lines(
                     f"Do not fear for <b<Zelda>>. I will watch over her here. Go now to "
-                    f"<b<{sot_region}>>. The <r<item you need to fulfill your destiny>> is there."
+                    f"<b<{region}>>. The <r<item you need to fulfill your destiny>> is there."
                 ),
             }
         )
@@ -2400,7 +2398,7 @@ class GamePatcher:
             flagregionid = FLAGINDEX_NAMES.index(flagregion)
             for flag in flags:
                 if not isinstance(flag, int):  # it's a dict with onlyif and flag
-                    if not Logic.check_static_option_req(
+                    if not check_static_option_req(
                         flag["onlyif"], self.placement_file.options
                     ):
                         # flag should not be set according to options
