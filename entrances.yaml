@@ -2183,7 +2183,7 @@ Floria Waterfall - Exit to Woods:
 
 
 
-# Skyview
+# Skyview Temple
 
 Skyview Temple - Main Entrance:
   type: entrance
@@ -2192,7 +2192,7 @@ Skyview Temple - Main Entrance:
   layer: 0
   entrance: 0
 
-Skyview Spring - Crest Hit Exit:
+Skyview Temple - Spring - Crest Hit Exit:
   type: exit
   subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple
@@ -2201,7 +2201,7 @@ Skyview Spring - Crest Hit Exit:
   room: 0
   index: 1
 
-Skyview Spring - <<Alternate>> Exit:
+Skyview Temple - Spring - <<Alternate>> Exit:
   type: exit
   subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple

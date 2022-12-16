@@ -359,7 +359,7 @@ Sky - Pumpkin Landing - Roof Goddess Chest:
   type: sky, goddess, faron goddess, dungeon
   Paths:
     - stage/F020/r0/l0/TBox/87
-  cube_region: Skyview
+  cube_region: Skyview Temple
 Sky - Lumpy Pumpkin - Chandelier:
   original item: Heart Piece
   type: sky, freestanding
@@ -1146,69 +1146,69 @@ Lanayru Gorge - Thunder Dragon's Reward:
 #    - event/
 
 
-Skyview - Chest on Tree Branch:
-  original item: Skyview Map
+Skyview Temple - Chest on Tree Branch:
+  original item: Skyview Temple Map
   type: faron, dungeon
   Paths:
     - stage/D100/r2/l0/TBox/64
-Skyview - Digging Spot:
-  original item: Skyview Small Key
+Skyview Temple - Digging Spot:
+  original item: Skyview Temple Small Key
   type: faron, dungeon, digging
   hints: sometimes
   text: in a <r<temple in the forest>> a mogma <r<buried>>
   Paths:
     - stage/D100/r4/l0/Soil/15
-Skyview - Chest behind Two Eyes:
-  original item: "Skyview Small Key #0"
+Skyview Temple - Chest behind Two Eyes:
+  original item: "Skyview Temple Small Key #0"
   type: faron, dungeon
   Paths:
     - stage/D100/r4/l0/TBox/67
   text: <r<two watchful eyes>> guard
-Skyview - Miniboss Room - Chest:
+Skyview Temple - Miniboss Room - Chest:
   original item: Progressive Beetle
   type: faron, dungeon
   Paths:
     - stage/D100/r10/l1/TBox/65
     - stage/D100/r10/l2/TBox/65
-Skyview - Item behind Bars:
+Skyview Temple - Item behind Bars:
   original item: Heart Piece
   type: faron, dungeon
   Paths:
     - stage/D100/r5/l0/Item/103
-Skyview - Second Hub - Rupee in Southeast Tunnel:
+Skyview Temple - Second Hub - Rupee in Southeast Tunnel:
   original item: "Red Rupee #35"
   type: faron, dungeon, freestanding
   Paths:
     - stage/D100/r5/l0/Item/65
-Skyview - Second Hub - Rupee in Southwest Tunnel:
+Skyview Temple - Second Hub - Rupee in Southwest Tunnel:
   original item: "Red Rupee #36"
   type: faron, dungeon, freestanding
   Paths:
     - stage/D100/r5/l0/Item/67
-Skyview - Second Hub - Rupee in East Tunnel:
+Skyview Temple - Second Hub - Rupee in East Tunnel:
   original item: "Red Rupee #37"
   type: faron, dungeon, freestanding
   Paths:
     - stage/D100/r5/l0/Item/66
-Skyview - Chest behind Three Eyes:
-  original item: "Skyview Small Key #1"
+Skyview Temple - Chest behind Three Eyes:
+  original item: "Skyview Temple Small Key #1"
   type: faron, dungeon
   Paths:
     - stage/D100/r7/l0/TBox/68
   hint: sometimes
   text: <r<three watchful eyes>> guard
-Skyview - Last Room - After Rope - Chest:
+Skyview Temple - Last Room - After Rope - Chest:
   original item: Red Rupee
   type: faron, dungeon
   Paths:
     - stage/D100/r9/l0/TBox/70
-Skyview - Boss Key Chest:
-  original item: Skyview Boss Key
+Skyview Temple - Boss Key Chest:
+  original item: Skyview Temple Boss Key
   type: faron, dungeon
   Paths:
     - stage/D100/r9/l0/TBox/66
 
-Skyview - Boss Room - Heart Container:
+Skyview Temple - Boss Room - Heart Container:
   original item: Heart Container
   type: faron, dungeon
   Paths:
@@ -1217,13 +1217,13 @@ Skyview - Boss Room - Heart Container:
     - stage/B100/r0/l3/HeartCo
     - stage/B100/r0/l4/HeartCo
 
-Skyview - Spring - Rupee on Pillar:
+Skyview Temple - Spring - Rupee on Pillar:
   original item: "Red Rupee #38"
   type: faron, dungeon, freestanding
   Paths:
     - stage/B100_1/r0/l0/Item/109
 
-Skyview - Spring - Ruby Tablet:
+Skyview Temple - Spring - Ruby Tablet:
   original item: Ruby Tablet
   type: faron, dungeon
   Paths:

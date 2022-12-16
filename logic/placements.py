@@ -67,8 +67,8 @@ BEEDLE_CHECKS = [
 VANILLA_BEEDLE_PLACEMENT = norm_vanilla(BEEDLE_CHECKS)
 
 SMALL_KEY_CHECKS = [
-    "Skyview - Chest behind Two Eyes",
-    "Skyview - Chest behind Three Eyes",
+    "Skyview Temple - Chest behind Two Eyes",
+    "Skyview Temple - Chest behind Three Eyes",
     "Lanayru Mining Facility - Big Hub - Chest",
     "Ancient Cistern - East Part - Chest",
     "Ancient Cistern - Basement Gutters - Bokoblin",
@@ -102,7 +102,7 @@ CAVES_KEY_RESTRICTION = norm_values({CAVES_KEY: "Lanayru - Caves"})
 
 
 BOSS_KEY_CHECKS = [
-    "Skyview - Boss Key Chest",
+    "Skyview Temple - Boss Key Chest",
     "Earth Temple - Boss Key Chest",
     "Lanayru Mining Facility - Boss Key Chest",
     "Ancient Cistern - Boss Key Chest",
@@ -123,7 +123,7 @@ DUNGEON_BOSS_KEYS_RESTRICTION = norm_values(
 )
 
 MAP_CHECKS = [
-    "Skyview - Chest on Tree Branch",
+    "Skyview Temple - Chest on Tree Branch",
     "Earth Temple - West Room - Chest",
     "Lanayru Mining Facility - Armos Fight Room - Chest",
     "Ancient Cistern - After Whip Hooks - Chest",

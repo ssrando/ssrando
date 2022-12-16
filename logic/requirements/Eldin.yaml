@@ -92,11 +92,6 @@ Volcano:
       Exit: Nothing
 
   Near Temple Entrance:
-    exits:
-      Temple Entrance Statue: Unlock Statue
-      Near Thrill Digger Cave: Near Thrill Digger Cave - Blow down Watchtower
-      Exit to Earth Temple: Open ET option | Key Piece x5
-      Hot Cave: Blow down Watchtower to Hot Cave
     locations:
       Unlock Statue: Nothing
       Blow down Watchtower to Hot Cave: Nothing
@@ -107,6 +102,11 @@ Volcano:
       Digging Spot in front of Earth Temple: Digging Mitts
       Digging Spot below Tower: Digging Mitts
       Digging Spot behind Boulder on Sandy Slope: Digging Mitts
+    exits:
+      Temple Entrance Statue: Unlock Statue
+      Near Thrill Digger Cave: Near Thrill Digger Cave - Blow down Watchtower
+      Exit to Earth Temple: Open ET option | Key Piece x5
+      Hot Cave: Blow down Watchtower to Hot Cave
 
   Hot Cave:
     locations:
@@ -164,10 +164,10 @@ Mogma Turf: # when randomizing this, need to find a way to force the skydiving a
 
 Silent Realm:
   hint-region: Eldin Silent Realm
-  exits:
-    Exit: Nothing
   locations:
     Fireshield Earrings: Nothing
+  exits:
+    Exit: Nothing
 
 # VOLCANO SUMMIT
 Volcano Summit:
@@ -187,14 +187,14 @@ Volcano Summit:
       General - Can Collect Water: Nothing
     exits:
       Exit: Nothing
+      Higher Area: Clawshots
 
     Higher Area:
-      entrance: Clawshots
-      exits:
-        Waterfall: Nothing
       locations:
         Chest behind Bombable Wall: Nothing
         Gossip Stone: Nothing
+      exits:
+        Waterfall: Nothing
 
 
   Outside Fire Sanctuary:

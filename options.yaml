@@ -366,7 +366,7 @@
     - Anywhere
   default: Own Dungeon - Restricted
   help: "Controls the placement of small keys.
-    Vanilla: keys will be in their vanilla locations (The Skyview Digging Spot will not contain a key).
+    Vanilla: keys will be in their vanilla locations (The Skyview Temple Digging Spot will not contain a key).
     Own Dungeon - Restricted: keys will be within their own dungeons (reduces the locations keys can appear,
     depending on logic settings). Lanayru Caves Key only: shuffles the Lanayru Caves Small Key."
   ui: option_small_key_mode
@@ -436,9 +436,9 @@
     - Fire Node - Brakeslide
     - Cactus Bomb Whip
     - Skipper's Retreat Fast Clawshots
-    # Skyview
-    - Skyview - Spider Roll
-    - Skyview Slingshot Shot
+    # Skyview Temple
+    - Skyview Temple - Spider Roll
+    - Skyview Temple Slingshot Shot
     # Earth Temple
     - Earth Temple - Keese Yeet
     - Earth Temple - Slope Stuttersprint

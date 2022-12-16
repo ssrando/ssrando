@@ -166,8 +166,8 @@ B100:
     destlayer: 0
     room: 0
     objtype: STAG
-B100_1: # skyview spring
-  - name: Fi text after skyview CS
+B100_1: # Skyview Temple Spring
+  - name: Fi text after Skyview Temple CS
     type: objpatch
     id: 0xFC73
     layer: 2
@@ -176,7 +176,7 @@ B100_1: # skyview spring
     object:
       params1: 0xFFFFFFF1 # last 1 is subtype (not talk to fi)
       trigscenefid: 104
-  - name: Fi text after skyview CS
+  - name: Fi text after Skyview Temple CS
     type: objmove
     id: 0xFC73
     layer: 2
@@ -190,7 +190,7 @@ B100_1: # skyview spring
     destlayer: 0
     room: 0
     objtype: STAG
-  - name: Skyview CS remove item
+  - name: Skyview Temple CS remove item
     type: objpatch
     room: 0
     index: 1
@@ -425,7 +425,7 @@ D003_3: # Sky Keep Wisdom Room
     override:
       - story_flag: -1
         night: 0
-        layer: 1 # always use layer 1, 
+        layer: 1 # always use layer 1,
   - name: Fi text
     type: objdelete
     id: 0xFC1B
@@ -1579,7 +1579,7 @@ F101: # Deep Woods
     layer: 1
     room: 0
     objtype: OBJ
-  - name: Remove Fi text infront of Skyview
+  - name: Remove Fi text infront of Skyview Temple
     type: objdelete
     id: 0xFCFA
     layer: 1
@@ -1797,7 +1797,7 @@ F103_1: # Flooded Great Tree
     objtype: EVNT
     object:
       item: -1 # No Faron Soth anymore
-D100: # Skyview
+D100: # Skyview Temple
   - name: Layer override
     type: layeroverride
     override: # only layer change is to layer 2 after water dragons scale
@@ -1903,7 +1903,7 @@ D100: # Skyview
     objtype: DOOR
     object:
       anglex: 0xFF09 # remove inside sceneflag
-  - name: Remove Skyview 2 Key door # it's now the same as layer 1
+  - name: Remove Skyview Temple 2 Key door # it's now the same as layer 1
     type: objpatch
     index: 2 # all have id FFFF :(
     layer: 2
@@ -2030,13 +2030,13 @@ D100: # Skyview
     layer: 2
     room: 7
     objtype: OBJ
-  - name: Remove initial Fi text in Skyview 1
+  - name: Remove initial Fi text in Skyview Temple 1
     type: objdelete
     id: 0xFC4C
     layer: 1
     room: 0
     objtype: OBJ
-  - name: Remove initial Fi text in Skyview 2
+  - name: Remove initial Fi text in Skyview Temple 2
     type: objdelete
     id: 0xFC4A
     layer: 2
@@ -3873,7 +3873,7 @@ F400: # Behind the Temple
     object:
       trigstoryfid: 2047
       untrigstoryfid: 2047
-  - name: Goron after Skyview
+  - name: Goron after Skyview Temple
     type: objdelete
     id: 0xFC2E
     layer: 0

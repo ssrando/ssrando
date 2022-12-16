@@ -1,11 +1,10 @@
 allowed-time-of-day: DayOnly
-toplevel-alias: Skyview Temple
-hint-region: Skyview
+hint-region: Skyview Temple
 
 # Global macros
 macros:
-  Skyview 2: Water Scale
-  Can Hit High Skyview Switches: Distance Activator | Bomb Bag & Bomb Throws Trick
+  Skyview Temple 2: Water Scale
+  Can Hit High Skyview Temple Switches: Distance Activator | Bomb Bag & Bomb Throws Trick
   Can Cut Tree: Sword | Bomb Bag
 
 Main:
@@ -20,8 +19,8 @@ Main:
   First Room:
     locations:
       Entry - Cut Tree: Can Cut Tree
-      Destroy Barricade: Skyview 2 | Bomb Bag
-      Switch to One Eye Room: Can Hit High Skyview Switches
+      Destroy Barricade: Skyview Temple 2 | Bomb Bag
+      Switch to One Eye Room: Can Hit High Skyview Temple Switches
       Goddess Wall Trigger: Ballad of the Goddess & Goddess Harp
 
     exits:
@@ -40,7 +39,7 @@ Main:
     locations:
       First Room - Destroy Barricade: Nothing
       Switch to Left Room: Can Hit Switch | One Water Raise & Water Scale
-      Switch to Right Room: Can Hit High Skyview Switches
+      Switch to Right Room: Can Hit High Skyview Temple Switches
       One Water Raise: Left Room - Raise Water | Right Room - Raise Water
 
     exits:
@@ -49,13 +48,13 @@ Main:
       Left Room: Switch to Left Room
       Right Room - Lower Area: Switch to Right Room
       Right Room - Upper Area: Left Room - Raise Water & Right Room - Raise Water | Clawshots
-      Second Hub: One Water Raise & Skyview Small Key
+      Second Hub: One Water Raise & Skyview Temple Small Key
 
     Left Room:
       locations:
-        Hit Vines: Can Hit High Skyview Switches | Goddess Sword | Whip
-        Spider Roll: Skyview - Spider Roll Trick
-        Raise Water: Hit Vines & Can Hit Switch | Spider Roll & Can Hit High Skyview Switches
+        Hit Vines: Can Hit High Skyview Temple Switches | Goddess Sword | Whip
+        Spider Roll: Skyview Temple - Spider Roll Trick
+        Raise Water: Hit Vines & Can Hit Switch | Spider Roll & Can Hit High Skyview Temple Switches
         Chest on Tree Branch: Hit Vines | Spider Roll
       exits:
         First Hub: Nothing
@@ -69,7 +68,7 @@ Main:
 
       After Crawlspace:
         locations:
-          Raise Water: Can Hit High Skyview Switches
+          Raise Water: Can Hit High Skyview Temple Switches
           Digging Spot: Impossible
           # We have to assume Link has to enter with water to get the check
         exits:
@@ -94,19 +93,19 @@ Main:
       Rupee in Southwest Tunnel: Beetle
       Rupee in East Tunnel: Beetle
       Switch to Miniboss Room: Distance Activator
-      Switch for Bars: Beetle | (Slingshot & Skyview Slingshot Shot Trick)
+      Switch for Bars: Beetle | (Slingshot & Skyview Temple Slingshot Shot Trick)
       Switch to Left Room: Beetle
       Item behind Bars: Switch for Bars | Whip
     exits:
-      First Hub: Skyview Small Key
+      First Hub: Skyview Temple Small Key
       Miniboss Room: Switch to Miniboss Room
       Left Rooms: Switch to Left Room
-      Staldra Room: Skyview Small Key x 2
+      Staldra Room: Skyview Temple Small Key x 2
       Last Room - Before Rope: Last Room - Unlock Shortcut to Second Hub
 
     Miniboss Room:
       locations:
-        Chest: Sword | Skyview 2
+        Chest: Sword | Skyview Temple 2
       exits:
         Second Hub: Nothing
 
@@ -120,23 +119,23 @@ Main:
       locations:
         Can Defeat Staldra: Sword | Bomb Bag
       exits:
-        Second Hub: Skyview Small Key
+        Second Hub: Skyview Temple Small Key
         Last Room - Near East Entrance: Can Defeat Staldra
 
   Last Room:
     Near East Entrance:
       locations:
-        Deal with Hanging Skulltula: Bomb Bag | Goddess Sword | Beetle | Bow | Skyview 2
+        Deal with Hanging Skulltula: Bomb Bag | Goddess Sword | Beetle | Bow | Skyview Temple 2
         # A bomb knocks the Skulltula away. A skyward strike can knock it away too.
-        # Both the Beetle and the bow can cut it down. There is no spider anymore in Skyview.
+        # Both the Beetle and the bow can cut it down. There is no spider anymore in Skyview Temple 2.
       exits:
         Second Hub - Staldra Room: Nothing
         Before Rope: Deal with Hanging Skulltula
 
     Before Rope:
       locations:
-        Near East Entrance - Deal with Hanging Skulltula: Bomb Bag | Goddess Sword | Beetle | Bow | Skyview 2
-        Unlock Shortcut to Second Hub: Can Hit High Skyview Switches
+        Near East Entrance - Deal with Hanging Skulltula: Bomb Bag | Goddess Sword | Beetle | Bow | Skyview Temple 2
+        Unlock Shortcut to Second Hub: Can Hit High Skyview Temple Switches
         Deal with Archers: Long Range Skyward Strike | Hook Beetle | Bow
       exits:
         Near East Entrance: Near East Entrance - Deal with Hanging Skulltula
@@ -152,7 +151,7 @@ Main:
       exits:
         Before Rope: Before Rope - Deal with Archers
         Near Boss Key Chest: Hit Vines
-        Boss Door: Skyview Boss Key
+        Boss Door: Skyview Temple Boss Key
 
     Near Boss Key Chest:
       locations:
@@ -170,12 +169,12 @@ Boss Room:
     Exit to Spring: Beat Ghirahim
 
 Spring:
-  toplevel-alias: Skyview Spring
+  toplevel-alias: Skyview Temple Spring
   locations:
     Rupee on Pillar: Beetle
     Ruby Tablet: Goddess Sword
     Goddess Cube: Goddess Sword
-    Sacred Water: Bottle & Skyview 2
+    Sacred Water: Bottle & Skyview Temple 2
   exits:
     Exit: Nothing
     # Crest Hit: Ruby Tablet

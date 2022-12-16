@@ -18,16 +18,16 @@ Mine:
     exits:
       First Time Entrance: Impossible
       Statue: Unlock Statue
+      Higher Area: Clawshots
       Statues Area: Timeshift Stone
 
     Higher Area:
-      entrance: Clawshots
+      locations:
+        Chest: Nothing
       exits:
         Entry: Nothing
         Caves Entrance: Clawshots
 
-      locations:
-        Chest: Nothing
 
     Caves Entrance:
       exits:
@@ -64,24 +64,23 @@ Desert:
     Shared Statue Exit: Impossible  # Common for all, so placed here
 
   Entry:
-
-    High Ledge after Vines:
-      entrance: Entry - Timeshift Stone
-      exit: { Entry: Nothing }
-      locations:
-        Retrieve Party Wheel: Sky - Fun Fun Island - Start Dodoh's Quest
-        Chest: Nothing
-
     locations:
       Unlock Statue: Nothing
       Blow up Rock for Timeshift Stone: Bomb Bag
       Timeshift Stone: Blow up Rock for Timeshift Stone & Can Hit Timeshift Stone
-
     exits:
       Exit to Mine: Timeshift Stone # I can't assume the minecart is available, right ?
       Desert - Shared Statue Exit: Unlock Statue
       Desert Entrance Statue Entrance: Impossible
+      High Ledge after Vines: Timeshift Stone
       Near Hook Beetle Fight: Nothing
+
+    High Ledge after Vines:
+      locations:
+        Retrieve Party Wheel: Sky - Fun Fun Island - Start Dodoh's Quest
+        Chest: Nothing
+      exits:
+        Entry: Nothing
 
   Near Hook Beetle Fight:
     locations:
@@ -182,34 +181,34 @@ Desert:
       North Desert Statue Entrance: Impossible
       Trial Gate: Open Trial Gate
       Lightning Node: Open Lightning Node
+      Secret Passageway: Open Secret Passageway
 
 
     Secret Passageway:
-      entrance: Open Secret Passageway
-      exits:
-        North Part: Nothing
       locations:
         Chest: Nothing
         Goddess Cube: Clawshots
+      exits:
+        North Part: Nothing
 
     Lightning Node:
       Present:
-        exits:
-          Exit: Nothing
-          Past: Timeshift Stone
         locations:
           Blow up Rock for Timeshift Stone: Bomb Bag
           Timeshift Stone: Blow up Rock for Timeshift Stone & Can Hit Timeshift Stone
+        exits:
+          Exit: Nothing
+          Past: Timeshift Stone
 
       Past:
-        exits:
-          Present - Exit: Nothing
-          Present: Projectile Item
-          Present from afar: Beetle | Bow | Bomb Bag
         locations:
           First Chest: Nothing
           Second Chest: Nothing
           Lightning Node: Sword
+        exits:
+          Present - Exit: Nothing
+          Present: Projectile Item
+          Present from afar: Beetle | Bow | Bomb Bag
 
       Present from afar:
         locations:
@@ -236,38 +235,36 @@ Desert:
 
     Fire Node:
       Present:
+        locations:
+          Blow up Rock for Timeshift Stone: Bomb Bag
+          Timeshift Stone: Blow up Rock for Timeshift Stone & Can Hit Timeshift Stone
         exits:
           Exit: Nothing
           Past: Timeshift Stone
           Present after Sand:
             Can Defeat Ampilus | Fire Node - Brakeslide Trick | Present after Sand - Push Box
-        locations:
-          Blow up Rock for Timeshift Stone: Bomb Bag
-          Timeshift Stone: Blow up Rock for Timeshift Stone & Can Hit Timeshift Stone
 
       Present after Sand:
+        locations:
+          Shortcut Chest: Nothing
+          Push Box: Nothing
         exits:
           Past after Void: Present - Timeshift Stone & Projectile Item
           Present: Nothing
 
-        locations:
-          Shortcut Chest: Nothing
-          Push Box: Nothing
-
 
       Past:
+        locations:
+          First Chest: Nothing
+          Second Chest: Nothing
         exits:
           Present - Exit: Nothing
           Present: Projectile Item | Bomb Bag
           Past after Void: Present after Sand - Push Box
-        locations:
-          First Chest: Nothing
-          Second Chest: Nothing
 
       Past after Void:
         locations:
           Open Grate: Hook Beetle
-
         exits:
           Past: Nothing
           Past after Grate: Open Grate
@@ -331,10 +328,10 @@ Temple of Time:
 
 Silent Realm:
   hint-region: Lanayru Silent Realm
-  exits:
-    Exit: Nothing
   locations:
     Clawshots: Nothing
+  exits:
+    Exit: Nothing
 
 Caves:
   toplevel-alias: Lanayru Caves
@@ -370,15 +367,15 @@ Sand Sea:
   hint-region: Sand Sea
   Ancient Harbour:
     toplevel-alias: Sand Sea Docks
+
     Near Exit to Caves:
-      entrance: Clawshots
-      exits:
-        Exit to Caves: Nothing
-        Ancient Harbour: Clawshots
       locations:
         Left Rupee on Entrance Crown: Quick Beetle
         Right Rupee on Entrance Crown: Quick Beetle
         Rupee on First Pillar: Beetle
+      exits:
+        Exit to Caves: Nothing
+        Ancient Harbour: Clawshots
 
     locations:
       Goddess Cube: Clawshots & Goddess Sword
@@ -386,6 +383,7 @@ Sand Sea:
       Ship Timeshift Stone: Distance Activator | Goddess Sword | Bomb Bag
 
     exits:
+      Near Exit to Caves: Clawshots
       Dock: Ship Timeshift Stone
       Exit to Sandship: Sand Sea - Shoot down Sandship
       Statue: Unlock Statue

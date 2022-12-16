@@ -52,12 +52,12 @@
 - The sacred water quest is skipped, the waterfall in front of Ancient Cistern is removed
 - Many Fi Texts are removed
 ### Skyview Temple
-- Obtaining Water Dragon scale changes Skyview to it's layer 2 state (where you are supposed to get sacred water). This naturally changes a lot of things about the dungeon, such as the enemies you will encounter
+- Obtaining Water Dragon scale changes Skyview Temple to it's layer 2 state (where you are supposed to get sacred water). This naturally changes a lot of things about the dungeon, such as the enemies you will encounter
 - On layer 2, the shortcut boards from the first room are already gone. The Mogmas also don't trigger cutscenes anymore (except the first one)
 - On layer 2, one dig spot in the three eye room was removed to prevent it blocking the box when trying to push it
 - The key door to the main area of the dungeon needs only one key on both layers, thus removing one small key in the dungeon, to a total of 2
 - After opening the Beetle chest, the door out of the miniboss room automatically opens, preventing a softlock without beetle
-- Some pots have been added that will give you bombs. This is to help players having to go through Skyview with only Bombs
+- Some pots have been added that will give you bombs. This is to help players having to go through Skyview Temple with only Bombs
 ### Ancient Cistern
 - After raising the statue all the way up, it's possible to reset the statues position by talking to the stone tablet next to the boss key hole. This is important in order to be able to reach the whip chest and the basement chest
 - The cutscene inside the statue has been removed

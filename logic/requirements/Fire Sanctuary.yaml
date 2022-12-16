@@ -39,10 +39,10 @@ Main:
         Second Room: Nothing
 
     Balcony:
-      exits:
-        Second Room: Defeat Magmanos
       locations:
         Chest: Nothing
+      exits:
+        Second Room: Defeat Magmanos
 
     locations:
       Chest: Nothing
@@ -55,12 +55,12 @@ Main:
       First Bridge: Nothing
 
   First Bridge:
+    locations:
+      Lizalfos Fight: Can Defeat Lizalfos
     exits:
       Second Room: Lizalfos Fight
       Room with Water Plant: Lizalfos Fight
       Second Bridge - Left: Second Bridge - Unlock Shortcut to First Bridge
-    locations:
-      Lizalfos Fight: Can Defeat Lizalfos
 
   Room with Water Plant:
     locations:

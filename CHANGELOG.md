@@ -25,7 +25,7 @@
   - Entering Flooded Great Tree for the first time automatically starts the Tadtones story quest
   - New logical option for completing the Owlan's Crystals check
     - Added access to Flooded Faron as an alternative to needing bomb bag
-- Machi is no longer rescued after beating Skyview
+- Machi is no longer rescued after beating Skyview Temple
 - Added custom dowsing images for new chest dowsing functionality (by YourAverageLink)
 - Shooting the bell during pumpkin archery ends the minigame immediately
 - Removed first time textboxes (by CovenEsme)
@@ -53,7 +53,7 @@
 
 ## 1.3.0
 ### Options
-- Added bomb throw tricks for Beedle's Shop and Skyview (by NULL)
+- Added bomb throw tricks for Beedle's Shop and Skyview Temple (by NULL)
 - Added option to randomize Triforces (by YourAverageLink)
   - Skip Skykeep has been split into two new triforce-related options: Triforce Required & Triforce Shuffle
   - When Triforce Required is enabled, the door to Hylia's Realm will only open if the player has the full Triforce; a confirmation textbox will appear in Hylia's Realm if the Triforce is complete.
@@ -104,16 +104,16 @@
       - The fixed count specified in a hint distribution is multiplied by the required dungeon count. For example, a fixed of 1 and 3 required dungeons means 3 goal hints will be placed
       - The order of dungeon boss goals for goal hints is randomized once at the start, and then chosen in sequence to try to ensure one exists for each goal, if possible.
         - Example: If there are 3 required dungeons and 1 fixed goal hint (3 after multiplication by dungeon count, with 0 weight), there will be one goal hint for each of the three goals.
-        - Exception: If there are no applicable goal-satisfying items left for a goal (can happen if already always/sometimes hinted, or with low-requirement dungeons like Skyview), the hint will be placed for the next goal in the chain (potentially causing a second goal hint for one of the goals)
+        - Exception: If there are no applicable goal-satisfying items left for a goal (can happen if already always/sometimes hinted, or with low-requirement dungeons like Skyview Temple), the hint will be placed for the next goal in the chain (potentially causing a second goal hint for one of the goals)
     - Some of these hint types existed in prior versions, but users had no control over them
 - Changed item hints, that point to a specific location, to use the same hint format as location hints
 - Temple of Time is always in post LMF finish state
-- Beating Skyview (even if it's in a different dungeon) rescues Machi
+- Beating Skyview Temple (even if it's in a different dungeon) rescues Machi
 - Beating Ancient Cistern (even if it's in a different dungeon) removes the void in the Great Tree
 - Added "Main Node" option to Open LMF (by YourAverageLink)
   - When enabled, the fire, water, and lightning nodes will start out as active, but the player still needs to activate the main node (which requires an explosive to reveal the timeshift stone) to raise LMF.
 - Barren areas are now less likely to receive random location hints
-- Change goddess walls to only require Harp and BotG, this removes the Skyview dependency from Gorko's Goddess Wall
+- Change goddess walls to only require Harp and BotG, this removes the Skyview Temple dependency from Gorko's Goddess Wall
 - arc-replacements will now also replace arcs in stages
 ### Bugfixes
 - always copy layer 0, this fixes various bugs, where changes from previous randomizations were not reverted
@@ -226,7 +226,7 @@
 - Eldin Entrance statue is always checked, prevents softlocks if BiTsaving out of an area without checking a statue first
 ### Bugfixes
 - Fix Bomb Bag having a wrong text sometimes
-- Fix potential softlock in the Skyview Beetle room
+- Fix potential softlock in the Skyview Temple Beetle room
 - Fix potential softlock when getting Spiral Charge in the Lumpy Pumpkin
 
 ## 1.0.3

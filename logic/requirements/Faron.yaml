@@ -78,16 +78,6 @@ Woods:
       Faron - Woods: Nothing
       Shortcut Exit to Floria Waterfall: Nothing
 
-  exits:
-    Entry: Nothing
-    In the Woods Statue Entrance: Impossible
-    Viewing Platform Statue Entrance: Impossible
-    Shared Statue Exit: Unlock In the Woods Statue | Unlock Viewing Platform Statue
-    Trial Gate: Open Trial Gate
-    Great Tree - Near Underwater Hole: Water Scale
-    Great Tree - Platforms: Clawshots
-    Clawshot Target Branch: Clawshots
-    Lake Floria Dive: Open Door to Lake Floria
   locations:
     Unlock Viewing Platform Statue: Nothing
     Unlock In the Woods Statue: Nothing
@@ -107,6 +97,16 @@ Woods:
     Item on Tree: Nothing
     Item behind Bombable Rock: Bomb Bag
     Chest behind Bombable Rocks near Erla: Bomb Bag
+  exits:
+    Entry: Nothing
+    In the Woods Statue Entrance: Impossible
+    Viewing Platform Statue Entrance: Impossible
+    Shared Statue Exit: Unlock In the Woods Statue | Unlock Viewing Platform Statue
+    Trial Gate: Open Trial Gate
+    Great Tree - Near Underwater Hole: Water Scale
+    Great Tree - Platforms: Clawshots
+    Clawshot Target Branch: Clawshots
+    Lake Floria Dive: Open Door to Lake Floria
 
   Ledge To Deep Woods:
     entrance: Hit Vine to Deep Woods
@@ -116,39 +116,39 @@ Woods:
 
 
   Behind the Crawlspace and Rope:
-    entrance: Bomb Bag | Push Log
-    exits:
-      Faron - Woods: Nothing
     locations:
       Push Log: Nothing
       # Save Lopsa: Can defeat Bokoblins  # Don't include, otherwise Slingshot requires Bomb Bag
       Retrieve Oolo:
         Skyloft - Knight Academy - Start Owlan's Quest
+    entrance: Bomb Bag | Push Log
+    exits:
+      Faron - Woods: Nothing
 
   West Branch:
-    exits:
-      Woods: Nothing
     locations:
       Goddess Cube on West Great Tree near Exit: Goddess Sword
+    exits:
+      Woods: Nothing
 
   Clawshot Target Branch:
-    exits:
-      Woods: Nothing
     locations:
       Goddess Cube on East Great Tree with Clawshots Target: Goddess Sword
-
-  Rope Branch:
     exits:
       Woods: Nothing
+
+  Rope Branch:
     locations:
       Goddess Cube on East Great Tree with Rope: Goddess Sword
+    exits:
+      Woods: Nothing
 
 Silent Realm:
   hint-region: Faron Silent Realm
-  exits:
-    Exit: Nothing
   locations:
     Water Scale: Nothing
+  exits:
+    Exit: Nothing
 
 # GREAT TREE
 
@@ -212,12 +212,12 @@ Great Tree:
 Flooded Woods:
   toplevel-alias: Flooded Faron Woods
   hint-region: Flooded Faron Woods
-  exits:
-    Entrance: Nothing
-    Exit: Nothing
   locations:
     Water Dragon's Reward: Water Scale
     Woods - Retrieve Oolo: Skyloft - Knight Academy - Start Owlan's Quest
+  exits:
+    Entrance: Nothing
+    Exit: Nothing
 
 # DEEP WOODS
 Deep Woods:
@@ -237,7 +237,7 @@ Deep Woods:
     Gossip Stone: Nothing
     Initial Goddess Cube: Goddess Sword
     Goddess Cube in Deep Woods: Goddess Sword
-    Goddess Cube on top of Skyview: Goddess Sword & Clawshots
+    Goddess Cube on top of Skyview Temple: Goddess Sword & Clawshots
   exits:
     Shared Statue: Nothing
     Deep Woods Statue Entrance: Impossible

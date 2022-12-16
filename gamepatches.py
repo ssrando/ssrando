@@ -1801,7 +1801,7 @@ class GamePatcher:
             "Lanayru Caves": "<ye<",
         }
         KEYS_DUNGEONS = [
-            # ('Skyview', 200), # already has a textbox
+            # ('SV', 200), # already has a textbox
             (LMF, 201),
             (AC, 202),
             (FS, 203),
@@ -1811,10 +1811,10 @@ class GamePatcher:
         ]
         self.eventpatches["003-ItemGet"].append(
             {
-                "name": f"Skyview Key Text",  # for some reason there is an entry for item 200 (It's just an empty textbox though)
+                "name": f"Skyview Temple Key Text",  # for some reason there is an entry for item 200 (It's just an empty textbox though)
                 "type": "textpatch",
                 "index": 251,
-                "text": f"You got a <g<Skyview>> Small Key!",
+                "text": f"You got a <g<Skyview Temple>> Small Key!",
             }
         )
         for dungeon, itemid in KEYS_DUNGEONS:

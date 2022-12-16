@@ -11,7 +11,7 @@ Main:
       Bottom Exit: Nothing
       Puzzle Solving Meta Room: Nothing
 
-  Skyview Room:
+  Skyview Temple Room:
     Beginning:
       locations:
         Free Rope: Beetle | Bow
@@ -141,8 +141,8 @@ Main:
 
   Puzzle Solving Meta Room:
     exits:
-      Skyview Room - Beginning: First Room - Right Exit
-      LMF Room: Skyview Room - Top Exit
+      Skyview Temple Room - Beginning: First Room - Right Exit
+      LMF Room: Skyview Temple Room - Top Exit
       Earth Temple Room: LMF Room - Top Exit
       Mini Boss Room - From Bottom: Fire Sanctuary Room - Left Exit
       Ancient Cistern Room: LMF Room - Top Exit

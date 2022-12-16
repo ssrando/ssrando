@@ -102,10 +102,10 @@ Main:
         East Part - Chest Ledge: Flip Main Lilypad & Water Scale  # or Lilypad Skip
 
     Chest Ledge:
-      exits:
-        Main Room: Nothing
       locations:
         Chest: Nothing
+      exits:
+        Main Room: Nothing
 
   Basement Gutters:
     locations:

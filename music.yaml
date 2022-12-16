@@ -345,7 +345,7 @@
   audiolenLoc: 1043020
   filenameLoc: 1043052
   isLooped: true
-  name: Skyview
+  name: Skyview Temple
   numsamples: 2655726
   streams: 3
   type: 6
@@ -417,7 +417,7 @@
   audiolenLoc: 1044312
   filenameLoc: 1044344
   isLooped: true
-  name: Skyview 2
+  name: Skyview Temple 2
   numsamples: 2655726
   streams: 3
   type: 6
@@ -2082,7 +2082,7 @@ F750507AF4CB3758DECE7CEC185EBD91:
   audiolenLoc: 1043088
   filenameLoc: 1043120
   isLooped: true
-  name: Skyview 3
+  name: Skyview Temple 3
   numsamples: 2655726
   streams: 3
   type: 6

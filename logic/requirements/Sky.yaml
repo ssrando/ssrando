@@ -40,7 +40,7 @@ North East:
 
     Cage:
       locations:
-        Goddess Chest: Faron - Goddess Cube on top of Skyview
+        Goddess Chest: Faron - Goddess Cube on top of Skyview Temple
       exits:
         Beedle's Island: Nothing
 
@@ -77,19 +77,12 @@ North East:
 
 South East:
   Pumpkin Landing:
-    allowed-time-of-day: Both
-
     # Outside
-    entrance: Nothing
-    exits:
-      South East: Day
-      Main Right Door: Nothing
-      Main Left Door: Nothing
-      Back Door: Nothing
+    allowed-time-of-day: Both
     locations:
       Crystal: Night
       Goddess Chest: Faron - Initial Goddess Cube
-      Roof Goddess Chest: Skyview - Spring - Goddess Cube & Day
+      Roof Goddess Chest: Skyview Temple - Spring - Goddess Cube & Day
       Start Kina's Quest: Complete Hot Soup Delivery & Day
       Kina's Crystals: Eldin - Pick up Guld & Day
         # Unlocked after Chandelier Quest
@@ -97,6 +90,12 @@ South East:
       Gossip Stone: Nothing
       Pumpkin Carrying: Complete Hot Soup Delivery & Day
 
+    entrance: Nothing
+    exits:
+      South East: Day
+      Main Right Door: Nothing
+      Main Left Door: Nothing
+      Back Door: Nothing
 
     Lumpy Pumpkin:
       can-sleep: true
@@ -149,10 +148,6 @@ South East:
 
 South West:
   Volcanic Island:
-    entrance: Nothing
-    exits:
-      South West: Day
-
     locations:
       Outside Goddess Chest: Lanayru - Sand Oasis - Goddess Cube
       Inside Goddess Chest:
@@ -160,23 +155,22 @@ South West:
         # Normally you would need clawshots, but you can skip them with a good dive
       Gossip Stone: Nothing
 
-
-  Orielle's Island:
     entrance: Nothing
     exits:
-      Sky - South West: Day
+      South West: Day
+
+  Orielle's Island:
     locations:
       Talk to Orielle: Nothing
       Save Orielle: Bottle
       # There are mushrooms in the Sky inside the Volcanic Island
       Orielle's Crystals: Save Orielle
-
-
-  Fun Fun Island:
     entrance: Nothing
     exits:
       Sky - South West: Day
 
+
+  Fun Fun Island:
     locations:
       Start Dodoh's Quest: Nothing
       Dodoh's Crystals: Lanayru - Retrieve Party Wheel
@@ -186,15 +180,19 @@ South West:
       Fun Fun Island Minigame:
         Dodoh's Crystals
 
-  Triple Island:
     entrance: Nothing
     exits:
       Sky - South West: Day
 
+  Triple Island:
     locations:
       Upper Goddess Chest: Eldin - Volcano - Entry - Goddess Cube
       Lower Goddess Chest: Lanayru - Desert - Near Hook Beetle Fight - Goddess Cube
       Cage Goddess Chest: Lanayru - Sand Sea - Skipper's Retreat - Goddess Cube & Clawshots
+
+    entrance: Nothing
+    exits:
+      Sky - South West: Day
 
   locations:
     Chest in Breakable Boulder near Fun Fun Island:
@@ -253,45 +251,45 @@ Thunderhead:
         Exit: Nothing
 
     # Outside
-    entrance: Nothing
-    exits:
-      Thunderhead: Day
-      Exit to Inside: Puzzle Solved
     locations:
       Side Goddess Chest: Eldin - Mogma Turf - Goddess Cube
       Top Goddess Chest: Eldin - Volcano Summit - Outside Fire Sanctuary - Goddess Cube
       Puzzle Solved: Nothing
-
-
-  East Island:
     entrance: Nothing
     exits:
       Thunderhead: Day
+      Exit to Inside: Puzzle Solved
 
+
+  East Island:
     locations:
       Goddess Chest: Faron - Goddess Cube on East Great Tree with Rope
       Chest: Digging Mitts | Thunderhead - East Island Dive Trick
 
-
-  Mogma Mitts Island:
     entrance: Nothing
     exits:
       Thunderhead: Day
 
+
+  Mogma Mitts Island:
     locations:
       First Goddess Chest: Eldin - Goddess Cube inside Volcano Summit & Mogma Mitts
       Second Goddess Chest: Lanayru - Gorge - Goddess Cube & Mogma Mitts
 
-
-  Bug Heaven:
     entrance: Nothing
     exits:
       Thunderhead: Day
 
+
+  Bug Heaven:
     locations:
       Bug Heaven -- 10 Bugs in 3 Minutes: Bug Net
       Goddess Chest: Eldin - Goddess Cube in Summit Waterfall
       Gossip Stone Near: Nothing
+
+    entrance: Nothing
+    exits:
+      Thunderhead: Day
 
 
   locations:

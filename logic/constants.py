@@ -73,7 +73,7 @@ def entrance_of_exit(exit):
     raise ValueError("No pattern")
 
 
-SV = "Skyview"
+SV = "Skyview Temple"
 ET = "Earth Temple"
 LMF = "Lanayru Mining Facility"
 AC = "Ancient Cistern"
@@ -651,10 +651,10 @@ RUPEE_CHECKS = [
     "Pirate Stronghold - Rupee on West Sea Pillar",
     "Pirate Stronghold - Rupee on East Sea Pillar",
     "Pirate Stronghold - Rupee on Bird Statue Pillar or Nose",
-    "Skyview - Second Hub - Rupee in Southeast Tunnel",
-    "Skyview - Second Hub - Rupee in Southwest Tunnel",
-    "Skyview - Second Hub - Rupee in East Tunnel",
-    "Skyview - Spring - Rupee on Pillar",
+    "Skyview Temple - Second Hub - Rupee in Southeast Tunnel",
+    "Skyview Temple - Second Hub - Rupee in Southwest Tunnel",
+    "Skyview Temple - Second Hub - Rupee in East Tunnel",
+    "Skyview Temple - Spring - Rupee on Pillar",
     "Earth Temple - Rupee above Drawbridge",
     "Earth Temple - Rupee in Lava Tunnel",
     "Ancient Cistern - East Part - Rupee in Main Tunnel",

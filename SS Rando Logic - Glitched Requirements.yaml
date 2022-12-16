@@ -652,7 +652,7 @@ Can RBM Cx40:
   Can Enter Waterfall Cave at Night | Beetle | Can Access Lake Floria above Rock BiT
   # Skyloft: Gratitude Crystal in loftwing prison #UNSURE of the requirement
   # Sky: Unused
-  # Sealed Grounds: Not-In-Logic, Listen to the Goron about his research after Skyview [Dungeon inside Deep Woods] but before beating Earth Temple [Dungeon in Eldin Volcano] #UNSURE: Can it be made in logic ?
+  # Sealed Grounds: Not-In-Logic, Listen to the Goron about his research after Skyview Temple [Dungeon inside Deep Woods] but before beating Earth Temple [Dungeon in Eldin Volcano] #UNSURE: Can it be made in logic ?
   # Faron Woods: Unused
   # Lake Floria: First Encounter with Parella #UNSURE: Possible ? Requirements ?
 
@@ -793,7 +793,7 @@ Can Set Scene Flag 2x02:
   # Boko Base / Volcano Summit is not used
   # Lanayru Gorge is "Blow up rock in crawlspace blocking the entrance to Lanayru Gorge near Goron" (cannot be included, requires not having Clawshots) #UNSURE
   # Flooded Faron is "Triggers Kikwi Elder Cutscene"
-  # Skyview is "Break 1st board blocking Staldra"
+  # Skyview Temple is "Break 1st board blocking Staldra"
   # Earth Temple is "Red Rupee on top of first drawbridge"
   # Lanayru Mining Facility is "Set when getting close to first crawlspace" (should be confirmed) #UNSURE
   # Ancient Cistern is "Flipped Lilypad revealing tunnel to small key" (may not need Scale) #UNSURE
@@ -807,7 +807,7 @@ Can Set Scene Flag 2x20:
   Can Access Lake Floria above Rock |
   Can Access Second Part of Eldin |
   Can Access Lanayru |
-  (Can Access Skyview & Can Hit Switch for Skyview Behind Bars) |
+  (Can Access Skyview Temple & Can Hit Switch for Skyview Temple Behind Bars) |
   (Can Access Earth Temple & Can Lower First ET Drawbridge) |
   Can Reach Armos Fight in Lanayru Mining Facility Boss Key Room |
   Can Free Second Captured Mogma |
@@ -815,7 +815,7 @@ Can Set Scene Flag 2x20:
   # Skyloft is "Play Ballad of the Goddess on top of light tower"
   # Sky is not used
   # Sealed Temple is Have played the harp tutorial (first part)
-  # Faron Woods is Have opened the door to Skyview (Entrance)
+  # Faron Woods is Have opened the door to Skyview Temple (Entrance)
   # Lake Floria is "Blow up middle rock near underwater statue revealing silver rupee"
   # Eldin Volcano is Have blown rock blocking digging spot in big slope
   # Lanayru Desert is Have talked to "robot near first timeshift stone" (I don't know if present or past) #UNSURE
@@ -823,7 +823,7 @@ Can Set Scene Flag 2x20:
   # Boko Base / Volcano Summit is not used
   # Lanayru Gorge is "Trigger Fi Text after giving fruit to Dragon"
   # Flooded Faron is "Blow up right rock inside Flooded Great Tree"
-  # Skyview is Have hit Switch for Behind Bars
+  # Skyview Temple is Have hit Switch for Behind Bars
   # Earth Temple is "Cut High Rope in First Room"
   # LMF is "Hit crystal 1 in bk room"
   # Ancient Cistern is not used
@@ -838,7 +838,7 @@ Can Set Scene Flag 3x02:
   Can Access Second Part of Eldin |
   (Can Access Second Part of Lanayru Mine & (Bomb Bag | Hook Beetle)) |
   (Can Get Past Peahat and Boko Baba & Gust Bellows) |
-  (Can Get to Skyview Second Part & Beetle & Sword) |
+  (Can Get to Skyview Temple Second Part & Beetle & Sword) |
   (Can Access LMF First West Room & Gust Bellows) |
   Can Access Ancient Cistern |
   Can Freely Change Sandship Temporality
@@ -853,7 +853,7 @@ Can Set Scene Flag 3x02:
   # Boko Base / Volcano Summit is "Bonk into Temple Entrance boko camp cauldron for heart"
   # Lanayru Gorge is "Blow up rock on platform near minecart escort locked door"
   # Flooded Faron is not used
-  # Skyview is Gate after 3 Eyes ("gate for [2nd small key] Chest")
+  # Skyview Temple is Gate after 3 Eyes ("gate for [2nd small key] Chest")
   # Earth Temple is "Map Obtained", but the cutscene (which is probably responsible for the bit) may not happen #UNSURE
   # LMF is Raise Wind Gate in Left Room
   # Ancient Cistern is Watch Cutscene of Flipping Lilypad in [Small Key] Chest Room
@@ -883,7 +883,7 @@ Can Set Scene Flag 5x04:
   # Boko Base / Volcano Summit is "Panning cutscene showing peahats" #UNSURE
   # Lanayru Gorge is "Fi Text after opening Chest in Lanayru Caves" #UNSURE
   # Flooded Faron is "Circle of 8 light blue Tadtones collected"
-  # Skyview is "Call Fi near door when locked inside Beetle Room (also set after hitting Beetle Room switch from inside" #UNSURE
+  # Skyview Temple is "Call Fi near door when locked inside Beetle Room (also set after hitting Beetle Room switch from inside" #UNSURE
   # Earth Temple is "Right peg pushed first" (cannot always be set) #UNSURE
   # LMF is "Beamos in Hub Room defeated" (Which one ? I assume the one blocking the minecart) #UNSURE
   # Ancient Cistern is "Red Rupee in underwater tunnel to Small Key [Chest]"
@@ -1255,7 +1255,7 @@ Sky - Lumpy Pumpkin - Outside Goddess Chest:
   Initial Goddess Cube
 
 Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
-  Goddess Cube in Skyview Spring
+  Goddess Cube in Skyview Temple Spring
 
 Sky - Gossip Stone on Lumpy Pumpkin:
   Nothing
@@ -1294,7 +1294,7 @@ Sky - Beedle's Island Goddess Chest:
   Goddess Cube at Ride near Temple of Time
 
 Sky - Beedle's Island Cage Goddess Chest:
-  Goddess Cube on top of Skyview
+  Goddess Cube on top of Skyview Temple
   # Getting this Chest during the day is possible but rather difficult
 
 Sky - Northeast Island Goddess Chest behind Bombable Rocks:
@@ -1519,7 +1519,7 @@ Initial Goddess Cube:
 Goddess Cube in Deep Woods:
   Can Get Past Deep Woods Bee Hive & Goddess Sword
 
-Goddess Cube on top of Skyview:
+Goddess Cube on top of Skyview Temple:
   Can Get Past Deep Woods Bee Hive & Clawshots & Goddess Sword
 
 Faron Woods - Gossip Stone in Deep Woods:
@@ -2188,174 +2188,174 @@ Goddess Cube in Pirate Stronghold:
 
 ### Dungeons
 
-## Skyview
+## Skyview Temple
 
 # Global macros
 
-Can Access Skyview 2:
-  Can Access Skyview & Water Scale
+Can Access Skyview Temple 2:
+  Can Access Skyview Temple & Water Scale
 
 Can Unlock Goddess Walls:
   Ballad of the Goddess & Goddess Harp
 
-Can Beat Skyview 2:
-  Can Access Skyview 2 & Can Beat Skyview
+Can Beat Skyview Temple 2:
+  Can Access Skyview Temple 2 & CaSkyview TempleSkyview
 
 Can Get Sacred Water: # currently unneeded
-  Can Beat Skyview 2 & Bottle
+  Can Beat Skyview Temple 2 & Bottle
 
-Can Hit High Skyview Switches:
+Can Hit High Skyview Temple Switches:
   Distance Activator | Bomb Bag
 
 # First room
 
-Can Destroy Skyview Barricade:
-  Can Get Past the First Skyview Room | Bomb Bag | Can Access Skyview 2
-  # From the back | Bomb | In Skyview 2, the barricade disappears.
+Can Destroy Skyview Temple Barricade:
+  Can Get Past the First Skyview Temple Room | Bomb Bag | Can Access Skyview Temple 2
+  # From the back | Bomb | In Skyview Temple 2, the barricade disappears.
 
 Can Go through One Eye Room:
-  Can Access Skyview & Can Cut Tree & Can Hit High Skyview Switches & Sword
+  Can Access Skyview Temple & Can Cut Tree & Can Hit High Skyview Temple Switches & Sword
   # With Clawshots you can hit the crystal from afar without stunning the boko baba (stand far away on the side).
   # You need a sword to defeat the first eye + something to stun the boko baba or hit the switch from afar
 
-Can Get Past the First Skyview Room:
-  Can Access Skyview & Can Cut Tree & (Can Destroy Skyview Barricade | Can Go through One Eye Room)
+Can Get Past the First Skyview Temple Room:
+  Can Access Skyview Temple & Can Cut Tree & (Can Destroy Skyview Temple Barricade | Can Go through One Eye Room)
 
 # First part
 
-Can Hit Vines in Skyview Left Room:
+Can Hit Vines in Skyview Temple Left Room:
   Distance Activator | Bomb Bag | Goddess Sword | Whip
   # You can skyward strike the vine even on Normal Mode. Use the rope to jump to the crystal alcove and simply hit it with your sword.
   # You can also get the vines down with whip but the positioning for the first vine is a bit weird
 
-Can Raise Skyview Water Level in Left Room:
-  Can Get Past the First Skyview Room & Can Hit Vines in Skyview Left Room
+Can Raise Skyview Temple Water Level in Left Room:
+  Can Get Past the First Skyview Temple Room & Can Hit Vines in Skyview Temple Left Room
   # What you just hit the vines with, use it activate the crystal
 
-Skyview - Chest on Tree Branch:
-  Can Get Past the First Skyview Room
+Skyview Temple - Chest on Tree Branch:
+  Can Get Past the First Skyview Temple Room
 
-Can Raise Skyview Water Level in Right Room:
-  Can Get Past the First Skyview Room & Can Hit High Skyview Switches
+Can Raise Skyview Temple Water Level in Right Room:
+  Can Get Past the First Skyview Temple Room & Can Hit High Skyview Temple Switches
   # What you would hit the vines with, use it activate the crystal
 
-Skyview - Digging Spot in Crawlspace:
-  Can Raise Skyview Water Level in Right Room & Water Scale & Digging Mitts
+Skyview Temple - Digging Spot in Crawlspace:
+  Can Raise Skyview Temple Water Level in Right Room & Water Scale & Digging Mitts
   # It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
   # It is not possible to jump to the vines early in the main room with scale with only one switch for the water level hit
   # You can hit both switches with good bomb throws
   # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Froak and kill it near the switch, not in logic
   # You can hit the switch to enter that room with an upwards skyward strike using a Bokoblin or a Froak, not in logic
 
-Skyview - Chest behind Two Eyes:
-  Can Get Past the First Skyview Room &
+Skyview Temple - Chest behind Two Eyes:
+  Can Get Past the First Skyview Temple Room &
   (
     Clawshots |
-    (Can Raise Skyview Water Level in Left Room & Can Raise Skyview Water Level in Right Room)
+    (Can Raise Skyview Temple Water Level in Left Room & Can Raise Skyview Temple Water Level in Right Room)
   ) &
   Sword
   # Sword required to defeat the eyes
 
 # Second part
 
-Can Get to Skyview Second Part Unloaded:
-  Can Access Skyview
-  #| Can Access Skyview BiT
+Can Get to Skyview Temple Second Part Unloaded:
+  Can Access Skyview Temple
+  #| Can Access Skyview Temple BiT
   # BiTWarp to it, or RBW to it (Upper Academy)
 
-Can Get to Skyview Second Part:
+Can Get to Skyview Temple Second Part:
   (
-    Can Get Past the First Skyview Room &
-    (Can Raise Skyview Water Level in Left Room | Can Raise Skyview Water Level in Right Room) &
-    Skyview Small Key x1
+    Can Get Past the First Skyview Temple Room &
+    (Can Raise Skyview Temple Water Level in Left Room | Can Raise Skyview Temple Water Level in Right Room) &
+    Skyview Temple Small Key x1
   ) |
-  Can Get to Skyview Second Part Unloaded
+  Can Get to Skyview Temple Second Part Unloaded
   # To get past the locked door you need to be able to raise the water lever once (left room is easiest)
   # Or Save and Quit from Unloaded Second Part
 
 Can Get Past Staldra Room:
   (
-    (Can Get to Skyview Second Part & Skyview Small Key x2) |
-    (Can Get to Skyview Last Room & Can Defeat or Evade Skyview Hanging Skulltula) |
-    Can Get to Skyview Second Part Unloaded
+    (Can Get to Skyview Temple Second Part & Skyview Temple Small Key x2) |
+    (Can Get to Skyview Temple Last Room & Can Defeat or Evade Skyview Temple Hanging Skulltula) |
+    Can Get to Skyview Temple Second Part Unloaded
   ) &
   (Sword | Bomb Bag)
   # To get accross the rope with boko babas, hang down on the rope and go accross that way.
   # The last boko baba may be annoying but nothing too bad if you time it
   # The Staldra can be defeated with either sword or bombs
   # You can enter from the key door after the rope, from backwards if you can already reach Last Room,
-  # or from Unloaded Skyview where the gate between Hub Room and Last Room (and the Skulltula) aren't loaded
+  # or from Unloaded Skyview Temple where the gate between Hub Room and Last Room (and the Skulltula) aren't loaded
 
-Skyview - Rupee Southeast Tunnel:
-  Can Get to Skyview Second Part & Beetle
+Skyview Temple - Rupee Southeast Tunnel:
+  Can Get to Skyview Temple Second Part & Beetle
 
-Skyview - Rupee Southwest Tunnel:
-  Can Get to Skyview Second Part & Beetle
+Skyview Temple - Rupee Southwest Tunnel:
+  Can Get to Skyview Temple Second Part & Beetle
 
-Skyview - Rupee East Tunnel:
-  Can Get to Skyview Second Part & Beetle
+Skyview Temple - Rupee East Tunnel:
+  Can Get to Skyview Temple Second Part & Beetle
 
-Skyview - Beetle:
-  Can Get to Skyview Second Part & Distance Activator & (Sword | Can Access Skyview 2)
+Skyview Temple - Beetle:
+  Can Get to Skyview Temple Second Part & Distance Activator & (Sword | Can Access Skyview Temple 2)
   # Bombs don't work to hit the switch
-  # The fight requires sword, but is skipped in Skyview 2
+  # The fight requires sword, but is skipped in Skyview Temple 2
 
-Can Hit Switch for Skyview Behind Bars:
+Can Hit Switch for Skyview Temple Behind Bars:
   Beetle | Slingshot
   # Trick shot with slingshot works
 
-Skyview - Item behind Bars:
-  Can Get to Skyview Second Part & (Can Hit Switch for Skyview Behind Bars | Whip)
+Skyview Temple - Item behind Bars:
+  Can Get to Skyview Temple Second Part & (Can Hit Switch for Skyview Temple Behind Bars | Whip)
   # Does Whip always work ?
 
-Skyview - Chest behind Three Eyes:
-  Can Get to Skyview Second Part & Beetle & Sword
+Skyview Temple - Chest behind Three Eyes:
+  Can Get to Skyview Temple Second Part & Beetle & Sword
 
 # Last room
 
-Can Defeat or Evade Skyview Hanging Skulltula:
-  Bomb Bag | Goddess Sword | Beetle | Bow | Can Access Skyview 2
+Can Defeat or Evade Skyview Temple Hanging Skulltula:
+  Bomb Bag | Goddess Sword | Beetle | Bow | Can Access Skyview Temple 2
   # A bomb knocks the Skulltula away. A skyward strike can knock it away too.
-  # Both the Beetle and the bow can cut it down. There is no spider anymore in Skyview.
+  # Both the Beetle and the bow can cut it down. There is no spider anymore in Skyview Temple.
 
-Can Get to Skyview Last Room:
-  (Can Get Past Staldra Room & Can Defeat or Evade Skyview Hanging Skulltula) |
-  Can Get to Skyview Second Part
+Can Get to Skyview Temple Last Room:
+  (Can Get Past Staldra Room & Can Defeat or Evade Skyview Temple Hanging Skulltula) |
+  Can Get to Skyview Temple Second Part
   # Scene Flag 3x80 is "Hit Crystal Switch connecting Hub Room to [Last Room]"
 
-Can Defeat Archers in Skyview Last Room:
+Can Defeat Archers in Skyview Temple Last Room:
   Long Range Skyward Strike | Hook Beetle | Bow
 
-Can Hit Vines in Skyview Last Room:
+Can Hit Vines in Skyview Temple Last Room:
   Long Range Skyward Strike | Distance Activator
 
-Can Get to Skyview Boss Door:
-  Can Get to Skyview Last Room & Can Defeat Archers in Skyview Last Room
+Can Get to Skyview Temple Boss Door:
+  Can Get to Skyview Temple Last Room & Can Defeat Archers in Skyview Temple Last Room
 
-Skyview - Chest near Boss Door:
-  Can Get to Skyview Boss Door
+Skyview Temple - Chest near Boss Door:
+  Can Get to Skyview Temple Boss Door
 
-Skyview - Boss Key Chest:
-  Can Get to Skyview Boss Door & Can Hit Vines in Skyview Last Room
+Skyview Temple - Boss Key Chest:
+  Can Get to Skyview Temple Boss Door & Can Hit Vines in Skyview Temple Last Room
 
 Can Beat Ghirahim 1:
-  Can Get to Skyview Boss Door & Sword
+  Can Get to Skyview Temple Boss Door & Sword
   # Scene Flag Dx10 is "Boss Door Opened"
 
-Can Beat Skyview:
+Can Beat Skyview Temple:
   Can Beat Ghirahim 1 & Goddess Sword
   # Goddess Sword to activate the crest
 
-Skyview - Ghirahim Heart Container:
+Skyview Temple - Ghirahim Heart Container:
   Can Beat Ghirahim 1
 
-Skyview - Rupee on Spring Pillar:
+Skyview Temple - Rupee on Spring Pillar:
   Can Beat Ghirahim 1 & Beetle
 
-Skyview - Ruby Tablet:
-  Can Beat Skyview
+Skyview Temple - Ruby Tablet:
+  Can Beat Skyview Temple
 
-Goddess Cube in Skyview Spring:
+Goddess Cube in Skyview Temple Spring:
   Can Beat Ghirahim 1 & Goddess Sword
 
 ## Earth Temple
@@ -2868,11 +2868,11 @@ Fire Sanctuary - Din's Flame:
 Sky Keep - First Chest:
   Can Access Sky Keep
 
-Can Get Past SK Skyview Room:
-  Can Access SK Skyview Room
+Can Get Past SK Skyview Temple Room:
+  Can Access SK Skyview Temple Room
   # Cut the rope, reach it with whip, clawshot vines, kill pyrups and gust bellows for the moving platforms. Or RBM the shortcut lever
-  # Scene Flag 8x80 is "Cut Rope in Skyview Room"
-  # Scene Flag 9x40 is "Lever in Skyview Room"
+  # Scene Flag 8x80 is "Cut Rope in Skyview Temple Room"
+  # Scene Flag 9x40 is "Lever in Skyview Temple Room"
 
 Can Get Past SK LMF Room:
   Can Access SK LMF Room & (Bow | Can RBM 7x10)
@@ -2904,11 +2904,11 @@ Can Get Past SK Sandship Room:
 
 # Puzzle Logic (not completely optimised)
 
-Can Access SK Skyview Room:
+Can Access SK Skyview Temple Room:
   Can Access Sky Keep
 
 Can Access SK LMF Room:
-  Can Get Past SK Skyview Room
+  Can Get Past SK Skyview Temple Room
 
 Can Access SK Earth Temple Room:
   Can Get Past SK LMF Room
