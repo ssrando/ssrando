@@ -1,6 +1,8 @@
 from collections import OrderedDict
 import sys
 import argparse
+from logic.logic_input import Areas
+from yaml_files import requirements, checks, hints, map_exits
 
 from ssrando import Randomizer, PlandoRandomizer, VERSION
 from logic.placement_file import PlacementFile
@@ -140,6 +142,8 @@ def main():
 
     assert options is not None
 
+    areas = Areas(requirements, checks, hints, map_exits)
+
     if bulk_mode:
         from multiprocessing import Process
 
@@ -148,7 +152,7 @@ def main():
         def randothread(start, end, local_opts):
             for i in range(start, end):
                 local_opts.set_option("seed", i)
-                rando = Randomizer(local_opts)
+                rando = Randomizer(areas, local_opts)
                 rando.randomize()
 
         threads = []
@@ -159,7 +163,7 @@ def main():
         for thread in threads:
             thread.join()
     elif options["noui"]:
-        rando = Randomizer(options)
+        rando = Randomizer(areas, options)
         if not options["dry-run"]:
             rando.check_valid_directory_setup()
         total_progress_steps = rando.get_total_progress_steps
@@ -176,7 +180,7 @@ def main():
     else:
         from gui.randogui import run_main_gui
 
-        run_main_gui(options)
+        run_main_gui(areas, options)
 
 
 if __name__ == "__main__":

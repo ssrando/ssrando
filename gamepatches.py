@@ -22,7 +22,7 @@ from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 from musicrando import music_rando
 
-from logic.logic import Logic
+from logic.bool_expression import check_static_option_req
 from logic.constants import *
 from logic.placement_file import PlacementFile
 
@@ -1005,6 +1005,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
 
     for checkname, itemname in filled_checks.items():
         # single gratitude crystals aren't randomized
+        itemname = strip_item_number(itemname)
         if itemname == "Gratitude Crystal":
             continue
         check = all_checks[checkname]
@@ -1100,14 +1101,32 @@ def get_entry_from_bzs(
 
 
 class GamePatcher:
-    def __init__(self, rando, placement_file: PlacementFile):
-        self.rando = rando
+    def __init__(
+        self,
+        areas,
+        options,
+        progress_callback,
+        actual_extract_path,
+        rando_root_path,
+        exe_root_path,
+        modified_extract_path,
+        oarc_cache_path,
+        arc_replacement_path,
+        placement_file: PlacementFile,
+    ):
+        self.areas = areas
+        self.options = options
+        self.progress_callback = progress_callback
         self.placement_file = placement_file
+        self.rando_root_path = rando_root_path
+        self.exe_root_path = exe_root_path
+        self.actual_extract_path = actual_extract_path
+        self.modified_extract_path = modified_extract_path
         self.patcher = AllPatcher(
-            actual_extract_path=rando.actual_extract_path,
-            modified_extract_path=rando.modified_extract_path,
-            oarc_cache_path=rando.oarc_cache_path,
-            arc_replacement_path=self.rando.exe_root_path / "arc-replacements",
+            actual_extract_path=actual_extract_path,
+            modified_extract_path=modified_extract_path,
+            oarc_cache_path=oarc_cache_path,
+            arc_replacement_path=arc_replacement_path,
             copy_unmodified=False,
         )
         self.text_labels = {}
@@ -1137,7 +1156,7 @@ class GamePatcher:
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
         self.patcher.set_event_text_patch(self.text_patch)
-        self.patcher.progress_callback = self.rando.progress_callback
+        self.patcher.progress_callback = self.progress_callback
         self.patcher.objpackoarcadd = self.patches["global"].get("objpackoarcadd", [])
         self.patcher.do_patch()
 
@@ -1146,13 +1165,13 @@ class GamePatcher:
         self.do_patch_title_screen_logo()
         self.do_patch_custom_dowsing_images()
 
-        music_rando(self.placement_file, self.rando.modified_extract_path)
+        music_rando(self.placement_file, self.modified_extract_path)
 
     def filter_option_requirement(self, entry):
         return not (
             isinstance(entry, dict)
             and "onlyif" in entry
-            and not Logic.check_static_option_req(
+            and not check_static_option_req(
                 entry["onlyif"], self.placement_file.options
             )
         )
@@ -1188,13 +1207,19 @@ class GamePatcher:
         self.startitemflags = self.patches["global"]["startitems"]
 
         # patches from randomizing items
-        temp_item_locations = copy.deepcopy(self.placement_file.item_locations)
-        if self.placement_file.options["rupeesanity"] != "All":
-            for rupee_check in RUPEE_CHECKS:
-                if self.rando.options["rupeesanity"] == "Vanilla":
-                    temp_item_locations.pop(rupee_check)
-                elif rupee_check in QUICK_BEETLE_CHECKS:
-                    temp_item_locations.pop(rupee_check)
+        filtered_item_locations = self.placement_file.item_locations.copy()
+        rupeesanity_option = self.placement_file.options["rupeesanity"]
+        if rupeesanity_option == "Vanilla":
+            to_remove = map(self.areas.short_to_full, RUPEE_CHECKS)
+        elif rupeesanity_option == "No Quick Beetle":
+            to_remove = map(self.areas.short_to_full, QUICK_BEETLE_CHECKS)
+        elif rupeesanity_option == "All":
+            to_remove = []
+        else:
+            raise ValueError(f"Wrong value {rupeesanity_option} for option rupeesanity")
+
+        for rupee_check in to_remove:
+            del filtered_item_locations[rupee_check]
 
         (
             self.rando_stagepatches,
@@ -1202,8 +1227,8 @@ class GamePatcher:
             self.rando_eventpatches,
             self.shoppatches,
         ) = get_patches_from_location_item_list(
-            self.rando.item_locations,
-            temp_item_locations,
+            self.areas.checks,
+            filtered_item_locations,
             self.placement_file.chest_dowsing,
         )
 
@@ -1440,7 +1465,10 @@ class GamePatcher:
             normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[
                 location
             ]
-            sold_item = self.placement_file.item_locations[location]
+            sold_item = self.placement_file.item_locations[
+                self.areas.short_to_full(location)
+            ]
+            sold_item = strip_item_number(sold_item)
             normal_text = (
                 break_lines(
                     f"That there is a <y<{sold_item}>>. "
@@ -1492,7 +1520,7 @@ class GamePatcher:
                 )
 
     def do_build_arc_cache(self):
-        self.rando.progress_callback("building arc cache...")
+        self.progress_callback("building arc cache...")
 
         with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
             extracts = yaml.safe_load(f)
@@ -1500,9 +1528,11 @@ class GamePatcher:
 
     def add_startitem_patches(self):
         # Add sword story/itemflags if required
-        start_sword_count = self.placement_file.starting_items.count(
-            "Progressive Sword"
+
+        start_sword_count = len(
+            set(PROGRESSIVE_SWORDS) & set(self.placement_file.starting_items)
         )
+
         for i in range(start_sword_count):
             self.startstoryflags.append(PROGRESSIVE_SWORD_STORYFLAGS[i])
         if start_sword_count > 3:
@@ -1519,7 +1549,13 @@ class GamePatcher:
         #     self.startstoryflags.append(32)
         #     self.startitemflags.append(15)
 
-        if "Progressive Pouch" in self.placement_file.starting_items:
+        nb_starting_pouches = len(
+            set(PROGRESSIVE_POUCHES) & set(self.placement_file.starting_items)
+        )
+
+        assert 0 <= nb_starting_pouches <= 1
+
+        if nb_starting_pouches:
             self.startstoryflags.append(30)  # storyflag for pouch
             self.startstoryflags.append(931)  # rando storyflag for progressive pouch 1
             self.startitemflags.append(112)  # itemflag for pouch
@@ -1658,11 +1694,9 @@ class GamePatcher:
             )
 
     def add_impa_hint(self):
-        sot_region = "Stone of Trials not placed monkaS"
-        for location in self.placement_file.item_locations.keys():
-            item = self.placement_file.item_locations[location]
-            if item == "Stone of Trials":
-                sot_region = Logic.split_location_name_by_zone(location)[0]
+        item = STONE_OF_TRIALS
+        loc = {v: k for k, v in self.placement_file.item_locations.items()}[item]
+        region = self.areas.checks[loc]["hint_region"]
         self.eventpatches["502-CenterFieldBack"].append(
             {
                 "name": "Past Impa SoT Hint",
@@ -1670,13 +1704,13 @@ class GamePatcher:
                 "index": 6,
                 "text": break_lines(
                     f"Do not fear for <b<Zelda>>. I will watch over her here. Go now to "
-                    f"<b<{sot_region}>>. The <r<item you need to fulfill your destiny>> is there."
+                    f"<b<{region}>>. The <r<item you need to fulfill your destiny>> is there."
                 ),
             }
         )
 
     def add_stone_hint_patches(self):
-        for hintname, hintdef in self.rando.stonehint_definitions.items():
+        for hintname, hintdef in self.areas.gossip_stones.items():
             self.add_patch_to_event(
                 hintdef["textfile"],
                 {
@@ -1875,7 +1909,7 @@ class GamePatcher:
             "name": "BLasBos",
         }
 
-        for idx in range(1, self.rando.options["demise-count"]):
+        for idx in range(1, self.options["demise-count"]):
             demise = orig_demise.copy()
             demise["posy"] = 1000 * idx
             self.add_patch_to_stage(
@@ -2337,7 +2371,7 @@ class GamePatcher:
             return None
 
     def do_dol_patch(self):
-        self.rando.progress_callback("patching main.dol...")
+        self.progress_callback("patching main.dol...")
         # patch main.dol
         dol_bytes = BytesIO(
             (
@@ -2364,7 +2398,7 @@ class GamePatcher:
             flagregionid = FLAGINDEX_NAMES.index(flagregion)
             for flag in flags:
                 if not isinstance(flag, int):  # it's a dict with onlyif and flag
-                    if not Logic.check_static_option_req(
+                    if not check_static_option_req(
                         flag["onlyif"], self.placement_file.options
                     ):
                         # flag should not be set according to options
@@ -2386,7 +2420,7 @@ class GamePatcher:
         )
 
     def do_rel_patch(self):
-        self.rando.progress_callback("patching rels...")
+        self.progress_callback("patching rels...")
         rel_arc = U8File.parse_u8(
             BytesIO(
                 (
@@ -2494,7 +2528,7 @@ class GamePatcher:
     def do_patch_title_screen_logo(self):
         # patch title screen logo
         actual_data = (
-            self.rando.actual_extract_path
+            self.actual_extract_path
             / "DATA"
             / "files"
             / "US"
@@ -2502,10 +2536,10 @@ class GamePatcher:
             / "Title2D.arc"
         ).read_bytes()
         actual_arc = U8File.parse_u8(BytesIO(actual_data))
-        logodata = (self.rando.rando_root_path / "assets" / "logo.tpl").read_bytes()
+        logodata = (self.rando_root_path / "assets" / "logo.tpl").read_bytes()
         actual_arc.set_file_data("timg/tr_wiiKing2Logo_00.tpl", logodata)
         (
-            self.rando.modified_extract_path
+            self.modified_extract_path
             / "DATA"
             / "files"
             / "US"
@@ -2516,7 +2550,7 @@ class GamePatcher:
     def do_patch_custom_dowsing_images(self):
         # patch propeller dowsing image; used for chest dowsing
         actual_data = (
-            self.rando.actual_extract_path
+            self.actual_extract_path
             / "DATA"
             / "files"
             / "US"
@@ -2524,16 +2558,14 @@ class GamePatcher:
             / "DoButton.arc"
         ).read_bytes()
         actual_arc = U8File.parse_u8(BytesIO(actual_data))
-        chestdata = (
-            self.rando.rando_root_path / "assets" / "chest_image.tpl"
-        ).read_bytes()
+        chestdata = (self.rando_root_path / "assets" / "chest_image.tpl").read_bytes()
         actual_arc.set_file_data("timg/tr_dauzTarget_10.tpl", chestdata)
         sandshipdata = (
-            self.rando.rando_root_path / "assets" / "sandship_image.tpl"
+            self.rando_root_path / "assets" / "sandship_image.tpl"
         ).read_bytes()
         actual_arc.set_file_data("timg/tr_dauzTarget_18.tpl", sandshipdata)
         (
-            self.rando.modified_extract_path
+            self.modified_extract_path
             / "DATA"
             / "files"
             / "US"

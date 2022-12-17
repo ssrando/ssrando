@@ -1,7 +1,6 @@
+from .constants import *
 from options import Options
 from version import VERSION
-from logic.item_types import ALL_ITEM_NAMES
-from logic.constants import *
 from util.file_accessor import read_yaml_file_cached
 
 import json
@@ -64,7 +63,7 @@ class PlacementFile:
         self.trial_object_seed = jsn["trial-object-seed"]
         self.music_rando_seed = jsn["music-rando-seed"]
 
-    def check_valid(self):
+    def check_valid(self, areas):
         """checks, if the current state is valid, throws an exception otherwise
         This does not check consistency with all the settings"""
         if VERSION != self.version:
@@ -72,65 +71,49 @@ class PlacementFile:
                 f"Version did not match, requires {self.version} but found {VERSION}"
             )
 
-        ALLOWED_STARTING_ITEMS = {
-            "Emerald Tablet": 1,
-            "Amber Tablet": 1,
-            "Ruby Tablet": 1,
-            "Progressive Sword": 6,
-            "Progressive Pouch": 1,
-        }
-
-        if any(item not in ALLOWED_STARTING_ITEMS for item in self.starting_items):
-            raise InvalidPlacementFile("invalid starting item!")
-        for start_item, count in ALLOWED_STARTING_ITEMS.items():
-            if self.starting_items.count(start_item) > count:
-                raise InvalidPlacementFile(f"{start_item} too often in starting items!")
+        ALLOWED_STARTING_ITEMS = (
+            dict.fromkeys((EMERALD_TABLET, AMBER_TABLET, RUBY_TABLET))
+            | PROGRESSIVE_SWORDS
+            | group(PROGRESSIVE_POUCH, 1)
+        )
+        for item in self.starting_items:
+            if item not in ALLOWED_STARTING_ITEMS:
+                raise InvalidPlacementFile(f"Invalid starting item {item} !")
 
         for req_dungeon in self.required_dungeons:
-            if req_dungeon not in POTENTIALLY_REQUIRED_DUNGEONS:
+            if req_dungeon not in REGULAR_DUNGEONS:
                 raise InvalidPlacementFile(
                     f"{req_dungeon} is not a valid required dungeon!"
                 )
 
         if sorted(self.dungeon_connections.keys()) != sorted(
-            ENTRANCE_CONNECTIONS.keys()
+            DUNGEON_OVERWORLD_ENTRANCES.values()
         ):
-            raise InvalidPlacementFile("dungeon entrance_connections are wrong!")
+            raise InvalidPlacementFile("dungeon dungeon_connections are wrong!")
 
         if sorted(self.dungeon_connections.values()) != sorted(
-            ENTRANCE_CONNECTIONS.values()
+            DUNGEON_OVERWORLD_ENTRANCES.keys()
         ):
             raise InvalidPlacementFile("dungeon entries are wrong!")
 
-        item_names = ALL_ITEM_NAMES.copy()
-        item_names.remove("Gratitude Crystal")
+        if sorted(self.trial_connections.keys()) != sorted(SILENT_REALM_GATES.values()):
+            raise InvalidPlacementFile("trial trial_connections are wrong!")
+
+        if sorted(self.trial_connections.values()) != sorted(SILENT_REALM_GATES.keys()):
+            raise InvalidPlacementFile("trial entries are wrong!")
 
         for item in self.item_locations.values():
-            if item not in item_names:
+            if item not in ALL_ITEM_NAMES:
                 raise InvalidPlacementFile(f'invalid item "{item}"')
 
-        checks_file = read_yaml_file_cached("checks.yaml")
         check_sets_equal(
-            set(
-                k
-                for (k, v) in checks_file.items()
-                if v["original item"] != "Gratitude Crystal"
-            ),
+            set(areas.checks.keys()),
             set(self.item_locations.keys()),
             "Checks",
         )
 
-        hint_file = read_yaml_file_cached("hints.yaml")
-        trial_check_names = set(
-            (
-                "Song of the Hero - Trial Hint",
-                "Farore's Courage - Trial Hint",
-                "Nayru's Wisdom - Trial Hint",
-                "Din's Power - Trial Hint",
-            )
-        )
         check_sets_equal(
-            set(hint_file.keys()) | trial_check_names,
+            set(areas.gossip_stones.keys()) | set(SONG_HINTS),
             set(self.hints.keys()),
             "Gossip Stone Hints",
         )

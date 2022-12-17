@@ -1,0 +1,184 @@
+allowed-time-of-day: DayOnly
+hint-region: Ancient Cistern
+
+macros:
+  Can Lower Statue: Can Freely Raise and Lower Statue
+  Can Freely Raise and Lower Statue: Impossible
+
+Main:
+  Main Room:
+    exits:
+      Main Exit: Nothing
+      East Part: Lever to East Part
+      After Whip Hooks: Whip
+      Vines Area: Vines Area - Activate Water Geyser | (Whip & Clawshots)
+      Behind the Waterfall: Lever to Block Waterfall & Water Scale
+      Inside Statue: Can Lower Statue | Ancient Cistern Small Key x 2
+      Basement - Under the Statue: Ancient Cistern - Cistern Clip Trick
+      Inside Statue - Whip Chest Room: Ancient Cistern - Cistern Clip Trick & Ancient Cistern - Cistern Whip Room Clip Trick
+    locations:
+      Lock Combination Knowledge: Nothing
+      Lever to East Part: Nothing
+      Lever to Block Waterfall: Whip
+      Rupee in East Hand: Water Scale
+      Rupee in West Hand: Water Scale
+
+    After Whip Hooks:
+      exits:
+        Vines Area: Clawshots
+        After Gutters: After Gutters - Lower Lever
+        Main Room: Nothing
+      locations:
+        Chest after Whip Hooks: Nothing
+
+    Vines Area:
+      exits:
+        # Can front hop and jump slash
+        After Whip Hooks: Sword & Ancient Cistern - Map Chest Jump Trick
+        After Gutters - Upper Area: After Gutters - Upper Lever
+        Spider Thread Area: Spider Thread Area - Extend Platform
+        Main Room: Nothing
+      locations:
+        Chest near Vines: Nothing
+        Activate Water Geyser: Whip
+        Ancient Cistern - Can Lower Statue: Whip
+        Main Room - Lever to Block Waterfall: Ancient Cistern - Lever Jump Trick
+
+    Behind the Waterfall:
+      exits:
+        Basement Gutters: Toilet Flush
+      locations:
+        Chest behind the Waterfall: Nothing
+        First Lever: Whip
+        Second Lever: First Lever & Whip
+        Toilet Flush: First Lever & Second Lever & Whip
+
+    After Gutters:
+      exits:
+        After Whip Hooks: Nothing
+        Upper Area: Flip First Lilypad & Activate Water Geyser & Flip Second Lilypad 2
+      locations:
+        Lower Lever: Nothing
+        Flip First Lilypad: Water Scale & Whip
+        Flip Second Lilypad 1: Flip First Lilypad
+        Rupee under Lilypad: Flip Second Lilypad 1 & Water Scale & Impossible  # Can be skipped
+        Activate Water Geyser: Flip Second Lilypad 1 & Water Scale
+        Flip Second Lilypad 2: Flip First Lilypad & Activate Water Geyser & Whip
+
+      Upper Area:
+        exits:
+          After Gutters: Nothing
+          Vines Area: Upper Lever
+        locations:
+          Upper Lever: Whip
+
+    Spider Thread Area:
+      exits:
+        Vines Area: Extend Platform
+        Main Room: Nothing
+        Basement: Nothing
+      locations:
+        Extend Platform: Nothing
+        Ancient Cistern - Can Freely Raise and Lower Statue: Whip
+
+  East Part:
+    exits:
+      Main Room: Nothing
+      Second Room: Unlock Combination Lock Door
+    locations:
+      Unlock Combination Lock Door: Can Unlock Combination Lock & Main Room - Lock Combination Knowledge
+
+    Second Room:
+      exits:
+        East Part: Nothing
+        East Part - Chest Ledge: Flip Main Lilypad & Water Scale  # or Lilypad Skip
+      locations:
+        Flip Side Lilypad: Nothing
+        Flip Main Lilypad: Nothing
+        Rupee in East Part in Cubby: Flip Side Lilypad & Water Scale
+        First Rupee in East Part in Short Tunnel: Water Scale
+        Second Rupee in East Part in Short Tunnel: Water Scale
+        Third Rupee in East Part in Short Tunnel: Water Scale
+        Rupee in East Part in Main Tunnel: Flip Main Lilypad & Water Scale
+
+    Chest Ledge:
+      exits:
+        Main Room: Nothing
+      locations:
+        Chest in East Part: Nothing
+
+  Basement Gutters:
+    exits:
+      Past Skulltula:
+        Can Get Past Skulltula & Water Scale # | Ancient Cistern - Basement Lilypad Clip Trick)
+    locations:
+      Can Get Past Skulltula: Beetle | Bow
+
+    Past Skulltula:
+      exits:
+        Basement Gutters: Water Scale
+        Main Room - After Gutters: Ancient Cistern Small Key x 2
+      locations:
+        Bokoblin: Whip
+
+  # Implies statue is lowered
+  Basement:
+    exits:
+      Inside Statue: Nothing
+      Rotating Vines: (Whip & Blow Rock) | Clawshots
+      Spider Thread: Spider Thread - Activate Water Geyser | Ancient Cistern - Basement Highflip Trick
+      Under the Statue: Ancient Cistern - Basement Highflip Trick
+    locations:
+      Stop Cursed Waterfall: Beetle
+      Blow Rock: Hook Beetle | (Bomb Bag & Bomb Throws Trick)
+
+    Rotating Vines:
+      exits:
+        Basement: Nothing
+        Spider Thread: Whip
+
+    Spider Thread:
+      exits:
+        Basement: Nothing
+        Under the Statue: Can Freely Raise and Lower Statue
+        Main Room - Spider Thread Area: Nothing
+      locations:
+        Activate Water Geyser: Whip
+
+    # Implies statue is raised
+    Under the Statue:
+      exits:
+        Basement: Nothing
+      locations:
+        Ancient Cistern - Can Lower Statue: Nothing
+        Boss Key Chest: Ancient Cistern - Can Lower Statue
+
+  Inside Statue:
+    exits:
+      Basement: Can Lower Statue
+      Main Room: Activate Water Geysers
+      Boss Door: Ancient Cistern Boss Key & Activate Water Geysers
+      Whip Chest Room: Ancient Cistern Small Key x 2 & (Can Defeat Stalmaster | Can Lower Statue)
+    locations:
+      Activate Water Geysers: Whip
+
+    Whip Chest Room:
+      exits:
+        Inside Statue: Ancient Cistern Small Key x 2
+      locations:
+        Whip: Nothing
+
+Boss Room:
+  exits:
+    Exit to Dungeon: Beat Koloktos
+    Exit to Flame Room: Beat Koloktos
+  locations:
+    Beat Koloktos: Whip & (Sword | Bomb Bag | Bow)
+    Heart Container: Beat Koloktos
+
+Flame Room:
+  exits:
+    Exit: Nothing
+    # Crest Hit: Farore's Flame
+  locations:
+    Farore's Flame: Goddess Sword

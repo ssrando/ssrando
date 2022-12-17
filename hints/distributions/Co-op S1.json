@@ -3,7 +3,9 @@
     "added_locations": [],
     "removed_locations": [],
     "added_items": [],
-    "removed_items": ["Key Piece"],
+    "removed_items": [
+      "Key Piece #0", "Key Piece #1", "Key Piece #2", "Key Piece #3", "Key Piece #4"
+    ],
     "dungeon_sots_limit": 2,
     "dungeon_barren_limit": 2,
     "distribution": {

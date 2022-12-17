@@ -24,6 +24,7 @@ from PySide6.QtWidgets import (
 )
 from gui.sort_model import LocationsModel
 
+from logic.logic_input import Areas
 from logic.constants import BANNABLE_TYPES
 from options import OPTIONS, Options
 from gui.progressdialog import ProgressDialog
@@ -42,7 +43,7 @@ NEW_PRESET = "[New Preset]"
 
 
 class RandoGUI(QMainWindow):
-    def __init__(self, options: Options):
+    def __init__(self, areas: Areas, options: Options):
         super().__init__()
 
         self.wit_manager = WitManager(Path(".").resolve())
@@ -65,6 +66,7 @@ class RandoGUI(QMainWindow):
 
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
 
+        self.areas = areas
         self.options = options
         self.settings_path = "settings.txt"
         if os.path.isfile(self.settings_path):
@@ -218,13 +220,13 @@ class RandoGUI(QMainWindow):
             "eldin_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
             "the main part of Eldin Volcano and Mogma Turf",
             "lanayru_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in the main part of Lanayru Desert, Temple of Time and Lanayru Mines",
+            "in the main part of Lanayru Desert, Temple of Time and Lanayru Mine",
             "floria_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
             "in Lake Floria",
             "summit_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
             "in Volcano Summit",
             "sand_sea_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in Sand Sea",
+            "in Lanayru Sand Sea",
         }
         for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
@@ -295,7 +297,7 @@ class RandoGUI(QMainWindow):
             self.ask_for_clean_iso()
             return
         # make sure user can't mess with the options now
-        self.rando = Randomizer(self.options.copy())
+        self.rando = Randomizer(self.areas, self.options.copy())
 
         if dry_run:
             extra_steps = 1  # done
@@ -748,10 +750,10 @@ class RandoGUI(QMainWindow):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
 
 
-def run_main_gui(options: Options):
+def run_main_gui(areas: Areas, options: Options):
     app = QtWidgets.QApplication([])
 
-    widget = RandoGUI(options)
+    widget = RandoGUI(areas, options)
     widget.show()
 
     sys.exit(app.exec_())

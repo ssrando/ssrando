@@ -1,0 +1,312 @@
+# this logic assumes, that you can always reach outside skyloft
+
+Upper Skyloft:
+  hint-region: Upper Skyloft
+  exits:
+    Knight Academy Upper Right Door: Nothing
+    Knight Academy Upper Left Door: Nothing
+    Knight Academy Lower Right Door: Day
+    Knight Academy Lower Left Door: Day
+    Knight Academy Chimney Entrance: Clawshots
+    Sparring Hall Right Door: Nothing
+    Sparring Hall Left Door: Nothing
+    Goddess Statue: Nothing
+    Central Skyloft: Nothing
+  locations:
+    Owlan's Gift: Day
+    Chest near Goddess Statue: Nothing
+    Pumpkin Archery -- 600 Points: Bow & Day
+
+  Knight Academy:
+    can-sleep: true
+    exits:
+      Upper Right Door: Nothing
+      Upper Left Door: Nothing
+      Lower Right Door: Day
+      Lower Left Door: Day
+    locations:
+      Fledge's Gift: Nothing
+      Crystal in Knight Academy Plant: Night
+      Start Owlan's Quest: Faron - Faron Woods - All Kikwis Saved
+      Owlan's Crystals: Faron - Faron Woods - Retrieve Oolo & Day
+      Knock on Toilet Door: Goddess Harp & Night
+      Cawlin's Letter: Knock on Toilet Door & Day
+      Ghost/Pipit's Crystals: Cawlin's Letter & Day
+      Fledge's Crystals: Central Skyloft - Bazaar - Endurance Potion & Night
+
+    Link's Room:
+      can-sleep: true
+      entrance: Nothing
+      exits:
+        Start Entrance: Impossible
+        Knight Academy: Nothing
+      locations:
+        Crystal in Link's Room: Night
+
+    Zelda's Room:
+      entrance:
+        Unlocked Zelda's Room
+      exits:
+        Chimney: Impossible
+        Knight Academy: Nothing
+      locations:
+        Unlocked Zelda's Room: Nothing
+        Crystal in Zelda's Room: Night
+        In Zelda's Closet: Nothing
+
+  Sparring Hall:
+    exits:
+      Right Door: Nothing
+      Left Door: Nothing
+    locations:
+      Crystal in Sparring Hall: Beetle & Night
+      Sparring Hall Chest: Nothing
+      Delivered Hot Soup: Sky - Lumpy Pumpkin - Start Hot Soup Delivery
+
+  Goddess Statue:
+    exits:
+      Exit: Nothing
+    locations:
+      First Chest in Goddess Statue: Nothing
+      Second Chest in Goddess Statue: Nothing
+
+Central Skyloft:
+  hint-region: Central Skyloft
+  exits:
+    Exit to Beedle's Shop: Day & (Distance Activator | (Beedle's Shop With Bombs Trick & Bomb Bag))
+    Bazaar North: Day
+    Bazaar West: Day
+    Bazaar South: Day
+    Trial Gate: Open Trial Gate
+    Orielle and Parrow's House: Nothing
+    Peatrice's House: Nothing
+    Wryna's House: Nothing
+    Piper's House: Nothing
+    Exit to Sky: Day
+    Skyloft - Upper Skyloft: Nothing
+    Skyloft Village: Nothing
+    # omit SoT here intentionally, see the comment on that
+    # area for an explanation
+    Near Temple Entrance: Day & Clawshots
+    Waterfall Island: Clawshots
+    Waterfall Cave Upper: Open Cave Entrance
+  locations:
+    Crystal between Wooden Planks: Night
+    Crystal on West Cliff: Night
+    Crystal on Light Tower: Night
+    West Cliff Goddess Chest: Faron - Goddess Cube on West Great Tree near Exit
+    Parrow's Gift: Sky - Talk to Orielle & Day
+    Parrow's Crystals: Sky - Save Orielle & Day
+    Shed Chest: Water Scale
+    Shed Goddess Chest: Water Scale & Eldin - Goddess Cube on Sand Slide
+    Bird Nest - Item in Bird Nest:
+      Baby Rattle from Beedle's Shop Trick & Day & Distance Activator & Gust Bellows & (Beetle | Whip)
+    Open Trial Gate: Goddess Harp & Song of the Hero
+    General - Can Collect Water: Nothing
+    Waterfall Cave Crystals from above: Beetle
+    Crystal on Waterfall Island from the ground: Quick Beetle
+    Past Waterfall Cave - Crystal after Waterfall Cave: Night & Waterfall Cave Crystals from above
+    Past Waterfall Cave - Crystal in Loftwing Prison: Night & Waterfall Cave Crystals from above
+    Crystal on Waterfall Island: Night & Crystal on Waterfall Island from the ground
+    Open Cave Entrance: Sword | Bomb Bag
+
+  Bird Nest:
+    exits:
+      Central Skyloft: Nothing
+    locations:
+      Item in Bird Nest: Gust Bellows
+
+  Bazaar:
+    allowed-time-of-day: DayOnly
+    exits:
+      North Exit: Nothing
+      West Exit: Nothing
+      South Exit: Nothing
+    locations:
+      Potion Lady's Gift: Nothing
+      Bazaar Goddess Chest: Lanayru - Goddess Cube in Ancient Harbour
+      Endurance Potion: Bottle & Lanayru - Raise Lanayru Mining Facility
+      Talk to Peatrice: Nothing
+      Item Check Access: Nothing
+
+    Gondo's Upgrades:
+      entrance: Gondo Upgrades On option
+      exits:
+        Bazaar: Nothing
+      locations:
+        Upgrade to Quick Beetle:
+          $ Hook Beetle &
+          Faron - Deep Woods - Hornet Larvae Farming &
+          Lanayru - Mine - Ancient Flower Farming &
+          Sky - Clean Cut Minigame # Golden Skull farming
+        Upgrade to Tough Beetle:
+          $ Quick Beetle &
+          Faron - Faron Woods - Amber Relic Farming &
+          Lanayru - Mine - Ancient Flower Farming &
+          Sky - Clean Cut Minigame # Goddess Plumes / Blue Bird Feathers farming
+
+  Orielle and Parrow's House:
+    can-sleep: true
+    exits:
+      Exit: Nothing
+    locations:
+      Crystal in Orielle and Parrow's House: Nothing
+      Parrow's Gift: Sky - Talk to Orielle & Night
+      Parrow's Crystals: Sky - Save Orielle & Night
+
+  Peatrice's House:
+    can-sleep: true
+    exits:
+      Exit: Nothing
+    locations:
+      Peater/Peatrice's Crystals: Bazaar - Talk to Peatrice & Night
+
+  Wryna's House:
+    can-sleep: true
+    exits:
+      Exit: Nothing
+    locations:
+      Wryna's Crystals: Nothing
+
+  Piper's House:
+    can-sleep: true
+    exits:
+      Exit: Nothing
+
+  # Pretend this area is reachable without SoT and instead require it
+  # for the exit to SK
+  # the reason for this is twofold:
+  # - only requiring SoT for the actual exit doesn't trip up the algorithm that
+  #   separates progress items from nonprogress
+  # - When coming from SK in ER, when it hasn't been opened yet *doesn't* place
+  #   you on the platform near the entrance (cause it doesn't exist), so you always need SoT to enter SK
+  Near Temple Entrance:
+    allowed-time-of-day: DayOnly
+    exits:
+      Exit to Sky Keep: Stone of Trials
+      Central Skyloft: Clawshots
+
+  Waterfall Island:
+    exits:
+      Central Skyloft: Nothing
+      Skyloft Village: Nothing
+      Central Skyloft - Bird Nest: Nothing
+    locations:
+      Crystal on Waterfall Island: Night
+      Waterfall Goddess Chest: Lanayru - Goddess Cube in Pirate Stronghold
+      Floating Island Goddess Chest: Faron - Goddess Cube in Lake Floria
+      Gossip Stone on Waterfall Island: Nothing
+
+  Waterfall Cave:
+    exits:
+      Upper Exit: Nothing
+      Lower Exit: Nothing
+    locations:
+      Waterfall Cave First Chest: Nothing
+      Waterfall Cave Second Chest: Nothing
+      Rupee Waterfall Cave Crawlspace: Nothing
+
+  Past Waterfall Cave:
+    exits:
+      Waterfall Cave Lower Exit: Nothing
+      Central Skyloft - Exit to Sky: Day
+    locations:
+      Crystal after Waterfall Cave: Night
+      Crystal in Loftwing Prison: Night
+
+Skyloft Silent Realm:
+  hint-region: Skyloft Silent Realm
+  exits:
+    Exit: Nothing
+  locations:
+    Stone of Trials: Nothing
+
+Skyloft Village:
+  hint-region: Skyloft Village
+  exits:
+    Central Skyloft: Nothing
+    Central Skyloft - Past Waterfall Cave: Waterfall Cave Jump Trick & Day
+    Bertie's House: Nothing
+    Sparrot's House: Nothing
+    Mallara's House: Nothing
+    Gondo's House: Nothing
+    Rupin's House: Nothing
+    Batreaux's House: Opened Shed | Gravestone Jump Trick
+    Central Skyloft - Exit to Sky: Day
+  locations:
+    Crystal near Pumpkin Patch: Night
+    Opened Shed: Night
+
+  Bertie's House:
+    can-sleep: true
+    exits:
+      Exit: Nothing
+    locations:
+      Bertie's Crystals: Baby Rattle & Night
+
+  Sparrot's House:
+    can-sleep: true
+    exits:
+      Exit: Nothing
+    locations:
+      Start Sparrot's Quest: Nothing
+      Sparrot's Crystals: Eldin - Retrieve Crystal Ball
+
+  Mallara's House:
+    can-sleep: true
+    exits:
+      Exit: Nothing
+    locations:
+      Mallara's Crystals: Gust Bellows
+
+  Gondo's House:
+    can-sleep: true
+    exits:
+      Exit: Nothing
+
+  Rupin's House:
+    can-sleep: true
+    exits:
+      Exit: Nothing
+
+  Batreaux's House:
+    hint-region: Batreaux's House
+    exits:
+      Exit: Nothing
+    locations:
+      5 Crystals: 5 Gratitude Crystals
+      10 Crystals: 10 Gratitude Crystals
+      30 Crystals: 30 Gratitude Crystals
+      30 Crystals Chest: 30 Gratitude Crystals
+      40 Crystals: 40 Gratitude Crystals
+      50 Crystals: 50 Gratitude Crystals
+      70 Crystals: 70 Gratitude Crystals
+      70 Crystals Second Reward: 70 Gratitude Crystals
+      80 Crystals: 80 Gratitude Crystals
+
+# BEEDLES SHOP
+Beedle's Shop:
+  toplevel-alias: Beedle
+  hint-region: Beedle's Shop
+  can-sleep: true
+  exits:
+    Night Exit: Night
+    Day Exit: Day
+
+  Stall:
+    entrance: Day & Beedle Stall Access Token
+    exits:
+      Beedle's Shop: Nothing
+    locations:
+      # We don't want the pouch extensions to be the logical access to the pouch
+      300 Rupee Item: Can Afford 300 Rupees & (Pouch | Randomized Beedle option)
+      600 Rupee Item: Can Afford 600 Rupees
+      1200 Rupee Item: Can Afford 1200 Rupees
+      800 Rupee Item: Can Afford 800 Rupees
+      1600 Rupee Item: Can Afford 1600 Rupees
+      First 100 Rupee Item: Can Afford 100 Rupees
+      Second 100 Rupee Item: Can Afford 100 Rupees
+      # To reduce necessary rupee-farming at the start, the third item logically needs an efficient rupee-farming method
+      Third 100 Rupee Item: Can Afford 100 Rupees & Can Medium Rupee Farm
+      50 Rupee Item: Can Afford 50 Rupees
+      1000 Rupee Item: Can Afford 1000 Rupees

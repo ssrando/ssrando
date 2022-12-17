@@ -1,0 +1,149 @@
+allowed-time-of-day: DayOnly
+hint-region: Sky Keep
+
+Main:
+  First Room:
+    exits:
+      Bottom Exit: Nothing
+      Puzzle Solving Meta Room: Nothing
+    locations:
+      First Chest: Nothing
+      Right Exit: Nothing
+
+  Skyview Room:
+    Beginning:
+      exits:
+        End: (Whip & Free Rope & Clawshots & Kill Pyrups & Gust Bellows) | End - Lever
+      locations:
+        Free Rope: Beetle | Bow
+        Kill Pyrups: Bomb Bag | Hook Beetle | Bow
+        Left Exit: Nothing
+
+    End:
+      exits:
+        Beginning: Lever
+      locations:
+        Lever: Nothing
+        Top Exit: Nothing
+
+  LMF Room:
+    exits: {}
+    locations:
+      Finish Room: (Gust Bellows | Sky Keep - Shooting LMF Bow Switches in Present Trick) & Bow
+      Bottom Exit: Nothing
+      Top Exit: Finish Room
+
+  Earth Temple Room:
+    exits: {}
+    locations:
+      Right Exit: Impossible
+      Top Exit: Impossible
+
+  Mini Boss Room:
+    From Bottom:
+      exits:
+        Near Chest: Defeat Dreadfuse & Clawshots
+      locations:
+        Defeat Dreadfuse: Can Defeat Scervo/Dreadfuse
+        Bottom Exit: Defeat Dreadfuse
+
+    Near Chest:
+      exits:
+        From Left: Unlock Door
+      locations:
+        Chest after Dreadfuse: Nothing
+        Unlock Door: From Bottom - Defeat Dreadfuse
+
+    From Left:
+      exits:
+        Near Chest: Near Chest - Unlock Door
+      locations:
+        Left Exit: Nothing
+
+  Ancient Cistern Room:
+    exits:
+      After Key: Unlock Key Door
+      Triforce Room: Triforce Room - Lever
+    locations:
+      Unlock Key Door: Sky Keep Small Key
+      Right Exit: Nothing
+      Bottom Exit: Nothing
+
+    After Key:
+      exits:
+        Triforce Room: Beat Trial
+      locations:
+        Beat Trial:
+          Can Defeat Moblins &
+          Can Defeat Bokoblins &
+          Can Defeat Stalfos &
+          Bow &
+          Can Defeat Cursed Bokoblins &
+          Can Defeat Stalmaster
+
+    Triforce Room:
+      exits:
+        After Key: Nothing
+        Ancient Cistern Room: Lever
+      locations:
+        Triforce of Courage: Nothing
+        Lever: Nothing
+
+  Fire Sanctuary Room:
+    From Right:
+      exits:
+        First Platform: Beetle | First Platform - Lever
+        OoB: Clawshots & Sky Keep - FS Room Clawshots Vine Clip Trick
+        Triforce Room: Triforce Room - Upper Lever
+      locations:
+        Right Exit: Nothing
+
+    OoB:
+      exits:
+        Triforce Room: Clawshots
+
+    First Platform:
+      exits:
+        Triforce Room: Beetle & Clawshots
+      locations:
+        Lever: Nothing
+        Rupee in Fire Sanctuary Room in Alcove: Beetle
+
+    Triforce Room:
+      exits:
+        From Left: Lower Lever
+        From Right: Upper Lever
+      locations:
+        Triforce of Power: Nothing
+        Lower Lever: Nothing
+        Upper Lever: Nothing
+
+    From Left:
+      exits:
+        Triforce Room: Triforce Room - Lower Lever
+      locations:
+        Left Exit: Nothing
+
+  Sandship Room:
+    exits:
+      Triforce Area: Lower Eye & Clawshots
+    locations:
+      Higher Eye: Bow
+      Lower Eye: Higher Eye & Bow
+      Left Exit: Nothing
+
+    Triforce Area:
+      exits:
+        Sandship Room: Nothing
+      locations:
+        Triforce of Wisdom: Nothing
+
+  Puzzle Solving Meta Room:
+    exits:
+      Skyview Room - Beginning: First Room - Right Exit
+      LMF Room: Skyview Room - Top Exit
+      Earth Temple Room: LMF Room - Top Exit
+      Mini Boss Room - From Bottom: Fire Sanctuary Room - Left Exit
+      Ancient Cistern Room: LMF Room - Top Exit
+      Fire Sanctuary Room - From Right: Ancient Cistern Room - Bottom Exit
+      Sandship Room: Fire Sanctuary Room - Left Exit

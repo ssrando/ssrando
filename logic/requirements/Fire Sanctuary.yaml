@@ -1,0 +1,242 @@
+allowed-time-of-day: DayOnly
+hint-region: Fire Sanctuary
+
+Main:
+  First Room:
+    exits:
+      Main Exit: Nothing
+    locations:
+      Hit Water Plant: Distance Activator | Bomb Bag
+
+    Past Water Plant:
+      entrance: Hit Water Plant
+      exits:
+        First Room: Hit Water Plant
+        Exit to Second Room: Fire Sanctuary Small Key
+      locations:
+        First Room - Hit Water Plant: Distance Activator | Bomb Bag
+        Defeat Last Bokoblin: Can Defeat Bokoblins
+        Chest in First Room: Defeat Last Bokoblin
+
+  Second Room:
+    locations:
+      Chest in Second Room: Nothing
+      Open Doors to Water Fruit: Mogma Mitts
+      Defeat Magmanos: Open Doors to Water Fruit & Sword
+    exits:
+      Outside Section: Nothing
+      Balcony: Defeat Magmanos
+      First Bridge: Nothing
+
+    Outside Section:
+      exits:
+        Exit to First Room: Nothing
+        Second Room: Nothing
+
+    Balcony:
+      exits:
+        Second Room: Defeat Magmanos
+      locations:
+        Chest on Balcony: Nothing
+
+
+  First Bridge:
+    exits:
+      Second Room: Lizalfos Fight
+      Room with Water Plant: Lizalfos Fight
+      Second Bridge - Left: Second Bridge - Unlock Shortcut to First Bridge
+    locations:
+      Lizalfos Fight: Can Defeat Lizalfos
+
+  Room with Water Plant:
+    exits:
+      First Bridge: Nothing
+      Past Lava: Blow up Rock & Hit Water Plant
+    locations:
+      Blow up Rock: Hook Beetle
+      Hit Water Plant: Distance Activator | Bomb Bag
+
+    Past Lava:
+      exits:
+        Room with Water Plant: Projectile Item
+        First Trapped Mogma Room: Nothing
+        Water Fruit Room: Unlock Key Door
+      locations:
+        Unlock Key Door: Fire Sanctuary Small Key x 2
+
+  First Trapped Mogma Room:
+    exits:
+      Room with Water Plant - Past Lava: Nothing
+      Lower Area: Magmanos Fight Room - Magmanos Fight
+    locations:
+      Chest near First Trapped Mogma: Gust Bellows | Clawshots
+
+    Lower Area:
+      exits:
+        First Trapped Mogma Room: Magmanos Fight Room - Magmanos Fight
+        Magmanos Fight Room - Upper Part: Magmanos Fight Room - Magmanos Fight
+        Magmanos Fight Room - Lower Part: Mogma Mitts
+      locations:
+        Mogma Mitts: Nothing
+
+  Water Fruit Room:
+    exits:
+      Room with Water Plant - Past Lava:
+        Room with Water Plant - Unlock Key Door
+      After Frog: Hydrate Frog
+    locations:
+      First Chest in Water Fruit Room: Nothing
+      Second Chest in Water Fruit Room: Nothing
+      Hydrate Frog: Sword
+      Room with Water Plant - Unlock Key Door:
+        Fire Sanctuary Small Key x 2  # Would need better key logic to be exact
+
+    After Frog:
+      exits:
+        Water Fruit Room: Hydrate Frog
+        Magmanos Fight Room - Upper Part: Nothing
+
+  Magmanos Fight Room:
+    Upper Part:
+      exits:
+        Water Fruit Room - After Frog: Magmanos Fight
+        First Trapped Mogma Room: Magmanos Fight
+      locations:
+        Magmanos Fight: Sword
+
+    Lower Part:
+      exits:
+        First Trapped Mogma Room - Lower Area: Mogma Mitts
+        Past Sliding Door: Move Sliding Door
+        Exit to West of Boss Door: Unlock Key Door
+      locations:
+        Unlock Key Door: Fire Sanctuary Small Key x 3
+        Uncover Dig Spot: Gust Bellows
+        Move Sliding Door: Uncover Dig Spot & Mogma Mitts
+
+      Past Sliding Door:
+        exits:
+          Lower Part: Move Sliding Door
+          Second Bridge - Left: Nothing
+
+  Second Bridge:
+    Left:
+      exits:
+        First Bridge: Unlock Shortcut to First Bridge
+        Bottom Part: Nothing
+        Right: Clawshots
+      locations:
+        Unlock Shortcut to First Bridge: Nothing
+
+    Bottom Part:
+      exits:
+        Left: Clawshots
+        Right: Clawshots
+
+    Right:
+      exits:
+        Bottom Part: Nothing
+        Left: Clawshots
+        Second Trapped Mogma Room: Nothing
+
+  Second Trapped Mogma Room:
+    exits:
+      Second Bridge - Right: Nothing
+      Past Bombable Wall: Hydrate Frog & Blow up Wall & Mogma Mitts
+    locations:
+      Move Sliding Doors Correctly: Mogma Mitts
+      Hydrate Frog: Move Sliding Doors Correctly & Sword
+      Rescue Mogma: Hydrate Frog
+      Chest after Second Trapped Mogma: Rescue Mogma
+      Blow up Wall: Hydrate Frog & Bomb Bag # & Fire Sanctuary - Map
+
+    Past Bombable Wall:
+      exits:
+        Second Trapped Mogma Room: Nothing
+      locations:
+        Chest after Bombable Wall: Nothing
+
+  West of Boss Door:
+    exits:
+      Entry: Hit Water Plant
+      Front of Boss Door: Hit Water Plant & Past Plats - Release Lava
+      Past Plats:
+        (Catch Plats & (Distance Activator | Bomb Bag)) |
+        Past Plats - Unlock Shortcut to Pre Plats
+    locations:
+      Hit Water Plant: Distance Activator | Bomb Bag
+      Catch Plats: Mogma Mitts
+      Plats' Chest: Catch Plats
+
+    Entry:
+      exits:
+        Exit to Magmanos Fight Room: Nothing
+        West of Boss Door: Hit Water Plant
+        Front of Boss Door: Hit Water Plant & Past Plats - Release Lava
+      locations:
+        West of Boss Door - Hit Water Plant: Distance Activator | Bomb Bag
+
+    Past Plats:
+      can-save: true
+      exits:
+        West of Boss Door: Unlock Shortcut to Pre Plats
+      locations:
+        Unlock Shortcut to Pre Plats: Nothing
+        Release Lava: Mogma Mitts
+
+  Front of Boss Door:
+    exits:
+      Statue: Unlock Statue
+      Boss Door: Fire Sanctuary Boss Key
+      Lizalfos Fight Room: Nothing
+      Past Bars: Past Bars - Unlock Way to Front
+    locations:
+      Unlock Statue: Nothing
+
+    Past Bars:
+      exits:
+        Boss Key Room: Nothing
+        Front of Boss Door: Unlock Way to Front
+      locations:
+        Unlock Way to Front: Nothing
+
+  Lizalfos Fight Room:
+    exits:
+      Staircase Room: Fight
+    locations:
+      Fight: Can Defeat Lizalfos
+
+  Staircase Room:
+    exits:
+      Upper Part: Clawshots
+    locations:
+      Chest in Staircase Room: Clawshots
+
+    Upper Part:
+      exits:
+        Staircase Room: Nothing
+        Boss Key Room: Nothing
+
+  Boss Key Room:
+    exits:
+      Staircase Room - Upper Part: Nothing
+      Front of Boss Door - Past Bars: Nothing
+    locations:
+      Solve Puzzle: Mogma Mitts
+      Defeat Moldorm: Solve Puzzle & Mogma Mitts
+      Boss Key Chest: Solve Puzzle & Defeat Moldorm
+
+Boss Room:
+  exits:
+    Exit to Dungeon: Beat Ghirahim
+    Exit to Flame Room: Beat Ghirahim
+  locations:
+    Beat Ghirahim: Sword
+    Heart Container: Beat Ghirahim
+
+Flame Room:
+  exits:
+    Exit: Nothing
+    # Crest Hit Exit: Din's Flame  # One time
+  locations:
+    Din's Flame: Goddess Sword

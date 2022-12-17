@@ -10,23 +10,29 @@ import json
 import yaml
 import subprocess
 
-from logic.logic import Logic
+from logic.constants import *
+from logic.inventory import EXTENDED_ITEM
+from logic.fill_algo_common import UserOutput
+from logic.randomize import Rando
 from logic.hints import Hints
-import logic.constants as constants
+from logic.logic_input import Areas
 from logic.placement_file import PlacementFile
-from hints.hint_types import GossipStoneHintWrapper, SongHint
+import SpoilerLog
+
 from gamepatches import GamePatcher, GAMEPATCH_TOTAL_STEP_COUNT
 from paths import RANDO_ROOT_PATH, IS_RUNNING_FROM_SOURCE
 from options import OPTIONS, Options
-import logic.item_types
 from sslib.utils import encodeBytes
 from version import VERSION, VERSION_WITHOUT_COMMIT
-import SpoilerLog
 
 from typing import List, Callable
 
 
 class StartupException(Exception):
+    pass
+
+
+class GenerationFailed(Exception):
     pass
 
 
@@ -51,69 +57,36 @@ class BaseRandomizer:
         self.log_file_path = self.exe_root_path / "logs"
         self.log_file_path.mkdir(exist_ok=True, parents=True)
 
-        # not happy that is has to land here, it's used by both GamePatches and Logic
-        with (self.rando_root_path / "checks.yaml").open("r") as f:
-            self.item_locations = yaml.load(f, YamlOrderedDictLoader)
-
-        for location_name in self.item_locations:
-            if not "type" in self.item_locations[location_name]:
-                print("ERROR, " + location_name + " doesn't have types!")
-            types_string = self.item_locations[location_name]["type"]
-            types = types_string.split(",")
-            types = set((type.strip() for type in types))
-            unknown_types = [x for x in types if not x in constants.BANNABLE_TYPES]
-            if len(unknown_types) != 0:
-                raise Exception(f"unknown types: {unknown_types}")
-            self.item_locations[location_name]["type"] = types
-
-        with (RANDO_ROOT_PATH / "hints.yaml").open() as f:
-            self.stonehint_definitions: dict = yaml.safe_load(f)
-
     def randomize(self):
         """patch the game, or only write the spoiler log, depends on the implementation"""
         raise NotImplementedError("abstract")
 
 
 class Randomizer(BaseRandomizer):
-    def __init__(self, options: Options, progress_callback=dummy_progress_callback):
+    def __init__(
+        self, areas: Areas, options: Options, progress_callback=dummy_progress_callback
+    ):
         super().__init__(progress_callback)
+        self.areas = areas
         self.options = options
-        # hack: if shops are vanilla, disable them as banned types because of bug net and progressive pouches
-        if self.options["shop-mode"] == "Vanilla":
-            banned_types = self.options["banned-types"]
-            for unban_shop_item in ["beedle", "cheap", "medium", "expensive"]:
-                if unban_shop_item in banned_types:
-                    banned_types.remove(unban_shop_item)
-            self.options.set_option("banned-types", banned_types)
 
-        self.dry_run = bool(self.options["dry-run"])
         self.no_logs = self.options["no-spoiler-log"]
+
         self.seed = self.options["seed"]
         if self.seed == -1:
             self.seed = random.randint(0, 1000000)
         self.options.set_option("seed", self.seed)
 
-        self.randomizer_hash = self._get_rando_hash()
-        self.rng = random.Random()
-        self.rng.seed(self.seed)
+        print(f"Seed: {self.seed}")
+        self.rng = random.Random(self.seed)
         if self.no_logs:
             for _ in range(100):
                 self.rng.random()
+        self.rando = Rando(self.areas, self.options, self.rng)
+
+        self.dry_run = bool(self.options["dry-run"])
         self.banned_types = self.options["banned-types"]
-
-        self.logic = Logic(self)
-        self.hints = Hints(self.logic)
-
-        # self.logic.set_prerandomization_item_location("Beedle - Second 100 Rupee Item", "Rare Treasure")
-        # self.logic.set_prerandomization_item_location("Beedle - Third 100 Rupee Item", "Rare Treasure")
-        # self.logic.set_prerandomization_item_location("Beedle - 1000 Rupee Item", "Rare Treasure")
-        # self.logic.set_prerandomization_item_location("Knight Academy - Fledge's Gift", "Skyview Small Key")
-        # self.logic.set_prerandomization_item_location("Knight Academy - Owlan's Gift", "Earth Temple Map")
-        # self.logic.set_prerandomization_item_location("Skyloft - Skyloft above waterfall", "Farore's Courage")
-        # self.logic.set_prerandomization_item_location("Skyloft - Shed normal chest", "Potion Medal")
-        # self.logic.set_prerandomization_item_location("Skyloft - Skyloft Archer minigame", "Heart Medal")
-        # self.logic.set_prerandomization_item_location("Central Skyloft - Item in Bird Nest", "Sea Chart")
-        # self.logic.set_prerandomization_item_location("Knight Academy - Sparring Hall Chest", "Lanayru Caves Small Key")
+        self.randomizer_hash = self._get_rando_hash()
 
     def _get_rando_hash(self):
         # hash of seed, options, version
@@ -155,19 +128,26 @@ class Randomizer(BaseRandomizer):
 
     @cached_property
     def get_total_progress_steps(self):
+        rando_steps = self.rando.get_total_progress_steps() + 3
         if self.dry_run:
-            return 2
+            return rando_steps + 1
         else:
-            return 2 + GAMEPATCH_TOTAL_STEP_COUNT
+            return rando_steps + 1 + 1 + GAMEPATCH_TOTAL_STEP_COUNT
 
     def set_progress_callback(self, progress_callback: Callable[[str], None]):
         self.progress_callback = progress_callback
 
     def randomize(self):
+        useroutput = UserOutput(GenerationFailed, self.progress_callback)
         self.progress_callback("randomizing items...")
-        self.logic.randomize_items()
-        self.sots_locations, self.goal_locations = self.logic.get_sots_goal_locations()
-        self.hints.do_hints()
+        self.rando.randomize(useroutput)
+        self.progress_callback("preparing for hints...")
+        self.logic = self.rando.extract_hint_logic()
+        del self.rando
+        self.logic.check(useroutput)
+        self.progress_callback("generating hints...")
+        self.hints = Hints(self.options, self.rng, self.areas, self.logic)
+        self.hints.do_hints(useroutput)
         if self.no_logs:
             self.progress_callback("writing anti spoiler log...")
         else:
@@ -184,62 +164,83 @@ class Randomizer(BaseRandomizer):
             f"SS Random {self.seed} - {anti}Spoiler Log.{ext}"
         )
 
-        sots_locations: dict[str, list[tuple[str, str]]] = {
-            goal: list(locs.items()) for goal, locs in self.goal_locations.items()
-        } | {constants.DEMISE: list(self.sots_locations.items())}
+        goals = [DUNGEON_GOALS[dun] for dun in self.logic.required_dungeons] + [DEMISE]
+        sots_items = {
+            goal: self.logic.get_sots_items(
+                EXTENDED_ITEM[self.areas.short_to_full(GOAL_CHECKS[goal])]
+            )
+            for goal in goals
+        }
 
         if self.options["json"]:
             dump = SpoilerLog.dump_json(
+                self.logic.placement,
                 self.options,
-                self.logic,
-                self.hints.hints,
-                sots_locations,
-                self.randomizer_hash,
+                hash=self.randomizer_hash,
+                progression_spheres=self.logic.calculate_playthrough_progression_spheres(),
+                hints=self.logic.placement.hints,
+                required_dungeons=self.logic.required_dungeons,
+                sots_items=sots_items,
+                barren_nonprogress=self.logic.get_barren_regions(),
+                randomized_dungeon_entrance=self.logic.randomized_dungeon_entrance,
+                randomized_trial_entrance=self.logic.randomized_trial_entrance,
             )
-
             with log_address.open("w") as f:
                 json.dump(dump, f, indent=2)
-
         else:
             with log_address.open("w") as f:
                 SpoilerLog.write(
                     f,
+                    self.logic.placement,
                     self.options,
-                    self.logic,
-                    self.hints.hints,
-                    sots_locations,
-                    self.randomizer_hash,
+                    self.areas,
+                    hash=self.randomizer_hash,
+                    progression_spheres=self.logic.calculate_playthrough_progression_spheres(),
+                    hints=self.logic.placement.hints,
+                    required_dungeons=self.logic.required_dungeons,
+                    sots_items=sots_items,
+                    barren_nonprogress=self.logic.get_barren_regions(),
+                    randomized_dungeon_entrance=self.logic.randomized_dungeon_entrance,
+                    randomized_trial_entrance=self.logic.randomized_trial_entrance,
                 )
-
         if not self.dry_run:
-            GamePatcher(self, plcmt_file).do_all_gamepatches()
-        self.progress_callback("patching done")
+            GamePatcher(
+                self.areas,
+                self.options,
+                self.progress_callback,
+                self.actual_extract_path,
+                self.rando_root_path,
+                self.exe_root_path,
+                self.modified_extract_path,
+                self.oarc_cache_path,
+                self.arc_replacement_path,
+                plcmt_file,
+            ).do_all_gamepatches()
+            self.progress_callback("patching done")
 
     def get_placement_file(self):
         MAX_SEED = 1_000_000
         # temporary placement file stuff
 
         plcmt_file = PlacementFile()
-        plcmt_file.dungeon_connections = self.logic.entrance_connections
-        plcmt_file.trial_connections = self.logic.trial_connections
+        plcmt_file.dungeon_connections = self.logic.randomized_dungeon_entrance
+        plcmt_file.trial_connections = self.logic.randomized_trial_entrance
         plcmt_file.hash_str = self.randomizer_hash
         plcmt_file.hints = {
-            k: v.to_ingame_text() for (k, v) in self.hints.hints.items()
+            k: v.to_ingame_text(lambda s: self.areas.prettify(s, custom=True))
+            for (k, v) in self.logic.placement.hints.items()
         }
-        plcmt_file.item_locations = dict(
-            (k, v)
-            for (k, v) in self.logic.done_item_locations.items()
-            if v != "Gratitude Crystal"
-        )
-        plcmt_file.chest_dowsing = self.logic.calculate_chest_dowsing_info()
+        plcmt_file.item_locations = self.logic.placement.locations
+        dowsing_setting = self.options["chest-dowsing"]
+        plcmt_file.chest_dowsing = self.logic.get_dowsing(dowsing_setting)
         plcmt_file.options = self.options
         plcmt_file.required_dungeons = self.logic.required_dungeons
-        plcmt_file.starting_items = self.logic.starting_items
+        plcmt_file.starting_items = sorted(self.logic.placement.starting_items)
         plcmt_file.version = VERSION
         plcmt_file.trial_object_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.music_rando_seed = self.rng.randint(1, MAX_SEED)
 
-        plcmt_file.check_valid()
+        plcmt_file.check_valid(self.areas)
 
         return plcmt_file
 
@@ -256,7 +257,18 @@ class PlandoRandomizer(BaseRandomizer):
         return GAMEPATCH_TOTAL_STEP_COUNT
 
     def randomize(self):
-        GamePatcher(self, self.placement_file).do_all_gamepatches()
+        GamePatcher(
+            self.areas,
+            self.options,
+            self.progress_callback,
+            self.actual_extract_path,
+            self.rando_root_path,
+            self.exe_root_path,
+            self.modified_extract_path,
+            self.oarc_cache_path,
+            self.arc_replacement_path,
+            self.placement_file,
+        ).do_all_gamepatches()
 
 
 class YamlOrderedDictLoader(yaml.SafeLoader):

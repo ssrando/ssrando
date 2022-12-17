@@ -1,4 +1,4 @@
-Central Skyloft - Gossip Stone on Floating Island:
+Central Skyloft - Gossip Stone on Waterfall Island:
   textfile: 124-Town6
   textindex: 18
 
@@ -6,11 +6,11 @@ Sky - Gossip Stone on Lumpy Pumpkin:
   textfile: 004-Object
   textindex: 27
 
-Sky - Gossip Stone in Volcanic Island:
+Sky - Gossip Stone on Volcanic Island:
   textfile: 004-Object
   textindex: 30
 
-Sky - Gossip Stone in Bamboo Island:
+Sky - Gossip Stone on Bamboo Island:
   textfile: 004-Object
   textindex: 11
 
@@ -46,11 +46,11 @@ Volcano Summit - Gossip Stone in Waterfall Area:
   textfile: 004-Object
   textindex: 26
 
-Lanayru Desert - Gossip Stone in Temple of Time Area:
+Temple of Time - Gossip Stone in Temple of Time Area:
   textfile: 004-Object
   textindex: 25
 
-Sand Sea - Gossip Stone in Shipyard:
+Lanayru Sand Sea - Gossip Stone in Shipyard:
   textfile: 004-Object
   textindex: 23
 
