@@ -275,15 +275,14 @@ Skyloft Village:
       Exit: Nothing
     locations:
       5 Crystals: 5 Gratitude Crystals
-      10 Crystals: 10 Gratitude Crystals & 5 Crystals
-      30 Crystals: 30 Gratitude Crystals & 10 Crystals
-      Spawn 30 Crystals Chest: 30 Gratitude Crystals & 30 Crystals
-      30 Crystals Chest: Spawn 30 Crystals Chest
-      40 Crystals: 40 Gratitude Crystals & 30 Crystals
-      50 Crystals: 50 Gratitude Crystals & 40 Crystals
-      70 Crystals: 70 Gratitude Crystals & 50 Crystals
-      70 Crystals Second Reward: 70 Gratitude Crystals & 70 Crystals
-      80 Crystals: 80 Gratitude Crystals & 70 Crystals Second Reward
+      10 Crystals: 10 Gratitude Crystals
+      30 Crystals: 30 Gratitude Crystals
+      30 Crystals Chest: 30 Gratitude Crystals
+      40 Crystals: 40 Gratitude Crystals
+      50 Crystals: 50 Gratitude Crystals
+      70 Crystals: 70 Gratitude Crystals
+      70 Crystals Second Reward: 70 Gratitude Crystals
+      80 Crystals: 80 Gratitude Crystals
 
 # BEEDLES SHOP
 Beedle's Shop:
