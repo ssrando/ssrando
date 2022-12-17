@@ -26,7 +26,7 @@ Main:
       First Room - Rupee above Drawbridge: Beetle
       Chest behind Bombable Rock: Access to Boulder
       Chest Left of Main Room Bridge: Access to Boulder
-      Ledd's Gift: East Room - Bomb Bag
+      Ledd's Gift: Can Defeat Lizalfos
       Rock to West Room: (Bomb Bag | Hook Beetle) & Access to Boulder
       Wall to Lava Section: Bomb Bag | (Hook Beetle & Access to Boulder)
       Rupee in Lava Tunnel: Wall to Lava Section & Beetle
@@ -69,7 +69,7 @@ Main:
         Boss Door: Open Boss Door
       locations:
         Boss Key Chest: Nothing
-        Open Boss Door: Boss Key Chest & Earth Temple Boss Key
+        Open Boss Door: Earth Temple Boss Key
 
 Boss Room:
   Entry:

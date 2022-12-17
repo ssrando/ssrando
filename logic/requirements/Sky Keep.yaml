@@ -8,8 +8,7 @@ Main:
       Puzzle Solving Meta Room: Nothing
     locations:
       First Chest: Nothing
-      Unlock Bars: First Chest
-      Right Exit: Unlock Bars
+      Right Exit: Nothing
 
   Skyview Room:
     Beginning:
