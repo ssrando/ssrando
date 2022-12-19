@@ -84,18 +84,6 @@ SK = "Sky Keep"
 REGULAR_DUNGEONS = [SV, ET, LMF, AC, SSH, FS]
 ALL_DUNGEONS = REGULAR_DUNGEONS + [SK]
 
-SV_ENTRANCE = "Dungeon Entrance in Deep Woods"
-ET_ENTRANCE = "Dungeon Entrance in Eldin Volcano"
-LMF_ENTRANCE = "Dungeon Entrance in Lanayru Desert"
-AC_ENTRANCE = "Dungeon Entrance in Lake Floria"
-SSH_ENTRANCE = "Dungeon Entrance in Lanayru Sand Sea"
-FS_ENTRANCE = "Dungeon Entrance in Volcano Summit"
-SK_ENTRANCE = "Dungeon Entrance on Skyloft"
-
-EMERALD_TABLET = "Emerald Tablet"
-RUBY_TABLET = "Ruby Tablet"
-AMBER_TABLET = "Amber Tablet"
-
 SKYLOFT_SILENT_REALM = "Skyloft Silent Realm"
 FARON_SILENT_REALM = "Faron Silent Realm"
 LANAYRU_SILENT_REALM = "Lanayru Silent Realm"
@@ -494,7 +482,7 @@ trick: Callable[[str], str] = lambda s: s + " Trick"
 CISTERN_CLIP = EIN(trick("Ancient Cistern - Cistern Clip"))
 
 UPPER_SKYLOFT = "Upper Skyloft"
-CENTRAL_SKYLOFT = "Central Skyloft"
+SKYLOFT_CENTRAL = "Skyloft Central"
 SKYLOFT_VILLAGE = "Skyloft Village"
 BATREAUX = "Batreaux's House"
 BEEDLE = "Beedle's Shop"
@@ -515,12 +503,12 @@ LANAYRU_MINE = "Lanayru Mine"
 LANAYRU_DESERT = "Lanayru Desert"
 LANAYRU_CAVES = "Lanayru Caves"
 LANAYRU_GORGE = "Lanayru Gorge"
-LANAYRU_SAND_SEA = "Lanayru Sand Sea"
+SAND_SEA = "Sand Sea"
 
 ALL_HINT_REGIONS = dict.fromkeys(
     [
         UPPER_SKYLOFT,
-        CENTRAL_SKYLOFT,
+        SKYLOFT_CENTRAL,
         SKYLOFT_VILLAGE,
         BATREAUX,
         BEEDLE,
@@ -537,7 +525,7 @@ ALL_HINT_REGIONS = dict.fromkeys(
         LANAYRU_DESERT,
         LANAYRU_CAVES,
         LANAYRU_GORGE,
-        LANAYRU_SAND_SEA,
+        SAND_SEA,
         SV,
         ET,
         LMF,
@@ -558,7 +546,7 @@ SV_ENTRANCE = "Dungeon Entrance in Deep Woods"
 ET_ENTRANCE = "Dungeon Entrance in Eldin Volcano"
 LMF_ENTRANCE = "Dungeon Entrance in Lanayru Desert"
 AC_ENTRANCE = "Dungeon Entrance in Lake Floria"
-SSH_ENTRANCE = "Dungeon Entrance in Lanayru Sand Sea"
+SSH_ENTRANCE = "Dungeon Entrance in Sand Sea"
 FS_ENTRANCE = "Dungeon Entrance in Volcano Summit"
 SK_ENTRANCE = "Dungeon Entrance on Skyloft"
 
@@ -578,8 +566,8 @@ DUNGEON_ENTRANCE_EXITS: dict[str, list[str]] = {
     LMF_ENTRANCE: ["Lanayru Desert - Exit to Lanayru Mining Facility"],
     AC_ENTRANCE: ["Floria Waterfall - Exit to Ancient Cistern"],
     SSH_ENTRANCE: [
-        "Lanayru Sand Sea - Sandship Dock Exit",
-        "Lanayru Sand Sea Docks - Exit to Sandship",
+        "Sand Sea - Sandship Dock Exit",
+        "Sand Sea Docks - Exit to Sandship",
     ],
     FS_ENTRANCE: ["Outside Fire Sanctuary - Exit to Fire Sanctuary"],
     SK_ENTRANCE: ["Skyloft - Exit to Sky Keep"],
@@ -620,17 +608,17 @@ TRIAL_GATE_EXITS: dict[str, str] = {
 }
 
 SILENT_REALM_EXITS: dict[str, str] = {
-    SKYLOFT_SILENT_REALM: "Skyloft Silent Realm - Exit",
-    FARON_SILENT_REALM: "Faron Silent Realm - Exit",
-    ELDIN_SILENT_REALM: "Eldin Silent Realm - Exit",
-    LANAYRU_SILENT_REALM: "Lanayru Silent Realm - Exit",
+    SKYLOFT_SILENT_REALM: "Skyloft - Silent Realm - Exit",
+    FARON_SILENT_REALM: "Faron - Silent Realm - Exit",
+    ELDIN_SILENT_REALM: "Eldin - Silent Realm - Exit",
+    LANAYRU_SILENT_REALM: "Lanayru - Silent Realm - Exit",
 }
 
 SILENT_REALM_CHECKS: dict[str, str] = {
-    SKYLOFT_SILENT_REALM: "Skyloft Silent Realm - Stone of Trials",
-    FARON_SILENT_REALM: "Faron Silent Realm - Water Scale",
-    ELDIN_SILENT_REALM: "Eldin Silent Realm - Fireshield Earrings",
-    LANAYRU_SILENT_REALM: "Lanayru Silent Realm - Clawshots",
+    SKYLOFT_SILENT_REALM: "Skyloft - Silent Realm - Stone of Trials",
+    FARON_SILENT_REALM: "Faron - Silent Realm - Water Scale",
+    ELDIN_SILENT_REALM: "Eldin - Silent Realm - Fireshield Earrings",
+    LANAYRU_SILENT_REALM: "Lanayru - Silent Realm - Clawshots",
 }
 
 SILENT_REALM_CHECKS_REV = lambda norm: {
@@ -639,9 +627,9 @@ SILENT_REALM_CHECKS_REV = lambda norm: {
 
 
 RUPEE_CHECKS = [
-    "Skyloft - Central Skyloft - Rupee Waterfall Cave Crawlspace",
-    "Great Tree - Rupee on Great Tree North Branch",
-    "Great Tree - Rupee on Great Tree West Branch",
+    "Skyloft - Waterfall Cave - Rupee in Crawlspace",
+    "Great Tree - Top - Rupee on North Branch",
+    "Great Tree - Top - Rupee on West Branch",
     "Faron Woods - Rupee on Platform near Floria Door",
     "Faron Woods - Rupee on Hollow Tree Root",
     "Faron Woods - Rupee on Hollow Tree Branch",
@@ -649,14 +637,14 @@ RUPEE_CHECKS = [
     "Lake Floria - Right Rupee behind Northwest Boulder",
     "Lake Floria - Left Rupee behind Northwest Boulder",
     "Lake Floria - Rupee behind Southwest Boulder",
-    "Floria Waterfall - Rupee on High Ledge outside Ancient Cistern Entrance",
-    "Eldin Volcano - Rupee on Ledge before First Room",
-    "Eldin Volcano - Rupee behind Bombable Wall in First Room",
-    "Eldin Volcano - Rupee in Crawlspace in First Room",
+    "Floria Waterfall - Rupee on High Ledge",
+    "Eldin Volcano - Entry - Rupee on Ledge",
+    "Eldin Volcano - First Room - Rupee behind Bombable Wall",
+    "Eldin Volcano - First Room - Rupee in Crawlspace",
     "Eldin Volcano - Southeast Rupee above Mogma Turf Entrance",
     "Eldin Volcano - North Rupee above Mogma Turf Entrance",
-    "Eldin Volcano - Left Rupee behind Bombable Wall on First Slope",
-    "Eldin Volcano - Right Rupee behind Bombable Wall on First Slope",
+    "Eldin Volcano - Near Thrill Digger Cave - Left Rupee behind Bombable Wall",
+    "Eldin Volcano - Near Thrill Digger Cave - Right Rupee behind Bombable Wall",
     "Ancient Harbour - Rupee on First Pillar",
     "Ancient Harbour - Left Rupee on Entrance Crown",
     "Ancient Harbour - Right Rupee on Entrance Crown",
@@ -666,18 +654,18 @@ RUPEE_CHECKS = [
     "Skyview - Second Hub - Rupee in Southeast Tunnel",
     "Skyview - Second Hub - Rupee in Southwest Tunnel",
     "Skyview - Second Hub - Rupee in East Tunnel",
-    "Skyview - Rupee on Spring Pillar",
+    "Skyview - Spring - Rupee on Pillar",
     "Earth Temple - Rupee above Drawbridge",
     "Earth Temple - Rupee in Lava Tunnel",
-    "Ancient Cistern - Rupee in East Part in Main Tunnel",
-    "Ancient Cistern - Rupee in East Part in Cubby",
-    "Ancient Cistern - First Rupee in East Part in Short Tunnel",
-    "Ancient Cistern - Second Rupee in East Part in Short Tunnel",
-    "Ancient Cistern - Third Rupee in East Part in Short Tunnel",
-    # "Ancient Cistern - Rupee under Lilypad",
-    "Ancient Cistern - Rupee in East Hand",
-    "Ancient Cistern - Rupee in West Hand",
-    "Sky Keep - Rupee in Fire Sanctuary Room in Alcove",
+    "Ancient Cistern - East Part - Rupee in Main Tunnel",
+    "Ancient Cistern - East Part - Rupee in Cubby",
+    "Ancient Cistern - East Part - Third Rupee in Short Tunnel",
+    "Ancient Cistern - East Part - Second Rupee in Short Tunnel",
+    "Ancient Cistern - East Part - First Rupee in Short Tunnel",
+    # "Ancient Cistern - After Gutters - Rupee under Lilypad",
+    "Ancient Cistern - Rupee in Left Hand",
+    "Ancient Cistern - Rupee in Right Hand",
+    "Sky Keep - Fire Sanctuary Room - Rupee in Alcove",
 ]
 
 QUICK_BEETLE_CHECKS = [

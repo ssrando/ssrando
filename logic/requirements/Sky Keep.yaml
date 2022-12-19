@@ -3,75 +3,74 @@ hint-region: Sky Keep
 
 Main:
   First Room:
+    locations:
+      First Chest: Nothing
+      Unlock Bars: First Chest
+      Right Exit: Unlock Bars
     exits:
       Bottom Exit: Nothing
       Puzzle Solving Meta Room: Nothing
-    locations:
-      First Chest: Nothing
-      Right Exit: Nothing
 
   Skyview Room:
     Beginning:
-      exits:
-        End: (Whip & Free Rope & Clawshots & Kill Pyrups & Gust Bellows) | End - Lever
       locations:
         Free Rope: Beetle | Bow
         Kill Pyrups: Bomb Bag | Hook Beetle | Bow
         Left Exit: Nothing
+      exits:
+        End: Whip & Free Rope & Clawshots & Kill Pyrups & Gust Bellows | End - Lever
 
     End:
-      exits:
-        Beginning: Lever
       locations:
         Lever: Nothing
         Top Exit: Nothing
+      exits:
+        Beginning: Lever
 
   LMF Room:
-    exits: {}
     locations:
       Finish Room: (Gust Bellows | Sky Keep - Shooting LMF Bow Switches in Present Trick) & Bow
       Bottom Exit: Nothing
       Top Exit: Finish Room
+    exits: {}
 
   Earth Temple Room:
-    exits: {}
     locations:
       Right Exit: Impossible
       Top Exit: Impossible
+    exits: {}
 
   Mini Boss Room:
     From Bottom:
-      exits:
-        Near Chest: Defeat Dreadfuse & Clawshots
       locations:
         Defeat Dreadfuse: Can Defeat Scervo/Dreadfuse
         Bottom Exit: Defeat Dreadfuse
+      exits:
+        Near Chest: Defeat Dreadfuse & Clawshots
 
     Near Chest:
-      exits:
-        From Left: Unlock Door
       locations:
         Chest after Dreadfuse: Nothing
         Unlock Door: From Bottom - Defeat Dreadfuse
+      exits:
+        From Left: Unlock Door
 
     From Left:
-      exits:
-        Near Chest: Near Chest - Unlock Door
       locations:
         Left Exit: Nothing
+      exits:
+        Near Chest: Near Chest - Unlock Door
 
   Ancient Cistern Room:
-    exits:
-      After Key: Unlock Key Door
-      Triforce Room: Triforce Room - Lever
     locations:
       Unlock Key Door: Sky Keep Small Key
       Right Exit: Nothing
       Bottom Exit: Nothing
+    exits:
+      After Key: Unlock Key Door
+      Triforce Room: Triforce Room - Lever
 
     After Key:
-      exits:
-        Triforce Room: Beat Trial
       locations:
         Beat Trial:
           Can Defeat Moblins &
@@ -80,63 +79,65 @@ Main:
           Bow &
           Can Defeat Cursed Bokoblins &
           Can Defeat Stalmaster
+      exits:
+        Triforce Room: Beat Trial
 
     Triforce Room:
-      exits:
-        After Key: Nothing
-        Ancient Cistern Room: Lever
       locations:
         Triforce of Courage: Nothing
         Lever: Nothing
+      exits:
+        After Key: Nothing
+        Ancient Cistern Room: Lever
 
   Fire Sanctuary Room:
     From Right:
+      locations:
+        Right Exit: Nothing
       exits:
         First Platform: Beetle | First Platform - Lever
         OoB: Clawshots & Sky Keep - FS Room Clawshots Vine Clip Trick
         Triforce Room: Triforce Room - Upper Lever
-      locations:
-        Right Exit: Nothing
 
     OoB:
       exits:
         Triforce Room: Clawshots
 
     First Platform:
-      exits:
-        Triforce Room: Beetle & Clawshots
       locations:
         Lever: Nothing
-        Rupee in Fire Sanctuary Room in Alcove: Beetle
+        Rupee in Alcove: Beetle
+      exits:
+        Triforce Room: Beetle & Clawshots
 
     Triforce Room:
-      exits:
-        From Left: Lower Lever
-        From Right: Upper Lever
       locations:
         Triforce of Power: Nothing
         Lower Lever: Nothing
         Upper Lever: Nothing
+      exits:
+        From Left: Lower Lever
+        From Right: Upper Lever
 
     From Left:
-      exits:
-        Triforce Room: Triforce Room - Lower Lever
       locations:
         Left Exit: Nothing
+      exits:
+        Triforce Room: Triforce Room - Lower Lever
 
   Sandship Room:
-    exits:
-      Triforce Area: Lower Eye & Clawshots
     locations:
       Higher Eye: Bow
       Lower Eye: Higher Eye & Bow
       Left Exit: Nothing
+    exits:
+      Triforce Area: Lower Eye & Clawshots
 
     Triforce Area:
-      exits:
-        Sandship Room: Nothing
       locations:
         Triforce of Wisdom: Nothing
+      exits:
+        Sandship Room: Nothing
 
   Puzzle Solving Meta Room:
     exits:

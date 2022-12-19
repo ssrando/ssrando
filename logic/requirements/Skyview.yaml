@@ -5,57 +5,60 @@ hint-region: Skyview
 # Global macros
 macros:
   Skyview 2: Water Scale
-  Can Hit High Skyview Switches: Distance Activator | (Bomb Bag & Bomb Throws Trick)
+  Can Hit High Skyview Switches: Distance Activator | Bomb Bag & Bomb Throws Trick
   Can Cut Tree: Sword | Bomb Bag
 
 Main:
   Entry:
-    exits:
-      Main Exit: Nothing
-      First Room: Cut Tree
     locations:
       Cut Tree: Can Cut Tree
 
-  First Room:
     exits:
-      Entry: Entry - Cut Tree
-      One Eye Room: Switch to One Eye Room
-      First Hub: Destroy Barricade
+      Main Exit: Nothing
+      First Room: Cut Tree
+
+  First Room:
     locations:
       Entry - Cut Tree: Can Cut Tree
       Destroy Barricade: Skyview 2 | Bomb Bag
       Switch to One Eye Room: Can Hit High Skyview Switches
       Goddess Wall Trigger: Ballad of the Goddess & Goddess Harp
 
+    exits:
+      Entry: Entry - Cut Tree
+      One Eye Room: Switch to One Eye Room
+      First Hub: Destroy Barricade
+
   One Eye Room:
+    locations:
+      Unlock Door to First Hub: Sword
     exits:
       First Room: First Room - Switch to One Eye Room
       First Hub: Unlock Door to First Hub
-    locations:
-      Unlock Door to First Hub: Sword
 
   First Hub:
+    locations:
+      First Room - Destroy Barricade: Nothing
+      Switch to Left Room: Can Hit Switch | One Water Raise & Water Scale
+      Switch to Right Room: Can Hit High Skyview Switches
+      One Water Raise: Left Room - Raise Water | Right Room - Raise Water
+
     exits:
       One Eye Room: One Eye Room - Unlock Door to First Hub
       First Room: First Room - Destroy Barricade
       Left Room: Switch to Left Room
       Right Room - Lower Area: Switch to Right Room
-      Right Room - Upper Area: (Left Room - Raise Water & Right Room - Raise Water) | Clawshots
+      Right Room - Upper Area: Left Room - Raise Water & Right Room - Raise Water | Clawshots
       Second Hub: One Water Raise & Skyview Small Key
-    locations:
-      First Room - Destroy Barricade: Nothing
-      Switch to Left Room: Can Hit Switch | (One Water Raise & Water Scale)
-      Switch to Right Room: Can Hit High Skyview Switches
-      One Water Raise: Left Room - Raise Water | Right Room - Raise Water
 
     Left Room:
-      exits:
-        First Hub: Nothing
       locations:
         Hit Vines: Can Hit High Skyview Switches | Goddess Sword | Whip
         Spider Roll: Skyview - Spider Roll Trick
-        Raise Water: (Hit Vines & Can Hit Switch) | (Spider Roll & Can Hit High Skyview Switches)
+        Raise Water: Hit Vines & Can Hit Switch | Spider Roll & Can Hit High Skyview Switches
         Chest on Tree Branch: Hit Vines | Spider Roll
+      exits:
+        First Hub: Nothing
 
     Right Room:
       Lower Area:
@@ -65,33 +68,27 @@ Main:
           After Crawlspace - With Water: Water Scale
 
       After Crawlspace:
-        exits:
-          Lower Area: Nothing
         locations:
           Raise Water: Can Hit High Skyview Switches
-          Digging Spot in Crawlspace: Impossible
+          Digging Spot: Impossible
           # We have to assume Link has to enter with water to get the check
+        exits:
+          Lower Area: Nothing
 
         With Water:
+          locations:
+            After Crawlspace - Digging Spot: Digging Mitts
           exits:
             Lower Area: Nothing
-          locations:
-            After Crawlspace - Digging Spot in Crawlspace: Digging Mitts
 
       Upper Area:
+        locations:
+          Chest behind Two Eyes: Sword
         exits:
           Lower Area: Nothing
           First Hub: Nothing
-        locations:
-          Chest behind Two Eyes: Sword
 
   Second Hub:
-    exits:
-      First Hub: Skyview Small Key
-      Miniboss Room: Switch to Miniboss Room
-      Left Rooms: Switch to Left Room
-      Staldra Room: Skyview Small Key x 2
-      Last Room - Before Rope: Last Room - Unlock Shortcut to Second Hub
     locations:
       Rupee in Southeast Tunnel: Beetle
       Rupee in Southwest Tunnel: Beetle
@@ -100,78 +97,85 @@ Main:
       Switch for Bars: Beetle | (Slingshot & Skyview Slingshot Shot Trick)
       Switch to Left Room: Beetle
       Item behind Bars: Switch for Bars | Whip
+    exits:
+      First Hub: Skyview Small Key
+      Miniboss Room: Switch to Miniboss Room
+      Left Rooms: Switch to Left Room
+      Staldra Room: Skyview Small Key x 2
+      Last Room - Before Rope: Last Room - Unlock Shortcut to Second Hub
 
     Miniboss Room:
+      locations:
+        Chest: Sword | Skyview 2
       exits:
         Second Hub: Nothing
-      locations:
-        Beetle: Sword | Skyview 2
 
     Left Rooms:
-      exits:
-        Second Hub: Sword & Projectile Item # to defeat skulltulas ? Include deathwarp ?
       locations:
         Chest behind Three Eyes: Beetle & Sword
+      exits:
+        Second Hub: Sword & Projectile Item # to defeat skulltulas ? Include deathwarp ?
 
     Staldra Room:
+      locations:
+        Can Defeat Staldra: Sword | Bomb Bag
       exits:
         Second Hub: Skyview Small Key
         Last Room - Near East Entrance: Can Defeat Staldra
-      locations:
-        Can Defeat Staldra: Sword | Bomb Bag
 
   Last Room:
     Near East Entrance:
-      exits:
-        Second Hub - Staldra Room: Nothing
-        Before Rope: Deal with Hanging Skulltula
       locations:
         Deal with Hanging Skulltula: Bomb Bag | Goddess Sword | Beetle | Bow | Skyview 2
         # A bomb knocks the Skulltula away. A skyward strike can knock it away too.
         # Both the Beetle and the bow can cut it down. There is no spider anymore in Skyview.
+      exits:
+        Second Hub - Staldra Room: Nothing
+        Before Rope: Deal with Hanging Skulltula
 
     Before Rope:
-      exits:
-        Near East Entrance: Near East Entrance - Deal with Hanging Skulltula
-        Second Hub: Unlock Shortcut to Second Hub
-        After Rope: Deal with Archers
       locations:
         Near East Entrance - Deal with Hanging Skulltula: Bomb Bag | Goddess Sword | Beetle | Bow | Skyview 2
         Unlock Shortcut to Second Hub: Can Hit High Skyview Switches
         Deal with Archers: Long Range Skyward Strike | Hook Beetle | Bow
+      exits:
+        Near East Entrance: Near East Entrance - Deal with Hanging Skulltula
+        Second Hub: Unlock Shortcut to Second Hub
+        After Rope: Deal with Archers
+
 
     After Rope:
+      locations:
+        Chest: Nothing
+        Hit Vines: Long Range Skyward Strike | Distance Activator
+        Before Rope - Deal with Archers: Can Defeat Bokoblins
       exits:
         Before Rope: Before Rope - Deal with Archers
         Near Boss Key Chest: Hit Vines
         Boss Door: Skyview Boss Key
-      locations:
-        Chest near Boss Door: Nothing
-        Hit Vines: Long Range Skyward Strike | Distance Activator
-        Before Rope - Deal with Archers: Can Defeat Bokoblins
 
     Near Boss Key Chest:
+      locations:
+        Boss Key Chest: Nothing
       exits:
         Before Rope: Nothing
         After Rope: After Rope - Hit Vines
-      locations:
-        Boss Key Chest: Nothing
 
 Boss Room:
-  exits:
-    Exit to Dungeon: Beat Ghirahim
-    Exit to Spring: Beat Ghirahim
   locations:
     Beat Ghirahim: Sword
     Heart Container: Beat Ghirahim
+  exits:
+    Exit to Dungeon: Beat Ghirahim
+    Exit to Spring: Beat Ghirahim
 
 Spring:
   toplevel-alias: Skyview Spring
+  locations:
+    Rupee on Pillar: Beetle
+    Ruby Tablet: Goddess Sword
+    Goddess Cube: Goddess Sword
+    Sacred Water: Bottle & Skyview 2
   exits:
     Exit: Nothing
     # Crest Hit: Ruby Tablet
-  locations:
-    Rupee on Spring Pillar: Beetle
-    Ruby Tablet: Goddess Sword
-    Goddess Cube in Skyview Spring: Goddess Sword
-    Sacred Water: Bottle & Skyview 2

@@ -19,7 +19,7 @@ def remove_prefix(region, location):
         return loc
     if region == UPPER_SKYLOFT and prefix in ["Knight Academy", "Skyloft"]:
         return loc
-    if region in [CENTRAL_SKYLOFT, SKYLOFT_VILLAGE] and prefix == "Skyloft":
+    if region in [SKYLOFT_CENTRAL, SKYLOFT_VILLAGE] and prefix == "Skyloft":
         return loc
     return location
 

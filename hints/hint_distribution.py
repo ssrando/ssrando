@@ -44,7 +44,7 @@ JUNK_TEXT = [
     "They say whenever Spiral Charge is on a trial, a seed roller goes mysteriously missing",
     "They say that Eldin Trial is vanilla whenever it is required",
     "They say that gymnast86 won the first randomizer tournament and retired immediately after",
-    "They say that Mogmas don't understand Minesweeper",
+    "They say that Mogmas don't understand Mineweeper",
     "They say that you can win a race by abandoning Lanayru to check Cawlin's Letter",
     "They say that tornados spawn frequently in the Sky",
     "They say Scrapper gets easily tilted",
@@ -61,7 +61,7 @@ JUNK_TEXT = [
     'They say that there is something called a "hash" that makes it easier for people to verify that they are playing the right seed',
     "They say that the bad seed rollers are still in the car, seeking for a safe refugee",
     "Have you heard the tragedy of Darth Kolok the Pause? I thought not, it's not a story the admins would tell you",
-    "Lanayru Sand Sea is the most hated region in the game, because Sand is coarse, rough and gets everywhere",
+    "Sand Sea is the most hated region in the game, because Sand is coarse, rough and gets everywhere",
     "They say that rice has magical properties when visiting Yerbal",
     "They say that Jannon is still jammin to this day",
     "They say that there is only one place where the Slingshot beats the Bow",
@@ -420,7 +420,7 @@ class HintDistribution:
                 elif zone == LANAYRU_MINE:
                     zone = LANAYRU_DESERT
                 elif zone == LANAYRU_GORGE:
-                    zone = LANAYRU_SAND_SEA
+                    zone = SAND_SEA
                 return CubeSotsGoalGossipStoneHint(loc, item, zone, goal)
         zone = self.areas.checks[loc]["hint_region"]
         return SotsGoalGossipStoneHint(loc, item, zone, goal)

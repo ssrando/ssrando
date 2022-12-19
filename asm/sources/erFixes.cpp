@@ -9,7 +9,7 @@
 // 807b3d2c
 
 // timeshiftstone flags: 113-124, 111, 108
-// last mines: 113
+// last mine: 113
 
 #include "common.h"
 

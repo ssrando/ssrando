@@ -2088,31 +2088,31 @@ Lanayru Gorge - Lanayru Soth:
 
 ## Lanayru Sand Sea
 
-Can Access Lanayru Sand Sea:
+Can Access Sand Sea:
   Can Access Lanayru Caves & Lanayru Caves Small Key x1 & Clawshots
   # You can activate Skipper's boat with clawshots
 
 Lanayru Sand Sea - Rupee Harbor First Pillar:
-  Can Access Lanayru Sand Sea & Beetle
+  Can Access Sand Sea & Beetle
 
 Lanayru Sand Sea - Rupee Harbor Entrance Crown Right:
-  Can Access Lanayru Sand Sea & Quick Beetle
+  Can Access Sand Sea & Quick Beetle
 
 Lanayru Sand Sea - Rupee Harbor Entrance Crown Left:
-  Can Access Lanayru Sand Sea & Quick Beetle
+  Can Access Sand Sea & Quick Beetle
 
 Goddess Cube in Ancient Harbour:
-  Can Access Lanayru Sand Sea & Clawshots & Goddess Sword
+  Can Access Sand Sea & Clawshots & Goddess Sword
 
-Can Access Dungeon Entrance in Lanayru Sand Sea:
-  Can Access Lanayru Sand Sea & ((Sea Chart & Sword) | Can RBM Cx40)
+Can Access Dungeon Entrance in Sand Sea:
+  Can Access Sand Sea & ((Sea Chart & Sword) | Can RBM Cx40)
   # You need any sword to be able to dowse
   # Scene Flag Cx40 is "Sandship is docked at its port"
 
 # Skipper's Retreat
 
 Can Get Past Skipper's Rock:
-  Can Access Lanayru Sand Sea & (Bomb Bag | Hook Beetle | Whip | Can RBM 2x02)
+  Can Access Sand Sea & (Bomb Bag | Hook Beetle | Whip | Can RBM 2x02)
   # You can whip the bomb on the cactus by first slashing it to make it swing
   # Scene Flag 2x02 is "Blow Up Rock in Skipper's Retreat"
 
@@ -2139,35 +2139,35 @@ Lanayru Sand Sea - Skipper's Retreat - Skydive Chest:
 # Shipyard
 
 Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05: # Roller Coaster Minigame
-  Can Access Lanayru Sand Sea & Gust Bellows & Can Uncover and Defeat Moldarach
+  Can Access Sand Sea & Gust Bellows & Can Uncover and Defeat Moldarach
   # Do you need to defeat Moldarach ? #UNSURE
 
-Lanayru Sand Sea - Gossip Stone in Shipyard:
-  Can Access Lanayru Sand Sea
+Sand Sea - Gossip Stone in Shipyard:
+  Can Access Sand Sea
 
 # Pirate Stronghold
 
 Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar East:
-  Can Access Lanayru Sand Sea & Quick Beetle
+  Can Access Sand Sea & Quick Beetle
 
 Lanayru Sand Sea - Pirate Stronghold - Rupee Sea Pillar West:
-  Can Access Lanayru Sand Sea & Quick Beetle
+  Can Access Sand Sea & Quick Beetle
 
 Lanayru Sand Sea - Pirate Stronghold - Rupee Bird Statue Pillar or Nose:
-  Can Access Lanayru Sand Sea & Beetle
+  Can Access Sand Sea & Beetle
 
 Lanayru Sand Sea - Pirate Stronghold - First Chest:
-  Can Access Lanayru Sand Sea
+  Can Access Sand Sea
   # You can run past the Beamos without killing it. You can also run past the boko baba (in logic?) #UNSURE
 
 Lanayru Sand Sea - Pirate Stronghold - Second Chest:
-  Can Access Lanayru Sand Sea
+  Can Access Sand Sea
 
 Lanayru Sand Sea - Pirate Stronghold - Third Chest:
-  Can Access Lanayru Sand Sea
+  Can Access Sand Sea
 
 Goddess Cube in Pirate Stronghold:
-  Can Access Lanayru Sand Sea & Can Defeat Beamos & Can Defeat Armos & Goddess Sword
+  Can Access Sand Sea & Can Defeat Beamos & Can Defeat Armos & Goddess Sword
   # Technically this is possible without beating a Beamos but it's hard
 
 #Lanayru Gorge - Boss Rush - 4 Bosses:

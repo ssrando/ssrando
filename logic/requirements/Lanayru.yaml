@@ -4,29 +4,30 @@ macros:
   Raise Lanayru Mining Facility: Open LMF option | Desert - North Part - Activate Master Generator
   Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick
 
+
 Mine:
   toplevel-alias: Lanayru Mine
   hint-region: Lanayru Mine
-
   Entry:
+    locations:
+      Unlock Statue: Nothing
+      Goddess Cube: Goddess Sword
+      Timeshift Stone: Can Hit Timeshift Stone | Itemless First Timeshift Stone Trick
+      Ancient Flower Farming: Timeshift Stone
+      Chest near First Timeshift Stone: Timeshift Stone
     exits:
       First Time Entrance: Impossible
       Statue: Unlock Statue
       Statues Area: Timeshift Stone
-    locations:
-      Unlock Statue: Nothing
-      Goddess Cube at Lanayru Mine Entrance: Goddess Sword
-      Timeshift Stone: Can Hit Timeshift Stone | Itemless First Timeshift Stone Trick
-      Ancient Flower Farming: Timeshift Stone
-      Chest near First Timeshift Stone: Timeshift Stone
 
     Higher Area:
       entrance: Clawshots
       exits:
         Entry: Nothing
         Caves Entrance: Clawshots
+
       locations:
-        Chest behind First Landing: Nothing
+        Chest: Nothing
 
     Caves Entrance:
       exits:
@@ -34,99 +35,103 @@ Mine:
         Exit to Caves: Nothing
 
   Statues Area:
-    exits:
-      Entry: Nothing
-      End: Blow Statues Down | Lanayru Mine Brakeslide Trick
     locations:
       Blow Statues Down: Bomb Bag | Hook Beetle
       Chest behind Statue: Blow Statues Down
+    exits:
+      Entry: Nothing
+      End: Blow Statues Down | Lanayru Mine Brakeslide Trick
 
   End:
-    exits:
-      Statues Area: Statues Area - Blow Statues Down | Lanayru Mine Brakeslide Trick
     locations:
       Blow up Rock on Track: Nothing
-      Chest at the End of Mine: Nothing # There's a baba in the way
+      Chest: Nothing # There's a baba in the way
+    exits:
+      Statues Area: Statues Area - Blow Statues Down | Lanayru Mine Brakeslide Trick
 
     In Minecart:
+      locations:
+        Blow up Rock on Track: Bomb Bag & Lanayru Mine - Quick Bomb Trick
       entrance:
         Blow up Rock on Track
       exits:
         Exit to Desert: Nothing
-      locations:
-        Blow up Rock on Track: Bomb Bag & Lanayru Mine - Quick Bomb Trick
 
 Desert:
   toplevel-alias: Lanayru Desert
   hint-region: Lanayru Desert
-
   exits:
     Shared Statue Exit: Impossible  # Common for all, so placed here
 
   Entry:
-    exits:
-      Exit to Mine: Timeshift Stone # I can't assume the minecart is available, right ?
-      Desert - Shared Statue Exit: Unlock Statue
-      Desert Entrance Statue Entrance: Impossible
-      Near Hook Beetle Fight: Nothing
-    locations:
-      Unlock Statue: Nothing
-      Blow up Rock for Timeshift Stone: Bomb Bag
-      Timeshift Stone: Blow up Rock for Timeshift Stone & Can Hit Timeshift Stone
 
     High Ledge after Vines:
       entrance: Entry - Timeshift Stone
       exit: { Entry: Nothing }
       locations:
         Retrieve Party Wheel: Sky - Fun Fun Island - Start Dodoh's Quest
-        Chest near Party Wheel: Nothing
+        Chest: Nothing
+
+    locations:
+      Unlock Statue: Nothing
+      Blow up Rock for Timeshift Stone: Bomb Bag
+      Timeshift Stone: Blow up Rock for Timeshift Stone & Can Hit Timeshift Stone
+
+    exits:
+      Exit to Mine: Timeshift Stone # I can't assume the minecart is available, right ?
+      Desert - Shared Statue Exit: Unlock Statue
+      Desert Entrance Statue Entrance: Impossible
+      Near Hook Beetle Fight: Nothing
 
   Near Hook Beetle Fight:
+    locations:
+      Chest: Nothing
+      Goddess Cube: Long Range Skyward Strike # Also accessible elsewhere
+      Blow up Rock for Timeshift Stone: Bomb Bag | Hook Beetle
+      Timeshift Stone: Blow up Rock for Timeshift Stone & Nothing # Use the nearby bombflower ?
+      Hook Beetle Fight: Timeshift Stone & Can Defeat Bokoblins
+
+      Defeat Spume to Sand Oasis: Long Range Skyward Strike | Bomb Bag | Bow | Hook Beetle | (Goddess Sword & Lanayru Desert - Spume Brakeslide Trick)
+      Blow Statues to Sand Oasis Down: Hook Beetle
     exits:
       Entry: Nothing
       Top of West Wall: Clawshots
       Top of LMF: Raise Lanayru Mining Facility
       East: Temple of Time Skip - Brakeslide Trick | East - Open Wall Shortcut | Clawshots
       Sand Oasis: Blow Statues to Sand Oasis Down | (Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick)
-    locations:
-      Chest near Hook Beetle Fight: Nothing
-      Goddess Cube near Hook Beetle Fight: Long Range Skyward Strike # Also accessible elsewhere
-      Blow up Rock for Timeshift Stone: Bomb Bag | Hook Beetle
-      Timeshift Stone: Blow up Rock for Timeshift Stone & Nothing # Use the nearby bombflower ?
-      Hook Beetle Fight: Timeshift Stone & Can Defeat Bokoblins
-      Defeat Spume to Sand Oasis: Long Range Skyward Strike | Bomb Bag | Bow | Hook Beetle | (Goddess Sword & Lanayru Desert - Spume Brakeslide Trick)
-      Blow Statues to Sand Oasis Down: Hook Beetle
 
   Sand Oasis: # Before
+    locations:
+      Near Hook Beetle Fight - Defeat Spume to Sand Oasis: Bomb Bag | Bow | Hook Beetle | Goddess Sword
+      Near Hook Beetle Fight - Blow Statues to Sand Oasis Down: Hook Beetle
+
+      Goddess Cube: Can Navigate in Oasis & Goddess Sword
+
     exits:
       Near Hook Beetle Fight:
         Near Hook Beetle Fight - Blow Statues to Sand Oasis Down |
         (Near Hook Beetle Fight - Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick)
       Top of West Wall: Clawshots | Top of West Wall - Push Minecart
       West Part: Can Navigate in Oasis | West Part - Push Minecart
-    locations:
-      Near Hook Beetle Fight - Defeat Spume to Sand Oasis: Bomb Bag | Bow | Hook Beetle | Goddess Sword
-      Near Hook Beetle Fight - Blow Statues to Sand Oasis Down: Hook Beetle
-      Goddess Cube in Sand Oasis: Can Navigate in Oasis & Goddess Sword
 
   West Part:
+    locations:
+      Unlock Statue: Nothing
+      Sand Oasis - Goddess Cube: Goddess Sword
+      Push Minecart: Nothing
     exits:
       Desert - Shared Statue Exit: Unlock Statue
       West Desert Statue Entrance: Impossible
       Sand Oasis: Nothing
       Top of West Wall: Clawshots
       Near South Exit to Temple of Time: Can Navigate in Oasis | Near South Exit to Temple of Time - Push Minecart
-    locations:
-      Unlock Statue: Nothing
-      Sand Oasis - Goddess Cube in Sand Oasis: Goddess Sword
-      Push Minecart: Nothing
 
   Near South Exit to Temple of Time:
+    locations:
+      Push Minecart: Nothing
     exits:
       South Exit to Temple of Time: Nothing
       West Part: Nothing
-    locations:
-      Push Minecart: Nothing
 
     Ledge to Caves:
       entrance: Clawshots
@@ -135,25 +140,40 @@ Desert:
         Exit to Caves: Nothing
 
   Top of West Wall:
+    locations:
+      Chest: Nothing
+      Near Hook Beetle Fight - Goddess Cube: Goddess Sword
+      Push Minecart: Nothing
+
     exits:
       Near Hook Beetle Fight: Nothing
       Sand Oasis: Nothing
       West Part: Nothing
-    locations:
-      Chest near Sand Oasis: Nothing
-      Near Hook Beetle Fight - Goddess Cube near Hook Beetle Fight: Goddess Sword
-      Push Minecart: Nothing
+
 
   Top of LMF:
+    locations:
+      Chest: Nothing
     exits:
       North Part: Nothing
       East: Nothing
       Near Hook Beetle Fight: Nothing
       Exit to Lanayru Mining Facility: Nothing
-    locations:
-      Chest on top of Lanayru Mining Facility: Nothing
 
   North Part:
+    locations:
+      Water Node: (Bomb Bag | Hook Beetle) & Sword
+      Blow up Master Generator Timeshift Stone Rock: Bomb Bag | Hook Beetle
+      Master Generator Timeshift Stone: Blow up Master Generator Timeshift Stone Rock & Can Hit Timeshift Stone
+      Activate Master Generator: All Three Nodes & Master Generator Timeshift Stone & Sword
+      Unlock Statue: Nothing
+      Open Trial Gate: Nayru's Wisdom & Goddess Harp
+      Open Secret Passageway: Bomb Bag | Hook Beetle & Secret Passageway Hook Beetle Opening Trick | Tough Beetle
+
+
+      Chest on Platform near Lightning Node: Clawshots
+      Open Lightning Node: Nothing # There's a bombflower nearby
+
     exits:
       North Exit to Temple of Time: Nothing
       East: Nothing
@@ -162,24 +182,15 @@ Desert:
       North Desert Statue Entrance: Impossible
       Trial Gate: Open Trial Gate
       Lightning Node: Open Lightning Node
-    locations:
-      Water Node: (Bomb Bag | Hook Beetle) & Sword
-      Blow up Master Generator Timeshift Stone Rock: Bomb Bag | Hook Beetle
-      Master Generator Timeshift Stone: Blow up Master Generator Timeshift Stone Rock & Can Hit Timeshift Stone
-      Activate Master Generator: All Three Nodes & Master Generator Timeshift Stone & Sword
-      Unlock Statue: Nothing
-      Open Trial Gate: Nayru's Wisdom & Goddess Harp
-      Open Secret Passageway: Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Tough Beetle
-      Chest on Platform near Lightning Node: Clawshots
-      Open Lightning Node: Nothing # There's a bombflower nearby
+
 
     Secret Passageway:
       entrance: Open Secret Passageway
       exits:
         North Part: Nothing
       locations:
-        Secret Passageway Chest: Nothing
-        Goddess Cube in Secret Passageway: Clawshots
+        Chest: Nothing
+        Goddess Cube: Clawshots
 
     Lightning Node:
       Present:
@@ -201,13 +212,19 @@ Desert:
           Lightning Node: Sword
 
       Present from afar:
+        locations:
+          Raised Chest near Generator: Nothing
         exits:
           Past: Beetle | Bow
           Present: Nothing # Deathwarp
-        locations:
-          Raised Chest near Generator: Nothing
+
 
   East:
+    locations:
+      Open Wall Shortcut: Nothing
+      Unlock Statue: Nothing
+      Chest on Platform near Fire Node: Clawshots
+
     exits:
       North Part: Nothing
       Top of LMF: Raise Lanayru Mining Facility
@@ -215,10 +232,7 @@ Desert:
       Desert - Shared Statue Exit: Nothing
       Stone Cache Statue Entrance: Impossible
       Fire Node: Nothing
-    locations:
-      Open Wall Shortcut: Nothing
-      Unlock Statue: Nothing
-      Chest on Platform near Fire Node: Clawshots
+
 
     Fire Node:
       Present:
@@ -235,9 +249,11 @@ Desert:
         exits:
           Past after Void: Present - Timeshift Stone & Projectile Item
           Present: Nothing
+
         locations:
           Shortcut Chest: Nothing
           Push Box: Nothing
+
 
       Past:
         exits:
@@ -245,71 +261,75 @@ Desert:
           Present: Projectile Item | Bomb Bag
           Past after Void: Present after Sand - Push Box
         locations:
-          First Small Chest: Nothing
-          Second Small Chest: Nothing
+          First Chest: Nothing
+          Second Chest: Nothing
 
       Past after Void:
-        exits:
-          Past: Nothing
-          Past after Grate: Open Grate
         locations:
           Open Grate: Hook Beetle
 
-      Past after Grate:
         exits:
-          Past after Void: Nothing
+          Past: Nothing
+          Past after Grate: Open Grate
+
+      Past after Grate:
         locations:
           Left Ending Chest: Nothing
           Right Ending Chest: Nothing
           Fire Node: Sword
+        exits:
+          Past after Void: Nothing
+
+
 
 Temple of Time:
   exits:
     Shared Statue Exit: Impossible  # Common for all, so placed here
 
   South East:
+    locations:
+      Unlock Statue: Nothing
     exits:
       South Exit to Desert: Nothing
       Temple of Time - Shared Statue Exit: Unlock Statue
       Desert Gorge Statue Entrance: Impossible
       Front: Hook Beetle | (Slingshot & Temple of Time - Slingshot Shot Trick)
-    locations:
-      Unlock Statue: Nothing
 
   Front:
-    exits:
-      Inside: Nothing
-      Near Goddess Cube: Near Goddess Cube - Timeshift Stone
     locations:
-      Gossip Stone in Temple of Time Area: Nothing
+      Gossip Stone: Nothing
       Blow up Rock for Timeshift Stone:
-        Hook Beetle | Bomb Throws Trick & (Bomb Bag | (Cactus Bomb Whip Trick & Whip))
+        Hook Beetle | Bomb Throws Trick & (Bomb Bag | Cactus Bomb Whip Trick & Whip)
       Timeshift Stone: Blow up Rock for Timeshift Stone & Distance Activator
       Save Robot: Timeshift Stone & Can Defeat Bokoblins
       Near Goddess Cube - Timeshift Stone: Long Range Skyward Strike | Distance Activator
 
+    exits:
+      Inside: Nothing
+      Near Goddess Cube: Near Goddess Cube - Timeshift Stone
+
   Inside:
+    locations:
+      Unlock Statue: Nothing
     exits:
       Temple of Time - Shared Statue Exit: Unlock Statue
       Temple of Time Statue Entrance: Impossible
       Exit to Lanayru Mining Facility: Nothing  # The exit is left unbound internally
       Front: Nothing
-    locations:
-      Unlock Statue: Nothing
 
   Near Goddess Cube:
-    exits:
-      North East: Nothing
     locations:
       Timeshift Stone: Impossible
-      Goddess Cube at Ride near Temple of Time: Goddess Sword
+      Goddess Cube: Goddess Sword
+    exits:
+      North East: Nothing
 
   North East:
     exits:
       South East: Distance Activator
       North Exit to Desert: Nothing
 
-Lanayru Silent Realm:
+Silent Realm:
   hint-region: Lanayru Silent Realm
   exits:
     Exit: Nothing
@@ -319,54 +339,37 @@ Lanayru Silent Realm:
 Caves:
   toplevel-alias: Lanayru Caves
   hint-region: Lanayru Caves
-  exits:
-    Past Door to Lanayru Sand Sea: Clawshots & Unlock Door to Lanayru Sand Sea
-    Past Crawlspace: Nothing
-    Exit to Mine: Nothing
-    Exit to Desert: Nothing
   locations:
-    Unlock Door to Lanayru Sand Sea: Lanayru Caves Small Key
+    Unlock Door to Sand Sea: Lanayru Caves Small Key
     Chest: Nothing
     Golo's Gift: Nothing
     Gossip Stone in Center: Nothing
 
-  Past Door to Lanayru Sand Sea:
-    exits:
-      Caves: Caves - Unlock Door to Lanayru Sand Sea
-      Exit to Lanayru Sand Sea: Nothing
+  exits:
+    Past Door to Sand Sea: Clawshots & Unlock Door to Sand Sea
+    Past Crawlspace: Nothing
+    Exit to Mine: Nothing
+    Exit to Desert: Nothing
+
+  Past Door to Sand Sea:
     locations:
-      Caves - Unlock Door to Lanayru Sand Sea: Lanayru Caves Small Key
+      Caves - Unlock Door to Sand Sea: Lanayru Caves Small Key
+    exits:
+      Caves: Caves - Unlock Door to Sand Sea
+      Exit to Sand Sea: Nothing
 
   Past Crawlspace:
+    locations:
+      Gossip Stone towards Gorge: Nothing
     exits:
       Caves: Nothing
       Exit to Gorge: Nothing
-    locations:
-      Gossip Stone towards Lanayru Gorge: Nothing
 
-Lanayru Sand Sea:
-  toplevel-alias: Lanayru Sand Sea
-  hint-region: Lanayru Sand Sea
-  exits:
-    Ancient Harbour Dock: Nothing
-    Sandship Dock: Shoot down Sandship
-    Skipper's Retreat Dock: Nothing
-    Shipyard Dock: Nothing
-    Pirate Stronghold Dock: Nothing
-  locations:
-    Shoot down Sandship: Sea Chart & Sword
 
+Sand Sea:
+  hint-region: Sand Sea
   Ancient Harbour:
-    toplevel-alias: Lanayru Sand Sea Docks
-    exits:
-      Dock: Ship Timeshift Stone
-      Exit to Sandship: Lanayru Sand Sea - Shoot down Sandship
-      Statue: Unlock Statue
-    locations:
-      Goddess Cube in Ancient Harbour: Clawshots & Goddess Sword
-      Unlock Statue: Nothing
-      Ship Timeshift Stone: Distance Activator | Goddess Sword | Bomb Bag
-
+    toplevel-alias: Sand Sea Docks
     Near Exit to Caves:
       entrance: Clawshots
       exits:
@@ -377,82 +380,103 @@ Lanayru Sand Sea:
         Right Rupee on Entrance Crown: Quick Beetle
         Rupee on First Pillar: Beetle
 
-  Skipper's Retreat:
+    locations:
+      Goddess Cube: Clawshots & Goddess Sword
+      Unlock Statue: Nothing
+      Ship Timeshift Stone: Distance Activator | Goddess Sword | Bomb Bag
+
     exits:
+      Dock: Ship Timeshift Stone
+      Exit to Sandship: Sand Sea - Shoot down Sandship
       Statue: Unlock Statue
-      Dock: Nothing
-      Past Rock: Blow up Rock & Clawshots
+
+  locations:
+    Shoot down Sandship: Sea Chart & Sword
+
+  exits:
+    Ancient Harbour Dock: Nothing
+    Sandship Dock: Shoot down Sandship
+    Skipper's Retreat Dock: Nothing
+    Shipyard Dock: Nothing
+    Pirate Stronghold Dock: Nothing
+
+  Skipper's Retreat:
     locations:
       Unlock Statue: Nothing
       Blow up Rock: Bomb Bag | Hook Beetle | (Whip & Cactus Bomb Whip Trick)
 
+    exits:
+      Statue: Unlock Statue
+      Dock: Nothing
+      Past Rock: Blow up Rock & Clawshots
+
     Past Rock:
-      exits:
-        Skipper's Retreat: Nothing
-        Top Part: Clawshots & Whip Peahat & Deal with Boko Baba
       locations:
         Chest after Moblin: Nothing
-        Goddess Cube in Skipper's Retreat: Clawshots & Goddess Sword
+        Goddess Cube: Clawshots & Goddess Sword
         Whip Peahat: Clawshots & Whip
         Deal with Boko Baba: Slingshot | Beetle | Bow | Skipper's Retreat Fast Clawshots Trick
 
+      exits:
+        Skipper's Retreat: Nothing
+        Top Part: Clawshots & Whip Peahat & Deal with Boko Baba
+
     Top Part:
+      locations:
+        Chest on top of Cacti Pillar: Clawshots
+
       exits:
         Shack: Nothing
         Past Rock: Nothing
         Skydive Platform: Nothing
-      locations:
-        Chest on top of Cacti Pillar: Clawshots
 
     Shack:
+      locations:
+        Chest: Gust Bellows
       exits:
         Exit: Nothing
-      locations:
-        Chest in Shack: Gust Bellows
 
     Skydive Platform:
+      locations:
+        Chest: Nothing
       exits:
         Skipper's Retreat: Nothing
-      locations:
-        Skydive Chest: Nothing
 
   Shipyard:
+    locations:
+      Unlock Statue: Nothing
+      Gossip Stone: Nothing # Take the first cart and you've arrived
+      Rickety Coaster -- Heart Stopping Track in 1'05:
+        # Roller Coaster Minigame
+        Construction Bay - Defeat Moldarach
     exits:
       Statue: Unlock Statue
       Dock: Nothing
       Construction Bay Upper Exit: Nothing
       Construction Bay Lower Exit: Construction Bay - Defeat Moldarach
-    locations:
-      Unlock Statue: Nothing
-      Gossip Stone in Shipyard: Nothing # Take the first cart and you've arrived
-      Rickety Coaster -- Heart Stopping Track in 1'05:
-        # Roller Coaster Minigame
-        Construction Bay - Defeat Moldarach
 
     Construction Bay:
+      locations:
+        Defeat Moldarach: Gust Bellows & Sword
       exits:
         Upper Exit: Nothing
         Lower Exit: Defeat Moldarach
-      locations:
-        Defeat Moldarach: Gust Bellows & Sword
 
   Pirate Stronghold:
-    exits:
-      Statue: Unlock Statue
-      Dock: Nothing
-      Side Exit: Nothing
-      Top Exit: Inside - Finish Minidungeon # What happens if you take it before finishing the minidungeon ?
     locations:
       Unlock Statue: Nothing
       Rupee on West Sea Pillar: Quick Beetle
       Rupee on East Sea Pillar: Quick Beetle
       Rupee on Bird Statue Pillar or Nose: Beetle
-      Goddess Cube in Pirate Stronghold: Inside - Finish Minidungeon & Clawshots & Goddess Sword
+      Goddess Cube: Inside - Finish Minidungeon & Clawshots & Goddess Sword
+
+    exits:
+      Statue: Unlock Statue
+      Dock: Nothing
+      Side Exit: Nothing
+      Top Exit: Inside - Finish Minidungeon # What happens if you take it before finishing the minidungeon ?
 
     Inside:
-      exits:
-        First Door: Nothing
-        Second Door: Finish Minidungeon
       locations:
         First Chest: Nothing
         # You can run past the Beamos without killing it. You can also run past the boko baba (in logic?) #UNSURE
@@ -460,6 +484,10 @@ Lanayru Sand Sea:
         Third Chest: Nothing
         Finish Minidungeon: Can Defeat Beamos & Can Defeat Armos & Goddess Sword
         # Technically this is possible without beating a Beamos but it's hard
+
+      exits:
+        First Door: Nothing
+        Second Door: Finish Minidungeon
 
   Gorge:
     toplevel-alias: Lanayru Gorge
@@ -469,17 +497,19 @@ Lanayru Sand Sea:
       Item on Pillar: Beetle
       Activate Timeshift Stone: Can Hit Timeshift Stone in Minecart
       Thunder Dragon's Reward: Activate Timeshift Stone & Life Tree Fruit
+
       Boss Rush -- 4 Bosses: Thunder Dragon's Reward & Impossible
       Boss Rush -- 8 Bosses: Thunder Dragon's Reward & Impossible
+
+    Beyond Bridge:
+      locations:
+        Activate Timeshift Stone: Gust Bellows & Can Hit Timeshift Stone
+        Goddess Cube: Goddess Sword
+        Life Tree Seedling: Activate Timeshift Stone & Digging Mitts
+      exits:
+        Gorge: Beetle | Bow # To activate the main Timeshift Stone
+
     exits:
       Statue: Unlock Statue
       Beyond Bridge: Activate Timeshift Stone
       Exit: Nothing
-
-    Beyond Bridge:
-      exits:
-        Gorge: Beetle | Bow # To activate the main Timeshift Stone
-      locations:
-        Activate Timeshift Stone: Gust Bellows & Can Hit Timeshift Stone
-        Goddess Cube in Lanayru Gorge: Goddess Sword
-        Life Tree Seedling: Activate Timeshift Stone & Digging Mitts

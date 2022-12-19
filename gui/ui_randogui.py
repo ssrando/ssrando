@@ -1336,7 +1336,7 @@ class Ui_MainWindow(object):
         self.progression_lanayru_goddess.setText(QCoreApplication.translate("MainWindow", u"Lanayru Desert", None))
         self.progression_summit_goddess.setText(QCoreApplication.translate("MainWindow", u"Volcano Summit", None))
         self.progression_floria_goddess.setText(QCoreApplication.translate("MainWindow", u"Lake Floria", None))
-        self.progression_sand_sea_goddess.setText(QCoreApplication.translate("MainWindow", u"Lanayru Sand Sea", None))
+        self.progression_sand_sea_goddess.setText(QCoreApplication.translate("MainWindow", u"Sand Sea", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"Progress Locations", None))
 #if QT_CONFIG(tooltip)
         self.tab_4.setToolTip("")

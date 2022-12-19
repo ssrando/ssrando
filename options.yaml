@@ -392,6 +392,7 @@
     # - Glitchless - Basic
     # - Glitchless - Standard
     - BiTless
+    # - Glitched
     - No Logic
   default: BiTless
   help: Sets the logic mode to use when placing items. Glitchless requires no major tricks to complete, but

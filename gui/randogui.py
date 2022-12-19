@@ -226,7 +226,7 @@ class RandoGUI(QMainWindow):
             "summit_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
             "in Volcano Summit",
             "sand_sea_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in Lanayru Sand Sea",
+            "in Sand Sea",
         }
         for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
