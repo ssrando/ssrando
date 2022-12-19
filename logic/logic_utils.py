@@ -5,7 +5,7 @@ from typing import List  # Only for typing purposes
 
 from .logic import Logic, Placement, LogicSettings
 from .logic_input import Areas
-from .logic_expression import DNFInventory, Requirement
+from .logic_expression import DNFInventory, ImpossibleReq, Requirement
 from .inventory import (
     Inventory,
     EXTENDED_ITEM,
@@ -87,7 +87,7 @@ class LogicUtils(Logic):
         custom_requirements = self.requirements.copy()
         for index, e in enumerate(reversed(bin(banned_intset))):
             if e == "1":
-                custom_requirements[index] = DNFInventory(False)
+                custom_requirements[index] = ImpossibleReq()
 
         return Logic.fill_inventory(custom_requirements, inventory)
 

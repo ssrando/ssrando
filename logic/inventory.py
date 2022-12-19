@@ -13,8 +13,6 @@ def extended_item_generator():
 
     yield from sorted(INVENTORY_ITEMS)
 
-    yield from LOGIC_OPTIONS
-
     for option in OPTIONS_LIST:
         if option["name"].startswith("Enabled Tricks"):
             for trick in option["choices"]:
@@ -37,7 +35,8 @@ class MetaContainer(type):
 
 class EXTENDED_ITEM(int, metaclass=MetaContainer):
     items_list: List[EXTENDED_ITEM_NAME] = list(extended_item_generator())  # type: ignore
-    counters: Dict[EXTENDED_ITEM_NAME, Counter] = {}
+    counters: Dict[EXTENDED_ITEM_NAME, Counter]
+    options: Dict[EXTENDED_ITEM_NAME, QueryExpression]
     complete = False
 
     @classmethod

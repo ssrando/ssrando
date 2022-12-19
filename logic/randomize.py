@@ -12,7 +12,7 @@ from .fill_algo_common import RandomizationSettings, UserOutput
 from .logic import Logic, Placement, LogicSettings
 from .logic_utils import AdditionalInfo, LogicUtils
 from .logic_input import Areas
-from .logic_expression import DNFInventory, InventoryAtom
+from .logic_expression import DNFInventory, EmptyReq, InventoryAtom
 from .inventory import (
     Inventory,
     EXTENDED_ITEM,
@@ -83,10 +83,9 @@ class Rando:
             )
 
         runtime_requirements = (
-            self.logic_options_requirements
-            | self.endgame_requirements
+            self.endgame_requirements
             | self.ban_options
-            | {i: DNFInventory(True) for i in self.placement.starting_items}
+            | {i: EmptyReq() for i in self.placement.starting_items}
             | self.no_logic_requirements
         )
 
@@ -103,6 +102,8 @@ class Rando:
             self.randomized_trial_entrance,
             list(self.placement.locations),
         )
+
+        areas.with_options(options)
 
         logic = Logic(areas, logic_settings, self.placement)
 
@@ -181,23 +182,15 @@ class Rando:
     def ban_the_banned(self):
 
         banned_req = DNFInventory(BANNED_BIT)
-        nothing_req = DNFInventory(True)
+        nothing_req = EmptyReq()
         maybe_req = lambda b: banned_req if b else nothing_req
-        self.ban_options = {
-            BEEDLE_STALL_ACCESS: maybe_req(self.options["shop-mode"] == "Always Junk"),
-            MEDIUM_PURCHASES: maybe_req("medium" in self.options["banned-types"]),
-            EXPENSIVE_PURCHASES: maybe_req("expensive" in self.options["banned-types"]),
-        } | {
-            MAY_GET_n_CRYSTALS(c): (maybe_req(c > self.options["max-batreaux-reward"]))
-            for c in CRYSTAL_THRESHOLDS
-        }
 
         banned_types = set(self.options["banned-types"]) - {
             "medium",
             "expensive",
             "silent realm",
         }
-        self.ban_options |= {s: maybe_req(s in banned_types) for s in BANNABLE_TYPES}
+        self.ban_options = {s: maybe_req(s in banned_types) for s in BANNABLE_TYPES}
 
         self.banned: List[EIN] = []
         self.banned.extend(map(self.norm, self.options["excluded-locations"]))
@@ -225,7 +218,7 @@ class Rando:
         got_raising_requirement = (
             DNFInventory(self.short_to_full(SONG_IMPA_CHECK))
             if self.options["got-start"]
-            else DNFInventory(True)
+            else EmptyReq()
         )
         got_opening_requirement = InventoryAtom(
             PROGRESSIVE_SWORD, SWORD_COUNT[self.options["got-sword-requirement"]]
@@ -233,7 +226,7 @@ class Rando:
         horde_door_requirement = (
             DNFInventory(self.short_to_full(COMPLETE_TRIFORCE))
             if self.options["triforce-required"]
-            else DNFInventory(True)
+            else EmptyReq()
         )
 
         dungeons_req = Inventory()
@@ -251,9 +244,9 @@ class Rando:
         everything_req = DNFInventory(Inventory(everything_list))
 
         self.endgame_requirements = {
-            GOT_RAISING_REQUIREMENT: got_raising_requirement,
-            GOT_OPENING_REQUIREMENT: got_opening_requirement,
-            HORDE_DOOR_REQUIREMENT: horde_door_requirement,
+            self.short_to_full(GOT_RAISING_REQUIREMENT): got_raising_requirement,
+            self.short_to_full(GOT_OPENING_REQUIREMENT): got_opening_requirement,
+            self.short_to_full(HORDE_DOOR_REQUIREMENT): horde_door_requirement,
             EVERYTHING: everything_req,
         }
 
@@ -306,30 +299,10 @@ class Rando:
         shop_mode = self.options["shop-mode"]
         place_gondo_progressives = self.options["gondo-upgrades"]
 
-        options = {
-            OPEN_THUNDERHEAD_OPTION: self.options["open-thunderhead"] == "Open",
-            OPEN_ET_OPTION: self.options["open-et"],
-            OPEN_LMF_OPTION: self.options["open-lmf"] == "Open",
-            LMF_NODES_ON_OPTION: self.options["open-lmf"] == "Main Node",
-            RANDOMIZED_BEEDLE_OPTION: shop_mode != "Vanilla",
-            GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
-            NO_BIT_CRASHES: self.options["fix-bit-crashes"],
-            HERO_MODE: self.options["hero-mode"],
-        }
-
-        enabled_tricks = set(self.options["enabled-tricks-bitless"])
-
-        self.logic_options_requirements = {
-            k: DNFInventory(b) for k, b in options.items()
-        } | {
-            EIN(trick(trick_name)): DNFInventory(trick_name in enabled_tricks)
-            for trick_name in OPTIONS["enabled-tricks-bitless"]["choices"]
-        }
-
         self.no_logic_requirements = {}
         if self.options["logic-mode"] == "No Logic":
             self.no_logic_requirements = {
-                item: DNFInventory(True) for item in EXTENDED_ITEM.items_list
+                item: EmptyReq() for item in EXTENDED_ITEM.items_list
             }
 
         self.placement |= SINGLE_CRYSTAL_PLACEMENT(self.norm, self.areas.checks)

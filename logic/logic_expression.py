@@ -1,13 +1,218 @@
 from __future__ import annotations
-from typing import Dict, List, Callable, Optional, Set, Tuple
-from dataclasses import dataclass
+from typing import Any, Dict, List, Callable, Optional, Set, Tuple
+from dataclasses import dataclass, field, replace
 from functools import cached_property, reduce
 from abc import ABC
 import re
 from itertools import product, combinations
 
-from .inventory import EXTENDED_ITEM, Inventory, EMPTY_INV, DAY_BIT, NIGHT_BIT
+from .inventory import (
+    BANNED_BIT,
+    EXTENDED_ITEM,
+    Inventory,
+    EMPTY_INV,
+    DAY_BIT,
+    NIGHT_BIT,
+)
 from .constants import EXTENDED_ITEM_NAME, number, ITEM_COUNTS, RAW_ITEM_NAMES
+from options import Options
+
+
+def singleton(cls):
+    instance = None
+
+    new = cls.__new__
+
+    def _singleton(*args, **kwargs):
+        nonlocal instance
+        if instance is None:
+            instance = new(*args, **kwargs)
+        return instance
+
+    cls.__new__ = _singleton
+
+    return cls
+
+
+class QueryExpression:
+    else_banned: bool = False
+
+    def eval(self, options: Options) -> bool:
+        raise NotImplementedError
+
+    def with_options(self, options):
+        if self.eval(options):
+            return EmptyReq()
+        elif self.else_banned:
+            return DNFInventory(BANNED_BIT)
+        else:
+            return ImpossibleReq()
+
+    @staticmethod
+    def parse(text: str) -> QueryExpression:
+        raise NotImplementedError
+
+
+def QueryElseBanned(query: QueryExpression) -> QueryExpression:
+    query.else_banned = True
+    return query
+
+
+@dataclass
+class MetaQuery(QueryExpression):
+    query: QueryExpression
+
+    def __post_init__(self):
+        assert isinstance(self.query, (QueryOption, QueryContainerOption))
+        self.option = self.query.option
+        self.pattern = self.query.value
+
+    def to_query(self, val):
+        return replace(self.query, value=self.pattern.format(val))
+
+
+@dataclass
+class QueryBoolOption(QueryExpression):
+    option: str
+    negation: bool = False
+
+    def eval(self, options: Options) -> bool:
+        if self.negation:
+            return not options[self.option]
+        return options[self.option]
+
+
+@dataclass
+class QueryOption(QueryExpression):
+    option: str
+    value: Any
+    negation: bool = False
+
+    def eval(self, options: Options) -> bool:
+        if self.negation:
+            return options[self.option] != self.value
+        return options[self.option] == self.value
+
+
+@dataclass
+class QueryContainerOption(QueryExpression):
+    option: str
+    value: Any
+    negation: bool = False
+
+    def eval(self, options: Options) -> bool:
+        if self.negation:
+            return self.value not in options[self.option]
+        return self.value in options[self.option]
+
+
+@dataclass
+class QueryAndCombination(QueryExpression):
+    arguments: List[QueryExpression]
+
+    def eval(self, options: Options):
+        all(arg.eval(options) for arg in self.arguments)
+
+
+@dataclass
+class QueryOrCombination(QueryExpression):
+    arguments: List[QueryExpression]
+
+    def eval(self, options: Options):
+        any(arg.eval(options) for arg in self.arguments)
+
+
+# Parsing
+
+from lark import Lark, Transformer, v_args
+
+query_grammar = r"""
+    ?start: disjunction
+        | "Meta" disjunction -> mk_meta
+
+    ?disjunction: conjunction
+        | disjunction "|" conjunction -> mk_or
+
+    ?conjunction: atom
+        | conjunction "&" atom -> mk_and
+
+    ?atom:
+        | "(" disjunction ")"
+        | "true" -> mk_true
+        | "false" -> mk_false
+        | "Option" option
+        | "Option" option "Else" "Banned" -> mk_else_banned
+
+    ?option:
+        | text "Enabled" -> mk_enabled
+        | text "Disabled" -> mk_disabled
+        | text "Is" text -> mk_is
+        | text "Is Not" text -> mk_isnot
+        | text "Contains" text -> mk_contains
+        | text "Does Not Contain" text -> mk_doesnotcontain
+
+
+    ?text: "\"" TEXT "\""
+
+    TEXT: /[^"]+/
+
+    %import common.ESCAPED_STRING
+    %import common.WS
+    %ignore WS
+"""
+
+
+@v_args(inline=True)  # Affects the signatures of the methods
+class MakeQueryExpression(Transformer):
+    def mk_meta(self, query):
+        return MetaQuery(query)
+
+    def mk_or(self, left, right):
+        if isinstance(left, OrCombination):
+            return OrCombination(left.arguments + [right])
+        else:
+            return OrCombination([left, right])
+
+    def mk_and(self, left, right):
+        if isinstance(left, AndCombination):
+            return AndCombination(left.arguments + [right])
+        else:
+            return AndCombination([left, right])
+
+    def mk_true(self):
+        return AndCombination([])
+
+    def mk_false(self):
+        return OrCombination([])
+
+    def mk_enabled(self, option):
+        return QueryBoolOption(option)
+
+    def mk_disabled(self, option):
+        return QueryBoolOption(option, negation=True)
+
+    def mk_is(self, option, value):
+        return QueryOption(option, value)
+
+    def mk_isnot(self, option, value):
+        return QueryOption(option, value, negation=True)
+
+    def mk_contains(self, option, value):
+        return QueryContainerOption(option, value)
+
+    def mk_doesnotcontain(self, option, value):
+        return QueryContainerOption(option, value, negation=True)
+
+    def mk_else_banned(self, query):
+        return QueryElseBanned(query)
+
+
+query_parser = Lark(query_grammar, parser="lalr", transformer=MakeQueryExpression())
+QueryExpression.parse = query_parser.parse  # type: ignore
+
+
+def check_static_option_req(string, options):
+    return QueryExpression.parse(string).eval(options)
 
 
 class LogicExpression(ABC):
@@ -128,17 +333,6 @@ class DNFInventory(Requirement):
 
 
 @dataclass
-class Counter:
-    targets: Dict[EXTENDED_ITEM, int]
-
-    def localize(self, *args):
-        return self
-
-    def compute(self, inventory: Inventory):
-        return sum(v * inventory[k] for k, v in self.targets.items())
-
-
-@dataclass
 class CounterThreshold(Requirement):
     target: EXTENDED_ITEM_NAME
     threshold: int
@@ -148,7 +342,10 @@ class CounterThreshold(Requirement):
         return EXTENDED_ITEM.counters[self.target]
 
     def eval(self, inventory: Inventory):
-        return self.counter.compute(inventory) >= self.threshold
+        val = self.counter.compute(inventory)
+        if val > self.counter.limit and not inventory[BANNED_BIT]:
+            val = self.counter.limit
+        return val >= self.threshold
 
     def localize(self, *args):
         return self
@@ -172,6 +369,7 @@ class CounterThreshold(Requirement):
             raise ValueError
 
 
+@singleton
 class UnknownReq(Requirement):
     def eval(self, inventory: Inventory):
         return False
@@ -191,8 +389,99 @@ class UnknownReq(Requirement):
     def __and__(self, other) -> UnknownReq:
         raise ValueError
 
+    def __repr__(self) -> str:
+        return f"UnknownReq()"
 
-unknown_req = UnknownReq()
+
+@singleton
+class EmptyReq(DNFInventory):
+    disjunction: Set[Inventory] = {EMPTY_INV}
+
+    def __init__(self):
+        return
+
+    def eval(self, inventory: Inventory):
+        return True
+
+    def localize(self, *args):
+        return self
+
+    def __or__(self, other) -> DNFInventory:
+        if isinstance(other, DNFInventory):
+            return self
+        else:
+            raise ValueError
+
+    def __and__(self, other) -> DNFInventory:
+        if isinstance(other, DNFInventory):
+            return other
+        else:
+            raise ValueError
+
+    def __repr__(self) -> str:
+        return f"EmptyReq()"
+
+    def remove(self, item):
+        if isinstance(item, EXTENDED_ITEM):
+            return self
+        else:
+            raise ValueError
+
+    def is_impossible(self):
+        return False
+
+    def aggregate(self):
+        return EMPTY_INV
+
+    def day_only(self):
+        return self
+
+    def night_only(self):
+        return self
+
+
+@singleton
+class ImpossibleReq(DNFInventory):
+    disjunction: Set[Inventory] = set()
+
+    def __init__(self):
+        return
+
+    def eval(self, inventory: Inventory):
+        return False
+
+    def localize(self, *args):
+        return self
+
+    def __or__(self, other) -> DNFInventory:
+        if isinstance(other, DNFInventory):
+            return other
+        else:
+            raise ValueError
+
+    def __and__(self, other) -> DNFInventory:
+        if isinstance(other, DNFInventory):
+            return self
+        else:
+            raise ValueError
+
+    def __repr__(self) -> str:
+        return f"ImpossibleReq()"
+
+    def remove(self, item):
+        raise ValueError
+
+    def is_impossible(self):
+        return True
+
+    def aggregate(self):
+        raise ValueError
+
+    def day_only(self):
+        return self
+
+    def night_only(self):
+        return self
 
 
 def InventoryAtom(item_name: str, quantity: int) -> Requirement:
@@ -276,8 +565,6 @@ class OrCombination(LogicExpression):
 
 # Parsing
 
-from lark import Lark, Transformer, v_args
-
 exp_grammar = r"""
     ?start: disjunction
         | "~" disjunction -> mk_opaque
@@ -291,14 +578,11 @@ exp_grammar = r"""
     ?atom:
         | "Nothing" -> mk_true
         | "Impossible" -> mk_false
-        | "$" counter -> mk_counter
+        | "Runtime" -> mk_unknown
         | TEXT ">=" INT -> mk_counter_threshold
         | TEXT "*" INT -> mk_atom
         | TEXT -> mk_atom
         | "(" disjunction ")"
-
-    ?counter: counter "+" counter -> mk_counter_add
-        | INT ("x" | "*") TEXT -> mk_counter_atom
 
     TEXT.-100: /\b[^$~|&()>=+]+\b/
 
@@ -329,10 +613,13 @@ class MakeExpression(Transformer):
             return AndCombination([left, right])
 
     def mk_true(self):
-        return DNFInventory(True)
+        return EmptyReq()
 
     def mk_false(self):
-        return DNFInventory(False)
+        return ImpossibleReq()
+
+    def mk_unknown(self):
+        return UnknownReq()
 
     def mk_atom(self, text, count=None):
         text = text.strip()
@@ -353,23 +640,6 @@ class MakeExpression(Transformer):
         else:
             return BasicTextAtom(text)
 
-    def mk_counter_atom(self, count, item):
-        count = int(count)
-        if item not in RAW_ITEM_NAMES and item not in EXTENDED_ITEM:
-            raise ValueError(f"Unknown item {item}")
-        if item in EXTENDED_ITEM:
-            return {EXTENDED_ITEM[item]: count}
-        return {
-            EXTENDED_ITEM[number(item, index)]: count
-            for index in range(ITEM_COUNTS[item])
-        }
-
-    def mk_counter_add(self, left, right):
-        return left | right
-
-    def mk_counter(self, counter):
-        return Counter(counter)
-
     def mk_counter_threshold(self, counter_name, threshold):
         c = CounterThreshold(counter_name, int(threshold))
         c.opaque = True
@@ -378,3 +648,103 @@ class MakeExpression(Transformer):
 
 exp_parser = Lark(exp_grammar, parser="lalr", transformer=MakeExpression())
 LogicExpression.parse = exp_parser.parse  # type: ignore
+
+
+@dataclass
+class Counter:
+    targets: List[Tuple[Set[EXTENDED_ITEM], Callable[[int], int]]]
+    limit: int | float
+
+    def compute(self, inventory: Inventory):
+        return sum(c(sum(inventory[k] for k in s)) for s, c in self.targets)
+
+    def with_options(self, options: Options):
+        pass
+
+    @staticmethod
+    def parse(text: str) -> Counter:
+        raise NotImplementedError
+
+
+@dataclass
+class CounterLimitOption(Counter):
+    limit: int | float = field(init=False)
+    option: str
+    interpret: Callable[[Any], int | float]
+
+    def with_options(self, options: Options):
+        self.limit = self.interpret(options[self.option])
+
+
+counter_grammar = r"""
+    ?start: counter ("," "Limit" int_expr)? -> mk_counter
+
+    ?int_expr:
+        | INT -> mk_int
+        | "Option" text -> mk_int_option
+        | "Option" text "{" (assoc_pair ("," assoc_pair)*) "}" -> mk_any_option
+
+    ?assoc_pair: text "->" INT -> mk_pair
+
+    ?counter: counter "+" counter -> mk_counter_add
+        | INT ("x" | "*") TEXT -> mk_counter_atom1
+        | TEXT "{" (INT ("," INT)*) "}" -> mk_counter_atom2
+
+    ?text: "\"" TEXT "\""
+
+    TEXT.-100: /\b[^$~|&()>=+,{}]+\b/
+
+    %import common.INT
+    %import common.WS
+    %ignore WS
+"""
+
+
+@v_args(inline=True)  # Affects the signatures of the methods
+class MakeCounter(Transformer):
+    def mk_pair(self, a, b):
+        return (str(a), int(b))
+
+    def mk_counter_atom(self, item, c):
+        if item not in RAW_ITEM_NAMES and item not in EXTENDED_ITEM:
+            raise ValueError(f"Unknown item {item}")
+        if item in EXTENDED_ITEM:
+            return [({EXTENDED_ITEM[item]}, c)]
+        s = {EXTENDED_ITEM[number(item, index)] for index in range(ITEM_COUNTS[item])}
+        return [(s, c)]
+
+    def mk_counter_atom1(self, count, item):
+        count = int(count)
+        c = lambda n: count * n
+        return self.mk_counter_atom(item, c)
+
+    def mk_counter_atom2(self, item, *counts):
+        counts_dict = {i: int(count) for i, count in enumerate(counts)}
+        c = lambda n: counts_dict[n]
+        return self.mk_counter_atom(item, c)
+
+    def mk_counter_add(self, left, right):
+        return left + right
+
+    def mk_int(self, i):
+        return int(i)
+
+    def mk_int_option(self, option):
+        return str(option), lambda n: n
+
+    def mk_any_option(self, option, *pairs):
+        return str(option), lambda v: dict(pairs)[v]
+
+    def mk_counter(self, counter, limit=None):
+        if limit is None:
+            return Counter(counter, float("inf"))
+
+        elif isinstance(limit, int):
+            return Counter(counter, limit)
+
+        else:
+            return CounterLimitOption(counter, *limit)
+
+
+counter_parser = Lark(counter_grammar, parser="lalr", transformer=MakeCounter())
+Counter.parse = counter_parser.parse  # type: ignore

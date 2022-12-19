@@ -6,13 +6,16 @@ from dataclasses import dataclass, field
 
 from .logic_expression import (
     Counter,
+    QueryExpression,
+    MetaQuery,
     DNFInventory,
     LogicExpression,
     Requirement,
-    unknown_req,
+    UnknownReq,
 )
 from .inventory import EXTENDED_ITEM, Inventory
 from .constants import *
+from options import OPTIONS, Options
 
 
 AllowedTimeOfDay = Enum("AllowedTimeOfDay", ("DayOnly", "NightOnly", "Both"))
@@ -27,7 +30,6 @@ class defaultfactorydict(dict):
 
 
 events: List[EXTENDED_ITEM_NAME] = []
-counters: Dict[EXTENDED_ITEM_NAME, Counter] = {}
 areas_list: List[Area[LogicExpression]] = []
 
 LE = TypeVar("LE")
@@ -81,24 +83,16 @@ class Area(Generic[LE]):
         if (d := raw_dict.get("macros")) is not None:
             area.abstract = True
             assert "locations" not in raw_dict
-            d2 = {k: LogicExpression.parse(v) for k, v in d.items()}
-            for k, v in d2.items():
-                if isinstance(v, Counter):
-                    counters[EIN(k)] = v
-                    continue
-                area.locations[k] = v
+            area.locations = {k: LogicExpression.parse(v) for k, v in d.items()}
+            for k in d:
                 if " - " not in k:
                     events.append(with_sep_full(name, k))
 
         if (d := raw_dict.get("locations")) is not None:
             area.abstract = False
             assert "macros" not in raw_dict
-            d2 = {k: LogicExpression.parse(v) for k, v in d.items()}
-            for k, v in d2.items():
-                if isinstance(v, Counter):
-                    counters[EIN(k)] = v
-                    continue
-                area.locations[k] = v
+            area.locations = {k: LogicExpression.parse(v) for k, v in d.items()}
+            for k in d:
                 if " - " not in k:
                     events.append(with_sep_full(name, k))
 
@@ -168,11 +162,15 @@ class Areas:
 
         partial_address = partial_address_str.split(" - ")
         j = 0
-        if partial_address[0] == "General":
+        if partial_address[0] == "Global":
             queue = deque([self.all_areas])
             j = 1
 
         head = partial_address[j]
+
+        if head in EXTENDED_ITEM.options:
+            return head
+
         while queue:
             area = queue.popleft()
             if j == len(partial_address):
@@ -252,7 +250,19 @@ class Areas:
 
         assert not EXTENDED_ITEM.complete
         EXTENDED_ITEM.items_list.extend(events)
-        EXTENDED_ITEM.counters |= counters
+        EXTENDED_ITEM.counters = {
+            k: Counter.parse(v) for k, v in raw_area["counters"].items()
+        }
+        EXTENDED_ITEM.options = {}
+        for k, v in raw_area["options"].items():
+            q = QueryExpression.parse(v)
+            if isinstance(q, MetaQuery):
+                for val in OPTIONS[q.option]["choices"]:
+                    EXTENDED_ITEM.options[k.format(val)] = q.to_query(val)
+            else:
+                EXTENDED_ITEM.options[k] = q
+
+        EXTENDED_ITEM.items_list.extend(EXTENDED_ITEM.options)
         for area in areas_list:
             if area.allowed_time_of_day == Both:
                 EXTENDED_ITEM.items_list.append(make_day(area.name))
@@ -376,7 +386,7 @@ class Areas:
         EXTENDED_ITEM.complete = True
 
         def short_to_full(elt: str):
-            if elt in LOGIC_OPTIONS or "Trick" in elt:
+            if elt in EXTENDED_ITEM.options:
                 return EIN(elt)
             for tag in ["_DAY", "_NIGHT"]:
                 if elt[-len(tag) :] == tag:
@@ -400,7 +410,7 @@ class Areas:
         self.exit_to_area = {}
 
         self.requirements: List[Requirement] = [
-            unknown_req for _ in EXTENDED_ITEM.items()
+            UnknownReq() for _ in EXTENDED_ITEM.items()
         ]
 
         reqs = self.requirements  # Local alias
@@ -508,3 +518,11 @@ class Areas:
                     else:
                         area_bit = EXTENDED_ITEM[area_name]
                     reqs[area_bit] |= DNFInv(entrance)
+
+    def with_options(self, options: Options):
+        for opt, breq in EXTENDED_ITEM.options.items():
+            bit = EXTENDED_ITEM[opt]
+            self.requirements[bit] = breq.with_options(options)
+
+        for counter in EXTENDED_ITEM.counters.values():
+            counter.with_options(options)

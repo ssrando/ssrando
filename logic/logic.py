@@ -12,6 +12,7 @@ from .logic_expression import (
     CounterThreshold,
     DNFInventory,
     AndCombination,
+    EmptyReq,
     Requirement,
     UnknownReq,
 )
@@ -175,8 +176,9 @@ class Logic:
                         for conj in req.disjunction:
                             aggregate |= conj
                     elif isinstance(req, CounterThreshold):
-                        for item in req.counter.targets:
-                            aggregate |= item
+                        for (targets, _) in req.counter.targets:
+                            for item in targets:
+                                aggregate |= item
                     else:
                         assert isinstance(req, UnknownReq)
                         pass
@@ -191,9 +193,10 @@ class Logic:
                             todos |= conj.intset - aggregate.intset
                             aggregate |= conj
                     elif isinstance(req, CounterThreshold):
-                        for item in req.counter.targets:
-                            aggregate |= item
-                            todos |= {item} - aggregate.intset
+                        for (targets, _) in req.counter.targets:
+                            for item in targets:
+                                aggregate |= item
+                                todos |= {item} - aggregate.intset
                     else:
                         assert isinstance(req, UnknownReq)
                         pass
@@ -217,9 +220,8 @@ class Logic:
 
     @staticmethod
     def free_simplify(requirements: List[Requirement], free: Inventory):
-        req = DNFInventory(True)
         for i in Logic.fill_inventory(requirements, free) - free:
-            requirements[i] = req
+            requirements[i] = EmptyReq()
 
     @staticmethod
     def shallow_simplify(requirements: List[Requirement]):

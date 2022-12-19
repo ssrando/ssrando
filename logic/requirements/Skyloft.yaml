@@ -1,5 +1,3 @@
-# this logic assumes, that you can always reach outside skyloft
-
 Upper:
   hint-region: Upper Skyloft
   Knight Academy:
@@ -86,7 +84,7 @@ Central:
     Bird Nest - Item in Bird Nest:
       Baby Rattle from Beedle's Shop Trick & Day & Distance Activator & Gust Bellows & (Beetle | Whip)
     Open Trial Gate: Goddess Harp & Song of the Hero
-    General - Can Collect Water: Nothing
+    Global - Can Collect Water: Nothing
   exits:
     Exit to Beedle's Shop: Day & (Distance Activator | (Beedle's Shop With Bombs Trick & Bomb Bag))
     Bazaar North: Day
@@ -311,17 +309,17 @@ Beedle's Shop:
   Stall:
     locations:
       # We don't want the pouch extensions to be the logical access to the pouch
-      300 Rupee Item: Can Afford 300 Rupees & (Pouch | Randomized Beedle option)
-      600 Rupee Item: Can Afford 600 Rupees & 300 Rupee Item
-      1200 Rupee Item: Can Afford 1200 Rupees & 600 Rupee Item
-      800 Rupee Item: Can Afford 800 Rupees
-      1600 Rupee Item: Can Afford 1600 Rupees & 800 Rupee Item
-      First 100 Rupee Item: Can Afford 100 Rupees
-      Second 100 Rupee Item: Can Afford 100 Rupees & First 100 Rupee Item
+      300 Rupee Item:        Can Afford 300 Rupees  & Can Medium Rupee Farm & (Pouch | Randomized Beedle option)
+      600 Rupee Item:        Can Afford 600 Rupees  & Can High Rupee Farm   & 300 Rupee Item
+      1200 Rupee Item:       Can Afford 1200 Rupees & Can High Rupee Farm   & 600 Rupee Item
+      800 Rupee Item:        Can Afford 800 Rupees  & Can High Rupee Farm
+      1600 Rupee Item:       Can Afford 1600 Rupees & Can High Rupee Farm   & 800 Rupee Item
+      First 100 Rupee Item:  Can Afford 100 Rupees
+      Second 100 Rupee Item: Can Afford 100 Rupees                          & First 100 Rupee Item
       # To reduce necessary rupee-farming at the start, the third item logically needs an efficient rupee-farming method
-      Third 100 Rupee Item: Can Afford 100 Rupees & Can Medium Rupee Farm & Second 100 Rupee Item
-      50 Rupee Item: Can Afford 50 Rupees
-      1000 Rupee Item: Can Afford 1000 Rupees & 50 Rupee Item
+      Third 100 Rupee Item:  Can Afford 100 Rupees  & Can Medium Rupee Farm & Second 100 Rupee Item
+      50 Rupee Item:         Can Afford 50 Rupees
+      1000 Rupee Item:       Can Afford 1000 Rupees & Can High Rupee Farm   & 50 Rupee Item
     entrance: Day & Beedle Stall Access Token
     exits:
       Beedle's Shop: Nothing

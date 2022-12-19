@@ -651,6 +651,19 @@
   permalink: true
   help: The algorithm used to place items in the world. Random Fill has an extremely high chance of failure.
   # ui: option_filling_algorithm
+- name: Maximum Rupee Count Needed
+  command: max-wallet
+  type: singlechoice
+  bits: 2
+  choices:
+    - 0
+    - 300
+    - 1000
+    - 9900
+  default: 300
+  permalink: True
+  help: The maximal number of rupees needed at a time
+  # ui: option_max_wallet
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution
