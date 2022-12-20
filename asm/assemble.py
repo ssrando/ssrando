@@ -487,7 +487,14 @@ try:
 
         diff_path = os.path.join(".", "patch_diffs", patch_name + "_diff.txt")
         with open(diff_path, "w") as f:
-            f.write(yaml.dump(diffs, Dumper=yaml.CDumper, default_flow_style=False))
+            f.write(
+                yaml.dump(
+                    diffs,
+                    Dumper=yaml.CDumper,
+                    default_flow_style=False,
+                    line_break="\n",
+                )
+            )
 
     # Write the custom symbols to a text file.
     # Delete any entries in custom_symbols that have no custom symbols to avoid clutter.
@@ -501,7 +508,10 @@ try:
     with open("./custom_symbols.txt", "w") as f:
         f.write(
             yaml.dump(
-                output_custom_symbols, Dumper=yaml.CDumper, default_flow_style=False
+                output_custom_symbols,
+                Dumper=yaml.CDumper,
+                default_flow_style=False,
+                line_break="\n",
             )
         )
 except Exception as e:
