@@ -1524,12 +1524,13 @@ class GamePatcher:
             set(PROGRESSIVE_SWORDS) & set(self.placement_file.starting_items)
         )
 
-        for i in range(start_sword_count):
-            self.startstoryflags.append(ITEM_STORY_FLAGS[PROGRESSIVE_SWORD][i])
-        if start_sword_count > 0:
-            self.startitemflags.append(
-                ITEM_FLAGS[PROGRESSIVE_SWORD][start_sword_count - 1]
-            )
+        if start_sword_count > 3:
+            self.startstoryflags.append(583)  # 4 extra Dowsing slots
+            if self.placement_file.options["dowsing-after-whitesword"]:
+                self.startstoryflags.append(102)  # Treasure Dowsing
+                self.startstoryflags.append(104)  # Crystal Dowsing
+                self.startstoryflags.append(105)  # Rupee Dowsing
+                self.startstoryflags.append(110)  # Goddess Cube Dowsing
 
         # Give the completed song of the hero if all 3 pieces are added as starting items.
         if all(
