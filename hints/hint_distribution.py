@@ -120,6 +120,12 @@ class HintDistribution:
         self._read_from_json(json.loads(s))
 
     def _read_from_json(self, jsn):
+        self.hints_per_stone = jsn["hints_per_stone"]
+        # Limit number of hints per stone as there appears to be ~600 character limit to the hintstone text.
+        if self.hints_per_stone <= 0 or self.hints_per_stone >= 9:
+            raise ValueError(
+                "Selected hint distribution must have no less than one hint per stone and no more than 8."
+            )
         self.banned_stones = jsn["banned_stones"]
         self.added_locations = jsn["added_locations"]
         self.removed_locations = jsn["removed_locations"]
