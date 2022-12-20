@@ -85,7 +85,6 @@ class Randomizer(BaseRandomizer):
         self.rando = Rando(self.areas, self.options, self.rng)
         self.excluded_locations = self.options["excluded-locations"]
         self.dry_run = bool(self.options["dry-run"])
-        self.banned_types = self.options["banned-types"]
         self.randomizer_hash = self._get_rando_hash()
 
     def _get_rando_hash(self):

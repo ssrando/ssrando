@@ -27,7 +27,6 @@ from PySide6.QtWidgets import (
 from gui.sort_model import LocationsModel
 
 from logic.logic_input import Areas
-from logic.constants import BANNABLE_TYPES
 from options import OPTIONS, Options
 from gui.progressdialog import ProgressDialog
 from gui.guithreads import RandomizerThread, ExtractSetupThread
