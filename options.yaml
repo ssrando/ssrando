@@ -726,7 +726,10 @@
   command: random-starting-item
   type: boolean
   default: false
-  help: Gives you a random progression item at the start of the game.
+  help: "Gives you a random progression item at the start of the game in
+        addition to any starting items. This includes: Bow, Beetle, Slingshot,
+        Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
+        Water Scale, Fireshield Earrings, Goddess Harp and Spiral Charge."
   ui: option_random_starting_item
 - name: Starting ET Key Pieces
   command: et-key-pieces
