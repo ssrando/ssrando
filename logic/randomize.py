@@ -470,7 +470,7 @@ class Rando:
             pass
 
         if triforce_mode == "Vanilla":
-            self.placement |= VANILLA_TRIFORCES_PLACEMENT(self.norm, self.areas.checks)
+            self.placement |= VANILLA_TRIFORCES_PLACEMENT(self.norm)
         elif triforce_mode == "Sky Keep":
             self.placement |= TRIFORCES_RESTRICTION(self.norm)
         elif triforce_mode == "Anywhere":
