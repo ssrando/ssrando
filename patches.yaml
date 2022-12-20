@@ -34,6 +34,8 @@ global:
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
     - 70 # First time Light Fruit Cutscene
+    - 168 # Boko Base map
+    - 178 # Cutscene showing off Bokoblin Base with Plats
     - storyflag: 134 # Horde defeated
       onlyif: Option "skip-horde" Enabled
     - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
@@ -85,6 +87,19 @@ global:
     Eldin Volcano:
       - 2 # gets rid of first digging mitts mogma text
       - 58 # digging mitts mogma cutscene watched
+    Eldin Volcano Summit: # VS + Boko Base
+      - 70 # Initial panning cutscene watched
+      - 21 # Set after initial panning cutscene
+      - 20 # Set after initial panning cutscene with Plats
+      - 38 # Panning cutscene showing gust bellows chest watched
+      - 37 # Panning cutscene showing boko camp and clawshots chest watched
+      - 34 # Panning cutscene showing peahots watched
+      - 63 # Panning cutscene showing pouch chest watched
+      - 61 # Panning cutscene showing summit platforms in lava watched
+      - 52 # Panning cutscene showing camp after wind elevator watched
+      - 51 # Panning cutscene showing bombs chest watched
+      - 50 # Panning cutscene showing whippable peahot watched
+      - 68 # Have talked to Plats near Volcano East
     Earth Temple:
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
     Lanayru Desert:
