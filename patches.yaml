@@ -2293,6 +2293,16 @@ F200: # Eldin main area
       anglez: 30506
       id: 0xFC84
       name: HrpHint
+  - name: Exit from Eldin Shiekah Stone to Boko Base
+    type: objadd
+    index: 1
+    room: 2
+    objtype: SCEN
+    object:
+      name: F202
+      layer: 1
+      room: 1 # 0 = cutscene + no items; 1 = no cutscene + keep items
+      entrance: 0 # New Eldin -> Boko Base sky entrance
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride

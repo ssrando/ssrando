@@ -2562,6 +2562,24 @@ Eldin Volcano - Vent Exit near Ascent:
   vanilla: Eldin Volcano - Vent Entrance near Hot Cave
 
 
+## Boko Base
+
+Eldin Volcano - Exit to Boko Base:
+  type: exit
+  vanilla: Boko Base - Entrance
+
+Eldin Volcano - Entrance from Boko Base:
+  type: entrance
+
+
+Boko Base - Exit:
+  type: exit
+  vanilla: Entrance from Boko Base
+
+Boko Base - Entrance:
+  type: entrance
+
+
 ## Mogma Turf
 
 Mogma Turf - Entrance:

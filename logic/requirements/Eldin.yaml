@@ -34,6 +34,7 @@ Volcano:
       First Vent from Mogma Turf: Impossible
       First Room: First Room - Blow up Rock to East
       Past Mogma Turf: Past Mogma Turf - Unlock Shortcut to Pre Turf
+      Exit to Boko Base: Nothing
     locations:
       First Room - Blow up Rock to East: Bomb Bag # can probably also use hook beetle
       Unlock Statue: Nothing
@@ -223,3 +224,22 @@ Volcano Summit:
         Gossip Stone near Second Thirsty Frog: Nothing
         Hydrate Second Frog: Clawshots & Water Bottle
 
+# BOKO BASE
+Boko Base:
+  toplevel-alias: Boko Base
+  hint-region: Boko Base
+
+  exits:
+    Entrance: Nothing
+    Exit: Nothing
+  locations:
+    # Plats' Gift: Nothing
+    # Chest near Bone Bridge: Mogma Mitts
+    # Chest on Cliff: Mogma Mitts & Gust Bellows
+    # Chest near Drawbridge: Mogma Mitts & Gust Bellows
+    # Chest east of Earth Temple Entrance: Mogma Mitts & Gust Bellows & Clawshots & Whip
+    # Chest west of Earth Temple Entrance: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot
+    # First Chest in Volcano Summit: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot & Bomb Bag
+    # Raised Chest in Volcano Summit: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot & Bomb Bag
+    # Chest in Volcano Summit Alcove: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot & Bomb Bag & Sword
+    # Fire Dragon's Reward: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot & Bomb Bag & Sword & (Bow || Beetle)

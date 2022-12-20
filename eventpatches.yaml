@@ -1889,6 +1889,51 @@
       param2: 7
       next: -1
       param3: 7
+305-MountainF3:
+  - name: Offer entry into Boko Base
+    type: flowpatch
+    index: 72
+    flow:
+      next: Show Boko Base Entry Question
+  - name: Show Boko Base Entry Question
+    type: flowadd
+    flow:
+      type: type1
+      next: Boko Base Entry Switch
+      param3: 302
+      param4: Boko Base Entry Question
+  - name: Boko Base Entry Question
+    type: textadd
+    text: "Want to enter Boko Base?\n[1]Yes[2-]No"
+  - name: Boko Base Entry Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Trigger Exit to Boko Base # Yes
+      - Show Declined Boko Base Offer Text # No
+  - name: Declined Boko Base Offer Text
+    type: textadd
+    text: "Very well. Talk to me again if you\nchange your mind."
+  - name: Show Declined Boko Base Offer Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Declined Boko Base Offer Text
+  - name: Trigger Exit to Boko Base
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 5 # Entrance number for Boko Base
+      param2: 0
+      next: -1
+      param3: 10 # Triggers an exit
 399-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
