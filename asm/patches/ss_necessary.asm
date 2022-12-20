@@ -317,9 +317,11 @@ li r4, 0x39A
 ; tear display is ready, which can softlock so skip the check,
 ; which seems to only have a visual impact *at worst*
 ;
+; instead check if link finished his walk, otherwise it can still softlock
+;
 ; preferably, the tear display should be fixed, but this works for now
-.org 0x1AA4
-nop
+.org 0x1A9c
+lbz r0, 0xc90(r30)
 
 .close
 
