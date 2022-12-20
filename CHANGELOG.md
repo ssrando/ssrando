@@ -12,6 +12,10 @@
   - Progress Items: Main quest dowsing will point to chests that contain progress items
   - Currently does not work on goddess chests
 - Added option to enable dowsing in dungeons (by YourAverageLink, but shoutouts to Zeldex)
+- Added option to start with various items (by CovenEsme)
+  - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
+- Added option to start with extra health (by CovenEsme)
+- Added option to start with a random progress item (by CovenEsme)
 ### Changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer

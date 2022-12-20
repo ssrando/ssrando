@@ -180,13 +180,6 @@
   default: false
   help: "Shuffles the trials. If checked, entering a trial gate will send you to a randomized trial."
   ui: option_randomize_trials
-- name: Start with Adventure Pouch
-  command: start-with-pouch
-  type: boolean
-  default: false
-  help: If activated, you will start with the adventure pouch unlocked. The remaining four
-    progressive pouches will still be shuffled.
-  ui: option_start_pouch
 - name: No Spoiler Log
   command: no-spoiler-log
   type: boolean
@@ -513,7 +506,8 @@
   command: impa-sot-hint
   type: boolean
   default: true
-  help: Enables Impa in the Past to give a hint to the location of the Stone of Trials
+  help: Enables Impa in the Past to give a hint to the location of the Stone of
+        Trials. Does not appear if the Stone of Trials is a starting item.
   ui: option_impa_sot_hint
 - name: Tunic Swap
   command: tunic-swap
@@ -671,3 +665,92 @@
   help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
     as specifics about what additional items and locations can and cannot be hinted
   ui: option_hint_distribution
+- name: Starting Items
+  command: starting-items
+  type: multichoice
+  choices:
+    - Baby Rattle
+    - Ballad of the Goddess
+    - Bomb Bag
+    - Cawlin's Letter
+    - Clawshots
+    - Din's Power
+    - Eldin Song of the Hero Part
+    - Faron Song of the Hero Part
+    - Farore's Courage
+    - Fireshield Earrings
+    - Goddess Harp
+    - Gust Bellows
+    - Horned Colossus Beetle
+    - Key Piece
+    - Key Piece
+    - Key Piece
+    - Key Piece
+    - Key Piece
+    - Lanayru Song of the Hero Part
+    - Life Tree Fruit
+    # - Life Tree Seedling
+    - Nayru's Wisdom
+    - Progressive Beetle
+    - Progressive Beetle
+    - Progressive Beetle
+    - Progressive Beetle
+    - Progressive Bow
+    - Progressive Bow
+    - Progressive Bow
+    - Progressive Bug Net
+    - Progressive Bug Net
+    - Progressive Mitts
+    - Progressive Mitts
+    - Progressive Pouch
+    - Progressive Pouch
+    - Progressive Pouch
+    - Progressive Pouch
+    - Progressive Pouch
+    - Progressive Slingshot
+    - Progressive Slingshot
+    - Progressive Wallet
+    - Progressive Wallet
+    - Progressive Wallet
+    - Progressive Wallet
+    - Sea Chart
+    - Spiral Charge
+    - Stone of Trials
+    - Triforce of Courage
+    - Triforce of Power
+    - Triforce of Wisdom
+    - Water Scale
+    - Whip
+  default: [
+    Progressive Pouch
+    # Sailcloth
+  ]
+  help: Items that will be in your inventory at the start of the game.
+  ui: starting_items
+- name: Random Starting Item
+  command: random-starting-item
+  type: boolean
+  default: false
+  help: "Gives you a random progression item at the start of the game in
+        addition to any starting items. This includes: Bow, Beetle, Slingshot,
+        Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
+        Water Scale, Fireshield Earrings, Goddess Harp and Spiral Charge."
+  ui: option_random_starting_item
+- name: Starting Heart Containers
+  command: starting-heart-containers
+  type: int
+  default: 0
+  min: 0
+  max: 6
+  bits: 3
+  help: How many heart containers to start with.
+  ui: option_starting_heart_containers
+- name: Starting Heart Pieces
+  command: starting-heart-pieces
+  type: int
+  default: 0
+  min: 0
+  max: 24
+  bits: 5
+  help: How many heart pieces to start with.
+  ui: option_starting_heart_pieces

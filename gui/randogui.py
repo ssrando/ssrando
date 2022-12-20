@@ -107,6 +107,7 @@ class RandoGUI(QMainWindow):
                     widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
 
+        # Tricks ui.
         self.enabled_tricks_model = QStringListModel()
         self.enabled_tricks_model.setStringList(
             OPTIONS["enabled-tricks-bitless"]["default"]
@@ -137,6 +138,16 @@ class RandoGUI(QMainWindow):
         self.ui.included_locations.setModel(self.included_locations_model)
         self.ui.exclude_location.clicked.connect(self.exclude_location)
         self.ui.include_location.clicked.connect(self.include_location)
+
+        # Starting Items ui.
+        self.randomized_items_model = QStringListModel()
+        self.randomized_items_model.setStringList(OPTIONS["starting-items"]["choices"])
+        self.starting_items_model = QStringListModel()
+        self.starting_items_model.setStringList(OPTIONS["starting-items"]["default"])
+        self.ui.randomized_items.setModel(self.randomized_items_model)
+        self.ui.starting_items.setModel(self.starting_items_model)
+        self.ui.randomize_item.clicked.connect(self.remove_starting_item)
+        self.ui.start_with_item.clicked.connect(self.add_starting_item)
 
         # setup presets
         self.default_presets = {}
@@ -242,13 +253,8 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, "label_for_option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_got_dungeon_requirement").setVisible(False)
         self.enable_trick_interface()
-        getattr(self.ui, "randomize_item").setVisible(False)
-        getattr(self.ui, "start_with_item").setVisible(False)
-        getattr(self.ui, "randomized_items").setVisible(False)
-        getattr(self.ui, "starting_items").setVisible(False)
 
         # hide supporting elements
-        getattr(self.ui, "tabWidget").removeTab(5)
         getattr(self.ui, "option_plando").setVisible(False)
         getattr(self.ui, "plando_file").setVisible(False)
         getattr(self.ui, "plando_file_browse").setVisible(False)
@@ -413,6 +419,23 @@ class RandoGUI(QMainWindow):
                 elif isinstance(widget, QSpinBox):
                     widget.setValue(current_settings[option_key])
                     getattr(self.ui, f"label_for_{ui_name}").installEventFilter(self)
+                    # Update health counter label.
+                    if ui_name in (
+                        "option_starting_heart_containers",
+                        "option_starting_heart_pieces",
+                    ):
+                        heart_string = getattr(
+                            self.ui, "current_starting_health_counter"
+                        )
+                        heart_containers = current_settings["starting-heart-containers"]
+                        heart_pieces = current_settings["starting-heart-pieces"]
+                        health = 24 + heart_containers * 4 + heart_pieces
+                        health_string = str(health // 4) + " hearts"
+                        if health % 4 == 1:
+                            health_string += " and 1 piece"
+                        elif health % 4 > 1:
+                            health_string += " and " + str(health % 4) + " pieces"
+                        heart_string.setText(health_string)
 
         for check_type in BANNABLE_TYPES:
             widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
@@ -447,11 +470,14 @@ class RandoGUI(QMainWindow):
         else:
             self.enabled_tricks_model.setStringList([])
             self.disabled_tricks_model.setStringList([])
+
+        # Update tricks.
         self.enabled_tricks_model.sort(0)
         self.disabled_tricks_model.sort(0)
         self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
 
+        # Update locations.
         self.excluded_locations_model.setStringList(
             current_settings["excluded-locations"]
         )
@@ -465,6 +491,18 @@ class RandoGUI(QMainWindow):
         self.ui.excluded_locations.setModel(self.excluded_locations_model)
         self.ui.included_locations.setModel(self.included_locations_model)
 
+        # Update starting items.
+        self.randomized_items_model = QStringListModel()
+        self.starting_items_model = QStringListModel()
+        randomized_items_list = [
+            choice for choice in OPTIONS["starting-items"]["choices"]
+        ]
+        for item in current_settings["starting-items"]:
+            randomized_items_list.remove(item)
+        self.randomized_items_model.setStringList(randomized_items_list)
+        self.starting_items_model.setStringList(current_settings["starting-items"])
+        self.ui.randomized_items.setModel(self.randomized_items_model)
+        self.ui.starting_items.setModel(self.starting_items_model)
         self.ui.permalink.setText(current_settings.get_permalink())
 
     def save_settings(self):
@@ -611,6 +649,18 @@ class RandoGUI(QMainWindow):
 
     def include_location(self):
         self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
+        self.update_settings()
+
+    def remove_starting_item(self):
+        self.move_selected_rows(self.ui.starting_items, self.ui.randomized_items)
+        self.ui.starting_items.model().sort(0)
+        self.ui.randomized_items.model().sort(0)
+        self.update_settings()
+
+    def add_starting_item(self):
+        self.move_selected_rows(self.ui.randomized_items, self.ui.starting_items)
+        self.ui.starting_items.model().sort(0)
+        self.ui.randomized_items.model().sort(0)
         self.update_settings()
 
     def load_preset(self):
