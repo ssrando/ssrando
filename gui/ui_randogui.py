@@ -115,7 +115,7 @@ class Ui_MainWindow(object):
         self.groupBox_12.setGeometry(QRect(10, 130, 181, 131))
         self.verticalLayoutWidget_13 = QWidget(self.groupBox_12)
         self.verticalLayoutWidget_13.setObjectName(u"verticalLayoutWidget_13")
-        self.verticalLayoutWidget_13.setGeometry(QRect(10, 20, 169, 89))
+        self.verticalLayoutWidget_13.setGeometry(QRect(10, 20, 169, 101))
         self.verticalLayout_33 = QVBoxLayout(self.verticalLayoutWidget_13)
         self.verticalLayout_33.setObjectName(u"verticalLayout_33")
         self.verticalLayout_33.setContentsMargins(0, 0, 0, 0)
@@ -140,10 +140,10 @@ class Ui_MainWindow(object):
 
         self.groupBox_13 = QGroupBox(self.tab_setup)
         self.groupBox_13.setObjectName(u"groupBox_13")
-        self.groupBox_13.setGeometry(QRect(210, 130, 131, 131))
+        self.groupBox_13.setGeometry(QRect(210, 130, 181, 131))
         self.verticalLayoutWidget_14 = QWidget(self.groupBox_13)
         self.verticalLayoutWidget_14.setObjectName(u"verticalLayoutWidget_14")
-        self.verticalLayoutWidget_14.setGeometry(QRect(10, 20, 111, 101))
+        self.verticalLayoutWidget_14.setGeometry(QRect(10, 20, 161, 101))
         self.verticalLayout_34 = QVBoxLayout(self.verticalLayoutWidget_14)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.verticalLayout_34.setContentsMargins(0, 0, 0, 0)
@@ -158,10 +158,10 @@ class Ui_MainWindow(object):
 
         self.groupBox_14 = QGroupBox(self.tab_setup)
         self.groupBox_14.setObjectName(u"groupBox_14")
-        self.groupBox_14.setGeometry(QRect(360, 130, 131, 131))
+        self.groupBox_14.setGeometry(QRect(410, 130, 181, 131))
         self.verticalLayoutWidget_8 = QWidget(self.groupBox_14)
         self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 141, 80))
+        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 161, 101))
         self.verticalLayout_17 = QVBoxLayout(self.verticalLayoutWidget_8)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.verticalLayout_17.setContentsMargins(0, 0, 0, 0)
@@ -181,7 +181,7 @@ class Ui_MainWindow(object):
 
         self.groupBox_15 = QGroupBox(self.tab_setup)
         self.groupBox_15.setObjectName(u"groupBox_15")
-        self.groupBox_15.setGeometry(QRect(510, 130, 181, 131))
+        self.groupBox_15.setGeometry(QRect(610, 130, 181, 131))
         self.verticalLayoutWidget_11 = QWidget(self.groupBox_15)
         self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
         self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 106))
@@ -1400,7 +1400,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(0)
         self.option_sword_dungeon_reward.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
