@@ -157,7 +157,7 @@ class Hints:
             stone
             for stone in accessible_stones
             for spot in range(
-                self.dist.max_hints_per_stone[stone]
+                self.dist.hints_per_stone[stone]
                 - len(self.logic.placement.stones[stone])
             )
         ]
