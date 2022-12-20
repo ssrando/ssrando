@@ -64,7 +64,7 @@
      <string/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>5</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -259,7 +259,7 @@
        <rect>
         <x>360</x>
         <y>130</y>
-        <width>161</width>
+        <width>131</width>
         <height>131</height>
        </rect>
       </property>
@@ -271,7 +271,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>142</width>
+         <width>141</width>
          <height>80</height>
         </rect>
        </property>
@@ -309,7 +309,7 @@
      <widget class="QGroupBox" name="groupBox_15">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>510</x>
         <y>130</y>
         <width>181</width>
         <height>131</height>
@@ -324,7 +324,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>132</height>
+         <height>106</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_35">
@@ -1835,7 +1835,8 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>&lt;--</string>
+              <string>Remove
+&lt;--</string>
              </property>
             </widget>
            </item>
@@ -1848,7 +1849,8 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>--&gt;</string>
+              <string>Add
+--&gt;</string>
              </property>
             </widget>
            </item>
@@ -1894,51 +1896,14 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_27">
-         <property name="bottomMargin">
-          <number>0</number>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <item>
-            <widget class="QLabel" name="label_for_option_starting_sword">
-             <property name="text">
-              <string>Starting Sword</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="option_starting_sword"/>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="option_random_starting_item">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Start with Random Progress Item</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_13">
-           <item>
-            <widget class="QLabel" name="label_for_option_et_key_pieces">
-             <property name="text">
-              <string>ET Key Pieces</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="option_et_key_pieces"/>
-           </item>
-          </layout>
-         </item>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_28">
            <item>
@@ -1970,52 +1935,120 @@
              </property>
             </widget>
            </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_29">
            <item>
-            <widget class="QLabel" name="label_for_option_starting_heart_pieces">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_29">
+             <item>
+              <widget class="QLabel" name="label_for_option_starting_heart_pieces">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Heart Pieces</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="option_starting_heart_pieces">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>41</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_current_starting_health">
              <property name="text">
-              <string>Heart Pieces</string>
+              <string>Current Starting Health:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="option_starting_heart_pieces">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+            <widget class="QLabel" name="current_starting_health_counter">
+             <property name="text">
+              <string>6 hearts</string>
              </property>
-             <property name="maximumSize">
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
               <size>
-               <width>41</width>
-               <height>16777215</height>
+               <width>40</width>
+               <height>20</height>
               </size>
              </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_27">
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="label_for_option_starting_sword">
+             <property name="text">
+              <string>Starting Sword</string>
+             </property>
             </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="option_starting_sword"/>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QLabel" name="label_current_starting_health">
-           <property name="text">
-            <string>Current Starting Health:</string>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <item>
+            <widget class="QLabel" name="label_for_option_et_key_pieces">
+             <property name="text">
+              <string>ET Key Pieces</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="option_et_key_pieces"/>
+           </item>
+          </layout>
          </item>
          <item>
-          <widget class="QLabel" name="current_starting_health_counter">
+          <widget class="QCheckBox" name="option_random_starting_item">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
-            <string>6 hearts</string>
+            <string>Start with Random Progress Item</string>
            </property>
           </widget>
          </item>
@@ -2023,6 +2056,9 @@
           <spacer name="horizontalSpacer_3">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
