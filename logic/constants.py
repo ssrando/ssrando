@@ -1,7 +1,4 @@
 from collections import defaultdict
-import json
-from os import listdir
-from paths import RANDO_ROOT_PATH
 from typing import NewType, Dict, Callable
 
 EXTENDED_ITEM_NAME = NewType("EXTENDED_ITEM_NAME", str)
@@ -12,17 +9,9 @@ sep = " - "
 EVERYTHING = EIN("Everything")
 
 NUMBER_OF_HINT_STONES = 16
-HINT_DISTROS_DIRECTORY = RANDO_ROOT_PATH / f"hints/distributions"
 
-hint_distros = [f for f in listdir(HINT_DISTROS_DIRECTORY) if f.endswith("json")]
-max_hints_per_stone = 0
-for distro_filename in hint_distros:
-    with open(HINT_DISTROS_DIRECTORY / distro_filename) as f:
-        hints_per_stone = json.load(f)["hints_per_stone"]
-        if hints_per_stone > max_hints_per_stone:
-            max_hints_per_stone = hints_per_stone
-
-MAX_HINTS = max_hints_per_stone * NUMBER_OF_HINT_STONES
+MAX_HINTS_PER_STONE = 8
+MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
 
 # Logic options, runtime requirements
 
