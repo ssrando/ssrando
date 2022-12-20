@@ -182,10 +182,9 @@ class Rando:
 
         if not self.options["open-et"]:
             starting_items |= {
-                number(KEY_PIECE, i) for i in range(self.options["starting-items"].count(KEY_PIECE))
+                number(KEY_PIECE, i)
+                for i in range(self.options["starting-items"].count(KEY_PIECE))
             }
-        
-        print(starting_items)
 
         for item in self.options["starting-items"]:
             if item.startswith("Progressive"):
@@ -198,8 +197,6 @@ class Rando:
                 continue
             else:
                 starting_items.add(item)
-        
-        print(starting_items)
 
         if self.options["random-starting-item"]:
             possible_random_starting_items = tuple(
