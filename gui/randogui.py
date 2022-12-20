@@ -80,7 +80,7 @@ class RandoGUI(QMainWindow):
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
-            if option["name"] != "Banned Types" and option["name"] != "Seed":
+            if option["name"] != "Seed":
                 ui_name = option.get("ui", None)
                 self.option_map[ui_name] = option
                 if not ui_name:
@@ -340,7 +340,7 @@ class RandoGUI(QMainWindow):
         self.ui.output_folder.setText(str(self.options["output-folder"]))
         self.ui.seed.setText(str(self.options["seed"]))
         for option_key, option in OPTIONS.items():
-            if option["name"] != "Banned Types" and option["name"] != "Seed":
+            if option["name"] != "Seed":
                 ui_name = option.get("ui", None)
                 if not ui_name:
                     continue
@@ -456,8 +456,7 @@ class RandoGUI(QMainWindow):
 
         for option_command, option in OPTIONS.items():
             if (
-                option["name"] != "Banned Types"
-                and option["name"] != "Seed"
+                option["name"] != "Seed"
                 and "Enabled Tricks" not in option["name"]
             ):
                 ui_name = option.get("ui", None)
