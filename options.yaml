@@ -506,7 +506,8 @@
   command: impa-sot-hint
   type: boolean
   default: true
-  help: Enables Impa in the Past to give a hint to the location of the Stone of Trials
+  help: Enables Impa in the Past to give a hint to the location of the Stone of
+        Trials. Does not appear if the Stone of Trials is a starting item.
   ui: option_impa_sot_hint
 - name: Tunic Swap
   command: tunic-swap

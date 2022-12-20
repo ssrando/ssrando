@@ -1715,8 +1715,13 @@ class GamePatcher:
             )
 
     def add_impa_hint(self):
-        item = STONE_OF_TRIALS
-        loc = {v: k for k, v in self.placement_file.item_locations.items()}[item]
+        # Skip over Impa SoT hint if SoT is a starting item.
+        if ITEM_FLAGS[STONE_OF_TRIALS] in self.startitemflags:
+            return
+
+        loc = {v: k for k, v in self.placement_file.item_locations.items()}[
+            STONE_OF_TRIALS
+        ]
         region = self.areas.checks[loc]["hint_region"]
         self.eventpatches["502-CenterFieldBack"].append(
             {

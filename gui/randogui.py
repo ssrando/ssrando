@@ -470,7 +470,7 @@ class RandoGUI(QMainWindow):
         else:
             self.enabled_tricks_model.setStringList([])
             self.disabled_tricks_model.setStringList([])
-        
+
         # Update tricks.
         self.enabled_tricks_model.sort(0)
         self.disabled_tricks_model.sort(0)
@@ -490,7 +490,6 @@ class RandoGUI(QMainWindow):
         )
         self.ui.excluded_locations.setModel(self.excluded_locations_model)
         self.ui.included_locations.setModel(self.included_locations_model)
-
 
         # Update starting items.
         self.randomized_items_model = QStringListModel()
@@ -643,7 +642,7 @@ class RandoGUI(QMainWindow):
         self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
         self.ui.disabled_tricks.model().sort(0)
         self.update_settings()
-    
+
     def exclude_location(self):
         self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
         self.update_settings()

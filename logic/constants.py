@@ -795,11 +795,11 @@ ITEM_STORY_FLAGS = {
     CAWLINS_LETTER: 547,
     SPIRAL_CHARGE: 364,
     SEA_CHART: 271,
-    WATER_SCALE: 206, # Completed Faron Trial
-    FIRESHIELD_EARRINGS: 207, # Completed Eldin Trial
-    CLAWSHOTS: 208, # Completed Lanayru Trial
-    STONE_OF_TRIALS: (210, 209), # Obtained SoT, Completed Hylia's Trial
-    GODDESS_HARP: (9, 140), # Harp, Watched Groose CS
+    WATER_SCALE: 206,  # Completed Faron Trial
+    FIRESHIELD_EARRINGS: 207,  # Completed Eldin Trial
+    CLAWSHOTS: 208,  # Completed Lanayru Trial
+    STONE_OF_TRIALS: (210, 209),  # Obtained SoT, Completed Hylia's Trial
+    GODDESS_HARP: (9, 140),  # Harp, Watched Groose CS
     BALLAD_OF_THE_GODDESS: 194,
     TRIFORCE_OF_COURAGE: 729,
     TRIFORCE_OF_POWER: 728,
@@ -814,12 +814,12 @@ ITEM_STORY_FLAGS = {
         910,
         911,
     ],  # Practice, Goddess, Long, White, MS, TMS
-    PROGRESSIVE_MITTS: [904, 905], # Digging Mitts, Mogma Mitts
-    PROGRESSIVE_BEETLE: [912, 913, 942, 943], # Beetle, Heetle, Queetle, Teetle
-    PROGRESSIVE_WALLET: [915, 916, 917, 918], # Medium, Big, Giant, Tycoon
-    PROGRESSIVE_BOW: [944, 945, 946], # Bow, Iron, Sacred
-    PROGRESSIVE_SLINGSHOT: [947, 948], # Slingshot, Scatershot
-    PROGRESSIVE_BUG_NET: [949, 950], # Bug Net, Big Bug Net
+    PROGRESSIVE_MITTS: [904, 905],  # Digging Mitts, Mogma Mitts
+    PROGRESSIVE_BEETLE: [912, 913, 942, 943],  # Beetle, Heetle, Queetle, Teetle
+    PROGRESSIVE_WALLET: [915, 916, 917, 918],  # Medium, Big, Giant, Tycoon
+    PROGRESSIVE_BOW: [944, 945, 946],  # Bow, Iron, Sacred
+    PROGRESSIVE_SLINGSHOT: [947, 948],  # Slingshot, Scatershot
+    PROGRESSIVE_BUG_NET: [949, 950],  # Bug Net, Big Bug Net
     PROGRESSIVE_POUCH: [931, 932, 932, 932, 932]  # Adventure Pouch, Pouch Expansion * 4
     # SAILCLOTH: 32
 }
