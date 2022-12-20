@@ -682,6 +682,11 @@
     - Goddess Harp
     - Gust Bellows
     - Horned Colossus Beetle
+    - Key Piece
+    - Key Piece
+    - Key Piece
+    - Key Piece
+    - Key Piece
     - Lanayru Song of the Hero Part
     - Life Tree Fruit
     # - Life Tree Seedling
@@ -731,15 +736,6 @@
         Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
         Water Scale, Fireshield Earrings, Goddess Harp and Spiral Charge."
   ui: option_random_starting_item
-- name: Starting ET Key Pieces
-  command: et-key-pieces
-  type: int
-  default: 0
-  min: 0
-  max: 5
-  bits: 3
-  help: How many Earth Temple key pieces you start with.
-  ui: option_et_key_pieces
 - name: Starting Heart Containers
   command: starting-heart-containers
   type: int

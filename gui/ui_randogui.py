@@ -1226,6 +1226,34 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+
+        self.verticalLayout_49.addLayout(self.horizontalLayout_2)
+
+        self.horizontalLayout_27 = QHBoxLayout()
+        self.horizontalLayout_27.setObjectName(u"horizontalLayout_27")
+        self.horizontalLayout_27.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_for_option_starting_sword = QLabel(self.verticalLayoutWidget_20)
+        self.label_for_option_starting_sword.setObjectName(u"label_for_option_starting_sword")
+
+        self.horizontalLayout_5.addWidget(self.label_for_option_starting_sword)
+
+        self.option_starting_sword = QComboBox(self.verticalLayoutWidget_20)
+        self.option_starting_sword.setObjectName(u"option_starting_sword")
+
+        self.horizontalLayout_5.addWidget(self.option_starting_sword)
+
+
+        self.horizontalLayout_27.addLayout(self.horizontalLayout_5)
+
+        self.option_random_starting_item = QCheckBox(self.verticalLayoutWidget_20)
+        self.option_random_starting_item.setObjectName(u"option_random_starting_item")
+        sizePolicy2.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
+        self.option_random_starting_item.setSizePolicy(sizePolicy2)
+
+        self.horizontalLayout_27.addWidget(self.option_random_starting_item)
+
         self.horizontalLayout_28 = QHBoxLayout()
         self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
         self.label_for_option_starting_heart_containers = QLabel(self.verticalLayoutWidget_20)
@@ -1246,6 +1274,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_28.addWidget(self.option_starting_heart_containers)
 
+
+        self.horizontalLayout_27.addLayout(self.horizontalLayout_28)
+
         self.horizontalLayout_29 = QHBoxLayout()
         self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
         self.label_for_option_starting_heart_pieces = QLabel(self.verticalLayoutWidget_20)
@@ -1264,74 +1295,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_29.addWidget(self.option_starting_heart_pieces)
 
 
-        self.horizontalLayout_28.addLayout(self.horizontalLayout_29)
+        self.horizontalLayout_27.addLayout(self.horizontalLayout_29)
 
         self.label_current_starting_health = QLabel(self.verticalLayoutWidget_20)
         self.label_current_starting_health.setObjectName(u"label_current_starting_health")
 
-        self.horizontalLayout_28.addWidget(self.label_current_starting_health)
+        self.horizontalLayout_27.addWidget(self.label_current_starting_health)
 
         self.current_starting_health_counter = QLabel(self.verticalLayoutWidget_20)
         self.current_starting_health_counter.setObjectName(u"current_starting_health_counter")
 
-        self.horizontalLayout_28.addWidget(self.current_starting_health_counter)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_28.addItem(self.horizontalSpacer)
-
-
-        self.horizontalLayout_2.addLayout(self.horizontalLayout_28)
-
-
-        self.verticalLayout_49.addLayout(self.horizontalLayout_2)
-
-        self.line_2 = QFrame(self.verticalLayoutWidget_20)
-        self.line_2.setObjectName(u"line_2")
-        self.line_2.setFrameShape(QFrame.HLine)
-        self.line_2.setFrameShadow(QFrame.Sunken)
-
-        self.verticalLayout_49.addWidget(self.line_2)
-
-        self.horizontalLayout_27 = QHBoxLayout()
-        self.horizontalLayout_27.setObjectName(u"horizontalLayout_27")
-        self.horizontalLayout_27.setContentsMargins(-1, -1, -1, 0)
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.label_for_option_starting_sword = QLabel(self.verticalLayoutWidget_20)
-        self.label_for_option_starting_sword.setObjectName(u"label_for_option_starting_sword")
-
-        self.horizontalLayout_5.addWidget(self.label_for_option_starting_sword)
-
-        self.option_starting_sword = QComboBox(self.verticalLayoutWidget_20)
-        self.option_starting_sword.setObjectName(u"option_starting_sword")
-
-        self.horizontalLayout_5.addWidget(self.option_starting_sword)
-
-
-        self.horizontalLayout_27.addLayout(self.horizontalLayout_5)
-
-        self.horizontalLayout_13 = QHBoxLayout()
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.label_for_option_et_key_pieces = QLabel(self.verticalLayoutWidget_20)
-        self.label_for_option_et_key_pieces.setObjectName(u"label_for_option_et_key_pieces")
-
-        self.horizontalLayout_13.addWidget(self.label_for_option_et_key_pieces)
-
-        self.option_et_key_pieces = QSpinBox(self.verticalLayoutWidget_20)
-        self.option_et_key_pieces.setObjectName(u"option_et_key_pieces")
-
-        self.horizontalLayout_13.addWidget(self.option_et_key_pieces)
-
-
-        self.horizontalLayout_27.addLayout(self.horizontalLayout_13)
-
-        self.option_random_starting_item = QCheckBox(self.verticalLayoutWidget_20)
-        self.option_random_starting_item.setObjectName(u"option_random_starting_item")
-        sizePolicy2.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
-        self.option_random_starting_item.setSizePolicy(sizePolicy2)
-
-        self.horizontalLayout_27.addWidget(self.option_random_starting_item)
+        self.horizontalLayout_27.addWidget(self.current_starting_health_counter)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -1400,7 +1374,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(5)
         self.option_sword_dungeon_reward.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
@@ -1558,13 +1532,12 @@ class Ui_MainWindow(object):
         self.start_with_item.setText(QCoreApplication.translate("MainWindow", u"Add\n"
 "-->", None))
         self.label_starting_items.setText(QCoreApplication.translate("MainWindow", u"Starting Items", None))
+        self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
+        self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
         self.label_for_option_starting_heart_containers.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))
         self.label_for_option_starting_heart_pieces.setText(QCoreApplication.translate("MainWindow", u"Heart Pieces", None))
         self.label_current_starting_health.setText(QCoreApplication.translate("MainWindow", u"Current Starting Health:", None))
         self.current_starting_health_counter.setText(QCoreApplication.translate("MainWindow", u"6 hearts", None))
-        self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
-        self.label_for_option_et_key_pieces.setText(QCoreApplication.translate("MainWindow", u"ET Key Pieces", None))
-        self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))
         self.permalink_label.setText(QCoreApplication.translate("MainWindow", u"Permalink (copy paste to share your settings)", None))
 #if QT_CONFIG(tooltip)
