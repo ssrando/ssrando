@@ -746,6 +746,8 @@ BANNABLE_TYPES = [
 ]
 
 
+# lists are used for progressive items,
+# tuples for setting multiple flags for one item
 ITEM_FLAGS = {
     PROGRESSIVE_BOW: [19, 90, 91],
     PROGRESSIVE_BEETLE: [53, 75, 76, 77],
@@ -787,9 +789,9 @@ ITEM_FLAGS = {
     # SAILCLOTH: 15
 }
 
-HEART_CONTAINER_ITEM_FLAG = 93
-HEART_PIECE_ITEM_FLAG = 94
 
+# lists are used for progressive items,
+# tuples for setting multiple flags for one item
 ITEM_STORY_FLAGS = {
     EMERALD_TABLET: 46,
     RUBY_TABLET: 47,
@@ -828,9 +830,6 @@ ITEM_STORY_FLAGS = {
 }
 
 ITEM_COUNT_FLAGS = {
-    PROGRESSIVE_BOW: 498,
-    BOMB_BAG: 499,
-    PROGRESSIVE_SLINGSHOT: 493,
     EXTRA_WALLET: 508,
     PROGRESSIVE_POUCH: 490,
     GRATITUDE_CRYSTAL_PACK: 502,
@@ -838,10 +837,10 @@ ITEM_COUNT_FLAGS = {
     HEART_PIECE: 489,  # 2 bytes, 487 MSB, 489 LSB
 }
 
-DEFAULT_ITEM_COUNTS = {
-    ITEM_COUNT_FLAGS[PROGRESSIVE_SLINGSHOT]: 20,
-    ITEM_COUNT_FLAGS[PROGRESSIVE_BOW]: 20,
-    ITEM_COUNT_FLAGS[BOMB_BAG]: 10,
+START_AMMO_COUNTS = {
+    PROGRESSIVE_BOW: (498, 20),
+    BOMB_BAG: (499, 10),
+    PROGRESSIVE_SLINGSHOT: (493, 20),
 }
 
 RANDOM_STARTING_ITEMS = [
