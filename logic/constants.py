@@ -8,7 +8,10 @@ sep = " - "
 
 EVERYTHING = EIN("Everything")
 
-MAX_HINTS = 32
+NUMBER_OF_HINT_STONES = 16
+
+MAX_HINTS_PER_STONE = 8
+MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
 
 # Logic options, runtime requirements
 

@@ -1,7 +1,8 @@
 {
+  "hints_per_stone": 2,
   "banned_stones": [
-    "Shipyard - Gossip Stone",
-    "Lanayru - Temple of Time - Gossip Stone:"
+    "Lanayru Sand Sea - Gossip Stone in Shipyard",
+    "Temple of Time - Gossip Stone in Temple of Time Area:"
   ],
   "added_locations": [
     {"location": "Batreaux's House - 10 Crystals", "type": "always"}
