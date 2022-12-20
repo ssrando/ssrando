@@ -201,7 +201,7 @@ class Rando:
             else:
                 starting_items.add(self.rng.choice(possible_random_starting_items))
 
-        self.placement = self.placement.add_starting_items(starting_items)
+        self.placement.add_starting_items(starting_items)
 
     def ban_the_banned(self):
 
