@@ -2273,6 +2273,26 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       params1: 0xFFF0FF18
+  - name: Shiekah Stone in Eldin
+    type: oarcadd
+    destlayer: 0
+    oarc: ShiekahStone
+  - name: Add Shiekah Stone to Eldin
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFFFF
+      params2: 0xFFDFFFFF
+      posx: 1962.6357421875
+      posy: 868.7970581054688
+      posz: 6089.8759765625
+      anglex: 0
+      angley: 25486
+      anglez: 30506
+      id: 0xFC84
+      name: HrpHint
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
