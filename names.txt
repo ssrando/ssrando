@@ -107,7 +107,6 @@ Bellows
 Harp
 Triforce
 Tricycle
-KolokChamp
 Fi
 Gratitude
 Crystal
@@ -120,14 +119,7 @@ Bamboo
 Courage
 Wisdom
 Power
-KolokPause
-KolokToes
 Sandship
-Sadship
 Skyview
-Ancient
 Cistern
 Sanctuary
-Madtones
-Radtones
-Sadtones
