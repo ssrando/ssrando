@@ -204,74 +204,6 @@ mtlr r0
 addi r1, r1, 16
 blr
 
-; function that processes start story-, scene- and itemsflags
-.global processStartflags
-processStartflags:
-stwu r1, -16(r1)
-mflr r0
-stw r0, 20(r1)
-stw r31, 12(r1)
-stw r30, 8(r1)
-lwz r3, FILE_MANAGER@sda21(r13)
-addis r3, r3, 1
-li r0, 1
-stb r0, -22450(r3)
-lis r31, 0x804e
-ori r31, r31, 0xe1b8
-; storyflags
-b storyflag_loop_cond
-storyflag_loop_body:
-lwz r3, STORYFLAG_MANAGER@sda21(r13)
-bl FlagManager__setFlagTo1
-storyflag_loop_cond:
-lhz r4, 0(r31)
-addi r31, r31, 2
-cmplwi r4, 0xFFFF
-bne storyflag_loop_body
-; itemflags
-b itemflag_loop_cond
-itemflag_loop_body:
-lwz r3, ITEMFLAG_MANAGER@sda21(r13)
-; 2 byte entries have the following form: 7 bytes count, 9 bytes flagindex
-; so count = val >> 9, flag = val & 0x1FF
-srwi r5, r4, 9
-rlwinm r4, r4, 0, 23, 31 ; r4 &= 0x1FF
-bl FlagManager__setFlagOrCounter
-itemflag_loop_cond:
-lhz r4, 0(r31)
-addi r31, r31, 2
-cmplwi r4, 0xFFFF
-bne itemflag_loop_body
-; sceneflags
-b sceneflag_loop_cond
-sceneflag_loop_body:
-rlwinm r3,r4,0,0xff
-srwi r4,r4,8
-bl setSceneflagForArea
-sceneflag_loop_cond:
-lhz r4, 0(r31)
-addi r31, r31, 2
-cmplwi r4, 0xFFFF
-bne sceneflag_loop_body
-lwz r3,-0x4040(r13) ; ITEMFLAG_MANAGER
-li r4, 501 ; counter for rupees
-lhz r5, 0(r31)
-bl FlagManager__setFlagOrCounter
-lwz r5,-0x4444(r13) ; FILE_MANAGER
-lhz r3, 2(r31)
-sth r3, 0x530A(r5) ; current health capacity file A
-addis r3, r5, 1
-sth r3, 0x530D(r5) ; Fill player health to match capacity
-addis r3, r5, 1
-li r0, 0
-stb r0, -22450(r3)
-lwz r31, 12(r1)
-lwz r30, 8(r1)
-lwz r0, 20(r1)
-mtlr r0
-addi r1, r1, 16
-blr
-
 ; function, that only actually loads the keyboard arcs if the following conditions are met:
 ; 1. you are in BiT (checked with Link's actor params)
 ; 2. All files are not empty
@@ -315,6 +247,10 @@ beqlr
 li r3, 154 ; storyflag for SSH timeshift stone being active
 li r4, 0 ; storyflag will be unset
 b setStoryflagToValue
+
+; space to declare all the functions defined in the
+; custom-functions rust project
+.global process_startflags
 
 .close
 

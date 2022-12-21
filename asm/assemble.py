@@ -362,12 +362,14 @@ try:
                     )
 
             for org_offset_or_symbol, temp_asm in code_chunks_for_file_sorted:
+                is_custom_function = False
                 if isinstance(org_offset_or_symbol, int):
                     org_offset = org_offset_or_symbol
                 else:
                     org_symbol = org_offset_or_symbol
                     free_space_match = re.search(r"@FreeSpace_\d+", org_symbol)
                     if free_space_match:
+                        is_custom_function = True
                         org_offset = next_free_space_offsets[file_path]
                     else:
                         if org_symbol not in custom_symbols_for_file:
@@ -424,12 +426,23 @@ try:
                     "-o",
                     bin_name,
                 ]
+                # add custom functions from rust
+                if is_custom_function and file_path == "main.dol":
+                    result = call(
+                        ["cargo", "build", "--release"], cwd="./custom-functions"
+                    )
+                    if result != 0:
+                        raise Exception("building rust functions failed")
+                    command.append(
+                        "./custom-functions/target/powerpc-unknown-eabi/release/libcustom_functions.a"
+                    )
                 if file_path.endswith(".rel"):
                     # Output an ELF with relocations for RELs.
                     command += ["--relocatable"]
                 else:
                     # For main, just output the raw binary code, not an ELF.
                     command += ["--oformat", "binary"]
+                    pass
                 print(" ".join(command))
                 print()
                 result = call(command)
@@ -448,8 +461,10 @@ try:
                             if not line:
                                 break
                             match = re.search(
-                                r" +0x(?:00000000)?([0-9a-f]{8}) +(\S+)", line
+                                r" +0x(?:00000000)?([0-9a-f]{8}) +([a-zA-Z]\S+)", line
                             )
+                            if not match:
+                                continue
                             symbol_address = int(match.group(1), 16)
                             symbol_name = match.group(2)
                             custom_symbols_for_file[symbol_name] = symbol_address

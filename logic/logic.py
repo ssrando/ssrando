@@ -308,7 +308,7 @@ class Logic:
 
         for loc, req in logic_settings.runtime_requirements.items():
             it = EXTENDED_ITEM[loc]
-            assert self.opaque[it]
+            # assert self.opaque[it]
             self.requirements[it] |= self.ban_if(loc, req)
             if it != EVERYTHING_BIT:
                 self.opaque[it] = False

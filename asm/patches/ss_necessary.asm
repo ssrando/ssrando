@@ -125,7 +125,7 @@ nop
 
 ; after the function that starts the new file, also process the startflags
 .org 0x801bb9bc
-b processStartflags
+b process_startflags
 
 ; always allocate keyboard arcs to the end of the heap, to make sure
 ; faron BiT doesn't crash
