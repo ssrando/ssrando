@@ -189,8 +189,6 @@ class RandoGUI(QMainWindow):
         self.enable_trick_interface()
 
         # hide supporting elements
-        getattr(self.ui, "tabWidget").removeTab(5)
-        getattr(self.ui, "tabWidget").removeTab(5)
         getattr(self.ui, "option_plando").setVisible(False)
         getattr(self.ui, "plando_file").setVisible(False)
         getattr(self.ui, "plando_file_browse").setVisible(False)
@@ -200,7 +198,6 @@ class RandoGUI(QMainWindow):
         self.ui.randomize_button.clicked.connect(self.randomize)
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
-        self.ui.progression_goddess.clicked.connect(self.goddess_cubes_toggled)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.update_ui_for_settings()
         self.update_settings()
@@ -671,16 +668,11 @@ class RandoGUI(QMainWindow):
         if event.type() == QEvent.Enter:
             ui_name = target.objectName()
 
-            if ui_name.startswith("progression_"):
-                ui_name = ui_name[len("progression_") :]
-                self.set_option_description(self.location_descriptions[ui_name])
+            if ui_name.startswith("label_for_"):
+                ui_name = ui_name[len("label_for_") :]
 
-            else:
-                if ui_name.startswith("label_for_"):
-                    ui_name = ui_name[len("label_for_") :]
-
-                option = self.option_map[ui_name]
-                self.set_option_description(option["help"])
+            option = self.option_map[ui_name]
+            self.set_option_description(option["help"])
 
             return True
         elif event.type() == QEvent.Leave:
@@ -709,15 +701,6 @@ class RandoGUI(QMainWindow):
             print(e)
         self.update_ui_for_settings()
 
-    def goddess_cubes_toggled(self):
-        enabled = self.ui.progression_goddess.isChecked()
-        self.ui.progression_faron_goddess.setEnabled(enabled)
-        self.ui.progression_eldin_goddess.setEnabled(enabled)
-        self.ui.progression_lanayru_goddess.setEnabled(enabled)
-        self.ui.progression_floria_goddess.setEnabled(enabled)
-        self.ui.progression_summit_goddess.setEnabled(enabled)
-        self.ui.progression_sand_sea_goddess.setEnabled(enabled)
-
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
 
@@ -728,28 +711,28 @@ def run_main_gui(areas: Areas, options: Options):
     print(QStyleFactory.keys())
 
     app.setStyle(QStyleFactory.create("fusion"))
-    darkPalette = QPalette()
-    darkColor = QColor(45, 45, 45)
-    disabledColor = QColor(127, 127, 127)
-    darkPalette.setColor(QPalette.Window, darkColor)
-    darkPalette.setColor(QPalette.WindowText, Qt.white)
-    darkPalette.setColor(QPalette.Base, QColor(18, 18, 18))
-    darkPalette.setColor(QPalette.AlternateBase, darkColor)
-    darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
-    darkPalette.setColor(QPalette.ToolTipText, Qt.white)
-    darkPalette.setColor(QPalette.Text, Qt.white)
-    darkPalette.setColor(QPalette.Disabled, QPalette.Text, disabledColor)
-    darkPalette.setColor(QPalette.Button, darkColor)
-    darkPalette.setColor(QPalette.ButtonText, Qt.white)
-    darkPalette.setColor(QPalette.Disabled, QPalette.ButtonText, disabledColor)
-    darkPalette.setColor(QPalette.BrightText, Qt.red)
-    darkPalette.setColor(QPalette.Link, QColor(42, 130, 218))
+    # darkPalette = QPalette()
+    # darkColor = QColor(45, 45, 45)
+    # disabledColor = QColor(127, 127, 127)
+    # darkPalette.setColor(QPalette.Window, darkColor)
+    # darkPalette.setColor(QPalette.WindowText, Qt.white)
+    # darkPalette.setColor(QPalette.Base, QColor(18, 18, 18))
+    # darkPalette.setColor(QPalette.AlternateBase, darkColor)
+    # darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
+    # darkPalette.setColor(QPalette.ToolTipText, Qt.white)
+    # darkPalette.setColor(QPalette.Text, Qt.white)
+    # darkPalette.setColor(QPalette.Disabled, QPalette.Text, disabledColor)
+    # darkPalette.setColor(QPalette.Button, darkColor)
+    # darkPalette.setColor(QPalette.ButtonText, Qt.white)
+    # darkPalette.setColor(QPalette.Disabled, QPalette.ButtonText, disabledColor)
+    # darkPalette.setColor(QPalette.BrightText, Qt.red)
+    # darkPalette.setColor(QPalette.Link, QColor(42, 130, 218))
 
-    darkPalette.setColor(QPalette.Highlight, QColor(42, 130, 218))
-    darkPalette.setColor(QPalette.HighlightedText, Qt.black)
-    darkPalette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabledColor)
+    # darkPalette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+    # darkPalette.setColor(QPalette.HighlightedText, Qt.black)
+    # darkPalette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabledColor)
 
-    app.setPalette(darkPalette)
+    # app.setPalette(darkPalette)
     app.setStyleSheet(
         "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }"
     )
