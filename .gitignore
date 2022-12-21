@@ -182,3 +182,6 @@ settings.txt
 presets.txt
 
 custom-music/
+
+# temp asm
+*.s

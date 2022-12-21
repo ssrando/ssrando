@@ -3,6 +3,8 @@
 
 use core::{ffi::c_void, ptr::slice_from_raw_parts};
 
+mod filemanager_gen;
+
 #[repr(C)]
 struct SpawnStruct {
     name: [u8; 32],
@@ -18,18 +20,13 @@ struct SpawnStruct {
     field10_0x2a: u8,
     field11_0x2b: u8,
 }
-#[repr(C)]
-struct FileManager {
-    _0: [u8; 0xa84e],
-    anticommit_flag: u8,
-}
 
 extern "C" {
     static SPAWN_SLAVE: *mut SpawnStruct;
     fn setStoryflagToValue(flag: u16, value: u16);
     static SCENEFLAG_MANAGER: *mut c_void;
     fn SceneflagManager__setFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16);
-    static FILE_MANAGER: *mut FileManager;
+    static FILE_MANAGER: *mut filemanager_gen::FileManager;
     fn FlagManager__setFlagTo1(mgr: *mut c_void, flag: u16);
     fn FlagManager__setFlagOrCounter(mgr: *mut c_void, flag: u16, value: u16);
     static ITEMFLAG_MANAGER: *mut c_void;
@@ -53,7 +50,7 @@ fn itemflag_set_to_value(flag: u16, value: u16) {
 }
 
 /// A basic iterator over some borrowed memory
-/// useful to read consecutive halfwordss
+/// useful to read consecutive halfwords
 struct MemItr<'a>(&'a [u8]);
 
 impl<'a> MemItr<'a> {
@@ -76,7 +73,7 @@ impl<'a> MemItr<'a> {
 // IMPORTANT: when adding functions here that need to get called from the game, add `#[no_mangle]`
 // and add a .global *symbolname* to custom_funcs.asm
 #[no_mangle]
-pub fn processStartflags() {
+pub fn process_startflags() {
     unsafe { (*FILE_MANAGER).anticommit_flag = 1 };
     let mut flag_mem = MemItr(unsafe { &*slice_from_raw_parts(0x804ee1b8 as *const u8, 512) });
     // storyflags
@@ -104,12 +101,10 @@ pub fn processStartflags() {
         501, /* rupee counter */
         flag_mem.next_u16().unwrap_or_default(),
     );
-    unsafe {
-        *(((FILE_MANAGER as usize) + 0x530A) as *mut u16) = flag_mem.next_u16().unwrap_or_default()
-    };
-    unsafe {
-        *(((FILE_MANAGER as usize) + 0x530D) as *mut u16) = flag_mem.next_u16().unwrap_or_default()
-    };
+    // heart capacity
+    let health_capacity = flag_mem.next_u16().unwrap_or_default();
+    unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity };
+    unsafe { (*FILE_MANAGER).FA.current_health = health_capacity };
     unsafe { (*FILE_MANAGER).anticommit_flag = 0 };
 }
 

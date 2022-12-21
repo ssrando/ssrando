@@ -250,7 +250,7 @@ b setStoryflagToValue
 
 ; space to declare all the functions defined in the
 ; custom-functions rust project
-.global processStartflags
+.global process_startflags
 
 .close
 
