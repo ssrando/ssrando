@@ -45,7 +45,7 @@ class Ui_MainWindow(object):
         self.option_description = QLabel(self.centralwidget)
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
-        self.option_description.setGeometry(QRect(10, 570, 931, 31))
+        self.option_description.setGeometry(QRect(10, 570, 1031, 31))
         self.option_description.setWordWrap(True)
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
@@ -595,31 +595,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_40.addLayout(self.vlay_batreaux)
 
-        self.option_peatrice = QCheckBox(self.verticalLayoutWidget_17)
-        self.option_peatrice.setObjectName(u"option_peatrice")
-
-        self.verticalLayout_40.addWidget(self.option_peatrice)
-
-        self.option_cubes = QCheckBox(self.verticalLayoutWidget_17)
-        self.option_cubes.setObjectName(u"option_cubes")
-
-        self.verticalLayout_40.addWidget(self.option_cubes)
-
-        self.vlay_minigames = QVBoxLayout()
-        self.vlay_minigames.setObjectName(u"vlay_minigames")
-        self.label_for_option_minigames = QLabel(self.verticalLayoutWidget_17)
-        self.label_for_option_minigames.setObjectName(u"label_for_option_minigames")
-
-        self.vlay_minigames.addWidget(self.label_for_option_minigames)
-
-        self.option_minigames = QComboBox(self.verticalLayoutWidget_17)
-        self.option_minigames.setObjectName(u"option_minigames")
-
-        self.vlay_minigames.addWidget(self.option_minigames)
-
-
-        self.verticalLayout_40.addLayout(self.vlay_minigames)
-
         self.vlay_beedle = QVBoxLayout()
         self.vlay_beedle.setObjectName(u"vlay_beedle")
         self.label_10 = QLabel(self.verticalLayoutWidget_17)
@@ -649,11 +624,6 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_40.addLayout(self.vlay_rupeesanity)
-
-        self.option_soth = QCheckBox(self.verticalLayoutWidget_17)
-        self.option_soth.setObjectName(u"option_soth")
-
-        self.verticalLayout_40.addWidget(self.option_soth)
 
         self.vspace_shuffles = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1205,7 +1175,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1275,13 +1245,9 @@ class Ui_MainWindow(object):
         self.option_randomize_entrances.setCurrentText("")
         self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
         self.groupBox_18.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
-        self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Batreaux", None))
-        self.option_peatrice.setText(QCoreApplication.translate("MainWindow", u"Peatrice", None))
-        self.option_cubes.setText(QCoreApplication.translate("MainWindow", u"Goddess Cubes", None))
-        self.label_for_option_minigames.setText(QCoreApplication.translate("MainWindow", u"Minigames", None))
+        self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Maximum Batreaux Reward", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
         self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
-        self.option_soth.setText(QCoreApplication.translate("MainWindow", u"Song of the Hero Quest", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_randomization_settings), QCoreApplication.translate("MainWindow", u"Randomization Settings", None))
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))

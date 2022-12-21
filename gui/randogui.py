@@ -707,10 +707,8 @@ class RandoGUI(QMainWindow):
 
 def run_main_gui(areas: Areas, options: Options):
     app = QApplication([])
-
-    print(QStyleFactory.keys())
-
     app.setStyle(QStyleFactory.create("fusion"))
+    
     # darkPalette = QPalette()
     # darkColor = QColor(45, 45, 45)
     # disabledColor = QColor(127, 127, 127)

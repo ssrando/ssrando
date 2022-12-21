@@ -40,7 +40,7 @@
      <rect>
       <x>10</x>
       <y>570</y>
-      <width>931</width>
+      <width>1031</width>
       <height>31</height>
      </rect>
     </property>
@@ -67,7 +67,7 @@
      <number>-6</number>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -921,40 +921,12 @@
           <item>
            <widget class="QLabel" name="label_for_option_max_batreaux_reward">
             <property name="text">
-             <string>Batreaux</string>
+             <string>Maximum Batreaux Reward</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QComboBox" name="option_max_batreaux_reward"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_peatrice">
-          <property name="text">
-           <string>Peatrice</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_cubes">
-          <property name="text">
-           <string>Goddess Cubes</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="vlay_minigames">
-          <item>
-           <widget class="QLabel" name="label_for_option_minigames">
-            <property name="text">
-             <string>Minigames</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="option_minigames"/>
           </item>
          </layout>
         </item>
@@ -985,13 +957,6 @@
            <widget class="QComboBox" name="option_rupeesanity"/>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_soth">
-          <property name="text">
-           <string>Song of the Hero Quest</string>
-          </property>
-         </widget>
         </item>
         <item>
          <spacer name="vspace_shuffles">
