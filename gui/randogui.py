@@ -451,10 +451,7 @@ class RandoGUI(QMainWindow):
                 pass
 
         for option_command, option in OPTIONS.items():
-            if (
-                option["name"] != "Seed"
-                and "Enabled Tricks" not in option["name"]
-            ):
+            if option["name"] != "Seed" and "Enabled Tricks" not in option["name"]:
                 ui_name = option.get("ui", None)
                 if not ui_name:
                     continue
@@ -708,7 +705,7 @@ class RandoGUI(QMainWindow):
 def run_main_gui(areas: Areas, options: Options):
     app = QApplication([])
     app.setStyle(QStyleFactory.create("fusion"))
-    
+
     # darkPalette = QPalette()
     # darkColor = QColor(45, 45, 45)
     # disabledColor = QColor(127, 127, 127)

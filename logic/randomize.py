@@ -227,8 +227,13 @@ class Rando:
         maybe_req = lambda b: banned_req if b else nothing_req
         self.ban_options = {
             BEEDLE_STALL_ACCESS: maybe_req(self.options["shop-mode"] == "Always Junk"),
-            MEDIUM_PURCHASES: maybe_req(self.options["shop-mode"] == "Randomized - Cheap"),
-            EXPENSIVE_PURCHASES: maybe_req(self.options["shop-mode"] == "Randomized - Cheap" or self.options["shop-mode"] == "Randomized - Medium"),
+            MEDIUM_PURCHASES: maybe_req(
+                self.options["shop-mode"] == "Randomized - Cheap"
+            ),
+            EXPENSIVE_PURCHASES: maybe_req(
+                self.options["shop-mode"] == "Randomized - Cheap"
+                or self.options["shop-mode"] == "Randomized - Medium"
+            ),
         } | {
             MAY_GET_n_CRYSTALS(c): (maybe_req(c > self.options["max-batreaux-reward"]))
             for c in CRYSTAL_THRESHOLDS
