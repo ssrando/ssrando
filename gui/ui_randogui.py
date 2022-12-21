@@ -401,7 +401,7 @@ class Ui_MainWindow(object):
         self.box_dungeons.setGeometry(QRect(820, 0, 191, 501))
         self.verticalLayoutWidget_7 = QWidget(self.box_dungeons)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 181, 471))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 171, 471))
         self.vlay_dungeons = QVBoxLayout(self.verticalLayoutWidget_7)
         self.vlay_dungeons.setObjectName(u"vlay_dungeons")
         self.vlay_dungeons.setContentsMargins(0, 0, 0, 0)
@@ -1170,7 +1170,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
