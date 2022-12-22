@@ -7,4 +7,4 @@ pushd custom-functions
 cargo build --release
 popd
 
-${DEVKITPPC}/bin/powerpc-eabi-objdump -dr ./custom-functions/target/powerpc-unknown-eabi/release/libcustom_functions.a > out.s
+${DEVKITPPC}/bin/powerpc-eabi-objdump -Dr ./custom-functions/target/powerpc-unknown-eabi/release/libcustom_functions.a > out.s
