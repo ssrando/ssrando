@@ -95,6 +95,7 @@ global:
       - 37 # Panning cutscene showing boko camp and clawshots chest watched
       - 34 # Panning cutscene showing peahots watched
       - 63 # Panning cutscene showing pouch chest watched
+      - 60 # Panning cutscene showing sword
       - 61 # Panning cutscene showing summit platforms in lava watched
       - 52 # Panning cutscene showing camp after wind elevator watched
       - 51 # Panning cutscene showing bombs chest watched
@@ -2351,6 +2352,74 @@ F202: # Boko Base
       layer: 1
       room: 2
       entrance: 0 # New Boko Base -> Eldin entrance
+  - name: Remove Plats Map Cutscene 1
+    type: objdelete
+    id: 0x017C
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove Plats Map Cutscene 2
+    type: objdelete
+    id: 0x017B
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove Plats Map Cutscene 1
+    type: objdelete
+    id: 0x017E
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing Peahot behind bridge
+    type: objdelete
+    id: 0x0099
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene after clawshot chest
+    type: objdelete
+    id: 0x0098
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing Peahots (near clawshot chest)
+    type: objdelete
+    id: 0x0095
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing gust bellows chest
+    type: objdelete
+    id: 0x0097
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing clawshot chest
+    type: objdelete
+    id: 0x0096
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing bomb chest
+    type: objdelete
+    id: 0x0051
+    layer: 0
+    room: 4
+    objtype: STAG
+  - name: Remove panning Cutscene showing boko camp outside ET
+    type: objdelete
+    id: 0x0050
+    layer: 0
+    room: 4
+    objtype: STAG
+F221: # Fire Dragon Room
+  - name: Remove Eldin Soth from CS
+    type: objpatch
+    room: 0
+    index: 0
+    objtype: EVNT
+    object:
+      item: -1 # No Faron Soth anymore
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
@@ -2465,6 +2534,25 @@ F201_1: # Inside Volcano
     destlayer: 0
     room: 0
     objtype: OBJS
+F201_2: # Boko Base Volcano Summit
+  - name: Remove panning Cutscene showing pouch chest
+    type: objdelete
+    id: 0xFC4B
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove panning Cutscene showing sword
+    type: objdelete
+    id: 0xFC46
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove panning Cutscene showing platforms in lava
+    type: objdelete
+    id: 0xFC49
+    layer: 0
+    room: 0
+    objtype: STAG
 F201_3: # FS entrance
   - name: Layer override
     type: layeroverride

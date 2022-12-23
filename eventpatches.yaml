@@ -1985,7 +1985,7 @@
       param3: 10 # Triggers an exit
   - name: Go to Eldin SotH item
     type: flowpatch
-    index: 30
+    index: 27
     flow:
       next: Give item after Eldin SotH CS
   - name: Give item after Eldin SotH CS
@@ -1995,13 +1995,8 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: 57
-      param3: 9
-  - name: Don't set Eldin SotH story flag
-    type: flowpatch
-    index: 27
-    flow:
       next: 29
+      param3: 9
 399-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
