@@ -81,6 +81,19 @@ DEFAULT_SCEN = OrderedDict(
     saveprompt=0,
 )
 
+DEFAULT_PLY = OrderedDict(
+    storyflag=0,
+    play_cutscene=-1,
+    byte4=-1,
+    posx=0,
+    posy=0,
+    posz=0,
+    anglex=0,
+    angley=0,
+    anglez=0,
+    entrance_id=6,
+)
+
 DEFAULT_AREA = OrderedDict(
     posx=0,
     posy=0,
@@ -2042,6 +2055,8 @@ class GamePatcher:
                 new_obj = DEFAULT_OBJ.copy()
             elif objtype == "SCEN":
                 new_obj = DEFAULT_SCEN.copy()
+            elif objtype == "PLY ":
+                new_obj = DEFAULT_PLY.copy()
             elif objtype == "AREA":
                 new_obj = DEFAULT_AREA.copy()
             else:

@@ -2319,6 +2319,22 @@ F200: # Eldin main area
       layer: 1
       room: 1 # 0 = cutscene + no items; 1 = no cutscene + keep items
       entrance: 0 # New Eldin -> Boko Base sky entrance
+  - name: Boko Base Shiekah Stone Coords
+    type: objadd
+    index: 7
+    room: 2
+    objtype: PLY
+    object:
+      storyflag: 2047
+      play_cutscene: -1
+      byte4: -1
+      posx: 2097.1181640625
+      posy: 812.0973510742188
+      posz: 5897.47314453125
+      anglex: 0
+      angley: 58255
+      anglez: 0
+      entrance_id: 8
 F202: # Boko Base
   - name: Remove Shiekah Stone from Boko Base
     type: objdelete
@@ -2351,7 +2367,7 @@ F202: # Boko Base
       name: F200
       layer: 1
       room: 2
-      entrance: 0 # New Boko Base -> Eldin entrance
+      entrance: 8 # New Boko Base -> Eldin entrance
   - name: Remove Plats Map Cutscene 1
     type: objdelete
     id: 0x017C
@@ -2435,7 +2451,7 @@ F221: # Fire Dragon Room
       name: F200
       layer: 1
       room: 2
-      entrance: 0
+      entrance: 8
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
