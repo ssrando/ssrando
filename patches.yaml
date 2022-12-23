@@ -2310,7 +2310,7 @@ F200: # Eldin main area
       name: HrpHint
   - name: Exit from Eldin Shiekah Stone to Boko Base
     type: objadd
-    index: 1
+    index: 0
     room: 2
     objtype: SCEN
     object:
@@ -2318,6 +2318,39 @@ F200: # Eldin main area
       layer: 1
       room: 1 # 0 = cutscene + no items; 1 = no cutscene + keep items
       entrance: 0 # New Eldin -> Boko Base sky entrance
+F202: # Boko Base
+  - name: Remove Shiekah Stone from Boko Base
+    type: objdelete
+    id: 0xFC84
+    layer: 0
+    room: 2
+    objtype: OBJ
+  - name: Add Shiekah Stone in Boko Base to Prison
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFFFF
+      params2: 0xFFDFFFFF
+      posx: 380
+      posy: 700
+      posz: 10950
+      anglex: 0
+      angley: 37000
+      anglez: 30502
+      id: 0xFC84
+      name: HrpHint
+  - name: Exit from Boko Base Shiekah Stone to Eldin
+    type: objadd
+    index: 0
+    room: 1
+    objtype: SCEN
+    object:
+      name: F200
+      layer: 1
+      room: 2
+      entrance: 0 # New Boko Base -> Eldin entrance
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
