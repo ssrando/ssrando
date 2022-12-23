@@ -2412,6 +2412,12 @@ F202: # Boko Base
     layer: 0
     room: 4
     objtype: STAG
+  - name: Remove Plats talking Cutscene near hot cave
+    type: objdelete
+    id: 0xFC1F
+    layer: 1
+    room: 5
+    objtype: OBJ
 F221: # Fire Dragon Room
   - name: Remove Eldin Soth from CS
     type: objpatch
@@ -2420,6 +2426,16 @@ F221: # Fire Dragon Room
     objtype: EVNT
     object:
       item: -1 # No Faron Soth anymore
+  - name: Exit from Boko Base Dragon to Eldin
+    type: objadd
+    index: 0
+    room: 0
+    objtype: SCEN
+    object:
+      name: F200
+      layer: 1
+      room: 2
+      entrance: 0
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
