@@ -228,18 +228,64 @@ Volcano Summit:
 Boko Base:
   toplevel-alias: Boko Base
   hint-region: Boko Base
+  
+  Prison:
+    exits:
+      Entrance: Nothing
+      Exit: Nothing
+      Volcano East: Mogma Mitts
+    locations:
+      Plats' Gift: Nothing
+  
+  Volcano East:
+    exits:
+      Prison: Mogma Mitts
+      Before Drawbridge: Nothing
+    locations:
+      Chest near Bone Bridge: Can bypass Boko Base Watch Tower | Mogma Mitts | Gust Bellows
+      Chest on Cliff: (Can bypass Boko Base Watch Tower | Mogma Mitts) & Gust Bellows
+      Goddess Cube near Mogma Turf Entrance: Goddess Sword
+  
+  Before Drawbridge:
+    exits:
+      Volcano East: Nothing
+      After Drawbridge: Whip & Clawshots
+    locations:
+      Chest near Drawbridge: Clawshots | Can bypass Boko Base Watch Tower
 
-  exits:
-    Entrance: Nothing
-    Exit: Nothing
-  locations:
-    # Plats' Gift: Nothing
-    # Chest near Bone Bridge: Mogma Mitts
-    # Chest on Cliff: Mogma Mitts & Gust Bellows
-    # Chest near Drawbridge: Mogma Mitts & Gust Bellows
-    # Chest east of Earth Temple Entrance: Mogma Mitts & Gust Bellows & Clawshots & Whip
-    # Chest west of Earth Temple Entrance: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot
-    # First Chest in Volcano Summit: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot & Bomb Bag
-    # Raised Chest in Volcano Summit: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot & Bomb Bag
-    # Chest in Volcano Summit Alcove: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot & Bomb Bag & Sword
-    # Fire Dragon's Reward: Mogma Mitts & Gust Bellows & Clawshots & Whip & Slingshot & Bomb Bag & Sword & (Bow || Beetle)
+  After Drawbridge:
+    exits:
+      Before Drawbridge: Clawshots
+      Volcano East: Nothing
+      Outside Earth Temple: Nothing
+  
+  Outside Earth Temple:
+    exits:
+      Hot Cave: Nothing
+    locations:
+      Chest east of Earth Temple Entrance: Nothing
+      Goddess Cube East of Earth Temple Entrance: Goddess Sword
+      Chest west of Earth Temple Entrance: (Slingshot | Bow | Bomb Bag | Goddess Sword) & Can bypass Boko Base Watch Tower & Mogma Mitts
+      Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can bypass Boko Base Watch Tower & Mogma Mitts
+  
+  Hot Cave:
+    exits:
+      After Drawbridge: Fireshield Earrings & Bomb Bag
+      Boko Base Summit: Fireshield Earrings & Bomb Bag
+  
+  Boko Base Summit:
+    exits:
+      Hot Cave: Fireshield Earrings
+      Fire Dragon's Lair: Fireshield Earrings
+    locations:
+      First Chest in Volcano Summit: Fireshield Earrings
+      Raised Chest in Volcano Summit: Fireshield Earrings
+      Chest in Volcano Summit Alcove: Fireshield Earrings & Practice Sword
+      Goddess Cube inside Volcano Summit: Fireshield Earrings & Long Range Skyward Strike
+  
+  Fire Dragon's Lair:
+    exits:
+      Boko Base Summit: Nothing
+      Volcano - East: Fire Dragon's Reward
+    locations:
+      Fire Dragon's Reward: Bow | Beetle
