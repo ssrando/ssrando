@@ -1949,6 +1949,11 @@
       param2: 3 # item
       next: 8
       param3: 9
+  - name: Shorten Plats text in hot cave
+    type: flowpatch
+    index: 25
+    flow:
+      next: 36
   - name: Go to Eldin SotH item
     type: flowpatch
     index: 28
