@@ -153,7 +153,7 @@ Sword:
   Practice Sword
 
 Long Range Skyward Strike:
-  (Goddess Sword & Option "hero-mode" Enabled) | True Master Sword
+  (Goddess Sword & Option "upgraded-skyward-strike" Enabled) | True Master Sword
 
 Damaging Item:
   Sword | Bomb Bag | Bow
@@ -1773,8 +1773,8 @@ Can Beat Scaldera:
   (
     Earth Temple - Bomb Flower Scaldera Trick &
     (
-      (Goddess Sword & Option "hero-mode" Enabled) |
-      (Goddess Longsword & Option "hero-mode" Enabled) |
+      (Goddess Sword & Option "upgraded-skyward-strike" Enabled) |
+      (Goddess Longsword & Option "upgraded-skyward-strike" Enabled) |
       Master Sword
     )
   )
