@@ -1,5 +1,9 @@
 allowed-time-of-day: DayOnly
 
+macros:
+  Can Survive Hot Cave: Nonlethal Hot Cave | Fireshield Earrings
+  # Hotcave is nonlethal if it deals less than six hearts (damage multiplier is less than 12)
+
 Volcano:
   toplevel-alias: Eldin Volcano
   hint-region: Eldin Volcano
@@ -96,7 +100,7 @@ Volcano:
       Temple Entrance Statue: Unlock Statue
       Near Thrill Digger Cave: Near Thrill Digger Cave - Blow down Watchtower
       Exit to Earth Temple: Open ET option | Key Piece x5
-      Hot Cave: Blow down Watchtower to Hot Cave
+      Hot Cave: Blow down Watchtower to Hot Cave & Can Survive Hot Cave
     locations:
       Unlock Statue: Nothing
       Blow down Watchtower to Hot Cave: Nothing

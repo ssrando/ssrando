@@ -673,7 +673,7 @@
   max: 255
   bits: 8
   permalink: true
-  help: overall damage multiplier. Normal mode default is x1, Hero mode is x2. NOTE that multipliers higher than x4 or x5 could cause Eldin Hot cave to be impossible
+  help: Overall damage multiplier. Normal mode default is x1, Hero mode is x2. When at least 12x, Hot Cave requires Fireshield Earrings.
   ui: option_damage_multiplier
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
