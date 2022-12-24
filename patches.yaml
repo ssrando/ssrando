@@ -2355,7 +2355,7 @@ F202: # Boko Base
       posz: 10950
       anglex: 0
       angley: 37000
-      anglez: 30502
+      anglez: 30506
       id: 0xFC84
       name: HrpHint
   - name: Exit from Boko Base Shiekah Stone to Eldin
