@@ -2368,6 +2368,40 @@ F202: # Boko Base
       layer: 1
       room: 2
       entrance: 8 # New Boko Base -> Eldin entrance
+  - name: Add hot cave Plats to prison
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFE3
+      params2: 0xFFDFFFFF
+      posx: 489.810791015625
+      posy: 700
+      posz: 10652.2568359375
+      anglex: 0
+      angley: 40960
+      anglez: 30502
+      id: 0xFC1E
+      name: NpcMoEN
+  - name: Remove Plats from hot cave
+    type: objdelete
+    id: 0xFC1E
+    layer: 1
+    room: 5
+    objtype: OBJ
+  - name: Remove barrel of doom
+    type: objdelete
+    id: 0x084B
+    layer: 1
+    room: 1
+    objtype: OBJ
+  - name: Remove default Plats from prison
+    type: objdelete
+    id: 0x0850
+    layer: 1
+    room: 1
+    objtype: OBJ
   - name: Remove Plats Map Cutscene 1
     type: objdelete
     id: 0x017C

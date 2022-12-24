@@ -1998,18 +1998,42 @@
       param3: 0
   - name: Talking to Plats in Boko Base Prison
     type: flowpatch
+    index: 1
+    flow:
+      next: Check if received Plats' Gift
+  - name: Check if received Plats' Gift
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 177
+      param3: 3
+    cases:
+      - Show Post Plats' Gift text # True
+      - 2 # False
+  - name: Post Plats' Gift text
+    type: textadd
+    text: "See ya around, pal!"
+  - name: Show Post Plats' Gift text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Post Plats' Gift text
+  - name: Cut off Plats' text to give item
+    type: flowpatch
     index: 2
     flow:
       next: Plats' Gift
   - name: Plats' Gift
     type: flowadd
     flow:
-      flow:
       type: type3
       subType: 0
       param1: 0
       param2: 3 # item
-      next: 8
+      next: 39
       param3: 9
   - name: Shorten Plats text in hot cave
     type: flowpatch
