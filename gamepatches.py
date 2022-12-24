@@ -1241,7 +1241,6 @@ class GamePatcher:
             self.add_asm_patch("dungeon_dowsing")
         if self.placement_file.options["no-enemy-music"]:
             self.add_asm_patch("no_enemy_music")
-
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
         GOT_SWORD_MODES = {
@@ -1257,6 +1256,29 @@ class GamePatcher:
                 0x00,
                 0x00,
                 GOT_SWORD_MODES[self.placement_file.options["got-sword-requirement"]],
+            ]
+        }
+
+        # Hero Mode Changes
+        if self.placement_file.options["fast-air-meter"] == False:
+            self.add_asm_patch("air_meter_normalmode")
+        if self.placement_file.options["upgraded-skyward-strike"]:
+            self.add_asm_patch("skyward_strike_heromode")
+        else:
+            self.add_asm_patch("skyward_strike_normalmode")
+        if self.placement_file.options["enable-heart-drops"]:
+            self.add_asm_patch("heart_pickups_normalmode")
+        else:
+            self.add_asm_patch("heart_pickups_heromode")
+
+        # Damage Multiplier patch requires input, replacing one line
+        # muli r27, r27, (multiplier)
+        self.all_asm_patches["main.dol"][0x801E3464] = {
+            "Data": [
+                0x1F,
+                0x7B,
+                0x00,
+                self.placement_file.options["damage-multiplier"],
             ]
         }
 
