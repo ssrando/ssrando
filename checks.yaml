@@ -894,35 +894,58 @@ Volcano Summit - Chest behind Bombable Wall in Waterfall Area:
     - stage/F201_4/r0/l0/TBox/95
   text: atop a <r<volcanic waterfall>> hides
 
-#Boko Base - Mogma Mitts Event
-#   original item: Mogma Mitts
-#   Paths:
-#    - event
-#Boko Base - Clawshots
-#   original item: Clawshots
-#   Paths:
-#    - stage/F202.json
-#Boko Base - Gust Bellows
-#   original item: Gust Bellows
-#   Paths:
-#    - stage/F202.json
-#Boko Base - Bombs
-#   original item: Bombs
-#   Paths:
-#    - stage/F202.json
-#Boko Base - Slingshot
-#   original item: Slingshot
-#   Paths:
-#    - stage/F202.json
-#Boko Base - Whip
-#   original item: Whip
-#   Paths:
-#    - stage/F202.json
-
-#Fire Dragon Room - Fire Dragon's Reward
-#   original item: Eldin Song of the Hero Part
-#   Paths:
-#    - stage/F221.json
+Boko Base - Plats' Gift:
+  original item: Mogma Mitts
+  type: eldin, free gift
+  Paths:
+   - event/305-MountainF3/Plats' Gift
+   - oarc/F202/l1
+Boko Base - Chest near Bone Bridge:
+  original item: Gust Bellows
+  type: eldin
+  Paths:
+   - stage/F202/r2/l1/TBox/70
+Boko Base - Chest on Cliff:
+  original item: Clawshots
+  type: eldin
+  Paths:
+   - stage/F202/r2/l1/TBox/66
+Boko Base - Chest near Drawbridge:
+  original item: Whip
+  type: eldin
+  Paths:
+   - stage/F202/r2/l1/TBox/67
+Boko Base - Chest east of Earth Temple Entrance:
+  original item: Slingshot
+  type: eldin
+  Paths:
+   - stage/F202/r4/l1/TBox/68
+Boko Base - Chest west of Earth Temple Entrance:
+  original item: Bombs
+  type: eldin
+  Paths:
+   - stage/F202/r4/l1/TBox/69
+Boko Base - First Chest in Volcano Summit:
+  original item: Blue Rupee
+  type: eldin
+  Paths:
+   - stage/F201_2/r0/l0/TBox/72
+Boko Base - Raised Chest in Volcano Summit:
+  original item: Progressive Sword
+  type: eldin
+  Paths:
+   - stage/F201_2/r0/l0/TBox/73
+Boko Base - Chest in Volcano Summit Alcove:
+  original item: Progressive Pouch
+  type: eldin
+  Paths:
+   - stage/F201_2/r0/l0/TBox/71
+Boko Base - Fire Dragon's Reward:
+  original item: Eldin Song of the Hero Part
+  type: eldin
+  Paths:
+   - event/305-MountainF3/Give item after Eldin SotH CS
+   - oarc/F221/l0
 
 Lanayru Mine - Chest behind First Landing:
   original item: Evil Crystal

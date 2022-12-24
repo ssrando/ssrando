@@ -2567,6 +2567,22 @@ F201_1: # Inside Volcano
     room: 0
     objtype: OBJS
 F201_2: # Boko Base Volcano Summit
+  - name: True Master Sword Chest
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJS
+    object:
+      params1: 0xFFFFFFF3
+      params2: 0xFF5FFFFF # goddess sword upgrade storyflag
+      posx: 1314.69677734375
+      posy: 50
+      posz: -68.63192749023438
+      anglex: 0xFFFF
+      angley: 16384
+      anglez: 37379 # >> 9 = chest flag 73
+      id: 0xFC26
+      name: TBox
   - name: Remove panning Cutscene showing pouch chest
     type: objdelete
     id: 0xFC4B
