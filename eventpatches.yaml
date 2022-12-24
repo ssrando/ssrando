@@ -1951,7 +1951,7 @@
       param3: 9
   - name: Go to Eldin SotH item
     type: flowpatch
-    index: 27
+    index: 28
     flow:
       next: Give item after Eldin SotH CS
   - name: Give item after Eldin SotH CS
@@ -1972,6 +1972,11 @@
       param2: 0
       next: -1
       param3: 10 # Triggers an exit
+  - name: Remove Fire Dragon's lore text after SotH item
+    type: flowpatch
+    index: 46
+    flow:
+      next: -1
   - name: Offer exit out of Boko Base
     type: flowpatch
     index: 9
