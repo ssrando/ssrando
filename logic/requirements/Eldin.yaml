@@ -34,7 +34,7 @@ Volcano:
       First Vent from Mogma Turf: Impossible
       First Room: First Room - Blow up Rock to East
       Past Mogma Turf: Past Mogma Turf - Unlock Shortcut to Pre Turf
-      Exit to Boko Base: Nothing
+      Exit to Bokoblin Base: Nothing
     locations:
       First Room - Blow up Rock to East: Bomb Bag # can probably also use hook beetle
       Unlock Statue: Nothing
@@ -223,9 +223,9 @@ Volcano Summit:
         Hydrate Second Frog: Clawshots & Water Bottle
 
 # BOKO BASE
-Boko Base:
-  toplevel-alias: Boko Base
-  hint-region: Boko Base
+Bokoblin Base:
+  toplevel-alias: Bokoblin Base
+  hint-region: Bokoblin Base
   
   Prison:
     exits:
@@ -269,9 +269,9 @@ Boko Base:
   Hot Cave:
     exits:
       After Drawbridge: Fireshield Earrings & Bomb Bag
-      Boko Base Summit: Fireshield Earrings & Bomb Bag
+      Bokoblin Base Summit: Fireshield Earrings & Bomb Bag
   
-  Boko Base Summit:
+  Bokoblin Base Summit:
     exits:
       Hot Cave: Fireshield Earrings
       Fire Dragon's Lair: Fireshield Earrings
@@ -283,7 +283,7 @@ Boko Base:
   
   Fire Dragon's Lair:
     exits:
-      Boko Base Summit: Nothing
+      Bokoblin Base Summit: Nothing
       Volcano - East: Fire Dragon's Reward
     locations:
       Fire Dragon's Reward: Bow | Beetle

@@ -2562,21 +2562,21 @@ Eldin Volcano - Vent Exit near Ascent:
   vanilla: Eldin Volcano - Vent Entrance near Hot Cave
 
 
-## Boko Base
+## Bokoblin Base
 
-Eldin Volcano - Exit to Boko Base:
+Eldin Volcano - Exit to Bokoblin Base:
   type: exit
-  vanilla: Boko Base - Entrance
+  vanilla: Bokoblin Base - Entrance
 
-Eldin Volcano - Entrance from Boko Base:
+Eldin Volcano - Entrance from Bokoblin Base:
   type: entrance
 
 
-Boko Base - Exit:
+Bokoblin Base - Exit:
   type: exit
-  vanilla: Entrance from Boko Base
+  vanilla: Entrance from Bokoblin Base
 
-Boko Base - Entrance:
+Bokoblin Base - Entrance:
   type: entrance
 
 

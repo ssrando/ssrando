@@ -518,7 +518,7 @@ FLOODED_FARON_WOODS = "Flooded Faron Woods"
 ELDIN_VOLCANO = "Eldin Volcano"
 MOGMA_TURF = "Mogma Turf"
 VOLCANO_SUMMIT = "Volcano Summit"
-BOKO_BASE = "Boko Base"
+BOKOBLIN_BASE = "Bokoblin Base"
 
 LANAYRU_MINE = "Lanayru Mine"
 LANAYRU_DESERT = "Lanayru Desert"
@@ -542,7 +542,7 @@ ALL_HINT_REGIONS = dict.fromkeys(
         ELDIN_VOLCANO,
         MOGMA_TURF,
         VOLCANO_SUMMIT,
-        BOKO_BASE,
+        BOKOBLIN_BASE,
         LANAYRU_MINE,
         LANAYRU_DESERT,
         LANAYRU_CAVES,
