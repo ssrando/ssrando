@@ -96,6 +96,15 @@ impl<'a> MemItr<'a> {
         (val, self.0) = self.0.split_array_ref();
         Some(u16::from_be_bytes(*val))
     }
+
+    fn get_dungeonflags(&mut self) -> Option<&[u8; 8]> {
+        if self.0.len() < 8 {
+            return None;
+        }
+        let val;
+        (val, self.0) = self.0.split_array_ref();
+        Some(val)
+    }
 }
 
 // IMPORTANT: when adding functions here that need to get called from the game, add `#[no_mangle]`
@@ -125,14 +134,47 @@ pub fn process_startflags() {
         }
         sceneflag_set_global(flag >> 8, flag & 0xFF);
     }
+    // dungeonflags
+    // includes keys, maps, boss keys
+    // each entry is a byte, the bits work as follows:
+    // B0KK KKM0, B(K), M(AP), K(EY)
+    // doing it this weird way to save instructions
+    const DUNGEONFLAG_INDICES: [u8; 8] = [
+        11, // SV
+        14, // ET
+        17, // LMF
+        12, // AC
+        15, // FS
+        18, // SS
+        20, // SK
+        9,  // Lanayru Caves
+    ];
+    if let Some(dungeon_startflags) = flag_mem.get_dungeonflags() {
+        for (&dungeon_startflag, &flagindex) in
+            dungeon_startflags.iter().zip(DUNGEONFLAG_INDICES.iter())
+        {
+            let first_short = dungeon_startflag & 0x82;
+            let small_keys = (dungeon_startflag >> 2) & 0x0F;
+            unsafe {
+                if (*DUNGEONFLAG_MANAGER).flagindex == flagindex as u16 {
+                    let flags = &mut *dungeonflag_local();
+                    flags[0] = first_short.into();
+                    flags[1] = small_keys.into();
+                }
+                let flags = &mut *dungeonflag_global(flagindex as u16);
+                flags[0] = first_short.into();
+                flags[1] = small_keys.into();
+            }
+        }
+    }
     itemflag_set_to_value(
         501, /* rupee counter */
         flag_mem.next_u16().unwrap_or_default(),
     );
     // heart capacity
-    let health_capacity = flag_mem.next_u16().unwrap_or_default();
-    unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity };
-    unsafe { (*FILE_MANAGER).FA.current_health = health_capacity };
+    let health_capacity = flag_mem.next_u8().unwrap_or_default();
+    unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity.into() };
+    unsafe { (*FILE_MANAGER).FA.current_health = health_capacity.into() };
     unsafe { (*FILE_MANAGER).anticommit_flag = 0 };
 }
 

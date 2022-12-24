@@ -1563,6 +1563,20 @@ class GamePatcher:
         self.starting_full_hearts = (starting_health // 4) * 4
         self.startitemflags[ITEM_COUNT_FLAGS[HEART_PIECE]] = starting_health % 4
 
+        ALL_DUNGEON_LIKE = ALL_DUNGEONS + [LANAYRU_CAVES]
+        assert len(ALL_DUNGEON_LIKE) == 8
+        self.startdungeonflags = []
+
+        for i, dungeon in enumerate(ALL_DUNGEON_LIKE):
+            dungeonbyte = 0
+            if start_item_counts.pop(f"{dungeon} Map", 0) >= 1:
+                dungeonbyte |= 0x02
+            if start_item_counts.pop(f"{dungeon} Boss Key", 0) >= 1:
+                dungeonbyte |= 0x80
+            count = start_item_counts.pop(f"{dungeon} Small Key", 0)
+            dungeonbyte |= count << 2
+            self.startdungeonflags.append(dungeonbyte)
+
         for item, count in start_item_counts.items():
             # item flags
             if (entry := ITEM_FLAGS.get(item)) is not None:
@@ -2448,10 +2462,12 @@ class GamePatcher:
                     flag = flag["flag"]
                 start_flags_write.write(struct.pack(">BB", flagregionid, flag))
         start_flags_write.write(bytes.fromhex("FFFF"))
+        # dungeonflags
+        start_flags_write.write(bytes(self.startdungeonflags))
         # Starting rupee count.
         start_flags_write.write(struct.pack(">H", 0))
         # Start health.
-        start_flags_write.write(struct.pack(">H", self.starting_full_hearts))
+        start_flags_write.write(struct.pack(">B", self.starting_full_hearts))
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:
             raise Exception(
