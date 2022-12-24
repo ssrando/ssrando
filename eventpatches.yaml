@@ -1895,6 +1895,11 @@
     index: 72
     flow:
       next: Show Boko Base Entry Question
+  - name: Offer entry into Boko Base Normal Mode??
+    type: flowpatch
+    index: 64
+    flow:
+      next: Show Boko Base Entry Question
   - name: Show Boko Base Entry Question
     type: flowadd
     flow:
