@@ -261,9 +261,9 @@ Bokoblin Base:
     exits:
       Hot Cave: Nothing
     locations:
-      Chest east of Earth Temple Entrance: Nothing
+      Chest East of Earth Temple Entrance: Nothing
       Goddess Cube East of Earth Temple Entrance: Goddess Sword
-      Chest west of Earth Temple Entrance: (Slingshot | Bow | Bomb Bag | Goddess Sword) & Can bypass Boko Base Watch Tower & Mogma Mitts
+      Chest West of Earth Temple Entrance: (Slingshot | Bow | Bomb Bag | Goddess Sword) & Can bypass Boko Base Watch Tower & Mogma Mitts
       Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can bypass Boko Base Watch Tower & Mogma Mitts
   
   Hot Cave:

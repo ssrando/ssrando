@@ -905,12 +905,12 @@ Bokoblin Base - Chest near Drawbridge:
   type: eldin
   Paths:
    - stage/F202/r2/l1/TBox/67
-Bokoblin Base - Chest east of Earth Temple Entrance:
+Bokoblin Base - Chest East of Earth Temple Entrance:
   original item: Slingshot
   type: eldin
   Paths:
    - stage/F202/r4/l1/TBox/68
-Bokoblin Base - Chest west of Earth Temple Entrance:
+Bokoblin Base - Chest West of Earth Temple Entrance:
   original item: Bombs
   type: eldin
   Paths:
