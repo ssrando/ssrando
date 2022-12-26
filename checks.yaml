@@ -887,6 +887,7 @@ Volcano Summit - Chest behind Bombable Wall in Waterfall Area:
 Bokoblin Base - Plats' Gift:
   original item: Mogma Mitts
   type: eldin, free gift
+  text: a gift from an <r<imprisoned mogma>> has
   Paths:
    - event/305-MountainF3/Plats' Gift
    - oarc/F202/l1
@@ -933,6 +934,7 @@ Bokoblin Base - Chest in Volcano Summit Alcove:
 Bokoblin Base - Fire Dragon's Reward:
   original item: Eldin Song of the Hero Part
   type: eldin
+  text: <r<hearing a song atop the great mountain>> is rewarded with
   Paths:
    - event/305-MountainF3/Give item after Eldin SotH CS
    - oarc/F221/l0
