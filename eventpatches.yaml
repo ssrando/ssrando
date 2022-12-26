@@ -1983,7 +1983,7 @@
     flow:
       type: type3
       subType: 0
-      param1: 5 # Entrance number for Boko Base
+      param1: 0 # Entrance number for Boko Base
       param2: 0
       next: -1
       param3: 10 # Triggers an exit

@@ -2296,23 +2296,23 @@ F200: # Eldin main area
   - name: Add Shiekah Stone to Eldin
     type: objadd
     layer: 0
-    room: 2
+    room: 1
     objtype: OBJ
     object:
       params1: 0xF1FFFFFF
       params2: 0xFFDFFFFF
-      posx: 1962.6357421875
-      posy: 868.7970581054688
-      posz: 6089.8759765625
+      posx: 250
+      posy: 700
+      posz: 9800
       anglex: 0
-      angley: 25486
+      angley: 42000
       anglez: 30506
       id: 0xFC84
       name: HrpHint
   - name: Exit from Eldin Shiekah Stone to Boko Base
     type: objadd
     index: 0
-    room: 2
+    room: 1
     objtype: SCEN
     object:
       name: F202
@@ -2321,20 +2321,20 @@ F200: # Eldin main area
       entrance: 0 # New Eldin -> Boko Base sky entrance
   - name: Boko Base Shiekah Stone Coords
     type: objadd
-    index: 7
-    room: 2
+    index: 5
+    room: 1
     objtype: PLY
     object:
       storyflag: 2047
       play_cutscene: -1
       byte4: -1
-      posx: 2097.1181640625
-      posy: 812.0973510742188
-      posz: 5897.47314453125
+      posx: 80
+      posy: 700
+      posz: 9670
       anglex: 0
-      angley: 58255
+      angley: 9200
       anglez: 0
-      entrance_id: 8
+      entrance_id: 5
 F202: # Boko Base
   - name: Remove Shiekah Stone from Boko Base
     type: objdelete
@@ -2366,8 +2366,8 @@ F202: # Boko Base
     object:
       name: F200
       layer: 1
-      room: 2
-      entrance: 8 # New Boko Base -> Eldin entrance
+      room: 1
+      entrance: 5 # New Boko Base -> Eldin entrance
   - name: Add hot cave Plats to prison
     type: objadd
     layer: 0
@@ -2484,8 +2484,8 @@ F221: # Fire Dragon Room
     object:
       name: F200
       layer: 1
-      room: 2
-      entrance: 8
+      room: 1
+      entrance: 5 # New Boko Base -> Eldin entrance
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
