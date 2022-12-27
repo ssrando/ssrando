@@ -885,31 +885,71 @@
     flow:
       next: -1
 114-Friend:
-  - name: Fledge text # skips part about link's tunic and being a knight
+  - name: Skip Fledge camera panning 1
+    type: flowpatch
+    index: 15
+    flow:
+      next: 22
+  - name: Skip Fledge talking about the hero's tunic
     type: flowpatch
     index: 22
     flow:
-      next: 111
-  - name: Fledge pouch text skip # skips part explaining the adventure pouch
+      next: 51
+  - name: Skip Fledge wait frames
+    type: flowpatch
+    index: 51
+    flow:
+      next: 50
+  - name: tst4
+    type: flowpatch
+    index: 50
+    flow:
+      next: Show shorter Fledge pre-item text
+  - name: Shorter Fledge text
+    type: textadd
+    text: "I put a lot of work into making this!\nYou should take it with you."
+  - name: Show shorter Fledge pre-item text
+    type: flowadd
+    flow:
+      type: type1
+      next: 16
+      param3: 0
+      param4: Shorter Fledge text
+  - name: Skip Fledge talking about the Adventure Pouch # skips part explaining the adventure pouch
     type: flowpatch
     index: 16
     flow:
-      next: 24
-  - name: Fledge dungeon text
+      next: Show Fledge pre-dungeon text
+  - name: Fledge pre-dungeon text
     type: textadd
-    text: "By the way, your <r<required dungeons>>\nare on the <b<bulletin board>> over there."
-  - name: Show Fledge text
+    text: "One more thing, <heroname>! Here are your\n<r<required dungeons>> for your adventure."
+  - name: Show Fledge pre-dungeon text
+    type: flowadd
+    flow:
+      type: type1
+      next: 21
+      param3: 0
+      param4: Fledge pre-dungeon text
+  # added during generation with correct text
+  # - name: Fledge Dungeon text
+  #   type: textpatch
+  #   index: 4
+  #   text: "Required dungeons:\nA\nB"
+  - name: Show more text after Fledge Dungeon text
+    type: flowpatch
+    index: 21
+    flow:
+      next: Show Fledge post-dungeon text
+  - name: Fledge post-dungeon text
+    type: textadd
+    text: "If you need to hear your <r<required\ndungeons>> again, just ask me! You can\nalso check them on the <b<bulletin board>>\nover there."
+  - name: Show Fledge post-dungeon text
     type: flowadd
     flow:
       type: type1
       next: 100
-      param3: 115
-      param4: Fledge dungeon text
-  - name: Patch in text
-    type: flowpatch
-    index: 21
-    flow:
-      next: Show Fledge text
+      param3: 0
+      param4: Fledge post-dungeon text
 115-Town2:
   - name: Shorten Karane letter text
     type: flowpatch
