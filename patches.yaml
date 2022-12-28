@@ -2522,6 +2522,34 @@ F221: # Fire Dragon Room
       layer: 1
       room: 1
       entrance: 5 # New Boko Base -> Eldin entrance
+F202_1: # Fire Dragon Room Fake 1
+  - name: Delete Gossip Stone
+    type: objdelete
+    id: 0xFC00
+    layer: 0
+    room: 0
+    objtype: OBJ
+F202_2: # Fire Dragon Room Fake 2
+  - name: Delete Gossip Stone
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 0
+    objtype: OBJ
+F202_3: # Fire Dragon Room Fake 3
+  - name: Delete Gossip Stone
+    type: objdelete
+    id: 0xFC00
+    layer: 0
+    room: 0
+    objtype: OBJ
+F202_4: # Fire Dragon Room Fake 4
+  - name: Delete Gossip Stone
+    type: objdelete
+    id: 0xFC06
+    layer: 0
+    room: 0
+    objtype: OBJ
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
