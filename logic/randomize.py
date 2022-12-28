@@ -187,14 +187,14 @@ class Rando:
             }
 
         for item in self.options["starting-items"]:
-            if item.startswith("Progressive"):
+            if item == KEY_PIECE:
+                continue
+            elif item not in EXTENDED_ITEM.items_list:
                 if number(item, 0) not in starting_items:
                     for count in range(self.options["starting-items"].count(item)):
                         starting_items.add(number(item, count))
                 else:  # Skips over duplicate entries for Progressive Items.
                     continue
-            elif item == KEY_PIECE:
-                continue
             else:
                 starting_items.add(item)
 
@@ -211,7 +211,7 @@ class Rando:
                 )
             else:
                 random_item = self.rng.choice(possible_random_starting_items)
-                if random_item.startswith("Progressive"):
+                if random_item not in EXTENDED_ITEM.items_list:
                     random_item = number(random_item, 0)
                 starting_items.add(random_item)
 
