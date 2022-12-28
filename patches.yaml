@@ -87,6 +87,7 @@ global:
       - 28 # groose cutscene watched (prevents groose cutscene from taking priority outside of BiT)
     Eldin Volcano:
       - 2 # gets rid of first digging mitts mogma text
+      #- 32 # impa bridge switch pressed down
       - 58 # digging mitts mogma cutscene watched
     Earth Temple:
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
@@ -2294,6 +2295,12 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       params1: 0xFFF0FF18
+  - name: remove circles cutscene
+    type: objdelete
+    id: 0x08CA
+    layer: 1
+    room: 2
+    objtype: STAG
   - name: Remove thrill digger tower cs
     type: objpatch
     id: 0x1C0C
