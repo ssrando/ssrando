@@ -2294,6 +2294,7 @@ F200: # Eldin main area
     destlayer: 0
     oarc: ShiekahStone
   - name: Add Shiekah Stone to Eldin
+    onlyif: Option "hero-mode" Disabled
     type: objadd
     layer: 0
     room: 1
@@ -2307,7 +2308,24 @@ F200: # Eldin main area
       anglex: 0
       angley: 42000
       anglez: 30506
-      id: 0xFC84
+      id: 0xFFFF
+      name: HrpHint
+  - name: Add Shiekah Stone to Eldin
+    onlyif: Option "hero-mode" Enabled
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFFFF
+      params2: 0xFFDFFFFF
+      posx: 250
+      posy: 700
+      posz: 9800
+      anglex: 0
+      angley: 42000
+      anglez: 30505 # Different eventpoint on hero mode cos boko base sucks
+      id: 0xFFFF
       name: HrpHint
   - name: Exit from Eldin Shiekah Stone to Boko Base
     type: objadd
@@ -2343,6 +2361,7 @@ F202: # Boko Base
     room: 2
     objtype: OBJ
   - name: Add Shiekah Stone in Boko Base to Prison
+    onlyif: Option "hero-mode" Disabled
     type: objadd
     layer: 0
     room: 1
@@ -2355,8 +2374,25 @@ F202: # Boko Base
       posz: 10950
       anglex: 0
       angley: 37000
-      anglez: 30506
-      id: 0xFC84
+      anglez: 30507
+      id: 0xFFFF
+      name: HrpHint
+  - name: Add Shiekah Stone in Boko Base to Prison
+    onlyif: Option "hero-mode" Enabled
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFFFF
+      params2: 0xFFDFFFFF
+      posx: 380
+      posy: 700
+      posz: 10950
+      anglex: 0
+      angley: 37000
+      anglez: 30506 # Different eventpoint on hero mode cos boko base sucks
+      id: 0xFFFF
       name: HrpHint
   - name: Exit from Boko Base Shiekah Stone to Eldin
     type: objadd

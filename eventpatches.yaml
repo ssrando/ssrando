@@ -1890,26 +1890,16 @@
       next: -1
       param3: 7
 305-MountainF3:
-  - name: Boko Base entry/exit (hero mode)
-    type: flowpatch
-    index: 72
-    flow:
-      next: Check for Boko Base story flag
-  - name: Boko Base entry/exit (normal Mode)
+  - name: Boko Base entry
     type: flowpatch
     index: 64
     flow:
-      next: Check for Boko Base story flag
-  - name: Check for Boko Base story flag
-    type: switchadd
+      next: Show Boko Base Entry Question
+  - name: Boko Base exit
+    type: flowpatch
+    index: 72
     flow:
-      type: switch
-      subType: 6
-      param2: 951 # Is in Boko Base
-      param3: 3
-    cases:
-      - Show Boko Base Exit Question # True
-      - Show Boko Base Entry Question # False
+      next: Show Boko Base Exit Question
   - name: Show Boko Base Exit Question
     type: flowadd
     flow:
@@ -1928,7 +1918,7 @@
       param2: 0
       param3: 2
     cases:
-      - Unset Boko Base story flag # Yes
+      - Leave Boko Base # Yes
       - Show Declined Boko Base Offer Text # No (same as declined entry text)
   - name: Leave Boko Base
     type: flowadd
@@ -1939,15 +1929,6 @@
       param2: 0
       next: -1
       param3: 10 # Triggers an exit
-  - name: Unset Boko Base story flag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 951 # Is in Boko Base
-      next: Leave Boko Base
-      param3: 1
   - name: Show Boko Base Entry Question
     type: flowadd
     flow:
@@ -1966,7 +1947,7 @@
       param2: 0
       param3: 2
     cases:
-      - Set Boko Base story flag # Yes
+      - Entry into Boko Base # Yes
       - Show Declined Boko Base Offer Text # No
   - name: Declined Boko Base Offer Text
     type: textadd
@@ -1987,15 +1968,6 @@
       param2: 0
       next: -1
       param3: 10 # Triggers an exit
-  - name: Set Boko Base story flag
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 951 # Is in Boko Base
-      next: Entry into Boko Base
-      param3: 0
   - name: Talking to Plats in Boko Base Prison
     type: flowpatch
     index: 1
@@ -2052,17 +2024,8 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: Unset Boko Base story flag from Dragon
-      param3: 9
-  - name: Unset Boko Base story flag from Dragon
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 0
-      param2: 951 # Is in Boko Base
       next: Leave Boko Base from Dragon
-      param3: 1
+      param3: 9
   - name: Leave Boko Base from Dragon
     type: flowadd
     flow:
