@@ -1557,7 +1557,7 @@ class GamePatcher:
         )
         # health is calculated in quarter hearts
         starting_health = 6 * 4
-        starting_health += start_item_counts.pop(HEART_CONTAINER, 0)
+        starting_health += start_item_counts.pop(HEART_CONTAINER, 0) * 4
         starting_health += start_item_counts.pop(HEART_PIECE, 0)
 
         self.starting_full_hearts = (starting_health // 4) * 4
