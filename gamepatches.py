@@ -1621,26 +1621,28 @@ class GamePatcher:
         ]:
             self.startstoryflags.append(required_dungeon_storyflag)
 
+        colourful_dungeon_text = [
+            DUNGEON_COLORS[dungeon] + dungeon + ">>"
+            for dungeon in self.placement_file.required_dungeons
+        ]
+
         # patch required dungeon text in
         if required_dungeon_count == 0:
             required_dungeons_text = "No Dungeons"
         elif required_dungeon_count == 6:
             required_dungeons_text = "All Dungeons"
-        elif required_dungeon_count < 4:
-            required_dungeons_text = "Required Dungeons:\n" + (
-                "\n".join(self.placement_file.required_dungeons)
-            )
+        elif required_dungeon_count < 5:
+            required_dungeons_text = "\n".join(colourful_dungeon_text)
         else:
-            required_dungeons_text = "Required: " + ", ".join(
-                self.placement_file.required_dungeons
-            )
+            required_dungeons_text = ", ".join(colourful_dungeon_text)
 
             # try to fit the text in as few lines as possible, breaking up at spaces if necessary
             cur_line = ""
             combined = ""
 
             for part in required_dungeons_text.split(" "):
-                if len(cur_line + part) > 27:  # limit of one line
+                # limit of one line (notice board = 27, textbox = 36)
+                if len(cur_line + part) > 36:
                     combined += cur_line + "\n"
                     cur_line = part + " "
                 else:
@@ -1648,11 +1650,11 @@ class GamePatcher:
             combined += cur_line
             required_dungeons_text = combined.strip()
 
-        self.eventpatches["107-Kanban"].append(
+        self.eventpatches["006-8KenseiNormal"].append(
             {
-                "name": "Knight Academy Billboard text",
-                "type": "textpatch",
-                "index": 18,
+                "name": "Fi Required Dungeon Text",
+                "type": "textadd",
+                "unk1": 2,
                 "text": required_dungeons_text,
             }
         )
@@ -1817,16 +1819,6 @@ class GamePatcher:
         )
 
     def add_keysanity(self):
-        DUNGEON_COLORS = {
-            SV: "<g<",
-            ET: "<r+<",
-            LMF: "<y<",
-            AC: "<b<",
-            FS: "<r<",
-            SSH: "<y+<",
-            SK: "<s<",
-            "Lanayru Caves": "<ye<",
-        }
         KEYS_DUNGEONS = [
             # ('Skyview', 200), # already has a textbox
             (LMF, 201),

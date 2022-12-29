@@ -84,6 +84,17 @@ SSH = "Sandship"
 FS = "Fire Sanctuary"
 SK = "Sky Keep"
 
+DUNGEON_COLORS = {
+    SV: "<g<",
+    ET: "<r+<",
+    LMF: "<y<",
+    AC: "<b<",
+    FS: "<r<",
+    SSH: "<y+<",
+    SK: "<s<",
+    "Lanayru Caves": "<ye<",
+}
+
 REGULAR_DUNGEONS = [SV, ET, LMF, AC, SSH, FS]
 ALL_DUNGEONS = REGULAR_DUNGEONS + [SK]
 

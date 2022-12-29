@@ -442,6 +442,53 @@
     index: 76
     flow:
       next: -1
+006-8KenseiNormal:
+  - name: Show custom Fi text
+    type: flowpatch
+    index: 2
+    flow:
+      next: Display Fi Call Text
+  - name: Fi Call Text
+    type: textadd
+    unk1: 2 # Fi text box background
+    text: "You called for me, master?\n[1]Required Dungeons[2]Play Time[3]Objective[4-]Never mind."
+  - name: Display Fi Call Text
+    type: flowadd
+    flow:
+      type: type1
+      next: Fi Option Switch
+      param3: 68
+      param4: Fi Call Text
+  - name: Fi Option Switch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 0
+    cases:
+      - Display Fi Pre Required Dungeon Text
+      - 1
+      - 1
+      - -1
+#flows for required dungeon option
+  - name: Fi Pre Required Dungeon Text
+    type: textadd
+    unk1: 2
+    text: "Your required dungeons for this\nadventure are:"
+  - name: Display Fi Pre Required Dungeon Text
+    type: flowadd
+    flow:
+      type: type1
+      next: Display Fi Required Dungeon Text
+      param3: 68
+      param4: Fi Pre Required Dungeon Text
+  - name: Display Fi Required Dungeon Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 68
+      param4: Fi Required Dungeon Text
 008-Hint:
   # check for 7 storyflags: required dungeon 1 to 6, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check
