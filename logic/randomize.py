@@ -1,4 +1,5 @@
 from __future__ import annotations
+from collections import Counter
 from dataclasses import dataclass
 from functools import cache
 import random
@@ -180,40 +181,24 @@ class Rando:
             number(HEART_PIECE, i) for i in range(self.options["starting-heart-pieces"])
         }
 
-        if not self.options["open-et"]:
-            starting_items |= {
-                number(KEY_PIECE, i)
-                for i in range(self.options["starting-items"].count(KEY_PIECE))
-            }
-
-        for item in self.options["starting-items"]:
-            if item.startswith("Progressive"):
-                if number(item, 0) not in starting_items:
-                    for count in range(self.options["starting-items"].count(item)):
-                        starting_items.add(number(item, count))
-                else:  # Skips over duplicate entries for Progressive Items.
-                    continue
-            elif item == KEY_PIECE:
+        for item, count in Counter(self.options["starting-items"]).items():
+            if item == KEY_PIECE and self.options["open-et"]:
                 continue
-            else:
-                starting_items.add(item)
+            starting_items |= {number(item, i) for i in range(count)}
 
         if self.options["random-starting-item"]:
-
             possible_random_starting_items = [
                 item
                 for item in RANDOM_STARTING_ITEMS
                 if item not in self.options["starting-items"]
             ]
-            if len(possible_random_starting_items) == 0:
+            if not possible_random_starting_items:
                 raise ValueError(
                     "All valid progress items have already been added as starting items."
                 )
             else:
                 random_item = self.rng.choice(possible_random_starting_items)
-                if random_item.startswith("Progressive"):
-                    random_item = number(random_item, 0)
-                starting_items.add(random_item)
+                starting_items.add(number(random_item, 0))
 
         self.placement.add_starting_items(starting_items)
 
@@ -476,7 +461,7 @@ class Rando:
             pass
 
         if triforce_mode == "Vanilla":
-            self.placement |= VANILLA_TRIFORCES_PLACEMENT(self.norm)
+            self.placement |= VANILLA_TRIFORCES_PLACEMENT(self.norm, self.areas.checks)
         elif triforce_mode == "Sky Keep":
             self.placement |= TRIFORCES_RESTRICTION(self.norm)
         elif triforce_mode == "Anywhere":

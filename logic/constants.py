@@ -755,68 +755,62 @@ ITEM_FLAGS = {
     PROGRESSIVE_POUCH: [112, 113, 113, 113, 113],
     PROGRESSIVE_WALLET: [108, 109, 110, 111],
     PROGRESSIVE_SWORD: [10, 11, 12, 9, 13, 14],
-    EMERALD_TABLET: 177,
-    RUBY_TABLET: 178,
-    AMBER_TABLET: 179,
-    BOMB_BAG: 92,
-    CLAWSHOTS: 20,
-    WHIP: 137,
-    GUST_BELLOWS: 49,
-    WATER_SCALE: 68,
-    FIRESHIELD_EARRINGS: 138,
-    GODDESS_HARP: 16,
-    BALLAD_OF_THE_GODDESS: 186,
-    FARORES_COURAGE: 187,
-    NAYRUS_WISDOM: 188,
-    DINS_POWER: 189,
-    FARON_SOTH_PART: 190,
-    ELDIN_SOTH_PART: 191,
-    LANAYRU_SOTH_PART: 192,
+    EMERALD_TABLET: [177],
+    RUBY_TABLET: [178],
+    AMBER_TABLET: [179],
+    BOMB_BAG: [92],
+    CLAWSHOTS: [20],
+    WHIP: [137],
+    GUST_BELLOWS: [49],
+    WATER_SCALE: [68],
+    FIRESHIELD_EARRINGS: [138],
+    GODDESS_HARP: [16],
+    BALLAD_OF_THE_GODDESS: [186],
+    FARORES_COURAGE: [187],
+    NAYRUS_WISDOM: [188],
+    DINS_POWER: [189],
+    FARON_SOTH_PART: [190],
+    ELDIN_SOTH_PART: [191],
+    LANAYRU_SOTH_PART: [192],
     SONG_OF_THE_HERO: 193,
-    LIFE_TREE_FRUIT: 198,
-    LIFE_TREE_SEEDLING: 197,
-    STONE_OF_TRIALS: 180,
-    CAWLINS_LETTER: 158,
-    HORNED_COLOSSUS_BEETLE: 159,
-    BABY_RATTLE: 160,
-    SEA_CHART: 98,
-    TRIFORCE_OF_COURAGE: 95,
-    TRIFORCE_OF_POWER: 96,
-    TRIFORCE_OF_WISDOM: 97,
-    SPIRAL_CHARGE: 21,
-    # SAILCLOTH: 15
+    LIFE_TREE_FRUIT: [198],
+    LIFE_TREE_SEEDLING: [197],
+    STONE_OF_TRIALS: [180],
+    CAWLINS_LETTER: [158],
+    HORNED_COLOSSUS_BEETLE: [159],
+    BABY_RATTLE: [160],
+    SEA_CHART: [98],
+    TRIFORCE_OF_COURAGE: [95],
+    TRIFORCE_OF_POWER: [96],
+    TRIFORCE_OF_WISDOM: [97],
+    SPIRAL_CHARGE: [21],
+    # SAILCLOTH: [15],
 }
 
 HEART_CONTAINER_ITEM_FLAG = 93
 HEART_PIECE_ITEM_FLAG = 94
 
 ITEM_STORY_FLAGS = {
-    EMERALD_TABLET: 46,
-    RUBY_TABLET: 47,
-    AMBER_TABLET: 48,
-    HORNED_COLOSSUS_BEETLE: 476,
-    CAWLINS_LETTER: 547,
-    SPIRAL_CHARGE: 364,
-    SEA_CHART: 271,
-    WATER_SCALE: 206,  # Completed Faron Trial
-    FIRESHIELD_EARRINGS: 207,  # Completed Eldin Trial
-    CLAWSHOTS: 208,  # Completed Lanayru Trial
-    STONE_OF_TRIALS: (210, 209),  # Obtained SoT, Completed Hylia's Trial
-    GODDESS_HARP: (9, 140),  # Harp, Watched Groose CS
-    BALLAD_OF_THE_GODDESS: 194,
-    TRIFORCE_OF_COURAGE: 729,
-    TRIFORCE_OF_POWER: 728,
-    TRIFORCE_OF_WISDOM: 730,
+    EMERALD_TABLET: [46],
+    RUBY_TABLET: [47],
+    AMBER_TABLET: [48],
+    HORNED_COLOSSUS_BEETLE: [476],
+    CAWLINS_LETTER: [547],
+    SPIRAL_CHARGE: [364],
+    SEA_CHART: [271],
+    WATER_SCALE: [206],  # Completed Faron Trial
+    FIRESHIELD_EARRINGS: [207],  # Completed Eldin Trial
+    CLAWSHOTS: [208],  # Completed Lanayru Trial
+    STONE_OF_TRIALS: [(210, 209)],  # Obtained SoT, Completed Hylia's Trial
+    GODDESS_HARP: [(9, 140)],  # Harp, Watched Groose CS
+    BALLAD_OF_THE_GODDESS: [194],
+    TRIFORCE_OF_COURAGE: [729],
+    TRIFORCE_OF_POWER: [728],
+    TRIFORCE_OF_WISDOM: [730],
     COMPLETE_TRIFORCE: 645,
     FULL_ET_KEY: 120,
-    PROGRESSIVE_SWORD: [
-        906,
-        907,
-        908,
-        909,
-        910,
-        911,
-    ],  # Practice, Goddess, Long, White, MS, TMS
+    PROGRESSIVE_SWORD: [906, 907, 908, 909, 910, 911],
+    # Practice, Goddess, Long, White, MS, TMS
     PROGRESSIVE_MITTS: [904, 905],  # Digging Mitts, Mogma Mitts
     PROGRESSIVE_BEETLE: [912, 913, 942, 943],  # Beetle, Heetle, Queetle, Teetle
     PROGRESSIVE_WALLET: [915, 916, 917, 918],  # Medium, Big, Giant, Tycoon
@@ -824,7 +818,7 @@ ITEM_STORY_FLAGS = {
     PROGRESSIVE_SLINGSHOT: [947, 948],  # Slingshot, Scatershot
     PROGRESSIVE_BUG_NET: [949, 950],  # Bug Net, Big Bug Net
     PROGRESSIVE_POUCH: [931, 932, 932, 932, 932]  # Adventure Pouch, Pouch Expansion * 4
-    # SAILCLOTH: 32
+    # SAILCLOTH: [32]
 }
 
 ITEM_COUNT_FLAGS = {
@@ -862,7 +856,39 @@ RANDOM_STARTING_ITEMS = [
 ]
 
 ALLOWED_STARTING_ITEMS = (
-    ITEM_FLAGS
+    dict.fromkeys(
+        [
+            EMERALD_TABLET,
+            RUBY_TABLET,
+            AMBER_TABLET,
+            BOMB_BAG,
+            CLAWSHOTS,
+            WHIP,
+            GUST_BELLOWS,
+            WATER_SCALE,
+            FIRESHIELD_EARRINGS,
+            GODDESS_HARP,
+            BALLAD_OF_THE_GODDESS,
+            FARORES_COURAGE,
+            NAYRUS_WISDOM,
+            DINS_POWER,
+            FARON_SOTH_PART,
+            ELDIN_SOTH_PART,
+            LANAYRU_SOTH_PART,
+            LIFE_TREE_FRUIT,
+            LIFE_TREE_SEEDLING,
+            STONE_OF_TRIALS,
+            CAWLINS_LETTER,
+            HORNED_COLOSSUS_BEETLE,
+            BABY_RATTLE,
+            SEA_CHART,
+            TRIFORCE_OF_COURAGE,
+            TRIFORCE_OF_POWER,
+            TRIFORCE_OF_WISDOM,
+            SPIRAL_CHARGE,
+            # SAILCLOTH,
+        ]
+    )
     | PROGRESSIVE_SWORDS
     | PROGRESSIVE_POUCHES
     | PROGRESSIVE_MITTS_ALL
@@ -875,3 +901,7 @@ ALLOWED_STARTING_ITEMS = (
     | HEART_PIECES
     | KEY_PIECES
 )
+
+
+def flatten_tuples(l):
+    return (i for t in l for i in (t if isinstance(t, tuple) else (t,)))

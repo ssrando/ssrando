@@ -1,7 +1,7 @@
 import copy
 from pathlib import Path
 import random
-from collections import OrderedDict, defaultdict
+from collections import OrderedDict, defaultdict, Counter
 
 import yaml
 import json
@@ -1518,11 +1518,29 @@ class GamePatcher:
         self.patcher.create_oarc_cache(extracts)
 
     def add_startitem_patches(self):
+        starting_items = self.placement_file.starting_items
+        # Add starting story and item flags.
+        self.starting_heart_containers = 0
+        self.starting_heart_pieces = 0
+        stripped_starting_items = Counter(map(strip_item_number, starting_items))
+
+        for item, count in stripped_starting_items.items():
+            itemflags = ITEM_FLAGS.get(item, [])[:count]
+            self.startitemflags.extend(flatten_tuples(itemflags))
+
+            itemstoryflags = ITEM_STORY_FLAGS.get(item, [])[:count]
+            self.startstoryflags.extend(flatten_tuples(itemstoryflags))
+
+            if item == HEART_CONTAINER:
+                self.starting_heart_containers += count
+            elif item == HEART_PIECE:
+                self.starting_heart_pieces += count
+            if item in ITEM_COUNT_FLAGS:
+                self.startitemflags.extend(count * [ITEM_COUNT_FLAGS[item]])
+
         # Add sword story/itemflags if required
 
-        start_sword_count = len(
-            set(PROGRESSIVE_SWORDS) & set(self.placement_file.starting_items)
-        )
+        start_sword_count = len(set(PROGRESSIVE_SWORDS) & set(starting_items))
 
         if start_sword_count > 3:
             self.startstoryflags.append(583)  # 4 extra Dowsing slots
@@ -1533,59 +1551,18 @@ class GamePatcher:
                 self.startstoryflags.append(110)  # Goddess Cube Dowsing
 
         # Give the completed song of the hero if all 3 pieces are added as starting items.
-        if all(
-            soth_part in self.placement_file.starting_items
-            for soth_part in SONG_OF_THE_HERO_PARTS
-        ):
+        if all(soth_part in starting_items for soth_part in SONG_OF_THE_HERO_PARTS):
             self.startitemflags.append(ITEM_FLAGS[SONG_OF_THE_HERO])
 
         # Give the completed triforce storyflag if all 3 triforce pieces are added as starting items.
-        if all(
-            triforce_piece in self.placement_file.starting_items
-            for triforce_piece in TRIFORCES
-        ):
+        if all(triforce_piece in starting_items for triforce_piece in TRIFORCES):
             self.startstoryflags.append(ITEM_STORY_FLAGS[COMPLETE_TRIFORCE])
 
-        if all(
-            key_piece in self.placement_file.starting_items for key_piece in KEY_PIECES
-        ):
+        if all(key_piece in starting_items for key_piece in KEY_PIECES):
             self.startstoryflags.append(ITEM_STORY_FLAGS[FULL_ET_KEY])
 
-        # Add starting story and item flags.
-        self.starting_heart_containers = 0
-        self.starting_heart_pieces = 0
-        for item in self.placement_file.starting_items:
-            item = strip_item_number(item)
-            self.startstoryflags = self._starting_item_helper(
-                ITEM_STORY_FLAGS, item, self.startstoryflags
-            )
-            self.startitemflags = self._starting_item_helper(
-                ITEM_FLAGS, item, self.startitemflags
-            )
-            if item == HEART_CONTAINER:
-                self.starting_heart_containers += 1
-            elif item == HEART_PIECE:
-                self.starting_heart_pieces += 1
-            if item in ITEM_COUNT_FLAGS:
-                self.startitemflags.append(ITEM_COUNT_FLAGS[item])
-        if ITEM_STORY_FLAGS[PROGRESSIVE_POUCH][0] in self.startstoryflags:
+        if any(pouch in starting_items for pouch in PROGRESSIVE_POUCHES):
             self.startstoryflags.append(30)  # Vanilla storyflag for pouch.
-
-    def _starting_item_helper(self, flags, item, startflags):
-        if item in flags:
-            # Progressive flags.
-            if type(flags[item]) is list:
-                for flag in flags[item]:
-                    if flag not in startflags:
-                        startflags.append(flag)
-                        break
-            # Items needing multiple flags (e.g. harp).
-            elif type(flags[item]) is tuple:
-                for flag in flags[item]:
-                    startflags.append(flag)
-            else:
-                startflags.append(flags[item])
-        return startflags
 
     def add_required_dungeon_patches(self):
         # Add required dungeon patches to eventpatches
@@ -1716,13 +1693,12 @@ class GamePatcher:
             )
 
     def add_impa_hint(self):
-        # Skip over Impa SoT hint if SoT is a starting item.
-        if ITEM_FLAGS[STONE_OF_TRIALS] in self.startitemflags:
-            return
-
-        loc = {v: k for k, v in self.placement_file.item_locations.items()}[
+        loc = {v: k for k, v in self.placement_file.item_locations.items()}.get(
             STONE_OF_TRIALS
-        ]
+        )
+        # Skip over Impa SoT hint if SoT is not placed.
+        if loc is None:
+            return
         region = self.areas.checks[loc]["hint_region"]
         self.eventpatches["502-CenterFieldBack"].append(
             {
