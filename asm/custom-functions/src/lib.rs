@@ -43,7 +43,7 @@ extern "C" {
     fn FlagManager__setFlagOrCounter(mgr: *mut c_void, flag: u16, value: u16);
     static ITEMFLAG_MANAGER: *mut c_void;
     static STORYFLAG_MANAGER: *mut c_void;
-    static STATIC_DUNGEON_FLAGS: *mut [c_ushort; 8usize];
+    static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
 }
 
@@ -53,7 +53,7 @@ fn sceneflag_set_global(scene_index: u16, flag: u16) {
 
 /// returns the pointer to the static dungeonflags, those for the current sceneflagindex
 fn dungeonflag_local() -> *mut [c_ushort; 8usize] {
-    unsafe { STATIC_DUNGEON_FLAGS }
+    unsafe { &mut STATIC_DUNGEON_FLAGS }
 }
 
 /// returns the pointer to the saved dungeonflags, for the specified sceneflagindex
