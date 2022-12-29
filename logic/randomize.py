@@ -200,9 +200,11 @@ class Rando:
 
         if self.options["random-starting-item"]:
 
-            possible_random_starting_items = RANDOM_STARTING_ITEMS
-            for starting_item in self.options["starting-items"]:
-                possible_random_starting_items.remove(starting_item)
+            possible_random_starting_items = [
+                item
+                for item in RANDOM_STARTING_ITEMS
+                if item not in self.options["starting-items"]
+            ]
             if len(possible_random_starting_items) == 0:
                 raise ValueError(
                     "All valid progress items have already been added as starting items."
