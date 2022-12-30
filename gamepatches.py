@@ -1131,6 +1131,7 @@ class GamePatcher:
         self.do_build_arc_cache()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
+        self.add_fi_text_patches()
         if (self.placement_file.options["song-hints"]) != "None":
             self.add_trial_hint_patches()
         if self.placement_file.options["impa-sot-hint"]:
@@ -1621,11 +1622,13 @@ class GamePatcher:
         ]:
             self.startstoryflags.append(required_dungeon_storyflag)
 
+    def add_fi_text_patches(self):
         colourful_dungeon_text = [
             DUNGEON_COLORS[dungeon] + dungeon + ">>"
             for dungeon in self.placement_file.required_dungeons
         ]
 
+        required_dungeon_count = len(self.placement_file.required_dungeons)
         # patch required dungeon text in
         if required_dungeon_count == 0:
             required_dungeons_text = "No Dungeons"
@@ -1657,6 +1660,16 @@ class GamePatcher:
                 "unk1": 2,
                 "text": required_dungeons_text,
             }
+        )
+
+        fi_objective_text = next(
+            filter(
+                lambda x: x["name"] == "Fi Objective Text",
+                self.eventpatches["006-8KenseiNormal"],
+            )
+        )
+        fi_objective_text["text"] = fi_objective_text["text"].replace(
+            "{required_sword}", self.placement_file.options["got-sword-requirement"]
         )
 
     def add_trial_hint_patches(self):

@@ -451,7 +451,7 @@
   - name: Fi Call Text
     type: textadd
     unk1: 2 # Fi text box background
-    text: "You called for me, master?\n[1]Required Dungeons[2]Play Time[3]Objective[4-]Never mind."
+    text: "You called for me, master?\n[1]Required Dungeons[2]Play Time[3]Current Status[4-]Never mind."
   - name: Display Fi Call Text
     type: flowadd
     flow:
@@ -467,9 +467,9 @@
       param3: 0
     cases:
       - Display Fi Pre Required Dungeon Text
-      - 1
-      - 1
-      - -1
+      - 1 #displays play time
+      - Display Fi Status Text
+      - -1 #returns
 #flows for required dungeon option
   - name: Fi Pre Required Dungeon Text
     type: textadd
@@ -489,6 +489,89 @@
       next: -1
       param3: 68
       param4: Fi Required Dungeon Text
+#flows for status option
+  - name: Fi Status Text
+    type: textadd
+    unk1: 2 # Fi text box background
+    text: "Yes, Master. What information do\nyou seek?\n[1]Dungeon Status[2]Inventory Status[3]Objective[4-]Never mind."
+  - name: Display Fi Status Text
+    type: flowadd
+    flow:
+      type: type1
+      next: Fi Status Switch
+      param3: 68
+      param4: Fi Status Text
+  - name: Fi Status Switch
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 0
+    cases:
+      - Display Fi Dungeon Status Text
+      - Display Fi Inventory Status Text
+      - Display Fi Objective Text
+      - -1 #returns
+  #flows for dungeon status option
+  - name: Fi Dungeon Status Text
+    type: textadd
+    unk1: 2 # Fi text box background
+    text: "Dungeon status"
+  - name: Display Fi Dungeon Status Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 68
+      param4: Fi Dungeon Status Text
+  #flows for inventory status option
+  - name: Fi Inventory Status Text
+    type: textadd
+    unk1: 2 # Fi text box background
+    text: "Inventory status"
+  - name: Display Fi Inventory Status Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 68
+      param4: Fi Inventory Status Text
+  #flows for objective status option
+  - name: Fi Objective Text
+    type: textadd
+    unk1: 2 # Fi text box background
+    text: "Your objective is to exit the <b<Temple\nof Hylia>> in the past and defeat any\nbosses in your way.
+    \n\nTo do this, you need to raise and\nopen the <r<Gate of Time>> in the <b<Sealed\nTemple>>.
+    \n\nTo reach the <b<Sealed Temple>> you will\nneed to find the <g<Emerald Tablet>> and\njourney to the <b<Faron Province>>.
+    \n\nTo raise the <r<Gate of Time>>, you must\nacquire the <y<Goddess Harp>> and take it\nto the ancient one in the <b<Sealed\nTemple>>.
+    \nTo open the <r<Gate of Time>>, you must\ncomplete the required dungeons and\nobtain the <y<{required_sword}>>."
+  - name: Display Fi Objective Text
+    onlyif: Option "triforce-required" Enabled
+    type: flowadd
+    flow:
+      type: type1
+      next: Display Fi Objective Triforce Text
+      param3: 68
+      param4: Fi Objective Text
+  - name: Display Fi Objective Text
+    onlyif: Option "triforce-required" Disabled
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 68
+      param4: Fi Objective Text
+  - name : Fi Objective Triforce Text
+    type: textadd
+    unk1: 2
+    text: "You will need to gather the three\npieces of the <y+<Triforce>> to exit the\n<b<Temple of Hylia>> in the past."
+  - name: Display Fi Objective Triforce Text
+    type: flowadd
+    flow: 
+      type: type1
+      next: -1
+      param3: 68
+      param4: Fi Objective Triforce Text
 008-Hint:
   # check for 7 storyflags: required dungeon 1 to 6, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check
