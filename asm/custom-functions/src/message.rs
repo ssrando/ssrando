@@ -7,8 +7,8 @@ pub struct FlowElement {
     pub pad: u16,
     pub param1: u16,
     pub param2: u16,
-    pub param3: u16,
     pub next: u16,
+    pub param3: u16,
     pub param4: u16,
     pub param5: u16,
 }

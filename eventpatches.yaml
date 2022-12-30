@@ -509,7 +509,7 @@
       param3: 0
     cases:
       - Display Fi Dungeon Status Text
-      - Display Fi Inventory Status Text
+      - Custom Command Test
       - Display Fi Objective Text
       - -1 #returns
   #flows for dungeon status option
@@ -536,6 +536,25 @@
       next: -1
       param3: 68
       param4: Fi Inventory Status Text
+  #TEST
+  - name: Custom Command Test
+    type: flowadd
+    flow:
+      type: type3
+      next: Display Custom Command Text
+      param1: 11
+      param3: 71
+  - name: Display Custom Command Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 68
+      param4: Custom Command Text
+  - name: Custom Command Text
+    type: textadd
+    unk1: 2
+    text: "Skyview: <numeric arg0>"
   #flows for objective status option
   - name: Fi Objective Text
     type: textadd
