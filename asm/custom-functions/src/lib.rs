@@ -7,7 +7,7 @@ use core::{
     ptr::slice_from_raw_parts,
 };
 
-use message::{text_manager_set_num_args, FlowElement};
+use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
 
 mod filemanager_gen;
 mod message;
@@ -49,6 +49,11 @@ extern "C" {
     static STORYFLAG_MANAGER: *mut c_void;
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
+    fn checkStoryflagIsSet(p: *const c_void, flag: u16) -> bool;
+}
+
+fn storyflag_check(flag: u16) -> bool {
+    unsafe { checkStoryflagIsSet(core::ptr::null(), flag) }
 }
 
 fn sceneflag_set_global(scene_index: u16, flag: u16) {
@@ -225,14 +230,38 @@ fn handle_bk_map_dungeonflag(item: c_ushort) {
     }
 }
 
+const EMPTY_TEXT: &[u8; 2] = b"\0\0";
+const BOSS_KEY_TEXT: &[u8; 18] = b"\0B\0o\0s\0s\0 \0K\0e\0y\0\0";
+const MAP_TEXT: &[u8; 8] = b"\0M\0a\0p\0\0";
+const MAP_AND_BOSS_KEY_TEXT: &[u8; 34] = b"\0B\0o\0s\0s\0 \0K\0e\0y\0 \0a\0n\0d\0 \0M\0a\0p\0\0";
+const COMPLETE_TEXT: &[u8; 18] = b"\0C\0o\0m\0p\0l\0e\0t\0e\0\0";
+const INCOMPLETE_TEXT: &[u8; 22] = b"\0I\0n\0c\0o\0m\0p\0l\0e\0t\0e\0\0";
+
 #[no_mangle]
 fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *const FlowElement) {
     let flow_element = unsafe { &*p_flow_element };
     match flow_element.param3 {
         71 => {
             let dungeon_index = flow_element.param1;
+            let comletion_storyflag = flow_element.param2;
             let key_count = dungeon_global_key_count(dungeon_index);
             text_manager_set_num_args(&[key_count as u32]);
+            let map_and_bk = unsafe { (*dungeonflag_global(dungeon_index))[0] };
+            let bk_map_text = match map_and_bk & 0x82 {
+                0x80 => BOSS_KEY_TEXT.as_ptr(),
+                0x02 => MAP_TEXT.as_ptr(),
+                0x82 => MAP_AND_BOSS_KEY_TEXT.as_ptr(),
+                _ => EMPTY_TEXT.as_ptr(),
+            };
+            text_manager_set_string_arg(bk_map_text as *const c_void, 0);
+            if comletion_storyflag != u16::MAX {
+                let completed_text = if storyflag_check(comletion_storyflag) {
+                    COMPLETE_TEXT.as_ptr()
+                } else {
+                    INCOMPLETE_TEXT.as_ptr()
+                };
+                text_manager_set_string_arg(completed_text as *const c_void, 1);
+            }
         }
         _ => (),
     }

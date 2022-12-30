@@ -543,6 +543,7 @@
       type: type3
       next: Display Custom Command Text
       param1: 11
+      param2: 847
       param3: 71
   - name: Display Custom Command Text
     type: flowadd
@@ -554,7 +555,7 @@
   - name: Custom Command Text
     type: textadd
     unk1: 2
-    text: "Skyview: <numeric arg0>"
+    text: "Skyview(<string arg1>):\nSmall Keys: <numeric arg0>\n<string arg0>"
   #flows for objective status option
   - name: Fi Objective Text
     type: textadd
