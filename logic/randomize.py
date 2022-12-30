@@ -215,6 +215,9 @@ class Rando:
                     random_item = number(random_item, 0)
                 starting_items.add(random_item)
 
+        if self.options["map-mode"] == "Removed":
+            self.placement.add_unplaced_items(set(ALL_MAPS) - starting_items)
+
         self.placement.add_starting_items(starting_items)
 
     def ban_the_banned(self):
@@ -457,7 +460,8 @@ class Rando:
 
         # remove maps from the dungeon pool if maps are shuffled
         if map_mode == "Removed":
-            self.placement.add_unplaced_items(set(ALL_MAPS))
+            pass
+            # handled later
         elif map_mode == "Vanilla":
             self.placement |= VANILLA_MAPS_PLACEMENT(self.norm, self.areas.checks)
         elif map_mode == "Own Dungeon - Restricted":
