@@ -193,6 +193,13 @@ lhz r4, SPAWN_SLAVE+2@l(r4)
 cmplwi r4, 0x3030 ; '00', we assume all stages like XX00 are faron main
 bne 0x8004ec28 ; if not faron main, treat this kikwi as found
 
+; branch to function for rando custom text event flows (if no other matches)
+.org 0x801aff2c
+bgt 0x801b0788
+.org 0x801b0788
+bl rando_text_command_handler
+b 0x801b0764 ; return to original function
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

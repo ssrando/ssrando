@@ -2,11 +2,15 @@
 #![feature(split_array)]
 
 use core::{
+    arch::asm,
     ffi::{c_uint, c_ushort, c_void},
     ptr::slice_from_raw_parts,
 };
 
+use message::{text_manager_set_num_args, FlowElement};
+
 mod filemanager_gen;
+mod message;
 
 #[repr(C)]
 struct SpawnStruct {
@@ -63,6 +67,10 @@ fn dungeonflag_global(scene_index: u16) -> *mut [u16; 8] {
             .as_mut_ptr()
             .add(scene_index as usize)
     }
+}
+
+fn dungeon_global_key_count(scene_index: u16) -> u16 {
+    unsafe { (*dungeonflag_global(scene_index))[1] & 0xF }
 }
 
 fn storyflag_set_to_value(flag: u16, value: u16) {
@@ -214,6 +222,19 @@ fn handle_bk_map_dungeonflag(item: c_ushort) {
             (*dungeonflag_local())[0] |= dungeonflag_mask;
         }
         (*dungeonflag_global(flagindex as u16))[0] |= dungeonflag_mask;
+    }
+}
+
+#[no_mangle]
+fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *const FlowElement) {
+    let flow_element = unsafe { &*p_flow_element };
+    match flow_element.param3 {
+        71 => {
+            let dungeon_index = flow_element.param1;
+            let key_count = dungeon_global_key_count(dungeon_index);
+            text_manager_set_num_args(&[key_count as u32]);
+        }
+        _ => (),
     }
 }
 
