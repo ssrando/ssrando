@@ -181,6 +181,7 @@ b setStoryflagToValue
 ; custom-functions rust project
 .global process_startflags
 .global handle_bk_map_dungeonflag
+.global rando_text_command_handler
 
 .close
 
