@@ -2504,6 +2504,54 @@ F202: # Boko Base
     layer: 1
     room: 5
     objtype: OBJ
+  - name: Add fi NpcTke for hot cave without earrings
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0x19FFFFFB
+      params2: 0xFF1FFFFF
+      posx: 13000
+      posy: 15022.0302734375
+      posz: -23100
+      anglex: 65535
+      angley: 513
+      anglez: 30013
+      id: 0x280A
+      name: NpcTke
+  - name: Add ActTag to hot cave to trigger fi
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFC4
+      params2: 0xFFFFFFFF
+      posx: 11640
+      posy: 14502.8857421875
+      posz: -22080
+      sizex: 1000
+      sizey: 1000
+      sizez: 600
+      anglex: 0
+      angley: 9102
+      anglez: 0
+      id: 0xFC28
+      name: ActTag
+  - name: Add AREA for where fi should spawn
+    type: objadd
+    index: 0
+    room: 5
+    objtype: AREA
+    object:
+      posx: 13400
+      posy: 15000
+      posz: -24130
+      sizex: 2000
+      sizey: 2000
+      sizez: 2000
+      angle: 0
 F221: # Fire Dragon Room
   - name: Remove Eldin Soth from CS
     type: objpatch
