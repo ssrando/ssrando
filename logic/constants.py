@@ -86,8 +86,8 @@ SK = "Sky Keep"
 
 DUNGEON_COMPLETE_STORYFLAGS = {
     SV: 5,
-    ET: 7, 
-    LMF: 935, 
+    ET: 7,
+    LMF: 935,
     AC: 900,
     SSH: 15,
     FS: 901,
@@ -580,7 +580,7 @@ ALL_HINT_REGIONS = dict.fromkeys(
     ]
 )
 
-DUNGEONFLAG_INDICES =  {
+DUNGEONFLAG_INDICES = {
     SV: 11,
     ET: 14,
     LMF: 17,

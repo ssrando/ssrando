@@ -38,6 +38,7 @@ CONTROL_REPLACEMENTS = {
     "<numeric arg4>": "\x0e\x02\x03\x06\x00\x04\xcd",
     "<string arg0>": "\x0e\x02\x02\x04\x00\x00",
     "<string arg1>": "\x0e\x02\x02\x04\x00\x01",
+    "<string arg2>": "\x0e\x02\x02\x04\x00\x02",
     "<heroname>": "\x0e\x02\x00\x00",
 }
 

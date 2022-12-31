@@ -230,13 +230,11 @@ fn handle_bk_map_dungeonflag(item: c_ushort) {
     }
 }
 
-const EMPTY_TEXT: &[u8; 2] = b"\0\0";
-const BOSS_KEY_TEXT: &[u8; 18] = b"\0B\0o\0s\0s\0 \0K\0e\0y\0\0";
-const MAP_TEXT: &[u8; 8] = b"\0M\0a\0p\0\0";
-const MAP_AND_BOSS_KEY_TEXT: &[u8; 26] = b"\0B\0o\0s\0s\0 \0K\0e\0y\0\n\0M\0a\0p\0\0";
-const COMPLETE_TEXT: &[u8; 18] = b"\0C\0o\0m\0p\0l\0e\0t\0e\0\0";
-const INCOMPLETE_TEXT: &[u8; 22] = b"\0I\0n\0c\0o\0m\0p\0l\0e\0t\0e\0\0";
-const UNREQUIRED_TEXT: &[u8; 22] = b"\0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0\0";
+const OBTAINED_TEXT: &[u8; 18] = b"\0O\0b\0t\0a\0i\0n\0e\0d\0\0";
+const UNOBTAINED_TEXT: &[u8; 22] = b"\0U\0n\0o\0b\0t\0a\0i\0n\0e\0d\0\0";
+const COMPLETE_TEXT: &[u8; 42] = b"\0\x0e\0\x00\0\x03\0\x02\0\x08\0 \0C\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+const INCOMPLETE_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x09\0 \0I\0n\0c\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+const UNREQUIRED_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x0C\0 \0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
 
 #[no_mangle]
 fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *const FlowElement) {
@@ -248,13 +246,16 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
             let key_count = dungeon_global_key_count(dungeon_index);
             text_manager_set_num_args(&[key_count as u32]);
             let map_and_bk = unsafe { (*dungeonflag_global(dungeon_index))[0] };
-            let bk_map_text = match map_and_bk & 0x82 {
-                0x80 => BOSS_KEY_TEXT.as_ptr(),
-                0x02 => MAP_TEXT.as_ptr(),
-                0x82 => MAP_AND_BOSS_KEY_TEXT.as_ptr(),
-                _ => EMPTY_TEXT.as_ptr(),
+            let bk_text = match map_and_bk & 0x82 {
+                0x80 => OBTAINED_TEXT.as_ptr(),
+                _ => UNOBTAINED_TEXT.as_ptr(),
             };
-            text_manager_set_string_arg(bk_map_text as *const c_void, 0);
+            let map_text = match map_and_bk & 0x82 {
+                0x02 => OBTAINED_TEXT.as_ptr(),
+                _ => UNOBTAINED_TEXT.as_ptr(),
+            };
+            text_manager_set_string_arg(bk_text as *const c_void, 0);
+            text_manager_set_string_arg(map_text as *const c_void, 1);
             
             let completed_text = if completion_storyflag == 0xFFFF {
                 UNREQUIRED_TEXT.as_ptr()
@@ -263,7 +264,7 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
             } else {
                 INCOMPLETE_TEXT.as_ptr()
             };
-            text_manager_set_string_arg(completed_text as *const c_void, 1);
+            text_manager_set_string_arg(completed_text as *const c_void, 2);
             
         }
         _ => (),

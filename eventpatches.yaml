@@ -517,7 +517,7 @@
     unk1: 2 # Fi text box background
     text: "Your objective is to exit the <b<Temple\nof Hylia>> in the past and defeat any\nbosses in your way.
     \n\nTo do this, you need to raise and\nopen the <r<Gate of Time>> in the <b<Sealed\nTemple>>.
-    \n\nTo reach the <b<Sealed Temple>> you will\nneed to find the <g<Emerald Tablet>> and\njourney to the <b<Faron Province>>.
+    \n\nTo reach the <b<Sealed Temple>>, you will\nneed to find the <g<Emerald Tablet>> and\njourney to the <b<Faron Province>>.
     \n\nTo raise the <r<Gate of Time>>, you must\nacquire the <y<Goddess Harp>> and take it\nto the ancient one in the <b<Sealed\nTemple>>.
     \nTo open the <r<Gate of Time>>, you must\ncomplete the required dungeons and\nobtain the <y<{required_sword}>>."
   - name: Display Fi Objective Text
