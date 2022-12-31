@@ -7,7 +7,7 @@ import yaml
 import json
 from PySide6 import QtWidgets
 from PySide6.QtCore import Qt, QTimer, QEvent, QStringListModel
-from PySide6.QtGui import QFontDatabase
+from PySide6.QtGui import QFontDatabase, QPalette, QColor
 from PySide6.QtWidgets import (
     QMainWindow,
     QAbstractButton,
@@ -21,11 +21,12 @@ from PySide6.QtWidgets import (
     QErrorMessage,
     QInputDialog,
     QLineEdit,
+    QApplication,
+    QStyleFactory,
 )
 from gui.sort_model import LocationsModel
 
 from logic.logic_input import Areas
-from logic.constants import BANNABLE_TYPES
 from options import OPTIONS, Options
 from gui.progressdialog import ProgressDialog
 from gui.guithreads import RandomizerThread, ExtractSetupThread
@@ -78,7 +79,7 @@ class RandoGUI(QMainWindow):
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
-            if option["name"] != "Banned Types" and option["name"] != "Seed":
+            if option["name"] != "Seed":
                 ui_name = option.get("ui", None)
                 self.option_map[ui_name] = option
                 if not ui_name:
@@ -180,73 +181,6 @@ class RandoGUI(QMainWindow):
         self.ui.delete_preset.clicked.connect(self.delete_preset)
         self.preset_selection_changed()
 
-        self.location_descriptions = {
-            "skyloft": "Enables progression items to appear on Skyloft",
-            "sky": "Enables progression items to appear in The Sky",
-            "thunderhead": "Enables progression items to appear in The Thunderhead",
-            "faron": "Enables progression items to appear in the Faron Province",
-            "eldin": "Enables progression items to appear in the Eldin Province",
-            "lanayru": "Enables progression items to appear in the Lanayru Province",
-            "dungeon": "Enables progression items to appear in dungeons",
-            "mini_dungeon": "Enables progression items to appear inside Mini Dungeons (i.e. the nodes in "
-            "Lanayru Desert)",
-            "free_gift": "Enables progression items to appear as free gifts from NPCs (i.e. the shield from "
-            "Professor Owlan)",
-            "freestanding": "Enables progression items to appear as freestanding items in the world "
-            "(does not include the freestanding gratitude crystals)",
-            "miscellaneous": "Enables progression items to appear in miscellaneous locations that don't fit into "
-            "any other category (i.e. overworld chests) ",
-            "silent_realm": "Enables progression items to appear as rewards for completing Silent Realm trials",
-            "digging": "Enables progression items to appear in digging spots in the world (does not include Mogma "
-            "Mitts checks, such as the one in Volcano Summit or in Fire Sanctuary)",
-            "bombable": "Enables progression items to appear behind bombable walls or other bombable structures",
-            "combat": "Enables progression items to appear as rewards for combat or completing a quest involving "
-            "combat (i.e. Digging Mitts fight, Kikwi rescue). Does not impact combat within dungeons",
-            "song": "Enables progression items to appear in place of learning songs (from Isle of Song, Ballad of the "
-            "Goddess in Sealed Temple, Song of the Hero from Levias)",
-            "spiral_charge": "Enables progression items to appear in the chests in the sky requiring Spiral Charge to"
-            " access",
-            "minigame": "Enables progression items to appear as rewards from winning minigames",
-            "crystal": "Enables progression items to appear as loose crystals (currently not randomized and must "
-            "always be enabled)",
-            "short": "Enables progression items to appear as rewards for completing short quests (i.e. rescuing"
-            " Orielle)",
-            "long": "Enables progression items to appear as rewards for completing long quests (i.e. Peatrice)",
-            "fetch": "Enables progression items to appear as rewards for returning items to NPCs ",
-            "crystal_quest": "Enables progression items to appear as rewards for completing Gratitude Crystal quests",
-            "scrapper": "Enables progression items to appear as rewards for Scrapper Quests",
-            "peatrice": "Enables a progression item to appear as the reward for completing the Peatrice side quest"
-            " (if Long Quests is enabled)",
-            "beedle": "Enables progression items to be sold in Beedle's shop",
-            "cheap": "Enables progression items to be sold for 300 rupees or less. Applies to all shops where "
-            "progression items can appear.",
-            "medium": "Enables progression items to be sold for between 301 and 1000 rupees. Applies to all "
-            "shops where progression items can appear",
-            "expensive": "Enables progression items to be sold for more than 1000 rupees. Applies to all shops"
-            "where progression items can appear",
-            "flooded_faron": "Enables progression items to appear as the Song of the Hero Quest in Flooded Faron Woods",
-            "goddess": "Enables progression items to appear as items in Goddess Chests",
-            "faron_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
-            "Faron Woods and Deep Woods",
-            "eldin_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes in "
-            "the main part of Eldin Volcano and Mogma Turf",
-            "lanayru_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in the main part of Lanayru Desert, Temple of Time and Lanayru Mine",
-            "floria_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in Lake Floria",
-            "summit_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in Volcano Summit",
-            "sand_sea_goddess": "Enables progression items to appear in the Goddess Chests linked to the Goddess Cubes "
-            "in Lanayru Sand Sea",
-        }
-        for check_type in BANNABLE_TYPES:
-            widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
-            widget.setChecked(not check_type in self.options["banned-types"])
-            if check_type == "crystal":
-                widget.setEnabled(False)
-            widget.clicked.connect(self.update_settings)
-            widget.installEventFilter(self)
-
         # hide currently unsupported options to make this version viable for public use
         getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
         getattr(self.ui, "option_got_starting_state").setVisible(False)
@@ -264,7 +198,6 @@ class RandoGUI(QMainWindow):
         self.ui.randomize_button.clicked.connect(self.randomize)
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
-        self.ui.progression_goddess.clicked.connect(self.goddess_cubes_toggled)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.update_ui_for_settings()
         self.update_settings()
@@ -403,7 +336,7 @@ class RandoGUI(QMainWindow):
         self.ui.output_folder.setText(str(self.options["output-folder"]))
         self.ui.seed.setText(str(self.options["seed"]))
         for option_key, option in OPTIONS.items():
-            if option["name"] != "Banned Types" and option["name"] != "Seed":
+            if option["name"] != "Seed":
                 ui_name = option.get("ui", None)
                 if not ui_name:
                     continue
@@ -437,9 +370,6 @@ class RandoGUI(QMainWindow):
                             health_string += " and " + str(health % 4) + " pieces"
                         heart_string.setText(health_string)
 
-        for check_type in BANNABLE_TYPES:
-            widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
-            widget.setChecked(not check_type in current_settings["banned-types"])
         self.enabled_tricks_model = QStringListModel()
         self.disabled_tricks_model = QStringListModel()
         if "Glitchless" in current_settings["logic-mode"]:
@@ -521,17 +451,11 @@ class RandoGUI(QMainWindow):
                 pass
 
         for option_command, option in OPTIONS.items():
-            if (
-                option["name"] != "Banned Types"
-                and option["name"] != "Seed"
-                and "Enabled Tricks" not in option["name"]
-            ):
+            if option["name"] != "Seed" and "Enabled Tricks" not in option["name"]:
                 ui_name = option.get("ui", None)
                 if not ui_name:
                     continue
                 self.options.set_option(option_command, self.get_option_value(ui_name))
-
-        self.options.set_option("banned-types", self.get_banned_types())
 
         # handle tricks
         logic_mode = getattr(self.ui, "option_logic_mode").currentText()
@@ -609,14 +533,6 @@ class RandoGUI(QMainWindow):
             return widget.model().stringList()
         else:
             print("Option widget is invalid: %s" % option_name)
-
-    def get_banned_types(self):
-        banned_types = []
-        for check_type in BANNABLE_TYPES:
-            widget = getattr(self.ui, "progression_" + check_type.replace(" ", "_"))
-            if not widget.isChecked():
-                banned_types.append(check_type)
-        return banned_types
 
     @staticmethod
     def append_row(model, value):
@@ -749,16 +665,11 @@ class RandoGUI(QMainWindow):
         if event.type() == QEvent.Enter:
             ui_name = target.objectName()
 
-            if ui_name.startswith("progression_"):
-                ui_name = ui_name[len("progression_") :]
-                self.set_option_description(self.location_descriptions[ui_name])
+            if ui_name.startswith("label_for_"):
+                ui_name = ui_name[len("label_for_") :]
 
-            else:
-                if ui_name.startswith("label_for_"):
-                    ui_name = ui_name[len("label_for_") :]
-
-                option = self.option_map[ui_name]
-                self.set_option_description(option["help"])
+            option = self.option_map[ui_name]
+            self.set_option_description(option["help"])
 
             return True
         elif event.type() == QEvent.Leave:
@@ -787,21 +698,39 @@ class RandoGUI(QMainWindow):
             print(e)
         self.update_ui_for_settings()
 
-    def goddess_cubes_toggled(self):
-        enabled = self.ui.progression_goddess.isChecked()
-        self.ui.progression_faron_goddess.setEnabled(enabled)
-        self.ui.progression_eldin_goddess.setEnabled(enabled)
-        self.ui.progression_lanayru_goddess.setEnabled(enabled)
-        self.ui.progression_floria_goddess.setEnabled(enabled)
-        self.ui.progression_summit_goddess.setEnabled(enabled)
-        self.ui.progression_sand_sea_goddess.setEnabled(enabled)
-
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
 
 
 def run_main_gui(areas: Areas, options: Options):
-    app = QtWidgets.QApplication([])
+    app = QApplication([])
+    app.setStyle(QStyleFactory.create("fusion"))
+
+    # darkPalette = QPalette()
+    # darkColor = QColor(45, 45, 45)
+    # disabledColor = QColor(127, 127, 127)
+    # darkPalette.setColor(QPalette.Window, darkColor)
+    # darkPalette.setColor(QPalette.WindowText, Qt.white)
+    # darkPalette.setColor(QPalette.Base, QColor(18, 18, 18))
+    # darkPalette.setColor(QPalette.AlternateBase, darkColor)
+    # darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
+    # darkPalette.setColor(QPalette.ToolTipText, Qt.white)
+    # darkPalette.setColor(QPalette.Text, Qt.white)
+    # darkPalette.setColor(QPalette.Disabled, QPalette.Text, disabledColor)
+    # darkPalette.setColor(QPalette.Button, darkColor)
+    # darkPalette.setColor(QPalette.ButtonText, Qt.white)
+    # darkPalette.setColor(QPalette.Disabled, QPalette.ButtonText, disabledColor)
+    # darkPalette.setColor(QPalette.BrightText, Qt.red)
+    # darkPalette.setColor(QPalette.Link, QColor(42, 130, 218))
+
+    # darkPalette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+    # darkPalette.setColor(QPalette.HighlightedText, Qt.black)
+    # darkPalette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabledColor)
+
+    # app.setPalette(darkPalette)
+    app.setStyleSheet(
+        "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }"
+    )
 
     widget = RandoGUI(areas, options)
     widget.show()

@@ -3,7 +3,7 @@
 ; patch all boss keys and maps (which have 2 as their item set flagtype) to set their flag through a custom function
 ; that works everywhere
 mr r3, r30
-bl handleBossKeyMapDungeonflag
+bl handle_bk_map_dungeonflag
 b 0x80251d48
 
 .org 0x80253cf8

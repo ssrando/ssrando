@@ -2,12 +2,12 @@ main.dol:
   fix_freestanding_item_y_offset: 0x806782C0
   should_increase_freestanding_model_size: 0x806782EC
   setStoryflagToValue: 0x8067831C
-  handleBossKeyMapDungeonflag: 0x80678350
-  handleSmallKeyGet: 0x80678410
-  setSceneflagForArea: 0x806784B0
-  alloc_keyboard_arcs_conditional: 0x80678520
-  unset_sandship_timestone_if_necessary: 0x8067856C
-  process_startflags: 0x8067859C
+  handleSmallKeyGet: 0x80678340
+  setSceneflagForArea: 0x806783E0
+  alloc_keyboard_arcs_conditional: 0x80678450
+  unset_sandship_timestone_if_necessary: 0x8067849C
+  process_startflags: 0x806784CC
+  handle_bk_map_dungeonflag: 0x80678740
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:

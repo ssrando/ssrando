@@ -1,7 +1,7 @@
 import copy
 from pathlib import Path
 import random
-from collections import OrderedDict, defaultdict
+from collections import Counter, OrderedDict, defaultdict
 
 import yaml
 import json
@@ -1208,7 +1208,7 @@ class GamePatcher:
             filtered_storyflags.append(storyflag)
         self.startstoryflags = filtered_storyflags
 
-        self.startitemflags = self.patches["global"]["startitems"]
+        self.startitemflags = {flag: 1 for flag in self.patches["global"]["startitems"]}
 
         # patches from randomizing items
         filtered_item_locations = self.placement_file.item_locations.copy()
@@ -1550,7 +1550,7 @@ class GamePatcher:
             soth_part in self.placement_file.starting_items
             for soth_part in SONG_OF_THE_HERO_PARTS
         ):
-            self.startitemflags.append(ITEM_FLAGS[SONG_OF_THE_HERO])
+            self.startitemflags[ITEM_FLAGS[SONG_OF_THE_HERO]] = 1
 
         # Give the completed triforce storyflag if all 3 triforce pieces are added as starting items.
         if all(
@@ -1565,40 +1565,67 @@ class GamePatcher:
             self.startstoryflags.append(ITEM_STORY_FLAGS[FULL_ET_KEY])
 
         # Add starting story and item flags.
-        self.starting_heart_containers = 0
-        self.starting_heart_pieces = 0
-        for item in self.placement_file.starting_items:
-            item = strip_item_number(item)
-            self.startstoryflags = self._starting_item_helper(
-                ITEM_STORY_FLAGS, item, self.startstoryflags
-            )
-            self.startitemflags = self._starting_item_helper(
-                ITEM_FLAGS, item, self.startitemflags
-            )
-            if item == HEART_CONTAINER:
-                self.starting_heart_containers += 1
-            elif item == HEART_PIECE:
-                self.starting_heart_pieces += 1
-            if item in ITEM_COUNT_FLAGS:
-                self.startitemflags.append(ITEM_COUNT_FLAGS[item])
-        if ITEM_STORY_FLAGS[PROGRESSIVE_POUCH][0] in self.startstoryflags:
-            self.startstoryflags.append(30)  # Vanilla storyflag for pouch.
+        start_item_counts = Counter(
+            map(strip_item_number, self.placement_file.starting_items)
+        )
+        # health is calculated in quarter hearts
+        starting_health = 6 * 4
+        starting_health += start_item_counts.pop(HEART_CONTAINER, 0) * 4
+        starting_health += start_item_counts.pop(HEART_PIECE, 0)
 
-    def _starting_item_helper(self, flags, item, startflags):
-        if item in flags:
-            # Progressive flags.
-            if type(flags[item]) is list:
-                for flag in flags[item]:
-                    if flag not in startflags:
-                        startflags.append(flag)
-                        break
-            # Items needing multiple flags (e.g. harp).
-            elif type(flags[item]) is tuple:
-                for flag in flags[item]:
-                    startflags.append(flag)
-            else:
-                startflags.append(flags[item])
-        return startflags
+        self.starting_full_hearts = (starting_health // 4) * 4
+        self.startitemflags[ITEM_COUNT_FLAGS[HEART_PIECE]] = starting_health % 4
+
+        ALL_DUNGEON_LIKE = ALL_DUNGEONS + [LANAYRU_CAVES]
+        assert len(ALL_DUNGEON_LIKE) == 8
+        self.startdungeonflags = []
+
+        for i, dungeon in enumerate(ALL_DUNGEON_LIKE):
+            dungeonbyte = 0
+            if start_item_counts.pop(f"{dungeon} Map", 0) >= 1:
+                dungeonbyte |= 0x02
+            if start_item_counts.pop(f"{dungeon} Boss Key", 0) >= 1:
+                dungeonbyte |= 0x80
+            count = start_item_counts.pop(f"{dungeon} Small Key", 0)
+            dungeonbyte |= count << 2
+            self.startdungeonflags.append(dungeonbyte)
+
+        for item, count in start_item_counts.items():
+            # item flags
+            if (entry := ITEM_FLAGS.get(item)) is not None:
+                # tuple means add all flags
+                if isinstance(entry, tuple):
+                    for flag in entry:
+                        self.startitemflags[flag] = 1
+                # list means progressive item, only add flags up to the start count
+                elif isinstance(entry, list):
+                    for flag in entry[:count]:
+                        self.startitemflags[flag] = 1
+                elif isinstance(entry, int):
+                    self.startitemflags[entry] = 1
+                else:
+                    raise ValueError(f"expected list, tuple or int, got : {entry}")
+            # story flags
+            if (entry := ITEM_STORY_FLAGS.get(item)) is not None:
+                if isinstance(entry, tuple):
+                    self.startstoryflags.extend(entry)
+                elif isinstance(entry, list):
+                    self.startstoryflags.extend(entry[:count])
+                elif isinstance(entry, int):
+                    self.startstoryflags.append(entry)
+                else:
+                    raise ValueError(f"expected list, tuple or int, got : {entry}")
+            if item == PROGRESSIVE_POUCH:
+                self.startstoryflags.append(30)  # Vanilla storyflag for pouch.
+            if (ammo_flag_count := START_AMMO_COUNTS.get(item)) is not None:
+                # to fill up ammo for items that use it
+                self.startitemflags[ammo_flag_count[0]] = ammo_flag_count[1]
+            if (counter := ITEM_COUNT_FLAGS.get(item)) is not None:
+                if item == PROGRESSIVE_POUCH:
+                    actual_count = count - 1
+                else:
+                    actual_count = count
+                self.startitemflags[counter] = actual_count
 
     def add_required_dungeon_patches(self):
         # Add required dungeon patches to eventpatches
@@ -2430,25 +2457,10 @@ class GamePatcher:
             start_flags_write.write(struct.pack(">H", flag))
         start_flags_write.write(bytes.fromhex("FFFF"))
         # itemflags
-        for flag in self.startitemflags:
+        for (flag, count) in self.startitemflags.items():
             assert flag < 0x1FF
-            if flag in DEFAULT_ITEM_COUNTS:
-                flag |= DEFAULT_ITEM_COUNTS[flag] << 9
-            elif (
-                flag != ITEM_COUNT_FLAGS[HEART_PIECE]
-                and flag in ITEM_COUNT_FLAGS.values()
-            ):
-                if flag == ITEM_COUNT_FLAGS[PROGRESSIVE_POUCH]:
-                    flag |= (self.startitemflags.count(flag) - 1) << 9
-                else:
-                    flag |= self.startitemflags.count(flag) << 9
-            elif flag not in (HEART_CONTAINER_ITEM_FLAG, HEART_PIECE_ITEM_FLAG):
-                flag |= 1 << 9
-            start_flags_write.write(struct.pack(">H", flag))
-        heart_piece_flag = ITEM_COUNT_FLAGS[HEART_PIECE] | (
-            (self.starting_heart_pieces % 4) << 9
-        )
-        start_flags_write.write(struct.pack(">H", heart_piece_flag))
+            assert count < 0x7F
+            start_flags_write.write(struct.pack(">H", (count << 9) | flag))
         start_flags_write.write(bytes.fromhex("FFFF"))
         # sceneflags
         for flagregion, flags in (
@@ -2465,14 +2477,12 @@ class GamePatcher:
                     flag = flag["flag"]
                 start_flags_write.write(struct.pack(">BB", flagregionid, flag))
         start_flags_write.write(bytes.fromhex("FFFF"))
+        # dungeonflags
+        start_flags_write.write(bytes(self.startdungeonflags))
         # Starting rupee count.
         start_flags_write.write(struct.pack(">H", 0))
         # Start health.
-        heart_container_count = self.starting_heart_containers
-        heart_piece_count = self.starting_heart_pieces
-        # (default health + num of containers + num of containers from pieces) * pieces per container
-        starting_health = (6 + heart_container_count + (heart_piece_count // 4)) * 4
-        start_flags_write.write(struct.pack(">H", starting_health))
+        start_flags_write.write(struct.pack(">B", self.starting_full_hearts))
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:
             raise Exception(

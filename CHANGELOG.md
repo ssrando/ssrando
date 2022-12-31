@@ -23,7 +23,13 @@
     - Moves the first 2 chests in Volcano Summit back to Bokoblin Base now that it can be accessed
   - Summit cannot be entered without Fireshield Earrings. Fi will appear as in Eldin Volcano
   - Talking to the Fire Dragon takes you back to Eldin Volcano, in front of the Shiekah Stone
+- Added the ability to ban individual locations (by cjs07)
+- Removed the "Banned Types" option
 ### Changes
+- New GUI (by cjs07)
+  - Rearranged options and regrouped into simpler, broader categories
+  - Removed the Progress Locations tab
+  - Made many miscellaneous changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
   - The randomizer is distributed with a set of default presets that cannot be changed
