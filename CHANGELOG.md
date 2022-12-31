@@ -34,6 +34,7 @@
 - Shooting the bell during pumpkin archery ends the minigame immediately
 - Removed first time textboxes (by CovenEsme)
   - Removes rupee, heart, arrow, bomb, stamina fruit, silent realm tear and light fruit first time textboxes
+- Removed the panning cutscenes during the Fledge's Gift check (by CovenEsme)
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
