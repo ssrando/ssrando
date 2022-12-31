@@ -539,7 +539,7 @@
   - name : Fi Objective Triforce Text
     type: textadd
     unk1: 2
-    text: "You will need to gather the three\npieces of the <y+<Triforce>> to exit the\n<b<Temple of Hylia>> in the past."
+    text: "You will also need to gather the\nthree pieces of the <y+<Triforce>> to\nexit the <b<Temple of Hylia>> in the\npast."
   - name: Display Fi Objective Triforce Text
     type: flowadd
     flow: 
