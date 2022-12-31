@@ -1782,6 +1782,20 @@
     index: 281
     flow:
       next: -1
+  - name: Pre circles mogma text to flag give flow
+    type: flowpatch
+    index: 124
+    flow:
+      next: Pre circles mogma gives bat shed open flag
+  - name: Pre circles mogma gives bat shed open flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 66 # set scene flag
+      param2: 1
+      next: -1
+      param3: 2
 301-MountainD1:
   - name: remove ghirahim text before scaldera
     type: flowpatch

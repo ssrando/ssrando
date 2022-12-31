@@ -2273,12 +2273,20 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       params1: 0xFFF0FF18
-  - name: remove NpcTke before circles cutscene
+  - name: Remove NpcTke before circles cutscene
     type: objdelete
     id: 0xFCBF
     layer: 1
     room: 2
     objtype: OBJ
+  - name: Keep pre circles mogma above ground
+    type: objpatch
+    id: 0xFCBE
+    layer: 1
+    room: 2
+    objtype: OBJ
+    object:
+      anglex: 12031 #keep mogma above ground
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
