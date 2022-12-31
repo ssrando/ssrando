@@ -131,7 +131,7 @@
         "demise-count": 1,
         "cube-sots": false,
         "precise-item": false,
-        "shuffle-trial-objects": "Full",
+        "shuffle-trial-objects": "None",
         "dowsing-after-whitesword": false,
         "chest-dowsing": "Vanilla",
         "dungeon-dowsing": false,
