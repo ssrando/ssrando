@@ -1564,7 +1564,7 @@ class GamePatcher:
         self.starting_full_hearts = (starting_health // 4) * 4
         self.startitemflags[ITEM_COUNT_FLAGS[HEART_PIECE]] = starting_health % 4
 
-        ALL_DUNGEON_LIKE = ALL_DUNGEONS + [LANAYRU_CAVES]
+        ALL_DUNGEON_LIKE = ALL_DUNGEONS + [LANAYRU_CAVES] #[SV, ET, LMF, AC, SSH, FS, SK, LANAYRU_CAVES]
         assert len(ALL_DUNGEON_LIKE) == 8
         self.startdungeonflags = []
 
@@ -1698,6 +1698,43 @@ class GamePatcher:
         fi_objective_text["text"] = fi_objective_text["text"].replace(
             "{required_sword}", self.placement_file.options["got-sword-requirement"]
         )
+
+        for dungeon_index, dungeon in enumerate(REGULAR_DUNGEONS):
+            self.eventpatches["006-8KenseiNormal"].append(
+                {
+                    "name": f"{dungeon} Status Values Command Call",
+                    "type": "flowadd",
+                    "flow": {
+                        "type": "type3",
+                        "next": f"Display {dungeon} Status Text",
+                        "param1": DUNGEONFLAG_INDICES[dungeon],
+                        "param2": DUNGEON_COMPLETE_STORYFLAGS[dungeon] if dungeon in self.placement_file.required_dungeons else -1,
+                        "param3": 71,
+                    },
+                }
+            )
+
+            self.eventpatches["006-8KenseiNormal"].append(
+                {
+                    "name": f"Display {dungeon} Status Text",
+                    "type": "flowadd",
+                    "flow": {
+                        "type": "type1",
+                        "next": f"{REGULAR_DUNGEONS[dungeon_index + 1]} Status Values Command Call" if dungeon_index < 5 else -1, #replace with next dungeon command later
+                        "param3": 68,
+                        "param4": f"{dungeon} Status Text",
+                    },      
+                }
+            )
+
+            self.eventpatches["006-8KenseiNormal"].append(
+                {
+                    "name": f"{dungeon} Status Text",
+                    "type": "textadd",
+                    "unk1": 2,
+                    "text": f"{dungeon}: <string arg1>\nSmall Keys: <numeric arg0>\n<string arg0>",
+                }
+            )
 
     def add_trial_hint_patches(self):
         def find_event(filename, name):

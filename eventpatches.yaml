@@ -493,7 +493,7 @@
   - name: Fi Status Text
     type: textadd
     unk1: 2 # Fi text box background
-    text: "Yes, Master. What information do\nyou seek?\n[1]Dungeon Status[2]Inventory Status[3]Objective[4-]Never mind."
+    text: "Yes, Master. What information do\nyou seek?\n[1]Dungeon Status[2]Objective[3-]Never mind."
   - name: Display Fi Status Text
     type: flowadd
     flow:
@@ -508,54 +508,9 @@
       param2: 0
       param3: 0
     cases:
-      - Display Fi Dungeon Status Text
-      - Custom Command Test
+      - Skyview Status Values Command Call
       - Display Fi Objective Text
       - -1 #returns
-  #flows for dungeon status option
-  - name: Fi Dungeon Status Text
-    type: textadd
-    unk1: 2 # Fi text box background
-    text: "Dungeon status"
-  - name: Display Fi Dungeon Status Text
-    type: flowadd
-    flow:
-      type: type1
-      next: -1
-      param3: 68
-      param4: Fi Dungeon Status Text
-  #flows for inventory status option
-  - name: Fi Inventory Status Text
-    type: textadd
-    unk1: 2 # Fi text box background
-    text: "Inventory status"
-  - name: Display Fi Inventory Status Text
-    type: flowadd
-    flow:
-      type: type1
-      next: -1
-      param3: 68
-      param4: Fi Inventory Status Text
-  #TEST
-  - name: Custom Command Test
-    type: flowadd
-    flow:
-      type: type3
-      next: Display Custom Command Text
-      param1: 11
-      param2: -1
-      param3: 71
-  - name: Display Custom Command Text
-    type: flowadd
-    flow:
-      type: type1
-      next: -1
-      param3: 68
-      param4: Custom Command Text
-  - name: Custom Command Text
-    type: textadd
-    unk1: 2
-    text: "Skyview: <string arg1>\nSmall Keys: <numeric arg0>\n<string arg0>"
   #flows for objective status option
   - name: Fi Objective Text
     type: textadd
