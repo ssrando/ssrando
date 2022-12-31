@@ -2147,6 +2147,36 @@ D101: # Ancient Cistern
     layer: 0
     room: 10
     objtype: STAG
+  - name: Remove East Part Lily Pad CS 1
+    type: objdelete
+    id: 0xFC1C
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: Remove East Part Lily Pad CS 2
+    type: objdelete
+    id: 0xFC1B
+    layer: 0
+    room: 1
+    objtype: STAG
+  - name: Remove East Part Main Path Lily Pad CS
+    type: objdelete
+    id: 0xFC29
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove Waterfall Switch Lily Pad CS
+    type: objdelete
+    id: 0xFC8D
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove Underground Lily Pad CS
+    type: objdelete
+    id: 0xFC84
+    layer: 0
+    room: 4
+    objtype: STAG
 F200: # Eldin main area
   - name: Layer override
     type: layeroverride
