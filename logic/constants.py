@@ -736,49 +736,6 @@ GONDO_ITEMS = {
 }
 
 
-BANNABLE_TYPES = [
-    EIN("skyloft"),
-    EIN("sky"),
-    EIN("thunderhead"),
-    EIN("faron"),
-    EIN("eldin"),
-    EIN("lanayru"),
-    EIN("dungeon"),
-    EIN("mini dungeon"),
-    EIN("free gift"),
-    EIN("freestanding"),
-    EIN("miscellaneous"),
-    EIN("silent realm"),
-    EIN("digging"),
-    EIN("bombable"),
-    EIN("combat"),
-    EIN("song"),
-    EIN("spiral charge"),
-    EIN("minigame"),
-    EIN("crystal"),
-    EIN("short"),
-    EIN("long"),
-    EIN("fetch"),
-    EIN("crystal quest"),
-    EIN("scrapper"),
-    EIN("peatrice"),
-    EIN("beedle"),
-    EIN("cheap"),
-    EIN("medium"),
-    EIN("expensive"),
-    EIN("flooded faron"),
-    EIN("goddess"),
-    EIN("faron goddess"),
-    EIN("eldin goddess"),
-    EIN("lanayru goddess"),
-    EIN("floria goddess"),
-    EIN("summit goddess"),
-    EIN("sand sea goddess"),
-]
-
-
-# lists are used for progressive items,
-# tuples for setting multiple flags for one item
 ITEM_FLAGS = {
     PROGRESSIVE_BOW: [19, 90, 91],
     PROGRESSIVE_BEETLE: [53, 75, 76, 77],
