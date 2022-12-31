@@ -16,6 +16,12 @@
   - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
 - Added option to start with extra health (by CovenEsme)
 - Added option to start with a random progress item (by CovenEsme)
+- Added Bokoblin Base as a region visitable in the randomizer (by CovenEsme)
+  - Talking to the Shiekah Stone in the first room in Eldin Volcano takes you to the Bokoblin Base jail
+  - Talking to the Shiekah Stone in the Bokoblin Base jail takes you back to Eldin Volcano
+  - Adds 10 total checks to Bokoblin Base
+    - Moves the first 2 chests in Volcano Summit back to Bokoblin Base now that it can be accessed
+  - Talking to the Fire Dragon takes you back to Eldin Volcano, in front of the Shiekah Stone
 ### Changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
