@@ -914,6 +914,15 @@ F001r: # Knight Academy
     layer: 4
     room: 0
     objtype: OBJ
+  - name: Move Fledge closer to Link's room
+    type: objpatch
+    id: 0xFC77
+    layer: 3
+    room: 0
+    objtype: OBJ
+    object:
+      posx: 850
+      posz: -1700
   - name: Fledge Pouch Check Storyflag at night
     type: objpatch
     id: 0xFC7E
