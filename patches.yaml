@@ -2686,9 +2686,6 @@ F201_1: # Inside Volcano
   - name: Layer override
     type: layeroverride
     override:
-      - story_flag: 19
-        night: 0
-        layer: 4
       - story_flag: 677
         night: 0
         layer: 3
