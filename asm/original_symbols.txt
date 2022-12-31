@@ -42,5 +42,7 @@ main.dol:
     isPlayingHarp: 0x80381120
     SPECIAL_MINIGAME_STATE: 0x80572250
     findActorByActorType: 0x802e2920
+    checkButtonAPressed: 0x80059680
+    checkButtonBHeld: 0x80059880
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C

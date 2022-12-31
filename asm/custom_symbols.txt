@@ -6,8 +6,9 @@ main.dol:
   setSceneflagForArea: 0x806783E0
   alloc_keyboard_arcs_conditional: 0x80678450
   unset_sandship_timestone_if_necessary: 0x8067849C
-  process_startflags: 0x806784CC
-  handle_bk_map_dungeonflag: 0x80678740
+  textbox_a_pressed_or_b_held: 0x806784CC
+  process_startflags: 0x806784FC
+  handle_bk_map_dungeonflag: 0x80678770
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:

@@ -10,6 +10,12 @@ b 0x80269554
 .org 0x80115A04 ; in some function that is text advancing related
 li r4, 1 ; enables instant text
 
+.org 0x80115cf8 ; non-final text box
+bl textbox_a_pressed_or_b_held ; change button function
+
+.org 0x80115f98 ; final text box
+bl textbox_a_pressed_or_b_held ; change button function
+
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
 stwu r1, -0x30(r1) ; change function prologue to match the function it branches to at the end
