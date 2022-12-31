@@ -36,6 +36,7 @@
   - Removes rupee, heart, arrow, bomb, stamina fruit, silent realm tear and light fruit first time textboxes
 - Overhauled call Fi menu (by Muzu, CovenEsme, and Lepelog)
   - Added menu choice to view required dungeons
+    - Removed required dungeons from notice board in academy
   - Added menu choice to view dungeon status
     - Complete/Incomplete/Unrequired
     - Small key count
