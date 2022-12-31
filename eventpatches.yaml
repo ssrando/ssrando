@@ -919,37 +919,7 @@
     type: flowpatch
     index: 16
     flow:
-      next: Show Fledge pre-dungeon text
-  - name: Fledge pre-dungeon text
-    type: textadd
-    text: "One more thing, <heroname>! Here are your\n<r<required dungeons>> for your adventure."
-  - name: Show Fledge pre-dungeon text
-    type: flowadd
-    flow:
-      type: type1
-      next: 21
-      param3: 0
-      param4: Fledge pre-dungeon text
-  # added during generation with correct text
-  # - name: Fledge Dungeon text
-  #   type: textpatch
-  #   index: 4
-  #   text: "Required dungeons:\nA\nB"
-  - name: Show more text after Fledge Dungeon text
-    type: flowpatch
-    index: 21
-    flow:
-      next: Show Fledge post-dungeon text
-  - name: Fledge post-dungeon text
-    type: textadd
-    text: "If you need to hear your <r<required\ndungeons>> again, just ask me! You can\nalso check them on the <b<bulletin board>>\nover there."
-  - name: Show Fledge post-dungeon text
-    type: flowadd
-    flow:
-      type: type1
-      next: 100
-      param3: 0
-      param4: Fledge post-dungeon text
+      next: -1
 115-Town2:
   - name: Shorten Karane letter text
     type: flowpatch

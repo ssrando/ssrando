@@ -1635,9 +1635,18 @@ class GamePatcher:
                 self.placement_file.required_dungeons
             )
 
-            required_dungeons_text = self._format_required_dungeons_text(
-                required_dungeons_text, 27
-            )
+            # try to fit the text in as few lines as possible, breaking up at spaces if necessary
+            cur_line = ""
+            combined = ""
+
+            for part in required_dungeons_text.split(" "):
+                if len(cur_line + part) > 27:  # limit of one line
+                    combined += cur_line + "\n"
+                    cur_line = part + " "
+                else:
+                    cur_line += part + " "
+            combined += cur_line
+            required_dungeons_text = combined.strip()
 
         self.eventpatches["107-Kanban"].append(
             {
@@ -1647,45 +1656,6 @@ class GamePatcher:
                 "text": required_dungeons_text,
             }
         )
-
-        if required_dungeon_count >= 4:
-            required_dungeons_text = self._format_required_dungeons_text(
-                required_dungeons_text, 36
-            )
-
-        self.eventpatches["114-Friend"].append(
-            {
-                "name": "Fledge's Gift Dungeon text",
-                "type": "textpatch",
-                "index": 4,
-                "text": required_dungeons_text,
-            }
-        )
-
-        self.eventpatches["114-Friend"].append(
-            {
-                "name": "Fledge's Gift Dungeon text (repeat)",
-                "type": "textpatch",
-                "index": 15,
-                "text": required_dungeons_text,
-            }
-        )
-
-    def _format_required_dungeons_text(self, required_dungeons_text, max_line_length):
-        # try to fit the text in as few lines as possible, breaking up at spaces if necessary
-        cur_line = ""
-        combined = ""
-
-        required_dungeons_text = required_dungeons_text.replace("\n", "")
-
-        for part in required_dungeons_text.split(" "):
-            if len(cur_line + part) > max_line_length:  # limit of one line
-                combined += cur_line + "\n"
-                cur_line = part + " "
-            else:
-                cur_line += part + " "
-        combined += cur_line
-        return combined.strip()
 
     def add_trial_hint_patches(self):
         def find_event(filename, name):
