@@ -34,6 +34,15 @@
 - Shooting the bell during pumpkin archery ends the minigame immediately
 - Removed first time textboxes (by CovenEsme)
   - Removes rupee, heart, arrow, bomb, stamina fruit, silent realm tear and light fruit first time textboxes
+- Overhauled call Fi menu (by Muzu, CovenEsme, and Lepelog)
+  - Added menu choice to view required dungeons
+  - Added menu choice to view dungeon status
+    - Complete/Incomplete/Unrequired
+    - Small key count
+    - Boss key obtained status
+    - Dungeon map obtained status
+  - Added menu choice to view general requirements for beating a seed (e.g. how to raise and open Gate of Time, etc.)
+  - Added explicit menu choice to view play time (temporarily to fill space)
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
