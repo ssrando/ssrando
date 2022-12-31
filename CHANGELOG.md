@@ -12,6 +12,9 @@
   - Progress Items: Main quest dowsing will point to chests that contain progress items
   - Currently does not work on goddess chests
 - Added option to enable dowsing in dungeons (by YourAverageLink, but shoutouts to Zeldex)
+- Added hint distribution designed for use with the new chest dowsing feature 
+  - Removes hints for easily dowsable chests and adds some for non-dowsable checks
+  - Only shows one hint per Gossip Stone
 - Added option to start with various items (by CovenEsme)
   - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
 - Added option to start with extra health (by CovenEsme)
