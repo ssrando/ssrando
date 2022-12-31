@@ -29,6 +29,7 @@ global:
     - 28 # Pratice Sword storyflag
     - 519 # Updated Sand Sea map
     - 115 # Full Lake Floria map
+    - 129 # Updated Lanayru Desert map
     - 180 # Thrill digger entrance CS
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
@@ -90,6 +91,7 @@ global:
     Lanayru Desert:
       - 68 # desert statue checked
       - 7 # pushed first minecart to end
+      - 3 # Obtain map of the past from robot in ToT area
       - onlyif: Option "open-lmf" Is "Open"
         flag: 30 # LMF Rises CS
       - onlyif: Option "open-lmf" Is "Open"
