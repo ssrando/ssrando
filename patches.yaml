@@ -2273,6 +2273,14 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       params1: 0xFFF0FF18
+  - name: Remove thrill digger tower cs
+    type: objpatch
+    id: 0x1C0C
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xCFF0FF1A
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
