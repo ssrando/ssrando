@@ -16,7 +16,13 @@
   - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
 - Added option to start with extra health (by CovenEsme)
 - Added option to start with a random progress item (by CovenEsme)
+- Added the ability to ban individual locations (by cjs07)
+- Removed the "Banned Types" option
 ### Changes
+- New GUI (by cjs07)
+  - Rearranged options and regrouped into simpler, broader categories
+  - Removed the Progress Locations tab
+  - Made many miscellaneous changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
   - The randomizer is distributed with a set of default presets that cannot be changed
