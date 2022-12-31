@@ -16,6 +16,11 @@
     index: 462 # skip scene change after getting goddess sword
     flow:
       next: -1
+  - name: Remove bipping after practice sword
+    type: flowpatch
+    index: 383
+    flow:
+      next: -1
   - name: Remove Triforce of Wisdom Scene change (1st part)
     type: flowpatch
     index: 531
@@ -436,6 +441,11 @@
     index: 613
     flow:
       next: -1
+  - name: Remove bipping after getting slingshot
+    type: flowpatch
+    index: 520
+    flow:
+      next: -1
 004-Object:
   - name: Remove Heart piece hint from gossip stone
     type: flowpatch
@@ -560,6 +570,12 @@
       param2: 11
       next: Rando Dungeon 1 check
       param3: 4
+101-Shop:
+  - name: Remove pouch bipping after item seller
+    type: flowpatch
+    index: 89
+    flow:
+      next: 116
 102-Zelda:
   - name: Fledge Quest Switch 1
     type: flowpatch
@@ -747,6 +763,11 @@
     index: 103
     flow:
       param2: 8 # raised LMF
+  - name: Remove pouch bipping from Potion Lady
+    type: flowpatch
+    index: 115
+    flow:
+      next: 111
 107-Kanban:
   - name: Knight Academy Billboard skip condition
     type: flowpatch
