@@ -248,10 +248,12 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
             let map_and_bk = unsafe { (*dungeonflag_global(dungeon_index))[0] };
             let bk_text = match map_and_bk & 0x82 {
                 0x80 => OBTAINED_TEXT.as_ptr(),
+                0x82 => OBTAINED_TEXT.as_ptr(),
                 _ => UNOBTAINED_TEXT.as_ptr(),
             };
             let map_text = match map_and_bk & 0x82 {
                 0x02 => OBTAINED_TEXT.as_ptr(),
+                0x82 => OBTAINED_TEXT.as_ptr(),
                 _ => UNOBTAINED_TEXT.as_ptr(),
             };
             text_manager_set_string_arg(bk_text as *const c_void, 0);

@@ -1734,24 +1734,25 @@ class GamePatcher:
                 }
             )
 
-            self.eventpatches["006-8KenseiNormal"].append(
-                {
-                    "name": f"{dungeon} Status Text",
-                    "type": "textadd",
-                    "unk1": 2,
-                    # ET key pieces
-                    "text": f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nSmall Keys: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>",
-                }
-            )
-
-            self.eventpatches["006-8KenseiNormal"].append(
-                {
-                    "name": "Sky Keep Status Text",
-                    "type": "textadd",
-                    "unk1": 2,
-                    "text": f"{DUNGEON_COLORS[SK]}Sky Keep>>\nSmall Keys: <numeric arg2>\n\nDungeon Map: <string arg1>",
-                }
-            )
+            if dungeon in REGULAR_DUNGEONS:
+                self.eventpatches["006-8KenseiNormal"].append(
+                    {
+                        "name": f"{dungeon} Status Text",
+                        "type": "textadd",
+                        "unk1": 2,
+                        # ET key pieces
+                        "text": f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nSmall Keys: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>",
+                    }
+                )
+            else:
+                self.eventpatches["006-8KenseiNormal"].append(
+                    {
+                        "name": "Sky Keep Status Text",
+                        "type": "textadd",
+                        "unk1": 2,
+                        "text": f"{DUNGEON_COLORS[SK]}Sky Keep>>\nSmall Keys: <numeric arg0>\n\nDungeon Map: <string arg1>",
+                    }
+                )
 
     def add_trial_hint_patches(self):
         def find_event(filename, name):
