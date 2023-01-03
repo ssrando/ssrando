@@ -13,6 +13,10 @@ bl textbox_a_pressed_or_b_held ; change button function
 .org 0x80115f98 ; final text box
 bl textbox_a_pressed_or_b_held ; change button function
 
+; Make all skippable cutscenes auto-skip
+.org 0x800a099c ; in some function that is cutscene advancing related
+li r3, 1 ; auto skips cutscenes
+
 ; Show all text in a textbox at once
 .org 0x80115A04 ; in some function that is text advancing related
 li r4, 1 ; enables instant text
