@@ -34,7 +34,7 @@ global:
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
     - 70 # First time Light Fruit Cutscene
-    - 168 # Boko Base map
+    # - 168 # Boko Base map, removed cos it doesn't work as intended
     - 178 # Cutscene showing off Bokoblin Base with Plats
     - storyflag: 134 # Horde defeated
       onlyif: Option "skip-horde" Enabled
