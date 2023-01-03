@@ -1,5 +1,6 @@
 global:
   startstoryflags: # first 8 flags are set during opening cutscenes
+    - 842 # Set when starting a new game
     - 36  # Hero's tunic
     - storyflag: 226 # Hero Mode
       onlyif: Option "hero-mode" Enabled
@@ -65,6 +66,7 @@ global:
     Skyloft:
       - 0  # Lower Academy gates opened
       - 1  # UA Doors open
+      - 8 # Seen Cutscene after getting Hero's Tunic
       - 21 # Upper Academy gates opened
       - 26 # Eye cs in Bazaar
       - 66 # Batreaux Doors outside open
@@ -4020,6 +4022,18 @@ F403: # Hylia's Realm
       entrance: 5
       night: 2
       byte5: 1
+F405: # Sealed Grounds Whirlpool Cutscene
+  - name: Skip from Whirlpool Cutscene to Link's room
+    type: objpatch
+    room: 0
+    index: 0
+    objtype: SCEN
+    object:
+      name: F001r
+      room: 1
+      layer: 3
+      entrance: 5
+      night: 2
 F407: # Sky Keep beaten CS
   - name: Sky Keep CS remove Storyflag
     type: objpatch
