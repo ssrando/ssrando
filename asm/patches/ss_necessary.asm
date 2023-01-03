@@ -16,6 +16,20 @@ bl textbox_a_pressed_or_b_held ; change button function
 .org 0x80115f98 ; final text box
 bl textbox_a_pressed_or_b_held ; change button function
 
+; fast textboxes lite
+; .org 0x8010f650 ; don't branch away from setTextboxStateMaybe()
+; nop ; makes non-first textboxes go quicker
+
+; fast textboxes pro
+.org 0x8010f5f4 ; checks what some textbox state stuff
+b 0x8010f654 ; branch to (unused??) block that sets textboxes to be clearable
+
+
+; make textbox blur go weird
+.org 0x8011593c
+nop
+
+
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
 stwu r1, -0x30(r1) ; change function prologue to match the function it branches to at the end
