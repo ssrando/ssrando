@@ -146,8 +146,8 @@ pub fn process_startflags() {
         14, // ET
         17, // LMF
         12, // AC
-        15, // FS
         18, // SS
+        15, // FS
         20, // SK
         9,  // Lanayru Caves
     ];
