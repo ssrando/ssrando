@@ -39,9 +39,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>570</y>
+      <y>560</y>
       <width>1031</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -67,7 +67,7 @@
      <number>-6</number>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -690,7 +690,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>179</width>
+         <width>178</width>
          <height>471</height>
         </rect>
        </property>
@@ -1337,6 +1337,13 @@
           <widget class="QComboBox" name="option_logic_mode"/>
          </item>
          <item>
+          <widget class="QPushButton" name="edit_tricks">
+           <property name="text">
+            <string>Tricks</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QCheckBox" name="option_hero_mode">
            <property name="text">
             <string>Hero Mode</string>
@@ -1394,51 +1401,6 @@
            </item>
            <item>
             <widget class="QListView" name="excluded_locations"/>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="vlay_tricks">
-         <item>
-          <widget class="QLabel" name="label_tricks">
-           <property name="text">
-            <string>Enable Tricks</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="hlay_tricks_body">
-           <item>
-            <widget class="QListView" name="disabled_tricks">
-             <property name="toolTip">
-              <string>test</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="vlay_tricks_controls">
-             <item>
-              <widget class="QPushButton" name="disable_trick">
-               <property name="text">
-                <string>Disable
-&lt;--</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="enable_trick">
-               <property name="text">
-                <string>Enable
---&gt;</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QListView" name="enabled_tricks"/>
            </item>
           </layout>
          </item>

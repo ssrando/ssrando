@@ -5,7 +5,6 @@ import random
 
 import yaml
 import json
-from PySide6 import QtWidgets
 from PySide6.QtCore import Qt, QTimer, QEvent, QStringListModel
 from PySide6.QtGui import QFontDatabase, QPalette, QColor
 from PySide6.QtWidgets import (
@@ -25,6 +24,7 @@ from PySide6.QtWidgets import (
     QStyleFactory,
 )
 from gui.sort_model import LocationsModel
+from gui.tricks_dialog import TricksDialog
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -108,6 +108,9 @@ class RandoGUI(QMainWindow):
                     widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
 
+        # setup misc controls
+        self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
+
         # Tricks ui.
         self.enabled_tricks_model = QStringListModel()
         self.enabled_tricks_model.setStringList(
@@ -117,10 +120,6 @@ class RandoGUI(QMainWindow):
         self.disabled_tricks_model.setStringList(
             OPTIONS["enabled-tricks-bitless"]["choices"]
         )
-        self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
-        self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
-        self.ui.enable_trick.clicked.connect(self.enable_trick)
-        self.ui.disable_trick.clicked.connect(self.disable_trick)
 
         # setup exlcuded locations
         self.excluded_locations_model = QStringListModel()
@@ -404,8 +403,6 @@ class RandoGUI(QMainWindow):
         # Update tricks.
         self.enabled_tricks_model.sort(0)
         self.disabled_tricks_model.sort(0)
-        self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
-        self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
 
         # Update locations.
         self.excluded_locations_model.setStringList(
@@ -464,13 +461,13 @@ class RandoGUI(QMainWindow):
             self.options.set_option("enabled-tricks-glitched", [])
         elif "BiTless" in logic_mode:
             self.options.set_option(
-                "enabled-tricks-bitless", self.get_option_value("enabled_tricks")
+                "enabled-tricks-bitless", self.enabled_tricks_model.stringList()
             )
             self.options.set_option("enabled-tricks-glitched", [])
         elif "Glitched" in logic_mode:
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option(
-                "enabled-tricks-glitched", self.get_option_value("enabled_tricks")
+                "enabled-tricks-glitched",  self.enabled_tricks_model.stringList()
             )
         else:  # this should only be no logic
             self.options.set_option("enabled-tricks-bitless", [])
@@ -510,16 +507,10 @@ class RandoGUI(QMainWindow):
             self.disable_trick_interface()
 
     def enable_trick_interface(self):
-        getattr(self.ui, "enable_trick").setEnabled(True)
-        getattr(self.ui, "disable_trick").setEnabled(True)
-        getattr(self.ui, "enabled_tricks").setEnabled(True)
-        getattr(self.ui, "disabled_tricks").setEnabled(True)
+        getattr(self.ui, "edit_tricks").setEnabled(True)
 
     def disable_trick_interface(self):
-        getattr(self.ui, "enable_trick").setEnabled(False)
-        getattr(self.ui, "disable_trick").setEnabled(False)
-        getattr(self.ui, "enabled_tricks").setEnabled(False)
-        getattr(self.ui, "disabled_tricks").setEnabled(False)
+        getattr(self.ui, "edit_tricks").setEnabled(False)
 
     def get_option_value(self, option_name):
         widget = getattr(self.ui, option_name)
@@ -548,16 +539,6 @@ class RandoGUI(QMainWindow):
             value = item.data()
             source.model().removeRow(item.row())
             self.append_row(dest.model(), value)
-
-    def enable_trick(self):
-        self.move_selected_rows(self.ui.disabled_tricks, self.ui.enabled_tricks)
-        self.ui.enabled_tricks.model().sort(0)
-        self.update_settings()
-
-    def disable_trick(self):
-        self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
-        self.ui.disabled_tricks.model().sort(0)
-        self.update_settings()
 
     def exclude_location(self):
         self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
@@ -660,6 +641,10 @@ class RandoGUI(QMainWindow):
     def write_presets(self):
         with open(self.user_presets_path, "w") as f:
             json.dump(self.user_presets, f)
+
+    def launch_tricks_dialog(self):
+        dialog = TricksDialog(self.enabled_tricks_model, self.disabled_tricks_model)
+        dialog.exec()
 
     def eventFilter(self, target, event):
         if event.type() == QEvent.Enter:
