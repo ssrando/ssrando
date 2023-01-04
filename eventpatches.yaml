@@ -885,31 +885,41 @@
     flow:
       next: -1
 114-Friend:
-  - name: Fledge text # skips part about link's tunic and being a knight
+  - name: Skip Fledge camera panning 1
+    type: flowpatch
+    index: 15
+    flow:
+      next: 22
+  - name: Skip Fledge talking about the hero's tunic
     type: flowpatch
     index: 22
     flow:
-      next: 111
-  - name: Fledge pouch text skip # skips part explaining the adventure pouch
+      next: 51
+  - name: Skip Fledge wait frames
     type: flowpatch
-    index: 16
+    index: 51
     flow:
-      next: 24
-  - name: Fledge dungeon text
+      next: 50
+  - name: tst4
+    type: flowpatch
+    index: 50
+    flow:
+      next: Show shorter Fledge pre-item text
+  - name: Shorter Fledge text
     type: textadd
-    text: "By the way, your <r<required dungeons>>\nare on the <b<bulletin board>> over there."
-  - name: Show Fledge text
+    text: "I put a lot of work into making this!\nYou should take it with you."
+  - name: Show shorter Fledge pre-item text
     type: flowadd
     flow:
       type: type1
-      next: 100
-      param3: 115
-      param4: Fledge dungeon text
-  - name: Patch in text
+      next: 16
+      param3: 0
+      param4: Shorter Fledge text
+  - name: Skip Fledge talking about the Adventure Pouch # skips part explaining the adventure pouch
     type: flowpatch
-    index: 21
+    index: 16
     flow:
-      next: Show Fledge text
+      next: -1
 115-Town2:
   - name: Shorten Karane letter text
     type: flowpatch
@@ -1782,6 +1792,20 @@
     index: 281
     flow:
       next: -1
+  - name: Pre circles mogma text to flag give flow
+    type: flowpatch
+    index: 124
+    flow:
+      next: Pre circles mogma gives bat shed open flag
+  - name: Pre circles mogma gives bat shed open flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 66 # set scene flag
+      param2: 1
+      next: -1
+      param3: 2
 301-MountainD1:
   - name: remove ghirahim text before scaldera
     type: flowpatch
