@@ -1407,6 +1407,14 @@ F023: # Thunderhead
     layer: 0
     room: 0
     objtype: STAG
+  - name: Remove isle of songs puzzle complete cutscene
+    type: objpatch
+    id: 0xFC07
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFF01C5 # 00 FF 00 00 yeets the event call
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
