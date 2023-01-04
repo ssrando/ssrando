@@ -26,14 +26,13 @@ b 0x8010f654 ; branch to (unused??) block that sets textboxes to be clearable
 nop
 
 ; Remove textbox blur
-.org 0x80121c4c
-nop
+.org 0x800b3370
+blr
 
 ; Remove Fi text janky appearing
 ; (equivalent to removing textbox blur for Fi text)
 .org 0x80125364
 nop
-
 
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
