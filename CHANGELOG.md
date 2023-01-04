@@ -43,6 +43,7 @@
 - Shooting the bell during pumpkin archery ends the minigame immediately
 - Removed first time textboxes (by CovenEsme)
   - Removes rupee, heart, arrow, bomb, stamina fruit, silent realm tear and light fruit first time textboxes
+- Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check and buying a shield (by CovenEsme)
 - Removed the cutscene after completing the Isle of Songs puzzle
 - Removed the panning cutscenes during the Fledge's Gift check (by CovenEsme)
 ### Bugfixes
