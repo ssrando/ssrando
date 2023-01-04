@@ -63,13 +63,15 @@ global:
     - 60 # 10 Deku Seeds
   startsceneflags: # currently only for skyloft
     Skyloft:
+      - 0  # Lower Academy gates opened
+      - 1  # UA Doors open
+      - 21 # Upper Academy gates opened
+      - 26 # Eye cs in Bazaar
+      - 66 # Batreaux Doors outside open
+      - 67 # Inside Doors open
       - 95 # Fi Text for Ruby Tablet
       - 96 # Fi Text for Amber Tablet
-      - 66 # Batreaux Doors outside open
       - 99 # Sheikah Stone cs played
-      - 67 # Inside Doors open
-      - 1 # UA Doors open
-      - 26 # Eye cs in Bazaar
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
@@ -916,6 +918,15 @@ F001r: # Knight Academy
     layer: 4
     room: 0
     objtype: OBJ
+  - name: Move Fledge closer to Link's room
+    type: objpatch
+    id: 0xFC77
+    layer: 3
+    room: 0
+    objtype: OBJ
+    object:
+      posx: 850
+      posz: -1700
   - name: Fledge Pouch Check Storyflag at night
     type: objpatch
     id: 0xFC7E
@@ -1398,6 +1409,14 @@ F023: # Thunderhead
     layer: 0
     room: 0
     objtype: STAG
+  - name: Remove isle of songs puzzle complete cutscene
+    type: objpatch
+    id: 0xFC07
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFF01C5 # 00 FF 00 00 yeets the event call
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -2275,6 +2294,20 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       params1: 0xFFF0FF18
+  - name: Remove NpcTke before circles cutscene
+    type: objdelete
+    id: 0xFCBF
+    layer: 1
+    room: 2
+    objtype: OBJ
+  - name: Keep pre circles mogma above ground
+    type: objpatch
+    id: 0xFCBE
+    layer: 1
+    room: 2
+    objtype: OBJ
+    object:
+      anglex: 12031 #keep mogma above ground
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride

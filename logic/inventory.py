@@ -9,8 +9,6 @@ def extended_item_generator():
     yield from ["Day", "Night"]  # Dummy events, will be removed from the requirements
     yield from ["Banned", EVERYTHING, "Everything unbanned", "Hint bypass"]
     # Technical dummy events
-    yield from BANNABLE_TYPES
-
     yield from sorted(INVENTORY_ITEMS)
 
     yield from LOGIC_OPTIONS

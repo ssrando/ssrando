@@ -414,14 +414,6 @@ class Areas:
                 full_loc = with_sep_full(area_name, loc)
                 loc_bit = EXTENDED_ITEM[full_loc]
 
-                if (check := self.checks.get(full_loc)) is not None:
-
-                    check_types = Inventory(
-                        {EXTENDED_ITEM[s.strip()] for s in check["type"].split(",")}
-                    )
-
-                    timed_req &= DNFInventory(check_types)
-
                 reqs[loc_bit] |= timed_req
                 self.opaque[loc_bit] = req.opaque
 

@@ -12,11 +12,20 @@
   - Progress Items: Main quest dowsing will point to chests that contain progress items
   - Currently does not work on goddess chests
 - Added option to enable dowsing in dungeons (by YourAverageLink, but shoutouts to Zeldex)
+- Added hint distribution designed for use with the new chest dowsing feature 
+  - Removes hints for easily dowsable chests and adds some for non-dowsable checks
+  - Only shows one hint per Gossip Stone
 - Added option to start with various items (by CovenEsme)
   - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
 - Added option to start with extra health (by CovenEsme)
 - Added option to start with a random progress item (by CovenEsme)
+- Added the ability to ban individual locations (by cjs07)
+- Removed the "Banned Types" option
 ### Changes
+- New GUI (by cjs07)
+  - Rearranged options and regrouped into simpler, broader categories
+  - Removed the Progress Locations tab
+  - Made many miscellaneous changes
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
   - The randomizer is distributed with a set of default presets that cannot be changed
@@ -35,6 +44,9 @@
 - Removed first time textboxes (by CovenEsme)
   - Removes rupee, heart, arrow, bomb, stamina fruit, silent realm tear and light fruit first time textboxes
 - Added Lanayru Desert map of the past as a starting item (by CovenEsme)
+- Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check and buying a shield (by CovenEsme)
+- Removed the cutscene after completing the Isle of Songs puzzle
+- Removed the panning cutscenes during the Fledge's Gift check (by CovenEsme)
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
