@@ -7,26 +7,31 @@ rlwinm r0,r0,28,30,31 ; r0 = (r0 >> 4) & 3
 stb r0, 0x1209(r28) ; store subtype
 b 0x80269554
 
-.org 0x80115A04 ; in some function that is text advancing related
-li r4, 1 ; enables instant text
-
 .org 0x80115cf8 ; non-final text box
 bl textbox_a_pressed_or_b_held ; change button function
 
 .org 0x80115f98 ; final text box
 bl textbox_a_pressed_or_b_held ; change button function
 
-; fast textboxes lite
-; .org 0x8010f650 ; don't branch away from setTextboxStateMaybe()
-; nop ; makes non-first textboxes go quicker
+; Show all text in a textbox at once
+.org 0x80115A04 ; in some function that is text advancing related
+li r4, 1 ; enables instant text
 
-; fast textboxes pro
+; Fast textboxes advancing
 .org 0x8010f5f4 ; checks what some textbox state stuff
 b 0x8010f654 ; branch to (unused??) block that sets textboxes to be clearable
 
-
-; make textbox blur go weird
+; Fast textbox appearing - makes textbox blur go weird
 .org 0x8011593c
+nop
+
+; Remove textbox blur
+.org 0x80121c4c
+nop
+
+; Remove Fi text janky appearing
+; (equivalent to removing textbox blur for Fi text)
+.org 0x80125364
 nop
 
 
