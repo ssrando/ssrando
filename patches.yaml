@@ -35,6 +35,7 @@ global:
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
     - 70 # First time Light Fruit Cutscene
+    - 60 # Fi text before Yerbal
     - storyflag: 134 # Horde defeated
       onlyif: Option "skip-horde" Enabled
     - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
@@ -75,6 +76,7 @@ global:
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
+      - 51 # Fi text before talking to Yerbal
     Sealed Grounds:
       - 7 # vents active
       - onlyif: Option "triforce-required" Disabled
@@ -1587,6 +1589,27 @@ F100: # Faron main area
     layer: 5
     room: 0
     objtype: OBJ
+  - name: Add back map x icon for Yerbal?
+    type: objmove
+    id: 0xFEF5
+    layer: 4
+    destlayer: 0
+    room: 0
+    objtype: STAG
+  - name: Move Fi text trigger for Yerbal map x
+    type: objmove
+    id: 0xFEB9
+    layer: 4
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Move Fi Cam2Tag for Yerbal map x
+    type: objmove
+    id: 0xFEF9
+    layer: 4
+    destlayer: 0
+    room: 0
+    objtype: STAG
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
