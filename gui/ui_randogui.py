@@ -401,7 +401,7 @@ class Ui_MainWindow(object):
         self.box_dungeons.setGeometry(QRect(820, 0, 191, 501))
         self.verticalLayoutWidget_7 = QWidget(self.box_dungeons)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 171, 471))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 179, 471))
         self.vlay_dungeons = QVBoxLayout(self.verticalLayoutWidget_7)
         self.vlay_dungeons.setObjectName(u"vlay_dungeons")
         self.vlay_dungeons.setContentsMargins(0, 0, 0, 0)
@@ -534,6 +534,16 @@ class Ui_MainWindow(object):
 
         self.vlay_open.addLayout(self.hlay_starting_tablets)
 
+        self.label_for_option_open_lake_floria = QLabel(self.verticalLayoutWidget_2)
+        self.label_for_option_open_lake_floria.setObjectName(u"label_for_option_open_lake_floria")
+
+        self.vlay_open.addWidget(self.label_for_option_open_lake_floria)
+
+        self.option_open_lake_floria = QComboBox(self.verticalLayoutWidget_2)
+        self.option_open_lake_floria.setObjectName(u"option_open_lake_floria")
+
+        self.vlay_open.addWidget(self.option_open_lake_floria)
+
         self.vspace_open = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_open.addItem(self.vspace_open)
@@ -637,7 +647,7 @@ class Ui_MainWindow(object):
         self.box_convenience_tweaks.setGeometry(QRect(10, 0, 191, 251))
         self.verticalLayoutWidget_19 = QWidget(self.box_convenience_tweaks)
         self.verticalLayoutWidget_19.setObjectName(u"verticalLayoutWidget_19")
-        self.verticalLayoutWidget_19.setGeometry(QRect(10, 20, 176, 221))
+        self.verticalLayoutWidget_19.setGeometry(QRect(10, 20, 177, 221))
         self.vlay_convenience_tweaks = QVBoxLayout(self.verticalLayoutWidget_19)
         self.vlay_convenience_tweaks.setObjectName(u"vlay_convenience_tweaks")
         self.vlay_convenience_tweaks.setContentsMargins(0, 0, 0, 0)
@@ -673,7 +683,7 @@ class Ui_MainWindow(object):
         self.box_item_pool.setGeometry(QRect(410, 0, 191, 251))
         self.verticalLayoutWidget_20 = QWidget(self.box_item_pool)
         self.verticalLayoutWidget_20.setObjectName(u"verticalLayoutWidget_20")
-        self.verticalLayoutWidget_20.setGeometry(QRect(10, 20, 171, 221))
+        self.verticalLayoutWidget_20.setGeometry(QRect(10, 20, 172, 221))
         self.vlay_item_pool = QVBoxLayout(self.verticalLayoutWidget_20)
         self.vlay_item_pool.setObjectName(u"vlay_item_pool")
         self.vlay_item_pool.setContentsMargins(0, 0, 0, 0)
@@ -939,22 +949,22 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_hints, "")
         self.tab_starting_items = QWidget()
         self.tab_starting_items.setObjectName(u"tab_starting_items")
-        self.verticalLayoutWidget_201 = QWidget(self.tab_starting_items)
-        self.verticalLayoutWidget_201.setObjectName(u"verticalLayoutWidget_201")
-        self.verticalLayoutWidget_201.setGeometry(QRect(10, 10, 1001, 501))
-        self.vlay_starting_items = QVBoxLayout(self.verticalLayoutWidget_201)
+        self.verticalLayoutWidget_21 = QWidget(self.tab_starting_items)
+        self.verticalLayoutWidget_21.setObjectName(u"verticalLayoutWidget_21")
+        self.verticalLayoutWidget_21.setGeometry(QRect(10, 10, 1001, 501))
+        self.vlay_starting_items = QVBoxLayout(self.verticalLayoutWidget_21)
         self.vlay_starting_items.setObjectName(u"vlay_starting_items")
         self.vlay_starting_items.setContentsMargins(0, 0, 0, 0)
         self.hlay_starting_items_body = QHBoxLayout()
         self.hlay_starting_items_body.setObjectName(u"hlay_starting_items_body")
         self.vlay_randomized_items_section = QVBoxLayout()
         self.vlay_randomized_items_section.setObjectName(u"vlay_randomized_items_section")
-        self.label_randomized_items = QLabel(self.verticalLayoutWidget_201)
+        self.label_randomized_items = QLabel(self.verticalLayoutWidget_21)
         self.label_randomized_items.setObjectName(u"label_randomized_items")
 
         self.vlay_randomized_items_section.addWidget(self.label_randomized_items)
 
-        self.randomized_items = QListView(self.verticalLayoutWidget_201)
+        self.randomized_items = QListView(self.verticalLayoutWidget_21)
         self.randomized_items.setObjectName(u"randomized_items")
         sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy3.setHorizontalStretch(0)
@@ -974,7 +984,7 @@ class Ui_MainWindow(object):
 
         self.vlay_starting_items_controls.addItem(self.vspace_starting_items_controls_upper)
 
-        self.randomize_item = QPushButton(self.verticalLayoutWidget_201)
+        self.randomize_item = QPushButton(self.verticalLayoutWidget_21)
         self.randomize_item.setObjectName(u"randomize_item")
         sizePolicy4 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
         sizePolicy4.setHorizontalStretch(0)
@@ -984,7 +994,7 @@ class Ui_MainWindow(object):
 
         self.vlay_starting_items_controls.addWidget(self.randomize_item)
 
-        self.start_with_item = QPushButton(self.verticalLayoutWidget_201)
+        self.start_with_item = QPushButton(self.verticalLayoutWidget_21)
         self.start_with_item.setObjectName(u"start_with_item")
         sizePolicy4.setHeightForWidth(self.start_with_item.sizePolicy().hasHeightForWidth())
         self.start_with_item.setSizePolicy(sizePolicy4)
@@ -1000,12 +1010,12 @@ class Ui_MainWindow(object):
 
         self.vlay_starting_items_section = QVBoxLayout()
         self.vlay_starting_items_section.setObjectName(u"vlay_starting_items_section")
-        self.label_starting_items = QLabel(self.verticalLayoutWidget_201)
+        self.label_starting_items = QLabel(self.verticalLayoutWidget_21)
         self.label_starting_items.setObjectName(u"label_starting_items")
 
         self.vlay_starting_items_section.addWidget(self.label_starting_items)
 
-        self.starting_items = QListView(self.verticalLayoutWidget_201)
+        self.starting_items = QListView(self.verticalLayoutWidget_21)
         self.starting_items.setObjectName(u"starting_items")
         sizePolicy3.setHeightForWidth(self.starting_items.sizePolicy().hasHeightForWidth())
         self.starting_items.setSizePolicy(sizePolicy3)
@@ -1018,7 +1028,7 @@ class Ui_MainWindow(object):
 
         self.vlay_starting_items.addLayout(self.hlay_starting_items_body)
 
-        self.line_starting_items_divider = QFrame(self.verticalLayoutWidget_201)
+        self.line_starting_items_divider = QFrame(self.verticalLayoutWidget_21)
         self.line_starting_items_divider.setObjectName(u"line_starting_items_divider")
         self.line_starting_items_divider.setFrameShape(QFrame.HLine)
         self.line_starting_items_divider.setFrameShadow(QFrame.Sunken)
@@ -1030,12 +1040,12 @@ class Ui_MainWindow(object):
         self.hlay_starting_items_misc_options.setContentsMargins(-1, -1, -1, 0)
         self.hlay_starting_sword = QHBoxLayout()
         self.hlay_starting_sword.setObjectName(u"hlay_starting_sword")
-        self.label_for_option_starting_sword = QLabel(self.verticalLayoutWidget_201)
+        self.label_for_option_starting_sword = QLabel(self.verticalLayoutWidget_21)
         self.label_for_option_starting_sword.setObjectName(u"label_for_option_starting_sword")
 
         self.hlay_starting_sword.addWidget(self.label_for_option_starting_sword)
 
-        self.option_starting_sword = QComboBox(self.verticalLayoutWidget_201)
+        self.option_starting_sword = QComboBox(self.verticalLayoutWidget_21)
         self.option_starting_sword.setObjectName(u"option_starting_sword")
 
         self.hlay_starting_sword.addWidget(self.option_starting_sword)
@@ -1043,7 +1053,7 @@ class Ui_MainWindow(object):
 
         self.hlay_starting_items_misc_options.addLayout(self.hlay_starting_sword)
 
-        self.option_random_starting_item = QCheckBox(self.verticalLayoutWidget_201)
+        self.option_random_starting_item = QCheckBox(self.verticalLayoutWidget_21)
         self.option_random_starting_item.setObjectName(u"option_random_starting_item")
         sizePolicy2.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
         self.option_random_starting_item.setSizePolicy(sizePolicy2)
@@ -1052,7 +1062,7 @@ class Ui_MainWindow(object):
 
         self.hlay_heart_containters = QHBoxLayout()
         self.hlay_heart_containters.setObjectName(u"hlay_heart_containters")
-        self.label_for_option_starting_heart_containers = QLabel(self.verticalLayoutWidget_201)
+        self.label_for_option_starting_heart_containers = QLabel(self.verticalLayoutWidget_21)
         self.label_for_option_starting_heart_containers.setObjectName(u"label_for_option_starting_heart_containers")
         sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
         sizePolicy5.setHorizontalStretch(0)
@@ -1062,7 +1072,7 @@ class Ui_MainWindow(object):
 
         self.hlay_heart_containters.addWidget(self.label_for_option_starting_heart_containers)
 
-        self.option_starting_heart_containers = QSpinBox(self.verticalLayoutWidget_201)
+        self.option_starting_heart_containers = QSpinBox(self.verticalLayoutWidget_21)
         self.option_starting_heart_containers.setObjectName(u"option_starting_heart_containers")
         sizePolicy2.setHeightForWidth(self.option_starting_heart_containers.sizePolicy().hasHeightForWidth())
         self.option_starting_heart_containers.setSizePolicy(sizePolicy2)
@@ -1075,14 +1085,14 @@ class Ui_MainWindow(object):
 
         self.hlay_heart_pieces = QHBoxLayout()
         self.hlay_heart_pieces.setObjectName(u"hlay_heart_pieces")
-        self.label_for_option_starting_heart_pieces = QLabel(self.verticalLayoutWidget_201)
+        self.label_for_option_starting_heart_pieces = QLabel(self.verticalLayoutWidget_21)
         self.label_for_option_starting_heart_pieces.setObjectName(u"label_for_option_starting_heart_pieces")
         sizePolicy5.setHeightForWidth(self.label_for_option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
         self.label_for_option_starting_heart_pieces.setSizePolicy(sizePolicy5)
 
         self.hlay_heart_pieces.addWidget(self.label_for_option_starting_heart_pieces)
 
-        self.option_starting_heart_pieces = QSpinBox(self.verticalLayoutWidget_201)
+        self.option_starting_heart_pieces = QSpinBox(self.verticalLayoutWidget_21)
         self.option_starting_heart_pieces.setObjectName(u"option_starting_heart_pieces")
         sizePolicy2.setHeightForWidth(self.option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
         self.option_starting_heart_pieces.setSizePolicy(sizePolicy2)
@@ -1093,12 +1103,12 @@ class Ui_MainWindow(object):
 
         self.hlay_starting_items_misc_options.addLayout(self.hlay_heart_pieces)
 
-        self.label_current_starting_health = QLabel(self.verticalLayoutWidget_201)
+        self.label_current_starting_health = QLabel(self.verticalLayoutWidget_21)
         self.label_current_starting_health.setObjectName(u"label_current_starting_health")
 
         self.hlay_starting_items_misc_options.addWidget(self.label_current_starting_health)
 
-        self.current_starting_health_counter = QLabel(self.verticalLayoutWidget_201)
+        self.current_starting_health_counter = QLabel(self.verticalLayoutWidget_21)
         self.current_starting_health_counter.setObjectName(u"current_starting_health_counter")
 
         self.hlay_starting_items_misc_options.addWidget(self.current_starting_health_counter)
@@ -1235,6 +1245,7 @@ class Ui_MainWindow(object):
         self.option_open_et.setText(QCoreApplication.translate("MainWindow", u"Open Earth Temple", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
+        self.label_for_option_open_lake_floria.setText(QCoreApplication.translate("MainWindow", u"Open Lake Floria", None))
         self.box_er.setTitle(QCoreApplication.translate("MainWindow", u"Entrance Randomization", None))
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Dungeon Entrances", None))
         self.option_randomize_entrances.setCurrentText("")

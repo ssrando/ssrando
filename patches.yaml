@@ -1590,7 +1590,7 @@ F100: # Faron main area
     layer: 5
     room: 0
     objtype: OBJ
-  - name: Add back map x icon for Yerbal?
+  - name: Add back map x icon for Yerbal
     type: objmove
     id: 0xFEF5
     layer: 4
@@ -1611,6 +1611,7 @@ F100: # Faron main area
     destlayer: 0
     room: 0
     objtype: STAG
+  - name: Patch Main floria entrance for 
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
