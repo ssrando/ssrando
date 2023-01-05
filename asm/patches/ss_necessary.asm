@@ -31,8 +31,8 @@ blr
 
 ; Remove Fi text janky appearing
 ; (equivalent to removing textbox blur for Fi text)
-.org 0x80125364
-nop
+.org 0x80120c60
+blr
 
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
