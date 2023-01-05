@@ -34,6 +34,13 @@ blr
 .org 0x80120c60
 blr
 
+; remove text pauses
+; copies instruction for just ignoring a command
+.org 0x800b2774
+lhz r3, 0x147a(r26)
+addi r0, r3, 1
+sth r0, 0x147a(r26)
+
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
 stwu r1, -0x30(r1) ; change function prologue to match the function it branches to at the end
