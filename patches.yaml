@@ -76,6 +76,10 @@ global:
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
+      - onlyif: Option "open-lake-floria" Is "Open"
+        flag: 49 # Cutscene of Lake Floria Gates opening
+      - onlyif: Option "open-lake-floria" Is "Open"
+        flag: 50 # Open Lake Floria Gate
       - 51 # Fi text before talking to Yerbal
       - 52 # Fi text after opening floria gate
     Sealed Grounds:
@@ -1611,7 +1615,42 @@ F100: # Faron main area
     destlayer: 0
     room: 0
     objtype: STAG
-  - name: Patch Main floria entrance for 
+  - name: Patch Main floria entrance
+    onlyif: Option "open-lake-floria" Is "Floria Gates"
+    type: objpatch
+    id: 0xFDB4
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      trigscenefid: 50
+  - name: Patch Main floria entrance
+    onlyif: Option "open-lake-floria" Is "Talk to Yerbal"
+    type: objpatch
+    id: 0xFDB4
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      trigscenefid: 50
+  - name: Patch log push floria entrance
+    onlyif: Option "open-lake-floria" Is "Floria Gates"
+    type: objpatch
+    id: 0xFDB5
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      trigscenefid: 50
+  - name: Patch log push floria entrance
+    onlyif: Option "open-lake-floria" Is "Talk to Yerbal"
+    type: objpatch
+    id: 0xFDB5
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      trigscenefid: 50
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride

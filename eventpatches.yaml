@@ -1746,10 +1746,39 @@
     index: 4
     text: "They used to call me <b<Yerbal>>. Now I'm\njust the old <b<Kikwi hermit>>."
   - name: Go to explanation of floria gates
+    onlyif: Option "open-lake-floria" Is Not "Talk to Yerbal"
     type: flowpatch
     index: 357
     flow:
       next: 373
+  - name: Make Yerbal open the floria gates
+    onlyif: Option "open-lake-floria" Is "Talk to Yerbal"
+    type: flowpatch
+    index: 357
+    flow:
+      next: Show Yerbal open floria gates text
+  - name: Yerbal open floria gates text
+    type: textadd
+    text: "However, <b<Faron>>, the Water Dragon,\nlet me know a secret of hers.\nKwwwwwwrk...
+          \n\nSee, she gave me a <r<spare key>> to the\nLake, kwwwrk!
+          \n\n\nDon't tell her I'm letting you in\nthough. I've heard stories of folks\nwho caught her in a fussy mood.
+          \n\nThey ended up as midmorning snacks,\nkwwwwrk!"
+  - name: Show Yerbal open floria gates text
+    type: flowadd
+    flow:
+      type: type1
+      next: Open floria gates
+      param3: 302
+      param4: Yerbal open floria gates text
+  - name: Open floria gates
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 49 # Floria gates opening cutscene scene flag
+      param2: 2
+      next: -1
+      param3: 2
   - name: Patch Yerbal floria gates intro
     type: textpatch
     index: 24
