@@ -1909,7 +1909,7 @@
       param4: Boko Base Exit Question
   - name: Boko Base Exit Question
     type: textadd
-    text: "Want to leave Boko Base?\n[1]Yes[2-]No"
+    text: "Want to leave <b<Bokoblin Base>>?\n[1]Yes[2-]No"
   - name: Boko Base Exit Switch
     type: switchadd
     flow:
@@ -1938,7 +1938,7 @@
       param4: Boko Base Entry Question
   - name: Boko Base Entry Question
     type: textadd
-    text: "Want to enter Boko Base?\n[1]Yes[2-]No"
+    text: "Want to enter <b<Bokoblin Base>>?\n[1]Yes[2-]No"
   - name: Boko Base Entry Switch
     type: switchadd
     flow:
