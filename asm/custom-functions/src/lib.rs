@@ -42,7 +42,9 @@ extern "C" {
     fn FlagManager__setFlagTo1(mgr: *mut c_void, flag: u16);
     fn FlagManager__setFlagOrCounter(mgr: *mut c_void, flag: u16, value: u16);
     static ITEMFLAG_MANAGER: *mut c_void;
+    fn ItemflagManager__doCommit(mgr: *mut c_void);
     static STORYFLAG_MANAGER: *mut c_void;
+    fn StoryflagManager__doCommit(mgr: *mut c_void);
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
     fn checkButtonAPressed() -> bool;
@@ -177,6 +179,13 @@ pub fn process_startflags() {
     let health_capacity = flag_mem.next_u8().unwrap_or_default();
     unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity.into() };
     unsafe { (*FILE_MANAGER).FA.current_health = health_capacity.into() };
+
+    // commit global flag managers
+    unsafe {
+        ItemflagManager__doCommit(ITEMFLAG_MANAGER);
+        StoryflagManager__doCommit(STORYFLAG_MANAGER);
+    }
+
     unsafe { (*FILE_MANAGER).anticommit_flag = 0 };
 }
 
