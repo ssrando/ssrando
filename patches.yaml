@@ -4022,18 +4022,6 @@ F403: # Hylia's Realm
       entrance: 5
       night: 2
       byte5: 1
-F405: # Sealed Grounds Whirlpool Cutscene
-  - name: Skip from Whirlpool Cutscene to Link's room
-    type: objpatch
-    room: 0
-    index: 0
-    objtype: SCEN
-    object:
-      name: F001r
-      room: 1
-      layer: 3
-      entrance: 5
-      night: 2
 F407: # Sky Keep beaten CS
   - name: Sky Keep CS remove Storyflag
     type: objpatch

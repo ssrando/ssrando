@@ -45,6 +45,19 @@ lhz r3, 0x147a(r26)
 addi r0, r3, 1
 sth r0, 0x147a(r26)
 
+; Change starting location to remove intro cutscenes
+.org 0x801bb960 ; Change starting stage
+subi r3, r13, 0x5b44 ; previously 0x601c (F405 -> F001r)
+
+.org 0x801bb964 ; Change starting roomID
+li r4, 1 ; Room 0 -> 1
+
+.org 0x801bb968 ; Change starting layer
+li r5, 3 ; Layer 0 -> 3
+
+.org 0x801bb96c ; Change starting entrance
+li r6, 5 ; Entrance 0 -> 5
+
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
 stwu r1, -0x30(r1) ; change function prologue to match the function it branches to at the end
