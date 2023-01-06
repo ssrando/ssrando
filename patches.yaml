@@ -2184,6 +2184,21 @@ F200: # Eldin main area
     destlayer: 0
     room: 0
     objtype: STAG
+  - name: Intro cutscene patch
+    type: objpatch
+    id: 0xFC26
+    layer: 1
+    room: 0
+    objtype: STAG
+    object:
+      event: 4 # IntroSkip
+  - name: Give watched intro cs flag on cs skip
+    type: objpatch
+    room: 0
+    objtype: EVNT
+    index: 4
+    object:
+      story_flag1: 182 # Have watch Eldin Volcano intro Cutscene
   - name: First Mogma cs Fi
     type: objdelete
     id: 0xFC22
@@ -2806,6 +2821,21 @@ F300_1: # Lanayru Mine
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Intro cutscene patch
+    type: objpatch
+    id: 0xFC8C
+    layer: 1
+    room: 0
+    objtype: STAG
+    object:
+      event: 9 # IntroSkip
+  - name: Give watched intro cs flag on cs skip
+    type: objpatch
+    room: 0
+    objtype: EVNT
+    index: 9
+    object:
+      story_flag1: 190 # Have watch Lanayru Desert intro Cutscene
   - name: Remove First timeshift stone cs
     type: objdelete
     id: 0xFC47
@@ -3870,6 +3900,49 @@ F401: # Sealed grounds Whirlpool
     layer: 1
     room: 1
     objtype: OBJ
+  - name: Intro cutscene skip
+    type: objpatch
+    index: 8
+    room: 1
+    objtype: PLY
+    object:
+      play_cutscene: -1
+  - name: Set Sealed Grounds intro cutscene watched 1
+    type: objadd
+    room: 1
+    layer: 1
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: -7500
+      posy: 8404.3876953125
+      posz: 0
+      sizex: 2000
+      sizey: 2000
+      sizez: 2000
+      anglex: 137 # Have watch Sealed Grounds intro Cutscene
+      angley: 0
+      anglez: 65535
+      name: SwAreaT
+  - name: Set Sealed Grounds intro cutscene watched 2
+    type: objadd
+    room: 1
+    layer: 1
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: -7500
+      posy: 8404.3876953125
+      posz: 0
+      sizex: 2000
+      sizey: 2000
+      sizez: 2000
+      anglex: 24 # Fi cs around faron pillar (probably unnecessary to patch)
+      angley: 0
+      anglez: 65535
+      name: SwAreaT
   - name: Groosenator before imp 2
     type: objdelete
     id: 0xFC9D
