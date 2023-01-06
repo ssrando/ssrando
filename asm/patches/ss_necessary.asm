@@ -224,6 +224,9 @@ lhz r4, SPAWN_SLAVE+2@l(r4)
 cmplwi r4, 0x3030 ; '00', we assume all stages like XX00 are faron main
 bne 0x8004ec28 ; if not faron main, treat this kikwi as found
 
+.org 0x8009ecd4 ; when getting the skipflag from the EVNT entry
+li r24, 123 ; always have a skipflag
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
