@@ -59,6 +59,7 @@
 - Fixed a bug that would make sandship dowsing sometimes not be the top dowsing slot icon; it now has top priority
 - Fixed light pillars not visually appearing when obtaining a tablet until a reload
 - Fixed Early Lake Floria Tricks not actually changing logic
+- Fixed Yerbal's map hint not showing the X marker on the map
 
 
 ## 1.3.2
