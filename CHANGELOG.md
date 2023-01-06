@@ -21,6 +21,11 @@
 - Added option to start with a random progress item (by CovenEsme)
 - Added the ability to ban individual locations (by cjs07)
 - Removed the "Banned Types" option
+- Added options to control entry into Lake Floria
+  - Floria Gates: You are required to talk to Yerbal and draw on the floria door. The Early Lake Floria tricks cannot be performed to circumvent this
+  - Talk to Yerbal: You are required to talk to Yerbal and he will open the floria door. The Early Lake Floria tricks cannot be performed to circumvent this
+  - Vanilla: You are logically required to talk to Yerbal and draw on the floria door. The Early Lake Floria tricks can be performed and can also be made logically required
+  - Open: The floria door is open from the start of the game. You are not required to talk to Yerbal or draw on the floria door
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
@@ -47,11 +52,13 @@
 - Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check and buying a shield (by CovenEsme)
 - Removed the cutscene after completing the Isle of Songs puzzle
 - Removed the panning cutscenes during the Fledge's Gift check (by CovenEsme)
+- Shortened Yerbal's text to become in-line with the rest of the randomizer
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
 - Fixed a bug that would make sandship dowsing sometimes not be the top dowsing slot icon; it now has top priority
 - Fixed light pillars not visually appearing when obtaining a tablet until a reload
+- Fixed Early Lake Floria Tricks not actually changing logic
 
 
 ## 1.3.2
