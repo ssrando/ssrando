@@ -596,9 +596,9 @@
     - Open
   default: Vanilla
   help: "Choose how to access Lake Floria.
-         Floria Gates: Requires you to open the Floria gates manually (fence hop WONT work).
-         Talk to Yerbal: Requires you to talk to Yerbal atop the Great Tree to open the Floria Gates (fence hop WONT work).
-         Vanilla: Requires you to open the Floria Gates (fence hop WILL work).
+         Floria Gates: Requires talking to Yerbal and drawing on the floria door (the Early Lake Flora trick WONT work).
+         Talk to Yerbal: Requires you to talk to Yerbal only (the Early Lake Flora trick WONT work).
+         Vanilla: Logically requires you to open the Floria Gates (the Early Lake Flora trick WILL work).
          Open: The Floria Gates are opened at the start of the game."
   ui: option_open_lake_floria
 - name: Filling Algorithm
