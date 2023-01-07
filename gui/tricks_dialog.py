@@ -11,17 +11,14 @@ class TricksDialog(QDialog):
         self.ui.setupUi(self)
 
         self.enabled_tricks_model = enabled_model
-        self.enabled_tricks_model.setStringList(
-            OPTIONS["enabled-tricks-bitless"]["default"]
-        )
         self.disabled_tricks_model = disabled_model
-        self.disabled_tricks_model.setStringList(
-            OPTIONS["enabled-tricks-bitless"]["choices"]
-        )
         self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
         self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
+
+        self.ui.bbox_tricks.accepted.connect(self.accept)
+        self.ui.bbox_tricks.rejected.connect(self.reject)
 
     @staticmethod
     def append_row(model, value):
@@ -45,3 +42,6 @@ class TricksDialog(QDialog):
     def disable_trick(self):
         self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
         self.ui.disabled_tricks.model().sort(0)
+
+    def getTrickValues(self):
+        return self.disabled_tricks_model.stringList(), self.enabled_tricks_model.stringList()

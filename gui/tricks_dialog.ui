@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Enable Tricks</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
+  <widget class="QDialogButtonBox" name="bbox_tricks">
    <property name="geometry">
     <rect>
      <x>660</x>
@@ -79,7 +79,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>bbox_tricks</sender>
    <signal>accepted()</signal>
    <receiver>TricksDialog</receiver>
    <slot>accept()</slot>
@@ -95,7 +95,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>bbox_tricks</sender>
    <signal>rejected()</signal>
    <receiver>TricksDialog</receiver>
    <slot>reject()</slot>

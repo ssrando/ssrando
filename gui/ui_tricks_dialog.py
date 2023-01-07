@@ -24,11 +24,11 @@ class Ui_TricksDialog(object):
         if not TricksDialog.objectName():
             TricksDialog.setObjectName(u"TricksDialog")
         TricksDialog.resize(1005, 309)
-        self.buttonBox = QDialogButtonBox(TricksDialog)
-        self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(660, 270, 341, 32))
-        self.buttonBox.setOrientation(Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+        self.bbox_tricks = QDialogButtonBox(TricksDialog)
+        self.bbox_tricks.setObjectName(u"bbox_tricks")
+        self.bbox_tricks.setGeometry(QRect(660, 270, 341, 32))
+        self.bbox_tricks.setOrientation(Qt.Horizontal)
+        self.bbox_tricks.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
         self.layoutWidget = QWidget(TricksDialog)
         self.layoutWidget.setObjectName(u"layoutWidget")
         self.layoutWidget.setGeometry(QRect(8, 10, 991, 251))
@@ -67,8 +67,8 @@ class Ui_TricksDialog(object):
 
 
         self.retranslateUi(TricksDialog)
-        self.buttonBox.accepted.connect(TricksDialog.accept)
-        self.buttonBox.rejected.connect(TricksDialog.reject)
+        self.bbox_tricks.accepted.connect(TricksDialog.accept)
+        self.bbox_tricks.rejected.connect(TricksDialog.reject)
 
         QMetaObject.connectSlotsByName(TricksDialog)
     # setupUi
