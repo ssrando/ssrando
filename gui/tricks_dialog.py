@@ -7,8 +7,6 @@ from options import OPTIONS
 class TricksDialog(QDialog):
     def __init__(self, enabled_model, disabled_model):
         super().__init__()
-        self.setWindowTitle("Enable Tricks")
-
         self.ui = Ui_TricksDialog()
         self.ui.setupUi(self)
 
