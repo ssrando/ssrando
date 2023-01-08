@@ -31,14 +31,38 @@ global:
     - 519 # Updated Sand Sea map
     - 115 # Full Lake Floria map
     - 129 # Updated Lanayru Desert map
-    - 180 # Thrill digger entrance CS
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
-    - 70 # First time Light Fruit Cutscene
+    # Cutscene flags
+    ## Surface
+    - 87  # Faron Woods Intro Cutscene
+    - 91  # Deep Woods Intro Cutscene
+    - 88  # Lake Floria Intro Cutscene
+    - 180 # Thrill digger entrance CS
+    - 562 # Volcano Summit Intro Cutscene
+    - 92  # Lanayru Desert Intro Cutscene
+    - 157 # Ancient Harbour Intro Cutscene
+    - 526 # Lanayru Gorge Intro Cutscene
+    ## Silent Realms
+    - 70  # First time Light Fruit Cutscene
+    - 94  # Faron Silent Realm Intro Cutscene
+    - 205 # Lanayru Silent Realm Intro Cutscene
+    - 330 # Eldin Silent Realm Intro Cutscene
+    - 331 # Hylia's Silent Realm Intro Cutscene
+    ## Dungeons
+    - 89 # Skyview Intro Cutscene
+    - 183 # Earth Temple Intro Cutscene
+    - 211 # Lanayru Mining Facility Intro Cutscene
+    - 155 # Ancient Cistorn Intro Cutscene
+    - 156 # Sandship Intro Cutscene
+    - 172 # Fire Sanctuary Intro Cutscene
+    - 173 # Fire Sanctuary Intro Cutscene
+    - 678 # Entering Sky Keep Cutscene
+    - 159 # Sky Keep Intro Cutscene
+    ## Bosses
+    - 347 # Horde Intro Cutscene
     - storyflag: 134 # Horde defeated
-      onlyif: Option "skip-horde" Enabled
-    - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
       onlyif: Option "skip-horde" Enabled
     - storyflag: 486 # Ghirahim 3 defeated
       onlyif: Option "skip-g3" Enabled
@@ -84,18 +108,21 @@ global:
       - onlyif: Option "skip-horde" Enabled
         flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
       - 13 # door to temple unlocked
-
       - 21 # ballad of the goddess played (item and cutscene trigger instantly activate when outside of BiT)
       - 28 # groose cutscene watched (prevents groose cutscene from taking priority outside of BiT)
+    Ancient Cistern:
+      - 62 # Ancient Cistern Intro Cutscene
     Eldin Volcano:
       - 2 # gets rid of first digging mitts mogma text
       - 58 # digging mitts mogma cutscene watched
     Earth Temple:
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
     Lanayru Desert:
+      - 3  # Obtain map of the past from robot in ToT area
+      - 7  # pushed first minecart to end
+      - 50 # Enter Lanayru Mining Facility (LMF) Cutscene
+      - 55 # Lanayru Desert Intro Cutscene
       - 68 # desert statue checked
-      - 7 # pushed first minecart to end
-      - 3 # Obtain map of the past from robot in ToT area
       - onlyif: Option "open-lmf" Is "Open"
         flag: 30 # LMF Rises CS
       - onlyif: Option "open-lmf" Is "Open"
@@ -108,6 +135,9 @@ global:
         flag: 102 # Water node active
     Lanayru Gorge:
       - 10 # Minecart at end of Track
+      - 16 # Lanayru Gorge Intro Cutscene
+    Fire Sanctuary:
+      - 83 # Cutscene showing the outside of the Fire Sanctuary
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -1364,6 +1394,13 @@ F023: # Thunderhead
       anglez: 12003 # entrypoint 120_03
       id: 0xFC13
       name: NpcTke
+  - name: Yeet Levias Cutscene
+    type: objpatch
+    index: 6
+    room: 0
+    objtype: PLY
+    object:
+      play_cutscene: -1
   - name: Gossip Stone
     type: objmove
     id: 0xFCEE
@@ -1653,6 +1690,20 @@ F102: # lake Floria
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Remove Lake Floria intro Cutscene 1
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      play_cutscene: -1
+  - name: Remove Lake Floria intro Cutscene 2
+    type: objpatch
+    index: 2
+    room: 0
+    objtype: PLY
+    object:
+      play_cutscene: -1
   - name: Door to Dragon Lair
     type: objdelete
     id: 0x1000
@@ -2198,7 +2249,7 @@ F200: # Eldin main area
     objtype: EVNT
     index: 4
     object:
-      story_flag1: 182 # Have watch Eldin Volcano intro Cutscene
+      story_flag1: 182 # Have watched Eldin Volcano intro Cutscene
   - name: First Mogma cs Fi
     type: objdelete
     id: 0xFC22
@@ -2618,6 +2669,12 @@ B200: # Boss Room
       - story_flag: -1
         night: 0
         layer: 2
+  - name: Yeet ET Spring Cutscene
+    type: objdelete
+    id: 0xFC27
+    layer: 0
+    room: 10
+    objtype: STAG
   - name: delete boulder cutscene
     type: objdelete
     id: 0xFC36
@@ -2835,7 +2892,7 @@ F300_1: # Lanayru Mine
     objtype: EVNT
     index: 9
     object:
-      story_flag1: 190 # Have watch Lanayru Desert intro Cutscene
+      story_flag1: 190 # Have watched Lanayru Desert intro Cutscene
   - name: Remove First timeshift stone cs
     type: objdelete
     id: 0xFC47
@@ -2940,6 +2997,13 @@ F300_4: # Temple of Time
       item: -1
       story_flag1: -1
       story_flag2: 935 # changes loadzone out of LMF
+  - name: Yeet harp Cutscene
+    type: objpatch
+    index: 4
+    room: 0
+    objtype: PLY
+    object:
+      play_cutscene: -1
   - name: Fi text after Harp
     type: objdelete
     room: 0
@@ -2993,6 +3057,14 @@ F300_5: # LMF to ToT
       sizez: 500
       trigscenefid: 0xC3
       untrigstoryfid: 935
+  - name: Correct layer and entrance for first exit from end of LMF
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: SCEN
+    object:
+      layer: 2
+      entrance: 2
   - name: harp CS loadzone
     type: objpatch
     id: 0xFC04
@@ -3749,8 +3821,7 @@ F402: # Sealed Temple
     room: 2
     objtype: STAG
     object:
-      params1: 0xC303FF02 # scenlink: 2
-      params2: 0xFF5FFFFF
+      params1: 0xC303FF03 # scenlink: 3 - skip cutscene of GoT raising
       posx: 0
       posy: 7000
       posz: 10971.697265625
@@ -3759,9 +3830,17 @@ F402: # Sealed Temple
       sizez: 20000
       anglex: 65535 # no trigger storyflag
       angley: 0
-      anglez: 63828 # untriggered by storyflag 340 (GoT raised)
+      anglez: 65535 # no untrigger storyflag (works but idk why)
       id: 0xFC00
       name: ScChang
+  - name: Yeet GoT opening Cutscene
+    type: objpatch
+    id: 0xFC55
+    layer: 4
+    room: 2
+    objtype: STAG
+    object:
+      params1: 0xFF03FF05 # scenlink: 5 - skip cutscene of GoT opening
   - name: to BtT unlock
     type: objpatch
     id: 0xFC00
@@ -3921,7 +4000,7 @@ F401: # Sealed grounds Whirlpool
       sizex: 2000
       sizey: 2000
       sizez: 2000
-      anglex: 137 # Have watch Sealed Grounds intro Cutscene
+      anglex: 137 # Have watched Sealed Grounds intro Cutscene
       angley: 0
       anglez: 65535
       name: SwAreaT
@@ -4022,6 +4101,31 @@ F404: # Hylia's Temple
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Set Gate of Time opening cutscene watched 
+    type: objadd
+    room: 2
+    layer: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 0
+      posy: 7600
+      posz: 10250
+      sizex: 20000
+      sizey: 20000
+      sizez: 20000
+      anglex: 344 # Have watched Gate of Time opening Cutscene
+      angley: 0
+      anglez: 65535
+      name: SwAreaT
+  - name: Yeet TMS Cutscene
+    type: objpatch
+    index: 4
+    room: 2
+    objtype: PLY
+    object:
+      play_cutscene: -1
   - name: Remove TMS from CS
     type: objpatch
     room: 2
@@ -4056,19 +4160,19 @@ F403: # Hylia's Realm
   - name: Layer override
     type: layeroverride
     override:
-      - story_flag: 726
+      - story_flag: 726 # Refight G3
         night: 0
         layer: 4
-      - story_flag: 530
+      - story_flag: 530 # Boss Rush
         night: 0
         layer: 1
-      - story_flag: 486
+      - story_flag: 486 # G3 Defeated
         night: 0
         layer: 3
-      - story_flag: 134
+      - story_flag: 134 # Horde Defeated
         night: 0
         layer: 7
-      - story_flag: 347
+      - story_flag: 347 # Horde Cutscene watched
         night: 0
         layer: 1
       - story_flag: -1

@@ -1822,7 +1822,7 @@
     type: flowadd
     flow:
       type: type3
-      subType: 1
+      subType: 1  
       param1: 66 # set scene flag
       param2: 1
       next: -1
@@ -2149,8 +2149,17 @@
       subType: 1
       param1: 29
       param2: 10
-      next: 267
+      next: Raise GoT
       param3: 2
+  - name: Raise GoT
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 340 # Raise GoT
+      next: 267
+      param3: 0
   - name: got to rando dungeons completed check
     type: flowpatch
     index: 267
@@ -2178,16 +2187,20 @@
       param3: 9
       param4: 0
       param5: 0
-  - name: Zelda's Cutscene, trigger CS # auto trigger CS, so above mentioned sceneflag is useless
+  - name: Yeet TMS Cutscene
     type: flowpatch
     index: 16
     flow:
+      next: Give watched TMS Cutscene storyflag
+  - name: Give watched TMS Cutscene storyflag
+    type: flowadd
+    flow:
       type: type3
-      subType: 1
-      param1: 2 # trigger exit 2
-      param2: 2 # room 2
+      subType: 0
+      param1: 0
+      param2: 350 # TMS watched story flag
       next: -1
-      param3: 10
+      param3: 0
   - name: Patch Fi text before Demise
     onlyif: Option "skip-demise" Enabled
     type: textpatch
