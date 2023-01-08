@@ -2603,6 +2603,13 @@ F221: # Fire Dragon Room
     objtype: EVNT
     object:
       item: -1 # No Faron Soth anymore
+  - name: Patch exit from Fire Dragon's Lair to normal Volcano Summit
+    type: objpatch
+    room: 0
+    index: 3
+    objtype: SCEN
+    object:
+      layer: 1
   - name: Exit from Boko Base Dragon to Eldin
     type: objadd
     index: 0
