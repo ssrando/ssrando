@@ -27,7 +27,7 @@ global:
     - 304 # Crystal Quest activated
     - 329 # No sleeping for Wryna
     - 32  # Sailcoth
-    - 28 # Pratice Sword storyflag
+    - 28  # Pratice Sword storyflag
     - 519 # Updated Sand Sea map
     - 115 # Full Lake Floria map
     - 129 # Updated Lanayru Desert map
@@ -51,7 +51,7 @@ global:
     - 330 # Eldin Silent Realm Intro Cutscene
     - 331 # Hylia's Silent Realm Intro Cutscene
     ## Dungeons
-    - 89 # Skyview Intro Cutscene
+    - 89  # Skyview Intro Cutscene
     - 183 # Earth Temple Intro Cutscene
     - 211 # Lanayru Mining Facility Intro Cutscene
     - 155 # Ancient Cistorn Intro Cutscene
@@ -60,21 +60,21 @@ global:
     - 173 # Fire Sanctuary Intro Cutscene
     - 678 # Entering Sky Keep Cutscene
     - 159 # Sky Keep Intro Cutscene
-    ## Bosses
-    - 347 # Horde Intro Cutscene
     - storyflag: 134 # Horde defeated
+      onlyif: Option "skip-horde" Enabled
+    - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
       onlyif: Option "skip-horde" Enabled
     - storyflag: 486 # Ghirahim 3 defeated
       onlyif: Option "skip-g3" Enabled
     - storyflag: 8 # LMF rising CS watched
       onlyif: Option "open-lmf" Is "Open"
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
-    - 2 # Green Rupee
-    - 3 # Blue Rupee
-    - 4 # Red Rupee
-    - 6 # Heart
-    - 7 # Single Arrow
-    - 8 # Bundle of Arrows
+    - 2  # Green Rupee
+    - 3  # Blue Rupee
+    - 4  # Red Rupee
+    - 6  # Heart
+    - 7  # Single Arrow
+    - 8  # Bundle of Arrows
     - 15 # sailcloth
     - 40 # 5 Bombs
     - 41 # 10 Bombs
@@ -90,7 +90,7 @@ global:
     Skyloft:
       - 0  # Lower Academy gates opened
       - 1  # UA Doors open
-      - 8 # Seen Cutscene after getting Hero's Tunic
+      - 8  # Seen Cutscene after getting Hero's Tunic
       - 21 # Upper Academy gates opened
       - 26 # Eye cs in Bazaar
       - 66 # Batreaux Doors outside open
@@ -102,7 +102,7 @@ global:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
     Sealed Grounds:
-      - 7 # vents active
+      - 7  # vents active
       - onlyif: Option "triforce-required" Disabled
         flag: 50 # horde door open
       - onlyif: Option "skip-horde" Enabled
@@ -113,7 +113,7 @@ global:
     Ancient Cistern:
       - 62 # Ancient Cistern Intro Cutscene
     Eldin Volcano:
-      - 2 # gets rid of first digging mitts mogma text
+      - 2  # gets rid of first digging mitts mogma text
       - 58 # digging mitts mogma cutscene watched
     Earth Temple:
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
