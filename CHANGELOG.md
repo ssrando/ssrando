@@ -48,9 +48,11 @@
     - Removed required dungeons from notice board in academy
   - Added menu choice to view dungeon status
     - Complete/Incomplete/Unrequired
-    - Small key count
+    - Small key count (key piece count for ET)
     - Boss key obtained status
     - Dungeon map obtained status
+  - Added menu choice to view item status, this shows the obtained status of items that don't show up on the inventory screen
+    - These include caves key, spiral charge, and life tree fruit (with space for life tree seedling when that gets added)
   - Added menu choice to view general requirements for beating a seed (e.g. how to raise and open Gate of Time, etc.)
   - Added explicit menu choice to view play time (temporarily to fill space)
 - Added Lanayru Desert map of the past as a starting item (by CovenEsme)
