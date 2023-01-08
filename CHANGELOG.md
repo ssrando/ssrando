@@ -56,6 +56,7 @@
   - All skippable cutscenes will now be automatically skipped
   - Skipping happens 4 frames earlier than previously possible :)
   - Demise's death cutscene can no longer be skipped
+- Removed all 4 game introduction cutscenes
 - Removed all region introduction cutscenes (including Silent Realms)
 - Removed all dungeon introduction cutscenes
 - Removed post-Levias cutscene
