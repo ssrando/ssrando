@@ -19,6 +19,10 @@ SECTIONS
 
 updateCurrentSword = 0x8005c110;
 getGratitudeCrystalCount = 0x80252710;
+checkButtonAHeld = 0x80059860;
+checkButtonAPressed = 0x80059680;
+checkButtonBHeld = 0x80059880;
+checkButtonBPressed = 0x800596a0;
 FlagManager__getUncommittedFlags = 0x800bf5f0;
 FlagManager__setFlagOrCounter = 0x800bf530;
 INPUT_BUFFER = 0x80599d0c;

@@ -182,6 +182,7 @@ b setStoryflagToValue
 .global process_startflags
 .global handle_bk_map_dungeonflag
 .global rando_text_command_handler
+.global textbox_a_pressed_or_b_held
 
 .close
 

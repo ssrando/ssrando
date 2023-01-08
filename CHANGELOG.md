@@ -12,6 +12,9 @@
   - Progress Items: Main quest dowsing will point to chests that contain progress items
   - Currently does not work on goddess chests
 - Added option to enable dowsing in dungeons (by YourAverageLink, but shoutouts to Zeldex)
+- Added hint distribution designed for use with the new chest dowsing feature 
+  - Removes hints for easily dowsable chests and adds some for non-dowsable checks
+  - Only shows one hint per Gossip Stone
 - Added option to start with various items (by CovenEsme)
   - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
 - Added option to start with extra health (by CovenEsme)
@@ -50,6 +53,15 @@
     - Dungeon map obtained status
   - Added menu choice to view general requirements for beating a seed (e.g. how to raise and open Gate of Time, etc.)
   - Added explicit menu choice to view play time (temporarily to fill space)
+- Added Lanayru Desert map of the past as a starting item (by CovenEsme)
+- Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check and buying a shield (by CovenEsme)
+- Removed the cutscene after completing the Isle of Songs puzzle
+- Removed the panning cutscenes during the Fledge's Gift check (by CovenEsme)
+- Added the ability to hold down the B button to clear textboxes (by CovenEsme)
+- Added quick text (by CovenEsme and Muzugalium - with help from Lepelog and YourAverageLink)
+  - Removes the delay between clearing a textbox and being able to clear the next one
+  - Removes the delay between opening a textbox and being able to clear the textbox
+  - Removes the background blur to text due to a visual bug
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together

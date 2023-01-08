@@ -49,7 +49,9 @@ extern "C" {
     static STORYFLAG_MANAGER: *mut c_void;
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
-    fn checkStoryflagIsSet(p: *const c_void, flag: u16) -> bool;
+    fn checkStoryflagIsSet(p: *const c_void, flag: u16) -> bool;   
+    fn checkButtonAPressed() -> bool;
+    fn checkButtonBHeld() -> bool;
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -270,6 +272,16 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
             
         }
         _ => (),
+    }
+}
+
+#[no_mangle]
+fn textbox_a_pressed_or_b_held() -> bool {
+    unsafe {
+        if checkButtonAPressed() || checkButtonBHeld() {
+            return true;
+        }
+        return false;
     }
 }
 

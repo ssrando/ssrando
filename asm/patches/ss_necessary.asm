@@ -7,8 +7,39 @@ rlwinm r0,r0,28,30,31 ; r0 = (r0 >> 4) & 3
 stb r0, 0x1209(r28) ; store subtype
 b 0x80269554
 
+.org 0x80115cf8 ; non-final text box
+bl textbox_a_pressed_or_b_held ; change button function
+
+.org 0x80115f98 ; final text box
+bl textbox_a_pressed_or_b_held ; change button function
+
+; Show all text in a textbox at once
 .org 0x80115A04 ; in some function that is text advancing related
 li r4, 1 ; enables instant text
+
+; Fast textboxes advancing
+.org 0x8010f5f4 ; checks what some textbox state stuff
+b 0x8010f654 ; branch to (unused??) block that sets textboxes to be clearable
+
+; Fast textbox appearing - makes textbox blur go weird
+.org 0x8011593c
+nop
+
+; Remove textbox blur
+.org 0x800b3370
+blr
+
+; Remove Fi text janky appearing
+; (equivalent to removing textbox blur for Fi text)
+.org 0x80120c60
+blr
+
+; remove text pauses
+; copies instruction for just ignoring a command
+.org 0x800b2774
+lhz r3, 0x147a(r26)
+addi r0, r3, 1
+sth r0, 0x147a(r26)
 
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
