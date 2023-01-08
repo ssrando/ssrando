@@ -423,6 +423,14 @@ B301: # after Sandship boss
     object:
       params1: 0xC303FF03 # change to zone temp flag 3
       anglez: 0xFFFF # don't set any storyflag here
+B400: # Demise's Sanctuary :)
+  - name: Make Demise's death Cutscene unskippable
+    type: objpatch
+    index: 1
+    room: 0
+    objtype: EVNT
+    object:
+      skipflag: 255
 D003_0: # Sky Keep Courage Room
   - name: Fi text
     type: objdelete
