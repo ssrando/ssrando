@@ -43,77 +43,6 @@ lwz r12, 0x28(r12)
 mtctr r12
 bctr
 
-; replaces the normal boss key get logic with one, that works everywhere
-; datatable for boss key itemid to flagindex
-bosskey_to_flagindex:
-.byte 12; AC
-.byte 15; FS
-.byte 18; SS
-.byte 13; eldin key piece, just use an unused index since this should never happen
-.byte 11; SV
-.byte 14; ET
-.byte 17; LMF
-.align 4
-map_to_flagindex:
-.byte 11 ; SV
-.byte 14 ; ET
-.byte 17 ; LMF
-.byte 12 ; AC
-.byte 15 ; FS
-.byte 18 ; SS
-.byte 20 ; SK
-.align 4
-.global handleBossKeyMapDungeonflag
-handleBossKeyMapDungeonflag:
-stwu r1, -0x10(r1)
-mflr r0
-stw r0, 20(r1)
-stw r31, 12(r1) ; r31 is flagindex of the dungeon, r30 is the mask if it's a map or a boss key
-stw r30, 8(r1)
-addi r4, r3, -25 ; fist boss key
-cmplwi r4, 6
-bgt handle_map ; is not a boss key
-li r30, 0x80
-lis r5, bosskey_to_flagindex@ha
-addi r5, r5, bosskey_to_flagindex@l
-lbzx r31, r4, r5
-b set_dungeonflag
-handle_map:
-addi r4, r3, -207 ; first map
-cmplwi r4, 6
-bgt bkget_func_end ; neither map nor boss key
-li r30, 0x02
-lis r5, map_to_flagindex@ha
-addi r5, r5, map_to_flagindex@l
-lbzx r31, r4, r5
-set_dungeonflag:
-lwz r3, DUNGEONFLAG_MANAGER@sda21(r13)
-lha r0, 2(r3)
-cmpw r0, r31 ; check if dungeon item is for current area
-bne handle_other_area
-lwz r4, 8(r3)
-lhz r0, 0(r4) ; load static dungeonflag that also has the boss key and map flag
-or r0, r0, r30
-sth r0, 0(r4) ; set flag and write back
-li r0, 1
-stb r0, 0(r3) ; set commit flag
-b bkget_func_end
-handle_other_area:
-lwz r3, FILE_MANAGER@sda21(r13)
-bl FileManager__getDungeonFlags
-rlwinm r4, r31, 4, 0, 27 ; flagindex * 16
-lhzx r0, r3, r4 ; load byte from the saved dungeonflags that also has the boss key and map flag
-or r0, r0, r30
-sthx r0, r3, r4 ; set flag and write back
-bkget_func_end:
-lwz r30, 8(r1)
-lwz r31, 12(r1)
-lwz r0, 20(r1)
-mtlr r0
-addi r1, r1, 0x10
-blr
-
-
 smallkey_to_flagindex:
 .byte 11 ; SV
 .byte 17 ; LMF
@@ -251,6 +180,8 @@ b setStoryflagToValue
 ; space to declare all the functions defined in the
 ; custom-functions rust project
 .global process_startflags
+.global handle_bk_map_dungeonflag
+.global textbox_a_pressed_or_b_held
 
 .close
 

@@ -83,55 +83,6 @@
   default: false
   help: If activated, only the required dungeons will contain progression items
   ui: option_empty_unrequired_dungeons
-- name: Banned Types
-  command: banned-types
-  type: multichoice
-  default: []
-  choices:
-    - skyloft
-    - sky
-    - thunderhead
-    - faron
-    - eldin
-    - lanayru
-    - dungeon
-    - mini dungeon
-    - free gift
-    - freestanding
-    - miscellaneous
-    - silent realm
-    - digging
-    - bombable
-    - combat
-    - song
-    - spiral charge
-    - minigame
-    - crystal
-    - short
-    - long
-    - fetch
-    - crystal quest
-    - scrapper
-    - peatrice
-    - goddess
-    - beedle
-    - cheap
-    - medium
-    - expensive
-    - flooded faron
-    - faron goddess
-    - eldin goddess
-    - lanayru goddess
-    - floria goddess
-    - summit goddess
-    - sand sea goddess
-  help: 'Choose subtypes that can''t contain progression items, as a comma seperated
-    list, available types are: skyloft, sky, thunderhead, faron, eldin, lanayru, dungeon,
-    mini dungeon, free gift, freestanding, miscellaneous, silent realm, digging, bombable,
-    combat, song, spiral charge, minigame, crystal, short, long, fetch, crystal quest,
-    scrapper, peatrice, flooded faron, goddess, faron goddess, eldin goddess, lanayru goddess, floria
-    goddess, summit goddess, sand sea goddess'
-  ui: option_banned_types
 - name: Triforce Required
   command: triforce-required
   type: boolean
@@ -201,15 +152,17 @@
 - name: Shop Mode
   command: shop-mode
   type: singlechoice
-  default: Randomized
+  default: Randomized - Cheap
   choices:
     - Vanilla
-    - Always Junk
-    - Randomized
+    - Randomized - Cheap
+    - Randomized - Medium
+    - Randomized - Expensive
   bits: 2
   help: Controls how shops are randomized. If vanilla, shops will always contain their vanilla
-    items. Always Junk will randomize the shops, but will not place progression items in shops.
-    Randmomized will apply standard randomization to shops.
+    items, but may still be logically required for progression. When randomized, cheap is all
+    purchases that cost 300 rupees or less. Medium is all purchases that cost 1000 or less rupees.
+    Expensive includes all purchases, regardless of cost.
   ui: option_shopsanity
 - name: Rupoor Mode
   command: rupoor-mode
@@ -673,7 +626,7 @@
 - name: Hint Distribution
   command: hint-distribution
   type: singlechoice
-  bits: 3
+  bits: 4
   choices:
     - Weak
     - Balanced
@@ -686,6 +639,7 @@
     - S2 - 2D
     - S2 - 3D
     - S2 - 3D EUD Off
+    - CDMC
   default: Balanced
   help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
     as specifics about what additional items and locations can and cannot be hinted
@@ -746,6 +700,31 @@
     - Triforce of Wisdom
     - Water Scale
     - Whip
+    - Skyview Small Key
+    - Skyview Small Key
+    - Lanayru Mining Facility Small Key
+    - Ancient Cistern Small Key
+    - Ancient Cistern Small Key
+    - Sandship Small Key
+    - Sandship Small Key
+    - Fire Sanctuary Small Key
+    - Fire Sanctuary Small Key
+    - Fire Sanctuary Small Key
+    - Sky Keep Small Key
+    - Lanayru Caves Small Key
+    - Skyview Map
+    - Earth Temple Map
+    - Lanayru Mining Facility Map
+    - Ancient Cistern Map
+    - Sandship Map
+    - Fire Sanctuary Map
+    - Sky Keep Map
+    - Skyview Boss Key
+    - Earth Temple Boss Key
+    - Lanayru Mining Facility Boss Key
+    - Ancient Cistern Boss Key
+    - Sandship Boss Key
+    - Fire Sanctuary Boss Key
   default: [
     Progressive Pouch
     # Sailcloth

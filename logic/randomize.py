@@ -187,30 +187,36 @@ class Rando:
             }
 
         for item in self.options["starting-items"]:
-            if item.startswith("Progressive"):
+            if item == KEY_PIECE:
+                continue
+            elif item not in EXTENDED_ITEM.items_list:
                 if number(item, 0) not in starting_items:
                     for count in range(self.options["starting-items"].count(item)):
                         starting_items.add(number(item, count))
                 else:  # Skips over duplicate entries for Progressive Items.
                     continue
-            elif item == KEY_PIECE:
-                continue
             else:
                 starting_items.add(item)
 
         if self.options["random-starting-item"]:
-            possible_random_starting_items = tuple(
-                set(RANDOM_STARTING_ITEMS) - set(self.options["starting-items"])
-            )
+
+            possible_random_starting_items = [
+                item
+                for item in RANDOM_STARTING_ITEMS
+                if item not in self.options["starting-items"]
+            ]
             if len(possible_random_starting_items) == 0:
                 raise ValueError(
                     "All valid progress items have already been added as starting items."
                 )
             else:
                 random_item = self.rng.choice(possible_random_starting_items)
-                if random_item.startswith("Progressive"):
+                if random_item not in EXTENDED_ITEM.items_list:
                     random_item = number(random_item, 0)
                 starting_items.add(random_item)
+
+        if self.options["map-mode"] == "Removed":
+            self.placement.add_unplaced_items(set(ALL_MAPS) - starting_items)
 
         self.placement.add_starting_items(starting_items)
 
@@ -221,19 +227,17 @@ class Rando:
         maybe_req = lambda b: banned_req if b else nothing_req
         self.ban_options = {
             BEEDLE_STALL_ACCESS: maybe_req(self.options["shop-mode"] == "Always Junk"),
-            MEDIUM_PURCHASES: maybe_req("medium" in self.options["banned-types"]),
-            EXPENSIVE_PURCHASES: maybe_req("expensive" in self.options["banned-types"]),
+            MEDIUM_PURCHASES: maybe_req(
+                self.options["shop-mode"] == "Randomized - Cheap"
+            ),
+            EXPENSIVE_PURCHASES: maybe_req(
+                self.options["shop-mode"] == "Randomized - Cheap"
+                or self.options["shop-mode"] == "Randomized - Medium"
+            ),
         } | {
             MAY_GET_n_CRYSTALS(c): (maybe_req(c > self.options["max-batreaux-reward"]))
             for c in CRYSTAL_THRESHOLDS
         }
-
-        banned_types = set(self.options["banned-types"]) - {
-            "medium",
-            "expensive",
-            "silent realm",
-        }
-        self.ban_options |= {s: maybe_req(s in banned_types) for s in BANNABLE_TYPES}
 
         self.banned: List[EIN] = []
         self.banned.extend(map(self.norm, self.options["excluded-locations"]))
@@ -249,12 +253,6 @@ class Rando:
                 or self.options["triforce-shuffle"] == "Anywhere"
             ):
                 self.banned.append(self.norm(entrance_of_exit(DUNGEON_MAIN_EXITS[SK])))
-
-        if "silent realm" in self.options["banned-types"]:
-            self.banned.extend(
-                self.norm(entrance_of_exit(silent_realm_exit))
-                for silent_realm_exit in SILENT_REALM_EXITS.values()
-            )
 
     def get_endgame_requirements(self):
         # needs to be able to open GoT and open it, requires required dungeons
@@ -456,7 +454,8 @@ class Rando:
 
         # remove maps from the dungeon pool if maps are shuffled
         if map_mode == "Removed":
-            self.placement.add_unplaced_items(set(ALL_MAPS))
+            pass
+            # handled later
         elif map_mode == "Vanilla":
             self.placement |= VANILLA_MAPS_PLACEMENT(self.norm, self.areas.checks)
         elif map_mode == "Own Dungeon - Restricted":

@@ -117,7 +117,7 @@ class Placement:
     def add_unplaced_items(self, items: Set[EIN]):
         for i in items:
             if i in self.items and self.items[i] != UNPLACED_ITEM:
-                raise ValueError
+                raise ValueError(items, i)
 
         self.items |= {k: UNPLACED_ITEM for k in items}
         self.unplaced_items |= items
