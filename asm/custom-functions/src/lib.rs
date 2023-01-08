@@ -45,6 +45,8 @@ extern "C" {
     static STORYFLAG_MANAGER: *mut c_void;
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
+    fn checkButtonAPressed() -> bool;
+    fn checkButtonBHeld() -> bool;
 }
 
 fn sceneflag_set_global(scene_index: u16, flag: u16) {
@@ -214,6 +216,16 @@ fn handle_bk_map_dungeonflag(item: c_ushort) {
             (*dungeonflag_local())[0] |= dungeonflag_mask;
         }
         (*dungeonflag_global(flagindex as u16))[0] |= dungeonflag_mask;
+    }
+}
+
+#[no_mangle]
+fn textbox_a_pressed_or_b_held() -> bool {
+    unsafe {
+        if checkButtonAPressed() || checkButtonBHeld() {
+            return true;
+        }
+        return false;
     }
 }
 
