@@ -2316,6 +2316,46 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       anglex: 12031 #keep mogma above ground
+  - name: Remove first Pyrup
+    type: objdelete
+    id: 0x10B5
+    layer: 1
+    room: 2
+    objtype: OBJ
+  - name: Replace first Pyrup with stationary Pyrup
+    type: objadd
+    layer: 1
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFEFFFF2
+      params2: 0x25FFFFFF
+      posx: 5800
+      posy: 0
+      posz: 4500
+      anglex: 0
+      angley: 37000
+      anglez: 0
+      id: 0x10B5
+      name: EHidoK
+  - name: Remove first Pyrup cs trigger 1
+    type: objdelete
+    id: 0xFCDB
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove first Pyrup cs trigger 2
+    type: objdelete
+    id: 0xFCCF
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove first Pyrup cs trigger 3
+    type: objdelete
+    id: 0xFCCE
+    layer: 1
+    room: 2
+    objtype: STAG
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
