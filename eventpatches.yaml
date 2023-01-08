@@ -503,7 +503,7 @@
   - name: Fi Status Text
     type: textadd
     unk1: 2 # Fi text box background
-    text: "Yes, Master. What information do\nyou seek?\n[1]Dungeon Status[2]Objective[3-]Never mind."
+    text: "Yes, Master. What information do\nyou seek?\n[1]Dungeon Status[2]Objective[3]Item Status[4-]Never mind."
   - name: Display Fi Status Text
     type: flowadd
     flow:
@@ -520,7 +520,28 @@
     cases:
       - Skyview Status Values Command Call
       - Display Fi Objective Text
+      - Item Status Command Call
       - Display Fi Call Text #returns
+  #flow for item status option
+  - name: Item Status Command Call
+    type: flowadd
+    flow: 
+      type: type3
+      next: Display Item Status Text
+      param1: 0
+      param2: 0
+      param3: 72 #custom command 72
+  - name: Item Status Text
+    type: textadd
+    unk1: 2
+    text: "<ye<Lanayru Caves Small Key>>: <string arg0>\n<y<Spiral Charge>>: <string arg1>\n<y<Life Tree Fruit>>: <string arg2>"
+  - name: Display Item Status Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 68
+      param4: Item Status Text
   #flows for objective status option
   - name: Fi Objective Text
     type: textadd

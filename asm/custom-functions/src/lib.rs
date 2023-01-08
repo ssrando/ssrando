@@ -50,6 +50,7 @@ extern "C" {
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
     fn checkStoryflagIsSet(p: *const c_void, flag: u16) -> bool;   
+    fn checkItemFlag(flag: u16) -> bool;
     fn checkButtonAPressed() -> bool;
     fn checkButtonBHeld() -> bool;
     fn getKeyPieceCount() -> u16;
@@ -57,6 +58,10 @@ extern "C" {
 
 fn storyflag_check(flag: u16) -> bool {
     unsafe { checkStoryflagIsSet(core::ptr::null(), flag) }
+}
+
+fn itemflag_check(flag: u16) -> bool {
+    unsafe { checkItemFlag(flag) }
 }
 
 fn sceneflag_set_global(scene_index: u16, flag: u16) {
@@ -274,6 +279,31 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
             };
             text_manager_set_string_arg(completed_text as *const c_void, 2);
             
+        }
+        72 => {
+            let caves_key = dungeon_global_key_count(9);
+            let caves_key_text = if caves_key == 1 {
+                OBTAINED_TEXT.as_ptr()
+            } else {
+                UNOBTAINED_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(caves_key_text as *const c_void, 0);
+
+            let spiral_charge_obtained = 364; //story flag for spiral charge
+            let spiral_charge_text = if storyflag_check(spiral_charge_obtained) {
+                OBTAINED_TEXT.as_ptr()
+            } else {
+                UNOBTAINED_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(spiral_charge_text as *const c_void, 1);
+
+            let life_tree_fruit_obtained = 198; //item flag for life tree fruit
+            let life_tree_fruit_text = if itemflag_check(life_tree_fruit_obtained) {
+                OBTAINED_TEXT.as_ptr()
+            } else {
+                UNOBTAINED_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(life_tree_fruit_text as *const c_void, 2);
         }
         _ => (),
     }

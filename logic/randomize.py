@@ -412,7 +412,7 @@ class Rando:
                     locations={final_check: sword},
                 )
 
-        self.placement |= HARDCODED_PLACEMENT(self.norm)
+        # self.placement |= HARDCODED_PLACEMENT(self.norm)
 
         if self.options["open-et"]:
             self.placement.add_unplaced_items(set(KEY_PIECES))
