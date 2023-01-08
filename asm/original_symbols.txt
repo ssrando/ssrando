@@ -44,5 +44,6 @@ main.dol:
     findActorByActorType: 0x802e2920
     checkButtonAPressed: 0x80059680
     checkButtonBHeld: 0x80059880
+    getKeyPieceCount: 0x802522f0
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
