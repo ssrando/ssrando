@@ -106,6 +106,11 @@ class Rando:
 
         logic = Logic(areas, logic_settings, self.placement)
 
+        for loc in self.options["excluded-locations"]:
+            logic.requirements[EXTENDED_ITEM[self.norm(loc)]] &= DNFInventory(
+                BANNED_BIT
+            )
+
         self.rando_algo = FillAlgorithm(logic, self.rng, self.randosettings)
 
         self.randomised = False
@@ -240,7 +245,6 @@ class Rando:
         }
 
         self.banned: List[EIN] = []
-        self.banned.extend(map(self.norm, self.options["excluded-locations"]))
 
         if self.options["empty-unrequired-dungeons"]:
             self.banned.extend(
