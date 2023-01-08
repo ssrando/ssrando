@@ -510,7 +510,7 @@
     cases:
       - Skyview Status Values Command Call
       - Display Fi Objective Text
-      - -1 #returns
+      - Display Fi Call Text #returns
   #flows for objective status option
   - name: Fi Objective Text
     type: textadd
