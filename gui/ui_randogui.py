@@ -401,7 +401,7 @@ class Ui_MainWindow(object):
         self.box_dungeons.setGeometry(QRect(820, 0, 191, 501))
         self.verticalLayoutWidget_7 = QWidget(self.box_dungeons)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 171, 471))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 178, 471))
         self.vlay_dungeons = QVBoxLayout(self.verticalLayoutWidget_7)
         self.vlay_dungeons.setObjectName(u"vlay_dungeons")
         self.vlay_dungeons.setContentsMargins(0, 0, 0, 0)
@@ -724,6 +724,30 @@ class Ui_MainWindow(object):
 
 
         self.vlay_silent_realms.addLayout(self.verticalLayout_trialshuffle)
+
+        self.option_treasuresanity_in_silent_realms = QCheckBox(self.verticalLayoutWidget_22)
+        self.option_treasuresanity_in_silent_realms.setObjectName(u"option_treasuresanity_in_silent_realms")
+
+        self.vlay_silent_realms.addWidget(self.option_treasuresanity_in_silent_realms)
+
+        self.hlay_req_dungeons_2 = QHBoxLayout()
+        self.hlay_req_dungeons_2.setObjectName(u"hlay_req_dungeons_2")
+        self.label_for_option_trial_treasure_amount = QLabel(self.verticalLayoutWidget_22)
+        self.label_for_option_trial_treasure_amount.setObjectName(u"label_for_option_trial_treasure_amount")
+
+        self.hlay_req_dungeons_2.addWidget(self.label_for_option_trial_treasure_amount)
+
+        self.option_trial_treasure_amount = QSpinBox(self.verticalLayoutWidget_22)
+        self.option_trial_treasure_amount.setObjectName(u"option_trial_treasure_amount")
+        self.option_trial_treasure_amount.setEnabled(True)
+        sizePolicy2.setHeightForWidth(self.option_trial_treasure_amount.sizePolicy().hasHeightForWidth())
+        self.option_trial_treasure_amount.setSizePolicy(sizePolicy2)
+        self.option_trial_treasure_amount.setMaximumSize(QSize(41, 16777215))
+
+        self.hlay_req_dungeons_2.addWidget(self.option_trial_treasure_amount)
+
+
+        self.vlay_silent_realms.addLayout(self.hlay_req_dungeons_2)
 
         self.vspace_silent_realms = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1170,7 +1194,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1253,6 +1277,8 @@ class Ui_MainWindow(object):
         self.label_for_option_rupoor_mode.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.box_silent_realms.setTitle(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
         self.label_for_option_shuffle_trial_objects.setText(QCoreApplication.translate("MainWindow", u"Shuffle Trial Objects", None))
+        self.option_treasuresanity_in_silent_realms.setText(QCoreApplication.translate("MainWindow", u"Randomize Dusk Relics", None))
+        self.label_for_option_trial_treasure_amount.setText(QCoreApplication.translate("MainWindow", u"Relics Shuffled", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_additional_settings), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
@@ -1305,4 +1331,3 @@ class Ui_MainWindow(object):
         self.seed_button.setText(QCoreApplication.translate("MainWindow", u"New Seed", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
     # retranslateUi
-

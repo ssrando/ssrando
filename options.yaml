@@ -597,6 +597,21 @@
   permalink: true
   help: The algorithm used to place items in the world. Random Fill has an extremely high chance of failure.
   # ui: option_filling_algorithm
+- name: Treasuresanity in Silent Realms
+  command: treasuresanity-in-silent-realms
+  type: boolean
+  default: true
+  help: Randomizes treasures in Silent Realms to items.
+  ui: option_treasuresanity_in_silent_realms
+- name: Trial Treasure Amount
+  command: trial-treasure-amount
+  type: int
+  default: 5
+  min: 1
+  max: 10
+  bits: 4
+  help: How many treasures per Silent Realm you want to randomize.
+  ui: option_trial_treasure_amount
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution
