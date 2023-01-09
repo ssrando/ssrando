@@ -228,11 +228,6 @@ bne 0x8004ec28 ; if not faron main, treat this kikwi as found
 .org 0x8024edbc
 li r3, 0
 
-; don't allow collecting the trial reward again if it has been completed
-; this hijacks the destructor of the trial actor
-.org 0x802d7660
-bl has_not_already_completed_trial
-
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

@@ -1023,9 +1023,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                         stageoarcs[(stage, layer)].add(oarc)
                 # fake object name to handle it easier
                 if objname == "Relic":
-                    trialrelics[stage].append(
-                        (int(objid), item["id"])
-                    )
+                    trialrelics[stage].append((int(objid), item["id"]))
                 else:
                     stagepatchv2[(stage, room)].append(
                         (objname, layer, objid, item["id"], chest_dowsing[checkname])
@@ -2050,7 +2048,6 @@ class GamePatcher:
             rng.shuffle(loc_params)
 
             trial_relic_patches = self.trialrelicpatches[trial].copy()
-            print(trial_relic_patches)
             has_relic_patches = bool(trial_relic_patches)
 
             for ((id, room), (params, actor_name)) in loc_params:
@@ -2058,7 +2055,7 @@ class GamePatcher:
                 if actor_name == "AncJwls" and has_relic_patches:
                     # replace relics with randomized items
                     if trial_relic_patches:
-                        (sceneflag, itemid) = trial_relic_patches.pop() # third value is chest dowsing which is necessary for all patches but irrelevant for these relics
+                        (sceneflag, itemid) = trial_relic_patches.pop()
                         # 9 is the rando item subtype forcing a textbox
                         params1 = 0xFF9C0200
                         params1 = mask_shift_set(params1, 0xFF, 10, sceneflag)
