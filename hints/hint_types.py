@@ -76,8 +76,8 @@ class SongHint(NonStoneHint):
     raw_texts = {
         HINT_MODES.Empty: "",
         HINT_MODES.Direct: "This trial holds {}",
-        HINT_MODES.Useless: "It's probably not too important...",
-        HINT_MODES.Useful: "You might need what it reveals...",
+        HINT_MODES.Useless: "Its reward is probably not too important...",
+        HINT_MODES.Useful: "You might need its reward...",
         HINT_MODES.Required: "Your spirit will grow by completing this trial",
     }
 
