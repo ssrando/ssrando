@@ -48,6 +48,7 @@ main.dol:
     isPlayingHarp: 0x80381120
     SPECIAL_MINIGAME_STATE: 0x80572250
     findActorByActorType: 0x802e2920
+    SPAWN_SLAVE: 0x805b3860
     checkButtonAPressed: 0x80059680
     checkButtonBHeld: 0x80059880
     getKeyPieceCount: 0x802522f0

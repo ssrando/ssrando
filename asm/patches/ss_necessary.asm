@@ -333,6 +333,11 @@ nop
 nop
 nop
 
+; don't allow collecting the trial reward again if it has been completed
+; this hijacks the destructor of the trial actor
+.org 0x802d7660
+bl has_not_already_completed_trial
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
@@ -856,4 +861,9 @@ beq 0x460
 .org 0x434 ; 0x80ee7d84
 b 0x460
 
+.close
+.open "d_a_t_wood_areaNP.rel"
+; skip over the check for valid nearby items so any item can be bonked down nearby
+.org 0x91c
+nop
 .close

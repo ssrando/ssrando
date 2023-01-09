@@ -238,6 +238,24 @@ lwz r3, 0x4(r28) ; vanilla instruction
 
 return_item_model_name:
 mr r26, r3
+; prevents giving the item a second time when the trial storyflag is set
+.global has_not_already_completed_trial
+has_not_already_completed_trial:
+has_not_already_completed_trial:
+; we use storyflags 919-922 (inclusive) for the trials, to keep it simple we just
+; add the second byte of the stage name to 871
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+li r3, 0x20A
+li r4, 0
+bl findActorByActorType ; find trial actor
+lhz r4, 0xaa(r3)
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
+bl FlagManager__getFlagOrCounter
+; the original stores a 1 in r31, store here if the trial was already completed, so we need to invert
+; the storyflag
+xori r31, r3, 1
 lwz r0, 0x14(r1)
 mtlr r0
 addi r1, r1, 0x10
@@ -353,6 +371,17 @@ beqlr
 li r3, 1
 stw r3, 0xC94(r4)
 blr
+
+.global set_trial_completed_storyflag
+set_trial_completed_storyflag:
+; if the item has been given, set the flag for the trial to be completed
+lwz r4, 0xC94(r3)
+cmplwi r4, 0 ; 0 means item not given yet
+beqlr
+lhz r4, 0xaa(r3)
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
+b FlagManager__setFlagTo1 ; set storyflag for completing trial
+
 .close
 
 .open "d_a_obj_time_stoneNP.rel"
