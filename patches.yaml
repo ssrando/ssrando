@@ -118,6 +118,15 @@ global:
   #   - GetSozaiO
   #   - GetSozaiP
 
+S000: # Skyloft Silent Realm
+  - name: Trial completed storyflag
+    type: objpatch
+    id: 0xFC26
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      params2: 0xFF7F039A # storyflag 922
 S100: # Faron Silent Realm
   - name: Fi text near waking water
     type: objdelete
@@ -125,6 +134,14 @@ S100: # Faron Silent Realm
     layer: 2
     room: 0
     objtype: OBJ
+  - name: Trial completed storyflag
+    type: objpatch
+    id: 0xFC94
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      params2: 0xFF7F0397 # storyflag 919
 #   - name: Test Trial
 #     type: objpatch
 #     id: 0xFC94
@@ -137,6 +154,24 @@ S100: # Faron Silent Realm
 #     type: oarcadd
 #     oarc: GetMoleGloveA
 #     destlayer: 2
+S200:
+  - name: Trial completed storyflag
+    type: objpatch
+    id: 0xFC37
+    layer: 2
+    room: 2
+    objtype: OBJ
+    object:
+      params2: 0xFF7F0398 # storyflag 920
+S300:
+  - name: Trial completed storyflag
+    type: objpatch
+    id: 0xFC18
+    layer: 2
+    room: 0
+    objtype: OBJ
+    object:
+      params2: 0xFF7F0399 # storyflag 921
 B100:
   - name: Layer override
     type: layeroverride

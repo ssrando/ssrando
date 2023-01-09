@@ -52,6 +52,7 @@
   - Removes the delay between clearing a textbox and being able to clear the next one
   - Removes the delay between opening a textbox and being able to clear the textbox
   - Removes the background blur to text due to a visual bug
+- Make it possible to reenter trials
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
