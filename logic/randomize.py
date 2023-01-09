@@ -479,7 +479,6 @@ class Rando:
             pass
 
         trial_treasure_amount = self.options["trial-treasure-amount"]
-        print(trial_treasure_amount)
         if not self.options["treasuresanity-in-silent-realms"]:
             trial_treasure_amount = 0
 
