@@ -865,8 +865,8 @@ class Ui_MainWindow(object):
         self.box_silent_realms.setObjectName(u"box_silent_realms")
         sizePolicy2.setHeightForWidth(self.box_silent_realms.sizePolicy().hasHeightForWidth())
         self.box_silent_realms.setSizePolicy(sizePolicy2)
-        self.verticalLayout_7 = QVBoxLayout(self.box_silent_realms)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.horizontalLayout_10 = QHBoxLayout(self.box_silent_realms)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.vlay_silent_realms = QVBoxLayout()
         self.vlay_silent_realms.setObjectName(u"vlay_silent_realms")
         self.verticalLayout_trialshuffle = QVBoxLayout()
@@ -889,12 +889,36 @@ class Ui_MainWindow(object):
 
         self.vlay_silent_realms.addLayout(self.verticalLayout_trialshuffle)
 
+        self.option_treasuresanity_in_silent_realms = QCheckBox(self.box_silent_realms)
+        self.option_treasuresanity_in_silent_realms.setObjectName(u"option_treasuresanity_in_silent_realms")
+
+        self.vlay_silent_realms.addWidget(self.option_treasuresanity_in_silent_realms)
+
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(-1, -1, -1, 0)
+        self.label_for_option_trial_treasure_amount = QLabel(self.box_silent_realms)
+        self.label_for_option_trial_treasure_amount.setObjectName(u"label_for_option_trial_treasure_amount")
+
+        self.horizontalLayout_9.addWidget(self.label_for_option_trial_treasure_amount)
+
+        self.option_trial_treasure_amount = QSpinBox(self.box_silent_realms)
+        self.option_trial_treasure_amount.setObjectName(u"option_trial_treasure_amount")
+        self.option_trial_treasure_amount.setMaximumSize(QSize(41, 16777215))
+        self.option_trial_treasure_amount.setMinimum(1)
+        self.option_trial_treasure_amount.setMaximum(10)
+
+        self.horizontalLayout_9.addWidget(self.option_trial_treasure_amount)
+
+
+        self.vlay_silent_realms.addLayout(self.horizontalLayout_9)
+
         self.vspace_silent_realms = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_silent_realms.addItem(self.vspace_silent_realms)
 
 
-        self.verticalLayout_7.addLayout(self.vlay_silent_realms)
+        self.horizontalLayout_10.addLayout(self.vlay_silent_realms)
 
 
         self.horizontalLayout_4.addWidget(self.box_silent_realms)
@@ -1782,7 +1806,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1872,6 +1896,8 @@ class Ui_MainWindow(object):
         self.label_for_option_rupoor_mode.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
         self.box_silent_realms.setTitle(QCoreApplication.translate("MainWindow", u"Silent Realms", None))
         self.label_for_option_shuffle_trial_objects.setText(QCoreApplication.translate("MainWindow", u"Shuffle Trial Objects", None))
+        self.option_treasuresanity_in_silent_realms.setText(QCoreApplication.translate("MainWindow", u"Trial Treasuresanity", None))
+        self.label_for_option_trial_treasure_amount.setText(QCoreApplication.translate("MainWindow", u"Trial Treasure Amount", None))
         self.box_heromode_changes.setTitle(QCoreApplication.translate("MainWindow", u"Hero Mode Changes", None))
         self.option_upgraded_skyward_strike.setText(QCoreApplication.translate("MainWindow", u"Upgraded Skyward Strike", None))
         self.option_fast_air_meter.setText(QCoreApplication.translate("MainWindow", u"Faster Air Meter Depletion", None))

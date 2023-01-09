@@ -502,6 +502,15 @@ class Rando:
         tadtonesanity = self.options["tadtonesanity"]
         if not tadtonesanity:
             self.placement |= VANILLA_TADTONE_PLACEMENT(self.norm, self.areas.checks)
+        trial_treasure_amount = self.options["trial-treasure-amount"]
+        print(trial_treasure_amount)
+        if not self.options["treasuresanity-in-silent-realms"]:
+            trial_treasure_amount = 0
+
+        # make non-randomized trial relics vanilla
+        self.placement |= SOME_VANILLA_RELICS(
+            trial_treasure_amount, self.norm, self.areas.checks
+        )
 
     #
     #

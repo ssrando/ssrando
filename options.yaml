@@ -1052,3 +1052,18 @@
   bits: 5
   help: How many groups of Tadtones to start with.
   ui: option_starting_tadtones
+- name: Treasuresanity in Silent Realms
+  command: treasuresanity-in-silent-realms
+  type: boolean
+  default: true
+  help: Randomizes treasures in Silent Realms to items.
+  ui: option_treasuresanity_in_silent_realms
+- name: Trial Treasure Amount
+  command: trial-treasure-amount
+  type: int
+  default: 5
+  min: 1
+  max: 10
+  bits: 4
+  help: How many treasures per Silent Realm you want to randomize.
+  ui: option_trial_treasure_amount
