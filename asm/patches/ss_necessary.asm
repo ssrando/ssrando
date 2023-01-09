@@ -224,6 +224,15 @@ lhz r4, SPAWN_SLAVE+2@l(r4)
 cmplwi r4, 0x3030 ; '00', we assume all stages like XX00 are faron main
 bne 0x8004ec28 ; if not faron main, treat this kikwi as found
 
+; allow triforces to fall down when bonked
+.org 0x8024edbc
+li r3, 0
+
+; don't allow collecting the trial reward again if it has been completed
+; this hijacks the destructor of the trial actor
+.org 0x802d7660
+bl has_not_already_completed_trial
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
@@ -588,4 +597,10 @@ b try_end_pumpkin_archery
 .open "d_a_obj_light_lineNP.rel"
 .org 0xDAC
 bl check_activated_storyflag
+.close
+
+.open "d_a_t_wood_areaNP.rel"
+; skip over the check for valid nearby items so any item can be bonked down nearby
+.org 0x91c
+nop
 .close
