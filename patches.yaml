@@ -2595,6 +2595,118 @@ F202: # Boko Base
       sizey: 2000
       sizez: 2000
       angle: 0
+  - name: Patch jail pot to give Arrows
+    type: objpatch
+    id: 0x0849
+    layer: 1
+    room: 1
+    objtype: OBJ
+    object:
+      params2: 0x0CFFFFFF
+  - name: Patch jail pot to give Bombs
+    type: objpatch
+    id: 0x084A
+    layer: 1
+    room: 1
+    objtype: OBJ
+    object:
+      params2: 0x0BFFFFFF
+  - name: Add extra Arrow Pot Next to Volcano East Statue
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 3500
+      posy: 1009.22931
+      posz: 6550
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFF
+      name: Tubo
+  - name: Add extra Bomb Pot next to Volcano East Statue
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0BFFFFFF
+      posx: 3550
+      posy: 1024.03955
+      posz: 6650
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFE
+      name: Tubo
+  - name: Add extra Arrow Pot Next to Volcano Ascent Statue
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 1250
+      posy: 850.048523
+      posz: -5600
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFD
+      name: Tubo
+  - name: Add extra Bomb Pot next to Volcano Ascent Statue
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0BFFFFFF
+      posx: 1350
+      posy: 853.267029
+      posz: -5600
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFC
+      name: Tubo
+  - name: Add extra Arrow Pot Next to Outside Earth Temple Statue
+    type: objadd
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 450
+      posy: 13800
+      posz: -24700
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFB
+      name: Tubo
+  - name: Add extra Bomb Pot next to Outside Earth Temple Statue
+    type: objadd
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0BFFFFFF
+      posx: 550
+      posy: 13800
+      posz: -24700
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFA
+      name: Tubo
 F221: # Fire Dragon Room
   - name: Remove Eldin Soth from CS
     type: objpatch
@@ -2780,6 +2892,38 @@ F201_2: # Boko Base Volcano Summit
     layer: 0
     room: 0
     objtype: STAG
+  - name: Add extra Arrow Pot Next to Inside the Volcano Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: -400
+      posy: 0
+      posz: -550
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFF9
+      name: Tubo
+  - name: Add extra Bomb Pot next to Inside the Volcano Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0BFFFFFF
+      posx: -400
+      posy: 0
+      posz: -850
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFF8
+      name: Tubo
 F201_3: # FS entrance
   - name: Layer override
     type: layeroverride
