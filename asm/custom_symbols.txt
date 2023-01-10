@@ -10,6 +10,7 @@ main.dol:
   process_startflags: 0x80678504
   handle_bk_map_dungeonflag: 0x80678778
   textbox_a_pressed_or_b_held: 0x80678828
+  set_goddess_sword_pulled_scene_flag: 0x80678858
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:

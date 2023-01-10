@@ -1098,44 +1098,55 @@ F005r: # Orielle and Parrow's House
     room: 0
     objtype: OBJ
 F008r: # Goddess Statue
-  - name: Goddess Sword chest
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 951 # Raising Goddess Sword in Goddess Statue
+        night: 0
+        layer: 4
+      - story_flag: -1
+        night: 0
+        layer: 2
+  - name: Fi text after pulling Goddess Sword
     type: objadd
-    layer: 0
     room: 0
-    objtype: OBJS
-    object:
-      params1: 0xFFFFFFF3
-      params2: 0xFF5FFFFF # goddess sword upgrade storyflag
-      posx: 0
-      posy: 42.820003509521484
-      posz: 75
-      anglex: 0xFFFF
-      angley: 0
-      anglez: 0xBE02 # chest flag 95, item 0, will be filled in later
-      id: 0xFC10
-      name: TBox
-  - name: Emerald Tablet chest
-    type: objadd
     layer: 0
-    room: 0
-    objtype: OBJS
+    id: 0xFC00
+    objtype: OBJ
     object:
-      params1: 0xFFFFFFF3
-      params2: 0xFF5FFFFF
+      params1: 0xFFFFFF01 # type 1, no fi, flag sets automatically
+      params2: 0xFF1FFFFF
       posx: 0
-      posy: 87.5
-      posz: -1130
-      anglex: 0xFFFF
-      angley: 0
-      anglez: 0xBC02 # chest flag 94, item 2
-      id: 0xFC10
-      name: TBox
-  - name: Delete SwrdSt
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      angley: 0xFFFF
+      anglez: 10750 # entrypoint 107_50
+      id: 0xFC00
+      name: NpcTke
+      trigstoryfid: 951 # Raised Goddess Sword in Goddess Statue
+      untrigscenefid: 25 # Scene flag 25 - Skyward Strike on Tablet Pedestal (unused in rando)
+  - name: Remove Sword Pedestal from layer 0
     type: objdelete
     id: 0xFC05
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Add Sword Pedestal only to layer 2
+    type: objadd
+    room: 0
+    layer: 2
+    id: 0xFFFF
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFFC
+      params2: 0xFFFFFFFF
+      posx: 0
+      posy: 42.820003509521484
+      posz: 75
+      anglex: 0
+      angley: 0
+      anglez: 0
+      name: SwrdSt
   - name: Delete Crest
     type: objdelete
     id: 0xFC02

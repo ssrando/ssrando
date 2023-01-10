@@ -779,6 +779,29 @@
   #   type: textpatch
   #   index: 18
   #   text: "Required dungeons:\nA\nB"
+  - name: Fi give Goddess Statue items
+    type: flowpatch
+    index: 12
+    flow:
+      next: Fi give Goddess Statue item 1
+  - name: Fi give Goddess Statue item 1
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: Fi give Goddess Statue item 2
+      param3: 9
+  - name: Fi give Goddess Statue item 2
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: -1
+      param3: 9
 108-ShinkanA:
   - name: Owlans Shield
     type: flowpatch

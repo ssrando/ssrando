@@ -229,6 +229,14 @@ fn textbox_a_pressed_or_b_held() -> bool {
     }
 }
 
+#[no_mangle]
+fn set_goddess_sword_pulled_scene_flag(){
+    unsafe {
+        // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
+        storyflag_set_to_1(951);
+    }
+}
+
 #[panic_handler]
 fn panic(_: &core::panic::PanicInfo) -> ! {
     loop {}

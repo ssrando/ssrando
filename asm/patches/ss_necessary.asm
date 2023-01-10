@@ -41,6 +41,14 @@ lhz r3, 0x147a(r26)
 addi r0, r3, 1
 sth r0, 0x147a(r26)
 
+; remove sword item from sword pedestal and give new story flag 951
+.org 0x801d45ec
+bl set_goddess_sword_pulled_scene_flag
+
+; Sword pedestal textbox removal
+.org 0x801d4b20
+li r5, -1
+
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
 stwu r1, -0x30(r1) ; change function prologue to match the function it branches to at the end

@@ -43,16 +43,18 @@ Upper Skyloft - Chest near Goddess Statue:
   type: skyloft, miscellaneous
   Paths:
     - stage/F000/r0/l0/TBox/71
-Upper Skyloft - First Chest in Goddess Statue:
+Upper Skyloft - First Goddess Sword Item in Goddess Statue:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
-    - stage/F008r/r0/l0/TBox/95
-Upper Skyloft - Second Chest in Goddess Statue:
+    - event/107-Kanban/Fi give Goddess Statue item 1
+    - oarc/F008r/l2
+Upper Skyloft - Second Goddess Sword Item in Goddess Statue:
   original item: Emerald Tablet
   type: skyloft, miscellaneous
   Paths:
-    - stage/F008r/r0/l0/TBox/94
+    - event/107-Kanban/Fi give Goddess Statue item 2
+    - oarc/F008r/l2
 Central Skyloft - Bazaar Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, sand sea goddess
