@@ -1102,10 +1102,10 @@ F008r: # Goddess Statue
     type: layeroverride
     override:
       - story_flag: 951 # Raising Goddess Sword in Goddess Statue
-        night: 0
+        night: 2
         layer: 4
       - story_flag: -1
-        night: 0
+        night: 2
         layer: 2
   - name: Fi text after pulling Goddess Sword
     type: objadd
