@@ -1501,8 +1501,17 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: rando required dungeon storyflag
+      next: Give Ancient Cistern beaten story flag
       param3: 9
+  - name: Give Ancient Cistern beaten story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 900 # Ancient Cistern beaten story flag
+      next: rando required dungeon storyflag
+      param3: 0
   - name: rando required dungeon storyflag
     type: flowadd
     flow:
@@ -1919,10 +1928,19 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: 6
+      next: Give Fire Sanctuary beaten story flag
       param3: 9
       param4: 0
       param5: 0
+  - name: Give Fire Sanctuary beaten story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 901 # Fire Sanctuary beaten story flag
+      next: 6
+      param3: 0
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 6
@@ -2006,10 +2024,19 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: 46
+      next: Give Sadship beaten story flag
       param3: 9
       param4: 0
       param5: 0
+  - name: Give Sadship beaten story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 15 # Sadship beaten story flag
+      next: 46
+      param3: 0
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 46

@@ -1,5 +1,6 @@
 global:
   startstoryflags: # first 8 flags are set during opening cutscenes
+    - 933
     - 842 # Set when starting a new game
     - 36  # Hero's tunic
     - storyflag: 226 # Hero Mode
@@ -137,6 +138,8 @@ global:
     Lanayru Gorge:
       - 10 # Minecart at end of Track
       - 16 # Lanayru Gorge Intro Cutscene
+    Sandship:
+      - 82
     Fire Sanctuary:
       - 83 # Cutscene showing the outside of the Fire Sanctuary
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
@@ -277,15 +280,16 @@ B101: # Koloktos Boss Room
     object:
       params1: 0xFFFD3000
 B101_1: # after AC boss
-  - name: AC CS remove item and flags
+  - name: Remove Farore's Flame Cutscene
     type: objpatch
     room: 0
-    index: 1
-    objtype: EVNT
+    index: 2
+    objtype: SCEN
     object:
-      item: -1
-      story_flag1: 900 # rando for AC beaten
-      story_flag2: -1
+      name: F102_1
+      layer: 0
+      entrance: 6
+      saveprompt: 1
   - name: Fi text before AC CS
     type: objadd
     room: 0
@@ -339,14 +343,16 @@ B210: # Earth Spring
     object:
       params1: 0xC303FF00 # change to zone temp flag 3
 B201_1: # after FS boss
-  - name: FS CS remove item and flags
+  - name: Remove Din's Flame Cutscene
     type: objpatch
     room: 0
-    index: 0
-    objtype: EVNT
+    index: 1
+    objtype: SCEN
     object:
-      item: -1
-      story_flag1: 901 # rando for FS beaten
+      name: F201_3
+      layer: 0
+      entrance: 1
+      saveprompt: 1
   - name: Fi text before FS CS
     type: objadd
     room: 0
@@ -3088,6 +3094,7 @@ F300_5: # LMF to ToT
     object:
       layer: 2
       entrance: 2
+      saveprompt: 1
   - name: harp CS loadzone
     type: objpatch
     id: 0xFC04
@@ -3556,7 +3563,7 @@ D301: # Sandship A
       trigstoryfid: 933 # triggered by storyflag for leaving tentalus room
       trigscenefid: 84 # and triggered by sceneflag 84, which is goddess crest hit
       untrigscenefid: 87 # unused flag to untrigger
-  - name: Trigger Flame CS
+  - name: Trigger Dungeon Exit
     type: objadd
     layer: 0
     room: 0
@@ -3581,15 +3588,15 @@ D301: # Sandship A
     index: 7
     objtype: SCEN
     object:
-      name: B301
+      name: F301
       room: 0
-      layer: 13
-      entrance: 4
+      layer: 0
+      entrance: 1
       night: 2
       byte5: 0
       flag6: 0
       zero: 0
-      saveprompt: 0
+      saveprompt: 1
   - name: Remove Boss Door loadzone after beating dungeon
     type: objpatch
     id: 0xFC45
