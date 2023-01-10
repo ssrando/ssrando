@@ -21,6 +21,8 @@
 - Added option to start with a random progress item (by CovenEsme)
 - Added the ability to ban individual locations (by cjs07)
 - Removed the "Banned Types" option
+- Added the ability to randomize dusk relics in silent realms (by Peppernicus, Zeldex, & YourAverageLink)
+  - Up to 10 relics (chosen by a new option) per silent realm can be randomized to have new items
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
