@@ -101,6 +101,7 @@ global:
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
+      - 30 # Enter Skyview Cutscene
     Sealed Grounds:
       - 7  # vents active
       - onlyif: Option "triforce-required" Disabled
@@ -1641,6 +1642,14 @@ F101: # Deep Woods
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Remove skippable Skyview intro Cutscene
+    type: objpatch
+    layer: 1
+    room: 0
+    id: 0xFD0A
+    objtype: STAG
+    object:
+      event: 6 # DefaultStart
   - name: Remove goddess cube force hit trigger
     type: objdelete
     id: 0xFD05
