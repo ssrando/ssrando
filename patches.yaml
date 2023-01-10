@@ -203,7 +203,27 @@ B100:
     destlayer: 0
     room: 0
     objtype: STAG
-B100_1: # skyview spring
+B100_1: # Skyview Spring
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 65 # Set when healing Water Dragon
+        night: 0
+        layer: 4
+      - story_flag: 5 # Beat Skyview
+        night: 0
+        layer: 2
+      - story_flag: -1
+        night: 0
+        layer: 1
+  - name: Patch Goddess Crest to not play Cutscene
+    type: objpatch
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object: 
+      params1: 0xFFFF0369 # 0xFFFF, 03 = scen_link 3, 69 = scene flag 105 (vanilla)
   - name: Fi text after skyview CS
     type: objpatch
     id: 0xFC73
@@ -212,7 +232,7 @@ B100_1: # skyview spring
     objtype: OBJ
     object:
       params1: 0xFFFFFFF1 # last 1 is subtype (not talk to fi)
-      trigscenefid: 104
+      trigscenefid: 105 # Goddess Crest hit
   - name: Fi text after skyview CS
     type: objmove
     id: 0xFC73
@@ -226,21 +246,6 @@ B100_1: # skyview spring
     layer: 2
     destlayer: 0
     room: 0
-    objtype: STAG
-  - name: Skyview CS remove item
-    type: objpatch
-    room: 0
-    index: 1
-    objtype: EVNT
-    object:
-      sceneflag1: 104
-      item: -1
-      story_flag1: -1
-  - name: Loadzone to outside layer 3
-    type: objdelete
-    room: 0
-    layer: 3
-    id: 0xFC75
     objtype: STAG
   - name: Remove small cutscene
     type: objdelete
@@ -308,14 +313,15 @@ B101_1: # after AC boss
     object:
       params1: 0xC303FF02 # change to zone temp flag 3
       anglez: 0xFFFF # don't set any storyflag here
-B210: # after ET boss
-  - name: ET CS remove item
+B210: # Earth Spring
+  - name: Patch Goddess Crest to not play Cutscene
     type: objpatch
+    id: 0xFC0A
+    layer: 0
     room: 0
-    index: 2
-    objtype: EVNT
-    object:
-      item: -1
+    objtype: OBJ
+    object: 
+      params1: 0xFFFF0426 # 0xFFFF, 04 = scen_link 4, 26 = scene flag 38 (vanilla)
   - name: Fi text after ET CS
     type: objpatch
     room: 0
