@@ -8,6 +8,8 @@
     - You can check how many tadtone groups you have by talking to Fi
   - Added 17 checks in Flooded Faron Woods
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
+  - Added the ability to randomize dusk relics in silent realms (by Peppernicus, Zeldex, & YourAverageLink)
+  - Up to 10 relics (chosen by a new option) per silent realm can be randomized to have new items
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 
