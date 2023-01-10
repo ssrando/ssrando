@@ -48,13 +48,13 @@ Upper Skyloft - First Goddess Sword Item in Goddess Statue:
   type: skyloft, miscellaneous
   Paths:
     - event/107-Kanban/Fi give Goddess Statue item 1
-    - oarc/F008r/l0
+    - oarc/F008r/l1
 Upper Skyloft - Second Goddess Sword Item in Goddess Statue:
   original item: Emerald Tablet
   type: skyloft, miscellaneous
   Paths:
     - event/107-Kanban/Fi give Goddess Statue item 2
-    - oarc/F008r/l0
+    - oarc/F008r/l1
 Central Skyloft - Bazaar Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, sand sea goddess

@@ -946,6 +946,41 @@ F000: # Skyloft
     layer: 0
     room: 0
     objtype: STAG
+  - name: Patch entrance to Goddess Statue
+    type: objpatch
+    id: 0xFD06
+    room: 0
+    layer: 0
+    objtype: STAG
+    object:
+      trigstoryfid: 951 # Only after raised goddess sword
+  - name: Add entrance to Goddess Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFFFF31 # scenlink: 49
+      params2: 0xFF5FFFFF
+      posx: 6.421215057373047
+      posy: 2871.08447265625
+      posz: -19011.0625
+      sizex: 527.0
+      sizey: 575.0
+      sizez: 958.0
+      anglex: 0xFFFF # no trigger storyflag
+      angley: 0
+      anglez: 951 # Untrigger on getting sword pedestal checks
+      id: 0xFFFF
+      name: ScChang
+  - name: Patch other SCEN into Goddess Statue
+    type: objpatch
+    index: 49
+    room: 0
+    objtype: SCEN
+    object:
+      layer: 1
+      entrance: 0
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -1103,14 +1138,14 @@ F008r: # Goddess Statue
     override:
       - story_flag: 951 # Raising Goddess Sword in Goddess Statue
         night: 2
-        layer: 4
+        layer: 0
       - story_flag: -1
         night: 2
-        layer: 2
+        layer: 1
   - name: Fi text after pulling Goddess Sword
     type: objadd
     room: 0
-    layer: 0
+    layer: 1
     id: 0xFC00
     objtype: OBJ
     object:
@@ -1125,28 +1160,19 @@ F008r: # Goddess Statue
       name: NpcTke
       trigstoryfid: 951 # Raised Goddess Sword in Goddess Statue
       untrigscenefid: 25 # Scene flag 25 - Skyward Strike on Tablet Pedestal (unused in rando)
-  - name: Remove Sword Pedestal from layer 0
-    type: objdelete
+  - name: Move Sword Pedestal to layer 1
+    type: objmove
     id: 0xFC05
     layer: 0
+    destlayer: 1
     room: 0
     objtype: OBJ
-  - name: Add Sword Pedestal only to layer 2
-    type: objadd
+  - name: Remove cutscene trigger on layer 1
+    type: objdelete
+    id: 0xFC0E
+    layer: 1
     room: 0
-    layer: 2
-    id: 0xFFFF
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFFC
-      params2: 0xFFFFFFFF
-      posx: 0
-      posy: 42.820003509521484
-      posz: 75
-      anglex: 0
-      angley: 0
-      anglez: 0
-      name: SwrdSt
+    objtype: STAG
   - name: Delete Crest
     type: objdelete
     id: 0xFC02
