@@ -1,6 +1,5 @@
 global:
   startstoryflags: # first 8 flags are set during opening cutscenes
-    - 933
     - 842 # Set when starting a new game
     - 36  # Hero's tunic
     - storyflag: 226 # Hero Mode
@@ -138,8 +137,6 @@ global:
     Lanayru Gorge:
       - 10 # Minecart at end of Track
       - 16 # Lanayru Gorge Intro Cutscene
-    Sandship:
-      - 82
     Fire Sanctuary:
       - 83 # Cutscene showing the outside of the Fire Sanctuary
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
