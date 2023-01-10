@@ -860,11 +860,6 @@ def patch_trial_item(trial: OrderedDict, itemid: int):
     trial["params1"] = mask_shift_set(trial["params1"], 0xFF, 0x18, itemid)
 
 
-def patch_trial_flags(trial: OrderedDict, storyflag: int):
-    # Use last 2 bytes of params2 as the randomized trial storyflag
-    trial["params2"] = mask_shift_set(trial["params2"], 0xFFFF, 0x0, storyflag)
-
-
 def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
     boko["params2"] = mask_shift_set(boko["params2"], 0xFF, 0x0, itemid)
 
@@ -887,18 +882,11 @@ def rando_patch_heartco(bzs: OrderedDict, itemid: int, id: str):
     patch_heart_co(obj, itemid)
 
 
-def rando_patch_warpobj(
-    bzs: OrderedDict, itemid: int, id: str, trial_connections: OrderedDict
-):
+def rando_patch_warpobj(bzs: OrderedDict, itemid: int, id: str):
     obj = next(
         filter(lambda x: x["name"] == "WarpObj", bzs["OBJ "])
     )  # there is only one trial exit at a time
     patch_trial_item(obj, itemid)
-    for trial, trialid in TRIAL_EXIT_GATE_IDS.items():
-        if obj["id"] == trialid:
-            trial_gate = [tg for tg, t in trial_connections.items() if t == trial].pop()
-            trial_storyflag = TRIAL_COMPLETE_STORYFLAGS[trial_gate]
-    patch_trial_flags(obj, trial_storyflag)
 
 
 def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str, dowsing: int):
@@ -2248,14 +2236,7 @@ class GamePatcher:
             (stage, room), []
         ):
             modified = True
-            if objname == "WarpObj":
-                RANDO_PATCH_FUNCS[objname](
-                    bzs["LAY "][f"l{layer}"],
-                    itemid,
-                    objid,
-                    self.placement_file.trial_connections,
-                )
-            elif objname == "Tbox" or objname == "TBox":
+            if objname == "Tbox" or objname == "TBox":
                 RANDO_PATCH_FUNCS[objname](
                     bzs["LAY "][f"l{layer}"], itemid, objid, dowsing
                 )

@@ -324,7 +324,7 @@ class Rando:
         may_be_placed_items = CONSUMABLE_ITEMS.copy()
         duplicable_items = (
             DUPLICABLE_ITEMS
-            if rupoor_mode != "Off"
+            if rupoor_mode == "Off"
             else DUPLICABLE_COUNTERPROGRESS_ITEMS  # Rupoors
         )
 
