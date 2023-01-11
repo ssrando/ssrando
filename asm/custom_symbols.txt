@@ -6,10 +6,9 @@ main.dol:
   setSceneflagForArea: 0x806783E0
   alloc_keyboard_arcs_conditional: 0x80678450
   unset_sandship_timestone_if_necessary: 0x8067849C
-  has_not_already_completed_trial: 0x806784CC
-  process_startflags: 0x80678504
-  handle_bk_map_dungeonflag: 0x80678778
-  textbox_a_pressed_or_b_held: 0x80678828
+  process_startflags: 0x806784CC
+  handle_bk_map_dungeonflag: 0x80678740
+  textbox_a_pressed_or_b_held: 0x806787F0
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
@@ -18,7 +17,6 @@ d_t_D3_scene_changeNP.rel:
   function_end: 0x344
 d_a_obj_warpNP.rel:
   check_should_delay_walk_out_event: 0x6100
-  set_trial_completed_storyflag: 0x6128
 d_a_obj_time_stoneNP.rel:
   set_first_time_cs_already_watched: 0x6548
 d_a_obj_sw_sword_beamNP.rel:
