@@ -232,11 +232,6 @@ lhz r4, SPAWN_SLAVE+2@l(r4)
 cmplwi r4, 0x3030 ; '00', we assume all stages like XX00 are faron main
 bne 0x8004ec28 ; if not faron main, treat this kikwi as found
 
-; don't allow collecting the trial reward again if it has been completed
-; this is in a global function that checks if all tears have been collected
-.org 0x802d7660
-bl has_not_already_completed_trial
-
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
@@ -300,10 +295,13 @@ mflr r0
 stw r0,20(r1)
 stw r31,12(r1)
 mr r31,r3 ; r31 is AcOWarp ptr
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
+lhz r4, 0xaa(r31) ; 3rd and 4th byte in params2 is storyflag for completing trial
+bl FlagManager__setFlagTo1 ; set storyflag for completing trial
 lbz r3, 0x4(r31) ; first byte of params1 is itemid
 li r4, -1 ; set pouch slot param to -1, otherwise pouch items break
 li r5, 0 ; 3rd arg for giveItem function call
-bl giveItem ; give the item for the trial and save the pointer to it
+bl giveItem ; give the item for the trial
 stw r3, 0xC94(r31)
 lwz r0,20(r1)
 lwz r31,12(r1)
@@ -318,14 +316,41 @@ beq 0x23A4
 nop
 
 ; the trial storyflags got changed, cause they used the same one as the items associated with it
-.org 0x2F10
-blr
+.org 0x2F48
+li r4, 0x397 ; new storyflag
 
-.org 0x2AE8
-b 0x2C38
+.org 0x2F88
+li r4, 0x398
 
-.org 0xC6C
-b 0xD9C
+.org 0x2FD4
+li r4, 0x399
+
+.org 0x3020
+li r4, 0x39A
+
+.org 0x2B08
+li r4, 0x397
+
+.org 0x2B48
+li r4, 0x398
+
+.org 0x2B94
+li r4, 0x399
+
+.org 0x2BE0
+li r4, 0x39A
+
+.org 0xC8C
+li r4, 0x397
+
+.org 0xCCC
+li r4, 0x398
+
+.org 0xD18
+li r4, 0x399
+
+.org 0xD64
+li r4, 0x39A
 
 ; this usually delays starting the trial finish event until the
 ; tear display is ready, which can softlock so skip the check,
@@ -336,10 +361,6 @@ b 0xD9C
 ; preferably, the tear display should be fixed, but this works for now
 .org 0x1A9c
 lbz r0, 0xc90(r30)
-
-; hijack the destructor of the trial
-.org 0x4D6C
-b set_trial_completed_storyflag
 
 .close
 

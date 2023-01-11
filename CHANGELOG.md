@@ -52,7 +52,6 @@
   - Removes the delay between clearing a textbox and being able to clear the next one
   - Removes the delay between opening a textbox and being able to clear the textbox
   - Removes the background blur to text due to a visual bug
-- Make it possible to reenter trials
 - Added back the Sword Pedestal in the Goddess Statue (by CovenEsme)
   - Pulling out the Goddess Sword from its pedestal now gives the 2 checks within the Goddess Statue
   - The 2 small chests previously found within the Goddess Statue have been removed
