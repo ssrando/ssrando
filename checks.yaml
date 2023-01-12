@@ -921,16 +921,19 @@ Bokoblin Base - First Chest in Volcano Summit:
   type: eldin
   Paths:
    - stage/F201_2/r0/l0/TBox/72
+   - stage/F201_1/r0/l4/TBox/72
 Bokoblin Base - Raised Chest in Volcano Summit:
   original item: Progressive Sword
   type: eldin
   Paths:
    - stage/F201_2/r0/l0/TBox/73
+   - stage/F201_1/r0/l4/TBox/73
 Bokoblin Base - Chest in Volcano Summit Alcove:
   original item: Progressive Pouch
   type: eldin
   Paths:
    - stage/F201_2/r0/l0/TBox/71
+   - stage/F201_1/r0/l4/TBox/71
 Bokoblin Base - Fire Dragon's Reward:
   original item: Eldin Song of the Hero Part
   type: eldin

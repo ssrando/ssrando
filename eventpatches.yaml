@@ -2079,22 +2079,13 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: Leave Boko Base from Dragon
-      param3: 9
-  - name: Leave Boko Base from Dragon
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 3 # Exit from Fire Dragon's Lair to normal Volcano Summit
-      param2: 0
       next: -1
-      param3: 10 # Triggers an exit
+      param3: 9
   - name: Remove Fire Dragon's lore text after SotH item
     type: flowpatch
     index: 46
     flow:
-      next: -1
+      next: 47
 399-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
