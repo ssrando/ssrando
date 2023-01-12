@@ -174,18 +174,28 @@ B100:
   - name: Layer override
     type: layeroverride
     override:
-      - story_flag: 530 # Boss Rush
+      - story_flag: 530
         night: 0
         layer: 5
-      - story_flag: 67 # Triple Stalfos defeated
+      - story_flag: 67
         night: 0
         layer: 4
-      - story_flag: 206 # Faron Trial completed / has Water Scale
+      - story_flag: 206
         night: 0
         layer: 3
-      - story_flag: -1
+      - story_flag: 83
         night: 0
         layer: 1
+      - story_flag: -1
+        night: 0
+        layer: 13
+  - name: only play CS when ghirahim hasn't been defeated
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: 83 # ghirahim defeated
   - name: move first time loadzone to layer 0
     type: objmove
     id: 0xFC18
@@ -1897,57 +1907,6 @@ D100: # Skyview
       - story_flag: -1
         night: 0
         layer: 1
-  - name: Exit trigger to boss room - G1 Fight
-    type: objpatch
-    id: 0xFC2A
-    layer: 0
-    room: 9
-    objtype: STAG
-    object:
-      scen_link: 1
-      untrigstoryfid: 83 # G1 defeated
-  - name: Exit to boss room - G1 Fight
-    type: objpatch
-    index: 1
-    room: 9
-    objtype: SCEN
-    object:
-      layer: 1 # Force G1 Fight
-      entrance: 2
-  - name: Exit trigger to boss room - triple stalfos
-    type: objadd
-    layer: 0
-    room: 9
-    objtype: STAG
-    object:
-      params1: 0xFFFFFF02 # scenlink: 2
-      params2: 0xFF5FFFFF
-      posx: 0
-      posy: 200
-      posz: -17860
-      sizex: 600
-      sizey: 500
-      sizez: 400
-      anglex: 83 # trigger storyflag - G1 defeated
-      angley: 0
-      anglez: 0xFFFF # no untrigger storyflag
-      id: 0xFFFF
-      name: ScChang
-  - name: Exit to boss room - triple stalfos
-    type: objadd
-    room: 9
-    index: 2
-    objtype: SCEN
-    object:
-      name: B100
-      room: 0
-      layer: 0
-      entrance: 2
-      night: 2
-      byte5: 0
-      flag6: 0
-      zero: 0
-      saveprompt: 0
   - name: Small Key Soil
     type: objmove
     id: 0xFC4B
