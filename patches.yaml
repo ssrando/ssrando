@@ -2612,6 +2612,44 @@ F200: # Eldin main area
     destlayer: 0
     room: 4
     objtype: SNDT
+# Add Peahot arc
+  - name: Peahot arc
+    type: oarcadd
+    destlayer: 0
+    oarc: Ph
+  - name: Peahot ring arc
+    type: oarcadd
+    destlayer: 0
+    oarc: PRing
+# Move Peahots
+  - name: Move peahot 1
+    type: objmove
+    id: 0xFC92
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Move peahot 2
+    type: objmove
+    id: 0xFC90
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Move peahot 3
+    type: objmove
+    id: 0xFC8F
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Move peahot 4
+    type: objmove
+    id: 0xFC91
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: OBJ
 F202: # Boko Base
   - name: Remove Shiekah Stone from Boko Base
     type: objdelete

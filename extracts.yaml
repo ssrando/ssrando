@@ -1,6 +1,8 @@
 - layer: 4
   oarcs:
     - FWRockB
+    - Ph
+    - PRing
   stage: F200
 - layer: 0
   oarcs:
