@@ -34,6 +34,7 @@ global:
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
+    - 81  # Tadtone Dowsing
     - 82  # Tadtones music scroll
     # Cutscene flags
     ## Surface
@@ -1673,6 +1674,13 @@ F100: # Faron main area
     layer: 5
     room: 0
     objtype: OBJ
+  - name: Remove Unflooded Faron Cutscene
+    type: objpatch
+    room: 0
+    index: 49
+    objtype: PLY
+    object:
+      play_cutscene: -1
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
@@ -1868,16 +1876,6 @@ F100_1: # Great Tree
       anglez: 0
       id: 0xFC50
       name: Bombf
-  # - name: Exit from GT to Flooded GT Layer 1
-  #   type: objadd
-  #   index: 1
-  #   room: 0
-  #   objtype: SCEN
-  #   object:
-  #     name: F103_1
-  #     layer: 1 # Layer with Water Dragon before Tadtones appear
-  #     room: 0
-  #     entrance: 5 # New GT -> Flooded GT entrance
   - name: Exit from GT to Flooded GT Layer 2
     type: objadd
     index: 1
@@ -1919,7 +1917,7 @@ F103_1: # Flooded Great Tree
       layer: 1 # Default layer for GT in rando??
       room: 0
       entrance: 5 # New Flooded GT -> GT entrance
-  - name: Remove Faron Soth CS
+  - name: Remove Faron Soth Cutscene
     type: objpatch
     room: 0
     index: 3
