@@ -1241,6 +1241,7 @@ class GamePatcher:
         self.add_asm_patch("custom_funcs")
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("keysanity")
+        self.add_asm_patch("post_boko_base_platforms")
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")

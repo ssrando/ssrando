@@ -1,3 +1,7 @@
+- layer: 4
+  oarcs:
+    - FWRockB
+  stage: F200
 - layer: 0
   oarcs:
     - ShiekahStone
