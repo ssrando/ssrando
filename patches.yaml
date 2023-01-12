@@ -101,6 +101,7 @@ global:
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
+      - 19 # Great Tree Intro Cutscene
       - 30 # Enter Skyview Cutscene
     Sealed Grounds:
       - 7  # vents active
