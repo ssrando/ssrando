@@ -1666,21 +1666,7 @@ class GamePatcher:
         elif required_dungeon_count < 5:
             required_dungeons_text = "\n".join(colourful_dungeon_text)
         else:
-            required_dungeons_text = ", ".join(colourful_dungeon_text)
-
-            # try to fit the text in as few lines as possible, breaking up at spaces if necessary
-            cur_line = ""
-            combined = ""
-
-            for part in required_dungeons_text.split(" "):
-                # limit of one line (notice board = 27, textbox = 36)
-                if len(cur_line + part) > 36:
-                    combined += cur_line + "\n"
-                    cur_line = part + " "
-                else:
-                    cur_line += part + " "
-            combined += cur_line
-            required_dungeons_text = combined.strip()
+            required_dungeons_text = break_lines(", ".join(colourful_dungeon_text), 44)
 
         self.eventpatches["006-8KenseiNormal"].append(
             {

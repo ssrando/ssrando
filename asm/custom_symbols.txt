@@ -9,7 +9,7 @@ main.dol:
   process_startflags: 0x806784CC
   handle_bk_map_dungeonflag: 0x80678740
   rando_text_command_handler: 0x806787F0
-  textbox_a_pressed_or_b_held: 0x806789FC
+  textbox_a_pressed_or_b_held: 0x80678A08
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:

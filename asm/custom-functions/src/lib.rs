@@ -251,10 +251,11 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
         71 => {
             let dungeon_index = flow_element.param1;
             let completion_storyflag = flow_element.param2;
-            let mut key_count = dungeon_global_key_count(dungeon_index);
-            if dungeon_index == 14 {
-                unsafe { key_count = getKeyPieceCount();}
-            }
+            let key_count = if dungeon_index == 14 /* ET */ {
+                unsafe { getKeyPieceCount() }
+            } else {
+                dungeon_global_key_count(dungeon_index)
+            };
             text_manager_set_num_args(&[key_count as u32]);
             let map_and_bk = unsafe { (*dungeonflag_global(dungeon_index))[0] };
             let bk_text = match map_and_bk & 0x82 {
