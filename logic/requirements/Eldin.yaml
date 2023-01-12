@@ -97,6 +97,7 @@ Volcano:
       Temple Entrance Statue: Unlock Statue
       Near Thrill Digger Cave: Near Thrill Digger Cave - Blow down Watchtower
       Exit to Earth Temple: Open ET option | Key Piece x5
+      Volcano - Upper Platform Cave: Fire Dragon's Reward
       Hot Cave: Blow down Watchtower to Hot Cave
     locations:
       Unlock Statue: Nothing
@@ -108,6 +109,12 @@ Volcano:
       Digging Spot in front of Earth Temple: Digging Mitts
       Digging Spot below Tower: Digging Mitts
       Digging Spot behind Boulder on Sandy Slope: Digging Mitts
+  
+  Upper Platform Cave:
+    exits:
+      Near Temple Entrance: Fire Dragon's Reward | Clawshots
+    locations:
+      Gossip Stone in Upper Platform Cave: Nothing
 
   Hot Cave:
     exits:
@@ -129,9 +136,18 @@ Volcano:
     exits:
       Ascent: Unlock Shortcut to Ascent
       Vent Exit near Ascent: Nothing
+      Volcano - Lower Platform Cave: Fire Dragon's Reward
     locations:
       Digging Spot after Draining Lava: Digging Mitts
       Unlock Shortcut to Ascent: Nothing
+  
+  Lower Platform Cave:
+    exits:
+      Past Slide: Clawshots
+      Past Mogma Turf: Fire Dragon's Reward
+      East: Fire Dragon's Reward
+    locations:
+      Gossip Stone in Lower Platform Cave: Nothing
 
 Mogma Turf: # when randomizing this, need to find a way to force the skydiving animation
   hint-region: Mogma Turf
@@ -255,17 +271,33 @@ Bokoblin Base:
   After Drawbridge:
     exits:
       Before Drawbridge: Clawshots
+      Bokoblin Base - Lower Platform Cave: Nothing
       Volcano East: Nothing
       Outside Earth Temple: Nothing
+  
+  Lower Platform Cave:
+    exits:
+      After Drawbridge: Clawshots
+      Before Drawbridge: Nothing
+      Volcano East: Nothing
+    locations:
+      Gossip Stone in Lower Platform Cave: Nothing
   
   Outside Earth Temple:
     exits:
       Hot Cave: Nothing
+      Bokoblin Base - Upper Platform Cave: Nothing
     locations:
       Chest East of Earth Temple Entrance: Nothing
       Goddess Cube East of Earth Temple Entrance: Goddess Sword
       Chest West of Earth Temple Entrance: (Slingshot | Bow | Bomb Bag | Goddess Sword) & Can bypass Boko Base Watch Tower & Mogma Mitts
       Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can bypass Boko Base Watch Tower & Mogma Mitts
+  
+  Upper Platform Cave:
+    exits:
+      Outside Earth Temple: Nothing
+    locations:
+      Gossip Stone in Upper Platform Cave: Nothing
   
   Hot Cave:
     exits:

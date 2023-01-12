@@ -452,6 +452,16 @@
     index: 76
     flow:
       next: -1
+  - name: Force text for lower platform cave hint
+    type: flowpatch
+    index: 57
+    flow:
+      next: 56
+  - name: Force text for upper platform cave hint
+    type: flowpatch
+    index: 31
+    flow:
+      next: 30
 008-Hint:
   # check for 7 storyflags: required dungeon 1 to 6, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check
