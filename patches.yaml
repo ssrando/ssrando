@@ -34,16 +34,18 @@ global:
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
+    - 82  # Tadtones music scroll
     # Cutscene flags
     ## Surface
     - 87  # Faron Woods Intro Cutscene
     - 91  # Deep Woods Intro Cutscene
     - 88  # Lake Floria Intro Cutscene
-    - 180 # Thrill digger entrance CS
+    - 180 # Thrill Digger Intro Cutscene
     - 562 # Volcano Summit Intro Cutscene
     - 92  # Lanayru Desert Intro Cutscene
     - 157 # Ancient Harbour Intro Cutscene
     - 526 # Lanayru Gorge Intro Cutscene
+    - 80  # Water Dragon in Flooded Faron Cutscene
     ## Silent Realms
     - 70  # First time Light Fruit Cutscene
     - 94  # Faron Silent Realm Intro Cutscene
@@ -961,6 +963,32 @@ F000: # Skyloft
     layer: 0
     room: 0
     objtype: STAG
+  - name: Remove SoT placement cutscene
+    type: objpatch
+    index: 46
+    room: 0
+    objtype: SCEN
+    object:
+      layer: 6
+      entrance: 52
+  - name: Set SoT storyflag on place
+    type: objadd
+    room: 0 
+    layer: 6 # Sky keep opened
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFF
+      params2: 0xFF5FFFFF
+      posx: 5256
+      posy: 400
+      posz: -11212
+      sizex: 1000
+      sizey: 1000
+      sizez: 1000
+      anglex: 22 # SoT placed storyflag
+      angley: 0
+      anglez: 65535
+      name: SwAreaT
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -1839,16 +1867,16 @@ F100_1: # Great Tree
       anglez: 0
       id: 0xFC50
       name: Bombf
-  - name: Exit from GT to Flooded GT Layer 1
-    type: objadd
-    index: 1
-    room: 0
-    objtype: SCEN
-    object:
-      name: F103_1
-      layer: 1 # Layer with Water Dragon before Tadtones appear
-      room: 0
-      entrance: 5 # New GT -> Flooded GT entrance
+  # - name: Exit from GT to Flooded GT Layer 1
+  #   type: objadd
+  #   index: 1
+  #   room: 0
+  #   objtype: SCEN
+  #   object:
+  #     name: F103_1
+  #     layer: 1 # Layer with Water Dragon before Tadtones appear
+  #     room: 0
+  #     entrance: 5 # New GT -> Flooded GT entrance
   - name: Exit from GT to Flooded GT Layer 2
     type: objadd
     index: 1
@@ -1858,7 +1886,7 @@ F100_1: # Great Tree
       name: F103_1
       layer: 2 # Layer with Water Dragon after Tadtones appear
       room: 0
-      entrance: 6 # New GT -> Flooded GT entrance
+      entrance: 5 # New GT -> Flooded GT entrance
   - name: Waterdragon in Great Tree
     type: oarcadd
     destlayer: 0
@@ -1890,13 +1918,13 @@ F103_1: # Flooded Great Tree
       layer: 1 # Default layer for GT in rando??
       room: 0
       entrance: 5 # New Flooded GT -> GT entrance
-  - name: Remove Faron Soth from CS
+  - name: Remove Faron Soth CS
     type: objpatch
     room: 0
-    index: 1
-    objtype: EVNT
+    index: 3
+    objtype: PLY
     object:
-      item: -1 # No Faron Soth anymore
+      play_cutscene: -1
 D100: # Skyview
   - name: Layer override
     type: layeroverride
