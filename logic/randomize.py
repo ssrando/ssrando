@@ -339,6 +339,7 @@ class Rando:
     def set_placement_options(self):
         shop_mode = self.options["shop-mode"]
         place_gondo_progressives = self.options["gondo-upgrades"]
+        damage_multiplier = self.options["damage-multiplier"]
 
         options = {
             OPEN_THUNDERHEAD_OPTION: self.options["open-thunderhead"] == "Open",
@@ -348,7 +349,8 @@ class Rando:
             RANDOMIZED_BEEDLE_OPTION: shop_mode != "Vanilla",
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
             NO_BIT_CRASHES: self.options["fix-bit-crashes"],
-            HERO_MODE: self.options["hero-mode"],
+            NONLETHAL_HOT_CAVE: damage_multiplier < 12,
+            UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])

@@ -1,5 +1,9 @@
 allowed-time-of-day: DayOnly
 
+macros:
+  Can Survive Hot Cave: Nonlethal Hot Cave | Fireshield Earrings
+  # Hotcave is nonlethal if it deals less than six hearts (damage multiplier is less than 12)
+
 Volcano:
   toplevel-alias: Eldin Volcano
   hint-region: Eldin Volcano
@@ -121,7 +125,7 @@ Volcano:
       Exit to Summit: Fireshield Earrings
       Vent Entrance near Hot Cave: Impossible
       Near Temple Entrance: Near Temple Entrance - Blow down Watchtower to Hot Cave
-      Sand Slide: Nothing
+      Sand Slide: Can Survive Hot Cave
     locations:
       Near Temple Entrance - Blow down Watchtower to Hot Cave: Impossible # Bomb Bag & Bomb Throw Trick
 

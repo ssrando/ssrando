@@ -2,7 +2,7 @@ global:
   startstoryflags: # first 8 flags are set during opening cutscenes
     - 36  # Hero's tunic
     - storyflag: 226 # Hero Mode
-      onlyif: Option "hero-mode" Enabled
+      # onlyif: Option "hero-mode" Enabled - Removed when Split Hero Mode options - always hero mode *internally*
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 96  # Fi's text after obtaining first map
     - 745 # 5 Beacons
