@@ -52,18 +52,8 @@
   - Removes the delay between clearing a textbox and being able to clear the next one
   - Removes the delay between opening a textbox and being able to clear the textbox
   - Removes the background blur to text due to a visual bug
-- Added cutscene auto-skipping (by CovenEsme)
-  - All skippable cutscenes will now be automatically skipped
-  - Skipping happens 4 frames earlier than previously possible :)
-  - Demise's death cutscene can no longer be skipped
-- Removed all 4 game introduction cutscenes
-- Removed all region introduction cutscenes (including Silent Realms)
-- Removed all dungeon introduction cutscenes
-- Removed post-Levias cutscene
-- Removed Harp cutscene after beating Lanayru Mining Facility
-- Removed Gate of Time raising cutscene
-- Removed Gate of Time opening cutscene
-- Removed True Master Sword cutscene
+- Removed all non-boss intro cutscenes (by CovenEsme)
+  - When starting a new file, Link will now spawn directly in his room
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
