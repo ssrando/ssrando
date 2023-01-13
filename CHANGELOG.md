@@ -52,7 +52,7 @@
   - Removes the delay between clearing a textbox and being able to clear the next one
   - Removes the delay between opening a textbox and being able to clear the textbox
   - Removes the background blur to text due to a visual bug
-- Removed all non-boss intro cutscenes (by CovenEsme)
+- Removed all skippable cutscenes except boss intro cutscenes (by CovenEsme)
   - When starting a new file, Link will now spawn directly in his room
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
