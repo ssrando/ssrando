@@ -8,7 +8,7 @@ sep = " - "
 
 EVERYTHING = EIN("Everything")
 
-NUMBER_OF_HINT_STONES = 16
+NUMBER_OF_HINT_STONES = 18
 
 MAX_HINTS_PER_STONE = 8
 MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
@@ -21,8 +21,9 @@ OPEN_LMF_OPTION = EIN("Open LMF option")
 LMF_NODES_ON_OPTION = EIN("LMF Nodes On option")
 RANDOMIZED_BEEDLE_OPTION = EIN("Randomized Beedle option")
 GONDO_UPGRADES_ON_OPTION = EIN("Gondo Upgrades On option")
-HERO_MODE = EIN("Hero-mode")
 NO_BIT_CRASHES = EIN("No BiT crashes")
+NONLETHAL_HOT_CAVE = EIN("Nonlethal Hot Cave")
+UPGRADED_SKYWARD_STRIKE = EIN("Upgraded Skyward Strike option")
 
 GOT_OPENING_REQUIREMENT = EIN("GoT Opening Requirement")
 GOT_RAISING_REQUIREMENT = EIN("GoT Raising Requirement")
@@ -43,8 +44,9 @@ LOGIC_OPTIONS = dict.fromkeys(
         LMF_NODES_ON_OPTION,
         RANDOMIZED_BEEDLE_OPTION,
         GONDO_UPGRADES_ON_OPTION,
-        HERO_MODE,
         NO_BIT_CRASHES,
+        NONLETHAL_HOT_CAVE,
+        UPGRADED_SKYWARD_STRIKE,
         GOT_OPENING_REQUIREMENT,
         GOT_RAISING_REQUIREMENT,
         HORDE_DOOR_REQUIREMENT,
@@ -538,6 +540,7 @@ FLOODED_FARON_WOODS = "Flooded Faron Woods"
 ELDIN_VOLCANO = "Eldin Volcano"
 MOGMA_TURF = "Mogma Turf"
 VOLCANO_SUMMIT = "Volcano Summit"
+BOKOBLIN_BASE = "Bokoblin Base"
 
 LANAYRU_MINE = "Lanayru Mine"
 LANAYRU_DESERT = "Lanayru Desert"
@@ -561,6 +564,7 @@ ALL_HINT_REGIONS = dict.fromkeys(
         ELDIN_VOLCANO,
         MOGMA_TURF,
         VOLCANO_SUMMIT,
+        BOKOBLIN_BASE,
         LANAYRU_MINE,
         LANAYRU_DESERT,
         LANAYRU_CAVES,

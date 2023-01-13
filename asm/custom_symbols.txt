@@ -7,9 +7,9 @@ main.dol:
   alloc_keyboard_arcs_conditional: 0x80678450
   unset_sandship_timestone_if_necessary: 0x8067849C
   process_startflags: 0x806784CC
-  handle_bk_map_dungeonflag: 0x80678740
-  rando_text_command_handler: 0x806787F0
-  textbox_a_pressed_or_b_held: 0x80678A08
+  handle_bk_map_dungeonflag: 0x8067875C
+  rando_text_command_handler: 0x8067880C
+  textbox_a_pressed_or_b_held: 0x80678A24
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
@@ -32,3 +32,5 @@ d_a_obj_bellNP.rel:
   try_end_pumpkin_archery: 0x1D08
 d_a_obj_light_lineNP.rel:
   check_activated_storyflag: 0x1D90
+d_t_rock_boatNP.rel:
+  custom_eldin_platform_comparison: 0xDC8

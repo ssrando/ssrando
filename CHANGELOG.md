@@ -38,6 +38,18 @@
   - Entering Flooded Great Tree for the first time automatically starts the Tadtones story quest
   - New logical option for completing the Owlan's Crystals check
     - Added access to Flooded Faron as an alternative to needing bomb bag
+- Added Bokoblin Base as a region visitable in the randomizer (by CovenEsme)
+  - Talking to the Shiekah Stone in the first room in Eldin Volcano takes you to the Bokoblin Base jail
+  - Talking to the Shiekah Stone in the Bokoblin Base jail takes you back to Eldin Volcano
+  - Adds 10 total checks to Bokoblin Base
+    - Moves the first 2 chests in Volcano Summit back to Bokoblin Base now that it can be accessed
+  - Summit cannot be entered without Fireshield Earrings. Fi will appear as in Eldin Volcano
+  - Talking to the Fire Dragon sets Boko Base as completed
+    - Leaving the Fire Dragon's Lair after talking to him puts you back in normal Volcano Summit
+    - The 3 chests in Boko Base Volcano Summit can be obtained in normal Volcano Summit after talking to the Fire Dragon
+    - The lava platforms found in Boko Base will also appear in Eldin Volcano after talking to the Fire Dragon
+- Added 2 new hint stones in Eldin Volcano / Bokoblin Base (by CovenEsme)
+  - Accessible via the lava platforms in Boko Base (or the newly added ones in Eldin), the 2 Eldin caves each contain a Gossip Stone
 - Machi is no longer rescued after beating Skyview
 - Added custom dowsing images for new chest dowsing functionality (by YourAverageLink)
 - Shooting the bell during pumpkin archery ends the minigame immediately
@@ -64,6 +76,7 @@
   - Removes the delay between clearing a textbox and being able to clear the next one
   - Removes the delay between opening a textbox and being able to clear the textbox
   - Removes the background blur to text due to a visual bug
+- Removed the Volcano Summit intro cutscene as it would now be possible to trigger it from behind
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
