@@ -236,6 +236,13 @@ nop
 nop
 nop
 
+; branch to function for rando custom text event flows (if no other matches)
+.org 0x801aff2c
+bgt 0x801b0788
+.org 0x801b0788
+bl rando_text_command_handler
+b 0x801b0764 ; return to original function
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

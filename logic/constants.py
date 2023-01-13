@@ -86,6 +86,26 @@ SSH = "Sandship"
 FS = "Fire Sanctuary"
 SK = "Sky Keep"
 
+DUNGEON_COMPLETE_STORYFLAGS = {
+    SV: 5,
+    ET: 7,
+    LMF: 935,
+    AC: 900,
+    SSH: 15,
+    FS: 901,
+}
+
+DUNGEON_COLORS = {
+    SV: "<g<",
+    ET: "<r+<",
+    LMF: "<y<",
+    AC: "<b<",
+    FS: "<r<",
+    SSH: "<y+<",
+    SK: "<s<",
+    "Lanayru Caves": "<ye<",
+}
+
 REGULAR_DUNGEONS = [SV, ET, LMF, AC, SSH, FS]
 ALL_DUNGEONS = REGULAR_DUNGEONS + [SK]
 
@@ -563,6 +583,17 @@ ALL_HINT_REGIONS = dict.fromkeys(
         ELDIN_SILENT_REALM,
     ]
 )
+
+DUNGEONFLAG_INDICES = {
+    SV: 11,
+    ET: 14,
+    LMF: 17,
+    AC: 12,
+    SSH: 18,
+    FS: 15,
+    SK: 20,
+    LANAYRU_CAVES: 9,
+}
 
 # Retro-compatibility
 
