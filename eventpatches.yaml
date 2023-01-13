@@ -2236,6 +2236,12 @@
       param2: 3 # item
       next: -1
       param3: 9
+  - name: Shorten Golo Text
+    type: flowpatch
+    index: 108
+    cases:
+      - 123
+      - 128
 460-RairyuMinigame:
   - name: Avoid Boss rush Entry
     type: entryadd
