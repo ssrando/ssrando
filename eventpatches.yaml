@@ -2088,6 +2088,29 @@
     flow:
       next: 276
 404-DesertF3:
+  - name: Set story flags from skipped cutscene
+    type: flowpatch
+    index: 165
+    flow:
+      next: Set when Thunder Dragon teaches SotH part story flag
+  - name: Set when Thunder Dragon teaches SotH part story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 462 # Set when Thunder Dragon teaches SotH part story flag
+      next: Thunder Dragon teaches SotH part story flag
+      param3: 0
+  - name: Thunder Dragon teaches SotH part story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 21 # Thunder Dragon teaches SotH part story flag
+      next: 90
+      param3: 0
   - name: Go to item
     type: flowpatch
     index: 139

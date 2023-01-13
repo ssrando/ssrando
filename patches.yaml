@@ -3721,6 +3721,14 @@ F302: # Lanayru Gorge
     objtype: OBJ
     object:
       trigstoryfid: -1 # Always trigger
+  - name: Don't play Thunder Dragon healing Cutscene
+    type: objpatch
+    index: 18
+    room: 0
+    objtype: SCEN
+    object:
+      layer: 2
+      entrance: 4
   - name: Move Key to Layer 2
     type: objmove
     id: 0xFCC3
