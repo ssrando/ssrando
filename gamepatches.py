@@ -81,6 +81,19 @@ DEFAULT_SCEN = OrderedDict(
     saveprompt=0,
 )
 
+DEFAULT_PLY = OrderedDict(
+    storyflag=0,
+    play_cutscene=-1,
+    byte4=-1,
+    posx=0,
+    posy=0,
+    posz=0,
+    anglex=0,
+    angley=0,
+    anglez=0,
+    entrance_id=6,
+)
+
 DEFAULT_AREA = OrderedDict(
     posx=0,
     posy=0,
@@ -1228,6 +1241,7 @@ class GamePatcher:
         self.add_asm_patch("custom_funcs")
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("keysanity")
+        self.add_asm_patch("post_boko_base_platforms")
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
@@ -2069,6 +2083,8 @@ class GamePatcher:
                 new_obj = DEFAULT_OBJ.copy()
             elif objtype == "SCEN":
                 new_obj = DEFAULT_SCEN.copy()
+            elif objtype == "PLY ":
+                new_obj = DEFAULT_PLY.copy()
             elif objtype == "AREA":
                 new_obj = DEFAULT_AREA.copy()
             else:

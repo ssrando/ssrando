@@ -31,3 +31,5 @@ d_a_obj_bellNP.rel:
   try_end_pumpkin_archery: 0x1D08
 d_a_obj_light_lineNP.rel:
   check_activated_storyflag: 0x1D90
+d_t_rock_boatNP.rel:
+  custom_eldin_platform_comparison: 0xDC8

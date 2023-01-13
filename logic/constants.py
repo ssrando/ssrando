@@ -8,7 +8,7 @@ sep = " - "
 
 EVERYTHING = EIN("Everything")
 
-NUMBER_OF_HINT_STONES = 16
+NUMBER_OF_HINT_STONES = 18
 
 MAX_HINTS_PER_STONE = 8
 MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
@@ -518,6 +518,7 @@ FLOODED_FARON_WOODS = "Flooded Faron Woods"
 ELDIN_VOLCANO = "Eldin Volcano"
 MOGMA_TURF = "Mogma Turf"
 VOLCANO_SUMMIT = "Volcano Summit"
+BOKOBLIN_BASE = "Bokoblin Base"
 
 LANAYRU_MINE = "Lanayru Mine"
 LANAYRU_DESERT = "Lanayru Desert"
@@ -541,6 +542,7 @@ ALL_HINT_REGIONS = dict.fromkeys(
         ELDIN_VOLCANO,
         MOGMA_TURF,
         VOLCANO_SUMMIT,
+        BOKOBLIN_BASE,
         LANAYRU_MINE,
         LANAYRU_DESERT,
         LANAYRU_CAVES,
