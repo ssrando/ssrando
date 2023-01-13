@@ -107,12 +107,6 @@
   permalink: false
   help: Specify a seed to use for randomization, leave empty for random seed
   ui: seed
-- name: Hero Mode
-  command: hero-mode
-  type: boolean
-  default: true
-  help: If activated, play the game on Hero Mode
-  ui: option_hero_mode
 - name: Randomize Entrances
   command: randomize-entrances
   type: singlechoice
@@ -597,6 +591,37 @@
   permalink: true
   help: The algorithm used to place items in the world. Random Fill has an extremely high chance of failure.
   # ui: option_filling_algorithm
+- name: Upgraded Skyward Strike
+  command: upgraded-skyward-strike
+  type: boolean
+  default: false
+  permalink: true
+  help: if enabled the skyward strike will be fully upgraded from the beginning, having longer reach and charging faster
+  ui: option_upgraded_skyward_strike
+- name: Faster Air Meter Drain
+  command: fast-air-meter
+  type: boolean
+  default: false
+  permalink: true
+  help: if enabled the air meter depletes twice as fast.
+  ui: option_fast_air_meter
+- name: Heart Drops
+  command: enable-heart-drops
+  type: boolean
+  default: true
+  permalinnk: true
+  help: if enabled heart flowers will spawn and heart drops can occur
+  ui: option_enable_heart_drops
+- name: Damage Multiplier
+  command: damage-multiplier
+  type: int
+  default: 1
+  min: 1
+  max: 255
+  bits: 8
+  permalink: true
+  help: Overall damage multiplier. Normal mode default is x1, Hero mode is x2. When at least 12x, Hot Cave requires Fireshield Earrings.
+  ui: option_damage_multiplier
 # make this always last for maximum cross version permalink support
 - name: Hint Distribution
   command: hint-distribution
@@ -733,3 +758,4 @@
   bits: 5
   help: How many heart pieces to start with.
   ui: option_starting_heart_pieces
+

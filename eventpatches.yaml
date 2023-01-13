@@ -452,6 +452,16 @@
     index: 76
     flow:
       next: -1
+  - name: Force text for lower platform cave hint
+    type: flowpatch
+    index: 57
+    flow:
+      next: 56
+  - name: Force text for upper platform cave hint
+    type: flowpatch
+    index: 31
+    flow:
+      next: 30
 008-Hint:
   # check for 7 storyflags: required dungeon 1 to 6, then gate of time storyflag, if all are preset, set 11 & 13 so that imp2 can be fought
   - name: Rando Dungeon check
@@ -1934,6 +1944,148 @@
       param2: 7
       next: -1
       param3: 7
+305-MountainF3:
+  - name: Boko Base entry
+    type: flowpatch
+    index: 64
+    flow:
+      next: Show Boko Base Entry Question
+  - name: Boko Base exit
+    type: flowpatch
+    index: 72
+    flow:
+      next: Show Boko Base Exit Question
+  - name: Show Boko Base Exit Question
+    type: flowadd
+    flow:
+      type: type1
+      next: Boko Base Exit Switch
+      param3: 302
+      param4: Boko Base Exit Question
+  - name: Boko Base Exit Question
+    type: textadd
+    text: "Want to leave <b<Bokoblin Base>>?\n[1]Yes[2-]No"
+  - name: Boko Base Exit Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Leave Boko Base # Yes
+      - Show Declined Boko Base Offer Text # No (same as declined entry text)
+  - name: Leave Boko Base
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0 # Entrance number for Eldin???
+      param2: 0
+      next: -1
+      param3: 10 # Triggers an exit
+  - name: Show Boko Base Entry Question
+    type: flowadd
+    flow:
+      type: type1
+      next: Boko Base Entry Switch
+      param3: 302
+      param4: Boko Base Entry Question
+  - name: Boko Base Entry Question
+    type: textadd
+    text: "Want to enter <b<Bokoblin Base>>?\n[1]Yes[2-]No"
+  - name: Boko Base Entry Switch
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 0
+      param3: 2
+    cases:
+      - Entry into Boko Base # Yes
+      - Show Declined Boko Base Offer Text # No
+  - name: Declined Boko Base Offer Text
+    type: textadd
+    text: "Very well. Talk to me again if you\nchange your mind."
+  - name: Show Declined Boko Base Offer Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Declined Boko Base Offer Text
+  - name: Entry into Boko Base
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0 # Entrance number for Boko Base
+      param2: 0
+      next: -1
+      param3: 10 # Triggers an exit
+  - name: Talking to Plats in Boko Base Prison
+    type: flowpatch
+    index: 1
+    flow:
+      next: Check if received Plats' Gift
+  - name: Check if received Plats' Gift
+    type: switchadd
+    flow:
+      type: switch
+      subType: 6
+      param2: 177
+      param3: 3
+    cases:
+      - Show Post Plats' Gift text # True
+      - 2 # False
+  - name: Post Plats' Gift text
+    type: textadd
+    text: "See ya around, pal!"
+  - name: Show Post Plats' Gift text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 302
+      param4: Post Plats' Gift text
+  - name: Cut off Plats' text to give item
+    type: flowpatch
+    index: 2
+    flow:
+      next: Plats' Gift
+  - name: Plats' Gift
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: 39
+      param3: 9
+  - name: Shorten Plats text in hot cave
+    type: flowpatch
+    index: 25
+    flow:
+      next: 36
+  - name: Go to Eldin SotH item
+    type: flowpatch
+    index: 28
+    flow:
+      next: Give item after Eldin SotH CS
+  - name: Give item after Eldin SotH CS
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: -1
+      param3: 9
+  - name: Remove Fire Dragon's lore text after SotH item
+    type: flowpatch
+    index: 46
+    flow:
+      next: 47
 399-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
@@ -2084,6 +2236,12 @@
       param2: 3 # item
       next: -1
       param3: 9
+  - name: Shorten Golo Text
+    type: flowpatch
+    index: 108
+    cases:
+      - 123
+      - 128
 460-RairyuMinigame:
   - name: Avoid Boss rush Entry
     type: entryadd

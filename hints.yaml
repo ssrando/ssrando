@@ -38,6 +38,14 @@ Eldin Volcano - Gossip Stone in Thrill Digger Cave:
   textfile: 004-Object
   textindex: 16
 
+Eldin Volcano - Gossip Stone in Lower Platform Cave:
+  textfile: 004-Object
+  textindex: 17
+
+Eldin Volcano - Gossip Stone in Upper Platform Cave:
+  textfile: 004-Object
+  textindex: 21
+
 Volcano Summit - Gossip Stone near Second Thirsty Frog:
   textfile: 004-Object
   textindex: 31

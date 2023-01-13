@@ -153,7 +153,7 @@ Sword:
   Practice Sword
 
 Long Range Skyward Strike:
-  (Goddess Sword & Option "hero-mode" Enabled) | True Master Sword
+  (Goddess Sword & Option "upgraded-skyward-strike" Enabled) | True Master Sword
 
 Damaging Item:
   Sword | Bomb Bag | Bow
@@ -2422,8 +2422,8 @@ Earth Temple - Boss Key Chest:
 
 Can Beat Scaldera:
   (Bomb Bag & Sword) |
-  (Goddess Sword & Option "hero-mode" Enabled) |
-  (Goddess Longsword & Option "hero-mode" Enabled) |
+  (Goddess Sword & Option "upgraded-skyward-strike-mode" Enabled) |
+  (Goddess Longsword & Option "upgraded-skyward-strike-mode" Enabled) |
   Master Sword
   # Scaldera can be beaten without bombs, see strats here: http://bombch.us/DPu1
 

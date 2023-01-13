@@ -81,6 +81,19 @@ DEFAULT_SCEN = OrderedDict(
     saveprompt=0,
 )
 
+DEFAULT_PLY = OrderedDict(
+    storyflag=0,
+    play_cutscene=-1,
+    byte4=-1,
+    posx=0,
+    posy=0,
+    posz=0,
+    anglex=0,
+    angley=0,
+    anglez=0,
+    entrance_id=6,
+)
+
 DEFAULT_AREA = OrderedDict(
     posx=0,
     posy=0,
@@ -1228,6 +1241,7 @@ class GamePatcher:
         self.add_asm_patch("custom_funcs")
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("keysanity")
+        self.add_asm_patch("post_boko_base_platforms")
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
@@ -1241,7 +1255,6 @@ class GamePatcher:
             self.add_asm_patch("dungeon_dowsing")
         if self.placement_file.options["no-enemy-music"]:
             self.add_asm_patch("no_enemy_music")
-
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
         GOT_SWORD_MODES = {
@@ -1257,6 +1270,29 @@ class GamePatcher:
                 0x00,
                 0x00,
                 GOT_SWORD_MODES[self.placement_file.options["got-sword-requirement"]],
+            ]
+        }
+
+        # Hero Mode Changes
+        if self.placement_file.options["fast-air-meter"] == False:
+            self.add_asm_patch("air_meter_normalmode")
+        if self.placement_file.options["upgraded-skyward-strike"]:
+            self.add_asm_patch("skyward_strike_heromode")
+        else:
+            self.add_asm_patch("skyward_strike_normalmode")
+        if self.placement_file.options["enable-heart-drops"]:
+            self.add_asm_patch("heart_pickups_normalmode")
+        else:
+            self.add_asm_patch("heart_pickups_heromode")
+
+        # Damage Multiplier patch requires input, replacing one line
+        # muli r27, r27, (multiplier)
+        self.all_asm_patches["main.dol"][0x801E3464] = {
+            "Data": [
+                0x1F,
+                0x7B,
+                0x00,
+                self.placement_file.options["damage-multiplier"],
             ]
         }
 
@@ -2069,6 +2105,8 @@ class GamePatcher:
                 new_obj = DEFAULT_OBJ.copy()
             elif objtype == "SCEN":
                 new_obj = DEFAULT_SCEN.copy()
+            elif objtype == "PLY ":
+                new_obj = DEFAULT_PLY.copy()
             elif objtype == "AREA":
                 new_obj = DEFAULT_AREA.copy()
             else:

@@ -106,6 +106,11 @@ class Rando:
 
         logic = Logic(areas, logic_settings, self.placement)
 
+        for loc in self.options["excluded-locations"]:
+            logic.requirements[EXTENDED_ITEM[self.norm(loc)]] &= DNFInventory(
+                BANNED_BIT
+            )
+
         self.rando_algo = FillAlgorithm(logic, self.rng, self.randosettings)
 
         self.randomised = False
@@ -240,7 +245,6 @@ class Rando:
         }
 
         self.banned: List[EIN] = []
-        self.banned.extend(map(self.norm, self.options["excluded-locations"]))
 
         if self.options["empty-unrequired-dungeons"]:
             self.banned.extend(
@@ -324,7 +328,7 @@ class Rando:
         may_be_placed_items = CONSUMABLE_ITEMS.copy()
         duplicable_items = (
             DUPLICABLE_ITEMS
-            if rupoor_mode != "Off"
+            if rupoor_mode == "Off"
             else DUPLICABLE_COUNTERPROGRESS_ITEMS  # Rupoors
         )
 
@@ -339,6 +343,7 @@ class Rando:
     def set_placement_options(self):
         shop_mode = self.options["shop-mode"]
         place_gondo_progressives = self.options["gondo-upgrades"]
+        damage_multiplier = self.options["damage-multiplier"]
 
         options = {
             OPEN_THUNDERHEAD_OPTION: self.options["open-thunderhead"] == "Open",
@@ -348,7 +353,8 @@ class Rando:
             RANDOMIZED_BEEDLE_OPTION: shop_mode != "Vanilla",
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
             NO_BIT_CRASHES: self.options["fix-bit-crashes"],
-            HERO_MODE: self.options["hero-mode"],
+            NONLETHAL_HOT_CAVE: damage_multiplier < 12,
+            UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])
