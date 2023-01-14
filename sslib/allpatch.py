@@ -25,6 +25,7 @@ class AllPatcher:
         modified_extract_path: Path,
         oarc_cache_path: Path,
         arc_replacement_path: Path,
+        assets_path: Path,
         copy_unmodified: bool = True,
     ):
         """
@@ -36,6 +37,7 @@ class AllPatcher:
         self.actual_extract_path = actual_extract_path
         self.modified_extract_path = modified_extract_path
         self.oarc_cache_path = oarc_cache_path
+        self.assets_path = assets_path
         self.copy_unmodified = copy_unmodified
         self.arc_replacements = {}
         if arc_replacement_path.is_dir():
@@ -234,6 +236,12 @@ class AllPatcher:
                                     room_path_match.group(0), roomarc.to_buffer()
                                 )
                                 modified = True
+                    # check if zev.dat can be patched
+                    zev_path = self.assets_path / f"{stage}zev.dat"
+                    if zev_path.is_file():
+                        zev_data = zev_path.read_bytes()
+                        stageu8.set_file_data("dat/zev.dat", zev_data)
+
             # repack u8 and compress it if modified
             if modified:
                 stagedata = stageu8.to_buffer()
