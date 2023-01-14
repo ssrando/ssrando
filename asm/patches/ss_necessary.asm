@@ -640,3 +640,25 @@ bl check_activated_storyflag
 .org 0x10F4
 li r4, 951 ; story flag for raising sword
 .close
+
+.open "d_a_obj_bridge_buildingNP.rel"
+; .org 0x80d6a858
+; change frames for bridge to extend
+.org 0x6E8
+li r4, 0x1b
+
+; .org 0x80d6b7e0
+; max extension speed
+.org 0x1674
+.float 70.0
+
+; .org 0x80d6ad30
+; change frames for bridge to extend 2
+.org 0xBC0
+li r4, 0x1b
+
+; .org 0x80d6ac0c
+; don't wait on event when there is no event
+.org 0xA9C
+beq 0xAF0 ; 0x80d6ac60
+.close
