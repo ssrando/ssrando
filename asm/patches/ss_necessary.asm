@@ -232,6 +232,25 @@ lhz r4, SPAWN_SLAVE+2@l(r4)
 cmplwi r4, 0x3030 ; '00', we assume all stages like XX00 are faron main
 bne 0x8004ec28 ; if not faron main, treat this kikwi as found
 
+; this is to remove code to be overwritten in gamepatches.py (around line 1260) - Damage multiplier
+.org 0x801e3468
+nop
+nop
+nop
+
+;remove heromode check for air meter
+.org 0x801c5d8c
+nop
+nop
+nop
+
+; branch to function for rando custom text event flows (if no other matches)
+.org 0x801aff2c
+bgt 0x801b0788
+.org 0x801b0788
+bl rando_text_command_handler
+b 0x801b0764 ; return to original function
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

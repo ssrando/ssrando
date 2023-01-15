@@ -38,11 +38,35 @@
   - Entering Flooded Great Tree for the first time automatically starts the Tadtones story quest
   - New logical option for completing the Owlan's Crystals check
     - Added access to Flooded Faron as an alternative to needing bomb bag
+- Added Bokoblin Base as a region visitable in the randomizer (by CovenEsme)
+  - Talking to the Shiekah Stone in the first room in Eldin Volcano takes you to the Bokoblin Base jail
+  - Talking to the Shiekah Stone in the Bokoblin Base jail takes you back to Eldin Volcano
+  - Adds 10 total checks to Bokoblin Base
+    - Moves the first 2 chests in Volcano Summit back to Bokoblin Base now that it can be accessed
+  - Summit cannot be entered without Fireshield Earrings. Fi will appear as in Eldin Volcano
+  - Talking to the Fire Dragon sets Boko Base as completed
+    - Leaving the Fire Dragon's Lair after talking to him puts you back in normal Volcano Summit
+    - The 3 chests in Boko Base Volcano Summit can be obtained in normal Volcano Summit after talking to the Fire Dragon
+    - The lava platforms found in Boko Base will also appear in Eldin Volcano after talking to the Fire Dragon
+- Added 2 new hint stones in Eldin Volcano / Bokoblin Base (by CovenEsme)
+  - Accessible via the lava platforms in Boko Base (or the newly added ones in Eldin), the 2 Eldin caves each contain a Gossip Stone
 - Machi is no longer rescued after beating Skyview
 - Added custom dowsing images for new chest dowsing functionality (by YourAverageLink)
 - Shooting the bell during pumpkin archery ends the minigame immediately
 - Removed first time textboxes (by CovenEsme)
   - Removes rupee, heart, arrow, bomb, stamina fruit, silent realm tear and light fruit first time textboxes
+- Overhauled call Fi menu (by Muzu, CovenEsme, and Lepelog)
+  - Added menu choice to view required dungeons
+    - Removed required dungeons from notice board in academy
+  - Added menu choice to view dungeon status
+    - Complete/Incomplete/Unrequired
+    - Small key count (key piece count for ET)
+    - Boss key obtained status
+    - Dungeon map obtained status
+  - Added menu choice to view item status, this shows the obtained status of items that don't show up on the inventory screen
+    - These include caves key, spiral charge, and life tree fruit (with space for life tree seedling when that gets added)
+  - Added menu choice to view general requirements for beating a seed (e.g. how to raise and open Gate of Time, etc.)
+  - Added explicit menu choice to view play time (temporarily to fill space)
 - Added Lanayru Desert map of the past as a starting item (by CovenEsme)
 - Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check and buying a shield (by CovenEsme)
 - Removed the cutscene after completing the Isle of Songs puzzle

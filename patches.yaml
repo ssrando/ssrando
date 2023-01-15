@@ -2,7 +2,7 @@ global:
   startstoryflags: # first 8 flags are set during opening cutscenes
     - 36  # Hero's tunic
     - storyflag: 226 # Hero Mode
-      onlyif: Option "hero-mode" Enabled
+      # onlyif: Option "hero-mode" Enabled - Removed when Split Hero Mode options - always hero mode *internally*
     - 724 # Prevent first time light pillar CS sending player always to faron
     - 96  # Fi's text after obtaining first map
     - 745 # 5 Beacons
@@ -35,6 +35,9 @@ global:
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
     - 70 # First time Light Fruit Cutscene
+    # - 168 # Boko Base map, removed cos it doesn't work as intended
+    - 178 # Cutscene showing off Bokoblin Base with Plats
+    - 562 # Volcano Summit Intro Cutscene
     - storyflag: 134 # Horde defeated
       onlyif: Option "skip-horde" Enabled
     - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
@@ -88,6 +91,20 @@ global:
     Eldin Volcano:
       - 2 # gets rid of first digging mitts mogma text
       - 58 # digging mitts mogma cutscene watched
+    Eldin Volcano Summit: # VS + Boko Base
+      - 70 # Initial panning cutscene watched
+      - 21 # Set after initial panning cutscene
+      - 20 # Set after initial panning cutscene with Plats
+      - 38 # Panning cutscene showing gust bellows chest watched
+      - 37 # Panning cutscene showing boko camp and clawshots chest watched
+      - 34 # Panning cutscene showing peahots watched
+      - 63 # Panning cutscene showing pouch chest watched
+      - 60 # Panning cutscene showing sword
+      - 61 # Panning cutscene showing summit platforms in lava watched
+      - 52 # Panning cutscene showing camp after wind elevator watched
+      - 51 # Panning cutscene showing bombs chest watched
+      - 50 # Panning cutscene showing whippable peahot watched
+      - 68 # Have talked to Plats near Volcano East
     Earth Temple:
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
     Lanayru Desert:
@@ -2353,6 +2370,669 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       anglex: 12031 #keep mogma above ground
+  - name: Shiekah Stone in Eldin
+    type: oarcadd
+    destlayer: 0
+    oarc: ShiekahStone
+  - name: Add Shiekah Stone to Eldin
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFFFF
+      params2: 0xFFDFFFFF
+      posx: 250
+      posy: 700
+      posz: 9800
+      anglex: 0
+      angley: 42000
+      anglez: 30505 # Different eventpoint on hero mode cos boko base sucks
+      id: 0xFFFF
+      name: HrpHint
+  - name: Exit from Eldin Shiekah Stone to Boko Base
+    type: objadd
+    index: 0
+    room: 1
+    objtype: SCEN
+    object:
+      name: F202
+      layer: 1
+      room: 1 # 0 = cutscene + no items; 1 = no cutscene + keep items
+      entrance: 0 # New Eldin -> Boko Base sky entrance
+  - name: Boko Base Shiekah Stone Coords
+    type: objadd
+    index: 5
+    room: 1
+    objtype: PLY
+    object:
+      storyflag: 2047
+      play_cutscene: -1
+      byte4: -1
+      posx: 80
+      posy: 700
+      posz: 9670
+      anglex: 0
+      angley: 9200
+      anglez: 0
+      entrance_id: 5
+# Load rels
+  - name: Load TgRBoat rel
+    type: objnadd
+    layer: 0
+    room: 2
+    objn: TgRBoat
+  - name: Load StreamT rel
+    type: objnadd
+    layer: 0
+    room: 2
+    objn: StreamT
+  - name: Load MagBoat rel
+    type: objnadd
+    layer: 0
+    room: 2
+    objn: MagBoat
+  - name: Load TgNoEff rel
+    type: objnadd
+    layer: 0
+    room: 2
+    objn: TgNoEff
+  - name: Load TgSound rel
+    type: objnadd
+    layer: 0
+    room: 2
+    objn: TgSound
+# Platform arc
+  - name: Platform arc
+    type: oarcadd
+    destlayer: 0
+    oarc: FWRockB
+# Lower Eldin StreamTs
+  - name: Move lower Eldin StreamT start
+    type: objmove
+    id: 0xFD10
+    layer: 4
+    destlayer: 0
+    room: 2
+    objtype: STAG
+  - name: New lower Eldin StreamT 1 # Moving this from layer 4 doesn't work ¯\_(ツ)_/¯
+    type: objadd
+    id: 0xFD0D
+    layer: 0
+    room: 2
+    objtype: STAG
+    object:
+      params1: 0xF032FFFF
+      params2: 0xFFDFFFFF
+      posx: 4300
+      posy: -307.654052734375
+      posz: -4600
+      sizex: 1000
+      sizey: 700
+      sizez: 4000
+      anglex: 0
+      angley: 64990
+      anglez: 65535
+      name: StreamT
+  - name: Move lower Eldin StreamT 2
+    type: objmove
+    id: 0xFD0E
+    layer: 4
+    destlayer: 0
+    room: 2
+    objtype: STAG
+  - name: Move lower Eldin StreamT 3
+    type: objmove
+    id: 0xFD11
+    layer: 4
+    destlayer: 0
+    room: 2
+    objtype: STAG
+  - name: New lower Eldin StreamT end # Moving this from layer 4 doesn't work ¯\_(ツ)_/¯
+    type: objadd
+    id: 0xFD0F
+    layer: 0
+    room: 2
+    objtype: STAG
+    object:
+      params1: 0xF032FFFF
+      params2: 0xFFDFFFFF
+      posx: 500
+      posy: -307.654052734375
+      posz: 2900
+      sizex: 2000
+      sizey: 700
+      sizez: 4000
+      anglex: 0
+      angley: 0
+      anglez: 65535
+      name: StreamT
+# Lower Eldin platform spawner
+  - name: Lower TgRBoat patch
+    type: objpatch
+    id: 0xFD12
+    layer: 4
+    room: 2
+    objtype: STAG
+    object:
+      params1: 0 # Custom - only spawns when story flag 19 is set
+  - name: Move lower TgRBoat
+    type: objmove
+    id: 0xFD12
+    layer: 4
+    destlayer: 0
+    room: 2
+    objtype: STAG
+# Sound stuff??
+  - name: Move lower TgSound
+    type: objmove
+    id: 0xFD19
+    layer: 4
+    destlayer: 0
+    room: 2
+    objtype: SNDT
+# Upper Eldin StreamTs
+  - name: Move upper Eldin StreamT start
+    type: objmove
+    id: 0xFCBB
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: STAG
+  - name: Move upper Eldin StreamT 1
+    type: objmove
+    id: 0xFCB7
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: STAG
+  - name: Move upper Eldin StreamT 2
+    type: objmove
+    id: 0xFCB8
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: STAG
+  - name: Move upper Eldin StreamT 3
+    type: objmove
+    id: 0xFCBA
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: STAG
+  - name: New upper Eldin StreamT 4 # Moving this from layer 4 doesn't work ¯\_(ツ)_/¯
+    type: objadd
+    id: 0xFCB9
+    layer: 0
+    room: 4
+    objtype: STAG
+    object:
+      params1: 0xF032FFFF
+      params2: 0xFFDFFFFF
+      posx: 5400
+      posy: 11346.9013671875
+      posz: -21600
+      sizex: 1000
+      sizey: 2000
+      sizez: 5000
+      anglex: 0
+      angley: 60075
+      anglez: 65535
+      name: StreamT
+  - name: Move upper Eldin StreamT end
+    type: objmove
+    id: 0xFCB6
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: STAG
+# TgNoEffs
+  - name: Move upper Eldin TgNoEff 1
+    type: objmove
+    id: 0xFCBD
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: STAG
+  - name: Move upper Eldin TgNoEff 2
+    type: objmove
+    id: 0xFCBE
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: STAG
+  - name: Move upper Eldin TgNoEff 3
+    type: objmove
+    id: 0xFCBF
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: STAG
+# Upper Eldin platform spawner
+  - name: Upper TgRBoat patch
+    type: objpatch
+    id: 0xFCBC
+    layer: 4
+    room: 4
+    objtype: STAG
+    object:
+      params1: 0 # Custom - only spawns when story flag 19 is set
+  - name: Move upper TgRBoat
+    type: objmove
+    id: 0xFCBC
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: STAG
+# Sound stuff??
+  - name: Move upper TgSound
+    type: objmove
+    id: 0xFCC2
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: SNDT
+# Add Peahot arc
+  - name: Peahot arc
+    type: oarcadd
+    destlayer: 0
+    oarc: Ph
+  - name: Peahot ring arc
+    type: oarcadd
+    destlayer: 0
+    oarc: PRing
+# Move Peahots
+  - name: Move peahot 1
+    type: objmove
+    id: 0xFC92
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Move peahot 2
+    type: objmove
+    id: 0xFC90
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Move peahot 3
+    type: objmove
+    id: 0xFC8F
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Move peahot 4
+    type: objmove
+    id: 0xFC91
+    layer: 4
+    destlayer: 0
+    room: 4
+    objtype: OBJ
+  - name: Remove first Pyrup
+    type: objdelete
+    id: 0x10B5
+    layer: 1
+    room: 2
+    objtype: OBJ
+  - name: Replace first Pyrup with stationary Pyrup
+    type: objadd
+    layer: 1
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFEFFFF2
+      params2: 0x25FFFFFF
+      posx: 5800
+      posy: 0
+      posz: 4500
+      anglex: 0
+      angley: 37000
+      anglez: 0
+      id: 0x10B5
+      name: EHidoK
+  - name: Remove first Pyrup cs trigger 1
+    type: objdelete
+    id: 0xFCDB
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove first Pyrup cs trigger 2
+    type: objdelete
+    id: 0xFCCF
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove first Pyrup cs trigger 3
+    type: objdelete
+    id: 0xFCCE
+    layer: 1
+    room: 2
+    objtype: STAG
+F202: # Boko Base
+  - name: Remove Shiekah Stone from Boko Base
+    type: objdelete
+    id: 0xFC84
+    layer: 0
+    room: 2
+    objtype: OBJ
+  - name: Add Shiekah Stone in Boko Base to Prison
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFFFF
+      params2: 0xFFDFFFFF
+      posx: 380
+      posy: 700
+      posz: 10950
+      anglex: 0
+      angley: 37000
+      anglez: 30506 # Different eventpoint on hero mode cos boko base sucks
+      id: 0xFFFF
+      name: HrpHint
+  - name: Exit from Boko Base Shiekah Stone to Eldin
+    type: objadd
+    index: 0
+    room: 1
+    objtype: SCEN
+    object:
+      name: F200
+      layer: 1
+      room: 1
+      entrance: 5 # New Boko Base -> Eldin entrance
+  - name: Add hot cave Plats to prison
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFE3
+      params2: 0xFFDFFFFF
+      posx: 489.810791015625
+      posy: 700
+      posz: 10652.2568359375
+      anglex: 0
+      angley: 40960
+      anglez: 30502
+      id: 0xFC1E
+      name: NpcMoEN
+  - name: Remove Plats from hot cave
+    type: objdelete
+    id: 0xFC1E
+    layer: 1
+    room: 5
+    objtype: OBJ
+  - name: Remove barrel of doom
+    type: objdelete
+    id: 0x084B
+    layer: 1
+    room: 1
+    objtype: OBJ
+  - name: Remove default Plats from prison
+    type: objdelete
+    id: 0x0850
+    layer: 1
+    room: 1
+    objtype: OBJ
+  - name: Remove Plats Map Cutscene 1
+    type: objdelete
+    id: 0x017C
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove Plats Map Cutscene 2
+    type: objdelete
+    id: 0x017B
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove Plats Map Cutscene 1
+    type: objdelete
+    id: 0x017E
+    layer: 1
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing Peahot behind bridge
+    type: objdelete
+    id: 0x0099
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene after clawshot chest
+    type: objdelete
+    id: 0x0098
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing Peahots (near clawshot chest)
+    type: objdelete
+    id: 0x0095
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing gust bellows chest
+    type: objdelete
+    id: 0x0097
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing clawshot chest
+    type: objdelete
+    id: 0x0096
+    layer: 0
+    room: 2
+    objtype: STAG
+  - name: Remove panning Cutscene showing bomb chest
+    type: objdelete
+    id: 0x0051
+    layer: 0
+    room: 4
+    objtype: STAG
+  - name: Remove panning Cutscene showing boko camp outside ET
+    type: objdelete
+    id: 0x0050
+    layer: 0
+    room: 4
+    objtype: STAG
+  - name: Remove Plats talking Cutscene near hot cave
+    type: objdelete
+    id: 0xFC1F
+    layer: 1
+    room: 5
+    objtype: OBJ
+  - name: Add fi NpcTke for hot cave without earrings
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0x19FFFFFB
+      params2: 0xFF1FFFFF
+      posx: 13000
+      posy: 15022.0302734375
+      posz: -23100
+      anglex: 65535
+      angley: 513
+      anglez: 30013
+      id: 0x280A
+      name: NpcTke
+  - name: Add ActTag to hot cave to trigger fi
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFC4
+      params2: 0xFFFFFFFF
+      posx: 11640
+      posy: 14502.8857421875
+      posz: -22080
+      sizex: 1000
+      sizey: 1000
+      sizez: 600
+      anglex: 0
+      angley: 9102
+      anglez: 0
+      id: 0xFC28
+      name: ActTag
+  - name: Add AREA for where fi should spawn
+    type: objadd
+    index: 0
+    room: 5
+    objtype: AREA
+    object:
+      posx: 13400
+      posy: 15000
+      posz: -24130
+      sizex: 2000
+      sizey: 2000
+      sizez: 2000
+      angle: 0
+  - name: Patch jail pot to give Arrows
+    type: objpatch
+    id: 0x0849
+    layer: 1
+    room: 1
+    objtype: OBJ
+    object:
+      params2: 0x0CFFFFFF
+  - name: Patch jail pot to give Bombs
+    type: objpatch
+    id: 0x084A
+    layer: 1
+    room: 1
+    objtype: OBJ
+    object:
+      params2: 0x0BFFFFFF
+  - name: Add extra Arrow Pot Next to Volcano East Statue
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 3500
+      posy: 1009.22931
+      posz: 6550
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFF
+      name: Tubo
+  - name: Add extra Bomb Pot next to Volcano East Statue
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0BFFFFFF
+      posx: 3550
+      posy: 1024.03955
+      posz: 6650
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFE
+      name: Tubo
+  - name: Add extra Arrow Pot Next to Volcano Ascent Statue
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 1250
+      posy: 850.048523
+      posz: -5600
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFD
+      name: Tubo
+  - name: Add extra Bomb Pot next to Volcano Ascent Statue
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0BFFFFFF
+      posx: 1350
+      posy: 853.267029
+      posz: -5600
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFC
+      name: Tubo
+  - name: Add extra Arrow Pot Next to Outside Earth Temple Statue
+    type: objadd
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: 450
+      posy: 13800
+      posz: -24700
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFB
+      name: Tubo
+  - name: Add extra Bomb Pot next to Outside Earth Temple Statue
+    type: objadd
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0BFFFFFF
+      posx: 550
+      posy: 13800
+      posz: -24700
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFFA
+      name: Tubo
+F221: # Fire Dragon Room
+  - name: Patch exit trigger from Fire Dragon's Lair to normal Volcano Summit
+    type: objpatch
+    id: 0xFC10
+    room: 0
+    layer: 2
+    objtype: STAG
+    object:
+      trigstoryfid: 19 # Active after talked to Fire Dragon
+  - name: Patch exit trigger from Fire Dragon's Lair to Boko Base Volcano Summit
+    type: objpatch
+    id: 0xFC08
+    room: 0
+    layer: 0
+    objtype: STAG
+    object:
+      untrigstoryfid: 19 # Inactive after talked to Fire Dragon
+  - name: Move exit trigger to layer 2
+    type: objmove
+    id: 0xFC08
+    layer: 0
+    destlayer: 2
+    room: 0
+    objtype: STAG
+  - name: Remove Cutscene trigger
+    type: objdelete
+    id: 0xFC09
+    room: 0
+    layer: 0
+    objtype: STAG
 F210: # Mogma Turf
   - name: Layer override
     type: layeroverride
@@ -2453,20 +3133,102 @@ F201_1: # Inside Volcano
       - story_flag: -1
         night: 0
         layer: 1
-  - name: Chest in front of sword
-    type: objmove
-    id: 0xFC2E
+  - name: Remove Sword Pedestal on post-Boko Base layer
+    type: objdelete
+    id: 0xFC32
+    room: 0
     layer: 4
-    destlayer: 0
+    objtype: OBJ
+  - name: Add True Master Sword chest on post-Boko Base layer
+    type: objadd
+    layer: 4
     room: 0
     objtype: OBJS
-  - name: Boko Base pouch chest
-    type: objmove
-    id: 0xFC2D
-    layer: 4
-    destlayer: 0
+    object:
+      params1: 0xFFFFFFF3
+      params2: 0xFF5FFFFF
+      posx: 1314.69677734375
+      posy: 50
+      posz: -68.63192749023438
+      anglex: 0xFFFF
+      angley: 16384
+      anglez: 37379 # >> 9 = chest flag 73
+      id: 0xFC26
+      name: TBox
+F201_2: # Boko Base Volcano Summit
+  - name: True Master Sword Chest
+    type: objadd
+    layer: 0
     room: 0
     objtype: OBJS
+    object:
+      params1: 0xFFFFFFF3
+      params2: 0xFF5FFFFF
+      posx: 1314.69677734375
+      posy: 50
+      posz: -68.63192749023438
+      anglex: 0xFFFF
+      angley: 16384
+      anglez: 37379 # >> 9 = chest flag 73
+      id: 0xFC26
+      name: TBox
+  - name: Force layer 2 when entering Fire Dragon's Lair
+    type: objpatch
+    index: 0
+    room: 0
+    objtype: SCEN
+    object:
+      layer: 2
+  - name: Remove panning Cutscene showing pouch chest
+    type: objdelete
+    id: 0xFC4B
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove panning Cutscene showing sword
+    type: objdelete
+    id: 0xFC46
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Remove panning Cutscene showing platforms in lava
+    type: objdelete
+    id: 0xFC49
+    layer: 0
+    room: 0
+    objtype: STAG
+  - name: Add extra Arrow Pot Next to Inside the Volcano Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0CFFFFFF
+      posx: -400
+      posy: 0
+      posz: -550
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFF9
+      name: Tubo
+  - name: Add extra Bomb Pot next to Inside the Volcano Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0x0BFFFFFF
+      posx: -400
+      posy: 0
+      posz: -850
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFFF8
+      name: Tubo
 F201_3: # FS entrance
   - name: Layer override
     type: layeroverride

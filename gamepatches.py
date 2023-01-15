@@ -81,6 +81,19 @@ DEFAULT_SCEN = OrderedDict(
     saveprompt=0,
 )
 
+DEFAULT_PLY = OrderedDict(
+    storyflag=0,
+    play_cutscene=-1,
+    byte4=-1,
+    posx=0,
+    posy=0,
+    posz=0,
+    anglex=0,
+    angley=0,
+    anglez=0,
+    entrance_id=6,
+)
+
 DEFAULT_AREA = OrderedDict(
     posx=0,
     posy=0,
@@ -1131,6 +1144,7 @@ class GamePatcher:
         self.do_build_arc_cache()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
+        self.add_fi_text_patches()
         if (self.placement_file.options["song-hints"]) != "None":
             self.add_trial_hint_patches()
         if self.placement_file.options["impa-sot-hint"]:
@@ -1228,6 +1242,7 @@ class GamePatcher:
         self.add_asm_patch("custom_funcs")
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("keysanity")
+        self.add_asm_patch("post_boko_base_platforms")
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
@@ -1241,7 +1256,6 @@ class GamePatcher:
             self.add_asm_patch("dungeon_dowsing")
         if self.placement_file.options["no-enemy-music"]:
             self.add_asm_patch("no_enemy_music")
-
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
         GOT_SWORD_MODES = {
@@ -1257,6 +1271,29 @@ class GamePatcher:
                 0x00,
                 0x00,
                 GOT_SWORD_MODES[self.placement_file.options["got-sword-requirement"]],
+            ]
+        }
+
+        # Hero Mode Changes
+        if self.placement_file.options["fast-air-meter"] == False:
+            self.add_asm_patch("air_meter_normalmode")
+        if self.placement_file.options["upgraded-skyward-strike"]:
+            self.add_asm_patch("skyward_strike_heromode")
+        else:
+            self.add_asm_patch("skyward_strike_normalmode")
+        if self.placement_file.options["enable-heart-drops"]:
+            self.add_asm_patch("heart_pickups_normalmode")
+        else:
+            self.add_asm_patch("heart_pickups_heromode")
+
+        # Damage Multiplier patch requires input, replacing one line
+        # muli r27, r27, (multiplier)
+        self.all_asm_patches["main.dol"][0x801E3464] = {
+            "Data": [
+                0x1F,
+                0x7B,
+                0x00,
+                self.placement_file.options["damage-multiplier"],
             ]
         }
 
@@ -1563,7 +1600,9 @@ class GamePatcher:
         self.starting_full_hearts = (starting_health // 4) * 4
         self.startitemflags[ITEM_COUNT_FLAGS[HEART_PIECE]] = starting_health % 4
 
-        ALL_DUNGEON_LIKE = ALL_DUNGEONS + [LANAYRU_CAVES]
+        ALL_DUNGEON_LIKE = ALL_DUNGEONS + [
+            LANAYRU_CAVES
+        ]  # [SV, ET, LMF, AC, SSH, FS, SK, LANAYRU_CAVES]
         assert len(ALL_DUNGEON_LIKE) == 8
         self.startdungeonflags = []
 
@@ -1648,41 +1687,95 @@ class GamePatcher:
         ]:
             self.startstoryflags.append(required_dungeon_storyflag)
 
+    def add_fi_text_patches(self):
+        colourful_dungeon_text = [
+            DUNGEON_COLORS[dungeon] + dungeon + ">>"
+            for dungeon in self.placement_file.required_dungeons
+        ]
+
+        required_dungeon_count = len(self.placement_file.required_dungeons)
         # patch required dungeon text in
         if required_dungeon_count == 0:
             required_dungeons_text = "No Dungeons"
         elif required_dungeon_count == 6:
             required_dungeons_text = "All Dungeons"
-        elif required_dungeon_count < 4:
-            required_dungeons_text = "Required Dungeons:\n" + (
-                "\n".join(self.placement_file.required_dungeons)
-            )
+        elif required_dungeon_count < 5:
+            required_dungeons_text = "\n".join(colourful_dungeon_text)
         else:
-            required_dungeons_text = "Required: " + ", ".join(
-                self.placement_file.required_dungeons
-            )
+            required_dungeons_text = break_lines(", ".join(colourful_dungeon_text), 44)
 
-            # try to fit the text in as few lines as possible, breaking up at spaces if necessary
-            cur_line = ""
-            combined = ""
-
-            for part in required_dungeons_text.split(" "):
-                if len(cur_line + part) > 27:  # limit of one line
-                    combined += cur_line + "\n"
-                    cur_line = part + " "
-                else:
-                    cur_line += part + " "
-            combined += cur_line
-            required_dungeons_text = combined.strip()
-
-        self.eventpatches["107-Kanban"].append(
+        self.eventpatches["006-8KenseiNormal"].append(
             {
-                "name": "Knight Academy Billboard text",
-                "type": "textpatch",
-                "index": 18,
+                "name": "Fi Required Dungeon Text",
+                "type": "textadd",
+                "unk1": 2,
                 "text": required_dungeons_text,
             }
         )
+
+        fi_objective_text = next(
+            filter(
+                lambda x: x["name"] == "Fi Objective Text",
+                self.eventpatches["006-8KenseiNormal"],
+            )
+        )
+        fi_objective_text["text"] = fi_objective_text["text"].replace(
+            "{required_sword}", self.placement_file.options["got-sword-requirement"]
+        )
+
+        # dungeon status text for Fi
+        for dungeon_index, dungeon in enumerate(ALL_DUNGEONS):
+            self.eventpatches["006-8KenseiNormal"].append(
+                {
+                    "name": f"{dungeon} Status Values Command Call",
+                    "type": "flowadd",
+                    "flow": {
+                        "type": "type3",
+                        "next": f"Display {dungeon} Status Text",
+                        "param1": DUNGEONFLAG_INDICES[dungeon],
+                        "param2": DUNGEON_COMPLETE_STORYFLAGS[dungeon]
+                        if dungeon in self.placement_file.required_dungeons
+                        else -1,
+                        "param3": 71,
+                    },
+                }
+            )
+
+            self.eventpatches["006-8KenseiNormal"].append(
+                {
+                    "name": f"Display {dungeon} Status Text",
+                    "type": "flowadd",
+                    "flow": {
+                        "type": "type1",
+                        "next": f"{ALL_DUNGEONS[dungeon_index + 1]} Status Values Command Call"
+                        if dungeon_index < 6
+                        else -1,
+                        "param3": 68,
+                        "param4": f"{dungeon} Status Text",
+                    },
+                }
+            )
+
+            if dungeon in REGULAR_DUNGEONS:
+                self.eventpatches["006-8KenseiNormal"].append(
+                    {
+                        "name": f"{dungeon} Status Text",
+                        "type": "textadd",
+                        "unk1": 2,
+                        "text": f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nSmall Keys: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
+                        if dungeon != ET
+                        else f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nKey Pieces: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>",
+                    }
+                )
+            else:
+                self.eventpatches["006-8KenseiNormal"].append(
+                    {
+                        "name": "Sky Keep Status Text",
+                        "type": "textadd",
+                        "unk1": 2,
+                        "text": f"{DUNGEON_COLORS[SK]}Sky Keep>>\nSmall Keys: <numeric arg0>\n\nDungeon Map: <string arg1>",
+                    }
+                )
 
     def add_trial_hint_patches(self):
         def find_event(filename, name):
@@ -1844,16 +1937,6 @@ class GamePatcher:
         )
 
     def add_keysanity(self):
-        DUNGEON_COLORS = {
-            SV: "<g<",
-            ET: "<r+<",
-            LMF: "<y<",
-            AC: "<b<",
-            FS: "<r<",
-            SSH: "<y+<",
-            SK: "<s<",
-            "Lanayru Caves": "<ye<",
-        }
         KEYS_DUNGEONS = [
             # ('Skyview', 200), # already has a textbox
             (LMF, 201),
@@ -2069,6 +2152,8 @@ class GamePatcher:
                 new_obj = DEFAULT_OBJ.copy()
             elif objtype == "SCEN":
                 new_obj = DEFAULT_SCEN.copy()
+            elif objtype == "PLY ":
+                new_obj = DEFAULT_PLY.copy()
             elif objtype == "AREA":
                 new_obj = DEFAULT_AREA.copy()
             else:
