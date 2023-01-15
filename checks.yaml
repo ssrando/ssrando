@@ -43,16 +43,18 @@ Upper Skyloft - Chest near Goddess Statue:
   type: skyloft, miscellaneous
   Paths:
     - stage/F000/r0/l0/TBox/71
-Upper Skyloft - First Chest in Goddess Statue:
+Upper Skyloft - First Goddess Sword Item in Goddess Statue:
   original item: Progressive Sword
   type: skyloft, miscellaneous
   Paths:
-    - stage/F008r/r0/l0/TBox/95
-Upper Skyloft - Second Chest in Goddess Statue:
+    - event/107-Kanban/Fi give Goddess Statue item 1
+    - oarc/F008r/l1
+Upper Skyloft - Second Goddess Sword Item in Goddess Statue:
   original item: Emerald Tablet
   type: skyloft, miscellaneous
   Paths:
-    - stage/F008r/r0/l0/TBox/94
+    - event/107-Kanban/Fi give Goddess Statue item 2
+    - oarc/F008r/l1
 Central Skyloft - Bazaar Goddess Chest:
   original item: Gold Rupee
   type: skyloft, goddess, sand sea goddess
@@ -870,16 +872,6 @@ Mogma Turf - Chest behind Bombable Wall in Fire Maze:
   Paths:
     - stage/F210/r0/l0/TBox/70
 
-Volcano Summit - Small Chest in Volcano Summit:
-  original item: Blue Rupee
-  type: eldin, miscellaneous
-  Paths:
-    - stage/F201_1/r0/l0/TBox/72
-Volcano Summit - Boko Base Pouch Chest:
-  original item: Pouch & extra items
-  type: eldin, miscellaneous
-  Paths:
-    - stage/F201_1/r0/l0/TBox/71
 Volcano Summit - Item behind Digging:
   original item: Heart Piece
   type: eldin, freestanding
@@ -894,35 +886,63 @@ Volcano Summit - Chest behind Bombable Wall in Waterfall Area:
     - stage/F201_4/r0/l0/TBox/95
   text: atop a <r<volcanic waterfall>> hides
 
-#Boko Base - Mogma Mitts Event
-#   original item: Mogma Mitts
-#   Paths:
-#    - event
-#Boko Base - Clawshots
-#   original item: Clawshots
-#   Paths:
-#    - stage/F202.json
-#Boko Base - Gust Bellows
-#   original item: Gust Bellows
-#   Paths:
-#    - stage/F202.json
-#Boko Base - Bombs
-#   original item: Bombs
-#   Paths:
-#    - stage/F202.json
-#Boko Base - Slingshot
-#   original item: Slingshot
-#   Paths:
-#    - stage/F202.json
-#Boko Base - Whip
-#   original item: Whip
-#   Paths:
-#    - stage/F202.json
-
-#Fire Dragon Room - Fire Dragon's Reward
-#   original item: Eldin Song of the Hero Part
-#   Paths:
-#    - stage/F221.json
+Bokoblin Base - Plats' Gift:
+  original item: Mogma Mitts
+  type: eldin, free gift
+  text: a gift from an <r<imprisoned mogma>> has
+  Paths:
+   - event/305-MountainF3/Plats' Gift
+   - oarc/F202/l1
+Bokoblin Base - Chest near Bone Bridge:
+  original item: Gust Bellows
+  type: eldin
+  Paths:
+   - stage/F202/r2/l1/TBox/70
+Bokoblin Base - Chest on Cliff:
+  original item: Clawshots
+  type: eldin
+  Paths:
+   - stage/F202/r2/l1/TBox/66
+Bokoblin Base - Chest near Drawbridge:
+  original item: Whip
+  type: eldin
+  Paths:
+   - stage/F202/r2/l1/TBox/67
+Bokoblin Base - Chest East of Earth Temple Entrance:
+  original item: Slingshot
+  type: eldin
+  Paths:
+   - stage/F202/r4/l1/TBox/68
+Bokoblin Base - Chest West of Earth Temple Entrance:
+  original item: Bombs
+  type: eldin
+  Paths:
+   - stage/F202/r4/l1/TBox/69
+Bokoblin Base - First Chest in Volcano Summit:
+  original item: Blue Rupee
+  type: eldin
+  Paths:
+   - stage/F201_2/r0/l0/TBox/72
+   - stage/F201_1/r0/l4/TBox/72
+Bokoblin Base - Raised Chest in Volcano Summit:
+  original item: Progressive Sword
+  type: eldin
+  Paths:
+   - stage/F201_2/r0/l0/TBox/73
+   - stage/F201_1/r0/l4/TBox/73
+Bokoblin Base - Chest in Volcano Summit Alcove:
+  original item: Progressive Pouch
+  type: eldin
+  Paths:
+   - stage/F201_2/r0/l0/TBox/71
+   - stage/F201_1/r0/l4/TBox/71
+Bokoblin Base - Fire Dragon's Reward:
+  original item: Eldin Song of the Hero Part
+  type: eldin
+  text: <r<hearing a song atop the great mountain>> is rewarded with
+  Paths:
+   - event/305-MountainF3/Give item after Eldin SotH CS
+   - oarc/F221/l0
 
 Lanayru Mine - Chest behind First Landing:
   original item: Evil Crystal

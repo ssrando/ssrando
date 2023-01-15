@@ -1,5 +1,15 @@
 - layer: 4
   oarcs:
+    - FWRockB
+    - Ph
+    - PRing
+  stage: F200
+- layer: 0
+  oarcs:
+    - ShiekahStone
+  stage: F202
+- layer: 4
+  oarcs:
     - Waterdragon
   stage: F102_2
 - layer: 0

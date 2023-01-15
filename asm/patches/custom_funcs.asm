@@ -181,6 +181,9 @@ b setStoryflagToValue
 ; custom-functions rust project
 .global process_startflags
 .global handle_bk_map_dungeonflag
+.global rando_text_command_handler
+.global textbox_a_pressed_or_b_held
+.global set_goddess_sword_pulled_scene_flag
 
 .close
 
@@ -459,3 +462,66 @@ mtlr r0
 addi r1, r1, 0x10
 blr
 .close
+
+.open "d_t_rock_boatNP.rel"
+.org @NextFreeSpace
+.global custom_eldin_platform_comparison
+custom_eldin_platform_comparison:
+
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0xc(r1)
+stw r31, 0x14(r1) ; r31 currently holds a copy of param_1 from before branch
+
+li r4, 0x13 ; story flag 19 - talked to Fire Dragon
+bl checkStoryflagIsSet
+lwz r31, 0x14(r1) ; restoring param_1 to r31
+lwz r0, 0x138(r31) ; normal check val (basically the line of code we replaced)
+
+lwz r4, 0x4(r31) ; params1
+cmpwi r4, 0 ; if params1 is not 0 have normal behavior
+bne exit
+
+cmpwi r3, 1
+beq exit ; if flag is set, skip the next line
+li r0, 0 ; forces the false condition
+exit:
+mr r3, r31
+lwz r4, 0xC(r1)
+mtlr r4
+addi r1, r1, 0x10
+blr
+.close
+
+
+
+
+
+
+
+
+
+
+; stwu r1, -0x10(r1)
+; mflr r0
+; stw r0, 20(r1)
+
+; li r4, 0x13 ; story flag 19 - talked to Fire Dragon
+; bl checkStoryflagIsSet
+; cmpwi r3, 0
+; bne normal_check
+; li r0, -1
+; normal_check:
+; cmpwi r0, 0
+
+; lwz r0, 20(r1)
+; mtlr r0
+; addi r1, r1, 0x10
+; blr
+; .close
+
+; no_platform:
+; b 0x68C ; don't spawn platform
+
+; ble 0x68C ; no_platform
+; b 0x630 ; return immediately after custom function

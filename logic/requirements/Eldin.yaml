@@ -1,5 +1,9 @@
 allowed-time-of-day: DayOnly
 
+macros:
+  Can Survive Hot Cave: Nonlethal Hot Cave | Fireshield Earrings
+  # Hotcave is nonlethal if it deals less than six hearts (damage multiplier is less than 12)
+
 Volcano:
   toplevel-alias: Eldin Volcano
   hint-region: Eldin Volcano
@@ -34,6 +38,7 @@ Volcano:
       First Vent from Mogma Turf: Impossible
       First Room: First Room - Blow up Rock to East
       Past Mogma Turf: Past Mogma Turf - Unlock Shortcut to Pre Turf
+      Exit to Bokoblin Base: Nothing
     locations:
       First Room - Blow up Rock to East: Bomb Bag # can probably also use hook beetle
       Unlock Statue: Nothing
@@ -96,6 +101,7 @@ Volcano:
       Temple Entrance Statue: Unlock Statue
       Near Thrill Digger Cave: Near Thrill Digger Cave - Blow down Watchtower
       Exit to Earth Temple: Open ET option | Key Piece x5
+      Volcano - Upper Platform Cave: Fire Dragon's Reward
       Hot Cave: Blow down Watchtower to Hot Cave
     locations:
       Unlock Statue: Nothing
@@ -107,13 +113,19 @@ Volcano:
       Digging Spot in front of Earth Temple: Digging Mitts
       Digging Spot below Tower: Digging Mitts
       Digging Spot behind Boulder on Sandy Slope: Digging Mitts
+  
+  Upper Platform Cave:
+    exits:
+      Near Temple Entrance: Fire Dragon's Reward | Clawshots
+    locations:
+      Gossip Stone in Upper Platform Cave: Nothing
 
   Hot Cave:
     exits:
       Exit to Summit: Fireshield Earrings
       Vent Entrance near Hot Cave: Impossible
       Near Temple Entrance: Near Temple Entrance - Blow down Watchtower to Hot Cave
-      Sand Slide: Nothing
+      Sand Slide: Can Survive Hot Cave
     locations:
       Near Temple Entrance - Blow down Watchtower to Hot Cave: Impossible # Bomb Bag & Bomb Throw Trick
 
@@ -128,9 +140,18 @@ Volcano:
     exits:
       Ascent: Unlock Shortcut to Ascent
       Vent Exit near Ascent: Nothing
+      Volcano - Lower Platform Cave: Fire Dragon's Reward
     locations:
       Digging Spot after Draining Lava: Digging Mitts
       Unlock Shortcut to Ascent: Nothing
+  
+  Lower Platform Cave:
+    exits:
+      Past Slide: Clawshots
+      Past Mogma Turf: Fire Dragon's Reward
+      East: Fire Dragon's Reward
+    locations:
+      Gossip Stone in Lower Platform Cave: Nothing
 
 Mogma Turf: # when randomizing this, need to find a way to force the skydiving animation
   hint-region: Mogma Turf
@@ -178,8 +199,6 @@ Volcano Summit:
     Exit to Outside Fire Sanctuary: Fireshield Earrings
   locations:
     Goddess Cube inside Volcano Summit: Fireshield Earrings & Long Range Skyward Strike
-    Small Chest in Volcano Summit: Fireshield Earrings
-    Boko Base Pouch Chest: Fireshield Earrings
 
   Waterfall:
     exits:
@@ -223,3 +242,85 @@ Volcano Summit:
         Gossip Stone near Second Thirsty Frog: Nothing
         Hydrate Second Frog: Clawshots & Water Bottle
 
+# BOKO BASE
+Bokoblin Base:
+  toplevel-alias: Bokoblin Base
+  hint-region: Bokoblin Base
+  
+  Prison:
+    exits:
+      Entrance: Nothing
+      Exit: Nothing
+      Volcano East: Mogma Mitts
+    locations:
+      Plats' Gift: Nothing
+  
+  Volcano East:
+    exits:
+      Prison: Mogma Mitts
+      Before Drawbridge: Nothing
+      After Drawbridge: Clawshots & Bomb Bag
+    locations:
+      Chest near Bone Bridge: Can bypass Boko Base Watch Tower | Mogma Mitts | Gust Bellows
+      Chest on Cliff: (Can bypass Boko Base Watch Tower | Mogma Mitts) & Gust Bellows
+      Goddess Cube near Mogma Turf Entrance: Goddess Sword
+  
+  Before Drawbridge:
+    exits:
+      Volcano East: Nothing
+      After Drawbridge: Whip & Clawshots
+    locations:
+      Chest near Drawbridge: Clawshots | Can bypass Boko Base Watch Tower
+
+  After Drawbridge:
+    exits:
+      Before Drawbridge: Clawshots
+      Bokoblin Base - Lower Platform Cave: Nothing
+      Volcano East: Nothing
+      Outside Earth Temple: Nothing
+  
+  Lower Platform Cave:
+    exits:
+      After Drawbridge: Clawshots
+      Before Drawbridge: Nothing
+      Volcano East: Nothing
+    locations:
+      Gossip Stone in Lower Platform Cave: Nothing
+  
+  Outside Earth Temple:
+    exits:
+      Hot Cave: Nothing
+      Bokoblin Base - Upper Platform Cave: Nothing
+    locations:
+      Chest East of Earth Temple Entrance: Nothing
+      Goddess Cube East of Earth Temple Entrance: Goddess Sword
+      Chest West of Earth Temple Entrance: (Slingshot | Bow | Bomb Bag | Goddess Sword) & Can bypass Boko Base Watch Tower & Mogma Mitts
+      Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can bypass Boko Base Watch Tower & Mogma Mitts
+  
+  Upper Platform Cave:
+    exits:
+      Outside Earth Temple: Nothing
+    locations:
+      Gossip Stone in Upper Platform Cave: Nothing
+  
+  Hot Cave:
+    exits:
+      After Drawbridge: Fireshield Earrings & Bomb Bag
+      Bokoblin Base Summit: Fireshield Earrings & Bomb Bag
+  
+  Bokoblin Base Summit:
+    exits:
+      Hot Cave: Fireshield Earrings
+      Fire Dragon's Lair: Fireshield Earrings
+    locations:
+      First Chest in Volcano Summit: Fireshield Earrings
+      Raised Chest in Volcano Summit: Fireshield Earrings
+      Chest in Volcano Summit Alcove: Fireshield Earrings & Practice Sword
+      Goddess Cube inside Volcano Summit: Fireshield Earrings & Long Range Skyward Strike
+  
+  Fire Dragon's Lair:
+    exits:
+      Bokoblin Base Summit: Nothing
+      Volcano - East: Fire Dragon's Reward
+    locations:
+      Fire Dragon's Reward: Bow | Beetle

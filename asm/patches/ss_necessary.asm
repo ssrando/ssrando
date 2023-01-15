@@ -7,8 +7,65 @@ rlwinm r0,r0,28,30,31 ; r0 = (r0 >> 4) & 3
 stb r0, 0x1209(r28) ; store subtype
 b 0x80269554
 
+.org 0x80115cf8 ; non-final text box
+bl textbox_a_pressed_or_b_held ; change button function
+
+.org 0x80115f98 ; final text box
+bl textbox_a_pressed_or_b_held ; change button function
+
+; Make all skippable event be skippable without waiting 4 frames
+.org 0x800a0968 ; if 2 button is being held
+li r3, 1 ; return true instead of waiting 4 frames
+b 0x800a09a0
+
+; Show all text in a textbox at once
 .org 0x80115A04 ; in some function that is text advancing related
 li r4, 1 ; enables instant text
+
+; Fast textboxes advancing
+.org 0x8010f5f4 ; checks what some textbox state stuff
+b 0x8010f654 ; branch to (unused??) block that sets textboxes to be clearable
+
+; Fast textbox appearing - makes textbox blur go weird
+.org 0x8011593c
+nop
+
+; Remove textbox blur
+.org 0x800b3370
+blr
+
+; Remove Fi text janky appearing
+; (equivalent to removing textbox blur for Fi text)
+.org 0x80120c60
+blr
+
+; remove text pauses
+; copies instruction for just ignoring a command
+.org 0x800b2774
+lhz r3, 0x147a(r26)
+addi r0, r3, 1
+sth r0, 0x147a(r26)
+
+; remove sword item from sword pedestal and give new story flag 951
+.org 0x801d45ec
+bl set_goddess_sword_pulled_scene_flag
+
+; Sword pedestal textbox removal
+.org 0x801d4b20
+li r5, -1
+
+; Change starting location to remove intro cutscenes
+.org 0x801bb960 ; Change starting stage
+subi r3, r13, 0x5b44 ; previously 0x601c (F405 -> F001r)
+
+.org 0x801bb964 ; Change starting roomID
+li r4, 1 ; Room 0 -> 1
+
+.org 0x801bb968 ; Change starting layer
+li r5, 3 ; Layer 0 -> 3
+
+.org 0x801bb96c ; Change starting entrance
+li r6, 5 ; Entrance 0 -> 5
 
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
@@ -192,6 +249,25 @@ lis r4, SPAWN_SLAVE+2@ha
 lhz r4, SPAWN_SLAVE+2@l(r4)
 cmplwi r4, 0x3030 ; '00', we assume all stages like XX00 are faron main
 bne 0x8004ec28 ; if not faron main, treat this kikwi as found
+
+; this is to remove code to be overwritten in gamepatches.py (around line 1260) - Damage multiplier
+.org 0x801e3468
+nop
+nop
+nop
+
+;remove heromode check for air meter
+.org 0x801c5d8c
+nop
+nop
+nop
+
+; branch to function for rando custom text event flows (if no other matches)
+.org 0x801aff2c
+bgt 0x801b0788
+.org 0x801b0788
+bl rando_text_command_handler
+b 0x801b0764 ; return to original function
 
 .close
 
