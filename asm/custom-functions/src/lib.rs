@@ -2,11 +2,15 @@
 #![feature(split_array)]
 
 use core::{
+    arch::asm,
     ffi::{c_uint, c_ushort, c_void},
     ptr::slice_from_raw_parts,
 };
 
+use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
+
 mod filemanager_gen;
+mod message;
 
 #[repr(C)]
 struct SpawnStruct {
@@ -47,8 +51,19 @@ extern "C" {
     fn StoryflagManager__doCommit(mgr: *mut c_void);
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
+    fn checkStoryflagIsSet(p: *const c_void, flag: u16) -> bool;   
+    fn checkItemFlag(flag: u16) -> bool;
     fn checkButtonAPressed() -> bool;
     fn checkButtonBHeld() -> bool;
+    fn getKeyPieceCount() -> u16;
+}
+
+fn storyflag_check(flag: u16) -> bool {
+    unsafe { checkStoryflagIsSet(core::ptr::null(), flag) }
+}
+
+fn itemflag_check(flag: u16) -> bool {
+    unsafe { checkItemFlag(flag) }
 }
 
 fn sceneflag_set_global(scene_index: u16, flag: u16) {
@@ -67,6 +82,10 @@ fn dungeonflag_global(scene_index: u16) -> *mut [u16; 8] {
             .as_mut_ptr()
             .add(scene_index as usize)
     }
+}
+
+fn dungeon_global_key_count(scene_index: u16) -> u16 {
+    unsafe { (*dungeonflag_global(scene_index))[1] & 0xF }
 }
 
 fn storyflag_set_to_value(flag: u16, value: u16) {
@@ -225,6 +244,78 @@ fn handle_bk_map_dungeonflag(item: c_ushort) {
             (*dungeonflag_local())[0] |= dungeonflag_mask;
         }
         (*dungeonflag_global(flagindex as u16))[0] |= dungeonflag_mask;
+    }
+}
+
+const OBTAINED_TEXT: &[u8; 18] = b"\0O\0b\0t\0a\0i\0n\0e\0d\0\0";
+const UNOBTAINED_TEXT: &[u8; 22] = b"\0U\0n\0o\0b\0t\0a\0i\0n\0e\0d\0\0";
+const COMPLETE_TEXT: &[u8; 42] = b"\0\x0e\0\x00\0\x03\0\x02\0\x08\0 \0C\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+const INCOMPLETE_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x09\0 \0I\0n\0c\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+const UNREQUIRED_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x0C\0 \0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+
+#[no_mangle]
+fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *const FlowElement) {
+    let flow_element = unsafe { &*p_flow_element };
+    match flow_element.param3 {
+        71 => {
+            let dungeon_index = flow_element.param1;
+            let completion_storyflag = flow_element.param2;
+            let key_count = if dungeon_index == 14 /* ET */ {
+                unsafe { getKeyPieceCount() }
+            } else {
+                dungeon_global_key_count(dungeon_index)
+            };
+            text_manager_set_num_args(&[key_count as u32]);
+            let map_and_bk = unsafe { (*dungeonflag_global(dungeon_index))[0] };
+            let bk_text = match map_and_bk & 0x82 {
+                0x80 => OBTAINED_TEXT.as_ptr(),
+                0x82 => OBTAINED_TEXT.as_ptr(),
+                _ => UNOBTAINED_TEXT.as_ptr(),
+            };
+            let map_text = match map_and_bk & 0x82 {
+                0x02 => OBTAINED_TEXT.as_ptr(),
+                0x82 => OBTAINED_TEXT.as_ptr(),
+                _ => UNOBTAINED_TEXT.as_ptr(),
+            };
+            text_manager_set_string_arg(bk_text as *const c_void, 0);
+            text_manager_set_string_arg(map_text as *const c_void, 1);
+            
+            let completed_text = if completion_storyflag == 0xFFFF {
+                UNREQUIRED_TEXT.as_ptr()
+            } else if storyflag_check(completion_storyflag) {
+                COMPLETE_TEXT.as_ptr()
+            } else {
+                INCOMPLETE_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(completed_text as *const c_void, 2);
+            
+        }
+        72 => {
+            let caves_key = dungeon_global_key_count(9);
+            let caves_key_text = if caves_key == 1 {
+                OBTAINED_TEXT.as_ptr()
+            } else {
+                UNOBTAINED_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(caves_key_text as *const c_void, 0);
+
+            let spiral_charge_obtained = 364; //story flag for spiral charge
+            let spiral_charge_text = if storyflag_check(spiral_charge_obtained) {
+                OBTAINED_TEXT.as_ptr()
+            } else {
+                UNOBTAINED_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(spiral_charge_text as *const c_void, 1);
+
+            let life_tree_fruit_obtained = 198; //item flag for life tree fruit
+            let life_tree_fruit_text = if itemflag_check(life_tree_fruit_obtained) {
+                OBTAINED_TEXT.as_ptr()
+            } else {
+                UNOBTAINED_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(life_tree_fruit_text as *const c_void, 2);
+        }
+        _ => (),
     }
 }
 
