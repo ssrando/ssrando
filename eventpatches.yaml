@@ -915,6 +915,29 @@
   #   type: textpatch
   #   index: 18
   #   text: "Required dungeons:\nA\nB"
+  - name: Fi give Goddess Statue items
+    type: flowpatch
+    index: 12
+    flow:
+      next: Fi give Goddess Statue item 1
+  - name: Fi give Goddess Statue item 1
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: Fi give Goddess Statue item 2
+      param3: 9
+  - name: Fi give Goddess Statue item 2
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 3 # item
+      next: -1
+      param3: 9
 108-ShinkanA:
   - name: Owlans Shield
     type: flowpatch
@@ -1581,10 +1604,19 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: 87
+      next: Give Skyview beaten story flag
       param3: 9
       param4: 0
       param5: 0
+  - name: Give Skyview beaten story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 5 # Skyview beaten story flag
+      next: 87
+      param3: 0
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 87
@@ -1628,8 +1660,17 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: rando required dungeon storyflag
+      next: Give Ancient Cistern beaten story flag
       param3: 9
+  - name: Give Ancient Cistern beaten story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 900 # Ancient Cistern beaten story flag
+      next: rando required dungeon storyflag
+      param3: 0
   - name: rando required dungeon storyflag
     type: flowadd
     flow:
@@ -1782,7 +1823,7 @@
       param4: Flooded Faron Entry Question
   - name: Flooded Faron Entry Question
     type: textadd
-    text: "Here to accept my final test?\n[1]Yes[2-]No"
+    text: "Here to accept my <r<final test>>?\n[1]Yes[2-]No"
   - name: Flooded Faron Entry Switch
     type: switchadd
     flow:
@@ -1819,7 +1860,7 @@
       param2: 0
       param3: 7 # Use result from previous check
     cases:
-      - Check for Tadtones Starting CS # true
+      - Trigger Exit to Flooded Faron Layer 2
       - Show No Water Dragon Scale Text # false
   - name: No Water Dragon Scale Text
     type: textadd
@@ -1831,30 +1872,12 @@
       next: -1
       param3: 302
       param4: No Water Dragon Scale Text
-  - name: Check for Tadtones Starting CS
-    type: switchadd
-    flow:
-      subType: 6
-      param2: 80 # Tadtones Starting CS Storyflag
-      param3: 3
-    cases:
-      - Trigger Exit to Flooded Faron Layer 2 # true
-      - Trigger Exit to Flooded Faron Layer 1 # false
-  - name: Trigger Exit to Flooded Faron Layer 1
-    type: flowadd
-    flow:
-      type: type3
-      subType: 0
-      param1: 5 # Entrance number
-      param2: 0
-      next: -1
-      param3: 10 # Triggers an exit
   - name: Trigger Exit to Flooded Faron Layer 2
     type: flowadd
     flow:
       type: type3
       subType: 0
-      param1: 6 # Entrance number
+      param1: 5 # Entrance number
       param2: 0
       next: -1
       param3: 10 # Triggers an exit
@@ -1929,7 +1952,7 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: 36
+      next: Trigger Exit to Non-Flooded Faron
       param3: 9
 250-ForestSiren:
   - name: shorten fi text
@@ -1958,7 +1981,7 @@
     type: flowadd
     flow:
       type: type3
-      subType: 1
+      subType: 1  
       param1: 66 # set scene flag
       param2: 1
       next: -1
@@ -2046,10 +2069,19 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: 6
+      next: Give Fire Sanctuary beaten story flag
       param3: 9
       param4: 0
       param5: 0
+  - name: Give Fire Sanctuary beaten story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 901 # Fire Sanctuary beaten story flag
+      next: 6
+      param3: 0
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 6
@@ -2275,10 +2307,19 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: 46
+      next: Give Sadship beaten story flag
       param3: 9
       param4: 0
       param5: 0
+  - name: Give Sadship beaten story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 15 # Sadship beaten story flag
+      next: 46
+      param3: 0
   - name: rando required dungeon storyflag
     type: flowpatch
     index: 46
@@ -2348,6 +2389,29 @@
     flow:
       next: 276
 404-DesertF3:
+  - name: Set story flags from skipped cutscene
+    type: flowpatch
+    index: 165
+    flow:
+      next: Set when Thunder Dragon teaches SotH part story flag
+  - name: Set when Thunder Dragon teaches SotH part story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 462 # Set when Thunder Dragon teaches SotH part story flag
+      next: Thunder Dragon teaches SotH part story flag
+      param3: 0
+  - name: Thunder Dragon teaches SotH part story flag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 21 # Thunder Dragon teaches SotH part story flag
+      next: 90
+      param3: 0
   - name: Go to item
     type: flowpatch
     index: 139
@@ -2433,8 +2497,17 @@
       subType: 1
       param1: 29
       param2: 10
-      next: 267
+      next: Raise GoT
       param3: 2
+  - name: Raise GoT
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 340 # Raise GoT
+      next: 267
+      param3: 0
   - name: got to rando dungeons completed check
     type: flowpatch
     index: 267
@@ -2462,16 +2535,20 @@
       param3: 9
       param4: 0
       param5: 0
-  - name: Zelda's Cutscene, trigger CS # auto trigger CS, so above mentioned sceneflag is useless
+  - name: Yeet TMS Cutscene
     type: flowpatch
     index: 16
     flow:
+      next: Give watched TMS Cutscene storyflag
+  - name: Give watched TMS Cutscene storyflag
+    type: flowadd
+    flow:
       type: type3
-      subType: 1
-      param1: 2 # trigger exit 2
-      param2: 2 # room 2
+      subType: 0
+      param1: 0
+      param2: 350 # TMS watched story flag
       next: -1
-      param3: 10
+      param3: 0
   - name: Patch Fi text before Demise
     onlyif: Option "skip-demise" Enabled
     type: textpatch

@@ -76,7 +76,11 @@
   - Removes the delay between clearing a textbox and being able to clear the next one
   - Removes the delay between opening a textbox and being able to clear the textbox
   - Removes the background blur to text due to a visual bug
-- Removed the Volcano Summit intro cutscene as it would now be possible to trigger it from behind
+- Added back the Sword Pedestal in the Goddess Statue (by CovenEsme)
+  - Pulling out the Goddess Sword from its pedestal now gives the 2 checks within the Goddess Statue
+  - The 2 small chests previously found within the Goddess Statue have been removed
+- Removed all skippable cutscenes except boss intro cutscenes (by CovenEsme)
+  - When starting a new file, Link will now spawn directly in his room
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together

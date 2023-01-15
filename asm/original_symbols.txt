@@ -16,6 +16,8 @@ main.dol:
     SceneflagManager__setFlag: 0x800be180
     # this, flag
     SceneflagManager__setTempOrSceneflag: 0x800be2d0
+    SceneflagManager__setFlagGlobal: 0x800be1f0
+    SceneflagManager__checkFlagGlobal: 0x800bdf20
     # ActorLink, Vec3f* pos, Vec3s* rot, zero1, one, zero2
     ActorLink__setPosRot: 0x802416d0
     # storyflag in r4
@@ -32,11 +34,15 @@ main.dol:
     FlagManager__setFlagTo1: 0x800bf5b0
     FlagManager__getFlagOrCounter: 0x800bf480
     FlagManager__setFlagOrCounter: 0x800bf530
+    StoryflagManager__doCommit: 0x800c0460
+    ItemflagManager__doCommit: 0x800c03f0
     cM_rndI: 0x802e0d20
     LINK_PTR: 0x8057578C
     RELOADER_PTR: 0x80575794
+    SPAWN_SLAVE: 0x805b3860
     EQUIPPED_SWORD: 0x80571C74
     DUNGEONFLAG_MANAGER: 0x80575404
+    STATIC_DUNGEON_FLAGS: 0x805a9c58
     LYT_MSG_MANAGER: 0x80575488
     GLOBAL_MESSAGE_RELATED_CONTEXT: 0x80575740
     isPlayingHarp: 0x80381120
@@ -46,5 +52,9 @@ main.dol:
     checkButtonBHeld: 0x80059880
     getKeyPieceCount: 0x802522f0
     checkItemFlag: 0x80251da0
+    TextManager__setNumericArgs: 0x800b8a60
+    TextManager__setStringArg: 0x800b7fa0
+    requestFileLoadFromDisk: 0x802f0060
+    AcOTBox__initDowsingTarget: 0x8026d780
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
