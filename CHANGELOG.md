@@ -21,6 +21,8 @@
 - Added option to start with a random progress item (by CovenEsme)
 - Added the ability to ban individual locations (by cjs07)
 - Removed the "Banned Types" option
+- Added cosmetic option to have stars appear in the sky during both day and night (by CovenEsme)
+  - Stars appear on the surface regions, the Sky and Skyloft
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
