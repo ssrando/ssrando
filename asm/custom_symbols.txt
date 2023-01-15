@@ -7,10 +7,10 @@ main.dol:
   alloc_keyboard_arcs_conditional: 0x80678450
   unset_sandship_timestone_if_necessary: 0x8067849C
   process_startflags: 0x806784CC
-  handle_bk_map_dungeonflag: 0x80678740
+  handle_bk_map_dungeonflag: 0x8067875C
   rando_text_command_handler: 0x8067880C
-  textbox_a_pressed_or_b_held: 0x806787F0
-  set_goddess_sword_pulled_scene_flag: 0x80678820
+  textbox_a_pressed_or_b_held: 0x80678A24
+  set_goddess_sword_pulled_scene_flag: 0x80678A54
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
