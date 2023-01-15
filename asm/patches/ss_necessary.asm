@@ -46,6 +46,14 @@ lhz r3, 0x147a(r26)
 addi r0, r3, 1
 sth r0, 0x147a(r26)
 
+; remove sword item from sword pedestal and give new story flag 951
+.org 0x801d45ec
+bl set_goddess_sword_pulled_scene_flag
+
+; Sword pedestal textbox removal
+.org 0x801d4b20
+li r5, -1
+
 ; Change starting location to remove intro cutscenes
 .org 0x801bb960 ; Change starting stage
 subi r3, r13, 0x5b44 ; previously 0x601c (F405 -> F001r)

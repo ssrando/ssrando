@@ -981,6 +981,41 @@ F000: # Skyloft
     layer: 0
     room: 0
     objtype: STAG
+  - name: Patch entrance to Goddess Statue
+    type: objpatch
+    id: 0xFD06
+    room: 0
+    layer: 0
+    objtype: STAG
+    object:
+      trigstoryfid: 951 # Only after raised goddess sword
+  - name: Add entrance to Goddess Statue
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFFFF31 # scenlink: 49
+      params2: 0xFF5FFFFF
+      posx: 6.421215057373047
+      posy: 2871.08447265625
+      posz: -19011.0625
+      sizex: 527.0
+      sizey: 575.0
+      sizez: 958.0
+      anglex: 0xFFFF # no trigger storyflag
+      angley: 0
+      anglez: 951 # Untrigger on getting sword pedestal checks
+      id: 0xFFFF
+      name: ScChang
+  - name: Patch other SCEN into Goddess Statue
+    type: objpatch
+    index: 49
+    room: 0
+    objtype: SCEN
+    object:
+      layer: 1
+      entrance: 0
   - name: Remove SoT placement cutscene
     type: objpatch
     index: 46
@@ -1159,44 +1194,46 @@ F005r: # Orielle and Parrow's House
     room: 0
     objtype: OBJ
 F008r: # Goddess Statue
-  - name: Goddess Sword chest
+  - name: Layer override
+    type: layeroverride
+    override:
+      - story_flag: 951 # Raising Goddess Sword in Goddess Statue
+        night: 2
+        layer: 0
+      - story_flag: -1
+        night: 2
+        layer: 1
+  - name: Fi text after pulling Goddess Sword
     type: objadd
-    layer: 0
     room: 0
-    objtype: OBJS
+    layer: 1
+    id: 0xFC00
+    objtype: OBJ
     object:
-      params1: 0xFFFFFFF3
-      params2: 0xFF5FFFFF # goddess sword upgrade storyflag
+      params1: 0xFFFFFF01 # type 1, no fi, flag sets automatically
+      params2: 0xFF1FFFFF
       posx: 0
-      posy: 42.820003509521484
-      posz: 75
-      anglex: 0xFFFF
-      angley: 0
-      anglez: 0xBE02 # chest flag 95, item 0, will be filled in later
-      id: 0xFC10
-      name: TBox
-  - name: Emerald Tablet chest
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJS
-    object:
-      params1: 0xFFFFFFF3
-      params2: 0xFF5FFFFF
-      posx: 0
-      posy: 87.5
-      posz: -1130
-      anglex: 0xFFFF
-      angley: 0
-      anglez: 0xBC02 # chest flag 94, item 2
-      id: 0xFC10
-      name: TBox
-  - name: Delete SwrdSt
-    type: objdelete
+      posy: 0 # doesn't matter, is triggered anywhere
+      posz: 0
+      angley: 0xFFFF
+      anglez: 10750 # entrypoint 107_50
+      id: 0xFC00
+      name: NpcTke
+      trigstoryfid: 951 # Raised Goddess Sword in Goddess Statue
+      untrigscenefid: 25 # Scene flag 25 - Skyward Strike on Tablet Pedestal (unused in rando)
+  - name: Move Sword Pedestal to layer 1
+    type: objmove
     id: 0xFC05
     layer: 0
+    destlayer: 1
     room: 0
     objtype: OBJ
+  - name: Remove cutscene trigger on layer 1
+    type: objdelete
+    id: 0xFC0E
+    layer: 1
+    room: 0
+    objtype: STAG
   - name: Delete Crest
     type: objdelete
     id: 0xFC02

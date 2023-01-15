@@ -67,8 +67,8 @@ Upper Skyloft:
     exits:
       Exit: Nothing
     locations:
-      First Chest in Goddess Statue: Nothing
-      Second Chest in Goddess Statue: Nothing
+      First Goddess Sword Item in Goddess Statue: Nothing
+      Second Goddess Sword Item in Goddess Statue: Nothing
 
 Central Skyloft:
   hint-region: Central Skyloft
