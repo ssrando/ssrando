@@ -464,6 +464,14 @@
   cosmetic: true
   help: Swaps Link's casual clothes for the hero's tunic and vice versa
   ui: option_tunic_swap
+- name: Starry Skies
+  command: starry-skies
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: Makes stars appear in the sky - even during the daytime.
+  ui: option_starry_skies
 - name: Force Sword Dungeon Reward
   command: sword-dungeon-reward
   type: singlechoice

@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.1
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -170,6 +170,11 @@ class Ui_MainWindow(object):
         self.option_tunic_swap.setObjectName(u"option_tunic_swap")
 
         self.vlay_cosmetics.addWidget(self.option_tunic_swap)
+
+        self.option_starry_skies = QCheckBox(self.verticalLayoutWidget_8)
+        self.option_starry_skies.setObjectName(u"option_starry_skies")
+
+        self.vlay_cosmetics.addWidget(self.option_starry_skies)
 
         self.option_no_enemy_music = QCheckBox(self.verticalLayoutWidget_8)
         self.option_no_enemy_music.setObjectName(u"option_no_enemy_music")
@@ -401,7 +406,7 @@ class Ui_MainWindow(object):
         self.box_dungeons.setGeometry(QRect(820, 0, 191, 501))
         self.verticalLayoutWidget_7 = QWidget(self.box_dungeons)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 178, 471))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 179, 471))
         self.vlay_dungeons = QVBoxLayout(self.verticalLayoutWidget_7)
         self.vlay_dungeons.setObjectName(u"vlay_dungeons")
         self.vlay_dungeons.setContentsMargins(0, 0, 0, 0)
@@ -637,7 +642,7 @@ class Ui_MainWindow(object):
         self.box_convenience_tweaks.setGeometry(QRect(10, 0, 191, 251))
         self.verticalLayoutWidget_19 = QWidget(self.box_convenience_tweaks)
         self.verticalLayoutWidget_19.setObjectName(u"verticalLayoutWidget_19")
-        self.verticalLayoutWidget_19.setGeometry(QRect(10, 20, 176, 221))
+        self.verticalLayoutWidget_19.setGeometry(QRect(10, 20, 177, 221))
         self.vlay_convenience_tweaks = QVBoxLayout(self.verticalLayoutWidget_19)
         self.vlay_convenience_tweaks.setObjectName(u"vlay_convenience_tweaks")
         self.vlay_convenience_tweaks.setContentsMargins(0, 0, 0, 0)
@@ -673,7 +678,7 @@ class Ui_MainWindow(object):
         self.box_item_pool.setGeometry(QRect(410, 0, 191, 251))
         self.verticalLayoutWidget_20 = QWidget(self.box_item_pool)
         self.verticalLayoutWidget_20.setObjectName(u"verticalLayoutWidget_20")
-        self.verticalLayoutWidget_20.setGeometry(QRect(10, 20, 171, 221))
+        self.verticalLayoutWidget_20.setGeometry(QRect(10, 20, 172, 221))
         self.vlay_item_pool = QVBoxLayout(self.verticalLayoutWidget_20)
         self.vlay_item_pool.setObjectName(u"vlay_item_pool")
         self.vlay_item_pool.setContentsMargins(0, 0, 0, 0)
@@ -734,7 +739,7 @@ class Ui_MainWindow(object):
         self.box_heromode_changes.setGeometry(QRect(810, 0, 191, 251))
         self.verticalLayoutWidget_21 = QWidget(self.box_heromode_changes)
         self.verticalLayoutWidget_21.setObjectName(u"verticalLayoutWidget_21")
-        self.verticalLayoutWidget_21.setGeometry(QRect(10, 20, 180, 221))
+        self.verticalLayoutWidget_21.setGeometry(QRect(10, 20, 183, 221))
         self.vlay_heromode_changes = QVBoxLayout(self.verticalLayoutWidget_21)
         self.vlay_heromode_changes.setObjectName(u"vlay_heromode_changes")
         self.vlay_heromode_changes.setContentsMargins(0, 0, 0, 0)
@@ -1216,7 +1221,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1243,6 +1248,7 @@ class Ui_MainWindow(object):
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.box_cosmetics.setTitle(QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
+        self.option_starry_skies.setText(QCoreApplication.translate("MainWindow", u"Starry Skies", None))
         self.option_no_enemy_music.setText(QCoreApplication.translate("MainWindow", u"Remove Enemy Music", None))
         self.box_music_rando.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
