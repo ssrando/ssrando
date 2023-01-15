@@ -1758,21 +1758,23 @@ F100: # Faron main area
   - name: Patch Main floria entrance
     onlyif: Option "open-lake-floria" Is "Floria Gates"
     type: objpatch
-    id: 0xFDB4
+    id: 0xFDB6
     layer: 0
     room: 0
     objtype: STAG
     object:
       trigscenefid: 50
+      trigstoryfid: -1
   - name: Patch Main floria entrance
     onlyif: Option "open-lake-floria" Is "Talk to Yerbal"
     type: objpatch
-    id: 0xFDB4
+    id: 0xFDB6
     layer: 0
     room: 0
     objtype: STAG
     object:
       trigscenefid: 50
+      trigstoryfid: -1
   - name: Patch log push floria entrance
     onlyif: Option "open-lake-floria" Is "Floria Gates"
     type: objpatch
