@@ -472,6 +472,16 @@
   cosmetic: true
   help: Makes stars appear in the sky - even during the daytime.
   ui: option_starry_skies
+- name: Number of stars in the sky
+  command: star-count
+  type: int
+  default: 700
+  permalink: false
+  cosmetic: true
+  help: "Controls the number of stars in the sky.
+         WARNING: Values bigger than 700 (default) WILL lag when played on the Wii Console.
+         DOUBLE WARNING: Emulator isn't immune from the lag either. Seriously, use at your own risk."
+  ui: option_star_count
 - name: Force Sword Dungeon Reward
   command: sword-dungeon-reward
   type: singlechoice
