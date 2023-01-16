@@ -1303,12 +1303,12 @@ class GamePatcher:
 
         # Star count patch requires input, replacing one line.
         # cmpwi r15, (count)
-        self.all_asm_patches["main.dol"][0x801ab870] = {
+        self.all_asm_patches["main.dol"][0x801AB870] = {
             "Data": [
-                0x2c,
-                0x0f,
+                0x2C,
+                0x0F,
                 self.placement_file.options["star-count"] >> 8,
-                self.placement_file.options["star-count"] & 0xff,
+                self.placement_file.options["star-count"] & 0xFF,
             ]
         }
 
