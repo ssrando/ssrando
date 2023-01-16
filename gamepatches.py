@@ -1286,6 +1286,8 @@ class GamePatcher:
         else:
             self.add_asm_patch("heart_pickups_heromode")
 
+        self.add_asm_patch("lightning_strike")
+
         # Damage Multiplier patch requires input, replacing one line
         # muli r27, r27, (multiplier)
         self.all_asm_patches["main.dol"][0x801E3464] = {
