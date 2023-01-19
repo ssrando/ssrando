@@ -37,15 +37,19 @@ class Hints:
             if does_hint:
                 self.hinted_checks.append(check)
 
-            status: Enum
-            if item in self.logic.get_sots_items():
-                status = STATUS.required
-            elif item in self.logic.get_useful_items():
-                status = STATUS.useful
-            else:
-                status = STATUS.useless
+            hintmode = hintmodes[STATUS.required]
+            if (
+                hintmode == hintmodes[STATUS.useful]
+                or item not in self.logic.get_sots_items()
+            ):
+                hintmode = hintmodes[STATUS.useful]
+            if (
+                hintmode == hintmodes[STATUS.useless]
+                or item not in self.logic.get_useful_items()
+            ):
+                hintmode = hintmodes[STATUS.useless]
 
-            self.hints[hintname] = hintcls(hintmodes[status], hintname, item)
+            self.hints[hintname] = hintcls(hintmode, hintname, item)
 
     def do_non_hintstone_hints(self):
         self.hinted_checks: List[EIN] = []
@@ -148,6 +152,8 @@ class Hints:
                 raise self.useroutput.GenerationFailed(
                     f"Could not find a valid location to place {hintname}. This may be because the settings are too restrictive. Try randomizing a new seed."
                 )
+
+        self.logic.requirements = self.logic.backup_requirements
 
     def place_hint(self, hintname: EXTENDED_ITEM_NAME, depth=0) -> bool:
         hint_bit = EXTENDED_ITEM[hintname]

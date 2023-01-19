@@ -81,7 +81,7 @@ class InvalidHintDistribution(Exception):
 
 class HintDistribution:
     def __init__(self):
-        self.hints_per_stone = 0
+        self.base_hints_per_stone = 0
         self.banned_stones = []
         self.added_locations = []
         self.removed_locations = []
@@ -92,13 +92,20 @@ class HintDistribution:
         self.dungeon_barren_limit = 0
         self.distribution = {}
         self.goal_index = 0
-        self.barren_overworld_zones = []
         self.placed_ow_barren = 0
-        self.barren_dungeons = []
         self.placed_dungeon_barren = 0
         self.prev_barren_type = None
         self.barren_hinted_areas = set()
         self.counts_by_type = defaultdict(int)
+        self._required_boss_keys = None
+        self._sots_locations = None
+        self._goals = None
+        self._goal_locations = None
+        self._hintable_items = None
+        self._barren_regions = None
+        self._barren_dungeons = None
+        self._barren_overworld_zones = None
+        self._junk_hints = None
 
         self.hintfuncs = {
             "always": self._create_always_hint,
@@ -119,17 +126,16 @@ class HintDistribution:
         self._read_from_json(json.loads(s))
 
     def _read_from_json(self, jsn):
-        self.hints_per_stone = jsn["hints_per_stone"]
+        self.base_hints_per_stone = jsn["hints_per_stone"]
         # Limit number of hints per stone as there appears to be ~600 character limit to the hintstone text.
-        if self.hints_per_stone >= 9:
+        if self.base_hints_per_stone > 8:
             raise ValueError(
                 "Selected hint distribution must have no more than 8 hints per stone. "
                 + "Having more than 8 risks hint text being cut off when shown in game."
             )
-        elif self.hints_per_stone <= 0:
+        elif self.base_hints_per_stone < 0:
             raise ValueError(
-                "Selected hint distribution must have at least 1 hint per stone. "
-                + "Instead, the 'Junk' hint distribution should be used if hints are not required."
+                "Selected hint distribution must have at least 0 hints per stone."
             )
         self.banned_stones = jsn["banned_stones"]
         self.added_locations = jsn["added_locations"]
@@ -163,7 +169,7 @@ class HintDistribution:
 
         self.banned_stones = list(map(areas.short_to_full, self.banned_stones))
         self.hints_per_stone = {
-            stone: 0 if stone in self.banned_stones else self.hints_per_stone
+            stone: 0 if stone in self.banned_stones else self.base_hints_per_stone
             for stone in self.areas.gossip_stones
         }
         self.nb_hints = sum(self.hints_per_stone.values())
@@ -188,59 +194,9 @@ class HintDistribution:
         self.rng.shuffle(self.always_hints)
         self.rng.shuffle(self.sometimes_hints)
 
-        # creates a list of boss keys for required dungeons
-        self.required_boss_keys = [
-            boss_key
-            for dungeon in self.logic.required_dungeons
-            for boss_key in BOSS_KEYS[dungeon]
-        ]
-        self.rng.shuffle(self.required_boss_keys)
-
-        # populate our internal list copies for later manipulation
-        self.sots_locations = list(self.logic.get_sots_locations())
-        self.rng.shuffle(self.sots_locations)
-
-        self.goals = [
-            DUNGEON_GOALS[dungeon] for dungeon in self.logic.required_dungeons
-        ]
-        # shuffle the goal names that will be chosen in sequence when goal hints are placed to try to ensure one is placed for each goal
-        self.rng.shuffle(self.goals)
-        # create corresponding list of shuffled goal items
-
-        self.goal_locations = []
-        for goal in self.goals:
-            check = areas.short_to_full(GOAL_CHECKS[goal])
-            goal_locations = list(self.logic.get_sots_locations(EXTENDED_ITEM[check]))
-            self.rng.shuffle(goal_locations)
-            self.goal_locations.append(goal_locations)
-
-        self.hintable_items = list(HINTABLE_ITEMS)
-        for item in self.added_items:
-            self.hintable_items.extend([item["name"]] * item["amount"])
-        if SEA_CHART in self.logic.get_useful_items():
-            self.hintable_items.append(SEA_CHART)
         for item in self.removed_items:
             if (loc := self.logic.placement.items[item]) not in self.hinted_locations:
                 self.hinted_locations.append(loc)
-            if item in self.hintable_items:
-                self.hintable_items.remove(item)
-        self.rng.shuffle(self.hintable_items)
-
-        region_barren, nonprogress = self.logic.get_barren_regions()
-        for zone in region_barren:
-            if all(
-                loc in self.hinted_locations or loc in self.always_hints
-                for loc in self.logic.locations_by_hint_region(zone)
-            ):
-                continue
-
-            if zone in ALL_DUNGEONS:
-                self.barren_dungeons.append(zone)
-            else:
-                self.barren_overworld_zones.append(zone)
-
-        self.junk_hints = JUNK_TEXT.copy()
-        self.rng.shuffle(self.junk_hints)
 
         # for each fixed goal hint, place one for each required dungeon
         if "goal" in self.distribution.keys():
@@ -268,6 +224,101 @@ class HintDistribution:
         for hint_type in self.distribution.keys():
             self.weighted_types.append(hint_type)
             self.weights.append(self.distribution[hint_type]["weight"])
+
+    ### Delayed initialisation
+
+    @property
+    def required_boss_keys(self):
+        if self._required_boss_keys is None:
+            # creates a list of boss keys for required dungeons
+            self._required_boss_keys = [
+                boss_key
+                for dungeon in self.logic.required_dungeons
+                for boss_key in BOSS_KEYS[dungeon]
+            ]
+            self.rng.shuffle(self._required_boss_keys)
+        return self._required_boss_keys
+
+    @property
+    def sots_locations(self):
+        if self._sots_locations is None:
+            # populate our internal list copies for later manipulation
+            self._sots_locations = list(self.logic.get_sots_locations())
+            self.rng.shuffle(self._sots_locations)
+        return self._sots_locations
+
+    @property
+    def goals(self):
+        if self._goals is None:
+            self._goals = [
+                DUNGEON_GOALS[dungeon] for dungeon in self.logic.required_dungeons
+            ]
+            # shuffle the goal names that will be chosen in sequence when goal hints are placed to try to ensure one is placed for each goal
+            self.rng.shuffle(self._goals)
+        return self._goals
+
+    @property
+    def goal_locations(self):
+        if self._goal_locations is None:
+            # create corresponding list of shuffled goal items
+            self._goal_locations = []
+            for goal in self.goals:
+                check = self.areas.short_to_full(GOAL_CHECKS[goal])
+                goal_locations = list(
+                    self.logic.get_sots_locations(EXTENDED_ITEM[check])
+                )
+                self.rng.shuffle(goal_locations)
+                self._goal_locations.append(goal_locations)
+        return self._goal_locations
+
+    @property
+    def hintable_items(self):
+        if self._hintable_items is None:
+            self._hintable_items = list(HINTABLE_ITEMS)
+            for item in self.added_items:
+                self._hintable_items.extend([item["name"]] * item["amount"])
+            if SEA_CHART in self.logic.get_useful_items():
+                self._hintable_items.append(SEA_CHART)
+            self.rng.shuffle(self._hintable_items)
+        return self._hintable_items
+
+    @property
+    def barren_regions(self):
+        if self._barren_regions is None:
+            region_barren, nonprogress = self.logic.get_barren_regions()
+            self._barren_regions = [
+                zone
+                for zone in region_barren
+                if all(
+                    loc in self.hinted_locations or loc in self.always_hints
+                    for loc in self.logic.locations_by_hint_region(zone)
+                )
+            ]
+            self.rng.shuffle(self._barren_regions)
+        return self._barren_regions
+
+    @property
+    def barren_dungeons(self):
+        if self._barren_dungeons is None:
+            self._barren_dungeons = [
+                zone for zone in self.barren_regions if zone in ALL_DUNGEONS
+            ]
+        return self._barren_dungeons
+
+    @property
+    def barren_overworld_zones(self):
+        if self._barren_overworld_zones is None:
+            self._barren_overworld_zones = [
+                zone for zone in self.barren_regions if zone not in ALL_DUNGEONS
+            ]
+        return self._barren_overworld_zones
+
+    @property
+    def junk_hints(self):
+        if self._junk_hints is None:
+            self._junk_hints = JUNK_TEXT.copy()
+            self.rng.shuffle(self._junk_hints)
+        return self._junk_hints
 
     """
     Uses the distribution to calculate all the hints
