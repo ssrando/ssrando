@@ -446,6 +446,32 @@
     index: 520
     flow:
       next: -1
+  - name: Patch Water Scale item get when floria gates are open
+    onlyif: Option "open-lake-floria" Is "Open"
+    type: flowpatch
+    index: 500
+    flow:
+      next: Open Lake Floria Doors when getting Water Scale 1
+  - name: Open Lake Floria Doors when getting Water Scale 1
+    onlyif: Option "open-lake-floria" Is "Open"
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 50 # scene flag
+      param2: 2 # scene index (Faron Woods)
+      next: Open Lake Floria Doors when getting Water Scale 2
+      param3: 2
+  - name: Open Lake Floria Doors when getting Water Scale 2
+    onlyif: Option "open-lake-floria" Is "Open"
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 49 # scene flag
+      param2: 2 # scene index (Faron Woods)
+      next: -1
+      param3: 2
 004-Object:
   - name: Remove Heart piece hint from gossip stone
     type: flowpatch
