@@ -22,10 +22,9 @@
 - Added the ability to ban individual locations (by cjs07)
 - Removed the "Banned Types" option
 - Added options to control entry into Lake Floria
-  - Floria Gates: You are required to talk to Yerbal and draw on the floria door. The Early Lake Floria tricks cannot be performed to circumvent this
-  - Talk to Yerbal: You are required to talk to Yerbal and he will open the floria door. The Early Lake Floria tricks cannot be performed to circumvent this
-  - Vanilla: You are logically required to talk to Yerbal and draw on the floria door. The Early Lake Floria tricks can be performed and can also be made logically required
-  - Open: The floria door is open from the start of the game. You are not required to talk to Yerbal or draw on the floria door
+  - Talk to Yerbal: You are required to talk to Yerbal and he will open the floria door
+  - Vanilla: You are logically required to talk to Yerbal and draw on the floria door
+  - Open: The floria door is open when you get Water Scale. You are not required to talk to Yerbal or draw on the floria door
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
