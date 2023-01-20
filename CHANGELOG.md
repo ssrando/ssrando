@@ -195,7 +195,7 @@
     - Sealed Grounds - Zelda's Blessing
     - Sand Sea - Skipper's Retreat - Chest in Shack
     - Volcano Summit - Item behind Digging
-    - Faron Woods - Slingshot
+    - Faron Woods - Kikwi Elder's Reward
     - Sky - Beedle's Crystals
     - Sealed Grounds - Gorko's Goddess Wall Reward
   - The Sea Chart can now be hinted when Sandship is a required dungeon
