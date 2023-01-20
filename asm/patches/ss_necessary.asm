@@ -634,3 +634,9 @@ b try_end_pumpkin_archery
 .org 0xDAC
 bl check_activated_storyflag
 .close
+
+; Force Sword in pedestal
+.open "d_a_obj_seat_swordNP.rel"
+.org 0x10F4
+li r4, 951 ; story flag for raising sword
+.close
