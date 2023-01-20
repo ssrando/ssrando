@@ -3333,6 +3333,13 @@ F201_1: # Inside Volcano
       anglez: 37379 # >> 9 = chest flag 73
       id: 0xFC26
       name: TBox
+  - name: Patch loadzone to Fire Dragon's Lair
+    type: objpatch
+    index: 3
+    room: 0
+    objtype: SCEN
+    object:
+      layer: 2
 F201_2: # Boko Base Volcano Summit
   - name: True Master Sword Chest
     type: objadd
