@@ -459,7 +459,7 @@
       type: type3
       subType: 1
       param1: 50 # scene flag
-      param2: 2 # scene index (Faron Woods)
+      param2: 1 # scene index (Faron Woods)
       next: Open Lake Floria Doors when getting Water Scale 2
       param3: 2
   - name: Open Lake Floria Doors when getting Water Scale 2
@@ -469,7 +469,7 @@
       type: type3
       subType: 1
       param1: 49 # scene flag
-      param2: 2 # scene index (Faron Woods)
+      param2: 1 # scene index (Faron Woods)
       next: -1
       param3: 2
 004-Object:
