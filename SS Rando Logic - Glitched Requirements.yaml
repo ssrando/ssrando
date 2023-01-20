@@ -173,6 +173,9 @@ Can Unlock Combination Lock:
 Can Hit Timeshift Stone:
   Sword | Bomb Bag | Whip | Distance Activator
 
+Can bypass Boko Base Watch Tower:
+  Bow | Bomb Bag | Slingshot
+
 # Can defeat enemy
 
 Can Defeat Bokoblins:
@@ -1795,49 +1798,38 @@ Goddess Cube near FS Entrance:
 
 ## Boko Base
 
-#Can Access Boko Base:
+Can Access Boko Base:
+  Ruby Tablet
 
-#  ---
+Bokoblin Base - Plats' Gift:
+  Can Access Boko Base
 
-# Volcano
+Bokoblin Base - Chest near Bone Bridge:
+  Can Access Boko Base & Mogma Mitts
 
-#Boko Base - Mogma Mitts Event:
+Bokoblin Base - Chest on Cliff:
+  Can Access Boko Base & Mogma Mitts & Gust Bellows
 
-#  Can Access Boko Base?
+Bokoblin Base - Chest near Drawbridge:
+  Can Access Boko Base & Mogma Mitts & (Clawshots | Can bypass Boko Base Watch Tower)
 
-#Boko Base - Clawshots:
+Bokoblin Base - Chest East of Earth Temple Entrance:
+  Can Access Boko Base & Mogma Mitts & Clawshots & (Bomb Bag | (Can bypass Boko Base Watch Tower & Whip))
 
-#  Can Access Boko Base & Gust Bellows & (Mogma Mitts | Slingshot | Bow | Bomb Bag)?
+Bokoblin Base - Chest West of Earth Temple Entrance:
+  Can Access Boko Base & Mogma Mitts & Clawshots & (Bomb Bag | (Can bypass Boko Base Watch Tower & Whip))
 
-#Boko Base - Gust Bellows:
+Bokoblin Base - First Chest in Volcano Summit:
+  Can Access Boko Base & Mogma Mitts & Clawshots & Bomb Bag & Fireshield Earrings
 
-#  Can Access Boko Base?
+Bokoblin Base - Raised Chest in Volcano Summit:
+  Can Access Boko Base & Mogma Mitts & Clawshots & Bomb Bag & Fireshield Earrings
 
-#Boko Base - Bombs:
+Bokoblin Base - Chest in Volcano Summit Alcove:
+  Can Access Boko Base & Mogma Mitts & Clawshots & Bomb Bag & Fireshield Earrings & Sword
 
-#  Can Access Boko Base & Clawshots & ((Hook Beetle & Sword) | Bomb Bag | ((Bow | Slingshot) & Whip))?
-
-#Boko Base - Slingshot:
-
-#  Can Access Boko Base & Clawshots & (Hook Beetle | Whip | Bomb Bag)?
-
-#Boko Base - Whip:
-
-#  Can Access Boko Base & Clawshots?
-
-# Summit
-
-#Boko Base - Small Chest in front of Sword:
-
-#  Can Access Boko Base & Clawshots & Bomb Bag?
-
-#Boko Base - Pouch Chest:
-
-#  Can Access Boko Base & Clawshots & Bomb Bag?
-
-#Fire Dragon Room - Fire Dragon's Reward:
-
-#  Can Access Boko Base & Clawshots & Bomb Bag & (Beetle | Bow)?
+Bokoblin Base - Fire Dragon's Reward:
+  Can Access Boko Base & Mogma Mitts & Clawshots & Bomb Bag & Fireshield Earrings & (Bow | Beetle)
 
 ### Lanayru
 
