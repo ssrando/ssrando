@@ -25,6 +25,7 @@ from musicrando import music_rando
 from logic.bool_expression import check_static_option_req
 from logic.constants import *
 from logic.placement_file import PlacementFile
+from yaml_files import yaml_load
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -987,8 +988,7 @@ RANDO_PATCH_FUNCS = {
 
 
 def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing):
-    with (RANDO_ROOT_PATH / "items.yaml").open() as f:
-        items = yaml.safe_load(f)
+    items = yaml_load(RANDO_ROOT_PATH / "items.yaml")
     by_item_name = dict((x["name"], x) for x in items)
 
     # (stage, room) -> (object name, layer, id?, itemid)
@@ -1193,10 +1193,8 @@ class GamePatcher:
         self.eventpatches[eventfile].append(eventpatch)
 
     def load_base_patches(self):
-        with (RANDO_ROOT_PATH / "patches.yaml").open() as f:
-            self.patches = yaml.safe_load(f)
-        with (RANDO_ROOT_PATH / "eventpatches.yaml").open() as f:
-            self.eventpatches = yaml.safe_load(f)
+        self.patches = yaml_load(RANDO_ROOT_PATH / "patches.yaml")
+        self.eventpatches = yaml_load(RANDO_ROOT_PATH / "eventpatches.yaml")
 
         filtered_storyflags = []
         for storyflag in self.patches["global"]["startstoryflags"]:
@@ -1486,8 +1484,7 @@ class GamePatcher:
             )
 
     def shopsanity_patches(self):
-        with (Path(__file__).parent / "beedle_texts.yaml").open("r") as f:
-            beedle_texts = yaml.safe_load(f)
+        beedle_texts = yaml_load(Path(__file__).parent / "beedle_texts.yaml")
         # print(beedle_texts)
         for location in BEEDLE_TEXT_PATCHES:
             normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[
@@ -1550,8 +1547,7 @@ class GamePatcher:
     def do_build_arc_cache(self):
         self.progress_callback("building arc cache...")
 
-        with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
-            extracts = yaml.safe_load(f)
+        extracts = yaml_load(RANDO_ROOT_PATH / "extracts.yaml")
         self.patcher.create_oarc_cache(extracts)
 
     def add_startitem_patches(self):
