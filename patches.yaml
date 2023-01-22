@@ -1701,6 +1701,15 @@ F100: # Faron main area
     destlayer: 0
     room: 0
     objtype: STAG
+  - name: Patch Main floria entrance
+    onlyif: Option "open-lake-floria" Is "Open"
+    type: objpatch
+    id: 0xFDB6
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      trigstoryfid: 206
   - name: extra Arrow Pot next to Entrance Statue
     type: objadd
     layer: 0
