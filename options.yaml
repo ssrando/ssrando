@@ -591,7 +591,7 @@
   help: "Choose how to access Lake Floria.
          Vanilla: Logically requires you to talk to Yerbal and draw on the Floria Gates to enter Lake Floria.
          Talk to Yerbal: Logically requires you to talk to Yerbal to enter Lake Floria.
-         Open: The Floria Gates are opened when you obtain the Water Scale."
+         Open: The Floria Gates are opened from the start of the game." # when you obtain the Water Scale."
   ui: option_open_lake_floria
 - name: Filling Algorithm
   command: fill-algorithm
