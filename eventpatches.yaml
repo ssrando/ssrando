@@ -446,12 +446,12 @@
     index: 520
     flow:
       next: -1
-  - name: Patch Water Scale item get when floria gates are open
-    onlyif: Option "open-lake-floria" Is "Open"
-    type: flowpatch
-    index: 500
-    flow:
-      next: Open Lake Floria Doors when getting Water Scale 1
+  # - name: Patch Water Scale item get when floria gates are open
+  #   onlyif: Option "open-lake-floria" Is "Open"
+  #   type: flowpatch
+  #   index: 500
+  #   flow:
+  #     next: Open Lake Floria Doors when getting Water Scale 1
   # - name: Open Lake Floria Doors when getting Water Scale 1
   #   onlyif: Option "open-lake-floria" Is "Open"
   #   type: flowadd
