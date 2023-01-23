@@ -28,6 +28,7 @@
   - This works with both the stars in the daytime sky (if the "Starry Skies" cosmetic option is enabled) and the usual stars in the nighttime sky
   - The default value is 700 and matches how things worked before
   - Values larger than 700 will decrease the performance of the game
+- Added cosmetic option to have a lightning skyward strike effects. (by Zeldex)
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories

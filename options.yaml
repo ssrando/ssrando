@@ -464,6 +464,14 @@
   cosmetic: true
   help: Swaps Link's casual clothes for the hero's tunic and vice versa
   ui: option_tunic_swap
+- name: Lightning Skyward Strike
+  command: lightning-skyward-strike
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: When enabled, all Skyward Strikes use the lightning effect from the Demise fight
+  ui: option_lightning_skyward_strike
 - name: Starry Skies
   command: starry-skies
   type: boolean

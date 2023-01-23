@@ -1260,6 +1260,8 @@ class GamePatcher:
             self.add_asm_patch("starry_skies")
         if self.placement_file.options["star-count"] == 0:
             self.add_asm_patch("starless-skies")
+        if self.placement_file.options["lightning-skyward-strike"]:
+            self.add_asm_patch("lightning_strike")
         if self.placement_file.options["chest-dowsing"] != "Vanilla":
             self.add_asm_patch("chest_dowsing")
         if self.placement_file.options["dungeon-dowsing"]:
@@ -1295,8 +1297,6 @@ class GamePatcher:
             self.add_asm_patch("heart_pickups_normalmode")
         else:
             self.add_asm_patch("heart_pickups_heromode")
-
-        self.add_asm_patch("lightning_strike")
 
         # Damage Multiplier patch requires input, replacing one line
         # muli r27, r27, (multiplier)
