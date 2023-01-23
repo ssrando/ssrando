@@ -1256,6 +1256,10 @@ class GamePatcher:
             self.add_asm_patch("fix_bit_crashes")
         if self.placement_file.options["tunic-swap"]:
             self.add_asm_patch("tunic_swap")
+        if self.placement_file.options["starry-skies"]:
+            self.add_asm_patch("starry_skies")
+        if self.placement_file.options["star-count"] == 0:
+            self.add_asm_patch("starless-skies")
         if self.placement_file.options["chest-dowsing"] != "Vanilla":
             self.add_asm_patch("chest_dowsing")
         if self.placement_file.options["dungeon-dowsing"]:
@@ -1300,6 +1304,17 @@ class GamePatcher:
                 0x7B,
                 0x00,
                 self.placement_file.options["damage-multiplier"],
+            ]
+        }
+
+        # Star count patch requires input, replacing one line.
+        # cmpwi r15, (count)
+        self.all_asm_patches["main.dol"][0x801AB870] = {
+            "Data": [
+                0x2C,
+                0x0F,
+                self.placement_file.options["star-count"] >> 8,
+                self.placement_file.options["star-count"] & 0xFF,
             ]
         }
 

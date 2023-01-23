@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.1
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -162,7 +162,7 @@ class Ui_MainWindow(object):
         self.box_cosmetics.setGeometry(QRect(410, 130, 181, 131))
         self.verticalLayoutWidget_8 = QWidget(self.box_cosmetics)
         self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 161, 101))
+        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 161, 109))
         self.vlay_cosmetics = QVBoxLayout(self.verticalLayoutWidget_8)
         self.vlay_cosmetics.setObjectName(u"vlay_cosmetics")
         self.vlay_cosmetics.setContentsMargins(0, 0, 0, 0)
@@ -170,6 +170,39 @@ class Ui_MainWindow(object):
         self.option_tunic_swap.setObjectName(u"option_tunic_swap")
 
         self.vlay_cosmetics.addWidget(self.option_tunic_swap)
+
+        self.option_starry_skies = QCheckBox(self.verticalLayoutWidget_8)
+        self.option_starry_skies.setObjectName(u"option_starry_skies")
+
+        self.vlay_cosmetics.addWidget(self.option_starry_skies)
+
+        self.hlay_star_count = QHBoxLayout()
+        self.hlay_star_count.setObjectName(u"hlay_star_count")
+        self.label_for_option_star_count = QLabel(self.verticalLayoutWidget_8)
+        self.label_for_option_star_count.setObjectName(u"label_for_option_star_count")
+        sizePolicy2 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.label_for_option_star_count.sizePolicy().hasHeightForWidth())
+        self.label_for_option_star_count.setSizePolicy(sizePolicy2)
+
+        self.hlay_star_count.addWidget(self.label_for_option_star_count)
+
+        self.option_star_count = QSpinBox(self.verticalLayoutWidget_8)
+        self.option_star_count.setObjectName(u"option_star_count")
+        self.option_star_count.setEnabled(True)
+        sizePolicy3 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.option_star_count.sizePolicy().hasHeightForWidth())
+        self.option_star_count.setSizePolicy(sizePolicy3)
+        self.option_star_count.setMaximum(32767)
+        self.option_star_count.setSingleStep(100)
+
+        self.hlay_star_count.addWidget(self.option_star_count)
+
+
+        self.vlay_cosmetics.addLayout(self.hlay_star_count)
 
         self.option_no_enemy_music = QCheckBox(self.verticalLayoutWidget_8)
         self.option_no_enemy_music.setObjectName(u"option_no_enemy_music")
@@ -324,11 +357,11 @@ class Ui_MainWindow(object):
         self.option_required_dungeon_count = QSpinBox(self.verticalLayoutWidget)
         self.option_required_dungeon_count.setObjectName(u"option_required_dungeon_count")
         self.option_required_dungeon_count.setEnabled(True)
-        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.option_required_dungeon_count.sizePolicy().hasHeightForWidth())
-        self.option_required_dungeon_count.setSizePolicy(sizePolicy2)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.option_required_dungeon_count.sizePolicy().hasHeightForWidth())
+        self.option_required_dungeon_count.setSizePolicy(sizePolicy4)
         self.option_required_dungeon_count.setMaximumSize(QSize(41, 16777215))
 
         self.hlay_req_dungeons.addWidget(self.option_required_dungeon_count)
@@ -401,7 +434,7 @@ class Ui_MainWindow(object):
         self.box_dungeons.setGeometry(QRect(820, 0, 191, 501))
         self.verticalLayoutWidget_7 = QWidget(self.box_dungeons)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 178, 471))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 179, 471))
         self.vlay_dungeons = QVBoxLayout(self.verticalLayoutWidget_7)
         self.vlay_dungeons.setObjectName(u"vlay_dungeons")
         self.vlay_dungeons.setContentsMargins(0, 0, 0, 0)
@@ -637,7 +670,7 @@ class Ui_MainWindow(object):
         self.box_convenience_tweaks.setGeometry(QRect(10, 0, 191, 251))
         self.verticalLayoutWidget_19 = QWidget(self.box_convenience_tweaks)
         self.verticalLayoutWidget_19.setObjectName(u"verticalLayoutWidget_19")
-        self.verticalLayoutWidget_19.setGeometry(QRect(10, 20, 176, 221))
+        self.verticalLayoutWidget_19.setGeometry(QRect(10, 20, 177, 221))
         self.vlay_convenience_tweaks = QVBoxLayout(self.verticalLayoutWidget_19)
         self.vlay_convenience_tweaks.setObjectName(u"vlay_convenience_tweaks")
         self.vlay_convenience_tweaks.setContentsMargins(0, 0, 0, 0)
@@ -673,7 +706,7 @@ class Ui_MainWindow(object):
         self.box_item_pool.setGeometry(QRect(410, 0, 191, 251))
         self.verticalLayoutWidget_20 = QWidget(self.box_item_pool)
         self.verticalLayoutWidget_20.setObjectName(u"verticalLayoutWidget_20")
-        self.verticalLayoutWidget_20.setGeometry(QRect(10, 20, 171, 221))
+        self.verticalLayoutWidget_20.setGeometry(QRect(10, 20, 172, 221))
         self.vlay_item_pool = QVBoxLayout(self.verticalLayoutWidget_20)
         self.vlay_item_pool.setObjectName(u"vlay_item_pool")
         self.vlay_item_pool.setContentsMargins(0, 0, 0, 0)
@@ -734,7 +767,7 @@ class Ui_MainWindow(object):
         self.box_heromode_changes.setGeometry(QRect(810, 0, 191, 251))
         self.verticalLayoutWidget_21 = QWidget(self.box_heromode_changes)
         self.verticalLayoutWidget_21.setObjectName(u"verticalLayoutWidget_21")
-        self.verticalLayoutWidget_21.setGeometry(QRect(10, 20, 180, 221))
+        self.verticalLayoutWidget_21.setGeometry(QRect(10, 20, 183, 221))
         self.vlay_heromode_changes = QVBoxLayout(self.verticalLayoutWidget_21)
         self.vlay_heromode_changes.setObjectName(u"vlay_heromode_changes")
         self.vlay_heromode_changes.setContentsMargins(0, 0, 0, 0)
@@ -1002,11 +1035,11 @@ class Ui_MainWindow(object):
 
         self.randomized_items = QListView(self.verticalLayoutWidget_201)
         self.randomized_items.setObjectName(u"randomized_items")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.randomized_items.sizePolicy().hasHeightForWidth())
-        self.randomized_items.setSizePolicy(sizePolicy3)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.randomized_items.sizePolicy().hasHeightForWidth())
+        self.randomized_items.setSizePolicy(sizePolicy5)
 
         self.vlay_randomized_items_section.addWidget(self.randomized_items)
 
@@ -1022,18 +1055,18 @@ class Ui_MainWindow(object):
 
         self.randomize_item = QPushButton(self.verticalLayoutWidget_201)
         self.randomize_item.setObjectName(u"randomize_item")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.randomize_item.sizePolicy().hasHeightForWidth())
-        self.randomize_item.setSizePolicy(sizePolicy4)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.randomize_item.sizePolicy().hasHeightForWidth())
+        self.randomize_item.setSizePolicy(sizePolicy6)
 
         self.vlay_starting_items_controls.addWidget(self.randomize_item)
 
         self.start_with_item = QPushButton(self.verticalLayoutWidget_201)
         self.start_with_item.setObjectName(u"start_with_item")
-        sizePolicy4.setHeightForWidth(self.start_with_item.sizePolicy().hasHeightForWidth())
-        self.start_with_item.setSizePolicy(sizePolicy4)
+        sizePolicy6.setHeightForWidth(self.start_with_item.sizePolicy().hasHeightForWidth())
+        self.start_with_item.setSizePolicy(sizePolicy6)
 
         self.vlay_starting_items_controls.addWidget(self.start_with_item)
 
@@ -1053,8 +1086,8 @@ class Ui_MainWindow(object):
 
         self.starting_items = QListView(self.verticalLayoutWidget_201)
         self.starting_items.setObjectName(u"starting_items")
-        sizePolicy3.setHeightForWidth(self.starting_items.sizePolicy().hasHeightForWidth())
-        self.starting_items.setSizePolicy(sizePolicy3)
+        sizePolicy5.setHeightForWidth(self.starting_items.sizePolicy().hasHeightForWidth())
+        self.starting_items.setSizePolicy(sizePolicy5)
 
         self.vlay_starting_items_section.addWidget(self.starting_items)
 
@@ -1091,8 +1124,8 @@ class Ui_MainWindow(object):
 
         self.option_random_starting_item = QCheckBox(self.verticalLayoutWidget_201)
         self.option_random_starting_item.setObjectName(u"option_random_starting_item")
-        sizePolicy2.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
-        self.option_random_starting_item.setSizePolicy(sizePolicy2)
+        sizePolicy4.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
+        self.option_random_starting_item.setSizePolicy(sizePolicy4)
 
         self.hlay_starting_items_misc_options.addWidget(self.option_random_starting_item)
 
@@ -1100,18 +1133,18 @@ class Ui_MainWindow(object):
         self.hlay_heart_containters.setObjectName(u"hlay_heart_containters")
         self.label_for_option_starting_heart_containers = QLabel(self.verticalLayoutWidget_201)
         self.label_for_option_starting_heart_containers.setObjectName(u"label_for_option_starting_heart_containers")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.label_for_option_starting_heart_containers.sizePolicy().hasHeightForWidth())
-        self.label_for_option_starting_heart_containers.setSizePolicy(sizePolicy5)
+        sizePolicy7 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy7.setHorizontalStretch(0)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.label_for_option_starting_heart_containers.sizePolicy().hasHeightForWidth())
+        self.label_for_option_starting_heart_containers.setSizePolicy(sizePolicy7)
 
         self.hlay_heart_containters.addWidget(self.label_for_option_starting_heart_containers)
 
         self.option_starting_heart_containers = QSpinBox(self.verticalLayoutWidget_201)
         self.option_starting_heart_containers.setObjectName(u"option_starting_heart_containers")
-        sizePolicy2.setHeightForWidth(self.option_starting_heart_containers.sizePolicy().hasHeightForWidth())
-        self.option_starting_heart_containers.setSizePolicy(sizePolicy2)
+        sizePolicy4.setHeightForWidth(self.option_starting_heart_containers.sizePolicy().hasHeightForWidth())
+        self.option_starting_heart_containers.setSizePolicy(sizePolicy4)
         self.option_starting_heart_containers.setMaximumSize(QSize(41, 16777215))
 
         self.hlay_heart_containters.addWidget(self.option_starting_heart_containers)
@@ -1123,15 +1156,15 @@ class Ui_MainWindow(object):
         self.hlay_heart_pieces.setObjectName(u"hlay_heart_pieces")
         self.label_for_option_starting_heart_pieces = QLabel(self.verticalLayoutWidget_201)
         self.label_for_option_starting_heart_pieces.setObjectName(u"label_for_option_starting_heart_pieces")
-        sizePolicy5.setHeightForWidth(self.label_for_option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
-        self.label_for_option_starting_heart_pieces.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.label_for_option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
+        self.label_for_option_starting_heart_pieces.setSizePolicy(sizePolicy7)
 
         self.hlay_heart_pieces.addWidget(self.label_for_option_starting_heart_pieces)
 
         self.option_starting_heart_pieces = QSpinBox(self.verticalLayoutWidget_201)
         self.option_starting_heart_pieces.setObjectName(u"option_starting_heart_pieces")
-        sizePolicy2.setHeightForWidth(self.option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
-        self.option_starting_heart_pieces.setSizePolicy(sizePolicy2)
+        sizePolicy4.setHeightForWidth(self.option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
+        self.option_starting_heart_pieces.setSizePolicy(sizePolicy4)
         self.option_starting_heart_pieces.setMaximumSize(QSize(41, 16777215))
 
         self.hlay_heart_pieces.addWidget(self.option_starting_heart_pieces)
@@ -1216,7 +1249,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1243,6 +1276,8 @@ class Ui_MainWindow(object):
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.box_cosmetics.setTitle(QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
+        self.option_starry_skies.setText(QCoreApplication.translate("MainWindow", u"Starry Skies", None))
+        self.label_for_option_star_count.setText(QCoreApplication.translate("MainWindow", u"Number of stars", None))
         self.option_no_enemy_music.setText(QCoreApplication.translate("MainWindow", u"Remove Enemy Music", None))
         self.box_music_rando.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
