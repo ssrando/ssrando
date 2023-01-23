@@ -1032,6 +1032,11 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                             stageoarcs[(stage, layer)].add(o)
                     else:
                         stageoarcs[(stage, layer)].add(oarc)
+                else:
+                    # add dummy to force patching this stage
+                    # otherwise it could lead to an increased stage size
+                    # which will lead to a crash
+                    stageoarcs[(stage, layer)].add("dummy")
                 stagepatchv2[(stage, room)].append(
                     (objname, layer, objid, item["id"], chest_dowsing[checkname])
                 )
@@ -1049,6 +1054,9 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                             stageoarcs[(stage, layer)].add(o)
                     else:
                         stageoarcs[(stage, layer)].add(oarc)
+                else:
+                    # see above
+                    stageoarcs[(stage, layer)].add("dummy")
             elif shop_smpl_match:
                 index = int(shop_smpl_match.group("index"))
                 # TODO: super fix this, add all models/arcs to items.yaml

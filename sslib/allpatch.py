@@ -169,6 +169,7 @@ class AllPatcher:
                 / f"{stage}_stg_l{layer}.arc.LZ"
             )
             modified = False
+            should_be_copied = False
             # remove some arcs if necessary
             remove_arcs = set(self.stage_oarc_delete.get((stage, layer), []))
             # add additional arcs if needed
@@ -179,8 +180,8 @@ class AllPatcher:
                 stageu8 = U8File.parse_u8(BytesIO(stagedata))
                 # remove arcs that are already added on layer 0
                 if layer != 0:
-                    additional_arcs = additional_arcs - set(
-                        self.stage_oarc_add.get((stage, 0), [])
+                    additional_arcs = additional_arcs - (
+                        set(self.stage_oarc_add.get((stage, 0), [])) - set(("dummy",))
                     )
                 remove_arcs = remove_arcs - additional_arcs
                 for arc in remove_arcs:
@@ -188,6 +189,10 @@ class AllPatcher:
                     modified = True
                 patched_arcs = set()
                 for arc in additional_arcs:
+                    if arc == "dummy":
+                        # dummy arcs inserted to make sure this layer gets patched
+                        should_be_copied = True
+                        continue
                     arcname = f"{arc}.arc"
                     oarc_path = self.arc_replacements.get(arcname) or (
                         self.oarc_cache_path / arcname
@@ -239,7 +244,7 @@ class AllPatcher:
                 stagedata = stageu8.to_buffer()
                 write_bytes_create_dirs(modified_stagepath, nlzss11.compress(stagedata))
                 # print(f'patched {stage} l{layer}')
-            elif self.copy_unmodified or layer == 0:
+            elif self.copy_unmodified or layer == 0 or should_be_copied:
                 # always copy layer 0 because it contains the stage definitions
                 shutil.copy(stagepath, modified_stagepath)
                 # print(f"copied {stage} l{layer}")
