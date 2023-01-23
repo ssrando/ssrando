@@ -21,6 +21,13 @@
 - Added option to start with a random progress item (by CovenEsme)
 - Added the ability to ban individual locations (by cjs07)
 - Removed the "Banned Types" option
+- Added cosmetic option to have stars appear in the sky during both day and night (by CovenEsme)
+  - Stars appear on the surface regions, the Sky and Skyloft
+  - Some users (particularly Wii Console users) may experience some minor lag when enabling this option (can be adjusted)
+- Added cosmetic option to control the number of stars that appear in the sky
+  - This works with both the stars in the daytime sky (if the "Starry Skies" cosmetic option is enabled) and the usual stars in the nighttime sky
+  - The default value is 700 and matches how things worked before
+  - Values larger than 700 will decrease the performance of the game
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
@@ -195,7 +202,7 @@
     - Sealed Grounds - Zelda's Blessing
     - Sand Sea - Skipper's Retreat - Chest in Shack
     - Volcano Summit - Item behind Digging
-    - Faron Woods - Slingshot
+    - Faron Woods - Kikwi Elder's Reward
     - Sky - Beedle's Crystals
     - Sealed Grounds - Gorko's Goddess Wall Reward
   - The Sea Chart can now be hinted when Sandship is a required dungeon

@@ -25,6 +25,7 @@ from musicrando import music_rando
 from logic.bool_expression import check_static_option_req
 from logic.constants import *
 from logic.placement_file import PlacementFile
+from yaml_files import yaml_load
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -987,8 +988,7 @@ RANDO_PATCH_FUNCS = {
 
 
 def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing):
-    with (RANDO_ROOT_PATH / "items.yaml").open() as f:
-        items = yaml.safe_load(f)
+    items = yaml_load(RANDO_ROOT_PATH / "items.yaml")
     by_item_name = dict((x["name"], x) for x in items)
 
     # (stage, room) -> (object name, layer, id?, itemid)
@@ -1032,6 +1032,11 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                             stageoarcs[(stage, layer)].add(o)
                     else:
                         stageoarcs[(stage, layer)].add(oarc)
+                else:
+                    # add dummy to force patching this stage
+                    # otherwise it could lead to an increased stage size
+                    # which will lead to a crash
+                    stageoarcs[(stage, layer)].add("dummy")
                 stagepatchv2[(stage, room)].append(
                     (objname, layer, objid, item["id"], chest_dowsing[checkname])
                 )
@@ -1049,6 +1054,9 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                             stageoarcs[(stage, layer)].add(o)
                     else:
                         stageoarcs[(stage, layer)].add(oarc)
+                else:
+                    # see above
+                    stageoarcs[(stage, layer)].add("dummy")
             elif shop_smpl_match:
                 index = int(shop_smpl_match.group("index"))
                 # TODO: super fix this, add all models/arcs to items.yaml
@@ -1193,10 +1201,8 @@ class GamePatcher:
         self.eventpatches[eventfile].append(eventpatch)
 
     def load_base_patches(self):
-        with (RANDO_ROOT_PATH / "patches.yaml").open() as f:
-            self.patches = yaml.safe_load(f)
-        with (RANDO_ROOT_PATH / "eventpatches.yaml").open() as f:
-            self.eventpatches = yaml.safe_load(f)
+        self.patches = yaml_load(RANDO_ROOT_PATH / "patches.yaml")
+        self.eventpatches = yaml_load(RANDO_ROOT_PATH / "eventpatches.yaml")
 
         filtered_storyflags = []
         for storyflag in self.patches["global"]["startstoryflags"]:
@@ -1250,6 +1256,10 @@ class GamePatcher:
             self.add_asm_patch("fix_bit_crashes")
         if self.placement_file.options["tunic-swap"]:
             self.add_asm_patch("tunic_swap")
+        if self.placement_file.options["starry-skies"]:
+            self.add_asm_patch("starry_skies")
+        if self.placement_file.options["star-count"] == 0:
+            self.add_asm_patch("starless-skies")
         if self.placement_file.options["chest-dowsing"] != "Vanilla":
             self.add_asm_patch("chest_dowsing")
         if self.placement_file.options["dungeon-dowsing"]:
@@ -1296,6 +1306,17 @@ class GamePatcher:
                 0x7B,
                 0x00,
                 self.placement_file.options["damage-multiplier"],
+            ]
+        }
+
+        # Star count patch requires input, replacing one line.
+        # cmpwi r15, (count)
+        self.all_asm_patches["main.dol"][0x801AB870] = {
+            "Data": [
+                0x2C,
+                0x0F,
+                self.placement_file.options["star-count"] >> 8,
+                self.placement_file.options["star-count"] & 0xFF,
             ]
         }
 
@@ -1488,8 +1509,7 @@ class GamePatcher:
             )
 
     def shopsanity_patches(self):
-        with (Path(__file__).parent / "beedle_texts.yaml").open("r") as f:
-            beedle_texts = yaml.safe_load(f)
+        beedle_texts = yaml_load(Path(__file__).parent / "beedle_texts.yaml")
         # print(beedle_texts)
         for location in BEEDLE_TEXT_PATCHES:
             normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[
@@ -1552,8 +1572,7 @@ class GamePatcher:
     def do_build_arc_cache(self):
         self.progress_callback("building arc cache...")
 
-        with (RANDO_ROOT_PATH / "extracts.yaml").open() as f:
-            extracts = yaml.safe_load(f)
+        extracts = yaml_load(RANDO_ROOT_PATH / "extracts.yaml")
         self.patcher.create_oarc_cache(extracts)
 
     def add_startitem_patches(self):

@@ -8,7 +8,7 @@ def read_yaml_file_cached(filename: str):
     if filename in CACHE:
         return CACHE[filename]
     else:
-        with (RANDO_ROOT_PATH / filename).open() as f:
+        with (RANDO_ROOT_PATH / filename).open("r", encoding="utf-8") as f:
             yaml_file = yaml.safe_load(f)
         CACHE[filename] = yaml_file
         return yaml_file

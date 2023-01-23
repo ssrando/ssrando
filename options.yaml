@@ -28,7 +28,7 @@
 - name: Starting Tablet Count
   command: starting-tablet-count
   type: int
-  default: 3
+  default: 1
   min: 0
   max: 3
   bits: 2
@@ -80,7 +80,7 @@
 - name: Empty unrequired Dungeons
   command: empty-unrequired-dungeons
   type: boolean
-  default: false
+  default: true
   help: If activated, only the required dungeons will contain progression items
   ui: option_empty_unrequired_dungeons
 - name: Triforce Required
@@ -97,7 +97,7 @@
     - Vanilla
     - Sky Keep
     - Anywhere
-  default: Vanilla
+  default: Anywhere
   help: Choose where Triforces will appear. Vanilla sets them to their locations in Sky Keep. If Anywhere is chosen, Sky Keep counts as an unrequired dungeon
   ui: option_triforce_shuffle
 - name: Seed
@@ -135,7 +135,7 @@
 - name: Max Batreaux Reward
   command: max-batreaux-reward
   type: singlechoice
-  default: 80
+  default: 50
   choices:
     - 0
     - 5
@@ -193,7 +193,7 @@
 - name: Place Scrap Shop Upgrades
   command: gondo-upgrades
   type: boolean
-  default: false
+  default: true
   help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for
     the Beetle, Bow, Bug Net, and Slingshot.
   ui: option_gondo_upgrades
@@ -229,7 +229,7 @@
     - Goddess White Sword
     - Master Sword
     - True Master Sword
-  default: Master Sword
+  default: True Master Sword
   help: Sets the sword requirement for opening the Gate of Time
   ui: option_got_sword_requirement
 - name: Gate of Time Dungeon Requirements
@@ -243,16 +243,16 @@
   help: Enables dungeon requirements for opening the Gate of Time. When disabled, dungeons will
     open the horde door instead.
   ui: option_got_dungeon_requirement
-- name: Open LMF
+- name: Open Lanayru Mining Facility
   command: open-lmf
   type: singlechoice
   bits: 2
   choices:
     - Nodes
     # - Hook Beetle
-    - Open
     - Main Node
-  default: Nodes
+    - Open
+  default: Open
   help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
     Main Node will set the fire, water, and lightning nodes to be active but LMF still needs to be raised from the main node.
   ui: option_open_lmf
@@ -288,7 +288,7 @@
     # - Overworld Only
     # - Any Dungeon
     - Anywhere
-  default: Own Dungeon - Unrestricted
+  default: Own Dungeon - Restricted
   help: Controls the placement of maps. Restricted means that maps cannot be placed on the
     Boss Heart Container or ending check of the dungeon
   ui: option_map_mode
@@ -464,6 +464,26 @@
   cosmetic: true
   help: Swaps Link's casual clothes for the hero's tunic and vice versa
   ui: option_tunic_swap
+- name: Starry Skies
+  command: starry-skies
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: Makes stars appear in the sky - even during the daytime.
+  ui: option_starry_skies
+- name: Number of stars in the sky
+  command: star-count
+  type: int
+  min: 0
+  max: 32767
+  default: 700
+  permalink: false
+  cosmetic: true
+  help: "Controls the number of stars in the sky.
+         WARNING: Values bigger than 700 (default) WILL lag when played on the Wii Console.
+         DOUBLE WARNING: Emulator isn't immune from the lag either. Seriously, use at your own risk."
+  ui: option_star_count
 - name: Force Sword Dungeon Reward
   command: sword-dungeon-reward
   type: singlechoice
@@ -569,7 +589,44 @@
 - name: Excluded Locations
   command: excluded-locations
   type: multichoice
-  default: []
+  default: [
+    # Goddess Cubes
+    Central Skyloft - Bazaar Goddess Chest,
+    Central Skyloft - Shed Goddess Chest,
+    Central Skyloft - West Cliff Goddess Chest,
+    Central Skyloft - Floating Island Goddess Chest,
+    Central Skyloft - Waterfall Goddess Chest,
+    Sky - Lumpy Pumpkin - Outside Goddess Chest,
+    Sky - Lumpy Pumpkin - Goddess Chest on the Roof,
+    Sky - Bamboo Island Goddess Chest,
+    Sky - Goddess Chest on Island next to Bamboo Island,
+    Sky - Goddess Chest in Cave on Island Next to Bamboo Island,
+    Sky - Beedle's Island Goddess Chest,
+    Sky - Beedle's Island Cage Goddess Chest,
+    Sky - Northeast Island Goddess Chest behind Bombable Rocks,
+    Sky - Northeast Island Cage Goddess Chest,
+    Sky - Goddess Chest on Island Closest to Faron Pillar,
+    Sky - Goddess Chest outside Volcanic Island,
+    Sky - Goddess Chest inside Volcanic Island,
+    Sky - Goddess Chest under Fun Fun Island,
+    Sky - Southwest Triple Island Upper Goddess Chest,
+    Sky - Southwest Triple Island Lower Goddess Chest,
+    Sky - Southwest Triple Island Cage Goddess Chest,
+    Thunderhead - Goddess Chest outside Isle of Songs,
+    Thunderhead - Goddess Chest on top of Isle of Songs,
+    Thunderhead - East Island Goddess Chest,
+    Thunderhead - Bug Heaven Goddess Chest,
+    Thunderhead - First Goddess Chest on Mogma Mitts Island,
+    Thunderhead - Second Goddess Chest on Mogma Mitts Island,
+    # Minigames
+    Upper Skyloft - Pumpkin Archery -- 600 Points,
+    Sky - Lumpy Pumpkin - Harp Minigame,
+    Sky - Fun Fun Island Minigame -- 500 Rupees,
+    Thunderhead - Bug Heaven -- 10 Bugs in 3 Minutes,
+    Lanayru Sand Sea - Rickety Coaster -- Heart Stopping Track in 1'05,
+    # Peatrice
+    Central Skyloft - Peater/Peatrice's Crystals,
+  ]
   help: Set locations to be excluded from the progress pool. While the item found in these locations will still be shuffled, it will never be an item required to beat the game
 - name: Remove Enemy Music
   command: no-enemy-music
@@ -594,7 +651,7 @@
 - name: Upgraded Skyward Strike
   command: upgraded-skyward-strike
   type: boolean
-  default: false
+  default: true
   permalink: true
   help: if enabled the skyward strike will be fully upgraded from the beginning, having longer reach and charging faster
   ui: option_upgraded_skyward_strike
@@ -726,8 +783,15 @@
     - Sandship Boss Key
     - Fire Sanctuary Boss Key
   default: [
-    Progressive Pouch
-    # Sailcloth
+    # Sailcloth,
+    Progressive Pouch,
+    Skyview Map,
+    Earth Temple Map,
+    Lanayru Mining Facility Map,
+    Ancient Cistern Map,
+    Sandship Map,
+    Fire Sanctuary Map,
+    Sky Keep Map,
   ]
   help: Items that will be in your inventory at the start of the game.
   ui: starting_items
