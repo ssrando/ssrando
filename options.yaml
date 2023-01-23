@@ -475,6 +475,8 @@
 - name: Number of stars in the sky
   command: star-count
   type: int
+  min: 0
+  max: 32767
   default: 700
   permalink: false
   cosmetic: true
