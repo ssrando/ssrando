@@ -475,9 +475,9 @@ class RandoGUI(QMainWindow):
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
 
-        # self.options.set_option(
-        #     "excluded-locations", self.get_option_value("excluded_locations")
-        # )
+        self.options.set_option(
+            "excluded-locations", self.get_option_value("excluded_locations")
+        )
 
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
@@ -523,7 +523,12 @@ class RandoGUI(QMainWindow):
         elif isinstance(widget, QSpinBox):
             return widget.value()
         elif isinstance(widget, QListView):
-            return widget.model().stringList()
+            items = []
+            model = widget.model()
+            for int_index in range(0, model.rowCount()):
+                index = model.index(int_index, 0)
+                items.append(index.data())
+            return items
         else:
             print("Option widget is invalid: %s" % option_name)
 
