@@ -4,6 +4,7 @@ from gui.ui_tricks_dialog import Ui_TricksDialog
 
 from options import OPTIONS
 
+
 class TricksDialog(QDialog):
     def __init__(self, enabled_model, disabled_model):
         super().__init__()
@@ -44,4 +45,7 @@ class TricksDialog(QDialog):
         self.ui.disabled_tricks.model().sort(0)
 
     def getTrickValues(self):
-        return self.disabled_tricks_model.stringList(), self.enabled_tricks_model.stringList()
+        return (
+            self.disabled_tricks_model.stringList(),
+            self.enabled_tricks_model.stringList(),
+        )

@@ -138,8 +138,12 @@ class RandoGUI(QMainWindow):
         self.ui.included_locations.setModel(self.included_locations_proxy)
         self.ui.exclude_location.clicked.connect(self.exclude_location)
         self.ui.include_location.clicked.connect(self.include_location)
-        self.ui.excluded_free_search.textChanged.connect(self.update_excluded_free_filter)
-        self.ui.included_free_search.textChanged.connect(self.update_included_free_filter)
+        self.ui.excluded_free_search.textChanged.connect(
+            self.update_excluded_free_filter
+        )
+        self.ui.included_free_search.textChanged.connect(
+            self.update_included_free_filter
+        )
 
         # Starting Items ui.
         self.randomized_items_model = QStringListModel()
@@ -469,7 +473,7 @@ class RandoGUI(QMainWindow):
         elif "Glitched" in logic_mode:
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option(
-                "enabled-tricks-glitched",  self.enabled_tricks_model.stringList()
+                "enabled-tricks-glitched", self.enabled_tricks_model.stringList()
             )
         else:  # this should only be no logic
             self.options.set_option("enabled-tricks-bitless", [])
