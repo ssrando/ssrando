@@ -532,8 +532,9 @@ class RandoGUI(QMainWindow):
         model.insertRow(model.rowCount())
         new_row = model.index(model.rowCount() - 1, 0)
         model.setData(new_row, value)
+        model.sort(0)
 
-    def move_selected_rows(self, source, dest):
+    def move_selected_rows(self, source, dest: QListView):
         selection = source.selectionModel().selectedIndexes()
         # Remove starting from the last so the previous indices remain valid
         selection.sort(reverse=True, key=lambda x: x.row())
