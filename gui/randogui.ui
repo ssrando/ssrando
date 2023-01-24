@@ -1450,14 +1450,6 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton">
-               <property name="text">
-                <string>Include All
-&lt;--</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <spacer name="verticalSpacer">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
@@ -1474,14 +1466,6 @@
               <widget class="QPushButton" name="exclude_location">
                <property name="text">
                 <string>Exclude
---&gt;</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_2">
-               <property name="text">
-                <string>Exclude All
 --&gt;</string>
                </property>
               </widget>

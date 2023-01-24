@@ -897,11 +897,6 @@ class Ui_MainWindow(object):
 
         self.vlay_exclude_locations_controls.addWidget(self.include_location)
 
-        self.pushButton = QPushButton(self.layoutWidget)
-        self.pushButton.setObjectName(u"pushButton")
-
-        self.vlay_exclude_locations_controls.addWidget(self.pushButton)
-
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_exclude_locations_controls.addItem(self.verticalSpacer)
@@ -910,11 +905,6 @@ class Ui_MainWindow(object):
         self.exclude_location.setObjectName(u"exclude_location")
 
         self.vlay_exclude_locations_controls.addWidget(self.exclude_location)
-
-        self.pushButton_2 = QPushButton(self.layoutWidget)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-
-        self.vlay_exclude_locations_controls.addWidget(self.pushButton_2)
 
 
         self.hlay_exclude_locations_body.addLayout(self.vlay_exclude_locations_controls)
@@ -1353,11 +1343,7 @@ class Ui_MainWindow(object):
         self.included_free_search.setText("")
         self.include_location.setText(QCoreApplication.translate("MainWindow", u"Include\n"
 "<--", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Include All\n"
-"<--", None))
         self.exclude_location.setText(QCoreApplication.translate("MainWindow", u"Exclude\n"
-"-->", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Exclude All\n"
 "-->", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_logic_settings), QCoreApplication.translate("MainWindow", u"Logic Settings", None))
         self.box_stone_hints.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
