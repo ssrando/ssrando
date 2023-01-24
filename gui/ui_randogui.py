@@ -866,11 +866,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.comboBox = QComboBox(self.layoutWidget)
-        self.comboBox.setObjectName(u"comboBox")
-
-        self.horizontalLayout.addWidget(self.comboBox)
-
         self.included_free_search = QLineEdit(self.layoutWidget)
         self.included_free_search.setObjectName(u"included_free_search")
 
@@ -884,11 +879,6 @@ class Ui_MainWindow(object):
         self.excluded_free_search.setObjectName(u"excluded_free_search")
 
         self.horizontalLayout.addWidget(self.excluded_free_search)
-
-        self.comboBox_2 = QComboBox(self.layoutWidget)
-        self.comboBox_2.setObjectName(u"comboBox_2")
-
-        self.horizontalLayout.addWidget(self.comboBox_2)
 
 
         self.vlay_exclude_locations.addLayout(self.horizontalLayout)
