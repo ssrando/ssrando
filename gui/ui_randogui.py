@@ -871,19 +871,19 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.comboBox)
 
-        self.lineEdit = QLineEdit(self.layoutWidget)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.included_free_search = QLineEdit(self.layoutWidget)
+        self.included_free_search.setObjectName(u"included_free_search")
 
-        self.horizontalLayout.addWidget(self.lineEdit)
+        self.horizontalLayout.addWidget(self.included_free_search)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
-        self.lineEdit_2 = QLineEdit(self.layoutWidget)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
+        self.excluded_free_search = QLineEdit(self.layoutWidget)
+        self.excluded_free_search.setObjectName(u"excluded_free_search")
 
-        self.horizontalLayout.addWidget(self.lineEdit_2)
+        self.horizontalLayout.addWidget(self.excluded_free_search)
 
         self.comboBox_2 = QComboBox(self.layoutWidget)
         self.comboBox_2.setObjectName(u"comboBox_2")
@@ -1360,7 +1360,7 @@ class Ui_MainWindow(object):
         self.edit_tricks.setText(QCoreApplication.translate("MainWindow", u"Tricks", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.label_exclude_locations.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
-        self.lineEdit.setText("")
+        self.included_free_search.setText("")
         self.include_location.setText(QCoreApplication.translate("MainWindow", u"Include\n"
 "<--", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Include All\n"

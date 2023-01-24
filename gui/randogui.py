@@ -123,21 +123,23 @@ class RandoGUI(QMainWindow):
 
         # setup exlcuded locations
         self.excluded_locations_model = QStringListModel()
-        self.excluded_locations_proxy = LocationsModel()
+        self.excluded_locations_proxy = LocationsModel(self)
         self.excluded_locations_proxy.setSourceModel(self.excluded_locations_model)
         self.excluded_locations_model.setStringList(
             OPTIONS["excluded-locations"]["default"]
         )
         self.included_locations_model = QStringListModel()
-        self.included_locations_proxy = LocationsModel()
+        self.included_locations_proxy = LocationsModel(self)
         self.included_locations_proxy.setSourceModel(self.included_locations_model)
         self.included_locations_model.setStringList(
             OPTIONS["excluded-locations"]["choices"]
         )
-        self.ui.excluded_locations.setModel(self.excluded_locations_model)
-        self.ui.included_locations.setModel(self.included_locations_model)
+        self.ui.excluded_locations.setModel(self.excluded_locations_proxy)
+        self.ui.included_locations.setModel(self.included_locations_proxy)
         self.ui.exclude_location.clicked.connect(self.exclude_location)
         self.ui.include_location.clicked.connect(self.include_location)
+        self.ui.excluded_free_search.textChanged.connect(self.update_excluded_free_filter)
+        self.ui.included_free_search.textChanged.connect(self.update_included_free_filter)
 
         # Starting Items ui.
         self.randomized_items_model = QStringListModel()
@@ -415,8 +417,8 @@ class RandoGUI(QMainWindow):
                 if choice not in current_settings["excluded-locations"]
             ]
         )
-        self.ui.excluded_locations.setModel(self.excluded_locations_model)
-        self.ui.included_locations.setModel(self.included_locations_model)
+        self.ui.excluded_locations.setModel(self.excluded_locations_proxy)
+        self.ui.included_locations.setModel(self.included_locations_proxy)
 
         # Update starting items.
         self.randomized_items_model = QStringListModel()
@@ -473,9 +475,9 @@ class RandoGUI(QMainWindow):
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
 
-        self.options.set_option(
-            "excluded-locations", self.get_option_value("excluded_locations")
-        )
+        # self.options.set_option(
+        #     "excluded-locations", self.get_option_value("excluded_locations")
+        # )
 
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
@@ -547,6 +549,12 @@ class RandoGUI(QMainWindow):
     def include_location(self):
         self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
         self.update_settings()
+
+    def update_included_free_filter(self, new_text):
+        self.included_locations_proxy.filterRows(new_text)
+
+    def update_excluded_free_filter(self, new_text):
+        self.excluded_locations_proxy.filterRows(new_text)
 
     def remove_starting_item(self):
         self.move_selected_rows(self.ui.starting_items, self.ui.randomized_items)

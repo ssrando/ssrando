@@ -1410,7 +1410,7 @@
             <widget class="QComboBox" name="comboBox"/>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit">
+            <widget class="QLineEdit" name="included_free_search">
              <property name="text">
               <string/>
              </property>
@@ -1433,7 +1433,7 @@
             </spacer>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_2"/>
+            <widget class="QLineEdit" name="excluded_free_search"/>
            </item>
            <item>
             <widget class="QComboBox" name="comboBox_2"/>
