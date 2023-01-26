@@ -38,9 +38,9 @@ You can either run from a compiled binary (recommended for Windows, required for
 The randomized game will only work if the game language is set to **English**, other languages **will not work**.
 
 Do **not** use the game's hero-mode files, it **will not work**.  
-If you only want it to skip cutscenes, they are made skippable even in normal mode.  
-If you really wish to play on hero mode, select the "hero mode" option in the randomizer.
-When this option is selected, even if they don't appear as such in the menu, all files will be set to hero mode.
+If you only want it to skip cutscenes, they are made skippable even in normal mode.
+If you really wish to play on hero mode, there are options to enable its features.
+When these options selected, even if they don't appear as such in the menu, all files will be set to hero mode.
 
 If you didn't follow these rules, your progress cannot be restored; delete the save from the Wii menu / Dolphin's toolbar and correct the settings to play the game.
 

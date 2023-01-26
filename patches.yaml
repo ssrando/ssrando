@@ -2897,6 +2897,14 @@ F200: # Eldin main area
     layer: 1
     room: 2
     objtype: STAG
+  - name: Remove upper bridge CS
+    type: objpatch
+    id: 0x2833
+    layer: 1
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFF1E # replace event with FF
 F202: # Boko Base
   - name: Remove Shiekah Stone from Boko Base
     type: objdelete

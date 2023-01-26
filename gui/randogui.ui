@@ -159,7 +159,7 @@
         <x>10</x>
         <y>130</y>
         <width>181</width>
-        <height>131</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="title">
@@ -171,7 +171,7 @@
          <x>10</x>
          <y>20</y>
          <width>169</width>
-         <height>101</height>
+         <height>131</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_additional_files">
@@ -218,7 +218,7 @@
         <x>210</x>
         <y>130</y>
         <width>181</width>
-        <height>131</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="title">
@@ -230,7 +230,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>101</height>
+         <height>131</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_advanced">
@@ -263,7 +263,7 @@
         <x>410</x>
         <y>130</y>
         <width>181</width>
-        <height>131</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="title">
@@ -275,7 +275,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>109</height>
+         <height>131</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_cosmetics">
@@ -330,9 +330,9 @@
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_no_enemy_music">
+         <widget class="QCheckBox" name="option_lightning_skyward_strike">
           <property name="text">
-           <string>Remove Enemy Music</string>
+           <string>Lightning Skyward Strike</string>
           </property>
          </widget>
         </item>
@@ -358,7 +358,7 @@
         <x>610</x>
         <y>130</y>
         <width>181</width>
-        <height>131</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="title">
@@ -370,7 +370,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>106</height>
+         <height>132</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_music_rando">
@@ -403,6 +403,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QCheckBox" name="option_no_enemy_music">
+          <property name="text">
+           <string>Remove Enemy Music</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer_16">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -421,8 +428,8 @@
      <widget class="QGroupBox" name="box_presets">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>270</y>
+        <x>0</x>
+        <y>310</y>
         <width>331</width>
         <height>101</height>
        </rect>
