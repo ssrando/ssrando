@@ -25,6 +25,13 @@
   - Talk to Yerbal: You are required to talk to Yerbal and he will open the floria door
   - Vanilla: You are logically required to talk to Yerbal and draw on the floria door
   - Open: The floria door is open from the start of the game. You are not required to talk to Yerbal or draw on the floria door
+- Added cosmetic option to have stars appear in the sky during both day and night (by CovenEsme)
+  - Stars appear on the surface regions, the Sky and Skyloft
+  - Some users (particularly Wii Console users) may experience some minor lag when enabling this option (can be adjusted)
+- Added cosmetic option to control the number of stars that appear in the sky
+  - This works with both the stars in the daytime sky (if the "Starry Skies" cosmetic option is enabled) and the usual stars in the nighttime sky
+  - The default value is 700 and matches how things worked before
+  - Values larger than 700 will decrease the performance of the game
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
