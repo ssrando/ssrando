@@ -4,10 +4,10 @@ from pathlib import Path
 from util.file_accessor import read_yaml_file_cached
 
 import yaml
+from yaml_files import yaml_load
 from collections import OrderedDict
 
-with (RANDO_ROOT_PATH / "options.yaml").open("r") as f:
-    OPTIONS_LIST = yaml.safe_load(f)
+OPTIONS_LIST = yaml_load(RANDO_ROOT_PATH / "options.yaml")
 
 OPTIONS = OrderedDict((option["command"], option) for option in OPTIONS_LIST)
 OPTIONS["excluded-locations"]["choices"] = [
