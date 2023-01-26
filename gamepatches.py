@@ -1139,6 +1139,7 @@ class GamePatcher:
             modified_extract_path=modified_extract_path,
             oarc_cache_path=oarc_cache_path,
             arc_replacement_path=arc_replacement_path,
+            assets_path=RANDO_ROOT_PATH / "assets",
             copy_unmodified=False,
         )
         self.text_labels = {}
