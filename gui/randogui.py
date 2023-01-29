@@ -543,14 +543,16 @@ class RandoGUI(QMainWindow):
         model.setData(new_row, value)
         model.sort(0)
 
-    def move_selected_rows(self, source, dest: QListView):
+    def move_selected_rows(self, source: QListView, dest: QListView):
         selection = source.selectionModel().selectedIndexes()
+        last_selection = source.currentIndex()
         # Remove starting from the last so the previous indices remain valid
         selection.sort(reverse=True, key=lambda x: x.row())
         for item in selection:
             value = item.data()
             source.model().removeRow(item.row())
             self.append_row(dest.model(), value)
+        source.selectionModel().setCurrentIndex(last_selection)
 
     def exclude_location(self):
         self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
