@@ -36,7 +36,7 @@ class TricksDialog(QDialog):
             value = item.data()
             source.model().removeRow(item.row())
             self.append_row(dest.model(), value)
-        source.selectionModel().setCurrentIndex(last_selection)
+        # source.selectionModel().setCurrentIndex(last_selection)
 
     def enable_trick(self):
         self.move_selected_rows(self.ui.disabled_tricks, self.ui.enabled_tricks)

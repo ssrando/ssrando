@@ -552,7 +552,7 @@ class RandoGUI(QMainWindow):
             value = item.data()
             source.model().removeRow(item.row())
             self.append_row(dest.model(), value)
-        source.selectionModel().setCurrentIndex(last_selection)
+        # source.selectionModel().setCurrentIndex(last_selection)
 
     def exclude_location(self):
         self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
