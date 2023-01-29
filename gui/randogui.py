@@ -661,11 +661,17 @@ class RandoGUI(QMainWindow):
             json.dump(self.user_presets, f)
 
     def launch_tricks_dialog(self):
+        old_en = self.enabled_tricks_model.stringList()
+        old_dis = self.disabled_tricks_model.stringList()
         dialog = TricksDialog(self.enabled_tricks_model, self.disabled_tricks_model)
         if dialog.exec():
             results = dialog.getTrickValues()
             self.disabled_tricks_model.setStringList(results[0])
             self.enabled_tricks_model.setStringList(results[1])
+            self.update_settings()
+        else:
+            self.disabled_tricks_model.setStringList(old_dis)
+            self.enabled_tricks_model.setStringList(old_en)
             self.update_settings()
 
     def eventFilter(self, target, event):
