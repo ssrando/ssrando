@@ -77,7 +77,7 @@ class Hints:
                 raise Exception(
                     "Custom distro file not found. Ensure that custom_hint_distribution.json exists in the same directory as the randomizer"
                 )
-            with CUSTOM_HINT_DISTRIBUTION_PATH.open('r') as f:
+            with CUSTOM_HINT_DISTRIBUTION_PATH.open("r") as f:
                 self.dist.read_from_file(f)
         else:
             with open(

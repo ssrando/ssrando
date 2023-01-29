@@ -97,9 +97,9 @@ class Randomizer(BaseRandomizer):
                 raise Exception(
                     "Custom hint distribution file not found. Make sure custom_hint_distribution.json exists at the same location as the randomizer"
                 )
-            with CUSTOM_HINT_DISTRIBUTION_PATH.open('r') as f:
+            with CUSTOM_HINT_DISTRIBUTION_PATH.open("r") as f:
                 normalized_json = json.dumps(json.load(f))
-                current_hash.update(normalized_json.encode('ASCII'))
+                current_hash.update(normalized_json.encode("ASCII"))
         with open(RANDO_ROOT_PATH / "names.txt") as f:
             names = [s.strip() for s in f.readlines()]
         hash_random = random.Random()
