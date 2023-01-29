@@ -860,6 +860,16 @@
          </layout>
         </item>
         <item>
+         <widget class="QLabel" name="label_for_option_open_lake_floria">
+          <property name="text">
+           <string>Open Lake Floria</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="option_open_lake_floria"/>
+        </item>
+        <item>
          <spacer name="vspace_open">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1616,7 +1626,7 @@
      <attribute name="title">
       <string>Starting Items</string>
      </attribute>
-     <widget class="QWidget" name="verticalLayoutWidget_201">
+     <widget class="QWidget" name="verticalLayoutWidget_21">
       <property name="geometry">
        <rect>
         <x>10</x>

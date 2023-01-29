@@ -34,6 +34,7 @@ global:
     - 199 # talked to sword instructor after practice sword chest
     - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
+    - 60 # Fi text before Yerbal
     # - 168 # Boko Base map, removed cos it doesn't work as intended
     - 178 # Cutscene showing off Bokoblin Base with Plats
     - 81  # Tadtone Dowsing
@@ -106,6 +107,12 @@ global:
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
+      - onlyif: Option "open-lake-floria" Is "Open" # & Option "starting-items" Contains "Water Scale"
+        flag: 49 # Cutscene of Lake Floria Gates opening
+      - onlyif: Option "open-lake-floria" Is "Open" # & Option "starting-items" Contains "Water Scale"
+        flag: 50 # Open Lake Floria Gates
+      - 51 # Fi text before talking to Yerbal
+      - 52 # Fi text after opening floria gate
       - 19 # Great Tree Intro Cutscene
       - 30 # Enter Skyview Cutscene
     Sealed Grounds:
@@ -1567,25 +1574,6 @@ F100: # Faron main area
       - story_flag: -1
         night: 0
         layer: 1
-  - name: Yerbal
-    type: objmove
-    id: 0x52B6
-    layer: 4
-    destlayer: 1
-    room: 0
-    objtype: OBJ
-  - name: Yerbal
-    type: oarcadd
-    oarc: ForestManWiz
-    destlayer: 1
-  - name: Yerbal Spawn
-    type: objpatch
-    id: 0x52B6
-    layer: 4
-    room: 0
-    objtype: OBJ
-    object:
-      trigstoryfid: 206 # scale
   - name: Trial
     type: oarcadd
     oarc: PLHarpPlay
@@ -1673,6 +1661,55 @@ F100: # Faron main area
     layer: 1
     room: 0
     objtype: STAG
+  - name: Yerbal
+    type: objmove
+    id: 0x52B6
+    layer: 4
+    destlayer: 1
+    room: 0
+    objtype: OBJ
+  - name: Yerbal
+    type: oarcadd
+    oarc: ForestManWiz
+    destlayer: 1
+  - name: Yerbal Spawn
+    type: objpatch
+    id: 0x52B6
+    layer: 4
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: 206 # scale
+  - name: Add back map x icon for Yerbal
+    type: objmove
+    id: 0xFEF5
+    layer: 4
+    destlayer: 0
+    room: 0
+    objtype: STAG
+  - name: Move Fi text trigger for Yerbal map x
+    type: objmove
+    id: 0xFEB9
+    layer: 4
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Move Fi Cam2Tag for Yerbal map x
+    type: objmove
+    id: 0xFEF9
+    layer: 4
+    destlayer: 0
+    room: 0
+    objtype: STAG
+  - name: Patch Main floria entrance
+    onlyif: Option "open-lake-floria" Is "Open"
+    type: objpatch
+    id: 0xFDB6
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      trigstoryfid: 206
   - name: extra Arrow Pot next to Entrance Statue
     type: objadd
     layer: 0

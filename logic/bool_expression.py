@@ -52,16 +52,16 @@ class QueryContainerOption(BoolExpression):
 class AndCombination(BoolExpression):
     arguments: List[BoolExpression]
 
-    def eval(self, options: Options):
-        all(arg.eval(options) for arg in self.arguments)
+    def eval(self, options: Options) -> bool:
+        return all(arg.eval(options) for arg in self.arguments)
 
 
 @dataclass
 class OrCombination(BoolExpression):
     arguments: List[BoolExpression]
 
-    def eval(self, options: Options):
-        any(arg.eval(options) for arg in self.arguments)
+    def eval(self, options: Options) -> bool:
+        return any(arg.eval(options) for arg in self.arguments)
 
 
 # Parsing
