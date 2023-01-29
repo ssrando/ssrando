@@ -14,7 +14,7 @@ class LocationsModel(QSortFilterProxyModel):
     def lessThan(self, right, left):
         leftCheck = self.sourceModel().data(left)
         rightCheck = self.sourceModel().data(right)
-        if rightCheck == '':
+        if rightCheck == "":
             return False
         return check_order.index(leftCheck) > check_order.index(rightCheck)
 
