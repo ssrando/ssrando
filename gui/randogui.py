@@ -272,7 +272,12 @@ class RandoGUI(QMainWindow):
     def on_error(self, message):
         self.error_msg = QErrorMessage(self)
         self.progress_dialog.reset()
-        self.error_msg.showMessage(message)
+        if self.rando.seed:
+            self.error_msg.showMessage(
+                f"{message}<br/>Seed: {self.rando.seed}<br/>Settings: {self.rando.options.get_permalink()}"
+            )
+        else:
+            self.error_msg.showMessage(message)
 
     def randomization_complete(self):
         self.progress_dialog.reset()
