@@ -406,7 +406,6 @@
     - Sky Keep - FS Room Clawshots Vine Clip
   default: []
   help: Enable specific tricks to be considered in logic
-  ui: enabled_tricks
 - name: Enabled Tricks Glitched
   command: enabled-tricks-glitched
   type: multichoice
@@ -421,7 +420,6 @@
 
   default: []
   help: Enable specific tricks to be considered in logic
-  ui: enabled_tricks
 - name: Song Hints
   command: song-hints
   type: singlechoice

@@ -26,30 +26,39 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1051, 738)
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
+        MainWindow.setSizeIncrement(QSize(0, 0))
         font = QFont()
         font.setFamilies([u"Segoe UI"])
         font.setPointSize(9)
         MainWindow.setFont(font)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
-        self.centralwidget.setSizePolicy(sizePolicy1)
+        sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
+        self.centralwidget.setSizePolicy(sizePolicy)
         self.option_description = QLabel(self.centralwidget)
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
-        self.option_description.setGeometry(QRect(10, 570, 1031, 31))
+        self.option_description.setGeometry(QRect(10, 560, 1031, 41))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.option_description.sizePolicy().hasHeightForWidth())
+        self.option_description.setSizePolicy(sizePolicy1)
         self.option_description.setWordWrap(True)
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setGeometry(QRect(10, 10, 1031, 541))
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
+        self.tabWidget.setSizePolicy(sizePolicy2)
+        self.tabWidget.setSizeIncrement(QSize(0, 0))
         self.tabWidget.setToolTipDuration(-6)
         self.tabWidget.setUsesScrollButtons(True)
         self.tabWidget.setDocumentMode(False)
@@ -180,22 +189,22 @@ class Ui_MainWindow(object):
         self.hlay_star_count.setObjectName(u"hlay_star_count")
         self.label_for_option_star_count = QLabel(self.verticalLayoutWidget_8)
         self.label_for_option_star_count.setObjectName(u"label_for_option_star_count")
-        sizePolicy2 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.label_for_option_star_count.sizePolicy().hasHeightForWidth())
-        self.label_for_option_star_count.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.label_for_option_star_count.sizePolicy().hasHeightForWidth())
+        self.label_for_option_star_count.setSizePolicy(sizePolicy3)
 
         self.hlay_star_count.addWidget(self.label_for_option_star_count)
 
         self.option_star_count = QSpinBox(self.verticalLayoutWidget_8)
         self.option_star_count.setObjectName(u"option_star_count")
         self.option_star_count.setEnabled(True)
-        sizePolicy3 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.option_star_count.sizePolicy().hasHeightForWidth())
-        self.option_star_count.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.option_star_count.sizePolicy().hasHeightForWidth())
+        self.option_star_count.setSizePolicy(sizePolicy4)
         self.option_star_count.setMaximum(32767)
         self.option_star_count.setSingleStep(100)
 
@@ -362,11 +371,11 @@ class Ui_MainWindow(object):
         self.option_required_dungeon_count = QSpinBox(self.verticalLayoutWidget)
         self.option_required_dungeon_count.setObjectName(u"option_required_dungeon_count")
         self.option_required_dungeon_count.setEnabled(True)
-        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.option_required_dungeon_count.sizePolicy().hasHeightForWidth())
-        self.option_required_dungeon_count.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.option_required_dungeon_count.sizePolicy().hasHeightForWidth())
+        self.option_required_dungeon_count.setSizePolicy(sizePolicy5)
         self.option_required_dungeon_count.setMaximumSize(QSize(41, 16777215))
 
         self.hlay_req_dungeons.addWidget(self.option_required_dungeon_count)
@@ -439,7 +448,7 @@ class Ui_MainWindow(object):
         self.box_dungeons.setGeometry(QRect(820, 0, 191, 501))
         self.verticalLayoutWidget_7 = QWidget(self.box_dungeons)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 179, 471))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 20, 178, 471))
         self.vlay_dungeons = QVBoxLayout(self.verticalLayoutWidget_7)
         self.vlay_dungeons.setObjectName(u"vlay_dungeons")
         self.vlay_dungeons.setContentsMargins(0, 0, 0, 0)
@@ -844,6 +853,11 @@ class Ui_MainWindow(object):
 
         self.hlay_misc_logic_settings.addWidget(self.option_logic_mode)
 
+        self.edit_tricks = QPushButton(self.layoutWidget)
+        self.edit_tricks.setObjectName(u"edit_tricks")
+
+        self.hlay_misc_logic_settings.addWidget(self.edit_tricks)
+
         self.option_hero_mode = QCheckBox(self.layoutWidget)
         self.option_hero_mode.setObjectName(u"option_hero_mode")
 
@@ -857,11 +871,32 @@ class Ui_MainWindow(object):
         self.vlay_logic_settings.addLayout(self.hlay_misc_logic_settings)
 
         self.vlay_exclude_locations = QVBoxLayout()
+        self.vlay_exclude_locations.setSpacing(6)
         self.vlay_exclude_locations.setObjectName(u"vlay_exclude_locations")
         self.label_exclude_locations = QLabel(self.layoutWidget)
         self.label_exclude_locations.setObjectName(u"label_exclude_locations")
 
         self.vlay_exclude_locations.addWidget(self.label_exclude_locations)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.included_free_search = QLineEdit(self.layoutWidget)
+        self.included_free_search.setObjectName(u"included_free_search")
+
+        self.horizontalLayout.addWidget(self.included_free_search)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.excluded_free_search = QLineEdit(self.layoutWidget)
+        self.excluded_free_search.setObjectName(u"excluded_free_search")
+
+        self.horizontalLayout.addWidget(self.excluded_free_search)
+
+
+        self.vlay_exclude_locations.addLayout(self.horizontalLayout)
 
         self.hlay_exclude_locations_body = QHBoxLayout()
         self.hlay_exclude_locations_body.setObjectName(u"hlay_exclude_locations_body")
@@ -876,6 +911,10 @@ class Ui_MainWindow(object):
         self.include_location.setObjectName(u"include_location")
 
         self.vlay_exclude_locations_controls.addWidget(self.include_location)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.vlay_exclude_locations_controls.addItem(self.verticalSpacer)
 
         self.exclude_location = QPushButton(self.layoutWidget)
         self.exclude_location.setObjectName(u"exclude_location")
@@ -895,46 +934,6 @@ class Ui_MainWindow(object):
 
 
         self.vlay_logic_settings.addLayout(self.vlay_exclude_locations)
-
-        self.vlay_tricks = QVBoxLayout()
-        self.vlay_tricks.setObjectName(u"vlay_tricks")
-        self.label_tricks = QLabel(self.layoutWidget)
-        self.label_tricks.setObjectName(u"label_tricks")
-
-        self.vlay_tricks.addWidget(self.label_tricks)
-
-        self.hlay_tricks_body = QHBoxLayout()
-        self.hlay_tricks_body.setObjectName(u"hlay_tricks_body")
-        self.disabled_tricks = QListView(self.layoutWidget)
-        self.disabled_tricks.setObjectName(u"disabled_tricks")
-
-        self.hlay_tricks_body.addWidget(self.disabled_tricks)
-
-        self.vlay_tricks_controls = QVBoxLayout()
-        self.vlay_tricks_controls.setObjectName(u"vlay_tricks_controls")
-        self.disable_trick = QPushButton(self.layoutWidget)
-        self.disable_trick.setObjectName(u"disable_trick")
-
-        self.vlay_tricks_controls.addWidget(self.disable_trick)
-
-        self.enable_trick = QPushButton(self.layoutWidget)
-        self.enable_trick.setObjectName(u"enable_trick")
-
-        self.vlay_tricks_controls.addWidget(self.enable_trick)
-
-
-        self.hlay_tricks_body.addLayout(self.vlay_tricks_controls)
-
-        self.enabled_tricks = QListView(self.layoutWidget)
-        self.enabled_tricks.setObjectName(u"enabled_tricks")
-
-        self.hlay_tricks_body.addWidget(self.enabled_tricks)
-
-
-        self.vlay_tricks.addLayout(self.hlay_tricks_body)
-
-
-        self.vlay_logic_settings.addLayout(self.vlay_tricks)
 
         self.tabWidget.addTab(self.tab_logic_settings, "")
         self.tab_hints = QWidget()
@@ -1050,11 +1049,8 @@ class Ui_MainWindow(object):
 
         self.randomized_items = QListView(self.verticalLayoutWidget_21)
         self.randomized_items.setObjectName(u"randomized_items")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.randomized_items.sizePolicy().hasHeightForWidth())
-        self.randomized_items.setSizePolicy(sizePolicy5)
+        sizePolicy2.setHeightForWidth(self.randomized_items.sizePolicy().hasHeightForWidth())
+        self.randomized_items.setSizePolicy(sizePolicy2)
 
         self.vlay_randomized_items_section.addWidget(self.randomized_items)
 
@@ -1101,8 +1097,8 @@ class Ui_MainWindow(object):
 
         self.starting_items = QListView(self.verticalLayoutWidget_21)
         self.starting_items.setObjectName(u"starting_items")
-        sizePolicy5.setHeightForWidth(self.starting_items.sizePolicy().hasHeightForWidth())
-        self.starting_items.setSizePolicy(sizePolicy5)
+        sizePolicy2.setHeightForWidth(self.starting_items.sizePolicy().hasHeightForWidth())
+        self.starting_items.setSizePolicy(sizePolicy2)
 
         self.vlay_starting_items_section.addWidget(self.starting_items)
 
@@ -1139,8 +1135,8 @@ class Ui_MainWindow(object):
 
         self.option_random_starting_item = QCheckBox(self.verticalLayoutWidget_21)
         self.option_random_starting_item.setObjectName(u"option_random_starting_item")
-        sizePolicy4.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
-        self.option_random_starting_item.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
+        self.option_random_starting_item.setSizePolicy(sizePolicy5)
 
         self.hlay_starting_items_misc_options.addWidget(self.option_random_starting_item)
 
@@ -1158,8 +1154,8 @@ class Ui_MainWindow(object):
 
         self.option_starting_heart_containers = QSpinBox(self.verticalLayoutWidget_21)
         self.option_starting_heart_containers.setObjectName(u"option_starting_heart_containers")
-        sizePolicy4.setHeightForWidth(self.option_starting_heart_containers.sizePolicy().hasHeightForWidth())
-        self.option_starting_heart_containers.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.option_starting_heart_containers.sizePolicy().hasHeightForWidth())
+        self.option_starting_heart_containers.setSizePolicy(sizePolicy5)
         self.option_starting_heart_containers.setMaximumSize(QSize(41, 16777215))
 
         self.hlay_heart_containters.addWidget(self.option_starting_heart_containers)
@@ -1178,8 +1174,8 @@ class Ui_MainWindow(object):
 
         self.option_starting_heart_pieces = QSpinBox(self.verticalLayoutWidget_21)
         self.option_starting_heart_pieces.setObjectName(u"option_starting_heart_pieces")
-        sizePolicy4.setHeightForWidth(self.option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
-        self.option_starting_heart_pieces.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
+        self.option_starting_heart_pieces.setSizePolicy(sizePolicy5)
         self.option_starting_heart_pieces.setMaximumSize(QSize(41, 16777215))
 
         self.hlay_heart_pieces.addWidget(self.option_starting_heart_pieces)
@@ -1264,7 +1260,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1358,19 +1354,13 @@ class Ui_MainWindow(object):
         self.label_for_option_damage_multiplier.setText(QCoreApplication.translate("MainWindow", u"Damage Taken Multiplier", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_additional_settings), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
+        self.edit_tricks.setText(QCoreApplication.translate("MainWindow", u"Tricks", None))
         self.option_hero_mode.setText(QCoreApplication.translate("MainWindow", u"Hero Mode", None))
         self.label_exclude_locations.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
+        self.included_free_search.setText("")
         self.include_location.setText(QCoreApplication.translate("MainWindow", u"Include\n"
 "<--", None))
         self.exclude_location.setText(QCoreApplication.translate("MainWindow", u"Exclude\n"
-"-->", None))
-        self.label_tricks.setText(QCoreApplication.translate("MainWindow", u"Enable Tricks", None))
-#if QT_CONFIG(tooltip)
-        self.disabled_tricks.setToolTip(QCoreApplication.translate("MainWindow", u"test", None))
-#endif // QT_CONFIG(tooltip)
-        self.disable_trick.setText(QCoreApplication.translate("MainWindow", u"Disable\n"
-"<--", None))
-        self.enable_trick.setText(QCoreApplication.translate("MainWindow", u"Enable\n"
 "-->", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_logic_settings), QCoreApplication.translate("MainWindow", u"Logic Settings", None))
         self.box_stone_hints.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
