@@ -761,9 +761,9 @@ Can Reach Oolo in Faron 2:
 
 Can Open Door to Lake Floria:
   Can Access Most of Faron Woods &
-  (Can Talk to Yerbal & Goddess Sword) |
+  ((Can Talk to Yerbal & Goddess Sword) |
   (Can Talk to Yerbal & Option "open-lake-floria" Is "Talk to Yerbal") |
-  (Water Scale & Option "open-lake-floria" Is "Open")
+  (Water Scale & Option "open-lake-floria" Is "Open"))
   # You need to charge a skyward strike to open the door to Lake Floria
   # Scene Flag 7x02 is "Cutscene of the Doors to Lake Floria opening"
   # Scene Flag 7x04 is "Doors to Lake Floria opened"
