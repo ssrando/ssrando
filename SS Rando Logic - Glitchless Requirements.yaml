@@ -760,6 +760,7 @@ Can Reach Oolo in Faron 2:
   # Scene Flag 2x01 is "Log after Lopsa is pushed down"
 
 Can Open Door to Lake Floria:
+  Can Access Most of Faron Woods &
   (Can Talk to Yerbal & Goddess Sword) |
   (Can Talk to Yerbal & Option "open-lake-floria" Is "Talk to Yerbal") |
   (Water Scale & Option "open-lake-floria" Is "Open")
