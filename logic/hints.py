@@ -71,7 +71,7 @@ class Hints:
                 STATUS.useless: HINT_MODES.Useless,
             }
         else:
-            raise ValueError(f'Unknown value for setting "song-hints": "{hint_mode}"')
+            raise ValueError(f'Unknown value for setting "song-hints": "{hint_mode}".')
 
         does_hint = hint_mode != "None"
         get_check = lambda trial_gate: self.norm(
@@ -145,7 +145,9 @@ class Hints:
 
         for hintname in hints:
             if not self.place_hint(hintname):
-                raise self.useroutput.GenerationFailed(f"could not place {hintname}")
+                raise self.useroutput.GenerationFailed(
+                    f"Could not find a valid location to place {hintname}. This may be because the settings are too restrictive. Try randomizing a new seed."
+                )
 
     def place_hint(self, hintname: EXTENDED_ITEM_NAME, depth=0) -> bool:
         hint_bit = EXTENDED_ITEM[hintname]
@@ -173,7 +175,7 @@ class Hints:
             return False
         if not accessible_stones:
             raise self.useroutput.GenerationFailed(
-                f"no more location accessible for {hintname}"
+                f"No more locations accessible for {hintname}."
             )
 
         spots = [

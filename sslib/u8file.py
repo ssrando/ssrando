@@ -104,10 +104,10 @@ class U8File:
         nodes = []
         data.seek(0)
         if data.read(4) != MAGIC_HEADER:
-            raise InvalidU8File("Invalid magic header")
+            raise InvalidU8File("Invalid magic header.")
         first_node_offset = struct.unpack(">I", data.read(4))[0]
         if first_node_offset != U8File.FIRST_NODE_OFFSET:
-            raise InvalidU8File("Invalid first node offset")
+            raise InvalidU8File("Invalid first node offset.")
         _all_node_size = struct.unpack(">I", data.read(4))[0]
         _start_data_offset = struct.unpack(">I", data.read(4))[0]
         # read the first node, to figure out where the filenames start
@@ -153,7 +153,7 @@ class U8File:
                 )
                 nodes.append(node)
             else:
-                raise InvalidU8File(f"Unknown nodetype {nodetype}")
+                raise InvalidU8File(f"Unknown nodetype {nodetype}.")
         return U8File(data, nodes)
 
     def writeto(self, buffer: BufferedIOBase):
@@ -249,7 +249,7 @@ class U8File:
     def set_file_data(self, path: str, data: bytes):
         file = self.get_file(path)
         if not file:
-            raise Exception("file not found!")
+            raise Exception("File not found.")
         file.set_data(data)
 
     def add_file_data(self, path: str, data: bytes):
