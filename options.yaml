@@ -434,6 +434,12 @@
     Basic tells if the reward item is any progress item. Advanced tells if the trial is WotH, Barren, or potentially required.
     Direct tells the item on the trial directly.
   ui: option_song_hints
+- name: Patch BiT
+  command: patch-bit
+  type: boolean
+  default: false
+  help: If enabled, forces the title screen to reload fully - making the Back in Time tricks impossible.
+  ui: option_patch_bit
 - name: Fix BiT crashes
   command: fix-bit-crashes
   type: boolean

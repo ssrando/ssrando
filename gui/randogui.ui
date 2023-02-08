@@ -311,6 +311,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QCheckBox" name="option_lightning_skyward_strike">
+          <property name="text">
+           <string>Lightning Skyward Strike</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QCheckBox" name="option_starry_skies">
           <property name="text">
            <string>Starry Skies</string>
@@ -328,7 +335,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Number of stars</string>
+             <string>Number of Stars</string>
             </property>
            </widget>
           </item>
@@ -352,13 +359,6 @@
            </widget>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_lightning_skyward_strike">
-          <property name="text">
-           <string>Lightning Skyward Strike</string>
-          </property>
-         </widget>
         </item>
         <item>
          <spacer name="vspace_cosmetics">
@@ -721,7 +721,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>178</width>
+         <width>179</width>
          <height>471</height>
         </rect>
        </property>
@@ -1131,9 +1131,16 @@
        </property>
        <layout class="QVBoxLayout" name="vlay_vanilla_tweaks">
         <item>
+         <widget class="QCheckBox" name="option_patch_bit">
+          <property name="text">
+           <string>Disable BiT</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QCheckBox" name="option_fix_bit_crashes">
           <property name="text">
-           <string>Fix BiT crashes</string>
+           <string>Fix BiT Crashes</string>
           </property>
          </widget>
         </item>
@@ -1381,13 +1388,6 @@
           <widget class="QPushButton" name="edit_tricks">
            <property name="text">
             <string>Tricks</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="option_hero_mode">
-           <property name="text">
-            <string>Hero Mode</string>
            </property>
           </widget>
          </item>
@@ -1661,7 +1661,7 @@
      <attribute name="title">
       <string>Starting Items</string>
      </attribute>
-     <widget class="QWidget" name="verticalLayoutWidget_21">
+     <widget class="QWidget" name="verticalLayoutWidget_23">
       <property name="geometry">
        <rect>
         <x>10</x>

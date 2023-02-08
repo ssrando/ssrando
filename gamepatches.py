@@ -1253,6 +1253,8 @@ class GamePatcher:
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
+        if self.placement_file.options["patch-bit"]:
+            self.add_asm_patch("patch_bit")
         if self.placement_file.options["fix-bit-crashes"]:
             self.add_asm_patch("fix_bit_crashes")
         if self.placement_file.options["tunic-swap"]:
