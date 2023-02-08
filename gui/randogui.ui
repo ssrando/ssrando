@@ -91,7 +91,7 @@
      <number>-6</number>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -1131,18 +1131,14 @@
        </property>
        <layout class="QVBoxLayout" name="vlay_vanilla_tweaks">
         <item>
-         <widget class="QCheckBox" name="option_patch_bit">
+         <widget class="QLabel" name="label_for_option_bit_patches">
           <property name="text">
-           <string>Disable BiT</string>
+           <string>BiT Patches</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_fix_bit_crashes">
-          <property name="text">
-           <string>Fix BiT Crashes</string>
-          </property>
-         </widget>
+         <widget class="QComboBox" name="option_bit_patches"/>
         </item>
         <item>
          <spacer name="vspace_vanilla_tweaks">

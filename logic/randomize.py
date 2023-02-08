@@ -352,7 +352,7 @@ class Rando:
             OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
             RANDOMIZED_BEEDLE_OPTION: shop_mode != "Vanilla",
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
-            NO_BIT_CRASHES: self.options["fix-bit-crashes"],
+            NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
         }

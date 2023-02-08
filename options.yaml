@@ -434,18 +434,20 @@
     Basic tells if the reward item is any progress item. Advanced tells if the trial is WotH, Barren, or potentially required.
     Direct tells the item on the trial directly.
   ui: option_song_hints
-- name: Patch BiT
-  command: patch-bit
-  type: boolean
-  default: false
-  help: If enabled, forces the title screen to reload fully - making the Back in Time tricks impossible.
-  ui: option_patch_bit
-- name: Fix BiT crashes
-  command: fix-bit-crashes
-  type: boolean
-  default: false
-  help: If enabled, does not load some arcs in BiT when all file slots are filled to make all areas accessible in BiT
-  ui: option_fix_bit_crashes
+- name: BiT Changes
+  command: bit-patches
+  type: singlechoice
+  bits: 2
+  choices:
+    - Disable BiT
+    - Vanilla
+    - Fix BiT Crashes
+  default: Vanilla
+  help: "Changes how the Back in Time (BiT) glitch works.
+        Disable BiT: Forces the title screen to reload fully - making all BiT tricks impossible.
+        Vanilla: Keeps the vanilla game behaviour where BiT is possible but Eldin BiT (and others) will still crash.
+        Fix BiT Crashes: Does not load some arcs in BiT when all file slots are filled to make all areas accessible in BiT."
+  ui: option_bit_patches
 - name: Output placement file
   command: out-placement-file
   type: boolean

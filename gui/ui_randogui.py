@@ -716,15 +716,15 @@ class Ui_MainWindow(object):
         self.vlay_vanilla_tweaks = QVBoxLayout(self.verticalLayoutWidget_18)
         self.vlay_vanilla_tweaks.setObjectName(u"vlay_vanilla_tweaks")
         self.vlay_vanilla_tweaks.setContentsMargins(0, 0, 0, 0)
-        self.option_patch_bit = QCheckBox(self.verticalLayoutWidget_18)
-        self.option_patch_bit.setObjectName(u"option_patch_bit")
+        self.label_for_option_bit_patches = QLabel(self.verticalLayoutWidget_18)
+        self.label_for_option_bit_patches.setObjectName(u"label_for_option_bit_patches")
 
-        self.vlay_vanilla_tweaks.addWidget(self.option_patch_bit)
+        self.vlay_vanilla_tweaks.addWidget(self.label_for_option_bit_patches)
 
-        self.option_fix_bit_crashes = QCheckBox(self.verticalLayoutWidget_18)
-        self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
+        self.option_bit_patches = QComboBox(self.verticalLayoutWidget_18)
+        self.option_bit_patches.setObjectName(u"option_bit_patches")
 
-        self.vlay_vanilla_tweaks.addWidget(self.option_fix_bit_crashes)
+        self.vlay_vanilla_tweaks.addWidget(self.option_bit_patches)
 
         self.vspace_vanilla_tweaks = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1260,7 +1260,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(2)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1341,8 +1341,7 @@ class Ui_MainWindow(object):
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
         self.box_vanilla_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Vanilla Tweaks", None))
-        self.option_patch_bit.setText(QCoreApplication.translate("MainWindow", u"Disable BiT", None))
-        self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT Crashes", None))
+        self.label_for_option_bit_patches.setText(QCoreApplication.translate("MainWindow", u"BiT Patches", None))
         self.box_item_pool.setTitle(QCoreApplication.translate("MainWindow", u"Item Pool", None))
         self.option_gondo_upgrades.setText(QCoreApplication.translate("MainWindow", u"Place Scrap Shop Upgrades", None))
         self.label_for_option_rupoor_mode.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
