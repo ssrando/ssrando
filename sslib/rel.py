@@ -148,7 +148,7 @@ class REL:
 
         if section_index is None:
             raise Exception(
-                "Offset %04X is not in the data for any of the REL sections" % offset
+                "Offset %04X is not in the data for any of the REL sections." % offset
             )
 
         return (section_index, relative_offset)
@@ -178,7 +178,7 @@ class REL:
 
         if data is None:
             raise Exception(
-                "Offset %04X is not in the data for any of the REL sections" % offset
+                "Offset %04X is not in the data for any of the REL sections." % offset
             )
 
         return read_callback(data, relative_offset, *args)
@@ -193,7 +193,7 @@ class REL:
 
         if data is None:
             raise Exception(
-                "Offset %04X is not in the data for any of the REL sections" % offset
+                "Offset %04X is not in the data for any of the REL sections." % offset
             )
 
         write_callback(data, relative_offset, *args)

@@ -137,11 +137,11 @@ class BasicTextAtom(LogicExpression):
     text: str
 
     def eval(self, *args):
-        raise TypeError("Text must be localized to be evaluated")
+        raise TypeError("Text must be localized to be evaluated.")
 
     def localize(self, localizer: Callable[[str], EXTENDED_ITEM_NAME | None]):
         if (v := localizer(self.text)) is None:
-            raise ValueError(f"Unknown event {self.text}")
+            raise ValueError(f"Unknown event {self.text}.")
         else:
             ret = EventAtom(v)
             ret.opaque = self.opaque
@@ -184,7 +184,7 @@ class AndCombination(LogicExpression):
 
     def eval(self, *args):
         raise TypeError(
-            f"Some argument of this {type(self).__name__} cannot be evaluated, or something has gone wrong"
+            f"Some argument of this {type(self).__name__} cannot be evaluated, or something has gone wrong."
         )
 
 
@@ -214,7 +214,7 @@ class OrCombination(LogicExpression):
 
     def eval(self, *args):
         raise TypeError(
-            f"Some argument of this {type(self).__name__} cannot be evaluated, or something has gone wrong"
+            f"Some argument of this {type(self).__name__} cannot be evaluated, or something has gone wrong."
         )
 
 
@@ -272,7 +272,7 @@ class MakeExpression(Transformer):
         if match := item_with_count_re.search(text):
             item_name = match.group(1)
             if item_name not in RAW_ITEM_NAMES:
-                raise ValueError(f"Unknown item {item_name}")
+                raise ValueError(f"Unknown item {item_name}.")
             return InventoryAtom(item_name, int(match.group(2)))
 
         elif text in RAW_ITEM_NAMES or text in EXTENDED_ITEM:

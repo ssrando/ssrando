@@ -19,6 +19,10 @@ OPEN_THUNDERHEAD_OPTION = EIN("Open Thunderhead option")
 OPEN_ET_OPTION = EIN("Open ET option")
 OPEN_LMF_OPTION = EIN("Open LMF option")
 LMF_NODES_ON_OPTION = EIN("LMF Nodes On option")
+FLORIA_GATES_OPTION = EIN("Floria Gates option")
+TALK_TO_YERBAL_OPTION = EIN("Talk to Yerbal option")
+VANILLA_LAKE_FLORIA_OPTION = EIN("Vanilla Lake Floria option")
+OPEN_LAKE_FLORIA_OPTION = EIN("Open Lake Floria option")
 RANDOMIZED_BEEDLE_OPTION = EIN("Randomized Beedle option")
 GONDO_UPGRADES_ON_OPTION = EIN("Gondo Upgrades On option")
 NO_BIT_CRASHES = EIN("No BiT crashes")
@@ -42,6 +46,10 @@ LOGIC_OPTIONS = dict.fromkeys(
         OPEN_ET_OPTION,
         OPEN_LMF_OPTION,
         LMF_NODES_ON_OPTION,
+        FLORIA_GATES_OPTION,
+        TALK_TO_YERBAL_OPTION,
+        VANILLA_LAKE_FLORIA_OPTION,
+        OPEN_LAKE_FLORIA_OPTION,
         RANDOMIZED_BEEDLE_OPTION,
         GONDO_UPGRADES_ON_OPTION,
         NO_BIT_CRASHES,
@@ -75,7 +83,7 @@ def entrance_of_exit(exit):
         return exit.replace("Exit", "Entrance")
     if "Exit to " in exit:
         return exit.replace("Exit to", "Entrance from")
-    raise ValueError("No pattern")
+    raise ValueError("No pattern found for the entrance of exit {exit}.")
 
 
 SV = "Skyview"
@@ -140,7 +148,7 @@ ITEM_COUNTS: Dict[str, int] = defaultdict(lambda: 1)
 
 def number(name: str, index: int) -> EXTENDED_ITEM_NAME:
     if index >= ITEM_COUNTS[name]:
-        raise ValueError("Index too high")
+        raise ValueError("Constant index too high.")
     if ITEM_COUNTS[name] == 1:
         return EIN(name)
     return EIN(f"{name} #{index}")

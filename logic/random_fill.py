@@ -71,5 +71,5 @@ class RandomFill:
             return True
 
         raise self.useroutput.GenerationFailed(
-            f"no more location accessible for {item}"
+            f"No more locations accessible for {item}."
         )

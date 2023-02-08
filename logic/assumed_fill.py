@@ -55,7 +55,9 @@ class AssumedFill:
         for item in progress_list:
             self.useroutput.progress_callback("placing progress items...")
             if not self.place_item(item):
-                raise self.useroutput.GenerationFailed(f"could not place {item}")
+                raise self.useroutput.GenerationFailed(
+                    f"Could not find a valid location to place {item}. This may be because the settings are too restrictive. Try randomizing a new seed."
+                )
 
         # for i, (e, _) in enumerate(self.logic.pools):
         #     for _ in range(len(e)):
@@ -118,7 +120,7 @@ class AssumedFill:
             return False
         if not accessible_locations:
             raise self.useroutput.GenerationFailed(
-                f"no more location accessible for {item}"
+                f"No more locations accessible for {item}."
             )
 
         self.check_known_failures(item)
@@ -143,7 +145,7 @@ class AssumedFill:
             and not self.logic.full_inventory[EXTENDED_ITEM[number(PROGRESSIVE_BOW, 0)]]
         ):
             raise self.useroutput.GenerationFailed(
-                f"Known generation failure : Vanilla Bow"
+                f"Known generation failure: Vanilla Bow."
             )
 
         if (
@@ -152,7 +154,7 @@ class AssumedFill:
             and not self.logic.full_inventory[EXTENDED_ITEM[WHIP]]
         ):
             raise self.useroutput.GenerationFailed(
-                f"Known generation failure : Vanilla Whip"
+                f"Known generation failure: Vanilla Whip."
             )
 
     def link(self, pool: int, entrance=None, depth=0):
@@ -188,4 +190,4 @@ class AssumedFill:
             if result:
                 self.link(pool, result, depth + 1)
 
-        raise ValueError("No exit could be found for the entrance")
+        raise ValueError("No exit could be found for the entrance.")

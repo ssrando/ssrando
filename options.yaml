@@ -406,7 +406,6 @@
     - Sky Keep - FS Room Clawshots Vine Clip
   default: []
   help: Enable specific tricks to be considered in logic
-  ui: enabled_tricks
 - name: Enabled Tricks Glitched
   command: enabled-tricks-glitched
   type: multichoice
@@ -421,7 +420,6 @@
 
   default: []
   help: Enable specific tricks to be considered in logic
-  ui: enabled_tricks
 - name: Song Hints
   command: song-hints
   type: singlechoice
@@ -644,6 +642,20 @@
   ui: option_no_enemy_music
   permalink: false
   cosmetic: true
+- name: Open Lake Floria
+  command: open-lake-floria
+  type: singlechoice
+  bits: 2
+  choices:
+    - Vanilla
+    - Talk to Yerbal
+    - Open
+  default: Vanilla
+  help: "Choose how to access Lake Floria.
+         Vanilla: Logically requires you to talk to Yerbal and draw on the Floria Gates to enter Lake Floria.
+         Talk to Yerbal: Logically requires you to talk to Yerbal to enter Lake Floria.
+         Open: The Floria Gates are opened from the start of the game." # when you obtain the Water Scale."
+  ui: option_open_lake_floria
 - name: Filling Algorithm
   command: fill-algorithm
   type: singlechoice

@@ -79,7 +79,7 @@ class Rando:
             FillAlgorithm = RandomFill
         else:
             raise ValueError(
-                f"Wrong value for option 'fill-algorithm: f'{fill_algorithm}'"
+                f"Wrong value for option 'fill-algorithm: f'{fill_algorithm}'."
             )
 
         runtime_requirements = (
@@ -112,7 +112,7 @@ class Rando:
 
         def fun():
             if not self.randomised:
-                raise ValueError("Cannot extract hint logic before randomisation")
+                raise ValueError("Cannot extract hint logic before randomisation.")
             return LogicUtils(
                 areas,
                 logic.placement,
@@ -311,7 +311,7 @@ class Rando:
             elif rupoor_mode == "Rupoor Insanity":
                 unplaced = may_be_placed_list
             else:
-                raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}")
+                raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
 
         must_be_placed_items = (
@@ -346,6 +346,10 @@ class Rando:
             OPEN_ET_OPTION: self.options["open-et"],
             OPEN_LMF_OPTION: self.options["open-lmf"] == "Open",
             LMF_NODES_ON_OPTION: self.options["open-lmf"] == "Main Node",
+            FLORIA_GATES_OPTION: self.options["open-lake-floria"] == "Floria Gates",
+            TALK_TO_YERBAL_OPTION: self.options["open-lake-floria"] == "Talk to Yerbal",
+            VANILLA_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Vanilla",
+            OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
             RANDOMIZED_BEEDLE_OPTION: shop_mode != "Vanilla",
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
             NO_BIT_CRASHES: self.options["fix-bit-crashes"],
@@ -402,7 +406,7 @@ class Rando:
                 checks_to_use = DUNGEON_FINAL_CHECK
             else:
                 raise ValueError(
-                    f"Option sword-dungeon-reward has unknown value {sword_reward_mode}"
+                    f"Option sword-dungeon-reward has unknown value {sword_reward_mode}."
                 )
 
             dungeons = self.required_dungeons.copy()
