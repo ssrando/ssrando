@@ -72,7 +72,7 @@ class Hints:
         self.rng = rng
 
         self.dist = HintDistribution()
-        if self.logic.rando.options["hint-distribution"] == "Custom":
+        if self.options["hint-distribution"] == "Custom":
             if not CUSTOM_HINT_DISTRIBUTION_PATH.exists():
                 raise Exception(
                     "Custom distro file not found. Ensure that custom_hint_distribution.json exists in the same directory as the randomizer"
@@ -82,7 +82,7 @@ class Hints:
         else:
             with open(
                 RANDO_ROOT_PATH
-                / f"hints/distributions/{self.logic.rando.options['hint-distribution']}.json"
+                / f"hints/distributions/{self.options['hint-distribution']}.json"
             ) as f:
                 self.dist.read_from_file(f)
 
