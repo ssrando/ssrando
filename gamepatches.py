@@ -1228,7 +1228,9 @@ class GamePatcher:
         elif rupeesanity_option == "All":
             to_remove = []
         else:
-            raise ValueError(f"Wrong value {rupeesanity_option} for option rupeesanity.")
+            raise ValueError(
+                f"Wrong value {rupeesanity_option} for option rupeesanity."
+            )
 
         for rupee_check in to_remove:
             del filtered_item_locations[rupee_check]
