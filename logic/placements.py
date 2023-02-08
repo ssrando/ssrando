@@ -124,11 +124,11 @@ DUNGEON_BOSS_KEYS_RESTRICTION = norm_values(
 
 MAP_CHECKS = [
     "Skyview - Chest on Tree Branch",
-    "Earth Temple - West Room - Chest",
-    "Lanayru Mining Facility - Armos Fight Room - Chest",
-    "Ancient Cistern - After Whip Hooks - Chest",
+    "Earth Temple - Chest in West Room",
+    "Lanayru Mining Facility - Chest after Armos Fight",
+    "Ancient Cistern - Chest after Whip Hooks",
     "Sandship - Chest before 4-Door Corridor",
-    "Fire Sanctuary - Second Trapped Mogma Room - Reward",
+    "Fire Sanctuary - Chest after Second Trapped Mogma",
     "Sky Keep - First Chest",
 ]
 VANILLA_MAPS_PLACEMENT = norm_vanilla(MAP_CHECKS)
