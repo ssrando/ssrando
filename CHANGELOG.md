@@ -101,6 +101,9 @@
 - Fixed light pillars not visually appearing when obtaining a tablet until a reload
 - Fixed Early Lake Floria Tricks not actually changing logic
 - Fixed Yerbal's map hint not showing the X marker on the map
+- Fixed bug where setting the `map-mode` or `boss-key-mode` options to "Vanilla" AND starting with some but not all maps or boss keys would throw an error
+  - Any maps or boss keys NOT added as starting items will now be placed in their vanilla locations (if the `map-mode`/`boss-key-mode` options are set to "Vanilla")
+  - Any maps or boss keys added as starting items will be added to the starting inventory
 
 
 ## 1.3.2
