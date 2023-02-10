@@ -526,6 +526,20 @@ D003_7: # Sky Keep Entrance Room
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove bars
+    type: objdelete
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Remove bars opening cs
+    type: objpatch
+    id: 0xFC16
+    room: 0
+    layer: 4
+    objtype: STAG
+    object:
+      params1: 0xFF1516FF # 0x000000FF = event number
 D003_8: # this change is purely to make sure D003_8 gets patched, so a perviously broken rando version gets overwritten
   - name: remove unused layer
     type: objdelete

@@ -94,6 +94,8 @@
   - The 2 small chests previously found within the Goddess Statue have been removed
 - Removed all skippable cutscenes except boss intro cutscenes (by CovenEsme)
   - When starting a new file, Link will now spawn directly in his room
+- Removed first set of bars in Sky Keep (by CovenEsme)
+  - The first chest in Sky Keep is no longer required to get the other checks within Sky Keep
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
