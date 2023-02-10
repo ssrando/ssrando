@@ -414,6 +414,14 @@ B301: # after Sandship boss
       story_flag1: -1
       story_flag2: 933 # set defeat tentalus storyflag
       item: -1
+  - name: Remove Nayru's Flame Cutscene
+    type: objpatch
+    room: 0
+    index: 4
+    objtype: PLY
+    object:
+      play_cutscene: -1
+      entrance_id: 3
   - name: Fi text before FS CS
     type: objadd
     room: 0

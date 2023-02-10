@@ -108,26 +108,6 @@ DEFAULT_AREA = OrderedDict(
     dummy=b"\xFF\xFF\xFF",
 )
 
-# cutscenes to use to set storyflags, sceneflags and itemflags
-START_CUTSCENES = [
-    # stage, room, eventindex
-    ("F000", 0, 22),
-    ("F000", 0, 23),
-    ("F001r", 1, 2),
-    ("F405", 0, 0),
-]
-
-# The stage name of each dungeon
-DUNGEON_STAGES = {
-    SV: "D100",
-    AC: "D101",
-    ET: "D200",
-    FS: "D201",
-    LMF: "D300",
-    SSH: "D301",
-    SK: "D003_7",
-}
-
 # The stage for each map where there are dungeon entrances
 DUNGEON_ENTRANCE_STAGES = {
     # stage, room, scen
@@ -179,7 +159,7 @@ DUNGEON_FINISH_EXIT_SCEN = {
     ET: ("B210", 0, 0),
     LMF: ("F300_4", 0, 3),
     AC: ("B101_1", 0, 3),
-    SSH: ("B301", 0, 4),
+    SSH: ("B301", 0, 3),
     FS: ("B201_1", 0, 2),
     SK: ("F407", 0, 1),
 }
