@@ -112,7 +112,7 @@ class RandoGUI(QMainWindow):
                         widget.setMaximum(option["max"])
                     widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
-        
+
         self.custom_theme_picker = QColorDialog()
 
         # Tricks ui.
@@ -516,16 +516,16 @@ class RandoGUI(QMainWindow):
         else:  # this should only be no logic
             # disable the trick interface
             self.disable_trick_interface()
-    
+
     def get_custom_colour_as_hex(self, colour_int: int):
         colour = QColor(
-            colour_int >> 16,       # r
-            colour_int >> 8 & 0xFF, # g
-            colour_int & 0xFF,      # b
-            255
+            colour_int >> 16,  # r
+            colour_int >> 8 & 0xFF,  # g
+            colour_int & 0xFF,  # b
+            255,
         )
         return colour.name()
-    
+
     def get_custom_colour_as_int(self, r: int, g: int, b: int, a: int = None):
         return (r << 16) + (g << 8) + b
 
@@ -533,10 +533,12 @@ class RandoGUI(QMainWindow):
         qdarktheme.setup_theme(
             theme.lower(),
             custom_colors={
-                "background": self.get_custom_colour_as_hex(self.options["gui-theme-custom"])
-            }
+                "background": self.get_custom_colour_as_hex(
+                    self.options["gui-theme-custom"]
+                )
+            },
         )
-    
+
     def open_custom_theme_picker(self):
         initial_colour = self.get_custom_colour_as_hex(self.options["gui-theme-custom"])
         colour = QColorDialog.getColor(initial_colour, self, "Select colour")
@@ -546,10 +548,12 @@ class RandoGUI(QMainWindow):
 
         qdarktheme.setup_theme(
             self.options["gui-theme"].lower(),
-            custom_colors={"background": colour.name()}
-            )
+            custom_colors={"background": colour.name()},
+        )
         r, g, b, _ = colour.getRgb()
-        self.options.set_option("gui-theme-custom", self.get_custom_colour_as_int(r, g, b))
+        self.options.set_option(
+            "gui-theme-custom", self.get_custom_colour_as_int(r, g, b)
+        )
         self.update_settings()
 
     def enable_trick_interface(self):
