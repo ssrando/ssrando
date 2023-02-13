@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (
     QInputDialog,
     QLineEdit,
     QApplication,
-    QStyleFactory,
+    QColorDialog,
 )
 from gui.sort_model import LocationsModel
 from gui.tricks_dialog import TricksDialog
@@ -34,6 +34,8 @@ from ssrando import Randomizer, VERSION
 from paths import RANDO_ROOT_PATH
 from gui.ui_randogui import Ui_MainWindow
 from witmanager import WitManager
+
+import qdarktheme
 
 # Allow keyboard interrupts on the command line to instantly close the program.
 import signal
@@ -97,6 +99,9 @@ class RandoGUI(QMainWindow):
                     )
                     if option["name"] == "Logic Mode":
                         widget.currentIndexChanged.connect(self.logic_mode_changed)
+                    elif option["name"] == "GUI Theme":
+                        widget.currentTextChanged.connect(self.theme_changed)
+                        self.theme_changed(self.options[option_key])
                     widget.currentIndexChanged.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
@@ -110,6 +115,7 @@ class RandoGUI(QMainWindow):
 
         # setup misc controls
         self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
+        self.custom_theme_picker = QColorDialog()
 
         # Tricks ui.
         self.enabled_tricks_model = QStringListModel()
@@ -204,6 +210,7 @@ class RandoGUI(QMainWindow):
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
+        self.ui.theme_custom_button.clicked.connect(self.open_custom_theme_picker)
         self.update_ui_for_settings()
         self.update_settings()
         self.set_option_description(None)
@@ -517,6 +524,45 @@ class RandoGUI(QMainWindow):
             # disable the trick interface
             self.disable_trick_interface()
 
+    def get_custom_colour_as_hex(self, colour_int: int):
+        colour = QColor(
+            colour_int >> 16,  # r
+            colour_int >> 8 & 0xFF,  # g
+            colour_int & 0xFF,  # b
+            255,
+        )
+        return colour.name()
+
+    def get_custom_colour_as_int(self, r: int, g: int, b: int, a: int = None):
+        return (r << 16) + (g << 8) + b
+
+    def theme_changed(self, theme: str):
+        qdarktheme.setup_theme(
+            theme.lower(),
+            custom_colors={
+                "background": self.get_custom_colour_as_hex(
+                    self.options["gui-theme-custom"]
+                )
+            },
+        )
+
+    def open_custom_theme_picker(self):
+        initial_colour = self.get_custom_colour_as_hex(self.options["gui-theme-custom"])
+        colour = QColorDialog.getColor(initial_colour, self, "Select colour")
+
+        if not colour.isValid():
+            return
+
+        qdarktheme.setup_theme(
+            self.options["gui-theme"].lower(),
+            custom_colors={"background": colour.name()},
+        )
+        r, g, b, _ = colour.getRgb()
+        self.options.set_option(
+            "gui-theme-custom", self.get_custom_colour_as_int(r, g, b)
+        )
+        self.update_settings()
+
     def enable_trick_interface(self):
         getattr(self.ui, "edit_tricks").setEnabled(True)
 
@@ -724,35 +770,9 @@ class RandoGUI(QMainWindow):
 
 def run_main_gui(areas: Areas, options: Options):
     app = QApplication([])
-    app.setStyle(QStyleFactory.create("fusion"))
-
-    # darkPalette = QPalette()
-    # darkColor = QColor(45, 45, 45)
-    # disabledColor = QColor(127, 127, 127)
-    # darkPalette.setColor(QPalette.Window, darkColor)
-    # darkPalette.setColor(QPalette.WindowText, Qt.white)
-    # darkPalette.setColor(QPalette.Base, QColor(18, 18, 18))
-    # darkPalette.setColor(QPalette.AlternateBase, darkColor)
-    # darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
-    # darkPalette.setColor(QPalette.ToolTipText, Qt.white)
-    # darkPalette.setColor(QPalette.Text, Qt.white)
-    # darkPalette.setColor(QPalette.Disabled, QPalette.Text, disabledColor)
-    # darkPalette.setColor(QPalette.Button, darkColor)
-    # darkPalette.setColor(QPalette.ButtonText, Qt.white)
-    # darkPalette.setColor(QPalette.Disabled, QPalette.ButtonText, disabledColor)
-    # darkPalette.setColor(QPalette.BrightText, Qt.red)
-    # darkPalette.setColor(QPalette.Link, QColor(42, 130, 218))
-
-    # darkPalette.setColor(QPalette.Highlight, QColor(42, 130, 218))
-    # darkPalette.setColor(QPalette.HighlightedText, Qt.black)
-    # darkPalette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabledColor)
-
-    # app.setPalette(darkPalette)
-    app.setStyleSheet(
-        "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }"
-    )
 
     widget = RandoGUI(areas, options)
+
     widget.show()
 
     sys.exit(app.exec_())

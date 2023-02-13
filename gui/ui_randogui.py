@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.2
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -66,10 +66,15 @@ class Ui_MainWindow(object):
         self.tab_setup.setObjectName(u"tab_setup")
         self.verticalLayoutWidget_9 = QWidget(self.tab_setup)
         self.verticalLayoutWidget_9.setObjectName(u"verticalLayoutWidget_9")
-        self.verticalLayoutWidget_9.setGeometry(QRect(10, 10, 1001, 115))
+        self.verticalLayoutWidget_9.setGeometry(QRect(10, 10, 1001, 126))
         self.vlay_files = QVBoxLayout(self.verticalLayoutWidget_9)
         self.vlay_files.setObjectName(u"vlay_files")
         self.vlay_files.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+
+        self.vlay_files.addLayout(self.horizontalLayout_2)
+
         self.hlay_output = QHBoxLayout()
         self.hlay_output.setObjectName(u"hlay_output")
         self.label_output = QLabel(self.verticalLayoutWidget_9)
@@ -303,6 +308,44 @@ class Ui_MainWindow(object):
 
 
         self.vlay_presets.addLayout(self.hlay_presets_controls)
+
+        self.box_accessibility = QGroupBox(self.tab_setup)
+        self.box_accessibility.setObjectName(u"box_accessibility")
+        self.box_accessibility.setGeometry(QRect(810, 130, 181, 161))
+        self.verticalLayoutWidget_15 = QWidget(self.box_accessibility)
+        self.verticalLayoutWidget_15.setObjectName(u"verticalLayoutWidget_15")
+        self.verticalLayoutWidget_15.setGeometry(QRect(10, 20, 161, 132))
+        self.vlay_accessibility = QVBoxLayout(self.verticalLayoutWidget_15)
+        self.vlay_accessibility.setObjectName(u"vlay_accessibility")
+        self.vlay_accessibility.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_37 = QVBoxLayout()
+        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+
+        self.vlay_accessibility.addLayout(self.verticalLayout_37)
+
+        self.option_theme_label = QLabel(self.verticalLayoutWidget_15)
+        self.option_theme_label.setObjectName(u"option_theme_label")
+
+        self.vlay_accessibility.addWidget(self.option_theme_label)
+
+        self.hlay_theme = QHBoxLayout()
+        self.hlay_theme.setObjectName(u"hlay_theme")
+        self.option_theme = QComboBox(self.verticalLayoutWidget_15)
+        self.option_theme.setObjectName(u"option_theme")
+
+        self.hlay_theme.addWidget(self.option_theme)
+
+        self.theme_custom_button = QPushButton(self.verticalLayoutWidget_15)
+        self.theme_custom_button.setObjectName(u"theme_custom_button")
+
+        self.hlay_theme.addWidget(self.theme_custom_button)
+
+
+        self.vlay_accessibility.addLayout(self.hlay_theme)
+
+        self.vspace_accessibility = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.vlay_accessibility.addItem(self.vspace_accessibility)
 
         self.tabWidget.addTab(self.tab_setup, "")
         self.tab_randomization_settings = QWidget()
@@ -1300,6 +1343,10 @@ class Ui_MainWindow(object):
         self.load_preset.setText(QCoreApplication.translate("MainWindow", u"Load", None))
         self.save_preset.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.delete_preset.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
+        self.box_accessibility.setTitle(QCoreApplication.translate("MainWindow", u"Accessibility", None))
+        self.option_theme_label.setText(QCoreApplication.translate("MainWindow", u"Theme", None))
+        self.option_theme.setCurrentText("")
+        self.theme_custom_button.setText(QCoreApplication.translate("MainWindow", u"Custom", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_setup), QCoreApplication.translate("MainWindow", u"Setup", None))
 #if QT_CONFIG(tooltip)
         self.tab_randomization_settings.setToolTip("")

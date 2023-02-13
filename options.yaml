@@ -25,6 +25,25 @@
   default: false
   permalink: false
   help: Don't launch the randomizer UI, just read command line params
+- name: GUI Theme
+  command: gui-theme
+  type: singlechoice
+  permalink: false
+  choices:
+    - Light
+    - Dark
+    - Auto
+  default: Auto
+  help: Choose the theme of the randomizer program.
+  ui: option_theme
+- name: Custom GUI Theme
+  command: gui-theme-custom
+  type: int
+  default: -1
+  min: -1
+  max: 16777215
+  permalink: false
+  help: Determines the custom colour used for the custom randomizer theme.
 - name: Starting Tablet Count
   command: starting-tablet-count
   type: int
