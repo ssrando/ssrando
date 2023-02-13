@@ -100,7 +100,7 @@ def write_str(data, offset, new_string, max_length):
     str_len = len(new_string)
     if str_len >= max_length:
         raise Exception(
-            'String "%s" is too long (max length including null byte: 0x%X)'
+            'String "%s" is too long (max length including null byte: 0x%X).'
             % (new_string, max_length)
         )
 
@@ -119,7 +119,7 @@ def write_magic_str(data, offset, new_string, max_length):
     str_len = len(new_string)
     if str_len > max_length:
         raise Exception(
-            "String %s is too long (max length 0x%X)" % (new_string, max_length)
+            "String %s is too long (max length 0x%X)." % (new_string, max_length)
         )
 
     padding_length = max_length - str_len

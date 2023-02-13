@@ -58,7 +58,7 @@ def parseMSB(data: bytes) -> ParsedMsb:
         parsed["type"] = "MsgStdBn"
         assert data[10:16] == b"\x00\x00\x01\x03\x00\x03"
     else:
-        raise Exception("unsupported filetype!")
+        raise Exception("Unsupported filetype.")
     assert struct.unpack(">i", data[0x12:0x16])[0] == len(data)
     pos = 0x20
     while pos < len(data):
@@ -133,7 +133,7 @@ def parseMSB(data: bytes) -> ParsedMsb:
                 ]
                 parsed["TXT2"].append(bytestring)
         else:
-            raise Exception(f"unsupported seg_id: {seg_id}")
+            raise Exception(f"Unsupported seg_id: {seg_id}.")
     return parsed
 
 
@@ -145,7 +145,7 @@ def buildMSB(msb: ParsedMsb) -> bytes:
         header = b"MsgStdBn\xFE\xFF"
         header += b"\x00\x00\x01\x03\x00\x03"
     else:
-        raise Exception(f'unsupported filetype: {msb["type"]}')
+        raise Exception(f'Unsupported filetype: {msb["type"]}.')
     header = bytearray(header + b"\x00" * 16)
     total_body = b""
     for seg_id, seg_data in msb.items():
@@ -207,7 +207,7 @@ def buildMSB(msb: ParsedMsb) -> bytes:
             body += seg_header
             body += seg_body
         else:
-            raise Exception(f"unsupported seg_id: {seg_id}")
+            raise Exception(f"Unsupported seg_id: {seg_id}.")
         total_body += seg_id.encode("ascii")
         total_body += struct.pack(">i", len(body)) + 8 * b"\x00"
         total_body += body

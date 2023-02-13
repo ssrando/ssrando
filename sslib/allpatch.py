@@ -58,7 +58,7 @@ class AllPatcher:
         self.progress_callback = dummy_progress_callback
         if not (self.actual_extract_path / "DATA").exists():
             raise Exception(
-                "actual extract path should have a DATA subdir, make sure the directory structure is properly set up!"
+                "actual_extract path should have a DATA subdir, make sure the directory structure is properly set up."
             )
 
     def add_stage_oarc(self, stage: str, layer: int, oarcs: Iterable[str]):
@@ -277,7 +277,7 @@ class AllPatcher:
                 )
 
         if eventrootpath == None:
-            raise Exception("Event files not found")
+            raise Exception("Event files not found.")
         for eventpath in eventrootpath.glob("*.arc"):
             modified = False
             filename = eventpath.parts[-1]

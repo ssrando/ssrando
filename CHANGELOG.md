@@ -21,6 +21,10 @@
 - Added option to start with a random progress item (by CovenEsme)
 - Added the ability to ban individual locations (by cjs07)
 - Removed the "Banned Types" option
+- Added options to control entry into Lake Floria
+  - Talk to Yerbal: You are required to talk to Yerbal and he will open the floria door
+  - Vanilla: You are logically required to talk to Yerbal and draw on the floria door
+  - Open: The floria door is open from the start of the game. You are not required to talk to Yerbal or draw on the floria door
 - Added cosmetic option to have stars appear in the sky during both day and night (by CovenEsme)
   - Stars appear on the surface regions, the Sky and Skyloft
   - Some users (particularly Wii Console users) may experience some minor lag when enabling this option (can be adjusted)
@@ -79,6 +83,7 @@
 - Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check and buying a shield (by CovenEsme)
 - Removed the cutscene after completing the Isle of Songs puzzle
 - Removed the panning cutscenes during the Fledge's Gift check (by CovenEsme)
+- Shortened Yerbal's text to become in-line with the rest of the randomizer
 - Added the ability to hold down the B button to clear textboxes (by CovenEsme)
 - Added quick text (by CovenEsme and Muzugalium - with help from Lepelog and YourAverageLink)
   - Removes the delay between clearing a textbox and being able to clear the next one
@@ -94,6 +99,8 @@
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
 - Fixed a bug that would make sandship dowsing sometimes not be the top dowsing slot icon; it now has top priority
 - Fixed light pillars not visually appearing when obtaining a tablet until a reload
+- Fixed Early Lake Floria Tricks not actually changing logic
+- Fixed Yerbal's map hint not showing the X marker on the map
 
 
 ## 1.3.2

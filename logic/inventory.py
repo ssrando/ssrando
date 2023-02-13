@@ -192,7 +192,7 @@ class Inventory:
                         )
                     )
             else:
-                raise ValueError(f"{item} not in inventory")
+                raise ValueError(f"{item} not in inventory.")
         raise ValueError(item)
 
     @staticmethod

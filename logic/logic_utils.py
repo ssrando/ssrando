@@ -58,7 +58,7 @@ class LogicUtils(Logic):
         full_inventory = Logic.fill_inventory(self.requirements, EMPTY_INV)
         DEMISE_BIT = EXTENDED_ITEM[self.short_to_full(DEMISE)]
         if not full_inventory[DEMISE_BIT]:
-            raise useroutput.GenerationFailed(f"Could not reach Demise")
+            raise useroutput.GenerationFailed(f"Could not reach Demise.")
 
         full_inventory = Logic.fill_inventory(self.requirements, Inventory(BANNED_BIT))
 
@@ -66,19 +66,19 @@ class LogicUtils(Logic):
             (everything_req,) = self.requirements[EVERYTHING_BIT].disjunction
             i = next(iter(everything_req.intset - full_inventory.intset))
             check = self.areas.full_to_short(EXTENDED_ITEM.get_item_name(i))
-            raise useroutput.GenerationFailed(f"Could not reach check {check}")
+            raise useroutput.GenerationFailed(f"Could not reach check {check}.")
 
         if not all(item in self.placement.locations for item in self.areas.checks):
             check = next(iter(set(self.areas.checks) - set(self.placement.locations)))
             check_name = self.areas.full_to_short(check)
             raise useroutput.GenerationFailed(
-                f"Check {check_name} has not been assigned an item"
+                f"Check {check_name} has not been assigned an item."
             )
 
         if not all(item in self.placement.items for item in INVENTORY_ITEMS):
             item = next(iter(set(INVENTORY_ITEMS) - set(self.placement.items)))
             raise useroutput.GenerationFailed(
-                f"Item {item} has not been handled by the randomizer"
+                f"Item {item} has not been handled by the randomizer."
             )
 
     @cache

@@ -63,7 +63,7 @@ class DOL:
 
         if offset is None:
             raise Exception(
-                "Address %08X is not in the data for any of the DOL sections" % address
+                "Address %08X is not in the data for any of the DOL sections." % address
             )
 
         return read_callback(self.data, offset, *args)
@@ -75,7 +75,7 @@ class DOL:
 
         if offset is None:
             raise Exception(
-                "Address %08X is not in the data for any of the DOL sections" % address
+                "Address %08X is not in the data for any of the DOL sections." % address
             )
 
         write_callback(self.data, offset, *args)
