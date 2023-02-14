@@ -1,0 +1,257 @@
+Base colors:
+  - name: background
+    description: Overall background color. This color is only used if not overridden by a widget.
+    colour-light: 0xf8f9faff
+    colour-dark: 0x202124ff
+  - name: border
+    description: Overall border color. This color is only used if not overridden by a widget.
+    colour-light: 0xdadce0ff
+    colour-dark: 0x3f4042ff
+  - name: foreground
+    description: Overall foreground color. This color is only used if not overridden by a widget.
+    colour-light: 0x4d5157ff
+    colour-dark: 0xe4e7ebff
+  - name: foreground>disabled
+    description: Overall foreground color for disabled elements. This color is only used if not overridden by a widget.
+    colour-light: 0x4d515766
+    colour-dark: 0xe4e7eb66
+  - name: foreground>disabledSelectionBackground
+    description: Overall background color for the selected item when widgets are disabled.
+    colour-light: 0x4d51573f
+    colour-dark: 0xe4e7eb33
+  - name: foreground>icon
+    description: The colour color for icons.
+    colour-light: 0x494d53ff
+    colour-dark: 0xe1e5e9ff
+  - name: foreground>icon.unfocused
+    description: The colour color for icons when unfocused. Currently, this color is only used for unselected tab close button of QTabBar.
+    colour-light: 0x4d515799
+    colour-dark: 0xe4e7eb99
+  - name: primary
+    description: Accent color.
+    colour-light: 0x1a73e8ff
+    colour-dark: 0x8ab4f7ff
+  - name: primary>selection.background
+    description: Overall background color when selected item or texts. This color is only used if not overridden by a widget.
+    colour-light: 0x619eef7f
+    colour-dark: 0x5f9af466
+Button control:
+  - name: foreground>defaultButton.disabledBackground
+    description: colour QPushButton background color when disabled.
+    colour-light: 0x4d51573f
+    colour-dark: 0xe4e7eb33
+  - name: primary>button.activeBackground
+    description: Background color for QPushButton, QToolButton and button on QDockWidget title when the widget is active(pressed or checked).
+    colour-light: 0x1770e33d
+    colour-dark: 0x5796f43a
+  - name: primary>button.hoverBackground
+    description: Background color for QPushButton, QToolButton and button on QDockWidget title when hovering over buttons using the mouse.
+    colour-light: 0x1770e319
+    colour-dark: 0x669ff51c
+  - name: primary>defaultButton.activeBackground
+    description: QPushButton when the widget is active(pressed or checked).
+    colour-light: 0x619eefff
+    colour-dark: 0x5f9af4ff
+  - name: primary>defaultButton.hoverBackground
+    description: Background color for colour QPushButton when hovering over buttons using the mouse.
+    colour-light: 0x3282eaff
+    colour-dark: 0x75a8f6ff
+Input:
+  - name: input.background
+    description: Background color for QAbstractSpinBox, QComboBox and QLineEdit.
+    colour-light: 0xf8f9faff
+    colour-dark: 0x3f4042ff
+  - name: inputButton.hoverBackground
+    description: Hover background color of button in QAbstractSpinBox.
+    colour-light: 0x00000018
+    colour-dark: 0xffffff25
+  - name: border>input
+    description: Border color for QAbstractSpinBox, QComboBox and QLineEdit.
+    colour-light: 0xdadce0ff
+    colour-dark: 0x3f4042ff
+  - name: foreground>input.placeholder
+    description: QLineEdit and QComboBox(editable) foreground color for placeholder text.
+    colour-light: 0x4d515799
+    colour-dark: 0xe4e7eb99
+Link colors:
+  - name: linkVisited
+    description: Foreground color for already visited hyperlinks.
+    colour-light: 0x660098ff
+    colour-dark: 0xc58af8ff
+Lists and trees:
+  - name: list.alternateBackground
+    description: Background color for QListView/QListWidget, QTreeView/QTreeWidget and QColumnView alternating rows.
+    colour-light: 0x00000009
+    colour-dark: 0xffffff0c
+  - name: list.hoverBackground
+    description: QListView/QListWidget, QTreeView/QTreeWidget and QColumnView background color when hovering over items using the mouse.
+    colour-light: 0x00000013
+    colour-dark: 0xffffff13
+  - name: tree.inactiveIndentGuidesStroke
+    description: QTreeView stroke color for indent guides when QTreeView is inactive.
+    colour-light: 0x00000030
+    colour-dark: 0xffffff35
+  - name: tree.indentGuidesStroke
+    description: QTreeView stroke color for indent guides.
+    colour-light: 0x00000050
+    colour-dark: 0xffffff60
+  - name: treeSectionHeader.background
+    description: QTreeView section header background color.
+    colour-light: 0xdadce0ff
+    colour-dark: 0x3f4042ff
+  - name: background>list
+    description: Background color for QListView/QListWidget, QTreeView/QTreeWidget and QColumnView.
+    colour-light: 0xf8f9faff
+    colour-dark: 0x202124ff
+  - name: primary>list.inactiveSelectionBackground
+    description: QListView/QListWidget, QTreeView/QTreeWidget and QColumnView background color for the selected item when the widget is inactive.
+    colour-light: 0x0d418516
+    colour-dark: 0xd2e3fc26
+  - name: primary>list.selectionBackground
+    description: Background color for QListView/QListWidget, QTreeView/QTreeWidget and QColumnView when selected item or texts.
+    colour-light: 0x4990ed59
+    colour-dark: 0x4288f266
+Menubar:
+  - name: menubar.selectionBackground
+    description: Background color of the selected menu item in the QMenuBar.
+    colour-light: 0x00000020
+    colour-dark: 0xffffff25
+Panel:
+  - name: background>panel
+    description: Background color of QFrame when the frameShape property is Panel.
+    colour-light: 0xffffffff
+    colour-dark: 0x161719ff
+Popup:
+  - name: popupItem.checkbox.background
+    description: Background color of QCheckBox in QMenu.
+    colour-light: 0x00000019
+    colour-dark: 0xffffff19
+  - name: popupItem.selectionBackground
+    description: Background color of the selected item in the QMenu.
+    colour-light: 0x00000022
+    colour-dark: 0xffffff22
+  - name: background>popup
+    description: Background color for QToolTip, QMenu and dropdown of QComboBox.
+    colour-light: 0xffffffff
+    colour-dark: 0x2a2b2fff
+Progress bar:
+  - name: foreground>progressBar.disabledBackground
+    description: Active indicator color of QProgressBar when disabled.
+    colour-light: 0x4d51573f
+    colour-dark: 0xe4e7eb33
+  - name: primary>progressBar.background
+    description: Active indicator color of QProgressBar.
+    colour-light: 0x4990edff
+    colour-dark: 0x669ff5ff
+Scrollbar control:
+  - name: scrollbar.background
+    description: QScrollBar background color. Available on OS other than mac.
+    colour-light: 0x00000010
+    colour-dark: 0xffffff10
+  - name: scrollbarSlider.activeBackground
+    description: QScrollbar slider background color when clicked on.
+    colour-light: 0x00000060
+    colour-dark: 0xffffff60
+  - name: scrollbarSlider.background
+    description: QScrollbar slider background color.
+    colour-light: 0x00000040
+    colour-dark: 0xffffff30
+  - name: scrollbarSlider.disabledBackground
+    description: Scrollbar slider background color when disabled.
+    colour-light: 0x00000015
+    colour-dark: 0xffffff15
+  - name: scrollbarSlider.hoverBackground
+    description: QScrollbar slider background color when hovering.
+    colour-light: 0x00000050
+    colour-dark: 0xffffff45
+Slider control:
+  - name: foreground>slider.disabledBackground
+    description: Active track and handle color of QSlider when disabled.
+    colour-light: 0x4d51573f
+    colour-dark: 0xe4e7eb33
+  - name: foreground>sliderTrack.inactiveBackground
+    description: Inactive track color of QSlider.
+    colour-light: 0x4d515733
+    colour-dark: 0xe4e7eb19
+  - name: primary>sliderHandle.activeBackground
+    description: QSlider handle color when pressing or hovering over the handle using the mouse.
+    colour-light: 0x4990edff
+    colour-dark: 0x6aa1f5ff
+Statusbar colors:
+  - name: statusBar.background
+    description: QStatusBar background color.
+    colour-light: 0xdfe1e5ff
+    colour-dark: 0x2a2b2eff
+  - name: statusBarItem.activeBackground
+    description: QStatusBar item background color when clicking.
+    colour-light: 0x00000024
+    colour-dark: 0xffffff34
+  - name: statusBarItem.hoverBackground
+    description: QStatusBar item background color when hovering.
+    colour-light: 0x00000015
+    colour-dark: 0xffffff22
+Table:
+  - name: table.alternateBackground
+    description: Background color for QTableView/QTableWidget alternating rows.
+    colour-light: 0x00000012
+    colour-dark: 0xffffff15
+  - name: tableSectionHeader.background
+    description: QTableView/QTableWidget section header background color.
+    colour-light: 0xdadce0ff
+    colour-dark: 0x3f4042ff
+  - name: background>table
+    description: QTableView/QTableWidget background color.
+    colour-light: 0xffffffff
+    colour-dark: 0x101012ff
+  - name: primary>table.selectionBackground
+    description: QTableView/QTableWidget background color when selected item.
+    colour-light: 0x3282ea7f
+    colour-dark: 0x4288f28c
+  - name: primary>table.inactiveSelectionBackground
+    description: QTableView/QTableWidget background color for the selected item when the widget is inactive.
+    colour-light: 0x0d418516
+    colour-dark: 0xd2e3fc2d
+Tabs:
+  - name: tab.activeBackground
+    description: Active Tab background color in an QTabBar.
+    colour-light: 0x00000000
+    colour-dark: 0xffffff00
+  - name: tab.hoverBackground
+    description: Tab background color when hovering in an QTabBar.
+    colour-light: 0x00000015
+    colour-dark: 0xffffff18
+  - name: tabCloseButton.hoverBackground
+    description: Background color of close button in an QTabBar.
+    colour-light: 0x00000020
+    colour-dark: 0xffffff25
+Textarea:
+  - name: textarea.inactiveSelectionBackground
+    description: QTextEdit, QTextBrowser and QPlainTextEdit background color for the selected item when the widget is inactive.
+    colour-light: 0x00000015
+    colour-dark: 0xffffff20
+  - name: background>textarea
+    description: QTextEdit/QPlainTextEdit background color.
+    colour-light: 0xffffffff
+    colour-dark: 0x1c1d1fff
+  - name: primary>textarea.selectionBackground
+    description: Background color of text selections in the QTextEdit, QTextBrowser and QPlainTextEdit.
+    colour-light: 0x619eef7f
+    colour-dark: 0x5f9af466
+Title:
+  - name: background>title
+    description: Background color for QDockWidget title and QToolBox tab.
+    colour-light: 0xeceff2ff
+    colour-dark: 0x161719ff
+Toolbar:
+  - name: toolbar.activeBackground
+    description: QToolBar button background color when clicking.
+    colour-light: 0x00000024
+    colour-dark: 0xffffff34
+  - name: toolbar.background
+    description: QToolBar background color.
+    colour-light: 0xebebebff
+    colour-dark: 0x333333ff
+  - name: toolbar.hoverBackground
+    description: QToolbar background when hovering over items using the mouse.
+    colour-light: 0x00000015
+    colour-dark: 0xffffff22

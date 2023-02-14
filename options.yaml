@@ -37,13 +37,12 @@
   help: Choose the theme of the randomizer program.
   ui: option_theme
 - name: Custom GUI Theme
-  command: gui-theme-custom
-  type: int
-  default: -1
-  min: -1
-  max: 16777215
+  command: use-custom-theme
+  type: boolean
+  default: false
   permalink: false
-  help: Determines the custom colour used for the custom randomizer theme.
+  help: If selected, the custom theme will be used for the randomizer program interface.
+  ui: option_use_custom_theme
 - name: Starting Tablet Count
   command: starting-tablet-count
   type: int

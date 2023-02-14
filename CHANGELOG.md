@@ -33,11 +33,18 @@
   - The default value is 700 and matches how things worked before
   - Values larger than 700 will decrease the performance of the game
 - Added cosmetic option to have a lightning skyward strike effects. (by Zeldex)
+- Added an accessibility toggle for light and dark themes (by CovenEsme)
+  - You can now pick to have a light theme, dark theme, or to automatically change based on the theme of your computer
+- New custom theme options (by CovenEsme)
+  - Added a toggle for enabling and disabling a custom theme 
+  - Added a button that opens a window with customization options for the theme of the randomizer
+    - It is now possible to customize the way the randomizer program looks in fine detail
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
   - Removed the Progress Locations tab
   - Made many miscellaneous changes
+  - Added a dark theme
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
   - The randomizer is distributed with a set of default presets that cannot be changed

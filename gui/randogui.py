@@ -3,28 +3,27 @@ import sys
 from pathlib import Path
 import random
 
-import yaml
 import json
-from PySide6.QtCore import Qt, QTimer, QEvent, QStringListModel
-from PySide6.QtGui import QFontDatabase, QPalette, QColor
+from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
+from PySide6.QtGui import QFontDatabase
 from PySide6.QtWidgets import (
-    QMainWindow,
     QAbstractButton,
-    QComboBox,
-    QSpinBox,
-    QListView,
+    QApplication,
     QCheckBox,
-    QRadioButton,
-    QFileDialog,
-    QMessageBox,
+    QComboBox,
     QErrorMessage,
+    QFileDialog,
     QInputDialog,
     QLineEdit,
-    QApplication,
-    QColorDialog,
+    QListView,
+    QMainWindow,
+    QMessageBox,
+    QRadioButton,
+    QSpinBox,
 )
 from gui.sort_model import LocationsModel
 from gui.tricks_dialog import TricksDialog
+from gui.custom_theme_dialog import CustomThemeDialog
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -78,6 +77,15 @@ class RandoGUI(QMainWindow):
                     self.options.update_from_dict(json.load(f))
                 except Exception as e:
                     print("couldn't update from saved settings!", e)
+        
+        self.default_theme_path = RANDO_ROOT_PATH / "gui/default_theme.json"
+        self.custom_theme_path = RANDO_ROOT_PATH / "custom_theme.json"
+
+        if not os.path.isfile(self.custom_theme_path):
+            with open(self.default_theme_path) as f:
+                default_theme_json = json.load(f)
+            with open(self.custom_theme_path, "w") as f:
+                json.dump(default_theme_json, f)
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
@@ -100,8 +108,7 @@ class RandoGUI(QMainWindow):
                     if option["name"] == "Logic Mode":
                         widget.currentIndexChanged.connect(self.logic_mode_changed)
                     elif option["name"] == "GUI Theme":
-                        widget.currentTextChanged.connect(self.theme_changed)
-                        self.theme_changed(self.options[option_key])
+                        widget.currentTextChanged.connect(self.update_theme)
                     widget.currentIndexChanged.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
@@ -115,7 +122,12 @@ class RandoGUI(QMainWindow):
 
         # setup misc controls
         self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
-        self.custom_theme_picker = QColorDialog()
+        self.ui.custom_theme_button.clicked.connect(self.open_custom_theme_picker)
+        self.ui.option_use_custom_theme.stateChanged.connect(self.toggle_custom_theme)
+        if self.options["use-custom-theme"]:
+            self.toggle_custom_theme(1)
+        else:
+            self.toggle_custom_theme(0)
 
         # Tricks ui.
         self.enabled_tricks_model = QStringListModel()
@@ -210,7 +222,6 @@ class RandoGUI(QMainWindow):
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
-        self.ui.theme_custom_button.clicked.connect(self.open_custom_theme_picker)
         self.update_ui_for_settings()
         self.update_settings()
         self.set_option_description(None)
@@ -270,13 +281,13 @@ class RandoGUI(QMainWindow):
         self.randomizer_thread.error_abort.connect(self.on_error)
         self.randomizer_thread.start()
 
-    def ui_progress_callback(self, current_action, completed_steps, total_steps=None):
+    def ui_progress_callback(self, current_action: str, completed_steps: int, total_steps: int = None):
         self.progress_dialog.setValue(completed_steps)
         self.progress_dialog.setLabelText(current_action)
         if not total_steps is None:
             self.progress_dialog.setMaximum(total_steps)
 
-    def on_error(self, message):
+    def on_error(self, message: str):
         self.error_msg = QErrorMessage(self)
         self.progress_dialog.reset()
         if self.rando.seed:
@@ -523,45 +534,46 @@ class RandoGUI(QMainWindow):
         else:  # this should only be no logic
             # disable the trick interface
             self.disable_trick_interface()
+    
+    def toggle_custom_theme(self, state: int):
+        self.options.set_option("use-custom-theme", bool(state))
 
-    def get_custom_colour_as_hex(self, colour_int: int):
-        colour = QColor(
-            colour_int >> 16,  # r
-            colour_int >> 8 & 0xFF,  # g
-            colour_int & 0xFF,  # b
-            255,
-        )
-        return colour.name()
+        if state:
+            self.enable_theme_interface()
+        else:
+            self.disable_theme_interface()
 
-    def get_custom_colour_as_int(self, r: int, g: int, b: int, a: int = None):
-        return (r << 16) + (g << 8) + b
+        self.update_theme()
 
-    def theme_changed(self, theme: str):
-        qdarktheme.setup_theme(
-            theme.lower(),
-            custom_colors={
-                "background": self.get_custom_colour_as_hex(
-                    self.options["gui-theme-custom"]
-                )
-            },
-        )
-
-    def open_custom_theme_picker(self):
-        initial_colour = self.get_custom_colour_as_hex(self.options["gui-theme-custom"])
-        colour = QColorDialog.getColor(initial_colour, self, "Select colour")
-
-        if not colour.isValid():
-            return
+    def update_theme(self):
+        if self.options["use-custom-theme"]:
+            with open(self.custom_theme_path) as f:
+                theme = json.load(f)
+        else:
+            with open(self.default_theme_path) as f:
+                theme = json.load(f)
 
         qdarktheme.setup_theme(
             self.options["gui-theme"].lower(),
-            custom_colors={"background": colour.name()},
+            custom_colors = theme
         )
-        r, g, b, _ = colour.getRgb()
-        self.options.set_option(
-            "gui-theme-custom", self.get_custom_colour_as_int(r, g, b)
-        )
-        self.update_settings()
+
+    def open_custom_theme_picker(self):
+        custom_theme_picker = CustomThemeDialog()
+        custom_theme_picker.themeSaved.connect(self.update_custom_theme)
+        custom_theme_picker.exec()
+    
+    def update_custom_theme(self, theme: dict):
+        with open(self.custom_theme_path, "w") as f:
+            json.dump(theme, f)
+        
+        self.update_theme()
+    
+    def enable_theme_interface(self):
+        getattr(self.ui, "custom_theme_button").setEnabled(True)
+    
+    def disable_theme_interface(self):
+        getattr(self.ui, "custom_theme_button").setEnabled(False)
 
     def enable_trick_interface(self):
         getattr(self.ui, "edit_tricks").setEnabled(True)
@@ -569,7 +581,7 @@ class RandoGUI(QMainWindow):
     def disable_trick_interface(self):
         getattr(self.ui, "edit_tricks").setEnabled(False)
 
-    def get_option_value(self, option_name):
+    def get_option_value(self, option_name: str) -> bool | str | int | list:
         widget = getattr(self.ui, option_name)
         if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
             return widget.isChecked()
@@ -613,10 +625,10 @@ class RandoGUI(QMainWindow):
         self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
         self.update_settings()
 
-    def update_included_free_filter(self, new_text):
+    def update_included_free_filter(self, new_text: str | None):
         self.included_locations_proxy.filterRows(new_text)
 
-    def update_excluded_free_filter(self, new_text):
+    def update_excluded_free_filter(self, new_text: str | None):
         self.excluded_locations_proxy.filterRows(new_text)
 
     def remove_starting_item(self):
@@ -727,7 +739,7 @@ class RandoGUI(QMainWindow):
             self.enabled_tricks_model.setStringList(old_en)
             self.update_settings()
 
-    def eventFilter(self, target, event):
+    def eventFilter(self, target: QObject, event: QEvent) -> bool:
         if event.type() == QEvent.Enter:
             ui_name = target.objectName()
 
@@ -744,7 +756,7 @@ class RandoGUI(QMainWindow):
 
         return QMainWindow.eventFilter(self, target, event)
 
-    def set_option_description(self, new_description):
+    def set_option_description(self, new_description: str | None):
         if new_description is None:
             self.ui.option_description.setText(
                 "(Hover over an option to see a description of what it does.)"

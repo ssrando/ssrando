@@ -91,7 +91,7 @@
      <number>-6</number>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -545,22 +545,28 @@
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="hlay_theme">
-          <item>
-           <widget class="QComboBox" name="option_theme">
-            <property name="currentText">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="theme_custom_button">
-            <property name="text">
-             <string>Custom</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QComboBox" name="option_theme">
+          <property name="currentText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_use_custom_theme">
+          <property name="text">
+           <string>Use Custom Theme</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="custom_theme_button">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Customize Theme</string>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="vspace_accessibility">
@@ -790,7 +796,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>178</width>
+         <width>179</width>
          <height>471</height>
         </rect>
        </property>
@@ -1345,7 +1351,7 @@
       <property name="title">
        <string>Hero Mode Changes</string>
       </property>
-      <widget class="QWidget" name="verticalLayoutWidget_21">
+      <widget class="QWidget" name="verticalLayoutWidget_23">
        <property name="geometry">
         <rect>
          <x>10</x>
