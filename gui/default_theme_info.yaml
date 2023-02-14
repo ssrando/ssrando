@@ -21,11 +21,11 @@ Base colors:
     colour-light: 0x4d51573f
     colour-dark: 0xe4e7eb33
   foreground>icon:
-    description: The colour color for icons.
+    description: The default color for icons.
     colour-light: 0x494d53ff
     colour-dark: 0xe1e5e9ff
   foreground>icon.unfocused:
-    description: The colour color for icons when unfocused. Currently, this color is only used for unselected tab close button of QTabBar.
+    description: The default color for icons when unfocused. Currently, this color is only used for unselected tab close button of QTabBar.
     colour-light: 0x4d515799
     colour-dark: 0xe4e7eb99
   primary:
@@ -39,7 +39,7 @@ Base colors:
 Button control:
   description: Colors for QPushButton, QToolButton and QDockWidget title button.
   foreground>defaultButton.disabledBackground:
-    description: colour QPushButton background color when disabled.
+    description: Default QPushButton background color when disabled.
     colour-light: 0x4d51573f
     colour-dark: 0xe4e7eb33
   primary>button.activeBackground:
@@ -55,7 +55,7 @@ Button control:
     colour-light: 0x619eefff
     colour-dark: 0x5f9af4ff
   primary>defaultButton.hoverBackground:
-    description: Background color for colour QPushButton when hovering over buttons using the mouse.
+    description: Background color for default QPushButton when hovering over buttons using the mouse.
     colour-light: 0x3282eaff
     colour-dark: 0x75a8f6ff
 Input:
