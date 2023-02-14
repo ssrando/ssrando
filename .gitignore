@@ -181,6 +181,9 @@ settings.txt
 # presets save file
 presets.txt
 
+# custom theme file
+custom_theme.json
+
 custom-music/
 
 # temp asm
