@@ -563,13 +563,15 @@ class RandoGUI(QMainWindow):
         else:
             with open(self.default_theme_path) as f:
                 theme = json.load(f)
-        
+
         if self.options["use-sharp-corners"]:
             corners = "sharp"
         else:
             corners = "rounded"
 
-        qdarktheme.setup_theme(self.options["gui-theme"].lower(), custom_colors=theme, corner_shape=corners)
+        qdarktheme.setup_theme(
+            self.options["gui-theme"].lower(), custom_colors=theme, corner_shape=corners
+        )
 
     def open_custom_theme_picker(self):
         custom_theme_picker = CustomThemeDialog()

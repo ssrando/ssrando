@@ -39,6 +39,7 @@
   - Added a toggle for enabling and disabling a custom theme 
   - Added a button that opens a window with customization options for the theme of the randomizer
     - It is now possible to customize the way the randomizer program looks in fine detail
+- Added option to make the curved corners of the randomizer interace sharp and pointy instead of curved
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
