@@ -41,8 +41,15 @@
   type: boolean
   default: false
   permalink: false
-  help: If selected, the custom theme will be used for the randomizer program interface.
+  help: If enabled, the custom theme will be used for the randomizer program interface.
   ui: option_use_custom_theme
+- name: Sharp GUI Corners
+  command: use-sharp-corners
+  type: boolean
+  default: false
+  permalink: false
+  help: If enabled, the curved edges of buttons and boxes will become sharp and pointy.
+  ui: option_use_sharp_corners
 - name: Starting Tablet Count
   command: starting-tablet-count
   type: int

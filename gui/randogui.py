@@ -128,6 +128,11 @@ class RandoGUI(QMainWindow):
             self.toggle_custom_theme(1)
         else:
             self.toggle_custom_theme(0)
+        self.ui.option_use_sharp_corners.stateChanged.connect(self.toggle_sharp_corners)
+        if self.options["use-sharp-corners"]:
+            self.toggle_sharp_corners(1)
+        else:
+            self.toggle_sharp_corners(0)
 
         # Tricks ui.
         self.enabled_tricks_model = QStringListModel()
@@ -537,6 +542,10 @@ class RandoGUI(QMainWindow):
             # disable the trick interface
             self.disable_trick_interface()
 
+    def toggle_sharp_corners(self, state: int):
+        self.options.set_option("use-sharp-corners", bool(state))
+        self.update_theme()
+
     def toggle_custom_theme(self, state: int):
         self.options.set_option("use-custom-theme", bool(state))
 
@@ -554,8 +563,13 @@ class RandoGUI(QMainWindow):
         else:
             with open(self.default_theme_path) as f:
                 theme = json.load(f)
+        
+        if self.options["use-sharp-corners"]:
+            corners = "sharp"
+        else:
+            corners = "rounded"
 
-        qdarktheme.setup_theme(self.options["gui-theme"].lower(), custom_colors=theme)
+        qdarktheme.setup_theme(self.options["gui-theme"].lower(), custom_colors=theme, corner_shape=corners)
 
     def open_custom_theme_picker(self):
         custom_theme_picker = CustomThemeDialog()

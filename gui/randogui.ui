@@ -186,7 +186,7 @@
         <x>10</x>
         <y>130</y>
         <width>181</width>
-        <height>161</height>
+        <height>171</height>
        </rect>
       </property>
       <property name="title">
@@ -198,7 +198,7 @@
          <x>10</x>
          <y>20</y>
          <width>169</width>
-         <height>131</height>
+         <height>141</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_additional_files">
@@ -245,7 +245,7 @@
         <x>210</x>
         <y>130</y>
         <width>181</width>
-        <height>161</height>
+        <height>171</height>
        </rect>
       </property>
       <property name="title">
@@ -257,7 +257,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>131</height>
+         <height>141</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_advanced">
@@ -290,7 +290,7 @@
         <x>410</x>
         <y>130</y>
         <width>181</width>
-        <height>161</height>
+        <height>171</height>
        </rect>
       </property>
       <property name="title">
@@ -302,7 +302,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>131</height>
+         <height>141</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_cosmetics">
@@ -385,7 +385,7 @@
         <x>610</x>
         <y>130</y>
         <width>181</width>
-        <height>161</height>
+        <height>171</height>
        </rect>
       </property>
       <property name="title">
@@ -397,7 +397,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>132</height>
+         <height>141</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_music_rando">
@@ -518,7 +518,7 @@
         <x>810</x>
         <y>130</y>
         <width>181</width>
-        <height>161</height>
+        <height>171</height>
        </rect>
       </property>
       <property name="title">
@@ -530,13 +530,10 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>132</height>
+         <height>141</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_accessibility">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_37"/>
-        </item>
         <item>
          <widget class="QLabel" name="option_theme_label">
           <property name="text">
@@ -565,6 +562,13 @@
           </property>
           <property name="text">
            <string>Customize Theme</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_use_sharp_corners">
+          <property name="text">
+           <string>Sharp Corners</string>
           </property>
          </widget>
         </item>
