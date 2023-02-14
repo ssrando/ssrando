@@ -1,8 +1,9 @@
-from PySide6.QtCore import Signal
+from PySide6.QtCore import QEvent, QObject, Signal
 from PySide6.QtWidgets import (
     QDialog,
     QLabel,
     QLayout,
+    QMainWindow,
 )
 from gui.ui_custom_theme_dialog import Ui_CustomThemeDialog
 from gui.colour_button import ColourButton
@@ -38,10 +39,10 @@ class CustomThemeDialog(QDialog):
             self.on_category_change
         )
 
+        self.category = None
+
         for category in self.theme_info:
             self.ui.widget_category_choice.addItem(category)
-
-        self.category_widget_colours = {}
 
         self.ui.custom_theme_tabWidget.setCurrentIndex(0)
 
@@ -58,32 +59,34 @@ class CustomThemeDialog(QDialog):
         self.remove_widgets(colour_light_box)
         self.remove_widgets(colour_dark_box)
 
-        self.category_widget_colours = {}
-
         widgets = self.theme_info[category]
+        insert_index = 1
 
-        for name_index, widget_name in enumerate(widgets):
-            insert_index = name_index + 1
+        for widget_name, data in widgets.items():
+            if widget_name == "description":
+                continue
 
             colour_light_button = ColourButton(
-                self.custom_theme[LIGHT][widget_name["name"]], widget_name["name"]
+                self.custom_theme[LIGHT][widget_name], widget_name
             )
             colour_dark_button = ColourButton(
-                self.custom_theme[DARK][widget_name["name"]], widget_name["name"]
+                self.custom_theme[DARK][widget_name], widget_name
             )
-            widget_name_label = QLabel(widget_name["name"])
+            widget_name_label = QLabel(widget_name)
             widget_name_label.setMinimumHeight(32)
+            widget_name_label.installEventFilter(self)
 
-            self.category_widget_colours[widget_name["name"]] = (
-                colour_light_button,
-                colour_dark_button,
-            )
             colour_light_button.colourChanged.connect(self.update_light_theme)
             colour_dark_button.colourChanged.connect(self.update_dark_theme)
 
             name_box.insertWidget(insert_index, widget_name_label)
             colour_light_box.insertWidget(insert_index, colour_light_button)
             colour_dark_box.insertWidget(insert_index, colour_dark_button)
+
+            insert_index += 1
+
+        self.category = category
+        self.set_widget_description(self.theme_info[self.category]["description"])
 
     def update_light_theme(self, colour: str, name: str):
         self.custom_theme[LIGHT][name] = colour
@@ -93,7 +96,6 @@ class CustomThemeDialog(QDialog):
 
     def restore_default_theme(self):
         self.custom_theme = self.default_theme
-
         self.on_category_change(self.ui.widget_category_choice.currentText())
 
     def remove_widgets(self, layout: QLayout):
@@ -103,3 +105,20 @@ class CustomThemeDialog(QDialog):
 
     def save_custom_theme(self):
         self.themeSaved.emit(self.custom_theme)
+
+    def eventFilter(self, target: QObject, event: QEvent) -> bool:
+        if event.type() == QEvent.Enter and type(target) == QLabel:
+            widget_name = target.text()
+            description = self.theme_info[self.category][widget_name]["description"]
+            self.set_widget_description(description)
+            return True
+
+        elif event.type() == QEvent.Leave:
+            self.set_widget_description(self.theme_info[self.category]["description"])
+            return True
+
+        return QMainWindow.eventFilter(self, target, event)
+
+    def set_widget_description(self, description: str):
+        description_label = getattr(self.ui, "widget_description")
+        description_label.setText(description)

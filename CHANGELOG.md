@@ -39,6 +39,9 @@
   - Added a toggle for enabling and disabling a custom theme 
   - Added a button that opens a window with customization options for the theme of the randomizer
     - It is now possible to customize the way the randomizer program looks in fine detail
+    - You can customize the light and dark mode colours of each widget to create a custom theme that works in both light and dark modes.
+    - Widgets are grouped into categories that can be selected with a drop down menu
+    - Hovering over a widget label will show a tooltip describing what it does
 - Added option to make the curved corners of the randomizer interace sharp and pointy instead of curved
 ### Changes
 - New GUI (by cjs07)
