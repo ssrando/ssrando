@@ -28,6 +28,7 @@ from PySide6.QtWidgets import (
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
 from logic.constants import LOCATION_FILTER_TYPES
+from gui.components.conditional_multiselect import ConditionalMultiselect
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -256,6 +257,9 @@ class RandoGUI(QMainWindow):
         self.ui.save_preset.clicked.connect(self.save_preset)
         self.ui.delete_preset.clicked.connect(self.delete_preset)
         self.preset_selection_changed()
+
+        temp = ConditionalMultiselect("Test", ["test 1", "test 2", "test 3"])
+        self.ui.widget.parentWidget().layout().replaceWidget(self.ui.widget, temp)
 
         # hide currently unsupported options to make this version viable for public use
         getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
