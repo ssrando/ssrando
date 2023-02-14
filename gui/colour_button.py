@@ -28,11 +28,9 @@ class ColourButton(QPushButton):
     def change_colour(self):
         new_colour = QColorDialog.getColor(
             self.colour_str_from_int(self.colour, ColourFormat.ARGB),
-            options=QColorDialog.ShowAlphaChannel & self.showAlpha
+            options=QColorDialog.ShowAlphaChannel & self.showAlpha,
         )
-        self.colour = self.colour_int_from_str(
-            self.colour_str_from_qcolor(new_colour)
-        )
+        self.colour = self.colour_int_from_str(self.colour_str_from_qcolor(new_colour))
         self.update()
         self.colourChanged.emit(self.colour_str_from_int(self.colour), self.name)
 
@@ -40,8 +38,10 @@ class ColourButton(QPushButton):
         rgba = self.colour_str_from_int(self.colour)
         self.setText(rgba)
         self.setStyleSheet("QPushButton {background-color: " + rgba[:-2] + " ;}")
-    
-    def colour_str_from_qcolor(self, colour: QColor, format: ColourFormat = ColourFormat.RGBA) -> str:
+
+    def colour_str_from_qcolor(
+        self, colour: QColor, format: ColourFormat = ColourFormat.RGBA
+    ) -> str:
         match format:
             case ColourFormat.RGB:
                 return colour.name(QColor.HexRgb)
@@ -50,9 +50,11 @@ class ColourButton(QPushButton):
                 return argb[0] + argb[3:] + argb[1:3]
             case ColourFormat.ARGB:
                 return colour.name(QColor.HexArgb)
-    
-    def colour_str_from_int(self, colour_int: int, format: ColourFormat = ColourFormat.RGBA) -> str:
-        colour = QColor( # r, g, b, a
+
+    def colour_str_from_int(
+        self, colour_int: int, format: ColourFormat = ColourFormat.RGBA
+    ) -> str:
+        colour = QColor(  # r, g, b, a
             colour_int >> 24,
             colour_int >> 16 & 0xFF,
             colour_int >> 8 & 0xFF,
@@ -60,6 +62,6 @@ class ColourButton(QPushButton):
         )
 
         return self.colour_str_from_qcolor(colour, format)
-    
+
     def colour_int_from_str(self, colour: str) -> int:
         return int(colour[1:], 16)

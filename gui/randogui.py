@@ -77,7 +77,7 @@ class RandoGUI(QMainWindow):
                     self.options.update_from_dict(json.load(f))
                 except Exception as e:
                     print("couldn't update from saved settings!", e)
-        
+
         self.default_theme_path = RANDO_ROOT_PATH / "gui/default_theme.json"
         self.custom_theme_path = RANDO_ROOT_PATH / "custom_theme.json"
 
@@ -281,7 +281,9 @@ class RandoGUI(QMainWindow):
         self.randomizer_thread.error_abort.connect(self.on_error)
         self.randomizer_thread.start()
 
-    def ui_progress_callback(self, current_action: str, completed_steps: int, total_steps: int = None):
+    def ui_progress_callback(
+        self, current_action: str, completed_steps: int, total_steps: int = None
+    ):
         self.progress_dialog.setValue(completed_steps)
         self.progress_dialog.setLabelText(current_action)
         if not total_steps is None:
@@ -534,7 +536,7 @@ class RandoGUI(QMainWindow):
         else:  # this should only be no logic
             # disable the trick interface
             self.disable_trick_interface()
-    
+
     def toggle_custom_theme(self, state: int):
         self.options.set_option("use-custom-theme", bool(state))
 
@@ -553,25 +555,22 @@ class RandoGUI(QMainWindow):
             with open(self.default_theme_path) as f:
                 theme = json.load(f)
 
-        qdarktheme.setup_theme(
-            self.options["gui-theme"].lower(),
-            custom_colors = theme
-        )
+        qdarktheme.setup_theme(self.options["gui-theme"].lower(), custom_colors=theme)
 
     def open_custom_theme_picker(self):
         custom_theme_picker = CustomThemeDialog()
         custom_theme_picker.themeSaved.connect(self.update_custom_theme)
         custom_theme_picker.exec()
-    
+
     def update_custom_theme(self, theme: dict):
         with open(self.custom_theme_path, "w") as f:
             json.dump(theme, f)
-        
+
         self.update_theme()
-    
+
     def enable_theme_interface(self):
         getattr(self.ui, "custom_theme_button").setEnabled(True)
-    
+
     def disable_theme_interface(self):
         getattr(self.ui, "custom_theme_button").setEnabled(False)
 

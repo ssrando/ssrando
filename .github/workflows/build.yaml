@@ -24,7 +24,7 @@ jobs:
       - name: Install dev requirements
         run: python -m pip install -r requirements_dev.txt
       - name: Test if the formatting is correct
-        run: black . --check
+        run: black . --target-version py310 --check
       - name: Install build requirements
         run: python -m pip install -r requirements_build.txt
       - name: Build distribution
