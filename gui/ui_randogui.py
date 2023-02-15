@@ -127,10 +127,10 @@ class Ui_MainWindow(object):
 
         self.box_additional_files = QGroupBox(self.tab_setup)
         self.box_additional_files.setObjectName(u"box_additional_files")
-        self.box_additional_files.setGeometry(QRect(10, 130, 181, 171))
+        self.box_additional_files.setGeometry(QRect(10, 130, 181, 211))
         self.verticalLayoutWidget_13 = QWidget(self.box_additional_files)
         self.verticalLayoutWidget_13.setObjectName(u"verticalLayoutWidget_13")
-        self.verticalLayoutWidget_13.setGeometry(QRect(10, 20, 169, 141))
+        self.verticalLayoutWidget_13.setGeometry(QRect(10, 20, 169, 181))
         self.vlay_additional_files = QVBoxLayout(self.verticalLayoutWidget_13)
         self.vlay_additional_files.setObjectName(u"vlay_additional_files")
         self.vlay_additional_files.setContentsMargins(0, 0, 0, 0)
@@ -155,10 +155,10 @@ class Ui_MainWindow(object):
 
         self.box_advanced = QGroupBox(self.tab_setup)
         self.box_advanced.setObjectName(u"box_advanced")
-        self.box_advanced.setGeometry(QRect(210, 130, 181, 171))
+        self.box_advanced.setGeometry(QRect(210, 130, 181, 211))
         self.verticalLayoutWidget_14 = QWidget(self.box_advanced)
         self.verticalLayoutWidget_14.setObjectName(u"verticalLayoutWidget_14")
-        self.verticalLayoutWidget_14.setGeometry(QRect(10, 20, 161, 141))
+        self.verticalLayoutWidget_14.setGeometry(QRect(10, 20, 161, 181))
         self.vlay_advanced = QVBoxLayout(self.verticalLayoutWidget_14)
         self.vlay_advanced.setObjectName(u"vlay_advanced")
         self.vlay_advanced.setContentsMargins(0, 0, 0, 0)
@@ -173,10 +173,10 @@ class Ui_MainWindow(object):
 
         self.box_cosmetics = QGroupBox(self.tab_setup)
         self.box_cosmetics.setObjectName(u"box_cosmetics")
-        self.box_cosmetics.setGeometry(QRect(410, 130, 181, 171))
+        self.box_cosmetics.setGeometry(QRect(410, 130, 181, 211))
         self.verticalLayoutWidget_8 = QWidget(self.box_cosmetics)
         self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 161, 141))
+        self.verticalLayoutWidget_8.setGeometry(QRect(10, 20, 161, 181))
         self.vlay_cosmetics = QVBoxLayout(self.verticalLayoutWidget_8)
         self.vlay_cosmetics.setObjectName(u"vlay_cosmetics")
         self.vlay_cosmetics.setContentsMargins(0, 0, 0, 0)
@@ -229,10 +229,10 @@ class Ui_MainWindow(object):
 
         self.box_music_rando = QGroupBox(self.tab_setup)
         self.box_music_rando.setObjectName(u"box_music_rando")
-        self.box_music_rando.setGeometry(QRect(610, 130, 181, 171))
+        self.box_music_rando.setGeometry(QRect(610, 130, 181, 211))
         self.verticalLayoutWidget_11 = QWidget(self.box_music_rando)
         self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
-        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 141))
+        self.verticalLayoutWidget_11.setGeometry(QRect(10, 20, 161, 181))
         self.vlay_music_rando = QVBoxLayout(self.verticalLayoutWidget_11)
         self.vlay_music_rando.setObjectName(u"vlay_music_rando")
         self.vlay_music_rando.setContentsMargins(0, 0, 0, 0)
@@ -272,7 +272,7 @@ class Ui_MainWindow(object):
 
         self.box_presets = QGroupBox(self.tab_setup)
         self.box_presets.setObjectName(u"box_presets")
-        self.box_presets.setGeometry(QRect(0, 310, 331, 101))
+        self.box_presets.setGeometry(QRect(10, 350, 331, 101))
         self.verticalLayoutWidget_16 = QWidget(self.box_presets)
         self.verticalLayoutWidget_16.setObjectName(u"verticalLayoutWidget_16")
         self.verticalLayoutWidget_16.setGeometry(QRect(10, 20, 311, 78))
@@ -311,22 +311,32 @@ class Ui_MainWindow(object):
 
         self.box_accessibility = QGroupBox(self.tab_setup)
         self.box_accessibility.setObjectName(u"box_accessibility")
-        self.box_accessibility.setGeometry(QRect(810, 130, 181, 171))
+        self.box_accessibility.setGeometry(QRect(810, 130, 181, 211))
         self.verticalLayoutWidget_15 = QWidget(self.box_accessibility)
         self.verticalLayoutWidget_15.setObjectName(u"verticalLayoutWidget_15")
-        self.verticalLayoutWidget_15.setGeometry(QRect(10, 20, 161, 141))
+        self.verticalLayoutWidget_15.setGeometry(QRect(10, 20, 161, 182))
         self.vlay_accessibility = QVBoxLayout(self.verticalLayoutWidget_15)
         self.vlay_accessibility.setObjectName(u"vlay_accessibility")
         self.vlay_accessibility.setContentsMargins(0, 0, 0, 0)
-        self.option_theme_label = QLabel(self.verticalLayoutWidget_15)
-        self.option_theme_label.setObjectName(u"option_theme_label")
+        self.theme_mode_label = QLabel(self.verticalLayoutWidget_15)
+        self.theme_mode_label.setObjectName(u"theme_mode_label")
 
-        self.vlay_accessibility.addWidget(self.option_theme_label)
+        self.vlay_accessibility.addWidget(self.theme_mode_label)
 
-        self.option_theme = QComboBox(self.verticalLayoutWidget_15)
-        self.option_theme.setObjectName(u"option_theme")
+        self.option_theme_mode = QComboBox(self.verticalLayoutWidget_15)
+        self.option_theme_mode.setObjectName(u"option_theme_mode")
 
-        self.vlay_accessibility.addWidget(self.option_theme)
+        self.vlay_accessibility.addWidget(self.option_theme_mode)
+
+        self.theme_presets_label = QLabel(self.verticalLayoutWidget_15)
+        self.theme_presets_label.setObjectName(u"theme_presets_label")
+
+        self.vlay_accessibility.addWidget(self.theme_presets_label)
+
+        self.option_theme_presets = QComboBox(self.verticalLayoutWidget_15)
+        self.option_theme_presets.setObjectName(u"option_theme_presets")
+
+        self.vlay_accessibility.addWidget(self.option_theme_presets)
 
         self.option_use_custom_theme = QCheckBox(self.verticalLayoutWidget_15)
         self.option_use_custom_theme.setObjectName(u"option_use_custom_theme")
@@ -1304,7 +1314,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1345,8 +1355,10 @@ class Ui_MainWindow(object):
         self.save_preset.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.delete_preset.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
         self.box_accessibility.setTitle(QCoreApplication.translate("MainWindow", u"Accessibility", None))
-        self.option_theme_label.setText(QCoreApplication.translate("MainWindow", u"Theme", None))
-        self.option_theme.setCurrentText("")
+        self.theme_mode_label.setText(QCoreApplication.translate("MainWindow", u"Theme Mode", None))
+        self.option_theme_mode.setCurrentText("")
+        self.theme_presets_label.setText(QCoreApplication.translate("MainWindow", u"Theme Presets", None))
+        self.option_theme_presets.setCurrentText("")
         self.option_use_custom_theme.setText(QCoreApplication.translate("MainWindow", u"Use Custom Theme", None))
         self.custom_theme_button.setText(QCoreApplication.translate("MainWindow", u"Customize Theme", None))
         self.option_use_sharp_corners.setText(QCoreApplication.translate("MainWindow", u"Sharp Corners", None))

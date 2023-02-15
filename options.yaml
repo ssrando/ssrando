@@ -25,7 +25,7 @@
   default: false
   permalink: false
   help: Don't launch the randomizer UI, just read command line params
-- name: GUI Theme
+- name: GUI Theme Mode
   command: gui-theme
   type: singlechoice
   permalink: false
@@ -34,8 +34,18 @@
     - Dark
     - Auto
   default: Auto
-  help: Choose the theme of the randomizer program.
-  ui: option_theme
+  help: Choose the theme mode of the randomizer program. Choose between Light Mode, Dark Mode, and Auto (based on the theme of your operating system).
+  ui: option_theme_mode
+- name: GUI Theme Preset
+  command: gui-theme-preset
+  type: singlechoice
+  permalink: false
+  choices:
+    - Default
+    - High Contrast
+  default: Default
+  help: Choose a theme preset to style the randomizer program.
+  ui: option_theme_presets
 - name: Custom GUI Theme
   command: use-custom-theme
   type: boolean

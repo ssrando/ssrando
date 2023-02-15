@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>612</width>
-    <height>732</height>
+    <height>635</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>6</x>
      <y>9</y>
      <width>601</width>
-     <height>621</height>
+     <height>531</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -35,7 +35,7 @@
        <x>10</x>
        <y>10</y>
        <width>571</width>
-       <height>571</height>
+       <height>481</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="vlay_widget">
@@ -466,7 +466,7 @@ hr { height: 1px; border-width: 0; }
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>640</y>
+     <y>550</y>
      <width>591</width>
      <height>41</height>
     </rect>
@@ -488,7 +488,7 @@ hr { height: 1px; border-width: 0; }
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>680</y>
+     <y>590</y>
      <width>591</width>
      <height>41</height>
     </rect>

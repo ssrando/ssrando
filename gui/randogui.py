@@ -42,6 +42,9 @@ import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 NEW_PRESET = "[New Preset]"
+DEFAULT_THEME_PATH = RANDO_ROOT_PATH / "gui/default_theme.json"
+HIGH_CONTRAST_THEME_PATH = RANDO_ROOT_PATH / "gui/high_contrast_theme.json"
+CUSTOM_THEME_PATH = RANDO_ROOT_PATH / "custom_theme.json"
 
 
 class RandoGUI(QMainWindow):
@@ -78,15 +81,6 @@ class RandoGUI(QMainWindow):
                 except Exception as e:
                     print("couldn't update from saved settings!", e)
 
-        self.default_theme_path = RANDO_ROOT_PATH / "gui/default_theme.json"
-        self.custom_theme_path = RANDO_ROOT_PATH / "custom_theme.json"
-
-        if not os.path.isfile(self.custom_theme_path):
-            with open(self.default_theme_path) as f:
-                default_theme_json = json.load(f)
-            with open(self.custom_theme_path, "w") as f:
-                json.dump(default_theme_json, f)
-
         self.option_map = {}
         for option_key, option in OPTIONS.items():
             if option["name"] != "Seed":
@@ -107,8 +101,10 @@ class RandoGUI(QMainWindow):
                     )
                     if option["name"] == "Logic Mode":
                         widget.currentIndexChanged.connect(self.logic_mode_changed)
-                    elif option["name"] == "GUI Theme":
+                    elif option["name"] == "GUI Theme Mode":
                         widget.currentTextChanged.connect(self.update_theme)
+                    elif option["name"] == "GUI Theme Preset":
+                        widget.currentTextChanged.connect(self.update_theme_preset)
                     widget.currentIndexChanged.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
@@ -120,8 +116,24 @@ class RandoGUI(QMainWindow):
                     widget.setValue(self.options[option_key])
                     widget.valueChanged.connect(self.update_settings)
 
-        # setup misc controls
-        self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
+        # Theme setup.
+        self.custom_theme_path = CUSTOM_THEME_PATH
+        match self.options["gui-theme-preset"]:
+            case "Default":
+                self.default_theme_path = DEFAULT_THEME_PATH
+            case "High Contrast":
+                self.default_theme_path = HIGH_CONTRAST_THEME_PATH
+            case _:
+                raise ValueError(
+                    f"Invalid option for gui-theme-preset option. Expected one of ('Default', 'High Contrast') but found {self.options['gui-theme-preset']}."
+                )
+
+        if not os.path.isfile(self.custom_theme_path):
+            with open(self.default_theme_path) as f:
+                default_theme_json = json.load(f)
+            with open(self.custom_theme_path, "w") as f:
+                json.dump(default_theme_json, f)
+
         self.ui.custom_theme_button.clicked.connect(self.open_custom_theme_picker)
         self.ui.option_use_custom_theme.stateChanged.connect(self.toggle_custom_theme)
         if self.options["use-custom-theme"]:
@@ -133,6 +145,9 @@ class RandoGUI(QMainWindow):
             self.toggle_sharp_corners(1)
         else:
             self.toggle_sharp_corners(0)
+
+        # setup misc controls
+        self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
 
         # Tricks ui.
         self.enabled_tricks_model = QStringListModel()
@@ -573,8 +588,18 @@ class RandoGUI(QMainWindow):
             self.options["gui-theme"].lower(), custom_colors=theme, corner_shape=corners
         )
 
+    def update_theme_preset(self, preset: str):
+        if preset == "Default":
+            self.default_theme_path = RANDO_ROOT_PATH / "gui/default_theme.json"
+        elif preset == "High Contrast":
+            self.default_theme_path = RANDO_ROOT_PATH / "gui/high_contrast_theme.json"
+
+        self.update_theme()
+
     def open_custom_theme_picker(self):
-        custom_theme_picker = CustomThemeDialog()
+        custom_theme_picker = CustomThemeDialog(
+            self.default_theme_path, self.custom_theme_path
+        )
         custom_theme_picker.themeSaved.connect(self.update_custom_theme)
         custom_theme_picker.exec()
 

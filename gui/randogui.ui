@@ -91,7 +91,7 @@
      <number>-6</number>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -186,7 +186,7 @@
         <x>10</x>
         <y>130</y>
         <width>181</width>
-        <height>171</height>
+        <height>211</height>
        </rect>
       </property>
       <property name="title">
@@ -198,7 +198,7 @@
          <x>10</x>
          <y>20</y>
          <width>169</width>
-         <height>141</height>
+         <height>181</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_additional_files">
@@ -245,7 +245,7 @@
         <x>210</x>
         <y>130</y>
         <width>181</width>
-        <height>171</height>
+        <height>211</height>
        </rect>
       </property>
       <property name="title">
@@ -257,7 +257,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>141</height>
+         <height>181</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_advanced">
@@ -290,7 +290,7 @@
         <x>410</x>
         <y>130</y>
         <width>181</width>
-        <height>171</height>
+        <height>211</height>
        </rect>
       </property>
       <property name="title">
@@ -302,7 +302,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>141</height>
+         <height>181</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_cosmetics">
@@ -385,7 +385,7 @@
         <x>610</x>
         <y>130</y>
         <width>181</width>
-        <height>171</height>
+        <height>211</height>
        </rect>
       </property>
       <property name="title">
@@ -397,7 +397,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>141</height>
+         <height>181</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_music_rando">
@@ -455,8 +455,8 @@
      <widget class="QGroupBox" name="box_presets">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>310</y>
+        <x>10</x>
+        <y>350</y>
         <width>331</width>
         <height>101</height>
        </rect>
@@ -518,7 +518,7 @@
         <x>810</x>
         <y>130</y>
         <width>181</width>
-        <height>171</height>
+        <height>211</height>
        </rect>
       </property>
       <property name="title">
@@ -530,19 +530,33 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>141</height>
+         <height>182</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_accessibility">
         <item>
-         <widget class="QLabel" name="option_theme_label">
+         <widget class="QLabel" name="theme_mode_label">
           <property name="text">
-           <string>Theme</string>
+           <string>Theme Mode</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="option_theme">
+         <widget class="QComboBox" name="option_theme_mode">
+          <property name="currentText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="theme_presets_label">
+          <property name="text">
+           <string>Theme Presets</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="option_theme_presets">
           <property name="currentText">
            <string/>
           </property>

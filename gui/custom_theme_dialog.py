@@ -9,7 +9,7 @@ from gui.ui_custom_theme_dialog import Ui_CustomThemeDialog
 from gui.colour_button import ColourButton
 
 import json
-from paths import RANDO_ROOT_PATH
+from paths import Path, RANDO_ROOT_PATH
 from yaml_files import yaml_load
 
 LIGHT = "[light]"
@@ -19,7 +19,7 @@ DARK = "[dark]"
 class CustomThemeDialog(QDialog):
     themeSaved = Signal(dict)
 
-    def __init__(self):
+    def __init__(self, default_theme: Path, custom_theme: Path):
         super().__init__()
         self.ui = Ui_CustomThemeDialog()
         self.ui.setupUi(self)
@@ -27,8 +27,8 @@ class CustomThemeDialog(QDialog):
         self.theme_info_path = RANDO_ROOT_PATH / "gui/default_theme_info.yaml"
         self.theme_info = yaml_load(self.theme_info_path)
 
-        self.default_theme_path = RANDO_ROOT_PATH / "gui/default_theme.json"
-        self.custom_theme_path = RANDO_ROOT_PATH / "custom_theme.json"
+        self.default_theme_path = default_theme
+        self.custom_theme_path = custom_theme
 
         with open(self.default_theme_path) as f:
             self.default_theme = json.load(f)
