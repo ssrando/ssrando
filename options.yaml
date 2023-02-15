@@ -43,6 +43,7 @@
   choices:
     - Default
     - High Contrast
+    - Readability
   default: Default
   help: Choose a theme preset to style the randomizer program.
   ui: option_theme_presets

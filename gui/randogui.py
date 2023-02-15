@@ -42,8 +42,9 @@ import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 NEW_PRESET = "[New Preset]"
-DEFAULT_THEME_PATH = RANDO_ROOT_PATH / "gui/default_theme.json"
-HIGH_CONTRAST_THEME_PATH = RANDO_ROOT_PATH / "gui/high_contrast_theme.json"
+DEFAULT_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/default_theme.json"
+HIGH_CONTRAST_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/high_contrast_theme.json"
+READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/readability_theme.json"
 CUSTOM_THEME_PATH = RANDO_ROOT_PATH / "custom_theme.json"
 
 
@@ -123,9 +124,11 @@ class RandoGUI(QMainWindow):
                 self.default_theme_path = DEFAULT_THEME_PATH
             case "High Contrast":
                 self.default_theme_path = HIGH_CONTRAST_THEME_PATH
+            case "Readability":
+                self.default_theme_path = READABILITY_THEME_PATH
             case _:
                 raise ValueError(
-                    f"Invalid option for gui-theme-preset option. Expected one of ('Default', 'High Contrast') but found {self.options['gui-theme-preset']}."
+                    f"Invalid option for gui-theme-preset option. Expected one of ('Default', 'High Contrast', 'Readability') but found {self.options['gui-theme-preset']}."
                 )
 
         if not os.path.isfile(self.custom_theme_path):
@@ -590,9 +593,11 @@ class RandoGUI(QMainWindow):
 
     def update_theme_preset(self, preset: str):
         if preset == "Default":
-            self.default_theme_path = RANDO_ROOT_PATH / "gui/default_theme.json"
+            self.default_theme_path = DEFAULT_THEME_PATH
         elif preset == "High Contrast":
-            self.default_theme_path = RANDO_ROOT_PATH / "gui/high_contrast_theme.json"
+            self.default_theme_path = HIGH_CONTRAST_THEME_PATH
+        elif preset == "Readability":
+            self.default_theme_path = READABILITY_THEME_PATH
 
         self.update_theme()
 

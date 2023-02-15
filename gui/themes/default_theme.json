@@ -1,5 +1,6 @@
 {
-    "[light]": {
+    "[light]":
+    {
         "background": "#f8f9faff",
         "border": "#dadce0ff",
         "foreground": "#4d5157ff",
@@ -61,7 +62,8 @@
         "toolbar.background": "#ebebebff",
         "toolbar.hoverBackground": "#00000015"
     },
-    "[dark]": {
+    "[dark]":
+    {
         "background": "#202124ff",
         "border": "#3f4042ff",
         "foreground": "#e4e7ebff",

@@ -43,7 +43,7 @@
     - Widgets are grouped into categories that can be selected with a drop down menu
     - Hovering over a widget label will show a tooltip describing what it does
   - Added theme presets
-    - Allows you to choose between various theme presets. Currently, there are default and high contrast options
+    - Allows you to choose between various theme presets. Currently, there are "Default", "High Contrast", and "Readibility" options
   - Added option to make the curved corners of the randomizer interace sharp and pointy instead of curved
 ### Changes
 - New GUI (by cjs07)
