@@ -97,6 +97,7 @@
 - Expanded arc replacements to cover the remaining unpatched arcs (by Muzu)
   - Previously unpatched arcs (such as DoButton.arc) are now picked up from the arc replacements folder and patched
   - The arc replacements folder now supports sub folders so people can organise arcs freely
+  - The arc replacements folder is now auto-generated if it doesn't exist
   - Existing Title2D and DoButton patches to add custom title screen and dowsing icons now pull from modified_extract instead of actual_extract so they don't overwrite replaced arcs
   - Due to duplicate arc names, the text arcs found in DATA/files/US/Object and the cursor arcs found in DATA/files/Layout and DATA/files/sys/mpls_movie/layout require specific names in the arc replacements folder
     - Text arcs intended for the en_US folder support the default names (e.g. 0-Common.arc) but also support being prefixed with "en" for consistency (e.g. en0-Common.arc)
