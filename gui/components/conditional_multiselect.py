@@ -1,4 +1,8 @@
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QVBoxLayout, QPushButton, QWidget, QComboBox, QLabel
+from PySide6.QtGui import QStandardItem
+
+from gui.components.multi_combo_box import MultiComboBox
 
 BASE_OPTIONS = [
     'Off',
@@ -23,9 +27,12 @@ class ConditionalMultiselect(QWidget):
         self.base_selector.currentIndexChanged.connect(self.update_from_base)
         layout.addWidget(self.base_selector)
 
-        self.multiselect = QComboBox()
+        self.multiselect = MultiComboBox()
         for option in options:
-            self.multiselect.addItem(option)
+            item = QStandardItem(option)
+            item.setCheckable(True)
+            item.setCheckState(Qt.CheckState.Unchecked)
+            self.multiselect.model().appendRow(item)
         layout.addWidget(self.multiselect)
         
         self.setLayout(layout)
