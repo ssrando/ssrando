@@ -46,7 +46,9 @@ DEFAULT_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/default_theme.json"
 HIGH_CONTRAST_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/high_contrast_theme.json"
 READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/readability_theme.json"
 CUSTOM_THEME_PATH = RANDO_ROOT_PATH / "custom_theme.json"
-BASE_STYLE_SHEET_OVERRIDES = "QString { elide: right } "
+
+# Add stylesheet overrides here.
+BASE_STYLE_SHEET_OVERRIDES = ""
 
 
 class RandoGUI(QMainWindow):
