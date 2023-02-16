@@ -53,7 +53,7 @@
   help: "Determines the theme preset to style the randomizer program with.
         **Default**: applies the standard theme.
         **High Contrast**: applies a theme that maximizes contrast between text and the rest of the interface.
-        **Readibility**: applies a theme that reduces contrast in select areas to improve readability."
+        **Readability**: applies a theme that reduces contrast in select areas to improve readability."
   ui: option_theme_presets
 - name: Custom GUI Theme
   command: use-custom-theme
