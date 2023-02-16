@@ -2,6 +2,7 @@ import os
 import sys
 from pathlib import Path
 import random
+import pyperclip
 
 import json
 from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
@@ -256,6 +257,7 @@ class RandoGUI(QMainWindow):
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
+        self.ui.copy_permalink_button.clicked.connect(self.copy_permalink_to_clipboard)
         self.update_ui_for_settings()
         self.update_font()
         self.update_settings()
@@ -856,6 +858,9 @@ class RandoGUI(QMainWindow):
         except IndexError as e:
             print(e)
         self.update_ui_for_settings()
+
+    def copy_permalink_to_clipboard(self):
+        pyperclip.copy(self.ui.permalink.text())
 
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))

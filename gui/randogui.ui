@@ -2293,6 +2293,13 @@
         <item>
          <widget class="QLineEdit" name="permalink"/>
         </item>
+        <item>
+         <widget class="QPushButton" name="copy_permalink_button">
+          <property name="text">
+           <string>Copy Settings String</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>

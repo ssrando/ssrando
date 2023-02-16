@@ -1565,6 +1565,11 @@ class Ui_MainWindow(object):
 
         self.hlay_permalink.addWidget(self.permalink)
 
+        self.copy_permalink_button = QPushButton(self.centralwidget)
+        self.copy_permalink_button.setObjectName(u"copy_permalink_button")
+
+        self.hlay_permalink.addWidget(self.copy_permalink_button)
+
 
         self.vlay_bottom_controls.addLayout(self.hlay_permalink)
 
@@ -1756,6 +1761,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_accessibility), QCoreApplication.translate("MainWindow", u"Accessibility", None))
         self.option_description.setText("")
         self.label_permalink.setText(QCoreApplication.translate("MainWindow", u"Settings String", None))
+        self.copy_permalink_button.setText(QCoreApplication.translate("MainWindow", u"Copy Settings String", None))
 #if QT_CONFIG(tooltip)
         self.label_seed.setToolTip("")
 #endif // QT_CONFIG(tooltip)

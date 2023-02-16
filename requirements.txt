@@ -6,3 +6,4 @@ future~=0.18.2
 PySide6~=6.2.0
 lark~=1.0.0
 pyqtdarktheme~=2.1.0
+pyperclip
