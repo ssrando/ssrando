@@ -49,6 +49,7 @@ class CustomThemeDialog(QDialog):
             self.ui.widget_category_choice.addItem(category)
 
         self.ui.custom_theme_tabWidget.setCurrentIndex(0)
+        self.ui.custom_theme_tabWidget.currentChanged.connect(self.on_tab_change)
 
         self.ui.restore_defaults_button.clicked.connect(self.restore_default_theme)
         self.ui.bbox_theme.accepted.connect(self.save_custom_theme)
@@ -126,3 +127,9 @@ class CustomThemeDialog(QDialog):
     def set_widget_description(self, description: str):
         description_label = getattr(self.ui, "widget_description")
         description_label.setText(description)
+    
+    def on_tab_change(self, tab_index: int):
+        if tab_index == 0:
+            self.set_widget_description(self.theme_info[self.category]["description"])
+        else:
+            self.set_widget_description(None)
