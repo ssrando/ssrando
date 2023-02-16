@@ -1457,11 +1457,15 @@ class Ui_MainWindow(object):
         self.hlay_font_size.setObjectName(u"hlay_font_size")
         self.label_for_option_font_size = QLabel(self.box_font)
         self.label_for_option_font_size.setObjectName(u"label_for_option_font_size")
+        sizePolicy.setHeightForWidth(self.label_for_option_font_size.sizePolicy().hasHeightForWidth())
+        self.label_for_option_font_size.setSizePolicy(sizePolicy)
 
         self.hlay_font_size.addWidget(self.label_for_option_font_size)
 
         self.option_font_size = QSpinBox(self.box_font)
         self.option_font_size.setObjectName(u"option_font_size")
+        sizePolicy5.setHeightForWidth(self.option_font_size.sizePolicy().hasHeightForWidth())
+        self.option_font_size.setSizePolicy(sizePolicy5)
 
         self.hlay_font_size.addWidget(self.option_font_size)
 
@@ -1537,8 +1541,11 @@ class Ui_MainWindow(object):
         self.option_description = QLabel(self.centralwidget)
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
-        sizePolicy2.setHeightForWidth(self.option_description.sizePolicy().hasHeightForWidth())
-        self.option_description.setSizePolicy(sizePolicy2)
+        sizePolicy9 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+        sizePolicy9.setHorizontalStretch(0)
+        sizePolicy9.setVerticalStretch(0)
+        sizePolicy9.setHeightForWidth(self.option_description.sizePolicy().hasHeightForWidth())
+        self.option_description.setSizePolicy(sizePolicy9)
         self.option_description.setTextFormat(Qt.MarkdownText)
         self.option_description.setWordWrap(True)
 
@@ -1602,7 +1609,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(6)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)

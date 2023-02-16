@@ -67,6 +67,9 @@ class RandoGUI(QMainWindow):
         QFontDatabase.addApplicationFont(
             str(RANDO_ROOT_PATH / "assets" / "Lato-Regular.ttf")
         )
+        QFontDatabase.addApplicationFont(
+            str(RANDO_ROOT_PATH / "assets" / "OpenDyslexic3-Regular.ttf")
+        )
 
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
 
@@ -612,6 +615,9 @@ class RandoGUI(QMainWindow):
             self.default_theme_path = HIGH_CONTRAST_THEME_PATH
         elif preset == "Readability":
             self.default_theme_path = READABILITY_THEME_PATH
+            font_index = self.ui.option_font_family.findText("OpenDyslexic3")
+            self.ui.option_font_family.setCurrentIndex(font_index)
+            self.ui.option_font_size.setValue(OPTIONS["font-size"]["default"])
 
         self.update_theme()
 

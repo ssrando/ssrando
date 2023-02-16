@@ -75,7 +75,7 @@
   type: int
   min: 6
   max: 14
-  default: 9
+  default: 10
   permalink: false
   help: "Determines the size of the font (in points) used in the randomizer program.
         **WARNING**: Setting the font size to high may cause text to be cut off."
