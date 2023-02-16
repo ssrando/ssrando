@@ -35,7 +35,13 @@
 - Added cosmetic option to have a lightning skyward strike effects. (by Zeldex)
 - Added an accessibility toggle for light and dark themes (by CovenEsme)
   - You can now pick to have a light theme, dark theme, or to automatically change based on the theme of your computer
-- New custom theme options (by CovenEsme)
+### Changes
+- New GUI (by cjs07)
+  - Rearranged options and regrouped into simpler, broader categories
+  - Removed the Progress Locations tab
+  - Made many miscellaneous changes
+  - Added a dark theme
+- Accessibility options (by CovenEsme)
   - Added a toggle for enabling and disabling a custom theme 
   - Added a button that opens a window with customization options for the theme of the randomizer
     - It is now possible to customize the way the randomizer program looks in fine detail
@@ -44,13 +50,15 @@
     - Hovering over a widget label will show a tooltip describing what it does
   - Added theme presets
     - Allows you to choose between various theme presets. Currently, there are "Default", "High Contrast", and "Readibility" options
+    - The "Readibility" theme preset also changes the font family to "OpenDyslexic3"
+  - Added font settings
+    - It is now possible to set the font family used by the randomizer program
+    - It is also possible to change the font point size. The default value is 10 (previously 9), can go as small as 6 and as large as 14.
   - Added option to make the curved corners of the randomizer interace sharp and pointy instead of curved
-### Changes
-- New GUI (by cjs07)
-  - Rearranged options and regrouped into simpler, broader categories
-  - Removed the Progress Locations tab
-  - Made many miscellaneous changes
-  - Added a dark theme
+- Added a copy button that copies the settings string to the clipboard (by CovenEsme)
+- Updated and standardized the option tooltip text (by CovenEsme)
+  - Tooltip text is now more descriptive
+  - Tooltip text now features **bold** highlights for **WARNINGS** regarding potentially troublesome settings and option names for drop down choices
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
   - The randomizer is distributed with a set of default presets that cannot be changed
@@ -114,7 +122,7 @@
 - Fixed light pillars not visually appearing when obtaining a tablet until a reload
 - Fixed Early Lake Floria Tricks not actually changing logic
 - Fixed Yerbal's map hint not showing the X marker on the map
-
+- Fixed UI scaling issues. The randomizer program now scales when resized instead of remaining a fixed size.
 
 ## 1.3.2
 ### Changes
