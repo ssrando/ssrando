@@ -153,8 +153,59 @@ class AllPatcher:
                     outdata = data.get_file_data(f"oarc/{objname}.arc")
                     (self.oarc_cache_path / f"{objname}.arc").write_bytes(outdata)
 
+    def patch_arc_replacements(self):
+        # handles arc replacement for all other arcs
+        for path in self.actual_extract_path.glob("**/*.arc"):
+
+            modified = False
+            modified_path = str(path).replace(
+                str(self.actual_extract_path), str(self.modified_extract_path)
+            )
+            replacement = Path()
+
+            # replaces arc with actual arc if deleted
+            if not Path(modified_path).exists():
+                shutil.copy(path, modified_path)
+
+            # handles stage text arcs as they have duplicate names for each language
+            if match := TEXT_ARC_REGEX.match(str(path)):
+                if match.group("lang") == "en":
+                    if replacement := (
+                        self.arc_replacements.get(match.group("name"))
+                        or self.arc_replacements.get(
+                            match.group("lang") + match.group("name")
+                        )
+                    ):
+                        modified = True
+                elif match.group("lang") == "es" or match.group("lang") == "fr":
+                    if replacement := self.arc_replacements.get(
+                        match.group("lang") + match.group("name")
+                    ):
+                        modified = True
+
+            # handles motion plus movie cursor and regular cursor arcs separately as they have duplicate names
+            elif path.parts[-1] == "cursor.arc":
+                if path.parts[-3] == "mpls_movie":
+                    if replacement := self.arc_replacements.get(f"mplscursor.arc"):
+                        modified = True
+                else:
+                    if replacement := self.arc_replacements.get("cursor.arc"):
+                        modified = True
+
+            # handles all other non-duplicate named arcs
+            elif replacement := self.arc_replacements.get(path.parts[-1]):
+                modified = True
+
+            if modified:
+                shutil.copy(replacement, modified_path)
+            else:
+                # replaces arc with actual arc if unchanged
+                shutil.copy(path, modified_path)
+
     def do_patch(self):
         self.modified_extract_path.mkdir(parents=True, exist_ok=True)
+
+        self.patch_arc_replacements()
 
         # stages
         for stagepath in (self.actual_extract_path / "DATA" / "files" / "Stage").glob(
@@ -260,15 +311,11 @@ class AllPatcher:
                 # print(f"copied {stage} l{layer}")
 
         # events and text
-        eventrootpath = None
         modified_eventrootpath = None
 
         # check target language
         for path, lang in LANGUAGES.items():
-            if (self.actual_extract_path / "DATA" / "files" / path).exists():
-                eventrootpath = (
-                    self.actual_extract_path / "DATA" / "files" / path / "Object" / lang
-                )
+            if (self.modified_extract_path / "DATA" / "files" / path).exists():
                 modified_eventrootpath = (
                     self.modified_extract_path
                     / "DATA"
@@ -278,9 +325,9 @@ class AllPatcher:
                     / lang
                 )
 
-        if eventrootpath == None:
+        if modified_eventrootpath == None:
             raise Exception("Event files not found.")
-        for eventpath in eventrootpath.glob("*.arc"):
+        for eventpath in modified_eventrootpath.glob("*.arc"):
             modified = False
             filename = eventpath.parts[-1]
             self.progress_callback(f"patching {filename}")
@@ -356,50 +403,3 @@ class AllPatcher:
                 nlzss11.compress(objpack_data),
             )
 
-        # handles arc replacement for all other arcs
-        for path in self.actual_extract_path.glob("**/*.arc"):
-
-            modified = False
-            modified_path = str(path).replace(
-                str(self.actual_extract_path), str(self.modified_extract_path)
-            )
-            replacement = Path()
-
-            # replaces arc with actual arc if deleted
-            if not Path(modified_path).exists():
-                shutil.copy(path, modified_path)
-
-            # handles stage text arcs as they have duplicate names for each language
-            if match := TEXT_ARC_REGEX.match(str(path)):
-                if match.group("lang") == "en":
-                    if replacement := (
-                        self.arc_replacements.get(match.group("name"))
-                        or self.arc_replacements.get(
-                            match.group("lang") + match.group("name")
-                        )
-                    ):
-                        modified = True
-                elif match.group("lang") == "es" or match.group("lang") == "fr":
-                    if replacement := self.arc_replacements.get(
-                        match.group("lang") + match.group("name")
-                    ):
-                        modified = True
-
-            # handles motion plus movie cursor and regular cursor arcs separately as they have duplicate names
-            elif path.parts[-1] == "cursor.arc":
-                if path.parts[-3] == "mpls_movie":
-                    if replacement := self.arc_replacements.get(f"mplscursor.arc"):
-                        modified = True
-                else:
-                    if replacement := self.arc_replacements.get("cursor.arc"):
-                        modified = True
-
-            # handles all other non-duplicate named arcs
-            elif replacement := self.arc_replacements.get(path.parts[-1]):
-                modified = True
-
-            if modified:
-                shutil.copy(replacement, modified_path)
-            else:
-                # replaces arc with actual arc if unchanged
-                shutil.copy(path, modified_path)
