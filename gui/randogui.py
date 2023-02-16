@@ -5,7 +5,7 @@ import random
 
 import json
 from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
-from PySide6.QtGui import QFontDatabase
+from PySide6.QtGui import QFontDatabase, QFont
 from PySide6.QtWidgets import (
     QAbstractButton,
     QApplication,
@@ -46,6 +46,7 @@ DEFAULT_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/default_theme.json"
 HIGH_CONTRAST_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/high_contrast_theme.json"
 READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/readability_theme.json"
 CUSTOM_THEME_PATH = RANDO_ROOT_PATH / "custom_theme.json"
+BASE_STYLE_SHEET_OVERRIDES = "QString { elide: right } "
 
 
 class RandoGUI(QMainWindow):
@@ -61,14 +62,9 @@ class RandoGUI(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        font_id = QFontDatabase.addApplicationFont(
+        QFontDatabase.addApplicationFont(
             str(RANDO_ROOT_PATH / "assets" / "Lato-Regular.ttf")
         )
-        family = QFontDatabase.applicationFontFamilies(font_id)[0]
-        font = self.font()
-        font.setFamily(family)
-        font.setPointSize(9)
-        self.setFont(font)
 
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
 
@@ -95,6 +91,10 @@ class RandoGUI(QMainWindow):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QComboBox):
+                    if option["name"] == "Font Family":
+                        widget.currentFontChanged.connect(self.update_font)
+                        widget.currentIndexChanged.connect(self.update_settings)
+                        continue
                     for option_val in option["choices"]:
                         widget.addItem(str(option_val))
                     widget.setCurrentIndex(
@@ -115,9 +115,13 @@ class RandoGUI(QMainWindow):
                     if "max" in option:
                         widget.setMaximum(option["max"])
                     widget.setValue(self.options[option_key])
-                    widget.valueChanged.connect(self.update_settings)
 
-        # Theme setup.
+                    if option["name"] == "Font Size":
+                        widget.valueChanged.connect(self.update_font)
+                    else:
+                        widget.valueChanged.connect(self.update_settings)
+
+        # Accessibility setup.
         self.custom_theme_path = CUSTOM_THEME_PATH
         match self.options["gui-theme-preset"]:
             case "Default":
@@ -148,6 +152,8 @@ class RandoGUI(QMainWindow):
             self.toggle_sharp_corners(1)
         else:
             self.toggle_sharp_corners(0)
+
+        self.ui.reset_font_button.clicked.connect(self.reset_font)
 
         # setup misc controls
         self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
@@ -246,6 +252,7 @@ class RandoGUI(QMainWindow):
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.update_ui_for_settings()
+        self.update_font()
         self.update_settings()
         self.set_option_description(None)
 
@@ -397,9 +404,14 @@ class RandoGUI(QMainWindow):
                 if isinstance(widget, QAbstractButton):
                     widget.setChecked(current_settings[option_key])
                 elif isinstance(widget, QComboBox):
-                    widget.setCurrentIndex(
-                        option["choices"].index(current_settings[option_key])
-                    )
+                    if option["name"] == "Font Family":
+                        widget.setCurrentIndex(
+                            widget.findText(current_settings[option_key])
+                        )
+                    else:
+                        widget.setCurrentIndex(
+                            option["choices"].index(current_settings[option_key])
+                        )
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):
@@ -619,6 +631,20 @@ class RandoGUI(QMainWindow):
 
     def disable_theme_interface(self):
         getattr(self.ui, "custom_theme_button").setEnabled(False)
+
+    def update_font(self):
+        self.update_settings()
+        self.setStyleSheet(
+            BASE_STYLE_SHEET_OVERRIDES
+            + f"QWidget {{ font-family: { self.options['font-family'] }; font-size: { self.options['font-size'] }pt }}"
+        )
+
+    def reset_font(self):
+        font_index = self.ui.option_font_family.findText(
+            OPTIONS["font-family"]["default"]
+        )
+        self.ui.option_font_family.setCurrentIndex(font_index)
+        self.ui.option_font_size.setValue(OPTIONS["font-size"]["default"])
 
     def enable_trick_interface(self):
         getattr(self.ui, "edit_tricks").setEnabled(True)

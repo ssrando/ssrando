@@ -34,7 +34,8 @@
     - Dark
     - Auto
   default: Auto
-  help: Choose the theme mode of the randomizer program. Choose between Light Mode, Dark Mode, and Auto (based on the theme of your operating system).
+  help: "Choose the theme mode of the randomizer program. Choose between:
+        *Light Mode*, *Dark Mode*, and *Auto* (based on the theme of your operating system)."
   ui: option_theme_mode
 - name: GUI Theme Preset
   command: gui-theme-preset
@@ -45,7 +46,10 @@
     - High Contrast
     - Readability
   default: Default
-  help: Choose a theme preset to style the randomizer program.
+  help: "Choose a theme preset to style the randomizer program.
+        **Default**: applies the standard theme.
+        **High Contrast**: applies a theme that maximizes contrast between text and the rest of the interface.
+        **Readibility**: applies a theme that reduces contrast in select areas to improve readability."
   ui: option_theme_presets
 - name: Custom GUI Theme
   command: use-custom-theme
@@ -54,6 +58,24 @@
   permalink: false
   help: If enabled, the custom theme will be used for the randomizer program interface.
   ui: option_use_custom_theme
+- name: Font Family
+  command: font-family
+  type: string
+  default: Lato
+  permalink: false
+  help: The font family that will be used for the text displayed in the randomizer program. Defaults to Lato if the given font cannot be found.
+  ui: option_font_family
+- name: Font Size
+  command: font-size
+  type: int
+  min: 6
+  max: 14
+  default: 9
+  permalink: false
+  help: "Determines the size of the font (in points) used in the randomizer
+         program. **WARNING**: Setting the font size to high may cause text to
+         be cut off."
+  ui: option_font_size
 - name: Sharp GUI Corners
   command: use-sharp-corners
   type: boolean
@@ -523,8 +545,8 @@
   permalink: false
   cosmetic: true
   help: "Controls the number of stars in the sky.
-         WARNING: Values bigger than 700 (default) WILL lag when played on the Wii Console.
-         DOUBLE WARNING: Emulator isn't immune from the lag either. Seriously, use at your own risk."
+         **WARNING**: Values bigger than 700 (default) WILL lag when played on the Wii Console.
+         **DOUBLE WARNING**: Emulator isn't immune from the lag either. Seriously, use at your own risk."
   ui: option_star_count
 - name: Force Sword Dungeon Reward
   command: sword-dungeon-reward

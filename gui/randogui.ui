@@ -59,6 +59,9 @@
     <property name="text">
      <string/>
     </property>
+    <property name="textFormat">
+     <enum>Qt::MarkdownText</enum>
+    </property>
     <property name="wordWrap">
      <bool>true</bool>
     </property>
@@ -91,7 +94,7 @@
      <number>-6</number>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -109,7 +112,7 @@
         <x>10</x>
         <y>10</y>
         <width>1001</width>
-        <height>126</height>
+        <height>81</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="vlay_files">
@@ -143,14 +146,14 @@
        <item>
         <layout class="QVBoxLayout" name="vlay_plando">
          <item>
-          <widget class="QCheckBox" name="option_plando">
-           <property name="text">
-            <string>Enable Plandomizer</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <layout class="QHBoxLayout" name="hlay_plando_file">
+           <item>
+            <widget class="QCheckBox" name="option_plando">
+             <property name="text">
+              <string>Enable Plandomizer</string>
+             </property>
+            </widget>
+           </item>
            <item>
             <widget class="QLineEdit" name="plando_file"/>
            </item>
@@ -183,14 +186,17 @@
      <widget class="QGroupBox" name="box_additional_files">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>130</y>
+        <x>12</x>
+        <y>108</y>
         <width>181</width>
-        <height>211</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
        <string>Additional File Generation</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
       </property>
       <widget class="QWidget" name="verticalLayoutWidget_13">
        <property name="geometry">
@@ -198,7 +204,7 @@
          <x>10</x>
          <y>20</y>
          <width>169</width>
-         <height>181</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_additional_files">
@@ -243,9 +249,9 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>130</y>
+        <y>110</y>
         <width>181</width>
-        <height>211</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -257,7 +263,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>181</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_advanced">
@@ -288,9 +294,9 @@
       <property name="geometry">
        <rect>
         <x>410</x>
-        <y>130</y>
+        <y>110</y>
         <width>181</width>
-        <height>211</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -302,7 +308,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>181</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_cosmetics">
@@ -383,9 +389,9 @@
       <property name="geometry">
        <rect>
         <x>610</x>
-        <y>130</y>
+        <y>110</y>
         <width>181</width>
-        <height>211</height>
+        <height>251</height>
        </rect>
       </property>
       <property name="title">
@@ -397,7 +403,7 @@
          <x>10</x>
          <y>20</y>
          <width>161</width>
-         <height>181</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_music_rando">
@@ -456,9 +462,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>350</y>
+        <y>370</y>
         <width>331</width>
-        <height>101</height>
+        <height>131</height>
        </rect>
       </property>
       <property name="title">
@@ -470,7 +476,7 @@
          <x>10</x>
          <y>20</y>
          <width>311</width>
-         <height>78</height>
+         <height>101</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_presets">
@@ -478,6 +484,9 @@
          <widget class="QLabel" name="label_presets">
           <property name="text">
            <string>Presets overwrite ALL game settings</string>
+          </property>
+          <property name="wordWrap">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -509,85 +518,8 @@
           </item>
          </layout>
         </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="box_accessibility">
-      <property name="geometry">
-       <rect>
-        <x>810</x>
-        <y>130</y>
-        <width>181</width>
-        <height>211</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Accessibility</string>
-      </property>
-      <widget class="QWidget" name="verticalLayoutWidget_15">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>161</width>
-         <height>182</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="vlay_accessibility">
         <item>
-         <widget class="QLabel" name="theme_mode_label">
-          <property name="text">
-           <string>Theme Mode</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="option_theme_mode">
-          <property name="currentText">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="theme_presets_label">
-          <property name="text">
-           <string>Theme Presets</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="option_theme_presets">
-          <property name="currentText">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_use_custom_theme">
-          <property name="text">
-           <string>Use Custom Theme</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="custom_theme_button">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>Customize Theme</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="option_use_sharp_corners">
-          <property name="text">
-           <string>Sharp Corners</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="vspace_accessibility">
+         <spacer name="verticalSpacer_2">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
@@ -1162,7 +1094,7 @@
         <x>10</x>
         <y>0</y>
         <width>191</width>
-        <height>251</height>
+        <height>501</height>
        </rect>
       </property>
       <property name="title">
@@ -1174,7 +1106,7 @@
          <x>10</x>
          <y>20</y>
          <width>177</width>
-         <height>221</height>
+         <height>471</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_convenience_tweaks">
@@ -1207,7 +1139,7 @@
         <x>210</x>
         <y>0</y>
         <width>191</width>
-        <height>251</height>
+        <height>501</height>
        </rect>
       </property>
       <property name="title">
@@ -1219,7 +1151,7 @@
          <x>10</x>
          <y>20</y>
          <width>171</width>
-         <height>221</height>
+         <height>471</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_vanilla_tweaks">
@@ -1252,7 +1184,7 @@
         <x>410</x>
         <y>0</y>
         <width>191</width>
-        <height>251</height>
+        <height>501</height>
        </rect>
       </property>
       <property name="title">
@@ -1264,7 +1196,7 @@
          <x>10</x>
          <y>20</y>
          <width>172</width>
-         <height>221</height>
+         <height>471</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_item_pool">
@@ -1311,7 +1243,7 @@
         <x>610</x>
         <y>0</y>
         <width>191</width>
-        <height>251</height>
+        <height>501</height>
        </rect>
       </property>
       <property name="title">
@@ -1323,7 +1255,7 @@
          <x>9</x>
          <y>19</y>
          <width>171</width>
-         <height>221</height>
+         <height>471</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_silent_realms">
@@ -1363,7 +1295,7 @@
         <x>810</x>
         <y>0</y>
         <width>191</width>
-        <height>251</height>
+        <height>501</height>
        </rect>
       </property>
       <property name="title">
@@ -1375,7 +1307,7 @@
          <x>10</x>
          <y>20</y>
          <width>183</width>
-         <height>221</height>
+         <height>471</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_heromode_changes">
@@ -1602,7 +1534,7 @@
         <x>10</x>
         <y>10</y>
         <width>191</width>
-        <height>231</height>
+        <height>491</height>
        </rect>
       </property>
       <property name="title">
@@ -1614,7 +1546,7 @@
          <x>10</x>
          <y>20</y>
          <width>175</width>
-         <height>207</height>
+         <height>461</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_stone_hints">
@@ -1668,7 +1600,7 @@
         <x>210</x>
         <y>10</y>
         <width>191</width>
-        <height>231</height>
+        <height>491</height>
        </rect>
       </property>
       <property name="title">
@@ -1680,7 +1612,7 @@
          <x>10</x>
          <y>20</y>
          <width>174</width>
-         <height>201</height>
+         <height>461</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="vlay_other_hints">
@@ -2012,6 +1944,198 @@
         </layout>
        </item>
       </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_accessibility">
+     <attribute name="title">
+      <string>Accessibility</string>
+     </attribute>
+     <widget class="QGroupBox" name="box_theme">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>181</width>
+        <height>491</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Theming</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_15">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>161</width>
+         <height>461</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="vlay_theme">
+        <item>
+         <widget class="QLabel" name="theme_mode_label">
+          <property name="text">
+           <string>Theme Mode</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="option_theme_mode">
+          <property name="currentText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="theme_presets_label">
+          <property name="text">
+           <string>Theme Presets</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="option_theme_presets">
+          <property name="currentText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_use_custom_theme">
+          <property name="text">
+           <string>Use Custom Theme</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="custom_theme_button">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Customize Theme</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_use_sharp_corners">
+          <property name="text">
+           <string>Sharp Corners</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="vspace_theme">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="box_font">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>10</y>
+        <width>181</width>
+        <height>491</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Fonts</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_24">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>161</width>
+         <height>461</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="vlay_font">
+        <item>
+         <widget class="QLabel" name="label_for_option_font_family">
+          <property name="font">
+           <font>
+            <family>Segoe UI</family>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Font Family</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFontComboBox" name="option_font_family">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+          </property>
+          <property name="writingSystem">
+           <enum>QFontDatabase::Any</enum>
+          </property>
+          <property name="fontFilters">
+           <set>QFontComboBox::AllFonts</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="hlay_font_size">
+          <item>
+           <widget class="QLabel" name="label_for_option_font_size">
+            <property name="text">
+             <string>Font Size</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="option_font_size"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="reset_font_button">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Reset</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="vspace_font">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </widget>
    </widget>
