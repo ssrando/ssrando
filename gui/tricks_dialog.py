@@ -6,10 +6,12 @@ from options import OPTIONS
 
 
 class TricksDialog(QDialog):
-    def __init__(self, enabled_model, disabled_model):
+    def __init__(self, enabled_model, disabled_model, style_sheet: str = None):
         super().__init__()
         self.ui = Ui_TricksDialog()
         self.ui.setupUi(self)
+
+        self.setStyleSheet(style_sheet)
 
         self.enabled_tricks_model = enabled_model
         self.disabled_tricks_model = disabled_model

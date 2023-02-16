@@ -19,10 +19,14 @@ DARK = "[dark]"
 class CustomThemeDialog(QDialog):
     themeSaved = Signal(dict)
 
-    def __init__(self, default_theme: Path, custom_theme: Path):
+    def __init__(
+        self, default_theme: Path, custom_theme: Path, style_sheet: str = None
+    ):
         super().__init__()
         self.ui = Ui_CustomThemeDialog()
         self.ui.setupUi(self)
+
+        self.setStyleSheet(style_sheet)
 
         self.theme_info_path = RANDO_ROOT_PATH / "gui/default_theme_info.yaml"
         self.theme_info = yaml_load(self.theme_info_path)

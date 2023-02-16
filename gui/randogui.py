@@ -617,7 +617,7 @@ class RandoGUI(QMainWindow):
 
     def open_custom_theme_picker(self):
         custom_theme_picker = CustomThemeDialog(
-            self.default_theme_path, self.custom_theme_path
+            self.default_theme_path, self.custom_theme_path, self.styleSheet()
         )
         custom_theme_picker.themeSaved.connect(self.update_custom_theme)
         custom_theme_picker.exec()
@@ -801,7 +801,9 @@ class RandoGUI(QMainWindow):
     def launch_tricks_dialog(self):
         old_en = self.enabled_tricks_model.stringList()
         old_dis = self.disabled_tricks_model.stringList()
-        dialog = TricksDialog(self.enabled_tricks_model, self.disabled_tricks_model)
+        dialog = TricksDialog(
+            self.enabled_tricks_model, self.disabled_tricks_model, self.styleSheet()
+        )
         if dialog.exec():
             results = dialog.getTrickValues()
             self.disabled_tricks_model.setStringList(results[0])
