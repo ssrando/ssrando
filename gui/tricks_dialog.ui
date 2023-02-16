@@ -7,74 +7,135 @@
     <x>0</x>
     <y>0</y>
     <width>1005</width>
-    <height>309</height>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Enable Tricks</string>
   </property>
-  <widget class="QDialogButtonBox" name="bbox_tricks">
-   <property name="geometry">
-    <rect>
-     <x>660</x>
-     <y>270</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>8</x>
-     <y>10</y>
-     <width>991</width>
-     <height>251</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="vlay_tricks">
-    <item>
-     <layout class="QHBoxLayout" name="hlay_tricks_body">
-      <item>
-       <widget class="QListView" name="disabled_tricks">
-        <property name="toolTip">
-         <string>test</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="vlay_tricks_controls">
-        <item>
-         <widget class="QPushButton" name="disable_trick">
-          <property name="text">
-           <string>Disable
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="vlay_tricks">
+     <item>
+      <layout class="QHBoxLayout" name="hlay_tricks_body">
+       <item>
+        <layout class="QVBoxLayout" name="vlay_disabled_tricks">
+         <item>
+          <widget class="QLabel" name="label_for_disabled_tricks">
+           <property name="text">
+            <string>Disabled Tricks</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListView" name="disabled_tricks">
+           <property name="toolTip">
+            <string>test</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="vlay_tricks_controls">
+         <item>
+          <spacer name="vspace_tricks_controls_upper">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="disable_trick">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Disable
 &lt;--</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="enable_trick">
-          <property name="text">
-           <string>Enable
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="vspace_tricks_controls_middle">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="enable_trick">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Enable
 --&gt;</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QListView" name="enabled_tricks"/>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="vspace_tricks_controls_lower">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="vlay_enabled_tricks">
+         <item>
+          <widget class="QLabel" name="label_for_enabled_tricks">
+           <property name="text">
+            <string>Enabled Tricks</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListView" name="enabled_tricks"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="bbox_tricks">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>
