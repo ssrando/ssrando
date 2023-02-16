@@ -402,4 +402,3 @@ class AllPatcher:
                 / "ObjectPack.arc.LZ",
                 nlzss11.compress(objpack_data),
             )
-
