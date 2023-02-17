@@ -5,8 +5,8 @@ from PySide6.QtWidgets import (
     QLayout,
     QMainWindow,
 )
-from gui.ui_custom_theme_dialog import Ui_CustomThemeDialog
-from gui.color_button import ColorButton
+from gui.dialogs.custom_theme.ui_custom_theme_dialog import Ui_CustomThemeDialog
+from gui.components.color_button import ColorButton
 
 import json
 from paths import Path, RANDO_ROOT_PATH
@@ -14,6 +14,7 @@ from yaml_files import yaml_load
 
 LIGHT = "[light]"
 DARK = "[dark]"
+THEME_INFO_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "default_theme_info.yaml"
 
 
 class CustomThemeDialog(QDialog):
@@ -28,7 +29,7 @@ class CustomThemeDialog(QDialog):
 
         self.setStyleSheet(style_sheet)
 
-        self.theme_info_path = RANDO_ROOT_PATH / "gui/default_theme_info.yaml"
+        self.theme_info_path = THEME_INFO_PATH
         self.theme_info = yaml_load(self.theme_info_path)
 
         self.default_theme_path = default_theme

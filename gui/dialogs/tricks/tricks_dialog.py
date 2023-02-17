@@ -1,6 +1,5 @@
-from PySide6.QtCore import Qt, QTimer, QEvent, QStringListModel
 from PySide6.QtWidgets import QDialog
-from gui.ui_tricks_dialog import Ui_TricksDialog
+from gui.dialogs.tricks.ui_tricks_dialog import Ui_TricksDialog
 
 from options import OPTIONS
 

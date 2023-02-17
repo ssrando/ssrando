@@ -1,3 +1,3 @@
 [tool.black]
 include = '\.pyi?$'
-exclude = 'gui/ui_.*.py'
+exclude = 'gui\/(.*\/)*ui_.*.py'

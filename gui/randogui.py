@@ -1,12 +1,13 @@
 import os
 import sys
 from pathlib import Path
-import random
 import pyperclip
+import qdarktheme
+import random
 
 import json
 from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
-from PySide6.QtGui import QFontDatabase, QFont
+from PySide6.QtGui import QFontDatabase
 from PySide6.QtWidgets import (
     QAbstractButton,
     QApplication,
@@ -22,20 +23,18 @@ from PySide6.QtWidgets import (
     QRadioButton,
     QSpinBox,
 )
-from gui.sort_model import LocationsModel
-from gui.tricks_dialog import TricksDialog
-from gui.custom_theme_dialog import CustomThemeDialog
+from gui.models.sort_model import LocationsModel
+from gui.dialogs.tricks.tricks_dialog import TricksDialog
+from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
-from gui.progressdialog import ProgressDialog
+from gui.dialogs.progressbar.progressdialog import ProgressDialog
 from gui.guithreads import RandomizerThread, ExtractSetupThread
 from ssrando import Randomizer, VERSION
 from paths import RANDO_ROOT_PATH
 from gui.ui_randogui import Ui_MainWindow
 from witmanager import WitManager
-
-import qdarktheme
 
 # Allow keyboard interrupts on the command line to instantly close the program.
 import signal
@@ -43,9 +42,12 @@ import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 NEW_PRESET = "[New Preset]"
-DEFAULT_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/default_theme.json"
-HIGH_CONTRAST_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/high_contrast_theme.json"
-READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui/themes/readability_theme.json"
+DEFAULT_PRESETS_PATH = RANDO_ROOT_PATH / "gui" / "presets" / "default_presets.json"
+DEFAULT_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "default_theme.json"
+HIGH_CONTRAST_THEME_PATH = (
+    RANDO_ROOT_PATH / "gui" / "themes" / "high_contrast_theme.json"
+)
+READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "readability_theme.json"
 CUSTOM_THEME_PATH = RANDO_ROOT_PATH / "custom_theme.json"
 
 # Add stylesheet overrides here.
@@ -213,7 +215,7 @@ class RandoGUI(QMainWindow):
         self.user_presets = {}
         self.ui.presets_list.addItem(NEW_PRESET)
         sep_idx = 1
-        with (RANDO_ROOT_PATH / "gui" / "default_presets.json").open("r") as f:
+        with (DEFAULT_PRESETS_PATH).open("r") as f:
             try:
                 load_default_presets = json.load(f)
                 for preset in load_default_presets:
