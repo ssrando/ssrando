@@ -182,7 +182,7 @@ settings.txt
 presets.txt
 
 # custom theme file
-custom_theme.json
+custom_*.*
 
 custom-music/
 
