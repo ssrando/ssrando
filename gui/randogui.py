@@ -29,6 +29,7 @@ from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
 from logic.constants import LOCATION_FILTER_TYPES
 from gui.components.conditional_multiselect import ConditionalMultiselect
+from gui.components.multi_combo_box import MultiComboBox
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -108,7 +109,21 @@ class RandoGUI(QMainWindow):
                     continue
                 widget = getattr(self.ui, ui_name)
                 widget.installEventFilter(self)
-                if isinstance(widget, QAbstractButton):
+                if option.get("type") == "multichoice" and option.get("trivial", False):
+                    temp = MultiComboBox("Test", ["test 1", "test 2", "test 3"])
+                    widget.parentWidget().layout().replaceWidget(self.ui.widget, temp)
+                    setattr(self.ui, ui_name, temp)
+                    widget = temp
+                elif option.get("type") == "multichoice" and option.get(
+                    "conditional", False
+                ):
+                    temp = ConditionalMultiselect(
+                        "Test", ["test 1", "test 2", "test 3"]
+                    )
+                    widget.parentWidget().layout().replaceWidget(self.ui.widget, temp)
+                    setattr(self.ui, ui_name, temp)
+                    widget = temp
+                elif isinstance(widget, QAbstractButton):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QComboBox):
@@ -260,6 +275,7 @@ class RandoGUI(QMainWindow):
 
         temp = ConditionalMultiselect("Test", ["test 1", "test 2", "test 3"])
         self.ui.widget.parentWidget().layout().replaceWidget(self.ui.widget, temp)
+        temp.compositeChanged.connect(lambda: print("composite change"))
 
         # hide currently unsupported options to make this version viable for public use
         getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
@@ -439,6 +455,10 @@ class RandoGUI(QMainWindow):
                 widget = getattr(self.ui, ui_name)
                 if isinstance(widget, QAbstractButton):
                     widget.setChecked(current_settings[option_key])
+                elif isinstance(widget, MultiComboBox):
+                    widget.set_from_list(current_settings[option_key])
+                elif isinstance(widget, ConditionalMultiselect):
+                    widget.update_from_settings(current_settings[option_key])
                 elif isinstance(widget, QComboBox):
                     if option["name"] == "Font Family":
                         widget.setCurrentIndex(

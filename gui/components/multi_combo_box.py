@@ -18,7 +18,6 @@ class MultiComboBox(QComboBox):
 
         self.cancel_close = False
 
-    @Slot(QModelIndex)
     def handleItemPressed(self, index):
         item = self.model().itemFromIndex(index)
         if not item.isCheckable():
@@ -51,3 +50,11 @@ class MultiComboBox(QComboBox):
         self.closedPopup.emit()
         super().hidePopup()
         QTimer.singleShot(0, lambda: self.setCurrentIndex(0))
+
+    def set_from_list(self, values):
+        curr_val_ind = 0
+        curr_val = values[curr_val_ind]
+        for i in range(1, self.model().rowCount()):
+            item = self.model().item(i)
+            if item.text() == curr_val:
+                item.setCheckState(Qt.CheckState.Checked)

@@ -1,4 +1,4 @@
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import QVBoxLayout, QPushButton, QWidget, QComboBox, QLabel
 from PySide6.QtGui import QStandardItem
 
@@ -14,6 +14,8 @@ BASE_OPTIONS = [
 CHOOSE_TEXT = 'Choose'
 
 class ConditionalMultiselect(QWidget):
+    compositeChanged = Signal()
+
     def __init__(self, label, options):
         super().__init__()
         layout = QVBoxLayout()
@@ -25,9 +27,11 @@ class ConditionalMultiselect(QWidget):
         for option in BASE_OPTIONS:
             self.base_selector.addItem(option)
         self.base_selector.currentIndexChanged.connect(self.update_from_base)
+        self.base_selector.currentIndexChanged.connect(self.changed)
         layout.addWidget(self.base_selector)
 
         self.multiselect = MultiComboBox()
+        self.multiselect.closedPopup.connect(self.changed)
         for option in options:
             item = QStandardItem(option)
             item.setCheckable(True)
@@ -44,3 +48,10 @@ class ConditionalMultiselect(QWidget):
             self.multiselect.setEnabled(True)
         else:
             self.multiselect.setEnabled(False)
+
+    def changed(self):
+        self.compositeChanged.emit()
+
+    def update_from_settings(self, option_value):
+        self.base_selector.setCurrentText(option_value[0])
+        self.multiselect.set_from_list(option_value[1:])
