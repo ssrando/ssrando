@@ -6,7 +6,7 @@ from PySide6.QtWidgets import (
     QMainWindow,
 )
 from gui.ui_custom_theme_dialog import Ui_CustomThemeDialog
-from gui.colour_button import ColourButton
+from gui.color_button import ColorButton
 
 import json
 from paths import Path, RANDO_ROOT_PATH
@@ -57,12 +57,12 @@ class CustomThemeDialog(QDialog):
 
     def on_category_change(self, category: str):
         name_box = getattr(self.ui, "vlay_widget_name")
-        colour_light_box = getattr(self.ui, "vlay_color_light")
-        colour_dark_box = getattr(self.ui, "vlay_color_dark")
+        color_light_box = getattr(self.ui, "vlay_color_light")
+        color_dark_box = getattr(self.ui, "vlay_color_dark")
 
         self.remove_widgets(name_box)
-        self.remove_widgets(colour_light_box)
-        self.remove_widgets(colour_dark_box)
+        self.remove_widgets(color_light_box)
+        self.remove_widgets(color_dark_box)
 
         widgets = self.theme_info[category]
         insert_index = 1
@@ -71,33 +71,33 @@ class CustomThemeDialog(QDialog):
             if widget_name == "description":
                 continue
 
-            colour_light_button = ColourButton(
+            color_light_button = ColorButton(
                 self.custom_theme[LIGHT][widget_name], widget_name
             )
-            colour_dark_button = ColourButton(
+            color_dark_button = ColorButton(
                 self.custom_theme[DARK][widget_name], widget_name
             )
             widget_name_label = QLabel(widget_name)
             widget_name_label.setMinimumHeight(32)
             widget_name_label.installEventFilter(self)
 
-            colour_light_button.colourChanged.connect(self.update_light_theme)
-            colour_dark_button.colourChanged.connect(self.update_dark_theme)
+            color_light_button.colorChanged.connect(self.update_light_theme)
+            color_dark_button.colorChanged.connect(self.update_dark_theme)
 
             name_box.insertWidget(insert_index, widget_name_label)
-            colour_light_box.insertWidget(insert_index, colour_light_button)
-            colour_dark_box.insertWidget(insert_index, colour_dark_button)
+            color_light_box.insertWidget(insert_index, color_light_button)
+            color_dark_box.insertWidget(insert_index, color_dark_button)
 
             insert_index += 1
 
         self.category = category
         self.set_widget_description(self.theme_info[self.category]["description"])
 
-    def update_light_theme(self, colour: str, name: str):
-        self.custom_theme[LIGHT][name] = colour
+    def update_light_theme(self, color: str, name: str):
+        self.custom_theme[LIGHT][name] = color
 
-    def update_dark_theme(self, colour: str, name: str):
-        self.custom_theme[DARK][name] = colour
+    def update_dark_theme(self, color: str, name: str):
+        self.custom_theme[DARK][name] = color
 
     def restore_default_theme(self):
         self.custom_theme = self.default_theme
