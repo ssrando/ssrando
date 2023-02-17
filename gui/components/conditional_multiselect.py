@@ -20,8 +20,8 @@ class ConditionalMultiselect(QWidget):
         super().__init__()
         layout = QVBoxLayout()
 
-        labelWidget = QLabel(label)
-        layout.addWidget(labelWidget)
+        label_widget = QLabel(label + " Mode")
+        layout.addWidget(label_widget)
 
         self.base_selector = QComboBox()
         for option in BASE_OPTIONS:
@@ -29,6 +29,9 @@ class ConditionalMultiselect(QWidget):
         self.base_selector.currentIndexChanged.connect(self.update_from_base)
         self.base_selector.currentIndexChanged.connect(self.changed)
         layout.addWidget(self.base_selector)
+
+        choice_label_widget = QLabel(label)
+        layout.addWidget(choice_label_widget)
 
         self.multiselect = MultiComboBox()
         self.multiselect.closedPopup.connect(self.changed)
