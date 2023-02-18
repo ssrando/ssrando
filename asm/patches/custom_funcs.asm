@@ -493,35 +493,19 @@ addi r1, r1, 0x10
 blr
 .close
 
-
-
-
-
-
-
-
-
-
-; stwu r1, -0x10(r1)
-; mflr r0
-; stw r0, 20(r1)
-
-; li r4, 0x13 ; story flag 19 - talked to Fire Dragon
-; bl checkStoryflagIsSet
-; cmpwi r3, 0
-; bne normal_check
-; li r0, -1
-; normal_check:
-; cmpwi r0, 0
-
-; lwz r0, 20(r1)
-; mtlr r0
-; addi r1, r1, 0x10
-; blr
-; .close
-
-; no_platform:
-; b 0x68C ; don't spawn platform
-
-; ble 0x68C ; no_platform
-; b 0x630 ; return immediately after custom function
+.open "d_t_player_restartNP.rel"
+.org @NextFreeSpace
+; see: https://rust.godbolt.org/
+; in rust because why not
+; pub fn test(params1: u32, flags: u32) -> u32 {
+;     return flags | if ((params1 >> 0x17) & 1) != 0 { 4 } else { 0 };
+; }
+.global only_set_flag_conditionally
+only_set_flag_conditionally:
+; r0 holds params1 (how convenient)
+; r4 holds some flags, where 4 means don't copy to File B again
+rlwinm r5, r0, 11, 29, 29
+or r4, r4, r5
+ori r4, r4, 0x100 ; we need to signal that the flag, to cause link to use the PlRsTag entrance, needs to be set
+blr
+.close
