@@ -58,3 +58,6 @@ class ConditionalMultiselect(QWidget):
     def update_from_settings(self, option_value):
         self.base_selector.setCurrentText(option_value[0])
         self.multiselect.set_from_list(option_value[1:])
+
+    def composite_value(self):
+        return [self.base_selector.currentText(), i for i in self.multiselect.checked_items()]

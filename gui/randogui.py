@@ -646,6 +646,10 @@ class RandoGUI(QMainWindow):
         widget = getattr(self.ui, option_name)
         if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
             return widget.isChecked()
+        elif isinstance(widget, MultiComboBox):
+            return widget.checked_items()
+        elif isinstance(widget, ConditionalMultiselect):
+            return widget.composite_value()
         elif isinstance(widget, QComboBox):
             return widget.itemText(widget.currentIndex())
         elif isinstance(widget, QSpinBox):

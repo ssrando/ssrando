@@ -7,7 +7,7 @@ class MultiComboBox(QComboBox):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.view().pressed.connect(self.handleItemPressed)
+        self.view().pressed.connect(self.handle_item_pressed)
         self.setModel(QStandardItemModel(self))
 
         first_item = QStandardItem("None")
@@ -18,7 +18,7 @@ class MultiComboBox(QComboBox):
 
         self.cancel_close = False
 
-    def handleItemPressed(self, index):
+    def handle_item_pressed(self, index):
         item = self.model().itemFromIndex(index)
         if not item.isCheckable():
             return
@@ -26,7 +26,7 @@ class MultiComboBox(QComboBox):
             item.setCheckState(Qt.CheckState.Unchecked)
         else:
             item.setCheckState(Qt.CheckState.Checked)
-        checked = self.checkedItems()
+        checked = self.checked_items()
         if len(checked) > 0:
             string = ", ".join(checked)
         else:
@@ -35,7 +35,7 @@ class MultiComboBox(QComboBox):
         self.model().itemFromIndex(first_index).setText(string)
         self.cancel_close = True
 
-    def checkedItems(self):
+    def checked_items(self):
         l = []
         for i in range(self.model().rowCount()):
             it = self.model().item(i)
