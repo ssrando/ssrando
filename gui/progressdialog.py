@@ -38,7 +38,7 @@ class ProgressDialog(QProgressDialog):
     def setLabelText(self, text: str) -> None:
         self.setLabelText(step_text=text)
 
-    def setLabelText(self, step_text: str=None, tip_text: str=None) -> None:
+    def setLabelText(self, step_text: str = None, tip_text: str = None) -> None:
         label_text = ""
         if step_text:
             label_text += step_text
