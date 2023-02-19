@@ -110,19 +110,19 @@ class RandoGUI(QMainWindow):
                 widget = getattr(self.ui, ui_name)
                 widget.installEventFilter(self)
                 if option.get("type") == "multichoice" and option.get("trivial", False):
-                    temp = MultiComboBox("Test", ["test 1", "test 2", "test 3"])
-                    widget.parentWidget().layout().replaceWidget(self.ui.widget, temp)
+                    temp = MultiComboBox(option["choices"])
+                    widget.parentWidget().layout().replaceWidget(widget, temp)
                     setattr(self.ui, ui_name, temp)
                     widget = temp
+                    widget.closedPopup.connect(self.update_settings)
                 elif option.get("type") == "multichoice" and option.get(
                     "conditional", False
                 ):
-                    temp = ConditionalMultiselect(
-                        "Test", ["test 1", "test 2", "test 3"]
-                    )
-                    widget.parentWidget().layout().replaceWidget(self.ui.widget, temp)
+                    temp = ConditionalMultiselect(option["name"], option["choices"])
+                    widget.parentWidget().layout().replaceWidget(widget, temp)
                     setattr(self.ui, ui_name, temp)
                     widget = temp
+                    widget.compositeChanged.connect(self.update_settings)
                 elif isinstance(widget, QAbstractButton):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)

@@ -6,7 +6,7 @@ from PySide6.QtGui import QStandardItem, QStandardItemModel, QColor, QBrush
 class MultiComboBox(QComboBox):
     closedPopup = Signal()
 
-    def __init__(self, parent=None):
+    def __init__(self, options, parent=None):
         super().__init__(parent)
         self.view().pressed.connect(self.handle_item_pressed)
         self.setModel(QStandardItemModel(self))
@@ -16,6 +16,12 @@ class MultiComboBox(QComboBox):
         first_item.setSelectable(False)
         first_item.setCheckable(False)
         self.model().appendRow(first_item)
+
+        for choice in options:
+            item = QStandardItem(choice)
+            item.setCheckable(True)
+            item.setCheckState(Qt.CheckState.Unchecked)
+            self.model().appendRow(item)
 
         self.cancel_close = False
 
@@ -53,6 +59,8 @@ class MultiComboBox(QComboBox):
         QTimer.singleShot(0, lambda: self.setCurrentIndex(0))
 
     def set_from_list(self, values):
+        if len(values) == 0:
+            return
         curr_val_ind = 0
         curr_val = values[curr_val_ind]
         for i in range(1, self.model().rowCount()):

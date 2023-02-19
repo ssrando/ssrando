@@ -29,13 +29,8 @@ class ConditionalMultiselect(QWidget):
         choice_label_widget = QLabel(label)
         layout.addWidget(choice_label_widget)
 
-        self.multiselect = MultiComboBox()
+        self.multiselect = MultiComboBox(options[4:])
         self.multiselect.closedPopup.connect(self.changed)
-        for option in options:
-            item = QStandardItem(option)
-            item.setCheckable(True)
-            item.setCheckState(Qt.CheckState.Unchecked)
-            self.multiselect.model().appendRow(item)
         layout.addWidget(self.multiselect)
 
         self.setLayout(layout)
@@ -50,7 +45,6 @@ class ConditionalMultiselect(QWidget):
 
     def changed(self):
         self.compositeChanged.emit()
-        print(self.composite_value())
 
     def update_from_settings(self, option_value):
         self.base_selector.setCurrentText(option_value[0])
