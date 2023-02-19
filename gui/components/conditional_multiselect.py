@@ -4,14 +4,10 @@ from PySide6.QtGui import QStandardItem
 
 from gui.components.multi_combo_box import MultiComboBox
 
-BASE_OPTIONS = [
-    'Off',
-    'Random Selection',
-    'Choose',
-    'All'
-]
+BASE_OPTIONS = ["Off", "Random Selection", "Choose", "All"]
 
-CHOOSE_TEXT = 'Choose'
+CHOOSE_TEXT = "Choose"
+
 
 class ConditionalMultiselect(QWidget):
     compositeChanged = Signal()
@@ -41,11 +37,11 @@ class ConditionalMultiselect(QWidget):
             item.setCheckState(Qt.CheckState.Unchecked)
             self.multiselect.model().appendRow(item)
         layout.addWidget(self.multiselect)
-        
+
         self.setLayout(layout)
 
         self.update_from_base()
-    
+
     def update_from_base(self):
         if self.base_selector.currentText() == CHOOSE_TEXT:
             self.multiselect.setEnabled(True)
@@ -54,10 +50,13 @@ class ConditionalMultiselect(QWidget):
 
     def changed(self):
         self.compositeChanged.emit()
+        print(self.composite_value())
 
     def update_from_settings(self, option_value):
         self.base_selector.setCurrentText(option_value[0])
         self.multiselect.set_from_list(option_value[1:])
 
     def composite_value(self):
-        return [self.base_selector.currentText(), i for i in self.multiselect.checked_items()]
+        return [self.base_selector.currentText()] + [
+            i for i in self.multiselect.checked_items()
+        ]

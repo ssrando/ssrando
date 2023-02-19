@@ -1,6 +1,7 @@
-from PySide6.QtCore import Signal, Qt, QTimer, Slot, QModelIndex    
+from PySide6.QtCore import Signal, Qt, QTimer, Slot, QModelIndex
 from PySide6.QtWidgets import QComboBox, QListView
 from PySide6.QtGui import QStandardItem, QStandardItemModel, QColor, QBrush
+
 
 class MultiComboBox(QComboBox):
     closedPopup = Signal()
