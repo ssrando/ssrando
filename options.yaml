@@ -444,9 +444,10 @@
     - Fix BiT Crashes
   default: Vanilla
   help: "Changes how the Back in Time (BiT) glitch works.
-        Disable BiT: Forces the title screen to reload fully - making all BiT tricks impossible.
+        Disable BiT: Makes it impossible to activate BiT.
         Vanilla: Keeps the vanilla game behaviour where BiT is possible but Eldin BiT (and others) will still crash.
-        Fix BiT Crashes: Does not load some arcs in BiT when all file slots are filled to make all areas accessible in BiT."
+        Fix BiT Crashes: Does not load some arcs to make all areas accessible in BiT.
+        WARNING: All 3 files must be filled BEFORE activating BiT otherwise this will not work."
   ui: option_bit_patches
 - name: Output placement file
   command: out-placement-file
