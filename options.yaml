@@ -779,22 +779,6 @@
         **Talk to Yerbal**: logically requires you to talk to Yerbal to enter Lake Floria.
         **Open**: the Floria Gates are opened from the start of the game."
   ui: option_open_lake_floria
-- name: Filling Algorithm
-  command: fill-algorithm
-  type: singlechoice
-  bits: 2
-  choices:
-    - Front Fill
-    - Assumed Fill
-    - Random Fill
-  default: Assumed Fill
-  permalink: true
-  help: "Choose the algorithm used to place items in the world.
-        **Front Fill**: progression items are placed with a tendency towards locations with fewer requirements.
-        **Assume Fill**: progression items are placed with a more even distribution.
-        **Random Fill**: all items are equally likely to be placed anywehere.
-            **WARNING** this has an extremely high chance of failure."
-  # ui: option_filling_algorithm
 - name: Upgraded Skyward Strike
   command: upgraded-skyward-strike
   type: boolean
