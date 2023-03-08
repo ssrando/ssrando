@@ -94,6 +94,12 @@
   - The 2 small chests previously found within the Goddess Statue have been removed
 - Removed all skippable cutscenes except boss intro cutscenes (by CovenEsme)
   - When starting a new file, Link will now spawn directly in his room
+- Added Fi hints (by YourAverageLink)
+  - Fi hints are a new field in hint distribution files. The number indicated on the field is how many gossip stone hints will be placed in the Fi menu
+    - Fi hints take priority over gossip stone hints; that is, they will be placed on Fi first, then on gossip stones if needed
+    - You may now set the hints per stone count of gossip stones to 0 (so long as you have at least 1 Fi hint)
+    - Fi's hints may be seen in her menu, by selecting Information -> Hints
+      - The information menu is also where Play Time now resides
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together

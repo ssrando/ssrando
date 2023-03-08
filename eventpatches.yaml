@@ -513,7 +513,7 @@
       param3: 0
     cases:
       - Display Fi Pre Required Dungeon Text
-      - Display Fi Information Text #1 #displays play time
+      - Display Fi Info Text
       - Display Fi Status Text
       - -1 #returns
 #flows for required dungeon option
@@ -561,17 +561,10 @@
     type: flowadd
     flow: 
       type: type3
-      next: Display Fi Hints Text
+      next: Display Fi Hints Text 0
       param1: 0
       param2: 0
-      param3: 73 #custom command 73
-  - name: Display Fi Info Text
-    type: flowadd
-    flow:
-      type: type1
-      next: -1
-      param3: 68
-      param4: Fi Hints Text
+      param3: 72 #custom command 72
 #flows for status option
   - name: Fi Status Text
     type: textadd

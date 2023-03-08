@@ -1728,6 +1728,10 @@ class GamePatcher:
         else:
             required_dungeons_text = break_lines(", ".join(colourful_dungeon_text), 44)
 
+        fi_hint_chunks = []
+        for i in range(0, len(self.placement_file.hints["Fi"]), 8):
+            fi_hint_chunks.append(self.placement_file.hints["Fi"][i : i + 8])
+
         self.eventpatches["006-8KenseiNormal"].append(
             {
                 "name": "Fi Required Dungeon Text",
@@ -1736,17 +1740,53 @@ class GamePatcher:
                 "text": required_dungeons_text,
             }
         )
-
-        self.eventpatches["006-8KenseiNormal"].append(
-            {
-                "name": "Fi Hints Text",
-                "type": "textadd",
-                "unk1": 2,
-                "text": break_and_make_multiple_textboxes(
-                    self.placement_file.hints["Fi"]
-                ),
-            }
-        )
+        if fi_hint_chunks:
+            for ind, hints in enumerate(fi_hint_chunks):
+                self.eventpatches["006-8KenseiNormal"].append(
+                    {
+                        "name": f"Display Fi Hints Text {ind}",
+                        "type": "flowadd",
+                        "flow": {
+                            "type": "type1",
+                            "next": f"Display Fi Hints Text {ind + 1}"
+                            if ind < (len(fi_hint_chunks) - 1)
+                            else -1,
+                            "param3": 68,
+                            "param4": f"Fi Hints Text {ind}",
+                        },
+                    }
+                )
+                self.eventpatches["006-8KenseiNormal"].append(
+                    {
+                        "name": f"Fi Hints Text {ind}",
+                        "type": "textadd",
+                        "unk1": 2,
+                        "text": break_and_make_multiple_textboxes(hints),
+                    }
+                )
+        else:
+            self.eventpatches["006-8KenseiNormal"].append(
+                {
+                    "name": "Display Fi Hints Text 0",
+                    "type": "flowadd",
+                    "flow": {
+                        "type": "type1",
+                        "next": -1,
+                        "param3": 68,
+                        "param4": f"No Fi Hints Text",
+                    },
+                }
+            )
+            self.eventpatches["006-8KenseiNormal"].append(
+                {
+                    "name": f"No Fi Hints Text",
+                    "type": "textadd",
+                    "unk1": 2,
+                    "text": break_lines(
+                        "Master, I unfortunately have <r<no hints>> for you."
+                    ),
+                }
+            )
 
         fi_objective_text = next(
             filter(

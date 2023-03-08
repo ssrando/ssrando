@@ -11,7 +11,7 @@ EVERYTHING = EIN("Everything")
 NUMBER_OF_HINT_STONES = 18
 
 MAX_HINTS_PER_STONE = 8
-MAX_FI_HINTS = 32 # not really sure what it really is but for now i have it as this
+MAX_FI_HINTS = 64  # Fi hints have no such limits since they're segmented, though an upper bound might be good to have.
 MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES + MAX_FI_HINTS
 
 # Logic options, runtime requirements

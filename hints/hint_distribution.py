@@ -127,7 +127,11 @@ class HintDistribution:
                 "Selected hint distribution must have no more than 8 hints per stone. "
                 + "Having more than 8 risks hint text being cut off when shown in game."
             )
-        elif (self.hints_per_stone <= 0) and (self.fi_hints <= 0):
+        if (self.fi_hints < 0) or (self.hints_per_stone < 0):
+            raise ValueError(
+                "Selected hint distribution must not have less than 0 Fi hints or hints per stone."
+            )
+        elif (self.hints_per_stone == 0) and (self.fi_hints == 0):
             raise ValueError(
                 "Selected hint distribution must have at least 1 hint per stone or at least 1 Fi hint. "
                 + "Instead, the 'Junk' hint distribution should be used if hints are not required."
