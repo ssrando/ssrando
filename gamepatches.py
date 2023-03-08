@@ -1737,6 +1737,17 @@ class GamePatcher:
             }
         )
 
+        self.eventpatches["006-8KenseiNormal"].append(
+            {
+                "name": "Fi Hints Text",
+                "type": "textadd",
+                "unk1": 2,
+                "text": break_and_make_multiple_textboxes(
+                    self.placement_file.hints["Fi"]
+                ),
+            }
+        )
+
         fi_objective_text = next(
             filter(
                 lambda x: x["name"] == "Fi Objective Text",

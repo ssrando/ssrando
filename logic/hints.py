@@ -110,22 +110,36 @@ class Hints:
             unhintables + hinted_checks,
             check_hint_status,
         )
-        hintstone_hints = self.dist.get_hints()
+        fi_hints, hintstone_hints = self.dist.get_hints()
         self.useroutput.progress_callback("placing hints...")
         hintstone_hints = {
             hintname: hint for hint, hintname in zip(hintstone_hints, HINTS)
         }
+        fi_hints = {hintname: hint for hint, hintname in zip(fi_hints, HINTS)}
+        self.logic.placement.fi_hints |= set([hintname for hintname in fi_hints])
         self.hints_per_stone = self.dist.hints_per_stone
+        # Ensure every stone exists in the placement to account for possibly having 0 stone hints.
+        self.logic.placement.stones = {stone: [] for stone in self.areas.gossip_stones}
         self.randomize(hintstone_hints)
 
+        placed_fi_hints = {
+            "Fi": FiHintWrapper(
+                [fi_hints[hintname] for hintname in self.logic.placement.fi_hints]
+            )
+        }
         placed_hintstone_hints = {
             stone: GossipStoneHintWrapper(
                 [hintstone_hints[hintname] for hintname in hintnames]
             )
             for stone, hintnames in self.logic.placement.stones.items()
         }
+        self.logic.placement.hints = (
+            placed_fi_hints | placed_hintstone_hints | non_hintstone_hints
+        )
 
-        self.logic.placement.hints = placed_hintstone_hints | non_hintstone_hints
+    def place_fi_hints(self, hints: Dict[EIN, GossipStoneHint]):
+        for hintname in hints:
+            self.logic.placement.fi_hints.append(hintname)
 
     def randomize(self, hints: Dict[EIN, GossipStoneHint]):
         for hintname, hint in hints.items():

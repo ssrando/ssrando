@@ -11,7 +11,8 @@ EVERYTHING = EIN("Everything")
 NUMBER_OF_HINT_STONES = 18
 
 MAX_HINTS_PER_STONE = 8
-MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
+MAX_FI_HINTS = 32 # not really sure what it really is but for now i have it as this
+MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES + MAX_FI_HINTS
 
 # Logic options, runtime requirements
 

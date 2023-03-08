@@ -44,6 +44,7 @@ class Placement:
     locations: Dict[EIN, EIN] = field(default_factory=dict)
     items: Dict[EXTENDED_ITEM_NAME, EXTENDED_ITEM_NAME] = field(default_factory=dict)
     stones: Dict[EIN, List[EIN]] = field(default_factory=lambda: defaultdict(list))
+    fi_hints: Set[Hint | GossipStoneHintWrapper] = field(default_factory=set)
     stone_hints: Dict[EIN, EIN] = field(default_factory=dict)
     hints: Dict[EIN, Hint | GossipStoneHintWrapper] = field(default_factory=dict)
     starting_items: Set[EIN] = field(default_factory=set)
@@ -57,6 +58,7 @@ class Placement:
             self.locations.copy(),
             self.items.copy(),
             self.stones.copy(),
+            self.fi_hints.copy(),
             self.stone_hints.copy(),
             self.hints.copy(),
             self.starting_items.copy(),
@@ -100,6 +102,7 @@ class Placement:
             self.locations | other.locations,
             self.items | other.items,
             self.stones | other.stones,
+            self.fi_hints | other.fi_hints,
             self.stone_hints | other.stone_hints,
             self.hints | other.hints,
             self.starting_items | other.starting_items,

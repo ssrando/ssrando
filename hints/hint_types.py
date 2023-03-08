@@ -261,3 +261,36 @@ class EmptyGossipStoneHint(GossipStoneHint):
 
     def to_spoiler_log_json(self):
         return {"text": self.text, "type": self.hint_type}
+
+
+@dataclass
+class FiHintWrapper(GossipStoneHintWrapper):
+    hints: List[GossipStoneHint]
+
+    def __init__(self, hints):
+        self.hints = sorted(hints, key=self.order_hint)
+
+    def order_hint(self, hint):
+        if isinstance(hint, SotsGoalGossipStoneHint):
+            return 0
+        if isinstance(hint, CubeSotsGoalGossipStoneHint):
+            return 1
+        if isinstance(hint, BarrenGossipStoneHint):
+            return 2
+        if isinstance(hint, ZoneItemGossipStoneHint):
+            return 3
+        if isinstance(hint, LocationGossipStoneHint):
+            if hint.hint_type == "always":
+                return 4
+            if hint.hint_type == "sometimes":
+                return 5
+            return 6
+        return 7
+
+    def to_ingame_text(self, norm) -> List[str]:
+        return [
+            hint_txt for hint in self.hints for hint_txt in hint.to_ingame_text(norm)
+        ]
+
+    def to_spoiler_log_json(self):
+        return [hint.to_spoiler_log_json() for hint in self.hints]

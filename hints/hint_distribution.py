@@ -119,6 +119,7 @@ class HintDistribution:
         self._read_from_json(json.loads(s))
 
     def _read_from_json(self, jsn):
+        self.fi_hints = jsn["fi_hints"]
         self.hints_per_stone = jsn["hints_per_stone"]
         # Limit number of hints per stone as there appears to be ~600 character limit to the hintstone text.
         if self.hints_per_stone >= 9:
@@ -126,9 +127,9 @@ class HintDistribution:
                 "Selected hint distribution must have no more than 8 hints per stone. "
                 + "Having more than 8 risks hint text being cut off when shown in game."
             )
-        elif self.hints_per_stone <= 0:
+        elif (self.hints_per_stone <= 0) and (self.fi_hints <= 0):
             raise ValueError(
-                "Selected hint distribution must have at least 1 hint per stone. "
+                "Selected hint distribution must have at least 1 hint per stone or at least 1 Fi hint. "
                 + "Instead, the 'Junk' hint distribution should be used if hints are not required."
             )
         self.banned_stones = jsn["banned_stones"]
@@ -166,7 +167,7 @@ class HintDistribution:
             stone: 0 if stone in self.banned_stones else self.hints_per_stone
             for stone in self.areas.gossip_stones
         }
-        self.nb_hints = sum(self.hints_per_stone.values())
+        self.nb_hints = sum(self.hints_per_stone.values()) + self.fi_hints
         assert self.nb_hints <= MAX_HINTS
 
         check_hint_status2 = (
@@ -289,7 +290,8 @@ class HintDistribution:
                 hints.extend([hint] * self.distribution[hint_type]["copies"])
 
         hints = hints[:count]
-        return hints
+        fi_hints, stone_hints = hints[: self.fi_hints], hints[self.fi_hints :]
+        return fi_hints, stone_hints
 
     def _create_always_hint(self):
         if not self.always_hints:
