@@ -157,7 +157,7 @@ DUNGEON_FINISH_EXIT_SCEN = {
     # stage, room, index
     SV: ("B100_1", 0, 1),
     ET: ("B210", 0, 0),
-    LMF: ("F300_4", 0, 3),
+    LMF: ("F300_5", 0, 0),
     AC: ("B101_1", 0, 2),
     SSH: ("B301", 0, 4),
     FS: ("B201_1", 0, 1),
