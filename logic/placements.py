@@ -40,7 +40,7 @@ def norm_restrict_vanilla(locations: List[str]):
         locs2 = map(norm, locations)
         restriction = {EIN(checks[loc]["original item"]): loc for loc in locs2}
         return Placement(item_placement_limit=restriction)
-    
+
     return norm_keys
 
 
