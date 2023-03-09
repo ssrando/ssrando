@@ -93,27 +93,12 @@ class Placement:
                 raise ValueError(
                     f"Found location '{location}' in self.locations. Expected item '{item}' but found item '{self.locations[location]}'."
                 )
-        start_items = {}
         # items
         for item, location in other.items.items():
             if item in self.items and location != self.items[item]:
-                if self.items[item] == START_ITEM:
-                    start_items[item] = location
-                    continue
                 raise ValueError(
                     f"Found item '{item}' in self.items. Expected location '{location}' but found location '{self.items[item]}'."
                 )
-        ## Make sure starting items override vanilla item placements.
-        other.items = {
-            item: location
-            for item, location in other.items.items()
-            if item not in start_items
-        }
-        other.locations = {
-            location: item
-            for location, item in other.locations.items()
-            if item not in start_items
-        }
         # stones
         for k, v in other.stones.items():
             if k in self.stones and v != self.stones[k]:
