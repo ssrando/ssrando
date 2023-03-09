@@ -34,7 +34,7 @@ def norm_force_vanilla(list: List[str]):
 
 
 # Restricts an item to only be placeable in its vanilla location.
-# Does not produce an error if this is not possible (e.g. if the item is a starting item).
+# This is always possible
 def norm_restrict_vanilla(locations: List[str]):
     def norm_keys(norm: Callable[[str], EIN], checks: Dict[EIN, Any]) -> Placement:
         locs2 = map(norm, locations)
