@@ -178,13 +178,17 @@ class RandoGUI(QMainWindow):
 
         # setup exlcuded locations
         self.excluded_locations_model = QStringListModel()
-        self.excluded_locations_proxy = SearchableListModel(self)
+        self.excluded_locations_proxy = SearchableListModel(
+            self, OPTIONS["excluded-locations"]["choices"]
+        )
         self.excluded_locations_proxy.setSourceModel(self.excluded_locations_model)
         self.excluded_locations_model.setStringList(
             OPTIONS["excluded-locations"]["default"]
         )
         self.included_locations_model = QStringListModel()
-        self.included_locations_proxy = SearchableListModel(self)
+        self.included_locations_proxy = SearchableListModel(
+            self, OPTIONS["excluded-locations"]["choices"]
+        )
         self.included_locations_proxy.setSourceModel(self.included_locations_model)
         self.included_locations_model.setStringList(
             OPTIONS["excluded-locations"]["choices"]
@@ -202,12 +206,16 @@ class RandoGUI(QMainWindow):
 
         # Starting Items ui.
         self.randomized_items_model = QStringListModel()
-        self.randomized_items_proxy = SearchableListModel(self)
+        self.randomized_items_proxy = SearchableListModel(
+            self, OPTIONS["starting-items"]["choices"]
+        )
         self.randomized_items_proxy.setSourceModel(self.randomized_items_model)
         self.randomized_items_model.setStringList(OPTIONS["starting-items"]["choices"])
 
         self.starting_items_model = QStringListModel()
-        self.starting_items_proxy = SearchableListModel(self)
+        self.starting_items_proxy = SearchableListModel(
+            self, OPTIONS["starting-items"]["choices"]
+        )
         self.starting_items_proxy.setSourceModel(self.starting_items_model)
         self.starting_items_model.setStringList(OPTIONS["starting-items"]["default"])
 
@@ -506,17 +514,17 @@ class RandoGUI(QMainWindow):
         self.ui.included_locations.setModel(self.included_locations_proxy)
 
         # Update starting items.
-        self.randomized_items_model = QStringListModel()
-        self.starting_items_model = QStringListModel()
-        randomized_items_list = [
-            choice for choice in OPTIONS["starting-items"]["choices"]
-        ]
-        for item in current_settings["starting-items"]:
-            randomized_items_list.remove(item)
-        self.randomized_items_model.setStringList(randomized_items_list)
         self.starting_items_model.setStringList(current_settings["starting-items"])
-        self.ui.randomized_items.setModel(self.randomized_items_proxy)
+        self.randomized_items_model.setStringList(
+            [
+                choice
+                for choice in OPTIONS["starting-items"]["choices"]
+                if choice not in current_settings["starting-items"]
+            ]
+        )
         self.ui.starting_items.setModel(self.starting_items_proxy)
+        self.ui.randomized_items.setModel(self.randomized_items_proxy)
+
         self.ui.permalink.setText(current_settings.get_permalink())
 
     def save_settings(self):
@@ -728,14 +736,10 @@ class RandoGUI(QMainWindow):
 
     def remove_starting_item(self):
         self.move_selected_rows(self.ui.starting_items, self.ui.randomized_items)
-        self.ui.starting_items.model().sort(0)
-        self.ui.randomized_items.model().sort(0)
         self.update_settings()
 
     def add_starting_item(self):
         self.move_selected_rows(self.ui.randomized_items, self.ui.starting_items)
-        self.ui.starting_items.model().sort(0)
-        self.ui.randomized_items.model().sort(0)
         self.update_settings()
 
     def update_randomized_items_free_filter(self, new_text: str | None):

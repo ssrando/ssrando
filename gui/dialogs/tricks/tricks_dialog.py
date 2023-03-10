@@ -15,9 +15,13 @@ class TricksDialog(QDialog):
 
         self.enabled_tricks_model = enabled_model
         self.disabled_tricks_model = disabled_model
-        self.enabled_tricks_proxy = SearchableListModel(self)
+        self.enabled_tricks_proxy = SearchableListModel(
+            self, OPTIONS["enabled-tricks-bitless"]["choices"]
+        )
         self.enabled_tricks_proxy.setSourceModel(self.enabled_tricks_model)
-        self.disabled_tricks_proxy = SearchableListModel(self)
+        self.disabled_tricks_proxy = SearchableListModel(
+            self, OPTIONS["enabled-tricks-bitless"]["choices"]
+        )
         self.disabled_tricks_proxy.setSourceModel(self.disabled_tricks_model)
         self.ui.enabled_tricks.setModel(self.enabled_tricks_proxy)
         self.ui.disabled_tricks.setModel(self.disabled_tricks_proxy)
