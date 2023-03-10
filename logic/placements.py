@@ -22,7 +22,7 @@ SINGLE_CRYSTAL_CHECKS = [
 ]
 
 
-# Unused. Tries to force an item to its vanilla location.
+# Tries to force an item to its vanilla location.
 # Produces an error if this is not possible.
 def norm_force_vanilla(list: List[str]):
     def norm_keys(norm: Callable[[str], EIN], checks: Dict[EIN, Any]) -> Placement:
@@ -34,7 +34,7 @@ def norm_force_vanilla(list: List[str]):
 
 
 # Restricts an item to only be placeable in its vanilla location.
-# This is always possible
+# This is always possible.
 def norm_restrict_vanilla(locations: List[str]):
     def norm_keys(norm: Callable[[str], EIN], checks: Dict[EIN, Any]) -> Placement:
         locs2 = map(norm, locations)
@@ -44,7 +44,7 @@ def norm_restrict_vanilla(locations: List[str]):
     return norm_keys
 
 
-SINGLE_CRYSTAL_PLACEMENT = norm_restrict_vanilla(SINGLE_CRYSTAL_CHECKS)
+SINGLE_CRYSTAL_PLACEMENT = norm_force_vanilla(SINGLE_CRYSTAL_CHECKS)
 
 
 def norm_keys(dict: Dict[str, EIN]):
@@ -77,7 +77,7 @@ BEEDLE_CHECKS = [
     "Beedle's Shop - 50 Rupee Item",
     "Beedle's Shop - 1000 Rupee Item",
 ]
-VANILLA_BEEDLE_PLACEMENT = norm_restrict_vanilla(BEEDLE_CHECKS)
+VANILLA_BEEDLE_PLACEMENT = norm_force_vanilla(BEEDLE_CHECKS)
 
 SMALL_KEY_CHECKS = [
     "Skyview - Chest behind Two Eyes",
@@ -182,5 +182,5 @@ TRIFORCES_RESTRICTION = norm_values(
 )
 
 
-VANILLA_RUPEES = norm_restrict_vanilla(RUPEE_CHECKS)
-VANILLA_QUICK_BEETLE_RUPEES = norm_restrict_vanilla(QUICK_BEETLE_CHECKS)
+VANILLA_RUPEES = norm_force_vanilla(RUPEE_CHECKS)
+VANILLA_QUICK_BEETLE_RUPEES = norm_force_vanilla(QUICK_BEETLE_CHECKS)
