@@ -25,6 +25,7 @@ d_a_obj_sw_sword_beamNP.rel:
   handle_crest_hit_item_give: 0x3780
 d_a_shop_sampleNP.rel:
   check_needs_custom_storyflag_subtype: 0x8450
+  correct_rupee_color: 0x8484
 d_a_npc_douguyanightNP.rel:
   select_new_item_column: 0x2F20
 d_a_obj_swrd_prjNP.rel:
@@ -35,3 +36,5 @@ d_a_obj_light_lineNP.rel:
   check_activated_storyflag: 0x1D90
 d_t_rock_boatNP.rel:
   custom_eldin_platform_comparison: 0xDC8
+d_t_player_restartNP.rel:
+  only_set_flag_conditionally: 0x6A4

@@ -662,3 +662,11 @@ li r4, 0x1b
 .org 0xA9C
 beq 0xAF0 ; 0x80d6ac60
 .close
+
+.open "d_t_player_restartNP.rel"
+.org 0x458
+; see the custom function for an explanation
+bl only_set_flag_conditionally
+.org 0x49C
+rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
+.close
