@@ -556,7 +556,7 @@
     cases:
       - Fi Hints Command Call
       - 1 #play time
-      - -1 #returns
+      - Display Fi Call Text #returns
   - name: Fi Hints Command Call
     type: flowadd
     flow: 
