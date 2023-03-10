@@ -35,6 +35,9 @@
            <property name="editTriggers">
             <set>QAbstractItemView::NoEditTriggers</set>
            </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::MultiSelection</enum>
+           </property>
           </widget>
          </item>
         </layout>
@@ -123,6 +126,9 @@
           <widget class="QListView" name="enabled_tricks">
            <property name="editTriggers">
             <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::MultiSelection</enum>
            </property>
           </widget>
          </item>
