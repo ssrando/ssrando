@@ -83,7 +83,7 @@ def entrance_of_exit(exit):
         return exit.replace("Exit", "Entrance")
     if "Exit to " in exit:
         return exit.replace("Exit to", "Entrance from")
-    raise ValueError("No pattern")
+    raise ValueError("No pattern found for the entrance of exit {exit}.")
 
 
 SV = "Skyview"
@@ -148,7 +148,7 @@ ITEM_COUNTS: Dict[str, int] = defaultdict(lambda: 1)
 
 def number(name: str, index: int) -> EXTENDED_ITEM_NAME:
     if index >= ITEM_COUNTS[name]:
-        raise ValueError("Index too high")
+        raise ValueError("Constant index too high.")
     if ITEM_COUNTS[name] == 1:
         return EIN(name)
     return EIN(f"{name} #{index}")

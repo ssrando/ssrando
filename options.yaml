@@ -665,18 +665,6 @@
          Talk to Yerbal: Logically requires you to talk to Yerbal to enter Lake Floria.
          Open: The Floria Gates are opened from the start of the game." # when you obtain the Water Scale."
   ui: option_open_lake_floria
-- name: Filling Algorithm
-  command: fill-algorithm
-  type: singlechoice
-  bits: 2
-  choices:
-    - Assumed Fill
-    - Front Fill
-    - Random Fill
-  default: Assumed Fill
-  permalink: true
-  help: The algorithm used to place items in the world. Random Fill has an extremely high chance of failure.
-  # ui: option_filling_algorithm
 - name: Upgraded Skyward Strike
   command: upgraded-skyward-strike
   type: boolean

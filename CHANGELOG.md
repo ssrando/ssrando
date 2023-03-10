@@ -99,6 +99,17 @@
   - The 2 small chests previously found within the Goddess Statue have been removed
 - Removed all skippable cutscenes except boss intro cutscenes (by CovenEsme)
   - When starting a new file, Link will now spawn directly in his room
+- Expanded arc replacements to cover the remaining unpatched arcs (by Muzu)
+  - Previously unpatched arcs (such as DoButton.arc) are now picked up from the arc replacements folder and patched
+  - The arc replacements folder now supports sub folders so people can organise arcs freely
+  - The arc replacements folder is now auto-generated if it doesn't exist
+  - Existing Title2D and DoButton patches to add custom title screen and dowsing icons now pull from modified_extract instead of actual_extract so they don't overwrite replaced arcs
+  - Due to duplicate arc names, the text arcs found in DATA/files/US/Object and the cursor arcs found in DATA/files/Layout and DATA/files/sys/mpls_movie/layout require specific names in the arc replacements folder
+    - Text arcs intended for the en_US folder support the default names (e.g. 0-Common.arc) but also support being prefixed with "en" for consistency (e.g. en0-Common.arc)
+    - Text arcs intended for the es_US folder must be prefixed with "es" (e.g. es0-Common.arc)
+    - Text arcs intended for the fr_US folder must be prefixed with "fr" (e.g. fr0-Common.arc) 
+    - The cursor arc intended for the regular layout folder supports the default name (i.e. cursor.arc)
+    - The cursor arc intended for the mpls_movie/layout folder (motion plus tutorial cursor) must be prefixed with "mpls" (i.e. mplscursor.arc)
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together

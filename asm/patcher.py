@@ -244,7 +244,7 @@ def add_relocations_to_rel(
             rel_relocation.section_num_to_relocate_against = other_rel_section_index
             rel_relocation.symbol_address = relative_offset
         else:
-            raise Exception("Could not find symbol name: %s" % symbol_name)
+            raise Exception("Could not find symbol name: %s." % symbol_name)
 
         rel_relocation.relocation_offset = relocation_offset
         rel_relocation.curr_section_num = rel_section_index

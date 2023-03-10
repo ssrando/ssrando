@@ -15,6 +15,9 @@ STAGE_REGEX = re.compile("(.+)_stg_l([0-9]+).arc.LZ")
 EVENT_REGEX = re.compile("([0-9])-[A-Za-z]+.arc")
 ROOM_REGEX = re.compile(r"/rarc/(?P<stage>.+)_r(?P<roomid>[0-9]+).arc")
 OARC_ARC_REGEX = re.compile(r"/oarc/(?P<name>.+\.arc)")
+TEXT_ARC_REGEX = re.compile(
+    r"(.+(/|\\))*(?P<lang>(en|es|fr))_US(/|\\)(?P<name>.+\.arc)"
+)
 LANGUAGES = {"EU": "en_GB", "US": "en_US", "JP": "ja_JP"}
 
 
@@ -41,10 +44,9 @@ class AllPatcher:
         self.copy_unmodified = copy_unmodified
         self.arc_replacements = {}
         if arc_replacement_path.is_dir():
-            for replace_path in arc_replacement_path.iterdir():
+            for replace_path in arc_replacement_path.rglob("*.arc"):
                 arcname = replace_path.parts[-1]
-                if arcname.endswith(".arc"):
-                    self.arc_replacements[arcname] = replace_path
+                self.arc_replacements[arcname] = replace_path
         self.objpackoarcadd = []
         self.stage_oarc_add = {}
         self.stage_oarc_delete = {}
@@ -58,7 +60,7 @@ class AllPatcher:
         self.progress_callback = dummy_progress_callback
         if not (self.actual_extract_path / "DATA").exists():
             raise Exception(
-                "actual extract path should have a DATA subdir, make sure the directory structure is properly set up!"
+                "actual_extract path should have a DATA subdir, make sure the directory structure is properly set up."
             )
 
     def add_stage_oarc(self, stage: str, layer: int, oarcs: Iterable[str]):
@@ -151,8 +153,59 @@ class AllPatcher:
                     outdata = data.get_file_data(f"oarc/{objname}.arc")
                     (self.oarc_cache_path / f"{objname}.arc").write_bytes(outdata)
 
+    def patch_arc_replacements(self):
+        # handles arc replacement for all other arcs
+        for path in self.actual_extract_path.glob("**/*.arc"):
+
+            modified = False
+            modified_path = str(path).replace(
+                str(self.actual_extract_path), str(self.modified_extract_path)
+            )
+            replacement = Path()
+
+            # replaces arc with actual arc if deleted
+            if not Path(modified_path).exists():
+                shutil.copy(path, modified_path)
+
+            # handles stage text arcs as they have duplicate names for each language
+            if match := TEXT_ARC_REGEX.match(str(path)):
+                if match.group("lang") == "en":
+                    if replacement := (
+                        self.arc_replacements.get(match.group("name"))
+                        or self.arc_replacements.get(
+                            match.group("lang") + match.group("name")
+                        )
+                    ):
+                        modified = True
+                elif match.group("lang") == "es" or match.group("lang") == "fr":
+                    if replacement := self.arc_replacements.get(
+                        match.group("lang") + match.group("name")
+                    ):
+                        modified = True
+
+            # handles motion plus movie cursor and regular cursor arcs separately as they have duplicate names
+            elif path.parts[-1] == "cursor.arc":
+                if path.parts[-3] == "mpls_movie":
+                    if replacement := self.arc_replacements.get(f"mplscursor.arc"):
+                        modified = True
+                else:
+                    if replacement := self.arc_replacements.get("cursor.arc"):
+                        modified = True
+
+            # handles all other non-duplicate named arcs
+            elif replacement := self.arc_replacements.get(path.parts[-1]):
+                modified = True
+
+            if modified:
+                shutil.copy(replacement, modified_path)
+            else:
+                # replaces arc with actual arc if unchanged
+                shutil.copy(path, modified_path)
+
     def do_patch(self):
         self.modified_extract_path.mkdir(parents=True, exist_ok=True)
+
+        self.patch_arc_replacements()
 
         # stages
         for stagepath in (self.actual_extract_path / "DATA" / "files" / "Stage").glob(
@@ -258,15 +311,11 @@ class AllPatcher:
                 # print(f"copied {stage} l{layer}")
 
         # events and text
-        eventrootpath = None
         modified_eventrootpath = None
 
         # check target language
         for path, lang in LANGUAGES.items():
-            if (self.actual_extract_path / "DATA" / "files" / path).exists():
-                eventrootpath = (
-                    self.actual_extract_path / "DATA" / "files" / path / "Object" / lang
-                )
+            if (self.modified_extract_path / "DATA" / "files" / path).exists():
                 modified_eventrootpath = (
                     self.modified_extract_path
                     / "DATA"
@@ -276,9 +325,9 @@ class AllPatcher:
                     / lang
                 )
 
-        if eventrootpath == None:
-            raise Exception("Event files not found")
-        for eventpath in eventrootpath.glob("*.arc"):
+        if modified_eventrootpath == None:
+            raise Exception("Event files not found.")
+        for eventpath in modified_eventrootpath.glob("*.arc"):
             modified = False
             filename = eventpath.parts[-1]
             self.progress_callback(f"patching {filename}")
@@ -331,6 +380,7 @@ class AllPatcher:
             object_arc.add_file_data(f"oarc/{arcname}", oarc_path.read_bytes())
             patched_arcs.add(arcname)
             objpack_modified = True
+
         if self.arc_replacements:
             for path in object_arc.get_all_paths():
                 if match := OARC_ARC_REGEX.match(path):
@@ -341,6 +391,7 @@ class AllPatcher:
                         object_arc.set_file_data(path, replacement.read_bytes())
                         patched_arcs.add(arc)
                         objpack_modified = True
+
         if objpack_modified:
             objpack_data = object_arc.to_buffer()
             write_bytes_create_dirs(

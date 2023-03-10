@@ -24,3 +24,10 @@ d_a_shop_sampleNP.rel:
     Relocations: [{SymbolName: SHOP_ITEMS, Offset: 0x06, Type: R_PPC_ADDR16_HA}, {
         SymbolName: SHOP_ITEMS, Offset: 0x0A, Type: R_PPC_ADDR16_LO}, {SymbolName: checkStoryflagIsSet,
         Offset: 0x18, Type: R_PPC_REL24}]
+  0x33B8:
+    Data: [0xA3, 0x86, 0x00, 0x0C, 0x60, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00]
+  0x33D4:
+    Data: [0x38, 0xC0, 0x01, 0x23]
+  0x33E4:
+    Data: [0x48, 0x00, 0x00, 0x01]
+    Relocations: [{SymbolName: correct_rupee_color, Offset: 0x00, Type: R_PPC_REL24}]
