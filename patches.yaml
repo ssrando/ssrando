@@ -166,8 +166,6 @@ global:
       - 16 # Lanayru Gorge Intro Cutscene
     Fire Sanctuary:
       - 83 # Cutscene showing the outside of the Fire Sanctuary
-    Sandship:
-      - 1
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
