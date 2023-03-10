@@ -41,7 +41,9 @@ class Ui_TricksDialog(object):
         self.disabled_tricks = QListView(TricksDialog)
         self.disabled_tricks.setObjectName(u"disabled_tricks")
         self.disabled_tricks.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.disabled_tricks.setProperty("showDropIndicator", False)
         self.disabled_tricks.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.disabled_tricks.setSelectionRectVisible(False)
 
         self.vlay_disabled_tricks.addWidget(self.disabled_tricks)
 
@@ -92,7 +94,9 @@ class Ui_TricksDialog(object):
         self.enabled_tricks = QListView(TricksDialog)
         self.enabled_tricks.setObjectName(u"enabled_tricks")
         self.enabled_tricks.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.enabled_tricks.setProperty("showDropIndicator", False)
         self.enabled_tricks.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.enabled_tricks.setSelectionRectVisible(False)
 
         self.vlay_enabled_tricks.addWidget(self.enabled_tricks)
 

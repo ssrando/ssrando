@@ -1002,7 +1002,9 @@ class Ui_MainWindow(object):
         self.included_locations = QListView(self.tab_logic_settings)
         self.included_locations.setObjectName(u"included_locations")
         self.included_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.included_locations.setProperty("showDropIndicator", False)
         self.included_locations.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.included_locations.setSelectionRectVisible(False)
 
         self.hlay_exclude_locations_body.addWidget(self.included_locations)
 
@@ -1043,7 +1045,9 @@ class Ui_MainWindow(object):
         self.excluded_locations = QListView(self.tab_logic_settings)
         self.excluded_locations.setObjectName(u"excluded_locations")
         self.excluded_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.excluded_locations.setProperty("showDropIndicator", False)
         self.excluded_locations.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.excluded_locations.setSelectionRectVisible(False)
 
         self.hlay_exclude_locations_body.addWidget(self.excluded_locations)
 
@@ -1222,7 +1226,9 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.randomized_items.sizePolicy().hasHeightForWidth())
         self.randomized_items.setSizePolicy(sizePolicy1)
         self.randomized_items.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.randomized_items.setProperty("showDropIndicator", False)
         self.randomized_items.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.randomized_items.setSelectionRectVisible(False)
 
         self.vlay_randomized_items_section.addWidget(self.randomized_items)
 
@@ -1273,7 +1279,9 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.starting_items.sizePolicy().hasHeightForWidth())
         self.starting_items.setSizePolicy(sizePolicy1)
         self.starting_items.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.starting_items.setProperty("showDropIndicator", False)
         self.starting_items.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.starting_items.setSelectionRectVisible(False)
 
         self.vlay_starting_items_section.addWidget(self.starting_items)
 
@@ -1624,7 +1632,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(3)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1719,7 +1727,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_additional_settings), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.edit_tricks.setText(QCoreApplication.translate("MainWindow", u"Tricks", None))
-        self.label_exclude_locations.setText(QCoreApplication.translate("MainWindow", u"Exclude Locations", None))
+        self.label_exclude_locations.setText(QCoreApplication.translate("MainWindow", u"Locations", None))
         self.included_free_search.setText("")
         self.include_location.setText(QCoreApplication.translate("MainWindow", u"Include\n"
 "<--", None))
