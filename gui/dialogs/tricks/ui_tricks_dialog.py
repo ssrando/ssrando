@@ -16,9 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QAbstractItemView, QApplication, QDialog,
-    QDialogButtonBox, QHBoxLayout, QLabel, QListView,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+    QDialogButtonBox, QHBoxLayout, QLabel, QLineEdit,
+    QListView, QPushButton, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
 
 class Ui_TricksDialog(object):
     def setupUi(self, TricksDialog):
@@ -37,6 +37,12 @@ class Ui_TricksDialog(object):
         self.label_for_disabled_tricks.setObjectName(u"label_for_disabled_tricks")
 
         self.vlay_disabled_tricks.addWidget(self.label_for_disabled_tricks)
+
+        self.disabled_tricks_free_search = QLineEdit(TricksDialog)
+        self.disabled_tricks_free_search.setObjectName(u"disabled_tricks_free_search")
+        self.disabled_tricks_free_search.setClearButtonEnabled(True)
+
+        self.vlay_disabled_tricks.addWidget(self.disabled_tricks_free_search)
 
         self.disabled_tricks = QListView(TricksDialog)
         self.disabled_tricks.setObjectName(u"disabled_tricks")
@@ -91,6 +97,12 @@ class Ui_TricksDialog(object):
 
         self.vlay_enabled_tricks.addWidget(self.label_for_enabled_tricks)
 
+        self.enabled_tricks_free_search = QLineEdit(TricksDialog)
+        self.enabled_tricks_free_search.setObjectName(u"enabled_tricks_free_search")
+        self.enabled_tricks_free_search.setClearButtonEnabled(True)
+
+        self.vlay_enabled_tricks.addWidget(self.enabled_tricks_free_search)
+
         self.enabled_tricks = QListView(TricksDialog)
         self.enabled_tricks.setObjectName(u"enabled_tricks")
         self.enabled_tricks.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -127,6 +139,8 @@ class Ui_TricksDialog(object):
     def retranslateUi(self, TricksDialog):
         TricksDialog.setWindowTitle(QCoreApplication.translate("TricksDialog", u"Enable Tricks", None))
         self.label_for_disabled_tricks.setText(QCoreApplication.translate("TricksDialog", u"Disabled Tricks", None))
+        self.disabled_tricks_free_search.setText("")
+        self.disabled_tricks_free_search.setPlaceholderText(QCoreApplication.translate("TricksDialog", u"Search", None))
 #if QT_CONFIG(tooltip)
         self.disabled_tricks.setToolTip(QCoreApplication.translate("TricksDialog", u"test", None))
 #endif // QT_CONFIG(tooltip)
@@ -135,5 +149,7 @@ class Ui_TricksDialog(object):
         self.enable_trick.setText(QCoreApplication.translate("TricksDialog", u"Enable\n"
 "-->", None))
         self.label_for_enabled_tricks.setText(QCoreApplication.translate("TricksDialog", u"Enabled Tricks", None))
+        self.enabled_tricks_free_search.setText("")
+        self.enabled_tricks_free_search.setPlaceholderText(QCoreApplication.translate("TricksDialog", u"Search", None))
     # retranslateUi
 

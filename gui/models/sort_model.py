@@ -5,7 +5,7 @@ from yaml_files import checks
 check_order = list(checks.keys())
 
 
-class LocationsModel(QSortFilterProxyModel):
+class SearchableListModel(QSortFilterProxyModel):
     def __init__(self, parent):
         super().__init__(parent)
         self.free_text_filter = ""

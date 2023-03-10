@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (
     QRadioButton,
     QSpinBox,
 )
-from gui.models.sort_model import LocationsModel
+from gui.models.sort_model import SearchableListModel
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
 
@@ -178,13 +178,13 @@ class RandoGUI(QMainWindow):
 
         # setup exlcuded locations
         self.excluded_locations_model = QStringListModel()
-        self.excluded_locations_proxy = LocationsModel(self)
+        self.excluded_locations_proxy = SearchableListModel(self)
         self.excluded_locations_proxy.setSourceModel(self.excluded_locations_model)
         self.excluded_locations_model.setStringList(
             OPTIONS["excluded-locations"]["default"]
         )
         self.included_locations_model = QStringListModel()
-        self.included_locations_proxy = LocationsModel(self)
+        self.included_locations_proxy = SearchableListModel(self)
         self.included_locations_proxy.setSourceModel(self.included_locations_model)
         self.included_locations_model.setStringList(
             OPTIONS["excluded-locations"]["choices"]
@@ -202,13 +202,25 @@ class RandoGUI(QMainWindow):
 
         # Starting Items ui.
         self.randomized_items_model = QStringListModel()
+        self.randomized_items_proxy = SearchableListModel(self)
+        self.randomized_items_proxy.setSourceModel(self.randomized_items_model)
         self.randomized_items_model.setStringList(OPTIONS["starting-items"]["choices"])
+
         self.starting_items_model = QStringListModel()
+        self.starting_items_proxy = SearchableListModel(self)
+        self.starting_items_proxy.setSourceModel(self.starting_items_model)
         self.starting_items_model.setStringList(OPTIONS["starting-items"]["default"])
-        self.ui.randomized_items.setModel(self.randomized_items_model)
-        self.ui.starting_items.setModel(self.starting_items_model)
+
+        self.ui.randomized_items.setModel(self.randomized_items_proxy)
+        self.ui.starting_items.setModel(self.starting_items_proxy)
         self.ui.randomize_item.clicked.connect(self.remove_starting_item)
         self.ui.start_with_item.clicked.connect(self.add_starting_item)
+        self.ui.randomized_items_free_search.textChanged.connect(
+            self.update_randomized_items_free_filter
+        )
+        self.ui.starting_items_free_search.textChanged.connect(
+            self.update_starting_items_free_filter
+        )
 
         # setup presets
         self.default_presets = {}
@@ -503,8 +515,8 @@ class RandoGUI(QMainWindow):
             randomized_items_list.remove(item)
         self.randomized_items_model.setStringList(randomized_items_list)
         self.starting_items_model.setStringList(current_settings["starting-items"])
-        self.ui.randomized_items.setModel(self.randomized_items_model)
-        self.ui.starting_items.setModel(self.starting_items_model)
+        self.ui.randomized_items.setModel(self.randomized_items_proxy)
+        self.ui.starting_items.setModel(self.starting_items_proxy)
         self.ui.permalink.setText(current_settings.get_permalink())
 
     def save_settings(self):
@@ -725,6 +737,12 @@ class RandoGUI(QMainWindow):
         self.ui.starting_items.model().sort(0)
         self.ui.randomized_items.model().sort(0)
         self.update_settings()
+
+    def update_randomized_items_free_filter(self, new_text: str | None):
+        self.randomized_items_proxy.filterRows(new_text)
+
+    def update_starting_items_free_filter(self, new_text: str | None):
+        self.starting_items_proxy.filterRows(new_text)
 
     def load_preset(self):
         preset = self.ui.presets_list.currentText()

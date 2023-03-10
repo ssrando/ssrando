@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QDialog
 from gui.dialogs.tricks.ui_tricks_dialog import Ui_TricksDialog
+from gui.models.sort_model import SearchableListModel
 
 from options import OPTIONS
 
@@ -14,10 +15,21 @@ class TricksDialog(QDialog):
 
         self.enabled_tricks_model = enabled_model
         self.disabled_tricks_model = disabled_model
-        self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
-        self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
+        self.enabled_tricks_proxy = SearchableListModel(self)
+        self.enabled_tricks_proxy.setSourceModel(self.enabled_tricks_model)
+        self.disabled_tricks_proxy = SearchableListModel(self)
+        self.disabled_tricks_proxy.setSourceModel(self.disabled_tricks_model)
+        self.ui.enabled_tricks.setModel(self.enabled_tricks_proxy)
+        self.ui.disabled_tricks.setModel(self.disabled_tricks_proxy)
+
         self.ui.enable_trick.clicked.connect(self.enable_trick)
         self.ui.disable_trick.clicked.connect(self.disable_trick)
+        self.ui.disabled_tricks_free_search.textChanged.connect(
+            self.update_disabled_tricks_free_filter
+        )
+        self.ui.enabled_tricks_free_search.textChanged.connect(
+            self.update_enabled_tricks_free_filter
+        )
 
         self.ui.bbox_tricks.accepted.connect(self.accept)
         self.ui.bbox_tricks.rejected.connect(self.reject)
@@ -52,3 +64,9 @@ class TricksDialog(QDialog):
             self.disabled_tricks_model.stringList(),
             self.enabled_tricks_model.stringList(),
         )
+
+    def update_disabled_tricks_free_filter(self, new_text: str | None):
+        self.disabled_tricks_proxy.filterRows(new_text)
+
+    def update_enabled_tricks_free_filter(self, new_text: str | None):
+        self.enabled_tricks_proxy.filterRows(new_text)

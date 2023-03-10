@@ -37,14 +37,20 @@ class ColorButton(QPushButton):
     def update(self):
         r, g, b, a = self.color_parts_from_int(self.color)
         # https://en.wikipedia.org/wiki/Relative_luminance
-        luminance = (0.2126 * r)  + (0.7152 * g) + (0.0722 * b)
+        luminance = (0.2126 * r) + (0.7152 * g) + (0.0722 * b)
         textColor = "white"
         if luminance > 128:
             textColor = "black"
 
         rgba = self.color_str_from_int(self.color)
         self.setText(rgba)
-        self.setStyleSheet("QPushButton {background-color: " + rgba[:-2] + "; color: " + textColor + "; }")
+        self.setStyleSheet(
+            "QPushButton {background-color: "
+            + rgba[:-2]
+            + "; color: "
+            + textColor
+            + "; }"
+        )
 
     def color_str_from_qcolor(
         self, color: QColor, format: ColorFormat = ColorFormat.RGBA
@@ -67,7 +73,7 @@ class ColorButton(QPushButton):
 
     def color_int_from_str(self, color: str) -> int:
         return int(color[1:], 16)
-    
+
     def color_parts_from_int(self, color_int: int) -> tuple:
         r = color_int >> 24
         g = color_int >> 16 & 0xFF

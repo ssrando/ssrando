@@ -941,6 +941,8 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_additional_settings, "")
         self.tab_logic_settings = QWidget()
         self.tab_logic_settings.setObjectName(u"tab_logic_settings")
+        sizePolicy.setHeightForWidth(self.tab_logic_settings.sizePolicy().hasHeightForWidth())
+        self.tab_logic_settings.setSizePolicy(sizePolicy)
         self.horizontalLayout = QHBoxLayout(self.tab_logic_settings)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.vlay_logic_settings = QVBoxLayout()
@@ -972,33 +974,21 @@ class Ui_MainWindow(object):
         self.vlay_exclude_locations = QVBoxLayout()
         self.vlay_exclude_locations.setSpacing(6)
         self.vlay_exclude_locations.setObjectName(u"vlay_exclude_locations")
-        self.label_exclude_locations = QLabel(self.tab_logic_settings)
-        self.label_exclude_locations.setObjectName(u"label_exclude_locations")
-
-        self.vlay_exclude_locations.addWidget(self.label_exclude_locations)
-
-        self.hlay_excluded_locations_search = QHBoxLayout()
-        self.hlay_excluded_locations_search.setObjectName(u"hlay_excluded_locations_search")
-        self.hlay_excluded_locations_search.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.included_free_search = QLineEdit(self.tab_logic_settings)
-        self.included_free_search.setObjectName(u"included_free_search")
-
-        self.hlay_excluded_locations_search.addWidget(self.included_free_search)
-
-        self.hspace = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.hlay_excluded_locations_search.addItem(self.hspace)
-
-        self.excluded_free_search = QLineEdit(self.tab_logic_settings)
-        self.excluded_free_search.setObjectName(u"excluded_free_search")
-
-        self.hlay_excluded_locations_search.addWidget(self.excluded_free_search)
-
-
-        self.vlay_exclude_locations.addLayout(self.hlay_excluded_locations_search)
-
         self.hlay_exclude_locations_body = QHBoxLayout()
         self.hlay_exclude_locations_body.setObjectName(u"hlay_exclude_locations_body")
+        self.vlay_include_locations = QVBoxLayout()
+        self.vlay_include_locations.setObjectName(u"vlay_include_locations")
+        self.label_include_locations = QLabel(self.tab_logic_settings)
+        self.label_include_locations.setObjectName(u"label_include_locations")
+
+        self.vlay_include_locations.addWidget(self.label_include_locations)
+
+        self.included_free_search = QLineEdit(self.tab_logic_settings)
+        self.included_free_search.setObjectName(u"included_free_search")
+        self.included_free_search.setClearButtonEnabled(True)
+
+        self.vlay_include_locations.addWidget(self.included_free_search)
+
         self.included_locations = QListView(self.tab_logic_settings)
         self.included_locations.setObjectName(u"included_locations")
         self.included_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -1006,7 +996,10 @@ class Ui_MainWindow(object):
         self.included_locations.setSelectionMode(QAbstractItemView.MultiSelection)
         self.included_locations.setSelectionRectVisible(False)
 
-        self.hlay_exclude_locations_body.addWidget(self.included_locations)
+        self.vlay_include_locations.addWidget(self.included_locations)
+
+
+        self.hlay_exclude_locations_body.addLayout(self.vlay_include_locations)
 
         self.vlay_exclude_locations_controls = QVBoxLayout()
         self.vlay_exclude_locations_controls.setObjectName(u"vlay_exclude_locations_controls")
@@ -1042,6 +1035,19 @@ class Ui_MainWindow(object):
 
         self.hlay_exclude_locations_body.addLayout(self.vlay_exclude_locations_controls)
 
+        self.verticalLayout_30 = QVBoxLayout()
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.label_exclude_locations = QLabel(self.tab_logic_settings)
+        self.label_exclude_locations.setObjectName(u"label_exclude_locations")
+
+        self.verticalLayout_30.addWidget(self.label_exclude_locations)
+
+        self.excluded_free_search = QLineEdit(self.tab_logic_settings)
+        self.excluded_free_search.setObjectName(u"excluded_free_search")
+        self.excluded_free_search.setClearButtonEnabled(True)
+
+        self.verticalLayout_30.addWidget(self.excluded_free_search)
+
         self.excluded_locations = QListView(self.tab_logic_settings)
         self.excluded_locations.setObjectName(u"excluded_locations")
         self.excluded_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -1049,7 +1055,10 @@ class Ui_MainWindow(object):
         self.excluded_locations.setSelectionMode(QAbstractItemView.MultiSelection)
         self.excluded_locations.setSelectionRectVisible(False)
 
-        self.hlay_exclude_locations_body.addWidget(self.excluded_locations)
+        self.verticalLayout_30.addWidget(self.excluded_locations)
+
+
+        self.hlay_exclude_locations_body.addLayout(self.verticalLayout_30)
 
 
         self.vlay_exclude_locations.addLayout(self.hlay_exclude_locations_body)
@@ -1221,6 +1230,12 @@ class Ui_MainWindow(object):
 
         self.vlay_randomized_items_section.addWidget(self.label_randomized_items)
 
+        self.randomized_items_free_search = QLineEdit(self.tab_starting_items)
+        self.randomized_items_free_search.setObjectName(u"randomized_items_free_search")
+        self.randomized_items_free_search.setClearButtonEnabled(True)
+
+        self.vlay_randomized_items_section.addWidget(self.randomized_items_free_search)
+
         self.randomized_items = QListView(self.tab_starting_items)
         self.randomized_items.setObjectName(u"randomized_items")
         sizePolicy1.setHeightForWidth(self.randomized_items.sizePolicy().hasHeightForWidth())
@@ -1273,6 +1288,12 @@ class Ui_MainWindow(object):
         self.label_starting_items.setObjectName(u"label_starting_items")
 
         self.vlay_starting_items_section.addWidget(self.label_starting_items)
+
+        self.starting_items_free_search = QLineEdit(self.tab_starting_items)
+        self.starting_items_free_search.setObjectName(u"starting_items_free_search")
+        self.starting_items_free_search.setClearButtonEnabled(True)
+
+        self.vlay_starting_items_section.addWidget(self.starting_items_free_search)
 
         self.starting_items = QListView(self.tab_starting_items)
         self.starting_items.setObjectName(u"starting_items")
@@ -1727,12 +1748,15 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_additional_settings), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.edit_tricks.setText(QCoreApplication.translate("MainWindow", u"Tricks", None))
-        self.label_exclude_locations.setText(QCoreApplication.translate("MainWindow", u"Locations", None))
+        self.label_include_locations.setText(QCoreApplication.translate("MainWindow", u"Included Locations", None))
         self.included_free_search.setText("")
+        self.included_free_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.include_location.setText(QCoreApplication.translate("MainWindow", u"Include\n"
 "<--", None))
         self.exclude_location.setText(QCoreApplication.translate("MainWindow", u"Exclude\n"
 "-->", None))
+        self.label_exclude_locations.setText(QCoreApplication.translate("MainWindow", u"Excluded Locations", None))
+        self.excluded_free_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_logic_settings), QCoreApplication.translate("MainWindow", u"Logic Settings", None))
         self.box_stone_hints.setTitle(QCoreApplication.translate("MainWindow", u"Gossip Stone Hints", None))
         self.label_for_option_hint_distribution.setText(QCoreApplication.translate("MainWindow", u"Hint Distribution", None))
@@ -1749,11 +1773,15 @@ class Ui_MainWindow(object):
         self.box_6.setTitle("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_hints), QCoreApplication.translate("MainWindow", u"Hints", None))
         self.label_randomized_items.setText(QCoreApplication.translate("MainWindow", u"Randomized Items", None))
+        self.randomized_items_free_search.setText("")
+        self.randomized_items_free_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.randomize_item.setText(QCoreApplication.translate("MainWindow", u"Remove\n"
 "<--", None))
         self.start_with_item.setText(QCoreApplication.translate("MainWindow", u"Add\n"
 "-->", None))
         self.label_starting_items.setText(QCoreApplication.translate("MainWindow", u"Starting Items", None))
+        self.starting_items_free_search.setText("")
+        self.starting_items_free_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
         self.label_for_option_starting_heart_containers.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))

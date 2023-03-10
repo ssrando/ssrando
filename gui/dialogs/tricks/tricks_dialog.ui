@@ -28,6 +28,19 @@
           </widget>
          </item>
          <item>
+          <widget class="QLineEdit" name="disabled_tricks_free_search">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Search</string>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QListView" name="disabled_tricks">
            <property name="toolTip">
             <string>test</string>
@@ -125,6 +138,19 @@
           <widget class="QLabel" name="label_for_enabled_tricks">
            <property name="text">
             <string>Enabled Tricks</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="enabled_tricks_free_search">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Search</string>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
