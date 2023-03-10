@@ -127,14 +127,9 @@ class HintDistribution:
                 "Selected hint distribution must have no more than 8 hints per stone. "
                 + "Having more than 8 risks hint text being cut off when shown in game."
             )
-        if (self.fi_hints < 0) or (self.hints_per_stone < 0):
+        elif (self.fi_hints < 0) or (self.hints_per_stone < 0):
             raise ValueError(
                 "Selected hint distribution must not have less than 0 Fi hints or hints per stone."
-            )
-        elif (self.hints_per_stone == 0) and (self.fi_hints == 0):
-            raise ValueError(
-                "Selected hint distribution must have at least 1 hint per stone or at least 1 Fi hint. "
-                + "Instead, the 'Junk' hint distribution should be used if hints are not required."
             )
         self.banned_stones = jsn["banned_stones"]
         self.added_locations = jsn["added_locations"]
@@ -278,7 +273,7 @@ class HintDistribution:
     Uses the distribution to calculate all the hints
     """
 
-    def get_hints(self) -> List[GossipStoneHint]:
+    def get_hints(self) -> List[RegularHint]:
         hints = self.hints
         count = self.nb_hints
         while len(hints) < count:
@@ -317,9 +312,9 @@ class HintDistribution:
             trial_gate = {
                 v: k for k, v in self.logic.randomized_trial_entrance.items()
             }[trial]
-            return TrialGateGossipStoneHint(loc, item, trial_gate)
+            return TrialGateHint(loc, item, trial_gate)
         else:
-            return LocationGossipStoneHint("always", loc, item, text)
+            return LocationHint("always", loc, item, text)
 
     def _create_sometimes_hint(self):
         if not self.sometimes_hints:
@@ -333,7 +328,7 @@ class HintDistribution:
             return self._create_sometimes_hint()
         self.hinted_locations.append(loc)
 
-        return LocationGossipStoneHint("sometimes", loc, item, text)
+        return LocationHint("sometimes", loc, item, text)
 
     def _create_bk_hint(self):
         if not self.required_boss_keys:
@@ -347,7 +342,7 @@ class HintDistribution:
             return self._create_bk_hint()
         self.hinted_locations.append(loc)
 
-        return LocationGossipStoneHint("boss_key", loc, item, text)
+        return LocationHint("boss_key", loc, item, text)
 
     def _create_item_hint(self):
         if not self.hintable_items:
@@ -362,12 +357,12 @@ class HintDistribution:
 
         if self.options["precise-item"]:
             text = self.areas.checks[loc].get("text")
-            return LocationGossipStoneHint("precise_item", loc, item, text)
+            return LocationHint("precise_item", loc, item, text)
 
         if (zone_override := self.areas.checks[loc].get("cube_region")) is None:
             zone_override = self.areas.checks[loc]["hint_region"]
 
-        return ZoneItemGossipStoneHint(loc, item, zone_override)
+        return ZoneItemHint(loc, item, zone_override)
 
     def _create_random_hint(self):
         all_locations_without_hint = [
@@ -385,7 +380,7 @@ class HintDistribution:
         text = self.areas.checks[loc].get("text")
         self.hinted_locations.append(loc)
 
-        return LocationGossipStoneHint("random", loc, item, text)
+        return LocationHint("random", loc, item, text)
 
     def _create_sots_goal_hint(self, goal_mode=False):
         if goal_mode:
@@ -438,9 +433,9 @@ class HintDistribution:
                     zone = LANAYRU_DESERT
                 elif zone == LANAYRU_GORGE:
                     zone = LANAYRU_SAND_SEA
-                return CubeSotsGoalGossipStoneHint(loc, item, zone, goal)
+                return CubeSotsGoalHint(loc, item, zone, goal)
         zone = self.areas.checks[loc]["hint_region"]
-        return SotsGoalGossipStoneHint(loc, item, zone, goal)
+        return SotsGoalHint(loc, item, zone, goal)
 
     def _create_sots_hint(self):
         return self._create_sots_goal_hint(goal_mode=False)
@@ -494,10 +489,10 @@ class HintDistribution:
         self.barren_hinted_areas.add(area)
         self.prev_barren_type = barren_type
 
-        return BarrenGossipStoneHint(area)
+        return BarrenHint(area)
 
     def _create_junk_hint(self):
-        return EmptyGossipStoneHint(self.rng.choice(self.junk_hints))
+        return EmptyHint(self.rng.choice(self.junk_hints))
 
     def get_junk_text(self):
         return self.junk_hints.pop()

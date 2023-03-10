@@ -17,6 +17,14 @@ class Hint:
         """each string in the list appear in a separate textbox and will be line broken"""
         raise NotImplementedError("abstract")
 
+    def to_ingame_stone_text(self, norm) -> List[str]:
+        """each string in the list appear in a separate textbox and will be line broken"""
+        raise NotImplementedError("abstract")
+
+    def to_ingame_fi_text(self, norm) -> List[str]:
+        """each string in the list appear in a separate textbox and will be line broken"""
+        raise NotImplementedError("abstract")
+
     def to_spoiler_log_text(self, norm) -> str:
         raise NotImplementedError("abstract")
 
@@ -83,23 +91,31 @@ class SongHint(NonStoneHint):
 
 
 @dataclass
-class GossipStoneHint(Hint):
+class RegularHint(Hint):
     hint_type: str
 
-    def to_text(self, norm) -> str:
+    def to_stone_text(self, norm) -> str:
         raise NotImplementedError("abstract")
 
-    def to_ingame_text(self, norm) -> List[str]:
-        return [self.to_text(norm)]
+    def to_fi_text(self, norm) -> str:
+        raise NotImplementedError("abstract")
+
+    def to_ingame_stone_text(self, norm) -> List[str]:
+        return [self.to_stone_text(norm)]
+
+    def to_ingame_fi_text(self, norm) -> List[str]:
+        return [self.to_fi_text(norm)]
 
 
 @dataclass
 class GossipStoneHintWrapper:
-    hints: List[GossipStoneHint]
+    hints: List[RegularHint]
 
     def to_ingame_text(self, norm) -> List[str]:
         return [
-            hint_txt for hint in self.hints for hint_txt in hint.to_ingame_text(norm)
+            hint_txt
+            for hint in self.hints
+            for hint_txt in hint.to_ingame_stone_text(norm)
         ]
 
     def to_spoiler_log_json(self):
@@ -107,16 +123,22 @@ class GossipStoneHintWrapper:
 
 
 @dataclass
-class LocationGossipStoneHint(GossipStoneHint):
+class LocationHint(RegularHint):
     location: EXTENDED_ITEM_NAME
     item: EXTENDED_ITEM_NAME
     location_name_override: Optional[str] = None
 
-    def to_text(self, norm) -> str:
+    def to_stone_text(self, norm) -> str:
         if override := self.location_name_override:
-            return f"They say that {override} <y<{norm(self.item)}>>"
+            return f"They say that {override} <y<{norm(self.item)}>>."
 
-        return f"They say that <r<{norm(self.location)}>> has <y<{norm(self.item)}>>"
+        return f"They say that <r<{norm(self.location)}>> has <y<{norm(self.item)}>>."
+
+    def to_fi_text(self, norm) -> str:
+        if override := self.location_name_override:
+            return f"My readings suggest that {override} <y<{norm(self.item)}>>."
+
+        return f"My readings suggest that <r<{norm(self.location)}>> has <y<{norm(self.item)}>>."
 
     def to_spoiler_log_text(self, norm) -> str:
         return f"{norm(self.location)} has {self.item} [{self.hint_type}]"
@@ -131,13 +153,16 @@ class LocationGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
-class TrialGateGossipStoneHint(LocationGossipStoneHint):
+class TrialGateHint(LocationHint):
     location_name_override: Optional[str] = field(default=None, init=False)
     hint_type: str = field(init=False, default="trial")
     trial_gate: str
 
-    def to_text(self, norm) -> str:
-        return f"They say that opening the <r<{norm(self.trial_gate)}>> will reveal <y<{norm(self.item)}>>"
+    def to_stone_text(self, norm) -> str:
+        return f"They say that opening the <r<{norm(self.trial_gate)}>> will reveal <y<{norm(self.item)}>>."
+
+    def to_fi_text(self, norm) -> str:
+        return f"My readings indicate that opening the <r<{norm(self.trial_gate)}>> will reveal <y<{norm(self.item)}>>."
 
     def to_spoiler_log_text(self, norm) -> str:
         return f"{self.trial_gate} has {self.item}"
@@ -151,13 +176,16 @@ class TrialGateGossipStoneHint(LocationGossipStoneHint):
 
 
 @dataclass
-class ZoneItemGossipStoneHint(LocationGossipStoneHint):
+class ZoneItemHint(LocationHint):
     location_name_override: Optional[str] = field(default=None, init=False)
     hint_type: str = field(init=False, default="zone_item")
     zone_override: str
 
-    def to_text(self, norm) -> str:
-        return f"<y<{norm(self.item)}>> can be found in <r<{self.zone_override}>>"
+    def to_stone_text(self, norm) -> str:
+        return f"<y<{norm(self.item)}>> can be found in <r<{self.zone_override}>>."
+
+    def to_fi_text(self, norm) -> str:
+        return f"I detect signals relating to <y<{norm(self.item)}>> in <r<{self.zone_override}>>."
 
     def to_spoiler_log_text(self, norm) -> str:
         return f"{self.item} is in {self.zone_override} [zone]"
@@ -172,7 +200,7 @@ class ZoneItemGossipStoneHint(LocationGossipStoneHint):
 
 
 @dataclass
-class SotsGoalGossipStoneHint(LocationGossipStoneHint):
+class SotsGoalHint(LocationHint):
     location_name_override: Optional[str] = field(default=None, init=False)
     hint_type: str = field(init=False)
     zone: str
@@ -181,11 +209,17 @@ class SotsGoalGossipStoneHint(LocationGossipStoneHint):
     def __post_init__(self):
         self.hint_type = "sots" if self.goal is None else "goal"
 
-    def to_text(self, norm) -> str:
+    def to_stone_text(self, norm) -> str:
         if self.goal is not None:
-            return f"The servant of the goddess who wishes to vanquish <ye<{self.goal}>> shall venture to <r<{self.zone}>>"
+            return f"The servant of the goddess who wishes to vanquish <ye<{self.goal}>> shall venture to <r<{self.zone}>>."
 
-        return f"The <b+<Spirit of the Sword>> guides the goddess' chosen hero to <r<{self.zone}>>"
+        return f"The <b+<Spirit of the Sword>> guides the goddess' chosen hero to <r<{self.zone}>>."
+
+    def to_fi_text(self, norm) -> str:
+        if self.goal is not None:
+            return f"I conjecture that travelling to <r<{self.zone}>> will help you defeat <ye<{self.goal}>>."
+
+        return f"I recommend travelling to <r<{self.zone}>> to fulfill your destiny."
 
     def to_spoiler_log_text(self, norm) -> str:
         if self.goal is not None:
@@ -203,7 +237,7 @@ class SotsGoalGossipStoneHint(LocationGossipStoneHint):
 
 
 @dataclass
-class CubeSotsGoalGossipStoneHint(LocationGossipStoneHint):
+class CubeSotsGoalHint(LocationHint):
     location_name_override: Optional[str] = field(default=None, init=False)
     hint_type: str = field(init=False)
     cube_zone: str
@@ -212,11 +246,17 @@ class CubeSotsGoalGossipStoneHint(LocationGossipStoneHint):
     def __post_init__(self):
         self.hint_type = "cube_sots" if self.goal is None else "cube_goal"
 
-    def to_text(self, norm) -> str:
+    def to_stone_text(self, norm) -> str:
         if self.goal is not None:
             return f"The servant of the goddess who wishes to vanquish <ye<{self.goal}>> shall unite <r<{self.cube_zone}>> with the skies."
 
         return f"The <ye<goddess>> left a sacred gift for the hero who unites <r<{self.cube_zone}>> with the skies."
+
+    def to_fi_text(self, norm) -> str:
+        if self.goal is not None:
+            return f"I conjecture that uniting <r<{self.cube_zone}>> with the skies will help you defeat <ye<{self.goal}>>."
+
+        return f"I recommend uniting <r<{self.cube_zone}>> with the skies to fulfill your destiny."
 
     def to_spoiler_log_text(self, norm) -> str:
         if self.goal is not None:
@@ -234,12 +274,15 @@ class CubeSotsGoalGossipStoneHint(LocationGossipStoneHint):
 
 
 @dataclass
-class BarrenGossipStoneHint(GossipStoneHint):
+class BarrenHint(RegularHint):
     hint_type: str = field(init=False, default="barren")
     zone: str
 
-    def to_text(self, norm) -> str:
-        return f"They say that those who travel to <r<{self.zone}>> will never find anything for their quest"
+    def to_stone_text(self, norm) -> str:
+        return f"They say that those who travel to <r<{self.zone}>> will never find anything for their quest."
+
+    def to_fi_text(self, norm) -> str:
+        return f"I detect no significant readings in <r<{self.zone}>>."
 
     def to_spoiler_log_text(self, norm) -> str:
         return f"{self.zone} is barren"
@@ -249,11 +292,14 @@ class BarrenGossipStoneHint(GossipStoneHint):
 
 
 @dataclass
-class EmptyGossipStoneHint(GossipStoneHint):
+class EmptyHint(RegularHint):
     hint_type: str = field(init=False, default="junk")
     text: str
 
-    def to_text(self, norm) -> str:
+    def to_stone_text(self, norm) -> str:
+        return self.text
+
+    def to_fi_text(self, norm) -> str:
         return self.text
 
     def to_spoiler_log_text(self, norm) -> str:
@@ -265,21 +311,21 @@ class EmptyGossipStoneHint(GossipStoneHint):
 
 @dataclass
 class FiHintWrapper(GossipStoneHintWrapper):
-    hints: List[GossipStoneHint]
+    hints: List[RegularHint]
 
     def __init__(self, hints):
         self.hints = sorted(hints, key=self.order_hint)
 
     def order_hint(self, hint):
-        if isinstance(hint, SotsGoalGossipStoneHint):
+        if isinstance(hint, SotsGoalHint):
             return 0
-        if isinstance(hint, CubeSotsGoalGossipStoneHint):
+        if isinstance(hint, CubeSotsGoalHint):
             return 1
-        if isinstance(hint, BarrenGossipStoneHint):
+        if isinstance(hint, BarrenHint):
             return 2
-        if isinstance(hint, ZoneItemGossipStoneHint):
+        if isinstance(hint, ZoneItemHint):
             return 3
-        if isinstance(hint, LocationGossipStoneHint):
+        if isinstance(hint, LocationHint):
             if hint.hint_type == "always":
                 return 4
             if hint.hint_type == "sometimes":
@@ -289,8 +335,5 @@ class FiHintWrapper(GossipStoneHintWrapper):
 
     def to_ingame_text(self, norm) -> List[str]:
         return [
-            hint_txt for hint in self.hints for hint_txt in hint.to_ingame_text(norm)
+            hint_txt for hint in self.hints for hint_txt in hint.to_ingame_fi_text(norm)
         ]
-
-    def to_spoiler_log_json(self):
-        return [hint.to_spoiler_log_json() for hint in self.hints]

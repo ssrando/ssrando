@@ -656,6 +656,8 @@ FARORES_COURAGE_TRIAL_HINT = EIN("Farore's Courage - Trial Hint")
 NAYRUS_WISDOM_TRIAL_HINT = EIN("Nayru's Wisdom - Trial Hint")
 DINS_POWER_TRIAL_HINT = EIN("Din's Power - Trial Hint")
 
+FI_HINTS = "Fi"
+
 
 SONG_HINTS = {
     SONG_OF_THE_HERO_TRIAL_HINT: SKYLOFT_TRIAL_GATE,

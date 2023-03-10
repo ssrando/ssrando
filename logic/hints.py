@@ -118,33 +118,25 @@ class Hints:
         fi_hints = {hintname: hint for hint, hintname in zip(fi_hints, HINTS)}
         self.logic.placement.fi_hints |= set([hintname for hintname in fi_hints])
         self.hints_per_stone = self.dist.hints_per_stone
-        # Ensure every stone exists in the placement to account for possibly having 0 stone hints.
-        self.logic.placement.stones = {stone: [] for stone in self.areas.gossip_stones}
         self.randomize(hintstone_hints)
-
-        placed_fi_hints = {
-            "Fi": FiHintWrapper(
-                [fi_hints[hintname] for hintname in self.logic.placement.fi_hints]
-            )
-        }
+        placed_fi_hints = {FI_HINTS: FiHintWrapper(fi_hints.values())}
         placed_hintstone_hints = {
             stone: GossipStoneHintWrapper(
-                [hintstone_hints[hintname] for hintname in hintnames]
+                [
+                    hintstone_hints[hintname]
+                    for hintname in self.logic.placement.stones[stone]
+                ]
             )
-            for stone, hintnames in self.logic.placement.stones.items()
+            for stone in self.areas.gossip_stones
         }
         self.logic.placement.hints = (
             placed_fi_hints | placed_hintstone_hints | non_hintstone_hints
         )
 
-    def place_fi_hints(self, hints: Dict[EIN, GossipStoneHint]):
-        for hintname in hints:
-            self.logic.placement.fi_hints.append(hintname)
-
-    def randomize(self, hints: Dict[EIN, GossipStoneHint]):
+    def randomize(self, hints: Dict[EIN, RegularHint]):
         for hintname, hint in hints.items():
             hint_bit = EXTENDED_ITEM[hintname]
-            if isinstance(hint, LocationGossipStoneHint) and hint.item in EXTENDED_ITEM:
+            if isinstance(hint, LocationHint) and hint.item in EXTENDED_ITEM:
                 itembit = EXTENDED_ITEM[hint.item]
                 hint_req = DNFInventory(hint_bit)
                 self.logic.backup_requirements[itembit] &= hint_req
