@@ -32,6 +32,9 @@
            <property name="toolTip">
             <string>test</string>
            </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
           </widget>
          </item>
         </layout>
@@ -117,7 +120,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QListView" name="enabled_tricks"/>
+          <widget class="QListView" name="enabled_tricks">
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

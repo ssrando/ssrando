@@ -15,9 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
-    QHBoxLayout, QLabel, QListView, QPushButton,
-    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractButton, QAbstractItemView, QApplication, QDialog,
+    QDialogButtonBox, QHBoxLayout, QLabel, QListView,
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 
 class Ui_TricksDialog(object):
     def setupUi(self, TricksDialog):
@@ -39,6 +40,7 @@ class Ui_TricksDialog(object):
 
         self.disabled_tricks = QListView(TricksDialog)
         self.disabled_tricks.setObjectName(u"disabled_tricks")
+        self.disabled_tricks.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.vlay_disabled_tricks.addWidget(self.disabled_tricks)
 
@@ -88,6 +90,7 @@ class Ui_TricksDialog(object):
 
         self.enabled_tricks = QListView(TricksDialog)
         self.enabled_tricks.setObjectName(u"enabled_tricks")
+        self.enabled_tricks.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.vlay_enabled_tricks.addWidget(self.enabled_tricks)
 

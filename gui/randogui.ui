@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>3</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -1371,7 +1371,11 @@
             <item>
              <layout class="QHBoxLayout" name="hlay_exclude_locations_body">
               <item>
-               <widget class="QListView" name="included_locations"/>
+               <widget class="QListView" name="included_locations">
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+               </widget>
               </item>
               <item>
                <layout class="QVBoxLayout" name="vlay_exclude_locations_controls">
@@ -1445,7 +1449,11 @@
                </layout>
               </item>
               <item>
-               <widget class="QListView" name="excluded_locations"/>
+               <widget class="QListView" name="excluded_locations">
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -1713,6 +1721,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
                </widget>
               </item>
              </layout>
@@ -1810,6 +1821,9 @@
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
                 </property>
                </widget>
               </item>

@@ -15,11 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFontComboBox,
-    QFrame, QGroupBox, QHBoxLayout, QLabel,
-    QLayout, QLineEdit, QListView, QMainWindow,
-    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
-    QTabWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
+    QFontComboBox, QFrame, QGroupBox, QHBoxLayout,
+    QLabel, QLayout, QLineEdit, QListView,
+    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
+    QSpinBox, QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1001,6 +1001,7 @@ class Ui_MainWindow(object):
         self.hlay_exclude_locations_body.setObjectName(u"hlay_exclude_locations_body")
         self.included_locations = QListView(self.tab_logic_settings)
         self.included_locations.setObjectName(u"included_locations")
+        self.included_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.hlay_exclude_locations_body.addWidget(self.included_locations)
 
@@ -1040,6 +1041,7 @@ class Ui_MainWindow(object):
 
         self.excluded_locations = QListView(self.tab_logic_settings)
         self.excluded_locations.setObjectName(u"excluded_locations")
+        self.excluded_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.hlay_exclude_locations_body.addWidget(self.excluded_locations)
 
@@ -1217,6 +1219,7 @@ class Ui_MainWindow(object):
         self.randomized_items.setObjectName(u"randomized_items")
         sizePolicy1.setHeightForWidth(self.randomized_items.sizePolicy().hasHeightForWidth())
         self.randomized_items.setSizePolicy(sizePolicy1)
+        self.randomized_items.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.vlay_randomized_items_section.addWidget(self.randomized_items)
 
@@ -1266,6 +1269,7 @@ class Ui_MainWindow(object):
         self.starting_items.setObjectName(u"starting_items")
         sizePolicy1.setHeightForWidth(self.starting_items.sizePolicy().hasHeightForWidth())
         self.starting_items.setSizePolicy(sizePolicy1)
+        self.starting_items.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.vlay_starting_items_section.addWidget(self.starting_items)
 
@@ -1614,7 +1618,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(6)
+        self.tabWidget.setCurrentIndex(3)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
