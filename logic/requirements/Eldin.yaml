@@ -321,6 +321,5 @@ Bokoblin Base:
   Fire Dragon's Lair:
     exits:
       Bokoblin Base Summit: Nothing
-      Volcano - East: Fire Dragon's Reward
     locations:
       Fire Dragon's Reward: Bow | Beetle
