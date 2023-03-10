@@ -360,6 +360,106 @@ lbl_end:
 cmpwi r5, 1
 blr
 
+.global correct_rupee_color
+correct_rupee_color:
+; itemId r28
+; heapMaybe r29
+; brres ptr at r1 + 0xC
+; model ptr r31
+; model instance r27
+; setup "function args"
+lwz r3, 0xC(r1) ; brres
+mr r4, r31 ; model
+mr r5, r27 ; modelInstance
+mr r6, r29 ; heap
+mr r7, r28 ; itemid
+; see https://godbolt.org/z/ovq7Yczhx
+mflr 0
+stwu 1,-64(1)
+li 10,6
+li 9,0
+stw 30,56(1)
+mtctr 10
+lis 30,RUPEE_ITEM_TO_TEX_FRAME@ha
+stw 0,68(1)
+stw 27,44(1)
+la 30,RUPEE_ITEM_TO_TEX_FRAME@l(30)
+stw 29,52(1)
+stw 31,60(1)
+stw 3,24(1)
+stw 4,28(1)
+stw 28,48(1)
+mr 28,5
+.correct_rupee_colorL5:
+slwi 31,9,3
+addi 9,9,1
+lhzx 10,30,31
+cmpw 7,10,7
+beq- 7,.correct_rupee_colorL11
+bdnz .correct_rupee_colorL5
+lwz 0,68(1)
+lwz 27,44(1)
+mtlr 0
+lwz 28,48(1)
+lwz 29,52(1)
+lwz 30,56(1)
+lwz 31,60(1)
+addi 1,1,64
+; replaced instruction
+addi r11,r1,0x130
+blr
+.correct_rupee_colorL11:
+li 3,44
+stw 6,32(1)
+li 27,0
+bl allocOnCurrentHeap
+; leak this memory, but it seems to be allocated on this
+; actors heap, so it gets freed when the actor is freed as well
+stw 27,4(3)
+mr 29,3
+stw 27,8(3)
+addi 3,3,12
+add 31,30,31
+bl func_0x802ee0e0
+lis 9,0x8054
+ori 9,9,9624
+stw 27,40(29)
+stw 9,0(29)
+subi r4,r13,0x69d0; "Rupee"
+addi 3,1,24
+bl getAnmTexPatFromBrres
+lwz 6,32(1)
+addi 5,1,8
+stw 3,8(1)
+addi 4,1,28
+li 7,0
+li 8,1
+mr 3,29
+bl AnmTexPatControl__bind
+lwz 9,0x10(28)
+mr 3,28
+mr 4,29
+lwz 9,36(9)
+mtctr 9
+bctrl
+lfs 1,4(31)
+mr 3,29
+li 4,0
+bl AnmTexPatControl__setFrame
+; calling the destructor makes it not work
+; this feels very wrong, but seems to work?
+lwz 0,68(1)
+lwz 27,44(1)
+mtlr 0
+lwz 28,48(1)
+lwz 29,52(1)
+lwz 30,56(1)
+lwz 31,60(1)
+addi 1,1,64
+; replaced instruction
+addi r11,r1,0x130
+blr
+
 .close
 
 .open "d_a_npc_douguyanightNP.rel"
@@ -493,35 +593,19 @@ addi r1, r1, 0x10
 blr
 .close
 
-
-
-
-
-
-
-
-
-
-; stwu r1, -0x10(r1)
-; mflr r0
-; stw r0, 20(r1)
-
-; li r4, 0x13 ; story flag 19 - talked to Fire Dragon
-; bl checkStoryflagIsSet
-; cmpwi r3, 0
-; bne normal_check
-; li r0, -1
-; normal_check:
-; cmpwi r0, 0
-
-; lwz r0, 20(r1)
-; mtlr r0
-; addi r1, r1, 0x10
-; blr
-; .close
-
-; no_platform:
-; b 0x68C ; don't spawn platform
-
-; ble 0x68C ; no_platform
-; b 0x630 ; return immediately after custom function
+.open "d_t_player_restartNP.rel"
+.org @NextFreeSpace
+; see: https://rust.godbolt.org/
+; in rust because why not
+; pub fn test(params1: u32, flags: u32) -> u32 {
+;     return flags | if ((params1 >> 0x17) & 1) != 0 { 4 } else { 0 };
+; }
+.global only_set_flag_conditionally
+only_set_flag_conditionally:
+; r0 holds params1 (how convenient)
+; r4 holds some flags, where 4 means don't copy to File B again
+rlwinm r5, r0, 11, 29, 29
+or r4, r4, r5
+ori r4, r4, 0x100 ; we need to signal that the flag, to cause link to use the PlRsTag entrance, needs to be set
+blr
+.close

@@ -492,7 +492,7 @@ class Logic:
             and location in self.placement.locations
             and self.placement.locations[location] != item
         ):
-            raise ValueError(f"Location {location} is already taken")
+            raise ValueError(f"Location {location} is already taken.")
 
         items = self.placement.stone_hints if hint_mode else self.placement.items
         if (
@@ -505,14 +505,14 @@ class Logic:
                 name = ""
             else:
                 name = "Item "
-            raise ValueError(f"{name}{item} is already placed")
+            raise ValueError(f"{name}{item} is already placed.")
 
         if item in self.placement.item_placement_limit and not location.startswith(
             self.placement.item_placement_limit[item]
         ):
             raise ValueError(
                 "This item cannot be placed in this area, "
-                f"it must be placed in {self.placement.item_placement_limit[item]}"
+                f"it must be placed in {self.placement.item_placement_limit[item]}."
             )
 
         if hint_mode:
@@ -541,19 +541,19 @@ class Logic:
 
         if hint_mode := old_hint is not None:
             if location not in self.placement.stones:
-                raise ValueError(f"Hint stone {location} is empty")
+                raise ValueError(f"Hint stone {location} is empty.")
             if old_hint not in self.placement.stones[location]:
-                raise ValueError(f"Hint stone {location} does not contain {old_hint}")
+                raise ValueError(f"Hint stone {location} does not contain {old_hint}.")
             if item in self.placement.stone_hints:
-                raise ValueError(f"{item} is already placed")
+                raise ValueError(f"{item} is already placed.")
             self.placement.stones[location].remove(old_hint)
             del self.placement.stone_hints[old_hint]
             old_item = old_hint
         else:
             if location not in self.placement.locations:
-                raise ValueError(f"Location {location} is not taken")
+                raise ValueError(f"Location {location} is not taken.")
             if item in self.placement.items:
-                raise ValueError(f"Item {item} is already placed")
+                raise ValueError(f"Item {item} is already placed.")
             old_item = self.placement.locations[location]
             del self.placement.locations[location]
             del self.placement.items[old_item]

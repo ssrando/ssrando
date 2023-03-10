@@ -714,7 +714,7 @@ def make_progressive_item(
     if len(item_text_indexes) != len(storyflags) or len(item_text_indexes) != len(
         item_ids
     ):
-        raise Exception("item_text_indexes should be the same length as storyflags!")
+        raise Exception("item_text_indexes should be the same length as storyflags.")
     flow_idx = len(msbf["FLW3"]["flow"])
     msbf["FLW3"]["flow"][base_item_start]["next"] = flow_idx
     index = len(item_text_indexes) - 1  # start from the highest upgrade
@@ -1070,7 +1070,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                     else:
                         stageoarcs[("F002r", 1)].add(oarc)
                 if modelname is None or arcname is None:
-                    raise Exception(f"no modelnames for {item}")
+                    raise Exception(f"No modelnames for {item}.")
                 shoppatches[index] = (item["id"], arcname, modelname)
             else:
                 print(f"ERROR: {path} didn't match any regex!")
@@ -1228,7 +1228,9 @@ class GamePatcher:
         elif rupeesanity_option == "All":
             to_remove = []
         else:
-            raise ValueError(f"Wrong value {rupeesanity_option} for option rupeesanity")
+            raise ValueError(
+                f"Wrong value {rupeesanity_option} for option rupeesanity."
+            )
 
         for rupee_check in to_remove:
             del filtered_item_locations[rupee_check]
@@ -1652,7 +1654,7 @@ class GamePatcher:
                 elif isinstance(entry, int):
                     self.startitemflags[entry] = 1
                 else:
-                    raise ValueError(f"expected list, tuple or int, got : {entry}")
+                    raise ValueError(f"Expected list, tuple or int, got : {entry}.")
             # story flags
             if (entry := ITEM_STORY_FLAGS.get(item)) is not None:
                 if isinstance(entry, tuple):
@@ -1662,7 +1664,7 @@ class GamePatcher:
                 elif isinstance(entry, int):
                     self.startstoryflags.append(entry)
                 else:
-                    raise ValueError(f"expected list, tuple or int, got : {entry}")
+                    raise ValueError(f"Expected list, tuple or int, got : {entry}.")
             if item == PROGRESSIVE_POUCH:
                 self.startstoryflags.append(30)  # Vanilla storyflag for pouch.
             if (ammo_flag_count := START_AMMO_COUNTS.get(item)) is not None:
@@ -2578,7 +2580,7 @@ class GamePatcher:
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:
             raise Exception(
-                f"not enough space to fit in all of the startflags, need {startflag_byte_count}, but only 512 bytes available"
+                f"Not enough space to fit in all of the startflags, need {startflag_byte_count}, but only 512 bytes available."
             )
         # print(f"total startflag byte count: {startflag_byte_count}")
         dol.write_data_bytes(0x804EE1B8, start_flags_write.getbuffer())
@@ -2696,48 +2698,36 @@ class GamePatcher:
 
     def do_patch_title_screen_logo(self):
         # patch title screen logo
-        actual_data = (
-            self.actual_extract_path
-            / "DATA"
-            / "files"
-            / "US"
-            / "Layout"
-            / "Title2D.arc"
-        ).read_bytes()
-        actual_arc = U8File.parse_u8(BytesIO(actual_data))
-        logodata = (self.rando_root_path / "assets" / "logo.tpl").read_bytes()
-        actual_arc.set_file_data("timg/tr_wiiKing2Logo_00.tpl", logodata)
-        (
+        title_2D_path = (
             self.modified_extract_path
             / "DATA"
             / "files"
             / "US"
             / "Layout"
             / "Title2D.arc"
-        ).write_bytes(actual_arc.to_buffer())
+        )
+        data = title_2D_path.read_bytes()
+        arc = U8File.parse_u8(BytesIO(data))
+        logodata = (self.rando_root_path / "assets" / "logo.tpl").read_bytes()
+        arc.set_file_data("timg/tr_wiiKing2Logo_00.tpl", logodata)
+        title_2D_path.write_bytes(arc.to_buffer())
 
     def do_patch_custom_dowsing_images(self):
         # patch propeller dowsing image; used for chest dowsing
-        actual_data = (
-            self.actual_extract_path
-            / "DATA"
-            / "files"
-            / "US"
-            / "Layout"
-            / "DoButton.arc"
-        ).read_bytes()
-        actual_arc = U8File.parse_u8(BytesIO(actual_data))
-        chestdata = (self.rando_root_path / "assets" / "chest_image.tpl").read_bytes()
-        actual_arc.set_file_data("timg/tr_dauzTarget_10.tpl", chestdata)
-        sandshipdata = (
-            self.rando_root_path / "assets" / "sandship_image.tpl"
-        ).read_bytes()
-        actual_arc.set_file_data("timg/tr_dauzTarget_18.tpl", sandshipdata)
-        (
+        do_button_path = (
             self.modified_extract_path
             / "DATA"
             / "files"
             / "US"
             / "Layout"
             / "DoButton.arc"
-        ).write_bytes(actual_arc.to_buffer())
+        )
+        data = do_button_path.read_bytes()
+        arc = U8File.parse_u8(BytesIO(data))
+        chestdata = (self.rando_root_path / "assets" / "chest_image.tpl").read_bytes()
+        arc.set_file_data("timg/tr_dauzTarget_10.tpl", chestdata)
+        sandshipdata = (
+            self.rando_root_path / "assets" / "sandship_image.tpl"
+        ).read_bytes()
+        arc.set_file_data("timg/tr_dauzTarget_18.tpl", sandshipdata)
+        do_button_path.write_bytes(arc.to_buffer())

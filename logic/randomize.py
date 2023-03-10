@@ -38,7 +38,6 @@ def shuffle_indices(self, list, indices=None):
 
 class Rando:
     def __init__(self, areas: Areas, options: Options, rng: random.Random):
-
         self.options = options
         self.rng = rng
 
@@ -51,7 +50,8 @@ class Rando:
         self.parse_options()
         self.initial_placement = self.placement.copy()
 
-        fill_algorithm = self.options["fill-algorithm"]
+        # since it's currently not configurable on the UI, use assumed fill
+        fill_algorithm = "Assumed Fill"  # self.options["fill-algorithm"]
         if fill_algorithm == "Assumed Fill":
             start_inventory = Inventory(
                 {
@@ -79,7 +79,7 @@ class Rando:
             FillAlgorithm = RandomFill
         else:
             raise ValueError(
-                f"Wrong value for option 'fill-algorithm: f'{fill_algorithm}'"
+                f"Wrong value for option 'fill-algorithm: f'{fill_algorithm}'."
             )
 
         runtime_requirements = (
@@ -112,7 +112,7 @@ class Rando:
 
         def fun():
             if not self.randomised:
-                raise ValueError("Cannot extract hint logic before randomisation")
+                raise ValueError("Cannot extract hint logic before randomisation.")
             return LogicUtils(
                 areas,
                 logic.placement,
@@ -199,7 +199,6 @@ class Rando:
                 starting_items.add(item)
 
         if self.options["random-starting-item"]:
-
             possible_random_starting_items = [
                 item
                 for item in RANDOM_STARTING_ITEMS
@@ -221,7 +220,6 @@ class Rando:
         self.placement.add_starting_items(starting_items)
 
     def ban_the_banned(self):
-
         banned_req = DNFInventory(BANNED_BIT)
         nothing_req = DNFInventory(True)
         maybe_req = lambda b: banned_req if b else nothing_req
@@ -311,7 +309,7 @@ class Rando:
             elif rupoor_mode == "Rupoor Insanity":
                 unplaced = may_be_placed_list
             else:
-                raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}")
+                raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
 
         must_be_placed_items = (
@@ -406,7 +404,7 @@ class Rando:
                 checks_to_use = DUNGEON_FINAL_CHECK
             else:
                 raise ValueError(
-                    f"Option sword-dungeon-reward has unknown value {sword_reward_mode}"
+                    f"Option sword-dungeon-reward has unknown value {sword_reward_mode}."
                 )
 
             dungeons = self.required_dungeons.copy()

@@ -22,7 +22,7 @@ def get_derangement(length: int, rng: random.Random) -> List[int]:
     shuffled such that no number is at its index
     """
     if length <= 1:
-        raise ValueError("length needs to be at least 2")
+        raise ValueError("Length needs to be at least 2.")
     lst = list(range(length))
     rng.shuffle(lst)
     while not is_derangement(lst):

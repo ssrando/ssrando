@@ -108,10 +108,10 @@ class WitManager:
             if not digest == CLEAN_NTSC_U_1_00_ISO_HASH:
                 if digest in WRONG_VERSION_HASHES:
                     raise WrongChecksumException(
-                        f"This ISO is {WRONG_VERSION_HASHES[digest]}, but the rando only support NTSC-U 1.00 (North American)"
+                        f"This ISO is {WRONG_VERSION_HASHES[digest]}, but the rando only support NTSC-U 1.00 (North American)."
                     )
                 raise WrongChecksumException(
-                    f"Unrecognized wrong hash {digest}, make sure you got a clean dump of NTSC-U 1.00 (North American)"
+                    f"Unrecognized wrong hash {digest}, make sure you got a clean dump of NTSC-U 1.00 (North American)."
                 )
 
     def actual_extract_already_exists(self):
@@ -153,7 +153,7 @@ class WitManager:
                 if not return_code is None:
                     if return_code != 0:
                         raise WitException(
-                            f'ERROR: {extract_process.stderr.read().decode("UTF-8")}'
+                            f'ERROR: {extract_process.stderr.read().decode("UTF-8")}.'
                         )
                     break
             # delete all videos, they take up way too much space
@@ -229,7 +229,7 @@ class WitManager:
             if not return_code is None:
                 if return_code != 0:
                     raise WitException(
-                        f'ERROR: {extract_process.stderr.read().decode("UTF-8")}'
+                        f'ERROR: {extract_process.stderr.read().decode("UTF-8")}.'
                     )
                 break
         assert return_code == 0

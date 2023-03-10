@@ -135,7 +135,7 @@ class FrontFill:
             return True
 
         raise self.useroutput.GenerationFailed(
-            f"no more location accessible for {item_name}"
+            f"No more locations accessible for {item_name}."
         )
 
     def randomize_progression_items(self):
@@ -146,7 +146,7 @@ class FrontFill:
         ]
         if len(accessible_undone_locations) == 0:
             raise Exception(
-                "No progress locations are accessible at the very start of the game!"
+                "No progress locations are accessible at the very start of the game."
             )
 
         unplaced_progress_items = list(self.progress_items)
@@ -162,7 +162,7 @@ class FrontFill:
             ]
 
             if not accessible_undone_locations:
-                raise Exception("No locations left to place progress items!")
+                raise Exception("No locations left to place progress items.")
 
             for location in accessible_undone_locations:
                 if location not in location_weights:
@@ -220,7 +220,7 @@ class FrontFill:
                 if item_name is None:
                     # This means that no item can unlock a new location
                     if must_place_useful_item:
-                        raise Exception("No useful progress items to place!")
+                        raise Exception("No useful progress items to place.")
                     else:
                         assert False
                         # I didn't want to adapt this part because it's too obscure and apparently useless
@@ -271,7 +271,7 @@ class FrontFill:
             item_name = self.rng.choice(to_place)
 
             if not accessible_undone_locations:
-                raise Exception("No valid locations left to place non-progress items!")
+                raise Exception("No valid locations left to place non-progress items.")
 
             location_name = self.rng.choice(accessible_undone_locations)
             self.logic.place_item(location_name, item_name)
