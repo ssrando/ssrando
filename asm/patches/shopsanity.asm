@@ -50,4 +50,18 @@ add r3, r3, r4 ; array offset
 lhz r4, 0x52(r3) ; load storyflag
 b checkStoryflagIsSet
 
+; .org 0x808b43c8
+.org 0x33B8
+lhz r28, 0xC(r6) ; make the item id accessible for the next function
+nop ; this overwrites a useless call to sprintf, probably debug leftover
+nop
+
+; .org 0x808b43e4
+.org 0x33D4
+li r6, 0x123 ; model flags, otherwise the texture anim is shared
+
+; .org 0x808b43f4
+.org 0x33E4
+bl correct_rupee_color
+
 .close

@@ -287,6 +287,10 @@ class RandoGUI(QMainWindow):
 
         self.ui.tabWidget.setCurrentIndex(0)
 
+        arc_replacements_path = Path(RANDO_ROOT_PATH / "arc-replacements")
+        if not arc_replacements_path.exists():
+            arc_replacements_path.mkdir(exist_ok=True, parents=True)
+
         if "NOGIT" in VERSION:
             self.error_msg = QErrorMessage()
             self.error_msg.showMessage(

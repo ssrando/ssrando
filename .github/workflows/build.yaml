@@ -36,7 +36,9 @@ jobs:
           dist/ssrando --noui --dry-run --seed=0
           diff logs logs_source
       - name: Make arc-replacements folder
-        run: mkdir -p dist/arc-replacements
+        run: |
+          mkdir -p dist/arc-replacements
+          cp arc-replacements/README.md dist/arc-replacements
         shell: bash
       - name: Copy Readme and changelog
         run: cp README.md CHANGELOG.md dist

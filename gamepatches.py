@@ -2698,48 +2698,36 @@ class GamePatcher:
 
     def do_patch_title_screen_logo(self):
         # patch title screen logo
-        actual_data = (
-            self.actual_extract_path
-            / "DATA"
-            / "files"
-            / "US"
-            / "Layout"
-            / "Title2D.arc"
-        ).read_bytes()
-        actual_arc = U8File.parse_u8(BytesIO(actual_data))
-        logodata = (self.rando_root_path / "assets" / "logo.tpl").read_bytes()
-        actual_arc.set_file_data("timg/tr_wiiKing2Logo_00.tpl", logodata)
-        (
+        title_2D_path = (
             self.modified_extract_path
             / "DATA"
             / "files"
             / "US"
             / "Layout"
             / "Title2D.arc"
-        ).write_bytes(actual_arc.to_buffer())
+        )
+        data = title_2D_path.read_bytes()
+        arc = U8File.parse_u8(BytesIO(data))
+        logodata = (self.rando_root_path / "assets" / "logo.tpl").read_bytes()
+        arc.set_file_data("timg/tr_wiiKing2Logo_00.tpl", logodata)
+        title_2D_path.write_bytes(arc.to_buffer())
 
     def do_patch_custom_dowsing_images(self):
         # patch propeller dowsing image; used for chest dowsing
-        actual_data = (
-            self.actual_extract_path
-            / "DATA"
-            / "files"
-            / "US"
-            / "Layout"
-            / "DoButton.arc"
-        ).read_bytes()
-        actual_arc = U8File.parse_u8(BytesIO(actual_data))
-        chestdata = (self.rando_root_path / "assets" / "chest_image.tpl").read_bytes()
-        actual_arc.set_file_data("timg/tr_dauzTarget_10.tpl", chestdata)
-        sandshipdata = (
-            self.rando_root_path / "assets" / "sandship_image.tpl"
-        ).read_bytes()
-        actual_arc.set_file_data("timg/tr_dauzTarget_18.tpl", sandshipdata)
-        (
+        do_button_path = (
             self.modified_extract_path
             / "DATA"
             / "files"
             / "US"
             / "Layout"
             / "DoButton.arc"
-        ).write_bytes(actual_arc.to_buffer())
+        )
+        data = do_button_path.read_bytes()
+        arc = U8File.parse_u8(BytesIO(data))
+        chestdata = (self.rando_root_path / "assets" / "chest_image.tpl").read_bytes()
+        arc.set_file_data("timg/tr_dauzTarget_10.tpl", chestdata)
+        sandshipdata = (
+            self.rando_root_path / "assets" / "sandship_image.tpl"
+        ).read_bytes()
+        arc.set_file_data("timg/tr_dauzTarget_18.tpl", sandshipdata)
+        do_button_path.write_bytes(arc.to_buffer())
