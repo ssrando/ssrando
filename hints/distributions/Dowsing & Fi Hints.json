@@ -4,6 +4,7 @@
   "banned_stones": [],
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals", "type": "always"},
+    {"location": "Sky - Dodoh's Crystals", "type": "sometimes"},
     {"location": "Faron Woods - Item behind Bombable Rock", "type": "sometimes"},
     {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack", "type": "always"},
     {"location": "Skyview - Rupee on Spring Pillar", "type": "sometimes"},
