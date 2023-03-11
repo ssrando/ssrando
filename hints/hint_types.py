@@ -219,7 +219,9 @@ class SotsGoalHint(LocationHint):
         if self.goal is not None:
             return f"I conjecture that travelling to <r<{self.zone}>> will help you defeat <ye<{self.goal}>>."
 
-        return f"I recommend travelling to <r<{self.zone}>> to <b+<fulfill your destiny>>."
+        return (
+            f"I recommend travelling to <r<{self.zone}>> to <b+<fulfill your destiny>>."
+        )
 
     def to_spoiler_log_text(self, norm) -> str:
         if self.goal is not None:
