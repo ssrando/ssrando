@@ -670,3 +670,9 @@ bl only_set_flag_conditionally
 .org 0x49C
 rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
 .close
+
+.open "d_a_obj_toD3_stone_figureNP.rel"
+; .org 0x80f35a18
+.org 0x8E8
+b set_sot_placed_flag
+.close

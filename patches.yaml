@@ -1041,24 +1041,6 @@ F000: # Skyloft
     object:
       layer: 6
       entrance: 52
-  - name: Set SoT storyflag on place
-    type: objadd
-    room: 0 
-    layer: 6 # Sky keep opened
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: 5256
-      posy: 400
-      posz: -11212
-      sizex: 1000
-      sizey: 1000
-      sizez: 1000
-      anglex: 22 # SoT placed storyflag
-      angley: 0
-      anglez: 65535
-      name: SwAreaT
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
