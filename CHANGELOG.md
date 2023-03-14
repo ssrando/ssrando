@@ -33,6 +33,11 @@
   - The default value is 700 and matches how things worked before
   - Values larger than 700 will decrease the performance of the game
 - Added cosmetic option to have a lightning skyward strike effects. (by Zeldex)
+- Updated existing `fix-bit-crashes` option to a `bit-patches` option (by CovenEsme)
+  - This option is now a drop-down choice instead of a toggle
+  - A new option for `disable-bit` has been added that prevents all instances of the Back in Time (BiT) trick from being performed
+  - A new option for `vanilla` has been added that keeps the vanilla game behaviour where BiT is possible but crashes under certain circumstances
+  - The `fix-bit-crashes` option works the same as it did previously
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
