@@ -85,7 +85,7 @@
   - Added menu choice to view general requirements for beating a seed (e.g. how to raise and open Gate of Time, etc.)
   - Added explicit menu choice to view play time (temporarily to fill space)
 - Added Lanayru Desert map of the past as a starting item (by CovenEsme)
-- Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check and buying a shield (by CovenEsme)
+- Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check, buying a shield and Owlan's Gift check (by CovenEsme)
 - Removed the cutscene after completing the Isle of Songs puzzle
 - Removed the panning cutscenes during the Fledge's Gift check (by CovenEsme)
 - Shortened Yerbal's text to become in-line with the rest of the randomizer
