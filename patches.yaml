@@ -2549,6 +2549,14 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       anglex: 12031 #keep mogma above ground
+  - name: Remove Earth Temple Opening Cutscene
+    type: objpatch
+    id: 0x24A4
+    layer: 1
+    room: 4
+    objtype: STAG
+    object:
+      event: 7 # DefaultStart
   - name: Shiekah Stone in Eldin
     type: oarcadd
     destlayer: 0
