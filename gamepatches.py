@@ -2799,7 +2799,7 @@ class GamePatcher:
         # dungeonflags
         start_flags_write.write(bytes(self.startdungeonflags))
         # Starting rupee count.
-        start_flags_write.write(struct.pack(">H", 9000))
+        start_flags_write.write(struct.pack(">H", 0))
         # Start health.
         start_flags_write.write(struct.pack(">B", self.starting_full_hearts))
         startflag_byte_count = len(start_flags_write.getbuffer())
