@@ -977,6 +977,11 @@
       param3: 9
       param4: 0
       param5: 0
+  - name: Remove bipping after Owlan's Gift
+    type: flowpatch
+    index: 166
+    flow:
+      next: -1
   - name: Hint to owlan crystals
     type: flowpatch
     index: 272

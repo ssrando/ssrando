@@ -33,6 +33,11 @@
   - The default value is 700 and matches how things worked before
   - Values larger than 700 will decrease the performance of the game
 - Added cosmetic option to have a lightning skyward strike effects. (by Zeldex)
+- Updated existing `fix-bit-crashes` option to a `bit-patches` option (by CovenEsme)
+  - This option is now a drop-down choice instead of a toggle
+  - A new option for `disable-bit` has been added that prevents all instances of the Back in Time (BiT) trick from being performed
+  - A new option for `vanilla` has been added that keeps the vanilla game behaviour where BiT is possible but crashes under certain circumstances
+  - The `fix-bit-crashes` option works the same as it did previously
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
@@ -80,7 +85,7 @@
   - Added menu choice to view general requirements for beating a seed (e.g. how to raise and open Gate of Time, etc.)
   - Added explicit menu choice to view play time (temporarily to fill space)
 - Added Lanayru Desert map of the past as a starting item (by CovenEsme)
-- Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check and buying a shield (by CovenEsme)
+- Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check, buying a shield and Owlan's Gift check (by CovenEsme)
 - Removed the cutscene after completing the Isle of Songs puzzle
 - Removed the panning cutscenes during the Fledge's Gift check (by CovenEsme)
 - Shortened Yerbal's text to become in-line with the rest of the randomizer
@@ -112,6 +117,9 @@
 - Fixed light pillars not visually appearing when obtaining a tablet until a reload
 - Fixed Early Lake Floria Tricks not actually changing logic
 - Fixed Yerbal's map hint not showing the X marker on the map
+- Fixed bug where setting the `map-mode` or `boss-key-mode` options to "Vanilla" AND starting with some but not all maps or boss keys would throw an error
+  - Any maps or boss keys NOT added as starting items will now be placed in their vanilla locations (if the `map-mode`/`boss-key-mode` options are set to "Vanilla")
+  - Any maps or boss keys added as starting items will be added to the starting inventory
 
 
 ## 1.3.2
