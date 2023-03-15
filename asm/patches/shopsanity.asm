@@ -64,4 +64,21 @@ li r6, 0x123 ; model flags, otherwise the texture anim is shared
 .org 0x33E4
 bl correct_rupee_color
 
+; Custom item height struct stuff
+; SHOP_ITEM[0x4C] = float of height offset
+; .org 0x808b66ec
+.org 0x56DC
+lfs f0, 0x4C(r3); load custom height value into f0
+stfs f0, 0x4(r31); store custom height for shop item
+b 0x5740
+
+; Remove the null height value
+; .org 0x808b67e8
+.org 0x57D8
+nop; stops the new height from being overwritten
+
+;; 50R (Bug Net)
+.org 0x75C0 ; 0x808b85c8 = buyDecideScale
+.float 1.5
+
 .close
