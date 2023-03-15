@@ -177,6 +177,12 @@ li r3, 154 ; storyflag for SSH timeshift stone being active
 li r4, 0 ; storyflag will be unset
 b setStoryflagToValue
 
+.global patch_bit
+patch_bit:
+li r0, 0
+stb r0, -0x3ca3(r13) ; RELOADER_TYPE
+blr
+
 ; space to declare all the functions defined in the
 ; custom-functions rust project
 .global process_startflags
