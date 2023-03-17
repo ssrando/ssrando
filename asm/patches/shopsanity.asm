@@ -77,8 +77,4 @@ b 0x5740
 .org 0x57D8
 nop; stops the new height from being overwritten
 
-;; 50R (Bug Net)
-.org 0x75C0 ; 0x808b85c8 = buyDecideScale
-.float 1.5
-
 .close

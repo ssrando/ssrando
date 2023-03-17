@@ -2894,31 +2894,18 @@ class GamePatcher:
             current_shop_entry_offset = shop_list_offset + ENTRY_SIZE * shopindex
 
             # Buy Decide Scale
-            present_scale = shop_present_scale_patches.get(shopindex, None)
-            if itemid in SHOP_BUY_DECIDE_SCALE:
-                write_float(
-                    data_bytes,
-                    current_shop_entry_offset + 0x0,
-                    SHOP_BUY_DECIDE_SCALE[itemid],
-                )
-            elif not present_scale is None:
-                write_float(data_bytes, current_shop_entry_offset + 0x0, present_scale)
-            else:
-                write_float(
-                    data_bytes,
-                    current_shop_entry_offset + 0x0,
-                    DEFAULT_BUY_DECIDE_SCALE,
-                )
+            write_float(
+                data_bytes,
+                current_shop_entry_offset + 0x0,
+                SHOP_BUY_DECIDE_SCALE.get(itemid, DEFAULT_BUY_DECIDE_SCALE),
+            )
 
             # Put Scale
-            if itemid in SHOP_PUT_SCALE:
-                write_float(
-                    data_bytes, current_shop_entry_offset + 0x4, SHOP_PUT_SCALE[itemid]
-                )
-            else:
-                write_float(
-                    data_bytes, current_shop_entry_offset + 0x4, DEFAULT_PUT_SCALE
-                )
+            write_float(
+                data_bytes,
+                current_shop_entry_offset + 0x4,
+                SHOP_PUT_SCALE.get(itemid, DEFAULT_PUT_SCALE),
+            )
 
             # Target Height Offset
             target_height = shop_target_height_patches.get(shopindex, None)
@@ -2950,14 +2937,11 @@ class GamePatcher:
             write_str(data_bytes, current_shop_entry_offset + 0x34, modelname, 30)
 
             # Height
-            if itemid in HEIGHT_OFFSETS:
-                write_float(
-                    data_bytes, current_shop_entry_offset + 0x4C, HEIGHT_OFFSETS[itemid]
-                )
-            else:
-                write_float(
-                    data_bytes, current_shop_entry_offset + 0x4C, DEFAULT_HEIGHT_OFFSET
-                )
+            write_float(
+                data_bytes,
+                current_shop_entry_offset + 0x4C,
+                HEIGHT_OFFSETS.get(itemid, DEFAULT_HEIGHT_OFFSET),
+            )
 
             # Storyflag
             sold_out_storyflag = sold_out_storyflag_patches.get(shopindex, None)
