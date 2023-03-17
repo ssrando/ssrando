@@ -3,7 +3,7 @@ Zelda
 Hylia
 Groose
 Cawlin
-Stritch
+Strich
 Impa
 Horwell
 Owlan
@@ -58,7 +58,7 @@ Tentalus
 Keese
 Bokoblin
 Moblin
-Archa
+Aracha
 Scervo
 Dreadfuse
 Slingshot
