@@ -1564,6 +1564,26 @@ F023: # Thunderhead
     objtype: OBJ
     object:
       params1: 0xFFFF01C5 # 00 FF 00 00 yeets the event call
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetSpareBombBagA
+    layer: 0
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetSpareQuiverA
+    layer: 0
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetSpareSeedA
+    layer: 0
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetTerryCage
+    layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: Pinwheel
+    layer: 0
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
