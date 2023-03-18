@@ -8,13 +8,10 @@ main.dol:
   unset_sandship_timestone_if_necessary: 0x8067849C
   patch_bit: 0x806784CC
   process_startflags: 0x806784D8
-  handle_bk_map_dungeonflag: 0x80678768
-  rando_text_command_handler: 0x80678818
-  textbox_a_pressed_or_b_held: 0x80678A30
-  set_goddess_sword_pulled_scene_flag: 0x80678A60
-  interface_mode: 0x80678A8C
-  interface_light: 0x80678B00
-  interface_pro: 0x80678B28
+  handle_bk_map_dungeonflag: 0x80678790
+  rando_text_command_handler: 0x80678840
+  textbox_a_pressed_or_b_held: 0x80678A58
+  set_goddess_sword_pulled_scene_flag: 0x80678A88
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:

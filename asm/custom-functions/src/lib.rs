@@ -51,7 +51,7 @@ extern "C" {
     fn StoryflagManager__doCommit(mgr: *mut c_void);
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
-    fn checkStoryflagIsSet(p: *const c_void, flag: u16) -> bool;   
+    fn checkStoryflagIsSet(p: *const c_void, flag: u16) -> bool;
     fn checkItemFlag(flag: u16) -> bool;
     fn checkButtonAPressed() -> bool;
     fn checkButtonBHeld() -> bool;
@@ -198,6 +198,9 @@ pub fn process_startflags() {
     let health_capacity = flag_mem.next_u8().unwrap_or_default();
     unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity.into() };
     unsafe { (*FILE_MANAGER).FA.current_health = health_capacity.into() };
+    // starting interface choice
+    let mode = flag_mem.next_u8().unwrap_or_default();
+    storyflag_set_to_value(840, mode.into());
 
     // commit global flag managers
     unsafe {
@@ -260,7 +263,9 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
         71 => {
             let dungeon_index = flow_element.param1;
             let completion_storyflag = flow_element.param2;
-            let key_count = if dungeon_index == 14 /* ET */ {
+            let key_count = if dungeon_index == 14
+            /* ET */
+            {
                 unsafe { getKeyPieceCount() }
             } else {
                 dungeon_global_key_count(dungeon_index)
@@ -279,7 +284,7 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
             };
             text_manager_set_string_arg(bk_text as *const c_void, 0);
             text_manager_set_string_arg(map_text as *const c_void, 1);
-            
+
             let completed_text = if completion_storyflag == 0xFFFF {
                 UNREQUIRED_TEXT.as_ptr()
             } else if storyflag_check(completion_storyflag) {
@@ -288,7 +293,6 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
                 INCOMPLETE_TEXT.as_ptr()
             };
             text_manager_set_string_arg(completed_text as *const c_void, 2);
-            
         }
         72 => {
             let caves_key = dungeon_global_key_count(9);
@@ -330,33 +334,11 @@ fn textbox_a_pressed_or_b_held() -> bool {
 }
 
 #[no_mangle]
-fn set_goddess_sword_pulled_scene_flag(){
+fn set_goddess_sword_pulled_scene_flag() {
     unsafe {
         // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
         storyflag_set_to_1(951);
     }
-}
-
-#[no_mangle]
-fn interface_mode(mode: u16) {
-    unsafe { (*FILE_MANAGER).anticommit_flag = 1 };
-    storyflag_set_to_value(840, mode);
-    unsafe {
-        ItemflagManager__doCommit(ITEMFLAG_MANAGER);
-        (*FILE_MANAGER).anticommit_flag = 0;
-    };
-}
-
-#[no_mangle]
-fn interface_light() {
-    interface_mode(1);
-    process_startflags();
-}
-
-#[no_mangle]
-fn interface_pro() {
-    interface_mode(2);
-    process_startflags();
 }
 
 #[panic_handler]
