@@ -1273,6 +1273,10 @@ class GamePatcher:
             self.add_asm_patch("dungeon_dowsing")
         if self.placement_file.options["no-enemy-music"]:
             self.add_asm_patch("no_enemy_music")
+        if self.placement_file.options["interface"] == "Light":
+            self.add_asm_patch("interface_light")
+        elif self.placement_file.options["interface"] == "Pro":
+            self.add_asm_patch("interface_pro")
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
         GOT_SWORD_MODES = {

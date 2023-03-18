@@ -337,6 +337,28 @@ fn set_goddess_sword_pulled_scene_flag(){
     }
 }
 
+#[no_mangle]
+fn interface_mode(mode: u16) {
+    unsafe { (*FILE_MANAGER).anticommit_flag = 1 };
+    storyflag_set_to_value(840, mode);
+    unsafe {
+        ItemflagManager__doCommit(ITEMFLAG_MANAGER);
+        (*FILE_MANAGER).anticommit_flag = 0;
+    };
+}
+
+#[no_mangle]
+fn interface_light() {
+    interface_mode(1);
+    process_startflags();
+}
+
+#[no_mangle]
+fn interface_pro() {
+    interface_mode(2);
+    process_startflags();
+}
+
 #[panic_handler]
 fn panic(_: &core::panic::PanicInfo) -> ! {
     loop {}

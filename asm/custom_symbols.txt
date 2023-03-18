@@ -12,6 +12,9 @@ main.dol:
   rando_text_command_handler: 0x80678818
   textbox_a_pressed_or_b_held: 0x80678A30
   set_goddess_sword_pulled_scene_flag: 0x80678A60
+  interface_mode: 0x80678A8C
+  interface_light: 0x80678B00
+  interface_pro: 0x80678B28
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
