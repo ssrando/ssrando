@@ -670,3 +670,10 @@ bl only_set_flag_conditionally
 .org 0x49C
 rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
 .close
+
+.open "d_a_obj_time_boatNP.rel"
+
+.org 0x107C ; 0x80e1b56c
+bl fix_sadship_boat
+
+.close
