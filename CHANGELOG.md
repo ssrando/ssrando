@@ -142,6 +142,8 @@
   - Any maps or boss keys NOT added as starting items will now be placed in their vanilla locations (if the `map-mode`/`boss-key-mode` options are set to "Vanilla")
   - Any maps or boss keys added as starting items will be added to the starting inventory
 - Fixed UI scaling issues. The randomizer program now scales when resized instead of remaining a fixed size.
+- Fixed bug where most items in Beedle's Shop where partially hidden in the table
+
 
 ## 1.3.2
 ### Changes
