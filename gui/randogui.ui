@@ -91,7 +91,7 @@
      <number>-6</number>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -956,6 +956,13 @@
          <widget class="QCheckBox" name="option_randomize_trials">
           <property name="text">
            <string>Randomize Silent Realm Gates</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_random_start_entrance">
+          <property name="text">
+           <string>Randomize Starting Location</string>
           </property>
          </widget>
         </item>

@@ -55,17 +55,17 @@ bl set_goddess_sword_pulled_scene_flag
 li r5, -1
 
 ; Change starting location to remove intro cutscenes
-.org 0x801bb960 ; Change starting stage
-subi r3, r13, 0x5b44 ; previously 0x601c (F405 -> F001r)
+; .org 0x801bb960 ; Change starting stage
+; addi r3, r13, 0x42C8 ; previously subi r3, r13, 0x601c (F405 -> F001r)
 
-.org 0x801bb964 ; Change starting roomID
-li r4, 1 ; Room 0 -> 1
+; .org 0x801bb964 ; Change starting roomID
+; li r4, 1 ; Room 0 -> 1
 
-.org 0x801bb968 ; Change starting layer
-li r5, 3 ; Layer 0 -> 3
+; .org 0x801bb968 ; Change starting layer
+; li r5, 3 ; Layer 0 -> 3
 
-.org 0x801bb96c ; Change starting entrance
-li r6, 5 ; Entrance 0 -> 5
+; .org 0x801bb96c ; Change starting entrance
+; li r6, 5 ; Entrance 0 -> 5
 
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0

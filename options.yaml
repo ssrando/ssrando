@@ -839,4 +839,9 @@
   bits: 5
   help: How many heart pieces to start with.
   ui: option_starting_heart_pieces
-
+- name: Random Starting Location
+  command: random-start-entrance
+  type: boolean
+  default: false
+  help: "If enabled, you will spawn at a random Bird Statue (or Link's Bedroom) when you start the game."
+  ui: option_random_start_entrance

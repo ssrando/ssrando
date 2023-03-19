@@ -101,6 +101,7 @@ class Rando:
             self.unrequired_dungeons,
             self.randomized_dungeon_entrance,
             self.randomized_trial_entrance,
+            self.randomized_start_entrance,
             list(self.placement.locations),
         )
 
@@ -142,7 +143,7 @@ class Rando:
 
         self.initialize_items()  # self.randosettings
 
-        self.randomize_dungeons_trials()
+        self.randomize_dungeons_trials_starting_entrances()
 
     def randomize_required_dungeons(self):
         """
@@ -505,8 +506,9 @@ class Rando:
             self.placement.reverse_map_transitions[en1] = ex2[0]
             self.placement.reverse_map_transitions[en2] = ex1[0]
 
-    def randomize_dungeons_trials(self):
+    def randomize_dungeons_trials_starting_entrances(self):
         # Do this in a deliberately hacky way, this is not supposed to be how ER works
+        # Dungeon Entrance Rando.
         der = self.options["randomize-entrances"]
         dungeons = ALL_DUNGEONS.copy()
         entrances = [DUNGEON_OVERWORLD_ENTRANCES[dungeon] for dungeon in ALL_DUNGEONS]
@@ -548,6 +550,7 @@ class Rando:
 
         self.reassign_entrances(dungeon_entrances, dungeons)
 
+        # Trial Gate Entrance Rando.
         ter = self.options["randomize-trials"]
         pool = ALL_SILENT_REALMS.copy()
         gates = [SILENT_REALM_GATES[realm] for realm in ALL_SILENT_REALMS]
@@ -561,3 +564,42 @@ class Rando:
         trial_entrances = [self.norm(TRIAL_GATE_EXITS[k]) for k in gates]
         trials = [self.norm(SILENT_REALM_EXITS[k]) for k in pool]
         self.reassign_entrances(trial_entrances, trials)
+
+        # Starting Entrance Rando.
+        ser = self.options["random-start-entrance"]
+
+        statues = (
+            (entrance, values)
+            for entrance, values in self.areas.map_entrances.items()
+            if values.get("subtype", False)
+            and values["subtype"] == "bird-statue-entrance"
+        )
+
+        vanilla_start_entrance = (
+            (entrance, values)
+            for entrance, values in self.areas.map_entrances.items()
+            if "Start Entrance" in str(entrance)
+        )
+
+        start_entrance = list(vanilla_start_entrance)[0]
+        if ser:
+            possible_start_entrances = list(statues) + list(vanilla_start_entrance)
+
+            start_entrance = self.rng.choice(possible_start_entrances)
+
+        self.placement.map_transitions["\Start"] = start_entrance[0]
+
+        values = start_entrance[1]
+        self.randomized_start_entrance = {
+            "statue-name": values["statue-name"],
+            "stage": values["stage"],
+            "room": values["room"],
+            "layer": values["layer"],
+            "entrance": values["entrance"],
+        }
+
+        assert self.randomized_start_entrance["statue-name"] is not None
+        assert self.randomized_start_entrance["stage"] is not None
+        assert self.randomized_start_entrance["room"] is not None
+        assert self.randomized_start_entrance["layer"] is not None
+        assert self.randomized_start_entrance["entrance"] is not None

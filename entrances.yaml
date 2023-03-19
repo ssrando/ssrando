@@ -12,6 +12,7 @@ Start:
 Skyloft - Knight Academy - Start Entrance:
   type: entrance
   allowed-time-of-day: DayOnly
+  statue-name: Link's Room
   stage: F001r
   room: 1
   layer: 0
@@ -953,7 +954,7 @@ Sky - Beedle's Island - Beedle's Ship Exit:
 
 Sky - Eldin Pillar - Entrance:
   type: entrance
-  subtype: statue
+  statue-name: Volcano Entry
   stage: F020
   room: 0
   layer: 0
@@ -962,7 +963,6 @@ Sky - Eldin Pillar - Entrance:
 
 Sky - Eldin Pillar - First Time Dive:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - First Time Entrance
   stage: F020
   room: 0
@@ -970,7 +970,6 @@ Sky - Eldin Pillar - First Time Dive:
 
 Sky - Eldin Pillar - Temple Entrance Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Temple Entrance Statue Entrance
   stage: F020
   room: 0
@@ -978,7 +977,6 @@ Sky - Eldin Pillar - Temple Entrance Statue Dive:
 
 Sky - Eldin Pillar - Temple Entrance <<Alternate>> Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Temple Entrance Statue Entrance
   disabled: true
   stage: F020
@@ -987,7 +985,6 @@ Sky - Eldin Pillar - Temple Entrance <<Alternate>> Statue Dive:
 
 Sky - Eldin Pillar - Inside the Volcano Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Statue Entrance
   stage: F020
   room: 0
@@ -995,7 +992,6 @@ Sky - Eldin Pillar - Inside the Volcano Statue Dive:
 
 Sky - Eldin Pillar - Inside the Volcano <<Alternate>> Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Statue Entrance
   disabled: true
   stage: F020
@@ -1004,7 +1000,6 @@ Sky - Eldin Pillar - Inside the Volcano <<Alternate>> Statue Dive:
 
 Sky - Eldin Pillar - Volcano Entrance Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Volcano Entrance Statue Entrance
   stage: F020
   room: 0
@@ -1012,7 +1007,6 @@ Sky - Eldin Pillar - Volcano Entrance Statue Dive:
 
 Sky - Eldin Pillar - Volcano East Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Volcano East Statue Entrance
   stage: F020
   room: 0
@@ -1020,7 +1014,6 @@ Sky - Eldin Pillar - Volcano East Statue Dive:
 
 Sky - Eldin Pillar - Volcano Ascent Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Volcano Ascent Statue Entrance
   stage: F020
   room: 0
@@ -1028,7 +1021,6 @@ Sky - Eldin Pillar - Volcano Ascent Statue Dive:
 
 Sky - Eldin Pillar - Fire Sanctuary Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Fire Sanctuary - Statue Entrance
   stage: F020
   room: 0
@@ -1135,7 +1127,7 @@ Lumpy Pumpkin - Back Door Exit:
 
 Sky - Faron Pillar - Entrance:
   type: entrance
-  subtype: statue
+  statue-name: Sealed Grounds
   stage: F020
   room: 0
   layer: 0
@@ -1146,7 +1138,6 @@ Sky - Faron Pillar - Entrance:
 
 Sky - Faron Pillar - First Time Dive:
   type: exit
-  subtype: statue
   vanilla: Sealed Grounds Spiral - Statue Entrance
   stage: F020
   room: 0
@@ -1154,7 +1145,6 @@ Sky - Faron Pillar - First Time Dive:
 
 Sky - Faron Pillar - Sealed Grounds Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Sealed Grounds Spiral - Statue Entrance
   stage: F020
   room: 0
@@ -1162,7 +1152,6 @@ Sky - Faron Pillar - Sealed Grounds Statue Dive:
 
 Sky - Faron Pillar - Forest Temple Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Forest Temple Statue Entrance
   stage: F020
   room: 0
@@ -1170,7 +1159,6 @@ Sky - Faron Pillar - Forest Temple Statue Dive:
 
 Sky - Faron Pillar - Forest Temple Statue Dive <<bis>>:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Forest Temple Statue Entrance
   disabled: true
   stage: F020
@@ -1179,7 +1167,6 @@ Sky - Faron Pillar - Forest Temple Statue Dive <<bis>>:
 
 Sky - Faron Pillar - Floria Waterfall <<Alternate>> Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lake Floria - Floria Waterfall <<Alternate>> Statue Entrance
   disabled: true
   stage: F020
@@ -1188,7 +1175,6 @@ Sky - Faron Pillar - Floria Waterfall <<Alternate>> Statue Dive:
 
 Sky - Faron Pillar - Behind the Temple Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Behind the Temple - Statue Entrance
   stage: F020
   room: 0
@@ -1196,7 +1182,6 @@ Sky - Faron Pillar - Behind the Temple Statue Dive:
 
 Sky - Faron Pillar - Faron Woods Entry Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Faron Woods - Faron Woods Entry Statue Entrance
   stage: F020
   room: 0
@@ -1204,7 +1189,6 @@ Sky - Faron Pillar - Faron Woods Entry Statue Dive:
 
 Sky - Faron Pillar - In the Woods Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Faron Woods - In the Woods Statue Entrance
   stage: F020
   room: 0
@@ -1212,7 +1196,6 @@ Sky - Faron Pillar - In the Woods Statue Dive:
 
 Sky - Faron Pillar - Viewing Platform Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Faron Woods - Viewing Platform Statue Entrance
   stage: F020
   room: 0
@@ -1220,7 +1203,6 @@ Sky - Faron Pillar - Viewing Platform Statue Dive:
 
 Sky - Faron Pillar - The Great Tree Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Great Tree - The Great Tree Statue Entrance
   stage: F020
   room: 0
@@ -1228,7 +1210,6 @@ Sky - Faron Pillar - The Great Tree Statue Dive:
 
 Sky - Faron Pillar - Deep Woods Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Deep Woods Statue Entrance
   stage: F020
   room: 0
@@ -1236,7 +1217,6 @@ Sky - Faron Pillar - Deep Woods Statue Dive:
 
 Sky - Faron Pillar - Lake Floria Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lake Floria - Below Rock - Statue Entrance
   stage: F020
   room: 0
@@ -1244,7 +1224,6 @@ Sky - Faron Pillar - Lake Floria Statue Dive:
 
 Sky - Faron Pillar - Floria Waterfall Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Floria Waterfall - Statue Entrance
   stage: F020
   room: 0
@@ -1256,7 +1235,6 @@ Sky - Faron Pillar - Floria Waterfall Statue Dive:
 
 Sky - Lanayru Pillar - First Time Dive:
   type: exit
-  subtype: statue
   vanilla: Lanayru Mine - First Time Entrance
   stage: F020
   room: 0
@@ -1264,7 +1242,6 @@ Sky - Lanayru Pillar - First Time Dive:
 
 Sky - Lanayru Pillar - <<?? Statue Dive>>:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - <<?? Statue Entrance>>
   disabled: true
   stage: F020
@@ -1273,7 +1250,6 @@ Sky - Lanayru Pillar - <<?? Statue Dive>>:
 
 Sky - Lanayru Pillar - Ancient Harbour <<Alternate>> Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea Docks - <<Alternate>> Statue Entrance
   disabled: true
   stage: F020
@@ -1282,7 +1258,6 @@ Sky - Lanayru Pillar - Ancient Harbour <<Alternate>> Statue Dive:
 
 Sky - Lanayru Pillar - Lanayru Mine Entry Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lanayru Mine - Statue Entrance
   stage: F020
   room: 0
@@ -1290,7 +1265,6 @@ Sky - Lanayru Pillar - Lanayru Mine Entry Statue Dive:
 
 Sky - Lanayru Pillar - Desert Entrance Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - Desert Entrance Statue Entrance
   stage: F020
   room: 0
@@ -1298,7 +1272,6 @@ Sky - Lanayru Pillar - Desert Entrance Statue Dive:
 
 Sky - Lanayru Pillar - West Desert Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - West Desert Statue Entrance
   stage: F020
   room: 0
@@ -1306,7 +1279,6 @@ Sky - Lanayru Pillar - West Desert Statue Dive:
 
 Sky - Lanayru Pillar - North Desert Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - North Desert Statue Entrance
   stage: F020
   room: 0
@@ -1314,7 +1286,6 @@ Sky - Lanayru Pillar - North Desert Statue Dive:
 
 Sky - Lanayru Pillar - Stone Cache Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - Stone Cache Statue Entrance
   stage: F020
   room: 0
@@ -1322,7 +1293,6 @@ Sky - Lanayru Pillar - Stone Cache Statue Dive:
 
 Sky - Lanayru Pillar - Desert Gorge Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Temple of Time - Desert Gorge Statue Entrance
   stage: F020
   room: 0
@@ -1330,7 +1300,6 @@ Sky - Lanayru Pillar - Desert Gorge Statue Dive:
 
 Sky - Lanayru Pillar - Temple of Time Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Temple of Time - Temple of Time Statue Entrance
   stage: F020
   room: 0
@@ -1338,7 +1307,6 @@ Sky - Lanayru Pillar - Temple of Time Statue Dive:
 
 Sky - Lanayru Pillar - Ancient Harbour Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea Docks - Statue Entrance
   stage: F020
   room: 0
@@ -1346,7 +1314,6 @@ Sky - Lanayru Pillar - Ancient Harbour Statue Dive:
 
 Sky - Lanayru Pillar - Skipper's Retreat Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Skipper's Retreat - Statue Entrance
   stage: F020
   room: 0
@@ -1354,7 +1321,6 @@ Sky - Lanayru Pillar - Skipper's Retreat Statue Dive:
 
 Sky - Lanayru Pillar - Shipyard Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Shipyard - Statue Entrance
   stage: F020
   room: 0
@@ -1362,7 +1328,6 @@ Sky - Lanayru Pillar - Shipyard Statue Dive:
 
 Sky - Lanayru Pillar - Pirate Stronghold Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Pirate Stronghold - Statue Entrance
   stage: F020
   room: 0
@@ -1370,13 +1335,11 @@ Sky - Lanayru Pillar - Pirate Stronghold Statue Dive:
 
 Sky - Lanayru Pillar - Lanayru Gorge Statue Dive:
   type: exit
-  subtype: statue
   vanilla: Lanayru Gorge - Statue Entrance
 
 
 Sky - Lanayru Pillar - Entrance:
   type: entrance
-  subtype: statue
   stage: F020
   room: 0
   layer: 0
@@ -1489,7 +1452,8 @@ Inside Thunderhead - Groosenator Bug Heaven Entrance:
 
 Sealed Grounds Spiral - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Sealed Grounds
   stage: F401
   room: 1
   layer: 0
@@ -1497,7 +1461,6 @@ Sealed Grounds Spiral - Statue Entrance:
 
 Sealed Grounds Spiral - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Faron Pillar - Entrance
   stage: F401
   room: 1
@@ -1655,7 +1618,8 @@ Hylia's Temple - Gate of Time Exit:
 
 Behind the Temple - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Behind the Temple
   stage: F400
   room: 0
   layer: 0
@@ -1663,7 +1627,6 @@ Behind the Temple - Statue Entrance:
 
 Behind the Temple - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Faron Pillar - Entrance
   stage: F400
   room: 0
@@ -1718,7 +1681,8 @@ Behind the Temple - Exit to Faron Woods:
 
 Faron Woods - Faron Woods Entry Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Faron Woods Entry
   stage: F100
   room: 0
   layer: 0
@@ -1726,7 +1690,8 @@ Faron Woods - Faron Woods Entry Statue Entrance:
 
 Faron Woods - In the Woods Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: In the Woods
   stage: F100
   room: 0
   layer: 0
@@ -1734,7 +1699,8 @@ Faron Woods - In the Woods Statue Entrance:
 
 Faron Woods - Viewing Platform Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Viewing Platform
   stage: F100
   room: 0
   layer: 0
@@ -1742,7 +1708,8 @@ Faron Woods - Viewing Platform Statue Entrance:
 
 Great Tree - The Great Tree Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Great Tree Top
   stage: F100
   room: 0
   layer: 0
@@ -1751,7 +1718,6 @@ Great Tree - The Great Tree Statue Entrance:
 
 Faron Woods - Shared Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Faron Pillar - Entrance
   stage: F100
   room: 0
@@ -1985,6 +1951,8 @@ Flooded Faron Woods - Entrance:
 
 Deep Woods - Forest Temple Statue Entrance:
   type: entrance
+  subtype: bird-statue-entrance
+  statue-name: Forest Temple
   stage: F101
   room: 0
   layer: 0
@@ -1992,6 +1960,8 @@ Deep Woods - Forest Temple Statue Entrance:
 
 Deep Woods - Deep Woods Statue Entrance:
   type: entrance
+  subtype: bird-statue-entrance
+  statue-name: Deep Woods
   stage: F101
   room: 0
   layer: 0
@@ -2000,7 +1970,6 @@ Deep Woods - Deep Woods Statue Entrance:
 
 Deep Woods - Shared Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Faron Pillar - Entrance
   stage: F101
   room: 0
@@ -2042,6 +2011,8 @@ Deep Woods - Exit to Skyview Temple:
 
 Lake Floria - Below Rock - Statue Entrance:
   type: entrance
+  subtype: bird-statue-entrance
+  statue-name: Lake Floria
   stage: F102
   room: 3
   layer: 0
@@ -2057,7 +2028,6 @@ Lake Floria - Floria Waterfall <<Alternate>> Statue Entrance:
 
 Lake Floria - Below Rock - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Faron Pillar - Entrance
   stage: F102
   room: 3
@@ -2123,6 +2093,8 @@ Farore's Lair - Exit to Waterfall:
 
 Floria Waterfall - Statue Entrance:
   type: entrance
+  subtype: bird-statue-entrance
+  statue-name: Floria Waterfall
   stage: F102_1
   room: 0
   layer: 0
@@ -2130,7 +2102,6 @@ Floria Waterfall - Statue Entrance:
 
 Floria Waterfall - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Faron Pillar - Entrance
   stage: F102_1
   room: 0
@@ -2146,7 +2117,7 @@ Floria Waterfall - Entrance from Farore's Lair:
 
 Floria Waterfall - Entrance from Ancient Cistern:
   type: entrance
-  subtype: statue
+  statue-name: Floria Waterfall
   stage: F102_1
   room: 0
   layer: 0
@@ -2194,7 +2165,6 @@ Skyview Temple - Main Entrance:
 
 Skyview Spring - Crest Hit Exit:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple
   disabled: true
   stage: B100_1
@@ -2203,7 +2173,6 @@ Skyview Spring - Crest Hit Exit:
 
 Skyview Spring - <<Alternate>> Exit:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple
   disabled: true
   stage: B100_1
@@ -2212,12 +2181,10 @@ Skyview Spring - <<Alternate>> Exit:
 
 Skyview Temple - Main Exit:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple
 
 Skyview Temple - <<Normal/Statue1>> Exit:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple
   disabled: true
   stage: D100
@@ -2226,7 +2193,6 @@ Skyview Temple - <<Normal/Statue1>> Exit:
 
 Skyview Temple - <<Normal/Statue2>> Exit:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple
   disabled: true
   stage: D100
@@ -2235,7 +2201,6 @@ Skyview Temple - <<Normal/Statue2>> Exit:
 
 Skyview Temple - <<Normal/Statue3>> Exit:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple
   disabled: true
   stage: D100
@@ -2244,7 +2209,6 @@ Skyview Temple - <<Normal/Statue3>> Exit:
 
 Skyview Temple - <<Normal/Statue4>> Exit:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple
   disabled: true
   stage: D100
@@ -2253,7 +2217,6 @@ Skyview Temple - <<Normal/Statue4>> Exit:
 
 Skyview Temple - <<Normal/Statue5>> Exit:
   type: exit
-  subtype: statue
   vanilla: Deep Woods - Entrance from Skyview Temple
   disabled: true
   stage: D100
@@ -2305,12 +2268,10 @@ Ancient Cistern - Main Entrance:
 
 Ancient Cistern - Main Exit:
   type: exit
-  subtype: statue
   vanilla: Floria Waterfall - Entrance from Ancient Cistern
 
 Ancient Cistern - <<Normal/Statue1>> Exit:
   type: exit
-  subtype: statue
   vanilla: Floria Waterfall - Entrance from Ancient Cistern
   disabled: true
   stage: D101
@@ -2319,7 +2280,6 @@ Ancient Cistern - <<Normal/Statue1>> Exit:
 
 Ancient Cistern - <<Normal/Statue2>> Exit:
   type: exit
-  subtype: statue
   vanilla: Floria Waterfall - Entrance from Ancient Cistern
   disabled: true
   stage: D101
@@ -2328,7 +2288,6 @@ Ancient Cistern - <<Normal/Statue2>> Exit:
 
 Ancient Cistern - <<Normal/Statue3>> Exit:
   type: exit
-  subtype: statue
   vanilla: Floria Waterfall - Entrance from Ancient Cistern
   disabled: true
   stage: D101
@@ -2337,7 +2296,6 @@ Ancient Cistern - <<Normal/Statue3>> Exit:
 
 Ancient Cistern - <<Normal/Statue4>> Exit:
   type: exit
-  subtype: statue
   vanilla: Floria Waterfall - Entrance from Ancient Cistern
   disabled: true
   stage: D101
@@ -2346,7 +2304,6 @@ Ancient Cistern - <<Normal/Statue4>> Exit:
 
 Ancient Cistern - <<Normal/Statue5>> Exit:
   type: exit
-  subtype: statue
   vanilla: Floria Waterfall - Entrance from Ancient Cistern
   disabled: true
   stage: D101
@@ -2385,7 +2342,6 @@ Ancient Cistern - Flame Room - Exit:
 
 Ancient Cistern - Flame Room - Crest Hit Exit:
   type: exit
-  subtype: statue
   vanilla: Floria Waterfall - Entrance from Ancient Cistern
   disabled: true
   stage: B101_1
@@ -2400,7 +2356,6 @@ Ancient Cistern - Flame Room - Crest Hit Exit:
 
 Eldin Volcano - First Time Entrance:
   type: entrance
-  subtype: statue
   stage: F200
   room: 0
   layer: 0
@@ -2408,7 +2363,8 @@ Eldin Volcano - First Time Entrance:
 
 Eldin Volcano - Volcano Entrance Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Volcano Entry
   stage: F200
   room: 0
   layer: 0
@@ -2416,7 +2372,8 @@ Eldin Volcano - Volcano Entrance Statue Entrance:
 
 Eldin Volcano - Volcano East Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Volcano East
   stage: F200
   room: 2
   layer: 0
@@ -2424,7 +2381,8 @@ Eldin Volcano - Volcano East Statue Entrance:
 
 Eldin Volcano - Volcano Ascent Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Volcano Ascent
   stage: F200
   room: 2
   layer: 0
@@ -2432,7 +2390,8 @@ Eldin Volcano - Volcano Ascent Statue Entrance:
 
 Eldin Volcano - Temple Entrance Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Temple Entrance
   stage: F200
   room: 4
   layer: 0
@@ -2441,7 +2400,6 @@ Eldin Volcano - Temple Entrance Statue Entrance:
 
 Eldin Volcano - Volcano Entrance Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Eldin Pillar - Entrance
   stage: F200
   room: 0
@@ -2449,7 +2407,6 @@ Eldin Volcano - Volcano Entrance Statue Exit:
 
 Eldin Volcano - Volcano East / Volcano Ascent Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Eldin Pillar - Entrance
   stage: F200
   room: 2
@@ -2457,7 +2414,6 @@ Eldin Volcano - Volcano East / Volcano Ascent Statue Exit:
 
 Eldin Volcano - Temple Entrance Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Eldin Pillar - Entrance
   stage: F200
   room: 4
@@ -2481,7 +2437,6 @@ Eldin Volcano - Second Vent from Mogma Turf:
 
 Eldin Volcano - Entrance from Earth Temple:
   type: entrance
-  subtype: statue
   stage: F200
   room: 4
   layer: 0
@@ -2694,7 +2649,8 @@ Volcano Summit - Waterfall - Exit:
 
 Outside Fire Sanctuary - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Inside the Volcano
   stage: F201_3
   room: 0
   layer: 0
@@ -2702,7 +2658,6 @@ Outside Fire Sanctuary - Statue Entrance:
 
 Outside Fire Sanctuary - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Eldin Pillar - Entrance
   stage: F201_3
   room: 0
@@ -2718,7 +2673,6 @@ Outside Fire Sanctuary - Entrance from Summit:
 
 Outside Fire Sanctuary - Entrance from Fire Sanctuary:
   type: entrance
-  subtype: statue
   stage: F201_3
   room: 0
   layer: 0
@@ -2750,12 +2704,10 @@ Earth Temple - Main Entrance:
 
 Earth Temple - Main Exit:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Entrance from Earth Temple
 
 Earth Temple - <<Normal/Statue1>> Exit:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Entrance from Earth Temple
   disabled: true
   stage: D200
@@ -2764,7 +2716,6 @@ Earth Temple - <<Normal/Statue1>> Exit:
 
 Earth Temple - <<Normal/Statue2>> Exit:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Entrance from Earth Temple
   disabled: true
   stage: D200
@@ -2773,7 +2724,6 @@ Earth Temple - <<Normal/Statue2>> Exit:
 
 Earth Temple - <<Normal/Statue3>> Exit:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Entrance from Earth Temple
   disabled: true
   stage: D200
@@ -2782,7 +2732,6 @@ Earth Temple - <<Normal/Statue3>> Exit:
 
 Earth Temple - <<Normal/Statue4>> Exit:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Entrance from Earth Temple
   disabled: true
   stage: D200
@@ -2791,7 +2740,6 @@ Earth Temple - <<Normal/Statue4>> Exit:
 
 Earth Temple - <<Normal/Statue5>> Exit:
   type: exit
-  subtype: statue
   vanilla: Eldin Volcano - Entrance from Earth Temple
   disabled: true
   stage: B210
@@ -2834,7 +2782,8 @@ Earth Temple - Spring - Exit:
 
 Fire Sanctuary - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Inside the Fire Sanctuary
   stage: D201
   room: 10
   layer: 0
@@ -2842,7 +2791,6 @@ Fire Sanctuary - Statue Entrance:
 
 Fire Sanctuary - Inner Map Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Eldin Pillar - Entrance
   disabled: true
   stage: D201_1
@@ -2851,7 +2799,6 @@ Fire Sanctuary - Inner Map Statue Exit:
 
 Fire Sanctuary - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Eldin Pillar - Entrance
   stage: D201
   room: 10
@@ -2867,12 +2814,10 @@ Fire Sanctuary - Main Entrance:
 
 Fire Sanctuary - Main Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
 
 Din's Flame - Crest Hit Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: B201_1
@@ -2881,7 +2826,6 @@ Din's Flame - Crest Hit Exit:
 
 Fire Sanctuary - <<Normal/Statue1>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201_1
@@ -2890,7 +2834,6 @@ Fire Sanctuary - <<Normal/Statue1>> Exit:
 
 Fire Sanctuary - <<Normal/Statue2>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201_1
@@ -2899,7 +2842,6 @@ Fire Sanctuary - <<Normal/Statue2>> Exit:
 
 Fire Sanctuary - <<Normal/Statue3>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201_1
@@ -2908,7 +2850,6 @@ Fire Sanctuary - <<Normal/Statue3>> Exit:
 
 Fire Sanctuary - <<Normal/Statue4>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201_1
@@ -2917,7 +2858,6 @@ Fire Sanctuary - <<Normal/Statue4>> Exit:
 
 Fire Sanctuary - <<Normal/Statue5>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201_1
@@ -2926,7 +2866,6 @@ Fire Sanctuary - <<Normal/Statue5>> Exit:
 
 Fire Sanctuary - <<Normal/Statue6>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201_1
@@ -2935,7 +2874,6 @@ Fire Sanctuary - <<Normal/Statue6>> Exit:
 
 Fire Sanctuary - <<Normal/Statue7>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201_1
@@ -2944,7 +2882,6 @@ Fire Sanctuary - <<Normal/Statue7>> Exit:
 
 Fire Sanctuary - <<Normal/Statue8>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201
@@ -2953,7 +2890,6 @@ Fire Sanctuary - <<Normal/Statue8>> Exit:
 
 Fire Sanctuary - <<Normal/Statue9>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201
@@ -2962,7 +2898,6 @@ Fire Sanctuary - <<Normal/Statue9>> Exit:
 
 Fire Sanctuary - <<Normal/Statue10>> Exit:
   type: exit
-  subtype: statue
   vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   disabled: true
   stage: D201
@@ -3041,7 +2976,6 @@ Fire Sanctuary - Flame Room - Exit:
 
 Lanayru Mine - First Time Entrance:
   type: entrance
-  subtype: statue
   stage: F300_1
   room: 0
   layer: 0
@@ -3056,7 +2990,8 @@ Lanayru Mine - Entrance from Caves:
 
 Lanayru Mine - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Lanayru Mine Entry
   stage: F300_1
   room: 0
   layer: 0
@@ -3071,7 +3006,6 @@ Lanayru Mine - Entrance from Desert:
 
 Lanayru Mine - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
   stage: F300_1
   room: 0
@@ -3095,7 +3029,6 @@ Lanayru Mine - Exit to Desert:
 
 Lanayru Desert - <<?? Statue Entrance>>:
   type: entrance
-  subtype: statue
   disabled: true
   stage: F300
   room: 0
@@ -3104,7 +3037,8 @@ Lanayru Desert - <<?? Statue Entrance>>:
 
 Lanayru Desert - Desert Entrance Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Desert Entrance
   stage: F300
   room: 0
   layer: 0
@@ -3112,7 +3046,8 @@ Lanayru Desert - Desert Entrance Statue Entrance:
 
 Lanayru Desert - West Desert Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: West Desert
   stage: F300
   room: 0
   layer: 0
@@ -3120,7 +3055,8 @@ Lanayru Desert - West Desert Statue Entrance:
 
 Lanayru Desert - North Desert Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: North Desert
   stage: F300
   room: 0
   layer: 0
@@ -3128,7 +3064,8 @@ Lanayru Desert - North Desert Statue Entrance:
 
 Lanayru Desert - Stone Cache Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Stone Cache
   stage: F300
   room: 0
   layer: 0
@@ -3165,7 +3102,6 @@ Lanayru Desert - Fire Node Entrance:
 
 Lanayru Desert - Entrance from Lanayru Mining Facility:
   type: entrance
-  subtype: statue
   stage: F300
   room: 0
   layer: 0
@@ -3188,7 +3124,6 @@ Lanayru Desert - Lightning Node Entrance:
 
 Lanayru Desert - Shared Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
   stage: F300
   room: 0
@@ -3297,7 +3232,8 @@ Fire Node - Exit:
 
 Temple of Time - Desert Gorge Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Desert Gorge
   stage: F300_4
   room: 0
   layer: 0
@@ -3305,7 +3241,8 @@ Temple of Time - Desert Gorge Statue Entrance:
 
 Temple of Time - Temple of Time Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Temple of Time
   stage: F300_4
   room: 0
   layer: 0
@@ -3313,7 +3250,6 @@ Temple of Time - Temple of Time Statue Entrance:
 
 Temple of Time - Shared Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
   stage: F300_4
   room: 0
@@ -3428,11 +3364,15 @@ Lanayru Gorge - Exit:
 
 Lanayru Gorge - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Lanayru Gorge
+  stage: F302
+  room: 0
+  layer: 0
+  entrance: 12
 
 Lanayru Gorge - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
 
 ## Lanayru Sand Sea
@@ -3467,7 +3407,6 @@ Lanayru Sand Sea - Pirate Stronghold Dock Entrance:
 
 Lanayru Sand Sea - Sandship Dock Entrance:
   type: entrance
-  subtype: statue
   stage: F301_1
   room: 0
   layer: 0
@@ -3514,7 +3453,8 @@ Lanayru Sand Sea - Pirate Stronghold Dock Exit:
 
 Lanayru Sand Sea Docks - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Ancient Harbour
   stage: F301
   room: 0
   layer: 0
@@ -3522,7 +3462,6 @@ Lanayru Sand Sea Docks - Statue Entrance:
 
 Lanayru Sand Sea Docks - <<Alternate>> Statue Entrance:
   type: entrance
-  subtype: statue
   disabled: true
   stage: F301
   room: 0
@@ -3531,7 +3470,6 @@ Lanayru Sand Sea Docks - <<Alternate>> Statue Entrance:
 
 Lanayru Sand Sea Docks - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
   stage: F301
   room: 0
@@ -3579,7 +3517,8 @@ Lanayru Sand Sea Docks - Dock Exit:
 
 Skipper's Retreat - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Skipper's Retreat
   stage: F301_3
   room: 0
   layer: 0
@@ -3587,7 +3526,6 @@ Skipper's Retreat - Statue Entrance:
 
 Skipper's Retreat - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
   stage: F301_3
   room: 0
@@ -3642,7 +3580,8 @@ Skipper's Retreat - Shack - Exit:
 
 Shipyard - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Lanayru Shipyard
   stage: F301_4
   room: 0
   layer: 0
@@ -3650,7 +3589,6 @@ Shipyard - Statue Entrance:
 
 Shipyard - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
   stage: F301_4
   room: 0
@@ -3744,7 +3682,8 @@ Shipyard - Construction Bay - Upper Exit:
 
 Pirate Stronghold - Statue Entrance:
   type: entrance
-  subtype: statue
+  subtype: bird-statue-entrance
+  statue-name: Pirate Stronghold
   stage: F301_6
   room: 0
   layer: 0
@@ -3752,7 +3691,6 @@ Pirate Stronghold - Statue Entrance:
 
 Pirate Stronghold - Statue Exit:
   type: exit
-  subtype: statue
   vanilla: Sky - Lanayru Pillar - Entrance
   stage: F301_6
   room: 0
@@ -3843,12 +3781,10 @@ Lanayru Mining Facility - Main Entrance:
 
 Lanayru Mining Facility - Main Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - Entrance from Lanayru Mining Facility
 
 Lanayru Mining Facility - <<Normal/Statue1>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - Entrance from Lanayru Mining Facility
   disabled: true
   stage: D300
@@ -3857,7 +3793,6 @@ Lanayru Mining Facility - <<Normal/Statue1>> Exit:
 
 Lanayru Mining Facility - <<Normal/Statue2>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - Entrance from Lanayru Mining Facility
   disabled: true
   stage: D300
@@ -3866,7 +3801,6 @@ Lanayru Mining Facility - <<Normal/Statue2>> Exit:
 
 Lanayru Mining Facility - <<Normal/Statue3>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - Entrance from Lanayru Mining Facility
   disabled: true
   stage: D300
@@ -3875,7 +3809,6 @@ Lanayru Mining Facility - <<Normal/Statue3>> Exit:
 
 Lanayru Mining Facility - <<Normal/Statue4>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - Entrance from Lanayru Mining Facility
   disabled: true
   stage: D300_1
@@ -3884,7 +3817,6 @@ Lanayru Mining Facility - <<Normal/Statue4>> Exit:
 
 Lanayru Mining Facility - <<Normal/Statue5>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - Entrance from Lanayru Mining Facility
   disabled: true
   stage: D300_1
@@ -3893,7 +3825,6 @@ Lanayru Mining Facility - <<Normal/Statue5>> Exit:
 
 Lanayru Mining Facility - <<Normal/Statue6>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Desert - Entrance from Lanayru Mining Facility
   disabled: true
   stage: D300_1
@@ -4004,12 +3935,10 @@ Sandship - Main Entrance:
 
 Sandship - Main Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea - Sandship Dock Entrance
 
 Sandship - <<Normal/Statue1>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
@@ -4018,7 +3947,6 @@ Sandship - <<Normal/Statue1>> Exit:
 
 Sandship - <<Normal/Statue2>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
@@ -4027,7 +3955,6 @@ Sandship - <<Normal/Statue2>> Exit:
 
 Sandship - <<Normal/Statue3>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
@@ -4036,7 +3963,6 @@ Sandship - <<Normal/Statue3>> Exit:
 
 Sandship - <<Normal/Statue4>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
@@ -4045,7 +3971,6 @@ Sandship - <<Normal/Statue4>> Exit:
 
 Sandship - <<Normal/Statue5>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: D301
@@ -4061,7 +3986,6 @@ Sandship - Boss Room - Entrance:
 
 Sandship - Boss Room - <<Crest Hit>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: B301
@@ -4070,7 +3994,6 @@ Sandship - Boss Room - <<Crest Hit>> Exit:
 
 Sandship - Boss Room - <<??>> Exit:
   type: exit
-  subtype: statue
   vanilla: Lanayru Sand Sea - Sandship Dock Entrance
   disabled: true
   stage: B301
