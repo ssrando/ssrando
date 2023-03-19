@@ -339,7 +339,7 @@ Caves:
 
   Past Crawlspace:
     exits:
-      Caves: Nothing
+      Caves: Bomb Bag
       Exit to Gorge: Nothing
     locations:
       Gossip Stone towards Lanayru Gorge: Nothing
