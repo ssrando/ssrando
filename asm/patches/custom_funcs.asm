@@ -183,6 +183,23 @@ li r0, 0
 stb r0, -0x3ca3(r13) ; RELOADER_TYPE
 blr
 
+.global send_to_start
+send_to_start:
+lwz r3, RELOADER_PTR@sda21(r13)
+lis r4, 0x802DA0E0@ha ; this is where the start entrance info is patched
+la r4, 0x802DA0E0@l(r4)
+lbz r5, 8(r4)
+lbz r6, 9(r4)
+lbz r7, 0xA(r4)
+lbz r8, 0xB(r4)
+li r9, 2
+li r10, 0
+li r0, 0xF
+stw r0, 0x8(r1)
+li r0, -1
+stw r0, 0xC(r1)
+b Reloader__triggerEntrance
+
 ; space to declare all the functions defined in the
 ; custom-functions rust project
 .global process_startflags

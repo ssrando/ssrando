@@ -56,6 +56,7 @@ extern "C" {
     fn checkButtonAPressed() -> bool;
     fn checkButtonBHeld() -> bool;
     fn getKeyPieceCount() -> u16;
+    fn send_to_start();
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -314,6 +315,9 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
                 UNOBTAINED_TEXT.as_ptr()
             };
             text_manager_set_string_arg(life_tree_fruit_text as *const c_void, 2);
+        }
+        73 => {
+            unsafe { send_to_start() }
         }
         _ => (),
     }
