@@ -38,10 +38,15 @@
   - A new option for `disable-bit` has been added that prevents all instances of the Back in Time (BiT) trick from being performed
   - A new option for `vanilla` has been added that keeps the vanilla game behaviour where BiT is possible but crashes under certain circumstances
   - The `fix-bit-crashes` option works the same as it did previously
-- Added option to start at a random Bird Statue (or in Link's bedroom) (by CovenEsme)
-  - If enabled, Link will spawn at a random Bird Statue (or his bedroom) at the start of the game
-    - Fi now has an option to let you return to this starting point! She'll warp you back whenever you like :p
-  - If disabled, Link will spawn in his bedroom like usual
+- Added option to start at a random location (by CovenEsme)
+  - Has 4 main options: Vanilla, Bird Statues, Any Surface Region, Any
+    - Vanilla: You will spawn in Link's bedroom
+    - Bird Statues: You will spawn at a random Bird Statue or Link's bedroom
+    - Any Surface Region: You will spawn at an entrance on a surface region (Faron, Eldin, Lanayru) or Link's bedroom
+    - Any: You will spawn at any entrance
+  - Fi now has an option to let you return to this starting point! She'll warp you back whenever you like :p
+  - Added an additional option that limits the possible starting locations
+    - When enabled, you will only start at a location in a region unlocked by the tablets you start with
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
