@@ -841,8 +841,25 @@
   ui: option_starting_heart_pieces
 - name: Random Starting Location
   command: random-start-entrance
+  type: singlechoice
+  bits: 2
+  choices:
+    - Vanilla
+    - Bird Statues
+    - Any Surface Region
+    - Any
+  default: Vanilla
+  help: "Determines where you will spawn you start the game.
+        **Vanilla**: You will spawn in Link's bedroom.
+        **Bird Statues**: You will spawn at a random Bird Statue or Link's bedroom.
+        **Any Surface Region**: You will spawn at any valid surface entrance or Link's bedroom.
+        **Any**: You will spawn at any valid entrance.
+        **TIP**: You can ask Fi to warp you back to the starting point."
+  ui: option_random_start_entrance
+- name: Limit Starting Location
+  command: limit-start-entrance
   type: boolean
   default: false
-  help: "If enabled, you will spawn at a random Bird Statue (or Link's bedroom) when you start the game.
-        **TIP**: If you get stuck, you can ask Fi to warp you back to this starting point."
-  ui: option_random_start_entrance
+  help: "If enabled, you will only start at a location in a region unlocked by the tablets you start with.
+        E.g. Starting with Ruby Tablet and Amber Tablet will mean you cannot start in Faron."
+  ui: option_limit_start_entrance

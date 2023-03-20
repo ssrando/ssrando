@@ -1695,6 +1695,9 @@ class GamePatcher:
         room = int(start_entrance["room"])
         layer = int(start_entrance["layer"])
         entrance = int(start_entrance["entrance"])
+        day_night = int(start_entrance["day-night"])
+        if day_night == 2:
+            day_night = 0
 
         # Patch stage
         self.all_asm_patches["main.dol"][0x801BB960] = {
@@ -1719,6 +1722,11 @@ class GamePatcher:
         # Patch entrance
         self.all_asm_patches["main.dol"][0x801BB96C] = {
             "Data": [0x38, 0xC0, 0x00, entrance]  # li r6, entrance
+        }
+
+        # Patch forcedNight
+        self.all_asm_patches["main.dol"][0x801BB96C] = {
+            "Data": [0x38, 0xE0, 0x00, day_night]  # li r7, day_night
         }
 
     def add_entrance_rando_patches(self):
@@ -2965,12 +2973,15 @@ class GamePatcher:
 
         # write startstage (used for ER) to some unused space
         start_entrance = self.placement_file.start_entrance
+        day_night = start_entrance["day-night"]
+        if day_night == 2:
+            day_night = 0
 
         dol.write_data_bytes(0x802DA0E0, toBytes(start_entrance["stage"], 8))
         dol.write_data(write_u8, 0x802DA0E8, start_entrance["room"])
         dol.write_data(write_u8, 0x802DA0E9, start_entrance["layer"])
         dol.write_data(write_u8, 0x802DA0EA, start_entrance["entrance"])
-        dol.write_data(write_u8, 0x802DA0EB, 0)  # force day
+        dol.write_data(write_u8, 0x802DA0EB, day_night)
         dol.save_changes()
         write_bytes_create_dirs(
             self.patcher.modified_extract_path / "DATA" / "sys" / "main.dol",

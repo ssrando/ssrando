@@ -567,35 +567,49 @@ class Rando:
 
         # Starting Entrance Rando.
         ser = self.options["random-start-entrance"]
+        limit_ser = self.options["limit-start-entrance"]
+        allowed_provinces = [
+            TABLET_TO_PROVINCE[item]
+            for item in self.placement.starting_items
+            if item in TABLETS
+        ]
+        allowed_provinces.append(THE_SKY)
 
-        statues = (
+        possible_start_entrances = [
             (entrance, values)
             for entrance, values in self.areas.map_entrances.items()
-            if values.get("subtype", False)
-            and values["subtype"] == "bird-statue-entrance"
-        )
+            if values.get("can-start-at", True)
+            and (
+                "Start Entrance" in str(entrance)
+                or (
+                    (not limit_ser or values.get("province") in allowed_provinces)
+                    and (
+                        (
+                            ser == "Bird Statues"
+                            and values.get("subtype", False)
+                            and values["subtype"] == "bird-statue-entrance"
+                        )
+                        or (
+                            ser == "Any Surface Region"
+                            and values.get("province") in TABLET_TO_PROVINCE.values()
+                        )
+                        or (ser == "Any")
+                    )
+                )
+            )
+        ]
 
-        vanilla_start_entrance = (
-            (entrance, values)
-            for entrance, values in self.areas.map_entrances.items()
-            if "Start Entrance" in str(entrance)
-        )
-
-        start_entrance = list(vanilla_start_entrance)[0]
-        if ser:
-            possible_start_entrances = list(statues) + list(vanilla_start_entrance)
-
-            start_entrance = self.rng.choice(possible_start_entrances)
-
+        start_entrance = self.rng.choice(possible_start_entrances)
         self.placement.map_transitions["\Start"] = start_entrance[0]
-
         values = start_entrance[1]
+
         self.randomized_start_entrance = {
-            "statue-name": values["statue-name"],
+            "statue-name": values.get("statue-name", values["short_name"]),
             "stage": values["stage"],
             "room": values["room"],
             "layer": values["layer"],
             "entrance": values["entrance"],
+            "day-night": values["tod"],
         }
 
         assert self.randomized_start_entrance["statue-name"] is not None
@@ -603,3 +617,4 @@ class Rando:
         assert self.randomized_start_entrance["room"] is not None
         assert self.randomized_start_entrance["layer"] is not None
         assert self.randomized_start_entrance["entrance"] is not None
+        assert self.randomized_start_entrance["day-night"] is not None

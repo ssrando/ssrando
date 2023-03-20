@@ -624,10 +624,20 @@ class Ui_MainWindow(object):
 
         self.vlay_er.addWidget(self.option_randomize_trials)
 
-        self.option_random_start_entrance = QCheckBox(self.verticalLayoutWidget_4)
+        self.label_for_option_random_start_entrance = QLabel(self.verticalLayoutWidget_4)
+        self.label_for_option_random_start_entrance.setObjectName(u"label_for_option_random_start_entrance")
+
+        self.vlay_er.addWidget(self.label_for_option_random_start_entrance)
+
+        self.option_random_start_entrance = QComboBox(self.verticalLayoutWidget_4)
         self.option_random_start_entrance.setObjectName(u"option_random_start_entrance")
 
         self.vlay_er.addWidget(self.option_random_start_entrance)
+
+        self.option_limit_start_entrance = QCheckBox(self.verticalLayoutWidget_4)
+        self.option_limit_start_entrance.setObjectName(u"option_limit_start_entrance")
+
+        self.vlay_er.addWidget(self.option_limit_start_entrance)
 
         self.vspace_er = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
@@ -1338,7 +1348,8 @@ class Ui_MainWindow(object):
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Dungeon Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
         self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
-        self.option_random_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Location", None))
+        self.label_for_option_random_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Location", None))
+        self.option_limit_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Limit Starting Location", None))
         self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
         self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Maximum Batreaux Reward", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))

@@ -960,9 +960,19 @@
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="option_random_start_entrance">
+         <widget class="QLabel" name="label_for_option_random_start_entrance">
           <property name="text">
            <string>Randomize Starting Location</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="option_random_start_entrance"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="option_limit_start_entrance">
+          <property name="text">
+           <string>Limit Starting Location</string>
           </property>
          </widget>
         </item>

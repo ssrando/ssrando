@@ -11,6 +11,7 @@ Start:
 ## Knight Academy
 Skyloft - Knight Academy - Start Entrance:
   type: entrance
+  province: The Sky
   allowed-time-of-day: DayOnly
   statue-name: Link's Room
   stage: F001r
@@ -21,6 +22,7 @@ Skyloft - Knight Academy - Start Entrance:
 
 Skyloft - Knight Academy - Chimney:
   type: entrance
+  province: The Sky
   stage: F001r
   room: 6
   layer: 0
@@ -29,6 +31,7 @@ Skyloft - Knight Academy - Chimney:
 
 Skyloft - Knight Academy - Lower Right Door Entrance:
   type: entrance
+  province: The Sky
   stage: F001r
   room: 0
   layer: 0
@@ -37,6 +40,7 @@ Skyloft - Knight Academy - Lower Right Door Entrance:
 
 Skyloft - Knight Academy - Lower Left Door Entrance:
   type: entrance
+  province: The Sky
   stage: F001r
   room: 0
   layer: 0
@@ -45,6 +49,7 @@ Skyloft - Knight Academy - Lower Left Door Entrance:
 
 Skyloft - Knight Academy - Upper Right Door Entrance:
   type: entrance
+  province: The Sky
   stage: F001r
   room: 0
   layer: 0
@@ -53,6 +58,7 @@ Skyloft - Knight Academy - Upper Right Door Entrance:
 
 Skyloft - Knight Academy - Upper Left Door Entrance:
   type: entrance
+  province: The Sky
   stage: F001r
   room: 0
   layer: 0
@@ -93,6 +99,7 @@ Skyloft - Knight Academy - Upper Left Door Exit:
 
 Skyloft - Knight Academy Lower Right Door Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -101,6 +108,7 @@ Skyloft - Knight Academy Lower Right Door Entrance:
 
 Skyloft - Knight Academy Lower Left Door Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -109,6 +117,7 @@ Skyloft - Knight Academy Lower Left Door Entrance:
 
 Skyloft - Knight Academy Upper Left Door Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -117,6 +126,7 @@ Skyloft - Knight Academy Upper Left Door Entrance:
 
 Skyloft - Knight Academy Upper Right Door Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -164,6 +174,7 @@ Skyloft - Knight Academy Chimney Entrance:
 
 Sparring Hall - Right Door Entrance:
   type: entrance
+  province: The Sky
   stage: F009r
   room: 0
   layer: 0
@@ -172,6 +183,7 @@ Sparring Hall - Right Door Entrance:
 
 Sparring Hall - Left Door Entrance:
   type: entrance
+  province: The Sky
   stage: F009r
   room: 0
   layer: 0
@@ -197,6 +209,7 @@ Sparring Hall - Left Door Exit:
 
 Skyloft - Sparring Hall Left Door Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -205,6 +218,7 @@ Skyloft - Sparring Hall Left Door Entrance:
 
 Skyloft - Sparring Hall Right Door Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -215,11 +229,14 @@ Skyloft - Sparring Hall Right Door Entrance:
 Skyloft - Groosenator Pumpkin Pull Entrance:
   type: entrance
   subtype: groosenator
+  province: The Sky
+  can-start-at: false
   disabled: true
   stage: F000
   room: 0
   layer: 0
   entrance: 18
+  tod: 2
 
 
 
@@ -242,6 +259,7 @@ Skyloft - Sparring Hall Right Door Exit:
 
 Goddess Statue - Entrance:
   type: entrance
+  province: The Sky
   stage: F008r
   room: 0
   layer: 0
@@ -257,6 +275,7 @@ Goddess Statue - Exit:
 
 Goddess Statue Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -275,6 +294,7 @@ Goddess Statue Exit:
 
 Waterfall Cave - Upper Entrance:
   type: entrance
+  province: The Sky
   stage: D000
   room: 0
   layer: 0
@@ -283,6 +303,7 @@ Waterfall Cave - Upper Entrance:
 
 Waterfall Cave - Lower Entrance:
   type: entrance
+  province: The Sky
   stage: D000
   room: 0
   layer: 0
@@ -307,6 +328,7 @@ Waterfall Cave - Lower Exit:
 
 Waterfall Cave Upper Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -315,6 +337,7 @@ Waterfall Cave Upper Entrance:
 
 Waterfall Cave Lower Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -341,24 +364,30 @@ Waterfall Cave Lower Exit:
 
 Bazaar - North Entrance:
   type: entrance
+  province: The Sky
   stage: F004r
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Bazaar - South Entrance:
   type: entrance
+  province: The Sky
   stage: F004r
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Bazaar - West Entrance:
   type: entrance
+  province: The Sky
   stage: F004r
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 
 Bazaar - North Exit:
@@ -385,6 +414,7 @@ Bazaar - West Exit:
 
 Bazaar North Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -393,6 +423,7 @@ Bazaar North Entrance:
 
 Bazaar South Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -401,6 +432,7 @@ Bazaar South Entrance:
 
 Bazaar West Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -434,6 +466,7 @@ Bazaar West Exit:
 
 Beedle's Shop - Day Entrance:
   type: entrance
+  province: The Sky
   stage: F002r
   room: 0
   layer: 0
@@ -443,6 +476,7 @@ Beedle's Shop - Day Entrance:
 # night only so prevent problems here
 Beedle's Shop - Night Entrance:
   type: entrance
+  province: The Sky
   allowed-time-of-day: NightOnly
   stage: F002r
   room: 0
@@ -477,6 +511,7 @@ Beedle's Shop - Night Exit:
 
 Skyloft - Entrance from Beedle's Shop:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -494,6 +529,9 @@ Skyloft - Exit to Beedle's Shop:
 
 Skyloft Silent Realm - Entrance:
   type: entrance
+  province: The Sky
+  can-start-at: false
+  tod: 0
 
 Skyloft Silent Realm - Exit:
   type: exit
@@ -501,6 +539,9 @@ Skyloft Silent Realm - Exit:
 
 Skyloft - Trial Gate Entrance:
   type: entrance
+  province: The Sky
+  can-start-at: false
+  tod: 0
 
 Skyloft - Trial Gate Exit:
   type: exit
@@ -510,10 +551,13 @@ Skyloft - Trial Gate Exit:
 
 Skyloft - Entrance from Sky Keep:
   type: entrance
+  province: The Sky
+  can-start-at: false
   stage: F000
   room: 0
   layer: 0
   entrance: 53
+  tod: 2
 
 
 Skyloft - Exit to Sky Keep:
@@ -528,6 +572,7 @@ Skyloft - Exit to Sky Keep:
 
 Orielle and Parrow's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F005r
   room: 0
   layer: 0
@@ -543,6 +588,7 @@ Orielle and Parrow's House - Exit:
 
 Orielle and Parrow's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -560,6 +606,7 @@ Orielle and Parrow's House Exit:
 
 Peatrice's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F018r
   room: 0
   layer: 0
@@ -575,6 +622,7 @@ Peatrice's House - Exit:
 
 Peatrice's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -592,6 +640,7 @@ Peatrice's House Exit:
 
 Wryna's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F006r
   room: 0
   layer: 0
@@ -607,6 +656,7 @@ Wryna's House - Exit:
 
 Wryna's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -624,6 +674,7 @@ Wryna's House Exit:
 
 Bertie's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F014r
   room: 0
   layer: 0
@@ -639,6 +690,7 @@ Bertie's House - Exit:
 
 Bertie's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -657,6 +709,7 @@ Bertie's House Exit:
 
 Sparrot's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F013r
   room: 0
   layer: 0
@@ -672,6 +725,7 @@ Sparrot's House - Exit:
 
 Sparrot's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -689,11 +743,14 @@ Sparrot's House Exit:
 # item delivery CS, make vanilla for now
 Sparrot's House - Delivery Cutscene Entrance:
   type: entrance
+  province: The Sky
+  can-start-at: false
   disabled: true
   stage: F013r
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Sky - Sparrot Delivery Cutscene Exit:
   type: exit
@@ -716,6 +773,7 @@ Skyloft - Sparrot Delivery Cutscene Exit:
 
 Skyloft - Mallara's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -731,6 +789,7 @@ Skyloft - Mallara's House Exit:
 
 Mallara's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F016r
   room: 0
   layer: 0
@@ -749,6 +808,7 @@ Mallara's House - Exit:
 
 Batreaux's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F012r
   room: 0
   layer: 0
@@ -764,6 +824,7 @@ Batreaux's House - Exit:
 
 Batreaux's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -782,6 +843,7 @@ Batreaux's House Exit:
 
 Gondo's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F015r
   room: 0
   layer: 0
@@ -797,6 +859,7 @@ Gondo's House - Exit:
 
 Gondo's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -815,6 +878,7 @@ Gondo's House Exit:
 
 Rupin's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F017r
   room: 0
   layer: 0
@@ -830,6 +894,7 @@ Rupin's House - Exit:
 
 Rupin's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -848,6 +913,7 @@ Rupin's House Exit:
 
 Piper's House - Entrance:
   type: entrance
+  province: The Sky
   stage: F007r
   room: 0
   layer: 0
@@ -863,6 +929,7 @@ Piper's House - Exit:
 
 Piper's House Entrance:
   type: entrance
+  province: The Sky
   stage: F000
   room: 0
   layer: 0
@@ -891,6 +958,9 @@ Skyloft - Exit to Sky:
 
 Skyloft - Entrance from Sky:
   type: entrance
+  province: The Sky
+  can-start-at: false
+  tod: 2
 
 # Sky
 
@@ -900,15 +970,20 @@ Sky - Exit to Skyloft:
 
 Sky - Entrance from Skyloft:
   type: entrance
+  province: The Sky
+  can-start-at: false
+  tod: 2
 
 ## North East
 
 Bamboo Island - Inside - Entrance:
   type: entrance
+  province: The Sky
   stage: F019r
   room: 0
   layer: 1
   entrance: 0
+  tod: 2
 
 Bamboo Island - Inside - Exit:
   type: exit
@@ -920,10 +995,12 @@ Bamboo Island - Inside - Exit:
 
 Bamboo Island - Entrance from Inside:
   type: entrance
+  province: The Sky
   stage: F020
   room: 0
   layer: 0
   entrance: 11
+  tod: 2
 
 Bamboo Island - Exit to Inside:
   type: exit
@@ -935,6 +1012,7 @@ Bamboo Island - Exit to Inside:
 
 Sky - Beedle's Island - Beedle's Ship Entrance:
   type: entrance
+  province: The Sky
   allowed-time-of-day: NightOnly
   stage: F020
   room: 0
@@ -954,11 +1032,13 @@ Sky - Beedle's Island - Beedle's Ship Exit:
 
 Sky - Eldin Pillar - Entrance:
   type: entrance
+  province: The Sky
   statue-name: Volcano Entry
   stage: F020
   room: 0
   layer: 0
   entrance: 13
+  tod: 2
 
 
 Sky - Eldin Pillar - First Time Dive:
@@ -1033,6 +1113,7 @@ Sky - Eldin Pillar - Fire Sanctuary Statue Dive:
 
 Lumpy Pumpkin Building - Main Right Door Entrance:
   type: entrance
+  province: The Sky
   stage: F011r
   room: 0
   layer: 0
@@ -1041,6 +1122,7 @@ Lumpy Pumpkin Building - Main Right Door Entrance:
 
 Lumpy Pumpkin Building - Main Left Door Entrance:
   type: entrance
+  province: The Sky
   stage: F011r
   room: 0
   layer: 0
@@ -1049,6 +1131,7 @@ Lumpy Pumpkin Building - Main Left Door Entrance:
 
 Lumpy Pumpkin Building - Back Door Entrance:
   type: entrance
+  province: The Sky
   stage: F011r
   room: 0
   layer: 0
@@ -1081,6 +1164,7 @@ Lumpy Pumpkin Building - Back Door Exit:
 
 Lumpy Pumpkin - Main Left Door Entrance:
   type: entrance
+  province: The Sky
   stage: F020
   room: 0
   layer: 0
@@ -1089,6 +1173,7 @@ Lumpy Pumpkin - Main Left Door Entrance:
 
 Lumpy Pumpkin - Main Right Door Entrance:
   type: entrance
+  province: The Sky
   stage: F020
   room: 0
   layer: 0
@@ -1097,6 +1182,7 @@ Lumpy Pumpkin - Main Right Door Entrance:
 
 Lumpy Pumpkin - Back Door Entrance:
   type: entrance
+  province: The Sky
   stage: F020
   room: 0
   layer: 0
@@ -1127,11 +1213,13 @@ Lumpy Pumpkin - Back Door Exit:
 
 Sky - Faron Pillar - Entrance:
   type: entrance
+  province: The Sky
   statue-name: Sealed Grounds
   stage: F020
   room: 0
   layer: 0
   entrance: 12
+  tod: 2
 
 
 
@@ -1340,10 +1428,12 @@ Sky - Lanayru Pillar - Lanayru Gorge Statue Dive:
 
 Sky - Lanayru Pillar - Entrance:
   type: entrance
+  province: The Sky
   stage: F020
   room: 0
   layer: 0
   entrance: 14
+  tod: 2
 
 
 
@@ -1351,11 +1441,14 @@ Sky - Lanayru Pillar - Entrance:
 Sky - Groosenator <<F020/15>> Entrance:
   type: entrance
   subtype: groosenator
+  province: The Sky
+  can-start-at: false
   disabled: true
   stage: F020
   room: 0
   layer: 0
   entrance: 15
+  tod: 2
 
 
 
@@ -1363,11 +1456,14 @@ Sky - Groosenator <<F020/15>> Entrance:
 Sky - Groosenator <<F020/30>> Entrance:
   type: entrance
   subtype: groosenator
+  province: The Sky
+  can-start-at: false
   disabled: true
   stage: F020
   room: 0
   layer: 0
   entrance: 30
+  tod: 2
 
 
 
@@ -1376,10 +1472,13 @@ Sky - Groosenator <<F020/30>> Entrance:
 
 Sky - Entrance from Thunderhead:
   type: entrance
+  province: The Sky
+  can-start-at: false
   stage: F020
   room: 0
   layer: 0
   entrance: 28
+  tod: 2
 
 Sky - Exit to Thunderhead:
   type: exit
@@ -1391,10 +1490,13 @@ Sky - Exit to Thunderhead:
 
 Thunderhead - Entrance:
   type: entrance
+  province: The Sky
+  can-start-at: false
   stage: F023
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Thunderhead - Exit:
   type: exit
@@ -1408,10 +1510,13 @@ Thunderhead - Exit:
 
 Isle of Songs - Entrance:
   type: entrance
+  province: The Sky
+  can-start-at: false
   stage: F010r
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Isle of Songs - Exit:
   type: exit
@@ -1423,10 +1528,13 @@ Isle of Songs - Exit:
 
 Isle of Songs - Entrance from Inside:
   type: entrance
+  province: The Sky
+  can-start-at: false
   stage: F023
   room: 0
   layer: 0
   entrance: 4
+  tod: 2
 
 Isle of Songs - Exit to Inside:
   type: exit
@@ -1439,11 +1547,14 @@ Isle of Songs - Exit to Inside:
 Inside Thunderhead - Groosenator Bug Heaven Entrance:
   type: entrance
   subtype: groosenator
+  province: The Sky
+  can-start-at: false
   disabled: true
   stage: F023
   room: 0
   layer: 0
   entrance: 3
+  tod: 2
 
 
 # Faron
@@ -1453,11 +1564,13 @@ Inside Thunderhead - Groosenator Bug Heaven Entrance:
 Sealed Grounds Spiral - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: Sealed Grounds
   stage: F401
   room: 1
   layer: 0
   entrance: 8
+  tod: 2
 
 Sealed Grounds Spiral - Statue Exit:
   type: exit
@@ -1524,17 +1637,21 @@ Sealed Grounds Spiral - Groosenator Rickety Coaster Exit:
 
 Sealed Grounds Spiral - Shortcut Entrance from Behind the Temple:
   type: entrance
+  province: Faron Province
   stage: F401
   room: 1
   layer: 0
   entrance: 0
+  tod: 2
 
 Sealed Grounds Spiral - Door Entrance:
   type: entrance
+  province: Faron Province
   stage: F401
   room: 1
   layer: 0
   entrance: 2
+  tod: 2
 
 
 Sealed Grounds Spiral - Door Exit:
@@ -1555,24 +1672,31 @@ Sealed Grounds Spiral - Shortcut Exit to Behind the Temple:
 
 Sealed Temple - Main Entrance:
   type: entrance
+  province: Faron Province
   stage: F402
   room: 2
   layer: 0
   entrance: 0
+  tod: 2
 
 Sealed Temple - Side Entrance:
   type: entrance
+  province: Faron Province
   stage: F402
   room: 2
   layer: 0
   entrance: 1
+  tod: 2
 
 Sealed Temple - Gate of Time Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F402
   room: 2
   layer: 0
   entrance: 11
+  tod: 2
 
 
 Sealed Temple - Main Exit:
@@ -1601,10 +1725,13 @@ Sealed Temple - Gate of Time Exit:
 
 Hylia's Temple - Gate of Time Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F404
   room: 2
   layer: 0
   entrance: 1
+  tod: 2
 
 Hylia's Temple - Gate of Time Exit:
   type: exit
@@ -1619,11 +1746,13 @@ Hylia's Temple - Gate of Time Exit:
 Behind the Temple - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: Behind the Temple
   stage: F400
   room: 0
   layer: 0
   entrance: 10
+  tod: 2
 
 Behind the Temple - Statue Exit:
   type: exit
@@ -1635,24 +1764,31 @@ Behind the Temple - Statue Exit:
 
 Behind the Temple - Door Entrance:
   type: entrance
+  province: Faron Province
   stage: F400
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Behind the Temple - Shortcut Entrance from Spiral:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F400
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 Behind the Temple - Entrance from Faron Woods:
   type: entrance
+  province: Faron Province
   stage: F400
   room: 0
   layer: 0
   entrance: 3
+  tod: 2
 
 
 Behind the Temple - Shortcut Exit to Spiral:
@@ -1682,38 +1818,46 @@ Behind the Temple - Exit to Faron Woods:
 Faron Woods - Faron Woods Entry Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: Faron Woods Entry
   stage: F100
   room: 0
   layer: 0
   entrance: 50
+  tod: 2
 
 Faron Woods - In the Woods Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: In the Woods
   stage: F100
   room: 0
   layer: 0
   entrance: 51
+  tod: 2
 
 Faron Woods - Viewing Platform Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: Viewing Platform
   stage: F100
   room: 0
   layer: 0
   entrance: 52
+  tod: 2
 
 Great Tree - The Great Tree Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: Great Tree Top
   stage: F100
   room: 0
   layer: 0
   entrance: 53
+  tod: 2
 
 
 Faron Woods - Shared Statue Exit:
@@ -1726,24 +1870,30 @@ Faron Woods - Shared Statue Exit:
 
 Faron Woods - Entrance from Behind the Temple:
   type: entrance
+  province: Faron Province
   stage: F100
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Faron Woods - Shortcut Entrance from Floria Waterfall:
   type: entrance
+  province: Faron Province
   stage: F100
   room: 0
   layer: 0
   entrance: 17
+  tod: 2
 
 Faron Woods - Entrance from Deep Woods:
   type: entrance
+  province: Faron Province
   stage: F100
   room: 0
   layer: 0
   entrance: 45
+  tod: 2
 
 
 
@@ -1794,6 +1944,9 @@ Faron Woods - Alternate <<Cutscene ?>> Exit to Deep Woods:
 
 Faron Woods - Trial Gate Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Faron Woods - Trial Gate Exit:
   type: exit
@@ -1803,6 +1956,9 @@ Faron Woods - Trial Gate Exit:
 
 Faron Silent Realm - Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Faron Silent Realm - Exit:
   type: exit
@@ -1813,31 +1969,40 @@ Faron Silent Realm - Exit:
 
 Great Tree - Platforms - Lower Entrance from Great Tree:
   type: entrance
+  province: Faron Province
   stage: F100
   room: 0
   layer: 0
   entrance: 4
+  tod: 2
 
 Great Tree - Platforms - Upper Entrance from Great Tree:
   type: entrance
+  province: Faron Province
   stage: F100
   room: 0
   layer: 0
   entrance: 5
+  tod: 2
 
 Great Tree - Top Entrance from Great Tree:
   type: entrance
+  province: Faron Province
   stage: F100
   room: 0
   layer: 0
   entrance: 6
+  tod: 2
 
 Great Tree - Underwater Hole Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F100
   room: 0
   layer: 0
   entrance: 7
+  tod: 2
 
 
 Great Tree - Platforms - Lower Exit to Great Tree:
@@ -1872,31 +2037,40 @@ Great Tree - Underwater Hole Exit:
 
 Great Tree - Lower Entrance from Platforms:
   type: entrance
+  province: Faron Province
   stage: F100_1
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Great Tree - Upper Entrance from Platforms:
   type: entrance
+  province: Faron Province
   stage: F100_1
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 Great Tree - Entrance from Top:
   type: entrance
+  province: Faron Province
   stage: F100_1
   room: 0
   layer: 0
   entrance: 3
+  tod: 2
 
 Great Tree - Underwater Tunnel Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F100_1
   room: 0
   layer: 0
   entrance: 4
+  tod: 2
 
 
 
@@ -1936,6 +2110,9 @@ Great Tree - Exit to Flooded Faron Woods:
 
 Great Tree - Entrance from Flooded Faron Woods:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 
 Flooded Faron Woods - Exit:
@@ -1944,6 +2121,9 @@ Flooded Faron Woods - Exit:
 
 Flooded Faron Woods - Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 
 
@@ -1952,20 +2132,24 @@ Flooded Faron Woods - Entrance:
 Deep Woods - Forest Temple Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: Forest Temple
   stage: F101
   room: 0
   layer: 0
   entrance: 13
+  tod: 2
 
 Deep Woods - Deep Woods Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: Deep Woods
   stage: F101
   room: 0
   layer: 0
   entrance: 14
+  tod: 2
 
 
 Deep Woods - Shared Statue Exit:
@@ -1978,17 +2162,22 @@ Deep Woods - Shared Statue Exit:
 
 Deep Woods - Entrance from Faron Woods:
   type: entrance
+  province: Faron Province
   stage: F101
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Deep Woods - Entrance from Skyview Temple:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F101
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 
 Deep Woods - Exit to Faron Woods:
@@ -2012,19 +2201,24 @@ Deep Woods - Exit to Skyview Temple:
 Lake Floria - Below Rock - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: Lake Floria
   stage: F102
   room: 3
   layer: 0
   entrance: 2
+  tod: 2
 
 Lake Floria - Floria Waterfall <<Alternate>> Statue Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F102
   disabled: true
   room: 0
   layer: 0
   entrance: 5
+  tod: 2
 
 Lake Floria - Below Rock - Statue Exit:
   type: exit
@@ -2036,17 +2230,23 @@ Lake Floria - Below Rock - Statue Exit:
 
 Lake Floria - Dive from Faron Woods:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F102
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Lake Floria - Entrance from Farore's Lair:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F102
   room: 4
   layer: 0
   entrance: 1
+  tod: 2
 
 
 Lake Floria - Exit to Farore's Lair:
@@ -2061,17 +2261,22 @@ Lake Floria - Exit to Farore's Lair:
 
 Farore's Lair - Entrance from Lake Floria:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: F102_2
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Farore's Lair - Entrance from Waterfall:
   type: entrance
+  province: Faron Province
   stage: F102_2
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 
 Farore's Lair - Exit to Lake Floria:
@@ -2094,11 +2299,13 @@ Farore's Lair - Exit to Waterfall:
 Floria Waterfall - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Faron Province
   statue-name: Floria Waterfall
   stage: F102_1
   room: 0
   layer: 0
   entrance: 5
+  tod: 2
 
 Floria Waterfall - Statue Exit:
   type: exit
@@ -2110,25 +2317,31 @@ Floria Waterfall - Statue Exit:
 
 Floria Waterfall - Entrance from Farore's Lair:
   type: entrance
+  province: Faron Province
   stage: F102_1
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Floria Waterfall - Entrance from Ancient Cistern:
   type: entrance
+  province: Faron Province
   statue-name: Floria Waterfall
   stage: F102_1
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Floria Waterfall - Entrance from Faron Woods:
   type: entrance
+  province: Faron Province
   stage: F102_1
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 
 Floria Waterfall - Exit to Farore's Lair:
@@ -2158,10 +2371,13 @@ Floria Waterfall - Exit to Faron Woods:
 
 Skyview Temple - Main Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: D100
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Skyview Spring - Crest Hit Exit:
   type: exit
@@ -2227,6 +2443,9 @@ Skyview Temple - <<Normal/Statue5>> Exit:
 
 Skyview Temple - Boss Door Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Skyview Temple - Boss Door Exit:
   type: exit
@@ -2235,9 +2454,15 @@ Skyview Temple - Boss Door Exit:
 
 Skyview Temple - Boss Room - Entrance from Dungeon:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Skyview Temple - Boss Room - Entrance from Spring:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Skyview Temple - Boss Room - Exit to Dungeon:
   type: exit
@@ -2250,6 +2475,9 @@ Skyview Temple - Boss Room - Exit to Spring:
 
 Skyview Temple - Spring - Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Skyview Temple - Spring - Exit:
   type: exit
@@ -2261,10 +2489,13 @@ Skyview Temple - Spring - Exit:
 
 Ancient Cistern - Main Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
   stage: D101
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Ancient Cistern - Main Exit:
   type: exit
@@ -2312,6 +2543,9 @@ Ancient Cistern - <<Normal/Statue5>> Exit:
 
 Ancient Cistern - Boss Door Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Ancient Cistern - Boss Door Exit:
   type: exit
@@ -2320,9 +2554,15 @@ Ancient Cistern - Boss Door Exit:
 
 Ancient Cistern - Boss Room - Entrance from Dungeon:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Ancient Cistern - Boss Room - Entrance from Flame Room:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Ancient Cistern - Boss Room - Exit to Dungeon:
   type: exit
@@ -2335,6 +2575,9 @@ Ancient Cistern - Boss Room - Exit to Flame Room:
 
 Ancient Cistern - Flame Room - Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 Ancient Cistern - Flame Room - Exit:
   type: exit
@@ -2356,46 +2599,56 @@ Ancient Cistern - Flame Room - Crest Hit Exit:
 
 Eldin Volcano - First Time Entrance:
   type: entrance
+  province: Eldin Province
   stage: F200
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Eldin Volcano - Volcano Entrance Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Eldin Province
   statue-name: Volcano Entry
   stage: F200
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 Eldin Volcano - Volcano East Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Eldin Province
   statue-name: Volcano East
   stage: F200
   room: 2
   layer: 0
   entrance: 6
+  tod: 2
 
 Eldin Volcano - Volcano Ascent Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Eldin Province
   statue-name: Volcano Ascent
   stage: F200
   room: 2
   layer: 0
   entrance: 7
+  tod: 2
 
 Eldin Volcano - Temple Entrance Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Eldin Province
   statue-name: Temple Entrance
   stage: F200
   room: 4
   layer: 0
   entrance: 7
+  tod: 2
 
 
 Eldin Volcano - Volcano Entrance Statue Exit:
@@ -2423,53 +2676,73 @@ Eldin Volcano - Temple Entrance Statue Exit:
 
 Eldin Volcano - First Vent from Mogma Turf:
   type: entrance
+  province: Eldin Province
   stage: F200
   room: 2
   layer: 0
   entrance: 1
+  tod: 2
 
 Eldin Volcano - Second Vent from Mogma Turf:
   type: entrance
+  province: Eldin Province
   stage: F200
   room: 2
   layer: 0
   entrance: 2
+  tod: 2
 
 Eldin Volcano - Entrance from Earth Temple:
   type: entrance
+  province: Eldin Province
   stage: F200
   room: 4
   layer: 0
   entrance: 1
+  tod: 2
 
 Eldin Volcano - Thrill Digger Cave Entrance:
   type: entrance
+  province: Eldin Province
   stage: F200
   room: 4
   layer: 0
   entrance: 2
+  tod: 2
 
 Eldin Volcano - Groosenator Thrill Digger Entrance:
   type: entrance
   subtype: groosenator
+  province: Eldin Province
+  can-start-at: false
   disabled: true
   stage: F200
   room: 4
   layer: 0
   entrance: 6
+  tod: 2
 
 Eldin Volcano - Entrance from Summit:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
   stage: F200
   room: 5
   layer: 0
   entrance: 2
+  tod: 2
 
 Eldin Volcano - Trial Gate Entrance:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Eldin Volcano - Vent Entrance near Hot Cave:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 
 Eldin Volcano - Dive to Mogma Turf:
@@ -2525,6 +2798,12 @@ Eldin Volcano - Exit to Bokoblin Base:
 
 Eldin Volcano - Entrance from Bokoblin Base:
   type: entrance
+  province: Eldin Province
+  stage: F200
+  room: 1
+  layer: 1
+  entrance: 5
+  tod: 2
 
 
 Bokoblin Base - Exit:
@@ -2533,16 +2812,24 @@ Bokoblin Base - Exit:
 
 Bokoblin Base - Entrance:
   type: entrance
+  province: Eldin Province
+  stage: F202
+  room: 1
+  layer: 1
+  entrance: 0
+  tod: 2
 
 
 ## Mogma Turf
 
 Mogma Turf - Entrance:
   type: entrance
+  province: Eldin Province
   stage: F210
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Mogma Turf - First Vent:
   type: exit
@@ -2562,10 +2849,12 @@ Mogma Turf - Second Vent:
 
 Thrill Digger Cave - Entrance:
   type: entrance
+  province: Eldin Province
   stage: F211
   room: 0
   layer: 1
   entrance: 0
+  tod: 2
 
 Thrill Digger Cave - Exit:
   type: exit
@@ -2578,6 +2867,9 @@ Thrill Digger Cave - Exit:
 
 Eldin Silent Realm - Entrance:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Eldin Silent Realm - Exit:
   type: exit
@@ -2587,24 +2879,33 @@ Eldin Silent Realm - Exit:
 
 Volcano Summit - Entrance from Outside Fire Sanctuary:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
   stage: F201_1
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Volcano Summit - Entrance from Waterfall:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
   stage: F201_1
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 Volcano Summit - Entrance from Eldin Volcano:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
   stage: F201_1
   room: 0
   layer: 0
   entrance: 4
+  tod: 2
 
 
 Volcano Summit - Exit to Eldin Volcano:
@@ -2632,10 +2933,13 @@ Volcano Summit - Exit to Outside Fire Sanctuary:
 
 Volcano Summit - Waterfall - Entrance:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
   stage: F201_4
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Volcano Summit - Waterfall - Exit:
   type: exit
@@ -2650,11 +2954,13 @@ Volcano Summit - Waterfall - Exit:
 Outside Fire Sanctuary - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Eldin Province
   statue-name: Inside the Volcano
   stage: F201_3
   room: 0
   layer: 0
   entrance: 3
+  tod: 2
 
 Outside Fire Sanctuary - Statue Exit:
   type: exit
@@ -2666,17 +2972,23 @@ Outside Fire Sanctuary - Statue Exit:
 
 Outside Fire Sanctuary - Entrance from Summit:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
   stage: F201_3
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Outside Fire Sanctuary - Entrance from Fire Sanctuary:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
   stage: F201_3
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Outside Fire Sanctuary - Exit to Summit:
   type: exit
@@ -2697,10 +3009,13 @@ Outside Fire Sanctuary - Exit to Fire Sanctuary:
 
 Earth Temple - Main Entrance:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
   stage: D200
   room: 1
   layer: 0
   entrance: 0
+  tod: 2
 
 Earth Temple - Main Exit:
   type: exit
@@ -2749,6 +3064,9 @@ Earth Temple - <<Normal/Statue5>> Exit:
 
 Earth Temple - Boss Door Entrance:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Earth Temple - Boss Door Exit:
   type: exit
@@ -2757,9 +3075,15 @@ Earth Temple - Boss Door Exit:
 
 Earth Temple - Boss Room - Entrance from Dungeon:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Earth Temple - Boss Room - Entrance from Spring:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Earth Temple - Boss Room - Exit to Dungeon:
   type: exit
@@ -2772,6 +3096,9 @@ Earth Temple - Boss Room - Exit to Spring:
 
 Earth Temple - Spring - Entrance:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Earth Temple - Spring - Exit:
   type: exit
@@ -2783,11 +3110,13 @@ Earth Temple - Spring - Exit:
 Fire Sanctuary - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Eldin Province
   statue-name: Inside the Fire Sanctuary
   stage: D201
   room: 10
   layer: 0
   entrance: 2
+  tod: 2
 
 Fire Sanctuary - Inner Map Statue Exit:
   type: exit
@@ -2807,10 +3136,13 @@ Fire Sanctuary - Statue Exit:
 
 Fire Sanctuary - Main Entrance:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
   stage: D201
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Fire Sanctuary - Main Exit:
   type: exit
@@ -2909,6 +3241,9 @@ Fire Sanctuary - <<Normal/Statue10>> Exit:
 
 Fire Sanctuary - First Room - Entrance from Second Room:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Fire Sanctuary - First Room - Exit to Second Room:
   type: exit
@@ -2917,6 +3252,9 @@ Fire Sanctuary - First Room - Exit to Second Room:
 
 Fire Sanctuary - Second Room - Entrance from First Room:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Fire Sanctuary - Second Room - Exit to First Room:
   type: exit
@@ -2925,6 +3263,9 @@ Fire Sanctuary - Second Room - Exit to First Room:
 
 Fire Sanctuary - Magmanos Fight Room - Entrance from West of Boss Door:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Fire Sanctuary - Magmanos Fight Room - Exit to West of Boss Door:
   type: exit
@@ -2933,6 +3274,9 @@ Fire Sanctuary - Magmanos Fight Room - Exit to West of Boss Door:
 
 Fire Sanctuary - West of Boss Door - Entrance from Magmanos Fight Room:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Fire Sanctuary - West of Boss Door - Exit to Magmanos Fight Room:
   type: exit
@@ -2941,6 +3285,9 @@ Fire Sanctuary - West of Boss Door - Exit to Magmanos Fight Room:
 
 Fire Sanctuary - Boss Door Entrance:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Fire Sanctuary - Boss Door Exit:
   type: exit
@@ -2949,9 +3296,15 @@ Fire Sanctuary - Boss Door Exit:
 
 Fire Sanctuary - Boss Room - Entrance from Dungeon:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Fire Sanctuary - Boss Room - Entrance from Flame Room:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Fire Sanctuary - Boss Room - Exit to Dungeon:
   type: exit
@@ -2964,6 +3317,9 @@ Fire Sanctuary - Boss Room - Exit to Flame Room:
 
 Fire Sanctuary - Flame Room - Entrance:
   type: entrance
+  province: Eldin Province
+  can-start-at: false
+  tod: 2
 
 Fire Sanctuary - Flame Room - Exit:
   type: exit
@@ -2976,33 +3332,41 @@ Fire Sanctuary - Flame Room - Exit:
 
 Lanayru Mine - First Time Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F300_1
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Lanayru Mine - Entrance from Caves:
   type: entrance
+  province: Lanayru Province
   stage: F300_1
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Lanayru Mine - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Lanayru Mine Entry
   stage: F300_1
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 Lanayru Mine - Entrance from Desert:
   type: entrance
+  province: Lanayru Province
   stage: F300_1
   room: 2
   layer: 0
   entrance: 1
+  tod: 2
 
 Lanayru Mine - Statue Exit:
   type: exit
@@ -3029,97 +3393,123 @@ Lanayru Mine - Exit to Desert:
 
 Lanayru Desert - <<?? Statue Entrance>>:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   disabled: true
   stage: F300
   room: 0
   layer: 0
   entrance: 10
+  tod: 2
 
 Lanayru Desert - Desert Entrance Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Desert Entrance
   stage: F300
   room: 0
   layer: 0
   entrance: 15
+  tod: 2
 
 Lanayru Desert - West Desert Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: West Desert
   stage: F300
   room: 0
   layer: 0
   entrance: 16
+  tod: 2
 
 Lanayru Desert - North Desert Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: North Desert
   stage: F300
   room: 0
   layer: 0
   entrance: 17
+  tod: 2
 
 Lanayru Desert - Stone Cache Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Stone Cache
   stage: F300
   room: 0
   layer: 0
   entrance: 18
+  tod: 2
 
 
 Lanayru Desert - South Entrance from Temple of Time:
   type: entrance
+  province: Lanayru Province
   stage: F300
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Lanayru Desert - North Entrance from Temple of Time:
   type: entrance
+  province: Lanayru Province
   stage: F300
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Lanayru Desert - Entrance from Mine:
   type: entrance
+  province: Lanayru Province
   stage: F300
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 Lanayru Desert - Fire Node Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F300
   room: 0
   layer: 0
   entrance: 3
+  tod: 2
 
 Lanayru Desert - Entrance from Lanayru Mining Facility:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F300
   room: 0
   layer: 0
   entrance: 5
+  tod: 2
 
 Lanayru Desert - Entrance from Caves:
   type: entrance
+  province: Lanayru Province
   stage: F300
   room: 0
   layer: 0
   entrance: 6
+  tod: 2
 
 Lanayru Desert - Lightning Node Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F300
   room: 0
   layer: 0
   entrance: 7
+  tod: 2
 
 
 Lanayru Desert - Shared Statue Exit:
@@ -3181,6 +3571,9 @@ Lanayru Desert - Exit to Caves:
 
 Lanayru Desert - Trial Gate Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Desert - Trial Gate Exit:
   type: exit
@@ -3190,6 +3583,9 @@ Lanayru Desert - Trial Gate Exit:
 
 Lanayru Silent Realm - Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Silent Realm - Exit:
   type: exit
@@ -3198,10 +3594,12 @@ Lanayru Silent Realm - Exit:
 
 Lightning Node - Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F300_2
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Lightning Node - Exit:
   type: exit
@@ -3214,10 +3612,12 @@ Lightning Node - Exit:
 
 Fire Node - Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F300_3
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Fire Node - Exit:
   type: exit
@@ -3233,20 +3633,24 @@ Fire Node - Exit:
 Temple of Time - Desert Gorge Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Desert Gorge
   stage: F300_4
   room: 0
   layer: 0
   entrance: 16
+  tod: 2
 
 Temple of Time - Temple of Time Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Temple of Time
   stage: F300_4
   room: 0
   layer: 0
   entrance: 17
+  tod: 2
 
 Temple of Time - Shared Statue Exit:
   type: exit
@@ -3258,25 +3662,32 @@ Temple of Time - Shared Statue Exit:
 
 Temple of Time - South Entrance from Desert:
   type: entrance
+  province: Lanayru Province
   stage: F300_4
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Temple of Time - North Entrance from Desert:
   type: entrance
+  province: Lanayru Province
   stage: F300_4
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Temple of Time - Entrance from Lanayru Mining Facility:
   type: entrance
   subtype: vanilla
+  province: Lanayru Province
+  can-start-at: false
   stage: F300_4
   room: 0
   layer: 2
   entrance: 5
+  tod: 2
 
 
 Temple of Time - South Exit to Desert:
@@ -3306,27 +3717,40 @@ Temple of Time - Exit to Lanayru Mining Facility:
 
 Lanayru Caves - Entrance from Mine:
   type: entrance
+  province: Lanayru Province
   stage: F303
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Lanayru Caves - Entrance from Desert:
   type: entrance
+  province: Lanayru Province
   stage: F303
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Lanayru Caves - Entrance from Lanayru Sand Sea:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F303
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 Lanayru Caves - Entrance from Gorge:
   type: entrance
+  province: Lanayru Province
+  stage: F303
+  room: 0
+  layer: 0
+  entrance: 3
+  tod: 2
 
 Lanayru Caves - Exit to Mine:
   type: exit
@@ -3357,6 +3781,12 @@ Lanayru Caves - Exit to Gorge:
 
 Lanayru Gorge - Entrance:
   type: entrance
+  province: Lanayru Province
+  stage: F302
+  room: 0
+  layer: 2
+  entrance: 0
+  tod: 2
 
 Lanayru Gorge - Exit:
   type: exit
@@ -3365,11 +3795,13 @@ Lanayru Gorge - Exit:
 Lanayru Gorge - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Lanayru Gorge
   stage: F302
   room: 0
   layer: 0
   entrance: 12
+  tod: 2
 
 Lanayru Gorge - Statue Exit:
   type: exit
@@ -3379,38 +3811,49 @@ Lanayru Gorge - Statue Exit:
 
 Lanayru Sand Sea - Ancient Harbour Dock Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_1
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Lanayru Sand Sea - Skipper's Retreat Dock Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_1
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Lanayru Sand Sea - Shipyard Dock Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_1
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 Lanayru Sand Sea - Pirate Stronghold Dock Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_1
   room: 0
   layer: 0
   entrance: 3
+  tod: 2
 
 Lanayru Sand Sea - Sandship Dock Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F301_1
   room: 0
   layer: 0
   entrance: 4
+  tod: 2
 
 
 Lanayru Sand Sea - Ancient Harbour Dock Exit:
@@ -3454,19 +3897,24 @@ Lanayru Sand Sea - Pirate Stronghold Dock Exit:
 Lanayru Sand Sea Docks - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Ancient Harbour
   stage: F301
   room: 0
   layer: 0
   entrance: 10
+  tod: 2
 
 Lanayru Sand Sea Docks - <<Alternate>> Statue Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   disabled: true
   stage: F301
   room: 0
   layer: 0
   entrance: 4
+  tod: 2
 
 Lanayru Sand Sea Docks - Statue Exit:
   type: exit
@@ -3478,17 +3926,22 @@ Lanayru Sand Sea Docks - Statue Exit:
 
 Lanayru Sand Sea Docks - Entrance from Caves:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F301
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Lanayru Sand Sea Docks - Dock Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Lanayru Sand Sea Docks - Exit to Sandship:
   type: exit
@@ -3518,11 +3971,13 @@ Lanayru Sand Sea Docks - Dock Exit:
 Skipper's Retreat - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Skipper's Retreat
   stage: F301_3
   room: 0
   layer: 0
   entrance: 10
+  tod: 2
 
 Skipper's Retreat - Statue Exit:
   type: exit
@@ -3533,17 +3988,21 @@ Skipper's Retreat - Statue Exit:
 
 Skipper's Retreat - Dock Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_3
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Skipper's Retreat - Shack Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_3
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Skipper's Retreat - Dock Exit:
   type: exit
@@ -3562,10 +4021,12 @@ Skipper's Retreat - Shack Exit:
 
 Skipper's Retreat - Shack - Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_5
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Skipper's Retreat - Shack - Exit:
   type: exit
@@ -3581,11 +4042,13 @@ Skipper's Retreat - Shack - Exit:
 Shipyard - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Lanayru Shipyard
   stage: F301_4
   room: 0
   layer: 0
   entrance: 10
+  tod: 2
 
 Shipyard - Statue Exit:
   type: exit
@@ -3597,33 +4060,44 @@ Shipyard - Statue Exit:
 
 Shipyard - Dock Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_4
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Shipyard - Construction Bay Lower Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F301_4
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Shipyard - Construction Bay Upper Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F301_4
   room: 0
   layer: 0
   entrance: 4
+  tod: 2
 
 Shipyard - Groosenator Rickety Coaster Entrance:
   type: entrance
   subtype: groosenator
+  province: Lanayru Province
+  can-start-at: false
   disabled: true
   stage: F301_4
   room: 0
   layer: 0
   entrance: 9
+  tod: 2
 
 
 Shipyard - Dock Exit:
@@ -3650,17 +4124,23 @@ Shipyard - Construction Bay Lower Exit:
 
 Shipyard - Construction Bay - Upper Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F301_7
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Shipyard - Construction Bay - Lower Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F301_7
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Shipyard - Construction Bay - Lower Exit:
   type: exit
@@ -3683,11 +4163,13 @@ Shipyard - Construction Bay - Upper Exit:
 Pirate Stronghold - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
+  province: Lanayru Province
   statue-name: Pirate Stronghold
   stage: F301_6
   room: 0
   layer: 0
   entrance: 10
+  tod: 2
 
 Pirate Stronghold - Statue Exit:
   type: exit
@@ -3698,24 +4180,31 @@ Pirate Stronghold - Statue Exit:
 
 Pirate Stronghold - Dock Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_6
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Pirate Stronghold - Side Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_6
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 Pirate Stronghold - Top Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F301_6
   room: 0
   layer: 0
   entrance: 2
+  tod: 2
 
 
 Pirate Stronghold - Dock Exit:
@@ -3742,17 +4231,22 @@ Pirate Stronghold - Top Exit:
 
 Pirate Stronghold - Inside - First Door Entrance:
   type: entrance
+  province: Lanayru Province
   stage: F301_2
   room: 1
   layer: 0
   entrance: 0
+  tod: 2
 
 Pirate Stronghold - Inside - Second Door Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: F301_2
   room: 1
   layer: 0
   entrance: 1
+  tod: 2
 
 Pirate Stronghold - Inside - First Door Exit:
   type: exit
@@ -3774,10 +4268,13 @@ Pirate Stronghold - Inside - Second Door Exit:
 
 Lanayru Mining Facility - Main Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: D300
   room: 0
   layer: 0
   entrance: 0
+  tod: 2
 
 Lanayru Mining Facility - Main Exit:
   type: exit
@@ -3833,21 +4330,39 @@ Lanayru Mining Facility - <<Normal/Statue6>> Exit:
 
 Lanayru Mining Facility - First Hub - Entrance from Big Hub:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Mining Facility - Gust Bellows Room - Entrance from Big Hub:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Mining Facility - Armos Fight Room - Entrance from Big Hub:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Mining Facility - Big Hub - Entrance from First Hub:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Mining Facility - Big Hub - Entrance from Gust Bellows Room:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Mining Facility - Big Hub - Entrance from Armos Fight Room:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 
 Lanayru Mining Facility - First Hub - Exit to Big Hub:
@@ -3878,6 +4393,9 @@ Lanayru Mining Facility - Big Hub - Exit to Armos Fight Room:
 
 Lanayru Mining Facility - Boss Door Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Mining Facility - Boss Door Exit:
   type: exit
@@ -3886,9 +4404,15 @@ Lanayru Mining Facility - Boss Door Exit:
 
 Lanayru Mining Facility - Boss Room - Entrance from Dungeon:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Mining Facility - Boss Room - Entrance from Great Hall:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Mining Facility - Boss Room - Exit to Dungeon:
   type: exit
@@ -3901,14 +4425,20 @@ Lanayru Mining Facility - Boss Room - Exit to Great Hall:
 
 Lanayru Mining Facility - Great Hall - Entrance from Boss Room:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Lanayru Mining Facility - Great Hall - Entrance from Temple of Time:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   subtype: vanilla
   stage: F300_5
   room: 0
   layer: 0
   entrance: 1
+  tod: 2
 
 
 Lanayru Mining Facility - Great Hall - Exit to Boss Room:
@@ -3928,10 +4458,13 @@ Lanayru Mining Facility - Great Hall - Exit to Temple of Time:
 
 Sandship - Main Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
   stage: D301
   room: 0
   layer: 1
   entrance: 0
+  tod: 2
 
 Sandship - Main Exit:
   type: exit
@@ -3983,6 +4516,9 @@ Sandship - Boss Door one-way Exit:
 
 Sandship - Boss Room - Entrance:
   type: entrance
+  province: Lanayru Province
+  can-start-at: false
+  tod: 2
 
 Sandship - Boss Room - <<Crest Hit>> Exit:
   type: exit
@@ -4007,10 +4543,13 @@ Sandship - Boss Room - <<??>> Exit:
 
 Sky Keep - First Room - Bottom Entrance:
   type: entrance
+  province: The Sky
+  can-start-at: false
   stage: D003_7
   room: 0
   layer: 0
   entrance: 4
+  tod: 2
 
 Sky Keep - First Room - Bottom Exit:
   type: exit
