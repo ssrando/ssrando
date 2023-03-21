@@ -1721,7 +1721,6 @@ class GamePatcher:
         self.all_asm_patches["main.dol"][0x801BB96C] = {
             "Data": [0x38, 0xC0, 0x00, entrance]  # li r6, entrance
         }
-        print(self.all_asm_patches["main.dol"][0x801BB96C]["Data"])
 
         # Patch forcedNight
         self.all_asm_patches["main.dol"][0x801BB970] = {
