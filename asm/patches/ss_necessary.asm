@@ -121,6 +121,10 @@ blr
 .org 0x8024d438
 bl fix_freestanding_item_y_offset
 
+; allow triforces to fall down when bonked
+.org 0x8024edbc
+li r3, 0
+
 ; don't treat faron statues differently after levias
 .org 0x80142078
 b 0x801420d8
