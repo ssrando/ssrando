@@ -251,119 +251,7 @@ DUNGEON_EXIT_SCENS = {
         ("D003_6", 0, 1),
         ("D003_7", 0, 1),
     ],
-}
-
-STAGE_STRING_OFFSET = 0x4038
-STAGE_STRING_SIZE = 0x8
-
-# Offsets from 0x80579440
-# 0x80579440 + 0x4038 = 0x8057d478 (start of complete stage string table)
-STARTING_STAGE_OFFSETS = {
-    "B003": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 56),
-    "B100": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 46),
-    "B100_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 47),
-    "B101": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 48),
-    "B101_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 49),
-    "B200": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 50),
-    "B201": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 52),
-    "B201_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 53),
-    "B210": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 51),
-    "B300": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 54),
-    "B301": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 55),
-    "B400": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 57),
-    "D000": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 29),
-    "D003_0": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 37),
-    "D003_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 38),
-    "D003_2": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 39),
-    "D003_3": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 40),
-    "D003_4": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 41),
-    "D003_5": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 42),
-    "D003_6": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 43),
-    "D003_7": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 44),
-    "D003_8": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 45),
-    "D100": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 30),
-    "D101": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 31),
-    "D200": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 32),
-    "D201": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 33),
-    "D201_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 34),
-    "D300": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 35),
-    "D300_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 36),
-    "D301": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 27),
-    "D301_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 28),
-    "Demo": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 103),
-    "F000": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 80),
-    "F001r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 82),
-    "F002r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 83),
-    "F004r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 84),
-    "F005r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 89),
-    "F006r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 90),
-    "F007r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 91),
-    "F008r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 101),
-    "F009r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 85),
-    "F010r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 102),
-    "F011r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 86),
-    "F012r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 87),
-    "F013r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 92),
-    "F014r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 93),
-    "F015r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 94),
-    "F016r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 95),
-    "F017r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 96),
-    "F018r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 97),
-    "F019r": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 88),
-    "F020": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 77),
-    "F021": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 78),
-    "F023": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 79),
-    "F100": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 0),
-    "F100_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 58),
-    "F100_2": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 59),
-    "F101": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 1),
-    "F102": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 2),
-    "F102_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 3),
-    "F102_2": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 60),
-    "F103": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 4),
-    "F103_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 61),
-    "F200": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 5),
-    "F201_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 6),
-    "F201_2": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 7),
-    "F201_3": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 8),
-    "F201_4": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 9),
-    "F202": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 10),
-    "F202_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 65),
-    "F202_2": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 66),
-    "F202_3": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 67),
-    "F202_4": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 68),
-    "F210": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 62),
-    "F211": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 63),
-    "F221": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 64),
-    "F300": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 11),
-    "F300_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 12),
-    "F300_2": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 69),
-    "F300_4": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 13),
-    "F300_3": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 70),
-    "F300_5": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 71),
-    "F301": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 14),
-    "F301_1": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 15),
-    "F301_2": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 16),
-    "F301_3": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 17),
-    "F301_4": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 18),
-    "F301_5": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 81),
-    "F301_6": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 19),
-    "F301_7": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 20),
-    "F302": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 21),
-    "F303": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 72),
-    "F400": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 22),
-    "F401": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 23),
-    "F402": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 98),
-    "F403": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 24),
-    "F404": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 99),
-    "F405": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 25),
-    "F406": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 26),
-    "F407": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 100),
-    "S000": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 73),
-    "S100": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 74),
-    "S200": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 75),
-    "S300": STAGE_STRING_OFFSET + (STAGE_STRING_SIZE * 76),
-}
+} 
 
 TRIAL_STAGES = {
     SKYLOFT_SILENT_REALM: "S000",
@@ -1660,8 +1548,6 @@ class GamePatcher:
             ]
         }
 
-        self.starting_location_patches()
-
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / "asm" / "custom_symbols.txt").open("r") as f:
             self.custom_symbols = yaml.safe_load(f)
@@ -1681,51 +1567,6 @@ class GamePatcher:
             asm_patch_file_data = yaml.safe_load(f)
         for exec_file, patches in asm_patch_file_data.items():
             self.all_asm_patches[exec_file].update(patches)
-
-    def starting_location_patches(self):
-        start_entrance = self.placement_file.start_entrance
-
-        # HARDCODE STARTING ENTRANCE HERE
-        #
-        # Make sure to set the stage_offset, room, layer, AND entrance values
-        # to match a valid in-game entrance or you WILL crash.
-        stage = start_entrance["stage"]
-        stage_offset = STARTING_STAGE_OFFSETS[stage]
-
-        room = int(start_entrance["room"])
-        layer = int(start_entrance["layer"])
-        entrance = int(start_entrance["entrance"])
-        day_night = int(start_entrance["day-night"]) & 1  # force day when value >1
-
-        # Patch stage
-        self.all_asm_patches["main.dol"][0x801BB960] = {
-            "Data": [
-                0x38,
-                0x6D,
-                stage_offset >> 8,
-                stage_offset & 0xFF,
-            ]  # addi r3, r13, stage_offset
-        }
-
-        # Patch roomID
-        self.all_asm_patches["main.dol"][0x801BB964] = {
-            "Data": [0x38, 0x80, 0x00, room]  # li r4, room
-        }
-
-        # Patch layer
-        self.all_asm_patches["main.dol"][0x801BB968] = {
-            "Data": [0x38, 0xA0, 0x00, layer]  # li r5, layer
-        }
-
-        # Patch entrance
-        self.all_asm_patches["main.dol"][0x801BB96C] = {
-            "Data": [0x38, 0xC0, 0x00, entrance]  # li r6, entrance
-        }
-
-        # Patch forcedNight
-        self.all_asm_patches["main.dol"][0x801BB970] = {
-            "Data": [0x38, 0xE0, 0x00, day_night]  # li r7, day_night
-        }
 
     def add_entrance_rando_patches(self):
         for entrance, dungeon in self.placement_file.dungeon_connections.items():
@@ -2971,6 +2812,11 @@ class GamePatcher:
 
         # write startstage (used for ER) to some unused space
         start_entrance = self.placement_file.start_entrance
+
+        # HARDCODE STARTING ENTRANCE HERE
+        #
+        # Make sure to set the stage_offset, room, layer, AND entrance values
+        # to match a valid in-game entrance or you WILL crash.
 
         dol.write_data_bytes(0x802DA0E0, toBytes(start_entrance["stage"], 8))
         dol.write_data(write_u8, 0x802DA0E8, start_entrance["room"])

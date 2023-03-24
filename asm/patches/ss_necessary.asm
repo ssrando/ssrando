@@ -269,6 +269,10 @@ bgt 0x801b0788
 bl rando_text_command_handler
 b 0x801b0764 ; return to original function
 
+; patch starting entrance
+.org 0x801bb980
+bl send_to_start
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
