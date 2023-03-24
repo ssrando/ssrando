@@ -251,7 +251,7 @@ DUNGEON_EXIT_SCENS = {
         ("D003_6", 0, 1),
         ("D003_7", 0, 1),
     ],
-} 
+}
 
 TRIAL_STAGES = {
     SKYLOFT_SILENT_REALM: "S000",
