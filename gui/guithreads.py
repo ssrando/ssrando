@@ -58,11 +58,10 @@ class RandomizerThread(QThread):
                     f"Couldn't install wit; error: {e}\n"
                     + "Please install wit manually"
                 )
-                qt_message = (
-                    error_message.replace("<", "[")
-                    .replace(">", "]")
-                    .replace("\n", "<br/>")
-                )
+                import html
+
+                qt_message = html.escape(error_message).replace("\n", "<br/>")
+
                 self.error_abort.emit(qt_message)
                 print(error_message)
                 import traceback
@@ -121,9 +120,9 @@ class ExtractSetupThread(QThread):
             error_message = (
                 f"Couldn't install wit; error: {e}\n" "Please install wit manually"
             )
-            qt_message = (
-                error_message.replace("<", "[").replace(">", "]").replace("\n", "<br/>")
-            )
+            import html
+
+            qt_message = html.escape(error_message).replace("\n", "<br/>")
             self.error_abort.emit(qt_message)
             print(error_message)
             import traceback
