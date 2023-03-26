@@ -54,8 +54,17 @@ class RandomizerThread(QThread):
             try:
                 self.wit_manager.ensure_wit_installed()
             except (HTTPError, URLError) as e:
-                self.error_abort.emit(str(e))
-                print(str(e))
+                error_message = (
+                    f"Couldn't install wit; error: {e}\n"
+                    + "Please install wit manually"
+                )
+                qt_message = (
+                    error_message.replace("<", "[")
+                    .replace(">", "]")
+                    .replace("\n", "<br/>")
+                )
+                self.error_abort.emit(qt_message)
+                print(error_message)
                 import traceback
 
                 print(traceback.format_exc())
@@ -109,7 +118,14 @@ class ExtractSetupThread(QThread):
         try:
             self.wit_manager.ensure_wit_installed()
         except (HTTPError, URLError) as e:
-            self.error_abort.emit(str(e))
+            error_message = (
+                f"Couldn't install wit; error: {e}\n" "Please install wit manually"
+            )
+            qt_message = (
+                error_message.replace("<", "[").replace(">", "]").replace("\n", "<br/>")
+            )
+            self.error_abort.emit(qt_message)
+            print(error_message)
             import traceback
 
             print(traceback.format_exc())
