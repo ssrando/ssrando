@@ -121,6 +121,10 @@ blr
 .org 0x8024d438
 bl fix_freestanding_item_y_offset
 
+; allow triforces to fall down when bonked
+.org 0x8024edbc
+li r3, 0
+
 ; don't treat faron statues differently after levias
 .org 0x80142078
 b 0x801420d8
@@ -675,4 +679,26 @@ rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
 ; .org 0x80f35a18
 .org 0x8E8
 b set_sot_placed_flag
+.close
+
+; make sure groose stays at his groosenator after finishing faron SotH
+.open "d_a_npc_bbrvlNP.rel"
+; .org 0x80992b24
+.org 0x4214
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x80992870
+.org 0x3f60
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x80992610
+.org 0x3d00
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x8099fe74
+.org 0x11564
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x8099ff1c
+.org 0x1160c
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x809a0528
+.org 0x11c18
+li r3, 0 ; act as if storyflag 16 is not set
 .close
