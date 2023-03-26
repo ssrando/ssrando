@@ -2349,7 +2349,7 @@ class GamePatcher:
             rng.shuffle(locs)
             # print(locs)
 
-            for ((id, room), (params, actor_name)) in zip(
+            for (id, room), (params, actor_name) in zip(
                 locs,
                 params,
             ):
@@ -2776,7 +2776,7 @@ class GamePatcher:
             start_flags_write.write(struct.pack(">H", flag))
         start_flags_write.write(bytes.fromhex("FFFF"))
         # itemflags
-        for (flag, count) in self.startitemflags.items():
+        for flag, count in self.startitemflags.items():
             assert flag < 0x1FF
             assert count < 0x7F
             start_flags_write.write(struct.pack(">H", (count << 9) | flag))
