@@ -176,11 +176,12 @@ class RandoGUI(QMainWindow):
 
         # Exlcuded Locations UI
         self.exclude_locations_pair = ListPair(
-            self.ui.excluded_locations, self.ui.included_locations, "excluded-locations"
+            self.ui.excluded_locations,
+            self.ui.included_locations,
+            "excluded-locations",
+            self.ui.exclude_location,
+            self.ui.include_location,
         )
-
-        self.exclude_locations_pair.set_add_button(self.ui.exclude_location)
-        self.exclude_locations_pair.set_remove_button(self.ui.include_location)
         self.exclude_locations_pair.listPairChanged.connect(self.update_settings)
 
         self.ui.excluded_free_search.textChanged.connect(
@@ -192,11 +193,12 @@ class RandoGUI(QMainWindow):
 
         # Starting Items UI
         self.starting_items_pair = ListPair(
-            self.ui.starting_items, self.ui.randomized_items, "starting-items"
+            self.ui.starting_items,
+            self.ui.randomized_items,
+            "starting-items",
+            self.ui.start_with_item,
+            self.ui.randomize_item,
         )
-
-        self.starting_items_pair.set_add_button(self.ui.start_with_item)
-        self.starting_items_pair.set_remove_button(self.ui.randomize_item)
         self.starting_items_pair.listPairChanged.connect(self.update_settings)
 
         self.ui.starting_items_free_search.textChanged.connect(

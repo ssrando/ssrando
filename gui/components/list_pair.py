@@ -14,6 +14,8 @@ class ListPair(QObject):
         option_list: QListView,
         non_option_list: QListView,
         option_string: str,
+        add_button: QPushButton,
+        remove_button: QPushButton,
     ):
         super().__init__()
         self.option_list = option_list
@@ -38,10 +40,7 @@ class ListPair(QObject):
         self.non_option_list_model.setStringList(OPTIONS[self.option_string]["choices"])
         self.non_option_list.setModel(self.non_option_list_proxy)
 
-    def set_add_button(self, add_button: QPushButton):
         add_button.clicked.connect(self.add)
-
-    def set_remove_button(self, remove_button: QPushButton):
         remove_button.clicked.connect(self.remove)
 
     def update_option_list_filter(self, new_text: str | None):

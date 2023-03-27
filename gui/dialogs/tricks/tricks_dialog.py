@@ -21,13 +21,14 @@ class TricksDialog(QDialog):
         self.tricks_command = tricks_command
 
         self.enabled_tricks_pair = ListPair(
-            self.ui.enabled_tricks, self.ui.disabled_tricks, self.tricks_command
+            self.ui.enabled_tricks,
+            self.ui.disabled_tricks,
+            self.tricks_command,
+            self.ui.enable_trick,
+            self.ui.disable_trick,
         )
 
         self.enabled_tricks_pair.update(enabled_tricks)
-
-        self.enabled_tricks_pair.set_add_button(self.ui.enable_trick)
-        self.enabled_tricks_pair.set_remove_button(self.ui.disable_trick)
 
         self.ui.enabled_tricks_free_search.textChanged.connect(
             self.enabled_tricks_pair.update_option_list_filter
