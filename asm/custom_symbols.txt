@@ -12,6 +12,7 @@ main.dol:
   rando_text_command_handler: 0x80678818
   textbox_a_pressed_or_b_held: 0x80678A30
   set_goddess_sword_pulled_scene_flag: 0x80678A60
+  randomize_boss_key_start_pos: 0x80678A8C
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
@@ -39,5 +40,3 @@ d_t_rock_boatNP.rel:
   custom_eldin_platform_comparison: 0xDC8
 d_t_player_restartNP.rel:
   only_set_flag_conditionally: 0x6A4
-d_a_obj_door_bossNP.rel:
-  set_randomized_bk_angles: 0xAA70
