@@ -55,7 +55,7 @@ HIGH_CONTRAST_THEME_PATH = (
     RANDO_ROOT_PATH / "gui" / "themes" / "high_contrast_theme.json"
 )
 READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "readability_theme.json"
-CUSTOM_THEME_PATH = RANDO_ROOT_PATH / "custom_theme.json"
+CUSTOM_THEME_PATH = "custom_theme.json"
 
 # Add stylesheet overrides here.
 BASE_STYLE_SHEET_OVERRIDES = ""
