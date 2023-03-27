@@ -38,6 +38,7 @@
   - A new option for `disable-bit` has been added that prevents all instances of the Back in Time (BiT) trick from being performed
   - A new option for `vanilla` has been added that keeps the vanilla game behaviour where BiT is possible but crashes under certain circumstances
   - The `fix-bit-crashes` option works the same as it did previously
+- Added option to randomize the boss key puzzles (by CovenEsme)
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories

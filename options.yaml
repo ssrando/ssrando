@@ -839,4 +839,9 @@
   bits: 5
   help: How many heart pieces to start with.
   ui: option_starting_heart_pieces
-
+- name: Randomize Boss Key Puzzles
+  command: randomize-boss-key-puzzles
+  type: boolean
+  default: false
+  help: "If enabled, the starting position of the boss keys will be randomized."
+  ui: option_randomize_boss_key_puzzles

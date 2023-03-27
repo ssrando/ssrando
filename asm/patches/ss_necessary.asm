@@ -696,4 +696,3 @@ li r3, 0 ; act as if storyflag 16 is not set
 .org 0x11c18
 li r3, 0 ; act as if storyflag 16 is not set
 .close
-

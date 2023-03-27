@@ -39,3 +39,5 @@ d_t_rock_boatNP.rel:
   custom_eldin_platform_comparison: 0xDC8
 d_t_player_restartNP.rel:
   only_set_flag_conditionally: 0x6A4
+d_a_obj_door_bossNP.rel:
+  set_randomized_bk_angles: 0xAA70

@@ -1548,6 +1548,27 @@ class GamePatcher:
             ]
         }
 
+        if self.placement_file.options["randomize-boss-key-puzzles"]:
+            self.add_asm_patch("randomize_boss_key_puzzles")
+            rng = random.Random(self.placement_file.bk_angle_seed)
+
+            INITIAL_INSERT_ANGLE_TABLE = 0x8684
+            boss_keys = 6  # SV, ET, LMF, AC, FS, SSH
+            angles = 3  # x, y, z
+            halfword = 2  # bytes
+
+            for offset in range(0, boss_keys * angles * halfword, halfword):
+                random_angle = rng.randint(0, 0xFFFF)
+
+                self.all_asm_patches["d_a_obj_door_bossNP.rel"][
+                    INITIAL_INSERT_ANGLE_TABLE + offset
+                ] = {
+                    "Data": [
+                        random_angle >> 8,
+                        random_angle & 0xFF,
+                    ]
+                }
+
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / "asm" / "custom_symbols.txt").open("r") as f:
             self.custom_symbols = yaml.safe_load(f)
