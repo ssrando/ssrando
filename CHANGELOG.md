@@ -108,6 +108,8 @@
   - The 2 small chests previously found within the Goddess Statue have been removed
 - Removed all skippable cutscenes except boss intro cutscenes (by CovenEsme)
   - When starting a new file, Link will now spawn directly in his room
+- Removed first set of bars in Sky Keep (by CovenEsme)
+  - The first chest in Sky Keep is no longer required to get the other checks within Sky Keep
 - Expanded arc replacements to cover the remaining unpatched arcs (by Muzu)
   - Previously unpatched arcs (such as DoButton.arc) are now picked up from the arc replacements folder and patched
   - The arc replacements folder now supports sub folders so people can organise arcs freely
