@@ -108,6 +108,41 @@ DEFAULT_AREA = OrderedDict(
     dummy=b"\xFF\xFF\xFF",
 )
 
+DEFAULT_PATH = OrderedDict(
+    unk1=-1,
+    unk2=-1,
+    pnt_start_idx=0,
+    pnt_total_count=0,
+    unk3=b"\xFF\xFF\xFF\xFF\x00\xFF",
+)
+
+DEFAULT_PNT = OrderedDict(
+    posx=0.0,
+    posy=0.0,
+    posz=0.0,
+    unk=b"\xFF\xFF\xFF\xFF",
+)
+
+# cutscenes to use to set storyflags, sceneflags and itemflags
+START_CUTSCENES = [
+    # stage, room, eventindex
+    ("F000", 0, 22),
+    ("F000", 0, 23),
+    ("F001r", 1, 2),
+    ("F405", 0, 0),
+]
+
+# The stage name of each dungeon
+DUNGEON_STAGES = {
+    SV: "D100",
+    AC: "D101",
+    ET: "D200",
+    FS: "D201",
+    LMF: "D300",
+    SSH: "D301",
+    SK: "D003_7",
+}
+
 # The stage for each map where there are dungeon entrances
 DUNGEON_ENTRANCE_STAGES = {
     # stage, room, scen
@@ -1028,6 +1063,17 @@ def try_patch_obj(obj, key, value):
             obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0, value)
         elif key == "unsetscenefid":
             obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 8, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj["name"] == "PushBlk":
+        if key == "pathIdx":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 4, value)
+        elif key == "goalscenefid":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 12, value)
+        elif key == "useLargerRadius":
+            obj["params1"] = mask_shift_set(obj["params1"], 0x03, 30, value)
+        elif key == "isSwitchGoal":
+            obj["params1"] = mask_shift_set(obj["params1"], 0x03, 28, value)
         else:
             print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
     else:
@@ -2366,6 +2412,23 @@ class GamePatcher:
                 bzs["LYSE"] = layer_override
                 modified = True
         next_id = highest_objid(bzs) + 1
+        for pathadd in filter(
+            lambda x: x["type"] == "pathadd" and x.get("room", None) == room,
+            stagepatches,
+        ):
+            new_path = DEFAULT_PATH.copy()
+            next_pnt = len(bzs["PNT "])
+            new_path["pnt_start_idx"] = next_pnt
+            new_path["pnt_total_count"] = len(pathadd["pnts"])
+            bzs["PATH"].append(new_path)
+            pnts_to_add = pathadd["pnts"]
+            for pnt in pnts_to_add:
+                new_pnt = DEFAULT_PNT.copy()
+                for key, val in pnt.items():
+                    if key in new_pnt:
+                        new_pnt[key] = val
+                bzs["PNT "].append(new_pnt)
+            modified = True
         for objadd in filter(
             lambda x: x["type"] == "objadd" and x.get("room", None) == room,
             stagepatches,
