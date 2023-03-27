@@ -81,14 +81,12 @@ class ListPair(QObject):
     def update(self, current_setting):
         self._store_and_remove_filters()
 
+        not_chosen = OPTIONS[self.option_string]["choices"].copy()
+        for choice in current_setting:
+            not_chosen.remove(choice)
+
         self.option_list_model.setStringList(current_setting)
-        self.non_option_list_model.setStringList(
-            [
-                choice
-                for choice in OPTIONS[self.option_string]["choices"]
-                if choice not in current_setting
-            ]
-        )
+        self.non_option_list_model.setStringList(not_chosen)
         self.option_list.setModel(self.option_list_proxy)
         self.non_option_list.setModel(self.non_option_list_proxy)
 
