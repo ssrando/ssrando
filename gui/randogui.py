@@ -2,7 +2,7 @@ import os
 import sys
 from pathlib import Path
 from gui.components.list_pair import ListPair
-import pyperclip
+import pyclip
 import qdarktheme
 import random
 
@@ -745,7 +745,7 @@ class RandoGUI(QMainWindow):
         self.update_ui_for_settings()
 
     def copy_permalink_to_clipboard(self):
-        pyperclip.copy(self.ui.permalink.text())
+        pyclip.copy(self.ui.permalink.text())
 
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
