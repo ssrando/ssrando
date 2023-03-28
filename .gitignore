@@ -189,7 +189,7 @@ custom-music/
 models/*
 !models/README.md
 
-assets/default-link-data/metadata.json
+assets/default-link-data/color_data.json
 
 # temp asm
 *.s

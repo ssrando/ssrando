@@ -2083,7 +2083,7 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QLabel" name="label_colour_preset_select_label">
+             <widget class="QLabel" name="label_color_preset_select_label">
               <property name="text">
                <string>Model Type</string>
               </property>
@@ -2129,7 +2129,7 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_29">
             <item>
-             <layout class="QVBoxLayout" name="vlay_texture_colours">
+             <layout class="QVBoxLayout" name="vlay_texture_colors">
               <item>
                <widget class="QLabel" name="label">
                 <property name="text">

@@ -40,7 +40,7 @@ class ColorButton(QPushButton):
         else:
             if not COLOR_REGEX.match(newColor):
                 raise ValueError(
-                    f"Invalid color value in model metadata, expected format '#XXXXXXXX' but got {newColor}."
+                    f"Invalid color value in model color_data, expected format '#XXXXXXXX' but got {newColor}."
                 )
             self.color = self.color_int_from_str(newColor)
             self.colorChanged.emit(newColor, self.name)

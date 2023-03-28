@@ -5,7 +5,7 @@ from io import BytesIO
 from collections import defaultdict
 import shutil
 
-import colourReplace as cr
+import colorReplace as cr
 from paths import RANDO_ROOT_PATH
 import os
 import json
@@ -30,12 +30,12 @@ TEXT_ARC_REGEX = re.compile(
 LANGUAGES = {"EU": "en_GB", "US": "en_US", "JP": "ja_JP"}
 
 LINK_MODEL_DATA_PATH = RANDO_ROOT_PATH / "assets" / "default-link-data"
+DEFAULT_COLOR_DATA_PATH = LINK_MODEL_DATA_PATH / "color_data.json"
 CUSTOM_MODELS_PATH = Path("models")
+LINK_COLOR_DATA_PATH = CUSTOM_MODELS_PATH / "link_color_data.json"
 OARC_PATH = Path("oarc")
 
 MASK_REGEX = re.compile(r"(.+(/|\\))*(?P<texName>(a|p)l_.+)_(?P<colorGroupName>.+).png")
-
-DEFAULT_COLOUR_METADATA_PATH = LINK_MODEL_DATA_PATH / "metadata.json"
 
 
 class AllPatcher:
@@ -228,15 +228,17 @@ class AllPatcher:
         self.mask_lookup = {}
 
         if self.current_custom_model_pack_name == "Link":
+            color_data_path = LINK_COLOR_DATA_PATH
             model_pack_path = LINK_MODEL_DATA_PATH
             linkArcPath = OARC_PATH / "Alink.arc"
         else:
             model_pack_path = CUSTOM_MODELS_PATH / self.current_custom_model_pack_name
+            color_data_path = model_pack_path / "color_data.json"
             linkArcPath = model_pack_path / "Alink.arc"
 
-        if os.path.isfile(model_pack_path / "metadata.json"):
-            with open(model_pack_path / "metadata.json") as f:
-                self.color_metadata = json.load(f)
+        if os.path.isfile(color_data_path):
+            with open(color_data_path) as f:
+                self.color_data = json.load(f)
 
         for p in Path(model_pack_path / "TextureMasks" / "Player").iterdir():
             if match := MASK_REGEX.match(str(p)):
@@ -246,7 +248,7 @@ class AllPatcher:
                     match.group("colorGroupName")
                 )
 
-        self.hero_color_data = self.color_metadata.get("Hero")
+        self.hero_color_data = self.color_data.get("Hero")
 
         linkArcBytes = linkArcPath.read_bytes()
         parsedLinkArc = U8File.parse_u8(BytesIO(linkArcBytes))

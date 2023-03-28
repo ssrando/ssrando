@@ -1436,10 +1436,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.label_colour_preset_select_label = QLabel(self.tab_cosmetics)
-        self.label_colour_preset_select_label.setObjectName(u"label_colour_preset_select_label")
+        self.label_color_preset_select_label = QLabel(self.tab_cosmetics)
+        self.label_color_preset_select_label.setObjectName(u"label_color_preset_select_label")
 
-        self.horizontalLayout_2.addWidget(self.label_colour_preset_select_label)
+        self.horizontalLayout_2.addWidget(self.label_color_preset_select_label)
 
         self.option_model_type_select = QComboBox(self.tab_cosmetics)
         self.option_model_type_select.setObjectName(u"option_model_type_select")
@@ -1465,19 +1465,19 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1052, 457))
         self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.vlay_texture_colours = QVBoxLayout()
-        self.vlay_texture_colours.setObjectName(u"vlay_texture_colours")
+        self.vlay_texture_colors = QVBoxLayout()
+        self.vlay_texture_colors.setObjectName(u"vlay_texture_colors")
         self.label = QLabel(self.scrollAreaWidgetContents_3)
         self.label.setObjectName(u"label")
 
-        self.vlay_texture_colours.addWidget(self.label)
+        self.vlay_texture_colors.addWidget(self.label)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.vlay_texture_colours.addItem(self.verticalSpacer)
+        self.vlay_texture_colors.addItem(self.verticalSpacer)
 
 
-        self.verticalLayout_29.addLayout(self.vlay_texture_colours)
+        self.verticalLayout_29.addLayout(self.vlay_texture_colors)
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents_3)
 
@@ -1875,7 +1875,7 @@ class Ui_MainWindow(object):
         self.current_starting_health_counter.setText(QCoreApplication.translate("MainWindow", u"6 hearts", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))
         self.label_player_model_select.setText(QCoreApplication.translate("MainWindow", u"Model Pack", None))
-        self.label_colour_preset_select_label.setText(QCoreApplication.translate("MainWindow", u"Model Type", None))
+        self.label_color_preset_select_label.setText(QCoreApplication.translate("MainWindow", u"Model Type", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Hero Colors", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cosmetics), QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.box_theme.setTitle(QCoreApplication.translate("MainWindow", u"Theming", None))

@@ -62,9 +62,9 @@ READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "readability_theme
 CUSTOM_THEME_PATH = "custom_theme.json"
 
 LINK_MODEL_DATA_PATH = RANDO_ROOT_PATH / "assets" / "default-link-data"
-CUSTOM_MODELS_PATH = RANDO_ROOT_PATH / "models"
-DEFAULT_LINK_COLOUR_METADATA_PATH = LINK_MODEL_DATA_PATH / "default_metadata.json"
-LINK_COLOUR_METADATA_PATH = LINK_MODEL_DATA_PATH / "metadata.json"
+DEFAULT_LINK_COLOR_DATA_PATH = LINK_MODEL_DATA_PATH / "default_color_data.json"
+CUSTOM_MODELS_PATH = Path("models")
+LINK_COLOR_DATA_PATH = CUSTOM_MODELS_PATH / "link_color_data.json"
 
 # Add stylesheet overrides here.
 BASE_STYLE_SHEET_OVERRIDES = ""
@@ -253,7 +253,7 @@ class RandoGUI(QMainWindow):
         self.preset_selection_changed()
 
         # cosmetics stuff - move to func and connect to dropdown
-        self.colour_box = getattr(self.ui, "vlay_texture_colours")
+        self.color_box = getattr(self.ui, "vlay_texture_colors")
 
         if not CUSTOM_MODELS_PATH.is_dir():
             CUSTOM_MODELS_PATH.mkdir()
@@ -272,8 +272,8 @@ class RandoGUI(QMainWindow):
         self.current_model_pack = self.options[
             "selected-model-pack"
         ]  # get from saved option and update drop-down
-        self.generate_default_metadata()
-        self.read_color_metadata()
+        self.generate_default_color_data()
+        self.read_color_data()
 
         self.change_model_pack()
 
@@ -752,10 +752,10 @@ class RandoGUI(QMainWindow):
 
     def change_model_pack(self, index: int = 0):
         self.current_model_pack = self.ui.option_model_pack_select.currentText()
-        self.read_color_metadata()
+        self.read_color_data()
 
         self.ui.option_model_type_select.clear()
-        for model_type in self.color_metadata:
+        for model_type in self.color_data:
             self.ui.option_model_type_select.addItem(model_type)
 
     def change_model_type(self, index: int):
@@ -764,58 +764,56 @@ class RandoGUI(QMainWindow):
         self.current_model_type = self.ui.option_model_type_select.currentText()
         self.update_model_customisation()
 
-    def read_color_metadata(self):
+    def read_color_data(self):
         if self.current_model_pack == "Link":
-            self.color_metadata_path = LINK_COLOUR_METADATA_PATH
+            self.color_data_path = LINK_COLOR_DATA_PATH
         else:
-            self.color_metadata_path = (
-                CUSTOM_MODELS_PATH / self.current_model_pack / "metadata.json"
+            self.color_data_path = (
+                CUSTOM_MODELS_PATH / self.current_model_pack / "color_data.json"
             )
 
-        if os.path.isfile(self.color_metadata_path):
-            with open(self.color_metadata_path) as f:
-                self.color_metadata = json.load(f)
+        if os.path.isfile(self.color_data_path):
+            with open(self.color_data_path) as f:
+                self.color_data = json.load(f)
         else:
-            raise Exception(f"No metadata file found at: {self.color_metadata_path}")
+            raise Exception(f"No color_data file found at: {self.color_data_path}")
 
-    def generate_default_metadata(self):
-        if os.path.isfile(LINK_COLOUR_METADATA_PATH):
+    def generate_default_color_data(self):
+        if os.path.isfile(LINK_COLOR_DATA_PATH):
             return
-        print("Generating default metadata file")
-        with open(DEFAULT_LINK_COLOUR_METADATA_PATH) as f:
-            default_metadata_json = json.load(f)
-        with open(LINK_COLOUR_METADATA_PATH, "w") as f:
-            json.dump(default_metadata_json, f)
+        print("Generating default color_data file")
+        with open(DEFAULT_LINK_COLOR_DATA_PATH) as f:
+            default_color_data_json = json.load(f)
+        with open(LINK_COLOR_DATA_PATH, "w") as f:
+            json.dump(default_color_data_json, f)
 
-    def model_colour_changed(self, color: str, name: str):
-        self.color_metadata[self.current_model_type][name] = color
+    def model_color_changed(self, color: str, name: str):
+        self.color_data[self.current_model_type][name] = color
 
-        with open(self.color_metadata_path, "w") as f:
-            json.dump(self.color_metadata, f)
+        with open(self.color_data_path, "w") as f:
+            json.dump(self.color_data, f)
 
         self.update_model_preview()
 
     def update_model_customisation(self):
-        currentModelMetadata = self.color_metadata.get(self.current_model_type)
+        current_model_color_data = self.color_data.get(self.current_model_type)
         counter = 1
 
-        while self.colour_box.count() > 2:
-            layout = self.colour_box.takeAt(1).layout()
+        while self.color_box.count() > 2:
+            layout = self.color_box.takeAt(1).layout()
             while layout.count() > 0:
                 widget = layout.takeAt(0).widget()
                 widget.deleteLater()
             layout.deleteLater()
 
-        for mask_name in currentModelMetadata:
+        for mask_name in current_model_color_data:
             color_label = QLabel(mask_name)
 
             color_button = ColorButton(mask_name)
-            color_button.set_color(
-                self.color_metadata[self.current_model_type][mask_name]
-            )
+            color_button.set_color(self.color_data[self.current_model_type][mask_name])
             reset_color_button = QPushButton("Reset Color")
 
-            color_button.colorChanged.connect(self.model_colour_changed)
+            color_button.colorChanged.connect(self.model_color_changed)
             reset_color_button.clicked.connect(color_button.reset_color)
 
             color_button_layout = QHBoxLayout()
@@ -823,7 +821,7 @@ class RandoGUI(QMainWindow):
             color_button_layout.insertWidget(1, color_button)
             color_button_layout.insertWidget(2, reset_color_button)
 
-            self.colour_box.insertLayout(counter, color_button_layout)
+            self.color_box.insertLayout(counter, color_button_layout)
             counter += 1
 
         self.update_model_preview()
