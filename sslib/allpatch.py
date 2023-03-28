@@ -66,6 +66,8 @@ class AllPatcher:
             for replace_path in arc_replacement_path.rglob("*.arc"):
                 arcname = replace_path.parts[-1]
                 self.arc_replacements[arcname] = replace_path
+        else:
+            arc_replacement_path.mkdir()
         self.objpackoarcadd = []
         self.objPackCustomModelAdd = None
         self.stage_oarc_add = {}

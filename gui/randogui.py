@@ -254,6 +254,9 @@ class RandoGUI(QMainWindow):
 
         # cosmetics stuff - move to func and connect to dropdown
 
+        if not CUSTOM_MODELS_PATH.is_dir():
+            CUSTOM_MODELS_PATH.mkdir()
+
         for p in Path(CUSTOM_MODELS_PATH).iterdir():
             if p.is_dir():
                 self.ui.option_model_pack_select.addItem(p.name)
