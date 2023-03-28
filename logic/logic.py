@@ -538,7 +538,6 @@ class Logic:
         return True
 
     def replace_item(self, location: EIN, item: EIN, old_hint: EIN | None = None):
-
         if hint_mode := old_hint is not None:
             if location not in self.placement.stones:
                 raise ValueError(f"Hint stone {location} is empty.")
