@@ -18,8 +18,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
     QFontComboBox, QFrame, QGroupBox, QHBoxLayout,
     QLabel, QLayout, QLineEdit, QListView,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QSpinBox, QTabWidget, QVBoxLayout, QWidget)
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QSpinBox, QTabWidget, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1456,19 +1457,31 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_31.addLayout(self.custom_model_settings)
 
-        self.vlay_test_colour = QVBoxLayout()
-        self.vlay_test_colour.setObjectName(u"vlay_test_colour")
-        self.label = QLabel(self.tab_cosmetics)
+        self.scrollArea = QScrollArea(self.tab_cosmetics)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_3 = QWidget()
+        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1052, 457))
+        self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents_3)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.vlay_texture_colours = QVBoxLayout()
+        self.vlay_texture_colours.setObjectName(u"vlay_texture_colours")
+        self.label = QLabel(self.scrollAreaWidgetContents_3)
         self.label.setObjectName(u"label")
 
-        self.vlay_test_colour.addWidget(self.label)
+        self.vlay_texture_colours.addWidget(self.label)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.vlay_test_colour.addItem(self.verticalSpacer)
+        self.vlay_texture_colours.addItem(self.verticalSpacer)
 
 
-        self.verticalLayout_31.addLayout(self.vlay_test_colour)
+        self.verticalLayout_29.addLayout(self.vlay_texture_colours)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents_3)
+
+        self.verticalLayout_31.addWidget(self.scrollArea)
 
         self.tabWidget.addTab(self.tab_cosmetics, "")
         self.tab_accessibility = QWidget()
@@ -1555,7 +1568,7 @@ class Ui_MainWindow(object):
         self.option_font_family.setWritingSystem(QFontDatabase.Any)
         self.option_font_family.setFontFilters(QFontComboBox.ScalableFonts)
         font1 = QFont()
-        font1.setFamilies([u"Noto Sans"])
+        font1.setFamilies([u"Arial"])
         font1.setPointSize(10)
         self.option_font_family.setCurrentFont(font1)
 
@@ -1875,7 +1888,7 @@ class Ui_MainWindow(object):
         self.option_use_sharp_corners.setText(QCoreApplication.translate("MainWindow", u"Sharp Corners", None))
         self.box_font.setTitle(QCoreApplication.translate("MainWindow", u"Fonts", None))
         self.label_for_option_font_family.setText(QCoreApplication.translate("MainWindow", u"Font Family", None))
-        self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Noto Sans", None))
+        self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Arial", None))
         self.option_font_family.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select Font Family", None))
         self.label_for_option_font_size.setText(QCoreApplication.translate("MainWindow", u"Font Size", None))
         self.reset_font_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))

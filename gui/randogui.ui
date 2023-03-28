@@ -2114,28 +2114,47 @@
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="vlay_test_colour">
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Hero Colors</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_3">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>1052</width>
+             <height>457</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_29">
+            <item>
+             <layout class="QVBoxLayout" name="vlay_texture_colours">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Hero Colors</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -2267,7 +2286,7 @@
                 <bool>false</bool>
                </property>
                <property name="currentText">
-                <string>Noto Sans</string>
+                <string>Arial</string>
                </property>
                <property name="sizeAdjustPolicy">
                 <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
@@ -2283,7 +2302,7 @@
                </property>
                <property name="currentFont">
                 <font>
-                 <family>Noto Sans</family>
+                 <family>Arial</family>
                  <pointsize>10</pointsize>
                 </font>
                </property>

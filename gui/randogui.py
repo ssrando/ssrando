@@ -253,6 +253,7 @@ class RandoGUI(QMainWindow):
         self.preset_selection_changed()
 
         # cosmetics stuff - move to func and connect to dropdown
+        self.colour_box = getattr(self.ui, "vlay_texture_colours")
 
         if not CUSTOM_MODELS_PATH.is_dir():
             CUSTOM_MODELS_PATH.mkdir()
@@ -264,23 +265,17 @@ class RandoGUI(QMainWindow):
             self.change_model_pack
         )
 
+        self.ui.option_model_type_select.currentIndexChanged.connect(
+            self.change_model_type
+        )
+
         self.current_model_pack = self.options[
             "selected-model-pack"
         ]  # get from saved option and update drop-down
         self.generate_default_metadata()
         self.read_color_metadata()
 
-        for model_type in self.color_metadata:
-            self.ui.option_model_type_select.addItem(model_type)
-        self.ui.option_model_type_select.currentIndexChanged.connect(
-            self.change_model_type
-        )
-
-        self.current_model_type = self.ui.option_model_type_select.itemText(0)
-
-        self.colour_box = getattr(self.ui, "vlay_test_colour")
-
-        self.update_model_customisation()
+        self.change_model_pack()
 
         # hide currently unsupported options to make this version viable for public use
         getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
@@ -755,12 +750,17 @@ class RandoGUI(QMainWindow):
 
     # Custom model customisation funcs
 
-    def change_model_pack(self, index: int):
+    def change_model_pack(self, index: int = 0):
         self.current_model_pack = self.ui.option_model_pack_select.currentText()
         self.read_color_metadata()
-        self.update_model_customisation()
+
+        self.ui.option_model_type_select.clear()
+        for model_type in self.color_metadata:
+            self.ui.option_model_type_select.addItem(model_type)
 
     def change_model_type(self, index: int):
+        if self.ui.option_model_type_select.count() < 1:
+            return
         self.current_model_type = self.ui.option_model_type_select.currentText()
         self.update_model_customisation()
 
@@ -809,21 +809,21 @@ class RandoGUI(QMainWindow):
         for mask_name in currentModelMetadata:
             color_label = QLabel(mask_name)
 
-            test_color_button = ColorButton(mask_name)
-            test_color_button.set_color(
+            color_button = ColorButton(mask_name)
+            color_button.set_color(
                 self.color_metadata[self.current_model_type][mask_name]
             )
-            test_color_button_reset = QPushButton("Reset Color")
+            reset_color_button = QPushButton("Reset Color")
 
-            test_color_button.colorChanged.connect(self.model_colour_changed)
-            test_color_button_reset.clicked.connect(test_color_button.reset_color)
+            color_button.colorChanged.connect(self.model_colour_changed)
+            reset_color_button.clicked.connect(color_button.reset_color)
 
-            test_color_button_layout = QHBoxLayout()
-            test_color_button_layout.insertWidget(0, color_label)
-            test_color_button_layout.insertWidget(1, test_color_button)
-            test_color_button_layout.insertWidget(2, test_color_button_reset)
+            color_button_layout = QHBoxLayout()
+            color_button_layout.insertWidget(0, color_label)
+            color_button_layout.insertWidget(1, color_button)
+            color_button_layout.insertWidget(2, reset_color_button)
 
-            self.colour_box.insertLayout(counter, test_color_button_layout)
+            self.colour_box.insertLayout(counter, color_button_layout)
             counter += 1
 
         self.update_model_preview()
