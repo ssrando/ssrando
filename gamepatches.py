@@ -1134,12 +1134,14 @@ class GamePatcher:
         self.exe_root_path = exe_root_path
         self.actual_extract_path = actual_extract_path
         self.modified_extract_path = modified_extract_path
+
         self.patcher = AllPatcher(
             actual_extract_path=actual_extract_path,
             modified_extract_path=modified_extract_path,
             oarc_cache_path=oarc_cache_path,
             arc_replacement_path=arc_replacement_path,
             assets_path=RANDO_ROOT_PATH / "assets",
+            current_custom_model_pack_name=self.placement_file.options["selected-model-pack"],
             copy_unmodified=False,
         )
         self.text_labels = {}

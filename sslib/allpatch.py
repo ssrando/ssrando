@@ -5,11 +5,20 @@ from io import BytesIO
 from collections import defaultdict
 import shutil
 
+import colourReplace as cr
+from paths import RANDO_ROOT_PATH
+import os
+import json
+
 import nlzss11
 from .bzs import ParsedBzs, parseBzs, buildBzs
 from .msb import ParsedMsb, parseMSB, buildMSB
 from .u8file import U8File
 from .utils import write_bytes_create_dirs
+
+from brresTools.brres import BRRES
+from brresTools.TEX0 import TEX0
+import numpy as np
 
 STAGE_REGEX = re.compile("(.+)_stg_l([0-9]+).arc.LZ")
 EVENT_REGEX = re.compile("([0-9])-[A-Za-z]+.arc")
@@ -20,6 +29,14 @@ TEXT_ARC_REGEX = re.compile(
 )
 LANGUAGES = {"EU": "en_GB", "US": "en_US", "JP": "ja_JP"}
 
+LINK_MODEL_DATA_PATH = RANDO_ROOT_PATH / "assets" / "default-link-data"
+CUSTOM_MODELS_PATH = RANDO_ROOT_PATH / "models"
+OARC_PATH = RANDO_ROOT_PATH / "oarc"
+
+MASK_REGEX = re.compile(r"(.+(/|\\))*(?P<texName>(a|p)l_.+)_(?P<colorGroupName>.+).png")
+
+DEFAULT_COLOUR_METADATA_PATH = LINK_MODEL_DATA_PATH / "metadata.json"
+
 
 class AllPatcher:
     def __init__(
@@ -29,6 +46,7 @@ class AllPatcher:
         oarc_cache_path: Path,
         arc_replacement_path: Path,
         assets_path: Path,
+        current_custom_model_pack_name: str,
         copy_unmodified: bool = True,
     ):
         """
@@ -41,6 +59,7 @@ class AllPatcher:
         self.modified_extract_path = modified_extract_path
         self.oarc_cache_path = oarc_cache_path
         self.assets_path = assets_path
+        self.current_custom_model_pack_name = current_custom_model_pack_name
         self.copy_unmodified = copy_unmodified
         self.arc_replacements = {}
         if arc_replacement_path.is_dir():
@@ -48,6 +67,7 @@ class AllPatcher:
                 arcname = replace_path.parts[-1]
                 self.arc_replacements[arcname] = replace_path
         self.objpackoarcadd = []
+        self.objPackCustomModelAdd = None
         self.stage_oarc_add = {}
         self.stage_oarc_delete = {}
         self.bzs_patch = None
@@ -202,10 +222,63 @@ class AllPatcher:
                 # replaces arc with actual arc if unchanged
                 shutil.copy(path, modified_path)
 
+    def patch_custom_model(self):
+        self.mask_lookup = {}
+
+        if self.current_custom_model_pack_name == 'Link':
+            model_pack_path = LINK_MODEL_DATA_PATH
+            linkArcPath = OARC_PATH / "Alink.arc"
+        else:
+            model_pack_path = CUSTOM_MODELS_PATH / self.current_custom_model_pack_name
+            linkArcPath = model_pack_path / "Alink.arc"
+
+
+
+        if os.path.isfile(model_pack_path / 'metadata.json'):
+            with open(model_pack_path / 'metadata.json') as f:
+                self.color_metadata = json.load(f)
+
+        for p in Path(model_pack_path / "TextureMasks" / "Player").iterdir():
+            if match := MASK_REGEX.match(str(p)):
+                if match.group("texName") not in self.mask_lookup:
+                    self.mask_lookup[match.group("texName")] = []
+                self.mask_lookup[match.group("texName")].append(match.group("colorGroupName"))
+        
+        self.hero_color_data = self.color_metadata.get("Hero")
+
+        linkArcBytes = linkArcPath.read_bytes()
+        parsedLinkArc = U8File.parse_u8(BytesIO(linkArcBytes))
+        brresData = parsedLinkArc.get_file_data("g3d/model.brres")
+        parsedBRRES = BRRES.parse_brres(BytesIO(brresData))
+
+        for texName in self.mask_lookup:
+            texPath = f'Textures(NW4R)/{texName}'
+            imageData: np.array = parsedBRRES.get_file_data(path=texPath)
+            maskPaths = []
+            colors = []
+            process = False
+            print(self.mask_lookup[texName])
+            for colorGroup in self.mask_lookup[texName]:
+                if self.hero_color_data[colorGroup] == "Default": continue
+                maskPath = str(model_pack_path / "TextureMasks" / "Player" / (str(texName) + "_" + str(colorGroup) + ".png"))
+                maskPaths.append(maskPath)
+                colors.append(self.hero_color_data[colorGroup])
+                process = True
+
+            if process:
+                modifiedTexture: np.array = cr.process_texture(texture=imageData, maskPaths=maskPaths, colors=colors)
+                parsedBRRES.set_file_data(path=texPath, data=modifiedTexture)
+        
+        parsedLinkArc.set_file_data("g3d/model.brres", parsedBRRES.to_buffer().read())
+        self.objPackCustomModelAdd = parsedLinkArc.to_buffer()
+        
+        return
+
     def do_patch(self):
         self.modified_extract_path.mkdir(parents=True, exist_ok=True)
 
         self.patch_arc_replacements()
+        self.patch_custom_model()
 
         # stages
         for stagepath in (self.actual_extract_path / "DATA" / "files" / "Stage").glob(
@@ -379,6 +452,10 @@ class AllPatcher:
             )
             object_arc.add_file_data(f"oarc/{arcname}", oarc_path.read_bytes())
             patched_arcs.add(arcname)
+            objpack_modified = True
+
+        if self.objPackCustomModelAdd:
+            object_arc.set_file_data("oarc/Alink.arc", self.objPackCustomModelAdd)
             objpack_modified = True
 
         if self.arc_replacements:

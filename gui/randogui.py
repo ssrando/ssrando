@@ -15,14 +15,18 @@ from PySide6.QtWidgets import (
     QComboBox,
     QErrorMessage,
     QFileDialog,
+    QHBoxLayout,
     QInputDialog,
+    QLabel,
     QLineEdit,
     QListView,
     QMainWindow,
     QMessageBox,
+    QPushButton,
     QRadioButton,
     QSpinBox,
 )
+from gui.components.color_button import ColorButton
 from gui.models.sort_model import SearchableListModel
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
@@ -49,6 +53,10 @@ HIGH_CONTRAST_THEME_PATH = (
 )
 READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "readability_theme.json"
 CUSTOM_THEME_PATH = RANDO_ROOT_PATH / "custom_theme.json"
+
+LINK_MODEL_DATA_PATH = RANDO_ROOT_PATH / "assets" / "default-link-data"
+CUSTOM_MODELS_PATH = RANDO_ROOT_PATH / "models"
+DEFAULT_LINK_COLOUR_METADATA_PATH = LINK_MODEL_DATA_PATH / "metadata.json"
 
 # Add stylesheet overrides here.
 BASE_STYLE_SHEET_OVERRIDES = ""
@@ -101,6 +109,10 @@ class RandoGUI(QMainWindow):
                 elif isinstance(widget, QComboBox):
                     if option["name"] == "Font Family":
                         widget.currentFontChanged.connect(self.update_font)
+                        widget.currentIndexChanged.connect(self.update_settings)
+                        continue
+                    if option["name"] == "Selected Model Pack":
+                        widget.addItem(option["default"])
                         widget.currentIndexChanged.connect(self.update_settings)
                         continue
                     for option_val in option["choices"]:
@@ -260,6 +272,26 @@ class RandoGUI(QMainWindow):
         self.ui.save_preset.clicked.connect(self.save_preset)
         self.ui.delete_preset.clicked.connect(self.delete_preset)
         self.preset_selection_changed()
+
+        # cosmetics stuff - move to func and connect to dropdown
+
+        for p in Path(CUSTOM_MODELS_PATH).iterdir():
+            if p.is_dir():
+                self.ui.option_model_pack_select.addItem(p.name)
+        self.ui.option_model_pack_select.currentIndexChanged.connect(self.change_model_pack)
+
+        self.current_model_pack = self.options["selected-model-pack"] #get from saved option and update drop-down
+        self.read_color_metadata()
+
+        for model_type in self.color_metadata:
+            self.ui.option_model_type_select.addItem(model_type)
+        self.ui.option_model_type_select.currentIndexChanged.connect(self.change_model_type)
+
+        self.current_model_type = self.ui.option_model_type_select.itemText(0)
+
+        self.colour_box = getattr(self.ui, "vlay_test_colour")
+
+        self.update_model_customisation()        
 
         # hide currently unsupported options to make this version viable for public use
         getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
@@ -438,6 +470,10 @@ class RandoGUI(QMainWindow):
                     widget.setChecked(current_settings[option_key])
                 elif isinstance(widget, QComboBox):
                     if option["name"] == "Font Family":
+                        widget.setCurrentIndex(
+                            widget.findText(current_settings[option_key])
+                        )
+                    elif option["name"] == "Selected Model Pack":
                         widget.setCurrentIndex(
                             widget.findText(current_settings[option_key])
                         )
@@ -849,6 +885,73 @@ class RandoGUI(QMainWindow):
             self.disabled_tricks_model.setStringList(old_dis)
             self.enabled_tricks_model.setStringList(old_en)
             self.update_settings()
+
+# Custom model customisation funcs
+
+    def change_model_pack(self, index: int):
+        self.current_model_pack = self.ui.option_model_pack_select.currentText()
+        self.read_color_metadata()
+        self.update_model_customisation()
+
+    def change_model_type(self, index: int):
+        self.current_model_type = self.ui.option_model_type_select.currentText()
+        self.update_model_customisation()
+
+    def read_color_metadata(self): 
+        if self.current_model_pack == 'Link':
+            self.color_metadata_path = DEFAULT_LINK_COLOUR_METADATA_PATH
+        else:
+            self.color_metadata_path = CUSTOM_MODELS_PATH / self.current_model_pack / 'metadata.json'
+
+        if os.path.isfile(self.color_metadata_path):
+            with open(self.color_metadata_path) as f:
+                self.color_metadata = json.load(f)
+        else: 
+            raise Exception(f'No metadata file found at: {self.color_metadata_path}')
+
+    def model_colour_changed(self, color: str, name: str):
+        self.color_metadata[self.current_model_type][name] = color
+
+        with open(self.color_metadata_path, "w") as f:
+            json.dump(self.color_metadata, f)
+
+        self.update_model_preview()
+
+    def update_model_customisation(self):
+        currentModelMetadata = self.color_metadata.get(self.current_model_type)
+        counter = 1
+
+        while self.colour_box.count() > 2:
+            layout = self.colour_box.takeAt(1).layout()
+            while layout.count() > 0:
+                widget = layout.takeAt(0).widget()
+                widget.deleteLater()
+            layout.deleteLater()
+
+        for mask_name in currentModelMetadata:
+            color_label = QLabel(mask_name)
+
+            test_color_button = ColorButton(mask_name)
+            test_color_button.set_color(self.color_metadata[self.current_model_type][mask_name])
+            test_color_button_reset = QPushButton("Reset Color")
+
+            test_color_button.colorChanged.connect(self.model_colour_changed)
+            test_color_button_reset.clicked.connect(test_color_button.reset_color)
+
+            test_color_button_layout = QHBoxLayout()
+            test_color_button_layout.insertWidget(0, color_label)
+            test_color_button_layout.insertWidget(1, test_color_button)
+            test_color_button_layout.insertWidget(2, test_color_button_reset)
+
+            self.colour_box.insertLayout(counter, test_color_button_layout)
+            counter +=1
+
+        self.update_model_preview()
+
+    def update_model_preview(self):
+        pass
+
+        
 
     def eventFilter(self, target: QObject, event: QEvent) -> bool:
         if event.type() == QEvent.Enter:

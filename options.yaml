@@ -953,3 +953,12 @@
   bits: 5
   help: "Determines how many heart pieces to start with."
   ui: option_starting_heart_pieces
+#Player customisation stuff
+- name: Selected Model Pack
+  command: selected-model-pack
+  type: string
+  default: Link
+  permalink: false
+  cosmetic: true
+  help: "Determines the model pack that will be used in game."
+  ui: option_model_pack_select
