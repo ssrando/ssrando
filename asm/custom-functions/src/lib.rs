@@ -198,6 +198,9 @@ pub fn process_startflags() {
     let health_capacity = flag_mem.next_u8().unwrap_or_default();
     unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity.into() };
     unsafe { (*FILE_MANAGER).FA.current_health = health_capacity.into() };
+    // starting interface choice
+    let mode = flag_mem.next_u8().unwrap_or_default();
+    storyflag_set_to_value(840, mode.into());
 
     // commit global flag managers
     unsafe {
