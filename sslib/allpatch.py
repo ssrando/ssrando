@@ -30,8 +30,8 @@ TEXT_ARC_REGEX = re.compile(
 LANGUAGES = {"EU": "en_GB", "US": "en_US", "JP": "ja_JP"}
 
 LINK_MODEL_DATA_PATH = RANDO_ROOT_PATH / "assets" / "default-link-data"
-CUSTOM_MODELS_PATH = RANDO_ROOT_PATH / "models"
-OARC_PATH = RANDO_ROOT_PATH / "oarc"
+CUSTOM_MODELS_PATH = Path("models")
+OARC_PATH = Path("oarc")
 
 MASK_REGEX = re.compile(r"(.+(/|\\))*(?P<texName>(a|p)l_.+)_(?P<colorGroupName>.+).png")
 
