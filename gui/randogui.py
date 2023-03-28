@@ -1,7 +1,8 @@
 import os
 import sys
 from pathlib import Path
-import pyperclip
+from gui.components.list_pair import ListPair
+import pyclip
 import qdarktheme
 import random
 
@@ -27,7 +28,6 @@ from PySide6.QtWidgets import (
     QSpinBox,
 )
 from gui.components.color_button import ColorButton
-from gui.models.sort_model import SearchableListModel
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
 
@@ -45,6 +45,13 @@ import signal
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
+LOGIC_MODE_TO_TRICKS_SETTING = {
+    "Glitchless": None,
+    "BiTless": "enabled-tricks-bitless",
+    "Glitched": "enabled-tricks-glitched",
+    "No Logic": None,
+}
+
 NEW_PRESET = "[New Preset]"
 DEFAULT_PRESETS_PATH = RANDO_ROOT_PATH / "gui" / "presets" / "default_presets.json"
 DEFAULT_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "default_theme.json"
@@ -52,7 +59,7 @@ HIGH_CONTRAST_THEME_PATH = (
     RANDO_ROOT_PATH / "gui" / "themes" / "high_contrast_theme.json"
 )
 READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "readability_theme.json"
-CUSTOM_THEME_PATH = RANDO_ROOT_PATH / "custom_theme.json"
+CUSTOM_THEME_PATH = "custom_theme.json"
 
 LINK_MODEL_DATA_PATH = RANDO_ROOT_PATH / "assets" / "default-link-data"
 CUSTOM_MODELS_PATH = RANDO_ROOT_PATH / "models"
@@ -178,69 +185,40 @@ class RandoGUI(QMainWindow):
 
         # setup misc controls
         self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
+        self.logic_mode_changed()
 
-        # Tricks ui.
-        self.enabled_tricks_model = QStringListModel()
-        self.enabled_tricks_model.setStringList(
-            OPTIONS["enabled-tricks-bitless"]["default"]
+        # Exlcuded Locations UI
+        self.exclude_locations_pair = ListPair(
+            self.ui.excluded_locations,
+            self.ui.included_locations,
+            "excluded-locations",
+            self.ui.exclude_location,
+            self.ui.include_location,
         )
-        self.disabled_tricks_model = QStringListModel()
-        self.disabled_tricks_model.setStringList(
-            OPTIONS["enabled-tricks-bitless"]["choices"]
-        )
+        self.exclude_locations_pair.listPairChanged.connect(self.update_settings)
 
-        # setup exlcuded locations
-        self.excluded_locations_model = QStringListModel()
-        self.excluded_locations_proxy = SearchableListModel(
-            self, OPTIONS["excluded-locations"]["choices"]
-        )
-        self.excluded_locations_proxy.setSourceModel(self.excluded_locations_model)
-        self.excluded_locations_model.setStringList(
-            OPTIONS["excluded-locations"]["default"]
-        )
-        self.included_locations_model = QStringListModel()
-        self.included_locations_proxy = SearchableListModel(
-            self, OPTIONS["excluded-locations"]["choices"]
-        )
-        self.included_locations_proxy.setSourceModel(self.included_locations_model)
-        self.included_locations_model.setStringList(
-            OPTIONS["excluded-locations"]["choices"]
-        )
-        self.ui.excluded_locations.setModel(self.excluded_locations_proxy)
-        self.ui.included_locations.setModel(self.included_locations_proxy)
-        self.ui.exclude_location.clicked.connect(self.exclude_location)
-        self.ui.include_location.clicked.connect(self.include_location)
         self.ui.excluded_free_search.textChanged.connect(
-            self.update_excluded_free_filter
+            self.exclude_locations_pair.update_option_list_filter
         )
         self.ui.included_free_search.textChanged.connect(
-            self.update_included_free_filter
+            self.exclude_locations_pair.update_non_option_list_filter
         )
 
-        # Starting Items ui.
-        self.randomized_items_model = QStringListModel()
-        self.randomized_items_proxy = SearchableListModel(
-            self, OPTIONS["starting-items"]["choices"]
+        # Starting Items UI
+        self.starting_items_pair = ListPair(
+            self.ui.starting_items,
+            self.ui.randomized_items,
+            "starting-items",
+            self.ui.start_with_item,
+            self.ui.randomize_item,
         )
-        self.randomized_items_proxy.setSourceModel(self.randomized_items_model)
-        self.randomized_items_model.setStringList(OPTIONS["starting-items"]["choices"])
+        self.starting_items_pair.listPairChanged.connect(self.update_settings)
 
-        self.starting_items_model = QStringListModel()
-        self.starting_items_proxy = SearchableListModel(
-            self, OPTIONS["starting-items"]["choices"]
-        )
-        self.starting_items_proxy.setSourceModel(self.starting_items_model)
-        self.starting_items_model.setStringList(OPTIONS["starting-items"]["default"])
-
-        self.ui.randomized_items.setModel(self.randomized_items_proxy)
-        self.ui.starting_items.setModel(self.starting_items_proxy)
-        self.ui.randomize_item.clicked.connect(self.remove_starting_item)
-        self.ui.start_with_item.clicked.connect(self.add_starting_item)
-        self.ui.randomized_items_free_search.textChanged.connect(
-            self.update_randomized_items_free_filter
-        )
         self.ui.starting_items_free_search.textChanged.connect(
-            self.update_starting_items_free_filter
+            self.starting_items_pair.update_option_list_filter
+        )
+        self.ui.randomized_items_free_search.textChanged.connect(
+            self.starting_items_pair.update_non_option_list_filter
         )
 
         # setup presets
@@ -306,7 +284,6 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, "option_got_starting_state").setVisible(False)
         getattr(self.ui, "label_for_option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_got_dungeon_requirement").setVisible(False)
-        self.enable_trick_interface()
 
         # hide supporting elements
         getattr(self.ui, "option_plando").setVisible(False)
@@ -511,67 +488,17 @@ class RandoGUI(QMainWindow):
                         elif health % 4 > 1:
                             health_string += " and " + str(health % 4) + " pieces"
                         heart_string.setText(health_string)
-
-        self.enabled_tricks_model = QStringListModel()
-        self.disabled_tricks_model = QStringListModel()
-        if "Glitchless" in current_settings["logic-mode"]:
-            self.enabled_tricks_model.setStringList([])
-            self.disabled_tricks_model.setStringList([])
-        elif "BiTless" in current_settings["logic-mode"]:
-            self.enabled_tricks_model.setStringList(
-                current_settings["enabled-tricks-bitless"]
-            )
-            self.disabled_tricks_model.setStringList(
-                [
-                    choice
-                    for choice in OPTIONS["enabled-tricks-bitless"]["choices"]
-                    if choice not in current_settings["enabled-tricks-bitless"]
-                ]
-            )
-        elif "Glitched" in current_settings["logic-mode"]:
-            self.enabled_tricks_model.setStringList(
-                current_settings["enabled-tricks-glitched"]
-            )
-            self.disabled_tricks_model.setStringList(
-                [
-                    choice
-                    for choice in OPTIONS["enabled-tricks-glitched"]["choices"]
-                    if choice not in current_settings["enabled-tricks-glitched"]
-                ]
-            )
-        else:
-            self.enabled_tricks_model.setStringList([])
-            self.disabled_tricks_model.setStringList([])
-
         # Update tricks.
-        self.enabled_tricks_model.sort(0)
-        self.disabled_tricks_model.sort(0)
+        if (
+            tricks_cmd := LOGIC_MODE_TO_TRICKS_SETTING[self.options["logic-mode"]]
+        ) is not None:
+            self.enabled_tricks = current_settings[tricks_cmd]
 
         # Update locations.
-        self.excluded_locations_model.setStringList(
-            current_settings["excluded-locations"]
-        )
-        self.included_locations_model.setStringList(
-            [
-                choice
-                for choice in OPTIONS["excluded-locations"]["choices"]
-                if choice not in current_settings["excluded-locations"]
-            ]
-        )
-        self.ui.excluded_locations.setModel(self.excluded_locations_proxy)
-        self.ui.included_locations.setModel(self.included_locations_proxy)
+        self.exclude_locations_pair.update(current_settings["excluded-locations"])
 
         # Update starting items.
-        self.starting_items_model.setStringList(current_settings["starting-items"])
-        self.randomized_items_model.setStringList(
-            [
-                choice
-                for choice in OPTIONS["starting-items"]["choices"]
-                if choice not in current_settings["starting-items"]
-            ]
-        )
-        self.ui.starting_items.setModel(self.starting_items_proxy)
-        self.ui.randomized_items.setModel(self.randomized_items_proxy)
+        self.starting_items_pair.update(current_settings["starting-items"])
 
         self.ui.permalink.setText(current_settings.get_permalink())
 
@@ -603,51 +530,32 @@ class RandoGUI(QMainWindow):
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
         elif "BiTless" in logic_mode:
-            self.options.set_option(
-                "enabled-tricks-bitless", self.enabled_tricks_model.stringList()
-            )
+            self.options.set_option("enabled-tricks-bitless", self.enabled_tricks)
             self.options.set_option("enabled-tricks-glitched", [])
         elif "Glitched" in logic_mode:
             self.options.set_option("enabled-tricks-bitless", [])
-            self.options.set_option(
-                "enabled-tricks-glitched", self.enabled_tricks_model.stringList()
-            )
+            self.options.set_option("enabled-tricks-glitched", self.enabled_tricks)
         else:  # this should only be no logic
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
 
         self.options.set_option(
-            "excluded-locations", self.get_option_value("excluded_locations")
+            "excluded-locations", self.exclude_locations_pair.get_added()
         )
+
+        self.options.set_option("starting-items", self.starting_items_pair.get_added())
 
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
 
     def logic_mode_changed(self):
         value = getattr(self.ui, "option_logic_mode").currentText()
-        if "Glitchless" in value:
-            self.disable_trick_interface()
-        elif "BiTless" in value:
-            # swap bitless tricks into the ui
+        if (tricks_cmd := LOGIC_MODE_TO_TRICKS_SETTING[value]) is not None:
+            self.enabled_tricks = self.options[tricks_cmd]
             self.enable_trick_interface()
-            self.enabled_tricks_model.setStringList(
-                OPTIONS["enabled-tricks-bitless"]["default"]
-            )
-            self.disabled_tricks_model.setStringList(
-                OPTIONS["enabled-tricks-bitless"]["choices"]
-            )
-        elif "Glitched" in value:
-            # swap the glitched tricks into the ui
-            self.enable_trick_interface()
-            self.enabled_tricks_model.setStringList(
-                OPTIONS["enabled-tricks-glitched"]["default"]
-            )
-            self.disabled_tricks_model.setStringList(
-                OPTIONS["enabled-tricks-glitched"]["choices"]
-            )
-        else:  # this should only be no logic
-            # disable the trick interface
+        else:  # Glitchless and No Logic
             self.disable_trick_interface()
+            self.enabled_tricks = []
 
     def toggle_sharp_corners(self, state: int):
         self.options.set_option("use-sharp-corners", bool(state))
@@ -750,52 +658,6 @@ class RandoGUI(QMainWindow):
         else:
             print("Option widget is invalid: %s" % option_name)
 
-    @staticmethod
-    def append_row(model, value):
-        model.insertRow(model.rowCount())
-        new_row = model.index(model.rowCount() - 1, 0)
-        model.setData(new_row, value)
-        model.sort(0)
-
-    def move_selected_rows(self, source: QListView, dest: QListView):
-        selection = source.selectionModel().selectedIndexes()
-        last_selection = source.currentIndex()
-        # Remove starting from the last so the previous indices remain valid
-        selection.sort(reverse=True, key=lambda x: x.row())
-        for item in selection:
-            value = item.data()
-            source.model().removeRow(item.row())
-            self.append_row(dest.model(), value)
-        # source.selectionModel().setCurrentIndex(last_selection)
-
-    def exclude_location(self):
-        self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
-        self.update_settings()
-
-    def include_location(self):
-        self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
-        self.update_settings()
-
-    def update_included_free_filter(self, new_text: str | None):
-        self.included_locations_proxy.filterRows(new_text)
-
-    def update_excluded_free_filter(self, new_text: str | None):
-        self.excluded_locations_proxy.filterRows(new_text)
-
-    def remove_starting_item(self):
-        self.move_selected_rows(self.ui.starting_items, self.ui.randomized_items)
-        self.update_settings()
-
-    def add_starting_item(self):
-        self.move_selected_rows(self.ui.randomized_items, self.ui.starting_items)
-        self.update_settings()
-
-    def update_randomized_items_free_filter(self, new_text: str | None):
-        self.randomized_items_proxy.filterRows(new_text)
-
-    def update_starting_items_free_filter(self, new_text: str | None):
-        self.starting_items_proxy.filterRows(new_text)
-
     def load_preset(self):
         preset = self.ui.presets_list.currentText()
         # prevent loading the new preset option
@@ -879,19 +741,13 @@ class RandoGUI(QMainWindow):
             json.dump(self.user_presets, f)
 
     def launch_tricks_dialog(self):
-        old_en = self.enabled_tricks_model.stringList()
-        old_dis = self.disabled_tricks_model.stringList()
         dialog = TricksDialog(
-            self.enabled_tricks_model, self.disabled_tricks_model, self.styleSheet()
+            self.enabled_tricks,
+            LOGIC_MODE_TO_TRICKS_SETTING[self.options["logic-mode"]],
+            self.styleSheet(),
         )
         if dialog.exec():
-            results = dialog.getTrickValues()
-            self.disabled_tricks_model.setStringList(results[0])
-            self.enabled_tricks_model.setStringList(results[1])
-            self.update_settings()
-        else:
-            self.disabled_tricks_model.setStringList(old_dis)
-            self.enabled_tricks_model.setStringList(old_en)
+            self.enabled_tricks = dialog.getTrickValues()
             self.update_settings()
 
     # Custom model customisation funcs
@@ -1002,6 +858,7 @@ class RandoGUI(QMainWindow):
     def permalink_updated(self):
         try:
             self.options.update_from_permalink(self.ui.permalink.text())
+            self.save_settings()
         except ValueError as e:
             # Ignore errors from faultly permalinks, with updating ui it gets reset anyways
             print(e)
@@ -1010,7 +867,7 @@ class RandoGUI(QMainWindow):
         self.update_ui_for_settings()
 
     def copy_permalink_to_clipboard(self):
-        pyperclip.copy(self.ui.permalink.text())
+        pyclip.copy(self.ui.permalink.text())
 
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))

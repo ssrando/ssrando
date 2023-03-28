@@ -51,9 +51,10 @@ class ColorButton(QPushButton):
             self.color_str_from_int(self.color, ColorFormat.ARGB),
             options=QColorDialog.ShowAlphaChannel & self.showAlpha,
         )
-        self.color = self.color_int_from_str(self.color_str_from_qcolor(new_color))
-        self.update()
-        self.colorChanged.emit(self.color_str_from_int(self.color), self.name)
+        if new_color.isValid():
+            self.color = self.color_int_from_str(self.color_str_from_qcolor(new_color))
+            self.update()
+            self.colorChanged.emit(self.color_str_from_int(self.color), self.name)
 
     def reset_color(self):
         self.set_color(self.initialColor)

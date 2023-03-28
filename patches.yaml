@@ -526,6 +526,20 @@ D003_7: # Sky Keep Entrance Room
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove bars
+    type: objdelete
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Remove bars opening cs
+    type: objpatch
+    id: 0xFC16
+    room: 0
+    layer: 4
+    objtype: STAG
+    object:
+      params1: 0xFF1516FF # 0x000000FF = event number
 D003_8: # this change is purely to make sure D003_8 gets patched, so a perviously broken rando version gets overwritten
   - name: remove unused layer
     type: objdelete
@@ -1564,6 +1578,26 @@ F023: # Thunderhead
     objtype: OBJ
     object:
       params1: 0xFFFF01C5 # 00 FF 00 00 yeets the event call
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetSpareBombBagA
+    layer: 0
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetSpareQuiverA
+    layer: 0
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetSpareSeedA
+    layer: 0
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetTerryCage
+    layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: Pinwheel
+    layer: 0
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -3952,6 +3986,24 @@ F300_3: # Fire node
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Add Path Idx and SceneFlag to Fire Node Box
+    type: objpatch
+    objtype: OBJ
+    id: 0xFC07
+    layer: 0
+    room: 0
+    object:
+      pathIdx: 1
+      goalscenefid: 127
+      useLargerRadius: 1
+      isSwitchGoal: 0
+  - name: Add Path For Fire Node Push Block
+    type: pathadd
+    room: 0
+    pnts:
+      - posx: -1275.0
+        posy: 240.0
+        posz: -4150.0
 F300_4: # Temple of Time
   - name: Layer override
     type: layeroverride

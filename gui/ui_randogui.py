@@ -794,12 +794,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.vlay_vanilla_tweaks = QVBoxLayout()
         self.vlay_vanilla_tweaks.setObjectName(u"vlay_vanilla_tweaks")
-        self.option_fix_bit_crashes = QCheckBox(self.box_vanilla_tweaks)
-        self.option_fix_bit_crashes.setObjectName(u"option_fix_bit_crashes")
-        sizePolicy5.setHeightForWidth(self.option_fix_bit_crashes.sizePolicy().hasHeightForWidth())
-        self.option_fix_bit_crashes.setSizePolicy(sizePolicy5)
+        self.label_for_option_bit_patches = QLabel(self.box_vanilla_tweaks)
+        self.label_for_option_bit_patches.setObjectName(u"label_for_option_bit_patches")
 
-        self.vlay_vanilla_tweaks.addWidget(self.option_fix_bit_crashes)
+        self.vlay_vanilla_tweaks.addWidget(self.label_for_option_bit_patches)
+
+        self.option_bit_patches = QComboBox(self.box_vanilla_tweaks)
+        self.option_bit_patches.setObjectName(u"option_bit_patches")
+
+        self.vlay_vanilla_tweaks.addWidget(self.option_bit_patches)
 
         self.vspace_vanilla_tweaks = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1547,9 +1550,14 @@ class Ui_MainWindow(object):
         sizePolicy8.setVerticalStretch(0)
         sizePolicy8.setHeightForWidth(self.option_font_family.sizePolicy().hasHeightForWidth())
         self.option_font_family.setSizePolicy(sizePolicy8)
+        self.option_font_family.setEditable(False)
         self.option_font_family.setSizeAdjustPolicy(QComboBox.AdjustToContentsOnFirstShow)
         self.option_font_family.setWritingSystem(QFontDatabase.Any)
-        self.option_font_family.setFontFilters(QFontComboBox.AllFonts)
+        self.option_font_family.setFontFilters(QFontComboBox.ScalableFonts)
+        font1 = QFont()
+        font1.setFamilies([u"Noto Sans"])
+        font1.setPointSize(10)
+        self.option_font_family.setCurrentFont(font1)
 
         self.vlay_font.addWidget(self.option_font_family)
 
@@ -1798,7 +1806,7 @@ class Ui_MainWindow(object):
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
         self.box_vanilla_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Vanilla Tweaks", None))
-        self.option_fix_bit_crashes.setText(QCoreApplication.translate("MainWindow", u"Fix BiT crashes", None))
+        self.label_for_option_bit_patches.setText(QCoreApplication.translate("MainWindow", u"BiT Patches", None))
         self.box_item_pool.setTitle(QCoreApplication.translate("MainWindow", u"Item Pool", None))
         self.option_gondo_upgrades.setText(QCoreApplication.translate("MainWindow", u"Place Scrap Shop Upgrades", None))
         self.label_for_option_rupoor_mode.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))
@@ -1867,6 +1875,8 @@ class Ui_MainWindow(object):
         self.option_use_sharp_corners.setText(QCoreApplication.translate("MainWindow", u"Sharp Corners", None))
         self.box_font.setTitle(QCoreApplication.translate("MainWindow", u"Fonts", None))
         self.label_for_option_font_family.setText(QCoreApplication.translate("MainWindow", u"Font Family", None))
+        self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Noto Sans", None))
+        self.option_font_family.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select Font Family", None))
         self.label_for_option_font_size.setText(QCoreApplication.translate("MainWindow", u"Font Size", None))
         self.reset_font_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.box_1.setTitle("")

@@ -1065,17 +1065,14 @@
            <item>
             <layout class="QVBoxLayout" name="vlay_vanilla_tweaks">
              <item>
-              <widget class="QCheckBox" name="option_fix_bit_crashes">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
+              <widget class="QLabel" name="label_for_option_bit_patches">
                <property name="text">
-                <string>Fix BiT crashes</string>
+                <string>BiT Patches</string>
                </property>
               </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="option_bit_patches"/>
              </item>
              <item>
               <spacer name="vspace_vanilla_tweaks">
@@ -2266,14 +2263,29 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="editable">
+                <bool>false</bool>
+               </property>
+               <property name="currentText">
+                <string>Noto Sans</string>
+               </property>
                <property name="sizeAdjustPolicy">
                 <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+               </property>
+               <property name="placeholderText">
+                <string>Select Font Family</string>
                </property>
                <property name="writingSystem">
                 <enum>QFontDatabase::Any</enum>
                </property>
                <property name="fontFilters">
-                <set>QFontComboBox::AllFonts</set>
+                <set>QFontComboBox::ScalableFonts</set>
+               </property>
+               <property name="currentFont">
+                <font>
+                 <family>Noto Sans</family>
+                 <pointsize>10</pointsize>
+                </font>
                </property>
               </widget>
              </item>

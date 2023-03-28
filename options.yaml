@@ -528,13 +528,21 @@
         **Advanced**: the song text indicates if beating the trial rewards a SotS, junk or potientially required item.
         **Direct**: the song text states the reward for beating the trial directly."
   ui: option_song_hints
-- name: Fix BiT crashes
-  command: fix-bit-crashes
-  type: boolean
-  default: false
-  help: "If enabled, does not load some arcs in BiT when all file slots are filled to make all areas accessible in
-        BiT."
-  ui: option_fix_bit_crashes
+- name: BiT Changes
+  command: bit-patches
+  type: singlechoice
+  bits: 2
+  choices:
+    - Disable BiT
+    - Vanilla
+    - Fix BiT Crashes
+  default: Vanilla
+  help: "Changes how the Back in Time (BiT) glitch works.
+        Disable BiT: Makes it impossible to activate BiT.
+        Vanilla: Keeps the vanilla game behaviour where BiT is possible but Eldin BiT (and others) will still crash.
+        Fix BiT Crashes: Does not load some arcs to make all areas accessible in BiT.
+        WARNING: All 3 files must be filled BEFORE activating BiT otherwise this will not work."
+  ui: option_bit_patches
 - name: Output placement file
   command: out-placement-file
   type: boolean
@@ -926,7 +934,6 @@
     Sky Keep Map,
   ]
   help: "Determines the items that will be in your inventory at the start of the game."
-  ui: starting_items
 - name: Random Starting Item
   command: random-starting-item
   type: boolean
