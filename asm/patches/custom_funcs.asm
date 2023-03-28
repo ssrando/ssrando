@@ -190,6 +190,7 @@ blr
 .global rando_text_command_handler
 .global textbox_a_pressed_or_b_held
 .global set_goddess_sword_pulled_scene_flag
+.global randomize_boss_key_start_pos
 
 .close
 
@@ -614,72 +615,4 @@ rlwinm r5, r0, 11, 29, 29
 or r4, r4, r5
 ori r4, r4, 0x100 ; we need to signal that the flag, to cause link to use the PlRsTag entrance, needs to be set
 blr
-.close
-
-
-.open "d_a_obj_door_bossNP.rel"
-.org @NextFreeSpace
-.global set_randomized_bk_angles
-set_randomized_bk_angles:
-
-stwu r1, -0x10(r1)
-mflr r0
-stw r0, 0x14(r1)
-
-; use r31 as it's value is currently zero and saves writing to and from the stack
-; Skyview
-ori r31, r31, 0x8684 ; offset to start of randomized bk angle data 0x80c8fad4
-sth r31, 0x34(r28) ; SV[x]
-addi r31, r31, 2
-sth r31, 0x2(r25) ; SV[y]
-addi r31, r31, 2
-sth r31, 0x4(r25) ; SV[z]
-
-; Earth Temple
-addi r31, r31, 2
-sth r31, 0x6(r25) ; ET[x]
-addi r31, r31, 2
-sth r31, 0x8(r25) ; ET[y]
-addi r31, r31, 2
-sth r31, 0xa(r25) ; ET[z]
-
-; Lanayru Mining Facility
-addi r31, r31, 2
-sth r31, 0xc(r25) ; LMF[x]
-addi r31, r31, 2
-sth r31, 0xe(r25) ; LMF[y]
-addi r31, r31, 2
-sth r31, 0x10(r25) ; LMF[z]
-
-; Ancient Cistern
-addi r31, r31, 2
-sth r31, 0x12(r25) ; AC[x]
-addi r31, r31, 2
-sth r31, 0x14(r25) ; AC[y]
-addi r31, r31, 2
-sth r31, 0x16(r25) ; AC[z]
-
-; Fire Sanctuary
-addi r31, r31, 2
-sth r31, 0x18(r25) ; FS[x]
-addi r31, r31, 2
-sth r31, 0x1a(r25) ; FS[y]
-addi r31, r31, 2
-sth r31, 0x1c(r25) ; FS[z]
-
-; Sadship
-addi r31, r31, 2
-sth r31, 0x1e(r25) ; SSH[x]
-addi r31, r31, 2
-sth r31, 0x20(r25) ; SSH[y]
-addi r31, r31, 2
-sth r31, 0x22(r25) ; SSH[z]
-
-li r31, 0
-
-lwz r0, 0x14(r1)
-mtlr r0
-addi r1, r1, 0x10
-blr
-
 .close
