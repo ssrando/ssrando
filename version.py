@@ -3,7 +3,11 @@ from pathlib import Path
 
 # Try to add the git commit hash to the version number if running from source.
 if IS_RUNNING_FROM_SOURCE:
-    VERSION = (RANDO_ROOT_PATH / "version.txt").read_text().strip()
+    import toml
+
+    with open("pyproject.toml") as f:
+        proj = toml.load(f)
+    VERSION = proj["project"]["version"]
     VERSION_WITHOUT_COMMIT = VERSION
     version_suffix = "_NOGIT"
 
