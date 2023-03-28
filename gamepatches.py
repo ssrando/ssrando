@@ -1141,7 +1141,9 @@ class GamePatcher:
             oarc_cache_path=oarc_cache_path,
             arc_replacement_path=arc_replacement_path,
             assets_path=RANDO_ROOT_PATH / "assets",
-            current_custom_model_pack_name=self.placement_file.options["selected-model-pack"],
+            current_custom_model_pack_name=self.placement_file.options[
+                "selected-model-pack"
+            ],
             copy_unmodified=False,
         )
         self.text_labels = {}

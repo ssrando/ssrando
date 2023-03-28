@@ -186,5 +186,10 @@ custom_*.*
 
 custom-music/
 
+models/*
+!models/README.md
+
+assets/default-link-data/metadata.json
+
 # temp asm
 *.s

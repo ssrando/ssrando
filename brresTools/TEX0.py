@@ -61,8 +61,17 @@ IMAGE_FORMATS_BLOCK_WIDTH = {
 MASK5 = 0b011111
 MASK6 = 0b111111
 
+
 class TEX0:
-    def __init__(self, dataBuffer: BufferedIOBase, imgDataOffset: int, imageFormat: str, width: int, height: int, numberOfBytesInImage: int):
+    def __init__(
+        self,
+        dataBuffer: BufferedIOBase,
+        imgDataOffset: int,
+        imageFormat: str,
+        width: int,
+        height: int,
+        numberOfBytesInImage: int,
+    ):
         self.dataBuffer: BufferedIOBase = dataBuffer
         self.imageDataOffset: int = imgDataOffset
         self.imageFormat: str = imageFormat
@@ -81,15 +90,24 @@ class TEX0:
         height = struct.unpack(">H", dataBuffer.read(2))[0]
         image_format = struct.unpack(">I", dataBuffer.read(4))[0]
 
-        number_of_bytes_in_image = (height * width * IMAGE_FORMATS_BITS_PER_PIXEL[image_format]) // 8
-        
-        return TEX0(dataBuffer=dataBuffer, imgDataOffset=img_data_offset, imageFormat=image_format, width=width, height=height, numberOfBytesInImage=number_of_bytes_in_image)
+        number_of_bytes_in_image = (
+            height * width * IMAGE_FORMATS_BITS_PER_PIXEL[image_format]
+        ) // 8
+
+        return TEX0(
+            dataBuffer=dataBuffer,
+            imgDataOffset=img_data_offset,
+            imageFormat=image_format,
+            width=width,
+            height=height,
+            numberOfBytesInImage=number_of_bytes_in_image,
+        )
 
     def get_image_data(self) -> bytes:
         self.dataBuffer.seek(self.imageDataOffset)
         imageData = self.dataBuffer.read(self.numberOfBytesInImage)
         return imageData
-    
+
     def convert_raw_image_data_to_RGBA(self, data: bytes) -> np.array:
         match IMAGE_FORMATS_NAMES[self.imageFormat]:
             case "I4":
@@ -104,7 +122,7 @@ class TEX0:
                 return self.cvt_RGB565_to_RGBA(data=data)
             case "RGB5A3":
                 pass
-            case "RGBA32": 
+            case "RGBA32":
                 pass
             case "C4":
                 pass
@@ -115,8 +133,10 @@ class TEX0:
             case "CMPR":
                 return self.cvt_CMPR_to_RGBA(data=data)
             case _:
-                raise Exception(f'Invalid image format {self.imageDataOffset} in convert_raw_image_data_to_RGBA')
-            
+                raise Exception(
+                    f"Invalid image format {self.imageDataOffset} in convert_raw_image_data_to_RGBA"
+                )
+
     def convert_RGBA_to_raw_image_data(self, data: np.array) -> bytes:
         match IMAGE_FORMATS_NAMES[self.imageFormat]:
             case "I4":
@@ -131,7 +151,7 @@ class TEX0:
                 return self.cvt_RGBA_to_RGB565(data=data)
             case "RGB5A3":
                 pass
-            case "RGBA32": 
+            case "RGBA32":
                 pass
             case "C4":
                 pass
@@ -142,8 +162,9 @@ class TEX0:
             case "CMPR":
                 return self.cvt_RGBA_to_CMPR(data=data)
             case _:
-                raise Exception(f'Invalid image format {self.imageDataOffset} in convert_RGBA_to_raw_image_data')
-
+                raise Exception(
+                    f"Invalid image format {self.imageDataOffset} in convert_RGBA_to_raw_image_data"
+                )
 
     def cvt_I4_to_RGBA(self, data: bytes) -> np.array:
         RGBAList = []
@@ -152,14 +173,14 @@ class TEX0:
             formattedByte = bin(byte)[2:].zfill(8)
             color1 = int(formattedByte[:4].zfill(8), 2)
             color2 = int(formattedByte[4:].zfill(8), 2)
-            r = (color1 * 0x11)
-            g = (color1 * 0x11)
-            b = (color1 * 0x11)
-            a = 0xff
+            r = color1 * 0x11
+            g = color1 * 0x11
+            b = color1 * 0x11
+            a = 0xFF
             RGBAList.append((r, g, b, a))
-            r = (color2 * 0x11)
-            g = (color2 * 0x11)
-            b = (color2 * 0x11)
+            r = color2 * 0x11
+            g = color2 * 0x11
+            b = color2 * 0x11
             RGBAList.append((r, g, b, a))
 
         return self.reorder_blocks(data=RGBAList)
@@ -168,9 +189,9 @@ class TEX0:
         RGBAList = []
 
         for colorStart in range(0, len(data), 2):
-            RGB565 = struct.unpack('>H', data[colorStart: colorStart + 2])[0]
+            RGB565 = struct.unpack(">H", data[colorStart : colorStart + 2])[0]
             RGBAList.append(self.cvt_single_RGB565_to_RGBA(RGB565))
-        
+
         return self.reorder_blocks(data=RGBAList)
 
     def cvt_RGBA_to_RGB565(self, data: np.array) -> bytes:
@@ -180,34 +201,51 @@ class TEX0:
 
         for color in dataList:
             RGB565 = self.cvt_single_RGBA_to_RGB565(color)
-            RGB565List += struct.pack('>H', RGB565)        
-        
+            RGB565List += struct.pack(">H", RGB565)
+
         return RGB565List
 
     def cvt_CMPR_to_RGBA(self, data: bytes) -> np.array:
-        RGBAList = []        
-        
+        RGBAList = []
+
         for blockStart in range(0, len(data), 32):
-            block = data[blockStart: blockStart + 32] #CMPR have 32 byte long blocks
+            block = data[blockStart : blockStart + 32]  # CMPR have 32 byte long blocks
             blockRGBAList = []
             for subBlockStart in (0, 8, 16, 24):
-                subBlock = block[subBlockStart: subBlockStart + 8] #CMPR have four 8 byte long sub-blocks
-                c0 = struct.unpack('>H', subBlock[:2])[0]
-                c1 = struct.unpack('>H', subBlock[2:4])[0]
+                subBlock = block[
+                    subBlockStart : subBlockStart + 8
+                ]  # CMPR have four 8 byte long sub-blocks
+                c0 = struct.unpack(">H", subBlock[:2])[0]
+                c1 = struct.unpack(">H", subBlock[2:4])[0]
                 transparency = False
                 if c1 >= c0:
                     transparency = True
                 c0 = self.cvt_single_RGB565_to_RGBA(c0)
                 c1 = self.cvt_single_RGB565_to_RGBA(c1)
-                cTable = struct.unpack('>L', subBlock[4:])[0]
+                cTable = struct.unpack(">L", subBlock[4:])[0]
 
                 if transparency:
-                    c2 = (((c0[0] + c1[0]) // 2), ((c0[1] + c1[1]) // 2), ((c0[2] + c1[2]) // 2), 255)
+                    c2 = (
+                        ((c0[0] + c1[0]) // 2),
+                        ((c0[1] + c1[1]) // 2),
+                        ((c0[2] + c1[2]) // 2),
+                        255,
+                    )
                     c3 = (0, 0, 0, 0)
                 else:
-                    c2 = ((((2*c0[0]) + c1[0]) // 3), (((2*c0[1]) + c1[1]) // 3), (((2*c0[2]) + c1[2]) // 3), 255)
-                    c3 = (((c0[0] + (2*c1[0])) // 3), ((c0[1] + (2*c1[1])) // 3), ((c0[2] + (2*c1[2])) // 3), 255)
-                
+                    c2 = (
+                        (((2 * c0[0]) + c1[0]) // 3),
+                        (((2 * c0[1]) + c1[1]) // 3),
+                        (((2 * c0[2]) + c1[2]) // 3),
+                        255,
+                    )
+                    c3 = (
+                        ((c0[0] + (2 * c1[0])) // 3),
+                        ((c0[1] + (2 * c1[1])) // 3),
+                        ((c0[2] + (2 * c1[2])) // 3),
+                        255,
+                    )
+
                 for i in range(30, -2, -2):
                     colorCode = (cTable >> i) & 0x03
                     match colorCode:
@@ -219,23 +257,30 @@ class TEX0:
                             blockRGBAList.append(c2)
                         case 3:
                             blockRGBAList.append(c3)
-                
+
             # restrucures sub-blocks in each block to be correctly ordered
-            splitblockRGBAList = [(blockRGBAList[:16], blockRGBAList[16:32]), (blockRGBAList[32:48], blockRGBAList[48:])]
+            splitblockRGBAList = [
+                (blockRGBAList[:16], blockRGBAList[16:32]),
+                (blockRGBAList[32:48], blockRGBAList[48:]),
+            ]
             newBlockTopHalf = []
             newBlockBottomHalf = []
 
             for currentRow in range(0, 16, 4):
-                newBlockTopHalf += splitblockRGBAList[0][0][currentRow: currentRow + 4]
-                newBlockTopHalf += splitblockRGBAList[0][1][currentRow: currentRow + 4]
-                newBlockBottomHalf += splitblockRGBAList[1][0][currentRow: currentRow + 4]
-                newBlockBottomHalf += splitblockRGBAList[1][1][currentRow: currentRow + 4]
+                newBlockTopHalf += splitblockRGBAList[0][0][currentRow : currentRow + 4]
+                newBlockTopHalf += splitblockRGBAList[0][1][currentRow : currentRow + 4]
+                newBlockBottomHalf += splitblockRGBAList[1][0][
+                    currentRow : currentRow + 4
+                ]
+                newBlockBottomHalf += splitblockRGBAList[1][1][
+                    currentRow : currentRow + 4
+                ]
 
             RGBAList += newBlockTopHalf
             RGBAList += newBlockBottomHalf
-        
+
         return self.reorder_blocks(data=RGBAList)
-    
+
     def cvt_RGBA_to_CMPR(self, data: np.array) -> bytes:
         CMPRBytes: bytearray = bytearray()
 
@@ -243,7 +288,7 @@ class TEX0:
         numOfBlocks = len(dataList) // 64
 
         for currentBlock in range(numOfBlocks):
-            block = dataList[(currentBlock * 64): ((currentBlock * 64) + 64)]
+            block = dataList[(currentBlock * 64) : ((currentBlock * 64) + 64)]
             blockTopHalf = block[:32]
             blockBottomHalf = block[32:]
             splitBlockRGBAList1: list = []
@@ -252,15 +297,20 @@ class TEX0:
             splitBlockRGBAList4: list = []
 
             for currentRow in range(0, 32, 8):
-                splitBlockRGBAList1 += blockTopHalf[currentRow: currentRow + 4]
-                splitBlockRGBAList2 += blockTopHalf[currentRow + 4: currentRow + 8]
-                splitBlockRGBAList3 += blockBottomHalf[currentRow: currentRow + 4]
-                splitBlockRGBAList4 += blockBottomHalf[currentRow + 4: currentRow + 8]
-            
-            blockRGBAlist = splitBlockRGBAList1 + splitBlockRGBAList2 + splitBlockRGBAList3 + splitBlockRGBAList4
+                splitBlockRGBAList1 += blockTopHalf[currentRow : currentRow + 4]
+                splitBlockRGBAList2 += blockTopHalf[currentRow + 4 : currentRow + 8]
+                splitBlockRGBAList3 += blockBottomHalf[currentRow : currentRow + 4]
+                splitBlockRGBAList4 += blockBottomHalf[currentRow + 4 : currentRow + 8]
+
+            blockRGBAlist = (
+                splitBlockRGBAList1
+                + splitBlockRGBAList2
+                + splitBlockRGBAList3
+                + splitBlockRGBAList4
+            )
 
             for subBlockStart in (0, 16, 32, 48):
-                subBlockRGBAList = blockRGBAlist[subBlockStart: subBlockStart + 16]
+                subBlockRGBAList = blockRGBAlist[subBlockStart : subBlockStart + 16]
                 subBlockRGB565List = []
 
                 transparency = False
@@ -274,10 +324,12 @@ class TEX0:
                     if RGB565Color not in colors:
                         colors.append(RGB565Color)
                     subBlockRGB565List.append(RGB565Color)
-                        
+
                 colors.sort()
                 if transparency:
-                    if len(colors) == 0: #for full sub block of alpha, nothing will be added to colors list
+                    if (
+                        len(colors) == 0
+                    ):  # for full sub block of alpha, nothing will be added to colors list
                         c0 = self.cvt_single_RGBA_to_RGB565((255, 255, 255, 0))
                         c1 = c0
                         c2 = c0
@@ -287,7 +339,12 @@ class TEX0:
                         c1 = colors[-1]
                         RGBAc0 = self.cvt_single_RGB565_to_RGBA(c0)
                         RGBAc1 = self.cvt_single_RGB565_to_RGBA(c1)
-                        RGBAc2 = (((RGBAc0[0] + RGBAc1[0]) // 2), ((RGBAc0[1] + RGBAc1[1]) // 2), ((RGBAc0[2] + RGBAc1[2]) // 2), 255)
+                        RGBAc2 = (
+                            ((RGBAc0[0] + RGBAc1[0]) // 2),
+                            ((RGBAc0[1] + RGBAc1[1]) // 2),
+                            ((RGBAc0[2] + RGBAc1[2]) // 2),
+                            255,
+                        )
                         c2 = self.cvt_single_RGBA_to_RGB565(RGBAc2)
                         c3 = self.cvt_single_RGBA_to_RGB565((255, 255, 255, 0))
                 else:
@@ -295,8 +352,18 @@ class TEX0:
                     c1 = colors[0]
                     RGBAc0 = self.cvt_single_RGB565_to_RGBA(c0)
                     RGBAc1 = self.cvt_single_RGB565_to_RGBA(c1)
-                    RGBAc2 = ((((2*RGBAc0[0]) + RGBAc1[0]) // 3), (((2*RGBAc0[1]) + RGBAc1[1]) // 3), (((2*RGBAc0[2]) + RGBAc1[2]) // 3), 255)
-                    RGBAc3 = (((RGBAc0[0] + (2*RGBAc1[0])) // 3), ((RGBAc0[1] + (2*RGBAc1[1])) // 3), ((RGBAc0[2] + (2*RGBAc1[2])) // 3), 255)
+                    RGBAc2 = (
+                        (((2 * RGBAc0[0]) + RGBAc1[0]) // 3),
+                        (((2 * RGBAc0[1]) + RGBAc1[1]) // 3),
+                        (((2 * RGBAc0[2]) + RGBAc1[2]) // 3),
+                        255,
+                    )
+                    RGBAc3 = (
+                        ((RGBAc0[0] + (2 * RGBAc1[0])) // 3),
+                        ((RGBAc0[1] + (2 * RGBAc1[1])) // 3),
+                        ((RGBAc0[2] + (2 * RGBAc1[2])) // 3),
+                        255,
+                    )
                     c2 = self.cvt_single_RGBA_to_RGB565(RGBAc2)
                     c3 = self.cvt_single_RGBA_to_RGB565(RGBAc3)
 
@@ -320,12 +387,12 @@ class TEX0:
                             closest = 3
 
                     cTable = (cTable << 2) + closest
-                
-                CMPRBytes += struct.pack('>H', c0)
-                CMPRBytes += struct.pack('>H', c1)
-                CMPRBytes += struct.pack('>I', cTable)
-                
-        return CMPRBytes            
+
+                CMPRBytes += struct.pack(">H", c0)
+                CMPRBytes += struct.pack(">H", c1)
+                CMPRBytes += struct.pack(">I", cTable)
+
+        return CMPRBytes
 
     def cvt_single_RGBA_to_RGB565(self, data: tuple[int, int, int, int]) -> int:
         R = data[0]
@@ -334,7 +401,7 @@ class TEX0:
 
         conR = (R // 0x8) << 11
         conG = (G // 0x4) << 5
-        conB = (B // 0x8)
+        conB = B // 0x8
 
         RGB565 = conR | conG | conB
 
@@ -353,7 +420,7 @@ class TEX0:
         yBlocks = -(self.height // -blockHeight)
         xBlocks = -(self.width // -blockWidth)
 
-        reorderedArray = np.empty(shape= (self.height, self.width, 4), dtype=np.uint8)
+        reorderedArray = np.empty(shape=(self.height, self.width, 4), dtype=np.uint8)
 
         i = 0
 
@@ -362,11 +429,13 @@ class TEX0:
                 for currentRow in range(blockHeight):
                     for currentPixelInRow in range(blockWidth):
                         currentData = data[i]
-                        reorderedArray[(currentYBlock * blockHeight) + currentRow][(currentXBlock * blockWidth) + currentPixelInRow] = currentData
+                        reorderedArray[(currentYBlock * blockHeight) + currentRow][
+                            (currentXBlock * blockWidth) + currentPixelInRow
+                        ] = currentData
                         i += 1
 
         return reorderedArray
- 
+
     def reorder_blocks_back(self, data: np.array) -> list:
         blockHeight = IMAGE_FORMATS_BLOCK_HEIGHT[self.imageFormat]
         blockWidth = IMAGE_FORMATS_BLOCK_WIDTH[self.imageFormat]
@@ -379,8 +448,16 @@ class TEX0:
             for currentXBlock in range(xBlocks):
                 for currentRow in range(blockHeight):
                     for currentPixelInRow in range(blockWidth):
-                        currentPixInArray = data[(currentYBlock * blockHeight) + currentRow][(currentXBlock * blockWidth) + currentPixelInRow]
-                        reorderedList.append((currentPixInArray[0], currentPixInArray[1], currentPixInArray[2], currentPixInArray[3]))
+                        currentPixInArray = data[
+                            (currentYBlock * blockHeight) + currentRow
+                        ][(currentXBlock * blockWidth) + currentPixelInRow]
+                        reorderedList.append(
+                            (
+                                currentPixInArray[0],
+                                currentPixInArray[1],
+                                currentPixInArray[2],
+                                currentPixInArray[3],
+                            )
+                        )
 
         return reorderedList
-            

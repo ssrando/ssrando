@@ -225,25 +225,25 @@ class AllPatcher:
     def patch_custom_model(self):
         self.mask_lookup = {}
 
-        if self.current_custom_model_pack_name == 'Link':
+        if self.current_custom_model_pack_name == "Link":
             model_pack_path = LINK_MODEL_DATA_PATH
             linkArcPath = OARC_PATH / "Alink.arc"
         else:
             model_pack_path = CUSTOM_MODELS_PATH / self.current_custom_model_pack_name
             linkArcPath = model_pack_path / "Alink.arc"
 
-
-
-        if os.path.isfile(model_pack_path / 'metadata.json'):
-            with open(model_pack_path / 'metadata.json') as f:
+        if os.path.isfile(model_pack_path / "metadata.json"):
+            with open(model_pack_path / "metadata.json") as f:
                 self.color_metadata = json.load(f)
 
         for p in Path(model_pack_path / "TextureMasks" / "Player").iterdir():
             if match := MASK_REGEX.match(str(p)):
                 if match.group("texName") not in self.mask_lookup:
                     self.mask_lookup[match.group("texName")] = []
-                self.mask_lookup[match.group("texName")].append(match.group("colorGroupName"))
-        
+                self.mask_lookup[match.group("texName")].append(
+                    match.group("colorGroupName")
+                )
+
         self.hero_color_data = self.color_metadata.get("Hero")
 
         linkArcBytes = linkArcPath.read_bytes()
@@ -252,26 +252,33 @@ class AllPatcher:
         parsedBRRES = BRRES.parse_brres(BytesIO(brresData))
 
         for texName in self.mask_lookup:
-            texPath = f'Textures(NW4R)/{texName}'
+            texPath = f"Textures(NW4R)/{texName}"
             imageData: np.array = parsedBRRES.get_file_data(path=texPath)
             maskPaths = []
             colors = []
             process = False
-            print(self.mask_lookup[texName])
             for colorGroup in self.mask_lookup[texName]:
-                if self.hero_color_data[colorGroup] == "Default": continue
-                maskPath = str(model_pack_path / "TextureMasks" / "Player" / (str(texName) + "_" + str(colorGroup) + ".png"))
+                if self.hero_color_data[colorGroup] == "Default":
+                    continue
+                maskPath = str(
+                    model_pack_path
+                    / "TextureMasks"
+                    / "Player"
+                    / (str(texName) + "_" + str(colorGroup) + ".png")
+                )
                 maskPaths.append(maskPath)
                 colors.append(self.hero_color_data[colorGroup])
                 process = True
 
             if process:
-                modifiedTexture: np.array = cr.process_texture(texture=imageData, maskPaths=maskPaths, colors=colors)
+                modifiedTexture: np.array = cr.process_texture(
+                    texture=imageData, maskPaths=maskPaths, colors=colors
+                )
                 parsedBRRES.set_file_data(path=texPath, data=modifiedTexture)
-        
+
         parsedLinkArc.set_file_data("g3d/model.brres", parsedBRRES.to_buffer().read())
         self.objPackCustomModelAdd = parsedLinkArc.to_buffer()
-        
+
         return
 
     def do_patch(self):

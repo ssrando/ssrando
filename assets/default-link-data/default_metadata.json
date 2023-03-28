@@ -1,0 +1,34 @@
+{
+    "Hero": 
+    {
+        "Skin": "Default",
+        "Hat": "Default",
+        "Hair": "Default",
+        "Eyes": "Default",
+        "Tunic": "Default",
+        "Shirt": "Default",
+        "Chainmail": "Default",
+        "Bracers": "Default",
+        "Gloves": "Default",
+        "Belt": "Default",
+        "Belt Buckle": "Default",
+        "Skirt": "Default",
+        "Pants": "Default",
+        "Boots": "Default",
+        "Soles": "Default"
+    },
+    "Casual": 
+    {
+        "Skin": "Default",
+        "Hair": "Default",
+        "Eyes": "Default",
+        "Shirt": "Default",
+        "Shirt Pattern": "Default",
+        "Band": "Default",
+        "Band Pattern": "Default",
+        "Belt": "Default",
+        "Pants": "Default",
+        "Boots": "Default",
+        "Soles": "Default"
+    }
+}

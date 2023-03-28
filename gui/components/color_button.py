@@ -33,12 +33,12 @@ class ColorButton(QPushButton):
 
         self.clicked.connect(self.change_color)
 
-    def set_color(self, newColor: str|None):
+    def set_color(self, newColor: str | None):
         if newColor is None or newColor == NO_COLOR:
             self.color = None
             self.colorChanged.emit(NO_COLOR, self.name)
         else:
-            if not COLOR_REGEX.match(newColor): 
+            if not COLOR_REGEX.match(newColor):
                 raise ValueError(
                     f"Invalid color value in model metadata, expected format '#XXXXXXXX' but got {newColor}."
                 )
@@ -91,7 +91,7 @@ class ColorButton(QPushButton):
                 return color.name(QColor.HexArgb)
 
     def color_str_from_int(
-        self, color_int: int|None, format: ColorFormat = ColorFormat.RGBA
+        self, color_int: int | None, format: ColorFormat = ColorFormat.RGBA
     ) -> str:
         if color_int is None:
             color_int = DEFAULT_COLOR
@@ -99,12 +99,12 @@ class ColorButton(QPushButton):
 
         return self.color_str_from_qcolor(color, format)
 
-    def color_int_from_str(self, color: str|None) -> int:
+    def color_int_from_str(self, color: str | None) -> int:
         if color is None:
             return DEFAULT_COLOR
         return int(color[1:], 16)
 
-    def color_parts_from_int(self, color_int: int|None) -> tuple:
+    def color_parts_from_int(self, color_int: int | None) -> tuple:
         if color_int is None:
             color_int = DEFAULT_COLOR
         r = color_int >> 24
