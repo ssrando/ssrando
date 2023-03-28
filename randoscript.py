@@ -158,7 +158,7 @@ def main():
             from multiprocessing import Process
 
             threads = []
-            for (start, end) in get_ranges(bulk_low, bulk_high, bulk_threads):
+            for start, end in get_ranges(bulk_low, bulk_high, bulk_threads):
                 thread = Process(target=randothread, args=(start, end, options.copy()))
                 thread.start()
                 threads.append(thread)
