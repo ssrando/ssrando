@@ -2375,7 +2375,7 @@ class GamePatcher:
             rng.shuffle(locs)
             # print(locs)
 
-            for ((id, room), (params, actor_name)) in zip(
+            for (id, room), (params, actor_name) in zip(
                 locs,
                 params,
             ):
@@ -2819,7 +2819,7 @@ class GamePatcher:
             start_flags_write.write(struct.pack(">H", flag))
         start_flags_write.write(bytes.fromhex("FFFF"))
         # itemflags
-        for (flag, count) in self.startitemflags.items():
+        for flag, count in self.startitemflags.items():
             assert flag < 0x1FF
             assert count < 0x7F
             start_flags_write.write(struct.pack(">H", (count << 9) | flag))
@@ -2845,6 +2845,12 @@ class GamePatcher:
         start_flags_write.write(struct.pack(">H", 0))
         # Start health.
         start_flags_write.write(struct.pack(">B", self.starting_full_hearts))
+        # start interface choice
+        interface_choice_num = ["Standard", "Light", "Pro"].index(
+            self.placement_file.options["interface"]
+        )
+        start_flags_write.write(struct.pack(">B", interface_choice_num))
+
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:
             raise Exception(
