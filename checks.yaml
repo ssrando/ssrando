@@ -1097,7 +1097,7 @@ Lanayru Gorge - Thunder Dragon's Reward:
     - event/404-DesertF3/give item after Healing Thunderdragon
     - oarc/F302/l0
   hint: sometimes
-  text: They say that <r<curing an ancient dragon>> is rewarded with
+  text: <r<curing an ancient dragon>> is rewarded with
 Lanayru Gorge - Item on Pillar:
   original item: Red Rupee
   type: lanayru, freestanding
