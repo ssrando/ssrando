@@ -839,6 +839,23 @@
   bits: 5
   help: How many heart pieces to start with.
   ui: option_starting_heart_pieces
+- name: Interface
+  command: interface
+  type: singlechoice
+  bits: 2
+  choices:
+    - Standard
+    - Light
+    - Pro
+  default: Standard
+  permalink: false
+  cosmetic: true
+  help: "Determines how the game interface will look.
+        Has the same effect as using the interface button from the inventory screen in-game.
+        **Standard**: All interface (HUD) elements are shown.
+        **Light**: Some interface elements will be invisible (e.g. the Wii Remote on the right of the screen).
+        **Pro**: Most interface elements will be invisible."
+  ui: option_interface
 - name: Random Starting Location
   command: random-start-entrance
   type: singlechoice

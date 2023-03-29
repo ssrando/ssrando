@@ -9,10 +9,10 @@ main.dol:
   patch_bit: 0x806784CC
   send_to_start: 0x806784D8
   process_startflags: 0x80678510
-  handle_bk_map_dungeonflag: 0x806787A0
-  rando_text_command_handler: 0x80678850
-  textbox_a_pressed_or_b_held: 0x80678A78
-  set_goddess_sword_pulled_scene_flag: 0x80678AA8
+  handle_bk_map_dungeonflag: 0x806787C8
+  rando_text_command_handler: 0x80678878
+  textbox_a_pressed_or_b_held: 0x80678AA0
+  set_goddess_sword_pulled_scene_flag: 0x80678AD0
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
@@ -40,5 +40,7 @@ d_t_rock_boatNP.rel:
   custom_eldin_platform_comparison: 0xDC8
 d_t_player_restartNP.rel:
   only_set_flag_conditionally: 0x6A4
+d_a_obj_toD3_stone_figureNP.rel:
+  set_sot_placed_flag: 0x1388
 d_a_obj_time_boatNP.rel:
   fix_sadship_boat: 0x6448

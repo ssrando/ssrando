@@ -2428,6 +2428,15 @@
       subType: 0
       param1: 0
       param2: 15 # Sadship beaten story flag
+      next: Give rando Tentalus Defeated storyflag
+      param3: 0
+  - name: Give rando Tentalus Defeated storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 933 # set defeat tentalus storyflag
       next: 46
       param3: 0
   - name: rando required dungeon storyflag

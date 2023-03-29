@@ -112,7 +112,6 @@ class LogicUtils(Logic):
         banned_indices: List[EXTENDED_ITEM] = [],
         starting_inventory: None | Inventory = None,
     ):
-
         restricted_full = self.fill_restricted(banned_indices, starting_inventory)
 
         return restricted_full[test_index]
@@ -132,7 +131,7 @@ class LogicUtils(Logic):
 
         self._isvisited_agg.add(item)
         aggregate = False
-        for (possibility, (_, conj_pre)) in self.requirements[item].disjunction.items():
+        for possibility, (_, conj_pre) in self.requirements[item].disjunction.items():
             aggregate_ = Inventory(conj_pre)
             for req_item in possibility:
                 ag = self.congregate_requirements(req_item)

@@ -38,7 +38,6 @@ class DNFInventory(LogicExpression):
         | EXTENDED_ITEM_NAME
         | Tuple[str, int] = None,
     ):
-
         if v is None:
             self.disjunction = {}
         elif isinstance(v, set):
@@ -66,7 +65,7 @@ class DNFInventory(LogicExpression):
         if isinstance(other, DNFInventory):
             filtered_self = self.disjunction.copy()
             filtered_other = {}
-            for (conj, conj_pre) in other.disjunction.items():
+            for conj, conj_pre in other.disjunction.items():
                 to_pop = []
                 for conj2 in filtered_self:
                     if conj <= conj2 and conj != conj2:

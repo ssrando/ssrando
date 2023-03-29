@@ -634,6 +634,20 @@ blr
 .close
 
 
+.open "d_a_obj_toD3_stone_figureNP.rel"
+.org @NextFreeSpace
+.global set_sot_placed_flag
+set_sot_placed_flag:
+
+li r3, 22 ; SoT Placed
+li r4, 1
+bl setStoryflagToValue
+
+b 0x950
+
+.close
+
+
 .open "d_a_obj_time_boatNP.rel"
 .org @NextFreeSpace
 

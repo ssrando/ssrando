@@ -156,7 +156,6 @@ class AllPatcher:
     def patch_arc_replacements(self):
         # handles arc replacement for all other arcs
         for path in self.actual_extract_path.glob("**/*.arc"):
-
             modified = False
             modified_path = str(path).replace(
                 str(self.actual_extract_path), str(self.modified_extract_path)
