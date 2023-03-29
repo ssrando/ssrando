@@ -38,6 +38,8 @@
   - A new option for `disable-bit` has been added that prevents all instances of the Back in Time (BiT) trick from being performed
   - A new option for `vanilla` has been added that keeps the vanilla game behaviour where BiT is possible but crashes under certain circumstances
   - The `fix-bit-crashes` option works the same as it did previously
+- Added cosmetic option to set the in-game interface setting from the start of the game
+  - It is now possible to start with the Standard, Light, or Pro interface without having to change the setting from the inventory screen
 - Added an accessibility toggle for light and dark themes (by CovenEsme)
   - You can now pick to have a light theme, dark theme, or to automatically change based on the theme of your computer
 ### Changes

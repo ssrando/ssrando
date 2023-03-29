@@ -14,7 +14,6 @@ class RandomFill:
     def __init__(
         self, logic: Logic, rng: random.Random, randosettings: RandomizationSettings
     ):
-
         self.logic = logic
         self.rng = rng
         self.randosettings = randosettings

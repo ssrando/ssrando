@@ -196,7 +196,7 @@ try:
         linker_script = f.read()
 
     # add main dol symbols
-    for (dol_sym, addr) in original_symbols["main.dol"].items():
+    for dol_sym, addr in original_symbols["main.dol"].items():
         linker_script += f"{dol_sym} = 0x{addr:X};\n"
 
     with open("asm_macros.asm") as f:

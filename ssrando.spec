@@ -5,6 +5,7 @@ block_cipher = None
 import os
 import re
 import glob
+import toml
 def build_datas_recursive(paths):
   datas = []
 
@@ -20,8 +21,9 @@ def build_datas_recursive(paths):
 
   return datas
 
-with open('version.txt') as f:
-  VERSION = f.read().strip()
+with open('pyproject.toml') as f:
+    proj = toml.load(f)
+VERSION = proj['project']['version']
 
 if os.path.isdir(".git"):
   version_suffix = "_NOGIT"

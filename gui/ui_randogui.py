@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.4.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -220,6 +220,16 @@ class Ui_MainWindow(object):
 
 
         self.vlay_cosmetics.addLayout(self.hlay_star_count)
+
+        self.label_for_option_interface = QLabel(self.box_cosmetics)
+        self.label_for_option_interface.setObjectName(u"label_for_option_interface")
+
+        self.vlay_cosmetics.addWidget(self.label_for_option_interface)
+
+        self.option_interface = QComboBox(self.box_cosmetics)
+        self.option_interface.setObjectName(u"option_interface")
+
+        self.vlay_cosmetics.addWidget(self.option_interface)
 
         self.vspace_cosmetics = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1661,7 +1671,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(6)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1690,6 +1700,7 @@ class Ui_MainWindow(object):
         self.option_lightning_skyward_strike.setText(QCoreApplication.translate("MainWindow", u"Lightning Skyward Strike", None))
         self.option_starry_skies.setText(QCoreApplication.translate("MainWindow", u"Starry Skies", None))
         self.label_for_option_star_count.setText(QCoreApplication.translate("MainWindow", u"Number of stars", None))
+        self.label_for_option_interface.setText(QCoreApplication.translate("MainWindow", u"Starting Interface", None))
         self.box_music_rando.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.label_for_option_music_rando.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.option_cutoff_gameover_music.setText(QCoreApplication.translate("MainWindow", u"Cutoff Game Over Music", None))
