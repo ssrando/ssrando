@@ -616,3 +616,17 @@ or r4, r4, r5
 ori r4, r4, 0x100 ; we need to signal that the flag, to cause link to use the PlRsTag entrance, needs to be set
 blr
 .close
+
+
+.open "d_a_obj_toD3_stone_figureNP.rel"
+.org @NextFreeSpace
+.global set_sot_placed_flag
+set_sot_placed_flag:
+
+li r3, 22 ; SoT Placed
+li r4, 1
+bl setStoryflagToValue
+
+b 0x950
+
+.close
