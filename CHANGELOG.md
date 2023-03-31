@@ -40,6 +40,10 @@
   - The `fix-bit-crashes` option works the same as it did previously
 - Added cosmetic option to set the in-game interface setting from the start of the game
   - It is now possible to start with the Standard, Light, or Pro interface without having to change the setting from the inventory screen
+- Added option to get all extra dowsing abilities after obtaining Whitesword
+- Added option to remove enemy battle music
+- Split hero mode options to make each effect customizable
+- Added option to freely choose the damage multiplier
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
@@ -114,6 +118,18 @@
     - Text arcs intended for the fr_US folder must be prefixed with "fr" (e.g. fr0-Common.arc) 
     - The cursor arc intended for the regular layout folder supports the default name (i.e. cursor.arc)
     - The cursor arc intended for the mpls_movie/layout folder (motion plus tutorial cursor) must be prefixed with "mpls" (i.e. mplscursor.arc)
+- Removed lavafall in front of ET boss door
+- Added changelog to the download
+- Removed mogma cutscene before circles
+- Sped up bridge extending cutscenes in Eldin
+- Removed thrill digger tower cutscene
+- Removed lily pad flipping cutscenes
+- Removed pyrup cutscene
+- Removed camera pans during Golo's gift
+- Renamed Slingshot check to Kikwi Elder's Reward
+- Added seed and permalink to error messages
+- Removed the check for a button combination to show the built in crash screen
+- Removed the need of opening the first chest in Sky Keep to progress
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
@@ -125,6 +141,11 @@
   - Any maps or boss keys NOT added as starting items will now be placed in their vanilla locations (if the `map-mode`/`boss-key-mode` options are set to "Vanilla")
   - Any maps or boss keys added as starting items will be added to the starting inventory
 - Fixed bug where most items in Beedle's Shop where partially hidden in the table
+- Fixed bulk mode for Windows
+- Fixed barbed wire staying after obtaining triforce of wisdom
+- Fixed Windows file encoding bug
+- Fixed Beedle's Shop rupees showing the wrong color
+- Fixed crash in Bug Heaven minigame
 
 
 ## 1.3.2
