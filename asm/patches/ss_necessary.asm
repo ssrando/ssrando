@@ -273,6 +273,12 @@ bgt 0x801b0788
 bl rando_text_command_handler
 b 0x801b0764 ; return to original function
 
+; here is the required sequence of buttons stored,
+; to get the crash screen to show up, since it's 0 terminated,
+; overwriting the first element with 0 will make it not check any buttons
+.org 0x804dba00
+.word 0
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
