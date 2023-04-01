@@ -94,7 +94,7 @@
   min: 0
   max: 3
   bits: 2
-  help: "Then number of tablets to start with.
+  help: "The number of tablets to start with.
         Tablets are selected randomly and the remainder are randomized as progress items."
   ui: option_starting_tablet_count
 - name: Open Thunderhead
