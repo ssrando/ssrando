@@ -954,6 +954,26 @@
         This includes: Bow, Beetle, Slingshot, Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
         Water Scale, Fireshield Earrings, Goddess Harp and Spiral Charge."
   ui: option_random_starting_item
+- name: Starting Empty Bottles
+  command: starting-bottles
+  type: int
+  default: 0
+  min: 0
+  max: 5
+  bits: 3
+  help: "Determines how many empty bottles start in your pouch.
+        **WARNING**: If you start with more pouch items than pouch slots, the extra items will become usable after
+        finding additional pouches."
+  ui: option_starting_bottles
+- name: Start with Hylian Shield
+  command: start-with-hylian-shield
+  type: boolean
+  default: True
+  help: "If enabled, you will start with the Hylian Shield in your pouch.
+        **WARNING**: If you start with more pouch items than pouch slots, the extra items will become usable after
+        finding additional pouches.
+        Hylian Shield will always be placed in the first pouch slot."
+  ui: option_start_with_hylian_shield
 - name: Starting Heart Containers
   command: starting-heart-containers
   type: int

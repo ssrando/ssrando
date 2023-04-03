@@ -192,29 +192,30 @@ pub fn process_startflags() {
             }
         }
     }
-    let combined_misc_start_flags = flag_mem.next_u16().unwrap_or_default();
+
+    let additional_start_options = flag_mem.next_u16().unwrap_or_default();
 
     // Starting rupee count.
     // Last 7 bits.
     itemflag_set_to_value(
         501, /* rupee counter */
-        (combined_misc_start_flags & 0x7F) * 100,
+        (additional_start_options & 0x7F) * 100,
     );
 
     // Starting heart capacity.
     // Next 5 bits.
-    let health_capacity = (combined_misc_start_flags >> 7 & 0x1F) * 4;
+    let health_capacity = (additional_start_options >> 7 & 0x1F) * 4;
     unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity.into() };
     unsafe { (*FILE_MANAGER).FA.current_health = health_capacity.into() };
 
     // Starting interface choice.
     // Next 2 bits.
-    let interface = combined_misc_start_flags >> 12 & 0x3;
+    let interface = additional_start_options >> 12 & 0x3;
     storyflag_set_to_value(840, interface.into());
 
     // Starting bugs.
     // Next 1 bit.
-    if combined_misc_start_flags >> 14 & 0x1 == 1 {
+    if additional_start_options >> 14 & 0x1 == 1 {
         let mut counter = 10;
         while counter <= 21 {
             unsafe {
@@ -227,7 +228,7 @@ pub fn process_startflags() {
 
     // Starting treasures.
     // First 1 bit.
-    if combined_misc_start_flags >> 15 & 0x1 == 1 {
+    if additional_start_options >> 15 & 0x1 == 1 {
         let mut counter = 22;
         while counter <= 37 {
             unsafe {
@@ -238,7 +239,28 @@ pub fn process_startflags() {
         }
     }
 
-    // commit global flag managers
+    let additional_start_options_2 = flag_mem.next_u8().unwrap_or_default();
+
+    let mut pouch_items: [i32; 8] = [0; 8];
+    let mut next_pouch_index = 0usize;
+
+    // Starting Hylian Shield.
+    // 4th bit.
+    if additional_start_options_2 >> 3 & 0x1 == 1 {
+        pouch_items[next_pouch_index] = 125 | 0x30 << 0x10; // ID for Hylian Shield + durability
+        next_pouch_index += 1;
+    }
+
+    let mut bottles_added = 0;
+    while bottles_added < additional_start_options_2 & 0x7 {
+        pouch_items[next_pouch_index] = 153; // ID for bottles
+        bottles_added += 1;
+        next_pouch_index += 1;
+    }
+
+    unsafe { (*FILE_MANAGER).FA.pouch_items = pouch_items.into() };
+
+    // Commit global flag managers.
     unsafe {
         ItemflagManager__doCommit(ITEMFLAG_MANAGER);
         StoryflagManager__doCommit(STORYFLAG_MANAGER);

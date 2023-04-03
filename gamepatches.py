@@ -1879,6 +1879,15 @@ class GamePatcher:
             crystal_packs * 5
         )
 
+        # Empty Bottles
+        self.starting_bottles = 0
+        self.starting_bottles += start_item_counts.pop(EMPTY_BOTTLE, 0)
+
+        # Hylian Shield
+        self.start_with_hylian_shield = self.placement_file.options[
+            "start-with-hylian-shield"
+        ]
+
         # Starting Rupee Count
         # Limited to multiples of 100 to save bit space
         self.starting_rupee_count = 0
@@ -2864,10 +2873,10 @@ class GamePatcher:
 
         # Combined misc start flags to save bit space.
         ## Last 7 bits for rupee count.
-        combined_misc_start_flags = self.starting_rupee_count // 100
+        additional_start_options = self.starting_rupee_count // 100
 
         ## Next 5 bits for starting health.
-        combined_misc_start_flags = combined_misc_start_flags | (
+        additional_start_options = additional_start_options | (
             self.starting_full_hearts << 7
         )
 
@@ -2875,19 +2884,29 @@ class GamePatcher:
         interface_choice_num = ["Standard", "Light", "Pro"].index(
             self.placement_file.options["interface"]
         )
-        combined_misc_start_flags = combined_misc_start_flags | (
+        additional_start_options = additional_start_options | (
             interface_choice_num << 12
         )
 
         ## Next 1 bit for starting bugs.
         if self.max_starting_bugs:
-            combined_misc_start_flags = combined_misc_start_flags | (1 << 14)
+            additional_start_options = additional_start_options | (1 << 14)
 
-        # $ First 1 bit for starting treasures.
+        ## First 1 bit for starting treasures.
         if self.max_starting_treasures:
-            combined_misc_start_flags = combined_misc_start_flags | (1 << 15)
+            additional_start_options = additional_start_options | (1 << 15)
 
-        start_flags_write.write(struct.pack(">H", combined_misc_start_flags))
+        start_flags_write.write(struct.pack(">H", additional_start_options))
+
+        # Starting shield and bottles.
+        ## Last 3 bits for starting bottles.
+        additional_start_options_2 = self.starting_bottles
+
+        ## Next 1 bit for starting Hylian Shield.
+        if self.start_with_hylian_shield:
+            additional_start_options_2 = additional_start_options_2 | (1 << 3)
+
+        start_flags_write.write(struct.pack(">B", additional_start_options_2))
 
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:

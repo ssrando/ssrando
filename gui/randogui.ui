@@ -1949,6 +1949,27 @@
             </layout>
            </item>
            <item>
+            <layout class="QHBoxLayout" name="hlay_starting_bottles">
+             <item>
+              <widget class="QLabel" name="label_for_option_starting_bottles">
+               <property name="text">
+                <string>Starting Empty Bottles</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="option_starting_bottles">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="hlay_starting_crystal_packs">
              <item>
               <widget class="QLabel" name="label_for_option_starting_crystal_packs">
@@ -1979,6 +2000,13 @@
              </property>
              <property name="text">
               <string>Start with Random Progress Item</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="option_start_with_hylian_shield">
+             <property name="text">
+              <string>Start with Hylian Shield</string>
              </property>
             </widget>
            </item>
@@ -2104,7 +2132,7 @@
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>192</height>
+               <height>137</height>
               </size>
              </property>
             </spacer>

@@ -1351,6 +1351,23 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addLayout(self.hlay_starting_tablets)
 
+        self.hlay_starting_bottles = QHBoxLayout()
+        self.hlay_starting_bottles.setObjectName(u"hlay_starting_bottles")
+        self.label_for_option_starting_bottles = QLabel(self.box_additional_options)
+        self.label_for_option_starting_bottles.setObjectName(u"label_for_option_starting_bottles")
+
+        self.hlay_starting_bottles.addWidget(self.label_for_option_starting_bottles)
+
+        self.option_starting_bottles = QSpinBox(self.box_additional_options)
+        self.option_starting_bottles.setObjectName(u"option_starting_bottles")
+        sizePolicy9.setHeightForWidth(self.option_starting_bottles.sizePolicy().hasHeightForWidth())
+        self.option_starting_bottles.setSizePolicy(sizePolicy9)
+
+        self.hlay_starting_bottles.addWidget(self.option_starting_bottles)
+
+
+        self.verticalLayout_29.addLayout(self.hlay_starting_bottles)
+
         self.hlay_starting_crystal_packs = QHBoxLayout()
         self.hlay_starting_crystal_packs.setObjectName(u"hlay_starting_crystal_packs")
         self.label_for_option_starting_crystal_packs = QLabel(self.box_additional_options)
@@ -1374,6 +1391,11 @@ class Ui_MainWindow(object):
         self.option_random_starting_item.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_29.addWidget(self.option_random_starting_item)
+
+        self.option_start_with_hylian_shield = QCheckBox(self.box_additional_options)
+        self.option_start_with_hylian_shield.setObjectName(u"option_start_with_hylian_shield")
+
+        self.verticalLayout_29.addWidget(self.option_start_with_hylian_shield)
 
         self.option_full_starting_wallet = QCheckBox(self.box_additional_options)
         self.option_full_starting_wallet.setObjectName(u"option_full_starting_wallet")
@@ -1447,7 +1469,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addLayout(self.hlay_heart_display)
 
-        self.vspace_additional_options = QSpacerItem(20, 192, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.vspace_additional_options = QSpacerItem(20, 137, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_29.addItem(self.vspace_additional_options)
 
@@ -1841,8 +1863,10 @@ class Ui_MainWindow(object):
         self.box_additional_options.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
+        self.label_for_option_starting_bottles.setText(QCoreApplication.translate("MainWindow", u"Starting Empty Bottles", None))
         self.label_for_option_starting_crystal_packs.setText(QCoreApplication.translate("MainWindow", u"Starting Gratitude Crystal Packs", None))
         self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
+        self.option_start_with_hylian_shield.setText(QCoreApplication.translate("MainWindow", u"Start with Hylian Shield", None))
         self.option_full_starting_wallet.setText(QCoreApplication.translate("MainWindow", u"Start with Full Wallet", None))
         self.option_full_wallet_upgrades.setText(QCoreApplication.translate("MainWindow", u"Full Wallet Upgrades", None))
         self.option_max_starting_bugs.setText(QCoreApplication.translate("MainWindow", u"Maximum Starting Bugs", None))

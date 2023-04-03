@@ -186,6 +186,14 @@ class Rando:
             for crystal_pack_num in range(self.options["starting-crystal-packs"])
         }
 
+        starting_items |= {
+            number(EMPTY_BOTTLE, bottle_num)
+            for bottle_num in range(self.options["starting-bottles"])
+        }
+
+        if self.options["start-with-hylian-shield"]:
+            starting_items.add(HYLIAN_SHIELD)
+
         if not self.options["open-et"]:
             starting_items |= {
                 number(KEY_PIECE, key_piece_num)
