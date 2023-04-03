@@ -247,10 +247,8 @@ pub fn process_startflags() {
         next_pouch_index += 1;
     }
 
-    let mut bottles_added = 0;
-    while bottles_added < additional_start_options_2 & 0x7 {
+    for _bottles_added in 0..(additional_start_options_2 & 0x7) {
         pouch_items[next_pouch_index] = 153; // ID for bottles
-        bottles_added += 1;
         next_pouch_index += 1;
     }
 
