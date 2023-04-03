@@ -28,7 +28,7 @@ class ColorButton(QPushButton):
     def change_color(self):
         new_color = QColorDialog.getColor(
             self.color_str_from_int(self.color, ColorFormat.ARGB),
-            options=QColorDialog.ShowAlphaChannel & self.showAlpha,
+            options=QColorDialog.ShowAlphaChannel,
         )
         if new_color.isValid():
             self.color = self.color_int_from_str(self.color_str_from_qcolor(new_color))
