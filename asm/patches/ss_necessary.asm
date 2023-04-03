@@ -273,6 +273,12 @@ bgt 0x801b0788
 bl rando_text_command_handler
 b 0x801b0764 ; return to original function
 
+; here is the required sequence of buttons stored,
+; to get the crash screen to show up, since it's 0 terminated,
+; overwriting the first element with 0 will make it not check any buttons
+.org 0x804dba00
+.word 0
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
@@ -675,6 +681,12 @@ bl only_set_flag_conditionally
 rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
 .close
 
+.open "d_a_obj_toD3_stone_figureNP.rel"
+; .org 0x80f35a18
+.org 0x8E8
+b set_sot_placed_flag
+.close
+
 ; make sure groose stays at his groosenator after finishing faron SotH
 .open "d_a_npc_bbrvlNP.rel"
 ; .org 0x80992b24
@@ -696,4 +708,3 @@ li r3, 0 ; act as if storyflag 16 is not set
 .org 0x11c18
 li r3, 0 ; act as if storyflag 16 is not set
 .close
-

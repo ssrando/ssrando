@@ -47,10 +47,16 @@ class ColorButton(QPushButton):
         self.update()
 
     def change_color(self):
+        # Should the setOption function handle this? Yes. Does it? No.
+        color_dialog_options = QColorDialog.ColorDialogOption(0)
+        if self.showAlpha:
+            color_dialog_options = QColorDialog.ColorDialogOption.ShowAlphaChannel
+
         new_color = QColorDialog.getColor(
             self.color_str_from_int(self.color, ColorFormat.ARGB),
-            options=QColorDialog.ShowAlphaChannel & self.showAlpha,
+            options=color_dialog_options,
         )
+
         if new_color.isValid():
             self.color = self.color_int_from_str(self.color_str_from_qcolor(new_color))
             self.update()
