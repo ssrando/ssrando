@@ -58,6 +58,8 @@ IMAGE_FORMATS_BLOCK_WIDTH = {
     14: 8,
 }
 
+MASK3 = 0b000111
+MASK4 = 0b001111
 MASK5 = 0b011111
 MASK6 = 0b111111
 
@@ -121,7 +123,7 @@ class TEX0:
             case "RGB565":
                 return self.cvt_RGB565_to_RGBA(data=data)
             case "RGB5A3":
-                pass
+                return self.cvt_RGB5A3_to_RGBA(data=data)
             case "RGBA32":
                 pass
             case "C4":
@@ -150,7 +152,7 @@ class TEX0:
             case "RGB565":
                 return self.cvt_RGBA_to_RGB565(data=data)
             case "RGB5A3":
-                pass
+                return self.cvt_RGBA_to_RGBA5A3(data=data)
             case "RGBA32":
                 pass
             case "C4":
@@ -204,6 +206,50 @@ class TEX0:
             RGB565List += struct.pack(">H", RGB565)
 
         return RGB565List
+
+    def cvt_RGB5A3_to_RGBA(self, data: bytes) -> np.array:
+        RGBAList = []
+
+        for colorStart in range(0, len(data), 2):
+            RGB5A3 = struct.unpack(">H", data[colorStart : colorStart + 2])[0]
+            RGBA: list[int] = []
+
+            if (RGB5A3 >> 15) & 1:  # doesn't use alpha channel
+                RGBA.append(((RGB5A3 >> 10) & MASK5) * 0x8)
+                RGBA.append(((RGB5A3 >> 5) & MASK5) * 0x8)
+                RGBA.append((RGB5A3 & MASK5) * 0x8)
+                RGBA.append(0xFF)
+            else:  # does use alpha channel
+                RGBA.append(((RGB5A3 >> 8) & MASK4) * 0x11)
+                RGBA.append(((RGB5A3 >> 4) & MASK4) * 0x11)
+                RGBA.append((RGB5A3 & MASK4) * 0x11)
+                RGBA.append(((RGB5A3 >> 12) & MASK3) * 0x20)
+
+            RGBAList.append(RGBA)
+
+        return self.reorder_blocks(data=RGBAList)
+
+    def cvt_RGBA_to_RGBA5A3(self, data: np.array) -> bytes:
+        dataList: list = self.reorder_blocks_back(data=data)
+
+        RGB5A3List: bytearray = bytearray()
+
+        for color in dataList:
+            if color[3] == 0xFF:  # doesn't use alpha channel
+                R = (color[0] // 0x8) << 10
+                G = (color[1] // 0x8) << 5
+                B = color[2] // 0x8
+                A = 0b1 << 15
+            else:  # does use alpha channel
+                R = (color[0] // 0x11) << 8
+                G = (color[1] // 0x11) << 4
+                B = color[2] // 0x11
+                A = (color[3] // 0x20) << 12
+
+            RGB5A3 = R | G | B | A
+            RGB5A3List += struct.pack(">H", RGB5A3)
+
+        return RGB5A3List
 
     def cvt_CMPR_to_RGBA(self, data: bytes) -> np.array:
         RGBAList = []
