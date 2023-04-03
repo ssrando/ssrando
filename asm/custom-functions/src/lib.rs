@@ -216,13 +216,11 @@ pub fn process_startflags() {
     // Starting bugs.
     // Next 1 bit.
     if additional_start_options >> 14 & 0x1 == 1 {
-        let mut counter = 10;
-        while counter <= 21 {
+        for counter in 10..=21 {
             unsafe {
                 increaseCounter(counter, 99);
                 setFlagForItem(counter + 131); // counter + (itemflag - counter)
             }
-            counter += 1;
         }
     }
 
