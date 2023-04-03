@@ -1830,8 +1830,13 @@ class GamePatcher:
         self.patcher.create_oarc_cache(extracts)
 
     def add_startitem_patches(self):
-        # Give sword dowsing flags.
-        if len(set(PROGRESSIVE_SWORDS) & set(self.placement_file.starting_items)) > 3:
+        # Add sword story/itemflags if required
+        start_sword_count = len(
+            set(PROGRESSIVE_SWORDS) & set(self.placement_file.starting_items)
+        )
+
+        if start_sword_count > 3:
+            # Give sword dowsing flags.
             self.startstoryflags.append(583)  # 4 extra Dowsing slots
 
             if self.placement_file.options["dowsing-after-whitesword"]:
@@ -2873,6 +2878,7 @@ class GamePatcher:
 
         # Combined misc start flags to save bit space.
         ## Last 7 bits for rupee count.
+        ## Limited to multiples of 100 to save bit space
         additional_start_options = self.starting_rupee_count // 100
 
         ## Next 5 bits for starting health.
