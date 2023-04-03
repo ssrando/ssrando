@@ -972,6 +972,20 @@
   bits: 5
   help: "Determines how many heart pieces to start with."
   ui: option_starting_heart_pieces
+- name: Start with Full Wallet
+  command: full-starting-wallet
+  type: boolean
+  default: false
+  help: "If enabled, you will start with a full wallet.
+        This changes based on the number of starting wallets and extra wallets."
+  ui: option_full_starting_wallet
+- name: Full Wallet Upgrades
+  command: full-wallet-upgrades
+  type: boolean
+  default: false
+  help: "If enabled, wallets you find throughout the game will already be filled with Rupees.
+        E.g. Finding the Giant Wallet will add 4000 Rupees to your Rupee counter."
+  ui: option_full_wallet_upgrades
 - name: Interface
   command: interface
   type: singlechoice

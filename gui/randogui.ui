@@ -1724,7 +1724,7 @@
            </sizepolicy>
           </property>
           <property name="title">
-           <string>Starting Items</string>
+           <string>Items</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
@@ -1900,7 +1900,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="box_starting_item_options">
+         <widget class="QGroupBox" name="box_additional_options">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -1908,7 +1908,7 @@
            </sizepolicy>
           </property>
           <property name="title">
-           <string>Starting Item Options</string>
+           <string>Additional Options</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_29">
            <item>
@@ -1949,7 +1949,7 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <layout class="QHBoxLayout" name="hlay_starting_crystal_packs">
              <item>
               <widget class="QLabel" name="label_for_option_starting_crystal_packs">
                <property name="text">
@@ -1970,6 +1970,20 @@
             </layout>
            </item>
            <item>
+            <widget class="QCheckBox" name="option_full_starting_wallet">
+             <property name="text">
+              <string>Start with Full Wallet</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="option_full_wallet_upgrades">
+             <property name="text">
+              <string>Full Wallet Upgrades</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QCheckBox" name="option_random_starting_item">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1983,7 +1997,7 @@
             </widget>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="hlay_heart_containters">
+            <layout class="QHBoxLayout" name="hlay_heart_options">
              <item>
               <widget class="QLabel" name="label_for_option_starting_heart_containers">
                <property name="sizePolicy">
@@ -2045,7 +2059,7 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="hlay_heart_pieces">
+            <layout class="QHBoxLayout" name="hlay_heart_display">
              <item>
               <widget class="QLabel" name="label_current_starting_health">
                <property name="text">
@@ -2069,14 +2083,14 @@
             </layout>
            </item>
            <item>
-            <spacer name="verticalSpacer">
+            <spacer name="vspace_additional_options">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>296</height>
+               <height>244</height>
               </size>
              </property>
             </spacer>

@@ -747,6 +747,15 @@ GONDO_ITEMS = {
     number(PROGRESSIVE_BUG_NET, 1),
 }
 
+EXTRA_WALLET_SIZE = 300
+
+WALLET_SIZES = {
+    0: 300,
+    1: 500,
+    2: 1000,
+    3: 5000,
+    4: 9000
+}
 
 # lists are used for progressive items,
 # tuples for setting multiple flags for one item

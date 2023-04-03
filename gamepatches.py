@@ -1882,6 +1882,15 @@ class GamePatcher:
             crystal_packs * 5
         )
 
+        # Starting Rupee Count
+        self.starting_rupee_count = 0
+
+        if self.placement_file.options["full-starting-wallet"]:
+            wallets = start_item_counts.get(PROGRESSIVE_WALLET, 0)
+            extra_wallets = start_item_counts.get(EXTRA_WALLET, 0)
+            self.starting_rupee_count += WALLET_SIZES[wallets]
+            self.starting_rupee_count += extra_wallets * EXTRA_WALLET_SIZE
+
         ALL_DUNGEON_LIKE = ALL_DUNGEONS + [
             LANAYRU_CAVES
         ]  # [SV, ET, LMF, AC, SSH, FS, SK, LANAYRU_CAVES]
@@ -2849,7 +2858,7 @@ class GamePatcher:
         # dungeonflags
         start_flags_write.write(bytes(self.startdungeonflags))
         # Starting rupee count.
-        start_flags_write.write(struct.pack(">H", 0))
+        start_flags_write.write(struct.pack(">H", self.starting_rupee_count))
         # Start health.
         start_flags_write.write(struct.pack(">B", self.starting_full_hearts))
         # start interface choice

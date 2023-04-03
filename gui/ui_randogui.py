@@ -1311,33 +1311,33 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.box_starting_items)
 
-        self.box_starting_item_options = QGroupBox(self.tab_starting_items)
-        self.box_starting_item_options.setObjectName(u"box_starting_item_options")
+        self.box_additional_options = QGroupBox(self.tab_starting_items)
+        self.box_additional_options.setObjectName(u"box_additional_options")
         sizePolicy8 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
         sizePolicy8.setHorizontalStretch(0)
         sizePolicy8.setVerticalStretch(0)
-        sizePolicy8.setHeightForWidth(self.box_starting_item_options.sizePolicy().hasHeightForWidth())
-        self.box_starting_item_options.setSizePolicy(sizePolicy8)
-        self.verticalLayout_29 = QVBoxLayout(self.box_starting_item_options)
+        sizePolicy8.setHeightForWidth(self.box_additional_options.sizePolicy().hasHeightForWidth())
+        self.box_additional_options.setSizePolicy(sizePolicy8)
+        self.verticalLayout_29 = QVBoxLayout(self.box_additional_options)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.label_for_option_starting_sword = QLabel(self.box_starting_item_options)
+        self.label_for_option_starting_sword = QLabel(self.box_additional_options)
         self.label_for_option_starting_sword.setObjectName(u"label_for_option_starting_sword")
 
         self.verticalLayout_29.addWidget(self.label_for_option_starting_sword)
 
-        self.option_starting_sword = QComboBox(self.box_starting_item_options)
+        self.option_starting_sword = QComboBox(self.box_additional_options)
         self.option_starting_sword.setObjectName(u"option_starting_sword")
 
         self.verticalLayout_29.addWidget(self.option_starting_sword)
 
         self.hlay_starting_tablets = QHBoxLayout()
         self.hlay_starting_tablets.setObjectName(u"hlay_starting_tablets")
-        self.label_for_option_starting_tablet_count = QLabel(self.box_starting_item_options)
+        self.label_for_option_starting_tablet_count = QLabel(self.box_additional_options)
         self.label_for_option_starting_tablet_count.setObjectName(u"label_for_option_starting_tablet_count")
 
         self.hlay_starting_tablets.addWidget(self.label_for_option_starting_tablet_count)
 
-        self.option_starting_tablet_count = QSpinBox(self.box_starting_item_options)
+        self.option_starting_tablet_count = QSpinBox(self.box_additional_options)
         self.option_starting_tablet_count.setObjectName(u"option_starting_tablet_count")
         sizePolicy9 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
         sizePolicy9.setHorizontalStretch(0)
@@ -1351,88 +1351,98 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addLayout(self.hlay_starting_tablets)
 
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.label_for_option_starting_crystal_packs = QLabel(self.box_starting_item_options)
+        self.hlay_starting_crystal_packs = QHBoxLayout()
+        self.hlay_starting_crystal_packs.setObjectName(u"hlay_starting_crystal_packs")
+        self.label_for_option_starting_crystal_packs = QLabel(self.box_additional_options)
         self.label_for_option_starting_crystal_packs.setObjectName(u"label_for_option_starting_crystal_packs")
 
-        self.horizontalLayout_2.addWidget(self.label_for_option_starting_crystal_packs)
+        self.hlay_starting_crystal_packs.addWidget(self.label_for_option_starting_crystal_packs)
 
-        self.option_starting_crystal_packs = QSpinBox(self.box_starting_item_options)
+        self.option_starting_crystal_packs = QSpinBox(self.box_additional_options)
         self.option_starting_crystal_packs.setObjectName(u"option_starting_crystal_packs")
         sizePolicy9.setHeightForWidth(self.option_starting_crystal_packs.sizePolicy().hasHeightForWidth())
         self.option_starting_crystal_packs.setSizePolicy(sizePolicy9)
 
-        self.horizontalLayout_2.addWidget(self.option_starting_crystal_packs)
+        self.hlay_starting_crystal_packs.addWidget(self.option_starting_crystal_packs)
 
 
-        self.verticalLayout_29.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_29.addLayout(self.hlay_starting_crystal_packs)
 
-        self.option_random_starting_item = QCheckBox(self.box_starting_item_options)
+        self.option_full_starting_wallet = QCheckBox(self.box_additional_options)
+        self.option_full_starting_wallet.setObjectName(u"option_full_starting_wallet")
+
+        self.verticalLayout_29.addWidget(self.option_full_starting_wallet)
+
+        self.option_full_wallet_upgrades = QCheckBox(self.box_additional_options)
+        self.option_full_wallet_upgrades.setObjectName(u"option_full_wallet_upgrades")
+
+        self.verticalLayout_29.addWidget(self.option_full_wallet_upgrades)
+
+        self.option_random_starting_item = QCheckBox(self.box_additional_options)
         self.option_random_starting_item.setObjectName(u"option_random_starting_item")
         sizePolicy5.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
         self.option_random_starting_item.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_29.addWidget(self.option_random_starting_item)
 
-        self.hlay_heart_containters = QHBoxLayout()
-        self.hlay_heart_containters.setObjectName(u"hlay_heart_containters")
-        self.label_for_option_starting_heart_containers = QLabel(self.box_starting_item_options)
+        self.hlay_heart_options = QHBoxLayout()
+        self.hlay_heart_options.setObjectName(u"hlay_heart_options")
+        self.label_for_option_starting_heart_containers = QLabel(self.box_additional_options)
         self.label_for_option_starting_heart_containers.setObjectName(u"label_for_option_starting_heart_containers")
         sizePolicy6.setHeightForWidth(self.label_for_option_starting_heart_containers.sizePolicy().hasHeightForWidth())
         self.label_for_option_starting_heart_containers.setSizePolicy(sizePolicy6)
 
-        self.hlay_heart_containters.addWidget(self.label_for_option_starting_heart_containers)
+        self.hlay_heart_options.addWidget(self.label_for_option_starting_heart_containers)
 
-        self.option_starting_heart_containers = QSpinBox(self.box_starting_item_options)
+        self.option_starting_heart_containers = QSpinBox(self.box_additional_options)
         self.option_starting_heart_containers.setObjectName(u"option_starting_heart_containers")
         sizePolicy5.setHeightForWidth(self.option_starting_heart_containers.sizePolicy().hasHeightForWidth())
         self.option_starting_heart_containers.setSizePolicy(sizePolicy5)
         self.option_starting_heart_containers.setMaximumSize(QSize(41, 16777215))
 
-        self.hlay_heart_containters.addWidget(self.option_starting_heart_containers)
+        self.hlay_heart_options.addWidget(self.option_starting_heart_containers)
 
-        self.label_for_option_starting_heart_pieces = QLabel(self.box_starting_item_options)
+        self.label_for_option_starting_heart_pieces = QLabel(self.box_additional_options)
         self.label_for_option_starting_heart_pieces.setObjectName(u"label_for_option_starting_heart_pieces")
         sizePolicy6.setHeightForWidth(self.label_for_option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
         self.label_for_option_starting_heart_pieces.setSizePolicy(sizePolicy6)
 
-        self.hlay_heart_containters.addWidget(self.label_for_option_starting_heart_pieces)
+        self.hlay_heart_options.addWidget(self.label_for_option_starting_heart_pieces)
 
-        self.option_starting_heart_pieces = QSpinBox(self.box_starting_item_options)
+        self.option_starting_heart_pieces = QSpinBox(self.box_additional_options)
         self.option_starting_heart_pieces.setObjectName(u"option_starting_heart_pieces")
         sizePolicy5.setHeightForWidth(self.option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
         self.option_starting_heart_pieces.setSizePolicy(sizePolicy5)
         self.option_starting_heart_pieces.setMaximumSize(QSize(41, 16777215))
 
-        self.hlay_heart_containters.addWidget(self.option_starting_heart_pieces)
+        self.hlay_heart_options.addWidget(self.option_starting_heart_pieces)
 
 
-        self.verticalLayout_29.addLayout(self.hlay_heart_containters)
+        self.verticalLayout_29.addLayout(self.hlay_heart_options)
 
-        self.hlay_heart_pieces = QHBoxLayout()
-        self.hlay_heart_pieces.setObjectName(u"hlay_heart_pieces")
-        self.label_current_starting_health = QLabel(self.box_starting_item_options)
+        self.hlay_heart_display = QHBoxLayout()
+        self.hlay_heart_display.setObjectName(u"hlay_heart_display")
+        self.label_current_starting_health = QLabel(self.box_additional_options)
         self.label_current_starting_health.setObjectName(u"label_current_starting_health")
 
-        self.hlay_heart_pieces.addWidget(self.label_current_starting_health)
+        self.hlay_heart_display.addWidget(self.label_current_starting_health)
 
-        self.current_starting_health_counter = QLabel(self.box_starting_item_options)
+        self.current_starting_health_counter = QLabel(self.box_additional_options)
         self.current_starting_health_counter.setObjectName(u"current_starting_health_counter")
         sizePolicy2.setHeightForWidth(self.current_starting_health_counter.sizePolicy().hasHeightForWidth())
         self.current_starting_health_counter.setSizePolicy(sizePolicy2)
 
-        self.hlay_heart_pieces.addWidget(self.current_starting_health_counter)
+        self.hlay_heart_display.addWidget(self.current_starting_health_counter)
 
 
-        self.verticalLayout_29.addLayout(self.hlay_heart_pieces)
+        self.verticalLayout_29.addLayout(self.hlay_heart_display)
 
-        self.verticalSpacer = QSpacerItem(20, 296, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.vspace_additional_options = QSpacerItem(20, 244, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_29.addItem(self.verticalSpacer)
+        self.verticalLayout_29.addItem(self.vspace_additional_options)
 
 
-        self.horizontalLayout_8.addWidget(self.box_starting_item_options)
+        self.horizontalLayout_8.addWidget(self.box_additional_options)
 
         self.tabWidget.addTab(self.tab_starting_items, "")
         self.tab_accessibility = QWidget()
@@ -1807,7 +1817,7 @@ class Ui_MainWindow(object):
         self.box_5.setTitle("")
         self.box_6.setTitle("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_hints), QCoreApplication.translate("MainWindow", u"Hints", None))
-        self.box_starting_items.setTitle(QCoreApplication.translate("MainWindow", u"Starting Items", None))
+        self.box_starting_items.setTitle(QCoreApplication.translate("MainWindow", u"Items", None))
         self.label_randomized_items.setText(QCoreApplication.translate("MainWindow", u"Randomized Items", None))
         self.randomized_items_free_search.setText("")
         self.randomized_items_free_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
@@ -1818,10 +1828,12 @@ class Ui_MainWindow(object):
         self.label_starting_items.setText(QCoreApplication.translate("MainWindow", u"Starting Items", None))
         self.starting_items_free_search.setText("")
         self.starting_items_free_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
-        self.box_starting_item_options.setTitle(QCoreApplication.translate("MainWindow", u"Starting Item Options", None))
+        self.box_additional_options.setTitle(QCoreApplication.translate("MainWindow", u"Additional Options", None))
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
         self.label_for_option_starting_crystal_packs.setText(QCoreApplication.translate("MainWindow", u"Starting Gratitude Crystal Packs", None))
+        self.option_full_starting_wallet.setText(QCoreApplication.translate("MainWindow", u"Start with Full Wallet", None))
+        self.option_full_wallet_upgrades.setText(QCoreApplication.translate("MainWindow", u"Full Wallet Upgrades", None))
         self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
         self.label_for_option_starting_heart_containers.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))
         self.label_for_option_starting_heart_pieces.setText(QCoreApplication.translate("MainWindow", u"Heart Pieces", None))
