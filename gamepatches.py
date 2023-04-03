@@ -1830,14 +1830,10 @@ class GamePatcher:
         self.patcher.create_oarc_cache(extracts)
 
     def add_startitem_patches(self):
-        # Add sword story/itemflags if required
-
-        start_sword_count = len(
-            set(PROGRESSIVE_SWORDS) & set(self.placement_file.starting_items)
-        )
-
-        if start_sword_count > 3:
+        # Give sword dowsing flags.
+        if len(set(PROGRESSIVE_SWORDS) & set(self.placement_file.starting_items)) > 3:
             self.startstoryflags.append(583)  # 4 extra Dowsing slots
+
             if self.placement_file.options["dowsing-after-whitesword"]:
                 self.startstoryflags.append(102)  # Treasure Dowsing
                 self.startstoryflags.append(104)  # Crystal Dowsing
@@ -1867,12 +1863,13 @@ class GamePatcher:
         start_item_counts = Counter(
             map(strip_item_number, self.placement_file.starting_items)
         )
-        # health is calculated in quarter hearts
+
+        # Health is calculated in quarter hearts
         starting_health = 6 * 4
         starting_health += start_item_counts.pop(HEART_CONTAINER, 0) * 4
         starting_health += start_item_counts.pop(HEART_PIECE, 0)
 
-        self.starting_full_hearts = (starting_health // 4) * 4
+        self.starting_full_hearts = starting_health // 4
         self.startitemflags[ITEM_COUNT_FLAGS[HEART_PIECE]] = starting_health % 4
 
         # Gratitude Crystal Packs
@@ -1883,7 +1880,14 @@ class GamePatcher:
         )
 
         # Starting Rupee Count
+        # Limited to multiples of 100 to save bit space
         self.starting_rupee_count = 0
+
+        # Starting bugs and treasures
+        self.max_starting_bugs = self.placement_file.options["max-starting-bugs"]
+        self.max_starting_treasures = self.placement_file.options[
+            "max-starting-treasures"
+        ]
 
         if self.placement_file.options["full-starting-wallet"]:
             wallets = start_item_counts.get(PROGRESSIVE_WALLET, 0)
@@ -2857,15 +2861,33 @@ class GamePatcher:
         start_flags_write.write(bytes.fromhex("FFFF"))
         # dungeonflags
         start_flags_write.write(bytes(self.startdungeonflags))
-        # Starting rupee count.
-        start_flags_write.write(struct.pack(">H", self.starting_rupee_count))
-        # Start health.
-        start_flags_write.write(struct.pack(">B", self.starting_full_hearts))
-        # start interface choice
+
+        # Combined misc start flags to save bit space.
+        ## Last 7 bits for rupee count.
+        combined_misc_start_flags = self.starting_rupee_count // 100
+
+        ## Next 5 bits for starting health.
+        combined_misc_start_flags = combined_misc_start_flags | (
+            self.starting_full_hearts << 7
+        )
+
+        ## Next 2 bits for starting interface.
         interface_choice_num = ["Standard", "Light", "Pro"].index(
             self.placement_file.options["interface"]
         )
-        start_flags_write.write(struct.pack(">B", interface_choice_num))
+        combined_misc_start_flags = combined_misc_start_flags | (
+            interface_choice_num << 12
+        )
+
+        ## Next 1 bit for starting bugs.
+        if self.max_starting_bugs:
+            combined_misc_start_flags = combined_misc_start_flags | (1 << 14)
+
+        # $ First 1 bit for starting treasures.
+        if self.max_starting_treasures:
+            combined_misc_start_flags = combined_misc_start_flags | (1 << 15)
+
+        start_flags_write.write(struct.pack(">H", combined_misc_start_flags))
 
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:

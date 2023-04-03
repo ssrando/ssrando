@@ -986,6 +986,18 @@
   help: "If enabled, wallets you find throughout the game will already be filled with Rupees.
         E.g. Finding the Giant Wallet will add 4000 Rupees to your Rupee counter."
   ui: option_full_wallet_upgrades
+- name: Start with Max Bugs
+  command: max-starting-bugs
+  type: boolean
+  default: false
+  help: "If enabled, you will start with 99 of each type of bug."
+  ui: option_max_starting_bugs
+- name: Start with Max Treasures
+  command: max-starting-treasures
+  type: boolean
+  default: false
+  help: "If enabled, you will start with 99 of each type of treasure."
+  ui: option_max_starting_treasures
 - name: Interface
   command: interface
   type: singlechoice

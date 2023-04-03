@@ -56,6 +56,8 @@ extern "C" {
     fn checkButtonAPressed() -> bool;
     fn checkButtonBHeld() -> bool;
     fn getKeyPieceCount() -> u16;
+    fn increaseCounter(counterId: u16, count: u16);
+    fn setFlagForItem(itemflag: u16);
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -190,17 +192,51 @@ pub fn process_startflags() {
             }
         }
     }
+    let combined_misc_start_flags = flag_mem.next_u16().unwrap_or_default();
+
+    // Starting rupee count.
+    // Last 7 bits.
     itemflag_set_to_value(
         501, /* rupee counter */
-        flag_mem.next_u16().unwrap_or_default(),
+        (combined_misc_start_flags & 0x7F) * 100,
     );
-    // heart capacity
-    let health_capacity = flag_mem.next_u8().unwrap_or_default();
+
+    // Starting heart capacity.
+    // Next 5 bits.
+    let health_capacity = (combined_misc_start_flags >> 7 & 0x1F) * 4;
     unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity.into() };
     unsafe { (*FILE_MANAGER).FA.current_health = health_capacity.into() };
-    // starting interface choice
-    let mode = flag_mem.next_u8().unwrap_or_default();
-    storyflag_set_to_value(840, mode.into());
+
+    // Starting interface choice.
+    // Next 2 bits.
+    let interface = combined_misc_start_flags >> 12 & 0x3;
+    storyflag_set_to_value(840, interface.into());
+
+    // Starting bugs.
+    // Next 1 bit.
+    if combined_misc_start_flags >> 14 & 0x1 == 1 {
+        let mut counter = 10;
+        while counter <= 21 {
+            unsafe {
+                increaseCounter(counter, 99);
+                setFlagForItem(counter + 131); // counter + (itemflag - counter)
+            }
+            counter += 1;
+        }
+    }
+
+    // Starting treasures.
+    // First 1 bit.
+    if combined_misc_start_flags >> 15 & 0x1 == 1 {
+        let mut counter = 22;
+        while counter <= 37 {
+            unsafe {
+                increaseCounter(counter, 99);
+                setFlagForItem(counter + 139); // counter + (itemflag - counter)
+            }
+            counter += 1;
+        }
+    }
 
     // commit global flag managers
     unsafe {

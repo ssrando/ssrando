@@ -749,13 +749,7 @@ GONDO_ITEMS = {
 
 EXTRA_WALLET_SIZE = 300
 
-WALLET_SIZES = {
-    0: 300,
-    1: 500,
-    2: 1000,
-    3: 5000,
-    4: 9000
-}
+WALLET_SIZES = {0: 300, 1: 500, 2: 1000, 3: 5000, 4: 9000}
 
 # lists are used for progressive items,
 # tuples for setting multiple flags for one item

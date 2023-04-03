@@ -1368,6 +1368,13 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addLayout(self.hlay_starting_crystal_packs)
 
+        self.option_random_starting_item = QCheckBox(self.box_additional_options)
+        self.option_random_starting_item.setObjectName(u"option_random_starting_item")
+        sizePolicy5.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
+        self.option_random_starting_item.setSizePolicy(sizePolicy5)
+
+        self.verticalLayout_29.addWidget(self.option_random_starting_item)
+
         self.option_full_starting_wallet = QCheckBox(self.box_additional_options)
         self.option_full_starting_wallet.setObjectName(u"option_full_starting_wallet")
 
@@ -1378,12 +1385,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addWidget(self.option_full_wallet_upgrades)
 
-        self.option_random_starting_item = QCheckBox(self.box_additional_options)
-        self.option_random_starting_item.setObjectName(u"option_random_starting_item")
-        sizePolicy5.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
-        self.option_random_starting_item.setSizePolicy(sizePolicy5)
+        self.option_max_starting_bugs = QCheckBox(self.box_additional_options)
+        self.option_max_starting_bugs.setObjectName(u"option_max_starting_bugs")
 
-        self.verticalLayout_29.addWidget(self.option_random_starting_item)
+        self.verticalLayout_29.addWidget(self.option_max_starting_bugs)
+
+        self.option_max_starting_treasures = QCheckBox(self.box_additional_options)
+        self.option_max_starting_treasures.setObjectName(u"option_max_starting_treasures")
+
+        self.verticalLayout_29.addWidget(self.option_max_starting_treasures)
 
         self.hlay_heart_options = QHBoxLayout()
         self.hlay_heart_options.setObjectName(u"hlay_heart_options")
@@ -1437,7 +1447,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addLayout(self.hlay_heart_display)
 
-        self.vspace_additional_options = QSpacerItem(20, 244, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.vspace_additional_options = QSpacerItem(20, 192, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_29.addItem(self.vspace_additional_options)
 
@@ -1832,9 +1842,11 @@ class Ui_MainWindow(object):
         self.label_for_option_starting_sword.setText(QCoreApplication.translate("MainWindow", u"Starting Sword", None))
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
         self.label_for_option_starting_crystal_packs.setText(QCoreApplication.translate("MainWindow", u"Starting Gratitude Crystal Packs", None))
+        self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
         self.option_full_starting_wallet.setText(QCoreApplication.translate("MainWindow", u"Start with Full Wallet", None))
         self.option_full_wallet_upgrades.setText(QCoreApplication.translate("MainWindow", u"Full Wallet Upgrades", None))
-        self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
+        self.option_max_starting_bugs.setText(QCoreApplication.translate("MainWindow", u"Maximum Starting Bugs", None))
+        self.option_max_starting_treasures.setText(QCoreApplication.translate("MainWindow", u"Maximum Starting Treasures", None))
         self.label_for_option_starting_heart_containers.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))
         self.label_for_option_starting_heart_pieces.setText(QCoreApplication.translate("MainWindow", u"Heart Pieces", None))
         self.label_current_starting_health.setText(QCoreApplication.translate("MainWindow", u"Starting Health:", None))

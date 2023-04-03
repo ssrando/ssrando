@@ -1970,6 +1970,19 @@
             </layout>
            </item>
            <item>
+            <widget class="QCheckBox" name="option_random_starting_item">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>Start with Random Progress Item</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QCheckBox" name="option_full_starting_wallet">
              <property name="text">
               <string>Start with Full Wallet</string>
@@ -1984,15 +1997,16 @@
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="option_random_starting_item">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+            <widget class="QCheckBox" name="option_max_starting_bugs">
              <property name="text">
-              <string>Start with Random Progress Item</string>
+              <string>Maximum Starting Bugs</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="option_max_starting_treasures">
+             <property name="text">
+              <string>Maximum Starting Treasures</string>
              </property>
             </widget>
            </item>
@@ -2090,7 +2104,7 @@
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>244</height>
+               <height>192</height>
               </size>
              </property>
             </spacer>
