@@ -227,13 +227,11 @@ pub fn process_startflags() {
     // Starting treasures.
     // First 1 bit.
     if additional_start_options >> 15 & 0x1 == 1 {
-        let mut counter = 22;
-        while counter <= 37 {
+        for counter in 22..=37 {
             unsafe {
                 increaseCounter(counter, 99);
                 setFlagForItem(counter + 139); // counter + (itemflag - counter)
             }
-            counter += 1;
         }
     }
 
