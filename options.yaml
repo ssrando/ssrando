@@ -852,6 +852,9 @@
     - Clawshots
     - Din's Power
     - Eldin Song of the Hero Part
+    - Extra Wallet
+    - Extra Wallet
+    - Extra Wallet
     - Faron Song of the Hero Part
     - Farore's Courage
     - Fireshield Earrings
@@ -934,6 +937,15 @@
     Sky Keep Map,
   ]
   help: "Determines the items that will be in your inventory at the start of the game."
+- name: Starting Gratitude Crystal Packs
+  command: starting-crystal-packs
+  type: int
+  default: 0
+  min: 0
+  max: 13
+  bits: 4
+  help: How many gratitude crystal packs to start with.
+  ui: option_starting_crystal_packs
 - name: Random Starting Item
   command: random-starting-item
   type: boolean

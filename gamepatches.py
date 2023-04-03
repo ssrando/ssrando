@@ -1875,6 +1875,13 @@ class GamePatcher:
         self.starting_full_hearts = (starting_health // 4) * 4
         self.startitemflags[ITEM_COUNT_FLAGS[HEART_PIECE]] = starting_health % 4
 
+        # Gratitude Crystal Packs
+        crystal_packs = 0
+        crystal_packs += start_item_counts.pop(GRATITUDE_CRYSTAL_PACK, 0)
+        self.startitemflags[ITEM_COUNT_FLAGS[GRATITUDE_CRYSTAL_PACK]] = (
+            crystal_packs * 5
+        )
+
         ALL_DUNGEON_LIKE = ALL_DUNGEONS + [
             LANAYRU_CAVES
         ]  # [SV, ET, LMF, AC, SSH, FS, SK, LANAYRU_CAVES]

@@ -164,26 +164,34 @@ class Rando:
         for tablet randomizer adds random tablets
         """
         starting_items = {
-            number(PROGRESSIVE_SWORD, i)
-            for i in range(SWORD_COUNT[self.options["starting-sword"]])
+            number(PROGRESSIVE_SWORD, sword_num)
+            for sword_num in range(SWORD_COUNT[self.options["starting-sword"]])
         }
 
         for tablet in self.rng.sample(TABLETS, k=self.options["starting-tablet-count"]):
             starting_items.add(tablet)
 
         starting_items |= {
-            number(HEART_CONTAINER, i)
-            for i in range(self.options["starting-heart-containers"])
+            number(HEART_CONTAINER, heart_container_num)
+            for heart_container_num in range(self.options["starting-heart-containers"])
         }
 
         starting_items |= {
-            number(HEART_PIECE, i) for i in range(self.options["starting-heart-pieces"])
+            number(HEART_PIECE, heart_piece_num)
+            for heart_piece_num in range(self.options["starting-heart-pieces"])
+        }
+
+        starting_items |= {
+            number(GRATITUDE_CRYSTAL_PACK, crystal_pack_num)
+            for crystal_pack_num in range(self.options["starting-crystal-packs"])
         }
 
         if not self.options["open-et"]:
             starting_items |= {
-                number(KEY_PIECE, i)
-                for i in range(self.options["starting-items"].count(KEY_PIECE))
+                number(KEY_PIECE, key_piece_num)
+                for key_piece_num in range(
+                    self.options["starting-items"].count(KEY_PIECE)
+                )
             }
 
         for item in self.options["starting-items"]:
