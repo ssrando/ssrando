@@ -43,6 +43,11 @@ requires_python = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7
 summary = "Cross-platform colored terminal text."
 
 [[package]]
+name = "darkdetect"
+version = "0.7.1"
+summary = "Detect OS Dark Mode from Python"
+
+[[package]]
 name = "exceptiongroup"
 version = "1.1.1"
 requires_python = ">=3.7"
@@ -86,6 +91,12 @@ requires_python = ">=3.7"
 summary = "Core utilities for Python packages"
 
 [[package]]
+name = "pasteboard"
+version = "0.3.3"
+requires_python = ">=3.6,<4.0"
+summary = "Pasteboard - Python interface for reading from NSPasteboard (macOS clipboard)"
+
+[[package]]
 name = "pathspec"
 version = "0.11.1"
 requires_python = ">=3.7"
@@ -110,6 +121,15 @@ requires_python = ">=3.6"
 summary = "plugin and hook calling mechanisms for python"
 
 [[package]]
+name = "pyclip"
+version = "0.7.0"
+summary = "Cross-platform clipboard utilities supporting both binary and text data."
+dependencies = [
+    "pasteboard==0.3.3; platform_system == \"Darwin\"",
+    "pywin32>=1.0; platform_system == \"Windows\"",
+]
+
+[[package]]
 name = "pyinstaller"
 version = "5.9.0"
 requires_python = "<3.12,>=3.7"
@@ -128,6 +148,15 @@ name = "pyinstaller-hooks-contrib"
 version = "2023.1"
 requires_python = ">=3.7"
 summary = "Community maintained hooks for PyInstaller"
+
+[[package]]
+name = "pyqtdarktheme"
+version = "2.1.0"
+requires_python = ">=3.7,<3.12"
+summary = "Flat dark theme for PySide and PyQt."
+dependencies = [
+    "darkdetect<0.8.0,>=0.7.1",
+]
 
 [[package]]
 name = "pyside6"
@@ -175,6 +204,11 @@ dependencies = [
 ]
 
 [[package]]
+name = "pywin32"
+version = "306"
+summary = "Python for Window Extensions"
+
+[[package]]
 name = "pywin32-ctypes"
 version = "0.2.0"
 summary = "UNKNOWN"
@@ -217,7 +251,7 @@ summary = "Backported and Experimental Type Hints for Python 3.7+"
 
 [metadata]
 lock_version = "4.1"
-content_hash = "sha256:1947947284039eca0e70b9b10d5f570c2d1d5d4ec0eca302cb7388a713fb77de"
+content_hash = "sha256:e092b75a5d11b63d0fd4bd965a7a04cb946b6578925851a0ca66ad77aef99f08"
 
 [metadata.files]
 "altgraph 0.17.3" = [
@@ -263,6 +297,10 @@ content_hash = "sha256:1947947284039eca0e70b9b10d5f570c2d1d5d4ec0eca302cb7388a71
     {url = "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {url = "https://files.pythonhosted.org/packages/d8/53/6f443c9a4a8358a93a6792e2acffb9d9d5cb0a5cfd8802644b7b1c9a02e4/colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
 ]
+"darkdetect 0.7.1" = [
+    {url = "https://files.pythonhosted.org/packages/48/2e/346667de53b48417e6237efd9d076d6530c413666fcbc381adbfeff21ce7/darkdetect-0.7.1.tar.gz", hash = "sha256:47be3cf5134432ddb616bbffc927237718407914993c82809983e7ccebf49013"},
+    {url = "https://files.pythonhosted.org/packages/63/bd/b31abc8fcaab163e0b9501020309dd9094b47d609035a23e6ec0a0a8ba10/darkdetect-0.7.1-py2.py3-none-any.whl", hash = "sha256:3efe69f8ecd5f1b7f4fbb0d1d93f656b0e493c45cc49222380ffe2a529cbc866"},
+]
 "exceptiongroup 1.1.1" = [
     {url = "https://files.pythonhosted.org/packages/61/97/17ed81b7a8d24d8f69b62c0db37abbd8c0042d4b3fc429c73dab986e7483/exceptiongroup-1.1.1-py3-none-any.whl", hash = "sha256:232c37c63e4f682982c8b6459f33a8981039e5fb8756b2074364e5055c498c9e"},
     {url = "https://files.pythonhosted.org/packages/cc/38/57f14ddc8e8baeddd8993a36fe57ce7b4ba174c35048b9a6d270bb01e833/exceptiongroup-1.1.1.tar.gz", hash = "sha256:d484c3090ba2889ae2928419117447a14daf3c1231d5e30d0aae34f354f01785"},
@@ -302,6 +340,13 @@ content_hash = "sha256:1947947284039eca0e70b9b10d5f570c2d1d5d4ec0eca302cb7388a71
     {url = "https://files.pythonhosted.org/packages/47/d5/aca8ff6f49aa5565df1c826e7bf5e85a6df852ee063600c1efa5b932968c/packaging-23.0.tar.gz", hash = "sha256:b6ad297f8907de0fa2fe1ccbd26fdaf387f5f47c7275fedf8cce89f99446cf97"},
     {url = "https://files.pythonhosted.org/packages/ed/35/a31aed2993e398f6b09a790a181a7927eb14610ee8bbf02dc14d31677f1c/packaging-23.0-py3-none-any.whl", hash = "sha256:714ac14496c3e68c99c29b00845f7a2b85f3bb6f1078fd9f72fd20f0570002b2"},
 ]
+"pasteboard 0.3.3" = [
+    {url = "https://files.pythonhosted.org/packages/06/43/adc39246de74e9c482c11fbe6a50e8bc7f9dc367fdc261f6f767de5b1419/pasteboard-0.3.3.tar.gz", hash = "sha256:d80275e76ff1eaaa5ca3d0e0fd8aecd5ea1298523dfd51f3774b5aaebdde02cf"},
+    {url = "https://files.pythonhosted.org/packages/0e/7a/8ce2cf035b67f0aa57c71d8cdb1f522a8f0d6d2dd094d8c547c9fcbb6982/pasteboard-0.3.3-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:20a5c53bae8ac8186ecdd621020fb1b072d45a35f9f11a8e4cd5e82d76b485d0"},
+    {url = "https://files.pythonhosted.org/packages/5f/02/da1815dec5e8c661a2d1d7b00d9a187a4adc339fa8152bd703cccddc8f95/pasteboard-0.3.3-cp37-cp37m-macosx_10_15_x86_64.whl", hash = "sha256:f99dd6c7039b755756b2068942c4c2487d6366e5a56eafd6db0ae7aa2a371a0e"},
+    {url = "https://files.pythonhosted.org/packages/74/dc/85955b080110bfc7716d77aca8f62a6e7d1d210c2eab03310dac18937b34/pasteboard-0.3.3-cp38-cp38-macosx_10_15_x86_64.whl", hash = "sha256:19229dfa28f41afb5e731ac81e52bbc4212f67d678c082d3e3621cec0628a773"},
+    {url = "https://files.pythonhosted.org/packages/c1/81/2f4c032171c9420d3971bd26331dfb80abef1ca0c601d92076e7fe4a4f18/pasteboard-0.3.3-cp36-cp36m-macosx_10_15_x86_64.whl", hash = "sha256:afd171e200316f6b3d3da381476921ca57cb8f26d2fa418f779454913918dbb9"},
+]
 "pathspec 0.11.1" = [
     {url = "https://files.pythonhosted.org/packages/95/60/d93628975242cc515ab2b8f5b2fc831d8be2eff32f5a1be4776d49305d13/pathspec-0.11.1.tar.gz", hash = "sha256:2798de800fa92780e33acca925945e9a19a133b715067cf165b8866c15a31687"},
     {url = "https://files.pythonhosted.org/packages/be/c8/551a803a6ebb174ec1c124e68b449b98a0961f0b737def601e3c1fbb4cfd/pathspec-0.11.1-py3-none-any.whl", hash = "sha256:d8af70af76652554bd134c22b3e8a1cc46ed7d91edcdd721ef1a0c51a84a5293"},
@@ -317,6 +362,10 @@ content_hash = "sha256:1947947284039eca0e70b9b10d5f570c2d1d5d4ec0eca302cb7388a71
 "pluggy 1.0.0" = [
     {url = "https://files.pythonhosted.org/packages/9e/01/f38e2ff29715251cf25532b9082a1589ab7e4f571ced434f98d0139336dc/pluggy-1.0.0-py2.py3-none-any.whl", hash = "sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3"},
     {url = "https://files.pythonhosted.org/packages/a1/16/db2d7de3474b6e37cbb9c008965ee63835bba517e22cdb8c35b5116b5ce1/pluggy-1.0.0.tar.gz", hash = "sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"},
+]
+"pyclip 0.7.0" = [
+    {url = "https://files.pythonhosted.org/packages/65/8a/98ed02d81dea4b2211a4746724d7a271264b701c991fed503c246de52864/pyclip-0.7.0.tar.gz", hash = "sha256:57602047a4ceab709bdcd42f3dde6449a3349b95c16154cfdce27376a2072491"},
+    {url = "https://files.pythonhosted.org/packages/7d/4f/4b02e2c232ddf694bca0baea3049b886eeb80ee3d89c415067f5191596c1/pyclip-0.7.0-py3-none-any.whl", hash = "sha256:a7b7ea2cfad2dd61e86a529af588d006070d3eb0bd32981afaee5215f4604fec"},
 ]
 "pyinstaller 5.9.0" = [
     {url = "https://files.pythonhosted.org/packages/02/77/b1047b4a837404eba02d5e2f1d0d91689b02e87398a9858d654cc6e39c56/pyinstaller-5.9.0-py3-none-manylinux2014_aarch64.whl", hash = "sha256:3b2c34c3c3ddf38f68d9f5afbed82abe0f89d53014c56892326fef10172ee652"},
@@ -335,6 +384,10 @@ content_hash = "sha256:1947947284039eca0e70b9b10d5f570c2d1d5d4ec0eca302cb7388a71
 "pyinstaller-hooks-contrib 2023.1" = [
     {url = "https://files.pythonhosted.org/packages/50/c8/0ad1a591a9f25fbe388024d95eb3d0cb5234e0a138439bc4128d1dc6a557/pyinstaller-hooks-contrib-2023.1.tar.gz", hash = "sha256:ab56c192e7cd4472ff6b840cda4fc42bceccc7fb4234f064fc834a3248c0afdd"},
     {url = "https://files.pythonhosted.org/packages/db/06/b32922199cdb9fd152fe2fae38e93bb4d7a06d098950ae1c737a659e6d7d/pyinstaller_hooks_contrib-2023.1-py2.py3-none-any.whl", hash = "sha256:d2ea40a7105651aa525bfe5fe309aa264d4d9bb49f839b862243dcf0a56c34cd"},
+]
+"pyqtdarktheme 2.1.0" = [
+    {url = "https://files.pythonhosted.org/packages/12/cd/8ce0ac84e9f68dc549edcc5cbdeac7511439c5f7ee6c05f1f8826ef05d44/pyqtdarktheme-2.1.0-py3-none-any.whl", hash = "sha256:8739d99502230fbaca42551ea033c9ae31c81c4ebfec2f1ffde38f32a18bea7a"},
+    {url = "https://files.pythonhosted.org/packages/5c/f1/786feaad7a333072b34a913dbe38aef94b5ae43ad188934f5d70007aea79/pyqtdarktheme-2.1.0.tar.gz", hash = "sha256:5f8274ddfa3a5481ed9743cdb0f9debfeb7ff695b3a0d202a8104361d17dadb8"},
 ]
 "pyside6 6.4.3" = [
     {url = "https://files.pythonhosted.org/packages/30/04/3b3e241cbe7cc9c06f40e009d0c242fe87a026f9533cdd343a389b96c972/PySide6-6.4.3-pp39-pypy39_pp73-macosx_10_9_universal2.whl", hash = "sha256:73883c13bc44221507abc2b3d6a7bebbf0e067844f7d0a6e16b2df177aab89d8"},
@@ -363,6 +416,22 @@ content_hash = "sha256:1947947284039eca0e70b9b10d5f570c2d1d5d4ec0eca302cb7388a71
 "pytest 7.2.2" = [
     {url = "https://files.pythonhosted.org/packages/b2/68/5321b5793bd506961bd40bdbdd0674e7de4fb873ee7cab33dd27283ad513/pytest-7.2.2-py3-none-any.whl", hash = "sha256:130328f552dcfac0b1cec75c12e3f005619dc5f874f0a06e8ff7263f0ee6225e"},
     {url = "https://files.pythonhosted.org/packages/b9/29/311895d9cd3f003dd58e8fdea36dd895ba2da5c0c90601836f7de79f76fe/pytest-7.2.2.tar.gz", hash = "sha256:c99ab0c73aceb050f68929bc93af19ab6db0558791c6a0715723abe9d0ade9d4"},
+]
+"pywin32 306" = [
+    {url = "https://files.pythonhosted.org/packages/08/dc/28c668097edfaf4eac4617ef7adf081b9cf50d254672fcf399a70f5efc41/pywin32-306-cp310-cp310-win32.whl", hash = "sha256:06d3420a5155ba65f0b72f2699b5bacf3109f36acbe8923765c22938a69dfc8d"},
+    {url = "https://files.pythonhosted.org/packages/0e/57/c3ec32b498f24a2392404d1f0fd29f47a3f7339d7d579df7a0560cff337c/pywin32-306-cp38-cp38-win32.whl", hash = "sha256:e4c092e2589b5cf0d365849e73e02c391c1349958c5ac3e9d5ccb9a28e017b3a"},
+    {url = "https://files.pythonhosted.org/packages/14/91/17e016d5923e178346aabda3dfec6629d1a26efe587d19667542105cf0a6/pywin32-306-cp312-cp312-win32.whl", hash = "sha256:383229d515657f4e3ed1343da8be101000562bf514591ff383ae940cad65458b"},
+    {url = "https://files.pythonhosted.org/packages/1c/43/e3444dc9a12f8365d9603c2145d16bf0a2f8180f343cf87be47f5579e547/pywin32-306-cp312-cp312-win_arm64.whl", hash = "sha256:5821ec52f6d321aa59e2db7e0a35b997de60c201943557d108af9d4ae1ec7040"},
+    {url = "https://files.pythonhosted.org/packages/1c/f7/24d8ed4fd9c43b90354df7764f81f0dd5e623f9a50f1538f90fe085d6dff/pywin32-306-cp39-cp39-win_amd64.whl", hash = "sha256:39b61c15272833b5c329a2989999dcae836b1eed650252ab1b7bfbe1d59f30f4"},
+    {url = "https://files.pythonhosted.org/packages/28/19/6b8f416ff02132c404042f251eb90a41d15abe677481fcff22077e943c6f/pywin32-306-cp37-cp37m-win32.whl", hash = "sha256:1c73ea9a0d2283d889001998059f5eaaba3b6238f767c9cf2833b13e6a685f65"},
+    {url = "https://files.pythonhosted.org/packages/7e/7f/419c4fcadcaa374a0ae41cbdf6c3a81452892dd6c523aea629d17e49146e/pywin32-306-cp39-cp39-win32.whl", hash = "sha256:e25fd5b485b55ac9c057f67d94bc203f3f6595078d1fb3b458c9c28b7153a802"},
+    {url = "https://files.pythonhosted.org/packages/7e/9e/ad6b1ae2a5ad1066dc509350e0fbf74d8d50251a51e420a2a8feaa0cecbd/pywin32-306-cp311-cp311-win_amd64.whl", hash = "sha256:a7639f51c184c0272e93f244eb24dafca9b1855707d94c192d4a0b4c01e1100e"},
+    {url = "https://files.pythonhosted.org/packages/80/e6/08192cb5728a6ffdb70ea990d9a1351b320d31a751bb463e652d9e05e7aa/pywin32-306-cp37-cp37m-win_amd64.whl", hash = "sha256:72c5f621542d7bdd4fdb716227be0dd3f8565c11b280be6315b06ace35487d36"},
+    {url = "https://files.pythonhosted.org/packages/83/1c/25b79fc3ec99b19b0a0730cc47356f7e2959863bf9f3cd314332bddb4f68/pywin32-306-cp312-cp312-win_amd64.whl", hash = "sha256:37257794c1ad39ee9be652da0462dc2e394c8159dfd913a8a4e8eb6fd346da0e"},
+    {url = "https://files.pythonhosted.org/packages/8b/1e/fc18ad83ca553e01b97aa8393ff10e33c1fb57801db05488b83282ee9913/pywin32-306-cp311-cp311-win32.whl", hash = "sha256:e65028133d15b64d2ed8f06dd9fbc268352478d4f9289e69c190ecd6818b6407"},
+    {url = "https://files.pythonhosted.org/packages/91/20/f744bff1da8f43388498503634378dbbefbe493e65675f2cc52f7185c2c2/pywin32-306-cp311-cp311-win_arm64.whl", hash = "sha256:70dba0c913d19f942a2db25217d9a1b726c278f483a919f1abfed79c9cf64d3a"},
+    {url = "https://files.pythonhosted.org/packages/d3/d6/891894edec688e72c2e308b3243fad98b4066e1839fd2fe78f04129a9d31/pywin32-306-cp310-cp310-win_amd64.whl", hash = "sha256:84f4471dbca1887ea3803d8848a1616429ac94a4a8d05f4bc9c5dcfd42ca99c8"},
+    {url = "https://files.pythonhosted.org/packages/fa/80/a6b22e031590cc5f4fcbd5bf4bcf63a9dabce9d59065f53add99a8caaec5/pywin32-306-cp38-cp38-win_amd64.whl", hash = "sha256:e8ac1ae3601bee6ca9f7cb4b5363bf1c0badb935ef243c4733ff9a393b1690c0"},
 ]
 "pywin32-ctypes 0.2.0" = [
     {url = "https://files.pythonhosted.org/packages/7a/7d/0dbc4c99379452a819b0fb075a0ffbb98611df6b6d59f54db67367af5bc0/pywin32-ctypes-0.2.0.tar.gz", hash = "sha256:24ffc3b341d457d48e8922352130cf2644024a4ff09762a2261fd34c36ee5942"},

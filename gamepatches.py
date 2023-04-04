@@ -1963,7 +1963,7 @@ class GamePatcher:
             self.startstoryflags.append(required_dungeon_storyflag)
 
     def add_fi_text_patches(self):
-        colourful_dungeon_text = [
+        colorful_dungeon_text = [
             DUNGEON_COLORS[dungeon] + dungeon + ">>"
             for dungeon in self.placement_file.required_dungeons
         ]
@@ -1975,9 +1975,9 @@ class GamePatcher:
         elif required_dungeon_count == 6:
             required_dungeons_text = "All Dungeons"
         elif required_dungeon_count < 5:
-            required_dungeons_text = "\n".join(colourful_dungeon_text)
+            required_dungeons_text = "\n".join(colorful_dungeon_text)
         else:
-            required_dungeons_text = break_lines(", ".join(colourful_dungeon_text), 44)
+            required_dungeons_text = break_lines(", ".join(colorful_dungeon_text), 44)
 
         self.eventpatches["006-8KenseiNormal"].append(
             {

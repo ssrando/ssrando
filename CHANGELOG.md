@@ -40,6 +40,8 @@
   - The `fix-bit-crashes` option works the same as it did previously
 - Added cosmetic option to set the in-game interface setting from the start of the game
   - It is now possible to start with the Standard, Light, or Pro interface without having to change the setting from the inventory screen
+- Added an accessibility toggle for light and dark themes (by CovenEsme)
+  - You can now pick to have a light theme, dark theme, or to automatically change based on the theme of your computer
 - Added option to start at a random location (by CovenEsme)
   - Has 4 main options: Vanilla, Bird Statues, Any Surface Region, Any
     - Vanilla: You will spawn in Link's bedroom
@@ -58,6 +60,25 @@
   - Rearranged options and regrouped into simpler, broader categories
   - Removed the Progress Locations tab
   - Made many miscellaneous changes
+  - Added a dark theme
+- Accessibility options (by CovenEsme)
+  - Added a toggle for enabling and disabling a custom theme 
+  - Added a button that opens a window with customization options for the theme of the randomizer
+    - It is now possible to customize the way the randomizer program looks in fine detail
+    - You can customize the light and dark mode colors of each widget to create a custom theme that works in both light and dark modes
+    - Widgets are grouped into categories that can be selected with a drop down menu
+    - Hovering over a widget label will show a tooltip describing what it does
+  - Added theme presets
+    - Allows you to choose between various theme presets. Currently, there are "Default", "High Contrast", and "Readibility" options
+    - The "Readibility" theme preset also changes the font family to "OpenDyslexic3"
+  - Added font settings
+    - It is now possible to set the font family used by the randomizer program
+    - It is also possible to change the font point size. The default value is 10 (previously 9), can go as small as 6 and as large as 14.
+  - Added option to make the curved corners of the randomizer interace sharp and pointy instead of curved
+- Added a copy button that copies the settings string to the clipboard (by CovenEsme)
+- Updated and standardized the option tooltip text (by CovenEsme)
+  - Tooltip text is now more descriptive
+  - Tooltip text now features **bold** highlights for **WARNINGS** regarding potentially troublesome settings and option names for drop down choices
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
   - The randomizer is distributed with a set of default presets that cannot be changed
@@ -149,6 +170,7 @@
 - Fixed bug where setting the `map-mode` or `boss-key-mode` options to "Vanilla" AND starting with some but not all maps or boss keys would throw an error
   - Any maps or boss keys NOT added as starting items will now be placed in their vanilla locations (if the `map-mode`/`boss-key-mode` options are set to "Vanilla")
   - Any maps or boss keys added as starting items will be added to the starting inventory
+- Fixed UI scaling issues. The randomizer program now scales when resized instead of remaining a fixed size.
 - Fixed bug where most items in Beedle's Shop where partially hidden in the table
 - Fixed bulk mode for Windows
 - Fixed barbed wire staying after obtaining triforce of wisdom
