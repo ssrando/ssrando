@@ -108,13 +108,13 @@ We are using `black` to format code; you can run `black .` to format all files.
 
 To install developing dependencies (including `black`):
 
-    pip install -r requirements_dev.txt
+    pdm install -G dev
 If your system uses old versions of Python, you may need to replace `pip` with `python3 -mpip`
 
 ### Executable
 To build the executable, you need `PyInstaller` installed:
 
-    pip install -r requirements_build.txt
+    pdm install -G build
 
 Then, build the executable using
 

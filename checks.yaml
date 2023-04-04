@@ -448,7 +448,7 @@ Sky - Goddess Chest on Island next to Bamboo Island:
   Paths:
     - stage/F020/r0/l0/TBox/71
   cube_region: Eldin Volcano
-Sky - Goddess Chest in Cave on Island Next to Bamboo Island:
+Sky - Goddess Chest in Cave on Island next to Bamboo Island:
   original item: Heart Medal
   type: sky, goddess, lanayru goddess, bombable
   Paths:
@@ -1097,7 +1097,7 @@ Lanayru Gorge - Thunder Dragon's Reward:
     - event/404-DesertF3/give item after Healing Thunderdragon
     - oarc/F302/l0
   hint: sometimes
-  text: They say that <r<curing an ancient dragon>> is rewarded with
+  text: <r<curing an ancient dragon>> is rewarded with
 Lanayru Gorge - Item on Pillar:
   original item: Red Rupee
   type: lanayru, freestanding
