@@ -1,1 +1,1 @@
-py randogui.py
+pdm run randoscript.py
