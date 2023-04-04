@@ -1,14 +1,12 @@
 from typing import Union
 from PySide6.QtCore import QSortFilterProxyModel, QModelIndex, QPersistentModelIndex, Qt
-from yaml_files import checks
-
-check_order = list(checks.keys())
 
 
-class LocationsModel(QSortFilterProxyModel):
-    def __init__(self, parent):
+class SearchableListModel(QSortFilterProxyModel):
+    def __init__(self, parent, full_list):
         super().__init__(parent)
         self.free_text_filter = ""
+        self.full_list = full_list
         self.setSortCaseSensitivity(Qt.CaseInsensitive)
 
     def lessThan(self, right, left):
@@ -16,7 +14,7 @@ class LocationsModel(QSortFilterProxyModel):
         rightCheck = self.sourceModel().data(right)
         if rightCheck == "":
             return False
-        return check_order.index(leftCheck) > check_order.index(rightCheck)
+        return self.full_list.index(leftCheck) > self.full_list.index(rightCheck)
 
     def filterAcceptsRow(
         self, source_row: int, source_parent: Union[QModelIndex, QPersistentModelIndex]
