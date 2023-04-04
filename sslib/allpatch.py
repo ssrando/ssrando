@@ -38,6 +38,7 @@ OARC_PATH = Path("oarc")
 # MASK_REGEX = re.compile(r"(.+(/|\\))*(?P<texName>(a|p)l_.+)_(?P<colorGroupName>.+).png")
 MASK_REGEX = re.compile(r"(.+(/|\\))*(?P<texName>.+)__(?P<colorGroupName>.+).png")
 
+
 class AllPatcher:
     def __init__(
         self,
@@ -235,33 +236,38 @@ class AllPatcher:
             linkArcPath = model_pack_path / "Alink.arc"
             birdArcPath = model_pack_path / "Bird_Link.arc"
 
-        colorData = {}    
+        colorData = {}
 
         if os.path.isfile(color_data_path):
             with open(color_data_path) as f:
                 colorData = json.load(f)
 
-        #player model patches
+        # player model patches
         linkArcBytes = linkArcPath.read_bytes()
         parsedLinkArc = U8File.parse_u8(BytesIO(linkArcBytes))
 
         masksPath = model_pack_path / "TextureMasks" / "PlayerHero"
-        parsedLinkArc = self.do_texture_recolour(parsedLinkArc, masksPath, colorData=colorData.get("PlayerHero"))
+        parsedLinkArc = self.do_texture_recolour(
+            parsedLinkArc, masksPath, colorData=colorData.get("PlayerHero")
+        )
         masksPath = model_pack_path / "TextureMasks" / "PlayerCasual"
-        parsedLinkArc = self.do_texture_recolour(parsedLinkArc, masksPath, colorData=colorData.get("PlayerCasual")) #same name masks overwrite hero colours
+        parsedLinkArc = self.do_texture_recolour(
+            parsedLinkArc, masksPath, colorData=colorData.get("PlayerCasual")
+        )  # same name masks overwrite hero colours
 
         # self.objPackCustomModelAdd = parsedLinkArc.to_buffer()
         self.customModelArcs["Alink.arc"] = parsedLinkArc.to_buffer()
 
-        #loftwing patches
+        # loftwing patches
         birdArcBytes = birdArcPath.read_bytes()
         parsedBirdArc = U8File.parse_u8(BytesIO(birdArcBytes))
         masksPath = model_pack_path / "TextureMasks" / "Loftwing"
 
-        parsedBirdArc = self.do_texture_recolour(parsedBirdArc, masksPath, colorData=colorData.get("Loftwing"))
+        parsedBirdArc = self.do_texture_recolour(
+            parsedBirdArc, masksPath, colorData=colorData.get("Loftwing")
+        )
 
         self.customModelArcs["Bird_Link.arc"] = parsedBirdArc.to_buffer()
-
 
         for path in self.actual_extract_path.glob("**/*.arc"):
             modified_path = str(path).replace(
@@ -277,17 +283,17 @@ class AllPatcher:
                 shutil.copy(replacement, modified_path)
 
         return
-    
-    def do_texture_recolour(self, arcData: U8File, maskFolderPath: Path, colorData: dict) -> U8File:
+
+    def do_texture_recolour(
+        self, arcData: U8File, maskFolderPath: Path, colorData: dict
+    ) -> U8File:
         maskLookup = {}
 
         for p in maskFolderPath.iterdir():
             if match := MASK_REGEX.match(str(p)):
                 if match.group("texName") not in maskLookup:
                     maskLookup[match.group("texName")] = []
-                maskLookup[match.group("texName")].append(
-                    match.group("colorGroupName")
-                )
+                maskLookup[match.group("texName")].append(match.group("colorGroupName"))
 
         brresData = arcData.get_file_data("g3d/model.brres")
         parsedBRRES = BRRES.parse_brres(BytesIO(brresData))
@@ -304,8 +310,7 @@ class AllPatcher:
                 if colorData[colorGroup] == "Default":
                     continue
                 maskPath = str(
-                    maskFolderPath
-                    / (str(texName) + "__" + str(colorGroup) + ".png")
+                    maskFolderPath / (str(texName) + "__" + str(colorGroup) + ".png")
                 )
                 maskPaths.append(maskPath)
                 colors.append(colorData[colorGroup])
@@ -319,7 +324,6 @@ class AllPatcher:
 
         arcData.set_file_data("g3d/model.brres", parsedBRRES.to_buffer().read())
         return arcData
-
 
     def do_patch(self):
         self.modified_extract_path.mkdir(parents=True, exist_ok=True)
@@ -524,7 +528,7 @@ class AllPatcher:
             for path in object_arc.get_all_paths():
                 if match := OARC_ARC_REGEX.match(path):
                     arc = match.group("name")
-                    if arc in patched_arcs: # maybe get arc replacements to overwrite?
+                    if arc in patched_arcs:  # maybe get arc replacements to overwrite?
                         continue
                     if replacement := self.arc_replacements.get(arc):
                         object_arc.set_file_data(path, replacement.read_bytes())
