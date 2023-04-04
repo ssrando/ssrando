@@ -1,5 +1,5 @@
 {
-    "Hero": 
+    "PlayerHero": 
     {
         "Skin": "Default",
         "Hat": "Default",
@@ -17,11 +17,9 @@
         "Boots": "Default",
         "Soles": "Default"
     },
-    "Casual": 
+    "PlayerCasual": 
     {
-        "Skin": "Default",
         "Hair": "Default",
-        "Eyes": "Default",
         "Shirt": "Default",
         "Shirt Pattern": "Default",
         "Band": "Default",
@@ -30,5 +28,18 @@
         "Pants": "Default",
         "Boots": "Default",
         "Soles": "Default"
+    },
+    "Loftwing":
+    {
+        "Body Primary": "Default",
+        "Body Secondary": "Default",
+        "Body Accents": "Default",
+        "Wing Tip Inner": "Default",
+        "Wing Tip Middle": "Default",
+        "Wing Tip Outer": "Default",
+        "Beak": "Default",
+        "Eyes": "Default",
+        "Legs": "Default",
+        "Collar": "Default"
     }
 }

@@ -35,8 +35,8 @@ CUSTOM_MODELS_PATH = Path("models")
 LINK_COLOR_DATA_PATH = CUSTOM_MODELS_PATH / "link_color_data.json"
 OARC_PATH = Path("oarc")
 
-MASK_REGEX = re.compile(r"(.+(/|\\))*(?P<texName>(a|p)l_.+)_(?P<colorGroupName>.+).png")
-
+# MASK_REGEX = re.compile(r"(.+(/|\\))*(?P<texName>(a|p)l_.+)_(?P<colorGroupName>.+).png")
+MASK_REGEX = re.compile(r"(.+(/|\\))*(?P<texName>.+)__(?P<colorGroupName>.+).png")
 
 class AllPatcher:
     def __init__(
@@ -69,7 +69,7 @@ class AllPatcher:
         else:
             arc_replacement_path.mkdir()
         self.objpackoarcadd = []
-        self.objPackCustomModelAdd = None
+        self.customModelArcs = {}
         self.stage_oarc_add = {}
         self.stage_oarc_delete = {}
         self.bzs_patch = None
@@ -223,54 +223,92 @@ class AllPatcher:
                 # replaces arc with actual arc if unchanged
                 shutil.copy(path, modified_path)
 
-    def patch_custom_model(self):
-        self.mask_lookup = {}
-
+    def patch_custom_models(self):
         if self.current_custom_model_pack_name == "Link":
             color_data_path = LINK_COLOR_DATA_PATH
             model_pack_path = LINK_MODEL_DATA_PATH
             linkArcPath = OARC_PATH / "Alink.arc"
+            birdArcPath = OARC_PATH / "Bird_Link.arc"
         else:
             model_pack_path = CUSTOM_MODELS_PATH / self.current_custom_model_pack_name
             color_data_path = model_pack_path / "color_data.json"
             linkArcPath = model_pack_path / "Alink.arc"
+            birdArcPath = model_pack_path / "Bird_Link.arc"
+
+        colorData = {}    
 
         if os.path.isfile(color_data_path):
             with open(color_data_path) as f:
-                self.color_data = json.load(f)
+                colorData = json.load(f)
 
-        for p in Path(model_pack_path / "TextureMasks" / "Player").iterdir():
+        #player model patches
+        linkArcBytes = linkArcPath.read_bytes()
+        parsedLinkArc = U8File.parse_u8(BytesIO(linkArcBytes))
+
+        masksPath = model_pack_path / "TextureMasks" / "PlayerHero"
+        parsedLinkArc = self.do_texture_recolour(parsedLinkArc, masksPath, colorData=colorData.get("PlayerHero"))
+        masksPath = model_pack_path / "TextureMasks" / "PlayerCasual"
+        parsedLinkArc = self.do_texture_recolour(parsedLinkArc, masksPath, colorData=colorData.get("PlayerCasual")) #same name masks overwrite hero colours
+
+        # self.objPackCustomModelAdd = parsedLinkArc.to_buffer()
+        self.customModelArcs["Alink.arc"] = parsedLinkArc.to_buffer()
+
+        #loftwing patches
+        birdArcBytes = birdArcPath.read_bytes()
+        parsedBirdArc = U8File.parse_u8(BytesIO(birdArcBytes))
+        masksPath = model_pack_path / "TextureMasks" / "Loftwing"
+
+        parsedBirdArc = self.do_texture_recolour(parsedBirdArc, masksPath, colorData=colorData.get("Loftwing"))
+
+        self.customModelArcs["Bird_Link.arc"] = parsedBirdArc.to_buffer()
+
+
+        for path in self.actual_extract_path.glob("**/*.arc"):
+            modified_path = str(path).replace(
+                str(self.actual_extract_path), str(self.modified_extract_path)
+            )
+            replacement = Path()
+
+            # replaces arc with actual arc if deleted
+            if not Path(modified_path).exists():
+                shutil.copy(path, modified_path)
+
+            if replacement := self.arc_replacements.get(path.parts[-1]):
+                shutil.copy(replacement, modified_path)
+
+        return
+    
+    def do_texture_recolour(self, arcData: U8File, maskFolderPath: Path, colorData: dict) -> U8File:
+        maskLookup = {}
+
+        for p in maskFolderPath.iterdir():
             if match := MASK_REGEX.match(str(p)):
-                if match.group("texName") not in self.mask_lookup:
-                    self.mask_lookup[match.group("texName")] = []
-                self.mask_lookup[match.group("texName")].append(
+                if match.group("texName") not in maskLookup:
+                    maskLookup[match.group("texName")] = []
+                maskLookup[match.group("texName")].append(
                     match.group("colorGroupName")
                 )
 
-        self.hero_color_data = self.color_data.get("Hero")
-
-        linkArcBytes = linkArcPath.read_bytes()
-        parsedLinkArc = U8File.parse_u8(BytesIO(linkArcBytes))
-        brresData = parsedLinkArc.get_file_data("g3d/model.brres")
+        brresData = arcData.get_file_data("g3d/model.brres")
         parsedBRRES = BRRES.parse_brres(BytesIO(brresData))
 
-        for texName in self.mask_lookup:
+        for texName in maskLookup:
             texPath = f"Textures(NW4R)/{texName}"
             imageData: np.array = parsedBRRES.get_file_data(path=texPath)
             maskPaths = []
             colors = []
             process = False
-            for colorGroup in self.mask_lookup[texName]:
-                if self.hero_color_data[colorGroup] == "Default":
+            for colorGroup in maskLookup[texName]:
+                if colorGroup not in colorData:
+                    continue
+                if colorData[colorGroup] == "Default":
                     continue
                 maskPath = str(
-                    model_pack_path
-                    / "TextureMasks"
-                    / "Player"
-                    / (str(texName) + "_" + str(colorGroup) + ".png")
+                    maskFolderPath
+                    / (str(texName) + "__" + str(colorGroup) + ".png")
                 )
                 maskPaths.append(maskPath)
-                colors.append(self.hero_color_data[colorGroup])
+                colors.append(colorData[colorGroup])
                 process = True
 
             if process:
@@ -279,16 +317,15 @@ class AllPatcher:
                 )
                 parsedBRRES.set_file_data(path=texPath, data=modifiedTexture)
 
-        parsedLinkArc.set_file_data("g3d/model.brres", parsedBRRES.to_buffer().read())
-        self.objPackCustomModelAdd = parsedLinkArc.to_buffer()
+        arcData.set_file_data("g3d/model.brres", parsedBRRES.to_buffer().read())
+        return arcData
 
-        return
 
     def do_patch(self):
         self.modified_extract_path.mkdir(parents=True, exist_ok=True)
 
         self.patch_arc_replacements()
-        self.patch_custom_model()
+        self.patch_custom_models()
 
         # stages
         for stagepath in (self.actual_extract_path / "DATA" / "files" / "Stage").glob(
@@ -338,6 +375,16 @@ class AllPatcher:
                     stageu8.add_file_data(f"oarc/{arcname}", oarc_path.read_bytes())
                     patched_arcs.add(arcname)
                     modified = True
+
+                if self.customModelArcs:
+                    for path in stageu8.get_all_paths():
+                        if match := OARC_ARC_REGEX.match(path):
+                            arc = match.group("name")
+                            if replacement := self.customModelArcs.get(arc):
+                                stageu8.set_file_data(path, replacement)
+                                patched_arcs.add(arc)
+                                modified = True
+
                 if self.arc_replacements:
                     for path in stageu8.get_all_paths():
                         if match := OARC_ARC_REGEX.match(path):
@@ -464,15 +511,20 @@ class AllPatcher:
             patched_arcs.add(arcname)
             objpack_modified = True
 
-        if self.objPackCustomModelAdd:
-            object_arc.set_file_data("oarc/Alink.arc", self.objPackCustomModelAdd)
-            objpack_modified = True
+        if self.customModelArcs:
+            for path in object_arc.get_all_paths():
+                if match := OARC_ARC_REGEX.match(path):
+                    arc = match.group("name")
+                    if replacement := self.customModelArcs.get(arc):
+                        object_arc.set_file_data(path, replacement)
+                        patched_arcs.add(arc)
+                        objpack_modified = True
 
         if self.arc_replacements:
             for path in object_arc.get_all_paths():
                 if match := OARC_ARC_REGEX.match(path):
                     arc = match.group("name")
-                    if arc in patched_arcs:
+                    if arc in patched_arcs: # maybe get arc replacements to overwrite?
                         continue
                     if replacement := self.arc_replacements.get(arc):
                         object_arc.set_file_data(path, replacement.read_bytes())
