@@ -183,6 +183,24 @@ li r0, 0
 stb r0, -0x3ca3(r13) ; RELOADER_TYPE
 blr
 
+; new health is in r0, need to return in r4
+; if new health is 0 and we are either in thrill digger
+; or bug heaven, let link live with a quarter heart
+.global no_minigame_death
+no_minigame_death:
+mr r4, r0
+cmpwi r4, 0 ; check if health greater or equal zero
+bgtlr
+lwz r5, -0x71f0(r13) ; SPECIAL_MINIGAME_STATE
+cmpwi r5, 3 ; thrill digger
+beq prevent_death
+cmpwi r5, 5 ; bug heaven
+bnelr
+prevent_death:
+li r4, 1 ; quarter heart, enough to survive
+blr
+
+
 .global send_to_start
 send_to_start:
 lwz r3, RELOADER_PTR@sda21(r13)

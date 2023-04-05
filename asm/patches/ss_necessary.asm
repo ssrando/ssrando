@@ -260,6 +260,10 @@ nop
 nop
 nop
 
+; we need to make sure you can't die in thrill digger and bug heaven, even with a high damage multiplier
+.org 0x801e351c
+bl no_minigame_death
+
 ;remove heromode check for air meter
 .org 0x801c5d8c
 nop
