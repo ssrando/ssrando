@@ -2495,6 +2495,11 @@
       next: -1
       param3: 10
 402-DesertF2:
+  - name: Override Skipper check for first time conversation
+    type: flowpatch
+    index: 2
+    flow:
+      next: 150 # Check for SSH visible flag
   - name: Never ask player to go inside shark mouth for ship dowsing
     type: flowpatch
     index: 17

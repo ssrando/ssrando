@@ -8,8 +8,6 @@ global:
     - 96  # Fi's text after obtaining first map
     - 745 # 5 Beacons
     - 496 # Skipper's cutscene after Sea Chart
-    - 264 # Talked to Skipper first time
-    - 273 # Talked to Skipper first time after saying no (prevents weird first text)
     - 130 # Start with Beacon
     - 358 # Interface choice unlocked
     - 792 # SG Big Door cs
