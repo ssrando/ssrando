@@ -4218,6 +4218,12 @@ F301_1: # Sand Sea Main Area
     room: 0
     objtype: STAG
     id: 0xFC6B
+  - name: Remove post-tentalus entrance to Sadship
+    type: objdelete
+    id: 0xFCB7
+    layer: 3
+    room: 0
+    objtype: STAG
   - name: Cutscene after shipyard
     type: objdelete
     id: 0xFC07
