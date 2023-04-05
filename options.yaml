@@ -725,6 +725,23 @@
   command: excluded-locations
   type: multichoice
   default: [
+    ## Peatrice
+    Central Skyloft - Peater/Peatrice's Crystals,
+    ## Levias
+    Thunderhead - Song from Levias,
+    ## Water Dragon's Reward (tadtones)
+    Flooded Faron Woods - Water Dragon's Reward,
+    ## Silent Realms (trials)
+    Skyloft Silent Realm - Stone of Trials,
+    Faron Silent Realm - Water Scale,
+    Lanayru Silent Realm - Clawshots,
+    Eldin Silent Realm - Fireshield Earrings,
+    ## Minigames
+    Upper Skyloft - Pumpkin Archery -- 600 Points,
+    Sky - Lumpy Pumpkin - Harp Minigame,
+    Sky - Fun Fun Island Minigame -- 500 Rupees,
+    Thunderhead - Bug Heaven -- 10 Bugs in 3 Minutes,
+    Lanayru Sand Sea - Rickety Coaster -- Heart Stopping Track in 1'05,
     ## Goddess Cubes
     Central Skyloft - Bazaar Goddess Chest,
     Central Skyloft - Shed Goddess Chest,
@@ -753,14 +770,6 @@
     Thunderhead - Bug Heaven Goddess Chest,
     Thunderhead - First Goddess Chest on Mogma Mitts Island,
     Thunderhead - Second Goddess Chest on Mogma Mitts Island,
-    ## Minigames
-    Upper Skyloft - Pumpkin Archery -- 600 Points,
-    Sky - Lumpy Pumpkin - Harp Minigame,
-    Sky - Fun Fun Island Minigame -- 500 Rupees,
-    Thunderhead - Bug Heaven -- 10 Bugs in 3 Minutes,
-    Lanayru Sand Sea - Rickety Coaster -- Heart Stopping Track in 1'05,
-    ## Peatrice
-    Central Skyloft - Peater/Peatrice's Crystals,
   ]
   help: "Determines the locations to be excluded from the progress pool.
         The item found in these locations will still be shuffled but will never be an item required to beat the game."
