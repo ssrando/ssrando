@@ -204,11 +204,7 @@ class Rando:
                 for item in RANDOM_STARTING_ITEMS
                 if item not in self.options["starting-items"]
             ]
-            if len(possible_random_starting_items) == 0:
-                raise ValueError(
-                    "All valid progress items have already been added as starting items."
-                )
-            else:
+            if len(possible_random_starting_items) > 0:
                 random_item = self.rng.choice(possible_random_starting_items)
                 if random_item not in EXTENDED_ITEM.items_list:
                     random_item = number(random_item, 0)
