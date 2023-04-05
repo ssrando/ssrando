@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1096, 738)
+        MainWindow.resize(1202, 759)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -996,11 +996,21 @@ class Ui_MainWindow(object):
 
         self.vlay_include_locations.addWidget(self.label_include_locations)
 
+        self.hlay_include_filters = QHBoxLayout()
+        self.hlay_include_filters.setObjectName(u"hlay_include_filters")
+        self.include_category_filters = QComboBox(self.tab_logic_settings)
+        self.include_category_filters.setObjectName(u"include_category_filters")
+
+        self.hlay_include_filters.addWidget(self.include_category_filters)
+
         self.included_free_search = QLineEdit(self.tab_logic_settings)
         self.included_free_search.setObjectName(u"included_free_search")
         self.included_free_search.setClearButtonEnabled(True)
 
-        self.vlay_include_locations.addWidget(self.included_free_search)
+        self.hlay_include_filters.addWidget(self.included_free_search)
+
+
+        self.vlay_include_locations.addLayout(self.hlay_include_filters)
 
         self.included_locations = QListView(self.tab_logic_settings)
         self.included_locations.setObjectName(u"included_locations")
@@ -1055,11 +1065,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_30.addWidget(self.label_exclude_locations)
 
+        self.hlay_exclude_filters = QHBoxLayout()
+        self.hlay_exclude_filters.setObjectName(u"hlay_exclude_filters")
         self.excluded_free_search = QLineEdit(self.tab_logic_settings)
         self.excluded_free_search.setObjectName(u"excluded_free_search")
         self.excluded_free_search.setClearButtonEnabled(True)
 
-        self.verticalLayout_30.addWidget(self.excluded_free_search)
+        self.hlay_exclude_filters.addWidget(self.excluded_free_search)
+
+        self.exclude_category_filters = QComboBox(self.tab_logic_settings)
+        self.exclude_category_filters.setObjectName(u"exclude_category_filters")
+
+        self.hlay_exclude_filters.addWidget(self.exclude_category_filters)
+
+
+        self.verticalLayout_30.addLayout(self.hlay_exclude_filters)
 
         self.excluded_locations = QListView(self.tab_logic_settings)
         self.excluded_locations.setObjectName(u"excluded_locations")
@@ -1502,7 +1522,7 @@ class Ui_MainWindow(object):
         self.option_font_family.setWritingSystem(QFontDatabase.Any)
         self.option_font_family.setFontFilters(QFontComboBox.ScalableFonts)
         font1 = QFont()
-        font1.setFamilies([u"Noto Sans"])
+        font1.setFamilies([u"Lucida Grande"])
         font1.setPointSize(10)
         self.option_font_family.setCurrentFont(font1)
 
@@ -1603,7 +1623,7 @@ class Ui_MainWindow(object):
         self.option_description.setSizePolicy(sizePolicy9)
         self.option_description.setMinimumSize(QSize(0, 48))
         self.option_description.setStyleSheet(u"")
-        self.option_description.setTextFormat(Qt.MarkdownText)
+        self.option_description.setTextFormat(Qt.PlainText)
         self.option_description.setWordWrap(True)
 
         self.verticalLayout.addWidget(self.option_description)
@@ -1671,7 +1691,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1818,8 +1838,8 @@ class Ui_MainWindow(object):
         self.option_use_sharp_corners.setText(QCoreApplication.translate("MainWindow", u"Sharp Corners", None))
         self.box_font.setTitle(QCoreApplication.translate("MainWindow", u"Fonts", None))
         self.label_for_option_font_family.setText(QCoreApplication.translate("MainWindow", u"Font Family", None))
-        self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Noto Sans", None))
-        self.option_font_family.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select Font Family", None))
+        self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Lucida Grande", None))
+        self.option_font_family.setProperty("placeholderText", QCoreApplication.translate("MainWindow", u"Select Font Family", None))
         self.label_for_option_font_size.setText(QCoreApplication.translate("MainWindow", u"Font Size", None))
         self.reset_font_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.box_1.setTitle("")

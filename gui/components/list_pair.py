@@ -2,6 +2,7 @@ from PySide6.QtCore import QObject, QStringListModel, Signal
 from PySide6.QtWidgets import QListView, QPushButton
 
 from gui.models.sort_model import SearchableListModel
+from gui.models.type_filter_model import TypeFilterModel
 
 from options import OPTIONS
 
@@ -16,6 +17,7 @@ class ListPair(QObject):
         option_string: str,
         add_button: QPushButton,
         remove_button: QPushButton,
+        type_meta: dict = {},
     ):
         super().__init__()
         self.option_list = option_list
@@ -25,17 +27,27 @@ class ListPair(QObject):
         self._stored_filter_non_option_list = ""
 
         self.option_list_model = QStringListModel()
-        self.option_list_proxy = SearchableListModel(
-            self.option_list, OPTIONS[self.option_string]["choices"]
-        )
+        if type_meta:
+            self.option_list_proxy = TypeFilterModel(
+                self.option_list, OPTIONS[self.option_string]["choices"], type_meta
+            )
+        else:
+            self.option_list_proxy = SearchableListModel(
+                self.option_list, OPTIONS[self.option_string]["choices"]
+            )
         self.option_list_proxy.setSourceModel(self.option_list_model)
         self.option_list_model.setStringList(OPTIONS[self.option_string]["default"])
         self.option_list.setModel(self.option_list_proxy)
 
         self.non_option_list_model = QStringListModel()
-        self.non_option_list_proxy = SearchableListModel(
-            self.non_option_list, OPTIONS[self.option_string]["choices"]
-        )
+        if type_meta:
+            self.non_option_list_proxy = TypeFilterModel(
+                self.non_option_list, OPTIONS[self.option_string]["choices"], type_meta
+            )
+        else:
+            self.non_option_list_proxy = SearchableListModel(
+                self.non_option_list, OPTIONS[self.option_string]["choices"]
+            )
         self.non_option_list_proxy.setSourceModel(self.non_option_list_model)
         self.non_option_list_model.setStringList(OPTIONS[self.option_string]["choices"])
         self.non_option_list.setModel(self.non_option_list_proxy)
@@ -46,8 +58,14 @@ class ListPair(QObject):
     def update_option_list_filter(self, new_text: str | None):
         self.option_list_proxy.filterRows(new_text)
 
+    def update_option_list_type_filter(self, type_filter):
+        self.option_list_proxy.filterType(type_filter)
+
     def update_non_option_list_filter(self, new_text: str | None):
         self.non_option_list_proxy.filterRows(new_text)
+
+    def update_non_option_list_type_filter(self, type_filter):
+        self.non_option_list_proxy.filterType(type_filter)
 
     def add(self):
         self.move_selected_rows(self.non_option_list, self.option_list)
