@@ -770,6 +770,11 @@ class Ui_MainWindow(object):
 
         self.vlay_convenience_tweaks.addWidget(self.option_fill_dowsing_on_white_sword)
 
+        self.option_full_wallet_upgrades = QCheckBox(self.box_convenience_tweaks)
+        self.option_full_wallet_upgrades.setObjectName(u"option_full_wallet_upgrades")
+
+        self.vlay_convenience_tweaks.addWidget(self.option_full_wallet_upgrades)
+
         self.vspace_convenience_tweaks = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_convenience_tweaks.addItem(self.vspace_convenience_tweaks)
@@ -1402,11 +1407,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addWidget(self.option_full_starting_wallet)
 
-        self.option_full_wallet_upgrades = QCheckBox(self.box_additional_options)
-        self.option_full_wallet_upgrades.setObjectName(u"option_full_wallet_upgrades")
-
-        self.verticalLayout_29.addWidget(self.option_full_wallet_upgrades)
-
         self.option_max_starting_bugs = QCheckBox(self.box_additional_options)
         self.option_max_starting_bugs.setObjectName(u"option_max_starting_bugs")
 
@@ -1730,7 +1730,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(2)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1810,6 +1810,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_randomization_settings), QCoreApplication.translate("MainWindow", u"Randomization Settings", None))
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
+        self.option_full_wallet_upgrades.setText(QCoreApplication.translate("MainWindow", u"Full Wallet Upgrades", None))
         self.box_vanilla_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Vanilla Tweaks", None))
         self.label_for_option_bit_patches.setText(QCoreApplication.translate("MainWindow", u"BiT Patches", None))
         self.box_item_pool.setTitle(QCoreApplication.translate("MainWindow", u"Item Pool", None))
@@ -1868,7 +1869,6 @@ class Ui_MainWindow(object):
         self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
         self.option_start_with_hylian_shield.setText(QCoreApplication.translate("MainWindow", u"Start with Hylian Shield", None))
         self.option_full_starting_wallet.setText(QCoreApplication.translate("MainWindow", u"Start with Full Wallet", None))
-        self.option_full_wallet_upgrades.setText(QCoreApplication.translate("MainWindow", u"Full Wallet Upgrades", None))
         self.option_max_starting_bugs.setText(QCoreApplication.translate("MainWindow", u"Maximum Starting Bugs", None))
         self.option_max_starting_treasures.setText(QCoreApplication.translate("MainWindow", u"Maximum Starting Treasures", None))
         self.label_for_option_starting_heart_containers.setText(QCoreApplication.translate("MainWindow", u"Heart Containers", None))
