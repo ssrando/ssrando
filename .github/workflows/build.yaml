@@ -17,12 +17,12 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - uses: pdm-project/setup-pdm@v3
-        name: Setup PDM
-        with:
-          python-version: ${{ matrix.python-version }}
+      - name: Setup poetry
+        run: python3 -mpip install poetry
       - name: Install dependencies
-        run: pdm config python.use_venv false && pdm install -G :all
+        run: poetry install
+        env:
+          POETRY_VIRTUALENVS_CREATE: false
       - name: Test if the formatting is correct
         run: python3 -mblack . --check
       - name: Build distribution

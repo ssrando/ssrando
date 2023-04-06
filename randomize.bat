@@ -1,1 +1,1 @@
-pdm run randoscript.py
+poetry run python randoscript.py
