@@ -88,4 +88,5 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=True,
-          runtime_tmpdir=None, )
+          runtime_tmpdir=None,
+          icon="assets/icon.ico",)
