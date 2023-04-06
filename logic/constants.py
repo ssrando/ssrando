@@ -890,6 +890,7 @@ LOCATION_FILTER_TYPES = (
     "Minigames",
     "Beedle's Shop Purchases",
     "Loose Crystals",
-    "Gratitiude Crystal Sidequests",
+    "Gratitude Crystal Sidequests",
     "Scrapper Deliveries",
+    "Rupees",
 )

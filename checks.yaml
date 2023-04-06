@@ -103,7 +103,7 @@ Central Skyloft - Waterfall Cave Second Chest:
     - stage/D000/r0/l0/TBox/68
 Central Skyloft - Rupee Waterfall Cave Crawlspace:
   original item: "Red Rupee #25"
-  type:
+  type: Rupees
   Paths:
     - stage/D000/r0/l0/Item/88
 Central Skyloft - Parrow's Gift:
@@ -671,17 +671,17 @@ Faron Woods - Kikwi Elder's Reward:
   text: the <r<Kikwi relic>> is
 Faron Woods - Rupee on Hollow Tree Root:
   original item: "Blue Rupee #6"
-  type:
+  type: Rupees
   Paths:
     - stage/F100/r0/l0/Item/42
 Faron Woods - Rupee on Hollow Tree Branch:
   original item: "Red Rupee #27"
-  type:
+  type: Rupees
   Paths:
     - stage/F100/r0/l0/Item/41
 Faron Woods - Rupee on Platform near Floria Door:
   original item: "Red Rupee #26"
-  type:
+  type: Rupees
   Paths:
     - stage/F100/r0/l0/Item/40
 Faron Woods - Deep Woods Chest:
@@ -703,34 +703,34 @@ Faron Woods - Chest inside Great Tree:
   text: climbing inside an <r<old hermit's home>> rewards
 Faron Woods - Rupee on Great Tree North Branch:
   original item: "Blue Rupee #4"
-  type:
+  type: Rupees
   Paths:
     - stage/F100/r0/l0/Item/43
 Faron Woods - Rupee on Great Tree West Branch:
   original item: "Blue Rupee #5"
-  type:
+  type: Rupees
   Paths:
     - stage/F100/r0/l0/Item/44
 
 # Lake Floria:
 Lake Floria - Rupee under Central Boulder:
  original item: "Silver Rupee #12"
- type:
+ type: Rupees
  Paths:
   - stage/F102/r2/l0/Item/60
 Lake Floria - Rupee behind Southwest Boulder:
  original item: "Blue Rupee #7"
- type:
+ type: Rupees
  Paths:
   - stage/F102/r2/l0/Item/63
 Lake Floria - Left Rupee behind Northwest Boulder:
  original item: "Red Rupee #29"
- type:
+ type: Rupees
  Paths:
   - stage/F102/r2/l0/Item/62
 Lake Floria - Right Rupee behind Northwest Boulder:
  original item: "Red Rupee #28"
- type:
+ type: Rupees
  Paths:
   - stage/F102/r2/l0/Item/61
 Lake Floria - Lake Floria Chest:
@@ -752,7 +752,7 @@ Lake Floria - Dragon Lair East Chest:
     - stage/F102_2/r0/l0/TBox/85
 Lake Floria - Rupee on High Ledge outside Ancient Cistern Entrance:
   original item: "Gold Rupee #10"
-  type:
+  type: Rupees
   Paths:
    - stage/F102_1/r0/l0/Item/64
 
@@ -769,7 +769,7 @@ Flooded Faron Woods - Water Dragon's Reward:
 # Eldin Volcano:
 Eldin Volcano - Rupee on Ledge before First Room:
   original item: "Red Rupee #30"
-  type:
+  type: Rupees
   Paths:
     - stage/F200/r0/l0/Item/41
 Eldin Volcano - Chest behind Bombable Wall in First Room:
@@ -779,12 +779,12 @@ Eldin Volcano - Chest behind Bombable Wall in First Room:
     - stage/F200/r1/l0/TBox/72
 Eldin Volcano - Rupee behind Bombable Wall in First Room:
   original item: "Blue Rupee #8"
-  type:
+  type: Rupees
   Paths:
     - stage/F200/r1/l0/Item/13
 Eldin Volcano - Rupee in Crawlspace in First Room:
   original item: "Blue Rupee #9"
-  type:
+  type: Rupees
   Paths:
     - stage/F200/r1/l0/Item/19
 Eldin Volcano - Chest after Crawlspace:
@@ -794,12 +794,12 @@ Eldin Volcano - Chest after Crawlspace:
     - stage/F200/r2/l0/TBox/66
 Eldin Volcano - Southeast Rupee above Mogma Turf Entrance:
   original item: "Blue Rupee #10"
-  type:
+  type: Rupees
   Paths:
     - stage/F200/r2/l0/Item/125
 Eldin Volcano - North Rupee above Mogma Turf Entrance:
   original item: "Red Rupee #31"
-  type:
+  type: Rupees
   Paths:
     - stage/F200/r2/l0/Item/123
 Eldin Volcano - Chest behind Bombable Wall near Cliff:
@@ -819,12 +819,12 @@ Eldin Volcano - Chest behind Bombable Wall near Volcano Ascent:
     - stage/F200/r2/l0/TBox/71
 Eldin Volcano - Left Rupee behind Bombable Wall on First Slope:
   original item: "Red Rupee #32"
-  type:
+  type: Rupees
   Paths:
     - stage/F200/r4/l0/Item/45
 Eldin Volcano - Right Rupee behind Bombable Wall on First Slope:
   original item: "Red Rupee #33"
-  type:
+  type: Rupees
   Paths:
     - stage/F200/r4/l0/Item/11
 
@@ -1113,17 +1113,17 @@ Lanayru Gorge - Life Tree Seedling:
 ## Ancient Harbour
 Lanayru Sand Sea - Ancient Harbour - Rupee on First Pillar:
   original item: "Red Rupee #34"
-  type:
+  type: Rupees
   Paths:
     - stage/F301/r0/l0/Item/92
 Lanayru Sand Sea - Ancient Harbour - Left Rupee on Entrance Crown:
   original item: "Silver Rupee #13"
-  type:
+  type: Rupees
   Paths:
     - stage/F301/r0/l0/Item/91
 Lanayru Sand Sea - Ancient Harbour - Right Rupee on Entrance Crown:
   original item: "Silver Rupee #14"
-  type:
+  type: Rupees
   Paths:
     - stage/F301/r0/l0/Item/93
 
@@ -1165,17 +1165,17 @@ Lanayru Sand Sea - Rickety Coaster -- Heart Stopping Track in 1'05:
 ## Pirate Stronghold
 Lanayru Sand Sea - Pirate Stronghold - Rupee on East Sea Pillar:
   original item: "Silver Rupee #16"
-  type:
+  type: Rupees
   Paths:
     - stage/F301_6/r0/l0/Item/12
 Lanayru Sand Sea - Pirate Stronghold - Rupee on West Sea Pillar:
   original item: "Silver Rupee #15"
-  type:
+  type: Rupees
   Paths:
     - stage/F301_6/r0/l0/Item/11
 Lanayru Sand Sea - Pirate Stronghold - Rupee on Bird Statue Pillar or Nose:
   original item: "Silver Rupee #17"
-  type:
+  type: Rupees
   Paths:
     - stage/F301_6/r0/l1/Item/13
     - stage/F301_6/r0/l2/Item/13
@@ -1227,17 +1227,17 @@ Skyview - Item behind Bars:
     - stage/D100/r5/l0/Item/103
 Skyview - Rupee in Southeast Tunnel:
   original item: "Red Rupee #35"
-  type:
+  type: Rupees
   Paths:
     - stage/D100/r5/l0/Item/65
 Skyview - Rupee in Southwest Tunnel:
   original item: "Red Rupee #36"
-  type:
+  type: Rupees
   Paths:
     - stage/D100/r5/l0/Item/67
 Skyview - Rupee in East Tunnel:
   original item: "Red Rupee #37"
-  type:
+  type: Rupees
   Paths:
     - stage/D100/r5/l0/Item/66
 Skyview - Chest behind Three Eyes:
@@ -1267,7 +1267,7 @@ Skyview - Heart Container:
     - stage/B100/r0/l4/HeartCo
 Skyview - Rupee on Spring Pillar:
   original item: "Red Rupee #38"
-  type:
+  type: Rupees
   Paths:
     - stage/B100_1/r0/l0/Item/109
 Skyview - Ruby Tablet:
@@ -1285,7 +1285,7 @@ Earth Temple - Vent Chest:
     - stage/D200/r1/l0/TBox/66
 Earth Temple - Rupee above Drawbridge:
   original item: "Red Rupee #39"
-  type:
+  type: Rupees
   Paths:
     - stage/D200/r1/l0/Item/25
 Earth Temple - Chest behind Bombable Rock:
@@ -1319,7 +1319,7 @@ Earth Temple - Ledd's Gift:
     - oarc/D200/l0
 Earth Temple - Rupee in Lava Tunnel:
   original item: "Silver Rupee #18"
-  type:
+  type: Rupees
   Paths:
     - stage/D200/r2/l0/Item/21
   text: hidden within the <r<neck of a dragon>> rests
@@ -1422,37 +1422,37 @@ Lanayru Mining Facility - Goddess Harp:
 # Ancient Cistern (AC):
 Ancient Cistern - Rupee in West Hand:
   original item: "Silver Rupee #20"
-  type:
+  type: Rupees
   Paths:
     - stage/D101/r0/l0/Item/93
 Ancient Cistern - Rupee in East Hand:
   original item: "Silver Rupee #19"
-  type:
+  type: Rupees
   Paths:
     - stage/D101/r0/l0/Item/92
 Ancient Cistern - First Rupee in East Part in Short Tunnel:
   original item: "Green Rupee #0"
-  type:
+  type: Rupees
   Paths:
     - stage/D101/r2/l0/Item/65
 Ancient Cistern - Second Rupee in East Part in Short Tunnel:
   original item: "Green Rupee #1"
-  type:
+  type: Rupees
   Paths:
     - stage/D101/r2/l0/Item/66
 Ancient Cistern - Third Rupee in East Part in Short Tunnel:
   original item: "Green Rupee #2"
-  type:
+  type: Rupees
   Paths:
     - stage/D101/r2/l0/Item/67
 Ancient Cistern - Rupee in East Part in Cubby:
   original item: "Red Rupee #41"
-  type:
+  type: Rupees
   Paths:
     - stage/D101/r2/l0/Item/68
 Ancient Cistern - Rupee in East Part in Main Tunnel:
   original item: "Red Rupee #40"
-  type:
+  type: Rupees
   Paths:
     - stage/D101/r2/l0/Item/34
 Ancient Cistern - Chest in East Part:
@@ -1465,7 +1465,7 @@ Ancient Cistern - Chest in East Part:
 # # Can Be Locked Out Of if activating water pillar before collecting
 # Ancient Cistern - Rupee under Lilypad:
 #   original item: Red Rupee
-#   type:
+#   type: Rupees
 #   Paths:
 #     - stage/D101/r5/l0/Item/13
 Ancient Cistern - Chest after Whip Hooks:
@@ -1684,7 +1684,7 @@ Sky Keep - Chest after Dreadfuse:
     - stage/D003_6/r0/l0/TBox/65
 Sky Keep - Rupee in Fire Sanctuary Room in Alcove:
   original item: "Silver Rupee #21"
-  type:
+  type: Rupees
   Paths:
     - stage/D003_2/r0/l0/Item/36
 Sky Keep - Triforce of Power:
