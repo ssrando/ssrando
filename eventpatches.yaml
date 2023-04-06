@@ -2410,17 +2410,17 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: Give Sadship beaten story flag
+      next: Give Sandship beaten story flag
       param3: 9
       param4: 0
       param5: 0
-  - name: Give Sadship beaten story flag
+  - name: Give Sandship beaten story flag
     type: flowadd
     flow:
       type: type3
       subType: 0
       param1: 0
-      param2: 15 # Sadship beaten story flag
+      param2: 15 # Sandship beaten story flag
       next: Give rando Tentalus Defeated storyflag
       param3: 0
   - name: Give rando Tentalus Defeated storyflag
@@ -2495,6 +2495,11 @@
       next: -1
       param3: 10
 402-DesertF2:
+  - name: Override Skipper check for first time conversation
+    type: flowpatch
+    index: 2
+    flow:
+      next: 150 # Check for SSH visible flag
   - name: Never ask player to go inside shark mouth for ship dowsing
     type: flowpatch
     index: 17
