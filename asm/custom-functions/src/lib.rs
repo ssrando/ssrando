@@ -237,22 +237,19 @@ pub fn process_startflags() {
 
     let additional_start_options_2 = flag_mem.next_u8().unwrap_or_default();
 
-    let mut pouch_items: [i32; 8] = [0; 8];
-    let mut next_pouch_index = 0usize;
+    let mut pouch_slot_iter = unsafe { (*FILE_MANAGER).FA.pouch_items.iter_mut() };
 
     // Starting Hylian Shield.
     // 4th bit.
     if additional_start_options_2 >> 3 & 0x1 == 1 {
-        pouch_items[next_pouch_index] = 125 | 0x30 << 0x10; // ID for Hylian Shield + durability
-        next_pouch_index += 1;
+        // ID for Hylian Shield + durability
+        *pouch_slot_iter.next().unwrap() = 125 | 0x30 << 0x10;
     }
 
-    for _bottles_added in 0..(additional_start_options_2 & 0x7) {
-        pouch_items[next_pouch_index] = 153; // ID for bottles
-        next_pouch_index += 1;
+    let bottle_count = additional_start_options_2 & 0x7;
+    for slot in pouch_slot_iter.take(bottle_count.into()) {
+        *slot = 153; // ID for bottles
     }
-
-    unsafe { (*FILE_MANAGER).FA.pouch_items = pouch_items.into() };
 
     // Commit global flag managers.
     unsafe {
