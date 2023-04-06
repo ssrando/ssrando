@@ -23,11 +23,14 @@ class ListPair(QObject):
         self.option_list = option_list
         self.non_option_list = non_option_list
         self.option_string = str(option_string)
+        self.has_type_filter = len(type_meta) > 0
         self._stored_filter_option_list = ""
         self._stored_filter_non_option_list = ""
+        self._stored_type_filter_option_list = ""
+        self._stored_type_filter_non_option_list = ""
 
         self.option_list_model = QStringListModel()
-        if type_meta:
+        if self.has_type_filter:
             self.option_list_proxy = TypeFilterModel(
                 self.option_list, OPTIONS[self.option_string]["choices"], type_meta
             )
@@ -40,7 +43,7 @@ class ListPair(QObject):
         self.option_list.setModel(self.option_list_proxy)
 
         self.non_option_list_model = QStringListModel()
-        if type_meta:
+        if self.has_type_filter:
             self.non_option_list_proxy = TypeFilterModel(
                 self.non_option_list, OPTIONS[self.option_string]["choices"], type_meta
             )
@@ -58,13 +61,13 @@ class ListPair(QObject):
     def update_option_list_filter(self, new_text: str | None):
         self.option_list_proxy.filterRows(new_text)
 
-    def update_option_list_type_filter(self, type_filter):
+    def update_option_list_type_filter(self, type_filter: str | None):
         self.option_list_proxy.filterType(type_filter)
 
     def update_non_option_list_filter(self, new_text: str | None):
         self.non_option_list_proxy.filterRows(new_text)
 
-    def update_non_option_list_type_filter(self, type_filter):
+    def update_non_option_list_type_filter(self, type_filter: str | None):
         self.non_option_list_proxy.filterType(type_filter)
 
     def add(self):
@@ -120,6 +123,20 @@ class ListPair(QObject):
         self.option_list_proxy.filterRows("")
         self.non_option_list_proxy.filterRows("")
 
+        if self.has_type_filter:
+            self._stored_type_filter_option_list = self.option_list_proxy.type_filter
+            self._stored_type_filter_non_option_list = (
+                self.non_option_list_proxy.type_filter
+            )
+            self.option_list_proxy.filterType("")
+            self.non_option_list_proxy.filterType("")
+
     def _restore_filters(self):
         self.option_list_proxy.filterRows(self._stored_filter_option_list)
         self.non_option_list_proxy.filterRows(self._stored_filter_non_option_list)
+
+        if self.has_type_filter:
+            self.option_list_proxy.filterType(self._stored_type_filter_option_list)
+            self.non_option_list_proxy.filterType(
+                self._stored_type_filter_non_option_list
+            )

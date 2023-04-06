@@ -42,7 +42,7 @@ Upper Skyloft - In Zelda's Closet:
     - stage/F001r/r6/l0/chest/32 #sceneflag
 Upper Skyloft - Owlan's Crystals:
   original item: Gratitude Crystal Pack
-  type: scrapper, crystal quest, combat
+  type: Scrapper Deliveries, Gratitiude Crystal Sidequests, Combat
   Paths:
     - event/118-Town3/157
     - oarc/F001r/l0
@@ -50,7 +50,7 @@ Upper Skyloft - Owlan's Crystals:
   text: delivering a <r<Kikwi>> reveals
 Upper Skyloft - Fledge's Crystals:
   original item: Gratitude Crystal Pack
-  type: crystal quest
+  type: Gratitiude Crystal Sidequests
   Paths:
     - event/115-Town2/325
     - oarc/F001r/l0
@@ -63,14 +63,14 @@ Upper Skyloft - Cawlin's Letter:
     - oarc/F001r/l0
 Upper Skyloft - Ghost/Pipit's Crystals:
   original item: Gratitude Crystal Pack
-  type: crystal quest
+  type: Gratitiude Crystal Sidequests
   Paths:
     - event/115-Town2/522
     - event/115-Town2/641
     - oarc/F001r/l0
 Upper Skyloft - Pumpkin Archery -- 600 Points:
   original item: Heart Piece
-  type: minigame
+  type: Minigames
   Paths:
     - event/114-Friend/99
     - oarc/F000/l4
@@ -87,7 +87,7 @@ Central Skyloft - Potion Lady's Gift:
     - oarc/F004r/l0
 Central Skyloft - Wryna's Crystals:
   original item: Gratitude Crystal Pack
-  type: crystal quest
+  type: Gratitiude Crystal Sidequests
   Paths:
     - event/118-Town3/144
     - oarc/F006r/l0
@@ -117,7 +117,7 @@ Central Skyloft - Parrow's Gift:
     - oarc/F005r/l0
 Central Skyloft - Parrow's Crystals:
   original item: Gratitude Crystal Pack
-  type: crystal quest
+  type: Gratitiude Crystal Sidequests
   Paths:
     - event/115-Town2/814
     - oarc/F000/l4
@@ -125,7 +125,7 @@ Central Skyloft - Parrow's Crystals:
     - oarc/F005r/l0
 Central Skyloft - Peater/Peatrice's Crystals:
   original item: Gratitude Crystal Pack
-  type: crystal quest
+  type: Gratitiude Crystal Sidequests
   Paths:
     - event/109-TakeGoron/79
     - event/123-Town5/316
@@ -147,31 +147,31 @@ Central Skyloft - Shed Chest:
 ## Goddess Chests
 Central Skyloft - West Cliff Goddess Chest:
   original item: Silver Rupee
-  type: goddess, faron goddess
+  type: goddess, Faron Woods Goddess Chests
   Paths:
     - stage/F000/r0/l0/TBox/78
   cube_region: Faron Woods
 Central Skyloft - Bazaar Goddess Chest:
   original item: Gold Rupee
-  type: goddess, sand sea goddess
+  type: goddess, Sand Sea Goddess Chests
   Paths:
     - stage/F004r/r0/l0/TBox/93
   cube_region: Lanayru Sand Sea
 Central Skyloft - Shed Goddess Chest:
   original item: Heart Piece
-  type: goddess, eldin goddess
+  type: goddess, Eldin Volcano Goddess Chests
   Paths:
     - stage/F000/r0/l0/TBox/79
   cube_region: Eldin Volcano
 Central Skyloft - Floating Island Goddess Chest:
   original item: Gold Rupee
-  type: goddess, floria goddess
+  type: goddess, Lake Floria Goddess Chests
   Paths:
     - stage/F000/r0/l0/TBox/91
   cube_region: Lake Floria
 Central Skyloft - Waterfall Goddess Chest:
   original item: Heart Piece
-  type: goddess, sand sea goddess
+  type: goddess, Sand Sea Goddess Chests
   Paths:
     - stage/F000/r0/l0/TBox/80
   hint: sometimes
@@ -181,20 +181,20 @@ Central Skyloft - Waterfall Goddess Chest:
 # Skyloft Village checks:
 Skyloft Village - Mallara's Crystals:
   original item: Gratitude Crystal Pack
-  type: crystal quest
+  type: Gratitiude Crystal Sidequests
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
 Skyloft Village - Bertie's Crystals:
   original item: Gratitude Crystal Pack
-  type: crystal quest
+  type: Gratitiude Crystal Sidequests
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
   text: helping an <r<exhausted parent>> rewards
 Skyloft Village - Sparrot's Crystals:
   original item: Gratitude Crystal Pack
-  type: scrapper, crystal quest
+  type: Scrapper Deliveries, Gratitiude Crystal Sidequests
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
@@ -267,56 +267,56 @@ Batreaux's House - 80 Crystals:
 # Beedle's Shop:
 Beedle's Shop - 300 Rupee Item:
   original item: "Progressive Pouch #1"
-  type: beedle
+  type: Beedle's Shop Purchases
   Paths:
     - ShpSmpl/20
 Beedle's Shop - 600 Rupee Item:
   original item: "Progressive Pouch #2"
-  type: beedle
+  type: Beedle's Shop Purchases
   Paths:
     - ShpSmpl/21
 Beedle's Shop - 1200 Rupee Item:
   original item: "Progressive Pouch #3"
-  type: beedle
+  type: Beedle's Shop Purchases
   hint: always
   Paths:
     - ShpSmpl/22
   text: for <g+<1200 rupees>> <r<Beedle>> sells
 Beedle's Shop - 800 Rupee Item:
   original item: "Life Medal #0"
-  type: beedle
+  type: Beedle's Shop Purchases
   Paths:
     - ShpSmpl/26
 Beedle's Shop - 1600 Rupee Item:
   original item: "Heart Piece #0"
-  type: beedle
+  type: Beedle's Shop Purchases
   hint: always
   Paths:
     - ShpSmpl/23
   text: for <g+<1600 rupees>> <r<Beedle>> sells
 Beedle's Shop - First 100 Rupee Item:
   original item: "Extra Wallet #0"
-  type: beedle
+  type: Beedle's Shop Purchases
   Paths:
     - ShpSmpl/24
 Beedle's Shop - Second 100 Rupee Item:
   original item: "Extra Wallet #1"
-  type: beedle
+  type: Beedle's Shop Purchases
   Paths:
     - ShpSmpl/17
 Beedle's Shop - Third 100 Rupee Item:
   original item: "Extra Wallet #2"
-  type: beedle
+  type: Beedle's Shop Purchases
   Paths:
     - ShpSmpl/18
 Beedle's Shop - 50 Rupee Item:
   original item: "Progressive Bug Net #0"
-  type: beedle
+  type: Beedle's Shop Purchases
   Paths:
     - ShpSmpl/25
 Beedle's Shop - 1000 Rupee Item:
   original item: Bug Medal
-  type: beedle
+  type: Beedle's Shop Purchases
   Paths:
     - ShpSmpl/27
 
@@ -324,52 +324,52 @@ Beedle's Shop - 1000 Rupee Item:
 ## Aren't randomized, but still need logic, because some of them need items
 Upper Skyloft - Crystal in Link's Room:
   original item: "Gratitude Crystal #0"
-  type: crystal
+  type: Loose Crystals
 Upper Skyloft - Crystal in Knight Academy Plant:
   original item: "Gratitude Crystal #5"
-  type: crystal
+  type: Loose Crystals
 Upper Skyloft - Crystal in Zelda's Room:
   original item: "Gratitude Crystal #11"
-  type: crystal
+  type: Loose Crystals
 Upper Skyloft - Crystal in Sparring Hall:
   original item: "Gratitude Crystal #9"
-  type: crystal
+  type: Loose Crystals
 
 Central Skyloft - Crystal in Orielle and Parrow's House:
   original item: "Gratitude Crystal #3"
-  type: crystal
+  type: Loose Crystals
 Central Skyloft - Crystal on West Cliff:
   original item: "Gratitude Crystal #6"
-  type: crystal
+  type: Loose Crystals
 Central Skyloft - Crystal between Wooden Planks:
   original item: "Gratitude Crystal #4"
-  type: crystal
+  type: Loose Crystals
 Central Skyloft - Crystal after Waterfall Cave:
   original item: "Gratitude Crystal #7"
-  type: crystal
+  type: Loose Crystals
 Central Skyloft - Crystal in Loftwing Prison:
   original item: "Gratitude Crystal #8"
-  type: crystal
+  type: Loose Crystals
 Central Skyloft - Crystal on Waterfall Island:
   original item: "Gratitude Crystal #10"
-  type: crystal
+  type: Loose Crystals
 Central Skyloft - Crystal on Light Tower:
   original item: "Gratitude Crystal #1"
-  type: crystal
+  type: Loose Crystals
 
 Skyloft Village - Crystal near Pumpkin Patch:
   original item: "Gratitude Crystal #2"
-  type: crystal
+  type: Loose Crystals
 
 Sky - Crystal outside Lumpy Pumpkin:
   original item: "Gratitude Crystal #12"
-  type: crystal
+  type: Loose Crystals
 Sky - Crystal inside Lumpy Pumpkin:
   original item: "Gratitude Crystal #13"
-  type: crystal
+  type: Loose Crystals
 Sky - Crystal on Beedle's Ship:
   original item: "Gratitude Crystal #14"
-  type: crystal
+  type: Loose Crystals
 
 # Sky:
 Sky - Lumpy Pumpkin - Chandelier:
@@ -380,7 +380,7 @@ Sky - Lumpy Pumpkin - Chandelier:
   text: <r<angering a bartender>> dislodges
 Sky - Lumpy Pumpkin - Harp Minigame:
   original item: Heart Piece
-  type: minigame
+  type: Minigames
   Paths:
     - event/117-Pumpkin/305
     - oarc/F011r/l0
@@ -388,7 +388,7 @@ Sky - Lumpy Pumpkin - Harp Minigame:
   text: the <r<bartender>> holds
 Sky - Kina's Crystals:
   original item: Gratitude Crystal Pack
-  type: scrapper, crystal quest
+  type: Scrapper Deliveries, Gratitiude Crystal Sidequests
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
@@ -396,14 +396,14 @@ Sky - Kina's Crystals:
   text: <r<delivering a mogma to the sky>> is rewarded with
 Sky - Orielle's Crystals:
   original item: Gratitude Crystal Pack
-  type: crystal quest
+  type: Gratitiude Crystal Sidequests
   Paths:
     - event/115-Town2/225
     - oarc/F020/l0
   text: saving a <r<sick loftwing>> is rewardede with
 Sky - Beedle's Crystals:
   original item: Gratitude Crystal Pack
-  type: crystal quest
+  type: Gratitiude Crystal Sidequests
   Paths:
     - event/105-Terry/115
     - oarc/F020/l0
@@ -411,14 +411,14 @@ Sky - Beedle's Crystals:
   text: <r<reuniting two Beedles>> is rewarded with
 Sky - Dodoh's Crystals:
   original item: Gratitude Crystal Pack
-  type: scrapper
+  type: Scrapper Deliveries
   Paths:
     - event/110-DivingGame/60
     - oarc/F020/l0
   text: delivering a <r<colorful wheel>> is rewarded with
 Sky - Fun Fun Island Minigame -- 500 Rupees:
   original item: Heart Piece
-  type: minigame, scrapper
+  type: Minigames, Scrapper Deliveries
   Paths:
     - event/110-DivingGame/19
     - oarc/F020/l2
@@ -438,25 +438,25 @@ Sky - Chest in Breakable Boulder near Lumpy Pumpkin:
 ## Goddess Chests
 Sky - Bamboo Island Goddess Chest:
   original item: Gold Rupee
-  type: goddess, eldin goddess
+  type: goddess, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/82
   cube_region: Eldin Volcano
 Sky - Goddess Chest on Island next to Bamboo Island:
   original item: Silver Rupee
-  type: goddess, eldin goddess
+  type: goddess, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/71
   cube_region: Eldin Volcano
 Sky - Goddess Chest in Cave on Island next to Bamboo Island:
   original item: Heart Medal
-  type: goddess, lanayru goddess
+  type: goddess, Lanayru Desert Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/83
   cube_region: Lanayru Desert
 Sky - Beedle's Island Goddess Chest:
   original item: Heart Piece
-  type: goddess, lanayru goddess, combat
+  type: goddess, Lanayru Desert Goddess Chests, Combat
   Paths:
     - stage/F020/r0/l0/TBox/89
   hint: sometimes
@@ -464,73 +464,73 @@ Sky - Beedle's Island Goddess Chest:
   cube_region: Lanayru Desert
 Sky - Beedle's Island Cage Goddess Chest:
   original item: Rupee Medal
-  type: goddess, faron goddess
+  type: goddess, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/81
   cube_region: Faron Woods
 Sky - Northeast Island Goddess Chest behind Bombable Rocks:
   original item: Silver Rupee
-  type: goddess, lanayru goddess
+  type: goddess, Lanayru Desert Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/72
   cube_region: Lanayru Mine
 Sky - Northeast Island Cage Goddess Chest:
   original item: Treasure Medal
-  type: goddess, eldin goddess
+  type: goddess, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/74
   cube_region: Eldin Volcano
 Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
   original item: Gold Rupee
-  type: goddess, faron goddess
+  type: goddess, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/87
   cube_region: Skyview
 Sky - Lumpy Pumpkin - Outside Goddess Chest:
   original item: Progressive Pouch
-  type: goddess, faron goddess
+  type: goddess, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/64
   cube_region: Faron Woods
 Sky - Goddess Chest on Island Closest to Faron Pillar:
   original item: Heart Piece
-  type: goddess, faron goddess
+  type: goddess, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/65
   cube_region: Faron Woods
 Sky - Goddess Chest outside Volcanic Island:
   original item: Heart Medal
-  type: goddess, lanayru goddess
+  type: goddess, Lanayru Desert Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/67
   cube_region: Lanayru Desert
 Sky - Goddess Chest inside Volcanic Island:
   original item: Heart Piece
-  type: goddess, faron goddess
+  type: goddess, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/68
   cube_region: Faron Woods
 Sky - Goddess Chest under Fun Fun Island:
   original item: Gold Rupee
-  type: goddess, floria goddess
+  type: goddess, Lake Floria Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/86
   cube_region: Lake Floria
 Sky - Southwest Triple Island Upper Goddess Chest:
   original item: Small Seed Satchel
-  type: goddess, eldin goddess
+  type: goddess, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/66
   cube_region: Eldin Volcano
 Sky - Southwest Triple Island Lower Goddess Chest:
   original item: Life Medal
-  type: goddess, lanayru goddess
+  type: goddess, Lanayru Desert Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/84
   cube_region: Lanayru Desert
 Sky - Southwest Triple Island Cage Goddess Chest:
   original item: Potion Medal
-  type: goddess, sand sea goddess
+  type: goddess, Sand Sea Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/75
   cube_region: Lanayru Sand Sea
@@ -557,7 +557,7 @@ Thunderhead - Isle of Songs - Din's Power:
   text: a <r<blade of white>> reveals
 Thunderhead - Song from Levias:
   original item: Song of the Hero
-  type: scrapper, combat
+  type: Scrapper Deliveries, Combat
   Paths:
     - event/120-Nushi/give item after levias
     - oarc/F023/l0
@@ -565,7 +565,7 @@ Thunderhead - Song from Levias:
   text: the <r<ancient whale within a raging storm>> bellows out
 Thunderhead - Bug Heaven -- 10 Bugs in 3 Minutes:
   original item: Horned Colossus Beetle
-  type: minigame
+  type: Minigames
   Paths:
     - event/116-InsectGame/69
     - oarc/F023/l0
@@ -580,37 +580,37 @@ Thunderhead - East Island Chest:
 ## Goddess Cubes
 Thunderhead - East Island Goddess Chest:
   original item: Rupee Medal
-  type: goddess, faron goddess
+  type: goddess, Faron Woods Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/73
   cube_region: Faron Woods
 Thunderhead - Goddess Chest on top of Isle of Songs:
   original item: Small Bomb Bag
-  type: goddess, summit goddess
+  type: goddess, Volcano Summit Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/85
   cube_region: Volcano Summit
 Thunderhead - Goddess Chest outside Isle of Songs:
   original item: Gold Rupee
-  type: goddess, eldin goddess
+  type: goddess, Eldin Volcano Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/92
   cube_region: Mogma Turf
 Thunderhead - First Goddess Chest on Mogma Mitts Island:
   original item: Bottle
-  type: goddess, summit goddess
+  type: goddess, Volcano Summit Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/77
   cube_region: Volcano Summit
 Thunderhead - Second Goddess Chest on Mogma Mitts Island:
   original item: Small Quiver
-  type: goddess, sand sea goddess
+  type: goddess, Sand Sea Goddess Chests
   Paths:
    - stage/F023/r0/l0/TBox/76
   cube_region: Lanayru Gorge
 Thunderhead - Bug Heaven Goddess Chest:
   original item: Heart Piece
-  type: goddess, summit goddess
+  type: goddess, Volcano Summit Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/88
   cube_region: Volcano Summit
@@ -663,7 +663,7 @@ Faron Woods - Item on Tree:
     - stage/F100/r0/l0/Item/68
 Faron Woods - Kikwi Elder's Reward:
   original item: Progressive Slingshot
-  type: combat #because of the Lopsa Bokoblin fight, this is a combat reward
+  type: Combat #because of the Lopsa Bokoblin fight, this is a Combat reward
   Paths:
     - event/200-Forest/595
     - oarc/F100/l0
@@ -870,7 +870,7 @@ Mogma Turf - Chest behind Bombable Wall at Entrance:
     - stage/F210/r0/l0/TBox/65
 Mogma Turf - Digging Mitts Fight:
   original item: Progressive Mitts
-  type: combat
+  type: Combat
   Paths:
     - event/300-Mountain/6
     - event/300-Mountain/135
@@ -997,7 +997,7 @@ Lanayru Desert - Chest near Hook Beetle Fight:
     - stage/F300/r0/l0/TBox/84
 Lanayru Desert - Hook Beetle Fight:
   original item: Progressive Beetle
-  type: combat
+  type: Combat
   Paths:
     - event/400-Desert/8
     - oarc/F300/l0
@@ -1155,7 +1155,7 @@ Lanayru Sand Sea - Skipper's Retreat - Skydive Chest:
 ## Shipyard
 Lanayru Sand Sea - Rickety Coaster -- Heart Stopping Track in 1'05:
   original item: Heart Piece
-  type: minigame, combat #Moldarach 2 makes this a combat check
+  type: Minigames, Combat #Moldarach 2 makes this a Combat check
   Paths:
     - event/406-TrolleyRace/77
     - oarc/F301_4/l0

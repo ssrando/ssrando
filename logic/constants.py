@@ -878,18 +878,18 @@ ALLOWED_STARTING_ITEMS = (
     | ALL_MAPS
 )
 
-LOCATION_FILTER_TYPES = {
-    "goddess": "Goddess Chests",
-    "faron goddess": "Faron Woods Goddess Chests",
-    "floria goddess": "Lake Floria Goddess Chests",
-    "eldin goddess": "Eldin Volcano Goddess Chests",
-    "summit goddess": "Volcan SUmmit Goddess Chests",
-    "lanayru goddess": "Lanayru Desert Goddess Chests",
-    "sand sea goddess": "Sand Sea Goddess Chests",
-    "combat": "Combat",
-    "crystal": "Loose Crystals",
-    "minigame": "Minigames",
-    "beedle": "Beedle's Shop Ship Purchases",
-    "crystal quest": "Gratitiude Crystal Sidequests",
-    "scrapper": "Scrapper Deliveries",
-}
+LOCATION_FILTER_TYPES = (
+    "Goddess Chests",
+    "Faron Woods Goddess Chests",
+    "Lake Floria Goddess Chests",
+    "Eldin Volcano Goddess Chests",
+    "Volcano Summit Goddess Chests",
+    "Lanayru Desert Goddess Chests",
+    "Sand Sea Goddess Chests",
+    "Combat",
+    "Minigames",
+    "Beedle's Shop Purchases",
+    "Loose Crystals",
+    "Gratitiude Crystal Sidequests",
+    "Scrapper Deliveries",
+)

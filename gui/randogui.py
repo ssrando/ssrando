@@ -195,15 +195,15 @@ class RandoGUI(QMainWindow):
         )
 
         self.ui.include_category_filters.addItem("")
-        self.ui.include_category_filters.addItems(LOCATION_FILTER_TYPES.values())
-        self.ui.include_category_filters.currentIndexChanged.connect(
-            self.exclude_locations_pair.update_option_list_type_filter
+        self.ui.include_category_filters.addItems(LOCATION_FILTER_TYPES)
+        self.ui.include_category_filters.currentTextChanged.connect(
+            self.exclude_locations_pair.update_non_option_list_type_filter
         )
 
         self.ui.exclude_category_filters.addItem("")
-        self.ui.exclude_category_filters.addItems(LOCATION_FILTER_TYPES.values())
-        self.ui.exclude_category_filters.currentIndexChanged.connect(
-            self.exclude_locations_pair.update_non_option_list_type_filter
+        self.ui.exclude_category_filters.addItems(LOCATION_FILTER_TYPES)
+        self.ui.exclude_category_filters.currentTextChanged.connect(
+            self.exclude_locations_pair.update_option_list_type_filter
         )
 
         # Starting Items UI

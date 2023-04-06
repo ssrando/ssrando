@@ -1358,10 +1358,13 @@
                 <item>
                  <layout class="QHBoxLayout" name="hlay_include_filters">
                   <item>
-                   <widget class="QComboBox" name="include_category_filters"/>
-                  </item>
-                  <item>
                    <widget class="QLineEdit" name="included_free_search">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="text">
                      <string/>
                     </property>
@@ -1370,6 +1373,13 @@
                     </property>
                     <property name="clearButtonEnabled">
                      <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="include_category_filters">
+                    <property name="placeholderText">
+                     <string/>
                     </property>
                    </widget>
                   </item>
@@ -1477,6 +1487,12 @@
                  <layout class="QHBoxLayout" name="hlay_exclude_filters">
                   <item>
                    <widget class="QLineEdit" name="excluded_free_search">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="placeholderText">
                      <string>Search</string>
                     </property>
@@ -2197,10 +2213,13 @@
                 <bool>false</bool>
                </property>
                <property name="currentText">
-                <string>Lucida Grande</string>
+                <string>Arial</string>
                </property>
                <property name="sizeAdjustPolicy">
                 <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+               </property>
+               <property name="placeholderText">
+                <string>Select Font Family</string>
                </property>
                <property name="writingSystem">
                 <enum>QFontDatabase::Any</enum>
@@ -2210,12 +2229,9 @@
                </property>
                <property name="currentFont">
                 <font>
-                 <family>Lucida Grande</family>
+                 <family>Arial</family>
                  <pointsize>10</pointsize>
                 </font>
-               </property>
-               <property name="placeholderText" stdset="0">
-                <string>Select Font Family</string>
                </property>
               </widget>
              </item>
