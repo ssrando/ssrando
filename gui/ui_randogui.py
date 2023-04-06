@@ -998,6 +998,11 @@ class Ui_MainWindow(object):
 
         self.hlay_include_filters = QHBoxLayout()
         self.hlay_include_filters.setObjectName(u"hlay_include_filters")
+        self.include_category_filters = QComboBox(self.tab_logic_settings)
+        self.include_category_filters.setObjectName(u"include_category_filters")
+
+        self.hlay_include_filters.addWidget(self.include_category_filters)
+
         self.included_free_search = QLineEdit(self.tab_logic_settings)
         self.included_free_search.setObjectName(u"included_free_search")
         sizePolicy4.setHeightForWidth(self.included_free_search.sizePolicy().hasHeightForWidth())
@@ -1005,11 +1010,6 @@ class Ui_MainWindow(object):
         self.included_free_search.setClearButtonEnabled(True)
 
         self.hlay_include_filters.addWidget(self.included_free_search)
-
-        self.include_category_filters = QComboBox(self.tab_logic_settings)
-        self.include_category_filters.setObjectName(u"include_category_filters")
-
-        self.hlay_include_filters.addWidget(self.include_category_filters)
 
 
         self.vlay_include_locations.addLayout(self.hlay_include_filters)
@@ -1069,6 +1069,11 @@ class Ui_MainWindow(object):
 
         self.hlay_exclude_filters = QHBoxLayout()
         self.hlay_exclude_filters.setObjectName(u"hlay_exclude_filters")
+        self.exclude_category_filters = QComboBox(self.tab_logic_settings)
+        self.exclude_category_filters.setObjectName(u"exclude_category_filters")
+
+        self.hlay_exclude_filters.addWidget(self.exclude_category_filters)
+
         self.excluded_free_search = QLineEdit(self.tab_logic_settings)
         self.excluded_free_search.setObjectName(u"excluded_free_search")
         sizePolicy4.setHeightForWidth(self.excluded_free_search.sizePolicy().hasHeightForWidth())
@@ -1076,11 +1081,6 @@ class Ui_MainWindow(object):
         self.excluded_free_search.setClearButtonEnabled(True)
 
         self.hlay_exclude_filters.addWidget(self.excluded_free_search)
-
-        self.exclude_category_filters = QComboBox(self.tab_logic_settings)
-        self.exclude_category_filters.setObjectName(u"exclude_category_filters")
-
-        self.hlay_exclude_filters.addWidget(self.exclude_category_filters)
 
 
         self.verticalLayout_30.addLayout(self.hlay_exclude_filters)
@@ -1792,9 +1792,9 @@ class Ui_MainWindow(object):
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.edit_tricks.setText(QCoreApplication.translate("MainWindow", u"Tricks", None))
         self.label_include_locations.setText(QCoreApplication.translate("MainWindow", u"Included Locations", None))
+        self.include_category_filters.setProperty("placeholderText", "")
         self.included_free_search.setText("")
         self.included_free_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
-        self.include_category_filters.setPlaceholderText("")
         self.include_location.setText(QCoreApplication.translate("MainWindow", u"Include\n"
 "<--", None))
         self.exclude_location.setText(QCoreApplication.translate("MainWindow", u"Exclude\n"
@@ -1844,7 +1844,7 @@ class Ui_MainWindow(object):
         self.box_font.setTitle(QCoreApplication.translate("MainWindow", u"Fonts", None))
         self.label_for_option_font_family.setText(QCoreApplication.translate("MainWindow", u"Font Family", None))
         self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Arial", None))
-        self.option_font_family.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select Font Family", None))
+        self.option_font_family.setProperty("placeholderText", QCoreApplication.translate("MainWindow", u"Select Font Family", None))
         self.label_for_option_font_size.setText(QCoreApplication.translate("MainWindow", u"Font Size", None))
         self.reset_font_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.box_1.setTitle("")

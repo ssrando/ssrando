@@ -1358,6 +1358,13 @@
                 <item>
                  <layout class="QHBoxLayout" name="hlay_include_filters">
                   <item>
+                   <widget class="QComboBox" name="include_category_filters">
+                    <property name="placeholderText" stdset="0">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
                    <widget class="QLineEdit" name="included_free_search">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -1373,13 +1380,6 @@
                     </property>
                     <property name="clearButtonEnabled">
                      <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="include_category_filters">
-                    <property name="placeholderText">
-                     <string/>
                     </property>
                    </widget>
                   </item>
@@ -1486,6 +1486,9 @@
                 <item>
                  <layout class="QHBoxLayout" name="hlay_exclude_filters">
                   <item>
+                   <widget class="QComboBox" name="exclude_category_filters"/>
+                  </item>
+                  <item>
                    <widget class="QLineEdit" name="excluded_free_search">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -1500,9 +1503,6 @@
                      <bool>true</bool>
                     </property>
                    </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="exclude_category_filters"/>
                   </item>
                  </layout>
                 </item>
@@ -2218,9 +2218,6 @@
                <property name="sizeAdjustPolicy">
                 <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
                </property>
-               <property name="placeholderText">
-                <string>Select Font Family</string>
-               </property>
                <property name="writingSystem">
                 <enum>QFontDatabase::Any</enum>
                </property>
@@ -2232,6 +2229,9 @@
                  <family>Arial</family>
                  <pointsize>10</pointsize>
                 </font>
+               </property>
+               <property name="placeholderText" stdset="0">
+                <string>Select Font Family</string>
                </property>
               </widget>
              </item>
