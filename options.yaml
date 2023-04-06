@@ -977,3 +977,9 @@
         **Light**: Some interface elements will be invisible (e.g. the Wii Remote on the right of the screen).
         **Pro**: Most interface elements will be invisible."
   ui: option_interface
+- name: Randomize Boss Key Puzzles
+  command: randomize-boss-key-puzzles
+  type: boolean
+  default: false
+  help: "If enabled, the starting position of the boss keys will be randomized."
+  ui: option_randomize_boss_key_puzzles

@@ -42,6 +42,7 @@
   - It is now possible to start with the Standard, Light, or Pro interface without having to change the setting from the inventory screen
 - Added an accessibility toggle for light and dark themes (by CovenEsme)
   - You can now pick to have a light theme, dark theme, or to automatically change based on the theme of your computer
+- Added option to randomize the boss key puzzles (by CovenEsme)
 - Added option to get all extra dowsing abilities after obtaining Whitesword
 - Added option to remove enemy battle music
 - Split hero mode options to make each effect customizable
