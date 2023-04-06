@@ -2,9 +2,9 @@
 #![feature(split_array)]
 
 use core::{
-    arch::asm,
-    ffi::{c_uint, c_ushort, c_void},
+    ffi::{c_ushort, c_void},
     ptr::slice_from_raw_parts,
+    slice,
 };
 
 use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
@@ -387,6 +387,20 @@ fn set_goddess_sword_pulled_scene_flag() {
     unsafe {
         // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
         storyflag_set_to_1(951);
+    }
+}
+
+fn simple_rng(rng: &mut u32) -> u32 {
+    *rng = rng.wrapping_mul(1664525).wrapping_add(1013904223);
+    *rng
+}
+
+#[no_mangle]
+fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
+    // 6 dungeons, each having a Vec3s which is just 3 u16 (or rather i16)
+    let angles = unsafe { slice::from_raw_parts_mut(ptr, 3 * 6) };
+    for angle in angles.iter_mut() {
+        *angle = simple_rng(&mut seed) as u16;
     }
 }
 

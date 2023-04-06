@@ -742,6 +742,11 @@ class Ui_MainWindow(object):
 
         self.vlay_dungeons.addLayout(self.vlay_sword_reward)
 
+        self.option_randomize_boss_key_puzzles = QCheckBox(self.box_dungeons)
+        self.option_randomize_boss_key_puzzles.setObjectName(u"option_randomize_boss_key_puzzles")
+
+        self.vlay_dungeons.addWidget(self.option_randomize_boss_key_puzzles)
+
         self.vspace_dungeons = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_dungeons.addItem(self.vspace_dungeons)
@@ -1730,7 +1735,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1807,6 +1812,7 @@ class Ui_MainWindow(object):
         self.label_for_option_boss_key_mode.setText(QCoreApplication.translate("MainWindow", u"Boss Keys", None))
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Empty Unrequired Dungeons", None))
         self.label_for_sword_dungeon_reward.setText(QCoreApplication.translate("MainWindow", u"Sword Dungeon Reward", None))
+        self.option_randomize_boss_key_puzzles.setText(QCoreApplication.translate("MainWindow", u"Randomize Boss Key Puzzles", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_randomization_settings), QCoreApplication.translate("MainWindow", u"Randomization Settings", None))
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))

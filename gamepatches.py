@@ -1574,6 +1574,19 @@ class GamePatcher:
             ]
         }
 
+        if self.placement_file.options["randomize-boss-key-puzzles"]:
+            self.add_asm_patch("randomize_boss_key_puzzles")
+
+            bk_angle_bytes = struct.pack(">I", self.placement_file.bk_angle_seed)
+
+            # TODO this kinda sucks, but essentially we just put this random number
+            # in the lui & ori instructions
+            patch = self.all_asm_patches["d_a_obj_door_bossNP.rel"][0x8994]["Data"]
+            patch[2] = bk_angle_bytes[0]
+            patch[3] = bk_angle_bytes[1]
+            patch[6] = bk_angle_bytes[2]
+            patch[7] = bk_angle_bytes[3]
+
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / "asm" / "custom_symbols.txt").open("r") as f:
             self.custom_symbols = yaml.safe_load(f)

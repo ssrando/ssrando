@@ -7,11 +7,13 @@ main.dol:
   alloc_keyboard_arcs_conditional: 0x80678450
   unset_sandship_timestone_if_necessary: 0x8067849C
   patch_bit: 0x806784CC
-  process_startflags: 0x806784D8
-  handle_bk_map_dungeonflag: 0x80678870
-  rando_text_command_handler: 0x80678920
-  textbox_a_pressed_or_b_held: 0x80678B38
-  set_goddess_sword_pulled_scene_flag: 0x80678B68
+  no_minigame_death: 0x806784D8
+  process_startflags: 0x80678500
+  handle_bk_map_dungeonflag: 0x80678898
+  rando_text_command_handler: 0x80678948
+  textbox_a_pressed_or_b_held: 0x80678B60
+  set_goddess_sword_pulled_scene_flag: 0x80678B90
+  randomize_boss_key_start_pos: 0x80678BBC
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
