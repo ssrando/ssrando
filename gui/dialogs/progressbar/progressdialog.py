@@ -1,10 +1,11 @@
 import random
+from typing import Optional
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import QProgressDialog, QLabel
 
 tips = [
     "The Bomb Bag and the Hook Beetle are often interchangable. In places you would normally be expected to use the Bomb Bag, look for nearby bomb flowers to grab with the Hook Beetle.",
-    "Think you're stuck somewhere with no way to get back to safety? Look around for a bomb flower. Dying will safely return you to the last statue you saved at or the last loading zone you crossed,",
+    "Think you're stuck somewhere with no way to get back to safety? Look around for a bomb flower. Dying will safely return you to the last statue you saved at or the last loading zone you crossed.",
     "Logic assumes that you will use keys in the worst way possible, so it is impossible to lock youself out of access to keys.",
     "Enabling tricks is a fun way to expand the logical possiblities of the randomizer, but some tricks can greatly incease the difficulty of seeds.",
     "Fi can give you some helpful information about the seed, such as which dungeons are required and how many keys you have. You can always call her with D-pad down, even without a sword.",
@@ -35,12 +36,14 @@ class ProgressDialog(QProgressDialog):
 
     def new_tip(self):
         self.tip_text = random.choice(tips)
-        self.setLabelText(tip_text=self.tip_text)
+        self.update_label_text(tip_text=self.tip_text)
 
-    def setLabelText(self, text: str) -> None:
-        self.setLabelText(step_text=text)
+    def set_current_action(self, text: str) -> None:
+        self.update_label_text(step_text=text)
 
-    def setLabelText(self, step_text: str = None, tip_text: str = None) -> None:
+    def update_label_text(
+        self, step_text: Optional[str] = None, tip_text: Optional[str] = None
+    ) -> None:
         label_text = ""
         if step_text:
             label_text += step_text
@@ -53,4 +56,4 @@ class ProgressDialog(QProgressDialog):
             self.tip_text = tip_text
         else:
             label_text += self.tip_text
-        super().setLabelText(label_text)
+        self.setLabelText(label_text)
