@@ -16,9 +16,14 @@
   - Removes hints for easily dowsable chests and adds some for non-dowsable checks
   - Only shows one hint per Gossip Stone
 - Added option to start with various items (by CovenEsme)
-  - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
-- Added option to start with extra health (by CovenEsme)
-- Added option to start with a random progress item (by CovenEsme)
+  - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, extra wallets, gratitude crystal packs, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
+  - Added option to start with extra health
+  - Added option to start with a random progress item
+  - Added option to start with max bugs and treasures
+  - Added option to start with a full wallet
+  - Added option to start with Hylian Shield
+  - Added option to start with Empty Bottles
+- Added option to make wallet upgrades come pre-filled with Rupees
 - Added the ability to ban individual locations (by cjs07)
 - Removed the "Banned Types" option
 - Added options to control entry into Lake Floria
