@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>0</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -808,27 +808,6 @@
               </layout>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="hlay_starting_tablets">
-               <item>
-                <widget class="QLabel" name="label_for_option_starting_tablet_count">
-                 <property name="text">
-                  <string>Starting Tablets</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QSpinBox" name="option_starting_tablet_count">
-                 <property name="maximumSize">
-                  <size>
-                   <width>41</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
               <widget class="QLabel" name="label_for_option_open_lake_floria">
                <property name="text">
                 <string>Open Lake Floria</string>
@@ -997,6 +976,13 @@
               </layout>
              </item>
              <item>
+              <widget class="QCheckBox" name="option_randomize_boss_key_puzzles">
+               <property name="text">
+                <string>Randomize Boss Key Puzzles</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <spacer name="vspace_dungeons">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
@@ -1039,6 +1025,13 @@
               <widget class="QCheckBox" name="option_fill_dowsing_on_white_sword">
                <property name="text">
                 <string>Fill Dowsing on White Sword</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_full_wallet_upgrades">
+               <property name="text">
+                <string>Full Wallet Upgrades</string>
                </property>
               </widget>
              </item>
@@ -1737,318 +1730,422 @@
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <item>
-         <layout class="QVBoxLayout" name="vlay_starting_items">
-          <item>
-           <layout class="QHBoxLayout" name="hlay_starting_items_body">
-            <item>
-             <layout class="QVBoxLayout" name="vlay_randomized_items_section">
-              <item>
-               <widget class="QLabel" name="label_randomized_items">
-                <property name="text">
-                 <string>Randomized Items</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="randomized_items_free_search">
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="placeholderText">
-                 <string>Search</string>
-                </property>
-                <property name="clearButtonEnabled">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QListView" name="randomized_items">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="editTriggers">
-                 <set>QAbstractItemView::NoEditTriggers</set>
-                </property>
-                <property name="showDropIndicator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="selectionMode">
-                 <enum>QAbstractItemView::MultiSelection</enum>
-                </property>
-                <property name="selectionRectVisible">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="vlay_starting_items_controls">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetDefaultConstraint</enum>
-              </property>
-              <item>
-               <spacer name="vspace_starting_items_controls_upper">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="randomize_item">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Remove
+         <widget class="QGroupBox" name="box_starting_items">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="title">
+           <string>Items</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <layout class="QVBoxLayout" name="vlay_randomized_items_section">
+             <item>
+              <widget class="QLabel" name="label_randomized_items">
+               <property name="text">
+                <string>Randomized Items</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="randomized_items_free_search">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="placeholderText">
+                <string>Search</string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListView" name="randomized_items">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+               <property name="showDropIndicator" stdset="0">
+                <bool>false</bool>
+               </property>
+               <property name="selectionMode">
+                <enum>QAbstractItemView::MultiSelection</enum>
+               </property>
+               <property name="selectionRectVisible">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="vlay_starting_items_controls">
+             <property name="sizeConstraint">
+              <enum>QLayout::SetDefaultConstraint</enum>
+             </property>
+             <item>
+              <spacer name="vspace_starting_items_controls_upper">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="randomize_item">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Remove
 &lt;--</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="vspace_starting_items_controls_middle">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="start_with_item">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Add
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="vspace_starting_items_controls_middle">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="start_with_item">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Add
 --&gt;</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="vspace_starting_items_controls_lower">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Expanding</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="vlay_starting_items_section">
-              <item>
-               <widget class="QLabel" name="label_starting_items">
-                <property name="text">
-                 <string>Starting Items</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="starting_items_free_search">
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="placeholderText">
-                 <string>Search</string>
-                </property>
-                <property name="clearButtonEnabled">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QListView" name="starting_items">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="editTriggers">
-                 <set>QAbstractItemView::NoEditTriggers</set>
-                </property>
-                <property name="showDropIndicator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="selectionMode">
-                 <enum>QAbstractItemView::MultiSelection</enum>
-                </property>
-                <property name="selectionRectVisible">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="Line" name="line_starting_items_divider">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="hlay_starting_items_misc_options">
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <layout class="QHBoxLayout" name="hlay_starting_sword">
-              <item>
-               <widget class="QLabel" name="label_for_option_starting_sword">
-                <property name="text">
-                 <string>Starting Sword</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QComboBox" name="option_starting_sword"/>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="option_random_starting_item">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Start with Random Progress Item</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="hlay_heart_containters">
-              <item>
-               <widget class="QLabel" name="label_for_option_starting_heart_containers">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Heart Containers</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QSpinBox" name="option_starting_heart_containers">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>41</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="hlay_heart_pieces">
-              <item>
-               <widget class="QLabel" name="label_for_option_starting_heart_pieces">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Heart Pieces</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QSpinBox" name="option_starting_heart_pieces">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>41</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_current_starting_health">
-              <property name="text">
-               <string>Current Starting Health:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="current_starting_health_counter">
-              <property name="text">
-               <string>6 hearts</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="hspace_starting_items_misc">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-         </layout>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="vspace_starting_items_controls_lower">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Expanding</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="vlay_starting_items_section">
+             <item>
+              <widget class="QLabel" name="label_starting_items">
+               <property name="text">
+                <string>Starting Items</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="starting_items_free_search">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="placeholderText">
+                <string>Search</string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListView" name="starting_items">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+               <property name="showDropIndicator" stdset="0">
+                <bool>false</bool>
+               </property>
+               <property name="selectionMode">
+                <enum>QAbstractItemView::MultiSelection</enum>
+               </property>
+               <property name="selectionRectVisible">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="box_additional_options">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="title">
+           <string>Additional Options</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_29">
+           <item>
+            <widget class="QLabel" name="label_for_option_starting_sword">
+             <property name="text">
+              <string>Starting Sword</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="option_starting_sword"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hlay_starting_tablets">
+             <item>
+              <widget class="QLabel" name="label_for_option_starting_tablet_count">
+               <property name="text">
+                <string>Starting Tablets</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="option_starting_tablet_count">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hlay_starting_bottles">
+             <item>
+              <widget class="QLabel" name="label_for_option_starting_bottles">
+               <property name="text">
+                <string>Starting Empty Bottles</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="option_starting_bottles">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hlay_starting_crystal_packs">
+             <item>
+              <widget class="QLabel" name="label_for_option_starting_crystal_packs">
+               <property name="text">
+                <string>Starting Gratitude Crystal Packs</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="option_starting_crystal_packs">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="option_random_starting_item">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>Start with Random Progress Item</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="option_start_with_hylian_shield">
+             <property name="text">
+              <string>Start with Hylian Shield</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="option_full_starting_wallet">
+             <property name="text">
+              <string>Start with Full Wallet</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="option_max_starting_bugs">
+             <property name="text">
+              <string>Maximum Starting Bugs</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="option_max_starting_treasures">
+             <property name="text">
+              <string>Maximum Starting Treasures</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hlay_heart_options">
+             <item>
+              <widget class="QLabel" name="label_for_option_starting_heart_containers">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Heart Containers</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="option_starting_heart_containers">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>41</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_for_option_starting_heart_pieces">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Heart Pieces</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="option_starting_heart_pieces">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>41</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hlay_heart_display">
+             <item>
+              <widget class="QLabel" name="label_current_starting_health">
+               <property name="text">
+                <string>Starting Health:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="current_starting_health_counter">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>6 hearts</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="vspace_additional_options">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>137</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -2137,7 +2234,7 @@
              <height>459</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_29">
+           <layout class="QVBoxLayout" name="verticalLayout_32">
             <item>
              <layout class="QVBoxLayout" name="vlay_texture_colors">
               <item>
@@ -2296,7 +2393,7 @@
                 <bool>false</bool>
                </property>
                <property name="currentText">
-                <string>Arial</string>
+                <string>Noto Sans</string>
                </property>
                <property name="sizeAdjustPolicy">
                 <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
@@ -2312,7 +2409,7 @@
                </property>
                <property name="currentFont">
                 <font>
-                 <family>Arial</family>
+                 <family>Noto Sans</family>
                  <pointsize>10</pointsize>
                 </font>
                </property>

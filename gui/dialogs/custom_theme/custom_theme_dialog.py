@@ -73,10 +73,10 @@ class CustomThemeDialog(QDialog):
                 continue
 
             color_light_button = ColorButton(
-                widget_name, self.custom_theme[LIGHT][widget_name]
+                self.custom_theme[LIGHT][widget_name], widget_name
             )
             color_dark_button = ColorButton(
-                widget_name, self.custom_theme[DARK][widget_name]
+                self.custom_theme[DARK][widget_name], widget_name
             )
             widget_name_label = QLabel(widget_name)
             widget_name_label.setMinimumHeight(32)

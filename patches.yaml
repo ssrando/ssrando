@@ -8,8 +8,6 @@ global:
     - 96  # Fi's text after obtaining first map
     - 745 # 5 Beacons
     - 496 # Skipper's cutscene after Sea Chart
-    - 264 # Talked to Skipper first time
-    - 273 # Talked to Skipper first time after saying no (prevents weird first text)
     - 130 # Start with Beacon
     - 358 # Interface choice unlocked
     - 792 # SG Big Door cs
@@ -4220,6 +4218,30 @@ F301_1: # Sand Sea Main Area
     room: 0
     objtype: STAG
     id: 0xFC6B
+  - name: Remove excess entrance to Sandship (layer 2)
+    type: objdelete
+    id: 0xFC98
+    layer: 2
+    room: 0
+    objtype: STAG
+  - name: Remove excess entrance to Sandship (layer 3)
+    type: objdelete
+    id: 0xFCB7
+    layer: 3
+    room: 0
+    objtype: STAG
+  - name: Remove excess entrance to Sandship (layer 4)
+    type: objdelete
+    id: 0xFCB7
+    layer: 4
+    room: 0
+    objtype: STAG
+  - name: Remove excess entrance to Sandship (layer 5)
+    type: objdelete
+    id: 0xFCB7
+    layer: 5
+    room: 0
+    objtype: STAG
   - name: Cutscene after shipyard
     type: objdelete
     id: 0xFC07
