@@ -115,11 +115,9 @@ class Hints:
         hintstone_hints = {
             hintname: hint for hint, hintname in zip(hintstone_hints, HINTS)
         }
-        fi_hints = {hintname: hint for hint, hintname in zip(fi_hints, HINTS)}
-        self.logic.placement.fi_hints |= set([hintname for hintname in fi_hints])
         self.hints_per_stone = self.dist.hints_per_stone
         self.randomize(hintstone_hints)
-        placed_fi_hints = {FI_HINTS: FiHintWrapper(fi_hints.values())}
+        placed_fi_hints = {FI_HINTS_KEY: FiHintWrapper(fi_hints)}
         placed_hintstone_hints = {
             stone: GossipStoneHintWrapper(
                 [

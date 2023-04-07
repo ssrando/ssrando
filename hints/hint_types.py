@@ -311,29 +311,28 @@ class EmptyHint(RegularHint):
         return {"text": self.text, "type": self.hint_type}
 
 
-@dataclass
 class FiHintWrapper(GossipStoneHintWrapper):
     hints: List[RegularHint]
 
     def __init__(self, hints):
-        self.hints = sorted(hints, key=self.order_hint)
+        def hint_order(hint):
+            if isinstance(hint, SotsGoalHint):
+                return 0
+            if isinstance(hint, CubeSotsGoalHint):
+                return 1
+            if isinstance(hint, BarrenHint):
+                return 2
+            if isinstance(hint, ZoneItemHint):
+                return 3
+            if isinstance(hint, LocationHint):
+                if hint.hint_type == "always":
+                    return 4
+                if hint.hint_type == "sometimes":
+                    return 5
+                return 6
+            return 7
 
-    def order_hint(self, hint):
-        if isinstance(hint, SotsGoalHint):
-            return 0
-        if isinstance(hint, CubeSotsGoalHint):
-            return 1
-        if isinstance(hint, BarrenHint):
-            return 2
-        if isinstance(hint, ZoneItemHint):
-            return 3
-        if isinstance(hint, LocationHint):
-            if hint.hint_type == "always":
-                return 4
-            if hint.hint_type == "sometimes":
-                return 5
-            return 6
-        return 7
+        self.hints = sorted(hints, key=hint_order)
 
     def to_ingame_text(self, norm) -> List[str]:
         return [

@@ -1729,7 +1729,7 @@ class GamePatcher:
             required_dungeons_text = break_lines(", ".join(colourful_dungeon_text), 44)
 
         fi_hint_chunks = []
-        for i in range(0, len(self.placement_file.hints["Fi"]), 8):
+        for i in range(0, len(self.placement_file.hints[FI_HINTS_KEY]), 8):
             fi_hint_chunks.append(self.placement_file.hints["Fi"][i : i + 8])
 
         self.eventpatches["006-8KenseiNormal"].append(

@@ -18,7 +18,7 @@ def extended_item_generator():
             for trick in option["choices"]:
                 yield f"{trick} Trick"
 
-    for i in range(MAX_HINTS):
+    for i in range(MAX_STONE_HINTS + MAX_FI_HINTS):
         yield number(HINT, i)
 
 

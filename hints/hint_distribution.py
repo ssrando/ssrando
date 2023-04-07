@@ -166,8 +166,10 @@ class HintDistribution:
             stone: 0 if stone in self.banned_stones else self.hints_per_stone
             for stone in self.areas.gossip_stones
         }
-        self.nb_hints = sum(self.hints_per_stone.values()) + self.fi_hints
-        assert self.nb_hints <= MAX_HINTS
+        self.nb_hints = sum(self.hints_per_stone.values())
+        assert self.nb_hints <= MAX_STONE_HINTS
+        self.nb_hints += self.fi_hints
+        assert self.fi_hints <= MAX_FI_HINTS
 
         check_hint_status2 = (
             check_hint_status
