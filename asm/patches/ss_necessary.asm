@@ -121,6 +121,10 @@ blr
 .org 0x8024d438
 bl fix_freestanding_item_y_offset
 
+; allow triforces to fall down when bonked
+.org 0x8024edbc
+li r3, 0
+
 ; don't treat faron statues differently after levias
 .org 0x80142078
 b 0x801420d8
@@ -256,6 +260,10 @@ nop
 nop
 nop
 
+; we need to make sure you can't die in thrill digger and bug heaven, even with a high damage multiplier
+.org 0x801e351c
+bl no_minigame_death
+
 ;remove heromode check for air meter
 .org 0x801c5d8c
 nop
@@ -268,6 +276,12 @@ bgt 0x801b0788
 .org 0x801b0788
 bl rando_text_command_handler
 b 0x801b0764 ; return to original function
+
+; here is the required sequence of buttons stored,
+; to get the crash screen to show up, since it's 0 terminated,
+; overwriting the first element with 0 will make it not check any buttons
+.org 0x804dba00
+.word 0
 
 .close
 
@@ -661,4 +675,40 @@ li r4, 0x1b
 ; don't wait on event when there is no event
 .org 0xA9C
 beq 0xAF0 ; 0x80d6ac60
+.close
+
+.open "d_t_player_restartNP.rel"
+.org 0x458
+; see the custom function for an explanation
+bl only_set_flag_conditionally
+.org 0x49C
+rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
+.close
+
+.open "d_a_obj_toD3_stone_figureNP.rel"
+; .org 0x80f35a18
+.org 0x8E8
+b set_sot_placed_flag
+.close
+
+; make sure groose stays at his groosenator after finishing faron SotH
+.open "d_a_npc_bbrvlNP.rel"
+; .org 0x80992b24
+.org 0x4214
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x80992870
+.org 0x3f60
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x80992610
+.org 0x3d00
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x8099fe74
+.org 0x11564
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x8099ff1c
+.org 0x1160c
+li r3, 0 ; act as if storyflag 16 is not set
+; .org 0x809a0528
+.org 0x11c18
+li r3, 0 ; act as if storyflag 16 is not set
 .close

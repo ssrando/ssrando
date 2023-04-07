@@ -66,33 +66,57 @@ class Placement:
     def __or__(self, other: Placement) -> Placement:
         if not isinstance(other, Placement):
             raise ValueError
+        # item_placement_limit
         for k, v in other.item_placement_limit.items():
             if k in self.item_placement_limit and v != self.item_placement_limit[k]:
-                raise ValueError
+                raise ValueError(
+                    f"Found key '{k}' in self.item_placement_limit. Expected value '{v}' but found value '{self.item_placement_limit[k]}'."
+                )
+        # map_transitions
         for k, v in other.map_transitions.items():
             if k in self.map_transitions and v != self.map_transitions[k]:
-                raise ValueError
+                raise ValueError(
+                    f"Found key '{k}' in self.map_transitions. Expected value '{v}' but found value '{self.map_transitions[k]}'."
+                )
+        # reverse_map_trasitions
         for k, v in other.reverse_map_transitions.items():
             if (
                 k in self.reverse_map_transitions
                 and v != self.reverse_map_transitions[k]
             ):
-                raise ValueError
-        for k, v in other.locations.items():
-            if k in self.locations and v != self.locations[k]:
-                raise ValueError
-        for k, v in other.items.items():
-            if k in self.items and v != self.items[k]:
-                raise ValueError
+                raise ValueError(
+                    f"Found key '{k}' in self.reverse_map_transitions. Expected value '{v}' but found value '{self.reverse_map_transitions[k]}'."
+                )
+        # locations
+        for location, item in other.locations.items():
+            if location in self.locations and item != self.locations[location]:
+                raise ValueError(
+                    f"Found location '{location}' in self.locations. Expected item '{item}' but found item '{self.locations[location]}'."
+                )
+        # items
+        for item, location in other.items.items():
+            if item in self.items and location != self.items[item]:
+                raise ValueError(
+                    f"Found item '{item}' in self.items. Expected location '{location}' but found location '{self.items[item]}'."
+                )
+        # stones
         for k, v in other.stones.items():
             if k in self.stones and v != self.stones[k]:
-                raise ValueError
+                raise ValueError(
+                    f"Found key '{k}' in self.stones. Expected value '{v}' but found value '{self.stones[k]}'."
+                )
+        # stone_hints
         for k, v in other.stone_hints.items():
             if k in self.stone_hints and v != self.stone_hints[k]:
-                raise ValueError
+                raise ValueError(
+                    f"Found key '{k}' in self.stone_hints. Expected value '{v}' but found value '{self.stone_hints[k]}'."
+                )
+        # hints
         for k, v in other.hints.items():
             if k in self.hints and v != self.hints[k]:
-                raise ValueError
+                raise ValueError(
+                    f"Found key '{k}' in self.hints. Expected value '{v}' but found value '{self.hints[k]}'."
+                )
         return Placement(
             self.item_placement_limit | other.item_placement_limit,
             self.map_transitions | other.map_transitions,
@@ -107,17 +131,19 @@ class Placement:
         )
 
     def add_starting_items(self, items: Set[EIN]):
-        for i in items:
-            if i in self.items and self.items[i] != START_ITEM:
-                raise ValueError
+        for item in items:
+            if item in self.items and self.items[item] != START_ITEM:
+                raise ValueError(
+                    f"Start item '{item}' has already been placed. Start items should take priority over all but required dungeons. Something weird has happened."
+                )
 
         self.items |= {k: START_ITEM for k in items}
         self.starting_items |= items
 
     def add_unplaced_items(self, items: Set[EIN]):
-        for i in items:
-            if i in self.items and self.items[i] != UNPLACED_ITEM:
-                raise ValueError(items, i)
+        for item in items:
+            if item in self.items and self.items[item] != UNPLACED_ITEM:
+                raise ValueError(f"Unplaced item '{item}' has already been placed.")
 
         self.items |= {k: UNPLACED_ITEM for k in items}
         self.unplaced_items |= items
@@ -512,7 +538,6 @@ class Logic:
         return True
 
     def replace_item(self, location: EIN, item: EIN, old_hint: EIN | None = None):
-
         if hint_mode := old_hint is not None:
             if location not in self.placement.stones:
                 raise ValueError(f"Hint stone {location} is empty.")

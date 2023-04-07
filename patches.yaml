@@ -8,8 +8,6 @@ global:
     - 96  # Fi's text after obtaining first map
     - 745 # 5 Beacons
     - 496 # Skipper's cutscene after Sea Chart
-    - 264 # Talked to Skipper first time
-    - 273 # Talked to Skipper first time after saying no (prevents weird first text)
     - 130 # Start with Beacon
     - 358 # Interface choice unlocked
     - 792 # SG Big Door cs
@@ -414,6 +412,16 @@ B301: # after Sandship boss
       story_flag1: -1
       story_flag2: 933 # set defeat tentalus storyflag
       item: -1
+  - name: Remove Nayru's Flame Cutscene
+    type: objpatch
+    room: 0
+    index: 3
+    objtype: SCEN
+    object:
+      name: F301
+      layer: 0
+      entrance: 3
+      saveprompt: 1
   - name: Fi text before FS CS
     type: objadd
     room: 0
@@ -526,6 +534,20 @@ D003_7: # Sky Keep Entrance Room
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove bars
+    type: objdelete
+    id: 0xFC05
+    layer: 0
+    room: 0
+    objtype: OBJ
+  - name: Remove bars opening cs
+    type: objpatch
+    id: 0xFC16
+    room: 0
+    layer: 4
+    objtype: STAG
+    object:
+      params1: 0xFF1516FF # 0x000000FF = event number
 D003_8: # this change is purely to make sure D003_8 gets patched, so a perviously broken rando version gets overwritten
   - name: remove unused layer
     type: objdelete
@@ -1031,24 +1053,6 @@ F000: # Skyloft
     object:
       layer: 6
       entrance: 52
-  - name: Set SoT storyflag on place
-    type: objadd
-    room: 0 
-    layer: 6 # Sky keep opened
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: 5256
-      posy: 400
-      posz: -11212
-      sizex: 1000
-      sizey: 1000
-      sizez: 1000
-      anglex: 22 # SoT placed storyflag
-      angley: 0
-      anglez: 65535
-      name: SwAreaT
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -1564,6 +1568,26 @@ F023: # Thunderhead
     objtype: OBJ
     object:
       params1: 0xFFFF01C5 # 00 FF 00 00 yeets the event call
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetSpareBombBagA
+    layer: 0
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetSpareQuiverA
+    layer: 0
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetSpareSeedA
+    layer: 0
+  - name: Remove unnecessary arc
+    type: oarcdelete
+    oarc: GetTerryCage
+    layer: 0
+  - name: unnecessary oarcs
+    type: oarcdelete
+    oarc: Pinwheel
+    layer: 0
 F100: # Faron main area
   - name: Layer override
     type: layeroverride
@@ -2557,6 +2581,14 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       anglex: 12031 #keep mogma above ground
+  - name: Remove Earth Temple Opening Cutscene
+    type: objpatch
+    id: 0x24A4
+    layer: 1
+    room: 4
+    objtype: STAG
+    object:
+      event: 7 # DefaultStart
   - name: Shiekah Stone in Eldin
     type: oarcadd
     destlayer: 0
@@ -3198,6 +3230,44 @@ F202: # Boko Base
       anglez: 0
       id: 0xFFFA
       name: Tubo
+  - name: patch rando custom param to not revert inventory
+    type: objpatch
+    id: 0xFC13
+    layer: 1
+    objtype: STAG
+    object:
+      params1: 0xFF5C1100
+      anglez: 0xFFFF # be always active
+  - name: delete other PlRsTags
+    type: objdelete
+    id: 0xFC12
+    layer: 1
+    objtype: STAG
+  - name: delete other PlRsTags
+    type: objdelete
+    id: 0xFC11
+    layer: 1
+    objtype: STAG
+  - name: delete other PlRsTags
+    type: objdelete
+    id: 0xFC10
+    layer: 1
+    objtype: STAG
+  - name: delete other PlRsTags
+    type: objdelete
+    id: 0xFC0F
+    layer: 1
+    objtype: STAG
+  - name: delete other PlRsTags
+    type: objdelete
+    id: 0xFC0E
+    layer: 1
+    objtype: STAG
+  - name: delete other PlRsTags
+    type: objdelete
+    id: 0xFC0D
+    layer: 1
+    objtype: STAG
 F221: # Fire Dragon Room
   - name: Patch exit trigger from Fire Dragon's Lair to normal Volcano Summit
     type: objpatch
@@ -3914,6 +3984,24 @@ F300_3: # Fire node
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Add Path Idx and SceneFlag to Fire Node Box
+    type: objpatch
+    objtype: OBJ
+    id: 0xFC07
+    layer: 0
+    room: 0
+    object:
+      pathIdx: 1
+      goalscenefid: 127
+      useLargerRadius: 1
+      isSwitchGoal: 0
+  - name: Add Path For Fire Node Push Block
+    type: pathadd
+    room: 0
+    pnts:
+      - posx: -1275.0
+        posy: 240.0
+        posz: -4150.0
 F300_4: # Temple of Time
   - name: Layer override
     type: layeroverride
@@ -4130,6 +4218,30 @@ F301_1: # Sand Sea Main Area
     room: 0
     objtype: STAG
     id: 0xFC6B
+  - name: Remove excess entrance to Sandship (layer 2)
+    type: objdelete
+    id: 0xFC98
+    layer: 2
+    room: 0
+    objtype: STAG
+  - name: Remove excess entrance to Sandship (layer 3)
+    type: objdelete
+    id: 0xFCB7
+    layer: 3
+    room: 0
+    objtype: STAG
+  - name: Remove excess entrance to Sandship (layer 4)
+    type: objdelete
+    id: 0xFCB7
+    layer: 4
+    room: 0
+    objtype: STAG
+  - name: Remove excess entrance to Sandship (layer 5)
+    type: objdelete
+    id: 0xFCB7
+    layer: 5
+    room: 0
+    objtype: STAG
   - name: Cutscene after shipyard
     type: objdelete
     id: 0xFC07
