@@ -16,9 +16,14 @@
   - Removes hints for easily dowsable chests and adds some for non-dowsable checks
   - Only shows one hint per Gossip Stone
 - Added option to start with various items (by CovenEsme)
-  - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
-- Added option to start with extra health (by CovenEsme)
-- Added option to start with a random progress item (by CovenEsme)
+  - Includes: b-wheel items, pouches, quest items, songs, triforces, wallets, extra wallets, gratitude crystal packs, harp, water scale, earrings, mitts, life tree seedling, sea chart, spiral charge, stone of trials and Earth Temple key pieces.
+  - Added option to start with extra health
+  - Added option to start with a random progress item
+  - Added option to start with max bugs and treasures
+  - Added option to start with a full wallet
+  - Added option to start with Hylian Shield
+  - Added option to start with Empty Bottles
+- Added option to make wallet upgrades come pre-filled with Rupees
 - Added the ability to ban individual locations (by cjs07)
 - Removed the "Banned Types" option
 - Added options to control entry into Lake Floria
@@ -33,11 +38,44 @@
   - The default value is 700 and matches how things worked before
   - Values larger than 700 will decrease the performance of the game
 - Added cosmetic option to have a lightning skyward strike effects. (by Zeldex)
+- Updated existing `fix-bit-crashes` option to a `bit-patches` option (by CovenEsme)
+  - This option is now a drop-down choice instead of a toggle
+  - A new option for `disable-bit` has been added that prevents all instances of the Back in Time (BiT) trick from being performed
+  - A new option for `vanilla` has been added that keeps the vanilla game behaviour where BiT is possible but crashes under certain circumstances
+  - The `fix-bit-crashes` option works the same as it did previously
+- Added cosmetic option to set the in-game interface setting from the start of the game
+  - It is now possible to start with the Standard, Light, or Pro interface without having to change the setting from the inventory screen
+- Added an accessibility toggle for light and dark themes (by CovenEsme)
+  - You can now pick to have a light theme, dark theme, or to automatically change based on the theme of your computer
+- Added option to randomize the boss key puzzles (by CovenEsme)
+- Added option to get all extra dowsing abilities after obtaining Whitesword
+- Added option to remove enemy battle music
+- Split hero mode options to make each effect customizable
+- Added option to freely choose the damage multiplier
 ### Changes
 - New GUI (by cjs07)
   - Rearranged options and regrouped into simpler, broader categories
   - Removed the Progress Locations tab
   - Made many miscellaneous changes
+  - Added a dark theme
+- Accessibility options (by CovenEsme)
+  - Added a toggle for enabling and disabling a custom theme 
+  - Added a button that opens a window with customization options for the theme of the randomizer
+    - It is now possible to customize the way the randomizer program looks in fine detail
+    - You can customize the light and dark mode colors of each widget to create a custom theme that works in both light and dark modes
+    - Widgets are grouped into categories that can be selected with a drop down menu
+    - Hovering over a widget label will show a tooltip describing what it does
+  - Added theme presets
+    - Allows you to choose between various theme presets. Currently, there are "Default", "High Contrast", and "Readibility" options
+    - The "Readibility" theme preset also changes the font family to "OpenDyslexic3"
+  - Added font settings
+    - It is now possible to set the font family used by the randomizer program
+    - It is also possible to change the font point size. The default value is 10 (previously 9), can go as small as 6 and as large as 14.
+  - Added option to make the curved corners of the randomizer interace sharp and pointy instead of curved
+- Added a copy button that copies the settings string to the clipboard (by CovenEsme)
+- Updated and standardized the option tooltip text (by CovenEsme)
+  - Tooltip text is now more descriptive
+  - Tooltip text now features **bold** highlights for **WARNINGS** regarding potentially troublesome settings and option names for drop down choices
 - Presets (by cjs07)
   - Presets allow users to save and load their favorite settings quickly from the main page of the randomizer
   - The randomizer is distributed with a set of default presets that cannot be changed
@@ -80,7 +118,7 @@
   - Added menu choice to view general requirements for beating a seed (e.g. how to raise and open Gate of Time, etc.)
   - Added explicit menu choice to view play time (temporarily to fill space)
 - Added Lanayru Desert map of the past as a starting item (by CovenEsme)
-- Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check and buying a shield (by CovenEsme)
+- Removed bipping after getting slingshot, practice sword, the Potion Lady's Gift check, buying a shield and Owlan's Gift check (by CovenEsme)
 - Removed the cutscene after completing the Isle of Songs puzzle
 - Removed the panning cutscenes during the Fledge's Gift check (by CovenEsme)
 - Shortened Yerbal's text to become in-line with the rest of the randomizer
@@ -94,10 +132,35 @@
   - The 2 small chests previously found within the Goddess Statue have been removed
 - Removed all skippable cutscenes except boss intro cutscenes (by CovenEsme)
   - When starting a new file, Link will now spawn directly in his room
+- Removed first set of bars in Sky Keep (by CovenEsme)
+  - The first chest in Sky Keep is no longer required to get the other checks within Sky Keep
+- Expanded arc replacements to cover the remaining unpatched arcs (by Muzu)
+  - Previously unpatched arcs (such as DoButton.arc) are now picked up from the arc replacements folder and patched
+  - The arc replacements folder now supports sub folders so people can organise arcs freely
+  - The arc replacements folder is now auto-generated if it doesn't exist
+  - Existing Title2D and DoButton patches to add custom title screen and dowsing icons now pull from modified_extract instead of actual_extract so they don't overwrite replaced arcs
+  - Due to duplicate arc names, the text arcs found in DATA/files/US/Object and the cursor arcs found in DATA/files/Layout and DATA/files/sys/mpls_movie/layout require specific names in the arc replacements folder
+    - Text arcs intended for the en_US folder support the default names (e.g. 0-Common.arc) but also support being prefixed with "en" for consistency (e.g. en0-Common.arc)
+    - Text arcs intended for the es_US folder must be prefixed with "es" (e.g. es0-Common.arc)
+    - Text arcs intended for the fr_US folder must be prefixed with "fr" (e.g. fr0-Common.arc) 
+    - The cursor arc intended for the regular layout folder supports the default name (i.e. cursor.arc)
+    - The cursor arc intended for the mpls_movie/layout folder (motion plus tutorial cursor) must be prefixed with "mpls" (i.e. mplscursor.arc)
+- Removed lavafall in front of ET boss door
+- Added changelog to the download
+- Removed mogma cutscene before circles
+- Sped up bridge extending cutscenes in Eldin
+- Removed thrill digger tower cutscene
+- Removed lily pad flipping cutscenes
+- Removed pyrup cutscene
+- Removed camera pans during Golo's gift
+- Renamed Slingshot check to Kikwi Elder's Reward
+- Added seed and permalink to error messages
+- Removed the check for a button combination to show the built in crash screen
+- Removed the need of opening the first chest in Sky Keep to progress
 - Added Fi hints (by YourAverageLink)
   - Fi hints are a new field in hint distribution files. The number indicated on the field is how many gossip stone hints will be placed in the Fi menu
     - Fi hints take priority over gossip stone hints; that is, they will be placed on Fi first, then on gossip stones if needed
-    - You may now set the hints per stone count of gossip stones to 0 (so long as you have at least 1 Fi hint)
+    - You may now set the hints per stone count of gossip stones to 0
     - Fi's hints may be seen in her menu, by selecting Information -> Hints
       - The information menu is also where Play Time now resides
 ### Bugfixes
@@ -107,6 +170,16 @@
 - Fixed light pillars not visually appearing when obtaining a tablet until a reload
 - Fixed Early Lake Floria Tricks not actually changing logic
 - Fixed Yerbal's map hint not showing the X marker on the map
+- Fixed bug where setting the `map-mode` or `boss-key-mode` options to "Vanilla" AND starting with some but not all maps or boss keys would throw an error
+  - Any maps or boss keys NOT added as starting items will now be placed in their vanilla locations (if the `map-mode`/`boss-key-mode` options are set to "Vanilla")
+  - Any maps or boss keys added as starting items will be added to the starting inventory
+- Fixed UI scaling issues. The randomizer program now scales when resized instead of remaining a fixed size.
+- Fixed bug where most items in Beedle's Shop where partially hidden in the table
+- Fixed bulk mode for Windows
+- Fixed barbed wire staying after obtaining triforce of wisdom
+- Fixed Windows file encoding bug
+- Fixed Beedle's Shop rupees showing the wrong color
+- Fixed crash in Bug Heaven minigame
 
 
 ## 1.3.2

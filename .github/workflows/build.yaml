@@ -17,18 +17,16 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install wheel
-        run: python -m pip install wheel
-      - name: Install requirements
-        run: python -m pip install -r requirements.txt
-      - name: Install dev requirements
-        run: python -m pip install -r requirements_dev.txt
+      - uses: pdm-project/setup-pdm@v3
+        name: Setup PDM
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: pdm config python.use_venv false && pdm install -G :all
       - name: Test if the formatting is correct
-        run: black . --check
-      - name: Install build requirements
-        run: python -m pip install -r requirements_build.txt
+        run: python3 -mblack . --check
       - name: Build distribution
-        run: pyinstaller ssrando.spec
+        run: python3 -mPyInstaller ssrando.spec
       - name: Run tests
         run: |
           python3 randoscript.py --noui --dry-run --seed=0
@@ -36,7 +34,9 @@ jobs:
           dist/ssrando --noui --dry-run --seed=0
           diff logs logs_source
       - name: Make arc-replacements folder
-        run: mkdir -p dist/arc-replacements
+        run: |
+          mkdir -p dist/arc-replacements
+          cp arc-replacements/README.md dist/arc-replacements
         shell: bash
       - name: Copy Readme and changelog
         run: cp README.md CHANGELOG.md dist
