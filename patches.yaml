@@ -69,7 +69,7 @@ global:
     - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
       onlyif: Option "skip-horde" Enabled
     - storyflag: 486 # Ghirahim 3 defeated
-      onlyif: Option "skip-g3" Enabled
+      onlyif: Option "skip-g3" Enabled & Option "skip-horde" Enabled
     - storyflag: 8 # LMF rising CS watched
       onlyif: Option "open-lmf" Is "Open"
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
@@ -5239,7 +5239,7 @@ F403: # Hylia's Realm
     index: 1
     objtype: EVNT
     object:
-      exit_id: 7
+      exit_id: 5 # go to post g3 cutscene, sets g3 defeated storyflag
   - name: Skip Demise Fight
     onlyif: Option "skip-demise" Enabled
     type: objpatch
