@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -2060,23 +2060,23 @@
         <item>
          <layout class="QVBoxLayout" name="custom_model_settings">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QLabel" name="label_player_model_select">
+             <widget class="QLabel" name="label_color_preset_select_label">
               <property name="text">
-               <string>Model Pack</string>
+               <string>Type</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="option_model_pack_select">
-              <property name="currentIndex">
-               <number>-1</number>
+             <widget class="QComboBox" name="option_model_type_select">
+              <property name="enabled">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_2">
+             <spacer name="horizontalSpacer">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -2091,23 +2091,23 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
             <item>
-             <widget class="QLabel" name="label_color_preset_select_label">
+             <widget class="QLabel" name="label_player_model_select">
               <property name="text">
-               <string>Model Type</string>
+               <string>Pack</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="option_model_type_select">
-              <property name="enabled">
-               <bool>true</bool>
+             <widget class="QComboBox" name="option_model_pack_select">
+              <property name="currentIndex">
+               <number>-1</number>
               </property>
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer">
+             <spacer name="horizontalSpacer_2">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -2134,7 +2134,7 @@
              <x>0</x>
              <y>0</y>
              <width>1052</width>
-             <height>457</height>
+             <height>459</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_29">

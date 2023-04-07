@@ -258,9 +258,6 @@ class RandoGUI(QMainWindow):
         if not CUSTOM_MODELS_PATH.is_dir():
             CUSTOM_MODELS_PATH.mkdir()
 
-        for p in Path(CUSTOM_MODELS_PATH).iterdir():
-            if p.is_dir():
-                self.ui.option_model_pack_select.addItem(p.name)
         self.ui.option_model_pack_select.currentIndexChanged.connect(
             self.change_model_pack
         )
@@ -269,13 +266,22 @@ class RandoGUI(QMainWindow):
             self.change_model_type
         )
 
-        self.current_model_pack = self.options[
-            "selected-model-pack"
-        ]  # get from saved option and update drop-down
-        self.generate_default_color_data()
-        self.read_color_data()
+        self.ui.option_model_type_select.addItem("Player")
+        self.ui.option_model_type_select.addItem("Loftwing")
 
-        self.change_model_pack()
+
+        # for p in Path(CUSTOM_MODELS_PATH).iterdir():
+        #     if p.is_dir():
+        #         self.ui.option_model_pack_select.addItem(p.name)
+
+
+        # self.current_model_pack = self.options[
+        #     "selected-model-pack"
+        # ]  # get from saved option and update drop-down
+        # self.generate_default_color_data()
+        # self.read_color_data()
+
+        # self.change_model_pack()
 
         # hide currently unsupported options to make this version viable for public use
         getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
@@ -750,45 +756,73 @@ class RandoGUI(QMainWindow):
 
     # Custom model customisation funcs
 
-    def change_model_pack(self, index: int = 0):
-        self.current_model_pack = self.ui.option_model_pack_select.currentText()
-        self.read_color_data()
-
-        self.ui.option_model_type_select.clear()
-        for model_type in self.color_data:
-            self.ui.option_model_type_select.addItem(model_type)
-
     def change_model_type(self, index: int):
-        if self.ui.option_model_type_select.count() < 1:
-            return
         self.current_model_type = self.ui.option_model_type_select.currentText()
+        arcPath: str
+        currentPack: str
+
+        match self.current_model_type:
+            case "Player":
+                arcPath = "Player/Alink.arc"
+                currentPack = self.options["selected-player-model-pack"]
+            case "Loftwing":
+                arcPath = "Loftwing/Bird_Link.arc"
+                currentPack = self.options["selected-loftwing-model-pack"]
+
+        self.ui.option_model_pack_select.blockSignals(True)
+        self.ui.option_model_pack_select.clear()
+        self.ui.option_model_pack_select.addItem("Default")
+        for path in CUSTOM_MODELS_PATH.glob(f"*/{arcPath}"):
+            packName = path.parts[-3]
+            if packName == "Default": #ignore packs called default so they don't clash with default link
+                continue
+            self.ui.option_model_pack_select.addItem(packName)
+            if packName == currentPack:
+                self.ui.option_model_pack_select.setCurrentText(packName)
+        self.ui.option_model_pack_select.blockSignals(False)
+        self.change_model_pack()
+
+    def change_model_pack(self, index: int = 0):
+        if self.ui.option_model_pack_select.count() < 1: 
+            return
+        self.current_model_pack = self.ui.option_model_pack_select.currentText()
+
+        match self.current_model_type:
+            case "Player":
+                self.options.set_option("selected-player-model-pack", self.current_model_pack)
+                self.save_settings()
+            case "Loftwing":
+                self.options.set_option("selected-loftwing-model-pack", self.current_model_pack)
+                self.save_settings()
+        
+        self.read_color_data()
         self.update_model_customisation()
 
     def read_color_data(self):
-        if self.current_model_pack == "Link":
-            self.color_data_path = LINK_COLOR_DATA_PATH
+        if self.current_model_pack == "Default":
+            self.color_data_path = LINK_MODEL_DATA_PATH / self.current_model_type / "metadata.json"
         else:
             self.color_data_path = (
-                CUSTOM_MODELS_PATH / self.current_model_pack / "color_data.json"
+                CUSTOM_MODELS_PATH / self.current_model_pack / self.current_model_type / "metadata.json"
             )
 
         if os.path.isfile(self.color_data_path):
             with open(self.color_data_path) as f:
                 self.color_data = json.load(f)
         else:
-            raise Exception(f"No color_data file found at: {self.color_data_path}")
+            self.color_data = {}
 
-    def generate_default_color_data(self):
-        if os.path.isfile(LINK_COLOR_DATA_PATH):
-            return
-        print("Generating default color_data file")
-        with open(DEFAULT_LINK_COLOR_DATA_PATH) as f:
-            default_color_data_json = json.load(f)
-        with open(LINK_COLOR_DATA_PATH, "w") as f:
-            json.dump(default_color_data_json, f)
+    # def generate_default_color_data(self):
+    #     if os.path.isfile(LINK_COLOR_DATA_PATH):
+    #         return
+    #     print("Generating default color_data file")
+    #     with open(DEFAULT_LINK_COLOR_DATA_PATH) as f:
+    #         default_color_data_json = json.load(f)
+    #     with open(LINK_COLOR_DATA_PATH, "w") as f:
+    #         json.dump(default_color_data_json, f)
 
     def model_color_changed(self, color: str, name: str):
-        self.color_data[self.current_model_type][name] = color
+        self.color_data[name] = color
 
         with open(self.color_data_path, "w") as f:
             json.dump(self.color_data, f)
@@ -796,7 +830,7 @@ class RandoGUI(QMainWindow):
         self.update_model_preview()
 
     def update_model_customisation(self):
-        current_model_color_data = self.color_data.get(self.current_model_type)
+        # current_model_color_data = self.color_data.get(self.current_model_type)
         counter = 1
 
         while self.color_box.count() > 2:
@@ -806,11 +840,11 @@ class RandoGUI(QMainWindow):
                 widget.deleteLater()
             layout.deleteLater()
 
-        for mask_name in current_model_color_data:
+        for mask_name in self.color_data:
             color_label = QLabel(mask_name)
 
             color_button = ColorButton(mask_name)
-            color_button.set_color(self.color_data[self.current_model_type][mask_name])
+            color_button.set_color(self.color_data[mask_name])
             reset_color_button = QPushButton("Reset Color")
 
             color_button.colorChanged.connect(self.model_color_changed)

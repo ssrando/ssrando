@@ -1390,8 +1390,11 @@ class GamePatcher:
             oarc_cache_path=oarc_cache_path,
             arc_replacement_path=arc_replacement_path,
             assets_path=RANDO_ROOT_PATH / "assets",
-            current_custom_model_pack_name=self.placement_file.options[
-                "selected-model-pack"
+            current_player_model_pack_name=self.placement_file.options[
+                "selected-player-model-pack"
+            ],
+            current_loftwing_model_pack_name=self.placement_file.options[
+                "selected-loftwing-model-pack"
             ],
             copy_unmodified=False,
         )

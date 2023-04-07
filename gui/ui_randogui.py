@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.3
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1425,25 +1425,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
         self.custom_model_settings = QVBoxLayout()
         self.custom_model_settings.setObjectName(u"custom_model_settings")
-        self.horizontalLayout_11 = QHBoxLayout()
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.label_player_model_select = QLabel(self.tab_cosmetics)
-        self.label_player_model_select.setObjectName(u"label_player_model_select")
-
-        self.horizontalLayout_11.addWidget(self.label_player_model_select)
-
-        self.option_model_pack_select = QComboBox(self.tab_cosmetics)
-        self.option_model_pack_select.setObjectName(u"option_model_pack_select")
-
-        self.horizontalLayout_11.addWidget(self.option_model_pack_select)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_11.addItem(self.horizontalSpacer_2)
-
-
-        self.custom_model_settings.addLayout(self.horizontalLayout_11)
-
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.label_color_preset_select_label = QLabel(self.tab_cosmetics)
@@ -1464,6 +1445,25 @@ class Ui_MainWindow(object):
 
         self.custom_model_settings.addLayout(self.horizontalLayout_2)
 
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.label_player_model_select = QLabel(self.tab_cosmetics)
+        self.label_player_model_select.setObjectName(u"label_player_model_select")
+
+        self.horizontalLayout_11.addWidget(self.label_player_model_select)
+
+        self.option_model_pack_select = QComboBox(self.tab_cosmetics)
+        self.option_model_pack_select.setObjectName(u"option_model_pack_select")
+
+        self.horizontalLayout_11.addWidget(self.option_model_pack_select)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_11.addItem(self.horizontalSpacer_2)
+
+
+        self.custom_model_settings.addLayout(self.horizontalLayout_11)
+
 
         self.verticalLayout_31.addLayout(self.custom_model_settings)
 
@@ -1472,7 +1472,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1052, 457))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1052, 459))
         self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.vlay_texture_colors = QVBoxLayout()
@@ -1747,7 +1747,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(6)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1885,8 +1885,8 @@ class Ui_MainWindow(object):
         self.label_current_starting_health.setText(QCoreApplication.translate("MainWindow", u"Current Starting Health:", None))
         self.current_starting_health_counter.setText(QCoreApplication.translate("MainWindow", u"6 hearts", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))
-        self.label_player_model_select.setText(QCoreApplication.translate("MainWindow", u"Model Pack", None))
-        self.label_color_preset_select_label.setText(QCoreApplication.translate("MainWindow", u"Model Type", None))
+        self.label_color_preset_select_label.setText(QCoreApplication.translate("MainWindow", u"Type", None))
+        self.label_player_model_select.setText(QCoreApplication.translate("MainWindow", u"Pack", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Hero Colors", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cosmetics), QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.box_theme.setTitle(QCoreApplication.translate("MainWindow", u"Theming", None))

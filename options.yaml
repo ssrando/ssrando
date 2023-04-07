@@ -978,11 +978,17 @@
         **Pro**: Most interface elements will be invisible."
   ui: option_interface
 #Player customisation stuff
-- name: Selected Model Pack
-  command: selected-model-pack
+- name: Selected Player Model Pack
+  command: selected-player-model-pack
   type: string
-  default: Link
+  default: Default
   permalink: false
   cosmetic: true
-  help: "Determines the model pack that will be used in game."
-  ui: option_model_pack_select
+  help: "Determines the player model pack that will be used in game."
+- name: Selected Loftwing Model Pack
+  command: selected-loftwing-model-pack
+  type: string
+  default: Default
+  permalink: false
+  cosmetic: true
+  help: "Determines the loftwing model pack that will be used in game."
