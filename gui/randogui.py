@@ -269,11 +269,9 @@ class RandoGUI(QMainWindow):
         self.ui.option_model_type_select.addItem("Player")
         self.ui.option_model_type_select.addItem("Loftwing")
 
-
         # for p in Path(CUSTOM_MODELS_PATH).iterdir():
         #     if p.is_dir():
         #         self.ui.option_model_pack_select.addItem(p.name)
-
 
         # self.current_model_pack = self.options[
         #     "selected-model-pack"
@@ -774,7 +772,9 @@ class RandoGUI(QMainWindow):
         self.ui.option_model_pack_select.addItem("Default")
         for path in CUSTOM_MODELS_PATH.glob(f"*/{arcPath}"):
             packName = path.parts[-3]
-            if packName == "Default": #ignore packs called default so they don't clash with default link
+            if (
+                packName == "Default"
+            ):  # ignore packs called default so they don't clash with default link
                 continue
             self.ui.option_model_pack_select.addItem(packName)
             if packName == currentPack:
@@ -783,27 +783,36 @@ class RandoGUI(QMainWindow):
         self.change_model_pack()
 
     def change_model_pack(self, index: int = 0):
-        if self.ui.option_model_pack_select.count() < 1: 
+        if self.ui.option_model_pack_select.count() < 1:
             return
         self.current_model_pack = self.ui.option_model_pack_select.currentText()
 
         match self.current_model_type:
             case "Player":
-                self.options.set_option("selected-player-model-pack", self.current_model_pack)
+                self.options.set_option(
+                    "selected-player-model-pack", self.current_model_pack
+                )
                 self.save_settings()
             case "Loftwing":
-                self.options.set_option("selected-loftwing-model-pack", self.current_model_pack)
+                self.options.set_option(
+                    "selected-loftwing-model-pack", self.current_model_pack
+                )
                 self.save_settings()
-        
+
         self.read_color_data()
         self.update_model_customisation()
 
     def read_color_data(self):
         if self.current_model_pack == "Default":
-            self.color_data_path = LINK_MODEL_DATA_PATH / self.current_model_type / "metadata.json"
+            self.color_data_path = (
+                LINK_MODEL_DATA_PATH / self.current_model_type / "metadata.json"
+            )
         else:
             self.color_data_path = (
-                CUSTOM_MODELS_PATH / self.current_model_pack / self.current_model_type / "metadata.json"
+                CUSTOM_MODELS_PATH
+                / self.current_model_pack
+                / self.current_model_type
+                / "metadata.json"
             )
 
         if os.path.isfile(self.color_data_path):

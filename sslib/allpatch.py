@@ -235,7 +235,9 @@ class AllPatcher:
             dataPath = LINK_MODEL_DATA_PATH / "Player"
             arcPath = OARC_PATH / "Alink.arc"
         else:
-            dataPath = CUSTOM_MODELS_PATH / self.current_player_model_pack_name / "Player"
+            dataPath = (
+                CUSTOM_MODELS_PATH / self.current_player_model_pack_name / "Player"
+            )
             arcPath = dataPath / "Alink.arc"
 
         metaDataPath = dataPath / "metadata.json"
@@ -265,7 +267,9 @@ class AllPatcher:
             dataPath = LINK_MODEL_DATA_PATH / "Loftwing"
             arcPath = OARC_PATH / "Bird_Link.arc"
         else:
-            dataPath = CUSTOM_MODELS_PATH / self.current_loftwing_model_pack_name / "Loftwing"
+            dataPath = (
+                CUSTOM_MODELS_PATH / self.current_loftwing_model_pack_name / "Loftwing"
+            )
             arcPath = dataPath / "Bird_Link.arc"
 
         metaDataPath = dataPath / "metadata.json"
@@ -283,7 +287,9 @@ class AllPatcher:
                 parsedBirdArc, masksPath, metaData=metaData
             )
 
-        (MODIFIED_ARC_TEMP_PATH / "Bird_Link.arc").write_bytes(parsedBirdArc.to_buffer())
+        (MODIFIED_ARC_TEMP_PATH / "Bird_Link.arc").write_bytes(
+            parsedBirdArc.to_buffer()
+        )
         self.customModelArcs["Bird_Link.arc"] = MODIFIED_ARC_TEMP_PATH / "Bird_Link.arc"
 
     def do_texture_recolour(
