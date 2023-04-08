@@ -64,5 +64,8 @@ main.dol:
     func_0x802ee0e0: 0x802ee0e0
     RUPEE_ITEM_TO_TEX_FRAME: 0x804e9a48
     allocOnCurrentHeap: 0x80054ec0
+    # counterId, count
+    increaseCounter: 0x8016d710
+    setFlagForItem: 0x80251ca0
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C

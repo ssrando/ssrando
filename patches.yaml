@@ -8,8 +8,6 @@ global:
     - 96  # Fi's text after obtaining first map
     - 745 # 5 Beacons
     - 496 # Skipper's cutscene after Sea Chart
-    - 264 # Talked to Skipper first time
-    - 273 # Talked to Skipper first time after saying no (prevents weird first text)
     - 130 # Start with Beacon
     - 358 # Interface choice unlocked
     - 792 # SG Big Door cs
@@ -71,7 +69,7 @@ global:
     - storyflag: 347 # Horde cutscene watched - must be set because the cutscene forces the horde fight
       onlyif: Option "skip-horde" Enabled
     - storyflag: 486 # Ghirahim 3 defeated
-      onlyif: Option "skip-g3" Enabled
+      onlyif: Option "skip-g3" Enabled & Option "skip-horde" Enabled
     - storyflag: 8 # LMF rising CS watched
       onlyif: Option "open-lmf" Is "Open"
   startitems: # careful, items are NOT progressive here (only set item flag, no text), storyflag for upgrade has to be set manually
@@ -4220,6 +4218,30 @@ F301_1: # Sand Sea Main Area
     room: 0
     objtype: STAG
     id: 0xFC6B
+  - name: Remove excess entrance to Sandship (layer 2)
+    type: objdelete
+    id: 0xFC98
+    layer: 2
+    room: 0
+    objtype: STAG
+  - name: Remove excess entrance to Sandship (layer 3)
+    type: objdelete
+    id: 0xFCB7
+    layer: 3
+    room: 0
+    objtype: STAG
+  - name: Remove excess entrance to Sandship (layer 4)
+    type: objdelete
+    id: 0xFCB7
+    layer: 4
+    room: 0
+    objtype: STAG
+  - name: Remove excess entrance to Sandship (layer 5)
+    type: objdelete
+    id: 0xFCB7
+    layer: 5
+    room: 0
+    objtype: STAG
   - name: Cutscene after shipyard
     type: objdelete
     id: 0xFC07
@@ -5217,7 +5239,7 @@ F403: # Hylia's Realm
     index: 1
     objtype: EVNT
     object:
-      exit_id: 7
+      exit_id: 5 # go to post g3 cutscene, sets g3 defeated storyflag
   - name: Skip Demise Fight
     onlyif: Option "skip-demise" Enabled
     type: objpatch

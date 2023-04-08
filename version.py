@@ -7,7 +7,7 @@ if IS_RUNNING_FROM_SOURCE:
 
     with open("pyproject.toml") as f:
         proj = toml.load(f)
-    VERSION = proj["project"]["version"]
+    VERSION = proj["tool"]["poetry"]["version"]
     VERSION_WITHOUT_COMMIT = VERSION
     version_suffix = "_NOGIT"
 

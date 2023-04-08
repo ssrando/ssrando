@@ -8,7 +8,7 @@ import random
 
 import json
 from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
-from PySide6.QtGui import QFontDatabase
+from PySide6.QtGui import QFontDatabase, QIcon
 from PySide6.QtWidgets import (
     QAbstractButton,
     QApplication,
@@ -82,6 +82,8 @@ class RandoGUI(QMainWindow):
         )
 
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
+
+        self.setWindowIcon(QIcon(str(RANDO_ROOT_PATH / "assets" / "icon.ico")))
 
         self.areas = areas
         self.options = options
@@ -325,7 +327,7 @@ class RandoGUI(QMainWindow):
         self, current_action: str, completed_steps: int, total_steps: int = None
     ):
         self.progress_dialog.setValue(completed_steps)
-        self.progress_dialog.setLabelText(current_action)
+        self.progress_dialog.set_current_action(current_action)
         if not total_steps is None:
             self.progress_dialog.setMaximum(total_steps)
 

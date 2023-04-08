@@ -64,21 +64,21 @@ You will need Python (at least version 3.9) and pip (which should come with Pyth
         git clone https://github.com/ssrando/ssrando
         cd ssrando
 
-3. Choose the branch you want to run (`master` is the most up-to-date), or the version you want to run (`v1.x.x` for stable releases, `async-[month]-[yy]` for async races; you can check the releases in Github):
+3. Choose the branch you want to run (`main` is the most up-to-date), or the version you want to run (`v1.x.x` for stable releases, `async-[month]-[yy]` for async races; you can check the releases in Github):
 
         git checkout [BRANCH OR VERSION]
     Replace `[BRANCH OR VERSION]` with the desired branch or version in the command
-4. Install `pdm`, which is used to install the dependencies
-        pip install pdm
+4. Install `poetry`, which is used to install the dependencies
+        pip install poetry
     If your system uses old versions of Python, you may need to replace `pip` with `python3 -mpip`
     
 5. Install the dependencies:
 
-        pdm install
+        poetry install
 
 6. [Run](#Running-the-randomizer) the randomizer:
 
-        pdm run randoscript.py
+        poetry run python randoscript.py
 
 ## The command-line interface
 
@@ -108,13 +108,13 @@ We are using `black` to format code; you can run `black .` to format all files.
 
 To install developing dependencies (including `black`):
 
-    pdm install -G dev
+    poetry install --only=dev
 If your system uses old versions of Python, you may need to replace `pip` with `python3 -mpip`
 
 ### Executable
 To build the executable, you need `PyInstaller` installed:
 
-    pdm install -G build
+    poetry install --only=build
 
 Then, build the executable using
 
