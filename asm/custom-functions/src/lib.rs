@@ -2,8 +2,8 @@
 #![feature(split_array)]
 
 use core::{
-    ffi::{CStr, c_char, c_ushort, c_void},
-    ptr::slice_from_raw_parts,
+    ffi::{c_char, c_ushort, c_void},
+    ptr::{self, slice_from_raw_parts},
     slice,
 };
 
@@ -55,8 +55,43 @@ struct ActorEventFlowMgr {
     unk8: u32,
 }
 
+#[repr(C)]
+struct AcOBird {
+    pad: [u8; 0x144],
+    speed: f32,
+}
+
+#[repr(i32)]
+#[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+enum SpecialMinigameState {
+    State0,
+    BambooCutting,
+    FunFunIsland,
+    ThrillDigger,
+    PumpkinCarry,
+    InsectCaptureGame,
+    PumpkinClayShooting,
+    RollercoasterMinigame,
+    TrialTimeAttack,
+    BossRush,
+    HouseCleaning,
+    SpiralChargeTutorial,
+    HarpPlaying,
+    StateNone = -1,
+}
+
+impl SpecialMinigameState {
+    pub fn get() -> Self {
+        unsafe { SPECIAL_MINIGAME_STATE }
+    }
+
+    pub fn is_current(self) -> bool {
+        Self::get() == self
+    }
+}
+
 extern "C" {
-    static SPAWN_SLAVE: *mut SpawnStruct;
+    static mut SPAWN_SLAVE: SpawnStruct;
     fn setStoryflagToValue(flag: u16, value: u16);
     static SCENEFLAG_MANAGER: *mut c_void;
     fn SceneflagManager__setFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16);
@@ -81,6 +116,10 @@ extern "C" {
     fn increaseCounter(counterId: u16, count: u16);
     fn setFlagForItem(itemflag: u16);
     fn getModelDataFromOarc(oarc_mgr: *const c_void, oarc_str: *const c_char) -> *const c_void;
+    static INPUT_BUFFER: u32;
+    fn findActorByActorType(actor_type: i32, start_actor: *const c_void) -> *mut c_void;
+    fn checkXZDistanceFromLink(actor: *const c_void, distance: f32) -> bool;
+    static mut SPECIAL_MINIGAME_STATE: SpecialMinigameState;
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -268,7 +307,7 @@ pub fn process_startflags() {
 
     // Starting Tadtones.
     // Next 5 bits.
-    let tadtone_count = additional_start_options_2 >> 4 & 0x1f; 
+    let tadtone_count = additional_start_options_2 >> 4 & 0x1f;
     storyflag_set_to_value(953, tadtone_count.into());
 
     // Starting Hylian Shield.
@@ -340,7 +379,10 @@ const INCOMPLETE_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x09\0 \0I\0n\0c\
 const UNREQUIRED_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x0C\0 \0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
 
 #[no_mangle]
-fn rando_text_command_handler(_event_flow_mgr: *mut ActorEventFlowMgr, p_flow_element: *const FlowElement) {
+fn rando_text_command_handler(
+    _event_flow_mgr: *mut ActorEventFlowMgr,
+    p_flow_element: *const FlowElement,
+) {
     let flow_element = unsafe { &*p_flow_element };
     match flow_element.param3 {
         71 => {
@@ -405,13 +447,15 @@ fn rando_text_command_handler(_event_flow_mgr: *mut ActorEventFlowMgr, p_flow_el
             // Tadtones obtained.
             text_manager_set_num_args(&[storyflag_get_value(953) as u32]);
         }
-        74 => { // Increment storyflag counter
+        74 => {
+            // Increment storyflag counter
             let flag = flow_element.param1;
             let increment = flow_element.param2;
-            
+
             storyflag_set_to_value(flag, storyflag_get_value(flag) + increment);
         }
-        75 => { // Have collected all tadtone groups?
+        75 => {
+            // Have collected all tadtone groups?
             let tadtone_groups_left: u32 = 17_u16.saturating_sub(storyflag_get_value(953)).into();
             text_manager_set_num_args(&[tadtone_groups_left]);
             unsafe {
@@ -453,7 +497,11 @@ fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
 }
 
 #[no_mangle]
-fn get_item_arc_name(oarc_mgr: *const c_void, vanilla_item_str: *const c_char, item_id: u32) -> *const c_void {
+fn get_item_arc_name(
+    oarc_mgr: *const c_void,
+    vanilla_item_str: *const c_char,
+    item_id: u32,
+) -> *const c_void {
     // Tadtone
     if item_id == 214 {
         return unsafe { getModelDataFromOarc(oarc_mgr, cstr!("Onp").as_ptr()) };
@@ -469,6 +517,35 @@ fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
     }
 
     return core::ptr::null();
+}
+
+#[no_mangle]
+fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
+    let loftwing = unsafe { &mut *loftwing_ptr };
+    let mut is_in_levias_fight = false;
+    if unsafe { &SPAWN_SLAVE.name[..4] } == b"F023"
+        && storyflag_check(368 /* Pumpkin soup delivered */)
+        && !storyflag_check(200 /* Levias explains SotH quest */)
+    {
+        let levias_ptr = unsafe {
+            findActorByActorType(184 /* NusiB */, ptr::null())
+        };
+        if !levias_ptr.is_null() {
+            if unsafe { checkXZDistanceFromLink(levias_ptr, 20_000f32) } {
+                is_in_levias_fight = true;
+            }
+        }
+    }
+    let in_spiral_charge_training = SpecialMinigameState::SpiralChargeTutorial.is_current();
+    let b_held = unsafe { INPUT_BUFFER } & 0x0400_0000 != 0;
+    let cap = if is_in_levias_fight || in_spiral_charge_training || b_held {
+        80f32
+    } else {
+        350f32
+    };
+    if loftwing.speed > cap {
+        loftwing.speed = cap;
+    }
 }
 
 #[panic_handler]

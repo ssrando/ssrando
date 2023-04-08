@@ -536,7 +536,7 @@ li r4, -1 ; -1 for bottle slot, or pouch items break
 .open "d_a_birdNP.rel"
 .org 0xA154 ; 809b72e4 in ghidra
 mr r3, r31
-bl loftwing_speed_limit
+bl enforce_loftwing_speed_cap
 nop
 nop
 nop
@@ -548,7 +548,7 @@ nop ; don't cap speed here
 ble skip_store_max
 stfs f0,0xfb8(r3)
 skip_store_max:
-b loftwing_speed_limit
+b enforce_loftwing_speed_cap
 .close
 
 .open "d_a_npc_dive_game_judgeNP.rel"
