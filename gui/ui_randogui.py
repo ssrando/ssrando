@@ -178,11 +178,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.vlay_cosmetics = QVBoxLayout()
         self.vlay_cosmetics.setObjectName(u"vlay_cosmetics")
-        self.option_tunic_swap = QCheckBox(self.box_cosmetics)
-        self.option_tunic_swap.setObjectName(u"option_tunic_swap")
-
-        self.vlay_cosmetics.addWidget(self.option_tunic_swap)
-
         self.option_lightning_skyward_strike = QCheckBox(self.box_cosmetics)
         self.option_lightning_skyward_strike.setObjectName(u"option_lightning_skyward_strike")
 
@@ -1501,6 +1496,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addWidget(self.option_model_type_select)
 
+        self.option_tunic_swap = QCheckBox(self.tab_cosmetics)
+        self.option_tunic_swap.setObjectName(u"option_tunic_swap")
+        self.option_tunic_swap.setEnabled(True)
+
+        self.horizontalLayout_2.addWidget(self.option_tunic_swap)
+
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
@@ -1540,11 +1541,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_32.setObjectName(u"verticalLayout_32")
         self.vlay_texture_colors = QVBoxLayout()
         self.vlay_texture_colors.setObjectName(u"vlay_texture_colors")
-        self.label = QLabel(self.scrollAreaWidgetContents_3)
-        self.label.setObjectName(u"label")
-
-        self.vlay_texture_colors.addWidget(self.label)
-
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_texture_colors.addItem(self.verticalSpacer)
@@ -1641,7 +1637,7 @@ class Ui_MainWindow(object):
         self.option_font_family.setWritingSystem(QFontDatabase.Any)
         self.option_font_family.setFontFilters(QFontComboBox.ScalableFonts)
         font1 = QFont()
-        font1.setFamilies([u"Noto Sans"])
+        font1.setFamilies([u"Arial"])
         font1.setPointSize(10)
         self.option_font_family.setCurrentFont(font1)
 
@@ -1810,7 +1806,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(6)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1836,7 +1832,6 @@ class Ui_MainWindow(object):
         self.box_advanced.setTitle(QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.box_cosmetics.setTitle(QCoreApplication.translate("MainWindow", u"Cosmetics", None))
-        self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
         self.option_lightning_skyward_strike.setText(QCoreApplication.translate("MainWindow", u"Lightning Skyward Strike", None))
         self.option_starry_skies.setText(QCoreApplication.translate("MainWindow", u"Starry Skies", None))
         self.label_for_option_star_count.setText(QCoreApplication.translate("MainWindow", u"Number of stars", None))
@@ -1959,8 +1954,8 @@ class Ui_MainWindow(object):
         self.current_starting_health_counter.setText(QCoreApplication.translate("MainWindow", u"6 hearts", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))
         self.label_color_preset_select_label.setText(QCoreApplication.translate("MainWindow", u"Type", None))
+        self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
         self.label_player_model_select.setText(QCoreApplication.translate("MainWindow", u"Pack", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Hero Colors", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cosmetics), QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.box_theme.setTitle(QCoreApplication.translate("MainWindow", u"Theming", None))
         self.theme_mode_label.setText(QCoreApplication.translate("MainWindow", u"Theme Mode", None))
@@ -1972,7 +1967,7 @@ class Ui_MainWindow(object):
         self.option_use_sharp_corners.setText(QCoreApplication.translate("MainWindow", u"Sharp Corners", None))
         self.box_font.setTitle(QCoreApplication.translate("MainWindow", u"Fonts", None))
         self.label_for_option_font_family.setText(QCoreApplication.translate("MainWindow", u"Font Family", None))
-        self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Noto Sans", None))
+        self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Arial", None))
         self.option_font_family.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select Font Family", None))
         self.label_for_option_font_size.setText(QCoreApplication.translate("MainWindow", u"Font Size", None))
         self.reset_font_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))

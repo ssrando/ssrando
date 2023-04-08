@@ -269,18 +269,6 @@ class RandoGUI(QMainWindow):
         self.ui.option_model_type_select.addItem("Player")
         self.ui.option_model_type_select.addItem("Loftwing")
 
-        # for p in Path(CUSTOM_MODELS_PATH).iterdir():
-        #     if p.is_dir():
-        #         self.ui.option_model_pack_select.addItem(p.name)
-
-        # self.current_model_pack = self.options[
-        #     "selected-model-pack"
-        # ]  # get from saved option and update drop-down
-        # self.generate_default_color_data()
-        # self.read_color_data()
-
-        # self.change_model_pack()
-
         # hide currently unsupported options to make this version viable for public use
         getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
         getattr(self.ui, "option_got_starting_state").setVisible(False)
@@ -787,11 +775,23 @@ class RandoGUI(QMainWindow):
             return
         self.current_model_pack = self.ui.option_model_pack_select.currentText()
 
+        self.read_metadata()
+
         match self.current_model_type:
             case "Player":
                 self.options.set_option(
                     "selected-player-model-pack", self.current_model_pack
                 )
+                if allowTunicSwap := self.metadata.get("AllowTunicSwap"):
+                    if allowTunicSwap == "True":
+                        self.ui.option_tunic_swap.setEnabled(True)
+                    else:
+                        self.ui.option_tunic_swap.setChecked(False)
+                        self.ui.option_tunic_swap.setEnabled(False)
+                        self.options.set_option("tunic-swap", False)
+                else:
+                    self.ui.option_tunic_swap.setEnabled(True)
+
                 self.save_settings()
             case "Loftwing":
                 self.options.set_option(
@@ -799,73 +799,86 @@ class RandoGUI(QMainWindow):
                 )
                 self.save_settings()
 
-        self.read_color_data()
         self.update_model_customisation()
 
-    def read_color_data(self):
+    def read_metadata(self):
         if self.current_model_pack == "Default":
-            self.color_data_path = (
+            self.metadata_path = (
                 LINK_MODEL_DATA_PATH / self.current_model_type / "metadata.json"
             )
+            if not os.path.isfile(self.metadata_path):
+                self.metadata_path.write_bytes(
+                    (
+                        LINK_MODEL_DATA_PATH
+                        / self.current_model_type
+                        / "defaultMetadata.json"
+                    ).read_bytes()
+                )
         else:
-            self.color_data_path = (
+            self.metadata_path = (
                 CUSTOM_MODELS_PATH
                 / self.current_model_pack
                 / self.current_model_type
                 / "metadata.json"
             )
 
-        if os.path.isfile(self.color_data_path):
-            with open(self.color_data_path) as f:
-                self.color_data = json.load(f)
+        if os.path.isfile(self.metadata_path):
+            with open(self.metadata_path) as f:
+                self.metadata = json.load(f)
         else:
-            self.color_data = {}
-
-    # def generate_default_color_data(self):
-    #     if os.path.isfile(LINK_COLOR_DATA_PATH):
-    #         return
-    #     print("Generating default color_data file")
-    #     with open(DEFAULT_LINK_COLOR_DATA_PATH) as f:
-    #         default_color_data_json = json.load(f)
-    #     with open(LINK_COLOR_DATA_PATH, "w") as f:
-    #         json.dump(default_color_data_json, f)
+            self.metadata = {}
 
     def model_color_changed(self, color: str, name: str):
-        self.color_data[name] = color
+        self.metadata["Colors"][name] = color
 
-        with open(self.color_data_path, "w") as f:
-            json.dump(self.color_data, f)
+        with open(self.metadata_path, "w") as f:
+            json.dump(self.metadata, f)
 
         self.update_model_preview()
 
     def update_model_customisation(self):
-        # current_model_color_data = self.color_data.get(self.current_model_type)
-        counter = 1
+        counter = 0
 
-        while self.color_box.count() > 2:
-            layout = self.color_box.takeAt(1).layout()
+        while self.color_box.count() > 1:
+            layout = self.color_box.takeAt(0).layout()
             while layout.count() > 0:
                 widget = layout.takeAt(0).widget()
                 widget.deleteLater()
             layout.deleteLater()
 
-        for mask_name in self.color_data:
-            color_label = QLabel(mask_name)
-
-            color_button = ColorButton(mask_name)
-            color_button.set_color(self.color_data[mask_name])
-            reset_color_button = QPushButton("Reset Color")
-
-            color_button.colorChanged.connect(self.model_color_changed)
-            reset_color_button.clicked.connect(color_button.reset_color)
-
-            color_button_layout = QHBoxLayout()
-            color_button_layout.insertWidget(0, color_label)
-            color_button_layout.insertWidget(1, color_button)
-            color_button_layout.insertWidget(2, reset_color_button)
-
-            self.color_box.insertLayout(counter, color_button_layout)
+        if authorName := self.metadata.get("ModelAuthorName"):
+            authorNameLabel = QLabel(f"Model Author: {authorName}")
+            authorNameLayout = QHBoxLayout()
+            authorNameLayout.insertWidget(0, authorNameLabel)
+            self.color_box.insertLayout(counter, authorNameLayout)
             counter += 1
+
+        if authorComment := self.metadata.get("ModelAuthorComment"):
+            authorCommentLabel = QLabel(f"Model Author Comment: {authorComment}")
+            authorCommentLayout = QHBoxLayout()
+            authorCommentLayout.insertWidget(0, authorCommentLabel)
+            self.color_box.insertLayout(counter, authorCommentLayout)
+            counter += 1
+
+        if colorData := self.metadata.get("Colors"):
+            for mask_name in colorData:
+                color_label = QLabel(mask_name)
+
+                color_button = ColorButton(mask_name)
+                color_button.set_color(colorData[mask_name])
+                color_button.showAlpha = False
+                reset_color_button = QPushButton("Reset Color")
+
+                color_button.colorChanged.connect(self.model_color_changed)
+                reset_color_button.clicked.connect(color_button.reset_color)
+
+                color_button_layout = QHBoxLayout()
+                color_button_layout.insertWidget(0, color_label)
+                color_button_layout.insertWidget(1, color_button)
+                color_button_layout.insertWidget(2, reset_color_button)
+
+                self.color_box.insertLayout(counter, color_button_layout)
+                counter += 1
 
         self.update_model_preview()
 
