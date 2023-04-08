@@ -327,7 +327,7 @@ class RandoGUI(QMainWindow):
         self, current_action: str, completed_steps: int, total_steps: int = None
     ):
         self.progress_dialog.setValue(completed_steps)
-        self.progress_dialog.setLabelText(current_action)
+        self.progress_dialog.set_current_action(current_action)
         if not total_steps is None:
             self.progress_dialog.setMaximum(total_steps)
 
