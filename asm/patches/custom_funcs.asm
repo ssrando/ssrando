@@ -225,6 +225,7 @@ b Reloader__triggerEntrance
 .global rando_text_command_handler
 .global textbox_a_pressed_or_b_held
 .global set_goddess_sword_pulled_scene_flag
+.global randomize_boss_key_start_pos
 
 .close
 

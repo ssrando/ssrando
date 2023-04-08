@@ -1574,6 +1574,19 @@ class GamePatcher:
             ]
         }
 
+        if self.placement_file.options["randomize-boss-key-puzzles"]:
+            self.add_asm_patch("randomize_boss_key_puzzles")
+
+            bk_angle_bytes = struct.pack(">I", self.placement_file.bk_angle_seed)
+
+            # TODO this kinda sucks, but essentially we just put this random number
+            # in the lui & ori instructions
+            patch = self.all_asm_patches["d_a_obj_door_bossNP.rel"][0x8994]["Data"]
+            patch[2] = bk_angle_bytes[0]
+            patch[3] = bk_angle_bytes[1]
+            patch[6] = bk_angle_bytes[2]
+            patch[7] = bk_angle_bytes[3]
+
         # for asm, custom symbols
         with (RANDO_ROOT_PATH / "asm" / "custom_symbols.txt").open("r") as f:
             self.custom_symbols = yaml.safe_load(f)
@@ -1831,13 +1844,14 @@ class GamePatcher:
 
     def add_startitem_patches(self):
         # Add sword story/itemflags if required
-
         start_sword_count = len(
             set(PROGRESSIVE_SWORDS) & set(self.placement_file.starting_items)
         )
 
         if start_sword_count > 3:
+            # Give sword dowsing flags.
             self.startstoryflags.append(583)  # 4 extra Dowsing slots
+
             if self.placement_file.options["dowsing-after-whitesword"]:
                 self.startstoryflags.append(102)  # Treasure Dowsing
                 self.startstoryflags.append(104)  # Crystal Dowsing
@@ -1867,13 +1881,46 @@ class GamePatcher:
         start_item_counts = Counter(
             map(strip_item_number, self.placement_file.starting_items)
         )
-        # health is calculated in quarter hearts
+
+        # Health is calculated in quarter hearts
         starting_health = 6 * 4
         starting_health += start_item_counts.pop(HEART_CONTAINER, 0) * 4
         starting_health += start_item_counts.pop(HEART_PIECE, 0)
 
-        self.starting_full_hearts = (starting_health // 4) * 4
+        self.starting_full_hearts = starting_health // 4
         self.startitemflags[ITEM_COUNT_FLAGS[HEART_PIECE]] = starting_health % 4
+
+        # Gratitude Crystal Packs
+        crystal_packs = 0
+        crystal_packs += start_item_counts.pop(GRATITUDE_CRYSTAL_PACK, 0)
+        self.startitemflags[ITEM_COUNT_FLAGS[GRATITUDE_CRYSTAL_PACK]] = (
+            crystal_packs * 5
+        )
+
+        # Empty Bottles
+        self.starting_bottles = 0
+        self.starting_bottles += start_item_counts.pop(EMPTY_BOTTLE, 0)
+
+        # Hylian Shield
+        self.start_with_hylian_shield = self.placement_file.options[
+            "start-with-hylian-shield"
+        ]
+
+        # Starting Rupee Count
+        # Limited to multiples of 100 to save bit space
+        self.starting_rupee_count = 0
+
+        # Starting bugs and treasures
+        self.max_starting_bugs = self.placement_file.options["max-starting-bugs"]
+        self.max_starting_treasures = self.placement_file.options[
+            "max-starting-treasures"
+        ]
+
+        if self.placement_file.options["full-starting-wallet"]:
+            wallets = start_item_counts.get(PROGRESSIVE_WALLET, 0)
+            extra_wallets = start_item_counts.get(EXTRA_WALLET, 0)
+            self.starting_rupee_count += WALLET_SIZES[wallets]
+            self.starting_rupee_count += extra_wallets * EXTRA_WALLET_SIZE
 
         ALL_DUNGEON_LIKE = ALL_DUNGEONS + [
             LANAYRU_CAVES
@@ -2841,15 +2888,44 @@ class GamePatcher:
         start_flags_write.write(bytes.fromhex("FFFF"))
         # dungeonflags
         start_flags_write.write(bytes(self.startdungeonflags))
-        # Starting rupee count.
-        start_flags_write.write(struct.pack(">H", 0))
-        # Start health.
-        start_flags_write.write(struct.pack(">B", self.starting_full_hearts))
-        # start interface choice
+
+        # Combined misc start flags to save bit space.
+        ## Last 7 bits for rupee count.
+        ## Limited to multiples of 100 to save bit space
+        additional_start_options = self.starting_rupee_count // 100
+
+        ## Next 5 bits for starting health.
+        additional_start_options = additional_start_options | (
+            self.starting_full_hearts << 7
+        )
+
+        ## Next 2 bits for starting interface.
         interface_choice_num = ["Standard", "Light", "Pro"].index(
             self.placement_file.options["interface"]
         )
-        start_flags_write.write(struct.pack(">B", interface_choice_num))
+        additional_start_options = additional_start_options | (
+            interface_choice_num << 12
+        )
+
+        ## Next 1 bit for starting bugs.
+        if self.max_starting_bugs:
+            additional_start_options = additional_start_options | (1 << 14)
+
+        ## First 1 bit for starting treasures.
+        if self.max_starting_treasures:
+            additional_start_options = additional_start_options | (1 << 15)
+
+        start_flags_write.write(struct.pack(">H", additional_start_options))
+
+        # Starting shield and bottles.
+        ## Last 3 bits for starting bottles.
+        additional_start_options_2 = self.starting_bottles
+
+        ## Next 1 bit for starting Hylian Shield.
+        if self.start_with_hylian_shield:
+            additional_start_options_2 = additional_start_options_2 | (1 << 3)
+
+        start_flags_write.write(struct.pack(">B", additional_start_options_2))
 
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:

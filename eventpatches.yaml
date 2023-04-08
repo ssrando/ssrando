@@ -446,6 +446,81 @@
     index: 520
     flow:
       next: -1
+  - name: Patch Medium Wallet
+    onlyif: Option "full-wallet-upgrades" Enabled
+    type: flowpatch
+    index: 246
+    flow:
+      next: Fill Medium Wallet
+  - name: Fill Medium Wallet
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 0
+      param2: 200 # Rupees to add
+      next: -1
+      param3: 8 # Increase rupee count
+  - name: Patch Big Wallet
+    onlyif: Option "full-wallet-upgrades" Enabled
+    type: flowpatch
+    index: 245
+    flow:
+      next: Fill Big Wallet
+  - name: Fill Big Wallet
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 0
+      param2: 500 # Rupees to add
+      next: -1
+      param3: 8 # Increase rupee count
+  - name: Patch Giant Wallet
+    onlyif: Option "full-wallet-upgrades" Enabled
+    type: flowpatch
+    index: 244
+    flow:
+      next: Fill Giant Wallet
+  - name: Fill Giant Wallet
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 0
+      param2: 4000 # Rupees to add
+      next: -1
+      param3: 8 # Increase rupee count
+  - name: Patch Tycoon Wallet
+    onlyif: Option "full-wallet-upgrades" Enabled
+    type: flowpatch
+    index: 255
+    flow:
+      next: Fill Tycoon Wallet
+  - name: Fill Tycoon Wallet
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 0
+      param2: 4000 # Rupees to add
+      next: -1
+      param3: 8 # Increase rupee count
+  - name: Patch Extra Wallets
+    onlyif: Option "full-wallet-upgrades" Enabled
+    type: flowpatch
+    index: 497
+    flow:
+      next: Fill Extra Wallets
+  - name: Fill Extra Wallets
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 0
+      param2: 300 # Rupees to add
+      next: -1
+      param3: 8 # Increase rupee count
   # - name: Patch Water Scale item get when floria gates are open
   #   onlyif: Option "open-lake-floria" Is "Open"
   #   type: flowpatch
@@ -2417,17 +2492,17 @@
       subType: 0
       param1: 0
       param2: 3 # item
-      next: Give Sadship beaten story flag
+      next: Give Sandship beaten story flag
       param3: 9
       param4: 0
       param5: 0
-  - name: Give Sadship beaten story flag
+  - name: Give Sandship beaten story flag
     type: flowadd
     flow:
       type: type3
       subType: 0
       param1: 0
-      param2: 15 # Sadship beaten story flag
+      param2: 15 # Sandship beaten story flag
       next: Give rando Tentalus Defeated storyflag
       param3: 0
   - name: Give rando Tentalus Defeated storyflag
@@ -2502,6 +2577,11 @@
       next: -1
       param3: 10
 402-DesertF2:
+  - name: Override Skipper check for first time conversation
+    type: flowpatch
+    index: 2
+    flow:
+      next: 150 # Check for SSH visible flag
   - name: Never ask player to go inside shark mouth for ship dowsing
     type: flowpatch
     index: 17

@@ -852,6 +852,9 @@
     - Clawshots
     - Din's Power
     - Eldin Song of the Hero Part
+    - Extra Wallet
+    - Extra Wallet
+    - Extra Wallet
     - Faron Song of the Hero Part
     - Farore's Courage
     - Fireshield Earrings
@@ -934,6 +937,15 @@
     Sky Keep Map,
   ]
   help: "Determines the items that will be in your inventory at the start of the game."
+- name: Starting Gratitude Crystal Packs
+  command: starting-crystal-packs
+  type: int
+  default: 0
+  min: 0
+  max: 13
+  bits: 4
+  help: How many gratitude crystal packs to start with.
+  ui: option_starting_crystal_packs
 - name: Random Starting Item
   command: random-starting-item
   type: boolean
@@ -942,6 +954,26 @@
         This includes: Bow, Beetle, Slingshot, Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
         Water Scale, Fireshield Earrings, Goddess Harp and Spiral Charge."
   ui: option_random_starting_item
+- name: Starting Empty Bottles
+  command: starting-bottles
+  type: int
+  default: 0
+  min: 0
+  max: 5
+  bits: 3
+  help: "Determines how many empty bottles start in your pouch.
+        **WARNING**: If you start with more pouch items than pouch slots, the extra items will become usable after
+        finding additional pouches."
+  ui: option_starting_bottles
+- name: Start with Hylian Shield
+  command: start-with-hylian-shield
+  type: boolean
+  default: True
+  help: "If enabled, you will start with the Hylian Shield in your pouch.
+        **WARNING**: If you start with more pouch items than pouch slots, the extra items will become usable after
+        finding additional pouches.
+        Hylian Shield will always be placed in the first pouch slot."
+  ui: option_start_with_hylian_shield
 - name: Starting Heart Containers
   command: starting-heart-containers
   type: int
@@ -960,6 +992,32 @@
   bits: 5
   help: "Determines how many heart pieces to start with."
   ui: option_starting_heart_pieces
+- name: Start with Full Wallet
+  command: full-starting-wallet
+  type: boolean
+  default: false
+  help: "If enabled, you will start with a full wallet.
+        This changes based on the number of starting wallets and extra wallets."
+  ui: option_full_starting_wallet
+- name: Full Wallet Upgrades
+  command: full-wallet-upgrades
+  type: boolean
+  default: false
+  help: "If enabled, wallets you find throughout the game will already be filled with Rupees.
+        E.g. Finding the Giant Wallet will add 4000 Rupees to your Rupee counter."
+  ui: option_full_wallet_upgrades
+- name: Start with Max Bugs
+  command: max-starting-bugs
+  type: boolean
+  default: false
+  help: "If enabled, you will start with 99 of each type of bug."
+  ui: option_max_starting_bugs
+- name: Start with Max Treasures
+  command: max-starting-treasures
+  type: boolean
+  default: false
+  help: "If enabled, you will start with 99 of each type of treasure."
+  ui: option_max_starting_treasures
 - name: Interface
   command: interface
   type: singlechoice
@@ -977,6 +1035,12 @@
         **Light**: Some interface elements will be invisible (e.g. the Wii Remote on the right of the screen).
         **Pro**: Most interface elements will be invisible."
   ui: option_interface
+- name: Randomize Boss Key Puzzles
+  command: randomize-boss-key-puzzles
+  type: boolean
+  default: false
+  help: "If enabled, the starting position of the boss keys will be randomized."
+  ui: option_randomize_boss_key_puzzles
 - name: Random Starting Location
   command: random-start-entrance
   type: singlechoice

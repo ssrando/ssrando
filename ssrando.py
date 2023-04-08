@@ -243,6 +243,7 @@ class Randomizer(BaseRandomizer):
         plcmt_file.version = VERSION
         plcmt_file.trial_object_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.music_rando_seed = self.rng.randint(1, MAX_SEED)
+        plcmt_file.bk_angle_seed = self.rng.randint(0, 2**32 - 1)
 
         plcmt_file.check_valid(self.areas)
 
