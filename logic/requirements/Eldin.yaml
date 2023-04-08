@@ -101,7 +101,7 @@ Volcano:
       Temple Entrance Statue: Unlock Statue
       Near Thrill Digger Cave: Near Thrill Digger Cave - Blow down Watchtower
       Exit to Earth Temple: Open ET option | Key Piece x5
-      Volcano - Upper Platform Cave: Fire Dragon's Reward
+      Volcano - Upper Platform Cave: Beaten Boko Base
       Hot Cave: Blow down Watchtower to Hot Cave
     locations:
       Unlock Statue: Nothing
@@ -116,7 +116,7 @@ Volcano:
   
   Upper Platform Cave:
     exits:
-      Near Temple Entrance: Fire Dragon's Reward | Clawshots
+      Near Temple Entrance: Beaten Boko Base | Clawshots
     locations:
       Gossip Stone in Upper Platform Cave: Nothing
 
@@ -140,7 +140,7 @@ Volcano:
     exits:
       Ascent: Unlock Shortcut to Ascent
       Vent Exit near Ascent: Nothing
-      Volcano - Lower Platform Cave: Fire Dragon's Reward
+      Volcano - Lower Platform Cave: Beaten Boko Base
     locations:
       Digging Spot after Draining Lava: Digging Mitts
       Unlock Shortcut to Ascent: Nothing
@@ -148,8 +148,8 @@ Volcano:
   Lower Platform Cave:
     exits:
       Past Slide: Clawshots
-      Past Mogma Turf: Fire Dragon's Reward
-      East: Fire Dragon's Reward
+      Past Mogma Turf: Beaten Boko Base
+      East: Beaten Boko Base
     locations:
       Gossip Stone in Lower Platform Cave: Nothing
 
@@ -322,4 +322,5 @@ Bokoblin Base:
     exits:
       Bokoblin Base Summit: Nothing
     locations:
-      Fire Dragon's Reward: Bow | Beetle
+      Beaten Boko Base: Bow | Beetle
+      Fire Dragon's Reward: Beaten Boko Base
