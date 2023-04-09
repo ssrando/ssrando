@@ -2,10 +2,12 @@
 #![feature(split_array)]
 
 use core::{
-    ffi::{c_ushort, c_void},
+    ffi::{CStr, c_char, c_ushort, c_void},
     ptr::slice_from_raw_parts,
     slice,
 };
+
+use cstr::cstr;
 
 use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
 
@@ -58,6 +60,7 @@ extern "C" {
     fn getKeyPieceCount() -> u16;
     fn increaseCounter(counterId: u16, count: u16);
     fn setFlagForItem(itemflag: u16);
+    fn getModelDataFromOarc(oarc_mgr: *const c_void, oarc_str: *const c_char) -> *const c_void;
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -402,6 +405,25 @@ fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
     for angle in angles.iter_mut() {
         *angle = simple_rng(&mut seed) as u16;
     }
+}
+
+#[no_mangle]
+fn get_item_arc_name(oarc_mgr: *const c_void, vanilla_item_str: *const c_char, itemId: u32) -> *const c_void {
+    // Tadtone
+    if itemId == 214 {
+        return unsafe { getModelDataFromOarc(oarc_mgr, cstr!("Onp").as_ptr()) };
+    }
+
+    return unsafe { getModelDataFromOarc(oarc_mgr, vanilla_item_str) };
+}
+
+#[no_mangle]
+fn get_item_model_name_ptr(itemId: u32) -> *const c_char {
+    if itemId == 214 {
+        return cstr!("OnpB").as_ptr();
+    }
+
+    return core::ptr::null();
 }
 
 #[panic_handler]

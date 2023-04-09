@@ -1,4 +1,21 @@
 003-ItemGet:
+  - name: Tadtone Text
+    type: textadd
+    unk1: 5
+    unk2: 1
+    text: "You got a group of <y<Tadtones>>!\nBe sure to find all 17 of them!"
+  - name: Show Tadtone Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 3
+      param4: Tadtone Text
+  - name: Tadtone Entry
+    type: entryadd
+    entry:
+      name: "003_214"
+      value: Show Tadtone Text
   - name: Spiral Charge Text
     type: textpatch
     index: 27

@@ -436,6 +436,7 @@ HEIGHT_OFFSETS = {
     211: -20.0,  # Fire Sanctuary Map
     212: -20.0,  # Sandship Map
     213: -20.0,  # Sky Keep Map
+    214: 0.0,  # Group of Tadtones
 }
 
 SHOP_BUY_DECIDE_SCALE = {
@@ -507,6 +508,7 @@ SHOP_BUY_DECIDE_SCALE = {
     211: 1.2,  # Fire Sanctuary Map
     212: 1.2,  # Sandship Map
     213: 1.2,  # Sky Keep Map
+    214: 0.6,  # Group of Tadtones
 }
 
 SHOP_PUT_SCALE = {
@@ -570,6 +572,7 @@ SHOP_PUT_SCALE = {
     211: 1.2,  # Fire Sanctuary Map
     212: 1.2,  # Sandship Map
     213: 1.2,  # Sky Keep Map
+    214: 1.0,  # Group of Tadtones
 }
 
 TRIAL_OBJECT_IDS = {
