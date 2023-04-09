@@ -283,6 +283,10 @@ b 0x801b0764 ; return to original function
 .org 0x804dba00
 .word 0
 
+; allow collecting items underwater
+.org 0x8025685c
+li r6, 0
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
