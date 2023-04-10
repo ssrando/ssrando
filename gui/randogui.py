@@ -886,7 +886,12 @@ class RandoGUI(QMainWindow):
         if self.current_model_pack == "Default":
             previewDataPath = LINK_MODEL_DATA_PATH / self.current_model_type / "Preview"
         else:
-            previewDataPath = CUSTOM_MODELS_PATH / self.current_model_pack / self.current_model_type / "Preview"
+            previewDataPath = (
+                CUSTOM_MODELS_PATH
+                / self.current_model_pack
+                / self.current_model_type
+                / "Preview"
+            )
 
         if not os.path.isfile(previewDataPath / "Preview.png"):
             print("No preview supplied")
@@ -913,10 +918,16 @@ class RandoGUI(QMainWindow):
             else:
                 print(f"No preview mask found at {maskPath}")
 
-        modifiedData = cr.process_texture(texture=data, maskPaths=maskPaths, colors=colors)
+        modifiedData = cr.process_texture(
+            texture=data, maskPaths=maskPaths, colors=colors
+        )
 
-        qimage = QImage(modifiedData.tobytes(), width, height, QImage.Format.Format_RGBA8888)
-        qpixmap = QPixmap.fromImage(qimage).scaled(500, 500, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        qimage = QImage(
+            modifiedData.tobytes(), width, height, QImage.Format.Format_RGBA8888
+        )
+        qpixmap = QPixmap.fromImage(qimage).scaled(
+            500, 500, Qt.KeepAspectRatio, Qt.SmoothTransformation
+        )
         self.ui.label_preview_image.setPixmap(qpixmap)
 
     def eventFilter(self, target: QObject, event: QEvent) -> bool:
