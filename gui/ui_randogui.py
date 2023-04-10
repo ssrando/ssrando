@@ -16,10 +16,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
-    QFontComboBox, QGroupBox, QHBoxLayout, QLabel,
-    QLayout, QLineEdit, QListView, QMainWindow,
-    QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
-    QSpinBox, QTabWidget, QVBoxLayout, QWidget)
+    QFontComboBox, QFrame, QGroupBox, QHBoxLayout,
+    QLabel, QLayout, QLineEdit, QListView,
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QSpinBox, QTabWidget, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1531,26 +1532,58 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_31.addLayout(self.custom_model_settings)
 
-        self.scrollArea = QScrollArea(self.tab_cosmetics)
-        self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_3 = QWidget()
-        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1052, 459))
-        self.verticalLayout_32 = QVBoxLayout(self.scrollAreaWidgetContents_3)
-        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
+        self.horizontalLayout_14 = QHBoxLayout()
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.scrollArea_2 = QScrollArea(self.tab_cosmetics)
+        self.scrollArea_2.setObjectName(u"scrollArea_2")
+        self.scrollArea_2.setContextMenuPolicy(Qt.PreventContextMenu)
+        self.scrollArea_2.setFrameShape(QFrame.NoFrame)
+        self.scrollArea_2.setFrameShadow(QFrame.Plain)
+        self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollArea_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.scrollAreaWidgetContents_5 = QWidget()
+        self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 523, 459))
+        self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContents_5)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.vlay_texture_colors = QVBoxLayout()
         self.vlay_texture_colors.setObjectName(u"vlay_texture_colors")
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_texture_colors.addItem(self.verticalSpacer)
 
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.verticalLayout_32.addLayout(self.vlay_texture_colors)
+        self.vlay_texture_colors.addItem(self.horizontalSpacer_4)
 
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents_3)
 
-        self.verticalLayout_31.addWidget(self.scrollArea)
+        self.verticalLayout_34.addLayout(self.vlay_texture_colors)
+
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_5)
+
+        self.horizontalLayout_14.addWidget(self.scrollArea_2)
+
+        self.verticalLayout_35 = QVBoxLayout()
+        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
+        self.hlay_preview = QHBoxLayout()
+        self.hlay_preview.setObjectName(u"hlay_preview")
+        self.label_preview_image = QLabel(self.tab_cosmetics)
+        self.label_preview_image.setObjectName(u"label_preview_image")
+        sizePolicy1.setHeightForWidth(self.label_preview_image.sizePolicy().hasHeightForWidth())
+        self.label_preview_image.setSizePolicy(sizePolicy1)
+        self.label_preview_image.setAlignment(Qt.AlignCenter)
+
+        self.hlay_preview.addWidget(self.label_preview_image)
+
+
+        self.verticalLayout_35.addLayout(self.hlay_preview)
+
+
+        self.horizontalLayout_14.addLayout(self.verticalLayout_35)
+
+
+        self.verticalLayout_31.addLayout(self.horizontalLayout_14)
 
         self.tabWidget.addTab(self.tab_cosmetics, "")
         self.tab_accessibility = QWidget()
@@ -1956,6 +1989,7 @@ class Ui_MainWindow(object):
         self.label_color_preset_select_label.setText(QCoreApplication.translate("MainWindow", u"Type", None))
         self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
         self.label_player_model_select.setText(QCoreApplication.translate("MainWindow", u"Pack", None))
+        self.label_preview_image.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cosmetics), QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.box_theme.setTitle(QCoreApplication.translate("MainWindow", u"Theming", None))
         self.theme_mode_label.setText(QCoreApplication.translate("MainWindow", u"Theme Mode", None))

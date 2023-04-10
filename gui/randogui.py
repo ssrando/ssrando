@@ -5,10 +5,12 @@ from gui.components.list_pair import ListPair
 import pyclip
 import qdarktheme
 import random
+import colorReplace as cr
+import cv2
 
 import json
 from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
-from PySide6.QtGui import QFontDatabase
+from PySide6.QtGui import QFontDatabase, QImage, QPixmap
 from PySide6.QtWidgets import (
     QAbstractButton,
     QApplication,
@@ -62,9 +64,7 @@ READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "readability_theme
 CUSTOM_THEME_PATH = "custom_theme.json"
 
 LINK_MODEL_DATA_PATH = RANDO_ROOT_PATH / "assets" / "default-link-data"
-DEFAULT_LINK_COLOR_DATA_PATH = LINK_MODEL_DATA_PATH / "default_color_data.json"
 CUSTOM_MODELS_PATH = Path("models")
-LINK_COLOR_DATA_PATH = CUSTOM_MODELS_PATH / "link_color_data.json"
 
 # Add stylesheet overrides here.
 BASE_STYLE_SHEET_OVERRIDES = ""
@@ -839,7 +839,7 @@ class RandoGUI(QMainWindow):
     def update_model_customisation(self):
         counter = 0
 
-        while self.color_box.count() > 1:
+        while self.color_box.count() > 2:
             layout = self.color_box.takeAt(0).layout()
             while layout.count() > 0:
                 widget = layout.takeAt(0).widget()
@@ -883,7 +883,41 @@ class RandoGUI(QMainWindow):
         self.update_model_preview()
 
     def update_model_preview(self):
-        pass
+        if self.current_model_pack == "Default":
+            previewDataPath = LINK_MODEL_DATA_PATH / self.current_model_type / "Preview"
+        else:
+            previewDataPath = CUSTOM_MODELS_PATH / self.current_model_pack / self.current_model_type / "Preview"
+
+        if not os.path.isfile(previewDataPath / "Preview.png"):
+            print("No preview supplied")
+            self.ui.label_preview_image.clear()
+            self.ui.label_preview_image.setText("No preview provided")
+            return
+
+        data = cv2.imread(str(previewDataPath / "Preview.png"), cv2.IMREAD_UNCHANGED)
+        data = cv2.cvtColor(data, cv2.COLOR_RGBA2BGRA)
+        height = data.shape[0]
+        width = data.shape[1]
+
+        colorData = self.metadata.get("Colors")
+
+        maskPaths = []
+        colors = []
+        for colorGroup in colorData:
+            if colorData[colorGroup] == "Default":
+                continue
+            maskPath = previewDataPath / f"Preview__{colorGroup}.png"
+            if os.path.isfile(maskPath):
+                maskPaths.append(str(maskPath))
+                colors.append(colorData[colorGroup])
+            else:
+                print(f"No preview mask found at {maskPath}")
+
+        modifiedData = cr.process_texture(texture=data, maskPaths=maskPaths, colors=colors)
+
+        qimage = QImage(modifiedData.tobytes(), width, height, QImage.Format.Format_RGBA8888)
+        qpixmap = QPixmap.fromImage(qimage).scaled(500, 500, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.ui.label_preview_image.setPixmap(qpixmap)
 
     def eventFilter(self, target: QObject, event: QEvent) -> bool:
         if event.type() == QEvent.Enter:

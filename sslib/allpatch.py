@@ -251,7 +251,7 @@ class AllPatcher:
         masksPath = dataPath / "Masks"
         if os.path.isdir(masksPath) and metaData.get("Colors"):
             parsedLinkArc = self.do_texture_recolour(
-                parsedLinkArc, masksPath, metaData=metaData["Colors"]
+                parsedLinkArc, masksPath, colorData=metaData["Colors"]
             )
 
         (MODIFIED_ARC_TEMP_PATH / "Alink.arc").write_bytes(parsedLinkArc.to_buffer())
@@ -287,7 +287,7 @@ class AllPatcher:
         masksPath = dataPath / "Masks"
         if os.path.isdir(masksPath) and metaData.get("Colors"):
             parsedBirdArc = self.do_texture_recolour(
-                parsedBirdArc, masksPath, metaData=metaData["Colors"]
+                parsedBirdArc, masksPath, colorData=metaData["Colors"]
             )
 
         (MODIFIED_ARC_TEMP_PATH / "Bird_Link.arc").write_bytes(
@@ -305,7 +305,7 @@ class AllPatcher:
             replacement = Path()
 
     def do_texture_recolour(
-        self, arcData: U8File, maskFolderPath: Path, metaData: dict
+        self, arcData: U8File, maskFolderPath: Path, colorData: dict
     ) -> U8File:
         maskLookup = {}
 
@@ -325,16 +325,16 @@ class AllPatcher:
             colors = []
             process = False
             for colorGroup in maskLookup[texName]:
-                if colorGroup not in metaData:
+                if colorGroup not in colorData:
                     print(f"{colorGroup} not in metadata")
                     continue
-                if metaData[colorGroup] == "Default":
+                if colorData[colorGroup] == "Default":
                     continue
                 maskPath = str(
                     maskFolderPath / (str(texName) + "__" + str(colorGroup) + ".png")
                 )
                 maskPaths.append(maskPath)
-                colors.append(metaData[colorGroup])
+                colors.append(colorData[colorGroup])
                 process = True
 
             if process:
