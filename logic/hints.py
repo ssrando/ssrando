@@ -87,7 +87,7 @@ class Hints:
                 self.dist.read_from_file(f)
 
     def do_hint_per_status(self, hintmodes, does_hint, hintcls, get_check, hintpack):
-        for (hintname, raw_check) in hintpack.items():
+        for hintname, raw_check in hintpack.items():
             check = get_check(raw_check)
             item = self.logic.placement.locations[check]
 

@@ -1,6 +1,4 @@
 from pathlib import Path
-import os
-from typing import Optional
 
 from PySide6.QtCore import QThread, Signal
 

@@ -260,7 +260,6 @@ def dump_header_json(options: Options, hash):
 
 
 def write_header(file: TextIO, options: Options, hash):
-
     file.write("Skyward Sword Randomizer Version %s\n" % VERSION)
 
     file.write("Permalink: %s\n" % options.get_permalink())

@@ -207,7 +207,6 @@ class Areas:
         gossip_stones: Dict[str, Any],
         map_exits_entrances: Dict[str, Any],
     ):
-
         map_entrances = {
             k: v
             for k, v in map_exits_entrances.items()
@@ -365,7 +364,7 @@ class Areas:
             for tag in ["_DAY", "_NIGHT"]:
                 if elt[-len(tag) :] == tag:
                     return EIN(short_to_full(elt[: -len(tag)]) + tag)
-            for (a, b) in self.short_full:
+            for a, b in self.short_full:
                 if a == elt:
                     return b
             b = self.search("", elt)
@@ -373,7 +372,7 @@ class Areas:
             return b
 
         def full_to_short(elt: EXTENDED_ITEM_NAME):
-            for (a, b) in self.short_full:
+            for a, b in self.short_full:
                 if b == elt:
                     return a
             raise ValueError(f"Error: association list, cannot find {elt}.")

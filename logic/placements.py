@@ -22,7 +22,9 @@ SINGLE_CRYSTAL_CHECKS = [
 ]
 
 
-def norm_vanilla(list: List[str]):
+# Tries to force an item to its vanilla location.
+# Produces an error if this is not possible.
+def norm_force_vanilla(list: List[str]):
     def norm_keys(norm: Callable[[str], EIN], checks: Dict[EIN, Any]) -> Placement:
         list2 = map(norm, list)
         dict = {k: EIN(checks[k]["original item"]) for k in list2}
@@ -31,7 +33,18 @@ def norm_vanilla(list: List[str]):
     return norm_keys
 
 
-SINGLE_CRYSTAL_PLACEMENT = norm_vanilla(SINGLE_CRYSTAL_CHECKS)
+# Restricts an item to only be placeable in its vanilla location.
+# This is always possible.
+def norm_restrict_vanilla(locations: List[str]):
+    def norm_keys(norm: Callable[[str], EIN], checks: Dict[EIN, Any]) -> Placement:
+        locs2 = map(norm, locations)
+        restriction = {EIN(checks[loc]["original item"]): loc for loc in locs2}
+        return Placement(item_placement_limit=restriction)
+
+    return norm_keys
+
+
+SINGLE_CRYSTAL_PLACEMENT = norm_force_vanilla(SINGLE_CRYSTAL_CHECKS)
 
 
 def norm_keys(dict: Dict[str, EIN]):
@@ -64,23 +77,23 @@ BEEDLE_CHECKS = [
     "Beedle's Shop - 50 Rupee Item",
     "Beedle's Shop - 1000 Rupee Item",
 ]
-VANILLA_BEEDLE_PLACEMENT = norm_vanilla(BEEDLE_CHECKS)
+VANILLA_BEEDLE_PLACEMENT = norm_force_vanilla(BEEDLE_CHECKS)
 
 SMALL_KEY_CHECKS = [
     "Skyview - Chest behind Two Eyes",
     "Skyview - Chest behind Three Eyes",
-    "Lanayru Mining Facility - Big Hub - Chest",
-    "Ancient Cistern - East Part - Chest",
-    "Ancient Cistern - Basement Gutters - Bokoblin",
+    "Lanayru Mining Facility - First Chest in Hub Room",
+    "Ancient Cistern - Chest in East Part",
+    "Ancient Cistern - Bokoblin",
     "Sandship - Chest behind Combination Lock",
-    "Sandship - Brig Prison - Robot's Reward",
-    "Fire Sanctuary - First Room - Chest",
-    "Fire Sanctuary - First Trapped Mogma Room - Chest",
-    "Fire Sanctuary - Second Trapped Mogma Room - Chest",
+    "Sandship - Robot in Brig's Reward",
+    "Fire Sanctuary - Chest in First Room",
+    "Fire Sanctuary - Chest near First Trapped Mogma",
+    "Fire Sanctuary - Chest after Bombable Wall",
     "Sky Keep - Chest after Dreadfuse",
     "Lanayru Caves - Golo's Gift",
 ]
-VANILLA_SMALL_KEYS_PLACEMENT = norm_vanilla(SMALL_KEY_CHECKS)
+VANILLA_SMALL_KEYS_PLACEMENT = norm_restrict_vanilla(SMALL_KEY_CHECKS)
 
 DUNGEON_SMALL_KEYS_RESTRICTION = norm_values(
     {
@@ -109,7 +122,7 @@ BOSS_KEY_CHECKS = [
     "Sandship - Boss Key Chest",
     "Fire Sanctuary - Boss Key Chest",
 ]
-VANILLA_BOSS_KEYS_PLACEMENT = norm_vanilla(BOSS_KEY_CHECKS)
+VANILLA_BOSS_KEYS_PLACEMENT = norm_restrict_vanilla(BOSS_KEY_CHECKS)
 
 DUNGEON_BOSS_KEYS_RESTRICTION = norm_values(
     {
@@ -124,14 +137,14 @@ DUNGEON_BOSS_KEYS_RESTRICTION = norm_values(
 
 MAP_CHECKS = [
     "Skyview - Chest on Tree Branch",
-    "Earth Temple - West Room - Chest",
-    "Lanayru Mining Facility - Armos Fight Room - Chest",
-    "Ancient Cistern - After Whip Hooks - Chest",
+    "Earth Temple - Chest in West Room",
+    "Lanayru Mining Facility - Chest after Armos Fight",
+    "Ancient Cistern - Chest after Whip Hooks",
     "Sandship - Chest before 4-Door Corridor",
-    "Fire Sanctuary - Second Trapped Mogma Room - Reward",
+    "Fire Sanctuary - Chest after Second Trapped Mogma",
     "Sky Keep - First Chest",
 ]
-VANILLA_MAPS_PLACEMENT = norm_vanilla(MAP_CHECKS)
+VANILLA_MAPS_PLACEMENT = norm_restrict_vanilla(MAP_CHECKS)
 
 DUNGEON_MAPS_RESTRICTION = norm_values(
     {
@@ -169,5 +182,5 @@ TRIFORCES_RESTRICTION = norm_values(
 )
 
 
-VANILLA_RUPEES = norm_vanilla(RUPEE_CHECKS)
-VANILLA_QUICK_BEETLE_RUPEES = norm_vanilla(QUICK_BEETLE_CHECKS)
+VANILLA_RUPEES = norm_force_vanilla(RUPEE_CHECKS)
+VANILLA_QUICK_BEETLE_RUPEES = norm_force_vanilla(QUICK_BEETLE_CHECKS)
