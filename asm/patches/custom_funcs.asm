@@ -736,3 +736,30 @@ bl setStoryflagToValue
 b 0x950
 
 .close
+
+
+.open "d_a_obj_clefNP.rel"
+.org @NextFreeSpace
+
+.global give_random_item_from_collecting_tadtone_group
+give_random_item_from_collecting_tadtone_group:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+mr r21, r4 ; store self
+mr r4, r25 ; get flag
+bl SceneflagManager__setTempOrSceneflag ; r3 = SCENEFLAG_MANAGER, r4 = flag
+
+; invalid read 0xbc at 80EACA28
+lha r3, 0xbc(r29) ; get randomized itemId
+li r4, -1
+li r5, 0
+bl giveItem ; r3 = itemId, r4 = pouchSlot (-1), r5 = 0
+
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+
+.close

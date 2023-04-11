@@ -2038,6 +2038,71 @@ F103_1: # Flooded Great Tree
     objtype: PLY
     object:
       play_cutscene: -1
+# F103:
+#   - name: tst1
+#     type: objpatch
+#     id: 0xFD91
+#     layer: 2
+#     room: 0
+#     objtype: OBJ
+#     object:
+#       anglez: 32
+#   - name: tst2
+#     type: objpatch
+#     id: 0xFD92
+#     layer: 2
+#     room: 0
+#     objtype: OBJ
+#     object:
+#       anglez: 32
+#   - name: tst3
+#     type: objpatch
+#     id: 0xFD93
+#     layer: 2
+#     room: 0
+#     objtype: OBJ
+#     object:
+#       anglez: 32
+#   - name: tst4
+#     type: objpatch
+#     id: 0xFD94
+#     layer: 2
+#     room: 0
+#     objtype: OBJ
+#     object:
+#       anglez: 32
+#   - name: tst5
+#     type: objpatch
+#     id: 0xFD95
+#     layer: 2
+#     room: 0
+#     objtype: OBJ
+#     object:
+#       anglez: 32
+#   - name: tst6
+#     type: objpatch
+#     id: 0xFD96
+#     layer: 2
+#     room: 0
+#     objtype: OBJ
+#     object:
+#       anglez: 32
+#   - name: tst7
+#     type: objpatch
+#     id: 0xFD97
+#     layer: 2
+#     room: 0
+#     objtype: OBJ
+#     object:
+#       anglez: 32
+#   - name: tst8
+#     type: objpatch
+#     id: 0xFD98
+#     layer: 2
+#     room: 0
+#     objtype: OBJ
+#     object:
+#       anglez: 32
 D100: # Skyview
   - name: Layer override
     type: layeroverride

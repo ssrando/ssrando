@@ -48,3 +48,5 @@ d_t_player_restartNP.rel:
   only_set_flag_conditionally: 0x6A4
 d_a_obj_toD3_stone_figureNP.rel:
   set_sot_placed_flag: 0x1388
+d_a_obj_clefNP.rel:
+  give_random_item_from_collecting_tadtone_group: 0x4A2C

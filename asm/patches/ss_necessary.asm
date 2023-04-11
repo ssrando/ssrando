@@ -716,3 +716,35 @@ li r3, 0 ; act as if storyflag 16 is not set
 .org 0x11c18
 li r3, 0 ; act as if storyflag 16 is not set
 .close
+
+; (0x80eaab3c - 0x80ea8380) + 0x130
+
+.open "d_a_obj_clefNP.rel"
+
+.org 0x104C ; 0x80ea929c
+nop ; don't overwrite anglez with zero
+
+.org 0x17AC ; 80ea99fc
+li r0, 0 ; replace anglez with zero since it's only used for this
+
+
+; Give item when in STATE_WAIT_UPDATE
+.org 0x1CA4 ; 0x80ea9ef4
+mr r4, r29 ; move self into r4
+bl give_random_item_from_collecting_tadtone_group
+
+; Give item when in STATE_MOVE_TOWARD_PATH_UPDATE
+.org 0x236C ; 0x80eaa5bc
+mr r4, r29 ; move self into r4
+bl give_random_item_from_collecting_tadtone_group
+
+; Give item when in STATE_PATH_MOVE_UPDATE
+.org 0x28EC ; 0x80eaab3c
+mr r4, r29 ; move self into r4
+bl give_random_item_from_collecting_tadtone_group
+
+; Give item when in STATE_GRAVITATE
+.org 0x303C ; 0x80eab28c
+mr r4, r29 ; move self into r4
+bl give_random_item_from_collecting_tadtone_group
+.close

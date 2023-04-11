@@ -178,7 +178,7 @@ Faron Woods:
       exits:
         Lower Area: Remove Void Plane
         Lower Area - Path to Chest: Remove Void Plane
-        Exit to Flooded Faron Woods: Nothing
+        Exit to Flooded Great Tree: Nothing
         Upper Exit to Platforms: Nothing
         Exit to Top: Nothing
       locations:
@@ -237,11 +237,36 @@ Flooded Faron Woods:
   toplevel-alias: Flooded Faron Woods
   hint-region: Flooded Faron Woods
   exits:
-    Entrance: Nothing
-    Exit: Nothing
+    Exit to Upper Flooded Great Tree: Nothing
+    Exit to Lower Flooded Great Tree: Water Scale
   locations:
-    Water Dragon's Reward: Water Scale
+    Yellow Tadtone under Lilypad: Water Scale
+    8 Light Blue Tadtones near Viewing Platform: Water Scale
+    4 Purple Tadtones under Viewing Platform: Water Scale
+    Red Moving Tadtone near Viewing Platform: Water Scale
+    Light Blue Tadtone under Great Tree Root: Water Scale
+    8 Yellow Tadtones near Kikwi Elder: Water Scale
+    4 Light Blue Moving Tadtones under Kikwi Elder: Water Scale
+    4 Red Moving Tadtones North West of Great Tree: Water Scale
+    Green Tadtone behind Upper Bombable Rock: Water Scale
+    2 Dark Blue Tadtones in Grass West of Great Tree: Water Scale
+    8 Green Tadtones in West Tunnel: Water Scale
+    2 Red Tadtones in Grass near Lower Bombable Rock: Water Scale
+    16 Dark Blue Tadtones in the South West: Water Scale
+    4 Purple Moving Tadtones near Floria Gate: Water Scale
+    Dark Blue Moving Tadtone inside Small Hollow Tree: Water Scale
+    4 Yellow Tadtones under Small Hollow Tree: Water Scale
+    8 Purple Tadtones in Clearing after Small Hollow Tree: Water Scale
     Faron Woods - Retrieve Oolo: Skyloft - Knight Academy - Start Owlan's Quest
+
+  Flooded Great Tree:
+    exits:
+      Entrance: Nothing
+      Exit: Nothing
+      Exit to Upper Flooded Faron Woods: Nothing
+      Exit to Lower Flooded Faron Woods: Water Scale
+    locations:
+      Water Dragon's Reward: Water Scale
 
 # LAKE FLORIA
 Lake Floria:

@@ -828,6 +828,8 @@ TRIAL_OBJECT_IDS = {
     },
 }
 
+CLEF_OBJECT_IDS = {}
+
 
 class FlagEventTypes(IntEnum):
     SET_STORYFLAG = (0,)
@@ -1224,6 +1226,18 @@ def rando_patch_goddess_crest(bzs: OrderedDict, itemid: int, index: str):
         obj["params2"] = mask_shift_set(obj["params2"], 0xFF, 0x18, itemid)
 
 
+def rando_patch_tadtone_group(bzs: OrderedDict, itemid: int, id: str):
+    id = int(id, 0)
+    clef = next(
+        filter(
+            lambda x: x["name"] == "Clef" and x["id"] == id,
+            bzs["OBJ "],
+        )
+    )
+    # print(clef["params1"], clef["angley"], clef["anglez"])
+    clef["anglez"] = mask_shift_set(clef["anglez"], 0xFFFF, 0, itemid)
+
+
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
 RANDO_PATCH_FUNCS = {
     "chest": rando_patch_chest,
@@ -1236,6 +1250,7 @@ RANDO_PATCH_FUNCS = {
     "EBc": rando_patch_bokoblin,
     "Tbox": rando_patch_tbox,
     "SwSB": rando_patch_goddess_crest,
+    "Clef": rando_patch_tadtone_group,
 }
 
 

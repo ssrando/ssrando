@@ -1964,19 +1964,51 @@ Great Tree - Underwater Tunnel Exit:
 
 
 
-Great Tree - Exit to Flooded Faron Woods:
+Great Tree - Exit to Flooded Great Tree:
   type: exit
-  vanilla: Flooded Faron Woods - Entrance
+  vanilla: Flooded Great Tree - Entrance
 
-Great Tree - Entrance from Flooded Faron Woods:
+Great Tree - Entrance from Flooded Great Tree:
   type: entrance
 
 
-Flooded Faron Woods - Exit:
+# Via Water Dragon
+Flooded Great Tree - Exit:
   type: exit
-  vanilla: Entrance from Flooded Faron Woods
+  vanilla: Entrance from Flooded Great Tree
+Flooded Great Tree - Entrance:
+  type: entrance
 
-Flooded Faron Woods - Entrance:
+# GT Upper
+Flooded Great Tree - Exit to Upper Flooded Faron Woods:
+  type: exit
+  vanilla: Flooded Faron Woods - Entrance from Upper Flooded Great Tree
+
+Flooded Great Tree - Entrance from Upper Flooded Faron Woods:
+  type: entrance
+
+# GT Lower
+Flooded Great Tree - Exit to Lower Flooded Faron Woods:
+  type: exit
+  vanilla: Flooded Faron Woods - Entrance from Lower Flooded Great Tree
+
+Flooded Great Tree - Entrance from Lower Flooded Faron Woods:
+  type: entrance
+
+# FW Upper
+Flooded Faron Woods - Exit to Upper Flooded Great Tree:
+  type: exit
+  vanilla: Flooded Great Tree - Entrance from Upper Flooded Faron Woods
+
+Flooded Faron Woods - Entrance from Upper Flooded Great Tree:
+  type: entrance
+
+# FW Lower
+Flooded Faron Woods - Exit to Lower Flooded Great Tree:
+  type: exit
+  vanilla: Flooded Great Tree - Entrance from Lower Flooded Faron Woods
+
+Flooded Faron Woods - Entrance from Lower Flooded Great Tree:
   type: entrance
 
 
