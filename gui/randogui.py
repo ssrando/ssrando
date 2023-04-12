@@ -261,6 +261,18 @@ class RandoGUI(QMainWindow):
         if not CUSTOM_MODELS_PATH.is_dir():
             CUSTOM_MODELS_PATH.mkdir()
 
+        if not os.path.isfile(LINK_MODEL_DATA_PATH / "Player" / "metadata.json"):
+            (LINK_MODEL_DATA_PATH / "Player" / "metadata.json").write_bytes(
+                (LINK_MODEL_DATA_PATH / "Player" / "defaultMetadata.json").read_bytes()
+            )
+
+        if not os.path.isfile(LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json"):
+            (LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json").write_bytes(
+                (
+                    LINK_MODEL_DATA_PATH / "Loftwing" / "defaultMetadata.json"
+                ).read_bytes()
+            )
+
         self.ui.option_model_pack_select.currentIndexChanged.connect(
             self.change_model_pack
         )
