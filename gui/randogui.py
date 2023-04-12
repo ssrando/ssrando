@@ -255,7 +255,6 @@ class RandoGUI(QMainWindow):
         # cosmetics stuff - move to func and connect to dropdown
         self.color_box = getattr(self.ui, "vlay_texture_colors")
         self.color_buttons = []
-        
 
         if not CUSTOM_MODELS_PATH.is_dir():
             CUSTOM_MODELS_PATH.mkdir()
@@ -268,13 +267,9 @@ class RandoGUI(QMainWindow):
             self.change_model_type
         )
 
-        self.ui.button_reset_all_colors.clicked.connect(
-            self.reset_all_colors
-        )
+        self.ui.button_reset_all_colors.clicked.connect(self.reset_all_colors)
 
-        self.ui.button_randomize_all_colors.clicked.connect(
-            self.randomize_all_colors
-        )
+        self.ui.button_randomize_all_colors.clicked.connect(self.randomize_all_colors)
 
         self.ui.option_model_type_select.addItem("Player")
         self.ui.option_model_type_select.addItem("Loftwing")
@@ -887,8 +882,6 @@ class RandoGUI(QMainWindow):
                 random_color_button.clicked.connect(color_button.randomize_color)
                 color_button.colorChanged.connect(self.model_color_changed)
                 reset_color_button.clicked.connect(color_button.reset_color)
-                # self.ui.button_reset_all_colors.clicked.connect(color_button.reset_color)
-                # self.ui.button_randomize_all_colors.clicked.connect(color_button.randomize_color)
 
                 color_button_layout = QHBoxLayout()
                 color_button_layout.insertWidget(0, color_label)
@@ -906,7 +899,7 @@ class RandoGUI(QMainWindow):
             button.blockSignals(True)
             button.reset_color()
             button.blockSignals(False)
-        
+
         for colorGroup in self.metadata["Colors"]:
             self.metadata["Colors"][colorGroup] = "Default"
 
