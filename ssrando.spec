@@ -23,7 +23,7 @@ def build_datas_recursive(paths):
 
 with open('pyproject.toml') as f:
     proj = toml.load(f)
-VERSION = proj['project']['version']
+VERSION = proj["tool"]["poetry"]["version"]
 
 if os.path.isdir(".git"):
   version_suffix = "_NOGIT"
@@ -88,4 +88,5 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=True,
-          runtime_tmpdir=None, )
+          runtime_tmpdir=None,
+          icon="assets/icon.ico",)
