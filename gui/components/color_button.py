@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QPushButton, QColorDialog, QErrorMessage
 from enum import Enum, auto
 
 import re
+import random
 
 NO_COLOR = "Default"
 DEFAULT_COLOR = 0xFFFFFFFF
@@ -40,7 +41,7 @@ class ColorButton(QPushButton):
         else:
             if not COLOR_REGEX.match(newColor):
                 raise ValueError(
-                    f"Invalid color value in model color_data, expected format '#XXXXXXXX' but got {newColor}."
+                    f"Invalid color value in model color_data, expected format '#RRGGBBAA' but got {newColor}."
                 )
             self.color = self.color_int_from_str(newColor)
             self.colorChanged.emit(newColor, self.name)
@@ -61,6 +62,11 @@ class ColorButton(QPushButton):
             self.color = self.color_int_from_str(self.color_str_from_qcolor(new_color))
             self.update()
             self.colorChanged.emit(self.color_str_from_int(self.color), self.name)
+
+    def randomize_color(self) -> str:
+        color = f"#{random.randint(0, 0xFFFFFF):06x}FF"
+        self.set_color(color)
+        return color
 
     def reset_color(self):
         self.set_color(self.initialColor)

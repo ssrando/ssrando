@@ -1522,6 +1522,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_11.addWidget(self.option_model_pack_select)
 
+        self.button_randomize_all_colors = QPushButton(self.tab_cosmetics)
+        self.button_randomize_all_colors.setObjectName(u"button_randomize_all_colors")
+
+        self.horizontalLayout_11.addWidget(self.button_randomize_all_colors)
+
+        self.button_reset_all_colors = QPushButton(self.tab_cosmetics)
+        self.button_reset_all_colors.setObjectName(u"button_reset_all_colors")
+
+        self.horizontalLayout_11.addWidget(self.button_reset_all_colors)
+
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_11.addItem(self.horizontalSpacer_2)
@@ -1544,7 +1554,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 523, 459))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 523, 455))
         self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContents_5)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.vlay_texture_colors = QVBoxLayout()
@@ -1989,6 +1999,8 @@ class Ui_MainWindow(object):
         self.label_color_preset_select_label.setText(QCoreApplication.translate("MainWindow", u"Type", None))
         self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
         self.label_player_model_select.setText(QCoreApplication.translate("MainWindow", u"Pack", None))
+        self.button_randomize_all_colors.setText(QCoreApplication.translate("MainWindow", u"Randomize All Colors", None))
+        self.button_reset_all_colors.setText(QCoreApplication.translate("MainWindow", u"Reset All Colors", None))
         self.label_preview_image.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cosmetics), QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.box_theme.setTitle(QCoreApplication.translate("MainWindow", u"Theming", None))

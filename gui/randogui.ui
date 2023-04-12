@@ -2207,6 +2207,20 @@
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="button_randomize_all_colors">
+              <property name="text">
+               <string>Randomize All Colors</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="button_reset_all_colors">
+              <property name="text">
+               <string>Reset All Colors</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="horizontalSpacer_2">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -2251,7 +2265,7 @@
                <x>0</x>
                <y>0</y>
                <width>523</width>
-               <height>459</height>
+               <height>455</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_34">

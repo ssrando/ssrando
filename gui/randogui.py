@@ -254,6 +254,8 @@ class RandoGUI(QMainWindow):
 
         # cosmetics stuff - move to func and connect to dropdown
         self.color_box = getattr(self.ui, "vlay_texture_colors")
+        self.color_buttons = []
+        
 
         if not CUSTOM_MODELS_PATH.is_dir():
             CUSTOM_MODELS_PATH.mkdir()
@@ -264,6 +266,14 @@ class RandoGUI(QMainWindow):
 
         self.ui.option_model_type_select.currentIndexChanged.connect(
             self.change_model_type
+        )
+
+        self.ui.button_reset_all_colors.clicked.connect(
+            self.reset_all_colors
+        )
+
+        self.ui.button_randomize_all_colors.clicked.connect(
+            self.randomize_all_colors
         )
 
         self.ui.option_model_type_select.addItem("Player")
@@ -846,6 +856,8 @@ class RandoGUI(QMainWindow):
                 widget.deleteLater()
             layout.deleteLater()
 
+        self.color_buttons.clear()
+
         if authorName := self.metadata.get("ModelAuthorName"):
             authorNameLabel = QLabel(f"Model Author: {authorName}")
             authorNameLayout = QHBoxLayout()
@@ -864,23 +876,63 @@ class RandoGUI(QMainWindow):
             for mask_name in colorData:
                 color_label = QLabel(mask_name)
 
+                random_color_button = QPushButton("Random")
                 color_button = ColorButton(mask_name)
                 color_button.set_color(colorData[mask_name])
                 color_button.showAlpha = False
                 reset_color_button = QPushButton("Reset Color")
 
+                self.color_buttons.append(color_button)
+
+                random_color_button.clicked.connect(color_button.randomize_color)
                 color_button.colorChanged.connect(self.model_color_changed)
                 reset_color_button.clicked.connect(color_button.reset_color)
+                # self.ui.button_reset_all_colors.clicked.connect(color_button.reset_color)
+                # self.ui.button_randomize_all_colors.clicked.connect(color_button.randomize_color)
 
                 color_button_layout = QHBoxLayout()
                 color_button_layout.insertWidget(0, color_label)
-                color_button_layout.insertWidget(1, color_button)
-                color_button_layout.insertWidget(2, reset_color_button)
+                color_button_layout.insertWidget(1, random_color_button)
+                color_button_layout.insertWidget(2, color_button)
+                color_button_layout.insertWidget(3, reset_color_button)
 
                 self.color_box.insertLayout(counter, color_button_layout)
                 counter += 1
 
         self.update_model_preview()
+
+    def reset_all_colors(self):
+        for button in self.color_buttons:
+            button.blockSignals(True)
+            button.reset_color()
+            button.blockSignals(False)
+        
+        for colorGroup in self.metadata["Colors"]:
+            self.metadata["Colors"][colorGroup] = "Default"
+
+        with open(self.metadata_path, "w") as f:
+            json.dump(self.metadata, f)
+
+        self.update_model_preview()
+
+    def randomize_all_colors(self):
+        self.ui.button_randomize_all_colors.setEnabled(False)
+        self.ui.button_randomize_all_colors.repaint()
+        colors = []
+
+        for button in self.color_buttons:
+            button.blockSignals(True)
+            colors.append(button.randomize_color())
+            button.blockSignals(False)
+
+        for i, colorGroup in enumerate(self.metadata["Colors"]):
+            self.metadata["Colors"][colorGroup] = colors[i]
+
+        with open(self.metadata_path, "w") as f:
+            json.dump(self.metadata, f)
+
+        self.update_model_preview()
+        self.ui.button_randomize_all_colors.setEnabled(True)
 
     def update_model_preview(self):
         if self.current_model_pack == "Default":
