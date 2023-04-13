@@ -277,6 +277,10 @@ bgt 0x801b0788
 bl rando_text_command_handler
 b 0x801b0764 ; return to original function
 
+; don't enable jank fi menu handling: everything in the menu is overwritten anyways
+.org 0x801b19e0
+li r0, 0
+
 ; patch starting entrance
 .org 0x801bb980
 bl send_to_start
