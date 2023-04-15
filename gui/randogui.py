@@ -891,8 +891,12 @@ class RandoGUI(QMainWindow):
                 color_button.set_color(colorData[mask_name])
                 color_button.showAlpha = False
                 reset_color_button = QPushButton("Reset")
-                reset_color_button.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred)
-                random_color_button.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred)
+                reset_color_button.setSizePolicy(
+                    QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred
+                )
+                random_color_button.setSizePolicy(
+                    QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred
+                )
 
                 self.color_buttons.append(color_button)
 
