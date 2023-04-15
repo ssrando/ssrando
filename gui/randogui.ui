@@ -2150,7 +2150,7 @@
         <item>
          <layout class="QVBoxLayout" name="custom_model_settings">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <layout class="QHBoxLayout" name="hlay_type_options">
             <item>
              <widget class="QLabel" name="label_color_preset_select_label">
               <property name="text">
@@ -2176,7 +2176,7 @@
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer">
+             <spacer name="hspace_type_options">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -2191,7 +2191,7 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <layout class="QHBoxLayout" name="hlay_pack_options">
             <item>
              <widget class="QLabel" name="label_player_model_select">
               <property name="text">
@@ -2221,7 +2221,7 @@
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_2">
+             <spacer name="hspace_pack_options">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -2238,9 +2238,9 @@
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <layout class="QHBoxLayout" name="hlay_colors_and_preview">
           <item>
-           <widget class="QScrollArea" name="scrollArea_2">
+           <widget class="QScrollArea" name="scroll_area_colors">
             <property name="contextMenuPolicy">
              <enum>Qt::PreventContextMenu</enum>
             </property>
@@ -2259,20 +2259,20 @@
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
-            <widget class="QWidget" name="scrollAreaWidgetContents_5">
+            <widget class="QWidget" name="scroll_area_widget_contents_colors">
              <property name="geometry">
               <rect>
                <x>0</x>
                <y>0</y>
                <width>523</width>
-               <height>455</height>
+               <height>456</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_34">
               <item>
                <layout class="QVBoxLayout" name="vlay_texture_colors">
                 <item>
-                 <spacer name="verticalSpacer">
+                 <spacer name="vspace_colors">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
                   </property>
@@ -2285,7 +2285,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <spacer name="horizontalSpacer_4">
+                 <spacer name="hspace_colors">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -2304,7 +2304,7 @@
            </widget>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_35">
+           <layout class="QVBoxLayout" name="vlay_preview">
             <item>
              <layout class="QHBoxLayout" name="hlay_preview">
               <item>
@@ -2317,6 +2317,9 @@
                 </property>
                 <property name="text">
                  <string/>
+                </property>
+                <property name="scaledContents">
+                 <bool>false</bool>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>

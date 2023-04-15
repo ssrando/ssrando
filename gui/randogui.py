@@ -9,7 +9,7 @@ import colorReplace as cr
 import cv2
 
 import json
-from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
+from PySide6.QtCore import Qt, QEvent, QObject
 from PySide6.QtGui import QFontDatabase, QIcon, QImage, QPixmap
 from PySide6.QtWidgets import (
     QAbstractButton,
@@ -27,6 +27,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QPushButton,
     QRadioButton,
+    QSizePolicy,
     QSpinBox,
 )
 from gui.components.color_button import ColorButton
@@ -255,7 +256,7 @@ class RandoGUI(QMainWindow):
         self.preset_selection_changed()
 
         # cosmetics stuff - move to func and connect to dropdown
-        self.color_box = getattr(self.ui, "vlay_texture_colors")
+        self.color_box = self.ui.vlay_texture_colors
         self.color_buttons = []
 
         if not CUSTOM_MODELS_PATH.is_dir():
@@ -889,7 +890,9 @@ class RandoGUI(QMainWindow):
                 color_button = ColorButton(mask_name)
                 color_button.set_color(colorData[mask_name])
                 color_button.showAlpha = False
-                reset_color_button = QPushButton("Reset Color")
+                reset_color_button = QPushButton("Reset")
+                reset_color_button.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred)
+                random_color_button.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred)
 
                 self.color_buttons.append(color_button)
 
@@ -985,7 +988,7 @@ class RandoGUI(QMainWindow):
             modifiedData.tobytes(), width, height, QImage.Format.Format_RGBA8888
         )
         qpixmap = QPixmap.fromImage(qimage).scaled(
-            500, 500, Qt.KeepAspectRatio, Qt.SmoothTransformation
+            600, 500, Qt.KeepAspectRatio, Qt.SmoothTransformation
         )
         self.ui.label_preview_image.setPixmap(qpixmap)
 

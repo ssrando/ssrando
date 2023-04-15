@@ -1484,116 +1484,117 @@ class Ui_MainWindow(object):
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
         self.custom_model_settings = QVBoxLayout()
         self.custom_model_settings.setObjectName(u"custom_model_settings")
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.hlay_type_options = QHBoxLayout()
+        self.hlay_type_options.setObjectName(u"hlay_type_options")
         self.label_color_preset_select_label = QLabel(self.tab_cosmetics)
         self.label_color_preset_select_label.setObjectName(u"label_color_preset_select_label")
 
-        self.horizontalLayout_2.addWidget(self.label_color_preset_select_label)
+        self.hlay_type_options.addWidget(self.label_color_preset_select_label)
 
         self.option_model_type_select = QComboBox(self.tab_cosmetics)
         self.option_model_type_select.setObjectName(u"option_model_type_select")
         self.option_model_type_select.setEnabled(True)
 
-        self.horizontalLayout_2.addWidget(self.option_model_type_select)
+        self.hlay_type_options.addWidget(self.option_model_type_select)
 
         self.option_tunic_swap = QCheckBox(self.tab_cosmetics)
         self.option_tunic_swap.setObjectName(u"option_tunic_swap")
         self.option_tunic_swap.setEnabled(True)
 
-        self.horizontalLayout_2.addWidget(self.option_tunic_swap)
+        self.hlay_type_options.addWidget(self.option_tunic_swap)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.hspace_type_options = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_2.addItem(self.horizontalSpacer)
+        self.hlay_type_options.addItem(self.hspace_type_options)
 
 
-        self.custom_model_settings.addLayout(self.horizontalLayout_2)
+        self.custom_model_settings.addLayout(self.hlay_type_options)
 
-        self.horizontalLayout_11 = QHBoxLayout()
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.hlay_pack_options = QHBoxLayout()
+        self.hlay_pack_options.setObjectName(u"hlay_pack_options")
         self.label_player_model_select = QLabel(self.tab_cosmetics)
         self.label_player_model_select.setObjectName(u"label_player_model_select")
 
-        self.horizontalLayout_11.addWidget(self.label_player_model_select)
+        self.hlay_pack_options.addWidget(self.label_player_model_select)
 
         self.option_model_pack_select = QComboBox(self.tab_cosmetics)
         self.option_model_pack_select.setObjectName(u"option_model_pack_select")
 
-        self.horizontalLayout_11.addWidget(self.option_model_pack_select)
+        self.hlay_pack_options.addWidget(self.option_model_pack_select)
 
         self.button_randomize_all_colors = QPushButton(self.tab_cosmetics)
         self.button_randomize_all_colors.setObjectName(u"button_randomize_all_colors")
 
-        self.horizontalLayout_11.addWidget(self.button_randomize_all_colors)
+        self.hlay_pack_options.addWidget(self.button_randomize_all_colors)
 
         self.button_reset_all_colors = QPushButton(self.tab_cosmetics)
         self.button_reset_all_colors.setObjectName(u"button_reset_all_colors")
 
-        self.horizontalLayout_11.addWidget(self.button_reset_all_colors)
+        self.hlay_pack_options.addWidget(self.button_reset_all_colors)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.hspace_pack_options = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_11.addItem(self.horizontalSpacer_2)
+        self.hlay_pack_options.addItem(self.hspace_pack_options)
 
 
-        self.custom_model_settings.addLayout(self.horizontalLayout_11)
+        self.custom_model_settings.addLayout(self.hlay_pack_options)
 
 
         self.verticalLayout_31.addLayout(self.custom_model_settings)
 
-        self.horizontalLayout_14 = QHBoxLayout()
-        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.scrollArea_2 = QScrollArea(self.tab_cosmetics)
-        self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setContextMenuPolicy(Qt.PreventContextMenu)
-        self.scrollArea_2.setFrameShape(QFrame.NoFrame)
-        self.scrollArea_2.setFrameShadow(QFrame.Plain)
-        self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollArea_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-        self.scrollAreaWidgetContents_5 = QWidget()
-        self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 523, 455))
-        self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContents_5)
+        self.hlay_colors_and_preview = QHBoxLayout()
+        self.hlay_colors_and_preview.setObjectName(u"hlay_colors_and_preview")
+        self.scroll_area_colors = QScrollArea(self.tab_cosmetics)
+        self.scroll_area_colors.setObjectName(u"scroll_area_colors")
+        self.scroll_area_colors.setContextMenuPolicy(Qt.PreventContextMenu)
+        self.scroll_area_colors.setFrameShape(QFrame.NoFrame)
+        self.scroll_area_colors.setFrameShadow(QFrame.Plain)
+        self.scroll_area_colors.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scroll_area_colors.setWidgetResizable(True)
+        self.scroll_area_colors.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.scroll_area_widget_contents_colors = QWidget()
+        self.scroll_area_widget_contents_colors.setObjectName(u"scroll_area_widget_contents_colors")
+        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 523, 456))
+        self.verticalLayout_34 = QVBoxLayout(self.scroll_area_widget_contents_colors)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.vlay_texture_colors = QVBoxLayout()
         self.vlay_texture_colors.setObjectName(u"vlay_texture_colors")
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.vspace_colors = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.vlay_texture_colors.addItem(self.verticalSpacer)
+        self.vlay_texture_colors.addItem(self.vspace_colors)
 
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.hspace_colors = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.vlay_texture_colors.addItem(self.horizontalSpacer_4)
+        self.vlay_texture_colors.addItem(self.hspace_colors)
 
 
         self.verticalLayout_34.addLayout(self.vlay_texture_colors)
 
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_5)
+        self.scroll_area_colors.setWidget(self.scroll_area_widget_contents_colors)
 
-        self.horizontalLayout_14.addWidget(self.scrollArea_2)
+        self.hlay_colors_and_preview.addWidget(self.scroll_area_colors)
 
-        self.verticalLayout_35 = QVBoxLayout()
-        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
+        self.vlay_preview = QVBoxLayout()
+        self.vlay_preview.setObjectName(u"vlay_preview")
         self.hlay_preview = QHBoxLayout()
         self.hlay_preview.setObjectName(u"hlay_preview")
         self.label_preview_image = QLabel(self.tab_cosmetics)
         self.label_preview_image.setObjectName(u"label_preview_image")
         sizePolicy1.setHeightForWidth(self.label_preview_image.sizePolicy().hasHeightForWidth())
         self.label_preview_image.setSizePolicy(sizePolicy1)
+        self.label_preview_image.setScaledContents(False)
         self.label_preview_image.setAlignment(Qt.AlignCenter)
 
         self.hlay_preview.addWidget(self.label_preview_image)
 
 
-        self.verticalLayout_35.addLayout(self.hlay_preview)
+        self.vlay_preview.addLayout(self.hlay_preview)
 
 
-        self.horizontalLayout_14.addLayout(self.verticalLayout_35)
+        self.hlay_colors_and_preview.addLayout(self.vlay_preview)
 
 
-        self.verticalLayout_31.addLayout(self.horizontalLayout_14)
+        self.verticalLayout_31.addLayout(self.hlay_colors_and_preview)
 
         self.tabWidget.addTab(self.tab_cosmetics, "")
         self.tab_accessibility = QWidget()
