@@ -1550,6 +1550,7 @@ class Ui_MainWindow(object):
         self.scroll_area_colors.setFrameShape(QFrame.NoFrame)
         self.scroll_area_colors.setFrameShadow(QFrame.Plain)
         self.scroll_area_colors.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scroll_area_colors.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.scroll_area_colors.setWidgetResizable(True)
         self.scroll_area_colors.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.scroll_area_widget_contents_colors = QWidget()

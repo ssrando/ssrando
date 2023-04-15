@@ -262,7 +262,6 @@ class AllPatcher:
                 arcName = arcPath.parts[-1]
                 if arcName == "Alink.arc" or arcName == "Bird_Link.arc":
                     continue  # ignore arcs that get patched separately
-                print(arcPath)
                 self.arc_replacements[arcName] = arcPath
 
         #### loftwing patches ####
@@ -308,7 +307,6 @@ class AllPatcher:
         self, arcData: U8File, maskFolderPath: Path, colorData: dict
     ) -> U8File:
         maskLookup = {}
-
         for p in maskFolderPath.iterdir():
             if match := MASK_REGEX.match(str(p)):
                 if match.group("texName") not in maskLookup:
@@ -400,15 +398,6 @@ class AllPatcher:
                     stageu8.add_file_data(f"oarc/{arcname}", oarc_path.read_bytes())
                     patched_arcs.add(arcname)
                     modified = True
-
-                # if self.customModelArcs:
-                #     for path in stageu8.get_all_paths():
-                #         if match := OARC_ARC_REGEX.match(path):
-                #             arc = match.group("name")
-                #             if replacement := self.customModelArcs.get(arc):
-                #                 stageu8.set_file_data(path, replacement.read_bytes())
-                #                 patched_arcs.add(arc)
-                #                 modified = True
 
                 if self.arc_replacements:
                     for path in stageu8.get_all_paths():
@@ -536,20 +525,11 @@ class AllPatcher:
             patched_arcs.add(arcname)
             objpack_modified = True
 
-        # if self.customModelArcs:
-        #     for path in object_arc.get_all_paths():
-        #         if match := OARC_ARC_REGEX.match(path):
-        #             arc = match.group("name")
-        #             if replacement := self.customModelArcs.get(arc):
-        #                 object_arc.set_file_data(path, replacement.read_bytes())
-        #                 patched_arcs.add(arc)
-        #                 objpack_modified = True
-
         if self.arc_replacements:
             for path in object_arc.get_all_paths():
                 if match := OARC_ARC_REGEX.match(path):
                     arc = match.group("name")
-                    if arc in patched_arcs:  # maybe get arc replacements to overwrite?
+                    if arc in patched_arcs:
                         continue
                     if replacement := self.arc_replacements.get(arc):
                         object_arc.set_file_data(path, replacement.read_bytes())

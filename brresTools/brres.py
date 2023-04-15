@@ -63,14 +63,11 @@ class BRRES:
     def parse_brres(dataBuffer: BufferedIOBase):
         dataBuffer.seek(0)
         if dataBuffer.read(4) != MAGIC_HEADER:
-            print("Invalid magic header")
+            raise Exception("Invalid magic header.")
         if dataBuffer.read(2) != BOM_HEADER:
-            print("Invalid byte order mark")
+            raise Exception("Invalid byte order mark.")
         dataBuffer.seek(12)  # skip to root offset data
         root_offset = struct.unpack(">H", dataBuffer.read(2))[0]
-
-        # dataBuffer.seek(root_offset) #skip to root offset
-        # dataBuffer.seek(dataBuffer.tell() + 8) #skip over root header
 
         dataBuffer.seek(root_offset + 8)  # skip over root header
 
@@ -190,7 +187,7 @@ class BRRES:
         for part in path.split("/"):
             if type(currentNode) is not IndexGroupNode:
                 raise FileNotFoundError(
-                    f"Invalid path: {path} in get_file_node- file not final part of path"
+                    f"Invalid path: {path} in get_file_node- file not final part of path."
                 )
             found = False
             for node in currentNode.childNodes:
@@ -200,12 +197,12 @@ class BRRES:
                     break
             if not found:
                 raise FileNotFoundError(
-                    f"Invalid path: {path} in get_file_node- {part} not found"
+                    f"Invalid path: {path} in get_file_node- {part} not found."
                 )
 
         if type(currentNode) is not SubFileNode:
             raise FileNotFoundError(
-                f"Invalid path: {path} in get_file_node- {currentNode.name} is a folder, not a file"
+                f"Invalid path: {path} in get_file_node- {currentNode.name} is a folder, not a file."
             )
 
         return currentNode
@@ -216,7 +213,7 @@ class BRRES:
 
         match file.nodeType:
             case "MDL0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "TEX0":
                 tex0: TEX0 = TEX0.parse_TEX0(
                     dataBuffer=self.dataBuffer, start_offset=dataOffset
@@ -224,24 +221,24 @@ class BRRES:
                 rawImageData = tex0.get_image_data()
                 return tex0.convert_raw_image_data_to_RGBA(data=rawImageData)
             case "SRT0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "CHR0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "PAT0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "CLR0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "SHP0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "SCN0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "PLT0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "VIS0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case _:
                 raise FileNotFoundError(
-                    f"Invalid subfile type {file.nodeType} in get_file_data"
+                    f"Invalid subfile type {file.nodeType} in get_file_data."
                 )
 
     def set_file_data(self, path: str, data: any):
@@ -250,7 +247,7 @@ class BRRES:
 
         match file.nodeType:
             case "MDL0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "TEX0":
                 tex0: TEX0 = TEX0.parse_TEX0(
                     dataBuffer=self.dataBuffer, start_offset=dataOffset
@@ -259,30 +256,30 @@ class BRRES:
 
                 if len(rawImageData) != tex0.numberOfBytesInImage:
                     raise Exception(
-                        "Cannot replace data- Supplied data not same length as original data"
+                        "Cannot replace data- Supplied data not same length as original data."
                     )
 
                 self.dataBuffer.seek(tex0.imageDataOffset)
                 self.dataBuffer.write(rawImageData)
             case "SRT0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "CHR0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "PAT0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "CLR0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "SHP0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "SCN0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "PLT0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case "VIS0":
-                pass
+                raise Exception(f"Unsupported file type {file.nodeType}.")
             case _:
                 raise FileNotFoundError(
-                    f"Invalid subfile type {file.nodeType} in get_file_data"
+                    f"Invalid subfile type {file.nodeType} in get_file_data."
                 )
 
     def to_buffer(self) -> BufferedIOBase:

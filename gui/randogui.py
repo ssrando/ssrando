@@ -29,6 +29,7 @@ from PySide6.QtWidgets import (
     QRadioButton,
     QSizePolicy,
     QSpinBox,
+    QVBoxLayout,
 )
 from gui.components.color_button import ColorButton
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
@@ -857,9 +858,11 @@ class RandoGUI(QMainWindow):
         self.update_model_preview()
 
     def update_model_customisation(self):
-        counter = 0
+        color_box_index = 0
 
-        while self.color_box.count() > 2:
+        while (
+            self.color_box.count() > 2
+        ):  # leaves horizonal and vertical spacers in box
             layout = self.color_box.takeAt(0).layout()
             while layout.count() > 0:
                 widget = layout.takeAt(0).widget()
@@ -868,33 +871,37 @@ class RandoGUI(QMainWindow):
 
         self.color_buttons.clear()
 
-        if authorName := self.metadata.get("ModelAuthorName"):
-            authorNameLabel = QLabel(f"Model Author: {authorName}")
-            authorNameLayout = QHBoxLayout()
-            authorNameLayout.insertWidget(0, authorNameLabel)
-            self.color_box.insertLayout(counter, authorNameLayout)
-            counter += 1
+        author_layout = QVBoxLayout()
+        author_layout_index = 0
 
-        if authorComment := self.metadata.get("ModelAuthorComment"):
-            authorCommentLabel = QLabel(f"Model Author Comment: {authorComment}")
-            authorCommentLayout = QHBoxLayout()
-            authorCommentLayout.insertWidget(0, authorCommentLabel)
-            self.color_box.insertLayout(counter, authorCommentLayout)
-            counter += 1
+        if author_name := self.metadata.get("ModelAuthorName"):
+            author_name_label = QLabel(f"Model Author: {author_name}")
+            author_name_label.setWordWrap(True)
+            author_layout.insertWidget(author_layout_index, author_name_label)
+            author_layout_index += 1
+
+        if author_comment := self.metadata.get("ModelAuthorComment"):
+            author_comment_label = QLabel(f"Model Author Comment: {author_comment}")
+            author_comment_label.setWordWrap(True)
+            author_layout.insertWidget(author_layout_index, author_comment_label)
+
+        self.color_box.insertLayout(color_box_index, author_layout)
+        color_box_index += 1
 
         if colorData := self.metadata.get("Colors"):
             for mask_name in colorData:
                 color_label = QLabel(mask_name)
 
                 random_color_button = QPushButton("Random")
-                color_button = ColorButton(mask_name)
-                color_button.set_color(colorData[mask_name])
-                color_button.showAlpha = False
-                reset_color_button = QPushButton("Reset")
-                reset_color_button.setSizePolicy(
+                random_color_button.setSizePolicy(
                     QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred
                 )
-                random_color_button.setSizePolicy(
+                color_button = ColorButton(mask_name, showAlpha=False)
+                color_button.set_color(
+                    colorData[mask_name]
+                )  # set color after so initial color is none to allow for defaults
+                reset_color_button = QPushButton("Reset")
+                reset_color_button.setSizePolicy(
                     QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred
                 )
 
@@ -910,8 +917,8 @@ class RandoGUI(QMainWindow):
                 color_button_layout.insertWidget(2, color_button)
                 color_button_layout.insertWidget(3, reset_color_button)
 
-                self.color_box.insertLayout(counter, color_button_layout)
-                counter += 1
+                self.color_box.insertLayout(color_box_index, color_button_layout)
+                color_box_index += 1
 
         self.update_model_preview()
 
@@ -960,7 +967,6 @@ class RandoGUI(QMainWindow):
             )
 
         if not os.path.isfile(previewDataPath / "Preview.png"):
-            print("No preview supplied")
             self.ui.label_preview_image.clear()
             self.ui.label_preview_image.setText("No preview provided")
             return

@@ -24,10 +24,10 @@ class ColorButton(QPushButton):
     def __init__(self, name: str, color: str = None, showAlpha: bool = True):
         super().__init__()
 
-        self.color = self.color_int_from_str(color)
         self.initialColor = color
         self.name = name
         self.showAlpha = showAlpha
+        self.set_color(color)
 
         self.setMinimumHeight(32)
         self.update()
@@ -79,16 +79,18 @@ class ColorButton(QPushButton):
         if luminance > 128:
             textColor = "black"
 
-        rgba = self.color_str_from_int(self.color)
-        self.setText(rgba)
+        rgba = self.color_str_from_int(self.color).upper()
+        rgb = rgba[:-2]
+
+        if self.showAlpha:
+            self.setText(rgba)
+        else:
+            self.setText(rgb)
+
         if self.color is None:
             self.setText(NO_COLOR)
         self.setStyleSheet(
-            "QPushButton {background-color: "
-            + rgba[:-2]
-            + "; color: "
-            + textColor
-            + "; }"
+            "QPushButton {background-color: " + rgb + "; color: " + textColor + "; }"
         )
 
     def color_str_from_qcolor(
