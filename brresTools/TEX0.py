@@ -1,3 +1,4 @@
+# Reference for all image format conversions - https://wiki.tockdom.com/wiki/Image_Formats
 from io import BufferedIOBase
 import numpy as np
 import struct
