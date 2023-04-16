@@ -2,12 +2,14 @@
 ## Overview
 You can use this folder to add custom `.arc` files into the randomizer. Files that have a name matching a Skyward Sword *arc* will get patched with your custom file. This can be used for custom models and textures.
 
+**Please note: The player (`ALink.arc`) and Loftwing (`Bird_Link.arc`) models will NOT be used.** Information about how to create custom player and loftwing models can be found in the `README` in the `models` folder. Alternatively, you can find information in the `Modding` category of the [Skyward Sword Randomizer & Modding Discord](https://discord.gg/evpNKkaaw6).
+
 You can create sub-folders to help organize your *arcs*. The randomizer will search through all the folders in `arc-replacements` for you. Any *arcs* with a name that doesn't match a name expected by the randomizer will be ignored.
 
 ## Basic Use
 If you provide the randomizer an NTSC-U 1.0 ISO, it will create an `actual-extracts` folder. You can use this to find all the *arcs* that are possible to customize.
 
-For more information about how to edit models and textures, consider joining the modding community in the [Skyward Sword Randomizer Discord](https://discord.gg/evpNKkaaw6).
+For more information about how to edit models and textures, consider joining the `Modding` community in the [Skyward Sword Randomizer & Modding Discord](https://discord.gg/evpNKkaaw6).
 
 ## Duplicate ARC Names
 Unfortunately, there are a few *arcs* that share names. The randomizer handles these in slightly different ways. These are:
