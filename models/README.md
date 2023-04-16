@@ -34,7 +34,7 @@ The required model arcs are as follows:
 - In a `Player` folder, `Alink.arc`
 - In a `Loftwing` folder, `Bird_Link.arc`
 
-If the required arc is not supplied, the pack won't show up in the program. The supplied arc should contain any custom models and/or textures. For more info on how to create these, check out the channels in the Modding category in the SSR discord (https://discord.gg/evpNKkaaw6).
+If the required arc is not supplied, the pack won't show up in the program. The supplied arc should contain any custom models and/or textures. For more info on how to create these, check out the channels in the `Modding` category in the [Skyward Sword Randomizer & Modding Discord](https://discord.gg/evpNKkaaw6).
 
 ### The metadata file
 Must be a JSON file named `metadata`. A bare minimum model pack will function without a metadata file, however one is required if you want to support texture masking or any of the other features detailed below.
@@ -78,7 +78,7 @@ This folder must be called `Masks`. This folder will contain all the texture mas
 This folder must be called `Preview`. This folder must contain a PNG named `Preview` which will be the image that shows up as the preview on the UI. This folder will also contain any masks for the preview image that will recolor the preview image to give a representation of how the model will look in game with that color group applied. Important notes for the preview image and masks:
 
 - The larger the preview image, the longer it'll take to update the preview on the UI- as a result, it is recommended to stay within a range of around 700-1000px by 400-500px. The smaller the image the quicker it'll update, but make sure the preview is still of good quality.
-    - It is recommended to follow the standard format for previews that the Default model pack does, i.e. a front and back preview for the player model (and tunic swapped Link if your pack includes it) lined up side by side, and a side on and top down view of the loftwing side by side. Tutorials for how to best create these preview images can be found in `#modding-general` in the SSR discord (https://discord.gg/evpNKkaaw6).
+    - It is recommended to follow the standard format for previews that the Default model pack does, i.e. a front and back preview for the player model (and tunic swapped Link if your pack includes it) lined up side by side, and a side on and top down view of the loftwing side by side. Tutorials for how to best create these preview images can be found in `#modding-general` in the [Skyward Sword Randomizer & Modding Discord](https://discord.gg/evpNKkaaw6).
 - The name of each mask must be as follows: `Preview__[color group name]`.
     - It must be a double underscore between the original texture name and the color group name (for consistency with texture masks).
     - The color group name is the name of the color group as it is defined in the metadata folder and shows up in the UI.
