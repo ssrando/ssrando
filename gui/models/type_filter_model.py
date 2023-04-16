@@ -14,7 +14,7 @@ class TypeFilterModel(SearchableListModel):
     def filterAcceptsRow(
         self, source_row: int, source_parent: Union[QModelIndex, QPersistentModelIndex]
     ) -> bool:
-        if self.type_filter:
+        if self.type_filter and not self.type_filter == "All":
             index = self.sourceModel().index(source_row, 0, source_parent)
             data = self.sourceModel().data(index)
 

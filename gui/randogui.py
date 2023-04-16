@@ -194,13 +194,13 @@ class RandoGUI(QMainWindow):
             self.exclude_locations_pair.update_non_option_list_filter
         )
 
-        self.ui.include_category_filters.addItem("")
+        self.ui.include_category_filters.addItem("All")
         self.ui.include_category_filters.addItems(LOCATION_FILTER_TYPES)
         self.ui.include_category_filters.currentTextChanged.connect(
             self.exclude_locations_pair.update_non_option_list_type_filter
         )
 
-        self.ui.exclude_category_filters.addItem("")
+        self.ui.exclude_category_filters.addItem("All")
         self.ui.exclude_category_filters.addItems(LOCATION_FILTER_TYPES)
         self.ui.exclude_category_filters.currentTextChanged.connect(
             self.exclude_locations_pair.update_option_list_type_filter
