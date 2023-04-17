@@ -889,6 +889,8 @@ class RandoGUI(QMainWindow):
         color_box_index += 1
 
         if colorData := self.metadata.get("Colors"):
+            self.ui.button_randomize_all_colors.setEnabled(True)
+            self.ui.button_reset_all_colors.setEnabled(True)
             for mask_name in colorData:
                 color_label = QLabel(mask_name)
 
@@ -919,6 +921,9 @@ class RandoGUI(QMainWindow):
 
                 self.color_box.insertLayout(color_box_index, color_button_layout)
                 color_box_index += 1
+        else:
+            self.ui.button_randomize_all_colors.setEnabled(False)
+            self.ui.button_reset_all_colors.setEnabled(False)
 
         self.update_model_preview()
 
