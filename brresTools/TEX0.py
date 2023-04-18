@@ -407,7 +407,7 @@ class TEX0:
                     if (
                         len(colors) == 0
                     ):  # for full sub block of alpha, nothing will be added to colors list
-                        c0 = self.cvt_single_RGBA_to_RGB565((255, 255, 255, 0))
+                        c0 = self.cvt_single_RGBA_to_RGB565((0, 0, 0, 0))
                         c1 = c0
                         c2 = c0
                         c3 = c0
@@ -423,7 +423,7 @@ class TEX0:
                             255,
                         )
                         c2 = self.cvt_single_RGBA_to_RGB565(RGBAc2)
-                        c3 = self.cvt_single_RGBA_to_RGB565((255, 255, 255, 0))
+                        c3 = self.cvt_single_RGBA_to_RGB565((0, 0, 0, 0))
                 else:
                     c0 = colors[-1]
                     c1 = colors[0]
