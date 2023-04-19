@@ -1,39 +1,101 @@
-# if not specified otherwise, options are put in the permalink
-# cosmetic options should have `permalink: false` as well
+### If not specified otherwise, options are put in the permalink.
+### Options can be left out of the permalink by adding `permalink: false`.
+### All cosmetic options should have `permalink: false` as well.
+
+# Randomizer program options
 - name: Dry Run
   command: dry-run
   type: boolean
   default: false
   permalink: false
-  help: Only generate a spoiler log, doesn't attempt to patch any game files
+  help: "Only generate a spoiler log, doesn't attempt to patch any game files."
   ui: option_dry_run
 - name: Output Path
   command: output-folder
   type: dirpath
   default: "."
   permalink: false
-  help: Path to folder, where to write the patched wbfs and the spoiler log
+  help: "Path to folder, where to write the patched wbfs and the spoiler log."
 - name: JSON spoiler log
   command: json
   type: boolean
   default: false
   permalink: false
-  help: If set, outputs the spoiler log in json format
+  help: "If enabled, outputs the spoiler log in json format."
 - name: No GUI
   command: noui
   type: boolean
   default: false
   permalink: false
-  help: Don't launch the randomizer UI, just read command line params
+  help: "Don't launch the randomizer UI, just read command line parameters."
+## GUI options
+- name: GUI Theme Mode
+  command: gui-theme
+  type: singlechoice
+  permalink: false
+  choices:
+    - Light
+    - Dark
+    - Auto
+  default: Auto
+  help: "Determines the theme mode of the randomizer program.
+        Choose between: *Light Mode*, *Dark Mode*, and *Auto* (based on the theme of your operating system)."
+  ui: option_theme_mode
+- name: GUI Theme Preset
+  command: gui-theme-preset
+  type: singlechoice
+  permalink: false
+  choices:
+    - Default
+    - High Contrast
+    - Readability
+  default: Default
+  help: "Determines the theme preset to style the randomizer program with.
+        **Default**: applies the standard theme.
+        **High Contrast**: applies a theme that maximizes contrast between text and the rest of the interface.
+        **Readability**: applies a theme that reduces contrast in select areas to improve readability."
+  ui: option_theme_presets
+- name: Custom GUI Theme
+  command: use-custom-theme
+  type: boolean
+  default: false
+  permalink: false
+  help: "If enabled, the custom theme will be used for the randomizer program interface."
+  ui: option_use_custom_theme
+- name: Font Family
+  command: font-family
+  type: string
+  default: Lato
+  permalink: false
+  help: "Determines the font family that will be used for the text displayed in the randomizer program.
+        Defaults to *Lato* if the given font family cannot be found."
+  ui: option_font_family
+- name: Font Size
+  command: font-size
+  type: int
+  min: 6
+  max: 14
+  default: 10
+  permalink: false
+  help: "Determines the size of the font (in points) used in the randomizer program.
+        **WARNING**: Setting the font size to high may cause text to be cut off."
+  ui: option_font_size
+- name: Sharp GUI Corners
+  command: use-sharp-corners
+  type: boolean
+  default: false
+  permalink: false
+  help: "If enabled, the curved edges of buttons and boxes will become sharp and pointy."
+  ui: option_use_sharp_corners
 - name: Starting Tablet Count
   command: starting-tablet-count
   type: int
-  default: 3
+  default: 1
   min: 0
   max: 3
   bits: 2
-  help: Number of tablets to start with. Tablets are selected randomly, and the remainder
-    are randomized
+  help: "The number of tablets to start with.
+        Tablets are selected randomly and the remainder are randomized as progress items."
   ui: option_starting_tablet_count
 - name: Open Thunderhead
   command: open-thunderhead
@@ -44,7 +106,9 @@
     # - Harp and Ballad
     - Open
   default: Ballad
-  help: Controls the starting state of the Thunderhead.
+  help: "Determines how the Thunderhead is unlocked.
+        **Ballad**: the Thunderhead opens when the Ballad of the Goddess song is found.
+        **Open**: the Thunderhead is open from the start of the game."
   ui: option_open_thunderhead
 - name: Starting Sword
   command: starting-sword
@@ -59,8 +123,8 @@
     - Master Sword
     - True Master Sword
   default: Goddess Sword
-  help: Select which sword to start with. The remaining upgrades will be shuffled into
-    the item pool
+  help: "Select which sword to start with.
+        The remaining upgrades will be shuffled into the item pool."
   ui: option_starting_sword
 - name: Required Dungeon Count
   command: required-dungeon-count
@@ -69,25 +133,29 @@
   min: 0
   max: 6
   bits: 3
-  help: The number of dungeons that are required, to beat the seed
+  help: "Determines the number of dungeons required to beat the seed.
+        Beating Sky Keep is **NOT** required.
+        Lanayru Mining Facility is beaten when exiting to the Temple of Time at the end of the dungeon.
+        The other dungeons are only beaten when the Goddess Crest at the end is struck with a Skyward Strike."
   ui: option_required_dungeon_count
 - name: Imp 2
   command: imp2-skip
   type: boolean
   default: true
-  help: Skips the requirement to beat Imp 2 in order to beat the seed
+  help: "If enabled, the requirement to defeat Imprisoned 2 at the end of the game is skipped."
   ui: option_imp_2
 - name: Empty unrequired Dungeons
   command: empty-unrequired-dungeons
   type: boolean
-  default: false
-  help: If activated, only the required dungeons will contain progression items
+  default: true
+  help: "If enabled, only the required dungeons will contain progression items.
+        If not enabled, all dungeons and Sky Keep can potentially contain progression items."
   ui: option_empty_unrequired_dungeons
 - name: Triforce Required
   command: triforce-required
   type: boolean
   default: true
-  help: If activated, the three Triforces will be required to open the door to Hylia's Realm. If disabled, Sky Keep counts as an unrequired dungeon
+  help: "If enabled, the three Triforces will be required to open the door to Hylia's Realm at the end of the game."
   ui: option_triforce_required
 - name: Triforce Shuffle
   command: triforce-shuffle
@@ -97,22 +165,20 @@
     - Vanilla
     - Sky Keep
     - Anywhere
-  default: Vanilla
-  help: Choose where Triforces will appear. Vanilla sets them to their locations in Sky Keep. If Anywhere is chosen, Sky Keep counts as an unrequired dungeon
+  default: Anywhere
+  help: "Choose where Triforces will appear in the game.
+        **Vanilla**: Triforces are placed in their vanilla locations in Sky Keep.
+        **Sky Keep**: Triforecs are shuffled only within Sky Keep.
+        **Anywhere**: Triforces are shuffled with all other valid locations in the game."
   ui: option_triforce_shuffle
 - name: Seed
   command: seed
   type: int
   default: -1
   permalink: false
-  help: Specify a seed to use for randomization, leave empty for random seed
+  help: "Specify a seed to use for randomization.
+        If set to -1, a random seed is used."
   ui: seed
-- name: Hero Mode
-  command: hero-mode
-  type: boolean
-  default: true
-  help: If activated, play the game on Hero Mode
-  ui: option_hero_mode
 - name: Randomize Entrances
   command: randomize-entrances
   type: singlechoice
@@ -123,25 +189,30 @@
     - All Dungeons
     - All Dungeons + Sky Keep
   default: None
-  help: "Shuffles entrances with one another. The Required Dungeons Separately option will also shuffle Sky Keep if Skip Sky Keep is disabled, and shuffles unrequired dungeons among each other."
+  help: "Shuffles entrances with one another.
+        **None**: entrances are vanilla.
+        **Required Dungeons Separately**: required dungeons entrances are only shuffled with each other.
+        **All Dungeons**: all dungeons entrances are shuffled with each other.
+        **All Dungeons + Sky Keep** - all dungeon entrances AND the Sky Keep entrance are shuffled with each other."
   ui: option_randomize_entrances
 - name: Randomize Silent Realms
   command: randomize-trials
   type: boolean
   default: false
-  help: "Shuffles the trials. If checked, entering a trial gate will send you to a randomized trial."
+  help: "If enabled, the Silent Realm that a Trial Gate entrance leads to is shuffled."
   ui: option_randomize_trials
 - name: No Spoiler Log
   command: no-spoiler-log
   type: boolean
   default: false
-  help: If activated, no spoiler log will be generated. This is highly discouraged
-    to activate, as it makes debugging issues much harder.
+  help: "If enabled, no spoiler log will be generated.
+        This is highly discouraged to enable as it means issues are much harder solve if you get stuck or encounter a
+        problem with the game."
   ui: option_no_spoiler_log
 - name: Max Batreaux Reward
   command: max-batreaux-reward
   type: singlechoice
-  default: 80
+  default: 50
   choices:
     - 0
     - 5
@@ -152,8 +223,7 @@
     - 70
     - 80
   bits: 3
-  help: Enables progression items to appear in all Batreaux rewards up to and including
-    the specified amount.
+  help: "Enables progression items to appear in all Batreaux rewards up to and including the selected amount."
   ui: option_max_batreaux_reward
 - name: Shop Mode
   command: shop-mode
@@ -165,10 +235,11 @@
     - Randomized - Medium
     - Randomized - Expensive
   bits: 2
-  help: Controls how shops are randomized. If vanilla, shops will always contain their vanilla
-    items, but may still be logically required for progression. When randomized, cheap is all
-    purchases that cost 300 rupees or less. Medium is all purchases that cost 1000 or less rupees.
-    Expensive includes all purchases, regardless of cost.
+  help: "Determines how shops are randomized.
+        **Vanilla**: shops will always contain their vanilla items, but may still be logically required for progression.
+        **Cheap**: all purchases that cost 300 rupees or less.
+        **Medium**: all purchases that cost 1000 or less rupees.
+        **Expensive**: includes all purchases, regardless of cost."
   ui: option_shopsanity
 - name: Rupoor Mode
   command: rupoor-mode
@@ -180,10 +251,12 @@
     - Rupoor Mayhem
     - Rupoor Insanity
   bits: 2
-  help: Adds or replaces items in the junk item pool with Rupoors. Added adds 15 rupoors to the pool
-    (not replacing existing items), Mayhem replaces half of the junk pool and Insanity replaces the entire
-    pool. All modes also add ruppors to the backup, duplicatable pool for when all other items have been
-    placed
+  help: "Adds or replaces junk items with Rupoors.
+        **Off**: no Rupoors are added as junk items.
+        **Added**: adds 15 rupoors as junk items.
+        **Rupoor Mayhem**: replaces half of the junk items with Rupoors.
+        **Rupoor Insanity**: replaces all junk items with Rupoors.
+        Note, Rupoors may also be added if there are not enough junk items for the game to randomize."
   ui: option_rupoor_mode
 - name: Rupeesanity
   command: rupeesanity
@@ -194,26 +267,26 @@
     - No Quick Beetle
     - All
   bits: 2
-  help: Makes Freestanding Rupees be able to be randomized!
+  help: "Shuffles freestanding rupees.
+        **Vanilla**: freestanding rupees appear in their vanilla locations.
+        **No Quick Beetle**: freestanding rupees that don't need Quick Beetle to obtain are randomized.
+        **All**: all freestanding rupees are randomized.
+        Note, it is not possible to shuffle some freestanding rupees yet (e.g. the rupees on the Lumpy Pumpkin
+        chandelier)."
   ui: option_rupeesanity
 - name: Place Scrap Shop Upgrades
   command: gondo-upgrades
   type: boolean
-  default: false
-  help: When enabled, extra progressive items will be shuffled that give the Scrap Shop upgrades for
-    the Beetle, Bow, Bug Net, and Slingshot.
+  default: true
+  help: "If enabled, the extra progressive items upgradeable in the Scrap Shop in vanilla will be shuffled.
+        Includes: Quick Beetle, Tough Beetle, Iron Bow, Sacred Bow, Big Bug Net and Scatershot.
+        Note, there are no random items obtainable by talking to Gondo at the Scrap Shop."
   ui: option_gondo_upgrades
 # - name: Tadtone Shuffle
 #   command: tadtones
-#   type: singlechoice
-#   default: Junk
-#   bits: 1
-#   choices:
-#     - Junk
-#     - Reward
-#     # - Tadtone Groups
-#     # - Reward + Tadtone Groups
-#   help: Randomizes the Faron SotH reward for collecting all the Tadtones.
+#   type: boolean
+#   default: false
+#   help: "If enabled, collecting each of the groups of *Tadtones* will give a random item."
 #   ui: option_tadtones
 - name: Gate of Time Starting State
   command: got-start
@@ -223,7 +296,9 @@
     - Lowered
     - Raised
   default: Lowered
-  help: Sets the starting state of the Gate of Time
+  help: "Determines whether the Gate of Time starts raised or lowered.
+        **Lowered**: the Goddess Harp is needed to raise the Gate of Time.
+        **Raised**: the Gate of Time is raised from the start of the game."
   ui: option_got_starting_state
 - name: Gate of Time Sword Requirement
   command: got-sword-requirement
@@ -235,8 +310,8 @@
     - Goddess White Sword
     - Master Sword
     - True Master Sword
-  default: Master Sword
-  help: Sets the sword requirement for opening the Gate of Time
+  default: True Master Sword
+  help: "Determines the sword needed to open the Gate of Time."
   ui: option_got_sword_requirement
 - name: Gate of Time Dungeon Requirements
   command: got-dungeon-requirement
@@ -246,40 +321,43 @@
     - Required
     - Unrequired
   default: Required
-  help: Enables dungeon requirements for opening the Gate of Time. When disabled, dungeons will
-    open the horde door instead.
+  help: "Enables dungeon requirements for opening the Gate of Time.
+        **Required**: beating the required dungeons is necessary to open the Gate of Time.
+        **Unrequired**: the Gate of Time can be opened without beating the required dungeons."
   ui: option_got_dungeon_requirement
-- name: Open LMF
+- name: Open Lanayru Mining Facility
   command: open-lmf
   type: singlechoice
   bits: 2
   choices:
     - Nodes
     # - Hook Beetle
-    - Open
     - Main Node
-  default: Nodes
-  help: Controls the conditions for opening LMF. Nodes requires activating the 3 nodes as in vanilla,
-    Main Node will set the fire, water, and lightning nodes to be active but LMF still needs to be raised from the main node.
+    - Open
+  default: Open
+  help: "Determines the conditions for opening the Lanayru Mining Facility dungeon.
+        **Nodes**: requires activating the 3 nodes (vanilla).
+        **Main Node**: requires only the main generator to be activated.
+        **Open**: the Lanayru Mining Facility is open at the start of the game."
   ui: option_open_lmf
 - name: Skip Horde
   command: skip-horde
   type: boolean
   default: false
-  help: When enabled, the horde fight will be skipped
+  help: "If enabled, the requirement to defeat The Horde at the end of the game is skipped."
   ui: option_horde
 - name: Skip Ghirahim 3
   command: skip-g3
   type: boolean
   default: false
-  help: When enabled, the Ghirahim 3 fight will be skipped
+  help: "If enabled, the requirement to defeat Ghirahim 3 at the end of the game is skipped."
   ui: option_g3
 - name: Skip Demise
   command: skip-demise
   type: boolean
   default: false
-  help: When enabled, the Demise fight will be skipped. Entering the portal in the
-    spiral will play the credits
+  help: "If enabled, the requirement to defeat Demise at the end of the game is skipped.
+        Entering the portal at the bottom of the Whirlpool in Hylia's Realm will play the credits."
   ui: option_demise
 - name: Map Mode
   command: map-mode
@@ -287,16 +365,19 @@
   bits: 3
   choices:
     - Removed
-    # - Start With
     - Vanilla
     - Own Dungeon - Restricted
     - Own Dungeon - Unrestricted
     # - Overworld Only
     # - Any Dungeon
     - Anywhere
-  default: Own Dungeon - Unrestricted
-  help: Controls the placement of maps. Restricted means that maps cannot be placed on the
-    Boss Heart Container or ending check of the dungeon
+  default: Own Dungeon - Restricted
+  help: "Determines the placement of maps.
+        **Removed**: maps are removed.
+        **Vanilla**: maps appear in their vanilla locations.
+        **Restricted**: dungeon maps cannot appear on boss heart containers or the ending checks of dungeons.
+        **Unrestricted**: dungeon maps appear anywhere within their own dungeon.
+        **Anywhere**: maps can appear outside of dungeons."
   ui: option_map_mode
 - name: Small Key Mode
   command: small-key-mode
@@ -311,10 +392,12 @@
     # - Any Dungeon
     - Anywhere
   default: Own Dungeon - Restricted
-  help: "Controls the placement of small keys.
-    Vanilla: keys will be in their vanilla locations (The Skyview Digging Spot will not contain a key).
-    Own Dungeon - Restricted: keys will be within their own dungeons (reduces the locations keys can appear,
-    depending on logic settings). Lanayru Caves Key only: shuffles the Lanayru Caves Small Key."
+  help: "Determines the placement of small keys.
+        **Vanilla**: keys will be in their vanilla locations (The Skyview Digging Spot will not contain a key).
+        **Restricted**: keys will be within their own dungeons.
+        **Lanayru Caves Key only**: shuffles the Lanayru Caves Small Key
+            (all other keys are shuffled within their own dungeon).
+        **Anywhere**: keys can appear outside of dungeons."
   ui: option_small_key_mode
 - name: Boss Key Mode
   command: boss-key-mode
@@ -327,23 +410,26 @@
     # - Any Dungeon
     - Anywhere
   default: Own Dungeon
-  help: Controls the placement of boss keys. Vanilla means they will always be in their vanilla locations.
-    Own Dungeon means the boss key can only appear within its own dungeon.
+  help: "Determines the placement of boss keys.
+        **Vanilla**: boss keys appear in their vanilla locations.
+        **Own Dungeon**: boss keys appear within their own dungeon.
+        **Anywhere**: boss keys can appear outside of dungeons."
   ui: option_boss_key_mode
+## Logic
 - name: Logic Mode
   command: logic-mode
   type: singlechoice
   bits: 3
   choices:
-    # - Glitchless - Basic
-    # - Glitchless - Standard
+    # - Glitchless
     - BiTless
     - No Logic
   default: BiTless
-  help: Sets the logic mode to use when placing items. Glitchless requires no major tricks to complete, but
-    Standard may require minor tricks, such as whipping bombflowers. BiTless may require basic non-BiT tricks
-    such as Fence Hop. Glitched may require BiT. No logic may be unbeatable
+  help: "Determines the logic mode to use when placing items.
+        **BiTless**: requires no tricks to beat the game but allows non-BiT tricks to be enabled.
+        **No Logic**: items are placed without logic and will likely result in an unbeatable game."
   ui: option_logic_mode
+## Tricks
 - name: Enabled Tricks BiTless
   command: enabled-tricks-bitless
   type: multichoice
@@ -351,7 +437,7 @@
     - Bomb Throws
     - Long Range Skyward Strike Jumpslash
     - Advanced Lizalfos Combat
-    # Skyloft / Sky
+    ## Skyloft / Sky
     - Waterfall Cave Jump
     - Beedle's Shop With Bombs
     - Baby Rattle from Beedle's Shop
@@ -360,15 +446,15 @@
     - Sky - Volcanic Island Dive
     - Sky - Beedle's Island Cage Chest Dive
     - Thunderhead - East Island Dive
-    # Faron
+    ## Faron
     - Gym's Rope Jump
     - Early Lake Floria - Fence Hop
     # - Early Lake Floria - Moblin
     - Early Lake Floria - Swordless Rope Floria
     - Faron - Bokoblin Luring
-    # Eldin
+    ## Eldin
     - Stuttersprint
-    # Lanayru
+    ## Lanayru
     - Itemless First Timeshift Stone
     - Lanayru Mine - Quick Bomb
     - Lanayru Mine Brakeslide
@@ -381,53 +467,51 @@
     - Fire Node - Brakeslide
     - Cactus Bomb Whip
     - Skipper's Retreat Fast Clawshots
-    # Skyview
+    ## Skyview
     - Skyview - Spider Roll
     - Skyview Slingshot Shot
-    # Earth Temple
+    ## Earth Temple
     - Earth Temple - Keese Yeet
     - Earth Temple - Slope Stuttersprint
     - Earth Temple - Bomb Flower Scaldera
-    # Lanayru Mining Facility
+    ## Lanayru Mining Facility
     - LMF - Whip First Room Switch
     - LMF - Keylocked Slingshot Trickshot
     - LMF - Minecart Jump
     - LMF - Moldarach without Gust Bellows
-    # Ancient Cistern
+    ## Ancient Cistern
     - Ancient Cistern - Cistern Clip
     - Ancient Cistern - Cistern Whip Room Clip
     - Ancient Cistern - Map Chest Jump
     - Ancient Cistern - Lever Jump
     - Ancient Cistern - Basement Highflip
-    # Sandship
+    ## Sandship
     - Sandship - No Combination Hint
     - Sandship - Itemless Spume Skip
     - Sandship - Mast Jump
-    # Fire Sanctuary
+    ## Fire Sanctuary
     - Fire Sanctuary - Pillar Jump
     - Fire Sanctuary - Swordless Pillar Jump
     - Fire Sanctuary - No Bombable Wall Hint
-    # Sky Keep
+    ## Sky Keep
     - Sky Keep - Shooting LMF Bow Switches in Present
     - Sky Keep - FS Room Clawshots Vine Clip
   default: []
-  help: Enable specific tricks to be considered in logic
-  ui: enabled_tricks
+  help: "Enables specific tricks to change the logical requirements to get some checks.
+        Does not include Back in Time (BiT) tricks."
 - name: Enabled Tricks Glitched
   command: enabled-tricks-glitched
   type: multichoice
   choices:
-
-    # Non-BiT
+    ## Non-BiT
     - Bed Trick
     - Owlan Crystals without Bombs
     - Ancient Cistern - Lilypad Skip
     - Ancient Cistern - Swordless Cistern Clip
     - Fire Sanctuary - Hook Beetle Skip
-
   default: []
-  help: Enable specific tricks to be considered in logic
-  ui: enabled_tricks
+  help: "Enables specific tricks to change the logical requirements to get some checks.
+        Includes all Back in Time (BiT) tricks."
 - name: Song Hints
   command: song-hints
   type: singlechoice
@@ -438,29 +522,40 @@
     - Advanced
     - Direct
   default: None
-  help: Enables or disables hints appearing on songs. When set to None, the trials will be 'Always' location hints.
-    Basic tells if the reward item is any progress item. Advanced tells if the trial is WotH, Barren, or potentially required.
-    Direct tells the item on the trial directly.
+  help: "Determines how hints appear on songs.
+        **None**: Silent Realm rewards will be hinted on Gossip Stones.
+        **Basic**: the song text indicates if beating the trial rewards a progress item.
+        **Advanced**: the song text indicates if beating the trial rewards a SotS, junk or potientially required item.
+        **Direct**: the song text states the reward for beating the trial directly."
   ui: option_song_hints
-- name: Fix BiT crashes
-  command: fix-bit-crashes
-  type: boolean
-  default: false
-  help: If enabled, does not load some arcs in BiT when all file slots are filled to make all areas accessible in BiT
-  ui: option_fix_bit_crashes
+- name: BiT Changes
+  command: bit-patches
+  type: singlechoice
+  bits: 2
+  choices:
+    - Disable BiT
+    - Vanilla
+    - Fix BiT Crashes
+  default: Vanilla
+  help: "Changes how the Back in Time (BiT) glitch works.
+        Disable BiT: Makes it impossible to activate BiT.
+        Vanilla: Keeps the vanilla game behaviour where BiT is possible but Eldin BiT (and others) will still crash.
+        Fix BiT Crashes: Does not load some arcs to make all areas accessible in BiT.
+        WARNING: All 3 files must be filled BEFORE activating BiT otherwise this will not work."
+  ui: option_bit_patches
 - name: Output placement file
   command: out-placement-file
   type: boolean
   default: false
   permalink: false
-  help: If enabled, writes a placement json file that can be modified for plandomizer purposes
+  help: "If enabled, writes a placement json file that can be modified for plandomizer purposes."
   ui: option_out_placement_file
 - name: Past Impa Stone of Trials Hint
   command: impa-sot-hint
   type: boolean
   default: true
-  help: Enables Impa in the Past to give a hint to the location of the Stone of
-        Trials. Does not appear if the Stone of Trials is a starting item.
+  help: "If enabled, Impa in Hylia's Temple to give a hint to the location of the Stone of Trials.
+        Does not appear if the Stone of Trials is a starting item."
   ui: option_impa_sot_hint
 - name: Tunic Swap
   command: tunic-swap
@@ -468,8 +563,38 @@
   default: false
   permalink: false
   cosmetic: true
-  help: Swaps Link's casual clothes for the hero's tunic and vice versa
+  help: "If enabled, Link's casual clothes will be swapped for the hero's tunic and vice versa.
+        Cosmetic only."
   ui: option_tunic_swap
+- name: Lightning Skyward Strike
+  command: lightning-skyward-strike
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: "If enabled, all Skyward Strikes will use the lightning effect from the Demise fight.
+        Cosmetic only."
+  ui: option_lightning_skyward_strike
+- name: Starry Skies
+  command: starry-skies
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: "If enabled, stars will appear in the sky - even during the daytime."
+  ui: option_starry_skies
+- name: Star Count
+  command: star-count
+  type: int
+  min: 0
+  max: 32767
+  default: 700
+  permalink: false
+  cosmetic: true
+  help: "Determines the number of stars in the sky.
+        **WARNING**: Values bigger than 700 (default) WILL lag when played on the Wii Console.
+        **DOUBLE WARNING**: Emulator isn't immune from the lag either. Seriously, use at your own risk."
+  ui: option_star_count
 - name: Force Sword Dungeon Reward
   command: sword-dungeon-reward
   type: singlechoice
@@ -479,13 +604,17 @@
     - Heart Container
     - Final Check
   default: None
-  help: Set if swords should be forced on the heart container or final check of a required dungeon will be a sword (or not at all), if possible. If there aren't enough swords to place, or there are more than 4 swords to place, some required dungeons will not force a sword at the end.
+  help: "Determines if swords should be rewarded for beating required dungeons.
+        **None**: swords are shuffled anywhere.
+        **Heart Container**: end of required dungeon heart containers are swords.
+        **Final Check**: the final check of required dungeons are swords.
+        Note, if there aren't enough swords to place, some required dungeons will not force a sword at the end."
   ui: option_sword_dungeon_reward
 - name: Open Earth Temple
   command: open-et
   type: boolean
   default: false
-  help: If activated, the door requiring 5 key pieces to access the dungeon is removed
+  help: "If enabled, the Earth Temple door (requiring 5 key pieces to unlock) is opened at the start of the game."
   ui: option_open_et
 - name: Demise Count
   command: demise-count
@@ -494,7 +623,9 @@
   min: 1
   max: 10
   bits: 4
-  help: How many demises you want to fight at the end of the game
+  help: "Determines how many demises appear in the final fight of the game.
+        **WARNING**: Enabling more than one makes the fight very difficult.
+        **DOUBLE WARNING**: Enabling more than 3 demises produces a lot of lag and can make the game unplayable."
   ui: option_demise_count
 - name: Randomize Music
   command: music-rando
@@ -507,7 +638,10 @@
   default: None
   permalink: false
   cosmetic: true
-  help: If enabled, music will be randomized. Limit Vanilla means, the randomizer will attempt to prevent vanilla music. Note that some music can still be vanilla.
+  help: "If enabled, music will be randomized.
+        **None**: music is vanilla.
+        **Shuffled**: music is shuffled anywhere.
+        **Limit Vanilla**: music is shuffled to minimize vanilla music (does not guarantee all music is non-vanilla)."
   ui: option_music_rando
 - name: Cutoff Game Over Music
   command: cutoff-gameover-music
@@ -515,7 +649,8 @@
   default: false
   permalink: false
   cosmetic: true
-  help: If enabled, the game over music will cutoff when it normally would. If disabled, the music will continue to play until the end of the song, even after pressing continue.
+  help: "If enabled, the game over music will cutoff when it normally would.
+        If disabled, the music will continue to play until the end of the song, even after pressing continue."
   ui: option_cutoff_gameover_music
 - name: Allow Custom Music
   command: allow-custom-music
@@ -523,19 +658,22 @@
   default: false
   permalink: false
   cosmetic: true
-  help: If enabled, the WZSound.brsar file will be patched to allow custom music. Custom music must be installed manually.
+  help: "If enabled, the WZSound.brsar file will be patched to allow custom music.
+        Custom music must be installed manually."
   ui: option_allow_custom_music
 - name: Separate Cube SotS
   command: cube-sots
   type: boolean
   default: false
-  help: If enabled, when a SotS hint points to a goddess chest, the hint will change to reflect that it points to a cube & display which of the six cube progress regions it falls into.
+  help: "If enabled, when a SotS hint points to a Goddess Chest, the hint will change to indicate this and display
+        which of the cube progress regions is SotS."
   ui: option_cube_sots
 - name: Precise Item Hints
   command: precise-item
   type: boolean
   default: false
-  help: If enabled, item hints will indicate exactly which check the item lies, otherwise, it will just indicate the region.
+  help: "If enabled, item hints will indicate the exact location within a region that is being hinted.
+        If disabled, only the region will be hinted."
   ui: option_precise_item
 - name: Shuffle Trial Objects
   command: shuffle-trial-objects
@@ -547,13 +685,17 @@
     - Advanced
     - Full
   default: None
-  help: Shuffles trial objects amongst themselves (within the same trial). Simple shuffles only tears and light fruits, advanced adds dusk relic spawn locations, and full adds stamina fruits
+  help: "Shuffles obtainable items in Silent Realms (within the same Silent Realm).
+        **None**: trial objects appear in their vanilla locations.
+        **Simple**:only shuffles tears and light fruits.
+        **Advanced**: also shuffles dusk relics.
+        **Full**: also shuffles stamina fruits."
   ui: option_shuffle_trial_objects
 - name: Fill Dowsing on White Sword
   command: dowsing-after-whitesword
   type: boolean
   default: true
-  help: If enabled will give you rupee, crystal, treasure and goddess cube dowsing after obtaining White Sword.
+  help: If enabled, obtaining the Goddess White Sword will unlock rupee, crystal, treasure and goddess cube dowsing.
   ui: option_fill_dowsing_on_white_sword
 - name: Chest Dowsing
   command: chest-dowsing
@@ -564,60 +706,141 @@
     - All Chests
     - Progress Items
   default: Vanilla
-  help: Choose whether the main quest dowsing option should point to chests. Vanilla doesn't make any dowsing changes. If Progress Items, dowsing will only point to chests that contain progress items. Currently, dowsing doesn't work on Goddess Chests.
+  help: "Determines the main quest (top) dowsing option.
+        **Vanilla**: dowsing points to Trial Gates and the Sandship
+            (after obtaining the necessary song or Sea Chart first).
+        **All Chests**: dowsing points to all chests (regardless of their contents).
+        **Progress Items**: dowsing only points to chests containing progress items
+            (doesn't work with Goddess Chests)."
   ui: option_chest_dowsing
 - name: Allow Dowsing in Dungeons
   command: dungeon-dowsing
   type: boolean
   default: false
-  help: If enabled, dowsing will be re-enabled in dungeons and other dungeon-like areas like Great Tree and Waterfall Cave.
+  help: "If enabled, dowsing will be re-enabled in dungeons and other dungeon-like areas like the Great Tree and
+        Waterfall Cave."
   ui: option_dungeon_dowsing
+## Excluded Locations
 - name: Excluded Locations
   command: excluded-locations
   type: multichoice
-  default: []
-  help: Set locations to be excluded from the progress pool. While the item found in these locations will still be shuffled, it will never be an item required to beat the game
+  default: [
+    ## Goddess Cubes
+    Central Skyloft - Bazaar Goddess Chest,
+    Central Skyloft - Shed Goddess Chest,
+    Central Skyloft - West Cliff Goddess Chest,
+    Central Skyloft - Floating Island Goddess Chest,
+    Central Skyloft - Waterfall Goddess Chest,
+    Sky - Lumpy Pumpkin - Outside Goddess Chest,
+    Sky - Lumpy Pumpkin - Goddess Chest on the Roof,
+    Sky - Bamboo Island Goddess Chest,
+    Sky - Goddess Chest on Island next to Bamboo Island,
+    Sky - Goddess Chest in Cave on Island next to Bamboo Island,
+    Sky - Beedle's Island Goddess Chest,
+    Sky - Beedle's Island Cage Goddess Chest,
+    Sky - Northeast Island Goddess Chest behind Bombable Rocks,
+    Sky - Northeast Island Cage Goddess Chest,
+    Sky - Goddess Chest on Island Closest to Faron Pillar,
+    Sky - Goddess Chest outside Volcanic Island,
+    Sky - Goddess Chest inside Volcanic Island,
+    Sky - Goddess Chest under Fun Fun Island,
+    Sky - Southwest Triple Island Upper Goddess Chest,
+    Sky - Southwest Triple Island Lower Goddess Chest,
+    Sky - Southwest Triple Island Cage Goddess Chest,
+    Thunderhead - Goddess Chest outside Isle of Songs,
+    Thunderhead - Goddess Chest on top of Isle of Songs,
+    Thunderhead - East Island Goddess Chest,
+    Thunderhead - Bug Heaven Goddess Chest,
+    Thunderhead - First Goddess Chest on Mogma Mitts Island,
+    Thunderhead - Second Goddess Chest on Mogma Mitts Island,
+    ## Minigames
+    Upper Skyloft - Pumpkin Archery -- 600 Points,
+    Sky - Lumpy Pumpkin - Harp Minigame,
+    Sky - Fun Fun Island Minigame -- 500 Rupees,
+    Thunderhead - Bug Heaven -- 10 Bugs in 3 Minutes,
+    Lanayru Sand Sea - Rickety Coaster -- Heart Stopping Track in 1'05,
+    ## Peatrice
+    Central Skyloft - Peater/Peatrice's Crystals,
+  ]
+  help: "Determines the locations to be excluded from the progress pool.
+        The item found in these locations will still be shuffled but will never be an item required to beat the game."
 - name: Remove Enemy Music
   command: no-enemy-music
   type: boolean
   default: false
-  help: If enabled, the enemy battle music will not play; instead, the regular field music in that area will keep playing.
+  help: "If enabled, the enemy battle music will not play when an enemy is nearby.
+        Instead, the regular field music in that area will keep playing."
   ui: option_no_enemy_music
   permalink: false
   cosmetic: true
-- name: Filling Algorithm
-  command: fill-algorithm
+- name: Open Lake Floria
+  command: open-lake-floria
   type: singlechoice
   bits: 2
   choices:
-    - Assumed Fill
-    - Front Fill
-    - Random Fill
-  default: Assumed Fill
+    - Vanilla
+    - Talk to Yerbal
+    - Open
+  default: Vanilla
+  help: "Choose how to access Lake Floria.
+        **Vanilla**: logically requires you to talk to Yerbal and draw on the Floria Gates to enter Lake Floria.
+        **Talk to Yerbal**: logically requires you to talk to Yerbal to enter Lake Floria.
+        **Open**: the Floria Gates are opened from the start of the game."
+  ui: option_open_lake_floria
+- name: Upgraded Skyward Strike
+  command: upgraded-skyward-strike
+  type: boolean
+  default: true
   permalink: true
-  help: The algorithm used to place items in the world. Random Fill has an extremely high chance of failure.
-  # ui: option_filling_algorithm
-# make this always last for maximum cross version permalink support
+  help: "If enabled, the Skyward Strike will be fully upgraded for all swords (excluding Practice Sword).
+        This increases the reach and the charge speed of the Skyward Strike."
+  ui: option_upgraded_skyward_strike
+- name: Faster Air Meter Drain
+  command: fast-air-meter
+  type: boolean
+  default: false
+  permalink: true
+  help: "If enabled, the air meter depletes twice as fast when under water."
+  ui: option_fast_air_meter
+- name: Heart Drops
+  command: enable-heart-drops
+  type: boolean
+  default: true
+  permalinnk: true
+  help: "If enabled, heart flowers will spawn and hearts may drop from defeated enemies, broken pots, broken barrels,
+        cut grass, and digging spots."
+  ui: option_enable_heart_drops
+- name: Damage Multiplier
+  command: damage-multiplier
+  type: int
+  default: 1
+  min: 1
+  max: 255
+  bits: 8
+  permalink: true
+  help: "Determines the overall damage multiplier.
+        **Normal Mode** (default) damage is x1.
+        **Hero Hode** (new game +) damage is x2.
+        At x12 or higher, the hot cave in Eldin Volcano logically requires Fireshield Earrings to traverse."
+  ui: option_damage_multiplier
 - name: Hint Distribution
   command: hint-distribution
   type: singlechoice
-  bits: 3
+  bits: 4
   choices:
     - Weak
     - Balanced
-    # - Strong
-    # - Very Strong
-    # - Locations Only
-    # - Items Only
     - Junk
     - Co-op S1
     - S2 - 2D
     - S2 - 3D
     - S2 - 3D EUD Off
+    - CDMC
   default: Balanced
-  help: Sets the distribution of hints. Distributions describe how many hints are placed and in what order, as well
-    as specifics about what additional items and locations can and cannot be hinted
+  help: "Determines the distribution of hints that appear on Gossip Stones.
+        Determines the number, order and locations hints are generated in."
   ui: option_hint_distribution
+## Starting Items
 - name: Starting Items
   command: starting-items
   type: multichoice
@@ -629,6 +852,9 @@
     - Clawshots
     - Din's Power
     - Eldin Song of the Hero Part
+    - Extra Wallet
+    - Extra Wallet
+    - Extra Wallet
     - Faron Song of the Hero Part
     - Farore's Courage
     - Fireshield Earrings
@@ -700,20 +926,54 @@
     - Sandship Boss Key
     - Fire Sanctuary Boss Key
   default: [
-    Progressive Pouch
-    # Sailcloth
+    # Sailcloth,
+    Progressive Pouch,
+    Skyview Map,
+    Earth Temple Map,
+    Lanayru Mining Facility Map,
+    Ancient Cistern Map,
+    Sandship Map,
+    Fire Sanctuary Map,
+    Sky Keep Map,
   ]
-  help: Items that will be in your inventory at the start of the game.
-  ui: starting_items
+  help: "Determines the items that will be in your inventory at the start of the game."
+- name: Starting Gratitude Crystal Packs
+  command: starting-crystal-packs
+  type: int
+  default: 0
+  min: 0
+  max: 13
+  bits: 4
+  help: How many gratitude crystal packs to start with.
+  ui: option_starting_crystal_packs
 - name: Random Starting Item
   command: random-starting-item
   type: boolean
   default: false
-  help: "Gives you a random progression item at the start of the game in
-        addition to any starting items. This includes: Bow, Beetle, Slingshot,
-        Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
+  help: "Gives you a random progression item at the start of the game in addition to any starting items.
+        This includes: Bow, Beetle, Slingshot, Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
         Water Scale, Fireshield Earrings, Goddess Harp and Spiral Charge."
   ui: option_random_starting_item
+- name: Starting Empty Bottles
+  command: starting-bottles
+  type: int
+  default: 0
+  min: 0
+  max: 5
+  bits: 3
+  help: "Determines how many empty bottles start in your pouch.
+        **WARNING**: If you start with more pouch items than pouch slots, the extra items will become usable after
+        finding additional pouches."
+  ui: option_starting_bottles
+- name: Start with Hylian Shield
+  command: start-with-hylian-shield
+  type: boolean
+  default: True
+  help: "If enabled, you will start with the Hylian Shield in your pouch.
+        **WARNING**: If you start with more pouch items than pouch slots, the extra items will become usable after
+        finding additional pouches.
+        Hylian Shield will always be placed in the first pouch slot."
+  ui: option_start_with_hylian_shield
 - name: Starting Heart Containers
   command: starting-heart-containers
   type: int
@@ -721,7 +981,7 @@
   min: 0
   max: 6
   bits: 3
-  help: How many heart containers to start with.
+  help: "Determines how many heart containers to start with."
   ui: option_starting_heart_containers
 - name: Starting Heart Pieces
   command: starting-heart-pieces
@@ -730,5 +990,54 @@
   min: 0
   max: 24
   bits: 5
-  help: How many heart pieces to start with.
+  help: "Determines how many heart pieces to start with."
   ui: option_starting_heart_pieces
+- name: Start with Full Wallet
+  command: full-starting-wallet
+  type: boolean
+  default: false
+  help: "If enabled, you will start with a full wallet.
+        This changes based on the number of starting wallets and extra wallets."
+  ui: option_full_starting_wallet
+- name: Full Wallet Upgrades
+  command: full-wallet-upgrades
+  type: boolean
+  default: false
+  help: "If enabled, wallets you find throughout the game will already be filled with Rupees.
+        E.g. Finding the Giant Wallet will add 4000 Rupees to your Rupee counter."
+  ui: option_full_wallet_upgrades
+- name: Start with Max Bugs
+  command: max-starting-bugs
+  type: boolean
+  default: false
+  help: "If enabled, you will start with 99 of each type of bug."
+  ui: option_max_starting_bugs
+- name: Start with Max Treasures
+  command: max-starting-treasures
+  type: boolean
+  default: false
+  help: "If enabled, you will start with 99 of each type of treasure."
+  ui: option_max_starting_treasures
+- name: Interface
+  command: interface
+  type: singlechoice
+  bits: 2
+  choices:
+    - Standard
+    - Light
+    - Pro
+  default: Standard
+  permalink: false
+  cosmetic: true
+  help: "Determines how the game interface will look.
+        Has the same effect as using the interface button from the inventory screen in-game.
+        **Standard**: All interface (HUD) elements are shown.
+        **Light**: Some interface elements will be invisible (e.g. the Wii Remote on the right of the screen).
+        **Pro**: Most interface elements will be invisible."
+  ui: option_interface
+- name: Randomize Boss Key Puzzles
+  command: randomize-boss-key-puzzles
+  type: boolean
+  default: false
+  help: "If enabled, the starting position of the boss keys will be randomized."
+  ui: option_randomize_boss_key_puzzles

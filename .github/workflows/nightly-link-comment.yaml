@@ -24,7 +24,7 @@ jobs:
           PR_NUM=$(echo $PR_RAW | jq '.items | map(select(.repository_url=="https://api.github.com/repos/${{ github.repository }}")) | .[0].number')
           echo "PR_NUM=${PR_NUM}" >> ${GITHUB_ENV}
       - name: Comment on PR
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           # This snippet is public-domain, taken from
           # https://github.com/oprypin/nightly.link/blob/master/.github/workflows/pr-comment.yml

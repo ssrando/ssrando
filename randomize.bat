@@ -1,1 +1,1 @@
-py randogui.py
+poetry run python randoscript.py

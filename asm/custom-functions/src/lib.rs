@@ -2,11 +2,15 @@
 #![feature(split_array)]
 
 use core::{
-    ffi::{c_uint, c_ushort, c_void},
+    ffi::{c_ushort, c_void},
     ptr::slice_from_raw_parts,
+    slice,
 };
 
+use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
+
 mod filemanager_gen;
+mod message;
 
 #[repr(C)]
 struct SpawnStruct {
@@ -42,9 +46,26 @@ extern "C" {
     fn FlagManager__setFlagTo1(mgr: *mut c_void, flag: u16);
     fn FlagManager__setFlagOrCounter(mgr: *mut c_void, flag: u16, value: u16);
     static ITEMFLAG_MANAGER: *mut c_void;
+    fn ItemflagManager__doCommit(mgr: *mut c_void);
     static STORYFLAG_MANAGER: *mut c_void;
+    fn StoryflagManager__doCommit(mgr: *mut c_void);
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
+    fn checkStoryflagIsSet(p: *const c_void, flag: u16) -> bool;
+    fn checkItemFlag(flag: u16) -> bool;
+    fn checkButtonAPressed() -> bool;
+    fn checkButtonBHeld() -> bool;
+    fn getKeyPieceCount() -> u16;
+    fn increaseCounter(counterId: u16, count: u16);
+    fn setFlagForItem(itemflag: u16);
+}
+
+fn storyflag_check(flag: u16) -> bool {
+    unsafe { checkStoryflagIsSet(core::ptr::null(), flag) }
+}
+
+fn itemflag_check(flag: u16) -> bool {
+    unsafe { checkItemFlag(flag) }
 }
 
 fn sceneflag_set_global(scene_index: u16, flag: u16) {
@@ -63,6 +84,10 @@ fn dungeonflag_global(scene_index: u16) -> *mut [u16; 8] {
             .as_mut_ptr()
             .add(scene_index as usize)
     }
+}
+
+fn dungeon_global_key_count(scene_index: u16) -> u16 {
+    unsafe { (*dungeonflag_global(scene_index))[1] & 0xF }
 }
 
 fn storyflag_set_to_value(flag: u16, value: u16) {
@@ -167,14 +192,71 @@ pub fn process_startflags() {
             }
         }
     }
+
+    let additional_start_options = flag_mem.next_u16().unwrap_or_default();
+
+    // Starting rupee count.
+    // Last 7 bits.
     itemflag_set_to_value(
         501, /* rupee counter */
-        flag_mem.next_u16().unwrap_or_default(),
+        (additional_start_options & 0x7F) * 100,
     );
-    // heart capacity
-    let health_capacity = flag_mem.next_u8().unwrap_or_default();
+
+    // Starting heart capacity.
+    // Next 5 bits.
+    let health_capacity = (additional_start_options >> 7 & 0x1F) * 4;
     unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity.into() };
     unsafe { (*FILE_MANAGER).FA.current_health = health_capacity.into() };
+
+    // Starting interface choice.
+    // Next 2 bits.
+    let interface = additional_start_options >> 12 & 0x3;
+    storyflag_set_to_value(840, interface.into());
+
+    // Starting bugs.
+    // Next 1 bit.
+    if additional_start_options >> 14 & 0x1 == 1 {
+        for counter in 10..=21 {
+            unsafe {
+                increaseCounter(counter, 99);
+                setFlagForItem(counter + 131); // counter + (itemflag - counter)
+            }
+        }
+    }
+
+    // Starting treasures.
+    // First 1 bit.
+    if additional_start_options >> 15 & 0x1 == 1 {
+        for counter in 22..=37 {
+            unsafe {
+                increaseCounter(counter, 99);
+                setFlagForItem(counter + 139); // counter + (itemflag - counter)
+            }
+        }
+    }
+
+    let additional_start_options_2 = flag_mem.next_u8().unwrap_or_default();
+
+    let mut pouch_slot_iter = unsafe { (*FILE_MANAGER).FA.pouch_items.iter_mut() };
+
+    // Starting Hylian Shield.
+    // 4th bit.
+    if additional_start_options_2 >> 3 & 0x1 == 1 {
+        // ID for Hylian Shield + durability
+        *pouch_slot_iter.next().unwrap() = 125 | 0x30 << 0x10;
+    }
+
+    let bottle_count = additional_start_options_2 & 0x7;
+    for slot in pouch_slot_iter.take(bottle_count.into()) {
+        *slot = 153; // ID for bottles
+    }
+
+    // Commit global flag managers.
+    unsafe {
+        ItemflagManager__doCommit(ITEMFLAG_MANAGER);
+        StoryflagManager__doCommit(STORYFLAG_MANAGER);
+    }
+
     unsafe { (*FILE_MANAGER).anticommit_flag = 0 };
 }
 
@@ -214,6 +296,111 @@ fn handle_bk_map_dungeonflag(item: c_ushort) {
             (*dungeonflag_local())[0] |= dungeonflag_mask;
         }
         (*dungeonflag_global(flagindex as u16))[0] |= dungeonflag_mask;
+    }
+}
+
+const OBTAINED_TEXT: &[u8; 18] = b"\0O\0b\0t\0a\0i\0n\0e\0d\0\0";
+const UNOBTAINED_TEXT: &[u8; 22] = b"\0U\0n\0o\0b\0t\0a\0i\0n\0e\0d\0\0";
+const COMPLETE_TEXT: &[u8; 42] = b"\0\x0e\0\x00\0\x03\0\x02\0\x08\0 \0C\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+const INCOMPLETE_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x09\0 \0I\0n\0c\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+const UNREQUIRED_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x0C\0 \0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+
+#[no_mangle]
+fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *const FlowElement) {
+    let flow_element = unsafe { &*p_flow_element };
+    match flow_element.param3 {
+        71 => {
+            let dungeon_index = flow_element.param1;
+            let completion_storyflag = flow_element.param2;
+            let key_count = if dungeon_index == 14
+            /* ET */
+            {
+                unsafe { getKeyPieceCount() }
+            } else {
+                dungeon_global_key_count(dungeon_index)
+            };
+            text_manager_set_num_args(&[key_count as u32]);
+            let map_and_bk = unsafe { (*dungeonflag_global(dungeon_index))[0] };
+            let bk_text = match map_and_bk & 0x82 {
+                0x80 => OBTAINED_TEXT.as_ptr(),
+                0x82 => OBTAINED_TEXT.as_ptr(),
+                _ => UNOBTAINED_TEXT.as_ptr(),
+            };
+            let map_text = match map_and_bk & 0x82 {
+                0x02 => OBTAINED_TEXT.as_ptr(),
+                0x82 => OBTAINED_TEXT.as_ptr(),
+                _ => UNOBTAINED_TEXT.as_ptr(),
+            };
+            text_manager_set_string_arg(bk_text as *const c_void, 0);
+            text_manager_set_string_arg(map_text as *const c_void, 1);
+
+            let completed_text = if completion_storyflag == 0xFFFF {
+                UNREQUIRED_TEXT.as_ptr()
+            } else if storyflag_check(completion_storyflag) {
+                COMPLETE_TEXT.as_ptr()
+            } else {
+                INCOMPLETE_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(completed_text as *const c_void, 2);
+        }
+        72 => {
+            let caves_key = dungeon_global_key_count(9);
+            let caves_key_text = if caves_key == 1 {
+                OBTAINED_TEXT.as_ptr()
+            } else {
+                UNOBTAINED_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(caves_key_text as *const c_void, 0);
+
+            let spiral_charge_obtained = 364; //story flag for spiral charge
+            let spiral_charge_text = if storyflag_check(spiral_charge_obtained) {
+                OBTAINED_TEXT.as_ptr()
+            } else {
+                UNOBTAINED_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(spiral_charge_text as *const c_void, 1);
+
+            let life_tree_fruit_obtained = 198; //item flag for life tree fruit
+            let life_tree_fruit_text = if itemflag_check(life_tree_fruit_obtained) {
+                OBTAINED_TEXT.as_ptr()
+            } else {
+                UNOBTAINED_TEXT.as_ptr()
+            };
+            text_manager_set_string_arg(life_tree_fruit_text as *const c_void, 2);
+        }
+        _ => (),
+    }
+}
+
+#[no_mangle]
+fn textbox_a_pressed_or_b_held() -> bool {
+    unsafe {
+        if checkButtonAPressed() || checkButtonBHeld() {
+            return true;
+        }
+        return false;
+    }
+}
+
+#[no_mangle]
+fn set_goddess_sword_pulled_scene_flag() {
+    unsafe {
+        // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
+        storyflag_set_to_1(951);
+    }
+}
+
+fn simple_rng(rng: &mut u32) -> u32 {
+    *rng = rng.wrapping_mul(1664525).wrapping_add(1013904223);
+    *rng
+}
+
+#[no_mangle]
+fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
+    // 6 dungeons, each having a Vec3s which is just 3 u16 (or rather i16)
+    let angles = unsafe { slice::from_raw_parts_mut(ptr, 3 * 6) };
+    for angle in angles.iter_mut() {
+        *angle = simple_rng(&mut seed) as u16;
     }
 }
 

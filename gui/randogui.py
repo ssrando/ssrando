@@ -1,34 +1,35 @@
 import os
 import sys
 from pathlib import Path
+from gui.components.list_pair import ListPair
+import pyclip
+import qdarktheme
 import random
 
-import yaml
 import json
-from PySide6 import QtWidgets
-from PySide6.QtCore import Qt, QTimer, QEvent, QStringListModel
-from PySide6.QtGui import QFontDatabase, QPalette, QColor
+from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
+from PySide6.QtGui import QFontDatabase, QIcon
 from PySide6.QtWidgets import (
-    QMainWindow,
     QAbstractButton,
-    QComboBox,
-    QSpinBox,
-    QListView,
+    QApplication,
     QCheckBox,
-    QRadioButton,
-    QFileDialog,
-    QMessageBox,
+    QComboBox,
     QErrorMessage,
+    QFileDialog,
     QInputDialog,
     QLineEdit,
-    QApplication,
-    QStyleFactory,
+    QListView,
+    QMainWindow,
+    QMessageBox,
+    QRadioButton,
+    QSpinBox,
 )
-from gui.sort_model import LocationsModel
+from gui.dialogs.tricks.tricks_dialog import TricksDialog
+from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
-from gui.progressdialog import ProgressDialog
+from gui.dialogs.progressbar.progressdialog import ProgressDialog
 from gui.guithreads import RandomizerThread, ExtractSetupThread
 from ssrando import Randomizer, VERSION
 from paths import RANDO_ROOT_PATH
@@ -40,7 +41,24 @@ import signal
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
+LOGIC_MODE_TO_TRICKS_SETTING = {
+    "Glitchless": None,
+    "BiTless": "enabled-tricks-bitless",
+    "Glitched": "enabled-tricks-glitched",
+    "No Logic": None,
+}
+
 NEW_PRESET = "[New Preset]"
+DEFAULT_PRESETS_PATH = RANDO_ROOT_PATH / "gui" / "presets" / "default_presets.json"
+DEFAULT_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "default_theme.json"
+HIGH_CONTRAST_THEME_PATH = (
+    RANDO_ROOT_PATH / "gui" / "themes" / "high_contrast_theme.json"
+)
+READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "readability_theme.json"
+CUSTOM_THEME_PATH = "custom_theme.json"
+
+# Add stylesheet overrides here.
+BASE_STYLE_SHEET_OVERRIDES = ""
 
 
 class RandoGUI(QMainWindow):
@@ -56,16 +74,16 @@ class RandoGUI(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        font_id = QFontDatabase.addApplicationFont(
+        QFontDatabase.addApplicationFont(
             str(RANDO_ROOT_PATH / "assets" / "Lato-Regular.ttf")
         )
-        family = QFontDatabase.applicationFontFamilies(font_id)[0]
-        font = self.font()
-        font.setFamily(family)
-        font.setPointSize(9)
-        self.setFont(font)
+        QFontDatabase.addApplicationFont(
+            str(RANDO_ROOT_PATH / "assets" / "OpenDyslexic3-Regular.ttf")
+        )
 
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
+
+        self.setWindowIcon(QIcon(str(RANDO_ROOT_PATH / "assets" / "icon.ico")))
 
         self.areas = areas
         self.options = options
@@ -90,6 +108,10 @@ class RandoGUI(QMainWindow):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QComboBox):
+                    if option["name"] == "Font Family":
+                        widget.currentFontChanged.connect(self.update_font)
+                        widget.currentIndexChanged.connect(self.update_settings)
+                        continue
                     for option_val in option["choices"]:
                         widget.addItem(str(option_val))
                     widget.setCurrentIndex(
@@ -97,6 +119,10 @@ class RandoGUI(QMainWindow):
                     )
                     if option["name"] == "Logic Mode":
                         widget.currentIndexChanged.connect(self.logic_mode_changed)
+                    elif option["name"] == "GUI Theme Mode":
+                        widget.currentTextChanged.connect(self.update_theme)
+                    elif option["name"] == "GUI Theme Preset":
+                        widget.currentTextChanged.connect(self.update_theme_preset)
                     widget.currentIndexChanged.connect(self.update_settings)
                 elif isinstance(widget, QListView):
                     pass
@@ -106,56 +132,90 @@ class RandoGUI(QMainWindow):
                     if "max" in option:
                         widget.setMaximum(option["max"])
                     widget.setValue(self.options[option_key])
-                    widget.valueChanged.connect(self.update_settings)
 
-        # Tricks ui.
-        self.enabled_tricks_model = QStringListModel()
-        self.enabled_tricks_model.setStringList(
-            OPTIONS["enabled-tricks-bitless"]["default"]
-        )
-        self.disabled_tricks_model = QStringListModel()
-        self.disabled_tricks_model.setStringList(
-            OPTIONS["enabled-tricks-bitless"]["choices"]
-        )
-        self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
-        self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
-        self.ui.enable_trick.clicked.connect(self.enable_trick)
-        self.ui.disable_trick.clicked.connect(self.disable_trick)
+                    if option["name"] == "Font Size":
+                        widget.valueChanged.connect(self.update_font)
+                    else:
+                        widget.valueChanged.connect(self.update_settings)
 
-        # setup exlcuded locations
-        self.excluded_locations_model = QStringListModel()
-        self.excluded_locations_proxy = LocationsModel()
-        self.excluded_locations_proxy.setSourceModel(self.excluded_locations_model)
-        self.excluded_locations_model.setStringList(
-            OPTIONS["excluded-locations"]["default"]
-        )
-        self.included_locations_model = QStringListModel()
-        self.included_locations_proxy = LocationsModel()
-        self.included_locations_proxy.setSourceModel(self.included_locations_model)
-        self.included_locations_model.setStringList(
-            OPTIONS["excluded-locations"]["choices"]
-        )
-        self.ui.excluded_locations.setModel(self.excluded_locations_model)
-        self.ui.included_locations.setModel(self.included_locations_model)
-        self.ui.exclude_location.clicked.connect(self.exclude_location)
-        self.ui.include_location.clicked.connect(self.include_location)
+        # Accessibility setup.
+        self.custom_theme_path = CUSTOM_THEME_PATH
+        match self.options["gui-theme-preset"]:
+            case "Default":
+                self.default_theme_path = DEFAULT_THEME_PATH
+            case "High Contrast":
+                self.default_theme_path = HIGH_CONTRAST_THEME_PATH
+            case "Readability":
+                self.default_theme_path = READABILITY_THEME_PATH
+            case _:
+                raise ValueError(
+                    f"Invalid option for gui-theme-preset option. Expected one of ('Default', 'High Contrast', 'Readability') but found {self.options['gui-theme-preset']}."
+                )
 
-        # Starting Items ui.
-        self.randomized_items_model = QStringListModel()
-        self.randomized_items_model.setStringList(OPTIONS["starting-items"]["choices"])
-        self.starting_items_model = QStringListModel()
-        self.starting_items_model.setStringList(OPTIONS["starting-items"]["default"])
-        self.ui.randomized_items.setModel(self.randomized_items_model)
-        self.ui.starting_items.setModel(self.starting_items_model)
-        self.ui.randomize_item.clicked.connect(self.remove_starting_item)
-        self.ui.start_with_item.clicked.connect(self.add_starting_item)
+        if not os.path.isfile(self.custom_theme_path):
+            with open(self.default_theme_path) as f:
+                default_theme_json = json.load(f)
+            with open(self.custom_theme_path, "w") as f:
+                json.dump(default_theme_json, f)
+
+        self.ui.custom_theme_button.clicked.connect(self.open_custom_theme_picker)
+        self.ui.option_use_custom_theme.stateChanged.connect(self.toggle_custom_theme)
+        if self.options["use-custom-theme"]:
+            self.toggle_custom_theme(1)
+        else:
+            self.toggle_custom_theme(0)
+        self.ui.option_use_sharp_corners.stateChanged.connect(self.toggle_sharp_corners)
+        if self.options["use-sharp-corners"]:
+            self.toggle_sharp_corners(1)
+        else:
+            self.toggle_sharp_corners(0)
+
+        self.ui.reset_font_button.clicked.connect(self.reset_font)
+
+        # setup misc controls
+        self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
+        self.logic_mode_changed()
+
+        # Exlcuded Locations UI
+        self.exclude_locations_pair = ListPair(
+            self.ui.excluded_locations,
+            self.ui.included_locations,
+            "excluded-locations",
+            self.ui.exclude_location,
+            self.ui.include_location,
+        )
+        self.exclude_locations_pair.listPairChanged.connect(self.update_settings)
+
+        self.ui.excluded_free_search.textChanged.connect(
+            self.exclude_locations_pair.update_option_list_filter
+        )
+        self.ui.included_free_search.textChanged.connect(
+            self.exclude_locations_pair.update_non_option_list_filter
+        )
+
+        # Starting Items UI
+        self.starting_items_pair = ListPair(
+            self.ui.starting_items,
+            self.ui.randomized_items,
+            "starting-items",
+            self.ui.start_with_item,
+            self.ui.randomize_item,
+        )
+        self.starting_items_pair.listPairChanged.connect(self.update_settings)
+
+        self.ui.starting_items_free_search.textChanged.connect(
+            self.starting_items_pair.update_option_list_filter
+        )
+        self.ui.randomized_items_free_search.textChanged.connect(
+            self.starting_items_pair.update_non_option_list_filter
+        )
 
         # setup presets
         self.default_presets = {}
         self.user_presets = {}
         self.ui.presets_list.addItem(NEW_PRESET)
         sep_idx = 1
-        with (RANDO_ROOT_PATH / "gui" / "default_presets.json").open("r") as f:
+        with (DEFAULT_PRESETS_PATH).open("r") as f:
             try:
                 load_default_presets = json.load(f)
                 for preset in load_default_presets:
@@ -186,7 +246,6 @@ class RandoGUI(QMainWindow):
         getattr(self.ui, "option_got_starting_state").setVisible(False)
         getattr(self.ui, "label_for_option_got_dungeon_requirement").setVisible(False)
         getattr(self.ui, "option_got_dungeon_requirement").setVisible(False)
-        self.enable_trick_interface()
 
         # hide supporting elements
         getattr(self.ui, "option_plando").setVisible(False)
@@ -199,11 +258,17 @@ class RandoGUI(QMainWindow):
         self.ui.permalink.textChanged.connect(self.permalink_updated)
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
+        self.ui.copy_permalink_button.clicked.connect(self.copy_permalink_to_clipboard)
         self.update_ui_for_settings()
+        self.update_font()
         self.update_settings()
         self.set_option_description(None)
 
         self.ui.tabWidget.setCurrentIndex(0)
+
+        arc_replacements_path = Path(RANDO_ROOT_PATH / "arc-replacements")
+        if not arc_replacements_path.exists():
+            arc_replacements_path.mkdir(exist_ok=True, parents=True)
 
         if "NOGIT" in VERSION:
             self.error_msg = QErrorMessage()
@@ -258,16 +323,23 @@ class RandoGUI(QMainWindow):
         self.randomizer_thread.error_abort.connect(self.on_error)
         self.randomizer_thread.start()
 
-    def ui_progress_callback(self, current_action, completed_steps, total_steps=None):
+    def ui_progress_callback(
+        self, current_action: str, completed_steps: int, total_steps: int = None
+    ):
         self.progress_dialog.setValue(completed_steps)
-        self.progress_dialog.setLabelText(current_action)
+        self.progress_dialog.set_current_action(current_action)
         if not total_steps is None:
             self.progress_dialog.setMaximum(total_steps)
 
-    def on_error(self, message):
+    def on_error(self, message: str):
         self.error_msg = QErrorMessage(self)
         self.progress_dialog.reset()
-        self.error_msg.showMessage(message)
+        if self.rando.seed:
+            self.error_msg.showMessage(
+                f"{message}<br/>Seed: {self.rando.seed}<br/>Settings: {self.rando.options.get_permalink()}"
+            )
+        else:
+            self.error_msg.showMessage(message)
 
     def randomization_complete(self):
         self.progress_dialog.reset()
@@ -344,9 +416,14 @@ class RandoGUI(QMainWindow):
                 if isinstance(widget, QAbstractButton):
                     widget.setChecked(current_settings[option_key])
                 elif isinstance(widget, QComboBox):
-                    widget.setCurrentIndex(
-                        option["choices"].index(current_settings[option_key])
-                    )
+                    if option["name"] == "Font Family":
+                        widget.setCurrentIndex(
+                            widget.findText(current_settings[option_key])
+                        )
+                    else:
+                        widget.setCurrentIndex(
+                            option["choices"].index(current_settings[option_key])
+                        )
                 elif isinstance(widget, QListView):
                     pass
                 elif isinstance(widget, QSpinBox):
@@ -369,70 +446,18 @@ class RandoGUI(QMainWindow):
                         elif health % 4 > 1:
                             health_string += " and " + str(health % 4) + " pieces"
                         heart_string.setText(health_string)
-
-        self.enabled_tricks_model = QStringListModel()
-        self.disabled_tricks_model = QStringListModel()
-        if "Glitchless" in current_settings["logic-mode"]:
-            self.enabled_tricks_model.setStringList([])
-            self.disabled_tricks_model.setStringList([])
-        elif "BiTless" in current_settings["logic-mode"]:
-            self.enabled_tricks_model.setStringList(
-                current_settings["enabled-tricks-bitless"]
-            )
-            self.disabled_tricks_model.setStringList(
-                [
-                    choice
-                    for choice in OPTIONS["enabled-tricks-bitless"]["choices"]
-                    if choice not in current_settings["enabled-tricks-bitless"]
-                ]
-            )
-        elif "Glitched" in current_settings["logic-mode"]:
-            self.enabled_tricks_model.setStringList(
-                current_settings["enabled-tricks-glitched"]
-            )
-            self.disabled_tricks_model.setStringList(
-                [
-                    choice
-                    for choice in OPTIONS["enabled-tricks-glitched"]["choices"]
-                    if choice not in current_settings["enabled-tricks-glitched"]
-                ]
-            )
-        else:
-            self.enabled_tricks_model.setStringList([])
-            self.disabled_tricks_model.setStringList([])
-
         # Update tricks.
-        self.enabled_tricks_model.sort(0)
-        self.disabled_tricks_model.sort(0)
-        self.ui.enabled_tricks.setModel(self.enabled_tricks_model)
-        self.ui.disabled_tricks.setModel(self.disabled_tricks_model)
+        if (
+            tricks_cmd := LOGIC_MODE_TO_TRICKS_SETTING[self.options["logic-mode"]]
+        ) is not None:
+            self.enabled_tricks = current_settings[tricks_cmd]
 
         # Update locations.
-        self.excluded_locations_model.setStringList(
-            current_settings["excluded-locations"]
-        )
-        self.included_locations_model.setStringList(
-            [
-                choice
-                for choice in OPTIONS["excluded-locations"]["choices"]
-                if choice not in current_settings["excluded-locations"]
-            ]
-        )
-        self.ui.excluded_locations.setModel(self.excluded_locations_model)
-        self.ui.included_locations.setModel(self.included_locations_model)
+        self.exclude_locations_pair.update(current_settings["excluded-locations"])
 
         # Update starting items.
-        self.randomized_items_model = QStringListModel()
-        self.starting_items_model = QStringListModel()
-        randomized_items_list = [
-            choice for choice in OPTIONS["starting-items"]["choices"]
-        ]
-        for item in current_settings["starting-items"]:
-            randomized_items_list.remove(item)
-        self.randomized_items_model.setStringList(randomized_items_list)
-        self.starting_items_model.setStringList(current_settings["starting-items"])
-        self.ui.randomized_items.setModel(self.randomized_items_model)
-        self.ui.starting_items.setModel(self.starting_items_model)
+        self.starting_items_pair.update(current_settings["starting-items"])
+
         self.ui.permalink.setText(current_settings.get_permalink())
 
     def save_settings(self):
@@ -463,65 +488,117 @@ class RandoGUI(QMainWindow):
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
         elif "BiTless" in logic_mode:
-            self.options.set_option(
-                "enabled-tricks-bitless", self.get_option_value("enabled_tricks")
-            )
+            self.options.set_option("enabled-tricks-bitless", self.enabled_tricks)
             self.options.set_option("enabled-tricks-glitched", [])
         elif "Glitched" in logic_mode:
             self.options.set_option("enabled-tricks-bitless", [])
-            self.options.set_option(
-                "enabled-tricks-glitched", self.get_option_value("enabled_tricks")
-            )
+            self.options.set_option("enabled-tricks-glitched", self.enabled_tricks)
         else:  # this should only be no logic
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
 
         self.options.set_option(
-            "excluded-locations", self.get_option_value("excluded_locations")
+            "excluded-locations", self.exclude_locations_pair.get_added()
         )
+
+        self.options.set_option("starting-items", self.starting_items_pair.get_added())
 
         self.save_settings()
         self.ui.permalink.setText(self.options.get_permalink())
 
     def logic_mode_changed(self):
         value = getattr(self.ui, "option_logic_mode").currentText()
-        if "Glitchless" in value:
-            self.disable_trick_interface()
-        elif "BiTless" in value:
-            # swap bitless tricks into the ui
+        if (tricks_cmd := LOGIC_MODE_TO_TRICKS_SETTING[value]) is not None:
+            self.enabled_tricks = self.options[tricks_cmd]
             self.enable_trick_interface()
-            self.enabled_tricks_model.setStringList(
-                OPTIONS["enabled-tricks-bitless"]["default"]
-            )
-            self.disabled_tricks_model.setStringList(
-                OPTIONS["enabled-tricks-bitless"]["choices"]
-            )
-        elif "Glitched" in value:
-            # swap the glitched tricks into the ui
-            self.enable_trick_interface()
-            self.enabled_tricks_model.setStringList(
-                OPTIONS["enabled-tricks-glitched"]["default"]
-            )
-            self.disabled_tricks_model.setStringList(
-                OPTIONS["enabled-tricks-glitched"]["choices"]
-            )
-        else:  # this should only be no logic
-            # disable the trick interface
+        else:  # Glitchless and No Logic
             self.disable_trick_interface()
+            self.enabled_tricks = []
+
+    def toggle_sharp_corners(self, state: int):
+        self.options.set_option("use-sharp-corners", bool(state))
+        self.update_theme()
+
+    def toggle_custom_theme(self, state: int):
+        self.options.set_option("use-custom-theme", bool(state))
+
+        if state:
+            self.enable_theme_interface()
+        else:
+            self.disable_theme_interface()
+
+        self.update_theme()
+
+    def update_theme(self):
+        if self.options["use-custom-theme"]:
+            with open(self.custom_theme_path) as f:
+                theme = json.load(f)
+        else:
+            with open(self.default_theme_path) as f:
+                theme = json.load(f)
+
+        if self.options["use-sharp-corners"]:
+            corners = "sharp"
+        else:
+            corners = "rounded"
+
+        qdarktheme.setup_theme(
+            self.options["gui-theme"].lower(), custom_colors=theme, corner_shape=corners
+        )
+
+    def update_theme_preset(self, preset: str):
+        if preset == "Default":
+            self.default_theme_path = DEFAULT_THEME_PATH
+        elif preset == "High Contrast":
+            self.default_theme_path = HIGH_CONTRAST_THEME_PATH
+        elif preset == "Readability":
+            self.default_theme_path = READABILITY_THEME_PATH
+            font_index = self.ui.option_font_family.findText("OpenDyslexic3")
+            self.ui.option_font_family.setCurrentIndex(font_index)
+            self.ui.option_font_size.setValue(OPTIONS["font-size"]["default"])
+
+        self.update_theme()
+
+    def open_custom_theme_picker(self):
+        custom_theme_picker = CustomThemeDialog(
+            self.default_theme_path, self.custom_theme_path, self.styleSheet()
+        )
+        custom_theme_picker.themeSaved.connect(self.update_custom_theme)
+        custom_theme_picker.exec()
+
+    def update_custom_theme(self, theme: dict):
+        with open(self.custom_theme_path, "w") as f:
+            json.dump(theme, f)
+
+        self.update_theme()
+
+    def enable_theme_interface(self):
+        getattr(self.ui, "custom_theme_button").setEnabled(True)
+
+    def disable_theme_interface(self):
+        getattr(self.ui, "custom_theme_button").setEnabled(False)
+
+    def update_font(self):
+        self.update_settings()
+        self.setStyleSheet(
+            BASE_STYLE_SHEET_OVERRIDES
+            + f"QWidget {{ font-family: { self.options['font-family'] }; font-size: { self.options['font-size'] }pt }}"
+        )
+
+    def reset_font(self):
+        font_index = self.ui.option_font_family.findText(
+            OPTIONS["font-family"]["default"]
+        )
+        self.ui.option_font_family.setCurrentIndex(font_index)
+        self.ui.option_font_size.setValue(OPTIONS["font-size"]["default"])
 
     def enable_trick_interface(self):
-        getattr(self.ui, "enable_trick").setEnabled(True)
-        getattr(self.ui, "disable_trick").setEnabled(True)
-        getattr(self.ui, "enabled_tricks").setEnabled(True)
-        getattr(self.ui, "disabled_tricks").setEnabled(True)
+        getattr(self.ui, "edit_tricks").setEnabled(True)
 
     def disable_trick_interface(self):
-        getattr(self.ui, "enable_trick").setEnabled(False)
-        getattr(self.ui, "disable_trick").setEnabled(False)
-        getattr(self.ui, "enabled_tricks").setEnabled(False)
-        getattr(self.ui, "disabled_tricks").setEnabled(False)
+        getattr(self.ui, "edit_tricks").setEnabled(False)
 
-    def get_option_value(self, option_name):
+    def get_option_value(self, option_name: str) -> bool | str | int | list:
         widget = getattr(self.ui, option_name)
         if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
             return widget.isChecked()
@@ -530,54 +607,14 @@ class RandoGUI(QMainWindow):
         elif isinstance(widget, QSpinBox):
             return widget.value()
         elif isinstance(widget, QListView):
-            return widget.model().stringList()
+            items = []
+            model = widget.model()
+            for int_index in range(0, model.rowCount()):
+                index = model.index(int_index, 0)
+                items.append(index.data())
+            return items
         else:
             print("Option widget is invalid: %s" % option_name)
-
-    @staticmethod
-    def append_row(model, value):
-        model.insertRow(model.rowCount())
-        new_row = model.index(model.rowCount() - 1, 0)
-        model.setData(new_row, value)
-
-    def move_selected_rows(self, source, dest):
-        selection = source.selectionModel().selectedIndexes()
-        # Remove starting from the last so the previous indices remain valid
-        selection.sort(reverse=True, key=lambda x: x.row())
-        for item in selection:
-            value = item.data()
-            source.model().removeRow(item.row())
-            self.append_row(dest.model(), value)
-
-    def enable_trick(self):
-        self.move_selected_rows(self.ui.disabled_tricks, self.ui.enabled_tricks)
-        self.ui.enabled_tricks.model().sort(0)
-        self.update_settings()
-
-    def disable_trick(self):
-        self.move_selected_rows(self.ui.enabled_tricks, self.ui.disabled_tricks)
-        self.ui.disabled_tricks.model().sort(0)
-        self.update_settings()
-
-    def exclude_location(self):
-        self.move_selected_rows(self.ui.included_locations, self.ui.excluded_locations)
-        self.update_settings()
-
-    def include_location(self):
-        self.move_selected_rows(self.ui.excluded_locations, self.ui.included_locations)
-        self.update_settings()
-
-    def remove_starting_item(self):
-        self.move_selected_rows(self.ui.starting_items, self.ui.randomized_items)
-        self.ui.starting_items.model().sort(0)
-        self.ui.randomized_items.model().sort(0)
-        self.update_settings()
-
-    def add_starting_item(self):
-        self.move_selected_rows(self.ui.randomized_items, self.ui.starting_items)
-        self.ui.starting_items.model().sort(0)
-        self.ui.randomized_items.model().sort(0)
-        self.update_settings()
 
     def load_preset(self):
         preset = self.ui.presets_list.currentText()
@@ -661,7 +698,17 @@ class RandoGUI(QMainWindow):
         with open(self.user_presets_path, "w") as f:
             json.dump(self.user_presets, f)
 
-    def eventFilter(self, target, event):
+    def launch_tricks_dialog(self):
+        dialog = TricksDialog(
+            self.enabled_tricks,
+            LOGIC_MODE_TO_TRICKS_SETTING[self.options["logic-mode"]],
+            self.styleSheet(),
+        )
+        if dialog.exec():
+            self.enabled_tricks = dialog.getTrickValues()
+            self.update_settings()
+
+    def eventFilter(self, target: QObject, event: QEvent) -> bool:
         if event.type() == QEvent.Enter:
             ui_name = target.objectName()
 
@@ -678,7 +725,7 @@ class RandoGUI(QMainWindow):
 
         return QMainWindow.eventFilter(self, target, event)
 
-    def set_option_description(self, new_description):
+    def set_option_description(self, new_description: str | None):
         if new_description is None:
             self.ui.option_description.setText(
                 "(Hover over an option to see a description of what it does.)"
@@ -691,6 +738,7 @@ class RandoGUI(QMainWindow):
     def permalink_updated(self):
         try:
             self.options.update_from_permalink(self.ui.permalink.text())
+            self.save_settings()
         except ValueError as e:
             # Ignore errors from faultly permalinks, with updating ui it gets reset anyways
             print(e)
@@ -698,41 +746,18 @@ class RandoGUI(QMainWindow):
             print(e)
         self.update_ui_for_settings()
 
+    def copy_permalink_to_clipboard(self):
+        pyclip.copy(self.ui.permalink.text())
+
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
 
 
 def run_main_gui(areas: Areas, options: Options):
     app = QApplication([])
-    app.setStyle(QStyleFactory.create("fusion"))
-
-    # darkPalette = QPalette()
-    # darkColor = QColor(45, 45, 45)
-    # disabledColor = QColor(127, 127, 127)
-    # darkPalette.setColor(QPalette.Window, darkColor)
-    # darkPalette.setColor(QPalette.WindowText, Qt.white)
-    # darkPalette.setColor(QPalette.Base, QColor(18, 18, 18))
-    # darkPalette.setColor(QPalette.AlternateBase, darkColor)
-    # darkPalette.setColor(QPalette.ToolTipBase, Qt.white)
-    # darkPalette.setColor(QPalette.ToolTipText, Qt.white)
-    # darkPalette.setColor(QPalette.Text, Qt.white)
-    # darkPalette.setColor(QPalette.Disabled, QPalette.Text, disabledColor)
-    # darkPalette.setColor(QPalette.Button, darkColor)
-    # darkPalette.setColor(QPalette.ButtonText, Qt.white)
-    # darkPalette.setColor(QPalette.Disabled, QPalette.ButtonText, disabledColor)
-    # darkPalette.setColor(QPalette.BrightText, Qt.red)
-    # darkPalette.setColor(QPalette.Link, QColor(42, 130, 218))
-
-    # darkPalette.setColor(QPalette.Highlight, QColor(42, 130, 218))
-    # darkPalette.setColor(QPalette.HighlightedText, Qt.black)
-    # darkPalette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabledColor)
-
-    # app.setPalette(darkPalette)
-    app.setStyleSheet(
-        "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }"
-    )
 
     widget = RandoGUI(areas, options)
+
     widget.show()
 
     sys.exit(app.exec_())

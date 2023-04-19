@@ -38,7 +38,6 @@ def shuffle_indices(self, list, indices=None):
 
 class Rando:
     def __init__(self, areas: Areas, options: Options, rng: random.Random):
-
         self.options = options
         self.rng = rng
 
@@ -51,7 +50,8 @@ class Rando:
         self.parse_options()
         self.initial_placement = self.placement.copy()
 
-        fill_algorithm = self.options["fill-algorithm"]
+        # since it's currently not configurable on the UI, use assumed fill
+        fill_algorithm = "Assumed Fill"  # self.options["fill-algorithm"]
         if fill_algorithm == "Assumed Fill":
             start_inventory = Inventory(
                 {
@@ -79,7 +79,7 @@ class Rando:
             FillAlgorithm = RandomFill
         else:
             raise ValueError(
-                f"Wrong value for option 'fill-algorithm: f'{fill_algorithm}'"
+                f"Wrong value for option 'fill-algorithm: f'{fill_algorithm}'."
             )
 
         runtime_requirements = (
@@ -112,7 +112,7 @@ class Rando:
 
         def fun():
             if not self.randomised:
-                raise ValueError("Cannot extract hint logic before randomisation")
+                raise ValueError("Cannot extract hint logic before randomisation.")
             return LogicUtils(
                 areas,
                 logic.placement,
@@ -164,26 +164,42 @@ class Rando:
         for tablet randomizer adds random tablets
         """
         starting_items = {
-            number(PROGRESSIVE_SWORD, i)
-            for i in range(SWORD_COUNT[self.options["starting-sword"]])
+            number(PROGRESSIVE_SWORD, sword_num)
+            for sword_num in range(SWORD_COUNT[self.options["starting-sword"]])
         }
 
         for tablet in self.rng.sample(TABLETS, k=self.options["starting-tablet-count"]):
             starting_items.add(tablet)
 
         starting_items |= {
-            number(HEART_CONTAINER, i)
-            for i in range(self.options["starting-heart-containers"])
+            number(HEART_CONTAINER, heart_container_num)
+            for heart_container_num in range(self.options["starting-heart-containers"])
         }
 
         starting_items |= {
-            number(HEART_PIECE, i) for i in range(self.options["starting-heart-pieces"])
+            number(HEART_PIECE, heart_piece_num)
+            for heart_piece_num in range(self.options["starting-heart-pieces"])
         }
+
+        starting_items |= {
+            number(GRATITUDE_CRYSTAL_PACK, crystal_pack_num)
+            for crystal_pack_num in range(self.options["starting-crystal-packs"])
+        }
+
+        starting_items |= {
+            number(EMPTY_BOTTLE, bottle_num)
+            for bottle_num in range(self.options["starting-bottles"])
+        }
+
+        if self.options["start-with-hylian-shield"]:
+            starting_items.add(HYLIAN_SHIELD)
 
         if not self.options["open-et"]:
             starting_items |= {
-                number(KEY_PIECE, i)
-                for i in range(self.options["starting-items"].count(KEY_PIECE))
+                number(KEY_PIECE, key_piece_num)
+                for key_piece_num in range(
+                    self.options["starting-items"].count(KEY_PIECE)
+                )
             }
 
         for item in self.options["starting-items"]:
@@ -199,17 +215,12 @@ class Rando:
                 starting_items.add(item)
 
         if self.options["random-starting-item"]:
-
             possible_random_starting_items = [
                 item
                 for item in RANDOM_STARTING_ITEMS
                 if item not in self.options["starting-items"]
             ]
-            if len(possible_random_starting_items) == 0:
-                raise ValueError(
-                    "All valid progress items have already been added as starting items."
-                )
-            else:
+            if len(possible_random_starting_items) > 0:
                 random_item = self.rng.choice(possible_random_starting_items)
                 if random_item not in EXTENDED_ITEM.items_list:
                     random_item = number(random_item, 0)
@@ -221,7 +232,6 @@ class Rando:
         self.placement.add_starting_items(starting_items)
 
     def ban_the_banned(self):
-
         banned_req = DNFInventory(BANNED_BIT)
         nothing_req = DNFInventory(True)
         maybe_req = lambda b: banned_req if b else nothing_req
@@ -311,7 +321,7 @@ class Rando:
             elif rupoor_mode == "Rupoor Insanity":
                 unplaced = may_be_placed_list
             else:
-                raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}")
+                raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
 
         must_be_placed_items = (
@@ -324,7 +334,7 @@ class Rando:
         may_be_placed_items = CONSUMABLE_ITEMS.copy()
         duplicable_items = (
             DUPLICABLE_ITEMS
-            if rupoor_mode != "Off"
+            if rupoor_mode == "Off"
             else DUPLICABLE_COUNTERPROGRESS_ITEMS  # Rupoors
         )
 
@@ -339,16 +349,22 @@ class Rando:
     def set_placement_options(self):
         shop_mode = self.options["shop-mode"]
         place_gondo_progressives = self.options["gondo-upgrades"]
+        damage_multiplier = self.options["damage-multiplier"]
 
         options = {
             OPEN_THUNDERHEAD_OPTION: self.options["open-thunderhead"] == "Open",
             OPEN_ET_OPTION: self.options["open-et"],
             OPEN_LMF_OPTION: self.options["open-lmf"] == "Open",
             LMF_NODES_ON_OPTION: self.options["open-lmf"] == "Main Node",
+            FLORIA_GATES_OPTION: self.options["open-lake-floria"] == "Floria Gates",
+            TALK_TO_YERBAL_OPTION: self.options["open-lake-floria"] == "Talk to Yerbal",
+            VANILLA_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Vanilla",
+            OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
             RANDOMIZED_BEEDLE_OPTION: shop_mode != "Vanilla",
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
-            NO_BIT_CRASHES: self.options["fix-bit-crashes"],
-            HERO_MODE: self.options["hero-mode"],
+            NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
+            NONLETHAL_HOT_CAVE: damage_multiplier < 12,
+            UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])
@@ -400,7 +416,7 @@ class Rando:
                 checks_to_use = DUNGEON_FINAL_CHECK
             else:
                 raise ValueError(
-                    f"Option sword-dungeon-reward has unknown value {sword_reward_mode}"
+                    f"Option sword-dungeon-reward has unknown value {sword_reward_mode}."
                 )
 
             dungeons = self.required_dungeons.copy()

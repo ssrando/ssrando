@@ -50,4 +50,31 @@ add r3, r3, r4 ; array offset
 lhz r4, 0x52(r3) ; load storyflag
 b checkStoryflagIsSet
 
+; .org 0x808b43c8
+.org 0x33B8
+lhz r28, 0xC(r6) ; make the item id accessible for the next function
+nop ; this overwrites a useless call to sprintf, probably debug leftover
+nop
+
+; .org 0x808b43e4
+.org 0x33D4
+li r6, 0x123 ; model flags, otherwise the texture anim is shared
+
+; .org 0x808b43f4
+.org 0x33E4
+bl correct_rupee_color
+
+; Custom item height struct stuff
+; SHOP_ITEM[0x4C] = float of height offset
+; .org 0x808b66ec
+.org 0x56DC
+lfs f0, 0x4C(r3); load custom height value into f0
+stfs f0, 0x4(r31); store custom height for shop item
+b 0x5740
+
+; Remove the null height value
+; .org 0x808b67e8
+.org 0x57D8
+nop; stops the new height from being overwritten
+
 .close

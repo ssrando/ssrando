@@ -5,7 +5,7 @@ import yaml
 
 
 def yaml_load(file_path: Path):
-    with file_path.open("r") as f:
+    with file_path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
 

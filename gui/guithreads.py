@@ -1,6 +1,4 @@
 from pathlib import Path
-import os
-from typing import Optional
 
 from PySide6.QtCore import QThread, Signal
 
@@ -54,8 +52,16 @@ class RandomizerThread(QThread):
             try:
                 self.wit_manager.ensure_wit_installed()
             except (HTTPError, URLError) as e:
-                self.error_abort.emit(str(e))
-                print(str(e))
+                error_message = (
+                    f"Couldn't install wit; error: {e}\n"
+                    + "Please install wit manually"
+                )
+                import html
+
+                qt_message = html.escape(error_message).replace("\n", "<br/>")
+
+                self.error_abort.emit(qt_message)
+                print(error_message)
                 import traceback
 
                 print(traceback.format_exc())
@@ -109,7 +115,14 @@ class ExtractSetupThread(QThread):
         try:
             self.wit_manager.ensure_wit_installed()
         except (HTTPError, URLError) as e:
-            self.error_abort.emit(str(e))
+            error_message = (
+                f"Couldn't install wit; error: {e}\n" "Please install wit manually"
+            )
+            import html
+
+            qt_message = html.escape(error_message).replace("\n", "<br/>")
+            self.error_abort.emit(qt_message)
+            print(error_message)
             import traceback
 
             print(traceback.format_exc())

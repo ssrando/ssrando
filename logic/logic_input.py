@@ -60,7 +60,7 @@ class Area(Generic[LE]):
             area.allowed_time_of_day = parent.allowed_time_of_day
         if (v := raw_dict.get("hint-region")) is not None:
             if v not in ALL_HINT_REGIONS:
-                raise ValueError(f"Unknown hint region {v}")
+                raise ValueError(f"Unknown hint region {v}.")
             area.hint_region = v
         elif parent is not None:
             area.hint_region = parent.hint_region
@@ -92,7 +92,7 @@ class Area(Generic[LE]):
 
         if (v := raw_dict.get("entrance")) is not None:
             if parent is None:
-                raise ValueError("An entrance was given but no parent to give it to")
+                raise ValueError("An entrance was given but no parent to give it to.")
             parent.exits[name.rsplit("\\", 1)[-1]] = LogicExpression.parse(v)
 
         area.sub_areas = {
@@ -183,7 +183,7 @@ class Areas:
             queue.extend(area.sub_areas.values())
         else:
             raise ValueError(
-                f"Could not find '{partial_address_str}' from '{base_address_str}'"
+                f"Could not find '{partial_address_str}' from '{base_address_str}'."
             )
 
     def prettify(self, s, *, custom=False):
@@ -198,7 +198,7 @@ class Areas:
             return self.gossip_stones[s]["short_name"]
         if "\\" not in s and "#" not in s:
             return s
-        raise ValueError(f"Can't find a shortname for {s}")
+        raise ValueError(f"Can't find a shortname for {s}.")
 
     def __init__(
         self,
@@ -207,7 +207,6 @@ class Areas:
         gossip_stones: Dict[str, Any],
         map_exits_entrances: Dict[str, Any],
     ):
-
         map_entrances = {
             k: v
             for k, v in map_exits_entrances.items()
@@ -365,7 +364,7 @@ class Areas:
             for tag in ["_DAY", "_NIGHT"]:
                 if elt[-len(tag) :] == tag:
                     return EIN(short_to_full(elt[: -len(tag)]) + tag)
-            for (a, b) in self.short_full:
+            for a, b in self.short_full:
                 if a == elt:
                     return b
             b = self.search("", elt)
@@ -373,10 +372,10 @@ class Areas:
             return b
 
         def full_to_short(elt: EXTENDED_ITEM_NAME):
-            for (a, b) in self.short_full:
+            for a, b in self.short_full:
                 if b == elt:
                     return a
-            raise ValueError(f"Error: association list, cannot find {elt}")
+            raise ValueError(f"Error: association list, cannot find {elt}.")
 
         self.short_to_full = short_to_full
         self.full_to_short = full_to_short
@@ -451,7 +450,7 @@ class Areas:
                         elif area.allowed_time_of_day == area_dest.allowed_time_of_day:
                             reqs[area_bit] |= timed_req & DNFInv(EIN(area_name))
                         else:
-                            raise ValueError("Time makes this exit impossible")
+                            raise ValueError("Time makes this exit impossible.")
 
                 else:  # Map exit
                     exit_full = with_sep_full(area_name, exit)

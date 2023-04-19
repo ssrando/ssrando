@@ -5,6 +5,7 @@ block_cipher = None
 import os
 import re
 import glob
+import toml
 def build_datas_recursive(paths):
   datas = []
 
@@ -20,8 +21,9 @@ def build_datas_recursive(paths):
 
   return datas
 
-with open('version.txt') as f:
-  VERSION = f.read().strip()
+with open('pyproject.toml') as f:
+    proj = toml.load(f)
+VERSION = proj["tool"]["poetry"]["version"]
 
 if os.path.isdir(".git"):
   version_suffix = "_NOGIT"
@@ -60,7 +62,9 @@ a = Analysis(['randoscript.py'],
               'asm/*.txt',
               'asm/patch_diffs/*.txt',
               'hints/distributions/*.json',
-              'gui/default_presets.json',
+              'gui/presets/*.json',
+              'gui/themes/*.json',
+              'gui/themes/*.yaml',
               'logic/requirements/*.yaml',
              ]),
              hiddenimports=[],
@@ -84,4 +88,5 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=True,
-          runtime_tmpdir=None, )
+          runtime_tmpdir=None,
+          icon="assets/icon.ico",)

@@ -6,8 +6,14 @@ main.dol:
   setSceneflagForArea: 0x806783E0
   alloc_keyboard_arcs_conditional: 0x80678450
   unset_sandship_timestone_if_necessary: 0x8067849C
-  process_startflags: 0x806784CC
-  handle_bk_map_dungeonflag: 0x80678740
+  patch_bit: 0x806784CC
+  no_minigame_death: 0x806784D8
+  process_startflags: 0x80678500
+  handle_bk_map_dungeonflag: 0x80678898
+  rando_text_command_handler: 0x80678948
+  textbox_a_pressed_or_b_held: 0x80678B60
+  set_goddess_sword_pulled_scene_flag: 0x80678B90
+  randomize_boss_key_start_pos: 0x80678BBC
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
@@ -22,6 +28,7 @@ d_a_obj_sw_sword_beamNP.rel:
   handle_crest_hit_item_give: 0x3780
 d_a_shop_sampleNP.rel:
   check_needs_custom_storyflag_subtype: 0x8450
+  correct_rupee_color: 0x8484
 d_a_npc_douguyanightNP.rel:
   select_new_item_column: 0x2F20
 d_a_obj_swrd_prjNP.rel:
@@ -30,3 +37,9 @@ d_a_obj_bellNP.rel:
   try_end_pumpkin_archery: 0x1D08
 d_a_obj_light_lineNP.rel:
   check_activated_storyflag: 0x1D90
+d_t_rock_boatNP.rel:
+  custom_eldin_platform_comparison: 0xDC8
+d_t_player_restartNP.rel:
+  only_set_flag_conditionally: 0x6A4
+d_a_obj_toD3_stone_figureNP.rel:
+  set_sot_placed_flag: 0x1388

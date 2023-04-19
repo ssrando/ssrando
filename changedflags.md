@@ -74,6 +74,8 @@ New Trial Completed Storyflags:
 
 950: Progressive Bug Net 2 (Big Bug Net)
 
+951: Raising Goddess Sword in Goddess Statue
+
 Sceneflags  
 
 Ancient Cistern:  

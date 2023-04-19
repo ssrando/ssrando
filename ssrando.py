@@ -103,19 +103,19 @@ class Randomizer(BaseRandomizer):
         # catch common errors with directory setup
         if not self.actual_extract_path.is_dir():
             raise StartupException(
-                "ERROR: directory actual-extract doesn't exist! Make sure you have the ISO extracted into that directory"
+                "ERROR: directory actual-extract doesn't exist! Make sure you have the ISO extracted into that directory."
             )
         if not self.modified_extract_path.is_dir():
             raise StartupException(
-                "ERROR: directory modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract"
+                "ERROR: directory modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract."
             )
         if not (self.actual_extract_path / "DATA").is_dir():
             raise StartupException(
-                "ERROR: directory actual-extract doesn't contain a DATA directory! Make sure you have the ISO properly extracted into actual-extract"
+                "ERROR: directory actual-extract doesn't contain a DATA directory! Make sure you have the ISO properly extracted into actual-extract."
             )
         if not (self.modified_extract_path / "DATA").is_dir():
             raise StartupException(
-                "ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract"
+                "ERROR: directory 'DATA' in modified-extract doesn't exist! Make sure you have the contents of actual-extract copied over to modified-extract."
             )
         if not (
             self.modified_extract_path
@@ -123,7 +123,9 @@ class Randomizer(BaseRandomizer):
             / "files"
             / "COPYDATE_CODE_2011-09-28_153155"
         ).exists():
-            raise StartupException("ERROR: the randomizer only supports NTSC-U 1.00")
+            raise StartupException(
+                "ERROR: the randomizer only supports NTSC-U 1.00 (North American)."
+            )
 
     @cached_property
     def get_total_progress_steps(self):
@@ -238,6 +240,7 @@ class Randomizer(BaseRandomizer):
         plcmt_file.version = VERSION
         plcmt_file.trial_object_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.music_rando_seed = self.rng.randint(1, MAX_SEED)
+        plcmt_file.bk_angle_seed = self.rng.randint(0, 2**32 - 1)
 
         plcmt_file.check_valid(self.areas)
 

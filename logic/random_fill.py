@@ -14,7 +14,6 @@ class RandomFill:
     def __init__(
         self, logic: Logic, rng: random.Random, randosettings: RandomizationSettings
     ):
-
         self.logic = logic
         self.rng = rng
         self.randosettings = randosettings
@@ -71,5 +70,5 @@ class RandomFill:
             return True
 
         raise self.useroutput.GenerationFailed(
-            f"no more location accessible for {item}"
+            f"No more locations accessible for {item}."
         )

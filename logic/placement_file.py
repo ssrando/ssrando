@@ -24,6 +24,7 @@ class PlacementFile:
         self.trial_connections = {}
         self.trial_object_seed = -1
         self.music_rando_seed = -1
+        self.bk_angle_seed = -1
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))
@@ -45,6 +46,7 @@ class PlacementFile:
             "trial-connections": self.trial_connections,
             "trial-object-seed": self.trial_object_seed,
             "music-rando-seed": self.music_rando_seed,
+            "bk-angle-seed": self.bk_angle_seed,
         }
         return json.dumps(retval, indent=2)
 
@@ -62,44 +64,45 @@ class PlacementFile:
         self.trial_connections = jsn["trial-connections"]
         self.trial_object_seed = jsn["trial-object-seed"]
         self.music_rando_seed = jsn["music-rando-seed"]
+        self.bk_angle_seed = jsn["bk-angle-seed"]
 
     def check_valid(self, areas):
         """checks, if the current state is valid, throws an exception otherwise
         This does not check consistency with all the settings"""
         if VERSION != self.version:
             raise InvalidPlacementFile(
-                f"Version did not match, requires {self.version} but found {VERSION}"
+                f"Version did not match, requires {self.version} but found {VERSION}."
             )
 
         for item in self.starting_items:
             if item not in ALLOWED_STARTING_ITEMS:
-                raise InvalidPlacementFile(f"Invalid starting item {item} !")
+                raise InvalidPlacementFile(f"Invalid starting item {item}.")
 
         for req_dungeon in self.required_dungeons:
             if req_dungeon not in REGULAR_DUNGEONS:
                 raise InvalidPlacementFile(
-                    f"{req_dungeon} is not a valid required dungeon!"
+                    f"{req_dungeon} is not a valid required dungeon."
                 )
 
         if sorted(self.dungeon_connections.keys()) != sorted(
             DUNGEON_OVERWORLD_ENTRANCES.values()
         ):
-            raise InvalidPlacementFile("dungeon dungeon_connections are wrong!")
+            raise InvalidPlacementFile("Dungeon dungeon_connections are wrong.")
 
         if sorted(self.dungeon_connections.values()) != sorted(
             DUNGEON_OVERWORLD_ENTRANCES.keys()
         ):
-            raise InvalidPlacementFile("dungeon entries are wrong!")
+            raise InvalidPlacementFile("Dungeon entries are wrong.")
 
         if sorted(self.trial_connections.keys()) != sorted(SILENT_REALM_GATES.values()):
-            raise InvalidPlacementFile("trial trial_connections are wrong!")
+            raise InvalidPlacementFile("Trial trial_connections are wrong.")
 
         if sorted(self.trial_connections.values()) != sorted(SILENT_REALM_GATES.keys()):
-            raise InvalidPlacementFile("trial entries are wrong!")
+            raise InvalidPlacementFile("Trial entries are wrong.")
 
         for item in self.item_locations.values():
             if item not in ALL_ITEM_NAMES:
-                raise InvalidPlacementFile(f'invalid item "{item}"')
+                raise InvalidPlacementFile(f'Invalid item "{item}".')
 
         check_sets_equal(
             set(areas.checks.keys()),
@@ -116,12 +119,12 @@ class PlacementFile:
         for hintlist in self.hints.values():
             if not isinstance(hintlist, list):
                 raise InvalidPlacementFile(
-                    "gossip stone hints need to be LISTS of strings!"
+                    "Gossip stone hints need to be LISTS of strings."
                 )
             for hint in hintlist:
                 if not isinstance(hint, str):
                     raise InvalidPlacementFile(
-                        "gossip stone hints need to be lists of STRINGS!"
+                        "Gossip stone hints need to be lists of STRINGS."
                     )
 
 

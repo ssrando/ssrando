@@ -8,7 +8,7 @@ sep = " - "
 
 EVERYTHING = EIN("Everything")
 
-NUMBER_OF_HINT_STONES = 16
+NUMBER_OF_HINT_STONES = 18
 
 MAX_HINTS_PER_STONE = 8
 MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
@@ -19,10 +19,15 @@ OPEN_THUNDERHEAD_OPTION = EIN("Open Thunderhead option")
 OPEN_ET_OPTION = EIN("Open ET option")
 OPEN_LMF_OPTION = EIN("Open LMF option")
 LMF_NODES_ON_OPTION = EIN("LMF Nodes On option")
+FLORIA_GATES_OPTION = EIN("Floria Gates option")
+TALK_TO_YERBAL_OPTION = EIN("Talk to Yerbal option")
+VANILLA_LAKE_FLORIA_OPTION = EIN("Vanilla Lake Floria option")
+OPEN_LAKE_FLORIA_OPTION = EIN("Open Lake Floria option")
 RANDOMIZED_BEEDLE_OPTION = EIN("Randomized Beedle option")
 GONDO_UPGRADES_ON_OPTION = EIN("Gondo Upgrades On option")
-HERO_MODE = EIN("Hero-mode")
 NO_BIT_CRASHES = EIN("No BiT crashes")
+NONLETHAL_HOT_CAVE = EIN("Nonlethal Hot Cave")
+UPGRADED_SKYWARD_STRIKE = EIN("Upgraded Skyward Strike option")
 
 GOT_OPENING_REQUIREMENT = EIN("GoT Opening Requirement")
 GOT_RAISING_REQUIREMENT = EIN("GoT Raising Requirement")
@@ -41,10 +46,15 @@ LOGIC_OPTIONS = dict.fromkeys(
         OPEN_ET_OPTION,
         OPEN_LMF_OPTION,
         LMF_NODES_ON_OPTION,
+        FLORIA_GATES_OPTION,
+        TALK_TO_YERBAL_OPTION,
+        VANILLA_LAKE_FLORIA_OPTION,
+        OPEN_LAKE_FLORIA_OPTION,
         RANDOMIZED_BEEDLE_OPTION,
         GONDO_UPGRADES_ON_OPTION,
-        HERO_MODE,
         NO_BIT_CRASHES,
+        NONLETHAL_HOT_CAVE,
+        UPGRADED_SKYWARD_STRIKE,
         GOT_OPENING_REQUIREMENT,
         GOT_RAISING_REQUIREMENT,
         HORDE_DOOR_REQUIREMENT,
@@ -73,7 +83,7 @@ def entrance_of_exit(exit):
         return exit.replace("Exit", "Entrance")
     if "Exit to " in exit:
         return exit.replace("Exit to", "Entrance from")
-    raise ValueError("No pattern")
+    raise ValueError("No pattern found for the entrance of exit {exit}.")
 
 
 SV = "Skyview"
@@ -83,6 +93,26 @@ AC = "Ancient Cistern"
 SSH = "Sandship"
 FS = "Fire Sanctuary"
 SK = "Sky Keep"
+
+DUNGEON_COMPLETE_STORYFLAGS = {
+    SV: 5,
+    ET: 7,
+    LMF: 935,
+    AC: 900,
+    SSH: 15,
+    FS: 901,
+}
+
+DUNGEON_COLORS = {
+    SV: "<g<",
+    ET: "<r+<",
+    LMF: "<y<",
+    AC: "<b<",
+    FS: "<r<",
+    SSH: "<y+<",
+    SK: "<s<",
+    "Lanayru Caves": "<ye<",
+}
 
 REGULAR_DUNGEONS = [SV, ET, LMF, AC, SSH, FS]
 ALL_DUNGEONS = REGULAR_DUNGEONS + [SK]
@@ -118,7 +148,7 @@ ITEM_COUNTS: Dict[str, int] = defaultdict(lambda: 1)
 
 def number(name: str, index: int) -> EXTENDED_ITEM_NAME:
     if index >= ITEM_COUNTS[name]:
-        raise ValueError("Index too high")
+        raise ValueError("Constant index too high.")
     if ITEM_COUNTS[name] == 1:
         return EIN(name)
     return EIN(f"{name} #{index}")
@@ -518,6 +548,7 @@ FLOODED_FARON_WOODS = "Flooded Faron Woods"
 ELDIN_VOLCANO = "Eldin Volcano"
 MOGMA_TURF = "Mogma Turf"
 VOLCANO_SUMMIT = "Volcano Summit"
+BOKOBLIN_BASE = "Bokoblin Base"
 
 LANAYRU_MINE = "Lanayru Mine"
 LANAYRU_DESERT = "Lanayru Desert"
@@ -541,6 +572,7 @@ ALL_HINT_REGIONS = dict.fromkeys(
         ELDIN_VOLCANO,
         MOGMA_TURF,
         VOLCANO_SUMMIT,
+        BOKOBLIN_BASE,
         LANAYRU_MINE,
         LANAYRU_DESERT,
         LANAYRU_CAVES,
@@ -559,6 +591,17 @@ ALL_HINT_REGIONS = dict.fromkeys(
         ELDIN_SILENT_REALM,
     ]
 )
+
+DUNGEONFLAG_INDICES = {
+    SV: 11,
+    ET: 14,
+    LMF: 17,
+    AC: 12,
+    SSH: 18,
+    FS: 15,
+    SK: 20,
+    LANAYRU_CAVES: 9,
+}
 
 # Retro-compatibility
 
@@ -704,7 +747,12 @@ GONDO_ITEMS = {
     number(PROGRESSIVE_BUG_NET, 1),
 }
 
+EXTRA_WALLET_SIZE = 300
 
+WALLET_SIZES = {0: 300, 1: 500, 2: 1000, 3: 5000, 4: 9000}
+
+# lists are used for progressive items,
+# tuples for setting multiple flags for one item
 ITEM_FLAGS = {
     PROGRESSIVE_BOW: [19, 90, 91],
     PROGRESSIVE_BEETLE: [53, 75, 76, 77],
@@ -714,6 +762,7 @@ ITEM_FLAGS = {
     PROGRESSIVE_POUCH: [112, 113, 113, 113, 113],
     PROGRESSIVE_WALLET: [108, 109, 110, 111],
     PROGRESSIVE_SWORD: [10, 11, 12, 9, 13, 14],
+    EXTRA_WALLET: 199,
     EMERALD_TABLET: 177,
     RUBY_TABLET: 178,
     AMBER_TABLET: 179,
@@ -743,7 +792,10 @@ ITEM_FLAGS = {
     TRIFORCE_OF_POWER: 96,
     TRIFORCE_OF_WISDOM: 97,
     SPIRAL_CHARGE: 21,
-    # SAILCLOTH: 15
+    GRATITUDE_CRYSTAL_PACK: 35,
+    HYLIAN_SHIELD: 125,
+    EMPTY_BOTTLE: 153,
+    # SAILCLOTH: 15,
 }
 
 
@@ -827,10 +879,13 @@ ALLOWED_STARTING_ITEMS = (
     | PROGRESSIVE_BOWS
     | PROGRESSIVE_BUG_NETS
     | PROGRESSIVE_WALLETS
+    | EXTRA_WALLETS
     | HEART_CONTAINERS
     | HEART_PIECES
     | KEY_PIECES
     | ALL_SMALL_KEYS
     | ALL_BOSS_KEYS
     | ALL_MAPS
+    | GRATITUDE_CRYSTAL_PACKS
+    | EMPTY_BOTTLES
 )

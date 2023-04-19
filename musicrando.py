@@ -6,6 +6,7 @@ from collections import defaultdict
 import struct
 from typing import List
 from paths import RANDO_ROOT_PATH
+from yaml_files import yaml_load
 
 
 def is_derangement(l: List[int]) -> bool:
@@ -21,7 +22,7 @@ def get_derangement(length: int, rng: random.Random) -> List[int]:
     shuffled such that no number is at its index
     """
     if length <= 1:
-        raise ValueError("length needs to be at least 2")
+        raise ValueError("Length needs to be at least 2.")
     lst = list(range(length))
     rng.shuffle(lst)
     while not is_derangement(lst):
@@ -30,8 +31,7 @@ def get_derangement(length: int, rng: random.Random) -> List[int]:
 
 
 def music_rando(placement_file, modified_extract_path):
-    with (RANDO_ROOT_PATH / "music.yaml").open() as f:
-        musiclist = yaml.safe_load(f)
+    musiclist = yaml_load(RANDO_ROOT_PATH / "music.yaml")
 
     NON_SHUFFLED_TYPES = [10, 11]
     TADTONES_FILE_NAME = "F63D5DB51DE748A3729628C659397A49"

@@ -51,7 +51,9 @@ def main():
         elif opt["type"] == "int":
             args["type"] = int
             if "min" in opt and "max" in opt:
-                args["choices"] = range(opt["min"], opt["max"] + 1)
+                args[
+                    "help"
+                ] = f'(default: {opt["default"]}, min: {opt["min"]}, max: {opt["max"]}) {opt["help"]}'
         elif opt["type"] == "singlechoice":
             args["choices"] = opt["choices"]
             # --max-batreaux-reward being the only int choice...
@@ -156,7 +158,7 @@ def main():
             from multiprocessing import Process
 
             threads = []
-            for (start, end) in get_ranges(bulk_low, bulk_high, bulk_threads):
+            for start, end in get_ranges(bulk_low, bulk_high, bulk_threads):
                 thread = Process(target=randothread, args=(start, end, options.copy()))
                 thread.start()
                 threads.append(thread)
