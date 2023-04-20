@@ -283,6 +283,28 @@ b 0x801b0764 ; return to original function
 .org 0x804dba00
 .word 0
 
+; allow collecting items underwater
+.org 0x8025685c
+li r6, 0
+
+; Update branches
+.org 0x802511f4
+beq 0x80251208
+.org 0x802511fc
+beq 0x80251208
+
+; If getting an big item underwater, act like a small item
+; Fixes janky item get animation underwater
+; Uses excess space from multiple copies of the same code
+.org 0x8025121c
+; r5 is re-assigned after this
+lwz r5, LINK_PTR@sda21(r13) ; get LINK_PTR
+lwz r5, 0x364(r5) ; get actionflags
+rlwinm. r5, r5, 0x0, 0xd, 0xd ; is Link in water?
+cmpwi r5, 0
+bne 0x80251208 ; if in water, use DefaultGetItem event
+nop
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

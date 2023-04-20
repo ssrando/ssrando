@@ -157,6 +157,7 @@
 - Added seed and permalink to error messages
 - Removed the check for a button combination to show the built in crash screen
 - Removed the need of opening the first chest in Sky Keep to progress
+- Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 ### Bugfixes
 - Fixed a bug that prevented tricks from being properly reloaded when the randomizer restarted multiple times without changes to the list
 - Fixed a softlock caused by collecting the last 2 tears in a trial too close together
