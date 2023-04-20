@@ -203,19 +203,19 @@ class Logic:
 
         return aggregate
 
-    @staticmethod
-    def get_everything_unbanned(requirements: List[DNFInventory]):
+    def get_everything_unbanned(self):
         inventory = Inventory(
             {EXTENDED_ITEM[itemname] for itemname in INVENTORY_ITEMS}
             | {HINT_BYPASS_BIT}
         )
-        full_inventory = Logic.fill_inventory(requirements, inventory)
-        (everything_req,) = requirements[EVERYTHING_BIT].disjunction
+        full_inventory = Logic.fill_inventory(self.requirements, inventory)
+        (everything_req,) = self.requirements[EVERYTHING_BIT].disjunction
         everything_unbanned_req = DNFInventory(
             Inventory({item for item in everything_req if full_inventory[item]})
         )
-        requirements[EVERYTHING_UNBANNED_BIT] = everything_unbanned_req
-        return Logic.fill_inventory(requirements, full_inventory)
+        self.requirements[EVERYTHING_UNBANNED_BIT] = everything_unbanned_req
+        self.backup_requirements[EVERYTHING_UNBANNED_BIT] = everything_unbanned_req
+        return Logic.fill_inventory(self.requirements, full_inventory)
 
     @staticmethod
     def free_simplify(requirements, free: Inventory):

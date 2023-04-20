@@ -17,7 +17,7 @@ class FrontFill:
         self.rng = rng
         self.randosettings = randosettings
 
-        full_inventory = Logic.get_everything_unbanned(self.logic.requirements)
+        full_inventory = self.logic.get_everything_unbanned()
         truly_progress_item = Logic.aggregate_requirements(
             self.logic.requirements, full_inventory, EVERYTHING_UNBANNED_BIT
         )
