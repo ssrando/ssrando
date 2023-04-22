@@ -76,6 +76,10 @@ New Trial Completed Storyflags:
 
 951: Raising Goddess Sword in Goddess Statue
 
+952: ***Reserved for Raising True Master Sword in Bokoblin Base***
+
+953: Group of Tadtones Counter
+
 Sceneflags  
 
 Ancient Cistern:  

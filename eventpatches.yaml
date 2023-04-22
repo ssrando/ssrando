@@ -1,21 +1,59 @@
 003-ItemGet:
-  - name: Tadtone Text
+  - name: Tadtone Entry
+    type: entryadd
+    entry:
+      name: "003_214"
+      value: Increment Tadtone Counter
+  - name: Increment Tadtone Counter
+    type: flowadd
+    flow:
+      type: type3
+      next: Check for all Tadtones
+      param1: 953 # flag
+      param2: 1 # increment counter
+      param3: 74 # custom command: increment tadtone group counter
+  - name: Check for all Tadtones
+    type: flowadd
+    flow:
+      type: type3
+      next: Switch for all Tadtones
+      param1: 0
+      param2: 0
+      param3: 75 # custom command: get tadtones groups remaining
+  - name: Switch for all Tadtones
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # use result from previous check
+    cases:
+      - Show all Tadtones Collected text
+      - Show some Tadtones Collected text
+  - name: Some Tadtones Collected text
     type: textadd
     unk1: 5
     unk2: 1
-    text: "You got a group of <y<Tadtones>>!\nBe sure to find all 17 of them!"
-  - name: Show Tadtone Text
+    text: "You got a group of <y<Tadtones>>!\nOnly <r<<numeric arg0> >> left to find!"
+  - name: Show some Tadtones Collected text
     type: flowadd
     flow:
       type: type1
       next: -1
       param3: 3
-      param4: Tadtone Text
-  - name: Tadtone Entry
-    type: entryadd
-    entry:
-      name: "003_214"
-      value: Show Tadtone Text
+      param4: Some Tadtones Collected text
+  - name: All Tadtones Collected text
+    type: textadd
+    unk1: 5
+    unk2: 1
+    text: "You got the last group of <y<Tadtones>>!\nYou found every last one of them!
+          \n\n\nHurry to <b<Flooded Faron Woods>> and talk\nto the <r<Water Dragon>> to claim your\nreward."
+  - name: Show all Tadtones Collected text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 3
+      param4: All Tadtones Collected text
   - name: Spiral Charge Text
     type: textpatch
     index: 27

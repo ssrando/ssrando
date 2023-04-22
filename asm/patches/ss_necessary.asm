@@ -305,6 +305,15 @@ cmpwi r5, 0
 bne 0x80251208 ; if in water, use DefaultGetItem event
 nop
 
+; Modify STORYFLAG_DEFINITIONS to allow flag 953 to be a counter
+; STATIC_STORYFLAGS[index] = 805a9b7e
+; shiftMask uses 7 lsb for the counter (max value of 128)
+; shiftMask >> 4 = 0 so:
+; Story Flag #953 (0x03B9) - US from 805A9B7E 0x01 to 805A9B7E 0x40
+.org 0x80511502
+.byte 0x53 ; index
+.byte 0x7  ; shiftMask
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

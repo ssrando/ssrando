@@ -36,6 +36,25 @@ struct DungeonflagManager {
     flagindex: c_ushort,
 }
 
+#[repr(C)]
+struct ActorEventFlowMgr {
+    vtable: u32,
+    msbf_info: u32,
+    current_flow_index: u32,
+    unk1: u32,
+    unk2: u32,
+    unk3: u32,
+    result_from_previous_check: u32,
+    current_text_label_name: [u8; 32],
+    unk4: u32,
+    unk5: u32,
+    unk6: u32,
+    next_flow_delay_timer: u32,
+    another_flow_element: u128,
+    unk7: u32,
+    unk8: u32,
+}
+
 extern "C" {
     static SPAWN_SLAVE: *mut SpawnStruct;
     fn setStoryflagToValue(flag: u16, value: u16);
@@ -46,6 +65,7 @@ extern "C" {
         mgr: *mut filemanager_gen::FileManager,
     ) -> *mut [[c_ushort; 8usize]; 22usize];
     fn FlagManager__setFlagTo1(mgr: *mut c_void, flag: u16);
+    fn FlagManager__getFlagOrCounter(mgr: *mut c_void, flag: u16) -> u16;
     fn FlagManager__setFlagOrCounter(mgr: *mut c_void, flag: u16, value: u16);
     static ITEMFLAG_MANAGER: *mut c_void;
     fn ItemflagManager__doCommit(mgr: *mut c_void);
@@ -91,6 +111,10 @@ fn dungeonflag_global(scene_index: u16) -> *mut [u16; 8] {
 
 fn dungeon_global_key_count(scene_index: u16) -> u16 {
     unsafe { (*dungeonflag_global(scene_index))[1] & 0xF }
+}
+
+fn storyflag_get_to_value(flag: u16) -> u16 {
+    return unsafe { FlagManager__getFlagOrCounter(STORYFLAG_MANAGER, flag) };
 }
 
 fn storyflag_set_to_value(flag: u16, value: u16) {
@@ -309,7 +333,7 @@ const INCOMPLETE_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x09\0 \0I\0n\0c\
 const UNREQUIRED_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x0C\0 \0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
 
 #[no_mangle]
-fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *const FlowElement) {
+fn rando_text_command_handler(_event_flow_mgr: *mut ActorEventFlowMgr, p_flow_element: *const FlowElement) {
     let flow_element = unsafe { &*p_flow_element };
     match flow_element.param3 {
         71 => {
@@ -371,6 +395,19 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
             };
             text_manager_set_string_arg(life_tree_fruit_text as *const c_void, 2);
         }
+        74 => { // Increment storyflag counter
+            let flag = flow_element.param1;
+            let increment = flow_element.param2;
+            
+            storyflag_set_to_value(flag, storyflag_get_to_value(flag) + increment);
+        }
+        75 => { // Have collected all tadtone groups?
+            let tadtone_groups_left = 17 - storyflag_get_to_value(953);
+            text_manager_set_num_args(&[tadtone_groups_left as u32]);
+            unsafe {
+                (*_event_flow_mgr).result_from_previous_check = tadtone_groups_left as u32;
+            }
+        }
         _ => (),
     }
 }
@@ -387,10 +424,8 @@ fn textbox_a_pressed_or_b_held() -> bool {
 
 #[no_mangle]
 fn set_goddess_sword_pulled_scene_flag() {
-    unsafe {
-        // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
-        storyflag_set_to_1(951);
-    }
+    // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
+    storyflag_set_to_1(951);
 }
 
 fn simple_rng(rng: &mut u32) -> u32 {
@@ -408,9 +443,9 @@ fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
 }
 
 #[no_mangle]
-fn get_item_arc_name(oarc_mgr: *const c_void, vanilla_item_str: *const c_char, itemId: u32) -> *const c_void {
+fn get_item_arc_name(oarc_mgr: *const c_void, vanilla_item_str: *const c_char, item_id: u32) -> *const c_void {
     // Tadtone
-    if itemId == 214 {
+    if item_id == 214 {
         return unsafe { getModelDataFromOarc(oarc_mgr, cstr!("Onp").as_ptr()) };
     }
 
@@ -418,8 +453,8 @@ fn get_item_arc_name(oarc_mgr: *const c_void, vanilla_item_str: *const c_char, i
 }
 
 #[no_mangle]
-fn get_item_model_name_ptr(itemId: u32) -> *const c_char {
-    if itemId == 214 {
+fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
+    if item_id == 214 {
         return cstr!("OnpB").as_ptr();
     }
 
