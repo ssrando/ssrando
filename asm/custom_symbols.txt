@@ -14,11 +14,11 @@ main.dol:
   process_startflags: 0x806785F4
   handle_bk_map_dungeonflag: 0x8067898C
   rando_text_command_handler: 0x80678A3C
-  textbox_a_pressed_or_b_held: 0x80678CCC
-  set_goddess_sword_pulled_scene_flag: 0x80678CFC
-  randomize_boss_key_start_pos: 0x80678D28
-  get_item_arc_name: 0x80678D54
-  get_item_model_name_ptr: 0x80678D84
+  textbox_a_pressed_or_b_held: 0x80678CDC
+  set_goddess_sword_pulled_scene_flag: 0x80678D0C
+  randomize_boss_key_start_pos: 0x80678D38
+  get_item_arc_name: 0x80678D64
+  get_item_model_name_ptr: 0x80678D94
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
@@ -50,3 +50,5 @@ d_a_obj_toD3_stone_figureNP.rel:
   set_sot_placed_flag: 0x1388
 d_a_obj_clefNP.rel:
   give_random_item_from_collecting_tadtone_group: 0x4A2C
+d_t_clef_gameNP.rel:
+  check_tadtone_counter_before_event: 0x724

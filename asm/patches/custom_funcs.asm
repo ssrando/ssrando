@@ -240,7 +240,7 @@ b 0x8024abb4 ; return false
 fix_custom_item_get:
 ; Custom Func to change tadtone Height r31 = AcItem
 stwu r1, -0x10(r1) ; change stack
-mfspr r0, LR
+mflr r0
 stw r0, 0x14(r1) ; Save LR
 stw r4, 0x8(r1) ; save matrix ptr
 lhz r0, 0xd44(r31) ; Get item id
@@ -250,7 +250,7 @@ bne exit ; if not tadone, go as normal
 lwz r12, 0x8b8(r31)
 addi r3, r31, 0x8b8
 lwz r12, 0x28(r12)
-mtspr CTR, r12
+mtctr r12
 bctrl ; Calls Get Current State ID
 lwz r12, 0x0(r3)
 lis r4, -0x7FA5
@@ -279,10 +279,10 @@ lwz r4, 0x8(r1)
 lwz r3, 0x334(r31) 
 lwz r12, 0x0(r3)
 lwz r12, 0x18(r12)
-mtspr CTR, r12
+mtctr, r12
 bctrl ; branches to setLocalMatrix (r3 = model, r4 = mtx)
 lwz r0, 0x14(r1)
-mtspr LR, r0 ; return LR to normal
+mtlr r0 ; return LR to normal
 addi r1, r1, 0x10 ; return SP
 blr
 
@@ -757,6 +757,39 @@ li r4, -1
 li r5, 0
 bl giveItem ; r3 = itemId, r4 = pouchSlot (-1), r5 = 0
 
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+
+.close
+
+
+.open "d_t_clef_gameNP.rel"
+.org @NextFreeSpace
+
+.global check_tadtone_counter_before_event
+check_tadtone_counter_before_event:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
+li r4, 953 ; tadtone counter
+bl FlagManager__getFlagOrCounter
+cmpwi r3, 17
+bne return_not_start_event
+
+; get event delay
+lbz r3, 0x17f(r30) ; replaced instruction
+b return
+
+return_not_start_event:
+; 0x3c = default delay before starting event
+; any value > 1 is sufficent
+li r3, 0x3c
+
+return:
 lwz r0, 0x14(r1)
 mtlr r0
 addi r1, r1, 0x10

@@ -1957,7 +1957,7 @@
       param4: Already Completed Tadtones Text
   - name: Flooded Faron Reentry Text
     type: textadd
-    text: "Would you like me to flood the forest\nagain?\n[1]Yes[2-]No"
+    text: "Would you like me to <r<flood the forest>>\nagain?\n[1]Yes[2-]No"
   - name: Show Flooded Faron Reentry Text
     type: flowadd
     flow:
@@ -1984,7 +1984,7 @@
       param4: Flooded Faron Entry Question
   - name: Flooded Faron Entry Question
     type: textadd
-    text: "Here to accept my <r<final test>>?\n[1]Yes[2-]No"
+    text: "Here to accept my final test? I will\n<r<flood the forest>> if you choose to\naccept.\n[1]Yes[2-]No"
   - name: Flooded Faron Entry Switch
     type: switchadd
     flow:
@@ -2187,6 +2187,14 @@
       param2: 3 # item
       next: Trigger Exit to Non-Flooded Faron
       param3: 9
+  # Gets unset in the Onp zev
+  # TODO: Replace with a zev patch?
+  - name: Make Bucha give the Tadtones Scroll storyflag
+    type: flowpatch
+    index: 195
+    flow:
+      param2: 82 # Tadtones Scroll storyflag
+      param3: 0 # set (not unset) flag
 250-ForestSiren:
   - name: shorten fi text
     type: flowpatch

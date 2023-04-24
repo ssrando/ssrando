@@ -314,6 +314,25 @@ nop
 .byte 0x53 ; index
 .byte 0x7  ; shiftMask
 
+
+; allow tadtone dowsing after getting hasCollectedAllTadtones flag
+.org 0x80097b84
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+; Show Tadtone Scroll even after getting Water Dragon's Reward
+.org 0x80299ca8
+nop
+nop
+nop
+nop
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
@@ -744,10 +763,13 @@ li r3, 0 ; act as if storyflag 16 is not set
 li r3, 0 ; act as if storyflag 16 is not set
 .close
 
-; (0x80eaab3c - 0x80ea8380) + 0x130
 
 .open "d_a_obj_clefNP.rel"
 
+; (addr - text0) + offset
+; (0x - 0x80ea8380) + 0x130
+
+; Allow anglez to be used to store the item id
 .org 0x104C ; 0x80ea929c
 nop ; don't overwrite anglez with zero
 
@@ -755,6 +777,17 @@ nop ; don't overwrite anglez with zero
 li r0, 0 ; replace anglez with zero since it's only used for this
 
 
+; Still init clef actors even if hasCollectedAllTadtones flag is set
+.org 0xA58 ; 0x80ea8ca8
+nop
+nop
+nop
+nop
+nop
+
+;;;;;;;;;;;;;;;;;;
+;;; Give items ;;;
+;;;;;;;;;;;;;;;;;;
 ; Give item when in STATE_WAIT_UPDATE
 .org 0x1CA4 ; 0x80ea9ef4
 mr r4, r29 ; move self into r4
@@ -774,4 +807,67 @@ bl give_random_item_from_collecting_tadtone_group
 .org 0x303C ; 0x80eab28c
 mr r4, r29 ; move self into r4
 bl give_random_item_from_collecting_tadtone_group
+.close
+
+
+.open "d_t_clef_gameNP.rel"
+
+; (addr - text0) + offset
+; (0x - 0x80ee7a60) + 0x110
+
+; Still init clef game even if hasCollectedAllTadtones flag is set
+.org 0x2C8 ; 0x80ee7c18
+nop
+nop
+nop
+nop
+nop
+
+; don't delyeet yourself p l e a s e
+; ensure TgClefGame always exists when in Flooded Faron Woods
+.org 0x3B4 ; 0x80ee7d04
+nop
+
+.org 0x3BC ; 0x80ee7d0c
+bl check_tadtone_counter_before_event
+
+; Check for hasCollectedAllTadtones after managing vanilla tadtones
+.org 0x45C ; 0x80ee7dac
+b 0x3A4 ; 0x80ee7cf4 check for hasCollectedAllTadtones
+
+; re-write return to use extra instruction space at end of function
+; not very elegant but works better than re-writing the whole function
+; now starts at 0x80ee7db0
+lwz r31, 0x4c(r1)
+li r3, 1
+lwz r30, 0x48(r1)
+lwz r0, 0x54(r1)
+mtlr r0
+addi r1, r1, 0x50
+blr
+
+; update return branches to use new address 0x80ee7db0
+.org 0x3B8 ; 0x80ee7d08
+b 0x460
+.org 0x3D8 ; 0x80ee7d28
+bne 0x460
+.org 0x3E8 ; 0x80ee7d38
+beq 0x460
+.org 0x434 ; 0x80ee7d84
+b 0x460
+
+.close
+
+
+.open "d_a_e_battleshipfishNP.rel"
+
+; (addr - text0) + offset
+; (0x - 0x80b052c0) + 0x130
+
+.org 0xA1C ; 0x80b05bac
+b 0xA94 ; 0x80b05c24
+
+.org 0x13CC ; 0x80b0655c
+b 0x1458 ; 0x80b065e8
+
 .close
