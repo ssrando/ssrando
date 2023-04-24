@@ -1973,7 +1973,7 @@
       param2: 0
       param3: 2
     cases:
-      - Check for Water Dragon Scale # Yes
+      - Trigger Exit to Flooded Faron Layer 2 # Yes
       - Show Declined Flooded Faron Offer Text # No
   - name: Show Flooded Faron Entry Question
     type: flowadd
@@ -1993,7 +1993,7 @@
       param2: 0
       param3: 2
     cases:
-      - Check for Water Dragon Scale # Yes
+      - Trigger Exit to Flooded Faron Layer 2 # Yes
       - Show Declined Flooded Faron Offer Text # No
   - name: Declined Flooded Faron Offer Text
     type: textadd
@@ -2005,34 +2005,6 @@
       next: -1
       param3: 302
       param4: Declined Flooded Faron Offer Text
-  - name: Check for Water Dragon Scale
-    type: flowadd
-    flow:
-      type: type3
-      subType: 1
-      param1: 68 # Water Dragon Scale itemflag
-      param2: 1 # Check itemflag is set
-      next: Water Dragon Scale Branch
-      param3: 23 # Check for an itemflag
-  - name: Water Dragon Scale Branch
-    type: switchadd
-    flow:
-      subType: 6
-      param2: 0
-      param3: 7 # Use result from previous check
-    cases:
-      - Trigger Exit to Flooded Faron Layer 2
-      - Show No Water Dragon Scale Text # false
-  - name: No Water Dragon Scale Text
-    type: textadd
-    text: "You don't have my <b<Sacred Gift>>.\nI cannot allow you to attempt my final\ntest unprepared."
-  - name: Show No Water Dragon Scale Text
-    type: flowadd
-    flow:
-      type: type1
-      next: -1
-      param3: 302
-      param4: No Water Dragon Scale Text
   - name: Trigger Exit to Flooded Faron Layer 2
     type: flowadd
     flow:

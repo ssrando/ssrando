@@ -2038,71 +2038,23 @@ F103_1: # Flooded Great Tree
     objtype: PLY
     object:
       play_cutscene: -1
-# F103:
-#   - name: tst1
-#     type: objpatch
-#     id: 0xFD91
-#     layer: 2
-#     room: 0
-#     objtype: OBJ
-#     object:
-#       anglez: 32
-#   - name: tst2
-#     type: objpatch
-#     id: 0xFD92
-#     layer: 2
-#     room: 0
-#     objtype: OBJ
-#     object:
-#       anglez: 32
-#   - name: tst3
-#     type: objpatch
-#     id: 0xFD93
-#     layer: 2
-#     room: 0
-#     objtype: OBJ
-#     object:
-#       anglez: 32
-#   - name: tst4
-#     type: objpatch
-#     id: 0xFD94
-#     layer: 2
-#     room: 0
-#     objtype: OBJ
-#     object:
-#       anglez: 32
-#   - name: tst5
-#     type: objpatch
-#     id: 0xFD95
-#     layer: 2
-#     room: 0
-#     objtype: OBJ
-#     object:
-#       anglez: 32
-#   - name: tst6
-#     type: objpatch
-#     id: 0xFD96
-#     layer: 2
-#     room: 0
-#     objtype: OBJ
-#     object:
-#       anglez: 32
-#   - name: tst7
-#     type: objpatch
-#     id: 0xFD97
-#     layer: 2
-#     room: 0
-#     objtype: OBJ
-#     object:
-#       anglez: 32
-#   - name: tst8
-#     type: objpatch
-#     id: 0xFD98
-#     layer: 2
-#     room: 0
-#     objtype: OBJ
-#     object:
-#       anglez: 32
+F103: # Flooded Faron Woods
+  - name: Add bomb flower on lilypad near Bucha
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFF0FFF0
+      params2: 0xFFFFFFFF
+      posx: -2296.102783203125
+      posy: 4500
+      posz: -1793.0338134765625
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFF00
+      name: Bombf
 D100: # Skyview
   - name: Layer override
     type: layeroverride

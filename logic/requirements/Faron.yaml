@@ -258,6 +258,7 @@ Flooded Faron Woods:
     4 Yellow Tadtones under Small Hollow Tree: Water Scale
     8 Purple Tadtones in Clearing after Small Hollow Tree: Water Scale
     Faron Woods - Retrieve Oolo: Skyloft - Knight Academy - Start Owlan's Quest
+    Can Watch Completed Tadtones Cutscene: Nothing
 
   Flooded Great Tree:
     exits:
@@ -266,7 +267,7 @@ Flooded Faron Woods:
       Exit to Upper Flooded Faron Woods: Nothing
       Exit to Lower Flooded Faron Woods: Water Scale
     locations:
-      Water Dragon's Reward: Water Scale
+      Water Dragon's Reward: Group of Tadtones x 17 & Can Watch Completed Tadtones Cutscene
 
 # LAKE FLORIA
 Lake Floria:
