@@ -279,7 +279,7 @@ lwz r4, 0x8(r1)
 lwz r3, 0x334(r31) 
 lwz r12, 0x0(r3)
 lwz r12, 0x18(r12)
-mtctr, r12
+mtctr r12
 bctrl ; branches to setLocalMatrix (r3 = model, r4 = mtx)
 lwz r0, 0x14(r1)
 mtlr r0 ; return LR to normal
