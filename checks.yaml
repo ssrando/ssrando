@@ -906,7 +906,7 @@ Flooded Faron Woods - 8 Purple Tadtones in Clearing after Small Hollow Tree:
 Flooded Faron Woods - Water Dragon's Reward:
   original item: Faron Song of the Hero Part
   type: Tadtones
-  hint: always
+  hint: sometimes
   text: completing a <r<watery song>> reveals
   Paths:
     - event/204-ForestF3/Give item after Faron SotH CS
