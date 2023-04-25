@@ -700,7 +700,10 @@
   - name: Item Status Text
     type: textadd
     unk1: 2
-    text: "<ye<Lanayru Caves Small Key>>: <string arg0>\n<y<Spiral Charge>>: <string arg1>\n<y<Life Tree Fruit>>: <string arg2>"
+    text: "<ye<Lanayru Caves Small Key>>: <string arg0>
+          \n<y<Spiral Charge>>: <string arg1>
+          \n<y<Life Tree Fruit>>: <string arg2>
+          \n<y<Group of Tadtones>>: <numeric arg0>"
   - name: Display Item Status Text
     type: flowadd
     flow:

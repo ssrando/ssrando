@@ -394,6 +394,9 @@ fn rando_text_command_handler(_event_flow_mgr: *mut ActorEventFlowMgr, p_flow_el
                 UNOBTAINED_TEXT.as_ptr()
             };
             text_manager_set_string_arg(life_tree_fruit_text as *const c_void, 2);
+
+            // Tadtones obtained.
+            text_manager_set_num_args(&[storyflag_get_to_value(953) as u32]);
         }
         74 => { // Increment storyflag counter
             let flag = flow_element.param1;
