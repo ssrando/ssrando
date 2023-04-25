@@ -417,6 +417,11 @@ class Ui_MainWindow(object):
 
         self.vlay_shuffles.addLayout(self.vlay_rupeesanity)
 
+        self.option_tadtonesanity = QCheckBox(self.box_shuffles)
+        self.option_tadtonesanity.setObjectName(u"option_tadtonesanity")
+
+        self.vlay_shuffles.addWidget(self.option_tadtonesanity)
+
         self.vspace_shuffles = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_shuffles.addItem(self.vspace_shuffles)
@@ -1735,7 +1740,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1784,6 +1789,7 @@ class Ui_MainWindow(object):
         self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Maximum Batreaux Reward", None))
         self.label_for_option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
         self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
+        self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))
         self.box_completion.setTitle(QCoreApplication.translate("MainWindow", u"Completion Conditions", None))
         self.label_for_option_got_starting_state.setText(QCoreApplication.translate("MainWindow", u"Starting State", None))
         self.label_for_option_got_sword_requirement.setText(QCoreApplication.translate("MainWindow", u"Sword Requirement", None))
