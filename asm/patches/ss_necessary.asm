@@ -285,7 +285,7 @@ b 0x801b0764 ; return to original function
 
 ; allow collecting items underwater
 .org 0x8025685c
-li r6, 0
+bl allow_item_get_underwater
 
 ; Update branches
 .org 0x802511f4

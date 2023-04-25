@@ -200,6 +200,29 @@ prevent_death:
 li r4, 1 ; quarter heart, enough to survive
 blr
 
+.global allow_item_get_underwater
+allow_item_get_underwater:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+lwz r6, LINK_PTR@sda21(r13)
+lwz r6, 0x364(r6) ; get actionflags
+rlwinm. r6, r6, 0x0, 0xd, 0xd ; is Link in water?
+cmpwi r6, 0
+beq return_vanilla
+li r6, 0
+b return
+
+return_vanilla:
+li r6, 4
+
+return:
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+
 
 ; space to declare all the functions defined in the
 ; custom-functions rust project
