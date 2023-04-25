@@ -88,6 +88,12 @@
   - Entering Flooded Great Tree for the first time automatically starts the Tadtones story quest
   - New logical option for completing the Owlan's Crystals check
     - Added access to Flooded Faron as an alternative to needing bomb bag
+- Added Tadtonesanity (by CovenEsme)
+  - Added 17 "Group of Tadtones" items to the item pool
+    - You can hand in all 17 to the Water Dragon to get an item
+    - You can check how many tadtone groups you have by talking to Fi
+  - Added 17 checks in Flooded Faron Woods
+    - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
 - Added Bokoblin Base as a region visitable in the randomizer (by CovenEsme)
   - Talking to the Shiekah Stone in the first room in Eldin Volcano takes you to the Bokoblin Base jail
   - Talking to the Shiekah Stone in the Bokoblin Base jail takes you back to Eldin Volcano
