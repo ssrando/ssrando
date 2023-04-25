@@ -1443,6 +1443,16 @@ F020: # Sky
     layer: 0
     room: 0
     objtype: STAG
+  - name: Enlarge Thunderhead Entrance
+    type: objpatch
+    id: 0xFC9D
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      posy: -4500
+      sizex: 12000
+      sizey: 12800
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
