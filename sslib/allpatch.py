@@ -304,7 +304,7 @@ class AllPatcher:
         )
         self.arc_replacements["Bird_Link.arc"] = (
             MODIFIED_ARC_TEMP_PATH / "Bird_Link.arc"
-        )  # dummy for new build
+        )
 
     def do_texture_recolour(
         self, arcData: U8File, maskFolderPath: Path, colorData: dict
