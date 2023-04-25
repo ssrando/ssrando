@@ -239,7 +239,12 @@ class AllPatcher:
             )
             arcPath = dataPath / "Alink.arc"
 
-        metaDataPath = dataPath / "metadata.json"
+        metaDataPath = (
+            CUSTOM_MODELS_PATH
+            / self.current_player_model_pack_name
+            / "Player"
+            / "metadata.json"
+        )
         if os.path.isfile(metaDataPath):
             with open(metaDataPath) as f:
                 metaData = json.load(f)
@@ -274,7 +279,12 @@ class AllPatcher:
             )
             arcPath = dataPath / "Bird_Link.arc"
 
-        metaDataPath = dataPath / "metadata.json"
+        metaDataPath = (
+            CUSTOM_MODELS_PATH
+            / self.current_loftwing_model_pack_name
+            / "Loftwing"
+            / "metadata.json"
+        )
         if os.path.isfile(metaDataPath):
             with open(metaDataPath) as f:
                 metaData = json.load(f)
@@ -295,13 +305,6 @@ class AllPatcher:
         self.arc_replacements["Bird_Link.arc"] = (
             MODIFIED_ARC_TEMP_PATH / "Bird_Link.arc"
         )
-
-        for path in self.actual_extract_path.glob("**/*.arc"):
-            modified = False
-            modified_path = str(path).replace(
-                str(self.actual_extract_path), str(self.modified_extract_path)
-            )
-            replacement = Path()
 
     def do_texture_recolour(
         self, arcData: U8File, maskFolderPath: Path, colorData: dict

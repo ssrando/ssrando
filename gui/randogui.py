@@ -263,13 +263,38 @@ class RandoGUI(QMainWindow):
         if not CUSTOM_MODELS_PATH.is_dir():
             CUSTOM_MODELS_PATH.mkdir()
 
-        if not os.path.isfile(LINK_MODEL_DATA_PATH / "Player" / "metadata.json"):
-            (LINK_MODEL_DATA_PATH / "Player" / "metadata.json").write_bytes(
+        # if not os.path.isfile(LINK_MODEL_DATA_PATH / "Player" / "metadata.json"):
+        #     (LINK_MODEL_DATA_PATH / "Player" / "metadata.json").write_bytes(
+        #         (LINK_MODEL_DATA_PATH / "Player" / "defaultMetadata.json").read_bytes()
+        #     )
+
+        # if not os.path.isfile(LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json"):
+        #     (LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json").write_bytes(
+        #         (
+        #             LINK_MODEL_DATA_PATH / "Loftwing" / "defaultMetadata.json"
+        #         ).read_bytes()
+        #     )
+
+        if not os.path.isdir(CUSTOM_MODELS_PATH / "Default"):
+            os.mkdir(CUSTOM_MODELS_PATH / "Default")
+
+        if not os.path.isdir(CUSTOM_MODELS_PATH / "Default" / "Player"):
+            os.mkdir(CUSTOM_MODELS_PATH / "Default" / "Player")
+
+        if not os.path.isdir(CUSTOM_MODELS_PATH / "Default" / "Loftwing"):
+            os.mkdir(CUSTOM_MODELS_PATH / "Default" / "Loftwing")
+
+        if not os.path.isfile(
+            CUSTOM_MODELS_PATH / "Default" / "Player" / "metadata.json"
+        ):
+            (CUSTOM_MODELS_PATH / "Default" / "Player" / "metadata.json").write_bytes(
                 (LINK_MODEL_DATA_PATH / "Player" / "defaultMetadata.json").read_bytes()
             )
 
-        if not os.path.isfile(LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json"):
-            (LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json").write_bytes(
+        if not os.path.isfile(
+            CUSTOM_MODELS_PATH / "Default" / "Loftwing" / "metadata.json"
+        ):
+            (CUSTOM_MODELS_PATH / "Default" / "Loftwing" / "metadata.json").write_bytes(
                 (
                     LINK_MODEL_DATA_PATH / "Loftwing" / "defaultMetadata.json"
                 ).read_bytes()
@@ -825,7 +850,10 @@ class RandoGUI(QMainWindow):
     def read_metadata(self):
         if self.current_model_pack == "Default":
             self.metadata_path = (
-                LINK_MODEL_DATA_PATH / self.current_model_type / "metadata.json"
+                CUSTOM_MODELS_PATH
+                / "Default"
+                / self.current_model_type
+                / "metadata.json"
             )
             if not os.path.isfile(self.metadata_path):
                 self.metadata_path.write_bytes(
