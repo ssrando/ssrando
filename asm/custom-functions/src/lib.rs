@@ -266,6 +266,11 @@ pub fn process_startflags() {
 
     let mut pouch_slot_iter = unsafe { (*FILE_MANAGER).FA.pouch_items.iter_mut() };
 
+    // Starting Tadtones.
+    // Next 5 bits.
+    let tadtone_count = additional_start_options_2 >> 4 & 0x1f; 
+    storyflag_set_to_value(953, tadtone_count.into());
+
     // Starting Hylian Shield.
     // 4th bit.
     if additional_start_options_2 >> 3 & 0x1 == 1 {
@@ -273,6 +278,8 @@ pub fn process_startflags() {
         *pouch_slot_iter.next().unwrap() = 125 | 0x30 << 0x10;
     }
 
+    // Starting Bottles.
+    // Last bit.
     let bottle_count = additional_start_options_2 & 0x7;
     for slot in pouch_slot_iter.take(bottle_count.into()) {
         *slot = 153; // ID for bottles

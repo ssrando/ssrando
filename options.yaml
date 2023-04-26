@@ -1043,3 +1043,12 @@
         groups in Flooded Faron Woods will give an item when collected. Get all 17 \"Group of Tadtones\" items to
         complete the music scroll and receive an item from the Water Dragon in Flooded Faron Woods."
   ui: option_tadtonesanity
+- name: Starting Tadtone Count
+  command: starting-tadtones
+  type: int
+  default: 0
+  min: 0
+  max: 17
+  bits: 5
+  help: How many groups of Tadtones to start with.
+  ui: option_starting_tadtones

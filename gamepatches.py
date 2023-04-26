@@ -1915,6 +1915,10 @@ class GamePatcher:
             crystal_packs * 5
         )
 
+        # Tadtones
+        self.starting_tadtones = 0
+        self.starting_tadtones += start_item_counts.pop(GROUP_OF_TADTONES, 0)
+
         # Empty Bottles
         self.starting_bottles = 0
         self.starting_bottles += start_item_counts.pop(EMPTY_BOTTLE, 0)
@@ -2935,13 +2939,18 @@ class GamePatcher:
 
         start_flags_write.write(struct.pack(">H", additional_start_options))
 
-        # Starting shield and bottles.
+        # Starting shield, bottles and tadtones.
         ## Last 3 bits for starting bottles.
         additional_start_options_2 = self.starting_bottles
 
         ## Next 1 bit for starting Hylian Shield.
         if self.start_with_hylian_shield:
             additional_start_options_2 = additional_start_options_2 | (1 << 3)
+
+        ## Next 5 bits for starting Tadtones.
+        additional_start_options_2 = additional_start_options_2 | (
+            self.starting_tadtones << 4
+        )
 
         start_flags_write.write(struct.pack(">B", additional_start_options_2))
 

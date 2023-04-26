@@ -191,6 +191,11 @@ class Rando:
             for bottle_num in range(self.options["starting-bottles"])
         }
 
+        starting_items |= {
+            number(GROUP_OF_TADTONES, tadtone_num)
+            for tadtone_num in range(self.options["starting-tadtones"])
+        }
+
         if self.options["start-with-hylian-shield"]:
             starting_items.add(HYLIAN_SHIELD)
 

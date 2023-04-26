@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>5</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -2001,6 +2001,30 @@
              </item>
              <item>
               <widget class="QSpinBox" name="option_starting_crystal_packs">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hlay_starting_tadtones">
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_for_option_starting_tadtones">
+               <property name="text">
+                <string>Starting Groups of Tadtones</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="option_starting_tadtones">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                  <horstretch>0</horstretch>

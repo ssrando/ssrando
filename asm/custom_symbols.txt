@@ -13,13 +13,13 @@ main.dol:
   is_custom_rando_item: 0x80678570
   fix_custom_item_get: 0x80678590
   process_startflags: 0x80678630
-  handle_bk_map_dungeonflag: 0x806789C8
-  rando_text_command_handler: 0x80678A78
-  textbox_a_pressed_or_b_held: 0x80678D48
-  set_goddess_sword_pulled_scene_flag: 0x80678D78
-  randomize_boss_key_start_pos: 0x80678DA4
-  get_item_arc_name: 0x80678DD0
-  get_item_model_name_ptr: 0x80678E00
+  handle_bk_map_dungeonflag: 0x806789E4
+  rando_text_command_handler: 0x80678A94
+  textbox_a_pressed_or_b_held: 0x80678D64
+  set_goddess_sword_pulled_scene_flag: 0x80678D94
+  randomize_boss_key_start_pos: 0x80678DC0
+  get_item_arc_name: 0x80678DEC
+  get_item_model_name_ptr: 0x80678E1C
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
