@@ -1226,16 +1226,17 @@ def rando_patch_goddess_crest(bzs: OrderedDict, itemid: int, index: str):
         obj["params2"] = mask_shift_set(obj["params2"], 0xFF, 0x18, itemid)
 
 
-def rando_patch_tadtone_group(bzs: OrderedDict, itemid: int, id: str):
-    id = int(id, 0)
-    clef = next(
-        filter(
-            lambda x: x["name"] == "Clef" and x["id"] == id,
-            bzs["OBJ "],
-        )
+def rando_patch_tadtone_group(bzs: OrderedDict, itemid: int, groupId: str):
+    groupId = int(groupId, 0)
+    clefs = filter(
+        lambda x: x["name"] == "Clef" and ((x["params1"] >> 3) & 0x1F) == groupId,
+        bzs["OBJ "],
     )
-    # print(clef["params1"], clef["angley"], clef["anglez"])
-    clef["anglez"] = mask_shift_set(clef["anglez"], 0xFFFF, 0, itemid)
+
+    next_clef = next(clefs, False)
+    while next_clef:
+        next_clef["anglez"] = mask_shift_set(next_clef["anglez"], 0xFFFF, 0, itemid)
+        next_clef = next(clefs, False)
 
 
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place

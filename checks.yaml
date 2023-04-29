@@ -761,147 +761,87 @@ Flooded Faron Woods - Yellow Tadtone under Lilypad:
   original item: "Group of Tadtones #0"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0xFDC1
+    - stage/F103/r0/l2/Clef/10 # group number
 Flooded Faron Woods - 8 Light Blue Tadtones near Viewing Platform:
   original item: "Group of Tadtones #1"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x0D89
-    - stage/F103/r0/l2/Clef/0x0D8A
-    - stage/F103/r0/l2/Clef/0x0D8B
-    - stage/F103/r0/l2/Clef/0x0D8C
-    - stage/F103/r0/l2/Clef/0x0D8D
-    - stage/F103/r0/l2/Clef/0x0D8E
-    - stage/F103/r0/l2/Clef/0x0D8F
-    - stage/F103/r0/l2/Clef/0x0D90
+    - stage/F103/r0/l2/Clef/4 # group number
 Flooded Faron Woods - 4 Purple Tadtones under Viewing Platform:
   original item: "Group of Tadtones #2"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01B4
-    - stage/F103/r0/l2/Clef/0x01B5
-    - stage/F103/r0/l2/Clef/0x01B6
-    - stage/F103/r0/l2/Clef/0x01B7
+    - stage/F103/r0/l2/Clef/2 # group number
 Flooded Faron Woods - Red Moving Tadtone near Viewing Platform:
   original item: "Group of Tadtones #3"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01C3
+    - stage/F103/r0/l2/Clef/1 # group number
 Flooded Faron Woods - Light Blue Tadtone under Great Tree Root:
   original item: "Group of Tadtones #4"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x0188
+    - stage/F103/r0/l2/Clef/13 # group number
 Flooded Faron Woods - 8 Yellow Tadtones near Kikwi Elder:
   original item: "Group of Tadtones #5"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0xFD91
-    - stage/F103/r0/l2/Clef/0xFD92
-    - stage/F103/r0/l2/Clef/0xFD93
-    - stage/F103/r0/l2/Clef/0xFD94
-    - stage/F103/r0/l2/Clef/0xFD95
-    - stage/F103/r0/l2/Clef/0xFD96
-    - stage/F103/r0/l2/Clef/0xFD97
-    - stage/F103/r0/l2/Clef/0xFD98
+    - stage/F103/r0/l2/Clef/6 # group number
 Flooded Faron Woods - 4 Light Blue Moving Tadtones under Kikwi Elder:
   original item: "Group of Tadtones #6"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01AC
-    - stage/F103/r0/l2/Clef/0x01AD
-    - stage/F103/r0/l2/Clef/0x01AE
-    - stage/F103/r0/l2/Clef/0x01AF
+    - stage/F103/r0/l2/Clef/8 # group number
 Flooded Faron Woods - 4 Red Moving Tadtones North West of Great Tree:
   original item: "Group of Tadtones #7"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x0199
-    - stage/F103/r0/l2/Clef/0x019A
-    - stage/F103/r0/l2/Clef/0x019B
-    - stage/F103/r0/l2/Clef/0x019C
+    - stage/F103/r0/l2/Clef/11 # group number
 Flooded Faron Woods - Green Tadtone behind Upper Bombable Rock:
   original item: "Group of Tadtones #8"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01C0
+    - stage/F103/r0/l2/Clef/5 # group number
 Flooded Faron Woods - 2 Dark Blue Tadtones in Grass West of Great Tree:
   original item: "Group of Tadtones #9"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01BE
-    - stage/F103/r0/l2/Clef/0x01BF
+    - stage/F103/r0/l2/Clef/3 # group number
 Flooded Faron Woods - 8 Green Tadtones in West Tunnel:
   original item: "Group of Tadtones #10"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01CE
-    - stage/F103/r0/l2/Clef/0x01A5
-    - stage/F103/r0/l2/Clef/0x01A6
-    - stage/F103/r0/l2/Clef/0x01A7
-    - stage/F103/r0/l2/Clef/0x01A8
-    - stage/F103/r0/l2/Clef/0x01A9
-    - stage/F103/r0/l2/Clef/0x01AA
-    - stage/F103/r0/l2/Clef/0x01AB
+    - stage/F103/r0/l2/Clef/9 # group number
 Flooded Faron Woods - 2 Red Tadtones in Grass near Lower Bombable Rock:
   original item: "Group of Tadtones #11"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01BC
-    - stage/F103/r0/l2/Clef/0x01BD
+    - stage/F103/r0/l2/Clef/15 # group number
 Flooded Faron Woods - 16 Dark Blue Tadtones in the South West:
   original item: "Group of Tadtones #12"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x0173
-    - stage/F103/r0/l2/Clef/0x0174
-    - stage/F103/r0/l2/Clef/0x0175
-    - stage/F103/r0/l2/Clef/0x0176
-    - stage/F103/r0/l2/Clef/0x0177
-    - stage/F103/r0/l2/Clef/0x0178
-    - stage/F103/r0/l2/Clef/0x0179
-    - stage/F103/r0/l2/Clef/0x017A
-    - stage/F103/r0/l2/Clef/0x017B
-    - stage/F103/r0/l2/Clef/0x017C
-    - stage/F103/r0/l2/Clef/0x017D
-    - stage/F103/r0/l2/Clef/0x017E
-    - stage/F103/r0/l2/Clef/0x017F
-    - stage/F103/r0/l2/Clef/0x0180
-    - stage/F103/r0/l2/Clef/0x0181
-    - stage/F103/r0/l2/Clef/0x0182
+    - stage/F103/r0/l2/Clef/17 # group number
 Flooded Faron Woods - 4 Purple Moving Tadtones near Floria Gate:
   original item: "Group of Tadtones #13"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01B0
-    - stage/F103/r0/l2/Clef/0x01B1
-    - stage/F103/r0/l2/Clef/0x01B2
-    - stage/F103/r0/l2/Clef/0x01B3
+    - stage/F103/r0/l2/Clef/16 # group number
 Flooded Faron Woods - Dark Blue Moving Tadtone inside Small Hollow Tree:
   original item: "Group of Tadtones #14"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01C2
+    - stage/F103/r0/l2/Clef/7 # group number
 Flooded Faron Woods - 4 Yellow Tadtones under Small Hollow Tree:
   original item: "Group of Tadtones #15"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x01B8
-    - stage/F103/r0/l2/Clef/0x01B9
-    - stage/F103/r0/l2/Clef/0x01BA
-    - stage/F103/r0/l2/Clef/0x01BB
+    - stage/F103/r0/l2/Clef/14 # group number
 Flooded Faron Woods - 8 Purple Tadtones in Clearing after Small Hollow Tree:
   original item: "Group of Tadtones #16"
   type: Tadtones
   Paths:
-    - stage/F103/r0/l2/Clef/0x019D
-    - stage/F103/r0/l2/Clef/0x019E
-    - stage/F103/r0/l2/Clef/0x019F
-    - stage/F103/r0/l2/Clef/0x01A0
-    - stage/F103/r0/l2/Clef/0x01A1
-    - stage/F103/r0/l2/Clef/0x01A2
-    - stage/F103/r0/l2/Clef/0x01A3
-    - stage/F103/r0/l2/Clef/0x01A4
+    - stage/F103/r0/l2/Clef/12 # group number
 
 Flooded Faron Woods - Water Dragon's Reward:
   original item: Faron Song of the Hero Part

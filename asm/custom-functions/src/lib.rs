@@ -113,7 +113,7 @@ fn dungeon_global_key_count(scene_index: u16) -> u16 {
     unsafe { (*dungeonflag_global(scene_index))[1] & 0xF }
 }
 
-fn storyflag_get_to_value(flag: u16) -> u16 {
+fn storyflag_get_value(flag: u16) -> u16 {
     return unsafe { FlagManager__getFlagOrCounter(STORYFLAG_MANAGER, flag) };
 }
 
@@ -403,19 +403,19 @@ fn rando_text_command_handler(_event_flow_mgr: *mut ActorEventFlowMgr, p_flow_el
             text_manager_set_string_arg(life_tree_fruit_text as *const c_void, 2);
 
             // Tadtones obtained.
-            text_manager_set_num_args(&[storyflag_get_to_value(953) as u32]);
+            text_manager_set_num_args(&[storyflag_get_value(953) as u32]);
         }
         74 => { // Increment storyflag counter
             let flag = flow_element.param1;
             let increment = flow_element.param2;
             
-            storyflag_set_to_value(flag, storyflag_get_to_value(flag) + increment);
+            storyflag_set_to_value(flag, storyflag_get_value(flag) + increment);
         }
         75 => { // Have collected all tadtone groups?
-            let tadtone_groups_left = 17 - storyflag_get_to_value(953);
-            text_manager_set_num_args(&[tadtone_groups_left as u32]);
+            let tadtone_groups_left: u32 = 17_u16.saturating_sub(storyflag_get_value(953)).into();
+            text_manager_set_num_args(&[tadtone_groups_left]);
             unsafe {
-                (*_event_flow_mgr).result_from_previous_check = tadtone_groups_left as u32;
+                (*_event_flow_mgr).result_from_previous_check = tadtone_groups_left;
             }
         }
         _ => (),
