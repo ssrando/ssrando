@@ -1691,7 +1691,7 @@ class Ui_MainWindow(object):
         self.option_description.setSizePolicy(sizePolicy11)
         self.option_description.setMinimumSize(QSize(0, 48))
         self.option_description.setStyleSheet(u"")
-        self.option_description.setTextFormat(Qt.PlainText)
+        self.option_description.setTextFormat(Qt.MarkdownText)
         self.option_description.setWordWrap(True)
 
         self.verticalLayout.addWidget(self.option_description)
@@ -1857,7 +1857,7 @@ class Ui_MainWindow(object):
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.edit_tricks.setText(QCoreApplication.translate("MainWindow", u"Tricks", None))
         self.label_include_locations.setText(QCoreApplication.translate("MainWindow", u"Included Locations", None))
-        self.include_category_filters.setProperty("placeholderText", "")
+        self.include_category_filters.setPlaceholderText("")
         self.included_free_search.setText("")
         self.included_free_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.include_location.setText(QCoreApplication.translate("MainWindow", u"Include\n"
@@ -1918,7 +1918,7 @@ class Ui_MainWindow(object):
         self.box_font.setTitle(QCoreApplication.translate("MainWindow", u"Fonts", None))
         self.label_for_option_font_family.setText(QCoreApplication.translate("MainWindow", u"Font Family", None))
         self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Arial", None))
-        self.option_font_family.setProperty("placeholderText", QCoreApplication.translate("MainWindow", u"Select Font Family", None))
+        self.option_font_family.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select Font Family", None))
         self.label_for_option_font_size.setText(QCoreApplication.translate("MainWindow", u"Font Size", None))
         self.reset_font_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.box_1.setTitle("")
