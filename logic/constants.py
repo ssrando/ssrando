@@ -889,3 +889,20 @@ ALLOWED_STARTING_ITEMS = (
     | GRATITUDE_CRYSTAL_PACKS
     | EMPTY_BOTTLES
 )
+
+LOCATION_FILTER_TYPES = (
+    "Goddess Chests",
+    "Faron Woods Goddess Chests",
+    "Lake Floria Goddess Chests",
+    "Eldin Volcano Goddess Chests",
+    "Volcano Summit Goddess Chests",
+    "Lanayru Desert Goddess Chests",
+    "Sand Sea Goddess Chests",
+    "Combat",
+    "Minigames",
+    "Beedle's Shop Purchases",
+    "Loose Crystals",
+    "Gratitude Crystal Sidequests",
+    "Scrapper Deliveries",
+    "Rupees",
+)
