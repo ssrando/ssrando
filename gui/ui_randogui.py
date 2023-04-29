@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.3
+## Created by: Qt User Interface Compiler version 6.5.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -372,35 +372,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.vlay_shuffles = QVBoxLayout()
         self.vlay_shuffles.setObjectName(u"vlay_shuffles")
-        self.vlay_batreaux = QVBoxLayout()
-        self.vlay_batreaux.setObjectName(u"vlay_batreaux")
-        self.label_for_option_max_batreaux_reward = QLabel(self.box_shuffles)
-        self.label_for_option_max_batreaux_reward.setObjectName(u"label_for_option_max_batreaux_reward")
-
-        self.vlay_batreaux.addWidget(self.label_for_option_max_batreaux_reward)
-
-        self.option_max_batreaux_reward = QComboBox(self.box_shuffles)
-        self.option_max_batreaux_reward.setObjectName(u"option_max_batreaux_reward")
-
-        self.vlay_batreaux.addWidget(self.option_max_batreaux_reward)
-
-
-        self.vlay_shuffles.addLayout(self.vlay_batreaux)
-
-        self.vlay_shopsanity = QVBoxLayout()
-        self.vlay_shopsanity.setObjectName(u"vlay_shopsanity")
-        self.label_for_option_shopsanity = QLabel(self.box_shuffles)
-        self.label_for_option_shopsanity.setObjectName(u"label_for_option_shopsanity")
-
-        self.vlay_shopsanity.addWidget(self.label_for_option_shopsanity)
-
-        self.option_shopsanity = QComboBox(self.box_shuffles)
+        self.option_shopsanity = QCheckBox(self.box_shuffles)
         self.option_shopsanity.setObjectName(u"option_shopsanity")
 
-        self.vlay_shopsanity.addWidget(self.option_shopsanity)
-
-
-        self.vlay_shuffles.addLayout(self.vlay_shopsanity)
+        self.vlay_shuffles.addWidget(self.option_shopsanity)
 
         self.vlay_rupeesanity = QVBoxLayout()
         self.vlay_rupeesanity.setObjectName(u"vlay_rupeesanity")
@@ -1759,7 +1734,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1805,8 +1780,7 @@ class Ui_MainWindow(object):
         self.tab_randomization_settings.setToolTip("")
 #endif // QT_CONFIG(tooltip)
         self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
-        self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Maximum Batreaux Reward", None))
-        self.label_for_option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
+        self.option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Beedle's Shop", None))
         self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
         self.box_completion.setTitle(QCoreApplication.translate("MainWindow", u"Completion Conditions", None))
         self.label_for_option_got_starting_state.setText(QCoreApplication.translate("MainWindow", u"Starting State", None))
@@ -1857,7 +1831,7 @@ class Ui_MainWindow(object):
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.edit_tricks.setText(QCoreApplication.translate("MainWindow", u"Tricks", None))
         self.label_include_locations.setText(QCoreApplication.translate("MainWindow", u"Included Locations", None))
-        self.include_category_filters.setProperty("placeholderText", "")
+        self.include_category_filters.setPlaceholderText("")
         self.included_free_search.setText("")
         self.included_free_search.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.include_location.setText(QCoreApplication.translate("MainWindow", u"Include\n"
@@ -1918,7 +1892,7 @@ class Ui_MainWindow(object):
         self.box_font.setTitle(QCoreApplication.translate("MainWindow", u"Fonts", None))
         self.label_for_option_font_family.setText(QCoreApplication.translate("MainWindow", u"Font Family", None))
         self.option_font_family.setCurrentText(QCoreApplication.translate("MainWindow", u"Arial", None))
-        self.option_font_family.setProperty("placeholderText", QCoreApplication.translate("MainWindow", u"Select Font Family", None))
+        self.option_font_family.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select Font Family", None))
         self.label_for_option_font_size.setText(QCoreApplication.translate("MainWindow", u"Font Size", None))
         self.reset_font_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.box_1.setTitle("")

@@ -204,36 +204,36 @@ Skyloft Village - Sparrot's Crystals:
 # Batreaux Rewards:
 Batreaux's House - 5 Crystals:
   original item: Progressive Wallet
-  type:
+  type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/21
     - oarc/F012r/l0
 Batreaux's House - 10 Crystals:
   original item: Heart Piece
-  type:
+  type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/42
     - oarc/F012r/l0
 Batreaux's House - 30 Crystals:
   original item: Progressive Wallet
-  type:
+  type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
 Batreaux's House - 30 Crystals Chest:
   original item: Cursed Medal
-  type:
+  type: Batreaux's Rewards
   Paths:
     - stage/F012r/r0/l0/TBox/69
 Batreaux's House - 40 Crystals:
   original item: Gold Rupee
-  type:
+  type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/49
     - oarc/F012r/l0
 Batreaux's House - 50 Crystals:
   original item: Progressive Wallet
-  type:
+  type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
@@ -241,7 +241,7 @@ Batreaux's House - 50 Crystals:
   text: <ye<50>> <r<pieces of gratitude>> can be exchanged for
 Batreaux's House - 70 Crystals:
   original item: Gold Rupee
-  type:
+  type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
@@ -249,7 +249,7 @@ Batreaux's House - 70 Crystals:
   text: the <r<demon's penultimate reward>> is
 Batreaux's House - 70 Crystals Second Reward:
   original item: Gold Rupee
-  type:
+  type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
@@ -257,7 +257,7 @@ Batreaux's House - 70 Crystals Second Reward:
   text: the <r<demon's penultimate reward>> is
 Batreaux's House - 80 Crystals:
   original item: Progressive Wallet
-  type:
+  type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
@@ -267,56 +267,56 @@ Batreaux's House - 80 Crystals:
 # Beedle's Shop:
 Beedle's Shop - 300 Rupee Item:
   original item: "Progressive Pouch #1"
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
   Paths:
     - ShpSmpl/20
 Beedle's Shop - 600 Rupee Item:
   original item: "Progressive Pouch #2"
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
   Paths:
     - ShpSmpl/21
 Beedle's Shop - 1200 Rupee Item:
   original item: "Progressive Pouch #3"
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
   hint: always
   Paths:
     - ShpSmpl/22
   text: for <g+<1200 rupees>> <r<Beedle>> sells
 Beedle's Shop - 800 Rupee Item:
   original item: "Life Medal #0"
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
   Paths:
     - ShpSmpl/26
 Beedle's Shop - 1600 Rupee Item:
   original item: "Heart Piece #0"
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
   hint: always
   Paths:
     - ShpSmpl/23
   text: for <g+<1600 rupees>> <r<Beedle>> sells
 Beedle's Shop - First 100 Rupee Item:
   original item: "Extra Wallet #0"
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
   Paths:
     - ShpSmpl/24
 Beedle's Shop - Second 100 Rupee Item:
   original item: "Extra Wallet #1"
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
   Paths:
     - ShpSmpl/17
 Beedle's Shop - Third 100 Rupee Item:
   original item: "Extra Wallet #2"
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
   Paths:
     - ShpSmpl/18
 Beedle's Shop - 50 Rupee Item:
   original item: "Progressive Bug Net #0"
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
   Paths:
     - ShpSmpl/25
 Beedle's Shop - 1000 Rupee Item:
   original item: Bug Medal
-  type: Beedle's Shop Purchases
+  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
   Paths:
     - ShpSmpl/27
 
