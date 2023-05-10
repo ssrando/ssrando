@@ -1352,7 +1352,7 @@
                  <layout class="QHBoxLayout" name="hlay_include_filters">
                   <item>
                    <widget class="QComboBox" name="include_category_filters">
-                    <property name="placeholderText" stdset="0">
+                    <property name="placeholderText">
                      <string/>
                     </property>
                    </widget>
@@ -2315,6 +2315,9 @@
                <property name="sizeAdjustPolicy">
                 <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
                </property>
+               <property name="placeholderText">
+                <string>Select Font Family</string>
+               </property>
                <property name="writingSystem">
                 <enum>QFontDatabase::Any</enum>
                </property>
@@ -2326,9 +2329,6 @@
                  <family>Arial</family>
                  <pointsize>10</pointsize>
                 </font>
-               </property>
-               <property name="placeholderText" stdset="0">
-                <string>Select Font Family</string>
                </property>
               </widget>
              </item>
@@ -2520,7 +2520,7 @@
        <string/>
       </property>
       <property name="textFormat">
-       <enum>Qt::PlainText</enum>
+       <enum>Qt::MarkdownText</enum>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
