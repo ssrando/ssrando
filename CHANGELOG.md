@@ -1,6 +1,8 @@
 # Changelog
 
 ## Dev
+
+## 1.4.0
 ### Options
 - Split hero mode options to make each effect individually toggleable (by Zeldex)
   - Option to allow recovery hearts to spawn
