@@ -2581,6 +2581,13 @@
     flow:
       next: 276
 404-DesertF3:
+  - name: Don't act when both other Dragons are already met
+    type: flowpatch
+    index: 21
+    flow: {}
+    cases:
+      - 79
+      - 79
   - name: Set story flags from skipped cutscene
     type: flowpatch
     index: 165
