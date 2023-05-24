@@ -2,10 +2,12 @@
 #![feature(split_array)]
 
 use core::{
-    ffi::{c_ushort, c_void},
+    ffi::{CStr, c_char, c_ushort, c_void},
     ptr::slice_from_raw_parts,
     slice,
 };
+
+use cstr::cstr;
 
 use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
 
@@ -34,6 +36,25 @@ struct DungeonflagManager {
     flagindex: c_ushort,
 }
 
+#[repr(C)]
+struct ActorEventFlowMgr {
+    vtable: u32,
+    msbf_info: u32,
+    current_flow_index: u32,
+    unk1: u32,
+    unk2: u32,
+    unk3: u32,
+    result_from_previous_check: u32,
+    current_text_label_name: [u8; 32],
+    unk4: u32,
+    unk5: u32,
+    unk6: u32,
+    next_flow_delay_timer: u32,
+    another_flow_element: u128,
+    unk7: u32,
+    unk8: u32,
+}
+
 extern "C" {
     static SPAWN_SLAVE: *mut SpawnStruct;
     fn setStoryflagToValue(flag: u16, value: u16);
@@ -44,6 +65,7 @@ extern "C" {
         mgr: *mut filemanager_gen::FileManager,
     ) -> *mut [[c_ushort; 8usize]; 22usize];
     fn FlagManager__setFlagTo1(mgr: *mut c_void, flag: u16);
+    fn FlagManager__getFlagOrCounter(mgr: *mut c_void, flag: u16) -> u16;
     fn FlagManager__setFlagOrCounter(mgr: *mut c_void, flag: u16, value: u16);
     static ITEMFLAG_MANAGER: *mut c_void;
     fn ItemflagManager__doCommit(mgr: *mut c_void);
@@ -58,6 +80,7 @@ extern "C" {
     fn getKeyPieceCount() -> u16;
     fn increaseCounter(counterId: u16, count: u16);
     fn setFlagForItem(itemflag: u16);
+    fn getModelDataFromOarc(oarc_mgr: *const c_void, oarc_str: *const c_char) -> *const c_void;
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -88,6 +111,10 @@ fn dungeonflag_global(scene_index: u16) -> *mut [u16; 8] {
 
 fn dungeon_global_key_count(scene_index: u16) -> u16 {
     unsafe { (*dungeonflag_global(scene_index))[1] & 0xF }
+}
+
+fn storyflag_get_value(flag: u16) -> u16 {
+    return unsafe { FlagManager__getFlagOrCounter(STORYFLAG_MANAGER, flag) };
 }
 
 fn storyflag_set_to_value(flag: u16, value: u16) {
@@ -239,6 +266,11 @@ pub fn process_startflags() {
 
     let mut pouch_slot_iter = unsafe { (*FILE_MANAGER).FA.pouch_items.iter_mut() };
 
+    // Starting Tadtones.
+    // Next 5 bits.
+    let tadtone_count = additional_start_options_2 >> 4 & 0x1f; 
+    storyflag_set_to_value(953, tadtone_count.into());
+
     // Starting Hylian Shield.
     // 4th bit.
     if additional_start_options_2 >> 3 & 0x1 == 1 {
@@ -246,6 +278,8 @@ pub fn process_startflags() {
         *pouch_slot_iter.next().unwrap() = 125 | 0x30 << 0x10;
     }
 
+    // Starting Bottles.
+    // Last bit.
     let bottle_count = additional_start_options_2 & 0x7;
     for slot in pouch_slot_iter.take(bottle_count.into()) {
         *slot = 153; // ID for bottles
@@ -306,7 +340,7 @@ const INCOMPLETE_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x09\0 \0I\0n\0c\
 const UNREQUIRED_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x0C\0 \0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
 
 #[no_mangle]
-fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *const FlowElement) {
+fn rando_text_command_handler(_event_flow_mgr: *mut ActorEventFlowMgr, p_flow_element: *const FlowElement) {
     let flow_element = unsafe { &*p_flow_element };
     match flow_element.param3 {
         71 => {
@@ -367,6 +401,22 @@ fn rando_text_command_handler(_event_flow_mgr: *mut c_void, p_flow_element: *con
                 UNOBTAINED_TEXT.as_ptr()
             };
             text_manager_set_string_arg(life_tree_fruit_text as *const c_void, 2);
+
+            // Tadtones obtained.
+            text_manager_set_num_args(&[storyflag_get_value(953) as u32]);
+        }
+        74 => { // Increment storyflag counter
+            let flag = flow_element.param1;
+            let increment = flow_element.param2;
+            
+            storyflag_set_to_value(flag, storyflag_get_value(flag) + increment);
+        }
+        75 => { // Have collected all tadtone groups?
+            let tadtone_groups_left: u32 = 17_u16.saturating_sub(storyflag_get_value(953)).into();
+            text_manager_set_num_args(&[tadtone_groups_left]);
+            unsafe {
+                (*_event_flow_mgr).result_from_previous_check = tadtone_groups_left;
+            }
         }
         _ => (),
     }
@@ -384,10 +434,8 @@ fn textbox_a_pressed_or_b_held() -> bool {
 
 #[no_mangle]
 fn set_goddess_sword_pulled_scene_flag() {
-    unsafe {
-        // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
-        storyflag_set_to_1(951);
-    }
+    // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
+    storyflag_set_to_1(951);
 }
 
 fn simple_rng(rng: &mut u32) -> u32 {
@@ -402,6 +450,25 @@ fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
     for angle in angles.iter_mut() {
         *angle = simple_rng(&mut seed) as u16;
     }
+}
+
+#[no_mangle]
+fn get_item_arc_name(oarc_mgr: *const c_void, vanilla_item_str: *const c_char, item_id: u32) -> *const c_void {
+    // Tadtone
+    if item_id == 214 {
+        return unsafe { getModelDataFromOarc(oarc_mgr, cstr!("Onp").as_ptr()) };
+    }
+
+    return unsafe { getModelDataFromOarc(oarc_mgr, vanilla_item_str) };
+}
+
+#[no_mangle]
+fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
+    if item_id == 214 {
+        return cstr!("OnpB").as_ptr();
+    }
+
+    return core::ptr::null();
 }
 
 #[panic_handler]

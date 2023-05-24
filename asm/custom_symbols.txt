@@ -8,12 +8,18 @@ main.dol:
   unset_sandship_timestone_if_necessary: 0x8067849C
   patch_bit: 0x806784CC
   no_minigame_death: 0x806784D8
-  process_startflags: 0x80678500
-  handle_bk_map_dungeonflag: 0x80678898
-  rando_text_command_handler: 0x80678948
-  textbox_a_pressed_or_b_held: 0x80678B60
-  set_goddess_sword_pulled_scene_flag: 0x80678B90
-  randomize_boss_key_start_pos: 0x80678BBC
+  allow_item_get_underwater: 0x80678500
+  get_item_model_name: 0x8067853C
+  is_custom_rando_item: 0x80678570
+  fix_custom_item_get: 0x80678590
+  process_startflags: 0x80678630
+  handle_bk_map_dungeonflag: 0x806789E4
+  rando_text_command_handler: 0x80678A94
+  textbox_a_pressed_or_b_held: 0x80678D74
+  set_goddess_sword_pulled_scene_flag: 0x80678DA4
+  randomize_boss_key_start_pos: 0x80678DD0
+  get_item_arc_name: 0x80678DFC
+  get_item_model_name_ptr: 0x80678E2C
 d_a_birdNP.rel:
   loftwing_speed_limit: 0xF298
 d_t_D3_scene_changeNP.rel:
@@ -43,3 +49,7 @@ d_t_player_restartNP.rel:
   only_set_flag_conditionally: 0x6A4
 d_a_obj_toD3_stone_figureNP.rel:
   set_sot_placed_flag: 0x1388
+d_a_obj_clefNP.rel:
+  give_random_item_from_collecting_tadtone_group: 0x4A2C
+d_t_clef_gameNP.rel:
+  check_tadtone_counter_before_event: 0x724

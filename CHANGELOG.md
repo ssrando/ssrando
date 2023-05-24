@@ -1,6 +1,15 @@
 # Changelog
 
 ## Dev
+### Options
+- Added Tadtonesanity (by CovenEsme)
+  - Added 17 "Group of Tadtones" items to the item pool
+    - You can hand in all 17 to the Water Dragon to get an item
+    - You can check how many tadtone groups you have by talking to Fi
+  - Added 17 checks in Flooded Faron Woods
+    - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
+### Changes
+- Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 
 ## 1.4.1
 ### Bugfixes

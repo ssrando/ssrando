@@ -17,4 +17,5 @@ opt-level = "s"
 lto = true
 
 [dependencies]
+cstr = "0.2.11"
 panic-abort = "0.3.2"

@@ -417,6 +417,11 @@ class Ui_MainWindow(object):
 
         self.vlay_shuffles.addLayout(self.vlay_rupeesanity)
 
+        self.option_tadtonesanity = QCheckBox(self.box_shuffles)
+        self.option_tadtonesanity.setObjectName(u"option_tadtonesanity")
+
+        self.vlay_shuffles.addWidget(self.option_tadtonesanity)
+
         self.vspace_shuffles = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_shuffles.addItem(self.vspace_shuffles)
@@ -1419,6 +1424,24 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addLayout(self.hlay_starting_crystal_packs)
 
+        self.hlay_starting_tadtones = QHBoxLayout()
+        self.hlay_starting_tadtones.setObjectName(u"hlay_starting_tadtones")
+        self.hlay_starting_tadtones.setContentsMargins(-1, 0, -1, -1)
+        self.label_for_option_starting_tadtones = QLabel(self.box_additional_options)
+        self.label_for_option_starting_tadtones.setObjectName(u"label_for_option_starting_tadtones")
+
+        self.hlay_starting_tadtones.addWidget(self.label_for_option_starting_tadtones)
+
+        self.option_starting_tadtones = QSpinBox(self.box_additional_options)
+        self.option_starting_tadtones.setObjectName(u"option_starting_tadtones")
+        sizePolicy9.setHeightForWidth(self.option_starting_tadtones.sizePolicy().hasHeightForWidth())
+        self.option_starting_tadtones.setSizePolicy(sizePolicy9)
+
+        self.hlay_starting_tadtones.addWidget(self.option_starting_tadtones)
+
+
+        self.verticalLayout_29.addLayout(self.hlay_starting_tadtones)
+
         self.option_random_starting_item = QCheckBox(self.box_additional_options)
         self.option_random_starting_item.setObjectName(u"option_random_starting_item")
         sizePolicy5.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
@@ -1759,7 +1782,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1808,6 +1831,7 @@ class Ui_MainWindow(object):
         self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Maximum Batreaux Reward", None))
         self.label_for_option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
         self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
+        self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))
         self.box_completion.setTitle(QCoreApplication.translate("MainWindow", u"Completion Conditions", None))
         self.label_for_option_got_starting_state.setText(QCoreApplication.translate("MainWindow", u"Starting State", None))
         self.label_for_option_got_sword_requirement.setText(QCoreApplication.translate("MainWindow", u"Sword Requirement", None))
@@ -1897,6 +1921,7 @@ class Ui_MainWindow(object):
         self.label_for_option_starting_tablet_count.setText(QCoreApplication.translate("MainWindow", u"Starting Tablets", None))
         self.label_for_option_starting_bottles.setText(QCoreApplication.translate("MainWindow", u"Starting Empty Bottles", None))
         self.label_for_option_starting_crystal_packs.setText(QCoreApplication.translate("MainWindow", u"Starting Gratitude Crystal Packs", None))
+        self.label_for_option_starting_tadtones.setText(QCoreApplication.translate("MainWindow", u"Starting Groups of Tadtones", None))
         self.option_random_starting_item.setText(QCoreApplication.translate("MainWindow", u"Start with Random Progress Item", None))
         self.option_start_with_hylian_shield.setText(QCoreApplication.translate("MainWindow", u"Start with Hylian Shield", None))
         self.option_full_starting_wallet.setText(QCoreApplication.translate("MainWindow", u"Start with Full Wallet", None))

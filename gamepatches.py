@@ -436,6 +436,7 @@ HEIGHT_OFFSETS = {
     211: -20.0,  # Fire Sanctuary Map
     212: -20.0,  # Sandship Map
     213: -20.0,  # Sky Keep Map
+    214: 0.0,  # Group of Tadtones
 }
 
 SHOP_BUY_DECIDE_SCALE = {
@@ -507,6 +508,7 @@ SHOP_BUY_DECIDE_SCALE = {
     211: 1.2,  # Fire Sanctuary Map
     212: 1.2,  # Sandship Map
     213: 1.2,  # Sky Keep Map
+    214: 0.6,  # Group of Tadtones
 }
 
 SHOP_PUT_SCALE = {
@@ -570,6 +572,7 @@ SHOP_PUT_SCALE = {
     211: 1.2,  # Fire Sanctuary Map
     212: 1.2,  # Sandship Map
     213: 1.2,  # Sky Keep Map
+    214: 1.0,  # Group of Tadtones
 }
 
 TRIAL_OBJECT_IDS = {
@@ -824,6 +827,8 @@ TRIAL_OBJECT_IDS = {
         ],
     },
 }
+
+CLEF_OBJECT_IDS = {}
 
 
 class FlagEventTypes(IntEnum):
@@ -1221,6 +1226,17 @@ def rando_patch_goddess_crest(bzs: OrderedDict, itemid: int, index: str):
         obj["params2"] = mask_shift_set(obj["params2"], 0xFF, 0x18, itemid)
 
 
+def rando_patch_tadtone_group(bzs: OrderedDict, itemid: int, groupId: str):
+    groupId = int(groupId, 0)
+    clefs = filter(
+        lambda x: x["name"] == "Clef" and ((x["params1"] >> 3) & 0x1F) == groupId,
+        bzs["OBJ "],
+    )
+
+    for clef in clefs:
+        clef["anglez"] = mask_shift_set(clef["anglez"], 0xFFFF, 0, itemid)
+
+
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
 RANDO_PATCH_FUNCS = {
     "chest": rando_patch_chest,
@@ -1233,6 +1249,7 @@ RANDO_PATCH_FUNCS = {
     "EBc": rando_patch_bokoblin,
     "Tbox": rando_patch_tbox,
     "SwSB": rando_patch_goddess_crest,
+    "Clef": rando_patch_tadtone_group,
 }
 
 
@@ -1499,7 +1516,7 @@ class GamePatcher:
         self.all_asm_patches = defaultdict(OrderedDict)
         self.add_asm_patch("custom_funcs")
         self.add_asm_patch("ss_necessary")
-        self.add_asm_patch("keysanity")
+        self.add_asm_patch("custom_items")
         self.add_asm_patch("post_boko_base_platforms")
         if self.placement_file.options["shop-mode"] != "Vanilla":
             self.add_asm_patch("shopsanity")
@@ -1896,6 +1913,10 @@ class GamePatcher:
         self.startitemflags[ITEM_COUNT_FLAGS[GRATITUDE_CRYSTAL_PACK]] = (
             crystal_packs * 5
         )
+
+        # Tadtones
+        self.starting_tadtones = 0
+        self.starting_tadtones += start_item_counts.pop(GROUP_OF_TADTONES, 0)
 
         # Empty Bottles
         self.starting_bottles = 0
@@ -2917,13 +2938,18 @@ class GamePatcher:
 
         start_flags_write.write(struct.pack(">H", additional_start_options))
 
-        # Starting shield and bottles.
+        # Starting shield, bottles and tadtones.
         ## Last 3 bits for starting bottles.
         additional_start_options_2 = self.starting_bottles
 
         ## Next 1 bit for starting Hylian Shield.
         if self.start_with_hylian_shield:
             additional_start_options_2 = additional_start_options_2 | (1 << 3)
+
+        ## Next 5 bits for starting Tadtones.
+        additional_start_options_2 = additional_start_options_2 | (
+            self.starting_tadtones << 4
+        )
 
         start_flags_write.write(struct.pack(">B", additional_start_options_2))
 
