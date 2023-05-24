@@ -1233,10 +1233,8 @@ def rando_patch_tadtone_group(bzs: OrderedDict, itemid: int, groupId: str):
         bzs["OBJ "],
     )
 
-    next_clef = next(clefs, False)
-    while next_clef:
-        next_clef["anglez"] = mask_shift_set(next_clef["anglez"], 0xFFFF, 0, itemid)
-        next_clef = next(clefs, False)
+    for clef in clefs:
+        clef["anglez"] = mask_shift_set(clef["anglez"], 0xFFFF, 0, itemid)
 
 
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
