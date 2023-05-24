@@ -1,6 +1,8 @@
 # Changelog
 
 ## Dev
+### Bugfixes
+- Fix Sealed Grounds crashing after receiving the fire dragon item after obtaining the other dragon items
 
 ## 1.4.0
 ### Options
