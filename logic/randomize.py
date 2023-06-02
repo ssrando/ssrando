@@ -192,6 +192,11 @@ class Rando:
             for bottle_num in range(self.options["starting-bottles"])
         }
 
+        starting_items |= {
+            number(GROUP_OF_TADTONES, tadtone_num)
+            for tadtone_num in range(self.options["starting-tadtones"])
+        }
+
         if self.options["start-with-hylian-shield"]:
             starting_items.add(HYLIAN_SHIELD)
 
@@ -444,11 +449,8 @@ class Rando:
         elif shop_mode == "Always Junk":
             pass
 
-        small_key_mode = self.options["small-key-mode"]
-        boss_key_mode = self.options["boss-key-mode"]
-        map_mode = self.options["map-mode"]
-        triforce_mode = self.options["triforce-shuffle"]
         # remove small keys from the dungeon pool if small key sanity is enabled
+        small_key_mode = self.options["small-key-mode"]
         if small_key_mode == "Vanilla":
             self.placement |= VANILLA_SMALL_KEYS_PLACEMENT(self.norm, self.areas.checks)
         elif small_key_mode == "Own Dungeon - Restricted":
@@ -460,6 +462,7 @@ class Rando:
             pass
 
         # remove boss keys from the dungeon pool if boss key sanity is enabled
+        boss_key_mode = self.options["boss-key-mode"]
         if boss_key_mode == "Vanilla":
             self.placement |= VANILLA_BOSS_KEYS_PLACEMENT(self.norm, self.areas.checks)
         elif boss_key_mode == "Own Dungeon":
@@ -468,6 +471,7 @@ class Rando:
             pass
 
         # remove maps from the dungeon pool if maps are shuffled
+        map_mode = self.options["map-mode"]
         if map_mode == "Removed":
             pass
             # handled later
@@ -488,12 +492,17 @@ class Rando:
         elif rupeesanity == "All":
             pass
 
+        triforce_mode = self.options["triforce-shuffle"]
         if triforce_mode == "Vanilla":
             self.placement |= VANILLA_TRIFORCES_PLACEMENT(self.norm)
         elif triforce_mode == "Sky Keep":
             self.placement |= TRIFORCES_RESTRICTION(self.norm)
         elif triforce_mode == "Anywhere":
             pass
+
+        tadtonesanity = self.options["tadtonesanity"]
+        if not tadtonesanity:
+            self.placement |= VANILLA_TADTONE_PLACEMENT(self.norm, self.areas.checks)
 
     #
     #

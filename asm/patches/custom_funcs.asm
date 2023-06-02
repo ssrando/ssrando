@@ -200,6 +200,114 @@ prevent_death:
 li r4, 1 ; quarter heart, enough to survive
 blr
 
+.global allow_item_get_underwater
+allow_item_get_underwater:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+lwz r6, LINK_PTR@sda21(r13)
+lwz r6, 0x364(r6) ; get actionflags
+rlwinm. r6, r6, 0x0, 0xd, 0xd ; is Link in water?
+cmpwi r6, 0
+beq return_vanilla
+li r6, 0
+b return
+
+return_vanilla:
+li r6, 4
+
+return:
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+
+
+.global get_item_model_name
+get_item_model_name:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+mr r3, r26
+bl get_item_model_name_ptr
+cmpwi r3, 0 ; null check
+bne return_item_model_name
+lwz r3, 0x4(r28) ; vanilla instruction
+
+return_item_model_name:
+mr r26, r3
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+
+
+; 
+.global is_custom_rando_item
+is_custom_rando_item:
+lhz r3, 0xd44(r31) ; get itemId
+cmpwi r3, 511
+bgt is_not_custom_rando_item
+cmpwi r3, 200
+blt is_not_custom_rando_item
+b 0x8024a7c4 ; branch to AcItem__mainModel alloc
+
+is_not_custom_rando_item:
+li r3, 0
+b 0x8024abb4 ; return false
+
+
+.global fix_custom_item_get
+fix_custom_item_get:
+; Custom Func to change tadtone Height r31 = AcItem
+stwu r1, -0x10(r1) ; change stack
+mflr r0
+stw r0, 0x14(r1) ; Save LR
+stw r4, 0x8(r1) ; save matrix ptr
+lhz r0, 0xd44(r31) ; Get item id
+cmpwi r0, 214 ; check if tadtone
+bne exit ; if not tadone, go as normal
+
+lwz r12, 0x8b8(r31)
+addi r3, r31, 0x8b8
+lwz r12, 0x28(r12)
+mtctr r12
+bctrl ; Calls Get Current State ID
+lwz r12, 0x0(r3)
+lis r4, -0x7FA5
+addi r4, r4, 0x46b8
+lwz r12, 0x14(r12)
+bctrl ; Calls == on AcItem::STATE_GET
+cmpwi r3, 0
+beq exit ; branch if its not in STATE_GET
+
+lwz r4, 0x8(r1) ; grab matrix
+lfs f0, -0x2b84(r2) ; r2 = 0x8057e9c0 (grabs float if using below)
+lfs f1, 0x1c(r4)
+fadds f1, f1, f0
+stfs f1, 0x1c(r4)
+
+; change scale
+lfs f0, -0x2ba8(r2) ; 0.5
+lfs f1, 0xcc(r31)
+fmuls f1, f1, f0
+stfs f1, 0xcc(r31)
+stfs f1, 0xd0(r31)
+stfs f1, 0xd4(r31)
+
+exit:
+lwz r4, 0x8(r1)
+lwz r3, 0x334(r31) 
+lwz r12, 0x0(r3)
+lwz r12, 0x18(r12)
+mtctr r12
+bctrl ; branches to setLocalMatrix (r3 = model, r4 = mtx)
+lwz r0, 0x14(r1)
+mtlr r0 ; return LR to normal
+addi r1, r1, 0x10 ; return SP
+blr
 
 .global send_to_start
 send_to_start:
@@ -226,28 +334,10 @@ b Reloader__triggerEntrance
 .global textbox_a_pressed_or_b_held
 .global set_goddess_sword_pulled_scene_flag
 .global randomize_boss_key_start_pos
+.global get_item_arc_name
+.global get_item_model_name_ptr
+.global is_custom_rando_item
 
-.close
-
-
-.open "d_a_birdNP.rel"
-.org @NextFreeSpace
-.global loftwing_speed_limit ; expects loftwing actor in r3
-loftwing_speed_limit:
-lis r6, INPUT_BUFFER@ha ; input buffer
-lwz r6, INPUT_BUFFER@l(r6)
-andis. r0, r6, 0x0400 ; check for B pressed
-bne c_up_pressed
-lfs f1,-0x3948(r2) ; 350.0f constant
-b past_if_else
-c_up_pressed:
-lfs f1,-0x56c0(r2) ; 80.0f constant
-past_if_else:
-lfs f0, 0x144(r3)
-fcmpo cr0, f1, f0
-bgelr
-stfs f1, 0x144(r3)
-blr
 .close
 
 .open "d_t_D3_scene_changeNP.rel"
@@ -663,6 +753,66 @@ li r4, 1
 bl setStoryflagToValue
 
 b 0x950
+
+.close
+
+
+.open "d_a_obj_clefNP.rel"
+.org @NextFreeSpace
+
+.global give_random_item_from_collecting_tadtone_group
+give_random_item_from_collecting_tadtone_group:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+mr r21, r4 ; store self
+mr r4, r25 ; get flag
+bl SceneflagManager__setTempOrSceneflag ; r3 = SCENEFLAG_MANAGER, r4 = flag
+
+; invalid read 0xbc at 80EACA28
+lha r3, 0xbc(r29) ; get randomized itemId
+li r4, -1
+li r5, 0
+bl giveItem ; r3 = itemId, r4 = pouchSlot (-1), r5 = 0
+
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+
+.close
+
+
+.open "d_t_clef_gameNP.rel"
+.org @NextFreeSpace
+
+.global check_tadtone_counter_before_event
+check_tadtone_counter_before_event:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+lwz r3, STORYFLAG_MANAGER@sda21(r13)
+li r4, 953 ; tadtone counter
+bl FlagManager__getFlagOrCounter
+cmpwi r3, 17
+bne return_not_start_event
+
+; get event delay
+lbz r3, 0x17f(r30) ; replaced instruction
+b return
+
+return_not_start_event:
+; 0x3c = default delay before starting event
+; any value > 1 is sufficent
+li r3, 0x3c
+
+return:
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
 
 .close
 

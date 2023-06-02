@@ -68,6 +68,8 @@ main.dol:
     # counterId, count
     increaseCounter: 0x8016d710
     setFlagForItem: 0x80251ca0
+    getModelDataFromOarc: 0x80069b30
+    checkXZDistanceFromLink: 0x8002d3e0
     # stage
     isCurrentStage: 0x801bb3c0
 d_a_shop_sampleNP.rel:
