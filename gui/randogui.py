@@ -8,7 +8,7 @@ import random
 
 import json
 from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
-from PySide6.QtGui import QFontDatabase
+from PySide6.QtGui import QFontDatabase, QIcon
 from PySide6.QtWidgets import (
     QAbstractButton,
     QApplication,
@@ -26,6 +26,7 @@ from PySide6.QtWidgets import (
 )
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
+from logic.constants import LOCATION_FILTER_TYPES
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -34,6 +35,7 @@ from gui.guithreads import RandomizerThread, ExtractSetupThread
 from ssrando import Randomizer, VERSION
 from paths import RANDO_ROOT_PATH
 from gui.ui_randogui import Ui_MainWindow
+from yaml_files import checks
 from witmanager import WitManager
 
 # Allow keyboard interrupts on the command line to instantly close the program.
@@ -82,6 +84,8 @@ class RandoGUI(QMainWindow):
         )
 
         self.setWindowTitle("Skyward Sword Randomizer v" + VERSION)
+
+        self.setWindowIcon(QIcon(str(RANDO_ROOT_PATH / "assets" / "icon.ico")))
 
         self.areas = areas
         self.options = options
@@ -181,6 +185,7 @@ class RandoGUI(QMainWindow):
             "excluded-locations",
             self.ui.exclude_location,
             self.ui.include_location,
+            checks,
         )
         self.exclude_locations_pair.listPairChanged.connect(self.update_settings)
 
@@ -189,6 +194,18 @@ class RandoGUI(QMainWindow):
         )
         self.ui.included_free_search.textChanged.connect(
             self.exclude_locations_pair.update_non_option_list_filter
+        )
+
+        self.ui.include_category_filters.addItem("All")
+        self.ui.include_category_filters.addItems(LOCATION_FILTER_TYPES)
+        self.ui.include_category_filters.currentTextChanged.connect(
+            self.exclude_locations_pair.update_non_option_list_type_filter
+        )
+
+        self.ui.exclude_category_filters.addItem("All")
+        self.ui.exclude_category_filters.addItems(LOCATION_FILTER_TYPES)
+        self.ui.exclude_category_filters.currentTextChanged.connect(
+            self.exclude_locations_pair.update_option_list_type_filter
         )
 
         # Starting Items UI
@@ -325,7 +342,7 @@ class RandoGUI(QMainWindow):
         self, current_action: str, completed_steps: int, total_steps: int = None
     ):
         self.progress_dialog.setValue(completed_steps)
-        self.progress_dialog.setLabelText(current_action)
+        self.progress_dialog.set_current_action(current_action)
         if not total_steps is None:
             self.progress_dialog.setMaximum(total_steps)
 

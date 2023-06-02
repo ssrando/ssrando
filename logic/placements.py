@@ -184,3 +184,25 @@ TRIFORCES_RESTRICTION = norm_values(
 
 VANILLA_RUPEES = norm_force_vanilla(RUPEE_CHECKS)
 VANILLA_QUICK_BEETLE_RUPEES = norm_force_vanilla(QUICK_BEETLE_CHECKS)
+
+TADTONE_CHECKS = [
+    "Flooded Faron Woods - Yellow Tadtone under Lilypad",
+    "Flooded Faron Woods - 8 Light Blue Tadtones near Viewing Platform",
+    "Flooded Faron Woods - 4 Purple Tadtones under Viewing Platform",
+    "Flooded Faron Woods - Red Moving Tadtone near Viewing Platform",
+    "Flooded Faron Woods - Light Blue Tadtone under Great Tree Root",
+    "Flooded Faron Woods - 8 Yellow Tadtones near Kikwi Elder",
+    "Flooded Faron Woods - 4 Light Blue Moving Tadtones under Kikwi Elder",
+    "Flooded Faron Woods - 4 Red Moving Tadtones North West of Great Tree",
+    "Flooded Faron Woods - Green Tadtone behind Upper Bombable Rock",
+    "Flooded Faron Woods - 2 Dark Blue Tadtones in Grass West of Great Tree",
+    "Flooded Faron Woods - 8 Green Tadtones in West Tunnel",
+    "Flooded Faron Woods - 2 Red Tadtones in Grass near Lower Bombable Rock",
+    "Flooded Faron Woods - 16 Dark Blue Tadtones in the South West",
+    "Flooded Faron Woods - 4 Purple Moving Tadtones near Floria Gate",
+    "Flooded Faron Woods - Dark Blue Moving Tadtone inside Small Hollow Tree",
+    "Flooded Faron Woods - 4 Yellow Tadtones under Small Hollow Tree",
+    "Flooded Faron Woods - 8 Purple Tadtones in Clearing after Small Hollow Tree",
+]
+
+VANILLA_TADTONE_PLACEMENT = norm_restrict_vanilla(TADTONE_CHECKS)

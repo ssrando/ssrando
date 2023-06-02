@@ -7,7 +7,7 @@ if IS_RUNNING_FROM_SOURCE:
 
     with open("pyproject.toml") as f:
         proj = toml.load(f)
-    VERSION = proj["project"]["version"]
+    VERSION = proj["tool"]["poetry"]["version"]
     VERSION_WITHOUT_COMMIT = VERSION
     version_suffix = "_NOGIT"
 
@@ -17,7 +17,7 @@ if IS_RUNNING_FROM_SOURCE:
         version_suffix = (
             "_"
             + subprocess.check_output(
-                ["git", "rev-parse", "--short", "HEAD"], cwd=Path(__file__).parent
+                ["git", "rev-parse", "--short=7", "HEAD"], cwd=Path(__file__).parent
             )
             .decode("ASCII")
             .strip()

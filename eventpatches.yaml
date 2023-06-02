@@ -1,4 +1,59 @@
 003-ItemGet:
+  - name: Tadtone Entry
+    type: entryadd
+    entry:
+      name: "003_214"
+      value: Increment Tadtone Counter
+  - name: Increment Tadtone Counter
+    type: flowadd
+    flow:
+      type: type3
+      next: Check for all Tadtones
+      param1: 953 # flag
+      param2: 1 # increment counter
+      param3: 74 # custom command: increment tadtone group counter
+  - name: Check for all Tadtones
+    type: flowadd
+    flow:
+      type: type3
+      next: Switch for all Tadtones
+      param1: 0
+      param2: 0
+      param3: 75 # custom command: get tadtones groups remaining
+  - name: Switch for all Tadtones
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # use result from previous check
+    cases:
+      - Show all Tadtones Collected text
+      - Show some Tadtones Collected text
+  - name: Some Tadtones Collected text
+    type: textadd
+    unk1: 5
+    unk2: 1
+    text: "You got a group of <y<Tadtones>>!\nOnly <r<<numeric arg0> >> left to find!"
+  - name: Show some Tadtones Collected text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 3
+      param4: Some Tadtones Collected text
+  - name: All Tadtones Collected text
+    type: textadd
+    unk1: 5
+    unk2: 1
+    text: "You got the last group of <y<Tadtones>>!\nYou found every last one of them!
+          \n\n\nHurry to <b<Flooded Faron Woods>> and talk\nto the <r<Water Dragon>> to claim your\nreward."
+  - name: Show all Tadtones Collected text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 3
+      param4: All Tadtones Collected text
   - name: Spiral Charge Text
     type: textpatch
     index: 27
@@ -675,7 +730,10 @@
   - name: Item Status Text
     type: textadd
     unk1: 2
-    text: "<ye<Lanayru Caves Small Key>>: <string arg0>\n<y<Spiral Charge>>: <string arg1>\n<y<Life Tree Fruit>>: <string arg2>"
+    text: "<ye<Lanayru Caves Small Key>>: <string arg0>
+          \n<y<Spiral Charge>>: <string arg1>
+          \n<y<Life Tree Fruit>>: <string arg2>
+          \n<y<Group of Tadtones>>: <numeric arg0>"
   - name: Display Item Status Text
     type: flowadd
     flow:
@@ -1932,7 +1990,7 @@
       param4: Already Completed Tadtones Text
   - name: Flooded Faron Reentry Text
     type: textadd
-    text: "Would you like me to flood the forest\nagain?\n[1]Yes[2-]No"
+    text: "Would you like me to <r<flood the forest>>\nagain?\n[1]Yes[2-]No"
   - name: Show Flooded Faron Reentry Text
     type: flowadd
     flow:
@@ -1948,7 +2006,7 @@
       param2: 0
       param3: 2
     cases:
-      - Check for Water Dragon Scale # Yes
+      - Trigger Exit to Flooded Faron Layer 2 # Yes
       - Show Declined Flooded Faron Offer Text # No
   - name: Show Flooded Faron Entry Question
     type: flowadd
@@ -1959,7 +2017,7 @@
       param4: Flooded Faron Entry Question
   - name: Flooded Faron Entry Question
     type: textadd
-    text: "Here to accept my <r<final test>>?\n[1]Yes[2-]No"
+    text: "Here to accept my final test? I will\n<r<flood the forest>> if you choose to\naccept.\n[1]Yes[2-]No"
   - name: Flooded Faron Entry Switch
     type: switchadd
     flow:
@@ -1968,7 +2026,7 @@
       param2: 0
       param3: 2
     cases:
-      - Check for Water Dragon Scale # Yes
+      - Trigger Exit to Flooded Faron Layer 2 # Yes
       - Show Declined Flooded Faron Offer Text # No
   - name: Declined Flooded Faron Offer Text
     type: textadd
@@ -1980,34 +2038,6 @@
       next: -1
       param3: 302
       param4: Declined Flooded Faron Offer Text
-  - name: Check for Water Dragon Scale
-    type: flowadd
-    flow:
-      type: type3
-      subType: 1
-      param1: 68 # Water Dragon Scale itemflag
-      param2: 1 # Check itemflag is set
-      next: Water Dragon Scale Branch
-      param3: 23 # Check for an itemflag
-  - name: Water Dragon Scale Branch
-    type: switchadd
-    flow:
-      subType: 6
-      param2: 0
-      param3: 7 # Use result from previous check
-    cases:
-      - Trigger Exit to Flooded Faron Layer 2
-      - Show No Water Dragon Scale Text # false
-  - name: No Water Dragon Scale Text
-    type: textadd
-    text: "You don't have my <b<Sacred Gift>>.\nI cannot allow you to attempt my final\ntest unprepared."
-  - name: Show No Water Dragon Scale Text
-    type: flowadd
-    flow:
-      type: type1
-      next: -1
-      param3: 302
-      param4: No Water Dragon Scale Text
   - name: Trigger Exit to Flooded Faron Layer 2
     type: flowadd
     flow:
@@ -2162,6 +2192,14 @@
       param2: 3 # item
       next: Trigger Exit to Non-Flooded Faron
       param3: 9
+  # Gets unset in the Onp zev
+  # TODO: Replace with a zev patch?
+  - name: Make Bucha give the Tadtones Scroll storyflag
+    type: flowpatch
+    index: 195
+    flow:
+      param2: 82 # Tadtones Scroll storyflag
+      param3: 0 # set (not unset) flag
 250-ForestSiren:
   - name: shorten fi text
     type: flowpatch
@@ -2611,6 +2649,13 @@
     flow:
       next: 276
 404-DesertF3:
+  - name: Don't act when both other Dragons are already met
+    type: flowpatch
+    index: 21
+    flow: {}
+    cases:
+      - 79
+      - 79
   - name: Set story flags from skipped cutscene
     type: flowpatch
     index: 165
