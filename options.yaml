@@ -282,12 +282,6 @@
         Includes: Quick Beetle, Tough Beetle, Iron Bow, Sacred Bow, Big Bug Net and Scatershot.
         Note, there are no random items obtainable by talking to Gondo at the Scrap Shop."
   ui: option_gondo_upgrades
-# - name: Tadtone Shuffle
-#   command: tadtones
-#   type: boolean
-#   default: false
-#   help: "If enabled, collecting each of the groups of *Tadtones* will give a random item."
-#   ui: option_tadtones
 - name: Gate of Time Starting State
   command: got-start
   type: singlechoice
@@ -1042,3 +1036,20 @@
   default: false
   help: "If enabled, the starting position of the boss keys will be randomized."
   ui: option_randomize_boss_key_puzzles
+- name: Tadtonesanity
+  command: tadtonesanity
+  type: boolean
+  default: false
+  help: "If enabled, 17 \"Group of Tadtones\" items will be shuffled throughout the world and each of the tadtone
+        groups in Flooded Faron Woods will give an item when collected. Get all 17 \"Group of Tadtones\" items to
+        complete the music scroll and receive an item from the Water Dragon in Flooded Faron Woods."
+  ui: option_tadtonesanity
+- name: Starting Tadtone Count
+  command: starting-tadtones
+  type: int
+  default: 0
+  min: 0
+  max: 17
+  bits: 5
+  help: How many groups of Tadtones to start with.
+  ui: option_starting_tadtones

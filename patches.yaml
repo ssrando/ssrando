@@ -1443,6 +1443,16 @@ F020: # Sky
     layer: 0
     room: 0
     objtype: STAG
+  - name: Enlarge Thunderhead Entrance
+    type: objpatch
+    id: 0xFC9D
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      posy: -4500
+      sizex: 12000
+      sizey: 12800
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
@@ -2038,6 +2048,35 @@ F103_1: # Flooded Great Tree
     objtype: PLY
     object:
       play_cutscene: -1
+F103: # Flooded Faron Woods
+  - name: Add bomb flower on lilypad near Bucha
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFF0FFF0
+      params2: 0xFFFFFFFF
+      posx: -2296.102783203125
+      posy: 4500
+      posz: -1793.0338134765625
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFF00
+      name: Bombf
+  - name: Remove Tadtone Dowsing Trigger # is a start flag
+    type: objdelete
+    id: 0xFDE5
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Remove buggy Cranioc CS Trigger
+    type: objdelete
+    id: 0xFDF1
+    layer: 2
+    room: 0
+    objtype: STAG
 D100: # Skyview
   - name: Layer override
     type: layeroverride
