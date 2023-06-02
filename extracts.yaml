@@ -3,6 +3,10 @@
     - Goron_motion
     - GoronD
   stage: F303
+- layer: 2
+  oarcs:
+    - Onp
+  stage: F103
 - layer: 4
   oarcs:
     - FWRockB
