@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1096</width>
-    <height>738</height>
+    <width>1202</width>
+    <height>759</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -551,6 +551,13 @@
                 <widget class="QComboBox" name="option_rupeesanity"/>
                </item>
               </layout>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_tadtonesanity">
+               <property name="text">
+                <string>Tadtonesanity</string>
+               </property>
+              </widget>
              </item>
              <item>
               <spacer name="vspace_shuffles">
@@ -1312,6 +1319,9 @@
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>40</width>
@@ -1339,17 +1349,34 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="included_free_search">
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Search</string>
-                  </property>
-                  <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
+                 <layout class="QHBoxLayout" name="hlay_include_filters">
+                  <item>
+                   <widget class="QComboBox" name="include_category_filters">
+                    <property name="placeholderText">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="included_free_search">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Search</string>
+                    </property>
+                    <property name="clearButtonEnabled">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                 <item>
                  <widget class="QListView" name="included_locations">
@@ -1450,14 +1477,27 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="excluded_free_search">
-                  <property name="placeholderText">
-                   <string>Search</string>
-                  </property>
-                  <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
+                 <layout class="QHBoxLayout" name="hlay_exclude_filters">
+                  <item>
+                   <widget class="QComboBox" name="exclude_category_filters"/>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="excluded_free_search">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Search</string>
+                    </property>
+                    <property name="clearButtonEnabled">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                 <item>
                  <widget class="QListView" name="excluded_locations">
@@ -1987,6 +2027,30 @@
              </item>
              <item>
               <widget class="QSpinBox" name="option_starting_crystal_packs">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hlay_starting_tadtones">
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_for_option_starting_tadtones">
+               <property name="text">
+                <string>Starting Groups of Tadtones</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="option_starting_tadtones">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                  <horstretch>0</horstretch>
