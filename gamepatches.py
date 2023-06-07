@@ -2463,7 +2463,7 @@ class GamePatcher:
             trial_relic_patches = self.trialrelicpatches[trial].copy()
             has_relic_patches = bool(trial_relic_patches)
 
-            for ((id, room), (params, actor_name)) in loc_params:
+            for (id, room), (params, actor_name) in loc_params:
                 # only handle dusk relics specially if the option is enabled
                 if actor_name == "AncJwls" and has_relic_patches:
                     # replace relics with randomized items
