@@ -1989,4 +1989,3 @@ class Ui_MainWindow(object):
         self.seed_button.setText(QCoreApplication.translate("MainWindow", u"New Seed", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
     # retranslateUi
-
