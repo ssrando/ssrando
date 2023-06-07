@@ -12,6 +12,7 @@
   - Up to 10 relics (chosen by a new option) per silent realm can be randomized to have new items
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
+- Upon completing a silent realm, the trial gate will remain open. (This is to prevent softlocks with dusk relic shuffle)
 
 ## 1.4.1
 ### Bugfixes
