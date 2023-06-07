@@ -1055,7 +1055,7 @@
 - name: Treasuresanity in Silent Realms
   command: treasuresanity-in-silent-realms
   type: boolean
-  default: true
+  default: false
   help: Randomizes treasures in Silent Realms to items.
   ui: option_treasuresanity_in_silent_realms
 - name: Trial Treasure Amount
