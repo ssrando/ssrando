@@ -417,13 +417,6 @@ cmpwi r3, 0 ; function returns 0 if returning from the trial should be delayed
 beq 0x23A4
 nop
 
-; the trial storyflags got changed, cause they used the same one as the items associated with it
-.org 0x2F10
-blr
-
-.org 0x2AE8
-b 0x2C38
-
 ; this usually delays starting the trial finish event until the
 ; tear display is ready, which can softlock so skip the check,
 ; which seems to only have a visual impact *at worst*
