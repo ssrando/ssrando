@@ -6,27 +6,22 @@ main.dol:
   setSceneflagForArea: 0x806783E0
   alloc_keyboard_arcs_conditional: 0x80678450
   unset_sandship_timestone_if_necessary: 0x8067849C
-  patch_bit: 0x806784CC
-  no_minigame_death: 0x806784D8
-  allow_item_get_underwater: 0x80678500
-  get_item_model_name: 0x8067853C
-  is_custom_rando_item: 0x80678570
-  fix_custom_item_get: 0x80678590
-  process_startflags: 0x80678630
-  handle_bk_map_dungeonflag: 0x806789E4
-  rando_text_command_handler: 0x80678A94
-  textbox_a_pressed_or_b_held: 0x80678D74
-  set_goddess_sword_pulled_scene_flag: 0x80678DA4
-  randomize_boss_key_start_pos: 0x80678DD0
-  get_item_arc_name: 0x80678DFC
-  get_item_model_name_ptr: 0x80678E2C
-  enforce_loftwing_speed_cap: 0x80678E4C
   has_not_already_completed_trial: 0x806784CC
-  process_startflags: 0x80678504
-  handle_bk_map_dungeonflag: 0x80678778
-  textbox_a_pressed_or_b_held: 0x80678828
-d_a_birdNP.rel:
-  loftwing_speed_limit: 0xF298
+  patch_bit: 0x80678504
+  no_minigame_death: 0x80678510
+  allow_item_get_underwater: 0x80678538
+  get_item_model_name: 0x80678574
+  is_custom_rando_item: 0x806785A8
+  fix_custom_item_get: 0x806785C8
+  process_startflags: 0x80678668
+  handle_bk_map_dungeonflag: 0x80678A1C
+  rando_text_command_handler: 0x80678ACC
+  textbox_a_pressed_or_b_held: 0x80678DAC
+  set_goddess_sword_pulled_scene_flag: 0x80678DDC
+  randomize_boss_key_start_pos: 0x80678E08
+  get_item_arc_name: 0x80678E34
+  get_item_model_name_ptr: 0x80678E64
+  enforce_loftwing_speed_cap: 0x80678E84
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340

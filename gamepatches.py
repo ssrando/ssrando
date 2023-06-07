@@ -2445,7 +2445,6 @@ class GamePatcher:
 
             rng = random.Random(self.placement_file.trial_object_seed)
             rng.shuffle(locs)
-            # print(locs)
             if "Relics" not in types_to_shuffle:
                 objlist = TRIAL_OBJECT_IDS[trial]["Relics"]
                 locs.extend(objlist)

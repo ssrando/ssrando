@@ -198,6 +198,138 @@ mtlr r0
 addi r1, r1, 0x10
 blr
 
+.global patch_bit
+patch_bit:
+li r0, 0
+stb r0, -0x3ca3(r13) ; RELOADER_TYPE
+blr
+
+; new health is in r0, need to return in r4
+; if new health is 0 and we are either in thrill digger
+; or bug heaven, let link live with a quarter heart
+.global no_minigame_death
+no_minigame_death:
+mr r4, r0
+cmpwi r4, 0 ; check if health greater or equal zero
+bgtlr
+lwz r5, -0x71f0(r13) ; SPECIAL_MINIGAME_STATE
+cmpwi r5, 3 ; thrill digger
+beq prevent_death
+cmpwi r5, 5 ; bug heaven
+bnelr
+prevent_death:
+li r4, 1 ; quarter heart, enough to survive
+blr
+
+.global allow_item_get_underwater
+allow_item_get_underwater:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+lwz r6, LINK_PTR@sda21(r13)
+lwz r6, 0x364(r6) ; get actionflags
+rlwinm. r6, r6, 0x0, 0xd, 0xd ; is Link in water?
+cmpwi r6, 0
+beq return_vanilla
+li r6, 0
+b return
+
+return_vanilla:
+li r6, 4
+
+return:
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+
+
+.global get_item_model_name
+get_item_model_name:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+mr r3, r26
+bl get_item_model_name_ptr
+cmpwi r3, 0 ; null check
+bne return_item_model_name
+lwz r3, 0x4(r28) ; vanilla instruction
+
+return_item_model_name:
+mr r26, r3
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+
+
+; 
+.global is_custom_rando_item
+is_custom_rando_item:
+lhz r3, 0xd44(r31) ; get itemId
+cmpwi r3, 511
+bgt is_not_custom_rando_item
+cmpwi r3, 200
+blt is_not_custom_rando_item
+b 0x8024a7c4 ; branch to AcItem__mainModel alloc
+
+is_not_custom_rando_item:
+li r3, 0
+b 0x8024abb4 ; return false
+
+
+.global fix_custom_item_get
+fix_custom_item_get:
+; Custom Func to change tadtone Height r31 = AcItem
+stwu r1, -0x10(r1) ; change stack
+mflr r0
+stw r0, 0x14(r1) ; Save LR
+stw r4, 0x8(r1) ; save matrix ptr
+lhz r0, 0xd44(r31) ; Get item id
+cmpwi r0, 214 ; check if tadtone
+bne exit ; if not tadone, go as normal
+
+lwz r12, 0x8b8(r31)
+addi r3, r31, 0x8b8
+lwz r12, 0x28(r12)
+mtctr r12
+bctrl ; Calls Get Current State ID
+lwz r12, 0x0(r3)
+lis r4, -0x7FA5
+addi r4, r4, 0x46b8
+lwz r12, 0x14(r12)
+bctrl ; Calls == on AcItem::STATE_GET
+cmpwi r3, 0
+beq exit ; branch if its not in STATE_GET
+
+lwz r4, 0x8(r1) ; grab matrix
+lfs f0, -0x2b84(r2) ; r2 = 0x8057e9c0 (grabs float if using below)
+lfs f1, 0x1c(r4)
+fadds f1, f1, f0
+stfs f1, 0x1c(r4)
+
+; change scale
+lfs f0, -0x2ba8(r2) ; 0.5
+lfs f1, 0xcc(r31)
+fmuls f1, f1, f0
+stfs f1, 0xcc(r31)
+stfs f1, 0xd0(r31)
+stfs f1, 0xd4(r31)
+
+exit:
+lwz r4, 0x8(r1)
+lwz r3, 0x334(r31) 
+lwz r12, 0x0(r3)
+lwz r12, 0x18(r12)
+mtctr r12
+bctrl ; branches to setLocalMatrix (r3 = model, r4 = mtx)
+lwz r0, 0x14(r1)
+mtlr r0 ; return LR to normal
+addi r1, r1, 0x10 ; return SP
+blr
+
 ; space to declare all the functions defined in the
 ; custom-functions rust project
 .global process_startflags
