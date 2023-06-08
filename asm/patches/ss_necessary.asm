@@ -417,6 +417,43 @@ cmpwi r3, 0 ; function returns 0 if returning from the trial should be delayed
 beq 0x23A4
 nop
 
+; to allow trials to be re-enterable, remove the untrigger storyflag for each trial
+.org 0x2F48
+li r4, 0x7FFF ; no storyflag
+
+.org 0x2F88
+li r4, 0x7FFF
+
+.org 0x2FD4
+li r4, 0x7FFF
+
+.org 0x3020
+li r4, 0x7FFF
+
+.org 0x2B08
+li r4, 0x7FFF
+
+.org 0x2B48
+li r4, 0x7FFF
+
+.org 0x2B94
+li r4, 0x7FFF
+
+.org 0x2BE0
+li r4, 0x7FFF
+
+.org 0xC8C
+li r4, 0x7FFF
+
+.org 0xCCC
+li r4, 0x7FFF
+
+.org 0xD18
+li r4, 0x7FFF
+
+.org 0xD64
+li r4, 0x7FFF
+
 ; this usually delays starting the trial finish event until the
 ; tear display is ready, which can softlock so skip the check,
 ; which seems to only have a visual impact *at worst*
