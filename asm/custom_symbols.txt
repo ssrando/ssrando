@@ -22,6 +22,7 @@ main.dol:
   get_item_arc_name: 0x80678E34
   get_item_model_name_ptr: 0x80678E64
   enforce_loftwing_speed_cap: 0x80678E84
+  get_glow_color: 0x80678F6C
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340

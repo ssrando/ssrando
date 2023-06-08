@@ -69,5 +69,6 @@ main.dol:
     setFlagForItem: 0x80251ca0
     getModelDataFromOarc: 0x80069b30
     checkXZDistanceFromLink: 0x8002d3e0
+    AcItem__getItemId: 0x8024a2b0
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C

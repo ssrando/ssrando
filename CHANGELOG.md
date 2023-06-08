@@ -13,6 +13,11 @@
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Upon completing a silent realm, the trial gate will remain open. (This is to prevent softlocks with dusk relic shuffle)
+- Items inside silent realms (other than dusk relics) will glow and have beams above them; their color is distinct from the tears
+  - In Faron, items are yellow
+  - In Eldin, items are blue
+  - In Lanayru, items are green
+  - In Skyloft, items are red
 
 ## 1.4.1
 ### Bugfixes

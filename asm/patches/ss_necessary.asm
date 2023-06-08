@@ -332,10 +332,22 @@ nop
 nop
 nop
 nop
+
 ; don't allow collecting the trial reward again if it has been completed
 ; this is in a global function that checks if all tears have been collected
 .org 0x802d7660
 bl has_not_already_completed_trial
+
+; use a custom function to detect items in silent realms to put different color glows for tears & items
+.org 0x8024cffc
+lhz r3, 0x0330(r29)
+bl get_glow_color
+cmpwi r3, 0x4
+
+; get_glow_color replaces this tear subtype function, so skip over it
+.org 0x8024d00c
+nop
+nop
 
 .close
 

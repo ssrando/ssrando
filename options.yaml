@@ -1056,7 +1056,8 @@
   command: treasuresanity-in-silent-realms
   type: boolean
   default: false
-  help: Randomizes treasures in Silent Realms to items.
+  help: Randomizes treasures in Silent Realms to items. Items other than relics will glow in Silent Realms
+        (Yellow in Faron, Blue in Eldin, Green in Lanayru, and Red on Skyloft).
   ui: option_treasuresanity_in_silent_realms
 - name: Trial Treasure Amount
   command: trial-treasure-amount
