@@ -25,6 +25,9 @@ Hint distributions define everything about how gossip stone hints are placed by 
 All fields are **required** in all distribution files, however, specific hint types can be omitted from the actual distribution, however this is not recommended.
 
 ## Fields
+- fi_hints (number)
+  - The number of gossip stone hints that will be given to Fi (accessible in her menu).
+  - Fi's hints are placed first, then any remaining hints are placed in gossip stones.
 - banned_stones (Array of strings)
   - List of all the gossip stones that cannot have useful hints placed on them
   - Names must match the exact internal naming structure of the randomizer, which can be found in hints.yaml in the root directory

@@ -11,7 +11,8 @@ EVERYTHING = EIN("Everything")
 NUMBER_OF_HINT_STONES = 18
 
 MAX_HINTS_PER_STONE = 8
-MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
+MAX_FI_HINTS = 64  # Fi hints have no such limits since they're segmented, though an upper bound might be good to have.
+MAX_STONE_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
 
 # Logic options, runtime requirements
 
@@ -167,7 +168,7 @@ def group(name: str, count: int) -> Dict[EXTENDED_ITEM_NAME, None]:
 
 
 HINT = "Hint"
-HINTS = group(HINT, MAX_HINTS)
+HINTS = group(HINT, MAX_STONE_HINTS + MAX_FI_HINTS)
 
 # SAILCLOTH = EIN("Sailcloth")
 BOMB_BAG = EIN("Bomb Bag")
@@ -657,6 +658,8 @@ SONG_OF_THE_HERO_TRIAL_HINT = EIN("Song of the Hero - Trial Hint")
 FARORES_COURAGE_TRIAL_HINT = EIN("Farore's Courage - Trial Hint")
 NAYRUS_WISDOM_TRIAL_HINT = EIN("Nayru's Wisdom - Trial Hint")
 DINS_POWER_TRIAL_HINT = EIN("Din's Power - Trial Hint")
+
+FI_HINTS_KEY = "Fi"
 
 
 SONG_HINTS = {
