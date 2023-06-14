@@ -830,6 +830,7 @@
     - S2 - 3D
     - S2 - 3D EUD Off
     - CDMC
+    - Custom
   default: Balanced
   help: "Determines the distribution of hints that appear on Gossip Stones.
         Determines the number, order and locations hints are generated in."
