@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.3
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -904,7 +904,7 @@ class Ui_MainWindow(object):
 
         self.option_trial_treasure_amount = QSpinBox(self.box_silent_realms)
         self.option_trial_treasure_amount.setObjectName(u"option_trial_treasure_amount")
-        self.option_trial_treasure_amount.setMaximumSize(QSize(41, 16777215))
+        self.option_trial_treasure_amount.setMaximumSize(QSize(48, 16777215))
         self.option_trial_treasure_amount.setMinimum(1)
         self.option_trial_treasure_amount.setMaximum(10)
 
@@ -1989,3 +1989,4 @@ class Ui_MainWindow(object):
         self.seed_button.setText(QCoreApplication.translate("MainWindow", u"New Seed", None))
         self.randomize_button.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
     # retranslateUi
+
