@@ -377,20 +377,10 @@ class Ui_MainWindow(object):
 
         self.vlay_shuffles.addWidget(self.option_shopsanity)
 
-        self.vlay_rupeesanity = QVBoxLayout()
-        self.vlay_rupeesanity.setObjectName(u"vlay_rupeesanity")
-        self.label_for_option_rupeesanity = QLabel(self.box_shuffles)
-        self.label_for_option_rupeesanity.setObjectName(u"label_for_option_rupeesanity")
-
-        self.vlay_rupeesanity.addWidget(self.label_for_option_rupeesanity)
-
-        self.option_rupeesanity = QComboBox(self.box_shuffles)
+        self.option_rupeesanity = QCheckBox(self.box_shuffles)
         self.option_rupeesanity.setObjectName(u"option_rupeesanity")
 
-        self.vlay_rupeesanity.addWidget(self.option_rupeesanity)
-
-
-        self.vlay_shuffles.addLayout(self.vlay_rupeesanity)
+        self.vlay_shuffles.addWidget(self.option_rupeesanity)
 
         self.option_tadtonesanity = QCheckBox(self.box_shuffles)
         self.option_tadtonesanity.setObjectName(u"option_tadtonesanity")
@@ -1757,7 +1747,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1804,7 +1794,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
         self.option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Beedle's Shop", None))
-        self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
+        self.option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
         self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))
         self.box_completion.setTitle(QCoreApplication.translate("MainWindow", u"Completion Conditions", None))
         self.label_for_option_got_starting_state.setText(QCoreApplication.translate("MainWindow", u"Starting State", None))

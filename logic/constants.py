@@ -903,6 +903,7 @@ LOCATION_FILTER_TYPES = (
     "Loose Crystals",
     "Gratitude Crystal Sidequests",
     "Scrapper Deliveries",
-    "Rupees",
+    "Rupees (No Quick Beetle)",
+    "Rupees (Quick Beetle)",
     "Tadtones",
 )

@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -525,18 +525,11 @@
               </widget>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="vlay_rupeesanity">
-               <item>
-                <widget class="QLabel" name="label_for_option_rupeesanity">
-                 <property name="text">
-                  <string>Rupeesanity</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="option_rupeesanity"/>
-               </item>
-              </layout>
+              <widget class="QCheckBox" name="option_rupeesanity">
+               <property name="text">
+                <string>Rupeesanity</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QCheckBox" name="option_tadtonesanity">

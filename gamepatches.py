@@ -1488,17 +1488,8 @@ class GamePatcher:
 
         # patches from randomizing items
         filtered_item_locations = self.placement_file.item_locations.copy()
-        rupeesanity_option = self.placement_file.options["rupeesanity"]
-        if rupeesanity_option == "Vanilla":
+        if not self.placement_file.options["rupeesanity"]:
             to_remove = map(self.areas.short_to_full, RUPEE_CHECKS)
-        elif rupeesanity_option == "No Quick Beetle":
-            to_remove = map(self.areas.short_to_full, QUICK_BEETLE_CHECKS)
-        elif rupeesanity_option == "All":
-            to_remove = []
-        else:
-            raise ValueError(
-                f"Wrong value {rupeesanity_option} for option rupeesanity."
-            )
 
         for rupee_check in to_remove:
             del filtered_item_locations[rupee_check]

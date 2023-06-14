@@ -467,13 +467,8 @@ class Rando:
         elif map_mode == "Anywhere":
             pass
 
-        rupeesanity = self.options["rupeesanity"]
-        if rupeesanity == "Vanilla":
+        if not self.options["rupeesanity"]:
             self.placement |= VANILLA_RUPEES(self.norm, self.areas.checks)
-        elif rupeesanity == "No Quick Beetle":
-            self.placement |= VANILLA_QUICK_BEETLE_RUPEES(self.norm, self.areas.checks)
-        elif rupeesanity == "All":
-            pass
 
         triforce_mode = self.options["triforce-shuffle"]
         if triforce_mode == "Vanilla":

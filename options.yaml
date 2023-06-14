@@ -236,17 +236,10 @@
   ui: option_rupoor_mode
 - name: Rupeesanity
   command: rupeesanity
-  type: singlechoice
-  default: Vanilla
-  choices:
-    - Vanilla
-    - No Quick Beetle
-    - All
+  type: boolean
+  default: false
   bits: 2
-  help: "Shuffles freestanding rupees.
-        **Vanilla**: freestanding rupees appear in their vanilla locations.
-        **No Quick Beetle**: freestanding rupees that don't need Quick Beetle to obtain are randomized.
-        **All**: all freestanding rupees are randomized.
+  help: "Shuffles freestanding rupees. When unshuffled, all freestanding rupees will remain vanilla.
         Note, it is not possible to shuffle some freestanding rupees yet (e.g. the rupees on the Lumpy Pumpkin
         chandelier)."
   ui: option_rupeesanity
