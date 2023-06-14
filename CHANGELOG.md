@@ -10,6 +10,7 @@
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
+- The shortcut log from the Sealed Grounds Spiral to Behind the Temple is now always pushed down
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 
