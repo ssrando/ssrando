@@ -10,6 +10,7 @@
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
+- Moved Golo to layer 0 in Lanayru Caves
 - Add an option for a custom hint distribution (by cjs07)
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock

@@ -4816,32 +4816,60 @@ F303: # Lanayru Caves
   - name: Layer override
     type: layeroverride
     override:
-      - story_flag: 208 #clawshots
-        night: 0
-        layer: 1
       - story_flag: -1
         night: 0
         layer: 0
-  - name: Delete Wall blocking path to Gorge
-    type: objdelete
-    id: 0xFC62
-    layer: 1
-    room: 0
-    objtype: SOBJ
+# Add oarcs
+  - name: Add Goron_motion
+    type: oarcadd
+    oarc: Goron_motion
+    destlayer: 0
+  - name: Add GoronD
+    type: oarcadd
+    oarc: GoronD
+    destlayer: 0
+# Golo
   - name: Move Golo out of the Way
     type: objpatch
-    room: 0
-    layer: 1
     id: 0xFC5C
+    layer: 1
+    room: 0
     objtype: OBJ
     object:
-      posx: -195
-      posy: 0
-      posz: 2146
-  - name: Delete temp rock in the back
-    type: objdelete
-    id: 0xFC61
+      posx: -150
+      posz: 2090
+      angley: 61000
+      anglez: 40455
+      untrigstoryfid: 2047 # never untrigger
+  - name: Move Golo onto layer 0
+    type: objmove
+    id: 0xFC5C
     layer: 1
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Move trigger onto layer 0
+    type: objmove
+    id: 0xFC5D
+    layer: 1
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Move Stool out of Golo's way
+    type: objpatch
+    id: 0xFC19
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      posx: -400
+      posz: 1850
+# Rock blocking Gorge access
+  - name: Move rock blocking Gorge onto layer 0
+    type: objmove
+    id: 0xFC5F
+    layer: 1
+    destlayer: 0
     room: 0
     objtype: OBJS
   - name: Fi text after chest
@@ -4856,14 +4884,6 @@ F303: # Lanayru Caves
     layer: 0
     room: 0
     objtype: STAG
-  - name: never untrigger goron
-    type: objpatch
-    id: 0xFC5C
-    layer: 1
-    room: 0
-    objtype: OBJ
-    object:
-      untrigstoryfid: 2047 # never untrigger
 F402: # Sealed Temple
   - name: Layer override
     type: layeroverride
