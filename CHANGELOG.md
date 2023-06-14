@@ -11,6 +11,8 @@
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Add an option for a custom hint distribution (by cjs07)
+### Bugfixes
+- Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 
 ## 1.4.1
 ### Bugfixes
