@@ -1445,7 +1445,9 @@ class GamePatcher:
         self.do_patch_title_screen_logo()
         self.do_patch_custom_dowsing_images()
 
-        music_rando(self.placement_file, self.modified_extract_path)
+        music_rando(
+            self.placement_file, self.modified_extract_path, self.actual_extract_path
+        )
 
     def filter_option_requirement(self, entry):
         return not (
