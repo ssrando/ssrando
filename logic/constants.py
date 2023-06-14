@@ -206,6 +206,7 @@ FULL_ET_KEY = "Full ET Key"
 EMPTY_BOTTLE = "Empty Bottle"
 PROGRESSIVE_WALLET = "Progressive Wallet"
 EXTRA_WALLET = "Extra Wallet"
+GROUP_OF_TADTONES = "Group of Tadtones"
 
 GRATITUDE_CRYSTAL_PACKS = group(GRATITUDE_CRYSTAL_PACK, 13)
 GRATITUDE_CRYSTALS = group(GRATITUDE_CRYSTAL, 15)
@@ -221,6 +222,7 @@ KEY_PIECES = group(KEY_PIECE, 5)
 EMPTY_BOTTLES = group(EMPTY_BOTTLE, 5)
 PROGRESSIVE_WALLETS = group(PROGRESSIVE_WALLET, 4)
 EXTRA_WALLETS = group(EXTRA_WALLET, 3)
+TADTONE_GROUPS = group(GROUP_OF_TADTONES, 17)
 
 small_key = lambda d: d + " Small Key"
 SMALL_KEY = {dun: small_key(dun) for dun in ALL_DUNGEONS}
@@ -358,6 +360,7 @@ PROGRESS_ITEMS = (
     | EMPTY_BOTTLES
     | PROGRESSIVE_WALLETS
     | EXTRA_WALLETS
+    | TADTONE_GROUPS
 )
 
 NONPROGRESS_ITEMS = (
@@ -879,6 +882,7 @@ ALLOWED_STARTING_ITEMS = (
     | ALL_MAPS
     | GRATITUDE_CRYSTAL_PACKS
     | EMPTY_BOTTLES
+    | TADTONE_GROUPS
 )
 
 LOCATION_FILTER_TYPES = (
@@ -900,4 +904,5 @@ LOCATION_FILTER_TYPES = (
     "Gratitude Crystal Sidequests",
     "Scrapper Deliveries",
     "Rupees",
+    "Tadtones",
 )
