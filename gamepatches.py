@@ -2951,7 +2951,7 @@ class GamePatcher:
             self.starting_tadtones << 4
         )
 
-        start_flags_write.write(struct.pack(">B", additional_start_options_2))
+        start_flags_write.write(struct.pack(">H", additional_start_options_2))
 
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:
