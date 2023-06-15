@@ -9,6 +9,8 @@
   - Added 17 checks in Flooded Faron Woods
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
 - Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
+- Added the ability to randomize dusk relics in silent realms (by Peppernicus, Zeldex, & YourAverageLink)
+  - Up to 10 relics (chosen by a new option) per silent realm can be randomized to have new items
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Added Fi hints (by YourAverageLink)
@@ -40,6 +42,12 @@
   - Added a reset all colors button that restores all defined color groups back to default
   - Added native support for default player and loftwing models
   - Created structure to allow custom models to define masks, color groups, and previews (see README in models folder for more info)
+- Upon completing a silent realm, the trial gate will remain open. (This is to prevent softlocks with dusk relic shuffle)
+- Items inside silent realms (other than dusk relics) will glow and have beams above them; their color is distinct from the tears
+  - In Faron, items are yellow
+  - In Eldin, items are blue
+  - In Lanayru, items are green
+  - In Skyloft, items are red
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 
