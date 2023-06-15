@@ -3,14 +3,63 @@ from logic.constants import *
 from logic.inventory import EXTENDED_ITEM
 from logic.logic import DNFInventory
 from logic.logic_input import Areas
+import os
 from hints.hint_distribution import HintDistribution
 from hints.hint_types import *
 from .randomize import LogicUtils, UserOutput
 from options import Options
-from paths import RANDO_ROOT_PATH
+from paths import CUSTOM_HINT_DISTRIBUTION_PATH, RANDO_ROOT_PATH
 from typing import Dict, List
 
 STATUS = Enum("STATUS", ["required", "useful", "useless"])
+
+HINTABLE_ITEMS = (
+    ["Clawshots"]
+    + ["Progressive Beetle"] * 2
+    + ["Progressive Sword"] * 4
+    + ["Emerald Tablet"] * 1
+    + ["Ruby Tablet"] * 1
+    + ["Amber Tablet"] * 1
+    + ["Goddess Harp"] * 1
+    + ["Water Scale"] * 1
+    + ["Fireshield Earrings"] * 1
+)
+
+ALWAYS_REQUIRED_LOCATIONS = [
+    "Thunderhead - Song from Levias",
+    "Sky - Kina's Crystals",
+    "Central Skyloft - Peater/Peatrice's Crystals",
+    "Batreaux - 80 Crystals",
+    "Lanayru Mining Facility - Boss Key Chest",
+    "Fire Sanctuary - Chest after Bombable Wall",
+]
+
+SOMETIMES_LOCATIONS = [
+    "Lanayru Sand Sea - Rickety Coaster - Heart Stopping Track in 1'05",
+    "Knight Academy - Pumpkin Archery - 600 Points",
+    "Sky - Lumpy Pumpkin Harp Minigame",
+    "Sky - Fun Fun Island Minigame - 500 Rupees",
+    "Thunderhead - Bug Heaven - 10 Bugs in 3 Minutes",
+    "Batreaux - 70 Crystals Second Reward",
+    "Batreaux - 70 Crystals",
+    "Batreaux - 50 Crystals",
+    "Knight Academy - Owlan's Crystals",
+    "Skyloft Village - Sparrot's Crystals",
+    "Lanayru Desert - Chest on top of Lanayru Mining Facility",
+    "Central Skyloft - Waterfall Goddess Chest",  # stronghold cube
+    "Sky - Beedle's Island Goddess Chest",  # goddess cube in ToT area
+    "Skyview - Chest behind Three Eyes",
+    "Sandship - Boss Key Chest",
+    "Sandship - Tentalus Heart Container",
+    "Sandship - Bow",
+    "Thunderhead - Isle of Songs - Din's Power",
+    "Sealed Grounds - Zelda's Blessing",
+    "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack",
+    "Volcano Summit - Item behind Digging",
+    "Faron Woods - Slingshot",
+    "Sky - Beedle's Crystals",
+    "Sealed Grounds - Gorko's Goddess Wall Reward",
+]
 
 
 class Hints:
@@ -22,12 +71,20 @@ class Hints:
         self.options = options
         self.rng = rng
 
-        with open(
-            RANDO_ROOT_PATH
-            / f"hints/distributions/{self.options['hint-distribution']}.json"
-        ) as f:
-            self.dist = HintDistribution()
-            self.dist.read_from_file(f)
+        self.dist = HintDistribution()
+        if self.options["hint-distribution"] == "Custom":
+            if not CUSTOM_HINT_DISTRIBUTION_PATH.exists():
+                raise Exception(
+                    "Custom distro file not found. Ensure that custom_hint_distribution.json exists in the same directory as the randomizer"
+                )
+            with CUSTOM_HINT_DISTRIBUTION_PATH.open("r") as f:
+                self.dist.read_from_file(f)
+        else:
+            with open(
+                RANDO_ROOT_PATH
+                / f"hints/distributions/{self.options['hint-distribution']}.json"
+            ) as f:
+                self.dist.read_from_file(f)
 
     def do_hint_per_status(self, hintmodes, does_hint, hintcls, get_check, hintpack):
         for hintname, raw_check in hintpack.items():
@@ -110,27 +167,31 @@ class Hints:
             unhintables + hinted_checks,
             check_hint_status,
         )
-        hintstone_hints = self.dist.get_hints()
+        fi_hints, hintstone_hints = self.dist.get_hints()
         self.useroutput.progress_callback("placing hints...")
         hintstone_hints = {
             hintname: hint for hint, hintname in zip(hintstone_hints, HINTS)
         }
         self.hints_per_stone = self.dist.hints_per_stone
         self.randomize(hintstone_hints)
-
+        placed_fi_hints = {FI_HINTS_KEY: FiHintWrapper(fi_hints)}
         placed_hintstone_hints = {
             stone: GossipStoneHintWrapper(
-                [hintstone_hints[hintname] for hintname in hintnames]
+                [
+                    hintstone_hints[hintname]
+                    for hintname in self.logic.placement.stones[stone]
+                ]
             )
-            for stone, hintnames in self.logic.placement.stones.items()
+            for stone in self.areas.gossip_stones
         }
+        self.logic.placement.hints = (
+            placed_fi_hints | placed_hintstone_hints | non_hintstone_hints
+        )
 
-        self.logic.placement.hints = placed_hintstone_hints | non_hintstone_hints
-
-    def randomize(self, hints: Dict[EIN, GossipStoneHint]):
+    def randomize(self, hints: Dict[EIN, RegularHint]):
         for hintname, hint in hints.items():
             hint_bit = EXTENDED_ITEM[hintname]
-            if isinstance(hint, LocationGossipStoneHint) and hint.item in EXTENDED_ITEM:
+            if isinstance(hint, LocationHint) and hint.item in EXTENDED_ITEM:
                 itembit = EXTENDED_ITEM[hint.item]
                 hint_req = DNFInventory(hint_bit)
                 self.logic.backup_requirements[itembit] &= hint_req
