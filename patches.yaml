@@ -143,8 +143,6 @@ global:
       - 68 # Have talked to Plats near Volcano East
     Earth Temple:
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
-    Fire Sanctuary:
-      - 64 # Blow up rock underground starting lava chase (back half lava flow)
     Lanayru Desert:
       - 3  # Obtain map of the past from robot in ToT area
       - 7  # pushed first minecart to end
@@ -166,6 +164,8 @@ global:
       - 16 # Lanayru Gorge Intro Cutscene
     Fire Sanctuary:
       - 83 # Cutscene showing the outside of the Fire Sanctuary
+      - onlyif: Option "fs-lava-flow" Enabled
+        flag: 64 # Blow up rock underground starting lava chase (back half lava flow)
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
