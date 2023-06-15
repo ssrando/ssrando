@@ -1445,6 +1445,16 @@ F020: # Sky
     layer: 0
     room: 0
     objtype: STAG
+  - name: Enlarge Thunderhead Entrance
+    type: objpatch
+    id: 0xFC9D
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      posy: -4500
+      sizex: 12000
+      sizey: 12800
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
@@ -2040,6 +2050,35 @@ F103_1: # Flooded Great Tree
     objtype: PLY
     object:
       play_cutscene: -1
+F103: # Flooded Faron Woods
+  - name: Add bomb flower on lilypad near Bucha
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFF0FFF0
+      params2: 0xFFFFFFFF
+      posx: -2296.102783203125
+      posy: 4500
+      posz: -1793.0338134765625
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0xFF00
+      name: Bombf
+  - name: Remove Tadtone Dowsing Trigger # is a start flag
+    type: objdelete
+    id: 0xFDE5
+    layer: 2
+    room: 0
+    objtype: OBJ
+  - name: Remove buggy Cranioc CS Trigger
+    type: objdelete
+    id: 0xFDF1
+    layer: 2
+    room: 0
+    objtype: STAG
 D100: # Skyview
   - name: Layer override
     type: layeroverride
@@ -4779,32 +4818,60 @@ F303: # Lanayru Caves
   - name: Layer override
     type: layeroverride
     override:
-      - story_flag: 208 #clawshots
-        night: 0
-        layer: 1
       - story_flag: -1
         night: 0
         layer: 0
-  - name: Delete Wall blocking path to Gorge
-    type: objdelete
-    id: 0xFC62
-    layer: 1
-    room: 0
-    objtype: SOBJ
+# Add oarcs
+  - name: Add Goron_motion
+    type: oarcadd
+    oarc: Goron_motion
+    destlayer: 0
+  - name: Add GoronD
+    type: oarcadd
+    oarc: GoronD
+    destlayer: 0
+# Golo
   - name: Move Golo out of the Way
     type: objpatch
-    room: 0
-    layer: 1
     id: 0xFC5C
+    layer: 1
+    room: 0
     objtype: OBJ
     object:
-      posx: -195
-      posy: 0
-      posz: 2146
-  - name: Delete temp rock in the back
-    type: objdelete
-    id: 0xFC61
+      posx: -150
+      posz: 2090
+      angley: 61000
+      anglez: 40455
+      untrigstoryfid: 2047 # never untrigger
+  - name: Move Golo onto layer 0
+    type: objmove
+    id: 0xFC5C
     layer: 1
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Move trigger onto layer 0
+    type: objmove
+    id: 0xFC5D
+    layer: 1
+    destlayer: 0
+    room: 0
+    objtype: OBJ
+  - name: Move Stool out of Golo's way
+    type: objpatch
+    id: 0xFC19
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      posx: -400
+      posz: 1850
+# Rock blocking Gorge access
+  - name: Move rock blocking Gorge onto layer 0
+    type: objmove
+    id: 0xFC5F
+    layer: 1
+    destlayer: 0
     room: 0
     objtype: OBJS
   - name: Fi text after chest
@@ -4819,14 +4886,6 @@ F303: # Lanayru Caves
     layer: 0
     room: 0
     objtype: STAG
-  - name: never untrigger goron
-    type: objpatch
-    id: 0xFC5C
-    layer: 1
-    room: 0
-    objtype: OBJ
-    object:
-      untrigstoryfid: 2047 # never untrigger
 F402: # Sealed Temple
   - name: Layer override
     type: layeroverride

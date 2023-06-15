@@ -436,6 +436,7 @@ HEIGHT_OFFSETS = {
     211: -20.0,  # Fire Sanctuary Map
     212: -20.0,  # Sandship Map
     213: -20.0,  # Sky Keep Map
+    214: 0.0,  # Group of Tadtones
 }
 
 SHOP_BUY_DECIDE_SCALE = {
@@ -507,6 +508,7 @@ SHOP_BUY_DECIDE_SCALE = {
     211: 1.2,  # Fire Sanctuary Map
     212: 1.2,  # Sandship Map
     213: 1.2,  # Sky Keep Map
+    214: 0.6,  # Group of Tadtones
 }
 
 SHOP_PUT_SCALE = {
@@ -570,6 +572,7 @@ SHOP_PUT_SCALE = {
     211: 1.2,  # Fire Sanctuary Map
     212: 1.2,  # Sandship Map
     213: 1.2,  # Sky Keep Map
+    214: 1.0,  # Group of Tadtones
 }
 
 TRIAL_OBJECT_IDS = {
@@ -824,6 +827,8 @@ TRIAL_OBJECT_IDS = {
         ],
     },
 }
+
+CLEF_OBJECT_IDS = {}
 
 
 class FlagEventTypes(IntEnum):
@@ -1221,6 +1226,17 @@ def rando_patch_goddess_crest(bzs: OrderedDict, itemid: int, index: str):
         obj["params2"] = mask_shift_set(obj["params2"], 0xFF, 0x18, itemid)
 
 
+def rando_patch_tadtone_group(bzs: OrderedDict, itemid: int, groupId: str):
+    groupId = int(groupId, 0)
+    clefs = filter(
+        lambda x: x["name"] == "Clef" and ((x["params1"] >> 3) & 0x1F) == groupId,
+        bzs["OBJ "],
+    )
+
+    for clef in clefs:
+        clef["anglez"] = mask_shift_set(clef["anglez"], 0xFFFF, 0, itemid)
+
+
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
 RANDO_PATCH_FUNCS = {
     "chest": rando_patch_chest,
@@ -1233,6 +1249,7 @@ RANDO_PATCH_FUNCS = {
     "EBc": rando_patch_bokoblin,
     "Tbox": rando_patch_tbox,
     "SwSB": rando_patch_goddess_crest,
+    "Clef": rando_patch_tadtone_group,
 }
 
 
@@ -1397,7 +1414,7 @@ class GamePatcher:
         self.load_base_patches()
         self.add_entrance_rando_patches()
         self.add_trial_rando_patches()
-        if self.placement_file.options["shop-mode"] != "Vanilla":
+        if self.placement_file.options["shopsanity"]:
             self.shopsanity_patches()
         self.do_build_arc_cache()
         self.add_startitem_patches()
@@ -1428,7 +1445,9 @@ class GamePatcher:
         self.do_patch_title_screen_logo()
         self.do_patch_custom_dowsing_images()
 
-        music_rando(self.placement_file, self.modified_extract_path)
+        music_rando(
+            self.placement_file, self.modified_extract_path, self.actual_extract_path
+        )
 
     def filter_option_requirement(self, entry):
         return not (
@@ -1469,20 +1488,11 @@ class GamePatcher:
 
         # patches from randomizing items
         filtered_item_locations = self.placement_file.item_locations.copy()
-        rupeesanity_option = self.placement_file.options["rupeesanity"]
-        if rupeesanity_option == "Vanilla":
+        if not self.placement_file.options["rupeesanity"]:
             to_remove = map(self.areas.short_to_full, RUPEE_CHECKS)
-        elif rupeesanity_option == "No Quick Beetle":
-            to_remove = map(self.areas.short_to_full, QUICK_BEETLE_CHECKS)
-        elif rupeesanity_option == "All":
-            to_remove = []
-        else:
-            raise ValueError(
-                f"Wrong value {rupeesanity_option} for option rupeesanity."
-            )
 
-        for rupee_check in to_remove:
-            del filtered_item_locations[rupee_check]
+            for rupee_check in to_remove:
+                del filtered_item_locations[rupee_check]
 
         (
             self.rando_stagepatches,
@@ -1499,9 +1509,9 @@ class GamePatcher:
         self.all_asm_patches = defaultdict(OrderedDict)
         self.add_asm_patch("custom_funcs")
         self.add_asm_patch("ss_necessary")
-        self.add_asm_patch("keysanity")
+        self.add_asm_patch("custom_items")
         self.add_asm_patch("post_boko_base_platforms")
-        if self.placement_file.options["shop-mode"] != "Vanilla":
+        if self.placement_file.options["shopsanity"]:
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
         if self.placement_file.options["bit-patches"] == "Disable BiT":
@@ -1897,6 +1907,10 @@ class GamePatcher:
             crystal_packs * 5
         )
 
+        # Tadtones
+        self.starting_tadtones = 0
+        self.starting_tadtones += start_item_counts.pop(GROUP_OF_TADTONES, 0)
+
         # Empty Bottles
         self.starting_bottles = 0
         self.starting_bottles += start_item_counts.pop(EMPTY_BOTTLE, 0)
@@ -2026,6 +2040,10 @@ class GamePatcher:
         else:
             required_dungeons_text = break_lines(", ".join(colorful_dungeon_text), 44)
 
+        fi_hint_chunks = []
+        for i in range(0, len(self.placement_file.hints[FI_HINTS_KEY]), 8):
+            fi_hint_chunks.append(self.placement_file.hints["Fi"][i : i + 8])
+
         self.eventpatches["006-8KenseiNormal"].append(
             {
                 "name": "Fi Required Dungeon Text",
@@ -2034,6 +2052,53 @@ class GamePatcher:
                 "text": required_dungeons_text,
             }
         )
+        if fi_hint_chunks:
+            for ind, hints in enumerate(fi_hint_chunks):
+                self.eventpatches["006-8KenseiNormal"].append(
+                    {
+                        "name": f"Display Fi Hints Text {ind}",
+                        "type": "flowadd",
+                        "flow": {
+                            "type": "type1",
+                            "next": f"Display Fi Hints Text {ind + 1}"
+                            if ind < (len(fi_hint_chunks) - 1)
+                            else -1,
+                            "param3": 68,
+                            "param4": f"Fi Hints Text {ind}",
+                        },
+                    }
+                )
+                self.eventpatches["006-8KenseiNormal"].append(
+                    {
+                        "name": f"Fi Hints Text {ind}",
+                        "type": "textadd",
+                        "unk1": 2,
+                        "text": break_and_make_multiple_textboxes(hints),
+                    }
+                )
+        else:
+            self.eventpatches["006-8KenseiNormal"].append(
+                {
+                    "name": "Display Fi Hints Text 0",
+                    "type": "flowadd",
+                    "flow": {
+                        "type": "type1",
+                        "next": -1,
+                        "param3": 68,
+                        "param4": f"No Fi Hints Text",
+                    },
+                }
+            )
+            self.eventpatches["006-8KenseiNormal"].append(
+                {
+                    "name": f"No Fi Hints Text",
+                    "type": "textadd",
+                    "unk1": 2,
+                    "text": break_lines(
+                        "Master, I unfortunately have <r<no hints>> for you."
+                    ),
+                }
+            )
 
         fi_objective_text = next(
             filter(
@@ -2917,7 +2982,7 @@ class GamePatcher:
 
         start_flags_write.write(struct.pack(">H", additional_start_options))
 
-        # Starting shield and bottles.
+        # Starting shield, bottles and tadtones.
         ## Last 3 bits for starting bottles.
         additional_start_options_2 = self.starting_bottles
 
@@ -2925,7 +2990,12 @@ class GamePatcher:
         if self.start_with_hylian_shield:
             additional_start_options_2 = additional_start_options_2 | (1 << 3)
 
-        start_flags_write.write(struct.pack(">B", additional_start_options_2))
+        ## Next 5 bits for starting Tadtones.
+        additional_start_options_2 = additional_start_options_2 | (
+            self.starting_tadtones << 4
+        )
+
+        start_flags_write.write(struct.pack(">H", additional_start_options_2))
 
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:
@@ -2962,7 +3032,7 @@ class GamePatcher:
             apply_rel_patch(self, rel, file, codepatches)
             if (
                 file == "d_a_shop_sampleNP.rel"
-                and self.placement_file.options["shop-mode"] != "Vanilla"
+                and self.placement_file.options["shopsanity"]
             ):
                 self.do_shoptable_rel_patch(rel)
             rel.save_changes()
