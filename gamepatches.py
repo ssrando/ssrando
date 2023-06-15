@@ -1414,7 +1414,7 @@ class GamePatcher:
         self.load_base_patches()
         self.add_entrance_rando_patches()
         self.add_trial_rando_patches()
-        if self.placement_file.options["shop-mode"] != "Vanilla":
+        if self.placement_file.options["shopsanity"]:
             self.shopsanity_patches()
         self.do_build_arc_cache()
         self.add_startitem_patches()
@@ -1488,17 +1488,8 @@ class GamePatcher:
 
         # patches from randomizing items
         filtered_item_locations = self.placement_file.item_locations.copy()
-        rupeesanity_option = self.placement_file.options["rupeesanity"]
-        if rupeesanity_option == "Vanilla":
+        if not self.placement_file.options["rupeesanity"]:
             to_remove = map(self.areas.short_to_full, RUPEE_CHECKS)
-        elif rupeesanity_option == "No Quick Beetle":
-            to_remove = map(self.areas.short_to_full, QUICK_BEETLE_CHECKS)
-        elif rupeesanity_option == "All":
-            to_remove = []
-        else:
-            raise ValueError(
-                f"Wrong value {rupeesanity_option} for option rupeesanity."
-            )
 
         for rupee_check in to_remove:
             del filtered_item_locations[rupee_check]
@@ -1520,7 +1511,7 @@ class GamePatcher:
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("custom_items")
         self.add_asm_patch("post_boko_base_platforms")
-        if self.placement_file.options["shop-mode"] != "Vanilla":
+        if self.placement_file.options["shopsanity"]:
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
         if self.placement_file.options["bit-patches"] == "Disable BiT":
@@ -3041,7 +3032,7 @@ class GamePatcher:
             apply_rel_patch(self, rel, file, codepatches)
             if (
                 file == "d_a_shop_sampleNP.rel"
-                and self.placement_file.options["shop-mode"] != "Vanilla"
+                and self.placement_file.options["shopsanity"]
             ):
                 self.do_shoptable_rel_patch(rel)
             rel.save_changes()
