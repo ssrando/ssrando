@@ -1060,10 +1060,10 @@ F001r: # Knight Academy
     layer: 4
     room: 0
     objtype: OBJ
-  - name: Move Fledge closer to Link's room
+  - name: Move Fledge closer to Link's room at night
     type: objpatch
-    id: 0xFC77
-    layer: 3
+    id: 0xFC7D
+    layer: 4
     room: 0
     objtype: OBJ
     object:
@@ -1076,7 +1076,18 @@ F001r: # Knight Academy
     room: 0
     objtype: OBJ
     object:
+      posx: 850
+      posz: -1700
       untrigstoryfid: 923
+  - name: Move Fledge closer to Link's room at day
+    type: objpatch
+    id: 0xFC77
+    layer: 3
+    room: 0
+    objtype: OBJ
+    object:
+      posx: 850
+      posz: -1700
   - name: Fledge Pouch Check Storyflag at day
     type: objpatch
     id: 0xFC78
@@ -1084,6 +1095,8 @@ F001r: # Knight Academy
     room: 0
     objtype: OBJ
     object:
+      posx: 850
+      posz: -1700
       untrigstoryfid: 923
   - name: Fledge trains without wryna
     type: objpatch
@@ -1169,6 +1182,12 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       trigstoryfid: 140 # groose landing in faron, cut out sleeping
+  # - name: Remove Pipit at night triggerarea
+  #   type: objdelete
+  #   id: 0xFC76
+  #   layer: 3
+  #   room: 0
+  #   objtype: OBJ
 F002r: # Beedle's Airshop
   - name: Delete cutscene
     type: objdelete

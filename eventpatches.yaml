@@ -1281,7 +1281,7 @@
     index: 51
     flow:
       next: 50
-  - name: tst4
+  - name: Skip more Fledge camera panning
     type: flowpatch
     index: 50
     flow:
