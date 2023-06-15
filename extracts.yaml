@@ -1,3 +1,8 @@
+- layer: 1
+  oarcs:
+    - Goron_motion
+    - GoronD
+  stage: F303
 - layer: 2
   oarcs:
     - Onp

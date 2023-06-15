@@ -19,6 +19,16 @@
     - When enabled, you will only start at a location in a region unlocked by the tablets you start with
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
+- Added Fi hints (by YourAverageLink)
+  - Fi hints are a new field in hint distribution files. The number indicated on the field is how many gossip stone hints will be placed in the Fi menu
+    - Fi hints take priority over gossip stone hints; that is, they will be placed on Fi first, then on gossip stones if needed
+    - You may now set the hints per stone count of gossip stones to 0
+    - Fi's hints may be seen in her menu, by selecting Information -> Hints
+      - The information menu is also where Play Time now resides
+- Moved Golo to layer 0 in Lanayru Caves
+- Add an option for a custom hint distribution (by cjs07)
+### Bugfixes
+- Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 
 ## 1.4.1
 ### Bugfixes

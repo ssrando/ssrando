@@ -241,19 +241,7 @@ class Rando:
         banned_req = DNFInventory(BANNED_BIT)
         nothing_req = DNFInventory(True)
         maybe_req = lambda b: banned_req if b else nothing_req
-        self.ban_options = {
-            BEEDLE_STALL_ACCESS: maybe_req(self.options["shop-mode"] == "Always Junk"),
-            MEDIUM_PURCHASES: maybe_req(
-                self.options["shop-mode"] == "Randomized - Cheap"
-            ),
-            EXPENSIVE_PURCHASES: maybe_req(
-                self.options["shop-mode"] == "Randomized - Cheap"
-                or self.options["shop-mode"] == "Randomized - Medium"
-            ),
-        } | {
-            MAY_GET_n_CRYSTALS(c): (maybe_req(c > self.options["max-batreaux-reward"]))
-            for c in CRYSTAL_THRESHOLDS
-        }
+        self.ban_options = {}
 
         self.banned: List[EIN] = []
         self.banned.extend(map(self.norm, self.options["excluded-locations"]))
@@ -353,7 +341,7 @@ class Rando:
         )
 
     def set_placement_options(self):
-        shop_mode = self.options["shop-mode"]
+        shopsanity = self.options["shopsanity"]
         place_gondo_progressives = self.options["gondo-upgrades"]
         damage_multiplier = self.options["damage-multiplier"]
 
@@ -366,7 +354,7 @@ class Rando:
             TALK_TO_YERBAL_OPTION: self.options["open-lake-floria"] == "Talk to Yerbal",
             VANILLA_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Vanilla",
             OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
-            RANDOMIZED_BEEDLE_OPTION: shop_mode != "Vanilla",
+            RANDOMIZED_BEEDLE_OPTION: shopsanity != "Vanilla",
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
             NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
@@ -442,12 +430,8 @@ class Rando:
         if not place_gondo_progressives:
             self.placement.add_unplaced_items(GONDO_ITEMS)
 
-        if shop_mode == "Vanilla":
+        if not shopsanity:
             self.placement |= VANILLA_BEEDLE_PLACEMENT(self.norm, self.areas.checks)
-        elif shop_mode == "Randomized":
-            pass
-        elif shop_mode == "Always Junk":
-            pass
 
         # remove small keys from the dungeon pool if small key sanity is enabled
         small_key_mode = self.options["small-key-mode"]
@@ -484,13 +468,8 @@ class Rando:
         elif map_mode == "Anywhere":
             pass
 
-        rupeesanity = self.options["rupeesanity"]
-        if rupeesanity == "Vanilla":
+        if not self.options["rupeesanity"]:
             self.placement |= VANILLA_RUPEES(self.norm, self.areas.checks)
-        elif rupeesanity == "No Quick Beetle":
-            self.placement |= VANILLA_QUICK_BEETLE_RUPEES(self.norm, self.areas.checks)
-        elif rupeesanity == "All":
-            pass
 
         triforce_mode = self.options["triforce-shuffle"]
         if triforce_mode == "Vanilla":

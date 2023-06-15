@@ -82,16 +82,16 @@ Can Afford 300 Rupees:
   Can Medium Rupee Farm
 
 Can Afford 600 Rupees:
-  Medium Purchases Token & Can High Rupee Farm & (1 Extra Wallet | Big Wallet)
+  Can High Rupee Farm & (1 Extra Wallet | Big Wallet)
 
 Can Afford 800 Rupees:
-  Medium Purchases Token & Can High Rupee Farm & (2 Extra Wallets | (Medium Wallet & 1 Extra Wallet) | Big Wallet)
+  Can High Rupee Farm & (2 Extra Wallets | (Medium Wallet & 1 Extra Wallet) | Big Wallet)
 
 Can Afford 1000 Rupees:
-  Medium Purchases Token & Can High Rupee Farm & (3 Extra Wallets | (Medium Wallet & 2 Extra Wallets) | Big Wallet)
+  Can High Rupee Farm & (3 Extra Wallets | (Medium Wallet & 2 Extra Wallets) | Big Wallet)
 
 Can Afford 1200 Rupees:
-  Expensive Purchases Token & Can High Rupee Farm &
+  Can High Rupee Farm &
   (
     3 Extra Wallets |
     (Medium Wallet & 3 Extra Wallets) |
@@ -100,7 +100,7 @@ Can Afford 1200 Rupees:
   )
 
 Can Afford 1600 Rupees:
-  Expensive Purchases Token & Can High Rupee Farm & ((Big Wallet & 2 Extra Wallets) | Giant Wallet)
+  Can High Rupee Farm & ((Big Wallet & 2 Extra Wallets) | Giant Wallet)
 
 Can Medium Rupee Farm:
   Sky - Clean Cut Minigame | Can High Rupee Farm
@@ -172,52 +172,38 @@ Water Bottle: Bottle & Can Collect Water
   $ Gratitude Crystal Pack x 13
 
 5 Gratitude Crystals:
-  May Get 5 Crystals Token & (
   5 Single Gratitude Crystals | 1 Gratitude Crystal Pack
-  )
 
 10 Gratitude Crystals:
-  May Get 10 Crystals Token & (
   10 Single Gratitude Crystals |
   (5 Single Gratitude Crystals & 1 Gratitude Crystal Pack) |
   2 Gratitude Crystal Packs
-  )
 
 30 Gratitude Crystals:
-  May Get 30 Crystals Token & (
   (15 Single Gratitude Crystals & 3 Gratitude Crystal Packs) |
   (10 Single Gratitude Crystals & 4 Gratitude Crystal Packs) |
   (5 Single Gratitude Crystals & 5 Gratitude Crystal Packs) |
   6 Gratitude Crystal Packs
-  )
 
 40 Gratitude Crystals:
-  May Get 40 Crystals Token & (
   (15 Single Gratitude Crystals & 5 Gratitude Crystal Packs) |
   (10 Single Gratitude Crystals & 6 Gratitude Crystal Packs) |
   (5 Single Gratitude Crystals & 7 Gratitude Crystal Packs) |
   8 Gratitude Crystal Packs
-  )
 
 50 Gratitude Crystals:
-  May Get 50 Crystals Token & (
   (15 Single Gratitude Crystals & 7 Gratitude Crystal Packs) |
   (10 Single Gratitude Crystals & 8 Gratitude Crystal Packs) |
   (5 Single Gratitude Crystals & 9 Gratitude Crystal Packs) |
   10 Gratitude Crystal Packs
-  )
 
 70 Gratitude Crystals:
-  May Get 70 Crystals Token & (
   (15 Single Gratitude Crystals & 11 Gratitude Crystal Packs) |
   (10 Single Gratitude Crystals & 12 Gratitude Crystal Packs) |
   (5 Single Gratitude Crystals & 13 Gratitude Crystal Packs)
-  )
 
 80 Gratitude Crystals:
-  May Get 80 Crystals Token & (
   15 Single Gratitude Crystals & 13 Gratitude Crystal Packs
-  )
 
 Sword:
   Practice Sword

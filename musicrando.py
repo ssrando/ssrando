@@ -30,7 +30,7 @@ def get_derangement(length: int, rng: random.Random) -> List[int]:
     return lst
 
 
-def music_rando(placement_file, modified_extract_path):
+def music_rando(placement_file, modified_extract_path, actual_extract_path):
     musiclist = yaml_load(RANDO_ROOT_PATH / "music.yaml")
 
     NON_SHUFFLED_TYPES = [10, 11]
@@ -66,9 +66,16 @@ def music_rando(placement_file, modified_extract_path):
             else:  # this should not be shuffled
                 for track in tracks:
                     music[track] = track
-                # Force vanilla tadtones music to prevent softlock.
-                # Tadtones music can still be randomized to other locations.
-                music[TADTONES_FILE_NAME] = TADTONES_FILE_NAME
+
+        # Force vanilla tadtones music to prevent softlock.
+        # Tadtones music can still be randomized to other locations.
+        music[TADTONES_FILE_NAME] = TADTONES_FILE_NAME
+
+    # Really force it.
+    shutil.copy(
+        actual_extract_path / "DATA" / "files" / "Sound" / "wzs" / TADTONES_FILE_NAME,
+        modified_extract_path / "DATA" / "files" / "Sound" / "wzs" / TADTONES_FILE_NAME,
+    )
 
     # patch WZSound.brsar for filename and length requirements
     with (modified_extract_path / "DATA" / "files" / "Sound" / "WZSound.brsar").open(

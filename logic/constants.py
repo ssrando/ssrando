@@ -11,7 +11,8 @@ EVERYTHING = EIN("Everything")
 NUMBER_OF_HINT_STONES = 18
 
 MAX_HINTS_PER_STONE = 8
-MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
+MAX_FI_HINTS = 64  # Fi hints have no such limits since they're segmented, though an upper bound might be good to have.
+MAX_STONE_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
 
 # Logic options, runtime requirements
 
@@ -33,11 +34,6 @@ GOT_OPENING_REQUIREMENT = EIN("GoT Opening Requirement")
 GOT_RAISING_REQUIREMENT = EIN("GoT Raising Requirement")
 HORDE_DOOR_REQUIREMENT = EIN("Horde Door Requirement")
 
-BEEDLE_STALL_ACCESS = EIN("Beedle Stall Access Token")
-MEDIUM_PURCHASES = EIN("Medium Purchases Token")
-EXPENSIVE_PURCHASES = EIN("Expensive Purchases Token")
-MAY_GET_n_CRYSTALS = lambda n: EIN(f"May Get {n} Crystals Token")
-
 CRYSTAL_THRESHOLDS = [5, 10, 30, 40, 50, 70, 80]
 
 LOGIC_OPTIONS = dict.fromkeys(
@@ -58,11 +54,7 @@ LOGIC_OPTIONS = dict.fromkeys(
         GOT_OPENING_REQUIREMENT,
         GOT_RAISING_REQUIREMENT,
         HORDE_DOOR_REQUIREMENT,
-        BEEDLE_STALL_ACCESS,
-        MEDIUM_PURCHASES,
-        EXPENSIVE_PURCHASES,
     ]
-    + [MAY_GET_n_CRYSTALS(n) for n in CRYSTAL_THRESHOLDS]
 )
 
 # Locations
@@ -180,7 +172,7 @@ def group(name: str, count: int) -> Dict[EXTENDED_ITEM_NAME, None]:
 
 
 HINT = "Hint"
-HINTS = group(HINT, MAX_HINTS)
+HINTS = group(HINT, MAX_STONE_HINTS + MAX_FI_HINTS)
 
 # SAILCLOTH = EIN("Sailcloth")
 BOMB_BAG = EIN("Bomb Bag")
@@ -671,6 +663,8 @@ FARORES_COURAGE_TRIAL_HINT = EIN("Farore's Courage - Trial Hint")
 NAYRUS_WISDOM_TRIAL_HINT = EIN("Nayru's Wisdom - Trial Hint")
 DINS_POWER_TRIAL_HINT = EIN("Din's Power - Trial Hint")
 
+FI_HINTS_KEY = "Fi"
+
 
 SONG_HINTS = {
     SONG_OF_THE_HERO_TRIAL_HINT: SKYLOFT_TRIAL_GATE,
@@ -918,9 +912,14 @@ LOCATION_FILTER_TYPES = (
     "Combat",
     "Minigames",
     "Beedle's Shop Purchases",
+    "Beedle's Shop Purchase (Cheap)",
+    "Beedle's Shop Purchase (Medium)",
+    "Beedle's Shop Purchase (Expensive)",
+    "Batreaux's Rewards",
     "Loose Crystals",
     "Gratitude Crystal Sidequests",
     "Scrapper Deliveries",
-    "Rupees",
+    "Rupees (No Quick Beetle)",
+    "Rupees (Quick Beetle)",
     "Tadtones",
 )
