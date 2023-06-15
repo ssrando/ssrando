@@ -1493,8 +1493,8 @@ class GamePatcher:
         if not self.placement_file.options["rupeesanity"]:
             to_remove = map(self.areas.short_to_full, RUPEE_CHECKS)
 
-        for rupee_check in to_remove:
-            del filtered_item_locations[rupee_check]
+            for rupee_check in to_remove:
+                del filtered_item_locations[rupee_check]
 
         (
             self.rando_stagepatches,
