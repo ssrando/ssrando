@@ -5,10 +5,12 @@ from gui.components.list_pair import ListPair
 import pyclip
 import qdarktheme
 import random
+import colorReplace as cr
+import cv2
 
 import json
-from PySide6.QtCore import Qt, QEvent, QObject, QStringListModel
-from PySide6.QtGui import QFontDatabase, QIcon
+from PySide6.QtCore import Qt, QEvent, QObject
+from PySide6.QtGui import QFontDatabase, QIcon, QImage, QPixmap
 from PySide6.QtWidgets import (
     QAbstractButton,
     QApplication,
@@ -16,15 +18,20 @@ from PySide6.QtWidgets import (
     QComboBox,
     QErrorMessage,
     QFileDialog,
+    QHBoxLayout,
     QInputDialog,
+    QLabel,
     QLineEdit,
     QListView,
     QMainWindow,
     QMessageBox,
+    QPushButton,
     QRadioButton,
+    QSizePolicy,
     QSpinBox,
+    QVBoxLayout,
 )
-
+from gui.components.color_button import ColorButton
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
 from logic.constants import LOCATION_FILTER_TYPES
@@ -59,6 +66,9 @@ HIGH_CONTRAST_THEME_PATH = (
 )
 READABILITY_THEME_PATH = RANDO_ROOT_PATH / "gui" / "themes" / "readability_theme.json"
 CUSTOM_THEME_PATH = "custom_theme.json"
+
+LINK_MODEL_DATA_PATH = RANDO_ROOT_PATH / "assets" / "default-link-data"
+CUSTOM_MODELS_PATH = Path("models")
 
 # Add stylesheet overrides here.
 BASE_STYLE_SHEET_OVERRIDES = ""
@@ -113,6 +123,10 @@ class RandoGUI(QMainWindow):
                 elif isinstance(widget, QComboBox):
                     if option["name"] == "Font Family":
                         widget.currentFontChanged.connect(self.update_font)
+                        widget.currentIndexChanged.connect(self.update_settings)
+                        continue
+                    if option["name"] == "Selected Model Pack":
+                        widget.addItem(option["default"])
                         widget.currentIndexChanged.connect(self.update_settings)
                         continue
                     for option_val in option["choices"]:
@@ -256,6 +270,65 @@ class RandoGUI(QMainWindow):
         self.ui.save_preset.clicked.connect(self.save_preset)
         self.ui.delete_preset.clicked.connect(self.delete_preset)
         self.preset_selection_changed()
+
+        # cosmetics stuff - move to func and connect to dropdown
+        self.color_box = self.ui.vlay_texture_colors
+        self.color_buttons = []
+
+        if not CUSTOM_MODELS_PATH.is_dir():
+            CUSTOM_MODELS_PATH.mkdir()
+
+        # if not os.path.isfile(LINK_MODEL_DATA_PATH / "Player" / "metadata.json"):
+        #     (LINK_MODEL_DATA_PATH / "Player" / "metadata.json").write_bytes(
+        #         (LINK_MODEL_DATA_PATH / "Player" / "defaultMetadata.json").read_bytes()
+        #     )
+
+        # if not os.path.isfile(LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json"):
+        #     (LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json").write_bytes(
+        #         (
+        #             LINK_MODEL_DATA_PATH / "Loftwing" / "defaultMetadata.json"
+        #         ).read_bytes()
+        #     )
+
+        if not os.path.isdir(CUSTOM_MODELS_PATH / "Default"):
+            os.mkdir(CUSTOM_MODELS_PATH / "Default")
+
+        if not os.path.isdir(CUSTOM_MODELS_PATH / "Default" / "Player"):
+            os.mkdir(CUSTOM_MODELS_PATH / "Default" / "Player")
+
+        if not os.path.isdir(CUSTOM_MODELS_PATH / "Default" / "Loftwing"):
+            os.mkdir(CUSTOM_MODELS_PATH / "Default" / "Loftwing")
+
+        if not os.path.isfile(
+            CUSTOM_MODELS_PATH / "Default" / "Player" / "metadata.json"
+        ):
+            (CUSTOM_MODELS_PATH / "Default" / "Player" / "metadata.json").write_bytes(
+                (LINK_MODEL_DATA_PATH / "Player" / "defaultMetadata.json").read_bytes()
+            )
+
+        if not os.path.isfile(
+            CUSTOM_MODELS_PATH / "Default" / "Loftwing" / "metadata.json"
+        ):
+            (CUSTOM_MODELS_PATH / "Default" / "Loftwing" / "metadata.json").write_bytes(
+                (
+                    LINK_MODEL_DATA_PATH / "Loftwing" / "defaultMetadata.json"
+                ).read_bytes()
+            )
+
+        self.ui.option_model_pack_select.currentIndexChanged.connect(
+            self.change_model_pack
+        )
+
+        self.ui.option_model_type_select.currentIndexChanged.connect(
+            self.change_model_type
+        )
+
+        self.ui.button_reset_all_colors.clicked.connect(self.reset_all_colors)
+
+        self.ui.button_randomize_all_colors.clicked.connect(self.randomize_all_colors)
+
+        self.ui.option_model_type_select.addItem("Player")
+        self.ui.option_model_type_select.addItem("Loftwing")
 
         # hide currently unsupported options to make this version viable for public use
         getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
@@ -434,6 +507,10 @@ class RandoGUI(QMainWindow):
                     widget.setChecked(current_settings[option_key])
                 elif isinstance(widget, QComboBox):
                     if option["name"] == "Font Family":
+                        widget.setCurrentIndex(
+                            widget.findText(current_settings[option_key])
+                        )
+                    elif option["name"] == "Selected Model Pack":
                         widget.setCurrentIndex(
                             widget.findText(current_settings[option_key])
                         )
@@ -724,6 +801,255 @@ class RandoGUI(QMainWindow):
         if dialog.exec():
             self.enabled_tricks = dialog.getTrickValues()
             self.update_settings()
+
+    # Custom model customisation funcs
+
+    def change_model_type(self, index: int):
+        self.current_model_type = self.ui.option_model_type_select.currentText()
+        arcPath: str
+        currentPack: str
+
+        match self.current_model_type:
+            case "Player":
+                arcPath = "Player/Alink.arc"
+                currentPack = self.options["selected-player-model-pack"]
+            case "Loftwing":
+                arcPath = "Loftwing/Bird_Link.arc"
+                currentPack = self.options["selected-loftwing-model-pack"]
+
+        self.ui.option_model_pack_select.blockSignals(True)
+        self.ui.option_model_pack_select.clear()
+        self.ui.option_model_pack_select.addItem("Default")
+        for path in CUSTOM_MODELS_PATH.glob(f"*/{arcPath}"):
+            packName = path.parts[-3]
+            if (
+                packName == "Default"
+            ):  # ignore packs called default so they don't clash with default link
+                continue
+            self.ui.option_model_pack_select.addItem(packName)
+            if packName == currentPack:
+                self.ui.option_model_pack_select.setCurrentText(packName)
+        self.ui.option_model_pack_select.blockSignals(False)
+        self.change_model_pack()
+
+    def change_model_pack(self, index: int = 0):
+        if self.ui.option_model_pack_select.count() < 1:
+            return
+        self.current_model_pack = self.ui.option_model_pack_select.currentText()
+
+        self.read_metadata()
+
+        match self.current_model_type:
+            case "Player":
+                self.options.set_option(
+                    "selected-player-model-pack", self.current_model_pack
+                )
+                if allowTunicSwap := self.metadata.get("AllowTunicSwap"):
+                    if allowTunicSwap == "True":
+                        self.ui.option_tunic_swap.setEnabled(True)
+                    else:
+                        self.ui.option_tunic_swap.setChecked(False)
+                        self.ui.option_tunic_swap.setEnabled(False)
+                        self.options.set_option("tunic-swap", False)
+                else:
+                    self.ui.option_tunic_swap.setEnabled(True)
+
+                self.save_settings()
+            case "Loftwing":
+                self.options.set_option(
+                    "selected-loftwing-model-pack", self.current_model_pack
+                )
+                self.save_settings()
+
+        self.update_model_customisation()
+
+    def read_metadata(self):
+        if self.current_model_pack == "Default":
+            self.metadata_path = (
+                CUSTOM_MODELS_PATH
+                / "Default"
+                / self.current_model_type
+                / "metadata.json"
+            )
+            if not os.path.isfile(self.metadata_path):
+                self.metadata_path.write_bytes(
+                    (
+                        LINK_MODEL_DATA_PATH
+                        / self.current_model_type
+                        / "defaultMetadata.json"
+                    ).read_bytes()
+                )
+        else:
+            self.metadata_path = (
+                CUSTOM_MODELS_PATH
+                / self.current_model_pack
+                / self.current_model_type
+                / "metadata.json"
+            )
+
+        if os.path.isfile(self.metadata_path):
+            with open(self.metadata_path) as f:
+                self.metadata = json.load(f)
+        else:
+            self.metadata = {}
+
+    def model_color_changed(self, color: str, name: str):
+        self.metadata["Colors"][name] = color
+
+        with open(self.metadata_path, "w") as f:
+            json.dump(self.metadata, f)
+
+        self.update_model_preview()
+
+    def update_model_customisation(self):
+        color_box_index = 0
+
+        while (
+            self.color_box.count() > 2
+        ):  # leaves horizonal and vertical spacers in box
+            layout = self.color_box.takeAt(0).layout()
+            while layout.count() > 0:
+                widget = layout.takeAt(0).widget()
+                widget.deleteLater()
+            layout.deleteLater()
+
+        self.color_buttons.clear()
+
+        author_layout = QVBoxLayout()
+        author_layout_index = 0
+
+        if author_name := self.metadata.get("ModelAuthorName"):
+            author_name_label = QLabel(f"Model Author: {author_name}")
+            author_name_label.setWordWrap(True)
+            author_layout.insertWidget(author_layout_index, author_name_label)
+            author_layout_index += 1
+
+        if author_comment := self.metadata.get("ModelAuthorComment"):
+            author_comment_label = QLabel(f"Model Author Comment: {author_comment}")
+            author_comment_label.setWordWrap(True)
+            author_layout.insertWidget(author_layout_index, author_comment_label)
+
+        self.color_box.insertLayout(color_box_index, author_layout)
+        color_box_index += 1
+
+        if colorData := self.metadata.get("Colors"):
+            self.ui.button_randomize_all_colors.setEnabled(True)
+            self.ui.button_reset_all_colors.setEnabled(True)
+            for mask_name in colorData:
+                color_label = QLabel(mask_name)
+
+                random_color_button = QPushButton("Random")
+                random_color_button.setSizePolicy(
+                    QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred
+                )
+                color_button = ColorButton(mask_name, showAlpha=False)
+                color_button.set_color(
+                    colorData[mask_name]
+                )  # set color after so initial color is none to allow for defaults
+                reset_color_button = QPushButton("Reset")
+                reset_color_button.setSizePolicy(
+                    QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred
+                )
+
+                self.color_buttons.append(color_button)
+
+                random_color_button.clicked.connect(color_button.randomize_color)
+                color_button.colorChanged.connect(self.model_color_changed)
+                reset_color_button.clicked.connect(color_button.reset_color)
+
+                color_button_layout = QHBoxLayout()
+                color_button_layout.insertWidget(0, color_label)
+                color_button_layout.insertWidget(1, random_color_button)
+                color_button_layout.insertWidget(2, color_button)
+                color_button_layout.insertWidget(3, reset_color_button)
+
+                self.color_box.insertLayout(color_box_index, color_button_layout)
+                color_box_index += 1
+        else:
+            self.ui.button_randomize_all_colors.setEnabled(False)
+            self.ui.button_reset_all_colors.setEnabled(False)
+
+        self.update_model_preview()
+
+    def reset_all_colors(self):
+        for button in self.color_buttons:
+            button.blockSignals(True)
+            button.reset_color()
+            button.blockSignals(False)
+
+        for colorGroup in self.metadata["Colors"]:
+            self.metadata["Colors"][colorGroup] = "Default"
+
+        with open(self.metadata_path, "w") as f:
+            json.dump(self.metadata, f)
+
+        self.update_model_preview()
+
+    def randomize_all_colors(self):
+        self.ui.button_randomize_all_colors.setEnabled(False)
+        self.ui.button_randomize_all_colors.repaint()
+        colors = []
+
+        for button in self.color_buttons:
+            button.blockSignals(True)
+            colors.append(button.randomize_color())
+            button.blockSignals(False)
+
+        for i, colorGroup in enumerate(self.metadata["Colors"]):
+            self.metadata["Colors"][colorGroup] = colors[i]
+
+        with open(self.metadata_path, "w") as f:
+            json.dump(self.metadata, f)
+
+        self.update_model_preview()
+        self.ui.button_randomize_all_colors.setEnabled(True)
+
+    def update_model_preview(self):
+        if self.current_model_pack == "Default":
+            previewDataPath = LINK_MODEL_DATA_PATH / self.current_model_type / "Preview"
+        else:
+            previewDataPath = (
+                CUSTOM_MODELS_PATH
+                / self.current_model_pack
+                / self.current_model_type
+                / "Preview"
+            )
+
+        if not os.path.isfile(previewDataPath / "Preview.png"):
+            self.ui.label_preview_image.clear()
+            self.ui.label_preview_image.setText("No preview provided")
+            return
+
+        data = cv2.imread(str(previewDataPath / "Preview.png"), cv2.IMREAD_UNCHANGED)
+        data = cv2.cvtColor(data, cv2.COLOR_RGBA2BGRA)
+        height = data.shape[0]
+        width = data.shape[1]
+
+        colorData = self.metadata.get("Colors")
+
+        maskPaths = []
+        colors = []
+        for colorGroup in colorData:
+            if colorData[colorGroup] == "Default":
+                continue
+            maskPath = previewDataPath / f"Preview__{colorGroup}.png"
+            if os.path.isfile(maskPath):
+                maskPaths.append(str(maskPath))
+                colors.append(colorData[colorGroup])
+            else:
+                print(f"No preview mask found at {maskPath}")
+
+        modifiedData = cr.process_texture(
+            texture=data, maskPaths=maskPaths, colors=colors
+        )
+
+        qimage = QImage(
+            modifiedData.tobytes(), width, height, QImage.Format.Format_RGBA8888
+        )
+        qpixmap = QPixmap.fromImage(qimage).scaled(
+            600, 500, Qt.KeepAspectRatio, Qt.SmoothTransformation
+        )
+        self.ui.label_preview_image.setPixmap(qpixmap)
 
     def eventFilter(self, target: QObject, event: QEvent) -> bool:
         if event.type() == QEvent.Enter:

@@ -1024,3 +1024,18 @@
   bits: 5
   help: How many groups of Tadtones to start with.
   ui: option_starting_tadtones
+# Player customisation stuff
+- name: Selected Player Model Pack
+  command: selected-player-model-pack
+  type: string
+  default: Default
+  permalink: false
+  cosmetic: true
+  help: "Determines the player model pack that will be used in game."
+- name: Selected Loftwing Model Pack
+  command: selected-loftwing-model-pack
+  type: string
+  default: Default
+  permalink: false
+  cosmetic: true
+  help: "Determines the loftwing model pack that will be used in game."

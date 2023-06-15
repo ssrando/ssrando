@@ -16,10 +16,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
-    QFontComboBox, QGroupBox, QHBoxLayout, QLabel,
-    QLayout, QLineEdit, QListView, QMainWindow,
-    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
-    QTabWidget, QVBoxLayout, QWidget)
+    QFontComboBox, QFrame, QGroupBox, QHBoxLayout,
+    QLabel, QLayout, QLineEdit, QListView,
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QSpinBox, QTabWidget, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -178,11 +179,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.vlay_cosmetics = QVBoxLayout()
         self.vlay_cosmetics.setObjectName(u"vlay_cosmetics")
-        self.option_tunic_swap = QCheckBox(self.box_cosmetics)
-        self.option_tunic_swap.setObjectName(u"option_tunic_swap")
-
-        self.vlay_cosmetics.addWidget(self.option_tunic_swap)
-
         self.option_lightning_skyward_strike = QCheckBox(self.box_cosmetics)
         self.option_lightning_skyward_strike.setObjectName(u"option_lightning_skyward_strike")
 
@@ -1494,6 +1490,126 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.addWidget(self.box_additional_options)
 
         self.tabWidget.addTab(self.tab_starting_items, "")
+        self.tab_cosmetics = QWidget()
+        self.tab_cosmetics.setObjectName(u"tab_cosmetics")
+        self.verticalLayout_31 = QVBoxLayout(self.tab_cosmetics)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.custom_model_settings = QVBoxLayout()
+        self.custom_model_settings.setObjectName(u"custom_model_settings")
+        self.hlay_type_options = QHBoxLayout()
+        self.hlay_type_options.setObjectName(u"hlay_type_options")
+        self.label_color_preset_select_label = QLabel(self.tab_cosmetics)
+        self.label_color_preset_select_label.setObjectName(u"label_color_preset_select_label")
+
+        self.hlay_type_options.addWidget(self.label_color_preset_select_label)
+
+        self.option_model_type_select = QComboBox(self.tab_cosmetics)
+        self.option_model_type_select.setObjectName(u"option_model_type_select")
+        self.option_model_type_select.setEnabled(True)
+
+        self.hlay_type_options.addWidget(self.option_model_type_select)
+
+        self.option_tunic_swap = QCheckBox(self.tab_cosmetics)
+        self.option_tunic_swap.setObjectName(u"option_tunic_swap")
+        self.option_tunic_swap.setEnabled(True)
+
+        self.hlay_type_options.addWidget(self.option_tunic_swap)
+
+        self.hspace_type_options = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.hlay_type_options.addItem(self.hspace_type_options)
+
+
+        self.custom_model_settings.addLayout(self.hlay_type_options)
+
+        self.hlay_pack_options = QHBoxLayout()
+        self.hlay_pack_options.setObjectName(u"hlay_pack_options")
+        self.label_player_model_select = QLabel(self.tab_cosmetics)
+        self.label_player_model_select.setObjectName(u"label_player_model_select")
+
+        self.hlay_pack_options.addWidget(self.label_player_model_select)
+
+        self.option_model_pack_select = QComboBox(self.tab_cosmetics)
+        self.option_model_pack_select.setObjectName(u"option_model_pack_select")
+
+        self.hlay_pack_options.addWidget(self.option_model_pack_select)
+
+        self.button_randomize_all_colors = QPushButton(self.tab_cosmetics)
+        self.button_randomize_all_colors.setObjectName(u"button_randomize_all_colors")
+
+        self.hlay_pack_options.addWidget(self.button_randomize_all_colors)
+
+        self.button_reset_all_colors = QPushButton(self.tab_cosmetics)
+        self.button_reset_all_colors.setObjectName(u"button_reset_all_colors")
+
+        self.hlay_pack_options.addWidget(self.button_reset_all_colors)
+
+        self.hspace_pack_options = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.hlay_pack_options.addItem(self.hspace_pack_options)
+
+
+        self.custom_model_settings.addLayout(self.hlay_pack_options)
+
+
+        self.verticalLayout_31.addLayout(self.custom_model_settings)
+
+        self.hlay_colors_and_preview = QHBoxLayout()
+        self.hlay_colors_and_preview.setObjectName(u"hlay_colors_and_preview")
+        self.scroll_area_colors = QScrollArea(self.tab_cosmetics)
+        self.scroll_area_colors.setObjectName(u"scroll_area_colors")
+        self.scroll_area_colors.setContextMenuPolicy(Qt.PreventContextMenu)
+        self.scroll_area_colors.setFrameShape(QFrame.NoFrame)
+        self.scroll_area_colors.setFrameShadow(QFrame.Plain)
+        self.scroll_area_colors.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scroll_area_colors.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scroll_area_colors.setWidgetResizable(True)
+        self.scroll_area_colors.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.scroll_area_widget_contents_colors = QWidget()
+        self.scroll_area_widget_contents_colors.setObjectName(u"scroll_area_widget_contents_colors")
+        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 523, 456))
+        self.verticalLayout_34 = QVBoxLayout(self.scroll_area_widget_contents_colors)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.vlay_texture_colors = QVBoxLayout()
+        self.vlay_texture_colors.setObjectName(u"vlay_texture_colors")
+        self.vspace_colors = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.vlay_texture_colors.addItem(self.vspace_colors)
+
+        self.hspace_colors = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.vlay_texture_colors.addItem(self.hspace_colors)
+
+
+        self.verticalLayout_34.addLayout(self.vlay_texture_colors)
+
+        self.scroll_area_colors.setWidget(self.scroll_area_widget_contents_colors)
+
+        self.hlay_colors_and_preview.addWidget(self.scroll_area_colors)
+
+        self.vlay_preview = QVBoxLayout()
+        self.vlay_preview.setObjectName(u"vlay_preview")
+        self.hlay_preview = QHBoxLayout()
+        self.hlay_preview.setObjectName(u"hlay_preview")
+        self.label_preview_image = QLabel(self.tab_cosmetics)
+        self.label_preview_image.setObjectName(u"label_preview_image")
+        sizePolicy1.setHeightForWidth(self.label_preview_image.sizePolicy().hasHeightForWidth())
+        self.label_preview_image.setSizePolicy(sizePolicy1)
+        self.label_preview_image.setScaledContents(False)
+        self.label_preview_image.setAlignment(Qt.AlignCenter)
+
+        self.hlay_preview.addWidget(self.label_preview_image)
+
+
+        self.vlay_preview.addLayout(self.hlay_preview)
+
+
+        self.hlay_colors_and_preview.addLayout(self.vlay_preview)
+
+
+        self.verticalLayout_31.addLayout(self.hlay_colors_and_preview)
+
+        self.tabWidget.addTab(self.tab_cosmetics, "")
         self.tab_accessibility = QWidget()
         self.tab_accessibility.setObjectName(u"tab_accessibility")
         self.horizontalLayout_3 = QHBoxLayout(self.tab_accessibility)
@@ -1747,10 +1863,11 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
+        self.option_model_pack_select.setCurrentIndex(-1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1772,7 +1889,6 @@ class Ui_MainWindow(object):
         self.box_advanced.setTitle(QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.box_cosmetics.setTitle(QCoreApplication.translate("MainWindow", u"Cosmetics", None))
-        self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
         self.option_lightning_skyward_strike.setText(QCoreApplication.translate("MainWindow", u"Lightning Skyward Strike", None))
         self.option_starry_skies.setText(QCoreApplication.translate("MainWindow", u"Starry Skies", None))
         self.label_for_option_star_count.setText(QCoreApplication.translate("MainWindow", u"Number of stars", None))
@@ -1896,6 +2012,13 @@ class Ui_MainWindow(object):
         self.label_current_starting_health.setText(QCoreApplication.translate("MainWindow", u"Starting Health:", None))
         self.current_starting_health_counter.setText(QCoreApplication.translate("MainWindow", u"6 hearts", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_starting_items), QCoreApplication.translate("MainWindow", u"Starting Items", None))
+        self.label_color_preset_select_label.setText(QCoreApplication.translate("MainWindow", u"Type", None))
+        self.option_tunic_swap.setText(QCoreApplication.translate("MainWindow", u"Tunic Swap", None))
+        self.label_player_model_select.setText(QCoreApplication.translate("MainWindow", u"Pack", None))
+        self.button_randomize_all_colors.setText(QCoreApplication.translate("MainWindow", u"Randomize All Colors", None))
+        self.button_reset_all_colors.setText(QCoreApplication.translate("MainWindow", u"Reset All Colors", None))
+        self.label_preview_image.setText("")
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cosmetics), QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.box_theme.setTitle(QCoreApplication.translate("MainWindow", u"Theming", None))
         self.theme_mode_label.setText(QCoreApplication.translate("MainWindow", u"Theme Mode", None))
         self.option_theme_mode.setCurrentText("")

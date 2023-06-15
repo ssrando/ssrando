@@ -1,0 +1,30 @@
+{
+    "Colors":
+    {
+        "Skin": "Default",
+        "Hat": "Default",
+        "Hair": "Default",
+        "Eyes": "Default",
+        "Tunic": "Default",
+        "Undershirt": "Default",
+        "Chainmail": "Default",
+        "Bracers": "Default",
+        "Gloves": "Default",
+        "Belt": "Default",
+        "Belt Buckle": "Default",
+        "Skirt": "Default",
+        "Pants": "Default",
+        "Boots": "Default",
+        "Soles": "Default",
+        "Pyjama Hair": "Default",
+        "Pyjama Shirt": "Default",
+        "Pyjama Shirt Pattern": "Default",
+        "Pyjama Band": "Default",
+        "Pyjama Band Pattern": "Default",
+        "Pyjama Belt": "Default",
+        "Pyjama Pants": "Default",
+        "Pyjama Boots": "Default",
+        "Pyjama Soles": "Default"
+    },
+    "AllowTunicSwap": "True"
+}

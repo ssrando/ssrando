@@ -8,6 +8,7 @@
     - You can check how many tadtone groups you have by talking to Fi
   - Added 17 checks in Flooded Faron Woods
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
+- Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Added Fi hints (by YourAverageLink)
@@ -18,6 +19,27 @@
       - The information menu is also where Play Time now resides
 - Moved Golo to layer 0 in Lanayru Caves
 - Add an option for a custom hint distribution (by cjs07)
+- Added more structured and granular custom model support (by Muzu- with big help from CovenEsme, FrasseFreak, and Dman25)
+  - Added cosmetics tab to UI
+  - Added models folder for custom model packs
+  - Created a standard folder structure for custom model packs (see README in models folder for more info)
+  - Added the ability to choose a model pack to patch over the player model and loftwing models individually
+  - Created a metadata structure to allow custom model makers to define the following:
+    - Colour groups for texture masking
+    - Allowing tunic swap (if set to false, the option on the UI is disabled and grayed out)
+    - Adding a model author name and comment that will be displayed on the UI when the model pack is selected
+  - Added the default player and loftwing models as model pack options
+- Added masked texture recolor support (by Muzu- with big help from CovenEsme, FrasseFreak, and Dman25)
+  - Added color options for each defined color group are displayed on the left side:
+    - Color button allows the user to manually select a color
+    - Randomize button picks a random color for corresponding group
+    - Reset color button returns the color group back to default (this uses the original texture colors)
+  - Added a preview of the model is displayed on the right side (if one is provided)
+    - The preview updates to show how the currently selected colors look on the model
+  - Added a randomize all colors button that selects a random color for all defined color groups
+  - Added a reset all colors button that restores all defined color groups back to default
+  - Added native support for default player and loftwing models
+  - Created structure to allow custom models to define masks, color groups, and previews (see README in models folder for more info)
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 
