@@ -11,7 +11,8 @@ EVERYTHING = EIN("Everything")
 NUMBER_OF_HINT_STONES = 18
 
 MAX_HINTS_PER_STONE = 8
-MAX_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
+MAX_FI_HINTS = 64  # Fi hints have no such limits since they're segmented, though an upper bound might be good to have.
+MAX_STONE_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
 
 # Logic options, runtime requirements
 
@@ -28,15 +29,11 @@ GONDO_UPGRADES_ON_OPTION = EIN("Gondo Upgrades On option")
 NO_BIT_CRASHES = EIN("No BiT crashes")
 NONLETHAL_HOT_CAVE = EIN("Nonlethal Hot Cave")
 UPGRADED_SKYWARD_STRIKE = EIN("Upgraded Skyward Strike option")
+FS_LAVA_FLOW_OPTION = EIN("FS Lava Flow option")
 
 GOT_OPENING_REQUIREMENT = EIN("GoT Opening Requirement")
 GOT_RAISING_REQUIREMENT = EIN("GoT Raising Requirement")
 HORDE_DOOR_REQUIREMENT = EIN("Horde Door Requirement")
-
-BEEDLE_STALL_ACCESS = EIN("Beedle Stall Access Token")
-MEDIUM_PURCHASES = EIN("Medium Purchases Token")
-EXPENSIVE_PURCHASES = EIN("Expensive Purchases Token")
-MAY_GET_n_CRYSTALS = lambda n: EIN(f"May Get {n} Crystals Token")
 
 CRYSTAL_THRESHOLDS = [5, 10, 30, 40, 50, 70, 80]
 
@@ -55,14 +52,11 @@ LOGIC_OPTIONS = dict.fromkeys(
         NO_BIT_CRASHES,
         NONLETHAL_HOT_CAVE,
         UPGRADED_SKYWARD_STRIKE,
+        FS_LAVA_FLOW_OPTION,
         GOT_OPENING_REQUIREMENT,
         GOT_RAISING_REQUIREMENT,
         HORDE_DOOR_REQUIREMENT,
-        BEEDLE_STALL_ACCESS,
-        MEDIUM_PURCHASES,
-        EXPENSIVE_PURCHASES,
     ]
-    + [MAY_GET_n_CRYSTALS(n) for n in CRYSTAL_THRESHOLDS]
 )
 
 # Locations
@@ -167,7 +161,7 @@ def group(name: str, count: int) -> Dict[EXTENDED_ITEM_NAME, None]:
 
 
 HINT = "Hint"
-HINTS = group(HINT, MAX_HINTS)
+HINTS = group(HINT, MAX_STONE_HINTS + MAX_FI_HINTS)
 
 # SAILCLOTH = EIN("Sailcloth")
 BOMB_BAG = EIN("Bomb Bag")
@@ -215,6 +209,7 @@ FULL_ET_KEY = "Full ET Key"
 EMPTY_BOTTLE = "Empty Bottle"
 PROGRESSIVE_WALLET = "Progressive Wallet"
 EXTRA_WALLET = "Extra Wallet"
+GROUP_OF_TADTONES = "Group of Tadtones"
 
 GRATITUDE_CRYSTAL_PACKS = group(GRATITUDE_CRYSTAL_PACK, 13)
 GRATITUDE_CRYSTALS = group(GRATITUDE_CRYSTAL, 15)
@@ -230,6 +225,7 @@ KEY_PIECES = group(KEY_PIECE, 5)
 EMPTY_BOTTLES = group(EMPTY_BOTTLE, 5)
 PROGRESSIVE_WALLETS = group(PROGRESSIVE_WALLET, 4)
 EXTRA_WALLETS = group(EXTRA_WALLET, 3)
+TADTONE_GROUPS = group(GROUP_OF_TADTONES, 17)
 
 small_key = lambda d: d + " Small Key"
 SMALL_KEY = {dun: small_key(dun) for dun in ALL_DUNGEONS}
@@ -367,6 +363,7 @@ PROGRESS_ITEMS = (
     | EMPTY_BOTTLES
     | PROGRESSIVE_WALLETS
     | EXTRA_WALLETS
+    | TADTONE_GROUPS
 )
 
 NONPROGRESS_ITEMS = (
@@ -655,6 +652,8 @@ FARORES_COURAGE_TRIAL_HINT = EIN("Farore's Courage - Trial Hint")
 NAYRUS_WISDOM_TRIAL_HINT = EIN("Nayru's Wisdom - Trial Hint")
 DINS_POWER_TRIAL_HINT = EIN("Din's Power - Trial Hint")
 
+FI_HINTS_KEY = "Fi"
+
 
 SONG_HINTS = {
     SONG_OF_THE_HERO_TRIAL_HINT: SKYLOFT_TRIAL_GATE,
@@ -888,4 +887,28 @@ ALLOWED_STARTING_ITEMS = (
     | ALL_MAPS
     | GRATITUDE_CRYSTAL_PACKS
     | EMPTY_BOTTLES
+    | TADTONE_GROUPS
+)
+
+LOCATION_FILTER_TYPES = (
+    "Goddess Chests",
+    "Faron Woods Goddess Chests",
+    "Lake Floria Goddess Chests",
+    "Eldin Volcano Goddess Chests",
+    "Volcano Summit Goddess Chests",
+    "Lanayru Desert Goddess Chests",
+    "Sand Sea Goddess Chests",
+    "Combat",
+    "Minigames",
+    "Beedle's Shop Purchases",
+    "Beedle's Shop Purchase (Cheap)",
+    "Beedle's Shop Purchase (Medium)",
+    "Beedle's Shop Purchase (Expensive)",
+    "Batreaux's Rewards",
+    "Loose Crystals",
+    "Gratitude Crystal Sidequests",
+    "Scrapper Deliveries",
+    "Rupees (No Quick Beetle)",
+    "Rupees (Quick Beetle)",
+    "Tadtones",
 )

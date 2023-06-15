@@ -17,7 +17,7 @@ if IS_RUNNING_FROM_SOURCE:
         version_suffix = (
             "_"
             + subprocess.check_output(
-                ["git", "rev-parse", "--short", "HEAD"], cwd=Path(__file__).parent
+                ["git", "rev-parse", "--short=7", "HEAD"], cwd=Path(__file__).parent
             )
             .decode("ASCII")
             .strip()

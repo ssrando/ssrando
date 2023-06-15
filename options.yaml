@@ -209,37 +209,13 @@
         This is highly discouraged to enable as it means issues are much harder solve if you get stuck or encounter a
         problem with the game."
   ui: option_no_spoiler_log
-- name: Max Batreaux Reward
-  command: max-batreaux-reward
-  type: singlechoice
-  default: 50
-  choices:
-    - 0
-    - 5
-    - 10
-    - 30
-    - 40
-    - 50
-    - 70
-    - 80
-  bits: 3
-  help: "Enables progression items to appear in all Batreaux rewards up to and including the selected amount."
-  ui: option_max_batreaux_reward
-- name: Shop Mode
-  command: shop-mode
-  type: singlechoice
-  default: Randomized - Cheap
-  choices:
-    - Vanilla
-    - Randomized - Cheap
-    - Randomized - Medium
-    - Randomized - Expensive
-  bits: 2
-  help: "Determines how shops are randomized.
-        **Vanilla**: shops will always contain their vanilla items, but may still be logically required for progression.
-        **Cheap**: all purchases that cost 300 rupees or less.
-        **Medium**: all purchases that cost 1000 or less rupees.
-        **Expensive**: includes all purchases, regardless of cost."
+- name: Shopsanity
+  command: shopsanity
+  type: boolean
+  default: true
+  help: "Determines if shops are randomized. When enabled, shop items and locations will be shuffled like normal items,
+        and the shop locations will get a randomized item. When disabled, shops will always contain their vanilla items,
+        however those items may still be required for progression. **Currently shuffled shops**: Beedle's Airshop"
   ui: option_shopsanity
 - name: Rupoor Mode
   command: rupoor-mode
@@ -260,17 +236,10 @@
   ui: option_rupoor_mode
 - name: Rupeesanity
   command: rupeesanity
-  type: singlechoice
-  default: Vanilla
-  choices:
-    - Vanilla
-    - No Quick Beetle
-    - All
+  type: boolean
+  default: false
   bits: 2
-  help: "Shuffles freestanding rupees.
-        **Vanilla**: freestanding rupees appear in their vanilla locations.
-        **No Quick Beetle**: freestanding rupees that don't need Quick Beetle to obtain are randomized.
-        **All**: all freestanding rupees are randomized.
+  help: "Shuffles freestanding rupees. When unshuffled, all freestanding rupees will remain vanilla.
         Note, it is not possible to shuffle some freestanding rupees yet (e.g. the rupees on the Lumpy Pumpkin
         chandelier)."
   ui: option_rupeesanity
@@ -282,12 +251,6 @@
         Includes: Quick Beetle, Tough Beetle, Iron Bow, Sacred Bow, Big Bug Net and Scatershot.
         Note, there are no random items obtainable by talking to Gondo at the Scrap Shop."
   ui: option_gondo_upgrades
-# - name: Tadtone Shuffle
-#   command: tadtones
-#   type: boolean
-#   default: false
-#   help: "If enabled, collecting each of the groups of *Tadtones* will give a random item."
-#   ui: option_tadtones
 - name: Gate of Time Starting State
   command: got-start
   type: singlechoice
@@ -836,6 +799,9 @@
     - S2 - 3D
     - S2 - 3D EUD Off
     - CDMC
+    - Dowsing & Fi Hints
+    - 2D Dowsing & Fi Hints
+    - Custom
   default: Balanced
   help: "Determines the distribution of hints that appear on Gossip Stones.
         Determines the number, order and locations hints are generated in."
@@ -1041,3 +1007,28 @@
   default: false
   help: "If enabled, the starting position of the boss keys will be randomized."
   ui: option_randomize_boss_key_puzzles
+- name: Tadtonesanity
+  command: tadtonesanity
+  type: boolean
+  default: false
+  help: "If enabled, 17 \"Group of Tadtones\" items will be shuffled throughout the world and each of the tadtone
+        groups in Flooded Faron Woods will give an item when collected. Get all 17 \"Group of Tadtones\" items to
+        complete the music scroll and receive an item from the Water Dragon in Flooded Faron Woods."
+  ui: option_tadtonesanity
+- name: Starting Tadtone Count
+  command: starting-tadtones
+  type: int
+  default: 0
+  min: 0
+  max: 17
+  bits: 5
+  help: How many groups of Tadtones to start with.
+  ui: option_starting_tadtones
+# Dungeon convenience patches - might change to multichoice later
+- name: FS Last Room Lava Flow
+  command: fs-lava-flow
+  type: boolean
+  default: false
+  help: "If enabled, the lava in the last room of Fire Sanctuary will be flowing by default (without needing to
+        blow up the underground boulder)."
+  ui: option_fs_lava_flow

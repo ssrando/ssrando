@@ -24,8 +24,10 @@ from PySide6.QtWidgets import (
     QRadioButton,
     QSpinBox,
 )
+
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
+from logic.constants import LOCATION_FILTER_TYPES
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -34,6 +36,7 @@ from gui.guithreads import RandomizerThread, ExtractSetupThread
 from ssrando import Randomizer, VERSION
 from paths import RANDO_ROOT_PATH
 from gui.ui_randogui import Ui_MainWindow
+from yaml_files import checks
 from witmanager import WitManager
 
 # Allow keyboard interrupts on the command line to instantly close the program.
@@ -183,6 +186,7 @@ class RandoGUI(QMainWindow):
             "excluded-locations",
             self.ui.exclude_location,
             self.ui.include_location,
+            checks,
         )
         self.exclude_locations_pair.listPairChanged.connect(self.update_settings)
 
@@ -191,6 +195,18 @@ class RandoGUI(QMainWindow):
         )
         self.ui.included_free_search.textChanged.connect(
             self.exclude_locations_pair.update_non_option_list_filter
+        )
+
+        self.ui.include_category_filters.addItem("All")
+        self.ui.include_category_filters.addItems(LOCATION_FILTER_TYPES)
+        self.ui.include_category_filters.currentTextChanged.connect(
+            self.exclude_locations_pair.update_non_option_list_type_filter
+        )
+
+        self.ui.exclude_category_filters.addItem("All")
+        self.ui.exclude_category_filters.addItems(LOCATION_FILTER_TYPES)
+        self.ui.exclude_category_filters.currentTextChanged.connect(
+            self.exclude_locations_pair.update_option_list_type_filter
         )
 
         # Starting Items UI
@@ -333,7 +349,8 @@ class RandoGUI(QMainWindow):
 
     def on_error(self, message: str):
         self.error_msg = QErrorMessage(self)
-        self.progress_dialog.reset()
+        if self.progress_dialog:
+            self.progress_dialog.reset()
         if self.rando.seed:
             self.error_msg.showMessage(
                 f"{message}<br/>Seed: {self.rando.seed}<br/>Settings: {self.rando.options.get_permalink()}"
