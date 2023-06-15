@@ -48,6 +48,8 @@
   - In Eldin, items are blue
   - In Lanayru, items are green
   - In Skyloft, items are red
+- The Sand Sea boat moves faster (by YourAverageLink)
+  - Its base speed is 1.5x faster. Sprinting now multiplies its speed by 3 instead of 2, for a total change of 2.25x from before.
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 
