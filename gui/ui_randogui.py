@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.0
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -712,6 +712,16 @@ class Ui_MainWindow(object):
         self.option_randomize_boss_key_puzzles.setObjectName(u"option_randomize_boss_key_puzzles")
 
         self.vlay_dungeons.addWidget(self.option_randomize_boss_key_puzzles)
+
+        self.label_for_dungeon_patches = QLabel(self.box_dungeons)
+        self.label_for_dungeon_patches.setObjectName(u"label_for_dungeon_patches")
+
+        self.vlay_dungeons.addWidget(self.label_for_dungeon_patches)
+
+        self.option_fs_lava_flow = QCheckBox(self.box_dungeons)
+        self.option_fs_lava_flow.setObjectName(u"option_fs_lava_flow")
+
+        self.vlay_dungeons.addWidget(self.option_fs_lava_flow)
 
         self.vspace_dungeons = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1965,6 +1975,8 @@ class Ui_MainWindow(object):
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Empty Unrequired Dungeons", None))
         self.label_for_sword_dungeon_reward.setText(QCoreApplication.translate("MainWindow", u"Sword Dungeon Reward", None))
         self.option_randomize_boss_key_puzzles.setText(QCoreApplication.translate("MainWindow", u"Randomize Boss Key Puzzles", None))
+        self.label_for_dungeon_patches.setText(QCoreApplication.translate("MainWindow", u"Dungeon Convenience Patches", None))
+        self.option_fs_lava_flow.setText(QCoreApplication.translate("MainWindow", u"Start w/ FS Lava Flowing", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_randomization_settings), QCoreApplication.translate("MainWindow", u"Randomization Settings", None))
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
