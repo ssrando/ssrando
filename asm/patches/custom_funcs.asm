@@ -309,23 +309,6 @@ mtlr r0 ; return LR to normal
 addi r1, r1, 0x10 ; return SP
 blr
 
-.global send_to_start
-send_to_start:
-lwz r3, RELOADER_PTR@sda21(r13)
-lis r4, 0x802DA0E0@ha ; this is where the start entrance info is patched
-la r4, 0x802DA0E0@l(r4)
-lbz r5, 8(r4)
-lbz r6, 9(r4)
-lbz r7, 0xA(r4)
-lbz r8, 0xB(r4)
-li r9, 2
-li r10, 0
-li r0, 0xF
-stw r0, 0x8(r1)
-li r0, -1
-stw r0, 0xC(r1)
-b Reloader__triggerEntrance
-
 ; space to declare all the functions defined in the
 ; custom-functions rust project
 .global process_startflags
@@ -337,6 +320,7 @@ b Reloader__triggerEntrance
 .global get_item_arc_name
 .global get_item_model_name_ptr
 .global is_custom_rando_item
+.global send_to_start
 
 .close
 

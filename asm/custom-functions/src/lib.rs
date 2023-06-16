@@ -120,7 +120,19 @@ extern "C" {
     fn findActorByActorType(actor_type: i32, start_actor: *const c_void) -> *mut c_void;
     fn checkXZDistanceFromLink(actor: *const c_void, distance: f32) -> bool;
     static mut SPECIAL_MINIGAME_STATE: SpecialMinigameState;
-    fn send_to_start();
+    fn actuallyTriggerEntrance(
+        stage_name: *const c_char,
+        room: u8,
+        layer: u8,
+        entrance: u8,
+        forced_night: u8,
+        forced_trial: u8,
+        transition_type: u8,
+        transition_fade_frames: u8,
+        param_9: u8,
+    );
+    static mut RELOADER_PTR: *mut c_void;
+    fn Reloader__setReloadTrigger(reloader: *mut c_void, trigger: u8);
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -448,9 +460,7 @@ fn rando_text_command_handler(
             // Tadtones obtained.
             text_manager_set_num_args(&[storyflag_get_value(953) as u32]);
         }
-        73 => {
-            unsafe { send_to_start() }
-        }
+        73 => send_to_start(),
         74 => {
             // Increment storyflag counter
             let flag = flow_element.param1;
@@ -549,6 +559,36 @@ fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
     };
     if loftwing.speed > cap {
         loftwing.speed = cap;
+    }
+}
+
+#[no_mangle]
+pub fn send_to_start() {
+    struct StartInfo {
+        stage: [c_char; 8],
+        room: u8,
+        layer: u8,
+        entrance: u8,
+        forced_night: u8,
+    }
+
+    // this is where the start entrance info is patched
+    let start_info = unsafe { &*(0x802DA0E0 as *const StartInfo) };
+    // we can't use the normal triggerEntrance function, because that doesn't work properly when
+    // going from title screen to normal gameplay while keeping the stage
+    unsafe {
+        actuallyTriggerEntrance(
+            start_info.stage.as_ptr(),
+            start_info.room,
+            start_info.layer,
+            start_info.entrance,
+            start_info.forced_night,
+            0,
+            0,
+            0xF,
+            0xFF,
+        );
+        Reloader__setReloadTrigger(RELOADER_PTR, 5);
     }
 }
 
