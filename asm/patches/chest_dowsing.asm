@@ -5,6 +5,10 @@
 .org 0x80269820
 li r3, 1
 
+; select the top dowsing slot when starting a new game file
+.org 0x8000ab18
+stb r6, 0x53b2(r28)
+
 ; get the dowsing slot index from first nibble in params
 .org 0x80269788
 lwz r0, 0xa8(r28) ; params2
