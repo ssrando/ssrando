@@ -4,6 +4,7 @@ main.dol:
     FlagManager__getUncommittedFlags: 0x800bf5f0
     INPUT_BUFFER: 0x80599d0c
     Reloader__triggerExit: 0x801bb080
+    Reloader__triggerEntrance: 0x801bafa0
     AcItem__isBabyRattle: 0x80256c30
     Math__approachF: 0x802decd0
     # SceneflagManager: r3,-0x4060(r13)
@@ -76,3 +77,5 @@ main.dol:
     Reloader__setReloadTrigger: 0x801bad90
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
+d_a_obj_time_boatNP.rel:
+    AcOTimeBoat__checkActivatedStoryflag: 0x3D70

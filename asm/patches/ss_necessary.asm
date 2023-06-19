@@ -55,17 +55,17 @@ bl set_goddess_sword_pulled_scene_flag
 li r5, -1
 
 ; Change starting location to remove intro cutscenes
-.org 0x801bb960 ; Change starting stage
-subi r3, r13, 0x5b44 ; previously 0x601c (F405 -> F001r)
+; .org 0x801bb960 ; Change starting stage
+; addi r3, r13, 0x42C8 ; previously subi r3, r13, 0x601c (F405 -> F001r)
 
-.org 0x801bb964 ; Change starting roomID
-li r4, 1 ; Room 0 -> 1
+; .org 0x801bb964 ; Change starting roomID
+; li r4, 1 ; Room 0 -> 1
 
-.org 0x801bb968 ; Change starting layer
-li r5, 3 ; Layer 0 -> 3
+; .org 0x801bb968 ; Change starting layer
+; li r5, 3 ; Layer 0 -> 3
 
-.org 0x801bb96c ; Change starting entrance
-li r6, 5 ; Entrance 0 -> 5
+; .org 0x801bb96c ; Change starting entrance
+; li r6, 5 ; Entrance 0 -> 5
 
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
@@ -276,6 +276,14 @@ bgt 0x801b0788
 .org 0x801b0788
 bl rando_text_command_handler
 b 0x801b0764 ; return to original function
+
+; don't enable jank fi menu handling: everything in the menu is overwritten anyways
+.org 0x801b19e0
+li r0, 0
+
+; patch starting entrance
+.org 0x801bb980
+bl send_to_start
 
 ; here is the required sequence of buttons stored,
 ; to get the crash screen to show up, since it's 0 terminated,
@@ -756,6 +764,13 @@ rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
 ; .org 0x80f35a18
 .org 0x8E8
 b set_sot_placed_flag
+.close
+
+.open "d_a_obj_time_boatNP.rel"
+
+.org 0x107C ; 0x80e1b56c
+bl fix_sadship_boat
+
 .close
 
 ; make sure groose stays at his groosenator after finishing faron SotH

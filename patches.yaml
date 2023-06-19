@@ -39,11 +39,14 @@ global:
     - 82  # Tadtones music scroll
     # Cutscene flags
     ## Surface
+    - 137 # Sealed Grounds Intro Cutscene (enable statue select from start)
     - 87  # Faron Woods Intro Cutscene
     - 91  # Deep Woods Intro Cutscene
     - 88  # Lake Floria Intro Cutscene
+    - 182 # Eldin Volcano Intro Cutscene
     - 180 # Thrill Digger Intro Cutscene
     - 562 # Volcano Summit Intro Cutscene
+    - 190 # Lanayru Mine Intro Cutscene
     - 92  # Lanayru Desert Intro Cutscene
     - 157 # Ancient Harbour Intro Cutscene
     - 526 # Lanayru Gorge Intro Cutscene
@@ -115,18 +118,20 @@ global:
       - 30 # Enter Skyview Cutscene
     Sealed Grounds:
       - 7  # vents active
-      - onlyif: Option "triforce-required" Disabled
-        flag: 50 # horde door open
-      - onlyif: Option "skip-horde" Enabled
-        flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
       - 13 # door to temple unlocked
       - 21 # ballad of the goddess played (item and cutscene trigger instantly activate when outside of BiT)
       - 28 # groose cutscene watched (prevents groose cutscene from taking priority outside of BiT)
       - 39 # Log to Behind the Temple pushed down
+      - onlyif: Option "triforce-required" Disabled
+        flag: 50 # horde door open
+      - onlyif: Option "skip-horde" Enabled
+        flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
+      - 55 # First time landing cutscene
     Ancient Cistern:
       - 62 # Ancient Cistern Intro Cutscene
     Eldin Volcano:
       - 2  # gets rid of first digging mitts mogma text
+      - 16 # First time landing cutscene
       - 58 # digging mitts mogma cutscene watched
     Eldin Volcano Summit: # VS + Boko Base
       - 70 # Initial panning cutscene watched
@@ -146,6 +151,7 @@ global:
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
     Lanayru Desert:
       - 3  # Obtain map of the past from robot in ToT area
+      - 6  # First time landing cutscene
       - 7  # pushed first minecart to end
       - 50 # Enter Lanayru Mining Facility (LMF) Cutscene
       - 55 # Lanayru Desert Intro Cutscene
@@ -1098,10 +1104,10 @@ F001r: # Knight Academy
     layer: 4
     room: 0
     objtype: OBJ
-  - name: Move Fledge closer to Link's room
+  - name: Move Fledge closer to Link's room at night
     type: objpatch
-    id: 0xFC77
-    layer: 3
+    id: 0xFC7D
+    layer: 4
     room: 0
     objtype: OBJ
     object:
@@ -1114,7 +1120,18 @@ F001r: # Knight Academy
     room: 0
     objtype: OBJ
     object:
+      posx: 850
+      posz: -1700
       untrigstoryfid: 923
+  - name: Move Fledge closer to Link's room at day
+    type: objpatch
+    id: 0xFC77
+    layer: 3
+    room: 0
+    objtype: OBJ
+    object:
+      posx: 850
+      posz: -1700
   - name: Fledge Pouch Check Storyflag at day
     type: objpatch
     id: 0xFC78
@@ -1122,6 +1139,8 @@ F001r: # Knight Academy
     room: 0
     objtype: OBJ
     object:
+      posx: 850
+      posz: -1700
       untrigstoryfid: 923
   - name: Fledge trains without wryna
     type: objpatch
@@ -1207,6 +1226,12 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       trigstoryfid: 140 # groose landing in faron, cut out sleeping
+  # - name: Remove Pipit at night triggerarea
+  #   type: objdelete
+  #   id: 0xFC76
+  #   layer: 3
+  #   room: 0
+  #   objtype: OBJ
 F002r: # Beedle's Airshop
   - name: Delete cutscene
     type: objdelete
@@ -2509,21 +2534,6 @@ F200: # Eldin main area
     destlayer: 0
     room: 0
     objtype: STAG
-  - name: Intro cutscene patch
-    type: objpatch
-    id: 0xFC26
-    layer: 1
-    room: 0
-    objtype: STAG
-    object:
-      event: 4 # IntroSkip
-  - name: Give watched intro cs flag on cs skip
-    type: objpatch
-    room: 0
-    objtype: EVNT
-    index: 4
-    object:
-      story_flag1: 182 # Have watched Eldin Volcano intro Cutscene
   - name: First Mogma cs Fi
     type: objdelete
     id: 0xFC22
@@ -3958,21 +3968,6 @@ F300_1: # Lanayru Mine
       - story_flag: -1
         night: 0
         layer: 1
-  - name: Intro cutscene patch
-    type: objpatch
-    id: 0xFC8C
-    layer: 1
-    room: 0
-    objtype: STAG
-    object:
-      event: 9 # IntroSkip
-  - name: Give watched intro cs flag on cs skip
-    type: objpatch
-    room: 0
-    objtype: EVNT
-    index: 9
-    object:
-      story_flag1: 190 # Have watched Lanayru Desert intro Cutscene
   - name: Remove First timeshift stone cs
     type: objdelete
     id: 0xFC47
@@ -5130,49 +5125,6 @@ F401: # Sealed grounds Whirlpool
     layer: 1
     room: 1
     objtype: OBJ
-  - name: Intro cutscene skip
-    type: objpatch
-    index: 8
-    room: 1
-    objtype: PLY
-    object:
-      play_cutscene: -1
-  - name: Set Sealed Grounds intro cutscene watched 1
-    type: objadd
-    room: 1
-    layer: 1
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: -7500
-      posy: 8404.3876953125
-      posz: 0
-      sizex: 2000
-      sizey: 2000
-      sizez: 2000
-      anglex: 137 # Have watched Sealed Grounds intro Cutscene
-      angley: 0
-      anglez: 65535
-      name: SwAreaT
-  - name: Set Sealed Grounds intro cutscene watched 2
-    type: objadd
-    room: 1
-    layer: 1
-    objtype: STAG
-    object:
-      params1: 0xFFFFFFF
-      params2: 0xFF5FFFFF
-      posx: -7500
-      posy: 8404.3876953125
-      posz: 0
-      sizex: 2000
-      sizey: 2000
-      sizez: 2000
-      anglex: 24 # Fi cs around faron pillar (probably unnecessary to patch)
-      angley: 0
-      anglez: 65535
-      name: SwAreaT
   - name: Groosenator before imp 2
     type: objdelete
     id: 0xFC9D

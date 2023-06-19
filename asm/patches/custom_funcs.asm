@@ -832,3 +832,32 @@ addi r1, r1, 0x10
 blr
 
 .close
+
+
+.open "d_a_obj_time_boatNP.rel"
+.org @NextFreeSpace
+
+.global fix_sadship_boat
+fix_sadship_boat:
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
+
+lis r3, 0x8057
+ori r3, r3, 0xd4e8
+bl isCurrentStage
+cmpwi r3, 0
+beq not_ancient_harbour
+bl AcOTimeBoat__checkActivatedStoryflag
+b return_boat_state
+
+not_ancient_harbour:
+li r3, 1
+
+return_boat_state:
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
+
+.close

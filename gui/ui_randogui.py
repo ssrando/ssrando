@@ -625,6 +625,21 @@ class Ui_MainWindow(object):
 
         self.vlay_entrance_rando.addWidget(self.option_randomize_trials)
 
+        self.label_for_option_random_start_entrance = QLabel(self.box_entrance_rando)
+        self.label_for_option_random_start_entrance.setObjectName(u"label_for_option_random_start_entrance")
+
+        self.vlay_entrance_rando.addWidget(self.label_for_option_random_start_entrance)
+
+        self.option_random_start_entrance = QComboBox(self.box_entrance_rando)
+        self.option_random_start_entrance.setObjectName(u"option_random_start_entrance")
+
+        self.vlay_entrance_rando.addWidget(self.option_random_start_entrance)
+
+        self.option_limit_start_entrance = QCheckBox(self.box_entrance_rando)
+        self.option_limit_start_entrance.setObjectName(u"option_limit_start_entrance")
+
+        self.vlay_entrance_rando.addWidget(self.option_limit_start_entrance)
+
         self.vspace_entrance_rando = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
         self.vlay_entrance_rando.addItem(self.vspace_entrance_rando)
@@ -1968,6 +1983,8 @@ class Ui_MainWindow(object):
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Dungeon Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
         self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
+        self.label_for_option_random_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Location", None))
+        self.option_limit_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Limit Starting Location", None))
         self.box_dungeons.setTitle(QCoreApplication.translate("MainWindow", u"Dungeons", None))
         self.label_for_option_map_mode.setText(QCoreApplication.translate("MainWindow", u"Map Mode", None))
         self.label_for_option_small_key_mode.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))
