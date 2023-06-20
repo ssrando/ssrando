@@ -18,6 +18,7 @@
       - The information menu is also where Play Time now resides
 - Moved Golo to layer 0 in Lanayru Caves
 - Add an option for a custom hint distribution (by cjs07)
+- Removed Fi text trigger surrounding the Hook Beetle Fight check
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 
