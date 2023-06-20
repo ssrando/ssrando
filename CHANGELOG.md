@@ -63,6 +63,7 @@
 - Removed Fi text trigger surrounding the Hook Beetle Fight check
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
+- Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow
 
 ## 1.4.1
 ### Bugfixes
