@@ -1127,6 +1127,206 @@
       param2: 3 # item
       next: -1
       param3: 9
+  
+  # Dev Graveyard
+  ## Top Left
+  - name: Top Left Grave Entry
+    type: entryadd
+    entry:
+      name: "107_99"
+      value: Top Left Grave Start
+  - name: Top Left Grave Start
+    type: flowadd
+    flow:
+      type: start
+      next: Top Left Grave Show Text
+  - name: Top Left Grave Text
+    type: textadd
+    unk1: 8
+    text: "Here lies Lepelog\nKnower of all things\n\nRest in Peace"
+  - name: Top Left Grave Show Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 0
+      param4: Top Left Grave Text
+  ## Top Middle
+  - name: Top Middle Grave Entry
+    type: entryadd
+    entry:
+      name: "107_98"
+      value: Top Middle Grave Start
+  - name: Top Middle Grave Start
+    type: flowadd
+    flow:
+      type: start
+      next: Top Middle Grave Show Text
+  - name: Top Middle Grave Text
+    type: textadd
+    unk1: 8
+    text: "Here lies Peppernicus\nTripped in Lanayru Gorge\n\nRest in Peace"
+  - name: Top Middle Grave Show Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 0
+      param4: Top Middle Grave Text
+  ## Top Right
+  - name: Top Right Grave Entry
+    type: entryadd
+    entry:
+      name: "107_97"
+      value: Top Right Grave Start
+  - name: Top Right Grave Start
+    type: flowadd
+    flow:
+      type: start
+      next: Top Right Grave Show Text
+  - name: Top Right Grave Text
+    type: textadd
+    unk1: 8
+    text: "Here lies CovenEsme\nTaking a break at last\n\nRest in Peace"
+  - name: Top Right Grave Show Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 0
+      param4: Top Right Grave Text
+  ## Middle Left
+  - name: Middle Left Grave Entry
+    type: entryadd
+    entry:
+      name: "107_96"
+      value: Middle Left Grave Start
+  - name: Middle Left Grave Start
+    type: flowadd
+    flow:
+      type: start
+      next: Middle Left Grave Show Text
+  - name: Middle Left Grave Text
+    type: textadd
+    unk1: 8
+    text: "Here lies YourAveragelink\nTrapped in the Silent Realm\n\nRest in Peace"
+  - name: Middle Left Grave Show Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 0
+      param4: Middle Left Grave Text
+  ## Middle Middle
+  - name: Middle Middle Grave Entry
+    type: entryadd
+    entry:
+      name: "107_95"
+      value: Middle Middle Grave Start
+  - name: Middle Middle Grave Start
+    type: flowadd
+    flow:
+      type: start
+      next: Middle Middle Grave Show Text
+  - name: Middle Middle Grave Text
+    type: textadd
+    unk1: 8
+    text: "Rest in Peace"
+  - name: Middle Middle Grave Show Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 0
+      param4: Middle Middle Grave Text
+  ## Middle Right
+  - name: Middle Right Grave Entry
+    type: entryadd
+    entry:
+      name: "107_94"
+      value: Middle Right Grave Start
+  - name: Middle Right Grave Start
+    type: flowadd
+    flow:
+      type: start
+      next: Middle Right Grave Show Text
+  - name: Middle Right Grave Text
+    type: textadd
+    unk1: 8
+    text: "Here lies CJ\nBuried alive by JavaScript\n\nRest in Peace"
+  - name: Middle Right Grave Show Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 0
+      param4: Middle Right Grave Text
+  ## Bottom Left
+  - name: Bottom Left Grave Entry
+    type: entryadd
+    entry:
+      name: "107_93"
+      value: Bottom Left Grave Start
+  - name: Bottom Left Grave Start
+    type: flowadd
+    flow:
+      type: start
+      next: Bottom Left Grave Show Text
+  - name: Bottom Left Grave Text
+    type: textadd
+    unk1: 8
+    text: "Rest in Peace"
+  - name: Bottom Left Grave Show Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 0
+      param4: Bottom Left Grave Text
+  ## Bottom Middle
+  - name: Bottom Middle Grave Entry
+    type: entryadd
+    entry:
+      name: "107_92"
+      value: Bottom Middle Grave Start
+  - name: Bottom Middle Grave Start
+    type: flowadd
+    flow:
+      type: start
+      next: Bottom Middle Grave Show Text
+  - name: Bottom Middle Grave Text
+    type: textadd
+    unk1: 8
+    text: "Rest in Peace"
+  - name: Bottom Middle Grave Show Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 0
+      param4: Bottom Middle Grave Text
+  ## Bottom Right
+  - name: Bottom Right Grave Entry
+    type: entryadd
+    entry:
+      name: "107_91"
+      value: Bottom Right Grave Start
+  - name: Bottom Right Grave Start
+    type: flowadd
+    flow:
+      type: start
+      next: Bottom Right Grave Show Text
+  - name: Bottom Right Grave Text
+    type: textadd
+    unk1: 8
+    text: "Rest in Peace"
+  - name: Bottom Right Grave Show Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 0
+      param4: Bottom Right Grave Text
 108-ShinkanA:
   - name: Owlans Shield
     type: flowpatch

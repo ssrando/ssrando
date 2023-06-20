@@ -796,14 +796,6 @@ F000: # Skyloft
     objtype: OBJ
     object:
       trigstoryfid: 1114 # bow
-#  - name: Batreaux unlock
-#    type: objpatch
-#    id: 0xFC4A
-#    layer: 0
-#    room: 0
-#    objtype: OBJS
-#    object:
-#      anglex: 0xFF00 # sets the flag to -1 (meaning open)
   - name: Fix Owlan disappearing after Harp
     type: objpatch
     room: 0
@@ -1053,6 +1045,180 @@ F000: # Skyloft
     object:
       layer: 6
       entrance: 52
+
+  # Dev Graveyard
+  - name: Top Left Grave Text
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF2A2F # event source 107_99
+      params2: 0xFFFFFFFF
+      posx: 8270
+      posy: -140
+      posz: 5000
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 0
+      angley: 41143
+      anglez: 0
+      id: 0xFF99
+      name: AutoMes
+  - name: Top Middle Grave Text
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF2A2E # event source 107_98
+      params2: 0xFFFFFFFF
+      posx: 8020.6806640625
+      posy: -140
+      posz: 5250
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 0
+      angley: 41143
+      anglez: 0
+      id: 0xFF98
+      name: AutoMes
+  - name: Top Right Grave Text
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF2A2D # event source 107_97
+      params2: 0xFFFFFFFF
+      posx: 7775
+      posy: -140
+      posz: 5500
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 0
+      angley: 41143
+      anglez: 0
+      id: 0xFF97
+      name: AutoMes
+  - name: Middle Left Grave Text
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF2A2C # event source 107_96
+      params2: 0xFFFFFFFF
+      posx: 7910
+      posy: -140
+      posz: 4650
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 0
+      angley: 41143
+      anglez: 0
+      id: 0xFF96
+      name: AutoMes
+  - name: Middle Middle Grave Text
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF2A2B # event source 107_95
+      params2: 0xFFFFFFFF
+      posx: 7665
+      posy: -140
+      posz: 4900
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 0
+      angley: 41143
+      anglez: 0
+      id: 0xFF95
+      name: AutoMes
+  - name: Middle Right Grave Text
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF2A2A # event source 107_94
+      params2: 0xFFFFFFFF
+      posx: 7420
+      posy: -140
+      posz: 5150
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 0
+      angley: 41143
+      anglez: 0
+      id: 0xFF94
+      name: AutoMes
+  - name: Bottom Left Grave Text
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF2A29 # event source 107_93
+      params2: 0xFFFFFFFF
+      posx: 7560
+      posy: -140
+      posz: 4300
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 0
+      angley: 41143
+      anglez: 0
+      id: 0xFF93
+      name: AutoMes
+  - name: Bottom Middle Grave Text
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF2A2F # event source 107_92
+      params2: 0xFFFFFFFF
+      posx: 7310
+      posy: -140
+      posz: 4550
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 0
+      angley: 41143
+      anglez: 0
+      id: 0xFF92
+      name: AutoMes
+  - name: Bottom Right Grave Text
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFF2A2F # event source 107_91
+      params2: 0xFFFFFFFF
+      posx: 7065
+      posy: -140
+      posz: 4795
+      sizex: 200
+      sizey: 200
+      sizez: 200
+      anglex: 0
+      angley: 41143
+      anglez: 0
+      id: 0xFF91
+      name: AutoMes
+  
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
