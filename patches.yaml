@@ -3906,6 +3906,12 @@ F300: # lanayru Main Area
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove Fi text before Hook Beetle Fight Check
+    type: objdelete
+    id: 0xFC50
+    layer: 0
+    room: 0
+    objtype: OBJ
   - name: Remove Fi text for 5 Beacons
     type: objdelete
     id: 0xFCBC
