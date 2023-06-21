@@ -689,7 +689,7 @@
   - name: Fi Call Text
     type: textadd
     unk1: 2 # Fi text box background
-    text: "You called for me, master?\n[1]Required Dungeons[2]Information and Warp[3]Current Status[4-]Never mind."
+    text: "You called for me, Master?\n[1]Required Dungeons[2]Information and Warp[3]Current Status[4-]Never mind."
   - name: Display Fi Call Text
     type: flowadd
     flow:
