@@ -18,6 +18,7 @@
       - The information menu is also where Play Time now resides
 - Moved Golo to layer 0 in Lanayru Caves
 - Add an option for a custom hint distribution (by cjs07)
+- The progress text shown at the bottom of save files now shows information about your progress towards the end of the seed (rather than the vanilla game) (by CovenEsme)
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 
