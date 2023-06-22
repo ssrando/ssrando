@@ -305,6 +305,31 @@ pub fn process_startflags() {
 
     let mut pouch_slot_iter = unsafe { (*FILE_MANAGER).FA.pouch_items.iter_mut() };
 
+    // Peatrice convo count.
+    // Next 3 bits.
+    let peatrice_convo_count = additional_start_options_2 >> 9 & 0x7;
+
+    // Peatrice switch.
+    if peatrice_convo_count % 2 == 1 {
+        storyflag_set_to_1(631);
+    }
+
+    // Peatrice even convos.
+    if peatrice_convo_count <= 4 {
+        storyflag_set_to_1(628);
+        storyflag_set_to_1(689);
+    }
+
+    if peatrice_convo_count <= 2 {
+        storyflag_set_to_1(629);
+        storyflag_set_to_1(690);
+    }
+
+    if peatrice_convo_count == 0 {
+        storyflag_set_to_1(630);
+        storyflag_set_to_1(691);
+    }
+
     // Starting Tadtones.
     // Next 5 bits.
     let tadtone_count = additional_start_options_2 >> 4 & 0x1f;

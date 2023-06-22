@@ -2995,6 +2995,11 @@ class GamePatcher:
             self.starting_tadtones << 4
         )
 
+        ## Next 3 bits for Peatrice convo count.
+        additional_start_options_2 = additional_start_options_2 | (
+            self.placement_file.options["peatrice-conversations"] << 9
+        )
+
         start_flags_write.write(struct.pack(">H", additional_start_options_2))
 
         startflag_byte_count = len(start_flags_write.getbuffer())
