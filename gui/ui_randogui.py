@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.4.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -456,7 +456,7 @@ class Ui_MainWindow(object):
         self.option_required_dungeon_count = QSpinBox(self.box_completion)
         self.option_required_dungeon_count.setObjectName(u"option_required_dungeon_count")
         self.option_required_dungeon_count.setEnabled(True)
-        sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
         sizePolicy5.setHorizontalStretch(0)
         sizePolicy5.setVerticalStretch(0)
         sizePolicy5.setHeightForWidth(self.option_required_dungeon_count.sizePolicy().hasHeightForWidth())
@@ -517,6 +517,8 @@ class Ui_MainWindow(object):
 
         self.option_demise_count = QSpinBox(self.box_completion)
         self.option_demise_count.setObjectName(u"option_demise_count")
+        sizePolicy5.setHeightForWidth(self.option_demise_count.sizePolicy().hasHeightForWidth())
+        self.option_demise_count.setSizePolicy(sizePolicy5)
         self.option_demise_count.setMaximumSize(QSize(41, 16777215))
 
         self.hlay_demise_count.addWidget(self.option_demise_count)
@@ -799,6 +801,23 @@ class Ui_MainWindow(object):
 
         self.vlay_vanilla_tweaks.addWidget(self.option_bit_patches)
 
+        self.hlay_peatrice_conversations = QHBoxLayout()
+        self.hlay_peatrice_conversations.setObjectName(u"hlay_peatrice_conversations")
+        self.label_for_option_peatrice_conversations = QLabel(self.box_vanilla_tweaks)
+        self.label_for_option_peatrice_conversations.setObjectName(u"label_for_option_peatrice_conversations")
+
+        self.hlay_peatrice_conversations.addWidget(self.label_for_option_peatrice_conversations)
+
+        self.option_peatrice_conversations = QSpinBox(self.box_vanilla_tweaks)
+        self.option_peatrice_conversations.setObjectName(u"option_peatrice_conversations")
+        sizePolicy5.setHeightForWidth(self.option_peatrice_conversations.sizePolicy().hasHeightForWidth())
+        self.option_peatrice_conversations.setSizePolicy(sizePolicy5)
+
+        self.hlay_peatrice_conversations.addWidget(self.option_peatrice_conversations)
+
+
+        self.vlay_vanilla_tweaks.addLayout(self.hlay_peatrice_conversations)
+
         self.vspace_vanilla_tweaks = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.vlay_vanilla_tweaks.addItem(self.vspace_vanilla_tweaks)
@@ -941,6 +960,8 @@ class Ui_MainWindow(object):
 
         self.option_damage_multiplier = QSpinBox(self.box_heromode_changes)
         self.option_damage_multiplier.setObjectName(u"option_damage_multiplier")
+        sizePolicy5.setHeightForWidth(self.option_damage_multiplier.sizePolicy().hasHeightForWidth())
+        self.option_damage_multiplier.setSizePolicy(sizePolicy5)
         self.option_damage_multiplier.setMaximumSize(QSize(41, 16777215))
         self.option_damage_multiplier.setMinimum(1)
         self.option_damage_multiplier.setMaximum(255)
@@ -1388,11 +1409,8 @@ class Ui_MainWindow(object):
 
         self.option_starting_tablet_count = QSpinBox(self.box_additional_options)
         self.option_starting_tablet_count.setObjectName(u"option_starting_tablet_count")
-        sizePolicy9 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
-        sizePolicy9.setHorizontalStretch(0)
-        sizePolicy9.setVerticalStretch(0)
-        sizePolicy9.setHeightForWidth(self.option_starting_tablet_count.sizePolicy().hasHeightForWidth())
-        self.option_starting_tablet_count.setSizePolicy(sizePolicy9)
+        sizePolicy5.setHeightForWidth(self.option_starting_tablet_count.sizePolicy().hasHeightForWidth())
+        self.option_starting_tablet_count.setSizePolicy(sizePolicy5)
         self.option_starting_tablet_count.setMaximumSize(QSize(16777215, 16777215))
 
         self.hlay_starting_tablets.addWidget(self.option_starting_tablet_count)
@@ -1409,8 +1427,8 @@ class Ui_MainWindow(object):
 
         self.option_starting_bottles = QSpinBox(self.box_additional_options)
         self.option_starting_bottles.setObjectName(u"option_starting_bottles")
-        sizePolicy9.setHeightForWidth(self.option_starting_bottles.sizePolicy().hasHeightForWidth())
-        self.option_starting_bottles.setSizePolicy(sizePolicy9)
+        sizePolicy5.setHeightForWidth(self.option_starting_bottles.sizePolicy().hasHeightForWidth())
+        self.option_starting_bottles.setSizePolicy(sizePolicy5)
 
         self.hlay_starting_bottles.addWidget(self.option_starting_bottles)
 
@@ -1426,8 +1444,8 @@ class Ui_MainWindow(object):
 
         self.option_starting_crystal_packs = QSpinBox(self.box_additional_options)
         self.option_starting_crystal_packs.setObjectName(u"option_starting_crystal_packs")
-        sizePolicy9.setHeightForWidth(self.option_starting_crystal_packs.sizePolicy().hasHeightForWidth())
-        self.option_starting_crystal_packs.setSizePolicy(sizePolicy9)
+        sizePolicy5.setHeightForWidth(self.option_starting_crystal_packs.sizePolicy().hasHeightForWidth())
+        self.option_starting_crystal_packs.setSizePolicy(sizePolicy5)
 
         self.hlay_starting_crystal_packs.addWidget(self.option_starting_crystal_packs)
 
@@ -1444,8 +1462,8 @@ class Ui_MainWindow(object):
 
         self.option_starting_tadtones = QSpinBox(self.box_additional_options)
         self.option_starting_tadtones.setObjectName(u"option_starting_tadtones")
-        sizePolicy9.setHeightForWidth(self.option_starting_tadtones.sizePolicy().hasHeightForWidth())
-        self.option_starting_tadtones.setSizePolicy(sizePolicy9)
+        sizePolicy5.setHeightForWidth(self.option_starting_tadtones.sizePolicy().hasHeightForWidth())
+        self.option_starting_tadtones.setSizePolicy(sizePolicy5)
 
         self.hlay_starting_tadtones.addWidget(self.option_starting_tadtones)
 
@@ -1454,8 +1472,11 @@ class Ui_MainWindow(object):
 
         self.option_random_starting_item = QCheckBox(self.box_additional_options)
         self.option_random_starting_item.setObjectName(u"option_random_starting_item")
-        sizePolicy5.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
-        self.option_random_starting_item.setSizePolicy(sizePolicy5)
+        sizePolicy9 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy9.setHorizontalStretch(0)
+        sizePolicy9.setVerticalStretch(0)
+        sizePolicy9.setHeightForWidth(self.option_random_starting_item.sizePolicy().hasHeightForWidth())
+        self.option_random_starting_item.setSizePolicy(sizePolicy9)
 
         self.verticalLayout_29.addWidget(self.option_random_starting_item)
 
@@ -1490,8 +1511,8 @@ class Ui_MainWindow(object):
 
         self.option_starting_heart_containers = QSpinBox(self.box_additional_options)
         self.option_starting_heart_containers.setObjectName(u"option_starting_heart_containers")
-        sizePolicy5.setHeightForWidth(self.option_starting_heart_containers.sizePolicy().hasHeightForWidth())
-        self.option_starting_heart_containers.setSizePolicy(sizePolicy5)
+        sizePolicy9.setHeightForWidth(self.option_starting_heart_containers.sizePolicy().hasHeightForWidth())
+        self.option_starting_heart_containers.setSizePolicy(sizePolicy9)
         self.option_starting_heart_containers.setMaximumSize(QSize(41, 16777215))
 
         self.hlay_heart_options.addWidget(self.option_starting_heart_containers)
@@ -1505,8 +1526,8 @@ class Ui_MainWindow(object):
 
         self.option_starting_heart_pieces = QSpinBox(self.box_additional_options)
         self.option_starting_heart_pieces.setObjectName(u"option_starting_heart_pieces")
-        sizePolicy5.setHeightForWidth(self.option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
-        self.option_starting_heart_pieces.setSizePolicy(sizePolicy5)
+        sizePolicy9.setHeightForWidth(self.option_starting_heart_pieces.sizePolicy().hasHeightForWidth())
+        self.option_starting_heart_pieces.setSizePolicy(sizePolicy9)
         self.option_starting_heart_pieces.setMaximumSize(QSize(41, 16777215))
 
         self.hlay_heart_options.addWidget(self.option_starting_heart_pieces)
@@ -1760,8 +1781,8 @@ class Ui_MainWindow(object):
 
         self.option_font_size = QSpinBox(self.box_font)
         self.option_font_size.setObjectName(u"option_font_size")
-        sizePolicy5.setHeightForWidth(self.option_font_size.sizePolicy().hasHeightForWidth())
-        self.option_font_size.setSizePolicy(sizePolicy5)
+        sizePolicy9.setHeightForWidth(self.option_font_size.sizePolicy().hasHeightForWidth())
+        self.option_font_size.setSizePolicy(sizePolicy9)
 
         self.hlay_font_size.addWidget(self.option_font_size)
 
@@ -1770,8 +1791,8 @@ class Ui_MainWindow(object):
 
         self.reset_font_button = QPushButton(self.box_font)
         self.reset_font_button.setObjectName(u"reset_font_button")
-        sizePolicy5.setHeightForWidth(self.reset_font_button.sizePolicy().hasHeightForWidth())
-        self.reset_font_button.setSizePolicy(sizePolicy5)
+        sizePolicy9.setHeightForWidth(self.reset_font_button.sizePolicy().hasHeightForWidth())
+        self.reset_font_button.setSizePolicy(sizePolicy9)
 
         self.vlay_font.addWidget(self.reset_font_button)
 
@@ -2000,6 +2021,7 @@ class Ui_MainWindow(object):
         self.option_full_wallet_upgrades.setText(QCoreApplication.translate("MainWindow", u"Full Wallet Upgrades", None))
         self.box_vanilla_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Vanilla Tweaks", None))
         self.label_for_option_bit_patches.setText(QCoreApplication.translate("MainWindow", u"BiT Patches", None))
+        self.label_for_option_peatrice_conversations.setText(QCoreApplication.translate("MainWindow", u"Peatrice Conversations", None))
         self.box_item_pool.setTitle(QCoreApplication.translate("MainWindow", u"Item Pool", None))
         self.option_gondo_upgrades.setText(QCoreApplication.translate("MainWindow", u"Place Scrap Shop Upgrades", None))
         self.label_for_option_rupoor_mode.setText(QCoreApplication.translate("MainWindow", u"Rupoor Mode", None))

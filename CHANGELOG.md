@@ -20,6 +20,7 @@
   - Fi now has an option to let you return to this starting point! She'll warp you back whenever you like :p
   - Added an additional option that limits the possible starting locations
     - When enabled, you will only start at a location in a region unlocked by the tablets you start with
+- Added an option to reduce the number of Peatrice conversations needed before she calls you "Darling" (by CovenEsme)
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Added Fi hints (by YourAverageLink)

@@ -620,7 +620,7 @@
                   <bool>true</bool>
                  </property>
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -702,6 +702,12 @@
                </item>
                <item>
                 <widget class="QSpinBox" name="option_demise_count">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="maximumSize">
                   <size>
                    <width>41</width>
@@ -1081,6 +1087,27 @@
               <widget class="QComboBox" name="option_bit_patches"/>
              </item>
              <item>
+              <layout class="QHBoxLayout" name="hlay_peatrice_conversations">
+               <item>
+                <widget class="QLabel" name="label_for_option_peatrice_conversations">
+                 <property name="text">
+                  <string>Peatrice Conversations</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="option_peatrice_conversations">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
               <spacer name="vspace_vanilla_tweaks">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
@@ -1286,6 +1313,12 @@
                </item>
                <item>
                 <widget class="QSpinBox" name="option_damage_multiplier">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="maximumSize">
                   <size>
                    <width>41</width>
