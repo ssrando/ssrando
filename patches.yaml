@@ -2695,7 +2695,7 @@ F200: # Eldin main area
     objtype: STAG
   - name: New lower Eldin StreamT 1 # Moving this from layer 4 doesn't work ¯\_(ツ)_/¯
     type: objadd
-    id: 0xFD0DS300
+    id: 0xFD0D
     layer: 0
     room: 2
     objtype: STAG
