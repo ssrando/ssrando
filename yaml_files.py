@@ -62,8 +62,8 @@ def requirements_gen(folder: Path):
         for filename in files
     } | {"allowed-time-of-day": "Both"}
     requirements["exits"] = {"Start": "Nothing"}
-    if "macros.yaml" in os.listdir(folder):
-        requirements["macros"] = yaml_load(folder / "macros.yaml")
+    if (globals := "globals.yaml") in os.listdir(folder):
+        requirements |= yaml_load(folder / globals)
     return requirements
 
 

@@ -1,0 +1,199 @@
+# macros, for logic snippets used in lots of different areas
+macros:
+  GoT Opening Requirement: Runtime
+  GoT Raising Requirement: Runtime
+  Horde Door Requirement: Runtime
+
+  Practice Sword:
+    ~ Progressive Sword x 1
+
+  Goddess Sword:
+    ~ Progressive Sword x 2
+
+  Goddess Longsword:
+    ~ Progressive Sword x 3
+
+  Goddess White Sword:
+    ~ Progressive Sword x 4
+
+  Master Sword:
+    ~ Progressive Sword x 5
+
+  True Master Sword:
+    ~ Progressive Sword x 6
+
+  Beetle:
+    ~ Progressive Beetle x 1
+
+  Hook Beetle:
+    ~ Progressive Beetle x 2
+
+  Three Beetles:
+    Progressive Beetle x 3
+
+  Quick Beetle:
+    ~ Three Beetles | Gondo's Upgrades - Upgrade to Quick Beetle
+
+  Tough Beetle:
+    ~ Progressive Beetle x 4 | Gondo's Upgrades - Upgrade to Tough Beetle
+
+  Bow:
+    Progressive Bow x 1
+
+  Slingshot:
+    Progressive Slingshot x 1
+
+  Bug Net:
+    Progressive Bug Net x 1
+
+  Digging Mitts:
+    Progressive Mitts x 1
+
+  Mogma Mitts:
+    Progressive Mitts x 2
+
+  Pouch:
+    ~ Progressive Pouch x 1
+
+  Can Afford 50 Rupees:   Wallet Capacity >= 50
+  Can Afford 100 Rupees:  Wallet Capacity >= 100
+  Can Afford 300 Rupees:  Wallet Capacity >= 300
+  Can Afford 600 Rupees:  Wallet Capacity >= 600
+  Can Afford 800 Rupees:  Wallet Capacity >= 800
+  Can Afford 1000 Rupees: Wallet Capacity >= 1000
+  Can Afford 1200 Rupees: Wallet Capacity >= 1200
+  Can Afford 1600 Rupees: Wallet Capacity >= 1600
+
+  Can Medium Rupee Farm:
+    Sky - Clean Cut Minigame | Can High Rupee Farm
+
+  Can High Rupee Farm:
+    Sky - Fun Fun Island Minigame | Eldin - Thrill Digger Minigame
+
+  Song of the Hero:
+    Faron Song of the Hero Part & Eldin Song of the Hero Part & Lanayru Song of the Hero Part
+
+  Complete Triforce:
+    Triforce of Courage & Triforce of Wisdom & Triforce of Power
+
+  Empty Bottle_ : ~ Empty Bottle x 1
+
+  Bottle:
+    Pouch & Skyloft - Item Check Access & Empty Bottle_
+
+  Can Collect Water: Impossible # To be completed locally
+
+  Water Bottle: Bottle & Can Collect Water
+
+  Ancient Flower Farming: Impossible # Completed locally
+
+
+  5 Gratitude Crystals:  Gratitude Crystals >= 5
+  10 Gratitude Crystals: Gratitude Crystals >= 10
+  30 Gratitude Crystals: Gratitude Crystals >= 30
+  40 Gratitude Crystals: Gratitude Crystals >= 40
+  50 Gratitude Crystals: Gratitude Crystals >= 50
+  70 Gratitude Crystals: Gratitude Crystals >= 70
+  80 Gratitude Crystals: Gratitude Crystals >= 80
+
+  Sword:
+    Practice Sword
+
+  Long Range Skyward Strike:
+    (Goddess Sword & Upgraded Skyward Strike option) | True Master Sword
+
+  Damaging Item:
+    Sword | Bomb Bag | Bow
+
+  Projectile Item:
+    Slingshot | Beetle | Bow
+
+  Distance Activator:
+    Slingshot | Beetle | Clawshots | Bow
+
+  Can Cut Tree:
+    Sword | Bomb Bag
+
+  Can Unlock Combination Lock:
+    Sword | Whip | Clawshots | Slingshot | Bow
+
+  Can Hit Switch:
+    Sword | Bomb Bag | Whip | Distance Activator
+
+  Can Hit Timeshift Stone:
+    Sword | Bomb Bag | Whip | Distance Activator
+
+  Can Hit Timeshift Stone in Minecart:
+    Sword | Bomb Bag | Distance Activator
+    # I don't think Whip works when the stone is in a minecart
+
+  Early Lake Floria Tricks: (Early Lake Floria - Fence Hop Trick & Practice Sword) | Early Lake Floria - Swordless Rope Floria Trick
+
+  Can Bypass Boko Base Watch Tower:
+    Bow | Bomb Bag | Slingshot
+
+  # Can defeat enemy
+
+  Can Defeat Bokoblins:
+    Damaging Item
+
+  Can Defeat Moblins:
+    Damaging Item
+
+  Can Defeat Keeses:
+    Sword | Slingshot | Beetle | Whip | Clawshots | Bow | Bomb Bag
+
+  Can Defeat Lizalfos:
+    Sword | (Advanced Lizalfos Combat Trick & (Bomb Bag | Bow))
+    # With bombs, let them attack you while you have a bomb in your hands. Takes one bomb for normal lezalfos, two for dark lezalfos
+
+  Can Defeat Ampilus:
+    Damaging Item
+
+  Can Defeat Armos:
+    Gust Bellows & Sword
+    # Only a sword seems to be able to destroy their crystals, even the bow phases through
+
+  Can Defeat Beamos:
+    Sword | Bow
+
+  Can Defeat Cursed Bokoblins:
+    Sword | Bomb Bag
+
+  Can Defeat Stalfos:
+    Sword
+
+  Can Defeat Stalmaster:
+    Sword
+
+  Can Defeat Scervo/Dreadfuse:
+    Sword
+    # Could add Pouch for a shield
+
+options:
+  Open Thunderhead option: Option "open-thunderhead" Is "Open"
+  Open ET option: Option "open-et" Enabled
+  Open LMF option: Option "open-lmf" Is "Open"
+  LMF Nodes On option: Option "open-lmf" Is "Main Node"
+  Floria Gates option: Option "open-lake-floria" Is "Floria Gates"
+  Talk to Yerbal option: Option "open-lake-floria" Is "Talk to Yerbal"
+  Vanilla Lake Floria option: Option "open-lake-floria" Is "Vanilla"
+  Open Lake Floria option: Option "open-lake-floria" Is "Open"
+  Randomized Beedle option: Option "shopsanity" Enabled
+  Gondo Upgrades On option: Option "gondo-upgrades" Disabled
+  FS Lava Flow option: Option "fs-lava-flow" Enabled
+  BiT patches: Option "bit-patches" Enabled
+  Nonlethal Hot Cave: Option "damage-multiplier" Is Less Than 12
+  Upgraded Skyward Strike option: Option "upgraded-skyward-strike" Enabled
+
+  "{} Trick": Meta Option "enabled-tricks-bitless" Contains "{}"
+
+counters:
+  Gratitude Crystals:
+    1 x Gratitude Crystal + 5 x Gratitude Crystal Pack #, Limit Option "max-batreaux-reward"
+
+  Wallet Capacity:
+    Progressive Wallet {300, 500, 1000, 5000, 9000} + 300 * Extra Wallet #, Limit Option "max-wallet"
+
+  Unique Rupees:
+    1 x Green Rupee + 5 x Blue Rupee + 20 x Red Rupee + 100 x Silver Rupee + 300 x Gold Rupee

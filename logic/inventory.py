@@ -11,13 +11,6 @@ def extended_item_generator():
     # Technical dummy events
     yield from sorted(INVENTORY_ITEMS)
 
-    yield from LOGIC_OPTIONS
-
-    for option in options:
-        if option["name"].startswith("Enabled Tricks"):
-            for trick in option["choices"]:
-                yield f"{trick} Trick"
-
     for i in range(MAX_STONE_HINTS + MAX_FI_HINTS):
         yield number(HINT, i)
 
@@ -35,6 +28,8 @@ class MetaContainer(type):
 
 class EXTENDED_ITEM(int, metaclass=MetaContainer):
     items_list: List[EXTENDED_ITEM_NAME] = list(extended_item_generator())  # type: ignore
+    counters: Dict[EXTENDED_ITEM_NAME, Counter]
+    options: Dict[EXTENDED_ITEM_NAME, QueryExpression]
     complete = False
 
     @classmethod
