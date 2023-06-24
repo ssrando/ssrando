@@ -182,21 +182,18 @@ options:
   Randomized Beedle option: Option "shopsanity" Enabled
   Gondo Upgrades On option: Option "gondo-upgrades" Disabled
   FS Lava Flow option: Option "fs-lava-flow" Enabled
-  Hero-mode: Option "hero-mode" Enabled
-  No BiT crashes: Option "fix-bit-crashes" Enabled
+  BiT patches: Option "bit-patches" Enabled
   Nonlethal Hot Cave: Option "damage-multiplier" Is Less Than 12
   Upgraded Skyward Strike option: Option "upgraded-skyward-strike" Enabled
-
-  Beedle Stall Access Token: Option "shop-mode" Is Not "Always Junk" Else Banned
 
   "{} Trick": Meta Option "enabled-tricks-bitless" Contains "{}"
 
 counters:
   Gratitude Crystals:
-    1 x Gratitude Crystal + 5 x Gratitude Crystal Pack, Limit Option "max-batreaux-reward"
+    1 x Gratitude Crystal + 5 x Gratitude Crystal Pack #, Limit Option "max-batreaux-reward"
 
   Wallet Capacity:
-    Progressive Wallet {300, 500, 1000, 5000, 9000} + 300 * Extra Wallet, Limit Option "max-wallet"
+    Progressive Wallet {300, 500, 1000, 5000, 9000} + 300 * Extra Wallet #, Limit Option "max-wallet"
 
   Unique Rupees:
     1 x Green Rupee + 5 x Blue Rupee + 20 x Red Rupee + 100 x Silver Rupee + 300 x Gold Rupee

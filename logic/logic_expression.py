@@ -95,6 +95,18 @@ class QueryOption(QueryExpression):
 
 
 @dataclass
+class QueryLessThanOption(QueryExpression):
+    option: str
+    threshold: int
+    negation: bool = False
+
+    def eval(self, options: Options) -> bool:
+        if self.negation:
+            return options[self.option] >= self.threshold
+        return options[self.option] < self.threshold
+
+
+@dataclass
 class QueryContainerOption(QueryExpression):
     option: str
     value: Any
@@ -148,6 +160,7 @@ query_grammar = r"""
         | text "Disabled" -> mk_disabled
         | text "Is" text -> mk_is
         | text "Is Not" text -> mk_isnot
+        | text "Is Less Than" INT -> mk_islt
         | text "Contains" text -> mk_contains
         | text "Does Not Contain" text -> mk_doesnotcontain
 
@@ -158,6 +171,7 @@ query_grammar = r"""
 
     %import common.ESCAPED_STRING
     %import common.WS
+    %import common.INT
     %ignore WS
 """
 
@@ -196,6 +210,9 @@ class MakeQueryExpression(Transformer):
 
     def mk_isnot(self, option, value):
         return QueryOption(option, value, negation=True)
+
+    def mk_islt(self, option, threshold):
+        return QueryLessThanOption(option, int(threshold))
 
     def mk_contains(self, option, value):
         return QueryContainerOption(option, value)

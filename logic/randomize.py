@@ -12,7 +12,7 @@ from .fill_algo_common import RandomizationSettings, UserOutput
 from .logic import Logic, Placement, LogicSettings
 from .logic_utils import AdditionalInfo, LogicUtils
 from .logic_input import Areas
-from .logic_expression import DNFInventory, EmptyReq, InventoryAtom
+from .logic_expression import DNFInventory, EmptyReq, InventoryAtom, Requirement
 from .inventory import (
     Inventory,
     EXTENDED_ITEM,
@@ -287,7 +287,7 @@ class Rando:
         } | {EXTENDED_ITEM[self.short_to_full(DEMISE)]}
         everything_req = DNFInventory(Inventory(everything_list))
 
-        self.endgame_requirements = {
+        self.endgame_requirements: dict[EIN, Requirement] = {
             self.short_to_full(GOT_RAISING_REQUIREMENT): got_raising_requirement,
             self.short_to_full(GOT_OPENING_REQUIREMENT): got_opening_requirement,
             self.short_to_full(HORDE_DOOR_REQUIREMENT): horde_door_requirement,
@@ -342,7 +342,6 @@ class Rando:
     def set_placement_options(self):
         shopsanity = self.options["shopsanity"]
         place_gondo_progressives = self.options["gondo-upgrades"]
-        damage_multiplier = self.options["damage-multiplier"]
 
         self.no_logic_requirements = {}
         if self.options["logic-mode"] == "No Logic":

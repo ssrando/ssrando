@@ -160,7 +160,7 @@ class Placement:
 class LogicSettings:
     full_inventory: Inventory
     starting_inventory: Inventory
-    runtime_requirements: Dict[EIN, DNFInventory]
+    runtime_requirements: Dict[EIN, Requirement]
     banned: List[EIN]
 
 
@@ -202,7 +202,7 @@ class Logic:
                         for conj in req.disjunction:
                             aggregate |= conj
                     elif isinstance(req, CounterThreshold):
-                        for (targets, _) in req.counter.targets:
+                        for targets, _ in req.counter.targets:
                             for item in targets:
                                 aggregate |= item
                     else:
@@ -219,7 +219,7 @@ class Logic:
                             todos |= conj.intset - aggregate.intset
                             aggregate |= conj
                     elif isinstance(req, CounterThreshold):
-                        for (targets, _) in req.counter.targets:
+                        for targets, _ in req.counter.targets:
                             for item in targets:
                                 aggregate |= item
                                 todos |= {item} - aggregate.intset
