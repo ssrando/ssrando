@@ -341,6 +341,10 @@ nop
 nop
 nop
 
+; hook into function before spawning link at entrance
+.org 0x800635b4
+bl do_er_fixes
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"

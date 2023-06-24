@@ -321,6 +321,7 @@ blr
 .global get_item_model_name_ptr
 .global is_custom_rando_item
 .global send_to_start
+.global do_er_fixes
 
 .close
 

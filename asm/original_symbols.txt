@@ -18,6 +18,7 @@ main.dol:
     # this, flag
     SceneflagManager__setTempOrSceneflag: 0x800be2d0
     SceneflagManager__setFlagGlobal: 0x800be1f0
+    SceneflagManager__unsetFlagGlobal: 0x800be500
     SceneflagManager__checkFlagGlobal: 0x800bdf20
     # ActorLink, Vec3f* pos, Vec3s* rot, zero1, one, zero2
     ActorLink__setPosRot: 0x802416d0

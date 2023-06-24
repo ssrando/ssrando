@@ -3,6 +3,7 @@
 
 use core::{
     ffi::{c_char, c_ushort, c_void},
+    mem::transmute,
     ptr::{self, slice_from_raw_parts},
     slice,
 };
@@ -90,11 +91,21 @@ impl SpecialMinigameState {
     }
 }
 
+#[repr(C)]
+struct Reloader {
+    _0: [u8; 0x290],
+    initial_speed: f32,
+    _294: [u8; 0x29a - 0x294],
+    spawn_state: i16,
+}
+
 extern "C" {
     static mut SPAWN_SLAVE: SpawnStruct;
     fn setStoryflagToValue(flag: u16, value: u16);
     static SCENEFLAG_MANAGER: *mut c_void;
     fn SceneflagManager__setFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16);
+    fn SceneflagManager__unsetFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16);
+    fn SceneflagManager__checkFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16) -> bool;
     static FILE_MANAGER: *mut filemanager_gen::FileManager;
     fn FileManager__getDungeonFlags(
         mgr: *mut filemanager_gen::FileManager,
@@ -131,8 +142,8 @@ extern "C" {
         transition_fade_frames: u8,
         param_9: u8,
     );
-    static mut RELOADER_PTR: *mut c_void;
-    fn Reloader__setReloadTrigger(reloader: *mut c_void, trigger: u8);
+    static mut RELOADER_PTR: *mut Reloader;
+    fn Reloader__setReloadTrigger(reloader: *mut Reloader, trigger: u8);
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -145,6 +156,14 @@ fn itemflag_check(flag: u16) -> bool {
 
 fn sceneflag_set_global(scene_index: u16, flag: u16) {
     unsafe { SceneflagManager__setFlagGlobal(SCENEFLAG_MANAGER, scene_index, flag) };
+}
+
+fn sceneflag_unset_global(scene_index: u16, flag: u16) {
+    unsafe { SceneflagManager__unsetFlagGlobal(SCENEFLAG_MANAGER, scene_index, flag) };
+}
+
+fn sceneflag_check_global(scene_index: u16, flag: u16) -> bool {
+    unsafe { SceneflagManager__checkFlagGlobal(SCENEFLAG_MANAGER, scene_index, flag) }
 }
 
 /// returns the pointer to the static dungeonflags, those for the current sceneflagindex
@@ -589,6 +608,36 @@ pub fn send_to_start() {
             0xFF,
         );
         Reloader__setReloadTrigger(RELOADER_PTR, 5);
+    }
+}
+
+#[no_mangle]
+pub fn do_er_fixes() {
+    unsafe {
+        if (*RELOADER_PTR).initial_speed > 30f32 {
+            (*RELOADER_PTR).initial_speed = 30f32;
+        }
+    }
+    let spawn = unsafe { &mut SPAWN_SLAVE };
+    if spawn.name.starts_with(b"F000") && spawn.entrance == 53 && !storyflag_check(22) {
+        // Skyloft from Sky Keep
+        spawn.entrance = 52;
+    } else if spawn.name.starts_with(b"F300\0") && spawn.entrance == 5 {
+        // Lanayru Desert from LMF
+        spawn.entrance = 12; // respawn when getting crushed near here, works for now
+    } else if (spawn.name.starts_with(b"F300\0") && spawn.entrance == 2)
+        || (spawn.name.starts_with(b"F300_1") && spawn.entrance == 1)
+    {
+        // desert from mines and mines from desert
+        // there are 2 timeshift stones that are fine
+        // 7 is sceneflagindex for desert
+        if !(sceneflag_check_global(7, 113) || sceneflag_check_global(7, 114)) {
+            for flag in (115..=124).chain([108, 111]) {
+                sceneflag_unset_global(7, flag);
+            }
+            // last timeshift stone in mines
+            sceneflag_set_global(7, 113);
+        }
     }
 }
 
