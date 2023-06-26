@@ -1,3 +1,4 @@
+
 - layer: 1
   oarcs:
     - Goron_motion
@@ -57,6 +58,7 @@
   - GetBottleRepair
   - GetSpareQuiverA
   - GetSpareBombBagA
+  - DesertRobot
   stage: F004r
 - layer: 1
   oarcs:

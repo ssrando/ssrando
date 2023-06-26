@@ -51,6 +51,7 @@ bl handleSmallKeyGet
 .int 0x1000 ; item 212
 .int 0x1000 ; item 213
 .int 0 ; item 214
+.int 0x1000 ; item 215
 
 
 ; Allow getting arbitrary models in getItemModelForItem

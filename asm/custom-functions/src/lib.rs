@@ -502,21 +502,24 @@ fn get_item_arc_name(
     vanilla_item_str: *const c_char,
     item_id: u32,
 ) -> *const c_void {
-    // Tadtone
-    if item_id == 214 {
-        return unsafe { getModelDataFromOarc(oarc_mgr, cstr!("Onp").as_ptr()) };
+    let mut oarc_name;
+
+    match item_id {
+        214 => oarc_name = cstr!("Onp").as_ptr(), // tadtone
+        215 => oarc_name = cstr!("DesertRobot").as_ptr(), // scrapper
+        _ => oarc_name = vanilla_item_str,
     }
 
-    return unsafe { getModelDataFromOarc(oarc_mgr, vanilla_item_str) };
+    return unsafe { getModelDataFromOarc(oarc_mgr, oarc_name) };
 }
 
 #[no_mangle]
 fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
-    if item_id == 214 {
-        return cstr!("OnpB").as_ptr();
+    match item_id {
+        214 => return cstr!("OnpB").as_ptr(), // tadtone
+        215 => return cstr!("DesertRobot").as_ptr(), // scrapper
+        _ => return core::ptr::null(),
     }
-
-    return core::ptr::null();
 }
 
 #[no_mangle]

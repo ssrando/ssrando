@@ -333,7 +333,16 @@ nop
 nop
 nop
 
+; Check for scrapper repaired when also checking if a scrapper quest was started
+; Prevents picking up scrapper item when scrapper hasn't been found yet
+;
+; ScrapperPickupMgr__checkQuestStartedStoryflag
+.org 0x800a5c88
+b check_scrapper_repaired
+
 .close
+
+
 
 .open "d_a_obj_time_door_beforeNP.rel"
 .org 0xD4C
@@ -552,6 +561,8 @@ b enforce_loftwing_speed_cap
 .close
 
 .open "d_a_npc_dive_game_judgeNP.rel"
+
+; (80703568 - 80700ac0) + 130
 .org 0x2BD8 ; in function that checks if he should loose his party wheel
 li r4, 0x130 ; always loose it (batreaux storyflag)
 

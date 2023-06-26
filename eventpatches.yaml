@@ -1,4 +1,31 @@
 003-ItemGet:
+  - name: Scrapper Entry
+    type: entryadd
+    entry:
+      name: "003_215"
+      value: Show Scrapper Item Get Text
+  - name: Scrapper Item Get Text
+    type: textadd
+    unk1: 5
+    unk2: 1
+    text: "You found Gondo's robot, <y<Scrapper>>!
+          \n\n\n\nBe sure to take care of him...\neven if he's a little mean."
+  - name: Show Scrapper Item Get Text
+    type: flowadd
+    flow:
+      type: type1
+      next: Give Scrapper Storyflag
+      param3: 3
+      param4: Scrapper Item Get Text
+  - name: Give Scrapper Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 323 # Scrapper Storyflag
+      next: -1
+      param3: 0
   - name: Tadtone Entry
     type: entryadd
     entry:
