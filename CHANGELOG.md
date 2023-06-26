@@ -10,6 +10,14 @@
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
+- Added Fi hints (by YourAverageLink)
+  - Fi hints are a new field in hint distribution files. The number indicated on the field is how many gossip stone hints will be placed in the Fi menu
+    - Fi hints take priority over gossip stone hints; that is, they will be placed on Fi first, then on gossip stones if needed
+    - You may now set the hints per stone count of gossip stones to 0
+    - Fi's hints may be seen in her menu, by selecting Information -> Hints
+      - The information menu is also where Play Time now resides
+- Moved Golo to layer 0 in Lanayru Caves
+- Add an option for a custom hint distribution (by cjs07)
 - The Sand Sea boat moves faster (by YourAverageLink)
   - Its base speed is 1.5x faster. Sprinting now multiplies its speed by 3 instead of 2, for a total change of 2.25x from before.
 ### Bugfixes
