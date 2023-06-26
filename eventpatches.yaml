@@ -1564,7 +1564,16 @@
     flow: {}
     cases:
       - 216 # soup has been delivered, normal event
+      - Check for Scrapper
+  - name: Check for Scrapper
+    type: switchadd
+    flow:
+      subeType: 6
+      param2: 323 # Scrapper repaired
+      param3: 3 # check storyflag
+    cases:
       - Show new Text Option # soup has not been delivered, ask which quest to do
+      - 216 # no scrapper = normal event
   - name: Go to Switch for Chandelier
     type: flowpatch
     index: 6

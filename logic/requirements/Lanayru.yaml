@@ -78,7 +78,7 @@ Desert:
       entrance: Entry - Timeshift Stone
       exit: { Entry: Nothing }
       locations:
-        Retrieve Party Wheel: Sky - Fun Fun Island - Start Dodoh's Quest
+        Retrieve Party Wheel: Scrapper & Sky - Fun Fun Island - Start Dodoh's Quest
         Chest near Party Wheel: Nothing
 
   Near Hook Beetle Fight:

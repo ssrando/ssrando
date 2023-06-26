@@ -20,6 +20,10 @@
 - Add an option for a custom hint distribution (by cjs07)
 - The Sand Sea boat moves faster (by YourAverageLink)
   - Its base speed is 1.5x faster. Sprinting now multiplies its speed by 3 instead of 2, for a total change of 2.25x from before.
+- Added Scrapper as an item (by CovenEsme)
+  - Scrapper is no longer given at the start of the game and instead appears as an item
+  - To account for this, Scrapper has also been made into a possible starting item
+  - In order to get Owlan's Crystals, Dodoh's Crystals, Fun Fun Island Minigame, Kina's Crystals, Sparrot's Crystals, and Song from Levias you must have obtained the Scrapper item
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 - Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow
