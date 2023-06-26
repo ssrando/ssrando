@@ -22,6 +22,7 @@
   - Its base speed is 1.5x faster. Sprinting now multiplies its speed by 3 instead of 2, for a total change of 2.25x from before.
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
+- Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow
 
 ## 1.4.1
 ### Bugfixes

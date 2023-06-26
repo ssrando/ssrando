@@ -787,7 +787,7 @@ F000: # Skyloft
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 1114 # bow
+      trigstoryfid: 944 # bow
   - name: Fledge for Arrow minigame
     type: objpatch
     id: 0xFDD8
@@ -795,7 +795,7 @@ F000: # Skyloft
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 1114 # bow
+      trigstoryfid: 944 # bow
 #  - name: Batreaux unlock
 #    type: objpatch
 #    id: 0xFC4A
@@ -885,7 +885,7 @@ F000: # Skyloft
     room: 0
     objtype: OBJ
     object:
-      untrigstoryfid: 1114 # bow
+      untrigstoryfid: 944 # bow
   - name: untrigger fledge on academy after bow layer 6
     type: objpatch
     id: 0xFDD3
@@ -893,7 +893,7 @@ F000: # Skyloft
     room: 0
     objtype: OBJ
     object:
-      untrigstoryfid: 1114 # bow
+      untrigstoryfid: 944 # bow
   - name: delete Wryna l4 2
     type: objdelete
     id: 0xFDF1
