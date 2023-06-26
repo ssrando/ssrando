@@ -18,6 +18,8 @@
       - The information menu is also where Play Time now resides
 - Moved Golo to layer 0 in Lanayru Caves
 - Add an option for a custom hint distribution (by cjs07)
+- The Sand Sea boat moves faster (by YourAverageLink)
+  - Its base speed is 1.5x faster. Sprinting now multiplies its speed by 3 instead of 2, for a total change of 2.25x from before.
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 
