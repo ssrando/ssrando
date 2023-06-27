@@ -8,7 +8,14 @@ from hints.hint_types import GossipStoneHintWrapper, Hint
 
 from .constants import *
 from .logic_input import Area, Areas, DayOnly, NightOnly, Both
-from .logic_expression import DNFInventory, AndCombination
+from .logic_expression import (
+    CounterThreshold,
+    DNFInventory,
+    AndCombination,
+    EmptyReq,
+    Requirement,
+    UnknownReq,
+)
 from .inventory import (
     HINT_BYPASS_BIT,
     EVERYTHING_BIT,
@@ -153,13 +160,13 @@ class Placement:
 class LogicSettings:
     full_inventory: Inventory
     starting_inventory: Inventory
-    runtime_requirements: Dict[EIN, DNFInventory]
+    runtime_requirements: Dict[EIN, Requirement]
     banned: List[EIN]
 
 
 class Logic:
     @staticmethod
-    def fill_inventory(requirements: List[DNFInventory], inventory: Inventory):
+    def fill_inventory(requirements: List[Requirement], inventory: Inventory):
         keep_going = True
         while keep_going:
             keep_going = False
@@ -170,7 +177,7 @@ class Logic:
         return inventory
 
     @staticmethod
-    def is_full_inventory(requirements: List[DNFInventory], inventory: Inventory):
+    def is_full_inventory(requirements: List[Requirement], inventory: Inventory):
         for i in EXTENDED_ITEM.items():
             if not inventory[i] and requirements[i].eval(inventory):
                 return False
@@ -178,7 +185,7 @@ class Logic:
 
     @staticmethod
     def aggregate_requirements(
-        requirements: List[DNFInventory],
+        requirements: List[Requirement],
         full_inventory: Inventory | None,
         start_bit: EXTENDED_ITEM | None = None,
     ):
@@ -190,27 +197,47 @@ class Logic:
         if start_bit is None:
             for bit in EXTENDED_ITEM.items():
                 if test(bit):
-                    for conj in requirements[bit].disjunction:
-                        aggregate |= conj
+                    req = requirements[bit]
+                    if isinstance(req, DNFInventory):
+                        for conj in req.disjunction:
+                            aggregate |= conj
+                    elif isinstance(req, CounterThreshold):
+                        for targets, _ in req.counter.targets:
+                            for item in targets:
+                                aggregate |= item
+                    else:
+                        assert isinstance(req, UnknownReq)
+                        pass
         else:
             todos = {start_bit}
             while todos:
                 bit = todos.pop()
                 if test(bit):
-                    for conj in requirements[bit].disjunction:
-                        todos |= conj.intset - aggregate.intset
-                        aggregate |= conj
+                    req = requirements[bit]
+                    if isinstance(req, DNFInventory):
+                        for conj in req.disjunction:
+                            todos |= conj.intset - aggregate.intset
+                            aggregate |= conj
+                    elif isinstance(req, CounterThreshold):
+                        for targets, _ in req.counter.targets:
+                            for item in targets:
+                                aggregate |= item
+                                todos |= {item} - aggregate.intset
+                    else:
+                        assert isinstance(req, UnknownReq)
+                        pass
 
         return aggregate
 
     @staticmethod
-    def get_everything_unbanned(requirements: List[DNFInventory]):
+    def get_everything_unbanned(requirements: List[Requirement]):
         inventory = Inventory(
             {EXTENDED_ITEM[itemname] for itemname in INVENTORY_ITEMS}
             | {HINT_BYPASS_BIT}
         )
         full_inventory = Logic.fill_inventory(requirements, inventory)
-        (everything_req,) = requirements[EVERYTHING_BIT].disjunction
+        req: DNFInventory = requirements[EVERYTHING_BIT]  # type: ignore
+        (everything_req,) = req.disjunction
         everything_unbanned_req = DNFInventory(
             Inventory({item for item in everything_req if full_inventory[item]})
         )
@@ -218,24 +245,28 @@ class Logic:
         return Logic.fill_inventory(requirements, full_inventory)
 
     @staticmethod
-    def free_simplify(requirements, free: Inventory):
-        req = DNFInventory(True)
+    def free_simplify(requirements: List[Requirement], free: Inventory):
         for i in Logic.fill_inventory(requirements, free) - free:
-            requirements[i] = req
+            requirements[i] = EmptyReq()
 
     @staticmethod
-    def shallow_simplify(requirements, opaques):
+    def shallow_simplify(requirements: List[Requirement]):
         simplifiables = Inventory(
             {
                 item
                 for item in EXTENDED_ITEM.items()
-                if not opaques[item]
-                if len(requirements[item].disjunction) <= 1
+                for req in (requirements[item],)
+                if isinstance(req, DNFInventory)
+                if len(req.disjunction) <= 1
             }
         )
 
         for item, req in enumerate(requirements):
-            if item == EVERYTHING_BIT or len(req.disjunction) >= 30:
+            if (
+                item == EVERYTHING_BIT
+                or not isinstance(req, DNFInventory)
+                or len(req.disjunction) >= 30
+            ):
                 continue
             new_req = DNFInventory()
             for conj in req.disjunction:
@@ -246,7 +277,8 @@ class Logic:
                         if not simplifiables[req_item]:
                             new_conj |= Inventory(req_item)
                         else:
-                            req_item_req = requirements[req_item].disjunction
+                            req0: DNFInventory = requirements[req_item]  # type: ignore
+                            req_item_req = req0.disjunction
                             if not req_item_req:
                                 skip = True
                                 break
@@ -259,25 +291,26 @@ class Logic:
             requirements[item] = new_req
 
     @staticmethod
-    def deep_simplify(requirements, opaques):
-        simplified = [len(req.disjunction) > 5 for req in requirements]
+    def deep_simplify(requirements: List[Requirement]):
+        simplified = [False for _ in requirements]
         visited = set()
         todo_list = list((range(len(requirements))))
 
         def simplify(item) -> Tuple[DNFInventory, Set[EXTENDED_ITEM]]:
             hit_a_visited = set()
-            if opaques[item]:
+            req = requirements[item]
+            if not isinstance(req, DNFInventory):
                 return DNFInventory(item), set()
 
             if item in visited:
                 return DNFInventory(item), {item}
 
             if simplified[item]:
-                return requirements[item], set()
+                return req, set()
 
             visited.add(item)
             new_req = DNFInventory()
-            for possibility in requirements[item].disjunction:
+            for possibility in req.disjunction:
                 simplified_conj = []
                 for req_item in possibility.intset:
                     item_req, h_a_v = simplify(req_item)
@@ -305,14 +338,13 @@ class Logic:
         placement: Placement,
         /,
         optim=True,
-        requirements: List[DNFInventory] | None = None,
+        requirements: List[Requirement] | None = None,
     ):
         self.areas = areas
         self.short_to_full = areas.short_to_full
         self.full_to_short = areas.full_to_short
 
         self.requirements = areas.requirements.copy()
-        self.opaque = areas.opaque.copy()
 
         if requirements is not None:
             self.requirements = requirements.copy()
@@ -334,12 +366,9 @@ class Logic:
 
         for loc, req in logic_settings.runtime_requirements.items():
             it = EXTENDED_ITEM[loc]
-            # assert self.opaque[it]
             self.requirements[it] |= self.ban_if(loc, req)
-            if it != EVERYTHING_BIT:
-                self.opaque[it] = False
 
-        self.shallow_simplify(self.requirements, self.opaque)
+        self.shallow_simplify(self.requirements)
 
         for exit, entrance in self.placement.map_transitions.items():
             self.link_connection(exit, entrance)
@@ -353,7 +382,10 @@ class Logic:
             if it not in EXTENDED_ITEM:
                 continue
             bit = EXTENDED_ITEM[it]
-            if self.areas.requirements[bit].is_impossible() or bit not in pure_usefuls:
+            if (
+                isinstance(self.areas.requirements[bit], UnknownReq)
+                or bit not in pure_usefuls
+            ):
                 self.requirements[bit] &= banned_bit_inv
             else:
                 raise ValueError(
@@ -362,7 +394,7 @@ class Logic:
 
         if optim:
             self.free_simplify(self.requirements, self.frees)
-            self.shallow_simplify(self.requirements, self.opaque)
+            self.shallow_simplify(self.requirements)
             self.fill_inventory_i(monotonic=True)
         self.backup_requirements = self.requirements.copy()
         self.aggregate = self.aggregate_requirements(self.requirements, None)
@@ -477,7 +509,6 @@ class Logic:
             self.placement.map_transitions[exit] = entrance
             self.placement.reverse_map_transitions[entrance] = exit
             for bit, req in bit_req:
-                self.opaque[bit] = False
                 req = self.ban_if(entrance, req)
                 self.requirements[bit] |= req
                 self.backup_requirements[bit] |= req
@@ -526,7 +557,6 @@ class Logic:
             req = self.ban_if(item, req)
             self.requirements[item_bit] = req
             self.backup_requirements[item_bit] = req
-            self.opaque[item_bit] = False
             if fill:
                 self.fill_inventory_i(monotonic=True)
             items[item] = location
@@ -560,7 +590,6 @@ class Logic:
         if old_item in EXTENDED_ITEM:
             # We should always be in this case
             old_item_bit = EXTENDED_ITEM[old_item]
-            self.opaque[old_item_bit] = True
             self.backup_requirements[old_item_bit] = DNFInventory()
             self.requirements = self.backup_requirements.copy()
             self.fill_inventory_i()

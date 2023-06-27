@@ -5,7 +5,7 @@ from typing import List  # Only for typing purposes
 
 from .logic import Logic, Placement, LogicSettings
 from .logic_input import Areas
-from .logic_expression import DNFInventory
+from .logic_expression import DNFInventory, ImpossibleReq, Requirement
 from .inventory import (
     Inventory,
     EXTENDED_ITEM,
@@ -39,7 +39,7 @@ class LogicUtils(Logic):
         runtime_requirements,
         banned,
         /,
-        reqs: List[DNFInventory] | None = None,
+        reqs: List[Requirement] | None = None,
     ):
         starting_inventory = Inventory(
             {EXTENDED_ITEM[itemname] for itemname in placement.starting_items}
@@ -65,7 +65,8 @@ class LogicUtils(Logic):
         full_inventory = Logic.fill_inventory(self.requirements, Inventory(BANNED_BIT))
 
         if not full_inventory[EVERYTHING_BIT]:
-            (everything_req,) = self.requirements[EVERYTHING_BIT].disjunction
+            req: DNFInventory = requirements[EVERYTHING_BIT]  # type: ignore
+            (everything_req,) = req.disjunction
             i = next(iter(everything_req.intset - full_inventory.intset))
             check = self.areas.full_to_short(EXTENDED_ITEM.get_item_name(i))
             raise useroutput.GenerationFailed(f"Could not reach check {check}.")
@@ -88,7 +89,7 @@ class LogicUtils(Logic):
         custom_requirements = self.requirements.copy()
         for index, e in enumerate(reversed(bin(banned_intset))):
             if e == "1":
-                custom_requirements[index] = DNFInventory(False)
+                custom_requirements[index] = ImpossibleReq()
 
         return Logic.fill_inventory(custom_requirements, inventory)
 
@@ -115,40 +116,6 @@ class LogicUtils(Logic):
         restricted_full = self.fill_restricted(banned_indices, starting_inventory)
 
         return restricted_full[test_index]
-
-    def congregate_requirements(self, item):
-        if not hasattr(self, "congregated_reqs"):
-            self._isvisited_agg = set()
-            self.aggregated_reqs: List[None | bool | Inventory] = [
-                None for _ in self.requirements
-            ]
-
-        if item in self._isvisited_agg:
-            return False
-
-        if self.aggregated_reqs[item] is not None:
-            return self.aggregated_reqs[item]
-
-        self._isvisited_agg.add(item)
-        aggregate = False
-        for possibility, (_, conj_pre) in self.requirements[item].disjunction.items():
-            aggregate_ = Inventory(conj_pre)
-            for req_item in possibility:
-                ag = self.congregate_requirements(req_item)
-                if ag is False:
-                    break
-                aggregate_ |= ag
-            else:
-                if aggregate is False:
-                    aggregate = aggregate_
-                else:
-                    aggregate &= aggregate_
-
-        self._isvisited_agg.remove(item)
-        if not self._isvisited_agg:
-            self.aggregated_reqs[item] = aggregate
-
-        return aggregate
 
     @cache
     def _get_sots_items(self, index: EXTENDED_ITEM):

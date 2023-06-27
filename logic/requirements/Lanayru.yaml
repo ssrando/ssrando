@@ -18,7 +18,7 @@ Mine:
       Goddess Cube at Lanayru Mine Entrance: Goddess Sword
       Timeshift Stone: Can Hit Timeshift Stone | Itemless First Timeshift Stone Trick
       # There's technically 2 different flowers here but one has the same reqs as the other only + bombs
-      General - Ancient Flower Farming: Timeshift Stone
+      Global - Ancient Flower Farming: Timeshift Stone
       Chest near First Timeshift Stone: Timeshift Stone
 
     Higher Area:
@@ -48,7 +48,7 @@ Mine:
     locations:
       Blow up Rock on Track: Nothing
       Chest at the End of Mine: Nothing # There's a baba in the way
-      General - Ancient Flower Farming: Can Hit Timeshift Stone
+      Global - Ancient Flower Farming: Can Hit Timeshift Stone
 
     In Minecart:
       entrance:
@@ -82,7 +82,7 @@ Desert:
       locations:
         Retrieve Party Wheel: Scrapper & Sky - Fun Fun Island - Start Dodoh's Quest
         Chest near Party Wheel: Nothing
-        General - Ancient Flower Farming: Nothing
+        Global - Ancient Flower Farming: Nothing
 
   Near Hook Beetle Fight:
     exits:
@@ -176,7 +176,7 @@ Desert:
       Open Secret Passageway: Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Tough Beetle
       Chest on Platform near Lightning Node: Clawshots
       Open Lightning Node: Nothing # There's a bombflower nearby
-      General - Ancient Flower Farming: Main Node Timeshift Stone
+      Global - Ancient Flower Farming: Main Node Timeshift Stone
 
     Secret Passageway:
       entrance: Open Secret Passageway
@@ -280,7 +280,7 @@ Temple of Time:
       Front: Hook Beetle | (Slingshot & Temple of Time - Slingshot Shot Trick)
     locations:
       Unlock Statue: Nothing
-      General - Ancient Flower Farming: Distance Activator # for timeshift stone
+      Global - Ancient Flower Farming: Distance Activator # for timeshift stone
 
   Front:
     exits:
@@ -293,7 +293,7 @@ Temple of Time:
       Timeshift Stone: Blow up Rock for Timeshift Stone & Distance Activator
       Save Robot: Timeshift Stone & Can Defeat Bokoblins
       Near Goddess Cube - Timeshift Stone: Long Range Skyward Strike | Distance Activator
-      General - Ancient Flower Farming: Hook Beetle # for timeshift stone
+      Global - Ancient Flower Farming: Hook Beetle # for timeshift stone
 
   Inside:
     exits:
@@ -315,7 +315,7 @@ Temple of Time:
     exits:
       South East: Distance Activator
       North Exit to Desert: Nothing
-      General - Ancient Flower Farming: Distance Activator # for timeshift stone
+      Global - Ancient Flower Farming: Distance Activator # for timeshift stone
 
 Lanayru Silent Realm:
   hint-region: Lanayru Silent Realm
@@ -478,7 +478,7 @@ Lanayru Sand Sea:
         Third Chest: Nothing
         Finish Minidungeon: Can Defeat Beamos & Can Defeat Armos & Goddess Sword
         # Technically this is possible without beating a Beamos but it's hard
-        General - Ancient Flower Farming: Nothing
+        Global - Ancient Flower Farming: Nothing
 
   Gorge:
     toplevel-alias: Lanayru Gorge
@@ -502,4 +502,4 @@ Lanayru Sand Sea:
         Activate Timeshift Stone: Gust Bellows & Can Hit Timeshift Stone
         Goddess Cube in Lanayru Gorge: Goddess Sword
         Life Tree Seedling: Activate Timeshift Stone & Digging Mitts
-        General - Ancient Flower Farming: Activate Timeshift Stone
+        Global - Ancient Flower Farming: Activate Timeshift Stone

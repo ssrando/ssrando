@@ -12,7 +12,7 @@ from .fill_algo_common import RandomizationSettings, UserOutput
 from .logic import Logic, Placement, LogicSettings
 from .logic_utils import AdditionalInfo, LogicUtils
 from .logic_input import Areas
-from .logic_expression import DNFInventory, InventoryAtom
+from .logic_expression import DNFInventory, EmptyReq, InventoryAtom, Requirement
 from .inventory import (
     Inventory,
     EXTENDED_ITEM,
@@ -83,9 +83,9 @@ class Rando:
             )
 
         runtime_requirements = (
-            self.logic_options_requirements
-            | self.endgame_requirements
-            | {i: DNFInventory(True) for i in self.placement.starting_items}
+            self.endgame_requirements
+            | self.ban_options
+            | {i: EmptyReq() for i in self.placement.starting_items}
             | self.no_logic_requirements
         )
 
@@ -103,6 +103,8 @@ class Rando:
             self.randomized_start_entrance,
             list(self.placement.locations),
         )
+
+        areas.with_options(options)
 
         logic = Logic(areas, logic_settings, self.placement)
 
@@ -237,6 +239,11 @@ class Rando:
         self.placement.add_starting_items(starting_items)
 
     def ban_the_banned(self):
+        banned_req = DNFInventory(BANNED_BIT)
+        nothing_req = EmptyReq()
+        maybe_req = lambda b: banned_req if b else nothing_req
+        self.ban_options = {}
+
         self.banned: List[EIN] = []
         self.banned.extend(map(self.norm, self.options["excluded-locations"]))
 
@@ -257,7 +264,7 @@ class Rando:
         got_raising_requirement = (
             DNFInventory(self.short_to_full(SONG_IMPA_CHECK))
             if self.options["got-start"]
-            else DNFInventory(True)
+            else EmptyReq()
         )
         got_opening_requirement = InventoryAtom(
             PROGRESSIVE_SWORD, SWORD_COUNT[self.options["got-sword-requirement"]]
@@ -265,7 +272,7 @@ class Rando:
         horde_door_requirement = (
             DNFInventory(self.short_to_full(COMPLETE_TRIFORCE))
             if self.options["triforce-required"]
-            else DNFInventory(True)
+            else EmptyReq()
         )
 
         dungeons_req = Inventory()
@@ -282,10 +289,10 @@ class Rando:
         } | {EXTENDED_ITEM[self.short_to_full(DEMISE)]}
         everything_req = DNFInventory(Inventory(everything_list))
 
-        self.endgame_requirements = {
-            GOT_RAISING_REQUIREMENT: got_raising_requirement,
-            GOT_OPENING_REQUIREMENT: got_opening_requirement,
-            HORDE_DOOR_REQUIREMENT: horde_door_requirement,
+        self.endgame_requirements: dict[EIN, Requirement] = {
+            self.short_to_full(GOT_RAISING_REQUIREMENT): got_raising_requirement,
+            self.short_to_full(GOT_OPENING_REQUIREMENT): got_opening_requirement,
+            self.short_to_full(HORDE_DOOR_REQUIREMENT): horde_door_requirement,
             EVERYTHING: everything_req,
         }
 
@@ -337,38 +344,11 @@ class Rando:
     def set_placement_options(self):
         shopsanity = self.options["shopsanity"]
         place_gondo_progressives = self.options["gondo-upgrades"]
-        damage_multiplier = self.options["damage-multiplier"]
-
-        options = {
-            OPEN_THUNDERHEAD_OPTION: self.options["open-thunderhead"] == "Open",
-            OPEN_ET_OPTION: self.options["open-et"],
-            OPEN_LMF_OPTION: self.options["open-lmf"] == "Open",
-            LMF_NODES_ON_OPTION: self.options["open-lmf"] == "Main Node",
-            FLORIA_GATES_OPTION: self.options["open-lake-floria"] == "Floria Gates",
-            TALK_TO_YERBAL_OPTION: self.options["open-lake-floria"] == "Talk to Yerbal",
-            VANILLA_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Vanilla",
-            OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
-            RANDOMIZED_BEEDLE_OPTION: shopsanity != "Vanilla",
-            GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
-            NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
-            NONLETHAL_HOT_CAVE: damage_multiplier < 12,
-            UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
-            FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
-        }
-
-        enabled_tricks = set(self.options["enabled-tricks-bitless"])
-
-        self.logic_options_requirements = {
-            k: DNFInventory(b) for k, b in options.items()
-        } | {
-            EIN(trick(trick_name)): DNFInventory(trick_name in enabled_tricks)
-            for trick_name in OPTIONS["enabled-tricks-bitless"]["choices"]
-        }
 
         self.no_logic_requirements = {}
         if self.options["logic-mode"] == "No Logic":
             self.no_logic_requirements = {
-                item: DNFInventory(True) for item in EXTENDED_ITEM.items_list
+                item: EmptyReq() for item in EXTENDED_ITEM.items_list
             }
 
         self.placement |= SINGLE_CRYSTAL_PLACEMENT(self.norm, self.areas.checks)
