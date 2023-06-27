@@ -182,43 +182,43 @@ class MakeQueryExpression(Transformer):
         return MetaQuery(query)
 
     def mk_or(self, left, right):
-        if isinstance(left, OrCombination):
-            return OrCombination(left.arguments + [right])
+        if isinstance(left, QueryOrCombination):
+            return QueryOrCombination(left.arguments + [right])
         else:
-            return OrCombination([left, right])
+            return QueryOrCombination([left, right])
 
     def mk_and(self, left, right):
-        if isinstance(left, AndCombination):
-            return AndCombination(left.arguments + [right])
+        if isinstance(left, QueryAndCombination):
+            return QueryAndCombination(left.arguments + [right])
         else:
-            return AndCombination([left, right])
+            return QueryAndCombination([left, right])
 
     def mk_true(self):
-        return AndCombination([])
+        return QueryAndCombination([])
 
     def mk_false(self):
-        return OrCombination([])
+        return QueryOrCombination([])
 
     def mk_enabled(self, option):
-        return QueryBoolOption(option)
+        return QueryBoolOption(str(option))
 
     def mk_disabled(self, option):
-        return QueryBoolOption(option, negation=True)
+        return QueryBoolOption(str(option), negation=True)
 
     def mk_is(self, option, value):
-        return QueryOption(option, value)
+        return QueryOption(str(option), str(value))
 
     def mk_isnot(self, option, value):
-        return QueryOption(option, value, negation=True)
+        return QueryOption(str(option), str(value), negation=True)
 
     def mk_islt(self, option, threshold):
-        return QueryLessThanOption(option, int(threshold))
+        return QueryLessThanOption(str(option), int(threshold))
 
     def mk_contains(self, option, value):
-        return QueryContainerOption(option, value)
+        return QueryContainerOption(str(option), str(value))
 
     def mk_doesnotcontain(self, option, value):
-        return QueryContainerOption(option, value, negation=True)
+        return QueryContainerOption(str(option), str(value), negation=True)
 
     def mk_else_banned(self, query):
         return QueryElseBanned(query)

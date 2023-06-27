@@ -152,6 +152,9 @@ class Areas:
     ) -> EXTENDED_ITEM_NAME:
         """Computes the thing referred by [partial_address] when located at [base_address]"""
 
+        if partial_address_str in EXTENDED_ITEM:
+            return EIN(partial_address_str)
+
         queue: Deque[Area] = deque([self.all_areas])
         area = self.all_areas
         for base_addr_atom in base_address_str.split("\\"):
