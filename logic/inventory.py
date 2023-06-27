@@ -11,7 +11,7 @@ def extended_item_generator():
     # Technical dummy events
     yield from sorted(INVENTORY_ITEMS)
 
-    yield from LOGIC_OPTIONS
+    yield from options
 
     for option in options:
         if option["name"].startswith("Enabled Tricks"):
