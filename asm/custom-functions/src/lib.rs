@@ -91,6 +91,8 @@ impl SpecialMinigameState {
 }
 
 extern "C" {
+    fn printf(string: *const c_char);
+    fn printf2(string: *const c_char, int: u32);
     static mut SPAWN_SLAVE: SpawnStruct;
     fn setStoryflagToValue(flag: u16, value: u16);
     static SCENEFLAG_MANAGER: *mut c_void;

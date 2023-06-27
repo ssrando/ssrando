@@ -881,3 +881,17 @@ b 0x460
 .float 3.0 ; original sprint speed multiplier is 2.0, so total speed difference is 2.25x
 
 .close
+
+
+.open "d_a_npc_salbage_robot_repairNP.rel"
+
+; (80890fb4 - 8088fd00) + 130
+
+; NpcSalbageRobotRepair__isRepaired
+; Replace Scrapper Repaired storyflag with rando flag for Repair Gondo's Junk check
+;
+; 0x808906d4
+.org 0xB04
+li r4, 322 ; Repair Gondo's Junk check flag
+
+.close

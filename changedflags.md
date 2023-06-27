@@ -1,5 +1,7 @@
 Storyflags  
 
+322: Repair Gondo's Junk Check (repurposed: "Learn about Scrapper near Village Windmill")
+
 900: Beat Ancient Cistern  
 901: Beat Fire Sanctuary  
 11 & 13: Imp2 Requirements reached (should be set at once)  

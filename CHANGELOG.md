@@ -24,6 +24,8 @@
   - Scrapper is no longer given at the start of the game and instead appears as an item
   - To account for this, Scrapper has also been made into a possible starting item
   - In order to get Owlan's Crystals, Dodoh's Crystals, Fun Fun Island Minigame, Kina's Crystals, Sparrot's Crystals, and Song from Levias you must have obtained the Scrapper item
+- Added "Repair Gondo's Junk" check (equivalent to repairing Scrapper in vanilla) (by CovenEsme)
+  - Requires 1 Ancient Flower in return for a check
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 - Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow

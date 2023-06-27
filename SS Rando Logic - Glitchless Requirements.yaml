@@ -297,6 +297,15 @@ Unlocked Endurance Potion:
   Can Raise Lanayru Mining Facility
   # Potion is tied to raising LMF, it's always enabled with open lmf
 
+Central Skyloft - Repair Gondo's Junk:
+  Amber Tablet & (
+    Lanayru Mine - Ancient Flower Farming |
+    Lanayru Desert - Ancient Flower Farming |
+    Lanayru Desert - Ancient Flower Farming near Main Node |
+    Lanayru Sand Sea - Pirate Stronghold - Ancient Flower Farming |
+    Lanayru Gorge - Ancient Flower Farming
+  )
+
 Central Skyloft - Bazaar Goddess Chest:
   Goddess Cube in Ancient Harbour
 
@@ -1277,6 +1286,9 @@ Lanayru Mine - Chest behind Statue:
 Lanayru Mine - Chest at the End of Mine:
   Can Access Second Part of Lanayru Mine
 
+Lanayru Mine - Ancient Flower Farming:
+  Can Access Lanayru & Can Activate Mine First Timeshift Stone
+
 ## Lanayru Desert
 
 # First Part
@@ -1292,6 +1304,9 @@ Can Retrieve Party Wheel:
   Can Access Higher Part near Entrance & Scrapper
 
 Lanayru Desert - Chest near Party Wheel:
+  Can Access Higher Part near Entrance
+
+Lanayru Desert - Ancient Flower Farming:
   Can Access Higher Part near Entrance
 
 Lanayru Desert - Chest near Hook Beetle Fight:
@@ -1386,6 +1401,9 @@ Can Access Second Part of Lanayru Desert:
     (Clawshots | Can Raise Lanayru Mining Facility | Temple of Time Skip - Brakeslide Trick)
   ) |
   Can Access Second Part of Lanayru Desert from Temple of Time
+
+Lanayru Desert - Ancient Flower Farming near Main Node:
+  Can Access Second Part of Lanayru Desert & (Bomb Bag | Hook Beetle)
 
 Can Activate Water Node:
   Can Access Second Part of Lanayru Desert & (Bomb Bag | Hook Beetle) & Sword
@@ -1520,6 +1538,9 @@ Lanayru Gorge - Life Tree Seedling:
 Lanayru Gorge - Thunder Dragon's Reward:
   Can Access Lanayru Gorge & Can Hit Timeshift Stone & Life Tree Fruit
 
+Lanayru Gorge - Ancient Flower Farming:
+  Can Access Lanayru Gorge & Gust Bellows & Can Hit Timeshift Stone
+
 ## Lanayru Sand Sea
 
 Can Access Lanayru Sand Sea:
@@ -1601,6 +1622,9 @@ Lanayru Sand Sea - Pirate Stronghold - Second Chest:
   Can Access Lanayru Sand Sea
 
 Lanayru Sand Sea - Pirate Stronghold - Third Chest:
+  Can Access Lanayru Sand Sea
+
+Lanayru Sand Sea - Pirate Stronghold - Ancient Flower Farming:
   Can Access Lanayru Sand Sea
 
 Goddess Cube in Pirate Stronghold:

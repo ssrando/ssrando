@@ -1188,6 +1188,14 @@ F004r: # Bazaar
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Patch Scrapper Junk Despawn Flag
+    type: objpatch
+    id: 0xFC74
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0x285FFCFF # >> 21 == 322
 F005r: # Orielle and Parrow's House
   - name: Always Spawn Parrow
     type: objpatch
