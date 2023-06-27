@@ -34,8 +34,6 @@ GOT_OPENING_REQUIREMENT = EIN("GoT Opening Requirement")
 GOT_RAISING_REQUIREMENT = EIN("GoT Raising Requirement")
 HORDE_DOOR_REQUIREMENT = EIN("Horde Door Requirement")
 
-CRYSTAL_THRESHOLDS = [5, 10, 30, 40, 50, 70, 80]
-
 LOGIC_OPTIONS = dict.fromkeys(
     [
         OPEN_THUNDERHEAD_OPTION,

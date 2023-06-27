@@ -85,7 +85,6 @@ class Rando:
         runtime_requirements = (
             self.logic_options_requirements
             | self.endgame_requirements
-            | self.ban_options
             | {i: DNFInventory(True) for i in self.placement.starting_items}
             | self.no_logic_requirements
         )
@@ -238,11 +237,6 @@ class Rando:
         self.placement.add_starting_items(starting_items)
 
     def ban_the_banned(self):
-        banned_req = DNFInventory(BANNED_BIT)
-        nothing_req = DNFInventory(True)
-        maybe_req = lambda b: banned_req if b else nothing_req
-        self.ban_options = {}
-
         self.banned: List[EIN] = []
         self.banned.extend(map(self.norm, self.options["excluded-locations"]))
 
@@ -564,6 +558,12 @@ class Rando:
         trial_entrances = [self.norm(TRIAL_GATE_EXITS[k]) for k in gates]
         trials = [self.norm(SILENT_REALM_EXITS[k]) for k in pool]
         self.reassign_entrances(trial_entrances, trials)
+        
+        # Ugly patch for needlessly useful songs : remove the trial exits from logic
+        for trial_exit in trials:
+            self.placement.map_transitions[trial_exit] = EIN(
+                entrance_of_exit(trial_exit)
+            )
 
         # Starting Entrance Rando.
         ser = self.options["random-start-entrance"]

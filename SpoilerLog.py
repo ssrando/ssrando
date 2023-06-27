@@ -65,15 +65,19 @@ def write(
 
     sots_locations = {
         goal: sorted(
-            ((placement.items[item], item) for item in items),
-            key=lambda c: sorted_checks.index(c[0]),
+            ((norm(placement.items[item]), item) for item in items),
+            key=lambda c: sorted_checks.index(placement.items[c[1]]),
         )
         for goal, items in sots_items.items()
     }
 
+    max_location_name_length = 2 + max(
+        (len(loc) for goal_locs in sots_locations.values() for loc, _ in goal_locs),
+        default=0,
+    )
+
     for loc, item in sots_locations[DEMISE]:
-        location = norm(loc) + ":"
-        file.write(f"  {location:53} {item}\n")
+        file.write(f"  {loc + ':':{max_location_name_length}} {item}\n")
 
     file.write("\n\n")
 
@@ -83,8 +87,7 @@ def write(
         goal = DUNGEON_GOALS[dungeon]
         file.write(f"{goal}:\n")
         for loc, item in sots_locations[goal]:
-            location = norm(loc) + ":"
-            file.write(f"  {location:53} {item}\n")
+            file.write(f"  {loc + ':':{max_location_name_length}} {item}\n")
 
     file.write("\n\n")
 
@@ -124,8 +127,8 @@ def write(
             ],
         )
 
-    max_location_name_length = 1 + max(
-        len(loc) for sphere in prettified_spheres for _, loc, _ in sphere
+    max_location_name_length = 2 + max(
+        (len(loc) for sphere in prettified_spheres for _, loc, _ in sphere), default=0
     )
 
     for i, progression_sphere in enumerate(prettified_spheres, start=1):
@@ -161,7 +164,9 @@ def write(
         (reg, remove_prefix(reg, norm(loc)), item) for (reg, loc, item) in with_regions
     ]
 
-    max_location_name_length = 1 + max(len(loc) for _, loc, _ in with_regions)
+    max_location_name_length = 1 + max(
+        (len(loc) for _, loc, _ in with_regions), default=0
+    )
 
     for zone_name, locations_in_zone in itertools.groupby(with_regions, lambda x: x[0]):
         file.write(zone_name + ":\n")
@@ -196,14 +201,24 @@ def write(
 
     # Write hints.
     file.write("Hints:\n")
+
+    max_hintstone_name_length = 2 + max(
+        (
+            len(norm(hintloc))
+            for hintloc, hint_stone in hints.items()
+            if not isinstance(hint_stone, GossipStoneHintWrapper)
+        ),
+        default=0,
+    )
+
     for hintloc, hint_stone in hints.items():
         if isinstance(hint_stone, GossipStoneHintWrapper):
             file.write(f"  {norm(hintloc)+':'}\n")
             for hint in hint_stone.hints:
-                file.write(f"  {'':48} {hint.to_spoiler_log_text(norm)}\n")
+                file.write(f"        {hint.to_spoiler_log_text(norm)}\n")
         else:
             file.write(
-                f"  {norm(hintloc)+':':48} {hint_stone.to_spoiler_log_text(norm)}\n"
+                f"  {norm(hintloc) + ':':{max_hintstone_name_length}} {hint_stone.to_spoiler_log_text(norm)}\n"
             )
 
     file.write("\n\n\n")
