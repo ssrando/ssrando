@@ -205,6 +205,7 @@ LIFE_TREE_FRUIT = EIN("Life Tree Fruit")
 TRIFORCE_OF_COURAGE = EIN("Triforce of Courage")
 TRIFORCE_OF_WISDOM = EIN("Triforce of Wisdom")
 TRIFORCE_OF_POWER = EIN("Triforce of Power")
+SCRAPPER = EIN("Scrapper")
 
 GRATITUDE_CRYSTAL_PACK = "Gratitude Crystal Pack"
 GRATITUDE_CRYSTAL = "Gratitude Crystal"
@@ -359,6 +360,7 @@ PROGRESS_ITEMS = (
             TRIFORCE_OF_WISDOM,
             TRIFORCE_OF_POWER,
             # SAILCLOTH,
+            SCRAPPER,
         ]
     )
     | GRATITUDE_CRYSTAL_PACKS
@@ -805,6 +807,7 @@ ITEM_FLAGS = {
     GRATITUDE_CRYSTAL_PACK: 35,
     HYLIAN_SHIELD: 125,
     EMPTY_BOTTLE: 153,
+    SCRAPPER: 215,
     # SAILCLOTH: 15,
 }
 
@@ -830,6 +833,7 @@ ITEM_STORY_FLAGS = {
     TRIFORCE_OF_WISDOM: 730,
     COMPLETE_TRIFORCE: 645,
     FULL_ET_KEY: 120,
+    SCRAPPER: 323,
     PROGRESSIVE_SWORD: [
         906,
         907,

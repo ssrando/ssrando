@@ -124,6 +124,7 @@ Central Skyloft:
       South Exit: Nothing
     locations:
       Potion Lady's Gift: Nothing
+      Repair Gondo's Junk: Ancient Flower Farming
       Bazaar Goddess Chest: Lanayru - Goddess Cube in Ancient Harbour
       Endurance Potion: Bottle & Lanayru - Raise Lanayru Mining Facility
       Talk to Peatrice: Nothing
@@ -137,12 +138,12 @@ Central Skyloft:
         Upgrade to Quick Beetle:
           $ Hook Beetle &
           Faron - Deep Woods - Hornet Larvae Farming &
-          Lanayru - Mine - Ancient Flower Farming &
+          General - Ancient Flower Farming &
           Sky - Clean Cut Minigame # Golden Skull farming
         Upgrade to Tough Beetle:
           $ Quick Beetle &
           Faron - Faron Woods - Amber Relic Farming &
-          Lanayru - Mine - Ancient Flower Farming &
+          General - Ancient Flower Farming &
           Sky - Clean Cut Minigame # Goddess Plumes / Blue Bird Feathers farming
 
   Orielle and Parrow's House:

@@ -288,11 +288,15 @@ mflr r0
 stw r0, 0x14(r1) ; Save LR
 stw r4, 0x8(r1) ; save matrix ptr
 lhz r0, 0xd44(r31) ; Get item id
-cmpwi r0, 214 ; check if tadtone
-bne exit ; if not tadone, go as normal
 
-lwz r12, 0x8b8(r31)
-addi r3, r31, 0x8b8
+cmpwi r0, 214 ; check if tadtone
+beq change_item_get_props
+cmpwi r0, 215 ; check if Scrapper
+bne exit ; if not, go as normal
+
+change_item_get_props:
+lwz r12, 0x8b8(r31) ; AcItem + 0x8b8 = ActorStateManager
+addi r3, r31, 0x8b8 ; ActorStateManager in r3
 lwz r12, 0x28(r12)
 mtctr r12
 bctrl ; Calls Get Current State ID
@@ -311,7 +315,17 @@ fadds f1, f1, f0
 stfs f1, 0x1c(r4)
 
 ; change scale
-lfs f0, -0x2ba8(r2) ; 0.5
+cmpwi r3, 0 ; is Scrapper
+; bne change_scrapper_scale_factor
+
+; tadtone scale factor
+lfs f0, -0x2ba8(r2) ; 0.5  0x8057be18
+b change_scale
+
+change_scrapper_scale_factor:
+lfs f0, -0x27d8(r2) ; 0.3  0x8057c1e8
+
+change_scale:
 lfs f1, 0xcc(r31)
 fmuls f1, f1, f0
 stfs f1, 0xcc(r31)
@@ -329,6 +343,16 @@ lwz r0, 0x14(r1)
 mtlr r0 ; return LR to normal
 addi r1, r1, 0x10 ; return SP
 blr
+
+
+.global check_scrapper_repaired
+check_scrapper_repaired:
+cmpwi r3, 0 ; check quest started flag
+beqlr
+
+li r4, 323 ; scrapper repaired storyflag
+b checkStoryflagIsSet
+
 
 ; space to declare all the functions defined in the
 ; custom-functions rust project
