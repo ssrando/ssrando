@@ -2,7 +2,7 @@ allowed-time-of-day: DayOnly
 macros:
   All Three Nodes: LMF Nodes On option | (North Part - Water Node & Lightning Node - Lightning Node & East - Fire Node - Fire Node)
   Raise Lanayru Mining Facility: Open LMF option | Desert - North Part - Activate Master Generator
-  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick
+  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
 
 Mine:
   toplevel-alias: Lanayru Mine
@@ -36,14 +36,14 @@ Mine:
   Statues Area:
     exits:
       Entry: Nothing
-      End: Blow Statues Down | Lanayru Mine Brakeslide Trick
+      End: Blow Statues Down | Lanayru Mine Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
     locations:
       Blow Statues Down: Bomb Bag | Hook Beetle
       Chest behind Statue: Blow Statues Down
 
   End:
     exits:
-      Statues Area: Statues Area - Blow Statues Down | Lanayru Mine Brakeslide Trick
+      Statues Area: Statues Area - Blow Statues Down | Lanayru Mine Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
     locations:
       Blow up Rock on Track: Nothing
       Chest at the End of Mine: Nothing # There's a baba in the way
@@ -86,8 +86,8 @@ Desert:
       Entry: Nothing
       Top of West Wall: Clawshots
       Top of LMF: Raise Lanayru Mining Facility
-      East: Temple of Time Skip - Brakeslide Trick | East - Open Wall Shortcut | Clawshots
-      Sand Oasis: Blow Statues to Sand Oasis Down | (Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick)
+      East: Temple of Time Skip - Brakeslide Trick | East - Open Wall Shortcut | Clawshots | Central Skyloft - Bazaar - Endurance Potion
+      Sand Oasis: Blow Statues to Sand Oasis Down | (Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick) | Central Skyloft - Bazaar - Endurance Potion
     locations:
       Chest near Hook Beetle Fight: Nothing
       Goddess Cube near Hook Beetle Fight: Long Range Skyward Strike # Also accessible elsewhere
@@ -101,7 +101,8 @@ Desert:
     exits:
       Near Hook Beetle Fight:
         Near Hook Beetle Fight - Blow Statues to Sand Oasis Down |
-        (Near Hook Beetle Fight - Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick)
+        (Near Hook Beetle Fight - Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick) |
+        Central Skyloft - Bazaar - Endurance Potion
       Top of West Wall: Clawshots | Top of West Wall - Push Minecart
       West Part: Can Navigate in Oasis | West Part - Push Minecart
     locations:
