@@ -558,7 +558,7 @@ class Rando:
         trial_entrances = [self.norm(TRIAL_GATE_EXITS[k]) for k in gates]
         trials = [self.norm(SILENT_REALM_EXITS[k]) for k in pool]
         self.reassign_entrances(trial_entrances, trials)
-        
+
         # Ugly patch for needlessly useful songs : remove the trial exits from logic
         for trial_exit in trials:
             self.placement.map_transitions[trial_exit] = EIN(
