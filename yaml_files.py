@@ -4,9 +4,21 @@ from pathlib import Path
 import yaml
 
 
+# from: https://gist.github.com/pypt/94d747fe5180851196eb?permalink_comment_id=4015118#gistcomment-4015118
+class UniqueKeyLoader(yaml.SafeLoader):
+    def construct_mapping(self, node, deep=False):
+        mapping = set()
+        for key_node, value_node in node.value:
+            key = self.construct_object(key_node, deep=deep)
+            if key in mapping:
+                raise ValueError(f"Duplicate {key!r} key found in YAML.")
+            mapping.add(key)
+        return super().construct_mapping(node, deep)
+
+
 def yaml_load(file_path: Path):
     with file_path.open("r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
+        return yaml.load(f, UniqueKeyLoader)
 
 
 beedle_texts_file = RANDO_ROOT_PATH / "beedle_texts.yaml"
