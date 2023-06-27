@@ -11,11 +11,6 @@ def extended_item_generator():
     # Technical dummy events
     yield from sorted(INVENTORY_ITEMS)
 
-    for option in options:
-        if option["name"].startswith("Enabled Tricks"):
-            for trick in option["choices"]:
-                yield f"{trick} Trick"
-
     for i in range(MAX_STONE_HINTS + MAX_FI_HINTS):
         yield number(HINT, i)
 
