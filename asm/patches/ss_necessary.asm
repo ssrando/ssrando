@@ -908,6 +908,7 @@ nop
 
 .close
 
+
 .open "d_lyt_file_selectNP.rel"
 
 ; text0: 0x80ec54e0
@@ -946,62 +947,6 @@ nop
 .word 645 ; Collected all Triforces (beaten Sky Keep)
 .word 134 ; Defeated the Horde
 .word 486 ; Defeated Ghirahim 3
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
-.word -1
 .word -1
 
 .close
