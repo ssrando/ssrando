@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.4.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1836,7 +1836,7 @@ class Ui_MainWindow(object):
         self.label_for_sword_dungeon_reward.setText(QCoreApplication.translate("MainWindow", u"Sword Dungeon Reward", None))
         self.option_randomize_boss_key_puzzles.setText(QCoreApplication.translate("MainWindow", u"Randomize Boss Key Puzzles", None))
         self.label_for_dungeon_patches.setText(QCoreApplication.translate("MainWindow", u"Dungeon Convenience Patches", None))
-        self.option_fs_lava_flow.setText(QCoreApplication.translate("MainWindow", u"Start w/ FS Lava Flowing", None))
+        self.option_fs_lava_flow.setText(QCoreApplication.translate("MainWindow", u"Skip Fire Sanctuary Lava Chase", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_randomization_settings), QCoreApplication.translate("MainWindow", u"Randomization Settings", None))
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
