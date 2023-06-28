@@ -1418,6 +1418,7 @@ class GamePatcher:
         if self.placement_file.options["shopsanity"]:
             self.shopsanity_patches()
         self.do_build_arc_cache()
+        self.add_peatrice_storyflags()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
         self.add_fi_text_patches()
@@ -1860,6 +1861,27 @@ class GamePatcher:
 
         extracts = yaml_load(RANDO_ROOT_PATH / "extracts.yaml")
         self.patcher.create_oarc_cache(extracts)
+
+    def add_peatrice_storyflags(self):
+        # Peatrice convo count.
+        peatrice_convo_count = self.placement_file.options["peatrice-conversations"]
+
+        # Peatrice switch.
+        if peatrice_convo_count % 2 == 1:
+            self.startstoryflags.append(631)
+
+        # Peatrice even convos.
+        if peatrice_convo_count <= 4:
+            self.startstoryflags.append(628)
+            self.startstoryflags.append(689)
+
+        if peatrice_convo_count <= 2:
+            self.startstoryflags.append(629)
+            self.startstoryflags.append(690)
+
+        if peatrice_convo_count == 0:
+            self.startstoryflags.append(630)
+            self.startstoryflags.append(691)
 
     def add_startitem_patches(self):
         # Add sword story/itemflags if required
@@ -3060,11 +3082,6 @@ class GamePatcher:
         ## Next 5 bits for starting Tadtones.
         additional_start_options_2 = additional_start_options_2 | (
             self.starting_tadtones << 4
-        )
-
-        ## Next 3 bits for Peatrice convo count.
-        additional_start_options_2 = additional_start_options_2 | (
-            self.placement_file.options["peatrice-conversations"] << 9
         )
 
         start_flags_write.write(struct.pack(">H", additional_start_options_2))
