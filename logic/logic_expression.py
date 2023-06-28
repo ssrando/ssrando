@@ -372,15 +372,19 @@ class CounterThreshold(Requirement):
     def night_only(self):
         return self
 
-    def __or__(self, other) -> CounterThreshold:
+    def __or__(self, other) -> Requirement:
         if isinstance(other, CounterThreshold) and other.target == self.target:
             return CounterThreshold(self.target, min(self.threshold, other.threshold))
+        elif isinstance(other, EmptyReq):
+            return other
         else:
             raise ValueError
 
-    def __and__(self, other) -> CounterThreshold:
+    def __and__(self, other) -> Requirement:
         if isinstance(other, CounterThreshold) and other.target == self.target:
             return CounterThreshold(self.target, max(self.threshold, other.threshold))
+        elif isinstance(other, ImpossibleReq):
+            return other
         else:
             raise ValueError
 
