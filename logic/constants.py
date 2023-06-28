@@ -25,6 +25,7 @@ TALK_TO_YERBAL_OPTION = EIN("Talk to Yerbal option")
 VANILLA_LAKE_FLORIA_OPTION = EIN("Vanilla Lake Floria option")
 OPEN_LAKE_FLORIA_OPTION = EIN("Open Lake Floria option")
 RANDOMIZED_BEEDLE_OPTION = EIN("Randomized Beedle option")
+RANDOMIZED_RUPIN_OPTION = EIN("Randomized Rupin option")
 GONDO_UPGRADES_ON_OPTION = EIN("Gondo Upgrades On option")
 NO_BIT_CRASHES = EIN("No BiT crashes")
 NONLETHAL_HOT_CAVE = EIN("Nonlethal Hot Cave")
@@ -46,6 +47,7 @@ LOGIC_OPTIONS = dict.fromkeys(
         VANILLA_LAKE_FLORIA_OPTION,
         OPEN_LAKE_FLORIA_OPTION,
         RANDOMIZED_BEEDLE_OPTION,
+        RANDOMIZED_RUPIN_OPTION,
         GONDO_UPGRADES_ON_OPTION,
         NO_BIT_CRASHES,
         NONLETHAL_HOT_CAVE,
@@ -260,21 +262,30 @@ BOSS_KEYS = {
 }
 
 WOODEN_SHIELD = EIN("Wooden Shield")
+IRON_SHIELD = EIN("Iron Shield")
+SACRED_SHIELD = EIN("Sacred Shield")
 HYLIAN_SHIELD = EIN("Hylian Shield")
 CURSED_MEDAL = EIN("Cursed Medal")
 TREASURE_MEDAL = EIN("Treasure Medal")
 POTION_MEDAL = EIN("Potion Medal")
-SMALL_SEED_SATCHEL = EIN("Small Seed Satchel")
-SMALL_BOMB_BAG = EIN("Small Bomb Bag")
-SMALL_QUIVER = EIN("Small Quiver")
 BUG_MEDAL = EIN("Bug Medal")
+TEN_ARROWS = EIN("10 Arrows")
+TEN_BOMBS = EIN("10 Bombs")
+TEN_DEKU_SEEDS = EIN("10 Deku Seeds")
 
+
+SMALL_QUIVER = "Small Quiver"
+SMALL_SEED_SATCHEL = "Small Seed Satchel"
+SMALL_BOMB_BAG = "Small Bomb Bag"
 HEART_MEDAL = "Heart Medal"
 RUPEE_MEDAL = "Rupee Medal"
 HEART_PIECE = "Heart Piece"
 HEART_CONTAINER = "Heart Container"
 LIFE_MEDAL = "Life Medal"
 
+SMALL_QUIVERS = group(SMALL_QUIVER, 2)
+SMALL_SEED_SATCHELS = group(SMALL_SEED_SATCHEL, 2)
+SMALL_BOMB_BAGS = group(SMALL_BOMB_BAG, 2)
 HEART_MEDALS = group(HEART_MEDAL, 2)
 RUPEE_MEDALS = group(RUPEE_MEDAL, 2)
 HEART_PIECES = group(HEART_PIECE, 24)
@@ -368,16 +379,21 @@ NONPROGRESS_ITEMS = (
     dict.fromkeys(
         [
             WOODEN_SHIELD,
+            IRON_SHIELD,
+            SACRED_SHIELD,
             HYLIAN_SHIELD,
             CURSED_MEDAL,
             TREASURE_MEDAL,
             POTION_MEDAL,
-            SMALL_SEED_SATCHEL,
-            SMALL_BOMB_BAG,
-            SMALL_QUIVER,
             BUG_MEDAL,
+            TEN_ARROWS,
+            TEN_BOMBS,
+            TEN_DEKU_SEEDS,
         ]
     )
+    | SMALL_SEED_SATCHELS
+    | SMALL_BOMB_BAGS
+    | SMALL_QUIVERS
     | HEART_MEDALS
     | RUPEE_MEDALS
     | HEART_PIECES
@@ -531,6 +547,7 @@ CENTRAL_SKYLOFT = "Central Skyloft"
 SKYLOFT_VILLAGE = "Skyloft Village"
 BATREAUX = "Batreaux's House"
 BEEDLE = "Beedle's Shop"
+RUPIN = "Rupin's Shop"
 
 SKY = "Sky"
 THUNDERHEAD = "Thunderhead"
@@ -558,6 +575,7 @@ ALL_HINT_REGIONS = dict.fromkeys(
         SKYLOFT_VILLAGE,
         BATREAUX,
         BEEDLE,
+        RUPIN,
         SKY,
         THUNDERHEAD,
         SEALED_GROUNDS,
@@ -899,9 +917,9 @@ LOCATION_FILTER_TYPES = (
     "Combat",
     "Minigames",
     "Beedle's Shop Purchases",
-    "Beedle's Shop Purchase (Cheap)",
-    "Beedle's Shop Purchase (Medium)",
-    "Beedle's Shop Purchase (Expensive)",
+    "Shop Purchases (Cheap)",
+    "Shop Purchases (Medium)",
+    "Shop Purchases (Expensive)",
     "Batreaux's Rewards",
     "Loose Crystals",
     "Gratitude Crystal Sidequests",

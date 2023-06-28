@@ -72,14 +72,23 @@ Tycoon Wallet:
 3 Extra Wallets:
   Extra Wallet x 3
 
+Can Afford 20 Rupees:
+  Nothing
+
 Can Afford 50 Rupees:
   Nothing
 
 Can Afford 100 Rupees:
   Nothing
 
+Can Afford 150 Rupees:
+  Nothing
+
 Can Afford 300 Rupees:
   Can Medium Rupee Farm
+
+Can Afford 500 Rupees:
+  Can Medium Rupee Farm & (Medium Wallet | 1 Extra Wallet)
 
 Can Afford 600 Rupees:
   Can High Rupee Farm & (1 Extra Wallet | Big Wallet)

@@ -79,6 +79,19 @@ BEEDLE_CHECKS = [
 ]
 VANILLA_BEEDLE_PLACEMENT = norm_force_vanilla(BEEDLE_CHECKS)
 
+RUPIN_CHECKS = [
+    "Central Skyloft - Rupin's Shop - 1st 150 Rupee Item",
+    "Central Skyloft - Rupin's Shop - 1st 100 Rupee Item",
+    "Central Skyloft - Rupin's Shop - 2nd 150 Rupee Item",
+    "Central Skyloft - Rupin's Shop - 1st 20 Rupee Item",
+    "Central Skyloft - Rupin's Shop - 2nd 20 Rupee Item",
+    "Central Skyloft - Rupin's Shop - 3rd 20 Rupee Item",
+    "Central Skyloft - Rupin's Shop - 50 Rupee Item",
+    "Central Skyloft - Rupin's Shop - 2nd 100 Rupee Item",
+    "Central Skyloft - Rupin's Shop - 500 Rupee Item",
+]
+VANILLA_RUPIN_PLACEMENT = norm_force_vanilla(RUPIN_CHECKS)
+
 SMALL_KEY_CHECKS = [
     "Skyview - Chest behind Two Eyes",
     "Skyview - Chest behind Three Eyes",

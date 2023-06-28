@@ -80,6 +80,24 @@ New Trial Completed Storyflags:
 
 953: Group of Tadtones Counter
 
+960: Bought Rupin's 2nd 20R item
+
+961: Bought Rupin's 3rd 20R item
+
+962: Bought Rupin's 50R item
+
+963: Bought Rupin's 2nd 100R item
+
+964: Bought Rupin's 500R item
+
+965: Bought Rupin's 1st 20R item
+
+966: Bought Rupin's 1st 100R item
+
+967: Bought Rupin's 1st 150R item
+
+968: Bought Rupin's 2nd 150R item
+
 Sceneflags  
 
 Ancient Cistern:  

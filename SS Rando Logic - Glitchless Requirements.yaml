@@ -111,14 +111,23 @@ Bottle:
 
 # Can afford
 
+Can Afford 20 Rupees:
+  Nothing
+
 Can Afford 50 Rupees:
   Nothing
 
 Can Afford 100 Rupees:
   Nothing
 
+Can Afford 150 Rupees:
+  Nothing
+
 Can Afford 300 Rupees:
   Can Medium Rupee Farm
+
+Can Afford 500 Rupees:
+  Can Medium Rupee Farm & (Extra Wallet x1 | Medium Wallet)
 
 Can Afford 600 Rupees:
   Can High Rupee Farm & (Extra Wallet x1 | Big Wallet)
@@ -418,17 +427,17 @@ Can Access Beedle's Shop:
 Beedle's Shop - 300 Rupee Item:
   Can Access Beedle's Shop &
   Can Afford 300 Rupees &
-  (Progressive Pouch x1 | Option "shopsanity" Enabled)
+  (Progressive Pouch x1 | Option "beedle-shopsanity" Enabled)
 
 Beedle's Shop - 600 Rupee Item:
   Can Access Beedle's Shop &
   Can Afford 600 Rupees &
-  (Progressive Pouch x1 | Option "shopsanity" Enabled)
+  (Progressive Pouch x1 | Option "beedle-shopsanity" Enabled)
 
 Beedle's Shop - 1200 Rupee Item:
   Can Access Beedle's Shop &
   Can Afford 1200 Rupees &
-  (Progressive Pouch x1 | Option "shopsanity" Enabled)
+  (Progressive Pouch x1 | Option "beedle-shopsanity" Enabled)
 
 ### Left
 
@@ -457,6 +466,35 @@ Beedle's Shop - 50 Rupee Item:
 
 Beedle's Shop - 1000 Rupee Item:
   Can Access Beedle's Shop & Can Afford 1000 Rupees
+
+## Rupin's Shop
+
+Central Skyloft - Rupin's Shop - 1st 150 Rupee Item:
+  Can Afford 150 Rupees
+
+Central Skyloft - Rupin's Shop - 1st 100 Rupee Item:
+  Can Afford 100 Rupees
+
+Central Skyloft - Rupin's Shop - 2nd 150 Rupee Item:
+  Can Afford 150 Rupees
+
+Central Skyloft - Rupin's Shop - 1st 20 Rupee Item:
+  Can Afford 20 Rupees
+
+Central Skyloft - Rupin's Shop - 2nd 20 Rupee Item:
+  Can Afford 20 Rupees
+
+Central Skyloft - Rupin's Shop - 3rd 20 Rupee Item:
+  Can Afford 20 Rupees
+
+Central Skyloft - Rupin's Shop - 50 Rupee Item:
+  Can Afford 50 Rupees
+
+Central Skyloft - Rupin's Shop - 2nd 100 Rupee Item:
+  Can Afford 100 Rupees
+
+Central Skyloft - Rupin's Shop - 500 Rupee Item:
+  Can Afford 500 Rupees
 
 ## Batreaux Rewards
 

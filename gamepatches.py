@@ -25,7 +25,7 @@ from musicrando import music_rando
 from logic.bool_expression import check_static_option_req
 from logic.constants import *
 from logic.placement_file import PlacementFile
-from yaml_files import yaml_load
+from yaml_files import yaml_load, shop_texts
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
 
@@ -324,7 +324,9 @@ TRIAL_COMPLETE_STORYFLAGS = {
     LANAYRU_TRIAL_GATE: 0x399,
 }
 
-BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
+SHOP_TEXT_PATCHES = { 
+    # Beedle
+    ## (undiscounted, discounted, normal price, discounted price)
     "Beedle - 50 Rupee Item": (25, 26, 50, 25),
     "Beedle - First 100 Rupee Item": (23, 24, 100, 50),
     "Beedle - Second 100 Rupee Item": (
@@ -345,9 +347,22 @@ BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted p
     "Beedle - 1000 Rupee Item": (33, 34, 1000, 500),
     "Beedle - 1200 Rupee Item": (31, 32, 1200, 600),
     "Beedle - 1600 Rupee Item": (21, 22, 1600, 800),
+
+    # Rupin
+    ## location: (text index, price)
+    "Rupin - 2nd 20 Rupee Item": (28, 20),
+    "Rupin - 3rd 20 Rupee Item": (30, 20),
+    "Rupin - 50 Rupee Item": (32, 50),
+    "Rupin - 2nd 100 Rupee Item": (33, 100),
+    "Rupin - 500 Rupee Item": (34, 500),
+    "Rupin - 1st 20 Rupee Item": (35, 20),
+    "Rupin - 1st 100 Rupee Item": (38, 100),
+    "Rupin - 1st 150 Rupee Item": (37, 150),
+    "Rupin - 2nd 150 Rupee Item": (39, 150),
 }
 
-BEEDLE_BUY_SWTICH = "[1]I'll buy it![2-]No, thanks."
+BEEDLE_BUY_SWITCH = "[1]I'll buy it![2-]No, thanks."
+RUPIN_BUY_SWITCH = "[1]OK! [2-]No, thanks."
 
 DEFAULT_HEIGHT_OFFSET = -25.0
 DEFAULT_BUY_DECIDE_SCALE = 1.5
@@ -1414,8 +1429,7 @@ class GamePatcher:
         self.load_base_patches()
         self.add_entrance_rando_patches()
         self.add_trial_rando_patches()
-        if self.placement_file.options["shopsanity"]:
-            self.shopsanity_patches()
+        self.shopsanity_patches()
         self.do_build_arc_cache()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
@@ -1511,7 +1525,7 @@ class GamePatcher:
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("custom_items")
         self.add_asm_patch("post_boko_base_platforms")
-        if self.placement_file.options["shopsanity"]:
+        if self.placement_file.options["beedle-shopsanity"] or self.placement_file.options["rupin-shopsanity"]:
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
         if self.placement_file.options["bit-patches"] == "Disable BiT":
@@ -1786,65 +1800,97 @@ class GamePatcher:
             )
 
     def shopsanity_patches(self):
-        beedle_texts = yaml_load(Path(__file__).parent / "beedle_texts.yaml")
-        # print(beedle_texts)
-        for location in BEEDLE_TEXT_PATCHES:
-            normal, discounted, normal_price, discount_price = BEEDLE_TEXT_PATCHES[
-                location
-            ]
-            sold_item = self.placement_file.item_locations[
-                self.areas.short_to_full(location)
-            ]
-            sold_item = strip_item_number(sold_item)
-            normal_text = (
-                break_lines(
-                    f"That there is a <y<{sold_item}>>. "
-                    f"I'm selling it for only <r<{normal_price}>> rupees! "
-                    f"Want to buy it?\n"
+        for location in SHOP_TEXT_PATCHES:
+            if location.startswith("Beedle") and self.placement_file.options["beedle-shopsanity"]:
+                normal, discounted, normal_price, discount_price = SHOP_TEXT_PATCHES[
+                    location
+                ]
+                sold_item = self.placement_file.item_locations[
+                    self.areas.short_to_full(location)
+                ]
+                sold_item = strip_item_number(sold_item)
+                normal_text = (
+                    break_lines(
+                        f"That there is a <y<{sold_item}>>. "
+                        f"I'm selling it for only <r<{normal_price} Rupees>>! "
+                        f"Want to buy it?\n"
+                    )
+                    + f"\n{BEEDLE_BUY_SWITCH}"
                 )
-                + f"\n{BEEDLE_BUY_SWTICH}"
-            )
-            discount_text = (
-                break_lines(
-                    f"That there is a <y<{sold_item}>>. "
-                    f"Just this once it's half off! "
-                    f"It can be yours for just <r<{discount_price}>> rupees! "
-                    f"Want to buy it?"
+                discount_text = (
+                    break_lines(
+                        f"That there is a <y<{sold_item}>>. "
+                        f"Just this once it's half off! "
+                        f"It can be yours for just <r<{discount_price} Rupees>>! "
+                        f"Want to buy it?"
+                    )
+                    + f"\n{BEEDLE_BUY_SWITCH}"
                 )
-                + f"\n{BEEDLE_BUY_SWTICH}"
-            )
-            if location in beedle_texts:
-                if sold_item in beedle_texts[location]:
-                    # item has custom text for Beedle's shop
-                    normal_text = f'{beedle_texts[location][sold_item]["normal"]}{BEEDLE_BUY_SWTICH}'
-                    discount_text = f'{beedle_texts[location][sold_item]["discount"]}{BEEDLE_BUY_SWTICH}'
+                if location in shop_texts:
+                    if sold_item in shop_texts[location]:
+                        # item has custom text for Beedle's shop
+                        normal_text = f'{shop_texts[location][sold_item]["normal"]}{BEEDLE_BUY_SWITCH}'
+                        discount_text = f'{shop_texts[location][sold_item]["discount"]}{BEEDLE_BUY_SWITCH}'
 
-            if isinstance(normal, int):  # string index is new text
-                self.eventpatches["105-Terry"].append(
-                    {
-                        "name": f"{location} Text",
-                        "type": "textpatch",
-                        "index": normal,
-                        "text": normal_text,
-                    }
+                if isinstance(normal, int):  # string index is new text
+                    self.eventpatches["105-Terry"].append(
+                        {
+                            "name": f"{location} Text",
+                            "type": "textpatch",
+                            "index": normal,
+                            "text": normal_text,
+                        }
+                    )
+                else:
+                    self.eventpatches["105-Terry"].append(
+                        {"name": normal, "type": "textadd", "text": normal_text}
+                    )
+                if isinstance(discounted, int):
+                    self.eventpatches["105-Terry"].append(
+                        {
+                            "name": f"{location} Discount Text",
+                            "type": "textpatch",
+                            "index": discounted,
+                            "text": discount_text,
+                        }
+                    )
+                else:
+                    self.eventpatches["105-Terry"].append(
+                        {"name": discounted, "type": "textadd", "text": discount_text}
+                    )
+            elif location.startswith("Rupin") and self.placement_file.options["rupin-shopsanity"]:
+                text_index, price = SHOP_TEXT_PATCHES[location]
+                sold_item = self.placement_file.item_locations[
+                    self.areas.short_to_full(location)
+                ]
+                sold_item = strip_item_number(sold_item)
+                rupin_text = (
+                    break_lines(
+                        f"You've got quite an eye, friend. That "
+                        f"there is a <y<{sold_item}>>."
+                        f"It cost a mere <r<{price} Rupees>>."
+                        f"{RUPIN_BUY_SWITCH}"
+                    )
                 )
-            else:
-                self.eventpatches["105-Terry"].append(
-                    {"name": normal, "type": "textadd", "text": normal_text}
-                )
-            if isinstance(discounted, int):
-                self.eventpatches["105-Terry"].append(
-                    {
-                        "name": f"{location} Discount Text",
-                        "type": "textpatch",
-                        "index": discounted,
-                        "text": discount_text,
-                    }
-                )
-            else:
-                self.eventpatches["105-Terry"].append(
-                    {"name": discounted, "type": "textadd", "text": discount_text}
-                )
+
+                if location in shop_texts:
+                    if sold_item in shop_texts[location]:
+                        # item has custom text for Rupin's shop
+                        rupin_text = f'{shop_texts[location][sold_item]["text"]}{RUPIN_BUY_SWITCH}'
+
+                if isinstance(text_index, int):  # string index is new text
+                    self.eventpatches["101-Shop"].append(
+                        {
+                            "name": f"{location} Text",
+                            "type": "textpatch",
+                            "index": text_index,
+                            "text": rupin_text,
+                        }
+                    )
+                else:
+                    self.eventpatches["101-Shop"].append(
+                        {"name": text_index, "type": "textadd", "text": rupin_text}
+                    )
 
     def do_build_arc_cache(self):
         self.progress_callback("building arc cache...")
@@ -3032,7 +3078,10 @@ class GamePatcher:
             apply_rel_patch(self, rel, file, codepatches)
             if (
                 file == "d_a_shop_sampleNP.rel"
-                and self.placement_file.options["shopsanity"]
+                and (
+                    self.placement_file.options["beedle-shopsanity"]
+                    or self.placement_file.options["rupin-shopsanity"]
+                )
             ):
                 self.do_shoptable_rel_patch(rel)
             rel.save_changes()
@@ -3052,22 +3101,48 @@ class GamePatcher:
         shop_item_next_patches = {
             24: 17,
             17: 18,
+            # Rupin shop items
+            9: 0, # arrows
+            10: 1, # bombs
+            11: 2, # wood shield
+            12: 3, # iron shield
+            13: 4, # sacred shield
+            14: 5, # seeds
+            15: 6, # small satchel
+            16: 7, # small quiver
+            19: 8, # small bomb bag
         }
         shop_price_patches = {
             17: 100,
             18: 100,
+            # Rupin shop items
+            9: 20, # arrows
+            10: 20, # bombs
+            11: 50, # wood shield
+            12: 100, # iron shield
+            13: 500, # sacred shield
+            14: 20, # seeds
+            15: 100, # small satchel
+            16: 150, # small quiver
+            19: 150, # small bomb bag
         }
         shop_entrypoint_patches = {
             17: 10539,
             18: 10540,
         }
-        shop_present_scale_patches = {
-            17: 1.2,
-            18: 1.2,
-        }
         shop_target_height_patches = {
             17: 100,
             18: 100,
+            # Rupin shop items
+            9: 100, # arrows
+            10: 100, # bombs
+            11: 100, # wood shield
+            12: 100, # iron shield
+            13: 100, # sacred shield
+            14: 100, # seeds
+            15: 100, # small satchel
+            16: 100, # small quiver
+            19: 100, # small bomb bag
         }
         sold_out_storyflag_patches = {
             24: 937,
@@ -3075,6 +3150,16 @@ class GamePatcher:
             18: 939,
             25: 940,  # bug net
             27: 941,  # bug medal
+            # Rupin shop items
+            9: 960, # arrows
+            10: 961, # bombs
+            11: 962, # wood shield
+            12: 963, # iron shield
+            13: 964, # sacred shield
+            14: 965, # seeds
+            15: 966, # small satchel
+            16: 967, # small quiver
+            19: 968, # small bomb bag
         }
         SHOP_LIST_OFFSET = 0x6D8C
         ENTRY_SIZE = 0x54

@@ -267,58 +267,105 @@ Batreaux's House - 80 Crystals:
 # Beedle's Shop:
 Beedle's Shop - 300 Rupee Item:
   original item: "Progressive Pouch #1"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - ShpSmpl/20
 Beedle's Shop - 600 Rupee Item:
   original item: "Progressive Pouch #2"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+  type: Beedle's Shop Purchases, Shop Purchases (Medium)
   Paths:
     - ShpSmpl/21
 Beedle's Shop - 1200 Rupee Item:
   original item: "Progressive Pouch #3"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
+  type: Beedle's Shop Purchases, Shop Purchases (Expensive)
   hint: always
   Paths:
     - ShpSmpl/22
   text: for <g+<1200 rupees>> <r<Beedle>> sells
 Beedle's Shop - 800 Rupee Item:
   original item: "Life Medal #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+  type: Beedle's Shop Purchases, Shop Purchases (Medium)
   Paths:
     - ShpSmpl/26
 Beedle's Shop - 1600 Rupee Item:
   original item: "Heart Piece #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
+  type: Beedle's Shop Purchases, Shop Purchases (Expensive)
   hint: always
   Paths:
     - ShpSmpl/23
   text: for <g+<1600 rupees>> <r<Beedle>> sells
 Beedle's Shop - First 100 Rupee Item:
   original item: "Extra Wallet #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - ShpSmpl/24
 Beedle's Shop - Second 100 Rupee Item:
   original item: "Extra Wallet #1"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - ShpSmpl/17
 Beedle's Shop - Third 100 Rupee Item:
   original item: "Extra Wallet #2"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - ShpSmpl/18
 Beedle's Shop - 50 Rupee Item:
   original item: "Progressive Bug Net #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - ShpSmpl/25
 Beedle's Shop - 1000 Rupee Item:
   original item: Bug Medal
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+  type: Beedle's Shop Purchases, Shop Purchases (Medium)
   Paths:
     - ShpSmpl/27
+
+# Rupin's Shop
+Central Skyloft - Rupin's Shop - 1st 150 Rupee Item:
+  original item: Small Quiver
+  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - ShpSmpl/16
+Central Skyloft - Rupin's Shop - 1st 100 Rupee Item:
+  original item: Small Seed Satchel
+  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - ShpSmpl/15
+Central Skyloft - Rupin's Shop - 2nd 150 Rupee Item:
+  original item: Small Bomb Bag
+  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - ShpSmpl/19
+Central Skyloft - Rupin's Shop - 1st 20 Rupee Item:
+  original item: 10 Deku Seeds
+  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - ShpSmpl/14
+Central Skyloft - Rupin's Shop - 2nd 20 Rupee Item:
+  original item: 10 Arrows
+  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - ShpSmpl/9
+Central Skyloft - Rupin's Shop - 3rd 20 Rupee Item:
+  original item: 10 Bombs
+  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - ShpSmpl/10
+Central Skyloft - Rupin's Shop - 50 Rupee Item:
+  original item: Wooden Shield
+  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - ShpSmpl/11
+Central Skyloft - Rupin's Shop - 2nd 100 Rupee Item:
+  original item: Iron Shield
+  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - ShpSmpl/12
+Central Skyloft - Rupin's Shop - 500 Rupee Item:
+  original item: Sacred Shield
+  type: Rupin's Shop Purchases, Shop Purchases (Medium)
+  Paths:
+    - ShpSmpl/13
 
 # Single Gratitude Crystals:
 ## Aren't randomized, but still need logic, because some of them need items

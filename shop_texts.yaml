@@ -38,3 +38,30 @@ Beedle - 1600 Rupee Item:
   - Piece of Heart:
       normal: "Oh! You have great taste in things...\nIsn't it shiny? I found it someplace\nnearby.\n\nTo be honest, I have no idea what it's\nfor, but I'll sell it to you for\njust <r<1,600 Rupees>>!\n"
       discount: "Oh! You have great taste in things...\nIsn't it shiny? I found it someplace\nnearby.\n\nTo be honest, I have no idea what it's\nfor, but I'm pricing it at <r<1,600 Rupees>>!\n\n\nHowever, you can have it at half price\ntoday for only <r<800 Rupees>>. Is it a deal?\n"
+Rupin - 2nd 20 Rupee Item:
+  - 10 Arrows:
+    text: "You've got quite an eye, friend. Those\n<y<10 Arrows>> do make a\nstrong point!\n\nDo be careful not to accidentally shoot\npeople! That would be quite rude.\nThey cost a mere <r<20 Rupees>>.\n"
+Rupin - 3rd 20 Rupee Item:
+  - 10 Bombs:
+    text: "Ahaa! I see you eyeing those\n<y<10 Bombs>>. So loud. So\nsatisfyingly smoky. And, oh yes,\nso very destructive!\nOne good blast, and even a sturdy\nwall can't hope to remain standing.\n\n\nKA-BOOM! All yours for <r<20 Rupees>>.\n"
+Rupin - 50 Rupee Item:
+  - Wooden Shield:
+    text: "Ahaa! That's a <y<Wooden Shield>>.\nYou can use it to block and repel\nattacks!\n\nYou must be careful, though, as it will\n<r<break >>if it takes too much abuse.\n\n\nOh, and don't forget about fire. It will\nburn quite easily... It's an unfortunate\nproperty of wood. It could be yours for\n<r<50 Rupees>>.\nCare to buy it, friend?\n"
+Rupin - 2nd 100 Rupee Item:
+  - Iron Shield:
+    text: "Ahaa! That there is a very sturdy\n<y<Iron Shield>>.\n\n\nIt's much more durable than a\nwooden shield, and I'm happy to\nreport that it won't burst into flames!\n\nI suppose I should warn you that it\nwon't protect you from electricity,\nwhich could come as a nasty...shock.\n\nIt's yours for just <r<100 Rupees>>.\nCare to buy it, friend?\n"
+Rupin - 500 Rupee Item:
+  - Sacred Shield:
+    text: "Ahaa! That's a <y<Sacred Shield>>!\nAs you might surmise from its name, it\ncan handle all variety of attacks!\n\nFire? Not a sweat! Electricity? No\npainful zaps! Plus, it will automatically\nrepair itself when it sustains damage!\n\nIt's a little fragile, but that shouldn't\nbe a problem for one as talented and\nagile as yourself! \n\nAt a cost of <r<500 Rupees>>, it's an\ninvestment...but an excellent one!\nCare to buy it?\n"
+Rupin - 1st 20 Rupee Item:
+  - 10 Deku Seeds:
+    text: "I see you have an interest in \n<y<10 Deku Seeds>>! They\nare truly the perfectly matched\nprojectile for a slingshot.\nThey could be yours for <r<20 Rupees>>.\nCare to buy them today?\n"
+Rupin - 1st 100 Rupee Item:
+  - Small Seed Satchel:
+    text: "That's a <y<Small Seed Satchel>>.\nWith this in your pouch, you can\ncarry 10 additional seeds.\n\nRecommended for slingshot\nenthusiasts! It costs <r<100 Rupees>>.\nDo we have a deal, friend?\n"
+Rupin - 1st 150 Rupee Item:
+  - Small Quiver:
+    text: "That's a <y<Small Quiver>>. With\nthis in your pouch, you can carry five\nmore arrows!\n\nPerfect for anyone enamored with\narchery! It costs <r<150 Rupees>>.\nDo we have a deal, friend?\n"
+Rupin - 2nd 150 Rupee Item:
+  - Small Bomb Bag:
+    text: "That's a <y<Small Bomb Bag>>. Just \nslip this into your pouch, and you can\ncarry five additional bombs.\n\nIf you relish a good explosion, this is\nthe item for you! It costs a mere\n<r<150 Rupees>>. Care to buy it, friend?\n"

@@ -128,6 +128,7 @@ Central Skyloft:
       Endurance Potion: Bottle & Lanayru - Raise Lanayru Mining Facility
       Talk to Peatrice: Nothing
       Item Check Access: Nothing
+      Rupin's Shop: Nothing
 
     Gondo's Upgrades:
       entrance: Gondo Upgrades On option
@@ -144,6 +145,22 @@ Central Skyloft:
           Faron - Faron Woods - Amber Relic Farming &
           Lanayru - Mine - Ancient Flower Farming &
           Sky - Clean Cut Minigame # Goddess Plumes / Blue Bird Feathers farming
+
+    Rupin's Shop:
+      toplevel-alias: Rupin
+      hint-region: Rupin's Shop
+      exits:
+        Bazaar: Nothing
+      locations:
+        1st 150 Rupee Item: Can Afford 150 Rupees
+        1st 100 Rupee Item: Can Afford 100 Rupees
+        2nd 150 Rupee Item: Can Afford 150 Rupees
+        1st 20 Rupee Item: Can Afford 20 Rupees
+        2nd 20 Rupee Item: Can Afford 20 Rupees
+        3rd 20 Rupee Item: Can Afford 20 Rupees
+        50 Rupee Item: Can Afford 50 Rupees
+        2nd 100 Rupee Item: Can Afford 100 Rupees
+        500 Rupee Item: Can Afford 500 Rupees
 
   Orielle and Parrow's House:
     can-sleep: true

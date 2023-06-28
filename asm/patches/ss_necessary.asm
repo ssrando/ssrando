@@ -634,6 +634,12 @@ b 0x17C8
 .word -1 ; can always buy iron shield
 .org 0x6EF0
 .word -1 ; can always buy sacred shield
+.org 0x6F98
+.word -1 ; can always buy small seed satchel
+.org 0x6FEC
+.word -1 ; can always buy small quiver
+.org 0x7040
+.word -1 ; can always buy small bomb bag
 .close
 
 .open "d_a_npc_douguyanightNP.rel"
