@@ -309,14 +309,14 @@ Beedle's Shop:
     locations:
       # We don't want the pouch extensions to be the logical access to the pouch
       300 Rupee Item:        Can Afford 300 Rupees  & Can Medium Rupee Farm & (Pouch | Randomized Beedle option)
-      600 Rupee Item:        Can Afford 600 Rupees  & Can High Rupee Farm   & 300 Rupee Item
-      1200 Rupee Item:       Can Afford 1200 Rupees & Can High Rupee Farm   & 600 Rupee Item
+      600 Rupee Item:        Can Afford 600 Rupees  & Can High Rupee Farm   & (Pouch | Randomized Beedle option)
+      1200 Rupee Item:       Can Afford 1200 Rupees & Can High Rupee Farm   & (Pouch | Randomized Beedle option)
       800 Rupee Item:        Can Afford 800 Rupees  & Can High Rupee Farm
-      1600 Rupee Item:       Can Afford 1600 Rupees & Can High Rupee Farm   & 800 Rupee Item
+      1600 Rupee Item:       Can Afford 1600 Rupees & Can High Rupee Farm
       First 100 Rupee Item:  Can Afford 100 Rupees
-      Second 100 Rupee Item: Can Afford 100 Rupees                          & First 100 Rupee Item
+      Second 100 Rupee Item: Can Afford 100 Rupees
       # To reduce necessary rupee-farming at the start, the third item logically needs an efficient rupee-farming method
-      Third 100 Rupee Item:  Can Afford 100 Rupees  & Can Medium Rupee Farm & Second 100 Rupee Item
+      Third 100 Rupee Item:  Can Afford 100 Rupees  & Can Medium Rupee Farm
       50 Rupee Item:         Can Afford 50 Rupees
-      1000 Rupee Item:       Can Afford 1000 Rupees & Can High Rupee Farm   & 50 Rupee Item
+      1000 Rupee Item:       Can Afford 1000 Rupees & Can High Rupee Farm
 
