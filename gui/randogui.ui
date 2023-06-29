@@ -2341,10 +2341,31 @@
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <item row="1" column="1">
+            <item row="1" column="2">
              <widget class="QPushButton" name="button_save_color_preset">
               <property name="text">
                <string>Save</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QPushButton" name="button_load_color_preset">
+              <property name="text">
+               <string>Load</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QPushButton" name="button_delete_color_preset">
+              <property name="text">
+               <string>Delete</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="button_color_imports">
+              <property name="text">
+               <string>Import/Export</string>
               </property>
              </widget>
             </item>
@@ -2364,21 +2385,7 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <widget class="QPushButton" name="button_load_color_preset">
-              <property name="text">
-               <string>Load</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QPushButton" name="button_delete_color_preset">
-              <property name="text">
-               <string>Delete</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1" colspan="2">
+            <item row="0" column="1" colspan="3">
              <widget class="QComboBox" name="color_presets_list">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">

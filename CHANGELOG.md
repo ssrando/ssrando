@@ -37,6 +37,7 @@
     - The Loftwing comes with 7 default color presets - Zelda's Loftwing, the Wing Ceremony Loftwing, Groose's Loftwing, Cawlin's Loftwing, Strich's Loftwing, Orielle's Loftwing, and the Knights' Loftwing
     - At any point, you may save a new color preset (works just like settings presets), and then load them at a later point.
     - Model creators may provide their own default presets by adding a default_presets.json file to the model type folder
+    - The Import/Export button opens up a dialog box containing the metadata for your currently selected color. This may be copied and sent to someone else, who can paste in the same dialog box and import the color.
 
 ## 1.4.1
 ### Bugfixes

@@ -267,6 +267,7 @@ class RandoGUI(QMainWindow):
         self.ui.button_load_color_preset.clicked.connect(self.load_color_preset)
         self.ui.button_save_color_preset.clicked.connect(self.save_color_preset)
         self.ui.button_delete_color_preset.clicked.connect(self.delete_color_preset)
+        self.ui.button_color_imports.clicked.connect(self.handle_color_imports)
 
         # cosmetics stuff - move to func and connect to dropdown
         self.color_box = self.ui.vlay_texture_colors
@@ -808,6 +809,11 @@ class RandoGUI(QMainWindow):
 
     def save_color_preset(self):
         preset = self.ui.color_presets_list.currentText()
+        self.read_metadata()
+        if self.metadata == {}:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage("This model has no metadata to save to a preset.")
+            return
 
         if preset in self.default_color_presets:
             self.error_msg = QErrorMessage()
@@ -855,7 +861,7 @@ class RandoGUI(QMainWindow):
         if preset == NEW_PRESET:
             self.ui.button_load_color_preset.setDisabled(True)
             self.ui.button_save_color_preset.setDisabled(False)
-            self.ui.button_delete_color_preset.setDisabled(False)
+            self.ui.button_delete_color_preset.setDisabled(True)
         elif preset in self.default_color_presets:
             self.ui.button_load_color_preset.setDisabled(False)
             self.ui.button_save_color_preset.setDisabled(True)
@@ -887,6 +893,58 @@ class RandoGUI(QMainWindow):
         )
         self.update_color_presets_list()
         self.ui.color_presets_list.setCurrentIndex(0)
+
+    def handle_color_imports(self):
+        self.read_metadata()
+        # backup the metadata in case something goes wrong while importing new data
+        metadata_backup = self.metadata
+        try:
+            metadata_text = json.dumps(self.metadata, separators=(",\n", ": "))
+        except Exception as e:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage(
+                f"Error loading this model's metadata: {e}"
+            )
+            return
+        if self.metadata == {}:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage(
+                f"This model has no metadata to import or export."
+            )
+            return
+        iedialog = QInputDialog(self)
+        iedialog.setOption(QInputDialog.UsePlainTextEditForTextInput)
+        iedialog.setOkButtonText("Import")
+        iedialog.setWindowTitle("Import / Export Current Color")
+        iedialog.setLabelText("Copy / Paste color data:")
+        iedialog.setTextValue(metadata_text)
+        ok = iedialog.exec_()
+        data = iedialog.textValue()
+        if ok:
+            with open(self.metadata_path, "w") as metadata_file:
+                try:
+                    json.dump(loaded_data := json.loads(data), metadata_file)
+                    # manually load metadata to avoid loading an empty file with self.read_metadata()
+                    self.metadata = loaded_data
+                except Exception as e:
+                    # something failed while loading the json
+                    self.error_msg = QErrorMessage()
+                    self.error_msg.showMessage(f"JSON Formatting is incorrect: {e}")
+                    # restore the backup in the metadata file
+                    json.dump(metadata_backup, metadata_file)
+                finally:
+                    try:
+                        self.update_model_customisation()
+                    except Exception as e:
+                        # something failed while updating the model with new metadata
+                        self.error_msg = QErrorMessage()
+                        self.error_msg.showMessage(f"Invalid data was provided: {e}")
+                        # restore the backup in the metadata file
+                        metadata_file.seek(0)
+                        json.dump(metadata_backup, metadata_file)
+                        # restore cached metadata and refresh the model
+                        self.metadata = metadata_backup
+                        self.update_model_customisation()
 
     def write_presets(self, presets_path, presets_dict):
         with open(presets_path, "w") as f:
@@ -990,27 +1048,31 @@ class RandoGUI(QMainWindow):
                 / self.current_model_type
                 / "metadata.json"
             )
+            # Avoids throwing an error later on if a metadata file doesn't exist
+            if not os.path.isfile(self.metadata_path):
+                self.metadata = {}
+                return
 
         try:
-            with open(self.metadata_path) as f:
+            with open(self.metadata_path, "r") as f:
                 self.metadata = json.load(f)
-        except:
+        except Exception as e:
             if self.current_model_pack == "Default":
                 print(
-                    f"Could not load metadata for the Default pack's {self.current_model_type} model, loading default metadata"
+                    f"Could not load metadata for the Default pack's {self.current_model_type} model ({e}), loading default metadata"
                 )
-                self.metadata_path.write_bytes(
-                    (
-                        LINK_MODEL_DATA_PATH
-                        / self.current_model_type
-                        / "defaultMetadata.json"
-                    ).read_bytes()
-                )
-                with open(self.metadata_path) as f:
-                    self.metadata = json.load(f)
+                with open(
+                    LINK_MODEL_DATA_PATH
+                    / self.current_model_type
+                    / "defaultMetadata.json",
+                    "r",
+                ) as default_metadata:
+                    self.metadata = json.load(default_metadata)
+                with open(self.metadata_path, "w") as metadata_file:
+                    json.dump(self.metadata, metadata_file)
             else:
                 print(
-                    f"Could not load metadata for {self.current_model_pack} pack's {self.current_model_type} model"
+                    f"Could not load metadata for {self.current_model_pack} pack's {self.current_model_type} model ({e})"
                 )
                 self.metadata = {}
 

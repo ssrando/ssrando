@@ -1617,7 +1617,22 @@ class Ui_MainWindow(object):
         self.button_save_color_preset = QPushButton(self.tab_cosmetics)
         self.button_save_color_preset.setObjectName(u"button_save_color_preset")
 
-        self.gridLayout.addWidget(self.button_save_color_preset, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.button_save_color_preset, 1, 2, 1, 1)
+
+        self.button_load_color_preset = QPushButton(self.tab_cosmetics)
+        self.button_load_color_preset.setObjectName(u"button_load_color_preset")
+
+        self.gridLayout.addWidget(self.button_load_color_preset, 1, 1, 1, 1)
+
+        self.button_delete_color_preset = QPushButton(self.tab_cosmetics)
+        self.button_delete_color_preset.setObjectName(u"button_delete_color_preset")
+
+        self.gridLayout.addWidget(self.button_delete_color_preset, 1, 3, 1, 1)
+
+        self.button_color_imports = QPushButton(self.tab_cosmetics)
+        self.button_color_imports.setObjectName(u"button_color_imports")
+
+        self.gridLayout.addWidget(self.button_color_imports, 1, 0, 1, 1)
 
         self.label_for_color_presets = QLabel(self.tab_cosmetics)
         self.label_for_color_presets.setObjectName(u"label_for_color_presets")
@@ -1630,22 +1645,12 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_for_color_presets, 0, 0, 1, 1)
 
-        self.button_load_color_preset = QPushButton(self.tab_cosmetics)
-        self.button_load_color_preset.setObjectName(u"button_load_color_preset")
-
-        self.gridLayout.addWidget(self.button_load_color_preset, 1, 0, 1, 1)
-
-        self.button_delete_color_preset = QPushButton(self.tab_cosmetics)
-        self.button_delete_color_preset.setObjectName(u"button_delete_color_preset")
-
-        self.gridLayout.addWidget(self.button_delete_color_preset, 1, 2, 1, 1)
-
         self.color_presets_list = QComboBox(self.tab_cosmetics)
         self.color_presets_list.setObjectName(u"color_presets_list")
         sizePolicy10.setHeightForWidth(self.color_presets_list.sizePolicy().hasHeightForWidth())
         self.color_presets_list.setSizePolicy(sizePolicy10)
 
-        self.gridLayout.addWidget(self.color_presets_list, 0, 1, 1, 2)
+        self.gridLayout.addWidget(self.color_presets_list, 0, 1, 1, 3)
 
 
         self.horizontalLayout_10.addLayout(self.gridLayout)
@@ -2118,9 +2123,10 @@ class Ui_MainWindow(object):
         self.button_randomize_all_colors.setText(QCoreApplication.translate("MainWindow", u"Randomize All Colors", None))
         self.button_reset_all_colors.setText(QCoreApplication.translate("MainWindow", u"Reset All Colors", None))
         self.button_save_color_preset.setText(QCoreApplication.translate("MainWindow", u"Save", None))
-        self.label_for_color_presets.setText(QCoreApplication.translate("MainWindow", u"Color Presets", None))
         self.button_load_color_preset.setText(QCoreApplication.translate("MainWindow", u"Load", None))
         self.button_delete_color_preset.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
+        self.button_color_imports.setText(QCoreApplication.translate("MainWindow", u"Import/Export", None))
+        self.label_for_color_presets.setText(QCoreApplication.translate("MainWindow", u"Color Presets", None))
         self.label_preview_image.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cosmetics), QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.box_theme.setTitle(QCoreApplication.translate("MainWindow", u"Theming", None))
