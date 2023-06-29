@@ -147,9 +147,17 @@ def main():
 
         def randothread(start, end, local_opts):
             for i in range(start, end):
-                local_opts.set_option("seed", i)
-                rando = Randomizer(areas, local_opts)
-                rando.randomize()
+                try:
+                    local_opts.set_option("seed", i)
+                    rando = Randomizer(areas, local_opts)
+                    rando.randomize()
+                except KeyboardInterrupt:
+                    raise
+                except Exception as e:
+                    import traceback
+                    stack_trace = traceback.format_exc()
+                    error_message = f"error seed {i}:\n\n" + str(e) + "\n\n" + stack_trace
+                    print(error_message, file=sys.stderr)
 
         if bulk_threads == 1:
             randothread(bulk_low, bulk_high, options)
