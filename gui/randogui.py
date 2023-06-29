@@ -243,33 +243,30 @@ class RandoGUI(QMainWindow):
         # setup presets
         self.default_presets = {}
         self.user_presets = {}
-        self.ui.presets_list.addItem(NEW_PRESET)
-        sep_idx = 1
-        with (DEFAULT_PRESETS_PATH).open("r") as f:
-            try:
-                load_default_presets = json.load(f)
-                for preset in load_default_presets:
-                    self.ui.presets_list.addItem(preset)
-                    self.default_presets[preset] = load_default_presets[preset]
-                    sep_idx += 1
-            except Exception as e:
-                print("couldn't load default presets")
-        self.ui.presets_list.insertSeparator(sep_idx)
         self.user_presets_path = "presets.txt"
-        if os.path.isfile(self.user_presets_path):
-            with open(self.user_presets_path) as f:
-                try:
-                    load_user_presets = json.load(f)
-                    for preset in load_user_presets:
-                        self.ui.presets_list.addItem(preset)
-                        self.user_presets[preset] = load_user_presets[preset]
-                except Exception as e:
-                    print("couldn't load user presets", e)
+        self.setup_presets(
+            self.default_presets,
+            self.user_presets,
+            self.ui.presets_list,
+            DEFAULT_PRESETS_PATH,
+            self.user_presets_path,
+        )
         self.ui.presets_list.currentIndexChanged.connect(self.preset_selection_changed)
         self.ui.load_preset.clicked.connect(self.load_preset)
         self.ui.save_preset.clicked.connect(self.save_preset)
         self.ui.delete_preset.clicked.connect(self.delete_preset)
         self.preset_selection_changed()
+
+        # initialize color presets - setup_presets will be run each time a model pack is loaded, including at initialization.
+        self.default_color_presets = {}
+        self.user_color_presets = {}
+        # self.setup_presets(self.default_color_presets, self.user_color_presets, self.ui.color_presets_list, DEFAULT_LINK_PRESETS_PATH, LINK_PLAYER_PRESETS_PATH)
+        self.ui.color_presets_list.currentIndexChanged.connect(
+            self.color_preset_selection_changed
+        )
+        self.ui.button_load_color_preset.clicked.connect(self.load_color_preset)
+        self.ui.button_save_color_preset.clicked.connect(self.save_color_preset)
+        self.ui.button_delete_color_preset.clicked.connect(self.delete_color_preset)
 
         # cosmetics stuff - move to func and connect to dropdown
         self.color_box = self.ui.vlay_texture_colors
@@ -755,7 +752,7 @@ class RandoGUI(QMainWindow):
                 "no-spoiler-log",
             ],
         )
-        self.write_presets()
+        self.write_presets(self.user_presets_path, self.user_presets)
 
     def preset_selection_changed(self):
         preset = self.ui.presets_list.currentText()
@@ -785,11 +782,112 @@ class RandoGUI(QMainWindow):
         del self.user_presets[preset]
         self.ui.presets_list.removeItem(index)
         self.ui.presets_list.setCurrentIndex(0)
-        self.write_presets()
+        self.write_presets(self.user_presets_path, self.user_presets)
 
-    def write_presets(self):
-        with open(self.user_presets_path, "w") as f:
-            json.dump(self.user_presets, f)
+    def load_color_preset(self):
+        preset = self.ui.color_presets_list.currentText()
+        # prevent loading the new preset option
+        if preset == NEW_PRESET:
+            return
+        with open(
+            CUSTOM_MODELS_PATH
+            / self.current_model_pack
+            / self.current_model_type
+            / "metadata.json",
+            "w",
+        ) as metadata:
+            if preset in self.default_color_presets:
+                json.dump(self.default_color_presets[preset], metadata)
+            else:
+                json.dump(self.user_color_presets[preset], metadata)
+        self.read_metadata()
+        self.update_model_customisation()
+
+    def save_color_preset(self):
+        preset = self.ui.color_presets_list.currentText()
+
+        if preset in self.default_color_presets:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage(
+                "Default presets are protected and cannot be updated"
+            )
+            return
+        if preset == NEW_PRESET:
+            (name, ok) = QInputDialog.getText(
+                self,
+                "Create New Preset",
+                "Enter a name for the new preset",
+                QLineEdit.Normal,
+            )
+            if ok:
+                if (
+                    name in self.default_color_presets
+                    or name in self.user_color_presets
+                ):
+                    self.error_msg = QErrorMessage()
+                    self.error_msg.showMessage("Cannot have duplicate preset names")
+                    return
+                elif name == NEW_PRESET:
+                    self.error_msg = QErrorMessage()
+                    self.error_msg.showMessage("Invalid preset name")
+                    return
+                preset = name
+                self.ui.color_presets_list.addItem(preset)
+            else:
+                return
+
+        self.user_color_presets[preset] = self.metadata
+        self.write_presets(
+            CUSTOM_MODELS_PATH
+            / self.current_model_pack
+            / self.current_model_type
+            / "presets.json",
+            self.user_color_presets,
+        )
+        self.update_color_presets_list()
+        self.ui.color_presets_list.setCurrentText(preset)
+
+    def color_preset_selection_changed(self):
+        preset = self.ui.color_presets_list.currentText()
+        if preset == NEW_PRESET:
+            self.ui.button_load_color_preset.setDisabled(True)
+            self.ui.button_save_color_preset.setDisabled(False)
+            self.ui.button_delete_color_preset.setDisabled(False)
+        elif preset in self.default_color_presets:
+            self.ui.button_load_color_preset.setDisabled(False)
+            self.ui.button_save_color_preset.setDisabled(True)
+            self.ui.button_delete_color_preset.setDisabled(True)
+        else:
+            self.ui.button_load_color_preset.setDisabled(False)
+            self.ui.button_save_color_preset.setDisabled(False)
+            self.ui.button_delete_color_preset.setDisabled(False)
+
+    def delete_color_preset(self):
+        preset = self.ui.color_presets_list.currentText()
+        # protect from deleting default presets
+        if preset == NEW_PRESET or preset in self.default_color_presets:
+            self.error_msg = QErrorMessage()
+            self.error_msg.showMessage(
+                "Default presets are protected and cannot be deleted"
+            )
+            return
+        index = self.ui.color_presets_list.currentIndex()
+        del self.user_color_presets[preset]
+        self.ui.color_presets_list.removeItem(index)
+        self.ui.color_presets_list.setCurrentIndex(0)
+        self.write_presets(
+            CUSTOM_MODELS_PATH
+            / self.current_model_pack
+            / self.current_model_type
+            / "presets.json",
+            self.user_color_presets,
+        )
+        self.update_color_presets_list()
+        self.ui.color_presets_list.setCurrentIndex(0)
+
+    def write_presets(self, presets_path, presets_dict):
+        with open(presets_path, "w") as f:
+            json.dump(presets_dict, f)
 
     def launch_tricks_dialog(self):
         dialog = TricksDialog(
@@ -861,6 +959,10 @@ class RandoGUI(QMainWindow):
                 self.save_settings()
 
         self.update_model_customisation()
+        # clear the presets list to avoid weird interactions when switching models
+        self.user_color_presets = {}
+        self.default_color_presets = {}
+        self.update_color_presets_list()
 
     def read_metadata(self):
         if self.current_model_pack == "Default":
@@ -1049,6 +1151,53 @@ class RandoGUI(QMainWindow):
             600, 500, Qt.KeepAspectRatio, Qt.SmoothTransformation
         )
         self.ui.label_preview_image.setPixmap(qpixmap)
+
+    def setup_presets(
+        self,
+        default_preset_dict,
+        user_preset_dict,
+        presets_list,
+        default_presets_path,
+        user_presets_path,
+    ):
+        # default_preset_dict = {}
+        # user_preset_dict = {}
+        presets_list.clear()
+        presets_list.addItem(NEW_PRESET)
+        sep_idx = 1
+        if os.path.isfile(default_presets_path):
+            with (default_presets_path).open("r") as f:
+                try:
+                    load_default_presets = json.load(f)
+                    for preset in load_default_presets:
+                        presets_list.addItem(preset)
+                        default_preset_dict[preset] = load_default_presets[preset]
+                        sep_idx += 1
+                except Exception as e:
+                    print("couldn't load default presets", e)
+        presets_list.insertSeparator(sep_idx)
+        if os.path.isfile(user_presets_path):
+            with open(user_presets_path) as f:
+                try:
+                    load_user_presets = json.load(f)
+                    for preset in load_user_presets:
+                        presets_list.addItem(preset)
+                        user_preset_dict[preset] = load_user_presets[preset]
+                except Exception as e:
+                    print("couldn't load user presets", e)
+
+    def update_color_presets_list(self):
+        preset_data_path = (
+            CUSTOM_MODELS_PATH / self.current_model_pack / self.current_model_type
+        )
+
+        self.setup_presets(
+            self.default_color_presets,
+            self.user_color_presets,
+            self.ui.color_presets_list,
+            preset_data_path / "default_presets.json",
+            preset_data_path / "presets.json",
+        )
 
     def eventFilter(self, target: QObject, event: QEvent) -> bool:
         if event.type() == QEvent.Enter:

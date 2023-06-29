@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.5.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -16,11 +16,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
-    QFontComboBox, QFrame, QGroupBox, QHBoxLayout,
-    QLabel, QLayout, QLineEdit, QListView,
-    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QSpinBox, QTabWidget, QVBoxLayout,
-    QWidget)
+    QFontComboBox, QFrame, QGridLayout, QGroupBox,
+    QHBoxLayout, QLabel, QLayout, QLineEdit,
+    QListView, QMainWindow, QPushButton, QScrollArea,
+    QSizePolicy, QSpacerItem, QSpinBox, QTabWidget,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1529,6 +1529,9 @@ class Ui_MainWindow(object):
         self.tab_cosmetics.setObjectName(u"tab_cosmetics")
         self.verticalLayout_31 = QVBoxLayout(self.tab_cosmetics)
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(-1, -1, -1, 0)
         self.custom_model_settings = QVBoxLayout()
         self.custom_model_settings.setObjectName(u"custom_model_settings")
         self.hlay_type_options = QHBoxLayout()
@@ -1541,12 +1544,22 @@ class Ui_MainWindow(object):
         self.option_model_type_select = QComboBox(self.tab_cosmetics)
         self.option_model_type_select.setObjectName(u"option_model_type_select")
         self.option_model_type_select.setEnabled(True)
+        sizePolicy10 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy10.setHorizontalStretch(20)
+        sizePolicy10.setVerticalStretch(0)
+        sizePolicy10.setHeightForWidth(self.option_model_type_select.sizePolicy().hasHeightForWidth())
+        self.option_model_type_select.setSizePolicy(sizePolicy10)
 
         self.hlay_type_options.addWidget(self.option_model_type_select)
 
         self.option_tunic_swap = QCheckBox(self.tab_cosmetics)
         self.option_tunic_swap.setObjectName(u"option_tunic_swap")
         self.option_tunic_swap.setEnabled(True)
+        sizePolicy11 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy11.setHorizontalStretch(40)
+        sizePolicy11.setVerticalStretch(0)
+        sizePolicy11.setHeightForWidth(self.option_tunic_swap.sizePolicy().hasHeightForWidth())
+        self.option_tunic_swap.setSizePolicy(sizePolicy11)
 
         self.hlay_type_options.addWidget(self.option_tunic_swap)
 
@@ -1566,16 +1579,25 @@ class Ui_MainWindow(object):
 
         self.option_model_pack_select = QComboBox(self.tab_cosmetics)
         self.option_model_pack_select.setObjectName(u"option_model_pack_select")
+        sizePolicy12 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy12.setHorizontalStretch(20)
+        sizePolicy12.setVerticalStretch(0)
+        sizePolicy12.setHeightForWidth(self.option_model_pack_select.sizePolicy().hasHeightForWidth())
+        self.option_model_pack_select.setSizePolicy(sizePolicy12)
 
         self.hlay_pack_options.addWidget(self.option_model_pack_select)
 
         self.button_randomize_all_colors = QPushButton(self.tab_cosmetics)
         self.button_randomize_all_colors.setObjectName(u"button_randomize_all_colors")
+        sizePolicy12.setHeightForWidth(self.button_randomize_all_colors.sizePolicy().hasHeightForWidth())
+        self.button_randomize_all_colors.setSizePolicy(sizePolicy12)
 
         self.hlay_pack_options.addWidget(self.button_randomize_all_colors)
 
         self.button_reset_all_colors = QPushButton(self.tab_cosmetics)
         self.button_reset_all_colors.setObjectName(u"button_reset_all_colors")
+        sizePolicy12.setHeightForWidth(self.button_reset_all_colors.sizePolicy().hasHeightForWidth())
+        self.button_reset_all_colors.setSizePolicy(sizePolicy12)
 
         self.hlay_pack_options.addWidget(self.button_reset_all_colors)
 
@@ -1587,7 +1609,49 @@ class Ui_MainWindow(object):
         self.custom_model_settings.addLayout(self.hlay_pack_options)
 
 
-        self.verticalLayout_31.addLayout(self.custom_model_settings)
+        self.horizontalLayout_10.addLayout(self.custom_model_settings)
+
+        self.gridLayout = QGridLayout()
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setContentsMargins(-1, -1, -1, 0)
+        self.button_save_color_preset = QPushButton(self.tab_cosmetics)
+        self.button_save_color_preset.setObjectName(u"button_save_color_preset")
+
+        self.gridLayout.addWidget(self.button_save_color_preset, 1, 1, 1, 1)
+
+        self.label_for_color_presets = QLabel(self.tab_cosmetics)
+        self.label_for_color_presets.setObjectName(u"label_for_color_presets")
+        sizePolicy13 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy13.setHorizontalStretch(20)
+        sizePolicy13.setVerticalStretch(0)
+        sizePolicy13.setHeightForWidth(self.label_for_color_presets.sizePolicy().hasHeightForWidth())
+        self.label_for_color_presets.setSizePolicy(sizePolicy13)
+        self.label_for_color_presets.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout.addWidget(self.label_for_color_presets, 0, 0, 1, 1)
+
+        self.button_load_color_preset = QPushButton(self.tab_cosmetics)
+        self.button_load_color_preset.setObjectName(u"button_load_color_preset")
+
+        self.gridLayout.addWidget(self.button_load_color_preset, 1, 0, 1, 1)
+
+        self.button_delete_color_preset = QPushButton(self.tab_cosmetics)
+        self.button_delete_color_preset.setObjectName(u"button_delete_color_preset")
+
+        self.gridLayout.addWidget(self.button_delete_color_preset, 1, 2, 1, 1)
+
+        self.color_presets_list = QComboBox(self.tab_cosmetics)
+        self.color_presets_list.setObjectName(u"color_presets_list")
+        sizePolicy10.setHeightForWidth(self.color_presets_list.sizePolicy().hasHeightForWidth())
+        self.color_presets_list.setSizePolicy(sizePolicy10)
+
+        self.gridLayout.addWidget(self.color_presets_list, 0, 1, 1, 2)
+
+
+        self.horizontalLayout_10.addLayout(self.gridLayout)
+
+
+        self.verticalLayout_31.addLayout(self.horizontalLayout_10)
 
         self.hlay_colors_and_preview = QHBoxLayout()
         self.hlay_colors_and_preview.setObjectName(u"hlay_colors_and_preview")
@@ -1602,7 +1666,7 @@ class Ui_MainWindow(object):
         self.scroll_area_colors.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.scroll_area_widget_contents_colors = QWidget()
         self.scroll_area_widget_contents_colors.setObjectName(u"scroll_area_widget_contents_colors")
-        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 523, 456))
+        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 576, 474))
         self.verticalLayout_34 = QVBoxLayout(self.scroll_area_widget_contents_colors)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.vlay_texture_colors = QVBoxLayout()
@@ -1719,11 +1783,11 @@ class Ui_MainWindow(object):
 
         self.option_font_family = QFontComboBox(self.box_font)
         self.option_font_family.setObjectName(u"option_font_family")
-        sizePolicy10 = QSizePolicy(QSizePolicy.Ignored, QSizePolicy.Preferred)
-        sizePolicy10.setHorizontalStretch(0)
-        sizePolicy10.setVerticalStretch(0)
-        sizePolicy10.setHeightForWidth(self.option_font_family.sizePolicy().hasHeightForWidth())
-        self.option_font_family.setSizePolicy(sizePolicy10)
+        sizePolicy14 = QSizePolicy(QSizePolicy.Ignored, QSizePolicy.Preferred)
+        sizePolicy14.setHorizontalStretch(0)
+        sizePolicy14.setVerticalStretch(0)
+        sizePolicy14.setHeightForWidth(self.option_font_family.sizePolicy().hasHeightForWidth())
+        self.option_font_family.setSizePolicy(sizePolicy14)
         self.option_font_family.setEditable(False)
         self.option_font_family.setSizeAdjustPolicy(QComboBox.AdjustToContentsOnFirstShow)
         self.option_font_family.setWritingSystem(QFontDatabase.Any)
@@ -1823,11 +1887,11 @@ class Ui_MainWindow(object):
         self.option_description = QLabel(self.centralwidget)
         self.option_description.setObjectName(u"option_description")
         self.option_description.setEnabled(True)
-        sizePolicy11 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
-        sizePolicy11.setHorizontalStretch(0)
-        sizePolicy11.setVerticalStretch(0)
-        sizePolicy11.setHeightForWidth(self.option_description.sizePolicy().hasHeightForWidth())
-        self.option_description.setSizePolicy(sizePolicy11)
+        sizePolicy15 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+        sizePolicy15.setHorizontalStretch(0)
+        sizePolicy15.setVerticalStretch(0)
+        sizePolicy15.setHeightForWidth(self.option_description.sizePolicy().hasHeightForWidth())
+        self.option_description.setSizePolicy(sizePolicy15)
         self.option_description.setMinimumSize(QSize(0, 48))
         self.option_description.setStyleSheet(u"")
         self.option_description.setTextFormat(Qt.MarkdownText)
@@ -2053,6 +2117,10 @@ class Ui_MainWindow(object):
         self.label_player_model_select.setText(QCoreApplication.translate("MainWindow", u"Pack", None))
         self.button_randomize_all_colors.setText(QCoreApplication.translate("MainWindow", u"Randomize All Colors", None))
         self.button_reset_all_colors.setText(QCoreApplication.translate("MainWindow", u"Reset All Colors", None))
+        self.button_save_color_preset.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+        self.label_for_color_presets.setText(QCoreApplication.translate("MainWindow", u"Color Presets", None))
+        self.button_load_color_preset.setText(QCoreApplication.translate("MainWindow", u"Load", None))
+        self.button_delete_color_preset.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
         self.label_preview_image.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cosmetics), QCoreApplication.translate("MainWindow", u"Cosmetics", None))
         self.box_theme.setTitle(QCoreApplication.translate("MainWindow", u"Theming", None))

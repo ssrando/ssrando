@@ -188,7 +188,10 @@ custom-music/
 
 models/*
 !models/README.md
+!models/Default/
+models/Default/Player/*
 !models/Default/Player/default_presets.json
+models/Default/Loftwing/*
 !models/Default/Loftwing/default_presets.json
 
 assets/default-link-data/*/metadata.json
