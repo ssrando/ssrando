@@ -297,16 +297,19 @@ class RandoGUI(QMainWindow):
             os.mkdir(CUSTOM_MODELS_PATH / "Default" / "Loftwing")
 
         if not os.path.isfile(
-            CUSTOM_MODELS_PATH / "Default" / "Player" / "metadata.json"
+            metadata_file := CUSTOM_MODELS_PATH / "Default" / "Player" / "metadata.json"
         ):
-            (CUSTOM_MODELS_PATH / "Default" / "Player" / "metadata.json").write_bytes(
+            metadata_file.write_bytes(
                 (LINK_MODEL_DATA_PATH / "Player" / "defaultMetadata.json").read_bytes()
             )
 
         if not os.path.isfile(
-            CUSTOM_MODELS_PATH / "Default" / "Loftwing" / "metadata.json"
+            metadata_file := CUSTOM_MODELS_PATH
+            / "Default"
+            / "Loftwing"
+            / "metadata.json"
         ):
-            (CUSTOM_MODELS_PATH / "Default" / "Loftwing" / "metadata.json").write_bytes(
+            metadata_file.write_bytes(
                 (
                     LINK_MODEL_DATA_PATH / "Loftwing" / "defaultMetadata.json"
                 ).read_bytes()
@@ -988,11 +991,28 @@ class RandoGUI(QMainWindow):
                 / "metadata.json"
             )
 
-        if os.path.isfile(self.metadata_path):
+        try:
             with open(self.metadata_path) as f:
                 self.metadata = json.load(f)
-        else:
-            self.metadata = {}
+        except:
+            if self.current_model_pack == "Default":
+                print(
+                    f"Could not load metadata for the Default pack's {self.current_model_type} model, loading default metadata"
+                )
+                self.metadata_path.write_bytes(
+                    (
+                        LINK_MODEL_DATA_PATH
+                        / self.current_model_type
+                        / "defaultMetadata.json"
+                    ).read_bytes()
+                )
+                with open(self.metadata_path) as f:
+                    self.metadata = json.load(f)
+            else:
+                print(
+                    f"Could not load metadata for {self.current_model_pack} pack's {self.current_model_type} model"
+                )
+                self.metadata = {}
 
     def model_color_changed(self, color: str, name: str):
         self.metadata["Colors"][name] = color
@@ -1187,16 +1207,34 @@ class RandoGUI(QMainWindow):
                     print("couldn't load user presets", e)
 
     def update_color_presets_list(self):
-        preset_data_path = (
-            CUSTOM_MODELS_PATH / self.current_model_pack / self.current_model_type
+        user_presets_path = (
+            CUSTOM_MODELS_PATH
+            / self.current_model_pack
+            / self.current_model_type
+            / "presets.json"
         )
+
+        # default model presets are stored in assets, this is so future updates may be received by users
+        if self.current_model_pack == "Default":
+            default_presets_path = (
+                LINK_MODEL_DATA_PATH
+                / self.current_model_type
+                / "default_preset_list.json"
+            )
+        else:
+            default_presets_path = (
+                CUSTOM_MODELS_PATH
+                / self.current_model_pack
+                / self.current_model_type
+                / "default_presets.json"
+            )
 
         self.setup_presets(
             self.default_color_presets,
             self.user_color_presets,
             self.ui.color_presets_list,
-            preset_data_path / "default_presets.json",
-            preset_data_path / "presets.json",
+            default_presets_path,
+            user_presets_path,
         )
 
     def eventFilter(self, target: QObject, event: QEvent) -> bool:
