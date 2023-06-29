@@ -1,18 +1,11 @@
 from packedbits import PackedBitsReader, PackedBitsWriter
-from paths import RANDO_ROOT_PATH
 from pathlib import Path
-from util.file_accessor import read_yaml_file_cached
+from yaml_files import checks, options
 
-import yaml
-from yaml_files import yaml_load
 from collections import OrderedDict
 
-OPTIONS_LIST = yaml_load(RANDO_ROOT_PATH / "options.yaml")
-
-OPTIONS = OrderedDict((option["command"], option) for option in OPTIONS_LIST)
-OPTIONS["excluded-locations"]["choices"] = [
-    check for check in read_yaml_file_cached("checks.yaml")
-]
+OPTIONS = OrderedDict((option["command"], option) for option in options)
+OPTIONS["excluded-locations"]["choices"] = [check for check in checks]
 
 
 class Options:

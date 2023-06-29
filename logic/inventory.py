@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Set, List, Tuple
 
-from options import OPTIONS_LIST
+from yaml_files import options
 from .constants import *
 
 
@@ -13,7 +13,7 @@ def extended_item_generator():
 
     yield from LOGIC_OPTIONS
 
-    for option in OPTIONS_LIST:
+    for option in options:
         if option["name"].startswith("Enabled Tricks"):
             for trick in option["choices"]:
                 yield f"{trick} Trick"
