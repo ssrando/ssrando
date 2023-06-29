@@ -812,7 +812,9 @@ class RandoGUI(QMainWindow):
         self.read_metadata()
         if self.metadata == {}:
             self.error_msg = QErrorMessage()
-            self.error_msg.showMessage("This model has no metadata to save to a preset.")
+            self.error_msg.showMessage(
+                "This model has no metadata to save to a preset."
+            )
             return
 
         if preset in self.default_color_presets:
@@ -902,9 +904,7 @@ class RandoGUI(QMainWindow):
             metadata_text = json.dumps(self.metadata, separators=(",\n", ": "))
         except Exception as e:
             self.error_msg = QErrorMessage()
-            self.error_msg.showMessage(
-                f"Error loading this model's metadata: {e}"
-            )
+            self.error_msg.showMessage(f"Error loading this model's metadata: {e}")
             return
         if self.metadata == {}:
             self.error_msg = QErrorMessage()
