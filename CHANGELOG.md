@@ -32,6 +32,11 @@
   - Added a reset all colors button that restores all defined color groups back to default
   - Added native support for default player and loftwing models
   - Created structure to allow custom models to define masks, color groups, and previews (see README in models folder for more info)
+  - You may save and load color presets (by YourAverageLink)
+    - Link comes with 9 default color presets - Red Tunic, Blue Tunic, Purple Tunic, Dark Link, Pipit's Tunic / Mallara, Impa / Groose, Hero of the Wild, Hero of the Wind, and Ravio
+    - The Loftwing comes with 7 default color presets - Zelda's Loftwing, the Wing Ceremony Loftwing, Groose's Loftwing, Cawlin's Loftwing, Strich's Loftwing, Orielle's Loftwing, and the Knights' Loftwing
+    - At any point, you may save a new color preset (works just like settings presets), and then load them at a later point.
+    - Model creators may provide their own default presets by adding a default_presets.json file to the model type folder
 
 ## 1.4.1
 ### Bugfixes
