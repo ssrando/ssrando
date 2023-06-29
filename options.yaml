@@ -1024,18 +1024,3 @@
   bits: 5
   help: How many groups of Tadtones to start with.
   ui: option_starting_tadtones
-- name: Test
-  command: test
-  type: multichoice
-  conditional: true
-  default: ['Off']
-  choices:
-    - 'Off'
-    - Random Selection
-    - Choose
-    - All
-    - Test 1
-    - Test 2
-    - Test 3
-  help: Test option
-  ui: option_test

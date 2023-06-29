@@ -273,10 +273,6 @@ class RandoGUI(QMainWindow):
         self.ui.delete_preset.clicked.connect(self.delete_preset)
         self.preset_selection_changed()
 
-        temp = ConditionalMultiselect("Test", ["test 1", "test 2", "test 3"])
-        self.ui.widget.parentWidget().layout().replaceWidget(self.ui.widget, temp)
-        temp.compositeChanged.connect(lambda: print("composite change"))
-
         # hide currently unsupported options to make this version viable for public use
         getattr(self.ui, "label_for_option_got_starting_state").setVisible(False)
         getattr(self.ui, "option_got_starting_state").setVisible(False)
