@@ -75,6 +75,7 @@ main.dol:
     isCurrentStage: 0x801bb3c0
     actuallyTriggerEntrance: 0x801bb5d0
     Reloader__setReloadTrigger: 0x801bad90
+    RoomManager__getRoomByIndex: 0x801b3970
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
 d_a_obj_time_boatNP.rel:

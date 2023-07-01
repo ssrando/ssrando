@@ -342,7 +342,8 @@ nop
 nop
 
 ; hook into function before spawning link at entrance
-.org 0x800635b4
+.org 0x8006358c
+; lbz r4, -0x3ca3(r13) ; RELOADER_TYPE
 bl do_er_fixes
 
 .close

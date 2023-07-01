@@ -143,6 +143,7 @@ extern "C" {
         param_9: u8,
     );
     static mut RELOADER_PTR: *mut Reloader;
+    fn RoomManager__getRoomByIndex(room_mgr: *mut c_void, room_number: u32);
     fn Reloader__setReloadTrigger(reloader: *mut Reloader, trigger: u8);
 }
 
@@ -612,7 +613,8 @@ pub fn send_to_start() {
 }
 
 #[no_mangle]
-pub fn do_er_fixes() {
+// args only used by replaced function call
+pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
     unsafe {
         if (*RELOADER_PTR).initial_speed > 30f32 {
             (*RELOADER_PTR).initial_speed = 30f32;
@@ -639,6 +641,9 @@ pub fn do_er_fixes() {
             sceneflag_set_global(7, 113);
         }
     }
+
+    // replaced function call
+    unsafe { RoomManager__getRoomByIndex(room_mgr, room_number); }
 }
 
 #[panic_handler]
