@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+CUSTOM_HINT_DISTRIBUTION_PATH = Path("custom_hint_distribution.json")
+
 try:
     # can be imported if running the binary
     from sys import _MEIPASS

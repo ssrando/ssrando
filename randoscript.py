@@ -56,7 +56,6 @@ def main():
                 ] = f'(default: {opt["default"]}, min: {opt["min"]}, max: {opt["max"]}) {opt["help"]}'
         elif opt["type"] == "singlechoice":
             args["choices"] = opt["choices"]
-            # --max-batreaux-reward being the only int choice...
             if isinstance(opt["default"], int):
                 args["type"] = int
         seed_opts.add_argument(f"--{optname}", **args)

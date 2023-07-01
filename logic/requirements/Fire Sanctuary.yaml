@@ -182,7 +182,7 @@ Main:
         West of Boss Door: Unlock Shortcut to Pre Plats
       locations:
         Unlock Shortcut to Pre Plats: Nothing
-        Release Lava: Mogma Mitts
+        Release Lava: Mogma Mitts | FS Lava Flow option
 
   Front of Boss Door:
     exits:

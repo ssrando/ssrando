@@ -3,11 +3,12 @@ from logic.constants import *
 from logic.inventory import EXTENDED_ITEM
 from logic.logic import DNFInventory
 from logic.logic_input import Areas
+
 from hints.hint_distribution import HintDistribution
 from hints.hint_types import *
 from .randomize import LogicUtils, UserOutput
 from options import Options
-from paths import RANDO_ROOT_PATH
+from paths import CUSTOM_HINT_DISTRIBUTION_PATH, RANDO_ROOT_PATH
 from typing import Dict, List
 
 STATUS = Enum("STATUS", ["required", "useful", "useless"])
@@ -22,12 +23,20 @@ class Hints:
         self.options = options
         self.rng = rng
 
-        with open(
-            RANDO_ROOT_PATH
-            / f"hints/distributions/{self.options['hint-distribution']}.json"
-        ) as f:
-            self.dist = HintDistribution()
-            self.dist.read_from_file(f)
+        self.dist = HintDistribution()
+        if self.options["hint-distribution"] == "Custom":
+            if not CUSTOM_HINT_DISTRIBUTION_PATH.exists():
+                raise Exception(
+                    "Custom distro file not found. Ensure that custom_hint_distribution.json exists in the same directory as the randomizer"
+                )
+            with CUSTOM_HINT_DISTRIBUTION_PATH.open("r") as f:
+                self.dist.read_from_file(f)
+        else:
+            with open(
+                RANDO_ROOT_PATH
+                / f"hints/distributions/{self.options['hint-distribution']}.json"
+            ) as f:
+                self.dist.read_from_file(f)
 
     def do_hint_per_status(self, hintmodes, does_hint, hintcls, get_check, hintpack):
         for hintname, raw_check in hintpack.items():
@@ -110,27 +119,31 @@ class Hints:
             unhintables + hinted_checks,
             check_hint_status,
         )
-        hintstone_hints = self.dist.get_hints()
+        fi_hints, hintstone_hints = self.dist.get_hints()
         self.useroutput.progress_callback("placing hints...")
         hintstone_hints = {
             hintname: hint for hint, hintname in zip(hintstone_hints, HINTS)
         }
         self.hints_per_stone = self.dist.hints_per_stone
         self.randomize(hintstone_hints)
-
+        placed_fi_hints = {FI_HINTS_KEY: FiHintWrapper(fi_hints)}
         placed_hintstone_hints = {
             stone: GossipStoneHintWrapper(
-                [hintstone_hints[hintname] for hintname in hintnames]
+                [
+                    hintstone_hints[hintname]
+                    for hintname in self.logic.placement.stones[stone]
+                ]
             )
-            for stone, hintnames in self.logic.placement.stones.items()
+            for stone in self.areas.gossip_stones
         }
+        self.logic.placement.hints = (
+            placed_fi_hints | placed_hintstone_hints | non_hintstone_hints
+        )
 
-        self.logic.placement.hints = placed_hintstone_hints | non_hintstone_hints
-
-    def randomize(self, hints: Dict[EIN, GossipStoneHint]):
+    def randomize(self, hints: Dict[EIN, RegularHint]):
         for hintname, hint in hints.items():
             hint_bit = EXTENDED_ITEM[hintname]
-            if isinstance(hint, LocationGossipStoneHint) and hint.item in EXTENDED_ITEM:
+            if isinstance(hint, LocationHint) and hint.item in EXTENDED_ITEM:
                 itembit = EXTENDED_ITEM[hint.item]
                 hint_req = DNFInventory(hint_bit)
                 self.logic.backup_requirements[itembit] &= hint_req
