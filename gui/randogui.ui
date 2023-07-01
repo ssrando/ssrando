@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -518,46 +518,18 @@
            <item>
             <layout class="QVBoxLayout" name="vlay_shuffles">
              <item>
-              <layout class="QVBoxLayout" name="vlay_batreaux">
-               <item>
-                <widget class="QLabel" name="label_for_option_max_batreaux_reward">
-                 <property name="text">
-                  <string>Maximum Batreaux Reward</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="option_max_batreaux_reward"/>
-               </item>
-              </layout>
+              <widget class="QCheckBox" name="option_shopsanity">
+               <property name="text">
+                <string>Shuffle Beedle's Shop</string>
+               </property>
+              </widget>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="vlay_shopsanity">
-               <item>
-                <widget class="QLabel" name="label_for_option_shopsanity">
-                 <property name="text">
-                  <string>Beedle's Shop</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="option_shopsanity"/>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="vlay_rupeesanity">
-               <item>
-                <widget class="QLabel" name="label_for_option_rupeesanity">
-                 <property name="text">
-                  <string>Rupeesanity</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="option_rupeesanity"/>
-               </item>
-              </layout>
+              <widget class="QCheckBox" name="option_rupeesanity">
+               <property name="text">
+                <string>Rupeesanity</string>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QCheckBox" name="option_tadtonesanity">
@@ -986,6 +958,20 @@
               <widget class="QCheckBox" name="option_randomize_boss_key_puzzles">
                <property name="text">
                 <string>Randomize Boss Key Puzzles</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_for_dungeon_patches">
+               <property name="text">
+                <string>Dungeon Convenience Patches</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_fs_lava_flow">
+               <property name="text">
+                <string>Skip Fire Sanctuary Lava Chase</string>
                </property>
               </widget>
              </item>

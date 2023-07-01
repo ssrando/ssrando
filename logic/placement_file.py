@@ -1,7 +1,6 @@
 from .constants import *
 from options import Options
 from version import VERSION
-from util.file_accessor import read_yaml_file_cached
 
 import json
 
@@ -111,7 +110,7 @@ class PlacementFile:
         )
 
         check_sets_equal(
-            set(areas.gossip_stones.keys()) | set(SONG_HINTS),
+            {FI_HINTS_KEY} | set(areas.gossip_stones.keys()) | set(SONG_HINTS),
             set(self.hints.keys()),
             "Gossip Stone Hints",
         )

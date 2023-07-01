@@ -301,7 +301,7 @@ pub fn process_startflags() {
         }
     }
 
-    let additional_start_options_2 = flag_mem.next_u8().unwrap_or_default();
+    let additional_start_options_2 = flag_mem.next_u16().unwrap_or_default();
 
     let mut pouch_slot_iter = unsafe { (*FILE_MANAGER).FA.pouch_items.iter_mut() };
 

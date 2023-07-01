@@ -14,15 +14,15 @@ main.dol:
   is_custom_rando_item: 0x806785A8
   fix_custom_item_get: 0x806785C8
   process_startflags: 0x80678668
-  handle_bk_map_dungeonflag: 0x80678A1C
-  rando_text_command_handler: 0x80678ACC
-  textbox_a_pressed_or_b_held: 0x80678DAC
-  set_goddess_sword_pulled_scene_flag: 0x80678DDC
-  randomize_boss_key_start_pos: 0x80678E08
-  get_item_arc_name: 0x80678E34
-  get_item_model_name_ptr: 0x80678E64
-  enforce_loftwing_speed_cap: 0x80678E84
-  get_glow_color: 0x80678F6C
+  handle_bk_map_dungeonflag: 0x80678A70
+  rando_text_command_handler: 0x80678B20
+  textbox_a_pressed_or_b_held: 0x80678E00
+  set_goddess_sword_pulled_scene_flag: 0x80678E30
+  randomize_boss_key_start_pos: 0x80678E5C
+  get_item_arc_name: 0x80678E88
+  get_item_model_name_ptr: 0x80678EB8
+  enforce_loftwing_speed_cap: 0x80678ED8
+  get_glow_color: 0x80678FCC
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340

@@ -304,7 +304,7 @@ Beedle's Shop:
     Day Exit: Day
 
   Stall:
-    entrance: Day & Beedle Stall Access Token
+    entrance: Day
     exits:
       Beedle's Shop: Nothing
     locations:

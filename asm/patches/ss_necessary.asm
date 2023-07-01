@@ -879,3 +879,16 @@ b 0x460
 .org 0x91c
 nop
 .close
+
+.open "d_a_obj_time_boatNP.rel"
+
+; 0x80e20260 in ghidra, seems to be some base multiplier at 0.3 (but changing this to something
+; less than 1 doesnt seem to change anything?)
+.org 0x5d74
+.float 1.5 ; seems to make the boat go 1.5x faster
+
+; 0x80e20274 in ghidra, sand sea boat sprint speed multiplier
+.org 0x5d88
+.float 3.0 ; original sprint speed multiplier is 2.0, so total speed difference is 2.25x
+
+.close
