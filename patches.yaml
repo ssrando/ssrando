@@ -164,6 +164,8 @@ global:
       - 16 # Lanayru Gorge Intro Cutscene
     Fire Sanctuary:
       - 83 # Cutscene showing the outside of the Fire Sanctuary
+      - onlyif: Option "fs-lava-flow" Enabled
+        flag: 64 # Blow up rock underground starting lava chase (back half lava flow)
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -787,7 +789,7 @@ F000: # Skyloft
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 1114 # bow
+      trigstoryfid: 944 # bow
   - name: Fledge for Arrow minigame
     type: objpatch
     id: 0xFDD8
@@ -795,7 +797,7 @@ F000: # Skyloft
     room: 0
     objtype: OBJ
     object:
-      trigstoryfid: 1114 # bow
+      trigstoryfid: 944 # bow
 #  - name: Batreaux unlock
 #    type: objpatch
 #    id: 0xFC4A
@@ -885,7 +887,7 @@ F000: # Skyloft
     room: 0
     objtype: OBJ
     object:
-      untrigstoryfid: 1114 # bow
+      untrigstoryfid: 944 # bow
   - name: untrigger fledge on academy after bow layer 6
     type: objpatch
     id: 0xFDD3
@@ -893,7 +895,7 @@ F000: # Skyloft
     room: 0
     objtype: OBJ
     object:
-      untrigstoryfid: 1114 # bow
+      untrigstoryfid: 944 # bow
   - name: delete Wryna l4 2
     type: objdelete
     id: 0xFDF1
