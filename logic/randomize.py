@@ -352,6 +352,7 @@ class Rando:
             NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
+            FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])

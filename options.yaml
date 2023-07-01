@@ -1025,3 +1025,11 @@
   bits: 5
   help: How many groups of Tadtones to start with.
   ui: option_starting_tadtones
+# Dungeon convenience patches - might change to multichoice later
+- name: FS Last Room Lava Flow
+  command: fs-lava-flow
+  type: boolean
+  default: false
+  help: "If enabled, the lava in the last room of Fire Sanctuary will be flowing by default (without needing to
+        blow up the underground boulder)."
+  ui: option_fs_lava_flow

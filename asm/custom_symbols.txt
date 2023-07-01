@@ -14,14 +14,14 @@ main.dol:
   fix_custom_item_get: 0x80678590
   check_scrapper_repaired: 0x80678644
   process_startflags: 0x80678654
-  handle_bk_map_dungeonflag: 0x80678A04
-  rando_text_command_handler: 0x80678AB4
-  textbox_a_pressed_or_b_held: 0x80678D94
-  set_goddess_sword_pulled_scene_flag: 0x80678DC4
-  randomize_boss_key_start_pos: 0x80678DF0
-  get_item_arc_name: 0x80678E1C
-  get_item_model_name_ptr: 0x80678E60
-  enforce_loftwing_speed_cap: 0x80678E9C
+  handle_bk_map_dungeonflag: 0x80678A5C
+  rando_text_command_handler: 0x80678B0C
+  textbox_a_pressed_or_b_held: 0x80678DEC
+  set_goddess_sword_pulled_scene_flag: 0x80678E1C
+  randomize_boss_key_start_pos: 0x80678E48
+  get_item_arc_name: 0x80678E74
+  get_item_model_name_ptr: 0x80678EB8
+  enforce_loftwing_speed_cap: 0x80678EF4
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
