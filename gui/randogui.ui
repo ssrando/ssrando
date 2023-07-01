@@ -979,6 +979,20 @@
               </widget>
              </item>
              <item>
+              <widget class="QLabel" name="label_for_dungeon_patches">
+               <property name="text">
+                <string>Dungeon Convenience Patches</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_fs_lava_flow">
+               <property name="text">
+                <string>Skip Fire Sanctuary Lava Chase</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <spacer name="vspace_dungeons">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>

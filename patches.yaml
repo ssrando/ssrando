@@ -170,6 +170,8 @@ global:
       - 16 # Lanayru Gorge Intro Cutscene
     Fire Sanctuary:
       - 83 # Cutscene showing the outside of the Fire Sanctuary
+      - onlyif: Option "fs-lava-flow" Enabled
+        flag: 64 # Blow up rock underground starting lava chase (back half lava flow)
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
