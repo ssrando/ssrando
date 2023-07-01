@@ -155,8 +155,11 @@ def main():
                     raise
                 except Exception as e:
                     import traceback
+
                     stack_trace = traceback.format_exc()
-                    error_message = f"error seed {i}:\n\n" + str(e) + "\n\n" + stack_trace
+                    error_message = (
+                        f"error seed {i}:\n\n" + str(e) + "\n\n" + stack_trace
+                    )
                     print(error_message, file=sys.stderr)
 
         if bulk_threads == 1:
