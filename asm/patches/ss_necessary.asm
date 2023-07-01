@@ -874,6 +874,7 @@ beq 0x460
 b 0x460
 
 .close
+
 .open "d_a_t_wood_areaNP.rel"
 ; skip over the check for valid nearby items so any item can be bonked down nearby
 .org 0x91c
