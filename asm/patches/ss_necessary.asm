@@ -429,21 +429,13 @@ cmpwi r3, 0 ; function returns 0 if returning from the trial should be delayed
 beq 0x23A4
 nop
 
-; to allow trials to be re-enterable, remove the untrigger storyflag for each trial
-.org 0x2F48
-li r4, 0x7FFF ; no storyflag
-
-.org 0x2F88
-li r4, 0x7FFF
-
-.org 0x2FD4
-li r4, 0x7FFF
-
-.org 0x3020
-li r4, 0x7FFF
+; to allow trials to be re-enterable, remove references to untrigger storyflags
+; (0x80ccefa0 - address + 0x130)
+.org 0x2F10
+blr ; skip over func that deletes trial if storyflag is set
 
 .org 0x2B08
-li r4, 0x7FFF
+li r4, 0x7FFF ; no storyflag
 
 .org 0x2B48
 li r4, 0x7FFF
@@ -465,6 +457,12 @@ li r4, 0x7FFF
 
 .org 0xD64
 li r4, 0x7FFF
+
+.org 0x2E79
+blr ; remove function that checks for untrigger sceneflag and involves collision destructor
+
+.org 0x2008
+li r3, 0 ; checks for untrigger sceneflag; always set to false
 
 ; this usually delays starting the trial finish event until the
 ; tear display is ready, which can softlock so skip the check,
