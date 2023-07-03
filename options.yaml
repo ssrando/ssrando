@@ -15,7 +15,7 @@
   type: dirpath
   default: "."
   permalink: false
-  help: "Path to folder, where to write the patched wbfs and the spoiler log."
+  help: "Path to folder, where to write the patched ISO and the spoiler log."
 - name: JSON spoiler log
   command: json
   type: boolean

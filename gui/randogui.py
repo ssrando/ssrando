@@ -45,7 +45,7 @@ from ssrando import Randomizer, VERSION
 from paths import RANDO_ROOT_PATH
 from gui.ui_randogui import Ui_MainWindow
 from yaml_files import checks
-from witmanager import WitManager
+from extractmanager import ExtractManager
 
 # Allow keyboard interrupts on the command line to instantly close the program.
 import signal
@@ -79,7 +79,7 @@ class RandoGUI(QMainWindow):
     def __init__(self, areas: Areas, options: Options):
         super().__init__()
 
-        self.wit_manager = WitManager(Path(".").resolve())
+        self.extract_manager = ExtractManager(Path(".").resolve())
         self.randothread = None
         self.error_msg = None
         self.progress_dialog = None
@@ -349,7 +349,7 @@ class RandoGUI(QMainWindow):
                 "Running from source without git is not supported!"
             )
 
-        elif not self.wit_manager.actual_extract_already_exists():
+        elif not self.extract_manager.actual_extract_already_exists():
             self.ask_for_clean_iso()
 
     def ask_for_clean_iso(self):
@@ -369,7 +369,7 @@ class RandoGUI(QMainWindow):
             print("ERROR: tried to randomize multiple times at once!")
             return
         dry_run = self.options["dry-run"]
-        if not (dry_run or self.wit_manager.actual_extract_already_exists()):
+        if not (dry_run or self.extract_manager.actual_extract_already_exists()):
             self.randomize_after_iso_extract = True
             self.ask_for_clean_iso()
             return
@@ -379,7 +379,7 @@ class RandoGUI(QMainWindow):
         if dry_run:
             extra_steps = 1  # done
         else:
-            extra_steps = 101  # wit create wbfs + done
+            extra_steps = 101  # create iso + done
 
         self.progress_dialog = ProgressDialog(
             "Randomizing",
@@ -387,7 +387,7 @@ class RandoGUI(QMainWindow):
             self.rando.get_total_progress_steps + extra_steps,
         )
         self.randomizer_thread = RandomizerThread(
-            self.rando, self.wit_manager, self.options["output-folder"]
+            self.rando, self.extract_manager, self.options["output-folder"]
         )
         self.randomizer_thread.update_progress.connect(self.ui_progress_callback)
         self.randomizer_thread.randomization_complete.connect(
@@ -421,11 +421,15 @@ class RandoGUI(QMainWindow):
     def randomization_complete(self):
         self.progress_dialog.reset()
 
+        iso_text = ""
+        if not self.options["dry-run"]:
+            iso_text = ", the randomized ISO has been placed in the output folder"
+
         if self.options["no-spoiler-log"]:
-            text = f"""Randomization complete.<br>RANDO HASH: {self.rando.randomizer_hash}"""
+            text = f"""Randomization complete{iso_text}.<br>RANDO HASH: {self.rando.randomizer_hash}"""
         else:
-            text = f"""Randomization complete.<br>RANDO HASH: {self.rando.randomizer_hash}<br>
-                    If you get stuck, check the progression spoiler log in the output folder."""
+            text = f"""Randomization complete{iso_text}.<br>RANDO HASH: {self.rando.randomizer_hash}<br>
+                    If you get stuck, check the progression spoiler log in the logs folder."""
 
         self.complete_dialog = QMessageBox()
         self.complete_dialog.setTextFormat(Qt.TextFormat.RichText)
@@ -448,7 +452,9 @@ class RandoGUI(QMainWindow):
             "Extracting Game Files", "Initializing...", 100
         )
         self.progress_dialog.setAutoClose(True)
-        self.extract_thread = ExtractSetupThread(self.wit_manager, clean_iso_path, None)
+        self.extract_thread = ExtractSetupThread(
+            self.extract_manager, clean_iso_path, None
+        )
         self.extract_thread.update_total_steps.connect(
             lambda total_steps: self.progress_dialog.setMaximum(total_steps)
         )

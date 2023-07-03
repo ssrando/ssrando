@@ -45,10 +45,10 @@ When these options selected, even if they don't appear as such in the menu, all 
 If you didn't follow these rules, your progress cannot be restored; delete the save from the Wii menu / Dolphin's toolbar and correct the settings to play the game.
 
 ### For Dolphin
-1. Just open the generated `SOUE01.wbfs` in Dolphin
+1. Just open the generated `SOUE01.iso` in Dolphin
 
 ### For console
-1. Move the generated `SOUE01.wbfs` to your external medium in this folder (the folder name may change depending on the game loader you are using):
+1. Move the generated `SOUE01.iso` to your external medium in this folder (the folder name may change depending on the game loader you are using):
 
     `/wbfs/The Legend of Zelda Skyward Sword [SOUE01]/`
 2. Launch the USB loader, you should see the game as "The Legend of Zelda Skyward Sword"
