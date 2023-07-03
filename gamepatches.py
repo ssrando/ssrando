@@ -324,7 +324,7 @@ TRIAL_COMPLETE_STORYFLAGS = {
     LANAYRU_TRIAL_GATE: 0x399,
 }
 
-SHOP_TEXT_PATCHES = { 
+SHOP_TEXT_PATCHES = {
     # Beedle
     ## (undiscounted, discounted, normal price, discounted price)
     "Beedle - 50 Rupee Item": (25, 26, 50, 25),
@@ -347,7 +347,6 @@ SHOP_TEXT_PATCHES = {
     "Beedle - 1000 Rupee Item": (33, 34, 1000, 500),
     "Beedle - 1200 Rupee Item": (31, 32, 1200, 600),
     "Beedle - 1600 Rupee Item": (21, 22, 1600, 800),
-
     # Rupin
     ## location: (text index, price)
     "Rupin - 2nd 20 Rupee Item": (28, 20),
@@ -1286,7 +1285,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
     )
     event_re = re.compile(r"event/(?P<eventfile>[^/]+)/(?P<eventid>[^/]+)")
     oarc_re = re.compile(r"oarc/(?P<stage>[^/]+)/l(?P<layer>[^/]+)")
-    shop_smpl_re = re.compile(r"ShpSmpl/(?P<index>[0-9]+)")
+    shop_smpl_re = re.compile(r"(?P<stage>[^/]+)/ShpSmpl/(?P<index>[0-9]+)")
 
     for checkname, itemname in filled_checks.items():
         # single gratitude crystals aren't randomized
@@ -1339,17 +1338,19 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                     # see above
                     stageoarcs[(stage, layer)].add("dummy")
             elif shop_smpl_match:
+                stage = shop_smpl_match.group("stage")
                 index = int(shop_smpl_match.group("index"))
                 # TODO: super fix this, add all models/arcs to items.yaml
                 arcname = item.get("getarcname", None)
                 modelname = item.get("getmodelname", None)
                 oarc = item["oarc"]
+
                 if oarc:
                     if isinstance(oarc, list):
                         for o in oarc:
-                            stageoarcs[("F002r", 1)].add(o)
+                            stageoarcs[(stage, 0)].add(o)
                     else:
-                        stageoarcs[("F002r", 1)].add(oarc)
+                        stageoarcs[(stage, 0)].add(oarc)
                 if modelname is None or arcname is None:
                     raise Exception(f"No modelnames for {item}.")
                 shoppatches[index] = (item["id"], arcname, modelname)
@@ -1525,7 +1526,10 @@ class GamePatcher:
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("custom_items")
         self.add_asm_patch("post_boko_base_platforms")
-        if self.placement_file.options["beedle-shopsanity"] or self.placement_file.options["rupin-shopsanity"]:
+        if (
+            self.placement_file.options["beedle-shopsanity"]
+            or self.placement_file.options["rupin-shopsanity"]
+        ):
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
         if self.placement_file.options["bit-patches"] == "Disable BiT":
@@ -1801,7 +1805,10 @@ class GamePatcher:
 
     def shopsanity_patches(self):
         for location in SHOP_TEXT_PATCHES:
-            if location.startswith("Beedle") and self.placement_file.options["beedle-shopsanity"]:
+            if (
+                location.startswith("Beedle")
+                and self.placement_file.options["beedle-shopsanity"]
+            ):
                 normal, discounted, normal_price, discount_price = SHOP_TEXT_PATCHES[
                     location
                 ]
@@ -1858,19 +1865,20 @@ class GamePatcher:
                     self.eventpatches["105-Terry"].append(
                         {"name": discounted, "type": "textadd", "text": discount_text}
                     )
-            elif location.startswith("Rupin") and self.placement_file.options["rupin-shopsanity"]:
+            elif (
+                location.startswith("Rupin")
+                and self.placement_file.options["rupin-shopsanity"]
+            ):
                 text_index, price = SHOP_TEXT_PATCHES[location]
                 sold_item = self.placement_file.item_locations[
                     self.areas.short_to_full(location)
                 ]
                 sold_item = strip_item_number(sold_item)
-                rupin_text = (
-                    break_lines(
-                        f"You've got quite an eye, friend. That "
-                        f"there is a <y<{sold_item}>>."
-                        f"It cost a mere <r<{price} Rupees>>."
-                        f"{RUPIN_BUY_SWITCH}"
-                    )
+                rupin_text = break_lines(
+                    f"You've got quite an eye, friend. That "
+                    f"there is a <y<{sold_item}>>."
+                    f"It cost a mere <r<{price} Rupees>>."
+                    f"{RUPIN_BUY_SWITCH}"
                 )
 
                 if location in shop_texts:
@@ -3076,12 +3084,9 @@ class GamePatcher:
             rel = REL()
             rel.read(rel_data)
             apply_rel_patch(self, rel, file, codepatches)
-            if (
-                file == "d_a_shop_sampleNP.rel"
-                and (
-                    self.placement_file.options["beedle-shopsanity"]
-                    or self.placement_file.options["rupin-shopsanity"]
-                )
+            if file == "d_a_shop_sampleNP.rel" and (
+                self.placement_file.options["beedle-shopsanity"]
+                or self.placement_file.options["rupin-shopsanity"]
             ):
                 self.do_shoptable_rel_patch(rel)
             rel.save_changes()
@@ -3102,29 +3107,29 @@ class GamePatcher:
             24: 17,
             17: 18,
             # Rupin shop items
-            9: 0, # arrows
-            10: 1, # bombs
-            11: 2, # wood shield
-            12: 3, # iron shield
-            13: 4, # sacred shield
-            14: 5, # seeds
-            15: 6, # small satchel
-            16: 7, # small quiver
-            19: 8, # small bomb bag
+            9: 0,  # arrows
+            10: 1,  # bombs
+            11: 2,  # wood shield
+            12: 3,  # iron shield
+            13: 4,  # sacred shield
+            14: 5,  # seeds
+            15: 6,  # small satchel
+            16: 7,  # small quiver
+            19: 8,  # small bomb bag
         }
         shop_price_patches = {
             17: 100,
             18: 100,
             # Rupin shop items
-            9: 20, # arrows
-            10: 20, # bombs
-            11: 50, # wood shield
-            12: 100, # iron shield
-            13: 500, # sacred shield
-            14: 20, # seeds
-            15: 100, # small satchel
-            16: 150, # small quiver
-            19: 150, # small bomb bag
+            9: 20,  # arrows
+            10: 20,  # bombs
+            11: 50,  # wood shield
+            12: 100,  # iron shield
+            13: 500,  # sacred shield
+            14: 20,  # seeds
+            15: 100,  # small satchel
+            16: 150,  # small quiver
+            19: 150,  # small bomb bag
         }
         shop_entrypoint_patches = {
             17: 10539,
@@ -3134,15 +3139,15 @@ class GamePatcher:
             17: 100,
             18: 100,
             # Rupin shop items
-            9: 100, # arrows
-            10: 100, # bombs
-            11: 100, # wood shield
-            12: 100, # iron shield
-            13: 100, # sacred shield
-            14: 100, # seeds
-            15: 100, # small satchel
-            16: 100, # small quiver
-            19: 100, # small bomb bag
+            9: 100,  # arrows
+            10: 100,  # bombs
+            11: 100,  # wood shield
+            12: 100,  # iron shield
+            13: 100,  # sacred shield
+            14: 100,  # seeds
+            15: 100,  # small satchel
+            16: 100,  # small quiver
+            19: 100,  # small bomb bag
         }
         sold_out_storyflag_patches = {
             24: 937,
@@ -3151,15 +3156,15 @@ class GamePatcher:
             25: 940,  # bug net
             27: 941,  # bug medal
             # Rupin shop items
-            9: 960, # arrows
-            10: 961, # bombs
-            11: 962, # wood shield
-            12: 963, # iron shield
-            13: 964, # sacred shield
-            14: 965, # seeds
-            15: 966, # small satchel
-            16: 967, # small quiver
-            19: 968, # small bomb bag
+            9: 960,  # arrows
+            10: 961,  # bombs
+            11: 962,  # wood shield
+            12: 963,  # iron shield
+            13: 964,  # sacred shield
+            14: 965,  # seeds
+            15: 966,  # small satchel
+            16: 967,  # small quiver
+            19: 968,  # small bomb bag
         }
         SHOP_LIST_OFFSET = 0x6D8C
         ENTRY_SIZE = 0x54

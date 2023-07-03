@@ -416,7 +416,7 @@ class Rando:
                     locations={final_check: sword},
                 )
 
-        # self.placement |= HARDCODED_PLACEMENT(self.norm)
+        self.placement |= HARDCODED_PLACEMENT(self.norm)
 
         if self.options["open-et"]:
             self.placement.add_unplaced_items(set(KEY_PIECES))
@@ -426,7 +426,7 @@ class Rando:
 
         if not options[RANDOMIZED_BEEDLE_OPTION]:
             self.placement |= VANILLA_BEEDLE_PLACEMENT(self.norm, self.areas.checks)
-        
+
         if not options[RANDOMIZED_RUPIN_OPTION]:
             self.placement |= VANILLA_RUPIN_PLACEMENT(self.norm, self.areas.checks)
 
