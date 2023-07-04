@@ -424,76 +424,76 @@ Can Access Beedle's Shop:
 
 ### Left-most
 
-Beedle's Shop - 300 Rupee Item:
+Beedle's Shop - First Outer Left Item:
   Can Access Beedle's Shop &
   Can Afford 300 Rupees &
   (Progressive Pouch x1 | Option "beedle-shopsanity" Enabled)
 
-Beedle's Shop - 600 Rupee Item:
+Beedle's Shop - Second Outer Left Item:
   Can Access Beedle's Shop &
   Can Afford 600 Rupees &
   (Progressive Pouch x1 | Option "beedle-shopsanity" Enabled)
 
-Beedle's Shop - 1200 Rupee Item:
+Beedle's Shop - Third Outer Left Item:
   Can Access Beedle's Shop &
   Can Afford 1200 Rupees &
   (Progressive Pouch x1 | Option "beedle-shopsanity" Enabled)
 
 ### Left
 
-Beedle's Shop - 800 Rupee Item:
+Beedle's Shop - First Inner Left Item:
   Can Access Beedle's Shop & Can Afford 800 Rupees
 
-Beedle's Shop - 1600 Rupee Item:
+Beedle's Shop - Second Inner Left Item:
   Can Access Beedle's Shop & Can Afford 1600 Rupees
 
 ### Right
 
-Beedle's Shop - First 100 Rupee Item:
+Beedle's Shop - First Inner Right Item:
   Can Access Beedle's Shop
 
-Beedle's Shop - Second 100 Rupee Item:
+Beedle's Shop - Second Inner Right Item:
   Can Access Beedle's Shop
 
-Beedle's Shop - Third 100 Rupee Item:
+Beedle's Shop - Third Inner Right Item:
   Can Access Beedle's Shop & Can Medium Rupee Farm
   # To reduce necessary rupee-farming at the start, the third item logically needs an efficient rupee-farming method
 
 ### Right-most
 
-Beedle's Shop - 50 Rupee Item:
+Beedle's Shop - First Outer Right Item:
   Can Access Beedle's Shop
 
-Beedle's Shop - 1000 Rupee Item:
+Beedle's Shop - Second Outer Right Item:
   Can Access Beedle's Shop & Can Afford 1000 Rupees
 
 ## Rupin's Shop
 
-Central Skyloft - Rupin's Shop - 1st 150 Rupee Item:
+Central Skyloft - Gear Shop - Top Left Item:
   Can Afford 150 Rupees
 
-Central Skyloft - Rupin's Shop - 1st 100 Rupee Item:
+Central Skyloft - Gear Shop - Middle Left Item:
   Can Afford 100 Rupees
 
-Central Skyloft - Rupin's Shop - 2nd 150 Rupee Item:
+Central Skyloft - Gear Shop - Bottom Left Item:
   Can Afford 150 Rupees
 
-Central Skyloft - Rupin's Shop - 1st 20 Rupee Item:
+Central Skyloft - Gear Shop - Left Front Item:
   Can Afford 20 Rupees
 
-Central Skyloft - Rupin's Shop - 2nd 20 Rupee Item:
+Central Skyloft - Gear Shop - Middle Front Item:
   Can Afford 20 Rupees
 
-Central Skyloft - Rupin's Shop - 3rd 20 Rupee Item:
+Central Skyloft - Gear Shop - Right Front Item:
   Can Afford 20 Rupees
 
-Central Skyloft - Rupin's Shop - 50 Rupee Item:
+Central Skyloft - Gear Shop - Bottom Right Item:
   Can Afford 50 Rupees
 
-Central Skyloft - Rupin's Shop - 2nd 100 Rupee Item:
+Central Skyloft - Gear Shop - Middle Right Item:
   Can Afford 100 Rupees
 
-Central Skyloft - Rupin's Shop - 500 Rupee Item:
+Central Skyloft - Gear Shop - Top Right Item:
   Can Afford 500 Rupees
 
 ## Batreaux Rewards

@@ -66,29 +66,29 @@ def norm_values(dict: Dict[EIN, str]):
 HARDCODED_PLACEMENT = norm_keys({})
 
 BEEDLE_CHECKS = [
-    "Beedle's Shop - 300 Rupee Item",
-    "Beedle's Shop - 600 Rupee Item",
-    "Beedle's Shop - 1200 Rupee Item",
-    "Beedle's Shop - 800 Rupee Item",
-    "Beedle's Shop - 1600 Rupee Item",
-    "Beedle's Shop - First 100 Rupee Item",
-    "Beedle's Shop - Second 100 Rupee Item",
-    "Beedle's Shop - Third 100 Rupee Item",
-    "Beedle's Shop - 50 Rupee Item",
-    "Beedle's Shop - 1000 Rupee Item",
+    "Beedle's Shop - First Outer Left Item",
+    "Beedle's Shop - Second Outer Left Item",
+    "Beedle's Shop - Third Outer Left Item",
+    "Beedle's Shop - First Inner Left Item",
+    "Beedle's Shop - Second Inner Left Item",
+    "Beedle's Shop - First Inner Right Item",
+    "Beedle's Shop - Second Inner Right Item",
+    "Beedle's Shop - Third Inner Right Item",
+    "Beedle's Shop - First Outer Right Item",
+    "Beedle's Shop - Second Outer Right Item",
 ]
 VANILLA_BEEDLE_PLACEMENT = norm_force_vanilla(BEEDLE_CHECKS)
 
 RUPIN_CHECKS = [
-    "Central Skyloft - Rupin's Shop - 1st 150 Rupee Item",
-    "Central Skyloft - Rupin's Shop - 1st 100 Rupee Item",
-    "Central Skyloft - Rupin's Shop - 2nd 150 Rupee Item",
-    "Central Skyloft - Rupin's Shop - 1st 20 Rupee Item",
-    "Central Skyloft - Rupin's Shop - 2nd 20 Rupee Item",
-    "Central Skyloft - Rupin's Shop - 3rd 20 Rupee Item",
-    "Central Skyloft - Rupin's Shop - 50 Rupee Item",
-    "Central Skyloft - Rupin's Shop - 2nd 100 Rupee Item",
-    "Central Skyloft - Rupin's Shop - 500 Rupee Item",
+    "Central Skyloft - Gear Shop - Top Left Item",
+    "Central Skyloft - Gear Shop - Middle Left Item",
+    "Central Skyloft - Gear Shop - Bottom Left Item",
+    "Central Skyloft - Gear Shop - Left Front Item",
+    "Central Skyloft - Gear Shop - Middle Front Item",
+    "Central Skyloft - Gear Shop - Right Front Item",
+    "Central Skyloft - Gear Shop - Bottom Right Item",
+    "Central Skyloft - Gear Shop - Middle Right Item",
+    "Central Skyloft - Gear Shop - Top Right Item",
 ]
 VANILLA_RUPIN_PLACEMENT = norm_force_vanilla(RUPIN_CHECKS)
 

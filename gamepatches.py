@@ -327,37 +327,37 @@ TRIAL_COMPLETE_STORYFLAGS = {
 SHOP_TEXT_PATCHES = {
     # Beedle
     ## (undiscounted, discounted, normal price, discounted price)
-    "Beedle - 50 Rupee Item": (25, 26, 50, 25),
-    "Beedle - First 100 Rupee Item": (23, 24, 100, 50),
-    "Beedle - Second 100 Rupee Item": (
+    "Beedle - First Outer Right Item": (25, 26, 50, 25),
+    "Beedle - First Inner Right Item": (23, 24, 100, 50),
+    "Beedle - Second Inner Right Item": (
         "Second 100R undiscounted Text",
         "Second 100R discounted Text",
         100,
         50,
     ),
-    "Beedle - Third 100 Rupee Item": (
+    "Beedle - Third Inner Right Item": (
         "Third 100R undiscounted Text",
         "Third 100R discounted Text",
         100,
         50,
     ),
-    "Beedle - 300 Rupee Item": (19, 20, 300, 150),
-    "Beedle - 600 Rupee Item": (29, 30, 600, 300),
-    "Beedle - 800 Rupee Item": (27, 28, 800, 400),
-    "Beedle - 1000 Rupee Item": (33, 34, 1000, 500),
-    "Beedle - 1200 Rupee Item": (31, 32, 1200, 600),
-    "Beedle - 1600 Rupee Item": (21, 22, 1600, 800),
+    "Beedle - First Outer Left Item": (19, 20, 300, 150),
+    "Beedle - Second Outer Left Item": (29, 30, 600, 300),
+    "Beedle - First Inner Left Item": (27, 28, 800, 400),
+    "Beedle - Second Outer Right Item": (33, 34, 1000, 500),
+    "Beedle - Third Outer Left Item": (31, 32, 1200, 600),
+    "Beedle - Second Inner Left Item": (21, 22, 1600, 800),
     # Rupin
     ## location: (entry index, price)
-    "Rupin - 2nd 20 Rupee Item": ("101_40", 20),
-    "Rupin - 3rd 20 Rupee Item": ("101_41", 20),
-    "Rupin - 50 Rupee Item": ("101_42", 50),
-    "Rupin - 2nd 100 Rupee Item": ("101_43", 100),
-    "Rupin - 500 Rupee Item": ("101_44", 500),
-    "Rupin - 1st 20 Rupee Item": ("101_45", 20),
-    "Rupin - 1st 100 Rupee Item": ("101_46", 100),
-    "Rupin - 1st 150 Rupee Item": ("101_47", 150),
-    "Rupin - 2nd 150 Rupee Item": ("101_48", 150),
+    "Rupin - Middle Front Item": ("101_40", 20),
+    "Rupin - Right Front Item": ("101_41", 20),
+    "Rupin - Bottom Right Item": ("101_42", 50),
+    "Rupin - Middle Right Item": ("101_43", 100),
+    "Rupin - Top Right Item": ("101_44", 500),
+    "Rupin - Left Front Item": ("101_45", 20),
+    "Rupin - Middle Left Item": ("101_46", 100),
+    "Rupin - Top Left Item": ("101_47", 150),
+    "Rupin - Bottom Left Item": ("101_48", 150),
 }
 
 BEEDLE_BUY_SWITCH = "[1]I'll buy it![2-]No, thanks."

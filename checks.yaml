@@ -265,107 +265,134 @@ Batreaux's House - 80 Crystals:
   text: a <r<demon in human form>> grants
 
 # Beedle's Shop:
-Beedle's Shop - 300 Rupee Item:
+Beedle's Shop - First Outer Left Item:
   original item: "Progressive Pouch #1"
   type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/20
-Beedle's Shop - 600 Rupee Item:
+Beedle's Shop - Second Outer Left Item:
   original item: "Progressive Pouch #2"
   type: Beedle's Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F002r/ShpSmpl/21
-Beedle's Shop - 1200 Rupee Item:
+Beedle's Shop - Third Outer Left Item:
   original item: "Progressive Pouch #3"
   type: Beedle's Shop Purchases, Shop Purchases (Expensive)
   hint: always
   Paths:
     - F002r/ShpSmpl/22
   text: for <g+<1200 rupees>> <r<Beedle>> sells
-Beedle's Shop - 800 Rupee Item:
+Beedle's Shop - First Inner Left Item:
   original item: "Life Medal #0"
   type: Beedle's Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F002r/ShpSmpl/26
-Beedle's Shop - 1600 Rupee Item:
+Beedle's Shop - Second Inner Left Item:
   original item: "Heart Piece #0"
   type: Beedle's Shop Purchases, Shop Purchases (Expensive)
   hint: always
   Paths:
     - F002r/ShpSmpl/23
   text: for <g+<1600 rupees>> <r<Beedle>> sells
-Beedle's Shop - First 100 Rupee Item:
+Beedle's Shop - First Inner Right Item:
   original item: "Extra Wallet #0"
   type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/24
-Beedle's Shop - Second 100 Rupee Item:
+Beedle's Shop - Second Inner Right Item:
   original item: "Extra Wallet #1"
   type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/17
-Beedle's Shop - Third 100 Rupee Item:
+Beedle's Shop - Third Inner Right Item:
   original item: "Extra Wallet #2"
   type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/18
-Beedle's Shop - 50 Rupee Item:
+Beedle's Shop - First Outer Right Item:
   original item: "Progressive Bug Net #0"
   type: Beedle's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/25
-Beedle's Shop - 1000 Rupee Item:
+Beedle's Shop - Second Outer Right Item:
   original item: Bug Medal
   type: Beedle's Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F002r/ShpSmpl/27
 
-# Rupin's Shop
-Central Skyloft - Rupin's Shop - 1st 150 Rupee Item:
+# Gear Shop
+Central Skyloft - Gear Shop - Top Left Item:
   original item: "Small Quiver #1"
-  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/16
-Central Skyloft - Rupin's Shop - 1st 100 Rupee Item:
+Central Skyloft - Gear Shop - Middle Left Item:
   original item: "Small Seed Satchel #1"
-  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/15
-Central Skyloft - Rupin's Shop - 2nd 150 Rupee Item:
+Central Skyloft - Gear Shop - Bottom Left Item:
   original item: "Small Bomb Bag #1"
-  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/19
-Central Skyloft - Rupin's Shop - 1st 20 Rupee Item:
+Central Skyloft - Gear Shop - Left Front Item:
   original item: 10 Deku Seeds
-  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/14
-Central Skyloft - Rupin's Shop - 2nd 20 Rupee Item:
+Central Skyloft - Gear Shop - Middle Front Item:
   original item: 10 Arrows
-  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/9
-Central Skyloft - Rupin's Shop - 3rd 20 Rupee Item:
+Central Skyloft - Gear Shop - Right Front Item:
   original item: 10 Bombs
-  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/10
-Central Skyloft - Rupin's Shop - 50 Rupee Item:
+Central Skyloft - Gear Shop - Bottom Right Item:
   original item: "Wooden Shield #1"
-  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/11
-Central Skyloft - Rupin's Shop - 2nd 100 Rupee Item:
+Central Skyloft - Gear Shop - Middle Right Item:
   original item: Iron Shield
-  type: Rupin's Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/12
-Central Skyloft - Rupin's Shop - 500 Rupee Item:
+Central Skyloft - Gear Shop - Top Right Item:
   original item: Sacred Shield
-  type: Rupin's Shop Purchases, Shop Purchases (Medium)
+  type: Gear Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F004r/ShpSmpl/13
+
+# Potion Shop
+# Central Skyloft - Potion Shop - Outer Left Item:
+#   original item: Stamina Potion
+#   type: Potion Shop Purchases, Shop Purchases (Cheap)
+#   Paths:
+#     - F004r/
+# Central Skyloft - Potion Shop - Inner Left Item:
+#   original item: Heart Potion
+#   type: Potion Shop Purchases, Shop Purchases (Cheap)
+#   Paths:
+#     - F004r/
+# Central Skyloft - Potion Shop - Middle Item:
+#   original item: Air Potion
+#   type: Potion Shop Purchases, Shop Purchases (Cheap)
+#   Paths:
+#     - F004r/
+# Central Skyloft - Potion Shop - Inner Right Item:
+#   original item: Revitalizing Potion
+#   type: Potion Shop Purchases, Shop Purchases (Cheap)
+#   Paths:
+#     - F004r/
+# Central Skyloft - Potion Shop - Outer Right Item:
+#   original item: Guardian Potion
+#   type: Potion Shop Purchases, Shop Purchases (Cheap)
+#   Paths:
+#     - F004r/
 
 # Single Gratitude Crystals:
 ## Aren't randomized, but still need logic, because some of them need items
