@@ -1526,11 +1526,7 @@ class GamePatcher:
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("custom_items")
         self.add_asm_patch("post_boko_base_platforms")
-        if (
-            self.placement_file.options["beedle-shopsanity"]
-            or self.placement_file.options["rupin-shopsanity"]
-        ):
-            self.add_asm_patch("shopsanity")
+        self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
         if self.placement_file.options["bit-patches"] == "Disable BiT":
             self.add_asm_patch("patch_bit")
@@ -1805,10 +1801,7 @@ class GamePatcher:
 
     def shopsanity_patches(self):
         for location in SHOP_TEXT_PATCHES:
-            if (
-                location.startswith("Beedle")
-                and self.placement_file.options["beedle-shopsanity"]
-            ):
+            if location.startswith("Beedle"):
                 normal, discounted, normal_price, discount_price = SHOP_TEXT_PATCHES[
                     location
                 ]
@@ -1865,10 +1858,7 @@ class GamePatcher:
                     self.eventpatches["105-Terry"].append(
                         {"name": discounted, "type": "textadd", "text": discount_text}
                     )
-            elif (
-                location.startswith("Rupin")
-                and self.placement_file.options["rupin-shopsanity"]
-            ):
+            elif location.startswith("Rupin"):
                 entry_index, price = SHOP_TEXT_PATCHES[location]
                 sold_item = self.placement_file.item_locations[
                     self.areas.short_to_full(location)
@@ -3130,10 +3120,7 @@ class GamePatcher:
             rel = REL()
             rel.read(rel_data)
             apply_rel_patch(self, rel, file, codepatches)
-            if file == "d_a_shop_sampleNP.rel" and (
-                self.placement_file.options["beedle-shopsanity"]
-                or self.placement_file.options["rupin-shopsanity"]
-            ):
+            if file == "d_a_shop_sampleNP.rel":
                 self.do_shoptable_rel_patch(rel)
             rel.save_changes()
             rel_arc.set_file_data(f"rels/{file}", rel_data.getbuffer())
