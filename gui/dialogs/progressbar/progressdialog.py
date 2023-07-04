@@ -12,7 +12,7 @@ tips = [
     "Hold down the B button to quickly advance text.",
     "Flooded Faron Woods can be entered by talking to the Water Dragon inside the Great Tree.",
     "Bokoblin Base can be entered by talking to the gossip stone in the first room of Eldin Volcano.",
-    "You can end Fledge's Pumpkin Archery minigame early by shooting the bell atop the Knight Academy."
+    "You can end Fledge's Pumpkin Archery minigame early by shooting the bell atop the Knight Academy.",
 ]
 
 
