@@ -348,20 +348,20 @@ SHOP_TEXT_PATCHES = {
     "Beedle - 1200 Rupee Item": (31, 32, 1200, 600),
     "Beedle - 1600 Rupee Item": (21, 22, 1600, 800),
     # Rupin
-    ## location: (text index, price)
-    "Rupin - 2nd 20 Rupee Item": (28, 20),
-    "Rupin - 3rd 20 Rupee Item": (30, 20),
-    "Rupin - 50 Rupee Item": (32, 50),
-    "Rupin - 2nd 100 Rupee Item": (33, 100),
-    "Rupin - 500 Rupee Item": (34, 500),
-    "Rupin - 1st 20 Rupee Item": (35, 20),
-    "Rupin - 1st 100 Rupee Item": (38, 100),
-    "Rupin - 1st 150 Rupee Item": (37, 150),
-    "Rupin - 2nd 150 Rupee Item": (39, 150),
+    ## location: (entry index, price)
+    "Rupin - 2nd 20 Rupee Item": ("101_40", 20),
+    "Rupin - 3rd 20 Rupee Item": ("101_41", 20),
+    "Rupin - 50 Rupee Item": ("101_42", 50),
+    "Rupin - 2nd 100 Rupee Item": ("101_43", 100),
+    "Rupin - 500 Rupee Item": ("101_44", 500),
+    "Rupin - 1st 20 Rupee Item": ("101_45", 20),
+    "Rupin - 1st 100 Rupee Item": ("101_46", 100),
+    "Rupin - 1st 150 Rupee Item": ("101_47", 150),
+    "Rupin - 2nd 150 Rupee Item": ("101_48", 150),
 }
 
 BEEDLE_BUY_SWITCH = "[1]I'll buy it![2-]No, thanks."
-RUPIN_BUY_SWITCH = "[1]OK! [2-]No, thanks."
+RUPIN_BUY_SWITCH = "[1]OK![2-]No, thanks."
 
 DEFAULT_HEIGHT_OFFSET = -25.0
 DEFAULT_BUY_DECIDE_SCALE = 1.5
@@ -1869,16 +1869,18 @@ class GamePatcher:
                 location.startswith("Rupin")
                 and self.placement_file.options["rupin-shopsanity"]
             ):
-                text_index, price = SHOP_TEXT_PATCHES[location]
+                entry_index, price = SHOP_TEXT_PATCHES[location]
                 sold_item = self.placement_file.item_locations[
                     self.areas.short_to_full(location)
                 ]
                 sold_item = strip_item_number(sold_item)
-                rupin_text = break_lines(
-                    f"You've got quite an eye, friend. That "
-                    f"there is a <y<{sold_item}>>."
-                    f"It cost a mere <r<{price} Rupees>>."
-                    f"{RUPIN_BUY_SWITCH}"
+                rupin_text = (
+                    break_lines(
+                        f"You've got quite an eye, friend. That "
+                        f"there is a <y<{sold_item}>>. "
+                        f"It cost a mere <r<{price} Rupees>>."
+                    )
+                    + f"\n{RUPIN_BUY_SWITCH}"
                 )
 
                 if location in shop_texts:
@@ -1886,19 +1888,63 @@ class GamePatcher:
                         # item has custom text for Rupin's shop
                         rupin_text = f'{shop_texts[location][sold_item]["text"]}{RUPIN_BUY_SWITCH}'
 
-                if isinstance(text_index, int):  # string index is new text
-                    self.eventpatches["101-Shop"].append(
-                        {
-                            "name": f"{location} Text",
-                            "type": "textpatch",
-                            "index": text_index,
-                            "text": rupin_text,
-                        }
-                    )
-                else:
-                    self.eventpatches["101-Shop"].append(
-                        {"name": text_index, "type": "textadd", "text": rupin_text}
-                    )
+                self.eventpatches["101-Shop"].append(
+                    {
+                        "name": f"{location} Text",
+                        "type": "textadd",
+                        "text": rupin_text,
+                    }
+                )
+
+                self.eventpatches["101-Shop"].append(
+                    {
+                        "name": f"{location} Entry",
+                        "type": "entryadd",
+                        "entry": {
+                            "name": entry_index,
+                            "value": f"{location} Entry Start",
+                        },
+                    }
+                )
+
+                self.eventpatches["101-Shop"].append(
+                    {
+                        "name": f"{location} Entry Start",
+                        "type": "flowadd",
+                        "flow": {
+                            "type": "start",
+                            "next": f"{location} Event Init",
+                        },
+                    }
+                )
+
+                self.eventpatches["101-Shop"].append(
+                    {
+                        "name": f"{location} Event Init",
+                        "type": "flowadd",
+                        "flow": {
+                            "type": "type3",
+                            "subType": 6,
+                            "param1": 0,
+                            "param2": 1,
+                            "next": f"{location} Event Choice",
+                            "param3": 12,
+                        },
+                    }
+                )
+
+                self.eventpatches["101-Shop"].append(
+                    {
+                        "name": f"{location} Event Choice",
+                        "type": "flowadd",
+                        "flow": {
+                            "type": "type1",
+                            "next": 33,
+                            "param3": 79,
+                            "param4": f"{location} Text",
+                        },
+                    }
+                )
 
     def do_build_arc_cache(self):
         self.progress_callback("building arc cache...")
@@ -3134,6 +3180,15 @@ class GamePatcher:
         shop_entrypoint_patches = {
             17: 10539,
             18: 10540,
+            9: 10140,  # arrows
+            10: 10141,  # bombs
+            11: 10142,  # wood shield
+            12: 10143,  # iron shield
+            13: 10144,  # sacred shield
+            14: 10145,  # seeds
+            15: 10146,  # small satchel
+            16: 10147,  # small quiver
+            19: 10148,  # small bomb bag
         }
         shop_target_height_patches = {
             17: 100,

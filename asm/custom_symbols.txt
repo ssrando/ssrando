@@ -33,7 +33,7 @@ d_a_obj_sw_sword_beamNP.rel:
   handle_crest_hit_item_give: 0x3780
 d_a_shop_sampleNP.rel:
   check_needs_custom_storyflag_subtype: 0x8450
-  correct_rupee_color: 0x8484
+  correct_rupee_color: 0x8490
 d_a_npc_douguyanightNP.rel:
   select_new_item_column: 0x2F20
 d_a_obj_swrd_prjNP.rel:

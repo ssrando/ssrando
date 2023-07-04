@@ -1,19 +1,29 @@
 .open "d_a_shop_sampleNP.rel"
+
+; ( - 808b1140) + 130
+; (1250 - 130) + 808b1140
+
+; 0x808B21B0
 .org 0x11A0
 ; in function that sets up the shopitem classes, check if this
 ; is an item that uses the patched extra wallet class
 bl check_needs_custom_storyflag_subtype
 
+; 0x808B2234
 .org 0x1224
 ; this normally sets up the bug net, but this is already handled and uses the extra wallet class
 ; so it's essentially free space
 ; we need to branch for the extra pouches now, cause otherwise pouch items use a different shop item class
 cmplwi r4, 0x14 ; extra pouch 1 (300R)
-beq 0x12C8
+beq 0x12C8 ; 0x808B22D8
+
 cmplwi r4, 0x15 ; extra pouch 2 (600R)
-beq 0x12D8
+beq 0x12D8 ; 0x808B22E8
+
 cmplwi r4, 0x16 ; extra pouch 3 (1200R)
-beq 0x12E8
+beq 0x12E8 ; 0x808B22F8
+
+; 0x808B2260
 b 0x1250 ; skip rest of this block
 
 
