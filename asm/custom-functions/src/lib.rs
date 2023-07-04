@@ -320,6 +320,9 @@ pub fn process_startflags() {
     // Starting Bottles.
     // Last bit.
     let bottle_count = additional_start_options_2 & 0x7;
+
+    itemflag_set_to_value(153, bottle_count.into());
+
     for slot in pouch_slot_iter.take(bottle_count.into()) {
         *slot = 153; // ID for bottles
     }
