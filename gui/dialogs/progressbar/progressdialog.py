@@ -10,6 +10,9 @@ tips = [
     "Enabling tricks is a fun way to expand the logical possiblities of the randomizer, but some tricks can greatly incease the difficulty of seeds.",
     "Fi can give you some helpful information about the seed, such as which dungeons are required and how many keys you have. You can always call her with D-pad down, even without a sword.",
     "Hold down the B button to quickly advance text.",
+    "Flooded Faron Woods can be entered by talking to the Water Dragon inside the Great Tree.",
+    "Bokoblin Base can be entered by talking to the gossip stone in the first room of Eldin Volcano.",
+    "You can end Fledge's Pumpkin Archery minigame early by shooting the bell atop the Knight Academy."
 ]
 
 
