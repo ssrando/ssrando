@@ -1192,6 +1192,7 @@ F004r: # Bazaar
     room: 0
     objtype: OBJ
   - name: Patch Rupin 2nd 20R Shop
+    onlyif: Option "rupin-shopsanity" Enabled
     type: objpatch
     id: 0xFC41
     layer: 0
@@ -1200,6 +1201,7 @@ F004r: # Bazaar
     object:
       params1: 0xFFFFF089 # originally 0xFFFFF080
   - name: Patch Rupin 3rd 20R Shop
+    onlyif: Option "rupin-shopsanity" Enabled
     type: objpatch
     id: 0xFC3C
     layer: 0
@@ -1208,6 +1210,7 @@ F004r: # Bazaar
     object:
       params1: 0xFFFFF08a # originally 0xFFFFF081
   - name: Patch Rupin 50R Shop
+    onlyif: Option "rupin-shopsanity" Enabled
     type: objpatch
     id: 0xFC3B
     layer: 0
@@ -1216,6 +1219,7 @@ F004r: # Bazaar
     object:
       params1: 0xFFFFF08b # originally 0xFFFFF082
   - name: Patch Rupin 2nd 100R Shop
+    onlyif: Option "rupin-shopsanity" Enabled
     type: objpatch
     id: 0xFC3A
     layer: 0
@@ -1224,6 +1228,7 @@ F004r: # Bazaar
     object:
       params1: 0xFFFFF08c # originally 0xFFFFF083
   - name: Patch Rupin 500R Shop
+    onlyif: Option "rupin-shopsanity" Enabled
     type: objpatch
     id: 0xFC40
     layer: 0
@@ -1232,6 +1237,7 @@ F004r: # Bazaar
     object:
       params1: 0xFFFFF08d # originally 0xFFFFF084
   - name: Patch Rupin 1st 20R Shop
+    onlyif: Option "rupin-shopsanity" Enabled
     type: objpatch
     id: 0xFC72
     layer: 0
@@ -1240,6 +1246,7 @@ F004r: # Bazaar
     object:
       params1: 0xFFFFF08e # originally 0xFFFFF085
   - name: Patch Rupin 1st 100R Shop
+    onlyif: Option "rupin-shopsanity" Enabled
     type: objpatch
     id: 0xFC46
     layer: 0
@@ -1248,6 +1255,7 @@ F004r: # Bazaar
     object:
       params1: 0xFFFFF08f # originally 0xFFFFF086
   - name: Patch Rupin 1st 150R Shop
+    onlyif: Option "rupin-shopsanity" Enabled
     type: objpatch
     id: 0xFC47
     layer: 0
@@ -1256,6 +1264,7 @@ F004r: # Bazaar
     object:
       params1: 0xFFFFF090 # originally 0xFFFFF087
   - name: Patch Rupin 2nd 150R Shop
+    onlyif: Option "rupin-shopsanity" Enabled
     type: objpatch
     id: 0xFC48
     layer: 0

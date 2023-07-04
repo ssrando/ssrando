@@ -261,7 +261,6 @@ BOSS_KEYS = {
     SK: group(BOSS_KEY[SK], 0),
 }
 
-WOODEN_SHIELD = EIN("Wooden Shield")
 IRON_SHIELD = EIN("Iron Shield")
 SACRED_SHIELD = EIN("Sacred Shield")
 HYLIAN_SHIELD = EIN("Hylian Shield")
@@ -274,6 +273,7 @@ TEN_BOMBS = EIN("10 Bombs")
 TEN_DEKU_SEEDS = EIN("10 Deku Seeds")
 
 
+WOODEN_SHIELD = "Wooden Shield"
 SMALL_QUIVER = "Small Quiver"
 SMALL_SEED_SATCHEL = "Small Seed Satchel"
 SMALL_BOMB_BAG = "Small Bomb Bag"
@@ -283,6 +283,7 @@ HEART_PIECE = "Heart Piece"
 HEART_CONTAINER = "Heart Container"
 LIFE_MEDAL = "Life Medal"
 
+WOODEN_SHIELDS = group(WOODEN_SHIELD, 2)
 SMALL_QUIVERS = group(SMALL_QUIVER, 2)
 SMALL_SEED_SATCHELS = group(SMALL_SEED_SATCHEL, 2)
 SMALL_BOMB_BAGS = group(SMALL_BOMB_BAG, 2)
@@ -378,7 +379,6 @@ PROGRESS_ITEMS = (
 NONPROGRESS_ITEMS = (
     dict.fromkeys(
         [
-            WOODEN_SHIELD,
             IRON_SHIELD,
             SACRED_SHIELD,
             HYLIAN_SHIELD,
@@ -391,6 +391,7 @@ NONPROGRESS_ITEMS = (
             TEN_DEKU_SEEDS,
         ]
     )
+    | WOODEN_SHIELDS
     | SMALL_SEED_SATCHELS
     | SMALL_BOMB_BAGS
     | SMALL_QUIVERS

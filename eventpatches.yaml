@@ -931,6 +931,17 @@
     index: 36
     flow:
       next: 37
+  - name: Rupin always offers advice
+    type: flowpatch
+    index: 0
+    flow:
+      next: 41
+  - name: Patch sold out text
+    type: textpatch
+    index: 27
+    text: "Regrettably, that sign means I'm all\nsold out of that item.
+          \n\n\n...
+          \n\n\n\nHowever, I have many other wonderful\ntreasures prepared just for you. So,\nplease, savor my other fantastical\nwares, friend!"
 102-Zelda:
   - name: Fledge Quest Switch 1
     type: flowpatch

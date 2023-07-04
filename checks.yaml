@@ -7,7 +7,7 @@ Upper Skyloft - Fledge's Gift:
     - oarc/F001r/l3
     - oarc/F001r/l4
 Upper Skyloft - Owlan's Gift:
-  original item: Wooden Shield
+  original item: "Wooden Shield #0"
   type:
   Paths:
     - event/108-ShinkanA/169
@@ -322,17 +322,17 @@ Beedle's Shop - 1000 Rupee Item:
 
 # Rupin's Shop
 Central Skyloft - Rupin's Shop - 1st 150 Rupee Item:
-  original item: Small Quiver
+  original item: "Small Quiver #1"
   type: Rupin's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/16
 Central Skyloft - Rupin's Shop - 1st 100 Rupee Item:
-  original item: Small Seed Satchel
+  original item: "Small Seed Satchel #1"
   type: Rupin's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/15
 Central Skyloft - Rupin's Shop - 2nd 150 Rupee Item:
-  original item: Small Bomb Bag
+  original item: "Small Bomb Bag #1"
   type: Rupin's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/19
@@ -352,7 +352,7 @@ Central Skyloft - Rupin's Shop - 3rd 20 Rupee Item:
   Paths:
     - F004r/ShpSmpl/10
 Central Skyloft - Rupin's Shop - 50 Rupee Item:
-  original item: Wooden Shield
+  original item: "Wooden Shield #1"
   type: Rupin's Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/11
@@ -564,7 +564,7 @@ Sky - Goddess Chest under Fun Fun Island:
     - stage/F020/r0/l0/TBox/86
   cube_region: Lake Floria
 Sky - Southwest Triple Island Upper Goddess Chest:
-  original item: Small Seed Satchel
+  original item: "Small Seed Satchel #0"
   type: goddess, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/66
@@ -632,7 +632,7 @@ Thunderhead - East Island Goddess Chest:
     - stage/F023/r0/l0/TBox/73
   cube_region: Faron Woods
 Thunderhead - Goddess Chest on top of Isle of Songs:
-  original item: Small Bomb Bag
+  original item: "Small Bomb Bag #0"
   type: goddess, Volcano Summit Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/85
@@ -650,7 +650,7 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
     - stage/F023/r0/l0/TBox/77
   cube_region: Volcano Summit
 Thunderhead - Second Goddess Chest on Mogma Mitts Island:
-  original item: Small Quiver
+  original item: "Small Quiver #0"
   type: goddess, Sand Sea Goddess Chests
   Paths:
    - stage/F023/r0/l0/TBox/76
