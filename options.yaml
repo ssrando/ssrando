@@ -209,29 +209,29 @@
         This is highly discouraged to enable as it means issues are much harder solve if you get stuck or encounter a
         problem with the game."
   ui: option_no_spoiler_log
-- name: Beedle's Shopsanity
+- name: Beedle Shopsanity
   command: beedle-shopsanity
   type: boolean
   default: true
-  help: "Determines if Beedle's shop is randomized. When enabled, shop items and locations will be shuffled like normal items,
-        and the shop locations will get a randomized item. When disabled, Beedle's shop will always contain its vanilla items,
-        however those items may still be required for progression."
+  help: "Determines if Beedle's air shop is randomized. When enabled, shop items and locations will be shuffled like
+        normal items, and the shop locations will get a randomized item. When disabled, Beedle's shop will always
+        contain its vanilla items, however those items may still be required for progression."
   ui: option_beedle_shopsanity
-- name: Rupin's Shopsanity
+- name: Gear Shopsanity
   command: rupin-shopsanity
   type: boolean
   default: true
-  help: "Determines if Rupin's shop is randomized. When enabled, shop items and locations will be shuffled like normal items,
-        and the shop locations will get a randomized item. When disabled, Rupin's shop will always contain its vanilla items,
-        however those items may still be required for progression."
+  help: "Determines if Rupin's gear shop is randomized. When enabled, shop items and locations will be shuffled like
+        normal items, and the shop locations will get a randomized item. When disabled, Rupin's shop will always
+        contain its vanilla items, however those items may still be required for progression."
   ui: option_rupin_shopsanity
-- name: Luv's Shopsanity
+- name: Potion Shopsanity
   command: luv-shopsanity
   type: boolean
   default: false
-  help: "Determines if Luv's shop is randomized. When enabled, shop items and locations will be shuffled like normal items,
-        and the shop locations will get a randomized item. When disabled, Luv's shop will always contain its vanilla items,
-        however those items may still be required for progression."
+  help: "Determines if Luv's potion shop is randomized. When enabled, shop items and locations will be shuffled like
+        normal items, and the shop locations will get a randomized item. When disabled, Luv's shop will always contain
+        its vanilla items, however those items may still be required for progression."
   ui: option_luv_shopsanity
 - name: Rupoor Mode
   command: rupoor-mode

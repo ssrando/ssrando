@@ -520,21 +520,21 @@
              <item>
               <widget class="QCheckBox" name="option_beedle_shopsanity">
                <property name="text">
-                <string>Shuffle Beedle's Shop</string>
+                <string>Beedle Shopsanity</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QCheckBox" name="option_rupin_shopsanity">
                <property name="text">
-                <string>Shuffle Rupin's Shop</string>
+                <string>Gear Shopsanity</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QCheckBox" name="option_luv_shopsanity">
                <property name="text">
-                <string>Shuffle Luv's Shop</string>
+                <string>Potion Shopsanity</string>
                </property>
               </widget>
              </item>
