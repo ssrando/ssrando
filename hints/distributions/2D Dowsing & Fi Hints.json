@@ -9,7 +9,8 @@
     {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack", "type": "always"},
     {"location": "Earth Temple - Rupee in Lava Tunnel", "type": "sometimes"},
     {"location": "Ancient Cistern - Bokoblin", "type": "sometimes"},
-    {"location": "Fire Sanctuary - Mogma Mitts", "type": "sometimes"}
+    {"location": "Fire Sanctuary - Mogma Mitts", "type": "sometimes"},
+    {"location": "Fire Sanctuary - Chest after Second Trapped Mogma", "type": "sometimes"}
   ],
   "removed_locations": [
     "Thunderhead - Isle of Songs - Din's Power",
