@@ -430,7 +430,7 @@ class Rando:
 
         if not options[RANDOMIZED_RUPIN_OPTION]:
             self.placement |= VANILLA_RUPIN_PLACEMENT(self.norm, self.areas.checks)
-        
+
         if not options[RANDOMIZED_LUV_OPTION]:
             self.placement |= VANILLA_LUV_PLACEMENT(self.norm, self.areas.checks)
 
