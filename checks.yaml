@@ -369,27 +369,27 @@ Central Skyloft - Gear Shop - Top Right Item:
 
 # Potion Shop
 Central Skyloft - Potion Shop - Outer Left Item:
-  original item: Stamina Potion
+  original item: Red Rupee # Stamina Potion
   type: Potion Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/32
 Central Skyloft - Potion Shop - Inner Left Item:
-  original item: Heart Potion
+  original item: Red Rupee # Heart Potion
   type: Potion Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/30
 Central Skyloft - Potion Shop - Middle Item:
-  original item: Air Potion
+  original item: Red Rupee # Air Potion
   type: Potion Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/31
 Central Skyloft - Potion Shop - Inner Right Item:
-  original item: Revitalizing Potion
+  original item: Red Rupee # Revitalizing Potion
   type: Potion Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/33
 Central Skyloft - Potion Shop - Outer Right Item:
-  original item: Guardian Potion
+  original item: Red Rupee # Guardian Potion
   type: Potion Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F004r/ShpSmpl/34

@@ -26,6 +26,7 @@ VANILLA_LAKE_FLORIA_OPTION = EIN("Vanilla Lake Floria option")
 OPEN_LAKE_FLORIA_OPTION = EIN("Open Lake Floria option")
 RANDOMIZED_BEEDLE_OPTION = EIN("Randomized Beedle option")
 RANDOMIZED_RUPIN_OPTION = EIN("Randomized Rupin option")
+RANDOMIZED_LUV_OPTION = EIN("Randomized Luv option")
 GONDO_UPGRADES_ON_OPTION = EIN("Gondo Upgrades On option")
 NO_BIT_CRASHES = EIN("No BiT crashes")
 NONLETHAL_HOT_CAVE = EIN("Nonlethal Hot Cave")
@@ -48,6 +49,7 @@ LOGIC_OPTIONS = dict.fromkeys(
         OPEN_LAKE_FLORIA_OPTION,
         RANDOMIZED_BEEDLE_OPTION,
         RANDOMIZED_RUPIN_OPTION,
+        RANDOMIZED_LUV_OPTION,
         GONDO_UPGRADES_ON_OPTION,
         NO_BIT_CRASHES,
         NONLETHAL_HOT_CAVE,

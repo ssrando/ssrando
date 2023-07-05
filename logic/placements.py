@@ -92,6 +92,15 @@ RUPIN_CHECKS = [
 ]
 VANILLA_RUPIN_PLACEMENT = norm_force_vanilla(RUPIN_CHECKS)
 
+LUV_CHECKS = [
+    "Central Skyloft - Potion Shop - Outer Left Item",
+    "Central Skyloft - Potion Shop - Inner Left Item",
+    "Central Skyloft - Potion Shop - Middle Item",
+    "Central Skyloft - Potion Shop - Inner Right Item",
+    "Central Skyloft - Potion Shop - Outer Right Item",
+]
+VANILLA_LUV_PLACEMENT = norm_force_vanilla(LUV_CHECKS)
+
 SMALL_KEY_CHECKS = [
     "Skyview - Chest behind Two Eyes",
     "Skyview - Chest behind Three Eyes",

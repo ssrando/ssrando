@@ -348,6 +348,7 @@ class Rando:
             OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
             RANDOMIZED_BEEDLE_OPTION: self.options["beedle-shopsanity"],
             RANDOMIZED_RUPIN_OPTION: self.options["rupin-shopsanity"],
+            RANDOMIZED_LUV_OPTION: self.options["luv-shopsanity"],
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
             NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
@@ -429,6 +430,9 @@ class Rando:
 
         if not options[RANDOMIZED_RUPIN_OPTION]:
             self.placement |= VANILLA_RUPIN_PLACEMENT(self.norm, self.areas.checks)
+        
+        if not options[RANDOMIZED_LUV_OPTION]:
+            self.placement |= VANILLA_LUV_PLACEMENT(self.norm, self.areas.checks)
 
         # remove small keys from the dungeon pool if small key sanity is enabled
         small_key_mode = self.options["small-key-mode"]
