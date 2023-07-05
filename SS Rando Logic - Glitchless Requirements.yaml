@@ -114,6 +114,9 @@ Bottle:
 Can Afford 20 Rupees:
   Nothing
 
+Can Afford 30 Rupees:
+  Nothing
+
 Can Afford 50 Rupees:
   Nothing
 
@@ -121,6 +124,9 @@ Can Afford 100 Rupees:
   Nothing
 
 Can Afford 150 Rupees:
+  Nothing
+
+Can Afford 200 Rupees:
   Nothing
 
 Can Afford 300 Rupees:
@@ -495,6 +501,19 @@ Central Skyloft - Gear Shop - Middle Right Item:
 
 Central Skyloft - Gear Shop - Top Right Item:
   Can Afford 500 Rupees
+
+## Luv's Shop
+
+Central Skyloft - Potion Shop - Outer Left Item:
+  Can Afford 50 Rupees
+Central Skyloft - Potion Shop - Inner Left Item:
+  Can Afford 20 Rupees
+Central Skyloft - Potion Shop - Middle Item:
+  Can Afford 20 Rupees
+Central Skyloft - Potion Shop - Inner Right Item:
+  Can Afford 30 Rupees
+Central Skyloft - Potion Shop - Outer Right Item:
+  Can Afford 200 Rupees
 
 ## Batreaux Rewards
 
