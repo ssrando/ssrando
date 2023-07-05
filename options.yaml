@@ -212,7 +212,7 @@
 - name: Beedle Shopsanity
   command: beedle-shopsanity
   type: boolean
-  default: true
+  default: false
   help: "Determines if Beedle's air shop is randomized. When enabled, shop items and locations will be shuffled like
         normal items, and the shop locations will get a randomized item. When disabled, Beedle's shop will always
         contain its vanilla items, however those items may still be required for progression."
@@ -220,7 +220,7 @@
 - name: Gear Shopsanity
   command: rupin-shopsanity
   type: boolean
-  default: true
+  default: false
   help: "Determines if Rupin's gear shop is randomized. When enabled, shop items and locations will be shuffled like
         normal items, and the shop locations will get a randomized item. When disabled, Rupin's shop will always
         contain its vanilla items, however those items may still be required for progression."
