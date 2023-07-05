@@ -15,7 +15,7 @@ import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.msb import process_control_sequences
 from sslib.utils import write_bytes_create_dirs, encodeBytes
-from sslib.fs_helpers import write_str, write_u16, write_float
+from sslib.fs_helpers import write_str, write_u16, write_float, write_u32
 from sslib.dol import DOL
 from sslib.rel import REL
 from paths import RANDO_ROOT_PATH
@@ -1528,6 +1528,8 @@ class GamePatcher:
         self.add_asm_patch("post_boko_base_platforms")
         self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
+        if self.placement_file.options["luv-shopsanity"]:
+            self.add_asm_patch("luv_shopsanity")
         if self.placement_file.options["bit-patches"] == "Disable BiT":
             self.add_asm_patch("patch_bit")
         elif self.placement_file.options["bit-patches"] == "Fix BiT Crashes":
@@ -3208,6 +3210,8 @@ class GamePatcher:
             16: 967,  # small quiver
             19: 968,  # small bomb bag
         }
+
+        LUV_SHOP_INDEXES = (30, 31, 32, 33, 34)
         SHOP_LIST_OFFSET = 0x6D8C
         ENTRY_SIZE = 0x54
 
@@ -3219,6 +3223,16 @@ class GamePatcher:
                 SHOP_LIST_OFFSET
             )
             current_shop_entry_offset = shop_list_offset + ENTRY_SIZE * shopindex
+
+            # Handle Luv's Shop differently
+            if shopindex in LUV_SHOP_INDEXES:
+                write_u32(
+                    data_bytes,
+                    current_shop_entry_offset
+                    + 0x4,  # reuse put_scale as it's not used by the potion shop
+                    itemid & 0xFFFF,
+                )
+                continue
 
             # Buy Decide Scale
             write_float(

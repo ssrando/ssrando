@@ -320,6 +320,7 @@ blr
 .global get_item_arc_name
 .global get_item_model_name_ptr
 .global is_custom_rando_item
+.global handle_potion_lady_give_item
 
 .close
 

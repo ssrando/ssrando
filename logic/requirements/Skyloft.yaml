@@ -123,12 +123,11 @@ Central Skyloft:
       West Exit: Nothing
       South Exit: Nothing
     locations:
-      Potion Lady's Gift: Nothing
       Bazaar Goddess Chest: Lanayru - Goddess Cube in Ancient Harbour
-      Endurance Potion: Bottle & Lanayru - Raise Lanayru Mining Facility
       Talk to Peatrice: Nothing
       Item Check Access: Nothing
       Rupin's Shop: Nothing
+      Potion Shop: Nothing
 
     Gondo's Upgrades:
       entrance: Gondo Upgrades On option
@@ -161,15 +160,19 @@ Central Skyloft:
         Middle Right Item: Can Afford 100 Rupees
         Top Right Item: Can Afford 500 Rupees
     
-    # Potion Shop:
-    #   exits:
-    #     Bazaar: Nothing
-    #   locations:
-    #     Outer Left Item: Nothing
-    #     Inner Left Item: Nothing
-    #     Middle Item: Nothing
-    #     Inner Right Item: Nothing
-    #     Outer Right Item: Nothing
+    Potion Shop:
+      exits:
+        Bazaar: Nothing
+      locations:
+        Endurance Potion: Bottle & Lanayru - Raise Lanayru Mining Facility
+        Air Potion: Bottle & Water Scale
+        Potion Lady's Gift: Nothing
+
+        Outer Left Item:  Pouch & Can Afford 50 Rupees  & Endurance Potion
+        Inner Left Item:  Pouch & Can Afford 20 Rupees  & Bottle
+        Middle Item:      Pouch & Can Afford 20 Rupees  & Air Potion
+        Inner Right Item: Pouch & Can Afford 30 Rupees  & Bottle
+        Outer Right Item: Pouch & Can Afford 200 Rupees & Bottle
 
   Orielle and Parrow's House:
     can-sleep: true

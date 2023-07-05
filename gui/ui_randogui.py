@@ -382,6 +382,11 @@ class Ui_MainWindow(object):
 
         self.vlay_shuffles.addWidget(self.option_rupin_shopsanity)
 
+        self.option_luv_shopsanity = QCheckBox(self.box_shuffles)
+        self.option_luv_shopsanity.setObjectName(u"option_luv_shopsanity")
+
+        self.vlay_shuffles.addWidget(self.option_luv_shopsanity)
+
         self.option_rupeesanity = QCheckBox(self.box_shuffles)
         self.option_rupeesanity.setObjectName(u"option_rupeesanity")
 
@@ -1810,6 +1815,7 @@ class Ui_MainWindow(object):
         self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
         self.option_beedle_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Beedle's Shop", None))
         self.option_rupin_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Rupin's Shop", None))
+        self.option_luv_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Luv's Shop", None))
         self.option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
         self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))
         self.box_completion.setTitle(QCoreApplication.translate("MainWindow", u"Completion Conditions", None))

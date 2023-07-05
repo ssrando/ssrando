@@ -1104,7 +1104,8 @@
   - name: Potion Lady Text Patch # generalized for rando
     type: textpatch
     index: 5
-    text: "Just so you know, I can't sell you a \npotion if you don't have an Empty \nBottle to pour it into!\n\n\x0E\x01\x09\x04\x09\x90For some reason, I like you, though, so\nI'll give you a spare item I've\nbeen keeping here in the stall!\nOh, it's nothing. It's my little gift."
+    text: "Just so you know, I can't sell you a \npotion if you don't have an <r<Empty \nBottle>> to pour it into or an\n<r<Adventure Pouch>> to store it in!
+          \n\x0E\x01\x09\x04\x09\x90For some reason, I like you, though, so\nI'll give you a spare item I've\nbeen keeping here in the stall!\nOh, it's nothing. It's my little gift."
   - name: Potion Lady Bottle # skip pouch requirements
     type: flowpatch
     index: 42
@@ -1120,6 +1121,82 @@
     index: 115
     flow:
       next: 111
+  - name: Patch can't buy potion Text
+    type: textpatch
+    index: 19
+    text: "Hello there!
+          \n\n\n\nOh...but before I get into my spiel,\nI should warn you that you need an\n<r<Adventure Pouch>> and an <r<Empty Bottle>>\nto buy anything here.
+          \nUnderstand, dear?\nIf you want to know more about how\nthings work around here, just ask!"
+  - name: Add Pouch Check for Stamina Potion
+    type: flowpatch
+    index: 19
+    flow:
+      next: Pouch Check for Stamina Potion
+  - name: Pouch Check for Stamina Potion
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 931 # Adventure Pouch storyflag
+      param3: 3
+    cases:
+      - 18 # Check for bottle
+      - 28 # Can't buy
+  - name: Add Pouch Check for Heart Potion
+    type: flowpatch
+    index: 10
+    flow:
+      next: Pouch Check for Heart Potion
+  - name: Pouch Check for Heart Potion
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 931 # Adventure Pouch storyflag
+      param3: 3
+    cases:
+      - 48 # Check for bottle
+      - 23 # Can't buy
+  - name: Add Pouch Check for Air Potion
+    type: flowpatch
+    index: 16
+    flow:
+      next: Pouch Check for Air Potion
+  - name: Pouch Check for Air Potion
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 931 # Adventure Pouch storyflag
+      param3: 3
+    cases:
+      - 15 # Check for bottle
+      - 27 # Can't buy
+  - name: Add Pouch Check for Revitalizing Potion
+    type: flowpatch
+    index: 22
+    flow:
+      next: Pouch Check for Revitalizing Potion
+  - name: Pouch Check for Revitalizing Potion
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 931 # Adventure Pouch storyflag
+      param3: 3
+    cases:
+      - 51 # Check for bottle
+      - 29 # Can't buy
+  - name: Add Pouch Check for Guardian Potion
+    type: flowpatch
+    index: 55
+    flow:
+      next: Pouch Check for Guardian Potion
+  - name: Pouch Check for Guardian Potion
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 931 # Adventure Pouch storyflag
+      param3: 3
+    cases:
+      - 56 # Check for bottle
+      - 58 # Can't buy
 107-Kanban:
   - name: Knight Academy Billboard skip condition
     type: flowpatch

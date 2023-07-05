@@ -1,4 +1,5 @@
 main.dol:
+    printf: 0x802df060
     updateCurrentSword: 0x8005c110
     getGratitudeCrystalCount: 0x80252710
     FlagManager__getUncommittedFlags: 0x800bf5f0
@@ -69,5 +70,6 @@ main.dol:
     setFlagForItem: 0x80251ca0
     getModelDataFromOarc: 0x80069b30
     checkXZDistanceFromLink: 0x8002d3e0
+    AcItem__giveItem: 0x80249210
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C

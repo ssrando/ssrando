@@ -57,48 +57,44 @@ New Trial Completed Storyflags:
 941: Bought Beedle's Bug Medal item  
 
 942: Progressive Beetle 3 (Swift Beetle)
-
 943: Progressive Beetle 4 (Tough Beetle)
 
 944: Progressive Bow 1 (Bow)
-
 945: Progressive Bow 2 (Iron Bow)
-
 946: Progressive Bow 3 (Sacred Bow)
 
 947: Progressive Slingshot 1 (Slingshot)
-
 948: Progressive Slingshot 2 (Scattershot)
 
 949: Progressive Bug Net 1 (Bug Net)
-
 950: Progressive Bug Net 2 (Big Bug Net)
 
 951: Raising Goddess Sword in Goddess Statue
-
 952: ***Reserved for Raising True Master Sword in Bokoblin Base***
 
 953: Group of Tadtones Counter
 
 960: Bought Rupin's 2nd 20R item
-
 961: Bought Rupin's 3rd 20R item
-
 962: Bought Rupin's 50R item
-
 963: Bought Rupin's 2nd 100R item
-
 964: Bought Rupin's 500R item
-
 965: Bought Rupin's 1st 20R item
-
 966: Bought Rupin's 1st 100R item
-
 967: Bought Rupin's 1st 150R item
-
 968: Bought Rupin's 2nd 150R item
 
+
+
 Sceneflags  
+
+Skyloft:
+Yes, these are in the wrong order. Blame Nintendo
+120: Bought Inner Left Potion item
+121: Bought Middle Potion item
+122: Bought Outer Left Potion item
+123: Bought Inner Right Potion item
+124: Bought Outer Right Potion item
 
 Ancient Cistern:  
 85: After receiving Item from flame CS  

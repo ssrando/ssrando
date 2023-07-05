@@ -61,6 +61,20 @@ struct AcOBird {
     speed: f32,
 }
 
+#[repr(C)]
+struct ShopSampleInitStruct {
+    buy_decide_scale: u32,
+    put_scale: u32,
+    target_arrow_height_offset: u32,
+    item_id: u16,
+    price: u16,
+    event_entry_point: u16,
+    next_shop_item_index: u16,
+    storyflag: u16,
+    archive_name: [c_char; 30usize],
+    model_name: [c_char; 30usize],
+}
+
 #[repr(i32)]
 #[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 enum SpecialMinigameState {
@@ -91,10 +105,12 @@ impl SpecialMinigameState {
 }
 
 extern "C" {
+    fn printf(string: *const c_char, int: u32);
     static mut SPAWN_SLAVE: SpawnStruct;
     fn setStoryflagToValue(flag: u16, value: u16);
     static SCENEFLAG_MANAGER: *mut c_void;
     fn SceneflagManager__setFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16);
+    fn SceneflagManager__checkFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16) -> bool;
     static FILE_MANAGER: *mut filemanager_gen::FileManager;
     fn FileManager__getDungeonFlags(
         mgr: *mut filemanager_gen::FileManager,
@@ -120,6 +136,7 @@ extern "C" {
     fn findActorByActorType(actor_type: i32, start_actor: *const c_void) -> *mut c_void;
     fn checkXZDistanceFromLink(actor: *const c_void, distance: f32) -> bool;
     static mut SPECIAL_MINIGAME_STATE: SpecialMinigameState;
+    fn AcItem__giveItem(item_id: u16, bottle_pouch_slot: u32, number: u32) -> *mut c_void;
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -132,6 +149,10 @@ fn itemflag_check(flag: u16) -> bool {
 
 fn sceneflag_set_global(scene_index: u16, flag: u16) {
     unsafe { SceneflagManager__setFlagGlobal(SCENEFLAG_MANAGER, scene_index, flag) };
+}
+
+fn sceneflag_check_global(scene_index: u16, flag: u16) -> bool {
+    unsafe { SceneflagManager__checkFlagGlobal(SCENEFLAG_MANAGER, scene_index, flag) }
 }
 
 /// returns the pointer to the static dungeonflags, those for the current sceneflagindex
@@ -549,6 +570,28 @@ fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
     if loftwing.speed > cap {
         loftwing.speed = cap;
     }
+}
+
+#[no_mangle]
+fn handle_potion_lady_give_item(shop_item: *mut ShopSampleInitStruct, bottle_pouch_slot: u32, number: u32) {
+    // Potion shop items start at index 30 and are at the end of the list.
+    let shop_index = unsafe { (*shop_item).next_shop_item_index };
+    if shop_index >= 30 {
+        unsafe { printf(cstr!("shop_index: %d\n").as_ptr(), shop_index as u32) };
+        let shop_sceneflag = shop_index + 90; // Skyloft flags 120 -> 124 are used for the potion shop so + 90 to get flag
+
+        if !sceneflag_check_global(0, shop_sceneflag) {
+            sceneflag_set_global(0, shop_sceneflag); // (skyloft, potion_flag)
+
+            let item_id = unsafe { (*shop_item).put_scale };
+            unsafe { printf(cstr!("shop_item.put_scale: %d\n").as_ptr(), item_id as u32) };
+
+            // The put_scale has been patched to have the item_id for the potion items (as it's unused in this case).
+            return unsafe { AcItem__giveItem(item_id as u16, u32::MAX, number); }
+        }
+    }
+
+    return unsafe { AcItem__giveItem((*shop_item).item_id, bottle_pouch_slot, number); }
 }
 
 #[panic_handler]

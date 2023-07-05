@@ -532,6 +532,13 @@
               </widget>
              </item>
              <item>
+              <widget class="QCheckBox" name="option_luv_shopsanity">
+               <property name="text">
+                <string>Shuffle Luv's Shop</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QCheckBox" name="option_rupeesanity">
                <property name="text">
                 <string>Rupeesanity</string>
