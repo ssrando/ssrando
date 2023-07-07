@@ -870,3 +870,46 @@ b 0x460
 .float 3.0 ; original sprint speed multiplier is 2.0, so total speed difference is 2.25x
 
 .close
+
+
+.open "d_lyt_file_selectNP.rel"
+
+; text0: 0x80ec54e0
+; (80ecc27c - 80ec54e0) + 130
+
+; Change function that gets the File Progress Text from
+; counting the number of flags activated and instead use
+; the first unset flag in the list.
+
+; 0x80ecc264
+.org 0x6EB4
+bne 0x6EBC ; branch if flag is set (to check next flag in list)
+b 0x6ECC   ; 0x80ecc27c - branch out of loop
+
+; Replace unnecessary bound check
+; 80ecc27c
+.org 0x6ECC
+mr r29, r28
+nop
+nop
+
+; 0x80ecdc44
+.org 0x8898
+.word 9   ; Obtained the Goddess Harp
+.word 340 ; Raised the Gate of Time (GoT)
+.word -1  ; Obtained the Required Sword (will be filled later in gamepatches)
+.word 902 ; Beaten Required Dungeon 1
+.word 903 ; Beaten Required Dungeon 2
+.word 926 ; Beaten Required Dungeon 3
+.word 927 ; Beaten Required Dungeon 4
+.word 928 ; Beaten Required Dungeon 5
+.word 929 ; Beaten Required Dungeon 6
+.word 144 ; Triggered the Imprisoned 2 Fight
+.word 132 ; Defeated the Imprisoned 2
+.word 341 ; Opened the Gate of Time (GoT)
+.word 645 ; Collected all Triforces (beaten Sky Keep)
+.word 134 ; Defeated the Horde
+.word 486 ; Defeated Ghirahim 3
+.word -1
+
+.close

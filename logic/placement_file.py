@@ -1,7 +1,6 @@
 from .constants import *
 from options import Options
 from version import VERSION
-from util.file_accessor import read_yaml_file_cached
 
 import json
 
