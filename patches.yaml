@@ -3925,6 +3925,22 @@ F300: # lanayru Main Area
       anglez: 0
       id: 0xFE50
       name: Tubo
+  - name: LMF exit when not raised
+    type: objadd
+    index: 19
+    room: 0
+    objtype: PLY
+    object:
+      storyflag: 2047
+      play_cutscene: -1
+      byte4: -1
+      posx: 39
+      posy: -170
+      posz: -5100
+      anglex: 0
+      angley: 34000
+      anglez: 0
+      entrance_id: 19
 F300_1: # Lanayru Mine
   - name: Layer override
     type: layeroverride

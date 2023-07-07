@@ -624,9 +624,9 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
     if spawn.name.starts_with(b"F000") && spawn.entrance == 53 && !storyflag_check(22) {
         // Skyloft from Sky Keep
         spawn.entrance = 52;
-    } else if spawn.name.starts_with(b"F300\0") && spawn.entrance == 5 {
-        // Lanayru Desert from LMF
-        spawn.entrance = 12; // respawn when getting crushed near here, works for now
+    } else if spawn.name.starts_with(b"F300\0") && spawn.entrance == 5 && !storyflag_check(8) {
+        // Lanayru Desert from LMF - only if LMF isn't raised (storyflag 8)
+        spawn.entrance = 19;
     } else if (spawn.name.starts_with(b"F300\0") && spawn.entrance == 2)
         || (spawn.name.starts_with(b"F300_1") && spawn.entrance == 1)
     {
