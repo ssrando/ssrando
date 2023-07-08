@@ -163,14 +163,9 @@
   oarc: GetMoleGloveA
   getarcname: GetMoleGloveA
   getmodelname: GetMoleGloveA
-- id: 57
-  name: 10 Deku Seeds
-  oarc: null
-  getarcname: GetSeedSet
-  getmodelname: GetSeedSet
 - id: 60
   name: 10 Deku Seeds
-  oarc: null
+  oarc: GetSeedSet
   getarcname: GetSeedSet
   getmodelname: GetSeedSet
 - id: 63

@@ -55,6 +55,7 @@
   - GetNetB
   - GetSpareSeedA
   - GetBottleRepair
+  - GetSeedSet
   - GetSpareQuiverA
   - GetSpareBombBagA
   - GetShieldIron
