@@ -244,7 +244,7 @@ class RandoGUI(QMainWindow):
         # setup presets
         self.default_presets = {}
         self.user_presets = {}
-        self.user_presets_path = "presets.txt"
+        self.user_presets_path = Path("presets.txt")
         self.setup_presets(
             self.default_presets,
             self.user_presets,
@@ -277,40 +277,22 @@ class RandoGUI(QMainWindow):
         if not CUSTOM_MODELS_PATH.is_dir():
             CUSTOM_MODELS_PATH.mkdir()
 
-        # if not os.path.isfile(LINK_MODEL_DATA_PATH / "Player" / "metadata.json"):
-        #     (LINK_MODEL_DATA_PATH / "Player" / "metadata.json").write_bytes(
-        #         (LINK_MODEL_DATA_PATH / "Player" / "defaultMetadata.json").read_bytes()
-        #     )
+        (CUSTOM_MODELS_PATH / "Default" / "Player").mkdir(parents=True, exist_ok=True)
+        (CUSTOM_MODELS_PATH / "Default" / "Loftwing").mkdir(parents=True, exist_ok=True)
 
-        # if not os.path.isfile(LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json"):
-        #     (LINK_MODEL_DATA_PATH / "Loftwing" / "metadata.json").write_bytes(
-        #         (
-        #             LINK_MODEL_DATA_PATH / "Loftwing" / "defaultMetadata.json"
-        #         ).read_bytes()
-        #     )
-
-        if not os.path.isdir(CUSTOM_MODELS_PATH / "Default"):
-            os.mkdir(CUSTOM_MODELS_PATH / "Default")
-
-        if not os.path.isdir(CUSTOM_MODELS_PATH / "Default" / "Player"):
-            os.mkdir(CUSTOM_MODELS_PATH / "Default" / "Player")
-
-        if not os.path.isdir(CUSTOM_MODELS_PATH / "Default" / "Loftwing"):
-            os.mkdir(CUSTOM_MODELS_PATH / "Default" / "Loftwing")
-
-        if not os.path.isfile(
+        if not (
             metadata_file := CUSTOM_MODELS_PATH / "Default" / "Player" / "metadata.json"
-        ):
+        ).is_file():
             metadata_file.write_bytes(
                 (LINK_MODEL_DATA_PATH / "Player" / "defaultMetadata.json").read_bytes()
             )
 
-        if not os.path.isfile(
+        if not (
             metadata_file := CUSTOM_MODELS_PATH
             / "Default"
             / "Loftwing"
             / "metadata.json"
-        ):
+        ).is_file():
             metadata_file.write_bytes(
                 (
                     LINK_MODEL_DATA_PATH / "Loftwing" / "defaultMetadata.json"
@@ -511,11 +493,7 @@ class RandoGUI(QMainWindow):
                 if isinstance(widget, QAbstractButton):
                     widget.setChecked(current_settings[option_key])
                 elif isinstance(widget, QComboBox):
-                    if option["name"] == "Font Family":
-                        widget.setCurrentIndex(
-                            widget.findText(current_settings[option_key])
-                        )
-                    elif option["name"] == "Selected Model Pack":
+                    if option["name"] in ("Font Family", "Selected Model Pack"):
                         widget.setCurrentIndex(
                             widget.findText(current_settings[option_key])
                         )
@@ -1038,14 +1016,18 @@ class RandoGUI(QMainWindow):
                 / self.current_model_type
                 / "metadata.json"
             )
-            if not os.path.isfile(self.metadata_path):
-                self.metadata_path.write_bytes(
-                    (
-                        LINK_MODEL_DATA_PATH
-                        / self.current_model_type
-                        / "defaultMetadata.json"
-                    ).read_bytes()
-                )
+            default_metadata_path = (
+                LINK_MODEL_DATA_PATH / self.current_model_type / "defaultMetadata.json"
+            )
+            with open(default_metadata_path) as f:
+                default_metadata = json.load(f)
+                self.metadata = default_metadata
+            if self.metadata_path.is_file():
+                with open(self.metadata_path) as f:
+                    self.metadata = json.load(f)
+                    self.metadata["Colors"] = (
+                        default_metadata["Colors"] | self.metadata["Colors"]
+                    )
         else:
             self.metadata_path = (
                 CUSTOM_MODELS_PATH
@@ -1054,7 +1036,7 @@ class RandoGUI(QMainWindow):
                 / "metadata.json"
             )
             # Avoids throwing an error later on if a metadata file doesn't exist
-            if not os.path.isfile(self.metadata_path):
+            if not self.metadata_path.is_file():
                 self.metadata = {}
                 return
 
@@ -1120,10 +1102,10 @@ class RandoGUI(QMainWindow):
         self.color_box.insertLayout(color_box_index, author_layout)
         color_box_index += 1
 
-        if colorData := self.metadata.get("Colors"):
+        if color_data := self.metadata.get("Colors"):
             self.ui.button_randomize_all_colors.setEnabled(True)
             self.ui.button_reset_all_colors.setEnabled(True)
-            for mask_name in colorData:
+            for mask_name in color_data:
                 color_label = QLabel(mask_name)
 
                 random_color_button = QPushButton("Random")
@@ -1132,7 +1114,7 @@ class RandoGUI(QMainWindow):
                 )
                 color_button = ColorButton(mask_name, showAlpha=False)
                 color_button.set_color(
-                    colorData[mask_name]
+                    color_data[mask_name]
                 )  # set color after so initial color is none to allow for defaults
                 reset_color_button = QPushButton("Reset")
                 reset_color_button.setSizePolicy(
@@ -1165,8 +1147,8 @@ class RandoGUI(QMainWindow):
             button.reset_color()
             button.blockSignals(False)
 
-        for colorGroup in self.metadata["Colors"]:
-            self.metadata["Colors"][colorGroup] = "Default"
+        for color_group in self.metadata["Colors"]:
+            self.metadata["Colors"][color_group] = "Default"
 
         with open(self.metadata_path, "w") as f:
             json.dump(self.metadata, f)
@@ -1183,8 +1165,8 @@ class RandoGUI(QMainWindow):
             colors.append(button.randomize_color())
             button.blockSignals(False)
 
-        for i, colorGroup in enumerate(self.metadata["Colors"]):
-            self.metadata["Colors"][colorGroup] = colors[i]
+        for i, color_group in enumerate(self.metadata["Colors"]):
+            self.metadata["Colors"][color_group] = colors[i]
 
         with open(self.metadata_path, "w") as f:
             json.dump(self.metadata, f)
@@ -1194,45 +1176,47 @@ class RandoGUI(QMainWindow):
 
     def update_model_preview(self):
         if self.current_model_pack == "Default":
-            previewDataPath = LINK_MODEL_DATA_PATH / self.current_model_type / "Preview"
+            preview_data_path = (
+                LINK_MODEL_DATA_PATH / self.current_model_type / "Preview"
+            )
         else:
-            previewDataPath = (
+            preview_data_path = (
                 CUSTOM_MODELS_PATH
                 / self.current_model_pack
                 / self.current_model_type
                 / "Preview"
             )
 
-        if not os.path.isfile(previewDataPath / "Preview.png"):
+        if not (preview_data_path / "Preview.png").is_file():
             self.ui.label_preview_image.clear()
             self.ui.label_preview_image.setText("No preview provided")
             return
 
-        data = cv2.imread(str(previewDataPath / "Preview.png"), cv2.IMREAD_UNCHANGED)
+        data = cv2.imread(str(preview_data_path / "Preview.png"), cv2.IMREAD_UNCHANGED)
         data = cv2.cvtColor(data, cv2.COLOR_RGBA2BGRA)
         height = data.shape[0]
         width = data.shape[1]
 
-        colorData = self.metadata.get("Colors")
+        color_data = self.metadata.get("Colors")
 
-        maskPaths = []
+        mask_paths = []
         colors = []
-        for colorGroup in colorData:
-            if colorData[colorGroup] == "Default":
+        for color_group in color_data:
+            if color_data[color_group] == "Default":
                 continue
-            maskPath = previewDataPath / f"Preview__{colorGroup}.png"
-            if os.path.isfile(maskPath):
-                maskPaths.append(str(maskPath))
-                colors.append(colorData[colorGroup])
+            mask_path = preview_data_path / f"Preview__{color_group}.png"
+            if mask_path.is_file():
+                mask_paths.append(str(mask_path))
+                colors.append(color_data[color_group])
             else:
-                print(f"No preview mask found at {maskPath}")
+                print(f"No preview mask found at {mask_path}")
 
-        modifiedData = cr.process_texture(
-            texture=data, maskPaths=maskPaths, colors=colors
+        modified_data = cr.process_texture(
+            texture=data, maskPaths=mask_paths, colors=colors
         )
 
         qimage = QImage(
-            modifiedData.tobytes(), width, height, QImage.Format.Format_RGBA8888
+            modified_data.tobytes(), width, height, QImage.Format.Format_RGBA8888
         )
         qpixmap = QPixmap.fromImage(qimage).scaled(
             600, 500, Qt.KeepAspectRatio, Qt.SmoothTransformation
@@ -1241,18 +1225,18 @@ class RandoGUI(QMainWindow):
 
     def setup_presets(
         self,
-        default_preset_dict,
-        user_preset_dict,
-        presets_list,
-        default_presets_path,
-        user_presets_path,
+        default_preset_dict: dict,
+        user_preset_dict: dict,
+        presets_list: QComboBox,
+        default_presets_path: Path,
+        user_presets_path: Path,
     ):
         # default_preset_dict = {}
         # user_preset_dict = {}
         presets_list.clear()
         presets_list.addItem(NEW_PRESET)
         sep_idx = 1
-        if os.path.isfile(default_presets_path):
+        if default_presets_path.is_file():
             with (default_presets_path).open("r") as f:
                 try:
                     load_default_presets = json.load(f)
@@ -1263,7 +1247,7 @@ class RandoGUI(QMainWindow):
                 except Exception as e:
                     print("couldn't load default presets", e)
         presets_list.insertSeparator(sep_idx)
-        if os.path.isfile(user_presets_path):
+        if user_presets_path.is_file():
             with open(user_presets_path) as f:
                 try:
                     load_user_presets = json.load(f)

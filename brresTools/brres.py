@@ -110,74 +110,20 @@ class BRRES:
             data.seek(group_start_offset + data_offset)
 
             identifier = data.read(4)
-            match identifier:
-                case b"MDL0":
-                    entryNode = SubFileNode(
-                        fileType="MDL0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case b"TEX0":
-                    entryNode = SubFileNode(
-                        fileType="TEX0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case b"SRT0":
-                    entryNode = SubFileNode(
-                        fileType="SRT0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case b"CHR0":
-                    entryNode = SubFileNode(
-                        fileType="CHR0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case b"PAT0":
-                    entryNode = SubFileNode(
-                        fileType="PAT0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case b"CLR0":
-                    entryNode = SubFileNode(
-                        fileType="CLR0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case b"SHP0":
-                    entryNode = SubFileNode(
-                        fileType="SHP0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case b"SCN0":
-                    entryNode = SubFileNode(
-                        fileType="SCN0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case b"PLT0":
-                    entryNode = SubFileNode(
-                        fileType="PLT0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case b"VIS0":
-                    entryNode = SubFileNode(
-                        fileType="VIS0",
-                        name=name,
-                        dataOffset=(group_start_offset + data_offset),
-                    )
-                case _:
-                    entryNode = IndexGroupNode(name=name)
-                    BRRES.parse_index_group_entries(
-                        data=data,
-                        indexGroupNode=entryNode,
-                        group_start_offset=(group_start_offset + data_offset),
-                    )
+
+            if identifier in SECTION_TYPES:
+                entryNode = SubFileNode(
+                    fileType=identifier,
+                    name=name,
+                    dataOffset=(group_start_offset + data_offset),
+                )
+            else:
+                entryNode = IndexGroupNode(name=name)
+                BRRES.parse_index_group_entries(
+                    data=data,
+                    indexGroupNode=entryNode,
+                    group_start_offset=(group_start_offset + data_offset),
+                )
 
             indexGroupNode.add_child(entryNode)
 
@@ -212,29 +158,29 @@ class BRRES:
         dataOffset = file.dataOffset
 
         match file.nodeType:
-            case "MDL0":
+            case b"MDL0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "TEX0":
+            case b"TEX0":
                 tex0: TEX0 = TEX0.parse_TEX0(
                     dataBuffer=self.dataBuffer, start_offset=dataOffset
                 )
                 rawImageData = tex0.get_image_data()
                 return tex0.convert_raw_image_data_to_RGBA(data=rawImageData)
-            case "SRT0":
+            case b"SRT0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "CHR0":
+            case b"CHR0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "PAT0":
+            case b"PAT0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "CLR0":
+            case b"CLR0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "SHP0":
+            case b"SHP0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "SCN0":
+            case b"SCN0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "PLT0":
+            case b"PLT0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "VIS0":
+            case b"VIS0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
             case _:
                 raise FileNotFoundError(
@@ -246,9 +192,9 @@ class BRRES:
         dataOffset = file.dataOffset
 
         match file.nodeType:
-            case "MDL0":
+            case b"MDL0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "TEX0":
+            case b"TEX0":
                 tex0: TEX0 = TEX0.parse_TEX0(
                     dataBuffer=self.dataBuffer, start_offset=dataOffset
                 )
@@ -261,21 +207,21 @@ class BRRES:
 
                 self.dataBuffer.seek(tex0.imageDataOffset)
                 self.dataBuffer.write(rawImageData)
-            case "SRT0":
+            case b"SRT0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "CHR0":
+            case b"CHR0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "PAT0":
+            case b"PAT0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "CLR0":
+            case b"CLR0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "SHP0":
+            case b"SHP0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "SCN0":
+            case b"SCN0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "PLT0":
+            case b"PLT0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
-            case "VIS0":
+            case b"VIS0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
             case _:
                 raise FileNotFoundError(
