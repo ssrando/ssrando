@@ -442,7 +442,8 @@ class HintDistribution:
                 elif zone == LANAYRU_GORGE:
                     zone = LANAYRU_SAND_SEA
                 return CubeSotsGoalHint(loc, item, zone, goal)
-        zone = self.areas.checks[loc]["hint_region"]
+        else:
+            zone = self.areas.checks[loc]["hint_region"]
         return SotsGoalHint(loc, item, zone, goal)
 
     def _create_sots_hint(self):
