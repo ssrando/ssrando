@@ -11,6 +11,16 @@
 - Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
+- Added Fi hints (by YourAverageLink)
+  - Fi hints are a new field in hint distribution files. The number indicated on the field is how many gossip stone hints will be placed in the Fi menu
+    - Fi hints take priority over gossip stone hints; that is, they will be placed on Fi first, then on gossip stones if needed
+    - You may now set the hints per stone count of gossip stones to 0
+    - Fi's hints may be seen in her menu, by selecting Information -> Hints
+      - The information menu is also where Play Time now resides
+- Moved Golo to layer 0 in Lanayru Caves
+- Add an option for a custom hint distribution (by cjs07)
+- The Sand Sea boat moves faster (by YourAverageLink)
+  - Its base speed is 1.5x faster. Sprinting now multiplies its speed by 3 instead of 2, for a total change of 2.25x from before.
 - Added more structured and granular custom model support (by Muzu- with big help from CovenEsme, FrasseFreak, and Dman25)
   - Added cosmetics tab to UI
   - Added models folder for custom model packs
@@ -37,7 +47,10 @@
     - The Loftwing comes with 7 default color presets - Zelda's Loftwing, the Wing Ceremony Loftwing, Groose's Loftwing, Cawlin's Loftwing, Strich's Loftwing, Orielle's Loftwing, and the Knights' Loftwing
     - At any point, you may save a new color preset (works just like settings presets), and then load them at a later point.
     - Model creators may provide their own default presets by adding a default_presets.json file to the model type folder
-    - The Import/Export button opens up a dialog box containing the metadata for your currently selected color. This may be copied and sent to someone else, who can paste in the same dialog box and import the color.
+    - The Import/Export button opens up a dialog box containing the metadata for your currently selected color. This may be copied and sent to someone else, who can paste in the same dialog box and import the color
+### Bugfixes
+- Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
+- Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow
 
 ## 1.4.1
 ### Bugfixes

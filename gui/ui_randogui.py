@@ -368,50 +368,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.vlay_shuffles = QVBoxLayout()
         self.vlay_shuffles.setObjectName(u"vlay_shuffles")
-        self.vlay_batreaux = QVBoxLayout()
-        self.vlay_batreaux.setObjectName(u"vlay_batreaux")
-        self.label_for_option_max_batreaux_reward = QLabel(self.box_shuffles)
-        self.label_for_option_max_batreaux_reward.setObjectName(u"label_for_option_max_batreaux_reward")
-
-        self.vlay_batreaux.addWidget(self.label_for_option_max_batreaux_reward)
-
-        self.option_max_batreaux_reward = QComboBox(self.box_shuffles)
-        self.option_max_batreaux_reward.setObjectName(u"option_max_batreaux_reward")
-
-        self.vlay_batreaux.addWidget(self.option_max_batreaux_reward)
-
-
-        self.vlay_shuffles.addLayout(self.vlay_batreaux)
-
-        self.vlay_shopsanity = QVBoxLayout()
-        self.vlay_shopsanity.setObjectName(u"vlay_shopsanity")
-        self.label_for_option_shopsanity = QLabel(self.box_shuffles)
-        self.label_for_option_shopsanity.setObjectName(u"label_for_option_shopsanity")
-
-        self.vlay_shopsanity.addWidget(self.label_for_option_shopsanity)
-
-        self.option_shopsanity = QComboBox(self.box_shuffles)
+        self.option_shopsanity = QCheckBox(self.box_shuffles)
         self.option_shopsanity.setObjectName(u"option_shopsanity")
 
-        self.vlay_shopsanity.addWidget(self.option_shopsanity)
+        self.vlay_shuffles.addWidget(self.option_shopsanity)
 
-
-        self.vlay_shuffles.addLayout(self.vlay_shopsanity)
-
-        self.vlay_rupeesanity = QVBoxLayout()
-        self.vlay_rupeesanity.setObjectName(u"vlay_rupeesanity")
-        self.label_for_option_rupeesanity = QLabel(self.box_shuffles)
-        self.label_for_option_rupeesanity.setObjectName(u"label_for_option_rupeesanity")
-
-        self.vlay_rupeesanity.addWidget(self.label_for_option_rupeesanity)
-
-        self.option_rupeesanity = QComboBox(self.box_shuffles)
+        self.option_rupeesanity = QCheckBox(self.box_shuffles)
         self.option_rupeesanity.setObjectName(u"option_rupeesanity")
 
-        self.vlay_rupeesanity.addWidget(self.option_rupeesanity)
-
-
-        self.vlay_shuffles.addLayout(self.vlay_rupeesanity)
+        self.vlay_shuffles.addWidget(self.option_rupeesanity)
 
         self.option_tadtonesanity = QCheckBox(self.box_shuffles)
         self.option_tadtonesanity.setObjectName(u"option_tadtonesanity")
@@ -747,6 +712,16 @@ class Ui_MainWindow(object):
         self.option_randomize_boss_key_puzzles.setObjectName(u"option_randomize_boss_key_puzzles")
 
         self.vlay_dungeons.addWidget(self.option_randomize_boss_key_puzzles)
+
+        self.label_for_dungeon_patches = QLabel(self.box_dungeons)
+        self.label_for_dungeon_patches.setObjectName(u"label_for_dungeon_patches")
+
+        self.vlay_dungeons.addWidget(self.label_for_dungeon_patches)
+
+        self.option_fs_lava_flow = QCheckBox(self.box_dungeons)
+        self.option_fs_lava_flow.setObjectName(u"option_fs_lava_flow")
+
+        self.vlay_dungeons.addWidget(self.option_fs_lava_flow)
 
         self.vspace_dungeons = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1967,7 +1942,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(6)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -2013,9 +1988,8 @@ class Ui_MainWindow(object):
         self.tab_randomization_settings.setToolTip("")
 #endif // QT_CONFIG(tooltip)
         self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
-        self.label_for_option_max_batreaux_reward.setText(QCoreApplication.translate("MainWindow", u"Maximum Batreaux Reward", None))
-        self.label_for_option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Beedle's Shop", None))
-        self.label_for_option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
+        self.option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Beedle's Shop", None))
+        self.option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
         self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))
         self.box_completion.setTitle(QCoreApplication.translate("MainWindow", u"Completion Conditions", None))
         self.label_for_option_got_starting_state.setText(QCoreApplication.translate("MainWindow", u"Starting State", None))
@@ -2046,6 +2020,8 @@ class Ui_MainWindow(object):
         self.option_empty_unrequired_dungeons.setText(QCoreApplication.translate("MainWindow", u"Empty Unrequired Dungeons", None))
         self.label_for_sword_dungeon_reward.setText(QCoreApplication.translate("MainWindow", u"Sword Dungeon Reward", None))
         self.option_randomize_boss_key_puzzles.setText(QCoreApplication.translate("MainWindow", u"Randomize Boss Key Puzzles", None))
+        self.label_for_dungeon_patches.setText(QCoreApplication.translate("MainWindow", u"Dungeon Convenience Patches", None))
+        self.option_fs_lava_flow.setText(QCoreApplication.translate("MainWindow", u"Skip Fire Sanctuary Lava Chase", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_randomization_settings), QCoreApplication.translate("MainWindow", u"Randomization Settings", None))
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))

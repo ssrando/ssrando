@@ -32,6 +32,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
 )
 from gui.components.color_button import ColorButton
+
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
 from logic.constants import LOCATION_FILTER_TYPES
@@ -423,13 +424,17 @@ class RandoGUI(QMainWindow):
 
     def on_error(self, message: str):
         self.error_msg = QErrorMessage(self)
-        self.progress_dialog.reset()
-        if self.rando.seed:
+        if self.progress_dialog is not None:
+            self.progress_dialog.reset()
+        try:
             self.error_msg.showMessage(
                 f"{message}<br/>Seed: {self.rando.seed}<br/>Settings: {self.rando.options.get_permalink()}"
             )
-        else:
+        except Exception as e:
             self.error_msg.showMessage(message)
+            # Don't do anything if the error is just that seed doesn't exist
+            if not isinstance(e, AttributeError):
+                raise e
 
     def randomization_complete(self):
         self.progress_dialog.reset()
