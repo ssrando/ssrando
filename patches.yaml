@@ -4769,13 +4769,22 @@ F302: # Lanayru Gorge
     object:
       layer: 2
       entrance: 4
-  - name: Move Key to Layer 2
+  - name: Move Small Key
     type: objmove
     id: 0xFCC3
     layer: 1
     destlayer: 0
     room: 0
     objtype: OBJ
+  - name: Patch Small Key
+    type: objpatch
+    id: 0xFCC3
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      anglex: 0
+      angley: 0
   - name: patch FrmLand
     type: objpatch
     id: 0xFC05
