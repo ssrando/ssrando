@@ -20,6 +20,9 @@
 - Add an option for a custom hint distribution (by cjs07)
 - The Sand Sea boat moves faster (by YourAverageLink)
   - Its base speed is 1.5x faster. Sprinting now multiplies its speed by 3 instead of 2, for a total change of 2.25x from before.
+- Removed Fi text trigger surrounding the Hook Beetle Fight check
+- The shortcut log from the Sealed Grounds Spiral to Behind the Temple is now always pushed down
+- The progress text shown at the bottom of save files now shows information about your progress towards the end of the seed (rather than the vanilla game) (by CovenEsme)
 - Added Scrapper as an item (by CovenEsme)
   - Scrapper is no longer given at the start of the game and instead appears as an item
   - To account for this, Scrapper has also been made into a possible starting item

@@ -1,3 +1,65 @@
+002-System:
+  - name: File Progress Text 0
+    type: textpatch
+    index: 78
+    text: "Search the land and skies for the <y<Goddess Harp>>."
+  - name: File Progress Text 1
+    type: textpatch
+    index: 79
+    text: "Show the Goddess Harp to Impa at the\n<b<Sealed Temple>>."
+  # See gamepatches for File Progress Text 2
+  - name: File Progress Text 3
+    type: textpatch
+    index: 81
+    text: "Find and complete the <r<required dungeons>>."
+  - name: File Progress Text 4
+    type: textpatch
+    index: 82
+    text: "Find and complete the <r<required dungeons>>."
+  - name: File Progress Text 5
+    type: textpatch
+    index: 83
+    text: "Find and complete the <r<required dungeons>>."
+  - name: File Progress Text 6
+    type: textpatch
+    index: 84
+    text: "Find and complete the <r<required dungeons>>."
+  - name: File Progress Text 7
+    type: textpatch
+    index: 85
+    text: "Find and complete the <r<required dungeons>>."
+  - name: File Progress Text 8
+    type: textpatch
+    index: 86
+    text: "Find and complete the <r<required dungeons>>."
+  - name: File Progress Text 9
+    type: textpatch
+    index: 87
+    text: "Use your sword to activate the <r<Gate of Time>>."
+  - name: File Progress Text 10
+    type: textpatch
+    index: 88
+    text: "Seal away the mysterious monster at the bottom\nof the <b<Sealed Grounds>>."
+  - name: File Progress Text 11
+    type: textpatch
+    index: 89
+    text: "Hit the Gate of Time with a Skyward Strike and\ntravel to the world of the past."
+  - name: File Progress Text 12
+    type: textpatch
+    index: 90
+    text: "Search for the three parts of the <y<Triforce>>."
+  - name: File Progress Text 13
+    type: textpatch
+    index: 91
+    text: "Travel to the world of the past and defeat\n<r<The Horde>>."
+  - name: File Progress Text 14
+    type: textpatch
+    index: 92
+    text: "Travel to the world of the past and defeat\n<r<Ghirahim>>."
+  - name: File Progress Text 15
+    type: textpatch
+    index: 93
+    text: "Travel to the world of the past and defeat the\nrevived <r<Demise>>."
 003-ItemGet:
   - name: Scrapper Entry
     type: entryadd
@@ -911,6 +973,17 @@
       subType: 0
       param1: 0
       param2: 132 # Imp 2 Defeated
+      next: Rando imp 2 triggered story flag
+      param3: 0
+  # Used for the File Progress Text
+  - name: Rando imp 2 triggered story flag
+    type: flowadd
+    onlyif: Option "imp2-skip" Enabled
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 144 # Imp 2 Triggered
       next: -1
       param3: 0
   - name: Rando Set Zone CS Flag # activates the CS after dungeons, or does nothing, zone temp flag 3

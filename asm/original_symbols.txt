@@ -71,5 +71,9 @@ main.dol:
     setFlagForItem: 0x80251ca0
     getModelDataFromOarc: 0x80069b30
     checkXZDistanceFromLink: 0x8002d3e0
+    ITEM_GET_BOTTLE_POUCH_SLOT: 0x8057398c
+    NUMBER_OF_ITEMS: 0x805758d0
+    AcItem__setupItemParams: 0x8024a260
+    AcItem__spawnItem: 0x802487c0
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
