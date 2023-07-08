@@ -136,6 +136,25 @@ extern "C" {
     fn findActorByActorType(actor_type: i32, start_actor: *const c_void) -> *mut c_void;
     fn checkXZDistanceFromLink(actor: *const c_void, distance: f32) -> bool;
     static mut SPECIAL_MINIGAME_STATE: SpecialMinigameState;
+    static mut ITEM_GET_BOTTLE_POUCH_SLOT: u32;
+    static mut NUMBER_OF_ITEMS: u32;
+    fn AcItem__setupItemParams(
+        item_id: u16,
+        subtype: u32,
+        unk1: u32,
+        sceneflag: u32,
+        unk2: u32,
+        unk3: u32
+    ) -> u32;
+    fn AcItem__spawnItem(
+        room: u32,
+        item_params: u32,
+        pos: u32, // actually Vec3f
+        rot: u32, // actually Vec3s
+        scale: u32, // actually Vec3f
+        params2: u32,
+        unk: u32,
+    ) -> *mut c_void;
     fn AcItem__giveItem(item_id: u16, bottle_pouch_slot: u32, number: u32) -> *mut c_void;
 }
 
@@ -569,6 +588,31 @@ fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
     };
     if loftwing.speed > cap {
         loftwing.speed = cap;
+    }
+}
+
+// The same as give_item only you can control the sceneflag of the item given.
+#[no_mangle]
+fn give_item_with_sceneflag(item_id: u16, bottle_pouch_slot: u32, number: u32, sceneflag: u32) -> *mut c_void{
+    unsafe {
+
+        ITEM_GET_BOTTLE_POUCH_SLOT = bottle_pouch_slot;
+        NUMBER_OF_ITEMS = number;
+        // Same as the vanilla setupItemParams function only with extra control over the sceneflag
+        let item_params = AcItem__setupItemParams(item_id, 5, 0, sceneflag, 1, 0xff);
+
+        let item = AcItem__spawnItem(
+            u32::MAX,
+            item_params,
+            0,
+            0,
+            0,
+            u32::MAX,
+            1,
+        );
+        ITEM_GET_BOTTLE_POUCH_SLOT = u32::MAX;
+        NUMBER_OF_ITEMS = 0;
+        return item;
     }
 }
 

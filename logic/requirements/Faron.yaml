@@ -20,12 +20,10 @@ Sealed Grounds:
         Unlock Statue: Nothing
 
       From Behind the Temple:
-        entrance: Push Log
+        entrance: Nothing
         exits:
           Upper Part: Nothing
           Shortcut Exit to Behind the Temple: Nothing
-        locations:
-          Push Log: Nothing
 
   Sealed Temple:
     exits:
