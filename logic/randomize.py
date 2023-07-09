@@ -251,6 +251,10 @@ class Rando:
             ):
                 self.banned.append(self.norm(entrance_of_exit(DUNGEON_MAIN_EXITS[SK])))
 
+        # ban the forced vanilla relic checks to ensure songs can be counted as nonprogress items if the rewards are also off
+        if not self.options["treasuresanity-in-silent-realms"]:
+            self.banned.extend(map(self.norm, TRIAL_RELIC_CHECKS))
+
     def get_endgame_requirements(self):
         # needs to be able to open GoT and open it, requires required dungeons
         got_raising_requirement = (

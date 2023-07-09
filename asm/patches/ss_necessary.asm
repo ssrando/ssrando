@@ -458,7 +458,7 @@ li r4, 0x7FFF
 .org 0xD64
 li r4, 0x7FFF
 
-.org 0x2E79
+.org 0x2E70
 blr ; remove function that checks for untrigger sceneflag and involves collision destructor
 
 .org 0x2008
