@@ -99,6 +99,14 @@ struct Reloader {
     spawn_state: i16,
 }
 
+struct StartInfo {
+    stage: [u8; 8],
+    room: u8,
+    layer: u8,
+    entrance: u8,
+    forced_night: u8,
+}
+
 extern "C" {
     static mut SPAWN_SLAVE: SpawnStruct;
     fn setStoryflagToValue(flag: u16, value: u16);
@@ -151,7 +159,7 @@ extern "C" {
         unk: u32,
     ) -> *mut c_void;
     fn actuallyTriggerEntrance(
-        stage_name: *const c_char,
+        stage_name: *const u8,
         room: u8,
         layer: u8,
         entrance: u8,
@@ -628,16 +636,9 @@ fn give_item_with_sceneflag(item_id: u16, bottle_pouch_slot: u32, number: u32, s
 
 #[no_mangle]
 pub fn send_to_start() {
-    struct StartInfo {
-        stage: [c_char; 8],
-        room: u8,
-        layer: u8,
-        entrance: u8,
-        forced_night: u8,
-    }
-
     // this is where the start entrance info is patched
     let start_info = unsafe { &*(0x802DA0E0 as *const StartInfo) };
+
     // we can't use the normal triggerEntrance function, because that doesn't work properly when
     // going from title screen to normal gameplay while keeping the stage
     unsafe {
@@ -684,6 +685,16 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
             // last timeshift stone in mines
             sceneflag_set_global(7, 113);
         }
+    }
+
+    // this is where the start entrance info is patched
+    let start_info = unsafe { &*(0x802DA0E0 as *const StartInfo) };
+
+    if start_info.stage.starts_with(b"F210")
+        && start_info.entrance == 0
+        && spawn.name.starts_with(b"F210")
+        && spawn.entrance == 0 {
+        unsafe { (*RELOADER_PTR).spawn_state = 0x13; } // diving
     }
 
     // replaced function call
