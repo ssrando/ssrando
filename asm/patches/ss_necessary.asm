@@ -67,6 +67,10 @@ li r5, -1
 ; .org 0x801bb96c ; Change starting entrance
 ; li r6, 5 ; Entrance 0 -> 5
 
+; Don't prevent respawn info being set
+.org 0x801ba634
+stb r31, 0x2a3(r30) ; place r0 (true) with r31 (false)
+
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
 stwu r1, -0x30(r1) ; change function prologue to match the function it branches to at the end
