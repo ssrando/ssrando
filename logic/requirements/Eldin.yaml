@@ -241,6 +241,13 @@ Volcano Summit:
         Item behind Digging: Mogma Mitts
         Gossip Stone near Second Thirsty Frog: Nothing
         Hydrate Second Frog: Clawshots & Water Bottle
+  
+  Inside Fire Sanctuary:
+    exits:
+      Statue: Unlock Statue
+      Fake Statue Area Exit: Empty Unrequired Dungeons Off option
+    locations:
+      Unlock Statue: Nothing
 
 # BOKO BASE
 Bokoblin Base:

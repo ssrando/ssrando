@@ -1101,7 +1101,7 @@ Sky - Eldin Pillar - Volcano Ascent Statue Dive:
 
 Sky - Eldin Pillar - Fire Sanctuary Statue Dive:
   type: exit
-  vanilla: Fire Sanctuary - Statue Entrance
+  vanilla: Volcano Summit - Inside Fire Sanctuary - Statue Entrance
   stage: F020
   room: 0
   index: 55
@@ -3036,6 +3036,14 @@ Outside Fire Sanctuary - Exit to Fire Sanctuary:
   room: 0
   index: 1
 
+Volcano Summit - Inside Fire Sanctuary - Fake Statue Area Entrance:
+  type: entrance
+  disabled: true
+  can-start-at: false
+
+Volcano Summit - Inside Fire Sanctuary - Fake Statue Area Exit:
+  type: exit
+
 
 # Earth Temple
 
@@ -3139,7 +3147,16 @@ Earth Temple - Spring - Exit:
 
 # Fire Sanctuary
 
-Fire Sanctuary - Statue Entrance:
+Fire Sanctuary - Main - Front of Boss Door - Fake Statue Area Entrance:
+  type: entrance
+  disabled: true
+  can-start-at: false
+
+Fire Sanctuary - Main - Front of Boss Door - Fake Statue Area Exit:
+  type: exit
+
+## Fake being inside FS to allow FS to be non-progress
+Volcano Summit - Inside Fire Sanctuary - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
   province: Eldin Province
@@ -3158,7 +3175,8 @@ Fire Sanctuary - Inner Map Statue Exit:
   room: 10
   index: 1
 
-Fire Sanctuary - Statue Exit:
+## Fake being inside FS to allow FS to be non-progress
+Volcano Summit - Inside Fire Sanctuary - Statue Exit:
   type: exit
   vanilla: Sky - Eldin Pillar - Entrance
   stage: D201

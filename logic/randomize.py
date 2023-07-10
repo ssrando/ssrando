@@ -354,6 +354,9 @@ class Rando:
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
             FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
+            EMPTY_UNREQUIRED_DUNGEONS_OFF_OPTION: not self.options[
+                "empty-unrequired-dungeons"
+            ],
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])
