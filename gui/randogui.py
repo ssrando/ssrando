@@ -28,6 +28,8 @@ from PySide6.QtWidgets import (
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
 from logic.constants import LOCATION_FILTER_TYPES
+from gui.components.conditional_multiselect import ConditionalMultiselect
+from gui.components.multi_combo_box import MultiComboBox
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -107,7 +109,21 @@ class RandoGUI(QMainWindow):
                     continue
                 widget = getattr(self.ui, ui_name)
                 widget.installEventFilter(self)
-                if isinstance(widget, QAbstractButton):
+                if option.get("type") == "multichoice" and option.get("trivial", False):
+                    temp = MultiComboBox(option["choices"])
+                    widget.parentWidget().layout().replaceWidget(widget, temp)
+                    setattr(self.ui, ui_name, temp)
+                    widget = temp
+                    widget.closedPopup.connect(self.update_settings)
+                elif option.get("type") == "multichoice" and option.get(
+                    "conditional", False
+                ):
+                    temp = ConditionalMultiselect(option["name"], option["choices"])
+                    widget.parentWidget().layout().replaceWidget(widget, temp)
+                    setattr(self.ui, ui_name, temp)
+                    widget = temp
+                    widget.compositeChanged.connect(self.update_settings)
+                elif isinstance(widget, QAbstractButton):
                     widget.setChecked(self.options[option_key])
                     widget.clicked.connect(self.update_settings)
                 elif isinstance(widget, QComboBox):
@@ -435,6 +451,10 @@ class RandoGUI(QMainWindow):
                 widget = getattr(self.ui, ui_name)
                 if isinstance(widget, QAbstractButton):
                     widget.setChecked(current_settings[option_key])
+                elif isinstance(widget, MultiComboBox):
+                    widget.set_from_list(current_settings[option_key])
+                elif isinstance(widget, ConditionalMultiselect):
+                    widget.update_from_settings(current_settings[option_key])
                 elif isinstance(widget, QComboBox):
                     if option["name"] == "Font Family":
                         widget.setCurrentIndex(
@@ -622,6 +642,10 @@ class RandoGUI(QMainWindow):
         widget = getattr(self.ui, option_name)
         if isinstance(widget, QCheckBox) or isinstance(widget, QRadioButton):
             return widget.isChecked()
+        elif isinstance(widget, MultiComboBox):
+            return widget.checked_items()
+        elif isinstance(widget, ConditionalMultiselect):
+            return widget.composite_value()
         elif isinstance(widget, QComboBox):
             return widget.itemText(widget.currentIndex())
         elif isinstance(widget, QSpinBox):
