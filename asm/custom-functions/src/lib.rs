@@ -179,10 +179,6 @@ fn storyflag_set_to_value(flag: u16, value: u16) {
     unsafe { FlagManager__setFlagOrCounter(STORYFLAG_MANAGER, flag, value) };
 }
 
-fn storyflag_set_to_1(flag: u16) {
-    unsafe { FlagManager__setFlagTo1(STORYFLAG_MANAGER, flag) };
-}
-
 fn itemflag_set_to_value(flag: u16, value: u16) {
     unsafe { FlagManager__setFlagOrCounter(ITEMFLAG_MANAGER, flag, value) };
 }
@@ -590,6 +586,11 @@ fn give_item_with_sceneflag(item_id: u16, bottle_pouch_slot: u32, number: u32, s
         NUMBER_OF_ITEMS = 0;
         return item;
     }
+}
+
+#[no_mangle]
+fn storyflag_set_to_1(flag: u16) {
+    unsafe { FlagManager__setFlagTo1(STORYFLAG_MANAGER, flag) };
 }
 
 #[panic_handler]
