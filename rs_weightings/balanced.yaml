@@ -1,0 +1,488 @@
+## ints
+- name: Starting Tablet Count
+  command: starting-tablet-count
+  type: int
+  choices:
+    0: 2
+    1: 8
+    2: 3
+    3: 1
+- name: Required Dungeon Count
+  command: required-dungeon-count
+  type: int
+  choices:
+    0: 1
+    1: 4
+    2: 16
+    3: 8
+    4: 3
+    5: 2
+    6: 1
+- name: Demise Count
+  command: demise-count
+  type: int
+  choices:
+    1: 16
+    2: 8
+    3: 1
+    4: 0 # Cutoff at 4 to prevent too much lag
+    5: 0
+    6: 0
+    7: 0
+    8: 0
+    9: 0
+    10: 0
+- name: Damage Multiplier
+  command: damage-multiplier
+  type: int
+  choices:
+    1: 6
+    2: 4
+    3: 0
+    4: 0 # Cap at 4x
+- name: Starting Gratitude Crystal Packs
+  command: starting-crystal-packs
+  type: int
+  choices:
+    0: 32
+    1: 48
+    2: 32
+    3: 16
+    4: 8
+    5: 4
+    6: 3
+    7: 1
+    8: 1
+    9: 0
+    10: 0
+    11: 0
+    12: 0
+    13: 0
+- name: Starting Empty Bottles
+  command: starting-bottles
+  type: int
+  choices:
+    0: 16
+    1: 20
+    2: 6
+    3: 3
+    4: 2
+    5: 1
+- name: Starting Heart Containers
+  command: starting-heart-containers
+  type: int
+  choices:
+    0: 32
+    1: 64
+    2: 16
+    3: 8
+    4: 4
+    5: 2
+    6: 1
+- name: Starting Heart Pieces
+  command: starting-heart-pieces
+  type: int
+  choices:
+    0: 32 # 0-3 HPs (+0 hearts)
+    4: 64 # 4-7 HPs (+1 heart)
+    8: 16 # 8-11 HPs (+2 hearts)
+    12: 8 # 12-15 HPs (+3 hearts)
+    16: 4 # 16-19 HPs (+4 hearts)
+    20: 2 # 20-23 HPs (+5 hearts)
+    24: 1 # 24 HPs (+6 hearts)
+- name: Starting Tadtone Count
+  command: starting-tadtones
+  type: int
+  choices:
+    0: 4
+    1: 16
+    2: 24
+    3: 32
+    4: 48
+    5: 64
+    6: 96
+    7: 112
+    8: 128
+    9: 64
+    10: 48
+    11: 40
+    12: 32
+    13: 16
+    14: 8
+    15: 4
+    16: 2
+    17: 1
+
+## singlechoices
+- name: Open Thunderhead
+  command: open-thunderhead
+  type: singlechoice
+  choices:
+    Ballad: 3
+    Open: 1
+- name: Starting Sword
+  command: starting-sword
+  type: singlechoice
+  choices:
+    Swordless: 4
+    Practice Sword: 1
+    Goddess Sword: 24
+    Goddess Longsword: 8
+    Goddess White Sword: 4
+    Master Sword: 8
+    True Master Sword: 2
+- name: Triforce Shuffle
+  command: triforce-shuffle
+  type: singlechoice
+  choices:
+    Vanilla: 1
+    Sky Keep: 2
+    Anywhere: 9
+- name: Randomize Entrances
+  command: randomize-entrances
+  type: singlechoice
+  choices:
+    None: 1
+    Required Dungeons Separately: 2
+    All Dungeons: 4
+    All Dungeons + Sky Keep: 4
+- name: Rupoor Mode
+  command: rupoor-mode
+  type: singlechoice
+  choices:
+    "Off": 6
+    Added: 12
+    Rupoor Mayhem: 5
+    Rupoor Insanity: 2
+- name: Gate of Time Starting State
+  command: got-start
+  type: singlechoice
+  choices:
+    Lowered: 7
+    Raised: 1
+- name: Gate of Time Sword Requirement
+  command: got-sword-requirement
+  type: singlechoice
+  choices:
+    Goddess Sword: 1
+    Goddess Longsword: 2
+    Goddess White Sword: 4
+    Master Sword: 12
+    True Master Sword: 8
+- name: Gate of Time Dungeon Requirements
+  command: got-dungeon-requirement
+  type: singlechoice
+  choices:
+    Required: 9
+    Unrequired: 1
+- name: Open Lanayru Mining Facility
+  command: open-lmf
+  type: singlechoice
+  choices:
+    Nodes: 2
+    Main Node: 1
+    Open: 5
+- name: Map Mode
+  command: map-mode
+  type: singlechoice
+  choices:
+    Removed: 0
+    Vanilla: 1
+    Own Dungeon - Restricted: 8
+    Own Dungeon - Unrestricted: 12
+    Anywhere: 5
+- name: Small Key Mode
+  command: small-key-mode
+  type: singlechoice
+  choices:
+    Vanilla: 1
+    Own Dungeon - Restricted: 5
+    Lanayru Caves Key Only: 8
+    Anywhere: 12
+- name: Boss Key Mode
+  command: boss-key-mode
+  type: singlechoice
+  choices:
+    Vanilla: 1
+    Own Dungeon: 9
+    Anywhere: 12
+- name: Song Hints
+  command: song-hints
+  type: singlechoice
+  choices:
+    None: 1
+    Basic: 7
+    Advanced: 8
+    Direct: 5
+- name: Force Sword Dungeon Reward
+  command: sword-dungeon-reward
+  type: singlechoice
+  choices:
+    None: 5
+    Heart Container: 1
+    Final Check: 2
+- name: Shuffle Trial Objects
+  command: shuffle-trial-objects
+  type: singlechoice
+  choices:
+    None: 1
+    Simple: 3
+    Advanced: 8
+    Full: 8
+- name: Chest Dowsing
+  command: chest-dowsing
+  type: singlechoice
+  choices:
+    Vanilla: 4
+    All Chests: 6
+    Progress Items: 8
+- name: Open Lake Floria
+  command: open-lake-floria
+  type: singlechoice
+  choices:
+    Vanilla: 2
+    Talk to Yerbal: 5
+    Open: 13
+- name: Hint Distribution
+  command: hint-distribution
+  type: singlechoice
+  choices:
+    Weak: 1
+    Balanced: 1
+    Junk: 1
+    Co-op S1: 0
+    S2 - 2D: 1
+    S2 - 3D: 1
+    S2 - 3D EUD Off: 1
+    CDMC: 4
+    Dowsing & Fi Hints: 6
+    2D Dowsing & Fi Hints: 6
+
+## bools
+- name: Imp 2
+  command: imp2-skip
+  type: boolean
+  checked: 2
+  unchecked: 1
+- name: Empty unrequired Dungeons
+  command: empty-unrequired-dungeons
+  type: boolean
+  checked: 4
+  unchecked: 1
+- name: Triforce Required
+  command: triforce-required
+  type: boolean
+  checked: 3
+  unchecked: 1
+- name: Randomize Silent Realms
+  command: randomize-trials
+  type: boolean
+  checked: 3
+  unchecked: 1
+- name: Shopsanity
+  command: shopsanity
+  type: boolean
+  checked: 4
+  unchecked: 1
+- name: Rupeesanity
+  command: rupeesanity
+  type: boolean
+  checked: 4
+  unchecked: 1
+- name: Place Scrap Shop Upgrades
+  command: gondo-upgrades
+  type: boolean
+  checked: 5
+  unchecked: 1
+- name: Skip Horde
+  command: skip-horde
+  type: boolean
+  checked: 1
+  unchecked: 2
+- name: Skip Ghirahim 3
+  command: skip-g3
+  type: boolean
+  checked: 1
+  unchecked: 3
+- name: Skip Demise
+  command: skip-demise
+  type: boolean
+  checked: 1
+  unchecked: 7
+- name: Past Impa Stone of Trials Hint
+  command: impa-sot-hint
+  type: boolean
+  checked: 3
+  unchecked: 1
+- name: Open Earth Temple
+  command: open-et
+  type: boolean
+  checked: 2
+  unchecked: 1
+- name: Separate Cube SotS
+  command: cube-sots
+  type: boolean
+  checked: 1
+  unchecked: 1
+- name: Precise Item Hints
+  command: precise-item
+  type: boolean
+  checked: 1
+  unchecked: 1
+- name: Fill Dowsing on White Sword
+  command: dowsing-after-whitesword
+  type: boolean
+  checked: 3
+  unchecked: 1
+- name: Allow Dowsing in Dungeons
+  command: dungeon-dowsing
+  type: boolean
+  checked: 3
+  unchecked: 1
+- name: Upgraded Skyward Strike
+  command: upgraded-skyward-strike
+  type: boolean
+  checked: 2
+  unchecked: 1
+- name: Faster Air Meter Drain
+  command: fast-air-meter
+  type: boolean
+  checked: 2
+  unchecked: 1
+- name: Heart Drops
+  command: enable-heart-drops
+  type: boolean
+  checked: 1
+  unchecked: 2
+- name: Random Starting Item
+  command: random-starting-item
+  type: boolean
+  checked: 0 # Starting items are randomized
+  unchecked: 1
+- name: Start with Hylian Shield
+  command: start-with-hylian-shield
+  type: boolean
+  checked: 3
+  unchecked: 1
+- name: Start with Full Wallet
+  command: full-starting-wallet
+  type: boolean
+  checked: 1
+  unchecked: 1
+- name: Full Wallet Upgrades
+  command: full-wallet-upgrades
+  type: boolean
+  checked: 1
+  unchecked: 1
+- name: Start with Max Bugs
+  command: max-starting-bugs
+  type: boolean
+  checked: 1
+  unchecked: 1
+- name: Start with Max Treasures
+  command: max-starting-treasures
+  type: boolean
+  checked: 1
+  unchecked: 3
+- name: Randomize Boss Key Puzzles
+  command: randomize-boss-key-puzzles
+  type: boolean
+  checked: 3
+  unchecked: 1
+- name: Tadtonesanity
+  command: tadtonesanity
+  type: boolean
+  checked: 3
+  unchecked: 1
+- name: FS Last Room Lava Flow
+  command: fs-lava-flow
+  type: boolean
+  checked: 1
+  unchecked: 1
+
+## Starting items
+- name: Starting Items
+  command: starting-items
+  type: multichoice
+  maxpicks: 8 # Maximum number of picks (None for no max)
+  choices: # Each item will be selected individually. For each, use a number 0-100 as a percentage of 100.
+    - [Baby Rattle, 8]
+    - [Ballad of the Goddess, 7]
+    - [Bomb Bag, 4]
+    - [Cawlin's Letter, 8]
+    - [Clawshots, 4]
+    - [Din's Power, 8]
+    - [Eldin Song of the Hero Part, 8]
+    - [Extra Wallet, 7]
+    - [Extra Wallet, 7]
+    - [Extra Wallet, 7]
+    - [Faron Song of the Hero Part, 8]
+    - [Farore's Courage, 8]
+    - [Fireshield Earrings, 6]
+    - [Goddess Harp, 2]
+    - [Gust Bellows, 4]
+    - [Horned Colossus Beetle, 8]
+    - [Key Piece, 15]
+    - [Key Piece, 15]
+    - [Key Piece, 15]
+    - [Key Piece, 10]
+    - [Key Piece, 10]
+    - [Lanayru Song of the Hero Part, 8]
+    - [Life Tree Fruit, 8]
+    # Life Tree Seedling
+    - [Nayru's Wisdom, 8]
+    - [Progressive Beetle, 4]
+    - [Progressive Beetle, 4]
+    - [Progressive Beetle, 2]
+    - [Progressive Beetle, 1]
+    - [Progressive Bow, 4]
+    - [Progressive Bow, 2]
+    - [Progressive Bow, 1]
+    - [Progressive Bug Net, 5]
+    - [Progressive Bug Net, 2]
+    - [Progressive Mitts, 5]
+    - [Progressive Mitts, 2]
+    - [Progressive Pouch, 20]
+    - [Progressive Pouch, 6]
+    - [Progressive Pouch, 4]
+    - [Progressive Pouch, 2]
+    - [Progressive Pouch, 1]
+    - [Progressive Slingshot, 4]
+    - [Progressive Slingshot, 2]
+    - [Progressive Wallet, 10]
+    - [Progressive Wallet, 6]
+    - [Progressive Wallet, 3]
+    - [Progressive Wallet, 1]
+    - [Sea Chart, 10]
+    - [Spiral Charge, 6]
+    - [Stone of Trials, 4]
+    - [Triforce of Courage, 4]
+    - [Triforce of Power, 4]
+    - [Triforce of Wisdom, 4]
+    - [Water Scale, 6]
+    - [Whip, 4]
+    - [Skyview Small Key, 2]
+    - [Skyview Small Key, 2]
+    - [Lanayru Mining Facility Small Key, 2]
+    - [Ancient Cistern Small Key, 2]
+    - [Ancient Cistern Small Key, 2]
+    - [Sandship Small Key, 5]
+    - [Sandship Small Key, 5]
+    - [Fire Sanctuary Small Key, 5]
+    - [Fire Sanctuary Small Key, 5]
+    - [Fire Sanctuary Small Key, 3]
+    - [Sky Keep Small Key, 5]
+    - [Lanayru Caves Small Key, 8]
+    - [Skyview Map, 1]
+    - [Earth Temple Map, 1]
+    - [Lanayru Mining Facility Map, 1]
+    - [Ancient Cistern Map, 1]
+    - [Sandship Map, 1]
+    - [Fire Sanctuary Map, 1]
+    - [Sky Keep Map, 1]
+    - [Skyview Boss Key, 3]
+    - [Earth Temple Boss Key, 3]
+    - [Lanayru Mining Facility Boss Key, 3]
+    - [Ancient Cistern Boss Key, 3]
+    - [Sandship Boss Key, 3]
+    - [Fire Sanctuary Boss Key, 3]

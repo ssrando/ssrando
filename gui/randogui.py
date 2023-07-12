@@ -27,7 +27,7 @@ from PySide6.QtWidgets import (
 
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
-from logic.constants import LOCATION_FILTER_TYPES
+from logic.constants import LOCATION_FILTER_TYPES, NON_RANDOMIZED_SETTINGS, NON_RANDOMIZED_COSMETICS
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -275,6 +275,8 @@ class RandoGUI(QMainWindow):
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.ui.copy_permalink_button.clicked.connect(self.copy_permalink_to_clipboard)
+        self.ui.option_random_settings.clicked.connect(self.randomize_settings_toggled)
+        self.ui.option_random_cosmetics.clicked.connect(self.randomize_cosmetics_toggled)
         self.update_ui_for_settings()
         self.update_font()
         self.update_settings()
@@ -771,6 +773,29 @@ class RandoGUI(QMainWindow):
 
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
+
+    def randomize_settings_toggled(self):
+        if self.ui.option_random_settings.isChecked() == True:
+            settings_randomized = False
+        else:
+            settings_randomized = True
+        for opt in OPTIONS.values():
+            if (opt["command"] in NON_RANDOMIZED_SETTINGS or ("permalink" in opt and opt["permalink"] == False)):
+                continue
+            elif opt["command"] == "starting-items":
+                getattr(self.ui, "box_starting_items").setEnabled(settings_randomized)
+            else:
+                getattr(self.ui, opt["ui"]).setEnabled(settings_randomized)
+        self.ui.option_random_settings_weighting.setEnabled(self.ui.option_random_settings.isChecked())
+
+    def randomize_cosmetics_toggled(self):
+        if self.ui.option_random_cosmetics.isChecked() == True:
+            cosmetics_randomized = False
+        else:
+            cosmetics_randomized = True
+        for opt in OPTIONS.values():
+            if opt["command"] not in NON_RANDOMIZED_COSMETICS and "cosmetic" in opt and opt["cosmetic"] == True:
+                getattr(self.ui, opt["ui"]).setEnabled(cosmetics_randomized)
 
 
 def run_main_gui(areas: Areas, options: Options):

@@ -57,6 +57,25 @@ LOGIC_OPTIONS = dict.fromkeys(
     ]
 )
 
+NON_RANDOMIZED_SETTINGS = [
+    # If permalink is false, it is not randomized
+    "random-settings",
+    "random-settings-weighting",
+    "random-cosmetics",
+
+    "no-spoiler-log",
+    "bit-patches",
+
+    "logic-mode",
+    "excluded-locations",
+    "enabled-tricks-glitched",
+    "enabled-tricks-bitless",
+]
+
+NON_RANDOMIZED_COSMETICS = [
+    "allow-custom-music",
+]
+
 # Locations
 
 

@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.3
+## Created by: Qt User Interface Compiler version 6.5.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -16,10 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
-    QFontComboBox, QGroupBox, QHBoxLayout, QLabel,
-    QLayout, QLineEdit, QListView, QMainWindow,
-    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
-    QTabWidget, QVBoxLayout, QWidget)
+    QFontComboBox, QGridLayout, QGroupBox, QHBoxLayout,
+    QLabel, QLayout, QLineEdit, QListView,
+    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
+    QSpinBox, QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -55,8 +55,8 @@ class Ui_MainWindow(object):
         self.tabWidget.setDocumentMode(False)
         self.tab_setup = QWidget()
         self.tab_setup.setObjectName(u"tab_setup")
-        self.verticalLayout_27 = QVBoxLayout(self.tab_setup)
-        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.gridLayout = QGridLayout(self.tab_setup)
+        self.gridLayout.setObjectName(u"gridLayout")
         self.vlay_files = QVBoxLayout()
         self.vlay_files.setObjectName(u"vlay_files")
         self.hlay_output = QHBoxLayout()
@@ -106,7 +106,7 @@ class Ui_MainWindow(object):
         self.vlay_files.addLayout(self.vlay_plando)
 
 
-        self.verticalLayout_27.addLayout(self.vlay_files)
+        self.gridLayout.addLayout(self.vlay_files, 0, 0, 1, 1)
 
         self.hlay_setup_options = QHBoxLayout()
         self.hlay_setup_options.setObjectName(u"hlay_setup_options")
@@ -303,7 +303,7 @@ class Ui_MainWindow(object):
         self.hlay_setup_options.addWidget(self.box)
 
 
-        self.verticalLayout_27.addLayout(self.hlay_setup_options)
+        self.gridLayout.addLayout(self.hlay_setup_options, 1, 0, 1, 1)
 
         self.hlay_presets = QHBoxLayout()
         self.hlay_presets.setObjectName(u"hlay_presets")
@@ -352,12 +352,48 @@ class Ui_MainWindow(object):
 
         self.hlay_presets.addWidget(self.box_presets)
 
-        self.hspace_presets = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.box_random_settings = QGroupBox(self.tab_setup)
+        self.box_random_settings.setObjectName(u"box_random_settings")
+        sizePolicy2.setHeightForWidth(self.box_random_settings.sizePolicy().hasHeightForWidth())
+        self.box_random_settings.setSizePolicy(sizePolicy2)
+        self.verticalLayout_27 = QVBoxLayout(self.box_random_settings)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.vlay_random_settings = QVBoxLayout()
+        self.vlay_random_settings.setObjectName(u"vlay_random_settings")
+        self.hlay_random_settings = QHBoxLayout()
+        self.hlay_random_settings.setObjectName(u"hlay_random_settings")
+        self.option_random_settings = QCheckBox(self.box_random_settings)
+        self.option_random_settings.setObjectName(u"option_random_settings")
 
-        self.hlay_presets.addItem(self.hspace_presets)
+        self.hlay_random_settings.addWidget(self.option_random_settings)
+
+        self.option_random_cosmetics = QCheckBox(self.box_random_settings)
+        self.option_random_cosmetics.setObjectName(u"option_random_cosmetics")
+
+        self.hlay_random_settings.addWidget(self.option_random_cosmetics)
 
 
-        self.verticalLayout_27.addLayout(self.hlay_presets)
+        self.vlay_random_settings.addLayout(self.hlay_random_settings)
+
+        self.label_random_settings_weighting = QLabel(self.box_random_settings)
+        self.label_random_settings_weighting.setObjectName(u"label_random_settings_weighting")
+        self.label_random_settings_weighting.setWordWrap(False)
+
+        self.vlay_random_settings.addWidget(self.label_random_settings_weighting)
+
+        self.option_random_settings_weighting = QComboBox(self.box_random_settings)
+        self.option_random_settings_weighting.setObjectName(u"option_random_settings_weighting")
+
+        self.vlay_random_settings.addWidget(self.option_random_settings_weighting)
+
+
+        self.verticalLayout_27.addLayout(self.vlay_random_settings)
+
+
+        self.hlay_presets.addWidget(self.box_random_settings)
+
+
+        self.gridLayout.addLayout(self.hlay_presets, 2, 0, 1, 1)
 
         self.tabWidget.addTab(self.tab_setup, "")
         self.tab_randomization_settings = QWidget()
@@ -1757,7 +1793,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -1798,6 +1834,10 @@ class Ui_MainWindow(object):
         self.load_preset.setText(QCoreApplication.translate("MainWindow", u"Load", None))
         self.save_preset.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.delete_preset.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
+        self.box_random_settings.setTitle(QCoreApplication.translate("MainWindow", u"Randomize Settings", None))
+        self.option_random_settings.setText(QCoreApplication.translate("MainWindow", u"Randomize Settings", None))
+        self.option_random_cosmetics.setText(QCoreApplication.translate("MainWindow", u"Randomize Cosmetic Settings", None))
+        self.label_random_settings_weighting.setText(QCoreApplication.translate("MainWindow", u"Random Settings Weighting", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_setup), QCoreApplication.translate("MainWindow", u"Setup", None))
 #if QT_CONFIG(tooltip)
         self.tab_randomization_settings.setToolTip("")
