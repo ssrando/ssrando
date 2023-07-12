@@ -72,6 +72,8 @@ NON_RANDOMIZED_SETTINGS = [
 
 NON_RANDOMIZED_COSMETICS = [
     "allow-custom-music",
+    "cutoff-gameover-music",
+    "no-enemy-music",
 ]
 
 # Locations

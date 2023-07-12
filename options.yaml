@@ -98,6 +98,8 @@
   command: random-cosmetics
   type: boolean
   default: false
+  permalink: false
+  cosmetic: true
   help: "If enabled, all in-game cosmetic and music settings will be randomized."
   ui: option_random_cosmetics
 - name: Random Settings Weighting
