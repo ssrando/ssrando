@@ -61,7 +61,6 @@ NON_RANDOMIZED_SETTINGS = [
     # If permalink is false, it is not randomized
     "random-settings",
     "random-settings-weighting",
-    "random-cosmetics",
     "no-spoiler-log",
     "bit-patches",
     "logic-mode",
@@ -71,6 +70,7 @@ NON_RANDOMIZED_SETTINGS = [
 ]
 
 NON_RANDOMIZED_COSMETICS = [
+    "random-cosmetics",
     "allow-custom-music",
     "cutoff-gameover-music",
     "no-enemy-music",
