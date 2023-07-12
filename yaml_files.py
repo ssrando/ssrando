@@ -58,6 +58,7 @@ glitched_requirements_file = (
 )
 glitched_requirements = yaml_load(glitched_requirements_file)
 
+
 def random_settings_weighting(weighting):
     if weighting == "Random":
         weighting_file = RANDO_ROOT_PATH / "rs_weightings" / "random.yaml"
@@ -70,11 +71,16 @@ def random_settings_weighting(weighting):
     elif weighting == "RSL Season 1":
         weighting_file = RANDO_ROOT_PATH / "rs_weightings" / "rsl_season1.yaml"
     else:
-        weighting_file = RANDO_ROOT_PATH / "rs_weightings" / "random.yaml" # Invalid weighting - randomizer will use random weighting
-        print(f"Could not find weighting file for '{weighting}'. Randomizer will use random weighting")
+        weighting_file = (
+            RANDO_ROOT_PATH / "rs_weightings" / "random.yaml"
+        )  # Invalid weighting - randomizer will use random weighting
+        print(
+            f"Could not find weighting file for '{weighting}'. Randomizer will use random weighting"
+        )
 
     rs_weighting = yaml_load(weighting_file)
     return rs_weighting
+
 
 def requirements_gen(folder: Path):
     files = sorted(os.listdir(folder))

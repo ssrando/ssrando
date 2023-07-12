@@ -62,10 +62,8 @@ NON_RANDOMIZED_SETTINGS = [
     "random-settings",
     "random-settings-weighting",
     "random-cosmetics",
-
     "no-spoiler-log",
     "bit-patches",
-
     "logic-mode",
     "excluded-locations",
     "enabled-tricks-glitched",

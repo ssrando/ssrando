@@ -229,12 +229,16 @@ class Options:
         rs_weighting = random_settings_weighting(self["random-settings-weighting"])
 
         for optkey, opt in OPTIONS.items():
-            if opt["command"] in constants.NON_RANDOMIZED_SETTINGS or ("permalink" in opt and opt["permalink"] == False):
+            if opt["command"] in constants.NON_RANDOMIZED_SETTINGS or (
+                "permalink" in opt and opt["permalink"] == False
+            ):
                 continue
             else:
                 if opt["type"] == "boolean":
                     if len([o for o in rs_weighting if o["name"] == opt["name"]]) == 1:
-                        rsopt = [o for o in rs_weighting if o["name"] == opt["name"]].pop()
+                        rsopt = [
+                            o for o in rs_weighting if o["name"] == opt["name"]
+                        ].pop()
                         self.set_option(
                             optkey,
                             rando.rng.choices(
@@ -253,16 +257,20 @@ class Options:
                 elif opt["type"] == "int":
                     if opt["command"] == "starting-heart-pieces":
                         selec = rando.rng.choices(
-                                list(rsopt["choices"].keys()),
-                                k=1,
-                                weights=rsopt["choices"].values(),
-                            ).pop()
+                            list(rsopt["choices"].keys()),
+                            k=1,
+                            weights=rsopt["choices"].values(),
+                        ).pop()
                         if selec == 24:
                             self.set_option(optkey, 24)
                         else:
-                            self.set_option(optkey, rando.rng.randint(selec, selec+3))
-                    elif len([o for o in rs_weighting if o["name"] == opt["name"]]) == 1:
-                        rsopt = [o for o in rs_weighting if o["name"] == opt["name"]].pop()
+                            self.set_option(optkey, rando.rng.randint(selec, selec + 3))
+                    elif (
+                        len([o for o in rs_weighting if o["name"] == opt["name"]]) == 1
+                    ):
+                        rsopt = [
+                            o for o in rs_weighting if o["name"] == opt["name"]
+                        ].pop()
                         self.set_option(
                             optkey,
                             rando.rng.choices(
@@ -309,18 +317,21 @@ class Options:
                         rando.rng.shuffle(choices)
                         multichoice = []
                         i = 0
-                        if rsopt["maxpicks"] == 'None':
+                        if rsopt["maxpicks"] == "None":
                             maxpicks = len(choices)
                         else:
                             maxpicks = rsopt["maxpicks"]
                         for c, weight in choices:
                             if i >= maxpicks:
                                 break
-                            if rando.rng.choices(
-                                [True, False],
-                                k=1,
-                                weights=[weight, 100-weight],
-                            ).pop() == True:
+                            if (
+                                rando.rng.choices(
+                                    [True, False],
+                                    k=1,
+                                    weights=[weight, 100 - weight],
+                                ).pop()
+                                == True
+                            ):
                                 multichoice.append(c)
                                 i += 1
                         self.set_option(optkey, multichoice)
@@ -333,24 +344,34 @@ class Options:
                         self.set_option(
                             optkey,
                             rando.rng.sample(
-                                opt["choices"], rando.rng.randint(0, len(opt["choices"]))
+                                opt["choices"],
+                                rando.rng.randint(0, len(opt["choices"])),
                             ),
                         )
 
     def randomize_cosmetics(self, rando):
         for optkey, opt in OPTIONS.items():
-            if opt["command"] not in constants.NON_RANDOMIZED_COSMETICS and "cosmetic" in opt and opt["cosmetic"] == True:
+            if (
+                opt["command"] not in constants.NON_RANDOMIZED_COSMETICS
+                and "cosmetic" in opt
+                and opt["cosmetic"] == True
+            ):
                 if opt["type"] == "boolean":
                     self.set_option(optkey, bool(rando.rng.randint(0, 1)))
                 elif opt["type"] == "int":
                     if opt["command"] == "star-count":
-                        self.set_option(optkey, rando.rng.randint(0, 700)) # Anything over 700 will lag the game
+                        self.set_option(
+                            optkey, rando.rng.randint(0, 700)
+                        )  # Anything over 700 will lag the game
                     else:
-                        self.set_option(optkey, rando.rng.randint(opt["min"], opt["max"]))
+                        self.set_option(
+                            optkey, rando.rng.randint(opt["min"], opt["max"])
+                        )
                 elif opt["type"] == "singlechoice":
                     self.set_option(optkey, rando.rng.choice(opt["choices"]))
                 elif opt["type"] == "multichoice":
-                    self.set_option(optkey,
+                    self.set_option(
+                        optkey,
                         rando.rng.sample(
                             opt["choices"], rando.rng.randint(0, len(opt["choices"]))
                         ),
