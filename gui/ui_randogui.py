@@ -364,39 +364,6 @@ class Ui_MainWindow(object):
         self.tab_randomization_settings.setObjectName(u"tab_randomization_settings")
         self.horizontalLayout_7 = QHBoxLayout(self.tab_randomization_settings)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.box_shuffles = QGroupBox(self.tab_randomization_settings)
-        self.box_shuffles.setObjectName(u"box_shuffles")
-        sizePolicy2.setHeightForWidth(self.box_shuffles.sizePolicy().hasHeightForWidth())
-        self.box_shuffles.setSizePolicy(sizePolicy2)
-        self.verticalLayout_17 = QVBoxLayout(self.box_shuffles)
-        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.vlay_shuffles = QVBoxLayout()
-        self.vlay_shuffles.setObjectName(u"vlay_shuffles")
-        self.option_shopsanity = QCheckBox(self.box_shuffles)
-        self.option_shopsanity.setObjectName(u"option_shopsanity")
-
-        self.vlay_shuffles.addWidget(self.option_shopsanity)
-
-        self.option_rupeesanity = QCheckBox(self.box_shuffles)
-        self.option_rupeesanity.setObjectName(u"option_rupeesanity")
-
-        self.vlay_shuffles.addWidget(self.option_rupeesanity)
-
-        self.option_tadtonesanity = QCheckBox(self.box_shuffles)
-        self.option_tadtonesanity.setObjectName(u"option_tadtonesanity")
-
-        self.vlay_shuffles.addWidget(self.option_tadtonesanity)
-
-        self.vspace_shuffles = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.vlay_shuffles.addItem(self.vspace_shuffles)
-
-
-        self.verticalLayout_17.addLayout(self.vlay_shuffles)
-
-
-        self.horizontalLayout_7.addWidget(self.box_shuffles)
-
         self.box_completion = QGroupBox(self.tab_randomization_settings)
         self.box_completion.setObjectName(u"box_completion")
         sizePolicy2.setHeightForWidth(self.box_completion.sizePolicy().hasHeightForWidth())
@@ -600,6 +567,39 @@ class Ui_MainWindow(object):
 
 
         self.horizontalLayout_7.addWidget(self.box_open)
+
+        self.box_shuffles = QGroupBox(self.tab_randomization_settings)
+        self.box_shuffles.setObjectName(u"box_shuffles")
+        sizePolicy2.setHeightForWidth(self.box_shuffles.sizePolicy().hasHeightForWidth())
+        self.box_shuffles.setSizePolicy(sizePolicy2)
+        self.verticalLayout_17 = QVBoxLayout(self.box_shuffles)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.vlay_shuffles = QVBoxLayout()
+        self.vlay_shuffles.setObjectName(u"vlay_shuffles")
+        self.option_shopsanity = QCheckBox(self.box_shuffles)
+        self.option_shopsanity.setObjectName(u"option_shopsanity")
+
+        self.vlay_shuffles.addWidget(self.option_shopsanity)
+
+        self.option_rupeesanity = QCheckBox(self.box_shuffles)
+        self.option_rupeesanity.setObjectName(u"option_rupeesanity")
+
+        self.vlay_shuffles.addWidget(self.option_rupeesanity)
+
+        self.option_tadtonesanity = QCheckBox(self.box_shuffles)
+        self.option_tadtonesanity.setObjectName(u"option_tadtonesanity")
+
+        self.vlay_shuffles.addWidget(self.option_tadtonesanity)
+
+        self.vspace_shuffles = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.vlay_shuffles.addItem(self.vspace_shuffles)
+
+
+        self.verticalLayout_17.addLayout(self.vlay_shuffles)
+
+
+        self.horizontalLayout_7.addWidget(self.box_shuffles)
 
         self.box_entrance_rando = QGroupBox(self.tab_randomization_settings)
         self.box_entrance_rando.setObjectName(u"box_entrance_rando")
@@ -1802,10 +1802,6 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.tab_randomization_settings.setToolTip("")
 #endif // QT_CONFIG(tooltip)
-        self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
-        self.option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Beedle's Shop", None))
-        self.option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
-        self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))
         self.box_completion.setTitle(QCoreApplication.translate("MainWindow", u"Completion Conditions", None))
         self.label_for_option_got_starting_state.setText(QCoreApplication.translate("MainWindow", u"Starting State", None))
         self.label_for_option_got_sword_requirement.setText(QCoreApplication.translate("MainWindow", u"Sword Requirement", None))
@@ -1824,6 +1820,10 @@ class Ui_MainWindow(object):
         self.option_open_et.setText(QCoreApplication.translate("MainWindow", u"Open Earth Temple", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
         self.label_for_option_open_lake_floria.setText(QCoreApplication.translate("MainWindow", u"Open Lake Floria", None))
+        self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
+        self.option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Beedle's Shop", None))
+        self.option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
+        self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))
         self.box_entrance_rando.setTitle(QCoreApplication.translate("MainWindow", u"Entrance Randomization", None))
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Dungeon Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
