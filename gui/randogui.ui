@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -641,7 +641,7 @@
                   <bool>true</bool>
                  </property>
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
@@ -723,6 +723,12 @@
                </item>
                <item>
                 <widget class="QSpinBox" name="option_demise_count">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="maximumSize">
                   <size>
                    <width>41</width>
@@ -812,6 +818,59 @@
              </item>
              <item>
               <spacer name="vspace_open">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="box_shuffles">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="title">
+           <string>Shuffles</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_17">
+           <item>
+            <layout class="QVBoxLayout" name="vlay_shuffles">
+             <item>
+              <widget class="QCheckBox" name="option_shopsanity">
+               <property name="text">
+                <string>Shuffle Beedle's Shop</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_rupeesanity">
+               <property name="text">
+                <string>Rupeesanity</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_tadtonesanity">
+               <property name="text">
+                <string>Tadtonesanity</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="vspace_shuffles">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
                </property>
@@ -1085,6 +1144,27 @@
               <widget class="QComboBox" name="option_bit_patches"/>
              </item>
              <item>
+              <layout class="QHBoxLayout" name="hlay_peatrice_conversations">
+               <item>
+                <widget class="QLabel" name="label_for_option_peatrice_conversations">
+                 <property name="text">
+                  <string>Peatrice Conversations</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="option_peatrice_conversations">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
               <spacer name="vspace_vanilla_tweaks">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
@@ -1253,6 +1333,12 @@
                </item>
                <item>
                 <widget class="QSpinBox" name="option_damage_multiplier">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="maximumSize">
                   <size>
                    <width>41</width>

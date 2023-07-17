@@ -1038,7 +1038,7 @@
   min: 0
   max: 17
   bits: 5
-  help: How many groups of Tadtones to start with.
+  help: "How many groups of Tadtones to start with."
   ui: option_starting_tadtones
 # Dungeon convenience patches - might change to multichoice later
 - name: FS Last Room Lava Flow
@@ -1048,3 +1048,13 @@
   help: "If enabled, the lava in the last room of Fire Sanctuary will be flowing by default (without needing to
         blow up the underground boulder)."
   ui: option_fs_lava_flow
+- name: Peatrice Conversations
+  command: peatrice-conversations
+  type: int
+  default: 6
+  min: 0
+  max: 6
+  bits: 3
+  help: "How many times you need to talk to Peatrice before she calls you \"darling\" and you can start Peater's quest."
+  ui: option_peatrice_conversations
+  

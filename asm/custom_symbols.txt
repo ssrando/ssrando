@@ -22,7 +22,8 @@ main.dol:
   get_item_model_name_ptr: 0x80678E94
   enforce_loftwing_speed_cap: 0x80678EB4
   give_item_with_sceneflag: 0x80678FA8
-  handle_potion_lady_give_item: 0x8067903C
+  storyflag_set_to_1: 0x8067903C
+  handle_potion_lady_give_item: 0x8067906C
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
