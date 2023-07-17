@@ -1529,8 +1529,6 @@ class GamePatcher:
         self.add_asm_patch("post_boko_base_platforms")
         self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
-        if self.placement_file.options["luv-shopsanity"]:
-            self.add_asm_patch("luv_shopsanity")
         if self.placement_file.options["bit-patches"] == "Disable BiT":
             self.add_asm_patch("patch_bit")
         elif self.placement_file.options["bit-patches"] == "Fix BiT Crashes":
@@ -3263,6 +3261,9 @@ class GamePatcher:
 
             # Handle Luv's Shop differently
             if shopindex in LUV_SHOP_INDEXES:
+                if not self.placement_file.options["luv-shopsanity"]:
+                    itemid = 0xFFFF
+
                 write_u32(
                     data_bytes,
                     current_shop_entry_offset

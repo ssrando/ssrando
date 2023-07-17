@@ -622,17 +622,21 @@ fn handle_potion_lady_give_item(shop_item: *mut ShopSampleInitStruct, bottle_pou
     // Potion shop items start at index 30 and are at the end of the list.
     let shop_index = unsafe { (*shop_item).next_shop_item_index };
     if shop_index >= 30 {
-        unsafe { printf(cstr!("shop_index: %d\n").as_ptr(), shop_index as u32) };
-        let shop_sceneflag = shop_index + 90; // Skyloft flags 120 -> 124 are used for the potion shop so + 90 to get flag
+        // unsafe { printf(cstr!("shop_index: %d\n").as_ptr(), shop_index as u32) };
+
+        // Skyloft flags 120 -> 124 are used for the potion shop so + 90 to get flag
+        let shop_sceneflag = shop_index + 90;
 
         if !sceneflag_check_global(0, shop_sceneflag) {
-            sceneflag_set_global(0, shop_sceneflag); // (skyloft, potion_flag)
-
-            let item_id = unsafe { (*shop_item).put_scale };
-            unsafe { printf(cstr!("shop_item.put_scale: %d\n").as_ptr(), item_id as u32) };
-
             // The put_scale has been patched to have the item_id for the potion items (as it's unused in this case).
-            return unsafe { AcItem__giveItem(item_id as u16, u32::MAX, number); }
+            let item_id = unsafe { (*shop_item).put_scale };
+
+            // unsafe { printf(cstr!("shop_item.put_scale: %d\n").as_ptr(), item_id as u32) };
+
+            // Give shopsanity item.
+            if item_id != 0xFFFF{
+                give_item_with_sceneflag(item_id as u16, u32::MAX, number, shop_sceneflag as u32);
+            }
         }
     }
 

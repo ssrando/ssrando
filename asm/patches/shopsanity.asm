@@ -87,4 +87,13 @@ b 0x5740
 .org 0x57D8
 nop; stops the new height from being overwritten
 
+;;; LUV
+; keep the shop item addr in r3, not specifically the itemID
+.org 0xD78
+mr r31, r3
+
+; 0x808b1da4
+.org 0xD94
+bl handle_potion_lady_give_item
+
 .close
