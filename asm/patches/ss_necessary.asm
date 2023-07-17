@@ -68,8 +68,11 @@ li r5, -1
 ; li r6, 5 ; Entrance 0 -> 5
 
 ; Don't prevent respawn info being set
-.org 0x801ba634
-stb r31, 0x2a3(r30) ; place r0 (true) with r31 (false)
+; .org 0x801ba634
+; stb r31, 0x2a3(r30) ; place r0 (true) with r31 (false)
+
+.org 0x801ba668
+b allow_set_respawn_info
 
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0

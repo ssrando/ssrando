@@ -95,8 +95,15 @@ impl SpecialMinigameState {
 struct Reloader {
     _0: [u8; 0x290],
     initial_speed: f32,
-    _294: [u8; 0x29a - 0x294],
-    spawn_state: i16,
+    stamina_amount: u32,
+    item_to_use_on_reload: u8,
+    beedle_shop_spawn_state: u8,
+    spawn_state: i16, // actionIndex
+    last_area_type: u32,
+    type_0_pos_flag: u8,
+    unk: u8,
+    save_prompt_flag: u8,
+    prevent_save_respawn_info: bool,
 }
 
 struct StartInfo {
@@ -172,6 +179,7 @@ extern "C" {
     static mut RELOADER_PTR: *mut Reloader;
     fn RoomManager__getRoomByIndex(room_mgr: *mut c_void, room_number: u32);
     fn Reloader__setReloadTrigger(reloader: *mut Reloader, trigger: u8);
+    fn getCurrentHealth(mgr: *mut filemanager_gen::FileManager) -> u16;
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -700,6 +708,16 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
 
     // replaced function call
     unsafe { RoomManager__getRoomByIndex(room_mgr, room_number); }
+}
+
+#[no_mangle]
+fn allow_set_respawn_info() -> *mut Reloader {
+    unsafe {
+        if getCurrentHealth(FILE_MANAGER) != 0 {
+            (*RELOADER_PTR).prevent_save_respawn_info = false;
+        }
+        return RELOADER_PTR;
+    }
 }
 
 #[panic_handler]

@@ -25,6 +25,7 @@ main.dol:
   storyflag_set_to_1: 0x80679030
   send_to_start: 0x80679060
   do_er_fixes: 0x806790BC
+  allow_set_respawn_info: 0x806793F8
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340

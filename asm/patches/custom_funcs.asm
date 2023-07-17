@@ -324,6 +324,7 @@ blr
 .global storyflag_set_to_1
 .global send_to_start
 .global do_er_fixes
+.global allow_set_respawn_info
 
 .close
 
