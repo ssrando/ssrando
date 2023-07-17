@@ -124,10 +124,10 @@ Can Afford 100 Rupees:
   Nothing
 
 Can Afford 150 Rupees:
-  Nothing
+  Can Medium Rupee Farm
 
 Can Afford 200 Rupees:
-  Nothing
+  Can Medium Rupee Farm
 
 Can Afford 300 Rupees:
   Can Medium Rupee Farm
@@ -311,6 +311,9 @@ Central Skyloft - Potion Lady's Gift:
 Unlocked Endurance Potion:
   Can Raise Lanayru Mining Facility
   # Potion is tied to raising LMF, it's always enabled with open lmf
+
+Unlocked Air Potion:
+  Water Scale
 
 Central Skyloft - Bazaar Goddess Chest:
   Goddess Cube in Ancient Harbour
@@ -505,15 +508,15 @@ Central Skyloft - Gear Shop - Top Right Item:
 ## Luv's Shop
 
 Central Skyloft - Potion Shop - Outer Left Item:
-  Can Afford 50 Rupees & Pouch & Bottle
+  Can Afford 50 Rupees & Progressive Pouch x1 & Bottle & Unlocked Endurance Potion
 Central Skyloft - Potion Shop - Inner Left Item:
-  Can Afford 20 Rupees & Pouch & Bottle
+  Can Afford 20 Rupees & Progressive Pouch x1 & Bottle
 Central Skyloft - Potion Shop - Middle Item:
-  Can Afford 20 Rupees & Pouch & Bottle
+  Can Afford 20 Rupees & Progressive Pouch x1 & Bottle & Unlocked Air Potion
 Central Skyloft - Potion Shop - Inner Right Item:
-  Can Afford 30 Rupees & Pouch & Bottle
+  Can Afford 30 Rupees & Progressive Pouch x1 & Bottle
 Central Skyloft - Potion Shop - Outer Right Item:
-  Can Afford 200 Rupees & Pouch & Bottle
+  Can Afford 200 Rupees & Progressive Pouch x1 & Bottle
 
 ## Batreaux Rewards
 

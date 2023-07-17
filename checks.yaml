@@ -267,63 +267,63 @@ Batreaux's House - 80 Crystals:
 # Beedle's Shop:
 Beedle's Shop - First Outer Left Item:
   original item: "Progressive Pouch #1"
-  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/20
 Beedle's Shop - Second Outer Left Item:
   original item: "Progressive Pouch #2"
-  type: Beedle's Shop Purchases, Shop Purchases (Medium)
+  type: Beedle Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F002r/ShpSmpl/21
 Beedle's Shop - Third Outer Left Item:
   original item: "Progressive Pouch #3"
-  type: Beedle's Shop Purchases, Shop Purchases (Expensive)
+  type: Beedle Shop Purchases, Shop Purchases (Expensive)
   hint: always
   Paths:
     - F002r/ShpSmpl/22
   text: for <g+<1200 rupees>> <r<Beedle>> sells
 Beedle's Shop - First Inner Left Item:
   original item: "Life Medal #0"
-  type: Beedle's Shop Purchases, Shop Purchases (Medium)
+  type: Beedle Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F002r/ShpSmpl/26
 Beedle's Shop - Second Inner Left Item:
   original item: "Heart Piece #0"
-  type: Beedle's Shop Purchases, Shop Purchases (Expensive)
+  type: Beedle Shop Purchases, Shop Purchases (Expensive)
   hint: always
   Paths:
     - F002r/ShpSmpl/23
   text: for <g+<1600 rupees>> <r<Beedle>> sells
 Beedle's Shop - First Inner Right Item:
   original item: "Extra Wallet #0"
-  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/24
 Beedle's Shop - Second Inner Right Item:
   original item: "Extra Wallet #1"
-  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/17
 Beedle's Shop - Third Inner Right Item:
   original item: "Extra Wallet #2"
-  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/18
 Beedle's Shop - First Outer Right Item:
   original item: "Progressive Bug Net #0"
-  type: Beedle's Shop Purchases, Shop Purchases (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
     - F002r/ShpSmpl/25
 Beedle's Shop - Second Outer Right Item:
   original item: Bug Medal
-  type: Beedle's Shop Purchases, Shop Purchases (Medium)
+  type: Beedle Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F002r/ShpSmpl/27
 
 # Gear Shop
 Central Skyloft - Gear Shop - Top Left Item:
   original item: "Small Quiver #1"
-  type: Gear Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F004r/ShpSmpl/16
 Central Skyloft - Gear Shop - Middle Left Item:
@@ -333,7 +333,7 @@ Central Skyloft - Gear Shop - Middle Left Item:
     - F004r/ShpSmpl/15
 Central Skyloft - Gear Shop - Bottom Left Item:
   original item: "Small Bomb Bag #1"
-  type: Gear Shop Purchases, Shop Purchases (Cheap)
+  type: Gear Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F004r/ShpSmpl/19
 Central Skyloft - Gear Shop - Left Front Item:
@@ -390,7 +390,7 @@ Central Skyloft - Potion Shop - Inner Right Item:
     - F004r/ShpSmpl/33
 Central Skyloft - Potion Shop - Outer Right Item:
   original item: Red Rupee # Guardian Potion
-  type: Potion Shop Purchases, Shop Purchases (Cheap)
+  type: Potion Shop Purchases, Shop Purchases (Medium)
   Paths:
     - F004r/ShpSmpl/34
 

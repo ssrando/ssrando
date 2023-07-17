@@ -919,7 +919,11 @@ LOCATION_FILTER_TYPES = (
     "Sand Sea Goddess Chests",
     "Combat",
     "Minigames",
-    "Beedle's Shop Purchases",
+    # Removing since you can just disable the coresponding sanity option
+    #
+    # "Beedle Shop Purchases",
+    # "Gear Shop Purchases",
+    # "Potion Shop Purchases",
     "Shop Purchases (Cheap)",
     "Shop Purchases (Medium)",
     "Shop Purchases (Expensive)",
