@@ -945,19 +945,3 @@ nop
 li r4, 322 ; Repair Gondo's Junk check flag
 
 .close
-
-
-.open "d_a_obj_flower_ancientNP.rel"
-
-; (80e58564 - 80e58040) + 130
-
-; always spawn ancient flowers
-; 0x80e58564
-.org 0x654
-nop
-nop
-nop
-nop
-nop
-
-.close
