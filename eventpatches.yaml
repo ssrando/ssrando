@@ -1200,6 +1200,7 @@
     text: "Hello there!
           \n\n\n\nOh...but before I get into my spiel,\nI should warn you that you need an\n<r<Adventure Pouch>> and an <r<Empty Bottle>>\nto buy anything here.
           \nUnderstand, dear?\nIf you want to know more about how\nthings work around here, just ask!"
+
   # Pouch checks
   - name: Add Pouch Check for Stamina Potion
     type: flowpatch
@@ -1271,6 +1272,7 @@
     cases:
       - 56 # Check for bottle
       - 58 # Can't buy
+
   # Tell potion item
   - name: Patch Stamina Potion Bottle Switch
     onlyif: Option "luv-shopsanity" Enabled
@@ -1281,6 +1283,7 @@
       - Check Stamina Potion Sceneflag
       - 28 # no bottle (stamina)
   - name: Check Stamina Potion Sceneflag
+    onlyif: Option "luv-shopsanity" Enabled
     type: switchadd
     flow:
       subType: 6
@@ -1290,6 +1293,7 @@
       - 103 # bypass potion item text if flag is set
       - Show Stamina Potion Item Name
   - name: Show Stamina Potion Item Name
+    onlyif: Option "luv-shopsanity" Enabled
     type: flowadd
     flow:
       type: type1
@@ -1305,6 +1309,7 @@
       - Check Heart Potion Sceneflag
       - 23 # no bottle (heart)
   - name: Check Heart Potion Sceneflag
+    onlyif: Option "luv-shopsanity" Enabled
     type: switchadd
     flow:
       subType: 6
@@ -1314,6 +1319,7 @@
       - 38 # bypass potion item text if flag is set
       - Show Heart Potion Item Name
   - name: Show Heart Potion Item Name
+    onlyif: Option "luv-shopsanity" Enabled
     type: flowadd
     flow:
       type: type1
@@ -1329,6 +1335,7 @@
       - Check Air Potion Sceneflag
       - 27 # no bottle (air)
   - name: Check Air Potion Sceneflag
+    onlyif: Option "luv-shopsanity" Enabled
     type: switchadd
     flow:
       subType: 6
@@ -1338,6 +1345,7 @@
       - 124 # bypass potion item text if flag is set
       - Show Air Potion Item Name
   - name: Show Air Potion Item Name
+    onlyif: Option "luv-shopsanity" Enabled
     type: flowadd
     flow:
       type: type1
@@ -1353,6 +1361,7 @@
       - Check Revitalizing Potion Sceneflag
       - 29 # no bottle (revitalizing)
   - name: Check Revitalizing Potion Sceneflag
+    onlyif: Option "luv-shopsanity" Enabled
     type: switchadd
     flow:
       subType: 6
@@ -1362,6 +1371,7 @@
       - 26 # bypass potion item text if flag is set
       - Show Revitalizing Potion Item Name
   - name: Show Revitalizing Potion Item Name
+    onlyif: Option "luv-shopsanity" Enabled
     type: flowadd
     flow:
       type: type1
@@ -1377,6 +1387,7 @@
       - Check Guardian Potion Sceneflag
       - 58 # no bottle (guardian)
   - name: Check Guardian Potion Sceneflag
+    onlyif: Option "luv-shopsanity" Enabled
     type: switchadd
     flow:
       subType: 6
@@ -1386,6 +1397,7 @@
       - 57 # bypass potion item text if flag is set
       - Show Guardian Potion Item Name
   - name: Show Guardian Potion Item Name
+    onlyif: Option "luv-shopsanity" Enabled
     type: flowadd
     flow:
       type: type1
