@@ -111,14 +111,16 @@ def main():
             print(err)
         exit(1)
 
+    areas = Areas(requirements, checks, hints, map_exits)
+
     plcmt_file_name = parsed_args.placement_file
     if plcmt_file_name is not None:
         plcmt_file = PlacementFile()
         with open(plcmt_file_name) as f:
             plcmt_file.read_from_file(f)
-        plcmt_file.check_valid()
+        plcmt_file.check_valid(areas)
 
-        plandomizer = PlandoRandomizer(plcmt_file)
+        plandomizer = PlandoRandomizer(plcmt_file, areas)
         total_progress_steps = plandomizer.get_total_progress_steps
         progress_steps = 0
 
@@ -133,8 +135,6 @@ def main():
 
     assert options is not None
 
-    areas = Areas(requirements, checks, hints, map_exits)
-
     if parsed_args.bulk:
         bulk_low = parsed_args.bulk_low
         bulk_high = parsed_args.bulk_high
@@ -147,9 +147,20 @@ def main():
 
         def randothread(start, end, local_opts):
             for i in range(start, end):
-                local_opts.set_option("seed", i)
-                rando = Randomizer(areas, local_opts)
-                rando.randomize()
+                try:
+                    local_opts.set_option("seed", i)
+                    rando = Randomizer(areas, local_opts)
+                    rando.randomize()
+                except KeyboardInterrupt:
+                    raise
+                except Exception as e:
+                    import traceback
+
+                    stack_trace = traceback.format_exc()
+                    error_message = (
+                        f"error seed {i}:\n\n" + str(e) + "\n\n" + stack_trace
+                    )
+                    print(error_message, file=sys.stderr)
 
         if bulk_threads == 1:
             randothread(bulk_low, bulk_high, options)

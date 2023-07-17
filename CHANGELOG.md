@@ -8,8 +8,9 @@
     - You can check how many tadtone groups you have by talking to Fi
   - Added 17 checks in Flooded Faron Woods
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
-  - Added the ability to randomize dusk relics in silent realms (by Peppernicus, Zeldex, & YourAverageLink)
-  - Up to 10 relics (chosen by a new option) per silent realm can be randomized to have new items
+- Added an option to reduce the number of Peatrice conversations needed before she calls you "Darling" (by CovenEsme)
+- Added the ability to randomize dusk relics in silent realms (by Peppernicus, Zeldex, & YourAverageLink)
+- Up to 10 relics (chosen by a new option) per silent realm can be randomized to have new items
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Added Fi hints (by YourAverageLink)
@@ -22,6 +23,9 @@
 - Add an option for a custom hint distribution (by cjs07)
 - The Sand Sea boat moves faster (by YourAverageLink)
   - Its base speed is 1.5x faster. Sprinting now multiplies its speed by 3 instead of 2, for a total change of 2.25x from before.
+- Removed Fi text trigger surrounding the Hook Beetle Fight check
+- The shortcut log from the Sealed Grounds Spiral to Behind the Temple is now always pushed down
+- The progress text shown at the bottom of save files now shows information about your progress towards the end of the seed (rather than the vanilla game) (by CovenEsme)
 - Upon completing a silent realm, the trial gate will remain open. (This is to prevent softlocks with dusk relic shuffle)
 - Items inside silent realms (other than dusk relics) will glow and have beams above them; their color is distinct from the tears
   - In Faron, items are yellow

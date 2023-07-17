@@ -1411,6 +1411,7 @@ class GamePatcher:
         if self.placement_file.options["shopsanity"]:
             self.shopsanity_patches()
         self.do_build_arc_cache()
+        self.add_peatrice_storyflags()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
         self.add_fi_text_patches()
@@ -1530,19 +1531,12 @@ class GamePatcher:
             self.add_asm_patch("no_enemy_music")
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
-        GOT_SWORD_MODES = {
-            "Goddess Sword": 1,
-            "Goddess Longsword": 2,
-            "Goddess White Sword": 3,
-            "Master Sword": 4,
-            "True Master Sword": 5,
-        }
         self.all_asm_patches["d_a_obj_time_door_beforeNP.rel"][0xD48] = {
             "Data": [
                 0x2C,
                 0x00,
                 0x00,
-                GOT_SWORD_MODES[self.placement_file.options["got-sword-requirement"]],
+                SWORD_COUNT[self.placement_file.options["got-sword-requirement"]] - 1,
             ]
         }
 
@@ -1578,6 +1572,19 @@ class GamePatcher:
                 self.placement_file.options["star-count"] >> 8,
                 self.placement_file.options["star-count"] & 0xFF,
             ]
+        }
+
+        # File Progress Text flag for required sword
+        # 0x80ecdc48 -> 0x889C
+        required_sword_number = SWORD_COUNT[
+            self.placement_file.options["got-sword-requirement"]
+        ]
+
+        # 0x389 = 905
+        # Rando sword story flags: 906 -> 911 (Swordless -> TMS)
+        # e.g. Goddess Sword = 0x389 + 2 = 0x389 + required_sword_number
+        self.all_asm_patches["d_lyt_file_selectNP.rel"][0x889C] = {
+            "Data": [0x03, 0x89 + required_sword_number]
         }
 
         if self.placement_file.options["randomize-boss-key-puzzles"]:
@@ -1847,6 +1854,27 @@ class GamePatcher:
 
         extracts = yaml_load(RANDO_ROOT_PATH / "extracts.yaml")
         self.patcher.create_oarc_cache(extracts)
+
+    def add_peatrice_storyflags(self):
+        # Peatrice convo count.
+        peatrice_convo_count = self.placement_file.options["peatrice-conversations"]
+
+        # Peatrice switch.
+        if peatrice_convo_count % 2 == 1:
+            self.startstoryflags.append(631)
+
+        # Peatrice even convos.
+        if peatrice_convo_count <= 4:
+            self.startstoryflags.append(628)
+            self.startstoryflags.append(689)
+
+        if peatrice_convo_count <= 2:
+            self.startstoryflags.append(629)
+            self.startstoryflags.append(690)
+
+        if peatrice_convo_count == 0:
+            self.startstoryflags.append(630)
+            self.startstoryflags.append(691)
 
     def add_startitem_patches(self):
         # Add sword story/itemflags if required
@@ -2316,6 +2344,15 @@ class GamePatcher:
                 "type": "textpatch",
                 "index": 75,
                 "text": self.placement_file.hash_str,
+            }
+        )
+
+        self.eventpatches["002-System"].append(
+            {
+                "name": "File Progress Text 2",
+                "type": "textpatch",
+                "index": 80,
+                "text": f"Obtain the {self.placement_file.options['got-sword-requirement']} in order to raise\nthe <r<Gate of Time>>.",
             }
         )
 

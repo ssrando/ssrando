@@ -341,6 +341,8 @@ blr
 .global get_item_arc_name
 .global get_item_model_name_ptr
 .global is_custom_rando_item
+.global give_item_with_sceneflag
+.global storyflag_set_to_1
 .global get_glow_color
 
 .close
@@ -782,15 +784,12 @@ stwu r1, -0x10(r1)
 mflr r0
 stw r0, 0x14(r1)
 
-mr r21, r4 ; store self
-mr r4, r25 ; get flag
-bl SceneflagManager__setTempOrSceneflag ; r3 = SCENEFLAG_MANAGER, r4 = flag
-
-; invalid read 0xbc at 80EACA28
 lha r3, 0xbc(r29) ; get randomized itemId
 li r4, -1
 li r5, 0
-bl giveItem ; r3 = itemId, r4 = pouchSlot (-1), r5 = 0
+mr r6, r25 ; get flag
+bl give_item_with_sceneflag ; r3 = itemId, r4 = pouchSlot (-1), r5 = 0, r6 = sceneflag
+mr r4, r29 ; move self back into r4
 
 lwz r0, 0x14(r1)
 mtlr r0

@@ -4,12 +4,15 @@ from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import QProgressDialog, QLabel
 
 tips = [
-    "The Bomb Bag and the Hook Beetle are often interchangable. In places you would normally be expected to use the Bomb Bag, look for nearby bomb flowers to grab with the Hook Beetle.",
+    "The Bomb Bag and the Hook Beetle are often interchangeable. In places you would normally be expected to use the Bomb Bag, look for nearby bomb flowers to grab with the Hook Beetle.",
     "Think you're stuck somewhere with no way to get back to safety? Look around for a bomb flower. Dying will safely return you to the last statue you saved at or the last loading zone you crossed.",
-    "Logic assumes that you will use keys in the worst way possible, so it is impossible to lock youself out of access to keys.",
-    "Enabling tricks is a fun way to expand the logical possiblities of the randomizer, but some tricks can greatly incease the difficulty of seeds.",
+    "Logic assumes that you will use keys in the worst way possible, so it is impossible to lock yourself out of access to keys.",
+    "Enabling tricks is a fun way to expand the logical possibilities of the randomizer, but some tricks can greatly increase the difficulty of seeds.",
     "Fi can give you some helpful information about the seed, such as which dungeons are required and how many keys you have. You can always call her with D-pad down, even without a sword.",
     "Hold down the B button to quickly advance text.",
+    "Flooded Faron Woods can be entered by talking to the Water Dragon inside the Great Tree.",
+    "Bokoblin Base can be entered by talking to the gossip stone in the first room of Eldin Volcano.",
+    "You can end Fledge's Pumpkin Archery minigame early by shooting the bell atop the Knight Academy.",
 ]
 
 
