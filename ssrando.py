@@ -259,9 +259,13 @@ class Randomizer(BaseRandomizer):
 
 class PlandoRandomizer(BaseRandomizer):
     def __init__(
-        self, placement_file: PlacementFile, progress_callback=dummy_progress_callback
+        self,
+        placement_file: PlacementFile,
+        areas,
+        progress_callback=dummy_progress_callback,
     ):
         super().__init__(progress_callback)
+        self.areas = areas
         self.placement_file = placement_file
 
     @cached_property
@@ -271,7 +275,7 @@ class PlandoRandomizer(BaseRandomizer):
     def randomize(self):
         GamePatcher(
             self.areas,
-            self.options,
+            self.placement_file.options,
             self.progress_callback,
             self.actual_extract_path,
             self.rando_root_path,

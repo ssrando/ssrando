@@ -345,6 +345,13 @@ nop
 nop
 nop
 
+; don't allow setting storyflag -1 (0x7FFF) in flows (breaks trials & probably other things)
+.org 0x801aff50
+cmplwi r4, -1
+beq 0x801aff60
+mr r3, r4
+bl storyflag_set_to_1
+
 ; hook into function before spawning link at entrance
 .org 0x8006358c
 bl do_er_fixes

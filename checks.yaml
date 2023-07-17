@@ -42,7 +42,7 @@ Upper Skyloft - In Zelda's Closet:
     - stage/F001r/r6/l0/chest/32 #sceneflag
 Upper Skyloft - Owlan's Crystals:
   original item: Gratitude Crystal Pack
-  type: Scrapper Deliveries, Gratitiude Crystal Sidequests, Combat
+  type: Scrapper Deliveries, Gratitude Crystal Sidequests, Combat
   Paths:
     - event/118-Town3/157
     - oarc/F001r/l0
@@ -50,7 +50,7 @@ Upper Skyloft - Owlan's Crystals:
   text: delivering a <r<Kikwi>> reveals
 Upper Skyloft - Fledge's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitiude Crystal Sidequests
+  type: Gratitude Crystal Sidequests
   Paths:
     - event/115-Town2/325
     - oarc/F001r/l0
@@ -63,7 +63,7 @@ Upper Skyloft - Cawlin's Letter:
     - oarc/F001r/l0
 Upper Skyloft - Ghost/Pipit's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitiude Crystal Sidequests
+  type: Gratitude Crystal Sidequests
   Paths:
     - event/115-Town2/522
     - event/115-Town2/641
@@ -87,7 +87,7 @@ Central Skyloft - Potion Lady's Gift:
     - oarc/F004r/l0
 Central Skyloft - Wryna's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitiude Crystal Sidequests
+  type: Gratitude Crystal Sidequests
   Paths:
     - event/118-Town3/144
     - oarc/F006r/l0
@@ -117,7 +117,7 @@ Central Skyloft - Parrow's Gift:
     - oarc/F005r/l0
 Central Skyloft - Parrow's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitiude Crystal Sidequests
+  type: Gratitude Crystal Sidequests
   Paths:
     - event/115-Town2/814
     - oarc/F000/l4
@@ -125,7 +125,7 @@ Central Skyloft - Parrow's Crystals:
     - oarc/F005r/l0
 Central Skyloft - Peater/Peatrice's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitiude Crystal Sidequests
+  type: Gratitude Crystal Sidequests
   Paths:
     - event/109-TakeGoron/79
     - event/123-Town5/316
@@ -181,20 +181,20 @@ Central Skyloft - Waterfall Goddess Chest:
 # Skyloft Village checks:
 Skyloft Village - Mallara's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitiude Crystal Sidequests
+  type: Gratitude Crystal Sidequests
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
 Skyloft Village - Bertie's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitiude Crystal Sidequests
+  type: Gratitude Crystal Sidequests
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
   text: helping an <r<exhausted parent>> rewards
 Skyloft Village - Sparrot's Crystals:
   original item: Gratitude Crystal Pack
-  type: Scrapper Deliveries, Gratitiude Crystal Sidequests
+  type: Scrapper Deliveries, Gratitude Crystal Sidequests
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
@@ -388,7 +388,7 @@ Sky - Lumpy Pumpkin - Harp Minigame:
   text: the <r<bartender>> holds
 Sky - Kina's Crystals:
   original item: Gratitude Crystal Pack
-  type: Scrapper Deliveries, Gratitiude Crystal Sidequests
+  type: Scrapper Deliveries, Gratitude Crystal Sidequests
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
@@ -396,14 +396,14 @@ Sky - Kina's Crystals:
   text: <r<delivering a mogma to the sky>> is rewarded with
 Sky - Orielle's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitiude Crystal Sidequests
+  type: Gratitude Crystal Sidequests
   Paths:
     - event/115-Town2/225
     - oarc/F020/l0
   text: saving a <r<sick loftwing>> is rewardede with
 Sky - Beedle's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitiude Crystal Sidequests
+  type: Gratitude Crystal Sidequests
   Paths:
     - event/105-Terry/115
     - oarc/F020/l0

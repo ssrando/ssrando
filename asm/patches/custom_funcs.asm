@@ -321,6 +321,7 @@ blr
 .global get_item_model_name_ptr
 .global is_custom_rando_item
 .global give_item_with_sceneflag
+.global storyflag_set_to_1
 .global send_to_start
 .global do_er_fixes
 
