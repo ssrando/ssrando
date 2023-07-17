@@ -333,6 +333,13 @@ nop
 nop
 nop
 
+; don't allow setting storyflag -1 (0x7FFF) in flows (breaks trials & probably other things)
+.org 0x801aff50
+cmplwi r4, -1
+beq 0x801aff60
+mr r3, r4
+bl storyflag_set_to_1
+
 .close
 
 .open "d_a_obj_time_door_beforeNP.rel"
