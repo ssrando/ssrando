@@ -12,6 +12,7 @@ import re
 import struct
 
 import nlzss11
+from logic.placements import LUV_CHECKS
 from sslib import AllPatcher, U8File
 from sslib.msb import process_control_sequences
 from sslib.utils import write_bytes_create_dirs, encodeBytes
@@ -1812,10 +1813,12 @@ class GamePatcher:
                 normal, discounted, normal_price, discount_price = SHOP_TEXT_PATCHES[
                     location
                 ]
+
                 sold_item = self.placement_file.item_locations[
                     self.areas.short_to_full(location)
                 ]
                 sold_item = strip_item_number(sold_item)
+
                 normal_text = (
                     break_lines(
                         f"That there is a <y<{sold_item}>>. "
@@ -1824,6 +1827,7 @@ class GamePatcher:
                     )
                     + f"\n{BEEDLE_BUY_SWITCH}"
                 )
+
                 discount_text = (
                     break_lines(
                         f"That there is a <y<{sold_item}>>. "
@@ -1833,6 +1837,7 @@ class GamePatcher:
                     )
                     + f"\n{BEEDLE_BUY_SWITCH}"
                 )
+
                 if location in shop_texts:
                     if sold_item in shop_texts[location]:
                         # item has custom text for Beedle's shop
@@ -1852,6 +1857,7 @@ class GamePatcher:
                     self.eventpatches["105-Terry"].append(
                         {"name": normal, "type": "textadd", "text": normal_text}
                     )
+
                 if isinstance(discounted, int):
                     self.eventpatches["105-Terry"].append(
                         {
@@ -1867,10 +1873,12 @@ class GamePatcher:
                     )
             elif location.startswith("Rupin"):
                 entry_index, price = SHOP_TEXT_PATCHES[location]
+
                 sold_item = self.placement_file.item_locations[
                     self.areas.short_to_full(location)
                 ]
                 sold_item = strip_item_number(sold_item)
+
                 rupin_text = (
                     break_lines(
                         f"You've got quite an eye, friend. That "
@@ -1940,6 +1948,28 @@ class GamePatcher:
                             "param3": 79,
                             "param4": f"{location} Text",
                         },
+                    }
+                )
+
+        if self.placement_file.options["luv-shopsanity"]:
+            for potion_index, check in enumerate(LUV_CHECKS):
+                potion_item = self.placement_file.item_locations[
+                    self.areas.short_to_full(check)
+                ]
+                potion_item = strip_item_number(potion_item)
+
+                luv_text = break_lines(
+                    f"You're in luck! I'm offering a one "
+                    f"time deal with this potion. Buy a "
+                    f"scoop and I'll also throw in a "
+                    f"<y<{potion_item}>> as well. "
+                )
+
+                self.eventpatches["106-DrugStore"].append(
+                    {
+                        "name": f"Potion Item Text {potion_index}",
+                        "type": "textadd",
+                        "text": luv_text,
                     }
                 )
 

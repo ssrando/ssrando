@@ -92,6 +92,8 @@ RUPIN_CHECKS = [
 ]
 VANILLA_RUPIN_PLACEMENT = norm_force_vanilla(RUPIN_CHECKS)
 
+# The order of this list matters.
+# It is used in gamepatches to provide custom text for each potion item.
 LUV_CHECKS = [
     "Central Skyloft - Potion Shop - Outer Left Item",
     "Central Skyloft - Potion Shop - Inner Left Item",

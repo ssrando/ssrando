@@ -1200,6 +1200,7 @@
     text: "Hello there!
           \n\n\n\nOh...but before I get into my spiel,\nI should warn you that you need an\n<r<Adventure Pouch>> and an <r<Empty Bottle>>\nto buy anything here.
           \nUnderstand, dear?\nIf you want to know more about how\nthings work around here, just ask!"
+  # Pouch checks
   - name: Add Pouch Check for Stamina Potion
     type: flowpatch
     index: 19
@@ -1270,6 +1271,127 @@
     cases:
       - 56 # Check for bottle
       - 58 # Can't buy
+  # Tell potion item
+  - name: Patch Stamina Potion Bottle Switch
+    onlyif: Option "luv-shopsanity" Enabled
+    type: flowpatch
+    index: 17
+    flow: {}
+    cases:
+      - Check Stamina Potion Sceneflag
+      - 28 # no bottle (stamina)
+  - name: Check Stamina Potion Sceneflag
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 122 # stamina potion sceneflag
+      param3: 6
+    cases:
+      - 103 # bypass potion item text if flag is set
+      - Show Stamina Potion Item Name
+  - name: Show Stamina Potion Item Name
+    type: flowadd
+    flow:
+      type: type1
+      next: 103 # check for lmf raised
+      param3: 89
+      param4: Potion Item Text 0
+  - name: Patch Heart Potion Bottle Switch
+    onlyif: Option "luv-shopsanity" Enabled
+    type: flowpatch
+    index: 8
+    flow: {}
+    cases:
+      - Check Heart Potion Sceneflag
+      - 23 # no bottle (heart)
+  - name: Check Heart Potion Sceneflag
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 120 # heart potion sceneflag
+      param3: 6
+    cases:
+      - 38 # bypass potion item text if flag is set
+      - Show Heart Potion Item Name
+  - name: Show Heart Potion Item Name
+    type: flowadd
+    flow:
+      type: type1
+      next: 38 # show normal potion text
+      param3: 89
+      param4: Potion Item Text 1
+  - name: Patch Air Potion Bottle Switch
+    onlyif: Option "luv-shopsanity" Enabled
+    type: flowpatch
+    index: 14
+    flow: {}
+    cases:
+      - Check Air Potion Sceneflag
+      - 27 # no bottle (air)
+  - name: Check Air Potion Sceneflag
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 121 # air potion sceneflag
+      param3: 6
+    cases:
+      - 124 # bypass potion item text if flag is set
+      - Show Air Potion Item Name
+  - name: Show Air Potion Item Name
+    type: flowadd
+    flow:
+      type: type1
+      next: 124 # check for scale
+      param3: 89
+      param4: Potion Item Text 2
+  - name: Patch Revitalizing Potion Bottle Switch
+    onlyif: Option "luv-shopsanity" Enabled
+    type: flowpatch
+    index: 20
+    flow: {}
+    cases:
+      - Check Revitalizing Potion Sceneflag
+      - 29 # no bottle (revitalizing)
+  - name: Check Revitalizing Potion Sceneflag
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 123 # revitalizing potion sceneflag
+      param3: 6
+    cases:
+      - 26 # bypass potion item text if flag is set
+      - Show Revitalizing Potion Item Name
+  - name: Show Revitalizing Potion Item Name
+    type: flowadd
+    flow:
+      type: type1
+      next: 26 # show normal potion text
+      param3: 89
+      param4: Potion Item Text 3
+  - name: Patch Guardian Potion Bottle Switch
+    onlyif: Option "luv-shopsanity" Enabled
+    type: flowpatch
+    index: 53
+    flow: {}
+    cases:
+      - Check Guardian Potion Sceneflag
+      - 58 # no bottle (guardian)
+  - name: Check Guardian Potion Sceneflag
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 124 # guardian potion sceneflag
+      param3: 6
+    cases:
+      - 57 # bypass potion item text if flag is set
+      - Show Guardian Potion Item Name
+  - name: Show Guardian Potion Item Name
+    type: flowadd
+    flow:
+      type: type1
+      next: 57 # show normal potion text
+      param3: 89
+      param4: Potion Item Text 4
 107-Kanban:
   - name: Knight Academy Billboard skip condition
     type: flowpatch
