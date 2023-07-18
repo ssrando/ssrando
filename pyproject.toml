@@ -11,7 +11,7 @@ readme = "README.md"
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.12"
+python = ">=3.10,<3.12"
 nlzss11 = "^1.5"
 PyYAML = "^6.0"
 PySide6 = "^6.4.3"
@@ -19,6 +19,8 @@ lark = "^1.1.5"
 toml = "^0.10.2"
 pyqtdarktheme = "^2.1.0"
 pyclip = "^0.7.0"
+opencv-python = "^4.7.0.68"
+numpy = "^1.24.2"
 
 [tool.poetry.group.build.dependencies]
 pyinstaller = "^5.9.0"
