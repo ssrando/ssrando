@@ -9,6 +9,7 @@
   - Added 17 checks in Flooded Faron Woods
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
 - Added an option to reduce the number of Peatrice conversations needed before she calls you "Darling" (by CovenEsme)
+- Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
 - Added the ability to randomize dusk relics in silent realms (by Peppernicus, Zeldex, & YourAverageLink)
 - Up to 10 relics (chosen by a new option) per silent realm can be randomized to have new items
 ### Changes
@@ -26,6 +27,33 @@
 - Removed Fi text trigger surrounding the Hook Beetle Fight check
 - The shortcut log from the Sealed Grounds Spiral to Behind the Temple is now always pushed down
 - The progress text shown at the bottom of save files now shows information about your progress towards the end of the seed (rather than the vanilla game) (by CovenEsme)
+- Added more structured and granular custom model support (by Muzu- with big help from CovenEsme, FrasseFreak, and Dman25)
+  - Added cosmetics tab to UI
+  - Added models folder for custom model packs
+  - Created a standard folder structure for custom model packs (see README in models folder for more info)
+  - Added the ability to choose a model pack to patch over the player model and loftwing models individually
+  - Created a metadata structure to allow custom model makers to define the following:
+    - Colour groups for texture masking
+    - Allowing tunic swap (if set to false, the option on the UI is disabled and grayed out)
+    - Adding a model author name and comment that will be displayed on the UI when the model pack is selected
+  - Added the default player and loftwing models as model pack options
+- Added masked texture recolor support (by Muzu- with big help from CovenEsme, FrasseFreak, and Dman25)
+  - Added color options for each defined color group are displayed on the left side:
+    - Color button allows the user to manually select a color
+    - Randomize button picks a random color for corresponding group
+    - Reset color button returns the color group back to default (this uses the original texture colors)
+  - Added a preview of the model is displayed on the right side (if one is provided)
+    - The preview updates to show how the currently selected colors look on the model
+  - Added a randomize all colors button that selects a random color for all defined color groups
+  - Added a reset all colors button that restores all defined color groups back to default
+  - Added native support for default player and loftwing models
+  - Created structure to allow custom models to define masks, color groups, and previews (see README in models folder for more info)
+  - You may save and load color presets (by YourAverageLink)
+    - Link comes with 9 default color presets - Red Tunic, Blue Tunic, Purple Tunic, Dark Link, Pipit's Tunic / Mallara, Impa / Groose, Hero of the Wild, Hero of the Wind, and Ravio
+    - The Loftwing comes with 7 default color presets - Zelda's Loftwing, the Wing Ceremony Loftwing, Groose's Loftwing, Cawlin's Loftwing, Strich's Loftwing, Orielle's Loftwing, and the Knights' Loftwing
+    - At any point, you may save a new color preset (works just like settings presets), and then load them at a later point.
+    - Model creators may provide their own default presets by adding a default_presets.json file to the model type folder
+    - The Import/Export button opens up a dialog box containing the metadata for your currently selected color. This may be copied and sent to someone else, who can paste in the same dialog box and import the color
 - Upon completing a silent realm, the trial gate will remain open. (This is to prevent softlocks with dusk relic shuffle)
 - Items inside silent realms (other than dusk relics) will glow and have beams above them; their color is distinct from the tears
   - In Faron, items are yellow
