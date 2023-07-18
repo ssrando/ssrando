@@ -10,6 +10,9 @@
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
 - Added an option to reduce the number of Peatrice conversations needed before she calls you "Darling" (by CovenEsme)
 - Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
+- Renamed "shopsanity" option to "Beedle Shopsanity" (by CovenEsme)
+- Added option for "Gear Shopsanity" (by CovenEsme)
+- Added option for "Potion Shopanity" (by CovenEsme)
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Added Fi hints (by YourAverageLink)
@@ -52,6 +55,18 @@
     - At any point, you may save a new color preset (works just like settings presets), and then load them at a later point.
     - Model creators may provide their own default presets by adding a default_presets.json file to the model type folder
     - The Import/Export button opens up a dialog box containing the metadata for your currently selected color. This may be copied and sent to someone else, who can paste in the same dialog box and import the color
+- Expanded Shopsanity (by CovenEsme)
+  - Beedle Shopsanity checks have been renamed based on their location in the shop (instead of their prices)
+  - Gear Shopsanity adds a check to each of the item slots in Rupin's shop (next to Peatrice's Item Check in the Bazaar)
+    - All shop slots are always available to be bought
+    - After buying an item, it will become sold out until you leave and re-enter the Bazaar after which the vanilla item can be bought repeatedly
+    - If disabled, each shop slot will contain its vanilla item which can be bought repeatedly
+  - Potion Shopsanity adds a check to each potion vat (next to Sparrot's Fortune-telling Stall in the Bazaar)
+    - Each potion requires an Adventure Pouch and an Empty Bottle
+      - The Stamina Potion also requires Lanayru Mining Facility to be raised
+      - The Air Potion also requires you to have the Water Scale
+    - When buying a specific potion for the first time, you will also get a random item (in addition to the potion)
+    - The potion lady (Luv) tells you the item you can get by interacting with each potion vat (even if you can't buy it yet)
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 - Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow

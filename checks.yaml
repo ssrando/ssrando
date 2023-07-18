@@ -7,7 +7,7 @@ Upper Skyloft - Fledge's Gift:
     - oarc/F001r/l3
     - oarc/F001r/l4
 Upper Skyloft - Owlan's Gift:
-  original item: Wooden Shield
+  original item: "Wooden Shield #0"
   type:
   Paths:
     - event/108-ShinkanA/169
@@ -265,60 +265,134 @@ Batreaux's House - 80 Crystals:
   text: a <r<demon in human form>> grants
 
 # Beedle's Shop:
-Beedle's Shop - 300 Rupee Item:
+Beedle's Shop - First Outer Left Item:
   original item: "Progressive Pouch #1"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
-    - ShpSmpl/20
-Beedle's Shop - 600 Rupee Item:
+    - F002r/ShpSmpl/20
+Beedle's Shop - Second Outer Left Item:
   original item: "Progressive Pouch #2"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+  type: Beedle Shop Purchases, Shop Purchases (Medium)
   Paths:
-    - ShpSmpl/21
-Beedle's Shop - 1200 Rupee Item:
+    - F002r/ShpSmpl/21
+Beedle's Shop - Third Outer Left Item:
   original item: "Progressive Pouch #3"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
+  type: Beedle Shop Purchases, Shop Purchases (Expensive)
   hint: always
   Paths:
-    - ShpSmpl/22
+    - F002r/ShpSmpl/22
   text: for <g+<1200 rupees>> <r<Beedle>> sells
-Beedle's Shop - 800 Rupee Item:
+Beedle's Shop - First Inner Left Item:
   original item: "Life Medal #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+  type: Beedle Shop Purchases, Shop Purchases (Medium)
   Paths:
-    - ShpSmpl/26
-Beedle's Shop - 1600 Rupee Item:
+    - F002r/ShpSmpl/26
+Beedle's Shop - Second Inner Left Item:
   original item: "Heart Piece #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
+  type: Beedle Shop Purchases, Shop Purchases (Expensive)
   hint: always
   Paths:
-    - ShpSmpl/23
+    - F002r/ShpSmpl/23
   text: for <g+<1600 rupees>> <r<Beedle>> sells
-Beedle's Shop - First 100 Rupee Item:
+Beedle's Shop - First Inner Right Item:
   original item: "Extra Wallet #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
-    - ShpSmpl/24
-Beedle's Shop - Second 100 Rupee Item:
+    - F002r/ShpSmpl/24
+Beedle's Shop - Second Inner Right Item:
   original item: "Extra Wallet #1"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
-    - ShpSmpl/17
-Beedle's Shop - Third 100 Rupee Item:
+    - F002r/ShpSmpl/17
+Beedle's Shop - Third Inner Right Item:
   original item: "Extra Wallet #2"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
-    - ShpSmpl/18
-Beedle's Shop - 50 Rupee Item:
+    - F002r/ShpSmpl/18
+Beedle's Shop - First Outer Right Item:
   original item: "Progressive Bug Net #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle Shop Purchases, Shop Purchases (Cheap)
   Paths:
-    - ShpSmpl/25
-Beedle's Shop - 1000 Rupee Item:
+    - F002r/ShpSmpl/25
+Beedle's Shop - Second Outer Right Item:
   original item: Bug Medal
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+  type: Beedle Shop Purchases, Shop Purchases (Medium)
   Paths:
-    - ShpSmpl/27
+    - F002r/ShpSmpl/27
+
+# Gear Shop
+Central Skyloft - Gear Shop - Top Left Item:
+  original item: "Small Quiver #1"
+  type: Gear Shop Purchases, Shop Purchases (Medium)
+  Paths:
+    - F004r/ShpSmpl/16
+Central Skyloft - Gear Shop - Middle Left Item:
+  original item: "Small Seed Satchel #1"
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/15
+Central Skyloft - Gear Shop - Bottom Left Item:
+  original item: "Small Bomb Bag #1"
+  type: Gear Shop Purchases, Shop Purchases (Medium)
+  Paths:
+    - F004r/ShpSmpl/19
+Central Skyloft - Gear Shop - Left Front Item:
+  original item: 10 Deku Seeds
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/14
+Central Skyloft - Gear Shop - Middle Front Item:
+  original item: 10 Arrows
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/9
+Central Skyloft - Gear Shop - Right Front Item:
+  original item: 10 Bombs
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/10
+Central Skyloft - Gear Shop - Bottom Right Item:
+  original item: "Wooden Shield #1"
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/11
+Central Skyloft - Gear Shop - Middle Right Item:
+  original item: Iron Shield
+  type: Gear Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/12
+Central Skyloft - Gear Shop - Top Right Item:
+  original item: Sacred Shield
+  type: Gear Shop Purchases, Shop Purchases (Medium)
+  Paths:
+    - F004r/ShpSmpl/13
+
+# Potion Shop
+Central Skyloft - Potion Shop - Outer Left Item:
+  original item: Red Rupee # Stamina Potion
+  type: Potion Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/32
+Central Skyloft - Potion Shop - Inner Left Item:
+  original item: Red Rupee # Heart Potion
+  type: Potion Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/30
+Central Skyloft - Potion Shop - Middle Item:
+  original item: Red Rupee # Air Potion
+  type: Potion Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/31
+Central Skyloft - Potion Shop - Inner Right Item:
+  original item: Red Rupee # Revitalizing Potion
+  type: Potion Shop Purchases, Shop Purchases (Cheap)
+  Paths:
+    - F004r/ShpSmpl/33
+Central Skyloft - Potion Shop - Outer Right Item:
+  original item: Red Rupee # Guardian Potion
+  type: Potion Shop Purchases, Shop Purchases (Medium)
+  Paths:
+    - F004r/ShpSmpl/34
 
 # Single Gratitude Crystals:
 ## Aren't randomized, but still need logic, because some of them need items
@@ -517,7 +591,7 @@ Sky - Goddess Chest under Fun Fun Island:
     - stage/F020/r0/l0/TBox/86
   cube_region: Lake Floria
 Sky - Southwest Triple Island Upper Goddess Chest:
-  original item: Small Seed Satchel
+  original item: "Small Seed Satchel #0"
   type: goddess, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/66
@@ -585,7 +659,7 @@ Thunderhead - East Island Goddess Chest:
     - stage/F023/r0/l0/TBox/73
   cube_region: Faron Woods
 Thunderhead - Goddess Chest on top of Isle of Songs:
-  original item: Small Bomb Bag
+  original item: "Small Bomb Bag #0"
   type: goddess, Volcano Summit Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/85
@@ -603,7 +677,7 @@ Thunderhead - First Goddess Chest on Mogma Mitts Island:
     - stage/F023/r0/l0/TBox/77
   cube_region: Volcano Summit
 Thunderhead - Second Goddess Chest on Mogma Mitts Island:
-  original item: Small Quiver
+  original item: "Small Quiver #0"
   type: goddess, Sand Sea Goddess Chests
   Paths:
    - stage/F023/r0/l0/TBox/76

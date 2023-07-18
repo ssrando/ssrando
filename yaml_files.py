@@ -21,8 +21,8 @@ def yaml_load(file_path: Path):
         return yaml.load(f, UniqueKeyLoader)
 
 
-beedle_texts_file = RANDO_ROOT_PATH / "beedle_texts.yaml"
-beedle_texts = yaml_load(beedle_texts_file)
+shop_texts_file = RANDO_ROOT_PATH / "shop_texts.yaml"
+shop_texts: dict = yaml_load(shop_texts_file)
 
 checks_file = RANDO_ROOT_PATH / "checks.yaml"
 checks = yaml_load(checks_file)

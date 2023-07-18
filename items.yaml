@@ -20,6 +20,11 @@
 - id: 6
   name: Heart
   oarc: null
+- id: 8
+  name: 10 Arrows
+  oarc: null
+  getarcname: GetArrow
+  getmodelname: GetArrowBundle
 # - id: 9
 #   name: Goddess White Sword
 #   oarc: null
@@ -160,7 +165,7 @@
   getmodelname: GetMoleGloveA
 - id: 60
   name: 10 Deku Seeds
-  oarc: null
+  oarc: GetSeedSet
   getarcname: GetSeedSet
   getmodelname: GetSeedSet
 - id: 63
@@ -309,6 +314,16 @@
   oarc: GetShieldWood
   getarcname: GetShieldWood
   getmodelname: GetShieldWood
+- id: 119
+  name: Iron Shield
+  oarc: GetShieldIron
+  getarcname: GetShieldIron
+  getmodelname: GetShieldIron
+- id: 122
+  name: Sacred Shield
+  oarc: GetShieldHoly
+  getarcname: GetShieldHoly
+  getmodelname: GetShieldHoly
 - id: 125
   name: Hylian Shield
   oarc: GetShieldHylia

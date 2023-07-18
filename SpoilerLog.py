@@ -4,6 +4,7 @@ from logic.logic import Placement
 from logic.constants import *
 from logic.logic_input import Areas
 from hints.hint_types import GossipStoneHintWrapper
+from logic.placements import LUV_CHECKS
 from options import OPTIONS, Options
 import itertools
 
@@ -170,6 +171,11 @@ def write(
     for zone_name, locations_in_zone in itertools.groupby(with_regions, lambda x: x[0]):
         file.write(zone_name + ":\n")
         for _, loc, item in locations_in_zone:
+            # Remove Potion Shop from log when not randomized as we can't
+            # just set the checks to be their vanilla items.
+            if not options["luv-shopsanity"] and "Potion Shop" in loc:
+                continue
+
             file.write(f"    {loc + ':':{max_location_name_length}} {item}\n")
 
     file.write("\n\n\n")

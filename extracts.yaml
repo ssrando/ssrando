@@ -55,8 +55,11 @@
   - GetNetB
   - GetSpareSeedA
   - GetBottleRepair
+  - GetSeedSet
   - GetSpareQuiverA
   - GetSpareBombBagA
+  - GetShieldIron
+  - GetShieldHoly
   stage: F004r
 - layer: 1
   oarcs:

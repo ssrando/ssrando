@@ -574,10 +574,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.vlay_shuffles = QVBoxLayout()
         self.vlay_shuffles.setObjectName(u"vlay_shuffles")
-        self.option_shopsanity = QCheckBox(self.box_shuffles)
-        self.option_shopsanity.setObjectName(u"option_shopsanity")
+        self.option_beedle_shopsanity = QCheckBox(self.box_shuffles)
+        self.option_beedle_shopsanity.setObjectName(u"option_beedle_shopsanity")
 
-        self.vlay_shuffles.addWidget(self.option_shopsanity)
+        self.vlay_shuffles.addWidget(self.option_beedle_shopsanity)
+
+        self.option_rupin_shopsanity = QCheckBox(self.box_shuffles)
+        self.option_rupin_shopsanity.setObjectName(u"option_rupin_shopsanity")
+
+        self.vlay_shuffles.addWidget(self.option_rupin_shopsanity)
+
+        self.option_luv_shopsanity = QCheckBox(self.box_shuffles)
+        self.option_luv_shopsanity.setObjectName(u"option_luv_shopsanity")
+
+        self.vlay_shuffles.addWidget(self.option_luv_shopsanity)
 
         self.option_rupeesanity = QCheckBox(self.box_shuffles)
         self.option_rupeesanity.setObjectName(u"option_rupeesanity")
@@ -2027,7 +2037,9 @@ class Ui_MainWindow(object):
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
         self.label_for_option_open_lake_floria.setText(QCoreApplication.translate("MainWindow", u"Open Lake Floria", None))
         self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
-        self.option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Beedle's Shop", None))
+        self.option_beedle_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Beedle Shopsanity", None))
+        self.option_rupin_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Gear Shopsanity", None))
+        self.option_luv_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Potion Shopsanity", None))
         self.option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
         self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))
         self.box_entrance_rando.setTitle(QCoreApplication.translate("MainWindow", u"Entrance Randomization", None))

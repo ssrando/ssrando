@@ -775,9 +775,23 @@
            <item>
             <layout class="QVBoxLayout" name="vlay_shuffles">
              <item>
-              <widget class="QCheckBox" name="option_shopsanity">
+              <widget class="QCheckBox" name="option_beedle_shopsanity">
                <property name="text">
-                <string>Shuffle Beedle's Shop</string>
+                <string>Beedle Shopsanity</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_rupin_shopsanity">
+               <property name="text">
+                <string>Gear Shopsanity</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_luv_shopsanity">
+               <property name="text">
+                <string>Potion Shopsanity</string>
                </property>
               </widget>
              </item>

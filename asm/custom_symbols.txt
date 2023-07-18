@@ -13,16 +13,17 @@ main.dol:
   is_custom_rando_item: 0x80678570
   fix_custom_item_get: 0x80678590
   process_startflags: 0x80678630
-  handle_bk_map_dungeonflag: 0x80678A38
-  rando_text_command_handler: 0x80678AE8
-  textbox_a_pressed_or_b_held: 0x80678DC8
-  set_goddess_sword_pulled_scene_flag: 0x80678DF8
-  randomize_boss_key_start_pos: 0x80678E24
-  get_item_arc_name: 0x80678E50
-  get_item_model_name_ptr: 0x80678E80
-  enforce_loftwing_speed_cap: 0x80678EA0
-  give_item_with_sceneflag: 0x80678F94
-  storyflag_set_to_1: 0x80679028
+  handle_bk_map_dungeonflag: 0x80678A4C
+  rando_text_command_handler: 0x80678AFC
+  textbox_a_pressed_or_b_held: 0x80678DDC
+  set_goddess_sword_pulled_scene_flag: 0x80678E0C
+  randomize_boss_key_start_pos: 0x80678E38
+  get_item_arc_name: 0x80678E64
+  get_item_model_name_ptr: 0x80678E94
+  enforce_loftwing_speed_cap: 0x80678EB4
+  give_item_with_sceneflag: 0x80678FA8
+  storyflag_set_to_1: 0x8067903C
+  handle_potion_lady_give_item: 0x8067906C
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
@@ -35,7 +36,7 @@ d_a_obj_sw_sword_beamNP.rel:
   handle_crest_hit_item_give: 0x3780
 d_a_shop_sampleNP.rel:
   check_needs_custom_storyflag_subtype: 0x8450
-  correct_rupee_color: 0x8484
+  correct_rupee_color: 0x8490
 d_a_npc_douguyanightNP.rel:
   select_new_item_column: 0x2F20
 d_a_obj_swrd_prjNP.rel:

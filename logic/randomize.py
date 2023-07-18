@@ -334,7 +334,6 @@ class Rando:
         )
 
     def set_placement_options(self):
-        shopsanity = self.options["shopsanity"]
         place_gondo_progressives = self.options["gondo-upgrades"]
         damage_multiplier = self.options["damage-multiplier"]
 
@@ -347,7 +346,9 @@ class Rando:
             TALK_TO_YERBAL_OPTION: self.options["open-lake-floria"] == "Talk to Yerbal",
             VANILLA_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Vanilla",
             OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
-            RANDOMIZED_BEEDLE_OPTION: shopsanity != "Vanilla",
+            RANDOMIZED_BEEDLE_OPTION: self.options["beedle-shopsanity"],
+            RANDOMIZED_RUPIN_OPTION: self.options["rupin-shopsanity"],
+            RANDOMIZED_LUV_OPTION: self.options["luv-shopsanity"],
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
             NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
@@ -416,7 +417,7 @@ class Rando:
                     locations={final_check: sword},
                 )
 
-        # self.placement |= HARDCODED_PLACEMENT(self.norm)
+        self.placement |= HARDCODED_PLACEMENT(self.norm)
 
         if self.options["open-et"]:
             self.placement.add_unplaced_items(set(KEY_PIECES))
@@ -424,8 +425,14 @@ class Rando:
         if not place_gondo_progressives:
             self.placement.add_unplaced_items(GONDO_ITEMS)
 
-        if not shopsanity:
+        if not options[RANDOMIZED_BEEDLE_OPTION]:
             self.placement |= VANILLA_BEEDLE_PLACEMENT(self.norm, self.areas.checks)
+
+        if not options[RANDOMIZED_RUPIN_OPTION]:
+            self.placement |= VANILLA_RUPIN_PLACEMENT(self.norm, self.areas.checks)
+
+        if not options[RANDOMIZED_LUV_OPTION]:
+            self.placement |= VANILLA_LUV_PLACEMENT(self.norm, self.areas.checks)
 
         # remove small keys from the dungeon pool if small key sanity is enabled
         small_key_mode = self.options["small-key-mode"]

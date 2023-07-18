@@ -123,11 +123,11 @@ Central Skyloft:
       West Exit: Nothing
       South Exit: Nothing
     locations:
-      Potion Lady's Gift: Nothing
       Bazaar Goddess Chest: Lanayru - Goddess Cube in Ancient Harbour
-      Endurance Potion: Bottle & Lanayru - Raise Lanayru Mining Facility
       Talk to Peatrice: Nothing
       Item Check Access: Nothing
+      Gear Shop: Nothing
+      Potion Shop: Nothing
 
     Gondo's Upgrades:
       entrance: Gondo Upgrades On option
@@ -144,6 +144,35 @@ Central Skyloft:
           Faron - Faron Woods - Amber Relic Farming &
           Lanayru - Mine - Ancient Flower Farming &
           Sky - Clean Cut Minigame # Goddess Plumes / Blue Bird Feathers farming
+
+    Gear Shop:
+      toplevel-alias: Rupin
+      exits:
+        Bazaar: Nothing
+      locations:
+        Top Left Item: Can Afford 150 Rupees
+        Middle Left Item: Can Afford 100 Rupees
+        Bottom Left Item: Can Afford 150 Rupees
+        Left Front Item: Can Afford 20 Rupees
+        Middle Front Item: Can Afford 20 Rupees
+        Right Front Item: Can Afford 20 Rupees
+        Bottom Right Item: Can Afford 50 Rupees
+        Middle Right Item: Can Afford 100 Rupees
+        Top Right Item: Can Afford 500 Rupees
+    
+    Potion Shop:
+      exits:
+        Bazaar: Nothing
+      locations:
+        Endurance Potion: Bottle & Lanayru - Raise Lanayru Mining Facility
+        Air Potion: Bottle & Water Scale
+        Potion Lady's Gift: Nothing
+
+        Outer Left Item:  Pouch & Can Afford 50 Rupees  & Endurance Potion
+        Inner Left Item:  Pouch & Can Afford 20 Rupees  & Bottle
+        Middle Item:      Pouch & Can Afford 20 Rupees  & Air Potion
+        Inner Right Item: Pouch & Can Afford 30 Rupees  & Bottle
+        Outer Right Item: Pouch & Can Afford 200 Rupees & Bottle
 
   Orielle and Parrow's House:
     can-sleep: true
@@ -299,14 +328,14 @@ Beedle's Shop:
       Beedle's Shop: Nothing
     locations:
       # We don't want the pouch extensions to be the logical access to the pouch
-      300 Rupee Item: Can Afford 300 Rupees & (Pouch | Randomized Beedle option)
-      600 Rupee Item: Can Afford 600 Rupees
-      1200 Rupee Item: Can Afford 1200 Rupees
-      800 Rupee Item: Can Afford 800 Rupees
-      1600 Rupee Item: Can Afford 1600 Rupees
-      First 100 Rupee Item: Can Afford 100 Rupees
-      Second 100 Rupee Item: Can Afford 100 Rupees
+      First Outer Left Item: Can Afford 300 Rupees & (Pouch | Randomized Beedle option)
+      Second Outer Left Item: Can Afford 600 Rupees
+      Third Outer Left Item: Can Afford 1200 Rupees
+      First Inner Left Item: Can Afford 800 Rupees
+      Second Inner Left Item: Can Afford 1600 Rupees
+      First Inner Right Item: Can Afford 100 Rupees
+      Second Inner Right Item: Can Afford 100 Rupees
       # To reduce necessary rupee-farming at the start, the third item logically needs an efficient rupee-farming method
-      Third 100 Rupee Item: Can Afford 100 Rupees & Can Medium Rupee Farm
-      50 Rupee Item: Can Afford 50 Rupees
-      1000 Rupee Item: Can Afford 1000 Rupees
+      Third Inner Right Item: Can Afford 100 Rupees & Can Medium Rupee Farm
+      First Outer Right Item: Can Afford 50 Rupees
+      Second Outer Right Item: Can Afford 1000 Rupees

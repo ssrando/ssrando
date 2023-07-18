@@ -322,6 +322,7 @@ blr
 .global is_custom_rando_item
 .global give_item_with_sceneflag
 .global storyflag_set_to_1
+.global handle_potion_lady_give_item
 
 .close
 
@@ -463,16 +464,26 @@ check_needs_custom_storyflag_subtype:
 ;}
 addi r9,r4,-24
 cmplwi r9,1
-ble lbl_21
-addi r9,r4,-17
-cmplwi r9,1
-ble lbl_21
+ble lbl_1
+
+; use custom storyflag for shops 9 -> 19
+addi r9, r4, -19
+cmpwi r9, 0
+bgt lbl_0
+
+addi r9, r4, -9
+cmpwi r9, 0
+bge lbl_1
+
+lbl_0:
 xori r5,r4,27
 cntlzw r5,r5
 srwi r5,r5,5
 b lbl_end
-lbl_21:
+
+lbl_1:
 li r5,1
+
 lbl_end:
 cmpwi r5, 1
 blr
