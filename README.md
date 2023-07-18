@@ -2,7 +2,7 @@
 
 This is a randomizer for the game _The Legend of Zelda: Skyward Sword_.
 
-You can access most resources on the [Skyward Sword Randomizer website](https://ssrando.com); you can also come discuss or ask for help on the [Skyward Sword Randomizer Discord](https://discord.gg/evpNKkaaw6).
+You can access most resources on the [Skyward Sword Randomizer website](https://ssrando.com); you can also come discuss or ask for help on the [Skyward Sword Randomizer & Modding Discord](https://discord.gg/evpNKkaaw6).
 
 ## Requirements
 - A computer (to run the randomizer)
@@ -91,9 +91,13 @@ For now, you have to run the GUI once so the ISO can be extracted (ask for a wor
 You can also pass options when launching the GUI, they will be pre-entered (this can be useful when creating a script to run the randomizer)
 
 ## Model Customization
-After running the randomizer once, a folder `oarc` will be created, which contains Link's model (Alink.arc) and his bird's (Bird_Link.arc)
+After running the randomizer once, a folder `oarc` will be created, which contains Link's model (`Alink.arc`) and the Loftwing's model (`Bird_Link.arc`) as well as several other arc files. All arcs can also be found in the `actual-extract` folder. These folders can be used to get unmodified models from your clean ISO and can be used for creating custom models.
 
-To modify them, you need an external program. Then save the modified arcs (the name **must** stay the same) in the `arc-replacements` folder of the randomizer installation directory.
+To modify them, you need one or more external programs to edit, save, and convert the existing game models (more information can be found in the [Skyward Sword Randomizer & Modding Discord](https://discord.gg/evpNKkaaw6)).
+
+Modified Link and Loftwing models should be placed in a model pack using `models/[model pack name]/Player` and `models/[model pack name]/Loftwing` folders respectively. Other modifed arcs should be placed in the `arc-replacements` folder (or alternatively in `models/[model pack name]/Player/AdditionalArcs` for easier model pack creation).
+
+Modified arcs **must** have the same same name as the original model they replace.
 
 ## Tests
 Tests need a source installation and an extracted ISO:

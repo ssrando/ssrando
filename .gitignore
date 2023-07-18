@@ -186,6 +186,11 @@ presets.txt
 
 custom-music/
 
+models/*
+!models/README.md
+
+assets/default-link-data/*/metadata.json
+
 # temp asm
 *.s
 # ignore any custom setting source files

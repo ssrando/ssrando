@@ -1041,6 +1041,21 @@
   bits: 3
   help: "How many times you need to talk to Peatrice before she calls you \"darling\" and you can start Peater's quest."
   ui: option_peatrice_conversations
+# Player customisation stuff
+- name: Selected Player Model Pack
+  command: selected-player-model-pack
+  type: string
+  default: Default
+  permalink: false
+  cosmetic: true
+  help: "Determines the player model pack that will be used in game."
+- name: Selected Loftwing Model Pack
+  command: selected-loftwing-model-pack
+  type: string
+  default: Default
+  permalink: false
+  cosmetic: true
+  help: "Determines the loftwing model pack that will be used in game."
 - name: Random Starting Location
   command: random-start-entrance
   type: singlechoice

@@ -38,6 +38,11 @@ jobs:
           mkdir -p dist/arc-replacements
           cp arc-replacements/README.md dist/arc-replacements
         shell: bash
+      - name: Make models folder
+        run: |
+          mkdir -p dist/models
+          cp models/README.md dist/models
+        shell: bash
       - name: Copy Readme and changelog
         run: cp README.md CHANGELOG.md dist
         shell: bash
