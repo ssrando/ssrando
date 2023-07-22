@@ -312,11 +312,7 @@ class Rando:
             self.placement.add_unplaced_items(set(unplaced))
 
         must_be_placed_items = (
-            PROGRESS_ITEMS
-            | NONPROGRESS_ITEMS
-            | ALL_SMALL_KEYS
-            | ALL_BOSS_KEYS
-            | ALL_MAPS
+            PROGRESS_ITEMS | NONPROGRESS_ITEMS | POTENTIALLY_RESTRICTED_ITEMS
         )
         may_be_placed_items = CONSUMABLE_ITEMS.copy()
         duplicable_items = (
@@ -329,8 +325,37 @@ class Rando:
             must_be_placed_items.pop(item, None)
             may_be_placed_items.pop(item, None)
 
+        ANYWHERE = "Anywhere"
+        VANILLA = "Vanilla"
+
+        restricted_vanilla_items = [
+            item
+            for item in POTENTIALLY_RESTRICTED_ITEMS
+            if (item in ALL_SMALL_KEYS and self.options["small-key-mode"] == VANILLA)
+            or (item in ALL_BOSS_KEYS and self.options["boss-key-mode"] == VANILLA)
+            or (item in ALL_MAPS and self.options["map-mode"] == VANILLA)
+            or (item in TRIFORCES and self.options["triforce-shuffle"] == VANILLA)
+            or (item in BEEDLE_VANILLA_ITEMS and not self.options["shopsanity"])
+        ]
+
+        restricted_non_vanilla_items = [
+            item
+            for item in POTENTIALLY_RESTRICTED_ITEMS
+            if (item not in restricted_vanilla_items)
+            and (
+                (item in ALL_SMALL_KEYS and self.options["small-key-mode"] != ANYWHERE)
+                or (item in ALL_BOSS_KEYS and self.options["boss-key-mode"] != ANYWHERE)
+                or (item in ALL_MAPS and self.options["map-mode"] != ANYWHERE)
+                or (item in TRIFORCES and self.options["triforce-shuffle"] != ANYWHERE)
+            )
+        ]
+
         self.randosettings = RandomizationSettings(
-            must_be_placed_items, may_be_placed_items, duplicable_items
+            must_be_placed_items,
+            may_be_placed_items,
+            duplicable_items,
+            restricted_vanilla_items,
+            restricted_non_vanilla_items,
         )
 
     def set_placement_options(self):
@@ -422,7 +447,7 @@ class Rando:
             self.placement.add_unplaced_items(set(KEY_PIECES))
 
         if not place_gondo_progressives:
-            self.placement.add_unplaced_items(GONDO_ITEMS)
+            self.placement.add_unplaced_items(set(GONDO_ITEMS))
 
         if not shopsanity:
             self.placement |= VANILLA_BEEDLE_PLACEMENT(self.norm, self.areas.checks)

@@ -311,6 +311,24 @@ DUSK_RELICS = group(DUSK_RELIC, 1)
 TUMBLEWEEDS = group(TUMBLEWEED, 1)
 FIVE_BOMBS_GROUP = group(FIVE_BOMBS, 1)
 
+GONDO_ITEMS = {
+    number(PROGRESSIVE_BEETLE, 2): None,
+    number(PROGRESSIVE_BEETLE, 3): None,
+    number(PROGRESSIVE_SLINGSHOT, 1): None,
+    number(PROGRESSIVE_BOW, 1): None,
+    number(PROGRESSIVE_BOW, 2): None,
+    number(PROGRESSIVE_BUG_NET, 1): None,
+}
+
+BEEDLE_VANILLA_ITEMS = {
+    number(PROGRESSIVE_POUCH, 2): None,
+    number(PROGRESSIVE_POUCH, 3): None,
+    number(PROGRESSIVE_POUCH, 4): None,
+    number(LIFE_MEDAL, 1): None,
+    number(HEART_PIECE, 23): None,
+    number(PROGRESSIVE_BUG_NET, 0): None,
+    BUG_MEDAL: None,
+} | EXTRA_WALLETS
 
 RUPOOR = "Rupoor"
 
@@ -435,13 +453,14 @@ ALL_BOSS_KEYS = (
 )
 ALL_MAPS = dict.fromkeys(MAP.values())
 
+# If you add to this, remember to update the restricted_vanilla_items and restricted_non_vanilla_items
+# vars in randomize.py (see def initialize_items)
+POTENTIALLY_RESTRICTED_ITEMS = (
+    ALL_SMALL_KEYS | ALL_BOSS_KEYS | ALL_MAPS | TRIFORCES | GONDO_ITEMS
+)
+
 INVENTORY_ITEMS = (
-    PROGRESS_ITEMS
-    | NONPROGRESS_ITEMS
-    | CONSUMABLE_ITEMS
-    | ALL_SMALL_KEYS
-    | ALL_BOSS_KEYS
-    | ALL_MAPS
+    PROGRESS_ITEMS | NONPROGRESS_ITEMS | CONSUMABLE_ITEMS | POTENTIALLY_RESTRICTED_ITEMS
 )
 
 ALL_ITEM_NAMES = INVENTORY_ITEMS | DUPLICABLE_ITEMS | DUPLICABLE_COUNTERPROGRESS_ITEMS
@@ -734,15 +753,6 @@ QUICK_BEETLE_CHECKS = [
     "Pirate Stronghold - Rupee on West Sea Pillar",
     "Pirate Stronghold - Rupee on East Sea Pillar",
 ]
-
-GONDO_ITEMS = {
-    number(PROGRESSIVE_BEETLE, 2),
-    number(PROGRESSIVE_BEETLE, 3),
-    number(PROGRESSIVE_SLINGSHOT, 1),
-    number(PROGRESSIVE_BOW, 1),
-    number(PROGRESSIVE_BOW, 2),
-    number(PROGRESSIVE_BUG_NET, 1),
-}
 
 EXTRA_WALLET_SIZE = 300
 

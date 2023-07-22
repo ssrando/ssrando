@@ -1,6 +1,6 @@
 # Upper Skyloft checks:
 Upper Skyloft - Fledge's Gift:
-  original item: Progressive Pouch
+  original item: "Progressive Pouch #0"
   type:
   Paths:
     - event/114-Friend/16
@@ -266,29 +266,29 @@ Batreaux's House - 80 Crystals:
 
 # Beedle's Shop:
 Beedle's Shop - 300 Rupee Item:
-  original item: "Progressive Pouch #1"
+  original item: "Progressive Pouch #2"
   type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
   Paths:
     - ShpSmpl/20
 Beedle's Shop - 600 Rupee Item:
-  original item: "Progressive Pouch #2"
+  original item: "Progressive Pouch #3"
   type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
   Paths:
     - ShpSmpl/21
 Beedle's Shop - 1200 Rupee Item:
-  original item: "Progressive Pouch #3"
+  original item: "Progressive Pouch #4"
   type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
   hint: always
   Paths:
     - ShpSmpl/22
   text: for <g+<1200 rupees>> <r<Beedle>> sells
 Beedle's Shop - 800 Rupee Item:
-  original item: "Life Medal #0"
+  original item: "Life Medal #1"
   type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
   Paths:
     - ShpSmpl/26
 Beedle's Shop - 1600 Rupee Item:
-  original item: "Heart Piece #0"
+  original item: "Heart Piece #23"
   type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
   hint: always
   Paths:
@@ -487,7 +487,7 @@ Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
     - stage/F020/r0/l0/TBox/87
   cube_region: Skyview
 Sky - Lumpy Pumpkin - Outside Goddess Chest:
-  original item: Progressive Pouch
+  original item: "Progressive Pouch #1"
   type: goddess, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/64
@@ -523,7 +523,7 @@ Sky - Southwest Triple Island Upper Goddess Chest:
     - stage/F020/r0/l0/TBox/66
   cube_region: Eldin Volcano
 Sky - Southwest Triple Island Lower Goddess Chest:
-  original item: Life Medal
+  original item: "Life Medal #0"
   type: goddess, Lanayru Desert Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/84
