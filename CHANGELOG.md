@@ -59,6 +59,7 @@
 ## 1.4.1
 ### Bugfixes
 - Fix Sealed Grounds crashing after receiving the fire dragon item after obtaining the other dragon items
+- Prevent several "no more locations accessible for item" errors from occuring (seed should now fail to generate less frequently)
 
 ## 1.4.0
 ### Options

@@ -311,20 +311,6 @@ class Rando:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
 
-        must_be_placed_items = (
-            PROGRESS_ITEMS | NONPROGRESS_ITEMS | POTENTIALLY_RESTRICTED_ITEMS
-        )
-        may_be_placed_items = CONSUMABLE_ITEMS.copy()
-        duplicable_items = (
-            DUPLICABLE_ITEMS
-            if rupoor_mode == "Off"
-            else DUPLICABLE_COUNTERPROGRESS_ITEMS  # Rupoors
-        )
-
-        for item in self.placement.items:
-            must_be_placed_items.pop(item, None)
-            may_be_placed_items.pop(item, None)
-
         ANYWHERE = "Anywhere"
         VANILLA = "Vanilla"
 
@@ -349,6 +335,28 @@ class Rando:
                 or (item in TRIFORCES and self.options["triforce-shuffle"] != ANYWHERE)
             )
         ]
+
+        must_be_placed_items = (
+            PROGRESS_ITEMS | NONPROGRESS_ITEMS | POTENTIALLY_RESTRICTED_ITEMS
+        )
+
+        may_be_placed_items = CONSUMABLE_ITEMS.copy()
+        duplicable_items = (
+            DUPLICABLE_ITEMS
+            if rupoor_mode == "Off"
+            else DUPLICABLE_COUNTERPROGRESS_ITEMS  # Rupoors
+        )
+
+        # Account for starting items.
+        for item in self.placement.items:
+            if item in restricted_vanilla_items:
+                restricted_vanilla_items.remove(item)
+
+            if item in restricted_non_vanilla_items:
+                restricted_non_vanilla_items.remove(item)
+
+            must_be_placed_items.pop(item, None)
+            may_be_placed_items.pop(item, None)
 
         self.randosettings = RandomizationSettings(
             must_be_placed_items,
