@@ -30,7 +30,6 @@ NO_BIT_CRASHES = EIN("No BiT crashes")
 NONLETHAL_HOT_CAVE = EIN("Nonlethal Hot Cave")
 UPGRADED_SKYWARD_STRIKE = EIN("Upgraded Skyward Strike option")
 FS_LAVA_FLOW_OPTION = EIN("FS Lava Flow option")
-EMPTY_UNREQUIRED_DUNGEONS_OFF_OPTION = EIN("Empty Unrequired Dungeons Off option")
 
 GOT_OPENING_REQUIREMENT = EIN("GoT Opening Requirement")
 GOT_RAISING_REQUIREMENT = EIN("GoT Raising Requirement")
@@ -52,7 +51,6 @@ LOGIC_OPTIONS = dict.fromkeys(
         NONLETHAL_HOT_CAVE,
         UPGRADED_SKYWARD_STRIKE,
         FS_LAVA_FLOW_OPTION,
-        EMPTY_UNREQUIRED_DUNGEONS_OFF_OPTION,
         GOT_OPENING_REQUIREMENT,
         GOT_RAISING_REQUIREMENT,
         HORDE_DOOR_REQUIREMENT,

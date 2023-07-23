@@ -186,10 +186,12 @@ Main:
 
   Front of Boss Door:
     exits:
-      Fake Statue Area Exit: Nothing
+      Statue: Unlock Statue
       Boss Door: Fire Sanctuary Boss Key
       Lizalfos Fight Room: Nothing
       Past Bars: Past Bars - Unlock Way to Front
+    locations:
+      Unlock Statue: Nothing
 
     Past Bars:
       exits:
