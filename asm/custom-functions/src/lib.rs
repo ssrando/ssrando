@@ -106,6 +106,7 @@ struct Reloader {
     prevent_save_respawn_info: bool,
 }
 
+#[repr(C)]
 struct StartInfo {
     stage: [u8; 8],
     room: u8,
@@ -644,19 +645,24 @@ fn storyflag_set_to_1(flag: u16) {
 }
 
 #[no_mangle]
-pub fn send_to_start() {
+fn get_start_info() -> *const StartInfo {
     // this is where the start entrance info is patched
-    let start_info = unsafe { &*(0x802DA0E0 as *const StartInfo) };
+    return unsafe { &*(0x802DA0E0 as *const StartInfo) };
+}
+
+#[no_mangle]
+pub fn send_to_start() {
+    let start_info = get_start_info();
 
     // we can't use the normal triggerEntrance function, because that doesn't work properly when
     // going from title screen to normal gameplay while keeping the stage
     unsafe {
         actuallyTriggerEntrance(
-            start_info.stage.as_ptr(),
-            start_info.room,
-            start_info.layer,
-            start_info.entrance,
-            start_info.forced_night,
+            (*start_info).stage.as_ptr(),
+            (*start_info).room,
+            (*start_info).layer,
+            (*start_info).entrance,
+            (*start_info).forced_night,
             0,
             0,
             0xF,
@@ -696,14 +702,15 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
         }
     }
 
-    // this is where the start entrance info is patched
-    let start_info = unsafe { &*(0x802DA0E0 as *const StartInfo) };
+    let start_info = get_start_info();
 
-    if start_info.stage.starts_with(b"F210")
-        && start_info.entrance == 0
-        && spawn.name.starts_with(b"F210")
-        && spawn.entrance == 0 {
-        unsafe { (*RELOADER_PTR).spawn_state = 0x13; } // diving
+    unsafe {
+        if (*start_info).stage.starts_with(b"F210")
+            && (*start_info).entrance == 0
+            && spawn.name.starts_with(b"F210")
+            && spawn.entrance == 0 {
+            (*RELOADER_PTR).spawn_state = 0x13; // diving
+        }
     }
 
     // replaced function call

@@ -1191,12 +1191,6 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       trigstoryfid: 140 # groose landing in faron, cut out sleeping
-  # - name: Remove Pipit at night triggerarea
-  #   type: objdelete
-  #   id: 0xFC76
-  #   layer: 3
-  #   room: 0
-  #   objtype: OBJ
 F002r: # Beedle's Airshop
   - name: Delete cutscene
     type: objdelete

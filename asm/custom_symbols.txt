@@ -23,9 +23,10 @@ main.dol:
   enforce_loftwing_speed_cap: 0x80678EA8
   give_item_with_sceneflag: 0x80678F9C
   storyflag_set_to_1: 0x80679030
-  send_to_start: 0x80679060
-  do_er_fixes: 0x806790BC
-  allow_set_respawn_info: 0x806793F8
+  get_start_info: 0x80679060
+  send_to_start: 0x8067906C
+  do_er_fixes: 0x806790C8
+  allow_set_respawn_info: 0x80679404
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
