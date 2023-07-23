@@ -3143,6 +3143,7 @@ Fire Sanctuary - Statue Entrance:
   type: entrance
   subtype: bird-statue-entrance
   province: Eldin Province
+  can-start-at: false # :(
   statue-name: Inside the Fire Sanctuary
   stage: D201
   room: 10
