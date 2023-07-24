@@ -236,10 +236,10 @@ Upper Skyloft - Owlan's Crystals:
   Can Reach Oolo in Faron 2 | (Can Access Most of Faron Woods & Can Access Flooded Faron Woods)
 
 Upper Skyloft - Cawlin's Letter:
-  Goddess Harp
+  (Goddess Harp & Emerald Tablet) | Option "story-based-requirements" Is Disabled
 
 Upper Skyloft - Ghost/Pipit's Crystals:
-  Cawlin's Letter
+  Cawlin's Letter & ((Goddess Harp & Emerald Tablet) | Option "story-based-requirements" Is Disabled)
 
 Can Unlock Zelda's Room:
   Clawshots
@@ -335,7 +335,7 @@ Central Skyloft - Peater/Peatrice's Crystals:
   Nothing
 
 Central Skyloft - Wryna's Crystals:
-  Nothing
+  Ruby Tablet | Option "story-based-requirements" Is Disabled
 
 Central Skyloft - Shed Chest:
   Water Scale
@@ -362,7 +362,7 @@ Skyloft Village - Mallara's Crystals:
   Gust Bellows
 
 Skyloft Village - Bertie's Crystals:
-  Baby Rattle
+  Baby Rattle & (Clawshots | Option "story-based-requirements" Is Disabled)
 
 Skyloft Village - Sparrot's Crystals:
   Can Retrieve Sparrot's Crystal Ball
@@ -573,7 +573,7 @@ Sky - Lumpy Pumpkin - Harp Minigame:
   Chandelier Quest Over
 
 Sky - Kina's Crystals:
-  Chandelier Quest Part 1 & Can Access Mogma Turf
+  Chandelier Quest Part 1 & Can Access Mogma Turf & (Can Beat Fire Sanctuary | Option "story-based-requirements" Is Disabled)
   # Unlocked after giving Eagus the soup and talking to Pumm to start the Kina pumpkin moving quest
 
 Sky - Lumpy Pumpkin - Outside Goddess Chest:
@@ -610,7 +610,7 @@ Sky - Goddess Chest in Cave on Island next to Bamboo Island:
   Goddess Cube in Secret Passageway & Water Scale
 
 Sky - Beedle's Crystals:
-  Can Access Beedle's Shop & Horned Colossus Beetle
+  Can Access Beedle's Shop & Horned Colossus Beetle & (Song of the Hero | Option "story-based-requirements" Is Disabled)
 
 Sky - Crystal on Beedle's Ship:
   Can Access Beedle's Shop & Beetle
@@ -677,7 +677,7 @@ Thunderhead - Second Goddess Chest on Mogma Mitts Island:
 ## Bug Heaven
 
 Thunderhead - Bug Heaven -- 10 Bugs in 3 Minutes:
-  Can Access Thunderhead & Bug Net
+  Can Access Thunderhead & Bug Net & (Song of the Hero | Option "story-based-requirements" Is Disabled)
 
 Thunderhead - Bug Heaven Goddess Chest:
   Can Access Thunderhead & Goddess Cube in Summit Waterfall
@@ -714,7 +714,8 @@ Meets Gate of Time Sword Requirement:
   (Option "got-sword-requirement" Is "Master Sword" & Master Sword) |
   (Option "got-sword-requirement" Is "True Master Sword" & True Master Sword)
 
-# Can Access Past:
+Can Access Past:
+  Can Raise Gate of Time & Meets Gate of Time Sword Requirement
 
 #   Determined at runtime
 
@@ -1092,7 +1093,7 @@ Eldin Volcano - Digging Spot after Draining Lava:
   Can Access Second Part of Eldin & Digging Mitts & (Can Survive Hot Cave | Bomb Bag)
 
 Can Retrieve Sparrot's Crystal Ball:
-  Can Access Second Part of Eldin & Clawshots
+  Can Access Second Part of Eldin & Clawshots & (Can Access Past | Option "story-based-requirements" Is Disabled)
   # Can use Eldin OoB movement to get up to the crystal ball without clawshots
 
 Rocks Blocking Goddess Cube West of Earth Temple Entrance:

@@ -30,8 +30,8 @@ Upper Skyloft:
       Start Owlan's Quest: Faron - Faron Woods - All Kikwis Saved
       Owlan's Crystals: Faron - Faron Woods - Retrieve Oolo & Day
       Knock on Toilet Door: Goddess Harp & Night
-      Cawlin's Letter: Knock on Toilet Door & Day
-      Ghost/Pipit's Crystals: Cawlin's Letter & Day
+      Cawlin's Letter: (Goddess Harp & Emerald Tablet) | Story-based Requirements Off option
+      Ghost/Pipit's Crystals: Cawlin's Letter & ((Goddess Harp & Emerald Tablet) | Story-based Requirements Off option)
       Fledge's Crystals: Central Skyloft - Bazaar - Endurance Potion & Night
 
     Link's Room:
@@ -166,7 +166,7 @@ Central Skyloft:
     exits:
       Exit: Nothing
     locations:
-      Wryna's Crystals: Nothing
+      Wryna's Crystals: Ruby Tablet | Story-based Requirements Off option
 
   Piper's House:
     can-sleep: true
@@ -242,14 +242,14 @@ Skyloft Village:
     exits:
       Exit: Nothing
     locations:
-      Bertie's Crystals: Baby Rattle & Night
+      Bertie's Crystals: Baby Rattle & Night & (Clawshots | Story-based Requirements Off option)
 
   Sparrot's House:
     can-sleep: true
     exits:
       Exit: Nothing
     locations:
-      Start Sparrot's Quest: Nothing
+      Start Sparrot's Quest: (Faron - Sealed Grounds - Sealed Temple - Open Gate of Time | Story-based Requirements Off option)
       Sparrot's Crystals: Eldin - Retrieve Crystal Ball
 
   Mallara's House:

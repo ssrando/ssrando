@@ -55,7 +55,7 @@ North East:
       Cage: Night
     locations:
       Crystal on Beedle's Ship: Night & Beetle
-      Beedle's Crystals: Horned Colossus Beetle & Night
+      Beedle's Crystals: Horned Colossus Beetle & Night & (Song of the Hero | Story-based Requirements Off option)
 
     Top:
       exits:
@@ -111,7 +111,7 @@ South East:
       Crystal outside Lumpy Pumpkin: Night
       Outside Goddess Chest: Faron - Initial Goddess Cube
       Goddess Chest on the Roof: Skyview - Goddess Cube in Skyview Spring & Day
-      Start Kina's Quest: Complete Hot Soup Delivery & Day
+      Start Kina's Quest: Complete Hot Soup Delivery & Day & (Fire Sanctuary - Din's Flame | Story-based Requirements Off option)
       Kina's Crystals: Eldin - Pick up Guld & Day
       Gossip Stone on Lumpy Pumpkin: Nothing
       Pumpkin Carrying: Complete Hot Soup Delivery & Day
@@ -266,6 +266,6 @@ Thunderhead:
     exits:
       Thunderhead: Day
     locations:
-      Bug Heaven -- 10 Bugs in 3 Minutes: Bug Net
+      Bug Heaven -- 10 Bugs in 3 Minutes: Bug Net & (Song of the Hero | Story-based Requirements Off option)
       Bug Heaven Goddess Chest: Eldin - Goddess Cube in Summit Waterfall
       Gossip Stone near Bug Heaven: Nothing

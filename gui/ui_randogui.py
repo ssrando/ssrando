@@ -968,6 +968,11 @@ class Ui_MainWindow(object):
 
         self.hlay_misc_logic_settings.addWidget(self.edit_tricks)
 
+        self.option_story_based_requirements = QCheckBox(self.tab_logic_settings)
+        self.option_story_based_requirements.setObjectName(u"option_story_based_requirements")
+
+        self.hlay_misc_logic_settings.addWidget(self.option_story_based_requirements)
+
         self.hspace_misc_logic_settings = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.hlay_misc_logic_settings.addItem(self.hspace_misc_logic_settings)
@@ -1667,7 +1672,7 @@ class Ui_MainWindow(object):
         self.scroll_area_colors.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.scroll_area_widget_contents_colors = QWidget()
         self.scroll_area_widget_contents_colors.setObjectName(u"scroll_area_widget_contents_colors")
-        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 576, 474))
+        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 98, 46))
         self.verticalLayout_34 = QVBoxLayout(self.scroll_area_widget_contents_colors)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.vlay_texture_colors = QVBoxLayout()
@@ -1963,7 +1968,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -2063,6 +2068,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_additional_settings), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
         self.edit_tricks.setText(QCoreApplication.translate("MainWindow", u"Tricks", None))
+        self.option_story_based_requirements.setText(QCoreApplication.translate("MainWindow", u"Include Story-based Requirements", None))
         self.label_include_locations.setText(QCoreApplication.translate("MainWindow", u"Included Locations", None))
         self.include_category_filters.setPlaceholderText("")
         self.included_free_search.setText("")

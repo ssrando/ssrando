@@ -1056,3 +1056,12 @@
   permalink: false
   cosmetic: true
   help: "Determines the loftwing model pack that will be used in game."
+- name: Story-based Requirements
+  command: story-based-requirements
+  type: boolean
+  default: false
+  help: "If enabled, several checks will have additional requirements based to represent the vanilla Skyward Sword story progression.
+        **WARNING**: Some requirements may be unintuitive to those unfamiliar with vanilla storyflags - **enable with caution**.
+        Includes: Cawlin's Letter, Ghost/Pipit Crystals, Wryna's Crystals, Bertie's Crystals, Sparrot's Crystals, Kina's Crystals,
+        Beedle's Crystals, and Bug Heaven Minigame."
+  ui: option_story_based_requirements

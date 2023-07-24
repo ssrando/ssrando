@@ -37,6 +37,8 @@ global:
     - 178 # Cutscene showing off Bokoblin Base with Plats
     - 81  # Tadtone Dowsing
     - 82  # Tadtones music scroll
+    - 545 # Watched Toilet Hand CS
+    - 546 # Tried to open Toilet Hand Door
     # Cutscene flags
     ## Surface
     - 87  # Faron Woods Intro Cutscene
@@ -1104,7 +1106,7 @@ F001r: # Knight Academy
     objtype: OBJ
     object:
       untrigstoryfid: 2047
-  - name: Olwan Npc after Kikwis
+  - name: Owlan Npc after Kikwis
     type: objpatch
     id: 0xFC0A
     layer: 3

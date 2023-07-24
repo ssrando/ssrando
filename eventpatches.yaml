@@ -979,14 +979,14 @@
     type: flowpatch
     index: 230
     flow:
-      param2: 36 # always trigger
+      param2: 226 # always trigger (hero-mode storyflag)
   - name: Fledge Quest Switch 2
     type: flowpatch
     index: 229
     flow:
-      param2: 36 # always trigger
+      param2: 226 # always trigger (hero-mode storyflag)
 105-Terry:
-  - name: Beedle's Crystal # Can't reach that right now
+  - name: Beedle's Crystal
     type: flowpatch
     index: 115
     flow:
@@ -997,6 +997,8 @@
       param3: 9
       param4: 0
       param5: 0
+
+  # Beedle Shopsanity Patches
   - name: Can't buy Pouch text
     type: textadd
     text: "You need an <y<Adventure Pouch>> to buy\nthis!"
@@ -1146,6 +1148,54 @@
       next: 13 # buying switch
       param3: 87
       param4: Third 100R discounted Text
+
+  # Beedle's Crystals Story-based Requirements Patches
+  - name: Beedle Check for Story Based Reqs Patch
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowpatch
+    index: 199
+    flow:
+      next: Beedle Check for Ballad
+  - name: Beedle Check for Ballad
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 194 # Check for Ballad
+      param3: 3 # check Storyflag
+    cases:
+      - Beedle Check for SotH 1
+      - Show Beedle Story Based Reqs Text
+  - name: Beedle Check for SotH 1
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 193 # SotH itemflag
+      param2: 1 # Check is set
+      next: Beedle Check for SotH 2
+      param3: 23 # Check an itemflag
+  - name: Beedle Check for SotH 2
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # Use result from previous check
+    cases:
+      - 129 # give item
+      - Show Beedle Story Based Reqs Text
+  - name: Beedle Story Based Reqs Text
+    type: textadd
+    text: "Please <b<come back later if you want\nsomething...>> The grief is too much to\nbear..."
+  - name: Show Beedle Story Based Reqs Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 107
+      param4: Beedle Story Based Reqs Text
 106-DrugStore:
   - name: Potion Lady Text Patch # generalized for rando
     type: textpatch
@@ -1290,7 +1340,7 @@
     type: flowpatch
     index: 38
     flow:
-      param2: 36 # always trigger
+      param2: 226 # always trigger (hero-mode storyflag)
   - name: Fun Fun Owner's Crystal
     type: flowpatch
     index: 60
@@ -1464,11 +1514,42 @@
       param3: 9
       param4: 0
       param5: 0
+
+  # Bertie's Crystals Story-based Requirements Patches
   - name: Skip Clawshots Requirement for Rattle Delivery
+    onlyif: Option "story-based-requirements" Disabled
     type: flowpatch
     index: 7
     flow:
       next: 8
+  - name: Keep Clawshots Requirement for Rattle Delivery
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowpatch
+    index: 7
+    flow:
+      next: Bertie Story Based Reqs Patch
+  - name: Bertie Story Based Reqs Patch
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 208 # Check for Clawshots
+      param3: 3 # Check for Storyflag
+    cases:
+      - 8 # vanilla
+      - Show Bertie Story Based Reqs Text
+  - name: Bertie Story Based Reqs Text
+    type: textadd
+    text: "Ahhh... Doesn't look like I'll get much\nsleep tonight... again.
+          \n\n\nSorry, I'm just too tired. Please\n<b<come back later if you want something.>>"
+  - name: Show Bertie Story Based Reqs Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 107
+      param4: Bertie Story Based Reqs Text
+
   - name: Change Cawlin storyflag
     type: flowpatch
     index: 165
@@ -1479,17 +1560,137 @@
     index: 33
     flow:
       param2: 924
-  - name: Fix switch (Cawlin)
+
+  # Cawlin's Letter Story-based Requirements Patches
+  - name: Fix Cawlin Requirements Switch
+    onlyif: Option "story-based-requirements" Disabled
     type: flowpatch
     index: 141
     flow:
-      param2: 36 # always trigger
+      param2: 226 # always trigger (hero-mode storyflag)
       param3: 3 # check Storyflag
+    cases:
+      - 163 # give item
+      - 34 # don't give item
+  - name: Fix Cawlin Requirements Switch Emerald Tablet
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowpatch
+    index: 141
+    flow:
+      param2: 46 # Check for Emerald Tablet
+      param3: 3 # check Storyflag
+    cases:
+      - Fix Cawlin Requirements Switch Harp
+      - 34 # don't give item
+  - name: Fix Cawlin Requirements Switch Harp
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 9 # Check for Harp
+      param3: 3 # check Storyflag
+    cases:
+      - 163 # give item
+      - 34 # don't give item
+  - name: Cawlin Story Based Reqs Patch
+    type: flowpatch
+    index: 672
+    flow:
+      next: Show Cawlin Story Based Reqs Text
+  - name: Cawlin Story Based Reqs Text
+    type: textadd
+    text: "...Uwah! <heroname>, it's you!\nDon't sneak up on me like that!
+          \n\n\nI have a serious dilemma on my mind\nright now. <b<Come back later if you\nwant something.>> I'm busy."
+  - name: Show Cawlin Story Based Reqs Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 107
+      param4: Cawlin Story Based Reqs Text
+
   - name: add Cawlin storyflag to other text options
     type: flowpatch
     index: 507
     flow:
       next: 503
+
+  # Ghost/Pipit Crystals (Karane) Story-based Requirements Patches
+  - name: Karane Check for Story Based Reqs Patch
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowpatch
+    index: 134
+    flow:
+      next: Karane Check for Emerald Tablet
+  - name: Karane Check for Emerald Tablet
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 46 # Check for Emerald Tablet
+      param3: 3 # check Storyflag
+    cases:
+      - Karane Check for Harp
+      - Show Karane Story Based Reqs Text
+  - name: Karane Check for Harp
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 9 # Check for Harp
+      param3: 3 # check Storyflag
+    cases:
+      - 74 # give item
+      - Show Karane Story Based Reqs Text
+  - name: Karane Story Based Reqs Text
+    type: textadd
+    text: "Oh, hi. Sorry, I'm a bit preoccupied\nright now. Please <b<come back later if\nyou want something.>>"
+  - name: Show Karane Story Based Reqs Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 107
+      param4: Karane Story Based Reqs Text
+
+  # Ghost/Pipit Crystals (Ghost) Story-based Requirements Patches
+  - name: Ghost Check for Story Based Reqs Patch
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowpatch
+    index: 677
+    flow:
+      next: Ghost Check for Emerald Tablet
+  - name: Ghost Check for Emerald Tablet
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 46 # Check for Emerald Tablet
+      param3: 3 # check Storyflag
+    cases:
+      - Ghost Check for Harp
+      - Show Ghost Story Based Reqs Text
+  - name: Ghost Check for Harp
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 9 # Check for Harp
+      param3: 3 # check Storyflag
+    cases:
+      - 74 # give item
+      - Show Ghost Story Based Reqs Text
+  - name: Ghost Story Based Reqs Text
+    type: textadd
+    text: "Oooooh... a visitor? My apologies...\nI am not ready for company. Please\n<b<come back later if you want something.>>"
+  - name: Show Ghost Story Based Reqs Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 107
+      param4: Ghost Story Based Reqs Text
+
   - name: to rerandomize treasure question
     type: flowpatch
     index: 410
@@ -1546,11 +1747,54 @@
     index: 61
     flow:
       param2: 925
+
+  # Bug Heaven Minigame Story-based Requirements Patches
   - name: Fix switch 3
+    onlyif: Option "story-based-requirements" Disabled
     type: flowpatch
     index: 24
     flow:
-      param2: 36 # always trigger
+      param2: 226 # always trigger (hero-mode storyflag)
+  - name: Bug Heaven Minigame Story Based Reqs Patch
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowpatch
+    index: 24
+    flow: {}
+    cases:
+      - Bug Heaven Minigame Check for SotH 1
+      - Bug Heaven Minigame Check for SotH 1
+  - name: Bug Heaven Minigame Check for SotH 1
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 193 # SotH itemflag
+      param2: 1 # Check is set
+      next: Bug Heaven Minigame Check for SotH 2
+      param3: 23 # Check an itemflag
+  - name: Bug Heaven Minigame Check for SotH 2
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 0
+      param3: 7 # Use result from previous check
+    cases:
+      - 25 # check if already gotten item
+      - Show Bug Heaven Minigame Story Based Reqs Text
+  - name: Bug Heaven Minigame Story Based Reqs Text
+    type: textadd
+    text: "Hey, I'm busy!
+          \n\n\n\nSo what if we went to the Knight\nAcademy together? <b<Come back later if\nyou want something>>."
+  - name: Show Bug Heaven Minigame Story Based Reqs Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 107
+      param4: Bug Heaven Minigame Story Based Reqs Text
+
   - name: getting item from Strich flag
     type: flowpatch
     index: 68
@@ -1583,16 +1827,16 @@
     index: 579
     flow:
       param2: 9 # Harp
-  - name: Fs requirement for Kina Quest
+  - name: FS requirement for Kina Quest
     type: flowpatch
     index: 93
     flow:
-      param2: 36 # always trigger
+      param2: 226 # always trigger (hero-mode storyflag)
   - name: ET requirement for Pumpkin Quest
     type: flowpatch
     index: 78
     flow:
-      param2: 36 # always trigger
+      param2: 226 # always trigger (hero-mode storyflag)
   - name: Switch for Chandelier just fell
     type: switchadd
     flow:
@@ -1664,11 +1908,40 @@
       type: type1
       next: Kina Quest Switch
       param4: New Kina Text Option
+
+  # Kina's Crystals Story-based Requirements Patches
   - name: Shorten Kina Text
+    onlyif: Option "story-based-requirements" Disabled
     type: flowpatch
     index: 97
     flow:
       next: 103
+  - name: Kina Check for Story Based Reqs Patch
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowpatch
+    index: 97
+    flow:
+      next: Kina Check for Beaten FS
+  - name: Kina Check for Beaten FS
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 901 # Check for Beaten FS
+      param3: 3 # check Storyflag
+    cases:
+      - 103 # start quest
+      - Show Kina Story Based Reqs Text
+  - name: Kina Story Based Reqs Text
+    type: textadd
+    text: "Really?! You'll help me? Well, the\npumpkins aren't ready to be harvested\nyet. Please <b<come back later if you\nwant something.>>"
+  - name: Show Kina Story Based Reqs Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 107
+      param4: Kina Story Based Reqs Text
 118-Town3:
   - name: Shorten Sparrot quest start text
     type: flowpatch
@@ -1680,6 +1953,38 @@
     index: 320
     flow:
       next: 133
+  
+  # Wryna's Crystals Story-based Requirements Patches
+  - name: Wryna Check for Story Based Reqs Patch
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowpatch
+    index: 142
+    flow: {}
+    cases:
+      - Wryna Check for Ruby Tablet
+      - 143 # vanilla
+  - name: Wryna Check for Ruby Tablet
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 47 # Check for Ruby Tablet
+      param3: 3 # check Storyflag
+    cases:
+      - 64 # give item
+      - Show Wryna Story Based Reqs Text
+  - name: Wryna Story Based Reqs Text
+    type: textadd
+    text: "Oh, <heroname>!
+          \n\n\n\nKukiel is safely back at home! I'm\nrushed off my feet right now but\nplease <b<come back later if you want\nsomething.>>"
+  - name: Show Wryna Story Based Reqs Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 107
+      param4: Wryna Story Based Reqs Text
+
   - name: Wryna's Crystal
     type: flowpatch
     index: 144
@@ -1691,6 +1996,36 @@
       param3: 9
       param4: 0
       param5: 0
+
+  # Sparrot's Crystals Story-based Requirements Patches
+  - name: Sparrot Story Based Reqs Patch
+    onlyif: Option "story-based-requirements" Enabled
+    type: flowpatch
+    index: 100
+    flow:
+      next: Sparrot Check for GoT Open
+  - name: Sparrot Check for GoT Open
+    onlyif: Option "story-based-requirements" Enabled
+    type: switchadd
+    flow:
+      subType: 6
+      param2: 341 # Check for GoT Open
+      param3: 3 # check Storyflag
+    cases:
+      - 122 # start quest
+      - Show Sparrot Story Based Reqs Text
+  - name: Sparrot Story Based Reqs Text
+    type: textadd
+    text: "I'm fine. Go on, go on... Please leave\nme be...
+          \n\n\nMy crystal ball has shattered...\nPlease <b<come back later if you want\nsomething.>>"
+  - name: Show Sparrot Story Based Reqs Text
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 107
+      param4: Sparrot Story Based Reqs Text
+
   - name: Sparrot's Crystal
     type: flowpatch
     index: 141

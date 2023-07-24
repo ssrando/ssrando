@@ -10,6 +10,17 @@
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
 - Added an option to reduce the number of Peatrice conversations needed before she calls you "Darling" (by CovenEsme)
 - Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
+- Added option to include "Story-based Requirements" for some checks (by CovenEsme)
+  - Cawlin's Letter, Ghost/Pipit Crystals, Wryna's Crystals, Bertie's Crystals, Sparrot's Crystals, Kina's Crystals, Beedle's Crystals, and Bug Heaven Minigame will have additional requirements when this option is enabled
+  - These changes are:
+    - Cawlin's Letter: Goddess Harp and Emerald Tablet
+    - Ghost/Pipit Crystals: Goddess Harp and Emerald Tablet
+    - Wryna's Crystals: Ruby Tablet
+    - Bertie's Crystals: Clawshots
+    - Sparrot's Crystals: Opening the Gate of Time
+    - Kina's Crystals: Beating Fire Sanctuary
+    - Beedle's Crystals: Ballad of the Goddess and Song of the Hero (all 3 parts)
+    - Bug Heaven Minigame: Song of the Hero (all 3 parts)
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Added Fi hints (by YourAverageLink)
@@ -52,6 +63,7 @@
     - At any point, you may save a new color preset (works just like settings presets), and then load them at a later point.
     - Model creators may provide their own default presets by adding a default_presets.json file to the model type folder
     - The Import/Export button opens up a dialog box containing the metadata for your currently selected color. This may be copied and sent to someone else, who can paste in the same dialog box and import the color
+- The Cawlin's Letter check no longer requires talking to the Toilet Hand at night (by CovenEsme)
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 - Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow
