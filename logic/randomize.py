@@ -322,6 +322,7 @@ class Rando:
             or (item in ALL_MAPS and self.options["map-mode"] == VANILLA)
             or (item in TRIFORCES and self.options["triforce-shuffle"] == VANILLA)
             or (item in BEEDLE_VANILLA_ITEMS and not self.options["shopsanity"])
+            or (item in TADTONE_GROUPS and not self.options["tadtonesanity"])
         ]
 
         restricted_non_vanilla_items = [

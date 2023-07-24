@@ -455,8 +455,9 @@ ALL_MAPS = dict.fromkeys(MAP.values())
 
 # If you add to this, remember to update the restricted_vanilla_items and restricted_non_vanilla_items
 # vars in randomize.py (see def initialize_items)
+# Doesn't include rupeesanity checks as they aren't required for anything.
 POTENTIALLY_RESTRICTED_ITEMS = (
-    ALL_SMALL_KEYS | ALL_BOSS_KEYS | ALL_MAPS | TRIFORCES | GONDO_ITEMS
+    ALL_SMALL_KEYS | ALL_BOSS_KEYS | ALL_MAPS | TRIFORCES | GONDO_ITEMS | TADTONE_GROUPS
 )
 
 INVENTORY_ITEMS = (
