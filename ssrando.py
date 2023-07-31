@@ -192,6 +192,7 @@ class Randomizer(BaseRandomizer):
                 barren_nonprogress=self.logic.get_barren_regions(),
                 randomized_dungeon_entrance=self.logic.randomized_dungeon_entrance,
                 randomized_trial_entrance=self.logic.randomized_trial_entrance,
+                randomized_start_entrance=self.logic.randomized_start_entrance,
             )
             with log_address.open("w") as f:
                 json.dump(dump, f, indent=2)
@@ -210,6 +211,7 @@ class Randomizer(BaseRandomizer):
                     barren_nonprogress=self.logic.get_barren_regions(),
                     randomized_dungeon_entrance=self.logic.randomized_dungeon_entrance,
                     randomized_trial_entrance=self.logic.randomized_trial_entrance,
+                    randomized_start_entrance=self.logic.randomized_start_entrance,
                 )
         if not self.dry_run:
             GamePatcher(
@@ -233,6 +235,7 @@ class Randomizer(BaseRandomizer):
         plcmt_file = PlacementFile()
         plcmt_file.dungeon_connections = self.logic.randomized_dungeon_entrance
         plcmt_file.trial_connections = self.logic.randomized_trial_entrance
+        plcmt_file.start_entrance = self.logic.randomized_start_entrance
         plcmt_file.hash_str = self.randomizer_hash
         plcmt_file.hints = {
             k: v.to_ingame_text(lambda s: self.areas.prettify(s, custom=True))

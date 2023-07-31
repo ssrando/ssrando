@@ -716,7 +716,7 @@
   - name: Fi Call Text
     type: textadd
     unk1: 2 # Fi text box background
-    text: "You called for me, Master?\n[1]Required Dungeons[2]Information[3]Current Status[4-]Never mind."
+    text: "You called for me, Master?\n[1]Required Dungeons[2]Information and Warp[3]Current Status[4-]Never mind."
   - name: Display Fi Call Text
     type: flowadd
     flow:
@@ -732,7 +732,7 @@
       param3: 0
     cases:
       - Display Fi Pre Required Dungeon Text
-      - Display Fi Info Text
+      - Display Fi Info and Warp Text
       - Display Fi Status Text
       - -1 #returns
 #flows for required dungeon option
@@ -755,18 +755,18 @@
       param3: 68
       param4: Fi Required Dungeon Text
 #flows for info option
-  - name: Fi Info Text
+  - name: Fi Info and Warp Text
     type: textadd
     unk1: 2 # Fi text box background
-    text: "Yes, Master. What information do\nyou seek?\n[1]Hints[2]Play Time[3-]Never mind."
-  - name: Display Fi Info Text
+    text: "Yes, Master. What information do\nyou seek?\n[1]Hints[2]Warp to Start[3]Play Time[4-]Never mind."
+  - name: Display Fi Info and Warp Text
     type: flowadd
     flow:
       type: type1
-      next: Fi Info Switch
+      next: Fi Info and Warp Switch
       param3: 68
-      param4: Fi Info Text
-  - name: Fi Info Switch
+      param4: Fi Info and Warp Text
+  - name: Fi Info and Warp Switch
     type: switchadd
     flow:
       subType: 6
@@ -774,6 +774,7 @@
       param3: 0
     cases:
       - Fi Hints Command Call
+      - Fi Warp
       - 1 #play time
       - Display Fi Call Text #returns
   - name: Fi Hints Command Call
@@ -784,6 +785,12 @@
       param1: 0
       param2: 0
       param3: 72 #custom command 72
+  - name: Fi Warp
+    type: flowadd
+    flow:
+      type: type3
+      next: -1
+      param3: 73 #custom command 73
 #flows for status option
   - name: Fi Status Text
     type: textadd
@@ -1452,7 +1459,7 @@
     index: 51
     flow:
       next: 50
-  - name: tst4
+  - name: Skip more Fledge camera panning
     type: flowpatch
     index: 50
     flow:

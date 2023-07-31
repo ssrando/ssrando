@@ -328,26 +328,23 @@ Caves:
   toplevel-alias: Lanayru Caves
   hint-region: Lanayru Caves
   exits:
-    Past Door to Lanayru Sand Sea: Clawshots & Unlock Door to Lanayru Sand Sea
+    Past Door to Lanayru Sand Sea: Clawshots & Lanayru Caves Small Key
     Past Crawlspace: Nothing
     Exit to Mine: Nothing
     Exit to Desert: Nothing
   locations:
-    Unlock Door to Lanayru Sand Sea: Lanayru Caves Small Key
     Chest: Nothing
     Golo's Gift: Nothing
     Gossip Stone in Center: Nothing
 
   Past Door to Lanayru Sand Sea:
     exits:
-      Caves: Caves - Unlock Door to Lanayru Sand Sea
+      Caves: Lanayru Caves Small Key
       Exit to Lanayru Sand Sea: Nothing
-    locations:
-      Caves - Unlock Door to Lanayru Sand Sea: Lanayru Caves Small Key
 
   Past Crawlspace:
     exits:
-      Caves: Nothing
+      Caves: Bomb Bag
       Exit to Gorge: Nothing
     locations:
       Gossip Stone towards Lanayru Gorge: Nothing

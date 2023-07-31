@@ -100,6 +100,7 @@ class Rando:
             self.unrequired_dungeons,
             self.randomized_dungeon_entrance,
             self.randomized_trial_entrance,
+            self.randomized_start_entrance,
             list(self.placement.locations),
         )
 
@@ -141,7 +142,7 @@ class Rando:
 
         self.initialize_items()  # self.randosettings
 
-        self.randomize_dungeons_trials()
+        self.randomize_dungeons_trials_starting_entrances()
 
     def randomize_required_dungeons(self):
         """
@@ -500,8 +501,9 @@ class Rando:
             self.placement.reverse_map_transitions[en1] = ex2[0]
             self.placement.reverse_map_transitions[en2] = ex1[0]
 
-    def randomize_dungeons_trials(self):
+    def randomize_dungeons_trials_starting_entrances(self):
         # Do this in a deliberately hacky way, this is not supposed to be how ER works
+        # Dungeon Entrance Rando.
         der = self.options["randomize-entrances"]
         dungeons = ALL_DUNGEONS.copy()
         entrances = [DUNGEON_OVERWORLD_ENTRANCES[dungeon] for dungeon in ALL_DUNGEONS]
@@ -543,6 +545,7 @@ class Rando:
 
         self.reassign_entrances(dungeon_entrances, dungeons)
 
+        # Trial Gate Entrance Rando.
         ter = self.options["randomize-trials"]
         pool = ALL_SILENT_REALMS.copy()
         gates = [SILENT_REALM_GATES[realm] for realm in ALL_SILENT_REALMS]
@@ -562,3 +565,57 @@ class Rando:
             self.placement.map_transitions[trial_exit] = EIN(
                 entrance_of_exit(trial_exit)
             )
+
+        # Starting Entrance Rando.
+        ser = self.options["random-start-entrance"]
+        limit_ser = self.options["limit-start-entrance"]
+        allowed_provinces = [
+            TABLET_TO_PROVINCE[item]
+            for item in self.placement.starting_items
+            if item in TABLETS
+        ]
+        allowed_provinces.append(THE_SKY)
+
+        possible_start_entrances = [
+            (entrance, values)
+            for entrance, values in self.areas.map_entrances.items()
+            if values.get("can-start-at", True)
+            and (
+                "Start Entrance" in str(entrance)
+                or (
+                    (not limit_ser or values.get("province") in allowed_provinces)
+                    and (
+                        (
+                            ser == "Bird Statues"
+                            and values.get("subtype", False)
+                            and values["subtype"] == "bird-statue-entrance"
+                        )
+                        or (
+                            ser == "Any Surface Region"
+                            and values.get("province") in TABLET_TO_PROVINCE.values()
+                        )
+                        or (ser == "Any")
+                    )
+                )
+            )
+        ]
+
+        start_entrance = self.rng.choice(possible_start_entrances)
+        self.placement.map_transitions["\Start"] = start_entrance[0]
+        values = start_entrance[1]
+
+        self.randomized_start_entrance = {
+            "statue-name": values.get("statue-name", values["short_name"]),
+            "stage": values["stage"],
+            "room": values["room"],
+            "layer": values["layer"],
+            "entrance": values["entrance"],
+            "day-night": values["tod"],
+        }
+
+        assert self.randomized_start_entrance["statue-name"] is not None
+        assert self.randomized_start_entrance["stage"] is not None
+        assert self.randomized_start_entrance["room"] is not None
+        assert self.randomized_start_entrance["layer"] is not None
+        assert self.randomized_start_entrance["entrance"] is not None
+        assert self.randomized_start_entrance["day-night"] is not None

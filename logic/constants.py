@@ -133,6 +133,17 @@ ALL_SILENT_REALMS = [
     ELDIN_SILENT_REALM,
 ]
 
+FARON_PROVINCE = "Faron Province"
+ELDIN_PROVINCE = "Eldin Province"
+LANAYRU_PROVINCE = "Lanayru Province"
+THE_SKY = "The Sky"
+
+TABLET_TO_PROVINCE = {
+    EMERALD_TABLET: FARON_PROVINCE,
+    RUBY_TABLET: ELDIN_PROVINCE,
+    AMBER_TABLET: LANAYRU_PROVINCE,
+}
+
 # Items
 
 ITEM_COUNTS: Dict[str, int] = defaultdict(lambda: 1)
