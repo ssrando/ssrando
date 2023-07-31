@@ -717,16 +717,6 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
     unsafe { RoomManager__getRoomByIndex(room_mgr, room_number); }
 }
 
-#[no_mangle]
-fn allow_set_respawn_info() -> *mut Reloader {
-    unsafe {
-        if getCurrentHealth(FILE_MANAGER) != 0 {
-            (*RELOADER_PTR).prevent_save_respawn_info = false;
-        }
-        return RELOADER_PTR;
-    }
-}
-
 #[panic_handler]
 fn panic(_: &core::panic::PanicInfo) -> ! {
     loop {}
