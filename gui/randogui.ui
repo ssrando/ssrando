@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -1244,7 +1244,7 @@
              <item>
               <widget class="QCheckBox" name="option_enable_heart_drops">
                <property name="text">
-                <string>Spawn Heart Flowers</string>
+                <string>Spawn Hearts and Heart Flowers</string>
                </property>
               </widget>
              </item>
@@ -2448,8 +2448,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>576</width>
-               <height>474</height>
+               <width>98</width>
+               <height>46</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_34">

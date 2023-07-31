@@ -3,6 +3,10 @@
 ; in item init
 .org 0x8024acf8
 li r3, 0x1
+
+; in some func related to chance-based heart spawns / digspots / pots?
+.org 0x800c7c50
+li r3, 0x1
 .close
 
 .open "d_a_heartfNP.rel"
@@ -24,5 +28,12 @@ li r3, 0x1
 ; 0x80c2027c in Ghidra
 ; replaces isHeroMode with a constant 0x1 to make have heromode behavior
 .org 0x9ec
+li r3, 0x1
+.close
+
+.open "d_t_reactionNP.rel"
+; 0x80efced4 in Ghidra (80efced4 - 80efc9e0) + 130
+; replaces isHeroMode with a constant 0x1 to make have heromode behaviour
+.org 0x624
 li r3, 0x1
 .close

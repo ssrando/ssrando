@@ -1667,7 +1667,7 @@ class Ui_MainWindow(object):
         self.scroll_area_colors.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.scroll_area_widget_contents_colors = QWidget()
         self.scroll_area_widget_contents_colors.setObjectName(u"scroll_area_widget_contents_colors")
-        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 576, 474))
+        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 98, 46))
         self.verticalLayout_34 = QVBoxLayout(self.scroll_area_widget_contents_colors)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.vlay_texture_colors = QVBoxLayout()
@@ -1963,7 +1963,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -2058,7 +2058,7 @@ class Ui_MainWindow(object):
         self.box_heromode_changes.setTitle(QCoreApplication.translate("MainWindow", u"Hero Mode Changes", None))
         self.option_upgraded_skyward_strike.setText(QCoreApplication.translate("MainWindow", u"Upgraded Skyward Strike", None))
         self.option_fast_air_meter.setText(QCoreApplication.translate("MainWindow", u"Faster Air Meter Depletion", None))
-        self.option_enable_heart_drops.setText(QCoreApplication.translate("MainWindow", u"Spawn Heart Flowers", None))
+        self.option_enable_heart_drops.setText(QCoreApplication.translate("MainWindow", u"Spawn Hearts and Heart Flowers", None))
         self.label_for_option_damage_multiplier.setText(QCoreApplication.translate("MainWindow", u"Damage Taken Multiplier", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_additional_settings), QCoreApplication.translate("MainWindow", u"Additional Settings", None))
         self.label_for_option_logic_mode.setText(QCoreApplication.translate("MainWindow", u"Logic Mode", None))
