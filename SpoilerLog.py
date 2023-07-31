@@ -38,6 +38,7 @@ def write(
     barren_nonprogress,
     randomized_dungeon_entrance,
     randomized_trial_entrance,
+    randomized_start_entrance,
 ):
     write_header(file, options, hash)
     norm = areas.prettify
@@ -50,13 +51,13 @@ def write(
         file.write("\n  ".join(sorted(placement.starting_items)))
     file.write("\n\n\n")
 
-    # Write required dungeons
+    # Write required dungeons.
     for i, dungeon in enumerate(required_dungeons, start=1):
         file.write(f"Required Dungeon {i}: {dungeon}\n")
 
     file.write("\n\n")
 
-    # Write spirit of the sword (100% required) locations
+    # Write spirit of the sword (100% required) locations.
     file.write("SotS:\n")
 
     sorted_regions = ["Past"] + list(ALL_HINT_REGIONS)
@@ -80,7 +81,7 @@ def write(
 
     file.write("\n\n")
 
-    # Write path locations; locations 100% required to complete a given required dungeon
+    # Write path locations; locations 100% required to complete a given required dungeon.
     file.write("Path:\n")
     for dungeon in required_dungeons:
         goal = DUNGEON_GOALS[dungeon]
@@ -104,7 +105,7 @@ def write(
     # Write progression spheres.
     file.write("Playthrough:\n")
     prettified_spheres = []
-    # First pass for the lengths
+    # First pass for the lengths.
     for sphere in progression_spheres:
         pretty_sphere = []
         for loc in sphere:
@@ -174,24 +175,31 @@ def write(
 
     file.write("\n\n\n")
 
-    # Write dungeon entrances.
+    # Write entrances.
     file.write("Entrances:\n")
+
+    # Write starting entrance.
+    file.write("  Starting Entrance:\n")
+    file.write(f"    {randomized_start_entrance['statue-name']}\n\n")
+
+    # Write dungeon entrances.
+    file.write("  Dungeon Entrances:\n")
     for (
         entrance_name,
         dungeon,
     ) in randomized_dungeon_entrance.items():
-        file.write(f"  {entrance_name+':':48} {dungeon}\n")
+        file.write(f"    {entrance_name+':':48} {dungeon}\n")
 
     file.write("\n\n")
 
-    # Write randomized trials
+    # Write randomized trial gates.
     file.write("Trial Gates:\n")
     for trial_gate, trial in randomized_trial_entrance.items():
         file.write(f"  {trial_gate+':':48} {trial}\n")
 
     file.write("\n\n\n")
 
-    # Write hints
+    # Write hints.
     file.write("Hints:\n")
 
     max_hintstone_name_length = 2 + max(

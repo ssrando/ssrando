@@ -3,6 +3,7 @@
 
 use core::{
     ffi::{c_char, c_ushort, c_void},
+    mem::transmute,
     ptr::{self, slice_from_raw_parts},
     slice,
 };
@@ -90,11 +91,37 @@ impl SpecialMinigameState {
     }
 }
 
+#[repr(C)]
+struct Reloader {
+    _0: [u8; 0x290],
+    initial_speed: f32,
+    stamina_amount: u32,
+    item_to_use_on_reload: u8,
+    beedle_shop_spawn_state: u8,
+    spawn_state: i16, // actionIndex
+    last_area_type: u32,
+    type_0_pos_flag: u8,
+    unk: u8,
+    save_prompt_flag: u8,
+    prevent_save_respawn_info: bool,
+}
+
+#[repr(C)]
+struct StartInfo {
+    stage: [u8; 8],
+    room: u8,
+    layer: u8,
+    entrance: u8,
+    forced_night: u8,
+}
+
 extern "C" {
     static mut SPAWN_SLAVE: SpawnStruct;
     fn setStoryflagToValue(flag: u16, value: u16);
     static SCENEFLAG_MANAGER: *mut c_void;
     fn SceneflagManager__setFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16);
+    fn SceneflagManager__unsetFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16);
+    fn SceneflagManager__checkFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16) -> bool;
     static FILE_MANAGER: *mut filemanager_gen::FileManager;
     fn FileManager__getDungeonFlags(
         mgr: *mut filemanager_gen::FileManager,
@@ -139,6 +166,21 @@ extern "C" {
         params2: u32,
         unk: u32,
     ) -> *mut c_void;
+    fn actuallyTriggerEntrance(
+        stage_name: *const u8,
+        room: u8,
+        layer: u8,
+        entrance: u8,
+        forced_night: u8,
+        forced_trial: u8,
+        transition_type: u8,
+        transition_fade_frames: u8,
+        param_9: u8,
+    );
+    static mut RELOADER_PTR: *mut Reloader;
+    fn RoomManager__getRoomByIndex(room_mgr: *mut c_void, room_number: u32);
+    fn Reloader__setReloadTrigger(reloader: *mut Reloader, trigger: u8);
+    fn getCurrentHealth(mgr: *mut filemanager_gen::FileManager) -> u16;
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -151,6 +193,14 @@ fn itemflag_check(flag: u16) -> bool {
 
 fn sceneflag_set_global(scene_index: u16, flag: u16) {
     unsafe { SceneflagManager__setFlagGlobal(SCENEFLAG_MANAGER, scene_index, flag) };
+}
+
+fn sceneflag_unset_global(scene_index: u16, flag: u16) {
+    unsafe { SceneflagManager__unsetFlagGlobal(SCENEFLAG_MANAGER, scene_index, flag) };
+}
+
+fn sceneflag_check_global(scene_index: u16, flag: u16) -> bool {
+    unsafe { SceneflagManager__checkFlagGlobal(SCENEFLAG_MANAGER, scene_index, flag) }
 }
 
 /// returns the pointer to the static dungeonflags, those for the current sceneflagindex
@@ -462,6 +512,7 @@ fn rando_text_command_handler(
             // Tadtones obtained.
             text_manager_set_num_args(&[storyflag_get_value(953) as u32]);
         }
+        73 => send_to_start(),
         74 => {
             // Increment storyflag counter
             let flag = flow_element.param1;
@@ -591,6 +642,79 @@ fn give_item_with_sceneflag(item_id: u16, bottle_pouch_slot: u32, number: u32, s
 #[no_mangle]
 fn storyflag_set_to_1(flag: u16) {
     unsafe { FlagManager__setFlagTo1(STORYFLAG_MANAGER, flag) };
+}
+
+#[no_mangle]
+fn get_start_info() -> *const StartInfo {
+    // this is where the start entrance info is patched
+    return unsafe { &*(0x802DA0E0 as *const StartInfo) };
+}
+
+#[no_mangle]
+pub fn send_to_start() {
+    let start_info = get_start_info();
+
+    // we can't use the normal triggerEntrance function, because that doesn't work properly when
+    // going from title screen to normal gameplay while keeping the stage
+    unsafe {
+        actuallyTriggerEntrance(
+            (*start_info).stage.as_ptr(),
+            (*start_info).room,
+            (*start_info).layer,
+            (*start_info).entrance,
+            (*start_info).forced_night,
+            0,
+            0,
+            0xF,
+            0xFF,
+        );
+        Reloader__setReloadTrigger(RELOADER_PTR, 5);
+    }
+}
+
+#[no_mangle]
+// args only used by replaced function call
+pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
+    unsafe {
+        if (*RELOADER_PTR).initial_speed > 30f32 {
+            (*RELOADER_PTR).initial_speed = 30f32;
+        }
+    }
+    let spawn = unsafe { &mut SPAWN_SLAVE };
+    if spawn.name.starts_with(b"F000") && spawn.entrance == 53 && !storyflag_check(22) {
+        // Skyloft from Sky Keep
+        spawn.entrance = 52;
+    } else if spawn.name.starts_with(b"F300\0") && spawn.entrance == 5 && !storyflag_check(8) {
+        // Lanayru Desert from LMF - only if LMF isn't raised (storyflag 8)
+        spawn.entrance = 19;
+    } else if (spawn.name.starts_with(b"F300\0") && spawn.entrance == 2)
+        || (spawn.name.starts_with(b"F300_1") && spawn.entrance == 1)
+    {
+        // desert from mines and mines from desert
+        // there are 2 timeshift stones that are fine
+        // 7 is sceneflagindex for desert
+        if !(sceneflag_check_global(7, 113) || sceneflag_check_global(7, 114)) {
+            for flag in (115..=124).chain([108, 111]) {
+                sceneflag_unset_global(7, flag);
+            }
+            // last timeshift stone in mines
+            sceneflag_set_global(7, 113);
+        }
+    }
+
+    let start_info = get_start_info();
+
+    unsafe {
+        if (*start_info).stage.starts_with(b"F210")
+            && (*start_info).entrance == 0
+            && spawn.name.starts_with(b"F210")
+            && spawn.entrance == 0 {
+            (*RELOADER_PTR).spawn_state = 0x13; // diving
+        }
+    }
+
+    // replaced function call
+    unsafe { RoomManager__getRoomByIndex(room_mgr, room_number); }
 }
 
 #[panic_handler]

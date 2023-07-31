@@ -15,14 +15,17 @@ main.dol:
   process_startflags: 0x80678630
   handle_bk_map_dungeonflag: 0x80678A38
   rando_text_command_handler: 0x80678AE8
-  textbox_a_pressed_or_b_held: 0x80678DC8
-  set_goddess_sword_pulled_scene_flag: 0x80678DF8
-  randomize_boss_key_start_pos: 0x80678E24
-  get_item_arc_name: 0x80678E50
-  get_item_model_name_ptr: 0x80678E80
-  enforce_loftwing_speed_cap: 0x80678EA0
-  give_item_with_sceneflag: 0x80678F94
-  storyflag_set_to_1: 0x80679028
+  textbox_a_pressed_or_b_held: 0x80678DD0
+  set_goddess_sword_pulled_scene_flag: 0x80678E00
+  randomize_boss_key_start_pos: 0x80678E2C
+  get_item_arc_name: 0x80678E58
+  get_item_model_name_ptr: 0x80678E88
+  enforce_loftwing_speed_cap: 0x80678EA8
+  give_item_with_sceneflag: 0x80678F9C
+  storyflag_set_to_1: 0x80679030
+  get_start_info: 0x80679060
+  send_to_start: 0x8067906C
+  do_er_fixes: 0x806790C8
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
@@ -54,3 +57,5 @@ d_a_obj_clefNP.rel:
   give_random_item_from_collecting_tadtone_group: 0x4A2C
 d_t_clef_gameNP.rel:
   check_tadtone_counter_before_event: 0x724
+d_a_obj_time_boatNP.rel:
+  fix_sadship_boat: 0x6448

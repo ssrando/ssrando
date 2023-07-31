@@ -8,6 +8,15 @@
     - You can check how many tadtone groups you have by talking to Fi
   - Added 17 checks in Flooded Faron Woods
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
+- Added option to start at a random location (by CovenEsme)
+  - Has 4 main options: Vanilla, Bird Statues, Any Surface Region, Any
+    - Vanilla: You will spawn in Link's bedroom
+    - Bird Statues: You will spawn at a random Bird Statue or Link's bedroom
+    - Any Surface Region: You will spawn at an entrance on a surface region (Faron, Eldin, Lanayru) or Link's bedroom
+    - Any: You will spawn at any entrance
+  - Fi now has an option to let you return to this starting point! She'll warp you back whenever you like :p
+  - Added an additional option that limits the possible starting locations
+    - When enabled, you will only start at a location in a region unlocked by the tablets you start with
 - Added an option to reduce the number of Peatrice conversations needed before she calls you "Darling" (by CovenEsme)
 - Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
 ### Changes
@@ -89,6 +98,17 @@
   - Only shows one hint per Gossip Stone
 - Added an accessibility toggle for light and dark themes (by CovenEsme)
   - You can now pick to have a light theme, dark theme, or to automatically change based on the theme of your computer
+- Added option to randomize the boss key puzzles (by CovenEsme)
+- Added option to get all extra dowsing abilities after obtaining Whitesword
+- Added option to remove enemy battle music
+- Split hero mode options to make each effect customizable
+- Added option to freely choose the damage multiplier
+### Changes
+- New GUI (by cjs07)
+  - Rearranged options and regrouped into simpler, broader categories
+  - Removed the Progress Locations tab
+  - Made many miscellaneous changes
+  - Added a dark theme
 - Accessibility options (by CovenEsme)
   - Added a toggle for enabling and disabling a custom theme 
   - Added a button that opens a window with customization options for the theme of the randomizer
