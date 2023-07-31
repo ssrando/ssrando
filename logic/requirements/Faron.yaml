@@ -117,8 +117,7 @@ Faron Woods:
     locations:
       Push Log: Nothing
       # Save Lopsa: Can defeat Bokoblins  # Don't include, otherwise Slingshot requires Bomb Bag
-      Retrieve Oolo:
-        Skyloft - Knight Academy - Start Owlan's Quest
+      Retrieve Oolo: Scrapper & Skyloft - Knight Academy - Start Owlan's Quest
 
   West Branch:
     exits:
@@ -255,7 +254,7 @@ Flooded Faron Woods:
     Dark Blue Moving Tadtone inside Small Hollow Tree: Water Scale
     4 Yellow Tadtones under Small Hollow Tree: Water Scale
     8 Purple Tadtones in Clearing after Small Hollow Tree: Water Scale
-    Faron Woods - Retrieve Oolo: Skyloft - Knight Academy - Start Owlan's Quest
+    Faron Woods - Retrieve Oolo: Scrapper & Skyloft - Knight Academy - Start Owlan's Quest
     Can Watch Completed Tadtones Cutscene: Nothing
 
   Flooded Great Tree:

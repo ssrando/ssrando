@@ -339,7 +339,16 @@ bl storyflag_set_to_1
 .org 0x8006358c
 bl do_er_fixes
 
+; Check for scrapper repaired when also checking if a scrapper quest was started
+; Prevents picking up scrapper item when scrapper hasn't been found yet
+;
+; ScrapperPickupMgr__checkQuestStartedStoryflag
+.org 0x800a5c88
+b check_scrapper_repaired
+
 .close
+
+
 
 .open "d_a_obj_time_door_beforeNP.rel"
 .org 0xD4C
@@ -558,6 +567,8 @@ b enforce_loftwing_speed_cap
 .close
 
 .open "d_a_npc_dive_game_judgeNP.rel"
+
+; (80703568 - 80700ac0) + 130
 .org 0x2BD8 ; in function that checks if he should loose his party wheel
 li r4, 0x130 ; always loose it (batreaux storyflag)
 
@@ -924,5 +935,19 @@ nop
 .word 134 ; Defeated the Horde
 .word 486 ; Defeated Ghirahim 3
 .word -1
+
+.close
+
+
+.open "d_a_npc_salbage_robot_repairNP.rel"
+
+; (80890fb4 - 8088fd00) + 130
+
+; NpcSalbageRobotRepair__isRepaired
+; Replace Scrapper Repaired storyflag with rando flag for Repair Gondo's Junk check
+;
+; 0x808906d4
+.org 0xB04
+li r4, 322 ; Repair Gondo's Junk check flag
 
 .close

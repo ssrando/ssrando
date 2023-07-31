@@ -61,6 +61,12 @@
     - At any point, you may save a new color preset (works just like settings presets), and then load them at a later point.
     - Model creators may provide their own default presets by adding a default_presets.json file to the model type folder
     - The Import/Export button opens up a dialog box containing the metadata for your currently selected color. This may be copied and sent to someone else, who can paste in the same dialog box and import the color
+- Added Scrapper as an item (by CovenEsme)
+  - Scrapper is no longer given at the start of the game and instead appears as an item
+  - To account for this, Scrapper has also been made into a possible starting item
+  - In order to get Owlan's Crystals, Dodoh's Crystals, Fun Fun Island Minigame, Kina's Crystals, Sparrot's Crystals, and Song from Levias you must have obtained the Scrapper item
+- Added "Repair Gondo's Junk" check (equivalent to repairing Scrapper in vanilla) (by CovenEsme)
+  - Requires 1 Ancient Flower in return for a check
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 - Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow
