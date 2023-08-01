@@ -13,6 +13,7 @@ tips = [
     "Flooded Faron Woods can be entered by talking to the Water Dragon inside the Great Tree.",
     "Bokoblin Base can be entered by talking to the gossip stone in the first room of Eldin Volcano.",
     "You can end Fledge's Pumpkin Archery minigame early by shooting the bell atop the Knight Academy.",
+    "If a character tells you to 'come back later if you want something', this means that the 'Story-based Requirements' setting is enabled. You'll need to do additional things to get that person's item.",
 ]
 
 

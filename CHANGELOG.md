@@ -19,6 +19,17 @@
     - When enabled, you will only start at a location in a region unlocked by the tablets you start with
 - Added an option to reduce the number of Peatrice conversations needed before she calls you "Darling" (by CovenEsme)
 - Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
+- Added option to include "Story-based Requirements" for some checks (by CovenEsme)
+  - Cawlin's Letter, Ghost/Pipit Crystals, Wryna's Crystals, Bertie's Crystals, Sparrot's Crystals, Kina's Crystals, Beedle's Crystals, and Bug Heaven Minigame will have additional requirements when this option is enabled
+  - These changes are:
+    - Cawlin's Letter: Goddess Harp and Emerald Tablet
+    - Ghost/Pipit Crystals: Goddess Harp and Emerald Tablet
+    - Wryna's Crystals: Ruby Tablet
+    - Bertie's Crystals: Clawshots
+    - Sparrot's Crystals: Opening the Gate of Time
+    - Kina's Crystals: Beating Fire Sanctuary
+    - Beedle's Crystals: Ballad of the Goddess and Song of the Hero (all 3 parts)
+    - Bug Heaven Minigame: Song of the Hero (all 3 parts)
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Added Fi hints (by YourAverageLink)
@@ -67,6 +78,7 @@
   - In order to get Owlan's Crystals, Dodoh's Crystals, Fun Fun Island Minigame, Kina's Crystals, Sparrot's Crystals, and Song from Levias you must have obtained the Scrapper item
 - Added "Repair Gondo's Junk" check (equivalent to repairing Scrapper in vanilla) (by CovenEsme)
   - Requires 1 Ancient Flower in return for a check
+- The Cawlin's Letter check no longer requires talking to the Toilet Hand at night (by CovenEsme)
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 - Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow
