@@ -54,19 +54,6 @@ bl set_goddess_sword_pulled_scene_flag
 .org 0x801d4b20
 li r5, -1
 
-; Change starting location to remove intro cutscenes
-.org 0x801bb960 ; Change starting stage
-subi r3, r13, 0x5b44 ; previously 0x601c (F405 -> F001r)
-
-.org 0x801bb964 ; Change starting roomID
-li r4, 1 ; Room 0 -> 1
-
-.org 0x801bb968 ; Change starting layer
-li r5, 3 ; Layer 0 -> 3
-
-.org 0x801bb96c ; Change starting entrance
-li r6, 5 ; Entrance 0 -> 5
-
 ; patch to not update sword model when getting an upgrade
 .org 0x8005e2f0
 stwu r1, -0x30(r1) ; change function prologue to match the function it branches to at the end
@@ -277,6 +264,14 @@ bgt 0x801b0788
 bl rando_text_command_handler
 b 0x801b0764 ; return to original function
 
+; don't enable jank fi menu handling: everything in the menu is overwritten anyways
+.org 0x801b19e0
+li r0, 0
+
+; patch starting entrance
+.org 0x801bb980
+bl send_to_start
+
 ; here is the required sequence of buttons stored,
 ; to get the crash screen to show up, since it's 0 terminated,
 ; overwriting the first element with 0 will make it not check any buttons
@@ -340,7 +335,20 @@ beq 0x801aff60
 mr r3, r4
 bl storyflag_set_to_1
 
+; hook into function before spawning link at entrance
+.org 0x8006358c
+bl do_er_fixes
+
+; Check for scrapper repaired when also checking if a scrapper quest was started
+; Prevents picking up scrapper item when scrapper hasn't been found yet
+;
+; ScrapperPickupMgr__checkQuestStartedStoryflag
+.org 0x800a5c88
+b check_scrapper_repaired
+
 .close
+
+
 
 .open "d_a_obj_time_door_beforeNP.rel"
 .org 0xD4C
@@ -559,6 +567,8 @@ b enforce_loftwing_speed_cap
 .close
 
 .open "d_a_npc_dive_game_judgeNP.rel"
+
+; (80703568 - 80700ac0) + 130
 .org 0x2BD8 ; in function that checks if he should loose his party wheel
 li r4, 0x130 ; always loose it (batreaux storyflag)
 
@@ -748,6 +758,13 @@ rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
 b set_sot_placed_flag
 .close
 
+.open "d_a_obj_time_boatNP.rel"
+
+.org 0x107C ; 0x80e1b56c
+bl fix_sadship_boat
+
+.close
+
 ; make sure groose stays at his groosenator after finishing faron SotH
 .open "d_a_npc_bbrvlNP.rel"
 ; .org 0x80992b24
@@ -918,5 +935,19 @@ nop
 .word 134 ; Defeated the Horde
 .word 486 ; Defeated Ghirahim 3
 .word -1
+
+.close
+
+
+.open "d_a_npc_salbage_robot_repairNP.rel"
+
+; (80890fb4 - 8088fd00) + 130
+
+; NpcSalbageRobotRepair__isRepaired
+; Replace Scrapper Repaired storyflag with rando flag for Repair Gondo's Junk check
+;
+; 0x808906d4
+.org 0xB04
+li r4, 322 ; Repair Gondo's Junk check flag
 
 .close

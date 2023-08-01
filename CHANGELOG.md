@@ -8,6 +8,15 @@
     - You can check how many tadtone groups you have by talking to Fi
   - Added 17 checks in Flooded Faron Woods
     - Collecting each vanilla group of tadtones in Flooded Faron Woods will give you an item
+- Added option to start at a random location (by CovenEsme)
+  - Has 4 main options: Vanilla, Bird Statues, Any Surface Region, Any
+    - Vanilla: You will spawn in Link's bedroom
+    - Bird Statues: You will spawn at a random Bird Statue or Link's bedroom
+    - Any Surface Region: You will spawn at an entrance on a surface region (Faron, Eldin, Lanayru) or Link's bedroom
+    - Any: You will spawn at any entrance
+  - Fi now has an option to let you return to this starting point! She'll warp you back whenever you like :p
+  - Added an additional option that limits the possible starting locations
+    - When enabled, you will only start at a location in a region unlocked by the tablets you start with
 - Added an option to reduce the number of Peatrice conversations needed before she calls you "Darling" (by CovenEsme)
 - Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
 - Added option to include "Story-based Requirements" for some checks (by CovenEsme)
@@ -63,6 +72,12 @@
     - At any point, you may save a new color preset (works just like settings presets), and then load them at a later point.
     - Model creators may provide their own default presets by adding a default_presets.json file to the model type folder
     - The Import/Export button opens up a dialog box containing the metadata for your currently selected color. This may be copied and sent to someone else, who can paste in the same dialog box and import the color
+- Added Scrapper as an item (by CovenEsme)
+  - Scrapper is no longer given at the start of the game and instead appears as an item
+  - To account for this, Scrapper has also been made into a possible starting item
+  - In order to get Owlan's Crystals, Dodoh's Crystals, Fun Fun Island Minigame, Kina's Crystals, Sparrot's Crystals, and Song from Levias you must have obtained the Scrapper item
+- Added "Repair Gondo's Junk" check (equivalent to repairing Scrapper in vanilla) (by CovenEsme)
+  - Requires 1 Ancient Flower in return for a check
 - The Cawlin's Letter check no longer requires talking to the Toilet Hand at night (by CovenEsme)
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
@@ -101,6 +116,17 @@
   - Only shows one hint per Gossip Stone
 - Added an accessibility toggle for light and dark themes (by CovenEsme)
   - You can now pick to have a light theme, dark theme, or to automatically change based on the theme of your computer
+- Added option to randomize the boss key puzzles (by CovenEsme)
+- Added option to get all extra dowsing abilities after obtaining Whitesword
+- Added option to remove enemy battle music
+- Split hero mode options to make each effect customizable
+- Added option to freely choose the damage multiplier
+### Changes
+- New GUI (by cjs07)
+  - Rearranged options and regrouped into simpler, broader categories
+  - Removed the Progress Locations tab
+  - Made many miscellaneous changes
+  - Added a dark theme
 - Accessibility options (by CovenEsme)
   - Added a toggle for enabling and disabling a custom theme 
   - Added a button that opens a window with customization options for the theme of the randomizer

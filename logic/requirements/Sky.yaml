@@ -191,8 +191,7 @@ South West:
       Dodoh's Crystals: Lanayru - Retrieve Party Wheel
       Fun Fun Island Minigame -- 500 Rupees: Fun Fun Island Minigame
       Goddess Chest under Fun Fun Island: Faron - Goddess Cube in Floria Waterfall
-      Fun Fun Island Minigame:
-        Lanayru - Retrieve Party Wheel
+      Fun Fun Island Minigame: Lanayru - Retrieve Party Wheel
 
   Triple Island:
     entrance: Nothing
@@ -220,8 +219,7 @@ Around Skyloft: # Also North West minus Thunderhead
 Thunderhead:
   hint-region: Thunderhead
   locations:
-    Song from Levias:
-      Sky - Lumpy Pumpkin - Pick up Levias' Soup & Spiral Charge & Sword
+    Song from Levias: Sky - Lumpy Pumpkin - Pick up Levias' Soup & Spiral Charge & Scrapper & Sword
       # Get the soup, fight Bilocyte
   exits:
     Exit: Nothing
