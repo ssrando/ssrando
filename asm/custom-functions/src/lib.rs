@@ -391,6 +391,9 @@ pub fn process_startflags() {
         *slot = 153; // ID for bottles
     }
 
+    // Should set respawn info after new file start
+    unsafe { storyflag_set_to_1(899) };
+
     // Commit global flag managers.
     unsafe {
         ItemflagManager__doCommit(ITEMFLAG_MANAGER);
@@ -720,6 +723,22 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
 
     // replaced function call
     unsafe { RoomManager__getRoomByIndex(room_mgr, room_number); }
+}
+
+#[no_mangle]
+fn allow_set_respawn_info() -> *mut Reloader {
+    unsafe {
+        if storyflag_check(899) {
+            (*RELOADER_PTR).prevent_save_respawn_info = false;
+
+            (*FILE_MANAGER).anticommit_flag = 1;
+            storyflag_set_to_value(899, 0);
+            StoryflagManager__doCommit(STORYFLAG_MANAGER);
+            (*FILE_MANAGER).anticommit_flag = 0;
+        }
+
+        return RELOADER_PTR;
+    }
 }
 
 #[panic_handler]
