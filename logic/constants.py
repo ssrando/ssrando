@@ -453,12 +453,12 @@ ALL_BOSS_KEYS = (
 )
 ALL_MAPS = dict.fromkeys(MAP.values())
 
+DUNGEON_ITEMS = ALL_SMALL_KEYS | ALL_BOSS_KEYS | ALL_MAPS
+
 # If you add to this, remember to update the restricted_vanilla_items and restricted_non_vanilla_items
 # vars in randomize.py (see def initialize_items)
 # Doesn't include rupeesanity checks as they aren't required for anything.
-POTENTIALLY_RESTRICTED_ITEMS = (
-    ALL_SMALL_KEYS | ALL_BOSS_KEYS | ALL_MAPS | TRIFORCES | GONDO_ITEMS | TADTONE_GROUPS
-)
+POTENTIALLY_RESTRICTED_ITEMS = DUNGEON_ITEMS | TRIFORCES | GONDO_ITEMS | TADTONE_GROUPS
 
 INVENTORY_ITEMS = (
     PROGRESS_ITEMS | NONPROGRESS_ITEMS | CONSUMABLE_ITEMS | POTENTIALLY_RESTRICTED_ITEMS
@@ -891,9 +891,7 @@ ALLOWED_STARTING_ITEMS = (
     | HEART_CONTAINERS
     | HEART_PIECES
     | KEY_PIECES
-    | ALL_SMALL_KEYS
-    | ALL_BOSS_KEYS
-    | ALL_MAPS
+    | DUNGEON_ITEMS
     | GRATITUDE_CRYSTAL_PACKS
     | EMPTY_BOTTLES
     | TADTONE_GROUPS

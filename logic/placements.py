@@ -24,11 +24,20 @@ SINGLE_CRYSTAL_CHECKS = [
 
 # Tries to force an item to its vanilla location.
 # Produces an error if this is not possible.
-def norm_force_vanilla(list: List[str]):
+def norm_force_vanilla(locations: List[str]):
     def norm_keys(norm: Callable[[str], EIN], checks: Dict[EIN, Any]) -> Placement:
-        list2 = map(norm, list)
-        dict = {k: EIN(checks[k]["original item"]) for k in list2}
-        return Placement(locations=dict, items={v: k for k, v in dict.items()})
+        mapped_locations = map(norm, locations)
+        forced_vanilla_locations = {
+            location: EIN(checks[location]["original item"])
+            for location in mapped_locations
+        }
+
+        return Placement(
+            locations=forced_vanilla_locations,
+            items={
+                item: location for location, item in forced_vanilla_locations.items()
+            },
+        )
 
     return norm_keys
 
@@ -37,8 +46,11 @@ def norm_force_vanilla(list: List[str]):
 # This is always possible.
 def norm_restrict_vanilla(locations: List[str]):
     def norm_keys(norm: Callable[[str], EIN], checks: Dict[EIN, Any]) -> Placement:
-        locs2 = map(norm, locations)
-        restriction = {EIN(checks[loc]["original item"]): loc for loc in locs2}
+        mapped_locations = map(norm, locations)
+        restriction = {
+            EIN(checks[location]["original item"]): location
+            for location in mapped_locations
+        }
         return Placement(item_placement_limit=restriction)
 
     return norm_keys

@@ -83,7 +83,13 @@ class AssumedFill:
         for item in restricted_list:
             self.useroutput.progress_callback("placing restricted items...")
 
-            if not self.place_item(item):
+            # Prevents dungeon items being randomized to disabled sanity locations.
+            if item in restricted_non_vanilla_list:
+                has_placed_item = self.place_item(item, is_progress=True)
+            else:
+                has_placed_item = self.place_item(item, is_progress=False)
+
+            if not has_placed_item:
                 raise self.useroutput.GenerationFailed(
                     f"Could not find a valid location to place {item}. This may be because the settings are too restrictive. Try randomizing a new seed."
                 )
@@ -96,6 +102,7 @@ class AssumedFill:
 
         for item in progress_list:
             self.useroutput.progress_callback("placing progress items...")
+
             if not self.place_item(item):
                 raise self.useroutput.GenerationFailed(
                     f"Could not find a valid location to place {item}. This may be because the settings are too restrictive. Try randomizing a new seed."
@@ -145,7 +152,11 @@ class AssumedFill:
             assert result
 
     def place_item(
-        self, item: EXTENDED_ITEM_NAME, depth=0, force=True, is_progress=True
+        self,
+        item: EXTENDED_ITEM_NAME,
+        depth=0,
+        force=True,
+        is_progress=True,
     ) -> bool:
         if item in EXTENDED_ITEM:
             self.logic.remove_item(EXTENDED_ITEM[item])
@@ -160,6 +171,10 @@ class AssumedFill:
             loc
             for loc in accessible_locations
             if loc not in self.logic.placement.locations
+            and not (
+                is_progress
+                and loc in self.logic.placement.item_placement_limit.values()
+            )
         ]
 
         if empty_locations:
