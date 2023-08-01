@@ -58,7 +58,9 @@
 - Expanded Shopsanity (by CovenEsme)
   - Beedle Shopsanity checks have been renamed based on their location in the shop (instead of their prices)
   - Gear Shopsanity adds a check to each of the item slots in Rupin's shop (next to Peatrice's Item Check in the Bazaar)
-    - All shop slots are always available to be bought
+    - All items are on display - even if you don't have the requirements to purchase them
+    - The leftmost and frontmost shop slots require either bow, bomb bag, or slingshot in order to be able to purchase them (like their vanilla items)
+    - The rightmost shop slots are always available for purchase (as long as you have the wallet capacity and enough Rupees)
     - After buying an item, it will become sold out until you leave and re-enter the Bazaar after which the vanilla item can be bought repeatedly
     - If disabled, each shop slot will contain its vanilla item which can be bought repeatedly
   - Potion Shopsanity adds a check to each potion vat (next to Sparrot's Fortune-telling Stall in the Bazaar)

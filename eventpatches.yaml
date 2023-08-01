@@ -974,36 +974,6 @@
     index: 89
     flow:
       next: 116
-  - name: Always allow buying Quiver item
-    type: flowpatch
-    index: 74
-    flow:
-      next: 76
-  - name: Always allow buying Satchel item
-    type: flowpatch
-    index: 71
-    flow:
-      next: 73
-  - name: Always allow buying Bomb Bag item
-    type: flowpatch
-    index: 77
-    flow:
-      next: 79
-  - name: Always allow buying Seeds item
-    type: flowpatch
-    index: 54
-    flow:
-      next: 55
-  - name: Always allow buying Arrows item
-    type: flowpatch
-    index: 26
-    flow:
-      next: 28
-  - name: Always allow buying Bombs item
-    type: flowpatch
-    index: 36
-    flow:
-      next: 37
   - name: Rupin always offers advice
     type: flowpatch
     index: 0
@@ -1015,6 +985,49 @@
     text: "Regrettably, that sign means I'm all\nsold out of that item.
           \n\n\n...
           \n\n\n\nHowever, I have many other wonderful\ntreasures prepared just for you. So,\nplease, savor my other fantastical\nwares, friend!"
+
+  # Missing item flag patches
+  - name: Missing Itemflag 2 Text # green rupee (always set)
+    type: textadd
+    text: "" # should never happen
+  - name: Missing Itemflag 2
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 79
+      param4: Missing Itemflag 2 Text
+  - name: Missing Itemflag 19 Text
+    type: textadd
+    text: "I do apologize, but I can't sell you\nthis unless you have a <r<bow>>. It's\nstore policy, you see."
+  - name: Missing Itemflag 19
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 79
+      param4: Missing Itemflag 19 Text
+  - name: Missing Itemflag 52 Text
+    type: textadd
+    text: "My friend...you don't appear to have\na <r<slingshot>>.
+          \n\n\nI simply couldn't sell you these in good\nconscience if you do not have a\n<r<slingshot>>. Perhaps I can interest you\nin some of my other wares..."
+  - name: Missing Itemflag 52
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 79
+      param4: Missing Itemflag 52 Text
+  - name: Missing Itemflag 92 Text
+    type: textadd
+    text: "Ahaa! Very sorry, but I can't sell you\nthis unless you have a <r<Bomb Bag>>.\nAgain, my apologies."
+  - name: Missing Itemflag 92
+    type: flowadd
+    flow:
+      type: type1
+      next: -1
+      param3: 79
+      param4: Missing Itemflag 92 Text
 102-Zelda:
   - name: Fledge Quest Switch 1
     type: flowpatch

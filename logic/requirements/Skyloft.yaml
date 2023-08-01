@@ -150,15 +150,15 @@ Central Skyloft:
       exits:
         Bazaar: Nothing
       locations:
-        Top Left Item: Can Afford 150 Rupees
-        Middle Left Item: Can Afford 100 Rupees
-        Bottom Left Item: Can Afford 150 Rupees
-        Left Front Item: Can Afford 20 Rupees
-        Middle Front Item: Can Afford 20 Rupees
-        Right Front Item: Can Afford 20 Rupees
+        Top Left Item:     Can Afford 150 Rupees & Bow
+        Middle Left Item:  Can Afford 100 Rupees & Slingshot
+        Bottom Left Item:  Can Afford 150 Rupees & Bomb Bag
+        Left Front Item:   Can Afford 20 Rupees  & Slingshot
+        Middle Front Item: Can Afford 20 Rupees  & Bow
+        Right Front Item:  Can Afford 20 Rupees  & Bomb Bag
         Bottom Right Item: Can Afford 50 Rupees
         Middle Right Item: Can Afford 100 Rupees
-        Top Right Item: Can Afford 500 Rupees
+        Top Right Item:    Can Afford 500 Rupees
     
     Potion Shop:
       exits:

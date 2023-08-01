@@ -349,16 +349,16 @@ SHOP_TEXT_PATCHES = {
     "Beedle - Third Outer Left Item": (31, 32, 1200, 600),
     "Beedle - Second Inner Left Item": (21, 22, 1600, 800),
     # Rupin
-    ## location: (entry index, price)
-    "Rupin - Middle Front Item": ("101_40", 20),
-    "Rupin - Right Front Item": ("101_41", 20),
-    "Rupin - Bottom Right Item": ("101_42", 50),
-    "Rupin - Middle Right Item": ("101_43", 100),
-    "Rupin - Top Right Item": ("101_44", 500),
-    "Rupin - Left Front Item": ("101_45", 20),
-    "Rupin - Middle Left Item": ("101_46", 100),
-    "Rupin - Top Left Item": ("101_47", 150),
-    "Rupin - Bottom Left Item": ("101_48", 150),
+    ## location: (entry index, price, itemflag)
+    "Rupin - Middle Front Item": ("101_40", 20, 19),  # bow
+    "Rupin - Right Front Item": ("101_41", 20, 92),  # bomb bag
+    "Rupin - Bottom Right Item": ("101_42", 50, 2),  # green rupee (always set)
+    "Rupin - Middle Right Item": ("101_43", 100, 2),  # green rupee (always set)
+    "Rupin - Top Right Item": ("101_44", 500, 2),  # green rupee (always set)
+    "Rupin - Left Front Item": ("101_45", 20, 52),  # slingshot
+    "Rupin - Middle Left Item": ("101_46", 100, 52),  # slingshot
+    "Rupin - Top Left Item": ("101_47", 150, 19),  # bow
+    "Rupin - Bottom Left Item": ("101_48", 150, 92),  # bomb bag
 }
 
 BEEDLE_BUY_SWITCH = "[1]I'll buy it![2-]No, thanks."
@@ -1879,7 +1879,7 @@ class GamePatcher:
                         {"name": discounted, "type": "textadd", "text": discount_text}
                     )
             elif location.startswith("Rupin"):
-                entry_index, price = SHOP_TEXT_PATCHES[location]
+                entry_index, price, itemflag = SHOP_TEXT_PATCHES[location]
 
                 sold_item = self.placement_file.item_locations[
                     self.areas.short_to_full(location)
@@ -1890,7 +1890,7 @@ class GamePatcher:
                     break_lines(
                         f"You've got quite an eye, friend. That "
                         f"there is a <y<{sold_item}>>. "
-                        f"It cost a mere <r<{price} Rupees>>."
+                        f"It costs a mere <r<{price} Rupees>>."
                     )
                     + f"\n{RUPIN_BUY_SWITCH}"
                 )
@@ -1939,9 +1939,40 @@ class GamePatcher:
                             "subType": 6,
                             "param1": 0,
                             "param2": 1,
-                            "next": f"{location} Event Choice",
+                            "next": f"{location} Check Item Flag 1",
                             "param3": 12,
                         },
+                    }
+                )
+
+                self.eventpatches["101-Shop"].append(
+                    {
+                        "name": f"{location} Check Item Flag 1",
+                        "type": "flowadd",
+                        "flow": {
+                            "type": "type3",
+                            "subType": 1,
+                            "param1": itemflag,
+                            "param2": 1,  # check flag is set
+                            "next": f"{location} Check Item Flag 2",
+                            "param3": 23,  # check for itemflag
+                        },
+                    }
+                )
+
+                self.eventpatches["101-Shop"].append(
+                    {
+                        "name": f"{location} Check Item Flag 2",
+                        "type": "switchadd",
+                        "flow": {
+                            "subType": 6,
+                            "param2": 0,
+                            "param3": 7,  # use result from previous check
+                        },
+                        "cases": [
+                            f"{location} Event Choice",
+                            f"Missing Itemflag {itemflag}",  # see eventpatches.yaml
+                        ],
                     }
                 )
 
