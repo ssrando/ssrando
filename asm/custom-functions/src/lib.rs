@@ -732,11 +732,7 @@ fn allow_set_respawn_info() -> *mut Reloader {
     unsafe {
         if IS_FILE_START {
             (*RELOADER_PTR).prevent_save_respawn_info = false;
-
-            (*FILE_MANAGER).anticommit_flag = 1;
             IS_FILE_START = false;
-            StoryflagManager__doCommit(STORYFLAG_MANAGER);
-            (*FILE_MANAGER).anticommit_flag = 0;
         }
 
         return RELOADER_PTR;
