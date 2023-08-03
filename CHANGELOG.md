@@ -70,6 +70,7 @@
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 - Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow
+- Fix issues where hearts wouldn't spawn from digspots, pots, and some enemies even when the "Spawn Hearts" option was enabled
 
 ## 1.4.1
 ### Bugfixes
