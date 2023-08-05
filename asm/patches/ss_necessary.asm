@@ -346,6 +346,10 @@ bl do_er_fixes
 .org 0x800a5c88
 b check_scrapper_repaired
 
+; set respawn info when starting a new file
+.org 0x801ba668
+b allow_set_respawn_info
+
 .close
 
 

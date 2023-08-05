@@ -157,13 +157,13 @@ extern "C" {
         unk1: u32,
         sceneflag: u32,
         unk2: u32,
-        unk3: u32
+        unk3: u32,
     ) -> u32;
     fn AcItem__spawnItem(
         room: u32,
         item_params: u32,
-        pos: u32, // actually Vec3f
-        rot: u32, // actually Vec3s
+        pos: u32,   // actually Vec3f
+        rot: u32,   // actually Vec3s
         scale: u32, // actually Vec3f
         params2: u32,
         unk: u32,
@@ -234,6 +234,9 @@ fn storyflag_set_to_value(flag: u16, value: u16) {
 fn itemflag_set_to_value(flag: u16, value: u16) {
     unsafe { FlagManager__setFlagOrCounter(ITEMFLAG_MANAGER, flag, value) };
 }
+
+#[link_section = "data"]
+static mut IS_FILE_START: bool = false;
 
 /// A basic iterator over some borrowed memory
 /// useful to read consecutive halfwords
@@ -390,6 +393,9 @@ pub fn process_startflags() {
     for slot in pouch_slot_iter.take(bottle_count.into()) {
         *slot = 153; // ID for bottles
     }
+
+    // Should set respawn info after new file start
+    unsafe { IS_FILE_START = true };
 
     // Commit global flag managers.
     unsafe {
@@ -573,7 +579,7 @@ fn get_item_arc_name(
     let mut oarc_name;
 
     match item_id {
-        214 => oarc_name = cstr!("Onp").as_ptr(), // tadtone
+        214 => oarc_name = cstr!("Onp").as_ptr(),         // tadtone
         215 => oarc_name = cstr!("DesertRobot").as_ptr(), // scrapper
         _ => oarc_name = vanilla_item_str,
     }
@@ -584,7 +590,7 @@ fn get_item_arc_name(
 #[no_mangle]
 fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
     match item_id {
-        214 => return cstr!("OnpB").as_ptr(), // tadtone
+        214 => return cstr!("OnpB").as_ptr(),        // tadtone
         215 => return cstr!("DesertRobot").as_ptr(), // scrapper
         _ => return core::ptr::null(),
     }
@@ -621,23 +627,19 @@ fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
 
 // The same as give_item only you can control the sceneflag of the item given.
 #[no_mangle]
-fn give_item_with_sceneflag(item_id: u16, bottle_pouch_slot: u32, number: u32, sceneflag: u32) -> *mut c_void{
+fn give_item_with_sceneflag(
+    item_id: u16,
+    bottle_pouch_slot: u32,
+    number: u32,
+    sceneflag: u32,
+) -> *mut c_void {
     unsafe {
-
         ITEM_GET_BOTTLE_POUCH_SLOT = bottle_pouch_slot;
         NUMBER_OF_ITEMS = number;
         // Same as the vanilla setupItemParams function only with extra control over the sceneflag
         let item_params = AcItem__setupItemParams(item_id, 5, 0, sceneflag, 1, 0xff);
 
-        let item = AcItem__spawnItem(
-            u32::MAX,
-            item_params,
-            0,
-            0,
-            0,
-            u32::MAX,
-            1,
-        );
+        let item = AcItem__spawnItem(u32::MAX, item_params, 0, 0, 0, u32::MAX, 1);
         ITEM_GET_BOTTLE_POUCH_SLOT = u32::MAX;
         NUMBER_OF_ITEMS = 0;
         return item;
@@ -713,13 +715,28 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
         if (*start_info).stage.starts_with(b"F210")
             && (*start_info).entrance == 0
             && spawn.name.starts_with(b"F210")
-            && spawn.entrance == 0 {
+            && spawn.entrance == 0
+        {
             (*RELOADER_PTR).spawn_state = 0x13; // diving
         }
     }
 
     // replaced function call
-    unsafe { RoomManager__getRoomByIndex(room_mgr, room_number); }
+    unsafe {
+        RoomManager__getRoomByIndex(room_mgr, room_number);
+    }
+}
+
+#[no_mangle]
+fn allow_set_respawn_info() -> *mut Reloader {
+    unsafe {
+        if IS_FILE_START {
+            (*RELOADER_PTR).prevent_save_respawn_info = false;
+            IS_FILE_START = false;
+        }
+
+        return RELOADER_PTR;
+    }
 }
 
 #[panic_handler]
