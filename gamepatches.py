@@ -1433,8 +1433,6 @@ class GamePatcher:
         self.add_keysanity()
         self.add_demises()
         self.shuffle_trial_objects()
-        # if self.placement_file.options["treasuresanity-in-silent-realms"]:
-        #     self.treasuresanity_in_silent_realms()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -2514,11 +2512,6 @@ class GamePatcher:
         for trial in TRIAL_OBJECT_IDS:
             params = []
             locs = []
-            unshuffled_locs = []
-            relic_list = []
-            tear_list = []
-            lightfruit_list = []
-            stamina_list = []
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
                 if item_type not in types_to_shuffle:
                     continue

@@ -441,29 +441,29 @@ nop
 .org 0x2F10
 blr ; skip over func that deletes trial if storyflag is set
 
-.org 0x2B08
-li r4, 0x7FFF ; no storyflag
+.org 0x2B1C
+li r3, 0 ; skip over storyflag checks
 
-.org 0x2B48
-li r4, 0x7FFF
+.org 0x2B5C
+li r3, 0
 
-.org 0x2B94
-li r4, 0x7FFF
+.org 0x2BA8
+li r3, 0
 
-.org 0x2BE0
-li r4, 0x7FFF
+.org 0x2BF4
+li r3, 0
 
-.org 0xC8C
-li r4, 0x7FFF
+.org 0xCA0
+li r3, 0
 
-.org 0xCCC
-li r4, 0x7FFF
+.org 0xCE0
+li r3, 0
 
-.org 0xD18
-li r4, 0x7FFF
+.org 0xD2C
+li r3, 0
 
-.org 0xD64
-li r4, 0x7FFF
+.org 0xD78
+li r3, 0
 
 .org 0x2E70
 blr ; remove function that checks for untrigger sceneflag and involves collision destructor
