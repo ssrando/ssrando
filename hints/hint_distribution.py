@@ -495,6 +495,7 @@ class HintDistribution:
 
         area = self.rng.choices(barren_area_list, weights)[0]
         barren_area_list.remove(area)
+        self.hinted_locations.extend(self.logic.locations_by_hint_region(area))
         self.barren_hinted_areas.add(area)
         self.prev_barren_type = barren_type
 
