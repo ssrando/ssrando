@@ -67,6 +67,7 @@
   - In order to get Owlan's Crystals, Dodoh's Crystals, Fun Fun Island Minigame, Kina's Crystals, Sparrot's Crystals, and Song from Levias you must have obtained the Scrapper item
 - Added "Repair Gondo's Junk" check (equivalent to repairing Scrapper in vanilla) (by CovenEsme)
   - Requires 1 Ancient Flower in return for a check
+- Switch the randomizer to output an iso instead of a wbfs using a different library
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 - Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow
