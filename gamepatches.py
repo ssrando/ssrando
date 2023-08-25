@@ -14,8 +14,8 @@ import struct
 import nlzss11
 from sslib import AllPatcher, U8File
 from sslib.msb import process_control_sequences
-from sslib.utils import write_bytes_create_dirs, encodeBytes
-from sslib.fs_helpers import write_str, write_u16, write_float
+from sslib.utils import write_bytes_create_dirs, encodeBytes, toBytes
+from sslib.fs_helpers import write_str, write_u16, write_float, write_u8
 from sslib.dol import DOL
 from sslib.rel import REL
 from paths import RANDO_ROOT_PATH
@@ -3069,6 +3069,22 @@ class GamePatcher:
             )
         # print(f"total startflag byte count: {startflag_byte_count}")
         dol.write_data_bytes(0x804EE1B8, start_flags_write.getbuffer())
+
+        # write startstage (used for ER) to some unused space
+        start_entrance = self.placement_file.start_entrance
+
+        # HARDCODE STARTING ENTRANCE HERE
+        #
+        # Make sure to set the stage_offset, room, layer, AND entrance values
+        # to match a valid in-game entrance or you WILL crash.
+
+        dol.write_data_bytes(0x802DA0E0, toBytes(start_entrance["stage"], 8))
+        dol.write_data(write_u8, 0x802DA0E8, start_entrance["room"])
+        dol.write_data(write_u8, 0x802DA0E9, start_entrance["layer"])
+        dol.write_data(write_u8, 0x802DA0EA, start_entrance["entrance"])
+        dol.write_data(
+            write_u8, 0x802DA0EB, start_entrance["day-night"] & 1
+        )  # force day when value is >1
         dol.save_changes()
         write_bytes_create_dirs(
             self.patcher.modified_extract_path / "DATA" / "sys" / "main.dol",

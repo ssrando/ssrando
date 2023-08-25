@@ -3,8 +3,7 @@ from pathlib import Path
 from PySide6.QtCore import QThread, Signal
 
 from ssrando import Randomizer, StartupException
-from witmanager import WitManager, WitException, WrongChecksumException
-from urllib.error import HTTPError, URLError
+from extractmanager import ExtractManager
 
 
 class RandomizerThread(QThread):
@@ -12,11 +11,13 @@ class RandomizerThread(QThread):
     error_abort = Signal(str)
     randomization_complete = Signal()
 
-    def __init__(self, randomizer: Randomizer, wit_manager: WitManager, output_folder):
+    def __init__(
+        self, randomizer: Randomizer, extract_manager: ExtractManager, output_folder
+    ):
         QThread.__init__(self)
 
         self.randomizer = randomizer
-        self.wit_manager = wit_manager
+        self.extract_manager = extract_manager
         self.output_folder = output_folder
         self.steps = 0
 
@@ -49,31 +50,12 @@ class RandomizerThread(QThread):
             print(traceback.format_exc())
             return
         if not dry_run:
-            try:
-                self.wit_manager.ensure_wit_installed()
-            except (HTTPError, URLError) as e:
-                error_message = (
-                    f"Couldn't install wit; error: {e}\n"
-                    + "Please install wit manually"
-                )
-                import html
-
-                qt_message = html.escape(error_message).replace("\n", "<br/>")
-
-                self.error_abort.emit(qt_message)
-                print(error_message)
-                import traceback
-
-                print(traceback.format_exc())
-                return
             default_ui_progress_callback("repacking game...")
             repack_progress_cb = self.create_ui_progress_callback(
                 self.randomizer.get_total_progress_steps
             )
-            self.wit_manager.reapack_game(
+            self.extract_manager.repack_game(
                 Path(self.output_folder),
-                self.randomizer.seed,
-                use_wbfs=True,
                 progress_cb=repack_progress_cb,
             )
 
@@ -88,11 +70,11 @@ class ExtractSetupThread(QThread):
     extract_complete = Signal()
 
     def __init__(
-        self, wit_manager: WitManager, clean_iso_path: Path, output_folder: Path
+        self, extract_manager: ExtractManager, clean_iso_path: Path, output_folder: Path
     ):
         QThread.__init__(self)
 
-        self.wit_manager = wit_manager
+        self.extract_manager = extract_manager
         self.clean_iso_path = clean_iso_path
         self.output_folder = output_folder
         self.steps = 0
@@ -108,45 +90,26 @@ class ExtractSetupThread(QThread):
         return progress_cb
 
     def run(self):
-        total_steps = 2 + 100 + 100 + 100  # wit + done, verify, extract, copy
+        total_steps = 2 + 100 + 100  # verify, extract, copy
         self.update_total_steps.emit(total_steps)
         default_ui_progress_callback = self.create_ui_progress_callback(0)
-        default_ui_progress_callback("setting up wiimms ISO tools...")
-        try:
-            self.wit_manager.ensure_wit_installed()
-        except (HTTPError, URLError) as e:
-            error_message = (
-                f"Couldn't install wit; error: {e}\n" "Please install wit manually"
-            )
-            import html
-
-            qt_message = html.escape(error_message).replace("\n", "<br/>")
-            self.error_abort.emit(qt_message)
-            print(error_message)
-            import traceback
-
-            print(traceback.format_exc())
-            return
 
         default_ui_progress_callback("extracting game...")
-        if not self.wit_manager.actual_extract_already_exists():
+        if not self.extract_manager.actual_extract_already_exists():
             try:
-                self.wit_manager.iso_integrity_check(
+                self.extract_manager.extract_game(
                     self.clean_iso_path, self.create_ui_progress_callback(1)
                 )
-                self.wit_manager.extract_game(
-                    self.clean_iso_path, self.create_ui_progress_callback(101)
-                )
-            except (WitException, WrongChecksumException) as e:
+            except Exception as e:
                 print(e)
                 self.error_abort.emit(str(e))
                 return
         else:
-            default_ui_progress_callback("already extracted", 201)
+            default_ui_progress_callback("already extracted", 101)
 
         default_ui_progress_callback("copying extract...")
-        if not self.wit_manager.modified_extract_already_exists():
-            self.wit_manager.copy_to_modified(self.create_ui_progress_callback(201))
+        if not self.extract_manager.modified_extract_already_exists():
+            self.extract_manager.copy_to_modified(self.create_ui_progress_callback(101))
         else:
-            default_ui_progress_callback("already copied", 301)
+            default_ui_progress_callback("already copied", 201)
         self.extract_complete.emit()

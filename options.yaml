@@ -15,7 +15,7 @@
   type: dirpath
   default: "."
   permalink: false
-  help: "Path to folder, where to write the patched wbfs and the spoiler log."
+  help: "Path to folder, where to write the patched ISO and the spoiler log."
 - name: JSON spoiler log
   command: json
   type: boolean
@@ -858,6 +858,7 @@
     - Progressive Wallet
     - Progressive Wallet
     - Progressive Wallet
+    - Scrapper
     - Sea Chart
     - Spiral Charge
     - Stone of Trials
@@ -1056,6 +1057,30 @@
   permalink: false
   cosmetic: true
   help: "Determines the loftwing model pack that will be used in game."
+- name: Random Starting Location
+  command: random-start-entrance
+  type: singlechoice
+  bits: 2
+  choices:
+    - Vanilla
+    - Bird Statues
+    - Any Surface Region
+    - Any
+  default: Vanilla
+  help: "Determines where you will spawn you start the game.
+        **Vanilla**: You will spawn in Link's bedroom.
+        **Bird Statues**: You will spawn at a random Bird Statue or Link's bedroom.
+        **Any Surface Region**: You will spawn at any valid surface entrance or Link's bedroom.
+        **Any**: You will spawn at any valid entrance.
+        **TIP**: You can ask Fi to warp you back to the starting point."
+  ui: option_random_start_entrance
+- name: Limit Starting Location
+  command: limit-start-entrance
+  type: boolean
+  default: false
+  help: "If enabled, you will only start at a location in a region unlocked by the tablets you start with.
+        E.g. Starting with Ruby Tablet and Amber Tablet will mean you cannot start in Faron."
+  ui: option_limit_start_entrance
 - name: Treasuresanity in Silent Realms
   command: treasuresanity-in-silent-realms
   type: boolean

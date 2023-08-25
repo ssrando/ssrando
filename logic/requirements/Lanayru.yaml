@@ -1,7 +1,7 @@
 allowed-time-of-day: DayOnly
 macros:
   All Three Nodes: LMF Nodes On option | (North Part - Water Node & Lightning Node - Lightning Node & East - Fire Node - Fire Node)
-  Raise Lanayru Mining Facility: Open LMF option | Desert - North Part - Activate Master Generator
+  Raise Lanayru Mining Facility: Open LMF option | Desert - North Part - Activate Main Node
   Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
 
 Mine:
@@ -17,7 +17,8 @@ Mine:
       Unlock Statue: Nothing
       Goddess Cube at Lanayru Mine Entrance: Goddess Sword
       Timeshift Stone: Can Hit Timeshift Stone | Itemless First Timeshift Stone Trick
-      Ancient Flower Farming: Timeshift Stone
+      # There's technically 2 different flowers here but one has the same reqs as the other only + bombs
+      General - Ancient Flower Farming: Timeshift Stone
       Chest near First Timeshift Stone: Timeshift Stone
 
     Higher Area:
@@ -47,6 +48,7 @@ Mine:
     locations:
       Blow up Rock on Track: Nothing
       Chest at the End of Mine: Nothing # There's a baba in the way
+      General - Ancient Flower Farming: Can Hit Timeshift Stone
 
     In Minecart:
       entrance:
@@ -78,8 +80,9 @@ Desert:
       entrance: Entry - Timeshift Stone
       exit: { Entry: Nothing }
       locations:
-        Retrieve Party Wheel: Sky - Fun Fun Island - Start Dodoh's Quest
+        Retrieve Party Wheel: Scrapper & Sky - Fun Fun Island - Start Dodoh's Quest
         Chest near Party Wheel: Nothing
+        General - Ancient Flower Farming: Nothing
 
   Near Hook Beetle Fight:
     exits:
@@ -165,14 +168,15 @@ Desert:
       Lightning Node: Open Lightning Node
     locations:
       Water Node: (Bomb Bag | Hook Beetle) & Sword
-      Blow up Master Generator Timeshift Stone Rock: Bomb Bag | Hook Beetle
-      Master Generator Timeshift Stone: Blow up Master Generator Timeshift Stone Rock & Can Hit Timeshift Stone
-      Activate Master Generator: All Three Nodes & Master Generator Timeshift Stone & Sword
+      Blow up Main Node Timeshift Stone Rock: Bomb Bag | Hook Beetle
+      Main Node Timeshift Stone: Blow up Main Node Timeshift Stone Rock & Can Hit Timeshift Stone
+      Activate Main Node: All Three Nodes & Main Node Timeshift Stone & Sword
       Unlock Statue: Nothing
       Open Trial Gate: Nayru's Wisdom & Goddess Harp
       Open Secret Passageway: Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Tough Beetle
       Chest on Platform near Lightning Node: Clawshots
       Open Lightning Node: Nothing # There's a bombflower nearby
+      General - Ancient Flower Farming: Main Node Timeshift Stone
 
     Secret Passageway:
       entrance: Open Secret Passageway
@@ -276,6 +280,7 @@ Temple of Time:
       Front: Hook Beetle | (Slingshot & Temple of Time - Slingshot Shot Trick)
     locations:
       Unlock Statue: Nothing
+      General - Ancient Flower Farming: Distance Activator # for timeshift stone
 
   Front:
     exits:
@@ -288,6 +293,7 @@ Temple of Time:
       Timeshift Stone: Blow up Rock for Timeshift Stone & Distance Activator
       Save Robot: Timeshift Stone & Can Defeat Bokoblins
       Near Goddess Cube - Timeshift Stone: Long Range Skyward Strike | Distance Activator
+      General - Ancient Flower Farming: Hook Beetle # for timeshift stone
 
   Inside:
     exits:
@@ -309,6 +315,7 @@ Temple of Time:
     exits:
       South East: Distance Activator
       North Exit to Desert: Nothing
+      General - Ancient Flower Farming: Distance Activator # for timeshift stone
 
 Lanayru Silent Realm:
   hint-region: Lanayru Silent Realm
@@ -331,26 +338,23 @@ Caves:
   toplevel-alias: Lanayru Caves
   hint-region: Lanayru Caves
   exits:
-    Past Door to Lanayru Sand Sea: Clawshots & Unlock Door to Lanayru Sand Sea
+    Past Door to Lanayru Sand Sea: Clawshots & Lanayru Caves Small Key
     Past Crawlspace: Nothing
     Exit to Mine: Nothing
     Exit to Desert: Nothing
   locations:
-    Unlock Door to Lanayru Sand Sea: Lanayru Caves Small Key
     Chest: Nothing
     Golo's Gift: Nothing
     Gossip Stone in Center: Nothing
 
   Past Door to Lanayru Sand Sea:
     exits:
-      Caves: Caves - Unlock Door to Lanayru Sand Sea
+      Caves: Lanayru Caves Small Key
       Exit to Lanayru Sand Sea: Nothing
-    locations:
-      Caves - Unlock Door to Lanayru Sand Sea: Lanayru Caves Small Key
 
   Past Crawlspace:
     exits:
-      Caves: Nothing
+      Caves: Bomb Bag
       Exit to Gorge: Nothing
     locations:
       Gossip Stone towards Lanayru Gorge: Nothing
@@ -471,6 +475,7 @@ Lanayru Sand Sea:
         Third Chest: Nothing
         Finish Minidungeon: Can Defeat Beamos & Can Defeat Armos & Goddess Sword
         # Technically this is possible without beating a Beamos but it's hard
+        General - Ancient Flower Farming: Nothing
 
   Gorge:
     toplevel-alias: Lanayru Gorge
@@ -494,3 +499,4 @@ Lanayru Sand Sea:
         Activate Timeshift Stone: Gust Bellows & Can Hit Timeshift Stone
         Goddess Cube in Lanayru Gorge: Goddess Sword
         Life Tree Seedling: Activate Timeshift Stone & Digging Mitts
+        General - Ancient Flower Farming: Activate Timeshift Stone

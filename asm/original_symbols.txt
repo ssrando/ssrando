@@ -1,9 +1,11 @@
 main.dol:
+    printf: 0x802df060
     updateCurrentSword: 0x8005c110
     getGratitudeCrystalCount: 0x80252710
     FlagManager__getUncommittedFlags: 0x800bf5f0
     INPUT_BUFFER: 0x80599d0c
     Reloader__triggerExit: 0x801bb080
+    Reloader__triggerEntrance: 0x801bafa0
     AcItem__isBabyRattle: 0x80256c30
     Math__approachF: 0x802decd0
     # SceneflagManager: r3,-0x4060(r13)
@@ -17,6 +19,7 @@ main.dol:
     # this, flag
     SceneflagManager__setTempOrSceneflag: 0x800be2d0
     SceneflagManager__setFlagGlobal: 0x800be1f0
+    SceneflagManager__unsetFlagGlobal: 0x800be500
     SceneflagManager__checkFlagGlobal: 0x800bdf20
     # ActorLink, Vec3f* pos, Vec3s* rot, zero1, one, zero2
     ActorLink__setPosRot: 0x802416d0
@@ -74,5 +77,13 @@ main.dol:
     AcItem__setupItemParams: 0x8024a260
     AcItem__spawnItem: 0x802487c0
     AcItem__getItemId: 0x8024a2b0
+    # stage
+    isCurrentStage: 0x801bb3c0
+    actuallyTriggerEntrance: 0x801bb5d0
+    Reloader__setReloadTrigger: 0x801bad90
+    RoomManager__getRoomByIndex: 0x801b3970
+    getCurrentHealth: 0x8000ac80
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
+d_a_obj_time_boatNP.rel:
+    AcOTimeBoat__checkActivatedStoryflag: 0x3D70

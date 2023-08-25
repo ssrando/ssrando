@@ -551,3 +551,8 @@
   oarc: Onp
   getarcname: Onp
   getmodelname: OnpB
+- id: 215
+  name: Scrapper
+  oarc: DesertRobot
+  getarcname: DesertRobot
+  getmodelname: DesertRobot
