@@ -1189,7 +1189,7 @@
           <property name="title">
            <string>Silent Realms</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_7">
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
            <item>
             <layout class="QVBoxLayout" name="vlay_silent_realms">
              <item>
@@ -1209,6 +1209,43 @@
                </item>
                <item>
                 <widget class="QComboBox" name="option_shuffle_trial_objects"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_treasuresanity_in_silent_realms">
+               <property name="text">
+                <string>Trial Treasuresanity</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_for_option_trial_treasure_amount">
+                 <property name="text">
+                  <string>Trial Treasure Amount</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="option_trial_treasure_amount">
+                 <property name="maximumSize">
+                  <size>
+                   <width>48</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>

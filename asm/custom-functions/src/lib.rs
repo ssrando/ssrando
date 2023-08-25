@@ -738,6 +738,25 @@ fn allow_set_respawn_info() -> *mut Reloader {
     }
 }
 
+#[no_mangle]
+fn get_glow_color(item_id: u32) -> u32 {
+    let stage = unsafe { &SPAWN_SLAVE.name[..4] };
+    // only proceed if in a silent realm
+    if stage[0] == b'S' {
+        // exclude stamina fruit, light fruit, and dusk relics
+        if (item_id != 42) && (item_id != 47) && (item_id != 168) {
+            if (item_id > 42) && (item_id < 47) {
+                // item is a tear; keep the correct id
+                // skyloft is subtype 3, faron 0, eldin 1, lanayru 2
+                return ((stage[1] as u32) + 3) & 3
+            }
+            // offset the color by 2 so items look distinct from tears
+            return ((stage[1] as u32) + 1) & 3
+        }
+    }
+    4
+}
+
 #[panic_handler]
 fn panic(_: &core::panic::PanicInfo) -> ! {
     loop {}

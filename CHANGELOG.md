@@ -19,6 +19,8 @@
     - When enabled, you will only start at a location in a region unlocked by the tablets you start with
 - Added an option to reduce the number of Peatrice conversations needed before she calls you "Darling" (by CovenEsme)
 - Added cosmetic options to choose model packs to patch player and loftwing models with (by Muzugalium)
+- Added the ability to randomize dusk relics in silent realms (by Peppernicus, Zeldex, & YourAverageLink)
+- Up to 10 relics (chosen by a new option) per silent realm can be randomized to have new items
 ### Changes
 - Getting an item underwater gives the item immediately (instead of having to stand on solid ground)
 - Added Fi hints (by YourAverageLink)
@@ -68,6 +70,12 @@
 - Added "Repair Gondo's Junk" check (equivalent to repairing Scrapper in vanilla) (by CovenEsme)
   - Requires 1 Ancient Flower in return for a check
 - Switch the randomizer to output an iso instead of a wbfs using a different library
+- Upon completing a silent realm, the trial gate will remain open. (This is to prevent softlocks with dusk relic shuffle)
+- Items inside silent realms (other than dusk relics) will glow and have beams above them; their color is distinct from the tears
+  - In Faron, items are yellow
+  - In Eldin, items are blue
+  - In Lanayru, items are green
+  - In Skyloft, items are red
 ### Bugfixes
 - Ensure the tadtones jingle music isn't randomized or manually replaced to prevent a softlock
 - Fix bug where Fledge wouldn't correctly spawn for the Archery minigame when starting with the bow

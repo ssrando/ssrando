@@ -1128,11 +1128,6 @@ def patch_trial_item(trial: OrderedDict, itemid: int):
     trial["params1"] = mask_shift_set(trial["params1"], 0xFF, 0x18, itemid)
 
 
-def patch_trial_flags(trial: OrderedDict, storyflag: int):
-    # Use last 2 bytes of params2 as the randomized trial storyflag
-    trial["params2"] = mask_shift_set(trial["params2"], 0xFFFF, 0x0, storyflag)
-
-
 def patch_key_bokoblin_item(boko: OrderedDict, itemid: int):
     boko["params2"] = mask_shift_set(boko["params2"], 0xFF, 0x0, itemid)
 
@@ -1155,18 +1150,11 @@ def rando_patch_heartco(bzs: OrderedDict, itemid: int, id: str):
     patch_heart_co(obj, itemid)
 
 
-def rando_patch_warpobj(
-    bzs: OrderedDict, itemid: int, id: str, trial_connections: OrderedDict
-):
+def rando_patch_warpobj(bzs: OrderedDict, itemid: int, id: str):
     obj = next(
         filter(lambda x: x["name"] == "WarpObj", bzs["OBJ "])
     )  # there is only one trial exit at a time
     patch_trial_item(obj, itemid)
-    for trial, trialid in TRIAL_EXIT_GATE_IDS.items():
-        if obj["id"] == trialid:
-            trial_gate = [tg for tg, t in trial_connections.items() if t == trial].pop()
-            trial_storyflag = TRIAL_COMPLETE_STORYFLAGS[trial_gate]
-    patch_trial_flags(obj, trial_storyflag)
 
 
 def rando_patch_tbox(bzs: OrderedDict, itemid: int, id: str, dowsing: int):
@@ -1265,6 +1253,8 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
     eventpatches = defaultdict(list)
     # shopindex: (itemid, arcname, modelname)
     shoppatches = {}
+    # trialstage -> (itemsceneflag, itemid)
+    trialrelics = defaultdict(list)
 
     stage_re = re.compile(
         r"stage/(?P<stage>[^/]+)/r(?P<room>[0-9]+)/l(?P<layer>[0-9]+)/(?P<objname>[a-zA-Z]+)(/(?P<objid>[^/]+))?"
@@ -1303,9 +1293,13 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                     # otherwise it could lead to an increased stage size
                     # which will lead to a crash
                     stageoarcs[(stage, layer)].add("dummy")
-                stagepatchv2[(stage, room)].append(
-                    (objname, layer, objid, item["id"], chest_dowsing[checkname])
-                )
+                # fake object name to handle it easier
+                if objname == "Relic":
+                    trialrelics[stage].append((int(objid), item["id"]))
+                else:
+                    stagepatchv2[(stage, room)].append(
+                        (objname, layer, objid, item["id"], chest_dowsing[checkname])
+                    )
             elif event_match:
                 eventfile = event_match.group("eventfile")
                 eventid = event_match.group("eventid")
@@ -1340,7 +1334,7 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                 shoppatches[index] = (item["id"], arcname, modelname)
             else:
                 print(f"ERROR: {path} didn't match any regex!")
-    return stagepatchv2, stageoarcs, eventpatches, shoppatches
+    return stagepatchv2, stageoarcs, eventpatches, shoppatches, trialrelics
 
 
 def get_entry_from_bzs(
@@ -1438,8 +1432,7 @@ class GamePatcher:
         self.add_rando_hash()
         self.add_keysanity()
         self.add_demises()
-        if not self.placement_file.options["shuffle-trial-objects"] == "None":
-            self.shuffle_trial_objects()
+        self.shuffle_trial_objects()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -1507,6 +1500,7 @@ class GamePatcher:
             self.stageoarcs,
             self.rando_eventpatches,
             self.shoppatches,
+            self.trialrelicpatches,
         ) = get_patches_from_location_item_list(
             self.areas.checks,
             filtered_item_locations,
@@ -2504,19 +2498,22 @@ class GamePatcher:
             "S200": 0x2C,
             "S300": 0x2D,
         }
+
+        shuffle_option = self.options["shuffle-trial-objects"]
+        if shuffle_option == "None":
+            types_to_shuffle = set()
+        elif shuffle_option == "Simple":
+            types_to_shuffle = {"Tears", "Light Fruits"}
+        elif shuffle_option == "Advanced":
+            types_to_shuffle = {"Tears", "Light Fruits", "Relics"}
+        elif shuffle_option == "Full":
+            types_to_shuffle = {"Tears", "Light Fruits", "Relics", "Stamina Fruits"}
+
         for trial in TRIAL_OBJECT_IDS:
             params = []
             locs = []
             for item_type, objlist in TRIAL_OBJECT_IDS[trial].items():
-                if item_type == "Relics" and self.placement_file.options[
-                    "shuffle-trial-objects"
-                ] not in ["Advanced", "Full"]:
-                    continue
-                if (
-                    item_type == "Stamina Fruits"
-                    and not self.placement_file.options["shuffle-trial-objects"]
-                    == "Full"
-                ):
+                if item_type not in types_to_shuffle:
                     continue
                 locs.extend(objlist)
                 if item_type == "Tears":
@@ -2529,24 +2526,55 @@ class GamePatcher:
 
             rng = random.Random(self.placement_file.trial_object_seed)
             rng.shuffle(locs)
-            # print(locs)
-
-            for (id, room), (params, actor_name) in zip(
-                locs,
-                params,
-            ):
-                self.add_patch_to_stage(
-                    trial,
-                    {
-                        "name": "trial object shuffle",
-                        "type": "objpatch",
-                        "id": id,
-                        "layer": 2,
-                        "room": room,
-                        "objtype": "OBJ ",
-                        "object": {"params1": params, "name": actor_name},
-                    },
+            if "Relics" not in types_to_shuffle:
+                objlist = TRIAL_OBJECT_IDS[trial]["Relics"]
+                locs.extend(objlist)
+                params.extend([ITEM_PARAM_MAP["Relics"]] * len(objlist))
+            loc_params = list(
+                zip(
+                    locs,
+                    params,
                 )
+            )
+
+            # shuffle the location -> params mapping to then patch a random
+            # sample of relics with items
+            rng.shuffle(loc_params)
+
+            trial_relic_patches = self.trialrelicpatches[trial].copy()
+            for (id, room), (params, actor_name) in loc_params:
+                # replace the dusk relic objects with randomized items
+                if trial_relic_patches and actor_name == "AncJwls":
+                    (sceneflag, itemid) = trial_relic_patches.pop()
+                    # 9 is the rando item subtype forcing a textbox
+                    params1 = 0xFF9C0200
+                    params1 = mask_shift_set(params1, 0xFF, 10, sceneflag)
+                    params1 = mask_shift_set(params1, 0xFF, 0, itemid)
+                    self.add_patch_to_stage(
+                        trial,
+                        {
+                            "name": "AncJwls into Item",
+                            "type": "objpatch",
+                            "id": id,
+                            "layer": 2,
+                            "room": room,
+                            "objtype": "OBJ ",
+                            "object": {"params1": params1, "name": "Item"},
+                        },
+                    )
+                else:
+                    self.add_patch_to_stage(
+                        trial,
+                        {
+                            "name": "trial object shuffle",
+                            "type": "objpatch",
+                            "id": id,
+                            "layer": 2,
+                            "room": room,
+                            "objtype": "OBJ ",
+                            "object": {"params1": params, "name": actor_name},
+                        },
+                    )
 
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])
@@ -2716,14 +2744,7 @@ class GamePatcher:
             (stage, room), []
         ):
             modified = True
-            if objname == "WarpObj":
-                RANDO_PATCH_FUNCS[objname](
-                    bzs["LAY "][f"l{layer}"],
-                    itemid,
-                    objid,
-                    self.placement_file.trial_connections,
-                )
-            elif objname == "Tbox" or objname == "TBox":
+            if objname == "Tbox" or objname == "TBox":
                 RANDO_PATCH_FUNCS[objname](
                     bzs["LAY "][f"l{layer}"], itemid, objid, dowsing
                 )

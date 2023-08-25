@@ -6,34 +6,37 @@ main.dol:
   setSceneflagForArea: 0x806783E0
   alloc_keyboard_arcs_conditional: 0x80678450
   unset_sandship_timestone_if_necessary: 0x8067849C
-  patch_bit: 0x806784CC
-  no_minigame_death: 0x806784D8
-  allow_item_get_underwater: 0x80678500
-  get_item_model_name: 0x8067853C
-  is_custom_rando_item: 0x80678570
-  fix_custom_item_get: 0x80678590
-  check_scrapper_repaired: 0x80678644
-  process_startflags: 0x80678654
-  handle_bk_map_dungeonflag: 0x80678A68
-  rando_text_command_handler: 0x80678B18
-  textbox_a_pressed_or_b_held: 0x80678E00
-  set_goddess_sword_pulled_scene_flag: 0x80678E30
-  randomize_boss_key_start_pos: 0x80678E5C
-  get_item_arc_name: 0x80678E88
-  get_item_model_name_ptr: 0x80678ECC
-  enforce_loftwing_speed_cap: 0x80678F08
-  give_item_with_sceneflag: 0x80678FFC
-  storyflag_set_to_1: 0x80679090
-  get_start_info: 0x806790C0
-  send_to_start: 0x806790CC
-  do_er_fixes: 0x80679128
-  allow_set_respawn_info: 0x80679464
+  has_not_already_completed_trial: 0x806784CC
+  patch_bit: 0x80678504
+  no_minigame_death: 0x80678510
+  allow_item_get_underwater: 0x80678538
+  get_item_model_name: 0x80678574
+  is_custom_rando_item: 0x806785A8
+  fix_custom_item_get: 0x806785C8
+  check_scrapper_repaired: 0x8067867C
+  process_startflags: 0x8067868C
+  handle_bk_map_dungeonflag: 0x80678AA0
+  rando_text_command_handler: 0x80678B50
+  textbox_a_pressed_or_b_held: 0x80678E38
+  set_goddess_sword_pulled_scene_flag: 0x80678E68
+  randomize_boss_key_start_pos: 0x80678E94
+  get_item_arc_name: 0x80678EC0
+  get_item_model_name_ptr: 0x80678F04
+  enforce_loftwing_speed_cap: 0x80678F40
+  give_item_with_sceneflag: 0x80679034
+  storyflag_set_to_1: 0x806790C8
+  get_start_info: 0x806790F8
+  send_to_start: 0x80679104
+  do_er_fixes: 0x80679160
+  allow_set_respawn_info: 0x8067949C
+  get_glow_color: 0x806794C4
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
   function_end: 0x344
 d_a_obj_warpNP.rel:
   check_should_delay_walk_out_event: 0x6100
+  set_trial_completed_storyflag: 0x6128
 d_a_obj_time_stoneNP.rel:
   set_first_time_cs_already_watched: 0x6548
 d_a_obj_sw_sword_beamNP.rel:

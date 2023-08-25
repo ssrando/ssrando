@@ -1081,3 +1081,19 @@
   help: "If enabled, you will only start at a location in a region unlocked by the tablets you start with.
         E.g. Starting with Ruby Tablet and Amber Tablet will mean you cannot start in Faron."
   ui: option_limit_start_entrance
+- name: Treasuresanity in Silent Realms
+  command: treasuresanity-in-silent-realms
+  type: boolean
+  default: false
+  help: Randomizes treasures in Silent Realms to items. Items other than relics will glow in Silent Realms
+        (Yellow in Faron, Blue in Eldin, Green in Lanayru, and Red on Skyloft).
+  ui: option_treasuresanity_in_silent_realms
+- name: Trial Treasure Amount
+  command: trial-treasure-amount
+  type: int
+  default: 5
+  min: 1
+  max: 10
+  bits: 4
+  help: How many treasures per Silent Realm you want to randomize.
+  ui: option_trial_treasure_amount

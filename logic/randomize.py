@@ -252,6 +252,10 @@ class Rando:
             ):
                 self.banned.append(self.norm(entrance_of_exit(DUNGEON_MAIN_EXITS[SK])))
 
+        # ban the forced vanilla relic checks to ensure songs can be counted as nonprogress items if the rewards are also off
+        if not self.options["treasuresanity-in-silent-realms"]:
+            self.banned.extend(map(self.norm, TRIAL_RELIC_CHECKS))
+
     def get_endgame_requirements(self):
         # needs to be able to open GoT and open it, requires required dungeons
         got_raising_requirement = (
@@ -477,6 +481,14 @@ class Rando:
         tadtonesanity = self.options["tadtonesanity"]
         if not tadtonesanity:
             self.placement |= VANILLA_TADTONE_PLACEMENT(self.norm, self.areas.checks)
+        trial_treasure_amount = self.options["trial-treasure-amount"]
+        if not self.options["treasuresanity-in-silent-realms"]:
+            trial_treasure_amount = 0
+
+        # make non-randomized trial relics vanilla
+        self.placement |= SOME_VANILLA_RELICS(
+            trial_treasure_amount, self.norm, self.areas.checks
+        )
 
     #
     #

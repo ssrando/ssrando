@@ -328,6 +328,22 @@ nop
 nop
 nop
 
+; don't allow collecting the trial reward again if it has been completed
+; this is in a global function that checks if all tears have been collected
+.org 0x802d7660
+bl has_not_already_completed_trial
+
+; use a custom function to detect items in silent realms to put different color glows for tears & items
+.org 0x8024cffc
+lhz r3, 0x0330(r29)
+bl get_glow_color
+cmpwi r3, 0x4
+
+; get_glow_color replaces this tear subtype function, so skip over it
+.org 0x8024d00c
+nop
+nop
+
 ; don't allow setting storyflag -1 (0x7FFF) in flows (breaks trials & probably other things)
 .org 0x801aff50
 cmplwi r4, -1
@@ -415,13 +431,10 @@ mflr r0
 stw r0,20(r1)
 stw r31,12(r1)
 mr r31,r3 ; r31 is AcOWarp ptr
-lwz r3, STORYFLAG_MANAGER@sda21(r13)
-lhz r4, 0xaa(r31) ; 3rd and 4th byte in params2 is storyflag for completing trial
-bl FlagManager__setFlagTo1 ; set storyflag for completing trial
 lbz r3, 0x4(r31) ; first byte of params1 is itemid
 li r4, -1 ; set pouch slot param to -1, otherwise pouch items break
 li r5, 0 ; 3rd arg for giveItem function call
-bl giveItem ; give the item for the trial
+bl giveItem ; give the item for the trial and save the pointer to it
 stw r3, 0xC94(r31)
 lwz r0,20(r1)
 lwz r31,12(r1)
@@ -435,42 +448,40 @@ cmpwi r3, 0 ; function returns 0 if returning from the trial should be delayed
 beq 0x23A4
 nop
 
-; the trial storyflags got changed, cause they used the same one as the items associated with it
-.org 0x2F48
-li r4, 0x397 ; new storyflag
+; to allow trials to be re-enterable, remove references to untrigger storyflags
+; (0x80ccefa0 - address + 0x130)
+.org 0x2F10
+blr ; skip over func that deletes trial if storyflag is set
 
-.org 0x2F88
-li r4, 0x398
+.org 0x2B1C
+li r3, 0 ; skip over storyflag checks
 
-.org 0x2FD4
-li r4, 0x399
+.org 0x2B5C
+li r3, 0
 
-.org 0x3020
-li r4, 0x39A
+.org 0x2BA8
+li r3, 0
 
-.org 0x2B08
-li r4, 0x397
+.org 0x2BF4
+li r3, 0
 
-.org 0x2B48
-li r4, 0x398
+.org 0xCA0
+li r3, 0
 
-.org 0x2B94
-li r4, 0x399
+.org 0xCE0
+li r3, 0
 
-.org 0x2BE0
-li r4, 0x39A
+.org 0xD2C
+li r3, 0
 
-.org 0xC8C
-li r4, 0x397
+.org 0xD78
+li r3, 0
 
-.org 0xCCC
-li r4, 0x398
+.org 0x2E70
+blr ; remove function that checks for untrigger sceneflag and involves collision destructor
 
-.org 0xD18
-li r4, 0x399
-
-.org 0xD64
-li r4, 0x39A
+.org 0x2008
+li r3, 0 ; checks for untrigger sceneflag; always set to false
 
 ; this usually delays starting the trial finish event until the
 ; tear display is ready, which can softlock so skip the check,
@@ -481,6 +492,10 @@ li r4, 0x39A
 ; preferably, the tear display should be fixed, but this works for now
 .org 0x1A9c
 lbz r0, 0xc90(r30)
+
+; hijack the destructor of the trial
+.org 0x4D6C
+b set_trial_completed_storyflag
 
 .close
 
@@ -884,6 +899,12 @@ beq 0x460
 .org 0x434 ; 0x80ee7d84
 b 0x460
 
+.close
+
+.open "d_a_t_wood_areaNP.rel"
+; skip over the check for valid nearby items so any item can be bonked down nearby
+.org 0x91c
+nop
 .close
 
 .open "d_a_obj_time_boatNP.rel"
