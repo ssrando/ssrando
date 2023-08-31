@@ -39,6 +39,8 @@ main.dol:
     FlagManager__setFlagOrCounter: 0x800bf530
     StoryflagManager__doCommit: 0x800c0460
     ItemflagManager__doCommit: 0x800c03f0
+    STATIC_STORYFLAGS: 0x805a9ad8
+    STATIC_ITEMFLAGS: 0x805a9bd8
     cM_rndI: 0x802e0d20
     LINK_PTR: 0x8057578C
     RELOADER_PTR: 0x80575794
@@ -83,6 +85,9 @@ main.dol:
     Reloader__setReloadTrigger: 0x801bad90
     RoomManager__getRoomByIndex: 0x801b3970
     getCurrentHealth: 0x8000ac80
+    memcpy: 0x800043c4
+    memset: 0x80004714
+    memmove: 0x804c9ca4
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
 d_a_obj_time_boatNP.rel:
