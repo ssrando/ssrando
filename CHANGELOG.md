@@ -2,6 +2,11 @@
 
 ## Dev
 ### Options
+### Changes
+### Bugfixes
+
+## 2.0.0
+### Options
 - Added Tadtonesanity (by CovenEsme)
   - Added 17 "Group of Tadtones" items to the item pool
     - You can hand in all 17 to the Water Dragon to get an item
