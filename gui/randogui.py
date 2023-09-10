@@ -382,7 +382,7 @@ class RandoGUI(QMainWindow):
             extra_steps = 101  # create iso + done
 
         self.progress_dialog = ProgressDialog(
-            "Randomizing",
+            f"Randomizing - Hash: {self.rando.randomizer_hash}",
             "Initializing...",
             self.rando.get_total_progress_steps + extra_steps,
         )
