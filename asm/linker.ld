@@ -2,7 +2,8 @@ SECTIONS
 {
     .text : {
         __text_start = . ;
-        *(.text)
+        KEEP(*(.text))
+        KEEP(*custom_func*(.text.*))
         *(.text.*)
         __text_end  = . ;
     }
