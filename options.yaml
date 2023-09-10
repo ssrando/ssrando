@@ -186,13 +186,13 @@
   choices:
     - None
     - Required Dungeons Separately
-    - All Dungeons
+    - All Surface Dungeons
     - All Dungeons + Sky Keep
   default: None
   help: "Shuffles entrances with one another.
         **None**: entrances are vanilla.
         **Required Dungeons Separately**: required dungeons entrances are only shuffled with each other.
-        **All Dungeons**: all dungeons entrances are shuffled with each other.
+        **All Surface Dungeons**: all surface dungeons entrances are shuffled with each other.
         **All Dungeons + Sky Keep** - all dungeon entrances AND the Sky Keep entrance are shuffled with each other."
   ui: option_randomize_entrances
 - name: Randomize Silent Realms
