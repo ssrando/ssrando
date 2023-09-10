@@ -1057,7 +1057,7 @@
   permalink: false
   cosmetic: true
   help: "Determines the loftwing model pack that will be used in game."
-- name: Random Starting Location
+- name: Random Starting Spawn
   command: random-start-entrance
   type: singlechoice
   bits: 2
