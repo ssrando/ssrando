@@ -523,7 +523,7 @@ class Rando:
             indices = list(range(len(REGULAR_DUNGEONS)))
             shuffle_indices(self.rng, dungeons, indices=indices)
 
-        elif der == "All Dungeons + Sky Keep":
+        elif der == "All Surface Dungeons + Sky Keep":
             self.rng.shuffle(dungeons)
 
         elif der == "Required Dungeons Separately":
