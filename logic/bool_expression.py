@@ -37,6 +37,30 @@ class QueryOption(BoolExpression):
 
 
 @dataclass
+class QueryLessThanOption(BoolExpression):
+    option: str
+    threshold: int
+    negation: bool = False
+
+    def eval(self, options: Options) -> bool:
+        if self.negation:
+            return options[self.option] >= self.threshold
+        return options[self.option] < self.threshold
+
+
+@dataclass
+class QueryGreaterThanOption(BoolExpression):
+    option: str
+    threshold: int
+    negation: bool = False
+
+    def eval(self, options: Options) -> bool:
+        if self.negation:
+            return options[self.option] <= self.threshold
+        return options[self.option] > self.threshold
+
+
+@dataclass
 class QueryContainerOption(BoolExpression):
     option: str
     value: Any
@@ -81,10 +105,13 @@ exp_grammar = r"""
          | "(" disjunction ")"
          | "true" -> mk_true
          | "false" -> mk_false
+         | "Nothing" -> mk_true
          | "Option" text "Enabled" -> mk_enabled
          | "Option" text "Disabled" -> mk_disabled
          | "Option" text "Is" text -> mk_is
          | "Option" text "Is Not" text -> mk_isnot
+         | "Option" text "Is Less Than" text -> mk_islt
+         | "Option" text "Is Greater Than" text -> mk_isgt
          | "Option" text "Contains" text -> mk_contains
          | "Option" text "Does Not Contain" text -> mk_doesnotcontain
 
@@ -130,6 +157,12 @@ class MakeExpression(Transformer):
 
     def mk_isnot(self, option, value):
         return QueryOption(option, value, negation=True)
+
+    def mk_islt(self, option, threshold):
+        return QueryLessThanOption(str(option), int(threshold))
+
+    def mk_isgt(self, option, threshold):
+        return QueryGreaterThanOption(str(option), int(threshold))
 
     def mk_contains(self, option, value):
         return QueryContainerOption(option, value)

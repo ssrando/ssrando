@@ -3,6 +3,7 @@ from collections import defaultdict
 import json
 from random import Random
 from typing import Literal
+from logic.bool_expression import check_static_option_req
 from logic.inventory import EXTENDED_ITEM
 from logic.logic_input import Areas
 
@@ -80,7 +81,8 @@ class InvalidHintDistribution(Exception):
 
 
 class HintDistribution:
-    def __init__(self):
+    def __init__(self, options):
+        self.options = options
         self.hints_per_stone = 0
         self.banned_stones = []
         self.added_locations = []
@@ -182,17 +184,33 @@ class HintDistribution:
             | {
                 areas.short_to_full(loc["location"]): loc["type"]
                 for loc in self.added_locations
+                if check_static_option_req(
+                    loc["condition"].replace("'", '"'), self.options
+                )
             }
-            | {areas.short_to_full(loc): None for loc in self.removed_locations}
+            | {
+                areas.short_to_full(loc["location"]): None
+                for loc in self.removed_locations
+                if check_static_option_req(
+                    loc["condition"].replace("'", '"'), self.options
+                )
+            }
         )
         # Combines those 3 dictionaries, the right-most dict has priority when keys are shared
+
+        # Print always and sometimes hints for conditional hint debugging.
+        # for h in check_hint_status2:
+        #     if check_hint_status2[h] in ("always", "sometimes"):
+        #         print(h, check_hint_status2[h])
 
         self.always_hints = [
             loc for loc, status in check_hint_status2.items() if status == "always"
         ]
+
         self.sometimes_hints = [
             loc for loc, status in check_hint_status2.items() if status == "sometimes"
         ]
+
         self.rng.shuffle(self.always_hints)
         self.rng.shuffle(self.sometimes_hints)
 
@@ -225,8 +243,15 @@ class HintDistribution:
         self.hintable_items = list(HINTABLE_ITEMS)
         for item in self.added_items:
             self.hintable_items.extend([item["name"]] * item["amount"])
-        if SEA_CHART in self.logic.get_useful_items():
-            self.hintable_items.append(SEA_CHART)
+        for item in (
+            SEA_CHART,
+            STONE_OF_TRIALS,
+            TRIFORCE_OF_WISDOM,
+            TRIFORCE_OF_POWER,
+            TRIFORCE_OF_COURAGE,
+        ) + tuple(KEY_PIECES):
+            if item in self.logic.get_useful_items():
+                self.hintable_items.append(item)
         for item in self.removed_items:
             if (loc := self.logic.placement.items[item]) not in self.hinted_locations:
                 self.hinted_locations.append(loc)
