@@ -61,6 +61,28 @@ class BaseRandomizer:
         raise NotImplementedError("abstract")
 
 
+def calculate_rando_hash(seed: int, options: Options):
+    assert seed != -1
+    # hash of seed, options, version
+    current_hash = hashlib.md5()
+    current_hash.update(str(seed).encode("ASCII"))
+    current_hash.update(options.get_permalink().encode("ASCII"))
+    current_hash.update(VERSION.encode("ASCII"))
+    if options["hint-distribution"] == "Custom":
+        if not CUSTOM_HINT_DISTRIBUTION_PATH.exists():
+            raise Exception(
+                "Custom hint distribution file not found. Make sure custom_hint_distribution.json exists at the same location as the randomizer"
+            )
+        with CUSTOM_HINT_DISTRIBUTION_PATH.open("r") as f:
+            normalized_json = json.dumps(json.load(f))
+            current_hash.update(normalized_json.encode("ASCII"))
+    with open(RANDO_ROOT_PATH / "names.txt") as f:
+        names = [s.strip() for s in f.readlines()]
+    hash_random = random.Random()
+    hash_random.seed(current_hash.digest())
+    return " ".join(hash_random.choice(names) for _ in range(3))
+
+
 class Randomizer(BaseRandomizer):
     def __init__(
         self, areas: Areas, options: Options, progress_callback=dummy_progress_callback
@@ -84,27 +106,7 @@ class Randomizer(BaseRandomizer):
         self.rando = Rando(self.areas, self.options, self.rng)
         self.excluded_locations = self.options["excluded-locations"]
         self.dry_run = bool(self.options["dry-run"])
-        self.randomizer_hash = self._get_rando_hash()
-
-    def _get_rando_hash(self):
-        # hash of seed, options, version
-        current_hash = hashlib.md5()
-        current_hash.update(str(self.seed).encode("ASCII"))
-        current_hash.update(self.options.get_permalink().encode("ASCII"))
-        current_hash.update(VERSION.encode("ASCII"))
-        if self.options["hint-distribution"] == "Custom":
-            if not CUSTOM_HINT_DISTRIBUTION_PATH.exists():
-                raise Exception(
-                    "Custom hint distribution file not found. Make sure custom_hint_distribution.json exists at the same location as the randomizer"
-                )
-            with CUSTOM_HINT_DISTRIBUTION_PATH.open("r") as f:
-                normalized_json = json.dumps(json.load(f))
-                current_hash.update(normalized_json.encode("ASCII"))
-        with open(RANDO_ROOT_PATH / "names.txt") as f:
-            names = [s.strip() for s in f.readlines()]
-        hash_random = random.Random()
-        hash_random.seed(current_hash.digest())
-        return " ".join(hash_random.choice(names) for _ in range(3))
+        self.randomizer_hash = calculate_rando_hash(self.seed, self.options)
 
     def check_valid_directory_setup(self):
         # catch common errors with directory setup
