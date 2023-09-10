@@ -2706,7 +2706,7 @@
       subType: 0
       param1: 0
       param2: 0 # item
-      next: 287 # end
+      next: 287
       param3: 9
       param4: 0
       param5: 0
@@ -2720,9 +2720,19 @@
       param2: -1 # will be filled in later if this is a required dungeon
       next: 288
       param3: 0
-  - name: to rando dungeons completed check
+  - name: LMF beaten storyflag
     type: flowpatch
     index: 288
+    flow:
+      type: type3
+      subType: 0
+      param1: 0
+      param2: 935
+      next: 289
+      param3: 0
+  - name: to rando dungeons completed check
+    type: flowpatch
+    index: 289
     flow:
       type: type3
       subType: 1
