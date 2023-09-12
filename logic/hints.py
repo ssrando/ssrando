@@ -23,7 +23,7 @@ class Hints:
         self.options = options
         self.rng = rng
 
-        self.dist = HintDistribution()
+        self.dist = HintDistribution(self.options)
         if self.options["hint-distribution"] == "Custom":
             if not CUSTOM_HINT_DISTRIBUTION_PATH.exists():
                 raise Exception(
