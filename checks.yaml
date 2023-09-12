@@ -55,7 +55,7 @@ Upper Skyloft - Fledge's Crystals:
     - event/115-Town2/325
     - oarc/F001r/l0
   text: <r<lending strength to a friend>> yields
-Upper Skyloft - Cawlin's Crush:
+Upper Skyloft - Item from Cawlin:
   original item: Cawlin's Letter
   type:
   Paths:
@@ -1464,12 +1464,12 @@ Lanayru Mining Facility - Chest in Key Locked Room:
   type:
   Paths:
     - stage/D300/r2/l0/TBox/65
-Lanayru Mining Facility - Hop Across Boxes Raised Chest:
+Lanayru Mining Facility - Raised Chest in Hop across Boxes Room:
   original item: Gust Bellows
   type:
   Paths:
     - stage/D300/r4/l0/TBox/68
-Lanayru Mining Facility - Hop Across Boxes Lower Chest:
+Lanayru Mining Facility - Lower Chest in Hop across Boxes Room:
   original item: Golden Skull # TODO check again
   type:
   Paths:

@@ -40,8 +40,8 @@ Main:
       Blow Up Rocks:
         Sword | Slingshot | Beetle | Bomb Bag | Gust Bellows | Whip | Clawshots | Bow
         # You need to blow up at least one rock in the maze, pretty much any item will make the Froak explode
-      Hop Across Boxes Raised Chest: Blow Up Rocks
-      Hop Across Boxes Lower Chest: Blow Up Rocks
+      Raised Chest in Hop across Boxes Room: Blow Up Rocks
+      Lower Chest in Hop across Boxes Room: Blow Up Rocks
 
     Near Exit:
       exits:

@@ -41,12 +41,12 @@ Main:
 
   Before Scervo:
     exits:
-      Ship's Bow: Sandship Small Key x 2
+      Miniboss Room: Sandship Small Key x 2
       Corridor: Pass Spume | Deck - Freely Usable Timeshift Stone
     locations:
       Chest before 4-Door Corridor: Deck - Freely Usable Timeshift Stone
 
-  Ship's Bow:
+  Miniboss Room:
     exits:
       Before Scervo: Chest
     locations:
