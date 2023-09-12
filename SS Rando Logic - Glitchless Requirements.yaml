@@ -377,10 +377,10 @@ Central Skyloft - Wryna's Crystals:
   Nothing
 
 Central Skyloft - Shed Chest:
-  Water Scale
+  Water Dragon's Scale
 
 Central Skyloft - Shed Goddess Chest:
-  Goddess Cube on Sand Slide & Water Scale
+  Goddess Cube on Sand Slide & Water Dragon's Scale
 
 Central Skyloft - Item in Bird Nest:
   (Clawshots & Gust Bellows) |
@@ -646,7 +646,7 @@ Sky - Goddess Chest on Island next to Bamboo Island:
   Goddess Cube near Mogma Turf Entrance
 
 Sky - Goddess Chest in Cave on Island next to Bamboo Island:
-  Goddess Cube in Secret Passageway & Water Scale
+  Goddess Cube in Secret Passageway & Water Dragon's Scale
 
 Sky - Beedle's Crystals:
   Can Access Beedle's Shop & Horned Colossus Beetle
@@ -802,7 +802,7 @@ Can Open Door to Lake Floria:
   Can Access Most of Faron Woods &
   ((Can Talk to Yerbal & Goddess Sword) |
   (Can Talk to Yerbal & Option "open-lake-floria" Is "Talk to Yerbal") |
-  (Water Scale & Option "open-lake-floria" Is "Open"))
+  (Water Dragon's Scale & Option "open-lake-floria" Is "Open"))
   # You need to charge a skyward strike to open the door to Lake Floria
   # Scene Flag 7x02 is "Cutscene of the Doors to Lake Floria opening"
   # Scene Flag 7x04 is "Doors to Lake Floria opened"
@@ -823,9 +823,9 @@ Faron Woods - Chest behind Bombable Rocks near Erla:
 
 Can Open Trial Gate in Faron Woods:
   Can Access Most of Faron Woods & Farore's Courage & Goddess Harp
-  # Scene Flag 3x02 is "Water Scale Trial Gate"
+  # Scene Flag 3x02 is "Water Dragon's Scale Trial Gate"
 
-Faron Silent Realm - Water Scale:
+Faron Silent Realm - Water Dragon's Scale:
   Can Access Faron Silent Realm
 
 Faron Silent Realm - Relic 1:
@@ -925,7 +925,7 @@ Faron Woods - Gossip Stone in Deep Woods:
 ## Great Tree
 
 Can Access Lower Great Tree:
-  Can Access Most of Faron Woods & Water Scale
+  Can Access Most of Faron Woods & Water Dragon's Scale
 
 Can Swing Great Tree Platforms:
   (Can Access Lower Great Tree | Can Access Upper Great Tree) & Gust Bellows
@@ -945,10 +945,10 @@ Faron Woods - Chest inside Great Tree:
 ## Lake Floria
 
 Can Access Lake Floria above Rock:
-  Can Open Door to Lake Floria & Water Scale
+  Can Open Door to Lake Floria & Water Dragon's Scale
 
 Can Access Lake Floria Statue:
-  Can Access Lake Floria above Rock | (Can Access Floria Waterfall & Water Scale)
+  Can Access Lake Floria above Rock | (Can Access Floria Waterfall & Water Dragon's Scale)
   # You need to blow up a rock to access Floria Statue from above, this is one-way
   # Scene Flag 5x01 is "Lake Floria Statue checked". Works anywhere in Lake Floria, but Waterfall is the only place where it makes sense
 
@@ -960,20 +960,20 @@ Can Access Floria Waterfall:
   # Scene Flag 5x02 is "Lake Floria Waterfall Statue checked", but one needs to be in Lake Floria to RBM it
 
 Can Access Dungeon Entrance in Lake Floria:
-  Can Access Floria Waterfall & Water Scale
+  Can Access Floria Waterfall & Water Dragon's Scale
   # If requiring Sacred Water, make sure the randomizer places the skyview boss key before
 
 Lake Floria - Rupee under Central Boulder:
-  Can Access Lake Floria above Rock & Water Scale
+  Can Access Lake Floria above Rock & Water Dragon's Scale
 
 Lake Floria - Right Rupee behind Northwest Boulder:
-  Can Access Lake Floria above Rock & Water Scale
+  Can Access Lake Floria above Rock & Water Dragon's Scale
 
 Lake Floria - Left Rupee behind Northwest Boulder:
-  Can Access Lake Floria above Rock & Water Scale
+  Can Access Lake Floria above Rock & Water Dragon's Scale
 
 Lake Floria - Rupee behind Southwest Boulder:
-  Can Access Lake Floria above Rock & Water Scale
+  Can Access Lake Floria above Rock & Water Dragon's Scale
 
 Goddess Cube in Lake Floria:
   Can Access Lake Floria Statue & Goddess Sword
@@ -982,7 +982,7 @@ Lake Floria - Lake Floria Chest:
   Can Access Lake Floria Statue
 
 Lake Floria - Dragon Lair South Chest:
-  Can Access Floria Waterfall & Water Scale
+  Can Access Floria Waterfall & Water Dragon's Scale
 
 Lake Floria - Dragon Lair East Chest:
   Can Access Floria Waterfall
@@ -1002,55 +1002,55 @@ Can Access Flooded Faron Woods:
   Can Access Upper Great Tree
 
 Flooded Faron Woods - Yellow Tadtone under Lilypad:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 8 Light Blue Tadtones near Viewing Platform:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Purple Tadtones under Viewing Platform:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Red Moving Tadtone near Viewing Platform:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Light Blue Tadtone under Great Tree Root:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 8 Yellow Tadtones near Kikwi Elder:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Light Blue Moving Tadtones under Kikwi Elder:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Red Moving Tadtones North West of Great Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Green Tadtone behind Upper Bombable Rock:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 2 Dark Blue Tadtones in Grass West of Great Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 8 Green Tadtones in West Tunnel:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 2 Red Tadtones in Grass near Lower Bombable Rock:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 16 Dark Blue Tadtones in the South West:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Purple Moving Tadtones near Floria Gate:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Dark Blue Moving Tadtone inside Small Hollow Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Yellow Tadtones under Small Hollow Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 8 Purple Tadtones in Clearing after Small Hollow Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Water Dragon's Reward:
   Can Access Flooded Faron Woods & Group of Tadtones x17
@@ -1758,7 +1758,7 @@ Goddess Cube in Pirate Stronghold:
 # Global macros
 
 Can Access Skyview 2:
-  Can Access Skyview & Water Scale
+  Can Access Skyview & Water Dragon's Scale
 
 Can Unlock Goddess Walls:
   Ballad of the Goddess & Goddess Harp
@@ -1806,8 +1806,8 @@ Can Raise Skyview Water Level in Right Room:
   # What you would hit the vines with, use it activate the crystal
 
 Skyview - Digging Spot in Crawlspace:
-  Can Raise Skyview Water Level in Right Room & Water Scale & Digging Mitts
-  # It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
+  Can Raise Skyview Water Level in Right Room & Water Dragon's Scale & Digging Mitts
+  # It is possible to get to this dig spot with clawshots instead of Water Dragon's Scale, but only before raising the water. Can't be in logic.
   # It is not possible to jump to the vines early in the main room with scale with only one switch for the water level hit
   # You can hit both switches with good bomb throws
   # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Froak and kill it near the switch, not in logic
@@ -2130,10 +2130,10 @@ Can Do Cistern Clip:
   # Jumpslash to land on collision, or try to backflip into it
 
 Ancient Cistern - Rupee in West Hand:
-  Can Access Ancient Cistern & Water Scale
+  Can Access Ancient Cistern & Water Dragon's Scale
 
 Ancient Cistern - Rupee in East Hand:
-  Can Access Ancient Cistern & Water Scale
+  Can Access Ancient Cistern & Water Dragon's Scale
 
 Can Lower Ancient Cistern Statue:
   ((Can Access AC Main Room Vines | Can Access AC Thread) & Whip) | Can Access Ancient Cistern Boss Key Chest
@@ -2153,28 +2153,28 @@ Can Enter Ancient Cistern Statue:
   )
 
 Ancient Cistern - First Rupee in East Part in Short Tunnel:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Second Rupee in East Part in Short Tunnel:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Third Rupee in East Part in Short Tunnel:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Rupee in East Part in Cubby:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Rupee in East Part in Main Tunnel:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Chest in East Part:
-  Can Access Ancient Cistern & Water Scale & Can Unlock Combination Lock
+  Can Access Ancient Cistern & Water Dragon's Scale & Can Unlock Combination Lock
   # Lilypad Skip is very difficult
 
 Can Clip into AC Whip Room:
   Can Access Ancient Cistern &
   Can Do Cistern Clip &
-  Water Scale &
+  Water Dragon's Scale &
   Ancient Cistern - Cistern Whip Room Clip Trick
 
 Ancient Cistern - Whip:
@@ -2193,13 +2193,13 @@ Ancient Cistern - Chest after Whip Hooks:
 
 # Can Be Locked Out Of If activating the water jet thing under the lilypad before collecting the item
 Ancient Cistern - Rupee under Lilypad:
-  Can Resurface from the AC Gutters & Water Scale
+  Can Resurface from the AC Gutters & Water Dragon's Scale
 
 Can Stop AC Waterfall:
-  (Water Scale & Whip) | (Can Access AC Main Room Vines & Ancient Cistern - Lever Jump Trick)
+  (Water Dragon's Scale & Whip) | (Can Access AC Main Room Vines & Ancient Cistern - Lever Jump Trick)
 
 Can Get Past AC Waterfall:
-  Can Access Ancient Cistern & Can Stop AC Waterfall & Water Scale
+  Can Access Ancient Cistern & Can Stop AC Waterfall & Water Dragon's Scale
   #| Can Access Ancient Cistern BiT
   # You BiTWarp to it, or RBW to it (Sealed Grounds Spiral)
   # Is there a way using Cistern Clip ?
@@ -2211,7 +2211,7 @@ Can Get to AC Boko Key Door:
   Can Get Past AC Waterfall &
   Whip &
   (Beetle | Bow) &
-  (Water Scale | Ancient Cistern - Basement Lilypad Clip Trick)
+  (Water Dragon's Scale | Ancient Cistern - Basement Lilypad Clip Trick)
   # Cut spider thread with either Beetle or Bow
   # Then swim under the lilypad, or clip under it
 

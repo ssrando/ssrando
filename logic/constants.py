@@ -177,7 +177,7 @@ BOMB_BAG = EIN("Bomb Bag")
 GUST_BELLOWS = EIN("Gust Bellows")
 WHIP = EIN("Whip")
 CLAWSHOTS = EIN("Clawshots")
-WATER_SCALE = EIN("Water Scale")
+WATER_DRAGON_SCALE = EIN("Water Dragon's Scale")
 FIRESHIELD_EARRINGS = EIN("Fireshield Earrings")
 SEA_CHART = EIN("Sea Chart")
 EMERALD_TABLET = EIN("Emerald Tablet")
@@ -333,7 +333,7 @@ PROGRESS_ITEMS = (
             GUST_BELLOWS,
             WHIP,
             CLAWSHOTS,
-            WATER_SCALE,
+            WATER_DRAGON_SCALE,
             FIRESHIELD_EARRINGS,
             SEA_CHART,
             EMERALD_TABLET,
@@ -689,7 +689,7 @@ SILENT_REALM_EXITS: dict[str, str] = {
 
 SILENT_REALM_CHECKS: dict[str, str] = {
     SKYLOFT_SILENT_REALM: "Skyloft Silent Realm - Stone of Trials",
-    FARON_SILENT_REALM: "Faron Silent Realm - Water Scale",
+    FARON_SILENT_REALM: "Faron Silent Realm - Water Dragon's Scale",
     ELDIN_SILENT_REALM: "Eldin Silent Realm - Fireshield Earrings",
     LANAYRU_SILENT_REALM: "Lanayru Silent Realm - Clawshots",
 }
@@ -780,7 +780,7 @@ ITEM_FLAGS = {
     CLAWSHOTS: 20,
     WHIP: 137,
     GUST_BELLOWS: 49,
-    WATER_SCALE: 68,
+    WATER_DRAGON_SCALE: 68,
     FIRESHIELD_EARRINGS: 138,
     GODDESS_HARP: 16,
     BALLAD_OF_THE_GODDESS: 186,
@@ -820,7 +820,7 @@ ITEM_STORY_FLAGS = {
     CAWLINS_LETTER: 547,
     SPIRAL_CHARGE: 364,
     SEA_CHART: 271,
-    WATER_SCALE: 206,  # Completed Faron Trial
+    WATER_DRAGON_SCALE: 206,  # Completed Faron Trial
     FIRESHIELD_EARRINGS: 207,  # Completed Eldin Trial
     CLAWSHOTS: 208,  # Completed Lanayru Trial
     STONE_OF_TRIALS: (210, 209),  # Obtained SoT, Completed Hylia's Trial
@@ -874,7 +874,7 @@ RANDOM_STARTING_ITEMS = [
     CLAWSHOTS,
     WHIP,
     GUST_BELLOWS,
-    WATER_SCALE,
+    WATER_DRAGON_SCALE,
     FIRESHIELD_EARRINGS,
     GODDESS_HARP,
     SPIRAL_CHARGE,

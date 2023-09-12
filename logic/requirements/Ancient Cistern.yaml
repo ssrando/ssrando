@@ -12,7 +12,7 @@ Main:
       East Part: Lever to East Part
       After Whip Hooks: Whip
       Vines Area: Vines Area - Activate Water Geyser | (Whip & Clawshots)
-      Behind the Waterfall: Lever to Block Waterfall & Water Scale
+      Behind the Waterfall: Lever to Block Waterfall & Water Dragon's Scale
       Inside Statue: Can Lower Statue | Ancient Cistern Small Key x 2
       Basement - Under the Statue: Ancient Cistern - Cistern Clip Trick
       Inside Statue - Whip Chest Room: Ancient Cistern - Cistern Clip Trick & Ancient Cistern - Cistern Whip Room Clip Trick
@@ -20,8 +20,8 @@ Main:
       Lock Combination Knowledge: Nothing
       Lever to East Part: Nothing
       Lever to Block Waterfall: Whip
-      Rupee in East Hand: Water Scale
-      Rupee in West Hand: Water Scale
+      Rupee in East Hand: Water Dragon's Scale
+      Rupee in West Hand: Water Dragon's Scale
 
     After Whip Hooks:
       exits:
@@ -59,10 +59,10 @@ Main:
         Upper Area: Flip First Lilypad & Activate Water Geyser & Flip Second Lilypad 2
       locations:
         Lower Lever: Nothing
-        Flip First Lilypad: Water Scale & Whip
+        Flip First Lilypad: Water Dragon's Scale & Whip
         Flip Second Lilypad 1: Flip First Lilypad
-        Rupee under Lilypad: Flip Second Lilypad 1 & Water Scale & Impossible  # Can be skipped
-        Activate Water Geyser: Flip Second Lilypad 1 & Water Scale
+        Rupee under Lilypad: Flip Second Lilypad 1 & Water Dragon's Scale & Impossible  # Can be skipped
+        Activate Water Geyser: Flip Second Lilypad 1 & Water Dragon's Scale
         Flip Second Lilypad 2: Flip First Lilypad & Activate Water Geyser & Whip
 
       Upper Area:
@@ -91,15 +91,15 @@ Main:
     Second Room:
       exits:
         East Part: Nothing
-        East Part - Chest Ledge: Flip Main Lilypad & Water Scale  # or Lilypad Skip
+        East Part - Chest Ledge: Flip Main Lilypad & Water Dragon's Scale  # or Lilypad Skip
       locations:
         Flip Side Lilypad: Nothing
         Flip Main Lilypad: Nothing
-        Rupee in East Part in Cubby: Flip Side Lilypad & Water Scale
-        First Rupee in East Part in Short Tunnel: Water Scale
-        Second Rupee in East Part in Short Tunnel: Water Scale
-        Third Rupee in East Part in Short Tunnel: Water Scale
-        Rupee in East Part in Main Tunnel: Flip Main Lilypad & Water Scale
+        Rupee in East Part in Cubby: Flip Side Lilypad & Water Dragon's Scale
+        First Rupee in East Part in Short Tunnel: Water Dragon's Scale
+        Second Rupee in East Part in Short Tunnel: Water Dragon's Scale
+        Third Rupee in East Part in Short Tunnel: Water Dragon's Scale
+        Rupee in East Part in Main Tunnel: Flip Main Lilypad & Water Dragon's Scale
 
     Chest Ledge:
       exits:
@@ -110,13 +110,13 @@ Main:
   Basement Gutters:
     exits:
       Past Skulltula:
-        Can Get Past Skulltula & Water Scale # | Ancient Cistern - Basement Lilypad Clip Trick)
+        Can Get Past Skulltula & Water Dragon's Scale # | Ancient Cistern - Basement Lilypad Clip Trick)
     locations:
       Can Get Past Skulltula: Beetle | Bow
 
     Past Skulltula:
       exits:
-        Basement Gutters: Water Scale
+        Basement Gutters: Water Dragon's Scale
         Main Room - After Gutters: Ancient Cistern Small Key x 2
       locations:
         Bokoblin: Whip

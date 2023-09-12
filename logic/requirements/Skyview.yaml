@@ -4,7 +4,7 @@ hint-region: Skyview
 
 # Global macros
 macros:
-  Skyview 2: Water Scale
+  Skyview 2: Water Dragon's Scale
   Can Hit High Skyview Switches: Distance Activator | (Bomb Bag & Bomb Throws Trick)
   Can Cut Tree: Sword | Bomb Bag
 
@@ -44,7 +44,7 @@ Main:
       Second Hub: One Water Raise & Skyview Small Key
     locations:
       First Room - Destroy Barricade: Nothing
-      Switch to Left Room: Can Hit Switch | (One Water Raise & Water Scale)
+      Switch to Left Room: Can Hit Switch | (One Water Raise & Water Dragon's Scale)
       Switch to Right Room: Can Hit High Skyview Switches
       One Water Raise: Left Room - Raise Water | Right Room - Raise Water
 
@@ -62,7 +62,7 @@ Main:
         exits:
           First Hub: Nothing
           After Crawlspace: Nothing
-          After Crawlspace - With Water: Water Scale
+          After Crawlspace - With Water: Water Dragon's Scale
 
       After Crawlspace:
         exits:

@@ -2213,7 +2213,7 @@ class GamePatcher:
                 "The song that leads you to the final trial.",
                 "Song of the Hero - Trial Hint",
             ),
-            "Faron Silent Realm - Water Scale": (
+            "Faron Silent Realm - Water Dragon's Scale": (
                 "Farore's Courage Text",
                 653,
                 "This song opens the trial located in Faron\nWoods.",

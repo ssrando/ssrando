@@ -665,13 +665,13 @@
       param2: 300 # Rupees to add
       next: -1
       param3: 8 # Increase rupee count
-  # - name: Patch Water Scale item get when floria gates are open
+  # - name: Patch Water Dragon Scale item get when floria gates are open
   #   onlyif: Option "open-lake-floria" Is "Open"
   #   type: flowpatch
   #   index: 500
   #   flow:
-  #     next: Open Lake Floria Doors when getting Water Scale 1
-  # - name: Open Lake Floria Doors when getting Water Scale 1
+  #     next: Open Lake Floria Doors when getting Water Dragon Scale 1
+  # - name: Open Lake Floria Doors when getting Water Dragon Scale 1
   #   onlyif: Option "open-lake-floria" Is "Open"
   #   type: flowadd
   #   flow:
@@ -679,9 +679,9 @@
   #     subType: 1
   #     param1: 50 # scene flag
   #     param2: 1 # scene index (Faron Woods)
-  #     next: Open Lake Floria Doors when getting Water Scale 2
+  #     next: Open Lake Floria Doors when getting Water Dragon Scale 2
   #     param3: 2
-  # - name: Open Lake Floria Doors when getting Water Scale 2
+  # - name: Open Lake Floria Doors when getting Water Dragon Scale 2
   #   onlyif: Option "open-lake-floria" Is "Open"
   #   type: flowadd
   #   flow:
