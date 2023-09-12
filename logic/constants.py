@@ -14,48 +14,9 @@ MAX_HINTS_PER_STONE = 8
 MAX_FI_HINTS = 64  # Fi hints have no such limits since they're segmented, though an upper bound might be good to have.
 MAX_STONE_HINTS = MAX_HINTS_PER_STONE * NUMBER_OF_HINT_STONES
 
-# Logic options, runtime requirements
-
-OPEN_THUNDERHEAD_OPTION = EIN("Open Thunderhead option")
-OPEN_ET_OPTION = EIN("Open ET option")
-OPEN_LMF_OPTION = EIN("Open LMF option")
-LMF_NODES_ON_OPTION = EIN("LMF Nodes On option")
-FLORIA_GATES_OPTION = EIN("Floria Gates option")
-TALK_TO_YERBAL_OPTION = EIN("Talk to Yerbal option")
-VANILLA_LAKE_FLORIA_OPTION = EIN("Vanilla Lake Floria option")
-OPEN_LAKE_FLORIA_OPTION = EIN("Open Lake Floria option")
-RANDOMIZED_BEEDLE_OPTION = EIN("Randomized Beedle option")
-GONDO_UPGRADES_ON_OPTION = EIN("Gondo Upgrades On option")
-NO_BIT_CRASHES = EIN("No BiT crashes")
-NONLETHAL_HOT_CAVE = EIN("Nonlethal Hot Cave")
-UPGRADED_SKYWARD_STRIKE = EIN("Upgraded Skyward Strike option")
-FS_LAVA_FLOW_OPTION = EIN("FS Lava Flow option")
-
 GOT_OPENING_REQUIREMENT = EIN("GoT Opening Requirement")
 GOT_RAISING_REQUIREMENT = EIN("GoT Raising Requirement")
 HORDE_DOOR_REQUIREMENT = EIN("Horde Door Requirement")
-
-LOGIC_OPTIONS = dict.fromkeys(
-    [
-        OPEN_THUNDERHEAD_OPTION,
-        OPEN_ET_OPTION,
-        OPEN_LMF_OPTION,
-        LMF_NODES_ON_OPTION,
-        FLORIA_GATES_OPTION,
-        TALK_TO_YERBAL_OPTION,
-        VANILLA_LAKE_FLORIA_OPTION,
-        OPEN_LAKE_FLORIA_OPTION,
-        RANDOMIZED_BEEDLE_OPTION,
-        GONDO_UPGRADES_ON_OPTION,
-        NO_BIT_CRASHES,
-        NONLETHAL_HOT_CAVE,
-        UPGRADED_SKYWARD_STRIKE,
-        FS_LAVA_FLOW_OPTION,
-        GOT_OPENING_REQUIREMENT,
-        GOT_RAISING_REQUIREMENT,
-        HORDE_DOOR_REQUIREMENT,
-    ]
-)
 
 # Locations
 
