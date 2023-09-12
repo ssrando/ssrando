@@ -801,6 +801,7 @@
     - CDMC
     - Dowsing & Fi Hints
     - 2D Dowsing & Fi Hints
+    - Boss Keysanity Fi Hints
     - Custom
   default: Balanced
   help: "Determines the distribution of hints that appear on Gossip Stones.
