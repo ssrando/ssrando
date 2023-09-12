@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.1
+## Created by: Qt User Interface Compiler version 6.5.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1564,9 +1564,9 @@ class Ui_MainWindow(object):
         self.tab_cosmetics.setObjectName(u"tab_cosmetics")
         self.verticalLayout_31 = QVBoxLayout(self.tab_cosmetics)
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
-        self.horizontalLayout_10 = QHBoxLayout()
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_101 = QHBoxLayout()
+        self.horizontalLayout_101.setObjectName(u"horizontalLayout_101")
+        self.horizontalLayout_101.setContentsMargins(-1, -1, -1, 0)
         self.custom_model_settings = QVBoxLayout()
         self.custom_model_settings.setObjectName(u"custom_model_settings")
         self.hlay_type_options = QHBoxLayout()
@@ -1644,7 +1644,7 @@ class Ui_MainWindow(object):
         self.custom_model_settings.addLayout(self.hlay_pack_options)
 
 
-        self.horizontalLayout_10.addLayout(self.custom_model_settings)
+        self.horizontalLayout_101.addLayout(self.custom_model_settings)
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
@@ -1688,10 +1688,10 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.color_presets_list, 0, 1, 1, 3)
 
 
-        self.horizontalLayout_10.addLayout(self.gridLayout)
+        self.horizontalLayout_101.addLayout(self.gridLayout)
 
 
-        self.verticalLayout_31.addLayout(self.horizontalLayout_10)
+        self.verticalLayout_31.addLayout(self.horizontalLayout_101)
 
         self.hlay_colors_and_preview = QHBoxLayout()
         self.hlay_colors_and_preview.setObjectName(u"hlay_colors_and_preview")
@@ -2002,7 +2002,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(1)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -2073,7 +2073,7 @@ class Ui_MainWindow(object):
         self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Dungeon Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
         self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
-        self.label_for_option_random_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Location", None))
+        self.label_for_option_random_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Spawn", None))
         self.option_limit_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Limit Starting Location", None))
         self.box_dungeons.setTitle(QCoreApplication.translate("MainWindow", u"Dungeons", None))
         self.label_for_option_map_mode.setText(QCoreApplication.translate("MainWindow", u"Map Mode", None))
