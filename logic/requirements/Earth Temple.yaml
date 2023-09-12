@@ -46,7 +46,7 @@ Main:
       Hub Room: Nothing
       # It'd be annoying to put in logic, but you need boulder access to reach the central part
     locations:
-      Bomb Bag: Can Defeat Lizalfos
+      Chest after Double Lizalfos Fight: Can Defeat Lizalfos
 
   West Room:
     exits:
@@ -97,4 +97,4 @@ Spring:
   exits:
     Exit: Nothing
   locations:
-    Amber Tablet: Goddess Sword
+    Strike Crest: Goddess Sword

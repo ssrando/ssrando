@@ -83,8 +83,8 @@ Faron Woods:
     All Kikwis Saved: (Sword | Beetle) & Can Defeat Bokoblins
     Kikwi Elder's Reward: All Kikwis Saved
     Item on Tree: Nothing
-    Item behind Bombable Rock: Bomb Bag
-    Chest behind Bombable Rocks near Erla: Bomb Bag
+    Item behind Lower Bombable Rock: Bomb Bag
+    Chest behind Upper Bombable Rock: Bomb Bag
 
   Entry:
     exits:
@@ -227,7 +227,7 @@ Faron Silent Realm:
   exits:
     Exit: Nothing
   locations:
-    Water Dragon's Scale: Nothing
+    Trial Reward: Nothing
     Relic 1: Nothing
     Relic 2: Nothing
     Relic 3: Nothing

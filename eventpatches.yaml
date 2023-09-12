@@ -2730,7 +2730,7 @@
       param2: 7
       next: -1
       param3: 7
-  - name: Fix Hook Beetle check # the robot doesn't give the item after harp
+  - name: Fix Caged Robot check # the robot doesn't give the item after harp
     type: flowpatch
     index: 39
     flow:

@@ -105,7 +105,7 @@ Main:
       exits:
         Second Hub: Nothing
       locations:
-        Beetle: Sword | Skyview 2
+        Chest after Stalfos Fight: Sword | Skyview 2
 
     Left Rooms:
       exits:
@@ -172,6 +172,6 @@ Spring:
     # Crest Hit: Ruby Tablet
   locations:
     Rupee on Spring Pillar: Beetle
-    Ruby Tablet: Goddess Sword
+    Strike Crest: Goddess Sword
     Goddess Cube in Skyview Spring: Goddess Sword
     Sacred Water: Bottle & Skyview 2

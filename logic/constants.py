@@ -485,9 +485,9 @@ DUNGEON_MAIN_EXITS = {
 }
 
 DUNGEON_FINAL_CHECK = {
-    SV: SV + sep + RUBY_TABLET,
-    ET: ET + sep + AMBER_TABLET,
-    LMF: LMF + sep + GODDESS_HARP,
+    SV: SV + sep + "Strike Crest",
+    ET: ET + sep + "Strike Crest",
+    LMF: LMF + sep + "Hall of Ancient Robots",
     AC: AC + sep + "Farore's Flame",
     SSH: SSH + sep + "Nayru's Flame",
     FS: FS + sep + "Din's Flame",
@@ -688,10 +688,10 @@ SILENT_REALM_EXITS: dict[str, str] = {
 }
 
 SILENT_REALM_CHECKS: dict[str, str] = {
-    SKYLOFT_SILENT_REALM: "Skyloft Silent Realm - Stone of Trials",
-    FARON_SILENT_REALM: "Faron Silent Realm - Water Dragon's Scale",
-    ELDIN_SILENT_REALM: "Eldin Silent Realm - Fireshield Earrings",
-    LANAYRU_SILENT_REALM: "Lanayru Silent Realm - Clawshots",
+    SKYLOFT_SILENT_REALM: "Skyloft Silent Realm - Trial Reward",
+    FARON_SILENT_REALM: "Faron Silent Realm - Trial Reward",
+    ELDIN_SILENT_REALM: "Eldin Silent Realm - Trial Reward",
+    LANAYRU_SILENT_REALM: "Lanayru Silent Realm - Trial Reward",
 }
 
 SILENT_REALM_CHECKS_REV = lambda norm: {

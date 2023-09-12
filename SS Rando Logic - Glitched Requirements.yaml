@@ -920,7 +920,7 @@ Upper Skyloft - Crystal in Knight Academy Plant:
 Upper Skyloft - Owlan's Crystals:
   Can Reach Oolo in Faron 2 | (Can Access Most of Faron Woods & Can Access Flooded Faron Woods)
 
-Upper Skyloft - Cawlin's Letter:
+Upper Skyloft - Cawlin's Crush:
   Goddess Harp
 
 Upper Skyloft - Ghost/Pipit's Crystals:
@@ -1014,7 +1014,7 @@ Can Open Trial Gate on Skyloft:
   # RBW method: When you are entering the trial, you want to start the file as the camera pans up, and you should BiTSave that file at the Bazzar statue in order to not spawn very far OoB
   # RBW method does not work with trial rando
 
-Skyloft Silent Realm - Stone of Trials:
+Skyloft Silent Realm - Trial Reward:
   Can Access Skyloft Silent Realm
 
 Skyloft Silent Realm - Relic 1:
@@ -1242,7 +1242,7 @@ Sky - Southwest Triple Island Upper Goddess Chest:
   Goddess Cube at Eldin Entrance
 
 Sky - Southwest Triple Island Lower Goddess Chest:
-  Goddess Cube near Hook Beetle Fight
+  Goddess Cube near Caged Robot
 
 Sky - Southwest Triple Island Cage Goddess Chest:
   Goddess Cube in Skipper's Retreat & Clawshots
@@ -1351,13 +1351,13 @@ Thunderhead - Song from Levias:
 
 ## Isle of Songs
 
-Thunderhead - Isle of Songs - Farore's Courage:
+Thunderhead - Isle of Songs - Strike Crest with Goddess Sword:
   Can Access Thunderhead & Goddess Sword
 
-Thunderhead - Isle of Songs - Nayru's Wisdom:
+Thunderhead - Isle of Songs - Strike Crest with Longsword:
   Can Access Thunderhead & Goddess Longsword
 
-Thunderhead - Isle of Songs - Din's Power:
+Thunderhead - Isle of Songs - Strike Crest with White Sword:
   Can Access Thunderhead & Goddess White Sword
 
 Thunderhead - Goddess Chest outside Isle of Songs:
@@ -1494,7 +1494,7 @@ Can Open Trial Gate in Faron Woods:
   # Scene Flag 3x02 is "Water Dragon's Scale Trial Gate"
   # Trial RBW does not work with trial rando
 
-Faron Silent Realm - Water Dragon's Scale:
+Faron Silent Realm - Trial Reward:
   Can Access Faron Silent Realm
 
 Faron Silent Realm - Relic 1:
@@ -1776,7 +1776,7 @@ Can Open Trial Gate in Eldin Volcano:
   Can Access Second Part of Eldin
   # Scene Flag 9x40 is "Fireshield Earrings Trial Gate Opened"
 
-Eldin Silent Realm - Fireshield Earrings:
+Eldin Silent Realm - Trial Reward:
   Can Access Eldin Silent Realm
 
 Eldin Silent Realm - Relic 1:
@@ -1915,7 +1915,7 @@ Mogma Turf - Chest behind Bombable Wall at Entrance:
 Mogma Turf - Sand Slide Chest:
   Can Access Second Part of Mogma Turf
 
-Mogma Turf - Digging Mitts Fight:
+Mogma Turf - Defeat Bokoblins:
   Can Access Mogma Turf & Can Defeat Bokoblins
 
 Mogma Turf - Chest behind Bombable Wall in Fire Maze:
@@ -2057,15 +2057,15 @@ Can Retrieve Party Wheel:
 Lanayru Desert - Chest near Party Wheel:
   Can Access Higher Part near Entrance
 
-Lanayru Desert - Chest near Hook Beetle Fight:
+Lanayru Desert - Chest near Caged Robot:
   Can Access Lanayru Desert
 
-Lanayru Desert - Hook Beetle Fight:
+Lanayru Desert - Rescue Caged Robot:
   Can Access Lanayru Desert & (Bomb Bag | Hook Beetle | Can RBM 3x10)
   # You can use bomb flowers to defeat the technoblins
   # Scene Flag 3x10 is "Timeshift Stone for Hook Beetle fight revealed"
 
-Goddess Cube near Hook Beetle Fight:
+Goddess Cube near Caged Robot:
   Can Access Lanayru Desert & (Long Range Skyward Strike | (Clawshots & Goddess Sword))
   # On hero mode you can skyward strike this one early with a jumpslash
 
@@ -2154,7 +2154,7 @@ Can Open Trial Gate in Lanayru Desert:
   Can Access Second Part of Lanayru Desert
   # Scene Flag Ax08 is "Clawshots Trial Gate Opened"
 
-Lanayru Silent Realm - Clawshots:
+Lanayru Silent Realm - Trial Reward:
   Can Access Lanayru Silent Realm
 
 Lanayru Silent Realm - Relic 1:
@@ -2279,7 +2279,7 @@ Goddess Cube in Lanayru Gorge:
 Lanayru Gorge - Item on Pillar:
   Can Access Lanayru Gorge & Beetle
 
-Lanayru Gorge - Life Tree Seedling:
+Lanayru Gorge - Digging Spot:
   Can Access Lanayru Gorge & Gust Bellows & Can Hit Timeshift Stone & Digging Mitts
 
 Lanayru Gorge - Thunder Dragon's Reward:
@@ -2469,7 +2469,7 @@ Can Get Past Staldra Room:
   # You can enter from the key door after the rope, from backwards if you can already reach Last Room,
   # or from Unloaded Skyview where the gate between Hub Room and Last Room (and the Skulltula) aren't loaded
 
-Skyview - Beetle:
+Skyview - Chest after Stalfos Fight:
   Can Get to Skyview Second Part & Distance Activator & (Sword | Can Access Skyview 2)
   # Bombs don't work to hit the switch
   # The fight requires sword, but is skipped in Skyview 2
@@ -2535,7 +2535,7 @@ Skyview - Heart Container:
 Skyview - Rupee on Spring Pillar:
   Can Beat Ghirahim 1 & Beetle
 
-Skyview - Ruby Tablet:
+Skyview - Strike Crest:
   Can Beat Skyview
 
 Goddess Cube in Skyview Spring:
@@ -2576,7 +2576,7 @@ Earth Temple - Chest in West Room:
 Can Get Past Earth Temple Miniboss Room:
   Can Access Earth Temple Second Room & Can Defeat Lezalfos
 
-Earth Temple - Bomb Bag:
+Earth Temple - Chest after Double Lizalfos Fight:
   Can Get Past Earth Temple Miniboss Room
 
 Earth Temple - Ledd's Gift:
@@ -2616,7 +2616,7 @@ Can Beat Earth Temple:
 Earth Temple - Heart Container:
   Can Access Earth Temple Boss Door & Earth Temple Boss Key & Can Beat Scaldera
 
-Earth Temple - Amber Tablet:
+Earth Temple - Strike Crest:
   Can Beat Earth Temple
 
 ## Lanayru Mining Facility
@@ -2654,15 +2654,15 @@ Can Access LMF Key Locked Room in Past:
 Lanayru Mining Facility - Chest in Key Locked Room:
   Can Access LMF Key Locked Room in Past
 
-Can Blow Up Rocks in LMF Gust Bellows Room:
+Can Blow Up Rocks in LMF Hop Across Boxes Room:
   Sword | Slingshot | Beetle | Bomb Bag | Gust Bellows | Whip | Clawshots | Bow
   # You need to blow up at least one rock in the maze, pretty much any item will make the Froak explode
 
-Lanayru Mining Facility - Gust Bellows:
-  Can Access LMF Key Locked Room in Past & Can Blow Up Rocks in LMF Gust Bellows Room
+Lanayru Mining Facility - Hop Across Boxes Raised Chest:
+  Can Access LMF Key Locked Room in Past & Can Blow Up Rocks in LMF Hop Across Boxes Room
 
-Lanayru Mining Facility - Chest inside Gust Bellows Room:
-  Can Access LMF Key Locked Room in Past & Can Blow Up Rocks in LMF Gust Bellows Room
+Lanayru Mining Facility - Hop Across Boxes Lower Chest:
+  Can Access LMF Key Locked Room in Past & Can Blow Up Rocks in LMF Hop Across Boxes Room
 
 Can Access LMF First West Room:
   Can Access LMF Second Room & Gust Bellows
@@ -2740,7 +2740,7 @@ Can Beat Lanayru Mining Facility:
   Can Access Lanayru Mining Facility Boss Key Door & Lanayru Mining Facility Boss Key & Can Defeat Moldarach & (Beetle | Bow)
   # You need to be able to shoot the timeshift stone in the last room
 
-Lanayru Mining Facility - Goddess Harp:
+Lanayru Mining Facility - Hall of Ancient Robots:
   Can Beat Lanayru Mining Facility
 
 ## Ancient Cistern
@@ -2790,7 +2790,7 @@ Ancient Cistern - Chest in East Part:
 Can Clip into AC Whip Room:
   Can Access Ancient Cistern & Can Do Cistern Clip & Water Dragon's Scale
 
-Ancient Cistern - Whip:
+Ancient Cistern - Chest in Key Locked Room:
   (Can Enter Ancient Cistern Statue & (Can Defeat Stalmaster | Can Lower Ancient Cistern Statue)) |
   Can Clip into AC Whip Room
   # When using the clip, use the boms to deathwarp
@@ -2884,7 +2884,7 @@ Sandship - Chest behind Combination Lock:
   # Present: Deal with the Spume, unlock the hint, hit the combination lock
   # Past: Read the hint, hit the combination lock
 
-Sandship - Bow:
+Sandship - Chest after Scervo Fight:
   Can Access Sandship & Sandship Small Key x2 & Sword
   # Could add Pouch for a shield
 
@@ -2976,7 +2976,7 @@ Can Access FS Miniboss Room and Defeat Magmanos:
   Can Get Past Second Room with Water Pod & Sword & Fire Sanctuary Small Key x2
   # Sword needed to grab a water plant
 
-Fire Sanctuary - Mogma Mitts:
+Fire Sanctuary - Rescue First Trapped Mogma:
   Can Access FS Miniboss Room and Defeat Magmanos
 
 Can Access Second FS Bridge:
@@ -2995,7 +2995,7 @@ Can Access Second Captured Mogma Room:
 Can Free Second Captured Mogma:
   Can Access Second Captured Mogma Room & Mogma Mitts & Sword
 
-Fire Sanctuary - Chest after Second Trapped Mogma:
+Fire Sanctuary - Rescue Second Trapped Mogma:
   Can Free Second Captured Mogma | Can Access FS Outdoor Unloaded
   # Scene Flag 3x40 is "Map Chest appears"
 
@@ -3118,7 +3118,7 @@ Sky Keep - Chest after Dreadfuse:
 Can Get Triforce of Power:
   Can Get Past SK Fire Sanctuary Room
 
-Sky Keep - Triforce of Power:
+Sky Keep - Sacred Power of Din:
   Can Get Triforce of Power
 
 Can Get Triforce of Wisdom:
