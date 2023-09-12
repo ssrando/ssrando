@@ -242,7 +242,11 @@ class HintDistribution:
 
         self.hintable_items = list(HINTABLE_ITEMS)
         for item in self.added_items:
-            self.hintable_items.extend([item["name"]] * item["amount"])
+            if check_static_option_req(
+                item["condition"].replace("'", '"'), self.options
+            ):
+                self.hintable_items.extend([item["name"]] * item["amount"])
+
         for item in (
             SEA_CHART,
             STONE_OF_TRIALS,
@@ -252,11 +256,18 @@ class HintDistribution:
         ) + tuple(KEY_PIECES):
             if item in self.logic.get_useful_items():
                 self.hintable_items.append(item)
+
         for item in self.removed_items:
-            if (loc := self.logic.placement.items[item]) not in self.hinted_locations:
-                self.hinted_locations.append(loc)
-            if item in self.hintable_items:
-                self.hintable_items.remove(item)
+            if check_static_option_req(
+                item["condition"].replace("'", '"'), self.options
+            ):
+                if (
+                    loc := self.logic.placement.items[item["name"]]
+                ) not in self.hinted_locations:
+                    self.hinted_locations.append(loc)
+                if item in self.hintable_items:
+                    self.hintable_items.remove(item["name"])
+
         self.rng.shuffle(self.hintable_items)
 
         region_barren, nonprogress = self.logic.get_barren_regions()

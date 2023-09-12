@@ -5,10 +5,10 @@
   "added_locations": [],
   "removed_locations": [],
   "added_items": [
-      {"name": "Progressive Bug Net #0", "amount": 1},
-      {"name": "Progressive Mitts #0",   "amount": 1},
-      {"name": "Progressive Mitts #1",   "amount": 1},
-      {"name": "Tumbleweed",             "amount": 1}
+      {"name": "Progressive Bug Net #0", "amount": 1, "condition": "Nothing"},
+      {"name": "Progressive Mitts #0",   "amount": 1, "condition": "Nothing"},
+      {"name": "Progressive Mitts #1",   "amount": 1, "condition": "Nothing"},
+      {"name": "Tumbleweed",             "amount": 1, "condition": "Nothing"}
   ],
   "removed_items": [],
   "dungeon_sots_limit": 1,
