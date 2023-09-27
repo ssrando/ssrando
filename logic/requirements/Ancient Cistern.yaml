@@ -61,7 +61,7 @@ Main:
         Lower Lever: Nothing
         Flip First Lilypad: Water Scale & Whip
         Flip Second Lilypad 1: Flip First Lilypad
-        Rupee under Lilypad: Flip Second Lilypad 1 & Water Scale & Impossible  # Can be skipped
+        Rupee under Lilypad: Flip Second Lilypad 1 & Water Scale
         Activate Water Geyser: Flip Second Lilypad 1 & Water Scale
         Flip Second Lilypad 2: Flip First Lilypad & Activate Water Geyser & Whip
 
