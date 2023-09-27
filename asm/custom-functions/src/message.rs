@@ -2,15 +2,15 @@ use core::ffi::{c_int, c_void};
 
 #[repr(C)]
 pub struct FlowElement {
-    pub typ: u8,
+    pub typ:      u8,
     pub sub_type: u8,
-    pub pad: u16,
-    pub param1: u16,
-    pub param2: u16,
-    pub next: u16,
-    pub param3: u16,
-    pub param4: u16,
-    pub param5: u16,
+    pub pad:      u16,
+    pub param1:   u16,
+    pub param2:   u16,
+    pub next:     u16,
+    pub param3:   u16,
+    pub param4:   u16,
+    pub param5:   u16,
 }
 
 // opaque
@@ -21,7 +21,7 @@ pub struct TextManager {
 
 #[repr(C)]
 pub struct LytMsgWindow {
-    pad: [u8; 0x724],
+    pad:              [u8; 0x724],
     pub text_manager: *mut TextManager,
 }
 

@@ -17,48 +17,48 @@ mod message;
 
 #[repr(C)]
 struct SpawnStruct {
-    name: [u8; 32],
+    name:                   [u8; 32],
     transition_fade_frames: u16,
-    room: u8,
-    layer: u8,
-    entrance: u8,
-    night: u8,
-    trial: u8,
-    transition_type: u8,
-    field8_0x28: u8,
-    field9_0x29: u8,
-    field10_0x2a: u8,
-    field11_0x2b: u8,
+    room:                   u8,
+    layer:                  u8,
+    entrance:               u8,
+    night:                  u8,
+    trial:                  u8,
+    transition_type:        u8,
+    field8_0x28:            u8,
+    field9_0x29:            u8,
+    field10_0x2a:           u8,
+    field11_0x2b:           u8,
 }
 
 #[repr(C)]
 struct DungeonflagManager {
     should_commit: bool,
-    flagindex: c_ushort,
+    flagindex:     c_ushort,
 }
 
 #[repr(C)]
 struct ActorEventFlowMgr {
-    vtable: u32,
-    msbf_info: u32,
-    current_flow_index: u32,
-    unk1: u32,
-    unk2: u32,
-    unk3: u32,
+    vtable:                     u32,
+    msbf_info:                  u32,
+    current_flow_index:         u32,
+    unk1:                       u32,
+    unk2:                       u32,
+    unk3:                       u32,
     result_from_previous_check: u32,
-    current_text_label_name: [u8; 32],
-    unk4: u32,
-    unk5: u32,
-    unk6: u32,
-    next_flow_delay_timer: u32,
-    another_flow_element: u128,
-    unk7: u32,
-    unk8: u32,
+    current_text_label_name:    [u8; 32],
+    unk4:                       u32,
+    unk5:                       u32,
+    unk6:                       u32,
+    next_flow_delay_timer:      u32,
+    another_flow_element:       u128,
+    unk7:                       u32,
+    unk8:                       u32,
 }
 
 #[repr(C)]
 struct AcOBird {
-    pad: [u8; 0x144],
+    pad:   [u8; 0x144],
     speed: f32,
 }
 
@@ -93,25 +93,25 @@ impl SpecialMinigameState {
 
 #[repr(C)]
 struct Reloader {
-    _0: [u8; 0x290],
-    initial_speed: f32,
-    stamina_amount: u32,
-    item_to_use_on_reload: u8,
-    beedle_shop_spawn_state: u8,
-    spawn_state: i16, // actionIndex
-    last_area_type: u32,
-    type_0_pos_flag: u8,
-    unk: u8,
-    save_prompt_flag: u8,
+    _0:                        [u8; 0x290],
+    initial_speed:             f32,
+    stamina_amount:            u32,
+    item_to_use_on_reload:     u8,
+    beedle_shop_spawn_state:   u8,
+    spawn_state:               i16, // actionIndex
+    last_area_type:            u32,
+    type_0_pos_flag:           u8,
+    unk:                       u8,
+    save_prompt_flag:          u8,
     prevent_save_respawn_info: bool,
 }
 
 #[repr(C)]
 struct StartInfo {
-    stage: [u8; 8],
-    room: u8,
-    layer: u8,
-    entrance: u8,
+    stage:        [u8; 8],
+    room:         u8,
+    layer:        u8,
+    entrance:     u8,
     forced_night: u8,
 }
 
@@ -204,12 +204,14 @@ fn sceneflag_check_global(scene_index: u16, flag: u16) -> bool {
     unsafe { SceneflagManager__checkFlagGlobal(SCENEFLAG_MANAGER, scene_index, flag) }
 }
 
-/// returns the pointer to the static dungeonflags, those for the current sceneflagindex
+/// returns the pointer to the static dungeonflags, those for the current
+/// sceneflagindex
 fn dungeonflag_local() -> *mut [c_ushort; 8usize] {
     unsafe { &mut STATIC_DUNGEON_FLAGS }
 }
 
-/// returns the pointer to the saved dungeonflags, for the specified sceneflagindex
+/// returns the pointer to the saved dungeonflags, for the specified
+/// sceneflagindex
 fn dungeonflag_global(scene_index: u16) -> *mut [u16; 8] {
     unsafe {
         (*FileManager__getDungeonFlags(FILE_MANAGER))
@@ -267,12 +269,12 @@ impl<'a> MemItr<'a> {
     }
 }
 
-// IMPORTANT: when adding functions here that need to get called from the game, add `#[no_mangle]`
-// and add a .global *symbolname* to custom_funcs.asm
+// IMPORTANT: when adding functions here that need to get called from the game,
+// add `#[no_mangle]` and add a .global *symbolname* to custom_funcs.asm
 #[no_mangle]
 pub fn process_startflags() {
     unsafe { (*FILE_MANAGER).anticommit_flag = 1 };
-    let mut flag_mem = MemItr(unsafe { &*slice_from_raw_parts(0x804ee1b8 as *const u8, 512) });
+    let mut flag_mem = MemItr(unsafe { &*slice_from_raw_parts(0x804EE1B8 as *const u8, 512) });
     // storyflags
     while let Some(flag) = flag_mem.next_u16() {
         if flag == 0xFFFF {
@@ -333,7 +335,7 @@ pub fn process_startflags() {
     // Starting rupee count.
     // Last 7 bits.
     itemflag_set_to_value(
-        501, /* rupee counter */
+        501, // rupee counter
         (additional_start_options & 0x7F) * 100,
     );
 
@@ -354,7 +356,8 @@ pub fn process_startflags() {
         for counter in 10..=21 {
             unsafe {
                 increaseCounter(counter, 99);
-                setFlagForItem(counter + 131); // counter + (itemflag - counter)
+                setFlagForItem(counter + 131); // counter + (itemflag -
+                                               // counter)
             }
         }
     }
@@ -365,7 +368,8 @@ pub fn process_startflags() {
         for counter in 22..=37 {
             unsafe {
                 increaseCounter(counter, 99);
-                setFlagForItem(counter + 139); // counter + (itemflag - counter)
+                setFlagForItem(counter + 139); // counter + (itemflag -
+                                               // counter)
             }
         }
     }
@@ -376,7 +380,7 @@ pub fn process_startflags() {
 
     // Starting Tadtones.
     // Next 5 bits.
-    let tadtone_count = additional_start_options_2 >> 4 & 0x1f;
+    let tadtone_count = additional_start_options_2 >> 4 & 0x1F;
     storyflag_set_to_value(953, tadtone_count.into());
 
     // Starting Hylian Shield.
@@ -461,7 +465,7 @@ fn rando_text_command_handler(
             let dungeon_index = flow_element.param1;
             let completion_storyflag = flow_element.param2;
             let key_count = if dungeon_index == 14
-            /* ET */
+            // ET
             {
                 unsafe { getKeyPieceCount() }
             } else {
@@ -490,7 +494,7 @@ fn rando_text_command_handler(
                 INCOMPLETE_TEXT.as_ptr()
             };
             text_manager_set_string_arg(completed_text as *const c_void, 2);
-        }
+        },
         72 => {
             let caves_key = dungeon_global_key_count(9);
             let caves_key_text = if caves_key == 1 {
@@ -500,7 +504,7 @@ fn rando_text_command_handler(
             };
             text_manager_set_string_arg(caves_key_text as *const c_void, 0);
 
-            let spiral_charge_obtained = 364; //story flag for spiral charge
+            let spiral_charge_obtained = 364; // story flag for spiral charge
             let spiral_charge_text = if storyflag_check(spiral_charge_obtained) {
                 OBTAINED_TEXT.as_ptr()
             } else {
@@ -508,7 +512,7 @@ fn rando_text_command_handler(
             };
             text_manager_set_string_arg(spiral_charge_text as *const c_void, 1);
 
-            let life_tree_fruit_obtained = 198; //item flag for life tree fruit
+            let life_tree_fruit_obtained = 198; // item flag for life tree fruit
             let life_tree_fruit_text = if itemflag_check(life_tree_fruit_obtained) {
                 OBTAINED_TEXT.as_ptr()
             } else {
@@ -518,7 +522,7 @@ fn rando_text_command_handler(
 
             // Tadtones obtained.
             text_manager_set_num_args(&[storyflag_get_value(953) as u32]);
-        }
+        },
         73 => send_to_start(),
         74 => {
             // Increment storyflag counter
@@ -526,7 +530,7 @@ fn rando_text_command_handler(
             let increment = flow_element.param2;
 
             storyflag_set_to_value(flag, storyflag_get_value(flag) + increment);
-        }
+        },
         75 => {
             // Have collected all tadtone groups?
             let tadtone_groups_left: u32 = 17_u16.saturating_sub(storyflag_get_value(953)).into();
@@ -534,7 +538,7 @@ fn rando_text_command_handler(
             unsafe {
                 (*_event_flow_mgr).result_from_previous_check = tadtone_groups_left;
             }
-        }
+        },
         _ => (),
     }
 }
@@ -635,8 +639,9 @@ fn give_item_with_sceneflag(
     unsafe {
         ITEM_GET_BOTTLE_POUCH_SLOT = bottle_pouch_slot;
         NUMBER_OF_ITEMS = number;
-        // Same as the vanilla setupItemParams function only with extra control over the sceneflag
-        let item_params = AcItem__setupItemParams(item_id, 5, 0, sceneflag, 1, 0xff);
+        // Same as the vanilla setupItemParams function only with extra control over
+        // the sceneflag
+        let item_params = AcItem__setupItemParams(item_id, 5, 0, sceneflag, 1, 0xFF);
 
         let item = AcItem__spawnItem(u32::MAX, item_params, 0, 0, 0, u32::MAX, 1);
         ITEM_GET_BOTTLE_POUCH_SLOT = u32::MAX;
@@ -660,8 +665,9 @@ fn get_start_info() -> *const StartInfo {
 pub fn send_to_start() {
     let start_info = get_start_info();
 
-    // we can't use the normal triggerEntrance function, because that doesn't work properly when
-    // going from title screen to normal gameplay while keeping the stage
+    // we can't use the normal triggerEntrance function, because that doesn't work
+    // properly when going from title screen to normal gameplay while keeping
+    // the stage
     unsafe {
         actuallyTriggerEntrance(
             (*start_info).stage.as_ptr(),
@@ -748,10 +754,10 @@ fn get_glow_color(item_id: u32) -> u32 {
             if (item_id > 42) && (item_id < 47) {
                 // item is a tear; keep the correct id
                 // skyloft is subtype 3, faron 0, eldin 1, lanayru 2
-                return ((stage[1] as u32) + 3) & 3
+                return ((stage[1] as u32) + 3) & 3;
             }
             // offset the color by 2 so items look distinct from tears
-            return ((stage[1] as u32) + 1) & 3
+            return ((stage[1] as u32) + 1) & 3;
         }
     }
     4
