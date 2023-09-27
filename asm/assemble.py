@@ -430,13 +430,17 @@ try:
                     "-o",
                     bin_name,
                 ]
+
+                if result := call(["cargo", "fmt"], cwd="./custom-functions"):
+                    raise Exception("Formatting rust functions failed.")
+
                 # add custom functions from rust
                 if is_custom_function and file_path == "main.dol":
-                    result = call(
+                    if result := call(
                         ["cargo", "build", "--release"], cwd="./custom-functions"
-                    )
-                    if result != 0:
+                    ):
                         raise Exception("Building rust functions failed.")
+
                     command.append(
                         "./custom-functions/target/powerpc-unknown-eabi/release/libcustom_functions.a"
                     )
