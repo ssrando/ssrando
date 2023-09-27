@@ -13,6 +13,7 @@ tips = [
     "Flooded Faron Woods can be entered by talking to the Water Dragon inside the Great Tree.",
     "Bokoblin Base can be entered by talking to the gossip stone in the first room of Eldin Volcano.",
     "You can end Fledge's Pumpkin Archery minigame early by shooting the bell atop the Knight Academy.",
+    "If you don't have a sword, you are expected to wait in-front of Boko Babas or sneak past Beamos to advance through the world.",
 ]
 
 
