@@ -487,7 +487,7 @@ DUNGEON_MAIN_EXITS = {
 DUNGEON_FINAL_CHECK = {
     SV: SV + sep + "Strike Crest",
     ET: ET + sep + "Strike Crest",
-    LMF: LMF + sep + "Hall of Ancient Robots",
+    LMF: LMF + sep + "Exit Hall of Ancient Robots",
     AC: AC + sep + "Farore's Flame",
     SSH: SSH + sep + "Nayru's Flame",
     FS: FS + sep + "Din's Flame",
