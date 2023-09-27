@@ -116,6 +116,7 @@ global:
       - 19 # Great Tree Intro Cutscene
       - 30 # Enter Skyview Cutscene
     Sealed Grounds:
+      - 4  # Pushed log from BtT to Faron Woods
       - 7  # vents active
       - 13 # door to temple unlocked
       - 21 # ballad of the goddess played (item and cutscene trigger instantly activate when outside of BiT)
