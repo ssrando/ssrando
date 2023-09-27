@@ -411,7 +411,7 @@ Can RBM 3x10:
 # Can RBM 3x04: Impossible
 
 Can RBM 3x02:
-  Can Cut Tree | (Can Access Most of Faron Woods BiT & Goddess Harp & Farore's Courage)
+  Can Cut Tree | (Can Access Most of Faron Woods BiT & Goddess's Harp & Farore's Courage)
   # Skyloft: Cut Trees in front of [Waterfall] Cave
   # Sky: Impossible, Opened Ground Patch on [Mogma Mitts] island inside Thunderhead ([Quiver] Chest) #UNSURE
   # Sealed Grounds: Impossible, Set after Impa asks Link to seal Imp 1 #UNSURE
@@ -837,7 +837,7 @@ Can Set Scene Flag 2x20:
 Can Set Scene Flag 3x02:
   Can Cut Tree |
   (Can Access Thunderhead & Mogma Mitts) |
-  (Can Access Most of Faron Woods & Goddess Harp & Farore's Courage) |
+  (Can Access Most of Faron Woods & Goddess's Harp & Farore's Courage) |
   Can Access Second Part of Eldin |
   (Can Access Second Part of Lanayru Mine & (Bomb Bag | Hook Beetle)) |
   (Can Get Past Peahat and Boko Baba & Gust Bellows) |
@@ -921,7 +921,7 @@ Upper Skyloft - Owlan's Crystals:
   Can Reach Oolo in Faron 2 | (Can Access Most of Faron Woods & Can Access Flooded Faron Woods)
 
 Upper Skyloft - Item from Cawlin:
-  Goddess Harp
+  Goddess's Harp
 
 Upper Skyloft - Ghost/Pipit's Crystals:
   Cawlin's Letter
@@ -1009,7 +1009,7 @@ Central Skyloft - Crystal on Light Tower:
   Nothing
 
 Can Open Trial Gate on Skyloft:
-  Option "randomize-trials" Disabled | Can Access Lumpy Pumpkin BiT | (Song of the Hero & Goddess Harp)
+  Option "randomize-trials" Disabled | Can Access Lumpy Pumpkin BiT | (Song of the Hero & Goddess's Harp)
   # Scene Flag 9x20 is "Hylia's Trial Gate Opened"
   # RBW method: When you are entering the trial, you want to start the file as the camera pans up, and you should BiTSave that file at the Bazzar statue in order to not spawn very far OoB
   # RBW method does not work with trial rando
@@ -1272,7 +1272,7 @@ Chandelier Quest Part 2: # Bring the pumpkins
   Chandelier Quest Part 1
 
 Chandelier Quest Part 3: # Play the harp
-  Chandelier Quest Part 2 & Goddess Harp
+  Chandelier Quest Part 2 & Goddess's Harp
 
 Chandelier Quest Over:
   Chandelier Quest Part 3
@@ -1407,7 +1407,7 @@ Sealed Grounds - Chest inside Sealed Temple:
   Can Access Sealed Temple
 
 Can Receive Old Lady's Teaching:
-  Can Access Sealed Temple & Goddess Harp
+  Can Access Sealed Temple & Goddess's Harp
 
 Sealed Grounds - Song from Impa:
   Can Receive Old Lady's Teaching
@@ -1488,7 +1488,7 @@ Faron Woods - Chest behind Bombable Rocks near Erla:
   # Scene Flag 0x01 is "Blow Up Rocks containing Chest (near Erla)"
 
 Can Open Trial Gate in Faron Woods:
-  (Can Access Most of Faron Woods & Farore's Courage & Goddess Harp) |
+  (Can Access Most of Faron Woods & Farore's Courage & Goddess's Harp) |
   (Can Access Most of Faron Woods & Can RBM 3x02) |
   (Option "randomize-trials" Disabled & Can Set Scene Flag 3x02 & Can Access Most of Faron Woods BiT)
   # Scene Flag 3x02 is "Water Dragon's Scale Trial Gate"
@@ -2379,7 +2379,7 @@ Can Access Skyview 2:
   Can Access Skyview & Water Dragon's Scale
 
 Can Unlock Goddess Walls:
-  Ballad of the Goddess & Goddess Harp
+  Ballad of the Goddess & Goddess's Harp
 
 Can Beat Skyview 2:
   Can Access Skyview 2 & Can Beat Skyview

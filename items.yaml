@@ -44,7 +44,7 @@
   name: Sailcloth
   oarc: null
 - id: 16
-  name: Goddess Harp
+  name: Goddess's Harp
   oarc: GetHarp
   getarcname: GetHarp
   getmodelname: GetHarp

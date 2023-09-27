@@ -236,7 +236,7 @@ Upper Skyloft - Owlan's Crystals:
   (Can Reach Oolo in Faron 2 | (Can Access Most of Faron Woods & Can Access Flooded Faron Woods)) & Scrapper
 
 Upper Skyloft - Item from Cawlin:
-  Goddess Harp
+  Goddess's Harp
 
 Upper Skyloft - Ghost/Pipit's Crystals:
   Cawlin's Letter
@@ -333,7 +333,7 @@ Central Skyloft - Crystal on Light Tower:
   Nothing
 
 Can Open Trial Gate on Skyloft:
-  Song of the Hero & Goddess Harp
+  Song of the Hero & Goddess's Harp
   # Scene Flag 9x20 is "Hylia's Trial Gate Opened"
   # RBW method: When you are entering the trial, you want to start the file as the camera pans up, and you should BiTSave that file at the Bazzar statue in order to not spawn very far OoB
 
@@ -603,7 +603,7 @@ Chandelier Quest Part 2: # Bring the pumpkins
   Chandelier Quest Part 1
 
 Chandelier Quest Part 3: # Play the harp
-  Chandelier Quest Part 2 & Goddess Harp
+  Chandelier Quest Part 2 & Goddess's Harp
 
 Chandelier Quest Over:
   Chandelier Quest Part 3
@@ -738,7 +738,7 @@ Sealed Grounds - Chest inside Sealed Temple:
   Can Access Sealed Temple
 
 Can Receive Old Lady's Teaching:
-  Can Access Sealed Temple & Goddess Harp
+  Can Access Sealed Temple & Goddess's Harp
 
 Sealed Grounds - Song from Impa:
   Can Receive Old Lady's Teaching
@@ -822,7 +822,7 @@ Faron Woods - Chest behind Upper Bombable Rock:
   # Scene Flag 0x01 is "Blow Up Rocks containing Chest (near Erla)"
 
 Can Open Trial Gate in Faron Woods:
-  Can Access Most of Faron Woods & Farore's Courage & Goddess Harp
+  Can Access Most of Faron Woods & Farore's Courage & Goddess's Harp
   # Scene Flag 3x02 is "Water Dragon's Scale Trial Gate"
 
 Faron Silent Realm - Trial Reward:
@@ -1107,7 +1107,7 @@ Can Access Second Part of Eldin:
   # Scene Flag 6x08 is "Blow up rock between front and back of [Mogma Turf]". The BiTWarp is also the one used to get Sparrot's Crystal Ball
 
 Can Open Trial Gate in Eldin Volcano:
-  Can Access Second Part of Eldin & Din's Power & Goddess Harp
+  Can Access Second Part of Eldin & Din's Power & Goddess's Harp
   # Scene Flag 9x40 is "Fireshield Earrings Trial Gate Opened"
 
 Eldin Silent Realm - Trial Reward:
@@ -1523,7 +1523,7 @@ Goddess Cube in Secret Passageway:
   Can Access Lanayru Desert Secret Passageway & Clawshots & Goddess Sword
 
 Can Open Trial Gate in Lanayru Desert:
-  Can Access Second Part of Lanayru Desert & Nayru's Wisdom & Goddess Harp
+  Can Access Second Part of Lanayru Desert & Nayru's Wisdom & Goddess's Harp
   # Scene Flag Ax08 is "Clawshots Trial Gate Opened"
 
 Lanayru Silent Realm - Trial Reward:
@@ -1761,7 +1761,7 @@ Can Access Skyview 2:
   Can Access Skyview & Water Dragon's Scale
 
 Can Unlock Goddess Walls:
-  Ballad of the Goddess & Goddess Harp
+  Ballad of the Goddess & Goddess's Harp
 
 Can Beat Skyview 2:
   Can Access Skyview 2 & Can Beat Skyview

@@ -32,7 +32,7 @@ Sealed Grounds:
       Gate of Time: Open Gate of Time
     locations:
       Chest inside Sealed Temple: Nothing
-      Song from Impa: Goddess Harp
+      Song from Impa: Goddess's Harp
       Raise Gate of Time: GoT Raising Requirement
       Start Imprisoned 2: Raise Gate of Time & GoT Opening Requirement
       Open Gate of Time: Raise Gate of Time & GoT Opening Requirement & Spiral - Defeat Imprisoned 2
@@ -53,7 +53,7 @@ Sealed Grounds:
     locations:
       Unlock Statue: Nothing
       Gossip Stone behind the Temple: Nothing
-      Gorko's Goddess Wall Reward: Goddess Harp & Ballad of the Goddess & Goddess Sword
+      Gorko's Goddess Wall Reward: Goddess's Harp & Ballad of the Goddess & Goddess Sword
 
 # FARON WOODS
 Faron Woods:
@@ -75,7 +75,7 @@ Faron Woods:
     Push Log to Sealed Grounds: Nothing
     Amber Relic Farming: Nothing
     Hit Vine to Deep Woods: Distance Activator
-    Open Trial Gate: Goddess Harp & Farore's Courage
+    Open Trial Gate: Goddess's Harp & Farore's Courage
     Open Door to Lake Floria: ((Open Lake Floria option & Water Dragon's Scale) | (Great Tree - Top - Talk to Yerbal & (Goddess Sword | Talk to Yerbal option)))
     Rupee on Hollow Tree Root: Nothing
     Rupee on Hollow Tree Branch: Beetle

@@ -2,11 +2,11 @@
   - name: File Progress Text 0
     type: textpatch
     index: 78
-    text: "Search the land and skies for the <y<Goddess Harp>>."
+    text: "Search the land and skies for the <y<Goddess's Harp>>."
   - name: File Progress Text 1
     type: textpatch
     index: 79
-    text: "Show the Goddess Harp to Impa at the\n<b<Sealed Temple>>."
+    text: "Show the Goddess's Harp to Impa at the\n<b<Sealed Temple>>."
   # See gamepatches for File Progress Text 2
   - name: File Progress Text 3
     type: textpatch
@@ -342,8 +342,8 @@
     type: flowpatch
     index: 71
     flow:
-      next: Goddess Harp Storyflag
-  - name: Goddess Harp Storyflag
+      next: Goddess's Harp Storyflag
+  - name: Goddess's Harp Storyflag
     type: flowadd
     flow:
       type: type3
@@ -844,7 +844,7 @@
     text: "Your objective is to exit the <b<Temple\nof Hylia>> in the past and defeat any\nbosses in your way.
     \n\nTo do this, you need to raise and\nopen the <r<Gate of Time>> in the <b<Sealed\nTemple>>.
     \n\nTo reach the <b<Sealed Temple>>, you will\nneed to find the <g<Emerald Tablet>> and\njourney to the <b<Faron Province>>.
-    \n\nTo raise the <r<Gate of Time>>, you must\nacquire the <y<Goddess Harp>> and take it\nto the ancient one in the <b<Sealed\nTemple>>.
+    \n\nTo raise the <r<Gate of Time>>, you must\nacquire the <y<Goddess's Harp>> and take it\nto the ancient one in the <b<Sealed\nTemple>>.
     \nTo open the <r<Gate of Time>>, you must\ncomplete the required dungeons and\nobtain the <y<{required_sword}>>."
   - name: Display Fi Objective Text
     onlyif: Option "triforce-required" Enabled

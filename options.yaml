@@ -260,7 +260,7 @@
     - Raised
   default: Lowered
   help: "Determines whether the Gate of Time starts raised or lowered.
-        **Lowered**: the Goddess Harp is needed to raise the Gate of Time.
+        **Lowered**: the Goddess's Harp is needed to raise the Gate of Time.
         **Raised**: the Gate of Time is raised from the start of the game."
   ui: option_got_starting_state
 - name: Gate of Time Sword Requirement
@@ -824,7 +824,7 @@
     - Faron Song of the Hero Part
     - Farore's Courage
     - Fireshield Earrings
-    - Goddess Harp
+    - Goddess's Harp
     - Gust Bellows
     - Horned Colossus Beetle
     - Key Piece
@@ -919,7 +919,7 @@
   default: false
   help: "Gives you a random progression item at the start of the game in addition to any starting items.
         This includes: Bow, Beetle, Slingshot, Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
-        Water Dragon's Scale, Fireshield Earrings, Goddess Harp and Spiral Charge."
+        Water Dragon's Scale, Fireshield Earrings, Goddess's Harp and Spiral Charge."
   ui: option_random_starting_item
 - name: Starting Empty Bottles
   command: starting-bottles
