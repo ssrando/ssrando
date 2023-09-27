@@ -199,7 +199,7 @@ Desert:
         exits:
           Present - Exit: Nothing
           Present: Projectile Item
-          Present from afar: Beetle | Bow | Bomb Bag
+          Present from afar: Beetle | Bow | (Lightning Node End with Bombs Trick & Bomb Bag)
         locations:
           First Chest: Nothing
           Second Chest: Nothing
