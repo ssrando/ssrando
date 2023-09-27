@@ -801,6 +801,7 @@
     - CDMC
     - Dowsing & Fi Hints
     - 2D Dowsing & Fi Hints
+    - Boss Keysanity Fi Hints
     - Custom
   default: Balanced
   help: "Determines the distribution of hints that appear on Gossip Stones.
@@ -1057,7 +1058,7 @@
   permalink: false
   cosmetic: true
   help: "Determines the loftwing model pack that will be used in game."
-- name: Random Starting Location
+- name: Random Starting Spawn
   command: random-start-entrance
   type: singlechoice
   bits: 2
