@@ -1,3 +1,18 @@
+# Words Conventions:
+
+#   - Beginning of Checks, Adjectives, Nouns and Verbs are Capitalized, not
+#     Prepositions (Does Look Weird in a Sentence, not in Checks)
+
+#   - Macros using words implying location like Access, Get Past, Reach (also,
+#     Retrieve) must include the previous location in their requirements (Get
+#     Past X must include Access X)
+
+#   - Macros using words implying capacity of action (except retrieve) may not
+#     include location requirements in their definition, but they must include
+#     such requirement in their uses
+
+# Please tell if you think some elements don't fit the rules
+
 # Upper Skyloft checks:
 Upper Skyloft - Fledge's Gift:
   original item: Progressive Pouch
