@@ -8,7 +8,7 @@ Main:
   Deck:
     exits:
       Main Exit: Nothing # If stuck in the mast sequence, deathwarp
-      Before Scervo: Nothing
+      Before Ship's Bow: Nothing
       Captain's Cabin: Sandship Small Key x 2 & (Start Mast Sequence | Freely Usable Timeshift Stone)
       Starboard Rooms: Starboard Rooms - Switch & Bow
       Mast: Start Mast Sequence | Freely Usable Timeshift Stone
@@ -39,22 +39,22 @@ Main:
         Bars: Can Defeat Beamos
         Boss Key Chest: Switch & Bars
 
-  Before Scervo:
+  Before Ship's Bow:
     exits:
-      Miniboss Room: Sandship Small Key x 2
+      Ship's Bow: Sandship Small Key x 2
       Corridor: Pass Spume | Deck - Freely Usable Timeshift Stone
     locations:
       Chest before 4-Door Corridor: Deck - Freely Usable Timeshift Stone
 
-  Miniboss Room:
+  Ship's Bow:
     exits:
-      Before Scervo: Chest
+      Before Ship's Bow: Chest
     locations:
       Chest after Scervo Fight: Can Defeat Scervo/Dreadfuse
 
   Corridor:
     exits:
-      Before Scervo: Pass Spume | Deck - Freely Usable Timeshift Stone
+      Before Ship's bow: Pass Spume | Deck - Freely Usable Timeshift Stone
       Starboard Rooms:
         Deck - Freely Usable Timeshift Stone
       Port Rooms:
