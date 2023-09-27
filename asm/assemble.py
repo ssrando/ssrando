@@ -431,11 +431,10 @@ try:
                     bin_name,
                 ]
 
-                if result := call(["cargo", "fmt"], cwd="./custom-functions"):
-                    raise Exception("Formatting rust functions failed.")
-
                 # add custom functions from rust
                 if is_custom_function and file_path == "main.dol":
+                    if result := call(["cargo", "fmt"], cwd="./custom-functions"):
+                        raise Exception("Formatting rust functions failed.")
                     if result := call(
                         ["cargo", "build", "--release"], cwd="./custom-functions"
                     ):
