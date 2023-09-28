@@ -4367,7 +4367,7 @@ Lanayru Mining Facility - First Hub - Entrance from Big Hub:
   can-start-at: false
   tod: 2
 
-Lanayru Mining Facility - Gust Bellows Room - Entrance from Big Hub:
+Lanayru Mining Facility - Hop Across Boxes Room - Entrance from Big Hub:
   type: entrance
   province: Lanayru Province
   can-start-at: false
@@ -4385,7 +4385,7 @@ Lanayru Mining Facility - Big Hub - Entrance from First Hub:
   can-start-at: false
   tod: 2
 
-Lanayru Mining Facility - Big Hub - Entrance from Gust Bellows Room:
+Lanayru Mining Facility - Big Hub - Entrance from Hop Across Boxes Room:
   type: entrance
   province: Lanayru Province
   can-start-at: false
@@ -4402,9 +4402,9 @@ Lanayru Mining Facility - First Hub - Exit to Big Hub:
   type: exit
   vanilla: Lanayru Mining Facility - Big Hub - Entrance from First Hub
 
-Lanayru Mining Facility - Gust Bellows Room - Exit to Big Hub:
+Lanayru Mining Facility - Hop Across Boxes Room - Exit to Big Hub:
   type: exit
-  vanilla: Lanayru Mining Facility - Big Hub - Entrance from Gust Bellows Room
+  vanilla: Lanayru Mining Facility - Big Hub - Entrance from Hop Across Boxes Room
 
 Lanayru Mining Facility - Armos Fight Room - Exit to Big Hub:
   type: exit
@@ -4414,9 +4414,9 @@ Lanayru Mining Facility - Big Hub - Exit to First Hub:
   type: exit
   vanilla: Lanayru Mining Facility - First Hub - Entrance from Big Hub
 
-Lanayru Mining Facility - Big Hub - Exit to Gust Bellows Room:
+Lanayru Mining Facility - Big Hub - Exit to Hop Across Boxes Room:
   type: exit
-  vanilla: Lanayru Mining Facility - Gust Bellows Room - Entrance from Big Hub
+  vanilla: Lanayru Mining Facility - Hop Across Boxes Room - Entrance from Big Hub
 
 Lanayru Mining Facility - Big Hub - Exit to Armos Fight Room:
   type: exit

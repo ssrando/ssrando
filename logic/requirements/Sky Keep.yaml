@@ -86,7 +86,7 @@ Main:
         After Key: Nothing
         Ancient Cistern Room: Lever
       locations:
-        Triforce of Courage: Nothing
+        Sacred Power of Farore: Nothing
         Lever: Nothing
 
   Fire Sanctuary Room:
@@ -114,7 +114,7 @@ Main:
         From Left: Lower Lever
         From Right: Upper Lever
       locations:
-        Triforce of Power: Nothing
+        Sacred Power of Din: Nothing
         Lower Lever: Nothing
         Upper Lever: Nothing
 
@@ -136,7 +136,7 @@ Main:
       exits:
         Sandship Room: Nothing
       locations:
-        Triforce of Wisdom: Nothing
+        Sacred Power of Nayru: Nothing
 
   Puzzle Solving Meta Room:
     exits:

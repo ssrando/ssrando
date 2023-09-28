@@ -70,7 +70,7 @@ Desert:
       Exit to Mine: Timeshift Stone # I can't assume the minecart is available, right ?
       Desert - Shared Statue Exit: Unlock Statue
       Desert Entrance Statue Entrance: Impossible
-      Near Hook Beetle Fight: Nothing
+      Near Caged Robot: Nothing
     locations:
       Unlock Statue: Nothing
       Blow up Rock for Timeshift Stone: Bomb Bag
@@ -84,7 +84,7 @@ Desert:
         Chest near Party Wheel: Nothing
         General - Ancient Flower Farming: Nothing
 
-  Near Hook Beetle Fight:
+  Near Caged Robot:
     exits:
       Entry: Nothing
       Top of West Wall: Clawshots
@@ -92,25 +92,25 @@ Desert:
       East: Temple of Time Skip - Brakeslide Trick | East - Open Wall Shortcut | Clawshots | Central Skyloft - Bazaar - Endurance Potion
       Sand Oasis: Blow Statues to Sand Oasis Down | (Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick) | Central Skyloft - Bazaar - Endurance Potion
     locations:
-      Chest near Hook Beetle Fight: Nothing
-      Goddess Cube near Hook Beetle Fight: Long Range Skyward Strike # Also accessible elsewhere
+      Chest near Caged Robot: Nothing
+      Goddess Cube near Caged Robot: Long Range Skyward Strike # Also accessible elsewhere
       Blow up Rock for Timeshift Stone: Bomb Bag | Hook Beetle
       Timeshift Stone: Blow up Rock for Timeshift Stone & Nothing # Use the nearby bombflower ?
-      Hook Beetle Fight: Timeshift Stone & Can Defeat Bokoblins
+      Rescue Caged Robot: Timeshift Stone & Can Defeat Bokoblins
       Defeat Spume to Sand Oasis: Long Range Skyward Strike | Bomb Bag | Bow | Hook Beetle | (Goddess Sword & Lanayru Desert - Spume Brakeslide Trick)
       Blow Statues to Sand Oasis Down: Hook Beetle
 
   Sand Oasis: # Before
     exits:
-      Near Hook Beetle Fight:
-        Near Hook Beetle Fight - Blow Statues to Sand Oasis Down |
-        (Near Hook Beetle Fight - Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick) |
+      Near Caged Robot:
+        Near Caged Robot - Blow Statues to Sand Oasis Down |
+        (Near Caged Robot - Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick) |
         Central Skyloft - Bazaar - Endurance Potion
       Top of West Wall: Clawshots | Top of West Wall - Push Minecart
       West Part: Can Navigate in Oasis | West Part - Push Minecart
     locations:
-      Near Hook Beetle Fight - Defeat Spume to Sand Oasis: Bomb Bag | Bow | Hook Beetle | Goddess Sword
-      Near Hook Beetle Fight - Blow Statues to Sand Oasis Down: Hook Beetle
+      Near Caged Robot - Defeat Spume to Sand Oasis: Bomb Bag | Bow | Hook Beetle | Goddess Sword
+      Near Caged Robot - Blow Statues to Sand Oasis Down: Hook Beetle
       Goddess Cube in Sand Oasis: Can Navigate in Oasis & Goddess Sword
 
   West Part:
@@ -140,19 +140,19 @@ Desert:
 
   Top of West Wall:
     exits:
-      Near Hook Beetle Fight: Nothing
+      Near Caged Robot: Nothing
       Sand Oasis: Nothing
       West Part: Nothing
     locations:
       Chest near Sand Oasis: Nothing
-      Near Hook Beetle Fight - Goddess Cube near Hook Beetle Fight: Goddess Sword
+      Near Caged Robot - Goddess Cube near Caged Robot: Goddess Sword
       Push Minecart: Nothing
 
   Top of LMF:
     exits:
       North Part: Nothing
       East: Nothing
-      Near Hook Beetle Fight: Nothing
+      Near Caged Robot: Nothing
       Exit to Lanayru Mining Facility: Nothing
     locations:
       Chest on top of Lanayru Mining Facility: Nothing
@@ -172,7 +172,7 @@ Desert:
       Main Node Timeshift Stone: Blow up Main Node Timeshift Stone Rock & Can Hit Timeshift Stone
       Activate Main Node: All Three Nodes & Main Node Timeshift Stone & Sword
       Unlock Statue: Nothing
-      Open Trial Gate: Nayru's Wisdom & Goddess Harp
+      Open Trial Gate: Nayru's Wisdom & Goddess's Harp
       Open Secret Passageway: Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Tough Beetle
       Chest on Platform near Lightning Node: Clawshots
       Open Lightning Node: Nothing # There's a bombflower nearby
@@ -216,7 +216,7 @@ Desert:
     exits:
       North Part: Nothing
       Top of LMF: Raise Lanayru Mining Facility
-      Near Hook Beetle Fight: Open Wall Shortcut | Temple of Time Skip - Brakeslide Trick
+      Near Caged Robot: Open Wall Shortcut | Temple of Time Skip - Brakeslide Trick
       Desert - Shared Statue Exit: Nothing
       Stone Cache Statue Entrance: Impossible
       Fire Node: Nothing
@@ -322,7 +322,7 @@ Lanayru Silent Realm:
   exits:
     Exit: Nothing
   locations:
-    Clawshots: Nothing
+    Trial Reward: Nothing
     Relic 1: Nothing
     Relic 2: Nothing
     Relic 3: Nothing
@@ -498,5 +498,5 @@ Lanayru Sand Sea:
       locations:
         Activate Timeshift Stone: Gust Bellows & Can Hit Timeshift Stone
         Goddess Cube in Lanayru Gorge: Goddess Sword
-        Life Tree Seedling: Activate Timeshift Stone & Digging Mitts
+        Digging Spot: Activate Timeshift Stone & Digging Mitts
         General - Ancient Flower Farming: Activate Timeshift Stone

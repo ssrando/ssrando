@@ -77,7 +77,7 @@ Volcano:
       Unlock Shortcut to Entry: Nothing
       Past Slide - Unlock Shortcut to Ascent: Bomb Bag | Hook Beetle # | (Whip & Whip Bomb Trick)
       Defeat Slope Bokoblins: Bow | Slingshot | Beetle
-      Open Trial Gate: Goddess Harp & Din's Power
+      Open Trial Gate: Goddess's Harp & Din's Power
 
   Near Thrill Digger Cave:
     exits:
@@ -166,7 +166,7 @@ Mogma Turf: # when randomizing this, need to find a way to force the skydiving a
       Goddess Cube in Mogma Turf: Goddess Sword
       Chest behind Bombable Wall at Entrance: Nothing
       Pick up Guld: Sky - Lumpy Pumpkin - Start Kina's Quest & Scrapper
-      Digging Mitts Fight: Can Defeat Bokoblins
+      Defeat Bokoblins: Can Defeat Bokoblins
       Open Vent: Digging Mitts
 
   Sand Slide Platform:
@@ -188,7 +188,7 @@ Eldin Silent Realm:
   exits:
     Exit: Nothing
   locations:
-    Fireshield Earrings: Nothing
+    Trial Reward: Nothing
     Relic 1: Nothing
     Relic 2: Nothing
     Relic 3: Nothing

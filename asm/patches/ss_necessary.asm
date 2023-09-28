@@ -944,7 +944,7 @@ nop
 
 ; 0x80ecdc44
 .org 0x8898
-.word 9   ; Obtained the Goddess Harp
+.word 9   ; Obtained the Goddess's Harp
 .word 340 ; Raised the Gate of Time (GoT)
 .word -1  ; Obtained the Required Sword (will be filled later in gamepatches)
 .word 902 ; Beaten Required Dungeon 1

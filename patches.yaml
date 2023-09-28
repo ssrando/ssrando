@@ -107,9 +107,9 @@ global:
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
-      - onlyif: Option "open-lake-floria" Is "Open" # & Option "starting-items" Contains "Water Scale"
+      - onlyif: Option "open-lake-floria" Is "Open" # & Option "starting-items" Contains "Water Dragon's Scale"
         flag: 49 # Cutscene of Lake Floria Gates opening
-      - onlyif: Option "open-lake-floria" Is "Open" # & Option "starting-items" Contains "Water Scale"
+      - onlyif: Option "open-lake-floria" Is "Open" # & Option "starting-items" Contains "Water Dragon's Scale"
         flag: 50 # Open Lake Floria Gates
       - 51 # Fi text before talking to Yerbal
       - 52 # Fi text after opening floria gate
@@ -2177,7 +2177,7 @@ D100: # Skyview
     objtype: OBJS
     object:
       setscenefid: 13 # 0x0 20
-  - name: Always open Bar from inside Beetle Room
+  - name: Always open Bar from inside Stalfos Fight Room
     type: objpatch
     index: 6
     layer: 0
@@ -3844,7 +3844,7 @@ F300: # lanayru Main Area
     layer: 0
     room: 0
     objtype: OBJ
-  - name: Remove Fi text before Hook Beetle Fight Check
+  - name: Remove Fi text before Rescue Caged Robot Check
     type: objdelete
     id: 0xFC29
     layer: 0

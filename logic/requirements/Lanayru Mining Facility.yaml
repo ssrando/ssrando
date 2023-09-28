@@ -26,13 +26,13 @@ Main:
   Key Locked Room:
     exits:
       First Hub: Nothing
-      Gust Bellows Room: Activate Timeshift Stone
+      Hop Across Boxes Room: Activate Timeshift Stone
     locations:
       Blow Up Boxes: Hook Beetle | (Bomb Bag & Bomb Throws Trick)
       Activate Timeshift Stone: Blow Up Boxes & (Bow | Beetle | (Slingshot & LMF - Keylocked Slingshot Trickshot Trick))
       Chest in Key Locked Room: Activate Timeshift Stone
 
-  Gust Bellows Room:
+  Hop Across Boxes Room:
     exits:
       Near Exit: Blow Up Rocks | Near Exit - Push Shortcut Box
     # Does not include the entry ledge you can only jump from
@@ -40,8 +40,8 @@ Main:
       Blow Up Rocks:
         Sword | Slingshot | Beetle | Bomb Bag | Gust Bellows | Whip | Clawshots | Bow
         # You need to blow up at least one rock in the maze, pretty much any item will make the Froak explode
-      Gust Bellows: Blow Up Rocks
-      Chest inside Gust Bellows Room: Blow Up Rocks
+      Raised Chest in Hop across Boxes Room: Blow Up Rocks
+      Lower Chest in Hop across Boxes Room: Blow Up Rocks
 
     Near Exit:
       exits:
@@ -78,13 +78,13 @@ Main:
     After Wooden Boxes:
       exits:
         Entry: Nothing
-        Near Exit to Gust Bellows Room: Near Exit to Gust Bellows Room - Push Box
+        Near Exit to Hop Across Boxes Room: Near Exit to Hop Across Boxes Room - Push Box
       locations:
         First Chest in Hub Room: Nothing
 
-    Near Exit to Gust Bellows Room:
+    Near Exit to Hop Across Boxes Room:
       exits:
-        Exit to Gust Bellows Room: Nothing
+        Exit to Hop Across Boxes Room: Nothing
         After Wooden Boxes: Nothing
       locations:
         Push Box: Nothing
@@ -174,4 +174,4 @@ Great Hall:
     exits:
       Exit to Temple of Time: Nothing
     locations:
-      Goddess Harp: Nothing
+      Exit Hall of Ancient Robots: Nothing

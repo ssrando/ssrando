@@ -367,7 +367,7 @@ HEIGHT_OFFSETS = {
     12: -35.0,  # Goddess Longsword (unused)
     13: -35.0,  # Master Sword (unused)
     14: -35.0,  # True Master Sword (unused)
-    16: -28.0,  # Goddess Harp
+    16: -28.0,  # Goddess's Harp
     19: -35.0,  # Bow (Progressive Bow)
     20: -38.0,  # Clawshots
     21: -32.0,  # Bird Statuette (Spiral Charge)
@@ -448,7 +448,7 @@ SHOP_BUY_DECIDE_SCALE = {
     12: 1.0,  # Goddess Longsword (unused)
     13: 1.0,  # Master Sword (unused)
     14: 1.0,  # True Master Sword (unused)
-    16: 1.2,  # Goddess Harp
+    16: 1.2,  # Goddess's Harp
     19: 0.8,  # Bow (Progressive Bow)
     20: 1.2,  # Clawshots
     21: 1.0,  # Bird Statuette (Spiral Charge)
@@ -514,7 +514,7 @@ SHOP_BUY_DECIDE_SCALE = {
 
 SHOP_PUT_SCALE = {
     1: 1.5,  # Vanilla Small Key (Unused)
-    16: 1.5,  # Goddess Harp
+    16: 1.5,  # Goddess's Harp
     19: 1.5,  # Bow (Progressive Bow)
     20: 1.5,  # Clawshots
     21: 1.2,  # Bird Statuette (Spiral Charge)
@@ -2208,25 +2208,25 @@ class GamePatcher:
         # Trial Hints
         trial_checks = {
             # (getting it text patch, line, inventory text line, hintname)
-            "Skyloft Silent Realm - Stone of Trials": (
+            "Skyloft Silent Realm - Trial Reward": (
                 "Full SotH text",
                 659,
                 "The song that leads you to the final trial.",
                 "Song of the Hero - Trial Hint",
             ),
-            "Faron Silent Realm - Water Scale": (
+            "Faron Silent Realm - Trial Reward": (
                 "Farore's Courage Text",
                 653,
                 "This song opens the trial located in Faron\nWoods.",
                 "Farore's Courage - Trial Hint",
             ),
-            "Lanayru Silent Realm - Clawshots": (
+            "Lanayru Silent Realm - Trial Reward": (
                 "Nayru's Wisdom Text",
                 654,
                 "This song opens the trial located in\nLanayru Desert.",
                 "Nayru's Wisdom - Trial Hint",
             ),
-            "Eldin Silent Realm - Fireshield Earrings": (
+            "Eldin Silent Realm - Trial Reward": (
                 "Din's Power Text",
                 655,
                 "This song opens the trial located on\nEldin Volcano.",
