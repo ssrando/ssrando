@@ -440,22 +440,30 @@ try:
                     ):
                         raise Exception("Building rust functions failed.")
 
-                    command.append(
-                        "./custom-functions/target/powerpc-unknown-eabi/release/libcustom_functions.a"
+                    command.extend(
+                        (
+                            "-(",
+                            "./custom-functions/target/powerpc-unknown-eabi/release/libcustom_functions.a",
+                            "--gc-sections",
+                            "--print-gc-sections",
+                            "-)",
+                        )
                     )
+
                 if file_path.endswith(".rel"):
                     # Output an ELF with relocations for RELs.
                     command += ["--relocatable"]
                 else:
-                    # For main, just output the raw binary code, not an ELF.
-                    command += ["--oformat", "binary"]
+                    # normally, just output the raw binary code, not an ELF.
+                    # for the main custom function output an elf first so that the linker pruning works
+                    if not is_custom_function:
+                        command += ["--oformat", "binary"]
                     pass
                 print(" ".join(command))
                 print()
                 result = call(command)
                 if result != 0:
                     raise Exception("Linker call failed.")
-
                 # Keep track of custom symbols so they can be passed in the linker script to future assembler calls.
                 with open(map_name) as f:
                     on_custom_symbols = False
@@ -495,8 +503,25 @@ try:
                         % org_offset
                     )
 
-                with open(bin_name, "rb") as f:
-                    binary_data = f.read()
+                if is_custom_function and file_path == "main.dol":
+                    objcopied_name = os.path.join(temp_dir, "main_copy.bin")
+                    command = [
+                        get_bin("powerpc-eabi-objcopy"),
+                        "-O",
+                        "binary",
+                        bin_name,
+                        objcopied_name,
+                    ]
+                    print(" ".join(command))
+                    print()
+                    result = call(command)
+                    if result != 0:
+                        raise Exception("Objcopy call failed.")
+                    with open(objcopied_name, "rb") as f:
+                        binary_data = f.read()
+                else:
+                    with open(bin_name, "rb") as f:
+                        binary_data = f.read()
 
                 code_chunk_size_in_bytes = len(binary_data)
                 next_free_space_offsets[file_path] += code_chunk_size_in_bytes

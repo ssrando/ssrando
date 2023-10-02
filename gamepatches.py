@@ -25,6 +25,7 @@ from musicrando import music_rando
 from logic.bool_expression import check_static_option_req
 from logic.constants import *
 from logic.placement_file import PlacementFile
+from util.flag_mapping_tables import get_storyflag_writer, get_itemflag_writer
 from yaml_files import yaml_load
 
 from asm.patcher import apply_dol_patch, apply_rel_patch
@@ -1950,10 +1951,6 @@ class GamePatcher:
             "start-with-hylian-shield"
         ]
 
-        # Starting Rupee Count
-        # Limited to multiples of 100 to save bit space
-        self.starting_rupee_count = 0
-
         # Starting bugs and treasures
         self.max_starting_bugs = self.placement_file.options["max-starting-bugs"]
         self.max_starting_treasures = self.placement_file.options[
@@ -1963,8 +1960,9 @@ class GamePatcher:
         if self.placement_file.options["full-starting-wallet"]:
             wallets = start_item_counts.get(PROGRESSIVE_WALLET, 0)
             extra_wallets = start_item_counts.get(EXTRA_WALLET, 0)
-            self.starting_rupee_count += WALLET_SIZES[wallets]
-            self.starting_rupee_count += extra_wallets * EXTRA_WALLET_SIZE
+            self.startitemflags[RUPEE_COUNTER] = (
+                WALLET_SIZES[wallets] + extra_wallets * EXTRA_WALLET_SIZE
+            )
 
         ALL_DUNGEON_LIKE = ALL_DUNGEONS + [
             LANAYRU_CAVES
@@ -2993,62 +2991,45 @@ class GamePatcher:
         # do startflags, each entry is a u16, different flag types are terminated by 0xFFFF
         # first storyflags, then itemflags, then sceneflags (first byte area, second byte flag)
         start_flags_write = BytesIO()
+        storyflag_writer = get_storyflag_writer()
         for flag in self.startstoryflags:
-            start_flags_write.write(struct.pack(">H", flag))
-        start_flags_write.write(bytes.fromhex("FFFF"))
-        # itemflags
-        for flag, count in self.startitemflags.items():
-            assert flag < 0x1FF
-            assert count < 0x7F
-            start_flags_write.write(struct.pack(">H", (count << 9) | flag))
-        start_flags_write.write(bytes.fromhex("FFFF"))
-        # sceneflags
-        for flagregion, flags in (
-            self.patches["global"].get("startsceneflags", {}).items()
-        ):
-            flagregionid = FLAGINDEX_NAMES.index(flagregion)
-            for flag in flags:
-                if not isinstance(flag, int):  # it's a dict with onlyif and flag
-                    if not check_static_option_req(
-                        flag["onlyif"], self.placement_file.options
-                    ):
-                        # flag should not be set according to options
-                        continue
-                    flag = flag["flag"]
-                start_flags_write.write(struct.pack(">BB", flagregionid, flag))
-        start_flags_write.write(bytes.fromhex("FFFF"))
-        # dungeonflags
-        start_flags_write.write(bytes(self.startdungeonflags))
-
-        # Combined misc start flags to save bit space.
-        ## Last 7 bits for rupee count.
-        ## Limited to multiples of 100 to save bit space
-        additional_start_options = self.starting_rupee_count // 100
-
-        ## Next 5 bits for starting health.
-        additional_start_options = additional_start_options | (
-            self.starting_full_hearts << 7
-        )
-
-        ## Next 2 bits for starting interface.
+            storyflag_writer.set_flag(flag, 1)
         interface_choice_num = ["Standard", "Light", "Pro"].index(
             self.placement_file.options["interface"]
         )
-        additional_start_options = additional_start_options | (
-            interface_choice_num << 12
-        )
+        storyflag_writer.set_flag(840, interface_choice_num)
+        storyflag_writer.set_flag(953, self.starting_tadtones)
 
-        ## Next 1 bit for starting bugs.
+        # itemflags
+        itemflag_writer = get_itemflag_writer()
+        for flag, count in self.startitemflags.items():
+            assert flag < 0x1FF
+            itemflag_writer.set_flag(flag, count)
         if self.max_starting_bugs:
-            additional_start_options = additional_start_options | (1 << 14)
-
-        ## First 1 bit for starting treasures.
+            for bugcounter in range(10, 22):
+                # counter
+                itemflag_writer.set_flag(431 + bugcounter, 99)
+                # flag
+                if bugcounter == 12:
+                    # ss doing ss things
+                    storyflag_writer.set_flag(122, 1)
+                else:
+                    itemflag_writer.set_flag(131 + bugcounter, 1)
         if self.max_starting_treasures:
-            additional_start_options = additional_start_options | (1 << 15)
+            for treasurecounter in range(22, 38):
+                # counter
+                itemflag_writer.set_flag(399 + treasurecounter, 99)
+                # flag
+                storyflag_writer.set_flag(0x2F1 - 22 + treasurecounter, 1)
 
-        start_flags_write.write(struct.pack(">H", additional_start_options))
+        storyflag_writer.write_to(start_flags_write)
+        itemflag_writer.write_to(start_flags_write)
+        # dungeonflags
+        start_flags_write.write(bytes(self.startdungeonflags))
 
-        # Starting shield, bottles and tadtones.
+        start_flags_write.write(struct.pack(">B", self.starting_full_hearts))
+
+        # Starting shield and bottles
         ## Last 3 bits for starting bottles.
         additional_start_options_2 = self.starting_bottles
 
@@ -3056,12 +3037,29 @@ class GamePatcher:
         if self.start_with_hylian_shield:
             additional_start_options_2 = additional_start_options_2 | (1 << 3)
 
-        ## Next 5 bits for starting Tadtones.
-        additional_start_options_2 = additional_start_options_2 | (
-            self.starting_tadtones << 4
-        )
+        start_flags_write.write(struct.pack(">B", additional_start_options_2))
 
-        start_flags_write.write(struct.pack(">H", additional_start_options_2))
+        # sceneflags
+        for flagregion, flags in (
+            self.patches["global"].get("startsceneflags", {}).items()
+        ):
+            flagregionid = FLAGINDEX_NAMES.index(flagregion)
+            filtered_flags = []
+            for flag in flags:
+                if not isinstance(flag, int):  # it's a dict with onlyif and flag
+                    if not check_static_option_req(
+                        flag["onlyif"], self.placement_file.options
+                    ):
+                        # flag should not be set according to options
+                        continue
+                    filtered_flags.append(flag["flag"])
+                else:
+                    filtered_flags.append(flag)
+            if len(filtered_flags) > 0:
+                start_flags_write.write(struct.pack(">B", flagregionid | 0x80))
+                for flag in filtered_flags:
+                    start_flags_write.write(struct.pack(">B", flag))
+        start_flags_write.write(bytes.fromhex("FF"))
 
         startflag_byte_count = len(start_flags_write.getbuffer())
         if startflag_byte_count > 512:
