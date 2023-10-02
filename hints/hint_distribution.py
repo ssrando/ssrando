@@ -177,21 +177,26 @@ class HintDistribution:
         self.nb_hints += self.fi_hints
         assert self.fi_hints <= MAX_FI_HINTS
 
-        check_hint_status2 = (
+        hint_status_from_distro = (
             check_hint_status
             | {
-                areas.short_to_full(loc["location"]): loc["type"]
-                for loc in self.added_locations
+                self._get_full_location_name(location["location"]): location["type"]
+                for location in self.added_locations
             }
-            | {areas.short_to_full(loc): None for loc in self.removed_locations}
+            | {
+                self._get_full_location_name(location): None
+                for location in self.removed_locations
+            }
         )
         # Combines those 3 dictionaries, the right-most dict has priority when keys are shared
 
         self.always_hints = [
-            loc for loc, status in check_hint_status2.items() if status == "always"
+            loc for loc, status in hint_status_from_distro.items() if status == "always"
         ]
         self.sometimes_hints = [
-            loc for loc, status in check_hint_status2.items() if status == "sometimes"
+            loc
+            for loc, status in hint_status_from_distro.items()
+            if status == "sometimes"
         ]
         self.rng.shuffle(self.always_hints)
         self.rng.shuffle(self.sometimes_hints)
@@ -506,3 +511,17 @@ class HintDistribution:
 
     def get_junk_text(self):
         return self.junk_hints.pop()
+
+    def _get_full_location_name(self, location: str) -> EXTENDED_ITEM_NAME:
+        full_location_name = location
+
+        # Still continue generating the seed if the distro isn't 100% correct
+        try:
+            full_location_name = self.areas.short_to_full(location)
+        except ValueError:
+            print(f"Could not find location with name: {location}.")
+            print(
+                "The selected hint distribution can be used but may not work as expected.\n"
+            )
+
+        return full_location_name
