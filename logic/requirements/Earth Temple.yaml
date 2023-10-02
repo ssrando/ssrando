@@ -50,7 +50,7 @@ Main:
 
   West Room:
     exits:
-      Hub Room: Nothing
+      Hub Room: Bomb Bag | Hook Beetle
     locations:
       Chest in West Room: Nothing
 
