@@ -50,9 +50,10 @@ Main:
 
   West Room:
     exits:
-      Hub Room: Rock to West Room
+      Hub Room: Rock to Hub Room
     locations:
       Chest in West Room: Nothing
+      Rock to Hub Room: Bomb Bag | Hook Beetle
 
   Room with Slopes:
     exits:
