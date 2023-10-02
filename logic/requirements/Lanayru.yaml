@@ -2,7 +2,7 @@ allowed-time-of-day: DayOnly
 macros:
   All Three Nodes: LMF Nodes On option | (North Part - Water Node & Lightning Node - Lightning Node & East - Fire Node - Fire Node)
   Raise Lanayru Mining Facility: Open LMF option | Desert - North Part - Activate Main Node
-  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Central Skyloft - Bazaar - Endurance Potion | Lanayru Desert - Sand Oasis Brakeslide Trick | Stuttersprint Trick
+  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Central Skyloft - Bazaar - Endurance Potion | Brakeslide Trick | Stuttersprint Trick
 
 Mine:
   toplevel-alias: Lanayru Mine
@@ -37,14 +37,14 @@ Mine:
   Statues Area:
     exits:
       Entry: Nothing
-      End: Blow Statues Down | Lanayru Mine Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
+      End: Blow Statues Down | Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
     locations:
       Blow Statues Down: Bomb Bag | Hook Beetle
       Chest behind Statue: Blow Statues Down
 
   End:
     exits:
-      Statues Area: Statues Area - Blow Statues Down | Lanayru Mine Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
+      Statues Area: Statues Area - Blow Statues Down | Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
     locations:
       Blow up Rock on Track: Nothing
       Chest at the End of Mine: Nothing # There's a baba in the way
@@ -101,7 +101,7 @@ Desert:
       # Blow down statue or stamina potion or defeat spume and brakeslide through
       Get Past Spume to Sand Oasis: Blow Statues to Sand Oasis Down |
                                     Central Skyloft - Bazaar - Endurance Potion |
-                                    (Lanayru Desert - Sand Oasis Brakeslide Trick & Stuttersprint Trick & (Bomb Bag | Bow | Long Range Skyward Strike))
+                                    (Brakeslide Trick & Stuttersprint Trick & (Bomb Bag | Bow | Long Range Skyward Strike))
 
   Sand Oasis: # Before
     exits:
@@ -229,7 +229,7 @@ Desert:
           Exit: Nothing
           Past: Timeshift Stone
           Present after Sand:
-            Can Defeat Ampilus | Fire Node - Brakeslide Trick | Present after Sand - Push Box
+            Can Defeat Ampilus | Brakeslide Trick | Present after Sand - Push Box
         locations:
           Blow up Rock for Timeshift Stone: Bomb Bag
           Timeshift Stone: Blow up Rock for Timeshift Stone & Can Hit Timeshift Stone

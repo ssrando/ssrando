@@ -1373,7 +1373,7 @@ Lanayru Mine - Chest near First Timeshift Stone:
 Can Access Second Part of Lanayru Mine:
   Can Access Lanayru &
   Can Activate Mine First Timeshift Stone &
-  (Bomb Bag | Hook Beetle | Lanayru Mine Brakeslide Trick | (Unlocked Endurance Potion & Bottle))
+  (Bomb Bag | Hook Beetle | Brakeslide Trick | (Unlocked Endurance Potion & Bottle))
 
 Lanayru Mine - Chest behind Statue:
   Can Access Second Part of Lanayru Mine & (Bomb Bag | Hook Beetle)
@@ -1422,12 +1422,12 @@ Can Access Sand Oasis:
   (Can Access Lanayru Desert & (Hook Beetle | Clawshots)) |
   (
     Can Access Lanayru Desert &
-    Lanayru Desert - Brakeslide to Sand Oasis Trick &
+    Brakeslide Trick &
     (
       Long Range Skyward Strike |
       Bomb Bag |
       Bow |
-      (Lanayru Desert - Spume Brakeslide Trick & Sword)
+      (Brakeslide Trick & Sword)
     )
   ) |
   Can Access West Desert Statue
@@ -1437,7 +1437,7 @@ Can Access Sand Oasis:
 Can Access West Desert Statue:
   (
     Can Access Sand Oasis &
-    (Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick)
+    (Can Defeat Ampilus | Hook Beetle | Brakeslide Trick)
   ) |
   (Can Access Lanayru Desert & Clawshots) |
   Can Access Lanayru Caves
@@ -1456,7 +1456,7 @@ Lanayru Desert - Chest near Sand Oasis:
 Can Access Desert Gorge Statue:
   (
     Can Access West Desert Statue &
-    (Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick | Clawshots)
+    (Can Defeat Ampilus | Hook Beetle | Brakeslide Trick | Clawshots)
   ) |
   (Can Access Second Part of Lanayru Desert & Distance Activator) |
   Can Access Lanayru Caves
@@ -1605,7 +1605,7 @@ Can Access Fire Node in Past:
   Can Access Fire Node & Bomb Bag
 
 Can Access Second Part of Fire Node:
-  Can Access Fire Node & (Can Defeat Ampilus | Fire Node - Brakeslide Trick)
+  Can Access Fire Node & (Can Defeat Ampilus | Brakeslide Trick)
 
 Can Access End of Fire Node:
   Can Access Second Part of Fire Node & Bomb Bag & Hook Beetle
