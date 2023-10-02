@@ -87,7 +87,7 @@ Main:
 
   Second Hub:
     exits:
-      First Hub: Skyview Small Key
+      First Hub: Skyview Small Key x2 # If you somehow make it into this room first, assume worst key usage
       Miniboss Room: Switch to Miniboss Room
       Left Rooms: Switch to Left Room
       Staldra Room: Skyview Small Key x 2
@@ -148,7 +148,7 @@ Main:
       locations:
         Chest near Boss Door: Nothing
         Hit Vines: Long Range Skyward Strike | Distance Activator
-        Before Rope - Deal with Archers: Can Defeat Bokoblins
+        Before Rope - Deal with Archers: Can Defeat Bokoblins | Hook Beetle
 
     Near Boss Key Chest:
       exits:
