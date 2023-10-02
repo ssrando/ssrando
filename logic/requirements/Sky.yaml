@@ -11,7 +11,7 @@ North East:
     Sky - Around Skyloft: Nothing
   locations:
     Goddess Chest on Island next to Bamboo Island: Eldin - Goddess Cube near Mogma Turf Entrance
-    Goddess Chest in Cave on Island next to Bamboo Island: Lanayru - Goddess Cube in Secret Passageway & Water Scale
+    Goddess Chest in Cave on Island next to Bamboo Island: Lanayru - Goddess Cube in Secret Passageway & Water Dragon's Scale
     Northeast Island Goddess Chest behind Bombable Rocks:
       Lanayru - Goddess Cube at Lanayru Mine Entrance & Bomb Bag # (Bomb Bag | Can RBM 4x01)
       # Scene Flag 4x01 is "Blow Up rocks on northeastern island"
@@ -129,7 +129,7 @@ South East:
         Start Hot Soup Delivery: Break the Chandelier & Bottle
         Complete Hot Soup Delivery: Skyloft - Delivered Hot Soup
         Play the Harp with Kina: # Play the harp
-          Pumpkin Carrying & Goddess Harp & Night
+          Pumpkin Carrying & Goddess's Harp & Night
         Harp Minigame: Play the Harp with Kina
         Pick up Levias' Soup: Spiral Charge
 
@@ -199,7 +199,7 @@ South West:
       Sky - South West: Day
     locations:
       Southwest Triple Island Upper Goddess Chest: Eldin - Goddess Cube at Eldin Entrance
-      Southwest Triple Island Lower Goddess Chest: Lanayru - Goddess Cube near Hook Beetle Fight
+      Southwest Triple Island Lower Goddess Chest: Lanayru - Goddess Cube near Caged Robot
       Southwest Triple Island Cage Goddess Chest: Lanayru - Goddess Cube in Skipper's Retreat & Clawshots
 
 Around Skyloft: # Also North West minus Thunderhead
@@ -239,9 +239,9 @@ Thunderhead:
       exits:
         Exit: Nothing
       locations:
-        Farore's Courage: Goddess Sword
-        Nayru's Wisdom: Goddess Longsword
-        Din's Power: Goddess White Sword
+        Strike Crest with Goddess Sword: Goddess Sword
+        Strike Crest with Longsword: Goddess Longsword
+        Strike Crest with White Sword: Goddess White Sword
 
   East Island:
     entrance: Nothing

@@ -141,7 +141,7 @@ MAP_CHECKS = [
     "Lanayru Mining Facility - Chest after Armos Fight",
     "Ancient Cistern - Chest after Whip Hooks",
     "Sandship - Chest before 4-Door Corridor",
-    "Fire Sanctuary - Chest after Second Trapped Mogma",
+    "Fire Sanctuary - Rescue Second Trapped Mogma",
     "Sky Keep - First Chest",
 ]
 VANILLA_MAPS_PLACEMENT = norm_restrict_vanilla(MAP_CHECKS)
@@ -171,9 +171,9 @@ DUNGEON_MAPS_RESTRICTED_RESTRICTION = norm_values(
 
 VANILLA_TRIFORCES_PLACEMENT = norm_values(
     {
-        TRIFORCE_OF_COURAGE: "Sky Keep - Triforce of Courage",
-        TRIFORCE_OF_WISDOM: "Sky Keep - Triforce of Wisdom",
-        TRIFORCE_OF_POWER: "Sky Keep - Triforce of Power",
+        TRIFORCE_OF_COURAGE: "Sky Keep - Sacred Power of Farore",
+        TRIFORCE_OF_WISDOM: "Sky Keep - Sacred Power of Nayru",
+        TRIFORCE_OF_POWER: "Sky Keep - Sacred Power of Din",
     }
 )
 

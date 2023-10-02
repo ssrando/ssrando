@@ -186,14 +186,14 @@
   choices:
     - None
     - Required Dungeons Separately
-    - All Dungeons
-    - All Dungeons + Sky Keep
+    - All Surface Dungeons
+    - All Surface Dungeons + Sky Keep
   default: None
   help: "Shuffles entrances with one another.
         **None**: entrances are vanilla.
         **Required Dungeons Separately**: required dungeons entrances are only shuffled with each other.
-        **All Dungeons**: all dungeons entrances are shuffled with each other.
-        **All Dungeons + Sky Keep** - all dungeon entrances AND the Sky Keep entrance are shuffled with each other."
+        **All Surface Dungeons**: all surface dungeons entrances are shuffled with each other.
+        **All Surface Dungeons + Sky Keep** - all surface dungeon entrances AND the Sky Keep entrance are shuffled with each other."
   ui: option_randomize_entrances
 - name: Randomize Silent Realms
   command: randomize-trials
@@ -260,7 +260,7 @@
     - Raised
   default: Lowered
   help: "Determines whether the Gate of Time starts raised or lowered.
-        **Lowered**: the Goddess Harp is needed to raise the Gate of Time.
+        **Lowered**: the Goddess's Harp is needed to raise the Gate of Time.
         **Raised**: the Gate of Time is raised from the start of the game."
   ui: option_got_starting_state
 - name: Gate of Time Sword Requirement
@@ -825,7 +825,7 @@
     - Faron Song of the Hero Part
     - Farore's Courage
     - Fireshield Earrings
-    - Goddess Harp
+    - Goddess's Harp
     - Gust Bellows
     - Horned Colossus Beetle
     - Key Piece
@@ -866,7 +866,7 @@
     - Triforce of Courage
     - Triforce of Power
     - Triforce of Wisdom
-    - Water Scale
+    - Water Dragon's Scale
     - Whip
     - Skyview Small Key
     - Skyview Small Key
@@ -920,7 +920,7 @@
   default: false
   help: "Gives you a random progression item at the start of the game in addition to any starting items.
         This includes: Bow, Beetle, Slingshot, Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
-        Water Scale, Fireshield Earrings, Goddess Harp and Spiral Charge."
+        Water Dragon's Scale, Fireshield Earrings, Goddess's Harp and Spiral Charge."
   ui: option_random_starting_item
 - name: Starting Empty Bottles
   command: starting-bottles

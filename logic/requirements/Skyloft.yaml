@@ -29,8 +29,8 @@ Upper Skyloft:
       Crystal in Knight Academy Plant: Night
       Start Owlan's Quest: Faron - Faron Woods - All Kikwis Saved
       Owlan's Crystals: Faron - Faron Woods - Retrieve Oolo & Day
-      Knock on Toilet Door: Goddess Harp & Night
-      Cawlin's Letter: Knock on Toilet Door & Day
+      Knock on Toilet Door: Goddess's Harp & Night
+      Item from Cawlin: Knock on Toilet Door & Day
       Ghost/Pipit's Crystals: Cawlin's Letter & Day
       Fledge's Crystals: Central Skyloft - Bazaar - Endurance Potion & Night
 
@@ -97,11 +97,11 @@ Central Skyloft:
     West Cliff Goddess Chest: Faron - Goddess Cube on West Great Tree near Exit
     Parrow's Gift: Sky - Talk to Orielle & Day
     Parrow's Crystals: Sky - Save Orielle & Day
-    Shed Chest: Water Scale
-    Shed Goddess Chest: Water Scale & Eldin - Goddess Cube on Sand Slide
+    Shed Chest: Water Dragon's Scale
+    Shed Goddess Chest: Water Dragon's Scale & Eldin - Goddess Cube on Sand Slide
     Bird Nest - Item in Bird Nest:
       Baby Rattle from Beedle's Shop Trick & Day & Distance Activator & Gust Bellows & (Beetle | Whip)
-    Open Trial Gate: Goddess Harp & Song of the Hero
+    Open Trial Gate: Goddess's Harp & Song of the Hero
     General - Can Collect Water: Nothing
     Waterfall Cave Crystals from above: Beetle
     Crystal on Waterfall Island from the ground: Quick Beetle
@@ -220,7 +220,7 @@ Skyloft Silent Realm:
   exits:
     Exit: Nothing
   locations:
-    Stone of Trials: Nothing
+    Trial Reward: Nothing
     Relic 1: Nothing
     Relic 2: Nothing
     Relic 3: Nothing

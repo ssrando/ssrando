@@ -4,7 +4,7 @@ hint-region: Skyview
 
 # Global macros
 macros:
-  Skyview 2: Water Scale
+  Skyview 2: Water Dragon's Scale
   Can Hit High Skyview Switches: Distance Activator | (Bomb Bag & Bomb Throws Trick)
   Can Cut Tree: Sword | Bomb Bag
 
@@ -25,7 +25,7 @@ Main:
       Entry - Cut Tree: Can Cut Tree
       Destroy Barricade: Skyview 2 | Bomb Bag
       Switch to One Eye Room: Can Hit High Skyview Switches
-      Goddess Wall Trigger: Ballad of the Goddess & Goddess Harp
+      Goddess Wall Trigger: Ballad of the Goddess & Goddess's Harp
 
   One Eye Room:
     exits:
@@ -44,7 +44,7 @@ Main:
       Second Hub: One Water Raise & Skyview Small Key
     locations:
       First Room - Destroy Barricade: Nothing
-      Switch to Left Room: Can Hit Switch | (One Water Raise & Water Scale)
+      Switch to Left Room: Can Hit Switch | (One Water Raise & Water Dragon's Scale)
       Switch to Right Room: Can Hit High Skyview Switches
       One Water Raise: Left Room - Raise Water | Right Room - Raise Water
 
@@ -62,7 +62,7 @@ Main:
         exits:
           First Hub: Nothing
           After Crawlspace: Nothing
-          After Crawlspace - With Water: Water Scale
+          After Crawlspace - With Water: Water Dragon's Scale
 
       After Crawlspace:
         exits:
@@ -105,7 +105,7 @@ Main:
       exits:
         Second Hub: Nothing
       locations:
-        Beetle: Sword | Skyview 2
+        Chest after Stalfos Fight: Sword | Skyview 2
 
     Left Rooms:
       exits:
@@ -172,6 +172,6 @@ Spring:
     # Crest Hit: Ruby Tablet
   locations:
     Rupee on Spring Pillar: Beetle
-    Ruby Tablet: Goddess Sword
+    Strike Crest: Goddess Sword
     Goddess Cube in Skyview Spring: Goddess Sword
     Sacred Water: Bottle & Skyview 2

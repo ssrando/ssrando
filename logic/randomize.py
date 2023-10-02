@@ -519,11 +519,11 @@ class Rando:
         der = self.options["randomize-entrances"]
         dungeons = ALL_DUNGEONS.copy()
         entrances = [DUNGEON_OVERWORLD_ENTRANCES[dungeon] for dungeon in ALL_DUNGEONS]
-        if der == "All Dungeons":
+        if der == "All Surface Dungeons":
             indices = list(range(len(REGULAR_DUNGEONS)))
             shuffle_indices(self.rng, dungeons, indices=indices)
 
-        elif der == "All Dungeons + Sky Keep":
+        elif der == "All Surface Dungeons + Sky Keep":
             self.rng.shuffle(dungeons)
 
         elif der == "Required Dungeons Separately":

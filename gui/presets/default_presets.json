@@ -124,7 +124,7 @@
         "triforce-required": true,
         "triforce-shuffle": "Anywhere",
         "seed": -1,
-        "randomize-entrances": "All Dungeons + Sky Keep",
+        "randomize-entrances": "All Surface Dungeons + Sky Keep",
         "randomize-trials": true,
         "no-spoiler-log": false,
         "Shopsanity": true,

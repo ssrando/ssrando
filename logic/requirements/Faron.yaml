@@ -32,7 +32,7 @@ Sealed Grounds:
       Gate of Time: Open Gate of Time
     locations:
       Chest inside Sealed Temple: Nothing
-      Song from Impa: Goddess Harp
+      Song from Impa: Goddess's Harp
       Raise Gate of Time: GoT Raising Requirement
       Start Imprisoned 2: Raise Gate of Time & GoT Opening Requirement
       Open Gate of Time: Raise Gate of Time & GoT Opening Requirement & Spiral - Defeat Imprisoned 2
@@ -53,7 +53,7 @@ Sealed Grounds:
     locations:
       Unlock Statue: Nothing
       Gossip Stone behind the Temple: Nothing
-      Gorko's Goddess Wall Reward: Goddess Harp & Ballad of the Goddess & Goddess Sword
+      Gorko's Goddess Wall Reward: Goddess's Harp & Ballad of the Goddess & Goddess Sword
 
 # FARON WOODS
 Faron Woods:
@@ -65,7 +65,7 @@ Faron Woods:
     Viewing Platform Statue Entrance: Impossible
     Shared Statue Exit: Unlock In the Woods Statue | Unlock Viewing Platform Statue
     Trial Gate: Open Trial Gate
-    Great Tree - Near Underwater Hole: Water Scale
+    Great Tree - Near Underwater Hole: Water Dragon's Scale
     Great Tree - Platforms: Clawshots
     Clawshot Target Branch: Clawshots
     Lake Floria Dive: Open Door to Lake Floria | Early Lake Floria Tricks
@@ -75,16 +75,16 @@ Faron Woods:
     Push Log to Sealed Grounds: Nothing
     Amber Relic Farming: Nothing
     Hit Vine to Deep Woods: Distance Activator
-    Open Trial Gate: Goddess Harp & Farore's Courage
-    Open Door to Lake Floria: ((Open Lake Floria option & Water Scale) | (Great Tree - Top - Talk to Yerbal & (Goddess Sword | Talk to Yerbal option)))
+    Open Trial Gate: Goddess's Harp & Farore's Courage
+    Open Door to Lake Floria: ((Open Lake Floria option & Water Dragon's Scale) | (Great Tree - Top - Talk to Yerbal & (Goddess Sword | Talk to Yerbal option)))
     Rupee on Hollow Tree Root: Nothing
     Rupee on Hollow Tree Branch: Beetle
     Rupee on Platform near Floria Door: Beetle
     All Kikwis Saved: (Sword | Beetle) & Can Defeat Bokoblins
     Kikwi Elder's Reward: All Kikwis Saved
     Item on Tree: Nothing
-    Item behind Bombable Rock: Bomb Bag
-    Chest behind Bombable Rocks near Erla: Bomb Bag
+    Item behind Lower Bombable Rock: Bomb Bag
+    Chest behind Upper Bombable Rock: Bomb Bag
 
   Entry:
     exits:
@@ -144,11 +144,11 @@ Faron Woods:
     Near Underwater Hole:
       exits:
         Faron - Faron Woods: Nothing
-        Underwater Hole: Water Scale
+        Underwater Hole: Water Dragon's Scale
 
     Lower Area: # down in the water
       exits:
-        Underwater Tunnel: Water Scale
+        Underwater Tunnel: Water Dragon's Scale
         Path to Chest: Gust Bellows
         Near Exit: Gust Bellows
 
@@ -193,7 +193,7 @@ Faron Woods:
         Unlock Statue: Nothing
         Rupee on Great Tree North Branch: Beetle
         Rupee on Great Tree West Branch: Beetle
-        Talk to Yerbal: Water Scale & (Slingshot | Beetle) # only those 2 items (and their upgrades) work
+        Talk to Yerbal: Water Dragon's Scale & (Slingshot | Beetle) # only those 2 items (and their upgrades) work
   
   # DEEP WOODS
   Deep Woods:
@@ -227,7 +227,7 @@ Faron Silent Realm:
   exits:
     Exit: Nothing
   locations:
-    Water Scale: Nothing
+    Trial Reward: Nothing
     Relic 1: Nothing
     Relic 2: Nothing
     Relic 3: Nothing
@@ -245,25 +245,25 @@ Flooded Faron Woods:
   hint-region: Flooded Faron Woods
   exits:
     Exit to Upper Flooded Great Tree: Nothing
-    Exit to Lower Flooded Great Tree: Water Scale
+    Exit to Lower Flooded Great Tree: Water Dragon's Scale
   locations:
-    Yellow Tadtone under Lilypad: Water Scale
-    8 Light Blue Tadtones near Viewing Platform: Water Scale
-    4 Purple Tadtones under Viewing Platform: Water Scale
-    Red Moving Tadtone near Viewing Platform: Water Scale
-    Light Blue Tadtone under Great Tree Root: Water Scale
-    8 Yellow Tadtones near Kikwi Elder: Water Scale
-    4 Light Blue Moving Tadtones under Kikwi Elder: Water Scale
-    4 Red Moving Tadtones North West of Great Tree: Water Scale
-    Green Tadtone behind Upper Bombable Rock: Water Scale
-    2 Dark Blue Tadtones in Grass West of Great Tree: Water Scale
-    8 Green Tadtones in West Tunnel: Water Scale
-    2 Red Tadtones in Grass near Lower Bombable Rock: Water Scale
-    16 Dark Blue Tadtones in the South West: Water Scale
-    4 Purple Moving Tadtones near Floria Gate: Water Scale
-    Dark Blue Moving Tadtone inside Small Hollow Tree: Water Scale
-    4 Yellow Tadtones under Small Hollow Tree: Water Scale
-    8 Purple Tadtones in Clearing after Small Hollow Tree: Water Scale
+    Yellow Tadtone under Lilypad: Water Dragon's Scale
+    8 Light Blue Tadtones near Viewing Platform: Water Dragon's Scale
+    4 Purple Tadtones under Viewing Platform: Water Dragon's Scale
+    Red Moving Tadtone near Viewing Platform: Water Dragon's Scale
+    Light Blue Tadtone under Great Tree Root: Water Dragon's Scale
+    8 Yellow Tadtones near Kikwi Elder: Water Dragon's Scale
+    4 Light Blue Moving Tadtones under Kikwi Elder: Water Dragon's Scale
+    4 Red Moving Tadtones North West of Great Tree: Water Dragon's Scale
+    Green Tadtone behind Upper Bombable Rock: Water Dragon's Scale
+    2 Dark Blue Tadtones in Grass West of Great Tree: Water Dragon's Scale
+    8 Green Tadtones in West Tunnel: Water Dragon's Scale
+    2 Red Tadtones in Grass near Lower Bombable Rock: Water Dragon's Scale
+    16 Dark Blue Tadtones in the South West: Water Dragon's Scale
+    4 Purple Moving Tadtones near Floria Gate: Water Dragon's Scale
+    Dark Blue Moving Tadtone inside Small Hollow Tree: Water Dragon's Scale
+    4 Yellow Tadtones under Small Hollow Tree: Water Dragon's Scale
+    8 Purple Tadtones in Clearing after Small Hollow Tree: Water Dragon's Scale
     Faron Woods - Retrieve Oolo: Scrapper & Skyloft - Knight Academy - Start Owlan's Quest
     Can Watch Completed Tadtones Cutscene: Nothing
 
@@ -272,7 +272,7 @@ Flooded Faron Woods:
       Entrance: Nothing
       Exit: Nothing
       Exit to Upper Flooded Faron Woods: Nothing
-      Exit to Lower Flooded Faron Woods: Water Scale
+      Exit to Lower Flooded Faron Woods: Water Dragon's Scale
     locations:
       Water Dragon's Reward: Group of Tadtones x 17 & Can Watch Completed Tadtones Cutscene
 
@@ -283,24 +283,24 @@ Lake Floria:
   Above Rock:
     exits:
       Dive from Faron Woods: Impossible
-      Below Rock: Blow Rock & Water Scale
+      Below Rock: Blow Rock & Water Dragon's Scale
     locations:
-      Rupee behind Southwest Boulder: Water Scale
-      Left Rupee behind Northwest Boulder: Water Scale
-      Right Rupee behind Northwest Boulder: Water Scale
-      Rupee under Central Boulder: Water Scale
-      Blow Rock: Water Scale
+      Rupee behind Southwest Boulder: Water Dragon's Scale
+      Left Rupee behind Northwest Boulder: Water Dragon's Scale
+      Right Rupee behind Northwest Boulder: Water Dragon's Scale
+      Rupee under Central Boulder: Water Dragon's Scale
+      Blow Rock: Water Dragon's Scale
 
   Below Rock:
     exits:
-      Emerged Area: Water Scale
-      Above Rock: Water Scale
-      Exit to Farore's Lair: Water Scale
+      Emerged Area: Water Dragon's Scale
+      Above Rock: Water Dragon's Scale
+      Exit to Farore's Lair: Water Dragon's Scale
 
     Emerged Area:
       exits:
         Statue: Unlock Statue
-        Below Rock: Water Scale
+        Below Rock: Water Dragon's Scale
       locations:
         Lake Floria Chest: Nothing
         Goddess Cube in Lake Floria: Goddess Sword
@@ -309,9 +309,9 @@ Lake Floria:
   Farore's Lair:
     exits:
       Exit to Waterfall: Nothing
-      Exit to Lake Floria: Water Scale
+      Exit to Lake Floria: Water Dragon's Scale
     locations:
-      Dragon Lair South Chest: Water Scale
+      Dragon Lair South Chest: Water Dragon's Scale
       Dragon Lair East Chest: Nothing
       Talk to Farore: Nothing
 
@@ -321,7 +321,7 @@ Lake Floria:
       Statue: Unlock Statue
       Exit to Farore's Lair: Nothing
       Exit to Faron Woods: Nothing
-      Exit to Ancient Cistern: Water Scale
+      Exit to Ancient Cistern: Water Dragon's Scale
     locations:
       Unlock Statue: Nothing
       Gossip Stone outside Ancient Cistern: Nothing

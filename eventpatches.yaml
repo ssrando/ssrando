@@ -2,11 +2,11 @@
   - name: File Progress Text 0
     type: textpatch
     index: 78
-    text: "Search the land and skies for the <y<Goddess Harp>>."
+    text: "Search the land and skies for the <y<Goddess's Harp>>."
   - name: File Progress Text 1
     type: textpatch
     index: 79
-    text: "Show the Goddess Harp to Impa at the\n<b<Sealed Temple>>."
+    text: "Show the Goddess's Harp to Impa at the\n<b<Sealed Temple>>."
   # See gamepatches for File Progress Text 2
   - name: File Progress Text 3
     type: textpatch
@@ -342,8 +342,8 @@
     type: flowpatch
     index: 71
     flow:
-      next: Goddess Harp Storyflag
-  - name: Goddess Harp Storyflag
+      next: Goddess's Harp Storyflag
+  - name: Goddess's Harp Storyflag
     type: flowadd
     flow:
       type: type3
@@ -665,13 +665,13 @@
       param2: 300 # Rupees to add
       next: -1
       param3: 8 # Increase rupee count
-  # - name: Patch Water Scale item get when floria gates are open
+  # - name: Patch Water Dragon Scale item get when floria gates are open
   #   onlyif: Option "open-lake-floria" Is "Open"
   #   type: flowpatch
   #   index: 500
   #   flow:
-  #     next: Open Lake Floria Doors when getting Water Scale 1
-  # - name: Open Lake Floria Doors when getting Water Scale 1
+  #     next: Open Lake Floria Doors when getting Water Dragon Scale 1
+  # - name: Open Lake Floria Doors when getting Water Dragon Scale 1
   #   onlyif: Option "open-lake-floria" Is "Open"
   #   type: flowadd
   #   flow:
@@ -679,9 +679,9 @@
   #     subType: 1
   #     param1: 50 # scene flag
   #     param2: 1 # scene index (Faron Woods)
-  #     next: Open Lake Floria Doors when getting Water Scale 2
+  #     next: Open Lake Floria Doors when getting Water Dragon Scale 2
   #     param3: 2
-  # - name: Open Lake Floria Doors when getting Water Scale 2
+  # - name: Open Lake Floria Doors when getting Water Dragon Scale 2
   #   onlyif: Option "open-lake-floria" Is "Open"
   #   type: flowadd
   #   flow:
@@ -844,7 +844,7 @@
     text: "Your objective is to exit the <b<Temple\nof Hylia>> in the past and defeat any\nbosses in your way.
     \n\nTo do this, you need to raise and\nopen the <r<Gate of Time>> in the <b<Sealed\nTemple>>.
     \n\nTo reach the <b<Sealed Temple>>, you will\nneed to find the <g<Emerald Tablet>> and\njourney to the <b<Faron Province>>.
-    \n\nTo raise the <r<Gate of Time>>, you must\nacquire the <y<Goddess Harp>> and take it\nto the ancient one in the <b<Sealed\nTemple>>.
+    \n\nTo raise the <r<Gate of Time>>, you must\nacquire the <y<Goddess's Harp>> and take it\nto the ancient one in the <b<Sealed\nTemple>>.
     \nTo open the <r<Gate of Time>>, you must\ncomplete the required dungeons and\nobtain the <y<{required_sword}>>."
   - name: Display Fi Objective Text
     onlyif: Option "triforce-required" Enabled
@@ -2740,7 +2740,7 @@
       param2: 7
       next: -1
       param3: 7
-  - name: Fix Hook Beetle check # the robot doesn't give the item after harp
+  - name: Fix Caged Robot check # the robot doesn't give the item after harp
     type: flowpatch
     index: 39
     flow:

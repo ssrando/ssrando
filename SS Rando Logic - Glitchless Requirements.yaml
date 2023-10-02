@@ -2,11 +2,16 @@
 
 # Words Conventions:
 
-#   - Beginning of Checks, Adjectives, Nouns and Verbs are Capitalized, not Prepositions (Does Look Weird in a Sentence, not in Checks)
+#   - Beginning of Checks, Adjectives, Nouns and Verbs are Capitalized, not
+#     Prepositions (Does Look Weird in a Sentence, not in Checks)
 
-#   - Macros using words implying location like Access, Get Past, Reach (also, Retrieve) must include the previous location in their requirements (Get Past X must include Access X)
+#   - Macros using words implying location like Access, Get Past, Reach (also,
+#     Retrieve) must include the previous location in their requirements (Get
+#     Past X must include Access X)
 
-#   - Macros using words implying capacity of action (except retrieve) may not include location requirements in their definition, but they must include such requirement in their uses
+#   - Macros using words implying capacity of action (except retrieve) may not
+#     include location requirements in their definition, but they must include
+#     such requirement in their uses
 
 # Please tell if you think some elements don't fit the rules
 
@@ -235,8 +240,8 @@ Upper Skyloft - Crystal in Knight Academy Plant:
 Upper Skyloft - Owlan's Crystals:
   (Can Reach Oolo in Faron 2 | (Can Access Most of Faron Woods & Can Access Flooded Faron Woods)) & Scrapper
 
-Upper Skyloft - Cawlin's Letter:
-  Goddess Harp
+Upper Skyloft - Item from Cawlin:
+  Goddess's Harp
 
 Upper Skyloft - Ghost/Pipit's Crystals:
   Cawlin's Letter
@@ -333,11 +338,11 @@ Central Skyloft - Crystal on Light Tower:
   Nothing
 
 Can Open Trial Gate on Skyloft:
-  Song of the Hero & Goddess Harp
+  Song of the Hero & Goddess's Harp
   # Scene Flag 9x20 is "Hylia's Trial Gate Opened"
   # RBW method: When you are entering the trial, you want to start the file as the camera pans up, and you should BiTSave that file at the Bazzar statue in order to not spawn very far OoB
 
-Skyloft Silent Realm - Stone of Trials:
+Skyloft Silent Realm - Trial Reward:
   Can Access Skyloft Silent Realm
 
 Skyloft Silent Realm - Relic 1:
@@ -377,10 +382,10 @@ Central Skyloft - Wryna's Crystals:
   Nothing
 
 Central Skyloft - Shed Chest:
-  Water Scale
+  Water Dragon's Scale
 
 Central Skyloft - Shed Goddess Chest:
-  Goddess Cube on Sand Slide & Water Scale
+  Goddess Cube on Sand Slide & Water Dragon's Scale
 
 Central Skyloft - Item in Bird Nest:
   (Clawshots & Gust Bellows) |
@@ -573,7 +578,7 @@ Sky - Southwest Triple Island Upper Goddess Chest:
   Goddess Cube at Eldin Entrance
 
 Sky - Southwest Triple Island Lower Goddess Chest:
-  Goddess Cube near Hook Beetle Fight
+  Goddess Cube near Caged Robot
 
 Sky - Southwest Triple Island Cage Goddess Chest:
   Goddess Cube in Skipper's Retreat & Clawshots
@@ -603,7 +608,7 @@ Chandelier Quest Part 2: # Bring the pumpkins
   Chandelier Quest Part 1
 
 Chandelier Quest Part 3: # Play the harp
-  Chandelier Quest Part 2 & Goddess Harp
+  Chandelier Quest Part 2 & Goddess's Harp
 
 Chandelier Quest Over:
   Chandelier Quest Part 3
@@ -646,7 +651,7 @@ Sky - Goddess Chest on Island next to Bamboo Island:
   Goddess Cube near Mogma Turf Entrance
 
 Sky - Goddess Chest in Cave on Island next to Bamboo Island:
-  Goddess Cube in Secret Passageway & Water Scale
+  Goddess Cube in Secret Passageway & Water Dragon's Scale
 
 Sky - Beedle's Crystals:
   Can Access Beedle's Shop & Horned Colossus Beetle
@@ -682,13 +687,13 @@ Thunderhead - Song from Levias:
 
 ## Isle of Songs
 
-Thunderhead - Isle of Songs - Farore's Courage:
+Thunderhead - Isle of Songs - Strike Crest with Goddess Sword:
   Can Access Thunderhead & Goddess Sword
 
-Thunderhead - Isle of Songs - Nayru's Wisdom:
+Thunderhead - Isle of Songs - Strike Crest with Longsword:
   Can Access Thunderhead & Goddess Longsword
 
-Thunderhead - Isle of Songs - Din's Power:
+Thunderhead - Isle of Songs - Strike Crest with White Sword:
   Can Access Thunderhead & Goddess White Sword
 
 Thunderhead - Goddess Chest outside Isle of Songs:
@@ -738,7 +743,7 @@ Sealed Grounds - Chest inside Sealed Temple:
   Can Access Sealed Temple
 
 Can Receive Old Lady's Teaching:
-  Can Access Sealed Temple & Goddess Harp
+  Can Access Sealed Temple & Goddess's Harp
 
 Sealed Grounds - Song from Impa:
   Can Receive Old Lady's Teaching
@@ -802,7 +807,7 @@ Can Open Door to Lake Floria:
   Can Access Most of Faron Woods &
   ((Can Talk to Yerbal & Goddess Sword) |
   (Can Talk to Yerbal & Option "open-lake-floria" Is "Talk to Yerbal") |
-  (Water Scale & Option "open-lake-floria" Is "Open"))
+  (Water Dragon's Scale & Option "open-lake-floria" Is "Open"))
   # You need to charge a skyward strike to open the door to Lake Floria
   # Scene Flag 7x02 is "Cutscene of the Doors to Lake Floria opening"
   # Scene Flag 7x04 is "Doors to Lake Floria opened"
@@ -813,19 +818,19 @@ Faron Woods - Item on Tree:
 Faron Woods - Kikwi Elder's Reward:
   Can Access Most of Faron Woods & Can Defeat Bokoblins
 
-Faron Woods - Item behind Bombable Rock:
+Faron Woods - Item behind Lower Bombable Rock:
   Can Access Most of Faron Woods & Bomb Bag
   # Scene Flag 1x80 is "Blow Up Rock containing HP"
 
-Faron Woods - Chest behind Bombable Rocks near Erla:
+Faron Woods - Chest behind Upper Bombable Rock:
   Can Access Most of Faron Woods & Bomb Bag
   # Scene Flag 0x01 is "Blow Up Rocks containing Chest (near Erla)"
 
 Can Open Trial Gate in Faron Woods:
-  Can Access Most of Faron Woods & Farore's Courage & Goddess Harp
-  # Scene Flag 3x02 is "Water Scale Trial Gate"
+  Can Access Most of Faron Woods & Farore's Courage & Goddess's Harp
+  # Scene Flag 3x02 is "Water Dragon's Scale Trial Gate"
 
-Faron Silent Realm - Water Scale:
+Faron Silent Realm - Trial Reward:
   Can Access Faron Silent Realm
 
 Faron Silent Realm - Relic 1:
@@ -925,7 +930,7 @@ Faron Woods - Gossip Stone in Deep Woods:
 ## Great Tree
 
 Can Access Lower Great Tree:
-  Can Access Most of Faron Woods & Water Scale
+  Can Access Most of Faron Woods & Water Dragon's Scale
 
 Can Swing Great Tree Platforms:
   (Can Access Lower Great Tree | Can Access Upper Great Tree) & Gust Bellows
@@ -945,10 +950,10 @@ Faron Woods - Chest inside Great Tree:
 ## Lake Floria
 
 Can Access Lake Floria above Rock:
-  Can Open Door to Lake Floria & Water Scale
+  Can Open Door to Lake Floria & Water Dragon's Scale
 
 Can Access Lake Floria Statue:
-  Can Access Lake Floria above Rock | (Can Access Floria Waterfall & Water Scale)
+  Can Access Lake Floria above Rock | (Can Access Floria Waterfall & Water Dragon's Scale)
   # You need to blow up a rock to access Floria Statue from above, this is one-way
   # Scene Flag 5x01 is "Lake Floria Statue checked". Works anywhere in Lake Floria, but Waterfall is the only place where it makes sense
 
@@ -960,20 +965,20 @@ Can Access Floria Waterfall:
   # Scene Flag 5x02 is "Lake Floria Waterfall Statue checked", but one needs to be in Lake Floria to RBM it
 
 Can Access Dungeon Entrance in Lake Floria:
-  Can Access Floria Waterfall & Water Scale
+  Can Access Floria Waterfall & Water Dragon's Scale
   # If requiring Sacred Water, make sure the randomizer places the skyview boss key before
 
 Lake Floria - Rupee under Central Boulder:
-  Can Access Lake Floria above Rock & Water Scale
+  Can Access Lake Floria above Rock & Water Dragon's Scale
 
 Lake Floria - Right Rupee behind Northwest Boulder:
-  Can Access Lake Floria above Rock & Water Scale
+  Can Access Lake Floria above Rock & Water Dragon's Scale
 
 Lake Floria - Left Rupee behind Northwest Boulder:
-  Can Access Lake Floria above Rock & Water Scale
+  Can Access Lake Floria above Rock & Water Dragon's Scale
 
 Lake Floria - Rupee behind Southwest Boulder:
-  Can Access Lake Floria above Rock & Water Scale
+  Can Access Lake Floria above Rock & Water Dragon's Scale
 
 Goddess Cube in Lake Floria:
   Can Access Lake Floria Statue & Goddess Sword
@@ -982,7 +987,7 @@ Lake Floria - Lake Floria Chest:
   Can Access Lake Floria Statue
 
 Lake Floria - Dragon Lair South Chest:
-  Can Access Floria Waterfall & Water Scale
+  Can Access Floria Waterfall & Water Dragon's Scale
 
 Lake Floria - Dragon Lair East Chest:
   Can Access Floria Waterfall
@@ -1002,55 +1007,55 @@ Can Access Flooded Faron Woods:
   Can Access Upper Great Tree
 
 Flooded Faron Woods - Yellow Tadtone under Lilypad:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 8 Light Blue Tadtones near Viewing Platform:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Purple Tadtones under Viewing Platform:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Red Moving Tadtone near Viewing Platform:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Light Blue Tadtone under Great Tree Root:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 8 Yellow Tadtones near Kikwi Elder:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Light Blue Moving Tadtones under Kikwi Elder:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Red Moving Tadtones North West of Great Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Green Tadtone behind Upper Bombable Rock:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 2 Dark Blue Tadtones in Grass West of Great Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 8 Green Tadtones in West Tunnel:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 2 Red Tadtones in Grass near Lower Bombable Rock:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 16 Dark Blue Tadtones in the South West:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Purple Moving Tadtones near Floria Gate:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Dark Blue Moving Tadtone inside Small Hollow Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 4 Yellow Tadtones under Small Hollow Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - 8 Purple Tadtones in Clearing after Small Hollow Tree:
-  Can Access Flooded Faron Woods & Water Scale
+  Can Access Flooded Faron Woods & Water Dragon's Scale
 
 Flooded Faron Woods - Water Dragon's Reward:
   Can Access Flooded Faron Woods & Group of Tadtones x17
@@ -1107,10 +1112,10 @@ Can Access Second Part of Eldin:
   # Scene Flag 6x08 is "Blow up rock between front and back of [Mogma Turf]". The BiTWarp is also the one used to get Sparrot's Crystal Ball
 
 Can Open Trial Gate in Eldin Volcano:
-  Can Access Second Part of Eldin & Din's Power & Goddess Harp
+  Can Access Second Part of Eldin & Din's Power & Goddess's Harp
   # Scene Flag 9x40 is "Fireshield Earrings Trial Gate Opened"
 
-Eldin Silent Realm - Fireshield Earrings:
+Eldin Silent Realm - Trial Reward:
   Can Access Eldin Silent Realm
 
 Eldin Silent Realm - Relic 1:
@@ -1252,7 +1257,7 @@ Mogma Turf - Chest behind Bombable Wall at Entrance:
 Mogma Turf - Sand Slide Chest:
   Can Access Second Part of Mogma Turf
 
-Mogma Turf - Digging Mitts Fight:
+Mogma Turf - Defeat Bokoblins:
   Can Access Mogma Turf & Can Defeat Bokoblins
 
 Mogma Turf - Chest behind Bombable Wall in Fire Maze:
@@ -1399,15 +1404,15 @@ Lanayru Desert - Chest near Party Wheel:
 Lanayru Desert - Ancient Flower Farming:
   Can Access Higher Part near Entrance
 
-Lanayru Desert - Chest near Hook Beetle Fight:
+Lanayru Desert - Chest near Caged Robot:
   Can Access Lanayru Desert
 
-Lanayru Desert - Hook Beetle Fight:
+Lanayru Desert - Rescue Caged Robot:
   Can Access Lanayru Desert & (Bomb Bag | Hook Beetle)
   # You can use bomb flowers to defeat the technoblins
   # Scene Flag 3x10 is "Timeshift Stone for Hook Beetle fight revealed"
 
-Goddess Cube near Hook Beetle Fight:
+Goddess Cube near Caged Robot:
   Can Access Lanayru Desert & ((Long Range Skyward Strike & Long Range Skyward Strike Jumpslash Trick) | (Clawshots & Goddess Sword))
   # On hero mode you can skyward strike this one early with a jumpslash
 
@@ -1523,10 +1528,10 @@ Goddess Cube in Secret Passageway:
   Can Access Lanayru Desert Secret Passageway & Clawshots & Goddess Sword
 
 Can Open Trial Gate in Lanayru Desert:
-  Can Access Second Part of Lanayru Desert & Nayru's Wisdom & Goddess Harp
+  Can Access Second Part of Lanayru Desert & Nayru's Wisdom & Goddess's Harp
   # Scene Flag Ax08 is "Clawshots Trial Gate Opened"
 
-Lanayru Silent Realm - Clawshots:
+Lanayru Silent Realm - Trial Reward:
   Can Access Lanayru Silent Realm
 
 Lanayru Silent Realm - Relic 1:
@@ -1652,7 +1657,7 @@ Goddess Cube in Lanayru Gorge:
 Lanayru Gorge - Item on Pillar:
   Can Access Lanayru Gorge & Beetle
 
-Lanayru Gorge - Life Tree Seedling:
+Lanayru Gorge - Digging Spot:
   Can Access Lanayru Gorge & Gust Bellows & Can Hit Timeshift Stone & Digging Mitts
 
 Lanayru Gorge - Thunder Dragon's Reward:
@@ -1758,10 +1763,10 @@ Goddess Cube in Pirate Stronghold:
 # Global macros
 
 Can Access Skyview 2:
-  Can Access Skyview & Water Scale
+  Can Access Skyview & Water Dragon's Scale
 
 Can Unlock Goddess Walls:
-  Ballad of the Goddess & Goddess Harp
+  Ballad of the Goddess & Goddess's Harp
 
 Can Beat Skyview 2:
   Can Access Skyview 2 & Can Beat Skyview
@@ -1806,8 +1811,8 @@ Can Raise Skyview Water Level in Right Room:
   # What you would hit the vines with, use it activate the crystal
 
 Skyview - Digging Spot in Crawlspace:
-  Can Raise Skyview Water Level in Right Room & Water Scale & Digging Mitts
-  # It is possible to get to this dig spot with clawshots instead of water scale, but only before raising the water. Can't be in logic.
+  Can Raise Skyview Water Level in Right Room & Water Dragon's Scale & Digging Mitts
+  # It is possible to get to this dig spot with clawshots instead of Water Dragon's Scale, but only before raising the water. Can't be in logic.
   # It is not possible to jump to the vines early in the main room with scale with only one switch for the water level hit
   # You can hit both switches with good bomb throws
   # If you had scale to get past the first room, you can't hit the switch, unless using the gust bellows on a Froak and kill it near the switch, not in logic
@@ -1843,7 +1848,7 @@ Can Get Past Staldra Room:
   # You can enter from the key door after the rope, from backwards if you can already reach Last Room,
   # or from Unloaded Skyview where the gate between Hub Room and Last Room (and the Skulltula) aren't loaded
 
-Skyview - Beetle:
+Skyview - Chest after Stalfos Fight:
   Can Get to Skyview Second Part & Distance Activator & (Sword | Can Access Skyview 2)
   # Bombs don't work to hit the switch
   # The fight requires sword, but is skipped in Skyview 2
@@ -1908,7 +1913,7 @@ Skyview - Heart Container:
 Skyview - Rupee on Spring Pillar:
   Can Beat Ghirahim 1 & Beetle
 
-Skyview - Ruby Tablet:
+Skyview - Strike Crest:
   Can Beat Skyview
 
 Goddess Cube in Skyview Spring:
@@ -1949,7 +1954,7 @@ Earth Temple - Chest in West Room:
 Can Get Past Earth Temple Miniboss Room:
   Can Access Earth Temple Second Room & Can Defeat Lezalfos
 
-Earth Temple - Bomb Bag:
+Earth Temple - Chest after Double Lizalfos Fight:
   Can Get Past Earth Temple Miniboss Room
 
 Earth Temple - Ledd's Gift:
@@ -1995,7 +2000,7 @@ Can Beat Earth Temple:
 Earth Temple - Heart Container:
   Can Access Earth Temple Boss Door & Earth Temple Boss Key & Can Beat Scaldera
 
-Earth Temple - Amber Tablet:
+Earth Temple - Strike Crest:
   Can Beat Earth Temple
 
 ## Lanayru Mining Facility
@@ -2032,15 +2037,15 @@ Can Access LMF Key Locked Room in Past:
 Lanayru Mining Facility - Chest in Key Locked Room:
   Can Access LMF Key Locked Room in Past
 
-Can Blow Up Rocks in LMF Gust Bellows Room:
+Can Blow Up Rocks in LMF Hop Across Boxes Room:
   Sword | Slingshot | Beetle | Bomb Bag | Gust Bellows | Whip | Clawshots | Bow
   # You need to blow up at least one rock in the maze, pretty much any item will make the Froak explode
 
-Lanayru Mining Facility - Gust Bellows:
-  Can Access LMF Key Locked Room in Past & Can Blow Up Rocks in LMF Gust Bellows Room
+Lanayru Mining Facility - Raised Chest in Hop across Boxes Room:
+  Can Access LMF Key Locked Room in Past & Can Blow Up Rocks in LMF Hop Across Boxes Room
 
-Lanayru Mining Facility - Chest inside Gust Bellows Room:
-  Can Access LMF Key Locked Room in Past & Can Blow Up Rocks in LMF Gust Bellows Room
+Lanayru Mining Facility - Lower Chest in Hop across Boxes Room:
+  Can Access LMF Key Locked Room in Past & Can Blow Up Rocks in LMF Hop Across Boxes Room
 
 Can Access LMF First West Room:
   Can Access LMF Second Room & Gust Bellows
@@ -2120,7 +2125,7 @@ Can Beat Lanayru Mining Facility:
   Can Access Lanayru Mining Facility Boss Key Door & Lanayru Mining Facility Boss Key & Can Defeat Moldarach & (Beetle | Bow)
   # You need to be able to shoot the timeshift stone in the last room
 
-Lanayru Mining Facility - Goddess Harp:
+Lanayru Mining Facility - Exit Hall of Ancient Robots:
   Can Beat Lanayru Mining Facility
 
 ## Ancient Cistern
@@ -2130,10 +2135,10 @@ Can Do Cistern Clip:
   # Jumpslash to land on collision, or try to backflip into it
 
 Ancient Cistern - Rupee in West Hand:
-  Can Access Ancient Cistern & Water Scale
+  Can Access Ancient Cistern & Water Dragon's Scale
 
 Ancient Cistern - Rupee in East Hand:
-  Can Access Ancient Cistern & Water Scale
+  Can Access Ancient Cistern & Water Dragon's Scale
 
 Can Lower Ancient Cistern Statue:
   ((Can Access AC Main Room Vines | Can Access AC Thread) & Whip) | Can Access Ancient Cistern Boss Key Chest
@@ -2153,31 +2158,31 @@ Can Enter Ancient Cistern Statue:
   )
 
 Ancient Cistern - First Rupee in East Part in Short Tunnel:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Second Rupee in East Part in Short Tunnel:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Third Rupee in East Part in Short Tunnel:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Rupee in East Part in Cubby:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Rupee in East Part in Main Tunnel:
-  Ancient Cistern - Chest in East Part & Water Scale
+  Ancient Cistern - Chest in East Part & Water Dragon's Scale
 
 Ancient Cistern - Chest in East Part:
-  Can Access Ancient Cistern & Water Scale & Can Unlock Combination Lock
+  Can Access Ancient Cistern & Water Dragon's Scale & Can Unlock Combination Lock
   # Lilypad Skip is very difficult
 
 Can Clip into AC Whip Room:
   Can Access Ancient Cistern &
   Can Do Cistern Clip &
-  Water Scale &
+  Water Dragon's Scale &
   Ancient Cistern - Cistern Whip Room Clip Trick
 
-Ancient Cistern - Whip:
+Ancient Cistern - Chest in Key Locked Room:
   (
     Can Enter Ancient Cistern Statue &
     Can Remove Ancient Cistern First Key Lock &
@@ -2192,13 +2197,13 @@ Ancient Cistern - Chest after Whip Hooks:
   # The way down the gutters also requires Whip right after the waterfall. You can jump from the highest platform by the vines
 
 Ancient Cistern - Rupee under Lilypad:
-  Can Resurface from the AC Gutters & Water Scale & Whip
+  Can Resurface from the AC Gutters & Water Dragon's Scale & Whip
 
 Can Stop AC Waterfall:
-  (Water Scale & Whip) | (Can Access AC Main Room Vines & Ancient Cistern - Lever Jump Trick)
+  (Water Dragon's Scale & Whip) | (Can Access AC Main Room Vines & Ancient Cistern - Lever Jump Trick)
 
 Can Get Past AC Waterfall:
-  Can Access Ancient Cistern & Can Stop AC Waterfall & Water Scale
+  Can Access Ancient Cistern & Can Stop AC Waterfall & Water Dragon's Scale
   #| Can Access Ancient Cistern BiT
   # You BiTWarp to it, or RBW to it (Sealed Grounds Spiral)
   # Is there a way using Cistern Clip ?
@@ -2210,7 +2215,7 @@ Can Get to AC Boko Key Door:
   Can Get Past AC Waterfall &
   Whip &
   (Beetle | Bow) &
-  (Water Scale | Ancient Cistern - Basement Lilypad Clip Trick)
+  (Water Dragon's Scale | Ancient Cistern - Basement Lilypad Clip Trick)
   # Cut spider thread with either Beetle or Bow
   # Then swim under the lilypad, or clip under it
 
@@ -2281,7 +2286,7 @@ Sandship - Chest behind Combination Lock:
   # Present: Deal with the Spume, unlock the hint, hit the combination lock
   # Past: Read the hint, hit the combination lock
 
-Sandship - Bow:
+Sandship - Chest after Scervo Fight:
   Can Access Sandship & Sandship Small Key x2 & Sword
   # Could add Pouch for a shield
 
@@ -2373,7 +2378,7 @@ Can Access FS Miniboss Room and Defeat Magmanos:
   Can Get Past Second Room with Water Pod & Sword & Fire Sanctuary Small Key x2
   # Sword needed to grab a water plant
 
-Fire Sanctuary - Mogma Mitts:
+Fire Sanctuary - Rescue First Trapped Mogma:
   Can Access FS Miniboss Room and Defeat Magmanos
 
 Can Access Second FS Bridge:
@@ -2391,7 +2396,7 @@ Can Access Second Captured Mogma Room:
 Can Free Second Captured Mogma:
   Can Access Second Captured Mogma Room & Mogma Mitts & Sword
 
-Fire Sanctuary - Chest after Second Trapped Mogma:
+Fire Sanctuary - Rescue Second Trapped Mogma:
   Can Free Second Captured Mogma
   # Scene Flag 3x40 is "Map Chest appears"
 
@@ -2522,13 +2527,13 @@ Sky Keep - Chest after Dreadfuse:
 Can Get Triforce of Power:
   Can Get Past SK Fire Sanctuary Room
 
-Sky Keep - Triforce of Power:
+Sky Keep - Sacred Power of Din:
   Can Get Triforce of Power
 
 Can Get Triforce of Wisdom:
   Can Get Past SK Sandship Room
 
-Sky Keep - Triforce of Wisdom:
+Sky Keep - Sacred Power of Nayru:
   Can Get Triforce of Wisdom
 
 Can Get Triforce of Courage:
@@ -2544,7 +2549,7 @@ Can Get Triforce of Courage:
   # Sword is required for the stalmaster, and I don't know whether other items kill zombie bokos, so I don't need to include them
   # Scene Flag 3x10 is Lever Blocking Triforce of Courage
 
-Sky Keep - Triforce of Courage:
+Sky Keep - Sacred Power of Farore:
   Can Get Triforce of Courage
 
 Can Beat Sky Keep:

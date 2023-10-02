@@ -53,11 +53,6 @@ glitchless_requirements_file = (
 )
 glitchless_requirements = yaml_load(glitchless_requirements_file)
 
-glitched_requirements_file = (
-    RANDO_ROOT_PATH / "SS Rando Logic - Glitched Requirements.yaml"
-)
-glitched_requirements = yaml_load(glitched_requirements_file)
-
 
 def requirements_gen(folder: Path):
     files = sorted(os.listdir(folder))

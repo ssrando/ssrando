@@ -177,7 +177,7 @@ BOMB_BAG = EIN("Bomb Bag")
 GUST_BELLOWS = EIN("Gust Bellows")
 WHIP = EIN("Whip")
 CLAWSHOTS = EIN("Clawshots")
-WATER_SCALE = EIN("Water Scale")
+WATER_DRAGON_SCALE = EIN("Water Dragon's Scale")
 FIRESHIELD_EARRINGS = EIN("Fireshield Earrings")
 SEA_CHART = EIN("Sea Chart")
 EMERALD_TABLET = EIN("Emerald Tablet")
@@ -188,7 +188,7 @@ STONE_OF_TRIALS = EIN("Stone of Trials")
 BABY_RATTLE = EIN("Baby Rattle")
 CAWLINS_LETTER = EIN("Cawlin's Letter")
 HORNED_COLOSSUS_BEETLE = EIN("Horned Colossus Beetle")
-GODDESS_HARP = EIN("Goddess Harp")
+GODDESS_HARP = EIN("Goddess's Harp")
 BALLAD_OF_THE_GODDESS = EIN("Ballad of the Goddess")
 FARORES_COURAGE = EIN("Farore's Courage")
 NAYRUS_WISDOM = EIN("Nayru's Wisdom")
@@ -333,7 +333,7 @@ PROGRESS_ITEMS = (
             GUST_BELLOWS,
             WHIP,
             CLAWSHOTS,
-            WATER_SCALE,
+            WATER_DRAGON_SCALE,
             FIRESHIELD_EARRINGS,
             SEA_CHART,
             EMERALD_TABLET,
@@ -485,9 +485,9 @@ DUNGEON_MAIN_EXITS = {
 }
 
 DUNGEON_FINAL_CHECK = {
-    SV: SV + sep + RUBY_TABLET,
-    ET: ET + sep + AMBER_TABLET,
-    LMF: LMF + sep + GODDESS_HARP,
+    SV: SV + sep + "Strike Crest",
+    ET: ET + sep + "Strike Crest",
+    LMF: LMF + sep + "Exit Hall of Ancient Robots",
     AC: AC + sep + "Farore's Flame",
     SSH: SSH + sep + "Nayru's Flame",
     FS: FS + sep + "Din's Flame",
@@ -688,10 +688,10 @@ SILENT_REALM_EXITS: dict[str, str] = {
 }
 
 SILENT_REALM_CHECKS: dict[str, str] = {
-    SKYLOFT_SILENT_REALM: "Skyloft Silent Realm - Stone of Trials",
-    FARON_SILENT_REALM: "Faron Silent Realm - Water Scale",
-    ELDIN_SILENT_REALM: "Eldin Silent Realm - Fireshield Earrings",
-    LANAYRU_SILENT_REALM: "Lanayru Silent Realm - Clawshots",
+    SKYLOFT_SILENT_REALM: "Skyloft Silent Realm - Trial Reward",
+    FARON_SILENT_REALM: "Faron Silent Realm - Trial Reward",
+    ELDIN_SILENT_REALM: "Eldin Silent Realm - Trial Reward",
+    LANAYRU_SILENT_REALM: "Lanayru Silent Realm - Trial Reward",
 }
 
 SILENT_REALM_CHECKS_REV = lambda norm: {
@@ -780,7 +780,7 @@ ITEM_FLAGS = {
     CLAWSHOTS: 20,
     WHIP: 137,
     GUST_BELLOWS: 49,
-    WATER_SCALE: 68,
+    WATER_DRAGON_SCALE: 68,
     FIRESHIELD_EARRINGS: 138,
     GODDESS_HARP: 16,
     BALLAD_OF_THE_GODDESS: 186,
@@ -820,7 +820,7 @@ ITEM_STORY_FLAGS = {
     CAWLINS_LETTER: 547,
     SPIRAL_CHARGE: 364,
     SEA_CHART: 271,
-    WATER_SCALE: 206,  # Completed Faron Trial
+    WATER_DRAGON_SCALE: 206,  # Completed Faron Trial
     FIRESHIELD_EARRINGS: 207,  # Completed Eldin Trial
     CLAWSHOTS: 208,  # Completed Lanayru Trial
     STONE_OF_TRIALS: (210, 209),  # Obtained SoT, Completed Hylia's Trial
@@ -874,7 +874,7 @@ RANDOM_STARTING_ITEMS = [
     CLAWSHOTS,
     WHIP,
     GUST_BELLOWS,
-    WATER_SCALE,
+    WATER_DRAGON_SCALE,
     FIRESHIELD_EARRINGS,
     GODDESS_HARP,
     SPIRAL_CHARGE,

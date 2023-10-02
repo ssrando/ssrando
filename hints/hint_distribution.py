@@ -19,7 +19,7 @@ HINTABLE_ITEMS = (
             RUBY_TABLET,
             AMBER_TABLET,
             GODDESS_HARP,
-            WATER_SCALE,
+            WATER_DRAGON_SCALE,
             FIRESHIELD_EARRINGS,
         ]
     )

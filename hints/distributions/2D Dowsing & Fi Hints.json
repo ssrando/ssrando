@@ -5,15 +5,15 @@
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals", "type": "always"},
     {"location": "Sky - Dodoh's Crystals", "type": "sometimes"},
-    {"location": "Faron Woods - Item behind Bombable Rock", "type": "sometimes"},
+    {"location": "Faron Woods - Item behind Lower Bombable Rock", "type": "sometimes"},
     {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack", "type": "always"},
     {"location": "Earth Temple - Rupee in Lava Tunnel", "type": "sometimes"},
     {"location": "Ancient Cistern - Bokoblin", "type": "sometimes"},
-    {"location": "Fire Sanctuary - Mogma Mitts", "type": "sometimes"},
-    {"location": "Fire Sanctuary - Chest after Second Trapped Mogma", "type": "sometimes"}
+    {"location": "Fire Sanctuary - Rescue First Trapped Mogma", "type": "sometimes"},
+    {"location": "Fire Sanctuary - Rescue Second Trapped Mogma", "type": "sometimes"}
   ],
   "removed_locations": [
-    "Thunderhead - Isle of Songs - Din's Power",
+    "Thunderhead - Isle of Songs - Strike Crest with White Sword",
     "Faron Woods - Chest inside Great Tree",
     "Lake Floria - Lake Floria Chest",
     "Eldin Volcano - Digging Spot behind Boulder on Sandy Slope",
