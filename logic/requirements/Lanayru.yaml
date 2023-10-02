@@ -2,7 +2,7 @@ allowed-time-of-day: DayOnly
 macros:
   All Three Nodes: LMF Nodes On option | (North Part - Water Node & Lightning Node - Lightning Node & East - Fire Node - Fire Node)
   Raise Lanayru Mining Facility: Open LMF option | Desert - North Part - Activate Main Node
-  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
+  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Central Skyloft - Bazaar - Endurance Potion | Lanayru Desert - Sand Oasis Brakeslide Trick | Stuttersprint Trick
 
 Mine:
   toplevel-alias: Lanayru Mine
