@@ -58,7 +58,7 @@ Main:
 
     Past Lava:
       exits:
-        Room with Water Plant: Clawshots | Hook Beetle # Clawshot to vines or heetle to blow up the lavaflow rock
+        Room with Water Plant: Clawshots | Blow up Rock # Clawshot to vines or heetle to blow up the lavaflow rock
         First Trapped Mogma Room: Nothing
         Water Fruit Room: Unlock Key Door
       locations:
@@ -149,7 +149,7 @@ Main:
       Hydrate Frog: Move Sliding Doors Correctly & Sword
       Rescue Mogma: Hydrate Frog
       Rescue Second Trapped Mogma: Rescue Mogma
-      Blow up Wall: Bomb Bag # & Fire Sanctuary - Map
+      Blow up Wall: Hydrate Frog & Bomb Bag # & Fire Sanctuary - Map
 
     Past Bombable Wall:
       exits:
