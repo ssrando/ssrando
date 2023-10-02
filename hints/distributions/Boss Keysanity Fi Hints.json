@@ -4,18 +4,18 @@
     "banned_stones": [],
     "added_locations": [
       {"location": "Upper Skyloft - Fledge's Crystals",                     "type": "always"},
-      {"location": "Faron Woods - Item behind Bombable Rock",               "type": "sometimes"},
+      {"location": "Faron Woods - Item behind Lower Bombable Rock",         "type": "sometimes"},
       {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack", "type": "always"},
       {"location": "Skyview - Rupee on Spring Pillar",                      "type": "sometimes"},
       {"location": "Earth Temple - Rupee in Lava Tunnel",                   "type": "sometimes"},
       {"location": "Ancient Cistern - Rupee under Lilypad",                 "type": "sometimes"},
-      {"location": "Fire Sanctuary - Chest after Second Trapped Mogma",     "type": "sometimes"},
+      {"location": "Fire Sanctuary - Rescue First Trapped Mogma",           "type": "sometimes"},
       {"location": "Fire Sanctuary - Chest after Bombable Wall",            "type": "sometimes"},
       {"location": "Lanayru Mining Facility - Boss Key Chest",              "type": "sometimes"},
       {"location": "Sandship - Robot in Brig's Reward",                     "type": "always"}
     ],
     "removed_locations": [
-      "Thunderhead - Isle of Songs - Din's Power",
+      "Thunderhead - Isle of Songs - Strike Crest with White Sword",
       "Faron Woods - Chest inside Great Tree",
       "Lake Floria - Lake Floria Chest",
       "Eldin Volcano - Digging Spot behind Boulder on Sandy Slope",
