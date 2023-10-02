@@ -3740,7 +3740,7 @@ Temple of Time - North Exit to Desert:
 Temple of Time - Exit to Lanayru Mining Facility:
   type: exit
   subtype: vanilla
-  # vanilla: Lanayru Mining Facility - Great Hall - Entrance from Temple of Time
+  # vanilla: Lanayru Mining Facility - Hall of Ancient Robots - Entrance from Temple of Time
   stage: F300_4
   room: 0
   index: 4
@@ -4441,7 +4441,7 @@ Lanayru Mining Facility - Boss Room - Entrance from Dungeon:
   can-start-at: false
   tod: 2
 
-Lanayru Mining Facility - Boss Room - Entrance from Great Hall:
+Lanayru Mining Facility - Boss Room - Entrance from Hall of Ancient Robots:
   type: entrance
   province: Lanayru Province
   can-start-at: false
@@ -4451,18 +4451,18 @@ Lanayru Mining Facility - Boss Room - Exit to Dungeon:
   type: exit
   vanilla: Lanayru Mining Facility - Boss Door Entrance
 
-Lanayru Mining Facility - Boss Room - Exit to Great Hall:
+Lanayru Mining Facility - Boss Room - Exit to Hall of Ancient Robots:
   type: exit
-  vanilla: Lanayru Mining Facility - Great Hall - Entrance from Boss Room
+  vanilla: Lanayru Mining Facility - Hall of Ancient Robots - Entrance from Boss Room
 
 
-Lanayru Mining Facility - Great Hall - Entrance from Boss Room:
+Lanayru Mining Facility - Hall of Ancient Robots - Entrance from Boss Room:
   type: entrance
   province: Lanayru Province
   can-start-at: false
   tod: 2
 
-Lanayru Mining Facility - Great Hall - Entrance from Temple of Time:
+Lanayru Mining Facility - Hall of Ancient Robots - Entrance from Temple of Time:
   type: entrance
   province: Lanayru Province
   can-start-at: false
@@ -4474,11 +4474,11 @@ Lanayru Mining Facility - Great Hall - Entrance from Temple of Time:
   tod: 2
 
 
-Lanayru Mining Facility - Great Hall - Exit to Boss Room:
+Lanayru Mining Facility - Hall of Ancient Robots - Exit to Boss Room:
   type: exit
-  vanilla: Lanayru Mining Facility - Boss Room - Entrance from Great Hall
+  vanilla: Lanayru Mining Facility - Boss Room - Entrance from Hall of Ancient Robots
 
-Lanayru Mining Facility - Great Hall - Exit to Temple of Time:
+Lanayru Mining Facility - Hall of Ancient Robots - Exit to Temple of Time:
   type: exit
   subtype: vanilla
   vanilla: Temple of Time - Entrance from Lanayru Mining Facility
