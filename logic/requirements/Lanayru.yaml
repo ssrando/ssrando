@@ -470,9 +470,9 @@ Lanayru Sand Sea:
         Top Exit: Nothing # Door closes behind you if not yet beaten
       locations:
         # You *just* can't make it. If the Shark Head is lowered, it's easy but we can't check for it being lowered
-        Rupee on West Sea Pillar: Quick Beetle
-        Rupee on East Sea Pillar: Quick Beetle
-        Rupee on Bird Statue Pillar or Nose: Beetle # Still possible
+        Pirate Stronghold - Rupee on West Sea Pillar: Quick Beetle
+        Pirate Stronghold - Rupee on East Sea Pillar: Quick Beetle
+        Pirate Stronghold - Rupee on Bird Statue Pillar or Nose: Beetle # Still possible
         Goddess Cube in Pirate Stronghold: Clawshots & Goddess Sword
 
     Inside:
