@@ -58,7 +58,7 @@ Main:
 
     Past Lava:
       exits:
-        Room with Water Plant: Projectile Item
+        Room with Water Plant: Clawshots | Hook Beetle # Clawshot to vines or heetle to blow up the lavaflow rock
         First Trapped Mogma Room: Nothing
         Water Fruit Room: Unlock Key Door
       locations:
@@ -75,9 +75,10 @@ Main:
       exits:
         First Trapped Mogma Room: Magmanos Fight Room - Magmanos Fight
         Magmanos Fight Room - Upper Part: Magmanos Fight Room - Magmanos Fight
-        Magmanos Fight Room - Lower Part: Mogma Mitts
+        Magmanos Fight Room - Lower Part: Mogma Mitts & Blow up Rock in Tunnel
       locations:
         Rescue First Trapped Mogma: Nothing
+        Blow up Rock in Tunnel: Mogma Mitts
 
   Water Fruit Room:
     exits:
@@ -106,7 +107,7 @@ Main:
 
     Lower Part:
       exits:
-        First Trapped Mogma Room - Lower Area: Mogma Mitts
+        First Trapped Mogma Room - Lower Area: Mogma Mitts & First Trapped Mogma Room - Lower Area - Blow up Rock in Tunnel
         Past Sliding Door: Move Sliding Door
         Exit to West of Boss Door: Unlock Key Door
       locations:
@@ -148,7 +149,7 @@ Main:
       Hydrate Frog: Move Sliding Doors Correctly & Sword
       Rescue Mogma: Hydrate Frog
       Rescue Second Trapped Mogma: Rescue Mogma
-      Blow up Wall: Hydrate Frog & Bomb Bag # & Fire Sanctuary - Map
+      Blow up Wall: Bomb Bag # & Fire Sanctuary - Map
 
     Past Bombable Wall:
       exits:
