@@ -90,15 +90,19 @@ Desert:
       Top of West Wall: Clawshots
       Top of LMF: Raise Lanayru Mining Facility
       East: Temple of Time Skip - Brakeslide Trick | East - Open Wall Shortcut | Clawshots | Central Skyloft - Bazaar - Endurance Potion
-      Sand Oasis: Blow Statues to Sand Oasis Down | (Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick) | Central Skyloft - Bazaar - Endurance Potion
+      Sand Oasis: Get Past Spume to Sand Oasis
     locations:
       Chest near Caged Robot: Nothing
       Goddess Cube near Caged Robot: Long Range Skyward Strike # Also accessible elsewhere
       Blow up Rock for Timeshift Stone: Bomb Bag | Hook Beetle
-      Timeshift Stone: Blow up Rock for Timeshift Stone & Nothing # Use the nearby bombflower ?
-      Rescue Caged Robot: Timeshift Stone & Can Defeat Bokoblins
+      Rescue Caged Robot: Blow up Rock for Timeshift Stone & Can Defeat Bokoblins
       Defeat Spume to Sand Oasis: Long Range Skyward Strike | Bomb Bag | Bow | Hook Beetle | (Goddess Sword & Lanayru Desert - Spume Brakeslide Trick)
       Blow Statues to Sand Oasis Down: Hook Beetle
+
+      # Blow down statue or stamina potion or defeat spume and brakeslide through
+      Get Past Spume to Sand Oasis: Blow Statues to Sand Oasis Down |
+                                    Central Skyloft - Bazaar - Endurance Potion |
+                                    (Lanayru Desert - Sand Oasis Brakeslide Trick & (Bomb Bag | Bow | Long Range Skyward Strike))
 
   Sand Oasis: # Before
     exits:
