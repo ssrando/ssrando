@@ -18,7 +18,7 @@ Volcano:
       Goddess Cube at Eldin Entrance: Goddess Sword
       Unlock Statue: Nothing
       Rupee on Ledge before First Room: Nothing
-      Ascent - Unlock Shortcut to Entry: Bomb Bag # I'm pretty sure Hook Beetle won't work here
+      Ascent - Unlock Shortcut to Entry: Bomb Bag # No bomb flowers are close enough for even tough beetle
 
   First Room: # Until the rocks
     exits:
@@ -40,7 +40,7 @@ Volcano:
       Past Mogma Turf: Past Mogma Turf - Unlock Shortcut to Pre Turf
       Exit to Bokoblin Base: Nothing
     locations:
-      First Room - Blow up Rock to East: Bomb Bag # can probably also use hook beetle
+      First Room - Blow up Rock to East: Bomb Bag # There's a beetle void plane
       Unlock Statue: Nothing
       Goddess Cube near Mogma Turf Entrance: Goddess Sword
       Chest after Crawlspace: Nothing
@@ -76,7 +76,7 @@ Volcano:
       Unlock Statue: Nothing
       Unlock Shortcut to Entry: Nothing
       Past Slide - Unlock Shortcut to Ascent: Bomb Bag | Hook Beetle # | (Whip & Whip Bomb Trick)
-      Defeat Slope Bokoblins: Bow | Slingshot | Beetle
+      Defeat Slope Bokoblins: Bow | Slingshot # Beetle can be used to scare the boko away but that's really not obvious
       Open Trial Gate: Goddess's Harp & Din's Power
 
   Near Thrill Digger Cave:

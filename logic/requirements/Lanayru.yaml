@@ -2,7 +2,7 @@ allowed-time-of-day: DayOnly
 macros:
   All Three Nodes: LMF Nodes On option | (North Part - Water Node & Lightning Node - Lightning Node & East - Fire Node - Fire Node)
   Raise Lanayru Mining Facility: Open LMF option | Desert - North Part - Activate Main Node
-  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Lanayru Desert - Sand Oasis Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
+  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Central Skyloft - Bazaar - Endurance Potion | Brakeslide Trick | Stuttersprint Trick
 
 Mine:
   toplevel-alias: Lanayru Mine
@@ -37,14 +37,14 @@ Mine:
   Statues Area:
     exits:
       Entry: Nothing
-      End: Blow Statues Down | Lanayru Mine Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
+      End: Blow Statues Down | Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
     locations:
       Blow Statues Down: Bomb Bag | Hook Beetle
       Chest behind Statue: Blow Statues Down
 
   End:
     exits:
-      Statues Area: Statues Area - Blow Statues Down | Lanayru Mine Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
+      Statues Area: Statues Area - Blow Statues Down | Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
     locations:
       Blow up Rock on Track: Nothing
       Chest at the End of Mine: Nothing # There's a baba in the way
@@ -90,27 +90,26 @@ Desert:
       Top of West Wall: Clawshots
       Top of LMF: Raise Lanayru Mining Facility
       East: Temple of Time Skip - Brakeslide Trick | East - Open Wall Shortcut | Clawshots | Central Skyloft - Bazaar - Endurance Potion
-      Sand Oasis: Blow Statues to Sand Oasis Down | (Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick) | Central Skyloft - Bazaar - Endurance Potion
+      Sand Oasis: Get Past Spume to Sand Oasis
     locations:
       Chest near Caged Robot: Nothing
       Goddess Cube near Caged Robot: Long Range Skyward Strike # Also accessible elsewhere
-      Blow up Rock for Timeshift Stone: Bomb Bag | Hook Beetle
-      Timeshift Stone: Blow up Rock for Timeshift Stone & Nothing # Use the nearby bombflower ?
-      Rescue Caged Robot: Timeshift Stone & Can Defeat Bokoblins
-      Defeat Spume to Sand Oasis: Long Range Skyward Strike | Bomb Bag | Bow | Hook Beetle | (Goddess Sword & Lanayru Desert - Spume Brakeslide Trick)
+      Blow up Rock for Timeshift Stone: Bomb Bag | Hook Beetle | Lanayru Desert - Ampilus Bomb Toss Trick
+      Rescue Caged Robot: Blow up Rock for Timeshift Stone & Can Defeat Bokoblins
       Blow Statues to Sand Oasis Down: Hook Beetle
+
+      # Blow down statue or stamina potion or defeat spume and brakeslide through
+      Get Past Spume to Sand Oasis:
+        Blow Statues to Sand Oasis Down |
+        Central Skyloft - Bazaar - Endurance Potion |
+        (Brakeslide Trick & Stuttersprint Trick & (Bomb Bag | Bow | Long Range Skyward Strike))
 
   Sand Oasis: # Before
     exits:
-      Near Caged Robot:
-        Near Caged Robot - Blow Statues to Sand Oasis Down |
-        (Near Caged Robot - Defeat Spume to Sand Oasis & Lanayru Desert - Sand Oasis Brakeslide Trick) |
-        Central Skyloft - Bazaar - Endurance Potion
+      Near Caged Robot: Nothing # You can just run up the wall
       Top of West Wall: Clawshots | Top of West Wall - Push Minecart
       West Part: Can Navigate in Oasis | West Part - Push Minecart
     locations:
-      Near Caged Robot - Defeat Spume to Sand Oasis: Bomb Bag | Bow | Hook Beetle | Goddess Sword
-      Near Caged Robot - Blow Statues to Sand Oasis Down: Hook Beetle
       Goddess Cube in Sand Oasis: Can Navigate in Oasis & Goddess Sword
 
   West Part:
@@ -231,7 +230,7 @@ Desert:
           Exit: Nothing
           Past: Timeshift Stone
           Present after Sand:
-            Can Defeat Ampilus | Fire Node - Brakeslide Trick | Present after Sand - Push Box
+            Can Defeat Ampilus | Brakeslide Trick | Present after Sand - Push Box
         locations:
           Blow up Rock for Timeshift Stone: Bomb Bag
           Timeshift Stone: Blow up Rock for Timeshift Stone & Can Hit Timeshift Stone
@@ -380,7 +379,7 @@ Lanayru Sand Sea:
     locations:
       Goddess Cube in Ancient Harbour: Clawshots & Goddess Sword
       Unlock Statue: Nothing
-      Ship Timeshift Stone: Distance Activator | Goddess Sword | Bomb Bag
+      Ship Timeshift Stone: Distance Activator | Sword | Bomb Bag
 
     Near Exit to Caves:
       entrance: Clawshots
@@ -404,12 +403,12 @@ Lanayru Sand Sea:
     Past Rock:
       exits:
         Skipper's Retreat: Nothing
-        Top Part: Clawshots & Whip Peahat & Deal with Boko Baba
+        Top Part: Clawshots & Whip Peahat & Deal with Deku Baba
       locations:
         Chest after Moblin: Nothing
         Goddess Cube in Skipper's Retreat: Clawshots & Goddess Sword
         Whip Peahat: Clawshots & Whip
-        Deal with Boko Baba: Slingshot | Beetle | Bow | Skipper's Retreat Fast Clawshots Trick
+        Deal with Deku Baba: Projectile Item | (Skipper's Retreat Fast Clawshots Trick & Clawshots)
 
     Top Part:
       exits:
@@ -427,7 +426,7 @@ Lanayru Sand Sea:
 
     Skydive Platform:
       exits:
-        Skipper's Retreat: Nothing
+        Skipper's Retreat: Clawshots # Should add bomb flower
       locations:
         Skydive Chest: Nothing
 
@@ -456,25 +455,37 @@ Lanayru Sand Sea:
       Statue: Unlock Statue
       Dock: Nothing
       Side Exit: Nothing
-      Top Exit: Inside - Finish Minidungeon # What happens if you take it before finishing the minidungeon ?
+      Inside the Shark Head: Inside - Finish Minidungeon
     locations:
       Unlock Statue: Nothing
       Rupee on West Sea Pillar: Quick Beetle
       Rupee on East Sea Pillar: Quick Beetle
       Rupee on Bird Statue Pillar or Nose: Beetle
-      Goddess Cube in Pirate Stronghold: Inside - Finish Minidungeon & Clawshots & Goddess Sword
+
+    # Inside - Finish Minidungeon means the Shark Head is raised
+    Inside the Shark Head:
+      exits:
+        # Clawshot up and run along the Shark Head or just run out if it's been raised
+        Pirate Stronghold: Clawshots | Inside - Finish Minidungeon
+        Top Exit: Nothing # Door closes behind you if not yet beaten
+      locations:
+        # You *just* can't make it. If the Shark Head is lowered, it's easy but we can't check for it being lowered
+        Pirate Stronghold - Rupee on West Sea Pillar: Quick Beetle
+        Pirate Stronghold - Rupee on East Sea Pillar: Quick Beetle
+        Pirate Stronghold - Rupee on Bird Statue Pillar or Nose: Beetle # Still possible
+        Goddess Cube in Pirate Stronghold: Clawshots & Goddess Sword
 
     Inside:
       exits:
         First Door: Nothing
         Second Door: Finish Minidungeon
       locations:
-        First Chest: Nothing
         # You can run past the Beamos without killing it. You can also run past the boko baba (in logic?) #UNSURE
+        First Chest: Nothing
         Second Chest: Nothing
         Third Chest: Nothing
-        Finish Minidungeon: Can Defeat Beamos & Can Defeat Armos & Goddess Sword
         # Technically this is possible without beating a Beamos but it's hard
+        Finish Minidungeon: Can Defeat Beamos & Can Defeat Armos
         General - Ancient Flower Farming: Nothing
 
   Gorge:

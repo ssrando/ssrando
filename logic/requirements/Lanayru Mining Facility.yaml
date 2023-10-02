@@ -61,7 +61,10 @@ Main:
     exits:
       Exit to Big Hub: Defeat Armos
     locations:
-      Activate Timeshift Stone: Distance Activator | Goddess Sword
+      Activate Timeshift Stone:
+        Gust Bellows &
+        (Slingshot | Bow | Goddess Sword |
+        (LMF - Whip Armos Room Timeshift Stone Trick & Whip))
       Defeat Armos: Activate Timeshift Stone & Can Defeat Armos
       Chest after Armos Fight: Defeat Armos
 
@@ -155,14 +158,14 @@ Boss Room:
 
   After Sand Drain:
     exits:
-      Exit to Great Hall: Beat Moldarach
+      Exit to Hall of Ancient Robots: Beat Moldarach
     locations:
       Beat Moldarach:
         (Gust Bellows | LMF - Moldarach without Gust Bellows Trick) & Sword
         # Bow also works instead of sword but you need a LOT of arrows
       Heart Container: Beat Moldarach
 
-Great Hall:
+Hall of Ancient Robots:
   Entry:
     exits:
       Exit to Boss Room: Nothing
