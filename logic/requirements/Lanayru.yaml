@@ -462,7 +462,7 @@ Lanayru Sand Sea:
       Rupee on East Sea Pillar: Quick Beetle
       Rupee on Bird Statue Pillar or Nose: Beetle
 
-    # "'Finish_Pirate_Stronghold'" means the Shark Head is raised
+    # Inside - Finish Minidungeon means the Shark Head is raised
     Inside the Shark Head:
       exits:
         # Clawshot up and run along the Shark Head or just run out if it's been raised
