@@ -27,7 +27,7 @@ Main:
       Chest behind Bombable Rock: Access to Boulder
       Chest Left of Main Room Bridge: Access to Boulder
       Ledd's Gift: Can Defeat Lizalfos
-      Rock to West Room: (Bomb Bag | Hook Beetle) & Access to Boulder
+      Rock to West Room: Bomb Bag | Hook Beetle
       Wall to Lava Section: Bomb Bag | (Hook Beetle & Access to Boulder)
       Rupee in Lava Tunnel: Wall to Lava Section & Beetle
       Lower Lava Section Portcullis: Wall to Lava Section & Beetle
@@ -50,7 +50,7 @@ Main:
 
   West Room:
     exits:
-      Hub Room: Bomb Bag | Hook Beetle
+      Hub Room: Rock to West Room
     locations:
       Chest in West Room: Nothing
 
