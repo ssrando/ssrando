@@ -761,6 +761,8 @@ EXTRA_WALLET_SIZE = 300
 
 WALLET_SIZES = {0: 300, 1: 500, 2: 1000, 3: 5000, 4: 9000}
 
+RUPEE_COUNTER = 501
+
 # lists are used for progressive items,
 # tuples for setting multiple flags for one item
 ITEM_FLAGS = {
@@ -805,7 +807,7 @@ ITEM_FLAGS = {
     GRATITUDE_CRYSTAL_PACK: 35,
     HYLIAN_SHIELD: 125,
     EMPTY_BOTTLE: 153,
-    SCRAPPER: 215,
+    # SCRAPPER: 215, TODO: that itemflag doesn't exist
     # SAILCLOTH: 15,
 }
 
@@ -901,6 +903,7 @@ ALLOWED_STARTING_ITEMS = (
     | GRATITUDE_CRYSTAL_PACKS
     | EMPTY_BOTTLES
     | TADTONE_GROUPS
+    | {SCRAPPER: None}
 )
 
 LOCATION_FILTER_TYPES = (

@@ -3,9 +3,7 @@
 
 use core::{
     ffi::{c_char, c_ushort, c_void},
-    mem::transmute,
-    ptr::{self, slice_from_raw_parts},
-    slice,
+    ptr, slice,
 };
 
 use cstr::cstr;
@@ -131,8 +129,10 @@ extern "C" {
     fn FlagManager__getFlagOrCounter(mgr: *mut c_void, flag: u16) -> u16;
     fn FlagManager__setFlagOrCounter(mgr: *mut c_void, flag: u16, value: u16);
     static ITEMFLAG_MANAGER: *mut c_void;
+    static mut STATIC_ITEMFLAGS: [c_ushort; 0x40];
     fn ItemflagManager__doCommit(mgr: *mut c_void);
     static STORYFLAG_MANAGER: *mut c_void;
+    static mut STATIC_STORYFLAGS: [c_ushort; 0x80];
     fn StoryflagManager__doCommit(mgr: *mut c_void);
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
@@ -239,62 +239,38 @@ fn itemflag_set_to_value(flag: u16, value: u16) {
 #[link_section = "data"]
 static mut IS_FILE_START: bool = false;
 
-/// A basic iterator over some borrowed memory
-/// useful to read consecutive halfwords
-struct MemItr<'a>(&'a [u8]);
-
-impl<'a> MemItr<'a> {
-    fn next_u8(&mut self) -> Option<u8> {
-        let val;
-        (val, self.0) = self.0.split_first()?;
-        Some(*val)
-    }
-
-    fn next_u16(&mut self) -> Option<u16> {
-        if self.0.len() < 2 {
-            return None;
-        }
-        let val;
-        (val, self.0) = self.0.split_array_ref();
-        Some(u16::from_be_bytes(*val))
-    }
-
-    fn get_dungeonflags(&mut self) -> Option<&[u8; 8]> {
-        if self.0.len() < 8 {
-            return None;
-        }
-        let val;
-        (val, self.0) = self.0.split_array_ref();
-        Some(val)
-    }
-}
-
 // IMPORTANT: when adding functions here that need to get called from the game,
 // add `#[no_mangle]` and add a .global *symbolname* to custom_funcs.asm
 #[no_mangle]
 pub fn process_startflags() {
     unsafe { (*FILE_MANAGER).anticommit_flag = 1 };
-    let mut flag_mem = MemItr(unsafe { &*slice_from_raw_parts(0x804EE1B8 as *const u8, 512) });
-    // storyflags
-    while let Some(flag) = flag_mem.next_u16() {
-        if flag == 0xFFFF {
-            break;
-        }
-        storyflag_set_to_1(flag);
+    #[repr(C)]
+    struct StartflagInfo {
+        storyflags:    [u16; 0x80],
+        itemflags:     [u16; 0x40],
+        dungeonflags:  [u8; 8],
+        full_hearts:   u8,
+        pouch_options: u8,
+        // this is just the max amount of possible flags, not the actual amount
+        sceneflags:    [u8; 118],
     }
-    // itemflags
-    while let Some(flag) = flag_mem.next_u16() {
-        if flag == 0xFFFF {
-            break;
-        }
-        itemflag_set_to_value(flag & 0x1FF, flag >> 9);
+    let startflag_info = unsafe { &*(0x804EE1B8 as *const StartflagInfo) };
+    unsafe {
+        // storyflags
+        STATIC_STORYFLAGS = startflag_info.storyflags;
+        // itemflags
+        STATIC_ITEMFLAGS = startflag_info.itemflags;
     }
     // sceneflags
-    while let Some(flag) = flag_mem.next_u16() {
-        if flag == 0xFFFF {
+    let mut scene_idx = 0;
+    for flag in startflag_info.sceneflags.iter() {
+        if *flag == 0xFF {
             break;
+        } else if *flag >= 0x80 {
+            scene_idx = flag & 0x7F;
+        } else {
+            sceneflag_set_global(scene_idx.into(), (*flag).into());
         }
-        sceneflag_set_global(flag >> 8, flag & 0xFF);
     }
     // dungeonflags
     // includes keys, maps, boss keys
@@ -311,88 +287,42 @@ pub fn process_startflags() {
         20, // SK
         9,  // Lanayru Caves
     ];
-    if let Some(dungeon_startflags) = flag_mem.get_dungeonflags() {
-        for (&dungeon_startflag, &flagindex) in
-            dungeon_startflags.iter().zip(DUNGEONFLAG_INDICES.iter())
-        {
-            let first_short = dungeon_startflag & 0x82;
-            let small_keys = (dungeon_startflag >> 2) & 0x0F;
-            unsafe {
-                if (*DUNGEONFLAG_MANAGER).flagindex == flagindex as u16 {
-                    let flags = &mut *dungeonflag_local();
-                    flags[0] = first_short.into();
-                    flags[1] = small_keys.into();
-                }
-                let flags = &mut *dungeonflag_global(flagindex as u16);
+    for (&dungeon_startflag, &flagindex) in startflag_info
+        .dungeonflags
+        .iter()
+        .zip(DUNGEONFLAG_INDICES.iter())
+    {
+        let first_short = dungeon_startflag & 0x82;
+        let small_keys = (dungeon_startflag >> 2) & 0x0F;
+        unsafe {
+            if (*DUNGEONFLAG_MANAGER).flagindex == flagindex as u16 {
+                let flags = &mut *dungeonflag_local();
                 flags[0] = first_short.into();
                 flags[1] = small_keys.into();
             }
+            let flags = &mut *dungeonflag_global(flagindex as u16);
+            flags[0] = first_short.into();
+            flags[1] = small_keys.into();
         }
     }
-
-    let additional_start_options = flag_mem.next_u16().unwrap_or_default();
-
-    // Starting rupee count.
-    // Last 7 bits.
-    itemflag_set_to_value(
-        501, // rupee counter
-        (additional_start_options & 0x7F) * 100,
-    );
 
     // Starting heart capacity.
-    // Next 5 bits.
-    let health_capacity = (additional_start_options >> 7 & 0x1F) * 4;
-    unsafe { (*FILE_MANAGER).FA.health_capacity = health_capacity.into() };
-    unsafe { (*FILE_MANAGER).FA.current_health = health_capacity.into() };
-
-    // Starting interface choice.
-    // Next 2 bits.
-    let interface = additional_start_options >> 12 & 0x3;
-    storyflag_set_to_value(840, interface.into());
-
-    // Starting bugs.
-    // Next 1 bit.
-    if additional_start_options >> 14 & 0x1 == 1 {
-        for counter in 10..=21 {
-            unsafe {
-                increaseCounter(counter, 99);
-                setFlagForItem(counter + 131); // counter + (itemflag -
-                                               // counter)
-            }
-        }
-    }
-
-    // Starting treasures.
-    // First 1 bit.
-    if additional_start_options >> 15 & 0x1 == 1 {
-        for counter in 22..=37 {
-            unsafe {
-                increaseCounter(counter, 99);
-                setFlagForItem(counter + 139); // counter + (itemflag -
-                                               // counter)
-            }
-        }
-    }
-
-    let additional_start_options_2 = flag_mem.next_u16().unwrap_or_default();
+    let health_capatity = startflag_info.full_hearts * 4;
+    unsafe { (*FILE_MANAGER).FA.health_capacity = health_capatity.into() };
+    unsafe { (*FILE_MANAGER).FA.current_health = health_capatity.into() };
 
     let mut pouch_slot_iter = unsafe { (*FILE_MANAGER).FA.pouch_items.iter_mut() };
 
-    // Starting Tadtones.
-    // Next 5 bits.
-    let tadtone_count = additional_start_options_2 >> 4 & 0x1F;
-    storyflag_set_to_value(953, tadtone_count.into());
-
     // Starting Hylian Shield.
     // 4th bit.
-    if additional_start_options_2 >> 3 & 0x1 == 1 {
+    if startflag_info.pouch_options >> 3 & 0x1 == 1 {
         // ID for Hylian Shield + durability
         *pouch_slot_iter.next().unwrap() = 125 | 0x30 << 0x10;
     }
 
     // Starting Bottles.
     // Last bit.
-    let bottle_count = additional_start_options_2 & 0x7;
+    let bottle_count = startflag_info.pouch_options & 0x7;
     for slot in pouch_slot_iter.take(bottle_count.into()) {
         *slot = 153; // ID for bottles
     }
@@ -410,7 +340,7 @@ pub fn process_startflags() {
 }
 
 #[no_mangle]
-fn handle_bk_map_dungeonflag(item: c_ushort) {
+pub fn handle_bk_map_dungeonflag(item: c_ushort) {
     const BK_TO_FLAGINDEX: [u8; 7] = [
         // starts at 25
         12, // AC
