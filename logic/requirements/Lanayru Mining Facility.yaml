@@ -61,9 +61,10 @@ Main:
     exits:
       Exit to Big Hub: Defeat Armos
     locations:
-      Activate Timeshift Stone: Gust Bellows &
-                                (Slingshot | Bow | Goddess Sword |
-                                (LMF - Whip Armos Room Timeshift Stone Trick & Whip))
+      Activate Timeshift Stone:
+        Gust Bellows &
+        (Slingshot | Bow | Goddess Sword |
+        (LMF - Whip Armos Room Timeshift Stone Trick & Whip))
       Defeat Armos: Activate Timeshift Stone & Can Defeat Armos
       Chest after Armos Fight: Defeat Armos
 
