@@ -644,7 +644,7 @@ DUNGEON_ENTRANCE_EXITS: dict[str, list[str]] = {
     SK_ENTRANCE: ["Skyloft - Exit to Sky Keep"],
 }
 
-LMF_SECOND_EXIT = LMF + sep + "Great Hall" + sep + "Exit to Temple of Time"
+LMF_SECOND_EXIT = LMF + sep + "Hall of Ancient Robots" + sep + "Exit to Temple of Time"
 
 SKYLOFT_TRIAL_GATE = "Trial Gate on Skyloft"
 FARON_TRIAL_GATE = "Trial Gate in Faron Woods"
