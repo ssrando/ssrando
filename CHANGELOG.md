@@ -5,6 +5,10 @@
 ### Changes
 ### Bugfixes
 
+## 2.1.1
+### Bugfixes
+Fixes bug preventing the use of the Dungeon Entrance Rando (DER) option
+
 ## 2.1.0
 ### Additions
 - Ancient Cistern - Rupee under Lilypad is now a randomized check in the room after the gutters
