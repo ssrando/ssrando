@@ -1,9 +1,34 @@
 # Changelog
 
 ## Dev
-### Options
+### Additions
 ### Changes
 ### Bugfixes
+
+## 2.1.0
+### Additions
+- Ancient Cistern - Rupee under Lilypad is now a randomized check in the room after the gutters
+- Adds a startflag to have the log leading to Faron Woods already pushed
+- Adds the Strong Dowsing All Dungeons hint distribution
+### Changes
+- Update Dungeon Entrance Rando (DER) option names to better reflect what they do
+- Minor updates to logic
+### Bugfixes
+- Changed the way startflags are stored to prevent lack of flag space errors
+- Fixes a naming issue with the Boss Keysanity Fi Hints hint distribution that prevented it from being used
+
+## 2.0.1
+### Additions
+- New progress dialog tip about swordless movement (CovenEsme)
+- New Boss Key-sanity hint distribution for racing (YourAverageLink)
+### Changes
+- The seed hash is now shown in the progress window while randomizing (lepelog)
+- Renamed several options and checks for added clarity (CovenEsme with input from many others)
+### Bugfixes
+- Fixed a typo in hint text (CovenEsme)
+- Fixed several logic issues with tricks (CovenEsme)
+- Fixed an unpatched dungeon exit from Sandship (CovenEsme)
+- Fixed LMF appearing as unbeaten in Fi help menu (lepelog)
 
 ## 2.0.0
 ### Options
