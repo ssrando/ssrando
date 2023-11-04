@@ -3084,6 +3084,17 @@ class GamePatcher:
         dol.write_data(
             write_u8, 0x802DA0EB, start_entrance["day-night"] & 1
         )  # force day when value is >1
+
+        force_mogma_cave_dive = (
+            start_entrance["stage"] == "F210" and start_entrance["entrance"] == 0
+        )
+
+        dol.write_data(
+            write_u8,
+            self.custom_symbols["main.dol"]["FORCE_MOGMA_CAVE_DIVE"],
+            int(force_mogma_cave_dive),
+        )
+
         dol.save_changes()
         write_bytes_create_dirs(
             self.patcher.modified_extract_path / "DATA" / "sys" / "main.dol",

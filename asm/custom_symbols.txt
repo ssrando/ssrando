@@ -28,8 +28,9 @@ main.dol:
   get_start_info: 0x80678F04
   send_to_start: 0x80678F10
   do_er_fixes: 0x80678F6C
-  allow_set_respawn_info: 0x806792A8
-  get_glow_color: 0x806792D0
+  allow_set_respawn_info: 0x80679294
+  get_glow_color: 0x806792BC
+  FORCE_MOGMA_CAVE_DIVE: 0x80679426
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
