@@ -32,6 +32,10 @@ def shuffle_indices(self, list, indices=None):
         return
 
 
+class EntranceRandoFailure(Exception):
+    pass
+
+
 @dataclass
 class EROptions:
     randomize_dungeons: "None" | "Required Dungeons Separately" | "All Surface Dungeons" | "All Surface Dungeons + Sky Keep"
@@ -53,12 +57,11 @@ class EntranceRando:
         return
 
     def randomize(self):
+        self.vanilla()
         if self.options.randomize_all == "All":
             self.hacky_entrance_rando()
-        elif self.options.randomize_all == "Vanilla":
-            self.vanilla()
         else:
-            raise ValueError()
+            assert self.options.randomize_all == "Vanilla"
         self.randomize_dungeons_trials_starting_entrances()
 
     def vanilla(self):
@@ -98,6 +101,12 @@ class EntranceRando:
         der = self.options.randomize_dungeons
         dungeons = ALL_DUNGEONS.copy()
         entrances = [DUNGEON_OVERWORLD_ENTRANCES[dungeon] for dungeon in ALL_DUNGEONS]
+
+        if der != "None" and self.options.randomize_all != "Vanilla":
+            raise EntranceRandoFailure(
+                "Dungeon Entrance Randomization and Full Entrance Randomization are currently incompatible"
+            )
+
         if der == "All Surface Dungeons":
             indices = list(range(len(REGULAR_DUNGEONS)))
             shuffle_indices(self.rng, dungeons, indices=indices)
@@ -136,6 +145,12 @@ class EntranceRando:
         ter = self.options.randomize_trials
         pool = ALL_SILENT_REALMS.copy()
         gates = [SILENT_REALM_GATES[realm] for realm in ALL_SILENT_REALMS]
+
+        if ter and self.options.randomize_all != "Vanilla":
+            raise EntranceRandoFailure(
+                "Trial Randomization and Full Entrance Randomization are currently incompatible"
+            )
+
         if ter:
             self.rng.shuffle(pool)
 
@@ -180,21 +195,42 @@ class EntranceRando:
         self.placement.map_transitions[self.norm(START)] = start_entrance
 
     def hacky_entrance_rando(self):
-        entrances = list(k for k, v in self.areas.map_entrances.items() if "stage" in v)
+        unrando_exits = list(
+            map(
+                self.areas.short_to_full,
+                [
+                    "Sealed Temple - Gate of Time Exit",
+                    "Hylia's Temple - Gate of Time Exit",
+                ],
+            )
+        )
+
+        unrando_entrances = list(
+            map(
+                self.areas.short_to_full,
+                [
+                    "Sealed Temple - Gate of Time Entrance",
+                    "Hylia's Temple - Gate of Time Entrance",
+                    "Lanayru Mining Facility - Hall of Ancient Robots - Entrance from Temple of Time",
+                ],
+            )
+        )
+
+        entrances = list(
+            k
+            for k, v in self.areas.map_entrances.items()
+            if "stage" in v
+            if k not in unrando_entrances
+        )
         exits = list(
             k
             for k, v in self.areas.map_exits.items()
             if "stage" in v
             if "vanilla" in v
             if "Pillar" not in k
+            if k not in unrando_exits
         )
-        self.placement.reverse_map_transitions = {}
-        self.placement.map_transitions = {
-            k: self.norm(v["vanilla"])
-            for k, v in self.areas.map_exits.items()
-            if "stage" not in v
-            if "vanilla" in v or "Pillar" in k
-        }
+
         self.rng.shuffle(entrances)
 
         while len(entrances) < len(exits):

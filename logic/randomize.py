@@ -338,8 +338,10 @@ class Rando:
             must_be_placed_items.pop(item, None)
             may_be_placed_items.pop(item, None)
 
+        check_bits = Inventory(EXTENDED_ITEM[self.short_to_full(DEMISE)])
+
         self.randosettings = RandomizationSettings(
-            must_be_placed_items, may_be_placed_items, duplicable_items
+            must_be_placed_items, may_be_placed_items, duplicable_items, check_bits
         )
 
     def set_placement_options(self):

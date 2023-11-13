@@ -2955,8 +2955,10 @@ class GamePatcher:
             write_u8, 0x802DA0EB, start_entrance_data["tod"] & 1
         )  # force day when value is >1
 
-        force_mogma_cave_dive = (
-            start_entrance["stage"] == "F210" and start_entrance["entrance"] == 0
+        force_mogma_cave_dive = any(
+            exit != self.areas.short_to_full(EXIT_TO_TURF)
+            for exit, entrance in self.placement_file.map_connections.items()
+            if entrance == self.areas.short_to_full(TURF_ENTRANCE)
         )
 
         dol.write_data(

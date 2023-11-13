@@ -7,6 +7,7 @@ from .constants import *
 from .logic import Logic
 from .inventory import BANNED_BIT, EVERYTHING_UNBANNED_BIT, EXTENDED_ITEM
 from .fill_algo_common import RandomizationSettings, UserOutput
+from .entrance_rando import EntranceRandoFailure
 
 
 class AssumedFill:
@@ -18,6 +19,12 @@ class AssumedFill:
         self.randosettings = randosettings
 
         full_inventory = Logic.get_everything_unbanned(self.logic.requirements)
+
+        if not (randosettings.check_bits <= full_inventory):
+            raise EntranceRandoFailure(
+                f"Could not reach all objectives after entrances randomization."
+            )
+
         truly_progress_item = Logic.aggregate_requirements(
             self.logic.requirements, full_inventory, EVERYTHING_UNBANNED_BIT
         )
