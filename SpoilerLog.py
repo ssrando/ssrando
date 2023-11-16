@@ -236,6 +236,7 @@ def dump_json(
     barren_nonprogress,
     randomized_dungeon_entrance,
     randomized_trial_entrance,
+    randomized_start_entrance,
 ):
     spoiler_log = dump_header_json(options, hash)
     if options["no-spoiler-log"]:
@@ -251,6 +252,8 @@ def dump_json(
     spoiler_log["hints"] = {k: v.to_spoiler_log_json() for k, v in hints.items()}
     spoiler_log["entrances"] = randomized_dungeon_entrance
     spoiler_log["trial-connections"] = randomized_trial_entrance
+    spoiler_log["randomized-start-entrance"] = randomized_start_entrance
+    return spoiler_log
 
 
 def dump_header_json(options: Options, hash):
