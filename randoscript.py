@@ -34,6 +34,12 @@ def main():
         help="Specify the location of a placement file json that is used directly as a plandomizer, overrides all other options",
     )
     parser.add_argument(
+        "--dump-graph",
+        help="Dumps the graph used for logic and exits",
+        const=True,
+        nargs="?",
+    )
+    parser.add_argument(
         "--version",
         help="Prints the version and exits",
         action="store_true",
@@ -110,6 +116,18 @@ def main():
         for err in all_errors:
             print(err)
         exit(1)
+
+    if dest := parsed_args.dump_graph:
+        import logic
+
+        logic.logic_expression.GLOBAL_DUMP_MODE = True
+        areas = Areas(requirements, checks, hints, map_exits)
+        if dest is True:
+            print(areas)
+            exit(0)
+        with open(dest, mode="w") as f:
+            print(areas, file=f)
+            exit(0)
 
     areas = Areas(requirements, checks, hints, map_exits)
 

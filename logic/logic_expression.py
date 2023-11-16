@@ -9,6 +9,8 @@ from itertools import product, combinations
 from .inventory import EXTENDED_ITEM, Inventory, EMPTY_INV, DAY_BIT, NIGHT_BIT
 from .constants import EXTENDED_ITEM_NAME, number, ITEM_COUNTS, RAW_ITEM_NAMES
 
+GLOBAL_DUMP_MODE = False
+
 
 class LogicExpression(ABC):
     opaque: bool = False
@@ -22,6 +24,18 @@ class LogicExpression(ABC):
     @staticmethod
     def parse(text: str) -> LogicExpression:
         raise NotImplementedError
+
+    def __or__(self, other) -> DNFInventory:
+        return OrCombination([self, other])
+
+    def __and__(self, other) -> DNFInventory:
+        return AndCombination([self, other])
+
+    def day_only(self):
+        return self & BasicTextAtom("Day")
+
+    def night_only(self):
+        return self & BasicTextAtom("Night")
 
 
 class DNFInventory(LogicExpression):
@@ -80,13 +94,13 @@ class DNFInventory(LogicExpression):
                     filtered_other[conj] = conj_pre
             return DNFInventory((filtered_self | filtered_other))
         else:
-            raise ValueError
+            return super().__or__(other)
 
     def __and__(self, other) -> DNFInventory:
         if isinstance(other, DNFInventory):
             return AndCombination.simplifyDNF([self, other])  # Can be optimised
         else:
-            raise ValueError
+            raise super().__and__(other)
 
     def __repr__(self) -> str:
         return f"DNFInventory({self.disjunction!r})"
@@ -118,6 +132,10 @@ class DNFInventory(LogicExpression):
 
 
 def InventoryAtom(item_name: str, quantity: int) -> DNFInventory:
+    if GLOBAL_DUMP_MODE:
+        if quantity == 1:
+            return BasicTextAtom(f"{item_name}")
+        return BasicTextAtom(f"{item_name} x {quantity}")
     disjunction = set()
     for comb in combinations(range(ITEM_COUNTS[item_name]), quantity):
         i = Inventory()
@@ -128,6 +146,8 @@ def InventoryAtom(item_name: str, quantity: int) -> DNFInventory:
 
 
 def EventAtom(event_address: EXTENDED_ITEM_NAME) -> DNFInventory:
+    if GLOBAL_DUMP_MODE:
+        return BasicTextAtom(str(event_address))
     return DNFInventory(event_address)
 
 
@@ -139,12 +159,24 @@ class BasicTextAtom(LogicExpression):
         raise TypeError("Text must be localized to be evaluated.")
 
     def localize(self, localizer: Callable[[str], EXTENDED_ITEM_NAME | None]):
+        if GLOBAL_DUMP_MODE:
+            try:
+                if (v := localizer(self.text)) is not None:
+                    self.text = v
+            except ValueError:
+                print(self.text)
+            return self
         if (v := localizer(self.text)) is None:
             raise ValueError(f"Unknown event {self.text}.")
         else:
             ret = EventAtom(v)
             ret.opaque = self.opaque
             return ret
+
+    def __repr__(self):
+        if GLOBAL_DUMP_MODE:
+            return self.text
+        return f'BasicTextAtom("{self.text}")'
 
 
 def and_reducer(v, v1):
@@ -264,9 +296,9 @@ class MakeExpression(Transformer):
     def mk_atom(self, text):
         text = text.strip()
         if text == "Nothing":
-            return DNFInventory(True)
+            return EventAtom(True)
         if text == "Impossible":
-            return DNFInventory(False)
+            return EventAtom(False)
 
         if match := item_with_count_re.search(text):
             item_name = match.group(1)

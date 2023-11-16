@@ -490,3 +490,6 @@ class Areas:
                         area_bit = EXTENDED_ITEM[area_name]
                     self.opaque[area_bit] = False
                     reqs[area_bit] |= DNFInv(entrance)
+
+    def __str__(self):
+        return f"{EXTENDED_ITEM.items_list}\n{self.parent_area}\n{self.checks}\n{self.gossip_stones}\n{self.map_exits}\n{self.map_entrances}\n"
