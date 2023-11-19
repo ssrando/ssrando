@@ -239,6 +239,10 @@ fn itemflag_set_to_value(flag: u16, value: u16) {
 #[link_section = "data"]
 static mut IS_FILE_START: bool = false;
 
+#[link_section = "data"]
+#[no_mangle]
+static mut FORCE_MOGMA_CAVE_DIVE: bool = false;
+
 // IMPORTANT: when adding functions here that need to get called from the game,
 // add `#[no_mangle]` and add a .global *symbolname* to custom_funcs.asm
 #[no_mangle]
@@ -644,14 +648,8 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
         }
     }
 
-    let start_info = get_start_info();
-
-    unsafe {
-        if (*start_info).stage.starts_with(b"F210")
-            && (*start_info).entrance == 0
-            && spawn.name.starts_with(b"F210")
-            && spawn.entrance == 0
-        {
+    if unsafe { FORCE_MOGMA_CAVE_DIVE } && spawn.name.starts_with(b"F210") && spawn.entrance == 0 {
+        unsafe {
             (*RELOADER_PTR).spawn_state = 0x13; // diving
         }
     }
