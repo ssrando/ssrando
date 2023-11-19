@@ -32,10 +32,6 @@ def shuffle_indices(self, list, indices=None):
         return
 
 
-class EntranceRandoFailure(Exception):
-    pass
-
-
 @dataclass
 class EROptions:
     randomize_dungeons: "None" | "Required Dungeons Separately" | "All Surface Dungeons" | "All Surface Dungeons + Sky Keep"
@@ -48,10 +44,11 @@ class EROptions:
 
 
 class EntranceRando:
-    def __init__(self, areas, rng, placement, options: EROptions):
+    def __init__(self, areas, rng, placement, useroutput, options: EROptions):
         self.areas = areas
         self.rng = rng
         self.placement = placement
+        self.useroutput = useroutput
         self.options = options
         self.norm = areas.short_to_full
         return
@@ -103,7 +100,7 @@ class EntranceRando:
         entrances = [DUNGEON_OVERWORLD_ENTRANCES[dungeon] for dungeon in ALL_DUNGEONS]
 
         if der != "None" and self.options.randomize_all != "Vanilla":
-            raise EntranceRandoFailure(
+            raise self.useroutput.GenerationFailed(
                 "Dungeon Entrance Randomization and Full Entrance Randomization are currently incompatible"
             )
 
@@ -147,7 +144,7 @@ class EntranceRando:
         gates = [SILENT_REALM_GATES[realm] for realm in ALL_SILENT_REALMS]
 
         if ter and self.options.randomize_all != "Vanilla":
-            raise EntranceRandoFailure(
+            raise self.useroutput.GenerationFailed(
                 "Trial Randomization and Full Entrance Randomization are currently incompatible"
             )
 

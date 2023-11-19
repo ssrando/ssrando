@@ -92,6 +92,7 @@ class Randomizer(BaseRandomizer):
         self.options = options
 
         self.no_logs = self.options["no-spoiler-log"]
+        self.init_seed()
 
     def check_valid_directory_setup(self):
         # catch common errors with directory setup
@@ -121,19 +122,21 @@ class Randomizer(BaseRandomizer):
                 "ERROR: the randomizer only supports NTSC-U 1.00 (North American)."
             )
 
-    def init_rng(self, seed=-1):
-        if seed == -1:
-            seed = random.randint(0, 1000000)
-        self.seed = seed
+    def init_seed(self, bump_up=False):
+        self.seed = self.options["seed"]
+        if self.seed == -1:
+            self.seed = random.randint(0, 1000000)
+        if bump_up:
+            self.seed += 1
         self.options.set_option("seed", self.seed)
         self.randomizer_hash = calculate_rando_hash(self.seed, self.options)
+        print(f"Seed: {self.seed}")
 
-        print(f"Seed: {seed}")
-        rng = random.Random(seed)
+    def init_rng(self):
+        self.rng = random.Random(self.seed)
         if self.no_logs:
             for _ in range(100):
-                rng.random()
-        return rng
+                self.rng.random()
 
     def get_total_progress_steps(self):
         rando_steps = self.rando.get_total_progress_steps() + 3
@@ -147,8 +150,8 @@ class Randomizer(BaseRandomizer):
 
     def randomize(self, update_progress_dialog=None):
         useroutput = UserOutput(GenerationFailed, self.progress_callback)
-        self.rng = self.init_rng(self.options["seed"])
-        self.rando = Rando(self.areas, self.options, self.rng)
+        self.init_rng()
+        self.rando = Rando(self.areas, self.options, self.rng, useroutput)
 
         if update_progress_dialog is not None:
             update_progress_dialog(

@@ -2,13 +2,14 @@ from pathlib import Path
 
 from PySide6.QtCore import QThread, Signal
 
-from ssrando import Randomizer, StartupException
+from ssrando import Randomizer, StartupException, GenerationFailed
 from extractmanager import ExtractManager
 
 
 class RandomizerThread(QThread):
     update_progress = Signal(str, int)
     update_progress_dialog = Signal(str, int)
+    error_retry = Signal(str)
     error_abort = Signal(str)
     randomization_complete = Signal()
 
@@ -41,11 +42,18 @@ class RandomizerThread(QThread):
             except StartupException as e:
                 self.error_abort.emit(str(e))
                 return
-        self.randomizer.set_progress_callback(self.create_ui_progress_callback(0))
-        try:
-            self.randomizer.randomize(self.update_progress_dialog.emit)
-        except Exception as e:
-            self.error_abort.emit(str(e))
+        while True:
+            self.randomizer.set_progress_callback(self.create_ui_progress_callback(0))
+            self.steps = 0
+            try:
+                self.randomizer.randomize(self.update_progress_dialog.emit)
+                break
+            except GenerationFailed as e:
+                self.randomizer.init_seed(bump_up=True)
+                self.error_retry.emit(str(self.randomizer.seed))
+                continue
+            except Exception as e:
+                self.error_abort.emit(str(e))
             import traceback
 
             print(traceback.format_exc())

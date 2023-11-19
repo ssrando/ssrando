@@ -411,6 +411,13 @@ class RandoGUI(QMainWindow):
         if not total_steps is None:
             self.progress_dialog.setMaximum(total_steps)
 
+    def on_failure(self, new_seed: str):
+        if self.progress_dialog is not None:
+            self.progress_dialog.reset()
+            self.progress_dialog.set_current_action(
+                f"Generation failure, trying seed {new_seed}"
+            )
+
     def on_error(self, message: str):
         self.error_msg = QErrorMessage(self)
         if self.progress_dialog is not None:

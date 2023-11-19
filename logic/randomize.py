@@ -26,7 +26,9 @@ from .pools import *
 
 
 class Rando:
-    def __init__(self, areas: Areas, options: Options, rng: random.Random):
+    def __init__(
+        self, areas: Areas, options: Options, rng: random.Random, useroutput: UserOutput
+    ):
         self.options = options
         self.rng = rng
 
@@ -107,12 +109,14 @@ class Rando:
             allowed_provinces,
         )
 
-        self.entrance_rando = EntranceRando(areas, self.rng, self.placement, eroptions)
+        self.entrance_rando = EntranceRando(
+            areas, self.rng, self.placement, useroutput, eroptions
+        )
         self.entrance_rando.randomize()
 
         logic = Logic(areas, logic_settings, self.placement)
 
-        self.rando_algo = FillAlgorithm(logic, self.rng, self.randosettings)
+        self.rando_algo = FillAlgorithm(logic, self.rng, useroutput, self.randosettings)
 
         self.randomised = False
 

@@ -7,12 +7,15 @@ from .constants import *
 from .logic import Logic
 from .inventory import BANNED_BIT, EVERYTHING_UNBANNED_BIT, EXTENDED_ITEM
 from .fill_algo_common import RandomizationSettings, UserOutput
-from .entrance_rando import EntranceRandoFailure
 
 
 class FrontFill:
     def __init__(
-        self, logic: Logic, rng: random.Random, randosettings: RandomizationSettings
+        self,
+        logic: Logic,
+        rng: random.Random,
+        useroutput: UserOutput,
+        randosettings: RandomizationSettings,
     ):
         self.logic = logic
         self.rng = rng
@@ -21,7 +24,7 @@ class FrontFill:
         full_inventory = Logic.get_everything_unbanned(self.logic.requirements)
 
         if not (randosettings.check_bits <= full_inventory):
-            raise EntranceRandoFailure(
+            raise useroutput.GenerationFailed(
                 f"Could not reach all objectives after entrances randomization."
             )
 
