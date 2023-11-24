@@ -2,6 +2,7 @@ from collections import OrderedDict
 import sys
 import argparse
 import yaml
+import json
 from logic.logic_input import Areas
 from yaml_files import requirements, checks, hints, map_exits
 
@@ -120,6 +121,7 @@ def main():
 
     if dest := parsed_args.dump_graph:
         import logic
+        from logic.logic_input import Area
 
         logic.logic_expression.GLOBAL_DUMP_MODE = True
         areas = Areas(requirements, checks, hints, map_exits)
@@ -127,7 +129,8 @@ def main():
             print(areas)
             exit(0)
         with open(dest, mode="w") as f:
-            print(yaml.dump(areas.to_dict()), file=f)
+            yaml.Dumper.ignore_aliases = lambda *args: True
+            yaml.dump(areas.to_dict(), f)
             exit(0)
 
     areas = Areas(requirements, checks, hints, map_exits)

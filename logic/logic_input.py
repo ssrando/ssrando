@@ -8,11 +8,17 @@ from .logic_expression import DNFInventory, LogicExpression
 from .inventory import EXTENDED_ITEM, Inventory
 from .constants import *
 
+import yaml
+
 
 AllowedTimeOfDay = Enum("AllowedTimeOfDay", ("DayOnly", "NightOnly", "Both"))
 DayOnly = AllowedTimeOfDay.DayOnly
 NightOnly = AllowedTimeOfDay.NightOnly
 Both = AllowedTimeOfDay.Both
+
+yaml.add_representer(
+    AllowedTimeOfDay, lambda dumper, data: dumper.represent_int(data.value)
+)
 
 
 class defaultfactorydict(dict):
@@ -495,11 +501,33 @@ class Areas:
         return {
             "items": EXTENDED_ITEM.items_list,
             "areas": self.parent_area,
-            "checks": self.checks,
-            "gossip_stones": self.gossip_stones,
+            "checks": dict({k: v["short_name"] for k, v in self.checks.items()}),
+            "gossip_stones": dict(
+                {k: v["short_name"] for k, v in self.gossip_stones.items()}
+            ),
             "exits": self.map_exits,
             "entrances": self.map_entrances,
         }
 
     def __str__(self):
         return f"{EXTENDED_ITEM.items_list}\n{self.parent_area}\n{self.checks}\n{self.gossip_stones}\n{self.map_exits}\n{self.map_entrances}\n"
+
+
+yaml.add_representer(
+    Area,
+    lambda dumper, data: dumper.represent_dict(
+        {
+            "abstract": data.abstract,
+            "allowed_time_of_day": data.allowed_time_of_day,
+            "can_save": data.can_save,
+            "can_sleep": data.can_sleep,
+            "entrances": data.entrances,
+            "exits": data.exits,
+            "hint_region": data.hint_region,
+            "locations": data.locations,
+            "name": data.name,
+            "sub_areas": data.sub_areas,
+            "toplevel_alias": data.toplevel_alias,
+        }
+    ),
+)
