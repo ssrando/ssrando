@@ -9,6 +9,8 @@ from itertools import product, combinations
 from .inventory import EXTENDED_ITEM, Inventory, EMPTY_INV, DAY_BIT, NIGHT_BIT
 from .constants import EXTENDED_ITEM_NAME, number, ITEM_COUNTS, RAW_ITEM_NAMES
 
+import yaml
+
 GLOBAL_DUMP_MODE = False
 
 
@@ -178,6 +180,9 @@ class BasicTextAtom(LogicExpression):
             return self.text
         return f'BasicTextAtom("{self.text}")'
 
+    def __str__(self):
+        return self.text
+
 
 def and_reducer(v, v1):
     a, b = v
@@ -218,6 +223,14 @@ class AndCombination(LogicExpression):
             f"Some argument of this {type(self).__name__} cannot be evaluated, or something has gone wrong."
         )
 
+    def __str__(self):
+        return " & ".join(
+            [
+                f"({str(expr)})" if isinstance(expr, OrCombination) else str(expr)
+                for expr in self.arguments
+            ]
+        )
+
 
 @dataclass
 class OrCombination(LogicExpression):
@@ -247,6 +260,9 @@ class OrCombination(LogicExpression):
         raise TypeError(
             f"Some argument of this {type(self).__name__} cannot be evaluated, or something has gone wrong."
         )
+
+    def __str__(self):
+        return " | ".join([str(expr) for expr in self.arguments])
 
 
 # Parsing
@@ -315,3 +331,16 @@ class MakeExpression(Transformer):
 
 exp_parser = Lark(exp_grammar, parser="lalr", transformer=MakeExpression())
 LogicExpression.parse = exp_parser.parse  # type: ignore
+
+
+def text_atom_representer(dumper, data):
+    return dumper.represent_scalar("tag:yaml.org,2002:str", data.text)
+
+
+def combination_representer(dumper, data):
+    return dumper.represent_scalar("tag:yaml.org,2002:str", str(data), 'folded')
+
+
+yaml.add_representer(BasicTextAtom, text_atom_representer)
+yaml.add_representer(AndCombination, combination_representer)
+yaml.add_representer(OrCombination, combination_representer)
