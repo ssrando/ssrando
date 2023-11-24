@@ -493,5 +493,15 @@ class Areas:
                     self.opaque[area_bit] = False
                     reqs[area_bit] |= DNFInv(entrance)
 
+    def to_dict(self):
+        return {
+            "items": EXTENDED_ITEM.items_list,
+            "areas": self.parent_area,
+            "checks": self.checks,
+            "gossip_stones": self.gossip_stones,
+            "exits": self.map_exits,
+            "entrances": self.map_entrances,
+        }
+
     def __str__(self):
         return f"{EXTENDED_ITEM.items_list}\n{self.parent_area}\n{self.checks}\n{self.gossip_stones}\n{self.map_exits}\n{self.map_entrances}\n"
