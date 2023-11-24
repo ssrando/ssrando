@@ -338,7 +338,7 @@ def text_atom_representer(dumper, data):
 
 
 def combination_representer(dumper, data):
-    return dumper.represent_scalar("tag:yaml.org,2002:str", str(data), 'folded')
+    return dumper.represent_scalar("tag:yaml.org,2002:str", str(data), "folded")
 
 
 yaml.add_representer(BasicTextAtom, text_atom_representer)
