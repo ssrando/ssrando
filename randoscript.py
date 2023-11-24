@@ -1,6 +1,7 @@
 from collections import OrderedDict
 import sys
 import argparse
+import yaml
 from logic.logic_input import Areas
 from yaml_files import requirements, checks, hints, map_exits
 
@@ -126,7 +127,7 @@ def main():
             print(areas)
             exit(0)
         with open(dest, mode="w") as f:
-            print(areas, file=f)
+            print(yaml.dump(areas.to_dict()), file=f)
             exit(0)
 
     areas = Areas(requirements, checks, hints, map_exits)
