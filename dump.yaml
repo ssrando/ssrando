@@ -2881,8 +2881,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Entrance from Flame Room
           - Entrance from Dungeon
+          - Entrance from Flame Room
           exits:
             Exit to Dungeon: \Ancient Cistern\Boss Room\Beat Koloktos
             Exit to Flame Room: \Ancient Cistern\Boss Room\Beat Koloktos
@@ -3171,8 +3171,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - First Time Entrance
               - Volcano Entrance Statue Entrance
+              - First Time Entrance
               exits:
                 Volcano Entrance Statue Exit: \Eldin\Volcano\Entry\Unlock Statue
                 \Eldin\Volcano\Ascent: \Eldin\Volcano\Ascent\Unlock Shortcut to Entry
@@ -3266,8 +3266,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Trial Gate Entrance
               - Volcano Ascent Statue Entrance
+              - Trial Gate Entrance
               exits:
                 \Eldin\Volcano\East\Volcano East / Volcano Ascent Statue Exit: \Eldin\Volcano\Ascent\Unlock
                   Statue
@@ -3380,8 +3380,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Summit
               - Vent Entrance near Hot Cave
+              - Entrance from Summit
               exits:
                 Exit to Summit: Fireshield Earrings
                 \Eldin\Volcano\Near Temple Entrance: \Eldin\Volcano\Near Temple Entrance\Blow
@@ -3912,9 +3912,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Main Entrance
               - Side Entrance
               - Gate of Time Entrance
+              - Main Entrance
               exits:
                 Main Exit: 'True'
                 Side Exit: 'True'
@@ -3980,8 +3980,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - In the Woods Statue Entrance
           - Viewing Platform Statue Entrance
+          - In the Woods Statue Entrance
           - Trial Gate Entrance
           exits:
             \Faron\Faron Woods\Entry: 'True'
@@ -4274,9 +4274,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Deep Woods Statue Entrance
               - Entrance from Skyview Temple
               - Forest Temple Statue Entrance
+              - Deep Woods Statue Entrance
               exits:
                 Shared Statue Exit: 'True'
                 \Faron\Faron Woods\Deep Woods\Entry: 'True'
@@ -4379,9 +4379,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
+              - Entrance
               - Entrance from Lower Flooded Faron Woods
               - Entrance from Upper Flooded Faron Woods
-              - Entrance
               exits:
                 Exit: 'True'
                 Exit to Upper Flooded Faron Woods: 'True'
@@ -4466,8 +4466,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Waterfall
               - Entrance from Lake Floria
+              - Entrance from Waterfall
               exits:
                 Exit to Waterfall: 'True'
                 Exit to Lake Floria: Water Dragon's Scale
@@ -4485,10 +4485,10 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Farore's Lair
               - Statue Entrance
-              - Entrance from Ancient Cistern
               - Entrance from Faron Woods
+              - Entrance from Ancient Cistern
+              - Entrance from Farore's Lair
               exits:
                 Statue Exit: \Faron\Lake Floria\Waterfall\Unlock Statue
                 Exit to Farore's Lair: 'True'
@@ -5078,8 +5078,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Entrance from Flame Room
           - Entrance from Dungeon
+          - Entrance from Flame Room
           exits:
             Exit to Dungeon: \Fire Sanctuary\Boss Room\Beat Ghirahim
             Exit to Flame Room: \Fire Sanctuary\Boss Room\Beat Ghirahim
@@ -5899,9 +5899,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Lightning Node Entrance
-              - North Entrance from Temple of Time
               - Trial Gate Entrance
+              - North Entrance from Temple of Time
+              - Lightning Node Entrance
               - North Desert Statue Entrance
               exits:
                 North Exit to Temple of Time: 'True'
@@ -6023,8 +6023,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Stone Cache Statue Entrance
               - Fire Node Entrance
+              - Stone Cache Statue Entrance
               exits:
                 \Lanayru\Desert\North Part: 'True'
                 \Lanayru\Desert\Top of LMF: \Lanayru\Raise Lanayru Mining Facility
@@ -6162,8 +6162,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - South Entrance from Desert
               - Desert Gorge Statue Entrance
+              - South Entrance from Desert
               exits:
                 South Exit to Desert: 'True'
                 \Lanayru\Temple of Time\Shared Statue Exit: \Lanayru\Temple of Time\South
@@ -6208,8 +6208,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Lanayru Mining Facility
               - Temple of Time Statue Entrance
+              - Entrance from Lanayru Mining Facility
               exits:
                 \Lanayru\Temple of Time\Shared Statue Exit: \Lanayru\Temple of Time\Inside\Unlock
                   Statue
@@ -6246,9 +6246,9 @@ areas:
               exits:
                 \Lanayru\Temple of Time\South East: \Distance Activator
                 North Exit to Desert: 'True'
-                \Ancient Flower Farming: \Distance Activator
               hint_region: null
-              locations: {}
+              locations:
+                \Ancient Flower Farming: \Distance Activator
               name: \Lanayru\Temple of Time\North East
               sub_areas: {}
               toplevel_alias: null
@@ -6337,11 +6337,11 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Sandship Dock Entrance
           - Pirate Stronghold Dock Entrance
           - Ancient Harbour Dock Entrance
-          - Shipyard Dock Entrance
+          - Sandship Dock Entrance
           - Skipper's Retreat Dock Entrance
+          - Shipyard Dock Entrance
           exits:
             Ancient Harbour Dock Exit: 'True'
             Sandship Dock Exit: \Lanayru\Lanayru Sand Sea\Shoot down Sandship
@@ -6489,8 +6489,8 @@ areas:
               can_sleep: false
               entrances:
               - Statue Entrance
-              - Dock Entrance
               - Construction Bay Lower Entrance
+              - Dock Entrance
               - Construction Bay Upper Entrance
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Shipyard\Unlock Statue
@@ -6577,8 +6577,8 @@ areas:
                   can_save: false
                   can_sleep: false
                   entrances:
-                  - Second Door Entrance
                   - First Door Entrance
+                  - Second Door Entrance
                   exits:
                     First Door Exit: 'True'
                     Second Door Exit: \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside\Finish
@@ -7703,8 +7703,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Entrance from Skyloft
           - Entrance from Thunderhead
+          - Entrance from Skyloft
           exits:
             \Sky\North East: 'True'
             \Sky\South West: 'True'
@@ -7844,12 +7844,12 @@ areas:
           can_sleep: false
           entrances:
           - Knight Academy Upper Right Door Entrance
+          - Knight Academy Lower Left Door Entrance
+          - Sparring Hall Left Door Entrance
+          - Knight Academy Upper Left Door Entrance
+          - Sparring Hall Right Door Entrance
           - Goddess Statue Entrance
           - Knight Academy Lower Right Door Entrance
-          - Sparring Hall Left Door Entrance
-          - Sparring Hall Right Door Entrance
-          - Knight Academy Upper Left Door Entrance
-          - Knight Academy Lower Left Door Entrance
           exits:
             Knight Academy Upper Right Door Exit: 'True'
             Knight Academy Upper Left Door Exit: 'True'
@@ -7873,10 +7873,10 @@ areas:
               can_save: false
               can_sleep: true
               entrances:
-              - Upper Right Door Entrance
               - Lower Right Door Entrance
-              - Upper Left Door Entrance
               - Lower Left Door Entrance
+              - Upper Right Door Entrance
+              - Upper Left Door Entrance
               exits:
                 Upper Right Door Exit: 'True'
                 Upper Left Door Exit: 'True'
@@ -7939,8 +7939,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Right Door Entrance
               - Left Door Entrance
+              - Right Door Entrance
               exits:
                 Right Door Exit: 'True'
                 Left Door Exit: 'True'
@@ -7976,17 +7976,17 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Waterfall Cave Upper Entrance
-          - Bazaar South Entrance
-          - Bazaar North Entrance
-          - Peatrice's House Entrance
+          - Bazaar West Entrance
           - Entrance from Sky
           - Trial Gate Entrance
-          - Piper's House Entrance
-          - Entrance from Beedle's Shop
+          - Waterfall Cave Upper Entrance
+          - Bazaar North Entrance
           - Wryna's House Entrance
+          - Peatrice's House Entrance
           - Orielle and Parrow's House Entrance
-          - Bazaar West Entrance
+          - Entrance from Beedle's Shop
+          - Bazaar South Entrance
+          - Piper's House Entrance
           exits:
             Exit to Beedle's Shop: "Day & (\\Distance Activator | Beedle's Shop With\
               \ Bombs Trick & Bomb Bag)"
@@ -8263,12 +8263,12 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Batreaux's House Entrance
-          - Rupin's House Entrance
-          - Sparrot's House Entrance
-          - Bertie's House Entrance
           - Gondo's House Entrance
+          - Sparrot's House Entrance
           - Mallara's House Entrance
+          - Rupin's House Entrance
+          - Bertie's House Entrance
+          - Batreaux's House Entrance
           exits:
             \Skyloft\Central Skyloft: 'True'
             \Skyloft\Central Skyloft\Past Waterfall Cave: "Waterfall Cave Jump Trick\

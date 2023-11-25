@@ -314,6 +314,7 @@ Temple of Time:
     exits:
       South East: Distance Activator
       North Exit to Desert: Nothing
+    locations:
       General - Ancient Flower Farming: Distance Activator # for timeshift stone
 
 Lanayru Silent Realm:
