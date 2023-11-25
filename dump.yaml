@@ -2881,8 +2881,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances: !!set
-            Entrance from Dungeon: null
             Entrance from Flame Room: null
+            Entrance from Dungeon: null
           exits:
             Exit to Dungeon: \Ancient Cistern\Boss Room\Beat Koloktos
             Exit to Flame Room: \Ancient Cistern\Boss Room\Beat Koloktos
@@ -3171,8 +3171,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Volcano Entrance Statue Entrance: null
                 First Time Entrance: null
+                Volcano Entrance Statue Entrance: null
               exits:
                 Volcano Entrance Statue Exit: \Eldin\Volcano\Entry\Unlock Statue
                 \Eldin\Volcano\Ascent: \Eldin\Volcano\Ascent\Unlock Shortcut to Entry
@@ -3209,9 +3209,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                First Vent from Mogma Turf: null
-                Volcano East Statue Entrance: null
                 Entrance from Bokoblin Base: null
+                Volcano East Statue Entrance: null
+                First Vent from Mogma Turf: null
               exits:
                 Volcano East / Volcano Ascent Statue Exit: \Eldin\Volcano\East\Unlock
                   Statue
@@ -3592,8 +3592,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Statue Entrance: null
                 Entrance from Fire Sanctuary: null
+                Statue Entrance: null
               exits:
                 Statue Exit: \Eldin\Volcano Summit\Outside Fire Sanctuary\Unlock Statue
                 \Eldin\Volcano Summit\Outside Fire Sanctuary\Between Thirsty Frogs: \Eldin\Volcano
@@ -3912,9 +3912,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Main Entrance: null
                 Gate of Time Entrance: null
                 Side Entrance: null
+                Main Entrance: null
               exits:
                 Main Exit: 'True'
                 Side Exit: 'True'
@@ -3955,10 +3955,10 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Entrance from Faron Woods: null
-                Statue Entrance: null
                 Door Entrance: null
                 Shortcut Entrance from Spiral: null
+                Statue Entrance: null
+                Entrance from Faron Woods: null
               exits:
                 Statue Exit: \Faron\Sealed Grounds\Behind the Temple\Unlock Statue
                 Door Exit: 'True'
@@ -4026,8 +4026,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Faron Woods Entry Statue Entrance: null
                 Entrance from Behind the Temple: null
+                Faron Woods Entry Statue Entrance: null
               exits:
                 \Faron\Faron Woods\Shared Statue Exit: \Faron\Faron Woods\Entry\Unlock
                   Statue
@@ -4227,8 +4227,8 @@ areas:
                   can_sleep: false
                   entrances: !!set
                     Entrance from Top: null
-                    Upper Entrance from Platforms: null
                     Entrance from Flooded Great Tree: null
+                    Upper Entrance from Platforms: null
                   exits:
                     \Faron\Faron Woods\Great Tree\Lower Area: \Faron\Faron Woods\Great
                       Tree\Upper Area\Remove Void Plane
@@ -4343,8 +4343,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances: !!set
-            Entrance from Lower Flooded Great Tree: null
             Entrance from Upper Flooded Great Tree: null
+            Entrance from Lower Flooded Great Tree: null
           exits:
             Exit to Upper Flooded Great Tree: 'True'
             Exit to Lower Flooded Great Tree: Water Dragon's Scale
@@ -4380,8 +4380,8 @@ areas:
               can_sleep: false
               entrances: !!set
                 Entrance from Upper Flooded Faron Woods: null
-                Entrance: null
                 Entrance from Lower Flooded Faron Woods: null
+                Entrance: null
               exits:
                 Exit: 'True'
                 Exit to Upper Flooded Faron Woods: 'True'
@@ -4466,8 +4466,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Entrance from Waterfall: null
                 Entrance from Lake Floria: null
+                Entrance from Waterfall: null
               exits:
                 Exit to Waterfall: 'True'
                 Exit to Lake Floria: Water Dragon's Scale
@@ -4485,10 +4485,10 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Entrance from Faron Woods: null
-                Statue Entrance: null
-                Entrance from Farore's Lair: null
                 Entrance from Ancient Cistern: null
+                Entrance from Farore's Lair: null
+                Statue Entrance: null
+                Entrance from Faron Woods: null
               exits:
                 Statue Exit: \Faron\Lake Floria\Waterfall\Unlock Statue
                 Exit to Farore's Lair: 'True'
@@ -4979,8 +4979,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Statue Entrance: null
                 Boss Door Entrance: null
+                Statue Entrance: null
               exits:
                 Statue Exit: \Fire Sanctuary\Main\Front of Boss Door\Unlock Statue
                 Boss Door Exit: Fire Sanctuary Boss Key
@@ -5078,8 +5078,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances: !!set
-            Entrance from Dungeon: null
             Entrance from Flame Room: null
+            Entrance from Dungeon: null
           exits:
             Exit to Dungeon: \Fire Sanctuary\Boss Room\Beat Ghirahim
             Exit to Flame Room: \Fire Sanctuary\Boss Room\Beat Ghirahim
@@ -5599,8 +5599,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Statue Entrance: null
                 First Time Entrance: null
+                Statue Entrance: null
               exits:
                 Statue Exit: \Lanayru\Mine\Entry\Unlock Statue
                 \Lanayru\Mine\Statues Area: \Lanayru\Mine\Entry\Timeshift Stone
@@ -5899,10 +5899,10 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Trial Gate Entrance: null
                 North Desert Statue Entrance: null
-                Lightning Node Entrance: null
+                Trial Gate Entrance: null
                 North Entrance from Temple of Time: null
+                Lightning Node Entrance: null
               exits:
                 North Exit to Temple of Time: 'True'
                 \Lanayru\Desert\East: 'True'
@@ -6023,8 +6023,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Fire Node Entrance: null
                 Stone Cache Statue Entrance: null
+                Fire Node Entrance: null
               exits:
                 \Lanayru\Desert\North Part: 'True'
                 \Lanayru\Desert\Top of LMF: \Lanayru\Raise Lanayru Mining Facility
@@ -6162,8 +6162,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                South Entrance from Desert: null
                 Desert Gorge Statue Entrance: null
+                South Entrance from Desert: null
               exits:
                 South Exit to Desert: 'True'
                 \Lanayru\Temple of Time\Shared Statue Exit: \Lanayru\Temple of Time\South
@@ -6246,9 +6246,9 @@ areas:
               exits:
                 \Lanayru\Temple of Time\South East: \Distance Activator
                 North Exit to Desert: 'True'
-                \Ancient Flower Farming: \Distance Activator
               hint_region: null
-              locations: {}
+              locations:
+                \Ancient Flower Farming: \Distance Activator
               name: \Lanayru\Temple of Time\North East
               sub_areas: {}
               toplevel_alias: null
@@ -6338,10 +6338,10 @@ areas:
           can_sleep: false
           entrances: !!set
             Sandship Dock Entrance: null
-            Pirate Stronghold Dock Entrance: null
-            Ancient Harbour Dock Entrance: null
             Shipyard Dock Entrance: null
             Skipper's Retreat Dock Entrance: null
+            Pirate Stronghold Dock Entrance: null
+            Ancient Harbour Dock Entrance: null
           exits:
             Ancient Harbour Dock Exit: 'True'
             Sandship Dock Exit: \Lanayru\Lanayru Sand Sea\Shoot down Sandship
@@ -6359,8 +6359,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Statue Entrance: null
                 Dock Entrance: null
+                Statue Entrance: null
               exits:
                 Dock Exit: \Lanayru\Lanayru Sand Sea\Ancient Harbour\Ship Timeshift
                   Stone
@@ -6399,8 +6399,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Statue Entrance: null
                 Dock Entrance: null
+                Statue Entrance: null
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Unlock Statue
                 Dock Exit: 'True'
@@ -6488,9 +6488,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Statue Entrance: null
                 Construction Bay Upper Entrance: null
                 Dock Entrance: null
+                Statue Entrance: null
                 Construction Bay Lower Entrance: null
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Shipyard\Unlock Statue
@@ -6531,9 +6531,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Statue Entrance: null
-                Dock Entrance: null
                 Side Entrance: null
+                Dock Entrance: null
+                Statue Entrance: null
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Unlock Statue
                 Dock Exit: 'True'
@@ -6577,8 +6577,8 @@ areas:
                   can_save: false
                   can_sleep: false
                   entrances: !!set
-                    First Door Entrance: null
                     Second Door Entrance: null
+                    First Door Entrance: null
                   exits:
                     First Door Exit: 'True'
                     Second Door Exit: \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside\Finish
@@ -6600,8 +6600,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Statue Entrance: null
                 Entrance: null
+                Statue Entrance: null
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Gorge\Unlock Statue
                 \Lanayru\Lanayru Sand Sea\Gorge\Beyond Bridge: \Lanayru\Lanayru Sand
@@ -7505,9 +7505,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                Main Right Door Entrance: null
-                Main Left Door Entrance: null
                 Back Door Entrance: null
+                Main Left Door Entrance: null
+                Main Right Door Entrance: null
               exits:
                 \Sky\South East: Day
                 Main Right Door Exit: 'True'
@@ -7534,9 +7534,9 @@ areas:
                   can_save: false
                   can_sleep: true
                   entrances: !!set
-                    Main Right Door Entrance: null
-                    Main Left Door Entrance: null
                     Back Door Entrance: null
+                    Main Left Door Entrance: null
+                    Main Right Door Entrance: null
                   exits:
                     Main Right Door Exit: 'True'
                     Main Left Door Exit: 'True'
@@ -7703,8 +7703,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances: !!set
-            Entrance from Skyloft: null
             Entrance from Thunderhead: null
+            Entrance from Skyloft: null
           exits:
             \Sky\North East: 'True'
             \Sky\South West: 'True'
@@ -7843,13 +7843,13 @@ areas:
           can_save: false
           can_sleep: false
           entrances: !!set
-            Sparring Hall Right Door Entrance: null
-            Goddess Statue Entrance: null
-            Knight Academy Upper Left Door Entrance: null
-            Knight Academy Lower Left Door Entrance: null
-            Sparring Hall Left Door Entrance: null
             Knight Academy Lower Right Door Entrance: null
+            Sparring Hall Right Door Entrance: null
+            Knight Academy Lower Left Door Entrance: null
+            Knight Academy Upper Left Door Entrance: null
+            Goddess Statue Entrance: null
             Knight Academy Upper Right Door Entrance: null
+            Sparring Hall Left Door Entrance: null
           exits:
             Knight Academy Upper Right Door Exit: 'True'
             Knight Academy Upper Left Door Exit: 'True'
@@ -7873,10 +7873,10 @@ areas:
               can_save: false
               can_sleep: true
               entrances: !!set
-                Lower Left Door Entrance: null
                 Upper Left Door Entrance: null
-                Upper Right Door Entrance: null
+                Lower Left Door Entrance: null
                 Lower Right Door Entrance: null
+                Upper Right Door Entrance: null
               exits:
                 Upper Right Door Exit: 'True'
                 Upper Left Door Exit: 'True'
@@ -7976,17 +7976,17 @@ areas:
           can_save: false
           can_sleep: false
           entrances: !!set
-            Waterfall Cave Upper Entrance: null
-            Entrance from Beedle's Shop: null
             Bazaar West Entrance: null
-            Wryna's House Entrance: null
-            Peatrice's House Entrance: null
-            Orielle and Parrow's House Entrance: null
             Bazaar South Entrance: null
-            Trial Gate Entrance: null
+            Orielle and Parrow's House Entrance: null
+            Peatrice's House Entrance: null
             Piper's House Entrance: null
-            Entrance from Sky: null
+            Entrance from Beedle's Shop: null
             Bazaar North Entrance: null
+            Waterfall Cave Upper Entrance: null
+            Trial Gate Entrance: null
+            Entrance from Sky: null
+            Wryna's House Entrance: null
           exits:
             Exit to Beedle's Shop: "Day & (\\Distance Activator | Beedle's Shop With\
               \ Bombs Trick & Bomb Bag)"
@@ -8054,9 +8054,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances: !!set
-                North Entrance: null
-                South Entrance: null
                 West Entrance: null
+                South Entrance: null
+                North Entrance: null
               exits:
                 North Exit: 'True'
                 West Exit: 'True'
@@ -8264,9 +8264,9 @@ areas:
           can_sleep: false
           entrances: !!set
             Gondo's House Entrance: null
+            Mallara's House Entrance: null
             Rupin's House Entrance: null
             Bertie's House Entrance: null
-            Mallara's House Entrance: null
             Sparrot's House Entrance: null
             Batreaux's House Entrance: null
           exits:
@@ -8805,8 +8805,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances: !!set
-            Entrance from Dungeon: null
             Entrance from Spring: null
+            Entrance from Dungeon: null
           exits:
             Exit to Dungeon: \Skyview\Boss Room\Beat Ghirahim
             Exit to Spring: \Skyview\Boss Room\Beat Ghirahim
