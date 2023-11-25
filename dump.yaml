@@ -2378,7 +2378,7 @@ areas:
   allowed_time_of_day: 3
   can_save: false
   can_sleep: false
-  entrances: !!set {}
+  entrances: []
   exits:
     Start: 'True'
   hint_region: null
@@ -2504,7 +2504,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: Ancient Cistern
       locations:
@@ -2517,7 +2517,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Ancient Cistern
           locations: {}
@@ -2528,8 +2528,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Main Entrance: null
+              entrances:
+              - Main Entrance
               exits:
                 Main Exit: 'True'
                 \Ancient Cistern\Main\East Part: \Ancient Cistern\Main\Main Room\Lever
@@ -2560,7 +2560,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Main Room\Vines Area: Clawshots
                     \Ancient Cistern\Main\Main Room\After Gutters: \Ancient Cistern\Main\Main
@@ -2577,7 +2577,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Main Room\After Whip Hooks: "\\Sword & Ancient\
                       \ Cistern - Map Chest Jump Trick"
@@ -2601,7 +2601,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Basement Gutters: \Ancient Cistern\Main\Main
                       Room\Behind the Waterfall\Toilet Flush
@@ -2622,7 +2622,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Main Room\After Whip Hooks: 'True'
                     \Ancient Cistern\Main\Main Room\After Gutters\Upper Area: "\\\
@@ -2650,7 +2650,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Ancient Cistern\Main\Main Room\After Gutters: 'True'
                         \Ancient Cistern\Main\Main Room\Vines Area: \Ancient Cistern\Main\Main
@@ -2667,7 +2667,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Main Room\Vines Area: \Ancient Cistern\Main\Main
                       Room\Spider Thread Area\Extend Platform
@@ -2686,7 +2686,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Ancient Cistern\Main\Main Room: 'True'
                 \Ancient Cistern\Main\East Part\Second Room: \Ancient Cistern\Main\East
@@ -2702,7 +2702,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\East Part: 'True'
                     \Ancient Cistern\Main\East Part\Chest Ledge: "\\Ancient Cistern\\\
@@ -2727,7 +2727,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Main Room: 'True'
                   hint_region: Ancient Cistern
@@ -2742,7 +2742,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Ancient Cistern\Main\Basement Gutters\Past Skulltula: "\\Ancient\
                   \ Cistern\\Main\\Basement Gutters\\Can Get Past Skulltula & Water\
@@ -2757,7 +2757,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Basement Gutters: Water Dragon's Scale
                     \Ancient Cistern\Main\Main Room\After Gutters: Ancient Cistern
@@ -2774,7 +2774,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Ancient Cistern\Main\Inside Statue: 'True'
                 \Ancient Cistern\Main\Basement\Rotating Vines: "Whip & \\Ancient Cistern\\\
@@ -2795,7 +2795,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Basement: 'True'
                     \Ancient Cistern\Main\Basement\Spider Thread: Whip
@@ -2809,7 +2809,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Basement: 'True'
                     \Ancient Cistern\Main\Basement\Under the Statue: \Ancient Cistern\Can
@@ -2826,7 +2826,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Basement: 'True'
                   hint_region: Ancient Cistern
@@ -2842,8 +2842,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Boss Door Entrance: null
+              entrances:
+              - Boss Door Entrance
               exits:
                 \Ancient Cistern\Main\Basement: \Ancient Cistern\Can Lower Statue
                 \Ancient Cistern\Main\Main Room: \Ancient Cistern\Main\Inside Statue\Activate
@@ -2863,7 +2863,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Ancient Cistern\Main\Inside Statue: Ancient Cistern Small Key
                       x 2
@@ -2880,9 +2880,9 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance from Dungeon: null
-            Entrance from Flame Room: null
+          entrances:
+          - Entrance from Flame Room
+          - Entrance from Dungeon
           exits:
             Exit to Dungeon: \Ancient Cistern\Boss Room\Beat Koloktos
             Exit to Flame Room: \Ancient Cistern\Boss Room\Beat Koloktos
@@ -2898,8 +2898,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits:
             Exit: 'True'
           hint_region: Ancient Cistern
@@ -2914,7 +2914,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: Earth Temple
       locations: {}
@@ -2925,7 +2925,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Earth Temple
           locations: {}
@@ -2936,8 +2936,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Main Entrance: null
+              entrances:
+              - Main Entrance
               exits:
                 Main Exit: 'True'
                 \Earth Temple\Main\Hub Room: "\\Earth Temple\\Main\\First Room\\Lower\
@@ -2959,7 +2959,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Earth Temple\Main\Hub Room\Past Lava Section: "\\Earth Temple\\Main\\\
                   Hub Room\\Access to Boulder & (\\Earth Temple\\Main\\Hub Room\\\
@@ -2997,7 +2997,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Earth Temple\Main\Hub Room: 'True'
                   hint_region: Earth Temple
@@ -3013,7 +3013,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Earth Temple\Main\Hub Room: 'True'
               hint_region: Earth Temple
@@ -3027,7 +3027,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Earth Temple\Main\Hub Room: \Earth Temple\Main\West Room\Rock to
                   Hub Room
@@ -3043,7 +3043,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Earth Temple\Main\Room with Slopes\Front of Boss Door: "\\Earth Temple\\\
                   Main\\Room with Slopes\\Rock in Second Slope Resting Area | Earth\
@@ -3060,8 +3060,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Boss Door Entrance: null
+                  entrances:
+                  - Boss Door Entrance
                   exits:
                     \Earth Temple\Main\Room with Slopes: 'True'
                     Boss Door Exit: \Earth Temple\Main\Room with Slopes\Front of Boss
@@ -3080,7 +3080,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Earth Temple
           locations: {}
@@ -3091,8 +3091,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Dungeon: null
+              entrances:
+              - Entrance from Dungeon
               exits:
                 Exit to Dungeon: \Earth Temple\Boss Room\Slope\Beat Scaldera
                 \Earth Temple\Boss Room\Slope: 'True'
@@ -3106,8 +3106,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Spring: null
+              entrances:
+              - Entrance from Spring
               exits:
                 Exit to Spring: \Earth Temple\Boss Room\Slope\Beat Scaldera
               hint_region: Earth Temple
@@ -3131,8 +3131,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits:
             Exit: 'True'
           hint_region: Earth Temple
@@ -3147,7 +3147,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: null
       locations:
@@ -3159,7 +3159,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Eldin Volcano
           locations: {}
@@ -3170,9 +3170,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Volcano Entrance Statue Entrance: null
-                First Time Entrance: null
+              entrances:
+              - First Time Entrance
+              - Volcano Entrance Statue Entrance
               exits:
                 Volcano Entrance Statue Exit: \Eldin\Volcano\Entry\Unlock Statue
                 \Eldin\Volcano\Ascent: \Eldin\Volcano\Ascent\Unlock Shortcut to Entry
@@ -3191,7 +3191,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Volcano\East: \Eldin\Volcano\First Room\Blow up Rock to East
               hint_region: Eldin Volcano
@@ -3208,10 +3208,10 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                First Vent from Mogma Turf: null
-                Volcano East Statue Entrance: null
-                Entrance from Bokoblin Base: null
+              entrances:
+              - Volcano East Statue Entrance
+              - Entrance from Bokoblin Base
+              - First Vent from Mogma Turf
               exits:
                 Volcano East / Volcano Ascent Statue Exit: \Eldin\Volcano\East\Unlock
                   Statue
@@ -3243,8 +3243,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Second Vent from Mogma Turf: null
+              entrances:
+              - Second Vent from Mogma Turf
               exits:
                 \Eldin\Volcano\East: \Eldin\Volcano\Past Mogma Turf\Unlock Shortcut
                   to Pre Turf
@@ -3265,9 +3265,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Trial Gate Entrance: null
-                Volcano Ascent Statue Entrance: null
+              entrances:
+              - Trial Gate Entrance
+              - Volcano Ascent Statue Entrance
               exits:
                 \Eldin\Volcano\East\Volcano East / Volcano Ascent Statue Exit: \Eldin\Volcano\Ascent\Unlock
                   Statue
@@ -3294,8 +3294,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Thrill Digger Cave Entrance: null
+              entrances:
+              - Thrill Digger Cave Entrance
               exits:
                 \Eldin\Volcano\Ascent: 'True'
                 \Eldin\Volcano\Near Temple Entrance: \Eldin\Volcano\Near Thrill Digger
@@ -3314,8 +3314,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Eldin Volcano
@@ -3330,9 +3330,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Temple Entrance Statue Entrance: null
-                Entrance from Earth Temple: null
+              entrances:
+              - Entrance from Earth Temple
+              - Temple Entrance Statue Entrance
               exits:
                 Temple Entrance Statue Exit: \Eldin\Volcano\Near Temple Entrance\Unlock
                   Statue
@@ -3364,7 +3364,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Volcano\Near Temple Entrance: "\\Eldin\\Bokoblin Base\\Fire\
                   \ Dragon's Lair\\Beaten Boko Base | Clawshots"
@@ -3379,9 +3379,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Vent Entrance near Hot Cave: null
-                Entrance from Summit: null
+              entrances:
+              - Entrance from Summit
+              - Vent Entrance near Hot Cave
               exits:
                 Exit to Summit: Fireshield Earrings
                 \Eldin\Volcano\Near Temple Entrance: \Eldin\Volcano\Near Temple Entrance\Blow
@@ -3398,7 +3398,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Volcano\Past Slide: 'True'
               hint_region: Eldin Volcano
@@ -3413,7 +3413,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Volcano\Ascent: \Eldin\Volcano\Past Slide\Unlock Shortcut to
                   Ascent
@@ -3432,7 +3432,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Volcano\Past Slide: Clawshots
                 \Eldin\Volcano\Past Mogma Turf: \Eldin\Bokoblin Base\Fire Dragon's
@@ -3451,7 +3451,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Mogma Turf
           locations: {}
@@ -3462,8 +3462,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 First Vent: 'True'
                 \Eldin\Mogma Turf\Past Vent: \Eldin\Mogma Turf\Pre Vent\Open Vent
@@ -3484,7 +3484,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Mogma Turf\Pre Vent: 'True'
               hint_region: Mogma Turf
@@ -3498,7 +3498,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Mogma Turf\Pre Vent: 'True'
                 \Eldin\Mogma Turf\Sand Slide Platform: 'True'
@@ -3515,8 +3515,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits:
             Exit: 'True'
           hint_region: Eldin Silent Realm
@@ -3540,10 +3540,10 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance from Outside Fire Sanctuary: null
-            Entrance from Waterfall: null
-            Entrance from Eldin Volcano: null
+          entrances:
+          - Entrance from Eldin Volcano
+          - Entrance from Waterfall
+          - Entrance from Outside Fire Sanctuary
           exits:
             Exit to Eldin Volcano: Fireshield Earrings
             Exit to Waterfall: Fireshield Earrings
@@ -3559,8 +3559,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
                 \Eldin\Volcano Summit\Waterfall\Higher Area: Clawshots
@@ -3575,7 +3575,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Eldin\Volcano Summit\Waterfall: 'True'
                   hint_region: Volcano Summit
@@ -3591,9 +3591,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Statue Entrance: null
-                Entrance from Fire Sanctuary: null
+              entrances:
+              - Statue Entrance
+              - Entrance from Fire Sanctuary
               exits:
                 Statue Exit: \Eldin\Volcano Summit\Outside Fire Sanctuary\Unlock Statue
                 \Eldin\Volcano Summit\Outside Fire Sanctuary\Between Thirsty Frogs: \Eldin\Volcano
@@ -3614,8 +3614,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Summit: null
+                  entrances:
+                  - Entrance from Summit
                   exits:
                     Exit to Summit: 'True'
                     \Eldin\Volcano Summit\Outside Fire Sanctuary\Between Thirsty Frogs: \Eldin\Volcano
@@ -3633,7 +3633,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Eldin\Volcano Summit\Outside Fire Sanctuary\Before Thirsty Frogs: \Eldin\Volcano
                       Summit\Outside Fire Sanctuary\Before Thirsty Frogs\Hydrate First
@@ -3656,7 +3656,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Bokoblin Base
           locations: {}
@@ -3667,8 +3667,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
                 \Eldin\Bokoblin Base\Volcano East: \Mogma Mitts
@@ -3683,7 +3683,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Bokoblin Base\Prison: \Mogma Mitts
                 \Eldin\Bokoblin Base\Before Drawbridge: 'True'
@@ -3703,7 +3703,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Bokoblin Base\Volcano East: 'True'
                 \Eldin\Bokoblin Base\After Drawbridge: "Whip & Clawshots"
@@ -3718,7 +3718,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Bokoblin Base\Before Drawbridge: Clawshots
                 \Eldin\Bokoblin Base\Lower Platform Cave: 'True'
@@ -3734,7 +3734,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Bokoblin Base\After Drawbridge: Clawshots
                 \Eldin\Bokoblin Base\Before Drawbridge: 'True'
@@ -3750,7 +3750,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Bokoblin Base\Hot Cave: 'True'
                 \Eldin\Bokoblin Base\Upper Platform Cave: 'True'
@@ -3771,7 +3771,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Bokoblin Base\Outside Earth Temple: 'True'
               hint_region: Bokoblin Base
@@ -3785,7 +3785,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Bokoblin Base\After Drawbridge: "Fireshield Earrings & Bomb\
                   \ Bag"
@@ -3801,7 +3801,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Bokoblin Base\Hot Cave: Fireshield Earrings
                 \Eldin\Bokoblin Base\Fire Dragon's Lair: Fireshield Earrings
@@ -3820,7 +3820,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Eldin\Bokoblin Base\Bokoblin Base Summit: 'True'
               hint_region: Bokoblin Base
@@ -3838,7 +3838,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: null
       locations: {}
@@ -3849,7 +3849,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Sealed Grounds
           locations: {}
@@ -3860,8 +3860,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Door Entrance: null
+              entrances:
+              - Door Entrance
               exits:
                 \Faron\Sealed Grounds\Spiral\Upper Part: \Faron\Sealed Grounds\Spiral\Defeat
                   Imprisoned 2
@@ -3877,8 +3877,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Statue Entrance: null
+                  entrances:
+                  - Statue Entrance
                   exits:
                     Statue Exit: \Faron\Sealed Grounds\Spiral\Upper Part\Unlock Statue
                     \Faron\Sealed Grounds\Spiral: 'True'
@@ -3893,8 +3893,8 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set
-                        Shortcut Entrance from Behind the Temple: null
+                      entrances:
+                      - Shortcut Entrance from Behind the Temple
                       exits:
                         \Faron\Sealed Grounds\Spiral\Upper Part: 'True'
                         Shortcut Exit to Behind the Temple: 'True'
@@ -3911,10 +3911,10 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Main Entrance: null
-                Gate of Time Entrance: null
-                Side Entrance: null
+              entrances:
+              - Main Entrance
+              - Side Entrance
+              - Gate of Time Entrance
               exits:
                 Main Exit: 'True'
                 Side Exit: 'True'
@@ -3938,8 +3938,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Gate of Time Entrance: null
+              entrances:
+              - Gate of Time Entrance
               exits:
                 Gate of Time Exit: 'True'
               hint_region: Sealed Grounds
@@ -3954,11 +3954,11 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Faron Woods: null
-                Statue Entrance: null
-                Door Entrance: null
-                Shortcut Entrance from Spiral: null
+              entrances:
+              - Statue Entrance
+              - Shortcut Entrance from Spiral
+              - Door Entrance
+              - Entrance from Faron Woods
               exits:
                 Statue Exit: \Faron\Sealed Grounds\Behind the Temple\Unlock Statue
                 Door Exit: 'True'
@@ -3979,10 +3979,10 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            In the Woods Statue Entrance: null
-            Trial Gate Entrance: null
-            Viewing Platform Statue Entrance: null
+          entrances:
+          - In the Woods Statue Entrance
+          - Viewing Platform Statue Entrance
+          - Trial Gate Entrance
           exits:
             \Faron\Faron Woods\Entry: 'True'
             Shared Statue Exit: "\\Faron\\Faron Woods\\Unlock In the Woods Statue\
@@ -4025,9 +4025,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Faron Woods Entry Statue Entrance: null
-                Entrance from Behind the Temple: null
+              entrances:
+              - Entrance from Behind the Temple
+              - Faron Woods Entry Statue Entrance
               exits:
                 \Faron\Faron Woods\Shared Statue Exit: \Faron\Faron Woods\Entry\Unlock
                   Statue
@@ -4045,8 +4045,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Shortcut Entrance from Floria Waterfall: null
+              entrances:
+              - Shortcut Entrance from Floria Waterfall
               exits:
                 \Faron\Faron Woods: 'True'
                 Shortcut Exit to Floria Waterfall: "\\Faron\\Faron Woods\\Open Door\
@@ -4062,8 +4062,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Deep Woods: null
+              entrances:
+              - Entrance from Deep Woods
               exits:
                 \Faron\Faron Woods: 'True'
                 Exit to Deep Woods: 'True'
@@ -4077,7 +4077,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Faron\Faron Woods: 'True'
               hint_region: Faron Woods
@@ -4093,7 +4093,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Faron\Faron Woods: 'True'
               hint_region: Faron Woods
@@ -4107,7 +4107,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Faron\Faron Woods: 'True'
               hint_region: Faron Woods
@@ -4121,7 +4121,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Faron\Faron Woods: 'True'
               hint_region: Faron Woods
@@ -4135,7 +4135,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Faron Woods
               locations: {}
@@ -4146,8 +4146,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Underwater Hole Entrance: null
+                  entrances:
+                  - Underwater Hole Entrance
                   exits:
                     \Faron\Faron Woods: 'True'
                     Underwater Hole Exit: Water Dragon's Scale
@@ -4161,8 +4161,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Underwater Tunnel Entrance: null
+                  entrances:
+                  - Underwater Tunnel Entrance
                   exits:
                     Underwater Tunnel Exit: Water Dragon's Scale
                     \Faron\Faron Woods\Great Tree\Lower Area\Path to Chest: Gust Bellows
@@ -4176,7 +4176,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Faron\Faron Woods\Great Tree\Lower Area: 'True'
                         \Faron\Faron Woods\Great Tree\Lower Area\Near Exit: 'True'
@@ -4191,8 +4191,8 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set
-                        Lower Entrance from Platforms: null
+                      entrances:
+                      - Lower Entrance from Platforms
                       exits:
                         \Faron\Faron Woods\Great Tree\Lower Area: 'True'
                         Lower Exit to Platforms: 'True'
@@ -4207,9 +4207,9 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Upper Entrance from Great Tree: null
-                    Lower Entrance from Great Tree: null
+                  entrances:
+                  - Upper Entrance from Great Tree
+                  - Lower Entrance from Great Tree
                   exits:
                     Lower Exit to Great Tree: 'True'
                     Upper Exit to Great Tree: 'True'
@@ -4225,10 +4225,10 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Top: null
-                    Upper Entrance from Platforms: null
-                    Entrance from Flooded Great Tree: null
+                  entrances:
+                  - Entrance from Flooded Great Tree
+                  - Upper Entrance from Platforms
+                  - Entrance from Top
                   exits:
                     \Faron\Faron Woods\Great Tree\Lower Area: \Faron\Faron Woods\Great
                       Tree\Upper Area\Remove Void Plane
@@ -4248,9 +4248,9 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Top Entrance from Great Tree: null
-                    The Great Tree Statue Entrance: null
+                  entrances:
+                  - The Great Tree Statue Entrance
+                  - Top Entrance from Great Tree
                   exits:
                     \Faron\Faron Woods\Shared Statue Exit: \Faron\Faron Woods\Great
                       Tree\Top\Unlock Statue
@@ -4273,10 +4273,10 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Deep Woods Statue Entrance: null
-                Forest Temple Statue Entrance: null
-                Entrance from Skyview Temple: null
+              entrances:
+              - Deep Woods Statue Entrance
+              - Entrance from Skyview Temple
+              - Forest Temple Statue Entrance
               exits:
                 Shared Statue Exit: 'True'
                 \Faron\Faron Woods\Deep Woods\Entry: 'True'
@@ -4298,8 +4298,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Faron Woods: null
+                  entrances:
+                  - Entrance from Faron Woods
                   exits:
                     Exit to Faron Woods: 'True'
                     \Faron\Faron Woods\Deep Woods: "\\Faron\\Faron Woods\\Deep Woods\\\
@@ -4317,8 +4317,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits:
             Exit: 'True'
           hint_region: Faron Silent Realm
@@ -4342,9 +4342,9 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance from Lower Flooded Great Tree: null
-            Entrance from Upper Flooded Great Tree: null
+          entrances:
+          - Entrance from Upper Flooded Great Tree
+          - Entrance from Lower Flooded Great Tree
           exits:
             Exit to Upper Flooded Great Tree: 'True'
             Exit to Lower Flooded Great Tree: Water Dragon's Scale
@@ -4378,10 +4378,10 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Upper Flooded Faron Woods: null
-                Entrance: null
-                Entrance from Lower Flooded Faron Woods: null
+              entrances:
+              - Entrance from Lower Flooded Faron Woods
+              - Entrance from Upper Flooded Faron Woods
+              - Entrance
               exits:
                 Exit: 'True'
                 Exit to Upper Flooded Faron Woods: 'True'
@@ -4399,7 +4399,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Lake Floria
           locations: {}
@@ -4410,8 +4410,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Dive from Faron Woods: null
+              entrances:
+              - Dive from Faron Woods
               exits:
                 \Faron\Lake Floria\Below Rock: "\\Faron\\Lake Floria\\Above Rock\\\
                   Blow Rock & Water Dragon's Scale"
@@ -4430,8 +4430,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Farore's Lair: null
+              entrances:
+              - Entrance from Farore's Lair
               exits:
                 \Faron\Lake Floria\Below Rock\Emerged Area: Water Dragon's Scale
                 \Faron\Lake Floria\Above Rock: Water Dragon's Scale
@@ -4445,8 +4445,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Statue Entrance: null
+                  entrances:
+                  - Statue Entrance
                   exits:
                     Statue Exit: \Faron\Lake Floria\Below Rock\Emerged Area\Unlock
                       Statue
@@ -4465,9 +4465,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Waterfall: null
-                Entrance from Lake Floria: null
+              entrances:
+              - Entrance from Waterfall
+              - Entrance from Lake Floria
               exits:
                 Exit to Waterfall: 'True'
                 Exit to Lake Floria: Water Dragon's Scale
@@ -4484,11 +4484,11 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Faron Woods: null
-                Statue Entrance: null
-                Entrance from Farore's Lair: null
-                Entrance from Ancient Cistern: null
+              entrances:
+              - Entrance from Farore's Lair
+              - Statue Entrance
+              - Entrance from Ancient Cistern
+              - Entrance from Faron Woods
               exits:
                 Statue Exit: \Faron\Lake Floria\Waterfall\Unlock Statue
                 Exit to Farore's Lair: 'True'
@@ -4510,7 +4510,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: Fire Sanctuary
       locations: {}
@@ -4521,7 +4521,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Fire Sanctuary
           locations: {}
@@ -4532,8 +4532,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Main Entrance: null
+              entrances:
+              - Main Entrance
               exits:
                 Main Exit: 'True'
                 \Fire Sanctuary\Main\First Room\Past Water Plant: \Fire Sanctuary\Main\First
@@ -4548,8 +4548,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Second Room: null
+                  entrances:
+                  - Entrance from Second Room
                   exits:
                     \Fire Sanctuary\Main\First Room: \Fire Sanctuary\Main\First Room\Hit
                       Water Plant
@@ -4570,7 +4570,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\Second Room\Outside Section: 'True'
                 \Fire Sanctuary\Main\Second Room\Balcony: \Fire Sanctuary\Main\Second
@@ -4589,8 +4589,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from First Room: null
+                  entrances:
+                  - Entrance from First Room
                   exits:
                     Exit to First Room: 'True'
                     \Fire Sanctuary\Main\Second Room: 'True'
@@ -4604,7 +4604,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\Second Room: \Fire Sanctuary\Main\Second
                       Room\Defeat Magmanos
@@ -4620,7 +4620,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\Second Room: \Fire Sanctuary\Main\First Bridge\Lizalfos
                   Fight
@@ -4639,7 +4639,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\First Bridge: 'True'
                 \Fire Sanctuary\Main\Room with Water Plant\Past Lava: "\\Fire Sanctuary\\\
@@ -4656,7 +4656,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\Room with Water Plant: "Clawshots | \\Fire\
                       \ Sanctuary\\Main\\Room with Water Plant\\Blow up Rock"
@@ -4675,7 +4675,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\Room with Water Plant\Past Lava: 'True'
                 \Fire Sanctuary\Main\First Trapped Mogma Room\Lower Area: \Fire Sanctuary\Main\Magmanos
@@ -4690,7 +4690,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\First Trapped Mogma Room: \Fire Sanctuary\Main\Magmanos
                       Fight Room\Upper Part\Magmanos Fight
@@ -4712,7 +4712,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\Room with Water Plant\Past Lava: \Fire Sanctuary\Main\Room
                   with Water Plant\Past Lava\Unlock Key Door
@@ -4732,7 +4732,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\Water Fruit Room: \Fire Sanctuary\Main\Water
                       Fruit Room\Hydrate Frog
@@ -4748,7 +4748,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Fire Sanctuary
               locations: {}
@@ -4759,7 +4759,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\Water Fruit Room\After Frog: \Fire Sanctuary\Main\Magmanos
                       Fight Room\Upper Part\Magmanos Fight
@@ -4776,8 +4776,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from West of Boss Door: null
+                  entrances:
+                  - Entrance from West of Boss Door
                   exits:
                     \Fire Sanctuary\Main\First Trapped Mogma Room\Lower Area: "\\\
                       Mogma Mitts & \\Fire Sanctuary\\Main\\First Trapped Mogma Room\\\
@@ -4799,7 +4799,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Fire Sanctuary\Main\Magmanos Fight Room\Lower Part: \Fire
                           Sanctuary\Main\Magmanos Fight Room\Lower Part\Move Sliding
@@ -4818,7 +4818,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Fire Sanctuary
               locations: {}
@@ -4829,7 +4829,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\First Bridge: \Fire Sanctuary\Main\Second
                       Bridge\Left\Unlock Shortcut to First Bridge
@@ -4846,7 +4846,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\Second Bridge\Left: Clawshots
                     \Fire Sanctuary\Main\Second Bridge\Right: Clawshots
@@ -4860,7 +4860,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\Second Bridge\Bottom Part: 'True'
                     \Fire Sanctuary\Main\Second Bridge\Left: Clawshots
@@ -4876,7 +4876,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\Second Bridge\Right: 'True'
                 \Fire Sanctuary\Main\Second Trapped Mogma Room\Past Bombable Wall: "\\\
@@ -4901,7 +4901,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\Second Trapped Mogma Room: 'True'
                   hint_region: Fire Sanctuary
@@ -4917,7 +4917,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\West of Boss Door\Entry: \Fire Sanctuary\Main\West
                   of Boss Door\Hit Water Plant
@@ -4940,8 +4940,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Magmanos Fight Room: null
+                  entrances:
+                  - Entrance from Magmanos Fight Room
                   exits:
                     Exit to Magmanos Fight Room: 'True'
                     \Fire Sanctuary\Main\West of Boss Door: \Fire Sanctuary\Main\West
@@ -4961,7 +4961,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: true
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\West of Boss Door: \Fire Sanctuary\Main\West
                       of Boss Door\Past Plats\Unlock Shortcut to Pre Plats
@@ -4978,9 +4978,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Statue Entrance: null
-                Boss Door Entrance: null
+              entrances:
+              - Statue Entrance
+              - Boss Door Entrance
               exits:
                 Statue Exit: \Fire Sanctuary\Main\Front of Boss Door\Unlock Statue
                 Boss Door Exit: Fire Sanctuary Boss Key
@@ -4997,7 +4997,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\Boss Key Room: 'True'
                     \Fire Sanctuary\Main\Front of Boss Door: \Fire Sanctuary\Main\Front
@@ -5014,7 +5014,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\Staircase Room: \Fire Sanctuary\Main\Lizalfos
                   Fight Room\Fight
@@ -5029,7 +5029,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\Staircase Room\Upper Part: Clawshots
               hint_region: Fire Sanctuary
@@ -5042,7 +5042,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Fire Sanctuary\Main\Staircase Room: 'True'
                     \Fire Sanctuary\Main\Boss Key Room: 'True'
@@ -5057,7 +5057,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Fire Sanctuary\Main\Staircase Room\Upper Part: 'True'
                 \Fire Sanctuary\Main\Front of Boss Door\Past Bars: 'True'
@@ -5077,9 +5077,9 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance from Dungeon: null
-            Entrance from Flame Room: null
+          entrances:
+          - Entrance from Flame Room
+          - Entrance from Dungeon
           exits:
             Exit to Dungeon: \Fire Sanctuary\Boss Room\Beat Ghirahim
             Exit to Flame Room: \Fire Sanctuary\Boss Room\Beat Ghirahim
@@ -5095,8 +5095,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits:
             Exit: 'True'
           hint_region: Fire Sanctuary
@@ -5111,7 +5111,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: Lanayru Mining Facility
       locations:
@@ -5124,7 +5124,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Lanayru Mining Facility
           locations: {}
@@ -5135,8 +5135,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Main Entrance: null
+              entrances:
+              - Main Entrance
               exits:
                 \Lanayru Mining Facility\Main\First Hub: \Lanayru Mining Facility\Main\First
                   Room\Left Lever
@@ -5155,8 +5155,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Big Hub: null
+              entrances:
+              - Entrance from Big Hub
               exits:
                 \Lanayru Mining Facility\Main\First Room: 'True'
                 Exit to Big Hub: 'True'
@@ -5175,7 +5175,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru Mining Facility\Main\First Hub: 'True'
                 \Lanayru Mining Facility\Main\Hop Across Boxes Room: \Lanayru Mining
@@ -5196,7 +5196,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru Mining Facility\Main\Hop Across Boxes Room\Near Exit: "\\\
                   Lanayru Mining Facility\\Main\\Hop Across Boxes Room\\Blow Up Rocks\
@@ -5217,8 +5217,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Big Hub: null
+                  entrances:
+                  - Entrance from Big Hub
                   exits:
                     Exit to Big Hub: \Lanayru Mining Facility\Main\Hop Across Boxes
                       Room\Near Exit\Remove Dust Pile at Door
@@ -5235,7 +5235,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru Mining Facility\Main\First Hub: 'True'
                 \Lanayru Mining Facility\Main\Armos Fight Room: "Gust Bellows & \\\
@@ -5251,8 +5251,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Big Hub: null
+              entrances:
+              - Entrance from Big Hub
               exits:
                 Exit to Big Hub: \Lanayru Mining Facility\Main\Armos Fight Room\Defeat
                   Armos
@@ -5272,7 +5272,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Lanayru Mining Facility
               locations: {}
@@ -5283,8 +5283,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from First Hub: null
+                  entrances:
+                  - Entrance from First Hub
                   exits:
                     Exit to First Hub: 'True'
                     \Lanayru Mining Facility\Main\Big Hub\After Wooden Boxes: \Lanayru
@@ -5305,7 +5305,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru Mining Facility\Main\Big Hub\Entry: 'True'
                     \Lanayru Mining Facility\Main\Big Hub\Near Exit to Hop Across Boxes Room: \Lanayru
@@ -5322,8 +5322,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Hop Across Boxes Room: null
+                  entrances:
+                  - Entrance from Hop Across Boxes Room
                   exits:
                     Exit to Hop Across Boxes Room: 'True'
                     \Lanayru Mining Facility\Main\Big Hub\After Wooden Boxes: 'True'
@@ -5339,8 +5339,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Armos Fight Room: null
+                  entrances:
+                  - Entrance from Armos Fight Room
                   exits:
                     \Lanayru Mining Facility\Main\Big Hub\Entry: \Lanayru Mining Facility\Main\Big
                       Hub\Past West Gate\Open Gate
@@ -5363,7 +5363,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru Mining Facility\Main\Near Boss Door: "\\Lanayru Mining\
                       \ Facility\\Main\\Big Hub\\Sand Spike Maze\\Switch under Sand\
@@ -5381,7 +5381,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru Mining Facility\Main\Boss Key Room: \Lanayru Mining Facility\Main\Big
                       Hub\Between Wind Gates\Unlock Exit to Boss Key Room
@@ -5396,7 +5396,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru Mining Facility\Main\Big Hub\Between Wind Gates: 'True'
                     \Lanayru Mining Facility\Main\Big Hub\Near Boss Key Room First Exit: 'True'
@@ -5415,7 +5415,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru Mining Facility\Main\Big Hub\Entry: \Lanayru Mining Facility\Main\Big
                       Hub\Between Wind Gates\Open First Wind Gate
@@ -5446,8 +5446,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Boss Door Entrance: null
+              entrances:
+              - Boss Door Entrance
               exits:
                 Boss Door Exit: "Lanayru Mining Facility Boss Key & \\Lanayru Mining\
                   \ Facility\\Can Activate Minecart Timeshift Stone"
@@ -5470,7 +5470,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru Mining Facility\Main\Big Hub\Near Boss Key Room Second Exit: \Lanayru
                   Mining Facility\Main\Boss Key Room\Can Beat Room
@@ -5488,8 +5488,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance from Dungeon: null
+          entrances:
+          - Entrance from Dungeon
           exits:
             Exit to Dungeon: \Lanayru Mining Facility\Boss Room\After Sand Drain\Beat
               Moldarach
@@ -5503,8 +5503,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Hall of Ancient Robots: null
+              entrances:
+              - Entrance from Hall of Ancient Robots
               exits:
                 Exit to Hall of Ancient Robots: \Lanayru Mining Facility\Boss Room\After
                   Sand Drain\Beat Moldarach
@@ -5523,7 +5523,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Lanayru Mining Facility
           locations: {}
@@ -5534,8 +5534,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Boss Room: null
+              entrances:
+              - Entrance from Boss Room
               exits:
                 Exit to Boss Room: 'True'
                 \Lanayru Mining Facility\Hall of Ancient Robots\End: \Lanayru Mining
@@ -5551,8 +5551,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Temple of Time: null
+              entrances:
+              - Entrance from Temple of Time
               exits:
                 Exit to Temple of Time: 'True'
               hint_region: Lanayru Mining Facility
@@ -5568,7 +5568,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: null
       locations:
@@ -5587,7 +5587,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Lanayru Mine
           locations: {}
@@ -5598,9 +5598,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Statue Entrance: null
-                First Time Entrance: null
+              entrances:
+              - Statue Entrance
+              - First Time Entrance
               exits:
                 Statue Exit: \Lanayru\Mine\Entry\Unlock Statue
                 \Lanayru\Mine\Statues Area: \Lanayru\Mine\Entry\Timeshift Stone
@@ -5620,7 +5620,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru\Mine\Entry: 'True'
                     \Lanayru\Mine\Entry\Caves Entrance: Clawshots
@@ -5635,8 +5635,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Caves: null
+                  entrances:
+                  - Entrance from Caves
                   exits:
                     \Lanayru\Mine\Entry\Higher Area: Clawshots
                     Exit to Caves: 'True'
@@ -5651,7 +5651,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru\Mine\Entry: 'True'
                 \Lanayru\Mine\End: "\\Lanayru\\Mine\\Statues Area\\Blow Statues Down\
@@ -5669,7 +5669,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru\Mine\Statues Area: "\\Lanayru\\Mine\\Statues Area\\Blow Statues\
                   \ Down | Brakeslide Trick | \\Skyloft\\Central Skyloft\\Bazaar\\\
@@ -5687,8 +5687,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Desert: null
+                  entrances:
+                  - Entrance from Desert
                   exits:
                     Exit to Desert: 'True'
                   hint_region: Lanayru Mine
@@ -5704,7 +5704,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits:
             Shared Statue Exit: 'False'
           hint_region: Lanayru Desert
@@ -5716,9 +5716,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Desert Entrance Statue Entrance: null
-                Entrance from Mine: null
+              entrances:
+              - Desert Entrance Statue Entrance
+              - Entrance from Mine
               exits:
                 Exit to Mine: \Lanayru\Desert\Entry\Timeshift Stone
                 \Lanayru\Desert\Shared Statue Exit: \Lanayru\Desert\Entry\Unlock Statue
@@ -5738,7 +5738,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits: {}
                   hint_region: Lanayru Desert
                   locations:
@@ -5755,7 +5755,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru\Desert\Entry: 'True'
                 \Lanayru\Desert\Top of West Wall: Clawshots
@@ -5786,7 +5786,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru\Desert\Near Caged Robot: 'True'
                 \Lanayru\Desert\Top of West Wall: "Clawshots | \\Lanayru\\Desert\\\
@@ -5805,8 +5805,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                West Desert Statue Entrance: null
+              entrances:
+              - West Desert Statue Entrance
               exits:
                 \Lanayru\Desert\Shared Statue Exit: \Lanayru\Desert\West Part\Unlock
                   Statue
@@ -5828,8 +5828,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                South Entrance from Temple of Time: null
+              entrances:
+              - South Entrance from Temple of Time
               exits:
                 South Exit to Temple of Time: 'True'
                 \Lanayru\Desert\West Part: 'True'
@@ -5844,8 +5844,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Caves: null
+                  entrances:
+                  - Entrance from Caves
                   exits:
                     \Lanayru\Desert\Near South Exit to Temple of Time: 'True'
                     Exit to Caves: 'True'
@@ -5861,7 +5861,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru\Desert\Near Caged Robot: 'True'
                 \Lanayru\Desert\Sand Oasis: 'True'
@@ -5880,8 +5880,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Lanayru Mining Facility: null
+              entrances:
+              - Entrance from Lanayru Mining Facility
               exits:
                 \Lanayru\Desert\North Part: 'True'
                 \Lanayru\Desert\East: 'True'
@@ -5898,11 +5898,11 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Trial Gate Entrance: null
-                North Desert Statue Entrance: null
-                Lightning Node Entrance: null
-                North Entrance from Temple of Time: null
+              entrances:
+              - Lightning Node Entrance
+              - North Entrance from Temple of Time
+              - Trial Gate Entrance
+              - North Desert Statue Entrance
               exits:
                 North Exit to Temple of Time: 'True'
                 \Lanayru\Desert\East: 'True'
@@ -5936,7 +5936,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru\Desert\North Part: 'True'
                   hint_region: Lanayru Desert
@@ -5951,7 +5951,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits: {}
                   hint_region: Lanayru Desert
                   locations: {}
@@ -5962,8 +5962,8 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set
-                        Entrance: null
+                      entrances:
+                      - Entrance
                       exits:
                         Exit: 'True'
                         \Lanayru\Desert\North Part\Lightning Node\Past: \Lanayru\Desert\North
@@ -5982,7 +5982,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Lanayru\Desert\North Part\Lightning Node\Present\Exit: 'True'
                         \Lanayru\Desert\North Part\Lightning Node\Present: \Projectile
@@ -6003,7 +6003,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Lanayru\Desert\North Part\Lightning Node\Past: "\\Beetle\
                           \ | \\Bow"
@@ -6022,9 +6022,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Fire Node Entrance: null
-                Stone Cache Statue Entrance: null
+              entrances:
+              - Stone Cache Statue Entrance
+              - Fire Node Entrance
               exits:
                 \Lanayru\Desert\North Part: 'True'
                 \Lanayru\Desert\Top of LMF: \Lanayru\Raise Lanayru Mining Facility
@@ -6044,7 +6044,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits: {}
                   hint_region: Lanayru Desert
                   locations: {}
@@ -6055,8 +6055,8 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set
-                        Entrance: null
+                      entrances:
+                      - Entrance
                       exits:
                         Exit: 'True'
                         \Lanayru\Desert\East\Fire Node\Past: \Lanayru\Desert\East\Fire
@@ -6077,7 +6077,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Lanayru\Desert\East\Fire Node\Past after Void: "\\Lanayru\\\
                           Desert\\East\\Fire Node\\Present\\Timeshift Stone & \\Projectile\
@@ -6095,7 +6095,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Lanayru\Desert\East\Fire Node\Present\Exit: 'True'
                         \Lanayru\Desert\East\Fire Node\Present: "\\Projectile Item\
@@ -6114,7 +6114,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Lanayru\Desert\East\Fire Node\Past: 'True'
                         \Lanayru\Desert\East\Fire Node\Past after Grate: \Lanayru\Desert\East\Fire
@@ -6130,7 +6130,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Lanayru\Desert\East\Fire Node\Past after Void: 'True'
                       hint_region: Lanayru Desert
@@ -6149,7 +6149,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits:
             Shared Statue Exit: 'False'
           hint_region: null
@@ -6161,9 +6161,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                South Entrance from Desert: null
-                Desert Gorge Statue Entrance: null
+              entrances:
+              - South Entrance from Desert
+              - Desert Gorge Statue Entrance
               exits:
                 South Exit to Desert: 'True'
                 \Lanayru\Temple of Time\Shared Statue Exit: \Lanayru\Temple of Time\South
@@ -6182,7 +6182,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru\Temple of Time\Inside: 'True'
                 \Lanayru\Temple of Time\Near Goddess Cube: \Lanayru\Temple of Time\Near
@@ -6207,9 +6207,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Temple of Time Statue Entrance: null
-                Entrance from Lanayru Mining Facility: null
+              entrances:
+              - Entrance from Lanayru Mining Facility
+              - Temple of Time Statue Entrance
               exits:
                 \Lanayru\Temple of Time\Shared Statue Exit: \Lanayru\Temple of Time\Inside\Unlock
                   Statue
@@ -6226,7 +6226,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Lanayru\Temple of Time\North East: 'True'
               hint_region: null
@@ -6241,8 +6241,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                North Entrance from Desert: null
+              entrances:
+              - North Entrance from Desert
               exits:
                 \Lanayru\Temple of Time\South East: \Distance Activator
                 North Exit to Desert: 'True'
@@ -6258,8 +6258,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits:
             Exit: 'True'
           hint_region: Lanayru Silent Realm
@@ -6283,9 +6283,9 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance from Desert: null
-            Entrance from Mine: null
+          entrances:
+          - Entrance from Desert
+          - Entrance from Mine
           exits:
             \Lanayru\Caves\Past Door to Lanayru Sand Sea: "Clawshots & Lanayru Caves\
               \ Small Key"
@@ -6304,8 +6304,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Lanayru Sand Sea: null
+              entrances:
+              - Entrance from Lanayru Sand Sea
               exits:
                 \Lanayru\Caves: Lanayru Caves Small Key
                 Exit to Lanayru Sand Sea: 'True'
@@ -6319,8 +6319,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Gorge: null
+              entrances:
+              - Entrance from Gorge
               exits:
                 \Lanayru\Caves: Bomb Bag
                 Exit to Gorge: 'True'
@@ -6336,12 +6336,12 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Sandship Dock Entrance: null
-            Pirate Stronghold Dock Entrance: null
-            Ancient Harbour Dock Entrance: null
-            Shipyard Dock Entrance: null
-            Skipper's Retreat Dock Entrance: null
+          entrances:
+          - Sandship Dock Entrance
+          - Pirate Stronghold Dock Entrance
+          - Ancient Harbour Dock Entrance
+          - Shipyard Dock Entrance
+          - Skipper's Retreat Dock Entrance
           exits:
             Ancient Harbour Dock Exit: 'True'
             Sandship Dock Exit: \Lanayru\Lanayru Sand Sea\Shoot down Sandship
@@ -6358,9 +6358,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Statue Entrance: null
-                Dock Entrance: null
+              entrances:
+              - Statue Entrance
+              - Dock Entrance
               exits:
                 Dock Exit: \Lanayru\Lanayru Sand Sea\Ancient Harbour\Ship Timeshift
                   Stone
@@ -6379,8 +6379,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance from Caves: null
+                  entrances:
+                  - Entrance from Caves
                   exits:
                     Exit to Caves: 'True'
                     \Lanayru\Lanayru Sand Sea\Ancient Harbour: Clawshots
@@ -6398,9 +6398,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Statue Entrance: null
-                Dock Entrance: null
+              entrances:
+              - Statue Entrance
+              - Dock Entrance
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Unlock Statue
                 Dock Exit: 'True'
@@ -6418,7 +6418,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru\Lanayru Sand Sea\Skipper's Retreat: 'True'
                     \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Top Part: "Clawshots\
@@ -6440,8 +6440,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Shack Entrance: null
+                  entrances:
+                  - Shack Entrance
                   exits:
                     Shack Exit: 'True'
                     \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Past Rock: 'True'
@@ -6457,8 +6457,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance: null
+                  entrances:
+                  - Entrance
                   exits:
                     Exit: 'True'
                   hint_region: Lanayru Sand Sea
@@ -6472,7 +6472,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru\Lanayru Sand Sea\Skipper's Retreat: Clawshots
                   hint_region: Lanayru Sand Sea
@@ -6487,11 +6487,11 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Statue Entrance: null
-                Construction Bay Upper Entrance: null
-                Dock Entrance: null
-                Construction Bay Lower Entrance: null
+              entrances:
+              - Statue Entrance
+              - Dock Entrance
+              - Construction Bay Lower Entrance
+              - Construction Bay Upper Entrance
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Shipyard\Unlock Statue
                 Dock Exit: 'True'
@@ -6511,9 +6511,9 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Lower Entrance: null
-                    Upper Entrance: null
+                  entrances:
+                  - Lower Entrance
+                  - Upper Entrance
                   exits:
                     Upper Exit: 'True'
                     Lower Exit: \Lanayru\Lanayru Sand Sea\Shipyard\Construction Bay\Defeat
@@ -6530,10 +6530,10 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Statue Entrance: null
-                Dock Entrance: null
-                Side Entrance: null
+              entrances:
+              - Statue Entrance
+              - Side Entrance
+              - Dock Entrance
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Unlock Statue
                 Dock Exit: 'True'
@@ -6553,8 +6553,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Top Entrance: null
+                  entrances:
+                  - Top Entrance
                   exits:
                     \Lanayru\Lanayru Sand Sea\Pirate Stronghold: "Clawshots | \\Lanayru\\\
                       Lanayru Sand Sea\\Pirate Stronghold\\Inside\\Finish Minidungeon"
@@ -6576,9 +6576,9 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    First Door Entrance: null
-                    Second Door Entrance: null
+                  entrances:
+                  - Second Door Entrance
+                  - First Door Entrance
                   exits:
                     First Door Exit: 'True'
                     Second Door Exit: \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside\Finish
@@ -6599,9 +6599,9 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Statue Entrance: null
-                Entrance: null
+              entrances:
+              - Statue Entrance
+              - Entrance
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Gorge\Unlock Statue
                 \Lanayru\Lanayru Sand Sea\Gorge\Beyond Bridge: \Lanayru\Lanayru Sand
@@ -6625,7 +6625,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Lanayru\Lanayru Sand Sea\Gorge: "\\Beetle | \\Bow"
                   hint_region: Lanayru Gorge
@@ -6648,7 +6648,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: Sandship
       locations:
@@ -6661,7 +6661,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Sandship
           locations: {}
@@ -6672,8 +6672,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Main Entrance: null
+              entrances:
+              - Main Entrance
               exits:
                 Main Exit: 'True'
                 \Sandship\Main\Before Ship's Bow: 'True'
@@ -6698,7 +6698,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sandship\Main\Deck: 'True'
                     \Sandship\Main\Deck\Stern: "\\Bow & (Clawshots | Sandship - Mast\
@@ -6714,7 +6714,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sandship\Main\Deck: Clawshots
                   hint_region: Sandship
@@ -6728,7 +6728,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sandship\Main\Deck: Sandship Small Key x 2
                   hint_region: Sandship
@@ -6747,7 +6747,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sandship\Main\Ship's Bow: Sandship Small Key x 2
                 \Sandship\Main\Corridor: "\\Sandship\\Pass Spume | \\Sandship\\Main\\\
@@ -6764,7 +6764,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sandship\Main\Before Ship's Bow: \Lanayru\Caves\Chest
               hint_region: Sandship
@@ -6778,7 +6778,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sandship\Main\Before Ship's Bow: "\\Sandship\\Pass Spume | \\Sandship\\\
                   Main\\Deck\\Freely Usable Timeshift Stone"
@@ -6797,7 +6797,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sandship\Main\Deck: "\\Sandship\\Main\\Starboard Rooms\\Switch &\
                   \ \\Bow"
@@ -6817,7 +6817,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sandship\Main\Corridor: \Sandship\Main\Port Rooms\Switch
               hint_region: Sandship
@@ -6833,7 +6833,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sandship\Main\Corridor: 'True'
                 Boss Door one-way Exit: \Sandship\Main\Before Boss Door\Open Boss
@@ -6855,7 +6855,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sandship\Main\Treasure Room: "\\Sandship\\Main\\Starboard Rooms\\\
                   Generator & Whip"
@@ -6872,7 +6872,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sandship\Main\Brig: 'True'
               hint_region: Sandship
@@ -6890,7 +6890,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sandship\Main\Brig: 'True'
               hint_region: Sandship
@@ -6905,8 +6905,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits: {}
           hint_region: Sandship
           locations:
@@ -6922,7 +6922,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: Sky Keep
       locations: {}
@@ -6933,7 +6933,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Sky Keep
           locations: {}
@@ -6944,8 +6944,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Bottom Entrance: null
+              entrances:
+              - Bottom Entrance
               exits:
                 Bottom Exit: 'True'
                 \Sky Keep\Main\Puzzle Solving Meta Room: 'True'
@@ -6961,7 +6961,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Sky Keep
               locations: {}
@@ -6972,7 +6972,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Skyview Room\End: "Whip & \\Sky Keep\\Main\\Skyview\
                       \ Room\\Beginning\\Free Rope & Clawshots & \\Sky Keep\\Main\\\
@@ -6991,7 +6991,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Skyview Room\Beginning: \Sky Keep\Main\Skyview
                       Room\End\Lever
@@ -7008,7 +7008,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Sky Keep
               locations:
@@ -7024,7 +7024,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Sky Keep
               locations:
@@ -7038,7 +7038,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Sky Keep
               locations: {}
@@ -7049,7 +7049,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Mini Boss Room\Near Chest: "\\Sky Keep\\Main\\\
                       Mini Boss Room\\From Bottom\\Defeat Dreadfuse & Clawshots"
@@ -7066,7 +7066,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Mini Boss Room\From Left: \Sky Keep\Main\Mini Boss
                       Room\Near Chest\Unlock Door
@@ -7083,7 +7083,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Mini Boss Room\Near Chest: \Sky Keep\Main\Mini
                       Boss Room\Near Chest\Unlock Door
@@ -7099,7 +7099,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky Keep\Main\Ancient Cistern Room\After Key: \Sky Keep\Main\Ancient
                   Cistern Room\Unlock Key Door
@@ -7117,7 +7117,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Ancient Cistern Room\Triforce Room: \Sky Keep\Main\Ancient
                       Cistern Room\After Key\Beat Trial
@@ -7134,7 +7134,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Ancient Cistern Room\After Key: 'True'
                     \Sky Keep\Main\Ancient Cistern Room: \Sky Keep\Main\Ancient Cistern
@@ -7152,7 +7152,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Sky Keep
               locations: {}
@@ -7163,7 +7163,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Fire Sanctuary Room\First Platform: "\\Beetle |\
                       \ \\Sky Keep\\Main\\Fire Sanctuary Room\\First Platform\\Lever"
@@ -7182,7 +7182,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Fire Sanctuary Room\Triforce Room: Clawshots
                   hint_region: Sky Keep
@@ -7195,7 +7195,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Fire Sanctuary Room\Triforce Room: "\\Beetle &\
                       \ Clawshots"
@@ -7211,7 +7211,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Fire Sanctuary Room\From Left: \Sky Keep\Main\Fire
                       Sanctuary Room\Triforce Room\Lower Lever
@@ -7230,7 +7230,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Fire Sanctuary Room\Triforce Room: \Sky Keep\Main\Fire
                       Sanctuary Room\Triforce Room\Lower Lever
@@ -7246,7 +7246,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky Keep\Main\Sandship Room\Triforce Area: "\\Sky Keep\\Main\\Sandship\
                   \ Room\\Lower Eye & Clawshots"
@@ -7262,7 +7262,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky Keep\Main\Sandship Room: 'True'
                   hint_region: Sky Keep
@@ -7277,7 +7277,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky Keep\Main\Skyview Room\Beginning: \Sky Keep\Main\First Room\Right
                   Exit
@@ -7302,7 +7302,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: Sky
       locations: {}
@@ -7313,7 +7313,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits:
             \Sky\North East\Beedle's Island\Top: 'True'
             \Sky\North East\Beedle's Island\Cage: Sky - Beedle's Island Cage Chest
@@ -7341,8 +7341,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 First Time Dive: Ruby Tablet
                 Volcano Entrance Statue Dive: "Ruby Tablet & \\Eldin\\Volcano\\Entry\\\
@@ -7368,8 +7368,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Inside: null
+              entrances:
+              - Entrance from Inside
               exits:
                 \Sky\North East: Day
                 Exit to Inside: 'True'
@@ -7384,8 +7384,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance: null
+                  entrances:
+                  - Entrance
                   exits:
                     Exit: 'True'
                   hint_region: Sky
@@ -7401,8 +7401,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Beedle's Ship Entrance: null
+              entrances:
+              - Beedle's Ship Entrance
               exits:
                 \Sky\North East: Day
                 Beedle's Ship Exit: Night
@@ -7418,7 +7418,7 @@ areas:
                   allowed_time_of_day: 3
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky\North East\Beedle's Island: 'True'
                   hint_region: Sky
@@ -7433,7 +7433,7 @@ areas:
                   allowed_time_of_day: 3
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Sky\North East\Beedle's Island: 'True'
                   hint_region: Sky
@@ -7450,7 +7450,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits:
             \Sky\North East: 'True'
             \Sky\South West: 'True'
@@ -7469,8 +7469,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 First Time Dive: Emerald Tablet
                 Sealed Grounds Statue Dive: "Emerald Tablet & \\Faron\\Sealed Grounds\\\
@@ -7504,10 +7504,10 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Main Right Door Entrance: null
-                Main Left Door Entrance: null
-                Back Door Entrance: null
+              entrances:
+              - Main Right Door Entrance
+              - Back Door Entrance
+              - Main Left Door Entrance
               exits:
                 \Sky\South East: Day
                 Main Right Door Exit: 'True'
@@ -7533,10 +7533,10 @@ areas:
                   allowed_time_of_day: 3
                   can_save: false
                   can_sleep: true
-                  entrances: !!set
-                    Main Right Door Entrance: null
-                    Main Left Door Entrance: null
-                    Back Door Entrance: null
+                  entrances:
+                  - Main Right Door Entrance
+                  - Back Door Entrance
+                  - Main Left Door Entrance
                   exits:
                     Main Right Door Exit: 'True'
                     Main Left Door Exit: 'True'
@@ -7566,7 +7566,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits:
             \Sky\South East: 'True'
             \Sky\Around Skyloft: 'True'
@@ -7585,8 +7585,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 First Time Dive: Amber Tablet
                 Lanayru Mine Entry Statue Dive: "Amber Tablet & \\Lanayru\\Mine\\\
@@ -7624,7 +7624,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky\South West: Day
               hint_region: Sky
@@ -7643,7 +7643,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky\South West: Day
               hint_region: Sky
@@ -7659,7 +7659,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky\South West: Day
               hint_region: Sky
@@ -7681,7 +7681,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky\South West: Day
               hint_region: Sky
@@ -7702,9 +7702,9 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance from Skyloft: null
-            Entrance from Thunderhead: null
+          entrances:
+          - Entrance from Skyloft
+          - Entrance from Thunderhead
           exits:
             \Sky\North East: 'True'
             \Sky\South West: 'True'
@@ -7721,8 +7721,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits:
             Exit: 'True'
             \Sky\Thunderhead\Isle of Songs: 'True'
@@ -7740,8 +7740,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Inside: null
+              entrances:
+              - Entrance from Inside
               exits:
                 \Sky\Thunderhead: Day
                 Exit to Inside: \Sky\Thunderhead\Isle of Songs\Puzzle Solved
@@ -7759,8 +7759,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Entrance: null
+                  entrances:
+                  - Entrance
                   exits:
                     Exit: 'True'
                   hint_region: Thunderhead
@@ -7777,7 +7777,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky\Thunderhead: Day
               hint_region: Thunderhead
@@ -7794,7 +7794,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky\Thunderhead: Day
               hint_region: Thunderhead
@@ -7812,7 +7812,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Sky\Thunderhead: Day
               hint_region: Thunderhead
@@ -7831,7 +7831,7 @@ areas:
       allowed_time_of_day: 3
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: null
       locations: {}
@@ -7842,14 +7842,14 @@ areas:
           allowed_time_of_day: 3
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Sparring Hall Right Door Entrance: null
-            Goddess Statue Entrance: null
-            Knight Academy Upper Left Door Entrance: null
-            Knight Academy Lower Left Door Entrance: null
-            Sparring Hall Left Door Entrance: null
-            Knight Academy Lower Right Door Entrance: null
-            Knight Academy Upper Right Door Entrance: null
+          entrances:
+          - Knight Academy Upper Right Door Entrance
+          - Goddess Statue Entrance
+          - Knight Academy Lower Right Door Entrance
+          - Sparring Hall Left Door Entrance
+          - Sparring Hall Right Door Entrance
+          - Knight Academy Upper Left Door Entrance
+          - Knight Academy Lower Left Door Entrance
           exits:
             Knight Academy Upper Right Door Exit: 'True'
             Knight Academy Upper Left Door Exit: 'True'
@@ -7872,11 +7872,11 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Lower Left Door Entrance: null
-                Upper Left Door Entrance: null
-                Upper Right Door Entrance: null
-                Lower Right Door Entrance: null
+              entrances:
+              - Upper Right Door Entrance
+              - Lower Right Door Entrance
+              - Upper Left Door Entrance
+              - Lower Left Door Entrance
               exits:
                 Upper Right Door Exit: 'True'
                 Upper Left Door Exit: 'True'
@@ -7905,8 +7905,8 @@ areas:
                   allowed_time_of_day: 3
                   can_save: false
                   can_sleep: true
-                  entrances: !!set
-                    Start Entrance: null
+                  entrances:
+                  - Start Entrance
                   exits:
                     \Skyloft\Upper Skyloft\Knight Academy: 'True'
                   hint_region: Upper Skyloft
@@ -7920,8 +7920,8 @@ areas:
                   allowed_time_of_day: 3
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Chimney: null
+                  entrances:
+                  - Chimney
                   exits:
                     \Skyloft\Upper Skyloft\Knight Academy: 'True'
                   hint_region: Upper Skyloft
@@ -7938,9 +7938,9 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Right Door Entrance: null
-                Left Door Entrance: null
+              entrances:
+              - Right Door Entrance
+              - Left Door Entrance
               exits:
                 Right Door Exit: 'True'
                 Left Door Exit: 'True'
@@ -7958,8 +7958,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Upper Skyloft
@@ -7975,18 +7975,18 @@ areas:
           allowed_time_of_day: 3
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Waterfall Cave Upper Entrance: null
-            Entrance from Beedle's Shop: null
-            Bazaar West Entrance: null
-            Wryna's House Entrance: null
-            Peatrice's House Entrance: null
-            Orielle and Parrow's House Entrance: null
-            Bazaar South Entrance: null
-            Trial Gate Entrance: null
-            Piper's House Entrance: null
-            Entrance from Sky: null
-            Bazaar North Entrance: null
+          entrances:
+          - Waterfall Cave Upper Entrance
+          - Bazaar South Entrance
+          - Bazaar North Entrance
+          - Peatrice's House Entrance
+          - Entrance from Sky
+          - Trial Gate Entrance
+          - Piper's House Entrance
+          - Entrance from Beedle's Shop
+          - Wryna's House Entrance
+          - Orielle and Parrow's House Entrance
+          - Bazaar West Entrance
           exits:
             Exit to Beedle's Shop: "Day & (\\Distance Activator | Beedle's Shop With\
               \ Bombs Trick & Bomb Bag)"
@@ -8039,7 +8039,7 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Skyloft\Central Skyloft: 'True'
               hint_region: Central Skyloft
@@ -8053,10 +8053,10 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                North Entrance: null
-                South Entrance: null
-                West Entrance: null
+              entrances:
+              - West Entrance
+              - North Entrance
+              - South Entrance
               exits:
                 North Exit: 'True'
                 West Exit: 'True'
@@ -8079,7 +8079,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Skyloft\Central Skyloft\Bazaar: 'True'
                   hint_region: Central Skyloft
@@ -8100,8 +8100,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Central Skyloft
@@ -8119,8 +8119,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Central Skyloft
@@ -8135,8 +8135,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Central Skyloft
@@ -8150,8 +8150,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Central Skyloft
@@ -8164,8 +8164,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance from Sky Keep: null
+              entrances:
+              - Entrance from Sky Keep
               exits:
                 Exit to Sky Keep: Stone of Trials
                 \Skyloft\Central Skyloft: Clawshots
@@ -8179,7 +8179,7 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Skyloft\Central Skyloft: 'True'
                 \Skyloft\Skyloft Village: 'True'
@@ -8200,9 +8200,9 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Lower Entrance: null
-                Upper Entrance: null
+              entrances:
+              - Lower Entrance
+              - Upper Entrance
               exits:
                 Upper Exit: 'True'
                 Lower Exit: 'True'
@@ -8219,8 +8219,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Waterfall Cave Lower Entrance: null
+              entrances:
+              - Waterfall Cave Lower Entrance
               exits:
                 Waterfall Cave Lower Exit: 'True'
                 \Skyloft\Central Skyloft\Exit to Sky: Day
@@ -8237,8 +8237,8 @@ areas:
           allowed_time_of_day: 3
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits:
             Exit: 'True'
           hint_region: Skyloft Silent Realm
@@ -8262,13 +8262,13 @@ areas:
           allowed_time_of_day: 3
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Gondo's House Entrance: null
-            Rupin's House Entrance: null
-            Bertie's House Entrance: null
-            Mallara's House Entrance: null
-            Sparrot's House Entrance: null
-            Batreaux's House Entrance: null
+          entrances:
+          - Batreaux's House Entrance
+          - Rupin's House Entrance
+          - Sparrot's House Entrance
+          - Bertie's House Entrance
+          - Gondo's House Entrance
+          - Mallara's House Entrance
           exits:
             \Skyloft\Central Skyloft: 'True'
             \Skyloft\Central Skyloft\Past Waterfall Cave: "Waterfall Cave Jump Trick\
@@ -8292,8 +8292,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Skyloft Village
@@ -8307,8 +8307,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Skyloft Village
@@ -8324,8 +8324,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Skyloft Village
@@ -8339,8 +8339,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Skyloft Village
@@ -8353,8 +8353,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: true
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Skyloft Village
@@ -8367,8 +8367,8 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Entrance: null
+              entrances:
+              - Entrance
               exits:
                 Exit: 'True'
               hint_region: Batreaux's House
@@ -8391,9 +8391,9 @@ areas:
           allowed_time_of_day: 3
           can_save: false
           can_sleep: true
-          entrances: !!set
-            Night Entrance: null
-            Day Entrance: null
+          entrances:
+          - Night Entrance
+          - Day Entrance
           exits:
             Night Exit: Night
             Day Exit: Day
@@ -8407,7 +8407,7 @@ areas:
               allowed_time_of_day: 3
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Skyloft\Beedle's Shop: 'True'
               hint_region: Beedle's Shop
@@ -8434,7 +8434,7 @@ areas:
       allowed_time_of_day: 1
       can_save: false
       can_sleep: false
-      entrances: !!set {}
+      entrances: []
       exits: {}
       hint_region: Skyview
       locations:
@@ -8449,7 +8449,7 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set {}
+          entrances: []
           exits: {}
           hint_region: Skyview
           locations: {}
@@ -8460,8 +8460,8 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set
-                Main Entrance: null
+              entrances:
+              - Main Entrance
               exits:
                 Main Exit: 'True'
                 \Skyview\Main\First Room: \Skyview\Main\Entry\Cut Tree
@@ -8476,7 +8476,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Skyview\Main\Entry: \Skyview\Main\Entry\Cut Tree
                 \Skyview\Main\One Eye Room: \Skyview\Main\First Room\Switch to One
@@ -8496,7 +8496,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Skyview\Main\First Room: \Skyview\Main\First Room\Switch to One Eye
                   Room
@@ -8513,7 +8513,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Skyview\Main\One Eye Room: \Skyview\Main\One Eye Room\Unlock Door
                   to First Hub
@@ -8543,7 +8543,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Skyview\Main\First Hub: 'True'
                   hint_region: Skyview
@@ -8564,7 +8564,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits: {}
                   hint_region: Skyview
                   locations: {}
@@ -8575,7 +8575,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Skyview\Main\First Hub: 'True'
                         \Skyview\Main\First Hub\Right Room\After Crawlspace: 'True'
@@ -8591,7 +8591,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Skyview\Main\First Hub\Right Room\Lower Area: 'True'
                       hint_region: Skyview
@@ -8605,7 +8605,7 @@ areas:
                           allowed_time_of_day: 1
                           can_save: false
                           can_sleep: false
-                          entrances: !!set {}
+                          entrances: []
                           exits:
                             \Skyview\Main\First Hub\Right Room\Lower Area: 'True'
                           hint_region: Skyview
@@ -8622,7 +8622,7 @@ areas:
                       allowed_time_of_day: 1
                       can_save: false
                       can_sleep: false
-                      entrances: !!set {}
+                      entrances: []
                       exits:
                         \Skyview\Main\First Hub\Right Room\Lower Area: 'True'
                         \Skyview\Main\First Hub: 'True'
@@ -8639,7 +8639,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits:
                 \Skyview\Main\First Hub: Skyview Small Key x 2
                 \Skyview\Main\Second Hub\Miniboss Room: \Skyview\Main\Second Hub\Switch
@@ -8667,7 +8667,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Skyview\Main\Second Hub: 'True'
                   hint_region: Skyview
@@ -8681,7 +8681,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Skyview\Main\Second Hub: "\\Sword & \\Projectile Item"
                   hint_region: Skyview
@@ -8695,7 +8695,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Skyview\Main\Second Hub: Skyview Small Key
                     \Skyview\Main\Last Room\Near East Entrance: \Skyview\Main\Second
@@ -8712,7 +8712,7 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: !!set {}
+              entrances: []
               exits: {}
               hint_region: Skyview
               locations: {}
@@ -8723,7 +8723,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Skyview\Main\Second Hub\Staldra Room: 'True'
                     \Skyview\Main\Last Room\Before Rope: \Skyview\Main\Last Room\Near
@@ -8740,7 +8740,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Skyview\Main\Last Room\Near East Entrance: \Skyview\Main\Last
                       Room\Near East Entrance\Deal with Hanging Skulltula
@@ -8764,8 +8764,8 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set
-                    Boss Door Entrance: null
+                  entrances:
+                  - Boss Door Entrance
                   exits:
                     \Skyview\Main\Last Room\Before Rope: \Skyview\Main\Last Room\Before
                       Rope\Deal with Archers
@@ -8786,7 +8786,7 @@ areas:
                   allowed_time_of_day: 1
                   can_save: false
                   can_sleep: false
-                  entrances: !!set {}
+                  entrances: []
                   exits:
                     \Skyview\Main\Last Room\Before Rope: 'True'
                     \Skyview\Main\Last Room\After Rope: \Skyview\Main\Last Room\After
@@ -8804,9 +8804,9 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance from Dungeon: null
-            Entrance from Spring: null
+          entrances:
+          - Entrance from Spring
+          - Entrance from Dungeon
           exits:
             Exit to Dungeon: \Skyview\Boss Room\Beat Ghirahim
             Exit to Spring: \Skyview\Boss Room\Beat Ghirahim
@@ -8822,8 +8822,8 @@ areas:
           allowed_time_of_day: 1
           can_save: false
           can_sleep: false
-          entrances: !!set
-            Entrance: null
+          entrances:
+          - Entrance
           exits:
             Exit: 'True'
           hint_region: Skyview

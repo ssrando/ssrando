@@ -521,7 +521,7 @@ yaml.add_representer(
             "allowed_time_of_day": data.allowed_time_of_day,
             "can_save": data.can_save,
             "can_sleep": data.can_sleep,
-            "entrances": data.entrances,
+            "entrances": list(data.entrances),
             "exits": data.exits,
             "hint_region": data.hint_region,
             "locations": data.locations,
