@@ -130,7 +130,7 @@ def main():
             exit(0)
         with open(dest, mode="w") as f:
             yaml.Dumper.ignore_aliases = lambda *args: True
-            yaml.dump(areas.to_dict())
+            yaml.dump(areas.to_dict(), f)
             exit(0)
 
     areas = Areas(requirements, checks, hints, map_exits)
