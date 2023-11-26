@@ -2413,13 +2413,14 @@ areas:
     Can Afford 100 Rupees: 'True'
     Can Afford 300 Rupees: \Can Medium Rupee Farm
     Can Afford 600 Rupees: "\\Can High Rupee Farm & (\\1 Extra Wallet | \\Big Wallet)"
-    Can Afford 800 Rupees: "\\Can High Rupee Farm & (\\2 Extra Wallets | \\Medium\
-      \ Wallet & \\1 Extra Wallet | \\Big Wallet)"
-    Can Afford 1000 Rupees: "\\Can High Rupee Farm & (\\3 Extra Wallets | \\Medium\
-      \ Wallet & \\2 Extra Wallets | \\Big Wallet)"
-    Can Afford 1200 Rupees: "\\Can High Rupee Farm & (\\3 Extra Wallets | \\Medium\
-      \ Wallet & \\3 Extra Wallets | \\Big Wallet & \\1 Extra Wallet | \\Giant Wallet)"
-    Can Afford 1600 Rupees: "\\Can High Rupee Farm & (\\Big Wallet & \\2 Extra Wallets\
+    Can Afford 800 Rupees: "\\Can High Rupee Farm & (\\2 Extra Wallets | (\\Medium\
+      \ Wallet & \\1 Extra Wallet) | \\Big Wallet)"
+    Can Afford 1000 Rupees: "\\Can High Rupee Farm & (\\3 Extra Wallets | (\\Medium\
+      \ Wallet & \\2 Extra Wallets) | \\Big Wallet)"
+    Can Afford 1200 Rupees: "\\Can High Rupee Farm & (\\3 Extra Wallets | (\\Medium\
+      \ Wallet & \\3 Extra Wallets) | (\\Big Wallet & \\1 Extra Wallet) | \\Giant\
+      \ Wallet)"
+    Can Afford 1600 Rupees: "\\Can High Rupee Farm & ((\\Big Wallet & \\2 Extra Wallets)\
       \ | \\Giant Wallet)"
     Can Medium Rupee Farm: "\\Sky\\North East\\Bamboo Island\\Inside\\Clean Cut Minigame\
       \ | \\Can High Rupee Farm"
@@ -2451,28 +2452,28 @@ areas:
     12 Gratitude Crystal Packs: Gratitude Crystal Pack x 12
     13 Gratitude Crystal Packs: Gratitude Crystal Pack x 13
     5 Gratitude Crystals: "\\5 Single Gratitude Crystals | \\1 Gratitude Crystal Pack"
-    10 Gratitude Crystals: "\\10 Single Gratitude Crystals | \\5 Single Gratitude\
-      \ Crystals & \\1 Gratitude Crystal Pack | \\2 Gratitude Crystal Packs"
-    30 Gratitude Crystals: "\\15 Single Gratitude Crystals & \\3 Gratitude Crystal\
-      \ Packs | \\10 Single Gratitude Crystals & \\4 Gratitude Crystal Packs | \\\
-      5 Single Gratitude Crystals & \\5 Gratitude Crystal Packs | \\6 Gratitude Crystal\
-      \ Packs"
-    40 Gratitude Crystals: "\\15 Single Gratitude Crystals & \\5 Gratitude Crystal\
-      \ Packs | \\10 Single Gratitude Crystals & \\6 Gratitude Crystal Packs | \\\
-      5 Single Gratitude Crystals & \\7 Gratitude Crystal Packs | \\8 Gratitude Crystal\
-      \ Packs"
-    50 Gratitude Crystals: "\\15 Single Gratitude Crystals & \\7 Gratitude Crystal\
-      \ Packs | \\10 Single Gratitude Crystals & \\8 Gratitude Crystal Packs | \\\
-      5 Single Gratitude Crystals & \\9 Gratitude Crystal Packs | \\10 Gratitude Crystal\
-      \ Packs"
-    70 Gratitude Crystals: "\\15 Single Gratitude Crystals & \\11 Gratitude Crystal\
-      \ Packs | \\10 Single Gratitude Crystals & \\12 Gratitude Crystal Packs | \\\
-      5 Single Gratitude Crystals & \\13 Gratitude Crystal Packs"
+    10 Gratitude Crystals: "\\10 Single Gratitude Crystals | (\\5 Single Gratitude\
+      \ Crystals & \\1 Gratitude Crystal Pack) | \\2 Gratitude Crystal Packs"
+    30 Gratitude Crystals: "(\\15 Single Gratitude Crystals & \\3 Gratitude Crystal\
+      \ Packs) | (\\10 Single Gratitude Crystals & \\4 Gratitude Crystal Packs) |\
+      \ (\\5 Single Gratitude Crystals & \\5 Gratitude Crystal Packs) | \\6 Gratitude\
+      \ Crystal Packs"
+    40 Gratitude Crystals: "(\\15 Single Gratitude Crystals & \\5 Gratitude Crystal\
+      \ Packs) | (\\10 Single Gratitude Crystals & \\6 Gratitude Crystal Packs) |\
+      \ (\\5 Single Gratitude Crystals & \\7 Gratitude Crystal Packs) | \\8 Gratitude\
+      \ Crystal Packs"
+    50 Gratitude Crystals: "(\\15 Single Gratitude Crystals & \\7 Gratitude Crystal\
+      \ Packs) | (\\10 Single Gratitude Crystals & \\8 Gratitude Crystal Packs) |\
+      \ (\\5 Single Gratitude Crystals & \\9 Gratitude Crystal Packs) | \\10 Gratitude\
+      \ Crystal Packs"
+    70 Gratitude Crystals: "(\\15 Single Gratitude Crystals & \\11 Gratitude Crystal\
+      \ Packs) | (\\10 Single Gratitude Crystals & \\12 Gratitude Crystal Packs) |\
+      \ (\\5 Single Gratitude Crystals & \\13 Gratitude Crystal Packs)"
     80 Gratitude Crystals: "\\15 Single Gratitude Crystals & \\13 Gratitude Crystal\
       \ Packs"
     Sword: \Practice Sword
-    Long Range Skyward Strike: "\\Goddess Sword & Upgraded Skyward Strike option |\
-      \ \\True Master Sword"
+    Long Range Skyward Strike: "(\\Goddess Sword & Upgraded Skyward Strike option)\
+      \ | \\True Master Sword"
     Damaging Item: "\\Sword | Bomb Bag | \\Bow"
     Projectile Item: "\\Slingshot | \\Beetle | \\Bow"
     Distance Activator: "\\Slingshot | \\Beetle | Clawshots | \\Bow"
@@ -2481,15 +2482,15 @@ areas:
     Can Hit Switch: "\\Sword | Bomb Bag | Whip | \\Distance Activator"
     Can Hit Timeshift Stone: "\\Sword | Bomb Bag | Whip | \\Distance Activator"
     Can Hit Timeshift Stone in Minecart: "\\Sword | Bomb Bag | \\Distance Activator"
-    Early Lake Floria Tricks: "Early Lake Floria - Fence Hop Trick & \\Practice Sword\
+    Early Lake Floria Tricks: "(Early Lake Floria - Fence Hop Trick & \\Practice Sword)\
       \ | Early Lake Floria - Swordless Rope Floria Trick"
     Can bypass Boko Base Watch Tower: "\\Bow | Bomb Bag | \\Slingshot"
     Can Defeat Bokoblins: \Damaging Item
     Can Defeat Moblins: \Damaging Item
     Can Defeat Keeses: "\\Sword | \\Slingshot | \\Beetle | Whip | Clawshots | \\Bow\
       \ | Bomb Bag"
-    Can Defeat Lizalfos: "\\Sword | Advanced Lizalfos Combat Trick & (Bomb Bag | \\\
-      Bow)"
+    Can Defeat Lizalfos: "\\Sword | (Advanced Lizalfos Combat Trick & (Bomb Bag |\
+      \ \\Bow))"
     Can Defeat Ampilus: \Damaging Item
     Can Defeat Armos: "Gust Bellows & \\Sword"
     Can Defeat Beamos: "\\Sword | \\Bow"
@@ -2536,7 +2537,7 @@ areas:
                   to East Part
                 \Ancient Cistern\Main\Main Room\After Whip Hooks: Whip
                 \Ancient Cistern\Main\Main Room\Vines Area: "\\Ancient Cistern\\Main\\\
-                  Main Room\\Vines Area\\Activate Water Geyser | Whip & Clawshots"
+                  Main Room\\Vines Area\\Activate Water Geyser | (Whip & Clawshots)"
                 \Ancient Cistern\Main\Main Room\Behind the Waterfall: "\\Ancient Cistern\\\
                   Main\\Main Room\\Lever to Block Waterfall & Water Dragon's Scale"
                 \Ancient Cistern\Main\Inside Statue: "\\Ancient Cistern\\Can Lower\
@@ -2777,8 +2778,8 @@ areas:
               entrances: []
               exits:
                 \Ancient Cistern\Main\Inside Statue: 'True'
-                \Ancient Cistern\Main\Basement\Rotating Vines: "Whip & \\Ancient Cistern\\\
-                  Main\\Basement\\Blow Rock | Clawshots"
+                \Ancient Cistern\Main\Basement\Rotating Vines: "(Whip & \\Ancient\
+                  \ Cistern\\Main\\Basement\\Blow Rock) | Clawshots"
                 \Ancient Cistern\Main\Basement\Spider Thread: "\\Ancient Cistern\\\
                   Main\\Basement\\Spider Thread\\Activate Water Geyser | Ancient Cistern\
                   \ - Basement Highflip Trick"
@@ -2787,7 +2788,7 @@ areas:
               hint_region: Ancient Cistern
               locations:
                 Stop Cursed Waterfall: \Beetle
-                Blow Rock: "\\Hook Beetle | Bomb Bag & Bomb Throws Trick"
+                Blow Rock: "\\Hook Beetle | (Bomb Bag & Bomb Throws Trick)"
               name: \Ancient Cistern\Main\Basement
               sub_areas:
                 Rotating Vines:
@@ -2946,10 +2947,10 @@ areas:
               locations:
                 Vent Chest: \Digging Mitts
                 Rupee above Drawbridge: \Beetle
-                Lower Drawbridge: "\\Beetle | \\Bow | \\Long Range Skyward Strike\
-                  \ & Earth Temple - Keese Yeet Trick"
-                Dislodge Boulder: "\\Slingshot | \\Beetle & (Advanced Lizalfos Combat\
-                  \ Trick | \\Can Defeat Lizalfos) | Clawshots | \\Bow | \\Long Range\
+                Lower Drawbridge: "\\Beetle | \\Bow | (\\Long Range Skyward Strike\
+                  \ & Earth Temple - Keese Yeet Trick)"
+                Dislodge Boulder: "\\Slingshot | (\\Beetle & (Advanced Lizalfos Combat\
+                  \ Trick | \\Can Defeat Lizalfos)) | Clawshots | \\Bow | \\Long Range\
                   \ Skyward Strike"
               name: \Earth Temple\Main\First Room
               sub_areas: {}
@@ -2962,9 +2963,9 @@ areas:
               entrances: []
               exits:
                 \Earth Temple\Main\Hub Room\Past Lava Section: "\\Earth Temple\\Main\\\
-                  Hub Room\\Access to Boulder & (\\Earth Temple\\Main\\Hub Room\\\
+                  Hub Room\\Access to Boulder & ((\\Earth Temple\\Main\\Hub Room\\\
                   Wall to Lava Section & \\Earth Temple\\Main\\Hub Room\\Lower Lava\
-                  \ Section Portcullis | \\Earth Temple\\Main\\Hub Room\\Raise Bridge)"
+                  \ Section Portcullis) | \\Earth Temple\\Main\\Hub Room\\Raise Bridge)"
                 \Earth Temple\Main\East Room: \Earth Temple\Main\Hub Room\Access to
                   Boulder
                 \Earth Temple\Main\West Room: \Earth Temple\Main\Hub Room\Rock to
@@ -2981,8 +2982,8 @@ areas:
                   to Boulder
                 Ledd's Gift: \Can Defeat Lizalfos
                 Rock to West Room: "Bomb Bag | \\Hook Beetle"
-                Wall to Lava Section: "Bomb Bag | \\Hook Beetle & \\Earth Temple\\\
-                  Main\\Hub Room\\Access to Boulder"
+                Wall to Lava Section: "Bomb Bag | (\\Hook Beetle & \\Earth Temple\\\
+                  Main\\Hub Room\\Access to Boulder)"
                 Rupee in Lava Tunnel: "\\Earth Temple\\Main\\Hub Room\\Wall to Lava\
                   \ Section & \\Beetle"
                 Lower Lava Section Portcullis: "\\Earth Temple\\Main\\Hub Room\\Wall\
@@ -3051,8 +3052,8 @@ areas:
                 \Earth Temple\Main\Hub Room: 'True'
               hint_region: Earth Temple
               locations:
-                Rock in Second Slope Resting Area: "\\Digging Mitts & Bomb Bag | \\\
-                  Hook Beetle"
+                Rock in Second Slope Resting Area: "(\\Digging Mitts & Bomb Bag) |\
+                  \ \\Hook Beetle"
               name: \Earth Temple\Main\Room with Slopes
               sub_areas:
                 Front of Boss Door:
@@ -3119,8 +3120,8 @@ areas:
                   \ (\\Earth Temple\\Boss Room\\Slope\\Goddess Sword Strat | \\Earth\
                   \ Temple\\Boss Room\\Slope\\Longsword Strat | \\Earth Temple\\Boss\
                   \ Room\\Slope\\Master Sword Strat)"
-                Beat Scaldera: "Bomb Bag & \\Sword | \\Earth Temple\\Boss Room\\Slope\\\
-                  Bomb Flower Scaldera"
+                Beat Scaldera: "(Bomb Bag & \\Sword) | \\Earth Temple\\Boss Room\\\
+                  Slope\\Bomb Flower Scaldera"
                 Heart Container: \Earth Temple\Boss Room\Slope\Beat Scaldera
               name: \Earth Temple\Boss Room\Slope
               sub_areas: {}
@@ -3171,8 +3172,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Volcano Entrance Statue Entrance
               - First Time Entrance
+              - Volcano Entrance Statue Entrance
               exits:
                 Volcano Entrance Statue Exit: \Eldin\Volcano\Entry\Unlock Statue
                 \Eldin\Volcano\Ascent: \Eldin\Volcano\Ascent\Unlock Shortcut to Entry
@@ -3209,9 +3210,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Volcano East Statue Entrance
-              - Entrance from Bokoblin Base
               - First Vent from Mogma Turf
+              - Entrance from Bokoblin Base
+              - Volcano East Statue Entrance
               exits:
                 Volcano East / Volcano Ascent Statue Exit: \Eldin\Volcano\East\Unlock
                   Statue
@@ -3331,8 +3332,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Earth Temple
               - Temple Entrance Statue Entrance
+              - Entrance from Earth Temple
               exits:
                 Temple Entrance Statue Exit: \Eldin\Volcano\Near Temple Entrance\Unlock
                   Statue
@@ -3380,8 +3381,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Vent Entrance near Hot Cave
               - Entrance from Summit
+              - Vent Entrance near Hot Cave
               exits:
                 Exit to Summit: Fireshield Earrings
                 \Eldin\Volcano\Near Temple Entrance: \Eldin\Volcano\Near Temple Entrance\Blow
@@ -3542,8 +3543,8 @@ areas:
           can_sleep: false
           entrances:
           - Entrance from Eldin Volcano
-          - Entrance from Waterfall
           - Entrance from Outside Fire Sanctuary
+          - Entrance from Waterfall
           exits:
             Exit to Eldin Volcano: Fireshield Earrings
             Exit to Waterfall: Fireshield Earrings
@@ -3956,9 +3957,9 @@ areas:
               can_sleep: false
               entrances:
               - Statue Entrance
+              - Entrance from Faron Woods
               - Shortcut Entrance from Spiral
               - Door Entrance
-              - Entrance from Faron Woods
               exits:
                 Statue Exit: \Faron\Sealed Grounds\Behind the Temple\Unlock Statue
                 Door Exit: 'True'
@@ -3980,9 +3981,9 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
+          - Trial Gate Entrance
           - Viewing Platform Statue Entrance
           - In the Woods Statue Entrance
-          - Trial Gate Entrance
           exits:
             \Faron\Faron Woods\Entry: 'True'
             Shared Statue Exit: "\\Faron\\Faron Woods\\Unlock In the Woods Statue\
@@ -4007,9 +4008,9 @@ areas:
             Amber Relic Farming: 'True'
             Hit Vine to Deep Woods: \Distance Activator
             Open Trial Gate: "Goddess's Harp & Farore's Courage"
-            Open Door to Lake Floria: "Open Lake Floria option & Water Dragon's Scale\
-              \ | \\Faron\\Faron Woods\\Great Tree\\Top\\Talk to Yerbal & (\\Goddess\
-              \ Sword | Talk to Yerbal option)"
+            Open Door to Lake Floria: "(Open Lake Floria option & Water Dragon's Scale)\
+              \ | (\\Faron\\Faron Woods\\Great Tree\\Top\\Talk to Yerbal & (\\Goddess\
+              \ Sword | Talk to Yerbal option))"
             Rupee on Hollow Tree Root: 'True'
             Rupee on Hollow Tree Branch: \Beetle
             Rupee on Platform near Floria Door: \Beetle
@@ -4208,8 +4209,8 @@ areas:
                   can_save: false
                   can_sleep: false
                   entrances:
-                  - Upper Entrance from Great Tree
                   - Lower Entrance from Great Tree
+                  - Upper Entrance from Great Tree
                   exits:
                     Lower Exit to Great Tree: 'True'
                     Upper Exit to Great Tree: 'True'
@@ -4226,9 +4227,9 @@ areas:
                   can_save: false
                   can_sleep: false
                   entrances:
+                  - Entrance from Top
                   - Entrance from Flooded Great Tree
                   - Upper Entrance from Platforms
-                  - Entrance from Top
                   exits:
                     \Faron\Faron Woods\Great Tree\Lower Area: \Faron\Faron Woods\Great
                       Tree\Upper Area\Remove Void Plane
@@ -4274,9 +4275,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Skyview Temple
               - Forest Temple Statue Entrance
               - Deep Woods Statue Entrance
+              - Entrance from Skyview Temple
               exits:
                 Shared Statue Exit: 'True'
                 \Faron\Faron Woods\Deep Woods\Entry: 'True'
@@ -4343,8 +4344,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Entrance from Upper Flooded Great Tree
           - Entrance from Lower Flooded Great Tree
+          - Entrance from Upper Flooded Great Tree
           exits:
             Exit to Upper Flooded Great Tree: 'True'
             Exit to Lower Flooded Great Tree: Water Dragon's Scale
@@ -4379,8 +4380,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance
               - Entrance from Lower Flooded Faron Woods
+              - Entrance
               - Entrance from Upper Flooded Faron Woods
               exits:
                 Exit: 'True'
@@ -4466,8 +4467,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Lake Floria
               - Entrance from Waterfall
+              - Entrance from Lake Floria
               exits:
                 Exit to Waterfall: 'True'
                 Exit to Lake Floria: Water Dragon's Scale
@@ -4486,9 +4487,9 @@ areas:
               can_sleep: false
               entrances:
               - Statue Entrance
-              - Entrance from Faron Woods
-              - Entrance from Ancient Cistern
               - Entrance from Farore's Lair
+              - Entrance from Ancient Cistern
+              - Entrance from Faron Woods
               exits:
                 Statue Exit: \Faron\Lake Floria\Waterfall\Unlock Statue
                 Exit to Farore's Lair: 'True'
@@ -4924,9 +4925,9 @@ areas:
                 \Fire Sanctuary\Main\Front of Boss Door: "\\Fire Sanctuary\\Main\\\
                   West of Boss Door\\Hit Water Plant & \\Fire Sanctuary\\Main\\West\
                   \ of Boss Door\\Past Plats\\Release Lava"
-                \Fire Sanctuary\Main\West of Boss Door\Past Plats: "\\Fire Sanctuary\\\
+                \Fire Sanctuary\Main\West of Boss Door\Past Plats: "(\\Fire Sanctuary\\\
                   Main\\West of Boss Door\\Catch Plats & (\\Distance Activator | Bomb\
-                  \ Bag) | \\Fire Sanctuary\\Main\\West of Boss Door\\Past Plats\\\
+                  \ Bag)) | \\Fire Sanctuary\\Main\\West of Boss Door\\Past Plats\\\
                   Unlock Shortcut to Pre Plats"
               hint_region: Fire Sanctuary
               locations:
@@ -4979,8 +4980,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Statue Entrance
               - Boss Door Entrance
+              - Statue Entrance
               exits:
                 Statue Exit: \Fire Sanctuary\Main\Front of Boss Door\Unlock Statue
                 Boss Door Exit: Fire Sanctuary Boss Key
@@ -5143,7 +5144,8 @@ areas:
                 Main Exit: 'True'
               hint_region: Lanayru Mining Facility
               locations:
-                Left Lever: "\\Hook Beetle | Whip & LMF - Whip First Room Switch Trick"
+                Left Lever: "\\Hook Beetle | (Whip & LMF - Whip First Room Switch\
+                  \ Trick)"
                 Right Lever: 'True'
                 Chest behind Bars: \Lanayru Mining Facility\Main\First Room\Right
                   Lever
@@ -5182,10 +5184,10 @@ areas:
                   Facility\Main\Key Locked Room\Activate Timeshift Stone
               hint_region: Lanayru Mining Facility
               locations:
-                Blow Up Boxes: "\\Hook Beetle | Bomb Bag & Bomb Throws Trick"
+                Blow Up Boxes: "\\Hook Beetle | (Bomb Bag & Bomb Throws Trick)"
                 Activate Timeshift Stone: "\\Lanayru Mining Facility\\Main\\Key Locked\
-                  \ Room\\Blow Up Boxes & (\\Bow | \\Beetle | \\Slingshot & LMF -\
-                  \ Keylocked Slingshot Trickshot Trick)"
+                  \ Room\\Blow Up Boxes & (\\Bow | \\Beetle | (\\Slingshot & LMF -\
+                  \ Keylocked Slingshot Trickshot Trick))"
                 Chest in Key Locked Room: \Lanayru Mining Facility\Main\Key Locked
                   Room\Activate Timeshift Stone
               name: \Lanayru Mining Facility\Main\Key Locked Room
@@ -5259,7 +5261,7 @@ areas:
               hint_region: Lanayru Mining Facility
               locations:
                 Activate Timeshift Stone: "Gust Bellows & (\\Slingshot | \\Bow | \\\
-                  Goddess Sword | LMF - Whip Armos Room Timeshift Stone Trick & Whip)"
+                  Goddess Sword | (LMF - Whip Armos Room Timeshift Stone Trick & Whip))"
                 Defeat Armos: "\\Lanayru Mining Facility\\Main\\Armos Fight Room\\\
                   Activate Timeshift Stone & \\Can Defeat Armos"
                 Chest after Armos Fight: \Lanayru Mining Facility\Main\Armos Fight
@@ -5401,7 +5403,7 @@ areas:
                     \Lanayru Mining Facility\Main\Big Hub\Between Wind Gates: 'True'
                     \Lanayru Mining Facility\Main\Big Hub\Near Boss Key Room First Exit: 'True'
                     \Lanayru Mining Facility\Main\Near Boss Door: "Gust Bellows |\
-                      \ LMF - Minecart Jump Trick & \\Sword & (Bomb Bag | \\Beetle)"
+                      \ (LMF - Minecart Jump Trick & \\Sword & (Bomb Bag | \\Beetle))"
                   hint_region: Lanayru Mining Facility
                   locations:
                     Push Box: 'True'
@@ -5572,9 +5574,9 @@ areas:
       exits: {}
       hint_region: null
       locations:
-        All Three Nodes: "LMF Nodes On option | \\Lanayru\\Desert\\North Part\\Water\
+        All Three Nodes: "LMF Nodes On option | (\\Lanayru\\Desert\\North Part\\Water\
           \ Node & \\Lanayru\\Desert\\North Part\\Lightning Node\\Past\\Lightning\
-          \ Node & \\Lanayru\\Desert\\East\\Fire Node\\Past after Grate\\Fire Node"
+          \ Node & \\Lanayru\\Desert\\East\\Fire Node\\Past after Grate\\Fire Node)"
         Raise Lanayru Mining Facility: "Open LMF option | \\Lanayru\\Desert\\North\
           \ Part\\Activate Main Node"
         Can Navigate in Oasis: "\\Can Defeat Ampilus | \\Hook Beetle | \\Skyloft\\\
@@ -5599,8 +5601,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Statue Entrance
               - First Time Entrance
+              - Statue Entrance
               exits:
                 Statue Exit: \Lanayru\Mine\Entry\Unlock Statue
                 \Lanayru\Mine\Statues Area: \Lanayru\Mine\Entry\Timeshift Stone
@@ -5717,8 +5719,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Desert Entrance Statue Entrance
               - Entrance from Mine
+              - Desert Entrance Statue Entrance
               exits:
                 Exit to Mine: \Lanayru\Desert\Entry\Timeshift Stone
                 \Lanayru\Desert\Shared Statue Exit: \Lanayru\Desert\Entry\Unlock Statue
@@ -5776,8 +5778,8 @@ areas:
                 Blow Statues to Sand Oasis Down: \Hook Beetle
                 Get Past Spume to Sand Oasis: "\\Lanayru\\Desert\\Near Caged Robot\\\
                   Blow Statues to Sand Oasis Down | \\Skyloft\\Central Skyloft\\Bazaar\\\
-                  Endurance Potion | Brakeslide Trick & Stuttersprint Trick & (Bomb\
-                  \ Bag | \\Bow | \\Long Range Skyward Strike)"
+                  Endurance Potion | (Brakeslide Trick & Stuttersprint Trick & (Bomb\
+                  \ Bag | \\Bow | \\Long Range Skyward Strike))"
               name: \Lanayru\Desert\Near Caged Robot
               sub_areas: {}
               toplevel_alias: null
@@ -5899,9 +5901,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
+              - Lightning Node Entrance
               - Trial Gate Entrance
               - North Entrance from Temple of Time
-              - Lightning Node Entrance
               - North Desert Statue Entrance
               exits:
                 North Exit to Temple of Time: 'True'
@@ -5923,8 +5925,8 @@ areas:
                   North Part\\Main Node Timeshift Stone & \\Sword"
                 Unlock Statue: 'True'
                 Open Trial Gate: "Nayru's Wisdom & Goddess's Harp"
-                Open Secret Passageway: "Bomb Bag | \\Hook Beetle & Secret Passageway\
-                  \ Hook Beetle Opening Trick | \\Tough Beetle"
+                Open Secret Passageway: "Bomb Bag | (\\Hook Beetle & Secret Passageway\
+                  \ Hook Beetle Opening Trick) | \\Tough Beetle"
                 Chest on Platform near Lightning Node: Clawshots
                 Open Lightning Node: 'True'
                 \Ancient Flower Farming: \Lanayru\Desert\North Part\Main Node Timeshift
@@ -5988,8 +5990,8 @@ areas:
                         \Lanayru\Desert\North Part\Lightning Node\Present: \Projectile
                           Item
                         \Lanayru\Desert\North Part\Lightning Node\Present from afar: "\\\
-                          Beetle | \\Bow | Lightning Node End with Bombs Trick & Bomb\
-                          \ Bag"
+                          Beetle | \\Bow | (Lightning Node End with Bombs Trick &\
+                          \ Bomb Bag)"
                       hint_region: Lanayru Desert
                       locations:
                         First Chest: 'True'
@@ -6023,8 +6025,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Fire Node Entrance
               - Stone Cache Statue Entrance
+              - Fire Node Entrance
               exits:
                 \Lanayru\Desert\North Part: 'True'
                 \Lanayru\Desert\Top of LMF: \Lanayru\Raise Lanayru Mining Facility
@@ -6162,14 +6164,14 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Desert Gorge Statue Entrance
               - South Entrance from Desert
+              - Desert Gorge Statue Entrance
               exits:
                 South Exit to Desert: 'True'
                 \Lanayru\Temple of Time\Shared Statue Exit: \Lanayru\Temple of Time\South
                   East\Unlock Statue
-                \Lanayru\Temple of Time\Front: "\\Hook Beetle | \\Slingshot & Temple\
-                  \ of Time - Slingshot Shot Trick"
+                \Lanayru\Temple of Time\Front: "\\Hook Beetle | (\\Slingshot & Temple\
+                  \ of Time - Slingshot Shot Trick)"
               hint_region: null
               locations:
                 Unlock Statue: 'True'
@@ -6190,8 +6192,8 @@ areas:
               hint_region: null
               locations:
                 Gossip Stone in Temple of Time Area: 'True'
-                Blow up Rock for Timeshift Stone: "\\Hook Beetle | Bomb Throws Trick\
-                  \ & (Bomb Bag | Cactus Bomb Whip Trick & Whip)"
+                Blow up Rock for Timeshift Stone: "\\Hook Beetle | (Bomb Throws Trick\
+                  \ & (Bomb Bag | (Cactus Bomb Whip Trick & Whip)))"
                 Timeshift Stone: "\\Lanayru\\Temple of Time\\Front\\Blow up Rock for\
                   \ Timeshift Stone & \\Distance Activator"
                 Save Robot: "\\Lanayru\\Temple of Time\\Front\\Timeshift Stone & \\\
@@ -6284,8 +6286,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Entrance from Desert
           - Entrance from Mine
+          - Entrance from Desert
           exits:
             \Lanayru\Caves\Past Door to Lanayru Sand Sea: "Clawshots & Lanayru Caves\
               \ Small Key"
@@ -6337,11 +6339,11 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Pirate Stronghold Dock Entrance
           - Ancient Harbour Dock Entrance
+          - Pirate Stronghold Dock Entrance
           - Sandship Dock Entrance
-          - Skipper's Retreat Dock Entrance
           - Shipyard Dock Entrance
+          - Skipper's Retreat Dock Entrance
           exits:
             Ancient Harbour Dock Exit: 'True'
             Sandship Dock Exit: \Lanayru\Lanayru Sand Sea\Shoot down Sandship
@@ -6359,8 +6361,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Statue Entrance
               - Dock Entrance
+              - Statue Entrance
               exits:
                 Dock Exit: \Lanayru\Lanayru Sand Sea\Ancient Harbour\Ship Timeshift
                   Stone
@@ -6409,8 +6411,8 @@ areas:
               hint_region: Lanayru Sand Sea
               locations:
                 Unlock Statue: 'True'
-                Blow up Rock: "Bomb Bag | \\Hook Beetle | Whip & Cactus Bomb Whip\
-                  \ Trick"
+                Blow up Rock: "Bomb Bag | \\Hook Beetle | (Whip & Cactus Bomb Whip\
+                  \ Trick)"
               name: \Lanayru\Lanayru Sand Sea\Skipper's Retreat
               sub_areas:
                 Past Rock:
@@ -6430,8 +6432,8 @@ areas:
                     Chest after Moblin: 'True'
                     Goddess Cube in Skipper's Retreat: "Clawshots & \\Goddess Sword"
                     Whip Peahat: "Clawshots & Whip"
-                    Deal with Deku Baba: "\\Projectile Item | Skipper's Retreat Fast\
-                      \ Clawshots Trick & Clawshots"
+                    Deal with Deku Baba: "\\Projectile Item | (Skipper's Retreat Fast\
+                      \ Clawshots Trick & Clawshots)"
                   name: \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Past Rock
                   sub_areas: {}
                   toplevel_alias: null
@@ -6488,8 +6490,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Statue Entrance
               - Construction Bay Lower Entrance
+              - Statue Entrance
               - Dock Entrance
               - Construction Bay Upper Entrance
               exits:
@@ -6532,8 +6534,8 @@ areas:
               can_sleep: false
               entrances:
               - Statue Entrance
-              - Side Entrance
               - Dock Entrance
+              - Side Entrance
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Unlock Statue
                 Dock Exit: 'True'
@@ -6974,9 +6976,9 @@ areas:
                   can_sleep: false
                   entrances: []
                   exits:
-                    \Sky Keep\Main\Skyview Room\End: "Whip & \\Sky Keep\\Main\\Skyview\
+                    \Sky Keep\Main\Skyview Room\End: "(Whip & \\Sky Keep\\Main\\Skyview\
                       \ Room\\Beginning\\Free Rope & Clawshots & \\Sky Keep\\Main\\\
-                      Skyview Room\\Beginning\\Kill Pyrups & Gust Bellows | \\Sky\
+                      Skyview Room\\Beginning\\Kill Pyrups & Gust Bellows) | \\Sky\
                       \ Keep\\Main\\Skyview Room\\End\\Lever"
                   hint_region: Sky Keep
                   locations:
@@ -7505,8 +7507,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Main Right Door Entrance
               - Back Door Entrance
+              - Main Right Door Entrance
               - Main Left Door Entrance
               exits:
                 \Sky\South East: Day
@@ -7534,8 +7536,8 @@ areas:
                   can_save: false
                   can_sleep: true
                   entrances:
-                  - Main Right Door Entrance
                   - Back Door Entrance
+                  - Main Right Door Entrance
                   - Main Left Door Entrance
                   exits:
                     Main Right Door Exit: 'True'
@@ -7843,13 +7845,13 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Knight Academy Upper Right Door Entrance
+          - Sparring Hall Right Door Entrance
           - Knight Academy Lower Left Door Entrance
           - Sparring Hall Left Door Entrance
-          - Knight Academy Upper Left Door Entrance
-          - Sparring Hall Right Door Entrance
-          - Goddess Statue Entrance
           - Knight Academy Lower Right Door Entrance
+          - Knight Academy Upper Left Door Entrance
+          - Goddess Statue Entrance
+          - Knight Academy Upper Right Door Entrance
           exits:
             Knight Academy Upper Right Door Exit: 'True'
             Knight Academy Upper Left Door Exit: 'True'
@@ -7873,10 +7875,10 @@ areas:
               can_save: false
               can_sleep: true
               entrances:
-              - Lower Right Door Entrance
+              - Upper Left Door Entrance
               - Lower Left Door Entrance
               - Upper Right Door Entrance
-              - Upper Left Door Entrance
+              - Lower Right Door Entrance
               exits:
                 Upper Right Door Exit: 'True'
                 Upper Left Door Exit: 'True'
@@ -7976,20 +7978,20 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Bazaar West Entrance
-          - Entrance from Sky
-          - Trial Gate Entrance
-          - Waterfall Cave Upper Entrance
-          - Bazaar North Entrance
-          - Wryna's House Entrance
-          - Peatrice's House Entrance
-          - Orielle and Parrow's House Entrance
-          - Entrance from Beedle's Shop
-          - Bazaar South Entrance
           - Piper's House Entrance
+          - Orielle and Parrow's House Entrance
+          - Trial Gate Entrance
+          - Bazaar West Entrance
+          - Peatrice's House Entrance
+          - Wryna's House Entrance
+          - Entrance from Sky
+          - Entrance from Beedle's Shop
+          - Bazaar North Entrance
+          - Waterfall Cave Upper Entrance
+          - Bazaar South Entrance
           exits:
-            Exit to Beedle's Shop: "Day & (\\Distance Activator | Beedle's Shop With\
-              \ Bombs Trick & Bomb Bag)"
+            Exit to Beedle's Shop: "Day & (\\Distance Activator | (Beedle's Shop With\
+              \ Bombs Trick & Bomb Bag))"
             Bazaar North Exit: Day
             Bazaar West Exit: Day
             Bazaar South Exit: Day
@@ -8054,9 +8056,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - West Entrance
-              - North Entrance
               - South Entrance
+              - North Entrance
+              - West Entrance
               exits:
                 North Exit: 'True'
                 West Exit: 'True'
@@ -8263,12 +8265,12 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Gondo's House Entrance
-          - Sparrot's House Entrance
           - Mallara's House Entrance
-          - Rupin's House Entrance
-          - Bertie's House Entrance
           - Batreaux's House Entrance
+          - Gondo's House Entrance
+          - Bertie's House Entrance
+          - Rupin's House Entrance
+          - Sparrot's House Entrance
           exits:
             \Skyloft\Central Skyloft: 'True'
             \Skyloft\Central Skyloft\Past Waterfall Cave: "Waterfall Cave Jump Trick\
@@ -8392,8 +8394,8 @@ areas:
           can_save: false
           can_sleep: true
           entrances:
-          - Night Entrance
           - Day Entrance
+          - Night Entrance
           exits:
             Night Exit: Night
             Day Exit: Day
@@ -8439,8 +8441,8 @@ areas:
       hint_region: Skyview
       locations:
         Skyview 2: Water Dragon's Scale
-        Can Hit High Skyview Switches: "\\Distance Activator | Bomb Bag & Bomb Throws\
-          \ Trick"
+        Can Hit High Skyview Switches: "\\Distance Activator | (Bomb Bag & Bomb Throws\
+          \ Trick)"
         Can Cut Tree: "\\Sword | Bomb Bag"
       name: \Skyview
       sub_areas:
@@ -8522,16 +8524,16 @@ areas:
                   to Left Room
                 \Skyview\Main\First Hub\Right Room\Lower Area: \Skyview\Main\First
                   Hub\Switch to Right Room
-                \Skyview\Main\First Hub\Right Room\Upper Area: "\\Skyview\\Main\\\
+                \Skyview\Main\First Hub\Right Room\Upper Area: "(\\Skyview\\Main\\\
                   First Hub\\Left Room\\Raise Water & \\Skyview\\Main\\First Hub\\\
-                  Right Room\\After Crawlspace\\Raise Water | Clawshots"
+                  Right Room\\After Crawlspace\\Raise Water) | Clawshots"
                 \Skyview\Main\Second Hub: "\\Skyview\\Main\\First Hub\\One Water Raise\
                   \ & Skyview Small Key"
               hint_region: Skyview
               locations:
                 \Skyview\Main\First Room\Destroy Barricade: 'True'
-                Switch to Left Room: "\\Can Hit Switch | \\Skyview\\Main\\First Hub\\\
-                  One Water Raise & Water Dragon's Scale"
+                Switch to Left Room: "\\Can Hit Switch | (\\Skyview\\Main\\First Hub\\\
+                  One Water Raise & Water Dragon's Scale)"
                 Switch to Right Room: \Skyview\Can Hit High Skyview Switches
                 One Water Raise: "\\Skyview\\Main\\First Hub\\Left Room\\Raise Water\
                   \ | \\Skyview\\Main\\First Hub\\Right Room\\After Crawlspace\\Raise\
@@ -8551,9 +8553,9 @@ areas:
                     Hit Vines: "\\Skyview\\Can Hit High Skyview Switches | \\Goddess\
                       \ Sword | Whip"
                     Spider Roll: Skyview - Spider Roll Trick
-                    Raise Water: "\\Skyview\\Main\\First Hub\\Left Room\\Hit Vines\
-                      \ & \\Can Hit Switch | \\Skyview\\Main\\First Hub\\Left Room\\\
-                      Spider Roll & \\Skyview\\Can Hit High Skyview Switches"
+                    Raise Water: "(\\Skyview\\Main\\First Hub\\Left Room\\Hit Vines\
+                      \ & \\Can Hit Switch) | (\\Skyview\\Main\\First Hub\\Left Room\\\
+                      Spider Roll & \\Skyview\\Can Hit High Skyview Switches)"
                     Chest on Tree Branch: "\\Skyview\\Main\\First Hub\\Left Room\\\
                       Hit Vines | \\Skyview\\Main\\First Hub\\Left Room\\Spider Roll"
                   name: \Skyview\Main\First Hub\Left Room
@@ -8655,8 +8657,8 @@ areas:
                 Rupee in Southwest Tunnel: \Beetle
                 Rupee in East Tunnel: \Beetle
                 Switch to Miniboss Room: \Distance Activator
-                Switch for Bars: "\\Beetle | \\Slingshot & Skyview Slingshot Shot\
-                  \ Trick"
+                Switch for Bars: "\\Beetle | (\\Slingshot & Skyview Slingshot Shot\
+                  \ Trick)"
                 Switch to Left Room: \Beetle
                 Item behind Bars: "\\Skyview\\Main\\Second Hub\\Switch for Bars |\
                   \ Whip"
@@ -8805,8 +8807,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Entrance from Spring
           - Entrance from Dungeon
+          - Entrance from Spring
           exits:
             Exit to Dungeon: \Skyview\Boss Room\Beat Ghirahim
             Exit to Spring: \Skyview\Boss Room\Beat Ghirahim

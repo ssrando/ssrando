@@ -262,7 +262,12 @@ class OrCombination(LogicExpression):
         )
 
     def __str__(self):
-        return " | ".join([str(expr) for expr in self.arguments])
+        return " | ".join(
+            [
+                f"({str(expr)})" if isinstance(expr, AndCombination) else str(expr)
+                for expr in self.arguments
+            ]
+        )
 
 
 # Parsing
