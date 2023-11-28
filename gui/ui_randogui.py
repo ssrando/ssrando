@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.2
+## Created by: Qt User Interface Compiler version 6.6.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -179,6 +179,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.vlay_cosmetics = QVBoxLayout()
         self.vlay_cosmetics.setObjectName(u"vlay_cosmetics")
+        self.option_clear_location_hints = QCheckBox(self.box_cosmetics)
+        self.option_clear_location_hints.setObjectName(u"option_clear_location_hints")
+
+        self.vlay_cosmetics.addWidget(self.option_clear_location_hints)
+
         self.option_lightning_skyward_strike = QCheckBox(self.box_cosmetics)
         self.option_lightning_skyward_strike.setObjectName(u"option_lightning_skyward_strike")
 
@@ -2002,7 +2007,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -2028,6 +2033,7 @@ class Ui_MainWindow(object):
         self.box_advanced.setTitle(QCoreApplication.translate("MainWindow", u"Advanced Options", None))
         self.option_dry_run.setText(QCoreApplication.translate("MainWindow", u"Dry Run", None))
         self.box_cosmetics.setTitle(QCoreApplication.translate("MainWindow", u"Cosmetics", None))
+        self.option_clear_location_hints.setText(QCoreApplication.translate("MainWindow", u"Clear Location Hints", None))
         self.option_lightning_skyward_strike.setText(QCoreApplication.translate("MainWindow", u"Lightning Skyward Strike", None))
         self.option_starry_skies.setText(QCoreApplication.translate("MainWindow", u"Starry Skies", None))
         self.label_for_option_star_count.setText(QCoreApplication.translate("MainWindow", u"Number of stars", None))

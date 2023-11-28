@@ -186,13 +186,11 @@ class Areas:
                 f"Could not find '{partial_address_str}' from '{base_address_str}'."
             )
 
-    def prettify(self, s, *, custom=False):
+    def prettify(self, s):
         if s in ALL_ITEM_NAMES:
             return strip_item_number(s)
         if s in self.checks:
             check = self.checks[s]
-            if custom and (override := check.get("text")) is not None:
-                return override
             return check["short_name"]
         if s in self.gossip_stones:
             return self.gossip_stones[s]["short_name"]

@@ -1098,3 +1098,12 @@
   bits: 4
   help: How many treasures per Silent Realm you want to randomize.
   ui: option_trial_treasure_amount
+- name: Clear Location Hints
+  command: clear-location-hints
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: If enabled, location hints (always, sometimes, & random hints) that normally have flavor text
+        will just appear as their location name, like other locations.
+  ui: option_clear_location_hints

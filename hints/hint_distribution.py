@@ -306,7 +306,10 @@ class HintDistribution:
 
         loc = self.always_hints.pop()
         item = self.logic.placement.locations[loc]
-        text = self.areas.checks[loc].get("text")
+        if self.options["clear-location-hints"]:
+            text = None
+        else:
+            text = self.areas.checks[loc].get("text")
 
         if loc in self.hinted_locations:
             return self._create_always_hint()
@@ -330,7 +333,10 @@ class HintDistribution:
 
         loc = self.sometimes_hints.pop()
         item = self.logic.placement.locations[loc]
-        text = self.areas.checks[loc].get("text")
+        if self.options["clear-location-hints"]:
+            text = None
+        else:
+            text = self.areas.checks[loc].get("text")
 
         if loc in self.hinted_locations:
             return self._create_sometimes_hint()
@@ -344,7 +350,10 @@ class HintDistribution:
 
         item = self.required_boss_keys.pop()
         loc = self.logic.placement.items[item]
-        text = self.areas.checks[loc].get("text")
+        if self.options["clear-location-hints"]:
+            text = None
+        else:
+            text = self.areas.checks[loc].get("text")
 
         if loc in self.hinted_locations:
             return self._create_bk_hint()
@@ -385,7 +394,10 @@ class HintDistribution:
 
         loc = self.rng.choice(all_locations_without_hint)
         item = self.logic.placement.locations[loc]
-        text = self.areas.checks[loc].get("text")
+        if self.options["clear-location-hints"]:
+            text = None
+        else:
+            text = self.areas.checks[loc].get("text")
         self.hinted_locations.append(loc)
 
         return LocationHint("random", loc, item, text)
