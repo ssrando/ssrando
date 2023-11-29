@@ -20,6 +20,6 @@ jobs:
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install ffmpeg libsm6 libxext6  -y
       - name: Create dump file
-        run: python3 randoscript.py --noui --dump dump-check.yaml
+        run: PYTHONHASHSEED=0 python3 randoscript.py --noui --dump dump-check.yaml
       - name: Check contents
         run: diff dump.yaml dump-check.yaml
