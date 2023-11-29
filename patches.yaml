@@ -36,6 +36,7 @@ global:
     - 178 # Cutscene showing off Bokoblin Base with Plats
     - 81  # Tadtone Dowsing
     - 82  # Tadtones music scroll
+    - 108 # Heart Dowsing
     # Cutscene flags
     ## Surface
     - 137 # Sealed Grounds Intro Cutscene (enable statue select from start)
