@@ -2069,8 +2069,22 @@ class GamePatcher:
             required_dungeons_text = break_lines(", ".join(colorful_dungeon_text), 44)
 
         fi_hint_chunks = []
-        for i in range(0, len(self.placement_file.hints[FI_HINTS_KEY]), 8):
-            fi_hint_chunks.append(self.placement_file.hints["Fi"][i : i + 8])
+        current_chunk = []
+        current_chunk_len = 0
+        for hint in self.placement_file.hints[FI_HINTS_KEY]:
+            cur_hint_len = len(hint)
+            # there is a limit to how long a single text can be, so
+            # break it up
+            if cur_hint_len + current_chunk_len > 700:
+                fi_hint_chunks.append(current_chunk)
+                current_chunk = []
+                current_chunk_len = 0
+            current_chunk.append(hint)
+            current_chunk_len += cur_hint_len
+        if current_chunk:
+            fi_hint_chunks.append(current_chunk)
+
+        # print([len(break_and_make_multiple_textboxes(hints)) for hints in fi_hint_chunks])
 
         self.eventpatches["006-8KenseiNormal"].append(
             {
