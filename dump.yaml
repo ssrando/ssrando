@@ -14318,3 +14318,43 @@ entrances:
     allowed_time_of_day: 1
     req_index: 2342
     short_name: Sky Keep - First Room - Bottom Entrance
+linked_entrances:
+  silent_realms:
+    Skyloft Silent Realm:
+      exit_from_outside: \Skyloft\Central Skyloft\Trial Gate Exit
+      exit_from_inside: \Skyloft\Skyloft Silent Realm\Exit
+    Faron Silent Realm:
+      exit_from_outside: \Faron\Faron Woods\Trial Gate Exit
+      exit_from_inside: \Faron\Faron Silent Realm\Exit
+    Lanayru Silent Realm:
+      exit_from_outside: \Lanayru\Desert\North Part\Trial Gate Exit
+      exit_from_inside: \Lanayru\Lanayru Silent Realm\Exit
+    Eldin Silent Realm:
+      exit_from_outside: \Eldin\Volcano\Ascent\Trial Gate Exit
+      exit_from_inside: \Eldin\Eldin Silent Realm\Exit
+  dungeons:
+    Skyview:
+      exit_from_outside: \Faron\Faron Woods\Deep Woods\Exit to Skyview Temple
+      exit_from_inside: \Skyview\Main\Entry\Main Exit
+    Earth Temple:
+      exit_from_outside: \Eldin\Volcano\Near Temple Entrance\Exit to Earth Temple
+      exit_from_inside: \Earth Temple\Main\First Room\Main Exit
+    Lanayru Mining Facility:
+      exit_from_outside: \Lanayru\Desert\Top of LMF\Exit to Lanayru Mining Facility
+      exit_from_inside: \Lanayru Mining Facility\Main\First Room\Main Exit
+    Ancient Cistern:
+      exit_from_outside: \Faron\Lake Floria\Waterfall\Exit to Ancient Cistern
+      exit_from_inside: \Ancient Cistern\Main\Main Room\Main Exit
+    Sandship:
+      exit_from_outside:
+      - \Lanayru\Lanayru Sand Sea\Sandship Dock Exit
+      - \Lanayru\Lanayru Sand Sea\Ancient Harbour\Exit to Sandship
+      exit_from_inside: \Sandship\Main\Deck\Main Exit
+    Fire Sanctuary:
+      exit_from_outside: \Eldin\Volcano Summit\Outside Fire Sanctuary\Exit to Fire
+        Sanctuary
+      exit_from_inside: \Fire Sanctuary\Main\First Room\Main Exit
+    Sky Keep:
+      exit_from_outside: \Skyloft\Central Skyloft\Near Temple Entrance\Exit to Sky
+        Keep
+      exit_from_inside: \Sky Keep\Main\First Room\Bottom Exit

@@ -3,6 +3,7 @@ import sys
 import argparse
 import yaml
 import json
+from logic.dump import dump_constants
 from logic.logic_input import Areas
 from yaml_files import requirements, checks, hints, map_exits
 
@@ -130,7 +131,7 @@ def main():
             exit(0)
         with open(dest, mode="w") as f:
             yaml.Dumper.ignore_aliases = lambda *args: True
-            yaml.dump(areas.to_dict(), f, sort_keys=False)
+            yaml.dump({ **areas.to_dict(), "linked_entrances": dump_constants(areas.short_to_full) }, f, sort_keys=False)
             exit(0)
 
     areas = Areas(requirements, checks, hints, map_exits)
