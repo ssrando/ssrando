@@ -366,6 +366,14 @@ b check_scrapper_repaired
 .org 0x801ba668
 b allow_set_respawn_info
 
+; remove low heart fi text
+.org 0x8016c718
+li r3, 1
+
+; remove wallet full fi text
+.org 0x8016c808
+li r3, 1
+
 .close
 
 
