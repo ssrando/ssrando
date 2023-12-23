@@ -23,6 +23,8 @@ Volcano:
   First Room: # Until the rocks
     exits:
       East: Blow up Rock to East
+      Entry: Nothing
+      Exit to Bokoblin Base: Nothing
     locations:
       Chest behind Bombable Wall in First Room: Nothing
       Rupee behind Bombable Wall in First Room: Nothing
@@ -38,7 +40,6 @@ Volcano:
       First Vent from Mogma Turf: Impossible
       First Room: First Room - Blow up Rock to East
       Past Mogma Turf: Past Mogma Turf - Unlock Shortcut to Pre Turf
-      Exit to Bokoblin Base: Nothing
     locations:
       First Room - Blow up Rock to East: Bomb Bag # There's a beetle void plane
       Unlock Statue: Nothing
