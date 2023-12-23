@@ -3210,9 +3210,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
+              - Volcano East Statue Entrance
               - First Vent from Mogma Turf
               - Entrance from Bokoblin Base
-              - Volcano East Statue Entrance
               exits:
                 Volcano East / Volcano Ascent Statue Exit: \Eldin\Volcano\East\Unlock
                   Statue
@@ -3267,8 +3267,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Trial Gate Entrance
               - Volcano Ascent Statue Entrance
+              - Trial Gate Entrance
               exits:
                 \Eldin\Volcano\East\Volcano East / Volcano Ascent Statue Exit: \Eldin\Volcano\Ascent\Unlock
                   Statue
@@ -3381,8 +3381,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Vent Entrance near Hot Cave
               - Entrance from Summit
+              - Vent Entrance near Hot Cave
               exits:
                 Exit to Summit: Fireshield Earrings
                 \Eldin\Volcano\Near Temple Entrance: \Eldin\Volcano\Near Temple Entrance\Blow
@@ -3542,8 +3542,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Entrance from Waterfall
           - Entrance from Eldin Volcano
+          - Entrance from Waterfall
           - Entrance from Outside Fire Sanctuary
           exits:
             Exit to Eldin Volcano: Fireshield Earrings
@@ -3593,8 +3593,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Fire Sanctuary
               - Statue Entrance
+              - Entrance from Fire Sanctuary
               exits:
                 Statue Exit: \Eldin\Volcano Summit\Outside Fire Sanctuary\Unlock Statue
                 \Eldin\Volcano Summit\Outside Fire Sanctuary\Between Thirsty Frogs: \Eldin\Volcano
@@ -3913,8 +3913,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Side Entrance
               - Main Entrance
+              - Side Entrance
               - Gate of Time Entrance
               exits:
                 Main Exit: 'True'
@@ -3956,9 +3956,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Faron Woods
               - Statue Entrance
               - Door Entrance
+              - Entrance from Faron Woods
               - Shortcut Entrance from Spiral
               exits:
                 Statue Exit: \Faron\Sealed Grounds\Behind the Temple\Unlock Statue
@@ -3981,8 +3981,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Viewing Platform Statue Entrance
           - In the Woods Statue Entrance
+          - Viewing Platform Statue Entrance
           - Trial Gate Entrance
           exits:
             \Faron\Faron Woods\Entry: 'True'
@@ -4027,8 +4027,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Behind the Temple
               - Faron Woods Entry Statue Entrance
+              - Entrance from Behind the Temple
               exits:
                 \Faron\Faron Woods\Shared Statue Exit: \Faron\Faron Woods\Entry\Unlock
                   Statue
@@ -4227,9 +4227,9 @@ areas:
                   can_save: false
                   can_sleep: false
                   entrances:
-                  - Entrance from Top
                   - Entrance from Flooded Great Tree
                   - Upper Entrance from Platforms
+                  - Entrance from Top
                   exits:
                     \Faron\Faron Woods\Great Tree\Lower Area: \Faron\Faron Woods\Great
                       Tree\Upper Area\Remove Void Plane
@@ -4275,8 +4275,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Forest Temple Statue Entrance
               - Deep Woods Statue Entrance
+              - Forest Temple Statue Entrance
               - Entrance from Skyview Temple
               exits:
                 Shared Statue Exit: 'True'
@@ -4344,8 +4344,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Entrance from Lower Flooded Great Tree
           - Entrance from Upper Flooded Great Tree
+          - Entrance from Lower Flooded Great Tree
           exits:
             Exit to Upper Flooded Great Tree: 'True'
             Exit to Lower Flooded Great Tree: Water Dragon's Scale
@@ -4380,9 +4380,9 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Lower Flooded Faron Woods
-              - Entrance from Upper Flooded Faron Woods
               - Entrance
+              - Entrance from Upper Flooded Faron Woods
+              - Entrance from Lower Flooded Faron Woods
               exits:
                 Exit: 'True'
                 Exit to Upper Flooded Faron Woods: 'True'
@@ -4486,10 +4486,10 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance from Farore's Lair
-              - Entrance from Ancient Cistern
               - Statue Entrance
+              - Entrance from Farore's Lair
               - Entrance from Faron Woods
+              - Entrance from Ancient Cistern
               exits:
                 Statue Exit: \Faron\Lake Floria\Waterfall\Unlock Statue
                 Exit to Farore's Lair: 'True'
@@ -5601,8 +5601,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Statue Entrance
               - First Time Entrance
+              - Statue Entrance
               exits:
                 Statue Exit: \Lanayru\Mine\Entry\Unlock Statue
                 \Lanayru\Mine\Statues Area: \Lanayru\Mine\Entry\Timeshift Stone
@@ -5719,8 +5719,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Desert Entrance Statue Entrance
               - Entrance from Mine
+              - Desert Entrance Statue Entrance
               exits:
                 Exit to Mine: \Lanayru\Desert\Entry\Timeshift Stone
                 \Lanayru\Desert\Shared Statue Exit: \Lanayru\Desert\Entry\Unlock Statue
@@ -5902,9 +5902,9 @@ areas:
               can_sleep: false
               entrances:
               - North Entrance from Temple of Time
+              - North Desert Statue Entrance
               - Trial Gate Entrance
               - Lightning Node Entrance
-              - North Desert Statue Entrance
               exits:
                 North Exit to Temple of Time: 'True'
                 \Lanayru\Desert\East: 'True'
@@ -6164,8 +6164,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Desert Gorge Statue Entrance
               - South Entrance from Desert
+              - Desert Gorge Statue Entrance
               exits:
                 South Exit to Desert: 'True'
                 \Lanayru\Temple of Time\Shared Statue Exit: \Lanayru\Temple of Time\South
@@ -6339,11 +6339,11 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Pirate Stronghold Dock Entrance
-          - Sandship Dock Entrance
-          - Shipyard Dock Entrance
-          - Skipper's Retreat Dock Entrance
           - Ancient Harbour Dock Entrance
+          - Sandship Dock Entrance
+          - Skipper's Retreat Dock Entrance
+          - Shipyard Dock Entrance
+          - Pirate Stronghold Dock Entrance
           exits:
             Ancient Harbour Dock Exit: 'True'
             Sandship Dock Exit: \Lanayru\Lanayru Sand Sea\Shoot down Sandship
@@ -6361,8 +6361,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Statue Entrance
               - Dock Entrance
+              - Statue Entrance
               exits:
                 Dock Exit: \Lanayru\Lanayru Sand Sea\Ancient Harbour\Ship Timeshift
                   Stone
@@ -6490,10 +6490,10 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Construction Bay Upper Entrance
               - Statue Entrance
-              - Construction Bay Lower Entrance
               - Dock Entrance
+              - Construction Bay Upper Entrance
+              - Construction Bay Lower Entrance
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Shipyard\Unlock Statue
                 Dock Exit: 'True'
@@ -6534,8 +6534,8 @@ areas:
               can_sleep: false
               entrances:
               - Statue Entrance
-              - Side Entrance
               - Dock Entrance
+              - Side Entrance
               exits:
                 Statue Exit: \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Unlock Statue
                 Dock Exit: 'True'
@@ -6579,8 +6579,8 @@ areas:
                   can_save: false
                   can_sleep: false
                   entrances:
-                  - Second Door Entrance
                   - First Door Entrance
+                  - Second Door Entrance
                   exits:
                     First Door Exit: 'True'
                     Second Door Exit: \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside\Finish
@@ -7507,8 +7507,8 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Main Left Door Entrance
               - Main Right Door Entrance
+              - Main Left Door Entrance
               - Back Door Entrance
               exits:
                 \Sky\South East: Day
@@ -7536,8 +7536,8 @@ areas:
                   can_save: false
                   can_sleep: true
                   entrances:
-                  - Main Left Door Entrance
                   - Main Right Door Entrance
+                  - Main Left Door Entrance
                   - Back Door Entrance
                   exits:
                     Main Right Door Exit: 'True'
@@ -7845,13 +7845,13 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Sparring Hall Right Door Entrance
-          - Knight Academy Lower Right Door Entrance
-          - Goddess Statue Entrance
-          - Knight Academy Lower Left Door Entrance
           - Knight Academy Upper Right Door Entrance
           - Knight Academy Upper Left Door Entrance
+          - Knight Academy Lower Right Door Entrance
+          - Knight Academy Lower Left Door Entrance
+          - Sparring Hall Right Door Entrance
           - Sparring Hall Left Door Entrance
+          - Goddess Statue Entrance
           exits:
             Knight Academy Upper Right Door Exit: 'True'
             Knight Academy Upper Left Door Exit: 'True'
@@ -7875,9 +7875,9 @@ areas:
               can_save: false
               can_sleep: true
               entrances:
-              - Lower Right Door Entrance
               - Upper Right Door Entrance
               - Upper Left Door Entrance
+              - Lower Right Door Entrance
               - Lower Left Door Entrance
               exits:
                 Upper Right Door Exit: 'True'
@@ -7978,17 +7978,17 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Bazaar West Entrance
-          - Orielle and Parrow's House Entrance
-          - Bazaar North Entrance
-          - Bazaar South Entrance
-          - Waterfall Cave Upper Entrance
-          - Peatrice's House Entrance
-          - Entrance from Sky
-          - Trial Gate Entrance
-          - Piper's House Entrance
           - Entrance from Beedle's Shop
+          - Bazaar North Entrance
+          - Bazaar West Entrance
+          - Bazaar South Entrance
+          - Trial Gate Entrance
+          - Orielle and Parrow's House Entrance
+          - Peatrice's House Entrance
           - Wryna's House Entrance
+          - Piper's House Entrance
+          - Entrance from Sky
+          - Waterfall Cave Upper Entrance
           exits:
             Exit to Beedle's Shop: "Day & (\\Distance Activator | (Beedle's Shop With\
               \ Bombs Trick & Bomb Bag))"
@@ -8265,12 +8265,12 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Sparrot's House Entrance
-          - Gondo's House Entrance
-          - Mallara's House Entrance
           - Bertie's House Entrance
-          - Batreaux's House Entrance
+          - Sparrot's House Entrance
+          - Mallara's House Entrance
+          - Gondo's House Entrance
           - Rupin's House Entrance
+          - Batreaux's House Entrance
           exits:
             \Skyloft\Central Skyloft: 'True'
             \Skyloft\Central Skyloft\Past Waterfall Cave: "Waterfall Cave Jump Trick\
@@ -8807,8 +8807,8 @@ areas:
           can_save: false
           can_sleep: false
           entrances:
-          - Entrance from Spring
           - Entrance from Dungeon
+          - Entrance from Spring
           exits:
             Exit to Dungeon: \Skyview\Boss Room\Beat Ghirahim
             Exit to Spring: \Skyview\Boss Room\Beat Ghirahim

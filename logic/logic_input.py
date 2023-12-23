@@ -45,7 +45,7 @@ class Area(Generic[LE]):
     sub_areas: Dict[str, Area[LE]] = field(default_factory=dict)
     locations: Dict[str, LE] = field(default_factory=dict)
     exits: Dict[str, LE] = field(default_factory=dict)
-    entrances: Set[str] = field(default_factory=set)
+    entrances: Dict[str, str] = field(default_factory=dict)
 
     @classmethod
     def of_dict(cls, args):
@@ -122,14 +122,14 @@ class Area(Generic[LE]):
         new_self.locations = d
 
         new_exits = {}
-        entrances = set()
+        entrances = dict()
         for k, v in self.exits.items():
             exit, entrance = fexit(self.name, k, v)
             if exit is not None:
                 exit, req = exit
                 new_exits[exit] = req
             if entrance is not None:
-                entrances.add(entrance)
+                entrances[entrance] = entrance
 
         new_self.exits = new_exits
         new_self.entrances = entrances
@@ -476,7 +476,7 @@ class Areas:
                     else:
                         assert False
 
-            for entrance in area.entrances:
+            for entrance in area.entrances.keys():
                 entrance = with_sep_full(area_name, entrance)
                 allowed_time_of_day = self.entrance_allowed_time_of_day[entrance]
                 if allowed_time_of_day == Both:
@@ -521,7 +521,7 @@ yaml.add_representer(
             "allowed_time_of_day": data.allowed_time_of_day,
             "can_save": data.can_save,
             "can_sleep": data.can_sleep,
-            "entrances": list(data.entrances),
+            "entrances": list(data.entrances.keys()),
             "exits": data.exits,
             "hint_region": data.hint_region,
             "locations": data.locations,
