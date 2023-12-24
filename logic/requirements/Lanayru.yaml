@@ -56,7 +56,7 @@ Mine:
       exits:
         Exit to Desert: Nothing
       locations:
-        Blow up Rock on Track: Bomb Bag & Lanayru Mine - Quick Bomb Trick
+        End - Blow up Rock on Track: Bomb Bag & Lanayru Mine - Quick Bomb Trick
 
 Desert:
   toplevel-alias: Lanayru Desert

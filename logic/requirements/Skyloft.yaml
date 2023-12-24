@@ -152,8 +152,8 @@ Central Skyloft:
       Exit: Nothing
     locations:
       Crystal in Orielle and Parrow's House: Nothing
-      Parrow's Gift: Sky - Talk to Orielle & Night
-      Parrow's Crystals: Sky - Save Orielle & Night
+      Central Skyloft - Parrow's Gift: Sky - Talk to Orielle & Night
+      Central Skyloft - Parrow's Crystals: Sky - Save Orielle & Night
 
   Peatrice's House:
     can-sleep: true

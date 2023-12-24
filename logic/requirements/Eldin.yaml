@@ -59,9 +59,9 @@ Volcano:
     locations:
       Unlock Shortcut to Pre Turf: Nothing
       Watch Bridge Cutscene: Nothing
-      Southeast Rupee above Mogma Turf Entrance: Beetle
-      North Rupee above Mogma Turf Entrance: Beetle
-      Goddess Cube near Mogma Turf Entrance: Goddess Sword
+      East - Southeast Rupee above Mogma Turf Entrance: Beetle
+      East - North Rupee above Mogma Turf Entrance: Beetle
+      East - Goddess Cube near Mogma Turf Entrance: Goddess Sword
 
   Ascent:
     exits:
@@ -273,7 +273,7 @@ Bokoblin Base:
     locations:
       Chest near Bone Bridge: Can bypass Boko Base Watch Tower | Mogma Mitts | Gust Bellows
       Chest on Cliff: (Can bypass Boko Base Watch Tower | Mogma Mitts) & Gust Bellows
-      Goddess Cube near Mogma Turf Entrance: Goddess Sword
+      Volcano - Goddess Cube near Mogma Turf Entrance: Goddess Sword
   
   Before Drawbridge:
     exits:
@@ -295,7 +295,7 @@ Bokoblin Base:
       Before Drawbridge: Nothing
       Volcano East: Nothing
     locations:
-      Gossip Stone in Lower Platform Cave: Nothing
+      Volcano - Gossip Stone in Lower Platform Cave: Nothing
   
   Outside Earth Temple:
     exits:
@@ -303,15 +303,15 @@ Bokoblin Base:
       Bokoblin Base - Upper Platform Cave: Nothing
     locations:
       Chest East of Earth Temple Entrance: Nothing
-      Goddess Cube East of Earth Temple Entrance: Goddess Sword
+      Volcano - Goddess Cube East of Earth Temple Entrance: Goddess Sword
       Chest West of Earth Temple Entrance: (Slingshot | Bow | Bomb Bag | Goddess Sword) & Can bypass Boko Base Watch Tower & Mogma Mitts
-      Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can bypass Boko Base Watch Tower & Mogma Mitts
+      Volcano - Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can bypass Boko Base Watch Tower & Mogma Mitts
   
   Upper Platform Cave:
     exits:
       Outside Earth Temple: Nothing
     locations:
-      Gossip Stone in Upper Platform Cave: Nothing
+      Volcano - Gossip Stone in Upper Platform Cave: Nothing
   
   Hot Cave:
     exits:
@@ -326,7 +326,7 @@ Bokoblin Base:
       First Chest in Volcano Summit: Fireshield Earrings
       Raised Chest in Volcano Summit: Fireshield Earrings
       Chest in Volcano Summit Alcove: Fireshield Earrings & Practice Sword
-      Goddess Cube inside Volcano Summit: Fireshield Earrings
+      Volcano Summit - Goddess Cube inside Volcano Summit: Fireshield Earrings
   
   Fire Dragon's Lair:
     exits:
