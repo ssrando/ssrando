@@ -501,7 +501,14 @@ class Areas:
         return {
             "items": EXTENDED_ITEM.items_list,
             "areas": self.parent_area,
-            "checks": dict({id: dict({k: v for k, v in check.items() if k in ['short_name', 'type']}) for id, check in self.checks.items()}),
+            "checks": dict(
+                {
+                    id: dict(
+                        {k: v for k, v in check.items() if k in ["short_name", "type"]}
+                    )
+                    for id, check in self.checks.items()
+                }
+            ),
             "gossip_stones": dict(
                 {k: v["short_name"] for k, v in self.gossip_stones.items()}
             ),
