@@ -9,8 +9,10 @@ def dump_constants(short_to_full):
     """
 
     return {
-        "silent_realms": { p: silent_realm(p, short_to_full) for p in ALL_SILENT_REALMS },
-        "dungeons": { p: dungeon(p, short_to_full) for p in ALL_DUNGEONS },
+        "linked_entrances": {
+            "silent_realms": { p: silent_realm(p, short_to_full) for p in ALL_SILENT_REALMS },
+            "dungeons": { p: dungeon(p, short_to_full) for p in ALL_DUNGEONS },
+        },
         "dungeon_completion_requirements": { k: short_to_full(v) for k, v in DUNGEON_FINAL_CHECK.items() },
     }
 

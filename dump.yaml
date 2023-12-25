@@ -14358,11 +14358,11 @@ linked_entrances:
       exit_from_outside: \Skyloft\Central Skyloft\Near Temple Entrance\Exit to Sky
         Keep
       exit_from_inside: \Sky Keep\Main\First Room\Bottom Exit
-  dungeon_completion_requirements:
-    Skyview: \Skyview\Spring\Strike Crest
-    Earth Temple: \Earth Temple\Spring\Strike Crest
-    Lanayru Mining Facility: \Lanayru Mining Facility\Hall of Ancient Robots\End\Exit
-      Hall of Ancient Robots
-    Ancient Cistern: \Ancient Cistern\Flame Room\Farore's Flame
-    Sandship: \Sandship\Boss Room\Nayru's Flame
-    Fire Sanctuary: \Fire Sanctuary\Flame Room\Din's Flame
+dungeon_completion_requirements:
+  Skyview: \Skyview\Spring\Strike Crest
+  Earth Temple: \Earth Temple\Spring\Strike Crest
+  Lanayru Mining Facility: \Lanayru Mining Facility\Hall of Ancient Robots\End\Exit
+    Hall of Ancient Robots
+  Ancient Cistern: \Ancient Cistern\Flame Room\Farore's Flame
+  Sandship: \Sandship\Boss Room\Nayru's Flame
+  Fire Sanctuary: \Fire Sanctuary\Flame Room\Din's Flame
