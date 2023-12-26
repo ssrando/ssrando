@@ -2,11 +2,12 @@
 #![feature(split_array)]
 
 use core::{
-    ffi::{c_char, c_ushort, c_void},
+    ffi::{c_char, c_double, c_ushort, c_void},
     ptr, slice,
 };
 
 use cstr::cstr;
+use wchar::wchz;
 
 use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
 
@@ -113,9 +114,87 @@ struct StartInfo {
     forced_night: u8,
 }
 
+#[repr(C)]
+struct ConsoleHead {
+    text_buf:            u32, // u8*
+    width:               u16,
+    height:              u16,
+    priority:            u16,
+    attr:                u16,
+    print_top:           u16,
+    print_x_pos:         u16,
+    ring_top:            u16,
+    __pad_0:             u16,
+    ring_top_line_count: i32,
+    view_top_lin:        i32,
+    view_pos_x:          u16,
+    view_pos_y:          u16,
+    view_lines:          u16,
+    is_visible:          u8,
+    __pad_1:             u8,
+    writer:              u32, // TextWriteBase*
+    next:                u32, // next consolehead pointer
+}
+
+#[repr(C)]
+#[derive(Default)]
+struct CharWriter {
+    m_color_mapping:  [u32; 2],
+    m_vertex_colors:  [u32; 4],
+    m_text_color:     [u32; 2],
+    m_text_gradation: u32,
+    m_scale:          [f32; 2],
+    m_cursor_pos:     [f32; 3],
+    m_texture_filter: [u32; 2],
+    __pad:            u16,
+    m_alpha:          u8,
+    m_is_width_fixed: u8,
+    m_fixed_width:    f32,
+    m_font_ptr:       u32,
+}
+
+#[repr(C)]
+#[derive(Default)]
+struct TextWriterBase {
+    m_char_writer:   CharWriter,
+    m_width_limit:   f32,
+    m_char_space:    f32,
+    m_line_space:    f32,
+    m_tab_width:     i32,
+    m_draw_flag:     u32,
+    m_tag_processor: u32, // pointer to TagProcessor
+}
+
+#[repr(C)]
+struct Matrix {
+    mtx: [[f32; 4]; 3],
+}
+
+#[repr(C)]
+struct MTX44 {
+    mtx: [f32; 16],
+}
+#[repr(C)]
+struct ActorLink {
+    base_base:      [u8; 0x60 - 0x00],
+    vtable:         u32,
+    obj_base_pad0:  [u8; 0x5C],
+    pos_x:          f32,
+    pos_y:          f32,
+    pos_z:          f32,
+    obj_base_pad:   [u8; 0x330 - (0x64 + 0x5C + 0xC)],
+    pad01:          [u8; 0x4498 - 0x330],
+    stamina_amount: u32,
+    // More after
+}
+
 extern "C" {
+
+    fn swprintf(out: *mut u16, len: u32, fmt: *const u16, ...) -> i32;
+    fn wcslen(string: *const u16) -> u32;
     fn printf(string: *const c_char, ...);
     static mut SPAWN_SLAVE: SpawnStruct;
+    static LINK_PTR: *mut ActorLink;
     fn setStoryflagToValue(flag: u16, value: u16);
     static SCENEFLAG_MANAGER: *mut c_void;
     fn SceneflagManager__setFlagGlobal(mgr: *mut c_void, scene_index: u16, flag: u16);
@@ -182,6 +261,116 @@ extern "C" {
     fn RoomManager__getRoomByIndex(room_mgr: *mut c_void, room_number: u32);
     fn Reloader__setReloadTrigger(reloader: *mut Reloader, trigger: u8);
     fn getCurrentHealth(mgr: *mut filemanager_gen::FileManager) -> u16;
+    fn FontMgr__GetFont(idx: u32) -> u32;
+
+    fn C_MTXOrtho(
+        mtx: *mut MTX44,
+        float1: f32,
+        float2: f32,
+        float3: f32,
+        float4: f32,
+        float5: f32,
+        float6: f32,
+    );
+    fn GXSetProjection(mtx: *mut MTX44, param2: u32);
+    fn PSMTXIdentity(mtx: *mut Matrix);
+    fn GXLoadPosMtxImm(mtx: *mut Matrix, param2: u32);
+    fn GXSetCurrentMtx(param1: u32);
+
+    fn CharWriter__SetupGX(writer: *mut CharWriter);
+    fn CharWriter__SetupGXWithColorMapping(
+        writer: *mut CharWriter,
+        min: *const u32,
+        max: *const u32,
+    );
+    fn CharWriter__UpdateVertexColor(writer: *mut CharWriter);
+    fn __ct__TextWriterBase_WChar(writer: *mut TextWriterBase);
+    fn __dt__TextWriterBase_WChar(writer: *mut TextWriterBase, _: i32);
+    fn Printf_TextWriterBase_WChar(writer: *mut TextWriterBase, str: *const u16, ...);
+    fn Print_TextWriterBase_WChar(writer: *mut TextWriterBase, str: *const u16, len: u32);
+
+    fn DirectPrint_DrawString(posh: u32, posv: u32, turnOver: u8, str: *const c_char, ...);
+    fn DirectPrint_SetupFB(renderModeObj: *mut c_void) -> *mut c_void;
+    fn Console_Create(
+        width: u16,
+        height: u16,
+        view_lines: u16,
+        priority: u16,
+        attr: u16,
+    ) -> ConsoleHead;
+    fn Console_Printf(console: *mut ConsoleHead, str: *const c_char, ...);
+    fn Console_DrawDirect(console: *mut ConsoleHead);
+    fn Console_DoDrawConsole(console: *mut ConsoleHead, textwriter: *mut TextWriterBase);
+}
+
+fn setFontColor(text_writer: *mut TextWriterBase, color1: u32, color2: u32) {
+    unsafe {
+        (*text_writer).m_char_writer.m_text_color[0] = color1;
+        (*text_writer).m_char_writer.m_text_color[1] = color2;
+        CharWriter__UpdateVertexColor(&mut (*text_writer).m_char_writer);
+    }
+}
+
+// Draws the String on the screen (specfied by the top)
+fn draw_text(pos_x: i32, pos_y: i32, string: *const u16) {
+    unsafe {
+        // Use the Default font (almost always loaded. Just not between loads)
+        let font = FontMgr__GetFont(0);
+        if font != 0 {
+            // Create Matrix to draw on screen
+            // [1.f,  0.f, 0.f, posx-300]
+            // [0.f, -1.f, 0.f, 220-posy]
+            // [0.f,  0.f, 1.f,      0.f]
+            let mtx: *mut Matrix = &mut Matrix {
+                mtx: [
+                    [1f32, 0f32, 0f32, (pos_x - 300) as f32],
+                    [0f32, -1f32, 0f32, (220 - pos_y) as f32],
+                    [0f32, 0f32, 1f32, 0f32],
+                ],
+            };
+            GXLoadPosMtxImm(mtx, 0);
+            GXSetCurrentMtx(0);
+
+            // Create a Default Textwriter to pass into the constructor
+            let text_writer: *mut TextWriterBase = &mut TextWriterBase {
+                ..Default::default()
+            };
+            __ct__TextWriterBase_WChar(text_writer);
+
+            // Configure Color + Scale
+            setFontColor(text_writer, 0x000000FF, 0x000000FF);
+            (*text_writer).m_char_writer.m_font_ptr = font;
+            (*text_writer).m_char_writer.m_scale = [0.5f32, 0.5f32];
+            let minColor: u32 = 0x000000FF;
+            let maxColor: u32 = 0xFFFFFFFF;
+            CharWriter__SetupGXWithColorMapping(
+                &mut (*text_writer).m_char_writer,
+                &minColor,
+                &maxColor,
+            );
+
+            // Print the contents to the screen
+            Print_TextWriterBase_WChar(text_writer, string, wcslen(string));
+
+            // Manually Destroy the writer
+            __dt__TextWriterBase_WChar(text_writer, -1);
+        }
+    }
+}
+
+// Example Function on writing text to screen
+fn write_text_on_screen() {
+    let mut msgBuf: [u16; 0x80] = [0u16; 0x80];
+    unsafe {
+        swprintf(
+            msgBuf.as_mut_ptr(),
+            0x100,
+            wchz!(u16, "Current Room: %s").as_ptr(),
+            &SPAWN_SLAVE,
+        );
+    }
+    draw_text(10, 0, msgBuf.as_ptr());
+    draw_text(10, 15, wchz!(u16, "Zeldex Smells").as_ptr());
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -689,6 +878,12 @@ fn get_glow_color(item_id: u32) -> u32 {
         }
     }
     4
+}
+
+// A Common Place where Custom code can be injected to run once per frame
+#[no_mangle]
+fn custom_main_additions() {
+    // write_text_on_screen(); // This is test print code
 }
 
 #[panic_handler]

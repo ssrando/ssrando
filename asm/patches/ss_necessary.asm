@@ -1,4 +1,7 @@
 .open "main.dol"
+.org 0x80062eb0
+b custom_main_additions
+
 ; The subtype of TBox (chests) is determined by the item id
 ; change it, so that it uses 00 00 00 30 of params1 instead
 .org 0x80269530 ; in AcOTBox::init
