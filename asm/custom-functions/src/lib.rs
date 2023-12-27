@@ -188,11 +188,36 @@ struct ActorLink {
     // More after
 }
 
+#[repr(C)]
+struct List {
+    head:   u32,
+    tail:   u32,
+    count:  u16,
+    offset: u16,
+}
+
+#[repr(C)]
+struct Heap {
+    vtable:         *const c_void,
+    m_contain_heap: *mut Heap,
+    m_link:         [u32; 2], // node
+    m_heap_handle:  u32,      // MEMiHeapHead*
+    m_parent_block: *mut c_void,
+    m_flag:         u16,
+    __pad:          u16,
+    m_node:         [u32; 2], // node
+    m_children:     List,
+    n_name:         *const c_char,
+}
+
 extern "C" {
 
     fn swprintf(out: *mut u16, len: u32, fmt: *const u16, ...) -> i32;
     fn wcslen(string: *const u16) -> u32;
     fn printf(string: *const c_char, ...);
+    static mut CURRENT_HEAP: *mut Heap;
+    static mut GAME_FRAME: u32;
+    fn Heap__alloc(size: u32, align: u32, heap: *const Heap) -> *mut c_void;
     static mut SPAWN_SLAVE: SpawnStruct;
     static LINK_PTR: *mut ActorLink;
     fn setStoryflagToValue(flag: u16, value: u16);
@@ -278,11 +303,7 @@ extern "C" {
     fn GXSetCurrentMtx(param1: u32);
 
     fn CharWriter__SetupGX(writer: *mut CharWriter);
-    fn CharWriter__SetupGXWithColorMapping(
-        writer: *mut CharWriter,
-        min: *const u32,
-        max: *const u32,
-    );
+    fn CharWriter__SetupGXWithColorMapping(min: *const u32, max: *const u32);
     fn CharWriter__UpdateVertexColor(writer: *mut CharWriter);
     fn __ct__TextWriterBase_WChar(writer: *mut TextWriterBase);
     fn __dt__TextWriterBase_WChar(writer: *mut TextWriterBase, _: i32);
@@ -292,12 +313,13 @@ extern "C" {
     fn DirectPrint_DrawString(posh: u32, posv: u32, turnOver: u8, str: *const c_char, ...);
     fn DirectPrint_SetupFB(renderModeObj: *mut c_void) -> *mut c_void;
     fn Console_Create(
+        console: *mut ConsoleHead,
         width: u16,
         height: u16,
         view_lines: u16,
         priority: u16,
         attr: u16,
-    ) -> ConsoleHead;
+    );
     fn Console_Printf(console: *mut ConsoleHead, str: *const c_char, ...);
     fn Console_DrawDirect(console: *mut ConsoleHead);
     fn Console_DoDrawConsole(console: *mut ConsoleHead, textwriter: *mut TextWriterBase);
@@ -341,13 +363,9 @@ fn draw_text(pos_x: i32, pos_y: i32, string: *const u16) {
             setFontColor(text_writer, 0x000000FF, 0x000000FF);
             (*text_writer).m_char_writer.m_font_ptr = font;
             (*text_writer).m_char_writer.m_scale = [0.5f32, 0.5f32];
-            let minColor: u32 = 0x000000FF;
+            let minColor: u32 = 0x00000000;
             let maxColor: u32 = 0xFFFFFFFF;
-            CharWriter__SetupGXWithColorMapping(
-                &mut (*text_writer).m_char_writer,
-                &minColor,
-                &maxColor,
-            );
+            CharWriter__SetupGXWithColorMapping(&minColor, &maxColor);
 
             // Print the contents to the screen
             Print_TextWriterBase_WChar(text_writer, string, wcslen(string));

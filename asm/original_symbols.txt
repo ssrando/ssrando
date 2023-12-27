@@ -98,6 +98,7 @@ main.dol:
     __dt__TextWriterBase_WChar: 0x804318e0
     Print_TextWriterBase_WChar: 0x80432970
     Printf_TextWriterBase_WChar: 0x80432590
+    GAME_FRAME: 0x80575b78
     C_MTXOrtho: 0x803b9070
     GXSetProjection: 0x803c2250
     PSMTXIdentity: 0x803b7f40
@@ -109,6 +110,8 @@ main.dol:
     Console_Printf: 0x80435800
     Console_DrawDirect: 0x804352e0
     Console_DoDrawConsole: 0x80435130
+    CURRENT_HEAP: 0x80576740
+    Heap__alloc: 0x80495560
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
 d_a_obj_time_boatNP.rel:
