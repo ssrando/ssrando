@@ -17,6 +17,7 @@ opt-level = "s"
 lto = true
 
 [dependencies]
+arrayvec = { version = "0.7.4", default-features = false }
 cstr = "0.2.11"
 panic-abort = "0.3.2"
 wchar = "0.11.0"
