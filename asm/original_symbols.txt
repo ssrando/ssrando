@@ -53,8 +53,6 @@ main.dol:
     isPlayingHarp: 0x80381120
     SPECIAL_MINIGAME_STATE: 0x80572250
     findActorByActorType: 0x802e2920
-    checkButtonAPressed: 0x80059680
-    checkButtonBHeld: 0x80059880
     getKeyPieceCount: 0x802522f0
     checkItemFlag: 0x80251da0
     TextManager__setNumericArgs: 0x800b8a60
@@ -91,6 +89,7 @@ main.dol:
     swprintf: 0x804d1e14
     wcslen: 0x804d1f98
     FontMgr__GetFont: 0x80053f30
+    CharWriter__GetWidth: 0x8042e610
     CharWriter__UpdateVertexColor: 0x8042eae0
     CharWriter__SetupGX: 0x8042db90
     CharWriter__SetupGXWithColorMapping: 0x8042ec30
@@ -104,6 +103,32 @@ main.dol:
     PSMTXIdentity: 0x803b7f40
     GXLoadPosMtxImm: 0x803c2350
     GXSetCurrentMtx: 0x803c2470
+    isDpadUpPressed: 0x80059700
+    isDpadUpHeld: 0x800598e0
+    isDpadDownPressed: 0x80059720
+    isDpadDownHeld: 0x80059900
+    isDpadRightPressed: 0x80059760
+    isDpadRightHeld: 0x80059940
+    isDpadLeftPressed: 0x80059740
+    isDpadLeftHeld: 0x80059920
+    isButtonAPressed: 0x80059680
+    isButtonAHeld: 0x80059860
+    isButtonBPressed: 0x800596a0
+    isButtonBHeld: 0x80059880
+    isButtonCPressed: 0x800596c0
+    isButtonCHeld: 0x800598a0
+    isButtonZPressed: 0x800596e0
+    isButtonZHeld: 0x800598c0
+    isButtonPlusPressed: 0x800597e0
+    isButtonPlusHeld: 0x800599c0
+    isButtonMinusPressed: 0x800597c0
+    isButtonMinusHeld: 0x800599a0
+    isButton1Pressed: 0x80059780
+    isButton1Held: 0x80059960
+    isButton2Pressed: 0x800597a0
+    isButton2Held: 0x80059980
+    GXSetAlphaCompare: 0x803c0810
+    CORE_CONTROLLER: 0x80575c58
     DirectPrint_DrawString: 0x804346c0
     DirectPrint_SetupFB: 0x80434cb0
     Console_Create: 0x80434f50

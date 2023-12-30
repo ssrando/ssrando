@@ -1,18 +1,23 @@
 #![no_std]
 #![feature(split_array)]
+#![allow(unused)]
 
 use core::{
     ffi::{c_char, c_double, c_ushort, c_void},
     ptr, slice,
 };
 
+use button::*;
 use cstr::cstr;
 use wchar::wchz;
 
 use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
+use text_print::{write_to_screen, SimpleMenu};
 
+mod button;
 mod filemanager_gen;
 mod message;
+mod text_print;
 
 #[repr(C)]
 struct SpawnStruct {
@@ -242,8 +247,6 @@ extern "C" {
     static DUNGEONFLAG_MANAGER: *mut DungeonflagManager;
     fn checkStoryflagIsSet(p: *const c_void, flag: u16) -> bool;
     fn checkItemFlag(flag: u16) -> bool;
-    fn checkButtonAPressed() -> bool;
-    fn checkButtonBHeld() -> bool;
     fn getKeyPieceCount() -> u16;
     fn increaseCounter(counterId: u16, count: u16);
     fn setFlagForItem(itemflag: u16);
@@ -286,109 +289,15 @@ extern "C" {
     fn RoomManager__getRoomByIndex(room_mgr: *mut c_void, room_number: u32);
     fn Reloader__setReloadTrigger(reloader: *mut Reloader, trigger: u8);
     fn getCurrentHealth(mgr: *mut filemanager_gen::FileManager) -> u16;
-    fn FontMgr__GetFont(idx: u32) -> u32;
 
-    fn C_MTXOrtho(
-        mtx: *mut MTX44,
-        float1: f32,
-        float2: f32,
-        float3: f32,
-        float4: f32,
-        float5: f32,
-        float6: f32,
-    );
-    fn GXSetProjection(mtx: *mut MTX44, param2: u32);
-    fn PSMTXIdentity(mtx: *mut Matrix);
-    fn GXLoadPosMtxImm(mtx: *mut Matrix, param2: u32);
-    fn GXSetCurrentMtx(param1: u32);
-
-    fn CharWriter__SetupGX(writer: *mut CharWriter);
-    fn CharWriter__SetupGXWithColorMapping(min: *const u32, max: *const u32);
-    fn CharWriter__UpdateVertexColor(writer: *mut CharWriter);
-    fn __ct__TextWriterBase_WChar(writer: *mut TextWriterBase);
-    fn __dt__TextWriterBase_WChar(writer: *mut TextWriterBase, _: i32);
-    fn Printf_TextWriterBase_WChar(writer: *mut TextWriterBase, str: *const u16, ...);
-    fn Print_TextWriterBase_WChar(writer: *mut TextWriterBase, str: *const u16, len: u32);
-
-    fn DirectPrint_DrawString(posh: u32, posv: u32, turnOver: u8, str: *const c_char, ...);
-    fn DirectPrint_SetupFB(renderModeObj: *mut c_void) -> *mut c_void;
-    fn Console_Create(
-        console: *mut ConsoleHead,
-        width: u16,
-        height: u16,
-        view_lines: u16,
-        priority: u16,
-        attr: u16,
-    );
-    fn Console_Printf(console: *mut ConsoleHead, str: *const c_char, ...);
-    fn Console_DrawDirect(console: *mut ConsoleHead);
-    fn Console_DoDrawConsole(console: *mut ConsoleHead, textwriter: *mut TextWriterBase);
-}
-
-fn setFontColor(text_writer: *mut TextWriterBase, color1: u32, color2: u32) {
-    unsafe {
-        (*text_writer).m_char_writer.m_text_color[0] = color1;
-        (*text_writer).m_char_writer.m_text_color[1] = color2;
-        CharWriter__UpdateVertexColor(&mut (*text_writer).m_char_writer);
-    }
-}
-
-// Draws the String on the screen (specfied by the top)
-fn draw_text(pos_x: i32, pos_y: i32, string: *const u16) {
-    unsafe {
-        // Use the Default font (almost always loaded. Just not between loads)
-        let font = FontMgr__GetFont(0);
-        if font != 0 {
-            // Create Matrix to draw on screen
-            // [1.f,  0.f, 0.f, posx-300]
-            // [0.f, -1.f, 0.f, 220-posy]
-            // [0.f,  0.f, 1.f,      0.f]
-            let mtx: *mut Matrix = &mut Matrix {
-                mtx: [
-                    [1f32, 0f32, 0f32, (pos_x - 300) as f32],
-                    [0f32, -1f32, 0f32, (220 - pos_y) as f32],
-                    [0f32, 0f32, 1f32, 0f32],
-                ],
-            };
-            GXLoadPosMtxImm(mtx, 0);
-            GXSetCurrentMtx(0);
-
-            // Create a Default Textwriter to pass into the constructor
-            let text_writer: *mut TextWriterBase = &mut TextWriterBase {
-                ..Default::default()
-            };
-            __ct__TextWriterBase_WChar(text_writer);
-
-            // Configure Color + Scale
-            setFontColor(text_writer, 0x000000FF, 0x000000FF);
-            (*text_writer).m_char_writer.m_font_ptr = font;
-            (*text_writer).m_char_writer.m_scale = [0.5f32, 0.5f32];
-            let minColor: u32 = 0x00000000;
-            let maxColor: u32 = 0xFFFFFFFF;
-            CharWriter__SetupGXWithColorMapping(&minColor, &maxColor);
-
-            // Print the contents to the screen
-            Print_TextWriterBase_WChar(text_writer, string, wcslen(string));
-
-            // Manually Destroy the writer
-            __dt__TextWriterBase_WChar(text_writer, -1);
-        }
-    }
 }
 
 // Example Function on writing text to screen
 fn write_text_on_screen() {
-    let mut msgBuf: [u16; 0x80] = [0u16; 0x80];
-    unsafe {
-        swprintf(
-            msgBuf.as_mut_ptr(),
-            0x100,
-            wchz!(u16, "Current Room: %s").as_ptr(),
-            &SPAWN_SLAVE,
-        );
+    if unsafe { !LINK_PTR.is_null() } {
+        let (x, y, z) = unsafe { ((*LINK_PTR).pos_x, (*LINK_PTR).pos_y, (*LINK_PTR).pos_z) };
+        write_to_screen(format_args!("pos:\n{x:.3}\n{y:.3}\n{z:.3}"), 10, 20);
     }
-    draw_text(10, 0, msgBuf.as_ptr());
-    draw_text(10, 15, wchz!(u16, "Zeldex Smells").as_ptr());
 }
 
 fn storyflag_check(flag: u16) -> bool {
@@ -686,12 +595,10 @@ fn rando_text_command_handler(
 
 #[no_mangle]
 fn textbox_a_pressed_or_b_held() -> bool {
-    unsafe {
-        if checkButtonAPressed() || checkButtonBHeld() {
-            return true;
-        }
-        return false;
+    if is_pressed(A) || is_down(B) {
+        return true;
     }
+    return false;
 }
 
 #[no_mangle]
@@ -898,10 +805,101 @@ fn get_glow_color(item_id: u32) -> u32 {
     4
 }
 
+// // Below is Code i Used to test menus (Not what is going to be final at all)
+// struct MenuCursors {
+//     sample_menu:     u32,
+//     sample_sub_menu: u32,
+// }
+
+// #[derive(Clone, Copy, PartialEq, Eq)]
+// enum MenuActive {
+//     MenuNone,
+//     MenuSample,
+//     MenuSampleSub,
+// }
+// #[link_section = "data"]
+// #[no_mangle]
+// static mut MENU_CURSORS: MenuCursors = MenuCursors {
+//     sample_menu:     0,
+//     sample_sub_menu: 0,
+// };
+// #[link_section = "data"]
+// #[no_mangle]
+// static mut MENU_ACTIVE: MenuActive = MenuActive::MenuNone;
+
+// fn check_menu_input() {
+//     let up_pressed = is_pressed(DPAD_UP);
+//     let down_pressed = is_pressed(DPAD_DOWN);
+//     let right_held = is_down(DPAD_RIGHT);
+//     let b_pressed = is_pressed(B);
+//     let a_pressed = is_pressed(A);
+//     let c_held = is_down(C);
+//     let b1_held = is_down(ONE);
+//     let b2_held = is_down(TWO);
+
+//     let mut next_menu = unsafe { MENU_ACTIVE };
+
+//     match unsafe { MENU_ACTIVE } {
+//         MenuActive::MenuNone => {
+//             if b2_held && right_held {
+//                 next_menu = MenuActive::MenuSample;
+//             }
+//         },
+//         MenuActive::MenuSample => {
+//             if b_pressed {
+//                 next_menu = MenuActive::MenuNone;
+//             } else if a_pressed {
+//                 match unsafe { MENU_CURSORS.sample_menu } {
+//                     3 => next_menu = MenuActive::MenuSampleSub,
+//                     _ => {},
+//                 }
+//             } else if up_pressed {
+//                 unsafe {
+//                     MENU_CURSORS.sample_menu = (MENU_CURSORS.sample_menu +
+// 3) % 4;                 } } else if down_pressed { unsafe {
+//    MENU_CURSORS.sample_menu = (MENU_CURSORS.sample_menu +
+// 1) % 4;                 } } }, MenuActive::MenuSampleSub => { if b_pressed {
+//    next_menu = MenuActive::MenuSample; } else if a_pressed { match unsafe {
+//    MENU_CURSORS.sample_sub_menu } { 0 => { send_to_start(); next_menu =
+//    MenuActive::MenuNone; }, _ => {}, } } }, } unsafe { if MENU_ACTIVE !=
+//    next_menu { MENU_ACTIVE = next_menu; } }
+// }
+// fn display_menus() {
+//     match unsafe { MENU_ACTIVE } {
+//         MenuActive::MenuNone => {},
+//         MenuActive::MenuSample => {
+//             let mut menu = SimpleMenu::<10, 20>::new(10, 10, 10, "Sample
+// Menu\n");             menu.current_line = unsafe { MENU_CURSORS.sample_menu
+// };             menu.add_entry("Option 1\n");
+//             menu.add_entry("Option 2\n");
+//             menu.add_entry("Option 3\n");
+//             menu.add_entry("Load\n");
+//             menu.draw();
+//         },
+//         MenuActive::MenuSampleSub => {
+//             let mut menu = SimpleMenu::<10, 20>::new(10, 10, 10, "Sample Sub
+// Menu\n");             menu.current_line = unsafe {
+// MENU_CURSORS.sample_sub_menu };             menu.add_entry("Warp To
+// Start\n");             menu.draw();
+//         },
+//     }
+// }
+
 // A Common Place where Custom code can be injected to run once per frame
+// Returns whether or not to stop (0 == continue)
+// Its current by changing r31 we can stop the game :D
 #[no_mangle]
-fn custom_main_additions() {
-    // write_text_on_screen(); // This is test print code
+fn custom_main_additions(in_r31: u32) -> u32 {
+    // if in_r31 == 0 {
+    //     check_menu_input();
+    //     display_menus();
+    // }
+    // match unsafe { MENU_ACTIVE } {
+    //     MenuActive::MenuNone => in_r31,
+    // _ => 1,
+    // }
+    // write_text_on_screen(); // Example Function
+    return in_r31;
 }
 
 #[panic_handler]
