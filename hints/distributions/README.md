@@ -39,8 +39,8 @@ All fields are **required** in all distribution files, however, specific hint ty
   - Must match the check name exactly, as specified in checks.yaml in the root directory
 - added_items ([{ name: string, amount: number }])
   - Adds the sepcified number of copies of the item to the item hint pool
-- removed_items (Array of strings)
-  - Prevents the specified item from being hinted for any hint type
+- removed_items ([{ name: string, type: string ("item" or "sots") }])
+  - Prevents the specified item from being hinted for the specified hint type
 - dungeon_sots_limit (number)
   - Limits the number of dungeon SotS/Goal hints that can be placed. They will attempt be replaced by a different SotS/Goal hint if a hint past the limit would be placed.
 - dungeon_barren_limit (number)
