@@ -60,6 +60,11 @@ pub fn set_buttons_pressed(buttons: Buttons) {
         (*CORE_CONTROLLER).buttons_pressed = buttons.bits();
     }
 }
+pub fn set_buttons_not_pressed(buttons: Buttons) {
+    unsafe {
+        (*CORE_CONTROLLER).buttons_pressed &= !buttons.bits();
+    }
+}
 
 pub fn is_down(buttons: Buttons) -> bool {
     buttons_down().contains(buttons)

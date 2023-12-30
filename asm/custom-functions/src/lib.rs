@@ -15,6 +15,7 @@ mod menus;
 mod message;
 mod system;
 
+use menus::main_menu::MainMenu;
 use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
 use system::button::*;
 use system::text_print::write_to_screen;
@@ -809,7 +810,7 @@ fn custom_main_additions(in_r31: u32) -> u32 {
     let mut ret_val = in_r31;
 
     // Example menu
-    // if in_r31 == 0 && menus::display_menus() {
+    // if in_r31 == 0 && MainMenu::display() {
     //     ret_val = 1;
     // }
 
