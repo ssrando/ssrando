@@ -7,17 +7,17 @@ use core::{
     ptr, slice,
 };
 
-use button::*;
 use cstr::cstr;
 use wchar::wchz;
 
-use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
-use text_print::{write_to_screen, SimpleMenu};
-
-mod button;
 mod filemanager_gen;
+mod menus;
 mod message;
-mod text_print;
+mod system;
+
+use message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement};
+use system::button::*;
+use system::text_print::write_to_screen;
 
 #[repr(C)]
 struct SpawnStruct {
@@ -216,10 +216,6 @@ struct Heap {
 }
 
 extern "C" {
-
-    fn swprintf(out: *mut u16, len: u32, fmt: *const u16, ...) -> i32;
-    fn wcslen(string: *const u16) -> u32;
-    fn printf(string: *const c_char, ...);
     static mut CURRENT_HEAP: *mut Heap;
     static mut GAME_FRAME: u32;
     fn Heap__alloc(size: u32, align: u32, heap: *const Heap) -> *mut c_void;
@@ -805,101 +801,22 @@ fn get_glow_color(item_id: u32) -> u32 {
     4
 }
 
-// // Below is Code i Used to test menus (Not what is going to be final at all)
-// struct MenuCursors {
-//     sample_menu:     u32,
-//     sample_sub_menu: u32,
-// }
-
-// #[derive(Clone, Copy, PartialEq, Eq)]
-// enum MenuActive {
-//     MenuNone,
-//     MenuSample,
-//     MenuSampleSub,
-// }
-// #[link_section = "data"]
-// #[no_mangle]
-// static mut MENU_CURSORS: MenuCursors = MenuCursors {
-//     sample_menu:     0,
-//     sample_sub_menu: 0,
-// };
-// #[link_section = "data"]
-// #[no_mangle]
-// static mut MENU_ACTIVE: MenuActive = MenuActive::MenuNone;
-
-// fn check_menu_input() {
-//     let up_pressed = is_pressed(DPAD_UP);
-//     let down_pressed = is_pressed(DPAD_DOWN);
-//     let right_held = is_down(DPAD_RIGHT);
-//     let b_pressed = is_pressed(B);
-//     let a_pressed = is_pressed(A);
-//     let c_held = is_down(C);
-//     let b1_held = is_down(ONE);
-//     let b2_held = is_down(TWO);
-
-//     let mut next_menu = unsafe { MENU_ACTIVE };
-
-//     match unsafe { MENU_ACTIVE } {
-//         MenuActive::MenuNone => {
-//             if b2_held && right_held {
-//                 next_menu = MenuActive::MenuSample;
-//             }
-//         },
-//         MenuActive::MenuSample => {
-//             if b_pressed {
-//                 next_menu = MenuActive::MenuNone;
-//             } else if a_pressed {
-//                 match unsafe { MENU_CURSORS.sample_menu } {
-//                     3 => next_menu = MenuActive::MenuSampleSub,
-//                     _ => {},
-//                 }
-//             } else if up_pressed {
-//                 unsafe {
-//                     MENU_CURSORS.sample_menu = (MENU_CURSORS.sample_menu +
-// 3) % 4;                 } } else if down_pressed { unsafe {
-//    MENU_CURSORS.sample_menu = (MENU_CURSORS.sample_menu +
-// 1) % 4;                 } } }, MenuActive::MenuSampleSub => { if b_pressed {
-//    next_menu = MenuActive::MenuSample; } else if a_pressed { match unsafe {
-//    MENU_CURSORS.sample_sub_menu } { 0 => { send_to_start(); next_menu =
-//    MenuActive::MenuNone; }, _ => {}, } } }, } unsafe { if MENU_ACTIVE !=
-//    next_menu { MENU_ACTIVE = next_menu; } }
-// }
-// fn display_menus() {
-//     match unsafe { MENU_ACTIVE } {
-//         MenuActive::MenuNone => {},
-//         MenuActive::MenuSample => {
-//             let mut menu = SimpleMenu::<10, 20>::new(10, 10, 10, "Sample
-// Menu\n");             menu.current_line = unsafe { MENU_CURSORS.sample_menu
-// };             menu.add_entry("Option 1\n");
-//             menu.add_entry("Option 2\n");
-//             menu.add_entry("Option 3\n");
-//             menu.add_entry("Load\n");
-//             menu.draw();
-//         },
-//         MenuActive::MenuSampleSub => {
-//             let mut menu = SimpleMenu::<10, 20>::new(10, 10, 10, "Sample Sub
-// Menu\n");             menu.current_line = unsafe {
-// MENU_CURSORS.sample_sub_menu };             menu.add_entry("Warp To
-// Start\n");             menu.draw();
-//         },
-//     }
-// }
-
 // A Common Place where Custom code can be injected to run once per frame
 // Returns whether or not to stop (0 == continue)
 // Its current by changing r31 we can stop the game :D
 #[no_mangle]
 fn custom_main_additions(in_r31: u32) -> u32 {
-    // if in_r31 == 0 {
-    //     check_menu_input();
-    //     display_menus();
+    let mut ret_val = in_r31;
+
+    // Example menu
+    // if in_r31 == 0 && menus::display_menus() {
+    //     ret_val = 1;
     // }
-    // match unsafe { MENU_ACTIVE } {
-    //     MenuActive::MenuNone => in_r31,
-    // _ => 1,
-    // }
-    // write_text_on_screen(); // Example Function
-    return in_r31;
+
+    // Example Text
+    // write_text_on_screen();
+
+    return ret_val;
 }
 
 #[panic_handler]

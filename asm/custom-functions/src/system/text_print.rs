@@ -31,31 +31,31 @@ struct ConsoleHead {
 
 #[repr(C)]
 #[derive(Default)]
-struct CharWriter {
-    m_color_mapping:  [u32; 2],
-    m_vertex_colors:  [u32; 4],
-    m_text_color:     [u32; 2],
-    m_text_gradation: u32,
-    m_scale:          [f32; 2],
-    m_cursor_pos:     [f32; 3],
-    m_texture_filter: [u32; 2],
-    __pad:            u16,
-    m_alpha:          u8,
-    m_is_width_fixed: u8,
-    m_fixed_width:    f32,
-    m_font_ptr:       u32,
+pub struct CharWriter {
+    pub m_color_mapping:  [u32; 2],
+    pub m_vertex_colors:  [u32; 4],
+    pub m_text_color:     [u32; 2],
+    pub m_text_gradation: u32,
+    pub m_scale:          [f32; 2],
+    pub m_cursor_pos:     [f32; 3],
+    pub m_texture_filter: [u32; 2],
+    pub __pad:            u16,
+    pub m_alpha:          u8,
+    pub m_is_width_fixed: u8,
+    pub m_fixed_width:    f32,
+    pub m_font_ptr:       u32,
 }
 
 #[repr(C)]
 #[derive(Default)]
 pub struct TextWriterBase {
-    m_char_writer:   CharWriter,
-    m_width_limit:   f32,
-    m_char_space:    f32,
-    m_line_space:    f32,
-    m_tab_width:     i32,
-    m_draw_flag:     u32,
-    m_tag_processor: u32, // pointer to TagProcessor
+    pub m_char_writer:   CharWriter,
+    pub m_width_limit:   f32,
+    pub m_char_space:    f32,
+    pub m_line_space:    f32,
+    pub m_tab_width:     i32,
+    pub m_draw_flag:     u32,
+    pub m_tag_processor: u32, // pointer to TagProcessor
 }
 
 #[repr(C)]
@@ -119,7 +119,7 @@ impl Drop for TextWriterBase {
 }
 
 impl TextWriterBase {
-    fn new() -> Self {
+    pub fn new() -> Self {
         let mut text_writer = TextWriterBase::default();
         unsafe { __ct__TextWriterBase_WChar(&mut text_writer) };
         // Configure Color + Scale
@@ -133,13 +133,13 @@ impl TextWriterBase {
 
     // Sets the font [0, 1] = normal, [2, 3] = special, [4] = symbols
     // Returns if it is null
-    fn set_font(&mut self, fontidx: u32) -> bool {
+    pub fn set_font(&mut self, fontidx: u32) -> bool {
         self.m_char_writer.m_font_ptr = unsafe { FontMgr__GetFont(fontidx) };
         self.m_char_writer.m_font_ptr != 0
     }
 
     // Sets position to draw
-    fn set_position(&mut self, posx: i32, posy: i32) {
+    pub fn set_position(&mut self, posx: i32, posy: i32) {
         // Create Matrix to draw on screen
         // [1.f,  0.f, 0.f, posx-300]
         // [0.f, -1.f, 0.f, 220-posy]
@@ -163,7 +163,7 @@ impl TextWriterBase {
     // Sets the font colors
     // Set both to the same to make it a solid color
     // will vertically gradient it
-    fn set_font_color(&mut self, colors: [u32; 2]) {
+    pub fn set_font_color(&mut self, colors: [u32; 2]) {
         self.m_char_writer.m_text_color[0] = colors[0];
         self.m_char_writer.m_text_color[1] = colors[1];
         unsafe {
@@ -172,7 +172,7 @@ impl TextWriterBase {
     }
 
     // Prints text directly to screen
-    fn print(&mut self, string: &[u16]) {
+    pub fn print(&mut self, string: &[u16]) {
         if !self.set_font(0) {
             return;
         }
@@ -195,7 +195,7 @@ impl TextWriterBase {
     }
 
     // Prints symbols directly to screen
-    fn print_symbol(&mut self, string: &[u16]) {
+    pub fn print_symbol(&mut self, string: &[u16]) {
         if !self.set_font(4) {
             return;
         }
@@ -207,7 +207,7 @@ impl TextWriterBase {
 
 // WCharWriter can have fixed size based on use case.
 pub struct WCharWriter<const CAP: usize> {
-    buf: arrayvec::ArrayVec<u16, CAP>,
+    pub buf: arrayvec::ArrayVec<u16, CAP>,
 }
 
 impl<const CAP: usize> Write for WCharWriter<CAP> {
@@ -242,75 +242,6 @@ impl<const CAP: usize> WCharWriter<CAP> {
         let mut text_writer = TextWriterBase::new();
         text_writer.set_position(posx, posy);
         text_writer.print(&self.buf);
-    }
-}
-
-// Simple menu to Interact with. Will be revised heavily propbably
-// Can control how many lines to display.
-pub struct SimpleMenu<const NUM_LINES: usize, const LINE_SIZE: usize> {
-    posx:             i32,
-    posy:             i32,
-    max_lines:        u32,
-    pub current_line: u32,
-    heading:          WCharWriter<LINE_SIZE>,
-    line_buf:         arrayvec::ArrayVec<WCharWriter<LINE_SIZE>, NUM_LINES>,
-}
-
-impl<const NUM_LINES: usize, const LINE_SIZE: usize> SimpleMenu<NUM_LINES, LINE_SIZE> {
-    pub fn new(posx: i32, posy: i32, max_lines: u32, name: &str) -> Self {
-        let mut heading = WCharWriter::<LINE_SIZE>::new();
-        let _ = heading.write_str(&name);
-        Self {
-            posx,
-            posy,
-            max_lines,
-            current_line: 0,
-            heading,
-            line_buf: Default::default(),
-        }
-    }
-
-    pub fn add_entry(&mut self, entry: &str) {
-        if !self.line_buf.is_full() {
-            let mut writer_entry = WCharWriter::<LINE_SIZE>::new();
-            let _ = writer_entry.write_str(entry);
-            if !entry.ends_with('\n') {
-                let _ = writer_entry.write_str("\n");
-            }
-            self.line_buf.try_push(writer_entry).unwrap();
-        }
-    }
-    pub fn add_entry_args(&mut self, args: Arguments<'_>) {
-        if !self.line_buf.is_full() {
-            let mut writer_entry = WCharWriter::<LINE_SIZE>::new();
-            let _ = writer_entry.write_fmt(args);
-            self.line_buf.try_push(writer_entry).unwrap();
-        }
-    }
-
-    pub fn draw(&mut self) {
-        let mut writer = TextWriterBase::new();
-        // Black Font
-        writer.set_font_color([0x000000FF, 0x000000FF]);
-        writer.set_position(self.posx, self.posy);
-        self.heading.draw(&mut writer);
-        writer.print(wchz!(u16, "\n"));
-
-        // TODO: Add logic to limit to a certain number of lines
-        //       Control range so that the cursor is only at the top or bottom
-        //          when it is at its first/last elements. Otherwise window will scroll
-        for n in 0..self.line_buf.len() {
-            if n == self.current_line as usize {
-                writer.print_symbol(wchz!(u16, "6"));
-            } else {
-                writer.print(wchz!(u16, "    "));
-            }
-            let line = &mut self.line_buf.as_mut_slice()[n];
-            line.draw(&mut writer);
-
-            // Make sure that it is back to the leftmost side (formatting sucks)
-            writer.m_char_writer.m_cursor_pos[0] = 0.0f32;
-        }
     }
 }
 
