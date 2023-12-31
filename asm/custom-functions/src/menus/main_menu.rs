@@ -15,17 +15,24 @@ const NUM_MENU_ENTRIES: usize = 2;
 pub struct MainMenu {
     state:       MenuState,
     main_cursor: usize,
+    force_close: bool,
 }
 
 #[link_section = "data"]
 #[no_mangle]
-static mut MAIN_MENU: MainMenu = MainMenu {
+pub static mut MAIN_MENU: MainMenu = MainMenu {
     state:       MenuState::Off,
     main_cursor: 0,
+    force_close: false,
 };
 
 impl MainMenu {
     // returns treu if menu is active
+    pub fn disable() {
+        unsafe { MAIN_MENU.force_close = true };
+        set_buttons_not_pressed(B);
+    }
+
     pub fn display() -> bool {
         let mut next_menu = unsafe { MAIN_MENU.state };
         match unsafe { MAIN_MENU.state } {
@@ -35,10 +42,10 @@ impl MainMenu {
                 }
             },
             MenuState::MenuSelect => {
-                let mut menu = SimpleMenu::<5, 20>::new(10, 10, 10, "Main Menu Select\n");
+                let mut menu = SimpleMenu::<5, 20>::new(10, 10, 10, "Main Menu Select");
                 menu.current_line = unsafe { MAIN_MENU.main_cursor as u32 };
-                menu.add_entry("Sample Menu\n");
-                menu.add_entry("Warp Menu\n");
+                menu.add_entry("Sample Menu");
+                menu.add_entry("Warp Menu");
                 menu.draw();
                 if is_pressed(B) {
                     next_menu = MenuState::Off;
@@ -79,7 +86,12 @@ impl MainMenu {
             },
         }
         unsafe {
-            MAIN_MENU.state = next_menu;
+            if MAIN_MENU.force_close {
+                MAIN_MENU.force_close = false;
+                MAIN_MENU.state = MenuState::Off;
+            } else {
+                MAIN_MENU.state = next_menu;
+            }
         }
         return next_menu != MenuState::Off;
     }

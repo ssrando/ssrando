@@ -1,4 +1,5 @@
 use super::simple_menu::SimpleMenu;
+use crate::menus::main_menu::MainMenu;
 use crate::send_to_start;
 use crate::system::button::*;
 
@@ -70,6 +71,7 @@ impl SampleMenu {
                         0 => {
                             send_to_start();
                             next_menu = SampleMenuState::Off;
+                            MainMenu::disable();
                         },
                         _ => {},
                     }
@@ -96,16 +98,16 @@ impl SampleMenu {
             SampleMenuState::Off => {},
             SampleMenuState::Main => {
                 let mut menu =
-                    SimpleMenu::<{ NUM_ENTRIES_MAIN + 2 }, 20>::new(10, 10, 10, "Sample Menu\n");
+                    SimpleMenu::<{ NUM_ENTRIES_MAIN + 2 }, 20>::new(10, 10, 10, "Sample Menu");
                 menu.current_line = unsafe { SAMPLE_MENU.main_cursor as u32 };
-                menu.add_entry("Load\n");
+                menu.add_entry("Load");
                 menu.draw();
             },
             SampleMenuState::Sub => {
                 let mut menu =
-                    SimpleMenu::<{ NUM_ENTRIES_SUB + 2 }, 20>::new(10, 10, 10, "Sample Sub Menu\n");
+                    SimpleMenu::<{ NUM_ENTRIES_SUB + 2 }, 20>::new(10, 10, 10, "Sample Sub Menu");
                 menu.current_line = unsafe { SAMPLE_MENU.sub_cursor as u32 };
-                menu.add_entry("Warp To Start\n");
+                menu.add_entry("Warp To Start");
                 menu.draw();
             },
         }

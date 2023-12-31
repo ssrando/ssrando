@@ -34,9 +34,6 @@ impl<const NUM_LINES: usize, const LINE_SIZE: usize> SimpleMenu<NUM_LINES, LINE_
         if !self.line_buf.is_full() {
             let mut writer_entry = WCharWriter::<LINE_SIZE>::new();
             let _ = writer_entry.write_str(entry);
-            if !entry.ends_with('\n') {
-                let _ = writer_entry.write_str("\n");
-            }
             self.line_buf.try_push(writer_entry).unwrap();
         }
     }
@@ -54,22 +51,49 @@ impl<const NUM_LINES: usize, const LINE_SIZE: usize> SimpleMenu<NUM_LINES, LINE_
         writer.set_font_color([0x000000FF, 0x000000FF]);
         writer.set_position(self.posx, self.posy);
         self.heading.draw(&mut writer);
-        writer.print(wchz!(u16, "\n"));
+        writer.m_char_writer.m_cursor_pos[0] = 0.0f32;
 
         // TODO: Add logic to limit to a certain number of lines
         //       Control range so that the cursor is only at the top or bottom
         //          when it is at its first/last elements. Otherwise window will scroll
-        for n in 0..self.line_buf.len() {
-            if n == self.current_line as usize {
-                writer.print_symbol(wchz!(u16, "6"));
-            } else {
-                writer.print(wchz!(u16, "    "));
-            }
-            let line = &mut self.line_buf.as_mut_slice()[n];
-            line.draw(&mut writer);
 
-            // Make sure that it is back to the leftmost side (formatting sucks)
+        //  get lower and upper range
+        let range = self.max_lines as i32;
+        let len = self.line_buf.len() as i32;
+        let curr_line = self.current_line as i32;
+
+        let (mut lower, mut upper) = (0, len);
+        if len > range {
+            let (try_low, try_high) = (curr_line - range / 2, curr_line + range / 2);
+            if len > try_high && 0 < try_low {
+                (lower, upper) = (try_low, try_high);
+            } else {
+                if len - curr_line > range / 2 {
+                    (lower, upper) = (0, range);
+                } else {
+                    (lower, upper) = (len - range, len);
+                }
+            }
+        }
+
+        if lower > 0 {
+            writer.print_symbol(wchz!(u16, "\n3")); // up arrow
+        } else {
+            writer.print(wchz!(u16, "\n"));
+        }
+        for n in lower..upper {
             writer.m_char_writer.m_cursor_pos[0] = 0.0f32;
+            if n as usize == self.current_line as usize {
+                writer.print_symbol(wchz!(u16, "\n6")); // right arrow
+            } else {
+                writer.print(wchz!(u16, "\n    "));
+            }
+            let line = &mut self.line_buf.as_mut_slice()[n as usize];
+            line.draw(&mut writer);
+        }
+        writer.m_char_writer.m_cursor_pos[0] = 0.0f32;
+        if upper < len {
+            writer.print_symbol(wchz!(u16, "\n4")); // down arrow
         }
     }
 }

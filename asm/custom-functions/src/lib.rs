@@ -11,6 +11,7 @@ use cstr::cstr;
 use wchar::wchz;
 
 mod filemanager_gen;
+mod information;
 mod menus;
 mod message;
 mod system;
@@ -810,9 +811,9 @@ fn custom_main_additions(in_r31: u32) -> u32 {
     let mut ret_val = in_r31;
 
     // Example menu
-    // if in_r31 == 0 && MainMenu::display() {
-    //     ret_val = 1;
-    // }
+    if in_r31 == 0 && MainMenu::display() {
+        ret_val = 1;
+    }
 
     // Example Text
     // write_text_on_screen();
