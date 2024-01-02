@@ -735,7 +735,7 @@ RUPEE_CHECKS = [
     "Ancient Cistern - First Rupee in East Part in Short Tunnel",
     "Ancient Cistern - Second Rupee in East Part in Short Tunnel",
     "Ancient Cistern - Third Rupee in East Part in Short Tunnel",
-    # "Ancient Cistern - Rupee under Lilypad",
+    "Ancient Cistern - Rupee under Lilypad",
     "Ancient Cistern - Rupee in East Hand",
     "Ancient Cistern - Rupee in West Hand",
     "Sky Keep - Rupee in Fire Sanctuary Room in Alcove",
