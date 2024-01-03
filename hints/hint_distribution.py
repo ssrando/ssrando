@@ -307,7 +307,7 @@ class HintDistribution:
 
         loc = self.always_hints.pop()
         item = self.logic.placement.locations[loc]
-        if self.options["clear-location-hints"]:
+        if not self.options["cryptic-location-hints"]:
             text = None
         else:
             text = self.areas.checks[loc].get("text")
@@ -334,7 +334,7 @@ class HintDistribution:
 
         loc = self.sometimes_hints.pop()
         item = self.logic.placement.locations[loc]
-        if self.options["clear-location-hints"]:
+        if not self.options["cryptic-location-hints"]:
             text = None
         else:
             text = self.areas.checks[loc].get("text")
@@ -351,7 +351,7 @@ class HintDistribution:
 
         item = self.required_boss_keys.pop()
         loc = self.logic.placement.items[item]
-        if self.options["clear-location-hints"]:
+        if not self.options["cryptic-location-hints"]:
             text = None
         else:
             text = self.areas.checks[loc].get("text")
@@ -395,7 +395,7 @@ class HintDistribution:
 
         loc = self.rng.choice(all_locations_without_hint)
         item = self.logic.placement.locations[loc]
-        if self.options["clear-location-hints"]:
+        if not self.options["cryptic-location-hints"]:
             text = None
         else:
             text = self.areas.checks[loc].get("text")

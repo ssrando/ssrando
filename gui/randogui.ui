@@ -238,9 +238,9 @@
              <item>
               <layout class="QVBoxLayout" name="vlay_cosmetics">
                <item>
-                <widget class="QCheckBox" name="option_clear_location_hints">
+                <widget class="QCheckBox" name="option_cryptic_location_hints">
                  <property name="text">
-                  <string>Clear Location Hints</string>
+                  <string>Cryptic Location Hints</string>
                  </property>
                 </widget>
                </item>
