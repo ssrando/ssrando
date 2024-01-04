@@ -397,6 +397,7 @@ class RandoGUI(QMainWindow):
             self.randomization_complete
         )
         self.randomizer_thread.error_abort.connect(self.on_error)
+        self.randomizer_thread.error_retry.connect(self.on_failure)
         self.randomizer_thread.start()
 
     def update_progress_dialog(self, hash, steps):

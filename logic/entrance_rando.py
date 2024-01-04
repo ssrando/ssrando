@@ -100,7 +100,7 @@ class EntranceRando:
         entrances = [DUNGEON_OVERWORLD_ENTRANCES[dungeon] for dungeon in ALL_DUNGEONS]
 
         if der != "None" and self.options.randomize_all != "Vanilla":
-            raise self.useroutput.GenerationFailed(
+            raise ValueError(
                 "Dungeon Entrance Randomization and Full Entrance Randomization are currently incompatible"
             )
 
@@ -144,7 +144,7 @@ class EntranceRando:
         gates = [SILENT_REALM_GATES[realm] for realm in ALL_SILENT_REALMS]
 
         if ter and self.options.randomize_all != "Vanilla":
-            raise self.useroutput.GenerationFailed(
+            raise ValueError(
                 "Trial Randomization and Full Entrance Randomization are currently incompatible"
             )
 

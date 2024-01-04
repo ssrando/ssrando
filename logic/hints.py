@@ -94,9 +94,7 @@ class Hints:
                 for trial, exit in SILENT_REALM_EXITS.items()
             }.get(associated_entrance)
             if trial_of_entrance is None:
-                raise self.useroutput.GenerationFailed(
-                    "Cannot generate trial hint for non-trial check"
-                )
+                raise ValueError("Cannot generate trial hint for non-trial check")
             return self.norm(SILENT_REALM_CHECKS[trial_of_entrance])
 
         self.do_hint_per_status(hintmodes, does_hint, SongHint, get_check, SONG_HINTS)
