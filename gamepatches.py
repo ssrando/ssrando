@@ -1416,7 +1416,6 @@ class GamePatcher:
     def do_all_gamepatches(self):
         self.load_base_patches()
         self.add_entrance_rando_patches()
-        self.add_trial_rando_patches()
         if self.placement_file.options["shopsanity"]:
             self.shopsanity_patches()
         self.do_build_arc_cache()
@@ -1628,169 +1627,29 @@ class GamePatcher:
             self.all_asm_patches[exec_file].update(patches)
 
     def add_entrance_rando_patches(self):
-        for entrance, dungeon in self.placement_file.dungeon_connections.items():
-            entrance_stage, entrance_room, entrance_scen = DUNGEON_ENTRANCE_STAGES[
-                entrance
-            ]
-            dungeon_stage, layer, room, entrance_index = DUNGEON_ENTRANCES[dungeon]
-            # patch dungeon entrance
+        for (
+            exit_name,
+            entrance_name,
+        ) in self.placement_file.map_connections.items():
+            entrance = self.areas.map_entrances[entrance_name]
+            exit = self.areas.map_exits[exit_name]
+            if "stage" not in exit:
+                # assert self.areas.short_to_full(exit["vanilla"]) == entrance_name
+                # WARNING: This is not true for trial exits for logic hijack reasons
+                continue
             self.add_patch_to_stage(
-                entrance_stage,
+                exit["stage"],
                 {
-                    "name": f"Dungeon entrance patch - {entrance} to {dungeon}",
+                    "name": "ER Patch",
                     "type": "objpatch",
-                    "index": entrance_scen,
-                    "room": entrance_room,
+                    "index": exit["index"],
+                    "room": exit["room"],
                     "objtype": "SCEN",
                     "object": {
-                        "name": dungeon_stage,
-                        "layer": layer,
-                        "room": room,
-                        "entrance": entrance_index,
-                    },
-                },
-            )
-
-            # handle the extra loading zone to the dungeon in Sand Sea from Ancient Harbor
-            # yes I know there was probably a better way to do this but it's a one off special case
-            if entrance == SSH_ENTRANCE:
-                self.add_patch_to_stage(
-                    "F301",
-                    {
-                        "name": f"Dungeon entrance patch - Ancient Harbor to {dungeon}",
-                        "type": "objpatch",
-                        "index": 0,
-                        "room": 0,
-                        "objtype": "SCEN",
-                        "object": {
-                            "name": dungeon_stage,
-                            "layer": layer,
-                            "room": room,
-                            "entrance": entrance_index,
-                        },
-                    },
-                )
-                self.add_patch_to_stage(
-                    "F301",
-                    {
-                        "name": f"Dungeon entrance patch - Ancient Harbor to {dungeon}",
-                        "type": "objpatch",
-                        "index": 4,
-                        "room": 0,
-                        "objtype": "SCEN",
-                        "object": {
-                            "name": dungeon_stage,
-                            "layer": layer,
-                            "room": room,
-                            "entrance": entrance_index,
-                        },
-                    },
-                )
-
-            # most dungeons only have a single exit, exception being LMF, which is handled seperately
-            exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_EXITS[entrance]
-            # the exit out of the back of LMF is special, because it's the only dungeon finish that can be
-            # taken multiple times. The first time it should show a save prompt and subsequent times
-            # it should not and they don't need to be touched if the LMF entrance is vanilla
-            # the first time exit is taken care of by the DUNGEON_FINISH_EXIT_SCEN stuff
-            # patch the secondary exit if it's not vanilla
-            if dungeon == LMF and not entrance == LMF_ENTRANCE:
-                self.add_patch_to_stage(
-                    "F300_5",
-                    {
-                        "name": f"Dungeon exit patch - second LMF finish to {entrance}",
-                        "type": "objpatch",
-                        "index": 1,
-                        "room": 0,
-                        "objtype": "SCEN",
-                        "object": {
-                            "name": exit_stage,
-                            "layer": exit_layer,
-                            "room": exit_room,
-                            "entrance": exit_entrance,
-                        },
-                    },
-                )
-            # patch all the exits for the dungeon
-            for scen_stage, scen_room, scen_index in DUNGEON_EXIT_SCENS[dungeon]:
-                self.add_patch_to_stage(
-                    scen_stage,
-                    {
-                        "name": f"Dungeon exit patch - {dungeon} to {entrance}",
-                        "type": "objpatch",
-                        "index": scen_index,
-                        "room": scen_room,
-                        "objtype": "SCEN",
-                        "object": {
-                            "name": exit_stage,
-                            "layer": exit_layer,
-                            "room": exit_room,
-                            "entrance": exit_entrance,
-                        },
-                    },
-                )
-
-            scen_stage, scen_room, scen_index = DUNGEON_FINISH_EXIT_SCEN[dungeon]
-            exit_stage, exit_layer, exit_room, exit_entrance = DUNGEON_FINISH_EXITS[
-                entrance
-            ]
-            self.add_patch_to_stage(
-                scen_stage,
-                {
-                    "name": f"Dungeon finish exit patch - {dungeon} to {entrance}",
-                    "type": "objpatch",
-                    "index": scen_index,
-                    "room": scen_room,
-                    "objtype": "SCEN",
-                    "object": {
-                        "name": exit_stage,
-                        "layer": exit_layer,
-                        "room": exit_room,
-                        "entrance": exit_entrance,
-                        "saveprompt": 1,  # save prompt
-                    },
-                },
-            )
-
-    def add_trial_rando_patches(self):
-        for trial_gate, trial in self.placement_file.trial_connections.items():
-            trial_gate_stage, trial_gate_room, trial_gate_scen = TRIAL_GATE_STAGES[
-                trial_gate
-            ]
-            trial_stage, layer, room, trial_gate_index = TRIAL_ENTRANCES[trial]
-            # patch dungeon entrance
-            self.add_patch_to_stage(
-                trial_gate_stage,
-                {
-                    "name": f"Trial gate patch - {trial_gate} to {trial}",
-                    "type": "objpatch",
-                    "index": trial_gate_scen,
-                    "room": trial_gate_room,
-                    "objtype": "SCEN",
-                    "object": {
-                        "name": trial_stage,
-                        "layer": layer,
-                        "room": room,
-                        "entrance": trial_gate_index,
-                    },
-                },
-            )
-
-            scen_stage, scen_room, scen_index = TRIAL_EXIT_SCENS[trial]
-            exit_stage, exit_layer, exit_room, exit_entrance = TRIAL_EXITS[trial_gate]
-            self.add_patch_to_stage(
-                scen_stage,
-                {
-                    "name": f"Trial exit patch - {trial} to {trial_gate}",
-                    "type": "objpatch",
-                    "index": scen_index,
-                    "room": scen_room,
-                    "objtype": "SCEN",
-                    "object": {
-                        "name": exit_stage,
-                        "layer": exit_layer,
-                        "room": exit_room,
-                        "entrance": exit_entrance,
+                        "name": entrance["stage"],
+                        "layer": entrance["layer"],
+                        "room": entrance["room"],
+                        "entrance": entrance["entrance"],
                     },
                 },
             )
@@ -3084,23 +2943,22 @@ class GamePatcher:
         dol.write_data_bytes(0x804EE1B8, start_flags_write.getbuffer())
 
         # write startstage (used for ER) to some unused space
-        start_entrance = self.placement_file.start_entrance
-
-        # HARDCODE STARTING ENTRANCE HERE
-        #
-        # Make sure to set the stage_offset, room, layer, AND entrance values
-        # to match a valid in-game entrance or you WILL crash.
-
-        dol.write_data_bytes(0x802DA0E0, toBytes(start_entrance["stage"], 8))
-        dol.write_data(write_u8, 0x802DA0E8, start_entrance["room"])
-        dol.write_data(write_u8, 0x802DA0E9, start_entrance["layer"])
-        dol.write_data(write_u8, 0x802DA0EA, start_entrance["entrance"])
+        start_entrance = self.placement_file.map_connections[
+            self.areas.short_to_full(START)
+        ]
+        start_entrance_data = self.areas.map_entrances[start_entrance]
+        dol.write_data_bytes(0x802DA0E0, toBytes(start_entrance_data["stage"], 8))
+        dol.write_data(write_u8, 0x802DA0E8, start_entrance_data["room"])
+        dol.write_data(write_u8, 0x802DA0E9, start_entrance_data["layer"])
+        dol.write_data(write_u8, 0x802DA0EA, start_entrance_data["entrance"])
         dol.write_data(
-            write_u8, 0x802DA0EB, start_entrance["day-night"] & 1
+            write_u8, 0x802DA0EB, start_entrance_data["tod"] & 1
         )  # force day when value is >1
 
-        force_mogma_cave_dive = (
-            start_entrance["stage"] == "F210" and start_entrance["entrance"] == 0
+        force_mogma_cave_dive = any(
+            exit != self.areas.short_to_full(EXIT_TO_TURF)
+            for exit, entrance in self.placement_file.map_connections.items()
+            if entrance == self.areas.short_to_full(TURF_ENTRANCE)
         )
 
         dol.write_data(

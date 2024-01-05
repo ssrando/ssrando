@@ -194,6 +194,10 @@ class Areas:
             return check["short_name"]
         if s in self.gossip_stones:
             return self.gossip_stones[s]["short_name"]
+        if s in self.map_exits:
+            return self.map_exits[s]["short_name"]
+        if s in self.map_entrances:
+            return self.map_entrances[s]["short_name"]
         if "\\" not in s and "#" not in s:
             return s
         raise ValueError(f"Can't find a shortname for {s}.")

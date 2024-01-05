@@ -24,9 +24,6 @@ from .pools import *
 class AdditionalInfo:
     required_dungeons: List[str]
     unrequired_dungeons: List[str]
-    randomized_dungeon_entrance: dict[str, str]
-    randomized_trial_entrance: dict[str, str]
-    randomized_start_entrance: dict[str, str]
     known_locations: List[EIN]
 
 
@@ -51,9 +48,6 @@ class LogicUtils(Logic):
         self.full_inventory = Logic.get_everything_unbanned(self.requirements)
         self.required_dungeons = additional_info.required_dungeons
         self.unrequired_dungeons = additional_info.unrequired_dungeons
-        self.randomized_dungeon_entrance = additional_info.randomized_dungeon_entrance
-        self.randomized_trial_entrance = additional_info.randomized_trial_entrance
-        self.randomized_start_entrance = additional_info.randomized_start_entrance
         self.known_locations = additional_info.known_locations
 
     def check(self, useroutput):
@@ -68,7 +62,7 @@ class LogicUtils(Logic):
             (everything_req,) = self.requirements[EVERYTHING_BIT].disjunction
             i = next(iter(everything_req.intset - full_inventory.intset))
             check = self.areas.full_to_short(EXTENDED_ITEM.get_item_name(i))
-            raise useroutput.GenerationFailed(f"Could not reach check {check}.")
+            # raise useroutput.GenerationFailed(f"Could not reach check {check}.")
 
         if not all(item in self.placement.locations for item in self.areas.checks):
             check = next(iter(set(self.areas.checks) - set(self.placement.locations)))

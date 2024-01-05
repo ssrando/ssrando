@@ -535,6 +535,9 @@ UNPLACED_ITEM = EIN("Unplaced Item")
 SONG_IMPA_CHECK = "Sealed Grounds - Song from Impa"
 COMPLETE_TRIFORCE = "Complete Triforce"
 
+EXIT_TO_TURF = "Eldin Volcano - Dive to Mogma Turf"
+TURF_ENTRANCE = "Mogma Turf - Entrance"
+
 trick: Callable[[str], str] = lambda s: s + " Trick"
 
 CISTERN_CLIP = EIN(trick("Ancient Cistern - Cistern Clip"))

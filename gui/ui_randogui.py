@@ -612,20 +612,25 @@ class Ui_MainWindow(object):
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
         self.vlay_entrance_rando = QVBoxLayout()
         self.vlay_entrance_rando.setObjectName(u"vlay_entrance_rando")
-        self.vlay_dungeon_entrance_rando = QVBoxLayout()
-        self.vlay_dungeon_entrance_rando.setObjectName(u"vlay_dungeon_entrance_rando")
         self.label_for_option_randomize_entrances = QLabel(self.box_entrance_rando)
         self.label_for_option_randomize_entrances.setObjectName(u"label_for_option_randomize_entrances")
 
-        self.vlay_dungeon_entrance_rando.addWidget(self.label_for_option_randomize_entrances)
+        self.vlay_entrance_rando.addWidget(self.label_for_option_randomize_entrances)
 
         self.option_randomize_entrances = QComboBox(self.box_entrance_rando)
         self.option_randomize_entrances.setObjectName(u"option_randomize_entrances")
 
-        self.vlay_dungeon_entrance_rando.addWidget(self.option_randomize_entrances)
+        self.vlay_entrance_rando.addWidget(self.option_randomize_entrances)
 
+        self.label_for_option_randomize_dungeon_entrances = QLabel(self.box_entrance_rando)
+        self.label_for_option_randomize_dungeon_entrances.setObjectName(u"label_for_option_randomize_dungeon_entrances")
 
-        self.vlay_entrance_rando.addLayout(self.vlay_dungeon_entrance_rando)
+        self.vlay_entrance_rando.addWidget(self.label_for_option_randomize_dungeon_entrances)
+
+        self.option_randomize_dungeon_entrances = QComboBox(self.box_entrance_rando)
+        self.option_randomize_dungeon_entrances.setObjectName(u"option_randomize_dungeon_entrances")
+
+        self.vlay_entrance_rando.addWidget(self.option_randomize_dungeon_entrances)
 
         self.option_randomize_trials = QCheckBox(self.box_entrance_rando)
         self.option_randomize_trials.setObjectName(u"option_randomize_trials")
@@ -1569,9 +1574,9 @@ class Ui_MainWindow(object):
         self.tab_cosmetics.setObjectName(u"tab_cosmetics")
         self.verticalLayout_31 = QVBoxLayout(self.tab_cosmetics)
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
-        self.horizontalLayout_101 = QHBoxLayout()
-        self.horizontalLayout_101.setObjectName(u"horizontalLayout_101")
-        self.horizontalLayout_101.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(-1, -1, -1, 0)
         self.custom_model_settings = QVBoxLayout()
         self.custom_model_settings.setObjectName(u"custom_model_settings")
         self.hlay_type_options = QHBoxLayout()
@@ -1649,7 +1654,7 @@ class Ui_MainWindow(object):
         self.custom_model_settings.addLayout(self.hlay_pack_options)
 
 
-        self.horizontalLayout_101.addLayout(self.custom_model_settings)
+        self.horizontalLayout_11.addLayout(self.custom_model_settings)
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
@@ -1693,10 +1698,10 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.color_presets_list, 0, 1, 1, 3)
 
 
-        self.horizontalLayout_101.addLayout(self.gridLayout)
+        self.horizontalLayout_11.addLayout(self.gridLayout)
 
 
-        self.verticalLayout_31.addLayout(self.horizontalLayout_101)
+        self.verticalLayout_31.addLayout(self.horizontalLayout_11)
 
         self.hlay_colors_and_preview = QHBoxLayout()
         self.hlay_colors_and_preview.setObjectName(u"hlay_colors_and_preview")
@@ -2010,6 +2015,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setCurrentIndex(0)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
+        self.option_randomize_dungeon_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
         self.option_model_pack_select.setCurrentIndex(-1)
 
@@ -2076,8 +2082,10 @@ class Ui_MainWindow(object):
         self.option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
         self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))
         self.box_entrance_rando.setTitle(QCoreApplication.translate("MainWindow", u"Entrance Randomization", None))
-        self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Dungeon Entrances", None))
+        self.label_for_option_randomize_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Entrances", None))
         self.option_randomize_entrances.setCurrentText("")
+        self.label_for_option_randomize_dungeon_entrances.setText(QCoreApplication.translate("MainWindow", u"Randomize Dungeon Entrances", None))
+        self.option_randomize_dungeon_entrances.setCurrentText("")
         self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
         self.label_for_option_random_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Spawn", None))
         self.option_limit_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Limit Starting Location", None))

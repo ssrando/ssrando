@@ -11,13 +11,23 @@ from .fill_algo_common import RandomizationSettings, UserOutput
 
 class FrontFill:
     def __init__(
-        self, logic: Logic, rng: random.Random, randosettings: RandomizationSettings
+        self,
+        logic: Logic,
+        rng: random.Random,
+        useroutput: UserOutput,
+        randosettings: RandomizationSettings,
     ):
         self.logic = logic
         self.rng = rng
         self.randosettings = randosettings
 
         full_inventory = Logic.get_everything_unbanned(self.logic.requirements)
+
+        if not (randosettings.check_bits <= full_inventory):
+            raise useroutput.GenerationFailed(
+                f"Could not reach all objectives after entrances randomization."
+            )
+
         truly_progress_item = Logic.aggregate_requirements(
             self.logic.requirements, full_inventory, EVERYTHING_UNBANNED_BIT
         )

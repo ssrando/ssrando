@@ -377,24 +377,32 @@ class RandoGUI(QMainWindow):
         self.rando = Randomizer(self.areas, self.options.copy())
 
         if dry_run:
-            extra_steps = 1  # done
+            self.extra_steps = 1  # done
         else:
-            extra_steps = 101  # create iso + done
+            self.extra_steps = 101  # create iso + done
 
         self.progress_dialog = ProgressDialog(
-            f"Randomizing - Hash: {self.rando.randomizer_hash}",
+            f"Randomizing",
             "Initializing...",
-            self.rando.get_total_progress_steps + extra_steps,
+            self.extra_steps,
         )
         self.randomizer_thread = RandomizerThread(
             self.rando, self.extract_manager, self.options["output-folder"]
+        )
+        self.randomizer_thread.update_progress_dialog.connect(
+            self.update_progress_dialog
         )
         self.randomizer_thread.update_progress.connect(self.ui_progress_callback)
         self.randomizer_thread.randomization_complete.connect(
             self.randomization_complete
         )
         self.randomizer_thread.error_abort.connect(self.on_error)
+        self.randomizer_thread.error_retry.connect(self.on_failure)
         self.randomizer_thread.start()
+
+    def update_progress_dialog(self, hash, steps):
+        self.progress_dialog.setWindowTitle(f"Randomizing - Hash: {hash}")
+        self.progress_dialog.setMaximum(self.extra_steps + steps)
 
     def ui_progress_callback(
         self, current_action: str, completed_steps: int, total_steps: int = None
@@ -403,6 +411,13 @@ class RandoGUI(QMainWindow):
         self.progress_dialog.set_current_action(current_action)
         if not total_steps is None:
             self.progress_dialog.setMaximum(total_steps)
+
+    def on_failure(self, new_seed: str):
+        if self.progress_dialog is not None:
+            self.progress_dialog.reset()
+            self.progress_dialog.set_current_action(
+                f"Generation failure, trying seed {new_seed}"
+            )
 
     def on_error(self, message: str):
         self.error_msg = QErrorMessage(self)

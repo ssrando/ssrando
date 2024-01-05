@@ -168,14 +168,6 @@ class HintDistribution:
         self.hinted_locations = unhintable
 
         self.banned_stones = list(map(areas.short_to_full, self.banned_stones))
-        self.hints_per_stone = {
-            stone: 0 if stone in self.banned_stones else self.hints_per_stone
-            for stone in self.areas.gossip_stones
-        }
-        self.nb_hints = sum(self.hints_per_stone.values())
-        assert self.nb_hints <= MAX_STONE_HINTS
-        self.nb_hints += self.fi_hints
-        assert self.fi_hints <= MAX_FI_HINTS
 
         check_hint_status2 = (
             check_hint_status
@@ -282,9 +274,8 @@ class HintDistribution:
     Uses the distribution to calculate all the hints
     """
 
-    def get_hints(self) -> List[RegularHint]:
+    def get_hints(self, count) -> List[RegularHint]:
         hints = self.hints
-        count = self.nb_hints
         while len(hints) < count:
             [hint_type] = self.rng.choices(self.weighted_types, self.weights)
             func = self.hintfuncs[hint_type]

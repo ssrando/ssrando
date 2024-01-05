@@ -11,13 +11,23 @@ from .fill_algo_common import RandomizationSettings, UserOutput
 
 class AssumedFill:
     def __init__(
-        self, logic: Logic, rng: random.Random, randosettings: RandomizationSettings
+        self,
+        logic: Logic,
+        rng: random.Random,
+        useroutput: UserOutput,
+        randosettings: RandomizationSettings,
     ):
         self.logic = logic
         self.rng = rng
         self.randosettings = randosettings
 
         full_inventory = Logic.get_everything_unbanned(self.logic.requirements)
+
+        if not (randosettings.check_bits <= full_inventory):
+            raise useroutput.GenerationFailed(
+                f"Could not reach all objectives after entrances randomization."
+            )
+
         truly_progress_item = Logic.aggregate_requirements(
             self.logic.requirements, full_inventory, EVERYTHING_UNBANNED_BIT
         )
@@ -85,7 +95,7 @@ class AssumedFill:
     def fill_with_junk(self, junk):
         empty_locations = [
             loc
-            for loc in self.logic.accessible_checks()
+            for loc in self.logic.check_list("")
             if loc not in self.logic.placement.locations
         ]
         junk = list(junk)

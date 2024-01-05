@@ -36,9 +36,7 @@ def write(
     required_dungeons,
     sots_items,
     barren_nonprogress,
-    randomized_dungeon_entrance,
-    randomized_trial_entrance,
-    randomized_start_entrance,
+    randomized_entrances,
 ):
     write_header(file, options, hash)
     norm = areas.prettify
@@ -178,24 +176,46 @@ def write(
     # Write entrances.
     file.write("Entrances:\n")
 
+    # Write down exits.
+    sorted_checks = list(areas.map_exits)
+    sorted_randomized_entrances = sorted(
+        randomized_entrances.items(), key=lambda c: sorted_checks.index(c[0])
+    )
+    prettified_randomized_entrances = [
+        (norm(exit_name), norm(entrance_name))
+        for exit_name, entrance_name in sorted_randomized_entrances
+    ]
+    max_exit_name_length = 1 + max(
+        len(loc) for loc, _ in prettified_randomized_entrances
+    )
+
     # Write starting entrance.
     file.write("  Starting Entrance:\n")
-    file.write(f"    {randomized_start_entrance['statue-name']}\n\n")
+    file.write(f"    {norm(randomized_entrances[areas.short_to_full(START)])}\n\n")
 
     # Write dungeon entrances.
     file.write("  Dungeon Entrances:\n")
-    for (
-        entrance_name,
-        dungeon,
-    ) in randomized_dungeon_entrance.items():
-        file.write(f"    {entrance_name+':':48} {dungeon}\n")
+    for dungeon in ALL_DUNGEONS:
+        entrance_name = DUNGEON_OVERWORLD_ENTRANCES[dungeon]
+        exit_to = areas.short_to_full(DUNGEON_ENTRANCE_EXITS[entrance_name][0])
+        associated_entrance = norm(randomized_entrances[exit_to])
+        file.write(f"    {entrance_name+':':48} {associated_entrance}\n")
 
     file.write("\n\n")
 
     # Write randomized trial gates.
     file.write("Trial Gates:\n")
-    for trial_gate, trial in randomized_trial_entrance.items():
-        file.write(f"  {trial_gate+':':48} {trial}\n")
+    for realm in ALL_SILENT_REALMS:
+        trial_gate = SILENT_REALM_GATES[realm]
+        gate_exit = areas.short_to_full(TRIAL_GATE_EXITS[trial_gate])
+        associated_entrance = norm(randomized_entrances[gate_exit])
+        file.write(f"  {trial_gate+':':48} {associated_entrance}\n")
+
+    file.write("\n\n")
+
+    file.write("Exits:\n")
+    for exit_name, entrance_name in prettified_randomized_entrances:
+        file.write(f"  {exit_name + ':':{max_exit_name_length}} {entrance_name}\n")
 
     file.write("\n\n\n")
 
@@ -234,9 +254,7 @@ def dump_json(
     required_dungeons,
     sots_items,
     barren_nonprogress,
-    randomized_dungeon_entrance,
-    randomized_trial_entrance,
-    randomized_start_entrance,
+    randomized_entrances,
 ):
     spoiler_log = dump_header_json(options, hash)
     if options["no-spoiler-log"]:
@@ -250,9 +268,7 @@ def dump_json(
     spoiler_log["playthrough"] = progression_spheres
     spoiler_log["item-locations"] = placement.items
     spoiler_log["hints"] = {k: v.to_spoiler_log_json() for k, v in hints.items()}
-    spoiler_log["entrances"] = randomized_dungeon_entrance
-    spoiler_log["trial-connections"] = randomized_trial_entrance
-    spoiler_log["randomized-start-entrance"] = randomized_start_entrance
+    spoiler_log["entrances"] = randomized_entrances
     return spoiler_log
 
 
