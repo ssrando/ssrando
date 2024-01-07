@@ -59,9 +59,7 @@ Volcano:
     locations:
       Unlock Shortcut to Pre Turf: Nothing
       Watch Bridge Cutscene: Nothing
-      East - Southeast Rupee above Mogma Turf Entrance: Beetle
-      East - North Rupee above Mogma Turf Entrance: Beetle
-      East - Goddess Cube near Mogma Turf Entrance: Goddess Sword
+      # can get cube and mogma turf entrance rupees from here, but getting to East from here requires nothing
 
   Ascent:
     exits:
@@ -326,7 +324,7 @@ Bokoblin Base:
       First Chest in Volcano Summit: Fireshield Earrings
       Raised Chest in Volcano Summit: Fireshield Earrings
       Chest in Volcano Summit Alcove: Fireshield Earrings & Practice Sword
-      Volcano Summit - Goddess Cube inside Volcano Summit: Fireshield Earrings
+      Volcano Summit - Goddess Cube inside Volcano Summit: Fireshield Earrings & Goddess Sword
   
   Fire Dragon's Lair:
     exits:
