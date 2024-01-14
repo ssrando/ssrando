@@ -15,7 +15,7 @@ void handleHitEvent(AcOSwSwordBeam *actor)
     if (!SCENEFLAG_MANAGER->checkFlag(0, 50))
     {
         // first reward
-        giveItem((actor->params1 >> 0x18) & 0xFF, -1, 0);
+        AcItem__giveItem((actor->params1 >> 0x18) & 0xFF, -1, 0);
         SCENEFLAG_MANAGER->setFlag(0, 50);
     }
     if (CURRENT_SWORD < 2)
@@ -23,7 +23,7 @@ void handleHitEvent(AcOSwSwordBeam *actor)
     if (!SCENEFLAG_MANAGER->checkFlag(0, 51))
     {
         // second reward
-        giveItem((actor->params1 >> 0x10) & 0xFF, -1, 0);
+        AcItem__giveItem((actor->params1 >> 0x10) & 0xFF, -1, 0);
         SCENEFLAG_MANAGER->setFlag(0, 51);
     }
     if (CURRENT_SWORD < 3)
@@ -31,7 +31,7 @@ void handleHitEvent(AcOSwSwordBeam *actor)
     if (!SCENEFLAG_MANAGER->checkFlag(0, 52))
     {
         // third reward
-        giveItem((actor->params2 >> 0x18) & 0xFF, -1, 0);
+        AcItem__giveItem((actor->params2 >> 0x18) & 0xFF, -1, 0);
         SCENEFLAG_MANAGER->setFlag(0, 52);
     }
 }

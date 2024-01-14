@@ -1,4 +1,4 @@
-use core::ffi::{c_int, c_void};
+use core::ffi::c_void;
 
 #[repr(C)]
 pub struct FlowElement {
