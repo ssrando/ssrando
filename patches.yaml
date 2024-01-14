@@ -29,7 +29,7 @@ global:
     - 115 # Full Lake Floria map
     - 129 # Updated Lanayru Desert map
     - 199 # talked to sword instructor after practice sword chest
-    - 804 # eldin entrance statue
+    # - 804 # eldin entrance statue - removed, as it is handled by starting statue rando
     - 386 # first part of bertie's text seen
     - 60 # Fi text before Yerbal
     # - 168 # Boko Base map, removed cos it doesn't work as intended
@@ -156,7 +156,7 @@ global:
       - 7  # pushed first minecart to end
       - 50 # Enter Lanayru Mining Facility (LMF) Cutscene
       - 55 # Lanayru Desert Intro Cutscene
-      - 68 # desert statue checked
+      # - 68 # desert statue checked - removed as it is handled by starting statue rando
       - onlyif: Option "open-lmf" Is "Open"
         flag: 30 # LMF Rises CS
       - onlyif: Option "open-lmf" Is "Open"

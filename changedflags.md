@@ -84,6 +84,9 @@ New Trial Completed Storyflags:
 
 Sceneflags  
 
+Sealed Grounds:
+35: Sealed Grounds statue checked (in vanilla, this does nothing. Changed to toggle statue for starting statue rando)
+
 Ancient Cistern:  
 85: After receiving Item from flame CS  
 

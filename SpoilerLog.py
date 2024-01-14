@@ -39,6 +39,7 @@ def write(
     randomized_dungeon_entrance,
     randomized_trial_entrance,
     randomized_start_entrance,
+    randomized_start_statues,
 ):
     write_header(file, options, hash)
     norm = areas.prettify
@@ -182,6 +183,16 @@ def write(
     file.write("  Starting Entrance:\n")
     file.write(f"    {randomized_start_entrance['statue-name']}\n\n")
 
+    # Write starting pillar statues.
+    file.write("  Starting Statues:\n")
+    for (
+        pillar_name,
+        statue,
+    ) in randomized_start_statues.items():
+        file.write(f"    {pillar_name+':':48} {statue[1]}\n")
+
+    file.write("\n")
+
     # Write dungeon entrances.
     file.write("  Dungeon Entrances:\n")
     for (
@@ -237,6 +248,7 @@ def dump_json(
     randomized_dungeon_entrance,
     randomized_trial_entrance,
     randomized_start_entrance,
+    randomized_start_statues,
 ):
     spoiler_log = dump_header_json(options, hash)
     if options["no-spoiler-log"]:
@@ -253,6 +265,7 @@ def dump_json(
     spoiler_log["entrances"] = randomized_dungeon_entrance
     spoiler_log["trial-connections"] = randomized_trial_entrance
     spoiler_log["randomized-start-entrance"] = randomized_start_entrance
+    spoiler_log["randomized-start-statues"] = randomized_start_statues
     return spoiler_log
 
 

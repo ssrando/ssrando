@@ -144,6 +144,37 @@ TABLET_TO_PROVINCE = {
     AMBER_TABLET: LANAYRU_PROVINCE,
 }
 
+# Bird Statues
+
+SG = "Sealed Grounds"
+BTT = "Behind the Temple"
+FWE = "Faron Woods Entry"
+ITW = "In the Woods"
+VP = "Viewing Platform"
+GTT = "Great Tree Top"
+FT = "Forest Temple"
+DW = "Deep Woods"
+LF = "Lake Floria"
+FW = "Floria Waterfall"
+VEN = "Volcano Entry"
+VEA = "Volcano East"
+VA = "Volcano Ascent"
+TE = "Temple Entrance"
+LME = "Lanayru Mine Entry"
+DE = "Desert Entry"
+WD = "West Desert"
+ND = "North Desert"
+SC = "Stone Cache"
+DG = "Desert Gorge"
+TOT = "Temple of Time"
+LG = "Lanayru Gorge"
+AH = "Ancient Harbour"
+SR = "Skipper's Retreat"
+LS = "Lanayru Shipyard"
+PS = "Pirate Stronghold"
+
+VANILLA_START_STATUES = [SG, VEN, LME]
+
 # Items
 
 ITEM_COUNTS: Dict[str, int] = defaultdict(lambda: 1)

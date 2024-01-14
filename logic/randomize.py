@@ -101,6 +101,7 @@ class Rando:
             self.randomized_dungeon_entrance,
             self.randomized_trial_entrance,
             self.randomized_start_entrance,
+            self.randomized_start_statues,
             list(self.placement.locations),
         )
 
@@ -631,3 +632,58 @@ class Rando:
         assert self.randomized_start_entrance["layer"] is not None
         assert self.randomized_start_entrance["entrance"] is not None
         assert self.randomized_start_entrance["day-night"] is not None
+
+        # Starting bird statue rando
+
+        bsr = self.options["random-start-statues"]
+
+        possible_bird_statues = [
+            (entrance, values)
+            for entrance, values in self.areas.map_entrances.items()
+            if values.get("subtype", False)
+            and values["subtype"] == "bird-statue-entrance"
+            and (bsr or values.get("statue-name") in VANILLA_START_STATUES)
+        ]
+
+        possible_faron_statues = [
+            (entrance, values.get("statue-name"))
+            for entrance, values in possible_bird_statues
+            if values.get("province") == FARON_PROVINCE
+        ]
+
+        faron_start_statue = self.rng.choice(possible_faron_statues)
+
+        possible_eldin_statues = [
+            (entrance, values.get("statue-name"))
+            for entrance, values in possible_bird_statues
+            if (values.get("province") == ELDIN_PROVINCE)
+            and ("Fire Sanctuary" not in entrance)  # exclude invalid VS/FS statues
+        ]
+
+        eldin_start_statue = self.rng.choice(possible_eldin_statues)
+
+        possible_lanayru_statues = [
+            (entrance, values.get("statue-name"))
+            for entrance, values in possible_bird_statues
+            if values.get("province") == LANAYRU_PROVINCE
+        ]
+
+        lanayru_start_statue = self.rng.choice(possible_lanayru_statues)
+
+        # Logically bind the first-time dive to the statue to unlock it
+
+        self.placement.map_transitions[
+            "\Sky\\South East\\Faron Pillar\\First Time Dive"
+        ] = faron_start_statue[0]
+        self.placement.map_transitions[
+            "\Sky\\North East\\Eldin Pillar\\First Time Dive"
+        ] = eldin_start_statue[0]
+        self.placement.map_transitions[
+            "\Sky\\South West\\Lanayru Pillar\\First Time Dive"
+        ] = lanayru_start_statue[0]
+
+        self.randomized_start_statues = {
+            "Faron Pillar": faron_start_statue,
+            "Eldin Pillar": eldin_start_statue,
+            "Lanayru Pillar": lanayru_start_statue,
+        }
