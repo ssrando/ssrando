@@ -805,9 +805,6 @@ items:
 - \Eldin\Volcano\East\North Rupee above Mogma Turf Entrance
 - \Eldin\Volcano\Past Mogma Turf\Unlock Shortcut to Pre Turf
 - \Eldin\Volcano\Past Mogma Turf\Watch Bridge Cutscene
-- \Eldin\Volcano\Past Mogma Turf\Southeast Rupee above Mogma Turf Entrance
-- \Eldin\Volcano\Past Mogma Turf\North Rupee above Mogma Turf Entrance
-- \Eldin\Volcano\Past Mogma Turf\Goddess Cube near Mogma Turf Entrance
 - \Eldin\Volcano\Ascent\Chest behind Bombable Wall near Volcano Ascent
 - \Eldin\Volcano\Ascent\Unlock Statue
 - \Eldin\Volcano\Ascent\Unlock Shortcut to Entry
@@ -872,18 +869,12 @@ items:
 - \Eldin\Bokoblin Base\Prison\Plats' Gift
 - \Eldin\Bokoblin Base\Volcano East\Chest near Bone Bridge
 - \Eldin\Bokoblin Base\Volcano East\Chest on Cliff
-- \Eldin\Bokoblin Base\Volcano East\Goddess Cube near Mogma Turf Entrance
 - \Eldin\Bokoblin Base\Before Drawbridge\Chest near Drawbridge
-- \Eldin\Bokoblin Base\Lower Platform Cave\Gossip Stone in Lower Platform Cave
 - \Eldin\Bokoblin Base\Outside Earth Temple\Chest East of Earth Temple Entrance
-- \Eldin\Bokoblin Base\Outside Earth Temple\Goddess Cube East of Earth Temple Entrance
 - \Eldin\Bokoblin Base\Outside Earth Temple\Chest West of Earth Temple Entrance
-- \Eldin\Bokoblin Base\Outside Earth Temple\Goddess Cube West of Earth Temple Entrance
-- \Eldin\Bokoblin Base\Upper Platform Cave\Gossip Stone in Upper Platform Cave
 - \Eldin\Bokoblin Base\Bokoblin Base Summit\First Chest in Volcano Summit
 - \Eldin\Bokoblin Base\Bokoblin Base Summit\Raised Chest in Volcano Summit
 - \Eldin\Bokoblin Base\Bokoblin Base Summit\Chest in Volcano Summit Alcove
-- \Eldin\Bokoblin Base\Bokoblin Base Summit\Goddess Cube inside Volcano Summit
 - \Eldin\Bokoblin Base\Fire Dragon's Lair\Beaten Boko Base
 - \Eldin\Bokoblin Base\Fire Dragon's Lair\Fire Dragon's Reward
 - \Faron\Sealed Grounds\Spiral\Defeat Imprisoned 2
@@ -1083,7 +1074,6 @@ items:
 - \Lanayru\Mine\Statues Area\Chest behind Statue
 - \Lanayru\Mine\End\Blow up Rock on Track
 - \Lanayru\Mine\End\Chest at the End of Mine
-- \Lanayru\Mine\End\In Minecart\Blow up Rock on Track
 - \Lanayru\Desert\Entry\Unlock Statue
 - \Lanayru\Desert\Entry\Blow up Rock for Timeshift Stone
 - \Lanayru\Desert\Entry\Timeshift Stone
@@ -1359,8 +1349,6 @@ items:
 - \Skyloft\Central Skyloft\Bazaar\Gondo's Upgrades\Upgrade to Tough Beetle
 - \Skyloft\Central Skyloft\Orielle and Parrow's House\Crystal in Orielle and Parrow's
   House
-- \Skyloft\Central Skyloft\Orielle and Parrow's House\Parrow's Gift
-- \Skyloft\Central Skyloft\Orielle and Parrow's House\Parrow's Crystals
 - \Skyloft\Central Skyloft\Peatrice's House\Peater/Peatrice's Crystals
 - \Skyloft\Central Skyloft\Wryna's House\Wryna's Crystals
 - \Skyloft\Central Skyloft\Waterfall Island\Crystal on Waterfall Island
@@ -1982,7 +1970,7 @@ items:
 - \Eldin\Volcano\Hot Cave\Exit to Summit
 - \Eldin\Volcano\Ascent\Trial Gate Exit
 - \Eldin\Volcano\Past Slide\Vent Exit near Ascent
-- \Eldin\Volcano\East\Exit to Bokoblin Base
+- \Eldin\Volcano\First Room\Exit to Bokoblin Base
 - \Eldin\Bokoblin Base\Prison\Exit
 - \Eldin\Mogma Turf\Pre Vent\First Vent
 - \Eldin\Mogma Turf\Past Vent\Second Vent
@@ -2271,7 +2259,7 @@ items:
 - \Eldin\Volcano\Hot Cave\Entrance from Summit
 - \Eldin\Volcano\Ascent\Trial Gate Entrance
 - \Eldin\Volcano\Hot Cave\Vent Entrance near Hot Cave
-- \Eldin\Volcano\East\Entrance from Bokoblin Base
+- \Eldin\Volcano\First Room\Entrance from Bokoblin Base
 - \Eldin\Bokoblin Base\Prison\Entrance
 - \Eldin\Mogma Turf\Pre Vent\Entrance
 - \Eldin\Volcano\Thrill Digger Cave\Entrance
@@ -3191,9 +3179,12 @@ areas:
               allowed_time_of_day: 1
               can_save: false
               can_sleep: false
-              entrances: []
+              entrances:
+              - Entrance from Bokoblin Base
               exits:
                 \Eldin\Volcano\East: \Eldin\Volcano\First Room\Blow up Rock to East
+                \Eldin\Volcano\Entry: 'True'
+                Exit to Bokoblin Base: 'True'
               hint_region: Eldin Volcano
               locations:
                 Chest behind Bombable Wall in First Room: 'True'
@@ -3211,7 +3202,6 @@ areas:
               entrances:
               - Volcano East Statue Entrance
               - First Vent from Mogma Turf
-              - Entrance from Bokoblin Base
               exits:
                 Volcano East / Volcano Ascent Statue Exit: \Eldin\Volcano\East\Unlock
                   Statue
@@ -3221,7 +3211,6 @@ areas:
                   to East
                 \Eldin\Volcano\Past Mogma Turf: \Eldin\Volcano\Past Mogma Turf\Unlock
                   Shortcut to Pre Turf
-                Exit to Bokoblin Base: 'True'
               hint_region: Eldin Volcano
               locations:
                 \Eldin\Volcano\First Room\Blow up Rock to East: Bomb Bag
@@ -3254,9 +3243,6 @@ areas:
               locations:
                 Unlock Shortcut to Pre Turf: 'True'
                 Watch Bridge Cutscene: 'True'
-                Southeast Rupee above Mogma Turf Entrance: \Beetle
-                North Rupee above Mogma Turf Entrance: \Beetle
-                Goddess Cube near Mogma Turf Entrance: \Goddess Sword
               name: \Eldin\Volcano\Past Mogma Turf
               sub_areas: {}
               toplevel_alias: null
@@ -3694,7 +3680,8 @@ areas:
                   \ Mitts | Gust Bellows"
                 Chest on Cliff: "(\\Can bypass Boko Base Watch Tower | \\Mogma Mitts)\
                   \ & Gust Bellows"
-                Goddess Cube near Mogma Turf Entrance: \Goddess Sword
+                \Eldin\Volcano\East\Goddess Cube near Mogma Turf Entrance: \Goddess
+                  Sword
               name: \Eldin\Bokoblin Base\Volcano East
               sub_areas: {}
               toplevel_alias: null
@@ -3741,7 +3728,7 @@ areas:
                 \Eldin\Bokoblin Base\Volcano East: 'True'
               hint_region: Bokoblin Base
               locations:
-                Gossip Stone in Lower Platform Cave: 'True'
+                \Eldin\Volcano\Lower Platform Cave\Gossip Stone in Lower Platform Cave: 'True'
               name: \Eldin\Bokoblin Base\Lower Platform Cave
               sub_areas: {}
               toplevel_alias: null
@@ -3757,12 +3744,13 @@ areas:
               hint_region: Bokoblin Base
               locations:
                 Chest East of Earth Temple Entrance: 'True'
-                Goddess Cube East of Earth Temple Entrance: \Goddess Sword
+                \Eldin\Volcano\Near Temple Entrance\Goddess Cube East of Earth Temple Entrance: \Goddess
+                  Sword
                 Chest West of Earth Temple Entrance: "(\\Slingshot | \\Bow | Bomb\
                   \ Bag | \\Goddess Sword) & \\Can bypass Boko Base Watch Tower &\
                   \ \\Mogma Mitts"
-                Goddess Cube West of Earth Temple Entrance: "\\Goddess Sword & \\\
-                  Can bypass Boko Base Watch Tower & \\Mogma Mitts"
+                \Eldin\Volcano\Near Temple Entrance\Goddess Cube West of Earth Temple Entrance: "\\\
+                  Goddess Sword & \\Can bypass Boko Base Watch Tower & \\Mogma Mitts"
               name: \Eldin\Bokoblin Base\Outside Earth Temple
               sub_areas: {}
               toplevel_alias: null
@@ -3776,7 +3764,7 @@ areas:
                 \Eldin\Bokoblin Base\Outside Earth Temple: 'True'
               hint_region: Bokoblin Base
               locations:
-                Gossip Stone in Upper Platform Cave: 'True'
+                \Eldin\Volcano\Upper Platform Cave\Gossip Stone in Upper Platform Cave: 'True'
               name: \Eldin\Bokoblin Base\Upper Platform Cave
               sub_areas: {}
               toplevel_alias: null
@@ -3811,7 +3799,8 @@ areas:
                 Raised Chest in Volcano Summit: Fireshield Earrings
                 Chest in Volcano Summit Alcove: "Fireshield Earrings & \\Practice\
                   \ Sword"
-                Goddess Cube inside Volcano Summit: Fireshield Earrings
+                \Eldin\Volcano Summit\Goddess Cube inside Volcano Summit: "Fireshield\
+                  \ Earrings & \\Goddess Sword"
               name: \Eldin\Bokoblin Base\Bokoblin Base Summit
               sub_areas: {}
               toplevel_alias: null
@@ -4984,6 +4973,7 @@ areas:
               exits:
                 Statue Exit: \Fire Sanctuary\Main\Front of Boss Door\Unlock Statue
                 Boss Door Exit: Fire Sanctuary Boss Key
+                \Fire Sanctuary\Main\West of Boss Door: 'True'
                 \Fire Sanctuary\Main\Lizalfos Fight Room: 'True'
                 \Fire Sanctuary\Main\Front of Boss Door\Past Bars: \Fire Sanctuary\Main\Front
                   of Boss Door\Past Bars\Unlock Way to Front
@@ -5694,7 +5684,8 @@ areas:
                     Exit to Desert: 'True'
                   hint_region: Lanayru Mine
                   locations:
-                    Blow up Rock on Track: "Bomb Bag & Lanayru Mine - Quick Bomb Trick"
+                    \Lanayru\Mine\End\Blow up Rock on Track: "Bomb Bag & Lanayru Mine\
+                      \ - Quick Bomb Trick"
                   name: \Lanayru\Mine\End\In Minecart
                   sub_areas: {}
                   toplevel_alias: null
@@ -8109,10 +8100,10 @@ areas:
               hint_region: Central Skyloft
               locations:
                 Crystal in Orielle and Parrow's House: 'True'
-                Parrow's Gift: "\\Sky\\South West\\Orielle's Island\\Talk to Orielle\
-                  \ & Night"
-                Parrow's Crystals: "\\Sky\\South West\\Orielle's Island\\Save Orielle\
-                  \ & Night"
+                \Skyloft\Central Skyloft\Parrow's Gift: "\\Sky\\South West\\Orielle's\
+                  \ Island\\Talk to Orielle & Night"
+                \Skyloft\Central Skyloft\Parrow's Crystals: "\\Sky\\South West\\Orielle's\
+                  \ Island\\Save Orielle & Night"
               name: \Skyloft\Central Skyloft\Orielle and Parrow's House
               sub_areas: {}
               toplevel_alias: null
@@ -9935,7 +9926,7 @@ exits:
     stage: F001r
     room: 1
     index: 2
-    req_index: 1801
+    req_index: 1789
     short_name: Start
   \Skyloft\Upper Skyloft\Knight Academy\Lower Left Door Exit:
     type: exit
@@ -9943,7 +9934,7 @@ exits:
     stage: F001r
     room: 0
     index: 0
-    req_index: 1802
+    req_index: 1790
     short_name: Skyloft - Knight Academy - Lower Left Door Exit
   \Skyloft\Upper Skyloft\Knight Academy\Lower Right Door Exit:
     type: exit
@@ -9951,7 +9942,7 @@ exits:
     stage: F001r
     room: 0
     index: 1
-    req_index: 1803
+    req_index: 1791
     short_name: Skyloft - Knight Academy - Lower Right Door Exit
   \Skyloft\Upper Skyloft\Knight Academy\Upper Right Door Exit:
     type: exit
@@ -9959,7 +9950,7 @@ exits:
     stage: F001r
     room: 0
     index: 2
-    req_index: 1804
+    req_index: 1792
     short_name: Skyloft - Knight Academy - Upper Right Door Exit
   \Skyloft\Upper Skyloft\Knight Academy\Upper Left Door Exit:
     type: exit
@@ -9967,7 +9958,7 @@ exits:
     stage: F001r
     room: 0
     index: 3
-    req_index: 1805
+    req_index: 1793
     short_name: Skyloft - Knight Academy - Upper Left Door Exit
   \Skyloft\Upper Skyloft\Knight Academy Lower Right Door Exit:
     type: exit
@@ -9975,7 +9966,7 @@ exits:
     stage: F000
     room: 0
     index: 3
-    req_index: 1806
+    req_index: 1794
     short_name: Skyloft - Knight Academy Lower Right Door Exit
   \Skyloft\Upper Skyloft\Knight Academy Lower Left Door Exit:
     type: exit
@@ -9983,7 +9974,7 @@ exits:
     stage: F000
     room: 0
     index: 4
-    req_index: 1807
+    req_index: 1795
     short_name: Skyloft - Knight Academy Lower Left Door Exit
   \Skyloft\Upper Skyloft\Knight Academy Upper Left Door Exit:
     type: exit
@@ -9991,7 +9982,7 @@ exits:
     stage: F000
     room: 0
     index: 23
-    req_index: 1808
+    req_index: 1796
     short_name: Skyloft - Knight Academy Upper Left Door Exit
   \Skyloft\Upper Skyloft\Knight Academy Upper Right Door Exit:
     type: exit
@@ -9999,7 +9990,7 @@ exits:
     stage: F000
     room: 0
     index: 24
-    req_index: 1809
+    req_index: 1797
     short_name: Skyloft - Knight Academy Upper Right Door Exit
   \Skyloft\Upper Skyloft\Knight Academy Chimney Entrance:
     type: exit
@@ -10007,7 +9998,7 @@ exits:
     stage: F000
     room: 0
     index: 57
-    req_index: 1810
+    req_index: 1798
     short_name: Skyloft - Knight Academy Chimney Entrance
   \Skyloft\Upper Skyloft\Sparring Hall\Right Door Exit:
     type: exit
@@ -10015,7 +10006,7 @@ exits:
     stage: F009r
     room: 0
     index: 0
-    req_index: 1811
+    req_index: 1799
     short_name: Sparring Hall - Right Door Exit
   \Skyloft\Upper Skyloft\Sparring Hall\Left Door Exit:
     type: exit
@@ -10023,7 +10014,7 @@ exits:
     stage: F009r
     room: 0
     index: 1
-    req_index: 1812
+    req_index: 1800
     short_name: Sparring Hall - Left Door Exit
   \Skyloft\Upper Skyloft\Sparring Hall Left Door Exit:
     type: exit
@@ -10031,7 +10022,7 @@ exits:
     stage: F000
     room: 0
     index: 20
-    req_index: 1813
+    req_index: 1801
     short_name: Skyloft - Sparring Hall Left Door Exit
   \Skyloft\Upper Skyloft\Sparring Hall Right Door Exit:
     type: exit
@@ -10039,7 +10030,7 @@ exits:
     stage: F000
     room: 0
     index: 27
-    req_index: 1814
+    req_index: 1802
     short_name: Skyloft - Sparring Hall Right Door Exit
   \Skyloft\Upper Skyloft\Goddess Statue\Exit:
     type: exit
@@ -10047,7 +10038,7 @@ exits:
     stage: F008r
     room: 0
     index: 0
-    req_index: 1815
+    req_index: 1803
     short_name: Goddess Statue - Exit
   \Skyloft\Upper Skyloft\Goddess Statue Exit:
     type: exit
@@ -10055,7 +10046,7 @@ exits:
     stage: F000
     room: 0
     index: 5
-    req_index: 1816
+    req_index: 1804
     short_name: Goddess Statue Exit
   \Skyloft\Central Skyloft\Waterfall Cave\Upper Exit:
     type: exit
@@ -10063,7 +10054,7 @@ exits:
     stage: D000
     room: 0
     index: 0
-    req_index: 1817
+    req_index: 1805
     short_name: Waterfall Cave - Upper Exit
   \Skyloft\Central Skyloft\Waterfall Cave\Lower Exit:
     type: exit
@@ -10071,7 +10062,7 @@ exits:
     stage: D000
     room: 0
     index: 1
-    req_index: 1818
+    req_index: 1806
     short_name: Waterfall Cave - Lower Exit
   \Skyloft\Central Skyloft\Waterfall Cave Upper Exit:
     type: exit
@@ -10079,7 +10070,7 @@ exits:
     stage: F000
     room: 0
     index: 6
-    req_index: 1819
+    req_index: 1807
     short_name: Waterfall Cave Upper Exit
   \Skyloft\Central Skyloft\Past Waterfall Cave\Waterfall Cave Lower Exit:
     type: exit
@@ -10087,7 +10078,7 @@ exits:
     stage: F000
     room: 0
     index: 7
-    req_index: 1820
+    req_index: 1808
     short_name: Waterfall Cave Lower Exit
   \Skyloft\Central Skyloft\Bazaar\North Exit:
     type: exit
@@ -10095,7 +10086,7 @@ exits:
     stage: F004r
     room: 0
     index: 0
-    req_index: 1821
+    req_index: 1809
     short_name: Bazaar - North Exit
   \Skyloft\Central Skyloft\Bazaar\South Exit:
     type: exit
@@ -10103,7 +10094,7 @@ exits:
     stage: F004r
     room: 0
     index: 1
-    req_index: 1822
+    req_index: 1810
     short_name: Bazaar - South Exit
   \Skyloft\Central Skyloft\Bazaar\West Exit:
     type: exit
@@ -10111,7 +10102,7 @@ exits:
     stage: F004r
     room: 0
     index: 2
-    req_index: 1823
+    req_index: 1811
     short_name: Bazaar - West Exit
   \Skyloft\Central Skyloft\Bazaar North Exit:
     type: exit
@@ -10119,7 +10110,7 @@ exits:
     stage: F000
     room: 0
     index: 1
-    req_index: 1824
+    req_index: 1812
     short_name: Bazaar North Exit
   \Skyloft\Central Skyloft\Bazaar South Exit:
     type: exit
@@ -10127,7 +10118,7 @@ exits:
     stage: F000
     room: 0
     index: 2
-    req_index: 1825
+    req_index: 1813
     short_name: Bazaar South Exit
   \Skyloft\Central Skyloft\Bazaar West Exit:
     type: exit
@@ -10135,7 +10126,7 @@ exits:
     stage: F000
     room: 0
     index: 19
-    req_index: 1826
+    req_index: 1814
     short_name: Bazaar West Exit
   \Skyloft\Beedle's Shop\Day Exit:
     type: exit
@@ -10143,7 +10134,7 @@ exits:
     stage: F002r
     room: 0
     index: 0
-    req_index: 1827
+    req_index: 1815
     short_name: Beedle's Shop - Day Exit
   \Skyloft\Beedle's Shop\Night Exit:
     type: exit
@@ -10152,7 +10143,7 @@ exits:
     stage: F002r
     room: 0
     index: 2
-    req_index: 1828
+    req_index: 1816
     short_name: Beedle's Shop - Night Exit
   \Skyloft\Central Skyloft\Exit to Beedle's Shop:
     type: exit
@@ -10160,17 +10151,17 @@ exits:
     stage: F000
     room: 0
     index: 26
-    req_index: 1829
+    req_index: 1817
     short_name: Skyloft - Exit to Beedle's Shop
   \Skyloft\Skyloft Silent Realm\Exit:
     type: exit
     vanilla: Skyloft - Trial Gate Entrance
-    req_index: 1830
+    req_index: 1818
     short_name: Skyloft Silent Realm - Exit
   \Skyloft\Central Skyloft\Trial Gate Exit:
     type: exit
     vanilla: Skyloft Silent Realm - Entrance
-    req_index: 1831
+    req_index: 1819
     short_name: Skyloft - Trial Gate Exit
   \Skyloft\Central Skyloft\Near Temple Entrance\Exit to Sky Keep:
     type: exit
@@ -10178,7 +10169,7 @@ exits:
     stage: F000
     room: 0
     index: 48
-    req_index: 1832
+    req_index: 1820
     short_name: Skyloft - Exit to Sky Keep
   \Skyloft\Central Skyloft\Orielle and Parrow's House\Exit:
     type: exit
@@ -10186,7 +10177,7 @@ exits:
     stage: F005r
     room: 0
     index: 0
-    req_index: 1833
+    req_index: 1821
     short_name: Orielle and Parrow's House - Exit
   \Skyloft\Central Skyloft\Orielle and Parrow's House Exit:
     type: exit
@@ -10194,7 +10185,7 @@ exits:
     stage: F000
     room: 0
     index: 31
-    req_index: 1834
+    req_index: 1822
     short_name: Orielle and Parrow's House Exit
   \Skyloft\Central Skyloft\Peatrice's House\Exit:
     type: exit
@@ -10202,7 +10193,7 @@ exits:
     stage: F018r
     room: 0
     index: 0
-    req_index: 1835
+    req_index: 1823
     short_name: Peatrice's House - Exit
   \Skyloft\Central Skyloft\Peatrice's House Exit:
     type: exit
@@ -10210,7 +10201,7 @@ exits:
     stage: F000
     room: 0
     index: 38
-    req_index: 1836
+    req_index: 1824
     short_name: Peatrice's House Exit
   \Skyloft\Central Skyloft\Wryna's House\Exit:
     type: exit
@@ -10218,7 +10209,7 @@ exits:
     stage: F006r
     room: 0
     index: 0
-    req_index: 1837
+    req_index: 1825
     short_name: Wryna's House - Exit
   \Skyloft\Central Skyloft\Wryna's House Exit:
     type: exit
@@ -10226,7 +10217,7 @@ exits:
     stage: F000
     room: 0
     index: 10
-    req_index: 1838
+    req_index: 1826
     short_name: Wryna's House Exit
   \Skyloft\Skyloft Village\Bertie's House\Exit:
     type: exit
@@ -10234,7 +10225,7 @@ exits:
     stage: F014r
     room: 0
     index: 0
-    req_index: 1839
+    req_index: 1827
     short_name: Bertie's House - Exit
   \Skyloft\Skyloft Village\Bertie's House Exit:
     type: exit
@@ -10242,7 +10233,7 @@ exits:
     stage: F000
     room: 0
     index: 34
-    req_index: 1840
+    req_index: 1828
     short_name: Bertie's House Exit
   \Skyloft\Skyloft Village\Sparrot's House\Exit:
     type: exit
@@ -10250,7 +10241,7 @@ exits:
     stage: F013r
     room: 0
     index: 0
-    req_index: 1841
+    req_index: 1829
     short_name: Sparrot's House - Exit
   \Skyloft\Skyloft Village\Sparrot's House Exit:
     type: exit
@@ -10258,7 +10249,7 @@ exits:
     stage: F000
     room: 0
     index: 33
-    req_index: 1842
+    req_index: 1830
     short_name: Sparrot's House Exit
   \Skyloft\Skyloft Village\Mallara's House Exit:
     type: exit
@@ -10266,7 +10257,7 @@ exits:
     stage: F000
     room: 0
     index: 36
-    req_index: 1843
+    req_index: 1831
     short_name: Skyloft - Mallara's House Exit
   \Skyloft\Skyloft Village\Mallara's House\Exit:
     type: exit
@@ -10274,7 +10265,7 @@ exits:
     stage: F016r
     room: 0
     index: 0
-    req_index: 1844
+    req_index: 1832
     short_name: Mallara's House - Exit
   \Skyloft\Skyloft Village\Batreaux's House\Exit:
     type: exit
@@ -10282,7 +10273,7 @@ exits:
     stage: F012r
     room: 0
     index: 0
-    req_index: 1845
+    req_index: 1833
     short_name: Batreaux's House - Exit
   \Skyloft\Skyloft Village\Batreaux's House Exit:
     type: exit
@@ -10290,7 +10281,7 @@ exits:
     stage: F000
     room: 0
     index: 30
-    req_index: 1846
+    req_index: 1834
     short_name: Batreaux's House Exit
   \Skyloft\Skyloft Village\Gondo's House\Exit:
     type: exit
@@ -10298,7 +10289,7 @@ exits:
     stage: F015r
     room: 0
     index: 0
-    req_index: 1847
+    req_index: 1835
     short_name: Gondo's House - Exit
   \Skyloft\Skyloft Village\Gondo's House Exit:
     type: exit
@@ -10306,7 +10297,7 @@ exits:
     stage: F000
     room: 0
     index: 35
-    req_index: 1848
+    req_index: 1836
     short_name: Gondo's House Exit
   \Skyloft\Skyloft Village\Rupin's House\Exit:
     type: exit
@@ -10314,7 +10305,7 @@ exits:
     stage: F017r
     room: 0
     index: 1
-    req_index: 1849
+    req_index: 1837
     short_name: Rupin's House - Exit
   \Skyloft\Skyloft Village\Rupin's House Exit:
     type: exit
@@ -10322,7 +10313,7 @@ exits:
     stage: F000
     room: 0
     index: 37
-    req_index: 1850
+    req_index: 1838
     short_name: Rupin's House Exit
   \Skyloft\Central Skyloft\Piper's House\Exit:
     type: exit
@@ -10330,7 +10321,7 @@ exits:
     stage: F007r
     room: 0
     index: 0
-    req_index: 1851
+    req_index: 1839
     short_name: Piper's House - Exit
   \Skyloft\Central Skyloft\Piper's House Exit:
     type: exit
@@ -10338,17 +10329,17 @@ exits:
     stage: F000
     room: 0
     index: 32
-    req_index: 1852
+    req_index: 1840
     short_name: Piper's House Exit
   \Skyloft\Central Skyloft\Exit to Sky:
     type: exit
     vanilla: Sky - Entrance from Skyloft
-    req_index: 1853
+    req_index: 1841
     short_name: Skyloft - Exit to Sky
   \Sky\Around Skyloft\Exit to Skyloft:
     type: exit
     vanilla: Skyloft - Entrance from Sky
-    req_index: 1854
+    req_index: 1842
     short_name: Sky - Exit to Skyloft
   \Sky\North East\Bamboo Island\Inside\Exit:
     type: exit
@@ -10356,7 +10347,7 @@ exits:
     stage: F019r
     room: 0
     index: 2
-    req_index: 1855
+    req_index: 1843
     short_name: Bamboo Island - Inside - Exit
   \Sky\North East\Bamboo Island\Exit to Inside:
     type: exit
@@ -10364,7 +10355,7 @@ exits:
     stage: F020
     room: 0
     index: 13
-    req_index: 1856
+    req_index: 1844
     short_name: Bamboo Island - Exit to Inside
   \Sky\North East\Beedle's Island\Beedle's Ship Exit:
     type: exit
@@ -10373,7 +10364,7 @@ exits:
     stage: F020
     room: 0
     index: 14
-    req_index: 1857
+    req_index: 1845
     short_name: Sky - Beedle's Island - Beedle's Ship Exit
   \Sky\North East\Eldin Pillar\First Time Dive:
     type: exit
@@ -10381,7 +10372,7 @@ exits:
     stage: F020
     room: 0
     index: 1
-    req_index: 1858
+    req_index: 1846
     short_name: Sky - Eldin Pillar - First Time Dive
   \Sky\North East\Eldin Pillar\Temple Entrance Statue Dive:
     type: exit
@@ -10389,7 +10380,7 @@ exits:
     stage: F020
     room: 0
     index: 29
-    req_index: 1859
+    req_index: 1847
     short_name: Sky - Eldin Pillar - Temple Entrance Statue Dive
   \Sky\North East\Eldin Pillar\Inside the Volcano Statue Dive:
     type: exit
@@ -10397,7 +10388,7 @@ exits:
     stage: F020
     room: 0
     index: 30
-    req_index: 1860
+    req_index: 1848
     short_name: Sky - Eldin Pillar - Inside the Volcano Statue Dive
   \Sky\North East\Eldin Pillar\Volcano Entrance Statue Dive:
     type: exit
@@ -10405,7 +10396,7 @@ exits:
     stage: F020
     room: 0
     index: 50
-    req_index: 1861
+    req_index: 1849
     short_name: Sky - Eldin Pillar - Volcano Entrance Statue Dive
   \Sky\North East\Eldin Pillar\Volcano East Statue Dive:
     type: exit
@@ -10413,7 +10404,7 @@ exits:
     stage: F020
     room: 0
     index: 51
-    req_index: 1862
+    req_index: 1850
     short_name: Sky - Eldin Pillar - Volcano East Statue Dive
   \Sky\North East\Eldin Pillar\Volcano Ascent Statue Dive:
     type: exit
@@ -10421,7 +10412,7 @@ exits:
     stage: F020
     room: 0
     index: 52
-    req_index: 1863
+    req_index: 1851
     short_name: Sky - Eldin Pillar - Volcano Ascent Statue Dive
   \Sky\North East\Eldin Pillar\Fire Sanctuary Statue Dive:
     type: exit
@@ -10429,7 +10420,7 @@ exits:
     stage: F020
     room: 0
     index: 55
-    req_index: 1864
+    req_index: 1852
     short_name: Sky - Eldin Pillar - Fire Sanctuary Statue Dive
   \Sky\South East\Lumpy Pumpkin\Lumpy Pumpkin Building\Main Right Door Exit:
     type: exit
@@ -10437,7 +10428,7 @@ exits:
     stage: F011r
     room: 0
     index: 0
-    req_index: 1865
+    req_index: 1853
     short_name: Lumpy Pumpkin Building - Main Right Door Exit
   \Sky\South East\Lumpy Pumpkin\Lumpy Pumpkin Building\Main Left Door Exit:
     type: exit
@@ -10445,7 +10436,7 @@ exits:
     stage: F011r
     room: 0
     index: 1
-    req_index: 1866
+    req_index: 1854
     short_name: Lumpy Pumpkin Building - Main Left Door Exit
   \Sky\South East\Lumpy Pumpkin\Lumpy Pumpkin Building\Back Door Exit:
     type: exit
@@ -10453,7 +10444,7 @@ exits:
     stage: F011r
     room: 0
     index: 2
-    req_index: 1867
+    req_index: 1855
     short_name: Lumpy Pumpkin Building - Back Door Exit
   \Sky\South East\Lumpy Pumpkin\Main Right Door Exit:
     type: exit
@@ -10461,7 +10452,7 @@ exits:
     stage: F020
     room: 0
     index: 18
-    req_index: 1868
+    req_index: 1856
     short_name: Lumpy Pumpkin - Main Right Door Exit
   \Sky\South East\Lumpy Pumpkin\Main Left Door Exit:
     type: exit
@@ -10469,7 +10460,7 @@ exits:
     stage: F020
     room: 0
     index: 19
-    req_index: 1869
+    req_index: 1857
     short_name: Lumpy Pumpkin - Main Left Door Exit
   \Sky\South East\Lumpy Pumpkin\Back Door Exit:
     type: exit
@@ -10477,7 +10468,7 @@ exits:
     stage: F020
     room: 0
     index: 20
-    req_index: 1870
+    req_index: 1858
     short_name: Lumpy Pumpkin - Back Door Exit
   \Sky\South East\Faron Pillar\First Time Dive:
     type: exit
@@ -10485,7 +10476,7 @@ exits:
     stage: F020
     room: 0
     index: 0
-    req_index: 1871
+    req_index: 1859
     short_name: Sky - Faron Pillar - First Time Dive
   \Sky\South East\Faron Pillar\Sealed Grounds Statue Dive:
     type: exit
@@ -10493,7 +10484,7 @@ exits:
     stage: F020
     room: 0
     index: 68
-    req_index: 1872
+    req_index: 1860
     short_name: Sky - Faron Pillar - Sealed Grounds Statue Dive
   \Sky\South East\Faron Pillar\Forest Temple Statue Dive:
     type: exit
@@ -10501,7 +10492,7 @@ exits:
     stage: F020
     room: 0
     index: 27
-    req_index: 1873
+    req_index: 1861
     short_name: Sky - Faron Pillar - Forest Temple Statue Dive
   \Sky\South East\Faron Pillar\Behind the Temple Statue Dive:
     type: exit
@@ -10509,7 +10500,7 @@ exits:
     stage: F020
     room: 0
     index: 40
-    req_index: 1874
+    req_index: 1862
     short_name: Sky - Faron Pillar - Behind the Temple Statue Dive
   \Sky\South East\Faron Pillar\Faron Woods Entry Statue Dive:
     type: exit
@@ -10517,7 +10508,7 @@ exits:
     stage: F020
     room: 0
     index: 41
-    req_index: 1875
+    req_index: 1863
     short_name: Sky - Faron Pillar - Faron Woods Entry Statue Dive
   \Sky\South East\Faron Pillar\In the Woods Statue Dive:
     type: exit
@@ -10525,7 +10516,7 @@ exits:
     stage: F020
     room: 0
     index: 42
-    req_index: 1876
+    req_index: 1864
     short_name: Sky - Faron Pillar - In the Woods Statue Dive
   \Sky\South East\Faron Pillar\Viewing Platform Statue Dive:
     type: exit
@@ -10533,7 +10524,7 @@ exits:
     stage: F020
     room: 0
     index: 43
-    req_index: 1877
+    req_index: 1865
     short_name: Sky - Faron Pillar - Viewing Platform Statue Dive
   \Sky\South East\Faron Pillar\The Great Tree Statue Dive:
     type: exit
@@ -10541,7 +10532,7 @@ exits:
     stage: F020
     room: 0
     index: 44
-    req_index: 1878
+    req_index: 1866
     short_name: Sky - Faron Pillar - The Great Tree Statue Dive
   \Sky\South East\Faron Pillar\Deep Woods Statue Dive:
     type: exit
@@ -10549,7 +10540,7 @@ exits:
     stage: F020
     room: 0
     index: 46
-    req_index: 1879
+    req_index: 1867
     short_name: Sky - Faron Pillar - Deep Woods Statue Dive
   \Sky\South East\Faron Pillar\Lake Floria Statue Dive:
     type: exit
@@ -10557,7 +10548,7 @@ exits:
     stage: F020
     room: 0
     index: 47
-    req_index: 1880
+    req_index: 1868
     short_name: Sky - Faron Pillar - Lake Floria Statue Dive
   \Sky\South East\Faron Pillar\Floria Waterfall Statue Dive:
     type: exit
@@ -10565,7 +10556,7 @@ exits:
     stage: F020
     room: 0
     index: 48
-    req_index: 1881
+    req_index: 1869
     short_name: Sky - Faron Pillar - Floria Waterfall Statue Dive
   \Sky\South West\Lanayru Pillar\First Time Dive:
     type: exit
@@ -10573,7 +10564,7 @@ exits:
     stage: F020
     room: 0
     index: 2
-    req_index: 1882
+    req_index: 1870
     short_name: Sky - Lanayru Pillar - First Time Dive
   \Sky\South West\Lanayru Pillar\Lanayru Mine Entry Statue Dive:
     type: exit
@@ -10581,7 +10572,7 @@ exits:
     stage: F020
     room: 0
     index: 56
-    req_index: 1883
+    req_index: 1871
     short_name: Sky - Lanayru Pillar - Lanayru Mine Entry Statue Dive
   \Sky\South West\Lanayru Pillar\Desert Entrance Statue Dive:
     type: exit
@@ -10589,7 +10580,7 @@ exits:
     stage: F020
     room: 0
     index: 57
-    req_index: 1884
+    req_index: 1872
     short_name: Sky - Lanayru Pillar - Desert Entrance Statue Dive
   \Sky\South West\Lanayru Pillar\West Desert Statue Dive:
     type: exit
@@ -10597,7 +10588,7 @@ exits:
     stage: F020
     room: 0
     index: 58
-    req_index: 1885
+    req_index: 1873
     short_name: Sky - Lanayru Pillar - West Desert Statue Dive
   \Sky\South West\Lanayru Pillar\North Desert Statue Dive:
     type: exit
@@ -10605,7 +10596,7 @@ exits:
     stage: F020
     room: 0
     index: 59
-    req_index: 1886
+    req_index: 1874
     short_name: Sky - Lanayru Pillar - North Desert Statue Dive
   \Sky\South West\Lanayru Pillar\Stone Cache Statue Dive:
     type: exit
@@ -10613,7 +10604,7 @@ exits:
     stage: F020
     room: 0
     index: 60
-    req_index: 1887
+    req_index: 1875
     short_name: Sky - Lanayru Pillar - Stone Cache Statue Dive
   \Sky\South West\Lanayru Pillar\Desert Gorge Statue Dive:
     type: exit
@@ -10621,7 +10612,7 @@ exits:
     stage: F020
     room: 0
     index: 61
-    req_index: 1888
+    req_index: 1876
     short_name: Sky - Lanayru Pillar - Desert Gorge Statue Dive
   \Sky\South West\Lanayru Pillar\Temple of Time Statue Dive:
     type: exit
@@ -10629,7 +10620,7 @@ exits:
     stage: F020
     room: 0
     index: 62
-    req_index: 1889
+    req_index: 1877
     short_name: Sky - Lanayru Pillar - Temple of Time Statue Dive
   \Sky\South West\Lanayru Pillar\Ancient Harbour Statue Dive:
     type: exit
@@ -10637,7 +10628,7 @@ exits:
     stage: F020
     room: 0
     index: 63
-    req_index: 1890
+    req_index: 1878
     short_name: Sky - Lanayru Pillar - Ancient Harbour Statue Dive
   \Sky\South West\Lanayru Pillar\Skipper's Retreat Statue Dive:
     type: exit
@@ -10645,7 +10636,7 @@ exits:
     stage: F020
     room: 0
     index: 64
-    req_index: 1891
+    req_index: 1879
     short_name: Sky - Lanayru Pillar - Skipper's Retreat Statue Dive
   \Sky\South West\Lanayru Pillar\Shipyard Statue Dive:
     type: exit
@@ -10653,7 +10644,7 @@ exits:
     stage: F020
     room: 0
     index: 65
-    req_index: 1892
+    req_index: 1880
     short_name: Sky - Lanayru Pillar - Shipyard Statue Dive
   \Sky\South West\Lanayru Pillar\Pirate Stronghold Statue Dive:
     type: exit
@@ -10661,12 +10652,12 @@ exits:
     stage: F020
     room: 0
     index: 66
-    req_index: 1893
+    req_index: 1881
     short_name: Sky - Lanayru Pillar - Pirate Stronghold Statue Dive
   \Sky\South West\Lanayru Pillar\Lanayru Gorge Statue Dive:
     type: exit
     vanilla: Lanayru Gorge - Statue Entrance
-    req_index: 1894
+    req_index: 1882
     short_name: Sky - Lanayru Pillar - Lanayru Gorge Statue Dive
   \Sky\Around Skyloft\Exit to Thunderhead:
     type: exit
@@ -10674,7 +10665,7 @@ exits:
     stage: F020
     room: 0
     index: 25
-    req_index: 1895
+    req_index: 1883
     short_name: Sky - Exit to Thunderhead
   \Sky\Thunderhead\Exit:
     type: exit
@@ -10682,7 +10673,7 @@ exits:
     stage: F023
     room: 0
     index: 1
-    req_index: 1896
+    req_index: 1884
     short_name: Thunderhead - Exit
   \Sky\Thunderhead\Isle of Songs\Inside\Exit:
     type: exit
@@ -10690,7 +10681,7 @@ exits:
     stage: F010r
     room: 0
     index: 0
-    req_index: 1897
+    req_index: 1885
     short_name: Isle of Songs - Exit
   \Sky\Thunderhead\Isle of Songs\Exit to Inside:
     type: exit
@@ -10698,7 +10689,7 @@ exits:
     stage: F023
     room: 0
     index: 2
-    req_index: 1898
+    req_index: 1886
     short_name: Isle of Songs - Exit to Inside
   \Faron\Sealed Grounds\Spiral\Upper Part\Statue Exit:
     type: exit
@@ -10706,7 +10697,7 @@ exits:
     stage: F401
     room: 1
     index: 19
-    req_index: 1899
+    req_index: 1887
     short_name: Sealed Grounds Spiral - Statue Exit
   \Faron\Sealed Grounds\Spiral\Door Exit:
     type: exit
@@ -10714,7 +10705,7 @@ exits:
     stage: F401
     room: 1
     index: 0
-    req_index: 1900
+    req_index: 1888
     short_name: Sealed Grounds Spiral - Door Exit
   \Faron\Sealed Grounds\Spiral\Upper Part\From Behind the Temple\Shortcut Exit to Behind the Temple:
     type: exit
@@ -10722,7 +10713,7 @@ exits:
     stage: F401
     room: 1
     index: 1
-    req_index: 1901
+    req_index: 1889
     short_name: Sealed Grounds Spiral - Shortcut Exit to Behind the Temple
   \Faron\Sealed Grounds\Sealed Temple\Main Exit:
     type: exit
@@ -10730,7 +10721,7 @@ exits:
     stage: F402
     room: 2
     index: 0
-    req_index: 1902
+    req_index: 1890
     short_name: Sealed Temple - Main Exit
   \Faron\Sealed Grounds\Sealed Temple\Side Exit:
     type: exit
@@ -10738,7 +10729,7 @@ exits:
     stage: F402
     room: 2
     index: 1
-    req_index: 1903
+    req_index: 1891
     short_name: Sealed Temple - Side Exit
   \Faron\Sealed Grounds\Sealed Temple\Gate of Time Exit:
     type: exit
@@ -10746,7 +10737,7 @@ exits:
     stage: F402
     room: 2
     index: 5
-    req_index: 1904
+    req_index: 1892
     short_name: Sealed Temple - Gate of Time Exit
   \Faron\Sealed Grounds\Hylia's Temple\Gate of Time Exit:
     type: exit
@@ -10754,7 +10745,7 @@ exits:
     stage: F404
     room: 2
     index: 1
-    req_index: 1905
+    req_index: 1893
     short_name: Hylia's Temple - Gate of Time Exit
   \Faron\Sealed Grounds\Behind the Temple\Statue Exit:
     type: exit
@@ -10762,7 +10753,7 @@ exits:
     stage: F400
     room: 0
     index: 5
-    req_index: 1906
+    req_index: 1894
     short_name: Behind the Temple - Statue Exit
   \Faron\Sealed Grounds\Behind the Temple\Shortcut Exit to Spiral:
     type: exit
@@ -10770,7 +10761,7 @@ exits:
     stage: F400
     room: 0
     index: 0
-    req_index: 1907
+    req_index: 1895
     short_name: Behind the Temple - Shortcut Exit to Spiral
   \Faron\Sealed Grounds\Behind the Temple\Door Exit:
     type: exit
@@ -10778,7 +10769,7 @@ exits:
     stage: F400
     room: 0
     index: 1
-    req_index: 1908
+    req_index: 1896
     short_name: Behind the Temple - Door Exit
   \Faron\Sealed Grounds\Behind the Temple\Exit to Faron Woods:
     type: exit
@@ -10786,7 +10777,7 @@ exits:
     stage: F400
     room: 0
     index: 2
-    req_index: 1909
+    req_index: 1897
     short_name: Behind the Temple - Exit to Faron Woods
   \Faron\Faron Woods\Shared Statue Exit:
     type: exit
@@ -10794,7 +10785,7 @@ exits:
     stage: F100
     room: 0
     index: 10
-    req_index: 1910
+    req_index: 1898
     short_name: Faron Woods - Shared Statue Exit
   \Faron\Faron Woods\Entry\Exit to Behind the Temple:
     type: exit
@@ -10802,7 +10793,7 @@ exits:
     stage: F100
     room: 0
     index: 0
-    req_index: 1911
+    req_index: 1899
     short_name: Faron Woods - Exit to Behind the Temple
   \Faron\Faron Woods\Ledge To Deep Woods\Exit to Deep Woods:
     type: exit
@@ -10810,7 +10801,7 @@ exits:
     stage: F100
     room: 0
     index: 1
-    req_index: 1912
+    req_index: 1900
     short_name: Faron Woods - Exit to Deep Woods
   \Faron\Faron Woods\Lake Floria Dive:
     type: exit
@@ -10818,7 +10809,7 @@ exits:
     stage: F100
     room: 0
     index: 9
-    req_index: 1913
+    req_index: 1901
     short_name: Faron Woods - Lake Floria Dive
   \Faron\Faron Woods\Ledge to Lake Floria\Shortcut Exit to Floria Waterfall:
     type: exit
@@ -10826,17 +10817,17 @@ exits:
     stage: F100
     room: 0
     index: 11
-    req_index: 1914
+    req_index: 1902
     short_name: Faron Woods - Shortcut Exit to Floria Waterfall
   \Faron\Faron Woods\Trial Gate Exit:
     type: exit
     vanilla: Faron Silent Realm - Entrance
-    req_index: 1915
+    req_index: 1903
     short_name: Faron Woods - Trial Gate Exit
   \Faron\Faron Silent Realm\Exit:
     type: exit
     vanilla: Faron Woods - Trial Gate Entrance
-    req_index: 1916
+    req_index: 1904
     short_name: Faron Silent Realm - Exit
   \Faron\Faron Woods\Great Tree\Platforms\Lower Exit to Great Tree:
     type: exit
@@ -10844,7 +10835,7 @@ exits:
     stage: F100
     room: 0
     index: 3
-    req_index: 1917
+    req_index: 1905
     short_name: Great Tree - Platforms - Lower Exit to Great Tree
   \Faron\Faron Woods\Great Tree\Platforms\Upper Exit to Great Tree:
     type: exit
@@ -10852,7 +10843,7 @@ exits:
     stage: F100
     room: 0
     index: 4
-    req_index: 1918
+    req_index: 1906
     short_name: Great Tree - Platforms - Upper Exit to Great Tree
   \Faron\Faron Woods\Great Tree\Top\Top Exit to Great Tree:
     type: exit
@@ -10860,7 +10851,7 @@ exits:
     stage: F100
     room: 0
     index: 5
-    req_index: 1919
+    req_index: 1907
     short_name: Great Tree - Top Exit to Great Tree
   \Faron\Faron Woods\Great Tree\Near Underwater Hole\Underwater Hole Exit:
     type: exit
@@ -10868,7 +10859,7 @@ exits:
     stage: F100
     room: 0
     index: 6
-    req_index: 1920
+    req_index: 1908
     short_name: Great Tree - Underwater Hole Exit
   \Faron\Faron Woods\Great Tree\Lower Area\Near Exit\Lower Exit to Platforms:
     type: exit
@@ -10876,7 +10867,7 @@ exits:
     stage: F100_1
     room: 0
     index: 1
-    req_index: 1921
+    req_index: 1909
     short_name: Great Tree - Lower Exit to Platforms
   \Faron\Faron Woods\Great Tree\Upper Area\Upper Exit to Platforms:
     type: exit
@@ -10884,7 +10875,7 @@ exits:
     stage: F100_1
     room: 0
     index: 2
-    req_index: 1922
+    req_index: 1910
     short_name: Great Tree - Upper Exit to Platforms
   \Faron\Faron Woods\Great Tree\Upper Area\Exit to Top:
     type: exit
@@ -10892,7 +10883,7 @@ exits:
     stage: F100_1
     room: 0
     index: 3
-    req_index: 1923
+    req_index: 1911
     short_name: Great Tree - Exit to Top
   \Faron\Faron Woods\Great Tree\Lower Area\Underwater Tunnel Exit:
     type: exit
@@ -10900,37 +10891,37 @@ exits:
     stage: F100_1
     room: 0
     index: 4
-    req_index: 1924
+    req_index: 1912
     short_name: Great Tree - Underwater Tunnel Exit
   \Faron\Faron Woods\Great Tree\Upper Area\Exit to Flooded Great Tree:
     type: exit
     vanilla: Flooded Great Tree - Entrance
-    req_index: 1925
+    req_index: 1913
     short_name: Great Tree - Exit to Flooded Great Tree
   \Faron\Flooded Faron Woods\Flooded Great Tree\Exit:
     type: exit
     vanilla: Entrance from Flooded Great Tree
-    req_index: 1926
+    req_index: 1914
     short_name: Flooded Great Tree - Exit
   \Faron\Flooded Faron Woods\Flooded Great Tree\Exit to Upper Flooded Faron Woods:
     type: exit
     vanilla: Flooded Faron Woods - Entrance from Upper Flooded Great Tree
-    req_index: 1927
+    req_index: 1915
     short_name: Flooded Great Tree - Exit to Upper Flooded Faron Woods
   \Faron\Flooded Faron Woods\Flooded Great Tree\Exit to Lower Flooded Faron Woods:
     type: exit
     vanilla: Flooded Faron Woods - Entrance from Lower Flooded Great Tree
-    req_index: 1928
+    req_index: 1916
     short_name: Flooded Great Tree - Exit to Lower Flooded Faron Woods
   \Faron\Flooded Faron Woods\Exit to Upper Flooded Great Tree:
     type: exit
     vanilla: Flooded Great Tree - Entrance from Upper Flooded Faron Woods
-    req_index: 1929
+    req_index: 1917
     short_name: Flooded Faron Woods - Exit to Upper Flooded Great Tree
   \Faron\Flooded Faron Woods\Exit to Lower Flooded Great Tree:
     type: exit
     vanilla: Flooded Great Tree - Entrance from Lower Flooded Faron Woods
-    req_index: 1930
+    req_index: 1918
     short_name: Flooded Faron Woods - Exit to Lower Flooded Great Tree
   \Faron\Faron Woods\Deep Woods\Shared Statue Exit:
     type: exit
@@ -10938,7 +10929,7 @@ exits:
     stage: F101
     room: 0
     index: 2
-    req_index: 1931
+    req_index: 1919
     short_name: Deep Woods - Shared Statue Exit
   \Faron\Faron Woods\Deep Woods\Entry\Exit to Faron Woods:
     type: exit
@@ -10946,7 +10937,7 @@ exits:
     stage: F101
     room: 0
     index: 0
-    req_index: 1932
+    req_index: 1920
     short_name: Deep Woods - Exit to Faron Woods
   \Faron\Faron Woods\Deep Woods\Exit to Skyview Temple:
     type: exit
@@ -10954,7 +10945,7 @@ exits:
     stage: F101
     room: 0
     index: 1
-    req_index: 1933
+    req_index: 1921
     short_name: Deep Woods - Exit to Skyview Temple
   \Faron\Lake Floria\Below Rock\Emerged Area\Statue Exit:
     type: exit
@@ -10962,7 +10953,7 @@ exits:
     stage: F102
     room: 3
     index: 0
-    req_index: 1934
+    req_index: 1922
     short_name: Lake Floria - Below Rock - Statue Exit
   \Faron\Lake Floria\Below Rock\Exit to Farore's Lair:
     type: exit
@@ -10970,7 +10961,7 @@ exits:
     stage: F102
     room: 4
     index: 0
-    req_index: 1935
+    req_index: 1923
     short_name: Lake Floria - Exit to Farore's Lair
   \Faron\Lake Floria\Farore's Lair\Exit to Lake Floria:
     type: exit
@@ -10978,7 +10969,7 @@ exits:
     stage: F102_2
     room: 0
     index: 0
-    req_index: 1936
+    req_index: 1924
     short_name: Farore's Lair - Exit to Lake Floria
   \Faron\Lake Floria\Farore's Lair\Exit to Waterfall:
     type: exit
@@ -10986,7 +10977,7 @@ exits:
     stage: F102_2
     room: 0
     index: 1
-    req_index: 1937
+    req_index: 1925
     short_name: Farore's Lair - Exit to Waterfall
   \Faron\Lake Floria\Waterfall\Statue Exit:
     type: exit
@@ -10994,7 +10985,7 @@ exits:
     stage: F102_1
     room: 0
     index: 3
-    req_index: 1938
+    req_index: 1926
     short_name: Floria Waterfall - Statue Exit
   \Faron\Lake Floria\Waterfall\Exit to Farore's Lair:
     type: exit
@@ -11002,7 +10993,7 @@ exits:
     stage: F102_1
     room: 0
     index: 0
-    req_index: 1939
+    req_index: 1927
     short_name: Floria Waterfall - Exit to Farore's Lair
   \Faron\Lake Floria\Waterfall\Exit to Ancient Cistern:
     type: exit
@@ -11010,7 +11001,7 @@ exits:
     stage: F102_1
     room: 0
     index: 1
-    req_index: 1940
+    req_index: 1928
     short_name: Floria Waterfall - Exit to Ancient Cistern
   \Faron\Lake Floria\Waterfall\Exit to Faron Woods:
     type: exit
@@ -11018,57 +11009,57 @@ exits:
     stage: F102_1
     room: 0
     index: 2
-    req_index: 1941
+    req_index: 1929
     short_name: Floria Waterfall - Exit to Faron Woods
   \Skyview\Main\Entry\Main Exit:
     type: exit
     vanilla: Deep Woods - Entrance from Skyview Temple
-    req_index: 1942
+    req_index: 1930
     short_name: Skyview Temple - Main Exit
   \Skyview\Main\Last Room\After Rope\Boss Door Exit:
     type: exit
     vanilla: Skyview Temple - Boss Room - Entrance from Dungeon
-    req_index: 1943
+    req_index: 1931
     short_name: Skyview Temple - Boss Door Exit
   \Skyview\Boss Room\Exit to Dungeon:
     type: exit
     vanilla: Skyview Temple - Boss Door Entrance
-    req_index: 1944
+    req_index: 1932
     short_name: Skyview Temple - Boss Room - Exit to Dungeon
   \Skyview\Boss Room\Exit to Spring:
     type: exit
     vanilla: Skyview Temple - Spring - Entrance
-    req_index: 1945
+    req_index: 1933
     short_name: Skyview Temple - Boss Room - Exit to Spring
   \Skyview\Spring\Exit:
     type: exit
     vanilla: Skyview Temple - Boss Room - Entrance from Spring
-    req_index: 1946
+    req_index: 1934
     short_name: Skyview Temple - Spring - Exit
   \Ancient Cistern\Main\Main Room\Main Exit:
     type: exit
     vanilla: Floria Waterfall - Entrance from Ancient Cistern
-    req_index: 1947
+    req_index: 1935
     short_name: Ancient Cistern - Main Exit
   \Ancient Cistern\Main\Inside Statue\Boss Door Exit:
     type: exit
     vanilla: Ancient Cistern - Boss Room - Entrance from Dungeon
-    req_index: 1948
+    req_index: 1936
     short_name: Ancient Cistern - Boss Door Exit
   \Ancient Cistern\Boss Room\Exit to Dungeon:
     type: exit
     vanilla: Ancient Cistern - Boss Door Entrance
-    req_index: 1949
+    req_index: 1937
     short_name: Ancient Cistern - Boss Room - Exit to Dungeon
   \Ancient Cistern\Boss Room\Exit to Flame Room:
     type: exit
     vanilla: Ancient Cistern - Flame Room - Entrance
-    req_index: 1950
+    req_index: 1938
     short_name: Ancient Cistern - Boss Room - Exit to Flame Room
   \Ancient Cistern\Flame Room\Exit:
     type: exit
     vanilla: Ancient Cistern - Boss Room - Entrance from Flame Room
-    req_index: 1951
+    req_index: 1939
     short_name: Ancient Cistern - Flame Room - Exit
   \Eldin\Volcano\Entry\Volcano Entrance Statue Exit:
     type: exit
@@ -11076,7 +11067,7 @@ exits:
     stage: F200
     room: 0
     index: 0
-    req_index: 1952
+    req_index: 1940
     short_name: Eldin Volcano - Volcano Entrance Statue Exit
   \Eldin\Volcano\East\Volcano East / Volcano Ascent Statue Exit:
     type: exit
@@ -11084,7 +11075,7 @@ exits:
     stage: F200
     room: 2
     index: 2
-    req_index: 1953
+    req_index: 1941
     short_name: Eldin Volcano - Volcano East / Volcano Ascent Statue Exit
   \Eldin\Volcano\Near Temple Entrance\Temple Entrance Statue Exit:
     type: exit
@@ -11092,7 +11083,7 @@ exits:
     stage: F200
     room: 4
     index: 2
-    req_index: 1954
+    req_index: 1942
     short_name: Eldin Volcano - Temple Entrance Statue Exit
   \Eldin\Volcano\East\Dive to Mogma Turf:
     type: exit
@@ -11100,7 +11091,7 @@ exits:
     stage: F200
     room: 2
     index: 1
-    req_index: 1955
+    req_index: 1943
     short_name: Eldin Volcano - Dive to Mogma Turf
   \Eldin\Volcano\Near Temple Entrance\Exit to Earth Temple:
     type: exit
@@ -11108,7 +11099,7 @@ exits:
     stage: F200
     room: 4
     index: 0
-    req_index: 1956
+    req_index: 1944
     short_name: Eldin Volcano - Exit to Earth Temple
   \Eldin\Volcano\Near Thrill Digger Cave\Thrill Digger Cave Exit:
     type: exit
@@ -11116,7 +11107,7 @@ exits:
     stage: F200
     room: 4
     index: 1
-    req_index: 1957
+    req_index: 1945
     short_name: Eldin Volcano - Thrill Digger Cave Exit
   \Eldin\Volcano\Hot Cave\Exit to Summit:
     type: exit
@@ -11124,27 +11115,27 @@ exits:
     stage: F200
     room: 5
     index: 1
-    req_index: 1958
+    req_index: 1946
     short_name: Eldin Volcano - Exit to Summit
   \Eldin\Volcano\Ascent\Trial Gate Exit:
     type: exit
     vanilla: Eldin Silent Realm - Entrance
-    req_index: 1959
+    req_index: 1947
     short_name: Eldin Volcano - Trial Gate Exit
   \Eldin\Volcano\Past Slide\Vent Exit near Ascent:
     type: exit
     vanilla: Eldin Volcano - Vent Entrance near Hot Cave
-    req_index: 1960
+    req_index: 1948
     short_name: Eldin Volcano - Vent Exit near Ascent
-  \Eldin\Volcano\East\Exit to Bokoblin Base:
+  \Eldin\Volcano\First Room\Exit to Bokoblin Base:
     type: exit
     vanilla: Bokoblin Base - Entrance
-    req_index: 1961
+    req_index: 1949
     short_name: Eldin Volcano - Exit to Bokoblin Base
   \Eldin\Bokoblin Base\Prison\Exit:
     type: exit
     vanilla: Entrance from Bokoblin Base
-    req_index: 1962
+    req_index: 1950
     short_name: Bokoblin Base - Exit
   \Eldin\Mogma Turf\Pre Vent\First Vent:
     type: exit
@@ -11152,7 +11143,7 @@ exits:
     stage: F210
     room: 0
     index: 0
-    req_index: 1963
+    req_index: 1951
     short_name: Mogma Turf - First Vent
   \Eldin\Mogma Turf\Past Vent\Second Vent:
     type: exit
@@ -11160,7 +11151,7 @@ exits:
     stage: F210
     room: 0
     index: 1
-    req_index: 1964
+    req_index: 1952
     short_name: Mogma Turf - Second Vent
   \Eldin\Volcano\Thrill Digger Cave\Exit:
     type: exit
@@ -11168,12 +11159,12 @@ exits:
     stage: F211
     room: 0
     index: 0
-    req_index: 1965
+    req_index: 1953
     short_name: Thrill Digger Cave - Exit
   \Eldin\Eldin Silent Realm\Exit:
     type: exit
     vanilla: Eldin Volcano - Trial Gate Entrance
-    req_index: 1966
+    req_index: 1954
     short_name: Eldin Silent Realm - Exit
   \Eldin\Volcano Summit\Exit to Eldin Volcano:
     type: exit
@@ -11181,7 +11172,7 @@ exits:
     stage: F201_1
     room: 0
     index: 0
-    req_index: 1967
+    req_index: 1955
     short_name: Volcano Summit - Exit to Eldin Volcano
   \Eldin\Volcano Summit\Exit to Waterfall:
     type: exit
@@ -11189,7 +11180,7 @@ exits:
     stage: F201_1
     room: 0
     index: 1
-    req_index: 1968
+    req_index: 1956
     short_name: Volcano Summit - Exit to Waterfall
   \Eldin\Volcano Summit\Exit to Outside Fire Sanctuary:
     type: exit
@@ -11197,7 +11188,7 @@ exits:
     stage: F201_1
     room: 0
     index: 2
-    req_index: 1969
+    req_index: 1957
     short_name: Volcano Summit - Exit to Outside Fire Sanctuary
   \Eldin\Volcano Summit\Waterfall\Exit:
     type: exit
@@ -11205,7 +11196,7 @@ exits:
     stage: F201_4
     room: 0
     index: 0
-    req_index: 1970
+    req_index: 1958
     short_name: Volcano Summit - Waterfall - Exit
   \Eldin\Volcano Summit\Outside Fire Sanctuary\Statue Exit:
     type: exit
@@ -11213,7 +11204,7 @@ exits:
     stage: F201_3
     room: 0
     index: 2
-    req_index: 1971
+    req_index: 1959
     short_name: Outside Fire Sanctuary - Statue Exit
   \Eldin\Volcano Summit\Outside Fire Sanctuary\Before Thirsty Frogs\Exit to Summit:
     type: exit
@@ -11221,7 +11212,7 @@ exits:
     stage: F201_3
     room: 0
     index: 0
-    req_index: 1972
+    req_index: 1960
     short_name: Outside Fire Sanctuary - Exit to Summit
   \Eldin\Volcano Summit\Outside Fire Sanctuary\Exit to Fire Sanctuary:
     type: exit
@@ -11229,32 +11220,32 @@ exits:
     stage: F201_3
     room: 0
     index: 1
-    req_index: 1973
+    req_index: 1961
     short_name: Outside Fire Sanctuary - Exit to Fire Sanctuary
   \Earth Temple\Main\First Room\Main Exit:
     type: exit
     vanilla: Eldin Volcano - Entrance from Earth Temple
-    req_index: 1974
+    req_index: 1962
     short_name: Earth Temple - Main Exit
   \Earth Temple\Main\Room with Slopes\Front of Boss Door\Boss Door Exit:
     type: exit
     vanilla: Earth Temple - Boss Room - Entrance from Dungeon
-    req_index: 1975
+    req_index: 1963
     short_name: Earth Temple - Boss Door Exit
   \Earth Temple\Boss Room\Entry\Exit to Dungeon:
     type: exit
     vanilla: Earth Temple - Boss Door Entrance
-    req_index: 1976
+    req_index: 1964
     short_name: Earth Temple - Boss Room - Exit to Dungeon
   \Earth Temple\Boss Room\Slope\Exit to Spring:
     type: exit
     vanilla: Earth Temple - Spring - Entrance
-    req_index: 1977
+    req_index: 1965
     short_name: Earth Temple - Boss Room - Exit to Spring
   \Earth Temple\Spring\Exit:
     type: exit
     vanilla: Earth Temple - Boss Room - Entrance from Spring
-    req_index: 1978
+    req_index: 1966
     short_name: Earth Temple - Spring - Exit
   \Fire Sanctuary\Main\Front of Boss Door\Statue Exit:
     type: exit
@@ -11262,52 +11253,52 @@ exits:
     stage: D201
     room: 10
     index: 3
-    req_index: 1979
+    req_index: 1967
     short_name: Fire Sanctuary - Statue Exit
   \Fire Sanctuary\Main\First Room\Main Exit:
     type: exit
     vanilla: Outside Fire Sanctuary - Entrance from Fire Sanctuary
-    req_index: 1980
+    req_index: 1968
     short_name: Fire Sanctuary - Main Exit
   \Fire Sanctuary\Main\First Room\Past Water Plant\Exit to Second Room:
     type: exit
     vanilla: Fire Sanctuary - Second Room - Entrance from First Room
-    req_index: 1981
+    req_index: 1969
     short_name: Fire Sanctuary - First Room - Exit to Second Room
   \Fire Sanctuary\Main\Second Room\Outside Section\Exit to First Room:
     type: exit
     vanilla: Fire Sanctuary - First Room - Entrance from Second Room
-    req_index: 1982
+    req_index: 1970
     short_name: Fire Sanctuary - Second Room - Exit to First Room
   \Fire Sanctuary\Main\Magmanos Fight Room\Lower Part\Exit to West of Boss Door:
     type: exit
     vanilla: Fire Sanctuary - West of Boss Door - Entrance from Magmanos Fight Room
-    req_index: 1983
+    req_index: 1971
     short_name: Fire Sanctuary - Magmanos Fight Room - Exit to West of Boss Door
   \Fire Sanctuary\Main\West of Boss Door\Entry\Exit to Magmanos Fight Room:
     type: exit
     vanilla: Fire Sanctuary - Magmanos Fight Room - Entrance from West of Boss Door
-    req_index: 1984
+    req_index: 1972
     short_name: Fire Sanctuary - West of Boss Door - Exit to Magmanos Fight Room
   \Fire Sanctuary\Main\Front of Boss Door\Boss Door Exit:
     type: exit
     vanilla: Fire Sanctuary - Boss Room - Entrance from Dungeon
-    req_index: 1985
+    req_index: 1973
     short_name: Fire Sanctuary - Boss Door Exit
   \Fire Sanctuary\Boss Room\Exit to Dungeon:
     type: exit
     vanilla: Fire Sanctuary - Boss Door Entrance
-    req_index: 1986
+    req_index: 1974
     short_name: Fire Sanctuary - Boss Room - Exit to Dungeon
   \Fire Sanctuary\Boss Room\Exit to Flame Room:
     type: exit
     vanilla: Fire Sanctuary - Flame Room - Entrance
-    req_index: 1987
+    req_index: 1975
     short_name: Fire Sanctuary - Boss Room - Exit to Flame Room
   \Fire Sanctuary\Flame Room\Exit:
     type: exit
     vanilla: Fire Sanctuary - Boss Room - Entrance from Flame Room
-    req_index: 1988
+    req_index: 1976
     short_name: Fire Sanctuary - Flame Room - Exit
   \Lanayru\Mine\Entry\Statue Exit:
     type: exit
@@ -11315,7 +11306,7 @@ exits:
     stage: F300_1
     room: 0
     index: 0
-    req_index: 1989
+    req_index: 1977
     short_name: Lanayru Mine - Statue Exit
   \Lanayru\Mine\Entry\Caves Entrance\Exit to Caves:
     type: exit
@@ -11323,7 +11314,7 @@ exits:
     stage: F300_1
     room: 0
     index: 1
-    req_index: 1990
+    req_index: 1978
     short_name: Lanayru Mine - Exit to Caves
   \Lanayru\Mine\End\In Minecart\Exit to Desert:
     type: exit
@@ -11331,7 +11322,7 @@ exits:
     stage: F300_1
     room: 2
     index: 0
-    req_index: 1991
+    req_index: 1979
     short_name: Lanayru Mine - Exit to Desert
   \Lanayru\Desert\Shared Statue Exit:
     type: exit
@@ -11339,7 +11330,7 @@ exits:
     stage: F300
     room: 0
     index: 6
-    req_index: 1992
+    req_index: 1980
     short_name: Lanayru Desert - Shared Statue Exit
   \Lanayru\Desert\North Part\Lightning Node Exit:
     type: exit
@@ -11347,7 +11338,7 @@ exits:
     stage: F300
     room: 0
     index: 0
-    req_index: 1993
+    req_index: 1981
     short_name: Lanayru Desert - Lightning Node Exit
   \Lanayru\Desert\Entry\Exit to Mine:
     type: exit
@@ -11355,7 +11346,7 @@ exits:
     stage: F300
     room: 0
     index: 1
-    req_index: 1994
+    req_index: 1982
     short_name: Lanayru Desert - Exit to Mine
   \Lanayru\Desert\East\Fire Node Exit:
     type: exit
@@ -11363,7 +11354,7 @@ exits:
     stage: F300
     room: 0
     index: 2
-    req_index: 1995
+    req_index: 1983
     short_name: Lanayru Desert - Fire Node Exit
   \Lanayru\Desert\Near South Exit to Temple of Time\South Exit to Temple of Time:
     type: exit
@@ -11371,7 +11362,7 @@ exits:
     stage: F300
     room: 0
     index: 3
-    req_index: 1996
+    req_index: 1984
     short_name: Lanayru Desert - South Exit to Temple of Time
   \Lanayru\Desert\North Part\North Exit to Temple of Time:
     type: exit
@@ -11379,7 +11370,7 @@ exits:
     stage: F300
     room: 0
     index: 4
-    req_index: 1997
+    req_index: 1985
     short_name: Lanayru Desert - North Exit to Temple of Time
   \Lanayru\Desert\Top of LMF\Exit to Lanayru Mining Facility:
     type: exit
@@ -11387,7 +11378,7 @@ exits:
     stage: F300
     room: 0
     index: 5
-    req_index: 1998
+    req_index: 1986
     short_name: Lanayru Desert - Exit to Lanayru Mining Facility
   \Lanayru\Desert\Near South Exit to Temple of Time\Ledge to Caves\Exit to Caves:
     type: exit
@@ -11395,17 +11386,17 @@ exits:
     stage: F300
     room: 0
     index: 8
-    req_index: 1999
+    req_index: 1987
     short_name: Lanayru Desert - Exit to Caves
   \Lanayru\Desert\North Part\Trial Gate Exit:
     type: exit
     vanilla: Lanayru Silent Realm - Entrance
-    req_index: 2000
+    req_index: 1988
     short_name: Lanayru Desert - Trial Gate Exit
   \Lanayru\Lanayru Silent Realm\Exit:
     type: exit
     vanilla: Lanayru Desert - Trial Gate Entrance
-    req_index: 2001
+    req_index: 1989
     short_name: Lanayru Silent Realm - Exit
   \Lanayru\Desert\North Part\Lightning Node\Present\Exit:
     type: exit
@@ -11413,7 +11404,7 @@ exits:
     stage: F300_2
     room: 0
     index: 0
-    req_index: 2002
+    req_index: 1990
     short_name: Lightning Node - Exit
   \Lanayru\Desert\East\Fire Node\Present\Exit:
     type: exit
@@ -11421,7 +11412,7 @@ exits:
     stage: F300_3
     room: 0
     index: 0
-    req_index: 2003
+    req_index: 1991
     short_name: Fire Node - Exit
   \Lanayru\Temple of Time\Shared Statue Exit:
     type: exit
@@ -11429,7 +11420,7 @@ exits:
     stage: F300_4
     room: 0
     index: 2
-    req_index: 2004
+    req_index: 1992
     short_name: Temple of Time - Shared Statue Exit
   \Lanayru\Temple of Time\South East\South Exit to Desert:
     type: exit
@@ -11437,7 +11428,7 @@ exits:
     stage: F300_4
     room: 0
     index: 0
-    req_index: 2005
+    req_index: 1993
     short_name: Temple of Time - South Exit to Desert
   \Lanayru\Temple of Time\North East\North Exit to Desert:
     type: exit
@@ -11445,7 +11436,7 @@ exits:
     stage: F300_4
     room: 0
     index: 1
-    req_index: 2006
+    req_index: 1994
     short_name: Temple of Time - North Exit to Desert
   \Lanayru\Temple of Time\Inside\Exit to Lanayru Mining Facility:
     type: exit
@@ -11453,7 +11444,7 @@ exits:
     stage: F300_4
     room: 0
     index: 4
-    req_index: 2007
+    req_index: 1995
     short_name: Temple of Time - Exit to Lanayru Mining Facility
   \Lanayru\Caves\Exit to Mine:
     type: exit
@@ -11461,7 +11452,7 @@ exits:
     stage: F303
     room: 0
     index: 0
-    req_index: 2008
+    req_index: 1996
     short_name: Lanayru Caves - Exit to Mine
   \Lanayru\Caves\Exit to Desert:
     type: exit
@@ -11469,7 +11460,7 @@ exits:
     stage: F303
     room: 0
     index: 1
-    req_index: 2009
+    req_index: 1997
     short_name: Lanayru Caves - Exit to Desert
   \Lanayru\Caves\Past Door to Lanayru Sand Sea\Exit to Lanayru Sand Sea:
     type: exit
@@ -11477,22 +11468,22 @@ exits:
     stage: F303
     room: 0
     index: 2
-    req_index: 2010
+    req_index: 1998
     short_name: Lanayru Caves - Exit to Lanayru Sand Sea
   \Lanayru\Caves\Past Crawlspace\Exit to Gorge:
     type: exit
     vanilla: Lanayru Gorge - Entrance
-    req_index: 2011
+    req_index: 1999
     short_name: Lanayru Caves - Exit to Gorge
   \Lanayru\Lanayru Sand Sea\Gorge\Exit:
     type: exit
     vanilla: Lanayru Caves - Entrance from Gorge
-    req_index: 2012
+    req_index: 2000
     short_name: Lanayru Gorge - Exit
   \Lanayru\Lanayru Sand Sea\Gorge\Statue Exit:
     type: exit
     vanilla: Sky - Lanayru Pillar - Entrance
-    req_index: 2013
+    req_index: 2001
     short_name: Lanayru Gorge - Statue Exit
   \Lanayru\Lanayru Sand Sea\Ancient Harbour Dock Exit:
     type: exit
@@ -11500,7 +11491,7 @@ exits:
     stage: F301_1
     room: 0
     index: 0
-    req_index: 2014
+    req_index: 2002
     short_name: Lanayru Sand Sea - Ancient Harbour Dock Exit
   \Lanayru\Lanayru Sand Sea\Sandship Dock Exit:
     type: exit
@@ -11508,7 +11499,7 @@ exits:
     stage: F301_1
     room: 0
     index: 1
-    req_index: 2015
+    req_index: 2003
     short_name: Lanayru Sand Sea - Sandship Dock Exit
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat Dock Exit:
     type: exit
@@ -11516,7 +11507,7 @@ exits:
     stage: F301_1
     room: 0
     index: 2
-    req_index: 2016
+    req_index: 2004
     short_name: Lanayru Sand Sea - Skipper's Retreat Dock Exit
   \Lanayru\Lanayru Sand Sea\Shipyard Dock Exit:
     type: exit
@@ -11524,7 +11515,7 @@ exits:
     stage: F301_1
     room: 0
     index: 3
-    req_index: 2017
+    req_index: 2005
     short_name: Lanayru Sand Sea - Shipyard Dock Exit
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold Dock Exit:
     type: exit
@@ -11532,7 +11523,7 @@ exits:
     stage: F301_1
     room: 0
     index: 4
-    req_index: 2018
+    req_index: 2006
     short_name: Lanayru Sand Sea - Pirate Stronghold Dock Exit
   \Lanayru\Lanayru Sand Sea\Ancient Harbour\Statue Exit:
     type: exit
@@ -11540,7 +11531,7 @@ exits:
     stage: F301
     room: 0
     index: 3
-    req_index: 2019
+    req_index: 2007
     short_name: Lanayru Sand Sea Docks - Statue Exit
   \Lanayru\Lanayru Sand Sea\Ancient Harbour\Exit to Sandship:
     type: exit
@@ -11548,7 +11539,7 @@ exits:
     stage: F301
     room: 0
     index: 0
-    req_index: 2020
+    req_index: 2008
     short_name: Lanayru Sand Sea Docks - Exit to Sandship
   \Lanayru\Lanayru Sand Sea\Ancient Harbour\Near Exit to Caves\Exit to Caves:
     type: exit
@@ -11556,7 +11547,7 @@ exits:
     stage: F301
     room: 0
     index: 1
-    req_index: 2021
+    req_index: 2009
     short_name: Lanayru Sand Sea Docks - Exit to Caves
   \Lanayru\Lanayru Sand Sea\Ancient Harbour\Dock Exit:
     type: exit
@@ -11564,7 +11555,7 @@ exits:
     stage: F301
     room: 0
     index: 2
-    req_index: 2022
+    req_index: 2010
     short_name: Lanayru Sand Sea Docks - Dock Exit
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Statue Exit:
     type: exit
@@ -11572,7 +11563,7 @@ exits:
     stage: F301_3
     room: 0
     index: 1
-    req_index: 2023
+    req_index: 2011
     short_name: Skipper's Retreat - Statue Exit
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Dock Exit:
     type: exit
@@ -11580,7 +11571,7 @@ exits:
     stage: F301_3
     room: 0
     index: 2
-    req_index: 2024
+    req_index: 2012
     short_name: Skipper's Retreat - Dock Exit
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Top Part\Shack Exit:
     type: exit
@@ -11588,7 +11579,7 @@ exits:
     stage: F301_3
     room: 0
     index: 3
-    req_index: 2025
+    req_index: 2013
     short_name: Skipper's Retreat - Shack Exit
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Shack\Exit:
     type: exit
@@ -11596,7 +11587,7 @@ exits:
     stage: F301_5
     room: 0
     index: 0
-    req_index: 2026
+    req_index: 2014
     short_name: Skipper's Retreat - Shack - Exit
   \Lanayru\Lanayru Sand Sea\Shipyard\Statue Exit:
     type: exit
@@ -11604,7 +11595,7 @@ exits:
     stage: F301_4
     room: 0
     index: 1
-    req_index: 2027
+    req_index: 2015
     short_name: Shipyard - Statue Exit
   \Lanayru\Lanayru Sand Sea\Shipyard\Dock Exit:
     type: exit
@@ -11612,7 +11603,7 @@ exits:
     stage: F301_4
     room: 0
     index: 2
-    req_index: 2028
+    req_index: 2016
     short_name: Shipyard - Dock Exit
   \Lanayru\Lanayru Sand Sea\Shipyard\Construction Bay Upper Exit:
     type: exit
@@ -11620,7 +11611,7 @@ exits:
     stage: F301_4
     room: 0
     index: 3
-    req_index: 2029
+    req_index: 2017
     short_name: Shipyard - Construction Bay Upper Exit
   \Lanayru\Lanayru Sand Sea\Shipyard\Construction Bay Lower Exit:
     type: exit
@@ -11628,7 +11619,7 @@ exits:
     stage: F301_4
     room: 0
     index: 4
-    req_index: 2030
+    req_index: 2018
     short_name: Shipyard - Construction Bay Lower Exit
   \Lanayru\Lanayru Sand Sea\Shipyard\Construction Bay\Lower Exit:
     type: exit
@@ -11636,7 +11627,7 @@ exits:
     stage: F301_7
     room: 0
     index: 0
-    req_index: 2031
+    req_index: 2019
     short_name: Shipyard - Construction Bay - Lower Exit
   \Lanayru\Lanayru Sand Sea\Shipyard\Construction Bay\Upper Exit:
     type: exit
@@ -11644,7 +11635,7 @@ exits:
     stage: F301_7
     room: 0
     index: 1
-    req_index: 2032
+    req_index: 2020
     short_name: Shipyard - Construction Bay - Upper Exit
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Statue Exit:
     type: exit
@@ -11652,7 +11643,7 @@ exits:
     stage: F301_6
     room: 0
     index: 3
-    req_index: 2033
+    req_index: 2021
     short_name: Pirate Stronghold - Statue Exit
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Dock Exit:
     type: exit
@@ -11660,7 +11651,7 @@ exits:
     stage: F301_6
     room: 0
     index: 0
-    req_index: 2034
+    req_index: 2022
     short_name: Pirate Stronghold - Dock Exit
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Side Exit:
     type: exit
@@ -11668,7 +11659,7 @@ exits:
     stage: F301_6
     room: 0
     index: 1
-    req_index: 2035
+    req_index: 2023
     short_name: Pirate Stronghold - Side Exit
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside the Shark Head\Top Exit:
     type: exit
@@ -11676,7 +11667,7 @@ exits:
     stage: F301_6
     room: 0
     index: 2
-    req_index: 2036
+    req_index: 2024
     short_name: Pirate Stronghold - Top Exit
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside\First Door Exit:
     type: exit
@@ -11684,7 +11675,7 @@ exits:
     stage: F301_2
     room: 1
     index: 0
-    req_index: 2037
+    req_index: 2025
     short_name: Pirate Stronghold - Inside - First Door Exit
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside\Second Door Exit:
     type: exit
@@ -11692,63 +11683,63 @@ exits:
     stage: F301_2
     room: 1
     index: 2
-    req_index: 2038
+    req_index: 2026
     short_name: Pirate Stronghold - Inside - Second Door Exit
   \Lanayru Mining Facility\Main\First Room\Main Exit:
     type: exit
     vanilla: Lanayru Desert - Entrance from Lanayru Mining Facility
-    req_index: 2039
+    req_index: 2027
     short_name: Lanayru Mining Facility - Main Exit
   \Lanayru Mining Facility\Main\First Hub\Exit to Big Hub:
     type: exit
     vanilla: Lanayru Mining Facility - Big Hub - Entrance from First Hub
-    req_index: 2040
+    req_index: 2028
     short_name: Lanayru Mining Facility - First Hub - Exit to Big Hub
   \Lanayru Mining Facility\Main\Hop Across Boxes Room\Near Exit\Exit to Big Hub:
     type: exit
     vanilla: Lanayru Mining Facility - Big Hub - Entrance from Hop Across Boxes Room
-    req_index: 2041
+    req_index: 2029
     short_name: Lanayru Mining Facility - Hop Across Boxes Room - Exit to Big Hub
   \Lanayru Mining Facility\Main\Armos Fight Room\Exit to Big Hub:
     type: exit
     vanilla: Lanayru Mining Facility - Big Hub - Entrance from Armos Fight Room
-    req_index: 2042
+    req_index: 2030
     short_name: Lanayru Mining Facility - Armos Fight Room - Exit to Big Hub
   \Lanayru Mining Facility\Main\Big Hub\Entry\Exit to First Hub:
     type: exit
     vanilla: Lanayru Mining Facility - First Hub - Entrance from Big Hub
-    req_index: 2043
+    req_index: 2031
     short_name: Lanayru Mining Facility - Big Hub - Exit to First Hub
   \Lanayru Mining Facility\Main\Big Hub\Near Exit to Hop Across Boxes Room\Exit to Hop Across Boxes Room:
     type: exit
     vanilla: Lanayru Mining Facility - Hop Across Boxes Room - Entrance from Big Hub
-    req_index: 2044
+    req_index: 2032
     short_name: Lanayru Mining Facility - Big Hub - Exit to Hop Across Boxes Room
   \Lanayru Mining Facility\Main\Big Hub\Past West Gate\Exit to Armos Fight Room:
     type: exit
     vanilla: Lanayru Mining Facility - Armos Fight Room - Entrance from Big Hub
-    req_index: 2045
+    req_index: 2033
     short_name: Lanayru Mining Facility - Big Hub - Exit to Armos Fight Room
   \Lanayru Mining Facility\Main\Near Boss Door\Boss Door Exit:
     type: exit
     vanilla: Lanayru Mining Facility - Boss Room - Entrance from Dungeon
-    req_index: 2046
+    req_index: 2034
     short_name: Lanayru Mining Facility - Boss Door Exit
   \Lanayru Mining Facility\Boss Room\Exit to Dungeon:
     type: exit
     vanilla: Lanayru Mining Facility - Boss Door Entrance
-    req_index: 2047
+    req_index: 2035
     short_name: Lanayru Mining Facility - Boss Room - Exit to Dungeon
   \Lanayru Mining Facility\Boss Room\After Sand Drain\Exit to Hall of Ancient Robots:
     type: exit
     vanilla: Lanayru Mining Facility - Hall of Ancient Robots - Entrance from Boss
       Room
-    req_index: 2048
+    req_index: 2036
     short_name: Lanayru Mining Facility - Boss Room - Exit to Hall of Ancient Robots
   \Lanayru Mining Facility\Hall of Ancient Robots\Entry\Exit to Boss Room:
     type: exit
     vanilla: Lanayru Mining Facility - Boss Room - Entrance from Hall of Ancient Robots
-    req_index: 2049
+    req_index: 2037
     short_name: Lanayru Mining Facility - Hall of Ancient Robots - Exit to Boss Room
   \Lanayru Mining Facility\Hall of Ancient Robots\End\Exit to Temple of Time:
     type: exit
@@ -11757,23 +11748,23 @@ exits:
     stage: F300_5
     room: 0
     index: 1
-    req_index: 2050
+    req_index: 2038
     short_name: Lanayru Mining Facility - Hall of Ancient Robots - Exit to Temple
       of Time
   \Sandship\Main\Deck\Main Exit:
     type: exit
     vanilla: Lanayru Sand Sea - Sandship Dock Entrance
-    req_index: 2051
+    req_index: 2039
     short_name: Sandship - Main Exit
   \Sandship\Main\Before Boss Door\Boss Door one-way Exit:
     type: exit
     vanilla: Sandship - Boss Room - Entrance
-    req_index: 2052
+    req_index: 2040
     short_name: Sandship - Boss Door one-way Exit
   \Sky Keep\Main\First Room\Bottom Exit:
     type: exit
     vanilla: Skyloft - Entrance from Sky Keep
-    req_index: 2053
+    req_index: 2041
     short_name: Sky Keep - First Room - Bottom Exit
 entrances:
   \Skyloft\Upper Skyloft\Knight Academy\Link's Room\Start Entrance:
@@ -11787,7 +11778,7 @@ entrances:
     entrance: 5
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2054
+    req_index: 2042
     short_name: Skyloft - Knight Academy - Start Entrance
   \Skyloft\Upper Skyloft\Knight Academy\Zelda's Room\Chimney:
     type: entrance
@@ -11798,7 +11789,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2055
+    req_index: 2043
     short_name: Skyloft - Knight Academy - Chimney
   \Skyloft\Upper Skyloft\Knight Academy\Lower Right Door Entrance:
     type: entrance
@@ -11809,7 +11800,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2057
+    req_index: 2045
     short_name: Skyloft - Knight Academy - Lower Right Door Entrance
   \Skyloft\Upper Skyloft\Knight Academy\Lower Left Door Entrance:
     type: entrance
@@ -11820,7 +11811,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2059
+    req_index: 2047
     short_name: Skyloft - Knight Academy - Lower Left Door Entrance
   \Skyloft\Upper Skyloft\Knight Academy\Upper Right Door Entrance:
     type: entrance
@@ -11831,7 +11822,7 @@ entrances:
     entrance: 3
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2061
+    req_index: 2049
     short_name: Skyloft - Knight Academy - Upper Right Door Entrance
   \Skyloft\Upper Skyloft\Knight Academy\Upper Left Door Entrance:
     type: entrance
@@ -11842,7 +11833,7 @@ entrances:
     entrance: 4
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2063
+    req_index: 2051
     short_name: Skyloft - Knight Academy - Upper Left Door Entrance
   \Skyloft\Upper Skyloft\Knight Academy Lower Right Door Entrance:
     type: entrance
@@ -11853,7 +11844,7 @@ entrances:
     entrance: 4
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2065
+    req_index: 2053
     short_name: Skyloft - Knight Academy Lower Right Door Entrance
   \Skyloft\Upper Skyloft\Knight Academy Lower Left Door Entrance:
     type: entrance
@@ -11864,7 +11855,7 @@ entrances:
     entrance: 5
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2067
+    req_index: 2055
     short_name: Skyloft - Knight Academy Lower Left Door Entrance
   \Skyloft\Upper Skyloft\Knight Academy Upper Left Door Entrance:
     type: entrance
@@ -11875,7 +11866,7 @@ entrances:
     entrance: 23
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2069
+    req_index: 2057
     short_name: Skyloft - Knight Academy Upper Left Door Entrance
   \Skyloft\Upper Skyloft\Knight Academy Upper Right Door Entrance:
     type: entrance
@@ -11886,7 +11877,7 @@ entrances:
     entrance: 24
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2071
+    req_index: 2059
     short_name: Skyloft - Knight Academy Upper Right Door Entrance
   \Skyloft\Upper Skyloft\Sparring Hall\Right Door Entrance:
     type: entrance
@@ -11897,7 +11888,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2073
+    req_index: 2061
     short_name: Sparring Hall - Right Door Entrance
   \Skyloft\Upper Skyloft\Sparring Hall\Left Door Entrance:
     type: entrance
@@ -11908,7 +11899,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2075
+    req_index: 2063
     short_name: Sparring Hall - Left Door Entrance
   \Skyloft\Upper Skyloft\Sparring Hall Left Door Entrance:
     type: entrance
@@ -11919,7 +11910,7 @@ entrances:
     entrance: 21
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2077
+    req_index: 2065
     short_name: Skyloft - Sparring Hall Left Door Entrance
   \Skyloft\Upper Skyloft\Sparring Hall Right Door Entrance:
     type: entrance
@@ -11930,7 +11921,7 @@ entrances:
     entrance: 26
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2079
+    req_index: 2067
     short_name: Skyloft - Sparring Hall Right Door Entrance
   \Skyloft\Upper Skyloft\Goddess Statue\Entrance:
     type: entrance
@@ -11941,7 +11932,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2081
+    req_index: 2069
     short_name: Goddess Statue - Entrance
   \Skyloft\Upper Skyloft\Goddess Statue Entrance:
     type: entrance
@@ -11952,7 +11943,7 @@ entrances:
     entrance: 6
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2083
+    req_index: 2071
     short_name: Goddess Statue Entrance
   \Skyloft\Central Skyloft\Waterfall Cave\Upper Entrance:
     type: entrance
@@ -11963,7 +11954,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2085
+    req_index: 2073
     short_name: Waterfall Cave - Upper Entrance
   \Skyloft\Central Skyloft\Waterfall Cave\Lower Entrance:
     type: entrance
@@ -11974,7 +11965,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2087
+    req_index: 2075
     short_name: Waterfall Cave - Lower Entrance
   \Skyloft\Central Skyloft\Waterfall Cave Upper Entrance:
     type: entrance
@@ -11985,7 +11976,7 @@ entrances:
     entrance: 7
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2089
+    req_index: 2077
     short_name: Waterfall Cave Upper Entrance
   \Skyloft\Central Skyloft\Past Waterfall Cave\Waterfall Cave Lower Entrance:
     type: entrance
@@ -11996,7 +11987,7 @@ entrances:
     entrance: 8
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2091
+    req_index: 2079
     short_name: Waterfall Cave Lower Entrance
   \Skyloft\Central Skyloft\Bazaar\North Entrance:
     type: entrance
@@ -12007,7 +11998,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2093
+    req_index: 2081
     short_name: Bazaar - North Entrance
   \Skyloft\Central Skyloft\Bazaar\South Entrance:
     type: entrance
@@ -12018,7 +12009,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2094
+    req_index: 2082
     short_name: Bazaar - South Entrance
   \Skyloft\Central Skyloft\Bazaar\West Entrance:
     type: entrance
@@ -12029,7 +12020,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2095
+    req_index: 2083
     short_name: Bazaar - West Entrance
   \Skyloft\Central Skyloft\Bazaar North Entrance:
     type: entrance
@@ -12040,7 +12031,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2096
+    req_index: 2084
     short_name: Bazaar North Entrance
   \Skyloft\Central Skyloft\Bazaar South Entrance:
     type: entrance
@@ -12051,7 +12042,7 @@ entrances:
     entrance: 3
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2098
+    req_index: 2086
     short_name: Bazaar South Entrance
   \Skyloft\Central Skyloft\Bazaar West Entrance:
     type: entrance
@@ -12062,7 +12053,7 @@ entrances:
     entrance: 20
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2100
+    req_index: 2088
     short_name: Bazaar West Entrance
   \Skyloft\Beedle's Shop\Day Entrance:
     type: entrance
@@ -12073,7 +12064,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2102
+    req_index: 2090
     short_name: Beedle's Shop - Day Entrance
   \Skyloft\Beedle's Shop\Night Entrance:
     type: entrance
@@ -12085,7 +12076,7 @@ entrances:
     entrance: 0
     tod: 1
     allowed_time_of_day: 2
-    req_index: 2104
+    req_index: 2092
     short_name: Beedle's Shop - Night Entrance
   \Skyloft\Central Skyloft\Entrance from Beedle's Shop:
     type: entrance
@@ -12096,7 +12087,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2105
+    req_index: 2093
     short_name: Skyloft - Entrance from Beedle's Shop
   \Skyloft\Skyloft Silent Realm\Entrance:
     type: entrance
@@ -12104,7 +12095,7 @@ entrances:
     can-start-at: false
     tod: 0
     allowed_time_of_day: 3
-    req_index: 2107
+    req_index: 2095
     short_name: Skyloft Silent Realm - Entrance
   \Skyloft\Central Skyloft\Trial Gate Entrance:
     type: entrance
@@ -12112,7 +12103,7 @@ entrances:
     can-start-at: false
     tod: 0
     allowed_time_of_day: 3
-    req_index: 2109
+    req_index: 2097
     short_name: Skyloft - Trial Gate Entrance
   \Skyloft\Central Skyloft\Near Temple Entrance\Entrance from Sky Keep:
     type: entrance
@@ -12124,7 +12115,7 @@ entrances:
     entrance: 53
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2111
+    req_index: 2099
     short_name: Skyloft - Entrance from Sky Keep
   \Skyloft\Central Skyloft\Orielle and Parrow's House\Entrance:
     type: entrance
@@ -12135,7 +12126,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2112
+    req_index: 2100
     short_name: Orielle and Parrow's House - Entrance
   \Skyloft\Central Skyloft\Orielle and Parrow's House Entrance:
     type: entrance
@@ -12146,7 +12137,7 @@ entrances:
     entrance: 30
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2114
+    req_index: 2102
     short_name: Orielle and Parrow's House Entrance
   \Skyloft\Central Skyloft\Peatrice's House\Entrance:
     type: entrance
@@ -12157,7 +12148,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2116
+    req_index: 2104
     short_name: Peatrice's House - Entrance
   \Skyloft\Central Skyloft\Peatrice's House Entrance:
     type: entrance
@@ -12168,7 +12159,7 @@ entrances:
     entrance: 38
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2118
+    req_index: 2106
     short_name: Peatrice's House Entrance
   \Skyloft\Central Skyloft\Wryna's House\Entrance:
     type: entrance
@@ -12179,7 +12170,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2120
+    req_index: 2108
     short_name: Wryna's House - Entrance
   \Skyloft\Central Skyloft\Wryna's House Entrance:
     type: entrance
@@ -12190,7 +12181,7 @@ entrances:
     entrance: 31
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2122
+    req_index: 2110
     short_name: Wryna's House Entrance
   \Skyloft\Skyloft Village\Bertie's House\Entrance:
     type: entrance
@@ -12201,7 +12192,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2124
+    req_index: 2112
     short_name: Bertie's House - Entrance
   \Skyloft\Skyloft Village\Bertie's House Entrance:
     type: entrance
@@ -12212,7 +12203,7 @@ entrances:
     entrance: 34
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2126
+    req_index: 2114
     short_name: Bertie's House Entrance
   \Skyloft\Skyloft Village\Sparrot's House\Entrance:
     type: entrance
@@ -12223,7 +12214,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2128
+    req_index: 2116
     short_name: Sparrot's House - Entrance
   \Skyloft\Skyloft Village\Sparrot's House Entrance:
     type: entrance
@@ -12234,7 +12225,7 @@ entrances:
     entrance: 33
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2130
+    req_index: 2118
     short_name: Sparrot's House Entrance
   \Skyloft\Skyloft Village\Mallara's House Entrance:
     type: entrance
@@ -12245,7 +12236,7 @@ entrances:
     entrance: 36
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2132
+    req_index: 2120
     short_name: Skyloft - Mallara's House Entrance
   \Skyloft\Skyloft Village\Mallara's House\Entrance:
     type: entrance
@@ -12256,7 +12247,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2134
+    req_index: 2122
     short_name: Mallara's House - Entrance
   \Skyloft\Skyloft Village\Batreaux's House\Entrance:
     type: entrance
@@ -12267,7 +12258,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2136
+    req_index: 2124
     short_name: Batreaux's House - Entrance
   \Skyloft\Skyloft Village\Batreaux's House Entrance:
     type: entrance
@@ -12278,7 +12269,7 @@ entrances:
     entrance: 29
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2138
+    req_index: 2126
     short_name: Batreaux's House Entrance
   \Skyloft\Skyloft Village\Gondo's House\Entrance:
     type: entrance
@@ -12289,7 +12280,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2140
+    req_index: 2128
     short_name: Gondo's House - Entrance
   \Skyloft\Skyloft Village\Gondo's House Entrance:
     type: entrance
@@ -12300,7 +12291,7 @@ entrances:
     entrance: 35
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2142
+    req_index: 2130
     short_name: Gondo's House Entrance
   \Skyloft\Skyloft Village\Rupin's House\Entrance:
     type: entrance
@@ -12311,7 +12302,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2144
+    req_index: 2132
     short_name: Rupin's House - Entrance
   \Skyloft\Skyloft Village\Rupin's House Entrance:
     type: entrance
@@ -12322,7 +12313,7 @@ entrances:
     entrance: 37
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2146
+    req_index: 2134
     short_name: Rupin's House Entrance
   \Skyloft\Central Skyloft\Piper's House\Entrance:
     type: entrance
@@ -12333,7 +12324,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2148
+    req_index: 2136
     short_name: Piper's House - Entrance
   \Skyloft\Central Skyloft\Piper's House Entrance:
     type: entrance
@@ -12344,7 +12335,7 @@ entrances:
     entrance: 32
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2150
+    req_index: 2138
     short_name: Piper's House Entrance
   \Skyloft\Central Skyloft\Entrance from Sky:
     type: entrance
@@ -12352,7 +12343,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2152
+    req_index: 2140
     short_name: Skyloft - Entrance from Sky
   \Sky\Around Skyloft\Entrance from Skyloft:
     type: entrance
@@ -12360,7 +12351,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2154
+    req_index: 2142
     short_name: Sky - Entrance from Skyloft
   \Sky\North East\Bamboo Island\Inside\Entrance:
     type: entrance
@@ -12371,7 +12362,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2155
+    req_index: 2143
     short_name: Bamboo Island - Inside - Entrance
   \Sky\North East\Bamboo Island\Entrance from Inside:
     type: entrance
@@ -12382,7 +12373,7 @@ entrances:
     entrance: 11
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2156
+    req_index: 2144
     short_name: Bamboo Island - Entrance from Inside
   \Sky\North East\Beedle's Island\Beedle's Ship Entrance:
     type: entrance
@@ -12394,7 +12385,7 @@ entrances:
     entrance: 0
     tod: 1
     allowed_time_of_day: 2
-    req_index: 2157
+    req_index: 2145
     short_name: Sky - Beedle's Island - Beedle's Ship Entrance
   \Sky\North East\Eldin Pillar\Entrance:
     type: entrance
@@ -12406,7 +12397,7 @@ entrances:
     entrance: 13
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2158
+    req_index: 2146
     short_name: Sky - Eldin Pillar - Entrance
   \Sky\South East\Lumpy Pumpkin\Lumpy Pumpkin Building\Main Right Door Entrance:
     type: entrance
@@ -12417,7 +12408,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2159
+    req_index: 2147
     short_name: Lumpy Pumpkin Building - Main Right Door Entrance
   \Sky\South East\Lumpy Pumpkin\Lumpy Pumpkin Building\Main Left Door Entrance:
     type: entrance
@@ -12428,7 +12419,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2161
+    req_index: 2149
     short_name: Lumpy Pumpkin Building - Main Left Door Entrance
   \Sky\South East\Lumpy Pumpkin\Lumpy Pumpkin Building\Back Door Entrance:
     type: entrance
@@ -12439,7 +12430,7 @@ entrances:
     entrance: 3
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2163
+    req_index: 2151
     short_name: Lumpy Pumpkin Building - Back Door Entrance
   \Sky\South East\Lumpy Pumpkin\Main Left Door Entrance:
     type: entrance
@@ -12450,7 +12441,7 @@ entrances:
     entrance: 22
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2165
+    req_index: 2153
     short_name: Lumpy Pumpkin - Main Left Door Entrance
   \Sky\South East\Lumpy Pumpkin\Main Right Door Entrance:
     type: entrance
@@ -12461,7 +12452,7 @@ entrances:
     entrance: 23
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2167
+    req_index: 2155
     short_name: Lumpy Pumpkin - Main Right Door Entrance
   \Sky\South East\Lumpy Pumpkin\Back Door Entrance:
     type: entrance
@@ -12472,7 +12463,7 @@ entrances:
     entrance: 24
     tod: 2
     allowed_time_of_day: 3
-    req_index: 2169
+    req_index: 2157
     short_name: Lumpy Pumpkin - Back Door Entrance
   \Sky\South East\Faron Pillar\Entrance:
     type: entrance
@@ -12484,7 +12475,7 @@ entrances:
     entrance: 12
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2171
+    req_index: 2159
     short_name: Sky - Faron Pillar - Entrance
   \Sky\South West\Lanayru Pillar\Entrance:
     type: entrance
@@ -12495,7 +12486,7 @@ entrances:
     entrance: 14
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2172
+    req_index: 2160
     short_name: Sky - Lanayru Pillar - Entrance
   \Sky\Around Skyloft\Entrance from Thunderhead:
     type: entrance
@@ -12507,7 +12498,7 @@ entrances:
     entrance: 28
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2173
+    req_index: 2161
     short_name: Sky - Entrance from Thunderhead
   \Sky\Thunderhead\Entrance:
     type: entrance
@@ -12519,7 +12510,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2174
+    req_index: 2162
     short_name: Thunderhead - Entrance
   \Sky\Thunderhead\Isle of Songs\Inside\Entrance:
     type: entrance
@@ -12531,7 +12522,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2175
+    req_index: 2163
     short_name: Isle of Songs - Entrance
   \Sky\Thunderhead\Isle of Songs\Entrance from Inside:
     type: entrance
@@ -12543,7 +12534,7 @@ entrances:
     entrance: 4
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2176
+    req_index: 2164
     short_name: Isle of Songs - Entrance from Inside
   \Faron\Sealed Grounds\Spiral\Upper Part\Statue Entrance:
     type: entrance
@@ -12556,7 +12547,7 @@ entrances:
     entrance: 8
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2177
+    req_index: 2165
     short_name: Sealed Grounds Spiral - Statue Entrance
   \Faron\Sealed Grounds\Spiral\Upper Part\From Behind the Temple\Shortcut Entrance from Behind the Temple:
     type: entrance
@@ -12567,7 +12558,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2178
+    req_index: 2166
     short_name: Sealed Grounds Spiral - Shortcut Entrance from Behind the Temple
   \Faron\Sealed Grounds\Spiral\Door Entrance:
     type: entrance
@@ -12578,7 +12569,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2179
+    req_index: 2167
     short_name: Sealed Grounds Spiral - Door Entrance
   \Faron\Sealed Grounds\Sealed Temple\Main Entrance:
     type: entrance
@@ -12589,7 +12580,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2180
+    req_index: 2168
     short_name: Sealed Temple - Main Entrance
   \Faron\Sealed Grounds\Sealed Temple\Side Entrance:
     type: entrance
@@ -12600,7 +12591,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2181
+    req_index: 2169
     short_name: Sealed Temple - Side Entrance
   \Faron\Sealed Grounds\Sealed Temple\Gate of Time Entrance:
     type: entrance
@@ -12612,7 +12603,7 @@ entrances:
     entrance: 11
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2182
+    req_index: 2170
     short_name: Sealed Temple - Gate of Time Entrance
   \Faron\Sealed Grounds\Hylia's Temple\Gate of Time Entrance:
     type: entrance
@@ -12624,7 +12615,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2183
+    req_index: 2171
     short_name: Hylia's Temple - Gate of Time Entrance
   \Faron\Sealed Grounds\Behind the Temple\Statue Entrance:
     type: entrance
@@ -12637,7 +12628,7 @@ entrances:
     entrance: 10
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2184
+    req_index: 2172
     short_name: Behind the Temple - Statue Entrance
   \Faron\Sealed Grounds\Behind the Temple\Door Entrance:
     type: entrance
@@ -12648,7 +12639,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2185
+    req_index: 2173
     short_name: Behind the Temple - Door Entrance
   \Faron\Sealed Grounds\Behind the Temple\Shortcut Entrance from Spiral:
     type: entrance
@@ -12660,7 +12651,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2186
+    req_index: 2174
     short_name: Behind the Temple - Shortcut Entrance from Spiral
   \Faron\Sealed Grounds\Behind the Temple\Entrance from Faron Woods:
     type: entrance
@@ -12671,7 +12662,7 @@ entrances:
     entrance: 3
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2187
+    req_index: 2175
     short_name: Behind the Temple - Entrance from Faron Woods
   \Faron\Faron Woods\Entry\Faron Woods Entry Statue Entrance:
     type: entrance
@@ -12684,7 +12675,7 @@ entrances:
     entrance: 50
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2188
+    req_index: 2176
     short_name: Faron Woods - Faron Woods Entry Statue Entrance
   \Faron\Faron Woods\In the Woods Statue Entrance:
     type: entrance
@@ -12697,7 +12688,7 @@ entrances:
     entrance: 51
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2189
+    req_index: 2177
     short_name: Faron Woods - In the Woods Statue Entrance
   \Faron\Faron Woods\Viewing Platform Statue Entrance:
     type: entrance
@@ -12710,7 +12701,7 @@ entrances:
     entrance: 52
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2190
+    req_index: 2178
     short_name: Faron Woods - Viewing Platform Statue Entrance
   \Faron\Faron Woods\Great Tree\Top\The Great Tree Statue Entrance:
     type: entrance
@@ -12723,7 +12714,7 @@ entrances:
     entrance: 53
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2191
+    req_index: 2179
     short_name: Great Tree - The Great Tree Statue Entrance
   \Faron\Faron Woods\Entry\Entrance from Behind the Temple:
     type: entrance
@@ -12734,7 +12725,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2192
+    req_index: 2180
     short_name: Faron Woods - Entrance from Behind the Temple
   \Faron\Faron Woods\Ledge to Lake Floria\Shortcut Entrance from Floria Waterfall:
     type: entrance
@@ -12745,7 +12736,7 @@ entrances:
     entrance: 17
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2193
+    req_index: 2181
     short_name: Faron Woods - Shortcut Entrance from Floria Waterfall
   \Faron\Faron Woods\Ledge To Deep Woods\Entrance from Deep Woods:
     type: entrance
@@ -12756,7 +12747,7 @@ entrances:
     entrance: 45
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2194
+    req_index: 2182
     short_name: Faron Woods - Entrance from Deep Woods
   \Faron\Faron Woods\Trial Gate Entrance:
     type: entrance
@@ -12764,7 +12755,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2195
+    req_index: 2183
     short_name: Faron Woods - Trial Gate Entrance
   \Faron\Faron Silent Realm\Entrance:
     type: entrance
@@ -12772,7 +12763,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2196
+    req_index: 2184
     short_name: Faron Silent Realm - Entrance
   \Faron\Faron Woods\Great Tree\Platforms\Lower Entrance from Great Tree:
     type: entrance
@@ -12783,7 +12774,7 @@ entrances:
     entrance: 4
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2197
+    req_index: 2185
     short_name: Great Tree - Platforms - Lower Entrance from Great Tree
   \Faron\Faron Woods\Great Tree\Platforms\Upper Entrance from Great Tree:
     type: entrance
@@ -12794,7 +12785,7 @@ entrances:
     entrance: 5
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2198
+    req_index: 2186
     short_name: Great Tree - Platforms - Upper Entrance from Great Tree
   \Faron\Faron Woods\Great Tree\Top\Top Entrance from Great Tree:
     type: entrance
@@ -12805,7 +12796,7 @@ entrances:
     entrance: 6
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2199
+    req_index: 2187
     short_name: Great Tree - Top Entrance from Great Tree
   \Faron\Faron Woods\Great Tree\Near Underwater Hole\Underwater Hole Entrance:
     type: entrance
@@ -12817,7 +12808,7 @@ entrances:
     entrance: 7
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2200
+    req_index: 2188
     short_name: Great Tree - Underwater Hole Entrance
   \Faron\Faron Woods\Great Tree\Lower Area\Near Exit\Lower Entrance from Platforms:
     type: entrance
@@ -12828,7 +12819,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2201
+    req_index: 2189
     short_name: Great Tree - Lower Entrance from Platforms
   \Faron\Faron Woods\Great Tree\Upper Area\Upper Entrance from Platforms:
     type: entrance
@@ -12839,7 +12830,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2202
+    req_index: 2190
     short_name: Great Tree - Upper Entrance from Platforms
   \Faron\Faron Woods\Great Tree\Upper Area\Entrance from Top:
     type: entrance
@@ -12850,7 +12841,7 @@ entrances:
     entrance: 3
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2203
+    req_index: 2191
     short_name: Great Tree - Entrance from Top
   \Faron\Faron Woods\Great Tree\Lower Area\Underwater Tunnel Entrance:
     type: entrance
@@ -12862,7 +12853,7 @@ entrances:
     entrance: 4
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2204
+    req_index: 2192
     short_name: Great Tree - Underwater Tunnel Entrance
   \Faron\Faron Woods\Great Tree\Upper Area\Entrance from Flooded Great Tree:
     type: entrance
@@ -12870,27 +12861,27 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2205
+    req_index: 2193
     short_name: Great Tree - Entrance from Flooded Great Tree
   \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance:
     type: entrance
     allowed_time_of_day: 1
-    req_index: 2206
+    req_index: 2194
     short_name: Flooded Great Tree - Entrance
   \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance from Upper Flooded Faron Woods:
     type: entrance
     allowed_time_of_day: 1
-    req_index: 2207
+    req_index: 2195
     short_name: Flooded Great Tree - Entrance from Upper Flooded Faron Woods
   \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance from Lower Flooded Faron Woods:
     type: entrance
     allowed_time_of_day: 1
-    req_index: 2208
+    req_index: 2196
     short_name: Flooded Great Tree - Entrance from Lower Flooded Faron Woods
   \Faron\Flooded Faron Woods\Entrance from Upper Flooded Great Tree:
     type: entrance
     allowed_time_of_day: 1
-    req_index: 2209
+    req_index: 2197
     short_name: Flooded Faron Woods - Entrance from Upper Flooded Great Tree
   \Faron\Flooded Faron Woods\Entrance from Lower Flooded Great Tree:
     type: entrance
@@ -12898,7 +12889,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2210
+    req_index: 2198
     short_name: Flooded Faron Woods - Entrance from Lower Flooded Great Tree
   \Faron\Faron Woods\Deep Woods\Forest Temple Statue Entrance:
     type: entrance
@@ -12911,7 +12902,7 @@ entrances:
     entrance: 13
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2211
+    req_index: 2199
     short_name: Deep Woods - Forest Temple Statue Entrance
   \Faron\Faron Woods\Deep Woods\Deep Woods Statue Entrance:
     type: entrance
@@ -12924,7 +12915,7 @@ entrances:
     entrance: 14
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2212
+    req_index: 2200
     short_name: Deep Woods - Deep Woods Statue Entrance
   \Faron\Faron Woods\Deep Woods\Entry\Entrance from Faron Woods:
     type: entrance
@@ -12935,7 +12926,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2213
+    req_index: 2201
     short_name: Deep Woods - Entrance from Faron Woods
   \Faron\Faron Woods\Deep Woods\Entrance from Skyview Temple:
     type: entrance
@@ -12947,7 +12938,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2214
+    req_index: 2202
     short_name: Deep Woods - Entrance from Skyview Temple
   \Faron\Lake Floria\Below Rock\Emerged Area\Statue Entrance:
     type: entrance
@@ -12960,7 +12951,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2215
+    req_index: 2203
     short_name: Lake Floria - Below Rock - Statue Entrance
   \Faron\Lake Floria\Above Rock\Dive from Faron Woods:
     type: entrance
@@ -12972,7 +12963,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2216
+    req_index: 2204
     short_name: Lake Floria - Dive from Faron Woods
   \Faron\Lake Floria\Below Rock\Entrance from Farore's Lair:
     type: entrance
@@ -12984,7 +12975,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2217
+    req_index: 2205
     short_name: Lake Floria - Entrance from Farore's Lair
   \Faron\Lake Floria\Farore's Lair\Entrance from Lake Floria:
     type: entrance
@@ -12996,7 +12987,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2218
+    req_index: 2206
     short_name: Farore's Lair - Entrance from Lake Floria
   \Faron\Lake Floria\Farore's Lair\Entrance from Waterfall:
     type: entrance
@@ -13007,7 +12998,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2219
+    req_index: 2207
     short_name: Farore's Lair - Entrance from Waterfall
   \Faron\Lake Floria\Waterfall\Statue Entrance:
     type: entrance
@@ -13020,7 +13011,7 @@ entrances:
     entrance: 5
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2220
+    req_index: 2208
     short_name: Floria Waterfall - Statue Entrance
   \Faron\Lake Floria\Waterfall\Entrance from Farore's Lair:
     type: entrance
@@ -13031,7 +13022,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2221
+    req_index: 2209
     short_name: Floria Waterfall - Entrance from Farore's Lair
   \Faron\Lake Floria\Waterfall\Entrance from Ancient Cistern:
     type: entrance
@@ -13043,7 +13034,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2222
+    req_index: 2210
     short_name: Floria Waterfall - Entrance from Ancient Cistern
   \Faron\Lake Floria\Waterfall\Entrance from Faron Woods:
     type: entrance
@@ -13054,7 +13045,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2223
+    req_index: 2211
     short_name: Floria Waterfall - Entrance from Faron Woods
   \Skyview\Main\Entry\Main Entrance:
     type: entrance
@@ -13066,7 +13057,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2224
+    req_index: 2212
     short_name: Skyview Temple - Main Entrance
   \Skyview\Main\Last Room\After Rope\Boss Door Entrance:
     type: entrance
@@ -13074,7 +13065,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2225
+    req_index: 2213
     short_name: Skyview Temple - Boss Door Entrance
   \Skyview\Boss Room\Entrance from Dungeon:
     type: entrance
@@ -13082,7 +13073,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2226
+    req_index: 2214
     short_name: Skyview Temple - Boss Room - Entrance from Dungeon
   \Skyview\Boss Room\Entrance from Spring:
     type: entrance
@@ -13090,7 +13081,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2227
+    req_index: 2215
     short_name: Skyview Temple - Boss Room - Entrance from Spring
   \Skyview\Spring\Entrance:
     type: entrance
@@ -13098,7 +13089,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2228
+    req_index: 2216
     short_name: Skyview Temple - Spring - Entrance
   \Ancient Cistern\Main\Main Room\Main Entrance:
     type: entrance
@@ -13110,7 +13101,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2229
+    req_index: 2217
     short_name: Ancient Cistern - Main Entrance
   \Ancient Cistern\Main\Inside Statue\Boss Door Entrance:
     type: entrance
@@ -13118,7 +13109,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2230
+    req_index: 2218
     short_name: Ancient Cistern - Boss Door Entrance
   \Ancient Cistern\Boss Room\Entrance from Dungeon:
     type: entrance
@@ -13126,7 +13117,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2231
+    req_index: 2219
     short_name: Ancient Cistern - Boss Room - Entrance from Dungeon
   \Ancient Cistern\Boss Room\Entrance from Flame Room:
     type: entrance
@@ -13134,7 +13125,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2232
+    req_index: 2220
     short_name: Ancient Cistern - Boss Room - Entrance from Flame Room
   \Ancient Cistern\Flame Room\Entrance:
     type: entrance
@@ -13142,7 +13133,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2233
+    req_index: 2221
     short_name: Ancient Cistern - Flame Room - Entrance
   \Eldin\Volcano\Entry\First Time Entrance:
     type: entrance
@@ -13153,7 +13144,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2234
+    req_index: 2222
     short_name: Eldin Volcano - First Time Entrance
   \Eldin\Volcano\Entry\Volcano Entrance Statue Entrance:
     type: entrance
@@ -13166,7 +13157,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2235
+    req_index: 2223
     short_name: Eldin Volcano - Volcano Entrance Statue Entrance
   \Eldin\Volcano\East\Volcano East Statue Entrance:
     type: entrance
@@ -13179,7 +13170,7 @@ entrances:
     entrance: 6
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2236
+    req_index: 2224
     short_name: Eldin Volcano - Volcano East Statue Entrance
   \Eldin\Volcano\Ascent\Volcano Ascent Statue Entrance:
     type: entrance
@@ -13192,7 +13183,7 @@ entrances:
     entrance: 7
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2237
+    req_index: 2225
     short_name: Eldin Volcano - Volcano Ascent Statue Entrance
   \Eldin\Volcano\Near Temple Entrance\Temple Entrance Statue Entrance:
     type: entrance
@@ -13205,7 +13196,7 @@ entrances:
     entrance: 7
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2238
+    req_index: 2226
     short_name: Eldin Volcano - Temple Entrance Statue Entrance
   \Eldin\Volcano\East\First Vent from Mogma Turf:
     type: entrance
@@ -13216,7 +13207,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2239
+    req_index: 2227
     short_name: Eldin Volcano - First Vent from Mogma Turf
   \Eldin\Volcano\Past Mogma Turf\Second Vent from Mogma Turf:
     type: entrance
@@ -13227,7 +13218,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2240
+    req_index: 2228
     short_name: Eldin Volcano - Second Vent from Mogma Turf
   \Eldin\Volcano\Near Temple Entrance\Entrance from Earth Temple:
     type: entrance
@@ -13238,7 +13229,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2241
+    req_index: 2229
     short_name: Eldin Volcano - Entrance from Earth Temple
   \Eldin\Volcano\Near Thrill Digger Cave\Thrill Digger Cave Entrance:
     type: entrance
@@ -13249,7 +13240,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2242
+    req_index: 2230
     short_name: Eldin Volcano - Thrill Digger Cave Entrance
   \Eldin\Volcano\Hot Cave\Entrance from Summit:
     type: entrance
@@ -13261,7 +13252,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2243
+    req_index: 2231
     short_name: Eldin Volcano - Entrance from Summit
   \Eldin\Volcano\Ascent\Trial Gate Entrance:
     type: entrance
@@ -13269,7 +13260,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2244
+    req_index: 2232
     short_name: Eldin Volcano - Trial Gate Entrance
   \Eldin\Volcano\Hot Cave\Vent Entrance near Hot Cave:
     type: entrance
@@ -13277,9 +13268,9 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2245
+    req_index: 2233
     short_name: Eldin Volcano - Vent Entrance near Hot Cave
-  \Eldin\Volcano\East\Entrance from Bokoblin Base:
+  \Eldin\Volcano\First Room\Entrance from Bokoblin Base:
     type: entrance
     province: Eldin Province
     stage: F200
@@ -13288,7 +13279,7 @@ entrances:
     entrance: 5
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2246
+    req_index: 2234
     short_name: Eldin Volcano - Entrance from Bokoblin Base
   \Eldin\Bokoblin Base\Prison\Entrance:
     type: entrance
@@ -13299,7 +13290,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2247
+    req_index: 2235
     short_name: Bokoblin Base - Entrance
   \Eldin\Mogma Turf\Pre Vent\Entrance:
     type: entrance
@@ -13310,7 +13301,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2248
+    req_index: 2236
     short_name: Mogma Turf - Entrance
   \Eldin\Volcano\Thrill Digger Cave\Entrance:
     type: entrance
@@ -13321,7 +13312,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2249
+    req_index: 2237
     short_name: Thrill Digger Cave - Entrance
   \Eldin\Eldin Silent Realm\Entrance:
     type: entrance
@@ -13329,7 +13320,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2250
+    req_index: 2238
     short_name: Eldin Silent Realm - Entrance
   \Eldin\Volcano Summit\Entrance from Outside Fire Sanctuary:
     type: entrance
@@ -13341,7 +13332,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2251
+    req_index: 2239
     short_name: Volcano Summit - Entrance from Outside Fire Sanctuary
   \Eldin\Volcano Summit\Entrance from Waterfall:
     type: entrance
@@ -13353,7 +13344,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2252
+    req_index: 2240
     short_name: Volcano Summit - Entrance from Waterfall
   \Eldin\Volcano Summit\Entrance from Eldin Volcano:
     type: entrance
@@ -13365,7 +13356,7 @@ entrances:
     entrance: 4
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2253
+    req_index: 2241
     short_name: Volcano Summit - Entrance from Eldin Volcano
   \Eldin\Volcano Summit\Waterfall\Entrance:
     type: entrance
@@ -13377,7 +13368,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2254
+    req_index: 2242
     short_name: Volcano Summit - Waterfall - Entrance
   \Eldin\Volcano Summit\Outside Fire Sanctuary\Statue Entrance:
     type: entrance
@@ -13390,7 +13381,7 @@ entrances:
     entrance: 3
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2255
+    req_index: 2243
     short_name: Outside Fire Sanctuary - Statue Entrance
   \Eldin\Volcano Summit\Outside Fire Sanctuary\Before Thirsty Frogs\Entrance from Summit:
     type: entrance
@@ -13402,7 +13393,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2256
+    req_index: 2244
     short_name: Outside Fire Sanctuary - Entrance from Summit
   \Eldin\Volcano Summit\Outside Fire Sanctuary\Entrance from Fire Sanctuary:
     type: entrance
@@ -13414,7 +13405,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2257
+    req_index: 2245
     short_name: Outside Fire Sanctuary - Entrance from Fire Sanctuary
   \Earth Temple\Main\First Room\Main Entrance:
     type: entrance
@@ -13426,7 +13417,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2258
+    req_index: 2246
     short_name: Earth Temple - Main Entrance
   \Earth Temple\Main\Room with Slopes\Front of Boss Door\Boss Door Entrance:
     type: entrance
@@ -13434,7 +13425,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2259
+    req_index: 2247
     short_name: Earth Temple - Boss Door Entrance
   \Earth Temple\Boss Room\Entry\Entrance from Dungeon:
     type: entrance
@@ -13442,7 +13433,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2260
+    req_index: 2248
     short_name: Earth Temple - Boss Room - Entrance from Dungeon
   \Earth Temple\Boss Room\Slope\Entrance from Spring:
     type: entrance
@@ -13450,7 +13441,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2261
+    req_index: 2249
     short_name: Earth Temple - Boss Room - Entrance from Spring
   \Earth Temple\Spring\Entrance:
     type: entrance
@@ -13458,7 +13449,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2262
+    req_index: 2250
     short_name: Earth Temple - Spring - Entrance
   \Fire Sanctuary\Main\Front of Boss Door\Statue Entrance:
     type: entrance
@@ -13472,7 +13463,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2263
+    req_index: 2251
     short_name: Fire Sanctuary - Statue Entrance
   \Fire Sanctuary\Main\First Room\Main Entrance:
     type: entrance
@@ -13484,7 +13475,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2264
+    req_index: 2252
     short_name: Fire Sanctuary - Main Entrance
   \Fire Sanctuary\Main\First Room\Past Water Plant\Entrance from Second Room:
     type: entrance
@@ -13492,7 +13483,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2265
+    req_index: 2253
     short_name: Fire Sanctuary - First Room - Entrance from Second Room
   \Fire Sanctuary\Main\Second Room\Outside Section\Entrance from First Room:
     type: entrance
@@ -13500,7 +13491,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2266
+    req_index: 2254
     short_name: Fire Sanctuary - Second Room - Entrance from First Room
   \Fire Sanctuary\Main\Magmanos Fight Room\Lower Part\Entrance from West of Boss Door:
     type: entrance
@@ -13508,7 +13499,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2267
+    req_index: 2255
     short_name: Fire Sanctuary - Magmanos Fight Room - Entrance from West of Boss
       Door
   \Fire Sanctuary\Main\West of Boss Door\Entry\Entrance from Magmanos Fight Room:
@@ -13517,7 +13508,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2268
+    req_index: 2256
     short_name: Fire Sanctuary - West of Boss Door - Entrance from Magmanos Fight
       Room
   \Fire Sanctuary\Main\Front of Boss Door\Boss Door Entrance:
@@ -13526,7 +13517,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2269
+    req_index: 2257
     short_name: Fire Sanctuary - Boss Door Entrance
   \Fire Sanctuary\Boss Room\Entrance from Dungeon:
     type: entrance
@@ -13534,7 +13525,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2270
+    req_index: 2258
     short_name: Fire Sanctuary - Boss Room - Entrance from Dungeon
   \Fire Sanctuary\Boss Room\Entrance from Flame Room:
     type: entrance
@@ -13542,7 +13533,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2271
+    req_index: 2259
     short_name: Fire Sanctuary - Boss Room - Entrance from Flame Room
   \Fire Sanctuary\Flame Room\Entrance:
     type: entrance
@@ -13550,7 +13541,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2272
+    req_index: 2260
     short_name: Fire Sanctuary - Flame Room - Entrance
   \Lanayru\Mine\Entry\First Time Entrance:
     type: entrance
@@ -13561,7 +13552,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2273
+    req_index: 2261
     short_name: Lanayru Mine - First Time Entrance
   \Lanayru\Mine\Entry\Caves Entrance\Entrance from Caves:
     type: entrance
@@ -13572,7 +13563,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2274
+    req_index: 2262
     short_name: Lanayru Mine - Entrance from Caves
   \Lanayru\Mine\Entry\Statue Entrance:
     type: entrance
@@ -13585,7 +13576,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2275
+    req_index: 2263
     short_name: Lanayru Mine - Statue Entrance
   \Lanayru\Mine\End\In Minecart\Entrance from Desert:
     type: entrance
@@ -13596,7 +13587,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2276
+    req_index: 2264
     short_name: Lanayru Mine - Entrance from Desert
   \Lanayru\Desert\Entry\Desert Entrance Statue Entrance:
     type: entrance
@@ -13609,7 +13600,7 @@ entrances:
     entrance: 15
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2277
+    req_index: 2265
     short_name: Lanayru Desert - Desert Entrance Statue Entrance
   \Lanayru\Desert\West Part\West Desert Statue Entrance:
     type: entrance
@@ -13622,7 +13613,7 @@ entrances:
     entrance: 16
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2278
+    req_index: 2266
     short_name: Lanayru Desert - West Desert Statue Entrance
   \Lanayru\Desert\North Part\North Desert Statue Entrance:
     type: entrance
@@ -13635,7 +13626,7 @@ entrances:
     entrance: 17
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2279
+    req_index: 2267
     short_name: Lanayru Desert - North Desert Statue Entrance
   \Lanayru\Desert\East\Stone Cache Statue Entrance:
     type: entrance
@@ -13648,7 +13639,7 @@ entrances:
     entrance: 18
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2280
+    req_index: 2268
     short_name: Lanayru Desert - Stone Cache Statue Entrance
   \Lanayru\Desert\Near South Exit to Temple of Time\South Entrance from Temple of Time:
     type: entrance
@@ -13659,7 +13650,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2281
+    req_index: 2269
     short_name: Lanayru Desert - South Entrance from Temple of Time
   \Lanayru\Desert\North Part\North Entrance from Temple of Time:
     type: entrance
@@ -13670,7 +13661,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2282
+    req_index: 2270
     short_name: Lanayru Desert - North Entrance from Temple of Time
   \Lanayru\Desert\Entry\Entrance from Mine:
     type: entrance
@@ -13681,7 +13672,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2283
+    req_index: 2271
     short_name: Lanayru Desert - Entrance from Mine
   \Lanayru\Desert\East\Fire Node Entrance:
     type: entrance
@@ -13692,7 +13683,7 @@ entrances:
     entrance: 3
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2284
+    req_index: 2272
     short_name: Lanayru Desert - Fire Node Entrance
   \Lanayru\Desert\Top of LMF\Entrance from Lanayru Mining Facility:
     type: entrance
@@ -13704,7 +13695,7 @@ entrances:
     entrance: 5
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2285
+    req_index: 2273
     short_name: Lanayru Desert - Entrance from Lanayru Mining Facility
   \Lanayru\Desert\Near South Exit to Temple of Time\Ledge to Caves\Entrance from Caves:
     type: entrance
@@ -13715,7 +13706,7 @@ entrances:
     entrance: 6
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2286
+    req_index: 2274
     short_name: Lanayru Desert - Entrance from Caves
   \Lanayru\Desert\North Part\Lightning Node Entrance:
     type: entrance
@@ -13726,7 +13717,7 @@ entrances:
     entrance: 7
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2287
+    req_index: 2275
     short_name: Lanayru Desert - Lightning Node Entrance
   \Lanayru\Desert\North Part\Trial Gate Entrance:
     type: entrance
@@ -13734,7 +13725,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2288
+    req_index: 2276
     short_name: Lanayru Desert - Trial Gate Entrance
   \Lanayru\Lanayru Silent Realm\Entrance:
     type: entrance
@@ -13742,7 +13733,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2289
+    req_index: 2277
     short_name: Lanayru Silent Realm - Entrance
   \Lanayru\Desert\North Part\Lightning Node\Present\Entrance:
     type: entrance
@@ -13753,7 +13744,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2290
+    req_index: 2278
     short_name: Lightning Node - Entrance
   \Lanayru\Desert\East\Fire Node\Present\Entrance:
     type: entrance
@@ -13764,7 +13755,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2291
+    req_index: 2279
     short_name: Fire Node - Entrance
   \Lanayru\Temple of Time\South East\Desert Gorge Statue Entrance:
     type: entrance
@@ -13777,7 +13768,7 @@ entrances:
     entrance: 16
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2292
+    req_index: 2280
     short_name: Temple of Time - Desert Gorge Statue Entrance
   \Lanayru\Temple of Time\Inside\Temple of Time Statue Entrance:
     type: entrance
@@ -13790,7 +13781,7 @@ entrances:
     entrance: 17
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2293
+    req_index: 2281
     short_name: Temple of Time - Temple of Time Statue Entrance
   \Lanayru\Temple of Time\South East\South Entrance from Desert:
     type: entrance
@@ -13801,7 +13792,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2294
+    req_index: 2282
     short_name: Temple of Time - South Entrance from Desert
   \Lanayru\Temple of Time\North East\North Entrance from Desert:
     type: entrance
@@ -13812,7 +13803,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2295
+    req_index: 2283
     short_name: Temple of Time - North Entrance from Desert
   \Lanayru\Temple of Time\Inside\Entrance from Lanayru Mining Facility:
     type: entrance
@@ -13825,7 +13816,7 @@ entrances:
     entrance: 5
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2296
+    req_index: 2284
     short_name: Temple of Time - Entrance from Lanayru Mining Facility
   \Lanayru\Caves\Entrance from Mine:
     type: entrance
@@ -13836,7 +13827,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2297
+    req_index: 2285
     short_name: Lanayru Caves - Entrance from Mine
   \Lanayru\Caves\Entrance from Desert:
     type: entrance
@@ -13847,7 +13838,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2298
+    req_index: 2286
     short_name: Lanayru Caves - Entrance from Desert
   \Lanayru\Caves\Past Door to Lanayru Sand Sea\Entrance from Lanayru Sand Sea:
     type: entrance
@@ -13859,7 +13850,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2299
+    req_index: 2287
     short_name: Lanayru Caves - Entrance from Lanayru Sand Sea
   \Lanayru\Caves\Past Crawlspace\Entrance from Gorge:
     type: entrance
@@ -13870,7 +13861,7 @@ entrances:
     entrance: 3
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2300
+    req_index: 2288
     short_name: Lanayru Caves - Entrance from Gorge
   \Lanayru\Lanayru Sand Sea\Gorge\Entrance:
     type: entrance
@@ -13881,7 +13872,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2301
+    req_index: 2289
     short_name: Lanayru Gorge - Entrance
   \Lanayru\Lanayru Sand Sea\Gorge\Statue Entrance:
     type: entrance
@@ -13894,7 +13885,7 @@ entrances:
     entrance: 12
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2302
+    req_index: 2290
     short_name: Lanayru Gorge - Statue Entrance
   \Lanayru\Lanayru Sand Sea\Ancient Harbour Dock Entrance:
     type: entrance
@@ -13905,7 +13896,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2303
+    req_index: 2291
     short_name: Lanayru Sand Sea - Ancient Harbour Dock Entrance
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat Dock Entrance:
     type: entrance
@@ -13916,7 +13907,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2304
+    req_index: 2292
     short_name: Lanayru Sand Sea - Skipper's Retreat Dock Entrance
   \Lanayru\Lanayru Sand Sea\Shipyard Dock Entrance:
     type: entrance
@@ -13927,7 +13918,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2305
+    req_index: 2293
     short_name: Lanayru Sand Sea - Shipyard Dock Entrance
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold Dock Entrance:
     type: entrance
@@ -13938,7 +13929,7 @@ entrances:
     entrance: 3
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2306
+    req_index: 2294
     short_name: Lanayru Sand Sea - Pirate Stronghold Dock Entrance
   \Lanayru\Lanayru Sand Sea\Sandship Dock Entrance:
     type: entrance
@@ -13950,7 +13941,7 @@ entrances:
     entrance: 4
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2307
+    req_index: 2295
     short_name: Lanayru Sand Sea - Sandship Dock Entrance
   \Lanayru\Lanayru Sand Sea\Ancient Harbour\Statue Entrance:
     type: entrance
@@ -13963,7 +13954,7 @@ entrances:
     entrance: 10
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2308
+    req_index: 2296
     short_name: Lanayru Sand Sea Docks - Statue Entrance
   \Lanayru\Lanayru Sand Sea\Ancient Harbour\Near Exit to Caves\Entrance from Caves:
     type: entrance
@@ -13975,7 +13966,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2309
+    req_index: 2297
     short_name: Lanayru Sand Sea Docks - Entrance from Caves
   \Lanayru\Lanayru Sand Sea\Ancient Harbour\Dock Entrance:
     type: entrance
@@ -13986,7 +13977,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2310
+    req_index: 2298
     short_name: Lanayru Sand Sea Docks - Dock Entrance
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Statue Entrance:
     type: entrance
@@ -13999,7 +13990,7 @@ entrances:
     entrance: 10
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2311
+    req_index: 2299
     short_name: Skipper's Retreat - Statue Entrance
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Dock Entrance:
     type: entrance
@@ -14010,7 +14001,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2312
+    req_index: 2300
     short_name: Skipper's Retreat - Dock Entrance
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Top Part\Shack Entrance:
     type: entrance
@@ -14021,7 +14012,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2313
+    req_index: 2301
     short_name: Skipper's Retreat - Shack Entrance
   \Lanayru\Lanayru Sand Sea\Skipper's Retreat\Shack\Entrance:
     type: entrance
@@ -14032,7 +14023,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2314
+    req_index: 2302
     short_name: Skipper's Retreat - Shack - Entrance
   \Lanayru\Lanayru Sand Sea\Shipyard\Statue Entrance:
     type: entrance
@@ -14045,7 +14036,7 @@ entrances:
     entrance: 10
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2315
+    req_index: 2303
     short_name: Shipyard - Statue Entrance
   \Lanayru\Lanayru Sand Sea\Shipyard\Dock Entrance:
     type: entrance
@@ -14056,7 +14047,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2316
+    req_index: 2304
     short_name: Shipyard - Dock Entrance
   \Lanayru\Lanayru Sand Sea\Shipyard\Construction Bay Lower Entrance:
     type: entrance
@@ -14068,7 +14059,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2317
+    req_index: 2305
     short_name: Shipyard - Construction Bay Lower Entrance
   \Lanayru\Lanayru Sand Sea\Shipyard\Construction Bay Upper Entrance:
     type: entrance
@@ -14080,7 +14071,7 @@ entrances:
     entrance: 4
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2318
+    req_index: 2306
     short_name: Shipyard - Construction Bay Upper Entrance
   \Lanayru\Lanayru Sand Sea\Shipyard\Construction Bay\Upper Entrance:
     type: entrance
@@ -14092,7 +14083,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2319
+    req_index: 2307
     short_name: Shipyard - Construction Bay - Upper Entrance
   \Lanayru\Lanayru Sand Sea\Shipyard\Construction Bay\Lower Entrance:
     type: entrance
@@ -14104,7 +14095,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2320
+    req_index: 2308
     short_name: Shipyard - Construction Bay - Lower Entrance
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Statue Entrance:
     type: entrance
@@ -14117,7 +14108,7 @@ entrances:
     entrance: 10
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2321
+    req_index: 2309
     short_name: Pirate Stronghold - Statue Entrance
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Dock Entrance:
     type: entrance
@@ -14128,7 +14119,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2322
+    req_index: 2310
     short_name: Pirate Stronghold - Dock Entrance
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Side Entrance:
     type: entrance
@@ -14139,7 +14130,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2323
+    req_index: 2311
     short_name: Pirate Stronghold - Side Entrance
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside the Shark Head\Top Entrance:
     type: entrance
@@ -14151,7 +14142,7 @@ entrances:
     entrance: 2
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2324
+    req_index: 2312
     short_name: Pirate Stronghold - Top Entrance
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside\First Door Entrance:
     type: entrance
@@ -14162,7 +14153,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2325
+    req_index: 2313
     short_name: Pirate Stronghold - Inside - First Door Entrance
   \Lanayru\Lanayru Sand Sea\Pirate Stronghold\Inside\Second Door Entrance:
     type: entrance
@@ -14174,7 +14165,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2326
+    req_index: 2314
     short_name: Pirate Stronghold - Inside - Second Door Entrance
   \Lanayru Mining Facility\Main\First Room\Main Entrance:
     type: entrance
@@ -14186,7 +14177,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2327
+    req_index: 2315
     short_name: Lanayru Mining Facility - Main Entrance
   \Lanayru Mining Facility\Main\First Hub\Entrance from Big Hub:
     type: entrance
@@ -14194,7 +14185,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2328
+    req_index: 2316
     short_name: Lanayru Mining Facility - First Hub - Entrance from Big Hub
   \Lanayru Mining Facility\Main\Hop Across Boxes Room\Near Exit\Entrance from Big Hub:
     type: entrance
@@ -14202,7 +14193,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2329
+    req_index: 2317
     short_name: Lanayru Mining Facility - Hop Across Boxes Room - Entrance from Big
       Hub
   \Lanayru Mining Facility\Main\Armos Fight Room\Entrance from Big Hub:
@@ -14211,7 +14202,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2330
+    req_index: 2318
     short_name: Lanayru Mining Facility - Armos Fight Room - Entrance from Big Hub
   \Lanayru Mining Facility\Main\Big Hub\Entry\Entrance from First Hub:
     type: entrance
@@ -14219,7 +14210,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2331
+    req_index: 2319
     short_name: Lanayru Mining Facility - Big Hub - Entrance from First Hub
   \Lanayru Mining Facility\Main\Big Hub\Near Exit to Hop Across Boxes Room\Entrance from Hop Across Boxes Room:
     type: entrance
@@ -14227,7 +14218,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2332
+    req_index: 2320
     short_name: Lanayru Mining Facility - Big Hub - Entrance from Hop Across Boxes
       Room
   \Lanayru Mining Facility\Main\Big Hub\Past West Gate\Entrance from Armos Fight Room:
@@ -14236,7 +14227,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2333
+    req_index: 2321
     short_name: Lanayru Mining Facility - Big Hub - Entrance from Armos Fight Room
   \Lanayru Mining Facility\Main\Near Boss Door\Boss Door Entrance:
     type: entrance
@@ -14244,7 +14235,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2334
+    req_index: 2322
     short_name: Lanayru Mining Facility - Boss Door Entrance
   \Lanayru Mining Facility\Boss Room\Entrance from Dungeon:
     type: entrance
@@ -14252,7 +14243,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2335
+    req_index: 2323
     short_name: Lanayru Mining Facility - Boss Room - Entrance from Dungeon
   \Lanayru Mining Facility\Boss Room\After Sand Drain\Entrance from Hall of Ancient Robots:
     type: entrance
@@ -14260,7 +14251,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2336
+    req_index: 2324
     short_name: Lanayru Mining Facility - Boss Room - Entrance from Hall of Ancient
       Robots
   \Lanayru Mining Facility\Hall of Ancient Robots\Entry\Entrance from Boss Room:
@@ -14269,7 +14260,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2337
+    req_index: 2325
     short_name: Lanayru Mining Facility - Hall of Ancient Robots - Entrance from Boss
       Room
   \Lanayru Mining Facility\Hall of Ancient Robots\End\Entrance from Temple of Time:
@@ -14283,7 +14274,7 @@ entrances:
     entrance: 1
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2338
+    req_index: 2326
     short_name: Lanayru Mining Facility - Hall of Ancient Robots - Entrance from Temple
       of Time
   \Sandship\Main\Deck\Main Entrance:
@@ -14296,7 +14287,7 @@ entrances:
     entrance: 0
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2339
+    req_index: 2327
     short_name: Sandship - Main Entrance
   \Sandship\Boss Room\Entrance:
     type: entrance
@@ -14304,7 +14295,7 @@ entrances:
     can-start-at: false
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2340
+    req_index: 2328
     short_name: Sandship - Boss Room - Entrance
   \Sky Keep\Main\First Room\Bottom Entrance:
     type: entrance
@@ -14316,7 +14307,7 @@ entrances:
     entrance: 4
     tod: 2
     allowed_time_of_day: 1
-    req_index: 2341
+    req_index: 2329
     short_name: Sky Keep - First Room - Bottom Entrance
 linked_entrances:
   silent_realms:
