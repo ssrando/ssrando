@@ -1,7 +1,5 @@
 use core::ffi::c_void;
 
-use super::actor;
-
 #[repr(C)]
 pub struct ActorLink {
     pub base_base:      [u8; 0x60 - 0x00],

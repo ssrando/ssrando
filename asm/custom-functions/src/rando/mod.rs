@@ -267,12 +267,10 @@ fn rando_text_command_handler(
 
 #[no_mangle]
 fn textbox_a_pressed_or_b_held() -> bool {
-    unsafe {
-        if is_pressed(A) || is_down(B) {
-            return true;
-        }
-        return false;
+    if is_pressed(A) || is_down(B) {
+        return true;
     }
+    return false;
 }
 
 #[no_mangle]
@@ -301,7 +299,7 @@ fn get_item_arc_name(
     vanilla_item_str: *const c_char,
     item_id: u32,
 ) -> *const c_void {
-    let mut oarc_name;
+    let oarc_name;
 
     match item_id {
         214 => oarc_name = cstr!("Onp").as_ptr(),         // tadtone
@@ -309,7 +307,7 @@ fn get_item_arc_name(
         _ => oarc_name = vanilla_item_str,
     }
 
-    return unsafe { arc::get_model_data(oarc_mgr, oarc_name) };
+    return arc::get_model_data(oarc_mgr, oarc_name);
 }
 
 #[no_mangle]
@@ -329,9 +327,7 @@ fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
         && StoryflagManager::check(368 /* Pumpkin soup delivered */)
         && !StoryflagManager::check(200 /* Levias explains SotH quest */)
     {
-        let levias_ptr = unsafe {
-            actor::find_actor_by_type(184 /* NusiB */, ptr::null())
-        };
+        let levias_ptr = actor::find_actor_by_type(184 /* NusiB */, ptr::null());
         if !levias_ptr.is_null() {
             if player::check_distance_from(levias_ptr, 20_000f32) {
                 is_in_levias_fight = true;

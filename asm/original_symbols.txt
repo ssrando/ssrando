@@ -70,7 +70,6 @@ main.dol:
     StoryflagManager__doCommit: 0x800c0460
     # storyflag in r4
     checkStoryflagIsSet: 0x80141e90
-
     # SceneflagManager: r3,-0x4060(r13)
     SCENEFLAG_MANAGER: 0x805753e0
     # used by both item and storyflag manager, r3 is flag manager, r4 is flag

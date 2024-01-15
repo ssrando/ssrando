@@ -1,5 +1,6 @@
 #![no_std]
 #![feature(split_array)]
+#![allow(dead_code)]
 
 mod game;
 mod rando;
