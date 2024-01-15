@@ -141,9 +141,6 @@ class Ui_TricksDialog(object):
         self.label_for_disabled_tricks.setText(QCoreApplication.translate("TricksDialog", u"Disabled Tricks", None))
         self.disabled_tricks_free_search.setText("")
         self.disabled_tricks_free_search.setPlaceholderText(QCoreApplication.translate("TricksDialog", u"Search", None))
-#if QT_CONFIG(tooltip)
-        self.disabled_tricks.setToolTip(QCoreApplication.translate("TricksDialog", u"test", None))
-#endif // QT_CONFIG(tooltip)
         self.disable_trick.setText(QCoreApplication.translate("TricksDialog", u"Disable\n"
 "<--", None))
         self.enable_trick.setText(QCoreApplication.translate("TricksDialog", u"Enable\n"
