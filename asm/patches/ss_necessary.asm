@@ -374,6 +374,11 @@ li r3, 1
 .org 0x8016c808
 li r3, 1
 
+
+; Prevent picking up Skyview - Item behind Bars with sword
+.org 0x8024d3b0
+nop
+
 .close
 
 
