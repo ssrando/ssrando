@@ -35,7 +35,7 @@ static mut FORCE_MOGMA_CAVE_DIVE: bool = false;
 
 #[no_mangle]
 pub fn process_startflags() {
-    (unsafe { *file_manager::get_ptr() }).anticommit_flag = 1;
+    unsafe { (*file_manager::get_ptr()).anticommit_flag = 1 };
     #[repr(C)]
     struct StartflagInfo {
         storyflags:    [u16; 0x80],
