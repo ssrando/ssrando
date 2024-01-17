@@ -84,7 +84,7 @@ extern ItemflagManager *ITEMFLAG_MANAGER;
 
 extern u8 CURRENT_SWORD;
 extern SceneflagManager *SCENEFLAG_MANAGER;
-extern void giveItem(u16 itemid, int bottleSlot, int zero);
+extern void AcItem__giveItem(u16 itemid, int bottleSlot, int zero);
 
 // only the fields we care about
 class AcOSwSwordBeam

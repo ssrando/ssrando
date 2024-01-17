@@ -30,7 +30,7 @@ bl setStoryflagToValue
 mr r3, r31
 li r4, -1
 li r5, 0
-bl giveItem
+bl AcItem__giveItem
 lwz r0, 0x14(r1)
 lwz r31, 0xC(r1)
 lwz r30, 0x8(r1)
