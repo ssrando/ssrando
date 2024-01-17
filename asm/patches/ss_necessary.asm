@@ -379,6 +379,10 @@ li r3, 1
 .org 0x8024d3b0
 nop
 
+; always show the slingshot model even when you already have scattershot
+.org 0x8016fa7c
+li r3, 0
+
 .close
 
 
