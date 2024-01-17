@@ -1571,6 +1571,8 @@ Sealed Grounds Spiral - Statue Entrance:
   layer: 0
   entrance: 8
   tod: 2
+  flag-space: Sealed Grounds
+  flag: 0x23
 
 Sealed Grounds Spiral - Statue Exit:
   type: exit
@@ -1753,6 +1755,8 @@ Behind the Temple - Statue Entrance:
   layer: 0
   entrance: 10
   tod: 2
+  flag-space: Sealed Grounds
+  flag: 0x1F
 
 Behind the Temple - Statue Exit:
   type: exit
@@ -1825,6 +1829,8 @@ Faron Woods - Faron Woods Entry Statue Entrance:
   layer: 0
   entrance: 50
   tod: 2
+  flag-space: Story
+  flag: 0x320
 
 Faron Woods - In the Woods Statue Entrance:
   type: entrance
@@ -1836,6 +1842,8 @@ Faron Woods - In the Woods Statue Entrance:
   layer: 0
   entrance: 51
   tod: 2
+  flag-space: Story
+  flag: 0x321
 
 Faron Woods - Viewing Platform Statue Entrance:
   type: entrance
@@ -1847,6 +1855,8 @@ Faron Woods - Viewing Platform Statue Entrance:
   layer: 0
   entrance: 52
   tod: 2
+  flag-space: Story
+  flag: 0x322
 
 Great Tree - The Great Tree Statue Entrance:
   type: entrance
@@ -1858,6 +1868,8 @@ Great Tree - The Great Tree Statue Entrance:
   layer: 0
   entrance: 53
   tod: 2
+  flag-space: Story
+  flag: 0x323
 
 
 Faron Woods - Shared Statue Exit:
@@ -2171,6 +2183,8 @@ Deep Woods - Forest Temple Statue Entrance:
   layer: 0
   entrance: 13
   tod: 2
+  flag-space: Faron Woods
+  flag: 0x68
 
 Deep Woods - Deep Woods Statue Entrance:
   type: entrance
@@ -2182,6 +2196,8 @@ Deep Woods - Deep Woods Statue Entrance:
   layer: 0
   entrance: 14
   tod: 2
+  flag-space: Faron Woods
+  flag: 0x67
 
 
 Deep Woods - Shared Statue Exit:
@@ -2240,6 +2256,8 @@ Lake Floria - Below Rock - Statue Entrance:
   layer: 0
   entrance: 2
   tod: 2
+  flag-space: Lake Floria
+  flag: 0x20
 
 Lake Floria - Floria Waterfall <<Alternate>> Statue Entrance:
   type: entrance
@@ -2338,6 +2356,8 @@ Floria Waterfall - Statue Entrance:
   layer: 0
   entrance: 5
   tod: 2
+  flag-space: Lake Floria
+  flag: 0x21
 
 Floria Waterfall - Statue Exit:
   type: exit
@@ -2648,6 +2668,8 @@ Eldin Volcano - Volcano Entrance Statue Entrance:
   layer: 0
   entrance: 2
   tod: 2
+  flag-space: Story
+  flag: 0x324
 
 Eldin Volcano - Volcano East Statue Entrance:
   type: entrance
@@ -2659,6 +2681,8 @@ Eldin Volcano - Volcano East Statue Entrance:
   layer: 0
   entrance: 6
   tod: 2
+  flag-space: Story
+  flag: 0x325
 
 Eldin Volcano - Volcano Ascent Statue Entrance:
   type: entrance
@@ -2670,6 +2694,8 @@ Eldin Volcano - Volcano Ascent Statue Entrance:
   layer: 0
   entrance: 7
   tod: 2
+  flag-space: Story
+  flag: 0x326
 
 Eldin Volcano - Temple Entrance Statue Entrance:
   type: entrance
@@ -2681,6 +2707,8 @@ Eldin Volcano - Temple Entrance Statue Entrance:
   layer: 0
   entrance: 7
   tod: 2
+  flag-space: Story
+  flag: 0x327
 
 
 Eldin Volcano - Volcano Entrance Statue Exit:
@@ -3391,6 +3419,8 @@ Lanayru Mine - Statue Entrance:
   layer: 0
   entrance: 2
   tod: 2
+  flag-space: Lanayru Desert
+  flag: 0x44
 
 Lanayru Mine - Entrance from Desert:
   type: entrance
@@ -3445,6 +3475,8 @@ Lanayru Desert - Desert Entrance Statue Entrance:
   layer: 0
   entrance: 15
   tod: 2
+  flag-space: Lanayru Desert
+  flag: 0x42
 
 Lanayru Desert - West Desert Statue Entrance:
   type: entrance
@@ -3456,6 +3488,8 @@ Lanayru Desert - West Desert Statue Entrance:
   layer: 0
   entrance: 16
   tod: 2
+  flag-space: Lanayru Desert
+  flag: 0x33
 
 Lanayru Desert - North Desert Statue Entrance:
   type: entrance
@@ -3467,6 +3501,8 @@ Lanayru Desert - North Desert Statue Entrance:
   layer: 0
   entrance: 17
   tod: 2
+  flag-space: Lanayru Desert
+  flag: 0x43
 
 Lanayru Desert - Stone Cache Statue Entrance:
   type: entrance
@@ -3478,6 +3514,8 @@ Lanayru Desert - Stone Cache Statue Entrance:
   layer: 0
   entrance: 18
   tod: 2
+  flag-space: Lanayru Desert
+  flag: 0x02
 
 
 Lanayru Desert - South Entrance from Temple of Time:
@@ -3673,6 +3711,8 @@ Temple of Time - Desert Gorge Statue Entrance:
   layer: 0
   entrance: 16
   tod: 2
+  flag-space: Lanayru Desert
+  flag: 0x4D
 
 Temple of Time - Temple of Time Statue Entrance:
   type: entrance
@@ -3684,6 +3724,8 @@ Temple of Time - Temple of Time Statue Entrance:
   layer: 0
   entrance: 17
   tod: 2
+  flag-space: Lanayru Desert
+  flag: 0x4E
 
 Temple of Time - Shared Statue Exit:
   type: exit
@@ -3835,6 +3877,8 @@ Lanayru Gorge - Statue Entrance:
   layer: 0
   entrance: 12
   tod: 2
+  flag-space: Lanayru Gorge
+  flag: 0x0C
 
 Lanayru Gorge - Statue Exit:
   type: exit
@@ -3937,6 +3981,8 @@ Lanayru Sand Sea Docks - Statue Entrance:
   layer: 0
   entrance: 10
   tod: 2
+  flag-space: Lanayru Sand Sea
+  flag: 0x0A
 
 Lanayru Sand Sea Docks - <<Alternate>> Statue Entrance:
   type: entrance
@@ -4011,6 +4057,8 @@ Skipper's Retreat - Statue Entrance:
   layer: 0
   entrance: 10
   tod: 2
+  flag-space: Lanayru Sand Sea
+  flag: 0x1C
 
 Skipper's Retreat - Statue Exit:
   type: exit
@@ -4082,6 +4130,8 @@ Shipyard - Statue Entrance:
   layer: 0
   entrance: 10
   tod: 2
+  flag-space: Lanayru Sand Sea
+  flag: 0x55
 
 Shipyard - Statue Exit:
   type: exit
@@ -4203,6 +4253,8 @@ Pirate Stronghold - Statue Entrance:
   layer: 0
   entrance: 10
   tod: 2
+  flag-space: Lanayru Sand Sea
+  flag: 0x54
 
 Pirate Stronghold - Statue Exit:
   type: exit

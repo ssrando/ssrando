@@ -326,38 +326,6 @@ TRIAL_COMPLETE_STORYFLAGS = {
     LANAYRU_TRIAL_GATE: 0x399,
 }
 
-BIRD_STATUE_FLAGS = {
-    SG: (
-        "Sealed Grounds",
-        0x23,
-    ),  # In vanilla, it uses the SG intro storyflag (always active)
-    BTT: ("Sealed Grounds", 0x1F),
-    FWE: ("Story", 0x320),
-    ITW: ("Story", 0x321),
-    VP: ("Story", 0x322),
-    GTT: ("Story", 0x323),
-    FT: ("Faron Woods", 0x68),
-    DW: ("Faron Woods", 0x67),
-    LF: ("Lake Floria", 0x20),
-    FW: ("Lake Floria", 0x21),
-    VEN: ("Story", 0x324),
-    VEA: ("Story", 0x325),
-    VA: ("Story", 0x326),
-    TE: ("Story", 0x327),
-    LME: ("Lanayru Desert", 0x44),
-    DE: ("Lanayru Desert", 0x42),
-    WD: ("Lanayru Desert", 0x33),
-    ND: ("Lanayru Desert", 0x43),
-    SC: ("Lanayru Desert", 0x02),
-    DG: ("Lanayru Desert", 0x4D),
-    TOT: ("Lanayru Desert", 0x4E),
-    LG: ("Lanayru Gorge", 0x0C),
-    AH: ("Lanayru Sand Sea", 0x0A),
-    SR: ("Lanayru Sand Sea", 0x1C),
-    LS: ("Lanayru Sand Sea", 0x55),
-    PS: ("Lanayru Sand Sea", 0x54),
-}
-
 BEEDLE_TEXT_PATCHES = {  # (undiscounted, discounted, normal price, discounted price)
     "Beedle - 50 Rupee Item": (25, 26, 50, 25),
     "Beedle - First 100 Rupee Item": (23, 24, 100, 50),
@@ -3322,13 +3290,15 @@ class GamePatcher:
 
     def patch_random_starting_statue_flags(self):
         for statue in self.placement_file.start_statues.values():
-            flag = BIRD_STATUE_FLAGS.get(statue[1], None)
+            flag_space = statue[1].get("flag-space")
+            flag = statue[1].get("flag")
+            assert flag_space is not None
             assert flag is not None
-            if flag[0] == "Story":
+            if flag_space == "Story":
                 # Add start storyflag
-                self.startstoryflags.append(flag[1])
+                self.startstoryflags.append(flag)
             else:
                 # Add start sceneflag
                 self.patches["global"]["startsceneflags"].setdefault(
-                    flag[0], []
-                ).append(flag[1])
+                    flag_space, []
+                ).append(flag)

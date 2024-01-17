@@ -189,7 +189,7 @@ def write(
         pillar_name,
         statue,
     ) in randomized_start_statues.items():
-        file.write(f"    {pillar_name+':':48} {statue[1]}\n")
+        file.write(f"    {pillar_name+':':48} {statue[1].get('statue-name')}\n")
 
     file.write("\n")
 

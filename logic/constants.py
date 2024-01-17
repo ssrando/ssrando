@@ -138,42 +138,29 @@ ELDIN_PROVINCE = "Eldin Province"
 LANAYRU_PROVINCE = "Lanayru Province"
 THE_SKY = "The Sky"
 
+ALL_SURFACE_PROVINCES = [FARON_PROVINCE, ELDIN_PROVINCE, LANAYRU_PROVINCE]
+
 TABLET_TO_PROVINCE = {
     EMERALD_TABLET: FARON_PROVINCE,
     RUBY_TABLET: ELDIN_PROVINCE,
     AMBER_TABLET: LANAYRU_PROVINCE,
 }
 
-# Bird Statues
+FARON_FIRST_TIME_DIVE = "Sky - Faron Pillar - First Time Dive"
+ELDIN_FIRST_TIME_DIVE = "Sky - Eldin Pillar - First Time Dive"
+LANAYRU_FIRST_TIME_DIVE = "Sky - Lanayru Pillar - First Time Dive"
 
-SG = "Sealed Grounds"
-BTT = "Behind the Temple"
-FWE = "Faron Woods Entry"
-ITW = "In the Woods"
-VP = "Viewing Platform"
-GTT = "Great Tree Top"
-FT = "Forest Temple"
-DW = "Deep Woods"
-LF = "Lake Floria"
-FW = "Floria Waterfall"
-VEN = "Volcano Entry"
-VEA = "Volcano East"
-VA = "Volcano Ascent"
-TE = "Temple Entrance"
-LME = "Lanayru Mine Entry"
-DE = "Desert Entry"
-WD = "West Desert"
-ND = "North Desert"
-SC = "Stone Cache"
-DG = "Desert Gorge"
-TOT = "Temple of Time"
-LG = "Lanayru Gorge"
-AH = "Ancient Harbour"
-SR = "Skipper's Retreat"
-LS = "Lanayru Shipyard"
-PS = "Pirate Stronghold"
+FIRST_TIME_DIVES = {
+    FARON_PROVINCE: FARON_FIRST_TIME_DIVE,
+    ELDIN_PROVINCE: ELDIN_FIRST_TIME_DIVE,
+    LANAYRU_PROVINCE: LANAYRU_FIRST_TIME_DIVE,
+}
 
-VANILLA_START_STATUES = [SG, VEN, LME]
+SEALED_GROUNDS = "Sealed Grounds"
+VOLCANO_ENTRY = "Volcano Entry"
+LANAYRU_MINE_ENTRY = "Lanayru Mine Entry"
+
+VANILLA_START_STATUES = [SEALED_GROUNDS, VOLCANO_ENTRY, LANAYRU_MINE_ENTRY]
 
 # Items
 
