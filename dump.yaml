@@ -3214,6 +3214,7 @@ areas:
                   Shortcut to Pre Turf
               hint_region: Eldin Volcano
               locations:
+                \Eldin\Volcano\Entry\Rupee on Ledge before First Room: \Beetle
                 \Eldin\Volcano\First Room\Blow up Rock to East: Bomb Bag
                 Unlock Statue: 'True'
                 Goddess Cube near Mogma Turf Entrance: \Goddess Sword
