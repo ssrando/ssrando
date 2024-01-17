@@ -1,6 +1,9 @@
 from collections import OrderedDict
 import sys
 import argparse
+import yaml
+import json
+from logic.dump import dump_constants
 from logic.logic_input import Areas
 from yaml_files import requirements, checks, hints, map_exits
 
@@ -32,6 +35,12 @@ def main():
     parser.add_argument(
         "--placement-file",
         help="Specify the location of a placement file json that is used directly as a plandomizer, overrides all other options",
+    )
+    parser.add_argument(
+        "--dump-graph",
+        help="Dumps the graph used for logic and exits",
+        const=True,
+        nargs="?",
     )
     parser.add_argument(
         "--version",
@@ -110,6 +119,24 @@ def main():
         for err in all_errors:
             print(err)
         exit(1)
+
+    if dest := parsed_args.dump_graph:
+        import logic
+        from logic.logic_input import Area
+
+        logic.logic_expression.GLOBAL_DUMP_MODE = True
+        areas = Areas(requirements, checks, hints, map_exits)
+        if dest is True:
+            print(areas)
+            exit(0)
+        with open(dest, mode="w") as f:
+            yaml.Dumper.ignore_aliases = lambda *args: True
+            yaml.dump(
+                {**areas.to_dict(), **dump_constants(areas.short_to_full)},
+                f,
+                sort_keys=False,
+            )
+            exit(0)
 
     areas = Areas(requirements, checks, hints, map_exits)
 

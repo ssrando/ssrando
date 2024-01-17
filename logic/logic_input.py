@@ -8,11 +8,17 @@ from .logic_expression import DNFInventory, LogicExpression
 from .inventory import EXTENDED_ITEM, Inventory
 from .constants import *
 
+import yaml
+
 
 AllowedTimeOfDay = Enum("AllowedTimeOfDay", ("DayOnly", "NightOnly", "Both"))
 DayOnly = AllowedTimeOfDay.DayOnly
 NightOnly = AllowedTimeOfDay.NightOnly
 Both = AllowedTimeOfDay.Both
+
+yaml.add_representer(
+    AllowedTimeOfDay, lambda dumper, data: dumper.represent_int(data.value)
+)
 
 
 class defaultfactorydict(dict):
@@ -39,7 +45,7 @@ class Area(Generic[LE]):
     sub_areas: Dict[str, Area[LE]] = field(default_factory=dict)
     locations: Dict[str, LE] = field(default_factory=dict)
     exits: Dict[str, LE] = field(default_factory=dict)
-    entrances: Set[str] = field(default_factory=set)
+    entrances: Dict[str, str] = field(default_factory=dict)
 
     @classmethod
     def of_dict(cls, args):
@@ -116,14 +122,14 @@ class Area(Generic[LE]):
         new_self.locations = d
 
         new_exits = {}
-        entrances = set()
+        entrances = dict()
         for k, v in self.exits.items():
             exit, entrance = fexit(self.name, k, v)
             if exit is not None:
                 exit, req = exit
                 new_exits[exit] = req
             if entrance is not None:
-                entrances.add(entrance)
+                entrances[entrance] = entrance
 
         new_self.exits = new_exits
         new_self.entrances = entrances
@@ -470,7 +476,7 @@ class Areas:
                     else:
                         assert False
 
-            for entrance in area.entrances:
+            for entrance in area.entrances.keys():
                 entrance = with_sep_full(area_name, entrance)
                 allowed_time_of_day = self.entrance_allowed_time_of_day[entrance]
                 if allowed_time_of_day == Both:
@@ -490,3 +496,45 @@ class Areas:
                         area_bit = EXTENDED_ITEM[area_name]
                     self.opaque[area_bit] = False
                     reqs[area_bit] |= DNFInv(entrance)
+
+    def to_dict(self):
+        return {
+            "items": EXTENDED_ITEM.items_list,
+            "areas": self.parent_area,
+            "checks": dict(
+                {
+                    id: dict(
+                        {k: v for k, v in check.items() if k in ["short_name", "type"]}
+                    )
+                    for id, check in self.checks.items()
+                }
+            ),
+            "gossip_stones": dict(
+                {k: v["short_name"] for k, v in self.gossip_stones.items()}
+            ),
+            "exits": self.map_exits,
+            "entrances": self.map_entrances,
+        }
+
+    def __str__(self):
+        return f"{EXTENDED_ITEM.items_list}\n{self.parent_area}\n{self.checks}\n{self.gossip_stones}\n{self.map_exits}\n{self.map_entrances}\n"
+
+
+yaml.add_representer(
+    Area,
+    lambda dumper, data: dumper.represent_dict(
+        {
+            "abstract": data.abstract,
+            "allowed_time_of_day": data.allowed_time_of_day,
+            "can_save": data.can_save,
+            "can_sleep": data.can_sleep,
+            "entrances": list(data.entrances.keys()),
+            "exits": data.exits,
+            "hint_region": data.hint_region,
+            "locations": data.locations,
+            "name": data.name,
+            "sub_areas": data.sub_areas,
+            "toplevel_alias": data.toplevel_alias,
+        }
+    ),
+)
