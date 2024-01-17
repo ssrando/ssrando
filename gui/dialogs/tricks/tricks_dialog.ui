@@ -42,9 +42,6 @@
          </item>
          <item>
           <widget class="QListView" name="disabled_tricks">
-           <property name="toolTip">
-            <string>test</string>
-           </property>
            <property name="editTriggers">
             <set>QAbstractItemView::NoEditTriggers</set>
            </property>
