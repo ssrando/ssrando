@@ -131,6 +131,11 @@ class Rando:
         self.randomised = True
 
     def parse_options(self):
+        if self.options["random-settings"]:
+            self.options.randomize_settings(self)
+        if self.options["random-cosmetics"]:
+            self.options.randomize_cosmetics(self)
+
         # Initialize location related attributes.
         self.randomize_required_dungeons()  # self.required_dungeons, self.unrequired_dungeons
         self.randomize_starting_items()  # self.placement.starting_items

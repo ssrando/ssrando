@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.0
+## Created by: Qt User Interface Compiler version 6.5.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -306,8 +306,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_27.addLayout(self.hlay_setup_options)
 
-        self.hlay_presets = QHBoxLayout()
-        self.hlay_presets.setObjectName(u"hlay_presets")
+        self.hlay_presets_rs = QHBoxLayout()
+        self.hlay_presets_rs.setObjectName(u"hlay_presets_rs")
         self.box_presets = QGroupBox(self.tab_setup)
         self.box_presets.setObjectName(u"box_presets")
         sizePolicy2.setHeightForWidth(self.box_presets.sizePolicy().hasHeightForWidth())
@@ -351,14 +351,49 @@ class Ui_MainWindow(object):
         self.verticalLayout_26.addLayout(self.vlay_presets)
 
 
-        self.hlay_presets.addWidget(self.box_presets)
+        self.hlay_presets_rs.addWidget(self.box_presets)
 
-        self.hspace_presets = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.box_rs = QGroupBox(self.tab_setup)
+        self.box_rs.setObjectName(u"box_rs")
+        sizePolicy2.setHeightForWidth(self.box_rs.sizePolicy().hasHeightForWidth())
+        self.box_rs.setSizePolicy(sizePolicy2)
+        self.horizontalLayout_12 = QHBoxLayout(self.box_rs)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.vlay_rs = QVBoxLayout()
+        self.vlay_rs.setObjectName(u"vlay_rs")
+        self.hlay_rs_controls = QHBoxLayout()
+        self.hlay_rs_controls.setObjectName(u"hlay_rs_controls")
+        self.option_random_settings = QCheckBox(self.box_rs)
+        self.option_random_settings.setObjectName(u"option_random_settings")
 
-        self.hlay_presets.addItem(self.hspace_presets)
+        self.hlay_rs_controls.addWidget(self.option_random_settings)
+
+        self.option_random_cosmetics = QCheckBox(self.box_rs)
+        self.option_random_cosmetics.setObjectName(u"option_random_cosmetics")
+
+        self.hlay_rs_controls.addWidget(self.option_random_cosmetics)
 
 
-        self.verticalLayout_27.addLayout(self.hlay_presets)
+        self.vlay_rs.addLayout(self.hlay_rs_controls)
+
+        self.label_random_settings_weighting = QLabel(self.box_rs)
+        self.label_random_settings_weighting.setObjectName(u"label_random_settings_weighting")
+
+        self.vlay_rs.addWidget(self.label_random_settings_weighting)
+
+        self.option_random_settings_weighting = QComboBox(self.box_rs)
+        self.option_random_settings_weighting.setObjectName(u"option_random_settings_weighting")
+
+        self.vlay_rs.addWidget(self.option_random_settings_weighting)
+
+
+        self.horizontalLayout_12.addLayout(self.vlay_rs)
+
+
+        self.hlay_presets_rs.addWidget(self.box_rs)
+
+
+        self.verticalLayout_27.addLayout(self.hlay_presets_rs)
 
         self.tabWidget.addTab(self.tab_setup, "")
         self.tab_randomization_settings = QWidget()
@@ -1569,9 +1604,9 @@ class Ui_MainWindow(object):
         self.tab_cosmetics.setObjectName(u"tab_cosmetics")
         self.verticalLayout_31 = QVBoxLayout(self.tab_cosmetics)
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
-        self.horizontalLayout_101 = QHBoxLayout()
-        self.horizontalLayout_101.setObjectName(u"horizontalLayout_101")
-        self.horizontalLayout_101.setContentsMargins(-1, -1, -1, 0)
+        self.hlay_cosmetics = QHBoxLayout()
+        self.hlay_cosmetics.setObjectName(u"hlay_cosmetics")
+        self.hlay_cosmetics.setContentsMargins(-1, -1, -1, 0)
         self.custom_model_settings = QVBoxLayout()
         self.custom_model_settings.setObjectName(u"custom_model_settings")
         self.hlay_type_options = QHBoxLayout()
@@ -1649,7 +1684,7 @@ class Ui_MainWindow(object):
         self.custom_model_settings.addLayout(self.hlay_pack_options)
 
 
-        self.horizontalLayout_101.addLayout(self.custom_model_settings)
+        self.hlay_cosmetics.addLayout(self.custom_model_settings)
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
@@ -1693,10 +1728,10 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.color_presets_list, 0, 1, 1, 3)
 
 
-        self.horizontalLayout_101.addLayout(self.gridLayout)
+        self.hlay_cosmetics.addLayout(self.gridLayout)
 
 
-        self.verticalLayout_31.addLayout(self.horizontalLayout_101)
+        self.verticalLayout_31.addLayout(self.hlay_cosmetics)
 
         self.hlay_colors_and_preview = QHBoxLayout()
         self.hlay_colors_and_preview.setObjectName(u"hlay_colors_and_preview")
@@ -1711,7 +1746,7 @@ class Ui_MainWindow(object):
         self.scroll_area_colors.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.scroll_area_widget_contents_colors = QWidget()
         self.scroll_area_widget_contents_colors.setObjectName(u"scroll_area_widget_contents_colors")
-        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 98, 46))
+        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 577, 477))
         self.verticalLayout_34 = QVBoxLayout(self.scroll_area_widget_contents_colors)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.vlay_texture_colors = QVBoxLayout()
@@ -2049,6 +2084,10 @@ class Ui_MainWindow(object):
         self.load_preset.setText(QCoreApplication.translate("MainWindow", u"Load", None))
         self.save_preset.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.delete_preset.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
+        self.box_rs.setTitle(QCoreApplication.translate("MainWindow", u"Random Settings", None))
+        self.option_random_settings.setText(QCoreApplication.translate("MainWindow", u"Randomize Game Settings", None))
+        self.option_random_cosmetics.setText(QCoreApplication.translate("MainWindow", u"Randomize Cosmetic Settings", None))
+        self.label_random_settings_weighting.setText(QCoreApplication.translate("MainWindow", u"Random Settings Weighting", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_setup), QCoreApplication.translate("MainWindow", u"Setup", None))
 #if QT_CONFIG(tooltip)
         self.tab_randomization_settings.setToolTip("")
