@@ -641,7 +641,7 @@ class Rando:
             (entrance, values)
             for entrance, values in self.areas.map_entrances.items()
             if values.get("subtype") == "bird-statue-entrance"
-            and (bsr or values.get("statue-name") in VANILLA_START_STATUES)
+            and (bsr or values.get("vanilla-start-statue"))
         ]
 
         self.randomized_start_statues = {
@@ -658,7 +658,9 @@ class Rando:
 
         # Logically bind the first-time dive to the statue to unlock it
 
-        for province in ALL_SURFACE_PROVINCES:
-            self.placement.map_transitions[
-                self.areas.short_to_full(FIRST_TIME_DIVES[province])
-            ] = self.randomized_start_statues[province][0]
+        for exit, values in self.areas.map_exits.items():
+            # First time dives have the 'pillar-province' field in entrances.yaml
+            if (province := values.get("pillar-province")) is not None:
+                self.placement.map_transitions[exit] = self.randomized_start_statues[
+                    province
+                ][0]

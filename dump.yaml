@@ -10375,6 +10375,7 @@ exits:
     stage: F020
     room: 0
     index: 1
+    pillar-province: Eldin Province
     req_index: 1847
     short_name: Sky - Eldin Pillar - First Time Dive
   \Sky\North East\Eldin Pillar\Temple Entrance Statue Dive:
@@ -10479,6 +10480,7 @@ exits:
     stage: F020
     room: 0
     index: 0
+    pillar-province: Faron Province
     req_index: 1860
     short_name: Sky - Faron Pillar - First Time Dive
   \Sky\South East\Faron Pillar\Sealed Grounds Statue Dive:
@@ -10567,6 +10569,7 @@ exits:
     stage: F020
     room: 0
     index: 2
+    pillar-province: Lanayru Province
     req_index: 1871
     short_name: Sky - Lanayru Pillar - First Time Dive
   \Sky\South West\Lanayru Pillar\Lanayru Mine Entry Statue Dive:
@@ -12551,6 +12554,7 @@ entrances:
     tod: 2
     flag-space: Sealed Grounds
     flag: 35
+    vanilla-start-statue: true
     allowed_time_of_day: 1
     req_index: 2166
     short_name: Sealed Grounds Spiral - Statue Entrance
@@ -13181,6 +13185,7 @@ entrances:
     tod: 2
     flag-space: Story
     flag: 804
+    vanilla-start-statue: true
     allowed_time_of_day: 1
     req_index: 2224
     short_name: Eldin Volcano - Volcano Entrance Statue Entrance
@@ -13608,6 +13613,7 @@ entrances:
     tod: 2
     flag-space: Lanayru Desert
     flag: 68
+    vanilla-start-statue: true
     allowed_time_of_day: 1
     req_index: 2264
     short_name: Lanayru Mine - Statue Entrance
