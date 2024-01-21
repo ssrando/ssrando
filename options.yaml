@@ -1108,3 +1108,10 @@
   help: If enabled, location hints (always, sometimes, & random hints) will display special flavor text
         if they have it (such as "drawing on a magical wall" instead of Gorko's Goddess Wall Reward).
   ui: option_cryptic_location_hints
+- name: Random Starting Statues
+  command: random-start-statues
+  type: boolean
+  default: false
+  help: If enabled, the starting statue for each surface region will be randomized. All overworld statues
+        except Inside the Volcano and Inside Fire Sanctuary may be chosen.
+  ui: option_random_start_statues

@@ -1435,6 +1435,7 @@ class GamePatcher:
         self.add_keysanity()
         self.add_demises()
         self.shuffle_trial_objects()
+        self.patch_random_starting_statue_flags()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -3286,3 +3287,18 @@ class GamePatcher:
         ).read_bytes()
         arc.set_file_data("timg/tr_dauzTarget_18.tpl", sandshipdata)
         do_button_path.write_bytes(arc.to_buffer())
+
+    def patch_random_starting_statue_flags(self):
+        for statue in self.placement_file.start_statues.values():
+            flag_space = statue[1].get("flag-space")
+            flag = statue[1].get("flag")
+            assert flag_space is not None
+            assert flag is not None
+            if flag_space == "Story":
+                # Add start storyflag
+                self.startstoryflags.append(flag)
+            else:
+                # Add start sceneflag
+                self.patches["global"]["startsceneflags"].setdefault(
+                    flag_space, []
+                ).append(flag)

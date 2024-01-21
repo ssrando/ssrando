@@ -383,6 +383,13 @@ nop
 .org 0x8016fa7c
 li r3, 0
 
+; change SG statue to use its scene flag
+.org 0x804e7cd8
+.word 0x0000 ; interpret as sceneflag
+.word 0x0000
+.word 0x000A ; use sceneflags for sealed grounds
+.word 0x0023 ; sceneflag 5x08
+
 .close
 
 

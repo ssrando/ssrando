@@ -10376,6 +10376,7 @@ exits:
     stage: F020
     room: 0
     index: 1
+    pillar-province: Eldin Province
     req_index: 1847
     short_name: Sky - Eldin Pillar - First Time Dive
   \Sky\North East\Eldin Pillar\Temple Entrance Statue Dive:
@@ -10480,6 +10481,7 @@ exits:
     stage: F020
     room: 0
     index: 0
+    pillar-province: Faron Province
     req_index: 1860
     short_name: Sky - Faron Pillar - First Time Dive
   \Sky\South East\Faron Pillar\Sealed Grounds Statue Dive:
@@ -10568,6 +10570,7 @@ exits:
     stage: F020
     room: 0
     index: 2
+    pillar-province: Lanayru Province
     req_index: 1871
     short_name: Sky - Lanayru Pillar - First Time Dive
   \Sky\South West\Lanayru Pillar\Lanayru Mine Entry Statue Dive:
@@ -12550,6 +12553,9 @@ entrances:
     layer: 0
     entrance: 8
     tod: 2
+    flag-space: Sealed Grounds
+    flag: 35
+    vanilla-start-statue: true
     allowed_time_of_day: 1
     req_index: 2166
     short_name: Sealed Grounds Spiral - Statue Entrance
@@ -12631,6 +12637,8 @@ entrances:
     layer: 0
     entrance: 10
     tod: 2
+    flag-space: Sealed Grounds
+    flag: 31
     allowed_time_of_day: 1
     req_index: 2173
     short_name: Behind the Temple - Statue Entrance
@@ -12678,6 +12686,8 @@ entrances:
     layer: 0
     entrance: 50
     tod: 2
+    flag-space: Story
+    flag: 800
     allowed_time_of_day: 1
     req_index: 2177
     short_name: Faron Woods - Faron Woods Entry Statue Entrance
@@ -12691,6 +12701,8 @@ entrances:
     layer: 0
     entrance: 51
     tod: 2
+    flag-space: Story
+    flag: 801
     allowed_time_of_day: 1
     req_index: 2178
     short_name: Faron Woods - In the Woods Statue Entrance
@@ -12704,6 +12716,8 @@ entrances:
     layer: 0
     entrance: 52
     tod: 2
+    flag-space: Story
+    flag: 802
     allowed_time_of_day: 1
     req_index: 2179
     short_name: Faron Woods - Viewing Platform Statue Entrance
@@ -12717,6 +12731,8 @@ entrances:
     layer: 0
     entrance: 53
     tod: 2
+    flag-space: Story
+    flag: 803
     allowed_time_of_day: 1
     req_index: 2180
     short_name: Great Tree - The Great Tree Statue Entrance
@@ -12905,6 +12921,8 @@ entrances:
     layer: 0
     entrance: 13
     tod: 2
+    flag-space: Faron Woods
+    flag: 104
     allowed_time_of_day: 1
     req_index: 2200
     short_name: Deep Woods - Forest Temple Statue Entrance
@@ -12918,6 +12936,8 @@ entrances:
     layer: 0
     entrance: 14
     tod: 2
+    flag-space: Faron Woods
+    flag: 103
     allowed_time_of_day: 1
     req_index: 2201
     short_name: Deep Woods - Deep Woods Statue Entrance
@@ -12954,6 +12974,8 @@ entrances:
     layer: 0
     entrance: 2
     tod: 2
+    flag-space: Lake Floria
+    flag: 32
     allowed_time_of_day: 1
     req_index: 2204
     short_name: Lake Floria - Below Rock - Statue Entrance
@@ -13014,6 +13036,8 @@ entrances:
     layer: 0
     entrance: 5
     tod: 2
+    flag-space: Lake Floria
+    flag: 33
     allowed_time_of_day: 1
     req_index: 2209
     short_name: Floria Waterfall - Statue Entrance
@@ -13160,6 +13184,9 @@ entrances:
     layer: 0
     entrance: 2
     tod: 2
+    flag-space: Story
+    flag: 804
+    vanilla-start-statue: true
     allowed_time_of_day: 1
     req_index: 2224
     short_name: Eldin Volcano - Volcano Entrance Statue Entrance
@@ -13173,6 +13200,8 @@ entrances:
     layer: 0
     entrance: 6
     tod: 2
+    flag-space: Story
+    flag: 805
     allowed_time_of_day: 1
     req_index: 2225
     short_name: Eldin Volcano - Volcano East Statue Entrance
@@ -13186,6 +13215,8 @@ entrances:
     layer: 0
     entrance: 7
     tod: 2
+    flag-space: Story
+    flag: 806
     allowed_time_of_day: 1
     req_index: 2226
     short_name: Eldin Volcano - Volcano Ascent Statue Entrance
@@ -13199,6 +13230,8 @@ entrances:
     layer: 0
     entrance: 7
     tod: 2
+    flag-space: Story
+    flag: 807
     allowed_time_of_day: 1
     req_index: 2227
     short_name: Eldin Volcano - Temple Entrance Statue Entrance
@@ -13579,6 +13612,9 @@ entrances:
     layer: 0
     entrance: 2
     tod: 2
+    flag-space: Lanayru Desert
+    flag: 68
+    vanilla-start-statue: true
     allowed_time_of_day: 1
     req_index: 2264
     short_name: Lanayru Mine - Statue Entrance
@@ -13603,6 +13639,8 @@ entrances:
     layer: 0
     entrance: 15
     tod: 2
+    flag-space: Lanayru Desert
+    flag: 66
     allowed_time_of_day: 1
     req_index: 2266
     short_name: Lanayru Desert - Desert Entrance Statue Entrance
@@ -13616,6 +13654,8 @@ entrances:
     layer: 0
     entrance: 16
     tod: 2
+    flag-space: Lanayru Desert
+    flag: 51
     allowed_time_of_day: 1
     req_index: 2267
     short_name: Lanayru Desert - West Desert Statue Entrance
@@ -13629,6 +13669,8 @@ entrances:
     layer: 0
     entrance: 17
     tod: 2
+    flag-space: Lanayru Desert
+    flag: 67
     allowed_time_of_day: 1
     req_index: 2268
     short_name: Lanayru Desert - North Desert Statue Entrance
@@ -13642,6 +13684,8 @@ entrances:
     layer: 0
     entrance: 18
     tod: 2
+    flag-space: Lanayru Desert
+    flag: 2
     allowed_time_of_day: 1
     req_index: 2269
     short_name: Lanayru Desert - Stone Cache Statue Entrance
@@ -13771,6 +13815,8 @@ entrances:
     layer: 0
     entrance: 16
     tod: 2
+    flag-space: Lanayru Desert
+    flag: 77
     allowed_time_of_day: 1
     req_index: 2281
     short_name: Temple of Time - Desert Gorge Statue Entrance
@@ -13784,6 +13830,8 @@ entrances:
     layer: 0
     entrance: 17
     tod: 2
+    flag-space: Lanayru Desert
+    flag: 78
     allowed_time_of_day: 1
     req_index: 2282
     short_name: Temple of Time - Temple of Time Statue Entrance
@@ -13888,6 +13936,8 @@ entrances:
     layer: 0
     entrance: 12
     tod: 2
+    flag-space: Lanayru Gorge
+    flag: 12
     allowed_time_of_day: 1
     req_index: 2291
     short_name: Lanayru Gorge - Statue Entrance
@@ -13957,6 +14007,8 @@ entrances:
     layer: 0
     entrance: 10
     tod: 2
+    flag-space: Lanayru Sand Sea
+    flag: 10
     allowed_time_of_day: 1
     req_index: 2297
     short_name: Lanayru Sand Sea Docks - Statue Entrance
@@ -13993,6 +14045,8 @@ entrances:
     layer: 0
     entrance: 10
     tod: 2
+    flag-space: Lanayru Sand Sea
+    flag: 28
     allowed_time_of_day: 1
     req_index: 2300
     short_name: Skipper's Retreat - Statue Entrance
@@ -14039,6 +14093,8 @@ entrances:
     layer: 0
     entrance: 10
     tod: 2
+    flag-space: Lanayru Sand Sea
+    flag: 85
     allowed_time_of_day: 1
     req_index: 2304
     short_name: Shipyard - Statue Entrance
@@ -14111,6 +14167,8 @@ entrances:
     layer: 0
     entrance: 10
     tod: 2
+    flag-space: Lanayru Sand Sea
+    flag: 84
     allowed_time_of_day: 1
     req_index: 2310
     short_name: Pirate Stronghold - Statue Entrance
