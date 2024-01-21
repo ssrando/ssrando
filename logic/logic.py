@@ -418,7 +418,13 @@ class Logic:
             placement_limit2, loc = placement_limit.rsplit("\\", 1)
             locations = self.areas[placement_limit2].locations
             assert loc in locations
-            if placement_limit in self.fixed_locations:
+
+            if (
+                placement_limit in self.fixed_locations
+                or not self.full_inventory[EXTENDED_ITEM[placement_limit]]
+                # means banning checks in dungeons should still work
+                or placement_limit in self.banned
+            ):
                 return []
             return [EIN(placement_limit)]
         else:
@@ -505,7 +511,9 @@ class Logic:
                 name = ""
             else:
                 name = "Item "
-            raise ValueError(f"{name}{item} is already placed.")
+            raise ValueError(
+                f"Cannot place {name}{item} at {location} as it is already placed at {items[item]}."
+            )
 
         if item in self.placement.item_placement_limit and not location.startswith(
             self.placement.item_placement_limit[item]

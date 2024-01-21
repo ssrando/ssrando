@@ -317,13 +317,36 @@ class Rando:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
 
+        ANYWHERE = "Anywhere"
+        VANILLA = "Vanilla"
+
+        restricted_vanilla_items = [
+            item
+            for item in POTENTIALLY_RESTRICTED_ITEMS
+            if (item in ALL_SMALL_KEYS and self.options["small-key-mode"] == VANILLA)
+            or (item in ALL_BOSS_KEYS and self.options["boss-key-mode"] == VANILLA)
+            or (item in ALL_MAPS and self.options["map-mode"] == VANILLA)
+            or (item in TRIFORCES and self.options["triforce-shuffle"] == VANILLA)
+            or (item in BEEDLE_VANILLA_ITEMS and not self.options["shopsanity"])
+            or (item in TADTONE_GROUPS and not self.options["tadtonesanity"])
+        ]
+
+        restricted_non_vanilla_items = [
+            item
+            for item in POTENTIALLY_RESTRICTED_ITEMS
+            if (item not in restricted_vanilla_items)
+            and (
+                (item in ALL_SMALL_KEYS and self.options["small-key-mode"] != ANYWHERE)
+                or (item in ALL_BOSS_KEYS and self.options["boss-key-mode"] != ANYWHERE)
+                or (item in ALL_MAPS and self.options["map-mode"] != ANYWHERE)
+                or (item in TRIFORCES and self.options["triforce-shuffle"] != ANYWHERE)
+            )
+        ]
+
         must_be_placed_items = (
-            PROGRESS_ITEMS
-            | NONPROGRESS_ITEMS
-            | ALL_SMALL_KEYS
-            | ALL_BOSS_KEYS
-            | ALL_MAPS
+            PROGRESS_ITEMS | NONPROGRESS_ITEMS | POTENTIALLY_RESTRICTED_ITEMS
         )
+
         may_be_placed_items = CONSUMABLE_ITEMS.copy()
         duplicable_items = (
             DUPLICABLE_ITEMS
@@ -331,12 +354,23 @@ class Rando:
             else DUPLICABLE_COUNTERPROGRESS_ITEMS  # Rupoors
         )
 
+        # Account for starting items.
         for item in self.placement.items:
+            if item in restricted_vanilla_items:
+                restricted_vanilla_items.remove(item)
+
+            if item in restricted_non_vanilla_items:
+                restricted_non_vanilla_items.remove(item)
+
             must_be_placed_items.pop(item, None)
             may_be_placed_items.pop(item, None)
 
         self.randosettings = RandomizationSettings(
-            must_be_placed_items, may_be_placed_items, duplicable_items
+            must_be_placed_items,
+            may_be_placed_items,
+            duplicable_items,
+            restricted_vanilla_items,
+            restricted_non_vanilla_items,
         )
 
     def set_placement_options(self):
@@ -428,7 +462,7 @@ class Rando:
             self.placement.add_unplaced_items(set(KEY_PIECES))
 
         if not place_gondo_progressives:
-            self.placement.add_unplaced_items(GONDO_ITEMS)
+            self.placement.add_unplaced_items(set(GONDO_ITEMS))
 
         if not shopsanity:
             self.placement |= VANILLA_BEEDLE_PLACEMENT(self.norm, self.areas.checks)
