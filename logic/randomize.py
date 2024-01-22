@@ -373,7 +373,9 @@ class Rando:
         self.no_logic_requirements = {}
         if self.options["logic-mode"] == "No Logic":
             self.no_logic_requirements = {
-                item: DNFInventory(True) for item in EXTENDED_ITEM.items_list
+                item: DNFInventory(True)
+                for item in EXTENDED_ITEM.items_list
+                if EXTENDED_ITEM[item] != BANNED_BIT
             }
 
         self.placement |= SINGLE_CRYSTAL_PLACEMENT(self.norm, self.areas.checks)
