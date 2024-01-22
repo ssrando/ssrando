@@ -317,6 +317,15 @@ class Rando:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
 
+        self.no_logic_requirements = {}
+        if self.options["logic-mode"] == "No Logic":
+            self.no_logic_requirements = {
+                item: DNFInventory(True)
+                for item in EXTENDED_ITEM.items_list
+                if EXTENDED_ITEM[item] != BANNED_BIT
+                if item not in self.placement.unplaced_items
+            }
+
         must_be_placed_items = (
             PROGRESS_ITEMS
             | NONPROGRESS_ITEMS
@@ -369,14 +378,6 @@ class Rando:
             EIN(trick(trick_name)): DNFInventory(trick_name in enabled_tricks)
             for trick_name in OPTIONS["enabled-tricks-bitless"]["choices"]
         }
-
-        self.no_logic_requirements = {}
-        if self.options["logic-mode"] == "No Logic":
-            self.no_logic_requirements = {
-                item: DNFInventory(True)
-                for item in EXTENDED_ITEM.items_list
-                if EXTENDED_ITEM[item] != BANNED_BIT
-            }
 
         self.placement |= SINGLE_CRYSTAL_PLACEMENT(self.norm, self.areas.checks)
 
