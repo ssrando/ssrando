@@ -101,6 +101,7 @@ class Rando:
             self.randomized_dungeon_entrance,
             self.randomized_trial_entrance,
             self.randomized_start_entrance,
+            self.randomized_start_statues,
             list(self.placement.locations),
         )
 
@@ -636,3 +637,35 @@ class Rando:
         assert self.randomized_start_entrance["layer"] is not None
         assert self.randomized_start_entrance["entrance"] is not None
         assert self.randomized_start_entrance["day-night"] is not None
+
+        # Starting bird statue rando
+
+        bsr = self.options["random-start-statues"]
+
+        possible_bird_statues = [
+            (entrance, values)
+            for entrance, values in self.areas.map_entrances.items()
+            if values.get("subtype") == "bird-statue-entrance"
+            and (bsr or values.get("vanilla-start-statue"))
+        ]
+
+        self.randomized_start_statues = {
+            province: self.rng.choice(
+                [
+                    (entrance, values)
+                    for entrance, values in possible_bird_statues
+                    if values.get("province") == province
+                    and "Fire Sanctuary" not in entrance
+                ]
+            )
+            for province in ALL_SURFACE_PROVINCES
+        }
+
+        # Logically bind the first-time dive to the statue to unlock it
+
+        for exit, values in self.areas.map_exits.items():
+            # First time dives have the 'pillar-province' field in entrances.yaml
+            if (province := values.get("pillar-province")) is not None:
+                self.placement.map_transitions[exit] = self.randomized_start_statues[
+                    province
+                ][0]

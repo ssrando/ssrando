@@ -105,6 +105,13 @@ Tests need a source installation and an extracted ISO:
     python -mpytest test
 If your system uses old versions of Python, you may need to replace `python` with `python3`
 
+### Logic Dump
+The `dump.yaml` file contains a dump of the static logic data for downstream consumers (such as trackers).
+If you make changes to logic, you may have to re-generate the dump
+
+    poetry run python randoscript.py --dump dump.yaml
+and commit the result, otherwise a GitHub action will fail and flag the outdated dump.
+
 ## Contributing
 Contributions are always welcome! Discussion happens on Discord.
 

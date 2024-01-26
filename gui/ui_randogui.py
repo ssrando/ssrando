@@ -682,6 +682,11 @@ class Ui_MainWindow(object):
 
         self.vlay_entrance_rando.addWidget(self.option_limit_start_entrance)
 
+        self.option_random_start_statues = QCheckBox(self.box_entrance_rando)
+        self.option_random_start_statues.setObjectName(u"option_random_start_statues")
+
+        self.vlay_entrance_rando.addWidget(self.option_random_start_statues)
+
         self.vspace_entrance_rando = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
 
         self.vlay_entrance_rando.addItem(self.vspace_entrance_rando)
@@ -2120,6 +2125,7 @@ class Ui_MainWindow(object):
         self.option_randomize_trials.setText(QCoreApplication.translate("MainWindow", u"Randomize Silent Realm Gates", None))
         self.label_for_option_random_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Spawn", None))
         self.option_limit_start_entrance.setText(QCoreApplication.translate("MainWindow", u"Limit Starting Location", None))
+        self.option_random_start_statues.setText(QCoreApplication.translate("MainWindow", u"Randomize Starting Statues", None))
         self.box_dungeons.setTitle(QCoreApplication.translate("MainWindow", u"Dungeons", None))
         self.label_for_option_map_mode.setText(QCoreApplication.translate("MainWindow", u"Map Mode", None))
         self.label_for_option_small_key_mode.setText(QCoreApplication.translate("MainWindow", u"Small Keys", None))

@@ -379,6 +379,17 @@ li r3, 1
 .org 0x8024d3b0
 nop
 
+; always show the slingshot model even when you already have scattershot
+.org 0x8016fa7c
+li r3, 0
+
+; change SG statue to use its scene flag
+.org 0x804e7cd8
+.word 0x0000 ; interpret as sceneflag
+.word 0x0000
+.word 0x000A ; use sceneflags for sealed grounds
+.word 0x0023 ; sceneflag 5x08
+
 .close
 
 
@@ -446,8 +457,8 @@ stw r31,12(r1)
 mr r31,r3 ; r31 is AcOWarp ptr
 lbz r3, 0x4(r31) ; first byte of params1 is itemid
 li r4, -1 ; set pouch slot param to -1, otherwise pouch items break
-li r5, 0 ; 3rd arg for giveItem function call
-bl giveItem ; give the item for the trial and save the pointer to it
+li r5, 0 ; 3rd arg for AcItem__giveItem function call
+bl AcItem__giveItem ; give the item for the trial and save the pointer to it
 stw r3, 0xC94(r31)
 lwz r0,20(r1)
 lwz r31,12(r1)

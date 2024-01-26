@@ -136,6 +136,10 @@ class Hints:
             )
             for stone in self.areas.gossip_stones
         }
+        for _, hintlist in placed_hintstone_hints.items():
+            if not hintlist.hints:
+                # make sure there are no empty textboxes
+                hintlist.hints = [EmptyHint("I have nothing to tell you")]
         self.logic.placement.hints = (
             placed_fi_hints | placed_hintstone_hints | non_hintstone_hints
         )

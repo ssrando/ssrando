@@ -2,6 +2,10 @@
 
 ## Dev
 ### Additions
+- Added starting statue rando (by YourAverageLink)
+  - If enabled, the starting statue for each region is randomized. It can be any statue except Inside the Volcano or
+    Inside Fire Sanctuary (as those statues would leave the player stuck, unable to access the rest of Eldin).
+  - The default starting statue will NOT be activated in this case, so this can change logic for some early areas!
 ### Changes
 ### Bugfixes
 

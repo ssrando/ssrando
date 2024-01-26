@@ -914,6 +914,13 @@
               </widget>
              </item>
              <item>
+              <widget class="QCheckBox" name="option_random_start_statues">
+               <property name="text">
+                <string>Randomize Starting Statues</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <spacer name="vspace_entrance_rando">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>

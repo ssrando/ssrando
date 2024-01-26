@@ -3,6 +3,18 @@
 version = 3
 
 [[package]]
+name = "arrayvec"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "96d30a06541fbafbc7f82ed10c06164cfbd2c401138f6addd8404629c4b16711"
+
+[[package]]
+name = "bitflags"
+version = "2.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "327762f6e5a765692301e5bb513e0d9fef63be86bbc14528052b1cd3e6f03e07"
+
+[[package]]
 name = "cstr"
 version = "0.2.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -16,8 +28,11 @@ dependencies = [
 name = "custom-functions"
 version = "0.1.0"
 dependencies = [
+ "arrayvec",
+ "bitflags",
  "cstr",
  "panic-abort",
+ "wchar",
 ]
 
 [[package]]
@@ -45,7 +60,38 @@ dependencies = [
 ]
 
 [[package]]
+name = "syn"
+version = "1.0.109"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "72b64191b275b66ffe2469e8af2c1cfe3bafa67b529ead792a6d0160888b4237"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "unicode-ident",
+]
+
+[[package]]
 name = "unicode-ident"
 version = "1.0.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e5464a87b239f13a63a501f2701565754bae92d243d4bb7eb12f6d57d2269bf4"
+
+[[package]]
+name = "wchar"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e1ca6ea80317e76471c3aa6d47efb151ef04538960ab810845a1c854f5cd7d8c"
+dependencies = [
+ "wchar-impl",
+]
+
+[[package]]
+name = "wchar-impl"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "075c93156fed21f9dab57af5e81604d0fdb67432c919a8c1f78bb979f06a3d25"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
