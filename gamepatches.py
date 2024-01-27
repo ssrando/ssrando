@@ -1548,18 +1548,6 @@ class GamePatcher:
             ]
         }
 
-        # Hero Mode Changes
-        if self.placement_file.options["fast-air-meter"] == False:
-            self.add_asm_patch("air_meter_normalmode")
-        if self.placement_file.options["upgraded-skyward-strike"]:
-            self.add_asm_patch("skyward_strike_heromode")
-        else:
-            self.add_asm_patch("skyward_strike_normalmode")
-        if self.placement_file.options["enable-heart-drops"]:
-            self.add_asm_patch("heart_pickups_normalmode")
-        else:
-            self.add_asm_patch("heart_pickups_heromode")
-
         # Damage Multiplier patch requires input, replacing one line
         # muli r27, r27, (multiplier)
         self.all_asm_patches["main.dol"][0x801E3464] = {
@@ -3108,6 +3096,22 @@ class GamePatcher:
             write_u8,
             self.custom_symbols["main.dol"]["FORCE_MOGMA_CAVE_DIVE"],
             int(force_mogma_cave_dive),
+        )
+
+        # Hero Mode Changes
+        fine_grained_hero_mode_options = 0
+
+        if self.placement_file.options["fast-air-meter"]:
+            fine_grained_hero_mode_options |= 0b010
+        if self.placement_file.options["upgraded-skyward-strike"]:
+            fine_grained_hero_mode_options |= 0b001
+        if not self.placement_file.options["enable-heart-drops"]:
+            fine_grained_hero_mode_options |= 0b100
+
+        dol.write_data(
+            write_u8,
+            self.custom_symbols["main.dol"]["HERO_MODE_OPTIONS"],
+            fine_grained_hero_mode_options,
         )
 
         dol.save_changes()

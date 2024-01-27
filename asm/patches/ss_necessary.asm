@@ -251,12 +251,6 @@ nop
 .org 0x801e351c
 bl no_minigame_death
 
-;remove heromode check for air meter
-.org 0x801c5d8c
-nop
-nop
-nop
-
 ; branch to function for rando custom text event flows (if no other matches)
 .org 0x801aff2c
 bgt 0x801b0788
@@ -389,6 +383,41 @@ li r3, 0
 .word 0x0000
 .word 0x000A ; use sceneflags for sealed grounds
 .word 0x0023 ; sceneflag 5x08
+
+; replace all is_hero_mode checks with more fine grained options
+; possibly dealing with skyward sword charge speed?
+.org 0x8005e288 
+bl has_upgraded_skyward_strike
+
+; possibly dealing with skyward sword charge speed?
+.org 0x8005e2ac
+bl has_upgraded_skyward_strike
+
+; spin attack related?
+.org 0x801c7a3c
+bl has_upgraded_skyward_strike
+
+.org 0x801c7b70
+bl has_upgraded_skyward_strike
+
+.org 0x801ca16c
+bl has_upgraded_skyward_strike
+
+.org 0x801e21e4
+bl has_upgraded_skyward_strike
+
+; change air meter check
+.org 0x801c5d8c
+bl has_fast_air_meter_drain
+
+; change heart drop checks
+; in item init
+.org 0x8024acf8
+bl has_heart_drops_enabled
+
+; in some func related to chance-based heart spawns / digspots / pots?
+.org 0x800c7c50
+bl has_heart_drops_enabled
 
 .close
 
@@ -999,4 +1028,29 @@ nop
 .org 0xB04
 li r4, 322 ; Repair Gondo's Junk check flag
 
+.close
+
+.open "d_a_heartfNP.rel"
+; This is in init1 and decides whether or not its spawned.
+; 0x80c925d8 in Ghidra
+.org 0x848
+bl has_heart_drops_enabled
+.close
+
+.open "d_a_e_maguppoNP.rel"
+; 0x80d1fd88 in Ghidra
+.org 0x1338
+bl has_heart_drops_enabled
+.close
+
+.open "d_a_obj_asura_pillarNP.rel"
+; 0x80c2027c in Ghidra
+.org 0x9ec
+bl has_heart_drops_enabled
+.close
+
+.open "d_t_reactionNP.rel"
+; 0x80efced4 in Ghidra (80efced4 - 80efc9e0) + 130
+.org 0x624
+bl has_heart_drops_enabled
 .close

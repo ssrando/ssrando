@@ -4,7 +4,7 @@
 // add `#[no_mangle]` and add a .global *symbolname* to custom_funcs.asm
 
 use core::{
-    ffi::{c_char, c_ushort, c_void},
+    ffi::{c_char, c_int, c_ushort, c_void},
     ptr, slice,
 };
 
@@ -478,4 +478,35 @@ fn get_glow_color(item_id: u32) -> u32 {
         }
     }
     4
+}
+
+#[link_section = "data"]
+#[no_mangle]
+static mut HERO_MODE_OPTIONS: u8 = 0;
+
+#[no_mangle]
+pub fn has_upgraded_skyward_strike() -> c_int {
+    if unsafe { HERO_MODE_OPTIONS } & 0b001 != 0 {
+        1
+    } else {
+        0
+    }
+}
+
+#[no_mangle]
+pub fn has_fast_air_meter_drain() -> c_int {
+    if unsafe { HERO_MODE_OPTIONS } & 0b010 != 0 {
+        1
+    } else {
+        0
+    }
+}
+
+#[no_mangle]
+pub fn has_heart_drops_enabled() -> c_int {
+    if unsafe { HERO_MODE_OPTIONS } & 0b100 != 0 {
+        1
+    } else {
+        0
+    }
 }
