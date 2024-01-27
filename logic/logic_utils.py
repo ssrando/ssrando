@@ -205,7 +205,14 @@ class LogicUtils(Logic):
         ]
 
     def get_useful_items(self, bit=EVERYTHING_UNBANNED_BIT):
-        return self._get_useful_items(bit)
+        res = self._get_useful_items(bit)
+        if not res:
+            res = [
+                loc
+                for i in self.full_inventory.intset
+                if (loc := EXTENDED_ITEM.get_item_name(i)) in PROGRESS_ITEMS
+            ]
+        return res
 
     @cache
     def locations_by_hint_region(self, region):
