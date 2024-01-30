@@ -10,6 +10,7 @@ from logic.constants import *
 from hints.hint_types import *
 from options import Options
 from logic.randomize import LogicUtils
+from logic.fill_algo_common import UserOutput
 
 HINTABLE_ITEMS = (
     dict.fromkeys(
@@ -153,6 +154,7 @@ class HintDistribution:
 
     def start(
         self,
+        useroutput: UserOutput,
         areas: Areas,
         options: Options,
         logic: LogicUtils,
@@ -160,6 +162,7 @@ class HintDistribution:
         unhintable: List[EIN],
         check_hint_status: Dict[EIN, Literal[None, "sometimes", "always"]],
     ):
+        self.useroutput = useroutput
         self.rng = rng
         self.logic = logic
         self.areas = areas
@@ -296,6 +299,12 @@ class HintDistribution:
             if (hint := func()) is not None:
                 self.counts_by_type[hint_type] += 1
                 hints.extend([hint] * self.distribution[hint_type]["copies"])
+            else:
+                self.weights[self.weighted_types.index(hint_type)] = 0
+                if not sum(self.weights):
+                    raise self.useroutput.GenerationFailed(
+                        f"Could not generate enough hints. This may be because the settings are too restrictive. Try changing the hint distribution."
+                    )
 
         hints = hints[:count]
         fi_hints, stone_hints = hints[: self.fi_hints], hints[self.fi_hints :]

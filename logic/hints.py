@@ -112,6 +112,7 @@ class Hints:
         non_hintstone_hints, hinted_checks = self.do_non_hintstone_hints()
 
         self.dist.start(
+            self.useroutput,
             self.areas,
             self.options,
             self.logic,
