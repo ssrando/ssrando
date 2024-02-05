@@ -282,9 +282,11 @@ class Rando:
         elif self.options["got-dungeon-requirement"] == "Unrequired":
             horde_door_requirement &= DNFInventory(dungeons_req)
 
-        everything_list = {
-            check["req_index"] for check in self.areas.checks.values()
-        } | {EXTENDED_ITEM[self.short_to_full(DEMISE)]}
+        everything_list = (
+            {check["req_index"] for check in self.areas.checks.values()}
+            | {check["req_index"] for check in self.areas.gossip_stones.values()}
+            | {EXTENDED_ITEM[self.short_to_full(DEMISE)]}
+        )
         everything_req = DNFInventory(Inventory(everything_list))
 
         self.endgame_requirements = {
