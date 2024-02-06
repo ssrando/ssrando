@@ -109,8 +109,28 @@ blr
 bl fix_freestanding_item_y_offset
 
 ; allow triforces to fall down when bonked
+; in AcItem::init
 .org 0x8024edbc
 li r3, 0
+
+; Make triforces whippable
+; set different defenderCollider flags in AcItem::init
+.org 0x8024b548
+li r3, 0
+
+; set different defenderCollider flags in AcItem::setupUnkColliderFlags2
+.org 0x802549f0
+li r3, 0
+
+; Make heart pieces whippable
+; in AcItem::init
+.org 0x8024b538
+li r3, 0
+.org 0x8024b574
+li r3, 0
+.org 0x8024b590
+li r3, 0
+
 
 ; don't treat faron statues differently after levias
 .org 0x80142078
