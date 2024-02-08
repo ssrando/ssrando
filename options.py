@@ -238,12 +238,23 @@ class Options:
         return opts
 
     def update_from_dict(self, opts):
+        def try_set_option(name, value):
+            try:
+                self.set_option(name, value)
+                return True
+            except ValueError as e:
+                print(f"error restoring option {name}:", e)
+                return False
+
+        opts_reset_to_default = []
         for option_name, option in OPTIONS.items():
-            if option_name in opts:
-                try:
-                    self.set_option(option_name, opts[option_name])
-                except ValueError as e:
-                    print(f"error restoring option {option_name}:", e)
+            if not (option_name in opts and try_set_option(option_name, opts[option_name])):
+                # reset permalink-relevant options that the preset doesn't include to default
+                if option.get("permalink", True):
+                    opts_reset_to_default.append(option_name)
+                    self.set_option(option_name, option["default"])
+        if opts_reset_to_default:
+            print(f"options {opts_reset_to_default} were reset to default")
 
     def __getitem__(self, item):
         return self.options[item]
