@@ -113,6 +113,33 @@ class RandoGUI(QMainWindow):
                 except Exception as e:
                     print("couldn't update from saved settings!", e)
 
+        if self.options[
+            "random-settings"
+        ]:  # Initialize UI for RS- sets randomized settings to default value and greys them out on the UI
+            self.options.reset_randomized_settings()
+            for opt in OPTIONS.values():
+                if opt["command"] in NON_RANDOMIZED_SETTINGS or (
+                    "permalink" in opt and not opt["permalink"]
+                ):
+                    continue
+                elif opt["command"] == "starting-items":
+                    getattr(self.ui, "box_starting_items").setEnabled(False)
+                else:
+                    widget = getattr(self.ui, opt["ui"])
+                    widget.setEnabled(False)
+            self.ui.option_random_settings_weighting.setEnabled(True)
+        else:
+            self.options.set_option("random-settings-weighting", "Random")
+            self.ui.option_random_settings_weighting.setEnabled(False)
+        if self.options["random-cosmetics"]:  # Greys out cosmetics on UI load
+            for opt in OPTIONS.values():
+                if (
+                    opt["command"] not in NON_RANDOMIZED_COSMETICS
+                    and "cosmetic" in opt
+                    and opt["cosmetic"]
+                ):
+                    getattr(self.ui, opt["ui"]).setEnabled(False)
+
         self.option_map = {}
         for option_key, option in OPTIONS.items():
             if option["name"] != "Seed":
@@ -1347,32 +1374,37 @@ class RandoGUI(QMainWindow):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
 
     def randomize_settings_toggled(self):
-        if self.ui.option_random_settings.isChecked():
-            settings_randomized = False
+        settings_randomized = self.ui.option_random_settings.isChecked()
+        if settings_randomized:
+            self.options.reset_randomized_settings()  # Sets randomized settings to their default value for permalink consistency
         else:
-            settings_randomized = True
+            self.options.set_option(
+                "random-settings-weighting", "Random"
+            )  # Sets RS weighting to random for permalink consistency
         for opt in OPTIONS.values():
             if opt["command"] in NON_RANDOMIZED_SETTINGS or (
                 "permalink" in opt and not opt["permalink"]
             ):
                 continue
             elif opt["command"] == "starting-items":
-                getattr(self.ui, "box_starting_items").setEnabled(settings_randomized)
+                getattr(self.ui, "box_starting_items").setEnabled(
+                    not settings_randomized
+                )
             else:
-                getattr(self.ui, opt["ui"]).setEnabled(settings_randomized)
-        self.ui.option_random_settings_weighting.setEnabled(
-            self.ui.option_random_settings.isChecked()
-        )
+                widget = getattr(self.ui, opt["ui"])
+                widget.setEnabled(not settings_randomized)
+        self.ui.option_random_settings_weighting.setEnabled(settings_randomized)
+        self.update_ui_for_settings()
 
     def randomize_cosmetics_toggled(self):
-        cosmetics_randomized = not self.ui.option_random_cosmetics.isChecked()
+        cosmetics_randomized = self.ui.option_random_cosmetics.isChecked()
         for opt in OPTIONS.values():
             if (
                 opt["command"] not in NON_RANDOMIZED_COSMETICS
                 and "cosmetic" in opt
                 and opt["cosmetic"]
             ):
-                getattr(self.ui, opt["ui"]).setEnabled(cosmetics_randomized)
+                getattr(self.ui, opt["ui"]).setEnabled(not cosmetics_randomized)
 
 
 def run_main_gui(areas: Areas, options: Options):

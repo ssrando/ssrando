@@ -22,6 +22,14 @@ class Options:
             else:
                 self.options[option_name] = option["default"]
 
+    def reset_randomized_settings(self):
+        for option_name, option in OPTIONS.items():
+            if option["command"] in constants.NON_RANDOMIZED_SETTINGS or (
+                "permalink" in option and not option["permalink"]
+            ):
+                continue
+            self.options[option_name] = option["default"]
+
     @staticmethod
     def parse_and_validate_option(value_str: str, option: dict):
         validation_errors = []

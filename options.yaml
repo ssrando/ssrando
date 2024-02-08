@@ -92,7 +92,8 @@
   command: random-settings
   type: boolean
   default: false
-  help: "If enabled, most randomization settings will be randomized."
+  help: "If enabled, most randomization settings will be randomized. **WARNING**: Enabling this
+        will reset all randomizable settings to their default values."
   ui: option_random_settings
 - name: Randomize Cosmetic Settings
   command: random-cosmetics
