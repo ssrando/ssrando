@@ -248,7 +248,9 @@ class Options:
 
         opts_reset_to_default = []
         for option_name, option in OPTIONS.items():
-            if not (option_name in opts and try_set_option(option_name, opts[option_name])):
+            if not (
+                option_name in opts and try_set_option(option_name, opts[option_name])
+            ):
                 # reset permalink-relevant options that the preset doesn't include to default
                 if option.get("permalink", True):
                     opts_reset_to_default.append(option_name)
