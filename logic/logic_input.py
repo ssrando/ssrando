@@ -498,22 +498,49 @@ class Areas:
                     reqs[area_bit] |= DNFInv(entrance)
 
     def to_dict(self):
+        def filter_values(data: Dict[str, dict], keys: List[str]):
+            return dict(
+                {
+                    id: dict({k: v for k, v in value.items() if k in keys})
+                    for id, value in data.items()
+                }
+            )
+
         return {
             "items": EXTENDED_ITEM.items_list,
             "areas": self.parent_area,
-            "checks": dict(
-                {
-                    id: dict(
-                        {k: v for k, v in check.items() if k in ["short_name", "type"]}
-                    )
-                    for id, check in self.checks.items()
-                }
+            "checks": filter_values(
+                self.checks, ["short_name", "type", "original item"]
             ),
             "gossip_stones": dict(
                 {k: v["short_name"] for k, v in self.gossip_stones.items()}
             ),
-            "exits": self.map_exits,
-            "entrances": self.map_entrances,
+            # NB "stage" should not really be needed in downstream consumers but it controls
+            # whether exits/entrances are available in Entrance Randomizer
+            "exits": filter_values(
+                self.map_exits,
+                [
+                    "type",
+                    "vanilla",
+                    "allowed_time_of_day",
+                    "subtype",
+                    "stage",
+                    "short_name",
+                    "pillar-province",
+                ],
+            ),
+            "entrances": filter_values(
+                self.map_entrances,
+                [
+                    "type",
+                    "can-start-at",
+                    "allowed_time_of_day",
+                    "subtype",
+                    "stage",
+                    "province",
+                    "short_name",
+                ],
+            ),
         }
 
     def __str__(self):
