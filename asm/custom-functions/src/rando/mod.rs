@@ -34,7 +34,7 @@ static mut IS_FILE_START: bool = false;
 static mut FORCE_MOGMA_CAVE_DIVE: bool = false;
 
 #[no_mangle]
-pub fn process_startflags() {
+extern "C" fn process_startflags() {
     unsafe { (*file_manager::get_ptr()).anticommit_flag = 1 };
     #[repr(C)]
     struct StartflagInfo {
@@ -130,7 +130,7 @@ pub fn process_startflags() {
 }
 
 #[no_mangle]
-pub fn handle_bk_map_dungeonflag(item: c_ushort) {
+extern "C" fn handle_bk_map_dungeonflag(item: c_ushort) {
     const BK_TO_FLAGINDEX: [u8; 7] = [
         // starts at 25
         12, // AC
@@ -175,7 +175,7 @@ const INCOMPLETE_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x09\0 \0I\0n\0c\
 const UNREQUIRED_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x0C\0 \0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
 
 #[no_mangle]
-fn rando_text_command_handler(
+extern "C" fn rando_text_command_handler(
     _event_flow_mgr: *mut ActorEventFlowMgr,
     p_flow_element: *const FlowElement,
 ) {
@@ -266,7 +266,7 @@ fn rando_text_command_handler(
 }
 
 #[no_mangle]
-fn textbox_a_pressed_or_b_held() -> bool {
+extern "C" fn textbox_a_pressed_or_b_held() -> bool {
     if is_pressed(A) || is_down(B) {
         return true;
     }
@@ -274,7 +274,7 @@ fn textbox_a_pressed_or_b_held() -> bool {
 }
 
 #[no_mangle]
-fn set_goddess_sword_pulled_scene_flag() {
+extern "C" fn set_goddess_sword_pulled_scene_flag() {
     // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
     StoryflagManager::storyflag_set_to_1(951);
 }
@@ -285,7 +285,7 @@ fn simple_rng(rng: &mut u32) -> u32 {
 }
 
 #[no_mangle]
-fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
+extern "C" fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
     // 6 dungeons, each having a Vec3s which is just 3 u16 (or rather i16)
     let angles = unsafe { slice::from_raw_parts_mut(ptr, 3 * 6) };
     for angle in angles.iter_mut() {
@@ -294,7 +294,7 @@ fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
 }
 
 #[no_mangle]
-fn get_item_arc_name(
+extern "C" fn get_item_arc_name(
     oarc_mgr: *const c_void,
     vanilla_item_str: *const c_char,
     item_id: u32,
@@ -311,7 +311,7 @@ fn get_item_arc_name(
 }
 
 #[no_mangle]
-fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
+extern "C" fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
     match item_id {
         214 => return cstr!("OnpB").as_ptr(),        // tadtone
         215 => return cstr!("DesertRobot").as_ptr(), // scrapper
@@ -320,7 +320,7 @@ fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
 }
 
 #[no_mangle]
-fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
+extern "C" fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
     let loftwing = unsafe { &mut *loftwing_ptr };
     let mut is_in_levias_fight = false;
     if &reloader::get_spawn_slave().name[..4] == b"F023"
@@ -347,7 +347,7 @@ fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
 
 // The same as give_item only you can control the sceneflag of the item given.
 #[no_mangle]
-fn give_item_with_sceneflag(
+extern "C" fn give_item_with_sceneflag(
     item_id: u16,
     bottle_pouch_slot: u32,
     number: u32,
@@ -375,13 +375,13 @@ struct StartInfo {
 }
 
 #[no_mangle]
-fn get_start_info() -> *const StartInfo {
+extern "C" fn get_start_info() -> *const StartInfo {
     // this is where the start entrance info is patched
     return unsafe { &*(0x802DA0E0 as *const StartInfo) };
 }
 
 #[no_mangle]
-pub fn send_to_start() {
+extern "C" fn send_to_start() {
     let start_info = unsafe { get_start_info().as_ref().unwrap() };
 
     // we can't use the normal triggerEntrance function, because that doesn't work
@@ -403,7 +403,7 @@ pub fn send_to_start() {
 
 #[no_mangle]
 // args only used by replaced function call
-pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
+extern "C" fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
     unsafe {
         if (*reloader::get_ptr()).initial_speed > 30f32 {
             (*reloader::get_ptr()).initial_speed = 30f32;
@@ -450,7 +450,7 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
 }
 
 #[no_mangle]
-fn allow_set_respawn_info() -> *mut Reloader {
+extern "C" fn allow_set_respawn_info() -> *mut Reloader {
     unsafe {
         if IS_FILE_START {
             (*reloader::get_ptr()).prevent_save_respawn_info = false;
@@ -462,7 +462,7 @@ fn allow_set_respawn_info() -> *mut Reloader {
 }
 
 #[no_mangle]
-fn get_glow_color(item_id: u32) -> u32 {
+extern "C" fn get_glow_color(item_id: u32) -> u32 {
     let stage = &reloader::get_spawn_slave().name[..4];
     // only proceed if in a silent realm
     if stage[0] == b'S' {
