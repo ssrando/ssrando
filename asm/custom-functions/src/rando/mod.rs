@@ -10,6 +10,8 @@ use core::{
 
 use cstr::cstr;
 
+use wchar::wch;
+
 use crate::{
     game::{
         actor, arc,
@@ -168,11 +170,20 @@ extern "C" fn handle_bk_map_dungeonflag(item: c_ushort) {
     }
 }
 
-const OBTAINED_TEXT: &[u8; 18] = b"\0O\0b\0t\0a\0i\0n\0e\0d\0\0";
-const UNOBTAINED_TEXT: &[u8; 22] = b"\0U\0n\0o\0b\0t\0a\0i\0n\0e\0d\0\0";
-const COMPLETE_TEXT: &[u8; 42] = b"\0\x0e\0\x00\0\x03\0\x02\0\x08\0 \0C\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
-const INCOMPLETE_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x09\0 \0I\0n\0c\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
-const UNREQUIRED_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x0C\0 \0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+const OBTAINED_TEXT: &[u16; 9] = wch!(u16, "Obtained\0");
+const UNOBTAINED_TEXT: &[u16; 11] = wch!(u16, "Unobtained\0");
+const COMPLETE_TEXT: &[u16; 21] = wch!(
+    u16,
+    "\x0E\x00\x03\x02\x08 Complete \x0E\x00\x03\x02\u{FFFF}\0"
+);
+const INCOMPLETE_TEXT: &[u16; 23] = wch!(
+    u16,
+    "\x0E\x00\x03\x02\x09 Incomplete \x0E\x00\x03\x02\u{FFFF}\0"
+);
+const UNREQUIRED_TEXT: &[u16; 23] = wch!(
+    u16,
+    "\x0E\x00\x03\x02\x0C Unrequired \x0E\x00\x03\x02\u{FFFF}\0"
+);
 
 #[no_mangle]
 extern "C" fn rando_text_command_handler(
