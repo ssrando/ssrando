@@ -1936,11 +1936,11 @@ items:
 - \Faron\Faron Woods\Great Tree\Upper Area\Exit to Top
 - \Faron\Faron Woods\Great Tree\Lower Area\Underwater Tunnel Exit
 - \Faron\Faron Woods\Great Tree\Upper Area\Exit to Flooded Great Tree
-- \Faron\Flooded Faron Woods\Flooded Great Tree\Exit
+- \Faron\Flooded Faron Woods\Flooded Great Tree\Exit to Great Tree
 - \Faron\Flooded Faron Woods\Flooded Great Tree\Exit to Upper Flooded Faron Woods
-- \Faron\Flooded Faron Woods\Flooded Great Tree\Exit to Lower Flooded Faron Woods
+- \Faron\Flooded Faron Woods\Flooded Great Tree\Underwater Tunnel Exit
 - \Faron\Flooded Faron Woods\Exit to Upper Flooded Great Tree
-- \Faron\Flooded Faron Woods\Exit to Lower Flooded Great Tree
+- \Faron\Flooded Faron Woods\Underwater Hole Exit
 - \Faron\Faron Woods\Deep Woods\Shared Statue Exit
 - \Faron\Faron Woods\Deep Woods\Entry\Exit to Faron Woods
 - \Faron\Faron Woods\Deep Woods\Exit to Skyview Temple
@@ -2218,13 +2218,12 @@ items:
 - \Faron\Faron Woods\Great Tree\Upper Area\Entrance from Top
 - \Faron\Faron Woods\Great Tree\Lower Area\Underwater Tunnel Entrance
 - \Faron\Faron Woods\Great Tree\Upper Area\Entrance from Flooded Great Tree
-- \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance
+- \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance from Great Tree
 - \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance from Upper Flooded Faron
   Woods
-- \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance from Lower Flooded Faron
-  Woods
+- \Faron\Flooded Faron Woods\Flooded Great Tree\Underwater Tunnel Entrance
 - \Faron\Flooded Faron Woods\Entrance from Upper Flooded Great Tree
-- \Faron\Flooded Faron Woods\Entrance from Lower Flooded Great Tree
+- \Faron\Flooded Faron Woods\Underwater Hole Entrance
 - \Faron\Faron Woods\Deep Woods\Forest Temple Statue Entrance
 - \Faron\Faron Woods\Deep Woods\Deep Woods Statue Entrance
 - \Faron\Faron Woods\Deep Woods\Entry\Entrance from Faron Woods
@@ -4335,10 +4334,10 @@ areas:
           can_sleep: false
           entrances:
           - Entrance from Upper Flooded Great Tree
-          - Entrance from Lower Flooded Great Tree
+          - Underwater Hole Entrance
           exits:
             Exit to Upper Flooded Great Tree: 'True'
-            Exit to Lower Flooded Great Tree: Water Dragon's Scale
+            Underwater Hole Exit: Water Dragon's Scale
           hint_region: Flooded Faron Woods
           locations:
             Yellow Tadtone under Lilypad: Water Dragon's Scale
@@ -4370,13 +4369,13 @@ areas:
               can_save: false
               can_sleep: false
               entrances:
-              - Entrance
+              - Entrance from Great Tree
               - Entrance from Upper Flooded Faron Woods
-              - Entrance from Lower Flooded Faron Woods
+              - Underwater Tunnel Entrance
               exits:
-                Exit: 'True'
+                Exit to Great Tree: 'True'
                 Exit to Upper Flooded Faron Woods: 'True'
-                Exit to Lower Flooded Faron Woods: Water Dragon's Scale
+                Underwater Tunnel Exit: Water Dragon's Scale
               hint_region: Flooded Faron Woods
               locations:
                 Water Dragon's Reward: "Group of Tadtones x 17 & \\Faron\\Flooded\
@@ -10891,28 +10890,28 @@ exits:
     short_name: Great Tree - Underwater Tunnel Exit
   \Faron\Faron Woods\Great Tree\Upper Area\Exit to Flooded Great Tree:
     type: exit
-    vanilla: Flooded Great Tree - Entrance
+    vanilla: Flooded Great Tree - Entrance from Great Tree
     short_name: Great Tree - Exit to Flooded Great Tree
-  \Faron\Flooded Faron Woods\Flooded Great Tree\Exit:
+  \Faron\Flooded Faron Woods\Flooded Great Tree\Exit to Great Tree:
     type: exit
-    vanilla: Entrance from Flooded Great Tree
-    short_name: Flooded Great Tree - Exit
+    vanilla: Great Tree - Entrance from Flooded Great Tree
+    short_name: Flooded Great Tree - Exit to Great Tree
   \Faron\Flooded Faron Woods\Flooded Great Tree\Exit to Upper Flooded Faron Woods:
     type: exit
     vanilla: Flooded Faron Woods - Entrance from Upper Flooded Great Tree
     short_name: Flooded Great Tree - Exit to Upper Flooded Faron Woods
-  \Faron\Flooded Faron Woods\Flooded Great Tree\Exit to Lower Flooded Faron Woods:
+  \Faron\Flooded Faron Woods\Flooded Great Tree\Underwater Tunnel Exit:
     type: exit
-    vanilla: Flooded Faron Woods - Entrance from Lower Flooded Great Tree
-    short_name: Flooded Great Tree - Exit to Lower Flooded Faron Woods
+    vanilla: Flooded Faron Woods - Underwater Hole Entrance
+    short_name: Flooded Great Tree - Underwater Tunnel Exit
   \Faron\Flooded Faron Woods\Exit to Upper Flooded Great Tree:
     type: exit
     vanilla: Flooded Great Tree - Entrance from Upper Flooded Faron Woods
     short_name: Flooded Faron Woods - Exit to Upper Flooded Great Tree
-  \Faron\Flooded Faron Woods\Exit to Lower Flooded Great Tree:
+  \Faron\Flooded Faron Woods\Underwater Hole Exit:
     type: exit
-    vanilla: Flooded Great Tree - Entrance from Lower Flooded Faron Woods
-    short_name: Flooded Faron Woods - Exit to Lower Flooded Great Tree
+    vanilla: Flooded Great Tree - Underwater Tunnel Entrance
+    short_name: Flooded Faron Woods - Underwater Hole Exit
   \Faron\Faron Woods\Deep Woods\Shared Statue Exit:
     type: exit
     vanilla: Sky - Faron Pillar - Entrance
@@ -12094,28 +12093,38 @@ entrances:
     can-start-at: false
     allowed_time_of_day: 1
     short_name: Great Tree - Entrance from Flooded Great Tree
-  \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance:
-    type: entrance
-    allowed_time_of_day: 1
-    short_name: Flooded Great Tree - Entrance
-  \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance from Upper Flooded Faron Woods:
-    type: entrance
-    allowed_time_of_day: 1
-    short_name: Flooded Great Tree - Entrance from Upper Flooded Faron Woods
-  \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance from Lower Flooded Faron Woods:
-    type: entrance
-    allowed_time_of_day: 1
-    short_name: Flooded Great Tree - Entrance from Lower Flooded Faron Woods
-  \Faron\Flooded Faron Woods\Entrance from Upper Flooded Great Tree:
-    type: entrance
-    allowed_time_of_day: 1
-    short_name: Flooded Faron Woods - Entrance from Upper Flooded Great Tree
-  \Faron\Flooded Faron Woods\Entrance from Lower Flooded Great Tree:
+  \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance from Great Tree:
     type: entrance
     province: Faron Province
     can-start-at: false
     allowed_time_of_day: 1
-    short_name: Flooded Faron Woods - Entrance from Lower Flooded Great Tree
+    short_name: Flooded Great Tree - Entrance from Great Tree
+  \Faron\Flooded Faron Woods\Flooded Great Tree\Entrance from Upper Flooded Faron Woods:
+    type: entrance
+    province: Faron Province
+    stage: F103_1
+    allowed_time_of_day: 1
+    short_name: Flooded Great Tree - Entrance from Upper Flooded Faron Woods
+  \Faron\Flooded Faron Woods\Flooded Great Tree\Underwater Tunnel Entrance:
+    type: entrance
+    province: Faron Province
+    can-start-at: false
+    stage: F103_1
+    allowed_time_of_day: 1
+    short_name: Flooded Great Tree - Underwater Tunnel Entrance
+  \Faron\Flooded Faron Woods\Entrance from Upper Flooded Great Tree:
+    type: entrance
+    province: Faron Province
+    stage: F103
+    allowed_time_of_day: 1
+    short_name: Flooded Faron Woods - Entrance from Upper Flooded Great Tree
+  \Faron\Flooded Faron Woods\Underwater Hole Entrance:
+    type: entrance
+    province: Faron Province
+    can-start-at: false
+    stage: F103
+    allowed_time_of_day: 1
+    short_name: Flooded Faron Woods - Underwater Hole Entrance
   \Faron\Faron Woods\Deep Woods\Forest Temple Statue Entrance:
     type: entrance
     subtype: bird-statue-entrance
