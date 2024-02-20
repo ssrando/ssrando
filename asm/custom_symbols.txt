@@ -16,21 +16,21 @@ main.dol:
   check_scrapper_repaired: 0x8067867C
   storyflag_set_to_1: 0x8067868C
   process_startflags: 0x806786BC
-  handle_bk_map_dungeonflag: 0x806788DC
-  rando_text_command_handler: 0x80678988
-  textbox_a_pressed_or_b_held: 0x80678C70
-  set_goddess_sword_pulled_scene_flag: 0x80678CB0
-  randomize_boss_key_start_pos: 0x80678CDC
-  get_item_arc_name: 0x80678D08
-  get_item_model_name_ptr: 0x80678D4C
-  enforce_loftwing_speed_cap: 0x80678D88
-  give_item_with_sceneflag: 0x80678E74
-  get_start_info: 0x80678F04
-  send_to_start: 0x80678F10
-  do_er_fixes: 0x80678F6C
-  allow_set_respawn_info: 0x80679294
-  get_glow_color: 0x806792BC
-  FORCE_MOGMA_CAVE_DIVE: 0x80679426
+  handle_bk_map_dungeonflag: 0x806788F0
+  rando_text_command_handler: 0x8067899C
+  textbox_a_pressed_or_b_held: 0x80678C84
+  set_goddess_sword_pulled_scene_flag: 0x80678CC4
+  randomize_boss_key_start_pos: 0x80678CF0
+  get_item_arc_name: 0x80678D1C
+  get_item_model_name_ptr: 0x80678D60
+  enforce_loftwing_speed_cap: 0x80678D9C
+  give_item_with_sceneflag: 0x80678E88
+  get_start_info: 0x80678F18
+  send_to_start: 0x80678F24
+  do_er_fixes: 0x80678F80
+  allow_set_respawn_info: 0x806792A8
+  get_glow_color: 0x806792D0
+  FORCE_MOGMA_CAVE_DIVE: 0x8067943A
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
