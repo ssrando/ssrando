@@ -420,7 +420,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="hlay_presets">
+         <layout class="QHBoxLayout" name="hlay_presets_rs">
           <item>
            <widget class="QGroupBox" name="box_presets">
             <property name="sizePolicy">
@@ -479,17 +479,51 @@
            </widget>
           </item>
           <item>
-           <spacer name="hspace_presets">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+           <widget class="QGroupBox" name="box_rs">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
+            <property name="title">
+             <string>Random Settings</string>
             </property>
-           </spacer>
+            <layout class="QHBoxLayout" name="horizontalLayout_12">
+             <item>
+              <layout class="QVBoxLayout" name="vlay_rs">
+               <item>
+                <layout class="QHBoxLayout" name="hlay_rs_controls">
+                 <item>
+                  <widget class="QCheckBox" name="option_random_settings">
+                   <property name="text">
+                    <string>Randomize Game Settings</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="option_random_cosmetics">
+                   <property name="text">
+                    <string>Randomize Cosmetic Settings</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_random_settings_weighting">
+                 <property name="text">
+                  <string>Random Settings Weighting</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="option_random_settings_weighting"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
           </item>
          </layout>
         </item>
@@ -2299,7 +2333,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_31">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <layout class="QHBoxLayout" name="hlay_cosmetics">
           <property name="bottomMargin">
            <number>0</number>
           </property>
@@ -2516,8 +2550,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>98</width>
-               <height>46</height>
+               <width>577</width>
+               <height>477</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_34">
