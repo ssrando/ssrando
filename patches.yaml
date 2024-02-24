@@ -1806,6 +1806,45 @@ F100: # Faron main area
     objtype: PLY
     object:
       play_cutscene: -1
+  # Copied from HD
+  - name: Prevent Fence Hop Softlock 1
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFC4
+      params2: 0xFFFFFFFF
+      posx: -2900.0
+      posy: -423.59515380859375
+      posz: 9900.0
+      sizex: 3095.841552734375
+      sizey: 2680.0
+      sizez: 940.346923828125
+      anglex: 0
+      angley: 51976
+      anglez: 0
+      id: 0xFDFE
+      name: ActTag
+  - name: Prevent Fence Hop Softlock 2
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFC4
+      params2: 0xFFFFFFFF
+      posx: -2100.0
+      posy: -423.59515380859375
+      posz: 11000.0
+      sizex: 3231.169189453125
+      sizey: 2680.0
+      sizez: 1064.70703125
+      anglex: 0
+      angley: 57624
+      anglez: 0
+      id: 0xFDFF
+      name: ActTag
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
