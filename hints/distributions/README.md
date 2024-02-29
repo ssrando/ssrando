@@ -25,9 +25,7 @@ Hint distributions define everything about how gossip stone hints are placed by 
 All fields are **required** in all distribution files, however, specific hint types can be omitted from the actual distribution, however this is not recommended.
 
 ## Fields
-- fi_hints (number)
-  - The number of gossip stone hints that will be given to Fi (accessible in her menu).
-  - Fi's hints are placed first, then any remaining hints are placed in gossip stones.
+- assignment (see below. required, except for legacy format where assignment mode is implicitly "split")
 - banned_stones (Array of strings)
   - List of all the gossip stones that cannot have useful hints placed on them
   - Names must match the exact internal naming structure of the randomizer, which can be found in hints.yaml in the root directory
@@ -48,8 +46,48 @@ All fields are **required** in all distribution files, however, specific hint ty
 - distribution (name: distribution_data (see below))
   - Defines the specifics of the distribution
 
+### Assignment
+
+An assignmnent mode specifies how many hints are assigned to which sources. The two supported sources currently are:
+
+* fi (accessible in her menu)
+* gossip_stone (accessible by interacting with gossip stones in the world)
+
+Fi has a limit of 64 hints, and any given gossip stone must not have more than 8 hints.
+There are 18 gossip stones in the world.
+
+The two assignment modes are `split` and `separate`.
+
+### split
+
+- mode: "split"
+- fi_hints (number)
+  - The number of hints that will be given to Fi.
+- hints_per_stone (number)
+  - The number of hints that each gossip stone will have.
+
+The total number of hints will be `fi_hints + (18 - len(banned_stones)) * hints_per_stone`.
+The first generated `fi_hints` hints will be given to Fi, the rest to gossip stones.
+
+For backwards compatibility reasons, the top-level structure may have `fi_hints` and `hints_per_stone` fields,
+in which case the assignment mode will implicitly be "split" and the `assignment` field is not allowed.
+
+### separate
+
+- mode: "separate"
+- total_hints (number)
+  - The total number of hints that will be generated
+- default_assignment (source)
+  - The default source of generated hints
+
+This mode generates `total_hints` hints, and will assign them to the source specified in the distribution data's
+`assignment` field, falling back to `default_assignment`. Hints assigned to `gossip_stone` will be evenly distributed
+across not banned gossip stones.
+
+
 ### Distribution Data
 - order: defines what order hints should have their fixed quantities generated. Types with the same order will be resolved in the order they are listed in the distribution
 - weight: The relative chance that this hint type is randomly selected to be placed
 - fixed: Generates the specified number of hints prior to randomly selecting additional hints by weight. Note that this **does not** guarantee that all these hints will be placed depending on the rest of the distribution. For goal hints, the fixed count is multiplied by the number of required dungeons.
 - copies: Generates the specified number of copies of the hint everytime a hint of this type is generated (both randomly and fixed). Note that this **does not** guarantee that all copies will be placed, but they will all be generated before the next hint is generated.
+- assignment (source): If the assignment mode supports specifying a source, this hint type will be assigned to the given source.
