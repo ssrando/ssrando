@@ -2027,11 +2027,9 @@ class GamePatcher:
                     dungeon_events,
                 )
             )
-            required_dungeon_storyflag_event["flow"][
-                "param2"
-            ] = REQUIRED_DUNGEON_STORYFLAGS[
-                i
-            ]  # param2 is storyflag of event
+            required_dungeon_storyflag_event["flow"]["param2"] = (
+                REQUIRED_DUNGEON_STORYFLAGS[i]
+            )  # param2 is storyflag of event
 
         required_dungeon_count = len(self.placement_file.required_dungeons)
         # set flags for unrequired dungeons beforehand
@@ -2091,9 +2089,11 @@ class GamePatcher:
                         "type": "flowadd",
                         "flow": {
                             "type": "type1",
-                            "next": f"Display Fi Hints Text {ind + 1}"
-                            if ind < (len(fi_hint_chunks) - 1)
-                            else -1,
+                            "next": (
+                                f"Display Fi Hints Text {ind + 1}"
+                                if ind < (len(fi_hint_chunks) - 1)
+                                else -1
+                            ),
                             "param3": 68,
                             "param4": f"Fi Hints Text {ind}",
                         },
@@ -2151,9 +2151,11 @@ class GamePatcher:
                         "type": "type3",
                         "next": f"Display {dungeon} Status Text",
                         "param1": DUNGEONFLAG_INDICES[dungeon],
-                        "param2": DUNGEON_COMPLETE_STORYFLAGS[dungeon]
-                        if dungeon in self.placement_file.required_dungeons
-                        else -1,
+                        "param2": (
+                            DUNGEON_COMPLETE_STORYFLAGS[dungeon]
+                            if dungeon in self.placement_file.required_dungeons
+                            else -1
+                        ),
                         "param3": 71,
                     },
                 }
@@ -2165,9 +2167,11 @@ class GamePatcher:
                     "type": "flowadd",
                     "flow": {
                         "type": "type1",
-                        "next": f"{ALL_DUNGEONS[dungeon_index + 1]} Status Values Command Call"
-                        if dungeon_index < 6
-                        else -1,
+                        "next": (
+                            f"{ALL_DUNGEONS[dungeon_index + 1]} Status Values Command Call"
+                            if dungeon_index < 6
+                            else -1
+                        ),
                         "param3": 68,
                         "param4": f"{dungeon} Status Text",
                     },
@@ -2180,9 +2184,11 @@ class GamePatcher:
                         "name": f"{dungeon} Status Text",
                         "type": "textadd",
                         "unk1": 2,
-                        "text": f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nSmall Keys: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
-                        if dungeon != ET
-                        else f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nKey Pieces: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>",
+                        "text": (
+                            f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nSmall Keys: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
+                            if dungeon != ET
+                            else f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nKey Pieces: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
+                        ),
                     }
                 )
             else:
@@ -2389,9 +2395,11 @@ class GamePatcher:
                     "type": "textadd",
                     "unk1": 5,
                     "unk2": 1,
-                    "text": f"You got a {dungeon_and_color} Small Key!"
-                    if dungeon != LMF
-                    else f"You got a {dungeon_and_color} Small\nKey!",
+                    "text": (
+                        f"You got a {dungeon_and_color} Small Key!"
+                        if dungeon != LMF
+                        else f"You got a {dungeon_and_color} Small\nKey!"
+                    ),
                 }
             )
             self.eventpatches["003-ItemGet"].append(

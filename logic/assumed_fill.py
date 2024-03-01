@@ -30,6 +30,14 @@ class AssumedFill:
             if truly_progress_item[EXTENDED_ITEM[item]]
         }
 
+        if not self.progress_items:
+            self.progress_items = {
+                item: None
+                for item in randosettings.must_be_placed_items
+                | dict.fromkeys(randosettings.may_be_placed_items)
+                if item in PROGRESS_ITEMS
+            }
+
         self.must_be_placed_items = [
             item
             for item in self.randosettings.must_be_placed_items

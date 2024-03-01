@@ -45,14 +45,16 @@ class DNFInventory(LogicExpression):
 
     def __init__(
         self,
-        v: None
-        | Set[Inventory]
-        | Dict[Inventory, Inventory]
-        | bool
-        | Inventory
-        | EXTENDED_ITEM
-        | EXTENDED_ITEM_NAME
-        | Tuple[str, int] = None,
+        v: (
+            None
+            | Set[Inventory]
+            | Dict[Inventory, Inventory]
+            | bool
+            | Inventory
+            | EXTENDED_ITEM
+            | EXTENDED_ITEM_NAME
+            | Tuple[str, int]
+        ) = None,
     ):
         if v is None:
             self.disjunction = {}

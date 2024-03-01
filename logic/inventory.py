@@ -71,13 +71,15 @@ class Inventory:
 
     def __init__(
         self,
-        v: None
-        | Tuple[int, Set[EXTENDED_ITEM]]
-        | Tuple[str, int]
-        | EXTENDED_ITEM_NAME
-        | Set[EXTENDED_ITEM]
-        | EXTENDED_ITEM
-        | Inventory = None,
+        v: (
+            None
+            | Tuple[int, Set[EXTENDED_ITEM]]
+            | Tuple[str, int]
+            | EXTENDED_ITEM_NAME
+            | Set[EXTENDED_ITEM]
+            | EXTENDED_ITEM
+            | Inventory
+        ) = None,
     ):
         if v is None:
             self.bitset = 0

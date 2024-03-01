@@ -282,9 +282,11 @@ class Rando:
         elif self.options["got-dungeon-requirement"] == "Unrequired":
             horde_door_requirement &= DNFInventory(dungeons_req)
 
-        everything_list = {
-            check["req_index"] for check in self.areas.checks.values()
-        } | {EXTENDED_ITEM[self.short_to_full(DEMISE)]}
+        everything_list = (
+            {check["req_index"] for check in self.areas.checks.values()}
+            | {check["req_index"] for check in self.areas.gossip_stones.values()}
+            | {EXTENDED_ITEM[self.short_to_full(DEMISE)]}
+        )
         everything_req = DNFInventory(Inventory(everything_list))
 
         self.endgame_requirements = {
@@ -316,6 +318,15 @@ class Rando:
             else:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
+
+        self.no_logic_requirements = {}
+        if self.options["logic-mode"] == "No Logic":
+            self.no_logic_requirements = {
+                item: DNFInventory(True)
+                for item in EXTENDED_ITEM.items_list
+                if EXTENDED_ITEM[item] != BANNED_BIT
+                if item not in self.placement.unplaced_items
+            }
 
         must_be_placed_items = (
             PROGRESS_ITEMS
@@ -369,12 +380,6 @@ class Rando:
             EIN(trick(trick_name)): DNFInventory(trick_name in enabled_tricks)
             for trick_name in OPTIONS["enabled-tricks-bitless"]["choices"]
         }
-
-        self.no_logic_requirements = {}
-        if self.options["logic-mode"] == "No Logic":
-            self.no_logic_requirements = {
-                item: DNFInventory(True) for item in EXTENDED_ITEM.items_list
-            }
 
         self.placement |= SINGLE_CRYSTAL_PLACEMENT(self.norm, self.areas.checks)
 
