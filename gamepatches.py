@@ -2387,9 +2387,11 @@ class GamePatcher:
                     "type": "textadd",
                     "unk1": 5,
                     "unk2": 1,
-                    "text": f"You got a {dungeon_and_color} Small Key!\nYou now have <r<<numeric arg0> >>of them!"
-                    if dungeon != LMF
-                    else f"You got a {dungeon_and_color} Small\nKey! You now have <r<<numeric arg0> >>of them!",
+                    "text": (
+                        f"You got a {dungeon_and_color} Small Key!\nYou now have <r<<numeric arg0> >>of them!"
+                        if dungeon != LMF
+                        else f"You got a {dungeon_and_color} Small\nKey! You now have <r<<numeric arg0> >>of them!"
+                    ),
                 }
             )
             self.eventpatches["003-ItemGet"].append(
