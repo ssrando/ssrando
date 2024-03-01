@@ -29,11 +29,11 @@ Upper Skyloft - Ring Knight Academy Bell:
   original item: Green Rupee
   type:
   Paths:
-    - stage/F000/r0/l2/Bell/0xFDE8
-    - stage/F000/r0/l4/Bell/0xFDF0
-    - stage/F000/r0/l5/Bell/0xFDFD
-    - stage/F000/r0/l6/Bell/0xFDE8
-    - stage/F000/r0/l7/Bell/0xFDFA
+    - stage/F000/r0/l2/Bell
+    - stage/F000/r0/l4/Bell
+    - stage/F000/r0/l5/Bell
+    - stage/F000/r0/l6/Bell
+    - stage/F000/r0/l7/Bell
 Upper Skyloft - Chest near Goddess Statue:
   original item: Red Rupee
   type:
