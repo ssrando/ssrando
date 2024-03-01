@@ -1226,9 +1226,12 @@ def rando_patch_tadtone_group(bzs: OrderedDict, itemid: int, groupId: str):
     for clef in clefs:
         clef["anglez"] = mask_shift_set(clef["anglez"], 0xFFFF, 0, itemid)
 
+
 def rando_patch_bell(bzs: OrderedDict, itemid: int, object_id: str):
     object_id = int(object_id, 0)
-    bell = next(filter(lambda x: x["name"] == "Bell" and x["id"] == object_id, bzs["OBJ "]))
+    bell = next(
+        filter(lambda x: x["name"] == "Bell" and x["id"] == object_id, bzs["OBJ "])
+    )
     bell["params1"] = mask_shift_set(bell["params1"], 0xFF, 0, itemid)
 
 
