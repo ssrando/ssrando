@@ -30,7 +30,11 @@ main.dol:
   do_er_fixes: 0x80678F80
   allow_set_respawn_info: 0x806792A8
   get_glow_color: 0x806792D0
-  FORCE_MOGMA_CAVE_DIVE: 0x8067943A
+  has_upgraded_skyward_strike: 0x80679334
+  has_fast_air_meter_drain: 0x80679344
+  has_heart_drops_enabled: 0x80679354
+  FORCE_MOGMA_CAVE_DIVE: 0x8067946A
+  HERO_MODE_OPTIONS: 0x8067946B
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340

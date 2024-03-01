@@ -371,6 +371,9 @@ b checkStoryflagIsSet
 .global do_er_fixes
 .global allow_set_respawn_info
 .global get_glow_color
+.global has_upgraded_skyward_strike
+.global has_fast_air_meter_drain
+.global has_heart_drops_enabled
 
 .close
 
