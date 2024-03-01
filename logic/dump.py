@@ -34,8 +34,10 @@ def dungeon(pool, short_to_full):
     exit_from_dungeon = DUNGEON_MAIN_EXITS[pool]
 
     return {
-        "exit_from_outside": [short_to_full(e) for e in exit_to_dungeon]
-        if len(exit_to_dungeon) > 1
-        else short_to_full(exit_to_dungeon[0]),
+        "exit_from_outside": (
+            [short_to_full(e) for e in exit_to_dungeon]
+            if len(exit_to_dungeon) > 1
+            else short_to_full(exit_to_dungeon[0])
+        ),
         "exit_from_inside": short_to_full(exit_from_dungeon),
     }
