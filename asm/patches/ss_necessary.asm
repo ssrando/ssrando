@@ -772,6 +772,34 @@ li r4, 0x39A
 .open "d_a_obj_bellNP.rel"
 .org 0xCE0 ; function called when transitioning to the state after dropping rupee
 b try_end_pumpkin_archery
+
+; (80dba55c - 80db9860) + 130
+.org 0xD98 ; 0x80dba4c8
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
+li r4, 101 ; sceneflag given when collecting the bell item
+bl SceneflagManager__checkTempOrSceneflag
+li r5, 2 ; green rupee
+cmpwi r3, 0
+bne skip_itemid_from_params1
+lbz r5, 0x7(r30) ; least sig byte of params1
+
+skip_itemid_from_params1:
+li r3, 0 ; academy bell is always in room 0
+; 0xFF1D9600 ; item actor params1 (will set sceneflag 101 on collection)
+lis r4, 0xFF1D
+ori r4, r4, 0x9600
+or r4, r4, r5 ; add itemid from bell params1 to item actor params1
+addi r5, r1, 0x14 ; get pos into r5 (from ghidra)
+addi r6, r1, 0xC ; get rot into r6 (from ghidra)
+li r7, 0 ; no scale needed
+li r8, -1 ; item actor params2
+li r9, 0
+bl AcItem__spawnItem
+li r4, 0x4040 ; most sig bytes of float 3.0
+sth r4, 0x144(r3)
+li r4, 1
+stb r4, 0xD4F(r3) ; prevent timed despawn
+b 0xE2C ; 0x80dba55c (return)
 .close
 
 .open "d_a_obj_light_lineNP.rel"
