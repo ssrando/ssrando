@@ -1,0 +1,25 @@
+name: Check Logic Dump Contents
+on:
+  - push
+  - pull_request
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Setup poetry
+        run: python3 -mpip install poetry
+      - name: Install dependencies
+        run: poetry install
+        env:
+          POETRY_VIRTUALENVS_CREATE: false
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install ffmpeg libsm6 libxext6  -y
+      - name: Create dump file
+        run: python3 randoscript.py --noui --dump dump-check.yaml
+      - name: Check contents
+        run: diff dump.yaml dump-check.yaml

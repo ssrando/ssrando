@@ -15,7 +15,11 @@
     {"name": "Progressive Mitts #1",   "amount": 1}
   ],
   "removed_items": [
-    "Key Piece #0", "Key Piece #1", "Key Piece #2", "Key Piece #3", "Key Piece #4"
+    {"name": "Key Piece #0", "type": "sots"},
+    {"name": "Key Piece #1", "type": "sots"},
+    {"name": "Key Piece #2", "type": "sots"},
+    {"name": "Key Piece #3", "type": "sots"},
+    {"name": "Key Piece #4", "type": "sots"}
   ],
   "dungeon_sots_limit": 1,
   "dungeon_barren_limit": 1,

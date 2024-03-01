@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'tricks_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.1
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -58,13 +58,13 @@ class Ui_TricksDialog(object):
 
         self.vlay_tricks_controls = QVBoxLayout()
         self.vlay_tricks_controls.setObjectName(u"vlay_tricks_controls")
-        self.vspace_tricks_controls_upper = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.vspace_tricks_controls_upper = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.vlay_tricks_controls.addItem(self.vspace_tricks_controls_upper)
 
         self.disable_trick = QPushButton(TricksDialog)
         self.disable_trick.setObjectName(u"disable_trick")
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Expanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.disable_trick.sizePolicy().hasHeightForWidth())
@@ -72,7 +72,7 @@ class Ui_TricksDialog(object):
 
         self.vlay_tricks_controls.addWidget(self.disable_trick)
 
-        self.vspace_tricks_controls_middle = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.vspace_tricks_controls_middle = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.vlay_tricks_controls.addItem(self.vspace_tricks_controls_middle)
 
@@ -83,7 +83,7 @@ class Ui_TricksDialog(object):
 
         self.vlay_tricks_controls.addWidget(self.enable_trick)
 
-        self.vspace_tricks_controls_lower = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.vspace_tricks_controls_lower = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.vlay_tricks_controls.addItem(self.vspace_tricks_controls_lower)
 
@@ -141,9 +141,6 @@ class Ui_TricksDialog(object):
         self.label_for_disabled_tricks.setText(QCoreApplication.translate("TricksDialog", u"Disabled Tricks", None))
         self.disabled_tricks_free_search.setText("")
         self.disabled_tricks_free_search.setPlaceholderText(QCoreApplication.translate("TricksDialog", u"Search", None))
-#if QT_CONFIG(tooltip)
-        self.disabled_tricks.setToolTip(QCoreApplication.translate("TricksDialog", u"test", None))
-#endif // QT_CONFIG(tooltip)
         self.disable_trick.setText(QCoreApplication.translate("TricksDialog", u"Disable\n"
 "<--", None))
         self.enable_trick.setText(QCoreApplication.translate("TricksDialog", u"Enable\n"

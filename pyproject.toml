@@ -4,7 +4,7 @@ extend-exclude = 'gui\/(.*\/)*ui_.*.py'
 
 [tool.poetry]
 name = "ssrando"
-version = "2.1.1"
+version = "2.2.0"
 description = "Skyward Sword Randomizer"
 authors = []
 readme = "README.md"
@@ -12,20 +12,20 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
-nlzss11 = "^1.5"
+nlzss11 = "^1.6"
 PyYAML = "^6.0"
-PySide6 = "^6.4.3"
-lark = "^1.1.5"
+PySide6 = "^6.6.2"
+lark = "^1.1.9"
 toml = "^0.10.2"
 pyqtdarktheme = "^2.1.0"
 pyclip = "^0.7.0"
-opencv-python = "^4.7.0.68"
-numpy = "^1.24.2"
+opencv-python = "^4.9.0.80"
+numpy = "^1.26.4"
 disc-riider-py = "==0.3.1"
 
 [tool.poetry.group.build.dependencies]
-pyinstaller = "^5.9.0"
+pyinstaller = "^6.4.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.1.0"
-pytest = "^7.2.2"
+black = "^24.2.0"
+pytest = "^8.0.2"

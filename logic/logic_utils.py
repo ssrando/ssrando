@@ -27,6 +27,7 @@ class AdditionalInfo:
     randomized_dungeon_entrance: dict[str, str]
     randomized_trial_entrance: dict[str, str]
     randomized_start_entrance: dict[str, str]
+    randomized_start_statues: dict[str, str]
     known_locations: List[EIN]
 
 
@@ -54,6 +55,7 @@ class LogicUtils(Logic):
         self.randomized_dungeon_entrance = additional_info.randomized_dungeon_entrance
         self.randomized_trial_entrance = additional_info.randomized_trial_entrance
         self.randomized_start_entrance = additional_info.randomized_start_entrance
+        self.randomized_start_statues = additional_info.randomized_start_statues
         self.known_locations = additional_info.known_locations
 
     def check(self, useroutput):
@@ -203,7 +205,14 @@ class LogicUtils(Logic):
         ]
 
     def get_useful_items(self, bit=EVERYTHING_UNBANNED_BIT):
-        return self._get_useful_items(bit)
+        res = self._get_useful_items(bit)
+        if not res:
+            res = [
+                loc
+                for i in self.full_inventory.intset
+                if (loc := EXTENDED_ITEM.get_item_name(i)) in PROGRESS_ITEMS
+            ]
+        return res
 
     @cache
     def locations_by_hint_region(self, region):

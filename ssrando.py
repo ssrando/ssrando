@@ -195,6 +195,7 @@ class Randomizer(BaseRandomizer):
                 randomized_dungeon_entrance=self.logic.randomized_dungeon_entrance,
                 randomized_trial_entrance=self.logic.randomized_trial_entrance,
                 randomized_start_entrance=self.logic.randomized_start_entrance,
+                randomized_start_statues=self.logic.randomized_start_statues,
             )
             with log_address.open("w") as f:
                 json.dump(dump, f, indent=2)
@@ -214,6 +215,7 @@ class Randomizer(BaseRandomizer):
                     randomized_dungeon_entrance=self.logic.randomized_dungeon_entrance,
                     randomized_trial_entrance=self.logic.randomized_trial_entrance,
                     randomized_start_entrance=self.logic.randomized_start_entrance,
+                    randomized_start_statues=self.logic.randomized_start_statues,
                 )
         if not self.dry_run:
             GamePatcher(
@@ -238,9 +240,10 @@ class Randomizer(BaseRandomizer):
         plcmt_file.dungeon_connections = self.logic.randomized_dungeon_entrance
         plcmt_file.trial_connections = self.logic.randomized_trial_entrance
         plcmt_file.start_entrance = self.logic.randomized_start_entrance
+        plcmt_file.start_statues = self.logic.randomized_start_statues
         plcmt_file.hash_str = self.randomizer_hash
         plcmt_file.hints = {
-            k: v.to_ingame_text(lambda s: self.areas.prettify(s, custom=True))
+            k: v.to_ingame_text(lambda s: self.areas.prettify(s))
             for (k, v) in self.logic.placement.hints.items()
         }
         plcmt_file.item_locations = self.logic.placement.locations

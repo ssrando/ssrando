@@ -248,7 +248,7 @@
   type: boolean
   default: true
   help: "If enabled, the extra progressive items upgradeable in the Scrap Shop in vanilla will be shuffled.
-        Includes: Quick Beetle, Tough Beetle, Iron Bow, Sacred Bow, Big Bug Net and Scatershot.
+        Includes: Quick Beetle, Tough Beetle, Iron Bow, Sacred Bow, Big Bug Net and Scattershot.
         Note, there are no random items obtainable by talking to Gondo at the Scrap Shop."
   ui: option_gondo_upgrades
 - name: Gate of Time Starting State
@@ -428,6 +428,7 @@
     - Lightning Node End with Bombs  # Is it worth
     - Cactus Bomb Whip
     - Skipper's Retreat Fast Clawshots
+    - Pirate Stronghold - Beetle Pillar Checks
     ## Skyview
     - Skyview - Spider Roll
     - Skyview Slingshot Shot
@@ -500,10 +501,10 @@
     - Fix BiT Crashes
   default: Vanilla
   help: "Changes how the Back in Time (BiT) glitch works.
-        Disable BiT: Makes it impossible to activate BiT.
-        Vanilla: Keeps the vanilla game behaviour where BiT is possible but Eldin BiT (and others) will still crash.
-        Fix BiT Crashes: Does not load some arcs to make all areas accessible in BiT.
-        WARNING: All 3 files must be filled BEFORE activating BiT otherwise this will not work."
+        **Disable BiT**: Makes it impossible to activate BiT.
+        **Vanilla**: Keeps the vanilla game behaviour where BiT is possible but Eldin BiT (and others) will still crash.
+        **Fix BiT Crashes**: Does not load some arcs to make all areas accessible in BiT.
+        **WARNING**: All 3 files must be filled BEFORE activating BiT otherwise this will not work."
   ui: option_bit_patches
 - name: Output placement file
   command: out-placement-file
@@ -802,6 +803,7 @@
     - 2D Dowsing & Fi Hints
     - Boss Keysanity Fi Hints
     - Strong Dowsing All Dungeons
+    - Remlits Tournament
     - Custom
   default: Balanced
   help: "Determines the distribution of hints that appear on Gossip Stones.
@@ -1098,3 +1100,19 @@
   bits: 4
   help: How many treasures per Silent Realm you want to randomize.
   ui: option_trial_treasure_amount
+- name: Cryptic Location Hints
+  command: cryptic-location-hints
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: If enabled, location hints (always, sometimes, & random hints) will display special flavor text
+        if they have it (such as "drawing on a magical wall" instead of Gorko's Goddess Wall Reward).
+  ui: option_cryptic_location_hints
+- name: Random Starting Statues
+  command: random-start-statues
+  type: boolean
+  default: false
+  help: If enabled, the starting statue for each surface region will be randomized. All overworld statues
+        except Inside the Volcano and Inside Fire Sanctuary may be chosen.
+  ui: option_random_start_statues

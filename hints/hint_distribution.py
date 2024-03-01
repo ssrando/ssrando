@@ -10,6 +10,7 @@ from logic.constants import *
 from hints.hint_types import *
 from options import Options
 from logic.randomize import LogicUtils
+from logic.fill_algo_common import UserOutput
 
 HINTABLE_ITEMS = (
     dict.fromkeys(
@@ -153,6 +154,7 @@ class HintDistribution:
 
     def start(
         self,
+        useroutput: UserOutput,
         areas: Areas,
         options: Options,
         logic: LogicUtils,
@@ -160,6 +162,7 @@ class HintDistribution:
         unhintable: List[EIN],
         check_hint_status: Dict[EIN, Literal[None, "sometimes", "always"]],
     ):
+        self.useroutput = useroutput
         self.rng = rng
         self.logic = logic
         self.areas = areas
@@ -223,15 +226,16 @@ class HintDistribution:
             self.goal_locations.append(goal_locations)
 
         self.hintable_items = list(HINTABLE_ITEMS)
+        self.removed_sots_items = []
         for item in self.added_items:
             self.hintable_items.extend([item["name"]] * item["amount"])
         if SEA_CHART in self.logic.get_useful_items():
             self.hintable_items.append(SEA_CHART)
         for item in self.removed_items:
-            if (loc := self.logic.placement.items[item]) not in self.hinted_locations:
-                self.hinted_locations.append(loc)
-            if item in self.hintable_items:
-                self.hintable_items.remove(item)
+            if item["type"] == "sots":
+                self.removed_sots_items.append(item["name"])
+            if (item["name"] in self.hintable_items) and (item["type"] == "item"):
+                self.hintable_items.remove(item["name"])
         self.rng.shuffle(self.hintable_items)
 
         region_barren, nonprogress = self.logic.get_barren_regions()
@@ -295,6 +299,12 @@ class HintDistribution:
             if (hint := func()) is not None:
                 self.counts_by_type[hint_type] += 1
                 hints.extend([hint] * self.distribution[hint_type]["copies"])
+            else:
+                self.weights[self.weighted_types.index(hint_type)] = 0
+                if not sum(self.weights):
+                    raise self.useroutput.GenerationFailed(
+                        f"Could not generate enough hints. This may be because the settings are too restrictive. Try changing the hint distribution."
+                    )
 
         hints = hints[:count]
         fi_hints, stone_hints = hints[: self.fi_hints], hints[self.fi_hints :]
@@ -306,7 +316,10 @@ class HintDistribution:
 
         loc = self.always_hints.pop()
         item = self.logic.placement.locations[loc]
-        text = self.areas.checks[loc].get("text")
+        if not self.options["cryptic-location-hints"]:
+            text = None
+        else:
+            text = self.areas.checks[loc].get("text")
 
         if loc in self.hinted_locations:
             return self._create_always_hint()
@@ -330,7 +343,10 @@ class HintDistribution:
 
         loc = self.sometimes_hints.pop()
         item = self.logic.placement.locations[loc]
-        text = self.areas.checks[loc].get("text")
+        if not self.options["cryptic-location-hints"]:
+            text = None
+        else:
+            text = self.areas.checks[loc].get("text")
 
         if loc in self.hinted_locations:
             return self._create_sometimes_hint()
@@ -344,7 +360,10 @@ class HintDistribution:
 
         item = self.required_boss_keys.pop()
         loc = self.logic.placement.items[item]
-        text = self.areas.checks[loc].get("text")
+        if not self.options["cryptic-location-hints"]:
+            text = None
+        else:
+            text = self.areas.checks[loc].get("text")
 
         if loc in self.hinted_locations:
             return self._create_bk_hint()
@@ -385,7 +404,10 @@ class HintDistribution:
 
         loc = self.rng.choice(all_locations_without_hint)
         item = self.logic.placement.locations[loc]
-        text = self.areas.checks[loc].get("text")
+        if not self.options["cryptic-location-hints"]:
+            text = None
+        else:
+            text = self.areas.checks[loc].get("text")
         self.hinted_locations.append(loc)
 
         return LocationHint("random", loc, item, text)
@@ -409,6 +431,9 @@ class HintDistribution:
             return self._create_sots_goal_hint(goal_mode)
 
         zone, loc, item = locs.pop()
+
+        if item in self.removed_sots_items:
+            return self._create_sots_goal_hint(goal_mode)
 
         if loc in self.hinted_locations:
             return self._create_sots_goal_hint(goal_mode)

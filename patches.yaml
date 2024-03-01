@@ -29,13 +29,13 @@ global:
     - 115 # Full Lake Floria map
     - 129 # Updated Lanayru Desert map
     - 199 # talked to sword instructor after practice sword chest
-    - 804 # eldin entrance statue
     - 386 # first part of bertie's text seen
     - 60 # Fi text before Yerbal
     # - 168 # Boko Base map, removed cos it doesn't work as intended
     - 178 # Cutscene showing off Bokoblin Base with Plats
     - 81  # Tadtone Dowsing
     - 82  # Tadtones music scroll
+    - 108 # Heart Dowsing
     # Cutscene flags
     ## Surface
     - 137 # Sealed Grounds Intro Cutscene (enable statue select from start)
@@ -155,7 +155,6 @@ global:
       - 7  # pushed first minecart to end
       - 50 # Enter Lanayru Mining Facility (LMF) Cutscene
       - 55 # Lanayru Desert Intro Cutscene
-      - 68 # desert statue checked
       - onlyif: Option "open-lmf" Is "Open"
         flag: 30 # LMF Rises CS
       - onlyif: Option "open-lmf" Is "Open"
@@ -1807,6 +1806,45 @@ F100: # Faron main area
     objtype: PLY
     object:
       play_cutscene: -1
+  # Copied from HD
+  - name: Prevent Fence Hop Softlock 1
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFC4
+      params2: 0xFFFFFFFF
+      posx: -2900.0
+      posy: -423.59515380859375
+      posz: 9900.0
+      sizex: 3095.841552734375
+      sizey: 2680.0
+      sizez: 940.346923828125
+      anglex: 0
+      angley: 51976
+      anglez: 0
+      id: 0xFDFE
+      name: ActTag
+  - name: Prevent Fence Hop Softlock 2
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFC4
+      params2: 0xFFFFFFFF
+      posx: -2100.0
+      posy: -423.59515380859375
+      posz: 11000.0
+      sizex: 3231.169189453125
+      sizey: 2680.0
+      sizez: 1064.70703125
+      anglex: 0
+      angley: 57624
+      anglez: 0
+      id: 0xFDFF
+      name: ActTag
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride

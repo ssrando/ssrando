@@ -5,5 +5,8 @@
     "group:allNonMajor",
     "schedule:monthly"
   ],
+  "ignoreDeps": [
+    "python"
+  ],
   "updateNotScheduled": false
 }

@@ -189,6 +189,7 @@ Main:
     exits:
       Statue: Unlock Statue
       Boss Door: Fire Sanctuary Boss Key
+      West of Boss Door: Nothing
       Lizalfos Fight Room: Nothing
       Past Bars: Past Bars - Unlock Way to Front
     locations:

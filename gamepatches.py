@@ -1435,6 +1435,7 @@ class GamePatcher:
         self.add_keysanity()
         self.add_demises()
         self.shuffle_trial_objects()
+        self.patch_random_starting_statue_flags()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
@@ -1546,18 +1547,6 @@ class GamePatcher:
                 SWORD_COUNT[self.placement_file.options["got-sword-requirement"]] - 1,
             ]
         }
-
-        # Hero Mode Changes
-        if self.placement_file.options["fast-air-meter"] == False:
-            self.add_asm_patch("air_meter_normalmode")
-        if self.placement_file.options["upgraded-skyward-strike"]:
-            self.add_asm_patch("skyward_strike_heromode")
-        else:
-            self.add_asm_patch("skyward_strike_normalmode")
-        if self.placement_file.options["enable-heart-drops"]:
-            self.add_asm_patch("heart_pickups_normalmode")
-        else:
-            self.add_asm_patch("heart_pickups_heromode")
 
         # Damage Multiplier patch requires input, replacing one line
         # muli r27, r27, (multiplier)
@@ -2038,11 +2027,9 @@ class GamePatcher:
                     dungeon_events,
                 )
             )
-            required_dungeon_storyflag_event["flow"][
-                "param2"
-            ] = REQUIRED_DUNGEON_STORYFLAGS[
-                i
-            ]  # param2 is storyflag of event
+            required_dungeon_storyflag_event["flow"]["param2"] = (
+                REQUIRED_DUNGEON_STORYFLAGS[i]
+            )  # param2 is storyflag of event
 
         required_dungeon_count = len(self.placement_file.required_dungeons)
         # set flags for unrequired dungeons beforehand
@@ -2069,8 +2056,22 @@ class GamePatcher:
             required_dungeons_text = break_lines(", ".join(colorful_dungeon_text), 44)
 
         fi_hint_chunks = []
-        for i in range(0, len(self.placement_file.hints[FI_HINTS_KEY]), 8):
-            fi_hint_chunks.append(self.placement_file.hints["Fi"][i : i + 8])
+        current_chunk = []
+        current_chunk_len = 0
+        for hint in self.placement_file.hints[FI_HINTS_KEY]:
+            cur_hint_len = len(hint)
+            # there is a limit to how long a single text can be, so
+            # break it up
+            if cur_hint_len + current_chunk_len > 700:
+                fi_hint_chunks.append(current_chunk)
+                current_chunk = []
+                current_chunk_len = 0
+            current_chunk.append(hint)
+            current_chunk_len += cur_hint_len
+        if current_chunk:
+            fi_hint_chunks.append(current_chunk)
+
+        # print([len(break_and_make_multiple_textboxes(hints)) for hints in fi_hint_chunks])
 
         self.eventpatches["006-8KenseiNormal"].append(
             {
@@ -2088,9 +2089,11 @@ class GamePatcher:
                         "type": "flowadd",
                         "flow": {
                             "type": "type1",
-                            "next": f"Display Fi Hints Text {ind + 1}"
-                            if ind < (len(fi_hint_chunks) - 1)
-                            else -1,
+                            "next": (
+                                f"Display Fi Hints Text {ind + 1}"
+                                if ind < (len(fi_hint_chunks) - 1)
+                                else -1
+                            ),
                             "param3": 68,
                             "param4": f"Fi Hints Text {ind}",
                         },
@@ -2148,9 +2151,11 @@ class GamePatcher:
                         "type": "type3",
                         "next": f"Display {dungeon} Status Text",
                         "param1": DUNGEONFLAG_INDICES[dungeon],
-                        "param2": DUNGEON_COMPLETE_STORYFLAGS[dungeon]
-                        if dungeon in self.placement_file.required_dungeons
-                        else -1,
+                        "param2": (
+                            DUNGEON_COMPLETE_STORYFLAGS[dungeon]
+                            if dungeon in self.placement_file.required_dungeons
+                            else -1
+                        ),
                         "param3": 71,
                     },
                 }
@@ -2162,9 +2167,11 @@ class GamePatcher:
                     "type": "flowadd",
                     "flow": {
                         "type": "type1",
-                        "next": f"{ALL_DUNGEONS[dungeon_index + 1]} Status Values Command Call"
-                        if dungeon_index < 6
-                        else -1,
+                        "next": (
+                            f"{ALL_DUNGEONS[dungeon_index + 1]} Status Values Command Call"
+                            if dungeon_index < 6
+                            else -1
+                        ),
                         "param3": 68,
                         "param4": f"{dungeon} Status Text",
                     },
@@ -2177,9 +2184,11 @@ class GamePatcher:
                         "name": f"{dungeon} Status Text",
                         "type": "textadd",
                         "unk1": 2,
-                        "text": f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nSmall Keys: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
-                        if dungeon != ET
-                        else f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nKey Pieces: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>",
+                        "text": (
+                            f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nSmall Keys: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
+                            if dungeon != ET
+                            else f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nKey Pieces: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
+                        ),
                     }
                 )
             else:
@@ -3100,6 +3109,33 @@ class GamePatcher:
         dol.write_data(
             write_u8, 0x802DA0EB, start_entrance["day-night"] & 1
         )  # force day when value is >1
+
+        force_mogma_cave_dive = (
+            start_entrance["stage"] == "F210" and start_entrance["entrance"] == 0
+        )
+
+        dol.write_data(
+            write_u8,
+            self.custom_symbols["main.dol"]["FORCE_MOGMA_CAVE_DIVE"],
+            int(force_mogma_cave_dive),
+        )
+
+        # Hero Mode Changes
+        fine_grained_hero_mode_options = 0
+
+        if self.placement_file.options["fast-air-meter"]:
+            fine_grained_hero_mode_options |= 0b010
+        if self.placement_file.options["upgraded-skyward-strike"]:
+            fine_grained_hero_mode_options |= 0b001
+        if not self.placement_file.options["enable-heart-drops"]:
+            fine_grained_hero_mode_options |= 0b100
+
+        dol.write_data(
+            write_u8,
+            self.custom_symbols["main.dol"]["HERO_MODE_OPTIONS"],
+            fine_grained_hero_mode_options,
+        )
+
         dol.save_changes()
         write_bytes_create_dirs(
             self.patcher.modified_extract_path / "DATA" / "sys" / "main.dol",
@@ -3277,3 +3313,18 @@ class GamePatcher:
         ).read_bytes()
         arc.set_file_data("timg/tr_dauzTarget_18.tpl", sandshipdata)
         do_button_path.write_bytes(arc.to_buffer())
+
+    def patch_random_starting_statue_flags(self):
+        for statue in self.placement_file.start_statues.values():
+            flag_space = statue[1].get("flag-space")
+            flag = statue[1].get("flag")
+            assert flag_space is not None
+            assert flag is not None
+            if flag_space == "Story":
+                # Add start storyflag
+                self.startstoryflags.append(flag)
+            else:
+                # Add start sceneflag
+                self.patches["global"]["startsceneflags"].setdefault(
+                    flag_space, []
+                ).append(flag)

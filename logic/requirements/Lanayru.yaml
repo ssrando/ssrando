@@ -56,7 +56,7 @@ Mine:
       exits:
         Exit to Desert: Nothing
       locations:
-        Blow up Rock on Track: Bomb Bag & Lanayru Mine - Quick Bomb Trick
+        End - Blow up Rock on Track: Bomb Bag & Lanayru Mine - Quick Bomb Trick
 
 Desert:
   toplevel-alias: Lanayru Desert
@@ -314,6 +314,7 @@ Temple of Time:
     exits:
       South East: Distance Activator
       North Exit to Desert: Nothing
+    locations:
       General - Ancient Flower Farming: Distance Activator # for timeshift stone
 
 Lanayru Silent Realm:
@@ -458,8 +459,8 @@ Lanayru Sand Sea:
       Inside the Shark Head: Inside - Finish Minidungeon
     locations:
       Unlock Statue: Nothing
-      Rupee on West Sea Pillar: Quick Beetle
-      Rupee on East Sea Pillar: Quick Beetle
+      Rupee on West Sea Pillar: (Beetle & Pirate Stronghold - Beetle Pillar Checks Trick) | Quick Beetle
+      Rupee on East Sea Pillar: (Beetle & Pirate Stronghold - Beetle Pillar Checks Trick) | Quick Beetle
       Rupee on Bird Statue Pillar or Nose: Beetle
 
     # Inside - Finish Minidungeon means the Shark Head is raised

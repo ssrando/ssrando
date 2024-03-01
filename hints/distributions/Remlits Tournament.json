@@ -1,0 +1,61 @@
+{
+  "fi_hints": 12,
+  "hints_per_stone": 0,
+  "banned_stones": [],
+  "added_locations": [
+    {"location": "Upper Skyloft - Fledge's Crystals",                     "type": "always"},
+    {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack", "type": "always"},
+    {"location": "Faron Woods - Item behind Lower Bombable Rock",         "type": "sometimes"},
+    {"location": "Earth Temple - Rupee in Lava Tunnel",                   "type": "sometimes"},
+    {"location": "Ancient Cistern - Rupee under Lilypad",                 "type": "sometimes"},
+    {"location": "Fire Sanctuary - Rescue Second Trapped Mogma",          "type": "sometimes"},
+    {"location": "Lanayru Mining Facility - Boss Key Chest",              "type": "sometimes"},
+    {"location": "Lanayru Gorge - Digging Spot",                          "type": "sometimes"}
+  ],
+  "removed_locations": [
+    "Thunderhead - Isle of Songs - Strike Crest with White Sword",
+    "Faron Woods - Chest inside Great Tree",
+    "Lake Floria - Lake Floria Chest",
+    "Eldin Volcano - Digging Spot behind Boulder on Sandy Slope",
+    "Lanayru Desert - Chest on top of Lanayru Mining Facility",
+    "Skyview - Chest behind Three Eyes",
+    "Earth Temple - Chest in West Room",
+    "Ancient Cistern - Chest in East Part",
+    "Sandship - Boss Key Chest",
+    "Lanayru Gorge - Thunder Dragon's Reward",
+    "Fire Sanctuary - Chest after Bombable Wall",
+    "Sandship - Heart Container",
+    "Lanayru Desert - Fire Node - Shortcut Chest",
+    "Lanayru Desert - Secret Passageway Chest",
+    "Batreaux's House - 50 Crystals"
+  ],
+  "added_items": [
+    {"name": "Triforce of Courage", "amount": 1},
+    {"name": "Triforce of Wisdom", "amount": 1},
+    {"name": "Triforce of Power", "amount": 1}
+],
+  "removed_items": [
+    {"name": "Clawshots", "type": "item"},
+    {"name": "Emerald Tablet", "type": "item"},
+    {"name": "Ruby Tablet", "type": "item"},
+    {"name": "Amber Tablet", "type": "item"},
+    {"name": "Water Dragon's Scale", "type": "item"},
+    {"name": "Fireshield Earrings", "type": "item"},
+    {"name": "Progressive Beetle #0", "type": "item"},
+    {"name": "Progressive Beetle #1", "type": "item"},
+    {"name": "Progressive Beetle #2", "type": "item"},
+    {"name": "Progressive Beetle #3", "type": "item"}
+],
+  "dungeon_sots_limit": 1,
+  "dungeon_barren_limit": 1,
+  "distribution": {
+    "always":    {"order": 0, "weight": 0.00, "fixed": 0, "copies": 1},
+    "barren":    {"order": 1, "weight": 0.00, "fixed": 3, "copies": 1},
+    "goal":      {"order": 2, "weight": 0.00, "fixed": 1, "copies": 1},
+    "sots":      {"order": 3, "weight": 0.00, "fixed": 0, "copies": 1},
+    "item":      {"order": 4, "weight": 0.00, "fixed": 2, "copies": 1},
+    "sometimes": {"order": 5, "weight": 100.00, "fixed": 6, "copies": 1},
+    "random":    {"order": 6, "weight": 0.01, "fixed": 0, "copies": 1},
+    "junk":      {"order": 7, "weight": 0.00, "fixed": 0, "copies": 1}
+  }
+}

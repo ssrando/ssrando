@@ -138,6 +138,8 @@ ELDIN_PROVINCE = "Eldin Province"
 LANAYRU_PROVINCE = "Lanayru Province"
 THE_SKY = "The Sky"
 
+ALL_SURFACE_PROVINCES = [FARON_PROVINCE, ELDIN_PROVINCE, LANAYRU_PROVINCE]
+
 TABLET_TO_PROVINCE = {
     EMERALD_TABLET: FARON_PROVINCE,
     RUBY_TABLET: ELDIN_PROVINCE,
@@ -735,7 +737,7 @@ RUPEE_CHECKS = [
     "Ancient Cistern - First Rupee in East Part in Short Tunnel",
     "Ancient Cistern - Second Rupee in East Part in Short Tunnel",
     "Ancient Cistern - Third Rupee in East Part in Short Tunnel",
-    # "Ancient Cistern - Rupee under Lilypad",
+    "Ancient Cistern - Rupee under Lilypad",
     "Ancient Cistern - Rupee in East Hand",
     "Ancient Cistern - Rupee in West Hand",
     "Sky Keep - Rupee in Fire Sanctuary Room in Alcove",
@@ -848,7 +850,13 @@ ITEM_STORY_FLAGS = {
     PROGRESSIVE_BOW: [944, 945, 946],  # Bow, Iron, Sacred
     PROGRESSIVE_SLINGSHOT: [947, 948],  # Slingshot, Scatershot
     PROGRESSIVE_BUG_NET: [949, 950],  # Bug Net, Big Bug Net
-    PROGRESSIVE_POUCH: [931, 932, 932, 932, 932]  # Adventure Pouch, Pouch Expansion * 4
+    PROGRESSIVE_POUCH: [
+        931,
+        932,
+        932,
+        932,
+        932,
+    ],  # Adventure Pouch, Pouch Expansion * 4
     # SAILCLOTH: 32
 }
 

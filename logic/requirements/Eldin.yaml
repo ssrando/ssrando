@@ -23,6 +23,8 @@ Volcano:
   First Room: # Until the rocks
     exits:
       East: Blow up Rock to East
+      Entry: Nothing
+      Exit to Bokoblin Base: Nothing
     locations:
       Chest behind Bombable Wall in First Room: Nothing
       Rupee behind Bombable Wall in First Room: Nothing
@@ -38,8 +40,8 @@ Volcano:
       First Vent from Mogma Turf: Impossible
       First Room: First Room - Blow up Rock to East
       Past Mogma Turf: Past Mogma Turf - Unlock Shortcut to Pre Turf
-      Exit to Bokoblin Base: Nothing
     locations:
+      Entry - Rupee on Ledge before First Room: Beetle
       First Room - Blow up Rock to East: Bomb Bag # There's a beetle void plane
       Unlock Statue: Nothing
       Goddess Cube near Mogma Turf Entrance: Goddess Sword
@@ -59,9 +61,7 @@ Volcano:
     locations:
       Unlock Shortcut to Pre Turf: Nothing
       Watch Bridge Cutscene: Nothing
-      Southeast Rupee above Mogma Turf Entrance: Beetle
-      North Rupee above Mogma Turf Entrance: Beetle
-      Goddess Cube near Mogma Turf Entrance: Goddess Sword
+      # can get cube and mogma turf entrance rupees from here, but getting to East from here requires nothing
 
   Ascent:
     exits:
@@ -273,7 +273,7 @@ Bokoblin Base:
     locations:
       Chest near Bone Bridge: Can bypass Boko Base Watch Tower | Mogma Mitts | Gust Bellows
       Chest on Cliff: (Can bypass Boko Base Watch Tower | Mogma Mitts) & Gust Bellows
-      Goddess Cube near Mogma Turf Entrance: Goddess Sword
+      Volcano - Goddess Cube near Mogma Turf Entrance: Goddess Sword
   
   Before Drawbridge:
     exits:
@@ -295,7 +295,7 @@ Bokoblin Base:
       Before Drawbridge: Nothing
       Volcano East: Nothing
     locations:
-      Gossip Stone in Lower Platform Cave: Nothing
+      Volcano - Gossip Stone in Lower Platform Cave: Nothing
   
   Outside Earth Temple:
     exits:
@@ -303,15 +303,15 @@ Bokoblin Base:
       Bokoblin Base - Upper Platform Cave: Nothing
     locations:
       Chest East of Earth Temple Entrance: Nothing
-      Goddess Cube East of Earth Temple Entrance: Goddess Sword
+      Volcano - Goddess Cube East of Earth Temple Entrance: Goddess Sword
       Chest West of Earth Temple Entrance: (Slingshot | Bow | Bomb Bag | Goddess Sword) & Can bypass Boko Base Watch Tower & Mogma Mitts
-      Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can bypass Boko Base Watch Tower & Mogma Mitts
+      Volcano - Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can bypass Boko Base Watch Tower & Mogma Mitts
   
   Upper Platform Cave:
     exits:
       Outside Earth Temple: Nothing
     locations:
-      Gossip Stone in Upper Platform Cave: Nothing
+      Volcano - Gossip Stone in Upper Platform Cave: Nothing
   
   Hot Cave:
     exits:
@@ -326,7 +326,7 @@ Bokoblin Base:
       First Chest in Volcano Summit: Fireshield Earrings
       Raised Chest in Volcano Summit: Fireshield Earrings
       Chest in Volcano Summit Alcove: Fireshield Earrings & Practice Sword
-      Goddess Cube inside Volcano Summit: Fireshield Earrings
+      Volcano Summit - Goddess Cube inside Volcano Summit: Fireshield Earrings & Goddess Sword
   
   Fire Dragon's Lair:
     exits:

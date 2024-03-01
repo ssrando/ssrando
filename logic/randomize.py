@@ -101,6 +101,7 @@ class Rando:
             self.randomized_dungeon_entrance,
             self.randomized_trial_entrance,
             self.randomized_start_entrance,
+            self.randomized_start_statues,
             list(self.placement.locations),
         )
 
@@ -281,9 +282,11 @@ class Rando:
         elif self.options["got-dungeon-requirement"] == "Unrequired":
             horde_door_requirement &= DNFInventory(dungeons_req)
 
-        everything_list = {
-            check["req_index"] for check in self.areas.checks.values()
-        } | {EXTENDED_ITEM[self.short_to_full(DEMISE)]}
+        everything_list = (
+            {check["req_index"] for check in self.areas.checks.values()}
+            | {check["req_index"] for check in self.areas.gossip_stones.values()}
+            | {EXTENDED_ITEM[self.short_to_full(DEMISE)]}
+        )
         everything_req = DNFInventory(Inventory(everything_list))
 
         self.endgame_requirements = {
@@ -315,6 +318,15 @@ class Rando:
             else:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
+
+        self.no_logic_requirements = {}
+        if self.options["logic-mode"] == "No Logic":
+            self.no_logic_requirements = {
+                item: DNFInventory(True)
+                for item in EXTENDED_ITEM.items_list
+                if EXTENDED_ITEM[item] != BANNED_BIT
+                if item not in self.placement.unplaced_items
+            }
 
         must_be_placed_items = (
             PROGRESS_ITEMS
@@ -368,12 +380,6 @@ class Rando:
             EIN(trick(trick_name)): DNFInventory(trick_name in enabled_tricks)
             for trick_name in OPTIONS["enabled-tricks-bitless"]["choices"]
         }
-
-        self.no_logic_requirements = {}
-        if self.options["logic-mode"] == "No Logic":
-            self.no_logic_requirements = {
-                item: DNFInventory(True) for item in EXTENDED_ITEM.items_list
-            }
 
         self.placement |= SINGLE_CRYSTAL_PLACEMENT(self.norm, self.areas.checks)
 
@@ -631,3 +637,35 @@ class Rando:
         assert self.randomized_start_entrance["layer"] is not None
         assert self.randomized_start_entrance["entrance"] is not None
         assert self.randomized_start_entrance["day-night"] is not None
+
+        # Starting bird statue rando
+
+        bsr = self.options["random-start-statues"]
+
+        possible_bird_statues = [
+            (entrance, values)
+            for entrance, values in self.areas.map_entrances.items()
+            if values.get("subtype") == "bird-statue-entrance"
+            and (bsr or values.get("vanilla-start-statue"))
+        ]
+
+        self.randomized_start_statues = {
+            province: self.rng.choice(
+                [
+                    (entrance, values)
+                    for entrance, values in possible_bird_statues
+                    if values.get("province") == province
+                    and "Fire Sanctuary" not in entrance
+                ]
+            )
+            for province in ALL_SURFACE_PROVINCES
+        }
+
+        # Logically bind the first-time dive to the statue to unlock it
+
+        for exit, values in self.areas.map_exits.items():
+            # First time dives have the 'pillar-province' field in entrances.yaml
+            if (province := values.get("pillar-province")) is not None:
+                self.placement.map_transitions[exit] = self.randomized_start_statues[
+                    province
+                ][0]
