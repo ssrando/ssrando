@@ -2371,23 +2371,15 @@ class GamePatcher:
 
     def add_keysanity(self):
         KEYS_DUNGEONS = [
-            # ('Skyview', 200), # already has a textbox
-            (LMF, 201),
-            (AC, 202),
-            (FS, 203),
-            (SSH, 204),
-            (SK, 205),
-            ("Lanayru Caves", 206),
+            (SV, 200, 11),
+            (LMF, 201, 17),
+            (AC, 202, 12),
+            (FS, 203, 15),
+            (SSH, 204, 18),
+            (SK, 205, 20),
+            ("Lanayru Caves", 206, 9),
         ]
-        self.eventpatches["003-ItemGet"].append(
-            {
-                "name": f"Skyview Key Text",  # for some reason there is an entry for item 200 (It's just an empty textbox though)
-                "type": "textpatch",
-                "index": 251,
-                "text": f"You got a <g<Skyview>> Small Key!",
-            }
-        )
-        for dungeon, itemid in KEYS_DUNGEONS:
+        for dungeon, itemid, sceneidx in KEYS_DUNGEONS:
             dungeon_and_color = DUNGEON_COLORS[dungeon] + dungeon + ">>"
             self.eventpatches["003-ItemGet"].append(
                 {
@@ -2396,10 +2388,23 @@ class GamePatcher:
                     "unk1": 5,
                     "unk2": 1,
                     "text": (
-                        f"You got a {dungeon_and_color} Small Key!"
+                        f"You got a {dungeon_and_color} Small Key!\nYou now have <r<<numeric arg0> >>of them!"
                         if dungeon != LMF
-                        else f"You got a {dungeon_and_color} Small\nKey!"
+                        else f"You got a {dungeon_and_color} Small\nKey! You now have <r<<numeric arg0> >>of them!"
                     ),
+                }
+            )
+            self.eventpatches["003-ItemGet"].append(
+                {
+                    "name": f"Set {dungeon} Key Count",
+                    "type": "flowadd",
+                    "flow": {
+                        "type": "type3",
+                        "next": f"Show {dungeon} Key Text",
+                        "param1": sceneidx,
+                        "param2": 0,
+                        "param3": 76,
+                    },
                 }
             )
             self.eventpatches["003-ItemGet"].append(
@@ -2414,16 +2419,27 @@ class GamePatcher:
                     },
                 }
             )
-            self.eventpatches["003-ItemGet"].append(
-                {
-                    "name": f"{dungeon} Key Entry",
-                    "type": "entryadd",
-                    "entry": {
-                        "name": f"003_{itemid}",
-                        "value": f"Show {dungeon} Key Text",
-                    },
-                }
-            )
+            if dungeon == SV:
+                self.eventpatches["003-ItemGet"].append(
+                    {
+                        # for some reason there is an entry for item 200 (It's just an empty textbox though)
+                        "name": "To Skyview Key Count",
+                        "type": "flowpatch",
+                        "index": 498,
+                        "flow": {"next": f"Set {SV} Key Count"},
+                    }
+                )
+            else:
+                self.eventpatches["003-ItemGet"].append(
+                    {
+                        "name": f"{dungeon} Key Entry",
+                        "type": "entryadd",
+                        "entry": {
+                            "name": f"003_{itemid}",
+                            "value": f"Set {dungeon} Key Count",
+                        },
+                    }
+                )
         MAPS_DUNGEONS = [
             (SV, 207),
             (ET, 208),

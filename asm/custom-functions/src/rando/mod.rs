@@ -275,6 +275,12 @@ extern "C" fn rando_text_command_handler(
                 (*_event_flow_mgr).result_from_previous_check = tadtone_groups_left;
             }
         },
+        76 => {
+            // set numeric arg0 to number of keys of area in param1
+            // we need to add one, the key counter is only incremented *after* the textbox
+            let keys = DungeonflagManager::get_global_key_count(flow_element.param1) + 1;
+            text_manager_set_num_args(&[keys.into()]);
+        },
         _ => (),
     }
 }
