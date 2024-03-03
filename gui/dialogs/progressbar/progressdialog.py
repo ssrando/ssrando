@@ -1,7 +1,8 @@
 import random
 from typing import Optional
-from PySide6.QtCore import Qt, QTimer
-from PySide6.QtWidgets import QProgressDialog, QLabel
+from PySide6.QtCore import QEvent, QObject, Qt, QTimer
+from PySide6.QtGui import QCloseEvent
+from PySide6.QtWidgets import QProgressDialog, QLabel, QPushButton
 
 tips = [
     "The Bomb Bag and the Hook Beetle are often interchangeable. In places you would normally be expected to use the Bomb Bag, look for nearby bomb flowers to grab with the Hook Beetle.",
@@ -18,7 +19,7 @@ tips = [
 
 
 class ProgressDialog(QProgressDialog):
-    def __init__(self, title, description, max_value):
+    def __init__(self, title, description, max_value, cancel=None):
         QProgressDialog.__init__(self)
         self.step_text = description
         self.tip_text = random.choice(tips)
@@ -35,8 +36,44 @@ class ProgressDialog(QProgressDialog):
         self.setWindowFlags(Qt.CustomizeWindowHint | Qt.WindowTitleHint)
         self.setFixedWidth(400)
         self.setAutoReset(False)
-        self.setCancelButton(None)
+
+        self.installEventFilter(self)
+
+        if cancel:
+            # This is a bit awkward but we cannot use the builtin self.canceled signal,
+            # single the dialog will always automatically close when the signal
+            # is triggered. So if our owner can handle cancellation, we rewire the
+            # button to trigger our own callback.
+            self.user_cancel = cancel
+            cancel_button: QPushButton = self.findChild(QPushButton)
+            cancel_button.clicked.disconnect(self.canceled)
+            cancel_button.clicked.connect(cancel)
+        else:
+            # Otherwise cancellation is not allowed and the button is hidden.
+            self.user_cancel = lambda: None
+            self.setCancelButton(None)
+
         self.show()
+
+    def eventFilter(self, obj: QObject, event: QEvent) -> bool:
+        if obj == self:
+            if event.type() in (
+                QEvent.KeyPress,
+                QEvent.ShortcutOverride,
+                QEvent.KeyRelease,
+            ):
+                if event.key() in (
+                    Qt.Key_Return,
+                    Qt.Key_Escape,
+                    Qt.Key_Enter,
+                ):
+                    self.user_cancel()
+                    # Always prevent attempts to cancel the dialog via ESC - the owner
+                    # is responsible for closing this dialog when progress is done or
+                    # cancellation has explicitly been handled.
+                    event.accept()
+                    return True
+        return super(QProgressDialog, self).eventFilter(obj, event)
 
     def new_tip(self):
         self.tip_text = random.choice(tips)
