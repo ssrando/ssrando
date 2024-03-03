@@ -6,10 +6,16 @@ from ssrando import Randomizer, StartupException
 from extractmanager import ExtractManager
 
 
+class GenerationCanceled(Exception):
+    def __str__(self):
+        return "Randomization was cancelled"
+
+
 class RandomizerThread(QThread):
     update_progress = Signal(str, int)
     error_abort = Signal(str)
     randomization_complete = Signal()
+    canceled = False
 
     def __init__(
         self, randomizer: Randomizer, extract_manager: ExtractManager, output_folder
@@ -23,6 +29,8 @@ class RandomizerThread(QThread):
 
     def create_ui_progress_callback(self, start_steps):
         def progress_cb(action, current_steps=None):
+            if self.canceled:
+                raise GenerationCanceled
             if not current_steps is None:
                 self.steps = start_steps + current_steps
             self.update_progress.emit(action, self.steps)
