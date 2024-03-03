@@ -46,7 +46,12 @@ jobs:
       - name: Copy Readme and changelog
         run: cp README.md CHANGELOG.md dist
         shell: bash
+      - uses: SebRollen/toml-action@v1.2.0
+        id: read_toml
+        with:
+          file: "pyproject.toml"
+          field: "tool.poetry.version"
       - uses: actions/upload-artifact@v4
         with:
-          name: dist ${{ matrix.os }}
+          name: Skyward Sword Randomizer v${{ steps.read_toml.outputs.value }}
           path: dist
