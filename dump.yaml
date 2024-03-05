@@ -6145,7 +6145,7 @@ areas:
           entrances: []
           exits:
             Shared Statue Exit: 'False'
-          hint_region: null
+          hint_region: Lanayru Desert
           locations: {}
           name: \Lanayru\Temple of Time
           sub_areas:
@@ -6163,7 +6163,7 @@ areas:
                   East\Unlock Statue
                 \Lanayru\Temple of Time\Front: "\\Hook Beetle | (\\Slingshot & Temple\
                   \ of Time - Slingshot Shot Trick)"
-              hint_region: null
+              hint_region: Lanayru Desert
               locations:
                 Unlock Statue: 'True'
                 \Ancient Flower Farming: \Distance Activator
@@ -6180,7 +6180,7 @@ areas:
                 \Lanayru\Temple of Time\Inside: 'True'
                 \Lanayru\Temple of Time\Near Goddess Cube: \Lanayru\Temple of Time\Near
                   Goddess Cube\Timeshift Stone
-              hint_region: null
+              hint_region: Lanayru Desert
               locations:
                 Gossip Stone in Temple of Time Area: 'True'
                 Blow up Rock for Timeshift Stone: "\\Hook Beetle | (Bomb Throws Trick\
@@ -6208,7 +6208,7 @@ areas:
                   Statue
                 Exit to Lanayru Mining Facility: 'True'
                 \Lanayru\Temple of Time\Front: 'True'
-              hint_region: null
+              hint_region: Lanayru Desert
               locations:
                 Unlock Statue: 'True'
               name: \Lanayru\Temple of Time\Inside
@@ -6222,7 +6222,7 @@ areas:
               entrances: []
               exits:
                 \Lanayru\Temple of Time\North East: 'True'
-              hint_region: null
+              hint_region: Lanayru Desert
               locations:
                 Timeshift Stone: 'False'
                 Goddess Cube at Ride near Temple of Time: \Goddess Sword
@@ -6239,7 +6239,7 @@ areas:
               exits:
                 \Lanayru\Temple of Time\South East: \Distance Activator
                 North Exit to Desert: 'True'
-              hint_region: null
+              hint_region: Lanayru Desert
               locations:
                 \Ancient Flower Farming: \Distance Activator
               name: \Lanayru\Temple of Time\North East
