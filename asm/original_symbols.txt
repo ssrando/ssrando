@@ -42,6 +42,7 @@ main.dol:
     HEAP_MEM1: 0x8057522c
     HEAP_MEM2: 0x80575230
     Heap__alloc: 0x80495560
+    Heap__free: 0x804957c0
     requestFileLoadFromDisk: 0x802f0060
     getAnmTexPatFromBrres: 0x80439890
     AnmTexPatControl__bind: 0x802e6840
@@ -146,6 +147,9 @@ main.dol:
     GXSetChanCtrl: 0x803bea00
     __GXSetIndirectMask: 0x803c0340
     GXSetChanMatColor: 0x803be8f0
+    # ----------------- Debug Print ---------------------------
+    CONSOLE_DEVICE: 0x805705b0
+    _FileWrite: 0x804cc1cc
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
 d_a_obj_time_boatNP.rel:
