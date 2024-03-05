@@ -656,6 +656,11 @@ ble skip_store_max
 stfs f0,0xfb8(r3)
 skip_store_max:
 b enforce_loftwing_speed_cap
+
+; Increase zipper speed cap
+.org 0xE2C4 ; 0x809bb450
+.float 350.0
+
 .close
 
 .open "d_a_npc_dive_game_judgeNP.rel"
