@@ -3,17 +3,13 @@
 #![feature(allocator_api)]
 #![feature(ascii_char)]
 #![feature(format_args_nl)]
+#![feature(slice_ptr_get)]
 #![allow(dead_code)]
 #![deny(clippy::no_mangle_with_rust_abi)]
 #![deny(improper_ctypes)]
 #![deny(improper_ctypes_definitions)]
 
-use system::heap::DefaultGlobalAllocator;
-
 extern crate alloc;
-
-#[global_allocator]
-static DUMMY_ALLOC: DefaultGlobalAllocator = DefaultGlobalAllocator;
 
 mod game;
 mod rando;
