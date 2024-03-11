@@ -1276,8 +1276,9 @@ Lanayru Sand Sea - Pirate Stronghold - Rupee on Bird Statue Pillar or Nose:
   original item: "Silver Rupee #17"
   type: Rupees (No Quick Beetle)
   Paths:
-    - stage/F301_6/r0/l1/Item/13
     - stage/F301_6/r0/l2/Item/13
+    # - stage/F301_6/r0/l1/Item/13  doesn't work as there's no vanilla stage file for layer 1
+    - oarc/F301_6/l0
 Lanayru Sand Sea - Pirate Stronghold - First Chest:
   original item: Silver Rupee
   type:
