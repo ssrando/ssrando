@@ -1308,6 +1308,7 @@ items:
 - \Sky\Thunderhead\Bug Heaven\Bug Heaven Goddess Chest
 - \Sky\Thunderhead\Bug Heaven\Gossip Stone near Bug Heaven
 - \Skyloft\Upper Skyloft\Owlan's Gift
+- \Skyloft\Upper Skyloft\Ring Knight Academy Bell
 - \Skyloft\Upper Skyloft\Chest near Goddess Statue
 - \Skyloft\Upper Skyloft\Pumpkin Archery -- 600 Points
 - \Skyloft\Upper Skyloft\Knight Academy\Fledge's Gift
@@ -7858,6 +7859,8 @@ areas:
           hint_region: Upper Skyloft
           locations:
             Owlan's Gift: Day
+            Ring Knight Academy Bell: "\\Distance Activator | (Bomb Bag & Bomb Throws\
+              \ Trick)"
             Chest near Goddess Statue: 'True'
             Pumpkin Archery -- 600 Points: "\\Bow & Day"
           name: \Skyloft\Upper Skyloft
@@ -8846,6 +8849,10 @@ checks:
     original item: Progressive Sword
     type: null
     short_name: Upper Skyloft - Sparring Hall Chest
+  \Skyloft\Upper Skyloft\Ring Knight Academy Bell:
+    original item: Green Rupee
+    type: null
+    short_name: Upper Skyloft - Ring Knight Academy Bell
   \Skyloft\Upper Skyloft\Chest near Goddess Statue:
     original item: Red Rupee
     type: null
