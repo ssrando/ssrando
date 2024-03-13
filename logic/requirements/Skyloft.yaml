@@ -277,6 +277,8 @@ Skyloft Village:
 
   Rupin's House:
     can-sleep: true
+    locations:
+      Can Sell Treasures: Night
     exits:
       Exit: Nothing
 

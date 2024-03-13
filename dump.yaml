@@ -703,7 +703,6 @@ items:
 - \Can Hit Switch
 - \Can Hit Timeshift Stone
 - \Can Hit Timeshift Stone in Minecart
-- \Early Lake Floria Tricks
 - \Can bypass Boko Base Watch Tower
 - \Can Defeat Bokoblins
 - \Can Defeat Moblins
@@ -1378,6 +1377,7 @@ items:
 - \Skyloft\Skyloft Village\Sparrot's House\Start Sparrot's Quest
 - \Skyloft\Skyloft Village\Sparrot's House\Sparrot's Crystals
 - \Skyloft\Skyloft Village\Mallara's House\Mallara's Crystals
+- \Skyloft\Skyloft Village\Rupin's House\Can Sell Treasures
 - \Skyloft\Skyloft Village\Batreaux's House\5 Crystals
 - \Skyloft\Skyloft Village\Batreaux's House\10 Crystals
 - \Skyloft\Skyloft Village\Batreaux's House\30 Crystals
@@ -2409,8 +2409,9 @@ areas:
       \ Wallet)"
     Can Afford 1600 Rupees: "\\Can High Rupee Farm & ((\\Big Wallet & \\2 Extra Wallets)\
       \ | \\Giant Wallet)"
-    Can Medium Rupee Farm: "\\Sky\\North East\\Bamboo Island\\Inside\\Clean Cut Minigame\
-      \ | \\Can High Rupee Farm"
+    Can Medium Rupee Farm: "(\\Sky\\North East\\Bamboo Island\\Inside\\Clean Cut Minigame\
+      \ & \\Skyloft\\Skyloft Village\\Rupin's House\\Can Sell Treasures) | \\Can High\
+      \ Rupee Farm"
     Can High Rupee Farm: "\\Sky\\South West\\Fun Fun Island\\Fun Fun Island Minigame\
       \ | \\Eldin\\Volcano\\Thrill Digger Cave\\Thrill Digger Minigame"
     Song of the Hero: "Faron Song of the Hero Part & Eldin Song of the Hero Part &\
@@ -2469,8 +2470,6 @@ areas:
     Can Hit Switch: "\\Sword | Bomb Bag | Whip | \\Distance Activator"
     Can Hit Timeshift Stone: "\\Sword | Bomb Bag | Whip | \\Distance Activator"
     Can Hit Timeshift Stone in Minecart: "\\Sword | Bomb Bag | \\Distance Activator"
-    Early Lake Floria Tricks: "(Early Lake Floria - Fence Hop Trick & \\Practice Sword)\
-      \ | Early Lake Floria - Swordless Rope Floria Trick"
     Can bypass Boko Base Watch Tower: "\\Bow | Bomb Bag | \\Slingshot"
     Can Defeat Bokoblins: \Damaging Item
     Can Defeat Moblins: \Damaging Item
@@ -3981,10 +3980,11 @@ areas:
             \Faron\Faron Woods\Great Tree\Near Underwater Hole: Water Dragon's Scale
             \Faron\Faron Woods\Great Tree\Platforms: Clawshots
             \Faron\Faron Woods\Clawshot Target Branch: Clawshots
-            Lake Floria Dive: "\\Faron\\Faron Woods\\Open Door to Lake Floria | \\\
-              Early Lake Floria Tricks"
-            \Faron\Faron Woods\Ledge to Lake Floria: \Faron\Faron Woods\Ledge to Lake
-              Floria\Push Log
+            Lake Floria Dive: "\\Faron\\Faron Woods\\Open Door to Lake Floria | (Early\
+              \ Lake Floria - Fence Hop Trick & \\Practice Sword)"
+            \Faron\Faron Woods\Ledge to Lake Floria: "\\Faron\\Faron Woods\\Ledge\
+              \ to Lake Floria\\Push Log | (Early Lake Floria - Fence Hop Trick &\
+              \ \\Practice Sword) | Early Lake Floria - Swordless Rope Floria Trick"
             \Faron\Faron Woods\Ledge To Deep Woods: \Faron\Faron Woods\Hit Vine to
               Deep Woods
             \Faron\Faron Woods\Behind the Crawlspace and Rope: "Bomb Bag | \\Faron\\\
@@ -4039,8 +4039,7 @@ areas:
               - Shortcut Entrance from Floria Waterfall
               exits:
                 \Faron\Faron Woods: 'True'
-                Shortcut Exit to Floria Waterfall: "\\Faron\\Faron Woods\\Open Door\
-                  \ to Lake Floria | \\Early Lake Floria Tricks"
+                Shortcut Exit to Floria Waterfall: 'True'
               hint_region: Faron Woods
               locations:
                 Push Log: 'True'
@@ -8354,7 +8353,8 @@ areas:
               exits:
                 Exit: 'True'
               hint_region: Skyloft Village
-              locations: {}
+              locations:
+                Can Sell Treasures: Night
               name: \Skyloft\Skyloft Village\Rupin's House
               sub_areas: {}
               toplevel_alias: null
