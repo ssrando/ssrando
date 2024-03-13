@@ -15,19 +15,18 @@ pub struct List {
 
 #[repr(C)]
 pub struct HeapVtable {
-    pub rtti:                 [u32; 2],
-    pub dtor:                 u32,
-    pub get_heap_kind:        extern "C" fn(*const Heap) -> u32,
-    pub init_allocator:       u32,
+    pub rtti:               [u32; 2],
+    pub dtor:               u32,
+    pub getHeapKind:        extern "C" fn(*const Heap) -> u32,
+    pub initAllocator:      u32,
     pub alloc:
         extern "C" fn(*const Heap, c_uint /* size */, c_int /* align */) -> *mut c_void,
-    pub free:                 extern "C" fn(*const Heap, *const c_void),
-    pub destroy:              extern "C" fn(*const Heap),
-    pub resize_for_m_block:
-        extern "C" fn(*const Heap, *const c_void, c_uint /* size */) -> u32,
-    pub get_total_free_size:  extern "C" fn(*const Heap) -> u32,
-    pub get_allocatable_size: extern "C" fn(*const Heap, c_int /* align */) -> u32,
-    pub adjust:               extern "C" fn(*const Heap) -> u32,
+    pub free:               extern "C" fn(*const Heap, *const c_void),
+    pub destroy:            extern "C" fn(*const Heap),
+    pub resizeForMBlock: extern "C" fn(*const Heap, *const c_void, c_uint /* size */) -> u32,
+    pub getTotalFreeSize:   extern "C" fn(*const Heap) -> u32,
+    pub getAllocatableSize: extern "C" fn(*const Heap, c_int /* align */) -> u32,
+    pub adjust:             extern "C" fn(*const Heap) -> u32,
 }
 
 #[repr(C)]
@@ -50,7 +49,7 @@ impl Heap {
     }
 
     pub fn get_heap_kind(&self) -> u32 {
-        unsafe { ((*self.vtable).get_heap_kind)(self as *const Heap) }
+        unsafe { ((*self.vtable).getHeapKind)(self as *const Heap) }
     }
 
     pub fn alloc(&self, size: c_uint, align: c_int) -> *mut c_void {
@@ -62,19 +61,70 @@ impl Heap {
     }
 
     pub fn resize_for_m_block(&self, ptr: *const c_void, size: c_uint) -> u32 {
-        unsafe { ((*self.vtable).resize_for_m_block)(self as *const Heap, ptr, size) }
+        unsafe { ((*self.vtable).resizeForMBlock)(self as *const Heap, ptr, size) }
     }
 
     pub fn get_total_free_size(&self) -> u32 {
-        unsafe { ((*self.vtable).get_total_free_size)(self as *const Heap) }
+        unsafe { ((*self.vtable).getTotalFreeSize)(self as *const Heap) }
     }
 
     pub fn get_allocatable_size(&self, align: c_int) -> u32 {
-        unsafe { ((*self.vtable).get_allocatable_size)(self as *const Heap, align) }
+        unsafe { ((*self.vtable).getAllocatableSize)(self as *const Heap, align) }
     }
 
     pub fn adjust(&self) -> u32 {
         unsafe { ((*self.vtable).adjust)(self as *const Heap) }
+    }
+}
+
+unsafe impl Allocator for Heap {
+    fn allocate(
+        &self,
+        layout: core::alloc::Layout,
+    ) -> Result<core::ptr::NonNull<[u8]>, core::alloc::AllocError> {
+        let ptr = self
+            .alloc(layout.size() as c_uint, layout.align() as c_int)
+            .cast();
+        let ret = core::ptr::NonNull::new(ptr).ok_or(core::alloc::AllocError)?;
+        Ok(NonNull::slice_from_raw_parts(ret, layout.size()))
+    }
+
+    unsafe fn deallocate(&self, ptr: core::ptr::NonNull<u8>, _layout: core::alloc::Layout) {
+        self.free(ptr.as_ptr().cast());
+    }
+
+    unsafe fn grow(
+        &self,
+        ptr: NonNull<u8>,
+        old_layout: core::alloc::Layout,
+        new_layout: core::alloc::Layout,
+    ) -> Result<NonNull<[u8]>, core::alloc::AllocError> {
+        // this doesn't move the pointer, if the allocation doesn't fit
+        // it returns 0
+        let new_size = self.resize_for_m_block(ptr.as_ptr().cast(), new_layout.size() as u32);
+        if new_size as usize >= new_layout.size() {
+            return Ok(NonNull::slice_from_raw_parts(ptr, new_layout.size()));
+        }
+        // alloc, copy then dealloc
+        let new_ptr = self.allocate(new_layout)?;
+
+        unsafe {
+            core::ptr::copy_nonoverlapping(ptr.as_ptr(), new_ptr.as_mut_ptr(), old_layout.size());
+            self.deallocate(ptr, old_layout);
+        }
+
+        Ok(new_ptr)
+    }
+
+    unsafe fn shrink(
+        &self,
+        ptr: NonNull<u8>,
+        _old_layout: core::alloc::Layout,
+        new_layout: core::alloc::Layout,
+    ) -> Result<NonNull<[u8]>, core::alloc::AllocError> {
+        // this never moves the pointer and should always work since we're shrinking
+        let _new_size = self.resize_for_m_block(ptr.as_ptr().cast(), new_layout.size() as u32);
+        Ok(NonNull::slice_from_raw_parts(ptr, new_layout.size()))
     }
 }
 
@@ -153,14 +203,11 @@ unsafe impl Allocator for WiiHeapAllocator {
         &self,
         layout: core::alloc::Layout,
     ) -> Result<core::ptr::NonNull<[u8]>, core::alloc::AllocError> {
-        let ptr =
-            unsafe { Heap__alloc(layout.size() as c_uint, layout.align() as c_int, self.0).cast() };
-        let ret = core::ptr::NonNull::new(ptr).ok_or(core::alloc::AllocError)?;
-        Ok(NonNull::slice_from_raw_parts(ret, layout.size()))
+        unsafe { (*self.0).allocate(layout) }
     }
 
-    unsafe fn deallocate(&self, ptr: core::ptr::NonNull<u8>, _layout: core::alloc::Layout) {
-        Heap__free(ptr.as_ptr().cast(), self.0);
+    unsafe fn deallocate(&self, ptr: core::ptr::NonNull<u8>, layout: core::alloc::Layout) {
+        unsafe { (*self.0).deallocate(ptr, layout) }
     }
 
     unsafe fn grow(
@@ -169,34 +216,16 @@ unsafe impl Allocator for WiiHeapAllocator {
         old_layout: core::alloc::Layout,
         new_layout: core::alloc::Layout,
     ) -> Result<NonNull<[u8]>, core::alloc::AllocError> {
-        // this doesn't move the pointer, if the allocation doesn't fit
-        // it returns 0
-        let new_size =
-            unsafe { (*self.0).resize_for_m_block(ptr.as_ptr().cast(), new_layout.size() as u32) };
-        if new_size as usize >= new_layout.size() {
-            return Ok(NonNull::slice_from_raw_parts(ptr, new_layout.size()));
-        }
-        // alloc, copy then dealloc
-        let new_ptr = self.allocate(new_layout)?;
-
-        unsafe {
-            core::ptr::copy_nonoverlapping(ptr.as_ptr(), new_ptr.as_mut_ptr(), old_layout.size());
-            self.deallocate(ptr, old_layout);
-        }
-
-        Ok(new_ptr)
+        unsafe { (*self.0).grow(ptr, old_layout, new_layout) }
     }
 
     unsafe fn shrink(
         &self,
         ptr: NonNull<u8>,
-        _old_layout: core::alloc::Layout,
+        old_layout: core::alloc::Layout,
         new_layout: core::alloc::Layout,
     ) -> Result<NonNull<[u8]>, core::alloc::AllocError> {
-        // this never moves the pointer and should always work since we're shrinking
-        let _new_size =
-            unsafe { (*self.0).resize_for_m_block(ptr.as_ptr().cast(), new_layout.size() as u32) };
-        Ok(NonNull::slice_from_raw_parts(ptr, new_layout.size()))
+        unsafe { (*self.0).shrink(ptr, old_layout, new_layout) }
     }
 }
 

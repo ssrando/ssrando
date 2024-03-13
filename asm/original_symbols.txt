@@ -160,6 +160,10 @@ main.dol:
     # ----------------- Debug Print ---------------------------
     CONSOLE_DEVICE: 0x805705b0
     _FileWrite: 0x804cc1cc
+    # ----------------- IOS -----------------------------------
+    iosAllocAligned: 0x804273e0
+    iosFree: 0x804275f0
+    IOS_HEAP: 0x80574d9c
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
 d_a_obj_time_boatNP.rel:
