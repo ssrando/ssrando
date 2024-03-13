@@ -500,6 +500,12 @@ extern "C" fn get_glow_color(item_id: u32) -> u32 {
     4
 }
 
+#[no_mangle]
+extern "C" fn game_update_hook() -> u32 {
+    // This gets called everytime the game actor updates
+    1
+}
+
 #[link_section = "data"]
 #[no_mangle]
 static mut HERO_MODE_OPTIONS: u8 = 0;
