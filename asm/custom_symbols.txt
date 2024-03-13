@@ -30,11 +30,12 @@ main.dol:
   do_er_fixes: 0x80678FB0
   allow_set_respawn_info: 0x806792D8
   get_glow_color: 0x80679300
-  has_upgraded_skyward_strike: 0x80679364
-  has_fast_air_meter_drain: 0x80679374
-  has_heart_drops_enabled: 0x80679384
-  FORCE_MOGMA_CAVE_DIVE: 0x8067949E
-  HERO_MODE_OPTIONS: 0x8067949F
+  game_update_hook: 0x80679364
+  has_upgraded_skyward_strike: 0x8067936C
+  has_fast_air_meter_drain: 0x8067937C
+  has_heart_drops_enabled: 0x8067938C
+  FORCE_MOGMA_CAVE_DIVE: 0x806794A6
+  HERO_MODE_OPTIONS: 0x806794A7
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
