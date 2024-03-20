@@ -101,7 +101,13 @@ class Hints:
                 return True
             else:
                 allowed = check_static_option_req(expr, self.options)
-                print("allowed" if allowed else "disallowed", "hint for", check["short_name"], "with condition", expr)
+                print(
+                    "allowed" if allowed else "disallowed",
+                    "hint for",
+                    check["short_name"],
+                    "with condition",
+                    expr,
+                )
                 return allowed
 
         check_hint_status = {
