@@ -1,4 +1,5 @@
 from enum import Enum
+from logic.bool_expression import check_static_option_req
 from logic.constants import *
 from logic.inventory import EXTENDED_ITEM
 from logic.logic import DNFInventory
@@ -94,8 +95,19 @@ class Hints:
     def do_hints(self, useroutput: UserOutput):
         self.useroutput = useroutput
 
+        def check_condition(check):
+            expr = check.get("hint-if")
+            if not expr:
+                return True
+            else:
+                allowed = check_static_option_req(expr, self.options)
+                print("allowed" if allowed else "disallowed", "hint for", check["short_name"], "with condition", expr)
+                return allowed
+
         check_hint_status = {
-            loc: check.get("hint") for loc, check in self.areas.checks.items()
+            loc: hint
+            for loc, check in self.areas.checks.items()
+            if (hint := check.get("hint")) and check_condition(check)
         }
 
         # ensure prerandomized and banned locations cannot be hinted
