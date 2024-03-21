@@ -836,7 +836,7 @@
     - All Dungeons
     - Random
     - Custom
-  default: Balanced
+  default: Standard
   help: "Determines the distribution of hints that appear on Gossip Stones.
         Determines the number, order and locations hints are generated in."
   ui: option_hint_distribution
