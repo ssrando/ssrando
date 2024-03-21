@@ -87,6 +87,40 @@
   permalink: false
   help: "If enabled, the curved edges of buttons and boxes will become sharp and pointy."
   ui: option_use_sharp_corners
+## Random Settings
+- name: Randomize Settings
+  command: random-settings
+  type: boolean
+  default: false
+  help: "If enabled, most randomization settings will be randomized. **WARNING**: Enabling this
+        will reset all randomizable settings to their default values."
+  ui: option_random_settings
+- name: Randomize Cosmetic Settings
+  command: random-cosmetics
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: "If enabled, all in-game cosmetic and music settings will be randomized."
+  ui: option_random_cosmetics
+- name: Random Settings Weighting
+  command: random-settings-weighting
+  type: singlechoice
+  bits: 3
+  choices:
+    - Random
+    - Quick
+    - Balanced
+    - Insanity
+    - RSL Season 1
+  default: Balanced
+  help: "The weighting used to randomize settings. Only applicable if randomize settings is on.
+        **Random**: Completely random settings. Be ready for some chaos.
+        **Quick**: Generally quicker and easier seeds.
+        **Balanced**: Close to standard settings.
+        **Insanity**: Generally longer and more difficult seeds."
+  ui: option_random_settings_weighting
+## Randomization Settings
 - name: Starting Tablet Count
   command: starting-tablet-count
   type: int

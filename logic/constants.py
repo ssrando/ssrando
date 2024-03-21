@@ -57,6 +57,30 @@ LOGIC_OPTIONS = dict.fromkeys(
     ]
 )
 
+NON_RANDOMIZED_SETTINGS = [
+    # If permalink is false, it is not randomized
+    "random-settings",
+    "random-settings-weighting",
+    "no-spoiler-log",
+    "bit-patches",
+    "logic-mode",
+    "excluded-locations",
+    "enabled-tricks-glitched",
+    "enabled-tricks-bitless",
+    # Not implemented yet
+    "got-start",
+    "got-dungeon-requirement",
+]
+
+NON_RANDOMIZED_COSMETICS = [
+    "random-cosmetics",
+    "allow-custom-music",
+    "cutoff-gameover-music",
+    "no-enemy-music",
+    "selected-player-model-pack",
+    "selected-loftwing-model-pack",
+]
+
 # Locations
 
 
