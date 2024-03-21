@@ -273,16 +273,14 @@
   command: hint-distribution
   type: singlechoice
   choices:
-    Weak: 1
-    Balanced: 1
-    Junk: 1
-    Co-op S1: 0
-    S2 - 2D: 1
-    S2 - 3D: 1
-    S2 - 3D EUD Off: 1
-    CDMC: 4
-    Dowsing & Fi Hints: 6
-    2D Dowsing & Fi Hints: 6
+    All Dungeons: 3
+    Eldin: 1
+    Faron: 1
+    Lanayru: 1
+    Major Minor: 2
+    Random: 8
+    Sky: 1
+    Standard: 5
 - name: Random Starting Spawn
   command: random-start-entrance
   type: singlechoice
