@@ -113,12 +113,14 @@
     - Balanced
     - Insanity
     - RSL Season 1
+    - Nindys Preposterous Playoffs
   default: Balanced
   help: "The weighting used to randomize settings. Only applicable if randomize settings is on.
         **Random**: Completely random settings. Be ready for some chaos.
         **Quick**: Generally quicker and easier seeds.
         **Balanced**: Close to standard settings.
-        **Insanity**: Generally longer and more difficult seeds."
+        **Insanity**: Generally longer and more difficult seeds.
+        **Nindy's Preposterous Playoffs**: Weighting used for the upcoming tournament of the same name. Has measures in place to keep things balanced to a degree, but does not have as much as other weightings."
   ui: option_random_settings_weighting
 ## Randomization Settings
 - name: Starting Tablet Count
