@@ -839,6 +839,10 @@
     - Strong Dowsing All Dungeons
     - Remlits Tournament
     - Fi & Gossip Stones
+    - Standard
+    - Sky
+    - MajorMinor
+    - All Dungeons
     - Custom
   default: Balanced
   help: "Determines the distribution of hints that appear on Gossip Stones.
