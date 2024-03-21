@@ -827,24 +827,14 @@
   type: singlechoice
   bits: 4
   choices:
-    - Weak
-    - Balanced
-    - Junk
-    - Co-op S1
-    - S2 - 2D
-    - S2 - 3D
-    - S2 - 3D EUD Off
-    - CDMC
-    - Dowsing & Fi Hints
-    - 2D Dowsing & Fi Hints
-    - Boss Keysanity Fi Hints
-    - Strong Dowsing All Dungeons
-    - Remlits Tournament
-    - Fi & Gossip Stones
     - Standard
     - Sky
+    - Faron
+    - Eldin
+    - Lanayru
     - Major Minor
     - All Dungeons
+    - Random
     - Custom
   default: Balanced
   help: "Determines the distribution of hints that appear on Gossip Stones.
