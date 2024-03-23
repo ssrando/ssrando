@@ -1120,14 +1120,15 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
   type:
   Paths:
     - stage/F300/r0/l1/TBox/83
-  hint: sometimes
-  hint-if: Option "open-lmf" Is Not "Open"
+  hint:
+    # always hint if there's a chance you have to manually open LMF
+    always: Option "open-lmf" Is Not "Open" & (Dungeon "Lanayru Mining Facility" Required | Option "randomize-entrances" Is Not "None")
   text: the <r<midst of the desert>> holds
 Lanayru Desert - Secret Passageway Chest:
   original item: Heart Piece
   type:
-  hint: sometimes
-  hint-if: Option "chest-dowsing" Is Not "Progress Items"
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items"
   text: a <r<secret passage in the desert>> holds
   Paths:
     - stage/F300/r0/l0/TBox/74
@@ -1347,8 +1348,8 @@ Skyview - Chest behind Three Eyes:
   type:
   Paths:
     - stage/D100/r7/l0/TBox/68
-  hint: sometimes
-  hint-if: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: <r<three watchful eyes>> guard
 Skyview - Chest near Boss Door:
   original item: Red Rupee
@@ -1404,8 +1405,8 @@ Earth Temple - Chest Left of Main Room Bridge:
 Earth Temple - Chest in West Room:
   original item: Earth Temple Map
   type:
-  hint: sometimes
-  hint-if: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: the <r<western wing in the Earth Temple>> holds
   Paths:
     - stage/D200/r0/l0/TBox/64
@@ -1562,8 +1563,8 @@ Ancient Cistern - Rupee in East Part in Main Tunnel:
 Ancient Cistern - Chest in East Part:
   original item: "Ancient Cistern Small Key #0"
   type:
-  hint: sometimes
-  hint-if: (Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled) & Option "rupeesanity" Disabled
+  hint:
+    sometimes: (Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled) & Option "rupeesanity" Disabled
   text: the <r<lone east chest in the Ancient Cistern>> contains
   Paths:
     - stage/D101/r1/l0/TBox/67
@@ -1676,8 +1677,8 @@ Sandship - Boss Key Chest:
   type:
   Paths:
     - stage/D301/r14/l3/TBox/73
-  hint: sometimes
-  hint-if: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: the <r<secret treasure of the Sandship's captain>> is
 Sandship - Heart Container:
   original item: Heart Container

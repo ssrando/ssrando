@@ -95,27 +95,28 @@ class Hints:
     def do_hints(self, useroutput: UserOutput):
         self.useroutput = useroutput
 
-        def check_condition(check):
-            expr = check.get("hint-if")
-            if not expr:
-                return True
-            else:
-                allowed = check_static_option_req(
-                    expr, self.options, self.logic.required_dungeons
-                )
-                print(
-                    "allowed" if allowed else "disallowed",
-                    "hint for",
-                    check["short_name"],
-                    "with condition",
-                    expr,
-                )
-                return allowed
+        def get_hint_pool(check):
+            if not (hint := check.get("hint", None)):
+                return None
+
+            if type(hint) == str:
+                # simple hint type, e.g. hint: always
+                return hint
+
+            # the always condition is always checked first!
+            for pool in ["always", "sometimes"]:
+                condition = hint.get(pool, None)
+                if condition and check_static_option_req(
+                    condition, self.options, self.logic.required_dungeons
+                ):
+                    return pool
+
+            return None
 
         check_hint_status = {
             loc: hint
             for loc, check in self.areas.checks.items()
-            if (hint := check.get("hint")) and check_condition(check)
+            if (hint := get_hint_pool(check))
         }
 
         # ensure prerandomized and banned locations cannot be hinted
