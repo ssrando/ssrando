@@ -100,7 +100,9 @@ class Hints:
             if not expr:
                 return True
             else:
-                allowed = check_static_option_req(expr, self.options)
+                allowed = check_static_option_req(
+                    expr, self.options, self.logic.required_dungeons
+                )
                 print(
                     "allowed" if allowed else "disallowed",
                     "hint for",

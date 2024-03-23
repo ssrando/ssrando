@@ -5,7 +5,7 @@ from options import Options
 
 
 class BoolExpression:
-    def eval(self, options: Options) -> bool:
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
         raise NotImplementedError
 
     @staticmethod
@@ -18,7 +18,7 @@ class QueryBoolOption(BoolExpression):
     option: str
     negation: bool = False
 
-    def eval(self, options: Options) -> bool:
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
         if self.negation:
             return not options[self.option]
         return options[self.option]
@@ -30,7 +30,7 @@ class QueryOption(BoolExpression):
     value: Any
     negation: bool = False
 
-    def eval(self, options: Options) -> bool:
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
         if self.negation:
             return options[self.option] != self.value
         return options[self.option] == self.value
@@ -42,26 +42,37 @@ class QueryContainerOption(BoolExpression):
     value: Any
     negation: bool = False
 
-    def eval(self, options: Options) -> bool:
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
         if self.negation:
             return self.value not in options[self.option]
         return self.value in options[self.option]
 
 
 @dataclass
+class QueryRequiredDungeon(BoolExpression):
+    dungeon: str
+    negation: bool = False
+
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
+        if self.negation:
+            return self.dungeon not in required_dungeons
+        return self.dungeon in required_dungeons
+
+
+@dataclass
 class AndCombination(BoolExpression):
     arguments: List[BoolExpression]
 
-    def eval(self, options: Options) -> bool:
-        return all(arg.eval(options) for arg in self.arguments)
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
+        return all(arg.eval(options, required_dungeons) for arg in self.arguments)
 
 
 @dataclass
 class OrCombination(BoolExpression):
     arguments: List[BoolExpression]
 
-    def eval(self, options: Options) -> bool:
-        return any(arg.eval(options) for arg in self.arguments)
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
+        return any(arg.eval(options, required_dungeons) for arg in self.arguments)
 
 
 # Parsing
@@ -87,6 +98,8 @@ exp_grammar = r"""
          | "Option" text "Is Not" text -> mk_isnot
          | "Option" text "Contains" text -> mk_contains
          | "Option" text "Does Not Contain" text -> mk_doesnotcontain
+         | "Dungeon" text "Required" -> mk_dungeonrequired
+         | "Dungeon" text "Not Required" -> mk_dungeonunrequired
 
 
     ?text: "\"" TEXT "\""
@@ -137,10 +150,16 @@ class MakeExpression(Transformer):
     def mk_doesnotcontain(self, option, value):
         return QueryContainerOption(option, value, negation=True)
 
+    def mk_dungeonrequired(self, dungeon):
+        return QueryRequiredDungeon(dungeon, negation=False)
+
+    def mk_dungeonunrequired(self, dungeon):
+        return QueryRequiredDungeon(dungeon, negation=True)
+
 
 exp_parser = Lark(exp_grammar, parser="lalr", transformer=MakeExpression())
 BoolExpression.parse = exp_parser.parse  # type: ignore
 
 
-def check_static_option_req(string, options):
-    return BoolExpression.parse(string).eval(options)
+def check_static_option_req(string, options, required_dungeons):
+    return BoolExpression.parse(string).eval(options, required_dungeons)
