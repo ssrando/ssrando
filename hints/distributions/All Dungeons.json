@@ -40,7 +40,16 @@
     "Fire Sanctuary - Chest after Bombable Wall",
     "Volcano Summit - Item behind Digging"
   ],
-  "added_items": [],
+  "added_items": [
+    {"name": "Lanayru Mining Facility Small Key", "amount": 1},
+    {"name": "Sky Keep Facility Small Key", "amount": 1},
+    {"name": "Skyview Boss Key", "amount": 1},
+    {"name": "Earth Temple Boss Key", "amount": 1},
+    {"name": "Lanayru Mining Facility Boss Key", "amount": 1},
+    {"name": "Ancient Cistern Boss Key", "amount": 1},
+    {"name": "Sandship Boss Key", "amount": 1},
+    {"name": "Fire Sanctuary Boss Key", "amount": 1}
+  ],
   "removed_items": [],
   "dungeon_sots_limit": 1,
   "dungeon_barren_limit": 1,
