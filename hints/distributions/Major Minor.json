@@ -4,7 +4,12 @@
     "total_hints": 20,
     "default_assignment": "gossip_stone"
   },
-  "banned_stones": [],
+  "banned_stones": [
+    "Lanayru Sand Sea - Gossip Stone in Shipyard",
+    "Temple of Time - Gossip Stone in Temple of Time Area",
+    "Eldin Volcano - Gossip Stone in Upper Platform Cave",
+    "Eldin Volcano - Gossip Stone in Lower Platform Cave"
+  ],
   "added_locations": [
     {"location": "Skyview - Strike Crest",                                "type": "always"},
     {"location": "Earth Temple - Strike Crest",                           "type": "always"},
