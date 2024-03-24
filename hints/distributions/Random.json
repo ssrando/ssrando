@@ -5,11 +5,11 @@
     "default_assignment": "gossip_stone"
   },
   "banned_stones": [
-    "Lanayru Sand Sea - Gossip Stone in Shipyard",
     "Temple of Time - Gossip Stone in Temple of Time Area",
-    "Eldin Volcano - Gossip Stone in Upper Platform Cave",
-    "Eldin Volcano - Gossip Stone in Lower Platform Cave"
-  ],
+     "Lanayru Sand Sea - Gossip Stone in Shipyard",
+     "Eldin Volcano - Gossip Stone in Upper Platform Cave",
+     "Eldin Volcano - Gossip Stone in Lower Platform Cave"
+],
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals",                     "type": "sometimes"},
     {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack", "type": "always"},
