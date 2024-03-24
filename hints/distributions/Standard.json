@@ -16,7 +16,6 @@
     {"location": "Lanayru Mining Facility - Boss Key Chest",              "type": "sometimes"},
     {"location": "Central Skyloft - Peater/Peatrice's Crystals",          "type": "sometimes"},
     {"location": "Beedle's Shop - 600 Rupee Item",                        "type": "sometimes"},
-    {"location": "Beedle's Shop - 800 Rupee Item",                        "type": "sometimes"},
     {"location": "Flooded Faron Woods - 16 Dark Blue Tadtones in the South West",  "type": "sometimes"},
     {"location": "Bokoblin Base - Chest East of Earth Temple Entrance",            "type": "sometimes"},
     {"location": "Lanayru Gorge - Digging Spot",                          "type": "sometimes"},
@@ -38,6 +37,7 @@
     "Earth Temple - Chest in West Room",
     "Ancient Cistern - Chest in East Part",
     "Sandship - Boss Key Chest",
+    "Batreaux's House - 50 Crystals",
     "Lanayru Desert - Secret Passageway Chest"
   ],
   "added_items": [
