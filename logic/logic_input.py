@@ -358,6 +358,7 @@ class Areas:
                 EXTENDED_ITEM.items_list.append(full_address)
 
             entrance["short_name"] = partial_address
+            entrance["hint_region"] = self.areas[area_name].hint_region
             self.map_entrances[full_address] = entrance
 
         EXTENDED_ITEM.complete = True
