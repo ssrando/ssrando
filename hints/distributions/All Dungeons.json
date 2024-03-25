@@ -1,7 +1,7 @@
 {
   "assignment": {
     "mode": "separate",
-    "total_hints": 25,
+    "total_hints": 26,
     "default_assignment": "gossip_stone"
   },
   "banned_stones": [
@@ -18,8 +18,9 @@
     {"location": "Lanayru Mining Facility - Chest after Armos Fight", "type": "sometimes"},
     {"location": "Lanayru Mining Facility - Boss Key Chest",          "type": "always"},
     {"location": "Ancient Cistern - Rupee under Lilypad",             "type": "always"},
+    {"location": "Ancient Cistern - Bokoblin",                        "type": "always"},
     {"location": "Sandship - Chest after Scervo Fight",               "type": "sometimes"},
-    {"location": "Sandship - Robot in Brig's Reward",                 "type": "always"},
+    {"location": "Sandship - Robot in Brig's Reward",                 "type": "sometimes"},
     {"location": "Sandship - Heart Container",                        "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue First Trapped Mogma",       "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue Second Trapped Mogma",      "type": "always"},
@@ -51,7 +52,16 @@
     {"name": "Fire Sanctuary Boss Key", "amount": 1},
     {"name": "Tumbleweed", "amount": 1}
   ],
-  "removed_items": [],
+  "removed_items": [
+    {"name": "Clawshots", "type": "item"},
+    {"name": "Water Dragon's Scale", "type": "item"},
+    {"name": "Fireshield Earrings", "type": "item"},
+    {"name": "Progressive Beetle #0", "type": "item"},
+    {"name": "Progressive Beetle #1", "type": "item"},
+    {"name": "Progressive Beetle #2", "type": "item"},
+    {"name": "Progressive Beetle #3", "type": "item"},
+    {"name": "Sea Chart", "type": "item"}
+  ],
   "dungeon_sots_limit": 1,
   "dungeon_barren_limit": 1,
   "distribution": {
