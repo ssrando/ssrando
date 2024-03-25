@@ -48,7 +48,8 @@
     {"name": "Lanayru Mining Facility Boss Key", "amount": 1},
     {"name": "Ancient Cistern Boss Key", "amount": 1},
     {"name": "Sandship Boss Key", "amount": 1},
-    {"name": "Fire Sanctuary Boss Key", "amount": 1}
+    {"name": "Fire Sanctuary Boss Key", "amount": 1},
+    {"name": "Tumbleweed", "amount": 1}
   ],
   "removed_items": [],
   "dungeon_sots_limit": 1,
