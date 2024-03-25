@@ -13,25 +13,21 @@
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals",                     "type": "sometimes"},
     {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack",    "type": "always"},
-    {"location": "Sandship - Robot in Brig's Reward",                        "type": "always"},
-    {"location": "Central Skyloft - Waterfall Goddess Chest",                "type": "always"},
+    {"location": "Sandship - Robot in Brig's Reward",                     "type": "sometimes"},
     {"location": "Upper Skyloft - Owlan's Crystals",                         "type": "always"},
     {"location": "Faron Woods - Item behind Lower Bombable Rock",         "type": "sometimes"},
     {"location": "Earth Temple - Rupee in Lava Tunnel",                      "type": "always"},
     {"location": "Ancient Cistern - Rupee under Lilypad",                 "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue Second Trapped Mogma",          "type": "sometimes"},
+    {"location": "Fire Sanctuary - Chest after Bombable Wall",            "type": "sometimes"},
     {"location": "Lanayru Mining Facility - Boss Key Chest",              "type": "sometimes"},
     {"location": "Central Skyloft - Peater/Peatrice's Crystals",          "type": "sometimes"},
-    {"location": "Beedle's Shop - 600 Rupee Item",                        "type": "sometimes"},
     {"location": "Flooded Faron Woods - 16 Dark Blue Tadtones in the South West",  "type": "sometimes"},
-    {"location": "Lanayru Gorge - Digging Spot",                          "type": "sometimes"},
-    {"location": "Skyview - Digging Spot in Crawlspace",                  "type": "sometimes"},
     {"location": "Sandship - Chest at the Stern",                         "type": "sometimes"},
     {"location": "Ancient Cistern - Bokoblin",                            "type": "sometimes"},
     {"location": "Skyloft Village - Bertie's Crystals",                   "type": "sometimes"},
-    {"location": "Skyloft Village - Mallara's Crystals",                  "type": "sometimes"},
     {"location": "Faron Woods - Item behind Lower Bombable Rock",         "type": "sometimes"},
-    {"location": "Sealed Grounds - Song from Impa",                       "type": "sometimes"}
+    {"location": "Sky - Dodoh's Crystals",                                "type": "sometimes"}
   ],
   "removed_locations": [
     "Faron Woods - Chest inside Great Tree",
@@ -43,7 +39,10 @@
     "Ancient Cistern - Chest in East Part",
     "Sandship - Boss Key Chest",
     "Batreaux's House - 50 Crystals",
-    "Lanayru Desert - Secret Passageway Chest"
+    "Lanayru Desert - Secret Passageway Chest",
+    "Lanayru Desert - Secret Passageway Chest",
+    "Sandship - Chest after Scervo Fight",
+    "Lanayru Desert - Fire Node - Shortcut Chest"
   ],
   "added_items": [
     {"name": "Triforce of Courage", "amount": 1},
@@ -72,6 +71,6 @@
     "item":      {"order": 4, "weight": 0.00, "fixed": 4, "copies": 1},
     "sometimes": {"order": 5, "weight": 100.00, "fixed": 12, "copies": 1},
     "random":    {"order": 6, "weight": 0.01, "fixed": 2, "copies": 1},
-    "junk":      {"order": 7, "weight": 0.00, "fixed": 8, "copies": 1}
+    "junk":      {"order": 7, "weight": 0.00, "fixed": 4, "copies": 1}
   }
 }
