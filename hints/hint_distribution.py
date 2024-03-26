@@ -161,7 +161,6 @@ class HintDistribution:
         rng: Random,
         unhintable: List[EIN],
         check_hint_status: Dict[EIN, Literal[None, "sometimes", "always"]],
-        banned_locs: List[EIN],
     ):
         self.useroutput = useroutput
         self.rng = rng
@@ -197,17 +196,6 @@ class HintDistribution:
         self.sometimes_hints = [
             loc for loc, status in check_hint_status2.items() if status == "sometimes"
         ]
-
-        for loc in self.always_hints:
-            if not loc in banned_locs:
-                name = logic.areas.checks[loc]["short_name"]
-                print('{"location": "' + name + '",                     "type": "always"}')
-
-        for loc in self.sometimes_hints:
-            if not loc in banned_locs:
-                name = logic.areas.checks[loc]["short_name"]
-                print('{"location": "' + name + '",                     "type": "sometimes"}')
-
         self.rng.shuffle(self.always_hints)
         self.rng.shuffle(self.sometimes_hints)
 
