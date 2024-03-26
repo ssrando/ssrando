@@ -684,7 +684,8 @@ Faron Woods - Kikwi Elder's Reward:
   Paths:
     - event/200-Forest/595
     - oarc/F100/l0
-  hint: sometimes
+  hint:
+    sometimes: Option "excluded-locations" Does Not Contain "Upper Skyloft - Owlan's Crystals"
   text: the <r<Kikwi relic>> is
 Faron Woods - Rupee on Hollow Tree Root:
   original item: "Blue Rupee #6"
@@ -1610,7 +1611,6 @@ Ancient Cistern - Bokoblin:
 Ancient Cistern - Rupee under Lilypad:
   original item: Red Rupee
   type: Rupees (No Quick Beetle)
-  hint: sometimes
   Paths:
     - stage/D101/r5/l0/Item/13
 Ancient Cistern - Chest in Key Locked Room:
@@ -1623,6 +1623,7 @@ Ancient Cistern - Boss Key Chest:
   type:
   hint:
     always: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
+    sometimes: Nothing
   Paths:
     - stage/D101/r4/l0/TBox/68
 Ancient Cistern - Heart Container:

@@ -5,6 +5,7 @@
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals",                     "type": "always"},
     {"location": "Earth Temple - Rupee in Lava Tunnel",                   "type": "sometimes"},
+    {"location": "Ancient Cistern - Rupee under Lilypad",                 "type": "sometimes"},
     {"location": "Sealed Grounds - Zelda's Blessing",                     "type": "sometimes"}
   ],
   "removed_locations": [
