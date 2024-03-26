@@ -5,27 +5,13 @@
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals",                     "type": "always"},
     {"location": "Sky - Dodoh's Crystals",                                "type": "sometimes"},
-    {"location": "Faron Woods - Item behind Lower Bombable Rock",         "type": "sometimes"},
-    {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack", "type": "always"},
     {"location": "Earth Temple - Rupee in Lava Tunnel",                   "type": "sometimes"},
-    {"location": "Ancient Cistern - Rupee under Lilypad",                 "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue First Trapped Mogma",           "type": "sometimes"}
   ],
   "removed_locations": [
-    "Thunderhead - Isle of Songs - Strike Crest with White Sword",
-    "Faron Woods - Chest inside Great Tree",
-    "Lake Floria - Lake Floria Chest",
-    "Eldin Volcano - Digging Spot behind Boulder on Sandy Slope",
-    "Lanayru Desert - Chest on top of Lanayru Mining Facility",
-    "Lanayru Desert - Secret Passageway Chest",
-    "Lanayru Desert - Fire Node - Shortcut Chest",
-    "Skyview - Chest behind Three Eyes",
-    "Earth Temple - Chest in West Room",
-    "Ancient Cistern - Chest in East Part",
-    "Sandship - Boss Key Chest",
-    "Lanayru Gorge - Thunder Dragon's Reward",
     "Lanayru Mining Facility - Boss Key Chest",
-    "Fire Sanctuary - Chest after Bombable Wall"
+
+    "Central Skyloft - Item in Bird Nest"
   ],
   "added_items": [],
   "removed_items": [],

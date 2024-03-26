@@ -4,30 +4,12 @@
   "banned_stones": [],
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals",                     "type": "always"},
-    {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack", "type": "always"},
-    {"location": "Faron Woods - Item behind Lower Bombable Rock",         "type": "sometimes"},
     {"location": "Earth Temple - Rupee in Lava Tunnel",                   "type": "sometimes"},
-    {"location": "Ancient Cistern - Rupee under Lilypad",                 "type": "sometimes"},
-    {"location": "Fire Sanctuary - Rescue Second Trapped Mogma",          "type": "sometimes"},
-    {"location": "Lanayru Mining Facility - Boss Key Chest",              "type": "sometimes"},
-    {"location": "Lanayru Gorge - Digging Spot",                          "type": "sometimes"}
+    {"location": "Sealed Grounds - Zelda's Blessing",                     "type": "sometimes"}
   ],
   "removed_locations": [
-    "Thunderhead - Isle of Songs - Strike Crest with White Sword",
-    "Faron Woods - Chest inside Great Tree",
-    "Lake Floria - Lake Floria Chest",
-    "Eldin Volcano - Digging Spot behind Boulder on Sandy Slope",
-    "Lanayru Desert - Chest on top of Lanayru Mining Facility",
-    "Skyview - Chest behind Three Eyes",
-    "Earth Temple - Chest in West Room",
-    "Ancient Cistern - Chest in East Part",
-    "Sandship - Boss Key Chest",
-    "Lanayru Gorge - Thunder Dragon's Reward",
-    "Fire Sanctuary - Chest after Bombable Wall",
-    "Sandship - Heart Container",
-    "Lanayru Desert - Fire Node - Shortcut Chest",
-    "Lanayru Desert - Secret Passageway Chest",
-    "Batreaux's House - 50 Crystals"
+    "Central Skyloft - Item in Bird Nest",
+    "Fire Sanctuary - Plats' Chest"
   ],
   "added_items": [
     {"name": "Triforce of Courage", "amount": 1},

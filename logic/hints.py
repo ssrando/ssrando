@@ -140,6 +140,7 @@ class Hints:
             self.rng,
             unhintables + hinted_checks,
             check_hint_status,
+            banned_locs,
         )
         fi_hints, hintstone_hints = self.dist.get_hints()
         self.useroutput.progress_callback("placing hints...")
