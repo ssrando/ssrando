@@ -5,10 +5,11 @@
     "default_assignment": "gossip_stone"
   },
   "banned_stones": [
-   "Temple of Time - Gossip Stone in Temple of Time Area",
      "Lanayru Sand Sea - Gossip Stone in Shipyard",
+     "Central Skyloft - Gossip Stone on Waterfall Island",
      "Eldin Volcano - Gossip Stone in Upper Platform Cave",
-     "Eldin Volcano - Gossip Stone in Lower Platform Cave"
+     "Eldin Volcano - Gossip Stone in Lower Platform Cave",
+     "Volcano Summit - Gossip Stone in Waterfall Area"
 ],
   "added_locations": [
     {"location": "Skyview - Digging Spot in Crawlspace",              "type": "sometimes"},
@@ -20,11 +21,12 @@
     {"location": "Ancient Cistern - Rupee under Lilypad",             "type": "always"},
     {"location": "Ancient Cistern - Bokoblin",                        "type": "always"},
     {"location": "Sandship - Chest after Scervo Fight",               "type": "sometimes"},
-    {"location": "Sandship - Robot in Brig's Reward",                 "type": "sometimes"},
+    {"location": "Sandship - Robot in Brig's Reward",                 "type": "always"},
     {"location": "Sandship - Heart Container",                        "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue First Trapped Mogma",       "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue Second Trapped Mogma",      "type": "always"},
-    {"location": "Fire Sanctuary - Plats' Chest",                     "type": "sometimes"}
+    {"location": "Fire Sanctuary - Plats' Chest",                     "type": "sometimes"},
+    {"location": "Sky Keep - First Chest",                            "type": "sometimes"}
   ],
   "removed_locations": [
     "Thunderhead - Isle of Songs - Strike Crest with White Sword",
@@ -69,9 +71,9 @@
     "goal":      {"order": 1, "weight": 0.00, "fixed": 1, "copies": 1, "assignment": "fi" },
     "always":    {"order": 2, "weight": 0.00, "fixed": 0, "copies": 1},
     "item":      {"order": 3, "weight": 0.00, "fixed": 4, "copies": 1},
-    "sometimes": {"order": 4, "weight": 1.60, "fixed": 5, "copies": 1},
+    "sometimes": {"order": 4, "weight": 1.60, "fixed": 4, "copies": 1},
     "sots":      {"order": 5, "weight": 0.00, "fixed": 1, "copies": 1},
     "random":    {"order": 6, "weight": 0.15, "fixed": 0, "copies": 1},
-    "junk":      {"order": 7, "weight": 0.00, "fixed": 4, "copies": 1}
+    "junk":      {"order": 7, "weight": 0.00, "fixed": 1, "copies": 1}
   }
 }

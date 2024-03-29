@@ -33,8 +33,6 @@
     {"location": "Lanayru Sand Sea - Pirate Stronghold - Third Chest",                              "type": "sometimes"},
     {"location": "Sandship - Robot in Brig's Reward",                                                  "type": "always"},
     {"location": "Lanayru Mining Facility - Chest in Key Locked Room",                              "type": "sometimes"},
-    {"location": "Lanayru Desert - Chest on top of Lanayru Mining Facility",                        "type": "sometimes"},
-    {"location": "Lanayru Desert - Lightning Node - Raised Chest near Generator",                   "type": "sometimes"},
     {"location": "Sandship - Chest at the Stern",                                                   "type": "sometimes"}
   ],
   "removed_locations": [
@@ -83,7 +81,7 @@
     "goal":      {"order": 1, "weight": 0.00, "fixed": 0, "copies": 1},
     "always":    {"order": 2, "weight": 0.00, "fixed": 0, "copies": 1},
     "item":      {"order": 3, "weight": 0.00, "fixed": 2, "copies": 1},
-    "sometimes": {"order": 4, "weight": 1.60, "fixed": 7, "copies": 1},
+    "sometimes": {"order": 4, "weight": 1.60, "fixed": 8, "copies": 1},
     "sots":      {"order": 5, "weight": 0.00, "fixed": 0, "copies": 1},
     "random":    {"order": 6, "weight": 0.15, "fixed": 2, "copies": 1},
     "barren":    {"order": 7, "weight": 0.00, "fixed": 0, "copies": 1}
