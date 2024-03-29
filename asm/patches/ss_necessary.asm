@@ -443,6 +443,58 @@ bl has_heart_drops_enabled
 .org 0x801bf4f8
 b game_update_hook
 
+; trigger load archive in TBox
+.org 0x8026a7d4
+addi r4, r31, 0x230
+
+; load arcs from item
+.org 0x8026c3f4
+lhz r3, 0x1200(r31) ; load itemid
+bl load_arcs_for_item
+
+; wait for arcs loaded
+.org 0x8026c478
+lhz r3, 0x1200(r31) ; load itemid
+bl check_arcs_loaded
+cmpwi r3, 0
+beq 0x8026c4a4
+
+.org 0x8024d54c
+lhz r3, 0xd44(r29) ; final determined item id
+bl unload_arcs_for_item
+; function epilogue because we added an instruction
+lwz r31, 0x1c(r1)
+lwz r30, 0x18(r1)
+lwz r29, 0x14(r1)
+lwz r0, 0x24(r1)
+mtlr r0
+addi r1, r1, 0x20
+blr
+
+.org 0x80541838
+.int RandoActorGlue_ctor
+
+; fix vtable
+.org 0x8054184c
+.int RandoActorGlue_init
+
+.org 0x80541854
+.int 0x802e15e0
+.int RandoActorGlue_destroy
+
+.org 0x80541860
+.int 0x802e17a0
+.int RandoActorGlue_update
+.int 0x80050890
+.int 0x800508f0
+
+.org 0x8054188c
+.int RandoActorGlue_dtor
+
+.org 0x804e2788
+.word 1
+.word 1
+
 .close
 
 

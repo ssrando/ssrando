@@ -4,6 +4,7 @@
 #![feature(ascii_char)]
 #![feature(format_args_nl)]
 #![feature(slice_ptr_get)]
+#![feature(slice_partition_dedup)]
 #![allow(dead_code)]
 #![deny(clippy::no_mangle_with_rust_abi)]
 #![deny(improper_ctypes)]

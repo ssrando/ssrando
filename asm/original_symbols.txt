@@ -26,7 +26,6 @@ main.dol:
     # --------------- MISC   STUFF ----------------------------
     FontMgr__GetFont: 0x80053f30
     allocOnCurrentHeap: 0x80054ec0
-    getModelDataFromOarc: 0x80069b30
     TextManager__setNumericArgs: 0x800b8a60
     TextManager__setStringArg: 0x800b7fa0
     AcOTBox__initDowsingTarget: 0x8026d780
@@ -61,6 +60,16 @@ main.dol:
     func_0x802ee0e0: 0x802ee0e0
     RUPEE_ITEM_TO_TEX_FRAME: 0x804e9a48
     INPUT_BUFFER: 0x80599d0c
+    # --------------- ARC MANAGERS ----------------------------
+    OARC_MANAGER: 0x80575280
+    getModelDataFromOarc: 0x80069b30
+    ArcManager__decrementRefCount: 0x80069af0
+    ArcManager__ensureLoaded: 0x80069ad0
+    ArcManager__findEntryData: 0x8006a260
+    loadObjectArcFromDisk: 0x80069a30
+    ITEM_MODEL_INDEX: 0x804e9650
+    ITEM_TO_MODEL_INDEX: 0x804e8db0
+    ITEM_MODEL_DEFS: 0x804e96f8
     # --------------- FLAG MANAGERS ---------------------------
     # this, roomid, flag
     SceneflagManager__checkFlag: 0x800bdeb0
@@ -113,6 +122,14 @@ main.dol:
     AcItem__isBabyRattle: 0x80256c30
     NUMBER_OF_ITEMS: 0x805758d0
     ITEM_GET_BOTTLE_POUCH_SLOT: 0x8057398c
+    MODEL_ID_TO_PUT_ITEM_MODEL_IDX: 0x804e91d0
+    PUT_ITEM_MODEL_NAMES: 0x804e9278
+    GET_SHIELD_MODEL_INDEX: 0x804e9318
+    GET_SHIELD_MODEL_NAMES: 0x804e93c0
+    GET_BOTTLE_MODEL_INDEX: 0x804e9450
+    GET_BOTTLE_MODEL_NAMES: 0x804e94f8
+    GET_POTION_BOTTLE_MODEL_INDEX: 0x804e9568
+    GET_POTION_BOTTLE_DEFS: 0x804e9610
     getKeyPieceCount: 0x802522f0
     getGratitudeCrystalCount: 0x80252710
     # ----------------- TEXT ----------------------------------
@@ -164,6 +181,13 @@ main.dol:
     iosAllocAligned: 0x804273e0
     iosFree: 0x804275f0
     IOS_HEAP: 0x80574d9c
+
+
+    fBase__operatorNew: 0x802e23b0
+    dBase_c__ctor: 0x80050800
+    dBase____dt: 0x8002c530
+    ActorBase__getDistToPlayer: 0x8002d470
+    ActorBase__getSquareDistToPlayer: 0x8002d4a0
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
 d_a_obj_time_boatNP.rel:

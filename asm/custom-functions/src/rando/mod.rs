@@ -8,25 +8,35 @@ use core::{
     ptr, slice,
 };
 
+use alloc::vec::Vec;
+use arrayvec::ArrayVec;
 use cstr::cstr;
 
 use wchar::wch;
 
 use crate::{
     game::{
-        actor, arc,
+        actor,
+        arc::{self, OarcManager},
         bird::AcOBird,
         events::ActorEventFlowMgr,
         file_manager,
         flag_managers::*,
-        item,
+        item::{self, get_item_arc_names_for_item, get_item_model_def_for_item},
         message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement},
         minigame::SpecialMinigameState,
         player,
         reloader::{self, Reloader},
     },
-    system::button::*,
+    println,
+    system::{
+        button::*,
+        game_frame,
+        heap::{get_work1_heap, get_work2_heap, WiiHeapAllocator},
+    },
 };
+
+mod custom_actor;
 
 #[link_section = "data"]
 static mut IS_FILE_START: bool = false;
@@ -500,10 +510,129 @@ extern "C" fn get_glow_color(item_id: u32) -> u32 {
     4
 }
 
+#[link_section = "data"]
+#[no_mangle]
+static mut ITEM_ID: u16 = 0;
+
 #[no_mangle]
 extern "C" fn game_update_hook() -> u32 {
-    // This gets called everytime the game actor updates
+    let mut changed = false;
+    let item_id = unsafe { &mut ITEM_ID };
+    if is_pressed(Buttons::DPAD_LEFT) {
+        *item_id += 1;
+        changed = true;
+    }
+    if is_pressed(Buttons::DPAD_RIGHT) {
+        *item_id -= 1;
+        changed = true
+    }
+    if is_pressed(Buttons::Z) {
+        load_arcs_for_item(*item_id);
+    }
+    if is_any_pressed(Buttons::C) {
+        unload_arcs_for_item(*item_id);
+    }
+    if changed {
+        let arc_names = get_item_arc_names_for_item(*item_id);
+        let all_loaded = arc_names
+            .iter()
+            .all(|name| OarcManager.ensure_loaded(*name) == 0);
+        println!("{item_id}: {all_loaded} {arc_names:?}");
+    }
+    if changed || game_frame() % 16 == 0 {
+        for arc in &get_item_arc_names_for_item(*item_id) {
+            OarcManager.ensure_loaded(*arc);
+            println!("{:X}", OarcManager.find_entry_data(*arc) as u32);
+        }
+    }
+    // if let Some(model_def) = get_item_model_def_for_item(item_id) {
+    //     let current_state = OarcManager.ensure_loaded(model_def.arc_name);
+
+    //     if current_state < 0 {
+    //         OarcManager.load_object_arc_from_disc(model_def.arc_name);
+    //     }
+
+    //     if game_frame() % 10 == 0 {
+    //         let ptr = OarcManager.find_entry_data(model_def.arc_name);
+    //         println!(
+    //             "item: {item_id}, state: {current_state}, ptr: {:X}",
+    //             ptr as u32
+    //         );
+    //     }
+    // }
     1
+}
+
+#[derive(Clone, Copy)]
+struct ItemIdWithCount {
+    item:  u8,
+    count: u8,
+}
+
+#[link_section = "data"]
+// it's always sorted
+static mut DYNAMIC_LOADED_ITEM_ID_ARCS: ArrayVec<u16, 0x20> = ArrayVec::new_const();
+
+#[no_mangle]
+extern "C" fn load_arcs_for_item(item_id: u16) {
+    let arc_names = get_item_arc_names_for_item(item_id);
+    if !arc_names.is_empty() {
+        let dynamic_loaded_item_id_arcs = unsafe { &mut DYNAMIC_LOADED_ITEM_ID_ARCS };
+        let search = dynamic_loaded_item_id_arcs.binary_search(&item_id);
+        let pos = match search {
+            Ok(x) => x,
+            Err(x) => x,
+        };
+        dynamic_loaded_item_id_arcs.insert(pos, item_id);
+        if search.is_ok() {
+            // if it's already loaded
+            return;
+        }
+        // if arc_names
+        //     .iter()
+        //     .all(|arc| OarcManager.ensure_loaded(*arc) == 0)
+        // {
+        //     // if the game already loaded it, skip it
+        //     return;
+        // }
+        for arc in &arc_names {
+            OarcManager.load_object_arc_from_disc(*arc);
+        }
+    }
+}
+
+#[no_mangle]
+extern "C" fn check_arcs_loaded(item_id: u16) -> bool {
+    get_item_arc_names_for_item(item_id)
+        .iter()
+        .all(|arc| OarcManager.ensure_loaded(*arc) == 0)
+}
+
+#[no_mangle]
+extern "C" fn unload_arcs_for_item(item_id: u16) -> u32 {
+    let dynamic_loaded_item_id_arcs = unsafe { &mut DYNAMIC_LOADED_ITEM_ID_ARCS };
+    if let Ok(idx) = dynamic_loaded_item_id_arcs.binary_search(&item_id) {
+        dynamic_loaded_item_id_arcs.remove(idx);
+        // if the item id still needs to be loaded, don't unload it
+        if !dynamic_loaded_item_id_arcs.binary_search(&item_id).is_ok() {
+            for arc in &get_item_arc_names_for_item(item_id) {
+                OarcManager.decement_ref_count(*arc);
+            }
+        }
+    }
+    1
+}
+
+#[no_mangle]
+extern "C" fn unload_all_arcs() {
+    let dynamic_loaded_item_id_arcs = unsafe { &mut DYNAMIC_LOADED_ITEM_ID_ARCS };
+    let (dedup, _) = dynamic_loaded_item_id_arcs.partition_dedup();
+    for chest_loaded_item_id in dedup {
+        for arc in &get_item_arc_names_for_item(*chest_loaded_item_id) {
+            OarcManager.decement_ref_count(*arc);
+        }
+    }
+    dynamic_loaded_item_id_arcs.clear();
 }
 
 #[link_section = "data"]
