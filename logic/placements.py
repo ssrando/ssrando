@@ -63,9 +63,9 @@ def norm_values(dict: Dict[EIN, str]):
     return norm_values
 
 
-HARDCODED_PLACEMENT = norm_keys({
-    "Upper Skyloft - Chest near Goddess Statue": EIN("Clawshots")
-})
+HARDCODED_PLACEMENT = norm_keys(
+    {"Upper Skyloft - Chest near Goddess Statue": EIN("Clawshots")}
+)
 
 BEEDLE_CHECKS = [
     "Beedle's Shop - 300 Rupee Item",
