@@ -13,8 +13,8 @@
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals",                     "type": "sometimes"},
     {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack",    "type": "always"},
-    {"location": "Batreaux - 70 Crystals",                                   "type": "always"},
-    {"location": "Batreaux - 70 Crystals Second Reward",                     "type": "always"},
+    {"location": "Batreaux's House - 70 Crystals",                           "type": "always"},
+    {"location": "Batreaux's House - 70 Crystals Second Reward",             "type": "always"},
     {"location": "Sandship - Robot in Brig's Reward",                     "type": "sometimes"},
     {"location": "Upper Skyloft - Owlan's Crystals",                         "type": "always"},
     {"location": "Faron Woods - Item behind Lower Bombable Rock",         "type": "sometimes"},
