@@ -895,23 +895,24 @@ items:
 - \Faron\Faron Woods\Amber Relic Farming
 - \Faron\Faron Woods\Hit Vine to Deep Woods
 - \Faron\Faron Woods\Open Trial Gate
-- \Faron\Faron Woods\Open Door to Lake Floria
 - \Faron\Faron Woods\Rupee on Hollow Tree Root
 - \Faron\Faron Woods\Rupee on Hollow Tree Branch
-- \Faron\Faron Woods\Rupee on Platform near Floria Door
 - \Faron\Faron Woods\All Kikwis Saved
 - \Faron\Faron Woods\Kikwi Elder's Reward
 - \Faron\Faron Woods\Item on Tree
 - \Faron\Faron Woods\Item behind Lower Bombable Rock
 - \Faron\Faron Woods\Chest behind Upper Bombable Rock
 - \Faron\Faron Woods\Entry\Unlock Statue
-- \Faron\Faron Woods\Ledge to Lake Floria\Push Log
+- \Faron\Faron Woods\Entry\Ledge to Lake Floria\Push Log
 - \Faron\Faron Woods\Behind the Crawlspace and Rope\Push Log
 - \Faron\Faron Woods\Behind the Crawlspace and Rope\Retrieve Oolo
 - \Faron\Faron Woods\West Branch\Goddess Cube on West Great Tree near Exit
 - \Faron\Faron Woods\Clawshot Target Branch\Goddess Cube on East Great Tree with Clawshots
   Target
 - \Faron\Faron Woods\Rope Branch\Goddess Cube on East Great Tree with Rope
+- \Faron\Faron Woods\Door to Lake Floria\Hit Vine
+- \Faron\Faron Woods\Door to Lake Floria\Open Door to Lake Floria
+- \Faron\Faron Woods\Door to Lake Floria\Rupee on Platform near Floria Door
 - \Faron\Faron Woods\Great Tree\Lower Area\Path to Chest\Chest inside Great Tree
 - \Faron\Faron Woods\Great Tree\Upper Area\Remove Void Plane
 - \Faron\Faron Woods\Great Tree\Top\Unlock Statue
@@ -1516,13 +1517,14 @@ items:
 - \Faron\Sealed Grounds\Hylia's Temple
 - \Faron\Sealed Grounds\Behind the Temple
 - \Faron\Sealed Grounds
+- \Faron\Faron Woods\Entry\Ledge to Lake Floria
 - \Faron\Faron Woods\Entry
-- \Faron\Faron Woods\Ledge to Lake Floria
 - \Faron\Faron Woods\Ledge To Deep Woods
 - \Faron\Faron Woods\Behind the Crawlspace and Rope
 - \Faron\Faron Woods\West Branch
 - \Faron\Faron Woods\Clawshot Target Branch
 - \Faron\Faron Woods\Rope Branch
+- \Faron\Faron Woods\Door to Lake Floria
 - \Faron\Faron Woods\Great Tree\Near Underwater Hole
 - \Faron\Faron Woods\Great Tree\Lower Area\Path to Chest
 - \Faron\Faron Woods\Great Tree\Lower Area\Near Exit
@@ -1923,8 +1925,8 @@ items:
 - \Faron\Faron Woods\Shared Statue Exit
 - \Faron\Faron Woods\Entry\Exit to Behind the Temple
 - \Faron\Faron Woods\Ledge To Deep Woods\Exit to Deep Woods
-- \Faron\Faron Woods\Lake Floria Dive
-- \Faron\Faron Woods\Ledge to Lake Floria\Shortcut Exit to Floria Waterfall
+- \Faron\Faron Woods\Door to Lake Floria\Lake Floria Dive
+- \Faron\Faron Woods\Entry\Ledge to Lake Floria\Shortcut Exit to Floria Waterfall
 - \Faron\Faron Woods\Trial Gate Exit
 - \Faron\Faron Silent Realm\Exit
 - \Faron\Faron Woods\Great Tree\Platforms\Lower Exit to Great Tree
@@ -2205,7 +2207,7 @@ items:
 - \Faron\Faron Woods\Viewing Platform Statue Entrance
 - \Faron\Faron Woods\Great Tree\Top\The Great Tree Statue Entrance
 - \Faron\Faron Woods\Entry\Entrance from Behind the Temple
-- \Faron\Faron Woods\Ledge to Lake Floria\Shortcut Entrance from Floria Waterfall
+- \Faron\Faron Woods\Entry\Ledge to Lake Floria\Shortcut Entrance from Floria Waterfall
 - \Faron\Faron Woods\Ledge To Deep Woods\Entrance from Deep Woods
 - \Faron\Faron Woods\Trial Gate Entrance
 - \Faron\Faron Silent Realm\Entrance
@@ -3976,19 +3978,16 @@ areas:
             \Faron\Faron Woods\Entry: 'True'
             Shared Statue Exit: "\\Faron\\Faron Woods\\Unlock In the Woods Statue\
               \ | \\Faron\\Faron Woods\\Unlock Viewing Platform Statue"
+            \Faron\Faron Woods\Door to Lake Floria: "\\Sword | Bomb Bag | \\Faron\\\
+              Faron Woods\\Door to Lake Floria\\Hit Vine"
             Trial Gate Exit: \Faron\Faron Woods\Open Trial Gate
             \Faron\Faron Woods\Great Tree\Near Underwater Hole: Water Dragon's Scale
             \Faron\Faron Woods\Great Tree\Platforms: Clawshots
             \Faron\Faron Woods\Clawshot Target Branch: Clawshots
-            Lake Floria Dive: "\\Faron\\Faron Woods\\Open Door to Lake Floria | (Early\
-              \ Lake Floria - Fence Hop Trick & \\Practice Sword)"
-            \Faron\Faron Woods\Ledge to Lake Floria: "\\Faron\\Faron Woods\\Ledge\
-              \ to Lake Floria\\Push Log | (Early Lake Floria - Fence Hop Trick &\
-              \ \\Practice Sword) | Early Lake Floria - Swordless Rope Floria Trick"
             \Faron\Faron Woods\Ledge To Deep Woods: \Faron\Faron Woods\Hit Vine to
               Deep Woods
             \Faron\Faron Woods\Behind the Crawlspace and Rope: "Bomb Bag | \\Faron\\\
-              Faron Woods\\Ledge to Lake Floria\\Push Log"
+              Faron Woods\\Behind the Crawlspace and Rope\\Push Log"
           hint_region: Faron Woods
           locations:
             Unlock Viewing Platform Statue: 'True'
@@ -3997,14 +3996,12 @@ areas:
             Amber Relic Farming: 'True'
             Hit Vine to Deep Woods: \Distance Activator
             Open Trial Gate: "Goddess's Harp & Farore's Courage"
-            Open Door to Lake Floria: "(Open Lake Floria option & Water Dragon's Scale)\
-              \ | (\\Faron\\Faron Woods\\Great Tree\\Top\\Talk to Yerbal & (\\Goddess\
-              \ Sword | Talk to Yerbal option))"
             Rupee on Hollow Tree Root: 'True'
             Rupee on Hollow Tree Branch: \Beetle
-            Rupee on Platform near Floria Door: \Beetle
             All Kikwis Saved: "(\\Sword | \\Beetle) & \\Can Defeat Bokoblins"
             Kikwi Elder's Reward: \Faron\Faron Woods\All Kikwis Saved
+            \Faron\Faron Woods\Door to Lake Floria\Hit Vine: "\\Beetle | Clawshots\
+              \ | \\Bow"
             Item on Tree: 'True'
             Item behind Lower Bombable Rock: Bomb Bag
             Chest behind Upper Bombable Rock: Bomb Bag
@@ -4024,27 +4021,30 @@ areas:
                 \Faron\Faron Woods: "\\Sword | Bomb Bag | Clawshots | \\Faron\\Faron\
                   \ Woods\\Push Log to Sealed Grounds"
                 Exit to Behind the Temple: 'True'
+                \Faron\Faron Woods\Entry\Ledge to Lake Floria: "Early Lake Floria\
+                  \ - Swordless Rope Floria Trick | \\Faron\\Faron Woods\\Entry\\\
+                  Ledge to Lake Floria\\Push Log"
               hint_region: Faron Woods
               locations:
                 Unlock Statue: 'True'
               name: \Faron\Faron Woods\Entry
-              sub_areas: {}
-              toplevel_alias: null
-            Ledge to Lake Floria:
-              abstract: false
-              allowed_time_of_day: 1
-              can_save: false
-              can_sleep: false
-              entrances:
-              - Shortcut Entrance from Floria Waterfall
-              exits:
-                \Faron\Faron Woods: 'True'
-                Shortcut Exit to Floria Waterfall: 'True'
-              hint_region: Faron Woods
-              locations:
-                Push Log: 'True'
-              name: \Faron\Faron Woods\Ledge to Lake Floria
-              sub_areas: {}
+              sub_areas:
+                Ledge to Lake Floria:
+                  abstract: false
+                  allowed_time_of_day: 1
+                  can_save: false
+                  can_sleep: false
+                  entrances:
+                  - Shortcut Entrance from Floria Waterfall
+                  exits:
+                    \Faron\Faron Woods: 'True'
+                    Shortcut Exit to Floria Waterfall: 'True'
+                  hint_region: Faron Woods
+                  locations:
+                    Push Log: 'True'
+                  name: \Faron\Faron Woods\Entry\Ledge to Lake Floria
+                  sub_areas: {}
+                  toplevel_alias: null
               toplevel_alias: null
             Ledge To Deep Woods:
               abstract: false
@@ -4117,6 +4117,29 @@ areas:
               locations:
                 Goddess Cube on East Great Tree with Rope: \Goddess Sword
               name: \Faron\Faron Woods\Rope Branch
+              sub_areas: {}
+              toplevel_alias: null
+            Door to Lake Floria:
+              abstract: false
+              allowed_time_of_day: 1
+              can_save: false
+              can_sleep: false
+              entrances: []
+              exits:
+                \Faron\Faron Woods: 'True'
+                Lake Floria Dive: "\\Faron\\Faron Woods\\Door to Lake Floria\\Open\
+                  \ Door to Lake Floria | (Early Lake Floria - Fence Hop Trick & \\\
+                  Practice Sword)"
+                \Faron\Faron Woods\Entry\Ledge to Lake Floria: "Early Lake Floria\
+                  \ - Fence Hop Trick & \\Practice Sword"
+              hint_region: Faron Woods
+              locations:
+                Hit Vine: "\\Sword | Bomb Bag"
+                Open Door to Lake Floria: "(Open Lake Floria option & Water Dragon's\
+                  \ Scale) | (\\Faron\\Faron Woods\\Great Tree\\Top\\Talk to Yerbal\
+                  \ & (\\Goddess Sword | Talk to Yerbal option))"
+                Rupee on Platform near Floria Door: \Beetle
+              name: \Faron\Faron Woods\Door to Lake Floria
               sub_areas: {}
               toplevel_alias: null
             Great Tree:
@@ -9278,7 +9301,7 @@ checks:
     original item: 'Red Rupee #27'
     type: Rupees (No Quick Beetle)
     short_name: Faron Woods - Rupee on Hollow Tree Branch
-  \Faron\Faron Woods\Rupee on Platform near Floria Door:
+  \Faron\Faron Woods\Door to Lake Floria\Rupee on Platform near Floria Door:
     original item: 'Red Rupee #26'
     type: Rupees (No Quick Beetle)
     short_name: Faron Woods - Rupee on Platform near Floria Door
@@ -10830,12 +10853,12 @@ exits:
     vanilla: Deep Woods - Entrance from Faron Woods
     stage: F100
     short_name: Faron Woods - Exit to Deep Woods
-  \Faron\Faron Woods\Lake Floria Dive:
+  \Faron\Faron Woods\Door to Lake Floria\Lake Floria Dive:
     type: exit
     vanilla: Lake Floria - Dive from Faron Woods
     stage: F100
     short_name: Faron Woods - Lake Floria Dive
-  \Faron\Faron Woods\Ledge to Lake Floria\Shortcut Exit to Floria Waterfall:
+  \Faron\Faron Woods\Entry\Ledge to Lake Floria\Shortcut Exit to Floria Waterfall:
     type: exit
     vanilla: Floria Waterfall - Entrance from Faron Woods
     stage: F100
@@ -12013,7 +12036,7 @@ entrances:
     stage: F100
     allowed_time_of_day: 1
     short_name: Faron Woods - Entrance from Behind the Temple
-  \Faron\Faron Woods\Ledge to Lake Floria\Shortcut Entrance from Floria Waterfall:
+  \Faron\Faron Woods\Entry\Ledge to Lake Floria\Shortcut Entrance from Floria Waterfall:
     type: entrance
     province: Faron Province
     stage: F100

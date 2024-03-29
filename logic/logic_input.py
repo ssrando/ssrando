@@ -4,7 +4,7 @@ from collections import deque
 from enum import Enum
 from dataclasses import dataclass, field
 
-from .logic_expression import DNFInventory, LogicExpression
+from .logic_expression import DNFInventory, LogicExpression, EventAtom
 from .inventory import EXTENDED_ITEM, Inventory
 from .constants import *
 
@@ -99,7 +99,11 @@ class Area(Generic[LE]):
         if (v := raw_dict.get("entrance")) is not None:
             if parent is None:
                 raise ValueError("An entrance was given but no parent to give it to.")
-            parent.exits[name.rsplit("\\", 1)[-1]] = LogicExpression.parse(v)
+            rel_name = name.rsplit("\\", 1)[-1]
+            req0 = parent.exits.get(rel_name)
+            req1 = LogicExpression.parse(v)
+            req = req0 | req1 if req0 is not None else req1
+            parent.exits[rel_name] = req
 
         area.sub_areas = {
             k: cls.of_yaml(with_sep_full(name, k), v, area)
