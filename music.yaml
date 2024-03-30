@@ -141,7 +141,7 @@
   name: Sailing the Sand Sea
   numsamples: 3306116
   streams: 3
-  type: 6
+  type: 7
 12F7A68A86516E2DE04D90C0D286D423:
   audiolen: 3854624
   audiolenLoc: 1042816
@@ -330,7 +330,7 @@
   name: Ancient Cistern
   numsamples: 4129953
   streams: 2
-  type: 5
+  type: 4
 2E0AFD66CE693C928E73E3F9CC34A9C4:
   audiolen: 2136576
   audiolenLoc: 1040164
@@ -348,7 +348,7 @@
   name: Skyview
   numsamples: 2655726
   streams: 3
-  type: 6
+  type: 7
 2FAC6CAAB0DD2E75606888E65F9BBAF2:
   audiolen: 7175744
   audiolenLoc: 1039144
@@ -420,7 +420,7 @@
   name: Skyview 2
   numsamples: 2655726
   streams: 3
-  type: 6
+  type: 7
 39098741AA0EB81704C653A345319E15:
   audiolen: 8791776
   audiolenLoc: 1042068
@@ -1527,7 +1527,7 @@ BE5DE649E09A351FB82A418633F9EA67:
   name: Lake Floria
   numsamples: 3529416
   streams: 3
-  type: 7
+  type: 6
 BEA72DEE936C8A52D4AEBD355BBCC5A3:
   audiolen: 983072
   audiolenLoc: 1053288
@@ -2085,7 +2085,7 @@ F750507AF4CB3758DECE7CEC185EBD91:
   name: Skyview 3
   numsamples: 2655726
   streams: 3
-  type: 6
+  type: 7
 FC171FA0CE86ACE09E11E975E2707740:
   audiolen: 99360
   audiolenLoc: 1054852
