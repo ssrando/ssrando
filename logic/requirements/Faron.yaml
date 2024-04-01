@@ -96,13 +96,13 @@ Faron Woods:
     locations:
       Unlock Statue: Nothing
 
-    Ledge to Lake Floria:
-      entrance: Push Log
-      exits:
-        Faron - Faron Woods: Nothing
-        Shortcut Exit to Floria Waterfall: Nothing
-      locations:
-        Push Log: Nothing
+  Ledge to Lake Floria:
+    entrance: Ledge to Lake Floria - Push Log
+    exits:
+      Faron - Faron Woods: Nothing
+      Shortcut Exit to Floria Waterfall: Nothing
+    locations:
+      Push Log: Nothing
 
   Ledge To Deep Woods:
     entrance: Hit Vine to Deep Woods
@@ -111,7 +111,7 @@ Faron Woods:
       Exit to Deep Woods: Nothing
 
   Behind the Crawlspace and Rope:
-    entrance: Bomb Bag | Push Log
+    entrance: Bomb Bag | Behind the Crawlspace and Rope - Push Log
     exits:
       Faron - Faron Woods: Nothing
     locations:
