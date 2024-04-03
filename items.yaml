@@ -55,10 +55,9 @@
   getmodelname: GetBowA
 - id: 20
   name: Clawshots
-  oarc: null
-  # oarc: GetHookShot
-  # getarcname: GetHookShot
-  # getmodelname: GetHookShot
+  oarc: GetHookShot
+  getarcname: GetHookShot
+  getmodelname: GetHookShot
 - id: 21
   name: Spiral Charge
   oarc: GetBirdStatue

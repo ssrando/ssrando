@@ -67,9 +67,6 @@ main.dol:
     ArcManager__ensureLoaded: 0x80069ad0
     ArcManager__findEntryData: 0x8006a260
     loadObjectArcFromDisk: 0x80069a30
-    ITEM_MODEL_INDEX: 0x804e9650
-    ITEM_TO_MODEL_INDEX: 0x804e8db0
-    ITEM_MODEL_DEFS: 0x804e96f8
     # --------------- FLAG MANAGERS ---------------------------
     # this, roomid, flag
     SceneflagManager__checkFlag: 0x800bdeb0
@@ -122,6 +119,9 @@ main.dol:
     AcItem__isBabyRattle: 0x80256c30
     NUMBER_OF_ITEMS: 0x805758d0
     ITEM_GET_BOTTLE_POUCH_SLOT: 0x8057398c
+    ITEM_MODEL_INDEX: 0x804e9650
+    ITEM_TO_MODEL_INDEX: 0x804e8db0
+    ITEM_MODEL_DEFS: 0x804e96f8
     MODEL_ID_TO_PUT_ITEM_MODEL_IDX: 0x804e91d0
     PUT_ITEM_MODEL_NAMES: 0x804e9278
     GET_SHIELD_MODEL_INDEX: 0x804e9318
@@ -182,7 +182,7 @@ main.dol:
     iosFree: 0x804275f0
     IOS_HEAP: 0x80574d9c
 
-
+    # ----------------- Low level actor stuff -----------------
     fBase__operatorNew: 0x802e23b0
     dBase_c__ctor: 0x80050800
     dBase____dt: 0x8002c530
