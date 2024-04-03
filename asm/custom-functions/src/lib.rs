@@ -35,7 +35,7 @@ macro_rules! println {
 }
 
 #[panic_handler]
-fn panic(info: &core::panic::PanicInfo) -> ! {
-    println!("{}", info);
+fn panic(_info: &core::panic::PanicInfo) -> ! {
+    // println!("{}", info);
     loop {}
 }

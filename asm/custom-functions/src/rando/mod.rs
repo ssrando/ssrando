@@ -8,33 +8,24 @@ use core::{
     ptr, slice,
 };
 
-use alloc::vec::Vec;
-use arrayvec::ArrayVec;
 use cstr::cstr;
 
 use wchar::wch;
 
 use crate::{
     game::{
-        actor,
-        arc::{self, OarcManager},
+        actor, arc,
         bird::AcOBird,
         events::ActorEventFlowMgr,
         file_manager,
         flag_managers::*,
-        item::{self, get_item_arc_names_for_item, get_item_model_def_for_item},
+        item,
         message::{text_manager_set_num_args, text_manager_set_string_arg, FlowElement},
         minigame::SpecialMinigameState,
         player,
         reloader::{self, Reloader},
     },
-    println,
-    system::{
-        button::*,
-        game_frame,
-        heap::{get_work1_heap, get_work2_heap, WiiHeapAllocator},
-    },
-    utils::char_writer::{write_to_screen, CharWriter, TextWriterBase},
+    system::button::*,
 };
 
 mod custom_actor;
