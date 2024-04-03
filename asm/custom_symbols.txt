@@ -14,38 +14,40 @@ main.dol:
   is_custom_rando_item: 0x806785A8
   fix_custom_item_get: 0x806785C8
   check_scrapper_repaired: 0x8067867C
-  process_startflags: 0x8067868C
-  handle_bk_map_dungeonflag: 0x806788B4
-  rando_text_command_handler: 0x80678960
-  textbox_a_pressed_or_b_held: 0x80678C78
-  set_goddess_sword_pulled_scene_flag: 0x80678CB8
-  randomize_boss_key_start_pos: 0x80678CE4
-  get_item_arc_name: 0x80678D10
-  get_item_model_name_ptr: 0x80678D54
-  enforce_loftwing_speed_cap: 0x80678D90
-  give_item_with_sceneflag: 0x80678E7C
-  get_start_info: 0x80678F0C
-  send_to_start: 0x80678F18
-  do_er_fixes: 0x80678F74
-  allow_set_respawn_info: 0x80679298
-  get_glow_color: 0x806792C0
-  game_update_hook: 0x80679324
-  load_arcs_for_item: 0x80679628
-  check_arcs_loaded: 0x8067978C
-  unload_arcs_for_item: 0x80679834
-  unload_all_arcs: 0x806799A0
-  has_upgraded_skyward_strike: 0x80679B00
-  has_fast_air_meter_drain: 0x80679B10
-  has_heart_drops_enabled: 0x80679B20
-  RandoActorGlue_ctor: 0x8067B08C
-  RandoActorGlue_init: 0x8067B0D8
-  RandoActorGlue_update: 0x8067B0FC
-  RandoActorGlue_destroy: 0x8067B264
-  RandoActorGlue_dtor: 0x8067B26C
-  storyflag_set_to_1: 0x8067B514
-  FORCE_MOGMA_CAVE_DIVE: 0x8067B949
-  ITEM_ID: 0x8067B94A
-  HERO_MODE_OPTIONS: 0x8067B990
+  storyflag_set_to_1: 0x806788C4
+  RandoActorGlue_ctor: 0x80678A48
+  RandoActorGlue_init: 0x80678A94
+  RandoActorGlue_update: 0x80678AC4
+  RandoActorGlue_destroy: 0x80678CF0
+  RandoActorGlue_dtor: 0x80678D30
+  process_startflags: 0x80679F10
+  handle_bk_map_dungeonflag: 0x8067A138
+  rando_text_command_handler: 0x8067A1E4
+  send_to_start: 0x8067A4FC
+  textbox_a_pressed_or_b_held: 0x8067A558
+  set_goddess_sword_pulled_scene_flag: 0x8067A598
+  randomize_boss_key_start_pos: 0x8067A5C4
+  get_item_arc_name: 0x8067A5F0
+  get_item_model_name_ptr: 0x8067A634
+  enforce_loftwing_speed_cap: 0x8067A670
+  give_item_with_sceneflag: 0x8067A75C
+  get_start_info: 0x8067A7EC
+  do_er_fixes: 0x8067A7F8
+  allow_set_respawn_info: 0x8067AB1C
+  get_glow_color: 0x8067AB44
+  game_update_hook: 0x8067ABA8
+  load_arcs_for_item: 0x8067AEB4
+  load_arcs_for_tbox_item_get: 0x8067B06C
+  check_arcs_loaded: 0x8067B0B0
+  unload_arcs_for_item: 0x8067B1DC
+  unload_arcs_after_tbox_item_get: 0x8067B2F8
+  unload_all_arcs: 0x8067B33C
+  has_upgraded_skyward_strike: 0x8067B424
+  has_fast_air_meter_drain: 0x8067B434
+  has_heart_drops_enabled: 0x8067B444
+  FORCE_MOGMA_CAVE_DIVE: 0x8067BC69
+  ITEM_ID: 0x8067BC6A
+  HERO_MODE_OPTIONS: 0x8067BCD0
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340

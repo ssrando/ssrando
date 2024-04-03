@@ -186,6 +186,8 @@ main.dol:
     fBase__operatorNew: 0x802e23b0
     dBase_c__ctor: 0x80050800
     dBase____dt: 0x8002c530
+    ActorBase__ctor: 0x8002c3b0
+    ActorBase__dtor: 0x8002c590
     ActorBase__getDistToPlayer: 0x8002d470
     ActorBase__getSquareDistToPlayer: 0x8002d4a0
 d_a_shop_sampleNP.rel:

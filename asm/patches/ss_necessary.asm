@@ -450,7 +450,7 @@ addi r4, r31, 0x230
 ; load arcs from item
 .org 0x8026c3f4
 lhz r3, 0x1200(r31) ; load itemid
-bl load_arcs_for_item
+bl load_arcs_for_tbox_item_get
 
 ; wait for arcs loaded
 .org 0x8026c478
@@ -461,7 +461,7 @@ beq 0x8026c4a4
 
 .org 0x8024d54c
 lhz r3, 0xd44(r29) ; final determined item id
-bl unload_arcs_for_item
+bl unload_arcs_after_tbox_item_get
 ; function epilogue because we added an instruction
 lwz r31, 0x1c(r1)
 lwz r30, 0x18(r1)
@@ -491,6 +491,7 @@ blr
 .org 0x8054188c
 .int RandoActorGlue_dtor
 
+; make NpcTmn point to our new actor
 .org 0x804e2788
 .word 1
 .word 1

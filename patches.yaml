@@ -1043,6 +1043,82 @@ F000: # Skyloft
     object:
       layer: 6
       entrance: 52
+  # - name: test actor
+  #   type: objadd
+  #   layer: 0
+  #   room: 0
+  #   objtype: STAG
+  #   object:
+  #     params1: 0xFF004600
+  #     params2: 0xFFFFFFFF
+  #     posx: 2010
+  #     posy: 390.534943
+  #     posz: 830
+  #     sizex: 1000
+  #     sizey: 1000
+  #     sizez: 1000
+  #     anglex: 0
+  #     angley: 0
+  #     anglez: 0
+  #     id: 0xFE50
+  #     name: NpcTmn
+  # - name: test actor
+  #   type: objadd
+  #   layer: 0
+  #   room: 0
+  #   objtype: STAG
+  #   object:
+  #     params1: 0xFF001300
+  #     params2: 0xFFFFFFFF
+  #     posx: 262
+  #     posy: 0
+  #     posz: 4151
+  #     sizex: 1000
+  #     sizey: 1000
+  #     sizez: 1000
+  #     anglex: 0
+  #     angley: 0
+  #     anglez: 0
+  #     id: 0xFE50
+  #     name: NpcTmn
+  # - name: test actor
+  #   type: objadd
+  #   layer: 0
+  #   room: 0
+  #   objtype: STAG
+  #   object:
+  #     params1: 0xFF00B100
+  #     params2: 0xFFFFFFFF
+  #     posx: 262
+  #     posy: 0
+  #     posz: 4151
+  #     sizex: 1000
+  #     sizey: 1000
+  #     sizez: 1000
+  #     anglex: 0
+  #     angley: 0
+  #     anglez: 0
+  #     id: 0xFE50
+  #     name: NpcTmn
+  # - name: test actor
+  #   type: objadd
+  #   layer: 0
+  #   room: 0
+  #   objtype: STAG
+  #   object:
+  #     params1: 0xFF00B200
+  #     params2: 0xFFFFFFFF
+  #     posx: 6813.77294921875
+  #     posy: 371.1600036621094
+  #     posz: -12514.935546875
+  #     sizex: 1000
+  #     sizey: 1000
+  #     sizez: 1000
+  #     anglex: 0
+  #     angley: 0
+  #     anglez: 0
+  #     id: 0xFE50
+  #     name: NpcTmn
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
