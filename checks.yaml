@@ -720,7 +720,6 @@ Faron Woods - Chest inside Great Tree:
   Paths:
     - stage/F100_1/r0/l0/TBox/84
   hint:
-    # TODO: Does Great Tree disable dowsing with dungeon dowsing disabled?
     sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: climbing inside an <r<old hermit's home>> rewards
 Faron Woods - Rupee on Great Tree North Branch:
@@ -1030,8 +1029,7 @@ Bokoblin Base - Chest on Cliff:
   original item: Clawshots
   type:
   hint:
-    # TODO: Does Boko Base disable dowsing with dungeon dowsing disabled?
-    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
+    sometimes: Option "chest-dowsing" Is Not "Progress Items"
   Paths:
    - stage/F202/r2/l1/TBox/66
 Bokoblin Base - Chest near Drawbridge:
