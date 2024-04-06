@@ -4,20 +4,20 @@
   type: int
   choices:
     0: 3
-    1: 6
+    1: 5
     2: 5
     3: 3
 - name: Required Dungeon Count
   command: required-dungeon-count
   type: int
   choices:
-    0: 8
-    1: 10
-    2: 14
-    3: 12
-    4: 8
-    5: 5
-    6: 3
+    0: 10
+    1: 11
+    2: 12
+    3: 14
+    4: 9
+    5: 7
+    6: 5
 - name: Demise Count
   command: demise-count
   type: int
@@ -36,8 +36,8 @@
   command: damage-multiplier
   type: int
   choices:
-    1: 39
-    2: 41
+    1: 32
+    2: 32
     3: 20
     6: 8
     100: 1
@@ -84,35 +84,35 @@
   command: starting-heart-pieces
   type: int
   choices:
-    0: 32 # 0-3 HPs (+0 hearts)
-    4: 64 # 4-7 HPs (+1 heart)
-    8: 16 # 8-11 HPs (+2 hearts)
-    12: 8 # 12-15 HPs (+3 hearts)
-    16: 4 # 16-19 HPs (+4 hearts)
+    0: 3 # 0-3 HPs (+0 hearts)
+    4: 3 # 4-7 HPs (+1 heart)
+    8: 3 # 8-11 HPs (+2 hearts)
+    12: 2 # 12-15 HPs (+3 hearts)
+    16: 2 # 16-19 HPs (+4 hearts)
     20: 2 # 20-23 HPs (+5 hearts)
     24: 1 # 24 HPs (+6 hearts)
 - name: Starting Tadtone Count
   command: starting-tadtones
   type: int
   choices:
-    0: 4
-    1: 16
-    2: 24
-    3: 32
-    4: 48
-    5: 64
-    6: 96
-    7: 112
-    8: 128
-    9: 64
-    10: 48
-    11: 40
-    12: 32
-    13: 16
-    14: 8
-    15: 4
-    16: 2
-    17: 1
+    0: 5
+    1: 5
+    2: 5
+    3: 5
+    4: 5
+    5: 5
+    6: 5
+    7: 7
+    8: 7
+    9: 7
+    10: 7
+    11: 7
+    12: 7
+    13: 5
+    14: 5
+    15: 5
+    16: 5
+    17: 5
 - name: Peatrice Conversations
   command: peatrice-conversations
   type: int
@@ -133,10 +133,10 @@
     3: 6
     4: 5
     5: 4
-    6: 2
-    7: 2
-    8: 2
-    9: 1
+    6: 3
+    7: 3
+    8: 3
+    9: 2
     10: 1
 
 ## singlechoices
@@ -151,12 +151,12 @@
   type: singlechoice
   choices:
     Swordless: 10
-    Practice Sword: 8
+    Practice Sword: 9
     Goddess Sword: 9
-    Goddess Longsword: 6
-    Goddess White Sword: 5
-    Master Sword: 7
-    True Master Sword: 3
+    Goddess Longsword: 8
+    Goddess White Sword: 7
+    Master Sword: 5
+    True Master Sword: 4
 - name: Triforce Shuffle
   command: triforce-shuffle
   type: singlechoice
@@ -178,8 +178,8 @@
   choices:
     "Off": 10
     Added: 10
-    Rupoor Mayhem: 5
-    Rupoor Insanity: 1
+    Rupoor Mayhem: 7
+    Rupoor Insanity: 5
 #- name: Gate of Time Starting State
 #  command: got-start
 #  type: singlechoice
@@ -190,11 +190,11 @@
   command: got-sword-requirement
   type: singlechoice
   choices:
-    Goddess Sword: 1
-    Goddess Longsword: 2
-    Goddess White Sword: 4
-    Master Sword: 12
-    True Master Sword: 8
+    Goddess Sword: 3
+    Goddess Longsword: 4
+    Goddess White Sword: 5
+    Master Sword: 6
+    True Master Sword: 6
 #- name: Gate of Time Dungeon Requirements
 # command: got-dungeon-requirement
 # type: singlechoice
@@ -207,7 +207,7 @@
   choices:
     Nodes: 1
     Main Node: 2
-    Open: 5
+    Open: 4
 - name: Map Mode
   command: map-mode
   type: singlechoice
@@ -244,7 +244,7 @@
   command: sword-dungeon-reward
   type: singlechoice
   choices:
-    None: 10
+    None: 6
     Heart Container: 3
     Final Check: 2
 - name: Shuffle Trial Objects
@@ -268,7 +268,7 @@
   choices:
     Vanilla: 5
     Talk to Yerbal: 5
-    Open: 13
+    Open: 7
 - name: Hint Distribution
   command: hint-distribution
   type: singlechoice
@@ -288,10 +288,10 @@
   command: random-start-entrance
   type: singlechoice
   choices:
-    Vanilla: 10
+    Vanilla: 7
     Bird Statues: 7
     Any Surface Region: 5
-    Any: 3
+    Any: 5
 
 ## bools
 - name: Imp 2
@@ -307,22 +307,22 @@
 - name: Triforce Required
   command: triforce-required
   type: boolean
-  checked: 3
-  unchecked: 1
+  checked: 5
+  unchecked: 4
 - name: Randomize Silent Realms
   command: randomize-trials
   type: boolean
-  checked: 3
-  unchecked: 1
+  checked: 5
+  unchecked: 5
 - name: Shopsanity
   command: shopsanity
   type: boolean
-  checked: 3
+  checked: 2
   unchecked: 1
 - name: Rupeesanity
   command: rupeesanity
   type: boolean
-  checked: 3
+  checked: 2
   unchecked: 1
 - name: Place Scrap Shop Upgrades
   command: gondo-upgrades
