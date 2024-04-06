@@ -273,14 +273,17 @@
   command: hint-distribution
   type: singlechoice
   choices:
-    All Dungeons: 3
-    Eldin: 1
-    Faron: 1
-    Lanayru: 1
-    Major Minor: 2
-    Random: 8
-    Sky: 1
-    Standard: 5
+    All Dungeons: 0
+    Eldin: 0
+    Faron: 0
+    Lanayru: 0
+    Major Minor: 0
+    Random: 0
+    Sky: 0
+    Standard: 0
+    Random Settings Mixed: 15
+    Random Settings Fi: 11
+    Random Settings Stones: 11
 - name: Random Starting Spawn
   command: random-start-entrance
   type: singlechoice
