@@ -144,11 +144,14 @@ Central Skyloft - Peater/Peatrice's Crystals:
     - event/123-Town5/316
     - oarc/F018r/l0
     - oarc/F019r/l0
-  hint: always
+  hint:
+    always: Option "peatrice-conversations" Is Greater Than "3"
+    sometimes: Option "peatrice-conversations" Is Greater Than "0"
   text: the <r<item check girl>> hides
 Central Skyloft - Item in Bird Nest:
   original item: Baby's Rattle
   type:
+  hint: sometimes
   Paths:
     - stage/F000/r0/l0/Item/13
 Central Skyloft - Shed Chest:
@@ -211,7 +214,6 @@ Skyloft Village - Sparrot's Crystals:
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
-  hint: sometimes
   text: delivering a <r<fortune telling device>> reveals
 
 # Batreaux Rewards:
@@ -250,7 +252,6 @@ Batreaux's House - 50 Crystals:
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
-  hint: sometimes
   text: <ye<50>> <r<pieces of gratitude>> can be exchanged for
 Batreaux's House - 70 Crystals:
   original item: Gold Rupee
@@ -291,7 +292,9 @@ Beedle's Shop - 600 Rupee Item:
 Beedle's Shop - 1200 Rupee Item:
   original item: "Progressive Pouch #3"
   type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
-  hint: always
+  hint:
+    always: Option "full-wallet-upgrades" Disabled
+    sometimes: Nothing
   Paths:
     - ShpSmpl/22
   text: for <g+<1200 rupees>> <r<Beedle>> sells
@@ -303,7 +306,9 @@ Beedle's Shop - 800 Rupee Item:
 Beedle's Shop - 1600 Rupee Item:
   original item: "Heart Piece #0"
   type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
-  hint: always
+  hint:
+    always: Option "full-wallet-upgrades" Disabled
+    sometimes: Nothing
   Paths:
     - ShpSmpl/23
   text: for <g+<1600 rupees>> <r<Beedle>> sells
@@ -420,7 +425,6 @@ Sky - Beedle's Crystals:
   Paths:
     - event/105-Terry/115
     - oarc/F020/l0
-  hint: sometimes
   text: <r<reuniting two Beedles>> is rewarded with
 Sky - Dodoh's Crystals:
   original item: Gratitude Crystal Pack
@@ -472,7 +476,7 @@ Sky - Beedle's Island Goddess Chest:
   type: goddess, Lanayru Desert Goddess Chests, Combat
   Paths:
     - stage/F020/r0/l0/TBox/89
-  hint: sometimes
+  hint: always
   text: a <s<goddess cube>> at the <r<monument to time>> reveals
   cube_region: Lanayru Desert
 Sky - Beedle's Island Cage Goddess Chest:
@@ -566,7 +570,6 @@ Thunderhead - Isle of Songs - Strike Crest with White Sword:
   type:
   Paths:
     - stage/F010r/r0/l0/SwSB/2
-  hint: sometimes
   text: a <r<blade of white>> reveals
 Thunderhead - Song from Levias:
   original item: Song of the Hero
@@ -660,13 +663,14 @@ Sealed Grounds - Zelda's Blessing:
   Paths:
     - event/502-CenterFieldBack/17
     - oarc/F404/l1
-  hint: sometimes
   text: the <r<goddess blesses you>> with
 
 # Faron Woods:
 Faron Woods - Item behind Lower Bombable Rock:
   original item: Heart Piece
   type:
+  hint:
+    sometimes: Option "chest-dowsing" Is "Progress Items"
   Paths:
     - stage/F100/r0/l0/Item/33 #last thing is SceneflagID
 Faron Woods - Item on Tree:
@@ -680,7 +684,8 @@ Faron Woods - Kikwi Elder's Reward:
   Paths:
     - event/200-Forest/595
     - oarc/F100/l0
-  hint: sometimes
+  hint:
+    sometimes: Option "excluded-locations" Does Not Contain "Upper Skyloft - Owlan's Crystals"
   text: the <r<Kikwi relic>> is
 Faron Woods - Rupee on Hollow Tree Root:
   original item: "Blue Rupee #6"
@@ -700,6 +705,8 @@ Faron Woods - Rupee on Platform near Floria Door:
 Faron Woods - Deep Woods Chest:
   original item: Red Rupee
   type:
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items"
   Paths:
     - stage/F101/r0/l0/TBox/74
 Faron Woods - Chest behind Upper Bombable Rock:
@@ -712,7 +719,8 @@ Faron Woods - Chest inside Great Tree:
   type:
   Paths:
     - stage/F100_1/r0/l0/TBox/84
-  hint: sometimes
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: climbing inside an <r<old hermit's home>> rewards
 Faron Woods - Rupee on Great Tree North Branch:
   original item: "Blue Rupee #4"
@@ -749,7 +757,8 @@ Lake Floria - Right Rupee behind Northwest Boulder:
 Lake Floria - Lake Floria Chest:
   original item: Goddess Plume
   type:
-  hint: sometimes
+  hint:
+    sometimes: Option "rupeesanity" Disabled
   text: a <r<lonely chest in the lake>> contains
   Paths:
     - stage/F102/r3/l0/TBox/64
@@ -859,7 +868,9 @@ Flooded Faron Woods - 8 Purple Tadtones in Clearing after Small Hollow Tree:
 Flooded Faron Woods - Water Dragon's Reward:
   original item: Faron Song of the Hero Part
   type: Tadtones
-  hint: sometimes
+  hint:
+    always: Option "tadtonesanity" Enabled
+    sometimes: Nothing
   text: completing a <r<watery song>> reveals
   Paths:
     - event/204-ForestF3/Give item after Faron SotH CS
@@ -941,7 +952,6 @@ Eldin Volcano - Digging Spot below Tower:
 Eldin Volcano - Digging Spot behind Boulder on Sandy Slope:
   original item: Key Piece
   type:
-  hint: sometimes
   text: a <r<boulder on a sandy slope>> hides
   Paths:
     - stage/F200/r4/l1/Soil/12
@@ -1018,6 +1028,8 @@ Bokoblin Base - Chest near Bone Bridge:
 Bokoblin Base - Chest on Cliff:
   original item: Clawshots
   type:
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items"
   Paths:
    - stage/F202/r2/l1/TBox/66
 Bokoblin Base - Chest near Drawbridge:
@@ -1120,12 +1132,15 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
   type:
   Paths:
     - stage/F300/r0/l1/TBox/83
-  hint: sometimes
+  hint:
+    # always hint if there's a chance you have to manually open LMF
+    always: Option "open-lmf" Is Not "Open" & (Dungeon "Lanayru Mining Facility" Required | Option "empty-unrequired-dungeons" Disabled | Option "randomize-entrances" Is Not "None")
   text: the <r<midst of the desert>> holds
 Lanayru Desert - Secret Passageway Chest:
   original item: Heart Piece
   type:
-  hint: sometimes
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items"
   text: a <r<secret passage in the desert>> holds
   Paths:
     - stage/F300/r0/l0/TBox/74
@@ -1134,7 +1149,8 @@ Lanayru Desert - Secret Passageway Chest:
 Lanayru Desert - Fire Node - Shortcut Chest:
   original item: Rare Treasure # TODO check again
   type:
-  hint: sometimes
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: a <r<raised chest in the Fire Node>> holds
   Paths:
     - stage/F300_3/r0/l0/TBox/79
@@ -1195,7 +1211,6 @@ Lanayru Gorge - Thunder Dragon's Reward:
   Paths:
     - event/404-DesertF3/give item after Healing Thunderdragon
     - oarc/F302/l0
-  hint: sometimes
   text: <r<curing an ancient dragon>> is rewarded with
 Lanayru Gorge - Item on Pillar:
   original item: Red Rupee
@@ -1205,6 +1220,7 @@ Lanayru Gorge - Item on Pillar:
 Lanayru Gorge - Digging Spot:
   original item: Life Tree Seedling
   type:
+  hint: sometimes
   Paths:
     - stage/F302/r0/l0/Soil/30
 
@@ -1243,7 +1259,10 @@ Lanayru Sand Sea - Skipper's Retreat - Chest in Shack:
   type:
   Paths:
     - stage/F301_5/r0/l0/TBox/65
-  hint: sometimes
+  hint:
+    # with dowsing, this is the only undowsable check here
+    always: Option "chest-dowsing" Is "Progress Items"
+    sometimes: Nothing
   text: a <r<chest atop a sandy retreat>> holds
 Lanayru Sand Sea - Skipper's Retreat - Skydive Chest:
   original item: Silver Rupee
@@ -1345,7 +1364,8 @@ Skyview - Chest behind Three Eyes:
   type:
   Paths:
     - stage/D100/r7/l0/TBox/68
-  hint: sometimes
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: <r<three watchful eyes>> guard
 Skyview - Chest near Boss Door:
   original item: Red Rupee
@@ -1401,7 +1421,8 @@ Earth Temple - Chest Left of Main Room Bridge:
 Earth Temple - Chest in West Room:
   original item: Earth Temple Map
   type:
-  hint: sometimes
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: the <r<western wing in the Earth Temple>> holds
   Paths:
     - stage/D200/r0/l0/TBox/64
@@ -1499,7 +1520,9 @@ Lanayru Mining Facility - Boss Key Chest:
   type:
   Paths:
     - stage/D300_1/r8/l0/TBox/71
-  hint: always
+  hint:
+    always: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
+    sometimes: Nothing
   text: deep inside <r<Lanayru Mining Facility, a pair of Armos>> guard
 Lanayru Mining Facility - Shortcut Chest in Main Hub:
   original item: Red Rupee
@@ -1558,7 +1581,8 @@ Ancient Cistern - Rupee in East Part in Main Tunnel:
 Ancient Cistern - Chest in East Part:
   original item: "Ancient Cistern Small Key #0"
   type:
-  hint: sometimes
+  hint:
+    sometimes: (Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled) & Option "rupeesanity" Disabled
   text: the <r<lone east chest in the Ancient Cistern>> contains
   Paths:
     - stage/D101/r1/l0/TBox/67
@@ -1595,6 +1619,9 @@ Ancient Cistern - Chest in Key Locked Room:
 Ancient Cistern - Boss Key Chest:
   original item: Ancient Cistern Boss Key
   type:
+  hint:
+    always: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
+    sometimes: Nothing
   Paths:
     - stage/D101/r4/l0/TBox/68
 Ancient Cistern - Heart Container:
@@ -1671,7 +1698,8 @@ Sandship - Boss Key Chest:
   type:
   Paths:
     - stage/D301/r14/l3/TBox/73
-  hint: sometimes
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: the <r<secret treasure of the Sandship's captain>> is
 Sandship - Heart Container:
   original item: Heart Container
@@ -1679,7 +1707,6 @@ Sandship - Heart Container:
   Paths:
     - stage/B301/r0/l1/HeartCo
     - stage/D301/r0/l1/HeartCo
-  hint: sometimes
   text: the <r<heart of an ancient sea creature>> holds
 Sandship - Nayru's Flame:
   original item: Progressive Sword
@@ -1731,6 +1758,8 @@ Fire Sanctuary - Rescue First Trapped Mogma:
 Fire Sanctuary - Rescue Second Trapped Mogma:
   original item: Fire Sanctuary Map
   type:
+  hint:
+    sometimes: Option "chest-dowsing" Is "Progress Items" & Option "dungeon-dowsing" Enabled
   Paths:
     - stage/D201_1/r2/l0/TBox/65
     - stage/D201/r2/l0/TBox/65
@@ -1739,11 +1768,14 @@ Fire Sanctuary - Chest after Bombable Wall:
   type:
   Paths:
     - stage/D201_1/r11/l0/TBox/71
-  hint: always
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   text: a <r<false wall in the Fire Sanctuary>> guards
 Fire Sanctuary - Plats' Chest:
   original item: Heart Piece
   type:
+  hint:
+    sometimes: Option "fs-lava-flow" Enabled
   Paths:
     - stage/D201/r3/l0/TBox/66
 Fire Sanctuary - Chest in Staircase Room:
@@ -1755,6 +1787,8 @@ Fire Sanctuary - Chest in Staircase Room:
 Fire Sanctuary - Boss Key Chest:
   original item: Fire Sanctuary Boss Key
   type:
+  hint:
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" | Option "dungeon-dowsing" Disabled
   Paths:
     - stage/D201/r4/l0/TBox/67
 Fire Sanctuary - Heart Container:
