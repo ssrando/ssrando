@@ -1464,7 +1464,9 @@ class GamePatcher:
             isinstance(entry, dict)
             and "onlyif" in entry
             and not check_static_option_req(
-                entry["onlyif"], self.placement_file.options
+                entry["onlyif"],
+                self.placement_file.options,
+                self.placement_file.required_dungeons,
             )
         )
 
@@ -3081,7 +3083,9 @@ class GamePatcher:
             for flag in flags:
                 if not isinstance(flag, int):  # it's a dict with onlyif and flag
                     if not check_static_option_req(
-                        flag["onlyif"], self.placement_file.options
+                        flag["onlyif"],
+                        self.placement_file.options,
+                        self.placement_file.required_dungeons,
                     ):
                         # flag should not be set according to options
                         continue
