@@ -30,7 +30,7 @@ Upper Skyloft - Ring Knight Academy Bell:
   type:
   Paths:
     - stage/F000/r0/l2/Bell
-    - stage/F000/r0/l4/Bell
+    - stage/F000/r0/l4/Bellf
     - stage/F000/r0/l5/Bell
     - stage/F000/r0/l6/Bell
     - stage/F000/r0/l7/Bell
@@ -84,7 +84,7 @@ Upper Skyloft - Item from Cawlin:
     - event/115-Town2/166
     - oarc/F001r/l0
   hint:
-    sometimes: Option "random-start-entrance" Is Not Vanilla
+    sometimes: Option "random-start-entrance" Is Not "Vanilla"
   text: A <r<lovestruck lackey>> reluctantly hands you
 Upper Skyloft - Ghost/Pipit's Crystals:
   original item: Gratitude Crystal Pack
