@@ -511,7 +511,7 @@ Sky - Beedle's Island Goddess Chest:
   Paths:
     - stage/F020/r0/l0/TBox/89
   hint:
-    always: (Dungeon "Lanayru Mining Facility" Unrequired & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
+    always: (Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
   text: A <s<goddess cube>> near the ruined <r<door to the past>> guards
   cube_region: Lanayru Desert
 Sky - Beedle's Island Cage Goddess Chest:
@@ -538,7 +538,7 @@ Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
   Paths:
     - stage/F020/r0/l0/TBox/87
   hint:
-    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Skyview" Unrequired
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Skyview" Not Required
   text: A <s<goddess cube>> at the heart of <g<the deep woods' temple>> guards
   cube_region: Skyview
 Sky - Lumpy Pumpkin - Outside Goddess Chest:
@@ -650,7 +650,7 @@ Thunderhead - Goddess Chest on top of Isle of Songs:
   Paths:
     - stage/F023/r0/l0/TBox/85
   hint:
-    sometimes: (Dungeon "Fire Sanctuary" Unrequired & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
+    sometimes: (Dungeon "Fire Sanctuary" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
     text: A <s<goddess cube>> <r+<atop the scorching volcano>> guards
   cube_region: Volcano Summit
 Thunderhead - Goddess Chest outside Isle of Songs:
@@ -754,7 +754,7 @@ Faron Woods - Deep Woods Chest:
   Paths:
     - stage/F101/r0/l0/TBox/74
   hint:
-    sometimes: Option "chest-dowsing" Is Not "Progress Items" & Option "hint-distribution" Is "Random Settings Fi" & (Option "excluded-locations" Includes "Sky - Lumpy Pumpkin - Outside Goddess Chest" & Option "excluded-locations" Includes "Sky - Goddess Chest on Island Closest to Faron Pillar") & ((Dungeon "Skyview" Unrequired & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" & Option "hint-distribution" Is "Random Settings Fi" & (Option "excluded-locations" Includes "Sky - Lumpy Pumpkin - Outside Goddess Chest" & Option "excluded-locations" Includes "Sky - Goddess Chest on Island Closest to Faron Pillar") & ((Dungeon "Skyview" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
   text: A chest near <g<the deep woods' temple>> contains
 Faron Woods - Chest behind Upper Bombable Rock:
   original item: Semi Rare Treasure
@@ -1179,7 +1179,7 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
   Paths:
     - stage/F300/r0/l1/TBox/83
   hint:
-    always: Option "open-lmf" Is "Nodes" & ((Dungeon "Lanayru Mining Facility" Unrequired & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
+    always: Option "open-lmf" Is "Nodes" & ((Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
   text: Raising the desert's <y<abandoned factory>> reveals
 Lanayru Desert - Secret Passageway Chest:
   original item: Heart Piece
@@ -1433,7 +1433,7 @@ Skyview - Heart Container:
     - stage/B100/r0/l3/HeartCo
     - stage/B100/r0/l4/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Not Required
   text: The first heart of the <s<demon lord>> rewards
 Skyview - Rupee on Spring Pillar:
   original item: "Red Rupee #38"
@@ -1441,7 +1441,7 @@ Skyview - Rupee on Spring Pillar:
   Paths:
     - stage/B100_1/r0/l0/Item/109
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Not Required
   text: The pillar at the heart of <g<the deep woods' temple>> holds
 Skyview - Strike Crest:
   original item: Ruby Tablet
@@ -1450,7 +1450,7 @@ Skyview - Strike Crest:
     - event/201-ForestD1/6
     - oarc/B100_1/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Not Required
   text: The <s<crest>> at the heart of <g<the deep woods' temple>> awards
 
 # Earth Temple (ET):
@@ -1515,7 +1515,7 @@ Earth Temple - Heart Container:
     - stage/B200/r10/l1/HeartCo
     - stage/B200/r10/l2/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Earth Temple" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Earth Temple" Not Required
   text: The heart of a <r+<pyroclastic fiend>> rewards
 Earth Temple - Strike Crest:
   original item: Amber Tablet
@@ -1524,7 +1524,7 @@ Earth Temple - Strike Crest:
     - event/301-MountainD1/22
     - oarc/B210/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Earth Temple" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Earth Temple" Not Required
   text: The <s<crest>> residing in <r+<an earthly fountain>> awards
 
 # Lanayru Mining Facility (LMF):
@@ -1602,7 +1602,7 @@ Lanayru Mining Facility - Heart Container:
     - stage/B300/r0/l1/HeartCo
     - stage/B300/r0/l3/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Lanayru Mining Facility" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Lanayru Mining Facility" Not Required
   text: The heart of a <y<thousand-year arachnid>> rewards
 Lanayru Mining Facility - Exit Hall of Ancient Robots:
   original item: Goddess's Harp
@@ -1611,7 +1611,7 @@ Lanayru Mining Facility - Exit Hall of Ancient Robots:
     - event/400-Desert/286
     - oarc/F300_5/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Lanayru Mining Facility" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Lanayru Mining Facility" Not Required
   text: Exiting the desert's defunct <y<timeshift stone factory>> awards
 
 # Ancient Cistern (AC):
@@ -1699,7 +1699,7 @@ Ancient Cistern - Heart Container:
     - stage/B101/r0/l1/HeartCo
     - stage/B101/r0/l3/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Ancient Cistern" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Ancient Cistern" Not Required
   text: The heart of an <g<ancient automaton>> rewards
 Ancient Cistern - Farore's Flame:
   original item: Progressive Sword
@@ -1708,7 +1708,7 @@ Ancient Cistern - Farore's Flame:
     - event/202-ForestD2/give item after beating ancient cistern
     - oarc/B101_1/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Ancient Cistern" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Ancient Cistern" Not Required
   text: The <s<crest>> within Floria's <g<purification plant>> awards
 
 # Sandship (SSH):
@@ -1795,7 +1795,7 @@ Sandship - Nayru's Flame:
     - oarc/B301/l1
     - oarc/D301/l1
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Sandship" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Sandship" Not Required
   text: The <s<crest>> stored in the <y<ship sailing the sandy seas>> awards
 
 # Fire Sanctuary (FS):
@@ -1879,7 +1879,7 @@ Fire Sanctuary - Heart Container:
     - stage/B201/r0/l1/HeartCo
     - stage/B201/r0/l2/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Fire Sanctuary" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Fire Sanctuary" Not Required
   text: The second heart of the <r+<demon lord>> rewards
 Fire Sanctuary - Din's Flame:
   original item: Progressive Sword
@@ -1888,7 +1888,7 @@ Fire Sanctuary - Din's Flame:
     - event/304-MountainD2/5
     - oarc/B201_1/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Fire Sanctuary" Unrequired
+    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Fire Sanctuary" Not Required
   text: The <s<crest>> deep within <r+<the scorching volcano>> awards
 
 # Sky Keep (SK):
