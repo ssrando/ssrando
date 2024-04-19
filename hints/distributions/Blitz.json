@@ -1,8 +1,8 @@
 {
   "assignment": {
     "mode": "separate",
-    "total_hints": 20,
-    "default_assignment": "gossip_stone"
+    "total_hints": 18,
+    "default_assignment": "fi"
   },
   "banned_stones": [
      "Temple of Time - Gossip Stone in Temple of Time Area",
@@ -12,33 +12,12 @@
   ],
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals",                        "type": "always"},
-    {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack",    "type": "always"},
-    {"location": "Sandship - Robot in Brig's Reward",                     "type": "sometimes"},
     {"location": "Faron Woods - Item behind Lower Bombable Rock",         "type": "sometimes"},
     {"location": "Earth Temple - Rupee in Lava Tunnel",                      "type": "always"},
     {"location": "Ancient Cistern - Rupee under Lilypad",                 "type": "sometimes"},
-    {"location": "Fire Sanctuary - Rescue Second Trapped Mogma",          "type": "sometimes"},
-    {"location": "Fire Sanctuary - Chest after Bombable Wall",            "type": "sometimes"},
-    {"location": "Lanayru Mining Facility - Boss Key Chest",              "type": "sometimes"},
-    {"location": "Lanayru Gorge - Digging Spot",                          "type": "sometimes"},
-    {"location": "Flooded Faron Woods - 16 Dark Blue Tadtones in the South West",  "type": "sometimes"},
-    {"location": "Sandship - Chest at the Stern",                         "type": "sometimes"},
-    {"location": "Ancient Cistern - Bokoblin",                            "type": "sometimes"}
+    {"location": "Sandship - Chest at the Stern",                         "type": "sometimes"}
   ],
   "removed_locations": [
-    "Faron Woods - Chest inside Great Tree",
-    "Lake Floria - Lake Floria Chest",
-    "Eldin Volcano - Digging Spot behind Boulder on Sandy Slope",
-    "Lanayru Desert - Chest on top of Lanayru Mining Facility",
-    "Skyview - Chest behind Three Eyes",
-    "Earth Temple - Chest in West Room",
-    "Ancient Cistern - Chest in East Part",
-    "Sandship - Boss Key Chest",
-    "Batreaux's House - 50 Crystals",
-    "Lanayru Desert - Secret Passageway Chest",
-    "Sandship - Chest after Scervo Fight",
-    "Thunderhead - Isle of Songs - Strike Crest with White Sword",
-    "Lanayru Desert - Fire Node - Shortcut Chest"
   ],
   "added_items": [
     {"name": "Triforce of Courage", "amount": 1},
@@ -59,13 +38,13 @@
   "dungeon_sots_limit": 1,
   "dungeon_barren_limit": 1,
   "distribution": {
-    "barren":    {"order": 0, "weight": 0.00, "fixed": 3, "copies": 1, "assignment": "fi" },
+    "barren":    {"order": 0, "weight": 0.00, "fixed": 3, "copies": 1},
     "always":    {"order": 1, "weight": 0.00, "fixed": 0, "copies": 1},
-    "goal":      {"order": 2, "weight": 0.00, "fixed": 1, "copies": 1, "assignment": "fi" },
-    "sots":      {"order": 3, "weight": 0.00, "fixed": 1, "copies": 1},
+    "goal":      {"order": 2, "weight": 0.00, "fixed": 1, "copies": 1},
+    "sots":      {"order": 3, "weight": 0.00, "fixed": 0, "copies": 1},
     "item":      {"order": 4, "weight": 0.00, "fixed": 3, "copies": 1},
-    "sometimes": {"order": 5, "weight": 100.00, "fixed": 6, "copies": 1},
+    "sometimes": {"order": 5, "weight": 100.00, "fixed": 7, "copies": 1},
     "random":    {"order": 6, "weight": 0.01, "fixed": 0, "copies": 1},
-    "junk":      {"order": 7, "weight": 0.00, "fixed": 2, "copies": 1}
+    "junk":      {"order": 7, "weight": 0.00, "fixed": 0, "copies": 1}
   }
 }
