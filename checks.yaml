@@ -1431,6 +1431,7 @@ Earth Temple - Rupee in Lava Tunnel:
   type: Rupees (No Quick Beetle)
   Paths:
     - stage/D200/r2/l0/Item/21
+  hint: sometimes
   text: hidden within the <r<neck of a dragon>> rests
 Earth Temple - Chest Guarded by Lizalfos:
   original item: Red Rupee
