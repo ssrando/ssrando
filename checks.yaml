@@ -511,7 +511,7 @@ Sky - Beedle's Island Goddess Chest:
   Paths:
     - stage/F020/r0/l0/TBox/89
   hint:
-    always: (Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
+    always: (Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
   text: A <s<goddess cube>> near the ruined <r<door to the past>> guards
   cube_region: Lanayru Desert
 Sky - Beedle's Island Cage Goddess Chest:
@@ -650,7 +650,7 @@ Thunderhead - Goddess Chest on top of Isle of Songs:
   Paths:
     - stage/F023/r0/l0/TBox/85
   hint:
-    sometimes: (Dungeon "Fire Sanctuary" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
+    sometimes: (Dungeon "Fire Sanctuary" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
     text: A <s<goddess cube>> <r+<atop the scorching volcano>> guards
   cube_region: Volcano Summit
 Thunderhead - Goddess Chest outside Isle of Songs:
@@ -754,7 +754,7 @@ Faron Woods - Deep Woods Chest:
   Paths:
     - stage/F101/r0/l0/TBox/74
   hint:
-    sometimes: Option "chest-dowsing" Is Not "Progress Items" & Option "hint-distribution" Is "Random Settings Fi" & (Option "excluded-locations" Includes "Sky - Lumpy Pumpkin - Outside Goddess Chest" & Option "excluded-locations" Includes "Sky - Goddess Chest on Island Closest to Faron Pillar") & ((Dungeon "Skyview" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" & Option "hint-distribution" Is "Random Settings Fi" & (Option "excluded-locations" Includes "Sky - Lumpy Pumpkin - Outside Goddess Chest" & Option "excluded-locations" Includes "Sky - Goddess Chest on Island Closest to Faron Pillar") & ((Dungeon "Skyview" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
   text: A chest near <g<the deep woods' temple>> contains
 Faron Woods - Chest behind Upper Bombable Rock:
   original item: Semi Rare Treasure
@@ -1179,7 +1179,7 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
   Paths:
     - stage/F300/r0/l1/TBox/83
   hint:
-    always: Option "open-lmf" Is "Nodes" & ((Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
+    always: Option "open-lmf" Is "Nodes" & ((Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
   text: Raising the desert's <y<abandoned factory>> reveals
 Lanayru Desert - Secret Passageway Chest:
   original item: Heart Piece
