@@ -754,7 +754,7 @@ Faron Woods - Deep Woods Chest:
   Paths:
     - stage/F101/r0/l0/TBox/74
   hint:
-    sometimes: Option "chest-dowsing" Is Not "Progress Items" & Option "hint-distribution" Is "Random Settings Fi" & (Option "excluded-locations" Includes "Sky - Lumpy Pumpkin - Outside Goddess Chest" & Option "excluded-locations" Includes "Sky - Goddess Chest on Island Closest to Faron Pillar") & ((Dungeon "Skyview" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
+    sometimes: Option "chest-dowsing" Is Not "Progress Items" & Option "hint-distribution" Is "Random Settings Fi" & (Option "excluded-locations" Contains "Sky - Lumpy Pumpkin - Outside Goddess Chest" & Option "excluded-locations" Contains "Sky - Goddess Chest on Island Closest to Faron Pillar") & ((Dungeon "Skyview" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
   text: A chest near <g<the deep woods' temple>> contains
 Faron Woods - Chest behind Upper Bombable Rock:
   original item: Semi Rare Treasure
@@ -1718,7 +1718,7 @@ Sandship - Chest at the Stern:
   Paths:
     - stage/D301/r0/l0/TBox/127
   hint:
-    sometimes: Option "starting-items" Includes "Sandship Small Key" & Option "chest-dowsing" Is Not "Progress Items"
+    sometimes: Option "starting-items" Contains "Sandship Small Key" & Option "chest-dowsing" Is Not "Progress Items"
   text: The <y<backside of an old ship>> is home to
 Sandship - Chest before 4-Door Corridor:
   original item: Sandship Map
