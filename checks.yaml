@@ -1769,7 +1769,7 @@ Sandship - Chest after Scervo Fight:
   Paths:
     - stage/D301/r15/l0/TBox/72
   hint:
-    sometimes: Option "starting-items" Does Not Include "Sandship Small Key"
+    sometimes: Option "starting-items" Does Not Contain "Sandship Small Key"
   text: The <y<mechanized pirate>> on the ancient ship's bow guards
 Sandship - Boss Key Chest:
   original item: Sandship Boss Key
@@ -1777,7 +1777,7 @@ Sandship - Boss Key Chest:
   Paths:
     - stage/D301/r14/l3/TBox/73
   hint:
-    sometimes: Option "starting-items" Does Not Include "Sandship Small Key"
+    sometimes: Option "starting-items" Does Not Contain "Sandship Small Key"
   text: Stored within the <r<captain's cabin>> is 
 Sandship - Heart Container:
   original item: Heart Container
