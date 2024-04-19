@@ -58,7 +58,7 @@ Upper Skyloft - In Zelda's Closet:
     - stage/F001r/r6/l0/chest/32 #sceneflag
   hint:
     sometimes: Option "random-start-entrance" Is Not "Vanilla"
-  text: Digging through your <s<true love's room>> awards you with
+  text: digging through your <b<true love's room>> awards you with
 Upper Skyloft - Owlan's Crystals:
   original item: Gratitude Crystal Pack
   type: Scrapper Deliveries, Gratitude Crystal Sidequests, Combat
@@ -66,7 +66,7 @@ Upper Skyloft - Owlan's Crystals:
     - event/118-Town3/157
     - oarc/F001r/l0
   hint: always
-  text: In echange for an <g<exotic creature>>, the Knights' <r<Instructor>> will give you 
+  text: in echange for an <g<exotic creature>>, the Knights' <r<Instructor>> will give you 
 Upper Skyloft - Fledge's Crystals:
   original item: Gratitude Crystal Pack
   type: Gratitude Crystal Sidequests
@@ -76,7 +76,7 @@ Upper Skyloft - Fledge's Crystals:
   hint:
     always: Option "open-lmf" Is Not "Open"
     sometimes: Nothing
-  text: Helping a friend gain <g+<endurance>> reveals
+  text: helping a friend gain <g+<endurance>> reveals
 Upper Skyloft - Item from Cawlin:
   original item: Cawlin's Letter
   type:
@@ -85,7 +85,7 @@ Upper Skyloft - Item from Cawlin:
     - oarc/F001r/l0
   hint:
     sometimes: Option "random-start-entrance" Is Not "Vanilla"
-  text: A <r<lovestruck lackey>> reluctantly hands you
+  text: a <r<lovestruck lackey>> reluctantly hands you
 Upper Skyloft - Ghost/Pipit's Crystals:
   original item: Gratitude Crystal Pack
   type: Gratitude Crystal Sidequests
@@ -101,7 +101,7 @@ Upper Skyloft - Pumpkin Archery -- 600 Points:
     - oarc/F000/l4
     - oarc/F000/l6
   hint: sometimes
-  text: Fledge's <blk<Bow Jank Spectacular>> awards the player with
+  text: fledge's <blk<Bow Jank Spectacular>> awards the player with
 
 # Central Skyloft checks:
 Central Skyloft - Potion Lady's Gift:
@@ -165,14 +165,14 @@ Central Skyloft - Peater/Peatrice's Crystals:
   hint:
     always: Option "peatrice-conversations" Is Greater Than "3"
     sometimes: Option "peatrice-conversations" Is Greater Than "0"
-  text: Successfully leading on the <r<item check girl>> rewards you with
+  text: successfully leading on the <r<item check girl>> rewards you with
 Central Skyloft - Item in Bird Nest:
   original item: Baby's Rattle
   type:
   Paths:
     - stage/F000/r0/l0/Item/13
   hint: sometimes
-  text: Some <r<birds on Skyloft>> left behind
+  text: some <r<birds on Skyloft>> left behind
 Central Skyloft - Shed Chest:
   original item: Silver Rupee
   type:
@@ -205,7 +205,7 @@ Central Skyloft - Floating Island Goddess Chest:
     - stage/F000/r0/l0/TBox/91
   hint:
     sometimes: Option "rupeesanity" Disabled
-  text: A <s<goddess cube>> deep in the heart of Lake Floria guards
+  text: a <b<goddess cube>> deep in the heart of Lake Floria guards
   cube_region: Lake Floria
 Central Skyloft - Waterfall Goddess Chest:
   original item: Heart Piece
@@ -213,7 +213,7 @@ Central Skyloft - Waterfall Goddess Chest:
   Paths:
     - stage/F000/r0/l0/TBox/80
   hint: always
-  text: A <s<goddess cube>> in the fortress of <r<long-lost pirates>> guards
+  text: a <b<goddess cube>> in the fortress of <r<long-lost pirates>> guards
   cube_region: Lanayru Sand Sea
 
 # Skyloft Village checks:
@@ -237,7 +237,7 @@ Skyloft Village - Sparrot's Crystals:
     - event/118-Town3/141
     - oarc/F013r/l0
   hint: sometimes
-  text: Recovering a <r<crystal ball>> rewards you with
+  text: recovering a <r<crystal ball>> rewards you with
 
 # Batreaux Rewards:
 Batreaux's House - 5 Crystals:
@@ -285,7 +285,7 @@ Batreaux's House - 70 Crystals:
   hint: 
     always: Option "excluded-locations" Contains "Batreaux's House - 80 Crystals"
     sometimes: Nothing
-  text: One of two rewards for acquiring <ye<70 Gratitude Crystals>> is
+  text: one of two rewards for acquiring <ye<70 Gratitude Crystals>> is
 Batreaux's House - 70 Crystals Second Reward:
   original item: Gold Rupee
   type: Batreaux's Rewards
@@ -295,7 +295,7 @@ Batreaux's House - 70 Crystals Second Reward:
   hint: 
     always: Option "excluded-locations" Contains "Batreaux's House - 80 Crystals"
     sometimes: Nothing
-  text: One of two rewards for acquiring <ye<70 Gratitude Crystals>> is
+  text: one of two rewards for acquiring <ye<70 Gratitude Crystals>> is
 Batreaux's House - 80 Crystals:
   original item: Progressive Wallet
   type: Batreaux's Rewards
@@ -303,7 +303,7 @@ Batreaux's House - 80 Crystals:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
   hint: always
-  text: The Monster of Skyloft's <ye<final expression of gratitude>> is
+  text: the Monster of Skyloft's <ye<final expression of gratitude>> is
 
 # Beedle's Shop:
 Beedle's Shop - 300 Rupee Item:
@@ -324,7 +324,7 @@ Beedle's Shop - 1200 Rupee Item:
     sometimes: Nothing
   Paths:
     - ShpSmpl/22
-  text: A local shopkeeper charges <g+<1200 Rupees>> for
+  text: a local shopkeeper charges <g+<1200 Rupees>> for
 Beedle's Shop - 800 Rupee Item:
   original item: "Life Medal #0"
   type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
@@ -338,7 +338,7 @@ Beedle's Shop - 1600 Rupee Item:
     sometimes: Nothing
   Paths:
     - ShpSmpl/23
-  text: A local shopkeeper charges <g+<1600 Rupees>> for
+  text: a local shopkeeper charges <g+<1600 Rupees>> for
 Beedle's Shop - First 100 Rupee Item:
   original item: "Extra Wallet #0"
   type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
@@ -430,7 +430,7 @@ Sky - Lumpy Pumpkin - Harp Minigame:
     - event/117-Pumpkin/305
     - oarc/F011r/l0
   hint: sometimes
-  text: Playing a <b+<duet after a long day>> reveals
+  text: playing a <b+<duet after a long day>> reveals
 Sky - Kina's Crystals:
   original item: Gratitude Crystal Pack
   type: Scrapper Deliveries, Gratitude Crystal Sidequests
@@ -438,7 +438,7 @@ Sky - Kina's Crystals:
     - event/117-Pumpkin/386
     - oarc/F020/l0
   hint: sometimes
-  text: <r<Uprooting a mogma>> from his cave rewards you with
+  text: <r<uprooting a mogma>> from his cave rewards you with
 Sky - Orielle's Crystals:
   original item: Gratitude Crystal Pack
   type: Gratitude Crystal Sidequests
@@ -460,7 +460,7 @@ Sky - Dodoh's Crystals:
     - event/110-DivingGame/60
     - oarc/F020/l0
   hint: sometimes
-  text: Cheering up a man who <r<dropped his wheel>> awards
+  text: cheering up a man who <r<dropped his wheel>> awards
 Sky - Fun Fun Island Minigame -- 500 Rupees:
   original item: Heart Piece
   type: Minigames, Scrapper Deliveries
@@ -468,7 +468,7 @@ Sky - Fun Fun Island Minigame -- 500 Rupees:
     - event/110-DivingGame/19
     - oarc/F020/l2
   hint: always
-  text: On a colorful island, <g+<99% of gambling addicts>> earn
+  text: on a colorful island, <g+<99% of gambling addicts>> earn
 Sky - Chest in Breakable Boulder near Fun Fun Island:
   original item: Silver Rupee
   type:
@@ -476,7 +476,7 @@ Sky - Chest in Breakable Boulder near Fun Fun Island:
     - stage/F020/r0/l0/TBox/70
   hint:
     sometimes: Option "chest-dowsing" Is Not "Progress Items"
-  text: One of two <r<boulders in the sky>> guards
+  text: one of two <r<boulders in the sky>> guards
 Sky - Chest in Breakable Boulder near Lumpy Pumpkin:
   original item: Silver Rupee
   type:
@@ -484,7 +484,7 @@ Sky - Chest in Breakable Boulder near Lumpy Pumpkin:
     - stage/F020/r0/l0/TBox/69
   hint:
     sometimes: Option "chest-dowsing" Is Not "Progress Items"
-  text: One of two <r<boulders in the sky>> guards
+  text: one of two <r<boulders in the sky>> guards
 
 ## Goddess Chests
 Sky - Bamboo Island Goddess Chest:
@@ -512,7 +512,7 @@ Sky - Beedle's Island Goddess Chest:
     - stage/F020/r0/l0/TBox/89
   hint:
     always: (Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
-  text: A <s<goddess cube>> near the ruined <r<door to the past>> guards
+  text: a <b<goddess cube>> near the ruined <r<door to the past>> guards
   cube_region: Lanayru Desert
 Sky - Beedle's Island Cage Goddess Chest:
   original item: Rupee Medal
@@ -539,7 +539,7 @@ Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
     - stage/F020/r0/l0/TBox/87
   hint:
     always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Skyview" Not Required
-  text: A <s<goddess cube>> at the heart of <g<the deep woods' temple>> guards
+  text: a <b<goddess cube>> at the heart of <g<the deep woods' temple>> guards
   cube_region: Skyview
 Sky - Lumpy Pumpkin - Outside Goddess Chest:
   original item: Progressive Pouch
@@ -560,7 +560,7 @@ Sky - Goddess Chest outside Volcanic Island:
     - stage/F020/r0/l0/TBox/67
   hint:
     sometimes: Option "chest-dowsing" Is "Progress Items"
-  text: A <s<goddess cube>> at the end of <y<a remote passage>> guards
+  text: a <b<goddess cube>> at the end of <y<a remote passage>> guards
   cube_region: Lanayru Desert
 Sky - Goddess Chest inside Volcanic Island:
   original item: Heart Piece
@@ -593,7 +593,7 @@ Sky - Southwest Triple Island Cage Goddess Chest:
     - stage/F020/r0/l0/TBox/75
   hint:
     sometimes: Option "chest-dowsing" Is "Progress Items"
-  text: A <s<goddess cube>> on the path to <y<an old, dusty shack>> guards
+  text: a <b<goddess cube>> on the path to <y<an old, dusty shack>> guards
   cube_region: Lanayru Sand Sea
 
 # Thunderhead:
@@ -614,7 +614,7 @@ Thunderhead - Isle of Songs - Strike Crest with White Sword:
   type:
   Paths:
     - stage/F010r/r0/l0/SwSB/2
-  text: <b+<SpaceRawk>> will, <s<even with a blade of white>>, likely never collect
+  text: <b+<SpaceRawk>> will, <b<even with a blade of white>>, likely never collect
 Thunderhead - Song from Levias:
   original item: Song of the Hero
   type: Scrapper Deliveries, Combat
@@ -622,7 +622,7 @@ Thunderhead - Song from Levias:
     - event/120-Nushi/give item after levias
     - oarc/F023/l0
   hint: always
-  text: Eradicating the <r<Thunderhead's parasite>> rewards you with
+  text: eradicating the <r<Thunderhead's parasite>> rewards you with
 Thunderhead - Bug Heaven -- 10 Bugs in 3 Minutes:
   original item: Horned Colossus Beetle
   type: Minigames
@@ -630,7 +630,7 @@ Thunderhead - Bug Heaven -- 10 Bugs in 3 Minutes:
     - event/116-InsectGame/69
     - oarc/F023/l0
   hint: sometimes
-  text: Promises of a <r<Horned Colossus Beetle>> will instead lead you to
+  text: promises of a <r<Horned Colossus Beetle>> will instead lead you to
 Thunderhead - East Island Chest:
   original item: Evil Crystal
   type:
@@ -651,7 +651,7 @@ Thunderhead - Goddess Chest on top of Isle of Songs:
     - stage/F023/r0/l0/TBox/85
   hint:
     sometimes: (Dungeon "Fire Sanctuary" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
-    text: A <s<goddess cube>> <r+<atop the scorching volcano>> guards
+    text: a <b<goddess cube>> <r+<atop the scorching volcano>> guards
   cube_region: Volcano Summit
 Thunderhead - Goddess Chest outside Isle of Songs:
   original item: Gold Rupee
@@ -697,7 +697,7 @@ Sealed Grounds - Gorko's Goddess Wall Reward:
     - event/503-Goron/630
     - oarc/F400/l0
   hint: sometimes
-  text: The <s<goddess' magical wall>> amazes those around it, revealing
+  text: the <b<goddess' magical wall>> amazes those around it, revealing
 #Sealed Grounds - Behind the Temple Triforce on Goddess Wall:
 #  original item: Gold Rupee
 #  type: long
@@ -712,7 +712,7 @@ Sealed Grounds - Zelda's Blessing:
     - oarc/F404/l1
   hint: 
     sometimes: Option "triforce-required" Enabled
-  text: At <r<the end of your journey>>, the <s<goddess>> will bless you with
+  text: at <r<the end of your journey>>, the <b<goddess>> will bless you with
 
 # Faron Woods:
 Faron Woods - Item behind Lower Bombable Rock:
@@ -732,7 +732,7 @@ Faron Woods - Kikwi Elder's Reward:
     - event/200-Forest/595
     - oarc/F100/l0
   hint: sometimes
-  text: Saving the <g<forest's inhabitants>> earns you
+  text: saving the <g<forest's inhabitants>> earns you
 Faron Woods - Rupee on Hollow Tree Root:
   original item: "Blue Rupee #6"
   type: Rupees (No Quick Beetle)
@@ -755,7 +755,7 @@ Faron Woods - Deep Woods Chest:
     - stage/F101/r0/l0/TBox/74
   hint:
     sometimes: Option "chest-dowsing" Is Not "Progress Items" & Option "hint-distribution" Is "Random Settings Fi" & (Option "excluded-locations" Contains "Sky - Lumpy Pumpkin - Outside Goddess Chest" & Option "excluded-locations" Contains "Sky - Goddess Chest on Island Closest to Faron Pillar") & ((Dungeon "Skyview" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
-  text: A chest near <g<the deep woods' temple>> contains
+  text: a chest near <g<the deep woods' temple>> contains
 Faron Woods - Chest behind Upper Bombable Rock:
   original item: Semi Rare Treasure
   type:
@@ -768,7 +768,7 @@ Faron Woods - Chest inside Great Tree:
     - stage/F100_1/r0/l0/TBox/84
   hint:
     sometimes: Option "rupeesanity" Disabled & Option "chest-dowsing" Is Not "Progress Items"
-  text: The <g<centerpiece of the woods>> houses
+  text: the <g<centerpiece of the woods>> houses
 Faron Woods - Rupee on Great Tree North Branch:
   original item: "Blue Rupee #4"
   type: Rupees (No Quick Beetle)
@@ -806,7 +806,7 @@ Lake Floria - Lake Floria Chest:
   type:
   hint: 
     sometimes: Option "rupeesanity" Disabled
-  text: A lonesome chest in <b+<the heart of the lake>> contains
+  text: a lonesome chest in <b+<the heart of the lake>> contains
   Paths:
     - stage/F102/r3/l0/TBox/64
 Lake Floria - Dragon Lair South Chest:
@@ -918,7 +918,7 @@ Flooded Faron Woods - Water Dragon's Reward:
   hint:
     always: Option "tadtonesanity" Enabled & Option "starting-tadtones" Is Less Than "10"
     sometimes: Option "tadtonesanity" Disabled | (Option "tadtonesanity" Enabled & (Option "starting-tadtones" Is Greater Than "9" & Option "starting-tadtones" Is Less Than "15"))
-  text: Piecing together an <b+<aquatic aria> reveals
+  text: piecing together an <b+<aquatic aria> reveals
   Paths:
     - event/204-ForestF3/Give item after Faron SotH CS
     - oarc/F103_1/l0
@@ -999,7 +999,6 @@ Eldin Volcano - Digging Spot below Tower:
 Eldin Volcano - Digging Spot behind Boulder on Sandy Slope:
   original item: Key Piece
   type:
-  hint: sometimes
   text: a <r<boulder on a sandy slope>> hides
   Paths:
     - stage/F200/r4/l1/Soil/12
@@ -1114,7 +1113,7 @@ Bokoblin Base - Chest in Volcano Summit Alcove:
 Bokoblin Base - Fire Dragon's Reward:
   original item: Eldin Song of the Hero Part
   type:
-  text: Sneaking your way up the <r+<overrun volcano>> grants
+  text: sneaking your way up the <r+<overrun volcano>> grants
   Paths:
    - event/305-MountainF3/Give item after Eldin SotH CS
    - oarc/F221/l0
@@ -1180,7 +1179,7 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
     - stage/F300/r0/l1/TBox/83
   hint:
     always: Option "open-lmf" Is "Nodes" & ((Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "randomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep"))
-  text: Raising the desert's <y<abandoned factory>> reveals
+  text: raising the desert's <y<abandoned factory>> reveals
 Lanayru Desert - Secret Passageway Chest:
   original item: Heart Piece
   type:
@@ -1212,7 +1211,7 @@ Lanayru Desert - Fire Node - Left Ending Chest:
     - stage/F300_3/r0/l0/TBox/81
   hint:
     always: Option "chest-dowsing" Is Not "Progress Items" & Option "gondo-upgrades" Disabled
-  text: One of two items stored at the back of a <y<stone cache>> is
+  text: one of two items stored at the back of a <y<stone cache>> is
 Lanayru Desert - Fire Node - Right Ending Chest:
   original item: Blue Rupee
   type:
@@ -1220,7 +1219,7 @@ Lanayru Desert - Fire Node - Right Ending Chest:
     - stage/F300_3/r0/l0/TBox/82
   hint:
     always: Option "chest-dowsing" Is Not "Progress Items" & Option "gondo-upgrades" Disabled
-  text: One of two items stored at the back of a <y<stone cache>> is
+  text: one of two items stored at the back of a <y<stone cache>> is
 Lanayru Desert - Lightning Node - First Chest:
   original item: Red Rupee
   type:
@@ -1270,7 +1269,7 @@ Lanayru Gorge - Digging Spot:
   Paths:
     - stage/F302/r0/l0/Soil/30
   hint: sometimes
-  text: <b+<Time travelling>> to dig reveals
+  text: <b+<time travelling>> to dig reveals
 
 # Lanayru Sand Sea:
 ## Ancient Harbour
@@ -1310,7 +1309,7 @@ Lanayru Sand Sea - Skipper's Retreat - Chest in Shack:
   hint: 
     always: Option "chest-dowsing" Is "Progress Items"
     sometimes: Option "chest-dowsing" Is Not "Progress Items"
-  text: Sitting alone, <y<atop a tall retreat>>, lies
+  text: sitting alone, <y<atop a tall retreat>>, lies
 Lanayru Sand Sea - Skipper's Retreat - Skydive Chest:
   original item: Silver Rupee
   type:
@@ -1325,7 +1324,7 @@ Lanayru Sand Sea - Rickety Coaster -- Heart Stopping Track in 1'05:
     - event/406-TrolleyRace/77
     - oarc/F301_4/l0
   hint: always
-  text: Quickly completing a <y<sandy coaster>> reveals
+  text: quickly completing a <y<sandy coaster>> reveals
 
 ## Pirate Stronghold
 Lanayru Sand Sea - Pirate Stronghold - Rupee on East Sea Pillar:
@@ -1371,7 +1370,7 @@ Skyview - Digging Spot in Crawlspace:
   original item: Skyview Small Key
   type:
   hint: sometimes
-  text: Buried within a secluded room in <g<the deep woods' temple>> is
+  text: buried within a secluded room in <g<the deep woods' temple>> is
   Paths:
     - stage/D100/r4/l0/Soil/15
 Skyview - Chest behind Two Eyes:
@@ -1413,7 +1412,7 @@ Skyview - Chest behind Three Eyes:
     - stage/D100/r7/l0/TBox/68
   hint:
     sometimes: Option "chest-dowsing" Is Not "Progress Items"
-  text: A chest guarded by <r<three watchful eyes>> contains
+  text: a chest guarded by <r<three watchful eyes>> contains
 Skyview - Chest near Boss Door:
   original item: Red Rupee
   type:
@@ -1434,7 +1433,7 @@ Skyview - Heart Container:
     - stage/B100/r0/l4/HeartCo
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Not Required
-  text: The first heart of the <s<demon lord>> rewards
+  text: the first heart of the <b<demon lord>> rewards
 Skyview - Rupee on Spring Pillar:
   original item: "Red Rupee #38"
   type: Rupees (No Quick Beetle)
@@ -1442,7 +1441,7 @@ Skyview - Rupee on Spring Pillar:
     - stage/B100_1/r0/l0/Item/109
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Not Required
-  text: The pillar at the heart of <g<the deep woods' temple>> holds
+  text: the pillar at the heart of <g<the deep woods' temple>> holds
 Skyview - Strike Crest:
   original item: Ruby Tablet
   type:
@@ -1451,7 +1450,7 @@ Skyview - Strike Crest:
     - oarc/B100_1/l0
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Not Required
-  text: The <s<crest>> at the heart of <g<the deep woods' temple>> awards
+  text: the <b<crest>> at the heart of <g<the deep woods' temple>> awards
 
 # Earth Temple (ET):
 Earth Temple - Vent Chest:
@@ -1497,7 +1496,7 @@ Earth Temple - Rupee in Lava Tunnel:
   type: Rupees (No Quick Beetle)
   Paths:
     - stage/D200/r2/l0/Item/21
-  text: hidden within the <r<neck of a dragon>> rests
+  text: hidden within the <r+<neck of a dragon>> rests
 Earth Temple - Chest Guarded by Lizalfos:
   original item: Red Rupee
   type:
@@ -1516,7 +1515,7 @@ Earth Temple - Heart Container:
     - stage/B200/r10/l2/HeartCo
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Earth Temple" Not Required
-  text: The heart of a <r+<pyroclastic fiend>> rewards
+  text: the heart of a <r+<pyroclastic fiend>> rewards
 Earth Temple - Strike Crest:
   original item: Amber Tablet
   type:
@@ -1525,7 +1524,7 @@ Earth Temple - Strike Crest:
     - oarc/B210/l0
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Earth Temple" Not Required
-  text: The <s<crest>> residing in <r+<an earthly fountain>> awards
+  text: the <b<crest>> residing in <r+<an earthly fountain>> awards
 
 # Lanayru Mining Facility (LMF):
 Lanayru Mining Facility - Chest behind Bars:
@@ -1545,7 +1544,7 @@ Lanayru Mining Facility - Chest in First West Room:
     - stage/D300/r3/l0/TBox/66
   hint:
     sometimes: Option "chest-dowsing" Is Not "Progress Items"
-  text: <y<Under the sand>>, there resides
+  text: <y<under the sand>>, there resides
 Lanayru Mining Facility - Chest after Armos Fight:
   original item: Lanayru Mining Facility Map
   type:
@@ -1558,7 +1557,7 @@ Lanayru Mining Facility - Chest in Key Locked Room:
     - stage/D300/r2/l0/TBox/65
   hint:
     sometimes: Option "chest-dowsing" Is Not "Progress Items"
-  text: A <b<singular beamos>> guards
+  text: a <b<singular beamos>> guards
 Lanayru Mining Facility - Raised Chest in Hop across Boxes Room:
   original item: Gust Bellows
   type:
@@ -1589,7 +1588,7 @@ Lanayru Mining Facility - Boss Key Chest:
   hint:
     always: Option "chest-dowsing" Is Not "Progress Items"
     sometimes: Nothing
-  text: A <r<pair of armos>> diligently guard
+  text: a <r<pair of armos>> diligently guard
 Lanayru Mining Facility - Shortcut Chest in Main Hub:
   original item: Red Rupee
   type:
@@ -1612,7 +1611,7 @@ Lanayru Mining Facility - Exit Hall of Ancient Robots:
     - oarc/F300_5/l0
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Lanayru Mining Facility" Not Required
-  text: Exiting the desert's defunct <y<timeshift stone factory>> awards
+  text: exiting the desert's defunct <y<timeshift stone factory>> awards
 
 # Ancient Cistern (AC):
 Ancient Cistern - Rupee in West Hand:
@@ -1676,12 +1675,14 @@ Ancient Cistern - Bokoblin:
   Paths:
     - stage/D101/r4/l0/EBc/0xFC00
   hint: sometimes
-  text: The <r<basement's guard>> holds onto
+  text: the <r<basement's guard>> holds onto
 Ancient Cistern - Rupee under Lilypad:
   original item: Red Rupee
   type: Rupees (No Quick Beetle)
   Paths:
     - stage/D101/r5/l0/Item/13
+  hint: sometimes
+  text: a <g+<lonely lilypad>> hides
 Ancient Cistern - Chest in Key Locked Room:
   original item: Whip
   type:
@@ -1700,7 +1701,7 @@ Ancient Cistern - Heart Container:
     - stage/B101/r0/l3/HeartCo
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Ancient Cistern" Not Required
-  text: The heart of an <g<ancient automaton>> rewards
+  text: the heart of an <g<ancient automaton>> rewards
 Ancient Cistern - Farore's Flame:
   original item: Progressive Sword
   type:
@@ -1709,7 +1710,7 @@ Ancient Cistern - Farore's Flame:
     - oarc/B101_1/l0
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Ancient Cistern" Not Required
-  text: The <s<crest>> within Floria's <g<purification plant>> awards
+  text: the <b<crest>> within Floria's <g<purification plant>> awards
 
 # Sandship (SSH):
 Sandship - Chest at the Stern:
@@ -1719,7 +1720,7 @@ Sandship - Chest at the Stern:
     - stage/D301/r0/l0/TBox/127
   hint:
     sometimes: Option "starting-items" Contains "Sandship Small Key" & Option "chest-dowsing" Is Not "Progress Items"
-  text: The <y<backside of an old ship>> is home to
+  text: the <y<backside of an old ship>> is home to
 Sandship - Chest before 4-Door Corridor:
   original item: Sandship Map
   type:
@@ -1759,7 +1760,7 @@ Sandship - Robot in Brig's Reward:
   original item: "Sandship Small Key #1"
   type:
   hint: sometimes
-  text: The <r<gratitude of a freed crew>> reveals
+  text: the <r<gratitude of a freed crew>> reveals
   Paths:
     - event/401-DesertD2/14
     - oarc/D301/l4
@@ -1770,7 +1771,7 @@ Sandship - Chest after Scervo Fight:
     - stage/D301/r15/l0/TBox/72
   hint:
     sometimes: Option "starting-items" Does Not Contain "Sandship Small Key"
-  text: The <y<mechanized pirate>> on the ancient ship's bow guards
+  text: the <y<mechanized pirate>> on the ancient ship's bow guards
 Sandship - Boss Key Chest:
   original item: Sandship Boss Key
   type:
@@ -1778,7 +1779,7 @@ Sandship - Boss Key Chest:
     - stage/D301/r14/l3/TBox/73
   hint:
     sometimes: Option "starting-items" Does Not Contain "Sandship Small Key"
-  text: Stored within the <r<captain's cabin>> is 
+  text: stored within the <r<captain's cabin>> is 
 Sandship - Heart Container:
   original item: Heart Container
   type:
@@ -1786,7 +1787,7 @@ Sandship - Heart Container:
     - stage/B301/r0/l1/HeartCo
     - stage/D301/r0/l1/HeartCo
   hint: sometimes
-  text: The heart of an <y<abyssal leviathan>> rewards
+  text: the heart of an <y<abyssal leviathan>> rewards
 Sandship - Nayru's Flame:
   original item: Progressive Sword
   type:
@@ -1796,7 +1797,7 @@ Sandship - Nayru's Flame:
     - oarc/D301/l1
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Sandship" Not Required
-  text: The <s<crest>> stored in the <y<ship sailing the sandy seas>> awards
+  text: the <b<crest>> stored in the <y<ship sailing the sandy seas>> awards
 
 # Fire Sanctuary (FS):
 Fire Sanctuary - Chest in First Room:
@@ -1845,14 +1846,14 @@ Fire Sanctuary - Rescue Second Trapped Mogma:
     - stage/D201/r2/l0/TBox/65
   hint:
     sometimes: Option "chest-dowsing" Is "Progress Items"
-  text: Freeing a <r<second mogma>> of its chains reveals
+  text: freeing a <r<second mogma>> of its chains reveals
 Fire Sanctuary - Chest after Bombable Wall:
   original item: "Fire Sanctuary Small Key #2"
   type:
   Paths:
     - stage/D201_1/r11/l0/TBox/71
   hint: sometimes
-  text: <r<Bronzi's Treasure>> guides you to
+  text: <r<Bronzi's treasure>> guides you to
 Fire Sanctuary - Plats' Chest:
   original item: Heart Piece
   type:
@@ -1871,7 +1872,7 @@ Fire Sanctuary - Boss Key Chest:
     - stage/D201/r4/l0/TBox/67
   hint:
     sometimes: Option "chest-dowsing" Is Not "Progress Items"
-  text: An old <r<torch puzzle>> opens the path to
+  text: an old <r<torch puzzle>> opens the path to
 Fire Sanctuary - Heart Container:
   original item: Heart Container
   type:
@@ -1880,7 +1881,7 @@ Fire Sanctuary - Heart Container:
     - stage/B201/r0/l2/HeartCo
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Fire Sanctuary" Not Required
-  text: The second heart of the <r+<demon lord>> rewards
+  text: the second heart of the <r+<demon lord>> rewards
 Fire Sanctuary - Din's Flame:
   original item: Progressive Sword
   type:
@@ -1889,7 +1890,7 @@ Fire Sanctuary - Din's Flame:
     - oarc/B201_1/l0
   hint:
     always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Fire Sanctuary" Not Required
-  text: The <s<crest>> deep within <r+<the scorching volcano>> awards
+  text: the <b<crest>> deep within <r+<the scorching volcano>> awards
 
 # Sky Keep (SK):
 Sky Keep - First Chest:
@@ -1903,7 +1904,7 @@ Sky Keep - Chest after Dreadfuse:
   Paths:
     - stage/D003_6/r0/l0/TBox/65
   hint: sometimes
-  text: The <b<mechanized pirate>> within the hero's final trial guards
+  text: the <b<mechanized pirate>> within the hero's final trial guards
 Sky Keep - Rupee in Fire Sanctuary Room in Alcove:
   original item: "Silver Rupee #21"
   type: Rupees (No Quick Beetle)
@@ -1925,7 +1926,7 @@ Sky Keep - Sacred Power of Farore:
    Paths:
     - stage/D003_8/r0/l3/Item/64
    hint: always
-   text: Overcoming a true <g<test of courage>> earns you
+   text: overcoming a true <g<test of courage>> earns you
 
 # Silent Realms:
 Skyloft Silent Realm - Trial Reward:
@@ -1940,7 +1941,7 @@ Skyloft Silent Realm - Relic 1:
   Paths:
     # fake object name to handle them better
     - stage/S000/r0/l2/Relic/102
-  text: <s<Hylia's first treasure>> is
+  text: <b<Hylia's first treasure>> is
 Skyloft Silent Realm - Relic 2:
   original item: "Dusk Relic #2"
   type: skyloft, silent realm
@@ -1961,7 +1962,7 @@ Skyloft Silent Realm - Relic 5:
   type: skyloft, silent realm
   Paths:
     - stage/S000/r0/l2/Relic/106
-  text: <s<Hylia's fifth treasure>> is
+  text: <b<Hylia's fifth treasure>> is
 Skyloft Silent Realm - Relic 6:
   original item: "Dusk Relic #6"
   type: skyloft, silent realm
@@ -1987,7 +1988,7 @@ Skyloft Silent Realm - Relic 10:
   type: skyloft, silent realm
   Paths:
     - stage/S000/r0/l2/Relic/111
-  text: <s<Hylia's tenth treasure>> is
+  text: <b<Hylia's tenth treasure>> is
 
 Faron Silent Realm - Trial Reward:
   original item: Water Dragon's Scale
