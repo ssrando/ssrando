@@ -12,9 +12,7 @@
   ],
   "added_locations": [
     {"location": "Upper Skyloft - Fledge's Crystals",                        "type": "always"},
-    {"location": "Faron Woods - Item behind Lower Bombable Rock",         "type": "sometimes"},
     {"location": "Earth Temple - Rupee in Lava Tunnel",                      "type": "always"},
-    {"location": "Ancient Cistern - Rupee under Lilypad",                 "type": "sometimes"},
     {"location": "Sandship - Chest at the Stern",                         "type": "sometimes"}
   ],
   "removed_locations": [
