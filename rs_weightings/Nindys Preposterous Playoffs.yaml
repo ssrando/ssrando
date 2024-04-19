@@ -3,26 +3,26 @@
   command: starting-tablet-count
   type: int
   choices:
-    0: 3
-    1: 5
+    0: 2
+    1: 4
     2: 5
     3: 3
 - name: Required Dungeon Count
   command: required-dungeon-count
   type: int
   choices:
-    0: 10
-    1: 11
+    0: 3
+    1: 8
     2: 12
     3: 14
-    4: 9
-    5: 7
-    6: 5
+    4: 8
+    5: 4
+    6: 3
 - name: Demise Count
   command: demise-count
   type: int
   choices:
-    1: 49
+    1: 99
     2: 1
     3: 0
     4: 0 # Cutoff at 4 to prevent too much lag
@@ -39,7 +39,7 @@
     1: 32
     2: 32
     3: 20
-    6: 8
+    6: 4
     100: 1
 - name: Starting Gratitude Crystal Packs
   command: starting-crystal-packs
@@ -128,10 +128,10 @@
   command: trial-treasure-amount
   type: int
   choices:
-    1: 4
-    2: 7
-    3: 6
-    4: 5
+    1: 6
+    2: 10
+    3: 8
+    4: 6
     5: 4
     6: 3
     7: 3
@@ -161,25 +161,25 @@
   command: triforce-shuffle
   type: singlechoice
   choices:
-    Vanilla: 3
-    Sky Keep: 3
+    Vanilla: 2
+    Sky Keep: 2
     Anywhere: 8
 - name: Randomize Entrances
   command: randomize-entrances
   type: singlechoice
   choices:
-    None: 5
-    Required Dungeons Separately: 6
-    All Surface Dungeons: 5
-    All Surface Dungeons + Sky Keep: 3
+    None: 7
+    Required Dungeons Separately: 4
+    All Surface Dungeons: 2
+    All Surface Dungeons + Sky Keep: 1
 - name: Rupoor Mode
   command: rupoor-mode
   type: singlechoice
   choices:
     "Off": 10
-    Added: 10
-    Rupoor Mayhem: 7
-    Rupoor Insanity: 5
+    Added: 7
+    Rupoor Mayhem: 4
+    Rupoor Insanity: 1
 #- name: Gate of Time Starting State
 #  command: got-start
 #  type: singlechoice
@@ -190,11 +190,11 @@
   command: got-sword-requirement
   type: singlechoice
   choices:
-    Goddess Sword: 3
-    Goddess Longsword: 4
-    Goddess White Sword: 5
-    Master Sword: 6
-    True Master Sword: 6
+    Goddess Sword: 1
+    Goddess Longsword: 2
+    Goddess White Sword: 3
+    Master Sword: 8
+    True Master Sword: 8
 #- name: Gate of Time Dungeon Requirements
 # command: got-dungeon-requirement
 # type: singlechoice
@@ -442,7 +442,7 @@
 - name: Treasuresanity in Silent Realms
   command: treasuresanity-in-silent-realms
   type: boolean
-  checked: 3
+  checked: 2
   unchecked: 1
 
 
@@ -479,11 +479,11 @@
     - [Nayru's Wisdom, 10]
     - [Progressive Beetle, 10]
     - [Progressive Beetle, 5]
-    - [Progressive Beetle, 1]
-    - [Progressive Beetle, 1]
+    - [Progressive Beetle, 3]
+    - [Progressive Beetle, 3]
     - [Progressive Bow, 10]
-    - [Progressive Bow, 1]
-    - [Progressive Bow, 1]
+    - [Progressive Bow, 3]
+    - [Progressive Bow, 3]
     - [Progressive Bug Net, 15]
     - [Progressive Bug Net, 15]
     - [Progressive Mitts, 7]
