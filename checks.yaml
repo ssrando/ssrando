@@ -592,7 +592,7 @@ Sky - Southwest Triple Island Cage Goddess Chest:
   Paths:
     - stage/F020/r0/l0/TBox/75
   hint:
-    sometimes: Option "chest-dowsing" is "Progress Items"
+    sometimes: Option "chest-dowsing" Is "Progress Items"
   text: A <s<goddess cube>> on the path to <y<an old, dusty shack>> guards
   cube_region: Lanayru Sand Sea
 
