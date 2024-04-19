@@ -511,7 +511,7 @@ Sky - Beedle's Island Goddess Chest:
   Paths:
     - stage/F020/r0/l0/TBox/89
   hint:
-    always: (Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
+    always: (Dungeon "Lanayru Mining Facility" Not Required & (Option "randomize-entrances" Is "Required Dungeons Separately" | Option "ranomize-entrances" Is "Vanilla")) | (Option "randomize-entrances" Is "All Surface Dungeons" | Option "randomize-entrances" Is "All Surface Dungeons + Sky Keep")
   text: A <s<goddess cube>> near the ruined <r<door to the past>> guards
   cube_region: Lanayru Desert
 Sky - Beedle's Island Cage Goddess Chest:
