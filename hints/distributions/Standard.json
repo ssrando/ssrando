@@ -11,7 +11,7 @@
      "Eldin Volcano - Gossip Stone in Lower Platform Cave"
   ],
   "added_locations": [
-    {"location": "Earth Temple - Rupee in Lava Tunnel",                      "type": "always"},
+    {"location": "Earth Temple - Rupee in Lava Tunnel",                      "type": "always"}
   ],
   "removed_locations": [
   ],
