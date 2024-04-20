@@ -1915,18 +1915,20 @@ Sky Keep - Sacred Power of Din:
    type:
    Paths:
     - stage/D003_8/r0/l2/Item/61
+    text: overcoming a true <r+<test of power>> grants
 Sky Keep - Sacred Power of Nayru:
    original item: Triforce of Wisdom
    type:
    Paths:
     - stage/D003_8/r0/l1/Item/62
+   text: overcoming a true <y<test of wisdom>> grants
 Sky Keep - Sacred Power of Farore:
    original item: Triforce of Courage
    type:
    Paths:
     - stage/D003_8/r0/l3/Item/64
    hint: always
-   text: overcoming a true <g<test of courage>> earns you
+   text: overcoming a true <g<test of courage>> grants
 
 # Silent Realms:
 Skyloft Silent Realm - Trial Reward:
