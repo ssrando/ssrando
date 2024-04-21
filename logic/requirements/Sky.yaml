@@ -5,7 +5,7 @@ hint-region: Sky
 North East:
   exits:
     Beedle's Island - Top: Nothing
-    Beedle's Island - Cage: Sky - Beedle's Island Cage Chest Dive Trick
+    Beedle's Island - Cage: Impossible
     # Getting this Chest during the day is possible but rather difficult
     Sky - South East: Nothing
     Sky - Around Skyloft: Nothing
@@ -168,7 +168,7 @@ South West:
     locations:
       Goddess Chest outside Volcanic Island: Lanayru - Goddess Cube in Sand Oasis
       Goddess Chest inside Volcanic Island:
-        Faron - Goddess Cube on East Great Tree with Clawshots Target & (Clawshots | Sky - Volcanic Island Dive Trick)
+        Faron - Goddess Cube on East Great Tree with Clawshots Target & Clawshots
         # Normally you would need clawshots, but you can skip them with a good dive
       Gossip Stone on Volcanic Island: Nothing
 
