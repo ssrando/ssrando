@@ -14,8 +14,8 @@ Main:
       Vines Area: Vines Area - Activate Water Geyser | (Whip & Clawshots)
       Behind the Waterfall: Lever to Block Waterfall & Water Dragon's Scale
       Inside Statue: Can Lower Statue | Ancient Cistern Small Key x 2
-      Basement - Under the Statue: Ancient Cistern - Cistern Clip Trick
-      Inside Statue - Key Locked Room with Chest: Ancient Cistern - Cistern Clip Trick & Ancient Cistern - Cistern Whip Room Clip Trick & Water Dragon's Scale
+      Basement - Under the Statue: Cistern Clip - Early Basement and Vines Trick
+      Inside Statue - Key Locked Room with Chest: Cistern Clip - Key Locked Room Trick & Water Dragon's Scale
     locations:
       Lock Combination Knowledge: Nothing
       Lever to East Part: Nothing
@@ -34,7 +34,7 @@ Main:
     Vines Area:
       exits:
         # Can front hop and jump slash
-        After Whip Hooks: Sword & Ancient Cistern - Map Chest Jump Trick
+        After Whip Hooks: Sword & Cistern Clip - Misc. Uses Trick
         After Gutters - Upper Area: After Gutters - Upper Lever
         Spider Thread Area: Spider Thread Area - Extend Platform
         Main Room: Nothing
@@ -42,7 +42,7 @@ Main:
         Chest near Vines: Nothing
         Activate Water Geyser: Whip
         Ancient Cistern - Can Lower Statue: Whip
-        Main Room - Lever to Block Waterfall: Ancient Cistern - Lever Jump Trick
+        Main Room - Lever to Block Waterfall: Cistern Clip - Misc. Uses Trick
 
     Behind the Waterfall:
       exits:
@@ -61,7 +61,7 @@ Main:
         Lower Lever: Nothing
         Flip First Lilypad: Water Dragon's Scale & Whip
         Flip Second Lilypad 1: Flip First Lilypad
-        Rupee under Lilypad: Flip Second Lilypad 1 & Water Dragon's Scale
+        Rupee under Lilypad: (Flip Second Lilypad 1 & Water Dragon's Scale) | (Clawshots & (Whip | Cistern Clip - Early Basement and Vines Trick) & Beetle & Rupee Under Lilypad w/Vine Clip Trick) | (Cistern Clip - Misc. Uses Trick & Quick Beetle)
         Activate Water Geyser: Flip Second Lilypad 1 & Water Dragon's Scale
         Flip Second Lilypad 2: Flip First Lilypad & Activate Water Geyser & Whip
 
@@ -110,7 +110,7 @@ Main:
   Basement Gutters:
     exits:
       Past Skulltula:
-        Can Get Past Skulltula & Water Dragon's Scale # | Ancient Cistern - Basement Lilypad Clip Trick)
+        Can Get Past Skulltula & Water Dragon's Scale
     locations:
       Can Get Past Skulltula: Beetle | Bow
 
@@ -126,11 +126,11 @@ Main:
     exits:
       Inside Statue: Nothing
       Rotating Vines: (Whip & Blow Rock) | Clawshots
-      Spider Thread: Spider Thread - Activate Water Geyser | Ancient Cistern - Basement Highflip Trick
-      Under the Statue: Ancient Cistern - Basement Highflip Trick
+      Spider Thread: Spider Thread - Activate Water Geyser
+      Under the Statue: True Master Sword & Basement Escape w/True Master Sword Trick
     locations:
       Stop Cursed Waterfall: Beetle
-      Blow Rock: Hook Beetle | (Bomb Bag & Bomb Throws Trick)
+      Blow Rock: Hook Beetle ## Look into putting bomb throws back here?
 
     Rotating Vines:
       exits:
