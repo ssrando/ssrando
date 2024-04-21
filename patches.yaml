@@ -3202,6 +3202,16 @@ F202: # Boko Base
       sizey: 2000
       sizez: 2000
       angle: 0
+  - name: Move loadzone into Boko Base Volcano Summit
+    type: objpatch
+    id: 0xFC22
+    layer: 1
+    room: 5
+    objtype: STAG
+    object:
+      posx: 13150
+      posy: 15000
+      posz: -23950
   - name: Patch jail pot to give Arrows
     type: objpatch
     id: 0x0849
