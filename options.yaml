@@ -433,11 +433,11 @@
   command: enabled-tricks-bitless
   type: multichoice
   choices:
-    - Bomb Throws - Beginner
-    - Bomb Throws - Intermediate
-    - Brakeslides - Beginner
-    - Brakeslides - Intermediate
-    - Brakeslides - Advanced
+    - Bomb Throws - Beginner ## LMF Key Locked, KA Bell, Faron Ropes, Skyview Access, Skyview Switches
+    - Bomb Throws - Intermediate ## Backwards Eldin, Beedle, ToT Bomb Throw (Could Get Moved)
+    - Brakeslides - Beginner ## Lanayru Mine w/Nothing
+    - Brakeslides - Intermediate ## Fire Node Without Defeating Ampilus, Sand Oasis Spume
+    - Brakeslides - Advanced ## ToT Skip
     - BiTWarp Starter Pack
     - Reverse BiT Magic Starter Pack
     - Back In Time - Advanced Usage
@@ -446,17 +446,18 @@
     - Waterfall Cave Dive
     ## Faron
     - Early Lake Floria - Fence Hop
-    - Early Lake Flroia - Rope
+    - Early Lake Floria - Rope
     - Lower Bombable Rock w/Quick Beetle
     ## Skyview
     - Spider Roll
     - Second Small Key Skip - Scale
     - Second Small Key Skip - No Scale
     ## Ancient Cistern
-    - Cistern Clip - Early Basement & Vines
+    - Cistern Clip - Early Basement and Vines
     - Cistern Clip - Key Locked Room
     - Cistern Clip - Misc. Uses
     - Rupee Under Lilypad w/Vine Clip
+    - Basement Escape w/True Master Sword
     ## Eldin
     - Volcano Ascent Stuttersprint
     ## Earth Temple
@@ -468,16 +469,19 @@
     ## Fire Sanctuary
     ## Lanayru Desert
     - Bush Teleport - Sand Oasis
-    - Bush Teleport - Fire Node Platform
-    - Bush Teleport - Fire Node Platform w/Nothing
+    ## - Bush Teleport - Fire Node Platform: Gonna implement this later, since it's conditional on LMF being closed
+    ## - Bush Teleport - Fire Node Platform w/Nothing: Gonna implement this later, since it's conditional on LMF being closed
     - Secret Passageway w/Hook Beetle
     - Lightning Node Snipes
+    - Lanayru Mine Backwards
     ## Lanayru Sand Sea
     - Cactus Bomb Whip
+    - Baba Dodge
     ## Lanayru Mining Facility
     - First Room Switch w/Whip
     - Minecart Hop - Beetle
     - Minecart Hop - Bombs
+    - Bellowsless Moldarach
     ## Sandship
   default: []
   help: "Enables specific tricks to change the logical requirements to get some checks.
