@@ -2,7 +2,7 @@ allowed-time-of-day: DayOnly
 macros:
   All Three Nodes: LMF Nodes On option | (North Part - Water Node & Lightning Node - Lightning Node & East - Fire Node - Fire Node)
   Raise Lanayru Mining Facility: Open LMF option | Desert - North Part - Activate Main Node
-  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Central Skyloft - Bazaar - Endurance Potion | Brakeslide Trick | Stuttersprint Trick
+  Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Central Skyloft - Bazaar - Endurance Potion | Brakeslides - Beginner Trick
 
 Mine:
   toplevel-alias: Lanayru Mine
@@ -16,7 +16,7 @@ Mine:
     locations:
       Unlock Statue: Nothing
       Goddess Cube at Lanayru Mine Entrance: Goddess Sword
-      Timeshift Stone: Can Hit Timeshift Stone | Itemless First Timeshift Stone Trick
+      Timeshift Stone: Can Hit Timeshift Stone
       # There's technically 2 different flowers here but one has the same reqs as the other only + bombs
       General - Ancient Flower Farming: Timeshift Stone
       Chest near First Timeshift Stone: Timeshift Stone
@@ -37,14 +37,14 @@ Mine:
   Statues Area:
     exits:
       Entry: Nothing
-      End: Blow Statues Down | Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
+      End: Blow Statues Down | Brakeslides - Beginner Trick | Central Skyloft - Bazaar - Endurance Potion
     locations:
       Blow Statues Down: Bomb Bag | Hook Beetle
       Chest behind Statue: Blow Statues Down
 
   End:
     exits:
-      Statues Area: Statues Area - Blow Statues Down | Brakeslide Trick | Central Skyloft - Bazaar - Endurance Potion
+      Statues Area: Statues Area - Blow Statues Down | Brakeslides - Beginner Trick | Central Skyloft - Bazaar - Endurance Potion
     locations:
       Blow up Rock on Track: Nothing
       Chest at the End of Mine: Nothing # There's a baba in the way
@@ -56,7 +56,7 @@ Mine:
       exits:
         Exit to Desert: Nothing
       locations:
-        End - Blow up Rock on Track: Bomb Bag & Lanayru Mine - Quick Bomb Trick
+        End - Blow up Rock on Track: Lanayru Mine Backwards Trick
 
 Desert:
   toplevel-alias: Lanayru Desert
@@ -89,12 +89,12 @@ Desert:
       Entry: Nothing
       Top of West Wall: Clawshots
       Top of LMF: Raise Lanayru Mining Facility
-      East: Temple of Time Skip - Brakeslide Trick | East - Open Wall Shortcut | Clawshots | Central Skyloft - Bazaar - Endurance Potion
+      East: Brakeslides - Advanced Trick | East - Open Wall Shortcut | Clawshots | Central Skyloft - Bazaar - Endurance Potion
       Sand Oasis: Get Past Spume to Sand Oasis
     locations:
       Chest near Caged Robot: Nothing
       Goddess Cube near Caged Robot: Long Range Skyward Strike # Also accessible elsewhere
-      Blow up Rock for Timeshift Stone: Bomb Bag | Hook Beetle | Lanayru Desert - Ampilus Bomb Toss Trick
+      Blow up Rock for Timeshift Stone: Bomb Bag | Hook Beetle
       Rescue Caged Robot: Blow up Rock for Timeshift Stone & Can Defeat Bokoblins
       Blow Statues to Sand Oasis Down: Hook Beetle
 
@@ -102,7 +102,7 @@ Desert:
       Get Past Spume to Sand Oasis:
         Blow Statues to Sand Oasis Down |
         Central Skyloft - Bazaar - Endurance Potion |
-        (Brakeslide Trick & Stuttersprint Trick & (Bomb Bag | Bow | Long Range Skyward Strike))
+        (Brakeslides - Intermediate Trick & (Bomb Bag | Bow | Long Range Skyward Strike))
 
   Sand Oasis: # Before
     exits:
@@ -117,7 +117,7 @@ Desert:
       Desert - Shared Statue Exit: Unlock Statue
       West Desert Statue Entrance: Impossible
       Sand Oasis: Nothing
-      Top of West Wall: Clawshots
+      Top of West Wall: Clawshots | (Hook Beetle & Bush Teleport - Sand Oasis Trick)
       Near South Exit to Temple of Time: Can Navigate in Oasis | Near South Exit to Temple of Time - Push Minecart
     locations:
       Unlock Statue: Nothing
@@ -172,7 +172,7 @@ Desert:
       Activate Main Node: All Three Nodes & Main Node Timeshift Stone & Sword
       Unlock Statue: Nothing
       Open Trial Gate: Nayru's Wisdom & Goddess's Harp
-      Open Secret Passageway: Bomb Bag | (Hook Beetle & Secret Passageway Hook Beetle Opening Trick) | Tough Beetle
+      Open Secret Passageway: Bomb Bag | (Hook Beetle & Secret Passageway w/Hook Beetle) | Tough Beetle
       Chest on Platform near Lightning Node: Clawshots
       Open Lightning Node: Nothing # There's a bombflower nearby
       General - Ancient Flower Farming: Main Node Timeshift Stone
@@ -198,7 +198,7 @@ Desert:
         exits:
           Present - Exit: Nothing
           Present: Projectile Item
-          Present from afar: Beetle | Bow | (Lightning Node End with Bombs Trick & Bomb Bag)
+          Present from afar: Beetle (Lightning Node Snipes Trick & (Bomb Bag | Slingshot | Bow)
         locations:
           First Chest: Nothing
           Second Chest: Nothing
@@ -215,7 +215,7 @@ Desert:
     exits:
       North Part: Nothing
       Top of LMF: Raise Lanayru Mining Facility
-      Near Caged Robot: Open Wall Shortcut | Temple of Time Skip - Brakeslide Trick
+      Near Caged Robot: Open Wall Shortcut | Brakeslides - Advanced Trick
       Desert - Shared Statue Exit: Nothing
       Stone Cache Statue Entrance: Impossible
       Fire Node: Nothing
@@ -230,7 +230,7 @@ Desert:
           Exit: Nothing
           Past: Timeshift Stone
           Present after Sand:
-            Can Defeat Ampilus | Brakeslide Trick | Present after Sand - Push Box
+            Can Defeat Ampilus | Brakeslides - Intermediate Trick | Present after Sand - Push Box
         locations:
           Blow up Rock for Timeshift Stone: Bomb Bag
           Timeshift Stone: Blow up Rock for Timeshift Stone & Can Hit Timeshift Stone
@@ -280,7 +280,7 @@ Temple of Time:
       South Exit to Desert: Nothing
       Temple of Time - Shared Statue Exit: Unlock Statue
       Desert Gorge Statue Entrance: Impossible
-      Front: Hook Beetle | (Slingshot & Temple of Time - Slingshot Shot Trick)
+      Front: Hook Beetle
     locations:
       Unlock Statue: Nothing
       General - Ancient Flower Farming: Distance Activator # for timeshift stone
@@ -292,7 +292,7 @@ Temple of Time:
     locations:
       Gossip Stone in Temple of Time Area: Nothing
       Blow up Rock for Timeshift Stone:
-        Hook Beetle | Bomb Throws Trick & (Bomb Bag | (Cactus Bomb Whip Trick & Whip))
+        Hook Beetle | Bomb Throws - Intermediate Trick & (Bomb Bag | (Cactus Bomb Whip Trick & Whip))
       Timeshift Stone: Blow up Rock for Timeshift Stone & Distance Activator
       Save Robot: Timeshift Stone & Can Defeat Bokoblins
       Near Goddess Cube - Timeshift Stone: Long Range Skyward Strike | Distance Activator
@@ -413,7 +413,7 @@ Lanayru Sand Sea:
         Chest after Moblin: Nothing
         Goddess Cube in Skipper's Retreat: Clawshots & Goddess Sword
         Whip Peahat: Clawshots & Whip
-        Deal with Deku Baba: Projectile Item | (Skipper's Retreat Fast Clawshots Trick & Clawshots)
+        Deal with Deku Baba: Projectile Item | (Baba Dodge Trick & Clawshots)
 
     Top Part:
       exits:
