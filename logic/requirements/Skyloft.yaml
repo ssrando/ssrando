@@ -74,7 +74,7 @@ Upper Skyloft:
 Central Skyloft:
   hint-region: Central Skyloft
   exits:
-    Exit to Beedle's Shop: Day & (Distance Activator | (Beedle's Shop With Bombs Trick & Bomb Bag))
+    Exit to Beedle's Shop: Day & (Distance Activator | (Bomb Throws - Intermediate Trick & Bomb Bag))
     Bazaar North: Day
     Bazaar West: Day
     Bazaar South: Day
@@ -109,7 +109,7 @@ Central Skyloft:
     Past Waterfall Cave - Crystal after Waterfall Cave: Night & Waterfall Cave Crystals from above
     Past Waterfall Cave - Crystal in Loftwing Prison: Night & Waterfall Cave Crystals from above
     Waterfall Island - Crystal on Waterfall Island: Night & Crystal on Waterfall Island from the ground
-    Open Cave Entrance: Sword | Bomb Bag | Waterfall Cave Dive Trick
+    Open Cave Entrance: Sword | Bomb Bag
 
   Bird Nest:
     exits:
@@ -237,13 +237,13 @@ Skyloft Village:
   hint-region: Skyloft Village
   exits:
     Central Skyloft: Nothing
-    Central Skyloft - Past Waterfall Cave: Waterfall Cave Jump Trick & Day
+    Central Skyloft - Past Waterfall Cave: Waterfall Cave Dive Trick & Day
     Bertie's House: Nothing
     Sparrot's House: Nothing
     Mallara's House: Nothing
     Gondo's House: Nothing
     Rupin's House: Nothing
-    Batreaux's House: Opened Shed | Gravestone Jump Trick
+    Batreaux's House: Opened Shed
     Central Skyloft - Exit to Sky: Day
   locations:
     Crystal near Pumpkin Patch: Night
