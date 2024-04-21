@@ -425,7 +425,7 @@
     - No Logic
   default: BiTless
   help: "Determines the logic mode to use when placing items.
-        **BiTless**: requires no tricks to beat the game but allows non-BiT tricks to be enabled.
+        **Logic**: items are placed according to logic, which can be modified by enabling certain tricks, if desired.
         **No Logic**: items are placed without logic and will likely result in an unbeatable game."
   ui: option_logic_mode
 ## Tricks
@@ -433,68 +433,50 @@
   command: enabled-tricks-bitless
   type: multichoice
   choices:
-    - Bomb Throws
-    - Long Range Skyward Strike Jumpslash
-    - Advanced Lizalfos Combat
-    ## Skyloft / Sky
-    - Waterfall Cave Jump
-    - Beedle's Shop With Bombs
-    - Baby Rattle from Beedle's Shop
-    - Sky Keep Entrance Jump
-    - Gravestone Jump
-    - Sky - Volcanic Island Dive
-    - Sky - Beedle's Island Cage Chest Dive
-    - Thunderhead - East Island Dive
+    - Bomb Throws - Beginner
+    - Bomb Throws - Intermediate
+    - Brakeslides - Beginner
+    - Brakeslides - Intermediate
+    - Brakeslides - Advanced
+    - BiTWarp Starter Pack
+    - Reverse BiT Magic Starter Pack
+    - Back In Time - Advanced Usage
+    ## Skyloft
+    - Early Zelda's Room
+    - Waterfall Cave Dive
     ## Faron
-    - Gym's Rope Jump
     - Early Lake Floria - Fence Hop
-    # - Early Lake Floria - Moblin
-    - Early Lake Floria - Swordless Rope Floria
-    - Faron - Bokoblin Luring
-    ## Eldin
-    - Stuttersprint
-    ## Lanayru
-    - Itemless First Timeshift Stone
-    - Lanayru Mine - Quick Bomb
-    - Brakeslide
-    - Lanayru Desert - Ampilus Bomb Toss
-    - Temple of Time - Slingshot Shot
-    - Temple of Time Skip - Brakeslide
-    - Secret Passageway Hook Beetle Opening
-    - Lightning Node End with Bombs  # Is it worth
-    - Cactus Bomb Whip
-    - Skipper's Retreat Fast Clawshots
-    - Pirate Stronghold - Beetle Pillar Checks
+    - Early Lake Flroia - Rope
+    - Lower Bombable Rock w/Quick Beetle
     ## Skyview
-    - Skyview - Spider Roll
-    - Skyview Slingshot Shot
-    ## Earth Temple
-    - Earth Temple - Keese Yeet
-    - Earth Temple - Slope Stuttersprint
-    - Earth Temple - Bomb Flower Scaldera
-    ## Lanayru Mining Facility
-    - LMF - Whip First Room Switch
-    - LMF - Keylocked Slingshot Trickshot
-    - LMF - Whip Armos Room Timeshift Stone
-    - LMF - Minecart Jump
-    - LMF - Moldarach without Gust Bellows
+    - Spider Roll
+    - Second Small Key Skip - Scale
+    - Second Small Key Skip - No Scale
     ## Ancient Cistern
-    - Ancient Cistern - Cistern Clip
-    - Ancient Cistern - Cistern Whip Room Clip
-    - Ancient Cistern - Map Chest Jump
-    - Ancient Cistern - Lever Jump
-    - Ancient Cistern - Basement Highflip
-    ## Sandship
-    - Sandship - No Combination Hint
-    - Sandship - Itemless Spume Skip
-    - Sandship - Mast Jump
+    - Cistern Clip - Early Basement & Vines
+    - Cistern Clip - Key Locked Room
+    ## Eldin
+    - Volcano Ascent Stuttersprint
+    ## Earth Temple
+    - Keese Yeet
+    - Earth Temple Stuttersprint
+    - Bagless Scaldera
+    ## Bokoblin Base
+    - Volcano Ascent Peahat Skip
     ## Fire Sanctuary
-    - Fire Sanctuary - Pillar Jump
-    - Fire Sanctuary - Swordless Pillar Jump
-    - Fire Sanctuary - No Bombable Wall Hint
-    ## Sky Keep
-    - Sky Keep - Shooting LMF Bow Switches in Present
-    - Sky Keep - FS Room Clawshots Vine Clip
+    ## Lanayru Desert
+    - Bush Teleport - Sand Oasis
+    - Bush Teleport - Fire Node Platform
+    - Bush Teleport - Fire Node Platform w/Nothing
+    - Secret Passageway w/Hook Beetle
+    - Lightning Node Snipes
+    ## Lanayru Sand Sea
+    - Cactus Bomb Whip
+    ## Lanayru Mining Facility
+    - First Room Switch w/Whip
+    - Minecart Hop - Beetle
+    - Minecart Hop - Bombs
+    ## Sandship
   default: []
   help: "Enables specific tricks to change the logical requirements to get some checks.
         Does not include Back in Time (BiT) tricks."
