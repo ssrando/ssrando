@@ -5,7 +5,7 @@ hint-region: Skyview
 # Global macros
 macros:
   Skyview 2: Water Dragon's Scale
-  Can Hit High Skyview Switches: Distance Activator | (Bomb Bag & Bomb Throws Trick)
+  Can Hit High Skyview Switches: Distance Activator | (Bomb Bag & Bomb Throws - Beginner Trick)
   Can Cut Tree: Sword | Bomb Bag
 
 Main:
@@ -53,7 +53,7 @@ Main:
         First Hub: Nothing
       locations:
         Hit Vines: Can Hit High Skyview Switches | Goddess Sword | Whip
-        Spider Roll: Skyview - Spider Roll Trick
+        Spider Roll: Spider Roll Trick
         Raise Water: (Hit Vines & Can Hit Switch) | (Spider Roll & Can Hit High Skyview Switches)
         Chest on Tree Branch: Hit Vines | Spider Roll
 
@@ -90,14 +90,14 @@ Main:
       First Hub: Skyview Small Key x2 # If you somehow make it into this room first, assume worst key usage
       Miniboss Room: Switch to Miniboss Room
       Left Rooms: Switch to Left Room
-      Staldra Room: Skyview Small Key x 2
+      Staldra Room: Skyview Small Key x 2 | ((Water Dragon's Scale & Hook Beetle & Second Small Key Skip - Scale Trick) | (Hook Beetle & Bomb Bag & Second Small Key Skip - No Scale Trick))
       Last Room - Before Rope: Last Room - Unlock Shortcut to Second Hub
     locations:
       Rupee in Southeast Tunnel: Beetle
       Rupee in Southwest Tunnel: Beetle
       Rupee in East Tunnel: Beetle
       Switch to Miniboss Room: Distance Activator
-      Switch for Bars: Beetle | (Slingshot & Skyview Slingshot Shot Trick)
+      Switch for Bars: Beetle
       Switch to Left Room: Beetle
       Item behind Bars: Switch for Bars | Whip
 
