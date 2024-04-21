@@ -2,7 +2,7 @@ allowed-time-of-day: DayOnly
 hint-region: Sandship
 
 macros:
-  Pass Spume: Goddess Sword | Bow | Bomb Bag | Slingshot | Sandship - Itemless Spume Skip Trick
+  Pass Spume: Goddess Sword | Bow | Bomb Bag | Slingshot
 
 Main:
   Deck:
@@ -20,7 +20,7 @@ Main:
     Mast:
       exits:
         Deck: Nothing
-        Stern: Bow & (Clawshots | Sandship - Mast Jump Trick)
+        Stern: Bow & Clawshots
       locations:
         Finish Mast Sequence: Bow & Sword
 
