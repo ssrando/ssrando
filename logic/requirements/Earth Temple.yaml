@@ -10,9 +10,9 @@ Main:
       Vent Chest: Digging Mitts
       Rupee above Drawbridge: Beetle
       Lower Drawbridge:
-        Beetle | Bow | (Long Range Skyward Strike & Earth Temple - Keese Yeet Trick)
+        Beetle | Bow | (Long Range Skyward Strike & Keese Yeet Trick)
       Dislodge Boulder:
-        Slingshot | (Beetle & (Advanced Lizalfos Combat Trick | Can Defeat Lizalfos)) | Clawshots | Bow | Long Range Skyward Strike
+        Slingshot | (Beetle & Can Defeat Lizalfos) | Clawshots | Bow | Long Range Skyward Strike
 
   Hub Room:
     exits:
@@ -58,7 +58,7 @@ Main:
   Room with Slopes:
     exits:
       Front of Boss Door:
-        Rock in Second Slope Resting Area | Earth Temple - Slope Stuttersprint Trick
+        Rock in Second Slope Resting Area | Earth Temple Stuttersprint Trick
       Hub Room: Nothing
     locations:
       Rock in Second Slope Resting Area:
@@ -86,7 +86,7 @@ Boss Room:
       Longsword Strat: Goddess Longsword & Upgraded Skyward Strike option
       Master Sword Strat: Master Sword
       Bomb Flower Scaldera:
-        Earth Temple - Bomb Flower Scaldera Trick & (
+        Bagless Scaldera Trick & (
           Goddess Sword Strat | Longsword Strat | Master Sword Strat
         )
         # Scaldera can be beaten without bombs, see strats here: http://bombch.us/DPu1
