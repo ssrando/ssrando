@@ -198,7 +198,7 @@ Desert:
         exits:
           Present - Exit: Nothing
           Present: Projectile Item
-          Present from afar: Beetle (Lightning Node Snipes Trick & (Bomb Bag | Slingshot | Bow)
+          Present from afar: Beetle | (Lightning Node Snipes Trick & (Bomb Bag | Slingshot | Bow)
         locations:
           First Chest: Nothing
           Second Chest: Nothing
