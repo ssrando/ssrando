@@ -53,5 +53,5 @@ jobs:
           field: "tool.poetry.version"
       - uses: actions/upload-artifact@v4
         with:
-          name: Skyward Sword Randomizer v${{ steps.read_toml.outputs.value }}
+          name: Skyward Sword Randomizer [Nindy's Super Evil Edition]
           path: dist
