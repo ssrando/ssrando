@@ -10,7 +10,7 @@ Main:
       First Hub: Left Lever
       Main Exit: Nothing
     locations:
-      Left Lever: Hook Beetle | (Whip & First Room Switch w/Whip)
+      Left Lever: Hook Beetle | (Whip & First Switch w/Whip)
       Right Lever: Nothing
       Chest behind Bars: Right Lever
 
