@@ -74,7 +74,7 @@ Faron Woods:
     Unlock In the Woods Statue: Nothing
     Push Log to Sealed Grounds: Nothing
     Amber Relic Farming: Nothing
-    Hit Vine to Deep Woods: Distance Activator
+    Hit Vine to Deep Woods: Distance Activator | (Bomb Bag & Bomb Throws - Beginner Trick)
     Open Trial Gate: Goddess's Harp & Farore's Courage
     Open Door to Lake Floria: ((Open Lake Floria option & Water Dragon's Scale) | (Great Tree - Top - Talk to Yerbal & (Goddess Sword | Talk to Yerbal option)))
     Rupee on Hollow Tree Root: Nothing
@@ -212,12 +212,12 @@ Faron Woods:
       Deep Woods Statue Entrance: Impossible
       Forest Temple Statue Entrance: Impossible
       Entry: Nothing
-      Exit to Skyview Temple: Distance Activator
+      Exit to Skyview Temple: Distance Activator | (Bomb Bag & Bomb Throws - Beginner Trick)
 
     Entry:
       exits:
         Exit to Faron Woods: Nothing
-        Deep Woods: Push Shortcut Logs | Distance Activator | Goddess Sword # bomb bag?
+        Deep Woods: Push Shortcut Logs | Distance Activator | Goddess Sword | (Bomb Bag & Bomb Throws - Beginner Trick)
       locations:
         Hornet Larvae Farming: Nothing # Bonk the tree
 
