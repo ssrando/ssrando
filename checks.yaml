@@ -720,6 +720,7 @@ Faron Woods - Item behind Lower Bombable Rock:
   type:
   Paths:
     - stage/F100/r0/l0/Item/33 #last thing is SceneflagID
+  text: The forest's <g<destructive wall>> hides
 Faron Woods - Item on Tree:
   original item: Heart Piece
   type:
