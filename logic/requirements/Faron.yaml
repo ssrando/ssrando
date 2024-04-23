@@ -41,8 +41,8 @@ Sealed Grounds:
     exits:
       Gate of Time: Nothing
     locations:
-      Zelda's Blessing: Tumbleweed
-      Defeat Demise: Horde Door Requirement & Sword
+      Zelda's Blessing: Nothing
+      Defeat Demise: Horde Door Requirement & Sword & Tumbleweed
 
   Behind the Temple:
     exits:
