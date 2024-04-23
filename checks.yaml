@@ -919,7 +919,7 @@ Flooded Faron Woods - Water Dragon's Reward:
   hint:
     always: Option "tadtonesanity" Enabled & Option "starting-tadtones" Is Less Than "10"
     sometimes: Option "tadtonesanity" Disabled | (Option "tadtonesanity" Enabled & (Option "starting-tadtones" Is Greater Than "9" & Option "starting-tadtones" Is Less Than "15"))
-  text: piecing together an <b+<aquatic aria> reveals
+  text: piecing together an <b+<aquatic aria>> reveals
   Paths:
     - event/204-ForestF3/Give item after Faron SotH CS
     - oarc/F103_1/l0
