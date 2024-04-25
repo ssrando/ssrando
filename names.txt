@@ -165,7 +165,7 @@ MirageIW
 Froppy
 Synii
 Flash
-robojumper
+Robojumper
 JadeMinibou
 Kitcot
 Vimilia
