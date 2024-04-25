@@ -46,13 +46,15 @@
   "added_items": [
     {"name": "Lanayru Mining Facility Small Key", "amount": 1},
     {"name": "Sky Keep Small Key", "amount": 1},
-    {"name": "Skyview Boss Key", "amount": 1},
-    {"name": "Earth Temple Boss Key", "amount": 1},
-    {"name": "Lanayru Mining Facility Boss Key", "amount": 1},
-    {"name": "Ancient Cistern Boss Key", "amount": 1},
-    {"name": "Sandship Boss Key", "amount": 1},
-    {"name": "Fire Sanctuary Boss Key", "amount": 1},
-    {"name": "Tumbleweed", "amount": 1}
+    {"name": "Skyview Small Key #0", "amount": 1},
+    {"name": "Skyview Small Key #1", "amount": 1},
+    {"name": "Ancient Cistern Small Key #0", "amount": 1},
+    {"name": "Ancient Cistern Small Key #1", "amount": 1},
+    {"name": "Sandship Small Key #0", "amount": 1},
+    {"name": "Sandship Small Key #1", "amount": 1},
+    {"name": "Fire Sanctuary Small Key #0", "amount": 1},
+    {"name": "Fire Sanctuary Small Key #1", "amount": 1},
+    {"name": "Fire Sanctuary Small Key #2", "amount": 1}
   ],
   "removed_items": [
     {"name": "Clawshots", "type": "item"},
@@ -62,6 +64,12 @@
     {"name": "Progressive Beetle #1", "type": "item"},
     {"name": "Progressive Beetle #2", "type": "item"},
     {"name": "Progressive Beetle #3", "type": "item"},
+    {"name": "Progressive Sword #0", "type": "item"},
+    {"name": "Progressive Sword #1", "type": "item"},
+    {"name": "Progressive Sword #2", "type": "item"},
+    {"name": "Progressive Sword #3", "type": "item"},
+    {"name": "Progressive Sword #4", "type": "item"},
+    {"name": "Progressive Sword #5", "type": "item"},
     {"name": "Sea Chart", "type": "item"}
   ],
   "dungeon_sots_limit": 1,
