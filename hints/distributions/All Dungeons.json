@@ -24,8 +24,7 @@
     {"location": "Sandship - Heart Container",                        "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue First Trapped Mogma",       "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue Second Trapped Mogma",      "type": "always"},
-    {"location": "Fire Sanctuary - Plats' Chest",                     "type": "sometimes"},
-    {"location": "Sky Keep - First Chest",                            "type": "sometimes"}
+    {"location": "Fire Sanctuary - Plats' Chest",                     "type": "sometimes"}
   ],
   "removed_locations": [
     "Lanayru Gorge - Digging Spot",
