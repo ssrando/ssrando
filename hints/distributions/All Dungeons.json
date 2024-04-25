@@ -8,8 +8,7 @@
      "Lanayru Sand Sea - Gossip Stone in Shipyard",
      "Central Skyloft - Gossip Stone on Waterfall Island",
      "Eldin Volcano - Gossip Stone in Upper Platform Cave",
-     "Eldin Volcano - Gossip Stone in Lower Platform Cave",
-     "Volcano Summit - Gossip Stone in Waterfall Area"
+     "Eldin Volcano - Gossip Stone in Lower Platform Cave"
 ],
   "added_locations": [
     {"location": "Skyview - Digging Spot in Crawlspace",              "type": "sometimes"},
