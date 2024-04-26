@@ -144,20 +144,20 @@
   oarc: null
   shuffle: Dungeon
 - id: 52
-  name: Progressive Slingshot
-  oarc: GetPachinkoA
-  getarcname: GetPachinkoA
-  getmodelname: GetPachinkoA
+  name: Progressive Slingshot ## Changed to Scattershot's model for testing purposes
+  oarc: GetPachinkoB
+  getarcname: GetPachinkoB
+  getmodelname: GetPachinkoB
 - id: 53
-  name: Progressive Beetle
-  oarc: GetBeetleA
-  getarcname: GetBeetleA
-  getmodelname: GetBeetleA
+  name: Progressive Beetle ## Changed to Tough Beetle's model for testing purposes
+  oarc: GetBeetleD
+  getarcname: GetBeetleD
+  getmodelname: GetBeetleD
 - id: 56
-  name: Progressive Mitts
-  oarc: GetMoleGloveA
-  getarcname: GetMoleGloveA
-  getmodelname: GetMoleGloveA
+  name: Progressive Mitts ## Changed to Mogma Mitts's model for testing purposes
+  oarc: GetMoleGloveB
+  getarcname: GetMoleGloveB
+  getmodelname: GetMoleGloveB
 - id: 60
   name: 10 Deku Seeds
   oarc: null
