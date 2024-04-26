@@ -49,10 +49,10 @@
   getarcname: GetHarp
   getmodelname: GetHarp
 - id: 19
-  name: Progressive Bow
-  oarc: GetBowA
-  getarcname: GetBowA
-  getmodelname: GetBowA
+  name: Progressive Bow ## Changed to Sacred Bow's model for testing purposes
+  oarc: GetBowC
+  getarcname: GetBowC
+  getmodelname: GetBowC
 - id: 20
   name: Clawshots
   oarc: GetHookShot
@@ -278,10 +278,10 @@
 #   name: Scatershot
 #   oarc: GetPachinkoB
 - id: 108
-  name: Progressive Wallet # Medium Wallet
-  oarc: GetPurseB
-  getarcname: GetPurseB
-  getmodelname: GetPurseB
+  name: Progressive Wallet ## Changed to Big Wallet's Model for testing purposes
+  oarc: GetPurseC
+  getarcname: GetPurseC
+  getmodelname: GetPurseC
 # - id: 109
 #   name: Big Wallet
 #   oarc: GetPurseC
