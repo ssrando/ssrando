@@ -18,7 +18,7 @@ Main:
     exits:
       First Room: Nothing
       Exit to Big Hub: Nothing
-      Key Locked Room: Lanayru Mining Facility Small Key
+      Key Locked Room: Lanayru Mining Facility Small Key | Open Dungeon Shortcuts option
       First West Room: Push Box on Switch
     locations:
       Push Box on Switch: Gust Bellows
@@ -130,9 +130,9 @@ Main:
         Near Boss Key Room Second Exit: Near Boss Key Room Second Exit - Push Box
       locations:
         Get Minecart: Near Boss Door - Open Second Wind Gate
-        Open First Wind Gate: Get Minecart & Can Activate Minecart Timeshift Stone & Gust Bellows
+        Open First Wind Gate: (Get Minecart & Can Activate Minecart Timeshift Stone & Gust Bellows) | Open Dungeon Shortcuts option
         Activate Minecart Stone to Boss Key Room: Gust Bellows & Can Activate Minecart Timeshift Stone
-        Unlock Exit to Boss Key Room: Activate Minecart Stone to Boss Key Room & Gust Bellows
+        Unlock Exit to Boss Key Room: (Activate Minecart Stone to Boss Key Room & Gust Bellows) | Open Dungeon Shortcuts option
 
   Near Boss Door:
     exits:
@@ -141,7 +141,7 @@ Main:
       Big Hub - Between Wind Gates: Open Second Wind Gate & Can Defeat Beamos
     locations:
       Get Minecart to Wind Gate: Gust Bellows & Can Activate Minecart Timeshift Stone
-      Open Second Wind Gate: Get Minecart to Wind Gate & Gust Bellows
+      Open Second Wind Gate: (Get Minecart to Wind Gate & Gust Bellows) | Open Dungeon Shortcuts option
 
   Boss Key Room:
     exits:
