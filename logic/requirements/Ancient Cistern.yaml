@@ -36,13 +36,14 @@ Main:
         # Can front hop and jump slash
         After Whip Hooks: Sword & Cistern Clip - Misc. Uses Trick
         After Gutters - Upper Area: After Gutters - Upper Lever
-        Spider Thread Area: Spider Thread Area - Extend Platform
+        Spider Thread Area: Spider Thread Area - Extend Platform | Open Dungeon Shortcuts option
         Main Room: Nothing
       locations:
         Chest near Vines: Nothing
-        Activate Water Geyser: Whip
+        Activate Water Geyser: Whip | Open Dungeon Shortcuts option
         Ancient Cistern - Can Lower Statue: Whip
         Main Room - Lever to Block Waterfall: Cistern Clip - Misc. Uses Trick
+        Rupee Under Lilypad: Open Dungeon Shortcuts option
 
     Behind the Waterfall:
       exits:
@@ -117,7 +118,7 @@ Main:
     Past Skulltula:
       exits:
         Basement Gutters: Water Dragon's Scale
-        Main Room - After Gutters: Ancient Cistern Small Key x 2
+        Main Room - After Gutters: Ancient Cistern Small Key x 2 | Open Dungeon Shortcuts option
       locations:
         Bokoblin: Whip
 
@@ -143,7 +144,7 @@ Main:
         Under the Statue: Can Freely Raise and Lower Statue
         Main Room - Spider Thread Area: Nothing
       locations:
-        Activate Water Geyser: Whip
+        Activate Water Geyser: Whip | Open Dungeon Shortcuts option
 
     # Implies statue is raised
     Under the Statue:
