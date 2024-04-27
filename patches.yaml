@@ -266,9 +266,9 @@ global:
         flag: 20 # Bars in Courage Room Opened
       - onlyif: Option "open-shortcuts" Enabled
         flag: 40 # Bars in Power Room Opened. Which Ones? Who fucking knows? Not me!
-        - onlyif: Option "open-shortcuts" Enabled
+      - onlyif: Option "open-shortcuts" Enabled
         flag: 41 # Bars in Power Room (Near Triforce Location) Opened
-        - onlyif: Option "open-shortcuts" Enabled
+      - onlyif: Option "open-shortcuts" Enabled
         flag: 42 # Bars in Power Room Opened. Which Ones? Who fucking knows? Not me!
       - onlyif: Option "open-shortcuts" Enabled
         flag: 45 # Bars in LMF Room (Near Conveyor Belt) Opened
