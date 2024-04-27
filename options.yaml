@@ -1034,7 +1034,7 @@
   default: false
   help: "If enabled, the starting position of the boss keys will be randomized."
   ui: option_randomize_boss_key_puzzles
-  name: Open Dungeon Shortcuts
+- name: Open Dungeon Shortcuts
   command: open-shortcuts
   type: boolean
   default: false
