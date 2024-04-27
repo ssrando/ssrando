@@ -213,6 +213,8 @@ global:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 35 # Gate at Back of Hub Room Raised
       - onlyif: Option "open-shortcuts" Enabled
+        flag: 37 # Bars to West Part of Hub Room Opened
+      - onlyif: Option "open-shortcuts" Enabled
         flag: 39 # Gate at Front of Hub Room Raised
       - 88 # Cutscene for Wooden Boxes in Hub Room
       - onlyif: Option "open-shortcuts" Enabled
