@@ -1040,6 +1040,13 @@
               </widget>
              </item>
              <item>
+              <widget class="QCheckBox" name="option_open_dungeon_shortcuts">
+               <property name="text">
+                <string>Open Dungeon Shortcuts</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <spacer name="vspace_dungeons">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
