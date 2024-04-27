@@ -10,7 +10,7 @@ Main:
       Vent Chest: Digging Mitts
       Rupee above Drawbridge: Beetle
       Lower Drawbridge:
-        Beetle | Bow | (Long Range Skyward Strike & Keese Yeet Trick)
+        Beetle | Bow | (Long Range Skyward Strike & Keese Yeet Trick) | Open Dungeon Shortcuts option
       Dislodge Boulder:
         Slingshot | (Beetle & Can Defeat Lizalfos) | Clawshots | Bow | Long Range Skyward Strike
 
@@ -30,9 +30,9 @@ Main:
       Rock to West Room: Bomb Bag | Hook Beetle
       Wall to Lava Section: Bomb Bag | (Hook Beetle & Access to Boulder)
       Rupee in Lava Tunnel: Wall to Lava Section & Beetle
-      Lower Lava Section Portcullis: Wall to Lava Section & Beetle
+      Lower Lava Section Portcullis: Wall to Lava Section & Beetle | Open Dungeon Shortcuts option
       Left Peg: Access to Boulder
-      Raise Bridge: Left Peg & Past Lava Section - Right Peg
+      Raise Bridge: Left Peg & Past Lava Section - Right Peg | Open Dungeon Shortcuts option
 
     Past Lava Section:
       exits:
