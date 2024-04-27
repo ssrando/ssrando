@@ -1034,6 +1034,12 @@
   default: false
   help: "If enabled, the starting position of the boss keys will be randomized."
   ui: option_randomize_boss_key_puzzles
+  name: Open Dungeon Shortcuts
+  command: open-shortcuts
+  type: boolean
+  default: false
+  help: "If enabled, shortcuts in dungeons will be opened by default."
+  ui: option_open_dungeon_shortcuts
 - name: Tadtonesanity
   command: tadtonesanity
   type: boolean
