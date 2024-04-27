@@ -44,7 +44,7 @@ Main:
       Ship's Bow: Sandship Small Key x 2
       Corridor: Pass Spume | Deck - Freely Usable Timeshift Stone
     locations:
-      Chest before 4-Door Corridor: Deck - Freely Usable Timeshift Stone
+      Chest before 4-Door Corridor: Deck - Freely Usable Timeshift Stone | Open Dungeon Shortcuts option
 
   Ship's Bow:
     exits:
@@ -95,7 +95,7 @@ Main:
   Brig:
     exits:
       Treasure Room: Starboard Rooms - Generator & Whip
-      Brig Prison: Starboard Rooms - Generator & Whip & Port Rooms - Generator
+      Brig Prison: (Starboard Rooms - Generator & Whip & Port Rooms - Generator) | (Starboard Rooms - Generator & Open Dungeon Shortcuts option)
       Starboard Rooms: Starboard Rooms - Switch
 
   Treasure Room:
