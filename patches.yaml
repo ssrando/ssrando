@@ -127,7 +127,7 @@ global:
         flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
       - 39 # Log to Behind the Temple pushed down
       - 55 # First time landing cutscene
-    Skyview:
+    Skyview Temple:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 1 # Water Levels Raised
       - onlyif: Option "open-shortcuts" Enabled
@@ -201,7 +201,7 @@ global:
         flag: 101 # Fire node active
       - onlyif: Option "open-lmf" Is "Main Node"
         flag: 102 # Water node active
-    Lanayru Mining Facility:
+    Mining Facility:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 0 # Gate Blocking Door to Gust Bellows Lowered
       - onlyif: Option "open-shortcuts" Enabled
