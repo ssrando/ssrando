@@ -140,7 +140,9 @@ global:
         flag: 23 # Gate to Boss Key Room Opened
     Ancient Cistern:
       - onlyif: Option "open-shortcuts" Enabled
-        flag: 6 # Cutscene to Upper Level Opened
+        flag: 4 # Shortcut to Rope from Upper Level
+      - onlyif: Option "open-shortcuts" Enabled
+        flag: 6 # Water Spout to Upper Level Opened
       - 7 # Cutscene for Shortcut Mentioned Above
       - 32 # Water Vortex Cutscenes
       - 39 # Water Vortex Cutscenes
