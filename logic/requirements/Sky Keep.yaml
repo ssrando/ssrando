@@ -23,13 +23,13 @@ Main:
       exits:
         Beginning: Lever
       locations:
-        Lever: Nothing
+        Lever: Nothing | Open Dungeon Shortcuts option
         Top Exit: Nothing
 
   LMF Room:
     exits: {}
     locations:
-      Finish Room: Gust Bellows & Bow
+      Finish Room: (Gust Bellows & Bow) | Open Dungeon Shortcuts option
       Bottom Exit: Nothing
       Top Exit: Finish Room
 
@@ -86,8 +86,8 @@ Main:
         After Key: Nothing
         Ancient Cistern Room: Lever
       locations:
-        Sacred Power of Farore: Nothing
-        Lever: Nothing
+        Sacred Power of Farore: Nothing | Open Dungeon Shortcuts option
+        Lever: Nothing | Open Dungeon Shortcuts option
 
   Fire Sanctuary Room:
     From Right:
@@ -114,9 +114,9 @@ Main:
         From Left: Lower Lever
         From Right: Upper Lever
       locations:
-        Sacred Power of Din: Nothing
-        Lower Lever: Nothing
-        Upper Lever: Nothing
+        Sacred Power of Din: Nothing | Open Dungeon Shortcuts option
+        Lower Lever: Nothing | Open Dungeon Shortcuts option
+        Upper Lever: Nothing | Open Dungeon Shortcuts option
 
     From Left:
       exits:
