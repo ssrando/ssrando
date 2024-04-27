@@ -143,7 +143,7 @@ global:
         flag: 4 # Shortcut to Rope from Upper Level
       - onlyif: Option "open-shortcuts" Enabled
         flag: 6 # Water Spout to Upper Level Opened
-      - 7 # Cutscene for Shortcut Mentioned Above
+     ## - 7 # Cutscene for Shortcut Mentioned Above
       - 32 # Water Vortex Cutscenes
       - 39 # Water Vortex Cutscenes
       - onlyif: Option "open-shortcuts" Enabled
@@ -154,7 +154,7 @@ global:
         flag: 52 # Gate Near Vines Opened
       - 59 # Lilypad over tunnel after gutters flipped cutscene
       - 62 # Ancient Cistern Intro Cutscene
-      - 103 # Statue Covers Boss Key Chest Cutscene
+      ## - 103 # Statue Covers Boss Key Chest Cutscene
     Eldin Volcano:
       - 2  # gets rid of first digging mitts mogma text
       - 16 # First time landing cutscene
@@ -174,15 +174,10 @@ global:
       - 50 # Panning cutscene showing whippable peahot watched
       - 68 # Have talked to Plats near Volcano East
     Earth Temple:
-      - 6 # Peg Bridge Cutscenes
-      - 8 # Peg Bridge Cutscenes
-      - 13 # Peg Bridge Cutscenes
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
-      - 18 # Peg Bridge Cutscenes
+      ## - 18 # Peg Bridge Cutscenes
       - onlyif: Option "open-shortcuts" Enabled
         flag: 35 # Bridge Lowered
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 46 # Gate in Boulder Section Raised
       - onlyif: Option "open-shortcuts" Enabled
         flag: 24 # Drawbridge Lowered
     Lanayru Desert:
@@ -205,18 +200,12 @@ global:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 0 # Gate Blocking Door to Gust Bellows Lowered
       - onlyif: Option "open-shortcuts" Enabled
-        flag: 17 # West Room Gate Raised
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 19 # Room to Boss Key Room Unlocked
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 23 # Shortcut in Bellows Room? Not sure what this is :p
-      - onlyif: Option "open-shortcuts" Enabled
         flag: 35 # Gate at Back of Hub Room Raised
       - onlyif: Option "open-shortcuts" Enabled
         flag: 37 # Bars to West Part of Hub Room Opened
       - onlyif: Option "open-shortcuts" Enabled
         flag: 39 # Gate at Front of Hub Room Raised
-      - 88 # Cutscene for Wooden Boxes in Hub Room
+      ## - 88 # Cutscene for Wooden Boxes in Hub Room
       - onlyif: Option "open-shortcuts" Enabled
         flag: 95 # East Shortcut Opened in Hub Room
       - onlyif: Option "open-shortcuts" Enabled
@@ -235,8 +224,6 @@ global:
         flag: 32 # Map Chest Bars Opened
       - 33 # Press switch cutscene in BK room
       - 34 # Release switch cutscene in BK room
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 42 # Windows in North Gen Room Opened (Likely gets immediately unset -- worth a shot)
       - 43 # Press switch cutscene in north generator room
       - 44 # Release switch cutscene in north generator room
       - 62 # South generator activation cutscene
@@ -263,21 +250,11 @@ global:
         flag: 89 # Doors to Miniboss Unlocked
     Sky Keep:
       - onlyif: Option "open-shortcuts" Enabled
-        flag: 20 # Bars in Courage Room Opened
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 40 # Bars in Power Room Opened. Which Ones? Who fucking knows? Not me!
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 41 # Bars in Power Room (Near Triforce Location) Opened
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 42 # Bars in Power Room Opened. Which Ones? Who fucking knows? Not me!
-      - onlyif: Option "open-shortcuts" Enabled
         flag: 45 # Bars in LMF Room (Near Conveyor Belt) Opened
       - onlyif: Option "open-shortcuts" Enabled
         flag: 52 # Bars in LMF Room (Near Puzzle) Opened
       - onlyif: Option "open-shortcuts" Enabled
         flag: 70 # Bars in Skyview Room Opened
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 113 # Bars in ET Room Opened
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
