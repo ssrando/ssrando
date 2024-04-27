@@ -250,7 +250,7 @@ global:
         flag: 10 # Underground Gate Switch Pressed in First Magmanos Room
       - onlyif: Option "open-shortcuts" Enabled
         flag: 11 # Bars Open in First Magmanos Room
-        - onlyif: Option "open-shortcuts" Enabled
+      - onlyif: Option "open-shortcuts" Enabled
         flag: 49 # Bars by Boss Key Chest Room Opened
       - onlyif: Option "open-shortcuts" Enabled
         flag: 63 # Bars in Lava River Room Opened
