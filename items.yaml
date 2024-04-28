@@ -49,10 +49,10 @@
   getarcname: GetHarp
   getmodelname: GetHarp
 - id: 19
-  name: Progressive Bow ## Changed to Sacred Bow's model for testing purposes
-  oarc: GetBowC
-  getarcname: GetBowC
-  getmodelname: GetBowC
+  name: Progressive Bow
+  oarc: GetBowA
+  getarcname: GetBowA
+  getmodelname: GetBowA
 - id: 20
   name: Clawshots
   oarc: GetHookShot
@@ -144,20 +144,20 @@
   oarc: null
   shuffle: Dungeon
 - id: 52
-  name: Progressive Slingshot ## Changed to Scattershot's model for testing purposes
-  oarc: GetPachinkoB
-  getarcname: GetPachinkoB
-  getmodelname: GetPachinkoB
+  name: Progressive Slingshot
+  oarc: GetPachinkoA
+  getarcname: GetPachinkoA
+  getmodelname: GetPachinkoA
 - id: 53
-  name: Progressive Beetle ## Changed to Tough Beetle's model for testing purposes
-  oarc: GetBeetleD
-  getarcname: GetBeetleD
-  getmodelname: GetBeetleD
+  name: Progressive Beetle
+  oarc: GetBeetleA
+  getarcname: GetBeetleA
+  getmodelname: GetBeetleA
 - id: 56
-  name: Progressive Mitts ## Changed to Mogma Mitts's model for testing purposes
-  oarc: GetMoleGloveB
-  getarcname: GetMoleGloveB
-  getmodelname: GetMoleGloveB
+  name: Progressive Mitts
+  oarc: GetMoleGloveA
+  getarcname: GetMoleGloveA
+  getmodelname: GetMoleGloveA
 - id: 60
   name: 10 Deku Seeds
   oarc: null
@@ -278,10 +278,10 @@
 #   name: Scatershot
 #   oarc: GetPachinkoB
 - id: 108
-  name: Progressive Wallet ## Changed to Big Wallet's Model for testing purposes
-  oarc: GetPurseC
-  getarcname: GetPurseC
-  getmodelname: GetPurseC
+  name: Progressive Wallet # Medium Wallet
+  oarc: GetPurseB
+  getarcname: GetPurseB
+  getmodelname: GetPurseB
 # - id: 109
 #   name: Big Wallet
 #   oarc: GetPurseC
