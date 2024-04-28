@@ -73,7 +73,7 @@ Main:
         Exit to First Hub: Nothing
         After Wooden Boxes: Blow Up Boxes
         Past West Gate: Past West Gate - Open Gate
-        Between Wind Gates: Between Wind Gates - Open First Wind Gate
+        Between Wind Gates: Between Wind Gates - Open First Wind Gate | Open Dungeon Shortcuts option
       locations:
         Blow Up Boxes: Bomb Bag | Hook Beetle
 
@@ -89,7 +89,7 @@ Main:
         Exit to Hop Across Boxes Room: Nothing
         After Wooden Boxes: Nothing
       locations:
-        Push Box: Nothing
+        Push Box: Nothing | Open Dungeon Shortcuts option
 
     Past West Gate:
       exits:
@@ -133,6 +133,7 @@ Main:
         Open First Wind Gate: (Get Minecart & Can Activate Minecart Timeshift Stone & Gust Bellows) | Open Dungeon Shortcuts option
         Activate Minecart Stone to Boss Key Room: Gust Bellows & Can Activate Minecart Timeshift Stone
         Unlock Exit to Boss Key Room: (Activate Minecart Stone to Boss Key Room & Gust Bellows) | Open Dungeon Shortcuts option
+        Shortcut Chest in Main Hub: Open Dungeon Shortcuts option
 
   Near Boss Door:
     exits:
