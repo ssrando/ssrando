@@ -147,7 +147,7 @@ global:
       - 32 # Water Vortex Cutscenes
       - 39 # Water Vortex Cutscenes
       - onlyif: Option "open-shortcuts" Enabled
-        flag: 46 # Water Spout near Basement Rope
+        flag: 42 # Water Spout near Basement Rope
       - onlyif: Option "open-shortcuts" Enabled
         flag: 51 # Gate Near Map Chest Opened
       - onlyif: Option "open-shortcuts" Enabled
