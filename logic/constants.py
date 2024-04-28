@@ -8,6 +8,8 @@ sep = " - "
 
 EVERYTHING = EIN("Everything")
 
+DEFAULT_PLACEMENT_LIMIT = ([""], [])
+
 NUMBER_OF_HINT_STONES = 18
 
 MAX_HINTS_PER_STONE = 8
@@ -534,6 +536,7 @@ GOAL_CHECKS = {
 START = "Start"
 START_ITEM = EIN("Start Item")
 UNPLACED_ITEM = EIN("Unplaced Item")
+REMOVED_LOCATION = EIN("Removed Location")
 SONG_IMPA_CHECK = "Sealed Grounds - Song from Impa"
 COMPLETE_TRIFORCE = "Complete Triforce"
 
