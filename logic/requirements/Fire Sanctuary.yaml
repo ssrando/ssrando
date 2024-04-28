@@ -44,7 +44,7 @@ Main:
     exits:
       Second Room: Lizalfos Fight
       Room with Water Plant: Lizalfos Fight
-      Second Bridge - Left: Second Bridge - Unlock Shortcut to First Bridge
+      Second Bridge - Left: Second Bridge - Unlock Shortcut to First Bridge | Open Dungeon Shortcuts option
     locations:
       Lizalfos Fight: Can Defeat Lizalfos
 
@@ -62,7 +62,7 @@ Main:
         First Trapped Mogma Room: Nothing
         Water Fruit Room: Unlock Key Door
       locations:
-        Unlock Key Door: Fire Sanctuary Small Key x 2 | (Fire Sanctuary Small Key x 1 & Open Dungeon Shortcuts option)
+        Unlock Key Door: Fire Sanctuary Small Key x 2 | (Fire Sanctuary Small Key x 3 & Open Dungeon Shortcuts option)
 
   First Trapped Mogma Room:
     exits:
@@ -90,7 +90,7 @@ Main:
       Second Chest in Water Fruit Room: Nothing
       Hydrate Frog: Sword
       Room with Water Plant - Unlock Key Door:
-        Fire Sanctuary Small Key x 2 | (Fire Sanctuary Small Key x 1 & Open Dungeon Shortcuts option) # Would need better key logic to be exact
+        Fire Sanctuary Small Key x 2 | (Fire Sanctuary Small Key x 3 & Open Dungeon Shortcuts option) # Would need better key logic to be exact
 
     After Frog:
       exits:
@@ -111,7 +111,7 @@ Main:
         Past Sliding Door: Move Sliding Door
         Exit to West of Boss Door: Unlock Key Door
       locations:
-        Unlock Key Door: Fire Sanctuary Small Key x 3 | (Fire Sanctuary Small Key x 2 & Open Dungeon Shortcuts option)
+        Unlock Key Door: Fire Sanctuary Small Key x 3
         Uncover Dig Spot: Gust Bellows
         Move Sliding Door: Uncover Dig Spot & Mogma Mitts
 
@@ -127,7 +127,7 @@ Main:
         Bottom Part: Nothing
         Right: Clawshots
       locations:
-        Unlock Shortcut to First Bridge: Nothing | Open Dungeon Shortcuts option
+        Unlock Shortcut to First Bridge: Nothing
 
     Bottom Part:
       exits:
@@ -192,6 +192,7 @@ Main:
       West of Boss Door: Nothing
       Lizalfos Fight Room: Nothing
       Past Bars: Past Bars - Unlock Way to Front
+      Boss Key Room: Open Dungeon Shortcuts option
     locations:
       Unlock Statue: Nothing
 
@@ -210,7 +211,7 @@ Main:
 
   Staircase Room:
     exits:
-      Upper Part: Clawshots | Open Dungeon Shortcuts option
+      Upper Part: Clawshots
     locations:
       Chest in Staircase Room: Clawshots
 
