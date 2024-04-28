@@ -197,7 +197,7 @@ global:
         flag: 102 # Water node active
     Mining Facility:
       - onlyif: Option "open-shortcuts" Enabled
-        flag: 0 # Gate Blocking Door to Gust Bellows Lowered
+        flag: 23 # Box in Bellows Room Pushed
       - onlyif: Option "open-shortcuts" Enabled
         flag: 35 # Gate at Back of Hub Room Raised
       - onlyif: Option "open-shortcuts" Enabled
@@ -246,8 +246,6 @@ global:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 72 # Bars on Inner Map Balcony Opened
       - 83 # Cutscene showing the outside of the Fire Sanctuary
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 89 # Doors to Miniboss Unlocked
     Sky Keep:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 45 # Bars in LMF Room (Near Conveyor Belt) Opened
