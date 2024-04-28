@@ -26,7 +26,7 @@ Main:
     After Whip Hooks:
       exits:
         Vines Area: Clawshots
-        After Gutters: After Gutters - Lower Lever
+        After Gutters: After Gutters - Lower Lever | Open Dungeon Shortcuts option
         Main Room: Nothing
       locations:
         Chest after Whip Hooks: Nothing
