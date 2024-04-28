@@ -11,7 +11,7 @@ Main:
       Main Exit: Nothing
       East Part: Lever to East Part
       After Whip Hooks: Whip
-      Vines Area: Vines Area - Activate Water Geyser | (Whip & Clawshots)
+      Vines Area: Vines Area - Activate Water Geyser | (Whip & Clawshots) | Open Dungeon Shortcuts option
       Behind the Waterfall: Lever to Block Waterfall & Water Dragon's Scale
       Inside Statue: Can Lower Statue | Ancient Cistern Small Key x 2
       Basement - Under the Statue: Cistern Clip - Early Basement and Vines Trick
@@ -40,7 +40,7 @@ Main:
         Main Room: Nothing
       locations:
         Chest near Vines: Nothing
-        Activate Water Geyser: Whip | Open Dungeon Shortcuts option
+        Activate Water Geyser: Whip
         Ancient Cistern - Can Lower Statue: Whip
         Main Room - Lever to Block Waterfall: Cistern Clip - Misc. Uses Trick
         Rupee Under Lilypad: Open Dungeon Shortcuts option
@@ -118,7 +118,7 @@ Main:
     Past Skulltula:
       exits:
         Basement Gutters: Water Dragon's Scale
-        Main Room - After Gutters: Ancient Cistern Small Key x 2 | Open Dungeon Shortcuts option
+        Main Room - After Gutters: Ancient Cistern Small Key x 2
       locations:
         Bokoblin: Whip
 
