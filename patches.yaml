@@ -143,7 +143,7 @@ global:
         flag: 4 # Shortcut to Rope from Upper Level
       - onlyif: Option "open-shortcuts" Enabled
         flag: 6 # Water Spout to Upper Level Opened
-     ## - 7 # Cutscene for Shortcut Mentioned Above
+      - 7 # Cutscene for Shortcut Mentioned Above
       - 32 # Water Vortex Cutscenes
       - 39 # Water Vortex Cutscenes
       - onlyif: Option "open-shortcuts" Enabled
@@ -154,7 +154,7 @@ global:
         flag: 52 # Gate Near Vines Opened
       - 59 # Lilypad over tunnel after gutters flipped cutscene
       - 62 # Ancient Cistern Intro Cutscene
-      ## - 103 # Statue Covers Boss Key Chest Cutscene
+      - 103 # Statue Covers Boss Key Chest Cutscene
     Eldin Volcano:
       - 2  # gets rid of first digging mitts mogma text
       - 16 # First time landing cutscene
@@ -174,8 +174,9 @@ global:
       - 50 # Panning cutscene showing whippable peahot watched
       - 68 # Have talked to Plats near Volcano East
     Earth Temple:
+      - onlyif: Option "open-shortcuts" Enabled
+        flag: 13 # Far Platform Lowered
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
-      ## - 18 # Peg Bridge Cutscenes
       - onlyif: Option "open-shortcuts" Enabled
         flag: 34 # Far Platform Lowered
     Lanayru Desert:
@@ -225,7 +226,10 @@ global:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 65 # Basement Bars Opened
       - onlyif: Option "open-shortcuts" Enabled
+        flag: 100 # Timeshift Stone Appears
+      - onlyif: Option "open-shortcuts" Enabled
         flag: 102 # Timeshift Stone Freed
+      ## Praying this works 🤺
     Fire Sanctuary:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 10 # Underground Gate Switch Pressed in First Magmanos Room
