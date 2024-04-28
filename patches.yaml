@@ -177,9 +177,7 @@ global:
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
       ## - 18 # Peg Bridge Cutscenes
       - onlyif: Option "open-shortcuts" Enabled
-        flag: 35 # Bridge Lowered
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 24 # Drawbridge Lowered
+        flag: 34 # Far Platform Lowered
     Lanayru Desert:
       - 3  # Obtain map of the past from robot in ToT area
       - 6  # First time landing cutscene
@@ -205,7 +203,7 @@ global:
         flag: 37 # Bars to West Part of Hub Room Opened
       - onlyif: Option "open-shortcuts" Enabled
         flag: 39 # Gate at Front of Hub Room Raised
-      ## - 88 # Cutscene for Wooden Boxes in Hub Room
+      - 88 # Cutscene for Wooden Boxes in Hub Room
       - onlyif: Option "open-shortcuts" Enabled
         flag: 95 # East Shortcut Opened in Hub Room
       - onlyif: Option "open-shortcuts" Enabled
@@ -218,10 +216,6 @@ global:
     Sandship:
       - 9  # Press switch cutscene in south generator room
       - 10 # Release switch cutscene in south generator room
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 22 # Right Generator Door Unlocked
-      - onlyif: Option "open-shortcuts" Enabled
-        flag: 32 # Map Chest Bars Opened
       - 33 # Press switch cutscene in BK room
       - 34 # Release switch cutscene in BK room
       - 43 # Press switch cutscene in north generator room
