@@ -232,11 +232,13 @@ global:
       ## Praying this works 🤺
     Fire Sanctuary:
       - onlyif: Option "open-shortcuts" Enabled
-        flag: 10 # Underground Gate Switch Pressed in First Magmanos Room
+        flag: 10 # Underground Gate Switch Hit in First Magmanos Room
       - onlyif: Option "open-shortcuts" Enabled
         flag: 11 # Bars Open in First Magmanos Room
       - onlyif: Option "open-shortcuts" Enabled
         flag: 49 # Bars by Boss Key Chest Room Opened
+      - onlyif: Option "open-shortcuts" Enabled
+        flag: 56 # Underground Gate Switch Hit in Third Key Locked Room
       - onlyif: Option "open-shortcuts" Enabled
         flag: 63 # Bars in Lava River Room Opened
       - onlyif: Option "fs-lava-flow" Enabled
