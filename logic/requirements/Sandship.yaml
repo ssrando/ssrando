@@ -44,7 +44,7 @@ Main:
       Ship's Bow: Sandship Small Key x 2
       Corridor: Pass Spume | Deck - Freely Usable Timeshift Stone
     locations:
-      Chest before 4-Door Corridor: Deck - Freely Usable Timeshift Stone | Open Dungeon Shortcuts option
+      Chest before 4-Door Corridor: Deck - Freely Usable Timeshift Stone
 
   Ship's Bow:
     exits:
