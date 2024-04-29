@@ -816,20 +816,16 @@
   bits: 4
   choices:
     - Standard
-    - Sky
-    - Faron
-    - Eldin
-    - Lanayru
+    - Blitz
     - Major Minor
     - All Dungeons
-    - Blitz
-    - Random
+    - Co-Op
     - Random Settings Mixed
     - Random Settings Stones
     - Random Settings Fi
     - Custom
   default: Standard
-  help: "Determines the distribution of hints that appear on Gossip Stones.
+  help: "Determines the distribution of hints that appear in-game.
         Determines the number, order and locations hints are generated in."
   ui: option_hint_distribution
 ## Starting Items
