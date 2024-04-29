@@ -2147,7 +2147,7 @@ class Ui_MainWindow(object):
         self.option_randomize_boss_key_puzzles.setText(QCoreApplication.translate("MainWindow", u"Randomize Boss Key Puzzles", None))
         self.label_for_dungeon_patches.setText(QCoreApplication.translate("MainWindow", u"Dungeon Convenience Patches", None))
         self.option_fs_lava_flow.setText(QCoreApplication.translate("MainWindow", u"Skip Fire Sanctuary Lava Chase", None))
-        self.option_open_dungeon_shortcuts.setText(QCoreApplication.translate("MainWindow", u"Open Dungeon Shortcuts", None))
+        self.label_for_dungeon_shortcuts.setText(QCoreApplication.translate("MainWindow", u"Open Dungeon Shortcuts", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_randomization_settings), QCoreApplication.translate("MainWindow", u"Randomization Settings", None))
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
