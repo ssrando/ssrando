@@ -227,11 +227,11 @@ global:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 65 # Basement Bars Opened
       # onlyif: Option "open-shortcuts" Enabled
-        flag: 65 # More Timeshift Stone Stuff
+      #  flag: 65 # More Timeshift Stone Stuff
       # onlyif: Option "open-shortcuts" Enabled
-        flag: 100 # Timeshift Stone Appears
+      #  flag: 100 # Timeshift Stone Appears
       # onlyif: Option "open-shortcuts" Enabled
-        flag: 102 # Timeshift Stone Freed
+      #  flag: 102 # Timeshift Stone Freed
       ## Praying this works 🤺
     Fire Sanctuary:
       - onlyif: Option "open-shortcuts" Enabled
