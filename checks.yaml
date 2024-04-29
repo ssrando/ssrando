@@ -1433,7 +1433,7 @@ Skyview - Heart Container:
     - stage/B100/r0/l3/HeartCo
     - stage/B100/r0/l4/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Skyview" Not Required
   text: the first heart of the <b<demon lord>> rewards
 Skyview - Rupee on Spring Pillar:
   original item: "Red Rupee #38"
@@ -1441,7 +1441,7 @@ Skyview - Rupee on Spring Pillar:
   Paths:
     - stage/B100_1/r0/l0/Item/109
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Skyview" Not Required
   text: the pillar at the heart of <g<the deep woods' temple>> holds
 Skyview - Strike Crest:
   original item: Ruby Tablet
@@ -1450,7 +1450,7 @@ Skyview - Strike Crest:
     - event/201-ForestD1/6
     - oarc/B100_1/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Skyview" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Skyview" Not Required
   text: the <b<crest>> at the heart of <g<the deep woods' temple>> awards
 
 # Earth Temple (ET):
@@ -1515,7 +1515,7 @@ Earth Temple - Heart Container:
     - stage/B200/r10/l1/HeartCo
     - stage/B200/r10/l2/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Earth Temple" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Earth Temple" Not Required
   text: the heart of a <r+<pyroclastic fiend>> rewards
 Earth Temple - Strike Crest:
   original item: Amber Tablet
@@ -1524,7 +1524,7 @@ Earth Temple - Strike Crest:
     - event/301-MountainD1/22
     - oarc/B210/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Earth Temple" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Earth Temple" Not Required
   text: the <b<crest>> residing in <r+<an earthly fountain>> awards
 
 # Lanayru Mining Facility (LMF):
@@ -1602,7 +1602,7 @@ Lanayru Mining Facility - Heart Container:
     - stage/B300/r0/l1/HeartCo
     - stage/B300/r0/l3/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Lanayru Mining Facility" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Lanayru Mining Facility" Not Required
   text: The heart of a <y<thousand-year arachnid>> rewards
 Lanayru Mining Facility - Exit Hall of Ancient Robots:
   original item: Goddess's Harp
@@ -1611,7 +1611,7 @@ Lanayru Mining Facility - Exit Hall of Ancient Robots:
     - event/400-Desert/286
     - oarc/F300_5/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Lanayru Mining Facility" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Lanayru Mining Facility" Not Required
   text: exiting the desert's defunct <y<timeshift stone factory>> awards
 
 # Ancient Cistern (AC):
@@ -1701,7 +1701,7 @@ Ancient Cistern - Heart Container:
     - stage/B101/r0/l1/HeartCo
     - stage/B101/r0/l3/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Ancient Cistern" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Ancient Cistern" Not Required
   text: the heart of an <g<ancient automaton>> rewards
 Ancient Cistern - Farore's Flame:
   original item: Progressive Sword
@@ -1710,7 +1710,7 @@ Ancient Cistern - Farore's Flame:
     - event/202-ForestD2/give item after beating ancient cistern
     - oarc/B101_1/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Ancient Cistern" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Ancient Cistern" Not Required
   text: the <b<crest>> within Floria's <g<purification plant>> awards
 
 # Sandship (SSH):
@@ -1787,7 +1787,9 @@ Sandship - Heart Container:
   Paths:
     - stage/B301/r0/l1/HeartCo
     - stage/D301/r0/l1/HeartCo
-  hint: sometimes
+  hint:
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Sandship" Not Required
+    sometimes: Nothing
   text: the heart of an <y<abyssal leviathan>> rewards
 Sandship - Nayru's Flame:
   original item: Progressive Sword
@@ -1797,7 +1799,7 @@ Sandship - Nayru's Flame:
     - oarc/B301/l1
     - oarc/D301/l1
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Sandship" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Sandship" Not Required
   text: the <b<crest>> stored in the <y<ship sailing the sandy seas>> awards
 
 # Fire Sanctuary (FS):
@@ -1881,7 +1883,7 @@ Fire Sanctuary - Heart Container:
     - stage/B201/r0/l1/HeartCo
     - stage/B201/r0/l2/HeartCo
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Fire Sanctuary" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Fire Sanctuary" Not Required
   text: the second heart of the <r+<demon lord>> rewards
 Fire Sanctuary - Din's Flame:
   original item: Progressive Sword
@@ -1890,7 +1892,7 @@ Fire Sanctuary - Din's Flame:
     - event/304-MountainD2/5
     - oarc/B201_1/l0
   hint:
-    always: Option "empty-unrequired-dungeons" Enabled & Dungeon "Fire Sanctuary" Not Required
+    always: Option "empty-unrequired-dungeons" Disabled & Dungeon "Fire Sanctuary" Not Required
   text: the <b<crest>> deep within <r+<the scorching volcano>> awards
 
 # Sky Keep (SK):
