@@ -26,7 +26,7 @@ def main():
 
     # add options
     parser = argparse.ArgumentParser(
-        description="Nindy's Evil Randomizer Version " + VERSION
+        description="Nindy's Super Evil Randomizer Version " + VERSION
     )
     parser.add_argument(
         "--permalink",
