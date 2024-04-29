@@ -1035,7 +1035,7 @@
   type: singlechoice
   bits: 2
   choices:
-    - None
+    - "None"
     - Unrequired Dungeons Only
     - All Dungeons
   default: None
