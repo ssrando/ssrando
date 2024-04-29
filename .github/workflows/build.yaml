@@ -31,7 +31,7 @@ jobs:
         run: |
           python3 randoscript.py --noui --dry-run --seed=0
           cp -r logs logs_source
-          dist/ssrando --noui --dry-run --seed=0
+          dist/nindyssr --noui --dry-run --seed=0
           diff logs logs_source
       - name: Make arc-replacements folder
         run: |
