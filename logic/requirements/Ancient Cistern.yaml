@@ -11,7 +11,7 @@ Main:
       Main Exit: Nothing
       East Part: Lever to East Part
       After Whip Hooks: Whip
-      Vines Area: Vines Area - Activate Water Geyser | (Whip & Clawshots) | Open Dungeon Shortcuts option
+      Vines Area: Vines Area - Activate Water Geyser | (Whip & Clawshots) | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Ancient Cistern Unrequired))
       Behind the Waterfall: Lever to Block Waterfall & Water Dragon's Scale
       Inside Statue: Can Lower Statue | Ancient Cistern Small Key x 2
       Basement - Under the Statue: Cistern Clip - Early Basement and Vines Trick
@@ -26,7 +26,7 @@ Main:
     After Whip Hooks:
       exits:
         Vines Area: Clawshots
-        After Gutters: After Gutters - Lower Lever | Open Dungeon Shortcuts option
+        After Gutters: After Gutters - Lower Lever | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Ancient Cistern Unrequired))
         Main Room: Nothing
       locations:
         Chest after Whip Hooks: Nothing
@@ -36,14 +36,14 @@ Main:
         # Can front hop and jump slash
         After Whip Hooks: Sword & Cistern Clip - Misc. Uses Trick
         After Gutters - Upper Area: After Gutters - Upper Lever
-        Spider Thread Area: Spider Thread Area - Extend Platform | Open Dungeon Shortcuts option
+        Spider Thread Area: Spider Thread Area - Extend Platform | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Ancient Cistern Unrequired))
         Main Room: Nothing
       locations:
         Chest near Vines: Nothing
         Activate Water Geyser: Whip
         Ancient Cistern - Can Lower Statue: Whip
         Main Room - Lever to Block Waterfall: Cistern Clip - Misc. Uses Trick
-        Rupee Under Lilypad: Open Dungeon Shortcuts option
+        Rupee Under Lilypad: (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Ancient Cistern Unrequired))
 
     Behind the Waterfall:
       exits:
@@ -144,7 +144,7 @@ Main:
         Under the Statue: Can Freely Raise and Lower Statue
         Main Room - Spider Thread Area: Nothing
       locations:
-        Activate Water Geyser: Whip | Open Dungeon Shortcuts option
+        Activate Water Geyser: Whip | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Ancient Cistern Unrequired))
 
     # Implies statue is raised
     Under the Statue:
