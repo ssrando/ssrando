@@ -371,6 +371,7 @@ class Rando:
             VANILLA_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Vanilla",
             OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
             OPEN_DUNGEON_SHORTCUTS_OPTION: self.options["open-shortcuts"],
+            CLOSE_DUNGEON_SHORTCUTS_OPTION: not open_dungeon_shortcuts,
             RANDOMIZED_BEEDLE_OPTION: shopsanity != "Vanilla",
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
             NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
