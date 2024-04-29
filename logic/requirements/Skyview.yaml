@@ -90,7 +90,7 @@ Main:
       First Hub: Skyview Small Key x2 # If you somehow make it into this room first, assume worst key usage
       Miniboss Room: Switch to Miniboss Room
       Left Rooms: Switch to Left Room
-      Staldra Room: Skyview Small Key x 2 | (((Water Dragon's Scale & Hook Beetle & Second Small Key Skip - Scale Trick) | (Hook Beetle & Bomb Bag & Second Small Key Skip - No Scale Trick)) | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Skyview Unrequired)))
+      Staldra Room: Skyview Small Key x 2 | (Water Dragon's Scale & Hook Beetle & Second Small Key Skip - Scale Trick) | (Hook Beetle & Bomb Bag & Second Small Key Skip - No Scale Trick) | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Skyview Unrequired))
       Last Room - Before Rope: Last Room - Unlock Shortcut to Second Hub
     locations:
       Rupee in Southeast Tunnel: Beetle
