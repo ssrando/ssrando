@@ -21,7 +21,7 @@ Main:
   Second Room:
     locations:
       Chest in Second Room: Nothing
-      Open Doors to Water Fruit: Mogma Mitts | Open Dungeon Shortcuts option
+      Open Doors to Water Fruit: Mogma Mitts | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Fire Sanctuary Unrequired))
       Defeat Magmanos: Open Doors to Water Fruit & Sword
     exits:
       Outside Section: Nothing
@@ -44,7 +44,7 @@ Main:
     exits:
       Second Room: Lizalfos Fight
       Room with Water Plant: Lizalfos Fight
-      Second Bridge - Left: Second Bridge - Unlock Shortcut to First Bridge | Open Dungeon Shortcuts option
+      Second Bridge - Left: Second Bridge - Unlock Shortcut to First Bridge | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Fire Sanctuary Unrequired))
     locations:
       Lizalfos Fight: Can Defeat Lizalfos
 
@@ -62,7 +62,7 @@ Main:
         First Trapped Mogma Room: Nothing
         Water Fruit Room: Unlock Key Door
       locations:
-        Unlock Key Door: Fire Sanctuary Small Key x 2 | (Fire Sanctuary Small Key x 3 & Open Dungeon Shortcuts option)
+        Unlock Key Door: Fire Sanctuary Small Key x 2 | (Fire Sanctuary Small Key x 3 & (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Fire Sanctuary Unrequired)))
 
   First Trapped Mogma Room:
     exits:
@@ -90,7 +90,7 @@ Main:
       Second Chest in Water Fruit Room: Nothing
       Hydrate Frog: Sword
       Room with Water Plant - Unlock Key Door:
-        Fire Sanctuary Small Key x 2 | (Fire Sanctuary Small Key x 3 & Open Dungeon Shortcuts option) # Would need better key logic to be exact
+        Fire Sanctuary Small Key x 2 | (Fire Sanctuary Small Key x 3 & (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Fire Sanctuary Unrequired))) # Would need better key logic to be exact
 
     After Frog:
       exits:
@@ -192,7 +192,7 @@ Main:
       West of Boss Door: Nothing
       Lizalfos Fight Room: Nothing
       Past Bars: Past Bars - Unlock Way to Front
-      Boss Key Room: Open Dungeon Shortcuts option
+      Boss Key Room: (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Fire Sanctuary Unrequired))
     locations:
       Unlock Statue: Nothing
 
