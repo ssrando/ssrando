@@ -29,10 +29,10 @@ Main:
       Ledd's Gift: Can Defeat Lizalfos
       Rock to West Room: Bomb Bag | Hook Beetle
       Wall to Lava Section: Bomb Bag | (Hook Beetle & Access to Boulder)
-      Rupee in Lava Tunnel: (Wall to Lava Section & Beetle) | (Access to Boulder & (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Earth Temple Unrequired)) option & Beetle)
-      Lower Lava Section Portcullis: (Wall to Lava Section & Beetle) | (Access to Boulder & (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Earth Temple Unrequired)) option)
+      Rupee in Lava Tunnel: (Wall to Lava Section & Beetle) | (Access to Boulder & (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Earth Temple Unrequired)) & Beetle)
+      Lower Lava Section Portcullis: (Wall to Lava Section & Beetle) | (Access to Boulder & (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Earth Temple Unrequired))
       Left Peg: Access to Boulder
-      Raise Bridge: (Left Peg & Past Lava Section - Right Peg) | ((Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Earth Temple Unrequired)) option & Left Peg)
+      Raise Bridge: (Left Peg & Past Lava Section - Right Peg) | ((Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Earth Temple Unrequired) & Left Peg)
 
     Past Lava Section:
       exits:
