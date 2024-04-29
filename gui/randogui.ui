@@ -1040,12 +1040,14 @@
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="option_open_dungeon_shortcuts">
-               <property name="text">
-                <string>Open Dungeon Shortcuts</string>
-               </property>
-              </widget>
-             </item>
+              <layout class="QVBoxLayout" name="option_open_dungeon_shortcuts">
+               <item>
+                <widget class="QLabel" name="label_for_dungeon_shortcuts">
+                 <property name="text">
+                  <string>Open Dungeon Shortcuts</string>
+                 </property>
+                </widget>
+               </item>
              <item>
               <spacer name="vspace_dungeons">
                <property name="orientation">
