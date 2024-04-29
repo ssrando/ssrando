@@ -95,7 +95,7 @@ Main:
   Brig:
     exits:
       Treasure Room: Starboard Rooms - Generator & Whip
-      Brig Prison: (Starboard Rooms - Generator & Whip & Port Rooms - Generator) | (Starboard Rooms - Generator & Open Dungeon Shortcuts option)
+      Brig Prison: (Starboard Rooms - Generator & Whip & Port Rooms - Generator) | (Starboard Rooms - Generator & (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Sandship Unrequired)))
       Starboard Rooms: Starboard Rooms - Switch
 
   Treasure Room:
