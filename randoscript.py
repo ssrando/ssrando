@@ -23,11 +23,9 @@ def main():
         print(
             "WARNING: Running from source, but without git, this is highly discouraged"
         )
-
     # add options
-    parser = argparse.ArgumentParser(
-        description="Nindy's Super Evil Randomizer v1.1.0"
-    )
+
+    parser = argparse.ArgumentParser(description="Nindy's Super Evil Randomizer v1.1.0")
     parser.add_argument(
         "--permalink",
         help="Specify a permalink, which includes the settings. This is set first, other options may override these settings",
@@ -68,7 +66,6 @@ def main():
             if isinstance(opt["default"], int):
                 args["type"] = int
         seed_opts.add_argument(f"--{optname}", **args)
-
     bulk_opts = parser.add_argument_group("bulk options")
     bulk_opts.add_argument(
         "--bulk",
@@ -113,13 +110,11 @@ def main():
                 all_errors.extend(validation_errors)
             else:
                 options.set_option(optname, value)
-
     if all_errors:
         print("Options ERROR:")
         for err in all_errors:
             print(err)
         exit(1)
-
     if dest := parsed_args.dump_graph:
         import logic
         from logic.logic_input import Area
@@ -137,7 +132,6 @@ def main():
                 sort_keys=False,
             )
             exit(0)
-
     areas = Areas(requirements, checks, hints, map_exits)
 
     plcmt_file_name = parsed_args.placement_file
@@ -159,7 +153,6 @@ def main():
         plandomizer.progress_callback = progress_callback
         plandomizer.randomize()
         exit(0)
-
     assert options is not None
 
     if parsed_args.bulk:
