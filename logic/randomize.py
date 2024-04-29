@@ -20,7 +20,7 @@ from .inventory import (
     HINT_BYPASS_BIT,
     BANNED_BIT,
 )
-from .constants import *
+from .constants import REGULAR_DUNGEONS
 from .placements import *
 from .pools import *
 
@@ -374,12 +374,12 @@ class Rando:
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
             FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
-            SV_UNREQUIRED: self.unrequired_dungeons[SV],
-            ET_UNREQUIRED: self.unrequired_dungeons[ET],
-            LMF_UNREQUIRED: self.unrequired_dungeons[LMF],
-            AC_UNREQUIRED: self.unrequired_dungeons[AC],
-            SSH_UNREQUIRED: self.unrequired_dungeons[SSH],
-            FS_UNREQUIRED: self.unrequired_dungeons[FS],
+            SV_UNREQUIRED: self.unrequired_dungeons(SV),
+            ET_UNREQUIRED: self.unrequired_dungeons(ET),
+            LMF_UNREQUIRED: self.unrequired_dungeons(LMF),
+            AC_UNREQUIRED: self.unrequired_dungeons(AC),
+            SSH_UNREQUIRED: self.unrequired_dungeons(SSH),
+            FS_UNREQUIRED: self.unrequired_dungeons(FS),
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])
