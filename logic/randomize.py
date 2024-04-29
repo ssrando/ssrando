@@ -360,7 +360,6 @@ class Rando:
         shopsanity = self.options["shopsanity"]
         place_gondo_progressives = self.options["gondo-upgrades"]
         damage_multiplier = self.options["damage-multiplier"]
-        open_dungeon_shortcuts = self.options["open-shortcuts"]
 
         options = {
             OPEN_THUNDERHEAD_OPTION: self.options["open-thunderhead"] == "Open",
@@ -371,8 +370,9 @@ class Rando:
             TALK_TO_YERBAL_OPTION: self.options["open-lake-floria"] == "Talk to Yerbal",
             VANILLA_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Vanilla",
             OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
-            OPEN_DUNGEON_SHORTCUTS_OPTION: self.options["open-shortcuts"],
-            DEFAULT_DUNGEON_BEHAVIOR_OPTION: not open_dungeon_shortcuts,
+            OPEN_DUNGEON_SHORTCUTS_OPTION: self.options["open-shortcuts"] == "All Dungeons",
+            OPEN_UNREQUIRED_SHORTCUTS_OPTION: self.options["open-shortcuts"] == "Unrequired Dungeons Only",
+            DEFAULT_DUNGEON_BEHAVIOR_OPTION: self.options["open-shortcuts"] == "None",
             RANDOMIZED_BEEDLE_OPTION: shopsanity != "Vanilla",
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
             NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
