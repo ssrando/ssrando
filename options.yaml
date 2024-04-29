@@ -1036,9 +1036,17 @@
   ui: option_randomize_boss_key_puzzles
 - name: Open Dungeon Shortcuts
   command: open-shortcuts
-  type: boolean
-  default: false
-  help: "If enabled, shortcuts in dungeons will be opened by default."
+  type: singlechoice
+  bits: 2
+  choices:
+    - None
+    - Unrequired Dungeons Only
+    - All Dungeons
+  default: None
+  help: "Determines whether or not shortcuts in dungeons are pre-opened.
+        **None**: No dungeon shortcuts will be pre-opened.
+        **Unrequired Dungeons Only**: Mainly recommended to be used in place of EUD. All shortcuts in unrequired dungeons are pre-opened, but not shortcuts in required dungeons.
+        **All Dungeons**: All dungeons have their shortcuts pre-opened."
   ui: option_open_dungeon_shortcuts
 - name: Tadtonesanity
   command: tadtonesanity
