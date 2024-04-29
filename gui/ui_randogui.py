@@ -785,10 +785,17 @@ class Ui_MainWindow(object):
 
         self.vlay_dungeons.addWidget(self.option_fs_lava_flow)
 
-        self.option_open_dungeon_shortcuts = QCheckBox(self.box_dungeons)
+        self.vlay_sword_reward = QVBoxLayout()
+        self.vlay_sword_reward.setObjectName(u"vlay_open_dungeon_shortcuts")
+        self.label_for_dungeon_shortcuts = QLabel(self.box_dungeons)
+        self.label_for_dungeon_shortcuts.setObjectName(u"label_for_dungeon_shortcuts")
+
+        self.vlay_sword_reward.addWidget(self.label_for_dungeon_shortcuts)
+
+        self.option_open_dungeon_shortcuts = QComboBox(self.box_dungeons)
         self.option_open_dungeon_shortcuts.setObjectName(u"option_open_dungeon_shortcuts")
 
-        self.vlay_dungeons.addWidget(self.option_open_dungeon_shortcuts)
+        self.vlay_sword_reward.addWidget(self.option_open_dungeon_shortcuts)
 
         self.vspace_dungeons = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
