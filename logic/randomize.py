@@ -52,6 +52,7 @@ class Rando:
         self.initial_placement = self.placement.copy()
 
         # since it's currently not configurable on the UI, use assumed fill
+
         fill_algorithm = "Assumed Fill"  # self.options["fill-algorithm"]
         if fill_algorithm == "Assumed Fill":
             start_inventory = Inventory(
@@ -77,12 +78,12 @@ class Rando:
             start_inventory = Inventory()
             frees = start_inventory
             # Any would work for those two
+
             FillAlgorithm = RandomFill
         else:
             raise ValueError(
                 f"Wrong value for option 'fill-algorithm: f'{fill_algorithm}'."
             )
-
         runtime_requirements = (
             self.logic_options_requirements
             | self.endgame_requirements
@@ -137,8 +138,8 @@ class Rando:
             self.options.randomize_settings(self)
         if self.options["random-cosmetics"]:
             self.options.randomize_cosmetics(self)
-
         # Initialize location related attributes.
+
         self.randomize_required_dungeons()  # self.required_dungeons, self.unrequired_dungeons
         self.randomize_starting_items()  # self.placement.starting_items
         self.ban_the_banned()  # self.banned, self.ban_options
@@ -177,7 +178,6 @@ class Rando:
 
         for tablet in self.rng.sample(TABLETS, k=self.options["starting-tablet-count"]):
             starting_items.add(tablet)
-
         starting_items |= {
             number(HEART_CONTAINER, heart_container_num)
             for heart_container_num in range(self.options["starting-heart-containers"])
@@ -205,7 +205,6 @@ class Rando:
 
         if self.options["start-with-hylian-shield"]:
             starting_items.add(HYLIAN_SHIELD)
-
         if not self.options["open-et"]:
             starting_items |= {
                 number(KEY_PIECE, key_piece_num)
@@ -213,7 +212,6 @@ class Rando:
                     self.options["starting-items"].count(KEY_PIECE)
                 )
             }
-
         for item in self.options["starting-items"]:
             if item == KEY_PIECE:
                 continue
@@ -225,7 +223,6 @@ class Rando:
                     continue
             else:
                 starting_items.add(item)
-
         if self.options["random-starting-item"]:
             possible_random_starting_items = [
                 item
@@ -237,10 +234,8 @@ class Rando:
                 if random_item not in EXTENDED_ITEM.items_list:
                     random_item = number(random_item, 0)
                 starting_items.add(random_item)
-
         if self.options["map-mode"] == "Removed":
             self.placement.add_unplaced_items(set(ALL_MAPS) - starting_items)
-
         self.placement.add_starting_items(starting_items)
 
     def ban_the_banned(self):
@@ -258,13 +253,14 @@ class Rando:
                 or self.options["triforce-shuffle"] == "Anywhere"
             ):
                 self.banned.append(self.norm(entrance_of_exit(DUNGEON_MAIN_EXITS[SK])))
-
         # ban the forced vanilla relic checks to ensure songs can be counted as nonprogress items if the rewards are also off
+
         if not self.options["treasuresanity-in-silent-realms"]:
             self.banned.extend(map(self.norm, TRIAL_RELIC_CHECKS))
 
     def get_endgame_requirements(self):
         # needs to be able to open GoT and open it, requires required dungeons
+
         got_raising_requirement = (
             DNFInventory(self.short_to_full(SONG_IMPA_CHECK))
             if self.options["got-start"]
@@ -282,12 +278,10 @@ class Rando:
         dungeons_req = Inventory()
         for dungeon in self.required_dungeons:
             dungeons_req |= Inventory(self.short_to_full(DUNGEON_FINAL_CHECK[dungeon]))
-
         if self.options["got-dungeon-requirement"] == "Required":
             got_opening_requirement &= DNFInventory(dungeons_req)
         elif self.options["got-dungeon-requirement"] == "Unrequired":
             horde_door_requirement &= DNFInventory(dungeons_req)
-
         everything_list = (
             {check["req_index"] for check in self.areas.checks.values()}
             | {check["req_index"] for check in self.areas.gossip_stones.values()}
@@ -304,6 +298,7 @@ class Rando:
 
     def initialize_items(self):
         # Initialize item related attributes.
+
         rupoor_mode = self.options["rupoor-mode"]
         if rupoor_mode != "Off":
             may_be_placed_list: List[EIN] = [
@@ -314,6 +309,7 @@ class Rando:
             if rupoor_mode == "Added":
                 unplaced = []
                 # Coarsely emulate adding 15 rupoors then removing 15 elements
+
                 for _ in range(15):
                     if (i := self.rng.randint(0, length - 1 + 15)) < length:
                         unplaced.append(may_be_placed_list[i])
@@ -324,7 +320,6 @@ class Rando:
             else:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
-
         self.no_logic_requirements = {}
         if self.options["logic-mode"] == "No Logic":
             self.no_logic_requirements = {
@@ -333,7 +328,6 @@ class Rando:
                 if EXTENDED_ITEM[item] != BANNED_BIT
                 if item not in self.placement.unplaced_items
             }
-
         must_be_placed_items = (
             PROGRESS_ITEMS
             | NONPROGRESS_ITEMS
@@ -351,7 +345,6 @@ class Rando:
         for item in self.placement.items:
             must_be_placed_items.pop(item, None)
             may_be_placed_items.pop(item, None)
-
         self.randosettings = RandomizationSettings(
             must_be_placed_items, may_be_placed_items, duplicable_items
         )
@@ -370,8 +363,10 @@ class Rando:
             TALK_TO_YERBAL_OPTION: self.options["open-lake-floria"] == "Talk to Yerbal",
             VANILLA_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Vanilla",
             OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
-            OPEN_DUNGEON_SHORTCUTS_OPTION: self.options["open-shortcuts"] == "All Dungeons",
-            OPEN_UNREQUIRED_SHORTCUTS_OPTION: self.options["open-shortcuts"] == "Unrequired Dungeons Only",
+            OPEN_DUNGEON_SHORTCUTS_OPTION: self.options["open-shortcuts"]
+            == "All Dungeons",
+            OPEN_UNREQUIRED_SHORTCUTS_OPTION: self.options["open-shortcuts"]
+            == "Unrequired Dungeons Only",
             DEFAULT_DUNGEON_BEHAVIOR_OPTION: self.options["open-shortcuts"] == "None",
             RANDOMIZED_BEEDLE_OPTION: shopsanity != "Vanilla",
             GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
@@ -404,7 +399,6 @@ class Rando:
             entrance = self.norm(v["vanilla"])
             vanilla_map_transitions[exit] = entrance
             vanilla_reverse_map_transitions[entrance] = exit
-
         self.placement |= Placement(
             map_transitions=vanilla_map_transitions,
             reverse_map_transitions=vanilla_reverse_map_transitions,
@@ -426,7 +420,6 @@ class Rando:
                 raise ValueError(
                     f"Option sword-dungeon-reward has unknown value {sword_reward_mode}."
                 )
-
             dungeons = self.required_dungeons.copy()
             self.rng.shuffle(dungeons)
             for dungeon, sword in zip(dungeons, swords_to_place):
@@ -435,19 +428,16 @@ class Rando:
                     items={sword: final_check},
                     locations={final_check: sword},
                 )
-
         # self.placement |= HARDCODED_PLACEMENT(self.norm)
 
         if self.options["open-et"]:
             self.placement.add_unplaced_items(set(KEY_PIECES))
-
         if not place_gondo_progressives:
             self.placement.add_unplaced_items(GONDO_ITEMS)
-
         if not shopsanity:
             self.placement |= VANILLA_BEEDLE_PLACEMENT(self.norm, self.areas.checks)
-
         # remove small keys from the dungeon pool if small key sanity is enabled
+
         small_key_mode = self.options["small-key-mode"]
         if small_key_mode == "Vanilla":
             self.placement |= VANILLA_SMALL_KEYS_PLACEMENT(self.norm, self.areas.checks)
@@ -458,8 +448,8 @@ class Rando:
             self.placement |= DUNGEON_SMALL_KEYS_RESTRICTION(self.norm)
         elif small_key_mode == "Anywhere":
             pass
-
         # remove boss keys from the dungeon pool if boss key sanity is enabled
+
         boss_key_mode = self.options["boss-key-mode"]
         if boss_key_mode == "Vanilla":
             self.placement |= VANILLA_BOSS_KEYS_PLACEMENT(self.norm, self.areas.checks)
@@ -467,8 +457,8 @@ class Rando:
             self.placement |= DUNGEON_BOSS_KEYS_RESTRICTION(self.norm)
         elif boss_key_mode == "Anywhere":
             pass
-
         # remove maps from the dungeon pool if maps are shuffled
+
         map_mode = self.options["map-mode"]
         if map_mode == "Removed":
             pass
@@ -481,10 +471,8 @@ class Rando:
             self.placement |= DUNGEON_MAPS_RESTRICTION(self.norm)
         elif map_mode == "Anywhere":
             pass
-
         if not self.options["rupeesanity"]:
             self.placement |= VANILLA_RUPEES(self.norm, self.areas.checks)
-
         triforce_mode = self.options["triforce-shuffle"]
         if triforce_mode == "Vanilla":
             self.placement |= VANILLA_TRIFORCES_PLACEMENT(self.norm)
@@ -492,15 +480,14 @@ class Rando:
             self.placement |= TRIFORCES_RESTRICTION(self.norm)
         elif triforce_mode == "Anywhere":
             pass
-
         tadtonesanity = self.options["tadtonesanity"]
         if not tadtonesanity:
             self.placement |= VANILLA_TADTONE_PLACEMENT(self.norm, self.areas.checks)
         trial_treasure_amount = self.options["trial-treasure-amount"]
         if not self.options["treasuresanity-in-silent-realms"]:
             trial_treasure_amount = 0
-
         # make non-randomized trial relics vanilla
+
         self.placement |= SOME_VANILLA_RELICS(
             trial_treasure_amount, self.norm, self.areas.checks
         )
@@ -531,16 +518,15 @@ class Rando:
     def randomize_dungeons_trials_starting_entrances(self):
         # Do this in a deliberately hacky way, this is not supposed to be how ER works
         # Dungeon Entrance Rando.
+
         der = self.options["randomize-entrances"]
         dungeons = ALL_DUNGEONS.copy()
         entrances = [DUNGEON_OVERWORLD_ENTRANCES[dungeon] for dungeon in ALL_DUNGEONS]
         if der == "All Surface Dungeons":
             indices = list(range(len(REGULAR_DUNGEONS)))
             shuffle_indices(self.rng, dungeons, indices=indices)
-
         elif der == "All Surface Dungeons + Sky Keep":
             self.rng.shuffle(dungeons)
-
         elif der == "Required Dungeons Separately":
             req_indices = [ALL_DUNGEONS.index(d) for d in self.required_dungeons]
             unreq_indices = [ALL_DUNGEONS.index(d) for d in self.unrequired_dungeons]
@@ -555,11 +541,9 @@ class Rando:
             shuffle_indices(self.rng, dungeons, indices=unreq_indices)
         else:
             assert der == "None"
-
         self.randomized_dungeon_entrance = {}
         for entrance, dungeon in zip(entrances, dungeons):
             self.randomized_dungeon_entrance[entrance] = dungeon
-
         pre_LMF_index = dungeons.index(LMF)
 
         dungeon_entrances = [
@@ -569,30 +553,28 @@ class Rando:
 
         if ALL_DUNGEONS[pre_LMF_index] != LMF:
             dungeons[pre_LMF_index].append(self.norm(LMF_SECOND_EXIT))
-
         self.reassign_entrances(dungeon_entrances, dungeons)
 
         # Trial Gate Entrance Rando.
+
         ter = self.options["randomize-trials"]
         pool = ALL_SILENT_REALMS.copy()
         gates = [SILENT_REALM_GATES[realm] for realm in ALL_SILENT_REALMS]
         if ter:
             self.rng.shuffle(pool)
-
         self.randomized_trial_entrance = {}
         for gate, realm in zip(gates, pool):
             self.randomized_trial_entrance[gate] = realm
-
         trial_entrances = [self.norm(TRIAL_GATE_EXITS[k]) for k in gates]
         trials = [self.norm(SILENT_REALM_EXITS[k]) for k in pool]
         self.reassign_entrances(trial_entrances, trials)
 
         # Ugly patch for needlessly useful songs : remove the trial exits from logic
+
         for trial_exit in trials:
             self.placement.map_transitions[trial_exit] = EIN(
                 entrance_of_exit(trial_exit)
             )
-
         self.randomize_starting_entrance()
 
         # Starting bird statue rando
@@ -622,6 +604,7 @@ class Rando:
 
         for exit, values in self.areas.map_exits.items():
             # First time dives have the 'pillar-province' field in entrances.yaml
+
             if (province := values.get("pillar-province")) is not None:
                 self.placement.map_transitions[exit] = self.randomized_start_statues[
                     province
@@ -629,6 +612,7 @@ class Rando:
 
     def randomize_starting_entrance(self):
         # Starting Entrance Rando.
+
         ser = self.options["random-start-entrance"]
         limit_ser = self.options["limit-start-entrance"]
         allowed_provinces = [
@@ -667,15 +651,16 @@ class Rando:
             # If we're not restricted to Bird Statues, weight entrances by inverse
             # number of eligible entrances in that region to penalize overly
             # entrance-dense regions like Skyloft
+
             entrances_by_region = defaultdict(lambda: 0)
             for _, entrance in possible_start_entrances:
                 entrances_by_region[entrance["hint_region"]] += 1
             # print(entrances_by_region, sum(entrances_by_region.values()))
+
             weights = [
                 1.0 / entrances_by_region[v[1]["hint_region"]]
                 for v in possible_start_entrances
             ]
-
         start_entrance = self.rng.choices(possible_start_entrances, weights, k=1)[0]
         self.placement.map_transitions["\Start"] = start_entrance[0]
         values = start_entrance[1]
