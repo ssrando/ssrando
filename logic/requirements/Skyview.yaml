@@ -23,7 +23,7 @@ Main:
       First Hub: Destroy Barricade
     locations:
       Entry - Cut Tree: Can Cut Tree
-      Destroy Barricade: Skyview 2 | Bomb Bag | Open Dungeon Shortcuts option
+      Destroy Barricade: Skyview 2 | Bomb Bag | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Skyview Unrequired))
       Switch to One Eye Room: Can Hit High Skyview Switches
       Goddess Wall Trigger: Ballad of the Goddess & Goddess's Harp
 
@@ -44,7 +44,7 @@ Main:
       Second Hub: One Water Raise & Skyview Small Key
     locations:
       First Room - Destroy Barricade: Nothing
-      Switch to Left Room: (Default Dungeon Behavior option & (Can Hit Switch | (One Water Raise & Water Dragon's Scale))) | (Open Dungeon Shortcuts option & Water Dragon's Scale)
+      Switch to Left Room: (Default Dungeon Behavior option & (Can Hit Switch | (One Water Raise & Water Dragon's Scale))) | ((Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Skyview Unrequired)) & Water Dragon's Scale)
       Switch to Right Room: Can Hit High Skyview Switches
       One Water Raise: Left Room - Raise Water | Right Room - Raise Water
 
@@ -54,7 +54,7 @@ Main:
       locations:
         Hit Vines: Can Hit High Skyview Switches | Goddess Sword | Whip
         Spider Roll: Spider Roll Trick
-        Raise Water: (Hit Vines & Can Hit Switch) | (Spider Roll & Can Hit High Skyview Switches) | Open Dungeon Shortcuts option
+        Raise Water: (Hit Vines & Can Hit Switch) | (Spider Roll & Can Hit High Skyview Switches) | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Skyview Unrequired))
         Chest on Tree Branch: Hit Vines | Spider Roll
 
     Right Room:
@@ -68,7 +68,7 @@ Main:
         exits:
           Lower Area: Nothing
         locations:
-          Raise Water: Can Hit High Skyview Switches | Open Dungeon Shortcuts option
+          Raise Water: Can Hit High Skyview Switches | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Skyview Unrequired))
           Digging Spot in Crawlspace: Impossible
           # We have to assume Link has to enter with water to get the check
 
@@ -90,7 +90,7 @@ Main:
       First Hub: Skyview Small Key x2 # If you somehow make it into this room first, assume worst key usage
       Miniboss Room: Switch to Miniboss Room
       Left Rooms: Switch to Left Room
-      Staldra Room: Skyview Small Key x 2 | (((Water Dragon's Scale & Hook Beetle & Second Small Key Skip - Scale Trick) | (Hook Beetle & Bomb Bag & Second Small Key Skip - No Scale Trick)) | Open Dungeon Shortcuts option)
+      Staldra Room: Skyview Small Key x 2 | (((Water Dragon's Scale & Hook Beetle & Second Small Key Skip - Scale Trick) | (Hook Beetle & Bomb Bag & Second Small Key Skip - No Scale Trick)) | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Skyview Unrequired)))
       Last Room - Before Rope: Last Room - Unlock Shortcut to Second Hub
     locations:
       Rupee in Southeast Tunnel: Beetle
