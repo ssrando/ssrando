@@ -149,6 +149,8 @@ global:
       - onlyif: Option "open-shortcuts" Enabled
         flag: 42 # Water Spout near Basement Rope
       - onlyif: Option "open-shortcuts" Enabled
+        flag: 46 # Cutscene for Shortcut Mentioned Above? Maybe?
+      - onlyif: Option "open-shortcuts" Enabled
         flag: 51 # Gate Near Map Chest Opened
       - onlyif: Option "open-shortcuts" Enabled
         flag: 52 # Gate Near Vines Opened
@@ -204,7 +206,6 @@ global:
         flag: 37 # Bars to West Part of Hub Room Opened
       - onlyif: Option "open-shortcuts" Enabled
         flag: 39 # Gate at Front of Hub Room Raised
-      - 88 # Cutscene for Wooden Boxes in Hub Room
       - onlyif: Option "open-shortcuts" Enabled
         flag: 95 # East Shortcut Opened in Hub Room
       - onlyif: Option "open-shortcuts" Enabled
@@ -225,9 +226,11 @@ global:
       - 63 # North generator activation cutscene
       - onlyif: Option "open-shortcuts" Enabled
         flag: 65 # Basement Bars Opened
-      - onlyif: Option "open-shortcuts" Enabled
+      # onlyif: Option "open-shortcuts" Enabled
+        flag: 65 # More Timeshift Stone Stuff
+      # onlyif: Option "open-shortcuts" Enabled
         flag: 100 # Timeshift Stone Appears
-      - onlyif: Option "open-shortcuts" Enabled
+      # onlyif: Option "open-shortcuts" Enabled
         flag: 102 # Timeshift Stone Freed
       ## Praying this works 🤺
     Fire Sanctuary:
