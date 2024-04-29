@@ -20,7 +20,14 @@ from .inventory import (
     HINT_BYPASS_BIT,
     BANNED_BIT,
 )
-from .constants import REGULAR_DUNGEONS
+from .constants import (
+    SV,
+    ET,
+    LMF,
+    AC,
+    SSH,
+    FS,
+)
 from .placements import *
 from .pools import *
 
