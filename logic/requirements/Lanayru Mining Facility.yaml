@@ -34,7 +34,7 @@ Main:
 
   Hop Across Boxes Room:
     exits:
-      Near Exit: Blow Up Rocks | Near Exit - Push Shortcut Box | Open Dungeon Shortcuts option
+      Near Exit: Blow Up Rocks | Near Exit - Push Shortcut Box | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
     # Does not include the entry ledge you can only jump from
     locations:
       Blow Up Rocks:
@@ -72,9 +72,9 @@ Main:
       exits:
         Exit to First Hub: Nothing
         After Wooden Boxes: Blow Up Boxes
-        Past West Gate: Past West Gate - Open Gate | Open Dungeon Shortcuts option
-        Between Wind Gates: Between Wind Gates - Open First Wind Gate | Open Dungeon Shortcuts option
-        Near Exit to Hop Across Boxes Room: Open Dungeon Shortcuts option
+        Past West Gate: Past West Gate - Open Gate | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
+        Between Wind Gates: Between Wind Gates - Open First Wind Gate | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
+        Near Exit to Hop Across Boxes Room: (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
       locations:
         Blow Up Boxes: Bomb Bag | Hook Beetle
 
@@ -128,13 +128,13 @@ Main:
       exits:
         Entry: Open First Wind Gate
         Near Boss Key Room First Exit: Activate Minecart Stone to Boss Key Room
-        Near Boss Key Room Second Exit: Near Boss Key Room Second Exit - Push Box | Open Dungeon Shortcuts option
+        Near Boss Key Room Second Exit: Near Boss Key Room Second Exit - Push Box | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
       locations:
         Get Minecart: Near Boss Door - Open Second Wind Gate
-        Open First Wind Gate: (Get Minecart & Can Activate Minecart Timeshift Stone & Gust Bellows) | Open Dungeon Shortcuts option
+        Open First Wind Gate: (Get Minecart & Can Activate Minecart Timeshift Stone & Gust Bellows) | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
         Activate Minecart Stone to Boss Key Room: Gust Bellows & Can Activate Minecart Timeshift Stone
-        Unlock Exit to Boss Key Room: (Activate Minecart Stone to Boss Key Room & Gust Bellows) | Open Dungeon Shortcuts option
-        Shortcut Chest in Main Hub: Open Dungeon Shortcuts option
+        Unlock Exit to Boss Key Room: (Activate Minecart Stone to Boss Key Room & Gust Bellows) | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
+        Shortcut Chest in Main Hub: (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
 
   Near Boss Door:
     exits:
@@ -143,7 +143,7 @@ Main:
       Big Hub - Between Wind Gates: Open Second Wind Gate & Can Defeat Beamos
     locations:
       Get Minecart to Wind Gate: Gust Bellows & Can Activate Minecart Timeshift Stone
-      Open Second Wind Gate: (Get Minecart to Wind Gate & Gust Bellows) | Open Dungeon Shortcuts option
+      Open Second Wind Gate: (Get Minecart to Wind Gate & Gust Bellows) | (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
 
   Boss Key Room:
     exits:
