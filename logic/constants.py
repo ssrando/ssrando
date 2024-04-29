@@ -33,12 +33,6 @@ NO_BIT_CRASHES = EIN("No BiT crashes")
 NONLETHAL_HOT_CAVE = EIN("Nonlethal Hot Cave")
 UPGRADED_SKYWARD_STRIKE = EIN("Upgraded Skyward Strike option")
 FS_LAVA_FLOW_OPTION = EIN("FS Lava Flow option")
-SV_UNREQ_OPTION = EIN("Skyview Unrequired")
-ET_UNREQ_OPTION = EIN("Earth Temple Unrequired")
-LMF_UNREQ_OPTION = EIN("Lanayru Mining Facility Unrequired")
-AC_UNREQ_OPTION = EIN("Ancient Cistern Unrequired")
-SSH_UNREQ_OPTION = EIN("Sandship Unrequired")
-FS_UNREQ_OPTION = EIN("Fire Sanctuary Unrequired")
 
 GOT_OPENING_REQUIREMENT = EIN("GoT Opening Requirement")
 GOT_RAISING_REQUIREMENT = EIN("GoT Raising Requirement")
@@ -66,12 +60,6 @@ LOGIC_OPTIONS = dict.fromkeys(
         GOT_OPENING_REQUIREMENT,
         GOT_RAISING_REQUIREMENT,
         HORDE_DOOR_REQUIREMENT,
-        SV_UNREQ_OPTION,
-        ET_UNREQ_OPTION,
-        LMF_UNREQ_OPTION,
-        AC_UNREQ_OPTION,
-        SSH_UNREQ_OPTION,
-        FS_UNREQ_OPTION,
     ]
 )
 
