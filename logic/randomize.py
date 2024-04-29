@@ -379,12 +379,6 @@ class Rando:
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
             FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
-            SV_UNREQ_OPTION: self.unrequired_dungeons["Skyview"],
-            ET_UNREQ_OPTION: self.unrequired_dungeons["Earth Temple"],
-            LMF_UNREQ_OPTION: self.unrequired_dungeons["Lanayru Mining Facility"],
-            AC_UNREQ_OPTION: self.unrequired_dungeons["Ancient Cistern"],
-            SSH_UNREQ_OPTION: self.unrequired_dungeons["Sandship"],
-            FS_UNREQ_OPTION: self.unrequired_dungeons["Fire Sanctuary"],
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])
