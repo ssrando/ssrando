@@ -1040,7 +1040,7 @@
               </widget>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="option_open_dungeon_shortcuts">
+              <layout class="QVBoxLayout" name="vlay_open_dungeon_shortcuts">
                <item>
                 <widget class="QLabel" name="label_for_dungeon_shortcuts">
                  <property name="text">
@@ -1048,6 +1048,11 @@
                  </property>
                 </widget>
                </item>
+               <item>
+                <widget class="QComboBox" name="option_open_dungeon_shortcuts"/>
+               </item>
+              </layout>
+             </item>
              <item>
               <spacer name="vspace_dungeons">
                <property name="orientation">
