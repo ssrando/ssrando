@@ -374,7 +374,7 @@ class Rando:
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
             FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
-            SV_UNREQUIRED: self.unrequired_dungeons = ["Skyview"],
+            SV_UNREQUIRED: self.unrequired_dungeons("Skyview"),
             ET_UNREQUIRED: self.unrequired_dungeons[ET],
             LMF_UNREQUIRED: self.unrequired_dungeons[LMF],
             AC_UNREQUIRED: self.unrequired_dungeons[AC],
