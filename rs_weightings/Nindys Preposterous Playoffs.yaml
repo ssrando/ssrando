@@ -247,6 +247,13 @@
     None: 6
     Heart Container: 3
     Final Check: 2
+- name: Open Dungeon Shortcuts
+  command: open-shortcuts
+  type: singlechoice
+  choices:
+    None: 4
+    Unrequired Dungeons Only: 2
+    All Dungeons: 3
 - name: Shuffle Trial Objects
   command: shuffle-trial-objects
   type: singlechoice
@@ -273,14 +280,6 @@
   command: hint-distribution
   type: singlechoice
   choices:
-    All Dungeons: 0
-    Eldin: 0
-    Faron: 0
-    Lanayru: 0
-    Major Minor: 0
-    Random: 0
-    Sky: 0
-    Standard: 0
     Random Settings Mixed: 15
     Random Settings Fi: 11
     Random Settings Stones: 11
@@ -432,13 +431,18 @@
 - name: FS Last Room Lava Flow
   command: fs-lava-flow
   type: boolean
-  checked: 3
+  checked: 9
   unchecked: 1
 - name: Limit Starting Location
   command: limit-start-entrance
   type: boolean
   checked: 2
   unchecked: 1
+- name: Random Starting Statues
+  command: random-start-statues
+  type: boolean
+  checked: 3
+  unchecked: 4
 - name: Treasuresanity in Silent Realms
   command: treasuresanity-in-silent-realms
   type: boolean
