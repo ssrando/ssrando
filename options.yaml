@@ -112,7 +112,6 @@
     - Quick
     - Balanced
     - Insanity
-    - RSL Season 1
     - Nindys Preposterous Playoffs
   default: Balanced
   help: "The weighting used to randomize settings. Only applicable if randomize settings is on.
