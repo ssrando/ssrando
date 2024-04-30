@@ -382,11 +382,11 @@ class Rando:
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
             FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
             SV_UNREQUIRED: SV in self.unrequired_dungeons,
-            ET_UNREQUIRED: self.unrequired_dungeons(ET),
-            LMF_UNREQUIRED: self.unrequired_dungeons(LMF),
-            AC_UNREQUIRED: self.unrequired_dungeons(AC),
-            SSH_UNREQUIRED: self.unrequired_dungeons(SSH),
-            FS_UNREQUIRED: self.unrequired_dungeons(FS),
+            ET_UNREQUIRED: ET in self.unrequired_dungeons,
+            LMF_UNREQUIRED: LMF in self.unrequired_dungeons,
+            AC_UNREQUIRED: AC in self.unrequired_dungeons,
+            SSH_UNREQUIRED: SSH in self.unrequired_dungeons,
+            FS_UNREQUIRED: FS in self.unrequired_dungeons,
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])
