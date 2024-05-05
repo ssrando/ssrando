@@ -113,7 +113,7 @@ Volcano:
       Digging Spot in front of Earth Temple: Digging Mitts
       Digging Spot below Tower: Digging Mitts
       Digging Spot behind Boulder on Sandy Slope: Digging Mitts
-  
+
   Upper Platform Cave:
     exits:
       Near Temple Entrance: Beaten Boko Base | Clawshots
@@ -144,7 +144,7 @@ Volcano:
     locations:
       Digging Spot after Draining Lava: Digging Mitts
       Unlock Shortcut to Ascent: Nothing
-  
+
   Lower Platform Cave:
     exits:
       Past Slide: Clawshots
@@ -215,7 +215,7 @@ Volcano Summit:
       Exit: Nothing
     locations:
       Goddess Cube in Summit Waterfall: Goddess Sword
-      General - Can Collect Water: Nothing
+      Global - Can Collect Water: Nothing
 
     Higher Area:
       entrance: Clawshots
@@ -256,7 +256,7 @@ Volcano Summit:
 Bokoblin Base:
   toplevel-alias: Bokoblin Base
   hint-region: Bokoblin Base
-  
+
   Prison:
     exits:
       Entrance: Nothing
@@ -264,23 +264,23 @@ Bokoblin Base:
       Volcano East: Mogma Mitts
     locations:
       Plats' Gift: Nothing
-  
+
   Volcano East:
     exits:
       Prison: Mogma Mitts
       Before Drawbridge: Nothing
       After Drawbridge: Clawshots & Bomb Bag
     locations:
-      Chest near Bone Bridge: Can bypass Boko Base Watch Tower | Mogma Mitts | Gust Bellows
-      Chest on Cliff: (Can bypass Boko Base Watch Tower | Mogma Mitts) & Gust Bellows
+      Chest near Bone Bridge: Can Bypass Boko Base Watch Tower | Mogma Mitts | Gust Bellows
+      Chest on Cliff: (Can Bypass Boko Base Watch Tower | Mogma Mitts) & Gust Bellows
       Volcano - Goddess Cube near Mogma Turf Entrance: Goddess Sword
-  
+
   Before Drawbridge:
     exits:
       Volcano East: Nothing
       After Drawbridge: Whip & Clawshots
     locations:
-      Chest near Drawbridge: Clawshots | Can bypass Boko Base Watch Tower
+      Chest near Drawbridge: Clawshots | Can Bypass Boko Base Watch Tower
 
   After Drawbridge:
     exits:
@@ -288,7 +288,7 @@ Bokoblin Base:
       Bokoblin Base - Lower Platform Cave: Nothing
       Volcano East: Nothing
       Outside Earth Temple: Nothing
-  
+
   Lower Platform Cave:
     exits:
       After Drawbridge: Clawshots
@@ -296,7 +296,7 @@ Bokoblin Base:
       Volcano East: Nothing
     locations:
       Volcano - Gossip Stone in Lower Platform Cave: Nothing
-  
+
   Outside Earth Temple:
     exits:
       Hot Cave: Nothing
@@ -304,20 +304,20 @@ Bokoblin Base:
     locations:
       Chest East of Earth Temple Entrance: Nothing
       Volcano - Goddess Cube East of Earth Temple Entrance: Goddess Sword
-      Chest West of Earth Temple Entrance: (Slingshot | Bow | Bomb Bag | Goddess Sword) & Can bypass Boko Base Watch Tower & Mogma Mitts
-      Volcano - Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can bypass Boko Base Watch Tower & Mogma Mitts
-  
+      Chest West of Earth Temple Entrance: (Slingshot | Bow | Bomb Bag | Goddess Sword) & Can Bypass Boko Base Watch Tower & Mogma Mitts
+      Volcano - Goddess Cube West of Earth Temple Entrance: Goddess Sword & Can Bypass Boko Base Watch Tower & Mogma Mitts
+
   Upper Platform Cave:
     exits:
       Outside Earth Temple: Nothing
     locations:
       Volcano - Gossip Stone in Upper Platform Cave: Nothing
-  
+
   Hot Cave:
     exits:
       After Drawbridge: Fireshield Earrings & Bomb Bag
       Bokoblin Base Summit: Fireshield Earrings & Bomb Bag
-  
+
   Bokoblin Base Summit:
     exits:
       Hot Cave: Fireshield Earrings
@@ -327,7 +327,7 @@ Bokoblin Base:
       Raised Chest in Volcano Summit: Fireshield Earrings
       Chest in Volcano Summit Alcove: Fireshield Earrings & Practice Sword
       Volcano Summit - Goddess Cube inside Volcano Summit: Fireshield Earrings & Goddess Sword
-  
+
   Fire Dragon's Lair:
     exits:
       Bokoblin Base Summit: Nothing

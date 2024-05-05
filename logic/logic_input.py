@@ -4,10 +4,18 @@ from collections import deque
 from enum import Enum
 from dataclasses import dataclass, field
 
-from .logic_expression import DNFInventory, LogicExpression
+from .logic_expression import (
+    Counter,
+    QueryExpression,
+    MetaQuery,
+    DNFInventory,
+    LogicExpression,
+    Requirement,
+    UnknownReq,
+)
 from .inventory import EXTENDED_ITEM, Inventory
 from .constants import *
-
+from options import OPTIONS, Options
 import yaml
 
 
@@ -139,7 +147,7 @@ class Area(Generic[LE]):
 
 
 class Areas:
-    areas: Dict[str, Area[DNFInventory]]
+    areas: Dict[str, Area[Requirement]]
 
     def __getitem__(self, loc):
         return self.areas[loc]
@@ -148,6 +156,9 @@ class Areas:
         self, base_address_str: str, partial_address_str: str
     ) -> EXTENDED_ITEM_NAME:
         """Computes the thing referred by [partial_address] when located at [base_address]"""
+
+        if partial_address_str in EXTENDED_ITEM:
+            return EIN(partial_address_str)
 
         queue: Deque[Area] = deque([self.all_areas])
         area = self.all_areas
@@ -159,11 +170,15 @@ class Areas:
 
         partial_address = partial_address_str.split(" - ")
         j = 0
-        if partial_address[0] == "General":
+        if partial_address[0] == "Global":
             queue = deque([self.all_areas])
             j = 1
 
         head = partial_address[j]
+
+        if head in EXTENDED_ITEM.options:
+            return head
+
         while queue:
             area = queue.popleft()
             if j == len(partial_address):
@@ -240,6 +255,19 @@ class Areas:
 
         assert not EXTENDED_ITEM.complete
         EXTENDED_ITEM.items_list.extend(events)
+        EXTENDED_ITEM.counters = {
+            k: Counter.parse(v) for k, v in raw_area["counters"].items()
+        }
+        EXTENDED_ITEM.options = {}
+        for k, v in raw_area["options"].items():
+            q = QueryExpression.parse(v)
+            if isinstance(q, MetaQuery):
+                for val in OPTIONS[q.option]["choices"]:
+                    EXTENDED_ITEM.options[k.format(val)] = q.to_query(val)
+            else:
+                EXTENDED_ITEM.options[k] = q
+
+        EXTENDED_ITEM.items_list.extend(EXTENDED_ITEM.options)
         for area in areas_list:
             if area.allowed_time_of_day == Both:
                 EXTENDED_ITEM.items_list.append(make_day(area.name))
@@ -293,7 +321,7 @@ class Areas:
             fexit,
         )
 
-        self.areas: Dict[str, Area[DNFInventory]] = areas
+        self.areas: Dict[str, Area[Requirement]] = areas
         self.all_areas.sub_areas = {k: v for (k, v) in all_areas.items() if k != ""}
 
         self.short_full: List[Tuple[str, EXTENDED_ITEM_NAME]] = [("", EIN(""))]
@@ -363,7 +391,7 @@ class Areas:
         EXTENDED_ITEM.complete = True
 
         def short_to_full(elt: str):
-            if elt in LOGIC_OPTIONS or "Trick" in elt:
+            if elt in EXTENDED_ITEM.options:
                 return EIN(elt)
             for tag in ["_DAY", "_NIGHT"]:
                 if elt[-len(tag) :] == tag:
@@ -386,8 +414,9 @@ class Areas:
 
         self.exit_to_area = {}
 
-        self.requirements = [DNFInventory() for _ in EXTENDED_ITEM.items()]
-        self.opaque = [True for _ in EXTENDED_ITEM.items()]
+        self.requirements: List[Requirement] = [
+            UnknownReq() for _ in EXTENDED_ITEM.items()
+        ]
 
         reqs = self.requirements  # Local alias
         DNFInv = DNFInventory
@@ -398,8 +427,6 @@ class Areas:
                 assert area.allowed_time_of_day == Both
                 darea_bit = EXTENDED_ITEM[make_day(area_name)]
                 narea_bit = EXTENDED_ITEM[make_night(area_name)]
-                self.opaque[darea_bit] = False
-                self.opaque[narea_bit] = False
                 reqs[darea_bit] |= DNFInv(narea_bit)
                 reqs[narea_bit] |= DNFInv(darea_bit)
 
@@ -418,7 +445,6 @@ class Areas:
                 loc_bit = EXTENDED_ITEM[full_loc]
 
                 reqs[loc_bit] |= timed_req
-                self.opaque[loc_bit] = req.opaque
 
             for exit, req in area.exits.items():
                 if exit in self.areas:  # Logical exit, the name is the area
@@ -426,8 +452,6 @@ class Areas:
                     if area_dest.allowed_time_of_day == Both:
                         darea_bit = EXTENDED_ITEM[make_day(area_dest.name)]
                         narea_bit = EXTENDED_ITEM[make_night(area_dest.name)]
-                        self.opaque[darea_bit] = False
-                        self.opaque[narea_bit] = False
 
                         if area.allowed_time_of_day == Both:
                             reqs[darea_bit] |= req.day_only() & DNFInv(
@@ -442,7 +466,6 @@ class Areas:
                             reqs[narea_bit] |= req.night_only() & DNFInv(EIN(area_name))
                     else:
                         area_bit = EXTENDED_ITEM[area_dest.name]
-                        self.opaque[area_bit] = False
                         if area_dest.allowed_time_of_day == DayOnly:
                             timed_req = req.day_only()
                             timed_area = make_day(area_name)
@@ -459,7 +482,6 @@ class Areas:
                 else:  # Map exit
                     exit_full = with_sep_full(area_name, exit)
                     exit_bit = EXTENDED_ITEM[exit_full]
-                    self.opaque[exit_bit] = False
                     self.exit_to_area[exit_full] = area
                     if area.abstract:
                         assert exit == START
@@ -482,8 +504,6 @@ class Areas:
                 if allowed_time_of_day == Both:
                     darea_bit = EXTENDED_ITEM[make_day(area_name)]
                     narea_bit = EXTENDED_ITEM[make_night(area_name)]
-                    self.opaque[darea_bit] = False
-                    self.opaque[narea_bit] = False
                     reqs[darea_bit] |= DNFInv(make_day(entrance))
                     reqs[narea_bit] |= DNFInv(make_night(entrance))
                 else:
@@ -494,8 +514,15 @@ class Areas:
                             area_bit = EXTENDED_ITEM[make_night(area_name)]
                     else:
                         area_bit = EXTENDED_ITEM[area_name]
-                    self.opaque[area_bit] = False
                     reqs[area_bit] |= DNFInv(entrance)
+
+    def with_options(self, options: Options, required_dungeons: List[str]):
+        for opt, breq in EXTENDED_ITEM.options.items():
+            bit = EXTENDED_ITEM[opt]
+            self.requirements[bit] = breq.with_options(options, required_dungeons)
+
+        for counter in EXTENDED_ITEM.counters.values():
+            counter.with_options(options, required_dungeons)
 
     def to_dict(self):
         def filter_values(data: Dict[str, dict], keys: List[str]):

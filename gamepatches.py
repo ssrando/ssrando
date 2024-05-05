@@ -22,7 +22,7 @@ from paths import RANDO_ROOT_PATH
 from tboxSubtypes import tboxSubtypes
 from musicrando import music_rando
 
-from logic.bool_expression import check_static_option_req
+from logic.logic_expression import check_static_option_req
 from logic.constants import *
 from logic.placement_file import PlacementFile
 from util.flag_mapping_tables import get_storyflag_writer, get_itemflag_writer
