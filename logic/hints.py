@@ -1,5 +1,5 @@
 from enum import Enum
-from logic.bool_expression import check_static_option_req
+from logic.logic_expression import check_static_option_req
 from logic.constants import *
 from logic.inventory import EXTENDED_ITEM
 from logic.logic import DNFInventory

@@ -349,78 +349,6 @@ items:
 - Water Dragon's Scale
 - Whip
 - Wooden Shield
-- Open Thunderhead option
-- Open ET option
-- Open LMF option
-- LMF Nodes On option
-- Floria Gates option
-- Talk to Yerbal option
-- Vanilla Lake Floria option
-- Open Lake Floria option
-- Randomized Beedle option
-- Gondo Upgrades On option
-- No BiT crashes
-- Nonlethal Hot Cave
-- Upgraded Skyward Strike option
-- FS Lava Flow option
-- GoT Opening Requirement
-- GoT Raising Requirement
-- Horde Door Requirement
-- Bomb Throws Trick
-- Long Range Skyward Strike Jumpslash Trick
-- Advanced Lizalfos Combat Trick
-- Waterfall Cave Jump Trick
-- Beedle's Shop With Bombs Trick
-- Baby Rattle from Beedle's Shop Trick
-- Sky Keep Entrance Jump Trick
-- Gravestone Jump Trick
-- Sky - Volcanic Island Dive Trick
-- Sky - Beedle's Island Cage Chest Dive Trick
-- Thunderhead - East Island Dive Trick
-- Gym's Rope Jump Trick
-- Early Lake Floria - Fence Hop Trick
-- Early Lake Floria - Swordless Rope Floria Trick
-- Faron - Bokoblin Luring Trick
-- Stuttersprint Trick
-- Itemless First Timeshift Stone Trick
-- Lanayru Mine - Quick Bomb Trick
-- Brakeslide Trick
-- Lanayru Desert - Ampilus Bomb Toss Trick
-- Temple of Time - Slingshot Shot Trick
-- Temple of Time Skip - Brakeslide Trick
-- Secret Passageway Hook Beetle Opening Trick
-- Lightning Node End with Bombs Trick
-- Cactus Bomb Whip Trick
-- Skipper's Retreat Fast Clawshots Trick
-- Pirate Stronghold - Beetle Pillar Checks Trick
-- Skyview - Spider Roll Trick
-- Skyview Slingshot Shot Trick
-- Earth Temple - Keese Yeet Trick
-- Earth Temple - Slope Stuttersprint Trick
-- Earth Temple - Bomb Flower Scaldera Trick
-- LMF - Whip First Room Switch Trick
-- LMF - Keylocked Slingshot Trickshot Trick
-- LMF - Whip Armos Room Timeshift Stone Trick
-- LMF - Minecart Jump Trick
-- LMF - Moldarach without Gust Bellows Trick
-- Ancient Cistern - Cistern Clip Trick
-- Ancient Cistern - Cistern Whip Room Clip Trick
-- Ancient Cistern - Map Chest Jump Trick
-- Ancient Cistern - Lever Jump Trick
-- Ancient Cistern - Basement Highflip Trick
-- Sandship - No Combination Hint Trick
-- Sandship - Itemless Spume Skip Trick
-- Sandship - Mast Jump Trick
-- Fire Sanctuary - Pillar Jump Trick
-- Fire Sanctuary - Swordless Pillar Jump Trick
-- Fire Sanctuary - No Bombable Wall Hint Trick
-- Sky Keep - Shooting LMF Bow Switches in Present Trick
-- Sky Keep - FS Room Clawshots Vine Clip Trick
-- Bed Trick Trick
-- Owlan Crystals without Bombs Trick
-- Ancient Cistern - Lilypad Skip Trick
-- Ancient Cistern - Swordless Cistern Clip Trick
-- Fire Sanctuary - Hook Beetle Skip Trick
 - 'Hint #0'
 - 'Hint #1'
 - 'Hint #2'
@@ -629,6 +557,9 @@ items:
 - 'Hint #205'
 - 'Hint #206'
 - 'Hint #207'
+- \GoT Opening Requirement
+- \GoT Raising Requirement
+- \Horde Door Requirement
 - \Practice Sword
 - \Goddess Sword
 - \Goddess Longsword
@@ -646,13 +577,6 @@ items:
 - \Digging Mitts
 - \Mogma Mitts
 - \Pouch
-- \Medium Wallet
-- \Big Wallet
-- \Giant Wallet
-- \Tycoon Wallet
-- \1 Extra Wallet
-- \2 Extra Wallets
-- \3 Extra Wallets
 - \Can Afford 50 Rupees
 - \Can Afford 100 Rupees
 - \Can Afford 300 Rupees
@@ -670,22 +594,6 @@ items:
 - \Can Collect Water
 - \Water Bottle
 - \Ancient Flower Farming
-- \5 Single Gratitude Crystals
-- \10 Single Gratitude Crystals
-- \15 Single Gratitude Crystals
-- \1 Gratitude Crystal Pack
-- \2 Gratitude Crystal Packs
-- \3 Gratitude Crystal Packs
-- \4 Gratitude Crystal Packs
-- \5 Gratitude Crystal Packs
-- \6 Gratitude Crystal Packs
-- \7 Gratitude Crystal Packs
-- \8 Gratitude Crystal Packs
-- \9 Gratitude Crystal Packs
-- \10 Gratitude Crystal Packs
-- \11 Gratitude Crystal Packs
-- \12 Gratitude Crystal Packs
-- \13 Gratitude Crystal Packs
 - \5 Gratitude Crystals
 - \10 Gratitude Crystals
 - \30 Gratitude Crystals
@@ -704,7 +612,7 @@ items:
 - \Can Hit Timeshift Stone
 - \Can Hit Timeshift Stone in Minecart
 - \Early Lake Floria Tricks
-- \Can bypass Boko Base Watch Tower
+- \Can Bypass Boko Base Watch Tower
 - \Can Defeat Bokoblins
 - \Can Defeat Moblins
 - \Can Defeat Keeses
@@ -1437,6 +1345,70 @@ items:
 - \Skyview\Spring\Strike Crest
 - \Skyview\Spring\Goddess Cube in Skyview Spring
 - \Skyview\Spring\Sacred Water
+- Open Thunderhead option
+- Open ET option
+- Open LMF option
+- LMF Nodes On option
+- Floria Gates option
+- Talk to Yerbal option
+- Vanilla Lake Floria option
+- Open Lake Floria option
+- Randomized Beedle option
+- Gondo Upgrades On option
+- FS Lava Flow option
+- BiT patches
+- Nonlethal Hot Cave
+- Upgraded Skyward Strike option
+- Bomb Throws Trick
+- Long Range Skyward Strike Jumpslash Trick
+- Advanced Lizalfos Combat Trick
+- Waterfall Cave Jump Trick
+- Beedle's Shop With Bombs Trick
+- Baby Rattle from Beedle's Shop Trick
+- Sky Keep Entrance Jump Trick
+- Gravestone Jump Trick
+- Sky - Volcanic Island Dive Trick
+- Sky - Beedle's Island Cage Chest Dive Trick
+- Thunderhead - East Island Dive Trick
+- Gym's Rope Jump Trick
+- Early Lake Floria - Fence Hop Trick
+- Early Lake Floria - Swordless Rope Floria Trick
+- Faron - Bokoblin Luring Trick
+- Stuttersprint Trick
+- Itemless First Timeshift Stone Trick
+- Lanayru Mine - Quick Bomb Trick
+- Brakeslide Trick
+- Lanayru Desert - Ampilus Bomb Toss Trick
+- Temple of Time - Slingshot Shot Trick
+- Temple of Time Skip - Brakeslide Trick
+- Secret Passageway Hook Beetle Opening Trick
+- Lightning Node End with Bombs Trick
+- Cactus Bomb Whip Trick
+- Skipper's Retreat Fast Clawshots Trick
+- Pirate Stronghold - Beetle Pillar Checks Trick
+- Skyview - Spider Roll Trick
+- Skyview Slingshot Shot Trick
+- Earth Temple - Keese Yeet Trick
+- Earth Temple - Slope Stuttersprint Trick
+- Earth Temple - Bomb Flower Scaldera Trick
+- LMF - Whip First Room Switch Trick
+- LMF - Keylocked Slingshot Trickshot Trick
+- LMF - Whip Armos Room Timeshift Stone Trick
+- LMF - Minecart Jump Trick
+- LMF - Moldarach without Gust Bellows Trick
+- Ancient Cistern - Cistern Clip Trick
+- Ancient Cistern - Cistern Whip Room Clip Trick
+- Ancient Cistern - Map Chest Jump Trick
+- Ancient Cistern - Lever Jump Trick
+- Ancient Cistern - Basement Highflip Trick
+- Sandship - No Combination Hint Trick
+- Sandship - Itemless Spume Skip Trick
+- Sandship - Mast Jump Trick
+- Fire Sanctuary - Pillar Jump Trick
+- Fire Sanctuary - Swordless Pillar Jump Trick
+- Fire Sanctuary - No Bombable Wall Hint Trick
+- Sky Keep - Shooting LMF Bow Switches in Present Trick
+- Sky Keep - FS Room Clawshots Vine Clip Trick
 - \Ancient Cistern\Main\Main Room\After Whip Hooks
 - \Ancient Cistern\Main\Main Room\Vines Area
 - \Ancient Cistern\Main\Main Room\Behind the Waterfall
@@ -2370,6 +2342,9 @@ areas:
     Start: 'True'
   hint_region: null
   locations:
+    GoT Opening Requirement: Unknown
+    GoT Raising Requirement: Unknown
+    Horde Door Requirement: Unknown
     Practice Sword: Progressive Sword
     Goddess Sword: Progressive Sword x 2
     Goddess Longsword: Progressive Sword x 3
@@ -2389,26 +2364,14 @@ areas:
     Digging Mitts: Progressive Mitts
     Mogma Mitts: Progressive Mitts x 2
     Pouch: Progressive Pouch
-    Medium Wallet: Progressive Wallet
-    Big Wallet: Progressive Wallet x 2
-    Giant Wallet: Progressive Wallet x 3
-    Tycoon Wallet: Progressive Wallet x 4
-    1 Extra Wallet: Extra Wallet
-    2 Extra Wallets: Extra Wallet x 2
-    3 Extra Wallets: Extra Wallet x 3
-    Can Afford 50 Rupees: 'True'
-    Can Afford 100 Rupees: 'True'
-    Can Afford 300 Rupees: \Can Medium Rupee Farm
-    Can Afford 600 Rupees: "\\Can High Rupee Farm & (\\1 Extra Wallet | \\Big Wallet)"
-    Can Afford 800 Rupees: "\\Can High Rupee Farm & (\\2 Extra Wallets | (\\Medium\
-      \ Wallet & \\1 Extra Wallet) | \\Big Wallet)"
-    Can Afford 1000 Rupees: "\\Can High Rupee Farm & (\\3 Extra Wallets | (\\Medium\
-      \ Wallet & \\2 Extra Wallets) | \\Big Wallet)"
-    Can Afford 1200 Rupees: "\\Can High Rupee Farm & (\\3 Extra Wallets | (\\Medium\
-      \ Wallet & \\3 Extra Wallets) | (\\Big Wallet & \\1 Extra Wallet) | \\Giant\
-      \ Wallet)"
-    Can Afford 1600 Rupees: "\\Can High Rupee Farm & ((\\Big Wallet & \\2 Extra Wallets)\
-      \ | \\Giant Wallet)"
+    Can Afford 50 Rupees: Wallet Capacity >= 50
+    Can Afford 100 Rupees: Wallet Capacity >= 100
+    Can Afford 300 Rupees: Wallet Capacity >= 300
+    Can Afford 600 Rupees: Wallet Capacity >= 600
+    Can Afford 800 Rupees: Wallet Capacity >= 800
+    Can Afford 1000 Rupees: Wallet Capacity >= 1000
+    Can Afford 1200 Rupees: Wallet Capacity >= 1200
+    Can Afford 1600 Rupees: Wallet Capacity >= 1600
     Can Medium Rupee Farm: "\\Sky\\North East\\Bamboo Island\\Inside\\Clean Cut Minigame\
       \ | \\Can High Rupee Farm"
     Can High Rupee Farm: "\\Sky\\South West\\Fun Fun Island\\Fun Fun Island Minigame\
@@ -2422,42 +2385,13 @@ areas:
     Can Collect Water: 'False'
     Water Bottle: "\\Bottle & \\Can Collect Water"
     Ancient Flower Farming: 'False'
-    5 Single Gratitude Crystals: Gratitude Crystal x 5
-    10 Single Gratitude Crystals: Gratitude Crystal x 10
-    15 Single Gratitude Crystals: Gratitude Crystal x 15
-    1 Gratitude Crystal Pack: Gratitude Crystal Pack
-    2 Gratitude Crystal Packs: Gratitude Crystal Pack x 2
-    3 Gratitude Crystal Packs: Gratitude Crystal Pack x 3
-    4 Gratitude Crystal Packs: Gratitude Crystal Pack x 4
-    5 Gratitude Crystal Packs: Gratitude Crystal Pack x 5
-    6 Gratitude Crystal Packs: Gratitude Crystal Pack x 6
-    7 Gratitude Crystal Packs: Gratitude Crystal Pack x 7
-    8 Gratitude Crystal Packs: Gratitude Crystal Pack x 8
-    9 Gratitude Crystal Packs: Gratitude Crystal Pack x 9
-    10 Gratitude Crystal Packs: Gratitude Crystal Pack x 10
-    11 Gratitude Crystal Packs: Gratitude Crystal Pack x 11
-    12 Gratitude Crystal Packs: Gratitude Crystal Pack x 12
-    13 Gratitude Crystal Packs: Gratitude Crystal Pack x 13
-    5 Gratitude Crystals: "\\5 Single Gratitude Crystals | \\1 Gratitude Crystal Pack"
-    10 Gratitude Crystals: "\\10 Single Gratitude Crystals | (\\5 Single Gratitude\
-      \ Crystals & \\1 Gratitude Crystal Pack) | \\2 Gratitude Crystal Packs"
-    30 Gratitude Crystals: "(\\15 Single Gratitude Crystals & \\3 Gratitude Crystal\
-      \ Packs) | (\\10 Single Gratitude Crystals & \\4 Gratitude Crystal Packs) |\
-      \ (\\5 Single Gratitude Crystals & \\5 Gratitude Crystal Packs) | \\6 Gratitude\
-      \ Crystal Packs"
-    40 Gratitude Crystals: "(\\15 Single Gratitude Crystals & \\5 Gratitude Crystal\
-      \ Packs) | (\\10 Single Gratitude Crystals & \\6 Gratitude Crystal Packs) |\
-      \ (\\5 Single Gratitude Crystals & \\7 Gratitude Crystal Packs) | \\8 Gratitude\
-      \ Crystal Packs"
-    50 Gratitude Crystals: "(\\15 Single Gratitude Crystals & \\7 Gratitude Crystal\
-      \ Packs) | (\\10 Single Gratitude Crystals & \\8 Gratitude Crystal Packs) |\
-      \ (\\5 Single Gratitude Crystals & \\9 Gratitude Crystal Packs) | \\10 Gratitude\
-      \ Crystal Packs"
-    70 Gratitude Crystals: "(\\15 Single Gratitude Crystals & \\11 Gratitude Crystal\
-      \ Packs) | (\\10 Single Gratitude Crystals & \\12 Gratitude Crystal Packs) |\
-      \ (\\5 Single Gratitude Crystals & \\13 Gratitude Crystal Packs)"
-    80 Gratitude Crystals: "\\15 Single Gratitude Crystals & \\13 Gratitude Crystal\
-      \ Packs"
+    5 Gratitude Crystals: Gratitude Crystals >= 5
+    10 Gratitude Crystals: Gratitude Crystals >= 10
+    30 Gratitude Crystals: Gratitude Crystals >= 30
+    40 Gratitude Crystals: Gratitude Crystals >= 40
+    50 Gratitude Crystals: Gratitude Crystals >= 50
+    70 Gratitude Crystals: Gratitude Crystals >= 70
+    80 Gratitude Crystals: Gratitude Crystals >= 80
     Sword: \Practice Sword
     Long Range Skyward Strike: "(\\Goddess Sword & Upgraded Skyward Strike option)\
       \ | \\True Master Sword"
@@ -2471,7 +2405,7 @@ areas:
     Can Hit Timeshift Stone in Minecart: "\\Sword | Bomb Bag | \\Distance Activator"
     Early Lake Floria Tricks: "(Early Lake Floria - Fence Hop Trick & \\Practice Sword)\
       \ | Early Lake Floria - Swordless Rope Floria Trick"
-    Can bypass Boko Base Watch Tower: "\\Bow | Bomb Bag | \\Slingshot"
+    Can Bypass Boko Base Watch Tower: "\\Bow | Bomb Bag | \\Slingshot"
     Can Defeat Bokoblins: \Damaging Item
     Can Defeat Moblins: \Damaging Item
     Can Defeat Keeses: "\\Sword | \\Slingshot | \\Beetle | Whip | Clawshots | \\Bow\
@@ -3677,9 +3611,9 @@ areas:
                 \Eldin\Bokoblin Base\After Drawbridge: "Clawshots & Bomb Bag"
               hint_region: Bokoblin Base
               locations:
-                Chest near Bone Bridge: "\\Can bypass Boko Base Watch Tower | \\Mogma\
+                Chest near Bone Bridge: "\\Can Bypass Boko Base Watch Tower | \\Mogma\
                   \ Mitts | Gust Bellows"
-                Chest on Cliff: "(\\Can bypass Boko Base Watch Tower | \\Mogma Mitts)\
+                Chest on Cliff: "(\\Can Bypass Boko Base Watch Tower | \\Mogma Mitts)\
                   \ & Gust Bellows"
                 \Eldin\Volcano\East\Goddess Cube near Mogma Turf Entrance: \Goddess
                   Sword
@@ -3697,7 +3631,7 @@ areas:
                 \Eldin\Bokoblin Base\After Drawbridge: "Whip & Clawshots"
               hint_region: Bokoblin Base
               locations:
-                Chest near Drawbridge: "Clawshots | \\Can bypass Boko Base Watch Tower"
+                Chest near Drawbridge: "Clawshots | \\Can Bypass Boko Base Watch Tower"
               name: \Eldin\Bokoblin Base\Before Drawbridge
               sub_areas: {}
               toplevel_alias: null
@@ -3748,10 +3682,10 @@ areas:
                 \Eldin\Volcano\Near Temple Entrance\Goddess Cube East of Earth Temple Entrance: \Goddess
                   Sword
                 Chest West of Earth Temple Entrance: "(\\Slingshot | \\Bow | Bomb\
-                  \ Bag | \\Goddess Sword) & \\Can bypass Boko Base Watch Tower &\
+                  \ Bag | \\Goddess Sword) & \\Can Bypass Boko Base Watch Tower &\
                   \ \\Mogma Mitts"
                 \Eldin\Volcano\Near Temple Entrance\Goddess Cube West of Earth Temple Entrance: "\\\
-                  Goddess Sword & \\Can bypass Boko Base Watch Tower & \\Mogma Mitts"
+                  Goddess Sword & \\Can Bypass Boko Base Watch Tower & \\Mogma Mitts"
               name: \Eldin\Bokoblin Base\Outside Earth Temple
               sub_areas: {}
               toplevel_alias: null
@@ -3914,11 +3848,11 @@ areas:
               locations:
                 Chest inside Sealed Temple: 'True'
                 Song from Impa: Goddess's Harp
-                Raise Gate of Time: GoT Raising Requirement
+                Raise Gate of Time: \GoT Raising Requirement
                 Start Imprisoned 2: "\\Faron\\Sealed Grounds\\Sealed Temple\\Raise\
-                  \ Gate of Time & GoT Opening Requirement"
+                  \ Gate of Time & \\GoT Opening Requirement"
                 Open Gate of Time: "\\Faron\\Sealed Grounds\\Sealed Temple\\Raise\
-                  \ Gate of Time & GoT Opening Requirement & \\Faron\\Sealed Grounds\\\
+                  \ Gate of Time & \\GoT Opening Requirement & \\Faron\\Sealed Grounds\\\
                   Spiral\\Defeat Imprisoned 2"
               name: \Faron\Sealed Grounds\Sealed Temple
               sub_areas: {}
@@ -3935,7 +3869,7 @@ areas:
               hint_region: Sealed Grounds
               locations:
                 Zelda's Blessing: 'True'
-                Defeat Demise: "Horde Door Requirement & \\Sword"
+                Defeat Demise: "\\Horde Door Requirement & \\Sword"
               name: \Faron\Sealed Grounds\Hylia's Temple
               sub_areas: {}
               toplevel_alias: null
@@ -8408,18 +8342,20 @@ areas:
                 \Skyloft\Beedle's Shop: 'True'
               hint_region: Beedle's Shop
               locations:
-                300 Rupee Item: "\\Can Afford 300 Rupees & (\\Pouch | Randomized Beedle\
-                  \ option)"
-                600 Rupee Item: \Can Afford 600 Rupees
-                1200 Rupee Item: \Can Afford 1200 Rupees
-                800 Rupee Item: \Can Afford 800 Rupees
-                1600 Rupee Item: \Can Afford 1600 Rupees
+                300 Rupee Item: "\\Can Afford 300 Rupees & \\Can Medium Rupee Farm\
+                  \ & (\\Pouch | Randomized Beedle option)"
+                600 Rupee Item: "\\Can Afford 600 Rupees & \\Can High Rupee Farm &\
+                  \ (\\Pouch | Randomized Beedle option)"
+                1200 Rupee Item: "\\Can Afford 1200 Rupees & \\Can High Rupee Farm\
+                  \ & (\\Pouch | Randomized Beedle option)"
+                800 Rupee Item: "\\Can Afford 800 Rupees & \\Can High Rupee Farm"
+                1600 Rupee Item: "\\Can Afford 1600 Rupees & \\Can High Rupee Farm"
                 First 100 Rupee Item: \Can Afford 100 Rupees
                 Second 100 Rupee Item: \Can Afford 100 Rupees
                 Third 100 Rupee Item: "\\Can Afford 100 Rupees & \\Can Medium Rupee\
                   \ Farm"
                 50 Rupee Item: \Can Afford 50 Rupees
-                1000 Rupee Item: \Can Afford 1000 Rupees
+                1000 Rupee Item: "\\Can Afford 1000 Rupees & \\Can High Rupee Farm"
               name: \Skyloft\Beedle's Shop\Stall
               sub_areas: {}
               toplevel_alias: null

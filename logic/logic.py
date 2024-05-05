@@ -250,7 +250,7 @@ class Logic:
             requirements[i] = EmptyReq()
 
     @staticmethod
-    def shallow_simplify(requirements: List[Requirement]):
+    def shallow_simplify(requirements: List[Requirement], free: Inventory):
         simplifiables = Inventory(
             {
                 item
@@ -289,6 +289,10 @@ class Logic:
                 else:
                     new_req |= conj
             requirements[item] = new_req
+
+        for item, req in enumerate(requirements):
+            if isinstance(req, CounterThreshold) and req.eval(free):
+                requirements[item] = EmptyReq()
 
     @staticmethod
     def deep_simplify(requirements: List[Requirement]):
@@ -368,7 +372,7 @@ class Logic:
             it = EXTENDED_ITEM[loc]
             self.requirements[it] |= self.ban_if(loc, req)
 
-        self.shallow_simplify(self.requirements)
+        self.shallow_simplify(self.requirements, self.frees)
 
         for exit, entrance in self.placement.map_transitions.items():
             self.link_connection(exit, entrance)
@@ -394,7 +398,7 @@ class Logic:
 
         if optim:
             self.free_simplify(self.requirements, self.frees)
-            self.shallow_simplify(self.requirements)
+            self.shallow_simplify(self.requirements, self.frees)
             self.fill_inventory_i(monotonic=True)
         self.backup_requirements = self.requirements.copy()
         self.aggregate = self.aggregate_requirements(self.requirements, None)

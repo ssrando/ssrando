@@ -104,7 +104,7 @@ class Rando:
             list(self.placement.locations),
         )
 
-        areas.with_options(options)
+        areas.with_options(options, self.required_dungeons)
 
         logic = Logic(areas, logic_settings, self.placement)
 
@@ -354,32 +354,6 @@ class Rando:
     def set_placement_options(self):
         shopsanity = self.options["shopsanity"]
         place_gondo_progressives = self.options["gondo-upgrades"]
-
-        options = {
-            OPEN_THUNDERHEAD_OPTION: self.options["open-thunderhead"] == "Open",
-            OPEN_ET_OPTION: self.options["open-et"],
-            OPEN_LMF_OPTION: self.options["open-lmf"] == "Open",
-            LMF_NODES_ON_OPTION: self.options["open-lmf"] == "Main Node",
-            FLORIA_GATES_OPTION: self.options["open-lake-floria"] == "Floria Gates",
-            TALK_TO_YERBAL_OPTION: self.options["open-lake-floria"] == "Talk to Yerbal",
-            VANILLA_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Vanilla",
-            OPEN_LAKE_FLORIA_OPTION: self.options["open-lake-floria"] == "Open",
-            RANDOMIZED_BEEDLE_OPTION: shopsanity != "Vanilla",
-            GONDO_UPGRADES_ON_OPTION: not place_gondo_progressives,
-            NO_BIT_CRASHES: self.options["bit-patches"] == "Fix BiT Crashes",
-            NONLETHAL_HOT_CAVE: damage_multiplier < 12,
-            UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
-            FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
-        }
-
-        enabled_tricks = set(self.options["enabled-tricks-bitless"])
-
-        self.logic_options_requirements = {
-            k: DNFInventory(b) for k, b in options.items()
-        } | {
-            EIN(trick(trick_name)): DNFInventory(trick_name in enabled_tricks)
-            for trick_name in OPTIONS["enabled-tricks-bitless"]["choices"]
-        }
 
         self.placement |= SINGLE_CRYSTAL_PLACEMENT(self.norm, self.areas.checks)
 

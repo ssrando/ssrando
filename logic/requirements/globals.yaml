@@ -182,7 +182,7 @@ options:
   Randomized Beedle option: Option "shopsanity" Enabled
   Gondo Upgrades On option: Option "gondo-upgrades" Disabled
   FS Lava Flow option: Option "fs-lava-flow" Enabled
-  BiT patches: Option "bit-patches" Enabled
+  BiT patches: Option "bit-patches" Is "Fix BiT Crashes"
   Nonlethal Hot Cave: Option "damage-multiplier" Is Less Than 12
   Upgraded Skyward Strike option: Option "upgraded-skyward-strike" Enabled
 

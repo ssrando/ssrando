@@ -516,13 +516,13 @@ class Areas:
                         area_bit = EXTENDED_ITEM[area_name]
                     reqs[area_bit] |= DNFInv(entrance)
 
-    def with_options(self, options: Options):
+    def with_options(self, options: Options, required_dungeons: List[str]):
         for opt, breq in EXTENDED_ITEM.options.items():
             bit = EXTENDED_ITEM[opt]
-            self.requirements[bit] = breq.with_options(options)
+            self.requirements[bit] = breq.with_options(options, required_dungeons)
 
         for counter in EXTENDED_ITEM.counters.values():
-            counter.with_options(options)
+            counter.with_options(options, required_dungeons)
 
     def to_dict(self):
         def filter_values(data: Dict[str, dict], keys: List[str]):

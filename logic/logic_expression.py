@@ -37,11 +37,11 @@ def singleton(cls):
 class QueryExpression:
     else_banned: bool = False
 
-    def eval(self, options: Options) -> bool:
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
         raise NotImplementedError
 
-    def with_options(self, options):
-        if self.eval(options):
+    def with_options(self, options, required_dungeons):
+        if self.eval(options, required_dungeons):
             return EmptyReq()
         elif self.else_banned:
             return DNFInventory(BANNED_BIT)
@@ -76,7 +76,7 @@ class QueryBoolOption(QueryExpression):
     option: str
     negation: bool = False
 
-    def eval(self, options: Options) -> bool:
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
         if self.negation:
             return not options[self.option]
         return options[self.option]
@@ -88,7 +88,7 @@ class QueryOption(QueryExpression):
     value: Any
     negation: bool = False
 
-    def eval(self, options: Options) -> bool:
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
         if self.negation:
             return options[self.option] != self.value
         return options[self.option] == self.value
@@ -100,10 +100,22 @@ class QueryLessThanOption(QueryExpression):
     threshold: int
     negation: bool = False
 
-    def eval(self, options: Options) -> bool:
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
         if self.negation:
             return options[self.option] >= self.threshold
         return options[self.option] < self.threshold
+
+
+@dataclass
+class QueryGreaterThanOption(QueryExpression):
+    option: str
+    threshold: int
+    negation: bool = False
+
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
+        if self.negation:
+            return options[self.option] <= self.threshold
+        return options[self.option] > self.threshold
 
 
 @dataclass
@@ -112,26 +124,37 @@ class QueryContainerOption(QueryExpression):
     value: Any
     negation: bool = False
 
-    def eval(self, options: Options) -> bool:
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
         if self.negation:
             return self.value not in options[self.option]
         return self.value in options[self.option]
 
 
 @dataclass
+class QueryRequiredDungeon(QueryExpression):
+    dungeon: str
+    negation: bool = False
+
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
+        if self.negation:
+            return self.dungeon not in required_dungeons
+        return self.dungeon in required_dungeons
+
+
+@dataclass
 class QueryAndCombination(QueryExpression):
     arguments: List[QueryExpression]
 
-    def eval(self, options: Options) -> bool:
-        return all(arg.eval(options) for arg in self.arguments)
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
+        return all(arg.eval(options, required_dungeons) for arg in self.arguments)
 
 
 @dataclass
 class QueryOrCombination(QueryExpression):
     arguments: List[QueryExpression]
 
-    def eval(self, options: Options) -> bool:
-        return any(arg.eval(options) for arg in self.arguments)
+    def eval(self, options: Options, required_dungeons: List[str]) -> bool:
+        return any(arg.eval(options, required_dungeons) for arg in self.arguments)
 
 
 # Parsing
@@ -151,9 +174,13 @@ query_grammar = r"""
     ?atom:
         | "(" disjunction ")"
         | "true" -> mk_true
+        | "Nothing" -> mk_true
         | "false" -> mk_false
+        | "Impossible" -> mk_false
         | "Option" option
         | "Option" option "Else" "Banned" -> mk_else_banned
+        | "Dungeon" text "Required" -> mk_dungeonrequired
+        | "Dungeon" text "Not Required" -> mk_dungeonunrequired
 
     ?option:
         | text "Enabled" -> mk_enabled
@@ -161,6 +188,7 @@ query_grammar = r"""
         | text "Is" text -> mk_is
         | text "Is Not" text -> mk_isnot
         | text "Is Less Than" INT -> mk_islt
+        | text "Is Greater Than" text -> mk_isgt
         | text "Contains" text -> mk_contains
         | text "Does Not Contain" text -> mk_doesnotcontain
 
@@ -214,11 +242,20 @@ class MakeQueryExpression(Transformer):
     def mk_islt(self, option, threshold):
         return QueryLessThanOption(str(option), int(threshold))
 
+    def mk_isgt(self, option, threshold):
+        return QueryGreaterThanOption(str(option), int(threshold))
+
     def mk_contains(self, option, value):
         return QueryContainerOption(str(option), str(value))
 
     def mk_doesnotcontain(self, option, value):
         return QueryContainerOption(str(option), str(value), negation=True)
+
+    def mk_dungeonrequired(self, dungeon):
+        return QueryRequiredDungeon(dungeon, negation=False)
+
+    def mk_dungeonunrequired(self, dungeon):
+        return QueryRequiredDungeon(dungeon, negation=True)
 
     def mk_else_banned(self, query):
         return QueryElseBanned(query)
@@ -228,8 +265,8 @@ query_parser = Lark(query_grammar, parser="lalr", transformer=MakeQueryExpressio
 QueryExpression.parse = query_parser.parse  # type: ignore
 
 
-def check_static_option_req(string, options):
-    return QueryExpression.parse(string).eval(options)
+def check_static_option_req(string, options, required_dungeons):
+    return QueryExpression.parse(string).eval(options, required_dungeons)
 
 
 import yaml
@@ -262,18 +299,6 @@ class LogicExpression(ABC):
 
 class Requirement(LogicExpression):
     def eval(self, inventory: Inventory) -> bool:
-        raise NotImplementedError
-
-    def day_only(self) -> Requirement:
-        raise NotImplementedError
-
-    def night_only(self) -> Requirement:
-        raise NotImplementedError
-
-    def __or__(self, other) -> Requirement:
-        raise NotImplementedError
-
-    def __and__(self, other) -> Requirement:
         raise NotImplementedError
 
 
@@ -431,6 +456,9 @@ class UnknownReq(Requirement):
     def __repr__(self) -> str:
         return f"UnknownReq()"
 
+    def __str__(self) -> str:
+        return "Unknown"
+
 
 @singleton
 class EmptyReq(DNFInventory):
@@ -459,6 +487,9 @@ class EmptyReq(DNFInventory):
 
     def __repr__(self) -> str:
         return f"EmptyReq()"
+
+    def __str__(self) -> str:
+        return "True"
 
     def remove(self, item):
         if isinstance(item, EXTENDED_ITEM):
@@ -506,6 +537,9 @@ class ImpossibleReq(DNFInventory):
 
     def __repr__(self) -> str:
         return f"ImpossibleReq()"
+
+    def __str__(self) -> str:
+        return "False"
 
     def remove(self, item):
         raise ValueError
@@ -721,7 +755,9 @@ class MakeExpression(Transformer):
             return BasicTextAtom(text)
 
     def mk_counter_threshold(self, counter_name, threshold):
-        c = CounterThreshold(counter_name, int(threshold))
+        if GLOBAL_DUMP_MODE:
+            return BasicTextAtom(f"{str(counter_name)} >= {int(threshold)}")
+        c = CounterThreshold(str(counter_name), int(threshold))
         c.opaque = True
         return c
 
@@ -738,7 +774,7 @@ class Counter:
     def compute(self, inventory: Inventory):
         return sum(c(sum(inventory[k] for k in s)) for s, c in self.targets)
 
-    def with_options(self, options: Options):
+    def with_options(self, options: Options, required_dungeons: List[str]):
         pass
 
     @staticmethod
@@ -767,8 +803,8 @@ counter_grammar = r"""
     ?assoc_pair: text "->" INT -> mk_pair
 
     ?counter: counter "+" counter -> mk_counter_add
-        | INT ("x" | "*") TEXT -> mk_counter_atom1
-        | TEXT "{" (INT ("," INT)*) "}" -> mk_counter_atom2
+        | INT ("x" | "*") TEXT -> mk_counter_multiplier
+        | TEXT "{" (INT ("," INT)*) "}" -> mk_counter_value_list
 
     ?text: "\"" TEXT "\""
 
@@ -793,12 +829,12 @@ class MakeCounter(Transformer):
         s = {EXTENDED_ITEM[number(item, index)] for index in range(ITEM_COUNTS[item])}
         return [(s, c)]
 
-    def mk_counter_atom1(self, count, item):
+    def mk_counter_multiplier(self, count, item):
         count = int(count)
         c = lambda n: count * n
         return self.mk_counter_atom(item, c)
 
-    def mk_counter_atom2(self, item, *counts):
+    def mk_counter_value_list(self, item, *counts):
         counts_dict = {i: int(count) for i, count in enumerate(counts)}
         c = lambda n: counts_dict[n]
         return self.mk_counter_atom(item, c)
@@ -834,10 +870,25 @@ def text_atom_representer(dumper, data):
     return dumper.represent_scalar("tag:yaml.org,2002:str", data.text)
 
 
+def true_atom_representer(dumper, data):
+    return dumper.represent_scalar("tag:yaml.org,2002:str", "True")
+
+
+def false_atom_representer(dumper, data):
+    return dumper.represent_scalar("tag:yaml.org,2002:str", "False")
+
+
+def unknown_atom_representer(dumper, data):
+    return dumper.represent_scalar("tag:yaml.org,2002:str", "Unknown")
+
+
 def combination_representer(dumper, data):
     return dumper.represent_scalar("tag:yaml.org,2002:str", str(data), "folded")
 
 
 yaml.add_representer(BasicTextAtom, text_atom_representer)
+yaml.add_representer(EmptyReq, true_atom_representer)
+yaml.add_representer(ImpossibleReq, false_atom_representer)
+yaml.add_representer(UnknownReq, unknown_atom_representer)
 yaml.add_representer(AndCombination, combination_representer)
 yaml.add_representer(OrCombination, combination_representer)
