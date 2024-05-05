@@ -93,9 +93,9 @@ class HintDistribution:
         self.dungeon_barren_limit = 0
         self.distribution = {}
         self.goal_index = 0
-        self.barren_overworld_zones = []
+        self.barren_overworld_zones = {}
         self.placed_ow_barren = 0
-        self.barren_dungeons = []
+        self.barren_dungeons = {}
         self.placed_dungeon_barren = 0
         self.prev_barren_type = None
         self.barren_hinted_areas = set()
@@ -239,7 +239,7 @@ class HintDistribution:
         self.rng.shuffle(self.hintable_items)
 
         region_barren, nonprogress = self.logic.get_barren_regions()
-        for zone in region_barren:
+        for zone, nb_checks in region_barren.items():
             if all(
                 loc in self.hinted_locations or loc in self.always_hints
                 for loc in self.logic.locations_by_hint_region(zone)
@@ -247,9 +247,9 @@ class HintDistribution:
                 continue
 
             if zone in ALL_DUNGEONS:
-                self.barren_dungeons.append(zone)
+                self.barren_dungeons[zone] = nb_checks
             else:
-                self.barren_overworld_zones.append(zone)
+                self.barren_overworld_zones[zone] = nb_checks
 
         self.junk_hints = JUNK_TEXT.copy()
         self.rng.shuffle(self.junk_hints)
@@ -496,10 +496,10 @@ class HintDistribution:
             barren_type = "overworld"
 
         # Failsafes if there are not enough barren hints to fill out the generated hint
-        for barren_area_list in (self.barren_dungeons, self.barren_overworld_zones):
-            for region in barren_area_list:
+        for barren_area_pool in (self.barren_dungeons, self.barren_overworld_zones):
+            for region in barren_area_pool:
                 if not len(self.logic.locations_by_hint_region(region)):
-                    barren_area_list.remove(region)
+                    barren_area_pool.remove(region)
 
         if len(self.barren_dungeons) == 0:
             if len(self.barren_overworld_zones) == 0:
@@ -510,16 +510,14 @@ class HintDistribution:
 
         # generate a hint and remove it from the lists
         if barren_type == "dungeon":
-            barren_area_list = self.barren_dungeons
+            barren_area_pool = self.barren_dungeons
         else:
-            barren_area_list = self.barren_overworld_zones
+            barren_area_pool = self.barren_overworld_zones
 
-        weights = [
-            len(self.logic.locations_by_hint_region(area)) for area in barren_area_list
-        ]
-
-        area = self.rng.choices(barren_area_list, weights)[0]
-        barren_area_list.remove(area)
+        area = self.rng.choices(
+            list(barren_area_pool.keys()), list(barren_area_pool.values())
+        )[0]
+        del barren_area_pool[area]
         self.hinted_locations.extend(self.logic.locations_by_hint_region(area))
         self.barren_hinted_areas.add(area)
         self.prev_barren_type = barren_type
