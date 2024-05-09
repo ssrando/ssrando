@@ -19,6 +19,7 @@ from .utils import write_bytes_create_dirs
 
 from brresTools.brres import BRRES
 from brresTools.TEX0 import TEX0
+from brresTools.MDL0 import MDL0
 import numpy as np
 
 STAGE_REGEX = re.compile("(.+)_stg_l([0-9]+).arc.LZ")
@@ -311,6 +312,21 @@ class AllPatcher:
 
         arc_data.set_file_data("g3d/model.brres", parsed_BRRES.to_buffer().read())
         return arc_data
+    
+    def patch_sandship_puzzle_models(self, stageu8: U8File):
+        arc_data = stageu8.get_file_data("rarc/D301_r10.arc")
+        parsed_arc = U8File.parse_u8(BytesIO(arc_data))
+        brres_data = parsed_arc.get_file_data("g3d/room.brres")
+        parsed_BRRES = BRRES.parse_brres(BytesIO(brres_data))
+        
+        mdl: MDL0 = parsed_BRRES.get_file_data("3DModels(NW4R)/model0")
+        mdl.get_polygon_vertex_indices("polygon8")
+        # prepare in-place modifications of some MDL0 buffers here
+
+        parsed_BRRES.set_file_data("3DModels(NW4R)/model0", mdl)
+        parsed_arc.set_file_data("g3d/room.brres", parsed_BRRES.to_buffer().read())
+        stageu8.set_file_data("rarc/D301_r10.arc", parsed_arc.to_buffer().tobytes())
+
 
     def do_patch(self):
         self.modified_extract_path.mkdir(parents=True, exist_ok=True)
@@ -340,10 +356,15 @@ class AllPatcher:
             remove_arcs = set(self.stage_oarc_delete.get((stage, layer), []))
             # add additional arcs if needed
             additional_arcs = set(self.stage_oarc_add.get((stage, layer), []))
-            if remove_arcs or additional_arcs or layer == 0 or self.arc_replacements:
+            patch_puzzle = stage == "D301" and layer == 0
+            if remove_arcs or additional_arcs or layer == 0 or self.arc_replacements or patch_puzzle:
                 # only decompress and extract files, if needed
                 stagedata = nlzss11.decompress(stagepath.read_bytes())
                 stageu8 = U8File.parse_u8(BytesIO(stagedata))
+
+                if patch_puzzle:
+                    self.patch_sandship_puzzle_models(stageu8)
+                    modified = True
                 # remove arcs that are already added on layer 0
                 if layer != 0:
                     additional_arcs = additional_arcs - (
