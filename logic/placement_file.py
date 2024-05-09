@@ -24,6 +24,8 @@ class PlacementFile:
         self.trial_object_seed = -1
         self.music_rando_seed = -1
         self.bk_angle_seed = -1
+        self.isle_pedestal_positions = []
+        self.isle_blocker_switches = []
 
     def read_from_file(self, f):
         self._read_from_json(json.load(f))

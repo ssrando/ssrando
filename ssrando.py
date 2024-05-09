@@ -256,7 +256,10 @@ class Randomizer(BaseRandomizer):
         plcmt_file.trial_object_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.music_rando_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.bk_angle_seed = self.rng.randint(0, 2**32 - 1)
-
+        plcmt_file.isle_pedestal_positions = [self.rng.randint(1, 12) for _ in range(3)]
+        switch_indices = list(range(3))
+        self.rng.shuffle(switch_indices)
+        plcmt_file.isle_blocker_switches = switch_indices
         plcmt_file.check_valid(self.areas)
 
         return plcmt_file

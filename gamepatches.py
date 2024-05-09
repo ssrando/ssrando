@@ -1083,6 +1083,19 @@ def try_patch_obj(obj, key, value):
             obj["params1"] = mask_shift_set(obj["params1"], 0x03, 28, value)
         else:
             print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj["name"] == "UtaStop":
+        # Isle of Songs blocker
+        # n.b. angle and ring changes leave a socket in the main island mesh
+        # that makes reading the puzzle very difficult, so they're unused, but
+        # they've been tested to work
+        if key == "angle":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xF, 12, value)
+        elif key == "ring":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xF, 8, value)
+        elif key == "tempflag":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
     else:
         print(f"ERROR: unsupported object to patch {obj}")
 
@@ -1549,6 +1562,39 @@ class GamePatcher:
                 SWORD_COUNT[self.placement_file.options["got-sword-requirement"]] - 1,
             ]
         }
+
+        if self.placement_file.options["isle-of-songs-puzzle"] == "Randomized":
+            # Ghidra: 0x80d757f0
+            for i in range(3):
+                # this patches the three immediates in li intructions
+                self.all_asm_patches["d_a_obj_utajima_main_mechaNP.rel"][
+                    0x860 + 4 * i + 3
+                ] = {"Data": [self.placement_file.isle_pedestal_positions[i]]}
+
+            # the main island mesh has the blocker sockets and proving solvability
+            # is slightly nontrivial, so currently we only swap the switches that the
+            # blockers react to. the game handles any positions just fine
+            # vanilla_blocker_positions = [[1, 1], [9, 1], [3, 2], [10, 2], [0, 3]]
+            vanilla_blocker_flags = [0xC2, 0xC1, 0xC3, 0xC1, 0xC2]
+            vanilla_switches = [0xC1, 0xC2, 0xC3]
+            for i in range(5):
+                vanilla_flag = vanilla_blocker_flags[i]
+                vanilla_switch_index = vanilla_switches.index(vanilla_flag)
+                new_switch_flag = vanilla_switches[
+                    self.placement_file.isle_blocker_switches[vanilla_switch_index]
+                ]
+                self.add_patch_to_stage(
+                    "F023",
+                    {
+                        "name": "Randomize Isle of Songs blocker",
+                        "type": "objpatch",
+                        "id": 0xFC08 + i,
+                        "layer": 0,
+                        "room": 0,
+                        "objtype": "OBJ ",
+                        "object": {"tempflag": new_switch_flag},
+                    },
+                )
 
         # Damage Multiplier patch requires input, replacing one line
         # muli r27, r27, (multiplier)

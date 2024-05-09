@@ -561,6 +561,16 @@ class Ui_MainWindow(object):
 
         self.vlay_open.addWidget(self.option_open_lake_floria)
 
+        self.label_for_option_isle_of_songs_puzzle = QLabel(self.box_open)
+        self.label_for_option_isle_of_songs_puzzle.setObjectName(u"label_for_option_isle_of_songs_puzzle")
+
+        self.vlay_open.addWidget(self.label_for_option_isle_of_songs_puzzle)
+
+        self.option_isle_of_songs_puzzle = QComboBox(self.box_open)
+        self.option_isle_of_songs_puzzle.setObjectName(u"option_isle_of_songs_puzzle")
+
+        self.vlay_open.addWidget(self.option_isle_of_songs_puzzle)
+
         self.vspace_open = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.vlay_open.addItem(self.vspace_open)
@@ -2076,6 +2086,7 @@ class Ui_MainWindow(object):
         self.option_open_et.setText(QCoreApplication.translate("MainWindow", u"Open Earth Temple", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
         self.label_for_option_open_lake_floria.setText(QCoreApplication.translate("MainWindow", u"Open Lake Floria", None))
+        self.label_for_option_isle_of_songs_puzzle.setText(QCoreApplication.translate("MainWindow", u"Isle of Songs Puzzle", None))
         self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
         self.option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Beedle's Shop", None))
         self.option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))

@@ -104,6 +104,9 @@ global:
       - 95 # Fi Text for Ruby Tablet
       - 96 # Fi Text for Amber Tablet
       - 99 # Sheikah Stone cs played
+    The Sky:
+      - onlyif: Option "isle-of-songs-puzzle" Is "Open"
+        flag: 1  # Bridge formed to Isle of Songs
     Faron Woods:
       - 15 # fi text after vine to deep woods
       - 14 # text in front of VP statue
