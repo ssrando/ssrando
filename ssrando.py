@@ -196,6 +196,7 @@ class Randomizer(BaseRandomizer):
                 randomized_trial_entrance=self.logic.randomized_trial_entrance,
                 randomized_start_entrance=self.logic.randomized_start_entrance,
                 randomized_start_statues=self.logic.randomized_start_statues,
+                puzzles=self.logic.puzzles,
             )
             with log_address.open("w") as f:
                 json.dump(dump, f, indent=2)
@@ -216,6 +217,7 @@ class Randomizer(BaseRandomizer):
                     randomized_trial_entrance=self.logic.randomized_trial_entrance,
                     randomized_start_entrance=self.logic.randomized_start_entrance,
                     randomized_start_statues=self.logic.randomized_start_statues,
+                    puzzles=self.logic.puzzles,
                 )
         if not self.dry_run:
             GamePatcher(
@@ -241,6 +243,7 @@ class Randomizer(BaseRandomizer):
         plcmt_file.trial_connections = self.logic.randomized_trial_entrance
         plcmt_file.start_entrance = self.logic.randomized_start_entrance
         plcmt_file.start_statues = self.logic.randomized_start_statues
+        plcmt_file.puzzles = self.logic.puzzles
         plcmt_file.hash_str = self.randomizer_hash
         plcmt_file.hints = {
             k: v.to_ingame_text(lambda s: self.areas.prettify(s))
@@ -256,10 +259,6 @@ class Randomizer(BaseRandomizer):
         plcmt_file.trial_object_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.music_rando_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.bk_angle_seed = self.rng.randint(0, 2**32 - 1)
-        plcmt_file.isle_pedestal_positions = [self.rng.randint(1, 12) for _ in range(3)]
-        switch_indices = list(range(3))
-        self.rng.shuffle(switch_indices)
-        plcmt_file.isle_blocker_switches = switch_indices
         plcmt_file.check_valid(self.areas)
 
         return plcmt_file

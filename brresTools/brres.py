@@ -84,7 +84,10 @@ class BRRES:
 
     @staticmethod
     def parse_index_group_entries(
-        data: BufferedIOBase, indexGroupNode: IndexGroupNode, group_start_offset: int, nonrecursive = False
+        data: BufferedIOBase,
+        indexGroupNode: IndexGroupNode,
+        group_start_offset: int,
+        nonrecursive=False,
     ):
         data.seek(group_start_offset)
         data.seek(data.tell() + 4)
@@ -160,7 +163,9 @@ class BRRES:
 
         match file.nodeType:
             case b"MDL0":
-                mdl = MDL0.parse_MDL0(dataBuffer=self.dataBuffer, start_offset=dataOffset)
+                mdl = MDL0.parse_MDL0(
+                    dataBuffer=self.dataBuffer, start_offset=dataOffset
+                )
                 return mdl
             case b"TEX0":
                 tex0: TEX0 = TEX0.parse_TEX0(

@@ -750,14 +750,11 @@
               <widget class="QComboBox" name="option_open_lake_floria"/>
              </item>
              <item>
-              <widget class="QLabel" name="label_for_option_isle_of_songs_puzzle">
+              <widget class="QCheckBox" name="option_random_puzzles">
                <property name="text">
-                <string>Isle of Songs Puzzle</string>
+                <string>Randomize Puzzles</string>
                </property>
               </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="option_isle_of_songs_puzzle"/>
              </item>
              <item>
               <spacer name="vspace_open">

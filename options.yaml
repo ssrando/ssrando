@@ -1112,18 +1112,10 @@
   help: If enabled, the starting statue for each surface region will be randomized. All overworld statues
         except Inside the Volcano and Inside Fire Sanctuary may be chosen.
   ui: option_random_start_statues
-- name: Isle of Songs Puzzle
-  command: isle-of-songs-puzzle
-  type: singlechoice
-  bits: 2
-  choices:
-    - Open
-    - Vanilla
-    - Randomized
-  default: Vanilla
+- name: Random Puzzles
+  command: random-puzzles
+  type: boolean
+  default: false
   permalink: true
-  help: "Determines how the Isle of Songs rotation puzzle will start.
-        **Open**: The Isle of Songs puzzle will start as completed.
-        **Vanilla**: The puzzle will start in its vanilla state.
-        **Randomized**: The puzzle's bridge segments will start in random positions and switches will affect different blockers."
-  ui: option_isle_of_songs_puzzle
+  help: "Randomizes the Isle of Songs puzzle and the Ancient Cistern/Sandship directional door puzzles."
+  ui: option_random_puzzles

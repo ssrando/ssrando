@@ -72,10 +72,12 @@ class AllPatcher:
             arc_replacement_path.mkdir()
         self.objpackoarcadd = []
         self.stage_oarc_add = {}
+        self.stage_oarc_patch = defaultdict(list)
         self.stage_oarc_delete = {}
         self.bzs_patch = None
         self.event_patch = None
         self.event_text_patch = None
+        self.room_brres_patch = None
         self.tmp_dir = Path(tempfile.mkdtemp())
 
         def dummy_progress_callback(action):
@@ -90,6 +92,9 @@ class AllPatcher:
     def add_stage_oarc(self, stage: str, layer: int, oarcs: Iterable[str]):
         self.stage_oarc_add[(stage, layer)] = oarcs
 
+    def patch_stage_oarc(self, stage: str, layer: int, oarc: str, func: Callable[[str, int, str, U8File], U8File]):
+        self.stage_oarc_patch[(stage, layer)].append([oarc, func])
+
     def delete_stage_oarc(self, stage: str, layer: int, oarcs: Iterable[str]):
         self.stage_oarc_delete[(stage, layer)] = oarcs
 
@@ -103,6 +108,17 @@ class AllPatcher:
         otherwise nothing will change
         """
         self.bzs_patch = patchfunc
+
+    def set_room_brres_patch(
+        self, patchfunc: Callable[[BRRES, str, int], Optional[BRRES]]
+    ):
+        """
+        The function gets called for every room brres file (in layer 0 stages), it passes the parsed bzs,
+        the stage name and the room id.
+        if the return value of the function is not None, it will override the game files,
+        otherwise nothing will change
+        """
+        self.room_brres_patch = patchfunc
 
     def set_event_patch(self, patchfunc: Callable[[ParsedMsb, str], ParsedMsb]):
         """
@@ -312,21 +328,6 @@ class AllPatcher:
 
         arc_data.set_file_data("g3d/model.brres", parsed_BRRES.to_buffer().read())
         return arc_data
-    
-    def patch_sandship_puzzle_models(self, stageu8: U8File):
-        arc_data = stageu8.get_file_data("rarc/D301_r10.arc")
-        parsed_arc = U8File.parse_u8(BytesIO(arc_data))
-        brres_data = parsed_arc.get_file_data("g3d/room.brres")
-        parsed_BRRES = BRRES.parse_brres(BytesIO(brres_data))
-        
-        mdl: MDL0 = parsed_BRRES.get_file_data("3DModels(NW4R)/model0")
-        mdl.get_polygon_vertex_indices("polygon8")
-        # prepare in-place modifications of some MDL0 buffers here
-
-        parsed_BRRES.set_file_data("3DModels(NW4R)/model0", mdl)
-        parsed_arc.set_file_data("g3d/room.brres", parsed_BRRES.to_buffer().read())
-        stageu8.set_file_data("rarc/D301_r10.arc", parsed_arc.to_buffer().tobytes())
-
 
     def do_patch(self):
         self.modified_extract_path.mkdir(parents=True, exist_ok=True)
@@ -352,19 +353,17 @@ class AllPatcher:
             )
             modified = False
             should_be_copied = False
+            # patch arcs with gamepatches
+            patch_arcs = self.stage_oarc_patch.get((stage, layer), [])
             # remove some arcs if necessary
             remove_arcs = set(self.stage_oarc_delete.get((stage, layer), []))
             # add additional arcs if needed
             additional_arcs = set(self.stage_oarc_add.get((stage, layer), []))
-            patch_puzzle = stage == "D301" and layer == 0
-            if remove_arcs or additional_arcs or layer == 0 or self.arc_replacements or patch_puzzle:
+            if patch_arcs or remove_arcs or additional_arcs or layer == 0 or self.arc_replacements:
                 # only decompress and extract files, if needed
                 stagedata = nlzss11.decompress(stagepath.read_bytes())
                 stageu8 = U8File.parse_u8(BytesIO(stagedata))
 
-                if patch_puzzle:
-                    self.patch_sandship_puzzle_models(stageu8)
-                    modified = True
                 # remove arcs that are already added on layer 0
                 if layer != 0:
                     additional_arcs = additional_arcs - (
@@ -388,6 +387,24 @@ class AllPatcher:
                     patched_arcs.add(arcname)
                     modified = True
 
+                if patch_arcs:
+                    for path in stageu8.get_all_paths():
+                        if match := OARC_ARC_REGEX.match(path):
+                            arc = match.group("name")
+                            patches = list(patch for patch in patch_arcs if patch[0] == arc)
+                            if patches:
+                                arcdata = stageu8.get_file_data(path)
+                                oarc: U8File = U8File.parse_u8(BytesIO(arcdata))
+                                for patch in patches:
+                                    if new_arc := patch[1](stage, layer, arc, oarc):
+                                        oarc = new_arc
+                                        modified = True
+
+                                if modified:
+                                    patched_arcs.add(arc)
+                                    stageu8.set_file_data(path, oarc.to_buffer())
+                            
+
                 if self.arc_replacements:
                     for path in stageu8.get_all_paths():
                         if match := OARC_ARC_REGEX.match(path):
@@ -401,13 +418,15 @@ class AllPatcher:
                 if layer == 0:
                     stagebzs = parseBzs(stageu8.get_file_data("dat/stage.bzs"))
                     # patch stage
-                    if self.bzs_patch:
-                        newstagebzs = self.bzs_patch(stagebzs, stage, None)
-                        if newstagebzs is not None:
-                            stageu8.set_file_data(
-                                "dat/stage.bzs", buildBzs(newstagebzs)
-                            )
-                            modified = True
+                    if self.bzs_patch or self.room_brres_patch:
+                        if self.bzs_patch:
+                            newstagebzs = self.bzs_patch(stagebzs, stage, None)
+                            if newstagebzs is not None:
+                                stageu8.set_file_data(
+                                    "dat/stage.bzs", buildBzs(newstagebzs)
+                                )
+                                modified = True
+
                         # patch rooms
                         room_path_matches = (
                             ROOM_REGEX.match(x) for x in stageu8.get_all_paths()
@@ -419,14 +438,35 @@ class AllPatcher:
                             roomid = int(room_path_match.group("roomid"))
                             roomdata = stageu8.get_file_data(room_path_match.group(0))
                             roomarc = U8File.parse_u8(BytesIO(roomdata))
-                            roombzs = parseBzs(roomarc.get_file_data("dat/room.bzs"))
-                            roombzs = self.bzs_patch(roombzs, stage, roomid)
-                            if roombzs is not None:
-                                roomarc.set_file_data("dat/room.bzs", buildBzs(roombzs))
-                                stageu8.set_file_data(
-                                    room_path_match.group(0), roomarc.to_buffer()
+
+                            if self.bzs_patch:
+                                roombzs = parseBzs(
+                                    roomarc.get_file_data("dat/room.bzs")
                                 )
-                                modified = True
+                                roombzs = self.bzs_patch(roombzs, stage, roomid)
+                                if roombzs is not None:
+                                    roomarc.set_file_data(
+                                        "dat/room.bzs", buildBzs(roombzs)
+                                    )
+                                    stageu8.set_file_data(
+                                        room_path_match.group(0), roomarc.to_buffer()
+                                    )
+                                    modified = True
+                            if self.room_brres_patch:
+                                roombrres = BRRES.parse_brres(
+                                    BytesIO(roomarc.get_file_data("g3d/room.brres"))
+                                )
+                                roombrres = self.room_brres_patch(
+                                    roombrres, stage, roomid
+                                )
+                                if roombrres is not None:
+                                    roomarc.set_file_data(
+                                        "g3d/room.brres", roombrres.to_buffer().read()
+                                    )
+                                    stageu8.set_file_data(
+                                        room_path_match.group(0), roomarc.to_buffer()
+                                    )
+                                    modified = True
                     # check if zev.dat can be patched
                     zev_path = self.assets_path / f"{stage}zev.dat"
                     if zev_path.is_file():

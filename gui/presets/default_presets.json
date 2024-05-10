@@ -113,7 +113,7 @@
     "randomize-boss-key-puzzles": false,
     "tadtonesanity": false,
     "starting-tadtones": 0,
-    "isle-of-songs-puzzle": "Vanilla"
+    "random-puzzles": false
   },
   "Allsanity": {
     "starting-tablet-count": 1,
@@ -190,7 +190,7 @@
     "randomize-boss-key-puzzles": true,
     "tadtonesanity": true,
     "starting-tadtones": 0,
-    "isle-of-songs-puzzle": "Randomized"
+    "random-puzzles": true
   },
   "Remlits Beginner Tournament": {
     "starting-tablet-count": 3,
@@ -397,6 +397,6 @@
     "limit-start-entrance": false,
     "treasuresanity-in-silent-realms": false,
     "trial-treasure-amount": 1,
-    "isle-of-songs-puzzle": "Vanilla"
+    "random-puzzles": false
   }
 }
