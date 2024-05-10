@@ -57,7 +57,7 @@ class MDL0:
             file_size=file_size,
             start_offset=start_offset,
         )
-    
+
     def get_uv_entry_header(self, buffer_name: str):
         from .brres import BRRES, IndexGroupNode, SubFileNode
 
@@ -99,11 +99,9 @@ class MDL0:
             raise ValueError("cannot decode non-uint16 UV")
 
         return entry_offset, data_offset, coord_count
-    
+
     def get_uvs(self, buffer_name: str) -> List[List[int]]:
-        entry_offset, data_offset, coord_count = self.get_uv_entry_header(
-            buffer_name
-        )
+        entry_offset, data_offset, coord_count = self.get_uv_entry_header(buffer_name)
         self.dataBuffer.seek(entry_offset + data_offset)
 
         coords = []
@@ -114,9 +112,7 @@ class MDL0:
         return coords
 
     def set_uvs(self, buffer_name: str, uvs: List[List[int]]):
-        entry_offset, data_offset, coord_count = self.get_uv_entry_header(
-            buffer_name
-        )
+        entry_offset, data_offset, coord_count = self.get_uv_entry_header(buffer_name)
         if len(uvs) != coord_count:
             raise ValueError("cannot in-place patch vertices due to count mismatch")
 
@@ -126,7 +122,6 @@ class MDL0:
         self.patches.append(
             InPlacePatch(entry_offset + data_offset - self.start_offset, bytes)
         )
-
 
     def get_vertex_entry_header(self, buffer_name: str):
         from .brres import BRRES, IndexGroupNode, SubFileNode

@@ -188,7 +188,12 @@ class Rando:
         self.rng.shuffle(ac_hint_order)
         # up, down, left, right
         ac_starting_directions = [0, 2, 1, 3]
-        ac_hint_rotations = [self.rng.randint(0, 3), self.rng.randint(0, 3), self.rng.choice([0, 2]), 0]
+        ac_hint_rotations = [
+            self.rng.randint(0, 3),
+            self.rng.randint(0, 3),
+            self.rng.choice([0, 2]),
+            0,
+        ]
         ac_hint_rotations[3] = ac_hint_rotations[2]
         ac_solution = [
             (

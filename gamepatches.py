@@ -1894,9 +1894,7 @@ class GamePatcher:
                 "layer": 12,
                 "room": 10,
                 "objtype": "OBJ ",
-                "object": {
-                    "combo": self.placement_file.puzzles["sandship"]["combo"]
-                },
+                "object": {"combo": self.placement_file.puzzles["sandship"]["combo"]},
             },
         )
         self.add_patch_to_stage(
@@ -1908,9 +1906,7 @@ class GamePatcher:
                 "layer": 4,
                 "room": 10,
                 "objtype": "OBJ ",
-                "object": {
-                    "combo": self.placement_file.puzzles["sandship"]["combo"]
-                },
+                "object": {"combo": self.placement_file.puzzles["sandship"]["combo"]},
             },
         )
 
@@ -1923,9 +1919,7 @@ class GamePatcher:
                 "layer": 0,
                 "room": 1,
                 "objtype": "OBJ ",
-                "object": {
-                    "combo": self.placement_file.puzzles["cistern"]["combo"]
-                },
+                "object": {"combo": self.placement_file.puzzles["cistern"]["combo"]},
             },
         )
 
@@ -1960,8 +1954,16 @@ class GamePatcher:
             },
         )
 
-        original_text_order = ["back", "rear", "back of the right hand", "back of the left hand"]
-        new_order = [original_text_order[i] for i in self.placement_file.puzzles["cistern"]["hint_order"]]
+        original_text_order = [
+            "back",
+            "rear",
+            "back of the right hand",
+            "back of the left hand",
+        ]
+        new_order = [
+            original_text_order[i]
+            for i in self.placement_file.puzzles["cistern"]["hint_order"]
+        ]
         text = f"First the <r<{new_order[0]}>>, then the <r<{new_order[1]}>>, then the <r<{new_order[2]}>>, and finally the <r<{new_order[3]}>>."
 
         self.add_patch_to_event(
@@ -1985,11 +1987,7 @@ class GamePatcher:
             # (the registers are always overwritten before they read again)
             self.all_asm_patches["d_a_obj_utajima_main_mechaNP.rel"][
                 0x860 + 4 * i + 3
-            ] = {
-                "Data": [
-                    self.placement_file.puzzles["isle"]["pedestal_positions"][i]
-                ]
-            }
+            ] = {"Data": [self.placement_file.puzzles["isle"]["pedestal_positions"][i]]}
         # TODO randomize blockers (need to move blocker sockets using MDL0 editing)
 
     def do_build_arc_cache(self):
@@ -2480,7 +2478,9 @@ class GamePatcher:
                 elif patch["type"] == "oarcdelete":
                     remove_stageoarcs[(stage, patch["layer"])].add(patch["oarc"])
                 elif patch["type"] == "oarcpatch":
-                    self.patcher.patch_stage_oarc(stage, patch["layer"], patch["oarc"], patch["func"])
+                    self.patcher.patch_stage_oarc(
+                        stage, patch["layer"], patch["oarc"], patch["func"]
+                    )
 
         for (stage, layer), oarcs in self.stageoarcs.items():
             self.patcher.add_stage_oarc(stage, layer, oarcs)
@@ -2769,6 +2769,7 @@ class GamePatcher:
         return brres
 
     def patch_sandship_puzzle(self, brres: BRRES):
+        """Patches the Sandship Puzzle hints by moving and rotating the vertex coordinates"""
         ssh_puzzle = self.placement_file.puzzles["sandship"]
 
         # we know there are some wheels here and they each have the same number of vertices,
@@ -2837,10 +2838,11 @@ class GamePatcher:
 
         brres.set_file_data("3DModels(NW4R)/model0", mdl)
         return brres
-    
+
     def patch_ancient_cistern_puzzle(self, brres: BRRES):
+        """Patches the Ancient Cistern puzzle back and rear hints by rotating their vertex indices"""
         rotations = self.placement_file.puzzles["cistern"]["hint_rotations"]
-        
+
         # the two hint plates unfortunately aren't aligned to cartesian basis vectors in local space
         # so to do this with linear algebra we'd have to find new basis vectors with dot,
         # find a rotation axis with cross, and build our own 3d rotation matrix because
@@ -2848,24 +2850,16 @@ class GamePatcher:
 
         # so instead we hardcode vertex indices and simply rotate the indices
 
-        back = np.array([
-            [98, 94, 95],
-            [97, 90, 93],
-            [96, 92, 91]
-        ])
+        back = np.array([[98, 94, 95], [97, 90, 93], [96, 92, 91]])
 
-        rear = np.array([
-            [86, 84, 82],
-            [85, 81, 83],
-            [89, 88, 87]
-        ])
+        rear = np.array([[86, 84, 82], [85, 81, 83], [89, 88, 87]])
 
         components = [back, rear]
 
         mdl: MDL0 = brres.get_file_data("3DModels(NW4R)/model0")
 
         vertices = mdl.get_vertices("polySurface372042__A_Ceiling04_m")
-        
+
         new_vertices = vertices.copy()
         for i in range(2):
             num_rots = rotations[i]
@@ -2879,8 +2873,11 @@ class GamePatcher:
 
         brres.set_file_data("3DModels(NW4R)/model0", mdl)
         return brres
-    
-    def patch_ancient_cistern_puzzle_hands(self, stage, layer, arc, u8: U8File) -> U8File:
+
+    def patch_ancient_cistern_puzzle_hands(
+        self, stage, layer, arc, u8: U8File
+    ) -> U8File:
+        """Patches the Ancient Cistern puzzle oarc hands by rotating their UVs"""
         rotations = self.placement_file.puzzles["cistern"]["hint_rotations"]
 
         rhand = rotations[2]
@@ -2890,26 +2887,21 @@ class GamePatcher:
             # changing the vertices is not an option either since the surface isn't flat
             pass
         else:
-            raise ValueError(f'incompatible rotations {rhand} {lhand}')
+            raise ValueError(f"incompatible rotations {rhand} {lhand}")
 
-
-        brres = BRRES.parse_brres(
-            BytesIO(u8.get_file_data("g3d/model.brres"))
-        )
+        brres = BRRES.parse_brres(BytesIO(u8.get_file_data("g3d/model.brres")))
 
         mdl: MDL0 = brres.get_file_data("3DModels(NW4R)/TowerHandD101")
 
         uv_coords = mdl.get_uvs("#9")
-        
+
         new_uv = uv_coords.copy()
         nd = np.array(new_uv)
         # find bounding box
-        xmax = np.max(nd[:,0])
-        ymax = np.max(nd[:,1])
-        xmin = np.min(nd[:,0])
-        ymin = np.min(nd[:,1])
-
-        print(xmax, xmin, ymax, ymin)
+        xmax = np.max(nd[:, 0])
+        ymax = np.max(nd[:, 1])
+        xmin = np.min(nd[:, 0])
+        ymin = np.min(nd[:, 1])
 
         center = [
             (xmax + xmin) / 2,
@@ -2917,7 +2909,6 @@ class GamePatcher:
         ]
 
         angle = rhand * math.pi / 2.0
-        print(angle)
         for idx, coord in enumerate(uv_coords):
             ux_ = coord[0] - center[0]
             uy_ = coord[1] - center[1]
@@ -3310,9 +3301,6 @@ class GamePatcher:
         textpatches = self.eventpatches.get(filename, [])
         textpatches = list(filter(self.filter_option_requirement, textpatches))
         for command in filter(lambda x: x["type"] == "textpatch", textpatches):
-            # if filename == "202-ForestD2":
-            #    for i, t in enumerate(msbt["TXT2"]):
-            #        print(i, t.decode('utf-16be'))
             msbt["TXT2"][command["index"]] = process_control_sequences(
                 command["text"]
             ).encode("utf-16be")

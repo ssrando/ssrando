@@ -92,7 +92,13 @@ class AllPatcher:
     def add_stage_oarc(self, stage: str, layer: int, oarcs: Iterable[str]):
         self.stage_oarc_add[(stage, layer)] = oarcs
 
-    def patch_stage_oarc(self, stage: str, layer: int, oarc: str, func: Callable[[str, int, str, U8File], U8File]):
+    def patch_stage_oarc(
+        self,
+        stage: str,
+        layer: int,
+        oarc: str,
+        func: Callable[[str, int, str, U8File], U8File],
+    ):
         self.stage_oarc_patch[(stage, layer)].append([oarc, func])
 
     def delete_stage_oarc(self, stage: str, layer: int, oarcs: Iterable[str]):
@@ -359,7 +365,13 @@ class AllPatcher:
             remove_arcs = set(self.stage_oarc_delete.get((stage, layer), []))
             # add additional arcs if needed
             additional_arcs = set(self.stage_oarc_add.get((stage, layer), []))
-            if patch_arcs or remove_arcs or additional_arcs or layer == 0 or self.arc_replacements:
+            if (
+                patch_arcs
+                or remove_arcs
+                or additional_arcs
+                or layer == 0
+                or self.arc_replacements
+            ):
                 # only decompress and extract files, if needed
                 stagedata = nlzss11.decompress(stagepath.read_bytes())
                 stageu8 = U8File.parse_u8(BytesIO(stagedata))
@@ -391,7 +403,9 @@ class AllPatcher:
                     for path in stageu8.get_all_paths():
                         if match := OARC_ARC_REGEX.match(path):
                             arc = match.group("name")
-                            patches = list(patch for patch in patch_arcs if patch[0] == arc)
+                            patches = list(
+                                patch for patch in patch_arcs if patch[0] == arc
+                            )
                             if patches:
                                 arcdata = stageu8.get_file_data(path)
                                 oarc: U8File = U8File.parse_u8(BytesIO(arcdata))
@@ -403,7 +417,6 @@ class AllPatcher:
                                 if modified:
                                     patched_arcs.add(arc)
                                     stageu8.set_file_data(path, oarc.to_buffer())
-                            
 
                 if self.arc_replacements:
                     for path in stageu8.get_all_paths():
