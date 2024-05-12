@@ -420,6 +420,7 @@ class RandoGUI(QMainWindow):
             f"Randomizing - Hash: {self.rando.randomizer_hash}",
             "Initializing...",
             self.rando.get_total_progress_steps + extra_steps,
+            self.cancel_callback,
         )
         self.randomizer_thread = RandomizerThread(
             self.rando, self.extract_manager, self.options["output-folder"]
@@ -430,6 +431,9 @@ class RandoGUI(QMainWindow):
         )
         self.randomizer_thread.error_abort.connect(self.on_error)
         self.randomizer_thread.start()
+
+    def cancel_callback(self):
+        self.randomizer_thread.canceled = True
 
     def ui_progress_callback(
         self, current_action: str, completed_steps: int, total_steps: int = None

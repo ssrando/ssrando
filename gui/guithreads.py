@@ -6,10 +6,16 @@ from ssrando import Randomizer, StartupException
 from extractmanager import ExtractManager
 
 
+class GenerationCanceled(Exception):
+    def __str__(self):
+        return "Randomization was cancelled"
+
+
 class RandomizerThread(QThread):
     update_progress = Signal(str, int)
     error_abort = Signal(str)
     randomization_complete = Signal()
+    canceled = False
 
     def __init__(
         self, randomizer: Randomizer, extract_manager: ExtractManager, output_folder
@@ -23,6 +29,8 @@ class RandomizerThread(QThread):
 
     def create_ui_progress_callback(self, start_steps):
         def progress_cb(action, current_steps=None):
+            if self.canceled:
+                raise GenerationCanceled
             if not current_steps is None:
                 self.steps = start_steps + current_steps
             self.update_progress.emit(action, self.steps)
@@ -42,25 +50,28 @@ class RandomizerThread(QThread):
                 return
         self.randomizer.set_progress_callback(self.create_ui_progress_callback(0))
         try:
+            # Note: Everything that calls a progress callback needs to be wrapped in this
+            # try/catch as the progress callback may raise a GenerationCanceled exception
+            # that needs to be caught and sent to error_abort
             self.randomizer.randomize()
+            if not dry_run:
+                default_ui_progress_callback("repacking game...")
+                repack_progress_cb = self.create_ui_progress_callback(
+                    self.randomizer.get_total_progress_steps
+                )
+                self.extract_manager.repack_game(
+                    Path(self.output_folder),
+                    progress_cb=repack_progress_cb,
+                )
+
+            default_ui_progress_callback("done")
+            self.randomization_complete.emit()
         except Exception as e:
             self.error_abort.emit(str(e))
             import traceback
 
             print(traceback.format_exc())
             return
-        if not dry_run:
-            default_ui_progress_callback("repacking game...")
-            repack_progress_cb = self.create_ui_progress_callback(
-                self.randomizer.get_total_progress_steps
-            )
-            self.extract_manager.repack_game(
-                Path(self.output_folder),
-                progress_cb=repack_progress_cb,
-            )
-
-        default_ui_progress_callback("done")
-        self.randomization_complete.emit()
 
 
 class ExtractSetupThread(QThread):

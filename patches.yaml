@@ -129,6 +129,7 @@ global:
       - 55 # First time landing cutscene
     Ancient Cistern:
       - 62 # Ancient Cistern Intro Cutscene
+      - 59 # Lilypad over tunnel after gutters flipped cutscene
     Eldin Volcano:
       - 2  # gets rid of first digging mitts mogma text
       - 16 # First time landing cutscene
@@ -168,6 +169,15 @@ global:
     Lanayru Gorge:
       - 10 # Minecart at end of Track
       - 16 # Lanayru Gorge Intro Cutscene
+    Sandship:
+      - 9  # Press switch cutscene in south generator room
+      - 10 # Release switch cutscene in south generator room
+      - 33 # Press switch cutscene in BK room
+      - 34 # Release switch cutscene in BK room
+      - 43 # Press switch cutscene in north generator room
+      - 44 # Release switch cutscene in north generator room
+      - 62 # South generator activation cutscene
+      - 63 # North generator activation cutscene
     Fire Sanctuary:
       - 83 # Cutscene showing the outside of the Fire Sanctuary
       - onlyif: Option "fs-lava-flow" Enabled
@@ -1806,6 +1816,45 @@ F100: # Faron main area
     objtype: PLY
     object:
       play_cutscene: -1
+  # Copied from HD
+  - name: Prevent Fence Hop Softlock 1
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFC4
+      params2: 0xFFFFFFFF
+      posx: -2900.0
+      posy: -423.59515380859375
+      posz: 9900.0
+      sizex: 3095.841552734375
+      sizey: 2680.0
+      sizez: 940.346923828125
+      anglex: 0
+      angley: 51976
+      anglez: 0
+      id: 0xFDFE
+      name: ActTag
+  - name: Prevent Fence Hop Softlock 2
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: STAG
+    object:
+      params1: 0xFFFFFFC4
+      params2: 0xFFFFFFFF
+      posx: -2100.0
+      posy: -423.59515380859375
+      posz: 11000.0
+      sizex: 3231.169189453125
+      sizey: 2680.0
+      sizez: 1064.70703125
+      anglex: 0
+      angley: 57624
+      anglez: 0
+      id: 0xFDFF
+      name: ActTag
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
@@ -3153,6 +3202,16 @@ F202: # Boko Base
       sizey: 2000
       sizez: 2000
       angle: 0
+  - name: Move loadzone into Boko Base Volcano Summit
+    type: objpatch
+    id: 0xFC22
+    layer: 1
+    room: 5
+    objtype: STAG
+    object:
+      posx: 13150
+      posy: 15000
+      posz: -23950
   - name: Patch jail pot to give Arrows
     type: objpatch
     id: 0x0849

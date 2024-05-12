@@ -1458,7 +1458,9 @@ class GamePatcher:
             isinstance(entry, dict)
             and "onlyif" in entry
             and not check_static_option_req(
-                entry["onlyif"], self.placement_file.options
+                entry["onlyif"],
+                self.placement_file.options,
+                self.placement_file.required_dungeons,
             )
         )
 
@@ -1547,18 +1549,6 @@ class GamePatcher:
                 SWORD_COUNT[self.placement_file.options["got-sword-requirement"]] - 1,
             ]
         }
-
-        # Hero Mode Changes
-        if self.placement_file.options["fast-air-meter"] == False:
-            self.add_asm_patch("air_meter_normalmode")
-        if self.placement_file.options["upgraded-skyward-strike"]:
-            self.add_asm_patch("skyward_strike_heromode")
-        else:
-            self.add_asm_patch("skyward_strike_normalmode")
-        if self.placement_file.options["enable-heart-drops"]:
-            self.add_asm_patch("heart_pickups_normalmode")
-        else:
-            self.add_asm_patch("heart_pickups_heromode")
 
         # Damage Multiplier patch requires input, replacing one line
         # muli r27, r27, (multiplier)
@@ -2039,11 +2029,9 @@ class GamePatcher:
                     dungeon_events,
                 )
             )
-            required_dungeon_storyflag_event["flow"][
-                "param2"
-            ] = REQUIRED_DUNGEON_STORYFLAGS[
-                i
-            ]  # param2 is storyflag of event
+            required_dungeon_storyflag_event["flow"]["param2"] = (
+                REQUIRED_DUNGEON_STORYFLAGS[i]
+            )  # param2 is storyflag of event
 
         required_dungeon_count = len(self.placement_file.required_dungeons)
         # set flags for unrequired dungeons beforehand
@@ -2103,9 +2091,11 @@ class GamePatcher:
                         "type": "flowadd",
                         "flow": {
                             "type": "type1",
-                            "next": f"Display Fi Hints Text {ind + 1}"
-                            if ind < (len(fi_hint_chunks) - 1)
-                            else -1,
+                            "next": (
+                                f"Display Fi Hints Text {ind + 1}"
+                                if ind < (len(fi_hint_chunks) - 1)
+                                else -1
+                            ),
                             "param3": 68,
                             "param4": f"Fi Hints Text {ind}",
                         },
@@ -2163,9 +2153,11 @@ class GamePatcher:
                         "type": "type3",
                         "next": f"Display {dungeon} Status Text",
                         "param1": DUNGEONFLAG_INDICES[dungeon],
-                        "param2": DUNGEON_COMPLETE_STORYFLAGS[dungeon]
-                        if dungeon in self.placement_file.required_dungeons
-                        else -1,
+                        "param2": (
+                            DUNGEON_COMPLETE_STORYFLAGS[dungeon]
+                            if dungeon in self.placement_file.required_dungeons
+                            else -1
+                        ),
                         "param3": 71,
                     },
                 }
@@ -2177,9 +2169,11 @@ class GamePatcher:
                     "type": "flowadd",
                     "flow": {
                         "type": "type1",
-                        "next": f"{ALL_DUNGEONS[dungeon_index + 1]} Status Values Command Call"
-                        if dungeon_index < 6
-                        else -1,
+                        "next": (
+                            f"{ALL_DUNGEONS[dungeon_index + 1]} Status Values Command Call"
+                            if dungeon_index < 6
+                            else -1
+                        ),
                         "param3": 68,
                         "param4": f"{dungeon} Status Text",
                     },
@@ -2192,9 +2186,11 @@ class GamePatcher:
                         "name": f"{dungeon} Status Text",
                         "type": "textadd",
                         "unk1": 2,
-                        "text": f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nSmall Keys: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
-                        if dungeon != ET
-                        else f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nKey Pieces: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>",
+                        "text": (
+                            f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nSmall Keys: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
+                            if dungeon != ET
+                            else f"{DUNGEON_COLORS[dungeon] + dungeon}>>: <string arg2> \nKey Pieces: <numeric arg0> \nBoss Key: <string arg0> \nDungeon Map: <string arg1>"
+                        ),
                     }
                 )
             else:
@@ -2377,23 +2373,15 @@ class GamePatcher:
 
     def add_keysanity(self):
         KEYS_DUNGEONS = [
-            # ('Skyview', 200), # already has a textbox
-            (LMF, 201),
-            (AC, 202),
-            (FS, 203),
-            (SSH, 204),
-            (SK, 205),
-            ("Lanayru Caves", 206),
+            (SV, 200, 11),
+            (LMF, 201, 17),
+            (AC, 202, 12),
+            (FS, 203, 15),
+            (SSH, 204, 18),
+            (SK, 205, 20),
+            ("Lanayru Caves", 206, 9),
         ]
-        self.eventpatches["003-ItemGet"].append(
-            {
-                "name": f"Skyview Key Text",  # for some reason there is an entry for item 200 (It's just an empty textbox though)
-                "type": "textpatch",
-                "index": 251,
-                "text": f"You got a <g<Skyview>> Small Key!",
-            }
-        )
-        for dungeon, itemid in KEYS_DUNGEONS:
+        for dungeon, itemid, sceneidx in KEYS_DUNGEONS:
             dungeon_and_color = DUNGEON_COLORS[dungeon] + dungeon + ">>"
             self.eventpatches["003-ItemGet"].append(
                 {
@@ -2401,9 +2389,24 @@ class GamePatcher:
                     "type": "textadd",
                     "unk1": 5,
                     "unk2": 1,
-                    "text": f"You got a {dungeon_and_color} Small Key!"
-                    if dungeon != LMF
-                    else f"You got a {dungeon_and_color} Small\nKey!",
+                    "text": (
+                        f"You got a {dungeon_and_color} Small Key!\nYou now have <r<<numeric arg0> >>of them!"
+                        if dungeon != LMF
+                        else f"You got a {dungeon_and_color} Small\nKey! You now have <r<<numeric arg0> >>of them!"
+                    ),
+                }
+            )
+            self.eventpatches["003-ItemGet"].append(
+                {
+                    "name": f"Set {dungeon} Key Count",
+                    "type": "flowadd",
+                    "flow": {
+                        "type": "type3",
+                        "next": f"Show {dungeon} Key Text",
+                        "param1": sceneidx,
+                        "param2": 0,
+                        "param3": 76,
+                    },
                 }
             )
             self.eventpatches["003-ItemGet"].append(
@@ -2418,16 +2421,27 @@ class GamePatcher:
                     },
                 }
             )
-            self.eventpatches["003-ItemGet"].append(
-                {
-                    "name": f"{dungeon} Key Entry",
-                    "type": "entryadd",
-                    "entry": {
-                        "name": f"003_{itemid}",
-                        "value": f"Show {dungeon} Key Text",
-                    },
-                }
-            )
+            if dungeon == SV:
+                self.eventpatches["003-ItemGet"].append(
+                    {
+                        # for some reason there is an entry for item 200 (It's just an empty textbox though)
+                        "name": "To Skyview Key Count",
+                        "type": "flowpatch",
+                        "index": 498,
+                        "flow": {"next": f"Set {SV} Key Count"},
+                    }
+                )
+            else:
+                self.eventpatches["003-ItemGet"].append(
+                    {
+                        "name": f"{dungeon} Key Entry",
+                        "type": "entryadd",
+                        "entry": {
+                            "name": f"003_{itemid}",
+                            "value": f"Set {dungeon} Key Count",
+                        },
+                    }
+                )
         MAPS_DUNGEONS = [
             (SV, 207),
             (ET, 208),
@@ -3063,7 +3077,9 @@ class GamePatcher:
             for flag in flags:
                 if not isinstance(flag, int):  # it's a dict with onlyif and flag
                     if not check_static_option_req(
-                        flag["onlyif"], self.placement_file.options
+                        flag["onlyif"],
+                        self.placement_file.options,
+                        self.placement_file.required_dungeons,
                     ):
                         # flag should not be set according to options
                         continue
@@ -3108,6 +3124,22 @@ class GamePatcher:
             write_u8,
             self.custom_symbols["main.dol"]["FORCE_MOGMA_CAVE_DIVE"],
             int(force_mogma_cave_dive),
+        )
+
+        # Hero Mode Changes
+        fine_grained_hero_mode_options = 0
+
+        if self.placement_file.options["fast-air-meter"]:
+            fine_grained_hero_mode_options |= 0b010
+        if self.placement_file.options["upgraded-skyward-strike"]:
+            fine_grained_hero_mode_options |= 0b001
+        if not self.placement_file.options["enable-heart-drops"]:
+            fine_grained_hero_mode_options |= 0b100
+
+        dol.write_data(
+            write_u8,
+            self.custom_symbols["main.dol"]["HERO_MODE_OPTIONS"],
+            fine_grained_hero_mode_options,
         )
 
         dol.save_changes()

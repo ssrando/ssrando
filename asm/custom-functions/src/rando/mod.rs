@@ -4,11 +4,13 @@
 // add `#[no_mangle]` and add a .global *symbolname* to custom_funcs.asm
 
 use core::{
-    ffi::{c_char, c_ushort, c_void},
+    ffi::{c_char, c_int, c_ushort, c_void},
     ptr, slice,
 };
 
 use cstr::cstr;
+
+use wchar::wch;
 
 use crate::{
     game::{
@@ -34,7 +36,7 @@ static mut IS_FILE_START: bool = false;
 static mut FORCE_MOGMA_CAVE_DIVE: bool = false;
 
 #[no_mangle]
-pub fn process_startflags() {
+extern "C" fn process_startflags() {
     unsafe { (*file_manager::get_ptr()).anticommit_flag = 1 };
     #[repr(C)]
     struct StartflagInfo {
@@ -115,6 +117,9 @@ pub fn process_startflags() {
     // Starting Bottles.
     // Last bit.
     let bottle_count = startflag_info.pouch_options & 0x7;
+    if bottle_count > 0 {
+        ItemflagManager::set_to_value(153, 1);
+    }
     for slot in pouch_slot_iter.take(bottle_count.into()) {
         *slot = 153; // ID for bottles
     }
@@ -130,7 +135,7 @@ pub fn process_startflags() {
 }
 
 #[no_mangle]
-pub fn handle_bk_map_dungeonflag(item: c_ushort) {
+extern "C" fn handle_bk_map_dungeonflag(item: c_ushort) {
     const BK_TO_FLAGINDEX: [u8; 7] = [
         // starts at 25
         12, // AC
@@ -168,14 +173,23 @@ pub fn handle_bk_map_dungeonflag(item: c_ushort) {
     }
 }
 
-const OBTAINED_TEXT: &[u8; 18] = b"\0O\0b\0t\0a\0i\0n\0e\0d\0\0";
-const UNOBTAINED_TEXT: &[u8; 22] = b"\0U\0n\0o\0b\0t\0a\0i\0n\0e\0d\0\0";
-const COMPLETE_TEXT: &[u8; 42] = b"\0\x0e\0\x00\0\x03\0\x02\0\x08\0 \0C\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
-const INCOMPLETE_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x09\0 \0I\0n\0c\0o\0m\0p\0l\0e\0t\0e\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
-const UNREQUIRED_TEXT: &[u8; 46] = b"\0\x0e\0\x00\0\x03\0\x02\0\x0C\0 \0U\0n\0r\0e\0q\0u\0i\0r\0e\0d\0 \0\x0e\0\x00\0\x03\0\x02\xFF\xFF\0\0";
+const OBTAINED_TEXT: &[u16; 9] = wch!(u16, "Obtained\0");
+const UNOBTAINED_TEXT: &[u16; 11] = wch!(u16, "Unobtained\0");
+const COMPLETE_TEXT: &[u16; 21] = wch!(
+    u16,
+    "\x0E\x00\x03\x02\x08 Complete \x0E\x00\x03\x02\u{FFFF}\0"
+);
+const INCOMPLETE_TEXT: &[u16; 23] = wch!(
+    u16,
+    "\x0E\x00\x03\x02\x09 Incomplete \x0E\x00\x03\x02\u{FFFF}\0"
+);
+const UNREQUIRED_TEXT: &[u16; 23] = wch!(
+    u16,
+    "\x0E\x00\x03\x02\x0C Unrequired \x0E\x00\x03\x02\u{FFFF}\0"
+);
 
 #[no_mangle]
-fn rando_text_command_handler(
+extern "C" fn rando_text_command_handler(
     _event_flow_mgr: *mut ActorEventFlowMgr,
     p_flow_element: *const FlowElement,
 ) {
@@ -261,12 +275,18 @@ fn rando_text_command_handler(
                 (*_event_flow_mgr).result_from_previous_check = tadtone_groups_left;
             }
         },
+        76 => {
+            // set numeric arg0 to number of keys of area in param1
+            // we need to add one, the key counter is only incremented *after* the textbox
+            let keys = DungeonflagManager::get_global_key_count(flow_element.param1) + 1;
+            text_manager_set_num_args(&[keys.into()]);
+        },
         _ => (),
     }
 }
 
 #[no_mangle]
-fn textbox_a_pressed_or_b_held() -> bool {
+extern "C" fn textbox_a_pressed_or_b_held() -> bool {
     if is_pressed(A) || is_down(B) {
         return true;
     }
@@ -274,7 +294,7 @@ fn textbox_a_pressed_or_b_held() -> bool {
 }
 
 #[no_mangle]
-fn set_goddess_sword_pulled_scene_flag() {
+extern "C" fn set_goddess_sword_pulled_scene_flag() {
     // Set story flag 951 (Raised Goddess Sword in Goddess Statue).
     StoryflagManager::storyflag_set_to_1(951);
 }
@@ -285,7 +305,7 @@ fn simple_rng(rng: &mut u32) -> u32 {
 }
 
 #[no_mangle]
-fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
+extern "C" fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
     // 6 dungeons, each having a Vec3s which is just 3 u16 (or rather i16)
     let angles = unsafe { slice::from_raw_parts_mut(ptr, 3 * 6) };
     for angle in angles.iter_mut() {
@@ -294,7 +314,7 @@ fn randomize_boss_key_start_pos(ptr: *mut u16, mut seed: u32) {
 }
 
 #[no_mangle]
-fn get_item_arc_name(
+extern "C" fn get_item_arc_name(
     oarc_mgr: *const c_void,
     vanilla_item_str: *const c_char,
     item_id: u32,
@@ -311,7 +331,7 @@ fn get_item_arc_name(
 }
 
 #[no_mangle]
-fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
+extern "C" fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
     match item_id {
         214 => return cstr!("OnpB").as_ptr(),        // tadtone
         215 => return cstr!("DesertRobot").as_ptr(), // scrapper
@@ -320,7 +340,7 @@ fn get_item_model_name_ptr(item_id: u32) -> *const c_char {
 }
 
 #[no_mangle]
-fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
+extern "C" fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
     let loftwing = unsafe { &mut *loftwing_ptr };
     let mut is_in_levias_fight = false;
     if &reloader::get_spawn_slave().name[..4] == b"F023"
@@ -347,7 +367,7 @@ fn enforce_loftwing_speed_cap(loftwing_ptr: *mut AcOBird) {
 
 // The same as give_item only you can control the sceneflag of the item given.
 #[no_mangle]
-fn give_item_with_sceneflag(
+extern "C" fn give_item_with_sceneflag(
     item_id: u16,
     bottle_pouch_slot: u32,
     number: u32,
@@ -375,13 +395,13 @@ struct StartInfo {
 }
 
 #[no_mangle]
-fn get_start_info() -> *const StartInfo {
+extern "C" fn get_start_info() -> *const StartInfo {
     // this is where the start entrance info is patched
     return unsafe { &*(0x802DA0E0 as *const StartInfo) };
 }
 
 #[no_mangle]
-pub fn send_to_start() {
+extern "C" fn send_to_start() {
     let start_info = unsafe { get_start_info().as_ref().unwrap() };
 
     // we can't use the normal triggerEntrance function, because that doesn't work
@@ -403,7 +423,7 @@ pub fn send_to_start() {
 
 #[no_mangle]
 // args only used by replaced function call
-pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
+extern "C" fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
     unsafe {
         if (*reloader::get_ptr()).initial_speed > 30f32 {
             (*reloader::get_ptr()).initial_speed = 30f32;
@@ -450,7 +470,7 @@ pub fn do_er_fixes(room_mgr: *mut c_void, room_number: u32) {
 }
 
 #[no_mangle]
-fn allow_set_respawn_info() -> *mut Reloader {
+extern "C" fn allow_set_respawn_info() -> *mut Reloader {
     unsafe {
         if IS_FILE_START {
             (*reloader::get_ptr()).prevent_save_respawn_info = false;
@@ -462,7 +482,7 @@ fn allow_set_respawn_info() -> *mut Reloader {
 }
 
 #[no_mangle]
-fn get_glow_color(item_id: u32) -> u32 {
+extern "C" fn get_glow_color(item_id: u32) -> u32 {
     let stage = &reloader::get_spawn_slave().name[..4];
     // only proceed if in a silent realm
     if stage[0] == b'S' {
@@ -478,4 +498,35 @@ fn get_glow_color(item_id: u32) -> u32 {
         }
     }
     4
+}
+
+#[link_section = "data"]
+#[no_mangle]
+static mut HERO_MODE_OPTIONS: u8 = 0;
+
+#[no_mangle]
+pub fn has_upgraded_skyward_strike() -> c_int {
+    if unsafe { HERO_MODE_OPTIONS } & 0b001 != 0 {
+        1
+    } else {
+        0
+    }
+}
+
+#[no_mangle]
+pub fn has_fast_air_meter_drain() -> c_int {
+    if unsafe { HERO_MODE_OPTIONS } & 0b010 != 0 {
+        1
+    } else {
+        0
+    }
+}
+
+#[no_mangle]
+pub fn has_heart_drops_enabled() -> c_int {
+    if unsafe { HERO_MODE_OPTIONS } & 0b100 != 0 {
+        1
+    } else {
+        0
+    }
 }

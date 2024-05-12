@@ -1,6 +1,10 @@
 # Changelog
 
 ## Dev
+### Additions
+### Changes
+- Show small key count when getting key
+### Bugfixes
 
 ## 2.2.0
 ### Additions

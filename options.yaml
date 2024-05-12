@@ -282,7 +282,7 @@
   type: boolean
   default: true
   help: "If enabled, the extra progressive items upgradeable in the Scrap Shop in vanilla will be shuffled.
-        Includes: Quick Beetle, Tough Beetle, Iron Bow, Sacred Bow, Big Bug Net and Scatershot.
+        Includes: Quick Beetle, Tough Beetle, Iron Bow, Sacred Bow, Big Bug Net and Scattershot.
         Note, there are no random items obtainable by talking to Gondo at the Scrap Shop."
   ui: option_gondo_upgrades
 - name: Gate of Time Starting State
@@ -828,10 +828,6 @@
     - Weak
     - Balanced
     - Junk
-    - Co-op S1
-    - S2 - 2D
-    - S2 - 3D
-    - S2 - 3D EUD Off
     - CDMC
     - Dowsing & Fi Hints
     - 2D Dowsing & Fi Hints

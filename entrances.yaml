@@ -2122,7 +2122,7 @@ Great Tree - Underwater Tunnel Exit:
 
 Great Tree - Exit to Flooded Great Tree:
   type: exit
-  vanilla: Flooded Great Tree - Entrance
+  vanilla: Flooded Great Tree - Entrance from Great Tree
 
 Great Tree - Entrance from Flooded Great Tree:
   type: entrance
@@ -2132,11 +2132,15 @@ Great Tree - Entrance from Flooded Great Tree:
 
 
 # Via Water Dragon
-Flooded Great Tree - Exit:
+Flooded Great Tree - Exit to Great Tree:
   type: exit
-  vanilla: Entrance from Flooded Great Tree
-Flooded Great Tree - Entrance:
+  vanilla: Great Tree - Entrance from Flooded Great Tree
+
+Flooded Great Tree - Entrance from Great Tree:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  tod: 2
 
 # GT Upper
 Flooded Great Tree - Exit to Upper Flooded Faron Woods:
@@ -2145,14 +2149,27 @@ Flooded Great Tree - Exit to Upper Flooded Faron Woods:
 
 Flooded Great Tree - Entrance from Upper Flooded Faron Woods:
   type: entrance
+  province: Faron Province
+  stage: F103_1
+  room: 0
+  layer: 0
+  entrance: 0
+  tod: 2
 
 # GT Lower
-Flooded Great Tree - Exit to Lower Flooded Faron Woods:
+Flooded Great Tree - Underwater Tunnel Exit:
   type: exit
-  vanilla: Flooded Faron Woods - Entrance from Lower Flooded Great Tree
+  vanilla: Flooded Faron Woods - Underwater Hole Entrance
 
-Flooded Great Tree - Entrance from Lower Flooded Faron Woods:
+Flooded Great Tree - Underwater Tunnel Entrance:
   type: entrance
+  province: Faron Province
+  can-start-at: false
+  stage: F103_1
+  room: 0
+  layer: 0
+  entrance: 1
+  tod: 2
 
 # FW Upper
 Flooded Faron Woods - Exit to Upper Flooded Great Tree:
@@ -2161,16 +2178,26 @@ Flooded Faron Woods - Exit to Upper Flooded Great Tree:
 
 Flooded Faron Woods - Entrance from Upper Flooded Great Tree:
   type: entrance
+  province: Faron Province
+  stage: F103
+  room: 0
+  layer: 0
+  entrance: 1
+  tod: 2
 
 # FW Lower
-Flooded Faron Woods - Exit to Lower Flooded Great Tree:
+Flooded Faron Woods - Underwater Hole Exit:
   type: exit
-  vanilla: Flooded Great Tree - Entrance from Lower Flooded Faron Woods
+  vanilla: Flooded Great Tree - Underwater Tunnel Entrance
 
-Flooded Faron Woods - Entrance from Lower Flooded Great Tree:
+Flooded Faron Woods - Underwater Hole Entrance:
   type: entrance
   province: Faron Province
   can-start-at: false
+  stage: F103
+  room: 0
+  layer: 0
+  entrance: 3
   tod: 2
 
 

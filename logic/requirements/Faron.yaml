@@ -245,7 +245,7 @@ Flooded Faron Woods:
   hint-region: Flooded Faron Woods
   exits:
     Exit to Upper Flooded Great Tree: Nothing
-    Exit to Lower Flooded Great Tree: Water Dragon's Scale
+    Underwater Hole: Water Dragon's Scale
   locations:
     Yellow Tadtone under Lilypad: Water Dragon's Scale
     8 Light Blue Tadtones near Viewing Platform: Water Dragon's Scale
@@ -269,10 +269,9 @@ Flooded Faron Woods:
 
   Flooded Great Tree:
     exits:
-      Entrance: Nothing
-      Exit: Nothing
+      Exit to Great Tree: Nothing
       Exit to Upper Flooded Faron Woods: Nothing
-      Exit to Lower Flooded Faron Woods: Water Dragon's Scale
+      Underwater Tunnel: Water Dragon's Scale
     locations:
       Water Dragon's Reward: Group of Tadtones x 17 & Can Watch Completed Tadtones Cutscene
 
