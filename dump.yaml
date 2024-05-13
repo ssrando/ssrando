@@ -703,7 +703,6 @@ items:
 - \Can Hit Switch
 - \Can Hit Timeshift Stone
 - \Can Hit Timeshift Stone in Minecart
-- \Early Lake Floria Tricks
 - \Can bypass Boko Base Watch Tower
 - \Can Defeat Bokoblins
 - \Can Defeat Moblins
@@ -896,10 +895,8 @@ items:
 - \Faron\Faron Woods\Amber Relic Farming
 - \Faron\Faron Woods\Hit Vine to Deep Woods
 - \Faron\Faron Woods\Open Trial Gate
-- \Faron\Faron Woods\Open Door to Lake Floria
 - \Faron\Faron Woods\Rupee on Hollow Tree Root
 - \Faron\Faron Woods\Rupee on Hollow Tree Branch
-- \Faron\Faron Woods\Rupee on Platform near Floria Door
 - \Faron\Faron Woods\All Kikwis Saved
 - \Faron\Faron Woods\Kikwi Elder's Reward
 - \Faron\Faron Woods\Item on Tree
@@ -913,6 +910,9 @@ items:
 - \Faron\Faron Woods\Clawshot Target Branch\Goddess Cube on East Great Tree with Clawshots
   Target
 - \Faron\Faron Woods\Rope Branch\Goddess Cube on East Great Tree with Rope
+- \Faron\Faron Woods\Door to Lake Floria\Hit Vine
+- \Faron\Faron Woods\Door to Lake Floria\Open Door to Lake Floria
+- \Faron\Faron Woods\Door to Lake Floria\Rupee on Platform near Floria Door
 - \Faron\Faron Woods\Great Tree\Lower Area\Path to Chest\Chest inside Great Tree
 - \Faron\Faron Woods\Great Tree\Upper Area\Remove Void Plane
 - \Faron\Faron Woods\Great Tree\Top\Unlock Statue
@@ -1378,6 +1378,7 @@ items:
 - \Skyloft\Skyloft Village\Sparrot's House\Start Sparrot's Quest
 - \Skyloft\Skyloft Village\Sparrot's House\Sparrot's Crystals
 - \Skyloft\Skyloft Village\Mallara's House\Mallara's Crystals
+- \Skyloft\Skyloft Village\Rupin's House\Can Sell Treasures
 - \Skyloft\Skyloft Village\Batreaux's House\5 Crystals
 - \Skyloft\Skyloft Village\Batreaux's House\10 Crystals
 - \Skyloft\Skyloft Village\Batreaux's House\30 Crystals
@@ -1523,6 +1524,7 @@ items:
 - \Faron\Faron Woods\West Branch
 - \Faron\Faron Woods\Clawshot Target Branch
 - \Faron\Faron Woods\Rope Branch
+- \Faron\Faron Woods\Door to Lake Floria
 - \Faron\Faron Woods\Great Tree\Near Underwater Hole
 - \Faron\Faron Woods\Great Tree\Lower Area\Path to Chest
 - \Faron\Faron Woods\Great Tree\Lower Area\Near Exit
@@ -1923,7 +1925,7 @@ items:
 - \Faron\Faron Woods\Shared Statue Exit
 - \Faron\Faron Woods\Entry\Exit to Behind the Temple
 - \Faron\Faron Woods\Ledge To Deep Woods\Exit to Deep Woods
-- \Faron\Faron Woods\Lake Floria Dive
+- \Faron\Faron Woods\Door to Lake Floria\Lake Floria Dive
 - \Faron\Faron Woods\Ledge to Lake Floria\Shortcut Exit to Floria Waterfall
 - \Faron\Faron Woods\Trial Gate Exit
 - \Faron\Faron Silent Realm\Exit
@@ -2409,8 +2411,9 @@ areas:
       \ Wallet)"
     Can Afford 1600 Rupees: "\\Can High Rupee Farm & ((\\Big Wallet & \\2 Extra Wallets)\
       \ | \\Giant Wallet)"
-    Can Medium Rupee Farm: "\\Sky\\North East\\Bamboo Island\\Inside\\Clean Cut Minigame\
-      \ | \\Can High Rupee Farm"
+    Can Medium Rupee Farm: "(\\Sky\\North East\\Bamboo Island\\Inside\\Clean Cut Minigame\
+      \ & \\Skyloft\\Skyloft Village\\Rupin's House\\Can Sell Treasures) | \\Can High\
+      \ Rupee Farm"
     Can High Rupee Farm: "\\Sky\\South West\\Fun Fun Island\\Fun Fun Island Minigame\
       \ | \\Eldin\\Volcano\\Thrill Digger Cave\\Thrill Digger Minigame"
     Song of the Hero: "Faron Song of the Hero Part & Eldin Song of the Hero Part &\
@@ -2469,8 +2472,6 @@ areas:
     Can Hit Switch: "\\Sword | Bomb Bag | Whip | \\Distance Activator"
     Can Hit Timeshift Stone: "\\Sword | Bomb Bag | Whip | \\Distance Activator"
     Can Hit Timeshift Stone in Minecart: "\\Sword | Bomb Bag | \\Distance Activator"
-    Early Lake Floria Tricks: "(Early Lake Floria - Fence Hop Trick & \\Practice Sword)\
-      \ | Early Lake Floria - Swordless Rope Floria Trick"
     Can bypass Boko Base Watch Tower: "\\Bow | Bomb Bag | \\Slingshot"
     Can Defeat Bokoblins: \Damaging Item
     Can Defeat Moblins: \Damaging Item
@@ -3977,18 +3978,18 @@ areas:
             \Faron\Faron Woods\Entry: 'True'
             Shared Statue Exit: "\\Faron\\Faron Woods\\Unlock In the Woods Statue\
               \ | \\Faron\\Faron Woods\\Unlock Viewing Platform Statue"
+            \Faron\Faron Woods\Door to Lake Floria: "\\Sword | Bomb Bag | \\Faron\\\
+              Faron Woods\\Door to Lake Floria\\Hit Vine"
             Trial Gate Exit: \Faron\Faron Woods\Open Trial Gate
             \Faron\Faron Woods\Great Tree\Near Underwater Hole: Water Dragon's Scale
             \Faron\Faron Woods\Great Tree\Platforms: Clawshots
             \Faron\Faron Woods\Clawshot Target Branch: Clawshots
-            Lake Floria Dive: "\\Faron\\Faron Woods\\Open Door to Lake Floria | \\\
-              Early Lake Floria Tricks"
             \Faron\Faron Woods\Ledge to Lake Floria: \Faron\Faron Woods\Ledge to Lake
               Floria\Push Log
             \Faron\Faron Woods\Ledge To Deep Woods: \Faron\Faron Woods\Hit Vine to
               Deep Woods
             \Faron\Faron Woods\Behind the Crawlspace and Rope: "Bomb Bag | \\Faron\\\
-              Faron Woods\\Ledge to Lake Floria\\Push Log"
+              Faron Woods\\Behind the Crawlspace and Rope\\Push Log"
           hint_region: Faron Woods
           locations:
             Unlock Viewing Platform Statue: 'True'
@@ -3997,14 +3998,12 @@ areas:
             Amber Relic Farming: 'True'
             Hit Vine to Deep Woods: \Distance Activator
             Open Trial Gate: "Goddess's Harp & Farore's Courage"
-            Open Door to Lake Floria: "(Open Lake Floria option & Water Dragon's Scale)\
-              \ | (\\Faron\\Faron Woods\\Great Tree\\Top\\Talk to Yerbal & (\\Goddess\
-              \ Sword | Talk to Yerbal option))"
             Rupee on Hollow Tree Root: 'True'
             Rupee on Hollow Tree Branch: \Beetle
-            Rupee on Platform near Floria Door: \Beetle
             All Kikwis Saved: "(\\Sword | \\Beetle) & \\Can Defeat Bokoblins"
             Kikwi Elder's Reward: \Faron\Faron Woods\All Kikwis Saved
+            \Faron\Faron Woods\Door to Lake Floria\Hit Vine: "\\Beetle | Clawshots\
+              \ | \\Bow"
             Item on Tree: 'True'
             Item behind Lower Bombable Rock: Bomb Bag
             Chest behind Upper Bombable Rock: Bomb Bag
@@ -4024,6 +4023,8 @@ areas:
                 \Faron\Faron Woods: "\\Sword | Bomb Bag | Clawshots | \\Faron\\Faron\
                   \ Woods\\Push Log to Sealed Grounds"
                 Exit to Behind the Temple: 'True'
+                \Faron\Faron Woods\Ledge to Lake Floria: Early Lake Floria - Swordless
+                  Rope Floria Trick
               hint_region: Faron Woods
               locations:
                 Unlock Statue: 'True'
@@ -4039,8 +4040,7 @@ areas:
               - Shortcut Entrance from Floria Waterfall
               exits:
                 \Faron\Faron Woods: 'True'
-                Shortcut Exit to Floria Waterfall: "\\Faron\\Faron Woods\\Open Door\
-                  \ to Lake Floria | \\Early Lake Floria Tricks"
+                Shortcut Exit to Floria Waterfall: 'True'
               hint_region: Faron Woods
               locations:
                 Push Log: 'True'
@@ -4118,6 +4118,29 @@ areas:
               locations:
                 Goddess Cube on East Great Tree with Rope: \Goddess Sword
               name: \Faron\Faron Woods\Rope Branch
+              sub_areas: {}
+              toplevel_alias: null
+            Door to Lake Floria:
+              abstract: false
+              allowed_time_of_day: 1
+              can_save: false
+              can_sleep: false
+              entrances: []
+              exits:
+                \Faron\Faron Woods: 'True'
+                Lake Floria Dive: "\\Faron\\Faron Woods\\Door to Lake Floria\\Open\
+                  \ Door to Lake Floria | (Early Lake Floria - Fence Hop Trick & \\\
+                  Practice Sword)"
+                \Faron\Faron Woods\Ledge to Lake Floria: "Early Lake Floria - Fence\
+                  \ Hop Trick & \\Practice Sword"
+              hint_region: Faron Woods
+              locations:
+                Hit Vine: "\\Sword | Bomb Bag"
+                Open Door to Lake Floria: "(Open Lake Floria option & Water Dragon's\
+                  \ Scale) | (\\Faron\\Faron Woods\\Great Tree\\Top\\Talk to Yerbal\
+                  \ & (\\Goddess Sword | Talk to Yerbal option))"
+                Rupee on Platform near Floria Door: \Beetle
+              name: \Faron\Faron Woods\Door to Lake Floria
               sub_areas: {}
               toplevel_alias: null
             Great Tree:
@@ -8354,7 +8377,8 @@ areas:
               exits:
                 Exit: 'True'
               hint_region: Skyloft Village
-              locations: {}
+              locations:
+                Can Sell Treasures: Night
               name: \Skyloft\Skyloft Village\Rupin's House
               sub_areas: {}
               toplevel_alias: null
@@ -9278,7 +9302,7 @@ checks:
     original item: 'Red Rupee #27'
     type: Rupees (No Quick Beetle)
     short_name: Faron Woods - Rupee on Hollow Tree Branch
-  \Faron\Faron Woods\Rupee on Platform near Floria Door:
+  \Faron\Faron Woods\Door to Lake Floria\Rupee on Platform near Floria Door:
     original item: 'Red Rupee #26'
     type: Rupees (No Quick Beetle)
     short_name: Faron Woods - Rupee on Platform near Floria Door
@@ -10830,7 +10854,7 @@ exits:
     vanilla: Deep Woods - Entrance from Faron Woods
     stage: F100
     short_name: Faron Woods - Exit to Deep Woods
-  \Faron\Faron Woods\Lake Floria Dive:
+  \Faron\Faron Woods\Door to Lake Floria\Lake Floria Dive:
     type: exit
     vanilla: Lake Floria - Dive from Faron Woods
     stage: F100
