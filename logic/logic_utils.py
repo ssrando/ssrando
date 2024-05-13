@@ -238,15 +238,19 @@ class LogicUtils(Logic):
             if (region := check.get("cube_region")) is None:
                 region = check["hint_region"]
             useless_regions.discard(region)
+        useless_regions = sorted(useless_regions)
 
-        inacc_regions = set(ALL_HINT_REGIONS)
+        checks_per_region = {k: 0 for k in ALL_HINT_REGIONS}
         for c in self.areas.checks.values():
             if non_banned[c["req_index"]]:
                 if (region := c.get("cube_region")) is None:
                     region = c["hint_region"]
-                inacc_regions.discard(region)
+                checks_per_region[region] += 1
 
-        return sorted(useless_regions - inacc_regions), sorted(inacc_regions)
+        return (
+            {k: v for k in useless_regions if (v := checks_per_region[k]) > 0},
+            [k for k, v in checks_per_region.items() if v == 0],
+        )
 
     def get_barren_regions(self, bit=EVERYTHING_UNBANNED_BIT):
         return self._get_barren_regions(bit)
