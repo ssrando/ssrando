@@ -1,4 +1,5 @@
 from __future__ import annotations
+from collections import defaultdict
 from dataclasses import dataclass
 from functools import cache
 import random
@@ -584,6 +585,41 @@ class Rando:
                 entrance_of_exit(trial_exit)
             )
 
+        self.randomize_starting_entrance()
+
+        # Starting bird statue rando
+
+        bsr = self.options["random-start-statues"]
+
+        possible_bird_statues = [
+            (entrance, values)
+            for entrance, values in self.areas.map_entrances.items()
+            if values.get("subtype") == "bird-statue-entrance"
+            and (bsr or values.get("vanilla-start-statue"))
+        ]
+
+        self.randomized_start_statues = {
+            province: self.rng.choice(
+                [
+                    (entrance, values)
+                    for entrance, values in possible_bird_statues
+                    if values.get("province") == province
+                    and "Fire Sanctuary" not in entrance
+                ]
+            )
+            for province in ALL_SURFACE_PROVINCES
+        }
+
+        # Logically bind the first-time dive to the statue to unlock it
+
+        for exit, values in self.areas.map_exits.items():
+            # First time dives have the 'pillar-province' field in entrances.yaml
+            if (province := values.get("pillar-province")) is not None:
+                self.placement.map_transitions[exit] = self.randomized_start_statues[
+                    province
+                ][0]
+
+    def randomize_starting_entrance(self):
         # Starting Entrance Rando.
         ser = self.options["random-start-entrance"]
         limit_ser = self.options["limit-start-entrance"]
@@ -618,7 +654,21 @@ class Rando:
             )
         ]
 
-        start_entrance = self.rng.choice(possible_start_entrances)
+        weights = None
+        if ser == "Any Surface Region" or ser == "Any":
+            # If we're not restricted to Bird Statues, weight entrances by inverse
+            # number of eligible entrances in that region to penalize overly
+            # entrance-dense regions like Skyloft
+            entrances_by_region = defaultdict(lambda: 0)
+            for _, entrance in possible_start_entrances:
+                entrances_by_region[entrance["hint_region"]] += 1
+            # print(entrances_by_region, sum(entrances_by_region.values()))
+            weights = [
+                1.0 / entrances_by_region[v[1]["hint_region"]]
+                for v in possible_start_entrances
+            ]
+
+        start_entrance = self.rng.choices(possible_start_entrances, weights, k=1)[0]
         self.placement.map_transitions["\Start"] = start_entrance[0]
         values = start_entrance[1]
 
@@ -637,35 +687,3 @@ class Rando:
         assert self.randomized_start_entrance["layer"] is not None
         assert self.randomized_start_entrance["entrance"] is not None
         assert self.randomized_start_entrance["day-night"] is not None
-
-        # Starting bird statue rando
-
-        bsr = self.options["random-start-statues"]
-
-        possible_bird_statues = [
-            (entrance, values)
-            for entrance, values in self.areas.map_entrances.items()
-            if values.get("subtype") == "bird-statue-entrance"
-            and (bsr or values.get("vanilla-start-statue"))
-        ]
-
-        self.randomized_start_statues = {
-            province: self.rng.choice(
-                [
-                    (entrance, values)
-                    for entrance, values in possible_bird_statues
-                    if values.get("province") == province
-                    and "Fire Sanctuary" not in entrance
-                ]
-            )
-            for province in ALL_SURFACE_PROVINCES
-        }
-
-        # Logically bind the first-time dive to the statue to unlock it
-
-        for exit, values in self.areas.map_exits.items():
-            # First time dives have the 'pillar-province' field in entrances.yaml
-            if (province := values.get("pillar-province")) is not None:
-                self.placement.map_transitions[exit] = self.randomized_start_statues[
-                    province
-                ][0]
