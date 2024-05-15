@@ -195,3 +195,4 @@ assets/default-link-data/*/metadata.json
 *.s
 # ignore any custom setting source files
 custom_*.*
+!/asm/**/custom_*.*
