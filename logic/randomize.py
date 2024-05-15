@@ -429,6 +429,7 @@ class Rando:
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
             FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
+            NO_RANDOM_PUZZLES_OPTION: not self.options["random-puzzles"],
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])

@@ -363,6 +363,7 @@ items:
 - Nonlethal Hot Cave
 - Upgraded Skyward Strike option
 - FS Lava Flow option
+- No Random Puzzles option
 - GoT Opening Requirement
 - GoT Raising Requirement
 - Horde Door Requirement
@@ -6836,8 +6837,8 @@ areas:
               hint_region: Sandship
               locations:
                 Combination Lock: "(Gust Bellows | \\Sandship\\Main\\Deck\\Freely\
-                  \ Usable Timeshift Stone | Sandship - No Combination Hint Trick)\
-                  \ & \\Can Unlock Combination Lock"
+                  \ Usable Timeshift Stone | (Sandship - No Combination Hint Trick\
+                  \ & No Random Puzzles option)) & \\Can Unlock Combination Lock"
                 Chest behind Combination Lock: \Sandship\Main\Before Boss Door\Combination
                   Lock
                 Open Boss Door: "\\Sandship\\Main\\Deck\\Freely Usable Timeshift Stone\

@@ -86,7 +86,7 @@ Main:
       Boss Door one-way Exit: Open Boss Door
     locations:
       Combination Lock:
-        (Gust Bellows | Deck - Freely Usable Timeshift Stone | Sandship - No Combination Hint Trick) & Can Unlock Combination Lock
+        (Gust Bellows | Deck - Freely Usable Timeshift Stone | (Sandship - No Combination Hint Trick & No Random Puzzles option)) & Can Unlock Combination Lock
       Chest behind Combination Lock:
         Combination Lock
       Open Boss Door:
