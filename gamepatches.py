@@ -1116,6 +1116,12 @@ def try_patch_obj(obj, key, value):
             obj["params1"] = mask_shift_set(obj["params1"], 7, 0x19, order[3])
         else:
             print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj["name"] == "Swhit":
+        # crystals switch
+        if key == "setscenefid":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 3, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
     else:
         print(f"ERROR: unsupported object to patch {obj}")
 
@@ -1978,6 +1984,34 @@ class GamePatcher:
                         break_lines(text),
                     ]
                 ),
+            },
+        )
+
+        # north to south
+        switch_objs = [0xFC1A, 0xFC1B, 0xFC1C]
+        # order
+        switch_flags = [29, 30, 31]
+        for idx, obj in enumerate(self.placement_file.puzzles["lmf"]["switch_combo"]):
+            self.add_patch_to_stage(
+                "D300_1",
+                {
+                    "name": "Randomize LMF Switches Puzzle " + str(idx),
+                    "type": "objpatch",
+                    "id": switch_objs[obj],
+                    "layer": 0,
+                    "room": 8,
+                    "objtype": "OBJ ",
+                    "object": {"setscenefid": switch_flags[idx]},
+                },
+            )
+
+        self.add_patch_to_stage(
+            "D300_1",
+            {
+                "name": "LMF BK Switches Puzzle Hints",
+                "type": "roomBRRESpatch",
+                "room": 8,
+                "func": self.patch_lmf_switches_puzzle,
             },
         )
 
@@ -2926,6 +2960,95 @@ class GamePatcher:
         brres.set_file_data("3DModels(NW4R)/TowerHandD101", mdl)
         u8.set_file_data("g3d/model.brres", brres.to_buffer().read())
         return u8
+
+    def patch_lmf_switches_puzzle_inner(
+        self, brres: BRRES, model_name: str, plate_verts: str, wall_verts: str
+    ):
+        order = self.placement_file.puzzles["lmf"]["switch_combo"]
+
+        mdl: MDL0 = brres.get_file_data(model_name)
+
+        # North to south
+        xz = [
+            [4930.0, 0, -21000.0],  # 1 robot
+            [4930.0, 0, -20000.0],  # 3 robots
+            [4930.0, 0, -19000.0],  # 2 robots
+        ]
+        # low to high
+        num_robots = [0, 2, 1]
+
+        plate_vertices = mdl.get_vertices(plate_verts)
+        new_plate_vertices = plate_vertices.copy()
+        # unfortunately we have to move the walls above the plates too
+        wall_vertices = mdl.get_vertices(wall_verts)
+        new_wall_vertices = wall_vertices.copy()
+
+        def belongs_to_plane(v, plane_idx):
+            return (
+                abs(v[0] - xz[plane_idx][0]) < 150.0
+                and abs(v[2] - xz[plane_idx][2]) < 200.0
+            )
+
+        plane_vertex_index_lists = [
+            [v_i for v_i, v in enumerate(plate_vertices) if belongs_to_plane(v, plane)]
+            for plane in range(3)
+        ]
+
+        wall_vertex_index_lists = [
+            [v_i for v_i, v in enumerate(wall_vertices) if belongs_to_plane(v, plane)]
+            for plane in range(3)
+        ]
+
+        for idx, obj in enumerate(order):
+            plate_idx = num_robots[idx]
+            old_center = xz[plate_idx]  # the center of the plate that has #idx robots
+            new_center = xz[
+                obj
+            ]  # the center of the plate that corresponds to the switch to hit
+
+            plate_vertex_index_list = plane_vertex_index_lists[
+                plate_idx
+            ]  # the vertex idxes of the plate that needs to move
+            for vertex in plate_vertex_index_list:
+                old = plate_vertices[vertex]
+                new_plate_vertices[vertex] = [
+                    old[0] - old_center[0] + new_center[0],
+                    old[1],
+                    old[2] - old_center[2] + new_center[2],
+                ]
+
+            wall_vertex_index_list = wall_vertex_index_lists[plate_idx]
+            for vertex in wall_vertex_index_list:
+                old = wall_vertices[vertex]
+                new_wall_vertices[vertex] = [
+                    old[0] - old_center[0] + new_center[0],
+                    old[1],
+                    old[2] - old_center[2] + new_center[2],
+                ]
+
+        mdl.set_vertices(plate_verts, new_plate_vertices)
+        mdl.set_vertices(wall_verts, new_wall_vertices)
+
+        brres.set_file_data(model_name, mdl)
+        return brres
+
+    def patch_lmf_switches_puzzle(self, brres: BRRES):
+        """Patches the LMF boss key switches puzzle by moving the stacked robot walls"""
+        # present
+        brres = self.patch_lmf_switches_puzzle_inner(
+            brres,
+            "3DModels(NW4R)/model0",
+            "polySurface2__A_Plate2N",
+            "polySurface3710781__A_Wall3N",
+        )
+        # past
+        brres = self.patch_lmf_switches_puzzle_inner(
+            brres,
+            "3DModels(NW4R)/model_obj8",
+            "polySurface2__A_Plate2",
+            "polySurface3710781__A_Wall3",
+        )
+        return brres
 
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])

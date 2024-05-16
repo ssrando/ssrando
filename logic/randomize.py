@@ -204,6 +204,10 @@ class Rando:
             for i in range(4)
         ]
 
+        # north to south
+        lmf_switches_solution = list(range(3))
+        self.rng.shuffle(lmf_switches_solution)
+
         self.puzzles = {
             "isle": {"pedestal_positions": [self.rng.randint(1, 12) for _ in range(3)]},
             "sandship": {
@@ -215,6 +219,9 @@ class Rando:
                 "hint_order": ac_hint_order,
                 "hint_rotations": ac_hint_rotations,
                 "combo": ac_solution,
+            },
+            "lmf": {
+                "switch_combo": lmf_switches_solution,
             },
         }
 

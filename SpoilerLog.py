@@ -222,6 +222,11 @@ def write(
             [puzzle_directions[dir] for dir in puzzles["sandship"]["combo"]]
         )
         file.write(f"  {'Sandship Lock Combination'+':':48} {ssh_combo}\n")
+        lmf_switch_order = ["North", "Center", "South"]
+        lmf_combo = ", ".join(
+            [lmf_switch_order[i] for i in puzzles["lmf"]["switch_combo"]]
+        )
+        file.write(f"  {'Lanayru Mining Facility Switch Order'+':':48} {lmf_combo}\n")
         file.write("\n\n\n")
 
     # Write hints.
