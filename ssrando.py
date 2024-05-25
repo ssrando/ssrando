@@ -148,6 +148,13 @@ class Randomizer(BaseRandomizer):
         self.progress_callback = progress_callback
 
     def randomize(self):
+        # make sure the output path is valid if we're writing the patched game
+        if not (
+            self.options["dry-run"] or (dir := self.options["output-folder"]).is_dir()
+        ):
+            raise ValueError(
+                f"Path {dir} is not a directory. Please specify a valid output folder."
+            )
         useroutput = UserOutput(GenerationFailed, self.progress_callback)
         self.progress_callback("randomizing items...")
         self.rando.randomize(useroutput)
