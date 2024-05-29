@@ -238,7 +238,7 @@ Can Hit Timeshift Stone in Minecart:
   Sword | Bomb Bag | Distance Activator
   # I don't think Whip works when the stone is in a minecart
 
-Early Lake Floria Tricks: (Early Lake Floria - Fence Hop Trick & Practice Sword) | Early Lake Floria - Swordless Rope Floria Trick
+Early Lake Floria Tricks: (Early Lake Floria - Fence Hop Trick & Practice Sword) | Early Lake Floria - Rope Trick
 
 Can bypass Boko Base Watch Tower:
   Bow | Bomb Bag | Slingshot
@@ -255,7 +255,7 @@ Can Defeat Keeses:
   Sword | Slingshot | Beetle | Whip | Clawshots | Bow | Bomb Bag
 
 Can Defeat Lizalfos:
-  Sword | (Advanced Lizalfos Combat Trick & (Bomb Bag | Bow))
+  Sword
   # With bombs, let them attack you while you have a bomb in your hands. Takes one bomb for normal lezalfos, two for dark lezalfos
 
 Can Defeat Ampilus:
@@ -280,3 +280,43 @@ Can Defeat Stalmaster:
 Can Defeat Scervo/Dreadfuse:
   Sword
   # Could add Pouch for a shield
+
+Skyview Shortcuts:
+  (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Skyview Unrequired))
+
+Earth Temple Shortcuts:
+  (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Earth Temple Unrequired))
+
+Mining Facility Shortcuts:
+  (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Unrequired))
+
+Cistern Shortcuts:
+  (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Ancient Cistern Unrequired))
+
+Sandship Shortcuts:
+  (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Sandship Unrequired))
+
+Fire Sanctuary Shortcuts:
+  (Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option & Fire Sanctuary Unrequired))
+
+Cutless Skyview:
+  (Default Dungeon Behavior option | (Open Unrequired Shortcuts option & Skyview Required))
+
+## Cutless Earth Temple:
+##  (Default Dungeon Behavior option | (Open Unrequired Shortcuts option & Earth Temple Required))
+
+## Cutless Mining Facility:
+##  (Default Dungeon Behavior option | (Open Unrequired Shortcuts option & Lanayru Mining Facility Required))
+
+## Cutless Cistern:
+##  (Default Dungeon Behavior option | (Open Unrequired Shortcuts option & Ancient Cistern Required))
+
+## Cutless Sandship:
+##  (Default Dungeon Behavior option | (Open Unrequired Shortcuts option & Sandship Required))
+
+Cutless Fire Sanctuary:
+  (Default Dungeon Behavior option | (Open Unrequired Shortcuts option & Fire Sanctuary Required))
+
+Fire Sanctuary - Magmanos Fight Room - Lower Part - Move Sliding Door:
+  Fire Sanctuary Shortcuts
+

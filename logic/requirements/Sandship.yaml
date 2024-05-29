@@ -2,7 +2,7 @@ allowed-time-of-day: DayOnly
 hint-region: Sandship
 
 macros:
-  Pass Spume: Goddess Sword | Bow | Bomb Bag | Slingshot | Sandship - Itemless Spume Skip Trick
+  Pass Spume: Goddess Sword | Bow | Bomb Bag | Slingshot
 
 Main:
   Deck:
@@ -20,7 +20,7 @@ Main:
     Mast:
       exits:
         Deck: Nothing
-        Stern: Bow & (Clawshots | Sandship - Mast Jump Trick)
+        Stern: Bow & Clawshots
       locations:
         Finish Mast Sequence: Bow & Sword
 
@@ -48,7 +48,7 @@ Main:
 
   Ship's Bow:
     exits:
-      Before Ship's Bow: Chest
+      Before Ship's Bow: Can Defeat Scervo/Dreadfuse
     locations:
       Chest after Scervo Fight: Can Defeat Scervo/Dreadfuse
 
@@ -86,7 +86,7 @@ Main:
       Boss Door one-way Exit: Open Boss Door
     locations:
       Combination Lock:
-        (Gust Bellows | Deck - Freely Usable Timeshift Stone | Sandship - No Combination Hint Trick) & Can Unlock Combination Lock
+        Can Unlock Combination Lock
       Chest behind Combination Lock:
         Combination Lock
       Open Boss Door:
@@ -95,7 +95,7 @@ Main:
   Brig:
     exits:
       Treasure Room: Starboard Rooms - Generator & Whip
-      Brig Prison: Starboard Rooms - Generator & Whip & Port Rooms - Generator
+      Brig Prison: (Starboard Rooms - Generator & Whip & Port Rooms - Generator) | (Starboard Rooms - Generator & Sandship Shortcuts)
       Starboard Rooms: Starboard Rooms - Switch
 
   Treasure Room:

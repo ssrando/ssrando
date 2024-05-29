@@ -31,7 +31,7 @@ jobs:
         run: |
           python3 randoscript.py --noui --dry-run --seed=0
           cp -r logs logs_source
-          dist/ssrando --noui --dry-run --seed=0
+          dist/nindyssr --noui --dry-run --seed=0
           diff logs logs_source
       - name: Make arc-replacements folder
         run: |
@@ -53,5 +53,5 @@ jobs:
           field: "tool.poetry.version"
       - uses: actions/upload-artifact@v4
         with:
-          name: Skyward Sword Randomizer v${{ steps.read_toml.outputs.value }}
+          name: Skyward Sword Randomizer [Nindy's Super Evil Edition]
           path: dist

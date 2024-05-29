@@ -369,10 +369,15 @@ items:
 - Skyview Unrequired
 - Skyview Required
 - Earth Temple Unrequired
+- Earth Temple Required
 - Lanayru Mining Facility Unrequired
+- Lanayru Mining Facility Required
 - Ancient Cistern Unrequired
+- Ancient Cistern Required
 - Sandship Unrequired
+- Sandship Required
 - Fire Sanctuary Unrequired
+- Fire Sanctuary Required
 - GoT Opening Requirement
 - GoT Raising Requirement
 - Horde Door Requirement
@@ -712,6 +717,14 @@ items:
 - \Can Defeat Stalfos
 - \Can Defeat Stalmaster
 - \Can Defeat Scervo/Dreadfuse
+- \Skyview Shortcuts
+- \Earth Temple Shortcuts
+- \Mining Facility Shortcuts
+- \Cistern Shortcuts
+- \Sandship Shortcuts
+- \Fire Sanctuary Shortcuts
+- \Cutless Skyview
+- \Cutless Fire Sanctuary
 - \Ancient Cistern\Can Lower Statue
 - \Ancient Cistern\Can Freely Raise and Lower Statue
 - \Ancient Cistern\Main\Main Room\Lock Combination Knowledge
@@ -2486,6 +2499,24 @@ areas:
     Can Defeat Stalfos: \Sword
     Can Defeat Stalmaster: \Sword
     Can Defeat Scervo/Dreadfuse: \Sword
+    Skyview Shortcuts: "Open Dungeon Shortcuts option | (Open Unrequired Shortcuts\
+      \ option & Skyview Unrequired)"
+    Earth Temple Shortcuts: "Open Dungeon Shortcuts option | (Open Unrequired Shortcuts\
+      \ option & Earth Temple Unrequired)"
+    Mining Facility Shortcuts: "Open Dungeon Shortcuts option | (Open Unrequired Shortcuts\
+      \ option & Lanayru Mining Facility Unrequired)"
+    Cistern Shortcuts: "Open Dungeon Shortcuts option | (Open Unrequired Shortcuts\
+      \ option & Ancient Cistern Unrequired)"
+    Sandship Shortcuts: "Open Dungeon Shortcuts option | (Open Unrequired Shortcuts\
+      \ option & Sandship Unrequired)"
+    Fire Sanctuary Shortcuts: "Open Dungeon Shortcuts option | (Open Unrequired Shortcuts\
+      \ option & Fire Sanctuary Unrequired)"
+    Cutless Skyview: "Default Dungeon Behavior option | (Open Unrequired Shortcuts\
+      \ option & Skyview Required)"
+    Cutless Fire Sanctuary: "Default Dungeon Behavior option | (Open Unrequired Shortcuts\
+      \ option & Fire Sanctuary Required)"
+    \Fire Sanctuary\Main\Magmanos Fight Room\Lower Part\Move Sliding Door: \Fire Sanctuary
+      Shortcuts
   name: ''
   sub_areas:
     Ancient Cistern:
@@ -2526,8 +2557,7 @@ areas:
                 \Ancient Cistern\Main\Main Room\After Whip Hooks: Whip
                 \Ancient Cistern\Main\Main Room\Vines Area: "\\Ancient Cistern\\Main\\\
                   Main Room\\Vines Area\\Activate Water Geyser | (Whip & Clawshots)\
-                  \ | Open Dungeon Shortcuts option | (Open Unrequired Shortcuts option\
-                  \ & Ancient Cistern Unrequired)"
+                  \ | \\Cistern Shortcuts"
                 \Ancient Cistern\Main\Main Room\Behind the Waterfall: "\\Ancient Cistern\\\
                   Main\\Main Room\\Lever to Block Waterfall & Water Dragon's Scale"
                 \Ancient Cistern\Main\Inside Statue: "\\Ancient Cistern\\Can Lower\
@@ -2555,9 +2585,7 @@ areas:
                   exits:
                     \Ancient Cistern\Main\Main Room\Vines Area: Clawshots
                     \Ancient Cistern\Main\Main Room\After Gutters: "\\Ancient Cistern\\\
-                      Main\\Main Room\\After Gutters\\Lower Lever | Open Dungeon Shortcuts\
-                      \ option | (Open Unrequired Shortcuts option & Ancient Cistern\
-                      \ Unrequired)"
+                      Main\\Main Room\\After Gutters\\Lower Lever | \\Cistern Shortcuts"
                     \Ancient Cistern\Main\Main Room: 'True'
                   hint_region: Ancient Cistern
                   locations:
@@ -2576,12 +2604,10 @@ areas:
                       \ Clip - Misc. Uses Trick"
                     \Ancient Cistern\Main\Main Room\After Gutters\Upper Area: "\\\
                       Ancient Cistern\\Main\\Main Room\\After Gutters\\Upper Area\\\
-                      Upper Lever | Open Dungeon Shortcuts option | (Open Unrequired\
-                      \ Shortcuts option & Ancient Cistern Unrequired)"
+                      Upper Lever | \\Cistern Shortcuts"
                     \Ancient Cistern\Main\Main Room\Spider Thread Area: "\\Ancient\
                       \ Cistern\\Main\\Main Room\\Spider Thread Area\\Extend Platform\
-                      \ | Open Dungeon Shortcuts option | (Open Unrequired Shortcuts\
-                      \ option & Ancient Cistern Unrequired)"
+                      \ | \\Cistern Shortcuts"
                     \Ancient Cistern\Main\Main Room: 'True'
                   hint_region: Ancient Cistern
                   locations:
@@ -2656,8 +2682,7 @@ areas:
                           Room\After Gutters\Upper Area\Upper Lever
                       hint_region: Ancient Cistern
                       locations:
-                        Upper Lever: "Whip | Open Dungeon Shortcuts option | (Open\
-                          \ Unrequired Shortcuts option & Ancient Cistern Unrequired)"
+                        Upper Lever: "Whip | \\Cistern Shortcuts"
                       name: \Ancient Cistern\Main\Main Room\After Gutters\Upper Area
                       sub_areas: {}
                       toplevel_alias: null
@@ -2670,9 +2695,8 @@ areas:
                   entrances: []
                   exits:
                     \Ancient Cistern\Main\Main Room\Vines Area: "\\Ancient Cistern\\\
-                      Main\\Main Room\\Spider Thread Area\\Extend Platform | Open\
-                      \ Dungeon Shortcuts option | (Open Unrequired Shortcuts option\
-                      \ & Ancient Cistern Unrequired)"
+                      Main\\Main Room\\Spider Thread Area\\Extend Platform | \\Cistern\
+                      \ Shortcuts"
                     \Ancient Cistern\Main\Main Room: 'True'
                     \Ancient Cistern\Main\Basement: 'True'
                   hint_region: Ancient Cistern
@@ -2818,8 +2842,7 @@ areas:
                     \Ancient Cistern\Main\Main Room\Spider Thread Area: 'True'
                   hint_region: Ancient Cistern
                   locations:
-                    Activate Water Geyser: "Whip | Open Dungeon Shortcuts option |\
-                      \ (Open Unrequired Shortcuts option & Ancient Cistern Unrequired)"
+                    Activate Water Geyser: "Whip | \\Cistern Shortcuts"
                   name: \Ancient Cistern\Main\Basement\Spider Thread
                   sub_areas: {}
                   toplevel_alias: null
@@ -2966,15 +2989,13 @@ areas:
                   Main\\Hub Room\\Access to Boulder & ((\\Earth Temple\\Main\\Hub\
                   \ Room\\Wall to Lava Section & \\Earth Temple\\Main\\Hub Room\\\
                   Lower Lava Section Portcullis) | \\Earth Temple\\Main\\Hub Room\\\
-                  Raise Bridge)) | Open Dungeon Shortcuts option | (Open Unrequired\
-                  \ Shortcuts option & Earth Temple Unrequired)"
+                  Raise Bridge)) | \\Earth Temple Shortcuts"
                 \Earth Temple\Main\East Room: \Earth Temple\Main\Hub Room\Access to
                   Boulder
                 \Earth Temple\Main\West Room: \Earth Temple\Main\Hub Room\Rock to
                   West Room
                 \Earth Temple\Main\Room with Slopes: "\\Earth Temple\\Main\\Hub Room\\\
-                  Raise Bridge | Open Dungeon Shortcuts option | (Open Unrequired\
-                  \ Shortcuts option & Earth Temple Unrequired)"
+                  Raise Bridge | \\Earth Temple Shortcuts"
               hint_region: Earth Temple
               locations:
                 Access to Boulder: \Earth Temple\Main\First Room\Dislodge Boulder
@@ -4593,8 +4614,7 @@ areas:
               hint_region: Fire Sanctuary
               locations:
                 Chest in Second Room: 'True'
-                Open Doors to Water Fruit: "\\Mogma Mitts | Open Dungeon Shortcuts\
-                  \ option | (Open Unrequired Shortcuts option & Fire Sanctuary Unrequired)"
+                Open Doors to Water Fruit: "\\Mogma Mitts | \\Fire Sanctuary Shortcuts"
                 Defeat Magmanos: "\\Fire Sanctuary\\Main\\Second Room\\Open Doors\
                   \ to Water Fruit & \\Sword"
               name: \Fire Sanctuary\Main\Second Room
@@ -4642,9 +4662,8 @@ areas:
                 \Fire Sanctuary\Main\Room with Water Plant: \Fire Sanctuary\Main\First
                   Bridge\Lizalfos Fight
                 \Fire Sanctuary\Main\Second Bridge\Left: "\\Fire Sanctuary\\Main\\\
-                  Second Bridge\\Left\\Unlock Shortcut to First Bridge | Open Dungeon\
-                  \ Shortcuts option | (Open Unrequired Shortcuts option & Fire Sanctuary\
-                  \ Unrequired)"
+                  Second Bridge\\Left\\Unlock Shortcut to First Bridge | \\Fire Sanctuary\
+                  \ Shortcuts"
               hint_region: Fire Sanctuary
               locations:
                 Lizalfos Fight: \Can Defeat Lizalfos
@@ -4682,10 +4701,9 @@ areas:
                       with Water Plant\Past Lava\Unlock Key Door
                   hint_region: Fire Sanctuary
                   locations:
-                    Unlock Key Door: "(Default Dungeon Behavior option & Fire Sanctuary\
-                      \ Small Key x 2) | (Fire Sanctuary Small Key x 3 & (Open Dungeon\
-                      \ Shortcuts option | (Open Unrequired Shortcuts option & Fire\
-                      \ Sanctuary Unrequired)))"
+                    Unlock Key Door: "(\\Cutless Fire Sanctuary & Fire Sanctuary Small\
+                      \ Key x 2) | (Fire Sanctuary Small Key x 3 & \\Fire Sanctuary\
+                      \ Shortcuts)"
                   name: \Fire Sanctuary\Main\Room with Water Plant\Past Lava
                   sub_areas: {}
                   toplevel_alias: null
@@ -4743,10 +4761,9 @@ areas:
                 First Chest in Water Fruit Room: 'True'
                 Second Chest in Water Fruit Room: 'True'
                 Hydrate Frog: \Sword
-                \Fire Sanctuary\Main\Room with Water Plant\Past Lava\Unlock Key Door: "(Default\
-                  \ Dungeon Behavior option & Fire Sanctuary Small Key x 2) | (Fire\
-                  \ Sanctuary Small Key x 3 & (Open Dungeon Shortcuts option | (Open\
-                  \ Unrequired Shortcuts option & Fire Sanctuary Unrequired)))"
+                \Fire Sanctuary\Main\Room with Water Plant\Past Lava\Unlock Key Door: "(\\\
+                  Cutless Fire Sanctuary & Fire Sanctuary Small Key x 2) | (Fire Sanctuary\
+                  \ Small Key x 3 & \\Fire Sanctuary Shortcuts)"
               name: \Fire Sanctuary\Main\Water Fruit Room
               sub_areas:
                 After Frog:
@@ -4825,8 +4842,7 @@ areas:
                       exits:
                         \Fire Sanctuary\Main\Magmanos Fight Room\Lower Part: "\\Fire\
                           \ Sanctuary\\Main\\Magmanos Fight Room\\Lower Part\\Move\
-                          \ Sliding Door | Open Dungeon Shortcuts option | (Open Unrequired\
-                          \ Shortcuts option & Fire Sanctuary Unrequired)"
+                          \ Sliding Door | \\Fire Sanctuary Shortcuts"
                         \Fire Sanctuary\Main\Second Bridge\Left: 'True'
                       hint_region: Fire Sanctuary
                       locations: {}
@@ -4950,8 +4966,8 @@ areas:
                   \ of Boss Door\\Past Plats\\Release Lava"
                 \Fire Sanctuary\Main\West of Boss Door\Past Plats: "(\\Fire Sanctuary\\\
                   Main\\West of Boss Door\\Catch Plats & (\\Distance Activator | Bomb\
-                  \ Bag)) | \\Fire Sanctuary\\Main\\West of Boss Door\\Past Plats\\\
-                  Unlock Shortcut to Pre Plats"
+                  \ Bag)) | \\Fire Sanctuary Shortcuts | \\Fire Sanctuary\\Main\\\
+                  West of Boss Door\\Past Plats\\Unlock Shortcut to Pre Plats"
               hint_region: Fire Sanctuary
               locations:
                 Hit Water Plant: "\\Distance Activator | Bomb Bag"
@@ -5012,8 +5028,7 @@ areas:
                 \Fire Sanctuary\Main\Lizalfos Fight Room: 'True'
                 \Fire Sanctuary\Main\Front of Boss Door\Past Bars: \Fire Sanctuary\Main\Front
                   of Boss Door\Past Bars\Unlock Way to Front
-                \Fire Sanctuary\Main\Boss Key Room: "Open Dungeon Shortcuts option\
-                  \ | (Open Unrequired Shortcuts option & Fire Sanctuary Unrequired)"
+                \Fire Sanctuary\Main\Boss Key Room: \Fire Sanctuary Shortcuts
               hint_region: Fire Sanctuary
               locations:
                 Unlock Statue: 'True'
@@ -5228,8 +5243,7 @@ areas:
                 \Lanayru Mining Facility\Main\Hop Across Boxes Room\Near Exit: "\\\
                   Lanayru Mining Facility\\Main\\Hop Across Boxes Room\\Blow Up Rocks\
                   \ | \\Lanayru Mining Facility\\Main\\Hop Across Boxes Room\\Near\
-                  \ Exit\\Push Shortcut Box | Open Dungeon Shortcuts option | (Open\
-                  \ Unrequired Shortcuts option & Lanayru Mining Facility Unrequired)"
+                  \ Exit\\Push Shortcut Box | \\Mining Facility Shortcuts"
               hint_region: Lanayru Mining Facility
               locations:
                 Blow Up Rocks: "\\Sword | \\Slingshot | \\Beetle | Bomb Bag | Gust\
@@ -5319,15 +5333,13 @@ areas:
                       Mining Facility\Main\Big Hub\Entry\Blow Up Boxes
                     \Lanayru Mining Facility\Main\Big Hub\Past West Gate: "\\Lanayru\
                       \ Mining Facility\\Main\\Big Hub\\Past West Gate\\Open Gate\
-                      \ | Open Dungeon Shortcuts option | (Open Unrequired Shortcuts\
-                      \ option & Lanayru Mining Facility Unrequired)"
+                      \ | \\Mining Facility Shortcuts"
                     \Lanayru Mining Facility\Main\Big Hub\Between Wind Gates: "\\\
                       Lanayru Mining Facility\\Main\\Big Hub\\Between Wind Gates\\\
-                      Open First Wind Gate | Open Dungeon Shortcuts option | (Open\
-                      \ Unrequired Shortcuts option & Lanayru Mining Facility Unrequired)"
-                    \Lanayru Mining Facility\Main\Big Hub\Near Exit to Hop Across Boxes Room: "Open\
-                      \ Dungeon Shortcuts option | (Open Unrequired Shortcuts option\
-                      \ & Lanayru Mining Facility Unrequired)"
+                      Open First Wind Gate | \\Mining Facility Shortcuts"
+                    \Lanayru Mining Facility\Main\Big Hub\Near Exit to Hop Across Boxes Room: 'True'
+                    \Lanayru Mining Facility\Main\Hop Across Boxes Room: \Mining Facility
+                      Shortcuts
                   hint_region: Lanayru Mining Facility
                   locations:
                     Blow Up Boxes: "Bomb Bag | \\Hook Beetle"
@@ -5459,26 +5471,21 @@ areas:
                       Stone to Boss Key Room
                     \Lanayru Mining Facility\Main\Big Hub\Near Boss Key Room Second Exit: "\\\
                       Lanayru Mining Facility\\Main\\Big Hub\\Near Boss Key Room Second\
-                      \ Exit\\Push Box | Open Dungeon Shortcuts option | (Open Unrequired\
-                      \ Shortcuts option & Lanayru Mining Facility Unrequired)"
+                      \ Exit\\Push Box | \\Mining Facility Shortcuts"
                   hint_region: Lanayru Mining Facility
                   locations:
                     Get Minecart: \Lanayru Mining Facility\Main\Near Boss Door\Open
                       Second Wind Gate
                     Open First Wind Gate: "(\\Lanayru Mining Facility\\Main\\Big Hub\\\
                       Between Wind Gates\\Get Minecart & \\Lanayru Mining Facility\\\
-                      Can Activate Minecart Timeshift Stone & Gust Bellows) | Open\
-                      \ Dungeon Shortcuts option | (Open Unrequired Shortcuts option\
-                      \ & Lanayru Mining Facility Unrequired)"
+                      Can Activate Minecart Timeshift Stone & Gust Bellows) | \\Mining\
+                      \ Facility Shortcuts"
                     Activate Minecart Stone to Boss Key Room: "Gust Bellows & \\Lanayru\
                       \ Mining Facility\\Can Activate Minecart Timeshift Stone"
                     Unlock Exit to Boss Key Room: "(\\Lanayru Mining Facility\\Main\\\
                       Big Hub\\Between Wind Gates\\Activate Minecart Stone to Boss\
-                      \ Key Room & Gust Bellows) | Open Dungeon Shortcuts option |\
-                      \ (Open Unrequired Shortcuts option & Lanayru Mining Facility\
-                      \ Unrequired)"
-                    Shortcut Chest in Main Hub: "Open Dungeon Shortcuts option | (Open\
-                      \ Unrequired Shortcuts option & Lanayru Mining Facility Unrequired)"
+                      \ Key Room & Gust Bellows) | \\Mining Facility Shortcuts"
+                    Shortcut Chest in Main Hub: \Mining Facility Shortcuts
                   name: \Lanayru Mining Facility\Main\Big Hub\Between Wind Gates
                   sub_areas: {}
                   toplevel_alias: null
@@ -5504,9 +5511,8 @@ areas:
                 Get Minecart to Wind Gate: "Gust Bellows & \\Lanayru Mining Facility\\\
                   Can Activate Minecart Timeshift Stone"
                 Open Second Wind Gate: "(\\Lanayru Mining Facility\\Main\\Near Boss\
-                  \ Door\\Get Minecart to Wind Gate & Gust Bellows) | Open Dungeon\
-                  \ Shortcuts option | (Open Unrequired Shortcuts option & Lanayru\
-                  \ Mining Facility Unrequired)"
+                  \ Door\\Get Minecart to Wind Gate & Gust Bellows) | \\Mining Facility\
+                  \ Shortcuts"
               name: \Lanayru Mining Facility\Main\Near Boss Door
               sub_areas: {}
               toplevel_alias: null
@@ -6808,7 +6814,7 @@ areas:
               can_sleep: false
               entrances: []
               exits:
-                \Sandship\Main\Before Ship's Bow: \Lanayru\Caves\Chest
+                \Sandship\Main\Before Ship's Bow: \Can Defeat Scervo/Dreadfuse
               hint_region: Sandship
               locations:
                 Chest after Scervo Fight: \Can Defeat Scervo/Dreadfuse
@@ -6901,8 +6907,7 @@ areas:
                   Generator & Whip"
                 \Sandship\Main\Brig Prison: "(\\Sandship\\Main\\Starboard Rooms\\\
                   Generator & Whip & \\Sandship\\Main\\Port Rooms\\Generator) | (\\\
-                  Sandship\\Main\\Starboard Rooms\\Generator & (Open Dungeon Shortcuts\
-                  \ option | (Open Unrequired Shortcuts option & Sandship Unrequired)))"
+                  Sandship\\Main\\Starboard Rooms\\Generator & \\Sandship Shortcuts)"
                 \Sandship\Main\Starboard Rooms: \Sandship\Main\Starboard Rooms\Switch
               hint_region: Sandship
               locations: {}
@@ -8526,9 +8531,7 @@ areas:
               hint_region: Skyview
               locations:
                 \Skyview\Main\Entry\Cut Tree: \Skyview\Can Cut Tree
-                Destroy Barricade: "\\Skyview\\Skyview 2 | Bomb Bag | Open Dungeon\
-                  \ Shortcuts option | (Open Unrequired Shortcuts option & Skyview\
-                  \ Unrequired)"
+                Destroy Barricade: "\\Skyview\\Skyview 2 | Bomb Bag | \\Skyview Shortcuts"
                 Switch to One Eye Room: \Skyview\Can Hit High Skyview Switches
                 Goddess Wall Trigger: "Ballad of the Goddess & Goddess's Harp"
               name: \Skyview\Main\First Room
@@ -8573,11 +8576,9 @@ areas:
               hint_region: Skyview
               locations:
                 \Skyview\Main\First Room\Destroy Barricade: 'True'
-                Switch to Left Room: "((Default Dungeon Behavior option | (Open Unrequired\
-                  \ Shortcuts option & Skyview Required)) & (\\Can Hit Switch | (\\\
+                Switch to Left Room: "(\\Cutless Skyview & (\\Can Hit Switch | (\\\
                   Skyview\\Main\\First Hub\\One Water Raise & Water Dragon's Scale)))\
-                  \ | ((Open Dungeon Shortcuts option | (Open Unrequired Shortcuts\
-                  \ option & Skyview Unrequired)) & Water Dragon's Scale)"
+                  \ | (\\Skyview Shortcuts & Water Dragon's Scale)"
                 Switch to Right Room: \Skyview\Can Hit High Skyview Switches
                 One Water Raise: "\\Skyview\\Main\\First Hub\\Left Room\\Raise Water\
                   \ | \\Skyview\\Main\\First Hub\\Right Room\\After Crawlspace\\Raise\
@@ -8599,9 +8600,8 @@ areas:
                     Spider Roll: Spider Roll Trick
                     Raise Water: "(\\Skyview\\Main\\First Hub\\Left Room\\Hit Vines\
                       \ & \\Can Hit Switch) | (\\Skyview\\Main\\First Hub\\Left Room\\\
-                      Spider Roll & \\Skyview\\Can Hit High Skyview Switches) | Open\
-                      \ Dungeon Shortcuts option | (Open Unrequired Shortcuts option\
-                      \ & Skyview Unrequired)"
+                      Spider Roll & \\Skyview\\Can Hit High Skyview Switches) | \\\
+                      Skyview Shortcuts"
                     Chest on Tree Branch: "\\Skyview\\Main\\First Hub\\Left Room\\\
                       Hit Vines | \\Skyview\\Main\\First Hub\\Left Room\\Spider Roll"
                   name: \Skyview\Main\First Hub\Left Room
@@ -8644,9 +8644,8 @@ areas:
                         \Skyview\Main\First Hub\Right Room\Lower Area: 'True'
                       hint_region: Skyview
                       locations:
-                        Raise Water: "\\Skyview\\Can Hit High Skyview Switches | Open\
-                          \ Dungeon Shortcuts option | (Open Unrequired Shortcuts\
-                          \ option & Skyview Unrequired)"
+                        Raise Water: "\\Skyview\\Can Hit High Skyview Switches | \\\
+                          Skyview Shortcuts"
                         Digging Spot in Crawlspace: 'False'
                       name: \Skyview\Main\First Hub\Right Room\After Crawlspace
                       sub_areas:
@@ -8699,8 +8698,7 @@ areas:
                 \Skyview\Main\Second Hub\Staldra Room: "Skyview Small Key x 2 | (Water\
                   \ Dragon's Scale & \\Hook Beetle & Second Small Key Skip - Scale\
                   \ Trick) | (\\Hook Beetle & Bomb Bag & Second Small Key Skip - No\
-                  \ Scale Trick) | Open Dungeon Shortcuts option | (Open Unrequired\
-                  \ Shortcuts option & Skyview Unrequired)"
+                  \ Scale Trick) | \\Skyview Shortcuts"
                 \Skyview\Main\Last Room\Before Rope: \Skyview\Main\Last Room\Before
                   Rope\Unlock Shortcut to Second Hub
               hint_region: Skyview

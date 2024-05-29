@@ -20,7 +20,14 @@ from .inventory import (
     HINT_BYPASS_BIT,
     BANNED_BIT,
 )
-from .constants import *
+from .constants import (
+    SV,
+    ET,
+    LMF,
+    AC,
+    SSH,
+    FS,
+)
 from .placements import *
 from .pools import *
 
@@ -247,12 +254,6 @@ class Rando:
                 self.norm(entrance_of_exit(DUNGEON_MAIN_EXITS[dungeon]))
                 for dungeon in self.unrequired_dungeons
             )
-
-            if (
-                not self.options["triforce-required"]
-                or self.options["triforce-shuffle"] == "Anywhere"
-            ):
-                self.banned.append(self.norm(entrance_of_exit(DUNGEON_MAIN_EXITS[SK])))
         # ban the forced vanilla relic checks to ensure songs can be counted as nonprogress items if the rewards are also off
 
         if not self.options["treasuresanity-in-silent-realms"]:
@@ -374,6 +375,18 @@ class Rando:
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
             FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
+            SV_UNREQUIRED: SV in self.unrequired_dungeons,
+            SV_REQUIRED: SV in self.required_dungeons,
+            ET_UNREQUIRED: ET in self.unrequired_dungeons,
+            ET_REQUIRED: ET in self.required_dungeons,
+            LMF_UNREQUIRED: LMF in self.unrequired_dungeons,
+            LMF_REQUIRED: LMF in self.required_dungeons,
+            AC_UNREQUIRED: AC in self.unrequired_dungeons,
+            AC_REQUIRED: AC in self.required_dungeons,
+            SSH_UNREQUIRED: SSH in self.unrequired_dungeons,
+            SSH_REQUIRED: SSH in self.required_dungeons,
+            FS_UNREQUIRED: FS in self.unrequired_dungeons,
+            FS_REQUIRED: FS in self.required_dungeons,
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])

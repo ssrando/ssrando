@@ -127,9 +127,34 @@ global:
         flag: 51 # door from Hylia's Realm to Hylia's Temple unlocked (since horde is skipped, this is never set)
       - 39 # Log to Behind the Temple pushed down
       - 55 # First time landing cutscene
+    Skyview Temple:
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Skyview" Not Required)
+        flag: 1 # Water Levels Raised
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Skyview" Not Required)
+        flag: 2 # Water Levels Raised
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Skyview" Not Required)
+        flag: 21 # Wooden Planks Destroyed (Without Scale)
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Skyview" Not Required)
+        flag: 22 # Wooden Planks Destroyed (Without Scale)
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Skyview" Not Required)
+        flag: 23 # Gate to Boss Key Room Opened
     Ancient Cistern:
-      - 62 # Ancient Cistern Intro Cutscene
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Ancient Cistern" Not Required)
+        flag: 4 # Shortcut to Rope from Upper Level
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Ancient Cistern" Not Required)
+        flag: 6 # Water Spout to Upper Level Opened
+      - 7 # Cutscene for Shortcut Mentioned Above
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Ancient Cistern" Not Required)
+        flag: 42 # Water Spout near Basement Rope
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Ancient Cistern" Not Required)
+        flag: 46 # Cutscene for Shortcut Mentioned Above? Maybe?
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Ancient Cistern" Not Required)
+        flag: 51 # Gate Near Map Chest Opened
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Ancient Cistern" Not Required)
+        flag: 52 # Gate Near Vines Opened
       - 59 # Lilypad over tunnel after gutters flipped cutscene
+      - 62 # Ancient Cistern Intro Cutscene
+      - 103 # Statue Covers Boss Key Chest Cutscene
     Eldin Volcano:
       - 2  # gets rid of first digging mitts mogma text
       - 16 # First time landing cutscene
@@ -149,7 +174,11 @@ global:
       - 50 # Panning cutscene showing whippable peahot watched
       - 68 # Have talked to Plats near Volcano East
     Earth Temple:
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Earth Temple" Not Required)
+        flag: 13 # Far Platform Lowered
       - 15 # Set boulder entering dragon's mouth cutscene watched and removes lavafall in front of Boss Door
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Earth Temple" Not Required)
+        flag: 34 # Far Platform Lowered
     Lanayru Desert:
       - 3  # Obtain map of the past from robot in ToT area
       - 6  # First time landing cutscene
@@ -166,6 +195,21 @@ global:
         flag: 101 # Fire node active
       - onlyif: Option "open-lmf" Is "Main Node"
         flag: 102 # Water node active
+    Mining Facility:
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Lanayru Mining Facility" Not Required)
+        flag: 23 # Box in Bellows Room Pushed
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Lanayru Mining Facility" Not Required)
+        flag: 35 # Gate at Back of Hub Room Raised
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Lanayru Mining Facility" Not Required)
+        flag: 37 # Bars to West Part of Hub Room Opened
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Lanayru Mining Facility" Not Required)
+        flag: 39 # Gate at Front of Hub Room Raised
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Lanayru Mining Facility" Not Required)
+        flag: 95 # East Shortcut Opened in Hub Room
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Lanayru Mining Facility" Not Required)
+        flag: 96 # Shortcut from Gust Bellows Room Opened
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Lanayru Mining Facility" Not Required)
+        flag: 114 # Boss Key Room Box Moved
     Lanayru Gorge:
       - 10 # Minecart at end of Track
       - 16 # Lanayru Gorge Intro Cutscene
@@ -178,10 +222,38 @@ global:
       - 44 # Release switch cutscene in north generator room
       - 62 # South generator activation cutscene
       - 63 # North generator activation cutscene
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Sandship" Not Required)
+        flag: 65 # Basement Bars Opened
+      # onlyif: Option "open-shortcuts" Enabled
+      #  flag: 65 # More Timeshift Stone Stuff
+      # onlyif: Option "open-shortcuts" Enabled
+      #  flag: 100 # Timeshift Stone Appears
+      # onlyif: Option "open-shortcuts" Enabled
+      #  flag: 102 # Timeshift Stone Freed
+      ## Praying this works 🤺
     Fire Sanctuary:
-      - 83 # Cutscene showing the outside of the Fire Sanctuary
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Fire Sanctuary" Not Required)
+        flag: 10 # Underground Gate Switch Hit in First Magmanos Room
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Fire Sanctuary" Not Required)
+        flag: 11 # Bars Open in First Magmanos Room
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Fire Sanctuary" Not Required)
+        flag: 49 # Bars by Boss Key Chest Room Opened
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Fire Sanctuary" Not Required)
+        flag: 56 # Underground Gate Switch Hit in Third Key Locked Room
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Fire Sanctuary" Not Required)
+        flag: 63 # Bars in Lava River Room Opened
       - onlyif: Option "fs-lava-flow" Enabled
         flag: 64 # Blow up rock underground starting lava chase (back half lava flow)
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | (Option "open-shortcuts" Is "Unrequired Dungeons Only" & Dungeon "Fire Sanctuary" Not Required)
+        flag: 72 # Bars on Inner Map Balcony Opened
+      - 83 # Cutscene showing the outside of the Fire Sanctuary
+    Sky Keep:
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | Option "open-shortcuts" Is "Unrequired Dungeons Only"
+        flag: 45 # Bars in LMF Room (Near Conveyor Belt) Opened
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | Option "open-shortcuts" Is "Unrequired Dungeons Only"
+        flag: 52 # Bars in LMF Room (Near Puzzle) Opened
+      - onlyif: Option "open-shortcuts" Is "All Dungeons" | Option "open-shortcuts" Is "Unrequired Dungeons Only"
+        flag: 70 # Bars in Skyview Room Opened
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack

@@ -84,9 +84,9 @@ class SongHint(NonStoneHint):
     raw_texts = {
         HINT_MODES.Empty: "",
         HINT_MODES.Direct: "This trial holds {}",
-        HINT_MODES.Useless: "Its reward is probably not too important...",
-        HINT_MODES.Useful: "You might need its reward...",
-        HINT_MODES.Required: "Your spirit will grow by completing this trial",
+        HINT_MODES.Useless: "Its reward is probably not too important.",
+        HINT_MODES.Useful: "Its reward may assist you on your quest.",
+        HINT_MODES.Required: "Your spirit will grow by completing this trial.",
     }
 
 
@@ -132,7 +132,7 @@ class LocationHint(RegularHint):
         if override := self.location_name_override:
             return f"They say that {override} <y<{norm(self.item)}>>."
 
-        return f"They say that <r<{norm(self.location)}>> has <y<{norm(self.item)}>>."
+        return f"They say that <r<{norm(self.location)}>> is home to <y<{norm(self.item)}>>."
 
     def to_fi_text(self, norm) -> str:
         if override := self.location_name_override:

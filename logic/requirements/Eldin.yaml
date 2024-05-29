@@ -69,14 +69,14 @@ Volcano:
       East - Volcano East / Volcano Ascent Statue Exit: Unlock Statue
       Trial Gate Exit: Open Trial Gate
       Entry: Unlock Shortcut to Entry
-      Near Thrill Digger Cave: Defeat Slope Bokoblins | Stuttersprint Trick
+      Near Thrill Digger Cave: Defeat Slope Bokoblins | Volcano Ascent Stuttersprint Trick
       Past Slide: Past Slide - Unlock Shortcut to Ascent
     locations:
       Chest behind Bombable Wall near Volcano Ascent: Nothing
       Unlock Statue: Nothing
       Unlock Shortcut to Entry: Nothing
-      Past Slide - Unlock Shortcut to Ascent: Bomb Bag | Hook Beetle # | (Whip & Whip Bomb Trick)
-      Defeat Slope Bokoblins: Bow | Slingshot # Beetle can be used to scare the boko away but that's really not obvious
+      Past Slide - Unlock Shortcut to Ascent: Bomb Bag | Hook Beetle
+      Defeat Slope Bokoblins: Bow | Slingshot | Hook Beetle # Beetle can be used to scare the boko away but that's really not obvious
       Open Trial Gate: Goddess's Harp & Din's Power
 
   Near Thrill Digger Cave:
@@ -127,7 +127,7 @@ Volcano:
       Near Temple Entrance: Near Temple Entrance - Blow down Watchtower to Hot Cave
       Sand Slide: Can Survive Hot Cave
     locations:
-      Near Temple Entrance - Blow down Watchtower to Hot Cave: Impossible # Bomb Bag & Bomb Throw Trick
+      Near Temple Entrance - Blow down Watchtower to Hot Cave: Bomb Bag & Bomb Throws - Intermediate Trick
 
   Sand Slide:
     exits:
@@ -278,7 +278,7 @@ Bokoblin Base:
   Before Drawbridge:
     exits:
       Volcano East: Nothing
-      After Drawbridge: Whip & Clawshots
+      After Drawbridge: Whip & Clawshots | Volcano Ascent Peahat Skip Trick
     locations:
       Chest near Drawbridge: Clawshots | Can bypass Boko Base Watch Tower
 

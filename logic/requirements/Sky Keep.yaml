@@ -13,7 +13,7 @@ Main:
   Skyview Room:
     Beginning:
       exits:
-        End: (Whip & Free Rope & Clawshots & Kill Pyrups & Gust Bellows) | End - Lever
+        End: ((Whip & Free Rope & Clawshots & Kill Pyrups & Gust Bellows) | End - Lever) | (Open Dungeon Shortcuts option | Open Unrequired Shortcuts option)
       locations:
         Free Rope: Beetle | Bow
         Kill Pyrups: Bomb Bag | Hook Beetle | Bow
@@ -29,7 +29,7 @@ Main:
   LMF Room:
     exits: {}
     locations:
-      Finish Room: (Gust Bellows | Sky Keep - Shooting LMF Bow Switches in Present Trick) & Bow
+      Finish Room: (Gust Bellows & Bow) | (Open Dungeon Shortcuts option | Open Unrequired Shortcuts option)
       Bottom Exit: Nothing
       Top Exit: Finish Room
 
@@ -93,7 +93,7 @@ Main:
     From Right:
       exits:
         First Platform: Beetle | First Platform - Lever
-        OoB: Clawshots & Sky Keep - FS Room Clawshots Vine Clip Trick
+        OoB: Impossible
         Triforce Room: Triforce Room - Upper Lever
       locations:
         Right Exit: Nothing

@@ -1,21 +1,14 @@
 {
   "assignment": {
     "mode": "separate",
-    "total_hints": 16,
-    "default_assignment": "fi"
+    "total_hints": 36,
+    "default_assignment": "gossip_stone"
   },
   "banned_stones": [
-     "Temple of Time - Gossip Stone in Temple of Time Area",
-     "Lanayru Sand Sea - Gossip Stone in Shipyard",
-     "Eldin Volcano - Gossip Stone in Upper Platform Cave",
-     "Eldin Volcano - Gossip Stone in Lower Platform Cave"
   ],
-  "added_locations": [
+ "added_locations": [
     {"location": "Earth Temple - Rupee in Lava Tunnel",                   "type": "sometimes"},
-    {"location": "Sky Keep - Rupee in Fire Sanctuary Room in Alcove",     "type": "sometimes"},
-    {"location": "Skyloft Silent Realm - Relic 1",                        "type": "sometimes"},
-    {"location": "Skyloft Silent Realm - Relic 5",                        "type": "sometimes"},
-    {"location": "Skyloft Silent Realm - Relic 10",                        "type": "sometimes"}
+    {"location": "Lanayru Sand Sea - Skipper's Retreat - Chest in Shack", "type": "sometimes"}
   ],
   "removed_locations": [
   ],
@@ -42,10 +35,10 @@
     "barren":    {"order": 0, "weight": 0.00, "fixed": 3, "copies": 1},
     "always":    {"order": 1, "weight": 0.00, "fixed": 0, "copies": 1},
     "goal":      {"order": 2, "weight": 0.00, "fixed": 1, "copies": 1},
-    "sots":      {"order": 3, "weight": 0.00, "fixed": 1, "copies": 1},
-    "item":      {"order": 4, "weight": 0.00, "fixed": 3, "copies": 1},
-    "sometimes": {"order": 5, "weight": 100.00, "fixed": 8, "copies": 1},
+    "sots":      {"order": 3, "weight": 0.00, "fixed": 2, "copies": 1},
+    "item":      {"order": 4, "weight": 0.00, "fixed": 4, "copies": 1},
+    "sometimes": {"order": 5, "weight": 100.00, "fixed": 10, "copies": 1},
     "random":    {"order": 6, "weight": 0.00, "fixed": 0, "copies": 1},
-    "junk":      {"order": 7, "weight": 0.01, "fixed": 0, "copies": 1}
+    "junk":      {"order": 7, "weight": 0.01, "fixed": 3, "copies": 1}
   }
 }

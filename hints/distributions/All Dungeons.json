@@ -8,8 +8,7 @@
      "Lanayru Sand Sea - Gossip Stone in Shipyard",
      "Central Skyloft - Gossip Stone on Waterfall Island",
      "Eldin Volcano - Gossip Stone in Upper Platform Cave",
-     "Eldin Volcano - Gossip Stone in Lower Platform Cave",
-     "Volcano Summit - Gossip Stone in Waterfall Area"
+     "Eldin Volcano - Gossip Stone in Lower Platform Cave"
 ],
   "added_locations": [
     {"location": "Skyview - Digging Spot in Crawlspace",              "type": "sometimes"},
@@ -25,34 +24,27 @@
     {"location": "Sandship - Heart Container",                        "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue First Trapped Mogma",       "type": "sometimes"},
     {"location": "Fire Sanctuary - Rescue Second Trapped Mogma",      "type": "always"},
-    {"location": "Fire Sanctuary - Plats' Chest",                     "type": "sometimes"},
-    {"location": "Sky Keep - First Chest",                            "type": "sometimes"}
+    {"location": "Fire Sanctuary - Plats' Chest",                     "type": "sometimes"}
   ],
   "removed_locations": [
-    "Thunderhead - Isle of Songs - Strike Crest with White Sword",
-    "Faron Woods - Chest inside Great Tree",
-    "Lake Floria - Lake Floria Chest",
-    "Eldin Volcano - Digging Spot behind Boulder on Sandy Slope",
-    "Lanayru Desert - Chest on top of Lanayru Mining Facility",
-    "Lanayru Desert - Secret Passageway Chest",
-    "Lanayru Desert - Fire Node - Shortcut Chest",
-    "Earth Temple - Chest in West Room",
-    "Ancient Cistern - Chest in East Part",
-    "Sandship - Boss Key Chest",
-    "Lanayru Gorge - Thunder Dragon's Reward",
-    "Fire Sanctuary - Chest after Bombable Wall",
-    "Volcano Summit - Item behind Digging"
+    "Lanayru Gorge - Digging Spot",
+    "Central Skyloft - Item in Bird Nest",
+    "Sealed Grounds - Gorko's Goddess Wall Reward",
+    "Volcano Summit - Item Behind Digging",
+    "Sky Keep - Sacred Power of Farore"
   ],
   "added_items": [
     {"name": "Lanayru Mining Facility Small Key", "amount": 1},
     {"name": "Sky Keep Small Key", "amount": 1},
-    {"name": "Skyview Boss Key", "amount": 1},
-    {"name": "Earth Temple Boss Key", "amount": 1},
-    {"name": "Lanayru Mining Facility Boss Key", "amount": 1},
-    {"name": "Ancient Cistern Boss Key", "amount": 1},
-    {"name": "Sandship Boss Key", "amount": 1},
-    {"name": "Fire Sanctuary Boss Key", "amount": 1},
-    {"name": "Tumbleweed", "amount": 1}
+    {"name": "Skyview Small Key #0", "amount": 1},
+    {"name": "Skyview Small Key #1", "amount": 1},
+    {"name": "Ancient Cistern Small Key #0", "amount": 1},
+    {"name": "Ancient Cistern Small Key #1", "amount": 1},
+    {"name": "Sandship Small Key #0", "amount": 1},
+    {"name": "Sandship Small Key #1", "amount": 1},
+    {"name": "Fire Sanctuary Small Key #0", "amount": 1},
+    {"name": "Fire Sanctuary Small Key #1", "amount": 1},
+    {"name": "Fire Sanctuary Small Key #2", "amount": 1}
   ],
   "removed_items": [
     {"name": "Clawshots", "type": "item"},
@@ -62,6 +54,12 @@
     {"name": "Progressive Beetle #1", "type": "item"},
     {"name": "Progressive Beetle #2", "type": "item"},
     {"name": "Progressive Beetle #3", "type": "item"},
+    {"name": "Progressive Sword #0", "type": "item"},
+    {"name": "Progressive Sword #1", "type": "item"},
+    {"name": "Progressive Sword #2", "type": "item"},
+    {"name": "Progressive Sword #3", "type": "item"},
+    {"name": "Progressive Sword #4", "type": "item"},
+    {"name": "Progressive Sword #5", "type": "item"},
     {"name": "Sea Chart", "type": "item"}
   ],
   "dungeon_sots_limit": 1,
@@ -73,7 +71,7 @@
     "item":      {"order": 3, "weight": 0.00, "fixed": 4, "copies": 1},
     "sometimes": {"order": 4, "weight": 1.60, "fixed": 4, "copies": 1},
     "sots":      {"order": 5, "weight": 0.00, "fixed": 1, "copies": 1},
-    "random":    {"order": 6, "weight": 0.15, "fixed": 0, "copies": 1},
-    "junk":      {"order": 7, "weight": 0.00, "fixed": 1, "copies": 1}
+    "random":    {"order": 6, "weight": 0.00, "fixed": 0, "copies": 1},
+    "junk":      {"order": 7, "weight": 0.01, "fixed": 1, "copies": 1}
   }
 }

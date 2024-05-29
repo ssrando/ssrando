@@ -10,7 +10,7 @@ Main:
       First Hub: Left Lever
       Main Exit: Nothing
     locations:
-      Left Lever: Hook Beetle | (Whip & LMF - Whip First Room Switch Trick)
+      Left Lever: Hook Beetle | (Whip & First Switch w/Whip Trick)
       Right Lever: Nothing
       Chest behind Bars: Right Lever
 
@@ -28,13 +28,13 @@ Main:
       First Hub: Nothing
       Hop Across Boxes Room: Activate Timeshift Stone
     locations:
-      Blow Up Boxes: Hook Beetle | (Bomb Bag & Bomb Throws Trick)
-      Activate Timeshift Stone: Blow Up Boxes & (Bow | Beetle | (Slingshot & LMF - Keylocked Slingshot Trickshot Trick))
+      Blow Up Boxes: Hook Beetle | (Bomb Bag & Bomb Throws - Beginner Trick)
+      Activate Timeshift Stone: Blow Up Boxes & (Bow | Beetle)
       Chest in Key Locked Room: Activate Timeshift Stone
 
   Hop Across Boxes Room:
     exits:
-      Near Exit: Blow Up Rocks | Near Exit - Push Shortcut Box
+      Near Exit: Blow Up Rocks | Near Exit - Push Shortcut Box | Mining Facility Shortcuts
     # Does not include the entry ledge you can only jump from
     locations:
       Blow Up Rocks:
@@ -63,8 +63,7 @@ Main:
     locations:
       Activate Timeshift Stone:
         Gust Bellows &
-        (Slingshot | Bow | Goddess Sword |
-        (LMF - Whip Armos Room Timeshift Stone Trick & Whip))
+        (Slingshot | Bow | Goddess Sword)
       Defeat Armos: Activate Timeshift Stone & Can Defeat Armos
       Chest after Armos Fight: Defeat Armos
 
@@ -73,8 +72,10 @@ Main:
       exits:
         Exit to First Hub: Nothing
         After Wooden Boxes: Blow Up Boxes
-        Past West Gate: Past West Gate - Open Gate
-        Between Wind Gates: Between Wind Gates - Open First Wind Gate
+        Past West Gate: Past West Gate - Open Gate | Mining Facility Shortcuts
+        Between Wind Gates: Between Wind Gates - Open First Wind Gate | Mining Facility Shortcuts
+        Near Exit to Hop Across Boxes Room: Nothing
+        Hop Across Boxes Room: Mining Facility Shortcuts
       locations:
         Blow Up Boxes: Bomb Bag | Hook Beetle
 
@@ -119,7 +120,7 @@ Main:
       exits:
         Between Wind Gates: Nothing
         Near Boss Key Room First Exit: Nothing
-        Near Boss Door: Gust Bellows | (LMF - Minecart Jump Trick & Sword & (Bomb Bag | Beetle))
+        Near Boss Door: Gust Bellows | (((Minecart Hop - Beetle Trick & Beetle) | (Minecart Hop - Bombs Trick & Bomb Bag)) & Sword)
       locations:
         Push Box: Nothing
         Shortcut Chest in Main Hub: Nothing
@@ -128,21 +129,22 @@ Main:
       exits:
         Entry: Open First Wind Gate
         Near Boss Key Room First Exit: Activate Minecart Stone to Boss Key Room
-        Near Boss Key Room Second Exit: Near Boss Key Room Second Exit - Push Box
+        Near Boss Key Room Second Exit: Near Boss Key Room Second Exit - Push Box | Mining Facility Shortcuts
       locations:
         Get Minecart: Near Boss Door - Open Second Wind Gate
-        Open First Wind Gate: Get Minecart & Can Activate Minecart Timeshift Stone & Gust Bellows
+        Open First Wind Gate: (Get Minecart & Can Activate Minecart Timeshift Stone & Gust Bellows) | Mining Facility Shortcuts
         Activate Minecart Stone to Boss Key Room: Gust Bellows & Can Activate Minecart Timeshift Stone
-        Unlock Exit to Boss Key Room: Activate Minecart Stone to Boss Key Room & Gust Bellows
+        Unlock Exit to Boss Key Room: (Activate Minecart Stone to Boss Key Room & Gust Bellows) | Mining Facility Shortcuts
+        Shortcut Chest in Main Hub: Mining Facility Shortcuts
 
   Near Boss Door:
     exits:
       Boss Door: Lanayru Mining Facility Boss Key & Can Activate Minecart Timeshift Stone
-      Big Hub - Near Boss Key Room Second Exit: LMF - Minecart Jump Trick & Sword & (Bomb Bag | Beetle)
+      Big Hub - Near Boss Key Room Second Exit: (((Minecart Hop - Beetle Trick & Beetle) | (Minecart Hop - Bombs Trick & Bomb Bag)) & Sword)
       Big Hub - Between Wind Gates: Open Second Wind Gate & Can Defeat Beamos
     locations:
       Get Minecart to Wind Gate: Gust Bellows & Can Activate Minecart Timeshift Stone
-      Open Second Wind Gate: Get Minecart to Wind Gate & Gust Bellows
+      Open Second Wind Gate: (Get Minecart to Wind Gate & Gust Bellows) | Mining Facility Shortcuts
 
   Boss Key Room:
     exits:
@@ -161,7 +163,7 @@ Boss Room:
       Exit to Hall of Ancient Robots: Beat Moldarach
     locations:
       Beat Moldarach:
-        (Gust Bellows | LMF - Moldarach without Gust Bellows Trick) & Sword
+        (Gust Bellows | Bellowsless Moldarach Trick) & Sword
         # Bow also works instead of sword but you need a LOT of arrows
       Heart Container: Beat Moldarach
 

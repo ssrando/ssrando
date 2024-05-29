@@ -24,12 +24,27 @@ FLORIA_GATES_OPTION = EIN("Floria Gates option")
 TALK_TO_YERBAL_OPTION = EIN("Talk to Yerbal option")
 VANILLA_LAKE_FLORIA_OPTION = EIN("Vanilla Lake Floria option")
 OPEN_LAKE_FLORIA_OPTION = EIN("Open Lake Floria option")
+OPEN_DUNGEON_SHORTCUTS_OPTION = EIN("Open Dungeon Shortcuts option")
+OPEN_UNREQUIRED_SHORTCUTS_OPTION = EIN("Open Unrequired Shortcuts option")
+DEFAULT_DUNGEON_BEHAVIOR_OPTION = EIN("Default Dungeon Behavior option")
 RANDOMIZED_BEEDLE_OPTION = EIN("Randomized Beedle option")
 GONDO_UPGRADES_ON_OPTION = EIN("Gondo Upgrades On option")
 NO_BIT_CRASHES = EIN("No BiT crashes")
 NONLETHAL_HOT_CAVE = EIN("Nonlethal Hot Cave")
 UPGRADED_SKYWARD_STRIKE = EIN("Upgraded Skyward Strike option")
 FS_LAVA_FLOW_OPTION = EIN("FS Lava Flow option")
+SV_UNREQUIRED = EIN("Skyview Unrequired")
+SV_REQUIRED = EIN("Skyview Required")
+ET_UNREQUIRED = EIN("Earth Temple Unrequired")
+ET_REQUIRED = EIN("Earth Temple Required")
+LMF_UNREQUIRED = EIN("Lanayru Mining Facility Unrequired")
+LMF_REQUIRED = EIN("Lanayru Mining Facility Required")
+AC_UNREQUIRED = EIN("Ancient Cistern Unrequired")
+AC_REQUIRED = EIN("Ancient Cistern Required")
+SSH_UNREQUIRED = EIN("Sandship Unrequired")
+SSH_REQUIRED = EIN("Sandship Required")
+FS_UNREQUIRED = EIN("Fire Sanctuary Unrequired")
+FS_REQUIRED = EIN("Fire Sanctuary Required")
 
 GOT_OPENING_REQUIREMENT = EIN("GoT Opening Requirement")
 GOT_RAISING_REQUIREMENT = EIN("GoT Raising Requirement")
@@ -45,12 +60,27 @@ LOGIC_OPTIONS = dict.fromkeys(
         TALK_TO_YERBAL_OPTION,
         VANILLA_LAKE_FLORIA_OPTION,
         OPEN_LAKE_FLORIA_OPTION,
+        OPEN_DUNGEON_SHORTCUTS_OPTION,
+        OPEN_UNREQUIRED_SHORTCUTS_OPTION,
+        DEFAULT_DUNGEON_BEHAVIOR_OPTION,
         RANDOMIZED_BEEDLE_OPTION,
         GONDO_UPGRADES_ON_OPTION,
         NO_BIT_CRASHES,
         NONLETHAL_HOT_CAVE,
         UPGRADED_SKYWARD_STRIKE,
         FS_LAVA_FLOW_OPTION,
+        SV_UNREQUIRED,
+        SV_REQUIRED,
+        ET_UNREQUIRED,
+        ET_REQUIRED,
+        LMF_UNREQUIRED,
+        LMF_REQUIRED,
+        AC_UNREQUIRED,
+        AC_REQUIRED,
+        SSH_UNREQUIRED,
+        SSH_REQUIRED,
+        FS_UNREQUIRED,
+        FS_REQUIRED,
         GOT_OPENING_REQUIREMENT,
         GOT_RAISING_REQUIREMENT,
         HORDE_DOOR_REQUIREMENT,

@@ -820,7 +820,7 @@ lbz r5, 0x7(r30) ; least sig byte of params1
 skip_itemid_from_params1:
 li r3, 0 ; academy bell is always in room 0
 ; 0xFF1D9600 ; item actor params1 (will set sceneflag 101 on collection)
-lis r4, 0xFF1D
+lis r4, 0xFF9C
 ori r4, r4, 0x9600
 or r4, r4, r5 ; add itemid from bell params1 to item actor params1
 addi r5, r1, 0x14 ; get pos into r5 (from ghidra)
@@ -833,6 +833,8 @@ li r4, 0x4040 ; most sig bytes of float 3.0
 sth r4, 0x144(r3)
 li r4, 1
 stb r4, 0xD4F(r3) ; prevent timed despawn
+li r4, 0
+stb r4, 0xD50(r3) ; force to have gravity
 b 0xE2C ; 0x80dba55c (return)
 .close
 

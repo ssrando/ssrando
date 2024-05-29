@@ -21,7 +21,7 @@ Main:
   Second Room:
     locations:
       Chest in Second Room: Nothing
-      Open Doors to Water Fruit: Mogma Mitts
+      Open Doors to Water Fruit: Mogma Mitts | Fire Sanctuary Shortcuts
       Defeat Magmanos: Open Doors to Water Fruit & Sword
     exits:
       Outside Section: Nothing
@@ -44,7 +44,7 @@ Main:
     exits:
       Second Room: Lizalfos Fight
       Room with Water Plant: Lizalfos Fight
-      Second Bridge - Left: Second Bridge - Unlock Shortcut to First Bridge
+      Second Bridge - Left: Second Bridge - Unlock Shortcut to First Bridge | Fire Sanctuary Shortcuts
     locations:
       Lizalfos Fight: Can Defeat Lizalfos
 
@@ -62,7 +62,7 @@ Main:
         First Trapped Mogma Room: Nothing
         Water Fruit Room: Unlock Key Door
       locations:
-        Unlock Key Door: Fire Sanctuary Small Key x 2
+        Unlock Key Door: (Cutless Fire Sanctuary & Fire Sanctuary Small Key x 2) | (Fire Sanctuary Small Key x 3 & Fire Sanctuary Shortcuts)
 
   First Trapped Mogma Room:
     exits:
@@ -90,7 +90,7 @@ Main:
       Second Chest in Water Fruit Room: Nothing
       Hydrate Frog: Sword
       Room with Water Plant - Unlock Key Door:
-        Fire Sanctuary Small Key x 2  # Would need better key logic to be exact
+        (Cutless Fire Sanctuary & Fire Sanctuary Small Key x 2) | (Fire Sanctuary Small Key x 3 & Fire Sanctuary Shortcuts) # Would need better key logic to be exact
 
     After Frog:
       exits:
@@ -117,7 +117,7 @@ Main:
 
       Past Sliding Door:
         exits:
-          Lower Part: Move Sliding Door
+          Lower Part: Move Sliding Door | Fire Sanctuary Shortcuts
           Second Bridge - Left: Nothing
 
   Second Bridge:
@@ -126,6 +126,7 @@ Main:
         First Bridge: Unlock Shortcut to First Bridge
         Bottom Part: Nothing
         Right: Clawshots
+        Magmanos Fight Room - Lower Part - Past Sliding Door: Nothing
       locations:
         Unlock Shortcut to First Bridge: Nothing
 
@@ -163,7 +164,7 @@ Main:
       Front of Boss Door: Hit Water Plant & Past Plats - Release Lava
       Past Plats:
         (Catch Plats & (Distance Activator | Bomb Bag)) |
-        Past Plats - Unlock Shortcut to Pre Plats
+        Fire Sanctuary Shortcuts | Unlock Shortcut to Pre Plats
     locations:
       Hit Water Plant: Distance Activator | Bomb Bag
       Catch Plats: Mogma Mitts
@@ -192,6 +193,7 @@ Main:
       West of Boss Door: Nothing
       Lizalfos Fight Room: Nothing
       Past Bars: Past Bars - Unlock Way to Front
+      Boss Key Room: Fire Sanctuary Shortcuts
     locations:
       Unlock Statue: Nothing
 
