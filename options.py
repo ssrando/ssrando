@@ -5,6 +5,8 @@ from yaml_files import checks, options, random_settings_weighting
 from collections import OrderedDict
 import logic.constants as constants
 
+import random
+
 OPTIONS = OrderedDict((option["command"], option) for option in options)
 OPTIONS["excluded-locations"]["choices"] = [check for check in checks]
 
@@ -363,6 +365,67 @@ class Options:
                             ),
                         )
 
+    def randomize_progression_locations(self, rando):
+        rs_weighting = random_settings_weighting(self["random-settings-weighting"])
+        locs_weighting = [o for o in rs_weighting if o["type"] == "locations"].pop()
+        non_prog_locs = []
+
+        for loc in self["rs-random-progression-locs"]:
+            if locs_weighting["locations"][loc]:
+                weight = locs_weighting["locations"][loc]
+                if not rando.rng.choices(
+                    [True, False], k=1, weights=[weight, 100 - weight]
+                ).pop():
+                    non_prog_locs.append(loc)
+            else:
+                print(
+                    f"Did not find location '{loc}' in the selected RS weighting. Defaulting to random selection."
+                )
+                if bool(rando.rng.randint(0, 1)):
+                    non_prog_locs.append(loc)
+        for loc in self["rs-random-progression-locs"]:
+            if loc in non_prog_locs:
+                continue
+            if not self.check_loc_conditions(loc=loc, non_prog_locs=non_prog_locs):
+                non_prog_locs.append(loc)
+        for check in OPTIONS["excluded-locations"]["choices"]:
+            if check in self["excluded-locations"]:
+                continue  # Keep it excluded
+            elif checks[check]["type"] is None:
+                continue  # Base check
+            elif any(i in checks[check]["type"] for i in non_prog_locs):
+                self.set_option(
+                    "excluded-locations", [*self["excluded-locations"], check]
+                )
+            else:
+                continue
+
+    def check_loc_conditions(self, loc, non_prog_locs):
+        if loc.startswith("Batreaux's Rewards"):
+            conditions = (
+                "Batreaux's Rewards (30 & below)",
+                "Batreaux's Rewards (40 & 50)",
+                "Batreaux's Rewards (70s & 80)",
+            )
+        elif loc.startswith("Beedle's Airshop"):
+            conditions = (
+                "Beedle's Airshop (Cheap)",
+                "Beedle's Airshop (Medium)",
+                "Beedle's Airshop (Expensive)",
+            )
+        else:
+            return True  # unconditional option
+        for c in conditions:
+            if loc == c:
+                conditions_met = True
+                break
+            elif c in non_prog_locs:
+                conditions_met = False
+                break
+            else:
+                continue
+        return conditions_met
+
     def randomize_cosmetics(self, rando):
         for optkey, opt in OPTIONS.items():
             if (
@@ -371,23 +434,21 @@ class Options:
                 and opt["cosmetic"] == True
             ):
                 if opt["type"] == "boolean":
-                    self.set_option(optkey, bool(rando.rng.randint(0, 1)))
+                    self.set_option(optkey, bool(random.randint(0, 1)))
                 elif opt["type"] == "int":
                     if opt["command"] == "star-count":
                         self.set_option(
-                            optkey, rando.rng.randint(0, 700)
+                            optkey, random.randint(0, 700)
                         )  # Anything over 700 will lag the game
                     else:
-                        self.set_option(
-                            optkey, rando.rng.randint(opt["min"], opt["max"])
-                        )
+                        self.set_option(optkey, random.randint(opt["min"], opt["max"]))
                 elif opt["type"] == "singlechoice":
-                    self.set_option(optkey, rando.rng.choice(opt["choices"]))
+                    self.set_option(optkey, random.choice(opt["choices"]))
                 elif opt["type"] == "multichoice":
                     self.set_option(
                         optkey,
-                        rando.rng.sample(
-                            opt["choices"], rando.rng.randint(0, len(opt["choices"]))
+                        random.sample(
+                            opt["choices"], random.randint(0, len(opt["choices"]))
                         ),
                     )
 

@@ -60,9 +60,9 @@ def main():
         elif opt["type"] == "int":
             args["type"] = int
             if "min" in opt and "max" in opt:
-                args["help"] = (
-                    f'(default: {opt["default"]}, min: {opt["min"]}, max: {opt["max"]}) {opt["help"]}'
-                )
+                args[
+                    "help"
+                ] = f'(default: {opt["default"]}, min: {opt["min"]}, max: {opt["max"]}) {opt["help"]}'
         elif opt["type"] == "singlechoice":
             args["choices"] = opt["choices"]
             if isinstance(opt["default"], int):

@@ -134,6 +134,7 @@ class Rando:
     def parse_options(self):
         if self.options["random-settings"]:
             self.options.randomize_settings(self)
+            self.options.randomize_progression_locations(self)
         if self.options["random-cosmetics"]:
             self.options.randomize_cosmetics(self)
 

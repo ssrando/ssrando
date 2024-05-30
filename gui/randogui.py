@@ -35,6 +35,9 @@ from gui.components.color_button import ColorButton
 
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
+from gui.dialogs.progression_locations.progression_locations_dialog import (
+    ProgressionLocationsDialog,
+)
 from logic.constants import (
     LOCATION_FILTER_TYPES,
     NON_RANDOMIZED_SETTINGS,
@@ -128,9 +131,11 @@ class RandoGUI(QMainWindow):
                     widget = getattr(self.ui, opt["ui"])
                     widget.setEnabled(False)
             self.ui.option_random_settings_weighting.setEnabled(True)
+            self.ui.edit_progression_locations.setEnabled(True)
         else:
             self.options.set_option("random-settings-weighting", "Random")
             self.ui.option_random_settings_weighting.setEnabled(False)
+            self.ui.edit_progression_locations.setEnabled(False)
         if self.options["random-cosmetics"]:  # Greys out cosmetics on UI load
             for opt in OPTIONS.values():
                 if (
@@ -223,6 +228,9 @@ class RandoGUI(QMainWindow):
 
         # setup misc controls
         self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
+        self.ui.edit_progression_locations.clicked.connect(
+            self.launch_progression_locations_dialog
+        )
         self.logic_mode_changed()
 
         # Exlcuded Locations UI
@@ -988,6 +996,21 @@ class RandoGUI(QMainWindow):
             self.enabled_tricks = dialog.getTrickValues()
             self.update_settings()
 
+    def launch_progression_locations_dialog(self):
+        dialog = ProgressionLocationsDialog(
+            self.options["rs-random-progression-locs"],
+            # self.options["rs-disabled-progression-locs"],
+            "rs-random-progression-locs",
+            # "rs-disabled-progression-locs",
+            self.styleSheet(),
+        )
+        if dialog.exec():
+            self.options.set_option(
+                "rs-random-progression-locs", dialog.getRandomLocsValues()
+            )
+            # self.options.set_option("rs-disabled-progression-locs", dialog.getDisabledLocsValues()) --DISABLED
+            self.update_settings()
+
     # Custom model customisation funcs
 
     def change_model_type(self, index: int):
@@ -1385,6 +1408,9 @@ class RandoGUI(QMainWindow):
             self.options.set_option(
                 "random-settings-weighting", "Random"
             )  # Sets RS weighting to random for permalink consistency
+            self.options.set_option(
+                "rs-random-progression-locs", []
+            )  # Sets progress locations to all enabled for permalink consistency
         for opt in OPTIONS.values():
             if opt["command"] in NON_RANDOMIZED_SETTINGS or (
                 "permalink" in opt and not opt["permalink"]
@@ -1398,6 +1424,7 @@ class RandoGUI(QMainWindow):
                 widget = getattr(self.ui, opt["ui"])
                 widget.setEnabled(not settings_randomized)
         self.ui.option_random_settings_weighting.setEnabled(settings_randomized)
+        self.ui.edit_progression_locations.setEnabled(settings_randomized)
         self.update_ui_for_settings()
 
     def randomize_cosmetics_toggled(self):

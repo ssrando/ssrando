@@ -511,14 +511,40 @@
                 </layout>
                </item>
                <item>
-                <widget class="QLabel" name="label_random_settings_weighting">
-                 <property name="text">
-                  <string>Random Settings Weighting</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="option_random_settings_weighting"/>
+                <layout class="QHBoxLayout" name="hlay_rs_settings">
+                 <item>
+                  <layout class="QVBoxLayout" name="vlay_rs_weighting">
+                   <item>
+                    <widget class="QLabel" name="label_random_settings_weighting">
+                     <property name="text">
+                      <string>Random Settings Weighting</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="option_random_settings_weighting"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="vlay_rs_progression_locations">
+                   <item>
+                    <widget class="QLabel" name="label_progression_locations">
+                     <property name="text">
+                      <string>Randomized Progression Locations</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="edit_progression_locations">
+                     <property name="text">
+                      <string>Edit Progression Locations</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
                </item>
               </layout>
              </item>

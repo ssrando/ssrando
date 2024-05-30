@@ -442,7 +442,29 @@
   type: boolean
   checked: 2
   unchecked: 1
+- name: Random Starting Statues
+  command: random-start-statues
+  type: boolean
+  checked: 1
+  unchecked: 2
 
+## Progression Locations
+- name: Progression Locations
+  type: locations
+  locations:
+    Goddess Chests: 50
+    Silent Realms: 50
+    Combat: 85
+    Minigames: 50
+    Short Sidequests: 70
+    Long Sidequests: 50
+    Scrapper Deliveries: 50
+    Batreaux's Rewards (30 & below): 80
+    Batreaux's Rewards (40 & 50): 60
+    Batreaux's Rewards (70s & 80): 30
+    Beedle's Airshop (Cheap): 80
+    Beedle's Airshop (Medium): 60
+    Beedle's Airshop (Expensive): 30
 
 ## Starting items
 - name: Starting Items

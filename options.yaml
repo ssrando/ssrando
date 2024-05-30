@@ -120,6 +120,43 @@
         **Balanced**: Close to standard settings.
         **Insanity**: Generally longer and more difficult seeds."
   ui: option_random_settings_weighting
+- name: RS Randomized Progression Locations
+  command: rs-random-progression-locs
+  type: multichoice
+  choices:
+    - Goddess Chests
+    - Silent Realms
+    - Combat
+    - Minigames
+    - Short Sidequests
+    - Long Sidequests
+    - Scrapper Deliveries
+    - Batreaux's Rewards (30 & below)
+    - Batreaux's Rewards (40 & 50)
+    - Batreaux's Rewards (70s & 80)
+    - Beedle's Airshop (Cheap)
+    - Beedle's Airshop (Medium)
+    - Beedle's Airshop (Expensive)
+  default: []
+  help: ""
+#- name: RS Disabled Progression Locations
+#  command: rs-disabled-progression-locs
+#  type: multichoice
+#  choices:
+#    - Goddess Chests
+#    - Silent Realms
+#    - Minigames
+#    - Short Sidequests
+#    - Long Sidequests
+#    - Scrapper Quests
+#    - Batreaux's Rewards (30 and below)
+#    - Batreaux's Rewards (40 & 50)
+#    - Batreaux's Rewards (70s & 80)
+#    - Beedle's Airshop (300 and below)
+#    - Beedle's Airshop (600 and 800)
+#    - Beedle's Airshop (1000 and above)
+#  default: []
+#  help: ""
 ## Randomization Settings
 - name: Starting Tablet Count
   command: starting-tablet-count
