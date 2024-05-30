@@ -186,8 +186,6 @@ class Options:
                 raise ValueError(f"Unknown choice for {option_name}: {option_value}.")
         elif option["type"] == "dirpath":
             path = Path(option_value).expanduser()
-            if not path.is_dir():
-                raise ValueError(f"Path {option_value} is not a directory.")
             option_value = path
         elif option["type"] == "string":
             if not isinstance(option_value, str):

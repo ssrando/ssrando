@@ -64,11 +64,11 @@ Faron Woods:
     In the Woods Statue Entrance: Impossible
     Viewing Platform Statue Entrance: Impossible
     Shared Statue Exit: Unlock In the Woods Statue | Unlock Viewing Platform Statue
+    Door to Lake Floria: Sword | Bomb Bag | Door to Lake Floria - Hit Vine
     Trial Gate: Open Trial Gate
     Great Tree - Near Underwater Hole: Water Dragon's Scale
     Great Tree - Platforms: Clawshots
     Clawshot Target Branch: Clawshots
-    Lake Floria Dive: Open Door to Lake Floria | Early Lake Floria Tricks
   locations:
     Unlock Viewing Platform Statue: Nothing
     Unlock In the Woods Statue: Nothing
@@ -76,12 +76,11 @@ Faron Woods:
     Amber Relic Farming: Nothing
     Hit Vine to Deep Woods: Distance Activator
     Open Trial Gate: Goddess's Harp & Farore's Courage
-    Open Door to Lake Floria: ((Open Lake Floria option & Water Dragon's Scale) | (Great Tree - Top - Talk to Yerbal & (Goddess Sword | Talk to Yerbal option)))
     Rupee on Hollow Tree Root: Nothing
     Rupee on Hollow Tree Branch: Beetle
-    Rupee on Platform near Floria Door: Beetle
     All Kikwis Saved: (Sword | Beetle) & Can Defeat Bokoblins
     Kikwi Elder's Reward: All Kikwis Saved
+    Door to Lake Floria - Hit Vine: Beetle | Clawshots | Bow
     Item on Tree: Nothing
     Item behind Lower Bombable Rock: Bomb Bag
     Chest behind Upper Bombable Rock: Bomb Bag
@@ -93,14 +92,15 @@ Faron Woods:
       Faron - Faron Woods: Sword | Bomb Bag | Clawshots | Faron Woods - Push Log to Sealed Grounds
       # Either cut trees or clawshot vines
       Exit to Behind the Temple: Nothing
+      Ledge to Lake Floria: Early Lake Floria - Swordless Rope Floria Trick
     locations:
       Unlock Statue: Nothing
 
   Ledge to Lake Floria:
-    entrance: Push Log
+    entrance: Ledge to Lake Floria - Push Log
     exits:
       Faron - Faron Woods: Nothing
-      Shortcut Exit to Floria Waterfall: Open Door to Lake Floria | Early Lake Floria Tricks
+      Shortcut Exit to Floria Waterfall: Nothing
     locations:
       Push Log: Nothing
 
@@ -111,7 +111,7 @@ Faron Woods:
       Exit to Deep Woods: Nothing
 
   Behind the Crawlspace and Rope:
-    entrance: Bomb Bag | Push Log
+    entrance: Bomb Bag | Behind the Crawlspace and Rope - Push Log
     exits:
       Faron - Faron Woods: Nothing
     locations:
@@ -136,7 +136,17 @@ Faron Woods:
       Faron Woods: Nothing
     locations:
       Goddess Cube on East Great Tree with Rope: Goddess Sword
-  
+
+  Door to Lake Floria:
+    exits:
+      Faron Woods: Nothing
+      Lake Floria Dive: Open Door to Lake Floria | (Early Lake Floria - Fence Hop Trick & Practice Sword)
+      Ledge to Lake Floria: Early Lake Floria - Fence Hop Trick & Practice Sword
+    locations:
+      Hit Vine: Sword | Bomb Bag
+      Open Door to Lake Floria: ((Open Lake Floria option & Water Dragon's Scale) | (Great Tree - Top - Talk to Yerbal & (Goddess Sword | Talk to Yerbal option)))
+      Rupee on Platform near Floria Door: Beetle
+
   # GREAT TREE
   Great Tree:
     hint-region: Faron Woods
@@ -194,7 +204,7 @@ Faron Woods:
         Rupee on Great Tree North Branch: Beetle
         Rupee on Great Tree West Branch: Beetle
         Talk to Yerbal: Water Dragon's Scale & (Slingshot | Beetle) # only those 2 items (and their upgrades) work
-  
+
   # DEEP WOODS
   Deep Woods:
     hint-region: Faron Woods

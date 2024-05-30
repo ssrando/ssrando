@@ -258,7 +258,7 @@ def dump_json(
     spoiler_log["sots-locations"] = [
         placement.items[item] for item in sots_items[DEMISE]
     ]
-    spoiler_log["barren-regions"] = barren_nonprogress[0]
+    spoiler_log["barren-regions"] = list(barren_nonprogress[0])
     spoiler_log["playthrough"] = progression_spheres
     spoiler_log["item-locations"] = placement.items
     spoiler_log["hints"] = {k: v.to_spoiler_log_json() for k, v in hints.items()}
