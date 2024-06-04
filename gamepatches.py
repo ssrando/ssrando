@@ -2029,11 +2029,9 @@ class GamePatcher:
                     dungeon_events,
                 )
             )
-            required_dungeon_storyflag_event["flow"][
-                "param2"
-            ] = REQUIRED_DUNGEON_STORYFLAGS[
-                i
-            ]  # param2 is storyflag of event
+            required_dungeon_storyflag_event["flow"]["param2"] = (
+                REQUIRED_DUNGEON_STORYFLAGS[i]
+            )  # param2 is storyflag of event
 
         required_dungeon_count = len(self.placement_file.required_dungeons)
         # set flags for unrequired dungeons beforehand
