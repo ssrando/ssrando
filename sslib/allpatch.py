@@ -157,7 +157,19 @@ class AllPatcher:
                         for objname in objs
                     )
                 )
-                if all_exits:
+                all_in_object_folder = all(
+                    (
+                        (
+                            self.modified_extract_path
+                            / "DATA"
+                            / "files"
+                            / "Object"
+                            / f"{objname}.arc"
+                        ).exists()
+                        for objname in objs
+                    )
+                )
+                if all_exits and all_in_object_folder:
                     # print(f'already in cache for {stage}, l{layer}')
                     continue
                 data = (
@@ -175,6 +187,13 @@ class AllPatcher:
                     # print(f'loading {objname} from {stage}, l{layer}')
                     outdata = data.get_file_data(f"oarc/{objname}.arc")
                     (self.oarc_cache_path / f"{objname}.arc").write_bytes(outdata)
+                    (
+                        self.modified_extract_path
+                        / "DATA"
+                        / "files"
+                        / "Object"
+                        / f"{objname}.arc"
+                    ).write_bytes(outdata)
 
     def patch_arc_replacements(self):
         # handles arc replacement for all other arcs
