@@ -172,6 +172,12 @@ pub fn get_item_arc_names_for_item(item_id: u16) -> ArrayVec<*const c_char, 2> {
         v.push(s);
         v
     }
+    // custom rando models
+    match item_id {
+        214 => return single_arrayvec(cstr::cstr!("Onp").as_ptr()), // tadtone
+        215 => return single_arrayvec(cstr::cstr!("DesertRobot").as_ptr()), // scrapper
+        _ => (),
+    }
     unsafe {
         if let Some(model_idx) = ITEM_TO_MODEL_INDEX.get(item_id as usize).copied() {
             // dummy entry
