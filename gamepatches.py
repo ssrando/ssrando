@@ -1284,7 +1284,8 @@ def get_patches_from_location_item_list(all_checks, filled_checks, chest_dowsing
                 objname = stage_match.group("objname")
                 objid = stage_match.group("objid")
                 oarc = item["oarc"]
-                if oarc:
+                # don't add arcs for TBox, they are supposed to be loaded just in time
+                if oarc and objname != "TBox":
                     if isinstance(oarc, list):
                         for o in oarc:
                             stageoarcs[(stage, layer)].add(o)

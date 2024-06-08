@@ -294,11 +294,14 @@ impl<const BUFFER_SIZE: usize> CharWriter<BUFFER_SIZE> {
     }
 
     pub fn draw(&mut self, writer: *mut TextWriterBase) {
+        if self.buffer.is_empty() {
+            return;
+        }
         // Set background color as it doesnt originally belong in the writer
         unsafe { BACKGROUND_COLOR = [self.bg_color.as_u32(); 2] };
 
         // ensure line ending
-        if *(self.buffer.last().unwrap()) != 0x0000 {
+        if self.buffer.last().is_some_and(|last| *last != 0) {
             let _ = self.buffer.try_push(0);
             if let Some(last) = self.buffer.last_mut() {
                 *last = 0;

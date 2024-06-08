@@ -26,7 +26,6 @@ main.dol:
     # --------------- MISC   STUFF ----------------------------
     FontMgr__GetFont: 0x80053f30
     allocOnCurrentHeap: 0x80054ec0
-    getModelDataFromOarc: 0x80069b30
     TextManager__setNumericArgs: 0x800b8a60
     TextManager__setStringArg: 0x800b7fa0
     AcOTBox__initDowsingTarget: 0x8026d780
@@ -41,7 +40,18 @@ main.dol:
     CURRENT_HEAP: 0x80576740
     HEAP_MEM1: 0x8057522c
     HEAP_MEM2: 0x80575230
+    HEAP_WORK1: 0x805751a8
+    HEAP_WORK2: 0x805751ac
+    HEAP_WORK_EX: 0x805751b0
+    HEAP_LAYOUT: 0x805751b4
+    HEAP_LAYOUT_EX: 0x805751b8
+    HEAP_LAYOUT_EX2: 0x805751bc
+    HEAP_LAYOUT_RES: 0x805751c0
+    HEAP_FONT: 0x805751c4
+    HEAP_HBM: 0x805751c8
+    HEAP_ACTORS: 0x805cb078
     Heap__alloc: 0x80495560
+    Heap__free: 0x804957c0
     requestFileLoadFromDisk: 0x802f0060
     getAnmTexPatFromBrres: 0x80439890
     AnmTexPatControl__bind: 0x802e6840
@@ -50,6 +60,13 @@ main.dol:
     func_0x802ee0e0: 0x802ee0e0
     RUPEE_ITEM_TO_TEX_FRAME: 0x804e9a48
     INPUT_BUFFER: 0x80599d0c
+    # --------------- ARC MANAGERS ----------------------------
+    OARC_MANAGER: 0x80575280
+    getModelDataFromOarc: 0x80069b30
+    ArcManager__decrementRefCount: 0x80069af0
+    ArcManager__ensureLoaded: 0x80069ad0
+    ArcManager__findEntryData: 0x8006a260
+    loadObjectArcFromDisk: 0x80069a30
     # --------------- FLAG MANAGERS ---------------------------
     # this, roomid, flag
     SceneflagManager__checkFlag: 0x800bdeb0
@@ -102,6 +119,17 @@ main.dol:
     AcItem__isBabyRattle: 0x80256c30
     NUMBER_OF_ITEMS: 0x805758d0
     ITEM_GET_BOTTLE_POUCH_SLOT: 0x8057398c
+    ITEM_MODEL_INDEX: 0x804e9650
+    ITEM_TO_MODEL_INDEX: 0x804e8db0
+    ITEM_MODEL_DEFS: 0x804e96f8
+    MODEL_ID_TO_PUT_ITEM_MODEL_IDX: 0x804e91d0
+    PUT_ITEM_MODEL_NAMES: 0x804e9278
+    GET_SHIELD_MODEL_INDEX: 0x804e9318
+    GET_SHIELD_MODEL_NAMES: 0x804e93c0
+    GET_BOTTLE_MODEL_INDEX: 0x804e9450
+    GET_BOTTLE_MODEL_NAMES: 0x804e94f8
+    GET_POTION_BOTTLE_MODEL_INDEX: 0x804e9568
+    GET_POTION_BOTTLE_DEFS: 0x804e9610
     getKeyPieceCount: 0x802522f0
     getGratitudeCrystalCount: 0x80252710
     # ----------------- TEXT ----------------------------------
@@ -146,6 +174,22 @@ main.dol:
     GXSetChanCtrl: 0x803bea00
     __GXSetIndirectMask: 0x803c0340
     GXSetChanMatColor: 0x803be8f0
+    # ----------------- Debug Print ---------------------------
+    CONSOLE_DEVICE: 0x805705b0
+    _FileWrite: 0x804cc1cc
+    # ----------------- IOS -----------------------------------
+    iosAllocAligned: 0x804273e0
+    iosFree: 0x804275f0
+    IOS_HEAP: 0x80574d9c
+
+    # ----------------- Low level actor stuff -----------------
+    fBase__operatorNew: 0x802e23b0
+    dBase_c__ctor: 0x80050800
+    dBase____dt: 0x8002c530
+    ActorBase__ctor: 0x8002c3b0
+    ActorBase__dtor: 0x8002c590
+    ActorBase__getDistToPlayer: 0x8002d470
+    ActorBase__getSquareDistToPlayer: 0x8002d4a0
 d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
 d_a_obj_time_boatNP.rel:

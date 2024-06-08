@@ -28,6 +28,9 @@ use crate::{
     system::button::*,
 };
 
+mod custom_actor;
+mod item_arc_loader;
+
 #[link_section = "data"]
 static mut IS_FILE_START: bool = false;
 
@@ -498,6 +501,15 @@ extern "C" fn get_glow_color(item_id: u32) -> u32 {
         }
     }
     4
+}
+
+#[link_section = "data"]
+#[no_mangle]
+static mut ITEM_ID: u16 = 0;
+
+#[no_mangle]
+extern "C" fn game_update_hook() -> u32 {
+    1
 }
 
 #[link_section = "data"]
