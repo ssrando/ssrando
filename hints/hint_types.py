@@ -309,7 +309,7 @@ class EmptyHint(RegularHint):
 
     def to_spoiler_log_json(self):
         return {"text": self.text, "type": self.hint_type}
-    
+
 
 @dataclass
 class RandomSettingsHint(RegularHint):
@@ -318,7 +318,9 @@ class RandomSettingsHint(RegularHint):
     text: str
 
     def to_stone_text(self, norm) -> str:
-        return f"They say that those <r<{self.text}>> will find nothing for their quest."
+        return (
+            f"They say that those <r<{self.text}>> will find nothing for their quest."
+        )
 
     def to_fi_text(self, norm) -> str:
         return f"My readings indicate that <r<{self.text}>> will be of no help for your quest."
