@@ -272,16 +272,7 @@
   command: hint-distribution
   type: singlechoice
   choices:
-    Weak: 0
-    Balanced: 1
-    Junk: 0
-    Co-op S1: 0
-    S2 - 2D: 1
-    S2 - 3D: 1
-    S2 - 3D EUD Off: 1
-    CDMC: 8
-    Dowsing & Fi Hints: 12
-    2D Dowsing & Fi Hints: 16
+    Random Settings: 1
 - name: Random Starting Spawn
   command: random-start-entrance
   type: singlechoice

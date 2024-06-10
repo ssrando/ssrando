@@ -309,6 +309,25 @@ class EmptyHint(RegularHint):
 
     def to_spoiler_log_json(self):
         return {"text": self.text, "type": self.hint_type}
+    
+
+@dataclass
+class RandomSettingsHint(RegularHint):
+    hint_type: str = field(init=False, default="rs")
+    group: str
+    text: str
+
+    def to_stone_text(self, norm) -> str:
+        return f"They say that those <r<{self.text}>> will find nothing for their quest."
+
+    def to_fi_text(self, norm) -> str:
+        return f"My readings indicate that <r<{self.text}>> will be of no help for your quest."
+
+    def to_spoiler_log_text(self, norm) -> str:
+        return f"{self.group} is nonprogress"
+
+    def to_spoiler_log_json(self):
+        return {"Group": self.group, "type": self.hint_type}
 
 
 class FiHintWrapper(GossipStoneHintWrapper):

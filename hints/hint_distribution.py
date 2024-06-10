@@ -267,6 +267,8 @@ class HintDistribution:
         needed_fixed.sort(key=lambda hint_type: self.distribution[hint_type]["order"])
 
         self.hints = []
+        if self.options['random-settings'] and len(self.options.non_prog_locs) > 0:
+            self.hints.extend(self._create_rs_hints()) # Do RS hints
         for hint_type in needed_fixed:
             curr_type = self.distribution[hint_type]
             func = self.hintfuncs[hint_type]
@@ -526,6 +528,13 @@ class HintDistribution:
 
     def _create_junk_hint(self):
         return EmptyHint(self.rng.choice(self.junk_hints))
+    
+    def _create_rs_hints(self):
+        groups_hint_texts = []
+        for g, t in RS_PROGRESSIVE_LOCATIONS:
+            if g in self.options.non_prog_locs:
+                groups_hint_texts.append((g, t))
+        return [RandomSettingsHint(g, t) for g, t in groups_hint_texts]
 
     def get_junk_text(self):
         return self.junk_hints.pop()
