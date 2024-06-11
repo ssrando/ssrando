@@ -61,8 +61,8 @@ NON_RANDOMIZED_SETTINGS = [
     # If permalink is false, it is not randomized
     "random-settings",
     "random-settings-weighting",
-    "rs-random-progression-locs",
-    "rs-disabled-progression-locs",
+    "random-progression-groups",
+    "disabled-progression-groups",
     "no-spoiler-log",
     "bit-patches",
     "logic-mode",
@@ -83,7 +83,7 @@ NON_RANDOMIZED_COSMETICS = [
     "selected-loftwing-model-pack",
 ]
 
-RS_PROGRESSIVE_LOCATIONS = [
+RS_PROGRESSION_GROUPS = [
     # (Group, hint text**)
     # **Hint text: They say that those [text] will find nothing for their quest. (Hint stone)
     # ** My readings indicate that [text] will be of no help for your quest. (Fi)
@@ -969,7 +969,7 @@ LOCATION_FILTER_TYPES = (
     "Sand Sea Goddess Chests",
     "Combat",
     "Minigames",
-    "Beedle's Shop Purchases",
+    "Beedle's Airshop",
     "Beedle's Airshop (Cheap)",
     "Beedle's Airshop (Medium)",
     "Beedle's Airshop (Expensive)",

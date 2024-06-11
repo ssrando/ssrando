@@ -363,49 +363,51 @@ class Options:
                             ),
                         )
 
-    def randomize_progression_locations(self, rando):
+    def randomize_progression_groups(self, rando):
         rs_weighting = random_settings_weighting(self["random-settings-weighting"])
-        locs_weighting = [o for o in rs_weighting if o["type"] == "locations"].pop()
-        self.non_prog_locs = []
+        groups_weighting = [o for o in rs_weighting if o["type"] == "locations"].pop()
+        self.non_prog_groups = []
 
-        for loc in self["rs-random-progression-locs"]:
-            if locs_weighting["locations"][loc]:
-                weight = locs_weighting["locations"][loc]
+        for grp in self["random-progression-groups"]:
+            if groups_weighting["locations"][grp]:
+                weight = groups_weighting["locations"][grp]
                 if not rando.rng.choices(
                     [True, False], k=1, weights=[weight, 100 - weight]
                 ).pop():
-                    self.non_prog_locs.append(loc)
+                    self.non_prog_groups.append(grp)
             else:
                 print(
-                    f"Did not find location '{loc}' in the selected RS weighting. Defaulting to random selection."
+                    f"Did not find location group '{grp}' in the selected RS weighting. Defaulting to random selection."
                 )
                 if bool(rando.rng.randint(0, 1)):
-                    self.non_prog_locs.append(loc)
-        for loc in self["rs-random-progression-locs"]:
-            if loc in self.non_prog_locs:
+                    self.non_prog_groups.append(grp)
+        for grp in self["random-progression-groups"]:
+            if grp in self.non_prog_groups:
                 continue
-            if not self.check_loc_conditions(loc=loc, non_prog_locs=self.non_prog_locs):
-                self.non_prog_locs.append(loc)
+            if not self.check_group_conditions(
+                group=grp, non_prog_groups=self.non_prog_groups
+            ):
+                self.non_prog_groups.append(grp)
         for check in OPTIONS["excluded-locations"]["choices"]:
             if check in self["excluded-locations"]:
                 continue  # Keep it excluded
             elif checks[check]["type"] is None:
                 continue  # Base check
-            elif any(i in checks[check]["type"] for i in self.non_prog_locs):
+            elif any(i in checks[check]["type"] for i in self.non_prog_groups):
                 self.set_option(
                     "excluded-locations", [*self["excluded-locations"], check]
                 )
             else:
                 continue
 
-    def check_loc_conditions(self, loc, non_prog_locs):
-        if loc.startswith("Batreaux's Rewards"):
+    def check_group_conditions(self, group, non_prog_groups):
+        if group.startswith("Batreaux's Rewards"):
             conditions = (
                 "Batreaux's Rewards (30 & below)",
                 "Batreaux's Rewards (40 & 50)",
                 "Batreaux's Rewards (70s & 80)",
             )
-        elif loc.startswith("Beedle's Airshop"):
+        elif group.startswith("Beedle's Airshop"):
             conditions = (
                 "Beedle's Airshop (Cheap)",
                 "Beedle's Airshop (Medium)",
@@ -414,10 +416,10 @@ class Options:
         else:
             return True  # unconditional option
         for c in conditions:
-            if loc == c:
+            if group == c:
                 conditions_met = True
                 break
-            elif c in non_prog_locs:
+            elif c in non_prog_groups:
                 conditions_met = False
                 break
             else:

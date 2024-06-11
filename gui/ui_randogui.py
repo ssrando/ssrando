@@ -400,10 +400,10 @@ class Ui_MainWindow(object):
 
         self.vlay_rs_progression_locations.addWidget(self.label_progression_locations)
 
-        self.edit_progression_locations = QPushButton(self.box_rs)
-        self.edit_progression_locations.setObjectName(u"edit_progression_locations")
+        self.edit_progression_groups = QPushButton(self.box_rs)
+        self.edit_progression_groups.setObjectName(u"edit_progression_groups")
 
-        self.vlay_rs_progression_locations.addWidget(self.edit_progression_locations)
+        self.vlay_rs_progression_locations.addWidget(self.edit_progression_groups)
 
 
         self.hlay_rs_settings.addLayout(self.vlay_rs_progression_locations)
@@ -2119,7 +2119,7 @@ class Ui_MainWindow(object):
         self.option_random_cosmetics.setText(QCoreApplication.translate("MainWindow", u"Randomize Cosmetic Settings", None))
         self.label_random_settings_weighting.setText(QCoreApplication.translate("MainWindow", u"Random Settings Weighting", None))
         self.label_progression_locations.setText(QCoreApplication.translate("MainWindow", u"Randomized Progression Locations", None))
-        self.edit_progression_locations.setText(QCoreApplication.translate("MainWindow", u"Edit Progression Locations", None))
+        self.edit_progression_groups.setText(QCoreApplication.translate("MainWindow", u"Edit Progression Locations", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_setup), QCoreApplication.translate("MainWindow", u"Setup", None))
 #if QT_CONFIG(tooltip)
         self.tab_randomization_settings.setToolTip("")

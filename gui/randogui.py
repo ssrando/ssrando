@@ -35,8 +35,8 @@ from gui.components.color_button import ColorButton
 
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
-from gui.dialogs.progression_locations.progression_locations_dialog import (
-    ProgressionLocationsDialog,
+from gui.dialogs.progression_groups.progression_groups_dialog import (
+    ProgressionGroupsDialog,
 )
 from logic.constants import (
     LOCATION_FILTER_TYPES,
@@ -131,11 +131,11 @@ class RandoGUI(QMainWindow):
                     widget = getattr(self.ui, opt["ui"])
                     widget.setEnabled(False)
             self.ui.option_random_settings_weighting.setEnabled(True)
-            self.ui.edit_progression_locations.setEnabled(True)
+            self.ui.edit_progression_groups.setEnabled(True)
         else:
             self.options.set_option("random-settings-weighting", "Random")
             self.ui.option_random_settings_weighting.setEnabled(False)
-            self.ui.edit_progression_locations.setEnabled(False)
+            self.ui.edit_progression_groups.setEnabled(False)
         if self.options["random-cosmetics"]:  # Greys out cosmetics on UI load
             for opt in OPTIONS.values():
                 if (
@@ -228,8 +228,8 @@ class RandoGUI(QMainWindow):
 
         # setup misc controls
         self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
-        self.ui.edit_progression_locations.clicked.connect(
-            self.launch_progression_locations_dialog
+        self.ui.edit_progression_groups.clicked.connect(
+            self.launch_progression_groups_dialog
         )
         self.logic_mode_changed()
 
@@ -996,19 +996,19 @@ class RandoGUI(QMainWindow):
             self.enabled_tricks = dialog.getTrickValues()
             self.update_settings()
 
-    def launch_progression_locations_dialog(self):
-        dialog = ProgressionLocationsDialog(
-            self.options["rs-random-progression-locs"],
-            # self.options["rs-disabled-progression-locs"],
-            "rs-random-progression-locs",
-            # "rs-disabled-progression-locs",
+    def launch_progression_groups_dialog(self):
+        dialog = ProgressionGroupsDialog(
+            self.options["random-progression-groups"],
+            # self.options["disabled-progression-groups"],
+            "random-progression-groups",
+            # "disabled-progression-groups",
             self.styleSheet(),
         )
         if dialog.exec():
             self.options.set_option(
-                "rs-random-progression-locs", dialog.getRandomLocsValues()
+                "random-progression-groups", dialog.getRandomgroupsValues()
             )
-            # self.options.set_option("rs-disabled-progression-locs", dialog.getDisabledLocsValues()) --DISABLED
+            # self.options.set_option("disabled-progression-groups", dialog.getDisabledgroupsValues()) --DISABLED
             self.update_settings()
 
     # Custom model customisation funcs
@@ -1409,8 +1409,8 @@ class RandoGUI(QMainWindow):
                 "random-settings-weighting", "Random"
             )  # Sets RS weighting to random for permalink consistency
             self.options.set_option(
-                "rs-random-progression-locs", []
-            )  # Sets progress locations to all enabled for permalink consistency
+                "random-progression-groups", []
+            )  # Sets progress groups to all enabled for permalink consistency
         for opt in OPTIONS.values():
             if opt["command"] in NON_RANDOMIZED_SETTINGS or (
                 "permalink" in opt and not opt["permalink"]
@@ -1424,7 +1424,7 @@ class RandoGUI(QMainWindow):
                 widget = getattr(self.ui, opt["ui"])
                 widget.setEnabled(not settings_randomized)
         self.ui.option_random_settings_weighting.setEnabled(settings_randomized)
-        self.ui.edit_progression_locations.setEnabled(settings_randomized)
+        self.ui.edit_progression_groups.setEnabled(settings_randomized)
         self.update_ui_for_settings()
 
     def randomize_cosmetics_toggled(self):

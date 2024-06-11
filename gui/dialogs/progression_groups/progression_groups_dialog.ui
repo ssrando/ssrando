@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ProgressionLocationsDialog</class>
- <widget class="QDialog" name="ProgressionLocationsDialog">
+ <class>ProgressionGroupsDialog</class>
+ <widget class="QDialog" name="ProgressionGroupsDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -320,7 +320,7 @@ the seed is generated. Individual locations that are &quot;excluded locations&qu
   <connection>
    <sender>bbox_progression_locations</sender>
    <signal>accepted()</signal>
-   <receiver>ProgressionLocationsDialog</receiver>
+   <receiver>ProgressionGroupsDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -336,7 +336,7 @@ the seed is generated. Individual locations that are &quot;excluded locations&qu
   <connection>
    <sender>bbox_progression_locations</sender>
    <signal>rejected()</signal>
-   <receiver>ProgressionLocationsDialog</receiver>
+   <receiver>ProgressionGroupsDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

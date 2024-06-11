@@ -120,8 +120,8 @@
         **Balanced**: Close to standard settings.
         **Insanity**: Generally longer and more difficult seeds."
   ui: option_random_settings_weighting
-- name: RS Randomized Progression Locations
-  command: rs-random-progression-locs
+- name: RS Randomized Progression Groups
+  command: random-progression-groups
   type: multichoice
   choices:
     - Goddess Chests
@@ -139,8 +139,8 @@
     - Beedle's Airshop (Expensive)
   default: []
   help: ""
-#- name: RS Disabled Progression Locations
-#  command: rs-disabled-progression-locs
+#- name: RS Disabled Progression Groups
+#  command: disabled-progression-groups
 #  type: multichoice
 #  choices:
 #    - Goddess Chests
