@@ -9020,43 +9020,43 @@ checks:
     short_name: Batreaux's House - 80 Crystals
   \Skyloft\Beedle's Shop\Stall\300 Rupee Item:
     original item: 'Progressive Pouch #1'
-    type: Beedle's Shop Purchases, Beedle's Airshop (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - 300 Rupee Item
   \Skyloft\Beedle's Shop\Stall\600 Rupee Item:
     original item: 'Progressive Pouch #2'
-    type: Beedle's Shop Purchases, Beedle's Airshop (Medium)
+    type: Beedle's Airshop, Beedle's Airshop (Medium)
     short_name: Beedle's Shop - 600 Rupee Item
   \Skyloft\Beedle's Shop\Stall\1200 Rupee Item:
     original item: 'Progressive Pouch #3'
-    type: Beedle's Shop Purchases, Beedle's Airshop (Expensive)
+    type: Beedle's Airshop, Beedle's Airshop (Expensive)
     short_name: Beedle's Shop - 1200 Rupee Item
   \Skyloft\Beedle's Shop\Stall\800 Rupee Item:
     original item: 'Life Medal #0'
-    type: Beedle's Shop Purchases, Beedle's Airshop (Medium)
+    type: Beedle's Airshop, Beedle's Airshop (Medium)
     short_name: Beedle's Shop - 800 Rupee Item
   \Skyloft\Beedle's Shop\Stall\1600 Rupee Item:
     original item: 'Heart Piece #23'
-    type: Beedle's Shop Purchases, Beedle's Airshop (Expensive)
+    type: Beedle's Airshop, Beedle's Airshop (Expensive)
     short_name: Beedle's Shop - 1600 Rupee Item
   \Skyloft\Beedle's Shop\Stall\First 100 Rupee Item:
     original item: 'Extra Wallet #0'
-    type: Beedle's Shop Purchases, Beedle's Airshop (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - First 100 Rupee Item
   \Skyloft\Beedle's Shop\Stall\Second 100 Rupee Item:
     original item: 'Extra Wallet #1'
-    type: Beedle's Shop Purchases, Beedle's Airshop (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - Second 100 Rupee Item
   \Skyloft\Beedle's Shop\Stall\Third 100 Rupee Item:
     original item: 'Extra Wallet #2'
-    type: Beedle's Shop Purchases, Beedle's Airshop (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - Third 100 Rupee Item
   \Skyloft\Beedle's Shop\Stall\50 Rupee Item:
     original item: 'Progressive Bug Net #0'
-    type: Beedle's Shop Purchases, Beedle's Airshop (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - 50 Rupee Item
   \Skyloft\Beedle's Shop\Stall\1000 Rupee Item:
     original item: Bug Medal
-    type: Beedle's Shop Purchases, Beedle's Airshop (Medium)
+    type: Beedle's Airshop, Beedle's Airshop (Medium)
     short_name: Beedle's Shop - 1000 Rupee Item
   \Skyloft\Upper Skyloft\Knight Academy\Link's Room\Crystal in Link's Room:
     original item: 'Gratitude Crystal #0'
