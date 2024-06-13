@@ -450,12 +450,12 @@
     Short Sidequests: 50
     Long Sidequests: 50
     Scrapper Deliveries: 50
-    Batreaux's Rewards (30 & below): 50
+    Batreaux's Rewards (30 & below): 75
     Batreaux's Rewards (40 & 50): 50
-    Batreaux's Rewards (70s & 80): 50
-    Beedle's Airshop (Cheap): 50
+    Batreaux's Rewards (70s & 80): 25
+    Beedle's Airshop (Cheap): 75
     Beedle's Airshop (Medium): 50
-    Beedle's Airshop (Expensive): 50
+    Beedle's Airshop (Expensive): 25
     # Batreaux and Beedle's higher rewards will not be enabled if lower rewards randomize as disabled
     # Weighting is an integer as a percentage of 100 (0 = disabled / 100 = enabled)
 

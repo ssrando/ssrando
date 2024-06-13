@@ -534,7 +534,15 @@ class HintDistribution:
         for grp, txt in RS_PROGRESSION_GROUPS:
             if grp in self.options.non_prog_groups:
                 groups_hint_texts.append((grp, txt))
-        return [RandomSettingsHint(g, t) for g, t in groups_hint_texts]
+        if self.options["empty-unrequired-dungeons"]:  # Add EUD hint if EUD is ON
+            return [
+                *[RandomSettingsHint(g, t) for g, t in groups_hint_texts],
+                RandomSettingsHint(
+                    "Unrequired Dungeons", "searching unrequired dungeons"
+                ),
+            ]
+        else:
+            return [RandomSettingsHint(g, t) for g, t in groups_hint_texts]
 
     def get_junk_text(self):
         return self.junk_hints.pop()
