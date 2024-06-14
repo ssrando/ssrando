@@ -217,43 +217,43 @@ Skyloft Village - Sparrot's Crystals:
   text: delivering a <r<fortune telling device>> reveals
 
 # Batreaux Rewards:
-Batreaux's House - 5 Crystals:
+Batreaux's House - First Reward:
   original item: Progressive Wallet
   type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/21
     - oarc/F012r/l0
-Batreaux's House - 10 Crystals:
+Batreaux's House - Second Reward:
   original item: Heart Piece
   type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/42
     - oarc/F012r/l0
-Batreaux's House - 30 Crystals:
+Batreaux's House - Third Reward:
   original item: Progressive Wallet
   type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
-Batreaux's House - 30 Crystals Chest:
+Batreaux's House - Chest:
   original item: Cursed Medal
   type: Batreaux's Rewards
   Paths:
     - stage/F012r/r0/l0/TBox/69
-Batreaux's House - 40 Crystals:
+Batreaux's House - Fourth Reward:
   original item: Gold Rupee
   type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/49
     - oarc/F012r/l0
-Batreaux's House - 50 Crystals:
+Batreaux's House - Fifth Reward:
   original item: Progressive Wallet
   type: Batreaux's Rewards
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
   text: <ye<50>> <r<pieces of gratitude>> can be exchanged for
-Batreaux's House - 70 Crystals:
+Batreaux's House - Sixth Reward:
   original item: Gold Rupee
   type: Batreaux's Rewards
   Paths:
@@ -261,7 +261,7 @@ Batreaux's House - 70 Crystals:
     - oarc/F012r/l0
   hint: sometimes
   text: the <r<demon's penultimate reward>> is
-Batreaux's House - 70 Crystals Second Reward:
+Batreaux's House - Seventh Reward:
   original item: Gold Rupee
   type: Batreaux's Rewards
   Paths:
@@ -269,7 +269,7 @@ Batreaux's House - 70 Crystals Second Reward:
     - oarc/F012r/l0
   hint: sometimes
   text: the <r<demon's penultimate reward>> is
-Batreaux's House - 80 Crystals:
+Batreaux's House - Final Reward:
   original item: Progressive Wallet
   type: Batreaux's Rewards
   Paths:
