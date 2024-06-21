@@ -209,7 +209,7 @@ class Rando:
         self.rng.shuffle(lmf_switches_solution)
 
         self.puzzles = {
-            "isle": {"pedestal_positions": [self.rng.randint(1, 12) for _ in range(3)]},
+            "isle": {"pedestal_positions": [self.rng.randint(1, 11) for _ in range(3)]},
             "sandship": {
                 "hint_order": ssh_hint_order,
                 "hint_rotations": ssh_hint_rotations,
