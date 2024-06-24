@@ -87,6 +87,77 @@
   permalink: false
   help: "If enabled, the curved edges of buttons and boxes will become sharp and pointy."
   ui: option_use_sharp_corners
+## Random Settings
+- name: Randomize Settings
+  command: random-settings
+  type: boolean
+  default: false
+  help: "If enabled, most randomization settings will be randomized. **WARNING**: Enabling this
+        will reset all randomizable settings to their default values."
+  ui: option_random_settings
+- name: Randomize Cosmetic Settings
+  command: random-cosmetics
+  type: boolean
+  default: false
+  permalink: false
+  cosmetic: true
+  help: "If enabled, all in-game cosmetic and music settings will be randomized."
+  ui: option_random_cosmetics
+- name: Random Settings Weighting
+  command: random-settings-weighting
+  type: singlechoice
+  bits: 3
+  choices:
+    - Random
+    - Quick
+    - Balanced
+    - Insanity
+    - RSL Season 1
+  default: Balanced
+  help: "The weighting used to randomize settings. Only applicable if randomize settings is on.
+        **Random**: Completely random settings. Be ready for some chaos.
+        **Quick**: Generally quicker and easier seeds.
+        **Balanced**: Close to standard settings.
+        **Insanity**: Generally longer and more difficult seeds."
+  ui: option_random_settings_weighting
+- name: RS Randomized Progression Groups
+  command: random-progression-groups
+  type: multichoice
+  choices:
+    - Goddess Chests
+    - Silent Realms
+    - Combat
+    - Minigames
+    - Short Sidequests
+    - Long Sidequests
+    - Scrapper Deliveries
+    - Batreaux's Rewards (30 & below)
+    - Batreaux's Rewards (40 & 50)
+    - Batreaux's Rewards (70s & 80)
+    - Beedle's Airshop (Cheap)
+    - Beedle's Airshop (Medium)
+    - Beedle's Airshop (Expensive)
+  default: []
+  help: ""
+#- name: RS Disabled Progression Groups
+#  command: disabled-progression-groups
+#  type: multichoice
+#  choices:
+#    - Goddess Chests
+#    - Silent Realms
+#    - Minigames
+#    - Short Sidequests
+#    - Long Sidequests
+#    - Scrapper Quests
+#    - Batreaux's Rewards (30 and below)
+#    - Batreaux's Rewards (40 & 50)
+#    - Batreaux's Rewards (70s & 80)
+#    - Beedle's Airshop (300 and below)
+#    - Beedle's Airshop (600 and 800)
+#    - Beedle's Airshop (1000 and above)
+#  default: []
+#  help: ""
+## Randomization Settings
 - name: Starting Tablet Count
   command: starting-tablet-count
   type: int
@@ -794,6 +865,7 @@
     - Weak
     - Balanced
     - Junk
+    - Random Settings
     - CDMC
     - Dowsing & Fi Hints
     - 2D Dowsing & Fi Hints

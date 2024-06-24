@@ -1,8 +1,11 @@
 from packedbits import PackedBitsReader, PackedBitsWriter
 from pathlib import Path
-from yaml_files import checks, options
+from yaml_files import checks, options, random_settings_weighting
 
 from collections import OrderedDict
+import logic.constants as constants
+
+import random
 
 OPTIONS = OrderedDict((option["command"], option) for option in options)
 OPTIONS["excluded-locations"]["choices"] = [check for check in checks]
@@ -20,6 +23,14 @@ class Options:
                 self.options[option_name] = Path(option["default"]).resolve()
             else:
                 self.options[option_name] = option["default"]
+
+    def reset_randomized_settings(self):
+        for option_name, option in OPTIONS.items():
+            if option["command"] in constants.NON_RANDOMIZED_SETTINGS or (
+                "permalink" in option and not option["permalink"]
+            ):
+                continue
+            self.options[option_name] = option["default"]
 
     @staticmethod
     def parse_and_validate_option(value_str: str, option: dict):
@@ -221,6 +232,225 @@ class Options:
             else:
                 raise Exception(f'Unknown type: {option["type"]}.')
             self.set_option(option_name, value)
+
+    def randomize_settings(self, rando):
+        rs_weighting = random_settings_weighting(self["random-settings-weighting"])
+
+        for optkey, opt in OPTIONS.items():
+            if opt["command"] in constants.NON_RANDOMIZED_SETTINGS or (
+                "permalink" in opt and opt["permalink"] == False
+            ):
+                continue
+            else:
+                if opt["type"] == "boolean":
+                    if opt["command"] == "shopsanity":
+                        self.set_option(
+                            optkey, True
+                        )  # Manually setting shopsanity to true bc it breaks everything rn and I'll fix it soon
+                    elif (
+                        len([o for o in rs_weighting if o["name"] == opt["name"]]) == 1
+                    ):
+                        rsopt = [
+                            o for o in rs_weighting if o["name"] == opt["name"]
+                        ].pop()
+                        self.set_option(
+                            optkey,
+                            rando.rng.choices(
+                                [True, False],
+                                k=1,
+                                weights=[rsopt["checked"], rsopt["unchecked"]],
+                            ).pop(),
+                        )
+                    else:
+                        print(
+                            f"Did not find option '"
+                            + opt["name"]
+                            + "' in the selected RS weighting. Defaulting to random selection."
+                        )
+                        self.set_option(optkey, bool(rando.rng.randint(0, 1)))
+                elif opt["type"] == "int":
+                    if opt["command"] == "starting-heart-pieces":
+                        selec = rando.rng.choices(
+                            list(rsopt["choices"].keys()),
+                            k=1,
+                            weights=rsopt["choices"].values(),
+                        ).pop()
+                        if selec == 24:
+                            self.set_option(optkey, 24)
+                        else:
+                            self.set_option(optkey, rando.rng.randint(selec, selec + 3))
+                    elif (
+                        len([o for o in rs_weighting if o["name"] == opt["name"]]) == 1
+                    ):
+                        rsopt = [
+                            o for o in rs_weighting if o["name"] == opt["name"]
+                        ].pop()
+                        self.set_option(
+                            optkey,
+                            rando.rng.choices(
+                                list(rsopt["choices"].keys()),
+                                k=1,
+                                weights=rsopt["choices"].values(),
+                            ).pop(),
+                        )
+                    else:
+                        print(
+                            f"Did not find option '"
+                            + opt["name"]
+                            + "' in the selected RS weighting. Defaulting to random selection."
+                        )
+                        self.set_option(
+                            optkey, rando.rng.randint(opt["min"], opt["max"])
+                        )
+                elif opt["type"] == "singlechoice":
+                    if len([o for o in rs_weighting if o["name"] == opt["name"]]) == 1:
+                        rsopt = [
+                            o for o in rs_weighting if o["name"] == opt["name"]
+                        ].pop()
+                        self.set_option(
+                            optkey,
+                            rando.rng.choices(
+                                list(rsopt["choices"].keys()),
+                                k=1,
+                                weights=rsopt["choices"].values(),
+                            ).pop(),
+                        )
+                    else:
+                        print(
+                            f"Did not find option '"
+                            + opt["name"]
+                            + "' in the selected RS weighting. Defaulting to random selection."
+                        )
+                        self.set_option(optkey, rando.rng.choice(opt["choices"]))
+                elif opt["type"] == "multichoice":
+                    if len([o for o in rs_weighting if o["name"] == opt["name"]]) == 1:
+                        rsopt = [
+                            o for o in rs_weighting if o["name"] == opt["name"]
+                        ].pop()
+                        choices = rsopt["choices"]
+                        rando.rng.shuffle(choices)
+                        multichoice = []
+                        i = 0
+                        if rsopt["maxpicks"] == "None":
+                            maxpicks = len(choices)
+                        else:
+                            maxpicks = rsopt["maxpicks"]
+                        for c, weight in choices:
+                            if i >= maxpicks:
+                                break
+                            if (
+                                rando.rng.choices(
+                                    [True, False],
+                                    k=1,
+                                    weights=[weight, 100 - weight],
+                                ).pop()
+                                == True
+                            ):
+                                multichoice.append(c)
+                                i += 1
+                        self.set_option(optkey, multichoice)
+                    else:
+                        print(
+                            f"Did not find option '"
+                            + opt["name"]
+                            + "' in the selected RS weighting. Defaulting to random selection."
+                        )
+                        self.set_option(
+                            optkey,
+                            rando.rng.sample(
+                                opt["choices"],
+                                rando.rng.randint(0, len(opt["choices"])),
+                            ),
+                        )
+
+    def randomize_progression_groups(self, rando):
+        rs_weighting = random_settings_weighting(self["random-settings-weighting"])
+        groups_weighting = [o for o in rs_weighting if o["type"] == "locations"].pop()
+        self.non_prog_groups = []
+
+        for grp in self["random-progression-groups"]:
+            if groups_weighting["locations"][grp]:
+                weight = groups_weighting["locations"][grp]
+                if not rando.rng.choices(
+                    [True, False], k=1, weights=[weight, 100 - weight]
+                ).pop():
+                    self.non_prog_groups.append(grp)
+            else:
+                print(
+                    f"Did not find location group '{grp}' in the selected RS weighting. Defaulting to random selection."
+                )
+                if bool(rando.rng.randint(0, 1)):
+                    self.non_prog_groups.append(grp)
+        for grp in self["random-progression-groups"]:
+            if grp in self.non_prog_groups:
+                continue
+            if not self.check_group_conditions(
+                group=grp, non_prog_groups=self.non_prog_groups
+            ):
+                self.non_prog_groups.append(grp)
+        for check in OPTIONS["excluded-locations"]["choices"]:
+            if check in self["excluded-locations"]:
+                continue  # Keep it excluded
+            elif checks[check]["type"] is None:
+                continue  # Base check
+            elif any(i in checks[check]["type"] for i in self.non_prog_groups):
+                self.set_option(
+                    "excluded-locations", [*self["excluded-locations"], check]
+                )
+            else:
+                continue
+
+    def check_group_conditions(self, group, non_prog_groups):
+        if group.startswith("Batreaux's Rewards"):
+            conditions = (
+                "Batreaux's Rewards (30 & below)",
+                "Batreaux's Rewards (40 & 50)",
+                "Batreaux's Rewards (70s & 80)",
+            )
+        elif group.startswith("Beedle's Airshop"):
+            conditions = (
+                "Beedle's Airshop (Cheap)",
+                "Beedle's Airshop (Medium)",
+                "Beedle's Airshop (Expensive)",
+            )
+        else:
+            return True  # unconditional option
+        for c in conditions:
+            if group == c:
+                conditions_met = True
+                break
+            elif c in non_prog_groups:
+                conditions_met = False
+                break
+            else:
+                continue
+        return conditions_met
+
+    def randomize_cosmetics(self, rando):
+        for optkey, opt in OPTIONS.items():
+            if (
+                opt["command"] not in constants.NON_RANDOMIZED_COSMETICS
+                and "cosmetic" in opt
+                and opt["cosmetic"] == True
+            ):
+                if opt["type"] == "boolean":
+                    self.set_option(optkey, bool(random.randint(0, 1)))
+                elif opt["type"] == "int":
+                    if opt["command"] == "star-count":
+                        self.set_option(
+                            optkey, random.randint(0, 700)
+                        )  # Anything over 700 will lag the game
+                    else:
+                        self.set_option(optkey, random.randint(opt["min"], opt["max"]))
+                elif opt["type"] == "singlechoice":
+                    self.set_option(optkey, random.choice(opt["choices"]))
+                elif opt["type"] == "multichoice":
+                    self.set_option(
+                        optkey,
+                        random.sample(
+                            opt["choices"], random.randint(0, len(opt["choices"]))
+                        ),
+                    )
 
     def to_dict(self, exclude_nonperma=False, exclude=[]):
         opts = self.options.copy()
