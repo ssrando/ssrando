@@ -776,7 +776,7 @@ b try_end_pumpkin_archery
 ; (80dba55c - 80db9860) + 130
 .org 0xD98 ; 0x80dba4c8
 lwz r3, SCENEFLAG_MANAGER@sda21(r13)
-li r4, 101 ; sceneflag given when collecting the bell item
+li r4, 117 ; sceneflag given when collecting the bell item
 bl SceneflagManager__checkTempOrSceneflag
 li r5, 2 ; green rupee
 cmpwi r3, 0
@@ -787,7 +787,7 @@ skip_itemid_from_params1:
 li r3, 0 ; academy bell is always in room 0
 ; 0xFF1D9600 ; item actor params1 (will set sceneflag 101 on collection)
 lis r4, 0xFF9C
-ori r4, r4, 0x9600
+ori r4, r4, 0xD600
 or r4, r4, r5 ; add itemid from bell params1 to item actor params1
 addi r5, r1, 0x14 ; get pos into r5 (from ghidra)
 addi r6, r1, 0xC ; get rot into r6 (from ghidra)
