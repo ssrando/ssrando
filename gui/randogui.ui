@@ -750,6 +750,13 @@
               <widget class="QComboBox" name="option_open_lake_floria"/>
              </item>
              <item>
+              <widget class="QCheckBox" name="option_random_puzzles">
+               <property name="text">
+                <string>Randomize Puzzles</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <spacer name="vspace_open">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>

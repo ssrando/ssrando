@@ -21,7 +21,7 @@ def break_lines(text, characters_per_line=CHARACTERS_PER_LINE):
     return final_text
 
 
-def make_mutliple_textboxes(texts):
+def make_multiple_textboxes(texts):
     final_text = ""
     for text in texts:
         text = text.rstrip("\n")
@@ -33,7 +33,7 @@ def make_mutliple_textboxes(texts):
 
 
 def break_and_make_multiple_textboxes(texts):
-    return make_mutliple_textboxes((break_lines(text) for text in texts))
+    return make_multiple_textboxes((break_lines(text) for text in texts))
 
 
 if __name__ == "__main__":
@@ -49,7 +49,7 @@ if __name__ == "__main__":
     print(break_lines("Skyloft Peater/Peatrice's Crystals has Bug Net"))
     print(test_separator)
     print(
-        make_mutliple_textboxes(
+        make_multiple_textboxes(
             [
                 break_lines(
                     "The <y<Spirit of the Sword>> guides the goddess' chosen hero to <r<Skyloft Village>>"

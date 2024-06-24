@@ -1,4 +1,5 @@
 from .TEX0 import TEX0
+from .MDL0 import MDL0
 
 from io import BufferedIOBase
 import struct
@@ -83,7 +84,10 @@ class BRRES:
 
     @staticmethod
     def parse_index_group_entries(
-        data: BufferedIOBase, indexGroupNode: IndexGroupNode, group_start_offset: int
+        data: BufferedIOBase,
+        indexGroupNode: IndexGroupNode,
+        group_start_offset: int,
+        nonrecursive=False,
     ):
         data.seek(group_start_offset)
         data.seek(data.tell() + 4)
@@ -111,7 +115,7 @@ class BRRES:
 
             identifier = data.read(4)
 
-            if identifier in SECTION_TYPES:
+            if identifier in SECTION_TYPES or nonrecursive:
                 entryNode = SubFileNode(
                     fileType=identifier,
                     name=name,
@@ -159,7 +163,10 @@ class BRRES:
 
         match file.nodeType:
             case b"MDL0":
-                raise Exception(f"Unsupported file type {file.nodeType}.")
+                mdl = MDL0.parse_MDL0(
+                    dataBuffer=self.dataBuffer, start_offset=dataOffset
+                )
+                return mdl
             case b"TEX0":
                 tex0: TEX0 = TEX0.parse_TEX0(
                     dataBuffer=self.dataBuffer, start_offset=dataOffset
@@ -193,7 +200,11 @@ class BRRES:
 
         match file.nodeType:
             case b"MDL0":
-                raise Exception(f"Unsupported file type {file.nodeType}.")
+                if not isinstance(data, MDL0):
+                    raise Exception(f"Must set the modified MDL0.")
+                bytes = data.to_bytes()
+                self.dataBuffer.seek(dataOffset)
+                self.dataBuffer.write(bytes)
             case b"TEX0":
                 tex0: TEX0 = TEX0.parse_TEX0(
                     dataBuffer=self.dataBuffer, start_offset=dataOffset
