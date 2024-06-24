@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -83,7 +83,7 @@
                <string>Output Folder</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -169,7 +169,7 @@
                <item>
                 <spacer name="vspace_additional_files">
                  <property name="orientation">
-                  <enum>Qt::Vertical</enum>
+                  <enum>Qt::Orientation::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -208,7 +208,7 @@
                <item>
                 <spacer name="vspace_advanced">
                  <property name="orientation">
-                  <enum>Qt::Vertical</enum>
+                  <enum>Qt::Orientation::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -307,7 +307,7 @@
                <item>
                 <spacer name="vspace_cosmetics">
                  <property name="orientation">
-                  <enum>Qt::Vertical</enum>
+                  <enum>Qt::Orientation::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -374,7 +374,7 @@
                <item>
                 <spacer name="vspace_music_rando">
                  <property name="orientation">
-                  <enum>Qt::Vertical</enum>
+                  <enum>Qt::Orientation::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -404,7 +404,7 @@
              <item>
               <spacer name="vspace_10">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -481,7 +481,7 @@
           <item>
            <spacer name="hspace_presets">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -675,7 +675,7 @@
              <item>
               <spacer name="vspace_completion">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -759,7 +759,7 @@
              <item>
               <spacer name="vspace_open">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -812,7 +812,7 @@
              <item>
               <spacer name="vspace_shuffles">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -896,10 +896,10 @@
              <item>
               <spacer name="vspace_entrance_rando">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeType">
-                <enum>QSizePolicy::MinimumExpanding</enum>
+                <enum>QSizePolicy::Policy::MinimumExpanding</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1015,7 +1015,7 @@
              <item>
               <spacer name="vspace_dungeons">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1066,9 +1066,19 @@
               </widget>
              </item>
              <item>
+              <widget class="QLabel" name="label_for_option_ammo_availability">
+               <property name="text">
+                <string>Ammo Availability</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="option_ammo_availability"/>
+             </item>
+             <item>
               <spacer name="vspace_convenience_tweaks">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1131,7 +1141,7 @@
              <item>
               <spacer name="vspace_vanilla_tweaks">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1182,7 +1192,7 @@
                <item>
                 <spacer name="vspace_item_pool">
                  <property name="orientation">
-                  <enum>Qt::Vertical</enum>
+                  <enum>Qt::Orientation::Vertical</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -1273,7 +1283,7 @@
              <item>
               <spacer name="vspace_silent_realms">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1359,7 +1369,7 @@
              <item>
               <spacer name="vspace_heromode_changes">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1411,10 +1421,10 @@
             <item>
              <spacer name="hspace_misc_logic_settings">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
+               <enum>QSizePolicy::Policy::Expanding</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -1475,13 +1485,13 @@
                 <item>
                  <widget class="QListView" name="included_locations">
                   <property name="editTriggers">
-                   <set>QAbstractItemView::NoEditTriggers</set>
+                   <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
                   </property>
                   <property name="showDropIndicator" stdset="0">
                    <bool>false</bool>
                   </property>
                   <property name="selectionMode">
-                   <enum>QAbstractItemView::MultiSelection</enum>
+                   <enum>QAbstractItemView::SelectionMode::MultiSelection</enum>
                   </property>
                   <property name="selectionRectVisible">
                    <bool>false</bool>
@@ -1495,7 +1505,7 @@
                 <item>
                  <spacer name="vspace_9">
                   <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                   <enum>Qt::Orientation::Vertical</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -1522,7 +1532,7 @@
                 <item>
                  <spacer name="vspace_7">
                   <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                   <enum>Qt::Orientation::Vertical</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -1549,7 +1559,7 @@
                 <item>
                  <spacer name="vspace_8">
                   <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                   <enum>Qt::Orientation::Vertical</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -1596,13 +1606,13 @@
                 <item>
                  <widget class="QListView" name="excluded_locations">
                   <property name="editTriggers">
-                   <set>QAbstractItemView::NoEditTriggers</set>
+                   <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
                   </property>
                   <property name="showDropIndicator" stdset="0">
                    <bool>false</bool>
                   </property>
                   <property name="selectionMode">
-                   <enum>QAbstractItemView::MultiSelection</enum>
+                   <enum>QAbstractItemView::SelectionMode::MultiSelection</enum>
                   </property>
                   <property name="selectionRectVisible">
                    <bool>false</bool>
@@ -1669,7 +1679,7 @@
              <item>
               <spacer name="vspace_stone_hints">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1750,7 +1760,7 @@
              <item>
               <spacer name="vspace_other_hints">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1780,7 +1790,7 @@
            <item>
             <spacer name="vspace_4">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -1808,7 +1818,7 @@
            <item>
             <spacer name="vspace_5">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -1836,7 +1846,7 @@
            <item>
             <spacer name="vspace_6">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -1899,13 +1909,13 @@
                 </sizepolicy>
                </property>
                <property name="editTriggers">
-                <set>QAbstractItemView::NoEditTriggers</set>
+                <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
                </property>
                <property name="showDropIndicator" stdset="0">
                 <bool>false</bool>
                </property>
                <property name="selectionMode">
-                <enum>QAbstractItemView::MultiSelection</enum>
+                <enum>QAbstractItemView::SelectionMode::MultiSelection</enum>
                </property>
                <property name="selectionRectVisible">
                 <bool>false</bool>
@@ -1917,12 +1927,12 @@
            <item>
             <layout class="QVBoxLayout" name="vlay_starting_items_controls">
              <property name="sizeConstraint">
-              <enum>QLayout::SetDefaultConstraint</enum>
+              <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
              </property>
              <item>
               <spacer name="vspace_starting_items_controls_upper">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1949,7 +1959,7 @@
              <item>
               <spacer name="vspace_starting_items_controls_middle">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1976,10 +1986,10 @@
              <item>
               <spacer name="vspace_starting_items_controls_lower">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeType">
-                <enum>QSizePolicy::Expanding</enum>
+                <enum>QSizePolicy::Policy::Expanding</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -2022,13 +2032,13 @@
                 </sizepolicy>
                </property>
                <property name="editTriggers">
-                <set>QAbstractItemView::NoEditTriggers</set>
+                <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
                </property>
                <property name="showDropIndicator" stdset="0">
                 <bool>false</bool>
                </property>
                <property name="selectionMode">
-                <enum>QAbstractItemView::MultiSelection</enum>
+                <enum>QAbstractItemView::SelectionMode::MultiSelection</enum>
                </property>
                <property name="selectionRectVisible">
                 <bool>false</bool>
@@ -2285,7 +2295,7 @@
            <item>
             <spacer name="vspace_additional_options">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -2353,7 +2363,7 @@
               <item>
                <spacer name="hspace_type_options">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -2416,7 +2426,7 @@
               <item>
                <spacer name="hspace_pack_options">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -2475,7 +2485,7 @@
                <string>Color Presets</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -2498,25 +2508,25 @@
           <item>
            <widget class="QScrollArea" name="scroll_area_colors">
             <property name="contextMenuPolicy">
-             <enum>Qt::PreventContextMenu</enum>
+             <enum>Qt::ContextMenuPolicy::PreventContextMenu</enum>
             </property>
             <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
+             <enum>QFrame::Shape::NoFrame</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
+             <enum>QFrame::Shadow::Plain</enum>
             </property>
             <property name="verticalScrollBarPolicy">
-             <enum>Qt::ScrollBarAsNeeded</enum>
+             <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
             </property>
             <property name="horizontalScrollBarPolicy">
-             <enum>Qt::ScrollBarAsNeeded</enum>
+             <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
             </property>
             <property name="widgetResizable">
              <bool>true</bool>
             </property>
             <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
             </property>
             <widget class="QWidget" name="scroll_area_widget_contents_colors">
              <property name="geometry">
@@ -2533,7 +2543,7 @@
                 <item>
                  <spacer name="vspace_colors">
                   <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                   <enum>Qt::Orientation::Vertical</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -2546,7 +2556,7 @@
                 <item>
                  <spacer name="hspace_colors">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Orientation::Horizontal</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -2581,7 +2591,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2667,7 +2677,7 @@
              <item>
               <spacer name="vspace_theme">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -2724,16 +2734,16 @@
                 <string>Arial</string>
                </property>
                <property name="sizeAdjustPolicy">
-                <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+                <enum>QComboBox::SizeAdjustPolicy::AdjustToContentsOnFirstShow</enum>
                </property>
                <property name="placeholderText">
                 <string>Select Font Family</string>
                </property>
                <property name="writingSystem">
-                <enum>QFontDatabase::Any</enum>
+                <enum>QFontDatabase::WritingSystem::Any</enum>
                </property>
                <property name="fontFilters">
-                <set>QFontComboBox::ScalableFonts</set>
+                <set>QFontComboBox::FontFilter::ScalableFonts</set>
                </property>
                <property name="currentFont">
                 <font>
@@ -2786,7 +2796,7 @@
              <item>
               <spacer name="vspace_font">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -2822,7 +2832,7 @@
            <item>
             <spacer name="vspace">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -2856,7 +2866,7 @@
            <item>
             <spacer name="vspace_2">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -2890,7 +2900,7 @@
            <item>
             <spacer name="vspace_3">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -2931,7 +2941,7 @@
        <string/>
       </property>
       <property name="textFormat">
-       <enum>Qt::MarkdownText</enum>
+       <enum>Qt::TextFormat::MarkdownText</enum>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -2975,7 +2985,7 @@
            <string/>
           </property>
           <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
           </property>
           <property name="autoFillBackground">
            <bool>false</bool>
@@ -2984,7 +2994,7 @@
            <string>Seed</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
           </property>
          </widget>
         </item>

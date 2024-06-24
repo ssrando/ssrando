@@ -1585,6 +1585,10 @@ class GamePatcher:
             self.add_asm_patch("dungeon_dowsing")
         if self.placement_file.options["no-enemy-music"]:
             self.add_asm_patch("no_enemy_music")
+        if self.placement_file.options["ammo-availability"] == "Scarce":
+            self.add_asm_patch("ammo_drops_remove")
+        else:
+            self.add_asm_patch("ammo_drops_add")
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
         self.all_asm_patches["d_a_obj_time_door_beforeNP.rel"][0xD48] = {
@@ -3132,6 +3136,12 @@ class GamePatcher:
             if "id" in new_obj:
                 new_obj["id"] = (new_obj["id"] & ~0x3FF) | next_id
                 next_id += 1
+            # Prevent ammo pots getting ids that collide with viewclip indexes
+            if new_obj.get("name") == "Tubo":
+                id = new_obj.get("id", -1)
+
+                if id != -1 and id < 0xF000:
+                    new_obj["id"] = id | 0xF000
             if layer is None:
                 if not objtype in bzs:
                     bzs[objtype] = []

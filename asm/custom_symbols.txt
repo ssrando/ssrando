@@ -34,8 +34,10 @@ main.dol:
   has_upgraded_skyward_strike: 0x80679374
   has_fast_air_meter_drain: 0x80679384
   has_heart_drops_enabled: 0x80679394
-  FORCE_MOGMA_CAVE_DIVE: 0x8067949A
-  HERO_MODE_OPTIONS: 0x8067949B
+  add_ammo_drops: 0x806793A4
+  drop_nothing: 0x8067948C
+  FORCE_MOGMA_CAVE_DIVE: 0x806795C2
+  HERO_MODE_OPTIONS: 0x806795C3
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340
