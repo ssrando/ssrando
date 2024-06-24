@@ -85,7 +85,7 @@ New Trial Completed Storyflags:
 Sceneflags
 
 Skyloft:
-101: Collected item from Knight Academy Bell
+117: Collected item from Knight Academy Bell
 
 Ancient Cistern:
 85: After receiving Item from flame CS
