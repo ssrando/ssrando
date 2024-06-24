@@ -1227,6 +1227,11 @@ def rando_patch_tadtone_group(bzs: OrderedDict, itemid: int, groupId: str):
         clef["anglez"] = mask_shift_set(clef["anglez"], 0xFFFF, 0, itemid)
 
 
+def rando_patch_bell(bzs: OrderedDict, itemid: int, id: str):
+    bell = next(filter(lambda x: x["name"] == "Bell", bzs["OBJ "]))
+    bell["params1"] = mask_shift_set(bell["params1"], 0xFF, 0, itemid)
+
+
 # functions, that patch the object, they take: the bzs of that layer, the item id and optionally an id, then patches the object in place
 RANDO_PATCH_FUNCS = {
     "chest": rando_patch_chest,
@@ -1240,6 +1245,7 @@ RANDO_PATCH_FUNCS = {
     "Tbox": rando_patch_tbox,
     "SwSB": rando_patch_goddess_crest,
     "Clef": rando_patch_tadtone_group,
+    "Bell": rando_patch_bell,
 }
 
 
