@@ -439,6 +439,10 @@ bl has_heart_drops_enabled
 .org 0x800c7c50
 bl has_heart_drops_enabled
 
+; at the end of the cGame update function
+.org 0x801bf4f8
+b game_update_hook
+
 .close
 
 
