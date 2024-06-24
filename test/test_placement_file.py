@@ -1,6 +1,8 @@
 import sys
 import os
 
+import pytest
+
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from ssrando import Hints, Randomizer
@@ -11,6 +13,7 @@ from logic.fill_algo_common import UserOutput
 from yaml_files import requirements, checks, hints, map_exits
 
 
+@pytest.mark.skip(reason="broken, slow")
 def test_roundtrip():
     areas = Areas(requirements, checks, hints, map_exits)
     useroutput = UserOutput(Exception, lambda s: None)

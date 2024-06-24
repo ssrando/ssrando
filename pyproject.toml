@@ -29,3 +29,8 @@ pyinstaller = "^6.4.0"
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
 pytest = "^8.0.2"
+
+[tool.pytest.ini_options]
+markers = [
+    "iso: marks tests as requiring an extract (CI skips these with '-m \"not iso\"')",
+]
