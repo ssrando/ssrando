@@ -549,13 +549,10 @@ pub fn add_ammo_drops(
     // 0xFE is the custom id being used to drop arrows, bombs, and seeds.
     // Should set the eq flag for comparison after this addtion.
     if param2_s0x18 == 0xFE {
-        extern "C" {
-            fn spawnDrop(itemid: ITEMFLAGS, roomid: u32, pos: *mut Vec3f, rot: *mut Vec3s);
-        }
-        if ItemflagManager::check(ITEMFLAGS::BOW as u16) {
+        if ItemflagManager::check(Itemflag::BOW as u16) {
             unsafe {
-                spawnDrop(
-                    ITEMFLAGS::BUNDLE_OF_ARROWS,
+                item::spawnDrop(
+                    Itemflag::BUNDLE_OF_ARROWS,
                     roomid,
                     pos,
                     &mut Vec3s::default() as *mut Vec3s,
@@ -563,10 +560,10 @@ pub fn add_ammo_drops(
             }
         }
 
-        if ItemflagManager::check(ITEMFLAGS::BOMB_BAG as u16) {
+        if ItemflagManager::check(Itemflag::BOMB_BAG as u16) {
             unsafe {
-                spawnDrop(
-                    ITEMFLAGS::TEN_BOMBS,
+                item::spawnDrop(
+                    Itemflag::TEN_BOMBS,
                     roomid,
                     pos,
                     &mut Vec3s::default() as *mut Vec3s,
@@ -574,10 +571,10 @@ pub fn add_ammo_drops(
             }
         }
 
-        if ItemflagManager::check(ITEMFLAGS::SLINGSHOT as u16) {
+        if ItemflagManager::check(Itemflag::SLINGSHOT as u16) {
             unsafe {
-                spawnDrop(
-                    ITEMFLAGS::FIVE_DEKU_SEEDS,
+                item::spawnDrop(
+                    Itemflag::FIVE_DEKU_SEEDS,
                     roomid,
                     pos,
                     &mut Vec3s::default() as *mut Vec3s,

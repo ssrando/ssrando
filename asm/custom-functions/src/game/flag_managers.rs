@@ -139,7 +139,7 @@ impl DungeonflagManager {
 #[repr(u16)]
 #[derive(Copy, Clone, Hash, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
-pub enum ITEMFLAGS {
+pub enum Itemflag {
     CUPBOARD_TEXT                    = 0x0,
     SMALL_KEY                        = 0x1,
     GREEN_RUPEE                      = 0x2,
