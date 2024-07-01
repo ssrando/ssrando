@@ -19,7 +19,7 @@ lark = "^1.1.9"
 toml = "^0.10.2"
 pyclip = "^0.7.0"
 opencv-python = "^4.9.0.80"
-numpy = "^1.26.4"
+numpy = "^2.0.0"
 disc-riider-py = "==0.3.1"
 pyqtdarktheme-fork = "^2.3.2"
 
