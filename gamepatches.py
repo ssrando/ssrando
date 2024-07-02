@@ -832,6 +832,16 @@ TRIAL_OBJECT_IDS = {
 
 CLEF_OBJECT_IDS = {}
 
+BATREAUX_REWARDS = [
+    0x2EF8,  # 80
+    0x2F00,  # 70
+    0x2F08,  # 50
+    0x2F10,  # 40
+    0x2F18,  # 30
+    0x2F20,  # 10
+    0x2F28,  # 05
+]
+
 
 class FlagEventTypes(IntEnum):
     SET_STORYFLAG = (0,)
@@ -1423,6 +1433,7 @@ class GamePatcher:
         self.add_peatrice_storyflags()
         self.add_startitem_patches()
         self.add_required_dungeon_patches()
+        self.add_batreaux_patches()
         self.add_fi_text_patches()
         if (self.placement_file.options["song-hints"]) != "None":
             self.add_trial_hint_patches()
@@ -1584,6 +1595,30 @@ class GamePatcher:
         self.all_asm_patches["d_lyt_file_selectNP.rel"][0x889C] = {
             "Data": [0x03, 0x89 + required_sword_number]
         }
+
+        # Batreaux crystal counts
+        # Patching the game so it checks for the new amounts of crystals
+        for offset in BATREAUX_REWARDS:
+            self.all_asm_patches["d_a_npc_akumakunNP.rel"][offset] = {
+                "Data": [
+                    0x3B,
+                    0xE0,
+                    0x00,
+                    self.options.batreaux_crystal_counts[
+                        BATREAUX_REWARDS.index(offset)
+                    ],
+                ]
+            }
+        self.all_asm_patches["d_a_npc_akumakunNP.rel"][0x2F40] = (
+            {  # Patch the required crystal count for batreaux to become human
+                "Data": [
+                    0x2C,
+                    0x1F,
+                    0x00,
+                    self.options.batreaux_crystal_counts[0],
+                ]
+            }
+        )
 
         if self.placement_file.options["randomize-boss-key-puzzles"]:
             self.add_asm_patch("randomize_boss_key_puzzles")
@@ -2039,6 +2074,87 @@ class GamePatcher:
             required_dungeon_count:
         ]:
             self.startstoryflags.append(required_dungeon_storyflag)
+
+    def add_batreaux_patches(self):
+        for reward in self.options.batreaux_crystal_counts:
+            ix = self.options.batreaux_crystal_counts.index(reward)
+            if ix == 6:
+                continue
+            self.add_patch_to_event(
+                "121-AkumaKun",
+                {
+                    "name": f"Batreaux Reward Level {7-ix} Text Patch",
+                    "type": "textpatch",
+                    "index": 20 - ix,
+                    "text": f"Oh, I want to be a human so badly it\npains me! Please hurry and gather\nmore <y<Gratitude Crystals>>!\n\nNext, come and see me when you've\ngathered <r<{reward}>> of them!",
+                },
+            )
+        first_reward = self.options.batreaux_crystal_counts[6]  # First Reward
+        final_reward = self.options.batreaux_crystal_counts[0]  # Last Reward
+        self.add_patch_to_event(
+            "121-AkumaKun",
+            {
+                "name": f"Batreaux Reward Level 1 Text Patch 1",
+                "type": "textpatch",
+                "index": 12,
+                "text": f"Oh, dear, I want to be a human so\nbadly it pains me! Please hurry along\nand gather some <y<Gratitude Crystals>>...\n\nJust come and show me <r<{first_reward}>> to start\nwith. If you do a great kindness for\nsomeone, you may even get several\nat once!",
+            },
+        )
+        self.add_patch_to_event(
+            "121-AkumaKun",
+            {
+                "name": f"Batreaux Reward Level 1 Text Patch 2",
+                "type": "textpatch",
+                "index": 13,
+                "text": f"Magnificent! Yes, that is truly a\n<y<Gratitude Crystal>>! That did not take\nyou long at all.\n\nAs a start, can you please bring me\n<r<{first_reward}>> of them?\n\n\nIf you do a great kindness for someone,\nyou may even get several of them at\nonce!",
+            },
+        )
+        self.add_patch_to_event(
+            "121-AkumaKun",
+            {
+                "name": f"Batreaux Reward Level 1 Text Patch 3",
+                "type": "textpatch",
+                "index": 14,
+                "text": f"That dear girl should be back home\nsafe and sound by tomorrow morning.\nGive her parents my warmest regards\nwhen you see them.\nOh, and good luck gathering the\n<y<Gratitude Crystals>> I require. To start,\nplease bring me <r<{first_reward}>> if you can!\nThat would be so splendid!\nIf you do a great kindness for someone,\nyou may even find several at once!",
+            },
+        )
+        self.add_patch_to_event(
+            "121-AkumaKun",
+            {
+                "name": f"Batreaux All Crystals Text Patch 1",
+                "type": "textpatch",
+                "index": 28,
+                "text": f"Oh, you're back! And it does appear \nyou've gathered more <y<Gratitude\nCrystals>>!\n\nOh, my! You've gathered <r<{final_reward}>> <y<Gratitude\nCrystals>>! If I'm not mistaken, that's all\nthe Gratitude Crystals in the whole\nwonderful world!\nThank you! Thank you ever so much!\n\n\n\nPlease accept this final gift with all\nof my gratitude.",
+            },
+        )
+        self.add_patch_to_event(
+            "121-AkumaKun",
+            {
+                "name": f"Batreaux All Crystals Text Patch 2",
+                "type": "textpatch",
+                "index": 40,
+                "text": f"Oh, my! You've gathered <r<{final_reward}>> <y<Gratitude\nCrystals>>! If I'm not mistaken, that's all\nthe Gratitude Crystals in the whole\nwonderful world!\nThank you! Thank you ever so much!\n\n\n\nPlease accept this final gift with all\nof my gratitude.",
+            },
+        )
+
+        # Add a hint for Batreaux counts on Kukiel in Batreaux's house
+        crystal_counts = self.options.batreaux_crystal_counts.copy()
+        crystal_counts.reverse()
+        rewards_str = (
+            ", ".join(
+                [str(rew) for rew in crystal_counts if crystal_counts.index(rew) != 6]
+            )
+            + f", and {str(crystal_counts[6])}"
+        )
+        self.add_patch_to_event(
+            "118-Town3",
+            {
+                "name": f"Add Kukiel Hint",
+                "type": "textpatch",
+                "index": 19,
+                "text": f"He's not a bad man! He is just\nlooking for someone to show him\nsome <y<Gratitude Crystals>>.\n\nHe will show you his appreciation\nif you are able to gather\n<r<{rewards_str}>>\n<y<Gratitude Crystals>>.",
+            },
+        )
 
     def add_fi_text_patches(self):
         colorful_dungeon_text = [
