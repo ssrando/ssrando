@@ -2161,6 +2161,33 @@ D100: # Skyview
     destlayer: 0
     room: 1
     objtype: OBJ
+  - name: Move First Eye CamTag to layer 0
+    type: objmove
+    id: 0xFC1A
+    layer: 1
+    destlayer: 0
+    room: 1
+    objtype: STAG
+  - name: Move First Eye SwAreaT to layer 0
+    type: objmove
+    id: 0xFC19
+    layer: 1
+    destlayer: 0
+    room: 1
+    objtype: STAG
+  - name: Remove First Eye SwAreaT 1 on layer 2
+    type: objdelete
+    id: 0xFC22
+    layer: 2
+    room: 1
+    objtype: STAG
+  - name: Remove First Eye SwAreaT 2 on layer 2
+    type: objdelete
+    id: 0xFC23
+    layer: 2
+    room: 1
+    objtype: STAG
+
   - name: Right Room Eyes
     type: objmove
     id: 0xFC48
