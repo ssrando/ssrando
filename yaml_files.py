@@ -64,6 +64,7 @@ def requirements_gen(folder: Path):
     requirements["exits"] = {"Start": "Nothing"}
     if "macros.yaml" in os.listdir(folder):
         requirements["macros"] = yaml_load(folder / "macros.yaml")
+        requirements["macros"].update(yaml_load(folder / "macros-batreaux.yaml"))
     return requirements
 
 

@@ -40,6 +40,7 @@ def write(
     randomized_trial_entrance,
     randomized_start_entrance,
     randomized_start_statues,
+    batreaux_crystal_counts,
 ):
     write_header(file, options, hash)
     norm = areas.prettify
@@ -210,6 +211,25 @@ def write(
 
     file.write("\n\n\n")
 
+    # Write Batreaux Crystal Counts
+    file.write("Batreaux Crystal Counts:\n")
+    for count in range(3):
+        txt = ["First", "Second", "Third"]
+        file.write(
+            f"  Batreaux's {txt[count]} Reward: {batreaux_crystal_counts[count]} Gratitude Crystals\n"
+        )
+    file.write(f"  Batreaux's Chest: {batreaux_crystal_counts[2]} Gratitude Crystals\n")
+    for count in range(3):
+        txt = ["Fourth", "Fifth", "Sixth"]
+        file.write(
+            f"  Batreaux's {txt[count]} Reward: {batreaux_crystal_counts[count + 3]} Gratitude Crystals\n"
+        )
+    file.write(
+        f"  Batreaux's Seventh Reward: {batreaux_crystal_counts[5]} Gratitude Crystals\n  Batreaux's Final Reward: {batreaux_crystal_counts[6]} Gratitude Crystals"
+    )
+
+    file.write("\n\n\n")
+
     # Write hints.
     file.write("Hints:\n")
 
@@ -249,6 +269,7 @@ def dump_json(
     randomized_trial_entrance,
     randomized_start_entrance,
     randomized_start_statues,
+    batreaux_crystal_counts,
 ):
     spoiler_log = dump_header_json(options, hash)
     if options["no-spoiler-log"]:
@@ -266,6 +287,7 @@ def dump_json(
     spoiler_log["trial-connections"] = randomized_trial_entrance
     spoiler_log["randomized-start-entrance"] = randomized_start_entrance
     spoiler_log["randomized-start-statues"] = randomized_start_statues
+    spoiler_log["batreaux-crystal-counts"] = batreaux_crystal_counts
     return spoiler_log
 
 
