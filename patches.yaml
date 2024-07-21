@@ -3467,6 +3467,30 @@ F210: # Mogma Turf
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Remove Zelda Dowsing Target 1
+    type: objdelete
+    id: 0xFC80
+    layer: 1
+    room: 0
+    objtype: STAG
+  - name: Remove Zelda Dowsing Target 2
+    type: objdelete
+    id: 0xFC81
+    layer: 1
+    room: 0
+    objtype: STAG
+  - name: Remove Zelda Dowsing Target 3
+    type: objdelete
+    id: 0xFC82
+    layer: 1
+    room: 0
+    objtype: STAG
+  - name: Remove Propeller Dowsing Target
+    type: objdelete
+    id: 0xFC6B
+    layer: 0
+    room: 0
+    objtype: STAG
 F211:
   - name: Remove thrill digger entry CS
     type: objpatch
