@@ -182,7 +182,7 @@ class LogicUtils(Logic):
         if index is None:
             index = EXTENDED_ITEM[self.short_to_full(DEMISE)]
         for item in self.get_sots_items(index):
-            if self.placement.item_placement_limit.get(item, ""):
+            if self.placement.item_placement_limit[item] != DEFAULT_PLACEMENT_LIMIT:
                 continue
 
             sots_loc = self.placement.items[item]
@@ -226,7 +226,7 @@ class LogicUtils(Logic):
             for loc in (self.placement.items[item],)
             if item not in self.placement.starting_items
             if item not in self.placement.unplaced_items
-            if not self.placement.item_placement_limit.get(item, "")
+            if self.placement.item_placement_limit[item] == DEFAULT_PLACEMENT_LIMIT
             if loc not in self.known_locations
         )
 
