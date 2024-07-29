@@ -1,5 +1,7 @@
 #![allow(non_snake_case)]
 
+use core::ptr::addr_of_mut;
+
 #[repr(C)]
 pub struct SpawnStruct {
     pub name:                   [u8; 32],
@@ -53,7 +55,7 @@ pub fn get_ptr() -> *mut Reloader {
 }
 
 pub fn get_spawn_slave() -> &'static mut SpawnStruct {
-    return unsafe { &mut SPAWN_SLAVE };
+    return unsafe { &mut *addr_of_mut!(SPAWN_SLAVE) };
 }
 
 pub fn set_reload_trigger(trigger: u8) {
