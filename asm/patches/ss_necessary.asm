@@ -887,6 +887,13 @@ rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
 ; .org 0x80f35a18
 .org 0x8E8
 b set_sot_placed_flag
+
+; .org 0x80f35a34
+; change the check to make sure both night and trial are false
+.org 0x904
+lhz r0, 0x25(r3)
+cmpwi r0, 0
+bne 0x950 ; 0x80f35a80
 .close
 
 .open "d_a_obj_time_boatNP.rel"
