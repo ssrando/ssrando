@@ -49,6 +49,7 @@ class NonStoneHint(Hint):
     hint_mode: Enum
     songhintname: str
     item: str
+    importance: Enum
 
     base_type: str = field(init=False)
     raw_texts: dict[Enum, str] = field(init=False)
@@ -59,13 +60,15 @@ class NonStoneHint(Hint):
     def __post_init__(self):
         self.hint_type = f"{self.base_type}-{hint_types[self.hint_mode]}"
 
-    def to_text(self, norm) -> str:
+    def to_text(self, norm, include_color=False) -> str:
         if self.hint_mode == HINT_MODES.Direct:
-            return self.raw_texts[self.hint_mode].format(norm(self.item))
+            return self.raw_texts[self.hint_mode].format(
+                norm(self.item), format_importance(self.importance, include_color)
+            )
         return self.raw_texts[self.hint_mode]
 
     def to_ingame_text(self, norm) -> List[str]:
-        return [self.to_text(norm)]
+        return [self.to_text(norm, True)]
 
     def to_spoiler_log_text(self, norm) -> str:
         return f"{self.to_text(norm)} [{self.item}]"
@@ -83,10 +86,10 @@ class SongHint(NonStoneHint):
     base_type = "song"
     raw_texts = {
         HINT_MODES.Empty: "",
-        HINT_MODES.Direct: "This trial holds {}",
+        HINT_MODES.Direct: "This trial holds {}{}.",
         HINT_MODES.Useless: "Its reward is probably not too important...",
         HINT_MODES.Useful: "You might need its reward...",
-        HINT_MODES.Required: "Your spirit will grow by completing this trial",
+        HINT_MODES.Required: "Your spirit will grow by completing this trial.",
     }
 
 
@@ -126,22 +129,23 @@ class GossipStoneHintWrapper:
 class LocationHint(RegularHint):
     location: EXTENDED_ITEM_NAME
     item: EXTENDED_ITEM_NAME
+    importance: Enum
     location_name_override: Optional[str] = None
 
     def to_stone_text(self, norm) -> str:
         if override := self.location_name_override:
-            return f"They say that {override} <y<{norm(self.item)}>>."
+            return f"They say that {override} <y<{norm(self.item)}>>{format_importance(self.importance, True)}."
 
-        return f"They say that <r<{norm(self.location)}>> has <y<{norm(self.item)}>>."
+        return f"They say that <r<{norm(self.location)}>> has <y<{norm(self.item)}>>{format_importance(self.importance, True)}."
 
     def to_fi_text(self, norm) -> str:
         if override := self.location_name_override:
-            return f"My readings suggest that {override} <y<{norm(self.item)}>>."
+            return f"My readings suggest that {override} <y<{norm(self.item)}>>{format_importance(self.importance, True)}."
 
         return f"My readings suggest that <r<{norm(self.location)}>> has <y<{norm(self.item)}>>."
 
     def to_spoiler_log_text(self, norm) -> str:
-        return f"{norm(self.location)} has {self.item} [{self.hint_type}]"
+        return f"{norm(self.location)} has {self.item}{format_importance(self.importance)} [{self.hint_type}]"
 
     def to_spoiler_log_json(self):
         return {
@@ -159,13 +163,13 @@ class TrialGateHint(LocationHint):
     trial_gate: str
 
     def to_stone_text(self, norm) -> str:
-        return f"They say that opening the <r<{norm(self.trial_gate)}>> will reveal <y<{norm(self.item)}>>."
+        return f"They say that opening the <r<{norm(self.trial_gate)}>> will reveal <y<{norm(self.item)}>>{format_importance(self.importance, True)}."
 
     def to_fi_text(self, norm) -> str:
-        return f"My readings indicate that opening the <r<{norm(self.trial_gate)}>> will reveal <y<{norm(self.item)}>>."
+        return f"My readings indicate that opening the <r<{norm(self.trial_gate)}>> will reveal <y<{norm(self.item)}>>{format_importance(self.importance, True)}."
 
     def to_spoiler_log_text(self, norm) -> str:
-        return f"{self.trial_gate} has {self.item}"
+        return f"{self.trial_gate} has {self.item}{format_importance(self.importance)}"
 
     def to_spoiler_log_json(self):
         return {
@@ -182,13 +186,13 @@ class ZoneItemHint(LocationHint):
     zone_override: str
 
     def to_stone_text(self, norm) -> str:
-        return f"<y<{norm(self.item)}>> can be found in <r<{self.zone_override}>>."
+        return f"<y<{norm(self.item)}>>{format_importance(self.importance, True)} can be found in <r<{self.zone_override}>>."
 
     def to_fi_text(self, norm) -> str:
-        return f"I detect signals relating to <y<{norm(self.item)}>> in <r<{self.zone_override}>>."
+        return f"I detect signals relating to <y<{norm(self.item)}>>{format_importance(self.importance, True)} in <r<{self.zone_override}>>."
 
     def to_spoiler_log_text(self, norm) -> str:
-        return f"{self.item} is in {self.zone_override} [zone]"
+        return f"{self.item}{format_importance(self.importance)} is in {self.zone_override} [zone]"
 
     def to_spoiler_log_json(self):
         return {
@@ -338,3 +342,29 @@ class FiHintWrapper(GossipStoneHintWrapper):
         return [
             hint_txt for hint in self.hints for hint_txt in hint.to_ingame_fi_text(norm)
         ]
+
+
+HINT_IMPORTANCE = Enum(
+    "HINT_IMPORTANCE", ["Required", "PossiblyRequired", "NotRequired", "Null"]
+)
+
+
+def format_importance(importance: Enum, include_color=False) -> str:
+    match importance:
+        case HINT_IMPORTANCE.Required:
+            if include_color:
+                return " (<g+<required>>)"
+            else:
+                return " (required)"
+        case HINT_IMPORTANCE.PossiblyRequired:
+            if include_color:
+                return " (<ye<possibly required>>)"
+            else:
+                return " (possibly required)"
+        case HINT_IMPORTANCE.NotRequired:
+            if include_color:
+                return " (<blk<not required>>)"
+            else:
+                return " (not required)"
+        case HINT_IMPORTANCE.Null:
+            return ""

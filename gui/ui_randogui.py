@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.2
+## Created by: Qt User Interface Compiler version 6.6.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1184,6 +1184,11 @@ class Ui_MainWindow(object):
 
         self.vlay_stone_hints.addWidget(self.option_precise_item)
 
+        self.option_hint_importance = QCheckBox(self.box_stone_hints)
+        self.option_hint_importance.setObjectName(u"option_hint_importance")
+
+        self.vlay_stone_hints.addWidget(self.option_hint_importance)
+
         self.vspace_stone_hints = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.vlay_stone_hints.addItem(self.vspace_stone_hints)
@@ -2133,6 +2138,7 @@ class Ui_MainWindow(object):
         self.label_for_option_hint_distribution.setText(QCoreApplication.translate("MainWindow", u"Hint Distribution", None))
         self.option_cube_sots.setText(QCoreApplication.translate("MainWindow", u"Separate Cube SotS Hints", None))
         self.option_precise_item.setText(QCoreApplication.translate("MainWindow", u"Precise Item Hints", None))
+        self.option_hint_importance.setText(QCoreApplication.translate("MainWindow", u"Hint Importance", None))
         self.box_other_hints.setTitle(QCoreApplication.translate("MainWindow", u"Other Hints", None))
         self.label_for_option_song_hints.setText(QCoreApplication.translate("MainWindow", u"Song Hints", None))
         self.option_impa_sot_hint.setText(QCoreApplication.translate("MainWindow", u"Impa Stone of Trials Hint", None))

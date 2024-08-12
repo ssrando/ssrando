@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from functools import cache
 from typing import List  # Only for typing purposes
+from hints.hint_types import HINT_IMPORTANCE
 
 from .logic import Logic, Placement, LogicSettings
 from .logic_input import Areas
@@ -252,7 +253,9 @@ class LogicUtils(Logic):
             [k for k, v in checks_per_region.items() if v == 0],
         )
 
-    def get_barren_regions(self, bit=EVERYTHING_UNBANNED_BIT):
+    def get_barren_regions(self, bit=None):
+        if bit is None:
+            bit = EXTENDED_ITEM[self.short_to_full(DEMISE)]
         return self._get_barren_regions(bit)
 
     def calculate_playthrough_progression_spheres(self):
@@ -313,3 +316,17 @@ class LogicUtils(Logic):
                 return 8
 
         return {k: dowse(v) for k, v in self.placement.locations.items()}
+
+    def get_importance_for_item(self, item):
+        # Skip trivially unrequired items
+        if item not in self.get_useful_items():
+            return HINT_IMPORTANCE.Null
+        # Then check if the item is SotS
+        if item in self.get_sots_items():
+            return HINT_IMPORTANCE.Required
+        # Then check if the item is considered useful for Demise; ultimately unrequired items will not count
+        elif item in self.get_useful_items(EXTENDED_ITEM[self.short_to_full(DEMISE)]):
+            return HINT_IMPORTANCE.PossiblyRequired
+        # The item must now be not required
+        else:
+            return HINT_IMPORTANCE.NotRequired
