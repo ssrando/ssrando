@@ -298,7 +298,7 @@ class LogicUtils(Logic):
     def _get_barren_regions(self, index: EXTENDED_ITEM):
         useful_checks = (
             loc
-            for item in self.get_useful_items(index)
+            for item in self.get_useful_items(index, True)
             for loc in (self.placement.items[item],)
             if item not in self.placement.starting_items
             if item not in self.placement.unplaced_items
