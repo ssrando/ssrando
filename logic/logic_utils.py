@@ -382,7 +382,7 @@ class LogicUtils(Logic):
             assert dowsing_setting == "Progress Items"
 
             def dowse(v) -> int:
-                if v in self.get_useful_items(exclude_redundant_copies=True):
+                if v in self.get_useful_items():
                     return 0
                 if v in RUPEES:
                     return 1
