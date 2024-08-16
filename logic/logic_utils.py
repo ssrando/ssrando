@@ -205,15 +205,90 @@ class LogicUtils(Logic):
             if (loc := EXTENDED_ITEM.get_item_name(i)) in INVENTORY_ITEMS
         ]
 
-    def get_useful_items(self, bit=EVERYTHING_UNBANNED_BIT):
+    def get_useful_items(
+        self, bit=EVERYTHING_UNBANNED_BIT, exclude_redundant_copies=False
+    ):
         res = self._get_useful_items(bit)
         if not res:
-            res = [
+            return [
                 loc
                 for i in self.full_inventory.intset
                 if (loc := EXTENDED_ITEM.get_item_name(i)) in PROGRESS_ITEMS
             ]
-        return res
+        if not exclude_redundant_copies:
+            return res
+        items_to_remove = set()
+        # First, check for redundancies in items that are only useful for one copy
+        only_useful_once = [
+            PROGRESSIVE_POUCHES.keys(),
+            PROGRESSIVE_BOWS.keys(),
+            PROGRESSIVE_SLINGSHOTS.keys(),
+            PROGRESSIVE_BUG_NETS.keys(),
+            EMPTY_BOTTLES.keys(),
+        ]
+        for item_set in only_useful_once:
+            # If a copy of this item is on the path to this item, this item must be redundant
+            # since pouches, slinghots, bows, bug nets, and bottles are only ever useful once.
+            # Ideally, we'd check for if the "set of all other items" is path to the item; i.e.,
+            # if this item is unreachable if all other copies are removed from consideration, but
+            # that doesn't seem to work any better than the SotS check right now.
+            for item in item_set:
+                if any(
+                    [
+                        sots_item
+                        for sots_item in self.get_sots_items(EXTENDED_ITEM[item])
+                        if strip_item_number(sots_item) == strip_item_number(item)
+                        and sots_item != item
+                    ]
+                ):
+                    items_to_remove.add(item)
+        REVERSE_BATREAUX_LIST = reversed(self.locations_by_hint_region(BATREAUX))
+        max_batreaux_reward = None
+        other_max_batreaux_reward = None
+        for index, loc in enumerate(REVERSE_BATREAUX_LIST):
+            if loc not in self.banned:
+                max_batreaux_reward = loc
+                match index:
+                    case 1:  # Bat 70 second reward
+                        # Include normal bat 70
+                        other_max_batreaux_reward = REVERSE_BATREAUX_LIST[2]
+                    case 2:  # Bat 70
+                        # Include bat 70 second reward
+                        other_max_batreaux_reward = REVERSE_BATREAUX_LIST[1]
+                    case 6:  # Bat 30 chest
+                        # Include normal bat 30
+                        other_max_batreaux_reward = REVERSE_BATREAUX_LIST[7]
+                    case 7:  # Bat 30
+                        # Include bat 30 chest
+                        other_max_batreaux_reward = REVERSE_BATREAUX_LIST[6]
+                break
+        if max_batreaux_reward is not None:
+            for crystal_pack in GRATITUDE_CRYSTAL_PACKS.keys():
+                # Crystal packs that logically come after the max Batreaux reward are redundant
+                sots_locs = [
+                    i[1] for i in self.get_sots_locations(EXTENDED_ITEM[crystal_pack])
+                ]
+                if max_batreaux_reward in sots_locs:
+                    items_to_remove.add(crystal_pack)
+                elif other_max_batreaux_reward is not None:
+                    # We must check the equivalent-level batreaux reward if it is 70 or 30
+                    if other_max_batreaux_reward in sots_locs:
+                        items_to_remove.add(crystal_pack)
+        WALLET_LOCKED_BEEDLE = SORTED_BEEDLE_CHECKS[:4]
+        max_beedle = None
+        for loc in WALLET_LOCKED_BEEDLE:
+            if loc not in self.banned:
+                max_beedle = loc
+                break
+        if max_beedle is not None:
+            for wallet in list(PROGRESSIVE_WALLETS.keys()) + list(EXTRA_WALLETS.keys()):
+                sots_locs = [
+                    i[1] for i in self.get_sots_locations(EXTENDED_ITEM[wallet])
+                ]
+                # Wallets that logically come after the max Beedle shop item are redundant
+                if max_beedle in sots_locs:
+                    items_to_remove.add(wallet)
+        return [item for item in res if item not in items_to_remove]
 
     @cache
     def locations_by_hint_region(self, region):
@@ -307,7 +382,7 @@ class LogicUtils(Logic):
             assert dowsing_setting == "Progress Items"
 
             def dowse(v) -> int:
-                if v in self.get_useful_items():
+                if v in self.get_useful_items(exclude_redundant_copies=True):
                     return 0
                 if v in RUPEES:
                     return 1
@@ -325,7 +400,9 @@ class LogicUtils(Logic):
         if item in self.get_sots_items():
             return HINT_IMPORTANCE.Required
         # Then check if the item is considered useful for Demise; ultimately unrequired items will not count
-        elif item in self.get_useful_items(EXTENDED_ITEM[self.short_to_full(DEMISE)]):
+        elif item in self.get_useful_items(
+            EXTENDED_ITEM[self.short_to_full(DEMISE)], True
+        ):
             return HINT_IMPORTANCE.PossiblyRequired
         # The item must now be not required
         else:

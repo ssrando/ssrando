@@ -188,6 +188,9 @@ class Randomizer(BaseRandomizer):
             )
             for goal in goals
         }
+        useful_items = self.logic.get_useful_items(
+            EXTENDED_ITEM[self.areas.short_to_full(DEMISE)], True
+        )
 
         if self.options["json"]:
             dump = SpoilerLog.dump_json(
@@ -218,6 +221,7 @@ class Randomizer(BaseRandomizer):
                     hints=self.logic.placement.hints,
                     required_dungeons=self.logic.required_dungeons,
                     sots_items=sots_items,
+                    useful_items=useful_items,
                     barren_nonprogress=self.logic.get_barren_regions(),
                     randomized_dungeon_entrance=self.logic.randomized_dungeon_entrance,
                     randomized_trial_entrance=self.logic.randomized_trial_entrance,
