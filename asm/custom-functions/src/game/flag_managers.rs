@@ -1,6 +1,9 @@
 #![allow(non_snake_case)]
 use super::file_manager::{self};
-use core::ffi::{c_ushort, c_void};
+use core::{
+    ffi::{c_ushort, c_void},
+    ptr::addr_of_mut,
+};
 
 #[repr(C)]
 struct FlagSpace {
@@ -57,7 +60,7 @@ extern "C" {
 
 impl StoryflagManager {
     pub fn get_static() -> *mut [u16; 0x80] {
-        unsafe { &mut STATIC_STORYFLAGS }
+        addr_of_mut!(STATIC_STORYFLAGS)
     }
     pub fn do_commit() {
         unsafe { StoryflagManager__doCommit(STORYFLAG_MANAGER) };
@@ -79,7 +82,7 @@ impl StoryflagManager {
 
 impl ItemflagManager {
     pub fn get_static() -> *mut [u16; 0x40] {
-        unsafe { &mut STATIC_ITEMFLAGS }
+        addr_of_mut!(STATIC_ITEMFLAGS)
     }
     pub fn do_commit() {
         unsafe { ItemflagManager__doCommit(ITEMFLAG_MANAGER) };
@@ -118,7 +121,7 @@ impl DungeonflagManager {
     /// returns the pointer to the static dungeonflags, those for the current
     /// sceneflagindex
     pub fn get_local() -> *mut [u16; 8] {
-        unsafe { &mut STATIC_DUNGEON_FLAGS }
+        addr_of_mut!(STATIC_DUNGEON_FLAGS)
     }
     pub fn get_global(scn_idx: u16) -> *mut [u16; 8] {
         unsafe {
