@@ -1112,3 +1112,17 @@
   help: If enabled, the starting statue for each surface region will be randomized. All overworld statues
         except Inside the Volcano and Inside Fire Sanctuary may be chosen.
   ui: option_random_start_statues
+- name: Batreaux Crystal Counts
+  command: batreaux-counts
+  type: singlechoice
+  bits: 2
+  default: Vanilla
+  choices: 
+    - Vanilla
+    - Half
+    - Random
+  help: "Determines the amount of crystals batreaux will require for each of his rewards.
+        **Vanilla**: The normal required crystal counts (min 5, max 80).
+        **Half**: Half of the normal required crystal counts (min 2, max 40).
+        **Random**: Completely random required crystal counts (min 1, max 80)."
+  ui: option_batreaux_counts
