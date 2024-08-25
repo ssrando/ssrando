@@ -54,7 +54,9 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 LOGIC_MODE_TO_TRICKS_SETTING = {
     "Glitchless": None,
-    "BiTless": "enabled-tricks-bitless",
+    "Normal": "enabled-tricks-bitless",
+    "Beatable Only": "enabled-tricks-bitless",
+    "Beatable Then Banned": "enabled-tricks-bitless",
     "Glitched": "enabled-tricks-glitched",
     "No Logic": None,
 }
@@ -574,7 +576,7 @@ class RandoGUI(QMainWindow):
         if "Glitchless" in logic_mode:
             self.options.set_option("enabled-tricks-bitless", [])
             self.options.set_option("enabled-tricks-glitched", [])
-        elif "BiTless" in logic_mode:
+        elif logic_mode in ("Normal", "Beatable Only", "Beatable Then Banned"):
             self.options.set_option("enabled-tricks-bitless", self.enabled_tricks)
             self.options.set_option("enabled-tricks-glitched", [])
         elif "Glitched" in logic_mode:

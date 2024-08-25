@@ -18,7 +18,7 @@ from .inventory import (
     Inventory,
     EXTENDED_ITEM,
     HINT_BYPASS_BIT,
-    BANNED_BIT,
+    BANNED,
 )
 from .constants import *
 from .placements import *
@@ -87,7 +87,7 @@ class Rando:
             self.logic_options_requirements
             | self.endgame_requirements
             | {i: DNFInventory(True) for i in self.placement.starting_items}
-            | self.no_logic_requirements
+            | self.logic_mode_requirements
         )
 
         logic_settings = LogicSettings(
@@ -320,14 +320,21 @@ class Rando:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
 
-        self.no_logic_requirements = {}
-        if self.options["logic-mode"] == "No Logic":
-            self.no_logic_requirements = {
-                item: DNFInventory(True)
-                for item in EXTENDED_ITEM.items_list
-                if EXTENDED_ITEM[item] != BANNED_BIT
-                if item not in self.placement.unplaced_items
+        DEMISE_BIT = EXTENDED_ITEM[self.areas.short_to_full(DEMISE)]
+        self.logic_mode_requirements = {}
+        logic_mode = self.options["logic-mode"]
+        if logic_mode == "No Logic":
+            self.logic_mode_requirements |= {
+                check: DNFInventory(True) for check in self.areas.checks
             }
+        elif logic_mode == "Beatable Only":
+            self.logic_mode_requirements |= {
+                check: DNFInventory(DEMISE_BIT) for check in self.areas.checks
+            }
+        elif logic_mode == "Beatable Then Banned":
+            self.logic_mode_requirements |= {BANNED: DNFInventory(DEMISE_BIT)}
+        else:
+            assert logic_mode == "Normal"
 
         must_be_placed_items = (
             PROGRESS_ITEMS
@@ -669,7 +676,7 @@ class Rando:
             ]
 
         start_entrance = self.rng.choices(possible_start_entrances, weights, k=1)[0]
-        self.placement.map_transitions["\Start"] = start_entrance[0]
+        self.placement.map_transitions[r"\Start"] = start_entrance[0]
         values = start_entrance[1]
 
         self.randomized_start_entrance = {
