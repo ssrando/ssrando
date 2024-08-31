@@ -142,7 +142,7 @@ class LocationHint(RegularHint):
         if override := self.location_name_override:
             return f"My readings suggest that {override} <y<{norm(self.item)}>>{format_importance(self.importance, True)}."
 
-        return f"My readings suggest that <r<{norm(self.location)}>> has <y<{norm(self.item)}>>."
+        return f"My readings suggest that <r<{norm(self.location)}>> has <y<{norm(self.item)}>>{format_importance(self.importance, True)}."
 
     def to_spoiler_log_text(self, norm) -> str:
         return f"{norm(self.location)} has {self.item}{format_importance(self.importance)} [{self.hint_type}]"
@@ -363,7 +363,7 @@ def format_importance(importance: Enum, include_color=False) -> str:
                 return " (possibly required)"
         case HINT_IMPORTANCE.NotRequired:
             if include_color:
-                return " (<blk<not required>>)"
+                return " (<s<not required>>)"
             else:
                 return " (not required)"
         case HINT_IMPORTANCE.Null:
