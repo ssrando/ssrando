@@ -17,8 +17,8 @@ SECTION_TYPES = [
     b"SCN0",
     b"PLT0",
     b"VIS0",
-    b"RASD", # Follows the Same Formats as others with 4-byte sig.
-    b"EXT ", # Not an actual sig, but used for data in external folder.
+    b"RASD",  # Follows the Same Formats as others with 4-byte sig.
+    b"EXT ",  # Not an actual sig, but used for data in external folder.
 ]
 
 
