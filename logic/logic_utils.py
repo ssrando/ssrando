@@ -227,19 +227,18 @@ class LogicUtils(Logic):
             EMPTY_BOTTLES.keys(),
         ]
         for item_set in only_useful_once:
-            # If a copy of this item is on the path to this item, this item must be redundant
-            # since pouches, slinghots, bows, bug nets, and bottles are only ever useful once.
-            # Ideally, we'd check for if the "set of all other items" is path to the item; i.e.,
-            # if this item is unreachable if all other copies are removed from consideration, but
-            # that doesn't seem to work any better than the SotS check right now.
             for item in item_set:
-                if any(
+                # If an item is not accessible with all other copies of this item removed, it must
+                # be redundant since it is definitely locked by a previous copy.
+                if not self.restricted_test(
+                    EXTENDED_ITEM[item],
                     [
-                        sots_item
-                        for sots_item in self.get_sots_items(EXTENDED_ITEM[item])
-                        if strip_item_number(sots_item) == strip_item_number(item)
-                        and sots_item != item
-                    ]
+                        EXTENDED_ITEM[self.placement.items[item_copy]]
+                        for item_copy in item_set
+                        if item != item_copy
+                        and item_copy not in self.placement.starting_items
+                    ],
+                    self.inventory | HINT_BYPASS_BIT,
                 ):
                     items_to_remove.add(item)
         REVERSE_BATREAUX_LIST = reversed(self.locations_by_hint_region(BATREAUX))
