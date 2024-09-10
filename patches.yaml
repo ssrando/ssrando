@@ -2568,6 +2568,18 @@ F200: # Eldin main area
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Monster horn arc delete
+    type: oarcdelete
+    oarc: GetSozaiL
+    layer: 1
+  - name: Golden Skull arc delete
+    type: oarcdelete
+    oarc: GetSozaiO
+    layer: 1
+  - name: Key piece arc delete
+    type: oarcdelete
+    oarc: GetKeyKakera
+    layer: 1
   - name: intro cs
     type: objmove
     id: 0xFC26
@@ -2643,12 +2655,16 @@ F200: # Eldin main area
     destlayer: 0
     room: 2
     objtype: STAG
-  - name: Propeller delete # undo this when starting without scrapper repaired
+  - name: Propeller delete
     type: objdelete
     id: 0xFC2E
     layer: 0
     room: 4
     objtype: OBJ
+  - name: Propeller arc delete
+    type: oarcdelete
+    oarc: Pinwheel
+    layer: 0
   - name: Forced camera when draining lava before digging mitts
     type: objdelete
     id: 0xFCD6
