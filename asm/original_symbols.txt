@@ -115,6 +115,8 @@ main.dol:
     ITEM_GET_BOTTLE_POUCH_SLOT: 0x8057398c
     getKeyPieceCount: 0x802522f0
     getGratitudeCrystalCount: 0x80252710
+    processSpecialItemDropIndex: 0x800c7bb0
+    spawnDrop: 0x80248c90
     # ----------------- TEXT ----------------------------------
     CharWriter__SetupGX: 0x8042db90
     CharWriter__GetFontWidth: 0x8042e610
