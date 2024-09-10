@@ -404,6 +404,9 @@ extern "C" fn get_start_info() -> *const StartInfo {
 extern "C" fn send_to_start() {
     let start_info = unsafe { get_start_info().as_ref().unwrap() };
 
+    // manage storyflag that indicates day/night
+    StoryflagManager::set_to_value(737, start_info.forced_night.into());
+
     // we can't use the normal triggerEntrance function, because that doesn't work
     // properly when going from title screen to normal gameplay while keeping
     // the stage
