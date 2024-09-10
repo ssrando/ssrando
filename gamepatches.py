@@ -1,5 +1,6 @@
 import copy
 from pathlib import Path
+import math
 import random
 from collections import Counter, OrderedDict, defaultdict
 
@@ -11,7 +12,10 @@ from typing import Optional
 import re
 import struct
 
+import numpy as np
 import nlzss11
+from brresTools.MDL0 import MDL0
+from brresTools.brres import BRRES
 from sslib import AllPatcher, U8File
 from sslib.msb import process_control_sequences
 from sslib.utils import write_bytes_create_dirs, encodeBytes, toBytes
@@ -33,7 +37,7 @@ from asm.patcher import apply_dol_patch, apply_rel_patch
 from util.textbox_utils import (
     break_lines,
     break_and_make_multiple_textboxes,
-    make_mutliple_textboxes,
+    make_multiple_textboxes,
 )
 
 TOTAL_STAGE_FILES = 369
@@ -1083,6 +1087,41 @@ def try_patch_obj(obj, key, value):
             obj["params1"] = mask_shift_set(obj["params1"], 0x03, 28, value)
         else:
             print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj["name"] == "UtaStop":
+        # Isle of Songs blocker
+        # n.b. angle and ring changes leave a socket in the main island mesh
+        # that makes reading the puzzle very difficult, so they're unused, but
+        # they've been tested to work. TODO use MDL0 editing for these, but also
+        # prove the puzzle remains solvable
+        if key == "angle":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xF, 12, value)
+        elif key == "ring":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xF, 8, value)
+        elif key == "tempflag":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 0, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj["name"] == "SwDir2":
+        # ancient cistern/sandship door lock
+        if key == "combo":
+            # their mapping: up: 0, down: 1, left: 2, right: 3
+            # our mapping:   up: 0, left: 1, down: 2, right: 3
+            # to make the "rotations" work in our puzzle our order
+            # works counter-clockwise
+            mapping_translation = [0, 2, 1, 3]
+            order = [mapping_translation[i] for i in value]
+            obj["params1"] = mask_shift_set(obj["params1"], 7, 0x10, order[0])
+            obj["params1"] = mask_shift_set(obj["params1"], 7, 0x13, order[1])
+            obj["params1"] = mask_shift_set(obj["params1"], 7, 0x16, order[2])
+            obj["params1"] = mask_shift_set(obj["params1"], 7, 0x19, order[3])
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
+    elif obj["name"] == "Swhit":
+        # crystals switch
+        if key == "setscenefid":
+            obj["params1"] = mask_shift_set(obj["params1"], 0xFF, 3, value)
+        else:
+            print(f'ERROR: unsupported key "{key}" to patch for object {obj}')
     else:
         print(f"ERROR: unsupported object to patch {obj}")
 
@@ -1444,6 +1483,7 @@ class GamePatcher:
         self.patch_random_starting_statue_flags()
 
         self.patcher.set_bzs_patch(self.bzs_patch_func)
+        self.patcher.set_room_brres_patch(self.room_brres_patch_func)
         self.patcher.set_event_patch(self.flow_patch)
         self.patcher.set_event_text_patch(self.text_patch)
         self.patcher.progress_callback = self.progress_callback
@@ -1555,6 +1595,9 @@ class GamePatcher:
                 SWORD_COUNT[self.placement_file.options["got-sword-requirement"]] - 1,
             ]
         }
+
+        if self.placement_file.puzzles is not None:
+            self.add_puzzle_patches()
 
         # Damage Multiplier patch requires input, replacing one line
         # muli r27, r27, (multiplier)
@@ -1852,6 +1895,140 @@ class GamePatcher:
                 self.eventpatches["105-Terry"].append(
                     {"name": discounted, "type": "textadd", "text": discount_text}
                 )
+
+    def add_puzzle_patches(self):
+        self.add_patch_to_stage(
+            "D301",
+            {
+                "name": "Randomize Sandship Door Lock",
+                "type": "objpatch",
+                "id": 0xFC15,
+                "layer": 12,
+                "room": 10,
+                "objtype": "OBJ ",
+                "object": {"combo": self.placement_file.puzzles["sandship"]["combo"]},
+            },
+        )
+        self.add_patch_to_stage(
+            "D301",
+            {
+                "name": "Randomize Sandship Door Lock",
+                "type": "objpatch",
+                "id": 0xFC18,
+                "layer": 4,
+                "room": 10,
+                "objtype": "OBJ ",
+                "object": {"combo": self.placement_file.puzzles["sandship"]["combo"]},
+            },
+        )
+
+        self.add_patch_to_stage(
+            "D101",
+            {
+                "name": "Randomize Ancient Cistern Door Lock",
+                "type": "objpatch",
+                "id": 0xFC09,
+                "layer": 0,
+                "room": 1,
+                "objtype": "OBJ ",
+                "object": {"combo": self.placement_file.puzzles["cistern"]["combo"]},
+            },
+        )
+
+        self.add_patch_to_stage(
+            "D301",
+            {
+                "name": "Shuffle Sandship Puzzle hints",
+                "type": "roomBRRESpatch",
+                "room": 10,
+                "func": self.patch_sandship_puzzle,
+            },
+        )
+
+        self.add_patch_to_stage(
+            "D101",
+            {
+                "name": "Shuffle Ancient Cistern Puzzle hints",
+                "type": "roomBRRESpatch",
+                "room": 0,
+                "func": self.patch_ancient_cistern_puzzle,
+            },
+        )
+
+        self.add_patch_to_stage(
+            "D101",
+            {
+                "name": "Shuffle Ancient Cistern Puzzle Hand hints",
+                "type": "oarcpatch",
+                "layer": 0,
+                "oarc": "TowerHandD101.arc",
+                "func": self.patch_ancient_cistern_puzzle_hands,
+            },
+        )
+
+        original_text_order = [
+            "back",
+            "rear",
+            "back of the right hand",
+            "back of the left hand",
+        ]
+        new_order = [
+            original_text_order[i]
+            for i in self.placement_file.puzzles["cistern"]["hint_order"]
+        ]
+        text = f"First the <r<{new_order[0]}>>, then the <r<{new_order[1]}>>, then the <r<{new_order[2]}>>, and finally the <r<{new_order[3]}>>."
+
+        self.add_patch_to_event(
+            "202-ForestD2",
+            {
+                "name": "Ancient Cistern puzzle tablet shuffle",
+                "type": "textpatch",
+                "index": 2,
+                "text": make_multiple_textboxes(
+                    [
+                        "Carved into the <r<great statue\n>>are inscriptions of gratitude.\nThey reveal the <r<secret order >>of\nthis temple.",
+                        break_lines(text),
+                    ]
+                ),
+            },
+        )
+
+        # north to south
+        switch_objs = [0xFC1A, 0xFC1B, 0xFC1C]
+        # order
+        switch_flags = [29, 30, 31]
+        for idx, obj in enumerate(self.placement_file.puzzles["lmf"]["switch_combo"]):
+            self.add_patch_to_stage(
+                "D300_1",
+                {
+                    "name": "Randomize LMF Switches Puzzle " + str(idx),
+                    "type": "objpatch",
+                    "id": switch_objs[obj],
+                    "layer": 0,
+                    "room": 8,
+                    "objtype": "OBJ ",
+                    "object": {"setscenefid": switch_flags[idx]},
+                },
+            )
+
+        self.add_patch_to_stage(
+            "D300_1",
+            {
+                "name": "LMF BK Switches Puzzle Hints",
+                "type": "roomBRRESpatch",
+                "room": 8,
+                "func": self.patch_lmf_switches_puzzle,
+            },
+        )
+
+        # Ghidra: 0x80d757f0
+        for i in range(3):
+            # this patches the three immediates in li intructions, which looks safe
+            # (the registers are always overwritten before they read again)
+            self.all_asm_patches["d_a_obj_utajima_main_mechaNP.rel"][
+                0x860 + 4 * i + 3
+            ] = {"Data": [self.placement_file.puzzles["isle"]["pedestal_positions"][i]]}
+        # TODO randomize blockers (need to move blocker sockets using MDL0 editing)
 
     def do_build_arc_cache(self):
         self.progress_callback("building arc cache...")
@@ -2309,7 +2486,7 @@ class GamePatcher:
                 "name": "Race Integrity Patch for Fi",
                 "type": "textpatch",
                 "index": 153,
-                "text": make_mutliple_textboxes(
+                "text": make_multiple_textboxes(
                     [
                         f"Congratulations, Master <heroname>.\nHash: {self.placement_file.hash_str}",
                         break_lines(
@@ -2340,6 +2517,10 @@ class GamePatcher:
                     self.stageoarcs[(stage, patch["destlayer"])].add(patch["oarc"])
                 elif patch["type"] == "oarcdelete":
                     remove_stageoarcs[(stage, patch["layer"])].add(patch["oarc"])
+                elif patch["type"] == "oarcpatch":
+                    self.patcher.patch_stage_oarc(
+                        stage, patch["layer"], patch["oarc"], patch["func"]
+                    )
 
         for (stage, layer), oarcs in self.stageoarcs.items():
             self.patcher.add_stage_oarc(stage, layer, oarcs)
@@ -2609,6 +2790,271 @@ class GamePatcher:
                             "object": {"params1": params, "name": actor_name},
                         },
                     )
+
+    def room_brres_patch_func(self, brres, stage, room):
+        stagepatches = self.patches.get(stage, [])
+        stagepatches = list(
+            filter(
+                lambda p: p["type"] == "roomBRRESpatch" and p["room"] == room,
+                stagepatches,
+            )
+        )
+
+        if not stagepatches:
+            return None
+
+        for patch in stagepatches:
+            brres = patch["func"](brres)
+
+        return brres
+
+    def patch_sandship_puzzle(self, brres: BRRES):
+        """Patches the Sandship Puzzle hints by moving and rotating the vertex coordinates"""
+        ssh_puzzle = self.placement_file.puzzles["sandship"]
+
+        # we know there are some wheels here and they each have the same number of vertices,
+        # but unfortunately the vertices are a bit shuffled. So we identify them via
+        # their distance to the respective center
+        radius_sq = 300**2
+        dist_sq = (
+            lambda c, v: (v[0] - c[0]) ** 2 + (v[1] - c[1]) ** 2 + (v[2] - c[2]) ** 2
+        )
+        centers = [
+            [149.0543, -447.1241, -703.2646],
+            [-551.6544, -447.1241, 851.0332],
+            [-0.02011, -447.1241, 1241.0332],
+            [249.9797, -447.1241, 651.0331],
+        ]
+
+        mdl: MDL0 = brres.get_file_data("3DModels(NW4R)/model0")
+
+        vertices = mdl.get_vertices("polySurface3711483__A_D301_HintMark_b01_1")
+        vertex_index_lists = [
+            [v_i for v_i, v in enumerate(vertices) if dist_sq(center, v) < radius_sq]
+            for center in centers
+        ]
+
+        new_vertices = vertices.copy()
+
+        for old_wheel_idx, wheel_idx in enumerate(ssh_puzzle["hint_order"]):
+            old_center = centers[old_wheel_idx]
+            new_center = centers[wheel_idx]
+            wheel_vertices = vertex_index_lists[old_wheel_idx]
+            for vertex in wheel_vertices:
+                old = vertices[vertex]
+                new_vertices[vertex] = [
+                    old[0] - old_center[0] + new_center[0],
+                    old[1] - old_center[1] + new_center[1],
+                    old[2] - old_center[2] + new_center[2],
+                ]
+
+        mdl.set_vertices("polySurface3711483__A_D301_HintMark_b01_1", new_vertices)
+
+        vertices = mdl.get_vertices("pCylinder941__A_HintMark00")
+        vertex_index_lists = [
+            [v_i for v_i, v in enumerate(vertices) if dist_sq(center, v) < radius_sq]
+            for center in centers
+        ]
+
+        new_vertices = vertices.copy()
+        for idx, list in enumerate(vertex_index_lists):
+            rotate_amt = ssh_puzzle["hint_rotations"][idx]
+            angle = rotate_amt * math.pi / 2.0
+            center = centers[idx]
+            for vertex_idx in list:
+                vertex = vertices[vertex_idx]
+                ux_ = vertex[0] - center[0]
+                uz_ = vertex[2] - center[2]
+                # todo maybe use numpy
+                # yes this is left handed
+                ux = ux_ * math.cos(angle) + uz_ * math.sin(angle)
+                uz = -ux_ * math.sin(angle) + uz_ * math.cos(angle)
+                new_vertices[vertex_idx] = [
+                    ux + center[0],
+                    vertex[1],
+                    uz + center[2],
+                ]
+        mdl.set_vertices("pCylinder941__A_HintMark00", new_vertices)
+
+        brres.set_file_data("3DModels(NW4R)/model0", mdl)
+        return brres
+
+    def patch_ancient_cistern_puzzle(self, brres: BRRES):
+        """Patches the Ancient Cistern puzzle back and rear hints by rotating their vertex indices"""
+        rotations = self.placement_file.puzzles["cistern"]["hint_rotations"]
+
+        # the two hint plates unfortunately aren't aligned to cartesian basis vectors in local space
+        # so to do this with linear algebra we'd have to find new basis vectors with dot,
+        # find a rotation axis with cross, and build our own 3d rotation matrix because
+        # numpy doesn't have that feature.
+
+        # so instead we hardcode vertex indices and simply rotate the indices
+
+        back = np.array([[98, 94, 95], [97, 90, 93], [96, 92, 91]])
+
+        rear = np.array([[86, 84, 82], [85, 81, 83], [89, 88, 87]])
+
+        components = [back, rear]
+
+        mdl: MDL0 = brres.get_file_data("3DModels(NW4R)/model0")
+
+        vertices = mdl.get_vertices("polySurface372042__A_Ceiling04_m")
+
+        new_vertices = vertices.copy()
+        for i in range(2):
+            num_rots = rotations[i]
+            comp = components[i]
+            new_comp = np.rot90(comp, num_rots)
+            for i in range(3):
+                for j in range(3):
+                    new_vertices[new_comp[j][i]] = vertices[comp[j][i]]
+
+        mdl.set_vertices("polySurface372042__A_Ceiling04_m", new_vertices)
+
+        brres.set_file_data("3DModels(NW4R)/model0", mdl)
+        return brres
+
+    def patch_ancient_cistern_puzzle_hands(
+        self, stage, layer, arc, u8: U8File
+    ) -> U8File:
+        """Patches the Ancient Cistern puzzle oarc hands by rotating their UVs"""
+        rotations = self.placement_file.puzzles["cistern"]["hint_rotations"]
+
+        rhand = rotations[2]
+        lhand = rotations[3]
+        if rhand == lhand and (rhand == 0 or rhand == 2):
+            # we can only rotate by 180 degrees or not at all due to a non-square UV
+            # changing the vertices is not an option either since the surface isn't flat
+            pass
+        else:
+            raise ValueError(f"incompatible rotations {rhand} {lhand}")
+
+        brres = BRRES.parse_brres(BytesIO(u8.get_file_data("g3d/model.brres")))
+
+        mdl: MDL0 = brres.get_file_data("3DModels(NW4R)/TowerHandD101")
+
+        uv_coords = mdl.get_uvs("#9")
+
+        new_uv = uv_coords.copy()
+        nd = np.array(new_uv)
+        # find bounding box
+        xmax = np.max(nd[:, 0])
+        ymax = np.max(nd[:, 1])
+        xmin = np.min(nd[:, 0])
+        ymin = np.min(nd[:, 1])
+
+        center = [
+            (xmax + xmin) / 2,
+            (ymax + ymin) / 2,
+        ]
+
+        angle = rhand * math.pi / 2.0
+        for idx, coord in enumerate(uv_coords):
+            ux_ = coord[0] - center[0]
+            uy_ = coord[1] - center[1]
+            # note: handedness of this transformation can't be verified
+            # since only 180 degrees rotations are supported
+            ux = ux_ * math.cos(angle) + uy_ * math.sin(angle)
+            uy = -ux_ * math.sin(angle) + uy_ * math.cos(angle)
+            new_uv[idx] = [
+                int(ux + center[0]),
+                int(uy + center[1]),
+            ]
+
+        mdl.set_uvs("#9", new_uv)
+
+        brres.set_file_data("3DModels(NW4R)/TowerHandD101", mdl)
+        u8.set_file_data("g3d/model.brres", brres.to_buffer().read())
+        return u8
+
+    def patch_lmf_switches_puzzle_inner(
+        self, brres: BRRES, model_name: str, plate_verts: str, wall_verts: str
+    ):
+        order = self.placement_file.puzzles["lmf"]["switch_combo"]
+
+        mdl: MDL0 = brres.get_file_data(model_name)
+
+        # North to south
+        xz = [
+            [4930.0, 0, -21000.0],  # 1 robot
+            [4930.0, 0, -20000.0],  # 3 robots
+            [4930.0, 0, -19000.0],  # 2 robots
+        ]
+        # low to high
+        num_robots = [0, 2, 1]
+
+        plate_vertices = mdl.get_vertices(plate_verts)
+        new_plate_vertices = plate_vertices.copy()
+        # unfortunately we have to move the walls above the plates too
+        wall_vertices = mdl.get_vertices(wall_verts)
+        new_wall_vertices = wall_vertices.copy()
+
+        def belongs_to_plane(v, plane_idx):
+            return (
+                abs(v[0] - xz[plane_idx][0]) < 150.0
+                and abs(v[2] - xz[plane_idx][2]) < 200.0
+            )
+
+        plane_vertex_index_lists = [
+            [v_i for v_i, v in enumerate(plate_vertices) if belongs_to_plane(v, plane)]
+            for plane in range(3)
+        ]
+
+        wall_vertex_index_lists = [
+            [v_i for v_i, v in enumerate(wall_vertices) if belongs_to_plane(v, plane)]
+            for plane in range(3)
+        ]
+
+        for idx, obj in enumerate(order):
+            plate_idx = num_robots[idx]
+            old_center = xz[plate_idx]  # the center of the plate that has #idx robots
+            new_center = xz[
+                obj
+            ]  # the center of the plate that corresponds to the switch to hit
+
+            plate_vertex_index_list = plane_vertex_index_lists[
+                plate_idx
+            ]  # the vertex idxes of the plate that needs to move
+            for vertex in plate_vertex_index_list:
+                old = plate_vertices[vertex]
+                new_plate_vertices[vertex] = [
+                    old[0] - old_center[0] + new_center[0],
+                    old[1],
+                    old[2] - old_center[2] + new_center[2],
+                ]
+
+            wall_vertex_index_list = wall_vertex_index_lists[plate_idx]
+            for vertex in wall_vertex_index_list:
+                old = wall_vertices[vertex]
+                new_wall_vertices[vertex] = [
+                    old[0] - old_center[0] + new_center[0],
+                    old[1],
+                    old[2] - old_center[2] + new_center[2],
+                ]
+
+        mdl.set_vertices(plate_verts, new_plate_vertices)
+        mdl.set_vertices(wall_verts, new_wall_vertices)
+
+        brres.set_file_data(model_name, mdl)
+        return brres
+
+    def patch_lmf_switches_puzzle(self, brres: BRRES):
+        """Patches the LMF boss key switches puzzle by moving the stacked robot walls"""
+        # present
+        brres = self.patch_lmf_switches_puzzle_inner(
+            brres,
+            "3DModels(NW4R)/model0",
+            "polySurface2__A_Plate2N",
+            "polySurface3710781__A_Wall3N",
+        )
+        # past
+        brres = self.patch_lmf_switches_puzzle_inner(
+            brres,
+            "3DModels(NW4R)/model_obj8",
+            "polySurface2__A_Plate2",
+            "polySurface3710781__A_Wall3",
+        )
+        return brres
 
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])

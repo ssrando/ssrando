@@ -104,6 +104,7 @@ class Rando:
             self.randomized_start_entrance,
             self.randomized_start_statues,
             list(self.placement.locations),
+            self.puzzles,
         )
 
         logic = Logic(areas, logic_settings, self.placement)
@@ -145,6 +146,7 @@ class Rando:
         self.initialize_items()  # self.randosettings
 
         self.randomize_dungeons_trials_starting_entrances()
+        self.randomize_puzzles()
 
     def randomize_required_dungeons(self):
         """
@@ -159,6 +161,70 @@ class Rando:
         unreq_indices.sort()
         self.required_dungeons = [REGULAR_DUNGEONS[i] for i in req_indices]
         self.unrequired_dungeons = [REGULAR_DUNGEONS[i] for i in unreq_indices]
+
+    def randomize_puzzles(self):
+        if not self.options["random-puzzles"]:
+            self.puzzles = None
+            return
+
+        ssh_hint_order = list(range(4))
+        self.rng.shuffle(ssh_hint_order)
+        ssh_hint_rotations = [self.rng.randint(0, 3) for _ in range(4)]
+
+        # NB these directions are not the in-game direction parameters!
+        # gamepatches maps these to the right format
+
+        # down, up, down, right
+        ssh_starting_directions = [2, 0, 2, 3]
+        ssh_solution = [
+            (
+                ssh_starting_directions[ssh_hint_order[i]]
+                + ssh_hint_rotations[ssh_hint_order[i]]
+            )
+            % 4
+            for i in range(4)
+        ]
+
+        ac_hint_order = list(range(4))
+        self.rng.shuffle(ac_hint_order)
+        # up, down, left, right
+        ac_starting_directions = [0, 2, 1, 3]
+        ac_hint_rotations = [
+            self.rng.randint(0, 3),
+            self.rng.randint(0, 3),
+            self.rng.choice([0, 2]),
+            0,
+        ]
+        ac_hint_rotations[3] = ac_hint_rotations[2]
+        ac_solution = [
+            (
+                ac_starting_directions[ac_hint_order[i]]
+                + ac_hint_rotations[ac_hint_order[i]]
+            )
+            % 4
+            for i in range(4)
+        ]
+
+        # north to south
+        lmf_switches_solution = list(range(3))
+        self.rng.shuffle(lmf_switches_solution)
+
+        self.puzzles = {
+            "isle": {"pedestal_positions": [self.rng.randint(1, 11) for _ in range(3)]},
+            "sandship": {
+                "hint_order": ssh_hint_order,
+                "hint_rotations": ssh_hint_rotations,
+                "combo": ssh_solution,
+            },
+            "cistern": {
+                "hint_order": ac_hint_order,
+                "hint_rotations": ac_hint_rotations,
+                "combo": ac_solution,
+            },
+            "lmf": {
+                "switch_combo": lmf_switches_solution,
+            },
+        }
 
     def randomize_starting_items(self):
         """
@@ -371,6 +437,7 @@ class Rando:
             NONLETHAL_HOT_CAVE: damage_multiplier < 12,
             UPGRADED_SKYWARD_STRIKE: self.options["upgraded-skyward-strike"],
             FS_LAVA_FLOW_OPTION: self.options["fs-lava-flow"],
+            NO_RANDOM_PUZZLES_OPTION: not self.options["random-puzzles"],
         }
 
         enabled_tricks = set(self.options["enabled-tricks-bitless"])
