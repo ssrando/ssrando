@@ -5,6 +5,7 @@
 ### Changes
 - Show small key count when getting key
 ### Bugfixes
+- Fix crash in Skyloft trial when trying to place Stone of Trials
 
 ## 2.2.0
 ### Additions
