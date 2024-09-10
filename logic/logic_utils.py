@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from functools import cache
 from typing import List  # Only for typing purposes
+from hints.hint_types import HINT_IMPORTANCE
 
 from .logic import Logic, Placement, LogicSettings
 from .logic_input import Areas
@@ -206,15 +207,89 @@ class LogicUtils(Logic):
             if (loc := EXTENDED_ITEM.get_item_name(i)) in INVENTORY_ITEMS
         ]
 
-    def get_useful_items(self, bit=EVERYTHING_UNBANNED_BIT):
+    def get_useful_items(
+        self, bit=EVERYTHING_UNBANNED_BIT, exclude_redundant_copies=False
+    ):
         res = self._get_useful_items(bit)
         if not res:
-            res = [
+            return [
                 loc
                 for i in self.full_inventory.intset
                 if (loc := EXTENDED_ITEM.get_item_name(i)) in PROGRESS_ITEMS
             ]
-        return res
+        if not exclude_redundant_copies:
+            return res
+        items_to_remove = set()
+        # First, check for redundancies in items that are only useful for one copy
+        only_useful_once = [
+            PROGRESSIVE_POUCHES.keys(),
+            PROGRESSIVE_BOWS.keys(),
+            PROGRESSIVE_SLINGSHOTS.keys(),
+            PROGRESSIVE_BUG_NETS.keys(),
+            EMPTY_BOTTLES.keys(),
+        ]
+        for item_set in only_useful_once:
+            for item in item_set:
+                # If an item is not accessible with all other copies of this item removed, it must
+                # be redundant since it is definitely locked by a previous copy.
+                if not self.restricted_test(
+                    EXTENDED_ITEM[item],
+                    [
+                        EXTENDED_ITEM[self.placement.items[item_copy]]
+                        for item_copy in item_set
+                        if item != item_copy
+                        and item_copy not in self.placement.starting_items
+                    ],
+                    self.inventory | HINT_BYPASS_BIT,
+                ):
+                    items_to_remove.add(item)
+        REVERSE_BATREAUX_LIST = reversed(self.locations_by_hint_region(BATREAUX))
+        max_batreaux_reward = None
+        other_max_batreaux_reward = None
+        for index, loc in enumerate(REVERSE_BATREAUX_LIST):
+            if loc not in self.banned:
+                max_batreaux_reward = loc
+                match index:
+                    case 1:  # Bat 70 second reward
+                        # Include normal bat 70
+                        other_max_batreaux_reward = REVERSE_BATREAUX_LIST[2]
+                    case 2:  # Bat 70
+                        # Include bat 70 second reward
+                        other_max_batreaux_reward = REVERSE_BATREAUX_LIST[1]
+                    case 6:  # Bat 30 chest
+                        # Include normal bat 30
+                        other_max_batreaux_reward = REVERSE_BATREAUX_LIST[7]
+                    case 7:  # Bat 30
+                        # Include bat 30 chest
+                        other_max_batreaux_reward = REVERSE_BATREAUX_LIST[6]
+                break
+        if max_batreaux_reward is not None:
+            for crystal_pack in GRATITUDE_CRYSTAL_PACKS.keys():
+                # Crystal packs that logically come after the max Batreaux reward are redundant
+                sots_locs = [
+                    i[1] for i in self.get_sots_locations(EXTENDED_ITEM[crystal_pack])
+                ]
+                if max_batreaux_reward in sots_locs:
+                    items_to_remove.add(crystal_pack)
+                elif other_max_batreaux_reward is not None:
+                    # We must check the equivalent-level batreaux reward if it is 70 or 30
+                    if other_max_batreaux_reward in sots_locs:
+                        items_to_remove.add(crystal_pack)
+        WALLET_LOCKED_BEEDLE = SORTED_BEEDLE_CHECKS[:4]
+        max_beedle = None
+        for loc in WALLET_LOCKED_BEEDLE:
+            if loc not in self.banned:
+                max_beedle = loc
+                break
+        if max_beedle is not None:
+            for wallet in list(PROGRESSIVE_WALLETS.keys()) + list(EXTRA_WALLETS.keys()):
+                sots_locs = [
+                    i[1] for i in self.get_sots_locations(EXTENDED_ITEM[wallet])
+                ]
+                # Wallets that logically come after the max Beedle shop item are redundant
+                if max_beedle in sots_locs:
+                    items_to_remove.add(wallet)
+        return [item for item in res if item not in items_to_remove]
 
     @cache
     def locations_by_hint_region(self, region):
@@ -224,7 +299,7 @@ class LogicUtils(Logic):
     def _get_barren_regions(self, index: EXTENDED_ITEM):
         useful_checks = (
             loc
-            for item in self.get_useful_items(index)
+            for item in self.get_useful_items(index, True)
             for loc in (self.placement.items[item],)
             if item not in self.placement.starting_items
             if item not in self.placement.unplaced_items
@@ -254,7 +329,9 @@ class LogicUtils(Logic):
             [k for k, v in checks_per_region.items() if v == 0],
         )
 
-    def get_barren_regions(self, bit=EVERYTHING_UNBANNED_BIT):
+    def get_barren_regions(self, bit=None):
+        if bit is None:
+            bit = EXTENDED_ITEM[self.short_to_full(DEMISE)]
         return self._get_barren_regions(bit)
 
     def calculate_playthrough_progression_spheres(self):
@@ -315,3 +392,19 @@ class LogicUtils(Logic):
                 return 8
 
         return {k: dowse(v) for k, v in self.placement.locations.items()}
+
+    def get_importance_for_item(self, item):
+        # Skip trivially unrequired items
+        if item not in self.get_useful_items():
+            return HINT_IMPORTANCE.Null
+        # Then check if the item is SotS
+        if item in self.get_sots_items():
+            return HINT_IMPORTANCE.Required
+        # Then check if the item is considered useful for Demise; ultimately unrequired items will not count
+        elif item in self.get_useful_items(
+            EXTENDED_ITEM[self.short_to_full(DEMISE)], True
+        ):
+            return HINT_IMPORTANCE.PossiblyRequired
+        # The item must now be not required
+        else:
+            return HINT_IMPORTANCE.NotRequired

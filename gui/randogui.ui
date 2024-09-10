@@ -1667,6 +1667,13 @@
               </widget>
              </item>
              <item>
+              <widget class="QCheckBox" name="option_hint_importance">
+               <property name="text">
+                <string>Hint Importance</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <spacer name="vspace_stone_hints">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
