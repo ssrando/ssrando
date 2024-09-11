@@ -41,6 +41,7 @@ def write(
     randomized_trial_entrance,
     randomized_start_entrance,
     randomized_start_statues,
+    puzzles,
 ):
     write_header(file, options, hash)
     norm = areas.prettify
@@ -214,6 +215,24 @@ def write(
 
     file.write("\n\n\n")
 
+    if puzzles is not None:
+        file.write("Puzzle Solutions:\n")
+        puzzle_directions = ["Up", "Left", "Down", "Right"]
+        ac_combo = ", ".join(
+            [puzzle_directions[dir] for dir in puzzles["cistern"]["combo"]]
+        )
+        file.write(f"  {'Ancient Cistern Lock Combination'+':':48} {ac_combo}\n")
+        ssh_combo = ", ".join(
+            [puzzle_directions[dir] for dir in puzzles["sandship"]["combo"]]
+        )
+        file.write(f"  {'Sandship Lock Combination'+':':48} {ssh_combo}\n")
+        lmf_switch_order = ["North", "Center", "South"]
+        lmf_combo = ", ".join(
+            [lmf_switch_order[i] for i in puzzles["lmf"]["switch_combo"]]
+        )
+        file.write(f"  {'Lanayru Mining Facility Switch Order'+':':48} {lmf_combo}\n")
+        file.write("\n\n\n")
+
     # Write hints.
     file.write("Hints:\n")
 
@@ -253,6 +272,7 @@ def dump_json(
     randomized_trial_entrance,
     randomized_start_entrance,
     randomized_start_statues,
+    puzzles,
 ):
     spoiler_log = dump_header_json(options, hash)
     if options["no-spoiler-log"]:
@@ -270,6 +290,7 @@ def dump_json(
     spoiler_log["trial-connections"] = randomized_trial_entrance
     spoiler_log["randomized-start-entrance"] = randomized_start_entrance
     spoiler_log["randomized-start-statues"] = randomized_start_statues
+    spoiler_log["puzzles"] = puzzles
     return spoiler_log
 
 

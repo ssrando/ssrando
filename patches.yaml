@@ -1855,6 +1855,50 @@ F100: # Faron main area
       anglez: 0
       id: 0xFDFF
       name: ActTag
+  - name: Always spawn Lopsa
+    type: objpatch
+    id: 0x56B5
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
+  - name: Always spawn Erla
+    type: objpatch
+    id: 0x5EB6
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
+  - name: Always spawn Oolo
+    type: objpatch
+    id: 0x0AB4
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
+  # These patches make it so that the bokos around Machi don't trigger a cutscene.
+  # This is necessary to allow the Kikwis to be saved in any order (specifically,
+  # triggering the Lopsa bokos breaks the Machi bokos and requires the area be reloaded).
+  # "If this seems like voodoo magic, that's because it is :p" - Esme
+  - name: Patch Machi boko 1
+    type: objpatch
+    id: 0x66CE
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFF20 # 0xF0... -> 0xF1...
+  - name: Patch Machi boko 2
+    type: objpatch
+    id: 0x66CF
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFF20 # 0xF0... -> 0xF1...
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
@@ -2524,6 +2568,18 @@ F200: # Eldin main area
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Monster horn arc delete
+    type: oarcdelete
+    oarc: GetSozaiL
+    layer: 1
+  - name: Golden Skull arc delete
+    type: oarcdelete
+    oarc: GetSozaiO
+    layer: 1
+  - name: Key piece arc delete
+    type: oarcdelete
+    oarc: GetKeyKakera
+    layer: 1
   - name: intro cs
     type: objmove
     id: 0xFC26
@@ -2599,12 +2655,16 @@ F200: # Eldin main area
     destlayer: 0
     room: 2
     objtype: STAG
-  - name: Propeller delete # undo this when starting without scrapper repaired
+  - name: Propeller delete
     type: objdelete
     id: 0xFC2E
     layer: 0
     room: 4
     objtype: OBJ
+  - name: Propeller arc delete
+    type: oarcdelete
+    oarc: Pinwheel
+    layer: 0
   - name: Forced camera when draining lava before digging mitts
     type: objdelete
     id: 0xFCD6

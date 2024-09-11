@@ -1112,6 +1112,13 @@
   help: If enabled, the starting statue for each surface region will be randomized. All overworld statues
         except Inside the Volcano and Inside Fire Sanctuary may be chosen.
   ui: option_random_start_statues
+- name: Random Puzzles
+  command: random-puzzles
+  type: boolean
+  default: false
+  permalink: true
+  help: "Randomizes the Isle of Songs puzzle and the Ancient Cistern/Sandship directional door puzzles."
+  ui: option_random_puzzles
 - name: Hint Importance
   command: hint-importance
   type: boolean
