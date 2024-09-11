@@ -188,7 +188,7 @@ class LogicUtils(Logic):
 
             sots_loc = self.placement.items[item]
 
-            if sots_loc == START_ITEM:
+            if sots_loc == START_ITEM or sots_loc == UNPLACED_ITEM:
                 continue
 
             hint_region = self.areas.checks[sots_loc]["hint_region"]
