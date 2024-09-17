@@ -609,3 +609,28 @@ pub fn drop_nothing(param1: *mut c_void, param2_s0x18: u8) -> bool {
         }
     }
 }
+
+#[no_mangle]
+extern "C" fn get_tablet_keyframe_count() -> c_int {
+    // The tablet frames effectively start with a Gray Code, the continuation of
+    // which looks like this:
+    //
+    // Count     Emerald   Ruby      Amber     As Index
+    // 0         0         0         0         0
+    // 1         1         0         0         1
+    // 2         1         1         0         3
+    // 3         1         1         1         7
+    // 4         1         0         1         5
+    // 5         0         0         1         4
+    // 6         0         1         1         6
+    // 7         0         1         0         2
+
+    const TABLET_BITMAP_TO_KEYFRAME: [u8; 8] = [0, 1, 7, 2, 5, 4, 6, 3];
+    const TABLET_IDS: [u16; 3] = [0xB1, 0xB2, 0xB3];
+
+    let item_bitmap = ItemflagManager::check(TABLET_IDS[0]) as usize
+        | ((ItemflagManager::check(TABLET_IDS[1]) as usize) << 1)
+        | ((ItemflagManager::check(TABLET_IDS[2]) as usize) << 2);
+
+    TABLET_BITMAP_TO_KEYFRAME[item_bitmap & 0x7] as i32
+}
