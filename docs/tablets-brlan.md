@@ -27,4 +27,4 @@ Required tools:
   * `N_stone_02`: [6.0, 0]
 * Run `.\BENZIN.exe w pause_00_sekiban.xmlan pause_00_sekiban.modified.brlan`
 
-Now you have a brlan file that works with the rando patches (cf. )
+Now you have a brlan file that works with the rando patches (cf. get_tablet_keyframe_count)
