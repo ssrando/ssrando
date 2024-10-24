@@ -246,7 +246,7 @@ Horn
 Ornamental
 Skull
 Plume
-Crasshopper
+Grasshopper
 Rhino
 Colossus
 Hornet
@@ -280,3 +280,5 @@ Statuette
 Pouch
 Map
 Adventure
+Viewing
+Frog
