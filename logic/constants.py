@@ -252,13 +252,17 @@ BEETLE = "Beetle"
 HOOK_BEETLE = "Hook Beetle"
 QUICK_BEETLE = "Quick Beetle"
 TOUGH_BEETLE = "Tough Beetle"
+BOW = "Bow"
+SLINGSHOT = "Slingshot"
+BUG_NET = "Bug Net"
 DIGGING_MITTS = "Digging Mitts"
 MOGMA_MITTS = "Mogma Mitts"
-# Pouch? Bottle? They're only ever checked for one so I don't think it matters
+POUCH = "Pouch"
 MEDIUM_WALLET = "Medium Wallet"
 BIG_WALLET = "Big Wallet"
 GIANT_WALLET = "Giant Wallet"
 TYCOON_WALLET = "Tycoon Wallet"
+EMPTY_BOTTLE_MACRO = "Empty Bottle_"
 CRYSTAL_COUNT_MACROS = {f"{i} Gratitude Crystals" for i in [5, 10, 30, 40, 50, 70, 80]}
 CRYSTAL_PACK_MACROS = {
     f"{i} Gratitude Crystal Pack" + ("" if i == 1 else "s") for i in range(1, 14)
@@ -277,12 +281,17 @@ RAW_ITEM_MACROS = (
         HOOK_BEETLE,
         QUICK_BEETLE,
         TOUGH_BEETLE,
+        BOW,
+        SLINGSHOT,
+        BUG_NET,
         DIGGING_MITTS,
         MOGMA_MITTS,
+        POUCH,
         MEDIUM_WALLET,
         BIG_WALLET,
         GIANT_WALLET,
         TYCOON_WALLET,
+        EMPTY_BOTTLE_MACRO,
     }
     | CRYSTAL_COUNT_MACROS
     | CRYSTAL_PACK_MACROS

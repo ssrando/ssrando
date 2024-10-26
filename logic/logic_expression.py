@@ -142,9 +142,6 @@ class DNFInventory(LogicExpression):
             {inv.remove(NIGHT_BIT) for inv in self.disjunction if not inv[DAY_BIT]}
         )
 
-    def is_trivially_false(self) -> bool:
-        return not bool(self.disjunction)
-
     def is_trivially_true(self) -> bool:
         for conj in self.disjunction:
             if not bool(conj):

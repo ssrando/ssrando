@@ -221,21 +221,8 @@ class Logic:
         for item, req in enumerate(requirements):
             expr = DNFInventory({inv: inv for inv in req.disjunction if inv <= opaques})
             requirements[item] = expr
-            if not expr.is_trivially_false() or opaques[EXTENDED_ITEM(item)]:
+            if not expr.is_impossible() or opaques[EXTENDED_ITEM(item)]:
                 candidates |= EXTENDED_ITEM(item)
-
-        # For debug use
-        def print_dnf(dnf: DNFInventory):
-            disjunct_list = []
-            for term in dnf.disjunction:
-                itemstr = (
-                    "("
-                    + " & ".join([EXTENDED_ITEM.get_item_name(item) for item in term])
-                    + ")"
-                )
-                disjunct_list.append(itemstr)
-
-            print(" | ".join(disjunct_list))
 
         # Invariant: Terms in `requirements` contain no non-opaque bits
         changed = True
@@ -245,7 +232,6 @@ class Logic:
         # Repeatedly apply the "rules" to further propagate requirements
         while changed:
             iters += 1
-            print(f"Iteration number {iters}")
             changed = False
             changed_this_round = Inventory()
             interesting_candidates = (
@@ -253,13 +239,11 @@ class Logic:
                 if recently_changed is not None
                 else candidates
             )
+
             for item, req in enumerate(original_requirements):
                 # Don't bother investigating requirements that are already Nothing
                 if requirements[item].is_trivially_true():
                     continue
-
-                # print(EXTENDED_ITEM.get_item_name(EXTENDED_ITEM(item)))
-                # print_dnf(req)
 
                 additional_terms = DNFInventory(False)
                 for conj in req.disjunction:
