@@ -1143,7 +1143,7 @@ Lanayru Desert - Chest on top of Lanayru Mining Facility: # actually spawns on r
     - stage/F300/r0/l1/TBox/83
   hint:
     # always hint if there's a chance you have to manually open LMF
-    always: Option "open-lmf" Is Not "Open" & (Dungeon "Lanayru Mining Facility" Is Not Required | Option "empty-unrequired-dungeons" Disabled | Option "randomize-entrances" Is Not "None")
+    always: Option "open-lmf" Is Not "Open" & (Dungeon "Lanayru Mining Facility" Not Required | Option "empty-unrequired-dungeons" Disabled | Option "randomize-entrances" Is Not "None")
   text: the <r<midst of the desert>> holds
 Lanayru Desert - Secret Passageway Chest:
   original item: Heart Piece
