@@ -241,6 +241,54 @@ PROGRESSIVE_WALLETS = group(PROGRESSIVE_WALLET, 4)
 EXTRA_WALLETS = group(EXTRA_WALLET, 3)
 TADTONE_GROUPS = group(GROUP_OF_TADTONES, 17)
 
+# Macros for bottomup_propagation
+PRACTICE_SWORD = "Practice Sword"
+GODDESS_SWORD = "Goddess Sword"
+GODDESS_LONGSWORD = "Goddess Longsword"
+GODDESS_WHITE_SWORD = "Goddess White Sword"
+MASTER_SWORD = "Master Sword"
+TRUE_MASTER_SWORD = "True Master Sword"
+BEETLE = "Beetle"
+HOOK_BEETLE = "Hook Beetle"
+QUICK_BEETLE = "Quick Beetle"
+TOUGH_BEETLE = "Tough Beetle"
+DIGGING_MITTS = "Digging Mitts"
+MOGMA_MITTS = "Mogma Mitts"
+# Pouch? Bottle? They're only ever checked for one so I don't think it matters
+MEDIUM_WALLET = "Medium Wallet"
+BIG_WALLET = "Big Wallet"
+GIANT_WALLET = "Giant Wallet"
+TYCOON_WALLET = "Tycoon Wallet"
+CRYSTAL_COUNT_MACROS = {f"{i} Gratitude Crystals" for i in [5, 10, 30, 40, 50, 70, 80]}
+CRYSTAL_PACK_MACROS = {
+    f"{i} Gratitude Crystal Pack" + ("" if i == 1 else "s") for i in range(1, 14)
+}
+LOOSE_CRYSTAL_MACROS = {f"{i} Single Gratitude Crystals" for i in [5, 10, 15]}
+
+RAW_ITEM_MACROS = (
+    {
+        PRACTICE_SWORD,
+        GODDESS_SWORD,
+        GODDESS_LONGSWORD,
+        GODDESS_WHITE_SWORD,
+        MASTER_SWORD,
+        TRUE_MASTER_SWORD,
+        BEETLE,
+        HOOK_BEETLE,
+        QUICK_BEETLE,
+        TOUGH_BEETLE,
+        DIGGING_MITTS,
+        MOGMA_MITTS,
+        MEDIUM_WALLET,
+        BIG_WALLET,
+        GIANT_WALLET,
+        TYCOON_WALLET,
+    }
+    | CRYSTAL_COUNT_MACROS
+    | CRYSTAL_PACK_MACROS
+    | LOOSE_CRYSTAL_MACROS
+)
+
 small_key = lambda d: d + " Small Key"
 SMALL_KEY = {dun: small_key(dun) for dun in ALL_DUNGEONS}
 

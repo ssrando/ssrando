@@ -202,31 +202,18 @@ class Logic:
                         aggregate |= conj
 
         return aggregate
-    
+
     # Computes (or at least should compute) "flattened" requirements consisting of only opaque elements
     # Adapted from https://gist.github.com/robojumper/4a22ed0df438fda5ce6b3377fdbaf986
     @staticmethod
-    def bottomup_propagate(
-        given_requirements: List[DNFInventory], opaques: Inventory = None
-    ):
-        if opaques is None:
-            opaques = Inventory(
-                {EXTENDED_ITEM[itemname] for itemname in INVENTORY_ITEMS}
-            )
-
+    def bottomup_propagate(given_requirements: List[DNFInventory], opaques: Inventory):
         requirements = given_requirements.copy()
 
         # First, we split our requirements into disjuncts that contain non-opaque
         # terms and disjuncts that contain no non-opaque terms
         original_requirements = [
-            (
-                req
-                if opaques[EXTENDED_ITEM(item)]
-                else DNFInventory(
-                    {inv: inv for inv in req.disjunction if not inv <= opaques}
-                )
-            )
-            for item, req in enumerate(requirements)
+            DNFInventory({inv: inv for inv in req.disjunction if not inv <= opaques})
+            for req in requirements
         ]
 
         candidates = Inventory()
@@ -235,16 +222,36 @@ class Logic:
             expr = DNFInventory({inv: inv for inv in req.disjunction if inv <= opaques})
             requirements[item] = expr
             if len(expr.disjunction) > 0:
-                candidates.add(EXTENDED_ITEM(item))
+                candidates |= EXTENDED_ITEM(item)
 
         # Invariant: Terms in `requirements` contain no non-opaque bits
         changed = True
 
+        # For debug use
+        def print_dnf(dnf: DNFInventory):
+            disjunct_list = []
+            for term in dnf.disjunction:
+                itemstr = (
+                    "("
+                    + " & ".join([EXTENDED_ITEM.get_item_name(item) for item in term])
+                    + ")"
+                )
+                disjunct_list.append(itemstr)
+
+            print(" | ".join(disjunct_list))
+
+        iters = 0
+
         # Repeatedly apply the "rules" to further propagate requirements
         while changed:
+            iters += 1
+            print(f"Iteration number {iters}")
             changed = False
             updatable = candidates | opaques
             for item, req in enumerate(original_requirements):
+                # print(EXTENDED_ITEM.get_item_name(EXTENDED_ITEM(item)))
+                # print_dnf(req)
+
                 additional_terms = DNFInventory(False)
                 for conj in req.disjunction:
                     # We can only propagate if all mentioned bits are either opaque or refer
@@ -252,11 +259,11 @@ class Logic:
                     if conj <= updatable:
                         new_items = Inventory()
                         to_propagate = DNFInventory(True)
-                        for item in conj.intset:
-                            if opaques[item]:
-                                new_items.add(EXTENDED_ITEM(item))
+                        for item_bit in conj.intset:
+                            if opaques[item_bit]:
+                                new_items |= EXTENDED_ITEM(item_bit)
                             else:
-                                revealed = requirements[item]
+                                revealed = requirements[item_bit]
                                 to_propagate = to_propagate & revealed
 
                         for conj in to_propagate.disjunction:
@@ -270,11 +277,12 @@ class Logic:
                 if expr_changed:
                     requirements[item] = new_expr
                     changed = True
-                    candidates.add(EXTENDED_ITEM(item))
+                    candidates |= EXTENDED_ITEM(item)
 
         # We've reached a fixed point, which means we cannot find any new paths
         # in our requirement graph. So our output requirements now contain all
         # possible paths.
+        print(f"Propagation took {iters} iterations.")
         return requirements
 
     @staticmethod

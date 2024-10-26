@@ -60,7 +60,18 @@ class LogicUtils(Logic):
         self.randomized_start_statues = additional_info.randomized_start_statues
         self.known_locations = additional_info.known_locations
         self.puzzles = additional_info.puzzles
-        self.flattened_requirements = Logic.bottomup_propagate(self.requirements)
+        self.flattened_requirements = Logic.bottomup_propagate(
+            self.requirements,
+            Inventory(
+                {
+                    EXTENDED_ITEM[itemname]
+                    for itemname in (
+                        (PROGRESS_ITEMS | ALL_SMALL_KEYS | ALL_BOSS_KEYS).keys()
+                        | {self.short_to_full(macro) for macro in RAW_ITEM_MACROS}
+                    )
+                }
+            ),
+        )
 
     def check(self, useroutput):
         full_inventory = Logic.fill_inventory(self.requirements, EMPTY_INV)
@@ -199,6 +210,9 @@ class LogicUtils(Logic):
 
     @cache
     def _get_useful_items(self, index: EXTENDED_ITEM, use_flattened_requirements=False):
+        if index != EVERYTHING_UNBANNED_BIT:
+            use_flattened_requirements = True
+
         usefuls = self.aggregate_requirements(
             (
                 self.flattened_requirements
