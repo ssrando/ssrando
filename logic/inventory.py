@@ -197,6 +197,9 @@ class Inventory:
                 raise ValueError(f"{item} not in inventory.")
         raise ValueError(item)
 
+    def intersects(self, other: Inventory) -> bool:
+        return bool(self & other)
+
     @staticmethod
     def simplify_invset(argset):
         def gen():

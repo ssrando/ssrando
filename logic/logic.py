@@ -221,11 +221,8 @@ class Logic:
         for item, req in enumerate(requirements):
             expr = DNFInventory({inv: inv for inv in req.disjunction if inv <= opaques})
             requirements[item] = expr
-            if len(expr.disjunction) > 0:
+            if not expr.is_trivially_false() or opaques[EXTENDED_ITEM(item)]:
                 candidates |= EXTENDED_ITEM(item)
-
-        # Invariant: Terms in `requirements` contain no non-opaque bits
-        changed = True
 
         # For debug use
         def print_dnf(dnf: DNFInventory):
@@ -240,15 +237,27 @@ class Logic:
 
             print(" | ".join(disjunct_list))
 
+        # Invariant: Terms in `requirements` contain no non-opaque bits
+        changed = True
         iters = 0
+        recently_changed: Inventory | None = None
 
         # Repeatedly apply the "rules" to further propagate requirements
         while changed:
             iters += 1
             print(f"Iteration number {iters}")
             changed = False
-            updatable = candidates | opaques
+            changed_this_round = Inventory()
+            interesting_candidates = (
+                recently_changed & candidates
+                if recently_changed is not None
+                else candidates
+            )
             for item, req in enumerate(original_requirements):
+                # Don't bother investigating requirements that are already Nothing
+                if requirements[item].is_trivially_true():
+                    continue
+
                 # print(EXTENDED_ITEM.get_item_name(EXTENDED_ITEM(item)))
                 # print_dnf(req)
 
@@ -256,7 +265,7 @@ class Logic:
                 for conj in req.disjunction:
                     # We can only propagate if all mentioned bits are either opaque or refer
                     # to an expression where at least one disjunct contains no opaque bits
-                    if conj <= updatable:
+                    if conj <= candidates and conj.intersects(interesting_candidates):
                         new_items = Inventory()
                         to_propagate = DNFInventory(True)
                         for item_bit in conj.intset:
@@ -264,12 +273,12 @@ class Logic:
                                 new_items |= EXTENDED_ITEM(item_bit)
                             else:
                                 revealed = requirements[item_bit]
-                                to_propagate = to_propagate & revealed
+                                to_propagate &= revealed
 
                         for conj in to_propagate.disjunction:
                             # note: conj | new_items is a bit or (resulting in ANDing the requirements),
                             # while additional_terms | ... is a DNF or
-                            additional_terms = additional_terms | (conj | new_items)
+                            additional_terms |= conj | new_items
 
                 expr_changed, new_expr = requirements[item].or_extended(
                     additional_terms
@@ -278,6 +287,9 @@ class Logic:
                     requirements[item] = new_expr
                     changed = True
                     candidates |= EXTENDED_ITEM(item)
+                    changed_this_round |= EXTENDED_ITEM(item)
+
+            recently_changed = changed_this_round
 
         # We've reached a fixed point, which means we cannot find any new paths
         # in our requirement graph. So our output requirements now contain all
