@@ -202,6 +202,80 @@ class Logic:
                         aggregate |= conj
 
         return aggregate
+    
+    # Computes (or at least should compute) "flattened" requirements consisting of only opaque elements
+    # Adapted from https://gist.github.com/robojumper/4a22ed0df438fda5ce6b3377fdbaf986
+    @staticmethod
+    def bottomup_propagate(
+        given_requirements: List[DNFInventory], opaques: Inventory = None
+    ):
+        if opaques is None:
+            opaques = Inventory(
+                {EXTENDED_ITEM[itemname] for itemname in INVENTORY_ITEMS}
+            )
+
+        requirements = given_requirements.copy()
+
+        # First, we split our requirements into disjuncts that contain non-opaque
+        # terms and disjuncts that contain no non-opaque terms
+        original_requirements = [
+            (
+                req
+                if opaques[EXTENDED_ITEM(item)]
+                else DNFInventory(
+                    {inv: inv for inv in req.disjunction if not inv <= opaques}
+                )
+            )
+            for item, req in enumerate(requirements)
+        ]
+
+        candidates = Inventory()
+
+        for item, req in enumerate(requirements):
+            expr = DNFInventory({inv: inv for inv in req.disjunction if inv <= opaques})
+            requirements[item] = expr
+            if len(expr.disjunction) > 0:
+                candidates.add(EXTENDED_ITEM(item))
+
+        # Invariant: Terms in `requirements` contain no non-opaque bits
+        changed = True
+
+        # Repeatedly apply the "rules" to further propagate requirements
+        while changed:
+            changed = False
+            updatable = candidates | opaques
+            for item, req in enumerate(original_requirements):
+                additional_terms = DNFInventory(False)
+                for conj in req.disjunction:
+                    # We can only propagate if all mentioned bits are either opaque or refer
+                    # to an expression where at least one disjunct contains no opaque bits
+                    if conj <= updatable:
+                        new_items = Inventory()
+                        to_propagate = DNFInventory(True)
+                        for item in conj.intset:
+                            if opaques[item]:
+                                new_items.add(EXTENDED_ITEM(item))
+                            else:
+                                revealed = requirements[item]
+                                to_propagate = to_propagate & revealed
+
+                        for conj in to_propagate.disjunction:
+                            # note: conj | new_items is a bit or (resulting in ANDing the requirements),
+                            # while additional_terms | ... is a DNF or
+                            additional_terms = additional_terms | (conj | new_items)
+
+                expr_changed, new_expr = requirements[item].or_extended(
+                    additional_terms
+                )
+                if expr_changed:
+                    requirements[item] = new_expr
+                    changed = True
+                    candidates.add(EXTENDED_ITEM(item))
+
+        # We've reached a fixed point, which means we cannot find any new paths
+        # in our requirement graph. So our output requirements now contain all
+        # possible paths.
+        return requirements
 
     @staticmethod
     def get_everything_unbanned(requirements: List[DNFInventory]):

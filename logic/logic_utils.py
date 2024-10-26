@@ -60,6 +60,7 @@ class LogicUtils(Logic):
         self.randomized_start_statues = additional_info.randomized_start_statues
         self.known_locations = additional_info.known_locations
         self.puzzles = additional_info.puzzles
+        self.flattened_requirements = Logic.bottomup_propagate(self.requirements)
 
     def check(self, useroutput):
         full_inventory = Logic.fill_inventory(self.requirements, EMPTY_INV)
@@ -197,9 +198,15 @@ class LogicUtils(Logic):
             yield (hint_region, sots_loc, item)
 
     @cache
-    def _get_useful_items(self, index: EXTENDED_ITEM):
+    def _get_useful_items(self, index: EXTENDED_ITEM, use_flattened_requirements=False):
         usefuls = self.aggregate_requirements(
-            self.requirements, self.full_inventory, index
+            (
+                self.flattened_requirements
+                if use_flattened_requirements
+                else self.requirements
+            ),
+            self.full_inventory,
+            index,
         )
         return [
             loc

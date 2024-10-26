@@ -153,10 +153,10 @@ class Inventory:
 
     def __le__(self, other):
         """Define inclusion"""
-        return self.bitset | other.bitset == other.bitset
+        return self.intset.issubset(other.intset)
 
     def __eq__(self, other):
-        return self.bitset == other.bitset
+        return self.intset == other.intset
 
     def __hash__(self):
         return hash(self.bitset)

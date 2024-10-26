@@ -80,25 +80,7 @@ class DNFInventory(LogicExpression):
         return self
 
     def __or__(self, other) -> DNFInventory:
-        if isinstance(other, DNFInventory):
-            filtered_self = self.disjunction.copy()
-            filtered_other = {}
-            for conj, conj_pre in other.disjunction.items():
-                to_pop = []
-                for conj2 in filtered_self:
-                    if conj <= conj2 and conj != conj2:
-                        conj_pre &= filtered_self[conj2]
-                        to_pop.append(conj2)
-                    if conj2 <= conj:
-                        filtered_self[conj2] &= conj_pre
-                        break
-                else:
-                    for c in to_pop:
-                        del filtered_self[c]
-                    filtered_other[conj] = conj_pre
-            return DNFInventory((filtered_self | filtered_other))
-        else:
-            return super().__or__(other)
+        return self.or_extended(other)[1]
 
     def __and__(self, other) -> DNFInventory:
         if isinstance(other, DNFInventory):
@@ -123,6 +105,32 @@ class DNFInventory(LogicExpression):
         for r in self.disjunction:
             ag |= r
         return ag
+
+    # Performs the or operation and returns if the expression is any different from self
+    def or_extended(self, other: LogicExpression) -> tuple[bool, DNFInventory]:
+        # Convert the other expression into a DNF
+        rhs = simplifyDNFRecursive(other)
+
+        filtered_self = self.disjunction.copy()
+        filtered_other = {}
+        for conj, conj_pre in rhs.disjunction.items():
+            to_pop = []
+            for conj2 in filtered_self:
+                if conj <= conj2 and conj != conj2:
+                    conj_pre &= filtered_self[conj2]
+                    to_pop.append(conj2)
+                if conj2 <= conj:
+                    filtered_self[conj2] &= conj_pre
+                    break
+            else:
+                for c in to_pop:
+                    del filtered_self[c]
+                filtered_other[conj] = conj_pre
+
+        return (
+            bool(filtered_other),
+            DNFInventory((filtered_self | filtered_other)),
+        )
 
     def day_only(self):
         return DNFInventory(
@@ -232,6 +240,23 @@ class AndCombination(LogicExpression):
                 for expr in self.arguments
             ]
         )
+
+
+# Convert a LogicExpression to DNF using the appropriate class methods
+def simplifyDNFRecursive(expr: LogicExpression) -> DNFInventory:
+    if isinstance(expr, DNFInventory):
+        return expr
+    elif isinstance(expr, AndCombination):
+        args = [simplifyDNFRecursive(sub_expr) for sub_expr in expr.arguments]
+        return AndCombination.simplifyDNF(args)
+    elif isinstance(expr, OrCombination):
+        args = [simplifyDNFRecursive(sub_expr) for sub_expr in expr.arguments]
+        return OrCombination.simplifyDNF(args)
+    elif isinstance(expr, Inventory):
+        return DNFInventory(expr)
+    else:
+        # Should any other type of expression even be reached by bottomup_propagation?
+        raise NotImplementedError
 
 
 @dataclass
