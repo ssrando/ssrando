@@ -154,7 +154,7 @@ class LogicUtils(Logic):
         if starting_inventory is None:
             starting_inventory = self.inventory | HINT_BYPASS_BIT
 
-        return any(
+        return bool(
             self.filter_locked_by_items(
                 [item],
                 [
