@@ -308,22 +308,26 @@ class LogicUtils(Logic):
                     break
 
             if max_batreaux_reward is not None:
-                banned = [max_batreaux_reward]
+                max_bat = [max_batreaux_reward]
                 if other_max_batreaux_reward is not None:
-                    banned.append(other_max_batreaux_reward)
+                    max_bat.append(other_max_batreaux_reward)
 
                 # We need to filter out items that don't exist in EXTENDED_ITEM
-                for crystal_pack in self.filter_locked_by_items(
-                    list(GRATITUDE_CRYSTAL_PACKS.keys()),
-                    [
-                        (item := self.placement.locations[loc])
-                        for loc in banned
-                        if item in POTENTIALLY_USEFUL_ITEMS
-                    ],
-                ):
-                    # Crystal packs that logically come after the max Batreaux reward(s) are redundant
-                    items_to_remove.add(crystal_pack)
-                    requirements[EXTENDED_ITEM[crystal_pack]] = DNFInventory(False)
+                banned_items = []
+                for loc in max_bat:
+                    if (
+                        item := self.placement.locations[loc]
+                    ) in POTENTIALLY_USEFUL_ITEMS:
+                        banned_items.append(item)
+
+                if banned_items:
+                    for crystal_pack in self.filter_locked_by_items(
+                        list(GRATITUDE_CRYSTAL_PACKS.keys()),
+                        banned_items,
+                    ):
+                        # Crystal packs that logically come after the max Batreaux reward(s) are redundant
+                        items_to_remove.add(crystal_pack)
+                        requirements[EXTENDED_ITEM[crystal_pack]] = DNFInventory(False)
 
             WALLET_LOCKED_BEEDLE = SORTED_BEEDLE_CHECKS[:4]
             max_beedle = None
