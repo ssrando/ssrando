@@ -91,6 +91,19 @@ class DNFInventory(LogicExpression):
     def __repr__(self) -> str:
         return f"DNFInventory({self.disjunction!r})"
 
+    # Computes a string representation of this DNF, using &s and |s
+    def readable_repr(self) -> str:
+        disjunct_list = []
+        for term in self.disjunction:
+            itemstr = (
+                "("
+                + " & ".join([EXTENDED_ITEM.get_item_name(item) for item in term])
+                + ")"
+            )
+            disjunct_list.append(itemstr)
+
+        return " | ".join(disjunct_list)
+
     def remove(self, item):
         if isinstance(item, EXTENDED_ITEM):
             return DNFInventory({inv for inv in self.disjunction if not inv[item]})
@@ -107,30 +120,35 @@ class DNFInventory(LogicExpression):
         return ag
 
     # Performs the or operation and returns if the expression is any different from self
-    def or_extended(self, other: LogicExpression) -> tuple[bool, DNFInventory]:
-        # Convert the other expression into a DNF
-        rhs = simplifyDNFRecursive(other)
+    def or_extended(
+        self, other: LogicExpression, convert_to_dnf=False
+    ) -> tuple[bool, DNFInventory]:
+        if isinstance(other, DNFInventory) or convert_to_dnf:
+            # Convert the other expression into a DNF
+            rhs = simplifyDNFRecursive(other)
 
-        filtered_self = self.disjunction.copy()
-        filtered_other = {}
-        for conj, conj_pre in rhs.disjunction.items():
-            to_pop = []
-            for conj2 in filtered_self:
-                if conj <= conj2 and conj != conj2:
-                    conj_pre &= filtered_self[conj2]
-                    to_pop.append(conj2)
-                if conj2 <= conj:
-                    filtered_self[conj2] &= conj_pre
-                    break
-            else:
-                for c in to_pop:
-                    del filtered_self[c]
-                filtered_other[conj] = conj_pre
+            filtered_self = self.disjunction.copy()
+            filtered_other = {}
+            for conj, conj_pre in rhs.disjunction.items():
+                to_pop = []
+                for conj2 in filtered_self:
+                    if conj <= conj2 and conj != conj2:
+                        conj_pre &= filtered_self[conj2]
+                        to_pop.append(conj2)
+                    if conj2 <= conj:
+                        filtered_self[conj2] &= conj_pre
+                        break
+                else:
+                    for c in to_pop:
+                        del filtered_self[c]
+                    filtered_other[conj] = conj_pre
 
-        return (
-            bool(filtered_other),
-            DNFInventory((filtered_self | filtered_other)),
-        )
+            return (
+                bool(filtered_other),
+                DNFInventory((filtered_self | filtered_other)),
+            )
+        else:
+            return (True, super().__or__(other))
 
     def day_only(self):
         return DNFInventory(

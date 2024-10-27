@@ -203,8 +203,10 @@ class Logic:
 
         return aggregate
 
-    # Computes (or at least should compute) "flattened" requirements consisting of only opaque elements
+    # Computes "flattened" requirements consisting of only opaque elements
     # Adapted from https://gist.github.com/robojumper/4a22ed0df438fda5ce6b3377fdbaf986
+    # and the equivalent Web Tracker code at
+    # https://github.com/robojumper/SS-Randomizer-Tracker/blob/5f991f374816857535bdfad1ac8144301f6ba00e/src/logic/bitlogic/BitLogic.ts#L281-L388
     @staticmethod
     def bottomup_propagate(given_requirements: List[DNFInventory], opaques: Inventory):
         requirements = given_requirements.copy()
@@ -226,12 +228,10 @@ class Logic:
 
         # Invariant: Terms in `requirements` contain no non-opaque bits
         changed = True
-        iters = 0
         recently_changed: Inventory | None = None
 
         # Repeatedly apply the "rules" to further propagate requirements
         while changed:
-            iters += 1
             changed = False
             changed_this_round = Inventory()
             interesting_candidates = (
@@ -248,7 +248,12 @@ class Logic:
                 additional_terms = DNFInventory(False)
                 for conj in req.disjunction:
                     # We can only propagate if all mentioned bits are either opaque or refer
-                    # to an expression where at least one disjunct contains no opaque bits
+                    # to an expression where we've found at least one way for it to be satisfied.
+                    # If a non-opaque bit in there had no propagated requirements yet, `to_propagate`
+                    # would end up being False and the whole thing would be pointless.
+                    # Additionally, as an optimization, after the first round we only look at
+                    # terms we updated last round, to reduce the number operations that definitely
+                    # won't cause an update.
                     if conj <= candidates and conj.intersects(interesting_candidates):
                         new_items = Inventory()
                         to_propagate = DNFInventory(True)
@@ -265,7 +270,7 @@ class Logic:
                             additional_terms |= conj | new_items
 
                 expr_changed, new_expr = requirements[item].or_extended(
-                    additional_terms
+                    additional_terms, True
                 )
                 if expr_changed:
                     requirements[item] = new_expr
@@ -278,7 +283,6 @@ class Logic:
         # We've reached a fixed point, which means we cannot find any new paths
         # in our requirement graph. So our output requirements now contain all
         # possible paths.
-        print(f"Propagation took {iters} iterations.")
         return requirements
 
     @staticmethod
