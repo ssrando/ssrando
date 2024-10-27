@@ -69,7 +69,7 @@ class LogicUtils(Logic):
                 {
                     EXTENDED_ITEM[itemname]
                     for itemname in (
-                        (PROGRESS_ITEMS | ALL_SMALL_KEYS | ALL_BOSS_KEYS).keys()
+                        POTENTIALLY_USEFUL_ITEMS.keys()
                         | {self.short_to_full(macro) for macro in RAW_ITEM_MACROS}
                     )
                 }
@@ -174,6 +174,9 @@ class LogicUtils(Logic):
         items: List[EXTENDED_ITEM_NAME],
         starting_inventory: None | Inventory = None,
     ) -> List[EXTENDED_ITEM_NAME]:
+        if not items:
+            return []
+
         if starting_inventory is None:
             starting_inventory = self.inventory | HINT_BYPASS_BIT
 
@@ -309,9 +312,14 @@ class LogicUtils(Logic):
                 if other_max_batreaux_reward is not None:
                     banned.append(other_max_batreaux_reward)
 
+                # We need to filter out items that don't exist in EXTENDED_ITEM
                 for crystal_pack in self.filter_locked_by_items(
                     list(GRATITUDE_CRYSTAL_PACKS.keys()),
-                    [self.placement.locations[item] for item in banned],
+                    [
+                        (item := self.placement.locations[loc])
+                        for loc in banned
+                        if item in POTENTIALLY_USEFUL_ITEMS
+                    ],
                 ):
                     # Crystal packs that logically come after the max Batreaux reward(s) are redundant
                     items_to_remove.add(crystal_pack)
@@ -325,13 +333,18 @@ class LogicUtils(Logic):
                     break
 
             if max_beedle is not None:
-                for wallet in self.filter_locked_by_items(
-                    list(PROGRESSIVE_WALLETS.keys()) + list(EXTRA_WALLETS.keys()),
-                    [self.placement.locations[self.areas.short_to_full(max_beedle)]],
-                ):
-                    # Wallets that logically come after the max Beedle shop item are redundant
-                    items_to_remove.add(wallet)
-                    requirements[EXTENDED_ITEM[wallet]] = DNFInventory(False)
+                if (
+                    item := self.placement.locations[
+                        self.areas.short_to_full(max_beedle)
+                    ]
+                ) in POTENTIALLY_USEFUL_ITEMS:
+                    for wallet in self.filter_locked_by_items(
+                        list(PROGRESSIVE_WALLETS.keys()) + list(EXTRA_WALLETS.keys()),
+                        [item],
+                    ):
+                        # Wallets that logically come after the max Beedle shop item are redundant
+                        items_to_remove.add(wallet)
+                        requirements[EXTENDED_ITEM[wallet]] = DNFInventory(False)
 
         # Any redundant copies detected earlier will have been marked as impossible,
         # meaning they cannot be collected during aggregation.
