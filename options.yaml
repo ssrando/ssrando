@@ -1131,3 +1131,19 @@
         (a progress item that only unlocks ultimately useless locations and can be ignored). This text will not
         appear for items that are trivially unrequired (i.e., junk items).
   ui: option_hint_importance
+- name: Ammo Availability
+  command: ammo-availability
+  type: singlechoice
+  bits: 2
+  choices:
+    - Scarce
+    - Vanilla
+    - Useful
+    - Plentiful
+  default: Plentiful
+  help: "Determines the number of locations where ammo refills can be found.
+        **Scarce**: Ammo will only be available from chance-based drops and Rupin's Gear shop.
+        **Vanilla**: Ammo will appear when breaking pots and barrels in the same way as the vanilla game.
+        **Useful**: Ammo pots will be added in key places near checks requiring a specific ammo to reduce back-tracking.
+        **Plentiful**: Ammo pots will be added next to all Bird Statues."
+  ui: option_ammo_availability
