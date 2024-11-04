@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from functools import cache
 from typing import List  # Only for typing purposes
+from hints.hint_types import HINT_IMPORTANCE
 
 from .logic import Logic, Placement, LogicSettings
 from .logic_input import Areas
@@ -59,6 +60,21 @@ class LogicUtils(Logic):
         self.randomized_start_statues = additional_info.randomized_start_statues
         self.known_locations = additional_info.known_locations
         self.puzzles = additional_info.puzzles
+        # Requirements solely in terms of items or item macros
+        # This is useful for accurate hint importance calculations, and
+        # makes SotS calculation much faster
+        self.flattened_requirements = Logic.bottomup_propagate(
+            self.requirements,
+            Inventory(
+                {
+                    EXTENDED_ITEM[itemname]
+                    for itemname in (
+                        POTENTIALLY_USEFUL_ITEMS.keys()
+                        | {self.short_to_full(macro) for macro in RAW_ITEM_MACROS}
+                    )
+                }
+            ),
+        )
 
     def check(self, useroutput):
         full_inventory = Logic.fill_inventory(self.requirements, EMPTY_INV)
@@ -88,18 +104,25 @@ class LogicUtils(Logic):
             )
 
     @cache
-    def _fill_for_test(self, banned_intset, inventory):
-        custom_requirements = self.requirements.copy()
+    def _fill_for_test(self, banned_intset, inventory, use_flattened_requirements=True):
+        custom_requirements = (
+            self.flattened_requirements.copy()
+            if use_flattened_requirements
+            else self.requirements.copy()
+        )
         for index, e in enumerate(reversed(bin(banned_intset))):
             if e == "1":
                 custom_requirements[index] = DNFInventory(False)
 
         return Logic.fill_inventory(custom_requirements, inventory)
 
+    # Flattened requirements are faster to evaluate, but they will not work for
+    # restricting locations; only items.
     def fill_restricted(
         self,
         banned_indices: List[EXTENDED_ITEM] = [],
         starting_inventory: None | Inventory = None,
+        use_flattened_requirements=True,
     ):
         if starting_inventory is None:
             starting_inventory = self.inventory
@@ -108,7 +131,9 @@ class LogicUtils(Logic):
         for i in banned_indices:
             banned_intset |= 1 << i
 
-        return self._fill_for_test(banned_intset, starting_inventory)
+        return self._fill_for_test(
+            banned_intset, starting_inventory, use_flattened_requirements
+        )
 
     def restricted_test(
         self,
@@ -119,6 +144,50 @@ class LogicUtils(Logic):
         restricted_full = self.fill_restricted(banned_indices, starting_inventory)
 
         return restricted_full[test_index]
+
+    def is_redundant_copy(
+        self,
+        item: EXTENDED_ITEM_NAME,
+        item_set: List[EXTENDED_ITEM_NAME],
+        starting_inventory: None | Inventory = None,
+    ) -> bool:
+        if starting_inventory is None:
+            starting_inventory = self.inventory | HINT_BYPASS_BIT
+
+        return bool(
+            self.filter_locked_by_items(
+                [item],
+                [
+                    item_copy
+                    for item_copy in item_set
+                    if item_copy != item
+                    and item_copy not in self.placement.starting_items
+                ],
+                starting_inventory,
+            )
+        )
+
+    # Returns a list of which items in `items_to_test` are locked by the set of given items
+    def filter_locked_by_items(
+        self,
+        items_to_test: List[EXTENDED_ITEM_NAME],
+        items: List[EXTENDED_ITEM_NAME],
+        starting_inventory: None | Inventory = None,
+    ) -> List[EXTENDED_ITEM_NAME]:
+        if not items:
+            return []
+
+        if starting_inventory is None:
+            starting_inventory = self.inventory | HINT_BYPASS_BIT
+
+        # To use flattened requirements, we need to test solely in terms of items, not locations.
+        accessible_set = self.fill_restricted(
+            [EXTENDED_ITEM[item] for item in items], starting_inventory
+        )
+
+        return [
+            item for item in items_to_test if not accessible_set[EXTENDED_ITEM[item]]
+        ]
 
     def congregate_requirements(self, item):
         if not hasattr(self, "congregated_reqs"):
@@ -156,7 +225,7 @@ class LogicUtils(Logic):
 
     @cache
     def _get_sots_items(self, index: EXTENDED_ITEM):
-        usefuls = self.get_useful_items(index)
+        usefuls = self._get_useful_items(index)
         return [
             item
             for item in INVENTORY_ITEMS
@@ -189,27 +258,121 @@ class LogicUtils(Logic):
 
             sots_loc = self.placement.items[item]
 
-            if sots_loc == START_ITEM:
+            if sots_loc == START_ITEM or sots_loc == UNPLACED_ITEM:
                 continue
 
             hint_region = self.areas.checks[sots_loc]["hint_region"]
             yield (hint_region, sots_loc, item)
 
     @cache
-    def _get_useful_items(self, index: EXTENDED_ITEM):
+    def _get_useful_items(self, idx: EXTENDED_ITEM, exclude_redundant_copies=False):
+        # Use flattened requirements for more efficient aggregation
+        requirements = self.flattened_requirements.copy()
+        items_to_remove = set()
+        if exclude_redundant_copies:
+            # First, check for redundancies in items that are only useful for one copy
+            only_useful_once = [
+                PROGRESSIVE_POUCHES.keys(),
+                PROGRESSIVE_BOWS.keys(),
+                PROGRESSIVE_SLINGSHOTS.keys(),
+                PROGRESSIVE_BUG_NETS.keys(),
+                EMPTY_BOTTLES.keys(),
+            ]
+            for item_set in only_useful_once:
+                for item in item_set:
+                    # If an item is not accessible with all other copies of this item removed, it must
+                    # be redundant since it is definitely locked by a previous copy.
+                    if self.is_redundant_copy(item, item_set):
+                        items_to_remove.add(item)
+                        requirements[EXTENDED_ITEM[item]] = DNFInventory(False)
+
+            REVERSE_BATREAUX_LIST = reversed(self.locations_by_hint_region(BATREAUX))
+            max_batreaux_reward = None
+            other_max_batreaux_reward = None
+            for index, loc in enumerate(REVERSE_BATREAUX_LIST):
+                if loc not in self.banned:
+                    max_batreaux_reward = loc
+                    match index:
+                        case 1:  # Bat 70 second reward
+                            # Include normal bat 70
+                            other_max_batreaux_reward = REVERSE_BATREAUX_LIST[2]
+                        case 2:  # Bat 70
+                            # Include bat 70 second reward
+                            other_max_batreaux_reward = REVERSE_BATREAUX_LIST[1]
+                        case 6:  # Bat 30 chest
+                            # Include normal bat 30
+                            other_max_batreaux_reward = REVERSE_BATREAUX_LIST[7]
+                        case 7:  # Bat 30
+                            # Include bat 30 chest
+                            other_max_batreaux_reward = REVERSE_BATREAUX_LIST[6]
+                    break
+
+            if max_batreaux_reward is not None:
+                max_bat = [max_batreaux_reward]
+                if other_max_batreaux_reward is not None:
+                    max_bat.append(other_max_batreaux_reward)
+
+                # We need to filter out items that don't exist in EXTENDED_ITEM
+                banned_items = []
+                for loc in max_bat:
+                    if (
+                        item := self.placement.locations[loc]
+                    ) in POTENTIALLY_USEFUL_ITEMS:
+                        banned_items.append(item)
+
+                if banned_items:
+                    for crystal_pack in self.filter_locked_by_items(
+                        list(GRATITUDE_CRYSTAL_PACKS.keys()),
+                        banned_items,
+                    ):
+                        # Crystal packs that logically come after the max Batreaux reward(s) are redundant
+                        items_to_remove.add(crystal_pack)
+                        requirements[EXTENDED_ITEM[crystal_pack]] = DNFInventory(False)
+
+            WALLET_LOCKED_BEEDLE = SORTED_BEEDLE_CHECKS[:4]
+            max_beedle = None
+            for loc in WALLET_LOCKED_BEEDLE:
+                if loc not in self.banned:
+                    max_beedle = loc
+                    break
+
+            if max_beedle is not None:
+                if (
+                    item := self.placement.locations[
+                        self.areas.short_to_full(max_beedle)
+                    ]
+                ) in POTENTIALLY_USEFUL_ITEMS:
+                    for wallet in self.filter_locked_by_items(
+                        list(PROGRESSIVE_WALLETS.keys()) + list(EXTRA_WALLETS.keys()),
+                        [item],
+                    ):
+                        # Wallets that logically come after the max Beedle shop item are redundant
+                        items_to_remove.add(wallet)
+                        requirements[EXTENDED_ITEM[wallet]] = DNFInventory(False)
+
+        # Any redundant copies detected earlier will have been marked as impossible,
+        # meaning they cannot be collected during aggregation.
+        # This ensures that, for example, songs that lock only useless item copies
+        # in silent realms may also be marked as not required.
         usefuls = self.aggregate_requirements(
-            self.requirements, self.full_inventory, index
+            requirements,
+            self.full_inventory,
+            idx,
         )
+        # We still need to filter copies that were removed earlier
         return [
             loc
             for i in usefuls.intset
             if (loc := EXTENDED_ITEM.get_item_name(i)) in INVENTORY_ITEMS
+            and loc not in items_to_remove
         ]
 
-    def get_useful_items(self, bit=EVERYTHING_UNBANNED_BIT):
-        res = self._get_useful_items(bit)
+    def get_useful_items(
+        self, bit=EVERYTHING_UNBANNED_BIT, exclude_redundant_copies=False
+    ):
+        res = self._get_useful_items(bit, exclude_redundant_copies)
         if not res:
-            res = [
+            return [
                 loc
                 for i in self.full_inventory.intset
                 if (loc := EXTENDED_ITEM.get_item_name(i)) in PROGRESS_ITEMS
@@ -224,7 +387,7 @@ class LogicUtils(Logic):
     def _get_barren_regions(self, index: EXTENDED_ITEM):
         useful_checks = (
             loc
-            for item in self.get_useful_items(index)
+            for item in self.get_useful_items(index, True)
             for loc in (self.placement.items[item],)
             if item not in self.placement.starting_items
             if item not in self.placement.unplaced_items
@@ -254,7 +417,9 @@ class LogicUtils(Logic):
             [k for k, v in checks_per_region.items() if v == 0],
         )
 
-    def get_barren_regions(self, bit=EVERYTHING_UNBANNED_BIT):
+    def get_barren_regions(self, bit=None):
+        if bit is None:
+            bit = EXTENDED_ITEM[self.short_to_full(DEMISE)]
         return self._get_barren_regions(bit)
 
     def calculate_playthrough_progression_spheres(self):
@@ -315,3 +480,19 @@ class LogicUtils(Logic):
                 return 8
 
         return {k: dowse(v) for k, v in self.placement.locations.items()}
+
+    def get_importance_for_item(self, item):
+        # Skip trivially unrequired items
+        if item not in self.get_useful_items():
+            return HINT_IMPORTANCE.Null
+        # Then check if the item is SotS
+        if item in self.get_sots_items():
+            return HINT_IMPORTANCE.Required
+        # Then check if the item is considered useful for Demise; ultimately unrequired items will not count
+        elif item in self.get_useful_items(
+            EXTENDED_ITEM[self.short_to_full(DEMISE)], True
+        ):
+            return HINT_IMPORTANCE.PossiblyRequired
+        # The item must now be not required
+        else:
+            return HINT_IMPORTANCE.NotRequired
