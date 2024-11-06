@@ -5274,7 +5274,19 @@ F401: # Sealed grounds Whirlpool
     layer: 1
     room: 1
     objtype: OBJ
-  - name: Groosenator before imp 2
+  - name: Groosenator before imp 2 1 # At least one of these three removes the cutscene, not sure which
+    type: objdelete
+    id: 0xFC93
+    layer: 3
+    room: 1
+    objtype: OBJ
+  - name: Groosenator before imp 2 2
+    type: objdelete
+    id: 0xFC94
+    layer: 3
+    room: 1
+    objtype: OBJ
+  - name: Groosenator before imp 2 3
     type: objdelete
     id: 0xFC9D
     layer: 3
