@@ -2,7 +2,7 @@ from __future__ import annotations
 from collections import defaultdict
 import json
 from random import Random
-from typing import Literal
+from typing import Literal, Tuple
 from logic.inventory import EXTENDED_ITEM
 from logic.logic_input import Areas
 
@@ -76,6 +76,89 @@ JUNK_TEXT = [
 ]
 
 
+class HintAssignment:
+    """
+    A hint assignment is a way to assign hints to various sources, like Fi and Gossip Stones (and maybe more in the future).
+    """
+
+    def __init__(self, dist):
+        self.dist = dist
+
+    def read_from_json(self, _jsn):
+        raise NotImplementedError
+
+    def is_done(self):
+        raise NotImplementedError
+
+    def accept_hint(self, hint, hint_def):
+        raise NotImplementedError
+
+    def get_hints(self):
+        raise NotImplementedError
+
+
+class SplitHintAssignment(HintAssignment):
+    """
+    "Split" hint assignment assigns the first `fi_hints` hints to Fi and
+    (num_unbanned_stones * hints_per_stone) hints to gossip stones, in generation order
+    """
+
+    def __init__(self, dist):
+        super().__init__(dist)
+        self.hints = []
+        self.num_total_hints = None
+
+    def read_from_json(self, jsn):
+        self.fi_hints = jsn["fi_hints"]
+        self.hints_per_stone = jsn["hints_per_stone"]
+
+    def is_done(self):
+        if self.num_total_hints == None:
+            self.num_total_hints = self.fi_hints + sum(
+                0 if stone in self.dist.banned_stones else self.hints_per_stone
+                for stone in self.dist.areas.gossip_stones
+            )
+
+        return len(self.hints) >= self.num_total_hints
+
+    def accept_hint(self, hint, hint_def):
+        self.hints.append(hint)
+
+    def get_hints(self):
+        hints = self.hints[: self.num_total_hints]
+        return hints[: self.fi_hints], hints[self.fi_hints :]
+
+
+class SeparateHintAssignment(HintAssignment):
+    """
+    "Separate" hint assignment assigns `total_hints` to Fi and gossip stones as specified.
+    """
+
+    def __init__(self, dist):
+        super().__init__(dist)
+        self.fi_hints = []
+        self.gossip_stone_hints = []
+
+    def read_from_json(self, jsn):
+        self.total_hints = jsn["total_hints"]
+        self.default_assignment = jsn["default_assignment"]
+
+    def is_done(self):
+        return len(self.fi_hints) + len(self.gossip_stone_hints) >= self.total_hints
+
+    def accept_hint(self, hint, hint_def):
+        assignment = hint_def.get("assignment", self.default_assignment)
+        if assignment == "fi":
+            self.fi_hints.append(hint)
+        elif assignment == "gossip_stone":
+            self.gossip_stone_hints.append(hint)
+        else:
+            raise ValueError("invalid hint assignment " + assignment)
+
+    def get_hints(self):
+        return self.fi_hints, self.gossip_stone_hints
+
+
 class InvalidHintDistribution(Exception):
     pass
 
@@ -126,18 +209,24 @@ class HintDistribution:
         self._read_from_json(json.loads(s))
 
     def _read_from_json(self, jsn):
-        self.fi_hints = jsn["fi_hints"]
-        self.hints_per_stone = jsn["hints_per_stone"]
-        # Limit number of hints per stone as there appears to be ~600 character limit to the hintstone text.
-        if self.hints_per_stone >= 9:
-            raise ValueError(
-                "Selected hint distribution must have no more than 8 hints per stone. "
-                + "Having more than 8 risks hint text being cut off when shown in game."
-            )
-        elif (self.fi_hints < 0) or (self.hints_per_stone < 0):
-            raise ValueError(
-                "Selected hint distribution must not have less than 0 Fi hints or hints per stone."
-            )
+        if "fi_hints" in jsn and "hints_per_stone" in jsn:
+            if "assignment" in jsn:
+                raise ValueError("conflicting hint assignment modes")
+            self.assignment = SplitHintAssignment(self)
+            self.assignment.read_from_json(jsn)
+        elif "assignment" in jsn:
+            assignment_jsn = jsn["assignment"]
+            mode = assignment_jsn["mode"]
+            if mode == "split":
+                self.assignment = SplitHintAssignment(self)
+            elif mode == "separate":
+                self.assignment = SeparateHintAssignment(self)
+            else:
+                raise ValueError("unknown hint assignment mode " + mode)
+            self.assignment.read_from_json(assignment_jsn)
+        else:
+            raise ValueError("no hint assignment modes found")
+
         self.banned_stones = jsn["banned_stones"]
         self.added_locations = jsn["added_locations"]
         self.removed_locations = jsn["removed_locations"]
@@ -171,14 +260,6 @@ class HintDistribution:
         self.hinted_locations = unhintable
 
         self.banned_stones = list(map(areas.short_to_full, self.banned_stones))
-        self.hints_per_stone = {
-            stone: 0 if stone in self.banned_stones else self.hints_per_stone
-            for stone in self.areas.gossip_stones
-        }
-        self.nb_hints = sum(self.hints_per_stone.values())
-        assert self.nb_hints <= MAX_STONE_HINTS
-        self.nb_hints += self.fi_hints
-        assert self.fi_hints <= MAX_FI_HINTS
 
         check_hint_status2 = (
             check_hint_status
@@ -266,14 +347,14 @@ class HintDistribution:
                 needed_fixed.append(hint_type)
         needed_fixed.sort(key=lambda hint_type: self.distribution[hint_type]["order"])
 
-        self.hints = []
         for hint_type in needed_fixed:
             curr_type = self.distribution[hint_type]
             func = self.hintfuncs[hint_type]
             for _ in range(curr_type["fixed"]):
                 if (loc := func()) is not None:
                     self.counts_by_type[hint_type] += 1
-                    self.hints.extend([loc] * curr_type["copies"])
+                    for _ in range(curr_type["copies"]):
+                        self.assignment.accept_hint(loc, curr_type)
 
         self.weighted_types = []
         self.weights = []
@@ -285,20 +366,20 @@ class HintDistribution:
     Uses the distribution to calculate all the hints
     """
 
-    def get_hints(self) -> List[RegularHint]:
-        hints = self.hints
-        count = self.nb_hints
-        while len(hints) < count:
+    def get_hints(self) -> Tuple[List[RegularHint], List[RegularHint]]:
+        while not self.assignment.is_done():
             [hint_type] = self.rng.choices(self.weighted_types, self.weights)
             func = self.hintfuncs[hint_type]
-            limit = self.distribution[hint_type].get("max")
+            curr_type = self.distribution[hint_type]
+            limit = curr_type.get("max")
 
             if limit is not None and self.counts_by_type[hint_type] >= limit:
                 continue
 
             if (hint := func()) is not None:
                 self.counts_by_type[hint_type] += 1
-                hints.extend([hint] * self.distribution[hint_type]["copies"])
+                for _ in range(curr_type["copies"]):
+                    self.assignment.accept_hint(hint, curr_type)
             else:
                 self.weights[self.weighted_types.index(hint_type)] = 0
                 if not sum(self.weights):
@@ -306,9 +387,35 @@ class HintDistribution:
                         f"Could not generate enough hints. This may be because the settings are too restrictive. Try changing the hint distribution."
                     )
 
-        hints = hints[:count]
-        fi_hints, stone_hints = hints[: self.fi_hints], hints[self.fi_hints :]
-        return fi_hints, stone_hints
+        fi_hints, hintstone_hints = self.assignment.get_hints()
+        assert len(fi_hints) <= MAX_FI_HINTS
+
+        unbanned_hintstones = list(
+            stone
+            for stone in self.areas.gossip_stones
+            if not stone in self.banned_stones
+        )
+        num_unbanned_hintstones = len(unbanned_hintstones)
+
+        # evenly assign all hintstone hints to the unbanned hintstones
+        # first, assign the same number of hints to our stones
+        floor_hints_per_stone = len(hintstone_hints) // num_unbanned_hintstones
+        self.hints_per_stone = {
+            stone: 0 if stone in self.banned_stones else floor_hints_per_stone
+            for stone in self.areas.gossip_stones
+        }
+
+        # then, randomly spread the remainder across our stones
+        residual = len(hintstone_hints) - (
+            floor_hints_per_stone * num_unbanned_hintstones
+        )
+        plus_one_stones = self.rng.sample(unbanned_hintstones, residual)
+        for stone in plus_one_stones:
+            self.hints_per_stone[stone] += 1
+
+        assert max(self.hints_per_stone.values()) < MAX_HINTS_PER_STONE
+
+        return fi_hints, hintstone_hints
 
     def _create_always_hint(self):
         if not self.always_hints:
