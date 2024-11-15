@@ -35,6 +35,7 @@ def write(
     hints,
     required_dungeons,
     sots_items,
+    useful_items,
     barren_nonprogress,
     randomized_dungeon_entrance,
     randomized_trial_entrance,
@@ -142,7 +143,10 @@ def write(
             file.write(f"  {zone_name}:\n")
 
             for _, loc, item in locations_in_zone:
-                file.write(f"      {loc + ':':{max_location_name_length}} {item}\n")
+                useful = item in useful_items or item == "End Credits"
+                file.write(
+                    f"      {loc + ':':{max_location_name_length}} {item}{'' if useful else ' (not required)'}\n"
+                )
 
     file.write("\n\n\n")
 
