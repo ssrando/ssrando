@@ -298,7 +298,9 @@ class LogicUtils(Logic):
                 and loc not in items_to_remove
             ]
 
-            REVERSE_BATREAUX_LIST = reversed(self.locations_by_hint_region(BATREAUX))
+            REVERSE_BATREAUX_LIST = list(
+                reversed(self.locations_by_hint_region(BATREAUX))
+            )
             WALLET_LOCKED_BEEDLE = [
                 self.areas.short_to_full(beedle_check)
                 for beedle_check in SORTED_BEEDLE_CHECKS[:4]
@@ -527,3 +529,18 @@ class LogicUtils(Logic):
         # The item must now be not required
         else:
             return HINT_IMPORTANCE.NotRequired
+
+    def test_importance_validity(self):
+        unrequired_items = [
+            item
+            for item in self.full_inventory.intset
+            if self.get_importance_for_item(EXTENDED_ITEM.get_item_name(item))
+            == HINT_IMPORTANCE.NotRequired
+        ]
+
+        # The seed should still be beatable with all "not required" items removed.
+        assert self.restricted_test(
+            EXTENDED_ITEM[self.areas.short_to_full(DEMISE)],
+            unrequired_items,
+            self.inventory | HINT_BYPASS_BIT,
+        )
