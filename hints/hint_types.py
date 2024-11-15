@@ -32,10 +32,13 @@ class Hint:
         raise NotImplementedError("abstract")
 
 
-HINT_MODES = Enum("HINT_MODES", ["Empty", "Direct", "Useless", "Useful", "Required"])
+HINT_MODES = Enum(
+    "HINT_MODES", ["Empty", "Comprehensive", "Direct", "Useless", "Useful", "Required"]
+)
 
 hint_types = {
     HINT_MODES.Empty: "empty",
+    HINT_MODES.Comprehensive: "comprehensive",
     HINT_MODES.Direct: "direct",
     HINT_MODES.Useless: "useless",
     HINT_MODES.Useful: "useful",
@@ -50,6 +53,7 @@ class NonStoneHint(Hint):
     songhintname: str
     item: str
     importance: Enum
+    num_useful_items: int
 
     base_type: str = field(init=False)
     raw_texts: dict[Enum, str] = field(init=False)
@@ -64,6 +68,18 @@ class NonStoneHint(Hint):
         if self.hint_mode == HINT_MODES.Direct:
             return self.raw_texts[self.hint_mode].format(
                 norm(self.item), format_importance(self.importance, include_color)
+            )
+        elif self.hint_mode == HINT_MODES.Comprehensive:
+            if self.num_useful_items == 0:
+                return self.raw_texts[self.hint_mode].format("no useful items")
+            if self.num_useful_items == 1:
+                return self.raw_texts[self.hint_mode].format(
+                    f"{norm(self.item)}{format_importance(self.importance, include_color)}"
+                )
+
+            return self.raw_texts[self.hint_mode].format(
+                f"{norm(self.item)}{format_importance(self.importance, include_color)}"
+                + f" and {self.num_useful_items - 1} other useful item{'' if self.num_useful_items == 2 else 's'}"
             )
         return self.raw_texts[self.hint_mode]
 
@@ -86,7 +102,8 @@ class SongHint(NonStoneHint):
     base_type = "song"
     raw_texts = {
         HINT_MODES.Empty: "",
-        HINT_MODES.Direct: "This trial holds {}{}.",
+        HINT_MODES.Comprehensive: "This trial contains {}.",
+        HINT_MODES.Direct: "Completing this trial rewards {}{}.",
         HINT_MODES.Useless: "Its reward is probably not too important...",
         HINT_MODES.Useful: "You might need its reward...",
         HINT_MODES.Required: "Your spirit will grow by completing this trial.",

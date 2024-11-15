@@ -478,18 +478,21 @@
 - name: Song Hints
   command: song-hints
   type: singlechoice
-  bits: 2
+  bits: 3
   choices:
     - None
     - Basic
     - Advanced
     - Direct
+    - Comprehensive
   default: None
   help: "Determines how hints appear on songs.
         **None**: Silent Realm rewards will be hinted on Gossip Stones.
         **Basic**: the song text indicates if beating the trial rewards a progress item.
         **Advanced**: the song text indicates if beating the trial rewards a SotS, junk or potientially required item.
-        **Direct**: the song text states the reward for beating the trial directly."
+        **Direct**: the song text states the reward for beating the trial directly.
+        **Comprehensive**: the song text points to a random useful item in the silent realm from the highest usefulness tier, i.e.,
+        SotS items get priority over other items. The hint also reveals how many other useful items exist in the silent realm."
   ui: option_song_hints
 - name: BiT Changes
   command: bit-patches

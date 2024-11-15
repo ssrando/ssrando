@@ -37,13 +37,15 @@ class Hints:
             ) as f:
                 self.dist.read_from_file(f)
 
-    def do_hint_per_status(self, hintmodes, does_hint, hintcls, get_check, hintpack):
+    def do_hint_per_status(self, hintmodes, does_hint, hintcls, get_checks, hintpack):
         for hintname, raw_check in hintpack.items():
-            check = get_check(raw_check)
-            item = self.logic.placement.locations[check]
+            checks = get_checks(raw_check)
+            item, num_useful = self.most_important_item(
+                [self.logic.placement.locations[check] for check in checks]
+            )
 
             if does_hint:
-                self.hinted_checks.append(check)
+                self.hinted_checks.extend(checks)
 
             status = self.logic.get_importance_for_item(item)
 
@@ -53,7 +55,7 @@ class Hints:
                 importance = HINT_IMPORTANCE.Null
 
             self.hints[hintname] = hintcls(
-                hintmodes[status], hintname, item, importance
+                hintmodes[status], hintname, item, importance, num_useful
             )
 
     def do_non_hintstone_hints(self):
@@ -67,6 +69,8 @@ class Hints:
             hintmodes = {k: HINT_MODES.Empty for k in HINT_IMPORTANCE}
         elif hint_mode == "Direct":
             hintmodes = {k: HINT_MODES.Direct for k in HINT_IMPORTANCE}
+        elif hint_mode == "Comprehensive":
+            hintmodes = {k: HINT_MODES.Comprehensive for k in HINT_IMPORTANCE}
         elif hint_mode == "Basic":
             hintmodes = {
                 HINT_IMPORTANCE.Required: HINT_MODES.Useful,
@@ -85,11 +89,20 @@ class Hints:
             raise ValueError(f'Unknown value for setting "song-hints": "{hint_mode}".')
 
         does_hint = hint_mode != "None"
-        get_check = lambda trial_gate: self.norm(
-            SILENT_REALM_CHECKS[self.logic.randomized_trial_entrance[trial_gate]]
-        )
+        if hint_mode != "Comprehensive":
+            get_checks = lambda trial_gate: [
+                self.norm(
+                    SILENT_REALM_CHECKS[
+                        self.logic.randomized_trial_entrance[trial_gate]
+                    ]
+                )
+            ]
+        else:
+            get_checks = lambda trial_gate: self.logic.locations_by_hint_region(
+                self.logic.randomized_trial_entrance[trial_gate]
+            )
 
-        self.do_hint_per_status(hintmodes, does_hint, SongHint, get_check, SONG_HINTS)
+        self.do_hint_per_status(hintmodes, does_hint, SongHint, get_checks, SONG_HINTS)
 
         return self.hints, self.hinted_checks
 
@@ -226,3 +239,29 @@ class Hints:
         stone, old_hint = self.rng.choice(spots)
         old_removed_hint = self.logic.replace_item(stone, hintname, old_hint)
         return self.place_hint(old_removed_hint, depth + 1)
+
+    # Given a list of items, returns (in this priority)...
+    # - a random SotS item if one exists
+    # - a random possibly required item if one exists
+    # - a random item if one exists
+    # along with a count of how many useful items are in the list
+    def most_important_item(self, items: List[EIN]) -> tuple[EIN, int]:
+        num_useful = 0
+        req_items = []
+        possibly_req_items = []
+        for item in items:
+            importance = self.logic.get_importance_for_item(item)
+            if importance == HINT_IMPORTANCE.Required:
+                req_items.append(item)
+                num_useful += 1
+            elif importance == HINT_IMPORTANCE.PossiblyRequired:
+                possibly_req_items.append(item)
+                num_useful += 1
+
+        if req_items:
+            return (self.rng.choice(req_items), num_useful)
+
+        if possibly_req_items:
+            return (self.rng.choice(possibly_req_items), num_useful)
+
+        return (self.rng.choice(items), 0)
