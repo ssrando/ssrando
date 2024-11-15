@@ -75,6 +75,7 @@ class LogicUtils(Logic):
                 }
             ),
         )
+        self.importance = self.calculate_importance()
 
     def check(self, useroutput):
         full_inventory = Logic.fill_inventory(self.requirements, EMPTY_INV)
@@ -101,6 +102,11 @@ class LogicUtils(Logic):
             item = next(iter(set(INVENTORY_ITEMS) - set(self.placement.items)))
             raise useroutput.GenerationFailed(
                 f"Item {item} has not been handled by the randomizer."
+            )
+
+        if not self.test_importance_validity():
+            raise useroutput.GenerationFailed(
+                "Hint Importance error: Could not reach Demise without 'not required' items."
             )
 
     @cache
@@ -514,21 +520,21 @@ class LogicUtils(Logic):
 
         return {k: dowse(v) for k, v in self.placement.locations.items()}
 
-    def get_importance_for_item(self, item):
-        # Skip trivially unrequired items
-        if item not in self.get_useful_items():
-            return HINT_IMPORTANCE.Null
-        # Then check if the item is SotS
-        if item in self.get_sots_items():
-            return HINT_IMPORTANCE.Required
-        # Then check if the item is considered useful for Demise; ultimately unrequired items will not count
-        elif item in self.get_useful_items(
+    def calculate_importance(self):
+        importance_map = {}
+        # Start with the lowest importance, then work our way up
+        for item in self.get_useful_items():
+            importance_map[item] = HINT_IMPORTANCE.NotRequired
+        for item in self.get_useful_items(
             EXTENDED_ITEM[self.short_to_full(DEMISE)], True
         ):
-            return HINT_IMPORTANCE.PossiblyRequired
-        # The item must now be not required
-        else:
-            return HINT_IMPORTANCE.NotRequired
+            importance_map[item] = HINT_IMPORTANCE.PossiblyRequired
+        for item in self.get_sots_items():
+            importance_map[item] = HINT_IMPORTANCE.Required
+        return importance_map
+
+    def get_importance_for_item(self, item):
+        return self.importance.get(item, HINT_IMPORTANCE.Null)
 
     def test_importance_validity(self):
         unrequired_items = [
@@ -539,7 +545,7 @@ class LogicUtils(Logic):
         ]
 
         # The seed should still be beatable with all "not required" items removed.
-        assert self.restricted_test(
+        return self.restricted_test(
             EXTENDED_ITEM[self.areas.short_to_full(DEMISE)],
             unrequired_items,
             self.inventory | HINT_BYPASS_BIT,
