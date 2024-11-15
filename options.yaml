@@ -1120,3 +1120,12 @@
   permalink: true
   help: "Randomizes the Isle of Songs puzzle and the Ancient Cistern/Sandship directional door puzzles."
   ui: option_random_puzzles
+- name: Hint Importance
+  command: hint-importance
+  type: boolean
+  default: false
+  help: If enabled, location hints, item hints, and Direct song hints will tell if an item is required (a SotS item),
+        possibly required (a progress item that isn't SotS but unlocks useful locations), or not required
+        (a progress item that only unlocks ultimately useless locations and can be ignored). This text will not
+        appear for items that are trivially unrequired (i.e., junk items).
+  ui: option_hint_importance
