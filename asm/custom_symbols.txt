@@ -36,8 +36,9 @@ main.dol:
   has_heart_drops_enabled: 0x806793C0
   add_ammo_drops: 0x806793D0
   drop_nothing: 0x806794B8
-  FORCE_MOGMA_CAVE_DIVE: 0x806795EE
-  HERO_MODE_OPTIONS: 0x806795EF
+  get_tablet_keyframe_count: 0x806794F8
+  FORCE_MOGMA_CAVE_DIVE: 0x80679656
+  HERO_MODE_OPTIONS: 0x80679657
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340

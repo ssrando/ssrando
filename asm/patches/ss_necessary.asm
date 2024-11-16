@@ -443,6 +443,28 @@ bl has_heart_drops_enabled
 .org 0x801bf4f8
 b game_update_hook
 
+; fix tablet display
+
+.org 0x8015ccf8
+; instead of looping and counting tablets,
+; find the correct keyframe
+bl get_tablet_keyframe_count
+mr r29, r3
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+.org 0x8015ce00
+; when you have at least 1 Triforce, tablets are hidden.
+; change keyframe where entire group is hidden from 3.0 -> 7.0 (at 80576fc8)
+; r2 = 0x8057e9c0
+lfs f1, -0x79F8(r2)
+
 .close
 
 
