@@ -2394,12 +2394,6 @@
     flow:
       param2: 82 # Tadtones Scroll storyflag
       param3: 0 # set (not unset) flag
-250-ForestSiren:
-  - name: shorten fi text
-    type: flowpatch
-    index: 1
-    flow:
-      next: 78
 299-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch

@@ -182,6 +182,15 @@ global:
       - 83 # Cutscene showing the outside of the Fire Sanctuary
       - onlyif: Option "fs-lava-flow" Enabled
         flag: 64 # Blow up rock underground starting lava chase (back half lava flow)
+    Faron Silent Realm:
+      - 100 # Intro Fi Text + Spirit Vessel get
+    Lanayru Silent Realm:
+      - 101 # Intro Fi Text + Spirit Vessel get
+    Eldin Silent Realm:
+      - 102 # Intro Fi Text + Spirit Vessel get
+    Skyloft Silent Realm:
+      - 100 # Intro Fi Text + Spirit Vessel get (it seems to set both flags)
+      - 101
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
