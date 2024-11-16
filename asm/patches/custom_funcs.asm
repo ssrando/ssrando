@@ -375,6 +375,8 @@ b checkStoryflagIsSet
 .global has_fast_air_meter_drain
 .global has_heart_drops_enabled
 .global game_update_hook
+.global add_ammo_drops
+.global remove_ammo_drops
 
 .close
 

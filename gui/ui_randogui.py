@@ -64,7 +64,7 @@ class Ui_MainWindow(object):
         self.hlay_output.setObjectName(u"hlay_output")
         self.label_output = QLabel(self.tab_setup)
         self.label_output.setObjectName(u"label_output")
-        self.label_output.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.label_output.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.hlay_output.addWidget(self.label_output)
 
@@ -788,6 +788,16 @@ class Ui_MainWindow(object):
 
         self.vlay_convenience_tweaks.addWidget(self.option_full_wallet_upgrades)
 
+        self.label_for_option_ammo_availability = QLabel(self.box_convenience_tweaks)
+        self.label_for_option_ammo_availability.setObjectName(u"label_for_option_ammo_availability")
+
+        self.vlay_convenience_tweaks.addWidget(self.label_for_option_ammo_availability)
+
+        self.option_ammo_availability = QComboBox(self.box_convenience_tweaks)
+        self.option_ammo_availability.setObjectName(u"option_ammo_availability")
+
+        self.vlay_convenience_tweaks.addWidget(self.option_ammo_availability)
+
         self.vspace_convenience_tweaks = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.vlay_convenience_tweaks.addItem(self.vspace_convenience_tweaks)
@@ -1061,9 +1071,9 @@ class Ui_MainWindow(object):
 
         self.included_locations = QListView(self.tab_logic_settings)
         self.included_locations.setObjectName(u"included_locations")
-        self.included_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.included_locations.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.included_locations.setProperty("showDropIndicator", False)
-        self.included_locations.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.included_locations.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
         self.included_locations.setSelectionRectVisible(False)
 
         self.vlay_include_locations.addWidget(self.included_locations)
@@ -1132,9 +1142,9 @@ class Ui_MainWindow(object):
 
         self.excluded_locations = QListView(self.tab_logic_settings)
         self.excluded_locations.setObjectName(u"excluded_locations")
-        self.excluded_locations.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.excluded_locations.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.excluded_locations.setProperty("showDropIndicator", False)
-        self.excluded_locations.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.excluded_locations.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
         self.excluded_locations.setSelectionRectVisible(False)
 
         self.verticalLayout_30.addWidget(self.excluded_locations)
@@ -1324,9 +1334,9 @@ class Ui_MainWindow(object):
         self.randomized_items.setObjectName(u"randomized_items")
         sizePolicy1.setHeightForWidth(self.randomized_items.sizePolicy().hasHeightForWidth())
         self.randomized_items.setSizePolicy(sizePolicy1)
-        self.randomized_items.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.randomized_items.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.randomized_items.setProperty("showDropIndicator", False)
-        self.randomized_items.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.randomized_items.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
         self.randomized_items.setSelectionRectVisible(False)
 
         self.vlay_randomized_items_section.addWidget(self.randomized_items)
@@ -1336,7 +1346,7 @@ class Ui_MainWindow(object):
 
         self.vlay_starting_items_controls = QVBoxLayout()
         self.vlay_starting_items_controls.setObjectName(u"vlay_starting_items_controls")
-        self.vlay_starting_items_controls.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.vlay_starting_items_controls.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
         self.vspace_starting_items_controls_upper = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.vlay_starting_items_controls.addItem(self.vspace_starting_items_controls_upper)
@@ -1383,9 +1393,9 @@ class Ui_MainWindow(object):
         self.starting_items.setObjectName(u"starting_items")
         sizePolicy1.setHeightForWidth(self.starting_items.sizePolicy().hasHeightForWidth())
         self.starting_items.setSizePolicy(sizePolicy1)
-        self.starting_items.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.starting_items.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.starting_items.setProperty("showDropIndicator", False)
-        self.starting_items.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.starting_items.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
         self.starting_items.setSelectionRectVisible(False)
 
         self.vlay_starting_items_section.addWidget(self.starting_items)
@@ -1691,7 +1701,7 @@ class Ui_MainWindow(object):
         sizePolicy13.setVerticalStretch(0)
         sizePolicy13.setHeightForWidth(self.label_for_color_presets.sizePolicy().hasHeightForWidth())
         self.label_for_color_presets.setSizePolicy(sizePolicy13)
-        self.label_for_color_presets.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.label_for_color_presets.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout.addWidget(self.label_for_color_presets, 0, 0, 1, 1)
 
@@ -1712,13 +1722,13 @@ class Ui_MainWindow(object):
         self.hlay_colors_and_preview.setObjectName(u"hlay_colors_and_preview")
         self.scroll_area_colors = QScrollArea(self.tab_cosmetics)
         self.scroll_area_colors.setObjectName(u"scroll_area_colors")
-        self.scroll_area_colors.setContextMenuPolicy(Qt.PreventContextMenu)
-        self.scroll_area_colors.setFrameShape(QFrame.NoFrame)
-        self.scroll_area_colors.setFrameShadow(QFrame.Plain)
-        self.scroll_area_colors.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.scroll_area_colors.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scroll_area_colors.setContextMenuPolicy(Qt.ContextMenuPolicy.PreventContextMenu)
+        self.scroll_area_colors.setFrameShape(QFrame.Shape.NoFrame)
+        self.scroll_area_colors.setFrameShadow(QFrame.Shadow.Plain)
+        self.scroll_area_colors.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.scroll_area_colors.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         self.scroll_area_colors.setWidgetResizable(True)
-        self.scroll_area_colors.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.scroll_area_colors.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.scroll_area_widget_contents_colors = QWidget()
         self.scroll_area_widget_contents_colors.setObjectName(u"scroll_area_widget_contents_colors")
         self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 98, 46))
@@ -1750,7 +1760,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.label_preview_image.sizePolicy().hasHeightForWidth())
         self.label_preview_image.setSizePolicy(sizePolicy1)
         self.label_preview_image.setScaledContents(False)
-        self.label_preview_image.setAlignment(Qt.AlignCenter)
+        self.label_preview_image.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.hlay_preview.addWidget(self.label_preview_image)
 
@@ -1844,9 +1854,9 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.option_font_family.sizePolicy().hasHeightForWidth())
         self.option_font_family.setSizePolicy(sizePolicy14)
         self.option_font_family.setEditable(False)
-        self.option_font_family.setSizeAdjustPolicy(QComboBox.AdjustToContentsOnFirstShow)
-        self.option_font_family.setWritingSystem(QFontDatabase.Any)
-        self.option_font_family.setFontFilters(QFontComboBox.ScalableFonts)
+        self.option_font_family.setSizeAdjustPolicy(QComboBox.SizeAdjustPolicy.AdjustToContentsOnFirstShow)
+        self.option_font_family.setWritingSystem(QFontDatabase.WritingSystem.Any)
+        self.option_font_family.setFontFilters(QFontComboBox.FontFilter.ScalableFonts)
         font1 = QFont()
         font1.setFamilies([u"Arial"])
         font1.setPointSize(10)
@@ -1949,7 +1959,7 @@ class Ui_MainWindow(object):
         self.option_description.setSizePolicy(sizePolicy15)
         self.option_description.setMinimumSize(QSize(0, 48))
         self.option_description.setStyleSheet(u"")
-        self.option_description.setTextFormat(Qt.MarkdownText)
+        self.option_description.setTextFormat(Qt.TextFormat.MarkdownText)
         self.option_description.setWordWrap(True)
 
         self.verticalLayout.addWidget(self.option_description)
@@ -1981,9 +1991,9 @@ class Ui_MainWindow(object):
         self.label_seed = QLabel(self.centralwidget)
         self.label_seed.setObjectName(u"label_seed")
         self.label_seed.setToolTipDuration(-1)
-        self.label_seed.setLayoutDirection(Qt.LeftToRight)
+        self.label_seed.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.label_seed.setAutoFillBackground(False)
-        self.label_seed.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.label_seed.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.hlay_seed.addWidget(self.label_seed)
 
@@ -2017,7 +2027,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -2106,6 +2116,7 @@ class Ui_MainWindow(object):
         self.box_convenience_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Convenience Tweaks", None))
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
         self.option_full_wallet_upgrades.setText(QCoreApplication.translate("MainWindow", u"Full Wallet Upgrades", None))
+        self.label_for_option_ammo_availability.setText(QCoreApplication.translate("MainWindow", u"Ammo Availability", None))
         self.box_vanilla_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Vanilla Tweaks", None))
         self.label_for_option_bit_patches.setText(QCoreApplication.translate("MainWindow", u"BiT Patches", None))
         self.label_for_option_peatrice_conversations.setText(QCoreApplication.translate("MainWindow", u"Peatrice Conversations", None))

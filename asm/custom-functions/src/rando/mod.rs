@@ -25,7 +25,7 @@ use crate::{
         player,
         reloader::{self, Reloader},
     },
-    system::button::*,
+    system::{button::*, math::*},
 };
 
 #[link_section = "data"]
@@ -534,5 +534,75 @@ pub fn has_heart_drops_enabled() -> c_int {
         1
     } else {
         0
+    }
+}
+
+#[no_mangle]
+pub fn add_ammo_drops(
+    param1: *mut c_void,
+    param2_s0x18: u8,
+    roomid: u32,
+    pos: *mut Vec3f,
+    _subtype: u32,
+    _rot: *mut c_void,
+) -> bool {
+    // 0xFE is the custom id being used to drop arrows, bombs, and seeds.
+    // Should set the eq flag for comparison after this addtion.
+    if param2_s0x18 == 0xFE {
+        if ItemflagManager::check(Itemflag::BOW as u16) {
+            unsafe {
+                item::spawnDrop(
+                    Itemflag::BUNDLE_OF_ARROWS,
+                    roomid,
+                    pos,
+                    &mut Vec3s::default() as *mut Vec3s,
+                );
+            }
+        }
+
+        if ItemflagManager::check(Itemflag::BOMB_BAG as u16) {
+            unsafe {
+                item::spawnDrop(
+                    Itemflag::TEN_BOMBS,
+                    roomid,
+                    pos,
+                    &mut Vec3s::default() as *mut Vec3s,
+                );
+            }
+        }
+
+        if ItemflagManager::check(Itemflag::SLINGSHOT as u16) {
+            unsafe {
+                item::spawnDrop(
+                    Itemflag::FIVE_DEKU_SEEDS,
+                    roomid,
+                    pos,
+                    &mut Vec3s::default() as *mut Vec3s,
+                );
+            }
+        }
+        return false;
+    } else {
+        extern "C" {
+            fn processSpecialItemDropIndex(param1: *mut c_void, param2_s0x18: u8) -> bool;
+        }
+        unsafe {
+            return processSpecialItemDropIndex(param1, param2_s0x18);
+        }
+    }
+}
+
+#[no_mangle]
+pub fn drop_nothing(param1: *mut c_void, param2_s0x18: u8) -> bool {
+    // if should drop seeds, arrows, or bombs
+    if param2_s0x18 == 0xB || param2_s0x18 == 0xC || param2_s0x18 == 0xD {
+        return false;
+    } else {
+        extern "C" {
+            fn processSpecialItemDropIndex(param1: *mut c_void, param2_s0x18: u8) -> bool;
+        }
+        unsafe {
+            return processSpecialItemDropIndex(param1, param2_s0x18);
+        }
     }
 }
