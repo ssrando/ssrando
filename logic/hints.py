@@ -12,8 +12,6 @@ from options import Options
 from paths import CUSTOM_HINT_DISTRIBUTION_PATH, RANDO_ROOT_PATH
 from typing import Dict, List
 
-STATUS = Enum("STATUS", ["required", "useful", "useless"])
-
 
 class Hints:
     def __init__(self, options: Options, rng, areas: Areas, logic: LogicUtils):
@@ -47,15 +45,16 @@ class Hints:
             if does_hint:
                 self.hinted_checks.append(check)
 
-            status: Enum
-            if item in self.logic.get_sots_items():
-                status = STATUS.required
-            elif item in self.logic.get_useful_items():
-                status = STATUS.useful
-            else:
-                status = STATUS.useless
+            status = self.logic.get_importance_for_item(item)
 
-            self.hints[hintname] = hintcls(hintmodes[status], hintname, item)
+            if self.options["hint-importance"]:
+                importance = status
+            else:
+                importance = HINT_IMPORTANCE.Null
+
+            self.hints[hintname] = hintcls(
+                hintmodes[status], hintname, item, importance
+            )
 
     def do_non_hintstone_hints(self):
         self.hinted_checks: List[EIN] = []
@@ -65,20 +64,22 @@ class Hints:
 
         hintmodes: Dict[Enum, Enum]
         if hint_mode == "None":
-            hintmodes = {k: HINT_MODES.Empty for k in STATUS}
+            hintmodes = {k: HINT_MODES.Empty for k in HINT_IMPORTANCE}
         elif hint_mode == "Direct":
-            hintmodes = {k: HINT_MODES.Direct for k in STATUS}
+            hintmodes = {k: HINT_MODES.Direct for k in HINT_IMPORTANCE}
         elif hint_mode == "Basic":
             hintmodes = {
-                STATUS.required: HINT_MODES.Useful,
-                STATUS.useful: HINT_MODES.Useful,
-                STATUS.useless: HINT_MODES.Useless,
+                HINT_IMPORTANCE.Required: HINT_MODES.Useful,
+                HINT_IMPORTANCE.PossiblyRequired: HINT_MODES.Useful,
+                HINT_IMPORTANCE.NotRequired: HINT_MODES.Useless,
+                HINT_IMPORTANCE.Null: HINT_MODES.Useless,
             }
         elif hint_mode == "Advanced":
             hintmodes = {
-                STATUS.required: HINT_MODES.Required,
-                STATUS.useful: HINT_MODES.Useful,
-                STATUS.useless: HINT_MODES.Useless,
+                HINT_IMPORTANCE.Required: HINT_MODES.Required,
+                HINT_IMPORTANCE.PossiblyRequired: HINT_MODES.Useful,
+                HINT_IMPORTANCE.NotRequired: HINT_MODES.Useless,
+                HINT_IMPORTANCE.Null: HINT_MODES.Useless,
             }
         else:
             raise ValueError(f'Unknown value for setting "song-hints": "{hint_mode}".')

@@ -241,6 +241,63 @@ PROGRESSIVE_WALLETS = group(PROGRESSIVE_WALLET, 4)
 EXTRA_WALLETS = group(EXTRA_WALLET, 3)
 TADTONE_GROUPS = group(GROUP_OF_TADTONES, 17)
 
+# Macros for bottomup_propagation
+PRACTICE_SWORD = "Practice Sword"
+GODDESS_SWORD = "Goddess Sword"
+GODDESS_LONGSWORD = "Goddess Longsword"
+GODDESS_WHITE_SWORD = "Goddess White Sword"
+MASTER_SWORD = "Master Sword"
+TRUE_MASTER_SWORD = "True Master Sword"
+BEETLE = "Beetle"
+HOOK_BEETLE = "Hook Beetle"
+QUICK_BEETLE = "Quick Beetle"
+TOUGH_BEETLE = "Tough Beetle"
+BOW = "Bow"
+SLINGSHOT = "Slingshot"
+BUG_NET = "Bug Net"
+DIGGING_MITTS = "Digging Mitts"
+MOGMA_MITTS = "Mogma Mitts"
+POUCH = "Pouch"
+MEDIUM_WALLET = "Medium Wallet"
+BIG_WALLET = "Big Wallet"
+GIANT_WALLET = "Giant Wallet"
+TYCOON_WALLET = "Tycoon Wallet"
+EMPTY_BOTTLE_MACRO = "Empty Bottle_"
+CRYSTAL_COUNT_MACROS = {f"{i} Gratitude Crystals" for i in [5, 10, 30, 40, 50, 70, 80]}
+CRYSTAL_PACK_MACROS = {
+    f"{i} Gratitude Crystal Pack" + ("" if i == 1 else "s") for i in range(1, 14)
+}
+LOOSE_CRYSTAL_MACROS = {f"{i} Single Gratitude Crystals" for i in [5, 10, 15]}
+
+RAW_ITEM_MACROS = (
+    {
+        PRACTICE_SWORD,
+        GODDESS_SWORD,
+        GODDESS_LONGSWORD,
+        GODDESS_WHITE_SWORD,
+        MASTER_SWORD,
+        TRUE_MASTER_SWORD,
+        BEETLE,
+        HOOK_BEETLE,
+        QUICK_BEETLE,
+        TOUGH_BEETLE,
+        BOW,
+        SLINGSHOT,
+        BUG_NET,
+        DIGGING_MITTS,
+        MOGMA_MITTS,
+        POUCH,
+        MEDIUM_WALLET,
+        BIG_WALLET,
+        GIANT_WALLET,
+        TYCOON_WALLET,
+        EMPTY_BOTTLE_MACRO,
+    }
+    | CRYSTAL_COUNT_MACROS
+    | CRYSTAL_PACK_MACROS
+    | LOOSE_CRYSTAL_MACROS
+)
+
 small_key = lambda d: d + " Small Key"
 SMALL_KEY = {dun: small_key(dun) for dun in ALL_DUNGEONS}
 
@@ -452,13 +509,10 @@ ALL_BOSS_KEYS = (
 )
 ALL_MAPS = dict.fromkeys(MAP.values())
 
+POTENTIALLY_USEFUL_ITEMS = PROGRESS_ITEMS | ALL_SMALL_KEYS | ALL_BOSS_KEYS
+
 INVENTORY_ITEMS = (
-    PROGRESS_ITEMS
-    | NONPROGRESS_ITEMS
-    | CONSUMABLE_ITEMS
-    | ALL_SMALL_KEYS
-    | ALL_BOSS_KEYS
-    | ALL_MAPS
+    POTENTIALLY_USEFUL_ITEMS | NONPROGRESS_ITEMS | CONSUMABLE_ITEMS | ALL_MAPS
 )
 
 ALL_ITEM_NAMES = INVENTORY_ITEMS | DUPLICABLE_ITEMS | DUPLICABLE_COUNTERPROGRESS_ITEMS

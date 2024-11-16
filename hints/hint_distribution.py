@@ -435,14 +435,19 @@ class HintDistribution:
         silent_realm_checks_rev = SILENT_REALM_CHECKS_REV(self.areas.short_to_full)
         trial_rando = self.options["randomize-trials"]
 
+        if self.options["hint-importance"]:
+            importance = self.logic.get_importance_for_item(item)
+        else:
+            importance = HINT_IMPORTANCE.Null
+
         if trial_rando and loc in silent_realm_checks_rev:
             trial = silent_realm_checks_rev[loc]
             trial_gate = {
                 v: k for k, v in self.logic.randomized_trial_entrance.items()
             }[trial]
-            return TrialGateHint(loc, item, trial_gate)
+            return TrialGateHint(loc, item, importance, trial_gate)
         else:
-            return LocationHint("always", loc, item, text)
+            return LocationHint("always", loc, item, importance, text)
 
     def _create_sometimes_hint(self):
         if not self.sometimes_hints:
@@ -459,7 +464,12 @@ class HintDistribution:
             return self._create_sometimes_hint()
         self.hinted_locations.append(loc)
 
-        return LocationHint("sometimes", loc, item, text)
+        if self.options["hint-importance"]:
+            importance = self.logic.get_importance_for_item(item)
+        else:
+            importance = HINT_IMPORTANCE.Null
+
+        return LocationHint("sometimes", loc, item, importance, text)
 
     def _create_bk_hint(self):
         if not self.required_boss_keys:
@@ -476,7 +486,12 @@ class HintDistribution:
             return self._create_bk_hint()
         self.hinted_locations.append(loc)
 
-        return LocationHint("boss_key", loc, item, text)
+        if self.options["hint-importance"]:
+            importance = self.logic.get_importance_for_item(item)
+        else:
+            importance = HINT_IMPORTANCE.Null
+
+        return LocationHint("boss_key", loc, item, importance, text)
 
     def _create_item_hint(self):
         if not self.hintable_items:
@@ -489,14 +504,19 @@ class HintDistribution:
             return self._create_item_hint()
         self.hinted_locations.append(loc)
 
+        if self.options["hint-importance"]:
+            importance = self.logic.get_importance_for_item(item)
+        else:
+            importance = HINT_IMPORTANCE.Null
+
         if self.options["precise-item"]:
             text = self.areas.checks[loc].get("text")
-            return LocationHint("precise_item", loc, item, text)
+            return LocationHint("precise_item", loc, item, importance, text)
 
         if (zone_override := self.areas.checks[loc].get("cube_region")) is None:
             zone_override = self.areas.checks[loc]["hint_region"]
 
-        return ZoneItemHint(loc, item, zone_override)
+        return ZoneItemHint(loc, item, importance, zone_override)
 
     def _create_random_hint(self):
         all_locations_without_hint = [
@@ -517,7 +537,12 @@ class HintDistribution:
             text = self.areas.checks[loc].get("text")
         self.hinted_locations.append(loc)
 
-        return LocationHint("random", loc, item, text)
+        if self.options["hint-importance"]:
+            importance = self.logic.get_importance_for_item(item)
+        else:
+            importance = HINT_IMPORTANCE.Null
+
+        return LocationHint("random", loc, item, importance, text)
 
     def _create_sots_goal_hint(self, goal_mode=False):
         if goal_mode:
@@ -573,10 +598,12 @@ class HintDistribution:
                     zone = LANAYRU_DESERT
                 elif zone == LANAYRU_GORGE:
                     zone = LANAYRU_SAND_SEA
-                return CubeSotsGoalHint(loc, item, zone, goal)
+                # Importance doesn't matter for SotS hints, so just pass in Null
+                return CubeSotsGoalHint(loc, item, HINT_IMPORTANCE.Null, zone, goal)
         else:
             zone = self.areas.checks[loc]["hint_region"]
-        return SotsGoalHint(loc, item, zone, goal)
+        # Importance doesn't matter for SotS hints, so just pass in Null
+        return SotsGoalHint(loc, item, HINT_IMPORTANCE.Null, zone, goal)
 
     def _create_sots_hint(self):
         return self._create_sots_goal_hint(goal_mode=False)
