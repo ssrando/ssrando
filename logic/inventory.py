@@ -58,6 +58,13 @@ class EXTENDED_ITEM(int, metaclass=MetaContainer):
     def get_item_name(cls, i: EXTENDED_ITEM) -> EXTENDED_ITEM_NAME:
         return cls.items_list[i]
 
+    @classmethod
+    def reset_for_test(cls):
+        """Only call this in test code. Resets the internal items list,
+        allowing tests to construct areas again"""
+        cls.items_list = list(extended_item_generator())  # type: ignore
+        cls.complete = False
+
     def __str__(self) -> str:
         return super().__repr__() + f" ({self.items_list[self]})"
 
