@@ -331,16 +331,11 @@ class LogicUtils(Logic):
                     # to test the crystal packs against
                     banned_items.append(reward_item)
                     # Consider Bat 30 / Bat 70 too if the 30 chest / 70 2nd reward are the first encountered
-                    if (
-                        index == 1
-                        or index == 5
-                        and (
-                            other_item := self.placement.locations[
-                                REVERSE_BATREAUX_LIST[index + 1]
-                            ]
-                        )
-                        in first_pass_usefuls
-                    ):
+                    if (index == 1 or index == 5) and (
+                        other_item := self.placement.locations[
+                            REVERSE_BATREAUX_LIST[index + 1]
+                        ]
+                    ) in first_pass_usefuls:
                         banned_items.append(other_item)
 
                     if any(
