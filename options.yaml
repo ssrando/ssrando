@@ -168,7 +168,7 @@
   default: Anywhere
   help: "Choose where Triforces will appear in the game.
         **Vanilla**: Triforces are placed in their vanilla locations in Sky Keep.
-        **Sky Keep**: Triforecs are shuffled only within Sky Keep.
+        **Sky Keep**: Triforces are shuffled only within Sky Keep.
         **Anywhere**: Triforces are shuffled with all other valid locations in the game."
   ui: option_triforce_shuffle
 - name: Seed
@@ -1118,7 +1118,8 @@
   type: boolean
   default: false
   permalink: true
-  help: "Randomizes the Isle of Songs puzzle and the Ancient Cistern/Sandship directional door puzzles."
+  help: "Randomizes the Isle of Songs puzzle, the Ancient Cistern/Sandship directional door puzzles,
+        and the Lanayru Mining Facility switches puzzle."
   ui: option_random_puzzles
 - name: Ammo Availability
   command: ammo-availability
