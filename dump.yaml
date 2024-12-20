@@ -1199,6 +1199,7 @@ items:
 - \Sandship\Main\Deck\Captain's Cabin\Bars
 - \Sandship\Main\Deck\Captain's Cabin\Boss Key Chest
 - \Sandship\Main\Before Ship's Bow\Chest before 4-Door Corridor
+- \Sandship\Main\Ship's Bow\Defeat Scervo
 - \Sandship\Main\Ship's Bow\Chest after Scervo Fight
 - \Sandship\Main\Starboard Rooms\Switch
 - \Sandship\Main\Starboard Rooms\Generator
@@ -6786,10 +6787,12 @@ areas:
               can_sleep: false
               entrances: []
               exits:
-                \Sandship\Main\Before Ship's Bow: \Lanayru\Caves\Chest
+                \Sandship\Main\Before Ship's Bow: \Sandship\Main\Ship's Bow\Defeat
+                  Scervo
               hint_region: Sandship
               locations:
-                Chest after Scervo Fight: \Can Defeat Scervo/Dreadfuse
+                Defeat Scervo: \Can Defeat Scervo/Dreadfuse
+                Chest after Scervo Fight: \Sandship\Main\Ship's Bow\Defeat Scervo
               name: \Sandship\Main\Ship's Bow
               sub_areas: {}
               toplevel_alias: null

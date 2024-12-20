@@ -501,6 +501,9 @@ Lanayru Sand Sea:
       Item on Pillar: Beetle
       Activate Timeshift Stone: Can Hit Timeshift Stone in Minecart
       Thunder Dragon's Reward: Activate Timeshift Stone & Life Tree Fruit
+      # FIXME: These checks are not yet implemented, but when they are,
+      # make sure to not refer to "Thunder Dragon's Reward" here as mentioning
+      # checks in requirements should be avoided.
       Boss Rush -- 4 Bosses: Thunder Dragon's Reward & Impossible
       Boss Rush -- 8 Bosses: Thunder Dragon's Reward & Impossible
     exits:
