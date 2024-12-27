@@ -1109,7 +1109,7 @@ items:
 - \Lanayru\Desert\North Part\Lightning Node\Present\Timeshift Stone
 - \Lanayru\Desert\North Part\Lightning Node\Past\First Chest
 - \Lanayru\Desert\North Part\Lightning Node\Past\Second Chest
-- \Lanayru\Desert\North Part\Lightning Node\Past\Lightning Node
+- \Lanayru\Desert\North Part\Lightning Node\Past\Activate Lightning Node
 - \Lanayru\Desert\North Part\Lightning Node\Present from afar\Raised Chest near Generator
 - \Lanayru\Desert\East\Open Wall Shortcut
 - \Lanayru\Desert\East\Unlock Statue
@@ -1123,7 +1123,7 @@ items:
 - \Lanayru\Desert\East\Fire Node\Past after Void\Open Grate
 - \Lanayru\Desert\East\Fire Node\Past after Grate\Left Ending Chest
 - \Lanayru\Desert\East\Fire Node\Past after Grate\Right Ending Chest
-- \Lanayru\Desert\East\Fire Node\Past after Grate\Fire Node
+- \Lanayru\Desert\East\Fire Node\Past after Grate\Activate Fire Node
 - \Lanayru\Temple of Time\South East\Unlock Statue
 - \Lanayru\Temple of Time\Front\Gossip Stone in Temple of Time Area
 - \Lanayru\Temple of Time\Front\Blow up Rock for Timeshift Stone
@@ -5591,8 +5591,9 @@ areas:
       hint_region: null
       locations:
         All Three Nodes: "LMF Nodes On option | (\\Lanayru\\Desert\\North Part\\Water\
-          \ Node & \\Lanayru\\Desert\\North Part\\Lightning Node\\Past\\Lightning\
-          \ Node & \\Lanayru\\Desert\\East\\Fire Node\\Past after Grate\\Fire Node)"
+          \ Node & \\Lanayru\\Desert\\North Part\\Lightning Node\\Past\\Activate Lightning\
+          \ Node & \\Lanayru\\Desert\\East\\Fire Node\\Past after Grate\\Activate\
+          \ Fire Node)"
         Raise Lanayru Mining Facility: "Open LMF option | \\Lanayru\\Desert\\North\
           \ Part\\Activate Main Node"
         Can Navigate in Oasis: "\\Can Defeat Ampilus | \\Hook Beetle | \\Skyloft\\\
@@ -6013,7 +6014,7 @@ areas:
                       locations:
                         First Chest: 'True'
                         Second Chest: 'True'
-                        Lightning Node: \Sword
+                        Activate Lightning Node: \Sword
                       name: \Lanayru\Desert\North Part\Lightning Node\Past
                       sub_areas: {}
                       toplevel_alias: null
@@ -6156,7 +6157,7 @@ areas:
                       locations:
                         Left Ending Chest: 'True'
                         Right Ending Chest: 'True'
-                        Fire Node: \Sword
+                        Activate Fire Node: \Sword
                       name: \Lanayru\Desert\East\Fire Node\Past after Grate
                       sub_areas: {}
                       toplevel_alias: null
@@ -10971,10 +10972,10 @@ exits:
     type: exit
     vanilla: Farore's Lair - Entrance from Lake Floria
     stage: F102
-    short_name: Lake Floria - Exit to Farore's Lair
+    short_name: Lake Floria - Below Rock - Exit to Farore's Lair
   \Faron\Lake Floria\Farore's Lair\Exit to Lake Floria:
     type: exit
-    vanilla: Lake Floria - Entrance from Farore's Lair
+    vanilla: Lake Floria - Below Rock - Entrance from Farore's Lair
     stage: F102_2
     short_name: Farore's Lair - Exit to Lake Floria
   \Faron\Lake Floria\Farore's Lair\Exit to Waterfall:
@@ -12207,7 +12208,7 @@ entrances:
     can-start-at: false
     stage: F102
     allowed_time_of_day: 1
-    short_name: Lake Floria - Entrance from Farore's Lair
+    short_name: Lake Floria - Below Rock - Entrance from Farore's Lair
   \Faron\Lake Floria\Farore's Lair\Entrance from Lake Floria:
     type: entrance
     province: Faron Province
