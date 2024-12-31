@@ -1,3 +1,4 @@
+import re
 from typing import Any, List
 from .constants import *
 from .logic import Placement
@@ -77,6 +78,9 @@ BEEDLE_CHECKS = [
     "Beedle's Shop - 50 Rupee Item",
     "Beedle's Shop - 1000 Rupee Item",
 ]
+SORTED_BEEDLE_CHECKS = sorted(
+    BEEDLE_CHECKS, key=lambda s: int(re.search(r"\d+", s).group()), reverse=True
+)
 VANILLA_BEEDLE_PLACEMENT = norm_force_vanilla(BEEDLE_CHECKS)
 
 SMALL_KEY_CHECKS = [
