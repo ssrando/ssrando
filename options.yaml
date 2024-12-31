@@ -384,12 +384,15 @@
   type: singlechoice
   bits: 3
   choices:
-    # - Glitchless
-    - BiTless
+    - Normal
+    - Beatable Only
+    - Beatable Then Banned
     - No Logic
-  default: BiTless
+  default: Normal
   help: "Determines the logic mode to use when placing items.
-        **BiTless**: requires no tricks to beat the game but allows non-BiT tricks to be enabled.
+        **Normal**: requires no tricks to beat the game but allows non-BiT tricks to be enabled.
+        **Beatable Only**: unneeded progress items may be placed anywhere, and thus be inaccessible.
+        **Beatable Then Banned**: unneeded progress items may be placed in banned locations, but can still be accessed.
         **No Logic**: items are placed without logic and will likely result in an unbeatable game."
   ui: option_logic_mode
 ## Tricks
