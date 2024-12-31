@@ -696,6 +696,15 @@ class Rando:
             if item in TABLETS
         ]
         allowed_provinces.append(THE_SKY)
+        # With Limit Start Entrance and fewer than 3 starting tablets, surface entrances
+        # for a given seed are less likely compared to always available entrances in The Sky,
+        # so proportionally increase the chance of a surface entrance to adjust for
+        # the unavailable provinces. This makes spawns more uniform across seeds.
+        surface_province_weight_scale = (
+            3.0 / self.options["starting-tablet-count"]
+            if limit_ser and self.options["starting-tablet-count"]
+            else 1.0
+        )
 
         possible_start_entrances = [
             (entrance, values)
@@ -721,6 +730,12 @@ class Rando:
             )
         ]
 
+        entrance_weight_scale = lambda e: (
+            surface_province_weight_scale
+            if e["province"] in ALL_SURFACE_PROVINCES
+            else 1.0
+        )
+
         weights = None
         if ser == "Any Surface Region" or ser == "Any":
             # If we're not restricted to Bird Statues, weight entrances by inverse
@@ -731,7 +746,7 @@ class Rando:
                 entrances_by_region[entrance["hint_region"]] += 1
             # print(entrances_by_region, sum(entrances_by_region.values()))
             weights = [
-                1.0 / entrances_by_region[v[1]["hint_region"]]
+                entrance_weight_scale(v[1]) / entrances_by_region[v[1]["hint_region"]]
                 for v in possible_start_entrances
             ]
 
