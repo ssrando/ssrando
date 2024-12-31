@@ -257,6 +257,11 @@ def write(
 
     file.write("\n\n\n")
 
+    if len(placement.removed_locations) > 0:
+        file.write("Removed locations:\n  ")
+        file.write("\n  ".join(sorted(placement.removed_locations)))
+    file.write("\n\n\n")
+
 
 def dump_json(
     placement: Placement,
@@ -278,6 +283,7 @@ def dump_json(
     if options["no-spoiler-log"]:
         return spoiler_log
     spoiler_log["starting-items"] = sorted(placement.starting_items)
+    spoiler_log["removed-locations"] = sorted(placement.removed_locations)
     spoiler_log["required-dungeons"] = required_dungeons
     spoiler_log["sots-locations"] = [
         placement.items[item] for item in sots_items[DEMISE]

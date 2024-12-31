@@ -30,7 +30,7 @@ class FrontFill:
         self.dungeon_items = {
             item: None
             for item, limit in self.logic.placement.item_placement_limit.items()
-            if limit != ""
+            if limit != DEFAULT_PLACEMENT_LIMIT
             if item in all_placeable_items
         }
 
@@ -288,7 +288,8 @@ class FrontFill:
         # Fill remaining unused locations with consumables (Rupees, treasures).
 
         assert all(
-            self.logic.placement.item_placement_limit[item_name] == EIN("")
+            self.logic.placement.item_placement_limit[item_name]
+            == DEFAULT_PLACEMENT_LIMIT
             for item_name in self.may_be_placed_items
         )
         empty_locations = [
