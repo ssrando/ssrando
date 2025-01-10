@@ -60,11 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-<<<<<<< HEAD
-       <number>6</number>
-=======
        <number>7</number>
->>>>>>> 029545b5e1d73ef515a1d61fc69b572946d45399
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -2508,11 +2504,7 @@
                <x>0</x>
                <y>0</y>
                <width>577</width>
-<<<<<<< HEAD
-               <height>477</height>
-=======
                <height>471</height>
->>>>>>> 029545b5e1d73ef515a1d61fc69b572946d45399
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_34">
