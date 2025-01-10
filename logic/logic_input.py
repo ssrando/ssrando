@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Deque, Dict, Generic, List, Set, Any, Tuple, TypeVar
-from collections import deque
+from functools import cache
 from enum import Enum
 from dataclasses import dataclass, field
 
@@ -32,6 +32,8 @@ areas_list: List[Area[LogicExpression]] = []
 LE = TypeVar("LE")
 LE_bis = TypeVar("LE_bis")
 
+map_exit_suffixes = None
+
 
 @dataclass
 class Area(Generic[LE]):
@@ -43,6 +45,7 @@ class Area(Generic[LE]):
     can_save: bool = False
     abstract: bool = False
     sub_areas: Dict[str, Area[LE]] = field(default_factory=dict)
+    sub_area_aliases: Dict[str, Area[LE]] = field(default_factory=dict)
     locations: Dict[str, LE] = field(default_factory=dict)
     exits: Dict[str, LE] = field(default_factory=dict)
     entrances: Dict[str, str] = field(default_factory=dict)
@@ -141,6 +144,54 @@ class Area(Generic[LE]):
         for sub_area in self.sub_areas.values():
             sub_area.map(floc, fexit)
 
+    def __getitem__(self, element: str):
+        return self.lookup(element, direct=True)
+
+    def __setitem__(self, alias, area):
+        self.sub_area_aliases[alias] = area
+        return
+
+    def __hash__(self):
+        return hash(self.name)
+
+    @cache
+    def lookup(self, element: str, /, direct: bool) -> EXTENDED_ITEM_NAME | Area:
+        """
+        Computes the thing referred by [element] in area [self]. Must not be ambiguous
+        In a direct search, consider child elements as unambiguous.
+        """
+
+        assert " - " not in element
+        found_as_child = None
+        if (
+            element in self.locations
+            or element in self.entrances
+            or (element in self.exits and element in map_exit_suffixes)
+        ):
+            # If exit, exclude logical exits and only keep map exits
+            found_as_child = with_sep_full(self.name, element)
+
+        if element in self.sub_areas:
+            found_as_child = self.sub_areas[element]
+
+        if element in self.sub_area_aliases:
+            found_as_child = self.sub_area_aliases[element]
+
+        if direct and found_as_child is not None:
+            return found_as_child
+
+        results = [
+            r
+            for sub_area in self.sub_areas.values()
+            if (r := sub_area.lookup(element, direct=False)) is not None
+        ]
+
+        if len(results) == 0:
+            return found_as_child
+        if len(results) == 1 and found_as_child is None:
+            return results[0]
+        raise ValueError(f"Ambiguous element '{element}' from '{self.name}'.")
+
 
 class Areas:
     areas: Dict[str, Area[DNFInventory]]
@@ -153,48 +204,36 @@ class Areas:
     ) -> EXTENDED_ITEM_NAME:
         """Computes the thing referred by [partial_address] when located at [base_address]"""
 
-        queue: Deque[Area] = deque([self.all_areas])
-        area = self.all_areas
+        areas = []
+        area = self.parent_area
         for base_addr_atom in base_address_str.split("\\"):
             if base_addr_atom == "":
                 continue
+            areas.append(area)
             area = area.sub_areas[base_addr_atom]
-            queue.appendleft(area)
 
         partial_address = partial_address_str.split(" - ")
         j = 0
         if partial_address[0] == "General":
-            queue = deque([self.all_areas])
+            area = self.parent_area
             j = 1
 
-        head = partial_address[j]
-        while queue:
-            area = queue.popleft()
-            if j == len(partial_address):
-                return EIN(area.name)
+        while area[partial_address[j]] is None and areas:
+            area = areas.pop()
 
-            if j + 1 == len(partial_address) and (
-                head in area.locations
-                or (head in area.entrances)
-                or (head in area.exits and head in self.map_exit_suffixes)
-            ):
-                return with_sep_full(area.name, head)
+        for head in partial_address[j:]:
+            assert isinstance(area, Area), (base_address_str, partial_address_str, area)
+            area = area[head]
 
-            if head in area.sub_areas:  # Abandon the base address, we've branched off
-                if j + 1 == len(partial_address):
-                    return EIN(area.sub_areas[head].name)
-                queue.clear()
-                queue.append(area.sub_areas[head])
-                j += 1
-                head = partial_address[j]
-                continue
-
-            # Now we search everywhere
-            queue.extend(area.sub_areas.values())
-        else:
-            raise ValueError(
-                f"Could not find '{partial_address_str}' from '{base_address_str}'."
-            )
+            if area is None:
+                if base_address_str:
+                    s = f"Could not find '{partial_address_str}' from '{base_address_str}'."
+                else:
+                    s = f"Could not find '{partial_address_str}'."
+                raise ValueError(s)
+        if isinstance(area, Area):
+            return EIN(area.name)
+        return area
 
     def prettify(self, s):
         if s in ALL_ITEM_NAMES:
@@ -227,20 +266,11 @@ class Areas:
         }
 
         self.parent_area = Area.of_yaml(name="", raw_dict=raw_area)
-        self.all_areas = Area(
-            name="",
-            abstract=True,
-            exits=self.parent_area.exits,
-            sub_areas=self.parent_area.sub_areas,
-            locations=self.parent_area.locations,
-        )
         areas = {}
-        all_areas = {}
         for area in areas_list:
             areas[area.name] = area
             if area.toplevel_alias is not None:
-                all_areas[area.toplevel_alias] = area
-        all_areas |= areas | self.all_areas.sub_areas
+                self.parent_area[area.toplevel_alias] = area
 
         assert not EXTENDED_ITEM.complete
         EXTENDED_ITEM.items_list.extend(events)
@@ -251,18 +281,19 @@ class Areas:
             else:
                 EXTENDED_ITEM.items_list.append(EIN(area.name))
 
-        self.map_exit_suffixes: dict[str, bool] = {}
-        self.map_exits_entrances: dict[str, str] = {"Exit": "Entrance"}
+        global map_exit_suffixes
+        map_exit_suffixes = {}
+        map_exits_entrances: dict[str, str] = {"Exit": "Entrance"}
         for exit_full_name in map_exits:
             exit_name = exit_full_name.rsplit(" - ", 1)[-1]
-            self.map_exit_suffixes[exit_name] = False
+            map_exit_suffixes[exit_name] = False
             if exit_name.endswith(" Exit"):
-                self.map_exit_suffixes[exit_name[: -len(" Exit")]] = True
+                map_exit_suffixes[exit_name[: -len(" Exit")]] = True
                 if (
                     entrance_full_name := exit_full_name.replace("Exit", "Entrance")
                 ) in map_entrances:
                     entrance_name = entrance_full_name.rsplit(" - ", 1)[-1]
-                    self.map_exits_entrances[exit_name] = entrance_name
+                    map_exits_entrances[exit_name] = entrance_name
             if "Exit to " in exit_name:
                 if (
                     entrance_full_name := exit_full_name.replace(
@@ -270,22 +301,22 @@ class Areas:
                     )
                 ) in map_entrances:
                     entrance_name = entrance_full_name.rsplit(" - ", 1)[-1]
-                    self.map_exits_entrances[exit_name] = entrance_name
+                    map_exits_entrances[exit_name] = entrance_name
 
-        self.map_entrances_suffixes = {
+        map_entrances_suffixes = {
             entrance_name.rsplit(" - ", 1)[-1] for entrance_name in map_entrances
         }
 
         def fexit(prefix, k, v):
             v = v.localize(lambda text: self.search(prefix, text))
-            if k in self.map_entrances_suffixes:
+            if k in map_entrances_suffixes:
                 return (None, k)
-            if k not in self.map_exit_suffixes:
+            if k not in map_exit_suffixes:
                 return ((self.search(prefix, k), v), None)
-            if self.map_exit_suffixes[k]:
+            if map_exit_suffixes[k]:
                 k = k + " Exit"
-            if k in self.map_exits_entrances:
-                return ((k, v), self.map_exits_entrances[k])
+            if k in map_exits_entrances:
+                return ((k, v), map_exits_entrances[k])
             else:
                 return ((k, v), None)
 
@@ -298,7 +329,6 @@ class Areas:
         )
 
         self.areas: Dict[str, Area[DNFInventory]] = areas
-        self.all_areas.sub_areas = {k: v for (k, v) in all_areas.items() if k != ""}
 
         self.short_full: List[Tuple[str, EXTENDED_ITEM_NAME]] = [("", EIN(""))]
         self.entrance_allowed_time_of_day = {}

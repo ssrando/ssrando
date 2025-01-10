@@ -1,4 +1,5 @@
 from .TEX0 import TEX0
+from .MDL0 import MDL0
 
 from io import BufferedIOBase
 import struct
@@ -17,6 +18,8 @@ SECTION_TYPES = [
     b"SCN0",
     b"PLT0",
     b"VIS0",
+    b"RASD",  # Follows the Same Formats as others with 4-byte sig.
+    b"EXT ",  # Not an actual sig, but used for data in external folder.
 ]
 
 
@@ -83,7 +86,10 @@ class BRRES:
 
     @staticmethod
     def parse_index_group_entries(
-        data: BufferedIOBase, indexGroupNode: IndexGroupNode, group_start_offset: int
+        data: BufferedIOBase,
+        indexGroupNode: IndexGroupNode,
+        group_start_offset: int,
+        nonrecursive=False,
     ):
         data.seek(group_start_offset)
         data.seek(data.tell() + 4)
@@ -98,22 +104,24 @@ class BRRES:
             name_offset = struct.unpack(">L", data.read(4))[0]
             data_offset = struct.unpack(">L", data.read(4))[0]
 
-            data.seek(group_start_offset + name_offset)
+            data.seek(group_start_offset + name_offset - 4)
 
-            name = ""
-            while True:
-                part = data.read(1)
-                if part == b"\x00":
-                    break
-                name += str(part, "utf-8")
+            name_len = struct.unpack(">L", data.read(4))[0]
+            name = str(struct.unpack(f">{name_len}s", data.read(name_len))[0], "utf-8")
 
             data.seek(group_start_offset + data_offset)
 
             identifier = data.read(4)
 
-            if identifier in SECTION_TYPES:
+            if identifier in SECTION_TYPES or nonrecursive:
                 entryNode = SubFileNode(
                     fileType=identifier,
+                    name=name,
+                    dataOffset=(group_start_offset + data_offset),
+                )
+            elif indexGroupNode.name == "External":
+                entryNode = SubFileNode(
+                    fileType=b"EXT ",
                     name=name,
                     dataOffset=(group_start_offset + data_offset),
                 )
@@ -126,6 +134,21 @@ class BRRES:
                 )
 
             indexGroupNode.add_child(entryNode)
+
+    def get_all_paths(self) -> list[str]:
+        def _get_all_paths(
+            group_node: IndexGroupNode, folder_path: str, name_list: list[str]
+        ):
+            for node in group_node.childNodes:
+                full_path = folder_path + "/" + node.name
+                if type(node) is SubFileNode:
+                    name_list.append(full_path)
+                if node.nodeType == "group":
+                    _get_all_paths(node, full_path, name_list)
+
+        str_list = []
+        _get_all_paths(self.rootGroupNode, "", str_list)
+        return str_list
 
     def get_file_node(self, path: str) -> SubFileNode:
         path = path.lstrip("/")
@@ -159,7 +182,10 @@ class BRRES:
 
         match file.nodeType:
             case b"MDL0":
-                raise Exception(f"Unsupported file type {file.nodeType}.")
+                mdl = MDL0.parse_MDL0(
+                    dataBuffer=self.dataBuffer, start_offset=dataOffset
+                )
+                return mdl
             case b"TEX0":
                 tex0: TEX0 = TEX0.parse_TEX0(
                     dataBuffer=self.dataBuffer, start_offset=dataOffset
@@ -182,6 +208,16 @@ class BRRES:
                 raise Exception(f"Unsupported file type {file.nodeType}.")
             case b"VIS0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
+            case b"RASD":
+                # Usually found in External Folder, but follows the common
+                # signature pattern as other brres types
+                raise Exception(f"Unsupported file type {file.nodeType}.")
+            case b"EXT ":
+                # This just returns the bytes to be parsed from the caller.
+                # This is because data stored in the external folder can be of
+                #    any type. The Caller needs to truncate to the size needed
+                self.dataBuffer.seek(dataOffset)
+                return self.dataBuffer.read()
             case _:
                 raise FileNotFoundError(
                     f"Invalid subfile type {file.nodeType} in get_file_data."
@@ -193,7 +229,11 @@ class BRRES:
 
         match file.nodeType:
             case b"MDL0":
-                raise Exception(f"Unsupported file type {file.nodeType}.")
+                if not isinstance(data, MDL0):
+                    raise Exception(f"Must set the modified MDL0.")
+                bytes = data.to_bytes()
+                self.dataBuffer.seek(dataOffset)
+                self.dataBuffer.write(bytes)
             case b"TEX0":
                 tex0: TEX0 = TEX0.parse_TEX0(
                     dataBuffer=self.dataBuffer, start_offset=dataOffset
@@ -222,6 +262,10 @@ class BRRES:
             case b"PLT0":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
             case b"VIS0":
+                raise Exception(f"Unsupported file type {file.nodeType}.")
+            case b"RASD":
+                raise Exception(f"Unsupported file type {file.nodeType}.")
+            case b"EXT ":
                 raise Exception(f"Unsupported file type {file.nodeType}.")
             case _:
                 raise FileNotFoundError(

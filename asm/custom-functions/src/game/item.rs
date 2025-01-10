@@ -1,5 +1,8 @@
 use core::ffi::c_void;
 
+use crate::game::flag_managers::Itemflag;
+use crate::system::math::*;
+
 extern "C" {
     static mut ITEM_GET_BOTTLE_POUCH_SLOT: u32;
     static mut NUMBER_OF_ITEMS: u32;
@@ -23,6 +26,7 @@ extern "C" {
         params2: u32,
         unk: u32,
     ) -> *mut c_void;
+    pub fn spawnDrop(itemid: Itemflag, roomid: u32, pos: *mut Vec3f, rot: *mut Vec3s);
 }
 
 pub fn get_bottle_pouch_slot() -> u32 {

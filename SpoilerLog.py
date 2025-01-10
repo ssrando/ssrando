@@ -40,6 +40,7 @@ def write(
     randomized_trial_entrance,
     randomized_start_entrance,
     randomized_start_statues,
+    puzzles,
     batreaux_crystal_counts,
 ):
     write_header(file, options, hash)
@@ -210,6 +211,25 @@ def write(
         file.write(f"  {trial_gate+':':48} {trial}\n")
 
     file.write("\n\n\n")
+    if puzzles is not None:
+        file.write("Puzzle Solutions:\n")
+        puzzle_directions = ["Up", "Left", "Down", "Right"]
+        ac_combo = ", ".join(
+            [puzzle_directions[dir] for dir in puzzles["cistern"]["combo"]]
+        )
+        file.write(f"  {'Ancient Cistern Lock Combination'+':':48} {ac_combo}\n")
+        ssh_combo = ", ".join(
+            [puzzle_directions[dir] for dir in puzzles["sandship"]["combo"]]
+        )
+        file.write(f"  {'Sandship Lock Combination'+':':48} {ssh_combo}\n")
+        lmf_switch_order = ["North", "Center", "South"]
+        lmf_combo = ", ".join(
+            [lmf_switch_order[i] for i in puzzles["lmf"]["switch_combo"]]
+        )
+        file.write(f"  {'Lanayru Mining Facility Switch Order'+':':48} {lmf_combo}\n")
+        file.write("\n\n\n")
+
+    file.write("\n\n\n")
 
     # Write Batreaux Crystal Counts
     file.write("Batreaux Crystal Counts:\n")
@@ -227,8 +247,6 @@ def write(
     file.write(
         f"  Batreaux's Seventh Reward: {batreaux_crystal_counts[5]} Gratitude Crystals\n  Batreaux's Final Reward: {batreaux_crystal_counts[6]} Gratitude Crystals"
     )
-
-    file.write("\n\n\n")
 
     # Write hints.
     file.write("Hints:\n")
@@ -269,6 +287,7 @@ def dump_json(
     randomized_trial_entrance,
     randomized_start_entrance,
     randomized_start_statues,
+    puzzles,
     batreaux_crystal_counts,
 ):
     spoiler_log = dump_header_json(options, hash)
@@ -287,6 +306,7 @@ def dump_json(
     spoiler_log["trial-connections"] = randomized_trial_entrance
     spoiler_log["randomized-start-entrance"] = randomized_start_entrance
     spoiler_log["randomized-start-statues"] = randomized_start_statues
+    spoiler_log["puzzles"] = puzzles
     spoiler_log["batreaux-crystal-counts"] = batreaux_crystal_counts
     return spoiler_log
 

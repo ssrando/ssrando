@@ -25,7 +25,7 @@ use crate::{
         player,
         reloader::{self, Reloader},
     },
-    system::button::*,
+    system::{button::*, math::*},
 };
 
 #[link_section = "data"]
@@ -404,6 +404,9 @@ extern "C" fn get_start_info() -> *const StartInfo {
 extern "C" fn send_to_start() {
     let start_info = unsafe { get_start_info().as_ref().unwrap() };
 
+    // manage storyflag that indicates day/night
+    StoryflagManager::set_to_value(737, start_info.forced_night.into());
+
     // we can't use the normal triggerEntrance function, because that doesn't work
     // properly when going from title screen to normal gameplay while keeping
     // the stage
@@ -500,6 +503,12 @@ extern "C" fn get_glow_color(item_id: u32) -> u32 {
     4
 }
 
+#[no_mangle]
+extern "C" fn game_update_hook() -> u32 {
+    // This gets called everytime the game actor updates
+    1
+}
+
 #[link_section = "data"]
 #[no_mangle]
 static mut HERO_MODE_OPTIONS: u8 = 0;
@@ -529,4 +538,99 @@ pub fn has_heart_drops_enabled() -> c_int {
     } else {
         0
     }
+}
+
+#[no_mangle]
+pub fn add_ammo_drops(
+    param1: *mut c_void,
+    param2_s0x18: u8,
+    roomid: u32,
+    pos: *mut Vec3f,
+    _subtype: u32,
+    _rot: *mut c_void,
+) -> bool {
+    // 0xFE is the custom id being used to drop arrows, bombs, and seeds.
+    // Should set the eq flag for comparison after this addtion.
+    if param2_s0x18 == 0xFE {
+        if ItemflagManager::check(Itemflag::BOW as u16) {
+            unsafe {
+                item::spawnDrop(
+                    Itemflag::BUNDLE_OF_ARROWS,
+                    roomid,
+                    pos,
+                    &mut Vec3s::default() as *mut Vec3s,
+                );
+            }
+        }
+
+        if ItemflagManager::check(Itemflag::BOMB_BAG as u16) {
+            unsafe {
+                item::spawnDrop(
+                    Itemflag::TEN_BOMBS,
+                    roomid,
+                    pos,
+                    &mut Vec3s::default() as *mut Vec3s,
+                );
+            }
+        }
+
+        if ItemflagManager::check(Itemflag::SLINGSHOT as u16) {
+            unsafe {
+                item::spawnDrop(
+                    Itemflag::FIVE_DEKU_SEEDS,
+                    roomid,
+                    pos,
+                    &mut Vec3s::default() as *mut Vec3s,
+                );
+            }
+        }
+        return false;
+    } else {
+        extern "C" {
+            fn processSpecialItemDropIndex(param1: *mut c_void, param2_s0x18: u8) -> bool;
+        }
+        unsafe {
+            return processSpecialItemDropIndex(param1, param2_s0x18);
+        }
+    }
+}
+
+#[no_mangle]
+pub fn drop_nothing(param1: *mut c_void, param2_s0x18: u8) -> bool {
+    // if should drop seeds, arrows, or bombs
+    if param2_s0x18 == 0xB || param2_s0x18 == 0xC || param2_s0x18 == 0xD {
+        return false;
+    } else {
+        extern "C" {
+            fn processSpecialItemDropIndex(param1: *mut c_void, param2_s0x18: u8) -> bool;
+        }
+        unsafe {
+            return processSpecialItemDropIndex(param1, param2_s0x18);
+        }
+    }
+}
+
+#[no_mangle]
+extern "C" fn get_tablet_keyframe_count() -> c_int {
+    // The tablet frames effectively start with a Gray Code, the continuation of
+    // which looks like this:
+    //
+    // Count     Emerald   Ruby      Amber     As Index
+    // 0         0         0         0         0
+    // 1         1         0         0         1
+    // 2         1         1         0         3
+    // 3         1         1         1         7
+    // 4         1         0         1         5
+    // 5         0         0         1         4
+    // 6         0         1         1         6
+    // 7         0         1         0         2
+
+    const TABLET_BITMAP_TO_KEYFRAME: [u8; 8] = [0, 1, 7, 2, 5, 4, 6, 3];
+    const TABLET_IDS: [u16; 3] = [0xB1, 0xB2, 0xB3];
+
+    let item_bitmap = ItemflagManager::check(TABLET_IDS[0]) as usize
+        | ((ItemflagManager::check(TABLET_IDS[1]) as usize) << 1)
+        | ((ItemflagManager::check(TABLET_IDS[2]) as usize) << 2);
+
+    TABLET_BITMAP_TO_KEYFRAME[item_bitmap & 0x7] as i32
 }

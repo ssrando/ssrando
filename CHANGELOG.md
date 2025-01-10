@@ -4,7 +4,11 @@
 ### Additions
 ### Changes
 - Show small key count when getting key
+- Removed Groose text regarding the Groosenator when entering the imp 2 fight
+- Impa's text after killing imp 2 now teleports you straight to the sealed temple, removing
+  the need to skyward strike the spile.
 ### Bugfixes
+- Fix crash in Skyloft trial when trying to place Stone of Trials
 
 ## 2.2.0
 ### Additions

@@ -2394,12 +2394,6 @@
     flow:
       param2: 82 # Tadtones Scroll storyflag
       param3: 0 # set (not unset) flag
-250-ForestSiren:
-  - name: shorten fi text
-    type: flowpatch
-    index: 1
-    flow:
-      next: 78
 299-Demo:
   - name: Skip setting sword itemflag
     type: flowpatch
@@ -2952,6 +2946,60 @@
     index: 495
     flow:
       next: 492
+  - name: Teleport to Temple after Imp 2
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 0
+      param2: 0
+      next: -1
+      param3: 10
+  - name: Set Imp 2 Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 0
+      param2: 132
+      next: Teleport to Temple after Imp 2
+      param3: 0
+  - name: Unset Imp Fight Storyflag
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 0
+      param2: 136
+      next: Set Imp 2 Storyflag
+      param3: 1
+  - name: Unset SG 0x08
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 11 # 0x08
+      param2: 10
+      next: Unset Imp Fight Storyflag
+      param3: 3
+  - name: Unlock door to ST
+    type: flowadd
+    flow:
+      type: type3
+      subType: 1
+      param1: 13 # 0x20
+      param2: 10
+      next: Unset SG 0x08
+      param3: 2
+  - name: Skip skyward striking the spile
+    type: flowpatch
+    index: 27
+    flow:
+      next: Unlock door to ST
+  - name: Impa imp 2 text
+    type: textpatch
+    index: 39
+    text: "Well done, <heroname>!\nYou can now travel to the <r<past>>."
 501-Inpa:
   - name: botg context text
     type: textadd

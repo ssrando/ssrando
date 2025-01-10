@@ -2319,7 +2319,7 @@ Lake Floria - Dive from Faron Woods:
   entrance: 0
   tod: 2
 
-Lake Floria - Entrance from Farore's Lair:
+Lake Floria - Below Rock - Entrance from Farore's Lair:
   type: entrance
   province: Faron Province
   can-start-at: false
@@ -2330,7 +2330,7 @@ Lake Floria - Entrance from Farore's Lair:
   tod: 2
 
 
-Lake Floria - Exit to Farore's Lair:
+Lake Floria - Below Rock - Exit to Farore's Lair:
   type: exit
   vanilla: Farore's Lair - Entrance from Lake Floria
   stage: F102
@@ -2362,7 +2362,7 @@ Farore's Lair - Entrance from Waterfall:
 
 Farore's Lair - Exit to Lake Floria:
   type: exit
-  vanilla: Lake Floria - Entrance from Farore's Lair
+  vanilla: Lake Floria - Below Rock - Entrance from Farore's Lair
   stage: F102_2
   room: 0
   index: 0

@@ -204,6 +204,7 @@ class Randomizer(BaseRandomizer):
                 randomized_trial_entrance=self.logic.randomized_trial_entrance,
                 randomized_start_entrance=self.logic.randomized_start_entrance,
                 randomized_start_statues=self.logic.randomized_start_statues,
+                puzzles=self.logic.puzzles,
                 batreaux_crystal_counts=self.batreaux_rewards,
             )
             with log_address.open("w") as f:
@@ -225,6 +226,7 @@ class Randomizer(BaseRandomizer):
                     randomized_trial_entrance=self.logic.randomized_trial_entrance,
                     randomized_start_entrance=self.logic.randomized_start_entrance,
                     randomized_start_statues=self.logic.randomized_start_statues,
+                    puzzles=self.logic.puzzles,
                     batreaux_crystal_counts=self.batreaux_rewards,
                 )
         if not self.dry_run:
@@ -251,6 +253,7 @@ class Randomizer(BaseRandomizer):
         plcmt_file.trial_connections = self.logic.randomized_trial_entrance
         plcmt_file.start_entrance = self.logic.randomized_start_entrance
         plcmt_file.start_statues = self.logic.randomized_start_statues
+        plcmt_file.puzzles = self.logic.puzzles
         plcmt_file.hash_str = self.randomizer_hash
         plcmt_file.hints = {
             k: v.to_ingame_text(lambda s: self.areas.prettify(s))
@@ -266,7 +269,6 @@ class Randomizer(BaseRandomizer):
         plcmt_file.trial_object_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.music_rando_seed = self.rng.randint(1, MAX_SEED)
         plcmt_file.bk_angle_seed = self.rng.randint(0, 2**32 - 1)
-
         plcmt_file.check_valid(self.areas)
 
         return plcmt_file

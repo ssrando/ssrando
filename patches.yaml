@@ -182,6 +182,15 @@ global:
       - 83 # Cutscene showing the outside of the Fire Sanctuary
       - onlyif: Option "fs-lava-flow" Enabled
         flag: 64 # Blow up rock underground starting lava chase (back half lava flow)
+    Faron Silent Realm:
+      - 100 # Intro Fi Text + Spirit Vessel get
+    Lanayru Silent Realm:
+      - 101 # Intro Fi Text + Spirit Vessel get
+    Eldin Silent Realm:
+      - 102 # Intro Fi Text + Spirit Vessel get
+    Skyloft Silent Realm:
+      - 100 # Intro Fi Text + Spirit Vessel get (it seems to set both flags)
+      - 101
   objpackoarcadd: # Models to add to the global ObjectPack.arc.LZ file
     - GetSozaiL # Monster Horn (part of treasure)
     # - GetSozaiM # Evil Crystal (part of treasure), already part of objectpack
@@ -479,6 +488,33 @@ D003_0: # Sky Keep Courage Room
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Add ammo pot to Sky Keep Courage Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 5 # pretty sure this isn't accessible?
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -300
+      posy: 0
+      posz: 2495
+      name: Tubo
+D003_1: # Sky Keep Earth Temple Room
+  - name: Add ammo pot to Sky Keep Earth Temple Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 2640
+      posy: 0
+      posz: 740
+      name: Tubo
 D003_2: # Sky Keep Power Room
   - name: Fi text
     type: objdelete
@@ -498,6 +534,19 @@ D003_2: # Sky Keep Power Room
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Add ammo pot to Sky Keep Power Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 2610
+      posy: 0
+      posz: -750
+      name: Tubo
 D003_3: # Sky Keep Wisdom Room
   - name: Layer override
     type: layeroverride
@@ -517,6 +566,47 @@ D003_3: # Sky Keep Wisdom Room
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Add ammo pot to Sky Keep Wisdom Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -2300
+      posy: 0
+      posz: -540
+      name: Tubo
+D003_4: # Sky Keep LMF Room
+  - name: Add ammo pot to Sky Keep LMF Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 615
+      posy: 0
+      posz: 2260
+      name: Tubo
+D003_5: # Sky Keep Skyview Temple Room
+  - name: Add ammo pot to Sky Keep Skyview Temple Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -540
+      posy: 0
+      posz: -2860
+      name: Tubo
 D003_7: # Sky Keep Entrance Room
   - name: Fi text
     type: objdelete
@@ -538,6 +628,19 @@ D003_7: # Sky Keep Entrance Room
     objtype: STAG
     object:
       params1: 0xFF1516FF # 0x000000FF = event number
+  - name: Add ammo pot to Sky Keep Entrance Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -610
+      posy: 0
+      posz: 2015
+      name: Tubo
 D003_8: # this change is purely to make sure D003_8 gets patched, so a perviously broken rando version gets overwritten
   - name: remove unused layer
     type: objdelete
@@ -960,22 +1063,6 @@ F000: # Skyloft
     layer: 6
     room: 0
     objtype: OBJ
-  - name: extra Arrow Pot next to Bazaar Statue
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 2010
-      posy: 390.534943
-      posz: 830
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
-      name: Tubo
   - name: Remove confounding propeller dowsing
     type: objdelete
     id: 0xFD4E
@@ -1043,6 +1130,58 @@ F000: # Skyloft
     object:
       layer: 6
       entrance: 52
+  - name: Add ammo pot to Upper Skyloft Lower Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -4800
+      posy: 1237.578857
+      posz: -6330
+      name: Tubo
+  - name: Add ammo pot to Upper Skyloft Upper Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -2240
+      posy: 1880.569946
+      posz: -9620
+      name: Tubo
+  - name: Add ammo pot to Central Skyloft Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 2070
+      posy: 390.370575
+      posz: 820
+      name: Tubo
+  - name: Add ammo pot to after Waterfall Cave Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 4140
+      posy: -3157.320068
+      posz: -5830
+      name: Tubo
 F001r: # Knight Academy
   - name: Fi Text in Academy at night
     type: objdelete
@@ -1299,6 +1438,19 @@ F010r: # Isle of songs tower
     layer: 0
     room: 0
     objtype: STAG
+  - name: Add ammo pot to Isle of Songs Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 170
+      posy: 395.3815918
+      posz: 4650
+      name: Tubo
 F011r: # Lumpy Pumpkin
   - name: Delete Lumpy Pumpkin Cutscene 1
     type: objdelete
@@ -1472,6 +1624,19 @@ F020: # Sky
       posy: -4500
       sizex: 12000
       sizey: 12800
+  - name: Add ammo pot to Lumpy Pumpkin Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 102000
+      posy: -10643.59375
+      posz: 47020
+      name: Tubo
 F023: # Thunderhead
   - name: Strich layer 1
     type: objadd
@@ -1763,54 +1928,6 @@ F100: # Faron main area
     objtype: STAG
     object:
       trigstoryfid: 206
-  - name: extra Arrow Pot next to Entrance Statue
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: -8600
-      posy: -903.477051
-      posz: -1450
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
-      name: Tubo
-  - name: extra bomb Pot next to Entrance Statue
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0BFFFFFF
-      posx: -8500
-      posy: -903.477051
-      posz: -1500
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFD01
-      name: Tubo
-  - name: extra bomb Pot next to VP Statue
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0BFFFFFF
-      posx: 7200
-      posy: 2103.08911
-      posz: -9500
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFD01
-      name: Tubo
   - name: Remove Faron soth fi text
     type: objdelete
     id: 0x52B6
@@ -1863,6 +1980,102 @@ F100: # Faron main area
       anglez: 0
       id: 0xFDFF
       name: ActTag
+  - name: Always spawn Lopsa
+    type: objpatch
+    id: 0x56B5
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
+  - name: Always spawn Erla
+    type: objpatch
+    id: 0x5EB6
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
+  - name: Always spawn Oolo
+    type: objpatch
+    id: 0x0AB4
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      trigstoryfid: -1
+  # These patches make it so that the bokos around Machi don't trigger a cutscene.
+  # This is necessary to allow the Kikwis to be saved in any order (specifically,
+  # triggering the Lopsa bokos breaks the Machi bokos and requires the area be reloaded).
+  # "If this seems like voodoo magic, that's because it is :p" - Esme
+  - name: Patch Machi boko 1
+    type: objpatch
+    id: 0x66CE
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFF20 # 0xF0... -> 0xF1...
+  - name: Patch Machi boko 2
+    type: objpatch
+    id: 0x66CF
+    layer: 1
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xF1FFFF20 # 0xF0... -> 0xF1...
+  - name: Add ammo pot to Faron Woods Entry Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -8465
+      posy: -918.6898193
+      posz: -1580
+      name: Tubo
+  - name: Add ammo pot to In the Woods Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -2220
+      posy: -497.8004456
+      posz: 5560
+      name: Tubo
+  - name: Add ammo pot to The Great Tree Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -1170
+      posy: 4979.450195
+      posz: -4395
+      name: Tubo
+  - name: Add ammo pot to Viewing Platform Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 7230
+      posy: 2102.997295
+      posz: -9485
+      name: Tubo
 F101: # Deep Woods
   - name: Layer override
     type: layeroverride
@@ -1902,6 +2115,32 @@ F101: # Deep Woods
     layer: 0
     room: 0
     objtype: STAG
+  - name: Add ammo pot to Deep Woods Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 2455
+      posy: 1541.632446
+      posz: 10220
+      name: Tubo
+  - name: Add ammo pot to Forest Temple Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -875
+      posy: 760.835083
+      posz: 3365
+      name: Tubo
 F102_1: # Outside AC
   - name: Layer override
     type: layeroverride
@@ -1928,6 +2167,19 @@ F102_1: # Outside AC
     layer: 3
     room: 0
     objtype: OBJ
+  - name: Add ammo pot to Floria Waterfall Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -4900
+      posy: 253.9722748
+      posz: -5800
+      name: Tubo
 F102: # lake Floria
   - name: Layer override
     type: layeroverride
@@ -2021,6 +2273,19 @@ F102: # lake Floria
     layer: 1
     room: 1
     objtype: OBJS
+  - name: Add ammo pot to Lake Floria Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 3
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 2760
+      posy: 433.4100037
+      posz: 8155
+      name: Tubo
 F102_2: # Faron's Lair
   - name: Remove Faron's Lair entry cs
     type: objpatch
@@ -2135,6 +2400,58 @@ F103: # Flooded Faron Woods
     layer: 2
     room: 0
     objtype: STAG
+  - name: Add ammo pot to Faron Woods Entry Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -8465
+      posy: -918.6898193
+      posz: -1580
+      name: Tubo
+  - name: Add ammo pot to In the Woods Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -2220
+      posy: -497.8004456
+      posz: 5560
+      name: Tubo
+  - name: Add ammo pot to Great Tree Top Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -1170
+      posy: 4979.450195
+      posz: -4395
+      name: Tubo
+  - name: Add ammo pot to Viewing Platform Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 7230
+      posy: 2102.997295
+      posz: -9485
+      name: Tubo
 D100: # Skyview
   - name: Layer override
     type: layeroverride
@@ -2169,6 +2486,33 @@ D100: # Skyview
     destlayer: 0
     room: 1
     objtype: OBJ
+  - name: Move First Eye CamTag to layer 0
+    type: objmove
+    id: 0xFC1A
+    layer: 1
+    destlayer: 0
+    room: 1
+    objtype: STAG
+  - name: Move First Eye SwAreaT to layer 0
+    type: objmove
+    id: 0xFC19
+    layer: 1
+    destlayer: 0
+    room: 1
+    objtype: STAG
+  - name: Remove First Eye SwAreaT 1 on layer 2
+    type: objdelete
+    id: 0xFC22
+    layer: 2
+    room: 1
+    objtype: STAG
+  - name: Remove First Eye SwAreaT 2 on layer 2
+    type: objdelete
+    id: 0xFC23
+    layer: 2
+    room: 1
+    objtype: STAG
+
   - name: Right Room Eyes
     type: objmove
     id: 0xFC48
@@ -2296,38 +2640,6 @@ D100: # Skyview
     layer: 2
     room: 0
     objtype: STAG
-  - name: Pot in start room with bombs
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0BFFFFFF
-      posx: 155
-      posy: 1124.35009765625
-      posz: 6013
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFD01
-      name: Tubo
-  - name: Pot in Middle water room with bombs
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0BFFFFFF
-      posx: 702
-      posy: 0
-      posz: 1794
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFD02
-      name: Tubo
   - name: Pot before Spider with bombs
     type: objadd
     layer: 0
@@ -2386,21 +2698,57 @@ D100: # Skyview
     layer: 1
     room: 5
     objtype: STAG
-  - name: extra Arrow Pot next to Entrance Statue
+  - name: Add ammo pot to Skyview Temple Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
     type: objadd
     layer: 0
     room: 0
     objtype: OBJ
     object:
       params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 42
-      posy: 1124.34998
-      posz: 6013
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 145
+      posy: 1124.349976
+      posz: 6115
+      name: Tubo
+  - name: Add ammo pot to Skyview Temple First Hub Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 750
+      posy: 0
+      posz: -1670
+      name: Tubo
+  - name: Add ammo pot to Skyview Temple Second Hub Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -3490
+      posy: 0
+      posz: -8540
+      name: Tubo
+  - name: Add ammo pot to Skyview Temple before Boss Door Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 9
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 1160
+      posy: 300
+      posz: -16960
       name: Tubo
 D101: # Ancient Cistern
   - name: remove stone tablet text
@@ -2461,22 +2809,6 @@ D101: # Ancient Cistern
       anglez: 0
       id: 0xFD01
       name: Bombf
-  - name: extra Arrow Pot next to Entrance Statue
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: -580
-      posy: 0
-      posz: 4900
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
-      name: Tubo
   - name: Delete cutscene inside statue
     type: objdelete
     id: 0xFC21
@@ -2525,6 +2857,84 @@ D101: # Ancient Cistern
     layer: 0
     room: 4
     objtype: STAG
+  - name: Add ammo pot to Ancient Cistern Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -560
+      posy: 0
+      posz: -5020
+      name: Tubo
+  - name: Add ammo pot to Ancient Cistern in Whirlpool Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 5
+    room: 3
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -12290
+      posy: 1481.52002
+      posz: 1510
+      name: Tubo
+  - name: Add ammo pot to Ancient Cistern Pipes Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -5225
+      posy: -3410.026367
+      posz: 4250
+      name: Tubo
+  - name: Add ammo pot to Ancient Cistern after Pipes Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -310
+      posy: 0
+      posz: -5450
+      name: Tubo
+  - name: Add ammo pot to Ancient Cistern after Thread Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -4080
+      posy: 1000
+      posz: -2750
+      name: Tubo
+  - name: Add ammo pot to Ancient Cistern before Boss Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 520
+      posy: 7569.609863
+      posz: 1370
+      name: Tubo
 F200: # Eldin main area
   - name: Layer override
     type: layeroverride
@@ -2532,6 +2942,18 @@ F200: # Eldin main area
       - story_flag: -1
         night: 0
         layer: 1
+  - name: Monster horn arc delete
+    type: oarcdelete
+    oarc: GetSozaiL
+    layer: 1
+  - name: Golden Skull arc delete
+    type: oarcdelete
+    oarc: GetSozaiO
+    layer: 1
+  - name: Key piece arc delete
+    type: oarcdelete
+    oarc: GetKeyKakera
+    layer: 1
   - name: intro cs
     type: objmove
     id: 0xFC26
@@ -2607,12 +3029,16 @@ F200: # Eldin main area
     destlayer: 0
     room: 2
     objtype: STAG
-  - name: Propeller delete # undo this when starting without scrapper repaired
+  - name: Propeller delete
     type: objdelete
     id: 0xFC2E
     layer: 0
     room: 4
     objtype: OBJ
+  - name: Propeller arc delete
+    type: oarcdelete
+    oarc: Pinwheel
+    layer: 0
   - name: Forced camera when draining lava before digging mitts
     type: objdelete
     id: 0xFCD6
@@ -3029,6 +3455,58 @@ F200: # Eldin main area
     objtype: OBJ
     object:
       params1: 0xFFFFFF1E # replace event with FF
+  - name: Add ammo pot to Volcano Entry Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -9790
+      posy: 1863.461914
+      posz: 2810
+      name: Tubo
+  - name: Add ammo pot to Volcano East Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 3480
+      posy: 1004.046692
+      posz: 6530
+      name: Tubo
+  - name: Add ammo pot to Volcano Ascent Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 1205
+      posy: 848.3775635
+      posz: -5585
+      name: Tubo
+  - name: Add ammo pot to Temple Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 420
+      posy: 13800
+      posz: -24700
+      name: Tubo
 F202: # Boko Base
   - name: Remove Shiekah Stone from Boko Base
     type: objdelete
@@ -3236,102 +3714,6 @@ F202: # Boko Base
     objtype: OBJ
     object:
       params2: 0x0BFFFFFF
-  - name: Add extra Arrow Pot Next to Volcano East Statue
-    type: objadd
-    layer: 0
-    room: 2
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 3500
-      posy: 1009.22931
-      posz: 6550
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFFFF
-      name: Tubo
-  - name: Add extra Bomb Pot next to Volcano East Statue
-    type: objadd
-    layer: 0
-    room: 2
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0BFFFFFF
-      posx: 3550
-      posy: 1024.03955
-      posz: 6650
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFFFE
-      name: Tubo
-  - name: Add extra Arrow Pot Next to Volcano Ascent Statue
-    type: objadd
-    layer: 0
-    room: 2
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 1250
-      posy: 850.048523
-      posz: -5600
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFFFD
-      name: Tubo
-  - name: Add extra Bomb Pot next to Volcano Ascent Statue
-    type: objadd
-    layer: 0
-    room: 2
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0BFFFFFF
-      posx: 1350
-      posy: 853.267029
-      posz: -5600
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFFFC
-      name: Tubo
-  - name: Add extra Arrow Pot Next to Outside Earth Temple Statue
-    type: objadd
-    layer: 0
-    room: 4
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 450
-      posy: 13800
-      posz: -24700
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFFFB
-      name: Tubo
-  - name: Add extra Bomb Pot next to Outside Earth Temple Statue
-    type: objadd
-    layer: 0
-    room: 4
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0BFFFFFF
-      posx: 550
-      posy: 13800
-      posz: -24700
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFFFA
-      name: Tubo
   - name: patch rando custom param to not revert inventory
     type: objpatch
     id: 0xFC13
@@ -3370,6 +3752,58 @@ F202: # Boko Base
     id: 0xFC0D
     layer: 1
     objtype: STAG
+  - name: Add ammo pot to Volcano Entry Bird Statue # Can't get to this one
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -9790
+      posy: 1863.461914
+      posz: 2810
+      name: Tubo
+  - name: Add ammo pot to Volcano East Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 3480
+      posy: 1004.046692
+      posz: 6530
+      name: Tubo
+  - name: Add ammo pot to Volcano Ascent Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 1205
+      posy: 848.3775635
+      posz: -5585
+      name: Tubo
+  - name: Add ammo pot to Temple Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 420
+      posy: 13800
+      posz: -24700
+      name: Tubo
 F221: # Fire Dragon Room
   - name: Patch exit trigger from Fire Dragon's Lair to normal Volcano Summit
     type: objpatch
@@ -3452,22 +3886,6 @@ F210: # Mogma Turf
     layer: 1
     room: 0
     objtype: OBJ
-  - name: extra Arrow Pot Next to Entrance Statue
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 1000
-      posy: -7390
-      posz: 1950
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
-      name: Tubo
   - name: Remove Rupee Dowsing
     onlyif: Option "dowsing-after-whitesword" Enabled
     type: objdelete
@@ -3475,7 +3893,44 @@ F210: # Mogma Turf
     layer: 0
     room: 0
     objtype: OBJ
-F211:
+  - name: Add ammo pot to Mogma Turf Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 1265
+      posy: -7390
+      posz: 1625
+      name: Tubo
+  - name: Remove Zelda Dowsing Target 1
+    type: objdelete
+    id: 0xFC80
+    layer: 1
+    room: 0
+    objtype: STAG
+  - name: Remove Zelda Dowsing Target 2
+    type: objdelete
+    id: 0xFC81
+    layer: 1
+    room: 0
+    objtype: STAG
+  - name: Remove Zelda Dowsing Target 3
+    type: objdelete
+    id: 0xFC82
+    layer: 1
+    room: 0
+    objtype: STAG
+  - name: Remove Propeller Dowsing Target
+    type: objdelete
+    id: 0xFC6B
+    layer: 0
+    room: 0
+    objtype: STAG
+F211: # Thrill Digger
   - name: Remove thrill digger entry CS
     type: objpatch
     index: 0
@@ -3484,6 +3939,20 @@ F211:
     object:
       storyflag: -1
       play_cutscene: -1
+  - name: Add ammo pot to Thrill Digger Gossip Stone
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    # onlyif: (ammo_availability == useful and hidden_item_shuffle == on) or ammo_availability == plentiful
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 900
+      posy: 0
+      posz: 600
+      name: Tubo
 F201_1: # Inside Volcano
   - name: Layer override
     type: layeroverride
@@ -3529,6 +3998,19 @@ F201_1: # Inside Volcano
     objtype: SCEN
     object:
       layer: 2
+  - name: Add ammo pot to Volcano Summit Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -380
+      posy: 0
+      posz: -810
+      name: Tubo
 F201_2: # Boko Base Volcano Summit
   - name: True Master Sword Chest
     type: objadd
@@ -3571,37 +4053,18 @@ F201_2: # Boko Base Volcano Summit
     layer: 0
     room: 0
     objtype: STAG
-  - name: Add extra Arrow Pot Next to Inside the Volcano Statue
+  - name: Add ammo pot to Volcano Summit Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
     type: objadd
     layer: 0
     room: 0
     objtype: OBJ
     object:
       params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: -400
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -380
       posy: 0
-      posz: -550
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFFF9
-      name: Tubo
-  - name: Add extra Bomb Pot next to Inside the Volcano Statue
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0BFFFFFF
-      posx: -400
-      posy: 0
-      posz: -850
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFFF8
+      posz: -810
       name: Tubo
 F201_3: # FS entrance
   - name: Layer override
@@ -3655,6 +4118,19 @@ F201_3: # FS entrance
     layer: 2
     room: 0
     objtype: OBJ
+  - name: Add ammo pot to Inside the Volcano Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -490
+      posy: -500
+      posz: -10490
+      name: Tubo
 F201_4: # Volcano Waterfall
   - name: Layer override
     type: layeroverride
@@ -3728,22 +4204,6 @@ D200: # ET
     layer: 0
     room: 1
     objtype: STAG
-  - name: extra Arrow Pot next to entrance Statue
-    type: objadd
-    layer: 0
-    room: 1
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 800
-      posy: 0
-      posz: 14400
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
-      name: Tubo
   - name: Remove cutscene showing the boss door
     type: objdelete
     id: 0xFC68
@@ -3764,6 +4224,58 @@ D200: # ET
     objtype: OBJ
     object:
       params1: 0x3F02050F
+  - name: Add ammo pot to Earth Temple Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 840
+      posy: 0
+      posz: 14325
+      name: Tubo
+  - name: Add ammo pot to Earth Temple Hub Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 995
+      posy: 0
+      posz: 65
+      name: Tubo
+  - name: Add ammo pot to Earth Temple Gate Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 9080
+      posy: 450
+      posz: -4640
+      name: Tubo
+  - name: Add ammo pot to Earth Temple Boss Door Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 4
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -9575
+      posy: 6050
+      posz: -13970
+      name: Tubo
 B200: # Boss Room
   - name: Layer override
     type: layeroverride
@@ -3811,6 +4323,45 @@ D201: # FS A
     layer: 0
     room: 4
     objtype: STAG
+  - name: Add ammo pot to Fire Sanctuary Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 1275
+      posy: 1100
+      posz: 6105
+      name: Tubo
+  - name: Add ammo pot to Fire Sanctuary Lava Chase Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 3
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -7020
+      posy: 0
+      posz: -15790
+      name: Tubo
+  - name: Add ammo pot to Fire Sanctuary Boss Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 10
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 110
+      posy: -550
+      posz: -14240
+      name: Tubo
 D201_1: # FS B
   - name: Clawshot Target for 2nd small Key
     type: objadd
@@ -3877,6 +4428,84 @@ D201_1: # FS B
     layer: 0
     room: 5
     objtype: STAG
+  - name: Add ammo pot to Fire Sanctuary Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 1275
+      posy: 1100
+      posz: 6105
+      name: Tubo
+  - name: Add ammo pot to Fire Sanctuary after First Locked Door Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 6
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -120
+      posy: 1100
+      posz: -1165
+      name: Tubo
+  - name: Add ammo pot to Fire Sanctuary before Bridge Lizalfos Fight Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 3210
+      posy: 200
+      posz: -5131
+      name: Tubo
+  - name: Add ammo pot to Fire Sanctuary before Double Magmanos Fight Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 7
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -11460
+      posy: 600
+      posz: -10005
+      name: Tubo
+  - name: Add ammo pot to Fire Sanctuary before 3rd Locked Door Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -7475
+      posy: -550
+      posz: -11560
+      name: Tubo
+  - name: Add ammo pot to Fire Sanctuary Boss Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 10
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 110
+      posy: -550
+      posz: -14240
+      name: Tubo
 B201: # G2 fight
   - name: Layer override
     type: layeroverride
@@ -3966,22 +4595,6 @@ F300: # lanayru Main Area
     objtype: STAG
     object:
       trigstoryfid: 8 # LMF raised
-  - name: extra Arrow Pot next to first Statue
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 1670
-      posy: 1975.19812
-      posz: 18750
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
-      name: Tubo
   - name: LMF exit when not raised
     type: objadd
     index: 19
@@ -3998,6 +4611,58 @@ F300: # lanayru Main Area
       angley: 34000
       anglez: 0
       entrance_id: 19
+  - name: Add ammo pot to Desert Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 1680
+      posy: 1974.559326
+      posz: 18820
+      name: Tubo
+  - name: Add ammo pot to West Desert Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -15020
+      posy: 80
+      posz: 8205
+      name: Tubo
+  - name: Add ammo pot to North Desert Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -2105
+      posy: 475
+      posz: -6640
+      name: Tubo
+  - name: Add ammo pot to Stone Cache Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 9410
+      posy: 218.9002533
+      posz: 10200
+      name: Tubo
 F300_1: # Lanayru Mine
   - name: Layer override
     type: layeroverride
@@ -4017,22 +4682,6 @@ F300_1: # Lanayru Mine
     layer: 0
     room: 0
     objtype: OBJ
-  - name: extra Arrow Pot next to first Statue
-    type: objadd
-    layer: 0
-    room: 0
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 10200
-      posy: 2299.69092
-      posz: 35300
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
-      name: Tubo
   - name: Remove fake trial dowsing target
     type: objdelete
     id: 0xFC59
@@ -4051,6 +4700,19 @@ F300_1: # Lanayru Mine
     layer: 0
     room: 2
     objtype: STAG
+  - name: Add ammo pot to Lanayru Mine Entry Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 10245
+      posy: 2302.375
+      posz: 35480
+      name: Tubo
 F300_2: # Thunder node
   - name: extra Bomb flower
     type: objadd
@@ -4174,6 +4836,32 @@ F300_4: # Temple of Time
     layer: 2
     room: 0
     objtype: STAG
+  - name: Add ammo pot to Desert Gorge Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -23330
+      posy: 50
+      posz: 640
+      name: Tubo
+  - name: Add ammo pot to Temple of Time Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -34360
+      posy: 50
+      posz: -3910
+      name: Tubo
 F300_5: # LMF to ToT
   - name: harp CS loadzone
     type: objpatch
@@ -4241,11 +4929,11 @@ F300_5: # LMF to ToT
     object:
       params1: 0xFF0302FF # no sceneflag, exit=3
       params2: 0xFF5FFFFF
-      posx: 836
+      posx: 715
       posy: 0
-      posz: 305
+      posz: 850
       anglex: 0xFFFF
-      angley: 0xBC30
+      angley: 32768 # same angle as the door
       anglez: 0xFFFF
       id: 0xFD84
       name: saveObj
@@ -4264,6 +4952,19 @@ F300_5: # LMF to ToT
       flag6: 0
       zero: 0
       saveprompt: 0
+  - name: Add ammo pot to Hall of Ancient Robots Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 580
+      posy: 0
+      posz: 840
+      name: Tubo
 F301_1: # Sand Sea Main Area
   - name: Skipper's Text at first time in Sand  # gets rid of 2x40 so also of the Evnttags
     type: objdelete
@@ -4379,6 +5080,19 @@ F301: # Ancient Harbour
     layer: 0
     room: 0
     objtype: OBJ
+  - name: Add ammo pot to Ancient Harbour Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 190
+      posy: 70
+      posz: -520
+      name: Tubo
 F301_2: # inside Pirate Stronghold
   - name: Fi Text at beginning
     type: objdelete
@@ -4419,6 +5133,35 @@ F301_3: # Skipper's Retreat
     object:
       storyflag: -1
       play_cutscene: -1
+  - name: Add bomb flower next to skydive chest # prevents softlocks
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFFFFFFFF
+      posx: -80
+      posy: 800
+      posz: 2670
+      anglex: 0
+      angley: 0
+      anglez: 0
+      id: 0x4270
+      name: Bombf
+  - name: Add ammo pot to Skipper's Retreat Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -3930
+      posy: 50
+      posz: 8550
+      name: Tubo
 F301_4: # Shipyard
   - name: Text after intro
     type: objdelete
@@ -4453,6 +5196,32 @@ F301_4: # Shipyard
     type: oarcadd
     oarc: GossipStone
     destlayer: 0
+  - name: Add ammo pot to Shipyard Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -300
+      posy: 50
+      posz: 15830
+      name: Tubo
+  - name: Add ammo pot to before Construction Bay Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -3875
+      posy: 500
+      posz: 8830
+      name: Tubo
 F301_5: # Skipper's Shack
   - name: Text after chest
     type: objdelete
@@ -4507,6 +5276,19 @@ F301_6: # outside Pirate stronghold
     destlayer: 0
     objtype: OBJ
     id: 0xFC47
+  - name: Add ammo pot to Pirate Stronghold Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -585
+      posy: 70
+      posz: 200
+      name: Tubo
 F301_7: # inside Shipyard
   - name: Text near minecart door
     type: objdelete
@@ -4559,21 +5341,18 @@ D300: # LMF A
       anglez: 0
       id: 0xFC50
       name: Bombf
-  - name: extra Arrow Pot next to entrance Statue
+  - name: Add ammo pot to Lanayru Mining Facility Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
     type: objadd
     layer: 0
     room: 0
     objtype: OBJ
     object:
       params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: -1100
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -1035
       posy: 0
-      posz: 2200
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
+      posz: 2180
       name: Tubo
 D300_1: # LMF B
   - name: Fi Text in front of boss door
@@ -4621,6 +5400,58 @@ D300_1: # LMF B
       anglez: 0
       id: 0xFC00
       name: Bombf
+  - name: Add ammo pot to Lanayru Mining Facility Entrance Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -1035
+      posy: 0
+      posz: 2180
+      name: Tubo
+  - name: Add ammo pot to Lanayru Mining Facility South Hub Room Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -560
+      posy: 600
+      posz: -8850
+      name: Tubo
+  - name: Add ammo pot to Lanayru Mining Facility before Boss Room Left Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -3880
+      posy: 1100
+      posz: -20740
+      name: Tubo
+  - name: Add ammo pot to Lanayru Mining Facility before Boss Room Right Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 5
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 3990
+      posy: 1100
+      posz: -22785
+      name: Tubo
 D301: # Sandship A
   - name: extra Bomb flower
     type: objadd
@@ -4772,6 +5603,45 @@ D301: # Sandship A
     layer: 1
     room: 0
     objtype: OBJ
+  - name: Add ammo pot to Sandship before Scervo Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -4980
+      posy: 0
+      posz: 675
+      name: Tubo
+  - name: Add ammo pot to Sandship Captain's Cabin Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 13
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 4810
+      posy: 0
+      posz: -595
+      name: Tubo
+  - name: Add ammo pot to Sandship before Boss Door Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 9
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -2770
+      posy: -1600
+      posz: 1690
+      name: Tubo
 D301_1: # Sandship B
   - name: Fi text before tentalus
     type: objdelete
@@ -4891,6 +5761,19 @@ F302: # Lanayru Gorge
       anglez: 0
       id: 0xFC50
       name: Bombf
+  - name: Add ammo pot to Lanayru Gorge Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -1200
+      posy: 29.94655228
+      posz: -2115
+      name: Tubo
 F303: # Lanayru Caves
   - name: Layer override
     type: layeroverride
@@ -4963,6 +5846,20 @@ F303: # Lanayru Caves
     layer: 0
     room: 0
     objtype: STAG
+  # ER means you can get here without useful access to a bomb refill
+  - name: Add ammo pot to Caves between Gorge and Golo
+    onlyif: Option "ammo-availability" Is "Plentiful" | Option "ammo-availability" Is "Useful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 295
+      posy: 0
+      posz: 3500
+      name: Tubo
 F402: # Sealed Temple
   - name: Layer override
     type: layeroverride
@@ -5121,28 +6018,25 @@ F402: # Sealed Temple
     layer: 4
     room: 2
     objtype: OBJ
-  - name: extra Arrow Pot Next to Fairy
-    type: objadd
-    layer: 0
-    room: 2
-    objtype: OBJ
-    object:
-      params1: 0xFFFFFFF0
-      params2: 0x0CFFFFFF
-      posx: 1215
-      posy: 7700
-      posz: 12700
-      anglex: 0
-      angley: 0
-      anglez: 0
-      id: 0xFE50
-      name: Tubo
   - name: Remove fake Faron trial dowsing target
     type: objdelete
     id: 0xFC3D
     layer: 0
     room: 2
     objtype: STAG
+  - name: Add ammo pot to Sealed Temple Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 1355
+      posy: 7599.990234
+      posz: 10540
+      name: Tubo
 F401: # Sealed grounds Whirlpool
   - name: Layer override
     type: layeroverride
@@ -5171,7 +6065,19 @@ F401: # Sealed grounds Whirlpool
     layer: 1
     room: 1
     objtype: OBJ
-  - name: Groosenator before imp 2
+  - name: Groosenator before imp 2 1 # At least one of these three removes the cutscene, not sure which
+    type: objdelete
+    id: 0xFC93
+    layer: 3
+    room: 1
+    objtype: OBJ
+  - name: Groosenator before imp 2 2
+    type: objdelete
+    id: 0xFC94
+    layer: 3
+    room: 1
+    objtype: OBJ
+  - name: Groosenator before imp 2 3
     type: objdelete
     id: 0xFC9D
     layer: 3
@@ -5189,6 +6095,19 @@ F401: # Sealed grounds Whirlpool
     layer: 2
     room: 1
     objtype: STAG
+  - name: Add ammo pot to Sealed Grounds Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 1
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -8050
+      posy: 8403.867188
+      posz: 30
+      name: Tubo
 F400: # Behind the Temple
   - name: Layer override
     type: layeroverride
@@ -5243,6 +6162,19 @@ F400: # Behind the Temple
     layer: 0
     room: 0
     objtype: STAG
+  - name: Add ammo pot to Behind the Temple Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 0
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: -10990
+      posy: 7500
+      posz: 6170
+      name: Tubo
 F404: # Hylia's Temple
   - name: Layer override
     type: layeroverride
@@ -5305,6 +6237,19 @@ F404: # Hylia's Temple
       anglez: 50220 # entrypoint 502_20
       id: 0xFC40
       name: NpcTke
+  - name: Add ammo pot to Temple of Hylia Bird Statue
+    onlyif: Option "ammo-availability" Is "Plentiful"
+    type: objadd
+    layer: 0
+    room: 2
+    objtype: OBJ
+    object:
+      params1: 0xFFFFFFF0
+      params2: 0xFEFFFFFF # 0xFE000000 -> arrows, bombs, and seeds
+      posx: 1355
+      posy: 7599.990234
+      posz: 10540
+      name: Tubo
 F403: # Hylia's Realm
   - name: Layer override
     type: layeroverride

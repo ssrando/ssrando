@@ -27,5 +27,5 @@ pyqtdarktheme-fork = "^2.3.2"
 pyinstaller = "^6.4.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "^24.2.0"
+black = "^24.3.0"
 pytest = "^8.0.2"

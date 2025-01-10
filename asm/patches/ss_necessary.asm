@@ -439,6 +439,32 @@ bl has_heart_drops_enabled
 .org 0x800c7c50
 bl has_heart_drops_enabled
 
+; at the end of the cGame update function
+.org 0x801bf4f8
+b game_update_hook
+
+; fix tablet display
+
+.org 0x8015ccf8
+; instead of looping and counting tablets,
+; find the correct keyframe
+bl get_tablet_keyframe_count
+mr r29, r3
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+.org 0x8015ce00
+; when you have at least 1 Triforce, tablets are hidden.
+; change keyframe where entire group is hidden from 3.0 -> 7.0 (at 80576fc8)
+; r2 = 0x8057e9c0
+lfs f1, -0x79F8(r2)
+
 .close
 
 
@@ -806,6 +832,36 @@ li r4, 0x39A
 .open "d_a_obj_bellNP.rel"
 .org 0xCE0 ; function called when transitioning to the state after dropping rupee
 b try_end_pumpkin_archery
+
+; (80dba55c - 80db9860) + 130
+.org 0xD98 ; 0x80dba4c8
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
+li r4, 117 ; sceneflag given when collecting the bell item
+bl SceneflagManager__checkTempOrSceneflag
+li r5, 2 ; green rupee
+cmpwi r3, 0
+bne skip_itemid_from_params1
+lbz r5, 0x7(r30) ; least sig byte of params1
+
+skip_itemid_from_params1:
+li r3, 0 ; academy bell is always in room 0
+; 0xFF1D9600 ; item actor params1 (will set sceneflag 101 on collection)
+lis r4, 0xFF9C
+ori r4, r4, 0xD600
+or r4, r4, r5 ; add itemid from bell params1 to item actor params1
+addi r5, r1, 0x14 ; get pos into r5 (from ghidra)
+addi r6, r1, 0xC ; get rot into r6 (from ghidra)
+li r7, 0 ; no scale needed
+li r8, -1 ; item actor params2
+li r9, 0
+bl AcItem__spawnItem
+li r4, 0x4040 ; most sig bytes of float 3.0
+sth r4, 0x144(r3)
+li r4, 1
+stb r4, 0xD4F(r3) ; prevent timed despawn
+li r4, 0
+stb r4, 0xD50(r3) ; force to have gravity
+b 0xE2C ; 0x80dba55c (return)
 .close
 
 .open "d_a_obj_light_lineNP.rel"
@@ -853,6 +909,13 @@ rlwinm. r0, r0, 0, 23, 23 ; check & 0x100 now
 ; .org 0x80f35a18
 .org 0x8E8
 b set_sot_placed_flag
+
+; .org 0x80f35a34
+; change the check to make sure both night and trial are false
+.org 0x904
+lhz r0, 0x25(r3)
+cmpwi r0, 0
+bne 0x950 ; 0x80f35a80
 .close
 
 .open "d_a_obj_time_boatNP.rel"

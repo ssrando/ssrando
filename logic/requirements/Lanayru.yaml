@@ -1,6 +1,6 @@
 allowed-time-of-day: DayOnly
 macros:
-  All Three Nodes: LMF Nodes On option | (North Part - Water Node & Lightning Node - Lightning Node & East - Fire Node - Fire Node)
+  All Three Nodes: LMF Nodes On option | (North Part - Water Node & Lightning Node - Activate Lightning Node & East - Fire Node - Activate Fire Node)
   Raise Lanayru Mining Facility: Open LMF option | Desert - North Part - Activate Main Node
   Can Navigate in Oasis: Can Defeat Ampilus | Hook Beetle | Central Skyloft - Bazaar - Endurance Potion | Brakeslide Trick | Stuttersprint Trick
 
@@ -202,7 +202,7 @@ Desert:
         locations:
           First Chest: Nothing
           Second Chest: Nothing
-          Lightning Node: Sword
+          Activate Lightning Node: Sword
 
       Present from afar:
         exits:
@@ -265,7 +265,7 @@ Desert:
         locations:
           Left Ending Chest: Nothing
           Right Ending Chest: Nothing
-          Fire Node: Sword
+          Activate Fire Node: Sword
 
 Temple of Time:
   # NB: There are no hintable checks here but logic consumers
@@ -501,6 +501,9 @@ Lanayru Sand Sea:
       Item on Pillar: Beetle
       Activate Timeshift Stone: Can Hit Timeshift Stone in Minecart
       Thunder Dragon's Reward: Activate Timeshift Stone & Life Tree Fruit
+      # FIXME: These checks are not yet implemented, but when they are,
+      # make sure to not refer to "Thunder Dragon's Reward" here as mentioning
+      # checks in requirements should be avoided.
       Boss Rush -- 4 Bosses: Thunder Dragon's Reward & Impossible
       Boss Rush -- 8 Bosses: Thunder Dragon's Reward & Impossible
     exits:
