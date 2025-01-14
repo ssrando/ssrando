@@ -288,15 +288,15 @@ Skyloft Village:
     exits:
       Exit: Nothing
     locations:
-      5 Crystals: 5 Gratitude Crystals
-      10 Crystals: 10 Gratitude Crystals
-      30 Crystals: 30 Gratitude Crystals
-      30 Crystals Chest: 30 Gratitude Crystals
-      40 Crystals: 40 Gratitude Crystals
-      50 Crystals: 50 Gratitude Crystals
-      70 Crystals: 70 Gratitude Crystals
-      70 Crystals Second Reward: 70 Gratitude Crystals
-      80 Crystals: 80 Gratitude Crystals
+      First Reward: Can Receive Batreaux Level 1 Rewards
+      Second Reward: Can Receive Batreaux Level 2 Rewards
+      Third Reward: Can Receive Batreaux Level 3 Rewards
+      Chest: Can Receive Batreaux Level 3 Rewards
+      Fourth Reward: Can Receive Batreaux Level 4 Rewards
+      Fifth Reward: Can Receive Batreaux Level 5 Rewards
+      Sixth Reward: Can Receive Batreaux Level 6 Rewards
+      Seventh Reward: Can Receive Batreaux Level 6 Rewards
+      Final Reward: Can Receive Batreaux Level 7 Rewards
 
 # BEEDLES SHOP
 Beedle's Shop:

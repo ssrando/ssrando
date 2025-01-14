@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'randogui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -566,6 +566,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.vlay_shuffles = QVBoxLayout()
         self.vlay_shuffles.setObjectName(u"vlay_shuffles")
+        self.vlay_batreaux_counts = QVBoxLayout()
+        self.vlay_batreaux_counts.setObjectName(u"vlay_batreaux_counts")
+        self.label_for_option_batreaux_counts = QLabel(self.box_shuffles)
+        self.label_for_option_batreaux_counts.setObjectName(u"label_for_option_batreaux_counts")
+
+        self.vlay_batreaux_counts.addWidget(self.label_for_option_batreaux_counts)
+
+        self.option_batreaux_counts = QComboBox(self.box_shuffles)
+        self.option_batreaux_counts.setObjectName(u"option_batreaux_counts")
+
+        self.vlay_batreaux_counts.addWidget(self.option_batreaux_counts)
+
+
+        self.vlay_shuffles.addLayout(self.vlay_batreaux_counts)
+
         self.option_shopsanity = QCheckBox(self.box_shuffles)
         self.option_shopsanity.setObjectName(u"option_shopsanity")
 
@@ -1531,9 +1546,9 @@ class Ui_MainWindow(object):
         self.tab_cosmetics.setObjectName(u"tab_cosmetics")
         self.verticalLayout_31 = QVBoxLayout(self.tab_cosmetics)
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
-        self.horizontalLayout_101 = QHBoxLayout()
-        self.horizontalLayout_101.setObjectName(u"horizontalLayout_101")
-        self.horizontalLayout_101.setContentsMargins(-1, -1, -1, 0)
+        self.hlay_cosmetics = QHBoxLayout()
+        self.hlay_cosmetics.setObjectName(u"hlay_cosmetics")
+        self.hlay_cosmetics.setContentsMargins(-1, -1, -1, 0)
         self.custom_model_settings = QVBoxLayout()
         self.custom_model_settings.setObjectName(u"custom_model_settings")
         self.hlay_type_options = QHBoxLayout()
@@ -1611,7 +1626,7 @@ class Ui_MainWindow(object):
         self.custom_model_settings.addLayout(self.hlay_pack_options)
 
 
-        self.horizontalLayout_101.addLayout(self.custom_model_settings)
+        self.hlay_cosmetics.addLayout(self.custom_model_settings)
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
@@ -1655,10 +1670,10 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.color_presets_list, 0, 1, 1, 3)
 
 
-        self.horizontalLayout_101.addLayout(self.gridLayout)
+        self.hlay_cosmetics.addLayout(self.gridLayout)
 
 
-        self.verticalLayout_31.addLayout(self.horizontalLayout_101)
+        self.verticalLayout_31.addLayout(self.hlay_cosmetics)
 
         self.hlay_colors_and_preview = QHBoxLayout()
         self.hlay_colors_and_preview.setObjectName(u"hlay_colors_and_preview")
@@ -2030,6 +2045,7 @@ class Ui_MainWindow(object):
         self.label_for_option_open_lake_floria.setText(QCoreApplication.translate("MainWindow", u"Open Lake Floria", None))
         self.option_random_puzzles.setText(QCoreApplication.translate("MainWindow", u"Randomize Puzzles", None))
         self.box_shuffles.setTitle(QCoreApplication.translate("MainWindow", u"Shuffles", None))
+        self.label_for_option_batreaux_counts.setText(QCoreApplication.translate("MainWindow", u"Batreaux Crystal Counts", None))
         self.option_shopsanity.setText(QCoreApplication.translate("MainWindow", u"Shuffle Beedle's Shop", None))
         self.option_rupeesanity.setText(QCoreApplication.translate("MainWindow", u"Rupeesanity", None))
         self.option_tadtonesanity.setText(QCoreApplication.translate("MainWindow", u"Tadtonesanity", None))

@@ -210,7 +210,6 @@ def write(
         file.write(f"  {trial_gate+':':48} {trial}\n")
 
     file.write("\n\n\n")
-
     if puzzles is not None:
         file.write("Puzzle Solutions:\n")
         puzzle_directions = ["Up", "Left", "Down", "Right"]

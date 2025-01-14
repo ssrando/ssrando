@@ -1137,3 +1137,17 @@
         **Useful**: Ammo pots will be added in key places near checks requiring a specific ammo to reduce back-tracking.
         **Plentiful**: Ammo pots will be added next to all Bird Statues."
   ui: option_ammo_availability
+- name: Batreaux Crystal Counts
+  command: batreaux-counts
+  type: singlechoice
+  bits: 2
+  default: Vanilla
+  choices: 
+    - Vanilla
+    - Half
+    - Random
+  help: "Determines the amount of crystals batreaux will require for each of his rewards.
+        **Vanilla**: The normal required crystal counts (min 5, max 80).
+        **Half**: Half of the normal required crystal counts (min 2, max 40).
+        **Random**: Completely random required crystal counts (min 1, max 80)."
+  ui: option_batreaux_counts

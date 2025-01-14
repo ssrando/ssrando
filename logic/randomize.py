@@ -88,6 +88,7 @@ class Rando:
             | self.endgame_requirements
             | {i: DNFInventory(True) for i in self.placement.starting_items}
             | self.no_logic_requirements
+            | self.batreaux_rewards_requirements
         )
 
         logic_settings = LogicSettings(
@@ -138,6 +139,7 @@ class Rando:
         self.randomize_required_dungeons()  # self.required_dungeons, self.unrequired_dungeons
         self.randomize_starting_items()  # self.placement.starting_items
         self.ban_the_banned()  # self.banned, self.ban_options
+        self.batreaux_crystal_counts()
 
         self.get_endgame_requirements()  # self.endgame_requirements
 
@@ -416,6 +418,61 @@ class Rando:
         self.randosettings = RandomizationSettings(
             must_be_placed_items, may_be_placed_items, duplicable_items
         )
+
+    def batreaux_crystal_counts(self):
+        batreaux_setting = self.options["batreaux-counts"]
+        if batreaux_setting == "Vanilla":
+            self.batreaux_rewards = [5, 10, 30, 40, 50, 70, 80]
+        elif batreaux_setting == "Half":
+            self.batreaux_rewards = [2, 5, 15, 20, 25, 35, 40]
+        elif batreaux_setting == "Random":
+            self.batreaux_rewards = self.rng.sample(range(1, 80), 7)
+            self.batreaux_rewards.sort()
+        else:
+            pass
+        self.batreaux_rewards_requirements = {}
+        btrw = [
+            "First Reward",
+            "Second Reward",
+            "Third Reward",
+            "Fourth Reward",
+            "Fifth Reward",
+            "Sixth Reward",
+            "Final Reward",
+        ]
+        for reward in self.batreaux_rewards:
+            ext_item = EXTENDED_ITEM.getitem(f"\\{reward} Gratitude Crystals")
+            self.batreaux_rewards_requirements.update(
+                {
+                    f"\\Can Receive Batreaux Level {self.batreaux_rewards.index(reward) + 1} Rewards": DNFInventory(
+                        {Inventory({EXTENDED_ITEM(ext_item)})}
+                    )
+                }
+            )
+            # Hacky way to change location names to the amount of gratitude crystals required
+            if self.batreaux_rewards.index(reward) == 2:
+                self.areas.checks[
+                    f"\\Skyloft\\Skyloft Village\\Batreaux's House\\Chest"
+                ]["short_name"] = f"Batreaux's House - {reward} Crystals Chest"
+            elif self.batreaux_rewards.index(reward) == 5:
+                self.areas.checks[
+                    f"\\Skyloft\\Skyloft Village\\Batreaux's House\\Seventh Reward"
+                ]["short_name"] = f"Batreaux's House - {reward} Crystals Second Reward"
+            self.areas.checks[
+                f"\\Skyloft\\Skyloft Village\\Batreaux's House\\{btrw[self.batreaux_rewards.index(reward)]}"
+            ]["short_name"] = f"Batreaux's House - {reward} Gratitude Crystals"
+
+            if reward > 65:
+                self.areas.checks[
+                    f"\\Skyloft\\Skyloft Village\\Batreaux's House\\{btrw[self.batreaux_rewards.index(reward)]}"
+                ]["hint"] = "always"
+            elif reward > 50:
+                self.areas.checks[
+                    f"\\Skyloft\\Skyloft Village\\Batreaux's House\\{btrw[self.batreaux_rewards.index(reward)]}"
+                ]["hint"] = "sometimes"
+
+        self.options.batreaux_crystal_counts = self.batreaux_rewards.copy()
+        self.options.batreaux_crystal_counts.sort(reverse=True)
 
     def set_placement_options(self):
         shopsanity = self.options["shopsanity"]
