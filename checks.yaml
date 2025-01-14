@@ -268,7 +268,6 @@ Batreaux's House - Sixth Reward:
   Paths:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
-  hint: sometimes
   text: the <r<demon's penultimate reward>> is
 Batreaux's House - Seventh Reward:
   original item: Gold Rupee
@@ -276,7 +275,6 @@ Batreaux's House - Seventh Reward:
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
-  hint: sometimes
   text: the <r<demon's penultimate reward>> is
 Batreaux's House - Final Reward:
   original item: Progressive Wallet
@@ -284,8 +282,8 @@ Batreaux's House - Final Reward:
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
-  hint: always
   text: a <r<demon in human form>> grants
+# Batreaux sometimes/always hints determined at runtime
 
 # Beedle's Shop:
 Beedle's Shop - 300 Rupee Item:

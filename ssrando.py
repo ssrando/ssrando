@@ -160,7 +160,6 @@ class Randomizer(BaseRandomizer):
         self.rando.randomize(useroutput)
         self.progress_callback("preparing for hints...")
         self.logic = self.rando.extract_hint_logic()
-        self.batreaux_rewards = self.rando.batreaux_rewards
         del self.rando
         self.logic.check(useroutput)
         self.progress_callback("generating hints...")
@@ -205,7 +204,6 @@ class Randomizer(BaseRandomizer):
                 randomized_start_entrance=self.logic.randomized_start_entrance,
                 randomized_start_statues=self.logic.randomized_start_statues,
                 puzzles=self.logic.puzzles,
-                batreaux_crystal_counts=self.batreaux_rewards,
             )
             with log_address.open("w") as f:
                 json.dump(dump, f, indent=2)
@@ -227,7 +225,6 @@ class Randomizer(BaseRandomizer):
                     randomized_start_entrance=self.logic.randomized_start_entrance,
                     randomized_start_statues=self.logic.randomized_start_statues,
                     puzzles=self.logic.puzzles,
-                    batreaux_crystal_counts=self.batreaux_rewards,
                 )
         if not self.dry_run:
             GamePatcher(
