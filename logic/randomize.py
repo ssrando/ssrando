@@ -134,8 +134,26 @@ class Rando:
         self.randomised = True
 
     def parse_options(self):
+        if self.options["random-settings"]:
+            self.options.randomize_settings(self)
+            self.options.randomize_progression_groups(self)
+        if self.options["random-cosmetics"]:
+            self.options.randomize_cosmetics(self)
+
         # Initialize location related attributes.
         self.randomize_required_dungeons()  # self.required_dungeons, self.unrequired_dungeons
+        if (
+            self.options["random-settings"]
+            and len(self.options.non_prog_groups) > 0
+            and "Combat" in self.options.non_prog_groups
+        ):
+            # Add heart container and dungeon end checks to combat for unrequired dungeons
+            excluded_locations = self.options["excluded-locations"]
+            for dun in self.unrequired_dungeons:
+                excluded_locations.extend(
+                    [DUNGEON_HEART_CONTAINERS[dun], DUNGEON_FINAL_CHECK[dun]]
+                )
+            self.options.set_option("excluded-locations", excluded_locations)
         self.randomize_starting_items()  # self.placement.starting_items
         self.ban_the_banned()  # self.banned, self.ban_options
 

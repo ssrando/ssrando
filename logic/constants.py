@@ -59,6 +59,51 @@ LOGIC_OPTIONS = dict.fromkeys(
     ]
 )
 
+NON_RANDOMIZED_SETTINGS = [
+    # If permalink is false, it is not randomized
+    "random-settings",
+    "random-settings-weighting",
+    "random-progression-groups",
+    "disabled-progression-groups",
+    "no-spoiler-log",
+    "bit-patches",
+    "logic-mode",
+    "excluded-locations",
+    "enabled-tricks-glitched",
+    "enabled-tricks-bitless",
+    # Not implemented yet
+    "got-start",
+    "got-dungeon-requirement",
+]
+
+NON_RANDOMIZED_COSMETICS = [
+    "random-cosmetics",
+    "allow-custom-music",
+    "cutoff-gameover-music",
+    "no-enemy-music",
+    "selected-player-model-pack",
+    "selected-loftwing-model-pack",
+]
+
+RS_PROGRESSION_GROUPS = [
+    # (Group, hint text**)
+    # **Hint text: They say that those [text] will find nothing for their quest. (Hint stone)
+    # ** My readings indicate that [text] will be of no help for your quest. (Fi)
+    ("Goddess Chests", "opening the Goddess' chests"),
+    ("Silent Realms", "entering the Goddess' trials"),
+    ("Combat", "engaging in combat"),
+    ("Minigames", "winning minigames"),
+    ("Short Sidequests", "helping with short requests"),
+    ("Long Sidequests", "helping with long requests"),
+    ("Scrapper Deliveries", "delivering objects to the sky"),
+    ("Batreaux's Rewards (30 & below)", "presenting 30 or less tokens of gratitude"),
+    ("Batreaux's Rewards (40 & 50)", "presenting 40 or 50 tokens of gratitude"),
+    ("Batreaux's Rewards (70s & 80)", "presenting 70 or more tokens of gratitude"),
+    ("Beedle's Airshop (Cheap)", "making cheap purchases"),
+    ("Beedle's Airshop (Medium)", "making modest purchases"),
+    ("Beedle's Airshop (Expensive)", "making expensive purchases"),
+]
+
 # Locations
 
 
@@ -926,10 +971,10 @@ LOCATION_FILTER_TYPES = (
     "Sand Sea Goddess Chests",
     "Combat",
     "Minigames",
-    "Beedle's Shop Purchases",
-    "Beedle's Shop Purchase (Cheap)",
-    "Beedle's Shop Purchase (Medium)",
-    "Beedle's Shop Purchase (Expensive)",
+    "Beedle's Airshop",
+    "Beedle's Airshop (Cheap)",
+    "Beedle's Airshop (Medium)",
+    "Beedle's Airshop (Expensive)",
     "Batreaux's Rewards",
     "Loose Crystals",
     "Gratitude Crystal Sidequests",
