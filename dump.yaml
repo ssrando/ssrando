@@ -8900,11 +8900,11 @@ checks:
     short_name: Upper Skyloft - In Zelda's Closet
   \Skyloft\Upper Skyloft\Knight Academy\Owlan's Crystals:
     original item: Gratitude Crystal Pack
-    type: Scrapper Deliveries, Gratitude Crystal Sidequests, Combat
+    type: Scrapper Deliveries, Gratitude Crystal Sidequests, Combat, Long Sidequests
     short_name: Upper Skyloft - Owlan's Crystals
   \Skyloft\Upper Skyloft\Knight Academy\Fledge's Crystals:
     original item: Gratitude Crystal Pack
-    type: Gratitude Crystal Sidequests
+    type: Gratitude Crystal Sidequests, Short Sidequests
     short_name: Upper Skyloft - Fledge's Crystals
   \Skyloft\Upper Skyloft\Knight Academy\Item from Cawlin:
     original item: Cawlin's Letter
@@ -8912,7 +8912,7 @@ checks:
     short_name: Upper Skyloft - Item from Cawlin
   \Skyloft\Upper Skyloft\Knight Academy\Ghost/Pipit's Crystals:
     original item: Gratitude Crystal Pack
-    type: Gratitude Crystal Sidequests
+    type: Gratitude Crystal Sidequests, Short Sidequests
     short_name: Upper Skyloft - Ghost/Pipit's Crystals
   \Skyloft\Upper Skyloft\Pumpkin Archery -- 600 Points:
     original item: Heart Piece
@@ -8928,7 +8928,7 @@ checks:
     short_name: Central Skyloft - Repair Gondo's Junk
   \Skyloft\Central Skyloft\Wryna's House\Wryna's Crystals:
     original item: Gratitude Crystal Pack
-    type: Gratitude Crystal Sidequests
+    type: Gratitude Crystal Sidequests, Short Sidequests
     short_name: Central Skyloft - Wryna's Crystals
   \Skyloft\Central Skyloft\Waterfall Cave\Waterfall Cave First Chest:
     original item: Red Rupee
@@ -8948,11 +8948,11 @@ checks:
     short_name: Central Skyloft - Parrow's Gift
   \Skyloft\Central Skyloft\Parrow's Crystals:
     original item: Gratitude Crystal Pack
-    type: Gratitude Crystal Sidequests
+    type: Gratitude Crystal Sidequests, Short Sidequests
     short_name: Central Skyloft - Parrow's Crystals
   \Skyloft\Central Skyloft\Peatrice's House\Peater/Peatrice's Crystals:
     original item: Gratitude Crystal Pack
-    type: Gratitude Crystal Sidequests
+    type: Gratitude Crystal Sidequests, Long Sidequests
     short_name: Central Skyloft - Peater/Peatrice's Crystals
   \Skyloft\Central Skyloft\Bird Nest\Item in Bird Nest:
     original item: Baby's Rattle
@@ -8964,111 +8964,111 @@ checks:
     short_name: Central Skyloft - Shed Chest
   \Skyloft\Central Skyloft\West Cliff Goddess Chest:
     original item: Silver Rupee
-    type: goddess, Faron Woods Goddess Chests
+    type: Goddess Chests, Faron Woods Goddess Chests
     short_name: Central Skyloft - West Cliff Goddess Chest
   \Skyloft\Central Skyloft\Bazaar\Bazaar Goddess Chest:
     original item: Gold Rupee
-    type: goddess, Sand Sea Goddess Chests
+    type: Goddess Chests, Sand Sea Goddess Chests
     short_name: Central Skyloft - Bazaar Goddess Chest
   \Skyloft\Central Skyloft\Shed Goddess Chest:
     original item: Heart Piece
-    type: goddess, Eldin Volcano Goddess Chests
+    type: Goddess Chests, Eldin Volcano Goddess Chests
     short_name: Central Skyloft - Shed Goddess Chest
   \Skyloft\Central Skyloft\Waterfall Island\Floating Island Goddess Chest:
     original item: Gold Rupee
-    type: goddess, Lake Floria Goddess Chests
+    type: Goddess Chests, Lake Floria Goddess Chests
     short_name: Central Skyloft - Floating Island Goddess Chest
   \Skyloft\Central Skyloft\Waterfall Island\Waterfall Goddess Chest:
     original item: Heart Piece
-    type: goddess, Sand Sea Goddess Chests
+    type: Goddess Chests, Sand Sea Goddess Chests
     short_name: Central Skyloft - Waterfall Goddess Chest
   \Skyloft\Skyloft Village\Mallara's House\Mallara's Crystals:
     original item: Gratitude Crystal Pack
-    type: Gratitude Crystal Sidequests
+    type: Gratitude Crystal Sidequests, Short Sidequests
     short_name: Skyloft Village - Mallara's Crystals
   \Skyloft\Skyloft Village\Bertie's House\Bertie's Crystals:
     original item: Gratitude Crystal Pack
-    type: Gratitude Crystal Sidequests
+    type: Gratitude Crystal Sidequests, Short Sidequests
     short_name: Skyloft Village - Bertie's Crystals
   \Skyloft\Skyloft Village\Sparrot's House\Sparrot's Crystals:
     original item: Gratitude Crystal Pack
-    type: Scrapper Deliveries, Gratitude Crystal Sidequests
+    type: Scrapper Deliveries, Gratitude Crystal Sidequests, Long Sidequests
     short_name: Skyloft Village - Sparrot's Crystals
   \Skyloft\Skyloft Village\Batreaux's House\5 Crystals:
     original item: Progressive Wallet
-    type: Batreaux's Rewards
+    type: Batreaux's Rewards (30 & below)
     short_name: Batreaux's House - 5 Crystals
   \Skyloft\Skyloft Village\Batreaux's House\10 Crystals:
     original item: Heart Piece
-    type: Batreaux's Rewards
+    type: Batreaux's Rewards (30 & below)
     short_name: Batreaux's House - 10 Crystals
   \Skyloft\Skyloft Village\Batreaux's House\30 Crystals:
     original item: Progressive Wallet
-    type: Batreaux's Rewards
+    type: Batreaux's Rewards (30 & below)
     short_name: Batreaux's House - 30 Crystals
   \Skyloft\Skyloft Village\Batreaux's House\30 Crystals Chest:
     original item: Cursed Medal
-    type: Batreaux's Rewards
+    type: Batreaux's Rewards (30 & below)
     short_name: Batreaux's House - 30 Crystals Chest
   \Skyloft\Skyloft Village\Batreaux's House\40 Crystals:
     original item: Gold Rupee
-    type: Batreaux's Rewards
+    type: Batreaux's Rewards (40 & 50)
     short_name: Batreaux's House - 40 Crystals
   \Skyloft\Skyloft Village\Batreaux's House\50 Crystals:
     original item: Progressive Wallet
-    type: Batreaux's Rewards
+    type: Batreaux's Rewards (40 & 50)
     short_name: Batreaux's House - 50 Crystals
   \Skyloft\Skyloft Village\Batreaux's House\70 Crystals:
     original item: Gold Rupee
-    type: Batreaux's Rewards
+    type: Batreaux's Rewards (70s & 80)
     short_name: Batreaux's House - 70 Crystals
   \Skyloft\Skyloft Village\Batreaux's House\70 Crystals Second Reward:
     original item: Gold Rupee
-    type: Batreaux's Rewards
+    type: Batreaux's Rewards (70s & 80)
     short_name: Batreaux's House - 70 Crystals Second Reward
   \Skyloft\Skyloft Village\Batreaux's House\80 Crystals:
     original item: Progressive Wallet
-    type: Batreaux's Rewards
+    type: Batreaux's Rewards (70s & 80)
     short_name: Batreaux's House - 80 Crystals
   \Skyloft\Beedle's Shop\Stall\300 Rupee Item:
     original item: 'Progressive Pouch #1'
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - 300 Rupee Item
   \Skyloft\Beedle's Shop\Stall\600 Rupee Item:
     original item: 'Progressive Pouch #2'
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+    type: Beedle's Airshop, Beedle's Airshop (Medium)
     short_name: Beedle's Shop - 600 Rupee Item
   \Skyloft\Beedle's Shop\Stall\1200 Rupee Item:
     original item: 'Progressive Pouch #3'
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
+    type: Beedle's Airshop, Beedle's Airshop (Expensive)
     short_name: Beedle's Shop - 1200 Rupee Item
   \Skyloft\Beedle's Shop\Stall\800 Rupee Item:
     original item: 'Life Medal #0'
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+    type: Beedle's Airshop, Beedle's Airshop (Medium)
     short_name: Beedle's Shop - 800 Rupee Item
   \Skyloft\Beedle's Shop\Stall\1600 Rupee Item:
-    original item: 'Heart Piece #0'
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
+    original item: 'Heart Piece #23'
+    type: Beedle's Airshop, Beedle's Airshop (Expensive)
     short_name: Beedle's Shop - 1600 Rupee Item
   \Skyloft\Beedle's Shop\Stall\First 100 Rupee Item:
     original item: 'Extra Wallet #0'
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - First 100 Rupee Item
   \Skyloft\Beedle's Shop\Stall\Second 100 Rupee Item:
     original item: 'Extra Wallet #1'
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - Second 100 Rupee Item
   \Skyloft\Beedle's Shop\Stall\Third 100 Rupee Item:
     original item: 'Extra Wallet #2'
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - Third 100 Rupee Item
   \Skyloft\Beedle's Shop\Stall\50 Rupee Item:
     original item: 'Progressive Bug Net #0'
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+    type: Beedle's Airshop, Beedle's Airshop (Cheap)
     short_name: Beedle's Shop - 50 Rupee Item
   \Skyloft\Beedle's Shop\Stall\1000 Rupee Item:
     original item: Bug Medal
-    type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+    type: Beedle's Airshop, Beedle's Airshop (Medium)
     short_name: Beedle's Shop - 1000 Rupee Item
   \Skyloft\Upper Skyloft\Knight Academy\Link's Room\Crystal in Link's Room:
     original item: 'Gratitude Crystal #0'
@@ -9136,27 +9136,27 @@ checks:
     short_name: Sky - Lumpy Pumpkin - Chandelier
   \Sky\South East\Lumpy Pumpkin\Lumpy Pumpkin Building\Harp Minigame:
     original item: Heart Piece
-    type: Minigames
+    type: Minigames, Long Sidequests
     short_name: Sky - Lumpy Pumpkin - Harp Minigame
   \Sky\South East\Lumpy Pumpkin\Kina's Crystals:
     original item: Gratitude Crystal Pack
-    type: Scrapper Deliveries, Gratitude Crystal Sidequests
+    type: Scrapper Deliveries, Gratitude Crystal Sidequests, Long Sidequests
     short_name: Sky - Kina's Crystals
   \Sky\South West\Orielle's Island\Orielle's Crystals:
     original item: Gratitude Crystal Pack
-    type: Gratitude Crystal Sidequests
+    type: Gratitude Crystal Sidequests, Short Sidequests
     short_name: Sky - Orielle's Crystals
   \Sky\North East\Beedle's Island\Beedle's Crystals:
     original item: Gratitude Crystal Pack
-    type: Gratitude Crystal Sidequests
+    type: Gratitude Crystal Sidequests, Short Sidequests
     short_name: Sky - Beedle's Crystals
   \Sky\South West\Fun Fun Island\Dodoh's Crystals:
     original item: Gratitude Crystal Pack
-    type: Scrapper Deliveries
+    type: Scrapper Deliveries, Gratitude Crystal Sidequests, Long Sidequests
     short_name: Sky - Dodoh's Crystals
   \Sky\South West\Fun Fun Island\Fun Fun Island Minigame -- 500 Rupees:
     original item: Heart Piece
-    type: Minigames, Scrapper Deliveries
+    type: Minigames, Scrapper Deliveries, Long Sidequests
     short_name: Sky - Fun Fun Island Minigame -- 500 Rupees
   \Sky\South West\Chest in Breakable Boulder near Fun Fun Island:
     original item: Silver Rupee
@@ -9168,67 +9168,67 @@ checks:
     short_name: Sky - Chest in Breakable Boulder near Lumpy Pumpkin
   \Sky\North East\Bamboo Island\Bamboo Island Goddess Chest:
     original item: Gold Rupee
-    type: goddess, Eldin Volcano Goddess Chests
+    type: Goddess Chests, Eldin Volcano Goddess Chests
     short_name: Sky - Bamboo Island Goddess Chest
   \Sky\North East\Goddess Chest on Island next to Bamboo Island:
     original item: Silver Rupee
-    type: goddess, Eldin Volcano Goddess Chests
+    type: Goddess Chests, Eldin Volcano Goddess Chests
     short_name: Sky - Goddess Chest on Island next to Bamboo Island
   \Sky\North East\Goddess Chest in Cave on Island next to Bamboo Island:
     original item: Heart Medal
-    type: goddess, Lanayru Desert Goddess Chests
+    type: Goddess Chests, Lanayru Desert Goddess Chests
     short_name: Sky - Goddess Chest in Cave on Island next to Bamboo Island
   \Sky\North East\Beedle's Island\Top\Beedle's Island Goddess Chest:
     original item: Heart Piece
-    type: goddess, Lanayru Desert Goddess Chests, Combat
+    type: Goddess Chests, Lanayru Desert Goddess Chests, Combat
     short_name: Sky - Beedle's Island Goddess Chest
   \Sky\North East\Beedle's Island\Cage\Beedle's Island Cage Goddess Chest:
     original item: Rupee Medal
-    type: goddess, Faron Woods Goddess Chests
+    type: Goddess Chests, Faron Woods Goddess Chests
     short_name: Sky - Beedle's Island Cage Goddess Chest
   \Sky\North East\Northeast Island Goddess Chest behind Bombable Rocks:
     original item: Silver Rupee
-    type: goddess, Lanayru Desert Goddess Chests
+    type: Goddess Chests, Lanayru Desert Goddess Chests
     short_name: Sky - Northeast Island Goddess Chest behind Bombable Rocks
   \Sky\North East\Northeast Island Cage Goddess Chest:
     original item: Treasure Medal
-    type: goddess, Eldin Volcano Goddess Chests
+    type: Goddess Chests, Eldin Volcano Goddess Chests
     short_name: Sky - Northeast Island Cage Goddess Chest
   \Sky\South East\Lumpy Pumpkin\Goddess Chest on the Roof:
     original item: Gold Rupee
-    type: goddess, Faron Woods Goddess Chests
+    type: Goddess Chests, Faron Woods Goddess Chests
     short_name: Sky - Lumpy Pumpkin - Goddess Chest on the Roof
   \Sky\South East\Lumpy Pumpkin\Outside Goddess Chest:
     original item: Progressive Pouch
-    type: goddess, Faron Woods Goddess Chests
+    type: Goddess Chests, Faron Woods Goddess Chests
     short_name: Sky - Lumpy Pumpkin - Outside Goddess Chest
   \Sky\South East\Goddess Chest on Island Closest to Faron Pillar:
     original item: Heart Piece
-    type: goddess, Faron Woods Goddess Chests
+    type: Goddess Chests, Faron Woods Goddess Chests
     short_name: Sky - Goddess Chest on Island Closest to Faron Pillar
   \Sky\South West\Volcanic Island\Goddess Chest outside Volcanic Island:
     original item: Heart Medal
-    type: goddess, Lanayru Desert Goddess Chests
+    type: Goddess Chests, Lanayru Desert Goddess Chests
     short_name: Sky - Goddess Chest outside Volcanic Island
   \Sky\South West\Volcanic Island\Goddess Chest inside Volcanic Island:
     original item: Heart Piece
-    type: goddess, Faron Woods Goddess Chests
+    type: Goddess Chests, Faron Woods Goddess Chests
     short_name: Sky - Goddess Chest inside Volcanic Island
   \Sky\South West\Fun Fun Island\Goddess Chest under Fun Fun Island:
     original item: Gold Rupee
-    type: goddess, Lake Floria Goddess Chests
+    type: Goddess Chests, Lake Floria Goddess Chests
     short_name: Sky - Goddess Chest under Fun Fun Island
   \Sky\South West\Triple Island\Southwest Triple Island Upper Goddess Chest:
     original item: Small Seed Satchel
-    type: goddess, Eldin Volcano Goddess Chests
+    type: Goddess Chests, Eldin Volcano Goddess Chests
     short_name: Sky - Southwest Triple Island Upper Goddess Chest
   \Sky\South West\Triple Island\Southwest Triple Island Lower Goddess Chest:
     original item: Life Medal
-    type: goddess, Lanayru Desert Goddess Chests
+    type: Goddess Chests, Lanayru Desert Goddess Chests
     short_name: Sky - Southwest Triple Island Lower Goddess Chest
   \Sky\South West\Triple Island\Southwest Triple Island Cage Goddess Chest:
     original item: Potion Medal
-    type: goddess, Sand Sea Goddess Chests
+    type: Goddess Chests, Sand Sea Goddess Chests
     short_name: Sky - Southwest Triple Island Cage Goddess Chest
   \Sky\Thunderhead\Isle of Songs\Inside\Strike Crest with Goddess Sword:
     original item: Farore's Courage
@@ -9256,27 +9256,27 @@ checks:
     short_name: Thunderhead - East Island Chest
   \Sky\Thunderhead\East Island\East Island Goddess Chest:
     original item: Rupee Medal
-    type: goddess, Faron Woods Goddess Chests
+    type: Goddess Chests, Faron Woods Goddess Chests
     short_name: Thunderhead - East Island Goddess Chest
   \Sky\Thunderhead\Isle of Songs\Goddess Chest on top of Isle of Songs:
     original item: Small Bomb Bag
-    type: goddess, Volcano Summit Goddess Chests
+    type: Goddess Chests, Volcano Summit Goddess Chests
     short_name: Thunderhead - Goddess Chest on top of Isle of Songs
   \Sky\Thunderhead\Isle of Songs\Goddess Chest outside Isle of Songs:
     original item: Gold Rupee
-    type: goddess, Eldin Volcano Goddess Chests
+    type: Goddess Chests, Eldin Volcano Goddess Chests
     short_name: Thunderhead - Goddess Chest outside Isle of Songs
   \Sky\Thunderhead\Mogma Mitts Island\First Goddess Chest on Mogma Mitts Island:
     original item: Bottle
-    type: goddess, Volcano Summit Goddess Chests
+    type: Goddess Chests, Volcano Summit Goddess Chests
     short_name: Thunderhead - First Goddess Chest on Mogma Mitts Island
   \Sky\Thunderhead\Mogma Mitts Island\Second Goddess Chest on Mogma Mitts Island:
     original item: Small Quiver
-    type: goddess, Sand Sea Goddess Chests
+    type: Goddess Chests, Sand Sea Goddess Chests
     short_name: Thunderhead - Second Goddess Chest on Mogma Mitts Island
   \Sky\Thunderhead\Bug Heaven\Bug Heaven Goddess Chest:
     original item: Heart Piece
-    type: goddess, Volcano Summit Goddess Chests
+    type: Goddess Chests, Volcano Summit Goddess Chests
     short_name: Thunderhead - Bug Heaven Goddess Chest
   \Faron\Sealed Grounds\Sealed Temple\Chest inside Sealed Temple:
     original item: Revitalizing Potion
@@ -10101,43 +10101,43 @@ checks:
     short_name: Skyloft Silent Realm - Trial Reward
   \Skyloft\Skyloft Silent Realm\Relic 1:
     original item: 'Dusk Relic #1'
-    type: skyloft, silent realm
+    type: skyloft
     short_name: Skyloft Silent Realm - Relic 1
   \Skyloft\Skyloft Silent Realm\Relic 2:
     original item: 'Dusk Relic #2'
-    type: skyloft, silent realm
+    type: skyloft, Silent Realms
     short_name: Skyloft Silent Realm - Relic 2
   \Skyloft\Skyloft Silent Realm\Relic 3:
     original item: 'Dusk Relic #3'
-    type: skyloft, silent realm
+    type: skyloft, Silent Realms
     short_name: Skyloft Silent Realm - Relic 3
   \Skyloft\Skyloft Silent Realm\Relic 4:
     original item: 'Dusk Relic #4'
-    type: skyloft, silent realm
+    type: skyloft, Silent Realms
     short_name: Skyloft Silent Realm - Relic 4
   \Skyloft\Skyloft Silent Realm\Relic 5:
     original item: 'Dusk Relic #5'
-    type: skyloft, silent realm
+    type: skyloft, Silent Realms
     short_name: Skyloft Silent Realm - Relic 5
   \Skyloft\Skyloft Silent Realm\Relic 6:
     original item: 'Dusk Relic #6'
-    type: skyloft, silent realm
+    type: skyloft, Silent Realms
     short_name: Skyloft Silent Realm - Relic 6
   \Skyloft\Skyloft Silent Realm\Relic 7:
     original item: 'Dusk Relic #7'
-    type: skyloft, silent realm
+    type: skyloft, Silent Realms
     short_name: Skyloft Silent Realm - Relic 7
   \Skyloft\Skyloft Silent Realm\Relic 8:
     original item: 'Dusk Relic #8'
-    type: skyloft, silent realm
+    type: skyloft, Silent Realms
     short_name: Skyloft Silent Realm - Relic 8
   \Skyloft\Skyloft Silent Realm\Relic 9:
     original item: 'Dusk Relic #9'
-    type: skyloft, silent realm
+    type: skyloft, Silent Realms
     short_name: Skyloft Silent Realm - Relic 9
   \Skyloft\Skyloft Silent Realm\Relic 10:
     original item: 'Dusk Relic #10'
-    type: skyloft, silent realm
+    type: skyloft, Silent Realms
     short_name: Skyloft Silent Realm - Relic 10
   \Faron\Faron Silent Realm\Trial Reward:
     original item: Water Dragon's Scale
@@ -10145,43 +10145,43 @@ checks:
     short_name: Faron Silent Realm - Trial Reward
   \Faron\Faron Silent Realm\Relic 1:
     original item: 'Dusk Relic #11'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 1
   \Faron\Faron Silent Realm\Relic 2:
     original item: 'Dusk Relic #12'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 2
   \Faron\Faron Silent Realm\Relic 3:
     original item: 'Dusk Relic #13'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 3
   \Faron\Faron Silent Realm\Relic 4:
     original item: 'Dusk Relic #14'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 4
   \Faron\Faron Silent Realm\Relic 5:
     original item: 'Dusk Relic #15'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 5
   \Faron\Faron Silent Realm\Relic 6:
     original item: 'Dusk Relic #16'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 6
   \Faron\Faron Silent Realm\Relic 7:
     original item: 'Dusk Relic #17'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 7
   \Faron\Faron Silent Realm\Relic 8:
     original item: 'Dusk Relic #18'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 8
   \Faron\Faron Silent Realm\Relic 9:
     original item: 'Dusk Relic #19'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 9
   \Faron\Faron Silent Realm\Relic 10:
     original item: 'Dusk Relic #20'
-    type: faron, silent realm
+    type: faron, Silent Realms
     short_name: Faron Silent Realm - Relic 10
   \Lanayru\Lanayru Silent Realm\Trial Reward:
     original item: Clawshots
@@ -10189,43 +10189,43 @@ checks:
     short_name: Lanayru Silent Realm - Trial Reward
   \Lanayru\Lanayru Silent Realm\Relic 1:
     original item: 'Dusk Relic #21'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 1
   \Lanayru\Lanayru Silent Realm\Relic 2:
     original item: 'Dusk Relic #22'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 2
   \Lanayru\Lanayru Silent Realm\Relic 3:
     original item: 'Dusk Relic #23'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 3
   \Lanayru\Lanayru Silent Realm\Relic 4:
     original item: 'Dusk Relic #24'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 4
   \Lanayru\Lanayru Silent Realm\Relic 5:
     original item: 'Dusk Relic #25'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 5
   \Lanayru\Lanayru Silent Realm\Relic 6:
     original item: 'Dusk Relic #26'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 6
   \Lanayru\Lanayru Silent Realm\Relic 7:
     original item: 'Dusk Relic #27'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 7
   \Lanayru\Lanayru Silent Realm\Relic 8:
     original item: 'Dusk Relic #28'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 8
   \Lanayru\Lanayru Silent Realm\Relic 9:
     original item: 'Dusk Relic #29'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 9
   \Lanayru\Lanayru Silent Realm\Relic 10:
     original item: 'Dusk Relic #30'
-    type: lanayru, silent realm
+    type: lanayru, Silent Realms
     short_name: Lanayru Silent Realm - Relic 10
   \Eldin\Eldin Silent Realm\Trial Reward:
     original item: Fireshield Earrings
@@ -10233,43 +10233,43 @@ checks:
     short_name: Eldin Silent Realm - Trial Reward
   \Eldin\Eldin Silent Realm\Relic 1:
     original item: 'Dusk Relic #31'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 1
   \Eldin\Eldin Silent Realm\Relic 2:
     original item: 'Dusk Relic #32'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 2
   \Eldin\Eldin Silent Realm\Relic 3:
     original item: 'Dusk Relic #33'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 3
   \Eldin\Eldin Silent Realm\Relic 4:
     original item: 'Dusk Relic #34'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 4
   \Eldin\Eldin Silent Realm\Relic 5:
     original item: 'Dusk Relic #35'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 5
   \Eldin\Eldin Silent Realm\Relic 6:
     original item: 'Dusk Relic #36'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 6
   \Eldin\Eldin Silent Realm\Relic 7:
     original item: 'Dusk Relic #37'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 7
   \Eldin\Eldin Silent Realm\Relic 8:
     original item: 'Dusk Relic #38'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 8
   \Eldin\Eldin Silent Realm\Relic 9:
     original item: 'Dusk Relic #39'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 9
   \Eldin\Eldin Silent Realm\Relic 10:
     original item: 'Dusk Relic #40'
-    type: eldin, silent realm
+    type: eldin, Silent Realms
     short_name: Eldin Silent Realm - Relic 10
 gossip_stones:
   \Skyloft\Central Skyloft\Waterfall Island\Gossip Stone on Waterfall Island: Central

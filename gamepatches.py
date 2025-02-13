@@ -2330,6 +2330,21 @@ class GamePatcher:
         fi_objective_text["text"] = fi_objective_text["text"].replace(
             "{required_sword}", self.placement_file.options["got-sword-requirement"]
         )
+        if self.placement_file.options["triforce-shuffle"] == "Vanilla":
+            fi_triforce_text = "<y+<completing the 3 trials of Sky Keep>>"
+        elif self.placement_file.options["triforce-shuffle"] == "Sky Keep":
+            fi_triforce_text = "<g+<searching within the hidden Sky Keep>>"
+        else:
+            fi_triforce_text = "<r+<searching anywhere in the world>>"
+        fi_objective_triforce_text = next(
+            filter(
+                lambda x: x["name"] == "Fi Objective Triforce Text",
+                self.eventpatches["006-8KenseiNormal"],
+            )
+        )
+        fi_objective_triforce_text["text"] = fi_objective_triforce_text["text"].replace(
+            "{triforce_shuffle}", fi_triforce_text
+        )
 
         # dungeon status text for Fi
         for dungeon_index, dungeon in enumerate(ALL_DUNGEONS):

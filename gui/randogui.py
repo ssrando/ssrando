@@ -35,7 +35,14 @@ from gui.components.color_button import ColorButton
 
 from gui.dialogs.tricks.tricks_dialog import TricksDialog
 from gui.dialogs.custom_theme.custom_theme_dialog import CustomThemeDialog
-from logic.constants import LOCATION_FILTER_TYPES
+from gui.dialogs.progression_groups.progression_groups_dialog import (
+    ProgressionGroupsDialog,
+)
+from logic.constants import (
+    LOCATION_FILTER_TYPES,
+    NON_RANDOMIZED_SETTINGS,
+    NON_RANDOMIZED_COSMETICS,
+)
 
 from logic.logic_input import Areas
 from options import OPTIONS, Options
@@ -108,6 +115,35 @@ class RandoGUI(QMainWindow):
                     self.options.update_from_dict(json.load(f))
                 except Exception as e:
                     print("couldn't update from saved settings!", e)
+
+        if self.options[
+            "random-settings"
+        ]:  # Initialize UI for RS- sets randomized settings to default value and greys them out on the UI
+            self.options.reset_randomized_settings()
+            for opt in OPTIONS.values():
+                if opt["command"] in NON_RANDOMIZED_SETTINGS or (
+                    "permalink" in opt and not opt["permalink"]
+                ):
+                    continue
+                elif opt["command"] == "starting-items":
+                    getattr(self.ui, "box_starting_items").setEnabled(False)
+                else:
+                    widget = getattr(self.ui, opt["ui"])
+                    widget.setEnabled(False)
+            self.ui.option_random_settings_weighting.setEnabled(True)
+            self.ui.edit_progression_groups.setEnabled(True)
+        else:
+            self.options.set_option("random-settings-weighting", "Random")
+            self.ui.option_random_settings_weighting.setEnabled(False)
+            self.ui.edit_progression_groups.setEnabled(False)
+        if self.options["random-cosmetics"]:  # Greys out cosmetics on UI load
+            for opt in OPTIONS.values():
+                if (
+                    opt["command"] not in NON_RANDOMIZED_COSMETICS
+                    and "cosmetic" in opt
+                    and opt["cosmetic"]
+                ):
+                    getattr(self.ui, opt["ui"]).setEnabled(False)
 
         self.option_map = {}
         for option_key, option in OPTIONS.items():
@@ -192,6 +228,9 @@ class RandoGUI(QMainWindow):
 
         # setup misc controls
         self.ui.edit_tricks.clicked.connect(self.launch_tricks_dialog)
+        self.ui.edit_progression_groups.clicked.connect(
+            self.launch_progression_groups_dialog
+        )
         self.logic_mode_changed()
 
         # Exlcuded Locations UI
@@ -332,6 +371,10 @@ class RandoGUI(QMainWindow):
         self.ui.seed.textChanged.connect(self.update_settings)
         self.ui.seed_button.clicked.connect(self.gen_new_seed)
         self.ui.copy_permalink_button.clicked.connect(self.copy_permalink_to_clipboard)
+        self.ui.option_random_settings.clicked.connect(self.randomize_settings_toggled)
+        self.ui.option_random_cosmetics.clicked.connect(
+            self.randomize_cosmetics_toggled
+        )
         self.update_ui_for_settings()
         self.update_font()
         self.update_settings()
@@ -953,6 +996,21 @@ class RandoGUI(QMainWindow):
             self.enabled_tricks = dialog.getTrickValues()
             self.update_settings()
 
+    def launch_progression_groups_dialog(self):
+        dialog = ProgressionGroupsDialog(
+            self.options["random-progression-groups"],
+            # self.options["disabled-progression-groups"],
+            "random-progression-groups",
+            # "disabled-progression-groups",
+            self.styleSheet(),
+        )
+        if dialog.exec():
+            self.options.set_option(
+                "random-progression-groups", dialog.getRandomgroupsValues()
+            )
+            # self.options.set_option("disabled-progression-groups", dialog.getDisabledgroupsValues()) --DISABLED
+            self.update_settings()
+
     # Custom model customisation funcs
 
     def change_model_type(self, index: int):
@@ -1341,6 +1399,43 @@ class RandoGUI(QMainWindow):
 
     def gen_new_seed(self):
         self.ui.seed.setText(str(random.randrange(0, 1_000_000)))
+
+    def randomize_settings_toggled(self):
+        settings_randomized = self.ui.option_random_settings.isChecked()
+        if settings_randomized:
+            self.options.reset_randomized_settings()  # Sets randomized settings to their default value for permalink consistency
+        else:
+            self.options.set_option(
+                "random-settings-weighting", "Random"
+            )  # Sets RS weighting to random for permalink consistency
+            self.options.set_option(
+                "random-progression-groups", []
+            )  # Sets progress groups to all enabled for permalink consistency
+        for opt in OPTIONS.values():
+            if opt["command"] in NON_RANDOMIZED_SETTINGS or (
+                "permalink" in opt and not opt["permalink"]
+            ):
+                continue
+            elif opt["command"] == "starting-items":
+                getattr(self.ui, "box_starting_items").setEnabled(
+                    not settings_randomized
+                )
+            else:
+                widget = getattr(self.ui, opt["ui"])
+                widget.setEnabled(not settings_randomized)
+        self.ui.option_random_settings_weighting.setEnabled(settings_randomized)
+        self.ui.edit_progression_groups.setEnabled(settings_randomized)
+        self.update_ui_for_settings()
+
+    def randomize_cosmetics_toggled(self):
+        cosmetics_randomized = self.ui.option_random_cosmetics.isChecked()
+        for opt in OPTIONS.values():
+            if (
+                opt["command"] not in NON_RANDOMIZED_COSMETICS
+                and "cosmetic" in opt
+                and opt["cosmetic"]
+            ):
+                getattr(self.ui, opt["ui"]).setEnabled(not cosmetics_randomized)
 
 
 def run_main_gui(areas: Areas, options: Options):

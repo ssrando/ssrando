@@ -58,7 +58,7 @@ Upper Skyloft - In Zelda's Closet:
     - stage/F001r/r6/l0/chest/32 #sceneflag
 Upper Skyloft - Owlan's Crystals:
   original item: Gratitude Crystal Pack
-  type: Scrapper Deliveries, Gratitude Crystal Sidequests, Combat
+  type: Scrapper Deliveries, Gratitude Crystal Sidequests, Combat, Long Sidequests
   Paths:
     - event/118-Town3/157
     - oarc/F001r/l0
@@ -66,7 +66,7 @@ Upper Skyloft - Owlan's Crystals:
   text: delivering a <r<Kikwi>> reveals
 Upper Skyloft - Fledge's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitude Crystal Sidequests
+  type: Gratitude Crystal Sidequests, Short Sidequests
   Paths:
     - event/115-Town2/325
     - oarc/F001r/l0
@@ -79,7 +79,7 @@ Upper Skyloft - Item from Cawlin:
     - oarc/F001r/l0
 Upper Skyloft - Ghost/Pipit's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitude Crystal Sidequests
+  type: Gratitude Crystal Sidequests, Short Sidequests
   Paths:
     - event/115-Town2/522
     - event/115-Town2/641
@@ -109,7 +109,7 @@ Central Skyloft - Repair Gondo's Junk:
     - oarc/F004r/l0
 Central Skyloft - Wryna's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitude Crystal Sidequests
+  type: Gratitude Crystal Sidequests, Short Sidequests
   Paths:
     - event/118-Town3/144
     - oarc/F006r/l0
@@ -139,7 +139,7 @@ Central Skyloft - Parrow's Gift:
     - oarc/F005r/l0
 Central Skyloft - Parrow's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitude Crystal Sidequests
+  type: Gratitude Crystal Sidequests, Short Sidequests
   Paths:
     - event/115-Town2/814
     - oarc/F000/l4
@@ -147,7 +147,7 @@ Central Skyloft - Parrow's Crystals:
     - oarc/F005r/l0
 Central Skyloft - Peater/Peatrice's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitude Crystal Sidequests
+  type: Gratitude Crystal Sidequests, Long Sidequests
   Paths:
     - event/109-TakeGoron/79
     - event/123-Town5/316
@@ -172,31 +172,31 @@ Central Skyloft - Shed Chest:
 ## Goddess Chests
 Central Skyloft - West Cliff Goddess Chest:
   original item: Silver Rupee
-  type: goddess, Faron Woods Goddess Chests
+  type: Goddess Chests, Faron Woods Goddess Chests
   Paths:
     - stage/F000/r0/l0/TBox/78
   cube_region: Faron Woods
 Central Skyloft - Bazaar Goddess Chest:
   original item: Gold Rupee
-  type: goddess, Sand Sea Goddess Chests
+  type: Goddess Chests, Sand Sea Goddess Chests
   Paths:
     - stage/F004r/r0/l0/TBox/93
   cube_region: Lanayru Sand Sea
 Central Skyloft - Shed Goddess Chest:
   original item: Heart Piece
-  type: goddess, Eldin Volcano Goddess Chests
+  type: Goddess Chests, Eldin Volcano Goddess Chests
   Paths:
     - stage/F000/r0/l0/TBox/79
   cube_region: Eldin Volcano
 Central Skyloft - Floating Island Goddess Chest:
   original item: Gold Rupee
-  type: goddess, Lake Floria Goddess Chests
+  type: Goddess Chests, Lake Floria Goddess Chests
   Paths:
     - stage/F000/r0/l0/TBox/91
   cube_region: Lake Floria
 Central Skyloft - Waterfall Goddess Chest:
   original item: Heart Piece
-  type: goddess, Sand Sea Goddess Chests
+  type: Goddess Chests, Sand Sea Goddess Chests
   Paths:
     - stage/F000/r0/l0/TBox/80
   hint: sometimes
@@ -206,20 +206,20 @@ Central Skyloft - Waterfall Goddess Chest:
 # Skyloft Village checks:
 Skyloft Village - Mallara's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitude Crystal Sidequests
+  type: Gratitude Crystal Sidequests, Short Sidequests
   Paths:
     - event/123-Town5/186
     - oarc/F016r/l0
 Skyloft Village - Bertie's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitude Crystal Sidequests
+  type: Gratitude Crystal Sidequests, Short Sidequests
   Paths:
     - event/115-Town2/125
     - oarc/F014r/l0
   text: helping an <r<exhausted parent>> rewards
 Skyloft Village - Sparrot's Crystals:
   original item: Gratitude Crystal Pack
-  type: Scrapper Deliveries, Gratitude Crystal Sidequests
+  type: Scrapper Deliveries, Gratitude Crystal Sidequests, Long Sidequests
   Paths:
     - event/118-Town3/141
     - oarc/F013r/l0
@@ -228,43 +228,43 @@ Skyloft Village - Sparrot's Crystals:
 # Batreaux Rewards:
 Batreaux's House - 5 Crystals:
   original item: Progressive Wallet
-  type: Batreaux's Rewards
+  type: Batreaux's Rewards (30 & below)
   Paths:
     - event/121-AkumaKun/21
     - oarc/F012r/l0
 Batreaux's House - 10 Crystals:
   original item: Heart Piece
-  type: Batreaux's Rewards
+  type: Batreaux's Rewards (30 & below)
   Paths:
     - event/121-AkumaKun/42
     - oarc/F012r/l0
 Batreaux's House - 30 Crystals:
   original item: Progressive Wallet
-  type: Batreaux's Rewards
+  type: Batreaux's Rewards (30 & below)
   Paths:
     - event/121-AkumaKun/24
     - oarc/F012r/l0
 Batreaux's House - 30 Crystals Chest:
   original item: Cursed Medal
-  type: Batreaux's Rewards
+  type: Batreaux's Rewards (30 & below)
   Paths:
     - stage/F012r/r0/l0/TBox/69
 Batreaux's House - 40 Crystals:
   original item: Gold Rupee
-  type: Batreaux's Rewards
+  type: Batreaux's Rewards (40 & 50)
   Paths:
     - event/121-AkumaKun/49
     - oarc/F012r/l0
 Batreaux's House - 50 Crystals:
   original item: Progressive Wallet
-  type: Batreaux's Rewards
+  type: Batreaux's Rewards (40 & 50)
   Paths:
     - event/121-AkumaKun/27
     - oarc/F012r/l0
   text: <ye<50>> <r<pieces of gratitude>> can be exchanged for
 Batreaux's House - 70 Crystals:
   original item: Gold Rupee
-  type: Batreaux's Rewards
+  type: Batreaux's Rewards (70s & 80)
   Paths:
     - event/121-AkumaKun/161
     - oarc/F012r/l0
@@ -272,7 +272,7 @@ Batreaux's House - 70 Crystals:
   text: the <r<demon's penultimate reward>> is
 Batreaux's House - 70 Crystals Second Reward:
   original item: Gold Rupee
-  type: Batreaux's Rewards
+  type: Batreaux's Rewards (70s & 80)
   Paths:
     - event/121-AkumaKun/163
     - oarc/F012r/l0
@@ -280,7 +280,7 @@ Batreaux's House - 70 Crystals Second Reward:
   text: the <r<demon's penultimate reward>> is
 Batreaux's House - 80 Crystals:
   original item: Progressive Wallet
-  type: Batreaux's Rewards
+  type: Batreaux's Rewards (70s & 80)
   Paths:
     - event/121-AkumaKun/37
     - oarc/F012r/l0
@@ -290,17 +290,17 @@ Batreaux's House - 80 Crystals:
 # Beedle's Shop:
 Beedle's Shop - 300 Rupee Item:
   original item: "Progressive Pouch #1"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Airshop, Beedle's Airshop (Cheap)
   Paths:
     - ShpSmpl/20
 Beedle's Shop - 600 Rupee Item:
   original item: "Progressive Pouch #2"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+  type: Beedle's Airshop, Beedle's Airshop (Medium)
   Paths:
     - ShpSmpl/21
 Beedle's Shop - 1200 Rupee Item:
   original item: "Progressive Pouch #3"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
+  type: Beedle's Airshop, Beedle's Airshop (Expensive)
   hint:
     always: Option "full-wallet-upgrades" Disabled
     sometimes: Nothing
@@ -309,12 +309,12 @@ Beedle's Shop - 1200 Rupee Item:
   text: for <g+<1200 rupees>> <r<Beedle>> sells
 Beedle's Shop - 800 Rupee Item:
   original item: "Life Medal #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+  type: Beedle's Airshop, Beedle's Airshop (Medium)
   Paths:
     - ShpSmpl/26
 Beedle's Shop - 1600 Rupee Item:
-  original item: "Heart Piece #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Expensive)
+  original item: "Heart Piece #23"
+  type: Beedle's Airshop, Beedle's Airshop (Expensive)
   hint:
     always: Option "full-wallet-upgrades" Disabled
     sometimes: Nothing
@@ -323,27 +323,27 @@ Beedle's Shop - 1600 Rupee Item:
   text: for <g+<1600 rupees>> <r<Beedle>> sells
 Beedle's Shop - First 100 Rupee Item:
   original item: "Extra Wallet #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Airshop, Beedle's Airshop (Cheap)
   Paths:
     - ShpSmpl/24
 Beedle's Shop - Second 100 Rupee Item:
   original item: "Extra Wallet #1"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Airshop, Beedle's Airshop (Cheap)
   Paths:
     - ShpSmpl/17
 Beedle's Shop - Third 100 Rupee Item:
   original item: "Extra Wallet #2"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Airshop, Beedle's Airshop (Cheap)
   Paths:
     - ShpSmpl/18
 Beedle's Shop - 50 Rupee Item:
   original item: "Progressive Bug Net #0"
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Cheap)
+  type: Beedle's Airshop, Beedle's Airshop (Cheap)
   Paths:
     - ShpSmpl/25
 Beedle's Shop - 1000 Rupee Item:
   original item: Bug Medal
-  type: Beedle's Shop Purchases, Beedle's Shop Purchase (Medium)
+  type: Beedle's Airshop, Beedle's Airshop (Medium)
   Paths:
     - ShpSmpl/27
 
@@ -407,7 +407,7 @@ Sky - Lumpy Pumpkin - Chandelier:
   text: <r<angering a bartender>> dislodges
 Sky - Lumpy Pumpkin - Harp Minigame:
   original item: Heart Piece
-  type: Minigames
+  type: Minigames, Long Sidequests
   Paths:
     - event/117-Pumpkin/305
     - oarc/F011r/l0
@@ -415,7 +415,7 @@ Sky - Lumpy Pumpkin - Harp Minigame:
   text: the <r<bartender>> holds
 Sky - Kina's Crystals:
   original item: Gratitude Crystal Pack
-  type: Scrapper Deliveries, Gratitude Crystal Sidequests
+  type: Scrapper Deliveries, Gratitude Crystal Sidequests, Long Sidequests
   Paths:
     - event/117-Pumpkin/386
     - oarc/F020/l0
@@ -423,28 +423,28 @@ Sky - Kina's Crystals:
   text: <r<delivering a mogma to the sky>> is rewarded with
 Sky - Orielle's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitude Crystal Sidequests
+  type: Gratitude Crystal Sidequests, Short Sidequests
   Paths:
     - event/115-Town2/225
     - oarc/F020/l0
   text: saving a <r<sick loftwing>> is rewarded with
 Sky - Beedle's Crystals:
   original item: Gratitude Crystal Pack
-  type: Gratitude Crystal Sidequests
+  type: Gratitude Crystal Sidequests, Short Sidequests
   Paths:
     - event/105-Terry/115
     - oarc/F020/l0
   text: <r<reuniting two Beedles>> is rewarded with
 Sky - Dodoh's Crystals:
   original item: Gratitude Crystal Pack
-  type: Scrapper Deliveries
+  type: Scrapper Deliveries, Gratitude Crystal Sidequests, Long Sidequests
   Paths:
     - event/110-DivingGame/60
     - oarc/F020/l0
   text: delivering a <r<colorful wheel>> is rewarded with
 Sky - Fun Fun Island Minigame -- 500 Rupees:
   original item: Heart Piece
-  type: Minigames, Scrapper Deliveries
+  type: Minigames, Scrapper Deliveries, Long Sidequests
   Paths:
     - event/110-DivingGame/19
     - oarc/F020/l2
@@ -464,25 +464,25 @@ Sky - Chest in Breakable Boulder near Lumpy Pumpkin:
 ## Goddess Chests
 Sky - Bamboo Island Goddess Chest:
   original item: Gold Rupee
-  type: goddess, Eldin Volcano Goddess Chests
+  type: Goddess Chests, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/82
   cube_region: Eldin Volcano
 Sky - Goddess Chest on Island next to Bamboo Island:
   original item: Silver Rupee
-  type: goddess, Eldin Volcano Goddess Chests
+  type: Goddess Chests, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/71
   cube_region: Eldin Volcano
 Sky - Goddess Chest in Cave on Island next to Bamboo Island:
   original item: Heart Medal
-  type: goddess, Lanayru Desert Goddess Chests
+  type: Goddess Chests, Lanayru Desert Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/83
   cube_region: Lanayru Desert
 Sky - Beedle's Island Goddess Chest:
   original item: Heart Piece
-  type: goddess, Lanayru Desert Goddess Chests, Combat
+  type: Goddess Chests, Lanayru Desert Goddess Chests, Combat
   Paths:
     - stage/F020/r0/l0/TBox/89
   hint: always
@@ -490,73 +490,73 @@ Sky - Beedle's Island Goddess Chest:
   cube_region: Lanayru Desert
 Sky - Beedle's Island Cage Goddess Chest:
   original item: Rupee Medal
-  type: goddess, Faron Woods Goddess Chests
+  type: Goddess Chests, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/81
   cube_region: Faron Woods
 Sky - Northeast Island Goddess Chest behind Bombable Rocks:
   original item: Silver Rupee
-  type: goddess, Lanayru Desert Goddess Chests
+  type: Goddess Chests, Lanayru Desert Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/72
   cube_region: Lanayru Mine
 Sky - Northeast Island Cage Goddess Chest:
   original item: Treasure Medal
-  type: goddess, Eldin Volcano Goddess Chests
+  type: Goddess Chests, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/74
   cube_region: Eldin Volcano
 Sky - Lumpy Pumpkin - Goddess Chest on the Roof:
   original item: Gold Rupee
-  type: goddess, Faron Woods Goddess Chests
+  type: Goddess Chests, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/87
   cube_region: Skyview
 Sky - Lumpy Pumpkin - Outside Goddess Chest:
   original item: Progressive Pouch
-  type: goddess, Faron Woods Goddess Chests
+  type: Goddess Chests, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/64
   cube_region: Faron Woods
 Sky - Goddess Chest on Island Closest to Faron Pillar:
   original item: Heart Piece
-  type: goddess, Faron Woods Goddess Chests
+  type: Goddess Chests, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/65
   cube_region: Faron Woods
 Sky - Goddess Chest outside Volcanic Island:
   original item: Heart Medal
-  type: goddess, Lanayru Desert Goddess Chests
+  type: Goddess Chests, Lanayru Desert Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/67
   cube_region: Lanayru Desert
 Sky - Goddess Chest inside Volcanic Island:
   original item: Heart Piece
-  type: goddess, Faron Woods Goddess Chests
+  type: Goddess Chests, Faron Woods Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/68
   cube_region: Faron Woods
 Sky - Goddess Chest under Fun Fun Island:
   original item: Gold Rupee
-  type: goddess, Lake Floria Goddess Chests
+  type: Goddess Chests, Lake Floria Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/86
   cube_region: Lake Floria
 Sky - Southwest Triple Island Upper Goddess Chest:
   original item: Small Seed Satchel
-  type: goddess, Eldin Volcano Goddess Chests
+  type: Goddess Chests, Eldin Volcano Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/66
   cube_region: Eldin Volcano
 Sky - Southwest Triple Island Lower Goddess Chest:
   original item: Life Medal
-  type: goddess, Lanayru Desert Goddess Chests
+  type: Goddess Chests, Lanayru Desert Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/84
   cube_region: Lanayru Desert
 Sky - Southwest Triple Island Cage Goddess Chest:
   original item: Potion Medal
-  type: goddess, Sand Sea Goddess Chests
+  type: Goddess Chests, Sand Sea Goddess Chests
   Paths:
     - stage/F020/r0/l0/TBox/75
   cube_region: Lanayru Sand Sea
@@ -605,37 +605,37 @@ Thunderhead - East Island Chest:
 ## Goddess Cubes
 Thunderhead - East Island Goddess Chest:
   original item: Rupee Medal
-  type: goddess, Faron Woods Goddess Chests
+  type: Goddess Chests, Faron Woods Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/73
   cube_region: Faron Woods
 Thunderhead - Goddess Chest on top of Isle of Songs:
   original item: Small Bomb Bag
-  type: goddess, Volcano Summit Goddess Chests
+  type: Goddess Chests, Volcano Summit Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/85
   cube_region: Volcano Summit
 Thunderhead - Goddess Chest outside Isle of Songs:
   original item: Gold Rupee
-  type: goddess, Eldin Volcano Goddess Chests
+  type: Goddess Chests, Eldin Volcano Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/92
   cube_region: Mogma Turf
 Thunderhead - First Goddess Chest on Mogma Mitts Island:
   original item: Bottle
-  type: goddess, Volcano Summit Goddess Chests
+  type: Goddess Chests, Volcano Summit Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/77
   cube_region: Volcano Summit
 Thunderhead - Second Goddess Chest on Mogma Mitts Island:
   original item: Small Quiver
-  type: goddess, Sand Sea Goddess Chests
+  type: Goddess Chests, Sand Sea Goddess Chests
   Paths:
    - stage/F023/r0/l0/TBox/76
   cube_region: Lanayru Gorge
 Thunderhead - Bug Heaven Goddess Chest:
   original item: Heart Piece
-  type: goddess, Volcano Summit Goddess Chests
+  type: Goddess Chests, Volcano Summit Goddess Chests
   Paths:
     - stage/F023/r0/l0/TBox/88
   cube_region: Volcano Summit
@@ -1855,53 +1855,53 @@ Skyloft Silent Realm - Trial Reward:
   text: the <r<goddess's final trial>> grants
 Skyloft Silent Realm - Relic 1:
   original item: "Dusk Relic #1"
-  type: skyloft, silent realm
+  type: skyloft
   Paths:
     # fake object name to handle them better
     - stage/S000/r0/l2/Relic/103
 Skyloft Silent Realm - Relic 2:
   original item: "Dusk Relic #2"
-  type: skyloft, silent realm
+  type: skyloft, Silent Realms
   Paths:
     - stage/S000/r0/l2/Relic/104
 Skyloft Silent Realm - Relic 3:
   original item: "Dusk Relic #3"
-  type: skyloft, silent realm
+  type: skyloft, Silent Realms
   Paths:
     - stage/S000/r0/l2/Relic/105
 Skyloft Silent Realm - Relic 4:
   original item: "Dusk Relic #4"
-  type: skyloft, silent realm
+  type: skyloft, Silent Realms
   Paths:
     - stage/S000/r0/l2/Relic/106
 Skyloft Silent Realm - Relic 5:
   original item: "Dusk Relic #5"
-  type: skyloft, silent realm
+  type: skyloft, Silent Realms
   Paths:
     - stage/S000/r0/l2/Relic/107
 Skyloft Silent Realm - Relic 6:
   original item: "Dusk Relic #6"
-  type: skyloft, silent realm
+  type: skyloft, Silent Realms
   Paths:
     - stage/S000/r0/l2/Relic/108
 Skyloft Silent Realm - Relic 7:
   original item: "Dusk Relic #7"
-  type: skyloft, silent realm
+  type: skyloft, Silent Realms
   Paths:
     - stage/S000/r0/l2/Relic/109
 Skyloft Silent Realm - Relic 8:
   original item: "Dusk Relic #8"
-  type: skyloft, silent realm
+  type: skyloft, Silent Realms
   Paths:
     - stage/S000/r0/l2/Relic/110
 Skyloft Silent Realm - Relic 9:
   original item: "Dusk Relic #9"
-  type: skyloft, silent realm
+  type: skyloft, Silent Realms
   Paths:
     - stage/S000/r0/l2/Relic/111
 Skyloft Silent Realm - Relic 10:
   original item: "Dusk Relic #10"
-  type: skyloft, silent realm
+  type: skyloft, Silent Realms
   Paths:
     - stage/S000/r0/l2/Relic/112
 
@@ -1914,52 +1914,52 @@ Faron Silent Realm - Trial Reward:
   text: a <r<trial of courage>> grants
 Faron Silent Realm - Relic 1:
   original item: "Dusk Relic #11"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/103
 Faron Silent Realm - Relic 2:
   original item: "Dusk Relic #12"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/104
 Faron Silent Realm - Relic 3:
   original item: "Dusk Relic #13"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/105
 Faron Silent Realm - Relic 4:
   original item: "Dusk Relic #14"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/106
 Faron Silent Realm - Relic 5:
   original item: "Dusk Relic #15"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/107
 Faron Silent Realm - Relic 6:
   original item: "Dusk Relic #16"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/108
 Faron Silent Realm - Relic 7:
   original item: "Dusk Relic #17"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/109
 Faron Silent Realm - Relic 8:
   original item: "Dusk Relic #18"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/110
 Faron Silent Realm - Relic 9:
   original item: "Dusk Relic #19"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/111
 Faron Silent Realm - Relic 10:
   original item: "Dusk Relic #20"
-  type: faron, silent realm
+  type: faron, Silent Realms
   Paths:
     - stage/S100/r0/l2/Relic/112
 
@@ -1972,52 +1972,52 @@ Lanayru Silent Realm - Trial Reward:
   text: a <r<trial of wisdom>> grants
 Lanayru Silent Realm - Relic 1:
   original item: "Dusk Relic #21"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/103
 Lanayru Silent Realm - Relic 2:
   original item: "Dusk Relic #22"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/104
 Lanayru Silent Realm - Relic 3:
   original item: "Dusk Relic #23"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/105
 Lanayru Silent Realm - Relic 4:
   original item: "Dusk Relic #24"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/106
 Lanayru Silent Realm - Relic 5:
   original item: "Dusk Relic #25"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/107
 Lanayru Silent Realm - Relic 6:
   original item: "Dusk Relic #26"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/108
 Lanayru Silent Realm - Relic 7:
   original item: "Dusk Relic #27"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/109
 Lanayru Silent Realm - Relic 8:
   original item: "Dusk Relic #28"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/110
 Lanayru Silent Realm - Relic 9:
   original item: "Dusk Relic #29"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/111
 Lanayru Silent Realm - Relic 10:
   original item: "Dusk Relic #30"
-  type: lanayru, silent realm
+  type: lanayru, Silent Realms
   Paths:
     - stage/S300/r0/l2/Relic/112
 
@@ -2030,51 +2030,51 @@ Eldin Silent Realm - Trial Reward:
   text: a <r<trial of power>> grants
 Eldin Silent Realm - Relic 1:
   original item: "Dusk Relic #31"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/103
 Eldin Silent Realm - Relic 2:
   original item: "Dusk Relic #32"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/104
 Eldin Silent Realm - Relic 3:
   original item: "Dusk Relic #33"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/105
 Eldin Silent Realm - Relic 4:
   original item: "Dusk Relic #34"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/106
 Eldin Silent Realm - Relic 5:
   original item: "Dusk Relic #35"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/107
 Eldin Silent Realm - Relic 6:
   original item: "Dusk Relic #36"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/108
 Eldin Silent Realm - Relic 7:
   original item: "Dusk Relic #37"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/109
 Eldin Silent Realm - Relic 8:
   original item: "Dusk Relic #38"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/110
 Eldin Silent Realm - Relic 9:
   original item: "Dusk Relic #39"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/111
 Eldin Silent Realm - Relic 10:
   original item: "Dusk Relic #40"
-  type: eldin, silent realm
+  type: eldin, Silent Realms
   Paths:
     - stage/S200/r0/l2/Relic/112

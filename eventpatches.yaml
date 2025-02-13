@@ -865,7 +865,8 @@
   - name : Fi Objective Triforce Text
     type: textadd
     unk1: 2
-    text: "You will also need to gather the\nthree pieces of the <y+<Triforce>> to\nexit the <b<Temple of Hylia>> in the\npast."
+    text: "You will also need to gather the\nthree pieces of the <y+<Triforce>> to\nexit the <b<Temple of Hylia>> in the\npast.
+    \nThe <y+<Triforce>> can be obtained by\n{triforce_shuffle}."
   - name: Display Fi Objective Triforce Text
     type: flowadd
     flow: 

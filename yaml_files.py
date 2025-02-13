@@ -54,6 +54,20 @@ glitchless_requirements_file = (
 glitchless_requirements = yaml_load(glitchless_requirements_file)
 
 
+def random_settings_weighting(weighting):
+    weighting_file = RANDO_ROOT_PATH / "rs_weightings" / f"{weighting}.yaml"
+
+    if not weighting_file.is_file():
+        weighting_file = (
+            RANDO_ROOT_PATH / "rs_weightings" / "random.yaml"
+        )  # Invalid weighting - randomizer will use random weighting
+        print(
+            f"Could not find weighting file for '{weighting}'. Randomizer will use random weighting"
+        )
+
+    return yaml_load(weighting_file)
+
+
 def requirements_gen(folder: Path):
     files = sorted(os.listdir(folder))
     files = filter(lambda s: s[0].isupper() and s.endswith(".yaml"), files)
