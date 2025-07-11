@@ -575,9 +575,17 @@
   ui: option_sword_dungeon_reward
 - name: Open Earth Temple
   command: open-et
-  type: boolean
-  default: false
-  help: "If enabled, the Earth Temple door (requiring 5 key pieces to unlock) is opened at the start of the game."
+  type: singlechoice
+  bits: 2
+  choices:
+    - Open
+    - Shuffled (Eldin Volcano)
+    - Shuffled (Anywhere)
+  default: Shuffled (Anywhere)
+  help: "Determines how to place the pieces of the key opening the dungeon entrance in Eldin Volcano.
+        **Open**: The Earth Temple door is opened at the start of the game and Key Pieces are removed from the item pool.
+        **Shuffled (Eldin Volcano)**: The five Key Pieces will be shuffled in Eldin Volcano.
+        **Shuffled (Anywhere)**: The five Key Pieces will be shuffled anywhere in the world."
   ui: option_open_et
 - name: Demise Count
   command: demise-count

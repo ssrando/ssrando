@@ -707,11 +707,18 @@
               </layout>
              </item>
              <item>
-              <widget class="QCheckBox" name="option_open_et">
-               <property name="text">
-                <string>Open Earth Temple</string>
-               </property>
-              </widget>
+              <layout class="QVBoxLayout" name="vlay_open_et">
+               <item>
+                <widget class="QLabel" name="label_for_option_open_et">
+                 <property name="text">
+                  <string>Open Earth Temple</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="option_open_et"/>
+               </item>
+              </layout>
              </item>
              <item>
               <layout class="QVBoxLayout" name="vlay_open_lmf">
