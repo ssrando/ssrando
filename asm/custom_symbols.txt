@@ -16,29 +16,36 @@ main.dol:
   check_scrapper_repaired: 0x8067867C
   storyflag_set_to_1: 0x8067868C
   process_startflags: 0x806786BC
-  handle_bk_map_dungeonflag: 0x806788F0
-  rando_text_command_handler: 0x8067899C
-  textbox_a_pressed_or_b_held: 0x80678CCC
-  set_goddess_sword_pulled_scene_flag: 0x80678D0C
-  randomize_boss_key_start_pos: 0x80678D38
-  get_item_arc_name: 0x80678D64
-  get_item_model_name_ptr: 0x80678DA8
-  enforce_loftwing_speed_cap: 0x80678DE4
-  give_item_with_sceneflag: 0x80678EDC
-  get_start_info: 0x80678F6C
-  send_to_start: 0x80678F78
-  do_er_fixes: 0x80679000
-  allow_set_respawn_info: 0x80679314
-  get_glow_color: 0x8067933C
-  game_update_hook: 0x80679398
-  has_upgraded_skyward_strike: 0x806793A0
-  has_fast_air_meter_drain: 0x806793B0
-  has_heart_drops_enabled: 0x806793C0
-  add_ammo_drops: 0x806793D0
-  drop_nothing: 0x806794B8
-  get_tablet_keyframe_count: 0x806794F8
-  FORCE_MOGMA_CAVE_DIVE: 0x80679656
-  HERO_MODE_OPTIONS: 0x80679657
+  handle_bk_map_dungeonflag: 0x806788F4
+  rando_text_command_handler: 0x806789A0
+  textbox_a_pressed_or_b_held: 0x80678CD0
+  set_goddess_sword_pulled_scene_flag: 0x80678D10
+  randomize_boss_key_start_pos: 0x80678D3C
+  get_item_arc_name: 0x80678D68
+  get_item_model_name_ptr: 0x80678DAC
+  enforce_loftwing_speed_cap: 0x80678DE8
+  give_item_with_sceneflag: 0x80678EE0
+  get_start_info: 0x80678F70
+  send_to_start: 0x80678F7C
+  do_er_fixes: 0x80679004
+  allow_set_respawn_info: 0x80679318
+  get_glow_color: 0x80679340
+  game_update_hook: 0x8067939C
+  has_upgraded_skyward_strike: 0x806793A4
+  has_fast_air_meter_drain: 0x806793B4
+  has_heart_drops_enabled: 0x806793C4
+  add_ammo_drops: 0x806793D4
+  drop_nothing: 0x806794BC
+  get_tablet_keyframe_count: 0x806794FC
+  after_item_collection_hook: 0x8067955C
+  check_and_open_trial_gates: 0x806795EC
+  memcmp: 0x80679864
+  compiler_builtins::mem::memcmp: 0x80679884
+  compiler_builtins::mem::strlen: 0x806798C0
+  strlen: 0x806798F0
+  FORCE_MOGMA_CAVE_DIVE: 0x80679A49
+  HERO_MODE_OPTIONS: 0x80679A4A
+  SKIP_HARP_PLAYING: 0x80679A4B
 d_t_D3_scene_changeNP.rel:
   trigger_exit_one: 0x804
   trigger_exit_one_lbl: 0x340

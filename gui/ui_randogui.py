@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1202, 759)
+        MainWindow.resize(1202, 772)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -779,6 +779,11 @@ class Ui_MainWindow(object):
         self.option_ammo_availability.setObjectName(u"option_ammo_availability")
 
         self.vlay_convenience_tweaks.addWidget(self.option_ammo_availability)
+
+        self.option_skip_harp_playing = QCheckBox(self.box_convenience_tweaks)
+        self.option_skip_harp_playing.setObjectName(u"option_skip_harp_playing")
+
+        self.vlay_convenience_tweaks.addWidget(self.option_skip_harp_playing)
 
         self.vspace_convenience_tweaks = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -1673,7 +1678,7 @@ class Ui_MainWindow(object):
         self.scroll_area_colors.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.scroll_area_widget_contents_colors = QWidget()
         self.scroll_area_widget_contents_colors.setObjectName(u"scroll_area_widget_contents_colors")
-        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 577, 471))
+        self.scroll_area_widget_contents_colors.setGeometry(QRect(0, 0, 576, 485))
         self.verticalLayout_34 = QVBoxLayout(self.scroll_area_widget_contents_colors)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.vlay_texture_colors = QVBoxLayout()
@@ -1964,7 +1969,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(7)
+        self.tabWidget.setCurrentIndex(2)
         self.option_triforce_shuffle.setCurrentIndex(-1)
         self.option_randomize_entrances.setCurrentIndex(-1)
         self.option_chest_dowsing.setCurrentIndex(-1)
@@ -2054,6 +2059,7 @@ class Ui_MainWindow(object):
         self.option_fill_dowsing_on_white_sword.setText(QCoreApplication.translate("MainWindow", u"Fill Dowsing on White Sword", None))
         self.option_full_wallet_upgrades.setText(QCoreApplication.translate("MainWindow", u"Full Wallet Upgrades", None))
         self.label_for_option_ammo_availability.setText(QCoreApplication.translate("MainWindow", u"Ammo Availability", None))
+        self.option_skip_harp_playing.setText(QCoreApplication.translate("MainWindow", u"Skip Harp Playing", None))
         self.box_vanilla_tweaks.setTitle(QCoreApplication.translate("MainWindow", u"Vanilla Tweaks", None))
         self.label_for_option_bit_patches.setText(QCoreApplication.translate("MainWindow", u"BiT Patches", None))
         self.label_for_option_peatrice_conversations.setText(QCoreApplication.translate("MainWindow", u"Peatrice Conversations", None))

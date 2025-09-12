@@ -1042,6 +1042,14 @@
   bits: 3
   help: "How many times you need to talk to Peatrice before she calls you \"darling\" and you can start Peater's quest."
   ui: option_peatrice_conversations
+- name: Skip Harp Playing
+  command: skip-harp-playing
+  type: boolean
+  default: false
+  help: "If enabled, trial gates will automatically open up when both the harp and associated song have been collected.
+         If a trial gate opens up while you're on the stage it resides in, it may be invisible until you reload the map.
+         However it will still be accessible despite being invisible."
+  ui: option_skip_harp_playing
 # Player customisation stuff
 - name: Selected Player Model Pack
   command: selected-player-model-pack

@@ -1565,6 +1565,7 @@ class GamePatcher:
         self.add_asm_patch("ss_necessary")
         self.add_asm_patch("custom_items")
         self.add_asm_patch("post_boko_base_platforms")
+        self.add_asm_patch("post_item_collection")
         if self.placement_file.options["shopsanity"]:
             self.add_asm_patch("shopsanity")
         self.add_asm_patch("gossip_stone_hints")
@@ -3604,6 +3605,14 @@ class GamePatcher:
             self.custom_symbols["main.dol"]["HERO_MODE_OPTIONS"],
             fine_grained_hero_mode_options,
         )
+
+        # Skip Harp Playing
+        if self.placement_file.options["skip-harp-playing"]:
+            dol.write_data(
+                write_u8,
+                self.custom_symbols["main.dol"]["SKIP_HARP_PLAYING"],
+                1,
+            )
 
         dol.save_changes()
         write_bytes_create_dirs(
