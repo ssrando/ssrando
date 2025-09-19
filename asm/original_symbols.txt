@@ -117,7 +117,6 @@ main.dol:
     getGratitudeCrystalCount: 0x80252710
     processSpecialItemDropIndex: 0x800c7bb0
     spawnDrop: 0x80248c90
-    setItemFlag: 0x80251e40
     # ----------------- TEXT ----------------------------------
     CharWriter__SetupGX: 0x8042db90
     CharWriter__GetFontWidth: 0x8042e610
