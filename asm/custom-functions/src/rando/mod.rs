@@ -4,7 +4,7 @@
 // add `#[no_mangle]` and add a .global *symbolname* to custom_funcs.asm
 
 use core::{
-    ffi::{c_char, c_int, c_ushort, c_void, CStr},
+    ffi::{c_char, c_int, c_ushort, c_void},
     ptr, slice,
 };
 
@@ -130,9 +130,6 @@ extern "C" fn process_startflags() {
     // Commit global flag managers.
     ItemflagManager::do_commit();
     StoryflagManager::do_commit();
-
-    // Check and open trial gates incase we started with Harp and any of the songs
-    check_and_open_trial_gates();
 
     unsafe { (*file_manager::get_ptr()).anticommit_flag = 0 };
 }
@@ -636,140 +633,4 @@ extern "C" fn get_tablet_keyframe_count() -> c_int {
         | ((ItemflagManager::check(TABLET_IDS[2]) as usize) << 2);
 
     TABLET_BITMAP_TO_KEYFRAME[item_bitmap & 0x7] as i32
-}
-
-#[link_section = "data"]
-#[no_mangle]
-static mut SKIP_HARP_PLAYING: u8 = 0;
-
-extern "C" {
-    static SCENEFLAG_MANAGER: *mut SceneflagManager;
-}
-
-#[no_mangle]
-pub fn after_item_collection_hook(itemid: Itemflag) {
-    item::set_item_flag(itemid); // Replaced code
-    ItemflagManager::do_commit();
-
-    // Check for opening trial gates if we collected any items that can open trial
-    // gates
-    let relevant_items = [
-        Itemflag::GODDESS_HARP,
-        Itemflag::FARORE_COURAGE,
-        Itemflag::NAYRU_WISDOM,
-        Itemflag::DIN_POWER,
-        Itemflag::FARON_SONG_OF_THE_HERO_PART,
-        Itemflag::ELDIN_SONG_OF_THE_HERO_PART,
-        Itemflag::LANAYRU_SONG_OF_THE_HERO_PART,
-        Itemflag::SONG_OF_THE_HERO,
-    ];
-    if relevant_items.iter().any(|&item| item == itemid) {
-        check_and_open_trial_gates();
-    }
-}
-
-#[no_mangle]
-pub fn check_and_open_trial_gates() {
-    // Return early if we aren't skipping harp playing
-    if unsafe { SKIP_HARP_PLAYING } == 0 {
-        return;
-    }
-
-    let mut try_to_open_trial_gate = false;
-    // If we have the Goddess Harp and the appropriate song, set
-    // the scene flag for the trial gate being open. If we're in
-    // the scene index where the trial is, set the flag locally
-    // and then try to find the trial gate actor and open it.
-    if ItemflagManager::check(Itemflag::GODDESS_HARP as u16) {
-        if ItemflagManager::check(Itemflag::FARORE_COURAGE as u16) {
-            if unsafe { (*SCENEFLAG_MANAGER).scene_index } == 1 {
-                SceneflagManager::set_local(17);
-                try_to_open_trial_gate = true;
-            } else {
-                SceneflagManager::set_global(1, 17);
-            }
-        }
-        if ItemflagManager::check(Itemflag::NAYRU_WISDOM as u16) {
-            if unsafe { (*SCENEFLAG_MANAGER).scene_index } == 7 {
-                SceneflagManager::set_local(91);
-                try_to_open_trial_gate = true;
-            } else {
-                SceneflagManager::set_global(7, 91);
-            }
-        }
-        if ItemflagManager::check(Itemflag::DIN_POWER as u16) {
-            if unsafe { (*SCENEFLAG_MANAGER).scene_index } == 4 {
-                SceneflagManager::set_local(70);
-                try_to_open_trial_gate = true;
-            } else {
-                SceneflagManager::set_global(4, 70);
-            }
-        }
-        if ItemflagManager::check(Itemflag::SONG_OF_THE_HERO as u16)
-            || (ItemflagManager::check(Itemflag::FARON_SONG_OF_THE_HERO_PART as u16)
-                && ItemflagManager::check(Itemflag::ELDIN_SONG_OF_THE_HERO_PART as u16)
-                && ItemflagManager::check(Itemflag::LANAYRU_SONG_OF_THE_HERO_PART as u16))
-        {
-            // Don't set a local flag on the title screen
-            if unsafe { (*SCENEFLAG_MANAGER).scene_index } == 0
-                && reloader::get_spawn_slave().layer != 28
-            {
-                SceneflagManager::set_local(69);
-                try_to_open_trial_gate = true;
-            } else {
-                SceneflagManager::set_global(0, 69);
-            }
-        }
-    }
-
-    // Open the trial gate if we're potentially on the same stage as the one that
-    // we're opening
-    if try_to_open_trial_gate {
-        // Try to find the trial gate actor
-        let trial_gate_actor =
-            actor::find_actor_by_type(actor::ActorID::OBJ_WARP as i32, core::ptr::null())
-                as *mut actor::dAcOWarp;
-
-        // If it exists, change it's state to open
-        if !trial_gate_actor.is_null() {
-            unsafe {
-                // Get the current state
-                let mut current_state = (*trial_gate_actor).state_mgr.current_state;
-
-                // All the potential states are sequential in memory (with some other unknown
-                // data in between each one). Loop through the states until we
-                // find the one for the gate being open. We can't use a raw
-                // address for the actor state because the actor states are stored in the rel.
-                while CStr::from_ptr((*current_state).name) != cstr!("dAcOWarp_c::StateID_GateOpen")
-                {
-                    // Get the raw pointer to the current state. We have to cast to an integer and
-                    // then add 0x40 since there's other (consistently sized)
-                    // data between the actor states. Normal pointer arithmetic
-                    // would add a multiple of the size of the actor state which we don't want
-                    let mut state_addr = current_state as i32;
-
-                    // If we're at the end of the list (State_GateClear), loop back around to the
-                    // beginning
-                    if CStr::from_ptr((*current_state).name)
-                        == cstr!("dAcOWarp_c::StateID_GateClear")
-                    {
-                        state_addr -= 0x180;
-                    // Otherwise add the distance between this actor state
-                    // pointer and then next one
-                    } else {
-                        state_addr += 0x40;
-                    }
-
-                    // Convert the address back to the pointer
-                    current_state = state_addr as *mut actor::ActorState;
-                }
-
-                // Once we've found the GateOpen state, pass it to the change_state function
-                ((*(*trial_gate_actor).state_mgr.vtable).change_state)(
-                    &mut (*trial_gate_actor).state_mgr as *mut actor::ActorStateManager,
-                    current_state,
-                );
-            }
-        }
-    }
 }

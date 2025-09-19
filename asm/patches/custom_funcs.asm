@@ -421,6 +421,46 @@ lhz r4, 0xaa(r3)
 lwz r3, STORYFLAG_MANAGER@sda21(r13)
 b FlagManager__setFlagTo1 ; set storyflag for completing trial
 
+; Section to check if we should open the current trial gate.
+; This will only be reached if the skip harp playing option is on
+.global check_and_open_trial_gate
+check_and_open_trial_gate:
+; Check if current layer is 0x1c (title screen skyloft).
+; If it is, then don't try to open the gate.
+lis r3, SPAWN_SLAVE@ha
+addi r3, r3, SPAWN_SLAVE@l
+lbz r0, 0x23(r3) ; current layer
+cmplwi r0, 0x1c
+beq gate_wait_cleanup_start
+; Check if we have the song associated with this trial.
+; If we don't, then don't try to open the gate.
+lbz r4, 0xc7e(r28) ; mTrialIndex
+mr r3, r28
+bl AcOWarp__checkHasSongItem
+cmpwi r3, 0x0
+beq gate_wait_cleanup_start
+; Check to see if we have the Harp.
+; If we don't, then don't try to open the gate.
+li r3, 0x10 ; item id for Goddess's Harp
+bl AcItem__checkItemFlag
+cmpwi r3, 0x0
+beq gate_wait_cleanup_start
+; Globally set the scene flag associated with this trial gate.
+; This is necessary since the initializeState_GateOpen function immediately checks
+; to see if the flag is set to make the open gate properly visible. Setting the flag
+; locally won't commit it quickly enough for that check to pass.
+lwz r3, SCENEFLAG_MANAGER@sda21(r13)
+lhz r4, 0x26(r3)   ; current scene
+lbz r5, 0xc68(r28) ; mTrigSceneFlagId
+bl SceneflagManager__setFlagGlobal
+; jump to already existing code which opens the trial gate
+b lbl_state_gate_wait_to_open_gate 
+
+.global gate_wait_cleanup_start
+gate_wait_cleanup_start:
+lwz r0, 0x24(r1) ; instruction that we originally replaced to jump to check_and_open_trial_gate with
+b lbl_state_gate_wait_cleanup ; jump back to the rest of the original function's cleanup
+
 .close
 
 .open "d_a_obj_time_stoneNP.rel"

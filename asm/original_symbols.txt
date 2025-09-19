@@ -171,3 +171,7 @@ d_a_shop_sampleNP.rel:
     SHOP_ITEMS: 0x6D8C
 d_a_obj_time_boatNP.rel:
     AcOTimeBoat__checkActivatedStoryflag: 0x3D70
+d_a_obj_warpNP.rel:
+    lbl_state_gate_wait_to_open_gate: 0x27F0
+    lbl_state_gate_wait_cleanup: 0x281C
+    AcOWarp__checkHasSongItem: 0x42E0

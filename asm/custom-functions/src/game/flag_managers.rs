@@ -24,12 +24,7 @@ pub struct StoryflagManager {
 }
 #[repr(C)]
 pub struct SceneflagManager {
-    sceneflags:      FlagSpace,
-    tempflags:       FlagSpace,
-    zoneflags:       FlagSpace,
-    m_flag_helper:   u8,
-    unk1:            u8,
-    pub scene_index: u8,
+    sceneflags: FlagSpace,
 }
 #[repr(C)]
 pub struct ItemflagManager {
@@ -49,7 +44,6 @@ extern "C" {
     static mut STATIC_STORYFLAGS: [c_ushort; 0x80];
     static mut STATIC_ITEMFLAGS: [c_ushort; 0x40];
     static mut STATIC_DUNGEON_FLAGS: [c_ushort; 8usize];
-    fn SceneflagManager__setFlag(mgr: *mut SceneflagManager, roomid: u16, flag: u16);
     fn SceneflagManager__setFlagGlobal(mgr: *mut SceneflagManager, scene_index: u16, flag: u16);
     fn SceneflagManager__unsetFlagGlobal(mgr: *mut SceneflagManager, scene_index: u16, flag: u16);
     fn SceneflagManager__checkFlagGlobal(
@@ -102,9 +96,6 @@ impl ItemflagManager {
 }
 
 impl SceneflagManager {
-    pub fn set_local(flag: u16) {
-        unsafe { SceneflagManager__setFlag(SCENEFLAG_MANAGER, 0, flag) }
-    }
     pub fn check_global(scn_idx: u16, flag: u16) -> bool {
         unsafe { SceneflagManager__checkFlagGlobal(SCENEFLAG_MANAGER, scn_idx, flag) }
     }

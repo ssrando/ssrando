@@ -27,7 +27,6 @@ extern "C" {
         unk: u32,
     ) -> *mut c_void;
     pub fn spawnDrop(itemid: Itemflag, roomid: u32, pos: *mut Vec3f, rot: *mut Vec3s);
-    pub fn setItemFlag(itemid: Itemflag);
 }
 
 pub fn get_bottle_pouch_slot() -> u32 {
@@ -75,8 +74,4 @@ pub fn setup_item_params(
 
 pub fn set_flag_for_item(itemflag: u16) {
     unsafe { AcItem__setFlagForItem(itemflag) };
-}
-
-pub fn set_item_flag(itemid: Itemflag) {
-    unsafe { setItemFlag(itemid) };
 }

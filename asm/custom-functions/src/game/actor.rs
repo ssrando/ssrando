@@ -1,4 +1,4 @@
-use core::ffi::{c_char, c_void};
+use core::ffi::c_void;
 
 // This is also known as Profile name for decomp purposes
 #[allow(non_camel_case_types)]
@@ -709,48 +709,6 @@ pub enum ActorID {
     LAST,                          // 702 (0x2BE)
     NUMBER_OF_ACTORS,              // 703
     INVALID,
-}
-
-#[repr(C, packed(1))]
-#[derive(Copy, Clone)]
-pub struct ActorState {
-    pub vtable: u32,
-    pub name:   *mut c_char,
-    pub number: i32,
-    // ..
-}
-
-#[repr(C, packed(1))]
-#[derive(Copy, Clone)]
-pub struct ActorStateManager__vtable {
-    pub _0:               u32,
-    pub _1:               u32,
-    pub dtor:             extern "C" fn(),
-    pub initialize_state: extern "C" fn(),
-    pub execute_state:    extern "C" fn(),
-    pub finalize_state:   extern "C" fn(),
-    pub change_state:     extern "C" fn(*mut ActorStateManager, *mut ActorState),
-    // ..
-}
-
-#[repr(C, packed(1))]
-#[derive(Copy, Clone)]
-pub struct ActorStateManager {
-    pub vtable:         *mut ActorStateManager__vtable,
-    pub checker:        u32, // StateChecker
-    pub factory:        u32, // StateFactory
-    pub do_state_funcs: u32,
-    pub base:           u32,
-    pub current_state:  *mut ActorState,
-    // ..
-}
-
-#[repr(C, packed(1))]
-#[derive(Copy, Clone)]
-pub struct dAcOWarp {
-    _0:            [u8; 0xA20],
-    pub state_mgr: ActorStateManager,
-    // ..
 }
 
 extern "C" {
