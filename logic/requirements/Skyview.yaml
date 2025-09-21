@@ -162,7 +162,7 @@ Boss Room:
     Exit to Dungeon: Beat Ghirahim
     Exit to Spring: Beat Ghirahim
   locations:
-    Beat Ghirahim: Sword
+    Beat Ghirahim: Sword & Shield # for beginner friendliness
     Heart Container: Beat Ghirahim
 
 Spring:

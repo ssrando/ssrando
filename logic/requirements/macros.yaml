@@ -119,6 +119,14 @@ Empty Bottle_ : $ Empty Bottle x 1
 Bottle:
   Pouch & Skyloft - Item Check Access & Empty Bottle_
 
+Guardian Potion Plus:
+  Bottle & Bug Net & Can Medium Rupee Farm & Emerald Tablet & Ruby Tablet
+  # Potion costs 200R + 40 more for the upgrade
+  # The potion needs Faron Grasshoppers and Eldin Rollers
+
+Shield:
+  Pouch & Skyloft - Item Check Access & Can Afford 50 Rupees # Wooden Shield
+
 Can Collect Water: Impossible # To be completed locally
 
 Water Bottle: Bottle & Can Collect Water
@@ -276,5 +284,11 @@ Can Defeat Stalmaster:
   Sword
 
 Can Defeat Scervo/Dreadfuse:
-  Sword
-  # Could add Pouch for a shield
+  Sword & Shield # for beginner-friendliness
+
+Can Defeat Sentrobe:
+  Shield # for beginner-friendliness
+
+Can Defeat Demise:
+  Sword & Shield & (One Demise | Guardian Potion Plus)
+  # Require access to a Guardian Potion Plus if multiple demises are enabled
