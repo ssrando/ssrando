@@ -3948,7 +3948,7 @@ areas:
               hint_region: Sealed Grounds
               locations:
                 Zelda's Blessing: 'True'
-                Defeat Demise: "Horde Door Requirement & \\Sword & \\Shield"
+                Defeat Demise: "Horde Door Requirement & \\Can Defeat Demise"
               name: \Faron\Sealed Grounds\Hylia's Temple
               sub_areas: {}
               toplevel_alias: null
