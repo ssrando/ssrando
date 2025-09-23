@@ -37,7 +37,32 @@ def shuffle_indices(self, list, indices=None):
         return
 
 
+def proper_subset(s1: set, s2: set) -> bool:
+    return len(s1) < len(s2) and s1.issubset(s2)
+
+
 class Rando:
+    @staticmethod
+    def sphere_zero_locations(logic: Logic, starting_inventory: Inventory):
+        inventory = starting_inventory
+        inventory2 = inventory
+        requirements = logic.backup_requirements
+        sphere = set()
+        keep_going = True
+        while keep_going:
+            keep_going = False
+            for i in EXTENDED_ITEM.items():
+                if not inventory2[i] and requirements[i].eval(inventory):
+                    keep_going = True
+                    inventory2 |= i
+                    item = EXTENDED_ITEM.get_item_name(i)
+                    if item not in INVENTORY_ITEMS:
+                        if item in logic.areas.checks:
+                            sphere.add(item)
+                        inventory |= i
+
+        return sphere
+
     def __init__(self, areas: Areas, options: Options, rng: random.Random):
         self.options = options
         self.rng = rng
@@ -136,17 +161,17 @@ class Rando:
     def parse_options(self):
         # Initialize location related attributes.
         self.randomize_required_dungeons()  # self.required_dungeons, self.unrequired_dungeons
-        self.randomize_starting_items()  # self.placement.starting_items
         self.ban_the_banned()  # self.banned, self.ban_options
 
         self.get_endgame_requirements()  # self.endgame_requirements
 
         self.set_placement_options()  # self.logic_options_requirements
 
-        self.initialize_items()  # self.randosettings
-
         self.randomize_dungeons_trials_starting_entrances()
         self.randomize_puzzles()
+
+        self.randomize_starting_items()  # self.placement.starting_items
+        self.initialize_items()  # self.randosettings
 
     def randomize_required_dungeons(self):
         """
@@ -287,14 +312,70 @@ class Rando:
             else:
                 starting_items.add(item)
 
+        # We need to set up a temporary Logic object to calculate sphere zero locations
+        # for determining which random starting item to choose
+        frees = Inventory(
+            {EXTENDED_ITEM[itemname] for itemname in starting_items} | {HINT_BYPASS_BIT}
+        )
+        no_logic_requirements = {}
+        if self.options["logic-mode"] == "No Logic":
+            no_logic_requirements = {
+                item: DNFInventory(True)
+                for item in EXTENDED_ITEM.items_list
+                if EXTENDED_ITEM[item] != BANNED_BIT
+                if item not in self.placement.unplaced_items
+            }
+        runtime_requirements = (
+            self.logic_options_requirements
+            | self.endgame_requirements
+            | {i: DNFInventory(True) for i in starting_items}
+            | no_logic_requirements
+        )
+        logic_settings = LogicSettings(
+            frees,
+            Inventory(),
+            runtime_requirements,
+            self.banned,
+        )
+        logic = Logic(self.areas, logic_settings, self.placement)
+        initial_sphere_zero = Rando.sphere_zero_locations(logic, frees)
+        extra_check_sets = {}
         if self.options["random-starting-item"]:
             possible_random_starting_items = [
                 item
                 for item in RANDOM_STARTING_ITEMS
                 if item not in self.options["starting-items"]
             ]
-            if len(possible_random_starting_items) > 0:
-                random_item = self.rng.choice(possible_random_starting_items)
+            for item in possible_random_starting_items:
+                start_item = item
+                if start_item not in EXTENDED_ITEM.items_list:
+                    start_item = number(start_item, 0)
+
+                extra_sphere_zero = Rando.sphere_zero_locations(
+                    logic, frees | EXTENDED_ITEM[start_item]
+                ).difference(initial_sphere_zero)
+                if len(extra_sphere_zero) != 0:
+                    extra_check_sets[start_item] = extra_sphere_zero
+
+            # Allow any starting items that unlock at least one extra sphere-zero location
+            # and don't unlock a proper subset of some other item
+            # So, for instance, if Slingshot unlocks checks A, B, and C, but Beetle unlocks checks A, B, C, and D,
+            # Slingshot is not an eligible random starting item as its checks are a proper subset of those for Beetle
+            sorted_sets = sorted(
+                extra_check_sets.items(), key=lambda pair: len(pair[1]), reverse=True
+            )
+            candidates = []
+            while len(sorted_sets) > 0:
+                curr_set = sorted_sets[0]
+                candidates.append(curr_set[0])
+                sorted_sets = [
+                    pair
+                    for pair in sorted_sets[1:]
+                    if not proper_subset(pair[1], curr_set[1])
+                ]
+
+            if len(candidates) > 0:
+                random_item = self.rng.choice(candidates)
                 if random_item not in EXTENDED_ITEM.items_list:
                     random_item = number(random_item, 0)
                 starting_items.add(random_item)
@@ -303,6 +384,8 @@ class Rando:
             self.placement.add_unplaced_items(set(ALL_MAPS) - starting_items)
 
         self.placement.add_starting_items(starting_items)
+
+        del logic
 
     def ban_the_banned(self):
         self.banned: List[EIN] = []

@@ -919,7 +919,8 @@
   default: false
   help: "Gives you a random progression item at the start of the game in addition to any starting items.
         This includes: Bow, Beetle, Slingshot, Digging Mitts, Pouch, Bomb Bag, Clawshots, Whip, Gust Bellows,
-        Water Dragon's Scale, Fireshield Earrings, Goddess's Harp and Spiral Charge."
+        Water Dragon's Scale, Fireshield Earrings, Goddess's Harp, Ballad of the Goddess, and Spiral Charge.
+        The item chosen is guaranteed to unlock at least one extra location at the start."
   ui: option_random_starting_item
 - name: Starting Empty Bottles
   command: starting-bottles
