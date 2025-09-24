@@ -161,16 +161,17 @@ class Rando:
     def parse_options(self):
         # Initialize location related attributes.
         self.randomize_required_dungeons()  # self.required_dungeons, self.unrequired_dungeons
+        self.randomize_starting_items()  # self.placement.starting_items
         self.ban_the_banned()  # self.banned, self.ban_options
 
         self.get_endgame_requirements()  # self.endgame_requirements
-
         self.set_placement_options()  # self.logic_options_requirements
 
         self.randomize_dungeons_trials_starting_entrances()
         self.randomize_puzzles()
 
-        self.randomize_starting_items()  # self.placement.starting_items
+        self.init_no_logic_requirements()
+        self.choose_random_start_item()  # choose after entrances are settled on
         self.initialize_items()  # self.randosettings
 
     def randomize_required_dungeons(self):
@@ -254,7 +255,9 @@ class Rando:
     def randomize_starting_items(self):
         """
         Chooses all items the player has at the start,
-        for tablet randomizer adds random tablets
+        for tablet randomizer adds random tablets.
+        This doesn't include the "random starting item" setting, as that
+        needs info about sphere-zero locations to be chosen.
         """
         starting_items = {
             number(PROGRESSIVE_SWORD, sword_num)
@@ -312,35 +315,39 @@ class Rando:
             else:
                 starting_items.add(item)
 
-        # We need to set up a temporary Logic object to calculate sphere zero locations
-        # for determining which random starting item to choose
-        frees = Inventory(
-            {EXTENDED_ITEM[itemname] for itemname in starting_items} | {HINT_BYPASS_BIT}
-        )
-        no_logic_requirements = {}
-        if self.options["logic-mode"] == "No Logic":
-            no_logic_requirements = {
-                item: DNFInventory(True)
-                for item in EXTENDED_ITEM.items_list
-                if EXTENDED_ITEM[item] != BANNED_BIT
-                if item not in self.placement.unplaced_items
-            }
-        runtime_requirements = (
-            self.logic_options_requirements
-            | self.endgame_requirements
-            | {i: DNFInventory(True) for i in starting_items}
-            | no_logic_requirements
-        )
-        logic_settings = LogicSettings(
-            frees,
-            Inventory(),
-            runtime_requirements,
-            self.banned,
-        )
-        logic = Logic(self.areas, logic_settings, self.placement)
-        initial_sphere_zero = Rando.sphere_zero_locations(logic, frees)
-        extra_check_sets = {}
+        if self.options["map-mode"] == "Removed":
+            self.placement.add_unplaced_items(set(ALL_MAPS) - starting_items)
+
+        self.placement.add_starting_items(starting_items)
+
+    def choose_random_start_item(self):
+        """
+        Chooses a random starting item to add (if the option is enabled)
+        """
         if self.options["random-starting-item"]:
+            # We need to set up a temporary Logic object to calculate sphere zero locations
+            # for determining which random starting item to choose
+            frees = Inventory(
+                {EXTENDED_ITEM[itemname] for itemname in self.placement.starting_items}
+                | {HINT_BYPASS_BIT}
+            )
+
+            runtime_requirements = (
+                self.logic_options_requirements
+                | self.endgame_requirements
+                | {i: DNFInventory(True) for i in self.placement.starting_items}
+                | self.no_logic_requirements
+            )
+            logic_settings = LogicSettings(
+                frees,
+                Inventory(),
+                runtime_requirements,
+                self.banned,
+            )
+            logic = Logic(self.areas, logic_settings, self.placement)
+            initial_sphere_zero = Rando.sphere_zero_locations(logic, frees)
+            extra_check_sets = {}
+
             possible_random_starting_items = [
                 item
                 for item in RANDOM_STARTING_ITEMS
@@ -354,8 +361,8 @@ class Rando:
                 extra_sphere_zero = Rando.sphere_zero_locations(
                     logic, frees | EXTENDED_ITEM[start_item]
                 ).difference(initial_sphere_zero)
-                if len(extra_sphere_zero) != 0:
-                    extra_check_sets[start_item] = extra_sphere_zero
+
+                extra_check_sets[start_item] = extra_sphere_zero
 
             # Allow any starting items that unlock at least one extra sphere-zero location
             # and don't unlock a proper subset of some other item
@@ -376,16 +383,19 @@ class Rando:
 
             if len(candidates) > 0:
                 random_item = self.rng.choice(candidates)
-                if random_item not in EXTENDED_ITEM.items_list:
-                    random_item = number(random_item, 0)
-                starting_items.add(random_item)
+                self.placement.add_starting_items({random_item})
 
-        if self.options["map-mode"] == "Removed":
-            self.placement.add_unplaced_items(set(ALL_MAPS) - starting_items)
+            del logic
 
-        self.placement.add_starting_items(starting_items)
-
-        del logic
+    def init_no_logic_requirements(self):
+        self.no_logic_requirements = {}
+        if self.options["logic-mode"] == "No Logic":
+            self.no_logic_requirements = {
+                item: DNFInventory(True)
+                for item in EXTENDED_ITEM.items_list
+                if EXTENDED_ITEM[item] != BANNED_BIT
+                if item not in self.placement.unplaced_items
+            }
 
     def ban_the_banned(self):
         self.banned: List[EIN] = []
@@ -468,15 +478,6 @@ class Rando:
             else:
                 raise ValueError(f"Option rupoor-mode has unknown value {rupoor_mode}.")
             self.placement.add_unplaced_items(set(unplaced))
-
-        self.no_logic_requirements = {}
-        if self.options["logic-mode"] == "No Logic":
-            self.no_logic_requirements = {
-                item: DNFInventory(True)
-                for item in EXTENDED_ITEM.items_list
-                if EXTENDED_ITEM[item] != BANNED_BIT
-                if item not in self.placement.unplaced_items
-            }
 
         must_be_placed_items = (
             PROGRESS_ITEMS
