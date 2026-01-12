@@ -51,7 +51,7 @@ jobs:
         with:
           file: "pyproject.toml"
           field: "tool.poetry.version"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: Skyward Sword Randomizer v${{ steps.read_toml.outputs.value }}
           path: dist
