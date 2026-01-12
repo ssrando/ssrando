@@ -113,6 +113,10 @@ DUNGEON_SMALL_KEYS_RESTRICTION = norm_values(
 
 CAVES_KEY_RESTRICTION = norm_values({CAVES_KEY: "Lanayru - Caves"})
 
+ELDIN_KEY_PIECE_RESTRICTION = norm_values(
+    {kp: ELDIN_VOLCANO for kp in KEY_PIECES.keys()}
+)
+
 
 BOSS_KEY_CHECKS = [
     "Skyview - Boss Key Chest",

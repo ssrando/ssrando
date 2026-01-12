@@ -3055,7 +3055,7 @@ F200: # Eldin main area
     room: 2
     objtype: STAG
   - name: remove ET Door if open ET
-    onlyif: Option "open-et" Enabled
+    onlyif: Option "open-et" Is "Open"
     type: objdelete
     id: 0x2413
     layer: 0

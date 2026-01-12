@@ -184,7 +184,7 @@ def buildBzs(root: ParsedBzs) -> bytes:
     pad = 32 - (len(data) % 32)
     if pad == 32:
         pad = 0
-    data += b"\xFF" * pad
+    data += b"\xff" * pad
     return data
 
 
@@ -197,7 +197,7 @@ def buildObj(objtype, objdata) -> (int, bytes):  # number of elements, bytes of 
         for typ, obj in objdata.items():
             count, data = buildObj(typ, obj)
             # pad to 4
-            pad = (4 - (len(data) % 4)) * b"\xFF"
+            pad = (4 - (len(data) % 4)) * b"\xff"
             if len(pad) == 4:
                 pad = b""
             headerbytes += struct.pack(
@@ -223,7 +223,7 @@ def buildObj(objtype, objdata) -> (int, bytes):  # number of elements, bytes of 
                 count, data = buildObj("V001", layer)
                 dataoffset = len(body) - len(headerbytes) + offset
                 # pad to 4
-                pad = (4 - (len(data) % 4)) * b"\xFF"
+                pad = (4 - (len(data) % 4)) * b"\xff"
                 if len(pad) == 4:
                     pad = b""
                 headerbytes += struct.pack(">hhi", count, -1, dataoffset)

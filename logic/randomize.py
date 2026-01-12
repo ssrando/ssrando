@@ -267,7 +267,7 @@ class Rando:
         if self.options["start-with-hylian-shield"]:
             starting_items.add(HYLIAN_SHIELD)
 
-        if not self.options["open-et"]:
+        if self.options["open-et"] != "Open":
             starting_items |= {
                 number(KEY_PIECE, key_piece_num)
                 for key_piece_num in range(
@@ -424,7 +424,7 @@ class Rando:
 
         options = {
             OPEN_THUNDERHEAD_OPTION: self.options["open-thunderhead"] == "Open",
-            OPEN_ET_OPTION: self.options["open-et"],
+            OPEN_ET_OPTION: self.options["open-et"] == "Open",
             OPEN_LMF_OPTION: self.options["open-lmf"] == "Open",
             LMF_NODES_ON_OPTION: self.options["open-lmf"] == "Main Node",
             FLORIA_GATES_OPTION: self.options["open-lake-floria"] == "Floria Gates",
@@ -497,8 +497,11 @@ class Rando:
 
         # self.placement |= HARDCODED_PLACEMENT(self.norm)
 
-        if self.options["open-et"]:
+        kp_mode = self.options["open-et"]
+        if kp_mode == "Open":
             self.placement.add_unplaced_items(set(KEY_PIECES))
+        elif kp_mode == "Shuffled (Eldin Volcano)":
+            self.placement |= ELDIN_KEY_PIECE_RESTRICTION(self.norm)
 
         if not place_gondo_progressives:
             self.placement.add_unplaced_items(GONDO_ITEMS)

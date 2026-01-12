@@ -513,10 +513,20 @@ class Ui_MainWindow(object):
 
         self.vlay_open.addLayout(self.vlay_open_thunderhead)
 
-        self.option_open_et = QCheckBox(self.box_open)
+        self.vlay_open_et = QVBoxLayout()
+        self.vlay_open_et.setObjectName(u"vlay_open_et")
+        self.label_for_option_open_et = QLabel(self.box_open)
+        self.label_for_option_open_et.setObjectName(u"label_for_option_open_et")
+
+        self.vlay_open_et.addWidget(self.label_for_option_open_et)
+
+        self.option_open_et = QComboBox(self.box_open)
         self.option_open_et.setObjectName(u"option_open_et")
 
-        self.vlay_open.addWidget(self.option_open_et)
+        self.vlay_open_et.addWidget(self.option_open_et)
+
+
+        self.vlay_open.addLayout(self.vlay_open_et)
 
         self.vlay_open_lmf = QVBoxLayout()
         self.vlay_open_lmf.setObjectName(u"vlay_open_lmf")
@@ -2025,7 +2035,7 @@ class Ui_MainWindow(object):
         self.label_for_option_demise_count.setText(QCoreApplication.translate("MainWindow", u"Demise Count", None))
         self.box_open.setTitle(QCoreApplication.translate("MainWindow", u"Open Settings", None))
         self.label_for_option_open_thunderhead.setText(QCoreApplication.translate("MainWindow", u"Open Thunderhead", None))
-        self.option_open_et.setText(QCoreApplication.translate("MainWindow", u"Open Earth Temple", None))
+        self.label_for_option_open_et.setText(QCoreApplication.translate("MainWindow", u"Open Earth Temple", None))
         self.label_for_option_open_lmf.setText(QCoreApplication.translate("MainWindow", u"Open Lanayru Mining Facility", None))
         self.label_for_option_open_lake_floria.setText(QCoreApplication.translate("MainWindow", u"Open Lake Floria", None))
         self.option_random_puzzles.setText(QCoreApplication.translate("MainWindow", u"Randomize Puzzles", None))
