@@ -364,6 +364,7 @@ items:
 - Upgraded Skyward Strike option
 - FS Lava Flow option
 - No Random Puzzles option
+- One Demise
 - GoT Opening Requirement
 - GoT Raising Requirement
 - Horde Door Requirement
@@ -668,6 +669,8 @@ items:
 - \Complete Triforce
 - \Empty Bottle_
 - \Bottle
+- \Guardian Potion Plus
+- \Shield
 - \Can Collect Water
 - \Water Bottle
 - \Ancient Flower Farming
@@ -716,6 +719,8 @@ items:
 - \Can Defeat Stalfos
 - \Can Defeat Stalmaster
 - \Can Defeat Scervo/Dreadfuse
+- \Can Defeat Sentrobe
+- \Can Defeat Demise
 - \Ancient Cistern\Can Lower Statue
 - \Ancient Cistern\Can Freely Raise and Lower Statue
 - \Ancient Cistern\Main\Main Room\Lock Combination Knowledge
@@ -915,7 +920,6 @@ items:
 - \Faron\Faron Woods\Door to Lake Floria\Open Door to Lake Floria
 - \Faron\Faron Woods\Door to Lake Floria\Rupee on Platform near Floria Door
 - \Faron\Faron Woods\Great Tree\Lower Area\Path to Chest\Chest inside Great Tree
-- \Faron\Faron Woods\Great Tree\Upper Area\Remove Void Plane
 - \Faron\Faron Woods\Great Tree\Top\Unlock Statue
 - \Faron\Faron Woods\Great Tree\Top\Rupee on Great Tree North Branch
 - \Faron\Faron Woods\Great Tree\Top\Rupee on Great Tree West Branch
@@ -1082,7 +1086,6 @@ items:
 - \Lanayru\Desert\Entry\High Ledge after Vines\Retrieve Party Wheel
 - \Lanayru\Desert\Entry\High Ledge after Vines\Chest near Party Wheel
 - \Lanayru\Desert\Near Caged Robot\Chest near Caged Robot
-- \Lanayru\Desert\Near Caged Robot\Goddess Cube near Caged Robot
 - \Lanayru\Desert\Near Caged Robot\Blow up Rock for Timeshift Stone
 - \Lanayru\Desert\Near Caged Robot\Rescue Caged Robot
 - \Lanayru\Desert\Near Caged Robot\Blow Statues to Sand Oasis Down
@@ -1092,6 +1095,7 @@ items:
 - \Lanayru\Desert\West Part\Push Minecart
 - \Lanayru\Desert\Near South Exit to Temple of Time\Push Minecart
 - \Lanayru\Desert\Top of West Wall\Chest near Sand Oasis
+- \Lanayru\Desert\Top of West Wall\Goddess Cube near Caged Robot
 - \Lanayru\Desert\Top of West Wall\Push Minecart
 - \Lanayru\Desert\Top of LMF\Chest on top of Lanayru Mining Facility
 - \Lanayru\Desert\North Part\Water Node
@@ -1339,7 +1343,6 @@ items:
 - \Skyloft\Central Skyloft\Shed Chest
 - \Skyloft\Central Skyloft\Shed Goddess Chest
 - \Skyloft\Central Skyloft\Open Trial Gate
-- \Skyloft\Central Skyloft\Waterfall Cave Crystals from above
 - \Skyloft\Central Skyloft\Crystal on Waterfall Island from the ground
 - \Skyloft\Central Skyloft\Open Cave Entrance
 - \Skyloft\Central Skyloft\Bird Nest\Item in Bird Nest
@@ -2425,6 +2428,10 @@ areas:
     Empty Bottle_: Empty Bottle
     Bottle: "\\Pouch & \\Skyloft\\Central Skyloft\\Bazaar\\Item Check Access & \\\
       Empty Bottle_"
+    Guardian Potion Plus: "\\Bottle & \\Bug Net & \\Can Medium Rupee Farm & Emerald\
+      \ Tablet & Ruby Tablet"
+    Shield: "\\Pouch & \\Skyloft\\Central Skyloft\\Bazaar\\Item Check Access & \\\
+      Can Afford 50 Rupees"
     Can Collect Water: 'False'
     Water Bottle: "\\Bottle & \\Can Collect Water"
     Ancient Flower Farming: 'False'
@@ -2488,7 +2495,9 @@ areas:
     Can Defeat Cursed Bokoblins: "\\Sword | Bomb Bag"
     Can Defeat Stalfos: \Sword
     Can Defeat Stalmaster: \Sword
-    Can Defeat Scervo/Dreadfuse: \Sword
+    Can Defeat Scervo/Dreadfuse: "\\Sword & \\Shield"
+    Can Defeat Sentrobe: \Shield
+    Can Defeat Demise: "\\Sword & \\Shield & (One Demise | \\Guardian Potion Plus)"
   name: ''
   sub_areas:
     Ancient Cistern:
@@ -3939,7 +3948,7 @@ areas:
               hint_region: Sealed Grounds
               locations:
                 Zelda's Blessing: 'True'
-                Defeat Demise: "Horde Door Requirement & \\Sword"
+                Defeat Demise: "Horde Door Requirement & \\Can Defeat Demise"
               name: \Faron\Sealed Grounds\Hylia's Temple
               sub_areas: {}
               toplevel_alias: null
@@ -4246,16 +4255,11 @@ areas:
                   - Upper Entrance from Platforms
                   - Entrance from Top
                   exits:
-                    \Faron\Faron Woods\Great Tree\Lower Area: \Faron\Faron Woods\Great
-                      Tree\Upper Area\Remove Void Plane
-                    \Faron\Faron Woods\Great Tree\Lower Area\Path to Chest: \Faron\Faron
-                      Woods\Great Tree\Upper Area\Remove Void Plane
                     Exit to Flooded Great Tree: 'True'
                     Upper Exit to Platforms: 'True'
                     Exit to Top: 'True'
                   hint_region: Faron Woods
-                  locations:
-                    Remove Void Plane: \Can Defeat Moblins
+                  locations: {}
                   name: \Faron\Faron Woods\Great Tree\Upper Area
                   sub_areas: {}
                   toplevel_alias: null
@@ -5102,7 +5106,7 @@ areas:
             Exit to Flame Room: \Fire Sanctuary\Boss Room\Beat Ghirahim
           hint_region: Fire Sanctuary
           locations:
-            Beat Ghirahim: \Sword
+            Beat Ghirahim: "\\Goddess Sword & \\Shield"
             Heart Container: \Fire Sanctuary\Boss Room\Beat Ghirahim
           name: \Fire Sanctuary\Boss Room
           sub_areas: {}
@@ -5473,7 +5477,7 @@ areas:
                   \ - Minecart Jump Trick & \\Sword & (Bomb Bag | \\Beetle)"
                 \Lanayru Mining Facility\Main\Big Hub\Between Wind Gates: "\\Lanayru\
                   \ Mining Facility\\Main\\Near Boss Door\\Open Second Wind Gate &\
-                  \ \\Can Defeat Beamos"
+                  \ \\Can Defeat Beamos & \\Can Defeat Sentrobe"
               hint_region: Lanayru Mining Facility
               locations:
                 Get Minecart to Wind Gate: "Gust Bellows & \\Lanayru Mining Facility\\\
@@ -5788,7 +5792,6 @@ areas:
               hint_region: Lanayru Desert
               locations:
                 Chest near Caged Robot: 'True'
-                Goddess Cube near Caged Robot: \Long Range Skyward Strike
                 Blow up Rock for Timeshift Stone: "Bomb Bag | \\Hook Beetle | Lanayru\
                   \ Desert - Ampilus Bomb Toss Trick"
                 Rescue Caged Robot: "\\Lanayru\\Desert\\Near Caged Robot\\Blow up\
@@ -5889,8 +5892,7 @@ areas:
               hint_region: Lanayru Desert
               locations:
                 Chest near Sand Oasis: 'True'
-                \Lanayru\Desert\Near Caged Robot\Goddess Cube near Caged Robot: \Goddess
-                  Sword
+                Goddess Cube near Caged Robot: \Goddess Sword
                 Push Minecart: 'True'
               name: \Lanayru\Desert\Top of West Wall
               sub_areas: {}
@@ -7712,8 +7714,8 @@ areas:
               locations:
                 Southwest Triple Island Upper Goddess Chest: \Eldin\Volcano\Entry\Goddess
                   Cube at Eldin Entrance
-                Southwest Triple Island Lower Goddess Chest: \Lanayru\Desert\Near
-                  Caged Robot\Goddess Cube near Caged Robot
+                Southwest Triple Island Lower Goddess Chest: \Lanayru\Desert\Top of
+                  West Wall\Goddess Cube near Caged Robot
                 Southwest Triple Island Cage Goddess Chest: "\\Lanayru\\Lanayru Sand\
                   \ Sea\\Skipper's Retreat\\Past Rock\\Goddess Cube in Skipper's Retreat\
                   \ & Clawshots"
@@ -8049,12 +8051,7 @@ areas:
               \ (\\Beetle | Whip)"
             Open Trial Gate: "Goddess's Harp & \\Song of the Hero"
             \Can Collect Water: 'True'
-            Waterfall Cave Crystals from above: \Beetle
             Crystal on Waterfall Island from the ground: \Quick Beetle
-            \Skyloft\Central Skyloft\Past Waterfall Cave\Crystal after Waterfall Cave: "Night\
-              \ & \\Skyloft\\Central Skyloft\\Waterfall Cave Crystals from above"
-            \Skyloft\Central Skyloft\Past Waterfall Cave\Crystal in Loftwing Prison: "Night\
-              \ & \\Skyloft\\Central Skyloft\\Waterfall Cave Crystals from above"
             \Skyloft\Central Skyloft\Waterfall Island\Crystal on Waterfall Island: "Night\
               \ & \\Skyloft\\Central Skyloft\\Crystal on Waterfall Island from the\
               \ ground"
@@ -8840,7 +8837,7 @@ areas:
             Exit to Spring: \Skyview\Boss Room\Beat Ghirahim
           hint_region: Skyview
           locations:
-            Beat Ghirahim: \Sword
+            Beat Ghirahim: "\\Sword & \\Shield"
             Heart Container: \Skyview\Boss Room\Beat Ghirahim
           name: \Skyview\Boss Room
           sub_areas: {}

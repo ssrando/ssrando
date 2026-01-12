@@ -42,7 +42,7 @@ Sealed Grounds:
       Gate of Time: Nothing
     locations:
       Zelda's Blessing: Nothing
-      Defeat Demise: Horde Door Requirement & Sword
+      Defeat Demise: Horde Door Requirement & Can Defeat Demise
 
   Behind the Temple:
     exits:
@@ -183,13 +183,9 @@ Faron Woods:
 
     Upper Area: # top with the moblin
       exits:
-        Lower Area: Remove Void Plane
-        Lower Area - Path to Chest: Remove Void Plane
         Exit to Flooded Great Tree: Nothing
         Upper Exit to Platforms: Nothing
         Exit to Top: Nothing
-      locations:
-        Remove Void Plane: Can Defeat Moblins
 
     Top:
       exits:

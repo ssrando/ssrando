@@ -233,7 +233,7 @@ Boss Room:
     Exit to Dungeon: Beat Ghirahim
     Exit to Flame Room: Beat Ghirahim
   locations:
-    Beat Ghirahim: Sword
+    Beat Ghirahim: Goddess Sword & Shield # for beginner friendliness
     Heart Container: Beat Ghirahim
 
 Flame Room:
