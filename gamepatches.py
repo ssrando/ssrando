@@ -1590,6 +1590,8 @@ class GamePatcher:
             self.add_asm_patch("ammo_drops_remove")
         else:
             self.add_asm_patch("ammo_drops_add")
+        if self.placement_file.options["skip-harp-playing"]:
+            self.add_asm_patch("skip_harp_playing")
         # GoT patch depends on required sword
         # cmpwi r0, (insert sword)
         self.all_asm_patches["d_a_obj_time_door_beforeNP.rel"][0xD48] = {

@@ -1,0 +1,7 @@
+d_a_obj_warpNP.rel:
+  0x2818:
+    Data: [0x48, 0x00, 0x00, 0x00]
+    Relocations: [{SymbolName: check_and_open_trial_gate, Offset: 0x00, Type: R_PPC_REL24}]
+  0x280C:
+    Data: [0x48, 0x00, 0x00, 0x00]
+    Relocations: [{SymbolName: gate_wait_cleanup_start, Offset: 0x00, Type: R_PPC_REL24}]

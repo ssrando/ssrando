@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1202</width>
-    <height>759</height>
+    <height>772</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -60,7 +60,7 @@
        <number>-6</number>
       </property>
       <property name="currentIndex">
-       <number>7</number>
+       <number>2</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -1069,6 +1069,13 @@
              </item>
              <item>
               <widget class="QComboBox" name="option_ammo_availability"/>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="option_skip_harp_playing">
+               <property name="text">
+                <string>Skip Harp Playing</string>
+               </property>
+              </widget>
              </item>
              <item>
               <spacer name="vspace_convenience_tweaks">
@@ -2496,8 +2503,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>577</width>
-               <height>471</height>
+               <width>576</width>
+               <height>485</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_34">
