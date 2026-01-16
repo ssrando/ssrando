@@ -75,3 +75,5 @@ d_t_clef_gameNP.rel:
   check_tadtone_counter_before_event: 0x724
 d_a_obj_time_boatNP.rel:
   fix_sadship_boat: 0x6448
+d_a_obj_lighthouse_lightNP.rel:
+  appear_when_th_open: 0x1D00

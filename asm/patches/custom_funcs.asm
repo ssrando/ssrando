@@ -932,3 +932,25 @@ addi r1, r1, 0x10
 blr
 
 .close
+
+.open "d_a_obj_lighthouse_lightNP.rel"
+.org @NextFreeSpace
+.global appear_when_th_open
+appear_when_th_open:
+mflr r31
+li r4, 194 ; thunderhead open
+bl checkStoryflagIsSet
+cmpwi r3, 0
+beq appear_when_th_open_end
+; switch to "Appear" state which draws the beam
+lwz r12, 0x330(r29)
+lis r4, dAcOlighthouseLight_c__StateID_Appear@ha
+addi r3, r29, 0x330
+lwz r12, 0x18(r12)
+addi r4, r4, dAcOlighthouseLight_c__StateID_Appear@l
+mtctr r12
+bctrl
+appear_when_th_open_end:
+mtlr r31
+blr
+.close
