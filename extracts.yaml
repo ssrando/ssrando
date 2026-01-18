@@ -27,6 +27,10 @@
   - PutTriForceSingle
   - GetTriForceSingle
   stage: D003_0
+- layer: 1
+  oarcs:
+  - Moriburin_Iron
+  stage: D003_0
 - layer: 0
   oarcs:
   - GetBowA
@@ -101,6 +105,7 @@
 - layer: 0
   oarcs:
   - GetKeyBossA
+  - Kiesu
   stage: D100
 - layer: 1
   oarcs:
@@ -110,6 +115,8 @@
 - layer: 0
   oarcs:
   - GetKeyBossB
+  - LizarufosF
+  - Kiesu_fire
   stage: D200
 - layer: 0
   oarcs:
@@ -119,6 +126,7 @@
   oarcs:
   - GoddessSymbolSc
   - SwordCandle
+  - Kiesu_electric
   stage: D301
 - layer: 0
   oarcs:
@@ -127,6 +135,8 @@
 - layer: 0
   oarcs:
   - GetKeyBoss2B
+  - LizarufosC
+  - KiesuDevil
   stage: D201
 - layer: 11
   oarcs:
@@ -179,6 +189,8 @@
   - ForestManWiz
   - GetSozaiL
   - SwrdPrj
+  - Moriburin_Shield
+  - Moriburin
   stage: F100
 - layer: 1
   oarcs:
