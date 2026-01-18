@@ -1494,7 +1494,7 @@ class GamePatcher:
         self.do_rel_patch()
         self.do_patch_title_screen_logo()
         self.do_patch_custom_dowsing_images()
-        self.do_patch_tablets_ui()
+        self.do_patch_pause_menu_ui()
 
         music_rando(
             self.placement_file, self.modified_extract_path, self.actual_extract_path
@@ -3765,7 +3765,7 @@ class GamePatcher:
         arc.set_file_data("timg/tr_wiiKing2Logo_00.tpl", logodata)
         title_2D_path.write_bytes(arc.to_buffer())
 
-    def do_patch_tablets_ui(self):
+    def do_patch_pause_menu_ui(self):
         menu_pause_path = (
             self.modified_extract_path
             / "DATA"
@@ -3776,15 +3776,24 @@ class GamePatcher:
         )
         data = menu_pause_path.read_bytes()
         arc = U8File.parse_u8(BytesIO(data))
-        brlan_data = (
+
+        # patch tablets
+        sekiban_brlan_data = (
             self.rando_root_path / "assets" / "tablets" / "pause_00_sekiban.brlan"
         ).read_bytes()
-        arc.add_file_data("anim/pause_00_sekiban.brlan", brlan_data)
+        arc.add_file_data("anim/pause_00_sekiban.brlan", sekiban_brlan_data)
 
         for suffix in ["3", "4", "5", "6"]:
             name = f"tr_sekiban_0{suffix}.tpl"
             tpl_data = (self.rando_root_path / "assets" / "tablets" / name).read_bytes()
             arc.add_file_data("timg/" + name, tpl_data)
+
+        # patch pause menu for mogma mitts fix
+        pause_00_brlyt_data = (
+            self.rando_root_path / "assets" / "pause_00.brlyt"
+        ).read_bytes()
+        arc.add_file_data("blyt/pause_00.brlyt", pause_00_brlyt_data)
+
         menu_pause_path.write_bytes(arc.to_buffer())
 
     def do_patch_custom_dowsing_images(self):
