@@ -7,6 +7,7 @@ from pathlib import Path
 
 
 @pytest.mark.parametrize("stage", ALL_STAGES)
+@pytest.mark.iso
 # @pytest.mark.parametrize("stage", ['F000'])
 def test_roundtrip(stage):
     with open(STAGEPATH / f"{stage}" / f"{stage}_stg_l0.arc.LZ", "rb") as f:
@@ -24,6 +25,7 @@ def test_roundtrip(stage):
         assert roomdata == roomarc.to_buffer()
 
 
+@pytest.mark.iso
 def test_change_content():
     with open(STAGEPATH / "F000" / "F000_stg_l0.arc.LZ", "rb") as f:
         extracted_data = nlzss11.decompress(f.read())
@@ -37,6 +39,7 @@ def test_change_content():
     assert extracted_data == stagearc.to_buffer()
 
 
+@pytest.mark.iso
 def test_add_delete():
     with open(STAGEPATH / "F000" / "F000_stg_l0.arc.LZ", "rb") as f:
         extracted_data = nlzss11.decompress(f.read())

@@ -22,6 +22,7 @@ def get_all_msb():
     return all_msb
 
 
+@pytest.mark.iso
 def test_msb():
     for file, data in get_all_msb().items():
         print(f"testing {file}")
