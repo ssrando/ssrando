@@ -1475,6 +1475,7 @@ class GamePatcher:
             self.add_impa_hint()
         self.add_stone_hint_patches()
         self.add_race_integrity_patches()
+        self.add_enemy_variants()
         self.handle_oarc_add_remove()
         self.add_rando_hash()
         self.add_keysanity()
@@ -3062,6 +3063,197 @@ class GamePatcher:
             "polySurface3710781__A_Wall3",
         )
         return brres
+
+    def add_enemy_variants(self):
+        """Patches enemies to be variants of themselves"""
+
+        # This needs to be done here due to the addition oarc/obj entries
+        # If put in the bzs patch function it may miss adding the patch properly due
+        # to the ordering and checks applied.
+
+        enemy_dict = yaml_load(RANDO_ROOT_PATH / "enemy_list.yaml")
+
+        enemy_rng = random.Random(self.options["seed"])
+
+        for stage, patches in enemy_dict.items():
+
+            required_objn = dict()
+            required_arcn = dict()
+
+            for patch in patches:
+                enemy = None
+                name = patch["name"]
+
+                # Chu Chu
+                if name == "ESm":
+                    variant = enemy_rng.choice([0, 1, 2, 6])
+                    scale = enemy_rng.randint(1, 4)
+                    enemy = {
+                        "params1": mask_shift_set(patch["params1"], 0xF, 0, variant),
+                        "sizex": scale,
+                    }
+                # Keese
+                elif name == "EKs":
+                    # Note: Keese have multiples things to work:
+                    #   Normal:
+                    #     OBJN: EKs
+                    #     ARCN: Kiesu, Kiesu_anime
+                    #   Fire:
+                    #     OBJN: EKs
+                    #     ARCN: Kiesu_fire, Kiesu_anime
+                    #   Electric:
+                    #     OBJN: EKs
+                    #     ARCN: Kiesu_electic, Kiesu_anime
+                    #   Cursed:
+                    #     OBJN: EKs
+                    #     ARCN: KiesuDevil, Kiesu_anime
+                    KEESE_ARC_NAMES = [
+                        "Kiesu",
+                        "Kiesu_fire",
+                        "Kiesu_electric",
+                        "KiesuDevil",
+                    ]
+
+                    variant = enemy_rng.choice([0, 1, 2, 3])
+                    arc = KEESE_ARC_NAMES[variant]
+
+                    required_arcn[patch["layer"]] = required_arcn.get(
+                        patch["layer"], []
+                    ) + [arc]
+
+                    enemy = {
+                        "params1": mask_shift_set(patch["params1"], 0x7, 0, variant),
+                    }
+                # Lizalfos
+                elif name == "ELizaru":
+                    # Note:
+                    #   Normal:
+                    #     OBJN: ELizaru, ELiTail
+                    #     ARCN: LizarufosA, LizarufosF, Liza_tail
+                    #   Cursed:
+                    #     OBJN: ELizaru, ELiTail
+                    #     ARCN: LizarufosA, LizarufosC, Liza_tail
+
+                    LIZALFOS_ARC_NAMES = [
+                        "LizarufosC",
+                        "LizarufosF",
+                    ]
+
+                    variant = enemy_rng.choice([0, 1])
+                    arc = LIZALFOS_ARC_NAMES[variant]
+
+                    required_arcn[patch["layer"]] = required_arcn.get(
+                        patch["layer"], []
+                    ) + [arc]
+
+                    enemy = {
+                        "params1": mask_shift_set(patch["params1"], 0x1, 29, variant),
+                    }
+                # Spume
+                elif name == "EMagupp":
+                    # Note:
+                    #   All:
+                    #     OBJN: EMagupp
+                    #     ARCN: Maguppo
+                    variant = enemy_rng.choice([0, 1, 2, 3])
+
+                    enemy = {
+                        "params1": mask_shift_set(patch["params1"], 0x3, 10, variant),
+                    }
+                # Moblin
+                elif name == "EMr":
+                    # Note: Moblins have multiples things to work:
+                    #   Normal:
+                    #     OBJN: EMr, EMrTate,
+                    #     ARCN: Moriburin, Moriburin_Shield, MoriburunAnm
+                    #   Iron:
+                    #     OBJN: EMr
+                    #     ARCN: Moriburin_Iron, MoriburunAnm
+
+                    MOBLIN_ARC_NAMES = [
+                        "Moriburin",
+                        "Moriburin_Iron",
+                    ]
+
+                    variant = enemy_rng.choice([0, 1])
+                    arc = MOBLIN_ARC_NAMES[variant]
+
+                    required_arcn[patch["layer"]] = required_arcn.get(
+                        patch["layer"], []
+                    ) + [arc]
+
+                    enemy = {
+                        "params1": mask_shift_set(patch["params1"], 0xFF, 8, variant),
+                    }
+
+                    # Normal Moblin Shield needs seperate arc
+                    if variant == 0:
+                        required_arcn[patch["layer"]].append("Moriburin_Shield")
+                        required_objn[(patch["layer"], patch["room"])] = (
+                            required_objn.get((patch["layer"], patch["room"]), [])
+                            + ["EMrTate"]
+                        )
+
+                # Deku Baba
+                elif name == "Ehb":
+                    # Note:
+                    #   All:
+                    #     OBJN: Ehb, EhbLeaf
+                    #     ARCN: Degubaba
+
+                    # First Choose Blue or Yellow
+                    variant = enemy_rng.choice([0, 1])
+
+                    # If Blue, Choose Direction
+                    if variant == 0:
+                        variant = enemy_rng.choice([0, 1])
+                    # Set Yellow
+                    else:
+                        variant = 2
+
+                    enemy = {
+                        "params1": mask_shift_set(patch["params1"], 0x3, 3, variant),
+                    }
+
+                if enemy:
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": f"Patch Variant of {name}",
+                            "type": "objpatch",
+                            "room": patch["room"],
+                            "layer": patch["layer"],
+                            "objtype": patch["objtype"],
+                            "id": patch["id"],
+                            "object": enemy,
+                        },
+                    )
+            # add any additional oarc and objn required
+            for layer, oarcs in required_arcn.items():
+                oarcs = set(oarcs)
+                for oarc in oarcs:
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": "Adding OARC for Enemy Variant",
+                            "type": "oarcadd",
+                            "oarc": oarc,
+                            "destlayer": layer,
+                        },
+                    )
+            for (layer, room), objns in required_objn.items():
+                objns = set(objns)
+                for objn in objns:
+                    self.add_patch_to_stage(
+                        stage,
+                        {
+                            "name": "Adding OBJN for Enemy Variant",
+                            "type": "objnadd",
+                            "objn": objn,
+                            "layer": layer,
+                            "room": room,
+                        },
+                    )
 
     def bzs_patch_func(self, bzs, stage, room):
         stagepatches = self.patches.get(stage, [])
