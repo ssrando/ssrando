@@ -174,3 +174,5 @@ d_a_obj_warpNP.rel:
     lbl_state_gate_wait_to_open_gate: 0x27F0
     lbl_state_gate_wait_cleanup: 0x281C
     AcOWarp__checkHasSongItem: 0x42E0
+d_a_obj_lighthouse_lightNP.rel:
+  dAcOlighthouseLight_c__StateID_Appear: 0x1CD0
