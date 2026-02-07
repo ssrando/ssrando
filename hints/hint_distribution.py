@@ -505,6 +505,7 @@ class HintDistribution:
             if loc not in self.hinted_locations
             and self.areas.checks[loc]["hint_region"] not in self.barren_hinted_areas
             and EXTENDED_ITEM[loc] in self.logic.fill_restricted()
+            and loc not in self.logic.placement.removed_locations
         ]
 
         assert all_locations_without_hint

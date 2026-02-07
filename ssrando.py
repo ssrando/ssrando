@@ -257,6 +257,7 @@ class Randomizer(BaseRandomizer):
             for (k, v) in self.logic.placement.hints.items()
         }
         plcmt_file.item_locations = self.logic.placement.locations
+        plcmt_file.removed_locations = self.logic.placement.removed_locations
         dowsing_setting = self.options["chest-dowsing"]
         plcmt_file.chest_dowsing = self.logic.get_dowsing(dowsing_setting)
         plcmt_file.options = self.options

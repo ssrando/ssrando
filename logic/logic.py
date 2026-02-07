@@ -34,8 +34,8 @@ class PoolExit:
 
 @dataclass
 class Placement:
-    item_placement_limit: Dict[EXTENDED_ITEM_NAME, EXTENDED_ITEM_NAME] = field(
-        default_factory=lambda: defaultdict(lambda: EIN(str()))
+    item_placement_limit: Dict[EXTENDED_ITEM_NAME, Tuple[List[str], List[str]]] = field(
+        default_factory=lambda: defaultdict(lambda: DEFAULT_PLACEMENT_LIMIT)
     )
 
     map_transitions: Dict[EIN, EIN] = field(default_factory=dict)
@@ -48,6 +48,7 @@ class Placement:
     hints: Dict[EIN, Hint | GossipStoneHintWrapper] = field(default_factory=dict)
     starting_items: Set[EIN] = field(default_factory=set)
     unplaced_items: Set[EIN] = field(default_factory=set)
+    removed_locations: Set[EIN] = field(default_factory=set)
 
     def copy(self):
         return Placement(
@@ -61,6 +62,7 @@ class Placement:
             self.hints.copy(),
             self.starting_items.copy(),
             self.unplaced_items.copy(),
+            self.removed_locations.copy(),
         )
 
     def __or__(self, other: Placement) -> Placement:
@@ -128,6 +130,7 @@ class Placement:
             self.hints | other.hints,
             self.starting_items | other.starting_items,
             self.unplaced_items | other.unplaced_items,
+            self.removed_locations | other.removed_locations,
         )
 
     def add_starting_items(self, items: Set[EIN]):
@@ -147,6 +150,14 @@ class Placement:
 
         self.items |= {k: UNPLACED_ITEM for k in items}
         self.unplaced_items |= items
+
+    def add_removed_locations(self, locs: Set[EIN]):
+        for loc in locs:
+            if loc in self.locations and self.locations[loc] != REMOVED_LOCATION:
+                raise ValueError(f"Removed location '{loc}' has already been filled.")
+
+        self.locations |= {k: REMOVED_LOCATION for k in locs}
+        self.removed_locations |= locs
 
 
 @dataclass
@@ -346,6 +357,8 @@ class Logic:
 
         self.full_inventory = self.inventory
         for k, v in self.placement.locations.items():
+            if v == REMOVED_LOCATION:
+                continue
             self.place_item(k, v, fill=False)
 
         pure_usefuls = self.aggregate_requirements(areas.requirements, None)
@@ -396,31 +409,41 @@ class Logic:
         self.full_inventory = self.fill_inventory(self.requirements, inventory)
 
     @staticmethod
-    def explore(checks, area: Area) -> Iterable[EIN]:
+    def explore(root: Areas, checks, entrypoints, blocked) -> Iterable[EIN]:
         def explore(area):
             for loc in area.locations:
                 loc_full = with_sep_full(area.name, loc)
+                if loc_full in blocked:
+                    continue
                 if loc_full in checks:
                     yield loc_full
-            for sub_area in area.sub_areas.values():
+            for sub_area_name, sub_area in area.sub_areas.items():
+                if with_sep_full(area.name, sub_area_name) in blocked:
+                    contine
                 yield from explore(sub_area)
 
-        return explore(area)
+        for addr in entrypoints:
+            yield from explore(root[addr])
 
-    @cache
-    def check_list(self, placement_limit: EIN) -> List[EIN]:
+    def check_list(self, placement_limit) -> List[EIN]:
         return list(
-            dict.fromkeys(self.explore(self.areas.checks, self.areas[placement_limit]))
+            dict.fromkeys(self.explore(self.areas, self.areas.checks, *placement_limit))
         )
 
-    def accessible_checks(self, placement_limit: EIN = EIN("")) -> List[EIN]:
-        if placement_limit in self.areas.checks:
-            placement_limit2, loc = placement_limit.rsplit("\\", 1)
-            locations = self.areas[placement_limit2].locations
+    def accessible_checks(
+        self, placement_limit: Tuple[list[string], list[string]] = ([""], [])
+    ) -> List[EIN]:
+        if (
+            len(placement_limit[0]) == 1
+            and len(placement_limit[1]) == 0
+            and (full_loc := placement_limit[0][0]) in self.areas.checks
+        ):
+            area, loc = full_loc.rsplit("\\", 1)
+            locations = self.areas[area].locations
             assert loc in locations
-            if placement_limit in self.fixed_locations:
+            if full_loc in self.fixed_locations:
                 return []
-            return [EIN(placement_limit)]
+            return [EIN(full_loc)]
         else:
             return [
                 loc
@@ -507,12 +530,13 @@ class Logic:
                 name = "Item "
             raise ValueError(f"{name}{item} is already placed.")
 
-        if item in self.placement.item_placement_limit and not location.startswith(
-            self.placement.item_placement_limit[item]
-        ):
+        allowed, forbidden = self.placement.item_placement_limit[item]
+        in_allowed = any(location.startswith(area) for area in allowed)
+        in_forbidden = any(location.startswith(area) for area in forbidden)
+        if not in_allowed or in_forbidden:
             raise ValueError(
-                "This item cannot be placed in this area, "
-                f"it must be placed in {self.placement.item_placement_limit[item]}."
+                "This item cannot be placed there because of placement restrictions: "
+                f"allowed areas: {allowed}; forbidden areas: {forbidden}."
             )
 
         if hint_mode:

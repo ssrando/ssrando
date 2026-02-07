@@ -19,6 +19,7 @@ class PlacementFile:
         self.item_locations = {}
         self.chest_dowsing = {}
         self.hints = {}
+        self.removed_locations = {}
         self.dungeon_connections = {}
         self.trial_connections = {}
         self.trial_object_seed = -1
@@ -41,6 +42,7 @@ class PlacementFile:
             "item-locations": self.item_locations,
             "chest-dowsing": self.chest_dowsing,
             "hints": self.hints,
+            "removed-locations": self.removed_locations,
             "entrance-connections": self.dungeon_connections,
             "trial-connections": self.trial_connections,
             "trial-object-seed": self.trial_object_seed,
