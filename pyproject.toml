@@ -28,4 +28,4 @@ pyinstaller = "^6.4.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
-pytest = "^8.0.2"
+pytest = ">=8.0.2,<10.0.0"
