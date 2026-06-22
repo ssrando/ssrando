@@ -3,12 +3,25 @@
 ## Dev
 ### Additions
 ### Changes
+### Bugfixes
+
+## 2.3.0
+### Additions
+- Randomize Academy Bell (CovenEsme)
+- Random Riddles (robojumper)
+- Port ammo-availability feature from HDR (CovenEsme)
+- Add Option for Skip Harp Playing (gymnast86)
+### Changes
 - Show small key count when getting key
 - Removed Groose text regarding the Groosenator when entering the imp 2 fight
 - Impa's text after killing imp 2 now teleports you straight to the sealed temple, removing
   the need to skyward strike the spile.
+- Make triforces and heart pieces whippable (CovenEsme)
 ### Bugfixes
 - Fix crash in Skyloft trial when trying to place Stone of Trials
+- Fix Fence Hop Softlock (CovenEsme)
+- Fix pirate nose rupee not appearing after raising the shark head (CovenEsme)
+- Make the pause menu show the correct acquired tablets (robojumper)
 
 ## 2.2.0
 ### Additions
