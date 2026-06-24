@@ -38,7 +38,7 @@ def norm_force_vanilla(list: List[str]):
 def norm_restrict_vanilla(locations: List[str]):
     def norm_keys(norm: Callable[[str], EIN], checks: Dict[EIN, Any]) -> Placement:
         locs2 = map(norm, locations)
-        restriction = {EIN(checks[loc]["original item"]): loc for loc in locs2}
+        restriction = {EIN(checks[loc]["original item"]): ([loc], []) for loc in locs2}
         return Placement(item_placement_limit=restriction)
 
     return norm_keys
@@ -57,7 +57,7 @@ def norm_keys(dict: Dict[str, EIN]):
 
 def norm_values(dict: Dict[EIN, str]):
     def norm_values(norm: Callable[[str], EIN]):
-        dict2 = {k: norm(v) for k, v in dict.items()}
+        dict2 = {k: ([norm(v)], []) for k, v in dict.items()}
         return Placement(item_placement_limit=dict2)
 
     return norm_values

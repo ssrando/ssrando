@@ -52,9 +52,7 @@ class RandomFill:
             assert result
 
     def place_item(self, item: EXTENDED_ITEM_NAME, depth=0, force=True) -> bool:
-        placement_limit: EIN = self.logic.placement.item_placement_limit.get(
-            item, EIN("")
-        )
+        placement_limit: EIN = self.logic.placement.item_placement_limit[item]
         accessible_locations = self.logic.check_list(placement_limit)
 
         empty_locations = [

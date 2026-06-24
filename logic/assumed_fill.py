@@ -105,9 +105,7 @@ class AssumedFill:
     def place_item(self, item: EXTENDED_ITEM_NAME, depth=0, force=True) -> bool:
         if item in EXTENDED_ITEM:
             self.logic.remove_item(EXTENDED_ITEM[item])
-        placement_limit: EIN = self.logic.placement.item_placement_limit.get(
-            item, EIN("")
-        )
+        placement_limit = self.logic.placement.item_placement_limit[item]
         accessible_locations = self.logic.accessible_checks(placement_limit)
 
         empty_locations = [
