@@ -1142,3 +1142,15 @@ bl has_heart_drops_enabled
 .org 0x624
 bl has_heart_drops_enabled
 .close
+
+.open "d_a_obj_lighthouse_lightNP.rel"
+; 0x80d82988 in Ghidra (80d82988 - 80d82260) + 130
+.org 0x858
+; just checked the sceneflag if the thunderhead should open
+; if that flag is set, continue the function normally
+cmpwi r3, 0
+bne +16
+; if not, check if thunderhead was opened by obtaining botg
+bl appear_when_th_open
+b +0x9C ; jump to the end of the function
+.close

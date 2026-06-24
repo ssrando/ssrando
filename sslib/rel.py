@@ -138,8 +138,8 @@ class REL:
         relative_offset = None
 
         for section in self.sections:
-            if section.is_uninitialized:
-                continue
+            # if section.is_uninitialized:
+            #     continue
 
             if section.offset <= offset < section.offset + section.length:
                 section_index = self.sections.index(section)
