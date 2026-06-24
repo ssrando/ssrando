@@ -28,6 +28,8 @@ jobs:
       - name: Build distribution
         run: python3 -mPyInstaller ssrando.spec
       - name: Run tests
+        run: python3 -mpytest -m "not iso"
+      - name: Run seed reproducibility check
         run: |
           python3 randoscript.py --noui --dry-run --seed=0
           cp -r logs logs_source

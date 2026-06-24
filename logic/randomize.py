@@ -138,8 +138,8 @@ class Rando:
 
         self.randomised = False
 
-        def fun():
-            if not self.randomised:
+        def fun(**kwargs):
+            if not self.randomised and not kwargs.get("test_access_internals", False):
                 raise ValueError("Cannot extract hint logic before randomisation.")
             return LogicUtils(
                 areas,

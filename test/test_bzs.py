@@ -6,6 +6,7 @@ import nlzss11
 
 
 @pytest.mark.parametrize("stage", ALL_STAGES)
+@pytest.mark.iso
 # @pytest.mark.parametrize("stage", ['F000'])
 def test_roundtrip(stage):
     with open(STAGEPATH / f"{stage}/{stage}_stg_l0.arc.LZ", "rb") as f:
